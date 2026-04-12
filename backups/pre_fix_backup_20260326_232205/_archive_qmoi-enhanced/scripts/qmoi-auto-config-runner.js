@@ -19,11 +19,11 @@ function runAutoConfig(): any {
       logger.info("✅ Auto-configuration completed successfully!");
       process.exit(0);
     } else {
-      console.error("❌ Auto-configuration failed:", result.error);
+      logger.error("❌ Auto-configuration failed:", result.error);
       process.exit(1);
     }
   } catch (error) {
-    console.error("❌ Auto-configuration error:", error.message);
+    logger.error("❌ Auto-configuration error:", error.message);
     process.exit(1);
   }
 }

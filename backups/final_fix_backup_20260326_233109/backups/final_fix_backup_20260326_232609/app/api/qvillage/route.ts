@@ -38,7 +38,7 @@ function logMasterAction(action: string, details: any): any {
     // Also update TRACKS.md with summary
     await updateTracksReport(logEntry);
   } catch (error) {
-    console.error("Failed to log master action:", error);
+    logger.error("Failed to log master action:", error);
   }
 }
 
@@ -79,7 +79,7 @@ This report is auto-generated from QMOI_TRACKS/master_actions.jsonl
 
     await fs.writeFile(tracksFile, updatedContent);
   } catch (error) {
-    console.error("Failed to update TRACKS.md:", error);
+    logger.error("Failed to update TRACKS.md:", error);
   }
 }
 

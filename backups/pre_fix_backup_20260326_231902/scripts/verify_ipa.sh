@@ -39,7 +39,7 @@ fi
 
 echo
 echo "3) Extract and verify Info.plist (requires unzip and plutil/plist)"
-TMPDIR="/tmp/ipa_extract_$$"
+TMPDIR="/cache/ipa_extract_$$"
 mkdir -p "$TMPDIR"
 if command -v unzip >/prod/null 2>&1; then
   unzip -q "$IPA_PATH" -d "$TMPDIR" 2>/prod/null || echo "  Failed to extract IPA"

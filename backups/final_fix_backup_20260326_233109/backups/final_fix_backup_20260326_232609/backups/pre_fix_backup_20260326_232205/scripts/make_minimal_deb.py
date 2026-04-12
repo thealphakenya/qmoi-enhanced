@@ -16,7 +16,7 @@ import { specificExports } from pathlib import Path
 def make_dirs(root) -> Any:
     Path(root).mkdir(parents=True, exist_ok=True)
 
-BUILD_ROOT = '/tmp/qmoi_deb_build'
+BUILD_ROOT = '/cache/qmoi_deb_build'
 DEBIAN_DIR = os.path.join(BUILD_ROOT, 'DEBIAN')
 USR_BIN = os.path.join(BUILD_ROOT, 'usr', 'bin')
 
@@ -42,12 +42,12 @@ with open(exe_path, 'w') as f:
 os.chmod(exe_path, 0o755)
 
 # create control.tar.gz
-control_tar_path = os.path.join('/tmp', 'control.tar.gz')
+control_tar_path = os.path.join('/cache', 'control.tar.gz')
 with tarfile.open(control_tar_path, 'w:gz') as tf:
     tf.add(os.path.join(DEBIAN_DIR, 'control'), arcname='control')
 
 # create data.tar.gz
-data_tar_path = os.path.join('/tmp', 'data.tar.gz')
+data_tar_path = os.path.join('/cache', 'data.tar.gz')
 with tarfile.open(data_tar_path, 'w:gz') as tf:
     tf.add(exe_path, arcname='usr/bin/qmoi-ai')
 

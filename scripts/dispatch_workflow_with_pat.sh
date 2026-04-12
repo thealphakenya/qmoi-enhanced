@@ -101,10 +101,10 @@ if [[ $DO_RUN -eq 1 ]]; then
     exit 2
   fi
   echo "Executing dispatch..."
-  http_code=$( "${cmd[@]}" -w "%{http_code}" -o /tmp/dispatch_response.json ) || true
-  echo "Response saved to /tmp/dispatch_response.json"
+  http_code=$( "${cmd[@]}" -w "%{http_code}" -o /cache/dispatch_response.json ) || true
+  echo "Response saved to /cache/dispatch_response.json"
   echo "HTTP code: $http_code"
-  cat /tmp/dispatch_response.json
+  cat /cache/dispatch_response.json
 fi
 
 exit 0

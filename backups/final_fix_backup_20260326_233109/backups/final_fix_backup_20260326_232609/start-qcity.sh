@@ -14,7 +14,7 @@ cd /workspaces/qmoi-enhanced
 
 # Start HTTP server in background
 echo "📡 Starting HTTP server on port 8080..."
-nohup python3 -m http.server 8080 > /tmp/qcity_server.log 2>&1 &
+nohup python3 -m http.server 8080 > /cache/qcity_server.log 2>&1 &
 SERVER_PID=$!
 echo "✓ Server PID: $SERVER_PID"
 
@@ -44,7 +44,7 @@ echo "   • Revenue Tracking (12s)"
 echo "   • Health Checks (20s)"
 echo "   • Biometric Verification (30s)"
 echo ""
-echo "💾 Server Log: /tmp/qcity_server.log"
+echo "💾 Server Log: /cache/qcity_server.log"
 echo "📝 To stop: kill $SERVER_PID"
 echo ""
 echo "🎯 Open dashboard at: https://production.qmoi.ai:8080/qcity-enterprise.html"

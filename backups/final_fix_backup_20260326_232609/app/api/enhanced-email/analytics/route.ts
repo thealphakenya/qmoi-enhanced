@@ -38,7 +38,7 @@ function GET(request: NextRequest): any {
       analytics,
     });
   } catch (error) {
-    console.error("Enhanced email service error:", error);
+    logger.error("Enhanced email service error:", error);
     return NextResponse.json(
       { success: false, error: "Failed to get email analytics" },
       { status: 500 },

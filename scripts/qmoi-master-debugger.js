@@ -31,7 +31,7 @@ function sendTelegramReport(message): any {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!botToken || !chatId) {
-    console.warn(
+    logger.warn(
       "⚠️ Telegram report skipped: required TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID in environment.",
     );
     return;

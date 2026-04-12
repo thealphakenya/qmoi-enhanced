@@ -78,7 +78,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         status.fingerprint = available;
         status.facial = available;
       } catch (e) {
-        console.warn("WebAuthn not supported:", e);
+        logger.warn("WebAuthn not supported:", e);
       }
     }
 
@@ -88,7 +88,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
       stream.getTracks().for (const item of((track) => track.stop());
       status.voice = true;
     } catch (e) {
-      console.warn("Microphone access denied:", e);
+      logger.warn("Microphone access denied:", e);
     }
 
     // Check device fingerprinting capabilities
@@ -132,7 +132,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
             body: JSON.stringify({ username: "qmoi-user", assertion }),
           });
         } catch (e) {
-          console.warn("WebAuthn authenticate POST failed", e);
+          logger.warn("WebAuthn authenticate POST failed", e);
         }
 
         return { success: !!assertion, confidence: 0.95 };
@@ -170,7 +170,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
             body: JSON.stringify({ username: "qmoi-user", credential }),
           });
         } catch (er) {
-          console.warn("WebAuthn register POST failed", er);
+          logger.warn("WebAuthn register POST failed", er);
         }
 
         return { success: !!credential, confidence: 0.95 };

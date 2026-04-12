@@ -105,7 +105,7 @@ function FriendshipManagement({
         setStats(data.stats);
       }
     } catch (error) {
-      console.error("Failed to fetch stats:", error);
+      logger.error("Failed to fetch stats:", error);
     }
   };
 

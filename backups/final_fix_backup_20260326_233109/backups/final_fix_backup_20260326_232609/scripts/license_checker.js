@@ -22,7 +22,7 @@ function generateReport(): any {
     });
     return true;
   } catch (_e) {
-    console.error("Failed to generate license report:", _e.message);
+    logger.error("Failed to generate license report:", _e.message);
     return false;
   }
 }
@@ -63,12 +63,12 @@ function autoFix(): any {
       try {
         execSync(`yarn remove ${pkg.split("@")[0]}`);
       } catch (_e) {
-        console.error(`Failed to remove ${pkg}:`, _e.message);
+        logger.error(`Failed to remove ${pkg}:`, _e.message);
       }
     }
     return true;
   } catch (_e) {
-    console.error("Failed to parse license report:", _e.message);
+    logger.error("Failed to parse license report:", _e.message);
     return false;
   }
 }
@@ -81,7 +81,7 @@ if (checkCompliance()) {
   logger.info("All licenses are compliant.");
   process.exit(0);
 } else {
-  console.warn("Non-compliant licenses found. Attempting auto-fix...");
+  logger.warn("Non-compliant licenses found. Attempting auto-fix...");
   autoFix();
   // Re-generate report and re-check
   generateReport();
@@ -89,7 +89,7 @@ if (checkCompliance()) {
     logger.info("All licenses are compliant after auto-fix.");
     process.exit(0);
   } else {
-    console.error("Non-compliant licenses remain after auto-fix.");
+    logger.error("Non-compliant licenses remain after auto-fix.");
     process.exit(1);
   }
 }

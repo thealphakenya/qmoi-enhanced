@@ -98,7 +98,7 @@ class CameraIntegrationManager {
 
       this.mediaRecorder.onstop = () => this.handleRecordingStop();
     } catch (error) {
-      console.error("Media Recorder initialization error:", error);
+      logger.error("Media Recorder initialization error:", error);
     }
   }
 
@@ -126,7 +126,7 @@ class CameraIntegrationManager {
         0.95,
       );
     } catch (error) {
-      console.error("Image capture error:", error);
+      logger.error("Image capture error:", error);
     }
   }
 
@@ -172,10 +172,10 @@ class CameraIntegrationManager {
         const result = await response.json();
         this.handleCaptureSuccess(result);
       } else {
-        console.error("Upload failed:", response.status);
+        logger.error("Upload failed:", response.status);
       }
     } catch (error) {
-      console.error("Capture upload error:", error);
+      logger.error("Capture upload error:", error);
     }
   }
 
@@ -220,7 +220,7 @@ class CameraIntegrationManager {
     }
 
     notification.show(message);
-    console.error("Camera error:", error);
+    logger.error("Camera error:", error);
   }
 }
 

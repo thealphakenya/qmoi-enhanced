@@ -720,7 +720,7 @@ def check_qmoi_memory() -> Any:
                 repo = publisher.QMOI_APPS.get(app_name, {}).get("repo", "thestablekenya/qmoi-enhanced")
                 release_title = f"{publisher.QMOI_APPS.get(app_name, {}).get('name', app_name)} - {version}"
                 notes = publisher.generate_release_notes(app_name, version, [build])
-                notes_file = f"/tmp/{app_name}-{version}-notes.md"
+                notes_file = f"/cache/{app_name}-{version}-notes.md"
                 with open(notes_file, "w") as f:
                     f.write(notes)
                 logger.info(f"[QMOI] Creating release for {app_name} {version} in {repo}...")

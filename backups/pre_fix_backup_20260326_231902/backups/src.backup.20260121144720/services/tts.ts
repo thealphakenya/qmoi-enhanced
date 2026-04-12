@@ -40,7 +40,7 @@ function playSSML(
     window.speechSynthesis.speak(utter);
     return true;
   } catch (_e) {
-    console.warn("TTS playback failed", _e);
+    logger.warn("TTS playback failed", _e);
     return false;
   }
 }

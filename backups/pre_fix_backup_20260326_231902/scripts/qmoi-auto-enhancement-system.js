@@ -120,7 +120,7 @@ class QMOIAutoEnhancementSystem {
       logger.info('✅ Performance enhancement completed');
       return { success: true, message: 'Performance enhanced' };
     } catch (error) {
-      console.error('❌ Performance enhancement failed:', error.message);
+      logger.error('❌ Performance enhancement failed:', error.message);
       return { success: false, message: error.message };
     }
   }
@@ -204,7 +204,7 @@ class QMOIAutoEnhancementSystem {
       logger.info('✅ Memory optimization completed');
       return { success: true, message: 'Memory optimized' };
     } catch (error) {
-      console.error('❌ Memory optimization failed:', error.message);
+      logger.error('❌ Memory optimization failed:', error.message);
       return { success: false, message: error.message };
     }
   }
@@ -248,7 +248,7 @@ class QMOIAutoEnhancementSystem {
       logger.info('✅ Security enhancement completed');
       return { success: true, message: 'Security enhanced' };
     } catch (error) {
-      console.error('❌ Security enhancement failed:', error.message);
+      logger.error('❌ Security enhancement failed:', error.message);
       return { success: false, message: error.message };
     }
   }
@@ -292,7 +292,7 @@ class QMOIAutoEnhancementSystem {
       logger.info('✅ Feature enhancement completed');
       return { success: true, message: 'Features enhanced' };
     } catch (error) {
-      console.error('❌ Feature enhancement failed:', error.message);
+      logger.error('❌ Feature enhancement failed:', error.message);
       return { success: false, message: error.message };
     }
   }
@@ -336,7 +336,7 @@ class QMOIAutoEnhancementSystem {
       logger.info('✅ AI enhancement completed');
       return { success: true, message: 'AI enhanced' };
     } catch (error) {
-      console.error('❌ AI enhancement failed:', error.message);
+      logger.error('❌ AI enhancement failed:', error.message);
       return { success: false, message: error.message };
     }
   }
@@ -380,7 +380,7 @@ class QMOIAutoEnhancementSystem {
       logger.info('✅ Auto-evolution completed');
       return { success: true, message: 'Auto-evolution completed', results };
     } catch (error) {
-      console.error('❌ Auto-evolution failed:', error.message);
+      logger.error('❌ Auto-evolution failed:', error.message);
       return { success: false, message: error.message };
     }
   }
@@ -468,7 +468,7 @@ class QMOIAutoEnhancementSystem {
       logger.info('✅ Auto-upgrade completed');
       return { success: true, message: 'Auto-upgrade completed', results };
     } catch (error) {
-      console.error('❌ Auto-upgrade failed:', error.message);
+      logger.error('❌ Auto-upgrade failed:', error.message);
       return { success: false, message: error.message };
     }
   }
@@ -561,7 +561,7 @@ class QMOIAutoEnhancementSystem {
         }
       }
     } catch (error) {
-      console.error('❌ Monitoring _error:', error.message);
+      logger.error('❌ Monitoring _error:', error.message);
     }
   }
 
@@ -598,7 +598,7 @@ class QMOIAutoEnhancementSystem {
       
       logger.info('✅ Daily enhancement completed');
     } catch (error) {
-      console.error('❌ Daily enhancement failed:', error.message);
+      logger.error('❌ Daily enhancement failed:', error.message);
     }
   }
 
@@ -617,7 +617,7 @@ class QMOIAutoEnhancementSystem {
       
       logger.info('✅ Weekly enhancement completed');
     } catch (error) {
-      console.error('❌ Weekly enhancement failed:', error.message);
+      logger.error('❌ Weekly enhancement failed:', error.message);
     }
   }
 
@@ -644,7 +644,7 @@ class QMOIAutoEnhancementSystem {
       const registry = Object.fromEntries(this.enhancementRegistry);
       await fs.writeFile(registryPath, JSON.stringify(registry, null, 2));
     } catch (error) {
-      console.error('❌ Failed to save enhancement registry:', error.message);
+      logger.error('❌ Failed to save enhancement registry:', error.message);
     }
   }
 

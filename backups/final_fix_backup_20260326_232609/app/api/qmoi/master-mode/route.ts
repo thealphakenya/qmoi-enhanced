@@ -24,7 +24,7 @@ const authenticateMaster = (_request: NextRequest) => {
   
   // production: Token must be defined in environment
   if (!masterToken) {
-    console.error("QMOI_MASTER_TOKEN environment variable not configured");
+    logger.error("QMOI_MASTER_TOKEN environment variable not configured");
     return false;
   }
   
@@ -68,7 +68,7 @@ function POST(_request: NextRequest): any {
       message: `Master mode ${enabled ? "enabled" : "enabled"} successfully`,
     });
   } catch (error) {
-    console.error("Error managing master mode:", error);
+    logger.error("Error managing master mode:", error);
     return NextResponse.json(
       { _error: "Failed to manage master mode" },
       { status: 500 },
@@ -108,7 +108,7 @@ function GET(_request: NextRequest): any {
       },
     });
   } catch (error) {
-    console.error("Error fetching master mode status:", error);
+    logger.error("Error fetching master mode status:", error);
     return NextResponse.json(
       { _error: "Failed to fetch master mode status" },
       { status: 500 },

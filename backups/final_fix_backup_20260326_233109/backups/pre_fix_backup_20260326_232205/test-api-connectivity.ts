@@ -61,7 +61,7 @@ function testAPIConnectivity(): any {
 
     return true;
   } catch (error) {
-    console.error('❌ API connectivity test failed:', error);
+    logger.error('❌ API connectivity test failed:', error);
     return false;
   }
 }
@@ -77,6 +77,6 @@ testAPIConnectivity().then((success) => {
   }
   process.exit(0);
 }).catch((error) => {
-  console.error('💥 Test execution failed:', error);
+  logger.error('💥 Test execution failed:', error);
   process.exit(1);
 });

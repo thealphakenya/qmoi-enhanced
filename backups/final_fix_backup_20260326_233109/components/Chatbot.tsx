@@ -129,7 +129,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
       utter.onerror = () => setIsSpeaking(false);
       synth.speak(utter);
     } catch (e) {
-      console.warn("TTS error", e);
+      logger.warn("TTS error", e);
     }
   };
 

@@ -59,7 +59,7 @@ class QMOIRegistryManager {
       await this.registerCoreComponents();
       logger.info("✅ QMOI Registry initialized successfully");
     } catch (error) {
-      console.error("❌ Error initializing QMOI registry:", error.message);
+      logger.error("❌ Error initializing QMOI registry:", error.message);
     }
   }
 
@@ -278,7 +278,7 @@ class QMOIRegistryManager {
       logger.info(`🌐 Synced external API: ${name}`);
       return response.data;
     } catch (error) {
-      console.error(`❌ Failed to sync API ${name}:`, error.message);
+      logger.error(`❌ Failed to sync API ${name}:`, error.message);
       return null;
     }
   }
@@ -438,7 +438,7 @@ class QMOIRegistryManager {
       logger.info("✅ Registry imported successfully");
       return true;
     } catch (error) {
-      console.error("❌ Error importing registry:", error.message);
+      logger.error("❌ Error importing registry:", error.message);
       return false;
     }
   }
@@ -462,7 +462,7 @@ class QMOIRegistryManager {
       logger.info("✅ Registry restored successfully");
       return true;
     } catch (error) {
-      console.error("❌ Error restoring registry:", error.message);
+      logger.error("❌ Error restoring registry:", error.message);
       return false;
     }
   }
@@ -484,7 +484,7 @@ class QMOIRegistryManager {
           });
           logger.info(`✅ Auto-enhancement ${name}: ${result}`);
         } catch (error) {
-          console.error(`❌ Auto-enhancement ${name} failed:`, error.message);
+          logger.error(`❌ Auto-enhancement ${name} failed:`, error.message);
         }
       }
     }

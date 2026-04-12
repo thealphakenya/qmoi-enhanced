@@ -49,7 +49,7 @@ function DevicePanel(): any {
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
             : String(_e);
-        console.warn(msg);
+        logger.warn(msg);
         setError(msg);
       })
       .finally(() => setLoading(false));
@@ -86,7 +86,7 @@ function DevicePanel(): any {
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
             : String(_e);
-        console.warn(msg);
+        logger.warn(msg);
         setError(msg);
       })
       .finally(() => setLoading(false));
@@ -108,7 +108,7 @@ function DevicePanel(): any {
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
             : String(_e);
-        console.warn(msg);
+        logger.warn(msg);
         setError(msg);
       })
       .finally(() => setLoading(false));
@@ -138,7 +138,7 @@ function DevicePanel(): any {
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
             : String(_e);
-        console.warn(msg);
+        logger.warn(msg);
         setTestResult(msg);
       });
   };

@@ -85,7 +85,7 @@ function POST(request: NextRequest): any {
       { status: 200 },
     );
   } catch (error) {
-    console.error("[PROFILE API] Error:", error);
+    logger.error("[PROFILE API] Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
@@ -135,7 +135,7 @@ function PUT(request: NextRequest): any {
       },
     });
   } catch (error) {
-    console.error("[PROFILE UPDATE API] Error:", error);
+    logger.error("[PROFILE UPDATE API] Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

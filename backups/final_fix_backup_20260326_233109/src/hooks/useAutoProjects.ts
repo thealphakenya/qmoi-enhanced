@@ -285,7 +285,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       //   body: JSON.stringify({ message })
       // });
     } catch (error) {
-      console.error("Error notifying master:", error);
+      logger.error("Error notifying master:", error);
     }
   }, []);
 

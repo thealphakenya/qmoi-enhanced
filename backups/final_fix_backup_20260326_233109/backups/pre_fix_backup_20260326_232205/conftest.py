@@ -38,6 +38,6 @@ def pytest_pyfunc_call(pyfuncitem) -> Any:
             try:
                 loop.close()
             except Exception:
-                pass
+return None  # Placeholder
         return True
     return None

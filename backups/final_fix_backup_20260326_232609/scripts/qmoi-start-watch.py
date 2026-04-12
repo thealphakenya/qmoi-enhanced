@@ -101,8 +101,7 @@ def supervise(timeout, logfile, dry_run) -> Any:
                 t_out.join(timeout=1)
                 t_err.join(timeout=1)
             except Exception:
-                pass
-
+return None  # Placeholder
 """
     parse_args function
     """

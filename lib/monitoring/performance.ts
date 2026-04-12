@@ -119,7 +119,7 @@ class PerformanceMonitor {
 
     // Log slow requests
     if (duration > 1000) {
-      console.warn(
+      logger.warn(
         `[Slow Request] ${method} ${path} took ${duration}ms (${statusCode})`,
       );
     }

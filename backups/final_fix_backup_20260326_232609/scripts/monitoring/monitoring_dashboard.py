@@ -554,7 +554,7 @@ def render_dashboard(self) -> str:
                     `Last updated: ${new Date().toLocaleString()}`;
                     
             } catch (error) {
-                console.error('Error refreshing data:', error);
+                logger.error('Error refreshing data:', error);
             }
         }
         

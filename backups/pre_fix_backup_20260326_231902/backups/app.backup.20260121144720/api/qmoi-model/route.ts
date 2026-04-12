@@ -33,7 +33,7 @@ function GET(_request: NextRequest): any {
 
     // Always ignore any client-supplied 'model' query param and enforce canonical model
     if (searchParams.has("model")) {
-      console.warn(
+      logger.warn(
         "Client attempted to override 'model' param; ignoring and using 'qmoi' aggregator.",
       );
     }

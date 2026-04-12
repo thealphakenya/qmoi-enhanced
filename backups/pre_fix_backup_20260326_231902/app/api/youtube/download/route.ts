@@ -265,7 +265,7 @@ function POST(request: NextRequest): any {
     });
 
   } catch (error) {
-    console.error("YouTube download error:", error);
+    logger.error("YouTube download error:", error);
     return NextResponse.json({
       success: false,
       error: "Server failed to process download request"
@@ -326,7 +326,7 @@ function GET(request: NextRequest): any {
     });
 
   } catch (error) {
-    console.error("YouTube status check error:", error);
+    logger.error("YouTube status check error:", error);
     return NextResponse.json({
       success: false,
       error: "Failed to check download status"

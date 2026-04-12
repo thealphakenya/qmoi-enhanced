@@ -110,7 +110,7 @@ export class ErrorFixingService {
         if (suggestion && suggestion.codeChanges)
           return suggestion as FixSuggestion;
       } catch (e) {
-        console.warn(
+        logger.warn(
           "External error fixer failed, falling back to local heuristics:",
           String(e),
         );
@@ -180,7 +180,7 @@ export class ErrorFixingService {
         };
       }
     } catch (e) {
-      console.warn("Local heuristic analysis failed:", String(e));
+      logger.warn("Local heuristic analysis failed:", String(e));
     }
 
     return null;
@@ -201,7 +201,7 @@ export class ErrorFixingService {
           .then(() => true)
           .catch(() => false);
         if (!exists) {
-          console.warn(`File not found, skipping change: ${path}`);
+          logger.warn(`File not found, skipping change: ${path}`);
           continue;
         }
 
@@ -225,7 +225,7 @@ export class ErrorFixingService {
         await fs.writeFile(path, updated, "utf8");
         console.info(`Applied change to ${path} (backup at ${backupPath})`);
       } catch (e) {
-        console.error(
+        logger.error(
           `Failed to apply change to ${change.filePath}:`,
           String(e),
         );
@@ -246,9 +246,9 @@ export class ErrorFixingService {
           console.info(`Executing command: ${command}`);
           const { stdout, stderr } = await exec(command, { timeout: 60_000 });
           if (stdout) console.info(`Command stdout: ${stdout}`);
-          if (stderr) console.warn(`Command stderr: ${stderr}`);
+          if (stderr) logger.warn(`Command stderr: ${stderr}`);
         } catch (e) {
-          console.error(`Command failed: ${command}`, String(e));
+          logger.error(`Command failed: ${command}`, String(e));
         }
       }
     }

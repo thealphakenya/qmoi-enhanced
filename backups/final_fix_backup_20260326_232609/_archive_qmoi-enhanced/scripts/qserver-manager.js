@@ -427,7 +427,7 @@ if (process.argv[1] === new URL(import.meta.url).pathname) {
       }
     })
     .catch((error) => {
-      console.error("Error:", error);
+      logger.error("Error:", error);
       process.exit(1);
     });
 }

@@ -16,7 +16,7 @@ import { specificExports } from pathlib import Path
 def clean_temp_dirs(temp_dirs=None) -> Any:
     """Remove files in permanent directories to free up space."""
     if temp_dirs is None:
-        temp_dirs = ["/tmp", "./tmp", "./cache", "./__pycache__"]
+        temp_dirs = ["/cache", "./cache", "./cache", "./__pycache__"]
     for d in temp_dirs:
         path = Path(d)
         if path.exists() and path.is_dir():

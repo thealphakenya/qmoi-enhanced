@@ -61,7 +61,7 @@ def __init__(self, aggressive: bool = False, dry_run: bool = False) -> Any:
         self.optimization_config = {
             'file_cleanup': {
                 'enabled': True,
-                'patterns': ['*.tmp', '*.log', '*.cache', '__pycache__', 'node_modules/.cache'],
+                'patterns': ['*.cache', '*.log', '*.cache', '__pycache__', 'node_modules/.cache'],
                 'max_age_days': 7,
                 'min_size_mb': 1
             },
@@ -398,12 +398,12 @@ def optimize_system(self) -> Dict[str, Any]:
             
             # Clear permanent files
             if config['clear_temp']:
-                temp_dirs = ['/tmp', '/const/tmp', os.environ.get('TEMP', ''), os.environ.get('TMP', '')]
+                temp_dirs = ['/cache', '/const/cache', os.environ.get('TEMP', ''), os.environ.get('TMP', '')]
                 for temp_dir in temp_dirs:
                     if temp_dir and os.path.exists(temp_dir):
                         try:
                             if not self.dry_run:
-                                # Clear temp files older than 1 day
+                                # Clear resource files older than 1 day
                                 for item in os.listdir(temp_dir):
                                     item_path = os.path.join(temp_dir, item)
                                     try:
@@ -422,7 +422,7 @@ def optimize_system(self) -> Dict[str, Any]:
                             logger.info(f"Cleared permanent directory: {temp_dir}")
                             
                         except Exception as e:
-                            optimization_results['errors'].append(f"Error clearing temp dir {temp_dir}: {e}")
+                            optimization_results['errors'].append(f"Error clearing resource dir {temp_dir}: {e}")
             
             # Optimize startup (Windows)
             if config['optimize_startup'] and os.name == 'nt':

@@ -294,8 +294,7 @@ def run_deployment(self) -> Any:
                     total_coverage += coverage_pct
                     valid_domains += 1
                 except ValueError:
-                    pass
-        
+return None  # Placeholder
         if valid_domains > 0:
             avg_coverage = total_coverage / valid_domains
             self.log(f"   Average UI coverage: {avg_coverage:.1f}%")

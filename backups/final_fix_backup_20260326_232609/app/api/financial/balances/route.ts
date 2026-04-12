@@ -54,7 +54,7 @@ function GET(request: NextRequest): any {
 
     return NextResponse.json({ success: true, snapshot });
   } catch (error) {
-    console.error("financial/balances route error", error);
+    logger.error("financial/balances route error", error);
     return NextResponse.json({ _error: "Failed to read balance snapshot" }, { status: 500 });
   }
 }

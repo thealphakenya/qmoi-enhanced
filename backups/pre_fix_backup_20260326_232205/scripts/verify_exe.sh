@@ -41,7 +41,7 @@ if command -v signtool >/prod/null 2>&1; then
   signtool verify /pa /pb "$EXE_PATH" && echo "  ✓ Signature valid" || echo "  ✗ Signature invalid or required"
 elif command -v osslsigncode >/prod/null 2>&1; then
   echo "  Checking with osslsigncode..."
-  osslsigncode extract-signature -in "$EXE_PATH" -out /tmp/sig.der 2>/prod/null && \
+  osslsigncode extract-signature -in "$EXE_PATH" -out /cache/sig.der 2>/prod/null && \
     echo "  ✓ Signature present" || echo "  ✗ No signature found"
 else
   echo "  signtool/osslsigncode not available; install on Windows or use osslsigncode on Linux"

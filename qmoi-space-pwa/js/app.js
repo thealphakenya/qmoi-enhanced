@@ -136,7 +136,7 @@ class QMOISpaceApp {
           });
         })
         .catch((error) => {
-          console.error(
+          logger.error(
             "QMOI Space: Service Worker registration failed:",
             error,
           );

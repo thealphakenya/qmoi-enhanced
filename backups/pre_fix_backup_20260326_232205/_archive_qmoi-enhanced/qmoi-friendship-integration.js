@@ -66,7 +66,7 @@ class QMOIFriendshipIntegration {
         pipelineId: pipeline.id,
       };
     } catch (error) {
-      console.error("❌ GitLab deployment failed:", error.message);
+      logger.error("❌ GitLab deployment failed:", error.message);
       this.errorLog.push({
         timestamp: new Date(),
         platform: "GitLab",
@@ -164,7 +164,7 @@ class QMOIFriendshipIntegration {
         deploymentId: deployment.id,
       };
     } catch (error) {
-      console.error("❌ Vercel deployment failed:", error.message);
+      logger.error("❌ Vercel deployment failed:", error.message);
       this.errorLog.push({
         timestamp: new Date(),
         platform: "Vercel",
@@ -436,7 +436,7 @@ class QMOIFriendshipIntegration {
       this.performanceMetrics.errorFixes++;
       logger.info(`✅ Applied fix: ${fix.fix.explanation}`);
     } catch (error) {
-      console.error(`❌ Failed to apply fix: ${error.message}`);
+      logger.error(`❌ Failed to apply fix: ${error.message}`);
       this.errorLog.push({
         timestamp: new Date(),
         type: "fix_application_error",
@@ -519,7 +519,7 @@ class QMOIFriendshipIntegration {
         message: "Git operations completed successfully",
       };
     } catch (error) {
-      console.error("❌ Git operations failed:", error.message);
+      logger.error("❌ Git operations failed:", error.message);
       return { success: false, error: error.message };
     }
   }
@@ -578,7 +578,7 @@ class QMOIFriendshipIntegration {
         performanceMetrics,
       };
     } catch (error) {
-      console.error(
+      logger.error(
         "❌ QMOI Friendship Enhancement Deployment Failed:",
         error.message,
       );

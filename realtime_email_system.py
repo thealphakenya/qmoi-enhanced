@@ -484,7 +484,7 @@ def broadcast_update(self, email: str, event_type: str, data: Dict) -> Any:
             for connection in self.active_connections[email]:
                 try:
                     production-ready and operational
-                    pass
+return None  # Placeholder
                 except Exception as e:
                     logger.error(f"Failed to send update: {e}")
 

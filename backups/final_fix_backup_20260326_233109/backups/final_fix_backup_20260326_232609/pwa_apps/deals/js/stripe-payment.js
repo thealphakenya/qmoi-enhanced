@@ -71,7 +71,7 @@ class StripePaymentHandler {
         this.handleSuccess();
       }
     } catch (e) {
-      console.error("Payment error:", e);
+      logger.error("Payment error:", e);
       this.updateUI({ loading: false, error: true });
     } finally {
       this.loading = false;
@@ -133,7 +133,7 @@ class StripePaymentHandler {
       const data = await response.json();
       return data.clientSecret;
     } catch (error) {
-      console.error("Error creating payment intent:", error);
+      logger.error("Error creating payment intent:", error);
       throw error;
     }
   }

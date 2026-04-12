@@ -35,7 +35,7 @@ function archiveToCloud(target): any {
     fs.rmSync(target, { recursive: true, force: true });
     logger.info(`[QMOI] Archived and removed local: ${target}`);
   } catch (e) {
-    console.error(`[QMOI] Failed to archive ${target}:`, e.message);
+    logger.error(`[QMOI] Failed to archive ${target}:`, e.message);
   }
 }
 

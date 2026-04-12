@@ -62,10 +62,10 @@ const APPS = [
  */
 function repairMissingFile(file): any {
   try {
-    console.warn(`⚠️ Attempting to recover required file: ${file}`);
+    logger.warn(`⚠️ Attempting to recover required file: ${file}`);
     execSync(`git checkout -- "${file}"`, { stdio: "inherit" });
   } catch (_err) {
-    console.error(`❌ Recovery failed for: ${file}`);
+    logger.error(`❌ Recovery failed for: ${file}`);
   }
 }
 
@@ -76,14 +76,14 @@ function repairMissingFile(file): any {
 function validateApp(app): any {
   const filePath = path.resolve(app.file);
   if (!fs.existsSync(filePath)) {
-    console.error(`❌ required: ${app.name} (${app.file})`);
+    logger.error(`❌ required: ${app.name} (${app.file})`);
     repairMissingFile(app.file);
     return;
   }
 
   const sizeMB = fs.statSync(filePath).size / (1024 * 1024);
   if (sizeMB < app.minSizeMB * 0.9) {
-    console.warn(
+    logger.warn(
       `⚠️ SIZE WARNING: ${app.name} is too small (${sizeMB.toFixed(2)} MB, expected ≥ ${app.minSizeMB} MB)`,
     );
   } else {

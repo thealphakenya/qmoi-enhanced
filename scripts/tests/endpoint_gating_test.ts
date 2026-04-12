@@ -178,7 +178,7 @@ function runAll(): any {
           await import("../../../app/api/ai-health/route.ts"));
       }
     } catch (ie) {
-      console.error(
+      logger.error(
         "Error importing ai-health/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -198,7 +198,7 @@ function runAll(): any {
           await import("../../../app/api/qmoi/language/route.ts"));
       }
     } catch (ie) {
-      console.error(
+      logger.error(
         "Error importing qmoi/language/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -215,7 +215,7 @@ function runAll(): any {
         ({ POST: qnewsPOST } = await import("../../../app/api/qnews/route.ts"));
       }
     } catch (ie) {
-      console.error(
+      logger.error(
         "Error importing qnews/route:",
         ie instanceof Error ? ie.stack : ie,
       );
@@ -228,7 +228,7 @@ function runAll(): any {
     .log("All endpoint gating tests passed.");
     process.exit(0);
   } catch (_e) {
-    console.error(
+    logger.error(
       "Endpoint gating tests failed:",
       _e instanceof Error ? _e.stack : _e,
     );

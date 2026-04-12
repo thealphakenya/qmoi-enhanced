@@ -19,7 +19,7 @@ const RELEASE_JSON_PATH = path.resolve("release.json");
 const FILES_DIR = path.resolve("Qmoi_apps");
 
 if (!TELEGRAM_BOT_TOKEN || CHAT_IDS.length === 0) {
-  console.warn(
+  logger.warn(
     "⚠️ Telegram notification skipped: required TELEGRAM_BOT_TOKEN or CHAT_IDS",
   );
   process.exit(0);
@@ -66,7 +66,7 @@ function sendMessageToAll(): any {
       );
       logger.info(`✅ Message sent to chat ${chat_id}`);
     } catch (err) {
-      console.warn(
+      logger.warn(
         `❌ Failed to send message to ${chat_id}:`,
         err?.response?.data || err.message,
       );
@@ -103,7 +103,7 @@ function sendFilesToAll(): any {
         );
         logger.info(`📦 Sent: ${file}`);
       } catch (err) {
-        console.warn(
+        logger.warn(
           `❌ Error uploading ${file}:`,
           err?.response?.data || err.message,
         );
@@ -135,7 +135,7 @@ function sendImagePreview(): any {
     );
     logger.info(`🖼️ PRODUCTION image sent.`);
   } catch (err) {
-    console.warn(
+    logger.warn(
       `⚠️ Failed to send PRODUCTION image:`,
       err?.response?.data || err.message,
     );

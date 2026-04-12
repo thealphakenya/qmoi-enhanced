@@ -158,6 +158,6 @@ function runTests(): any {
 
 // Run the tests
 runTests().catch((error) => {
-  console.error("❌ Test suite error:", error.message);
+  logger.error("❌ Test suite error:", error.message);
   process.exit(1);
 });

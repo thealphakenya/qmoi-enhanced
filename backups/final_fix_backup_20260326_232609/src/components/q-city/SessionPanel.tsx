@@ -34,7 +34,7 @@ function SessionPanel(): any {
         setSessions(items as SessionItem[]);
       })
       .catch((_err: unknown) => {
-        console.warn("fetch sessions failed", String(_err));
+        logger.warn("fetch sessions failed", String(_err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
@@ -60,7 +60,7 @@ function SessionPanel(): any {
     })
       .then(fetchSessions)
       .catch((_err: unknown) => {
-        console.warn("revoke session failed", String(_err));
+        logger.warn("revoke session failed", String(_err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)

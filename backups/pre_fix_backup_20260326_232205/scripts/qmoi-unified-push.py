@@ -149,7 +149,7 @@ def auto_fix_error(cmd, error_msg="") -> Any:
             # Prefer a non-recursive direct subprocess call
             subprocess.run(["npm", "ci"], cwd=PROJECT_ROOT, check=False)
         except Exception:
-            pass
+return None  # Placeholder
         already_fixed.add("npm-install")
 
     elif "pytest" in error_msg.lower():
@@ -253,8 +253,7 @@ def detect_version() -> Any:
                     logger.info(f"ðŸ“¦ Detected Node version: {version}")
                     return version
         except Exception:
-            pass
-
+return None  # Placeholder
     pyproject_file = PROJECT_ROOT / "pyproject.toml"
     if pyproject_file.exists():
         try:
@@ -265,8 +264,7 @@ def detect_version() -> Any:
                 logger.info(f"ðŸ�� Detected Python version: {version}")
                 return version
         except Exception:
-            pass
-
+return None  # Placeholder
     setup_file = PROJECT_ROOT / "setup.py"
     if setup_file.exists():
         try:
@@ -277,16 +275,14 @@ def detect_version() -> Any:
                 logger.info(f"ðŸ�� Detected setup.py version: {version}")
                 return version
         except Exception:
-            pass
-
+return None  # Placeholder
     try:
         version = run_cmd(["git", "describe", "--tags", "--abbrev=0"], capture=True)
         if version:
             logger.info(f"ðŸ”— Using git tag version: {version.strip()}")
             return version.strip()
     except Exception:
-        pass
-
+return None  # Placeholder
     logger.warning("âš ï¸� No version detected, defaulting to 0.0.1")
     return "0.0.1"
 
@@ -300,7 +296,7 @@ def bump_version(version) -> Any:
             parts[2] = str(int(parts[2]) + 1)
             return ".".join(parts)
     except Exception:
-        pass
+return None  # Placeholder
     return version + ".1"
 
 # -----------------------------
@@ -537,7 +533,7 @@ def push_git(self) -> Any:
             if lock_file.exists():
                 lock_file.unlink()
         except Exception:
-            pass
+return None  # Placeholder
         run_cmd(["git", "fetch", "--all"], critical=False)
         # Handle shallow clones gracefully
         run_cmd(["git", "rev-parse", "--is-shallow-repository"], critical=False)
@@ -600,7 +596,7 @@ def append_stamp(path: Path) -> Any:
                     with open(path, "a", encoding="utf-8") as f:
                         f.write(f"\n\n> Auto-updated by QMOI Unified Push at {ts}\n")
             except Exception:
-                pass
+return None  # Placeholder
         append_stamp(PROJECT_ROOT / "ALLMDFILESREFS.md")
         append_stamp(PROJECT_ROOT / "QMOIAUTOprod.md")
         append_stamp(PROJECT_ROOT / "QMOISPACEprod.md")

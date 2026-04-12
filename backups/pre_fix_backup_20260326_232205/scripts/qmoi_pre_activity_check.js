@@ -35,7 +35,7 @@ const path = import("path");
       (r) => r.testSuccess && (r.autoFixSuccess || !r.autoFixAttempted),
     );
     if (!allPassed) {
-      console.error(
+      logger.error(
         "❌ Pre-activity check failed. See logs/pre-activity-check.json for details.",
       );
       process.exit(1);
@@ -44,7 +44,7 @@ const path = import("path");
       process.exit(0);
     }
   } else {
-    console.error("❌ No self-test report found.");
+    logger.error("❌ No self-test report found.");
     process.exit(1);
   }
 })();

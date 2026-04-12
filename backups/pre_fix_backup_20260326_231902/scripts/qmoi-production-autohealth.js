@@ -65,7 +65,7 @@ class QMOIproductionAutoHealth {
         return JSON.parse(data);
       }
     } catch (e) {
-      console.warn("⚠️ Could not load health memory, starting fresh");
+      logger.warn("⚠️ Could not load health memory, starting fresh");
     }
 
     return {
@@ -88,7 +88,7 @@ class QMOIproductionAutoHealth {
         "utf8",
       );
     } catch (e) {
-      console.error("❌ Failed to save health memory:", e.message);
+      logger.error("❌ Failed to save health memory:", e.message);
     }
   }
 
@@ -105,7 +105,7 @@ class QMOIproductionAutoHealth {
     // Schedule periodic health checks
     setInterval(() => {
       this.performHealthCheck().catch((e) =>
-        console.error("Health check failed:", e.message),
+        logger.error("Health check failed:", e.message),
       );
     }, this.config.healthCheckInterval);
 
@@ -174,7 +174,7 @@ class QMOIproductionAutoHealth {
       // Log results
       this.logHealthCheck(results);
     } catch (e) {
-      console.error("❌ Health check error:", e.message);
+      logger.error("❌ Health check error:", e.message);
       results.status = "error";
       results.issues.push({ error: e.message });
     }
@@ -452,7 +452,7 @@ class QMOIproductionAutoHealth {
           logger.info(`❌ Recovery failed for: ${issue.check}`);
         }
       } else {
-        console.error(`❌ Max recovery attempts exceeded for: ${issue.check}`);
+        logger.error(`❌ Max recovery attempts exceeded for: ${issue.check}`);
         await this.alertAdmins(issue, attempts);
       }
     }
@@ -480,7 +480,7 @@ class QMOIproductionAutoHealth {
           return false;
       }
     } catch (e) {
-      console.error(`Recovery error for ${checkName}:`, e.message);
+      logger.error(`Recovery error for ${checkName}:`, e.message);
       return false;
     }
   }
@@ -529,8 +529,8 @@ class QMOIproductionAutoHealth {
       execSync(
         `find ${LOGS_DIR} -type f -mtime +${this.config.logRetention} -delete 2>/prod/null || true`,
       );
-      // Clear temp files
-      execSync(`rm -rf ${PROJECT_ROOT}/temp/* 2>/prod/null || true`);
+      // Clear resource files
+      execSync(`rm -rf ${PROJECT_ROOT}/resource/* 2>/prod/null || true`);
       logger.info("✅ Disk space cleanup completed");
       return true;
     } catch (e) {
@@ -584,11 +584,11 @@ Action Required: Please investigate and resolve this issue manually.
         req.write(payload);
         req.end();
       } catch (e) {
-        console.error("Failed to send Slack alert:", e.message);
+        logger.error("Failed to send Slack alert:", e.message);
       }
     }
 
-    console.error("🚨 Alert needed:", message);
+    logger.error("🚨 Alert needed:", message);
   }
 
   /**
@@ -611,7 +611,7 @@ Action Required: Please investigate and resolve this issue manually.
         `${statusEmoji} Health check: ${results.status} (${results.duration}ms)`,
       );
     } catch (e) {
-      console.error("Failed to log health check:", e.message);
+      logger.error("Failed to log health check:", e.message);
     }
   }
 
@@ -638,7 +638,7 @@ Action Required: Please investigate and resolve this issue manually.
 // Start the health system
 const health = new QMOIproductionAutoHealth();
 health.start().catch((e) => {
-  console.error("Failed to start health system:", e);
+  logger.error("Failed to start health system:", e);
   process.exit(1);
 });
 

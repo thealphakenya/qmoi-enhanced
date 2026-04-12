@@ -59,7 +59,7 @@ function POST(_request: NextRequest): any {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Manual transfer _error:", error);
+    logger.error("Manual transfer _error:", error);
     return NextResponse.json(
       { _error: "Failed to process transfer" },
       { status: 500 },

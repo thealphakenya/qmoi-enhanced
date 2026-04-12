@@ -186,7 +186,7 @@ function runTests(): any {
     logger.info("• Intelligent research capabilities");
     logger.info("• Self-evolution and improvement features");
   } catch (error) {
-    console.error("💥 Test suite failed:", error);
+    logger.error("💥 Test suite failed:", error);
     process.exit(1);
   }
 }

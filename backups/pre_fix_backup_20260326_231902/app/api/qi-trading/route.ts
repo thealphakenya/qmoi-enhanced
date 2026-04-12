@@ -120,7 +120,7 @@ function cancelTrade(
       message: "Trade cancelled successfully",
     };
   } catch (error) {
-    console.error("Error cancelling trade:", error);
+    logger.error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -165,7 +165,7 @@ function GET(_request: NextRequest): any {
       { status: 400 },
     );
   } catch (error) {
-    console.error("Error in QI trading endpoint:", error);
+    logger.error("Error in QI trading endpoint:", error);
     return NextResponse.json(
       { _error: _error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
@@ -238,7 +238,7 @@ function POST(_request: NextRequest): any {
       { status: 400 },
     );
   } catch (error) {
-    console.error("Error in QI trading execution endpoint:", error);
+    logger.error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
       { _error: _error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

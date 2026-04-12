@@ -486,7 +486,7 @@ function POST(_request: NextRequest): any {
           tokens_used: completion.usage?.total_tokens || 0,
         });
       } catch (error) {
-        console.error("AI enhancement error:", error);
+        logger.error("AI enhancement error:", error);
         // Fallback to local enhancement
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
@@ -542,7 +542,7 @@ function POST(_request: NextRequest): any {
       { status: 400 },
     );
   } catch (error) {
-    console.error("Error in QMOI model enhancement endpoint:", error);
+    logger.error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
       { _error: _error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

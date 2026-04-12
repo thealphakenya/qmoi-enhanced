@@ -71,13 +71,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        logger.warn("SelfHeal event stream error", String(_e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
     } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+      logger.warn("SelfHeal request failed", String(_err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)

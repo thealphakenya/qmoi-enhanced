@@ -37,12 +37,12 @@ function keepAlive(): any {
     if (res.statusCode === 200) {
       logger.info("[Qmoispace] Health check passed");
     } else {
-      console.error("[Qmoispace] Health check failed, restarting...");
+      logger.error("[Qmoispace] Health check failed, restarting...");
       restartServer();
     }
   });
   req.on("error", () => {
-    console.error("[Qmoispace] Health check error, restarting...");
+    logger.error("[Qmoispace] Health check error, restarting...");
     restartServer();
   });
   req.end();

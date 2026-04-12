@@ -52,7 +52,7 @@ class QMOIPWAManager {
           this.handleSWMessage(event),
         );
       } catch (error) {
-        console.error(
+        logger.error(
           `[${this.appName} PWA] Service Worker registration failed:`,
           error,
         );

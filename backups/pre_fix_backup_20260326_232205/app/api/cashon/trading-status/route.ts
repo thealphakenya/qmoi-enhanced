@@ -48,7 +48,7 @@ function GET(_request: NextRequest): any {
     const status = await cashonWallet.getTradingStatus();
     return NextResponse.json(status);
   } catch (error) {
-    console.error("Trading status API _error:", error);
+    logger.error("Trading status API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

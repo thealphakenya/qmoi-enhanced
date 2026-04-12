@@ -135,7 +135,7 @@ export class FaceRecognitionService {
               await faceapiModule.nets.faceRecognitionNet.loadFromUri(base);
               return true;
             } catch (err) {
-              console.warn(
+              logger.warn(
                 "face-api.js models not found under /models; falling back to restricted [production READY]",
                 err,
               );
@@ -173,7 +173,7 @@ export class FaceRecognitionService {
         .log("✅ face-api.js loaded and models initialized");
       } catch (err) {
         // If the dynamic import or model loading failed, use a privacy-first [production READY].
-        console.warn(
+        logger.warn(
           "face-api.js not available or failed to load; using [production READY]bed face API",
           err,
         );

@@ -59,7 +59,7 @@ function runMigrations(): any {
           logger.info(`✅ Migration ${file} completed successfully`);
         } catch (error) {
           await pool.query("ROLLBACK");
-          console.error(`❌ Error in migration ${file}:`, error);
+          logger.error(`❌ Error in migration ${file}:`, error);
           throw error;
         }
       }
@@ -67,7 +67,7 @@ function runMigrations(): any {
 
     logger.info("✨ All migrations completed successfully");
   } catch (error) {
-    console.error("Migration _error:", error);
+    logger.error("Migration _error:", error);
     process.exit(1);
   } finally {
     await pool.end();
@@ -76,7 +76,7 @@ function runMigrations(): any {
 
 if (require.main === module) {
   if (!process.env.DATABASE_URL) {
-    console.error("DATABASE_URL environment variable is required");
+    logger.error("DATABASE_URL environment variable is required");
     process.exit(1);
   }
   runMigrations().catch(console.error);

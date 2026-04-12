@@ -1,4 +1,475 @@
 
+# PRODUCTION READINESS ISSUES - 2026-04-12 22:06:17
+# Total files scanned: 2301
+# Files with issues: 2301
+# Total issues: 3017
+# Total matches: 509523
+
+
+## /workspaces/qmoi-enhanced/qvillage/app.py (9819 matches)
+- TODO:: 6 matches on lines [5795, 5871, 5878, 5984, 6003, 6113]
+- NotImplementedError: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
+- dummy: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
+- development: 4 matches on lines [5164, 5166, 5167, 10579]
+- raise.*NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
+- NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
+- pass\s*$: 8 matches on lines [5772, 5779, 5951, 5987, 6015, 6057, 6126, 6130]
+- ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]...
+- temp: 61 matches on lines [640, 663, 1252, 1265, 1275, 1276, 1282, 1310, 1312, 1313]...
+
+## /workspaces/qmoi-enhanced/src/lib/qmoi-service.ts (4080 matches)
+- ...\s*$: 4015 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
+- temp: 65 matches on lines [10, 23, 91, 114, 191, 218, 253, 254, 304, 334]...
+
+## /workspaces/qmoi-enhanced/components/QAvatar.tsx (2811 matches)
+- ...\s*$: 2795 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 16 matches on lines [313, 333, 337, 1757, 1759, 1760, 1907, 1913, 1920, 1924]...
+
+## /workspaces/qmoi-enhanced/src/services/lion-agent-workflows.ts (2790 matches)
+- ...\s*$: 2755 matches on lines [1, 2, 4, 5, 6, 8, 9, 11, 12, 14]...
+- temp: 35 matches on lines [448, 1320, 1322, 1340, 1345, 1347, 1348, 1350, 1352, 1355]...
+
+## /workspaces/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx (2319 matches)
+- ...\s*$: 2319 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/User.ts (2170 matches)
+- ...\s*$: 2170 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/components/QMediaPlayer.tsx (1942 matches)
+- ...\s*$: 1929 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 12 matches on lines [135, 540, 547, 551, 589, 601, 865, 923, 1020, 1445]...
+- tmp: 1 matches on lines [431]
+
+## /workspaces/qmoi-enhanced/qmoi_control_server.py (1801 matches)
+- pass\s*$: 24 matches on lines [76, 221, 400, 408, 430, 451, 478, 497, 542, 566]...
+- ...\s*$: 1773 matches on lines [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]...
+- temp: 4 matches on lines [367, 826, 1139, 1662]
+
+## /workspaces/qmoi-enhanced/app/components/QMOIMasterDashboard.tsx (1801 matches)
+- ...\s*$: 1801 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+
+## /workspaces/qmoi-enhanced/scripts/api_documentation_generator.py (1797 matches)
+- ...\s*$: 1797 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
+
+## /workspaces/qmoi-enhanced/components/QI.tsx (1752 matches)
+- fake: 2 matches on lines [26, 705]
+- ...\s*$: 1750 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
+
+## /workspaces/qmoi-enhanced/scripts/domain_health_check.py (1663 matches)
+- ...\s*$: 1649 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 14 matches on lines [1417, 1423, 1424, 1426, 1551, 1557, 1558, 1560, 1787, 1789]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/News.ts (1567 matches)
+- ...\s*$: 1567 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js (1539 matches)
+- console\.error\(: 1 matches on lines [843]
+- ...\s*$: 1523 matches on lines [1, 2, 3, 4, 6, 7, 9, 10, 11, 12]...
+- temp: 15 matches on lines [286, 295, 304, 310, 316, 358, 360, 400, 405, 1609]...
+
+## /workspaces/qmoi-enhanced/app/api/qmoi-model.ts (1501 matches)
+- ...\s*$: 1497 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 4 matches on lines [656, 665, 684, 812]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Transaction.ts (1442 matches)
+- ...\s*$: 1442 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Discussion.ts (1431 matches)
+- ...\s*$: 1431 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/internal/prismaNamespace.ts (1431 matches)
+- ...\s*$: 1429 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+- temp: 2 matches on lines [1162, 1170]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/AuditLog.ts (1416 matches)
+- ...\s*$: 1416 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/app/api/webhooks/qvillage/route.ts (1407 matches)
+- console\.log\(: 2 matches on lines [685, 728]
+- ...\s*$: 1398 matches on lines [2, 4, 5, 6, 7, 8, 9, 10, 11, 13]...
+- temp: 7 matches on lines [380, 1360, 1362, 1363, 1382, 1386, 1389]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Wallet.ts (1387 matches)
+- ...\s*$: 1387 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/KnowledgeBaseEntry.ts (1349 matches)
+- ...\s*$: 1349 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Notification.ts (1340 matches)
+- ...\s*$: 1340 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/components/QVillage.tsx (1271 matches)
+- ...\s*$: 1267 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 4 matches on lines [323, 358, 393, 397]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Dataset.ts (1209 matches)
+- ...\s*$: 1209 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-system-controller.py (1197 matches)
+- ...\s*$: 1189 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 8 matches on lines [148, 154, 155, 157, 899, 975, 1220, 1221]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-enhanced-automation.py (1175 matches)
+- ...\s*$: 1151 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 24 matches on lines [144, 150, 151, 153, 245, 347, 349, 357, 359, 360]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-always-fix-all.js (1169 matches)
+- ...\s*$: 1125 matches on lines [1, 2, 3, 4, 6, 7, 9, 10, 11, 12]...
+- temp: 43 matches on lines [29, 79, 97, 270, 275, 276, 277, 284, 305, 307]...
+- tmp: 1 matches on lines [209]
+
+## /workspaces/qmoi-enhanced/src/config/bitget.ts (1167 matches)
+- ...\s*$: 1131 matches on lines [1, 2, 3, 4, 6, 7, 8, 10, 11, 12]...
+- temp: 36 matches on lines [12, 28, 57, 97, 98, 352, 353, 393, 398, 444]...
+
+## /workspaces/qmoi-enhanced/src/qmoi/core/qvs/qvs-system.ts (1147 matches)
+- ...\s*$: 1147 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 12]...
+
+## /workspaces/qmoi-enhanced/scripts/security/security_manager.py (1146 matches)
+- ...\s*$: 1139 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]...
+- temp: 7 matches on lines [110, 116, 117, 119, 985, 997, 1014]
+
+## /workspaces/qmoi-enhanced/scripts/advanced_ml_analytics_system.py (1145 matches)
+- pass\s*$: 1 matches on lines [233]
+- ...\s*$: 1142 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 2 matches on lines [133, 156]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/MediaTask.ts (1125 matches)
+- ...\s*$: 1125 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/scripts/generate_app_metadata.py (1097 matches)
+- ...\s*$: 1093 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
+- temp: 4 matches on lines [477, 478, 874, 875]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-hands-free.py (1096 matches)
+- pass\s*$: 6 matches on lines [1076, 1078, 1131, 1152, 1172, 1192]
+- ...\s*$: 1073 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 17 matches on lines [165, 171, 172, 174, 255, 541, 547, 550, 596, 853]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi_security_monitor.py (1095 matches)
+- ...\s*$: 1090 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 5 matches on lines [170, 176, 177, 179, 878]
+
+## /workspaces/qmoi-enhanced/scripts/domain_health_100percent_achiever.py (1069 matches)
+- ...\s*$: 1068 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]...
+- temp: 1 matches on lines [433]
+
+## /workspaces/qmoi-enhanced/scripts/comprehensive_docs_update.py (1057 matches)
+- ...\s*$: 1055 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 2 matches on lines [412]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi_parallel_error_fixer.py (1044 matches)
+- pass\s*$: 2 matches on lines [552, 1085]
+- ...\s*$: 1038 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 4 matches on lines [173, 179, 180, 182]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-space-backend.py (1024 matches)
+- pass\s*$: 1 matches on lines [1089]
+- ...\s*$: 1017 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 6 matches on lines [227, 410, 417, 424, 912]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi_auto_evolution_system.py (1007 matches)
+- ...\s*$: 1007 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+
+## /workspaces/qmoi-enhanced/src/qmoi/core/validation/validation-engine.ts (981 matches)
+- ...\s*$: 974 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 12]...
+- temp: 7 matches on lines [20, 691, 692, 1100, 1102, 1112, 1118]
+
+## /workspaces/qmoi-enhanced/components/QmoiEnhancedSystem.tsx (976 matches)
+- ...\s*$: 976 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+
+## /workspaces/qmoi-enhanced/components/q-city/QVillage.tsx (975 matches)
+- ...\s*$: 970 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 5 matches on lines [104, 266, 294, 307, 322]
+
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (965 matches)
+- pass\s*$: 13 matches on lines [545, 582, 609, 652, 690, 727, 749, 773, 825, 827]...
+- ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 7 matches on lines [91, 97, 98, 100, 120, 584, 1028]
+
+## /workspaces/qmoi-enhanced/components/enhanced-system-dashboard.tsx (964 matches)
+- console\.warn\(: 1 matches on lines [207]
+- ...\s*$: 963 matches on lines [1, 2, 3, 4, 6, 8, 9, 10, 11, 12]...
+
+## /workspaces/qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py (958 matches)
+- ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 5 matches on lines [68, 89, 95, 96, 98]
+
+## /workspaces/qmoi-enhanced/scripts/network/network_connectivity_manager.py (956 matches)
+- pass\s*$: 5 matches on lines [352, 370, 384, 635, 640]
+- ...\s*$: 937 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 14 matches on lines [140, 146, 147, 149, 207, 591, 652, 705, 727, 798]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py (955 matches)
+- pass\s*$: 3 matches on lines [933, 1035, 1050]
+- ...\s*$: 941 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 11 matches on lines [97, 103, 104, 106, 622, 914, 915, 916, 917]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-ultimate-automation.py (953 matches)
+- pass\s*$: 1 matches on lines [636]
+- ...\s*$: 929 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 23 matches on lines [157, 163, 164, 166, 372, 376, 382, 384, 389, 390]...
+
+## PATTERN SUMMARY
+- ...\s*$: 506342 occurrences
+- temp: 2312 occurrences
+- pass\s*$: 312 occurrences
+- mock: 184 occurrences
+- tmp: 144 occurrences
+- dummy: 50 occurrences
+- console\.error\(: 40 occurrences
+- if.*__name__.*==.*__main__: 24 occurrences
+- NotImplemented: 20 occurrences
+- console\.warn\(: 17 occurrences
+- NotImplementedError: 16 occurrences
+- development: 12 occurrences
+- fake: 11 occurrences
+- TODO:: 11 occurrences
+- raise.*NotImplemented: 10 occurrences
+- # TODO: 4 occurrences
+- console\.debug\(: 3 occurrences
+- console\.log\(: 2 occurrences
+- debugger;: 1 occurrences
+- FIXME:: 1 occurrences
+
+================================================================================
+
+# PRODUCTION READINESS ISSUES - 2026-04-12 07:21:36
+# Total files scanned: 2300
+# Files with issues: 2300
+# Total issues: 3014
+# Total matches: 509422
+
+
+## /workspaces/qmoi-enhanced/qvillage/app.py (9819 matches)
+- TODO:: 6 matches on lines [5795, 5871, 5878, 5984, 6003, 6113]
+- NotImplementedError: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
+- dummy: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
+- development: 4 matches on lines [5164, 5166, 5167, 10579]
+- raise.*NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
+- NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
+- pass\s*$: 8 matches on lines [5772, 5779, 5951, 5987, 6015, 6057, 6126, 6130]
+- ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]...
+- temp: 61 matches on lines [640, 663, 1252, 1265, 1275, 1276, 1282, 1310, 1312, 1313]...
+
+## /workspaces/qmoi-enhanced/src/lib/qmoi-service.ts (4080 matches)
+- ...\s*$: 4015 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
+- temp: 65 matches on lines [10, 23, 91, 114, 191, 218, 253, 254, 304, 334]...
+
+## /workspaces/qmoi-enhanced/components/QAvatar.tsx (2811 matches)
+- ...\s*$: 2795 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 16 matches on lines [313, 333, 337, 1757, 1759, 1760, 1907, 1913, 1920, 1924]...
+
+## /workspaces/qmoi-enhanced/src/services/lion-agent-workflows.ts (2790 matches)
+- ...\s*$: 2755 matches on lines [1, 2, 4, 5, 6, 8, 9, 11, 12, 14]...
+- temp: 35 matches on lines [448, 1320, 1322, 1340, 1345, 1347, 1348, 1350, 1352, 1355]...
+
+## /workspaces/qmoi-enhanced/earnvault/ui/FloatingAQ.tsx (2319 matches)
+- ...\s*$: 2319 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/User.ts (2170 matches)
+- ...\s*$: 2170 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/components/QMediaPlayer.tsx (1942 matches)
+- ...\s*$: 1929 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 12 matches on lines [135, 540, 547, 551, 589, 601, 865, 923, 1020, 1445]...
+- tmp: 1 matches on lines [431]
+
+## /workspaces/qmoi-enhanced/qmoi_control_server.py (1801 matches)
+- pass\s*$: 24 matches on lines [76, 221, 400, 408, 430, 451, 478, 497, 542, 566]...
+- ...\s*$: 1773 matches on lines [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]...
+- temp: 4 matches on lines [367, 826, 1139, 1662]
+
+## /workspaces/qmoi-enhanced/app/components/QMOIMasterDashboard.tsx (1801 matches)
+- ...\s*$: 1801 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+
+## /workspaces/qmoi-enhanced/scripts/api_documentation_generator.py (1797 matches)
+- ...\s*$: 1797 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
+
+## /workspaces/qmoi-enhanced/components/QI.tsx (1752 matches)
+- fake: 2 matches on lines [26, 705]
+- ...\s*$: 1750 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
+
+## /workspaces/qmoi-enhanced/scripts/domain_health_check.py (1665 matches)
+- ...\s*$: 1649 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 15 matches on lines [722, 1417, 1423, 1424, 1426, 1551, 1557, 1558, 1560, 1787]...
+- tmp: 1 matches on lines [722]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/News.ts (1567 matches)
+- ...\s*$: 1567 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js (1539 matches)
+- console\.error\(: 1 matches on lines [843]
+- ...\s*$: 1523 matches on lines [1, 2, 3, 4, 6, 7, 9, 10, 11, 12]...
+- temp: 15 matches on lines [286, 295, 304, 310, 316, 358, 360, 400, 405, 1609]...
+
+## /workspaces/qmoi-enhanced/app/api/qmoi-model.ts (1501 matches)
+- ...\s*$: 1497 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 4 matches on lines [656, 665, 684, 812]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Transaction.ts (1442 matches)
+- ...\s*$: 1442 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Discussion.ts (1431 matches)
+- ...\s*$: 1431 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/internal/prismaNamespace.ts (1431 matches)
+- ...\s*$: 1429 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+- temp: 2 matches on lines [1162, 1170]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/AuditLog.ts (1416 matches)
+- ...\s*$: 1416 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/app/api/webhooks/qvillage/route.ts (1407 matches)
+- console\.log\(: 2 matches on lines [685, 728]
+- ...\s*$: 1398 matches on lines [2, 4, 5, 6, 7, 8, 9, 10, 11, 13]...
+- temp: 7 matches on lines [380, 1360, 1362, 1363, 1382, 1386, 1389]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Wallet.ts (1387 matches)
+- ...\s*$: 1387 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/KnowledgeBaseEntry.ts (1349 matches)
+- ...\s*$: 1349 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Notification.ts (1340 matches)
+- ...\s*$: 1340 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/components/QVillage.tsx (1271 matches)
+- ...\s*$: 1267 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 4 matches on lines [323, 358, 393, 397]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/Dataset.ts (1209 matches)
+- ...\s*$: 1209 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-system-controller.py (1197 matches)
+- ...\s*$: 1189 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 8 matches on lines [148, 154, 155, 157, 899, 975, 1220, 1221]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-enhanced-automation.py (1175 matches)
+- ...\s*$: 1151 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 24 matches on lines [144, 150, 151, 153, 245, 347, 349, 357, 359, 360]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-always-fix-all.js (1169 matches)
+- ...\s*$: 1125 matches on lines [1, 2, 3, 4, 6, 7, 9, 10, 11, 12]...
+- temp: 43 matches on lines [29, 79, 97, 270, 275, 276, 277, 284, 305, 307]...
+- tmp: 1 matches on lines [209]
+
+## /workspaces/qmoi-enhanced/src/config/bitget.ts (1167 matches)
+- ...\s*$: 1131 matches on lines [1, 2, 3, 4, 6, 7, 8, 10, 11, 12]...
+- temp: 36 matches on lines [12, 28, 57, 97, 98, 352, 353, 393, 398, 444]...
+
+## /workspaces/qmoi-enhanced/src/qmoi/core/qvs/qvs-system.ts (1147 matches)
+- ...\s*$: 1147 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 12]...
+
+## /workspaces/qmoi-enhanced/scripts/security/security_manager.py (1146 matches)
+- ...\s*$: 1139 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]...
+- temp: 7 matches on lines [110, 116, 117, 119, 985, 997, 1014]
+
+## /workspaces/qmoi-enhanced/scripts/advanced_ml_analytics_system.py (1145 matches)
+- pass\s*$: 1 matches on lines [233]
+- ...\s*$: 1142 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 2 matches on lines [133, 156]
+
+## /workspaces/qmoi-enhanced/prisma/generated/prisma/models/MediaTask.ts (1125 matches)
+- ...\s*$: 1125 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 11, 13]...
+
+## /workspaces/qmoi-enhanced/scripts/generate_app_metadata.py (1097 matches)
+- ...\s*$: 1093 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
+- temp: 4 matches on lines [477, 478, 874, 875]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-hands-free.py (1096 matches)
+- pass\s*$: 6 matches on lines [1076, 1078, 1131, 1152, 1172, 1192]
+- ...\s*$: 1073 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 17 matches on lines [165, 171, 172, 174, 255, 541, 547, 550, 596, 853]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi_security_monitor.py (1095 matches)
+- ...\s*$: 1090 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 5 matches on lines [170, 176, 177, 179, 878]
+
+## /workspaces/qmoi-enhanced/scripts/domain_health_100percent_achiever.py (1069 matches)
+- ...\s*$: 1068 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]...
+- temp: 1 matches on lines [433]
+
+## /workspaces/qmoi-enhanced/scripts/comprehensive_docs_update.py (1057 matches)
+- ...\s*$: 1055 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 2 matches on lines [412]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi_parallel_error_fixer.py (1044 matches)
+- pass\s*$: 2 matches on lines [552, 1085]
+- ...\s*$: 1038 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 4 matches on lines [173, 179, 180, 182]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-space-backend.py (1024 matches)
+- pass\s*$: 1 matches on lines [1089]
+- ...\s*$: 1017 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 6 matches on lines [227, 410, 417, 424, 912]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi_auto_evolution_system.py (1007 matches)
+- ...\s*$: 1007 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+
+## /workspaces/qmoi-enhanced/src/qmoi/core/validation/validation-engine.ts (981 matches)
+- ...\s*$: 974 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 12]...
+- temp: 7 matches on lines [20, 691, 692, 1100, 1102, 1112, 1118]
+
+## /workspaces/qmoi-enhanced/components/QmoiEnhancedSystem.tsx (976 matches)
+- ...\s*$: 976 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+
+## /workspaces/qmoi-enhanced/components/q-city/QVillage.tsx (975 matches)
+- ...\s*$: 970 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 12, 13]...
+- temp: 5 matches on lines [104, 266, 294, 307, 322]
+
+## /workspaces/qmoi-enhanced/scripts/device_unlock_system.py (965 matches)
+- pass\s*$: 13 matches on lines [545, 582, 609, 652, 690, 727, 749, 773, 825, 827]...
+- ...\s*$: 945 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 7 matches on lines [91, 97, 98, 100, 120, 584, 1028]
+
+## /workspaces/qmoi-enhanced/components/enhanced-system-dashboard.tsx (964 matches)
+- console\.warn\(: 1 matches on lines [207]
+- ...\s*$: 963 matches on lines [1, 2, 3, 4, 6, 8, 9, 10, 11, 12]...
+
+## /workspaces/qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py (958 matches)
+- ...\s*$: 953 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 5 matches on lines [68, 89, 95, 96, 98]
+
+## /workspaces/qmoi-enhanced/scripts/network/network_connectivity_manager.py (956 matches)
+- pass\s*$: 5 matches on lines [352, 370, 384, 635, 640]
+- ...\s*$: 937 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 14 matches on lines [140, 146, 147, 149, 207, 591, 652, 705, 727, 798]...
+
+## /workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py (955 matches)
+- pass\s*$: 3 matches on lines [933, 1035, 1050]
+- ...\s*$: 941 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 11 matches on lines [97, 103, 104, 106, 622, 914, 915, 916, 917]
+
+## /workspaces/qmoi-enhanced/scripts/qmoi-ultimate-automation.py (953 matches)
+- pass\s*$: 1 matches on lines [636]
+- ...\s*$: 929 matches on lines [2, 3, 5, 6, 7, 9, 10, 11, 13, 14]...
+- temp: 23 matches on lines [157, 163, 164, 166, 372, 376, 382, 384, 389, 390]...
+
+## PATTERN SUMMARY
+- ...\s*$: 506244 occurrences
+- temp: 2311 occurrences
+- pass\s*$: 312 occurrences
+- mock: 184 occurrences
+- tmp: 143 occurrences
+- dummy: 50 occurrences
+- console\.error\(: 40 occurrences
+- if.*__name__.*==.*__main__: 23 occurrences
+- NotImplemented: 20 occurrences
+- console\.warn\(: 17 occurrences
+- NotImplementedError: 16 occurrences
+- development: 12 occurrences
+- fake: 11 occurrences
+- TODO:: 11 occurrences
+- raise.*NotImplemented: 10 occurrences
+- # TODO: 4 occurrences
+- console\.debug\(: 3 occurrences
+- console\.log\(: 2 occurrences
+- debugger;: 1 occurrences
+- FIXME:: 1 occurrences
+
+================================================================================
+
 # PRODUCTION READINESS ISSUES - 2026-04-12 07:11:46
 # Total files scanned: 2300
 # Files with issues: 2300

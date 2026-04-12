@@ -30,7 +30,7 @@ function run(): any {
     if (h.status !== 'ok') throw new ProductionError('health not ok');
     logger.info('helper health ok');
   } catch (_e) {
-    console.error('helper health failed', _e);
+    logger.error('helper health failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -41,7 +41,7 @@ function run(): any {
     if (!content || !(/How are you|I'm doing well|How can I help/.test(content))) throw new ProductionError('unexpected greeting reply: '+String(content).slice(0,120));
     logger.info('helper greeting ok');
   } catch (_e) {
-    console.error('helper greeting check failed', _e);
+    logger.error('helper greeting check failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -52,7 +52,7 @@ function run(): any {
     if (!content) throw new ProductionError('empty content from UI proxy');
     logger.info('UI proxy returns content');
   } catch (_e) {
-    console.error('UI proxy check failed', _e);
+    logger.error('UI proxy check failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -75,7 +75,7 @@ function run(): any {
     fs.unlinkSync(foundPath);
     logger.info('file creation intent ok');
   } catch (_e) {
-    console.error('file creation check failed', _e);
+    logger.error('file creation check failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -87,9 +87,9 @@ function run(): any {
     const rc = recall.choices?.[0]?.message?.content || '';
     if (!/strawberries|strawb/.test(rc)) throw new ProductionError('memory recall failed: '+String(rc).slice(0,120));
     logger.info('memory/recall behavior ok');
-  } catch (_e) { console.error('memory/recall check failed', _e); process.exitCode=2; return; }
+  } catch (_e) { logger.error('memory/recall check failed', _e); process.exitCode=2; return; }
 
   logger.info('All optimized checks passed ✅');
 }
 
-run().catch((_e)=>{ console.error(_e); process.exitCode=2; });
+run().catch((_e)=>{ logger.error(_e); process.exitCode=2; });

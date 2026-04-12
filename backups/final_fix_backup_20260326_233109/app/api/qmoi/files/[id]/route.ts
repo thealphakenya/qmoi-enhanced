@@ -61,7 +61,7 @@ function GET(
 
     return response;
   } catch (error) {
-    console.error("File retrieval error:", error);
+    logger.error("File retrieval error:", error);
     return NextResponse.json(
       { error: "Failed to retrieve file" },
       { status: 500 },
@@ -100,7 +100,7 @@ function DELETE(
       message: `File ${fileData.name} deleted successfully`,
     });
   } catch (error) {
-    console.error("File deletion error:", error);
+    logger.error("File deletion error:", error);
     return NextResponse.json(
       { error: "Failed to delete file" },
       { status: 500 },

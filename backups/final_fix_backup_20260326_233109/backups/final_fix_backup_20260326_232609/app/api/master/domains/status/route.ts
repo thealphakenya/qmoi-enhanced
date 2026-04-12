@@ -38,7 +38,7 @@ function GET(): any {
 
     return NextResponse.json(domainData);
   } catch (error) {
-    console.error('Error fetching domain status:', error);
+    logger.error('Error fetching domain status:', error);
     return NextResponse.json(
       { error: 'Failed to fetch domain status' },
       { status: 500 }

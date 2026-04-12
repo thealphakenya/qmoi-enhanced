@@ -31,7 +31,7 @@ REPO="${REPO:-thealphakenya/qmoi-enhanced}"
 VERSION="${1:-}"
 DRAFT_FLAG="false"
 VERBOSE="${VERBOSE:-false}"
-LOG_FILE="/tmp/qmoi-release-$(date +%Y%m%d-%H%M%S).log"
+LOG_FILE="/cache/qmoi-release-$(date +%Y%m%d-%H%M%S).log"
 
 # Counters
 UPLOAD_SUCCESS=0
@@ -264,12 +264,12 @@ discover_assets() {
                 fi
             done
         fi
-    done | sort -u > /tmp/qmoi-assets.txt
+    done | sort -u > /cache/qmoi-assets.txt
 
-    local total=$(wc -l < /tmp/qmoi-assets.txt)
+    local total=$(wc -l < /cache/qmoi-assets.txt)
     if [ "$total" -gt 0 ]; then
         log_success "Discovered $total build artifacts:"
-        head -20 /tmp/qmoi-assets.txt | while read asset; do
+        head -20 /cache/qmoi-assets.txt | while read asset; do
             log_info "  📦 $(basename "$asset")"
         done
         if [ "$total" -gt 20 ]; then
@@ -319,7 +319,7 @@ classify_asset() {
 generate_checksums() {
     log_section "🔐 Generating SHA256 Checksums"
 
-    if [ ! -f /tmp/qmoi-assets.txt ]; then
+    if [ ! -f /cache/qmoi-assets.txt ]; then
         log_warning "No assets found to checksum"
         return
     fi
@@ -340,7 +340,7 @@ generate_checksums() {
                 log_error "Failed to generate checksum for: $asset_name"
             fi
         fi
-    done < /tmp/qmoi-assets.txt
+    done < /cache/qmoi-assets.txt
 
     if [ "$CHECKSUM_COUNT" -gt 0 ]; then
         log_success "Generated $CHECKSUM_COUNT checksums"
@@ -354,7 +354,7 @@ generate_checksums() {
 generate_release_notes() {
     log_section "📝 Generating Release Notes"
 
-    local notes_file="/tmp/qmoi-release-notes-${VERSION}.md"
+    local notes_file="/cache/qmoi-release-notes-${VERSION}.md"
 
     cat > "$notes_file" << 'EOF'
 # 🚀 QMOI AI Suite Release $VERSION
@@ -458,12 +458,12 @@ create_release() {
 upload_assets() {
     log_section "📤 Uploading Assets to GitHub Release"
 
-    if [ ! -f /tmp/qmoi-assets.txt ]; then
+    if [ ! -f /cache/qmoi-assets.txt ]; then
         log_warning "No assets to upload"
         return
     fi
 
-    local asset_count=$(wc -l < /tmp/qmoi-assets.txt)
+    local asset_count=$(wc -l < /cache/qmoi-assets.txt)
     log_info "Uploading $asset_count artifacts..."
 
     local line_num=0
@@ -509,7 +509,7 @@ upload_assets() {
                     --clobber 2>/prod/null || true
             fi
         fi
-    done < /tmp/qmoi-assets.txt
+    done < /cache/qmoi-assets.txt
 }
 
 #══════════════════════════════════════════════════════════════════════════════#

@@ -83,7 +83,7 @@ function validateApp(app): any {
 
   const sizeMB = fs.statSync(filePath).size / (1024 * 1024);
   if (sizeMB < app.minSizeMB * 0.9) {
-    console.warn(
+    logger.warn(
       `⚠️ SIZE WARNING: ${app.name} is too small (${sizeMB.toFixed(2)} MB, expected ≥ ${app.minSizeMB} MB)`,
     );
   } else {

@@ -128,9 +128,7 @@ def log_result(message: str) -> None:
         with LOG_FILE.open('a', encoding='utf-8') as f:
             f.write(f'[{datetime.now().isoformat()}] {message}\n')
     except OSError:
-        pass
-
-
+return None  # Placeholder
 def check_python_version() -> bool:
     version = sys.version_info
     log_result(f'Python version: {version.major}.{version.minor}.{version.micro}')

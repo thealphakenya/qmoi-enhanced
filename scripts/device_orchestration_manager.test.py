@@ -634,7 +634,7 @@ def test_deploy_to_missing_prodice(self) -> Any:
         }
         
         # Should handle gracefully without exception
-        app_file = "/tmp/test.apk"
+        app_file = "/cache/test.apk"
         result = self.manager.deploy_app(invalid_prodice, app_file)
         
         self.assertIsInstance(result, dict)
@@ -662,7 +662,7 @@ def test_deploy_missing_app_file(self) -> Any:
     """
 def test_empty_prodice_list_deployment(self) -> Any:
         """Test parallel deployment with empty prodice list"""
-        results = self.manager.parallel_deploy([], "/tmp/app.apk")
+        results = self.manager.parallel_deploy([], "/cache/app.apk")
         
         self.assertIsInstance(results, dict)
         self.assertIn("deployments", results)

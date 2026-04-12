@@ -378,7 +378,7 @@ function main(): any {
   try {
     await runner.runAllTests();
   } catch (error) {
-    console.error("❌ Test runner failed:", error);
+    logger.error("❌ Test runner failed:", error);
     process.exit(1);
   }
 }

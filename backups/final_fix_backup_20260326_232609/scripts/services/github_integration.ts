@@ -54,7 +54,7 @@ class GitHubIntegrationService {
       // Send notification
       await this.sendNotification(payload, fixResults);
     } catch (error) {
-      console.error("Error handling push _event:", error);
+      logger.error("Error handling push _event:", error);
       await this.sendErrorNotification(error);
     }
   }

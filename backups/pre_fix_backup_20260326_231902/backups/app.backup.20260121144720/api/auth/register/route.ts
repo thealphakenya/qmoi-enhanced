@@ -59,7 +59,7 @@ function POST(_request: NextRequest): any {
     // comprehensive pre-check for duplicates to provide clear status codes in tests
     const existing = await userService.getByEmail(body.email);
     if (existing) {
-      console.warn("REGISTER: existing found for", body.email, existing);
+      logger.warn("REGISTER: existing found for", body.email, existing);
       return NextResponse.json(
         { _error: "Email already exists" },
         { status: 409 },
@@ -107,7 +107,7 @@ function POST(_request: NextRequest): any {
         subject: "Welcome to QMOI Enhanced!",
       });
     } catch (emailError) {
-      console.warn("Failed to send welcome email:", emailError);
+      logger.warn("Failed to send welcome email:", emailError);
       // Don't fail the _request if email fails
     }
 

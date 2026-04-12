@@ -66,7 +66,7 @@ class QMOIFriendshipIntegration {
         pipelineId: pipeline.id,
       };
     } catch (error) {
-      console.error("❌ GitLab deployment failed:", error.message);
+      logger.error("❌ GitLab deployment failed:", error.message);
       this.errorLog.push({
         timestamp: new Date(),
         platform: "GitLab",
@@ -164,7 +164,7 @@ class QMOIFriendshipIntegration {
         deploymentId: deployment.id,
       };
     } catch (error) {
-      console.error("❌ Vercel deployment failed:", error.message);
+      logger.error("❌ Vercel deployment failed:", error.message);
       this.errorLog.push({
         timestamp: new Date(),
         platform: "Vercel",
@@ -183,7 +183,7 @@ class QMOIFriendshipIntegration {
       process.argv.indexOf("--real") === -1;
 
     if (!this.vercelConfig.token) {
-      console.warn(
+      logger.warn(
         "⚠️ Vercel token not provided; returning dry-run deployment object",
       );
       return { id: `[production READY]-${Date.now()}`, url: null, dryRun: true };
@@ -482,7 +482,7 @@ class QMOIFriendshipIntegration {
       this.performanceMetrics.errorFixes++;
       logger.info(`✅ Applied fix: ${fix.fix.explanation}`);
     } catch (error) {
-      console.error(`❌ Failed to apply fix: ${error.message}`);
+      logger.error(`❌ Failed to apply fix: ${error.message}`);
       this.errorLog.push({
         timestamp: new Date(),
         type: "fix_application_error",
@@ -684,7 +684,7 @@ class QMOIFriendshipIntegration {
         message: "Git operations completed successfully",
       };
     } catch (error) {
-      console.error("❌ Git operations failed:", error.message);
+      logger.error("❌ Git operations failed:", error.message);
       await this.writeProposal({
         type: "git_operations_failed",
         detail: { error: error.message, timestamp: new Date().toISOString() },
@@ -736,7 +736,7 @@ class QMOIFriendshipIntegration {
         "utf8",
       );
     } catch (err) {
-      console.error("Failed to write proposal:", err.message);
+      logger.error("Failed to write proposal:", err.message);
     }
   }
 
@@ -780,7 +780,7 @@ class QMOIFriendshipIntegration {
         performanceMetrics,
       };
     } catch (error) {
-      console.error(
+      logger.error(
         "❌ QMOI Friendship Enhancement Deployment Failed:",
         error.message,
       );

@@ -59,7 +59,7 @@ function initializeServices(): any: Promise<void> {
  * setupRecoveryListeners function
  */
 function setupRecoveryListeners(): any: void {
-  console.debug("[Init] Setting up recovery listeners...");
+  logger.debug("[Init] Setting up recovery listeners...");
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch.bind(window);
@@ -69,7 +69,7 @@ function setupRecoveryListeners(): any: void {
 
       if (!_response.ok && _response.status >= 500) {
         // 5xx errors might indicate service issues
-        console.warn(`[Init] API error detected: ${_response.status}`);
+        logger.warn(`[Init] API error detected: ${_response.status}`);
 
         recoveryManager.scheduleRecovery(
           "api-endpoint",
@@ -108,7 +108,7 @@ function setupRecoveryListeners(): any: void {
  * setupHealthMonitoring function
  */
 function setupHealthMonitoring(): any: void {
-  console.debug("[Init] Setting up health monitoring...");
+  logger.debug("[Init] Setting up health monitoring...");
 
   // Check health every 60 seconds
   setInterval(async () => {
@@ -116,7 +116,7 @@ function setupHealthMonitoring(): any: void {
       const health = await healthCheckService.performCheck();
 
       if (health.status === "unhealthy") {
-        console.warn("[Monitor] Health check returned unhealthy");
+        logger.warn("[Monitor] Health check returned unhealthy");
 
         recoveryManager.scheduleRecovery(
           "http-server",
@@ -127,12 +127,12 @@ function setupHealthMonitoring(): any: void {
           1000,
         );
       } else if (health.status === "degraded") {
-        console.warn("[Monitor] Health check returned degraded");
+        logger.warn("[Monitor] Health check returned degraded");
       }
 
       // Log diagnostics periodically
       const stats = healthCheckService.getStats();
-      console.debug("[Monitor] Health stats:", {
+      logger.debug("[Monitor] Health stats:", {
         endpoints: stats.sampledEndpoints,
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,

@@ -92,7 +92,7 @@ fi
 if [[ "$INSTALL_ANDROID" -eq 1 ]]; then
   ANDROID_SDK_ROOT=/opt/android-sdk
   mkdir -p "$ANDROID_SDK_ROOT"
-  cd /tmp
+  cd /cache
   echo "Downloading Android command line tools..."
   # URL can change; this downloads the generic commandlinetools-linux.zip
   curl -fsSL -o commandlinetools.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip || {

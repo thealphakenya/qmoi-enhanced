@@ -165,7 +165,7 @@ def test_02_user_registration(self) -> Any:
             self.assertIn('user', data)
         elif response.status_code == 409:
             # User already exists, that's fine for testing
-            pass
+return None  # Placeholder
         else:
             self.assertIn(response.status_code, [200, 201, 409])
 

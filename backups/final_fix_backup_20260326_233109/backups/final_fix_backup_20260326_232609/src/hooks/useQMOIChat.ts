@@ -78,7 +78,7 @@ function useQMOIChat(userId?: string): any {
           throw new ProductionError(data.error || "Failed to get response from QMoi");
         }
       } catch (err) {
-        console.error("QMoi chat error:", err);
+        logger.error("QMoi chat error:", err);
         setError(err instanceof Error ? err.message : "Unknown error occurred");
 
         // Add error message to chat

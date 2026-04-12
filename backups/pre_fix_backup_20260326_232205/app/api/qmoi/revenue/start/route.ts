@@ -48,7 +48,7 @@ function POST(_request: NextRequest): any {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Start revenue engine _error:", error);
+    logger.error("Start revenue engine _error:", error);
     return NextResponse.json(
       { _error: "Failed to start revenue engine" },
       { status: 500 },

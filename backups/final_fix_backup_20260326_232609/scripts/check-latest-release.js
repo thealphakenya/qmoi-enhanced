@@ -19,7 +19,7 @@ function checkRelease(): any {
     const latest = _res.data.tag_name || _res.data.name;
     logger.info(`🚀 Latest QMOI Release: ${latest}`);
   } catch (_e) {
-    console.error("❌ Could not fetch release info:", _e.message);
+    logger.error("❌ Could not fetch release info:", _e.message);
   }
 }
 

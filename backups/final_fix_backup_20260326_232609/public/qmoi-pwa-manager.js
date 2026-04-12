@@ -52,7 +52,7 @@ class QMOIPWAManager {
           this.handleSWMessage(event),
         );
       } catch (error) {
-        console.error(
+        logger.error(
           `[${this.appName} PWA] Service Worker registration failed:`,
           error,
         );
@@ -152,7 +152,7 @@ class QMOIPWAManager {
       await this.swRegistration.update();
       logger.info(`[${this.appName} PWA] Checked for updates`);
     } catch (error) {
-      console.error(`[${this.appName} PWA] Update check failed:`, error);
+      logger.error(`[${this.appName} PWA] Update check failed:`, error);
     }
   }
 
@@ -420,7 +420,7 @@ class QMOIPWAManager {
         `${this.appName} data exported successfully.`,
       );
     } catch (error) {
-      console.error(`[${this.appName} PWA] Download failed:`, error);
+      logger.error(`[${this.appName} PWA] Download failed:`, error);
     }
   }
 

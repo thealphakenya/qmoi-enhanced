@@ -23,5 +23,5 @@ try {
 
   logger.info("✅ QMOI fully published and verified.");
 } catch (err) {
-  console.error("❌ QMOI publish failed:", err.message);
+  logger.error("❌ QMOI publish failed:", err.message);
 }

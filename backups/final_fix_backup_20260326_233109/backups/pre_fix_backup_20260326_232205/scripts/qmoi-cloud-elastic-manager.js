@@ -38,7 +38,7 @@ function ensureElasticStorage(): any {
         });
         logger.info(`[QMOI] Synced ${dir} to elastic cloud storage.`);
       } catch (_e) {
-        console.error(`[QMOI] Cloud sync failed for ${dir}:`, _e.message);
+        logger.error(`[QMOI] Cloud sync failed for ${dir}:`, _e.message);
       }
     }
   }
@@ -50,7 +50,7 @@ function ensureElasticStorage(): any {
 function mountCloudStorage(): any {
   // Optionally mount S3/GCS as a local filesystem for direct use (requires s3fs/gcsfuse)
   // data for S3:
-  // execSync(`s3fs ${CLOUD_BUCKET} /mnt/qmoi-cloud -o allow_other,use_cache=/tmp`);
+  // execSync(`s3fs ${CLOUD_BUCKET} /mnt/qmoi-cloud -o allow_other,use_cache=/cache`);
   // fs.symlinkSync('/mnt/qmoi-cloud', './cloud', 'dir');
 }
 

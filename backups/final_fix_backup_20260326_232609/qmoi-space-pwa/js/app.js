@@ -41,7 +41,7 @@ class QMOISpaceApp {
 
       logger.info("QMOI Space: Application initialized successfully");
     } catch (error) {
-      console.error("QMOI Space: Initialization failed:", error);
+      logger.error("QMOI Space: Initialization failed:", error);
       this.showError("Failed to initialize application");
     }
   }
@@ -135,7 +135,7 @@ class QMOISpaceApp {
           });
         })
         .catch((error) => {
-          console.error(
+          logger.error(
             "QMOI Space: Service Worker registration failed:",
             error,
           );
@@ -171,7 +171,7 @@ class QMOISpaceApp {
       // Initialize charts
       this.initializeCharts();
     } catch (error) {
-      console.error("QMOI Space: Failed to load initial data:", error);
+      logger.error("QMOI Space: Failed to load initial data:", error);
     }
   }
 
@@ -242,7 +242,7 @@ class QMOISpaceApp {
           break;
       }
     } catch (error) {
-      console.error(`QMOI Space: Failed to load ${tabName} data:`, error);
+      logger.error(`QMOI Space: Failed to load ${tabName} data:`, error);
     }
   }
 
@@ -264,7 +264,7 @@ class QMOISpaceApp {
       const activity = await this.fetchData("/api/activity/recent");
       this.updateActivityDisplay(activity);
     } catch (error) {
-      console.error("QMOI Space: Failed to load dashboard data:", error);
+      logger.error("QMOI Space: Failed to load dashboard data:", error);
       this.showOfflineMessage();
     }
   }
@@ -285,7 +285,7 @@ class QMOISpaceApp {
 
       return await response.json();
     } catch (error) {
-      console.error("QMOI Space: Fetch error:", error);
+      logger.error("QMOI Space: Fetch error:", error);
 
       // Try to get from cache
       const cachedData = this.getCachedData(url);
@@ -431,7 +431,7 @@ class QMOISpaceApp {
       // Update cache
       await this.updateCache();
     } catch (error) {
-      console.error("QMOI Space: Sync failed:", error);
+      logger.error("QMOI Space: Sync failed:", error);
     }
   }
 
@@ -440,7 +440,7 @@ class QMOISpaceApp {
       const revenueData = await this.fetchData("/api/revenue/current");
       this.updateRevenueDisplay(revenueData);
     } catch (error) {
-      console.error("QMOI Space: Failed to update revenue data:", error);
+      logger.error("QMOI Space: Failed to update revenue data:", error);
     }
   }
 
@@ -453,7 +453,7 @@ class QMOISpaceApp {
         this.showUpdateAvailable(version.latest);
       }
     } catch (error) {
-      console.error("QMOI Space: Failed to check for updates:", error);
+      logger.error("QMOI Space: Failed to check for updates:", error);
     }
   }
 
@@ -618,7 +618,7 @@ class QMOISpaceApp {
         this.switchTab(state.currentTab);
       }
     } catch (error) {
-      console.error("QMOI Space: Failed to restore app state:", error);
+      logger.error("QMOI Space: Failed to restore app state:", error);
     }
   }
 

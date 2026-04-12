@@ -24,7 +24,7 @@ set -e
 # Configuration
 APP_URL="${1:-https://qmoi-enhanced.vercel.app}"
 MONITOR_INTERVAL="${2:-30}"  # seconds
-LOG_FILE="/tmp/qmoi-deployment-$(date +%Y%m%d-%H%M%S).log"
+LOG_FILE="/cache/qmoi-deployment-$(date +%Y%m%d-%H%M%S).log"
 HEALTH_ENDPOINT="${APP_URL}/api/health"
 CONSECUTIVE_FAILURES=0
 MAX_FAILURES=3

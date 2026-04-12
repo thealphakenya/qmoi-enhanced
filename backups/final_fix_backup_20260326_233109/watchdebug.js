@@ -58,7 +58,7 @@ class QMOIWatchDebug {
       try {
         await this.performComprehensiveCheck();
       } catch (error) {
-        console.error("❌ Monitoring check failed:", error.message);
+        logger.error("❌ Monitoring check failed:", error.message);
         this.logError("monitoring_check_failed", error.message);
       }
     }, this.config.monitoring.interval);
@@ -118,7 +118,7 @@ class QMOIWatchDebug {
 
       return { gitlab: "healthy", pipelines: pipelines.length };
     } catch (error) {
-      console.error("❌ GitLab check failed:", error.message);
+      logger.error("❌ GitLab check failed:", error.message);
       this.status.gitlab = "error";
       await this.fixGitLabConnection();
       return { gitlab: "error", error: error.message };
@@ -156,7 +156,7 @@ class QMOIWatchDebug {
 
       return { vercel: "healthy", deployments: deployments.length };
     } catch (error) {
-      console.error("❌ Vercel check failed:", error.message);
+      logger.error("❌ Vercel check failed:", error.message);
       this.status.vercel = "error";
       await this.fixVercelConnection();
       return { vercel: "error", error: error.message };
@@ -181,7 +181,7 @@ class QMOIWatchDebug {
         const status = await this.checkSystemHealth(system);
         results[system] = status;
       } catch (error) {
-        console.error(`❌ ${system} check failed:`, error.message);
+        logger.error(`❌ ${system} check failed:`, error.message);
         results[system] = "error";
         await this.fixSystemError(system, error);
       }
@@ -249,7 +249,7 @@ class QMOIWatchDebug {
       const gitlabDeployments = await this.getGitLabDeployments();
       deployments.push(...gitlabDeployments);
     } catch (error) {
-      console.error("❌ GitLab deployment check failed:", error.message);
+      logger.error("❌ GitLab deployment check failed:", error.message);
     }
 
     // Check Vercel deployments
@@ -257,7 +257,7 @@ class QMOIWatchDebug {
       const vercelDeployments = await this.getVercelDeployments();
       deployments.push(...vercelDeployments);
     } catch (error) {
-      console.error("❌ Vercel deployment check failed:", error.message);
+      logger.error("❌ Vercel deployment check failed:", error.message);
     }
 
     // Check for stuck or failed deployments
@@ -322,7 +322,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Retried GitLab pipeline ${pipeline.id}`);
         this.logFix("gitlab_pipeline_retry", pipeline.id);
       } catch (error) {
-        console.error(
+        logger.error(
           `❌ Failed to retry pipeline ${pipeline.id}:`,
           error.message
         );
@@ -354,7 +354,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Redeployed Vercel deployment ${deployment.id}`);
         this.logFix("vercel_deployment_redeploy", deployment.id);
       } catch (error) {
-        console.error(`❌ Failed to redeploy ${deployment.id}:`, error.message);
+        logger.error(`❌ Failed to redeploy ${deployment.id}:`, error.message);
         await this.manualVercelFix(deployment);
       }
     }
@@ -379,7 +379,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Fixed ${system} error`);
         this.logFix("system_error_fix", system);
       } catch (fixError) {
-        console.error(`❌ Failed to fix ${system}:`, fixError.message);
+        logger.error(`❌ Failed to fix ${system}:`, fixError.message);
         await this.escalateError(system, error, fixError);
       }
     }
@@ -404,7 +404,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Fixed error in ${error.file}`);
         this.logFix("detected_error_fix", error);
       } catch (fixError) {
-        console.error(
+        logger.error(
           `❌ Failed to fix error in ${error.file}:`,
           fixError.message
         );
@@ -427,7 +427,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Fixed deployment ${deployment.id}`);
         this.logFix("deployment_fix", deployment.id);
       } catch (error) {
-        console.error(
+        logger.error(
           `❌ Failed to fix deployment ${deployment.id}:`,
           error.message
         );
@@ -456,7 +456,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Fixed performance issue: ${issue}`);
         this.logFix("performance_fix", issue);
       } catch (error) {
-        console.error(
+        logger.error(
           `❌ Failed to fix performance issue ${issue}:`,
           error.message
         );
@@ -552,7 +552,7 @@ class QMOIWatchDebug {
 
   // Error escalation
   async escalateError(context, originalError, fixError) {
-    console.error(`🚨 Escalating error in ${context}:`, {
+    logger.error(`🚨 Escalating error in ${context}:`, {
       originalError: originalError.message,
       fixError: fixError.message,
     });

@@ -59,7 +59,7 @@ if lsof -Pi :8080 -sTCP:LISTEN -t >/prod/null 2>&1 ; then
 fi
 
 echo "Starting HTTP server on port 8080..."
-python3 -m http.server 8080 > /tmp/http-server.log 2>&1 &
+python3 -m http.server 8080 > /cache/http-server.log 2>&1 &
 HTTP_PID=$!
 sleep 2
 
@@ -67,7 +67,7 @@ sleep 2
 if curl -s https://production.qmoi.ai:8080 > /prod/null; then
     echo "✅ HTTP server started (PID: $HTTP_PID)"
 else
-    echo "❌ HTTP server failed to start. Check /tmp/http-server.log"
+    echo "❌ HTTP server failed to start. Check /cache/http-server.log"
     exit 1
 fi
 

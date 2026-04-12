@@ -185,8 +185,7 @@ def main() -> Any:
         try:
             total_bytes += f.stat().st_size
         except Exception:
-            pass
-
+return None  # Placeholder
     # write allrefs.txt
     with OUT_ALLREFS.open('w', encoding='utf-8') as o:
         for f in sorted(files, key=lambda p: str(p)):
@@ -237,8 +236,7 @@ def main() -> Any:
         with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
-        pass
-
+return None  # Placeholder
     production
     production
         production
@@ -337,8 +335,7 @@ def main() -> Any:
         try:
             sizes += f.stat().st_size
         except Exception:
-            pass
-
+return None  # Placeholder
     # write allrefs.txt
     with OUT_ALLREFS.open('w', encoding='utf-8') as o:
         for f in sorted(files, key=lambda p: str(p)):
@@ -420,8 +417,7 @@ def main() -> Any:
         with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(st)
     except Exception:
-        pass
-
+return None  # Placeholder
     production
     production
     if candidates:

@@ -128,7 +128,7 @@ export class WhatsAppService {
       try {
         await this.sendMessage(to, message);
       } catch (e) {
-        console.error("Failed to flush outbound message:", e);
+        logger.error("Failed to flush outbound message:", e);
       }
       // Small delay to avoid rate limits
       await this.sleep(250);
@@ -274,7 +274,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       // Attempt immediate flush
       await this.flushOutboundQueue();
     } catch (err) {
-      console.error(
+      logger.error(
         "Error queueing QR code notifications:",
         String(err),
       );
@@ -546,7 +546,7 @@ Message: ${message.body}
             return `💰 Pesapal Balance: $${bal.toFixed(2)}\n\n💳 Account Status: Active\n📊 Last Updated: ${new Date().toLocaleString()}\n🔄 Auto-withdrawal: Enabled`;
           }
         } catch (e) {
-          console.warn(
+          logger.warn(
             "Failed to fetch Pesapal balance from configured endpoint:",
             String(e),
           );
@@ -601,7 +601,7 @@ Message: ${message.body}
           return `📈 Today's Earnings: $${total.toFixed(2)}\n\n🏆 Top Strategies:\n${breakdownText}\n\n📊 Performance:\n• Win Rate: ${res?.data?.winRate ?? "N/A"}\n• Profit Factor: ${res?.data?.profitFactor ?? "N/A"}\n• Total Trades: ${res?.data?.trades ?? "N/A"}\n\n⏰ Updated: ${new Date().toLocaleString()}`;
         }
       } catch (e) {
-        console.warn(
+        logger.warn(
           "Failed to fetch earnings from configured endpoint:",
           String(e),
         );
@@ -682,7 +682,7 @@ Master Commands:
   public async start(): Promise<void> {
     const enabled = process.env.WHATSAPP_ENABLED !== "false";
     if (!enabled) {
-      console.warn("WhatsApp service is enabled via WHATSAPP_ENABLED=false");
+      logger.warn("WhatsApp service is enabled via WHATSAPP_ENABLED=false");
       return;
     }
 
@@ -694,7 +694,7 @@ Master Commands:
       // Flush any queued outbound messages
       await this.flushOutboundQueue();
     } catch (err) {
-      console.error("Error starting WhatsApp service:", String(err));
+      logger.error("Error starting WhatsApp service:", String(err));
       // Do not throw raw errors; keep service degraded but running
       this.isConnected = false;
     }
@@ -719,7 +719,7 @@ Master Commands:
 
       if (!this.isConnected || !this.client) {
         // Queue message for later delivery
-        console.warn(`WhatsApp not connected. Queuing message to ${to}`);
+        logger.warn(`WhatsApp not connected. Queuing message to ${to}`);
         this.outboundQueue.push({ to: chatId, message });
         return;
       }

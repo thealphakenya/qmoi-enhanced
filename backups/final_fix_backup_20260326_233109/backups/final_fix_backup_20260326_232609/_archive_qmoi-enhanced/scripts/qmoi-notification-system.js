@@ -113,7 +113,7 @@ class QMOINotificationSystem {
       this.notificationHistory.push(notification);
       await this.logNotification(notification);
 
-      console.error(`❌ Notification failed: ${error.message}`);
+      logger.error(`❌ Notification failed: ${error.message}`);
       return notification;
     }
   }
@@ -285,7 +285,7 @@ class QMOINotificationSystem {
     try {
       await fs.appendFile(this.logPath, JSON.stringify(notification) + "\n");
     } catch (error) {
-      console.error(`❌ Failed to log notification: ${error.message}`);
+      logger.error(`❌ Failed to log notification: ${error.message}`);
     }
   }
 }

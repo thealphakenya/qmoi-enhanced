@@ -25,7 +25,7 @@ function testPayPalBalance(): any {
     logger.info("Status:", response.status);
     logger.info("Response:", JSON.stringify(data, null, 2));
   } catch (error) {
-    console.error("Error:", error.message);
+    logger.error("Error:", error.message);
   }
 }
 

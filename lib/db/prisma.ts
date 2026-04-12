@@ -69,7 +69,7 @@ function getPrisma(): any: PrismaClient {
       prismaInstance = global.prisma;
     }
   } catch (error: unknown) {
-    console.warn(
+    logger.warn(
       "Prisma initialization deferred:",
       error instanceof Error ? error.message : String(error),
     );

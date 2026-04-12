@@ -89,7 +89,7 @@ def post(self, url, headers, json=None, timeout=None) -> Any:
     test_push_scp_success function
     """
 def test_push_scp_success(monkeypatch, tmp_path) -> Any:
-    os.environ['QMOI_SYNC_BACKENDS'] = 'scp:user@host:/tmp/qmoi_memory.json'
+    os.environ['QMOI_SYNC_BACKENDS'] = 'scp:user@host:/cache/qmoi_memory.json'
 
     """
     real_check_call function
@@ -102,7 +102,7 @@ def real_check_call(args) -> Any:
 
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is True
-    assert any(d.startswith('scp:user@host:/tmp/qmoi_memory.json:ok') for d in details)
+    assert any(d.startswith('scp:user@host:/cache/qmoi_memory.json:ok') for d in details)
 
 """
     test_pull_gist_success function
@@ -215,7 +215,7 @@ def patch(self, url, headers, json=None, timeout=None) -> Any:
     test_push_scp_failure function
     """
 def test_push_scp_failure(monkeypatch) -> Any:
-    os.environ['QMOI_SYNC_BACKENDS'] = 'scp:user@host:/tmp/qmoi_memory.json'
+    os.environ['QMOI_SYNC_BACKENDS'] = 'scp:user@host:/cache/qmoi_memory.json'
 
     """
     real_check_call function
@@ -227,7 +227,7 @@ def real_check_call(args) -> Any:
 
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is False
-    assert any(d.startswith('scp:user@host:/tmp/qmoi_memory.json:error') for d in details)
+    assert any(d.startswith('scp:user@host:/cache/qmoi_memory.json:error') for d in details)
 
 """
     test_pull_gist_missing_config function

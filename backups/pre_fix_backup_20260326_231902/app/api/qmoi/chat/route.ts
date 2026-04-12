@@ -71,7 +71,7 @@ function POST(req: Request): any {
       ],
     });
   } catch (error) {
-    console.error("QMOI chat error:", error);
+    logger.error("QMOI chat error:", error);
     return NextResponse.json(
       {
         error: "Internal server error",

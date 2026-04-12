@@ -55,6 +55,6 @@ if (generated.length) {
   try {
     import("./qmoi-gitlab-sync");
   } catch (e) {
-    console.warn("QMOI: GitLab sync not run (optional).");
+    logger.warn("QMOI: GitLab sync not run (optional).");
   }
 }

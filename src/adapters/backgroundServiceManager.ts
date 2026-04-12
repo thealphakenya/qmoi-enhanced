@@ -95,7 +95,7 @@ class BackgroundServiceManager {
       await task.fn();
       task.lastRun = Date.now();
       task.nextRun = Date.now() + task.interval;
-      console.debug(
+      logger.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
     } catch (_err) {

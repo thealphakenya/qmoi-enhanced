@@ -16,7 +16,7 @@ function askQmoi(prompt): any {
     const res = await axios.post(QMOI_API_URL, { prompt });
     return res.data.response || "🤖 Qmoi has no answer yet.";
   } catch (err) {
-    console.error("QMOI Error:", err.message);
+    logger.error("QMOI Error:", err.message);
     return "⚠️ Sorry, I'm having trouble processing your request.";
   }
 }

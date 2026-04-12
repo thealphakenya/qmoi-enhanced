@@ -100,7 +100,7 @@ class QMOIEnhancedAutoFix {
       );
       return fixReport;
     } catch (error) {
-      console.error("❌ Auto-fix failed:", error.message);
+      logger.error("❌ Auto-fix failed:", error.message);
       await this.sendErrorNotification("Auto-Fix Failed", error.message);
       throw error;
     }
@@ -131,7 +131,7 @@ class QMOIEnhancedAutoFix {
         }
       }
     } catch (error) {
-      console.error("Error fixing JSON files:", error.message);
+      logger.error("Error fixing JSON files:", error.message);
     }
 
     return fixes;
@@ -162,7 +162,7 @@ class QMOIEnhancedAutoFix {
         }
       }
     } catch (error) {
-      console.error("Error fixing YAML files:", error.message);
+      logger.error("Error fixing YAML files:", error.message);
     }
 
     return fixes;
@@ -250,7 +250,7 @@ class QMOIEnhancedAutoFix {
         });
       }
     } catch (error) {
-      console.error("Error fixing build issues:", error.message);
+      logger.error("Error fixing build issues:", error.message);
     }
 
     return fixes;
@@ -297,7 +297,7 @@ class QMOIEnhancedAutoFix {
         });
       }
     } catch (error) {
-      console.error("Error fixing dependency issues:", error.message);
+      logger.error("Error fixing dependency issues:", error.message);
     }
 
     return fixes;
@@ -316,7 +316,7 @@ class QMOIEnhancedAutoFix {
       const scriptFixes = await this.fixPackageScripts();
       fixes.push(...scriptFixes);
     } catch (error) {
-      console.error("Error fixing configuration issues:", error.message);
+      logger.error("Error fixing configuration issues:", error.message);
     }
 
     return fixes;

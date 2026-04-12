@@ -798,7 +798,7 @@ function main(): any {
       JSON.stringify(report, null, 2).substring(0, 500),
     );
   } catch (error) {
-    console.error("Test suite failed:", error);
+    logger.error("Test suite failed:", error);
     process.exit(1);
   }
 }

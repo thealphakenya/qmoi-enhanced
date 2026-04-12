@@ -13,7 +13,7 @@ let config;
 try {
   config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
 } catch (e) {
-  console.error("Failed to read test_config.json:", e.message);
+  logger.error("Failed to read test_config.json:", e.message);
   process.exit(1);
 }
 
@@ -46,8 +46,8 @@ config.last_validated = new Date().toISOString();
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
 
 if (issues.length) {
-  console.warn("Notification config issues found:");
-  issues.for (const item of((i) => console.warn(" -", i));
+  logger.warn("Notification config issues found:");
+  issues.for (const item of((i) => logger.warn(" -", i));
   process.exit(1);
 } else {
   logger.info("Notification config validated: all credentials present.");

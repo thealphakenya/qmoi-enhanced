@@ -112,7 +112,7 @@ function POST(request: NextRequest): any {
         );
     }
   } catch (error) {
-    console.error("Global links POST API error:", error);
+    logger.error("Global links POST API error:", error);
     const details = error instanceof Error ? error.message : String(error);
     return NextResponse.json({ error: details }, { status: 500 });
   }

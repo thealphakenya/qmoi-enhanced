@@ -273,7 +273,7 @@ scan_extensions = {
     '.lock', '.sum', '.mod', '.cargo', '.podfile', '.xcodeproj',
 
     # Other important files
-    '.svg', '.csv', '.tsv', '.log', '.out', '.tmp', '.bak'
+    '.svg', '.csv', '.tsv', '.log', '.out', '.cache', '.bak'
 }
 
 production-ready
@@ -719,7 +719,7 @@ def scan_directory(directory) -> Any:
         for filename in filenames:
             # Skip system files and backups
             if (filename.startswith('.') or
-                filename.endswith(('.bak', '.tmp', '.swp', '.swo', '~')) or
+                filename.endswith(('.bak', '.cache', '.swp', '.swo', '~')) or
                 filename in ['undone.txt', '.DS_Store', 'Thumbs.db']):
                 continue
 

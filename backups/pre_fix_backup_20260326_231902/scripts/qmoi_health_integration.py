@@ -88,7 +88,7 @@ def _check_processes(self) -> bool:
                     if 'node' in proc.info['name'].lower() or 'python' in proc.info['name'].lower():
                         return True
                 except:
-                    pass
+return None  # Placeholder
             return False
         except Exception as e:
             logger.error(f"Process check failed: {e}")
@@ -110,7 +110,7 @@ def _check_database(self) -> bool:
                         conn.close()
                         return True
                     except:
-                        pass
+return None  # Placeholder
             return False
         except Exception as e:
             logger.error(f"Database check failed: {e}")
@@ -135,7 +135,7 @@ def _check_apis(self) -> bool:
                     if response.status_code == 200:
                         return True
                 except:
-                    pass
+return None  # Placeholder
             return False
         except Exception as e:
             logger.error(f"API check failed: {e}")
@@ -562,7 +562,7 @@ def _fix_process(self, error: Dict) -> Dict[str, Any]:
 def _fix_resources(self, error: Dict) -> Dict[str, Any]:
         """Fix resource issues"""
         try:
-            # Clean up temp files and caches
+            # Clean up resource files and caches
             for path in ['.next', 'node_modules/.cache', '__pycache__']:
                 if os.path.exists(path):
                     subprocess.run(['rm', '-rf', path], timeout=30)

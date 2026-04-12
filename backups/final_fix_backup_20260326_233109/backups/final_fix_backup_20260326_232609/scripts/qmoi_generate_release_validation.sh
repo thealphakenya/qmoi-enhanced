@@ -38,16 +38,16 @@ SIZE=$(stat -c%s "$APK_PATH")
   echo "## Signature Verification"
   if [ -n "$APKSIGNER" ] && [ -x "$APKSIGNER" ]; then
     echo "Using apksigner: \\\`$APKSIGNER\\\`"
-    if "$APKSIGNER" verify "$APK_PATH" >/tmp/qmoi_apksigner.out 2>&1; then
+    if "$APKSIGNER" verify "$APK_PATH" >/cache/qmoi_apksigner.out 2>&1; then
       echo "- Signature: OK"
       echo "- apksigner output:"
       echo '```'
-      cat /tmp/qmoi_apksigner.out
+      cat /cache/qmoi_apksigner.out
       echo '```'
     else
       echo "- Signature: FAILED"
       echo '```'
-      cat /tmp/qmoi_apksigner.out || true
+      cat /cache/qmoi_apksigner.out || true
       echo '```'
     fi
   else

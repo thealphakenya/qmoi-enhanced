@@ -114,7 +114,7 @@ function QMoiState({
         setLoadingLogs(false);
       })
       .catch((_err: unknown) => {
-        console.warn("fetch audit logs failed", String(_err));
+        logger.warn("fetch audit logs failed", String(_err));
         if (typeof _err === "object" && _err && "message" in _err) {
           const msg = (_err as { message?: unknown }).message;
           setLogError(msg ? String(msg) : "Failed to load logs");

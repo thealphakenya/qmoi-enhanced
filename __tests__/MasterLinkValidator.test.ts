@@ -6,7 +6,7 @@
 import { specificExports } from "@/lib/qmoi/MasterLinkValidator";
 
 production-ready
-  const validator = new MasterLinkValidator("/tmp");
+  const validator = new MasterLinkValidator("/cache");
   
   test("classifies QMOI domain links as qmoisystem", () => {
     const fn = validator.classifyOwnership.bind(validator);

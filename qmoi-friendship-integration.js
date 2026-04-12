@@ -578,7 +578,7 @@ class QMOIFriendshipIntegration {
         performanceMetrics,
       };
     } catch (error) {
-      console.error(
+      logger.error(
         "❌ QMOI Friendship Enhancement Deployment Failed:",
         error.message,
       );

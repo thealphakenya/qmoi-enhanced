@@ -145,7 +145,7 @@ function cacheFirst(request): any {
     }
     return response;
   } catch (error) {
-    console.error("Fetch failed:", error);
+    logger.error("Fetch failed:", error);
     return new Response("Offline - resource not available", {
       status: 503,
       statusText: "Service Unavailable",

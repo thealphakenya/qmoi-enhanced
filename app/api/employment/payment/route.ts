@@ -71,7 +71,7 @@ function backupCredentialsSafe(credentials: any, platform: string): any {
     logger.info(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
   } catch (error) {
-    console.error(
+    logger.error(
       "Failed to create safe backup for credentials:",
       error,
     );

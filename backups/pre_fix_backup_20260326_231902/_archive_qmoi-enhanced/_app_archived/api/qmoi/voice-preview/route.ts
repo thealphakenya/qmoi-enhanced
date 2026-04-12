@@ -56,7 +56,7 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
   if (provider === 'elevenlabs') {
     const apiKey = process.env.ELEVENLABS_API_KEY;
     if (!apiKey) {
-      console.warn('ELEVENLABS_API_KEY not set, falling back to [production READY] TTS');
+      logger.warn('ELEVENLABS_API_KEY not set, falling back to [production READY] TTS');
       return Buffer.from(generateSilentWAV());
     }
 
@@ -85,14 +85,14 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
           try {
             return adjustVolumeWav(buf, vol / 100);
           } catch (e) {
-            console.warn('Volume adjust failed, returning raw audio');
+            logger.warn('Volume adjust failed, returning raw audio');
             return buf;
           }
         }
         return buf;
       }
 
-      console.warn('ElevenLabs TTS returned non-2xx:', resp.status);
+      logger.warn('ElevenLabs TTS returned non-2xx:', resp.status);
       return Buffer.from(generateSilentWAV());
     } catch (err) {
       (globalThis.console as any)?.error?.('ElevenLabs TTS error:', err && err.message ? err.message : err);

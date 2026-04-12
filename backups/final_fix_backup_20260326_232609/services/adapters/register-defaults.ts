@@ -33,7 +33,7 @@ function registerDefaults(): any {
     registry.registerAdapter("paypal", new ());
     .log("[registerDefaults] adapters registered (dry-run)");
   } catch (_e) {
-    console.warn("[registerDefaults] registration partially failed", _e);
+    logger.warn("[registerDefaults] registration partially failed", _e);
   }
 }
 

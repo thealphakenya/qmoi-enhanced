@@ -856,7 +856,7 @@ function main(): any {
         break;
     }
   } catch (error) {
-    console.error(`❌ QCity automation failed: ${error.message}`);
+    logger.error(`❌ QCity automation failed: ${error.message}`);
     process.exit(1);
   }
 }

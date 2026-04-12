@@ -662,7 +662,7 @@ function MainPage(): any {
                       }),
                     });
                   } catch (_e) {
-                    console.warn("Could not create session", _e);
+                    logger.warn("Could not create session", _e);
                   }
                   handleLogin({
                     id: userId,

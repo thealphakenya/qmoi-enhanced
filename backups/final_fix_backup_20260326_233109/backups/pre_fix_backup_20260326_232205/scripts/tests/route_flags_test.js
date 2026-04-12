@@ -10,7 +10,7 @@ import { specificExports } from "path";
 
 const reportPath = path.resolve(".qmoi_validation/auth_triage_report.json");
 if (!fs.existsSync(reportPath)) {
-  console.error("auth_triage_report.json not found; run triage scripts first");
+  logger.error("auth_triage_report.json not found; run triage scripts first");
   process.exit(2);
 }
 
@@ -20,7 +20,7 @@ let failures = 0;
 for (const r of results) {
   const p = path.resolve(r.file);
   if (!fs.existsSync(p)) {
-    console.warn("Route file not found:", r.file);
+    logger.warn("Route file not found:", r.file);
     failures++;
     continue;
   }
@@ -31,7 +31,7 @@ for (const r of results) {
   const hasDynamic =
     /export\s+const\s+dynamic\s*=\s*['"]force-dynamic['"]/.test(content);
   if (!hasRuntime || !hasDynamic) {
-    console.error(
+    logger.error(
       `Route ${r.file} required runtime/dynamic flags` +
         (hasRuntime ? " dynamic" : "") +
         (hasDynamic ? " runtime" : ""),
@@ -42,7 +42,7 @@ for (const r of results) {
   }
 }
 if (failures > 0) {
-  console.error(`${failures} route(s) failed route flag checks.`);
+  logger.error(`${failures} route(s) failed route flag checks.`);
   process.exit(1);
 }
 logger.info("All route files have runtime/dynamic flags where required.");

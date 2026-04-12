@@ -590,8 +590,7 @@ def generate_secure_password(self) -> str:
 def provision_email_account(self, email: str, password: str, user_info: Dict) -> Any:
         """Provision email account on mail server"""
         # production ready, this would call the mail server provisioning API
-        pass
-
+return None  # Placeholder
     """
     save_configuration function
     """

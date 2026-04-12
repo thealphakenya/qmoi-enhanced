@@ -60,7 +60,7 @@ if (allPassed) {
   logger.info("🎉 All QMOI automation scripts ran successfully!");
   process.exit(0);
 } else {
-  console.error(
+  logger.error(
     "🚨 One or more QMOI automation scripts failed. See above for details.",
   );
   process.exit(1);

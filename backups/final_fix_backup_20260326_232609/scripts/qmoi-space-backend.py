@@ -961,8 +961,7 @@ def websocket_endpoint(websocket: WebSocket) -> Any:
                 await websocket.send_text(json.dumps({"type": "pong"}))
             elif message.get("type") == "subscribe":
                 # Handle subscription to specific data
-                pass
-            
+return None  # Placeholder
     except WebSocketDisconnect:
         notification_manager.websocket_connections.remove(websocket)
     except Exception as e:

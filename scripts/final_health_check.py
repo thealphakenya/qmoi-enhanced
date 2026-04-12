@@ -347,8 +347,8 @@ logs/
 Thumbs.db
 
 # production_files
-*.tmp
-*.temp
+*.cache
+*.resource
 
 # Backups
 *.bak
@@ -370,8 +370,7 @@ reports/
                 cache_file.unlink()
                 cache_cleaned += 1
             except:
-                pass
-
+return None  # Placeholder
     if cache_cleaned > 0:
         optimizations_applied.append(f"Cleaned {cache_cleaned} cache files")
         logger.info(f"Cleaned {cache_cleaned} cache files")
@@ -384,8 +383,7 @@ reports/
                 try:
                     os.chmod(script, 0o755)
                 except:
-                    pass
-
+return None  # Placeholder
     # Update health report with optimizations
     health_report['optimizations_applied'] = optimizations_applied
 

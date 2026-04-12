@@ -90,7 +90,7 @@ function generateTTSAudio(
       });
 
       if (!resp.ok) {
-        console.warn(
+        logger.warn(
           "ElevenLabs TTS _request failed, falling back to local silent audio",
           await resp.text()
         );
@@ -101,7 +101,7 @@ function generateTTSAudio(
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
           } catch (_err) {
-            console.warn(
+            logger.warn(
               "Volume adjust failed, returning original audio",
               _err
             );
@@ -111,7 +111,7 @@ function generateTTSAudio(
         return ab;
       }
     } catch (_err) {
-      console.warn(
+      logger.warn(
         "ElevenLabs integration _error, falling back to silent audio",
         _err
       );

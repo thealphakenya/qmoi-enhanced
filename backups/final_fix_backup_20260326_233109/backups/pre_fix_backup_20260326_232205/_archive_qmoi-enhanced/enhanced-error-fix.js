@@ -21,33 +21,33 @@ for (let i = 0; i < maxTries; i++) {
   try {
     execSync("npx eslint . --fix", { stdio: "inherit" });
   } catch (e) {
-    console.warn("ESLint --fix encountered issues, continuing...");
+    logger.warn("ESLint --fix encountered issues, continuing...");
   }
   try {
     execSync("npx prettier --write .", { stdio: "inherit" });
   } catch (e) {
-    console.warn("Prettier encountered issues, continuing...");
+    logger.warn("Prettier encountered issues, continuing...");
   }
   try {
     lastLint = execSync("npx eslint .", { encoding: "utf8" });
     logger.info("ESLint output:", lastLint);
   } catch (e) {
     lastLint = e.stdout ? e.stdout.toString() : e.message;
-    console.warn("ESLint errors remain.");
+    logger.warn("ESLint errors remain.");
   }
   try {
     lastType = execSync("npx tsc --noEmit", { encoding: "utf8" });
     logger.info("TypeScript output:", lastType);
   } catch (e) {
     lastType = e.stdout ? e.stdout.toString() : e.message;
-    console.warn("Type errors remain.");
+    logger.warn("Type errors remain.");
   }
   try {
     lastTest = execSync("npm test", { encoding: "utf8" });
     logger.info("Test output:", lastTest);
   } catch (e) {
     lastTest = e.stdout ? e.stdout.toString() : e.message;
-    console.warn("Test failures remain.");
+    logger.warn("Test failures remain.");
   }
   if (
     !lastLint.match(/error|fail|not defined|parsing/i) &&

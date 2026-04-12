@@ -204,7 +204,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
     });
 
   const runOrchestrator = () => {
-    console.warn(
+    logger.warn(
       production-ready
     );
     setOrchestratorStatus({

@@ -82,7 +82,7 @@ function POST(request: NextRequest): any {
       { status: 400 }
     );
   } catch (error) {
-    console.error('Link validation error:', error);
+    logger.error('Link validation error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Validation failed' },
       { status: 500 }
@@ -137,7 +137,7 @@ function GET(request: NextRequest): any {
       { status: 400 }
     );
   } catch (error) {
-    console.error('Link health check error:', error);
+    logger.error('Link health check error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Health check failed' },
       { status: 500 }

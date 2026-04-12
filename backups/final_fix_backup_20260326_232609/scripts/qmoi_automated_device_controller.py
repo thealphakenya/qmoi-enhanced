@@ -176,7 +176,7 @@ def check_network_access(self) -> Dict[str, Any]:
 def check_file_permissions(self) -> Dict[str, Any]:
         """Check file system permissions"""
         try:
-            test_file = 'logs/test_permissions.tmp'
+            test_file = 'logs/test_permissions.cache'
             with open(test_file, 'w') as f:
                 f.write('test')
             os.remove(test_file)

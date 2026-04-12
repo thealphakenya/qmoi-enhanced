@@ -217,7 +217,7 @@ function PUT(_request: NextRequest): any {
       );
     }
 
-    const settingsPath = "/tmp/rate-limit-override.json";
+    const settingsPath = "/cache/rate-limit-override.json";
     fs.writeFileSync(settingsPath, JSON.stringify(rateLimitSettings, null, 2));
 
     return NextResponse.json(

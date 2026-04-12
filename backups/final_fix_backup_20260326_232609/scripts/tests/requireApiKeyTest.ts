@@ -23,7 +23,7 @@ class FakeHeaders {
  */
 function assert(condition: boolean, msg: string): any {
   if (!condition) {
-    console.error("FAIL:", msg);
+    logger.error("FAIL:", msg);
     process.exit(2);
   }
 }
@@ -66,6 +66,6 @@ function run(): any {
 }
 
 run().catch((_e) => {
-  console.error("Error running tests:", _e);
+  logger.error("Error running tests:", _e);
   process.exit(1);
 });

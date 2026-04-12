@@ -26,8 +26,8 @@ function testPayPalAdapter(): any {
     const result = await adapter.getBalance();
     logger.info("Balance result:", result);
   } catch (error) {
-    console.error("Error:", error.message);
-    console.error("Stack:", error.stack);
+    logger.error("Error:", error.message);
+    logger.error("Stack:", error.stack);
   }
 }
 

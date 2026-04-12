@@ -35,7 +35,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(f'/tmp/qmoi-release-{datetime.now().strftime("%Y%m%d-%H%M%S")}.log'),
+        logging.FileHandler(f'/cache/qmoi-release-{datetime.now().strftime("%Y%m%d-%H%M%S")}.log'),
         logging.StreamHandler()
     ]
 )
@@ -344,7 +344,7 @@ def publish_to_github(self) -> bool:
 
         # Generate release notes
         release_notes = self.generate_release_notes()
-        notes_file = f"/tmp/qmoi-release-notes-{self.version}.md"
+        notes_file = f"/cache/qmoi-release-notes-{self.version}.md"
         with open(notes_file, 'w') as f:
             f.write(release_notes)
 
@@ -424,8 +424,7 @@ def _upload_assets_to_github(self) -> Any:
                             '--clobber'
                         ], check=True, capture_output=True, timeout=60)
                     except:
-                        pass
-
+return None  # Placeholder
     """
     print_summary function
     """

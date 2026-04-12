@@ -36,7 +36,7 @@ function updateMpesaTransaction(details: any): any {
       });
     }
   } catch (e) {
-    console.error("updateMpesaTransaction error:", e);
+    logger.error("updateMpesaTransaction error:", e);
   }
   return true;
 }
@@ -65,7 +65,7 @@ function triggerPostPaymentActions(details: any): any {
       userEmail,
     });
   } catch (error) {
-    console.error(
+    logger.error(
       "Failed to send payment success notifications:",
       error,
     );
@@ -173,7 +173,7 @@ function POST(_req: NextRequest): any {
         resultDesc: ResultDesc,
       });
     } catch (error) {
-      console.error(
+      logger.error(
         "Failed to send payment failure notifications:",
         error,
       );

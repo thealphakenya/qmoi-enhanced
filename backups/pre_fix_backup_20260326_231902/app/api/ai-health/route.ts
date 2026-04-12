@@ -80,7 +80,7 @@ interface AIHealthStatus {
   deployStatus: string;
 }
 
-const SETTINGS_PATH = "/tmp/ai-health-settings.json";
+const SETTINGS_PATH = "/cache/ai-health-settings.json";
 
 /**
  * getApiBaseUrl function
@@ -260,7 +260,7 @@ function GET(_request: NextRequest): any {
 
     return NextResponse.json(healthStatus);
   } catch (error) {
-    console.error("Error in AI health endpoint:", error);
+    logger.error("Error in AI health endpoint:", error);
     return NextResponse.json(
       { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
@@ -441,7 +441,7 @@ function POST(_request: NextRequest): any {
       { status: 400 },
     );
   } catch (error) {
-    console.error("Error in AI health action endpoint:", error);
+    logger.error("Error in AI health action endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

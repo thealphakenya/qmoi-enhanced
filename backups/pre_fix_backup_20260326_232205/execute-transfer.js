@@ -69,7 +69,7 @@ function executeMoneyTransfer(): any {
       logger.info("Please verify the transaction manually");
     }
   } catch (error) {
-    console.error("💥 Error executing money transfer:", error.message);
+    logger.error("💥 Error executing money transfer:", error.message);
     logger.info("Please check system configuration and try again");
   }
 }

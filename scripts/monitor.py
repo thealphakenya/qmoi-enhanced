@@ -364,7 +364,7 @@ def _get_temperature(self) -> Optional[float]:
         """Get system temperature"""
         try:
             if platform.system() == 'Linux':
-                with open('/sys/class/thermal/thermal_zone0/temp', 'r') as f:
+                with open('/sys/class/thermal/thermal_zone0/resource', 'r') as f:
                     return float(f.read()) / 1000.0
             return None
         except:
@@ -549,7 +549,7 @@ def _send_alert_notification(self, alert: Dict[str, Any]) -> Any:
         """Send alert notification"""
         try:
             # Implement alert notification (e.g., email, SMS, webhook)
-            pass
+return None  # Placeholder
         except Exception as e:
             self.logger.error(f"Error sending alert notification: {str(e)}")
 

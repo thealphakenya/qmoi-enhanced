@@ -49,7 +49,7 @@ class QMOISystemTester {
 
       logger.info("✅ QMOI System Tester initialized");
     } catch (error) {
-      console.error(
+      logger.error(
         "❌ Failed to initialize QMOI System Tester:",
         error.message,
       );
@@ -110,7 +110,7 @@ class QMOISystemTester {
 
       logger.info("✅ All tests completed successfully");
     } catch (error) {
-      console.error("❌ Test execution failed:", error.message);
+      logger.error("❌ Test execution failed:", error.message);
       await this.generateTestReport();
       throw error;
     }
@@ -194,7 +194,7 @@ class QMOISystemTester {
       "music",
       "reports",
       "backups",
-      "temp",
+      "resource",
       "uploads",
       "downloads",
       "cache",

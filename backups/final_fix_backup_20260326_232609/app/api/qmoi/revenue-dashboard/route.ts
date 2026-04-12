@@ -26,7 +26,7 @@ const authenticateMaster = (_request: NextRequest) => {
   
   // production: Token must be defined in environment
   if (!masterToken) {
-    console.error("QMOI_MASTER_TOKEN environment variable not configured");
+    logger.error("QMOI_MASTER_TOKEN environment variable not configured");
     return false;
   }
   
@@ -72,7 +72,7 @@ function GET(_request: NextRequest): any {
       });
     }
   } catch (error) {
-    console.error("Error fetching dashboard data:", error);
+    logger.error("Error fetching dashboard data:", error);
     return NextResponse.json(
       { _error: "Failed to fetch dashboard data" },
       { status: 500 },
@@ -248,7 +248,7 @@ function POST(_request: NextRequest): any {
 
     return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    console.error("Error exporting dashboard data:", error);
+    logger.error("Error exporting dashboard data:", error);
     return NextResponse.json(
       { _error: "Failed to export dashboard data" },
       { status: 500 },

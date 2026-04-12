@@ -156,7 +156,7 @@ class QMOIUniversalErrorHandler {
         message: fixed ? "package.json fixed" : "package.json fix failed",
       };
     } catch (error) {
-      console.error("❌ Error fixing package.json:", error.message);
+      logger.error("❌ Error fixing package.json:", error.message);
       return { success: false, message: error.message };
     }
   }
@@ -231,7 +231,7 @@ class QMOIUniversalErrorHandler {
 
       return { success: true, message: "Dependencies fixed" };
     } catch (error) {
-      console.error("❌ Error fixing dependencies:", error.message);
+      logger.error("❌ Error fixing dependencies:", error.message);
       return { success: false, message: error.message };
     }
   }
@@ -258,7 +258,7 @@ class QMOIUniversalErrorHandler {
 
       return { success: true, message: "Build fixed" };
     } catch (error) {
-      console.error("❌ Error fixing build:", error.message);
+      logger.error("❌ Error fixing build:", error.message);
       return { success: false, message: error.message };
     }
   }
@@ -284,7 +284,7 @@ class QMOIUniversalErrorHandler {
 
       return { success: true, message: "Syntax fixed" };
     } catch (error) {
-      console.error("❌ Error fixing syntax:", error.message);
+      logger.error("❌ Error fixing syntax:", error.message);
       return { success: false, message: error.message };
     }
   }
@@ -316,7 +316,7 @@ class QMOIUniversalErrorHandler {
 
       return { success: true, message: "Network fixed" };
     } catch (error) {
-      console.error("❌ Error fixing network:", error.message);
+      logger.error("❌ Error fixing network:", error.message);
       return { success: false, message: error.message };
     }
   }
@@ -339,7 +339,7 @@ class QMOIUniversalErrorHandler {
 
       return { success: true, message: "Runtime fixed" };
     } catch (error) {
-      console.error("❌ Error fixing runtime:", error.message);
+      logger.error("❌ Error fixing runtime:", error.message);
       return { success: false, message: error.message };
     }
   }
@@ -367,7 +367,7 @@ class QMOIUniversalErrorHandler {
 
       return { success: true, message: "Memory fixed" };
     } catch (error) {
-      console.error("❌ Error fixing memory:", error.message);
+      logger.error("❌ Error fixing memory:", error.message);
       return { success: false, message: error.message };
     }
   }
@@ -390,7 +390,7 @@ class QMOIUniversalErrorHandler {
 
       return { success: true, message: "Permissions fixed" };
     } catch (error) {
-      console.error("❌ Error fixing permissions:", error.message);
+      logger.error("❌ Error fixing permissions:", error.message);
       return { success: false, message: error.message };
     }
   }

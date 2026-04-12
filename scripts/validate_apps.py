@@ -152,7 +152,7 @@ for app in apps:
                         app_report['autoupdate_helpers'] = True
                         break
                 except Exception:
-                    pass
+return None  # Placeholder
     report['apps'][app] = app_report
 
 OUT_JSON = ROOT / 'tools' / 'validation_report.json'

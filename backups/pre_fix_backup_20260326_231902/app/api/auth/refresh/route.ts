@@ -47,7 +47,7 @@ function POST(request: NextRequest): any {
       expiresAt: tokens.expiresAt,
     });
   } catch (error) {
-    console.error("Token refresh error:", error);
+    logger.error("Token refresh error:", error);
     return NextResponse.json({ error: "Token refresh failed" }, { status: 500 });
   }
 }

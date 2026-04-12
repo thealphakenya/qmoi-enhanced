@@ -56,7 +56,7 @@ function scanPaths(paths, patterns): any {
       const searchRoot = ".next";
       const matches = scanPaths([searchRoot], patterns);
       if (matches.length) {
-        console.error(
+        logger.error(
           "Found suspicious model-selector patterns in build output:"
         );
         matches
@@ -98,7 +98,7 @@ function scanPaths(paths, patterns): any {
       }
 
       if (refined.length) {
-        console.error(
+        logger.error(
           "Found suspicious model-selector patterns in source files:"
         );
         refined

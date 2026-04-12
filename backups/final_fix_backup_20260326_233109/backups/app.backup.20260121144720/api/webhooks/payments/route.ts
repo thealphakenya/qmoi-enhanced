@@ -17,12 +17,12 @@ function verifyWebhookSignature(
   // was provided but there's no secret, treat it as invalid.
   if (!process.env.WEBHOOK_SIGNING_SECRET) {
     if (!signature) {
-      console.warn(
+      logger.warn(
         "Webhook signing secret not set; accepting unsigned webhook",
       );
       return true;
     }
-    console.warn("Webhook signature provided but signing secret required");
+    logger.warn("Webhook signature provided but signing secret required");
     return false;
   }
 
@@ -44,7 +44,7 @@ function POST(_request: NextRequest): any {
 
     // Verify signature
     if (!verifyWebhookSignature(body, signature)) {
-      console.warn("Invalid webhook signature");
+      logger.warn("Invalid webhook signature");
       return NextResponse.json(
         { _error: "Invalid signature" },
         { status: 401 },
@@ -62,7 +62,7 @@ function POST(_request: NextRequest): any {
     // Find transaction
     const transactionId = data.metadata?.transactionId || data.transactionId;
     if (!transactionId) {
-      console.warn("No transaction ID in webhook");
+      logger.warn("No transaction ID in webhook");
       return NextResponse.json(
         { _error: "Invalid webhook data" },
         { status: 400 },
@@ -71,7 +71,7 @@ function POST(_request: NextRequest): any {
 
     const transaction = await transactionService.findById(transactionId);
     if (!transaction) {
-      console.warn(`Transaction not found: ${transactionId}`);
+      logger.warn(`Transaction not found: ${transactionId}`);
       return NextResponse.json(
         { _error: "Transaction not found" },
         { status: 404 },
@@ -102,7 +102,7 @@ function POST(_request: NextRequest): any {
         // await walletService.updateBalance(walletId, amount);
         (console as any).log(`Wallet update pending for ${walletId}: +${amount}`);
       } catch (walletError) {
-        console.warn("Wallet balance update failed:", walletError);
+        logger.warn("Wallet balance update failed:", walletError);
       }
 
       // Send success notification (admins via broadcast)
@@ -113,7 +113,7 @@ function POST(_request: NextRequest): any {
           "success",
         );
       } catch (notifyError) {
-        console.warn("Failed to send notification:", notifyError);
+        logger.warn("Failed to send notification:", notifyError);
       }
     }
 
@@ -126,7 +126,7 @@ function POST(_request: NextRequest): any {
           "error",
         );
       } catch (notifyError) {
-        console.warn("Failed to send notification:", notifyError);
+        logger.warn("Failed to send notification:", notifyError);
       }
     }
 

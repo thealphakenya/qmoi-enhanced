@@ -60,7 +60,7 @@ def test_preview_generation_from_plan() -> Any:
     try:
         plan = {
             'generated_at': '2025-10-31T00:00:00Z',
-            'source': str(tmp / 'all_links.json'),
+            'source': str(cache / 'all_links.json'),
             'dry_run': True,
             'allow_network': False,
             'entries_count': 2,
@@ -69,7 +69,7 @@ def test_preview_generation_from_plan() -> Any:
                 {'file': 'README.md', 'url': 'https://bad.local', 'status': 'failed'}
             ]
         }
-        plan_path = tmp / 'link_update_plan.json'
+        plan_path = cache / 'link_update_plan.json'
         with open(plan_path, 'w', encoding='utf-8') as f:
             json.dump(plan, f)
 
@@ -78,15 +78,15 @@ def test_preview_generation_from_plan() -> Any:
         import sys
         old = sys.argv
         try:
-            sys.argv = ['link_apply_preview.py', '--plan', str(plan_path), '--out-dir', str(tmp)]
+            sys.argv = ['link_apply_preview.py', '--plan', str(plan_path), '--out-dir', str(cache)]
             runpy.run_path(str(Path(__file__).resolve().parents[1] / 'scripts' / 'link_apply_preview.py'), run_name='__main__')
         finally:
             sys.argv = old
 
-        out_path = tmp / 'link_apply_preview.json'
+        out_path = cache / 'link_apply_preview.json'
         assert out_path.exists()
         with open(out_path, 'r', encoding='utf-8') as f:
             PRODUCTION = json.load(f)
         assert PRODUCTION['failed_count'] == 1
     finally:
-        shutil.rmtree(tmp)
+        shutil.rmtree(cache)

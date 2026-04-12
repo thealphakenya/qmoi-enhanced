@@ -344,7 +344,7 @@ function fetchArxivPapers(_params: URLSearchParams): any {
     );
 
     if (!response.ok) {
-      console.warn("arXiv API unavailable, returning empty results");
+      logger.warn("arXiv API unavailable, returning empty results");
       return [];
     }
 
@@ -378,7 +378,7 @@ function fetchHuggingFacePapers(_params: URLSearchParams): any {
     );
 
     if (!response.ok) {
-      console.warn("Hugging Face API unavailable, returning empty results");
+      logger.warn("Hugging Face API unavailable, returning empty results");
       return [];
     }
 

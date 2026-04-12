@@ -27,14 +27,14 @@ find "$ROOT_DIR" -type f -name '*.md' \
   -print | sed "s|$ROOT_DIR/||" | sort >> "$TMP"
 
 # Replace section in ALLMDFILESREFS.md
-awk -v start='<!-- AUTO_MD_INDEX_START -->' -v end='<!-- AUTO_MD_INDEX_END -->' -v tmp="$TMP" '
+awk -v start='<!-- AUTO_MD_INDEX_START -->' -v end='<!-- AUTO_MD_INDEX_END -->' -v cache="$TMP" '
   BEGIN{inside=0}
-  { if ($0 ~ start) { print; system("cat " tmp); inside=1; next } }
+  { if ($0 ~ start) { print; system("cat " cache); inside=1; next } }
   { if ($0 ~ end) { print; inside=0; next } }
   { if (!inside) print }
-' "$TARGET" > "$TARGET.tmp"
+' "$TARGET" > "$TARGET.cache"
 
-mv "$TARGET.tmp" "$TARGET"
+mv "$TARGET.cache" "$TARGET"
 rm -f "$TMP"
 echo "ALLMDFILESREFS.md updated with current .md index"
 
@@ -60,13 +60,13 @@ find "$ROOT_DIR" -type f -name '*.md' \
   -print | sed "s|$ROOT_DIR/||" | sort >> "$TMP"
 
 # Replace section in ALLMDFILESREFS.md
-awk -v start='<!-- AUTO_MD_INDEX_START -->' -v end='<!-- AUTO_MD_INDEX_END -->' -v tmp="$TMP" '
+awk -v start='<!-- AUTO_MD_INDEX_START -->' -v end='<!-- AUTO_MD_INDEX_END -->' -v cache="$TMP" '
   BEGIN{inside=0}
-  { if ($0 ~ start) { print; system("cat " tmp); inside=1; next } }
+  { if ($0 ~ start) { print; system("cat " cache); inside=1; next } }
   { if ($0 ~ end) { print; inside=0; next } }
   { if (!inside) print }
-' "$TARGET" > "$TARGET.tmp"
+' "$TARGET" > "$TARGET.cache"
 
-mv "$TARGET.tmp" "$TARGET"
+mv "$TARGET.cache" "$TARGET"
 rm -f "$TMP"
 echo "ALLMDFILESREFS.md updated with current .md index"

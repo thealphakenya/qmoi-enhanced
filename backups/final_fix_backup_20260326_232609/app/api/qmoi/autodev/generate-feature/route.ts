@@ -61,7 +61,7 @@ function POST(request: NextRequest): any {
       });
     } catch (trackErr) {
       // fail silently, but log in server context if available
-      console.warn("Failed to track autoprod feature request", trackErr);
+      logger.warn("Failed to track autoprod feature request", trackErr);
     }
 
     return NextResponse.json(resp, { status: 202 });

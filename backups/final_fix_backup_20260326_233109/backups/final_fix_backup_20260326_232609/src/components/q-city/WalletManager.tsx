@@ -53,7 +53,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
           : String(_e);
-      console.warn(msg);
+      logger.warn(msg);
       setError(msg || "Failed to load pending requests");
       toast({
         title: "Error",
@@ -105,7 +105,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
           : String(_e);
-      console.warn(msg);
+      logger.warn(msg);
       setError(msg);
       toast({
         title: "Error",
@@ -151,7 +151,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
           : String(_e);
-      console.warn(msg);
+      logger.warn(msg);
       setError(msg);
       toast({
         title: "Error",

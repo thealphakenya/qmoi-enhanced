@@ -29,7 +29,7 @@ if (fs.existsSync(configPath)) {
   try {
     providers = JSON.parse(fs.readFileSync(configPath, "utf8"));
   } catch (e) {
-    console.error("[Qmoispace] Failed to load inference providers config:", e);
+    logger.error("[Qmoispace] Failed to load inference providers config:", e);
   }
 }
 

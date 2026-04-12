@@ -178,7 +178,7 @@ function MasterEmailDashboard(): any {
         setEmails(data.emails);
       }
     } catch (error) {
-      console.error("Failed to load emails:", error);
+      logger.error("Failed to load emails:", error);
     } finally {
       setIsLoading(false);
     }
@@ -192,7 +192,7 @@ function MasterEmailDashboard(): any {
         setAutoReplyRules(data.rules);
       }
     } catch (error) {
-      console.error("Failed to load auto-reply rules:", error);
+      logger.error("Failed to load auto-reply rules:", error);
     }
   };
 
@@ -204,7 +204,7 @@ function MasterEmailDashboard(): any {
         setEmailTemplates(data.templates);
       }
     } catch (error) {
-      console.error("Failed to load email templates:", error);
+      logger.error("Failed to load email templates:", error);
     }
   };
 
@@ -216,7 +216,7 @@ function MasterEmailDashboard(): any {
         setAnalytics(data.analytics);
       }
     } catch (error) {
-      console.error("Failed to load email analytics:", error);
+      logger.error("Failed to load email analytics:", error);
     }
   };
 
@@ -238,7 +238,7 @@ function MasterEmailDashboard(): any {
     };
 
     eventSourceRef.current.onerror = (error) => {
-      console.error("Realtime connection error:", error);
+      logger.error("Realtime connection error:", error);
     };
   };
 
@@ -272,7 +272,7 @@ function MasterEmailDashboard(): any {
         notification.show("Failed to send email: " + data.error);
       }
     } catch (error) {
-      console.error("Failed to send email:", error);
+      logger.error("Failed to send email:", error);
       notification.show("Failed to send email");
     }
   };
@@ -312,7 +312,7 @@ function MasterEmailDashboard(): any {
         notification.show("Failed to create rule: " + data.error);
       }
     } catch (error) {
-      console.error("Failed to create auto-reply rule:", error);
+      logger.error("Failed to create auto-reply rule:", error);
       notification.show("Failed to create auto-reply rule");
     }
   };
@@ -341,7 +341,7 @@ function MasterEmailDashboard(): any {
         notification.show("Failed to create standard: " + data.error);
       }
     } catch (error) {
-      console.error("Failed to create email standard:", error);
+      logger.error("Failed to create email standard:", error);
       notification.show("Failed to create email standard");
     }
   };
@@ -355,7 +355,7 @@ function MasterEmailDashboard(): any {
       });
       loadEmails();
     } catch (error) {
-      console.error("Failed to mark email as read:", error);
+      logger.error("Failed to mark email as read:", error);
     }
   };
 

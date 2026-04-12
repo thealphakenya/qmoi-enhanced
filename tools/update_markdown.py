@@ -194,7 +194,7 @@ def read_allmd_list() -> Any:
                     md_files.append(l)
             return md_files
         except Exception:
-            pass
+return None  # Placeholder
     # fallback: scan repo
     return [str(p.relative_to(ROOT)) for p in ROOT.rglob('*.md')]
 

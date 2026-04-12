@@ -39,7 +39,7 @@ const rules = [
   {
     name: "console.error -> console.error",
     re: /console\.error\(/g,
-    repl: "console.error(",
+    repl: "logger.error(",
   },
   {
     name: " -> ",

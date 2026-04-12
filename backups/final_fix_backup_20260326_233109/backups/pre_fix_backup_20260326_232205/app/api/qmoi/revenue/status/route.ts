@@ -40,7 +40,7 @@ function GET(_request: NextRequest): any {
 
     return NextResponse.json(revenueData);
   } catch (error) {
-    console.error("Revenue status _error:", error);
+    logger.error("Revenue status _error:", error);
     return NextResponse.json(
       { _error: "Failed to get revenue status" },
       { status: 500 },

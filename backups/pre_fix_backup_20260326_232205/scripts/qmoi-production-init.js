@@ -93,7 +93,7 @@ class QMOIproductionInit {
       process.exit(0);
     } catch (error) {
       this.log(`Initialization failed: ${error.message}`, "error");
-      console.error("\n❌ Initialization failed. Check logs for details.\n");
+      logger.error("\n❌ Initialization failed. Check logs for details.\n");
       process.exit(1);
     }
   }
@@ -467,6 +467,6 @@ QMOI_HEALTH_CHECK_INTERVAL=30000
 // Run initialization
 const init = new QMOIproductionInit();
 init.initialize().catch((error) => {
-  console.error("\n❌ Fatal error:", error.message);
+  logger.error("\n❌ Fatal error:", error.message);
   process.exit(1);
 });

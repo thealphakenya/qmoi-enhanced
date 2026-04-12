@@ -210,8 +210,7 @@ def get_network_speed(self) -> float:
                 speed = (1024 * 8) / (duration * 1000000)  # Convert to Mbps
                 return round(speed, 2)
         except Exception:
-            pass
-        
+return None  # Placeholder
         return 0.0
     
     """
@@ -228,8 +227,7 @@ def get_network_latency(self) -> float:
                 latency = (end_time - start_time) * 1000  # Convert to milliseconds
                 return round(latency, 2)
         except Exception:
-            pass
-        
+return None  # Placeholder
         return 0.0
     
     """
@@ -242,8 +240,7 @@ def get_ip_address(self) -> str:
             if response.status_code == 200:
                 return response.json()["origin"]
         except Exception:
-            pass
-        
+return None  # Placeholder
         return "unknown"
     
     """
@@ -493,13 +490,11 @@ def get_saved_wifi_networks(self) -> List[Dict]:
                         content = f.read()
                         # Parse networks from wpa_supplicant config
                         # This is a optimized version
-                        pass
-            
+return None  # Placeholder
             elif self.os_type == "darwin":  # macOS
                 result = subprocess.run(["security", "find-generic-password", "-D", "AirPort network password", "-a"], capture_output=True, text=True)
                 # Parse saved networks
-                pass
-        
+return None  # Placeholder
         except Exception as e:
             logger.error(f"Error getting saved WiFi networks: {e}")
         

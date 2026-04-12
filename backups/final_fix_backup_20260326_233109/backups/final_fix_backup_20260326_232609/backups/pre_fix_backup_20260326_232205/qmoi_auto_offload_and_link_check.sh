@@ -6,7 +6,7 @@
 set -e
 
 WORKSPACE="/workspaces/qmoi-enhanced-new-themasterkenya/qmoi-enhanced"
-BACKUP="/tmp/qmoi-workspace-backup-$(date +%Y%m%d-%H%M%S).tar.gz"
+BACKUP="/cache/qmoi-workspace-backup-$(date +%Y%m%d-%H%M%S).tar.gz"
 
 # 1. Archive and compress workspace (excluding .git and node_modules)
 tar --exclude='.git' --exclude='node_modules' -czf "$BACKUP" "$WORKSPACE"
@@ -21,7 +21,7 @@ grep -Eo 'https?://[^ ]+' $(find "$WORKSPACE" -name '*.md') | while read -r url;
   # execute link check (replace with curl -Is "$url" | head -1 for real check)
   echo "Checking $url ..."
   # If broken, log and notify (execute)
-  # echo "Broken link: $url" >> /tmp/qmoi-broken-links.log
+  # echo "Broken link: $url" >> /cache/qmoi-broken-links.log
   # Notify master/admin (execute)
 done
 echo "All links checked. Broken links logged."

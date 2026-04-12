@@ -17,14 +17,14 @@ echo "=================================================="
 # Create necessary directories
 echo -e "${BLUE}📁 Creating workspace directories...${NC}"
 mkdir -p /workspace/logs
-mkdir -p /workspace/temp
+mkdir -p /workspace/resource
 mkdir -p /workspace/.cache
 mkdir -p /workspace/.vscode-server
 
 # Fix permissions
 chmod 755 /workspace
 chmod 755 /workspace/logs
-chmod 755 /workspace/temp
+chmod 755 /workspace/resource
 chmod 755 /workspace/.cache
 chmod 755 /workspace/.vscode-server
 

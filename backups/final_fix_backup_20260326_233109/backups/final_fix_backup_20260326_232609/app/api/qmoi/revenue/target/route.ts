@@ -60,7 +60,7 @@ function POST(_request: NextRequest): any {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Set target _error:", error);
+    logger.error("Set target _error:", error);
     return NextResponse.json(
       { _error: "Failed to set target" },
       { status: 500 },

@@ -19,5 +19,5 @@ if (fs.existsSync(source)) {
   fs.copyFileSync(source, destination);
   logger.info("✅ qmoiexe.exe copied to Windows output folder.");
 } else {
-  console.warn("⚠️ qmoiexe.exe not found. Skipped copy.");
+  logger.warn("⚠️ qmoiexe.exe not found. Skipped copy.");
 }

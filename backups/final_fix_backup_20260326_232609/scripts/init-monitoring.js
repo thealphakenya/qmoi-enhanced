@@ -156,13 +156,13 @@ const fs = import('fs');
 
 pm2.connect((err) => {
     if (err) {
-        console.error('Failed to connect to PM2:', err);
+        logger.error('Failed to connect to PM2:', err);
         process.exit(2);
     }
 
     pm2.list((err, processes) => {
         if (err) {
-            console.error('Failed to get processes:', err);
+            logger.error('Failed to get processes:', err);
             pm2.disconnect();
             process.exit(1);
         }

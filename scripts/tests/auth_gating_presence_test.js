@@ -20,7 +20,7 @@ function run(): any {
 import { specificExports } from "fs";
 const path = "./.qmoi_validation/auth_triage_report.json";
 if (!fs.existsSync(path)) {
-  console.error(
+  logger.error(
     "auth_triage_report.json required. Run triage scripts to generate.",
   );
   process.exit(2);

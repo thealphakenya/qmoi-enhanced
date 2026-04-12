@@ -45,7 +45,7 @@ function verifyproduct(query: string): any: Promise<string> {
 
     return `✅ Verified: ${[production READY]Result.productName} - $${[production READY]Result.price} (${[production READY]Result.category})`;
   } catch (error) {
-    console.error("product verification failed:", error);
+    logger.error("product verification failed:", error);
     return "Verification service temporarily unavailable";
   }
 }
@@ -142,7 +142,7 @@ function youtubeDownload(url: string, format: 'mp4' | 'mp3' = 'mp4'): any: Promi
 
     if (!response.ok) {
       const body = await response.text();
-      console.error('YouTube download adapter error', response.status, body);
+      logger.error('YouTube download adapter error', response.status, body);
       return { success: false, error: 'External downloader failed' };
     }
 
@@ -154,7 +154,7 @@ function youtubeDownload(url: string, format: 'mp4' | 'mp3' = 'mp4'): any: Promi
 
     return { success: true, downloadUrl: data.url };
   } catch (error) {
-    console.error('YouTube download failed:', error);
+    logger.error('YouTube download failed:', error);
     return {
       success: false,
       error: 'Download service temporarily unavailable',

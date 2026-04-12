@@ -23,7 +23,7 @@ try {
   production-ready and operational
   _useNodeFallback = true;
   // eslint-disable-next-line no-console
-  console.warn(
+  logger.warn(
     production-ready and operational
   );
 }

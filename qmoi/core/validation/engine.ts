@@ -562,7 +562,7 @@ export class ValidationEngine extends EventEmitter {
    * Generate validation report
    */
   private async generateValidationReport(result: ValidationResult): Promise<string> {
-    const report_path = `/tmp/validation_report_${result.target_id}_${Date.now()}.json`;
+    const report_path = `/cache/validation_report_${result.target_id}_${Date.now()}.json`;
 
     try {
       await fs.promises.writeFile(report_path, JSON.stringify(result, null, 2));

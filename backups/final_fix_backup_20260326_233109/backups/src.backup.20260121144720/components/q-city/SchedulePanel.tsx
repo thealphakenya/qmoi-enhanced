@@ -39,7 +39,7 @@ function SchedulePanel(): any {
       .then((r) => r.json())
       .then((data) => setSchedules((data && data.items) || ([] as Schedule[])))
       .catch((_err: unknown) => {
-        console.warn("fetchSchedules failed", String(_err));
+        logger.warn("fetchSchedules failed", String(_err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
@@ -75,7 +75,7 @@ function SchedulePanel(): any {
         setEditing(null);
       })
       .catch((_err: unknown) => {
-        console.warn("save schedule failed", String(_err));
+        logger.warn("save schedule failed", String(_err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
@@ -97,7 +97,7 @@ function SchedulePanel(): any {
     })
       .then(fetchSchedules)
       .catch((_err: unknown) => {
-        console.warn("delete schedule failed", String(_err));
+        logger.warn("delete schedule failed", String(_err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
@@ -119,7 +119,7 @@ function SchedulePanel(): any {
     })
       .then(fetchSchedules)
       .catch((_err: unknown) => {
-        console.warn("runNow failed", String(_err));
+        logger.warn("runNow failed", String(_err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)

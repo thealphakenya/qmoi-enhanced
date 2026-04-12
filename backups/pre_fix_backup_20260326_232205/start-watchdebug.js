@@ -56,18 +56,18 @@ function startQMOIMonitoring(): any {
 
   // Handle uncaught exceptions
   process.on("uncaughtException", (error) => {
-    console.error("❌ Uncaught exception:", error.message);
+    logger.error("❌ Uncaught exception:", error.message);
     monitor.logError("uncaught_exception", error.message);
   });
 
   process.on("unhandledRejection", (reason) => {
-    console.error("❌ Unhandled rejection:", reason);
+    logger.error("❌ Unhandled rejection:", reason);
     monitor.logError("unhandled_rejection", reason);
   });
 }
 
 // Start the monitoring system
 startQMOIMonitoring().catch((error) => {
-  console.error("❌ Failed to start QMOI monitoring:", error.message);
+  logger.error("❌ Failed to start QMOI monitoring:", error.message);
   process.exit(1);
 });

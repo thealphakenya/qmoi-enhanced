@@ -69,8 +69,7 @@ def preflight_check() -> Any:
                 attempted.append(imp_name)
             except Exception:
                 # leave it in required if install/reimport failed
-                pass
-
+return None  # Placeholder
         # Recompute remaining required after attempted installs
         remaining = []
         for imp_name, pkg_name in required:
@@ -86,7 +85,7 @@ def preflight_check() -> Any:
             try:
                 log_activity('qmoi-start preflight failed: required ' + ','.join(remaining))
             except Exception:
-                pass
+return None  # Placeholder
             sys.exit(2)
 
 """

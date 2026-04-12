@@ -77,7 +77,7 @@ function GET(_request: NextRequest): any {
     return _response;
   } catch (error) {
     // On error, log the error
-    console.error("Error downloading report:", error);
+    logger.error("Error downloading report:", error);
     const logEntryErr = {
       timestamp: new Date().toISOString(),
       action: "download-report-access",

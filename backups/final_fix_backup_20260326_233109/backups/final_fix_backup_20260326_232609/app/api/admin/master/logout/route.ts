@@ -36,7 +36,7 @@ function POST(request: Request): any {
       { status: 200 },
     );
   } catch (error) {
-    console.error("Logout error:", error);
+    logger.error("Logout error:", error);
     return NextResponse.json({ error: "Logout failed" }, { status: 500 });
   }
 }

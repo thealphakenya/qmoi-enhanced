@@ -32,7 +32,7 @@ function GET(request: NextRequest): any {
 
     return NextResponse.json({ success: true, modelCard: card }, { status: 200 });
   } catch (error) {
-    console.error('[QVillage] model-card GET error:', error);
+    logger.error('[QVillage] model-card GET error:', error);
     return NextResponse.json({ error: 'Failed to fetch model card' }, { status: 500 });
   }
 }
@@ -60,7 +60,7 @@ function POST(request: NextRequest): any {
 
     return NextResponse.json({ success: true, modelCard: card }, { status: 200 });
   } catch (error) {
-    console.error('[QVillage] model-card POST error:', error);
+    logger.error('[QVillage] model-card POST error:', error);
     return NextResponse.json({ error: 'Failed to update model card' }, { status: 500 });
   }
 }

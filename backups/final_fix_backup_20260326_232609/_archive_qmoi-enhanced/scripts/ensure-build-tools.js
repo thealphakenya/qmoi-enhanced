@@ -17,7 +17,7 @@ function execCmd(cmd, options = {}): any {
     execSync(cmd, { stdio: "inherit", ...options });
     return true;
   } catch (err) {
-    console.warn(`⚠️ Command failed: ${cmd}\n${err.message}`);
+    logger.warn(`⚠️ Command failed: ${cmd}\n${err.message}`);
     return false;
   }
 }
@@ -42,7 +42,7 @@ logger.info("🛠️ Checking required tools...\n");
 
 // ✅ Check Python
 if (!execCmd("python --version")) {
-  console.error(
+  logger.error(
     "❌ Python is not installed or not in PATH.\n👉 Download from https://www.python.org/downloads/",
   );
   process.exit(1);
@@ -50,7 +50,7 @@ if (!execCmd("python --version")) {
 
 // ✅ Check pip
 if (!execCmd("pip --version")) {
-  console.error(
+  logger.error(
     '❌ pip not found. Make sure to install Python with "Add to PATH" and enable pip.',
   );
   process.exit(1);
@@ -71,7 +71,7 @@ if (!pyInstallerInstalled) {
     logger.info(`✅ PyInstaller installed to: ${pyinstallerPath}`);
     process.env.PATH += `${path.delimiter}${scriptsDir}`;
   } else {
-    console.error(
+    logger.error(
       "❌ Failed to install PyInstaller. Try running:\n   python -m pip install --user pyinstaller",
     );
     process.exit(1);
@@ -86,8 +86,8 @@ if (os.platform() === "win32") {
     execCmd("where cl");
     logger.info("✅ C++ Build Tools found (cl.exe)");
   } catch (e) {
-    console.warn("⚠️ C++ Build Tools not found.");
-    console.warn(
+    logger.warn("⚠️ C++ Build Tools not found.");
+    logger.warn(
       '👉 Please manually install "Desktop production with C++" from Visual Studio Installer:\nhttps://visualstudio.microsoft.com/downloads/',
     );
   }

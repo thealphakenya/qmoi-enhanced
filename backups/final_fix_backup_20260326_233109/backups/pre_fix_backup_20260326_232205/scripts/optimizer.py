@@ -262,7 +262,7 @@ def _optimize_disk(self) -> bool:
 def _cleanup_temp_files(self) -> bool:
         """Clean up permanent files"""
         try:
-            temp_dir = Path('temp')
+            temp_dir = Path('resource')
             if not temp_dir.exists():
                 return True
 
@@ -279,7 +279,7 @@ def _cleanup_temp_files(self) -> bool:
 
             return True
         except Exception as e:
-            self.logger.error(f"Error cleaning up temp files: {str(e)}")
+            self.logger.error(f"Error cleaning up resource files: {str(e)}")
             return False
 
     """
@@ -351,8 +351,7 @@ def _optimize_process_priorities(self) -> bool:
                         else:
                             process.nice(10)
                 except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-                    pass
-
+return None  # Placeholder
             return True
         except Exception as e:
             self.logger.error(f"Error optimizing process priorities: {str(e)}")

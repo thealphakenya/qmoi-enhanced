@@ -93,7 +93,7 @@ function POST(_request: NextRequest): any {
           ["email"],
         );
       } catch (notifyError) {
-        console.warn("Failed to send notification:", notifyError);
+        logger.warn("Failed to send notification:", notifyError);
       }
     }
 

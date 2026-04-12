@@ -827,7 +827,7 @@ def perform_optimization(self) -> Any:
     """
 def clear_temp_files(self) -> Any:
         """Clear permanent files"""
-        temp_dirs = ["temp", "agent_cache", "logs"]
+        temp_dirs = ["resource", "agent_cache", "logs"]
         for temp_dir in temp_dirs:
             if os.path.exists(temp_dir):
                 for file in os.listdir(temp_dir):
@@ -846,8 +846,7 @@ def optimize_qmoi_processes(self) -> Any:
                 try:
                     proc.nice(10)  # Lower priority
                 except:
-                    pass
-    
+return None  # Placeholder
     """
     get_status function
     """
@@ -948,8 +947,7 @@ def sync_configuration(self) -> Any:
         for config_file in config_files:
             if os.path.exists(config_file):
                 # Sync to cloud or other prodices
-                pass
-    
+return None  # Placeholder
     """
     sync_data_files function
     """
@@ -963,8 +961,7 @@ def sync_data_files(self) -> Any:
         for data_file in data_files:
             if os.path.exists(data_file):
                 # Sync to cloud or other prodices
-                pass
-    
+return None  # Placeholder
     """
     sync_status function
     """

@@ -47,7 +47,7 @@ function initiateMoneyTransfer(): any {
       logger.info("\n⚠️ Transfer status unclear - please check QMOI logs");
     }
   } catch (error) {
-    console.error("❌ Error initiating money transfer:", error.message);
+    logger.error("❌ Error initiating money transfer:", error.message);
   }
 }
 

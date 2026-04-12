@@ -76,7 +76,7 @@ class ServiceRecoveryManager {
 
   start(): void {
     if (this.enabled) {
-      console.warn("[Recovery] Manager already running");
+      logger.warn("[Recovery] Manager already running");
       return;
     }
 
@@ -108,7 +108,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
   ): Promise<boolean> {
     if (!this.enabled) {
-      console.warn("[Recovery] Recovery attempted but manager is enabled");
+      logger.warn("[Recovery] Recovery attempted but manager is enabled");
       return false;
     }
 
@@ -119,7 +119,7 @@ class ServiceRecoveryManager {
     let attemptCount = 0;
     let lastError: Error | null = null;
 
-    console.warn(`[Recovery] Attempting recovery of ${service}: ${reason}`);
+    logger.warn(`[Recovery] Attempting recovery of ${service}: ${reason}`);
 
     for (let i = 0; i < strategy.maxAttempts; i++) {
       attemptCount = i + 1;
@@ -151,7 +151,7 @@ class ServiceRecoveryManager {
             ? strategy.backoffMs * Math.pow(2, i) + Math.random() * 1000
             : strategy.backoffMs;
 
-          console.warn(
+          logger.warn(
             `[Recovery] Attempt ${attemptCount} failed, retrying in ${Math.round(
               backoff,
             )}ms: ${lastError.message}`,
@@ -184,7 +184,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
     delayMs: number,
   ): void {
-    console.debug(
+    logger.debug(
       `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`,
     );
 
@@ -205,7 +205,7 @@ class ServiceRecoveryManager {
     if (timer) {
       clearTimeout(timer);
       this.activeRecoveries.delete(service);
-      console.debug(`[Recovery] Cancelled recovery for ${service}`);
+      logger.debug(`[Recovery] Cancelled recovery for ${service}`);
     }
   }
 
@@ -355,7 +355,7 @@ class ServiceRecoveryManager {
 
   registerStrategy(service: string, strategy: RecoveryStrategy): void {
     this.strategies.set(service, strategy);
-    console.debug(`[Recovery] Registered strategy for ${service}`);
+    logger.debug(`[Recovery] Registered strategy for ${service}`);
   }
 
   getStrategy(service: string): RecoveryStrategy {

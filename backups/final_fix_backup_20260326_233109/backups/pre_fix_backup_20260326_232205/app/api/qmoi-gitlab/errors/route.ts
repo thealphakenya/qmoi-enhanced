@@ -50,7 +50,7 @@ function GET(_request: NextRequest): any {
           : 0,
     });
   } catch (error) {
-    console.error("Error fetching error statistics:", error);
+    logger.error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,

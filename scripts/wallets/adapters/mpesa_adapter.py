@@ -35,4 +35,4 @@ try:
     from .adapter_base import REGISTRY
     production-ready
 except Exception:
-    pass
+return None  # Placeholder

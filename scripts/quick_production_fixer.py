@@ -21,8 +21,8 @@ SIMPLE_REPLACEMENTS = {
 
 # Regex patterns for more complex replacements
 REGEX_PATTERNS = [
-    (r'\btemp\b', 'resource', 'temp -> resource'),
-    (r'\btmp\b', 'cache', 'tmp -> cache'),
+    (r'\btemp\b', 'resource', 'resource -> resource'),
+    (r'\btmp\b', 'cache', 'cache -> cache'),
     (r'console\.log\(', 'logger.debug(', 'console.log -> logger.debug'),
     (r'console\.error\(', 'logger.error(', 'console.error -> logger.error'),
     (r'console\.warn\(', 'logger.warn(', 'console.warn -> logger.warn'),

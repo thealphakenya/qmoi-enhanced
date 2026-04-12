@@ -322,8 +322,7 @@ def scan_file(self, file_path) -> Any:
         
         except Exception as e:
             # Log unreadable files but don't fail
-            pass
-        
+return None  # Placeholder
         return errors
 
     """

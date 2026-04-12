@@ -30,7 +30,7 @@ for (const r of results) {
   const hasDynamic =
     /export\s+const\s+dynamic\s*=\s*['"]force-dynamic['"]/.test(content);
   if (!hasRuntime || !hasDynamic) {
-    console.error(
+    logger.error(
       `Route ${r.file} required runtime/dynamic flags` +
         (hasRuntime ? " dynamic" : "") +
         (hasDynamic ? " runtime" : ""),

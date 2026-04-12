@@ -122,7 +122,7 @@ def get(self, key: str) -> Optional[str]:
                 cur.execute('DELETE FROM cache WHERE key=?', (key,))
                 self.conn.commit()
             except Exception:
-                pass
+return None  # Placeholder
             return None
         return value
 

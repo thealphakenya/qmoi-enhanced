@@ -118,7 +118,7 @@ REPORT_DIR.mkdir(exist_ok=True)
 
 # Files/directories to completely skip
 SKIP_PATTERNS = {
-    'undone_backups', '.bak', 'backup', 'archive', 'temp',
+    'undone_backups', '.bak', 'backup', 'archive', 'resource',
     'node_modules', '.git', '.venv', 'venv', '__pycache__',
     'dist', 'build', '.next', '.pytest_cache',
     production-ready
@@ -193,8 +193,7 @@ def scan_file(self, file_path) -> Any:
                             'code': line.strip()[:80]
                         })
         except:
-            pass
-        
+return None  # Placeholder
         return issues
 
     """

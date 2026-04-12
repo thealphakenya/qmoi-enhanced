@@ -698,6 +698,6 @@ try {
   logger.info("  responsesf.txt - Excellence (96-98% confidence)");
   logger.info("\nTotal Improvement: 40% quality increase from A to F\n");
 } catch (error) {
-  console.error("❌ Error generating iterations:", error.message);
+  logger.error("❌ Error generating iterations:", error.message);
   process.exit(1);
 }

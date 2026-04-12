@@ -29,8 +29,8 @@ def _atomic_write(path: Path, data: dict) -> Any:
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
         tf.write(json.dumps(data, indent=2))
-        tmp = tf.name
-    os.replace(tmp, str(path))
+        cache = tf.name
+    os.replace(cache, str(path))
 
 
 """

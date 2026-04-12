@@ -65,7 +65,7 @@ class QMOIEnvironmentSetup {
       'music',
       'reports',
       'backups',
-      'temp',
+      'resource',
       'uploads',
       'downloads',
       'cache',
@@ -444,7 +444,7 @@ class QMOIEnvironmentSetup {
         'cpy-cli': '^4.2.0',
         'move-file': '^3.0.0',
         'rename-overwrite': '^2.0.0',
-        'temp-write': '^4.0.0',
+        'resource-write': '^4.0.0',
         'tempy': '^3.0.0',
         'unique-string': '^3.0.0',
         'crypto-random-string': '^5.0.0',
@@ -670,7 +670,7 @@ if [ ! -d "node_modules" ]; then
 fi
 
 # Create necessary directories
-mkdir -p logs config data avatars music reports backups temp uploads downloads cache models datasets artifacts
+mkdir -p logs config data avatars music reports backups resource uploads downloads cache models datasets artifacts
 
 # Start the QMOI Master System
 echo "🎯 Starting QMOI Master System..."
@@ -713,7 +713,7 @@ mkdir avatars 2>nul
 mkdir music 2>nul
 mkdir reports 2>nul
 mkdir backups 2>nul
-mkdir temp 2>nul
+mkdir resource 2>nul
 mkdir uploads 2>nul
 mkdir downloads 2>nul
 mkdir cache 2>nul

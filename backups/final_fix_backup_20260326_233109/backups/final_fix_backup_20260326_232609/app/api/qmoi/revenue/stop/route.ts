@@ -43,7 +43,7 @@ function POST(_request: NextRequest): any {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Stop revenue engine _error:", error);
+    logger.error("Stop revenue engine _error:", error);
     return NextResponse.json(
       { _error: "Failed to stop revenue engine" },
       { status: 500 },

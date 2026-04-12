@@ -39,7 +39,7 @@ walk(repoRoot, (file) => {
     const original = s;
 
     // common replacements
-    s = s.replace(/console\.error\s*\(/g, "console.error(");
+    s = s.replace(/console\.error\s*\(/g, "logger.error(");
     s = s.replace(/\(globalThis as any\)/g, "");
     s = s.replace(/\(global as any\)/g, "");
 

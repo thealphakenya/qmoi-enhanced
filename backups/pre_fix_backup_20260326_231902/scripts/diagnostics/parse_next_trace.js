@@ -5,7 +5,7 @@
 
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
-console.error(
+logger.error(
   "This file is deprecated. Use: `npm run diagnose:trace` or `node ./scripts/diagnostics/parse_next_trace.cjs .next/trace`",
 );
 process.exit(1);

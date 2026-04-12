@@ -43,7 +43,7 @@ function testInstall(filePath): any {
     execSync(cmd, { stdio: "inherit" });
     logger.info(`✅ Install test passed: ${filePath}`);
   } catch (err) {
-    console.error(`❌ Install failed: ${filePath}\n`, err.message);
+    logger.error(`❌ Install failed: ${filePath}\n`, err.message);
   }
 }
 

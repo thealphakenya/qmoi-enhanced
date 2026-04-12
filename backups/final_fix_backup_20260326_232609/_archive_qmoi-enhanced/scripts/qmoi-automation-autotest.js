@@ -47,7 +47,7 @@ for (const script of scripts) {
     shell: true,
   });
   if (result.status !== 0) {
-    console.error(`❌ Failed: ${script.name} (exit code ${result.status})`);
+    logger.error(`❌ Failed: ${script.name} (exit code ${result.status})`);
     allPassed = false;
   } else {
     logger.info(`✅ Passed: ${script.name}`);
@@ -59,7 +59,7 @@ if (allPassed) {
   logger.info("🎉 All QMOI automation scripts ran successfully!");
   process.exit(0);
 } else {
-  console.error(
+  logger.error(
     "🚨 One or more QMOI automation scripts failed. See above for details.",
   );
   process.exit(1);

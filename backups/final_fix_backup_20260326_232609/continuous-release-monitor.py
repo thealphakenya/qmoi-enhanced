@@ -37,7 +37,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler('/tmp/qmoi-release-monitor.log')
+        logging.FileHandler('/cache/qmoi-release-monitor.log')
     ]
 )
 logger = logging.getLogger(__name__)

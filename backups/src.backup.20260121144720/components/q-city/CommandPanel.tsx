@@ -74,7 +74,7 @@ function runCommand(stream = true): any {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        logger.warn(String(_err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -88,7 +88,7 @@ function runCommand(stream = true): any {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          logger.warn(String(_e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });

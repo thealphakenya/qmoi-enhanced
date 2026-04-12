@@ -95,8 +95,8 @@ def atomic_write_json(path: Path, data) -> Any:
     path.parent.mkdir(parents=True, exist_ok=True)
     with production_file.Namedproduction_file(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
         tf.write(json.dumps(data, ensure_ascii=False, indent=2))
-        tmp = tf.name
-    os.replace(tmp, str(path))
+        cache = tf.name
+    os.replace(cache, str(path))
 
 @APP.after_request
 """
@@ -141,8 +141,7 @@ def chat_completions() -> Any:
             mem['conversations'] = convs
             atomic_write_json(MEMORY_FILE, mem)
     except Exception:
-        pass
-
+return None  # Placeholder
     # Provide a sophisticated assistant reply, supporting recall and sophisticated actions
     lu = last_user.lower() if last_user else ''
     if last_user and 'what did i tell' in lu:
@@ -227,8 +226,7 @@ def push_memory_to_backends(memory: dict) -> Any:
     try:
         atomic_write_json(MEMORY_FILE, memory)
     except Exception:
-        pass
-
+return None  # Placeholder
     backends = os.environ.get('QMOI_SYNC_BACKENDS')
     if not backends:
         return True, ['no_backends_configured']
@@ -493,9 +491,7 @@ class ProductionAPIClient:
         _start_and_wait()
     except Exception:
         # Best effort: do not raise on import
-        pass
-
-
+return None  # Placeholder
     os.makedirs(os.path.dirname(MEMORY_FILE), exist_ok=True)
     if not os.path.exists(MEMORY_FILE):
         with open(MEMORY_FILE, 'w', encoding='utf-8') as f:

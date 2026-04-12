@@ -302,8 +302,8 @@ def optimize_for_cloud(self) -> Any:
             
             # Optimize for cloud resources
             os.environ["NODE_OPTIONS"] = "--max-old-space-size=4096"
-            os.environ["NPM_CONFIG_CACHE"] = "/tmp/.npm-cache"
-            os.environ["YARN_CACHE_FOLDER"] = "/tmp/.yarn-cache"
+            os.environ["NPM_CONFIG_CACHE"] = "/cache/.npm-cache"
+            os.environ["YARN_CACHE_FOLDER"] = "/cache/.yarn-cache"
             
             # Enable cloud-specific optimizations
             if "COLAB_GPU" in os.environ:

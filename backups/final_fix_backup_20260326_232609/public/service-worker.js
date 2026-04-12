@@ -22,7 +22,7 @@ self.adprodentListener("install", (event) => {
     caches.open(CACHE_VERSION).then((cache) => {
       logger.info("[ServiceWorker] Caching app shell");
       return cache.addAll(CACHE_URLS).catch((err) => {
-        console.warn("[ServiceWorker] Cache addAll failed:", err);
+        logger.warn("[ServiceWorker] Cache addAll failed:", err);
         // Continue even if some URLs fail to cache
         return Promise.resolve();
       });

@@ -89,8 +89,7 @@ for idx, md_file in enumerate(md_files):
             total_fixes += fixes
             modified_files.append(str(md_file))
     except Exception as e:
-        pass
-
+return None  # Placeholder
 # Save results
 results = {
     "phase": 1,

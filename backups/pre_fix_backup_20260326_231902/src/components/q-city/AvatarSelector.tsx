@@ -107,7 +107,7 @@ function AvatarSelector({
         } avatar.`,
       });
     } catch (_e: unknown) {
-      console.warn(String(_e));
+      logger.warn(String(_e));
       toast({
         title: "Error",
         description: "Failed to switch avatar. Please try again.",
@@ -134,7 +134,7 @@ function AvatarSelector({
         description: "Avatar has been successfully upgraded with new features.",
       });
     } catch (_e: unknown) {
-      console.warn(String(_e));
+      logger.warn(String(_e));
       toast({
         title: "Upgrade Error",
         description: "Failed to upgrade avatar. Please try again.",
@@ -168,7 +168,7 @@ function AvatarSelector({
           "Avatar has been enhanced with improved quality and features.",
       });
     } catch (_e: unknown) {
-      console.warn(String(_e));
+      logger.warn(String(_e));
       toast({
         title: "Enhancement Error",
         description: "Failed to enhance avatar. Please try again.",

@@ -125,7 +125,7 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler('/tmp/qmoi_phase4_deploy.log')
+        logging.FileHandler('/cache/qmoi_phase4_deploy.log')
     ]
 )
 logger = logging.getLogger(__name__)
@@ -399,8 +399,7 @@ def stage_wallet(self) -> bool:
                             exposed_count += 1
                             logger.warning(f"⚠️  Potential secret in {wfile}")
             except:
-                pass
-        
+return None  # Placeholder
         if exposed_count > 0:
             logger.error(f"❌ Found {exposed_count} potential exposed wallet secrets")
             return False

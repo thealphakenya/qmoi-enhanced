@@ -16,19 +16,19 @@ function runRustLintFix(file): any {
     process.platform === "win32" ? "rust_lint_fix.exe" : "./rust_lint_fix";
   const result = spawnSync(bin, [file], { encoding: "utf-8" });
   if (result.error) {
-    console.error("Error running Rust lint fixer:", result.error);
+    logger.error("Error running Rust lint fixer:", result.error);
     return;
   }
   logger.info(result.stdout);
   if (result.stderr) {
-    console.error(result.stderr);
+    logger.error(result.stderr);
   }
 }
 
 if (require.main === module) {
   const file = process.argv[2];
   if (!file) {
-    console.error("Usage: node rust_lint_fix.js <file>");
+    logger.error("Usage: node rust_lint_fix.js <file>");
     process.exit(1);
   }
   runRustLintFix(file);

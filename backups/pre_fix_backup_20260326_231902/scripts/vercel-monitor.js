@@ -138,7 +138,7 @@ function checkDeployment(): any {
 
     logger.info("\n");
   } catch (error) {
-    console.error("❌ Error checking deployment:", error.message);
+    logger.error("❌ Error checking deployment:", error.message);
     logger.info("\nTroubleshooting:");
     logger.info("1. Verify VERCEL_TOKEN is correct");
     logger.info("2. Verify project name: qmoi-enhanced");

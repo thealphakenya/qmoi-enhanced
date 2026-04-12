@@ -78,7 +78,7 @@ Network throughput gain: 45.2%
     tearDown function
     """
 def tearDown(self) -> Any:
-        """Clean up temp directory"""
+        """Clean up resource directory"""
         os.chdir(self.old_cwd)
         shutil.rmtree(self.test_dir)
         
@@ -156,8 +156,7 @@ def setUp(self) -> Any:
     """
 def tearDown(self) -> Any:
         """Clean up"""
-        pass
-        
+return None  # Placeholder
     """
     test_reliability_categorization function
     """

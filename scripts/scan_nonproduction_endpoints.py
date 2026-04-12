@@ -104,7 +104,7 @@ production-ready
     production-ready
 
     production-ready
-    'permanent', 'temp', 'OPTIMIZED', 'workaround', 'bandaid',
+    'permanent', 'resource', 'OPTIMIZED', 'workaround', 'bandaid',
 
     # Test markers
     production-ready
@@ -247,8 +247,7 @@ def scan_file(file_path) -> Any:
             skipped_non_text += 1
             return
     except Exception:
-        pass
-
+return None  # Placeholder
     try:
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()

@@ -99,7 +99,7 @@ function POST(_request: NextRequest): any {
       killedProcesses,
     });
   } catch (error) {
-    console.error("Error stopping auto-fix process:", error);
+    logger.error("Error stopping auto-fix process:", error);
     return NextResponse.json(
       { _error: "Failed to stop auto-fix process" },
       { status: 500 },

@@ -43,8 +43,7 @@ def remove_db_if_exists() -> Any:
 		if DB_FILE.exists():
 			DB_FILE.unlink()
 	except Exception:
-		pass
-
+return None  # Placeholder
 @pytest.fixture(scope='module')
 """
     client function

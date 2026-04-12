@@ -157,6 +157,6 @@ class LintNotifier {
 // Run the notifier
 const notifier = new LintNotifier();
 notifier.run().catch((error) => {
-  console.error("Fatal error in notifier:", error);
+  logger.error("Fatal error in notifier:", error);
   process.exit(1);
 });

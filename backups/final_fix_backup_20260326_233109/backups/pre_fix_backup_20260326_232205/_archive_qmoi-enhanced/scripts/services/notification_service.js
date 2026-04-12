@@ -30,7 +30,7 @@ class NotificationService {
         return JSON.parse(fs.readFileSync(configPath, "utf8"));
       }
     } catch (error) {
-      console.warn("Failed to load notification config:", error.message);
+      logger.warn("Failed to load notification config:", error.message);
     }
 
     // Default config
@@ -60,7 +60,7 @@ class NotificationService {
     try {
       fs.appendFileSync(this.logFile, logEntry);
     } catch (error) {
-      console.warn("Failed to write to notification log:", error.message);
+      logger.warn("Failed to write to notification log:", error.message);
     }
   }
 

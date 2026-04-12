@@ -40,7 +40,7 @@ function fetchLogs(): any {
         setLoading(false);
       })
       .catch((_e: unknown) => {
-        console.warn(String(_e));
+        logger.warn(String(_e));
         setLoading(false);
       });
   }

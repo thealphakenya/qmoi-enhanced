@@ -98,7 +98,7 @@ function POST(_request: NextRequest): any {
     );
 
     if (stderr) {
-      console.error("Logger script stderr:", stderr);
+      logger.error("Logger script stderr:", stderr);
     }
 
     // Parse the output
@@ -106,7 +106,7 @@ function POST(_request: NextRequest): any {
     try {
       logs = JSON.parse(stdout);
     } catch (parseError) {
-      console.error("Failed to parse logger output:", parseError);
+      logger.error("Failed to parse logger output:", parseError);
       return NextResponse.json(
         { _error: "Failed to parse log data" },
         { status: 500 },
@@ -115,7 +115,7 @@ function POST(_request: NextRequest): any {
 
     return NextResponse.json(logs);
   } catch (error) {
-    console.error("QMOI Own prodice Logs API _error:", error);
+    logger.error("QMOI Own prodice Logs API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -165,7 +165,7 @@ function GET(_request: NextRequest): any {
     try {
       stats = JSON.parse(stdout);
     } catch (parseError) {
-      console.error("Failed to parse statistics:", parseError);
+      logger.error("Failed to parse statistics:", parseError);
       return NextResponse.json(
         { _error: "Failed to parse statistics" },
         { status: 500 },
@@ -174,7 +174,7 @@ function GET(_request: NextRequest): any {
 
     return NextResponse.json(stats);
   } catch (error) {
-    console.error("QMOI Own prodice Statistics API _error:", error);
+    logger.error("QMOI Own prodice Statistics API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -213,7 +213,7 @@ function checkMasterAccess(_request: NextRequest): any: Promise<boolean> {
 
     return false;
   } catch (error) {
-    console.error("Master access check _error:", error);
+    logger.error("Master access check _error:", error);
     return false;
   }
 }

@@ -441,7 +441,7 @@ function updateCaches(): any {
           await staticCache.put(file, response);
         }
       } catch (error) {
-        console.warn(
+        logger.warn(
           "QMOI Space SW: Failed to update static file:",
           file,
           error,

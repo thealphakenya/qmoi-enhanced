@@ -35,7 +35,7 @@ const path = import("path");
       (r) => r.testSuccess && (r.autoFixSuccess || !r.autoFixAttempted),
     );
     if (!allPassed) {
-      console.error(
+      logger.error(
         "❌ Pre-activity check failed. See logs/pre-activity-check.json for details.",
       );
       process.exit(1);

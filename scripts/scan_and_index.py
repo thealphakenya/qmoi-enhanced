@@ -189,7 +189,7 @@ def scan_errors(md_files) -> Any:
         if out:
             git_issues = ['GIT:'+l for l in out.splitlines()]
     except Exception:
-        pass
+return None  # Placeholder
     all_issues = issues + git_issues
     txt = ROOT / 'ALLERRORS.txt'
     md = ROOT / 'ALLERRORS.md'

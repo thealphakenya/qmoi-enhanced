@@ -39,6 +39,6 @@ function runTest(): any {
 }
 
 runTest().catch((_err) => {
-  console.error(`Worker error in ${workerData.testFile}:`, _err);
+  logger.error(`Worker error in ${workerData.testFile}:`, _err);
   process.exit(1);
 });

@@ -21,7 +21,7 @@ set -e
 # Configuration
 VERCEL_URL="https://qmoi-enhanced.vercel.app"
 PROJECT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-LOG_FILE="/tmp/qmoi-deploy-$(date +%Y%m%d-%H%M%S).log"
+LOG_FILE="/cache/qmoi-deploy-$(date +%Y%m%d-%H%M%S).log"
 FORCE_DEPLOY="${1:---no-force}"
 MAX_RETRIES=3
 RETRY_COUNT=0

@@ -60,7 +60,7 @@ function GET(request: NextRequest): any {
       qualityLevels: Object.keys(qualityLevels),
     });
   } catch (error) {
-    console.error("Error fetching avatars:", error);
+    logger.error("Error fetching avatars:", error);
     return NextResponse.json(
       { _error: "Failed to fetch avatars" },
       { status: 500 },
@@ -93,7 +93,7 @@ function POST(_request: NextRequest): any {
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
   } catch (error) {
-    console.error("Error in avatars API:", error);
+    logger.error("Error in avatars API:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -138,7 +138,7 @@ function switchAvatar(avatarId: string): any {
       qualityInfo: qualityLevels[avatar.qualityLevel],
     });
   } catch (error) {
-    console.error("Error switching avatar:", error);
+    logger.error("Error switching avatar:", error);
     return NextResponse.json(
       { _error: "Failed to switch avatar" },
       { status: 500 },
@@ -169,7 +169,7 @@ function upgradeAvatar(avatarId: string): any {
       improvements: ["better_animations", "enhanced_quality", "new_features"],
     });
   } catch (error) {
-    console.error("Error upgrading avatar:", error);
+    logger.error("Error upgrading avatar:", error);
     return NextResponse.json(
       { _error: "Failed to upgrade avatar" },
       { status: 500 },
@@ -208,7 +208,7 @@ function enhanceAvatar(
       ],
     });
   } catch (error) {
-    console.error("Error enhancing avatar:", error);
+    logger.error("Error enhancing avatar:", error);
     return NextResponse.json(
       { _error: "Failed to enhance avatar" },
       { status: 500 },
@@ -242,7 +242,7 @@ function customizeAvatar(avatarId: string, voiceProfile: string): any {
       ],
     });
   } catch (error) {
-    console.error("Error customizing avatar:", error);
+    logger.error("Error customizing avatar:", error);
     return NextResponse.json(
       { _error: "Failed to customize avatar" },
       { status: 500 },

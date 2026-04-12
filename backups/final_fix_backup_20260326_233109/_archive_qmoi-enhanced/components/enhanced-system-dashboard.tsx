@@ -205,7 +205,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
     });
 
   const runOrchestrator = () => {
-    console.warn(
+    logger.warn(
       "// Production implementation:_PROD: Integrate with real orchestrator service for env/lint/test/build/audit/fix/deploy stages.",
     );
     setOrchestratorStatus({

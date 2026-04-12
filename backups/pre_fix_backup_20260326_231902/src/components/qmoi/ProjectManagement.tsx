@@ -193,7 +193,7 @@ function ProjectManagement({
         fetchProjects();
       }
     } catch (error) {
-      console.error("Failed to add task:", error);
+      logger.error("Failed to add task:", error);
     }
   };
 

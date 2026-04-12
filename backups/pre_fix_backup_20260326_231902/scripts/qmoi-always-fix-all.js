@@ -69,14 +69,14 @@ class QMOIEnhancedAlwaysFixAll {
 
       logger.info("✅ QMOI Enhanced Always Fix All System initialized");
     } catch (error) {
-      console.error("❌ Initialization failed:", error.message);
+      logger.error("❌ Initialization failed:", error.message);
       await this.handleCriticalError("Initialization Failed", error);
       throw error;
     }
   }
 
   async createDirectories() {
-    const dirs = ["logs", "backups", "temp", "reports", "artifacts"];
+    const dirs = ["logs", "backups", "resource", "reports", "artifacts"];
     for (const dir of dirs) {
       try {
         await fs.mkdir(dir, { recursive: true });
@@ -121,7 +121,7 @@ class QMOIEnhancedAlwaysFixAll {
     const failedChecks = results.filter((r) => r.status === "rejected");
 
     if (failedChecks.length > 0) {
-      console.warn(`⚠️  ${failedChecks.length} health checks failed`);
+      logger.warn(`⚠️  ${failedChecks.length} health checks failed`);
       await this.fixHealthIssues(failedChecks);
     } else {
       logger.info("✅ All health checks passed");
@@ -206,7 +206,7 @@ class QMOIEnhancedAlwaysFixAll {
       "npx rimraf dist",
       "npx rimraf build",
       'find . -name "*.log" -delete',
-      'find . -name "*.tmp" -delete',
+      'find . -name "*.cache" -delete',
     ];
 
     for (const task of cleanupTasks) {
@@ -302,7 +302,7 @@ class QMOIEnhancedAlwaysFixAll {
           await this.sleep(this.retryDelay);
         }
       } catch (error) {
-        console.error(`❌ Attempt ${attempts} failed:`, error.message);
+        logger.error(`❌ Attempt ${attempts} failed:`, error.message);
         logs.push({
           attempt: attempts,
           _error: error.message,
@@ -1008,7 +1008,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async handleAttemptError(error, attempt) {
-    console.error(`❌ Attempt ${attempt} _error:`, error.message);
+    logger.error(`❌ Attempt ${attempt} _error:`, error.message);
 
     // Log error details
     const errorLog = {
@@ -1185,7 +1185,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async handleCriticalError(title, error) {
-    console.error(`🚨 Critical Error: ${title}`, error.message);
+    logger.error(`🚨 Critical Error: ${title}`, error.message);
 
     await this.notificationSystem.sendNotification(
       "error",
@@ -1196,7 +1196,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async handlePersistentFailure(attempts, logs) {
-    console.error(`💥 Persistent failure after ${attempts} attempts`);
+    logger.error(`💥 Persistent failure after ${attempts} attempts`);
 
     await this.notificationSystem.sendNotification(
       "error",
@@ -1253,7 +1253,7 @@ function main(): any {
     await fixAll.initialize();
     await fixAll.runComprehensiveFix();
   } catch (error) {
-    console.error("💥 Fatal _error:", error.message);
+    logger.error("💥 Fatal _error:", error.message);
     await fixAll.handleCriticalError("Fatal Error", error);
     process.exit(1);
   }
@@ -1271,12 +1271,12 @@ process.on("SIGTERM", async () => {
 });
 
 process.on("uncaughtException", async (error) => {
-  console.error("💥 Uncaught Exception:", error.message);
+  logger.error("💥 Uncaught Exception:", error.message);
   process.exit(1);
 });
 
 process.on("unhandledRejection", async (reason, promise) => {
-  console.error("💥 Unhandled Rejection at:", promise, "reason:", reason);
+  logger.error("💥 Unhandled Rejection at:", promise, "reason:", reason);
   process.exit(1);
 });
 

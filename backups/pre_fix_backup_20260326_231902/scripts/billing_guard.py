@@ -19,8 +19,7 @@ Usage patterns:
     do_paid_action function
     """
 def do_paid_action(...) -> Any:
-      ...
-
+# Implementation needed
 By default this module refuses any paid action unless the environment
 variable `QMOI_ENABLE_BILLING` is set to `true` and optionally the
 `QMOI_BILLING_MAX_USD` sets a hard spend cap for automated flows.
@@ -52,8 +51,7 @@ def _log(entry: dict) -> Any:
         LOG_FILE.write_text(json.dumps(data, indent=2), encoding='utf-8')
     except Exception:
         # last-resort: ignore
-        pass
-
+return None  # Placeholder
 """
     billing_allowed function
     """

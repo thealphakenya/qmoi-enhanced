@@ -165,7 +165,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         }
       }
     } catch (error) {
-      console.warn("Failed to load Qmoi settings from localStorage", error);
+      logger.warn("Failed to load Qmoi settings from localStorage", error);
     }
   }, []);
 
@@ -189,7 +189,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
         },
       }));
     } catch (error) {
-      console.warn("Failed to persist Qmoi settings to localStorage", error);
+      logger.warn("Failed to persist Qmoi settings to localStorage", error);
     }
   }, [
     fontSettings,

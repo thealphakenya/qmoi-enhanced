@@ -453,7 +453,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
       codeChanges: [],
       commands: [
         "npm cache clean --force",
-        "del /s /q temp\\*",
+        "del /s /q resource\\*",
         "taskkill /f /im node.exe",
       ],
       rollbackPlan: [],
@@ -522,7 +522,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
       } catch (error) {
         const errMsg = _error instanceof Error ? error.message : String(error);
         lastError = errMsg;
-        console.warn(`⚠️ Fix attempt ${attempt} failed:`, errMsg);
+        logger.warn(`⚠️ Fix attempt ${attempt} failed:`, errMsg);
 
         if (attempt < this.maxRetries) {
           await this.delay(this.retryDelay * attempt); // Exponential backoff

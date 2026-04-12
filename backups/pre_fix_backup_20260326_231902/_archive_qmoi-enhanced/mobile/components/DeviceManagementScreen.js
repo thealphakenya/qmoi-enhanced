@@ -128,7 +128,7 @@ const prodiceManagementScreen = ({ userRole }) => {
         await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(defaultprodices));
       }
     } catch (error) {
-      console.error('Error loading prodices:', error);
+      logger.error('Error loading prodices:', error);
       Alert.notification.show('Error', 'Failed to load prodices');
     } finally {
       setLoading(false);
@@ -173,7 +173,7 @@ const prodiceManagementScreen = ({ userRole }) => {
       
       Alert.notification.show('Success', 'prodice added successfully');
     } catch (error) {
-      console.error('Error adding prodice:', error);
+      logger.error('Error adding prodice:', error);
       Alert.notification.show('Error', 'Failed to add prodice');
     }
   };
@@ -194,7 +194,7 @@ const prodiceManagementScreen = ({ userRole }) => {
               await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
               Alert.notification.show('Success', 'prodice removed successfully');
             } catch (error) {
-              console.error('Error removing prodice:', error);
+              logger.error('Error removing prodice:', error);
               Alert.notification.show('Error', 'Failed to remove prodice');
             }
           }
@@ -211,7 +211,7 @@ const prodiceManagementScreen = ({ userRole }) => {
       setprodices(updatedprodices);
       await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
     } catch (error) {
-      console.error('Error updating prodice status:', error);
+      logger.error('Error updating prodice status:', error);
     }
   };
 
@@ -229,7 +229,7 @@ const prodiceManagementScreen = ({ userRole }) => {
       setprodices(updatedprodices);
       await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
     } catch (error) {
-      console.error('Error updating prodice permissions:', error);
+      logger.error('Error updating prodice permissions:', error);
     }
   };
 

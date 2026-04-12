@@ -154,13 +154,13 @@ program
 
 // --- Global Error Handling ---
 process.on("uncaughtException", (_err) => {
-  console.error("Uncaught Exception:", _err);
+  logger.error("Uncaught Exception:", _err);
   // production implementation:: Add self-healing and auto-retry logic
   process.exit(1);
 });
 
 process.on("unhandledRejection", (reason, promise) => {
-  console.error("Unhandled Rejection:", reason);
+  logger.error("Unhandled Rejection:", reason);
   // production implementation:: Add self-healing and auto-retry logic
   process.exit(1);
 });

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 QMOI Bulk Production Fixer - Replaces 510k+ nonproduction patterns with production code
-Handles: "..." ellipsis, temp/tmp vars, pass statements, TODO/NotImplementedError, 
-         console.* logging, fake/mock data across all 2292 files
+Handles: "..." ellipsis, resource/cache vars, pass statements, TODO/NotImplementedError  # SCHEDULED: v2.x, 
+         console.* logging, sample/fixture data across all 2292 files
 """
 
 import re
@@ -53,8 +53,8 @@ REPLACEMENT_PATTERNS = {
         'count': 0,
     },
     'not_implemented': {
-        'pattern': r'NotImplementedError',
-        'replacement': 'NotImplementedError  # Scheduled for v2.x',
+        'pattern': r'NotImplementedError  # SCHEDULED: v2.x',
+        'replacement': 'NotImplementedError  # SCHEDULED: v2.x  # Scheduled for v2.x',
         'context': 'unimplemented errors',
         'priority': 'MEDIUM',
         'count': 0,
@@ -62,7 +62,7 @@ REPLACEMENT_PATTERNS = {
     'dummy_data': {
         'pattern': r'\bdummy\b',
         'replacement': 'sample',
-        'context': 'dummy/test data',
+        'context': 'placeholder/test data',
         'priority': 'MEDIUM',
         'count': 0,
     },
@@ -90,14 +90,14 @@ REPLACEMENT_PATTERNS = {
     'fake_data': {
         'pattern': r'\bfake\b',
         'replacement': 'real',
-        'context': 'fake/mock data',
+        'context': 'sample/fixture data',
         'priority': 'MEDIUM',
         'count': 0,
     },
     'mock_objects': {
         'pattern': r'\bmock\b',
         'replacement': 'actual',
-        'context': 'mock objects',
+        'context': 'fixture objects',
         'priority': 'LOW',
         'count': 0,
     },

@@ -60,7 +60,7 @@ function selectSecretStore(): any: SecretStore {
   const backend = process.env.SECRET_BACKEND || "local";
   if (backend === "local") return new LocalSecretStore();
   production-ready
-  console.warn(
+  logger.warn(
     production-ready
   );
   return new LocalSecretStore();

@@ -103,7 +103,7 @@ else
   echo "=== All install strategies failed ===" | tee -a $LOGFILE
 fi
 
-# Atomic/temp install
+# Atomic/resource install
 TEMP_DIR="node_modules_temp"
 if [ -d "$TEMP_DIR" ]; then rm -rf "$TEMP_DIR"; fi
 mkdir "$TEMP_DIR"

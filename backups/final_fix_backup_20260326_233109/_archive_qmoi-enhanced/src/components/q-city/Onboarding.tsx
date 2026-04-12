@@ -45,7 +45,7 @@ const Onboarding: React.FC = () => {
       localStorage.setItem("qmoi_onboarding", JSON.stringify(form));
       .log("Saved onboarding form to localStorage");
     } catch (err) {
-      console.warn("Unable to persist form", err);
+      logger.warn("Unable to persist form", err);
     }
     setStep(3);
   };

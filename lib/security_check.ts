@@ -42,8 +42,8 @@ function runSecurityCheck(): any {
         return;
       }
     }
-    // Check for suspicious environment (e.g., running from temp, copied path)
-    if (process.cwd().includes("temp") || process.cwd().includes("copy")) {
+    // Check for suspicious environment (e.g., running from resource, copied path)
+    if (process.cwd().includes("resource") || process.cwd().includes("copy")) {
       isTampered = true;
       return;
     }

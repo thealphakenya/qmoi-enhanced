@@ -63,7 +63,7 @@ class AutoGitUpdater {
           await this.executeCommand("git pull --rebase");
           logger.info("Git pull/merge completed.");
         } catch (_err) {
-          console.error("Git pull/merge failed:", _err.message);
+          logger.error("Git pull/merge failed:", _err.message);
         }
       },
       10 * 60 * 1000,
@@ -104,7 +104,7 @@ class AutoGitUpdater {
         commitMessage,
       );
     } catch (error) {
-      console.error("❌ Error during update:", error.message);
+      logger.error("❌ Error during update:", error.message);
       await this.handleError(error);
     }
   }
@@ -131,7 +131,7 @@ class AutoGitUpdater {
       // Notify master of version change
       await this.notifyMaster("🔄 Version updated", `New version: ${version}`);
     } catch (error) {
-      console.error("❌ Error updating version/changelog:", error.message);
+      logger.error("❌ Error updating version/changelog:", error.message);
     }
   }
 
@@ -157,7 +157,7 @@ class AutoGitUpdater {
       const summary = await this.createDailySummary();
       await this.notifyMaster("📊 Daily Update Summary", summary);
     } catch (error) {
-      console.error("❌ Error during daily update:", error.message);
+      logger.error("❌ Error during daily update:", error.message);
       await this.handleError(error);
     }
   }
@@ -196,7 +196,7 @@ class AutoGitUpdater {
       await this.executeCommand("git pull --rebase origin main");
       logger.info("🔄 Rebase completed");
     } catch (error) {
-      console.error("❌ Could not resolve conflicts automatically");
+      logger.error("❌ Could not resolve conflicts automatically");
       await this.notifyMaster(
         "⚠️ Git conflicts detected",
         "Manual resolution required",
@@ -232,7 +232,7 @@ class AutoGitUpdater {
 
       logger.info("📚 Documentation updated");
     } catch (error) {
-      console.error("❌ Error updating documentation:", error.message);
+      logger.error("❌ Error updating documentation:", error.message);
     }
   }
 
@@ -278,7 +278,7 @@ class AutoGitUpdater {
         `📝 Last Commit: ${summary.lastCommit}`
       );
     } catch (error) {
-      console.error("❌ Error creating daily summary:", error.message);
+      logger.error("❌ Error creating daily summary:", error.message);
       return "❌ Could not generate daily summary";
     }
   }
@@ -399,13 +399,13 @@ class AutoGitUpdater {
       //   })
       // });
     } catch (error) {
-      console.error("❌ Error notifying master:", error.message);
+      logger.error("❌ Error notifying master:", error.message);
     }
   }
 
   async handleError(error) {
     const errorMessage = `❌ Git Update Error: ${error.message}`;
-    console.error(errorMessage);
+    logger.error(errorMessage);
 
     // Notify master about the error
     await this.notifyMaster("⚠️ Git Update Error", errorMessage);

@@ -210,14 +210,14 @@ def download_cloud_runtime(self) -> Any:
             try:
                 # Download complete cloud runtime
                 runtime_url = "https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip"
-                with production_file.Namedproduction_file(suffix='.zip', delete=False) as tmp:
+                with production_file.Namedproduction_file(suffix='.zip', delete=False) as cache:
                     response = requests.get(runtime_url, stream=True)
                     for chunk in response.iter_content(chunk_size=8192):
-                        tmp.write(chunk)
+                        cache.write(chunk)
                     
-                    with zipfile.ZipFile(tmp.name, 'r') as zip_ref:
+                    with zipfile.ZipFile(cache.name, 'r') as zip_ref:
                         zip_ref.extractall(runtime_path)
-                os.unlink(tmp.name)
+                os.unlink(cache.name)
                 logger.info("‚úÖ Cloud runtime downloaded")
             except Exception as e:
                 logger.info(f"‚ö†Ô∏è Cloud runtime download failed: {e}")
@@ -301,14 +301,14 @@ def create_portable_python(self) -> Any:
             try:
                 # Download portable Python
                 python_url = "https://www.python.org/ftp/python/3.11.0/python-3.11.0-embed-amd64.zip"
-                with production_file.Namedproduction_file(suffix='.zip', delete=False) as tmp:
+                with production_file.Namedproduction_file(suffix='.zip', delete=False) as cache:
                     response = requests.get(python_url, stream=True)
                     for chunk in response.iter_content(chunk_size=8192):
-                        tmp.write(chunk)
+                        cache.write(chunk)
                     
-                    with zipfile.ZipFile(tmp.name, 'r') as zip_ref:
+                    with zipfile.ZipFile(cache.name, 'r') as zip_ref:
                         zip_ref.extractall(portable_python)
-                os.unlink(tmp.name)
+                os.unlink(cache.name)
                 logger.info("‚úÖ Portable Python created")
                 return os.path.join(portable_python, "python.exe")
             except Exception as e:
@@ -508,8 +508,7 @@ def open_frontend() -> Any:
     try:
         webbrowser.open("https://qmoi.app")
     except:
-        pass
-
+return None  # Placeholder
 """
     create_desktop_shortcut function
     """

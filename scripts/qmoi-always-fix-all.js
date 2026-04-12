@@ -76,7 +76,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async createDirectories() {
-    const dirs = ["logs", "backups", "temp", "reports", "artifacts"];
+    const dirs = ["logs", "backups", "resource", "reports", "artifacts"];
     for (const dir of dirs) {
       try {
         await fs.mkdir(dir, { recursive: true });
@@ -206,7 +206,7 @@ class QMOIEnhancedAlwaysFixAll {
       "npx rimraf dist",
       "npx rimraf build",
       'find . -name "*.log" -delete',
-      'find . -name "*.tmp" -delete',
+      'find . -name "*.cache" -delete',
     ];
 
     for (const task of cleanupTasks) {

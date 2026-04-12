@@ -1629,7 +1629,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         const parsed = JSON.parse(saved);
         setConfig((prev) => ({ ...prev, ...parsed }));
       } catch (error) {
-        console.warn("Failed to load Q-Avatar config:", error);
+        logger.warn("Failed to load Q-Avatar config:", error);
       }
     }
   }, []);
@@ -4099,7 +4099,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
         variant: resp.ok ? "success" : "destructive",
       });
     } catch (error) {
-      console.error("Failed to send test notification:", error);
+      logger.error("Failed to send test notification:", error);
       toast({
         title: "Notification Error",
         description: `Unable to send test ${type} notification.`,
@@ -4165,7 +4165,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
 
       setIsRecording(true);
     } catch (error) {
-      console.error("Error initializing audio context:", error);
+      logger.error("Error initializing audio context:", error);
       toast({
         title: "Microphone Access Required",
         description: "Please allow microphone access for voice visualization",
@@ -4339,13 +4339,13 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
       };
 
       utterance.onerror = (event) => {
-        console.error("Speech synthesis error:", event);
+        logger.error("Speech synthesis error:", event);
         setIsSpeaking(false);
       };
 
       speechSynthesis.speak(utterance);
     } catch (error) {
-      console.error("Error speaking audibly:", error);
+      logger.error("Error speaking audibly:", error);
       setIsSpeaking(false);
     }
   }, []);
@@ -4397,7 +4397,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
 
         return fullResponse;
       } catch (error) {
-        console.error("Error generating response:", error);
+        logger.error("Error generating response:", error);
         return "I'm processing that thought now...";
       }
     },
@@ -4460,12 +4460,12 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
       };
 
       recognition.onerror = (event: any) => {
-        console.error("Speech recognition error:", event.error);
+        logger.error("Speech recognition error:", event.error);
       };
 
       recognition.start();
     } catch (error) {
-      console.error("Error starting audible conversation:", error);
+      logger.error("Error starting audible conversation:", error);
       toast({
         title: "Conversation Error",
         description:
@@ -4564,7 +4564,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
 
       analyzeFrame();
     } catch (error) {
-      console.error("Failed to initialize vision:", error);
+      logger.error("Failed to initialize vision:", error);
       toast({
         title: "Camera Access Required",
         description: "Please allow camera access for QMOI vision capabilities",
@@ -4697,7 +4697,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
     };
 
     recognition.onerror = (event: any) => {
-      console.error("Speech recognition error:", event.error);
+      logger.error("Speech recognition error:", event.error);
     };
 
     recognition.onend = () => {
@@ -4724,7 +4724,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
         const data = await res.json();
         if (!cancelled) setQMOIStatus(data.status || "unknown");
       } catch (e) {
-        console.warn("failed to fetch qmoi status", e);
+        logger.warn("failed to fetch qmoi status", e);
       }
     };
     fetchStatus();

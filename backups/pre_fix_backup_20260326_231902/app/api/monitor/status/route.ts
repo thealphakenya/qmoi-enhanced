@@ -119,7 +119,7 @@ function GET(_request: NextRequest): any {
       { status: 200 },
     );
   } catch (error) {
-    console.error("Error in monitor status endpoint:", error);
+    logger.error("Error in monitor status endpoint:", error);
     return NextResponse.json(
       { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
@@ -158,7 +158,7 @@ function POST(_request: NextRequest): any {
       last_result: null,
     });
   } catch (error) {
-    console.error("Error in monitor control endpoint:", error);
+    logger.error("Error in monitor control endpoint:", error);
     return NextResponse.json(
       { _error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },

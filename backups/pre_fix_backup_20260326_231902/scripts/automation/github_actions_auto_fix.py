@@ -479,7 +479,7 @@ def fix_resource_issues(self, error: WorkflowError) -> Dict:
         
         try:
             # Clean up permanent files
-            subprocess.run(["find", ".", "-name", "*.tmp", "-delete"], check=True)
+            subprocess.run(["find", ".", "-name", "*.cache", "-delete"], check=True)
             subprocess.run(["find", ".", "-name", "*.log", "-delete"], check=True)
             
             # Clear build cache

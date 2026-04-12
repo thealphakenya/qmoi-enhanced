@@ -124,7 +124,7 @@ class QMOIRegistry {
         `  Available: ${(health.storageUsage.available / 1024 / 1024).toFixed(2)} MB`,
       );
     } catch (_err) {
-      console.error("[REGISTRY] Error:", _err.message);
+      logger.error("[REGISTRY] Error:", _err.message);
       process.exit(1);
     }
   }
@@ -150,7 +150,7 @@ function main(): any {
       );
     }
   } catch (_err) {
-    console.error("[ERROR]", _err.message);
+    logger.error("[ERROR]", _err.message);
     process.exit(1);
   }
 }

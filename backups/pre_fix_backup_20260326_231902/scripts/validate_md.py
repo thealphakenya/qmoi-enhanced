@@ -89,7 +89,7 @@ def read_text(path: Path) -> str:
             if cached is not None:
                 return cached
         except Exception:
-            pass
+return None  # Placeholder
     try:
         txt = path.read_text(encoding='utf-8')
     except Exception:
@@ -104,7 +104,7 @@ def read_text(path: Path) -> str:
         try:
             mem_set(key, txt, ttl=300)
         except Exception:
-            pass
+return None  # Placeholder
     return txt
 
 

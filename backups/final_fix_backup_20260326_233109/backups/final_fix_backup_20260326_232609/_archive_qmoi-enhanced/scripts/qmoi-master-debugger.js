@@ -19,7 +19,7 @@ function runCheck(command, label): any {
     logger.info(`✅ ${label} OK:\n${output.trim()}`);
     return `✅ ${label}: ${output.trim()}`;
   } catch (err) {
-    console.error(`❌ ${label} FAILED:\n${err.message}`);
+    logger.error(`❌ ${label} FAILED:\n${err.message}`);
     return `❌ ${label}: ${err.message}`;
   }
 }
@@ -31,7 +31,7 @@ function sendTelegramReport(message): any {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!botToken || !chatId) {
-    console.warn(
+    logger.warn(
       "⚠️ Telegram report skipped: required TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID in environment.",
     );
     return;
@@ -45,7 +45,7 @@ function sendTelegramReport(message): any {
     })
     .then(() => logger.info("📤 Telegram report sent successfully."))
     .catch((e) =>
-      console.warn("❌ Failed to send Telegram report:", e.message),
+      logger.warn("❌ Failed to send Telegram report:", e.message),
     );
 }
 

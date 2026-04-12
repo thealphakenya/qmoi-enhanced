@@ -259,11 +259,11 @@ def _get_windows_apps(self) -> List[str]:
                                         app_name = winreg.QueryValueEx(subkey, "DisplayName")[0]
                                         apps.append(app_name)
                                     except:
-                                        pass
+return None  # Placeholder
                             except:
-                                pass
+return None  # Placeholder
                 except:
-                    pass
+return None  # Placeholder
             return apps
         except Exception as e:
             logger.error(f"Error getting Windows apps: {e}")
@@ -307,7 +307,7 @@ def _get_linux_apps(self) -> List[str]:
                             if line.strip():
                                 apps.append(line.split()[1] if len(line.split()) > 1 else line.strip())
                 except:
-                    pass
+return None  # Placeholder
             return apps
         except Exception as e:
             logger.error(f"Error getting Linux apps: {e}")
@@ -328,7 +328,7 @@ def _get_running_processes(self) -> List[str]:
                         'cmdline': ' '.join(proc.info['cmdline']) if proc.info['cmdline'] else ''
                     })
                 except (psutil.NoSuchProcess, psutil.AccessDenied):
-                    pass
+return None  # Placeholder
             return processes
         except Exception as e:
             logger.error(f"Error getting running processes: {e}")
@@ -523,8 +523,7 @@ def _detect_mdm_restrictions(self) -> List[prodiceRestriction]:
                             unlock_methods=['remove_mdm_profile', 'disable_prodice_management']
                         ))
                 except:
-                    pass
-            
+return None  # Placeholder
             # Check for prodice admin policies (Android/Windows)
             if self._check_prodice_admin_policies():
                 restrictions.append(prodiceRestriction(

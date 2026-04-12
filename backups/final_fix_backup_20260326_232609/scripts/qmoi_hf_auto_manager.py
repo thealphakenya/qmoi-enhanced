@@ -81,8 +81,7 @@ def create_hf_repo_if_not_exists(self) -> bool:
                 logger.info(f"Repo {repo_id} already exists")
                 return True
             except HfHubHTTPError:
-                pass
-            
+return None  # Placeholder
             # Create repo
             create_repo(
                 repo_id=repo_id,
@@ -117,8 +116,7 @@ def create_model_repo_if_not_exists(self) -> bool:
                 logger.info(f"Model repo {model_id} already exists")
                 return True
             except HfHubHTTPError:
-                pass
-            
+return None  # Placeholder
             # Create model repo
             create_repo(
                 repo_id=model_id,

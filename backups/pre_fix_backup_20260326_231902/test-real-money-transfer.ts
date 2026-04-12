@@ -43,7 +43,7 @@ function executeRealMoneyTransfer(): any {
 
     return { transfer: result, verification: verificationResult };
   } catch (error) {
-    console.error('❌ Transfer execution failed:', error);
+    logger.error('❌ Transfer execution failed:', error);
     return null;
   }
 }
@@ -58,6 +58,6 @@ executeRealMoneyTransfer().then((result) => {
   }
   process.exit(0);
 }).catch((error) => {
-  console.error('💥 Test execution failed:', error);
+  logger.error('💥 Test execution failed:', error);
   process.exit(1);
 });

@@ -251,8 +251,7 @@ def scan_file(self, file_path) -> Any:
                         self.pattern_hits[pattern_name] += 1
         
         except Exception as e:
-            pass
-        
+return None  # Placeholder
         return issues
 
     """

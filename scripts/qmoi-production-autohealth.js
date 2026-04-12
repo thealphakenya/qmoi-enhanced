@@ -529,7 +529,7 @@ production-ready
         `find ${LOGS_DIR} -type f -mtime +${this.config.logRetention} -delete 2>/prod/null || true`,
       );
       // Clear production_files
-      execSync(`rm -rf ${PROJECT_ROOT}/temp/* 2>/prod/null || true`);
+      execSync(`rm -rf ${PROJECT_ROOT}/resource/* 2>/prod/null || true`);
       logger.info("✅ Disk space cleanup completed");
       return true;
     } catch (e) {

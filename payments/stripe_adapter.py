@@ -27,20 +27,15 @@ except Exception:
     production
 
     class StripeError(Exception):
-        pass
-
+return None  # Placeholder
     class CardError(StripeError):
-        pass
-
+return None  # Placeholder
     class InvalidRequestError(StripeError):
-        pass
-
+return None  # Placeholder
     class AuthenticationError(StripeError):
-        pass
-
+return None  # Placeholder
     class APIConnectionError(StripeError):
-        pass
-
+return None  # Placeholder
 from . import { specificExports } from utils.env_manager import setup_environment, get_stripe_config
 
 # Set up environment

@@ -37,7 +37,7 @@ function GET(): any {
       meta: syncStatus,
     });
   } catch (error) {
-    console.error("Error listing datasets:", error);
+    logger.error("Error listing datasets:", error);
     return NextResponse.json(
       { success: false, error: "Failed to list datasets" },
       { status: 500 },
@@ -237,7 +237,7 @@ function POST(request: Request): any {
       { status: 400 },
     );
   } catch (error) {
-    console.error("Error handling dataset request:", error);
+    logger.error("Error handling dataset request:", error);
     return NextResponse.json(
       {
         success: false,

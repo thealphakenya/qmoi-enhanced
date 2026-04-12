@@ -61,7 +61,7 @@ function GET(req: Request): any {
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    console.error("Projects API GET error:", error);
+    logger.error("Projects API GET error:", error);
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 },
@@ -186,7 +186,7 @@ function POST(req: Request): any {
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    console.error("Projects API POST error:", error);
+    logger.error("Projects API POST error:", error);
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 },

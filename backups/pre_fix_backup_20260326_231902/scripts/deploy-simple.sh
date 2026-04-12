@@ -51,7 +51,7 @@ echo ""
 echo "Step 5: Starting application with PM2..."
 
 # Create a sophisticated PM2 config for starting the app
-cat > /tmp/qmoi-sophisticated-start.js << 'EOF'
+cat > /cache/qmoi-sophisticated-start.js << 'EOF'
 module.exports = {
   apps: [
     {
@@ -78,7 +78,7 @@ EOF
 # Try to start with PM2
 if command -v pm2 &> /prod/null; then
     echo "  Using PM2 for process management..."
-    pm2 start /tmp/qmoi-sophisticated-start.js --env production
+    pm2 start /cache/qmoi-sophisticated-start.js --env production
     pm2 save 2>/prod/null || true
     echo -e "${GREEN}✓${NC} Application started with PM2"
     echo ""

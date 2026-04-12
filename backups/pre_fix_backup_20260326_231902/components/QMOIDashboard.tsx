@@ -747,7 +747,7 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
                     });
                   } catch (e) {
                     // safe fallback if context not available
-                    console.warn(
+                    logger.warn(
                       "Could not update MasterContext on biometric auth",
                       e,
                     );

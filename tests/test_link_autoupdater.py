@@ -23,13 +23,13 @@ def test_autoupdater_dry_run_creates_plan() -> Any:
                 'README.md': ['https://data.com', 'https://nonexistent.local']
             }
         }
-        source = tmp / 'all_links.json'
+        source = cache / 'all_links.json'
         with open(source, 'w', encoding='utf-8') as f:
             json.dump(data, f)
 
         from scripts.link_autoupdater import run_autoupdater
 
-        plan_path = run_autoupdater(source=source, out_dir=tmp, apply=False, max_links=10, allow_network=False)
+        plan_path = run_autoupdater(source=source, out_dir=cache, apply=False, max_links=10, allow_network=False)
         assert plan_path.exists()
         with open(plan_path, 'r', encoding='utf-8') as f:
             plan = json.load(f)
@@ -38,7 +38,7 @@ def test_autoupdater_dry_run_creates_plan() -> Any:
         # data entries should be present
         assert 'data' in plan
     finally:
-        shutil.rmtree(tmp)
+        shutil.rmtree(cache)
 
 import json
 import os

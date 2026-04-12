@@ -113,7 +113,7 @@ function processMpesa(amount: number, type: string): any {
     };
 
     if (!mpesaConfig.consumerKey || !mpesaConfig.consumerSecret) {
-      console.warn("Mpesa credentials not configured, using [production READY]");
+      logger.warn("Mpesa credentials not configured, using [production READY]");
       return {
         status: "success",
         platform: "Mpesa",
@@ -164,7 +164,7 @@ function processBinance(amount: number, type: string): any {
     };
 
     if (!binanceConfig.apiKey || !binanceConfig.secretKey) {
-      console.warn("Binance credentials not configured, using [production READY]");
+      logger.warn("Binance credentials not configured, using [production READY]");
       return {
         status: "success",
         platform: "Binance",
@@ -222,7 +222,7 @@ function processPesapal(amount: number, type: string): any {
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
-      console.warn("Pesapal credentials not configured, using [production READY]");
+      logger.warn("Pesapal credentials not configured, using [production READY]");
       return {
         status: "success",
         platform: "Pesapal",
@@ -279,7 +279,7 @@ function processBitget(amount: number, type: string): any {
     };
 
     if (!bitgetConfig.apiKey || !bitgetConfig.secretKey) {
-      console.warn("Bitget credentials not configured, using [production READY]");
+      logger.warn("Bitget credentials not configured, using [production READY]");
       return {
         status: "success",
         platform: "Bitget",

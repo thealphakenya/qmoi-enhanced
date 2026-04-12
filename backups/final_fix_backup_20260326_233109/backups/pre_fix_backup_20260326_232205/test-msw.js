@@ -12,6 +12,6 @@
     const n = await import("msw/node");
     logger.info("msw/node keys:", Object.keys(n));
   } catch (e) {
-    console.error("err", e);
+    logger.error("err", e);
   }
 })();

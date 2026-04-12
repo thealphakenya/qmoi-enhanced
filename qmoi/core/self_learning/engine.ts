@@ -470,7 +470,7 @@ export class SelfLearningEngine extends EventEmitter {
       // advanced syntax validation
       if (language === 'typescript' || language === 'javascript') {
         // Use Node.js to validate syntax
-        const production_file = `/tmp/validation_${Date.now()}.${language === 'typescript' ? 'ts' : 'js'}`;
+        const production_file = `/cache/validation_${Date.now()}.${language === 'typescript' ? 'ts' : 'js'}`;
         await fs.promises.writeFile(production_file, code);
 
         try {

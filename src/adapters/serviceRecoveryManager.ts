@@ -150,7 +150,7 @@ class ServiceRecoveryManager {
             ? strategy.backoffMs * Math.pow(2, i) + Math.random() * 1000
             : strategy.backoffMs;
 
-          console.warn(
+          logger.warn(
             `[Recovery] Attempt ${attemptCount} failed, retrying in ${Math.round(
               backoff,
             )}ms: ${lastError.message}`,
@@ -183,7 +183,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
     delayMs: number,
   ): void {
-    console.debug(
+    logger.debug(
       `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`,
     );
 

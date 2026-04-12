@@ -23,7 +23,7 @@ try {
   _flaskAvailable = false;
   _useNodeFallback = true;
   // eslint-disable-next-line no-console
-  console.warn(
+  logger.warn(
     "Flask not available; using Node.js fallback server for persona integration tests",
   );
 }
@@ -120,9 +120,9 @@ describe.skip("QM OI helper server (integration)", () => {
         logger.info("[qmoi-server]", d.toString());
       });
       serverProc.stderr.on("data", (d) => {
-        console.error("[qmoi-server-err]", d.toString());
+        logger.error("[qmoi-server-err]", d.toString());
       });
-      serverProc.on("error", (e) => console.error("[qmoi-server-error]", e));
+      serverProc.on("error", (e) => logger.error("[qmoi-server-error]", e));
       serverProc.on("exit", (code, sig) =>
         logger.info("[qmoi-server-exit]", code, sig),
       );

@@ -61,7 +61,7 @@ class ErrorScanner {
       this.parseESLintOutput(result);
       return result;
     } catch (error) {
-      console.error("ESLint scan failed:", error.message);
+      logger.error("ESLint scan failed:", error.message);
       return "";
     }
   }
@@ -80,7 +80,7 @@ class ErrorScanner {
       this.parseTypeScriptOutput(result);
       return result;
     } catch (error) {
-      console.error("TypeScript scan failed:", error.message);
+      logger.error("TypeScript scan failed:", error.message);
       return "";
     }
   }
@@ -504,6 +504,6 @@ const options = {
 
 const scanner = new ErrorScanner();
 scanner.run(options).catch((error) => {
-  console.error("❌ Scanner failed:", error);
+  logger.error("❌ Scanner failed:", error);
   process.exit(1);
 });

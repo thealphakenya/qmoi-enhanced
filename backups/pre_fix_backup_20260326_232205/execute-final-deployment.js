@@ -32,7 +32,7 @@ try {
   logger.info("   2. Clone and run: npm install && npm run prod");
   logger.info("   3. Start creating amazing content!");
 } catch (error) {
-  console.error("❌ Deployment failed:", error.message);
+  logger.error("❌ Deployment failed:", error.message);
   logger.info("");
   logger.info("🔄 Manual deployment commands:");
   logger.info("git add .");

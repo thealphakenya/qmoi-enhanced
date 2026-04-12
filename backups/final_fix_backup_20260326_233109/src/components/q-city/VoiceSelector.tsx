@@ -94,7 +94,7 @@ function VoiceSelector({
         } voice.`,
       });
     } catch (_e: unknown) {
-      console.warn(String(_e));
+      logger.warn(String(_e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -129,7 +129,7 @@ function VoiceSelector({
       // Production implementation: audio playback
       setTimeout(() => setIsPlaying(false), 3000);
     } catch (_e: unknown) {
-      console.warn(String(_e));
+      logger.warn(String(_e));
       toast({
         title: "PRODUCTION Error",
         description: "Could not play voice PRODUCTION.",

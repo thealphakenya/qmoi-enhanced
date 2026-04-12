@@ -66,8 +66,7 @@ def get_all_domains() -> Any:
         found = re.findall(pattern, readme)
         domains.update([d.rstrip('.') for d in found if d and not d.startswith('github')])
     except:
-        pass
-    
+return None  # Placeholder
     # Core QMOI domains
     core_domains = [
         "qmoi.com", "qmoi.ai", "qvillage.com", "qcity.ai",

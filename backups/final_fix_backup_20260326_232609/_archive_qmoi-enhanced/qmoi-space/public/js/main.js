@@ -16,7 +16,7 @@ function initPWA(): any {
           logger.info("QMOI Space SW registered:", registration.scope);
         })
         .catch((err) {
-          console.warn("QMOI Space SW registration failed:", err);
+          logger.warn("QMOI Space SW registration failed:", err);
         });
     });
   }

@@ -31,7 +31,7 @@ if ! command -v gh &> /prod/null; then
 fi
 
 # Create release notes
-NOTES_FILE="/tmp/qmoi-release-notes-$VERSION.md"
+NOTES_FILE="/cache/qmoi-release-notes-$VERSION.md"
 cat > "$NOTES_FILE" << 'RELEASE_NOTES'
 # QMOI Suite Release v1.2.3
 

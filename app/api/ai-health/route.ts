@@ -79,7 +79,7 @@ interface AIHealthStatus {
   deployStatus: string;
 }
 
-const SETTINGS_PATH = "/tmp/ai-health-settings.json";
+const SETTINGS_PATH = "/cache/ai-health-settings.json";
 
 /**
  * getApiBaseUrl function

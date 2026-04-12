@@ -530,7 +530,7 @@ function scanForUsers(): any: Promise<Record<string, any>> {
           const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
           Object.assign(users, data);
         } catch (error) {
-          console.error(
+          logger.error(
             `Error reading user data from ${file}:`,
             error,
           );

@@ -61,7 +61,7 @@ function POST(request: NextRequest): any {
     }
 
   } catch (error) {
-    console.error('Emergency wipe error:', error);
+    logger.error('Emergency wipe error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -98,7 +98,7 @@ function GET(request: NextRequest): any {
     });
 
   } catch (error) {
-    console.error('Wipe status check error:', error);
+    logger.error('Wipe status check error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -137,7 +137,7 @@ function DELETE(request: NextRequest): any {
     }
 
   } catch (error) {
-    console.error('Wipe cancellation error:', error);
+    logger.error('Wipe cancellation error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

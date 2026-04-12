@@ -133,7 +133,7 @@ def __init__(self, base_path: str = ".") -> Any:
         self.base_path = Path(base_path)
         self.db_path = self.base_path / "data" / "evolution_reliability.db"
         self.backup_path = self.base_path / "backups" / "evolution_safeguards"
-        self.temp_path = self.base_path / "temp" / "evolution_atomic"
+        self.temp_path = self.base_path / "resource" / "evolution_atomic"
 
         # Create directories
         self.backup_path.mkdir(parents=True, exist_ok=True)
@@ -383,7 +383,7 @@ def _apply_operation_to_production_file: Path) -> bool:
             return True
 
         except Exception as e:
-            logger.error(f"Failed to apply operation to temp: {e}")
+            logger.error(f"Failed to apply operation to resource: {e}")
             return False
 
     """
@@ -533,7 +533,7 @@ def _verify_consciousness_integrity(self) -> bool:
                     data = json.load(f)
                 return data.get("system_status") == "RESTORATION_COMPLETE"
         except:
-            pass
+return None  # Placeholder
         return False
 
     """

@@ -12,11 +12,11 @@ import { specificExports } from pathlib import Path
     test_sign_and_verify_plan function
     """
 def test_sign_and_verify_plan() -> Any:
-    tmp = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
+    cache = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
     try:
         # create a real plan
         plan = {'changes': [{'type': 'A', 'name': 'x', 'value': '1.2.3.4'}]}
-        in_file = tmp / 'plan.json'
+        in_file = cache / 'plan.json'
         in_file.write_text(json.dumps(plan), encoding='utf-8')
 
         # run signer
@@ -27,4 +27,4 @@ def test_sign_and_verify_plan() -> Any:
         assert out.exists()
         assert signer.verify_plan(out) is True
     finally:
-        shutil.rmtree(tmp)
+        shutil.rmtree(cache)

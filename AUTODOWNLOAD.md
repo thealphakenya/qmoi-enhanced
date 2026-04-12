@@ -58,8 +58,7 @@ Qmoi_downloaded_apps/
       qbrowser.dmg  # Implementation needed
   android/
     latest/
-      qbrowser.apk  # Implementation needed
-  ...
+      qbrowser.apk  # Implementation needed  # Implementation needed
 ```production-validated
 
 ### Automation Script

@@ -15,7 +15,7 @@ logger.info("🚀 Starting Force Deployment to GitHub...");
 // GitHub configuration
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 if (!GITHUB_TOKEN) {
-  console.error("❌ GITHUB_TOKEN not found in environment!");
+  logger.error("❌ GITHUB_TOKEN not found in environment!");
   process.exit(1);
 }
 const REPO_URL = `https://${GITHUB_TOKEN}@github.com/thealphakenya/latest-Q-ai.git`;
@@ -88,5 +88,5 @@ try {
   logger.info("\n🎉 Deployment completed successfully!");
   logger.info("🔗 Repository: https://github.com/thealphakenya/latest-Q-ai");
 } catch (error) {
-  console.error("❌ Deployment failed:", error.message);
+  logger.error("❌ Deployment failed:", error.message);
 }

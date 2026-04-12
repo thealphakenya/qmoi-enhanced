@@ -126,7 +126,7 @@ function VoiceSelector({
         }),
       });
     } catch (error) {
-      console.error("Failed to update pitch:", error);
+      logger.error("Failed to update pitch:", error);
     }
   };
 
@@ -143,7 +143,7 @@ function VoiceSelector({
         }),
       });
     } catch (error) {
-      console.error("Failed to update rate:", error);
+      logger.error("Failed to update rate:", error);
     }
   };
 
@@ -160,7 +160,7 @@ function VoiceSelector({
         }),
       });
     } catch (error) {
-      console.error("Failed to update volume:", error);
+      logger.error("Failed to update volume:", error);
     }
   };
 

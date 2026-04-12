@@ -45,7 +45,7 @@ declare -A KEYWORDS=(
     
     # live/permanent keywords
     [execute]="execute|execute|live|live"
-    [permanent]="permanent|permanent|permanent|temp|Temp|TEMP"
+    [permanent]="permanent|permanent|permanent|resource|Temp|TEMP"
     [production]="production|production|production|latest|latest|latest"
     [provisional]="provisional|Provisional|provisional"
     

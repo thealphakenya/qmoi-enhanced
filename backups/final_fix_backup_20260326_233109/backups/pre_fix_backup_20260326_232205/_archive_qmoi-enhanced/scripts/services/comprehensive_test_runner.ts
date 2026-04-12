@@ -446,7 +446,7 @@ const logger = {
     .log(`[INFO] ${message}`, ...args);
   },
   warn: (message: string, ...args: unknown[]) => {
-    console.warn(`[WARN] ${message}`, ...args);
+    logger.warn(`[WARN] ${message}`, ...args);
   },
   error: (message: string, ...args: unknown[]) => {
     (globalThis.console as any)?.error?.(`[ERROR] ${message}`, ...args);

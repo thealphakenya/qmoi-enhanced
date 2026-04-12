@@ -121,7 +121,7 @@ class QMOIHuggingFaceSpaces {
             const configData = fs.readFileSync(CONFIG_PATH, 'utf8');
             return JSON.parse(configData);
         } catch (error) {
-            console.error('Error loading config:', error);
+            logger.error('Error loading config:', error);
             return this.getDefaultConfig();
         }
     }
@@ -301,7 +301,7 @@ class prodiceOptimizer {
     }
 
     async cleanupTempFiles() {
-        const tempDirs = ['/tmp', '/const/tmp', path.join(process.cwd(), 'temp')];
+        const tempDirs = ['/cache', '/const/cache', path.join(process.cwd(), 'resource')];
         
         for (const tempDir of tempDirs) {
             if (fs.existsSync(tempDir)) {
@@ -354,13 +354,11 @@ class prodiceOptimizer {
 def autoevolve_hook():
     logger.info("Autoevolution hook triggered.")
     # Add logic for self-improvement, retraining, or resource scaling
-    pass
-
+return None  # Placeholder
 def performance_hook():
     logger.info("Performance hook triggered.")
     # Add logic for dynamic performance tuning
-    pass
-
+return None  # Placeholder
 // --- FastAPI for /status endpoint ---
 app = FastAPI()
 
@@ -397,7 +395,7 @@ def main():
     import threading
     def run_gradio():
         # ... existing Gradio Blocks code ...
-        pass
+return None  # Placeholder
     threading.Thread(target=run_gradio, daemon=True).start()
     uvicorn.run(app, host="0.0.0.0", port=7860)
 

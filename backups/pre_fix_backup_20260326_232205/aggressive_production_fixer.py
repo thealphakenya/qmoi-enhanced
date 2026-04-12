@@ -105,8 +105,7 @@ def fix_files_bulk() -> Any:
                     fixed += 1
                     
             except Exception as e:
-                pass
-    
+return None  # Placeholder
     logger.info(f"✓ Processed: {total} files")
     logger.info(f"✓ Fixed: {fixed} files")
     logger.info("\n" + "=" * 70)

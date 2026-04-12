@@ -71,7 +71,7 @@ function updateTestsMd(testList): any {
   const markerEnd = "---\n\nEnd of TESTS.md";
   const headerIndex = content.indexOf(markerStart);
   if (headerIndex === -1) {
-    console.error("Could not find marker in TESTS.md");
+    logger.error("Could not find marker in TESTS.md");
     return;
   }
   const before = content.substring(0, headerIndex);

@@ -431,7 +431,7 @@ def run_comprehensive_test(self) -> Any:
             try:
                 self.restore_test_backup()
             except:
-                pass
+return None  # Placeholder
             return self.test_results
 
 """

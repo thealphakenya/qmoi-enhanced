@@ -255,7 +255,7 @@ export class QmoiTrader {
           this.tradeHistory.push(result);
         }
       } catch (error) {
-        console.error(
+        logger.error(
           `[QMOI Trader] Trade execution error for ${signal.symbol}:`,
           error,
         );

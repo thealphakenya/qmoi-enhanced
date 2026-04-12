@@ -353,7 +353,7 @@ function verifyWebhookSignature(
 
   const secret = process.env.QVILLAGE_WEBHOOK_SECRET;
   if (!secret) {
-    console.warn(
+    logger.warn(
       "QVILLAGE_WEBHOOK_SECRET not set; rejecting webhook for security",
     );
     return false;

@@ -66,7 +66,7 @@ def setup_environment(self) -> Any:
         directories = [
             "employment_letters", "logs", "reports", "models/latest",
             "huggingface_space", "data", "config", "keys", "backups",
-            "cloud_cache", "temp", "artifacts", "distributions"
+            "cloud_cache", "resource", "artifacts", "distributions"
         ]
         
         for directory in directories:
@@ -283,7 +283,7 @@ def optimize_resources(self) -> Any:
         logger.info("Optimizing system resources...")
         
         # Clear permanent files
-        temp_dirs = ["temp", "cloud_cache", "logs"]
+        temp_dirs = ["resource", "cloud_cache", "logs"]
         for temp_dir in temp_dirs:
             if os.path.exists(temp_dir):
                 for file in os.listdir(temp_dir):

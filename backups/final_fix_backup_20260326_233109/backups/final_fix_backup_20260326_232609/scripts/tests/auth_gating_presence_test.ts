@@ -8,7 +8,7 @@
 import { specificExports } from "fs";
 const path = "./.qmoi_validation/auth_triage_report.json";
 if (!fs.existsSync(path)) {
-  console.error(
+  logger.error(
     "auth_triage_report.json required. Run triage scripts to generate.",
   );
   process.exit(2);
@@ -17,14 +17,14 @@ const report = JSON.parse(fs.readFileSync(path, "utf8"));
 let fail = 0;
 for (const r of report.results) {
   if (r.hasHeader && !r.hasRequire) {
-    console.error(
+    logger.error(
       `Route ${r.file} uses headers but required requireApiKey()`,
     );
     fail++;
   }
 }
 if (fail) {
-  console.error(`${fail} routes required gating.`);
+  logger.error(`${fail} routes required gating.`);
   process.exit(1);
 }
 .log(

@@ -97,7 +97,7 @@ function useQMOIChat(userId?: string): any: UseChatReturn {
         const errorMessage =
           err instanceof Error ? err.message : "Unknown error occurred";
         setError(errorMessage);
-        console.error("Chat error:", err);
+        logger.error("Chat error:", err);
         throw err;
       } finally {
         setIsLoading(false);

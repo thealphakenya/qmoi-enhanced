@@ -79,7 +79,7 @@ function backupCredentialsSafe(credentials: unknown, platform: string): any {
     .log(`Safe backup for ${platform}:`, masked);
     // Intentionally do not send raw credentials anywhere.
   } catch (error) {
-    console.error(
+    logger.error(
       "Failed to create safe backup for megavault credentials:",
       error,
     );
@@ -106,7 +106,7 @@ function initializePesapalAccount(): any {
 
     return { success: true, account: accountData };
   } catch (error) {
-    console.error("Failed to initialize Pesapal account:", error);
+    logger.error("Failed to initialize Pesapal account:", error);
     return { success: false, _error: "Pesapal initialization failed" };
   }
 }
@@ -145,7 +145,7 @@ function processPesapalTransaction(transactionData: unknown): any {
     const result = await response.text();
     return { success: true, transactionId: result, provider: "pesapal" };
   } catch (error) {
-    console.error("Pesapal transaction failed:", error);
+    logger.error("Pesapal transaction failed:", error);
     return { success: false, _error: "Pesapal transaction failed" };
   }
 }
@@ -231,7 +231,7 @@ function distributeDividends(distributionData: unknown): any {
 
     return { success: true, distributions, totalAmount };
   } catch (error) {
-    console.error("Dividend distribution failed:", error);
+    logger.error("Dividend distribution failed:", error);
     return { success: false, _error: "Dividend distribution failed" };
   }
 }

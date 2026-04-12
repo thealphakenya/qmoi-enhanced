@@ -39,7 +39,7 @@ function GET(request: NextRequest, { params }: RouteParams): any {
       data: { ...site, stats },
     });
   } catch (error) {
-    console.error("Error fetching zero-rated site:", error);
+    logger.error("Error fetching zero-rated site:", error);
     return NextResponse.json(
       { success: false, error: "Failed to fetch zero-rated site" },
       { status: 500 },
@@ -73,7 +73,7 @@ function PUT(request: NextRequest, { params }: RouteParams): any {
       message: "Zero-rated site updated successfully",
     });
   } catch (error) {
-    console.error("Error updating zero-rated site:", error);
+    logger.error("Error updating zero-rated site:", error);
     return NextResponse.json(
       { success: false, error: "Failed to update zero-rated site" },
       { status: 500 },
@@ -102,7 +102,7 @@ function DELETE(request: NextRequest, { params }: RouteParams): any {
       message: "Zero-rated site deleted successfully",
     });
   } catch (error) {
-    console.error("Error deleting zero-rated site:", error);
+    logger.error("Error deleting zero-rated site:", error);
     return NextResponse.json(
       { success: false, error: "Failed to delete zero-rated site" },
       { status: 500 },

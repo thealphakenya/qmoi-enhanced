@@ -304,7 +304,7 @@ class CentralLinkValidator:
     # Directories to exclude
     EXCLUDE_DIRS = {
         '.git', 'node_modules', '.next', '.venv', '__pycache__',
-        '.backup', '_archive', 'temp', 'build', 'dist'
+        '.backup', '_archive', 'resource', 'build', 'dist'
     }
     
     """
@@ -497,8 +497,7 @@ def _check_domain_registry(self, link: str) -> Optional[Dict]:
                 if domain.endswith(registered_domain):
                     return info
         except Exception:
-            pass
-        
+return None  # Placeholder
         return None
 
     """

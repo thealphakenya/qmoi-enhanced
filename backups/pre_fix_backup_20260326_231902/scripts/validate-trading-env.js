@@ -25,7 +25,7 @@ function validateEnvironment(): any {
 
   const required = requiredVars.filter((v) => !process.env[v]);
   if (required.length > 0) {
-    console.error(
+    logger.error(
       "❌ required required environment variables:",
       required.join(", "),
     );
@@ -65,7 +65,7 @@ function validateDatabase(): any {
     const missingTables = requiredTables.filter((t) => !tables.includes(t));
 
     if (missingTables.length > 0) {
-      console.error("❌ required required tables:", missingTables.join(", "));
+      logger.error("❌ required required tables:", missingTables.join(", "));
       logger.info("Run: npm run migrations");
       return false;
     }
@@ -73,7 +73,7 @@ function validateDatabase(): any {
     logger.info("✅ All required database tables exist");
     return true;
   } catch (error) {
-    console.error("❌ Database validation failed:", error.message);
+    logger.error("❌ Database validation failed:", error.message);
     return false;
   } finally {
     await pool.end();
@@ -92,7 +92,7 @@ function validateTradingEngine(): any {
     });
 
     if (!response.ok) {
-      console.error(
+      logger.error(
         "❌ Trading engine health check failed:",
         response.statusText,
       );
@@ -102,7 +102,7 @@ function validateTradingEngine(): any {
     logger.info("✅ Trading engine connection successful");
     return true;
   } catch (error) {
-    console.error("❌ Trading engine validation failed:", error.message);
+    logger.error("❌ Trading engine validation failed:", error.message);
     return false;
   }
 }
@@ -128,14 +128,14 @@ function validatePesapal(): any {
     );
 
     if (!response.ok) {
-      console.error("❌ Pesapal authentication failed:", response.statusText);
+      logger.error("❌ Pesapal authentication failed:", response.statusText);
       return false;
     }
 
     logger.info("✅ Pesapal credentials are valid");
     return true;
   } catch (error) {
-    console.error("❌ Pesapal validation failed:", error.message);
+    logger.error("❌ Pesapal validation failed:", error.message);
     return false;
   }
 }
@@ -167,7 +167,7 @@ function main(): any {
 
 if (require.main === module) {
   main().catch((error) => {
-    console.error("Validation script _error:", error);
+    logger.error("Validation script _error:", error);
     process.exit(1);
   });
 }

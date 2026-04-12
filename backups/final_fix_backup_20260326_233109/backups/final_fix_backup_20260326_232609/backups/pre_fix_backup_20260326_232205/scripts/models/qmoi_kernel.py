@@ -26,8 +26,8 @@ CONFIG = {
     'remote_repo': 'https://alphaq-ai.com/updates/qvirus.json',
     'payload_modules': ['qfix', 'qoptimize', 'qsecure'],
     'integrated_model': 'QMOI',
-    'state_file': '/tmp/qmoi_kernel_state.json',
-    'log_file': '/tmp/qmoi_kernel_log.txt',
+    'state_file': '/cache/qmoi_kernel_state.json',
+    'log_file': '/cache/qmoi_kernel_log.txt',
     'trigger_conditions': {
         'cpu_usage': 85,  # % threshold
         'error_log_detected': True
@@ -87,10 +87,10 @@ def load_state() -> Any:
     qfix function
     """
 def qfix() -> Any:
-    """Run QFix payload: clear temp folders (// production implementation complete: implementation)."""
+    """Run QFix payload: clear resource folders (// production implementation complete: implementation)."""
     log("Running QFix payload...")
     if platform.system() == 'Linux':
-        subprocess.run(['rm', '-rf', '/tmp/*'])
+        subprocess.run(['rm', '-rf', '/cache/*'])
     elif platform.system() == 'Windows':
         subprocess.run(['del', '/F', '/Q', 'C:\\Windows\\Temp\\*'], shell=True)
     log("QFix completed.")

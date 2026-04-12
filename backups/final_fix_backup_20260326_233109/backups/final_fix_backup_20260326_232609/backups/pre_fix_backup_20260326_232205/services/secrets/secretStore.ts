@@ -61,7 +61,7 @@ function selectSecretStore(): any: SecretStore {
   const backend = process.env.SECRET_BACKEND || "local";
   if (backend === "local") return new LocalSecretStore();
   // production ready code replace with real KMS/HSM backed implementation.
-  console.warn(
+  logger.warn(
     "SecretStore: using local fallback store; replace with KMS production ready",
   );
   return new LocalSecretStore();

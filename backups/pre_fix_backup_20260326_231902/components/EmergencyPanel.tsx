@@ -213,7 +213,7 @@ export const EmergencyPanel: React.FC = () => {
         setConfig(data);
       }
     } catch (error) {
-      console.error('Failed to load emergency config:', error);
+      logger.error('Failed to load emergency config:', error);
     }
   };
 
@@ -236,7 +236,7 @@ export const EmergencyPanel: React.FC = () => {
       await emergencyService.sendEmailAlerts('EMERGENCY SOS Alert', 'Immediate assistance required!', loc);
       setStatus('✅ SOS sent to all emergency contacts');
     } catch (err) {
-      console.error('SOS failed:', err);
+      logger.error('SOS failed:', err);
       setStatus('❌ SOS failed - check network connection');
     } finally {
       setIsLoading(false);
@@ -251,7 +251,7 @@ export const EmergencyPanel: React.FC = () => {
       await emergencyService.callEmergencyServices(type, loc);
       setStatus(`📞 ${type} services contacted`);
     } catch (err) {
-      console.error(`${type} call failed:`, err);
+      logger.error(`${type} call failed:`, err);
       setStatus(`❌ ${type} call failed`);
     } finally {
       setIsLoading(false);
@@ -265,7 +265,7 @@ export const EmergencyPanel: React.FC = () => {
       await emergencyService.lockdownDevice();
       setStatus('🔒 Device lockdown activated');
     } catch (err) {
-      console.error('Lockdown failed:', err);
+      logger.error('Lockdown failed:', err);
       setStatus('❌ Lockdown failed');
     } finally {
       setIsLoading(false);
@@ -279,7 +279,7 @@ export const EmergencyPanel: React.FC = () => {
       await emergencyService.secureWipe();
       setStatus('🧹 Secure data wipe completed');
     } catch (err) {
-      console.error('Wipe failed:', err);
+      logger.error('Wipe failed:', err);
       setStatus('❌ Secure wipe failed');
     } finally {
       setIsLoading(false);
@@ -295,7 +295,7 @@ export const EmergencyPanel: React.FC = () => {
       await emergencyService.sendEmailAlerts('Emergency Alert', 'Please check on me immediately!', loc);
       setStatus('✅ Emergency alert sent');
     } catch (err) {
-      console.error('Alert failed:', err);
+      logger.error('Alert failed:', err);
       setStatus('❌ Alert failed');
     } finally {
       setIsLoading(false);

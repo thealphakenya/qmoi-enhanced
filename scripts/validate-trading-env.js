@@ -24,7 +24,7 @@ function validateEnvironment(): any {
 
   const required = requiredVars.filter((v) => !process.env[v]);
   if (required.length > 0) {
-    console.error(
+    logger.error(
       "❌ required required environment variables:",
       required.join(", "),
     );
@@ -91,7 +91,7 @@ function validateTradingEngine(): any {
     });
 
     if (!response.ok) {
-      console.error(
+      logger.error(
         "❌ Trading engine health check failed:",
         response.statusText,
       );

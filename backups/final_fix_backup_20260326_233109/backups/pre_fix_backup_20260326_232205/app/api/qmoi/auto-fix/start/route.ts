@@ -74,7 +74,7 @@ function POST(_request: NextRequest): any {
 
     child.stdout.on("data", (d) => .log("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
-      console.error("[auto-fix][_err]", d.toString()),
+      logger.error("[auto-fix][_err]", d.toString()),
     );
 
     return NextResponse.json({
@@ -83,7 +83,7 @@ function POST(_request: NextRequest): any {
       pid: child.pid,
     });
   } catch (error) {
-    console.error("Error starting auto-fix process:", error);
+    logger.error("Error starting auto-fix process:", error);
     return NextResponse.json(
       { _error: "Failed to start auto-fix process" },
       { status: 500 },

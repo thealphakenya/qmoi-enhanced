@@ -104,7 +104,7 @@ function GET(_request: NextRequest): any {
 
     return NextResponse.json(status);
   } catch (error) {
-    console.error("Error getting GitHub status:", error);
+    logger.error("Error getting GitHub status:", error);
     return NextResponse.json(
       { _error: "Failed to get GitHub status" },
       { status: 500 },

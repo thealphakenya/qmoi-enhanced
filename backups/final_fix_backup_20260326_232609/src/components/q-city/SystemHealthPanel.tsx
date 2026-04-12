@@ -33,7 +33,7 @@ function fetchStatus(): any {
       const json = await _res.json();
       setData(json as Record<string, unknown>);
     } catch (_err: unknown) {
-      console.warn("fetchStatus failed", String(_err));
+      logger.warn("fetchStatus failed", String(_err));
       const msg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -87,7 +87,7 @@ function runUiHealthCheck(): any {
       setUiTestTime(new Date().toLocaleString());
       setActionMsg("UI health check complete.");
     } catch (_err: unknown) {
-      console.warn("UI health check failed", String(_err));
+      logger.warn("UI health check failed", String(_err));
       setUiHealth("Error");
       setActionMsg("UI health check failed.");
     } finally {

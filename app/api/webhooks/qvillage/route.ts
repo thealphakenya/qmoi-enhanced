@@ -682,7 +682,7 @@ function storeKBEntries(
   // Enhanced storage with indexing
   try {
     production-ready with full-text indexing
-    consoleconsole.log(
+    consolelogger.debug(
       `Storing ${entries.length} KB entries with metadata:`,
       metadata,
     );
@@ -725,7 +725,7 @@ function notifyKBSubscribers(data: unknown): any {
       : 0;
 
     // Notify subscribers about new KB entries
-    consoleconsole.log(
+    consolelogger.debug(
       `Notifying KB subscribers about ${entryCount} new entries`,
     );
 

@@ -109,7 +109,7 @@ function GET(_request: NextRequest): any {
 
     return NextResponse.json(report);
   } catch (error) {
-    console.error("Error getting auto-fix status:", error);
+    logger.error("Error getting auto-fix status:", error);
     return NextResponse.json(
       { _error: "Failed to get auto-fix status" },
       { status: 500 },

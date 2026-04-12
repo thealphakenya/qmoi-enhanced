@@ -325,7 +325,7 @@ class QCityprodiceManager {
     }
   }
 
-  // Atomic/temp install logic
+  // Atomic/resource install logic
   async atomicNpmInstall(packages = []) {
     const tempDir = 'node_modules_temp';
     const command = packages.length > 0 ? `npm install ${packages.join(' ')} --prefix ${tempDir}` : `npm install --prefix ${tempDir}`;

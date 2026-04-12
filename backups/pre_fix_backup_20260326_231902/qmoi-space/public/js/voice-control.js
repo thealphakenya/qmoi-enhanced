@@ -22,7 +22,7 @@ class VoiceControlManager {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      console.warn("Speech Recognition API not supported");
+      logger.warn("Speech Recognition API not supported");
       return;
     }
 
@@ -122,7 +122,7 @@ class VoiceControlManager {
   }
 
   handleRecognitionError(event) {
-    console.error("Speech recognition error:", event.error);
+    logger.error("Speech recognition error:", event.error);
     this.updateVoiceText(`Error: ${event.error}`);
   }
 
@@ -153,7 +153,7 @@ class VoiceControlManager {
         this.speakResponse(result.response);
       }
     } catch (error) {
-      console.error("Voice command processing error:", error);
+      logger.error("Voice command processing error:", error);
     }
   }
 

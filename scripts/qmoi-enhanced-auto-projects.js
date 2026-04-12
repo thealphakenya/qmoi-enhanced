@@ -840,7 +840,7 @@ class QMOIEnhancedAutoProjects {
         );
         this.currentRevenue += result.revenue;
       } else {
-        console.error(
+        logger.error(
           `❌ ${result.type} project generation failed: ${result.error}`,
         );
       }

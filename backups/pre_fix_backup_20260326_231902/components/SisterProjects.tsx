@@ -90,7 +90,7 @@ function handleSuggestions(e: unknown): any {
         setSuggested(suggestions);
       }
     } catch (error) {
-      console.error("Failed to get AI suggestions:", error);
+      logger.error("Failed to get AI suggestions:", error);
     }
   };
 

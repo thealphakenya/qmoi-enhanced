@@ -116,7 +116,7 @@ def update_readme() -> Any:
             os.remove(MAIN_README_PATH)
         os.symlink(LANG_README_PATH, MAIN_README_PATH)
         logger.info(f"🔗 Symlinked {LANG_README_PATH} → README.md")
-    except (OSError, NotImplementedError):
+    except (OSError, NotImplementedError  # SCHEDULED: v2.x):
         shutil.copy2(LANG_README_PATH, MAIN_README_PATH)
         logger.info(f"📄 Copied {LANG_README_PATH} → README.md")
 

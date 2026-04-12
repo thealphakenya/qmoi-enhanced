@@ -58,12 +58,12 @@ def schedule_tasks() -> Any:
     else:
         # Use cron for Linux/macOS
         subprocess.run(['crontab', '-l'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.run(['echo', '0 0 * * * python scripts/optimize_cpu.py', '>>', '/tmp/crontab'], check=True)
-        subprocess.run(['echo', '0 0 * * * python scripts/optimize_memory.py', '>>', '/tmp/crontab'], check=True)
-        subprocess.run(['echo', '0 0 * * * python scripts/optimize_storage.py', '>>', '/tmp/crontab'], check=True)
-        subprocess.run(['echo', '0 0 * * * python scripts/optimize_ai.py', '>>', '/tmp/crontab'], check=True)
-        subprocess.run(['echo', '0 0 * * * python scripts/monitoring/error_tracking.py', '>>', '/tmp/crontab'], check=True)
-        subprocess.run(['crontab', '/tmp/crontab'], check=True)
+        subprocess.run(['echo', '0 0 * * * python scripts/optimize_cpu.py', '>>', '/cache/crontab'], check=True)
+        subprocess.run(['echo', '0 0 * * * python scripts/optimize_memory.py', '>>', '/cache/crontab'], check=True)
+        subprocess.run(['echo', '0 0 * * * python scripts/optimize_storage.py', '>>', '/cache/crontab'], check=True)
+        subprocess.run(['echo', '0 0 * * * python scripts/optimize_ai.py', '>>', '/cache/crontab'], check=True)
+        subprocess.run(['echo', '0 0 * * * python scripts/monitoring/error_tracking.py', '>>', '/cache/crontab'], check=True)
+        subprocess.run(['crontab', '/cache/crontab'], check=True)
 
 """
     main function

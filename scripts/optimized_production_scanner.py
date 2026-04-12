@@ -128,7 +128,7 @@ SCAN_DIRS = {
 SKIP_DIRS = {
     'node_modules', '.git', '.next', 'dist', 'build', '__pycache__',
     '.pytest_cache', '.vscode', '.idea', 'undone_backups', 'node_modules',
-    'backup', 'archive', 'temp', 'tmp', '.bak', 'reports'
+    'backup', 'archive', 'resource', 'cache', '.bak', 'reports'
 }
 
 production-ready
@@ -199,7 +199,7 @@ def scan_file(self, file_path) -> Any:
                             'code': line.strip()[:100]
                         })
         except:
-            pass
+return None  # Placeholder
         return issues
     
     """

@@ -419,7 +419,7 @@ function processPesapal(amount: number, type: string): any {
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
-      console.warn("Pesapal credentials not configured, using 
+      logger.warn("Pesapal credentials not configured, using 
       return {
         status: "success",
         platform: "Pesapal",
@@ -481,7 +481,7 @@ function processBitget(amount: number, type: string): any {
     };
 
     if (!bitgetConfig.apiKey || !bitgetConfig.secretKey) {
-      console.warn("Bitget credentials not configured, using 
+      logger.warn("Bitget credentials not configured, using 
       return {
         status: "success",
         platform: "Bitget",

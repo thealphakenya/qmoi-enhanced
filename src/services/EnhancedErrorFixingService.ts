@@ -432,7 +432,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
       codeChanges: [],
       commands: [
         "npm cache clean --force",
-        "del /s /q temp\\*",
+        "del /s /q resource\\*",
         "taskkill /f /im node.exe",
       ],
       rollbackPlan: [],

@@ -100,7 +100,7 @@ const serverDir = path.join(nextDir, "server");
 const staticDir = path.join(nextDir, "static");
 
 if (!exists(serverDir) && !exists(staticDir)) {
-  console.error(
+  logger.error(
     "Smoke check failed: expected build artifacts (.next/server or .next/static) not found"
   );
   process.exit(3);

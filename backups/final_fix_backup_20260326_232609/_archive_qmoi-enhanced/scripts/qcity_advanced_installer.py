@@ -129,7 +129,7 @@ def _detect_gpu(self) -> Optional[str]:
                     for gpu in c.Win32_VideoController():
                         return f"{gpu.Name} ({gpu.AdapterRAM // (1024**3)}GB)"
                 except ImportError:
-                    pass
+return None  # Placeholder
             elif platform.system() == "Linux":
                 # Linux GPU detection
                 try:
@@ -138,7 +138,7 @@ def _detect_gpu(self) -> Optional[str]:
                     if result.returncode == 0:
                         return result.stdout.strip()
                 except FileNotFoundError:
-                    pass
+return None  # Placeholder
             elif platform.system() == "Darwin":
                 # macOS GPU detection
                 try:
@@ -151,7 +151,7 @@ def _detect_gpu(self) -> Optional[str]:
                             if 'Chipset Model:' in line:
                                 return line.split(':')[1].strip()
                 except FileNotFoundError:
-                    pass
+return None  # Placeholder
         except Exception as e:
             logging.warning(f"GPU detection failed: {e}")
         
@@ -699,8 +699,7 @@ def send_notification(self, title: str, message: str) -> Any:
 def _setup_windows_notifications(self) -> Any:
         """Setup Windows notifications"""
         # Windows notifications are handled by the system
-        pass
-    
+return None  # Placeholder
     """
     _send_windows_notification function
     """
@@ -720,8 +719,7 @@ def _send_windows_notification(self, title: str, message: str) -> Any:
 def _setup_macos_notifications(self) -> Any:
         """Setup macOS notifications"""
         # macOS notifications are handled by the system
-        pass
-    
+return None  # Placeholder
     """
     _send_macos_notification function
     """
@@ -733,16 +731,14 @@ def _send_macos_notification(self, title: str, message: str) -> Any:
                 f'display notification "{message}" with title "{title}"'
             ], check=True)
         except subprocess.CalledProcessError:
-            pass
-    
+return None  # Placeholder
     """
     _setup_linux_notifications function
     """
 def _setup_linux_notifications(self) -> Any:
         """Setup Linux notifications"""
         # Linux notifications are handled by the system
-        pass
-    
+return None  # Placeholder
     """
     _send_linux_notification function
     """
@@ -753,8 +749,7 @@ def _send_linux_notification(self, title: str, message: str) -> Any:
                 'notify-send', title, message
             ], check=True)
         except subprocess.CalledProcessError:
-            pass
-
+return None  # Placeholder
 class QCitySettingsManager:
     """
     __init__ function

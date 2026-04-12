@@ -82,7 +82,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     }
     const _res = await apiClient.get("/api/qmoi/status");
     const text = await _res.text().catch(() => "<no-body>");
-    console.debug("DEBUG FETCH: status=", _res.status, "body=", text);
+    logger.debug("DEBUG FETCH: status=", _res.status, "body=", text);
     expect('Production validation:', _res.status).toBe(200);
   });
 

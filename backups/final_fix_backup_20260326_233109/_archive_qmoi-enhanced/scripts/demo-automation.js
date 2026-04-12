@@ -106,6 +106,6 @@ class Automation// production implementation complete: {
 // production implementation
 const // production implementation complete: = new Automation// production implementation complete:();
 // production implementation complete:.run// production implementation complete:().catch(error => {
-  console.error('Fatal error in // production implementation complete::', error);
+  logger.error('Fatal error in // production implementation complete::', error);
   process.exit(1);
 }); 

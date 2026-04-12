@@ -82,7 +82,7 @@ class QMOIMasterSystem {
         await fs.writeFile(dashboardTracksPath, updated, 'utf-8');
       }
     } catch (_err) {
-      console.error('Failed to log activity:', _err.message);
+      logger.error('Failed to log activity:', _err.message);
     }
   }
 
@@ -233,7 +233,7 @@ class QMOIMasterSystem {
       logger.info('🎉 QMOI Master System fully initialized and operational');
       
     } catch (error) {
-      console.error('❌ Failed to initialize QMOI Master System:', error.message);
+      logger.error('❌ Failed to initialize QMOI Master System:', error.message);
       await this.notificationSystem.sendNotification(
         'error',
         'QMOI Master System Initialization Failed',
@@ -281,7 +281,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (error) {
-      console.error('❌ Failed to enable master mode:', error.message);
+      logger.error('❌ Failed to enable master mode:', error.message);
       await this.notificationSystem.sendNotification(
         'error',
         'Master Mode Enable Failed',
@@ -328,7 +328,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (error) {
-      console.error('❌ Failed to disable master mode:', error.message);
+      logger.error('❌ Failed to disable master mode:', error.message);
       await this.handleError(error, { phase: 'disableMasterMode' });
       return false;
     }
@@ -373,7 +373,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (error) {
-      console.error('❌ Failed to enable parallel processing:', error.message);
+      logger.error('❌ Failed to enable parallel processing:', error.message);
       return false;
     }
   }
@@ -812,7 +812,7 @@ class QMOIMasterSystem {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + '\n');
       this.activities = []; // Clear after saving
     } catch (error) {
-      console.error('Failed to save activity log:', error.message);
+      logger.error('Failed to save activity log:', error.message);
     }
   }
 
@@ -1039,7 +1039,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (error) {
-      console.error('❌ System enhancement failed:', error.message);
+      logger.error('❌ System enhancement failed:', error.message);
       return false;
     }
   }
@@ -1096,7 +1096,7 @@ class QMOIMasterSystem {
       return true;
       
     } catch (error) {
-      console.error('❌ Auto-evolution failed:', error.message);
+      logger.error('❌ Auto-evolution failed:', error.message);
       return false;
     }
   }

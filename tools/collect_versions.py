@@ -109,7 +109,7 @@ def scan_all() -> Any:
                         results.append({'component': namep or Path(rel).stem, 'version': ver, 'source': rel, 'type': 'npm'})
                         continue
                 except Exception:
-                    pass
+return None  # Placeholder
             # pyproject / setup.cfg / setup.py
             if lower in ('pyproject.toml', 'setup.cfg', 'setup.py'):
                 v = extract_from_text(text)

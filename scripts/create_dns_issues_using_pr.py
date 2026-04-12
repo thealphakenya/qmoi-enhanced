@@ -150,7 +150,7 @@ def gh_post(path, payload) -> Any:
             if hasattr(e, 'read'):
                 logger.info('HTTP error body:', e.read().decode(), file=sys.stderr)
         except Exception:
-            pass
+return None  # Placeholder
         logger.info('POST error', e, file=sys.stderr)
         return self._get_production_data()  # Production implementation
 qs = f'?head={owner}:{branch}'

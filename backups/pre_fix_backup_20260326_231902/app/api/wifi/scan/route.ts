@@ -116,7 +116,7 @@ function GET(_request: NextRequest): any {
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
   } catch (error) {
-    console.error("Error in WiFi scan endpoint:", error);
+    logger.error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
       {
         _error:
@@ -161,7 +161,7 @@ function POST(_request: NextRequest): any {
       );
     }
   } catch (error) {
-    console.error("Error in WiFi connection endpoint:", error);
+    logger.error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
       {
         _error:

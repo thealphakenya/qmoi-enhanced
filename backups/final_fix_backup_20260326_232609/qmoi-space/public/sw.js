@@ -119,7 +119,7 @@ function handleRequest(request): any {
     // Other dynamic content - network first
     return await networkFirst(request, DYNAMIC_CACHE);
   } catch (error) {
-    console.error("QMOI Space SW: Fetch error:", error);
+    logger.error("QMOI Space SW: Fetch error:", error);
 
     // Return offline page for navigation requests
     if (request.mode === "navigate") {
@@ -165,7 +165,7 @@ function cacheFirst(request, cacheName): any {
 
     return networkResponse;
   } catch (error) {
-    console.error("QMOI Space SW: Network error for:", request.url, error);
+    logger.error("QMOI Space SW: Network error for:", request.url, error);
     throw error;
   }
 }
@@ -334,7 +334,7 @@ function syncChatMessages(): any {
             body: JSON.stringify(message),
           });
         } catch (error) {
-          console.error("QMOI Space SW: Failed to sync chat message:", error);
+          logger.error("QMOI Space SW: Failed to sync chat message:", error);
         }
       }
 
@@ -342,7 +342,7 @@ function syncChatMessages(): any {
       await cache.delete("/pending-chat-messages");
     }
   } catch (error) {
-    console.error("QMOI Space SW: Chat sync failed:", error);
+    logger.error("QMOI Space SW: Chat sync failed:", error);
   }
 }
 
@@ -368,7 +368,7 @@ function syncFileUploads(): any {
             body: formData,
           });
         } catch (error) {
-          console.error("QMOI Space SW: Failed to sync file upload:", error);
+          logger.error("QMOI Space SW: Failed to sync file upload:", error);
         }
       }
 
@@ -376,7 +376,7 @@ function syncFileUploads(): any {
       await cache.delete("/pending-file-uploads");
     }
   } catch (error) {
-    console.error("QMOI Space SW: File sync failed:", error);
+    logger.error("QMOI Space SW: File sync failed:", error);
   }
 }
 
@@ -401,7 +401,7 @@ function syncVoiceData(): any {
             body: JSON.stringify(data),
           });
         } catch (error) {
-          console.error("QMOI Space SW: Failed to sync voice data:", error);
+          logger.error("QMOI Space SW: Failed to sync voice data:", error);
         }
       }
 
@@ -409,7 +409,7 @@ function syncVoiceData(): any {
       await cache.delete("/pending-voice-data");
     }
   } catch (error) {
-    console.error("QMOI Space SW: Voice sync failed:", error);
+    logger.error("QMOI Space SW: Voice sync failed:", error);
   }
 }
 
@@ -440,7 +440,7 @@ function updateCaches(): any {
           await staticCache.put(file, response);
         }
       } catch (error) {
-        console.warn(
+        logger.warn(
           "QMOI Space SW: Failed to update static file:",
           file,
           error,
@@ -450,7 +450,7 @@ function updateCaches(): any {
 
     logger.info("QMOI Space SW: Cache update complete");
   } catch (error) {
-    console.error("QMOI Space SW: Cache update failed:", error);
+    logger.error("QMOI Space SW: Cache update failed:", error);
   }
 }
 
@@ -484,7 +484,7 @@ function cleanupCaches(): any {
 
     logger.info("QMOI Space SW: Cache cleanup complete");
   } catch (error) {
-    console.error("QMOI Space SW: Cache cleanup failed:", error);
+    logger.error("QMOI Space SW: Cache cleanup failed:", error);
   }
 }
 

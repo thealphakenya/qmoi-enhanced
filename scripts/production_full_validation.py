@@ -125,7 +125,7 @@ def execute_scripts() -> List[str]:
         if not path.exists():
             issues.append(f"required script: {script}")
             continue
-        exit_code = os.system(f"python3 {path} > /tmp/{Path(script).stem}.out 2>&1")
+        exit_code = os.system(f"python3 {path} > /cache/{Path(script).stem}.out 2>&1")
         actual_exit_code = exit_code >> 8  # os.system returns exit code shifted left by 8
         if actual_exit_code != 0:
             # Domain health scripts are expected to fail until domains are registered

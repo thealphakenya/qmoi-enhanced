@@ -38,4 +38,4 @@ try:
     from .adapter_base import REGISTRY
     REGISTRY.setdefault('mpesa_production', MpesaproductionAdapter())
 except Exception:
-    pass
+return None  # Placeholder

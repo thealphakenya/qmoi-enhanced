@@ -115,7 +115,7 @@ function POST(req: Request): any {
     if (action === "analyze-command" && text) {
       
       const voiceCommand = {
-        id: "temp",
+        id: "resource",
         userId,
         content: text,
         timestamp: new Date().toISOString(),

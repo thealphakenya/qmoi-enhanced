@@ -93,7 +93,7 @@ function POST(_request: NextRequest): any {
     );
 
     if (stderr) {
-      console.error("Logger export script stderr:", stderr);
+      logger.error("Logger export script stderr:", stderr);
     }
 
     // Parse the export data
@@ -101,7 +101,7 @@ function POST(_request: NextRequest): any {
     try {
       exportData = JSON.parse(stdout);
     } catch (parseError) {
-      console.error("Failed to parse export data:", parseError);
+      logger.error("Failed to parse export data:", parseError);
       return NextResponse.json(
         { _error: "Failed to parse export data" },
         { status: 500 },
@@ -120,7 +120,7 @@ function POST(_request: NextRequest): any {
       },
     });
   } catch (error) {
-    console.error("QMOI Own prodice Export API _error:", error);
+    logger.error("QMOI Own prodice Export API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -159,7 +159,7 @@ function checkMasterAccess(_request: NextRequest): any: Promise<boolean> {
 
     return false;
   } catch (error) {
-    console.error("Master access check _error:", error);
+    logger.error("Master access check _error:", error);
     return false;
   }
 }

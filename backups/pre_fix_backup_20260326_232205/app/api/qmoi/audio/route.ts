@@ -45,7 +45,7 @@ function POST(req: NextRequest): any {
       audioUrl: null, // Could add text-to-speech here
     });
   } catch (error) {
-    console.error("Audio processing error:", error);
+    logger.error("Audio processing error:", error);
     return NextResponse.json(
       { error: "Failed to process audio" },
       { status: 500 },

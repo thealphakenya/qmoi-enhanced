@@ -14,13 +14,13 @@ const OWNER = "thealphakenya";
 const REPO = "latest-Q-ai";
 
 if (!GITHUB_TOKEN) {
-  console.error("❌ GITHUB_TOKEN is required in environment.");
+  logger.error("❌ GITHUB_TOKEN is required in environment.");
   process.exit(1);
 }
 
 const releaseInfoPath = "release.json";
 if (!fs.existsSync(releaseInfoPath)) {
-  console.error("❌ required release.json");
+  logger.error("❌ required release.json");
   process.exit(1);
 }
 const releaseInfo = JSON.parse(fs.readFileSync(releaseInfoPath));

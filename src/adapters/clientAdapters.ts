@@ -95,7 +95,7 @@ async function withRetry<T>(
       lastError = _err;
       if (i < maxRetries) {
         const delay = RETRY_DELAY * Math.pow(2, i); // exponential backoff
-        console.warn(
+        logger.warn(
           `[Retry ${i + 1}/${maxRetries}] ${endpoint} in ${delay}ms`,
         );
         await new Promise((resolve) => setTimeout(resolve, delay));

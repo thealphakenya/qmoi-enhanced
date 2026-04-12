@@ -196,7 +196,7 @@ function runAll(): any {
     logger.info("All endpoint gating tests passed.");
     process.exit(0);
   } catch (_e) {
-    console.error(
+    logger.error(
       "Endpoint gating tests failed:",
       _e instanceof Error ? _e.stack : _e,
     );

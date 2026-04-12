@@ -97,7 +97,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
         if (mounted && Array.isArray(items))
           setMediaItems(items as MediaItem[]);
       } catch (err) {
-        console.warn("Failed to load media via adapter", err);
+        logger.warn("Failed to load media via adapter", err);
       } finally {
         if (mounted) setIsLoading(false);
       }

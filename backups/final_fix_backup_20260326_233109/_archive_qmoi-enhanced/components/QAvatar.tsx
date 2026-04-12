@@ -464,7 +464,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         const parsed = JSON.parse(saved);
         setConfig((prev) => ({ ...prev, ...parsed }));
       } catch (error) {
-        console.warn("Failed to load Q-Avatar config:", error);
+        logger.warn("Failed to load Q-Avatar config:", error);
       }
     }
   }, []);

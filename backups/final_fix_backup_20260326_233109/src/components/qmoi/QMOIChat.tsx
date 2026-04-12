@@ -40,7 +40,7 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
       await sendMessage(userMessage);
       onMessageReceived?.(userMessage);
     } catch (err) {
-      console.error("Failed to send message:", err);
+      logger.error("Failed to send message:", err);
     }
   };
 
@@ -75,7 +75,7 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
     };
 
     recognition.onerror = (event: any) => {
-      console.error("Speech recognition error:", event.error);
+      logger.error("Speech recognition error:", event.error);
       setIsSpeaking(false);
     };
 
@@ -84,7 +84,7 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
 
   const handleVoiceOutput = async (text: string) => {
     if (!("speechSynthesis" in window)) {
-      console.warn("Speech synthesis not supported");
+      logger.warn("Speech synthesis not supported");
       return;
     }
 

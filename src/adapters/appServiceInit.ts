@@ -131,7 +131,7 @@ function setupHealthMonitoring(): any: void {
 
       // Log diagnostics periodically
       const stats = healthCheckService.getStats();
-      console.debug("[Monitor] Health stats:", {
+      logger.debug("[Monitor] Health stats:", {
         endpoints: stats.sampledEndpoints,
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,

@@ -446,10 +446,10 @@ const logger = {
     .log(`[INFO] ${message}`, ...args);
   },
   warn: (message: string, ...args: unknown[]) => {
-    console.warn(`[WARN] ${message}`, ...args);
+    logger.warn(`[WARN] ${message}`, ...args);
   },
   _error: (message: string, ...args: unknown[]) => {
-    console.error(`[ERROR] ${message}`, ...args);
+    logger.error(`[ERROR] ${message}`, ...args);
   },
 };
 
@@ -462,7 +462,7 @@ if (require.main === module) {
       process.exit(result.success ? 0 : 1);
     })
     .catch((error) => {
-      console.error("Test runner failed:", error);
+      logger.error("Test runner failed:", error);
       process.exit(1);
     });
 }

@@ -58,8 +58,7 @@ def load_ngrok_token() -> Optional[str]:
             if dec:
                 return dec.strip()
         except Exception:
-            pass
-
+return None  # Placeholder
     token_path = os.path.expanduser("~/.qmoi/ngrok_token")
     try:
         if os.path.exists(token_path):
@@ -68,8 +67,7 @@ def load_ngrok_token() -> Optional[str]:
                 if t:
                     return t
     except Exception:
-        pass
-
+return None  # Placeholder
     return None
 
 
@@ -92,9 +90,7 @@ def write_tunnel_info(public_url: str) -> Any:
         with open(os.path.join('.qmoi', 'memory.json'), 'w') as mf:
             json.dump(snapshot, mf)
     except Exception:
-        pass
-
-
+return None  # Placeholder
 """
     get_public_url_from_local_api function
     """
@@ -121,8 +117,7 @@ def start_ngrok_with_pyngrok(token: Optional[str], port: int = 8080, retries: in
             ngrok.set_auth_token(token)
         except Exception:
             # continue without raising; attempt to connect
-            pass
-
+return None  # Placeholder
     backoff = 1
     for attempt in range(1, retries + 1):
         try:
@@ -200,8 +195,7 @@ PY
         subprocess.run(['git', 'config', 'credential.helper', helper_path], check=False)
     except Exception:
         # not a git repo or git not available; skip
-        pass
-
+return None  # Placeholder
     return helper_path
 
 
@@ -229,7 +223,7 @@ def loop() -> Any:
                         with open('ngrok_tunnel.txt','r') as f:
                             mem['public_url'] = f.read().strip()
                 except Exception:
-                    pass
+return None  # Placeholder
                 with open(os.path.join('.qmoi','memory.json'), 'w') as mf:
                     json.dump(mem, mf)
 
@@ -237,8 +231,7 @@ def loop() -> Any:
                 try:
                     subprocess.run(['python', 'scripts/qmoi_autosync_backup.py'], check=False)
                 except Exception:
-                    pass
-
+return None  # Placeholder
                 # If repository has a remote 'origin' and token available, attempt to push backups via wrapper
                 try:
                     has_remote = subprocess.run(['git', 'remote'], stdout=subprocess.PIPE, stderr=subprocess.prodNULL)
@@ -248,10 +241,9 @@ def loop() -> Any:
                         if os.path.exists(br):
                             subprocess.run(['python', 'scripts/qmoi_git_wrapper.py', 'push', '--set-upstream', 'origin', 'qmoi/backups'], check=False, cwd=br)
                 except Exception:
-                    pass
-
+return None  # Placeholder
             except Exception:
-                pass
+return None  # Placeholder
             time.sleep(interval_seconds)
 
     t = threading.Thread(target=loop, daemon=True, name='qmoi-autosync')

@@ -320,7 +320,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Retried GitLab pipeline ${pipeline.id}`);
         this.logFix("gitlab_pipeline_retry", pipeline.id);
       } catch (error) {
-        console.error(
+        logger.error(
           `❌ Failed to retry pipeline ${pipeline.id}:`,
           error.message,
         );
@@ -402,7 +402,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Fixed error in ${error.file}`);
         this.logFix("detected_error_fix", error);
       } catch (fixError) {
-        console.error(
+        logger.error(
           `❌ Failed to fix error in ${error.file}:`,
           fixError.message,
         );
@@ -425,7 +425,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Fixed deployment ${deployment.id}`);
         this.logFix("deployment_fix", deployment.id);
       } catch (error) {
-        console.error(
+        logger.error(
           `❌ Failed to fix deployment ${deployment.id}:`,
           error.message,
         );
@@ -454,7 +454,7 @@ class QMOIWatchDebug {
         logger.info(`✅ Fixed performance issue: ${issue}`);
         this.logFix("performance_fix", issue);
       } catch (error) {
-        console.error(
+        logger.error(
           `❌ Failed to fix performance issue ${issue}:`,
           error.message,
         );
@@ -550,7 +550,7 @@ class QMOIWatchDebug {
 
   // Error escalation
   async escalateError(context, originalError, fixError) {
-    console.error(`🚨 Escalating error in ${context}:`, {
+    logger.error(`🚨 Escalating error in ${context}:`, {
       originalError: originalError.message,
       fixError: fixError.message,
     });

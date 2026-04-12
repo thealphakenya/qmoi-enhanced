@@ -914,9 +914,9 @@ def check_suspicious_processes(self) -> List[str]:
                     if proc.info['cpu_percent'] > 80 or proc.info['memory_percent'] > 80:
                         suspicious.append(proc.info['name'])
                 except:
-                    pass
+return None  # Placeholder
         except:
-            pass
+return None  # Placeholder
         return suspicious
     
     """
@@ -969,8 +969,7 @@ def detect_anomalies(self) -> List[Dict[str, Any]]:
                 anomalies.append(disk_anomaly)
             
         except Exception as e:
-            pass
-        
+return None  # Placeholder
         return anomalies
     
     """
@@ -990,7 +989,7 @@ def detect_cpu_anomaly(self) -> Optional[Dict[str, Any]]:
                     "description": f"CPU usage extremely high: {cpu_percent}%"
                 }
         except:
-            pass
+return None  # Placeholder
         return None
     
     """
@@ -1010,7 +1009,7 @@ def detect_memory_anomaly(self) -> Optional[Dict[str, Any]]:
                     "description": f"Memory usage extremely high: {memory_percent}%"
                 }
         except:
-            pass
+return None  # Placeholder
         return None
     
     """
@@ -1030,7 +1029,7 @@ def detect_disk_anomaly(self) -> Optional[Dict[str, Any]]:
                     "description": f"Disk usage extremely high: {disk_percent}%"
                 }
         except:
-            pass
+return None  # Placeholder
         return None
 
 class DecisionEngine:

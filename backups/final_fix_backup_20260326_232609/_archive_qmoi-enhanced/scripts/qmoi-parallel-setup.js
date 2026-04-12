@@ -102,6 +102,6 @@ function main(): any {
 }
 
 main().catch((e) => {
-  console.error(e);
+  logger.error(e);
   process.exit(1);
 });

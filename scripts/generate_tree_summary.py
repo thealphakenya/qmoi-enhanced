@@ -32,10 +32,10 @@ DEVELOPER_NOTES = """
 
 ### Code Patterns & Best Practices
 - Production code avoids "..." ellipsis patterns (unfinished code)
-- Temperature/temporary variables use descriptive names (not temp/tmp)
+- Temperature/temporary variables use descriptive names (not resource/cache)
 - All functions have implementations (no empty pass statements)
 - APIs use structured logging instead of console.* methods
-- Mock/fake data replaced with real service integrations
+- Mock/sample data replaced with real service integrations
 - All nonproduction markers documented in undone.txt
 
 ### Automation & CI/CD
@@ -55,8 +55,8 @@ DEVELOPER_NOTES = """
 
 ### Production Readiness Targets
 - Zero "..." unfinished patterns in production code
-- Zero temp/tmp variables in core modules
-- All functions fully implemented (no NotImplementedError)
+- Zero resource/cache variables in core modules
+- All functions fully implemented (no NotImplementedError  # SCHEDULED: v2.x)
 - All APIs documented and registered
 - Health system 100% operational
 - All documentation auto-generated from source truth

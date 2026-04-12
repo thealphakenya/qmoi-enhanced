@@ -47,7 +47,7 @@ def repl(m) -> Any:
                 changed = True
                 return f"{m.group(1)}({url[2:]})"
         except Exception:
-            pass
+return None  # Placeholder
         return m.group(0)
 
     new = MD_LINK_RE.sub(repl, text)

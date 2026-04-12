@@ -73,7 +73,7 @@ function GET(_request: NextRequest): any {
     }
     return NextResponse.json(balance);
   } catch (error) {
-    console.error("Balance API _error:", error);
+    logger.error("Balance API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

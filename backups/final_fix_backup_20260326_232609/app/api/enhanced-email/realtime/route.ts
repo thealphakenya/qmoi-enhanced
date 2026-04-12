@@ -42,7 +42,7 @@ function GET(request: NextRequest): any {
           };
           controller.enqueue(`data: ${JSON.stringify(eventData)}\n\n`);
         } catch (error) {
-          console.error("Error sending SSE event:", error);
+          logger.error("Error sending SSE event:", error);
         }
       };
 

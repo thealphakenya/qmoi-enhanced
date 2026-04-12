@@ -51,7 +51,7 @@ function GET(_request: NextRequest): any {
     const signals = qmoiTrader.getRecentSignals(limit);
     return NextResponse.json(signals);
   } catch (error) {
-    console.error("Signals API _error:", error);
+    logger.error("Signals API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

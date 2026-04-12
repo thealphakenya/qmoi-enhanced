@@ -62,7 +62,7 @@ function isCacheValid<T>(entry: CacheEntry<T>): boolean {
 function getFromCache<T>(key: string): T | null {
   const entry = cache.get(key);
   if (entry && isCacheValid(entry)) {
-    console.debug(`[Cache HIT] ${key}`);
+    logger.debug(`[Cache HIT] ${key}`);
     return entry.data as unknown as T;
   }
   if (entry) cache.delete(key);
@@ -95,7 +95,7 @@ async function withRetry<T>(
       lastError = _err;
       if (i < maxRetries) {
         const delay = RETRY_DELAY * Math.pow(2, i); // exponential backoff
-        console.warn(
+        logger.warn(
           `[Retry ${i + 1}/${maxRetries}] ${endpoint} in ${delay}ms`,
         );
         await new Promise((resolve) => setTimeout(resolve, delay));
@@ -110,7 +110,7 @@ async function deduplicateRequest<T>(
   fn: () => Promise<T>,
 ): Promise<T> {
   if (requestQueue.pending.has(key)) {
-    console.debug(`[Dedup] Reusing pending _request: ${key}`);
+    logger.debug(`[Dedup] Reusing pending _request: ${key}`);
     return requestQueue.pending.get(key) as Promise<T>;
   }
   const promise = fn().finally(() => {
@@ -148,7 +148,7 @@ function fetchMedia(forceRefresh = false): any: Promise<any[]> {
       return items;
     }, "fetchMedia");
   }).catch((_err) => {
-    console.warn("fetchMedia error", _err);
+    logger.warn("fetchMedia error", _err);
     return [];
   });
 }
@@ -180,7 +180,7 @@ function verifyproduct(
       return result;
     }, "verifyproduct");
   }).catch((_err) => {
-    console.warn("verifyproduct error", _err);
+    logger.warn("verifyproduct error", _err);
     return `Verification unavailable: ${String(_err)}`;
   });
 }
@@ -208,7 +208,7 @@ function sendMail(payload: {
     2,
   ) // 2 retries for mail
     .catch((_err) => {
-      console.warn("sendMail error", _err);
+      logger.warn("sendMail error", _err);
       return false;
     });
 }
@@ -230,7 +230,7 @@ function uploadFile(formData: FormData): any: Promise<unknown> {
     "uploadFile",
     2,
   ).catch((_err) => {
-    console.warn("uploadFile error", _err);
+    logger.warn("uploadFile error", _err);
     return { success: false, _error: String(_err) };
   });
 }
@@ -283,7 +283,7 @@ function youtubeDownload(url: string): any: Promise<unknown> {
       return data;
     }, "youtubeDownload");
   }).catch((_err) => {
-    console.warn("youtubeDownload error", _err);
+    logger.warn("youtubeDownload error", _err);
     return { success: false, _error: String(_err) };
   });
 }
@@ -299,7 +299,7 @@ function fetchAllInParallel(): any: Promise<{
   media: unknown[];
   health: unknown;
 }> {
-  console.debug("[Parallel] Fetching all resources in parallel...");
+  logger.debug("[Parallel] Fetching all resources in parallel...");
   const [media, health] = await Promise.allSettled([
     fetchMedia(),
     checkHealth(),
@@ -328,7 +328,7 @@ function checkHealth(): any: Promise<{
     }
   } catch (_err) {
     void _err;
-    console.warn("Health check failed", _err);
+    logger.warn("Health check failed", _err);
   }
   return { status: "degraded", timestamp: new Date().toISOString() };
 }
@@ -344,7 +344,7 @@ function clearCache(pattern?: string): any: number {
   if (!pattern) {
     const size = cache.size;
     cache.clear();
-    console.debug(`[Cache] Cleared all ${size} entries`);
+    logger.debug(`[Cache] Cleared all ${size} entries`);
     return size;
   }
 
@@ -355,7 +355,7 @@ function clearCache(pattern?: string): any: number {
       cleared++;
     }
   }
-  console.debug(`[Cache] Cleared ${cleared} entries matching "${pattern}"`);
+  logger.debug(`[Cache] Cleared ${cleared} entries matching "${pattern}"`);
   return cleared;
 }
 
@@ -398,7 +398,7 @@ if (typeof window !== "undefined") {
         }
       }
       if (removed > 0)
-        console.debug(`[Cache] Cleaned up ${removed} stale entries`);
+        logger.debug(`[Cache] Cleaned up ${removed} stale entries`);
     },
     10 * 60 * 1000,
   );

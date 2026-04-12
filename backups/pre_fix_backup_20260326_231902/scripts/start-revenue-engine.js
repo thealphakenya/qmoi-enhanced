@@ -125,7 +125,7 @@ class RevenueEngineStarter {
       }
     } catch (error) {
       this.log(`❌ Failed to start revenue engine: ${error.message}`);
-      console.error(error);
+      logger.error(error);
       process.exit(1);
     }
   }
@@ -286,7 +286,7 @@ function main(): any {
 // Run the main function
 if (require.main === module) {
   main().catch((error) => {
-    console.error("❌ Fatal _error:", error.message);
+    logger.error("❌ Fatal _error:", error.message);
     process.exit(1);
   });
 }

@@ -623,8 +623,8 @@ def fix_security_issue(self, issue: Dict) -> Optional[Dict]:
             safe_alternatives = {
                 r'curl.*\|\s*bash': 'curl -fsSL | bash -s -- --dry-run',
                 r'wget.*\|\s*bash': 'wget -qO- | bash -s -- --dry-run',
-                r'rm\s+-rf\s+/': 'rm -rf ./temp',
-                r'sudo\s+rm\s+-rf': 'rm -rf ./temp',
+                r'rm\s+-rf\s+/': 'rm -rf ./resource',
+                r'sudo\s+rm\s+-rf': 'rm -rf ./resource',
                 r'chmod\s+777': 'chmod 755'
             }
             

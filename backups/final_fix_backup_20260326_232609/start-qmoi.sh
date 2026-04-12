@@ -27,7 +27,7 @@ if [ ! -d "node_modules" ]; then
 fi
 
 # Create necessary directories
-mkdir -p logs config data avatars music reports backups temp uploads downloads cache models datasets artifacts
+mkdir -p logs config data avatars music reports backups resource uploads downloads cache models datasets artifacts
 
 # Start the QMOI Master System
 echo "🎯 Starting QMOI Master System..."

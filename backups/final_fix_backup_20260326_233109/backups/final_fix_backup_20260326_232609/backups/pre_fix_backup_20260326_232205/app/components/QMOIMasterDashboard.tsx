@@ -221,7 +221,7 @@ function QMOIMasterDashboard({
         setAutomationStatus(data.status);
       }
     } catch (err) {
-      console.error("Failed to fetch automation status:", err);
+      logger.error("Failed to fetch automation status:", err);
     }
   };
 
@@ -242,7 +242,7 @@ function QMOIMasterDashboard({
         setFinancialData(data);
       }
     } catch (err) {
-      console.error("Failed to fetch financial data:", err);
+      logger.error("Failed to fetch financial data:", err);
     }
   };
 
@@ -263,7 +263,7 @@ function QMOIMasterDashboard({
         setLinksData(data);
       }
     } catch (err) {
-      console.error("Failed to fetch links data:", err);
+      logger.error("Failed to fetch links data:", err);
     }
   };
 
@@ -284,7 +284,7 @@ function QMOIMasterDashboard({
         setGlobalData(data.data);
       }
     } catch (err) {
-      console.error("Failed to fetch global finance data:", err);
+      logger.error("Failed to fetch global finance data:", err);
     }
   };
 
@@ -304,7 +304,7 @@ function QMOIMasterDashboard({
         setDomainData(data);
       }
     } catch (err) {
-      console.error("Failed to fetch domain data:", err);
+      logger.error("Failed to fetch domain data:", err);
     }
   };
 
@@ -325,7 +325,7 @@ function QMOIMasterDashboard({
       setToken("");
       onUnauthorized?.();
     } catch (err) {
-      console.error("Logout failed:", err);
+      logger.error("Logout failed:", err);
       setError("Failed to logout properly");
     } finally {
       setLoading(false);
@@ -344,7 +344,7 @@ function QMOIMasterDashboard({
       setError(null);
     } catch (err) {
       setError("Failed to access camera. Please check permissions.");
-      console.error("Camera access failed:", err);
+      logger.error("Camera access failed:", err);
     }
   };
 

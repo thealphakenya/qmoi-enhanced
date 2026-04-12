@@ -52,7 +52,7 @@ function POST(_request: NextRequest): any {
       message: "AI trading started successfully",
     });
   } catch (error) {
-    console.error("Start trading API _error:", error);
+    logger.error("Start trading API _error:", error);
     return NextResponse.json(
       { _error: "Failed to start trading" },
       { status: 500 },

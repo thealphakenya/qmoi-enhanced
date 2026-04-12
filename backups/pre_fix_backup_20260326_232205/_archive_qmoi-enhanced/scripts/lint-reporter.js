@@ -565,6 +565,6 @@ class LintReporter {
 // Run the reporter
 const reporter = new LintReporter();
 reporter.run().catch((error) => {
-  console.error("Fatal error in lint reporter:", error);
+  logger.error("Fatal error in lint reporter:", error);
   process.exit(1);
 });

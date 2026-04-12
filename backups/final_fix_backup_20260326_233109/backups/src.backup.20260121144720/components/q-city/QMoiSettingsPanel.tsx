@@ -99,7 +99,7 @@ function importSettings(_e: React.ChangeEvent<HTMLInputElement>): any {
           );
         notification.show("Settings imported!");
       } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+        logger.warn("importSettings failed", String(_err));
         notification.show("Invalid settings file.");
       }
     };

@@ -21,7 +21,7 @@ set -e
 
 # Configuration
 APP_URL="${1:-https://qmoi-enhanced.vercel.app}"
-REPORT_FILE="/tmp/qmoi-health-$(date +%Y%m%d-%H%M%S).json"
+REPORT_FILE="/cache/qmoi-health-$(date +%Y%m%d-%H%M%S).json"
 
 # Colors
 RED='\033[0;31m'

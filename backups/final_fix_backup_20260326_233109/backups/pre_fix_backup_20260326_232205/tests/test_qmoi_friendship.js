@@ -34,7 +34,7 @@ const Q = import("../qmoi-friendship-integration.js");
     );
     process.exit(0);
   } catch (_err) {
-    console.error("Test failed:", _err && _err.stack ? _err.stack : _err);
+    logger.error("Test failed:", _err && _err.stack ? _err.stack : _err);
     process.exit(2);
   }
 })();

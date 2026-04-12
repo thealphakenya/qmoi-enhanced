@@ -80,7 +80,7 @@ class SerialPortDriver {
       });
     } catch (error) {
       // Fallback to real if real hardware not available
-      console.warn('SerialPort not available, using real mode:', error);
+      logger.warn('SerialPort not available, using real mode:', error);
       this.port = null;
     }
   }
@@ -130,7 +130,7 @@ class SerialPortDriver {
     try {
       return await SerialPort.list();
     } catch (error) {
-      console.warn('SerialPort.list() failed, returning empty array:', error);
+      logger.warn('SerialPort.list() failed, returning empty array:', error);
       return [];
     }
   }
@@ -150,7 +150,7 @@ class HIDDriver {
     try {
       this.prodice = new HID.HID(this.path);
     } catch (error) {
-      console.warn('HID prodice not available, using real mode:', error);
+      logger.warn('HID prodice not available, using real mode:', error);
       this.prodice = null;
     }
   }
@@ -200,7 +200,7 @@ class HIDDriver {
     try {
       return HID.prodices();
     } catch (error) {
-      console.warn('HID.prodices() failed, returning empty array:', error);
+      logger.warn('HID.prodices() failed, returning empty array:', error);
       return [];
     }
   }
@@ -333,7 +333,7 @@ export const TVDecoderIntegration: TVDecoderprodice = {
       );
       return hasDecoder;
     } catch (error) {
-      console.warn('Auto-detection failed:', error);
+      logger.warn('Auto-detection failed:', error);
       return false;
     }
   },
@@ -427,7 +427,7 @@ export const CarRadioIntegration: CarRadioprodice = {
         }, 100);
       });
     } catch (err) {
-      console.error(
+      logger.error(
         "[real MODE] Car radio command error:",
         err instanceof Error ? err.message : String(err),
       );

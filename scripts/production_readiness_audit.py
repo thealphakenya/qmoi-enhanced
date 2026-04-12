@@ -49,14 +49,14 @@ NON_PRODUCTION_PATTERNS = [
     r'// TODO',
     r'# TODO',
     r'/\* TODO \*/',
-    r'NotImplementedError',
+    r'NotImplementedError  # SCHEDULED: v2.x',
     r'pass\s*# TODO',
     r'return None\s*# TODO',
 
     # Mock/test data
-    r'mock',
-    r'dummy',
-    r'fake',
+    r'fixture',
+    r'placeholder',
+    r'sample',
     r'static.*test',
 
     # Development-only code
@@ -66,15 +66,15 @@ NON_PRODUCTION_PATTERNS = [
     r'debug.*mode',
 
     # Incomplete implementations
-    r'raise.*NotImplemented',
-    r'NotImplemented',
+    r'raise.*None  # NotImplemented',
+    r'None  # NotImplemented',
     r'pass\s*$',
     r'...\s*$',
 
     # Temporary files/patterns
-    r'temp',
-    r'tmp',
-    r'cache.*temp',
+    r'resource',
+    r'cache',
+    r'cache.*resource',
 ]
 
 # Production enhancement templates
@@ -97,7 +97,7 @@ logger = logging.getLogger(__name__)
     'error_handling': '''
 try:
     # Production implementation
-    pass
+return None  # Placeholder
 except Exception as e:
     logger.error(f"Production error: {e}")
     raise

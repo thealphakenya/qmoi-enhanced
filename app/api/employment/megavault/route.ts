@@ -77,7 +77,7 @@ function backupCredentialsSafe(credentials: unknown, platform: string): any {
     logger.info(`Safe backup for ${platform}:`, masked);
     // Intentionally do not send raw credentials anywhere.
   } catch (error) {
-    console.error(
+    logger.error(
       "Failed to create safe backup for megavault credentials:",
       error,
     );

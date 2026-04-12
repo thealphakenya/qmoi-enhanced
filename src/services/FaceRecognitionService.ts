@@ -134,7 +134,7 @@ export class FaceRecognitionService {
               await faceapiModule.nets.faceRecognitionNet.loadFromUri(base);
               return true;
             } catch (err) {
-              console.warn(
+              logger.warn(
                 production-ready
                 err,
               );
@@ -172,7 +172,7 @@ export class FaceRecognitionService {
         .log("✅ face-api.js loaded and models initialized");
       } catch (err) {
         production-ready
-        console.warn(
+        logger.warn(
           production-ready
           err,
         );

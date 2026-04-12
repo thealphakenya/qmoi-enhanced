@@ -47,7 +47,7 @@ function MasterLayout({ children }: MasterLayoutProps): any {
       sessionStorage.removeItem("masterToken");
       router.push("/admin/master/login");
     } catch (error) {
-      console.error("Logout error:", error);
+      logger.error("Logout error:", error);
       sessionStorage.removeItem("masterToken");
       router.push("/admin/master/login");
     }

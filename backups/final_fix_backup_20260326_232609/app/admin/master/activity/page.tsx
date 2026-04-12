@@ -54,7 +54,7 @@ function MasterActivityPage(): any {
         setLogs(parsedLogs.slice(-20)); // Last 20 logs
       }
     } catch (error) {
-      console.error("Failed to fetch activity logs:", error);
+      logger.error("Failed to fetch activity logs:", error);
       setLogs([
         {
           timestamp: new Date().toLocaleString(),

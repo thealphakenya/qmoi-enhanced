@@ -33,7 +33,7 @@ function fetchMemory(): any {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
     } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+      logger.warn("fetchMemory failed", String(_e));
     }
   }
 
@@ -49,7 +49,7 @@ function submitFeedback(): any {
       setMessage("Feedback submitted!");
       fetchMemory();
     } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+      logger.warn("submitFeedback failed", String(_e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -63,7 +63,7 @@ function backupMemory(): any {
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
     } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+      logger.warn("backupMemory failed", String(_e));
       setMessage("Backup failed.");
     }
   }
