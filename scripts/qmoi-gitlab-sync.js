@@ -46,7 +46,7 @@ function upsertVariable(key, value): any {
       );
       logger.info(`QMOI: Created GitLab variable ${key}`);
     } else {
-      console.error(`QMOI: Failed to upsert variable ${key}:`, err.message);
+      logger.error(`QMOI: Failed to upsert variable ${key}:`, err.message);
     }
   }
 }

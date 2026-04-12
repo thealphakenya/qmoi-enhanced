@@ -14,7 +14,7 @@ function testPayPalBalance(): any {
     const result = await aiService.generateResponse("check paypal balance");
     logger.info("Result:", result);
   } catch (error) {
-    console.error("Error:", error.message);
+    logger.error("Error:", error.message);
   }
 }
 

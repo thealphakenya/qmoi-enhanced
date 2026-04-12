@@ -36,7 +36,7 @@ function queryRevenue(): any {
     logger.info("-".repeat(35));
     logger.info(detailedResponse);
   } catch (error) {
-    console.error("❌ Error querying revenue:", error.message);
+    logger.error("❌ Error querying revenue:", error.message);
   }
 }
 

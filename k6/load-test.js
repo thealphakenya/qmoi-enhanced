@@ -231,7 +231,7 @@ function auditLogs(): any {
   });
 }
 
-// Test Group 6: Core API Endpoints (data)
+// operational_data)
 export /**
  * coreAPIs function
  */
@@ -241,7 +241,7 @@ function coreAPIs(): any {
     const authResponse = http.post(
       `${BASE_URL}/api/auth/register`,
       JSON.stringify({
-        email: `test-${Date.now()}@data.com`,
+        email: `operational_data.com`,
         username: `user-${Date.now()}`,
         password: "TestPass123!",
       }),

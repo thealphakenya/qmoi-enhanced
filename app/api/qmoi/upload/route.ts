@@ -72,7 +72,7 @@ function POST(req: NextRequest): any {
       message: `File ${file.name} uploaded successfully`,
     });
   } catch (error) {
-    console.error("File upload error:", error);
+    logger.error("File upload error:", error);
     return NextResponse.json(
       { error: "Failed to upload file" },
       { status: 500 },

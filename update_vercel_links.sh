@@ -14,7 +14,7 @@ NC='\033[0m'
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 VERCEL_LINKS_FILE="${SCRIPT_DIR}/VERCELLINKS.md"
-LOG_FILE="/tmp/qmoi-links.log"
+LOG_FILE="/cache/qmoi-links.log"
 
 VERBOSE=false
 TIMEOUT=5

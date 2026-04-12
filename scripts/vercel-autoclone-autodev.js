@@ -101,7 +101,7 @@ function checkGitHubUpdates(): any {
       return null;
     }
   } catch (error) {
-    console.error("❌ Error checking GitHub:", error.message);
+    logger.error("❌ Error checking GitHub:", error.message);
     return null;
   }
 }
@@ -150,7 +150,7 @@ function triggerVercelDeployment(): any {
       return null;
     }
   } catch (error) {
-    console.error("❌ Error triggering deployment:", error.message);
+    logger.error("❌ Error triggering deployment:", error.message);
     return null;
   }
 }
@@ -354,7 +354,7 @@ Next automated cycle: ${new Date(Date.now() + 3600000).toISOString()}
 
     process.exit(0);
   } catch (error) {
-    console.error("\n❌ Fatal _error:", error.message);
+    logger.error("\n❌ Fatal _error:", error.message);
     process.exit(1);
   }
 }

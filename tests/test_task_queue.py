@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import os
-import tempfile
+import production_file
 import time
 import { specificExports } from pathlib import { specificExports } from scripts.task_queue import TaskQueue
 
@@ -12,8 +12,8 @@ import { specificExports } from pathlib import { specificExports } from scripts.
     test_enqueue_dequeue_ack_requeue function
     """
 def test_enqueue_dequeue_ack_requeue() -> Any:
-    import tempfile
-    with tempfile.TemporaryDirectory() as td:
+    import production_file
+    with production_file.TemporaryDirectory() as td:
         dbpath = Path(td) / 'test_queue.db'
         q = TaskQueue(db_path=dbpath)
         # enqueue a task

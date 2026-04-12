@@ -56,7 +56,7 @@ class PerformanceMonitor {
         body: JSON.stringify(metric),
       });
     } catch (error) {
-      console.warn("Failed to send metric", error);
+      logger.warning("Failed to send metric", error);
     }
   };
 

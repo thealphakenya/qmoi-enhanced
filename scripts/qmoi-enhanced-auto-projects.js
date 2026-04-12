@@ -149,7 +149,7 @@ class QMOITimeLocationManager {
         timezone: this.timezone,
       });
     } catch (error) {
-      console.error("Error initializing time/location:", error);
+      logger.error("Error initializing time/location:", error);
       this.handleError(error, "TimeLocationInit");
     }
   }
@@ -178,7 +178,7 @@ class QMOITimeLocationManager {
 
       return new Date();
     } catch (error) {
-      console.error("Error getting precise time:", error);
+      logger.error("Error getting precise time:", error);
       return new Date();
     }
   }
@@ -195,7 +195,7 @@ class QMOITimeLocationManager {
           });
         },
         (error) => {
-          console.error("GPS location error:", error);
+          logger.error("GPS location error:", error);
           reject(error);
         },
         {
@@ -220,7 +220,7 @@ class QMOITimeLocationManager {
         source: "IP",
       };
     } catch (error) {
-      console.error("Error getting IP location:", error);
+      logger.error("Error getting IP location:", error);
       return null;
     }
   }
@@ -264,7 +264,7 @@ class QMOIErrorHandler {
 
       logger.info("QMOI Error Handler initialized");
     } catch (error) {
-      console.error("Error initializing error handler:", error);
+      logger.error("Error initializing error handler:", error);
     }
   }
 
@@ -276,7 +276,7 @@ class QMOIErrorHandler {
         logger.info("GitHub Actions integration enabled");
       }
     } catch (error) {
-      console.error("GitHub Actions initialization error:", error);
+      logger.error("GitHub Actions initialization error:", error);
     }
   }
 
@@ -350,7 +350,7 @@ class QMOIErrorHandler {
     };
 
     this.errorLog.push(errorInfo);
-    console.error("QMOI Error:", errorInfo);
+    logger.error("QMOI Error:", errorInfo);
 
     // Log to external service
     await this.logErrorToExternalService(errorInfo);
@@ -393,7 +393,7 @@ class QMOIErrorHandler {
         body: JSON.stringify(errorInfo),
       });
     } catch (error) {
-      console.error("Failed to log error to external service:", error);
+      logger.error("Failed to log error to external service:", error);
     }
   }
 
@@ -405,7 +405,7 @@ class QMOIErrorHandler {
         logger.info("Auto-fix attempted for:", errorInfo.context);
       }
     } catch (error) {
-      console.error("Auto-fix failed:", error);
+      logger.error("Auto-fix failed:", error);
     }
   }
 
@@ -429,7 +429,7 @@ class QMOIErrorHandler {
         },
       );
     } catch (error) {
-      console.error("Failed to trigger GitHub Actions:", error);
+      logger.error("Failed to trigger GitHub Actions:", error);
     }
   }
 
@@ -445,7 +445,7 @@ class QMOIErrorHandler {
         }),
       });
     } catch (error) {
-      console.error("Failed to notify master user:", error);
+      logger.error("Failed to notify master user:", error);
     }
   }
 
@@ -866,7 +866,7 @@ class QMOIEnhancedAutoProjects {
         projects.push(project);
         totalRevenue += project.estimatedRevenue;
       } catch (error) {
-        console.error(`Failed to create ${type} animation:`, error.message);
+        logger.error(`Failed to create ${type} animation:`, error.message);
       }
     }
 
@@ -930,7 +930,7 @@ class QMOIEnhancedAutoProjects {
         projects.push(project);
         totalRevenue += project.estimatedRevenue;
       } catch (error) {
-        console.error(`Failed to create ${type} app:`, error.message);
+        logger.error(`Failed to create ${type} app:`, error.message);
       }
     }
 
@@ -995,7 +995,7 @@ class QMOIEnhancedAutoProjects {
         projects.push(project);
         totalRevenue += project.estimatedRevenue;
       } catch (error) {
-        console.error(`Failed to create ${type} content:`, error.message);
+        logger.error(`Failed to create ${type} content:`, error.message);
       }
     }
 
@@ -1059,7 +1059,7 @@ class QMOIEnhancedAutoProjects {
         projects.push(project);
         totalRevenue += project.estimatedRevenue;
       } catch (error) {
-        console.error(`Failed to create ${type} service:`, error.message);
+        logger.error(`Failed to create ${type} service:`, error.message);
       }
     }
 
@@ -1419,7 +1419,7 @@ class QMOIEnhancedAutoProjects {
           distributionResults.push(result);
         }
       } catch (error) {
-        console.error(`Failed to distribute to ${platformId}:`, error.message);
+        logger.error(`Failed to distribute to ${platformId}:`, error.message);
       }
     }
 
@@ -1487,7 +1487,7 @@ class QMOIEnhancedAutoProjects {
       const trackingPath = "revenue/daily-tracking.json";
       await fs.writeFile(trackingPath, JSON.stringify(data, null, 2));
     } catch (error) {
-      console.error("Failed to save revenue tracking:", error.message);
+      logger.error("Failed to save revenue tracking:", error.message);
     }
   }
 
@@ -1522,7 +1522,7 @@ class QMOIEnhancedAutoProjects {
       await fs.appendFile(this.logPath, JSON.stringify(logEntry) + "\n");
       this.activities = []; // Clear after saving
     } catch (error) {
-      console.error("Failed to save activity log:", error.message);
+      logger.error("Failed to save activity log:", error.message);
     }
   }
 
@@ -1588,7 +1588,7 @@ function initializeQMOISystem(): any {
     // Start monitoring
     startSystemMonitoring();
   } catch (error) {
-    console.error("Error initializing QMOI system:", error);
+    logger.error("Error initializing QMOI system:", error);
     await errorHandler.handleError(error, "SystemInitialization");
   }
 }
@@ -1618,7 +1618,7 @@ function startSystemMonitoring(): any {
         await attemptSystemRecovery(recentErrors);
       }
     } catch (error) {
-      console.error("System monitoring error:", error);
+      logger.error("System monitoring error:", error);
       await errorHandler.handleError(error, "SystemMonitoring");
     }
   }, 30000); // Check every 30 seconds
@@ -1656,7 +1656,7 @@ function attemptSystemRecovery(errors): any {
     try {
       await errorHandler.attemptAutoFix(error);
     } catch (recoveryError) {
-      console.error("Recovery failed for error:", error, recoveryError);
+      logger.error("Recovery failed for error:", error, recoveryError);
     }
   }
 }

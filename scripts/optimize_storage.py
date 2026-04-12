@@ -37,5 +37,5 @@ def optimize_storage() -> Any:
     clean_temp_dirs()
     logger.info("Storage optimized and permanent files cleaned.")
 
-if __name__ == '__main__':
+
     optimize_storage() 

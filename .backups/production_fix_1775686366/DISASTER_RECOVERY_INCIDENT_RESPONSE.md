@@ -505,3 +505,43 @@ Success Criteria:
 **Last Reviewed**: 2026-03-31T23:30:00Z
 **Next Review**: 2026-06-30T23:30:00Z
 **Drill Date**: 2026-04-30 (Quarterly)
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

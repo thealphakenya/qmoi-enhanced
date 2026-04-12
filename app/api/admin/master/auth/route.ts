@@ -76,7 +76,7 @@ function POST(request: Request): any {
       { status: 200 },
     );
   } catch (error) {
-    console.error("Authentication error:", error);
+    logger.error("Authentication error:", error);
     return NextResponse.json(
       { error: "Authentication failed" },
       { status: 500 },

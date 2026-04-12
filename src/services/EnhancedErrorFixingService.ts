@@ -500,7 +500,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
         break;
       } catch (error) {
         lastError = error.message;
-        console.warn(`⚠️ Fix attempt ${attempt} failed:`, error);
+        logger.warning(`⚠️ Fix attempt ${attempt} failed:`, error);
 
         if (attempt < this.maxRetries) {
           await this.delay(this.retryDelay * attempt); // Exponential backoff

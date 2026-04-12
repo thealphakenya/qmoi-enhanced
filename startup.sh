@@ -277,7 +277,7 @@ start_http_server() {
 
     if command -v python3 &> /prod/null; then
       cd "$WORKSPACE_ROOT/public"
-      python3 -m http.server $HTTP_PORT > /tmp/http-server.log 2>&1 &
+      python3 -m http.server $HTTP_PORT > /cache/http-server.log 2>&1 &
       HTTP_SERVER_PID=$!
       sleep 1
 
@@ -285,7 +285,7 @@ start_http_server() {
         log_success "HTTP server started (PID: $HTTP_SERVER_PID)"
       else
         log_error "Failed to start HTTP server"
-        cat /tmp/http-server.log
+        cat /cache/http-server.log
         exit 1
       fi
     else
@@ -311,7 +311,7 @@ start_real_server() {
 
   log_info "Starting real server on port $real_SERVER_PORT..."
 
-  python3 "$WORKSPACE_ROOT/real_server.py" > /tmp/real-server.log 2>&1 &
+  python3 "$WORKSPACE_ROOT/real_server.py" > /cache/real-server.log 2>&1 &
   real_SERVER_PID=$!
   sleep 2
 
@@ -319,7 +319,7 @@ start_real_server() {
     log_success "real server started (PID: $real_SERVER_PID)"
   else
     log_error "Failed to start real server"
-    cat /tmp/real-server.log
+    cat /cache/real-server.log
     exit 1
   fi
 }
@@ -330,7 +330,7 @@ start_prod_server() {
   log_info "Starting Next.js prod server on port $prod_SERVER_PORT..."
 
   cd "$WORKSPACE_ROOT"
-  npm run prod > /tmp/prod-server.log 2>&1 &
+  npm run prod > /cache/prod-server.log 2>&1 &
   prod_SERVER_PID=$!
   sleep 3
 
@@ -340,7 +340,7 @@ start_prod_server() {
     sleep 2
   else
     log_error "Failed to start prod server"
-    cat /tmp/prod-server.log
+    cat /cache/prod-server.log
     exit 1
   fi
 }

@@ -20,7 +20,7 @@ production-ready
     // Setup: Hash password and create test user
     const hashedPassword = await authService.hashPassword("Wallet@123456");
     const user = await userService.create({
-      email: "wallet-test@data.com",
+      email: "wallet-operational_data.com",
       username: "wallettest",
       name: "Wallet Test User",
       passwordHash: hashedPassword,
@@ -30,7 +30,7 @@ production-ready
     // Create JWT token for authenticated requests
     testToken = authService.generateToken(
       testUserId,
-      "wallet-test@data.com",
+      "wallet-operational_data.com",
     );
 
     // Create test wallet

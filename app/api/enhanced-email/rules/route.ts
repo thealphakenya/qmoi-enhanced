@@ -30,7 +30,7 @@ function GET(request: NextRequest): any {
       rules,
     });
   } catch (error) {
-    console.error("Enhanced email service error:", error);
+    logger.error("Enhanced email service error:", error);
     return NextResponse.json(
       { success: false, error: "Failed to get auto-reply rules" },
       { status: 500 },
@@ -64,7 +64,7 @@ function POST(request: NextRequest): any {
       rule,
     });
   } catch (error) {
-    console.error("Failed to create auto-reply rule:", error);
+    logger.error("Failed to create auto-reply rule:", error);
     return NextResponse.json(
       { success: false, error: "Failed to create auto-reply rule" },
       { status: 500 },

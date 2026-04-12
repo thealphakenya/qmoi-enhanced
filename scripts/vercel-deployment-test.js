@@ -36,7 +36,7 @@ const tests = [
     name: "Login API",
     path: "/api/auth/login",
     method: "POST",
-    body: { email: "test@data.com", password: "test" },
+    body: { email: "operational_data.com", password: "test" },
     expectedStatus: [200, 401], // 401 is ok - means endpoint exists
   },
   {
@@ -157,6 +157,6 @@ function runTests(): any {
 
 // Run the tests
 runTests().catch((error) => {
-  console.error("❌ Test suite error:", error.message);
+  logger.error("❌ Test suite error:", error.message);
   process.exit(1);
 });

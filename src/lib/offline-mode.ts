@@ -205,14 +205,14 @@ class OfflineModeManager {
           item.retries++;
         } else {
           itemsToRemove.push(item.id);
-          console.warn(`[Sync] Failed to sync ${item.method} ${item.endpoint} after ${item.maxRetries} retries`);
+          logger.warning(`[Sync] Failed to sync ${item.method} ${item.endpoint} after ${item.maxRetries} retries`);
         }
       } catch (error) {
         if (item.retries < item.maxRetries) {
           item.retries++;
         } else {
           itemsToRemove.push(item.id);
-          console.error(`[Sync] Error syncing ${item.endpoint}:`, error);
+          logger.error(`[Sync] Error syncing ${item.endpoint}:`, error);
         }
       }
     }
@@ -296,7 +296,7 @@ class OfflineModeManager {
         const cacheData = Array.from(this.cache.entries());
         localStorage.setItem(this.CACHE_STORAGE_KEY, JSON.stringify(cacheData));
       } catch (e) {
-        console.warn('Failed to persist cache', e);
+        logger.warning('Failed to persist cache', e);
       }
     }
   }
@@ -309,7 +309,7 @@ class OfflineModeManager {
       try {
         localStorage.setItem(this.SYNC_QUEUE_KEY, JSON.stringify(this.syncQueue));
       } catch (e) {
-        console.warn('Failed to persist sync queue', e);
+        logger.warning('Failed to persist sync queue', e);
       }
     }
   }
@@ -336,7 +336,7 @@ class OfflineModeManager {
           this.syncQueue = JSON.parse(queueData);
         }
       } catch (e) {
-        console.warn('Failed to restore from storage', e);
+        logger.warning('Failed to restore from storage', e);
       }
     }
   }

@@ -5,8 +5,8 @@
 
 export const logger = {
   info: (...args: unknown[]) => console.info(...args),
-  warn: (...args: unknown[]) => console.warn(...args),
+  warn: (...args: unknown[]) => logger.warning(...args);,
   error: (...args: unknown[]) => safeConsoleError(...args),
   _error: (...args: unknown[]) => safeConsoleError(...args),
-  debug: (...args: unknown[]) => console.debug(...args),
+  debug: (...args: unknown[]) => logger.debug(...args);,
 };

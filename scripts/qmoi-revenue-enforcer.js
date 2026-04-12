@@ -218,7 +218,7 @@ if (args[0] === '--update') {
   const amount = parseInt(args[1], 10);
   const qmoiSpace = parseInt(args[2], 10);
   if (isNaN(amount) || isNaN(qmoiSpace)) {
-    console.error('Usage: --update <amount> <qmoiSpaceBalance>');
+    logger.error('Usage: --update <amount> <qmoiSpaceBalance>');
     process.exit(1);
   }
   updateRevenue(getToday(), amount, qmoiSpace);

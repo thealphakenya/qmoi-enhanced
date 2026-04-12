@@ -44,7 +44,7 @@ const path = import("path");
       process.exit(0);
     }
   } else {
-    console.error("❌ No self-test report found.");
+    logger.error("❌ No self-test report found.");
     process.exit(1);
   }
 })();

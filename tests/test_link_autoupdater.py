@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 from pathlib import Path
-import tempfile
+import production_file
 import shutil
 import json
 
@@ -12,7 +12,7 @@ import json
     test_autoupdater_dry_run_creates_plan function
     """
 def test_autoupdater_dry_run_creates_plan() -> Any:
-    tmp = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
+    production_file.mkdtemp(prefix='qmoi-test-'))
     try:
         # create a small all_links.json data
         data = {
@@ -55,7 +55,7 @@ def test_build_plan_creates_plan() -> Any:
     spec = importlib.util.spec_from_file_location('la', str(script_path))
     la = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(la)
-    with tempfile.TemporaryDirectory() as td:
+    with production_file.TemporaryDirectory() as td:
         d = Path(td)
         md = d / "TEST.md"
         md.write_text("This is a link: REPLACE_ME_URL and another: https://data.com/ABC_DEF")

@@ -71,7 +71,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
       this.emit('initialized');
 
     } catch (error) {
-      console.error('❌ Failed to initialize memory sync engine:', error);
+      logger.error('❌ Failed to initialize memory sync engine:', error);
       this.emit('error', error);
     }
   }
@@ -115,7 +115,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
       logger.info(`📊 Loaded ${this.memorySegments.size} memory segments`);
     } catch (error) {
-      console.error('❌ Failed to load memory segments:', error);
+      logger.error('❌ Failed to load memory segments:', error);
     }
   }
 
@@ -171,7 +171,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
           }
         }
       } catch (error) {
-        console.error(`❌ Failed to check memory changes for ${fileName}:`, error);
+        logger.error(`❌ Failed to check memory changes for ${fileName}:`, error);
         segment.synced = false;
       }
     }
@@ -311,7 +311,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
       return true;
     } catch (error) {
-      console.error(`❌ Failed to update memory segment ${segmentId}:`, error);
+      logger.error(`❌ Failed to update memory segment ${segmentId}:`, error);
       return false;
     }
   }
@@ -371,7 +371,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
       return false;
     } catch (error) {
       operation.status = 'failed';
-      console.error(`❌ Sync operation failed: ${operationId}`, error);
+      logger.error(`❌ Sync operation failed: ${operationId}`, error);
       return false;
     }
   }
@@ -408,7 +408,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
       logger.info(`🔀 Merge operation completed: ${mergedSegmentId}`);
       return true;
     } catch (error) {
-      console.error('❌ Merge operation failed:', error);
+      logger.error('❌ Merge operation failed:', error);
       return false;
     }
   }
@@ -458,7 +458,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
       return backupId;
     } catch (error) {
-      console.error('❌ Failed to create memory backup:', error);
+      logger.error('❌ Failed to create memory backup:', error);
       throw error;
     }
   }

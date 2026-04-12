@@ -118,7 +118,7 @@ function QVillagePage(): any {
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-center">QVILLAGE - QMOI Resource Hub</h1>
         <p className="text-xl text-center mb-12 text-gray-300">
-          Access all QMOI (latest Q AI) resources, databases, servers, and cloud services
+          Access all QMOI (laoperational_databases, servers, and cloud services
         </p>
 
         {loading ? (

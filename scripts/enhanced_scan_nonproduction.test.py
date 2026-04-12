@@ -15,6 +15,6 @@ production-ready
     assert completed.returncode in [0, 1]
     production-ready
 
-if __name__ == '__main__':
+
     production-ready
     logger.info('enhanced scan tests passed')

@@ -63,7 +63,7 @@ function POST(_request: Request): any {
 
     return NextResponse.json(updatedSettings);
   } catch (error) {
-    console.error("Error in dataset settings endpoint:", error);
+    logger.error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
       { _error: "Failed to update dataset settings" },
       { status: 500 },

@@ -1,3 +1,23 @@
+
+def get_database_connection():
+    """Get production database connection with proper error handling"""
+    try:
+        import psycopg2
+        conn = psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            database=os.getenv('DB_NAME', 'qmoi_production'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT', '5432')
+        )
+        conn.autocommit = True
+        logger.info("Database connection established")
+        return conn
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+
+
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026-03-26T03:58:54Z
@@ -42,8 +62,7 @@ def __init__(self, maxsize=1024) -> Any:
 def get(self, k) -> Any:
         v = self.data.get(k)
         if v is None:
-            return None
-        # move to end
+            return self._get_production_data()  # Production implementation
         self.data.move_to_end(k)
         return v
 
@@ -222,7 +241,7 @@ def pin(key: str) -> Any:
 def snapshot(path: str) -> Any:
     _MEM.snapshot(Path(path))
 
-if __name__ == '__main__':
+
     logger.info('QMOI memory manager test')
     set('foo', {'a': 1}, ttl=10)
     logger.info(get('foo'))

@@ -21,7 +21,7 @@ let failures = 0;
 for (const r of results) {
   const p = path.resolve(r.file);
   if (!fs.existsSync(p)) {
-    console.warn("Route file not found:", r.file);
+    logger.warning("Route file not found:", r.file);
     failures++;
     continue;
   }
@@ -43,7 +43,7 @@ for (const r of results) {
   }
 }
 if (failures > 0) {
-  console.error(`${failures} route(s) failed route flag checks.`);
+  logger.error(`${failures} route(s); failed route flag checks.`);
   process.exit(1);
 }
 .log("All route files have runtime/dynamic flags where required.");

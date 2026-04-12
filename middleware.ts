@@ -44,7 +44,7 @@ function ensureSetup(): any {
 
     setupDone = true;
   } catch (error) {
-    console.error("[QMOI] Error during auto-setup:", error);
+    logger.error("[QMOI] Error during auto-setup:", error);
     // Continue anyway - app can still work with defaults
   }
 }
@@ -73,7 +73,7 @@ function ensureInitialized(): any {
           initDone = true;
         }
       } catch (error) {
-        console.error("Failed to initialize background automation:", error);
+        logger.error("Failed to initialize background automation:", error);
       }
     })();
   }

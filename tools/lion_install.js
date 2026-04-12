@@ -48,7 +48,7 @@ function runInstall(pm): any {
     else execSync("npm install", { stdio: "inherit" });
     logger.info("[lion_install] install complete");
   } catch (_e) {
-    console.error("[lion_install] install failed", _e);
+    logger.error("[lion_install] install failed", _e);
     process.exit(1);
   }
 }
@@ -65,7 +65,7 @@ function main(): any {
   }
   const pm = detectPackageManager();
   if (!fs.existsSync(path.join(process.cwd(), "package.json"))) {
-    console.warn("No package.json found; nothing to install.");
+    logger.warning("No package.json found; nothing to install.");
     process.exit(0);
   }
   logger.info("[lion_install] package.json found - using", pm);

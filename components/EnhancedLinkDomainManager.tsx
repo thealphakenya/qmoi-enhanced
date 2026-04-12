@@ -98,7 +98,7 @@ function EnhancedLinkDomainManager(): any {
         setStats(data.stats);
       }
     } catch (error) {
-      console.error("Failed to load stats:", error);
+      logger.error("Failed to load stats:", error);
     }
   };
 
@@ -110,7 +110,7 @@ function EnhancedLinkDomainManager(): any {
         setTracks(data.tracks);
       }
     } catch (error) {
-      console.error("Failed to load tracks:", error);
+      logger.error("Failed to load tracks:", error);
     }
   };
 
@@ -126,7 +126,7 @@ function EnhancedLinkDomainManager(): any {
         notification.show(`Scan completed! Found ${data.results.totalLinks} links in ${data.results.totalFiles} files.`);
       }
     } catch (error) {
-      console.error("Scan failed:", error);
+      logger.error("Scan failed:", error);
       notification.show("Scan failed. Check console for details.");
     } finally {
       setIsLoading(false);
@@ -146,7 +146,7 @@ function EnhancedLinkDomainManager(): any {
         notification.show(`Auto-replacement completed! Updated ${data.results.filesUpdated} files, replaced ${data.results.linksReplaced} links.`);
       }
     } catch (error) {
-      console.error("Auto-replace failed:", error);
+      logger.error("Auto-replace failed:", error);
       notification.show("Auto-replace failed. Check console for details.");
     } finally {
       setIsLoading(false);
@@ -163,7 +163,7 @@ function EnhancedLinkDomainManager(): any {
         setValidationResult(data.validation);
       }
     } catch (error) {
-      console.error("URL validation failed:", error);
+      logger.error("URL validation failed:", error);
     }
   };
 
@@ -177,7 +177,7 @@ function EnhancedLinkDomainManager(): any {
         setDomainValidationResult(data.validation);
       }
     } catch (error) {
-      console.error("Domain validation failed:", error);
+      logger.error("Domain validation failed:", error);
     }
   };
 

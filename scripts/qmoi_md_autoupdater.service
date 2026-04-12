@@ -1,0 +1,12 @@
+[Unit]
+Description=QMOI Markdown Auto-Updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/workspaces/qmoi-enhanced
+ExecStart=/usr/bin/env python3 /workspaces/qmoi-enhanced/scripts/qmoi_md_autoupdater.py
+StandardOutput=journal
+StandardError=journal
+PrivateTmp=true

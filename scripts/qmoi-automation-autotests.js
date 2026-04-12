@@ -45,7 +45,7 @@ class QMOIAutomationAutotests {
 
       logger.info("✅ QMOI Automation Autotests initialized");
     } catch (error) {
-      console.error("❌ Test initialization failed:", error.message);
+      logger.error("❌ Test initialization failed:", error.message);
       throw error;
     }
   }
@@ -158,7 +158,7 @@ class QMOIAutomationAutotests {
 
       return testReport;
     } catch (error) {
-      console.error("❌ Test execution failed:", error.message);
+      logger.error("❌ Test execution failed:", error.message);
       await this.handleTestError(error);
       throw error;
     }
@@ -426,8 +426,8 @@ class QMOIAutomationAutotests {
     logger.info("🧪 Running database tests...");
 
     try {
-      const { stdout } = await execAsync("npm run test:database");
-      return this.parseTestOutput(stdout, "Database Tests");
+      const { stdout } = await execAsync("npm run operational_database");
+      return this.parseoperational_database Tests");
     } catch (error) {
       return {
         name: "Database Tests",
@@ -604,7 +604,7 @@ class QMOIAutomationAutotests {
       await execAsync("npm run test:metrics");
       artifacts.push("test-results/metrics.json");
     } catch (error) {
-      console.warn("⚠️  Some artifacts could not be generated:", error.message);
+      logger.warning("⚠️  Some artifacts could not be generated:", error.message);
     }
 
     return artifacts;
@@ -674,7 +674,7 @@ class QMOIAutomationAutotests {
   }
 
   async handleTestError(error) {
-    console.error("❌ Test execution error:", error.message);
+    logger.error("❌ Test execution error:", error.message);
 
     await this.notificationSystem.sendNotification(
       "error",
@@ -701,7 +701,7 @@ function main(): any {
       process.exit(0);
     }
   } catch (error) {
-    console.error("💥 Fatal test error:", error.message);
+    logger.error("💥 Fatal test error:", error.message);
     process.exit(1);
   }
 }

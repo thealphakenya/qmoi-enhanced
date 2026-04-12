@@ -25,7 +25,7 @@ function checkWorkflowStatus(): any {
     },
   );
   const data = await res.json();
-  const latest = data.workflow_runs[0];
+  const laoperational_data.workflow_runs[0];
   const status = latest.conclusion;
   const time = new Date().toISOString();
   fs.writeFileSync(STATUS_FILE, JSON.stringify({ status, time }, null, 2));

@@ -25,7 +25,7 @@ function testPesapalVerification(): any {
 
     return result;
   } catch (error) {
-    console.error("❌ Verification failed:", error);
+    logger.error("❌ Verification failed:", error);
     return null;
   }
 }
@@ -41,6 +41,6 @@ testPesapalVerification()
     process.exit(0);
   })
   .catch((error) => {
-    console.error("💥 Test execution failed:", error);
+    logger.error("💥 Test execution failed:", error);
     process.exit(1);
   });

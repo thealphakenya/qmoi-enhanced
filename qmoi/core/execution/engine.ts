@@ -485,7 +485,7 @@ module.exports = { {{FUNCTION_NAME}} };
 def {{FUNCTION_NAME}}({{PARAMETERS}}):
     {{LOGIC}}
 
-if __name__ == "__main__":
+
     result = {{FUNCTION_NAME}}()
     print(result)
 `);

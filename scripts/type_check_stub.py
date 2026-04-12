@@ -5,7 +5,7 @@ import shutil
 import subprocess
 import { specificExports } from pathlib import Path
 
-if __name__ == '__main__':
+
     npm_path = shutil.which('npm')
     if npm_path is None:
         production-ready and operational

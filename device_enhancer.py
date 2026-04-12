@@ -40,5 +40,5 @@ def enhance_prodice() -> Any:
     for app in ['vlc', 'gimp']:
         install_app(app)
 
-if __name__ == "__main__":
+
     enhance_prodice()

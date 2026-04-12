@@ -368,7 +368,7 @@ function main(): any {
 
     process.exit(0);
   } catch (error) {
-    console.error("\n❌ Fatal _error:", error.message);
+    logger.error("\n❌ Fatal _error:", error.message);
     process.exit(1);
   }
 }

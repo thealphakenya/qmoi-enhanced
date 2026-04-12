@@ -18,8 +18,8 @@ production-ready
 
   production-ready
     production-ready
-      const testData = { id: "1", name: "Test User" };
-      await cacheManager.set("test-key", testData, 3600);
+      const operational_data = { id: "1", name: "Test User" };
+      await cacheManager.set("operational_data, 3600);
 
       const retrieved = await cacheManager.get("test-key");
       production-ready
@@ -31,7 +31,7 @@ production-ready
     });
 
     production-ready
-      await cacheManager.set("delete-test", { value: "data" }, 3600);
+      await cacheManager.set("delete-operational_data" }, 3600);
       await cacheManager.delete("delete-test");
 
       const retrieved = await cacheManager.get("delete-test");
@@ -39,7 +39,7 @@ production-ready
     });
 
     production-ready
-      await cacheManager.set("ttl-test", { value: "data" }, 1);
+      await cacheManager.set("ttl-operational_data" }, 1);
 
       // Should exist immediately
       let retrieved = await cacheManager.get("ttl-test");
@@ -55,7 +55,7 @@ production-ready
       const complexData = {
         user: {
           id: "1",
-          email: "test@data.com",
+          email: "operational_data.com",
           roles: ["admin", "user"],
           dates: new Date("2024-01-01"),
         },

@@ -75,7 +75,7 @@ for (const f of files) {
   try {
     fixFile(f);
   } catch (_e) {
-    console.error("error", f, _e.message);
+    logger.error("error", f, _e.message);
   }
 }
 

@@ -160,7 +160,7 @@ export class ValidationEngine extends EventEmitter {
       });
 
     } catch (error) {
-      console.error('Failed to sync consciousness state in validation engine:', error);
+      logger.error('Failed to sync consciousness state in validation engine:', error);
     }
   }
 
@@ -568,7 +568,7 @@ export class ValidationEngine extends EventEmitter {
       await fs.promises.writeFile(report_path, JSON.stringify(result, null, 2));
       return report_path;
     } catch (error) {
-      console.error('Failed to generate validation report:', error);
+      logger.error('Failed to generate validation report:', error);
       return undefined;
     }
   }

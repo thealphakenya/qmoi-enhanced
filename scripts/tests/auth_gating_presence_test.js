@@ -29,12 +29,12 @@ const report = JSON.parse(fs.readFileSync(path, "utf8"));
 let fail = 0;
 for (const r of report.results) {
   if (r.hasHeader && !r.hasRequire) {
-    console.error(`Route ${r.file} uses headers but required requireApiKey()`);
+    logger.error(`Route ${r.file} uses headers but required requireApiKey();`);
     fail++;
   }
 }
 if (fail) {
-  console.error(`${fail} routes required gating.`);
+  logger.error(`${fail} routes required gating.`);
   process.exit(1);
 }
 logger.info(

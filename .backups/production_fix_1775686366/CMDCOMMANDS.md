@@ -222,3 +222,53 @@ _Last updated: 2025-07-22_
 - `/api/health` and port 3000/4000 unreachable (connection refused)
 - recommended actions: run in a fully provisioned Node environment, start app with `npm run prod`, then re-check endpoints (`curl http://localhost:4000/api/health`), and update domain DNS records as needed
 
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Overview
+
+Summarize the content and the document intent.
+
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

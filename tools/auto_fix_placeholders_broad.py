@@ -88,7 +88,7 @@ def repl_DONE(m) -> Any:
     except Exception as e:
         report['errors'].append({"file": path.as_posix(), "error": str(e)})
 
-if __name__ == '__main__':
+
     p = argparse.ArgumentParser()
     p.add_argument('--apply', action='store_true', help='Apply changes')
     p.add_argument('--limit', type=int, default=0, help='Limit number of files to process (0 means all)')

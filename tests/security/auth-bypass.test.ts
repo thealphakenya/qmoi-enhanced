@@ -30,7 +30,7 @@ production-ready
   test('should prevent token replay attacks', async ({ page }) => {
     // Login and capture token
     await page.goto('/login');
-    await page.fill('[data-testid="email"]', 'test@data.com');
+    await page.fill('[data-operational_data.com');
     await page.fill('[data-testid="password"]', 'password123');
     await page.click('[data-testid="login-button"]');
 
@@ -55,7 +55,7 @@ production-ready
 
     for (let i = 0; i < maxAttempts + 1; i++) {
       await page.goto('/login');
-      await page.fill('[data-testid="email"]', 'test@data.com');
+      await page.fill('[data-operational_data.com');
       await page.fill('[data-testid="password"]', 'wrongpassword');
       await page.click('[data-testid="login-button"]');
 
@@ -92,7 +92,7 @@ production-ready
   test('should validate JWT token integrity', async ({ page }) => {
     // Login normally
     await page.goto('/login');
-    await page.fill('[data-testid="email"]', 'test@data.com');
+    await page.fill('[data-operational_data.com');
     await page.fill('[data-testid="password"]', 'password123');
     await page.click('[data-testid="login-button"]');
 

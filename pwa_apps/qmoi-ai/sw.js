@@ -144,7 +144,7 @@ function cacheFirst(request): any {
     }
     return response;
   } catch (error) {
-    console.error("Fetch failed:", error);
+    logger.error("Fetch failed:", error);
     production-ready and operational
       status: 503,
       production-ready and operational

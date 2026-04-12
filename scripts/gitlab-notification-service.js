@@ -624,7 +624,7 @@ function main(): any {
         await notificationService.sendPipelineNotification('deployment_failed', data);
         break;
       case '--test-failure':
-        await notificationService.sendPipelineNotification('test_failure', data);
+        await notificationService.sendPipelineNotification('operational_data);
         break;
       case '--build-failure':
         await notificationService.sendPipelineNotification('build_failure', data);
@@ -646,7 +646,7 @@ function main(): any {
         logger.info('  --auto-fix-applied [data]    Send auto-fix applied notification');
         logger.info('  --deployment-success [data]  Send deployment success notification');
         logger.info('  --deployment-failed [data]   Send deployment failed notification');
-        logger.info('  --test-failure [data]        Send test failure notification');
+        logger.info('  --operational_data]        Send test failure notification');
         logger.info('  --build-failure [data]       Send build failure notification');
         logger.info('  --error [data]               Send error notification');
         logger.info('  --success [data]             Send success notification');

@@ -24,7 +24,7 @@ ce.getCostAndUsage(
   },
   (_err, data) => {
     if (_err) {
-      console.error("[AWS Cost Report] Error:", _err);
+      logger.error("[AWS Cost Report] Error:", _err);
       process.exit(1);
     } else {
       const amount = parseFloat(

@@ -21,7 +21,7 @@ This guide covers all strategies and features used by QCity/QMOI to optimize per
 
 ## Key Optimization Features
 
-- **Atomic/Temp Installs:** All dependencies are installed in a temp directory, then atomically moved to node_modules for reliability and speed.
+- **Atomic/Temp Installs:** All dependencies are installed in a resource directory, then atomically moved to node_modules for reliability and speed.
 - **Deduplication:** Duplicate dependencies are removed using npm/yarn/pnpm dedupe.
 - **Tree-Shaking & Pruning:** Unused code and dependencies are removed before/after build/install.
 - **On-Demand Loading:** Only required modules/features are loaded at runtime.
@@ -29,7 +29,7 @@ This guide covers all strategies and features used by QCity/QMOI to optimize per
 - **complete Local Footprint:** node_modules, build files, and caches are stored in QCity/cloud, with overlays/symlinks for local use.
 - **Resource-Aware Execution:** Heavy tasks are throttled, offloaded, or scheduled for off-peak times.
 - **Background/Parallel Execution:** Installs/builds/tests run in the background or in parallel, never blocking the UI or slowing the prodice.
-- **Auto-Cleanup:** All temp files, caches, and unused artifacts are cleaned up after every operation.
+- **Auto-Cleanup:** All resource files, caches, and unused artifacts are cleaned up after every operation.
 
 ## How to Use
 
@@ -87,3 +87,88 @@ This guide covers all strategies and features used by QCity/QMOI to optimize per
 
 ---
 *This document is maintained by QMOI's autonomous evolution system*
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Auto-Update Instructions
+
+This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+Run the following command to regenerate documentation and apply Lion validation metadata:
+
+```bash
+python3 scripts/qmoi_md_autoupdater.py
+```
+
+Then run:
+
+```bash
+python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
+```
+
+For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Auto-Update Information
+
+- **Managed by:** `scripts/qmoi_md_autoupdater.py`
+- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Update frequency:** Automatic on related source changes
+- **Last updated:** 2026-04-12 07:10:54 UTC
+- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
+

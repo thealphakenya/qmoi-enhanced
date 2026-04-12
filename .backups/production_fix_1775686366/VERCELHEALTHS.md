@@ -110,3 +110,48 @@ curl -X POST -H "Authorization: Bearer $MASTER_TOKEN" \
 - Use the Lion API endpoints for master-level rescue workflows.
 - Review Vercel logs in the dashboard if CLI-based auto-fix does not resolve the issue.
 - For production, ensure `VERCEL_AUTO_SCALE=true`, `VERCEL_AUTO_DEPLOY=true`, and `VERCEL_AUTO_ROLLBACK=true` are set.
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

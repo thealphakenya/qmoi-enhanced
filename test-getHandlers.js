@@ -19,6 +19,6 @@
       );
     }
   } catch (e) {
-    console.error("err", e);
+    logger.error("err", e);
   }
 })();

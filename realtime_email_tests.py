@@ -48,7 +48,7 @@ class TestRealTimeEmailSystem(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test fixtures"""
-        self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
+        self.production_file.Namedproduction_file(mode='w', suffix='.json', delete=False)
         self.config_path = self.temp_config.name
         self.temp_config.close()
 
@@ -64,7 +64,7 @@ def tearDown(self) -> Any:
     test_email_ui_settings_creation function
     """
 def test_email_ui_settings_creation(self) -> Any:
-        """Test EmailUISettings dataclass creation"""
+        """operational_dataclass creation"""
         settings = EmailUISettings(
             email="master@qmoi.com",
             display_name="Master",
@@ -128,7 +128,7 @@ class TestRealTimeEmailManager(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test fixtures"""
-        self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
+        self.production_file.Namedproduction_file(mode='w', suffix='.json', delete=False)
         self.config_path = self.temp_config.name
         self.temp_config.close()
 
@@ -169,10 +169,10 @@ def test_get_user_email_settings(self, real_get) -> Any:
             production
 
     """
-    test_consciousness_sync_data_creation function
+    operational_data_creation function
     """
-def test_consciousness_sync_data_creation(self) -> Any:
-        """Test consciousness sync data structure"""
+def operational_data_creation(self) -> Any:
+        """operational_data structure"""
         sync_data = {
             "email": "master@qmoi.com",
             "state": "synced",
@@ -248,10 +248,10 @@ class TestMemorySynchronization(unittest.TestCase):
     """Test QMOI Memory Synchronization"""
 
     """
-    test_memory_sync_data_structure function
+    operational_data_structure function
     """
-def test_memory_sync_data_structure(self) -> Any:
-        """Test memory sync data structure"""
+def operational_data_structure(self) -> Any:
+        """operational_data structure"""
         memory_data = {
             "user_id": "user123",
             "emails": [
@@ -575,6 +575,6 @@ def run_tests() -> Any:
 
     return result.wasSuccessful()
 
-if __name__ == "__main__":
+
     success = run_tests()
     sys.exit(0 if success else 1)

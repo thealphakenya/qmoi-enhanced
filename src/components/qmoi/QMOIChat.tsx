@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
@@ -39,7 +63,7 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
       await sendMessage(userMessage);
       onMessageReceived?.(userMessage);
     } catch (err) {
-      console.error("Failed to send message:", err);
+      logger.error("Failed to send message:", err);
     }
   };
 
@@ -78,7 +102,7 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
     };
 
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-      console.error("Speech recognition error:", event.error);
+      logger.error("Speech recognition error:", event.error);
       setIsSpeaking(false);
     };
 
@@ -87,7 +111,7 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
 
   const handleVoiceOutput = async (text: string) => {
     if (!("speechSynthesis" in window)) {
-      console.warn("Speech synthesis not supported");
+      logger.warning("Speech synthesis not supported");
       return;
     }
 

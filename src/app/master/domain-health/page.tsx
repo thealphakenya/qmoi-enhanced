@@ -95,7 +95,7 @@ function MasterDomainHealthDashboard(): any {
           router.push('/auth/login');
         }
       } catch (error) {
-        console.error('Master auth check failed:', error);
+        logger.error('Master auth check failed:', error);
         router.push('/auth/login');
       }
     };
@@ -163,7 +163,7 @@ function MasterDomainHealthDashboard(): any {
       }
 
     } catch (error) {
-      console.error('Failed to load domain data:', error);
+      logger.error('Failed to load domain data:', error);
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -192,7 +192,7 @@ function MasterDomainHealthDashboard(): any {
         setAutoRepairActive(!autoRepairActive);
       }
     } catch (error) {
-      console.error('Failed to toggle auto-repair:', error);
+      logger.error('Failed to toggle auto-repair:', error);
     }
   };
 
@@ -212,7 +212,7 @@ function MasterDomainHealthDashboard(): any {
         await loadDomainData();
       }
     } catch (error) {
-      console.error('Failed to acquire domain:', error);
+      logger.error('Failed to acquire domain:', error);
     }
   };
 
@@ -232,7 +232,7 @@ function MasterDomainHealthDashboard(): any {
         await loadDomainData();
       }
     } catch (error) {
-      console.error('Failed to setup SSL:', error);
+      logger.error('Failed to setup SSL:', error);
     }
   };
 

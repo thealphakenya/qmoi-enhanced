@@ -76,7 +76,7 @@ function POST(req: NextRequest): any {
       { status: 400 }
     );
   } catch (error) {
-    console.error('Error in master tracks operation:', error);
+    logger.error('Error in master tracks operation:', error);
     return NextResponse.json(
       { error: 'Failed to perform tracks operation' },
       { status: 500 }
@@ -139,7 +139,7 @@ function GET(req: NextRequest): any {
       count: domainTracks.length
     });
   } catch (error) {
-    console.error('Error fetching master tracks:', error);
+    logger.error('Error fetching master tracks:', error);
     return NextResponse.json(
       { error: 'Failed to fetch master tracks' },
       { status: 500 }

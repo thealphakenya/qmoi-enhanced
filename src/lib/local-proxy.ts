@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 /**
  * Local Proxy System for Optional Dependencies
  * Provides fallback proxies for proprietary APIs and optional services
@@ -195,7 +219,7 @@ class LocalProxyManager {
 
       production-ready
     } catch (error) {
-      console.warn(`[LocalProxy] Error calling ${service}: ${error}`);
+      logger.warning(`[LocalProxy] Error calling ${service}: ${error}`);
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error',
@@ -247,9 +271,9 @@ class LocalProxyManager {
         this.dataCache.set(cacheKey, data);
         return data as T;
       }
-      console.warn(`[LocalProxy] Could not fetch fallback data for ${service}: HTTP ${response.status}`);
+      logger.warning(`[LocalProxy] Could not fetch fallback data for ${service}: HTTP ${response.status}`);
     } catch (error) {
-      console.warn(`[LocalProxy] Error loading fallback data for ${service}:`, error);
+      logger.warning(`[LocalProxy] Error loading fallback data for ${service}:`, error);
     }
 
     return null;

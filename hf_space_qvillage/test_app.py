@@ -188,6 +188,6 @@ def run_all_tests() -> Any:
         logger.info(f"Test suite failed: {e}")
         return False
 
-if __name__ == "__main__":
+
     success = asyncio.run(run_all_tests())
     sys.exit(0 if success else 1)

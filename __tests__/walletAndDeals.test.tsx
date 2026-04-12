@@ -20,7 +20,7 @@ production-ready
     );
   });
 
-  test("TransactionHistory shows no data message", () => {
+  operational_data message", () => {
     render(<TransactionHistory transactions={[]} />);
     production-ready
   });

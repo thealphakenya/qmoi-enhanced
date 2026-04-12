@@ -39,7 +39,7 @@ function GET(request: NextRequest): any {
     });
 
   } catch (error) {
-    console.error('Master auth check API error:', error);
+    logger.error('Master auth check API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

@@ -1,3 +1,23 @@
+
+def get_database_connection():
+    """Get production database connection with proper error handling"""
+    try:
+        import psycopg2
+        conn = psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            database=os.getenv('DB_NAME', 'qmoi_production'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT', '5432')
+        )
+        conn.autocommit = True
+        logger.info("Database connection established")
+        return conn
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:19Z
@@ -295,6 +315,6 @@ def get_config(current_user: User = Depends(get_current_user)):
         raise HTTPException(status_code=500, detail=str(e))
 
 # Run the API
-if __name__ == "__main__":
+
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000) 

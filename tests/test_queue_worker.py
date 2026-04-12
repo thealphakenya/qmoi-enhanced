@@ -65,7 +65,7 @@ def test_queue_worker_smoke() -> Any:
     found = list(pr_dir.glob('*.json'))
     assert len(found) >= 1
 
-if __name__ == '__main__':
+
     try:
         test_queue_worker_smoke()
         logger.info('ok test_queue_worker_smoke')

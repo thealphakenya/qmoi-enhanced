@@ -91,7 +91,7 @@ function POST(request: NextRequest): any {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[EVOLUTION] Replace model endpoint error:', error);
+    logger.error('[EVOLUTION] Replace model endpoint error:', error);
 
     return NextResponse.json(
       {
@@ -138,7 +138,7 @@ function GET(request: NextRequest): any {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[EVOLUTION] Get endpoint error:', error);
+    logger.error('[EVOLUTION] Get endpoint error:', error);
 
     return NextResponse.json(
       {

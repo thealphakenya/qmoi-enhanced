@@ -131,13 +131,13 @@ System starting up. Please wait for first auto-update...
 
       // Check if file was updated within last 60 seconds
       if (age > 60000) {
-        console.warn('⚠️  Q/BALANCES.md not updated recently. Age:', Math.round(age / 1000), 'seconds');
+        logger.warning('⚠️  Q/BALANCES.md not updated recently. Age:', Math.round(age / 1000);, 'seconds');
       } else {
         logger.info('✅ Q/BALANCES.md health check passed. Last update:', Math.round(age / 1000), 'seconds ago');
       }
 
     } catch (error) {
-      console.error('❌ Q/BALANCES.md health check failed:', error);
+      logger.error('❌ Q/BALANCES.md health check failed:', error);
     }
   }
 
@@ -157,12 +157,12 @@ System starting up. Please wait for first auto-update...
 
     // Handle uncaught exceptions
     process.on('uncaughtException', (error) => {
-      console.error('❌ Uncaught Exception:', error);
+      logger.error('❌ Uncaught Exception:', error);
       this.stop().finally(() => process.exit(1));
     });
 
     process.on('unhandledRejection', (reason, promise) => {
-      console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
+      logger.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
       this.stop().finally(() => process.exit(1));
     });
   }
@@ -195,7 +195,7 @@ function main(): any {
     setInterval(() => {
       const status = manager.getStatus();
       if (!status.isRunning) {
-        console.error('❌ System stopped unexpectedly');
+        logger.error('❌ System stopped unexpectedly');
         process.exit(1);
       }
     }, 30000); // Check every 30 seconds
@@ -245,6 +245,6 @@ if (args.includes('--stop')) {
 
 // Start the system
 main().catch((error) => {
-  console.error('❌ Fatal error:', error);
+  logger.error('❌ Fatal error:', error);
   process.exit(1);
 });

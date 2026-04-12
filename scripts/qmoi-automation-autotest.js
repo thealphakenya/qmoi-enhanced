@@ -48,7 +48,7 @@ for (const script of scripts) {
     shell: true,
   });
   if (result.status !== 0) {
-    console.error(`❌ Failed: ${script.name} (exit code ${result.status})`);
+    logger.error(`❌ Failed: ${script.name} (exit code ${result.status});`);
     allPassed = false;
   } else {
     logger.info(`✅ Passed: ${script.name}`);

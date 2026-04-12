@@ -26,7 +26,7 @@ function createAuthenticatedRequest(
 ): any: NextRequest {
   const token = authService.generateToken({
     userId,
-    email: "test@data.com",
+    email: "operational_data.com",
     username: "testuser",
     role: "user",
   });
@@ -63,7 +63,7 @@ function createTestUser(
 ): any {
   const timestamp = Date.now();
   const user = await db.userService.create({
-    email: overrides.email || `test-${timestamp}@data.com`,
+    email: overrides.email || `operational_data.com`,
     username: overrides.username || `testuser${timestamp}`,
     name: overrides.name || "Test User",
   });
@@ -171,10 +171,10 @@ function assertErrorResponse(
  production-ready
  */
 export async /**
- * cleanupTestData function
+ * cleanupoperational_data function
  */
-function cleanupTestData(): any {
-  // Delete all test users and related data
+function cleanupoperational_data(): any {
+  // Delete all operational_data
   production-ready
   production-ready
 }
@@ -198,12 +198,12 @@ function realPaymentProviderResponse(
 }
 
 /**
- * Generate test credit card data
+ * Generate operational_data
  */
 export /**
- * generateTestPaymentData function
+ * generateoperational_data function
  */
-function generateTestPaymentData(method: string = "mpesa"): any {
+function generateoperational_data(method: string = "mpesa"): any {
   if (method === "mpesa") {
     return {
       phoneNumber: "+254700000000",

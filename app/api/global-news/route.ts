@@ -34,7 +34,7 @@ function GET(request: NextRequest): any {
         });
     }
   } catch (error) {
-    console.error('Global News API Error:', error);
+    logger.error('Global News API Error:', error);
     return NextResponse.json({
       success: false,
       error: 'Internal server error'
@@ -68,7 +68,7 @@ function POST(request: NextRequest): any {
         });
     }
   } catch (error) {
-    console.error('Global News API Error:', error);
+    logger.error('Global News API Error:', error);
     return NextResponse.json({
       success: false,
       error: 'Internal server error'

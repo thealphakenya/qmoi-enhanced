@@ -271,7 +271,7 @@ const qmoiOperations = {
       await new Promise(resolve => setTimeout(resolve, 100));
       return true;
     } catch (error) {
-      console.error(`Memory sync failed for ${component.name}:`, error);
+      logger.error(`Memory sync failed for ${component.name}:`, error);
       return false;
     }
   },
@@ -374,7 +374,7 @@ const qmoiOperations = {
       await new Promise(resolve => setTimeout(resolve, 50));
       return true;
     } catch (error) {
-      console.error(`Dataset access failed for ${component.name}:`, error);
+      logger.error(`Dataset access failed for ${component.name}:`, error);
       return false;
     }
   }
@@ -472,7 +472,7 @@ function ComponentGallery(): any {
         await generateComponentDocumentation(enhancedResults);
 
       } catch (error) {
-        console.error("QMOI component loading failed:", error);
+        logger.error("QMOI component loading failed:", error);
       } finally {
         setQmoiActive(false);
       }

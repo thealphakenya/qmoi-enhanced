@@ -66,7 +66,7 @@ function GET(
 
     return new NextResponse(avatarSet.default, { headers });
   } catch (error) {
-    console.error('Avatar generation error:', error);
+    logger.error('Avatar generation error:', error);
     return NextResponse.json(
       { error: 'Failed to generate avatar' },
       { status: 500 }
@@ -110,7 +110,7 @@ function POST(request: NextRequest): any {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('Avatar POST error:', error);
+    logger.error('Avatar POST error:', error);
     return NextResponse.json(
       { error: 'Failed to process avatar request' },
       { status: 500 }
@@ -157,7 +157,7 @@ function PUT(
       updated: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('Avatar update error:', error);
+    logger.error('Avatar update error:', error);
     return NextResponse.json(
       { error: 'Failed to update avatar' },
       { status: 500 }
@@ -195,7 +195,7 @@ function DELETE(
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('Avatar deletion error:', error);
+    logger.error('Avatar deletion error:', error);
     return NextResponse.json(
       { error: 'Failed to delete avatar' },
       { status: 500 }

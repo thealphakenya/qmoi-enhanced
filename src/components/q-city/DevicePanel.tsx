@@ -95,7 +95,7 @@ function DevicePanel(): any {
     })
       .then((r) => r.json())
       .then((data) =>
-        setTestResult(data.success ? "Success" : data.error || "Failed"),
+        setoperational_data.error || "Failed"),
       )
       .catch((e) => setTestResult(e.message));
   };

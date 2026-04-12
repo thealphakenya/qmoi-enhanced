@@ -120,7 +120,7 @@ function POST(request: NextRequest): any {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error("Error creating sponsored user:", error);
+    logger.error("Error creating sponsored user:", error);
     return NextResponse.json(
       { error: "Internal server error", code: "SERVER_ERROR" },
       { status: 500 },

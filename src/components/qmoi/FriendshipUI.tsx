@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
@@ -73,7 +97,7 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
         setFriends(data.friends);
       }
     } catch (error) {
-      console.error("Failed to fetch friends:", error);
+      logger.error("Failed to fetch friends:", error);
     } finally {
       setIsLoading(false);
     }
@@ -90,7 +114,7 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
         setPendingRequests(data.pending);
       }
     } catch (error) {
-      console.error("Failed to fetch pending requests:", error);
+      logger.error("Failed to fetch pending requests:", error);
     }
   };
 
@@ -105,7 +129,7 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
         setStats(data.stats);
       }
     } catch (error) {
-      console.error("Failed to fetch stats:", error);
+      logger.error("Failed to fetch stats:", error);
     }
   };
 

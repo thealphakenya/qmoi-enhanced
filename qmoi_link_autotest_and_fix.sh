@@ -2,7 +2,7 @@
 #!/bin/bash
 # QMOI Link Autotest & Self-Heal Script
 WORKSPACE="/workspaces/qmoi-enhanced-new-themasterkenya/qmoi-enhanced"
-LOG="/tmp/qmoi-broken-links.log"
+LOG="/cache/qmoi-broken-links.log"
 > "$LOG"
 grep -Eo 'https?://[^ ]+' $(find "$WORKSPACE" -name '*.md') | while read -r url; do
   STATUS=$(curl -Is "$url" --max-time 10 | head -1)

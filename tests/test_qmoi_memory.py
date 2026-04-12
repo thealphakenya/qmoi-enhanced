@@ -15,6 +15,6 @@ def test_set_get_delete() -> Any:
     delete('test:key')
     assert get('test:key') is None
 
-if __name__ == '__main__':
+
     test_set_get_delete()
     logger.info('ok')

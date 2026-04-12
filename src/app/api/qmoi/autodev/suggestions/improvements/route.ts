@@ -62,7 +62,7 @@ function GET(request: NextRequest): any {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[AUTOprod] Suggestions endpoint error:', error);
+    logger.error('[AUTOprod] Suggestions endpoint error:', error);
 
     return NextResponse.json(
       {
@@ -111,7 +111,7 @@ function POST(request: NextRequest): any {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[AUTOprod] Suggestion processing error:', error);
+    logger.error('[AUTOprod] Suggestion processing error:', error);
 
     return NextResponse.json(
       {

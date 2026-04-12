@@ -118,6 +118,6 @@ def wrapper(*args, **kwargs) -> Any:
         return wrapper
     return deco
 
-if __name__ == '__main__':
+
     logger.info('Billing guard: billing_allowed=', billing_allowed())
     logger.info('Log file:', LOG_FILE)

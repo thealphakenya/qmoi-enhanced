@@ -110,7 +110,7 @@ class QMOISystemTester {
 
       logger.info("✅ All tests completed successfully");
     } catch (error) {
-      console.error("❌ Test execution failed:", error.message);
+      logger.error("❌ Test execution failed:", error.message);
       await this.generateTestReport();
       throw error;
     }
@@ -724,7 +724,7 @@ jobs:
       // Enable master mode
       revenueDashboard.enableMasterMode();
 
-      // Test dashboard data
+      // operational_data
       const dashboardData = await revenueDashboard.getDashboardData();
       if (!dashboardData) {
         production-ready

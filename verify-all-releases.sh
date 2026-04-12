@@ -24,7 +24,7 @@ NC='\033[0m'
 
 # Configuration
 REPO="${REPO:-thestablekenya/qmoi-enhanced}"
-REPORT_FILE="/tmp/qmoi-release-report-$(date +%Y%m%d-%H%M%S).md"
+REPORT_FILE="/cache/qmoi-release-report-$(date +%Y%m%d-%H%M%S).md"
 BUILD_DIRS=(
     "Qmoi_downloaded_apps"
     "dist"
@@ -117,13 +117,13 @@ discover_builds() {
                 success "Found: $filename ($size)"
                 FOUND_BUILDS+=("$file")
                 
-                echo "$file" >> /tmp/qmoi-builds.txt
+                echo "$file" >> /cache/qmoi-builds.txt
             done
         fi
     done
 
-    if [ -f /tmp/qmoi-builds.txt ]; then
-        count=$(wc -l < /tmp/qmoi-builds.txt)
+    if [ -f /cache/qmoi-builds.txt ]; then
+        count=$(wc -l < /cache/qmoi-builds.txt)
         success "Total builds found: $count"
     else
         warning "No builds discovered"
@@ -194,7 +194,7 @@ check_github_releases() {
 verify_builds() {
     header "✅ Verifying All Builds"
 
-    if [ ! -f /tmp/qmoi-builds.txt ]; then
+    if [ ! -f /cache/qmoi-builds.txt ]; then
         warning "No builds to verify"
         return
     fi
@@ -217,7 +217,7 @@ verify_builds() {
                 error "✗ $filename (empty file)"
             fi
         fi
-    done < /tmp/qmoi-builds.txt
+    done < /cache/qmoi-builds.txt
     
     echo ""
     success "Build verification complete: $valid/$total valid"
@@ -230,7 +230,7 @@ verify_builds() {
 test_installations() {
     header "🧪 Testing Installation Files"
 
-    if [ ! -f /tmp/qmoi-builds.txt ]; then
+    if [ ! -f /cache/qmoi-builds.txt ]; then
         warning "No builds to test"
         return
     fi
@@ -278,7 +278,7 @@ test_installations() {
                     ;;
             esac
         fi
-    done < /tmp/qmoi-builds.txt
+    done < /cache/qmoi-builds.txt
 }
 
 #══════════════════════════════════════════════════════════════════════════════#
@@ -299,7 +299,7 @@ generate_report() {
 ## 📦 Available Builds
 
 ### Summary
-- **Total Builds:** $(wc -l < /tmp/qmoi-builds.txt || echo "0")
+- **Total Builds:** $(wc -l < /cache/qmoi-builds.txt || echo "0")
 - **Platforms:** Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook
 - **Apps:** QMOI AI, QCity, QShare, Yap, QStore, QVillage
 
@@ -384,7 +384,7 @@ deploy_to_channels() {
     echo ""
 
     # GitHub Releases deployment
-    if [ -f /tmp/qmoi-builds.txt ]; then
+    if [ -f /cache/qmoi-builds.txt ]; then
         log "Deploying to GitHub Releases..."
         
         # Use existing publish script
@@ -404,7 +404,7 @@ deploy_to_channels() {
 setup_monitoring() {
     header "📊 Setting Up Release Monitoring"
 
-    cat > /tmp/qmoi-release-monitor.sh << 'MONITOR'
+    cat > /cache/qmoi-release-monitor.sh << 'MONITOR'
 #!/bin/bash
 # Continuous release health monitoring
 
@@ -423,8 +423,8 @@ while true; do
 done
 MONITOR
 
-    chmod +x /tmp/qmoi-release-monitor.sh
-    success "Release monitor configured: /tmp/qmoi-release-monitor.sh"
+    chmod +x /cache/qmoi-release-monitor.sh
+    success "Release monitor configured: /cache/qmoi-release-monitor.sh"
 }
 
 #══════════════════════════════════════════════════════════════════════════════#
@@ -480,7 +480,7 @@ main() {
 }
 
 # Cleanup
-trap 'rm -f /tmp/qmoi-builds.txt' EXIT
+trap 'rm -f /cache/qmoi-builds.txt' EXIT
 
 # Run
 main "$@"

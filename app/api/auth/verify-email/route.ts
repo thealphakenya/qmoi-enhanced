@@ -52,7 +52,7 @@ function POST(request: NextRequest): any {
       nextStep: "initial_profiling",
     });
   } catch (error) {
-    console.error("Email verification error:", error);
+    logger.error("Email verification error:", error);
     return NextResponse.json(
       { error: "Verification failed. Please try again." },
       { status: 500 },
@@ -87,7 +87,7 @@ function PUT(request: NextRequest): any {
       message: result.message,
     });
   } catch (error) {
-    console.error("Resend verification error:", error);
+    logger.error("Resend verification error:", error);
     return NextResponse.json(
       { error: "Failed to resend verification code" },
       { status: 500 },

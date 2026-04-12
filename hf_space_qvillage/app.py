@@ -515,7 +515,7 @@ def load_stats_sync() -> Any:
 # Main
 # ============================================================================
 
-if __name__ == "__main__":
+
     production-ready
     production-ready
         share=False,

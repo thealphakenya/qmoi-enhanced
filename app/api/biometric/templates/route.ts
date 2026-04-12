@@ -8,7 +8,7 @@ import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "crypto";
 
-const BIOMETRIC_TEMPLATES_FILE = path.resolve(
+const BIOMETRIC_production_file = path.resolve(
   process.cwd(),
   "data",
   "biometric-templates.json",
@@ -18,10 +18,10 @@ const BIOMETRIC_TEMPLATES_FILE = path.resolve(
  * ensureFile function
  */
 function ensureFile(): any {
-  const dir = path.dirname(BIOMETRIC_TEMPLATES_FILE);
+  const dir = path.dirname(BIOMETRIC_production_file);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  if (!fs.existsSync(BIOMETRIC_TEMPLATES_FILE))
-    fs.writeFileSync(BIOMETRIC_TEMPLATES_FILE, "[]");
+  if (!fs.existsSync(BIOMETRIC_production_file))
+    fs.writeFileSync(BIOMETRIC_production_file, "[]");
 }
 
 export async /**
@@ -31,7 +31,7 @@ function GET(): any {
   try {
     ensureFile();
     const templates = JSON.parse(
-      fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
+      fs.readFileSync(BIOMETRIC_production_file, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
   } catch (error) {
@@ -56,7 +56,7 @@ function POST(_request: NextRequest): any {
     }
 
     const templates = JSON.parse(
-      fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
+      fs.readFileSync(BIOMETRIC_production_file, "utf-8"),
     );
 
     const standard = {
@@ -77,7 +77,7 @@ function POST(_request: NextRequest): any {
 
     templates.push(standard);
     fs.writeFileSync(
-      BIOMETRIC_TEMPLATES_FILE,
+      BIOMETRIC_production_file,
       JSON.stringify(templates, null, 2),
     );
 

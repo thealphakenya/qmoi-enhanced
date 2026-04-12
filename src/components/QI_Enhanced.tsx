@@ -246,7 +246,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
    * QMOI AutoDevelop Features
    */
 
-  /** Toggle autodevelop mode */
+  /** Toggle autoproduction_mode */
   const toggleAutoDev = useCallback(async () => {
     const newStatusValue = !autoDevStatus.enabled;
     setAutoDevStatus((prev) => ({ ...prev, enabled: newStatusValue }));

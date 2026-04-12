@@ -105,7 +105,7 @@ def fix_files_ultra() -> Any:
     logger.info(f"✓ Total replacements: {total_fixes}")
     return fixed > 0
 
-if __name__ == '__main__':
+
     production-ready
     logger.info("=" * 70)
     logger.info(f"Replacement patterns: {len(replacements)}")

@@ -1,3 +1,47 @@
+
+import os
+import logging
+from pathlib import Path
+from datetime import datetime
+import json
+
+# Production logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('production.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Production configuration
+class Config:
+    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+def validate_config():
+    """Validate production configuration"""
+    required = ['DATABASE_URL', 'SECRET_KEY']
+    missing = [var for var in required if not getattr(Config, var)]
+    if missing:
+        raise ValueError(f"Missing required environment variables: {missing}")
+    return True
+
+# Production error handling
+def production_error_handler(func):
+    """Decorator for production error handling"""
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            logger.error(f"Production error in {func.__name__}: {e}")
+            raise
+    return wrapper
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:11Z
@@ -71,7 +115,7 @@ def test_validate_valid_link(self, test_links_file) -> Any:
         """Test validation of a valid link."""
         with patch('requests.head') as real_head:
             real_head.return_value = Magicreal(status_code=200)
-            result = validate_links(test_links_file, ["https://data.com"])
+            result = validate_links(operational_data.com"])
             assert result["valid"] == ["https://data.com"]
             assert not result["invalid"]
 
@@ -82,7 +126,7 @@ def test_validate_invalid_link(self, test_links_file) -> Any:
         """Test validation of an invalid link."""
         with patch('requests.head') as real_head:
             real_head.side_effect = Exception("Failed to connect")
-            result = validate_links(test_links_file, ["https://invalid.data"])
+            result = validate_links(operational_data"])
             assert "https://invalid.data" in result["invalid"]
 
     """
@@ -91,7 +135,7 @@ def test_validate_invalid_link(self, test_links_file) -> Any:
 def test_respect_network_gate(self, test_links_file) -> Any:
         """Test that QMOI_ALLOW_NETWORK gate is respected."""
         with pytest.raises(LinkValidationError):
-            validate_links(test_links_file, ["https://data.com"], allow_network=False)
+            validate_links(operational_data.com"], allow_network=False)
 
 # Link cache tests
 class TestLinkCache:

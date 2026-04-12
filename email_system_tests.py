@@ -28,7 +28,7 @@ class TestEmailAutomationEngine(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test fixtures"""
-        self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
+        self.production_file.Namedproduction_file(mode='w', suffix='.json', delete=False)
         self.config_path = self.temp_config.name
         self.temp_config.close()
 
@@ -126,7 +126,7 @@ class TestEmailCreationPlatform(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test fixtures"""
-        self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
+        self.production_file.Namedproduction_file(mode='w', suffix='.json', delete=False)
         self.config_path = self.temp_config.name
         self.temp_config.close()
 
@@ -214,7 +214,7 @@ class TestMasterEmailDashboard(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test fixtures"""
-        self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
+        self.production_file.Namedproduction_file(mode='w', suffix='.json', delete=False)
         self.config_path = self.temp_config.name
         self.temp_config.close()
 
@@ -248,7 +248,7 @@ def test_audit_logging(self) -> Any:
             action="test_action",
             email_account="test@qmoi.com",
             user_id="test_user",
-            details={"test": "data"}
+            details={"operational_data"}
         )
 
         self.assertEqual(len(dashboard.audit_log), 1)
@@ -353,6 +353,6 @@ def run_tests() -> Any:
 
     return result.wasSuccessful()
 
-if __name__ == "__main__":
+
     success = run_tests()
     sys.exit(0 if success else 1)

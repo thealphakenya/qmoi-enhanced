@@ -89,7 +89,7 @@ function POST(request: NextRequest): any {
 
     return NextResponse.json(comparison, { status: 200 });
   } catch (error) {
-    console.error('[EVOLUTION] Compare models endpoint error:', error);
+    logger.error('[EVOLUTION] Compare models endpoint error:', error);
 
     return NextResponse.json(
       {
@@ -141,7 +141,7 @@ function GET(request: NextRequest): any {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[EVOLUTION] Get models endpoint error:', error);
+    logger.error('[EVOLUTION] Get models endpoint error:', error);
 
     return NextResponse.json(
       {

@@ -19,7 +19,7 @@ function runCheck(command, label): any {
     logger.info(`✅ ${label} OK:\n${output.trim()}`);
     return `✅ ${label}: ${output.trim()}`;
   } catch (err) {
-    console.error(`❌ ${label} FAILED:\n${err.message}`);
+    logger.error(`❌ ${label} FAILED:\n${err.message}`);
     return `❌ ${label}: ${err.message}`;
   }
 }
@@ -45,7 +45,7 @@ function sendTelegramReport(message): any {
     })
     .then(() => logger.info("📤 Telegram report sent successfully."))
     .catch((e) =>
-      console.warn("❌ Failed to send Telegram report:", e.message),
+      logger.warning("❌ Failed to send Telegram report:", e.message);,
     );
 }
 

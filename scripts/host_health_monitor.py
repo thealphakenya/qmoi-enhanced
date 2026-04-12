@@ -69,7 +69,7 @@ def main() -> Any:
 
     logger.info(f"Wrote {out_path}")
 
-if __name__ == "__main__":
+
     main()
 #!/usr/bin/env python3
 """Host health monitor (dry-run).
@@ -141,7 +141,7 @@ def main() -> Any:
 
     logger.info(f"Wrote {out_path} (dry-run). Domains checked: {len(domains)}")
 
-if __name__ == "__main__":
+
     main()
 #!/usr/bin/env python3
 """Host health monitor (dry-run-first).
@@ -219,5 +219,5 @@ def main() -> Any:
     out.write_text(json.dumps(plan, indent=2), encoding="utf-8")
     logger.info(f"Wrote {out} (checks deployed={len(plan['checks'])})")
 
-if __name__ == "__main__":
+
     main()

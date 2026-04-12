@@ -14,7 +14,7 @@ function GET(): any {
     const tracks = getLinkStats();
     return NextResponse.json({ tracks });
   } catch (error) {
-    console.error('Error fetching link stats:', error);
+    logger.error('Error fetching link stats:', error);
     return NextResponse.json(
       { error: 'Failed to fetch link statistics' },
       { status: 500 }

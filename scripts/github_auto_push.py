@@ -30,7 +30,7 @@ def push_to_github() -> Any:
     run('git commit -m "🔄 Auto-sync QMOI updates"')
     return run(f"git push {repo_url} HEAD:main")
 
-if __name__ == "__main__":
+
     if not os.getenv("GITHUB_TOKEN"):
         logger.info("❌ GITHUB_TOKEN is not set in .env")
     else:

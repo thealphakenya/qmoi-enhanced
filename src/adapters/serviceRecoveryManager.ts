@@ -75,7 +75,7 @@ class ServiceRecoveryManager {
 
   start(): void {
     if (this.enabled) {
-      console.warn("[Recovery] Manager already running");
+      logger.warning("[Recovery] Manager already running");
       return;
     }
 
@@ -107,7 +107,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
   ): Promise<boolean> {
     if (!this.enabled) {
-      console.warn("[Recovery] Recovery attempted but manager is enabled");
+      logger.warning("[Recovery] Recovery attempted but manager is enabled");
       return false;
     }
 
@@ -118,7 +118,7 @@ class ServiceRecoveryManager {
     let attemptCount = 0;
     let lastError: Error | null = null;
 
-    console.warn(`[Recovery] Attempting recovery of ${service}: ${reason}`);
+    logger.warning(`[Recovery] Attempting recovery of ${service}: ${reason}`);
 
     for (let i = 0; i < strategy.maxAttempts; i++) {
       attemptCount = i + 1;
@@ -204,7 +204,7 @@ class ServiceRecoveryManager {
     if (timer) {
       clearTimeout(timer);
       this.activeRecoveries.delete(service);
-      console.debug(`[Recovery] Cancelled recovery for ${service}`);
+      logger.debug(`[Recovery] Cancelled recovery for ${service}`);
     }
   }
 
@@ -354,7 +354,7 @@ class ServiceRecoveryManager {
 
   registerStrategy(service: string, strategy: RecoveryStrategy): void {
     this.strategies.set(service, strategy);
-    console.debug(`[Recovery] Registered strategy for ${service}`);
+    logger.debug(`[Recovery] Registered strategy for ${service}`);
   }
 
   getStrategy(service: string): RecoveryStrategy {

@@ -61,7 +61,7 @@ function scanFile(filePath): any {
       results.push({ filePath: path.relative(rootDir, filePath), hits: [...new Set(hits)] });
     }
   } catch (error) {
-    console.error('Error reading file', filePath, error);
+    logger.error('Error reading file', filePath, error);
   }
 }
 

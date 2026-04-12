@@ -112,7 +112,7 @@ function GlobalLinksManager(): any {
         setGlobalStats(statsData.stats);
       }
     } catch (error) {
-      console.error("Failed to load global data:", error);
+      logger.error("Failed to load global data:", error);
       toast.error("Failed to load global accessibility data");
     } finally {
       setLoading(false);
@@ -136,7 +136,7 @@ function GlobalLinksManager(): any {
         toast.error(error.error || "Failed to perform health check");
       }
     } catch (error) {
-      console.error("Health check error:", error);
+      logger.error("Health check error:", error);
       toast.error("Failed to perform global health check");
     } finally {
       setPerformingCheck(false);
@@ -156,7 +156,7 @@ function GlobalLinksManager(): any {
         setLinksByHealth(data.links);
       }
     } catch (error) {
-      console.error("Failed to load links by health:", error);
+      logger.error("Failed to load links by health:", error);
       toast.error("Failed to load links");
     }
   };

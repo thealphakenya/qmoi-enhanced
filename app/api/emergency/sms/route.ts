@@ -64,7 +64,7 @@ function POST(request: NextRequest): any {
     }
 
   } catch (error) {
-    console.error('Emergency SMS error:', error);
+    logger.error('Emergency SMS error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -83,7 +83,7 @@ function sendTwilioSMS(to: string, message: string): any {
     const fromNumber = process.env.TWILIO_PHONE_NUMBER;
 
     if (!accountSid || !authToken || !fromNumber) {
-      console.warn('Twilio credentials not configured, simulating SMS send');
+      logger.warning('Twilio credentials not configured, simulating SMS send');
       return {
         success: true,
         messageId: `lived_${Date.now()}`,
@@ -119,7 +119,7 @@ function sendTwilioSMS(to: string, message: string): any {
       };
     }
   } catch (error) {
-    console.error('Twilio SMS error:', error);
+    logger.error('Twilio SMS error:', error);
     return {
       success: false,
       error: 'Twilio service error',

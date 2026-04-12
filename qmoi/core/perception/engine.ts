@@ -71,7 +71,7 @@ export class PerceptionEngine extends EventEmitter {
 
       return response.data as EnvironmentContext;
     } catch (error) {
-      console.error('Audio input processing failed:', error);
+      logger.error('Audio input processing failed:', error);
       return this.getDefaultEnvironmentContext();
     }
   }
@@ -107,7 +107,7 @@ export class PerceptionEngine extends EventEmitter {
 
       return response.data.detected_objects || [];
     } catch (error) {
-      console.error('Visual input processing failed:', error);
+      logger.error('Visual input processing failed:', error);
       return [];
     }
   }

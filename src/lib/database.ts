@@ -24,7 +24,7 @@ export class Database {
       logger.info(`Connected to ${this.config.type} database`);
       return true;
     } catch (error) {
-      console.error('Database connection failed:', error);
+      logger.error('Database connection failed:', error);
       return false;
     }
   }

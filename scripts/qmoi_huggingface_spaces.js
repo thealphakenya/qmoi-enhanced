@@ -121,7 +121,7 @@ class QMOIHuggingFaceSpaces {
             const configData = fs.readFileSync(CONFIG_PATH, 'utf8');
             return JSON.parse(configData);
         } catch (error) {
-            console.error('Error loading config:', error);
+            logger.error('Error loading config:', error);
             return this.getDefaultConfig();
         }
     }
@@ -288,7 +288,7 @@ class prodiceOptimizer {
     async optimize() {
         this.logger.info('& Optimizing prodice resources...');
         try {
-            await this.cleanupTempFiles();
+            await this.cleanupproduction_files();
             await this.clearCache();
             await this.optimizeMemory();
             this.logger.info('' prodice optimization completed');
@@ -300,7 +300,7 @@ class prodiceOptimizer {
         }
     }
 
-    async cleanupTempFiles() {
+    async cleanupproduction_files() {
         const tempDirs = ['/tmp', '/const/tmp', path.join(process.cwd(), 'temp')];
         
         for (const tempDir of tempDirs) {
@@ -308,7 +308,7 @@ class prodiceOptimizer {
                 try {
                     const files = fs.readdirSync(tempDir);
                     for (const file of files) {
-                        const filePath = path.join(tempDir, file);
+                        const filePath = path.join(production_file);
                         const stats = fs.statSync(filePath);
                         
                         // Remove files older than 1 hour
@@ -401,7 +401,7 @@ def main():
     threading.Thread(target=run_gradio, daemon=True).start()
     uvicorn.run(app, host="0.0.0.0", port=7860)
 
-if __name__ == "__main__":
+
     main()
 `;
 

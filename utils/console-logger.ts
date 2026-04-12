@@ -7,15 +7,15 @@ export class ConsoleLogger {
   }
 
   static error(message: string, error?: any): void {
-    console.error(`[ERROR] ${message}`, error);
+    logger.error(`[ERROR] ${message}`, error);
   }
 
   static warn(message: string, data?: any): void {
-    console.warn(`[WARN] ${message}`, data);
+    logger.warning(`[WARN] ${message}`, data);
   }
 
   static debug(message: string, data?: any): void {
-    console.debug(`[DEBUG] ${message}`, data);
+    logger.debug(`[DEBUG] ${message}`, data);
   }
 }
 

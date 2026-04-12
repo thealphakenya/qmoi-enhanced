@@ -50,7 +50,7 @@ function GET(request: Request): any {
 
     return NextResponse.json({ validations });
   } catch (error) {
-    console.error('Error fetching domain stats:', error);
+    logger.error('Error fetching domain stats:', error);
     return NextResponse.json(
       { error: 'Failed to fetch domain statistics' },
       { status: 500 }
@@ -121,7 +121,7 @@ function POST(request: Request): any {
     const validations = await validateAllDomains();
     return NextResponse.json({ validations });
   } catch (error) {
-    console.error('Error in domain operation:', error);
+    logger.error('Error in domain operation:', error);
     return NextResponse.json(
       { error: 'Failed to perform domain operation' },
       { status: 500 }

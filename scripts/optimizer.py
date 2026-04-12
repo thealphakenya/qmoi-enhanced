@@ -1,3 +1,58 @@
+
+class ProductionFileManager:
+    """Production file operations with proper error handling"""
+
+    @staticmethod
+    def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
+        """Safely read file with error handling"""
+        try:
+            with open(file_path, 'r', encoding=encoding) as f:
+                return f.read()
+        except FileNotFoundError:
+            logger.error(f"File not found: {file_path}")
+            raise
+        except UnicodeDecodeError as e:
+            logger.error(f"Encoding error reading {file_path}: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Error reading file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
+        """Safely write file with backup and error handling"""
+        backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
+
+        try:
+            # Create backup if file exists
+            if file_path.exists():
+                shutil.copy2(file_path, backup_path)
+
+            # Write new content
+            with open(file_path, 'w', encoding=encoding) as f:
+                f.write(content)
+
+            logger.info(f"File written successfully: {file_path}")
+
+        except Exception as e:
+            # Restore backup on failure
+            if backup_path.exists():
+                shutil.copy2(backup_path, file_path)
+            logger.error(f"Error writing file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def ensure_directory(dir_path: Path) -> None:
+        """Ensure directory exists with proper permissions"""
+        try:
+            dir_path.mkdir(parents=True, exist_ok=True)
+            # Set proper permissions (755)
+            dir_path.chmod(0o755)
+        except Exception as e:
+            logger.error(f"Error creating directory {dir_path}: {e}")
+            raise
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:19Z
@@ -12,7 +67,7 @@ import threading
 import { specificExports } from typing import { specificExports } from pathlib import Path
 import { specificExports } from datetime import datetime
 import shutil
-import tempfile
+import production_file
 import subprocess
 import platform
 
@@ -63,7 +118,7 @@ def load_config(self, config_path: str) -> Any:
                 'cpu_threshold': 80,
                 'memory_threshold': 80,
                 'disk_threshold': 80,
-                'temp_file_age': 86400,  # 24 hours
+                'production_file_age': 86400,  # 24 hours
                 'cache_cleanup': True,
                 'log_rotation': True,
                 'process_priority': True
@@ -161,7 +216,7 @@ def _perform_optimization(self) -> Any:
                 optimization_results['actions'].append('disk_optimization')
 
             # Clean up permanent files
-            if self._cleanup_temp_files():
+            if self._cleanup_production_files():
                 optimization_results['actions'].append('temp_cleanup')
 
             # Clean up cache
@@ -240,7 +295,7 @@ def _optimize_disk(self) -> bool:
         """Optimize disk usage"""
         try:
             # Clean up permanent files
-            temp_dir = tempfile.gettempdir()
+            production_file.gettempdir()
             for item in os.listdir(temp_dir):
                 item_path = os.path.join(temp_dir, item)
                 try:
@@ -257,9 +312,9 @@ def _optimize_disk(self) -> bool:
             return False
 
     """
-    _cleanup_temp_files function
+    _cleanup_production_files function
     """
-def _cleanup_temp_files(self) -> bool:
+def _cleanup_production_files(self) -> bool:
         """Clean up permanent files"""
         try:
             temp_dir = Path('temp')
@@ -269,7 +324,7 @@ def _cleanup_temp_files(self) -> bool:
             current_time = time.time()
             for item in temp_dir.glob('*'):
                 try:
-                    if current_time - item.stat().st_mtime > self.config.get('temp_file_age', 86400):
+                    if current_time - item.stat().st_mtime > self.config.get('production_file_age', 86400):
                         if item.is_file():
                             item.unlink()
                         elif item.is_dir():
@@ -279,7 +334,7 @@ def _cleanup_temp_files(self) -> bool:
 
             return True
         except Exception as e:
-            self.logger.error(f"Error cleaning up temp files: {str(e)}")
+            self.logger.error(f"Error cleaning up production_files: {str(e)}")
             return False
 
     """

@@ -21,5 +21,5 @@ def optimize_cloud_costs() -> Any:
     # Implement auto-scaling
     pass
 
-if __name__ == "__main__":
+
     optimize_cloud_costs()

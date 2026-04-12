@@ -312,7 +312,7 @@ try {
 
   logger.info("[QMOI] Enhanced Error Fix Script Finished");
 } catch (error) {
-  console.error("[ERROR] Script failed with error:", error);
+  logger.error("[ERROR] Script failed with error:", error);
   process.exit(1);
 }
 

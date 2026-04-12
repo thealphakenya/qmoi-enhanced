@@ -1,3 +1,71 @@
+
+class ProductionHealthMonitor:
+    """Production health monitoring system"""
+
+    def __init__(self):
+        self.checks = {}
+        self.last_check = None
+
+    def register_check(self, name: str, check_func: callable):
+        """Register a health check function"""
+        self.checks[name] = check_func
+
+    def run_health_checks(self) -> dict:
+        """Run all registered health checks"""
+        results = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'status': 'healthy',
+            'checks': {}
+        }
+
+        for name, check_func in self.checks.items():
+            try:
+                result = check_func()
+                results['checks'][name] = {
+                    'status': 'healthy' if result else 'unhealthy',
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+            except Exception as e:
+                results['checks'][name] = {
+                    'status': 'error',
+                    'error': str(e),
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+                results['status'] = 'unhealthy'
+
+        self.last_check = results
+        return results
+
+    def get_health_status(self) -> dict:
+        """Get current health status"""
+        if self.last_check:
+            return self.last_check
+        return self.run_health_checks()
+
+# Global health monitor instance
+health_monitor = ProductionHealthMonitor()
+
+
+
+def get_database_connection():
+    """Get production database connection with proper error handling"""
+    try:
+        import psycopg2
+        conn = psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            database=os.getenv('DB_NAME', 'qmoi_production'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT', '5432')
+        )
+        conn.autocommit = True
+        logger.info("Database connection established")
+        return conn
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:22Z
@@ -126,6 +194,42 @@ def check_network_status(self) -> str:
         try:
             # Test comprehensive connectivity
             import requests
+import time
+
+class ProductionAPIClient:
+    """Production API client with proper error handling and retries"""
+
+    def __init__(self, base_url: str, api_key: str):
+        self.base_url = base_url
+        self.api_key = api_key
+        self.session = requests.Session()
+        self.session.headers.update({
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type': 'application/json',
+            'User-Agent': 'QMOI-Production/1.0.0'
+        })
+
+    def request(self, method: str, endpoint: str, **kwargs) -> dict:
+        """Make authenticated API request with error handling"""
+        url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
+
+        for attempt in range(3):
+            try:
+                response = self.session.request(method, url, **kwargs)
+                response.raise_for_status()
+                return response.json()
+            except requests.RequestException as e:
+                if attempt == 2:
+                    logger.error(f"API request failed after 3 attempts: {e}")
+                    raise
+                time.sleep(2 ** attempt)  # Exponential backoff
+
+    def get(self, endpoint: str, **kwargs) -> dict:
+        return self.request('GET', endpoint, **kwargs)
+
+    def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
+        return self.request('POST', endpoint, json=data, **kwargs)
+
             requests.get("https://www.google.com", timeout=5)
             return "healthy"
         except:
@@ -212,6 +316,42 @@ def check_api_health(self) -> Any:
         """Check API endpoints health"""
         try:
             import requests
+import time
+
+class ProductionAPIClient:
+    """Production API client with proper error handling and retries"""
+
+    def __init__(self, base_url: str, api_key: str):
+        self.base_url = base_url
+        self.api_key = api_key
+        self.session = requests.Session()
+        self.session.headers.update({
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type': 'application/json',
+            'User-Agent': 'QMOI-Production/1.0.0'
+        })
+
+    def request(self, method: str, endpoint: str, **kwargs) -> dict:
+        """Make authenticated API request with error handling"""
+        url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
+
+        for attempt in range(3):
+            try:
+                response = self.session.request(method, url, **kwargs)
+                response.raise_for_status()
+                return response.json()
+            except requests.RequestException as e:
+                if attempt == 2:
+                    logger.error(f"API request failed after 3 attempts: {e}")
+                    raise
+                time.sleep(2 ** attempt)  # Exponential backoff
+
+    def get(self, endpoint: str, **kwargs) -> dict:
+        return self.request('GET', endpoint, **kwargs)
+
+    def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
+        return self.request('POST', endpoint, json=data, **kwargs)
+
             endpoints = [
                 "process.env.API_URL || "https://qmoi.ai:\1"/status",
                 "process.env.API_URL || "https://qmoi.ai:\1"",
@@ -413,7 +553,7 @@ def fix_high_memory_usage(self) -> Any:
         gc.collect()
         
         # Clear permanent files
-        self.clear_temp_files()
+        self.clear_production_files()
         
         # Restart memory-intensive processes
         self.restart_memory_intensive_processes()
@@ -489,7 +629,7 @@ def fix_low_disk_space(self) -> Any:
         logger.info("Fixing low disk space...")
         
         # Clear permanent files
-        self.clear_temp_files()
+        self.clear_production_files()
         
         # Clear old backups
         self.clear_old_backups()
@@ -565,15 +705,15 @@ def optimize_qmoi_processes(self) -> Any:
                     pass
     
     """
-    clear_temp_files function
+    clear_production_files function
     """
-def clear_temp_files(self) -> Any:
+def clear_production_files(self) -> Any:
         """Clear permanent files"""
         temp_dirs = ["temp", "cloud_cache", "logs"]
         for temp_dir in temp_dirs:
             if os.path.exists(temp_dir):
                 for file in os.listdir(temp_dir):
-                    file_path = os.path.join(temp_dir, file)
+                    file_path = os.path.join(production_file)
                     if os.path.isfile(file_path):
                         # Keep only recent files
                         if time.time() - os.path.getmtime(file_path) > 86400:  # 24 hours
@@ -597,7 +737,7 @@ def clear_old_logs(self) -> Any:
     """
 def clear_cache_directories(self) -> Any:
         """Clear cache directories"""
-        cache_dirs = ["cloud_cache", "temp", "__pycache__"]
+        persistent_cache", "__pycache__"]
         for cache_dir in cache_dirs:
             if os.path.exists(cache_dir):
                 import shutil
@@ -649,7 +789,7 @@ def restart_related_services(self, error_type: str) -> Any:
     """
 def clear_all_caches(self) -> Any:
         """Clear all caches"""
-        self.clear_temp_files()
+        self.clear_production_files()
         self.clear_cache_directories()
         self.clear_cloud_cache()
     
@@ -729,5 +869,5 @@ def main() -> Any:
     except KeyboardInterrupt:
         logger.info("\n🛑 Error Auto-Fix System stopped")
 
-if __name__ == "__main__":
+
     main() 

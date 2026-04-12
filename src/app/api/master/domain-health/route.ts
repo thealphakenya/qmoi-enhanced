@@ -64,7 +64,7 @@ function GET(request: NextRequest): any {
     });
 
   } catch (error) {
-    console.error('Domain health API error:', error);
+    logger.error('Domain health API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -112,7 +112,7 @@ function POST(request: NextRequest): any {
     });
 
   } catch (error) {
-    console.error('Domain health refresh API error:', error);
+    logger.error('Domain health refresh API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

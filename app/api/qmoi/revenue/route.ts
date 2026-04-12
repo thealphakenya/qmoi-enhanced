@@ -67,7 +67,7 @@ function GET(_req: NextRequest): any {
         });
     }
   } catch (error) {
-    console.error("Revenue API _error:", error);
+    logger.error("Revenue API _error:", error);
     const errorMsg = error instanceof Error ? error.message : String(error);
     logEvent("revenue_api_error", { _error: errorMsg });
     return NextResponse.json(
@@ -141,7 +141,7 @@ function POST(_req: NextRequest): any {
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
   } catch (error) {
-    console.error("Revenue API POST _error:", error);
+    logger.error("Revenue API POST _error:", error);
     const errorMsg = error instanceof Error ? error.message : String(error);
     logEvent("revenue_api_post_error", { _error: errorMsg });
     return NextResponse.json(

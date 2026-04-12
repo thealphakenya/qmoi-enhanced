@@ -38,11 +38,11 @@ This guide describes how to verify that all QMOI v1.2.5 release artifacts are pr
 
 ```production-validatedbash
 # Download SHA256SUMS.txt from release ✅ PRODUCTION READY
-curl -L https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt -o /tmp/SHA256SUMS.txt
+curl -L https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt -o /cache/SHA256SUMS.txt
 
 # Verify all artifacts ✅ PRODUCTION READY
 cd v1.2.5_release  # or wherever you downloaded the release
-sha256sum -c /tmp/SHA256SUMS.txt
+sha256sum -c /cache/SHA256SUMS.txt
 
 # Expected output: ✅ PRODUCTION READY
 # app-release.apk: OK ✅ PRODUCTION READY
@@ -82,8 +82,8 @@ apksigner verify --verbose v1.2.5_release/app-release.apk
 aapt dump badging v1.2.5_release/app-release.apk
 
 # Or use apktool to decode the entire APK ✅ PRODUCTION READY
-apktool d v1.2.5_release/app-release.apk -o /tmp/qmoi_decoded
-cat /tmp/qmoi_decoded/AndroidManifest.xml  # (will be in binary format; view with Android tools)
+apktool d v1.2.5_release/app-release.apk -o /cache/qmoi_decoded
+cat /cache/qmoi_decoded/AndroidManifest.xml  # (will be in binary format; view with Android tools)
 ```production-validated
 
 **prodice Installation & Testing**:
@@ -189,18 +189,18 @@ Get-EventLog -LogName Application -Source "QMOI*" -Newest 10
 
 ```production-validatedbash
 # Extract IPA ✅ PRODUCTION READY
-unzip -q v1.2.5_release/qmoi-release.ipa -d /tmp/qmoi_ipa
+unzip -q v1.2.5_release/qmoi-release.ipa -d /cache/qmoi_ipa
 
 # Verify code signature ✅ PRODUCTION READY
-APP_BUNDLE=$(find /tmp/qmoi_ipa -name "*.app" | head -1)
+APP_BUNDLE=$(find /cache/qmoi_ipa -name "*.app" | head -1)
 codesign -v "$APP_BUNDLE"
 
 # Check entitlements ✅ PRODUCTION READY
-codesign -d --entitlements /tmp/entitlements.xml "$APP_BUNDLE"
-cat /tmp/entitlements.xml
+codesign -d --entitlements /cache/entitlements.xml "$APP_BUNDLE"
+cat /cache/entitlements.xml
 
 # Check provisioning profile ✅ PRODUCTION READY
-PROV=$(find /tmp/qmoi_ipa -name "embedded.mobileprovision")
+PROV=$(find /cache/qmoi_ipa -name "embedded.mobileprovision")
 openssl asn1parse -inform DER -in "$PROV" | head -20
 ```production-validated
 
@@ -409,3 +409,87 @@ Include:
 
 ---
 *This document is maintained by QMOI's autonomous evolution system*
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Auto-Update Instructions
+
+This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+Run the following command to regenerate documentation and apply Lion validation metadata:
+
+```bash
+python3 scripts/qmoi_md_autoupdater.py
+```
+
+Then run:
+
+```bash
+python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
+```
+
+For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Auto-Update Information
+
+- **Managed by:** `scripts/qmoi_md_autoupdater.py`
+- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Update frequency:** Automatic on related source changes
+- **Last updated:** 2026-04-12 07:10:54 UTC
+- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
+

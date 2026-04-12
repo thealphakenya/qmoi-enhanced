@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
@@ -248,7 +272,7 @@ function autoDiscoverAndBuildExtension(projectType: string): any {
     return job;
 
   } catch (error) {
-    console.error('Extension discovery failed:', error);
+    logger.error('Extension discovery failed:', error);
 
     // Fallback to predefined packages
     const fallbackPackage = projectType === "game" ? "phaser" :
@@ -351,7 +375,7 @@ function creativeFileGen(type: string, details: Record<string, any>): any {
     return file;
 
   } catch (error) {
-    console.error('Creative file generation failed:', error);
+    logger.error('Creative file generation failed:', error);
     // Fallback to advanced code
     production-ready and operational
 // Details: ${JSON.stringify(details)}
@@ -699,7 +723,7 @@ function multiUserChat(user: string, message: string): any {
     };
 
   } catch (error) {
-    console.error('AI chat failed:', error);
+    logger.error('AI chat failed:', error);
 
     // Fallback response
     const fallbackReply = `Hello ${user}, I understand you said: "${message}". I'm currently experiencing some technical difficulties, but I'm here to help!`;
@@ -831,7 +855,7 @@ function globalScanAndFix(): any: Promise<GlobalFixResponse> {
     return result;
 
   } catch (error) {
-    console.error('Global scan and fix failed:', error);
+    logger.error('Global scan and fix failed:', error);
 
     aiTaskLog.push({
       id: Date.now(),
@@ -913,7 +937,7 @@ function diagnoseAndEnhanceHooks(): any {
         hookIssues.push(...issues);
 
       } catch (error) {
-        console.error(`Error analyzing ${file}:`, error);
+        logger.error(`Error analyzing ${file}:`, error);
       }
     }
 
@@ -934,7 +958,7 @@ function diagnoseAndEnhanceHooks(): any {
           fs.writeFileSync(filePath, content);
           fixesApplied++;
         } catch (error) {
-          console.error(`Failed to fix ${issue.file}:`, error);
+          logger.error(`Failed to fix ${issue.file}:`, error);
         }
       }
     }
@@ -964,7 +988,7 @@ function diagnoseAndEnhanceHooks(): any {
     return result;
 
   } catch (error) {
-    console.error('Hook diagnostics failed:', error);
+    logger.error('Hook diagnostics failed:', error);
 
     aiTaskLog.push({
       id: Date.now(),
@@ -1076,7 +1100,7 @@ function aiStartProject(name: string, info: string): any {
     );
 
   } catch (error) {
-    console.error(`Project ${name} failed:`, error);
+    logger.error(`Project ${name} failed:`, error);
 
     // Update status to failed
     const idx = masterProjectQueue.findIndex(p => p.id === projectId);
@@ -1153,7 +1177,7 @@ function sendWhatsAppMasterNotification(message: string): any {
     };
 
   } catch (error) {
-    console.error('WhatsApp notification failed:', error);
+    logger.error('WhatsApp notification failed:', error);
 
     // Fallback to file logging
     const logPath = '/workspaces/qmoi-enhanced/whatsapp_notifications.log';

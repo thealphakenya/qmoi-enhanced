@@ -240,7 +240,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return true;
     } catch (error) {
-      console.error('❌ Failed to auto-generate endpoint documentation:', error);
+      logger.error('❌ Failed to auto-generate endpoint documentation:', error);
       return false;
     }
   }
@@ -261,11 +261,11 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       production
       logger.info(`✅ Test generated for ${result.testName}`);
-      console.debug(testContent);
+      logger.debug(testContent);
 
       return true;
     } catch (error) {
-      console.error('❌ Failed to auto-generate test:', error);
+      logger.error('❌ Failed to auto-generate test:', error);
       return false;
     }
   }
@@ -289,7 +289,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix code quality:', error);
+      logger.error('❌ Failed to auto-fix code quality:', error);
       return false;
     }
   }
@@ -313,7 +313,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix security vulnerability:', error);
+      logger.error('❌ Failed to auto-fix security vulnerability:', error);
       return false;
     }
   }
@@ -337,7 +337,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix performance issue:', error);
+      logger.error('❌ Failed to auto-fix performance issue:', error);
       return false;
     }
   }
@@ -361,7 +361,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-repair configuration:', error);
+      logger.error('❌ Failed to auto-repair configuration:', error);
       return false;
     }
   }
@@ -380,7 +380,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-cleanup memory:', error);
+      logger.error('❌ Failed to auto-cleanup memory:', error);
       return false;
     }
   }
@@ -398,7 +398,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-update documentation:', error);
+      logger.error('❌ Failed to auto-update documentation:', error);
       return false;
     }
   }
@@ -422,7 +422,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix dependencies:', error);
+      logger.error('❌ Failed to auto-fix dependencies:', error);
       return false;
     }
   }
@@ -446,7 +446,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix build failure:', error);
+      logger.error('❌ Failed to auto-fix build failure:', error);
       return false;
     }
   }
@@ -470,7 +470,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix integration failure:', error);
+      logger.error('❌ Failed to auto-fix integration failure:', error);
       return false;
     }
   }
@@ -488,7 +488,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix consciousness sync:', error);
+      logger.error('❌ Failed to auto-fix consciousness sync:', error);
       return false;
     }
   }
@@ -506,7 +506,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix evolution tracking:', error);
+      logger.error('❌ Failed to auto-fix evolution tracking:', error);
       return false;
     }
   }
@@ -524,7 +524,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix parallel processing:', error);
+      logger.error('❌ Failed to auto-fix parallel processing:', error);
       return false;
     }
   }
@@ -542,7 +542,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix QVS storage:', error);
+      logger.error('❌ Failed to auto-fix QVS storage:', error);
       return false;
     }
   }
@@ -560,7 +560,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix autodev generation:', error);
+      logger.error('❌ Failed to auto-fix autodev generation:', error);
       return false;
     }
   }
@@ -578,7 +578,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix reasoning logic:', error);
+      logger.error('❌ Failed to auto-fix reasoning logic:', error);
       return false;
     }
   }
@@ -596,7 +596,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix research validation:', error);
+      logger.error('❌ Failed to auto-fix research validation:', error);
       return false;
     }
   }
@@ -614,7 +614,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix memory sync:', error);
+      logger.error('❌ Failed to auto-fix memory sync:', error);
       return false;
     }
   }
@@ -632,7 +632,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix global coordination:', error);
+      logger.error('❌ Failed to auto-fix global coordination:', error);
       return false;
     }
   }
@@ -650,7 +650,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix workflow automation:', error);
+      logger.error('❌ Failed to auto-fix workflow automation:', error);
       return false;
     }
   }
@@ -668,7 +668,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       return false;
     } catch (error) {
-      console.error('❌ Failed to auto-fix analytics reporting:', error);
+      logger.error('❌ Failed to auto-fix analytics reporting:', error);
       return false;
     }
   }

@@ -60,7 +60,7 @@ function POST(): any {
     });
 
     if (stderr && !stderr.includes('INFO')) {
-      console.warn('Domain health check stderr:', stderr);
+      logger.warning('Domain health check stderr:', stderr);
     }
 
     // Parse results from stdout
@@ -82,7 +82,7 @@ function POST(): any {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error('Error activating emergency takeover:', error);
+    logger.error('Error activating emergency takeover:', error);
 
     // Log failure to tracks
     const failureTrack = {
@@ -145,7 +145,7 @@ function saveTrackEntry(entry: TrackEntry): any: Promise<void> {
     // Save updated tracks
     fs.writeFileSync(tracksFile, JSON.stringify(tracks, null, 2));
   } catch (error) {
-    console.error('Failed to save track entry:', error);
+    logger.error('Failed to save track entry:', error);
   }
 }
 

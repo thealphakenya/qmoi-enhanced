@@ -698,12 +698,12 @@ function QCityDevicePanel(): any {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <label htmlFor="selfDeveloperToggle">Self-Developer Mode</label>
+            <label htmlFor="selfproduction_mode</label>
             <Switch
               id="selfDeveloperToggle"
               checked={selfDeveloper}
               onCheckedChange={setSelfDeveloper}
-              title="Enable/disable self-developer mode (auto-improve scripts/configs)"
+              title="Enable/disable self-production_mode (auto-improve scripts/configs)"
             />
           </div>
           <div className="flex items-center gap-4">

@@ -495,7 +495,7 @@ export class CashonWallet {
         );
       }
     } catch (error) {
-      console.error("[CashOnWallet] Pesapal token generation failed:", error);
+      logger.error("[CashOnWallet] Pesapal token generation failed:", error);
       throw error;
     }
   }

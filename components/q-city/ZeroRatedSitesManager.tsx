@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
@@ -66,7 +90,7 @@ function ZeroRatedSitesManager(): any {
         setSites(filteredSites);
       }
     } catch (error) {
-      console.error("Error fetching sites:", error);
+      logger.error("Error fetching sites:", error);
     } finally {
       setLoading(false);
     }
@@ -89,7 +113,7 @@ function ZeroRatedSitesManager(): any {
         notification.show(`Error: ${data.error}`);
       }
     } catch (error) {
-      console.error("Error creating site:", error);
+      logger.error("Error creating site:", error);
       notification.show("Failed to create zero-rated site");
     }
   };
@@ -113,7 +137,7 @@ function ZeroRatedSitesManager(): any {
         notification.show(`Error: ${data.error}`);
       }
     } catch (error) {
-      console.error("Error updating site:", error);
+      logger.error("Error updating site:", error);
       notification.show("Failed to update zero-rated site");
     }
   };
@@ -135,7 +159,7 @@ function ZeroRatedSitesManager(): any {
         notification.show(`Error: ${data.error}`);
       }
     } catch (error) {
-      console.error("Error deleting site:", error);
+      logger.error("Error deleting site:", error);
       notification.show("Failed to delete zero-rated site");
     }
   };
@@ -774,7 +798,7 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
         setStats(data.data.stats);
       }
     } catch (error) {
-      console.error("Error fetching stats:", error);
+      logger.error("Error fetching stats:", error);
     }
   };
 

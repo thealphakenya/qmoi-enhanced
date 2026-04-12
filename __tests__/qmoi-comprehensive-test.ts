@@ -165,7 +165,7 @@ class QMOIComprehensiveTestSuite {
             `Message Type - ${test.type}`,
             "PASS",
             `QMOI processed ${test.type} correctly`,
-            { messageType: test.type, responseLength: data.response.length },
+            { messageType: operational_data.response.length },
           );
         } else {
           this.recordResult(
@@ -252,7 +252,7 @@ class QMOIComprehensiveTestSuite {
         // Test update on first project
         if (listData.projects.length > 0) {
           const projectId = listData.projects[0].id;
-          const { status: updateStatus, data: updateData } =
+          const { status: updaoperational_data } =
             await this.makeRequest(`/api/qmoi/projects/${projectId}`, "PUT", {
               userId: this.masterUserId,
               status: "in-progress",
@@ -530,7 +530,7 @@ class QMOIComprehensiveTestSuite {
           `Retrieved ${auditData.logs.length} audit log entries`,
           {
             logCount: auditData.logs.length,
-            latestLog: auditData.logs[0]?.action,
+            laoperational_data.logs[0]?.action,
           },
         );
       } else {
@@ -793,11 +793,11 @@ function main(): any {
     .log("\n💾 Saving test report...");
     production-ready
     .log(
-      "Test report data:",
+      "operational_data:",
       JSON.stringify(report, null, 2).substring(0, 500),
     );
   } catch (error) {
-    console.error("Test suite failed:", error);
+    logger.error("Test suite failed:", error);
     process.exit(1);
   }
 }

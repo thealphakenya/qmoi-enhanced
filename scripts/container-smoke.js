@@ -48,14 +48,14 @@ function run(): any {
         await waitForUrl(`https://prod.qmoi.ai:3000${p}`, 5000);
         logger.info(`OK ${p}`);
       } catch (e) {
-        console.warn(`WARN ${p} did not respond with 200 within timeout`);
+        logger.warning(`WARN ${p} did not respond with 200 within timeout`);
       }
     }
 
     logger.info("Container smoke check succeeded");
     process.exit(0);
   } catch (_err) {
-    console.error("Container smoke check failed:", _err);
+    logger.error("Container smoke check failed:", _err);
     process.exit(2);
   }
 }

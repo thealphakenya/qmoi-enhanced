@@ -21,5 +21,5 @@ def adb_install(apk) -> Any:
     logger.info("📦 Installing...")
     subprocess.run(["adb", "install", "-r", apk])
 
-if __name__ == "__main__":
+
     adb_install(apk_path)

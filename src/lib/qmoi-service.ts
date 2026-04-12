@@ -890,7 +890,7 @@ class QuantumProcessor {
         },
       };
     } catch (error) {
-      console.error('Quantum processing error:', error);
+      logger.error('Quantum processing error:', error);
       // Fallback to standard processing
       return this.fallbackProcessing(request);
     }
@@ -1115,7 +1115,7 @@ class SwarmIntelligence {
         },
       };
     } catch (error) {
-      console.error('Swarm processing error:', error);
+      logger.error('Swarm processing error:', error);
       return this.fallbackProcessing(request);
     }
   }
@@ -1475,7 +1475,7 @@ class CognitiveEngine {
         },
       };
     } catch (error) {
-      console.error('Cognitive processing error:', error);
+      logger.error('Cognitive processing error:', error);
       return this.fallbackProcessing(request);
     }
   }
@@ -2023,7 +2023,7 @@ class NeuromorphicEngine {
         },
       };
     } catch (error) {
-      console.error('Neuromorphic processing error:', error);
+      logger.error('Neuromorphic processing error:', error);
       return this.fallbackProcessing(request);
     }
   }
@@ -2564,7 +2564,7 @@ class AGIFramework {
         },
       };
     } catch (error) {
-      console.error('AGI processing error:', error);
+      logger.error('AGI processing error:', error);
       return this.fallbackProcessing(request);
     }
   }
@@ -3532,7 +3532,7 @@ class SingularityEngine {
         },
       };
     } catch (error) {
-      console.error('Singularity processing error:', error);
+      logger.error('Singularity processing error:', error);
       return this.fallbackProcessing(request);
     }
   }
@@ -3672,7 +3672,7 @@ class UniversalConsciousness {
         },
       };
     } catch (error) {
-      console.error('Universal consciousness processing error:', error);
+      logger.error('Universal consciousness processing error:', error);
       return this.fallbackProcessing(request);
     }
   }
@@ -3870,7 +3870,7 @@ class RealityEngineer {
         },
       };
     } catch (error) {
-      console.error('Reality engineering error:', error);
+      logger.error('Reality engineering error:', error);
       return this.fallbackProcessing(request);
     }
   }
@@ -4068,7 +4068,7 @@ class TemporalManipulator {
         },
       };
     } catch (error) {
-      console.error('Temporal manipulation error:', error);
+      logger.error('Temporal manipulation error:', error);
       return this.fallbackProcessing(request);
     }
   }

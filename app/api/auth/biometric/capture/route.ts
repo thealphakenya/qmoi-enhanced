@@ -63,7 +63,7 @@ function POST(request: NextRequest): any {
       { status: 200 },
     );
   } catch (error) {
-    console.error("[BIOMETRIC CAPTURE API] Error:", error);
+    logger.error("[BIOMETRIC CAPTURE API] Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

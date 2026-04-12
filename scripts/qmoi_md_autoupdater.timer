@@ -1,0 +1,11 @@
+[Unit]
+Description=Run QMOI Markdown Auto-Updater periodically
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=60min
+Persistent=true
+Unit=qmoi_md_autoupdater.service
+
+[Install]
+WantedBy=timers.target

@@ -259,7 +259,6 @@
 ./src/components/q-city/AutonomousDevelopmentPipeline.tsx
 ./src/components/q-city/AvatarSelector.tsx
 ./src/components/q-city/AviatorGalleryPanel.tsx
-./src/components/q-city/BackupRestorePanel.tsx
 ./src/components/q-city/CommandPanel.tsx
 ./src/components/q-city/Dashboard.tsx
 ./src/components/q-city/DevicePanel.tsx

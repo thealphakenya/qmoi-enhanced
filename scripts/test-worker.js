@@ -16,7 +16,7 @@ async /**
  */
 function runTest(): any {
   try {
-    const testModule = await import(workerData.testFile);
+    const operational_data.testFile);
     const result = await testModule.default();
 
     parentPort.postMessage({
@@ -38,6 +38,6 @@ function runTest(): any {
 }
 
 runTest().catch((_err) => {
-  console.error(`Worker error in ${workerData.testFile}:`, _err);
+  logger.error(`Worker error in ${workerData.testFile}:`, _err);
   process.exit(1);
 });

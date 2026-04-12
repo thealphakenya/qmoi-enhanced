@@ -111,7 +111,7 @@ class AutonomousCoreIntelligence {
       // Predict potential failures
       await this.predictiveMaintenanceCycle();
     } catch (error) {
-      console.error('[AutonomousCore] Evolution cycle error:', error);
+      logger.error('[AutonomousCore] Evolution cycle error:', error);
     }
   }
 

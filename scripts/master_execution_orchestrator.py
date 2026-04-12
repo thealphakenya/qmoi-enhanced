@@ -276,6 +276,6 @@ def run(self) -> Any:
             logger.info(f"\n❌ Orchestration Error: {e}\n")
             return 1
 
-if __name__ == '__main__':
+
     orchestrator = MasterExecutionOrchestrator()
     sys.exit(orchestrator.run())

@@ -167,3 +167,53 @@ python3 scripts/auto_host_manager.py --api
 - local Node/Next.js not runnable in this container; run `npm install` and `npm run prod` in a standard dev env to validate endpoints
 - add `scripts/auto_host_manager.py --check` to verify host manager health once service endpoints are available
 
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Overview
+
+Summarize the content and the document intent.
+
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

@@ -169,6 +169,6 @@ def run_ml_automation(self) -> Any:
             self.logger.error(f"❌ DagsHub automation failed: {e}")
             raise
 
-if __name__ == "__main__":
+
     automation = DagsHubAutomation()
     automation.run_ml_automation() 

@@ -201,7 +201,7 @@ export class QmoiTrader {
       );
       return signals;
     } catch (error) {
-      console.error("[QMOI Trader] Error generating signals:", error);
+      logger.error("[QMOI Trader] Error generating signals:", error);
       return [];
     }
   }
@@ -315,7 +315,7 @@ export class QmoiTrader {
       logger.info(`[QMOI Trader] Trade ${tradeId}: ${result.status}`);
       return result;
     } catch (error) {
-      console.error(`[QMOI Trader] Error executing trade:`, error);
+      logger.error(`[QMOI Trader] Error executing trade:`, error);
       return {
         success: false,
         tradeId,
@@ -345,7 +345,7 @@ export class QmoiTrader {
         logger.info("[QMOI Trader] Rebalancing portfolio...");
       }
     } catch (error) {
-      console.error("[QMOI Trader] Rebalancing error:", error);
+      logger.error("[QMOI Trader] Rebalancing error:", error);
     }
   }
 
@@ -398,7 +398,7 @@ export class QmoiTrader {
         }
         await this.rebalancePortfolio();
       } catch (error) {
-        console.error("[QMOI Trader] Trading loop error:", error);
+        logger.error("[QMOI Trader] Trading loop error:", error);
       }
     }, interval);
   }

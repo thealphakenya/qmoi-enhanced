@@ -1,3 +1,51 @@
+
+class ProductionHealthMonitor:
+    """Production health monitoring system"""
+
+    def __init__(self):
+        self.checks = {}
+        self.last_check = None
+
+    def register_check(self, name: str, check_func: callable):
+        """Register a health check function"""
+        self.checks[name] = check_func
+
+    def run_health_checks(self) -> dict:
+        """Run all registered health checks"""
+        results = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'status': 'healthy',
+            'checks': {}
+        }
+
+        for name, check_func in self.checks.items():
+            try:
+                result = check_func()
+                results['checks'][name] = {
+                    'status': 'healthy' if result else 'unhealthy',
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+            except Exception as e:
+                results['checks'][name] = {
+                    'status': 'error',
+                    'error': str(e),
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+                results['status'] = 'unhealthy'
+
+        self.last_check = results
+        return results
+
+    def get_health_status(self) -> dict:
+        """Get current health status"""
+        if self.last_check:
+            return self.last_check
+        return self.run_health_checks()
+
+# Global health monitor instance
+health_monitor = ProductionHealthMonitor()
+
+
 #!/usr/bin/env python3#!/usr/bin/env python3
 
 
@@ -318,7 +366,7 @@
 
 
 
-    main()if __name__ == "__main__":    sys.exit(0 if success else 1)    success = tester.run_all_tests()    tester = QMOICrossRepoTester()"""
+    main()    sys.exit(0 if success else 1)    success = tester.run_all_tests()    tester = QMOICrossRepoTester()"""
     main function
     """
 def main() -> Any:            return False            self.log(f"⚠️ {total - passed} TESTS FAILED. Please review the results.", "WARNING")        else:            return True            self.log("🎉 ALL TESTS PASSED! QMOI Cross-Repository System is fully operational.", "SUCCESS")        if passed == total:        # Final status        self.log(f"Detailed results saved to: {results_file}")            }, f, indent=2)                "test_results": self.test_results                "summary": summary,            json.dump({        with open(results_file, 'w') as f:        results_file = "/workspaces/qmoi-enhanced/qmoi_cross_repo_test_results.json"        # Save detailed results        self.log(f"Total Duration: {summary['total_duration']}")        self.log(f"Success Rate: {summary['success_rate']}%")        self.log(f"Failed: {summary['failed_tests']}")        self.log(f"Passed: {summary['passed_tests']}")        self.log(f"Total Tests: {summary['total_tests']}")        }            "timestamp": datetime.now().isoformat()            "total_duration": str(duration),            "success_rate": round((passed / total) * 100, 2),            "failed_tests": total - passed,            "passed_tests": passed,            "total_tests": total,        summary = {        duration = datetime.now() - self.start_time        self.log("=" * 60)        self.log("TEST SUMMARY")        self.log("=" * 60)        # Generate summary                passed += 1            if self.run_test(test_name, test_func):        for test_name, test_func in tests:        total = len(tests)        passed = 0        # Run all tests        ]            ("API Documentation Updates", self.test_api_documentation_updates)            ("Parallel Processing Enhancements", self.test_parallel_processing_enhancements),            ("QMOI Evolution Capabilities", self.test_qmoi_evolution_capabilities),            ("Cross-Repo Workflow Management", self.test_cross_repo_workflow_management),            ("Realtime System", self.test_realtime_system),            ("API Endpoints", self.test_api_endpoints),            ("Background Worker System", self.test_background_worker_system),            ("Workflow Engine Functionality", self.test_workflow_engine_functionality),            ("Cross-Repo Sync Capabilities", self.test_cross_repo_sync_capabilities),            ("Autosync Service Initialization", self.test_autosync_service_initialization),            ("Autonomous Intelligence Initialization", self.test_autonomous_intelligence_initialization),        tests = [        # Define all tests        self.log("=" * 60)        self.log("Starting QMOI Cross-Repository Autonomous System Tests")        """Run all tests and generate report."""    """
@@ -729,5 +777,5 @@ def main() -> Any:
     success = tester.run_all_tests()
     sys.exit(0 if success else 1)
 
-if __name__ == "__main__":
+
     main()

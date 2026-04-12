@@ -37,7 +37,7 @@ services:
       - no-new-privileges:true
     read_only: false
     tmpfs:
-      - /tmp
+      - /cache
       - /const/run/postgresql
 
   # PostgreSQL Database - Read Replica (Optional)
@@ -94,7 +94,7 @@ services:
       - no-new-privileges:true
     read_only: false
     tmpfs:
-      - /tmp
+      - /cache
 
   # Redis Sentinel (High Availability)
   redis_sentinel:
@@ -188,7 +188,7 @@ services:
       - no-new-privileges:true
     read_only: false
     tmpfs:
-      - /tmp
+      - /cache
     deploy:
       resources:
         limits:

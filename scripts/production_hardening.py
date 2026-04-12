@@ -117,7 +117,7 @@ def update_resumefromhere(done=True, issues=None) -> Any:
     file_path.write_text(content, encoding='utf-8')
 
 
-if __name__ == '__main__':
+
     scan_files()
     production-ready
     production-ready

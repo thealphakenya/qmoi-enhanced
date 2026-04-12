@@ -1,132 +1,119 @@
-<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by QMOI Lion
+# ALLHOOKSWEBHOOKS.md - Complete Hooks & Webhooks Reference
 
-- validated: yes
-- validator: QMOI Lion
-- timestamp: 2026-04-06T05:06:41.893933Z
-- IMPLEMENTED: Auto-updated by `scripts/comprehensive_docs_update.py`
-<!-- LION_VALIDATION_END -->
+**Auto-generated on:** 2026-04-12 07:10:49 UTC
 
-# ALLHOOKSWEBHOOKS.md - complete Hooks & Webhooks Reference ✅ PRODUCTION READY
+This document combines hook and webhook references for the QMOI repository.
 
-**Last Updated**: 2026-04-06
+## Hooks (41)
 
-## Political Project Hooks
+- `use-mobile` — `hooks/use-mobile.ts`
+- `use-mobile` — `hooks/use-mobile.tsx`
+- `use-toast` — `hooks/use-toast.ts`
+- `useAIFeatureEnhancer` — `hooks/useAIFeatureEnhancer.ts`
+- `useAIHealthCheck` — `hooks/useAIHealthCheck.ts`
+- `useAnalyticsDashboard` — `hooks/useAnalyticsDashboard.ts`
+- `useAutoEarningTasks` — `hooks/useAutoEarningTasks.ts`
+- `useAutoFixAllProblems` — `hooks/useAutoFixAllProblems.ts`
+- `useBitgetTrader` — `hooks/useBitgetTrader.ts`
+- `useColabJob` — `hooks/useColabJob.ts`
+- `useDatasetManager` — `hooks/useDatasetManager.ts`
+- `useDatasets` — `hooks/useDatasets.ts`
+- `useDeviceHealth` — `hooks/useDeviceHealth.ts`
+- `useDeviceOptimizer` — `hooks/useDeviceOptimizer.ts`
+- `useErrorAutoFix` — `hooks/useErrorAutoFix.ts`
+- `useExtensionManager` — `hooks/useExtensionManager.ts`
+- `useGithubRepoManager` — `hooks/useGithubRepoManager.ts`
+- `useGlobalAutomation` — `hooks/useGlobalAutomation.ts`
+- `useGoDaddyIntegration` — `hooks/useGoDaddyIntegration.ts`
+- `useLargeFileUpload` — `hooks/useLargeFileUpload.ts`
+- `useMediaGenerationStatus` — `hooks/useMediaGenerationStatus.ts`
+- `useModelTrainer` — `hooks/useModelTrainer.ts`
+- `useProjects` — `hooks/useProjects.ts`
+- `useQCity` — `hooks/useQCity.ts`
+- `useQMOIAutoInteraction` — `hooks/useQMOIAutoInteraction.ts`
+- `useQMOIChat` — `hooks/useQMOIChat.ts`
+- `useQVillage` — `hooks/useQVillage.ts`
+- `useSystemMetrics` — `hooks/useSystemMetrics.ts`
+- `useTTCVoice` — `hooks/useTTCVoice.ts`
+- `useTaskQueue` — `hooks/useTaskQueue.ts`
+- `useTrading` — `hooks/useTrading.ts`
+- `useTradingAutomation` — `hooks/useTradingAutomation.ts`
+- `useVSCodeProblems` — `hooks/useVSCodeProblems.ts`
+- `useWhatsApp` — `hooks/useWhatsApp.ts`
+- `useAuth` — `src/hooks/useAuth.ts`
+- `useAutoProjects` — `src/hooks/useAutoProjects.ts`
+- `useQMOIChat` — `src/hooks/useQMOIChat.ts`
+- `useQmoiKernel.test` — `src/hooks/useQmoiKernel.test.ts`
+- `useQmoiKernel` — `src/hooks/useQmoiKernel.ts`
+- `useQmoiState` — `src/hooks/useQmoiState.ts`
+- `useTimezone` — `src/hooks/useTimezone.ts`
 
-- hooks/usePoliticalAccessControl.ts
-- hooks/useCampaignManager.ts
-- hooks/useRegionalIntelligence.ts
-- hooks/usePoliticalUI.ts
-- hooks/useSocialMediaIntegration.ts
+## Webhooks (1)
 
-## Auto Project Hooks
+- `/api/webhooks/qvillage` — `app/api/webhooks/qvillage/route.ts`
 
-- hooks/useAutoProjectGenerator.ts
-- hooks/useProjectRevenueTracker.ts
-- hooks/useProjectDistribution.ts
-- hooks/useProjectEvolution.ts
-- hooks/usePreviewWindow.ts
 
-## NGROK Paid Feature Hooks
 
-- hooks/useNGROKTunnel.ts
-- hooks/useNGROKMasterUI.ts
-- hooks/useNGROKAutoClone.ts
-- hooks/useNGROKSecurity.ts
-- hooks/useNGROKRevenue.ts
+## Auto-Update Information
 
-## Political Project Webhooks
+- **Managed by:** `scripts/qmoi_md_autoupdater.py`
+- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Update frequency:** Automatic on related source changes
+- **Last updated:** 2026-04-12 07:10:54 UTC
+- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
-- /api/webhooks/political/campaign-updates
-- /api/webhooks/political/access-control
-- /api/webhooks/political/regional-intelligence
-- /api/webhooks/political/ui-customization
-- /api/webhooks/political/social-media
 
-## Auto Project Webhooks
+## Purpose
 
-- /api/webhooks/auto-projects/generation
-- /api/webhooks/auto-projects/revenue
-- /api/webhooks/auto-projects/distribution
-- /api/webhooks/auto-projects/evolution
-- /api/webhooks/auto-projects/PRODUCTION
+Describe the purpose of this document and its scope.
 
-## NGROK Paid Feature Webhooks
+## Overview
 
-- /api/webhooks/ngrok/tunnel-status
-- /api/webhooks/ngrok/master-ui
-- /api/webhooks/ngrok/auto-clone
-- /api/webhooks/ngrok/security
-- /api/webhooks/ngrok/revenue
+Summarize the content and the document intent.
 
-## Hooks
+## Auto-Update Instructions
 
-- hooks/use-mobile.ts
-- hooks/use-mobile.tsx
-- hooks/use-toast.ts
-- hooks/useAIFeatureEnhancer.ts
-- hooks/useAIHealthCheck.ts
-- hooks/useAnalyticsDashboard.ts
-- src/hooks/useAuth.ts
-- hooks/useAutoEarningTasks.ts
-- hooks/useAutoFixAllProblems.ts
-- src/hooks/useAutoProjects.ts
-- hooks/useBitgetTrader.ts
-- hooks/useColabJob.ts
-- hooks/useDatasetManager.ts
-- hooks/useDatasets.ts
-- hooks/useDeviceHealth.ts
-- hooks/useDeviceOptimizer.ts
-- hooks/useErrorAutoFix.ts
-- hooks/useExtensionManager.ts
-- hooks/useGithubRepoManager.ts
-- hooks/useGlobalAutomation.ts
-- hooks/useLargeFileUpload.ts
-- hooks/useMediaGenerationStatus.ts
-- hooks/useModelTrainer.ts
-- hooks/useProjects.ts
-- hooks/useQCity.ts
-- hooks/useQMOIAutoInteraction.ts
-- hooks/useQMOIChat.ts
-- src/hooks/useQMOIChat.ts
-- hooks/useQVillage.ts
-- src/hooks/useQmoiKernel.ts
-- src/hooks/useQmoiState.ts
-- hooks/useSystemMetrics.ts
-- hooks/useGoDaddyIntegration.ts
-- hooks/useDomainHealth.ts
-- hooks/useGoDaddyDomainManager.ts
-- hooks/useGoDaddyHosting.ts
-- hooks/useGoDaddySecurity.ts
-- hooks/useTTCVoice.ts
-- hooks/useTaskQueue.ts
-- src/hooks/useTimezone.ts
-- hooks/useSuccessAssurance.ts
-- hooks/useQVSParallel.ts
-- hooks/useAutoDeployment.ts
-- hooks/useGoDaddyIntegration.ts
-- hooks/useTrading.ts
-- hooks/useTradingAutomation.ts
-- hooks/useVSCodeProblems.ts
-- hooks/useQMOISuccessAssurance.ts
-- hooks/useQVSParallelProcessing.ts
-- hooks/useQVSFailoverSystem.ts
-- hooks/useAutoDeployment.ts
-- hooks/useEnhancedAutoFix.ts
+This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+Run the following command to regenerate documentation and apply Lion validation metadata:
 
-## Webhooks
+```bash
+python3 scripts/qmoi_md_autoupdater.py
+```
 
-- /api/alerts/webhook
-- /api/webhooks/payments
-- /api/webhooks/qvillage
-- /api/webhooks/qmoi-success-assurance
-- /api/webhooks/qvs-parallel-processing
-- /api/webhooks/auto-deployment
-- /api/webhooks/enhanced-auto-fix
-- /api/webhooks/godaddy-domain
-- /api/webhooks/godaddy-health
+Then run:
 
----
+```bash
+python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
+```
 
-**Auto-generated by**: `scripts/comprehensive_docs_update.py`
-**Last Updated**: 2026-04-06T05:06:41.893933Z
+For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+## Change History
+
+Log significant changes and version notes.
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

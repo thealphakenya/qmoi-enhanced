@@ -128,7 +128,7 @@ class NotificationsService {
   private sendPushNotification = async (options: NotificationOptions) => {
     try {
       if (!process.env.FIREBASE_PROJECT_ID) {
-        console.warn("Firebase not configured for push notifications");
+        logger.warning("Firebase not configured for push notifications");
         return false;
       }
 
@@ -138,7 +138,7 @@ class NotificationsService {
 
       return true;
     } catch (error) {
-      console.error("Failed to send push notification:", error);
+      logger.error("Failed to send push notification:", error);
       return false;
     }
   };
@@ -152,7 +152,7 @@ class NotificationsService {
       // await emailService.sendNotification(...)
       return true;
     } catch (error) {
-      console.error("Failed to send email notification:", error);
+      logger.error("Failed to send email notification:", error);
       return false;
     }
   };
@@ -205,7 +205,7 @@ class NotificationsService {
       logger.info(`Email sent to ${email}: ${notification.title}`);
       return { channel: "email", success: true };
     } catch (error) {
-      console.error("Failed to send email:", error);
+      logger.error("Failed to send email:", error);
       return {
         channel: "email",
         success: false,
@@ -227,7 +227,7 @@ class NotificationsService {
       logger.info(`SMS sent to ${phoneNumber}: ${notification.title}`);
       return { channel: "sms", success: true };
     } catch (error) {
-      console.error("Failed to send SMS:", error);
+      logger.error("Failed to send SMS:", error);
       return {
         channel: "sms",
         success: false,

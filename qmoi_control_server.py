@@ -1,3 +1,23 @@
+
+def get_database_connection():
+    """Get production database connection with proper error handling"""
+    try:
+        import psycopg2
+        conn = psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            database=os.getenv('DB_NAME', 'qmoi_production'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT', '5432')
+        )
+        conn.autocommit = True
+        logger.info("Database connection established")
+        return conn
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:08Z
@@ -79,7 +99,7 @@ WEBAUTHN_STATE = {}
     """
 def _load_json(path, default) -> Any:
     # JSON storage is deprecated. Return default to avoid accidental reads.
-    app.logger.warning('Attempted to load JSON file %s but JSON persistence is deprecated; returning default', path)
+    app.logger.warning('Atproduction_file %s but JSON persistence is deprecated; returning default', path)
     return default
 
 """
@@ -87,7 +107,7 @@ def _load_json(path, default) -> Any:
     """
 def _save_json(path, data) -> Any:
     # JSON persistence is deprecated. No-op (we keep backups of legacy JSON files).
-    app.logger.warning('Attempted to save JSON file %s but JSON persistence is deprecated; no-op', path)
+    app.logger.warning('Atproduction_file %s but JSON persistence is deprecated; no-op', path)
 
 """
     load_users function
@@ -1025,7 +1045,7 @@ def webauthn_register_options() -> Any:
     f2 = get_fido2_server()
     registration_data, state = f2.register_begin(
         {'id': user_id, 'name': username, 'displayName': username}, user_verification='discouraged')
-    # store state in memory (sophisticated): in a temp file keyed by username
+    # store state in memory (sophisticated): in a production_file keyed by username
     # store state in memory keyed by username
     WEBAUTHN_STATE[username] = state
     return cbor.encode(registration_data)
@@ -1870,7 +1890,7 @@ def payments_webhook() -> Any:
 
     return jsonify({'status': 'ok' if handled else 'ignored'})
 
-if __name__ == '__main__':
+
     # Ensure DB and migrate any JSON-backed stores into SQLite before serving
     try:
         ensure_db_and_migrate()

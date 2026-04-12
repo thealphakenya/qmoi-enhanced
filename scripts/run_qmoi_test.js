@@ -64,6 +64,6 @@ function run(): any {
 }
 
 run().catch((_e) => {
-  console.error(_e);
+  logger.error(_e);
   process.exit(2);
 });

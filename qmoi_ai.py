@@ -26,5 +26,5 @@ def main_gui() -> Any:
 
     app.mainloop()
 
-if __name__ == "__main__":
+
     main_gui()

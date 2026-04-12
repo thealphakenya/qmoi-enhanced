@@ -113,7 +113,7 @@ function processMpesaPayment(paymentData: unknown): any {
       details: res,
     };
   } catch (error) {
-    console.error("M-Pesa payment failed:", error);
+    logger.error("M-Pesa payment failed:", error);
     return { success: false, _error: "M-Pesa payment failed" };
   }
 }
@@ -159,7 +159,7 @@ function processAirtelPayment(paymentData: unknown): any {
       provider: "airtel",
     };
   } catch (error) {
-    console.error("Airtel payment failed:", error);
+    logger.error("Airtel payment failed:", error);
     return { success: false, _error: "Airtel payment failed" };
   }
 }
@@ -200,7 +200,7 @@ function processPesapalPayment(paymentData: unknown): any {
     const result = await _response.text();
     return { success: true, reference: result, provider: "pesapal" };
   } catch (error) {
-    console.error("Pesapal payment failed:", error);
+    logger.error("Pesapal payment failed:", error);
     return { success: false, _error: "Pesapal payment failed" };
   }
 }

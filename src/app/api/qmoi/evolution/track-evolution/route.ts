@@ -94,7 +94,7 @@ function GET(request: NextRequest): any {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[EVOLUTION] Track evolution endpoint error:', error);
+    logger.error('[EVOLUTION] Track evolution endpoint error:', error);
 
     return NextResponse.json(
       {
@@ -163,7 +163,7 @@ function POST(request: NextRequest): any {
       );
     }
   } catch (error) {
-    console.error('[EVOLUTION] Manage tracking endpoint error:', error);
+    logger.error('[EVOLUTION] Manage tracking endpoint error:', error);
 
     return NextResponse.json(
       {

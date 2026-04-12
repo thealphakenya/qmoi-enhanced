@@ -23,7 +23,7 @@ for (const r of report.results) {
   }
 }
 if (fail) {
-  console.error(`${fail} routes required gating.`);
+  logger.error(`${fail} routes required gating.`);
   process.exit(1);
 }
 .log(

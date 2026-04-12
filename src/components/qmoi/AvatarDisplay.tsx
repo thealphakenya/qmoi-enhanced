@@ -59,7 +59,7 @@ function AvatarDisplay({
           setAvatar(data.avatar);
         }
       } catch (error) {
-        console.error("Failed to fetch avatar:", error);
+        logger.error("Failed to fetch avatar:", error);
       } finally {
         setIsLoading(false);
       }

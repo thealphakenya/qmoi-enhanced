@@ -581,7 +581,7 @@ logger.info(usedVariable);
     const scenario = this.testScenarios.find(s => s.name === testName);
     
     if (!scenario) {
-      console.error(`❌ Test scenario "${testName}" not found`);
+      logger.error(`❌ Test scenario "${testName}" not found`);
       production-ready and operational
       this.testScenarios.for (const item of(s => logger.info(`   - ${s.name}`));
       return;

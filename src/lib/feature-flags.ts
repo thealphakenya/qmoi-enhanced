@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 /**
  * Feature Flag Management System
  * Centralized feature flag management for QMOI platform
@@ -200,7 +224,7 @@ class FeatureFlagsManager {
 
     const flag = this.config.flags[flagName];
     if (!flag) {
-      console.warn(`Unknown feature flag: ${flagName}`);
+      logger.warning(`Unknown feature flag: ${flagName}`);
       return false;
     }
 
@@ -290,7 +314,7 @@ class FeatureFlagsManager {
       try {
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.config));
       } catch (e) {
-        console.warn('Failed to save feature flags to storage', e);
+        logger.warning('Failed to save feature flags to storage', e);
       }
     }
   }
@@ -307,7 +331,7 @@ class FeatureFlagsManager {
           this.config = { ...this.config, ...parsed };
         }
       } catch (e) {
-        console.warn('Failed to load feature flags from storage', e);
+        logger.warning('Failed to load feature flags from storage', e);
       }
     }
   }

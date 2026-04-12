@@ -50,7 +50,7 @@ function POST(_request: NextRequest): any {
       message: "AI trading stopped successfully",
     });
   } catch (error) {
-    console.error("Stop trading API _error:", error);
+    logger.error("Stop trading API _error:", error);
     return NextResponse.json(
       { _error: "Failed to stop trading" },
       { status: 500 },

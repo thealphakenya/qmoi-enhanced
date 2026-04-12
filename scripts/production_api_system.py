@@ -1,3 +1,23 @@
+
+def get_database_connection():
+    """Get production database connection with proper error handling"""
+    try:
+        import psycopg2
+        conn = psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            database=os.getenv('DB_NAME', 'qmoi_production'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT', '5432')
+        )
+        conn.autocommit = True
+        logger.info("Database connection established")
+        return conn
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+
+
 #!/usr/bin/env python3
 """
 production-ready
@@ -1091,7 +1111,7 @@ def cleanup(resp_or_exc) -> Any:
     if hasattr(g, 'db_conn'):
         release_db_connection(g.db_conn)
 
-if __name__ == '__main__':
+
     # Run the Flask app
     app.run(
         host='0.0.0.0',

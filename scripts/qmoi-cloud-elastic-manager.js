@@ -38,7 +38,7 @@ function ensureElasticStorage(): any {
         });
         logger.info(`[QMOI] Synced ${dir} to elastic cloud storage.`);
       } catch (e) {
-        console.error(`[QMOI] Cloud sync failed for ${dir}:`, e.message);
+        logger.error(`[QMOI] Cloud sync failed for ${dir}:`, e.message);
       }
     }
   }

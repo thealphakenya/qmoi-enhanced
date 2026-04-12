@@ -85,14 +85,14 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
           try {
             return adjustVolumeWav(buf, vol / 100);
           } catch (e) {
-            console.warn('Volume adjust failed, returning raw audio');
+            logger.warning('Volume adjust failed, returning raw audio');
             return buf;
           }
         }
         return buf;
       }
 
-      console.warn('ElevenLabs TTS returned non-2xx:', resp.status);
+      logger.warning('ElevenLabs TTS returned non-2xx:', resp.status);
       return Buffer.from(generateSilentWAV());
     } catch (err) {
       (globalThis.console as any)?.error?.('ElevenLabs TTS error:', err && err.message ? err.message : err);

@@ -249,10 +249,10 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
             'errors': errors
         }
 
-if __name__ == '__main__':
+
     provider = CloudflareProvider()
     plan = provider.plan_dns_change('data.com', {
-        'test.data.com': {
+        'operational_data.com': {
             'type': 'A',
             'content': '1.2.3.4',
             'proxied': True

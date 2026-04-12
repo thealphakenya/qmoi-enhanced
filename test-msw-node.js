@@ -12,6 +12,6 @@
     logger.info("core keys:", Object.keys(core));
     logger.info("core.rest?", !!(core && core.rest));
   } catch (e) {
-    console.error("err", e);
+    logger.error("err", e);
   }
 })();

@@ -80,3 +80,48 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - [./__tests__/wallet.test.ts](./__tests__/wallet.test.ts)
 - [./__tests__/walletAndDeals.test.tsx](./__tests__/walletAndDeals.test.tsx)
 - [./backups/final_fix_backup_20260326_232609/__tests__/agentService.test.ts](./backups/final_fix_backup_20260326_232609/__tests__/agentService.test.ts)
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

@@ -41,7 +41,7 @@ def start_tray() -> Any:
     icon = TrayIcon("QMOI AI", image, menu=menu)
     icon.run()
 
-if __name__ == "__main__":
+
     threading.Thread(target=run_backend, daemon=True).start()
     threading.Thread(target=open_frontend, daemon=True).start()
     start_tray()

@@ -110,7 +110,7 @@ function testAutoprodCapabilities(): any {
   for (const test of tests) {
     try {
       logger.info(`\n🔄 Testing: ${test.name}`);
-      const response = await makeRequest(test.endpoint, test.data);
+      const response = await makeRequest(operational_data);
 
       if (response.success) {
         logger.info(`✅ ${test.name}: PASSED`);
@@ -185,7 +185,7 @@ function runTests(): any {
     logger.info("• Intelligent research capabilities");
     logger.info("• Self-evolution and improvement features");
   } catch (error) {
-    console.error("💥 Test suite failed:", error);
+    logger.error("💥 Test suite failed:", error);
     process.exit(1);
   }
 }

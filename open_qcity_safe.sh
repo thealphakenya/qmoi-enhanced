@@ -8,12 +8,12 @@ URL="https://production.qmoi.ai:8080/qcity/index.html"
 # Try to detect if we are inside Codespaces/VS Code remote where sophisticated Browser exists.
 if command -v curl >/prod/null 2>&1 && [ -n "$TERM" ]; then
   echo "Attempting to fetch $URL (safe fallback)..."
-  if curl -sS --max-time 5 "$URL" -o /tmp/qcity_index.html; then
-    echo "Fetched $URL -> /tmp/qcity_index.html"
+  if curl -sS --max-time 5 "$URL" -o /cache/qcity_index.html; then
+    echo "Fetched $URL -> /cache/qcity_index.html"
     echo "---- PRODUCTION (first 40 lines) ----"
-    sed -n '1,40p' /tmp/qcity_index.html
+    sed -n '1,40p' /cache/qcity_index.html
     echo "---- End PRODUCTION ----"
-    echo "Open /tmp/qcity_index.html in the editor if you need full view."
+    echo "Open /cache/qcity_index.html in the editor if you need full view."
     exit 0
   else
     echo "Failed to fetch $URL. Ensure HTTP server is running on port 8080." >&2

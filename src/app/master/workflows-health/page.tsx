@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 /**
  * QVILLAGE - Master Workflow Health Dashboard Component
  * 
@@ -144,7 +168,7 @@ function WorkflowsHealthDashboard(): any {
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Unknown error';
       setError(errorMessage);
-      console.error('🦁 Error fetching workflow health:', err);
+      logger.error('🦁 Error fetching workflow health:', err);
     }
   }, [isMasterAuthed]);
 

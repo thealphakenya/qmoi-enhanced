@@ -64,7 +64,7 @@ function POST(request: NextRequest): any {
     }
 
   } catch (error) {
-    console.error('Emergency email error:', error);
+    logger.error('Emergency email error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -82,7 +82,7 @@ function sendSendGridEmail(to: string, subject: string, message: string): any {
     const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'emergency@qmoi.system';
 
     if (!apiKey) {
-      console.warn('SendGrid API key not configured, simulating email send');
+      logger.warning('SendGrid API key not configured, simulating email send');
       return {
         success: true,
         messageId: `lived_${Date.now()}`,
@@ -124,7 +124,7 @@ function sendSendGridEmail(to: string, subject: string, message: string): any {
       };
     }
   } catch (error) {
-    console.error('SendGrid email error:', error);
+    logger.error('SendGrid email error:', error);
     return {
       success: false,
       error: 'SendGrid service error',

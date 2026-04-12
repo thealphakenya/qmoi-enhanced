@@ -158,7 +158,7 @@ export class ErrorFixingService {
       error.lineNumber
     ) {
       return {
-        description: `Attempting to fix linter error at ${error.filePath}:${error.lineNumber}`,
+        description: `Atproduction_filePath}:${error.lineNumber}`,
         production-ready
       };
     }

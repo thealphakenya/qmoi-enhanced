@@ -92,7 +92,7 @@ export class ModelReplacementEngine {
   ): void {
     const existing = this.models.get(modelId);
     if (!existing) {
-      console.warn(`Model ${modelId} not registered`);
+      logger.warning(`Model ${modelId} not registered`);
       return;
     }
 
@@ -264,7 +264,7 @@ export class ModelReplacementEngine {
 
       return true;
     } catch (error) {
-      console.error('Model replacement execution failed:', error);
+      logger.error('Model replacement execution failed:', error);
 
       // Rollback
       if (this.replacementHistory.length > 0) {
@@ -328,7 +328,7 @@ export class ModelReplacementEngine {
         }
       }
     } catch (error) {
-      console.error('[EVOLUTION] Autoprod generation for models failed:', error);
+      logger.error('[EVOLUTION] Autoprod generation for models failed:', error);
     }
   }
 
@@ -350,7 +350,7 @@ export class ModelReplacementEngine {
     try {
       const qmoiModel = this.models.get(this.qmoiModelId);
       if (!qmoiModel) {
-        console.warn('QMOI model not registered for evaluation');
+        logger.warning('QMOI model not registered for evaluation');
         return;
       }
 
@@ -372,7 +372,7 @@ export class ModelReplacementEngine {
         }
       }
     } catch (error) {
-      console.error('[EVOLUTION] Autonomous evaluation failed:', error);
+      logger.error('[EVOLUTION] Autonomous evaluation failed:', error);
     }
   }
 

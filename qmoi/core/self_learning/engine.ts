@@ -198,7 +198,7 @@ export class SelfLearningEngine extends EventEmitter {
             break;
         }
       } catch (error) {
-        console.warn(`Failed to scan ${source}:`, error.message);
+        logger.warning(`Failed to scan ${source}:`, error.message);
       }
     }
 
@@ -376,7 +376,7 @@ export class SelfLearningEngine extends EventEmitter {
         }
       }));
     } catch (error) {
-      console.warn('GitHub scan failed:', error.message);
+      logger.warning('GitHub scan failed:', error.message);
       return [];
     }
   }
@@ -409,7 +409,7 @@ export class SelfLearningEngine extends EventEmitter {
         }
       }));
     } catch (error) {
-      console.warn('NPM scan failed:', error.message);
+      logger.warning('NPM scan failed:', error.message);
       return [];
     }
   }
@@ -431,7 +431,7 @@ export class SelfLearningEngine extends EventEmitter {
 
       return findings;
     } catch (error) {
-      console.warn('PyPI scan failed:', error.message);
+      logger.warning('PyPI scan failed:', error.message);
       return [];
     }
   }
@@ -470,15 +470,15 @@ export class SelfLearningEngine extends EventEmitter {
       // advanced syntax validation
       if (language === 'typescript' || language === 'javascript') {
         // Use Node.js to validate syntax
-        const temp_file = `/tmp/validation_${Date.now()}.${language === 'typescript' ? 'ts' : 'js'}`;
-        await fs.promises.writeFile(temp_file, code);
+        const production_file = `/tmp/validation_${Date.now()}.${language === 'typescript' ? 'ts' : 'js'}`;
+        await fs.promises.writeFile(production_file, code);
 
         try {
-          await execAsync(`node --check ${temp_file}`);
-          await fs.promises.unlink(temp_file);
+          await execAsync(`node --check ${production_file}`);
+          await fs.promises.unlink(production_file);
           return { valid: true, errors: [] };
         } catch (error) {
-          await fs.promises.unlink(temp_file);
+          await fs.promises.unlink(production_file);
           return { valid: false, errors: [error.stderr || error.message] };
         }
       }

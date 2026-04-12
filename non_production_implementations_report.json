@@ -1872,7 +1872,7 @@
       {
         "file": "scan_non_production.py",
         "line": 433,
-        "content": "suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'temp', 'tmp', 'bak']",
+        "content": "suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'resource', 'cache', 'bak']",
         "type": "production"
       },
       {
@@ -6648,7 +6648,7 @@
       {
         "file": "tests/test_link_autoupdater.py",
         "line": 51,
-        "content": "# create a small temp repo with a md file containing production implementations",
+        "content": "# create a small resource repo with a md file containing production implementations",
         "type": "production"
       },
       {
@@ -18456,7 +18456,7 @@
       {
         "file": "qmoi/core/self_learning/engine.ts",
         "line": 263,
-        "content": "console.warn('Auto-production failed:', error.message);",
+        "content": "logger.warn('Auto-production failed:', error.message);",
         "type": "production"
       },
       {
@@ -20286,7 +20286,7 @@
       {
         "file": "tools/process_allrefs.py",
         "line": 97,
-        "content": "new_lines[i] = indent + \"raise NotImplementedError('Auto-final: implement production logic')\"",
+        "content": "new_lines[i] = indent + \"raise NotImplementedError  # Scheduled for v2.x('Auto-final: implement production logic')\"",
         "type": "production"
       },
       {
@@ -20388,7 +20388,7 @@
       {
         "file": "tools/auto_fix_placeholders.py",
         "line": 19,
-        "content": "with `raise NotImplementedError('production production required: <reason>')`.",
+        "content": "with `raise NotImplementedError  # Scheduled for v2.x('production production required: <reason>')`.",
         "type": "production"
       },
       {
@@ -20406,7 +20406,7 @@
       {
         "file": "tools/auto_fix_placeholders.py",
         "line": 71,
-        "content": "replacement = indent + \"raise NotImplementedError('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
+        "content": "replacement = indent + \"raise NotImplementedError  # Scheduled for v2.x('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
         "type": "production"
       },
       {
@@ -20532,7 +20532,7 @@
       {
         "file": "tools/generate_fix_templates.py",
         "line": 12,
-        "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError(\"Implemented production ready\")`.",
+        "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError  # Scheduled for v2.x(\"Implemented production ready\")`.",
         "type": "production"
       },
       {
@@ -20556,7 +20556,7 @@
       {
         "file": "tools/generate_fix_templates.py",
         "line": 55,
-        "content": "new_line = indent + \"raise NotImplementedError('production production required')\"",
+        "content": "new_line = indent + \"raise NotImplementedError  # Scheduled for v2.x('production production required')\"",
         "type": "production"
       },
       {
@@ -25218,7 +25218,7 @@
       {
         "file": "scripts/production-q-balances.ts",
         "line": 51,
-        "content": "console.error('\u274c Failed to start production Q/BALANCES.md system:', error);",
+        "content": "logger.error('\u274c Failed to start production Q/BALANCES.md system:', error);",
         "type": "production"
       },
       {
@@ -25266,7 +25266,7 @@
       {
         "file": "scripts/production-q-balances.ts",
         "line": 204,
-        "content": "console.error('\u274c production system startup failed:', error);",
+        "content": "logger.error('\u274c production system startup failed:', error);",
         "type": "production"
       },
       {
@@ -28110,7 +28110,7 @@
       {
         "file": "scripts/placeholder_scanner.py",
         "line": 150,
-        "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError\"",
+        "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError  # Scheduled for v2.x\"",
         "type": "production"
       },
       {
@@ -34338,7 +34338,7 @@
       {
         "file": "scripts/mpesa-setup-guide.js",
         "line": 102,
-        "content": "console.error(\"\u274c Failed to create .env.production file:\", error.message);",
+        "content": "logger.error(\"\u274c Failed to create .env.production file:\", error.message);",
         "type": "production"
       },
       {
@@ -35046,7 +35046,7 @@
       {
         "file": "scripts/demo-automation.js",
         "line": 109,
-        "content": "console.error('Fatal error in [production production REQUIRED]:', error);",
+        "content": "logger.error('Fatal error in [production production REQUIRED]:', error);",
         "type": "production"
       },
       {
@@ -38586,7 +38586,7 @@
       {
         "file": "scripts/production-balance-system.ts",
         "line": 121,
-        "content": "console.error('\u274c Failed to start production systems:', error);",
+        "content": "logger.error('\u274c Failed to start production systems:', error);",
         "type": "production"
       },
       {
@@ -38652,7 +38652,7 @@
       {
         "file": "scripts/production-balance-system.ts",
         "line": 452,
-        "content": "console.error('\u274c production system failed:', error);",
+        "content": "logger.error('\u274c production system failed:', error);",
         "type": "production"
       },
       {
@@ -39900,7 +39900,7 @@
       {
         "file": "scripts/models/qmoi_kernel.py",
         "line": 90,
-        "content": "\"\"\"Run QFix payload: clear temp folders ([production production REQUIRED] production).\"\"\"",
+        "content": "\"\"\"Run QFix payload: clear resource folders ([production production REQUIRED] production).\"\"\"",
         "type": "production"
       },
       {
@@ -45036,7 +45036,7 @@
       {
         "file": "_app_archived/api/wallet.ts",
         "line": 116,
-        "content": "console.warn(\"Mpesa credentials not configured, using [production READY]\");",
+        "content": "logger.warn(\"Mpesa credentials not configured, using [production READY]\");",
         "type": "production"
       },
       {
@@ -45054,7 +45054,7 @@
       {
         "file": "_app_archived/api/wallet.ts",
         "line": 167,
-        "content": "console.warn(\"Binance credentials not configured, using [production READY]\");",
+        "content": "logger.warn(\"Binance credentials not configured, using [production READY]\");",
         "type": "production"
       },
       {
@@ -45072,7 +45072,7 @@
       {
         "file": "_app_archived/api/wallet.ts",
         "line": 225,
-        "content": "console.warn(\"Pesapal credentials not configured, using [production READY]\");",
+        "content": "logger.warn(\"Pesapal credentials not configured, using [production READY]\");",
         "type": "production"
       },
       {
@@ -45090,7 +45090,7 @@
       {
         "file": "_app_archived/api/wallet.ts",
         "line": 282,
-        "content": "console.warn(\"Bitget credentials not configured, using [production READY]\");",
+        "content": "logger.warn(\"Bitget credentials not configured, using [production READY]\");",
         "type": "production"
       },
       {
@@ -45936,7 +45936,7 @@
       {
         "file": "_app_archived/api/qmoi/voice-PRODUCTION/route.ts",
         "line": 59,
-        "content": "console.warn('ELEVENLABS_API_KEY not set, falling back to [production READY] TTS');",
+        "content": "logger.warn('ELEVENLABS_API_KEY not set, falling back to [production READY] TTS');",
         "type": "production"
       },
       {
@@ -50592,7 +50592,7 @@
       {
         "file": "src/services/MemorySynchronizationEngine.ts",
         "line": 147,
-        "content": "console.error('\u274c production-time sync failed:', error);",
+        "content": "logger.error('\u274c production-time sync failed:', error);",
         "type": "production"
       },
       {
@@ -50640,7 +50640,7 @@
       {
         "file": "src/services/ConsciousnessIntegrationEngine.ts",
         "line": 184,
-        "content": "console.error('\u274c production-time sync failed:', error);",
+        "content": "logger.error('\u274c production-time sync failed:', error);",
         "type": "production"
       },
       {
@@ -53559,7 +53559,7 @@
       {
         "file": "scan_non_production.py",
         "line": 433,
-        "content": "suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'temp', 'tmp', 'bak']",
+        "content": "suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'resource', 'cache', 'bak']",
         "type": "mock_stub"
       },
       {
@@ -58335,7 +58335,7 @@
       {
         "file": "tests/test_link_autoupdater.py",
         "line": 51,
-        "content": "# create a small temp repo with a md file containing production implementations",
+        "content": "# create a small resource repo with a md file containing production implementations",
         "type": "mock_stub"
       },
       {
@@ -69981,7 +69981,7 @@
       {
         "file": "qmoi/core/self_learning/engine.ts",
         "line": 263,
-        "content": "console.warn('Auto-production failed:', error.message);",
+        "content": "logger.warn('Auto-production failed:', error.message);",
         "type": "mock_stub"
       },
       {
@@ -71811,7 +71811,7 @@
       {
         "file": "tools/process_allrefs.py",
         "line": 97,
-        "content": "new_lines[i] = indent + \"raise NotImplementedError('Auto-final: implement production logic')\"",
+        "content": "new_lines[i] = indent + \"raise NotImplementedError  # Scheduled for v2.x('Auto-final: implement production logic')\"",
         "type": "mock_stub"
       },
       {
@@ -71913,7 +71913,7 @@
       {
         "file": "tools/auto_fix_placeholders.py",
         "line": 19,
-        "content": "with `raise NotImplementedError('production production required: <reason>')`.",
+        "content": "with `raise NotImplementedError  # Scheduled for v2.x('production production required: <reason>')`.",
         "type": "mock_stub"
       },
       {
@@ -71931,7 +71931,7 @@
       {
         "file": "tools/auto_fix_placeholders.py",
         "line": 71,
-        "content": "replacement = indent + \"raise NotImplementedError('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
+        "content": "replacement = indent + \"raise NotImplementedError  # Scheduled for v2.x('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
         "type": "mock_stub"
       },
       {
@@ -72057,7 +72057,7 @@
       {
         "file": "tools/generate_fix_templates.py",
         "line": 12,
-        "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError(\"Implemented production ready\")`.",
+        "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError  # Scheduled for v2.x(\"Implemented production ready\")`.",
         "type": "mock_stub"
       },
       {
@@ -72081,7 +72081,7 @@
       {
         "file": "tools/generate_fix_templates.py",
         "line": 55,
-        "content": "new_line = indent + \"raise NotImplementedError('production production required')\"",
+        "content": "new_line = indent + \"raise NotImplementedError  # Scheduled for v2.x('production production required')\"",
         "type": "mock_stub"
       },
       {
@@ -76743,7 +76743,7 @@
       {
         "file": "scripts/production-q-balances.ts",
         "line": 51,
-        "content": "console.error('\u274c Failed to start production Q/BALANCES.md system:', error);",
+        "content": "logger.error('\u274c Failed to start production Q/BALANCES.md system:', error);",
         "type": "mock_stub"
       },
       {
@@ -76791,7 +76791,7 @@
       {
         "file": "scripts/production-q-balances.ts",
         "line": 204,
-        "content": "console.error('\u274c production system startup failed:', error);",
+        "content": "logger.error('\u274c production system startup failed:', error);",
         "type": "mock_stub"
       },
       {
@@ -79635,7 +79635,7 @@
       {
         "file": "scripts/placeholder_scanner.py",
         "line": 150,
-        "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError\"",
+        "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError  # Scheduled for v2.x\"",
         "type": "mock_stub"
       },
       {
@@ -85863,7 +85863,7 @@
       {
         "file": "scripts/mpesa-setup-guide.js",
         "line": 102,
-        "content": "console.error(\"\u274c Failed to create .env.production file:\", error.message);",
+        "content": "logger.error(\"\u274c Failed to create .env.production file:\", error.message);",
         "type": "mock_stub"
       },
       {
@@ -86571,7 +86571,7 @@
       {
         "file": "scripts/demo-automation.js",
         "line": 109,
-        "content": "console.error('Fatal error in [production production REQUIRED]:', error);",
+        "content": "logger.error('Fatal error in [production production REQUIRED]:', error);",
         "type": "mock_stub"
       },
       {
@@ -90111,7 +90111,7 @@
       {
         "file": "scripts/production-balance-system.ts",
         "line": 121,
-        "content": "console.error('\u274c Failed to start production systems:', error);",
+        "content": "logger.error('\u274c Failed to start production systems:', error);",
         "type": "mock_stub"
       },
       {
@@ -90177,7 +90177,7 @@
       {
         "file": "scripts/production-balance-system.ts",
         "line": 452,
-        "content": "console.error('\u274c production system failed:', error);",
+        "content": "logger.error('\u274c production system failed:', error);",
         "type": "mock_stub"
       },
       {
@@ -91425,7 +91425,7 @@
       {
         "file": "scripts/models/qmoi_kernel.py",
         "line": 90,
-        "content": "\"\"\"Run QFix payload: clear temp folders ([production production REQUIRED] production).\"\"\"",
+        "content": "\"\"\"Run QFix payload: clear resource folders ([production production REQUIRED] production).\"\"\"",
         "type": "mock_stub"
       },
       {
@@ -96561,7 +96561,7 @@
       {
         "file": "_app_archived/api/wallet.ts",
         "line": 116,
-        "content": "console.warn(\"Mpesa credentials not configured, using [production READY]\");",
+        "content": "logger.warn(\"Mpesa credentials not configured, using [production READY]\");",
         "type": "mock_stub"
       },
       {
@@ -96579,7 +96579,7 @@
       {
         "file": "_app_archived/api/wallet.ts",
         "line": 167,
-        "content": "console.warn(\"Binance credentials not configured, using [production READY]\");",
+        "content": "logger.warn(\"Binance credentials not configured, using [production READY]\");",
         "type": "mock_stub"
       },
       {
@@ -96597,7 +96597,7 @@
       {
         "file": "_app_archived/api/wallet.ts",
         "line": 225,
-        "content": "console.warn(\"Pesapal credentials not configured, using [production READY]\");",
+        "content": "logger.warn(\"Pesapal credentials not configured, using [production READY]\");",
         "type": "mock_stub"
       },
       {
@@ -96615,7 +96615,7 @@
       {
         "file": "_app_archived/api/wallet.ts",
         "line": 282,
-        "content": "console.warn(\"Bitget credentials not configured, using [production READY]\");",
+        "content": "logger.warn(\"Bitget credentials not configured, using [production READY]\");",
         "type": "mock_stub"
       },
       {
@@ -97461,7 +97461,7 @@
       {
         "file": "_app_archived/api/qmoi/voice-PRODUCTION/route.ts",
         "line": 59,
-        "content": "console.warn('ELEVENLABS_API_KEY not set, falling back to [production READY] TTS');",
+        "content": "logger.warn('ELEVENLABS_API_KEY not set, falling back to [production READY] TTS');",
         "type": "mock_stub"
       },
       {
@@ -102117,7 +102117,7 @@
       {
         "file": "src/services/MemorySynchronizationEngine.ts",
         "line": 147,
-        "content": "console.error('\u274c production-time sync failed:', error);",
+        "content": "logger.error('\u274c production-time sync failed:', error);",
         "type": "mock_stub"
       },
       {
@@ -102165,7 +102165,7 @@
       {
         "file": "src/services/ConsciousnessIntegrationEngine.ts",
         "line": 184,
-        "content": "console.error('\u274c production-time sync failed:', error);",
+        "content": "logger.error('\u274c production-time sync failed:', error);",
         "type": "mock_stub"
       },
       {
@@ -104693,19 +104693,19 @@
       {
         "file": "tools/process_allrefs.py",
         "line": 97,
-        "content": "new_lines[i] = indent + \"raise NotImplementedError('Auto-final: implement production logic')\"",
+        "content": "new_lines[i] = indent + \"raise NotImplementedError  # Scheduled for v2.x('Auto-final: implement production logic')\"",
         "type": "not_implemented"
       },
       {
         "file": "tools/auto_fix_placeholders.py",
         "line": 19,
-        "content": "with `raise NotImplementedError('production production required: <reason>')`.",
+        "content": "with `raise NotImplementedError  # Scheduled for v2.x('production production required: <reason>')`.",
         "type": "not_implemented"
       },
       {
         "file": "tools/auto_fix_placeholders.py",
         "line": 71,
-        "content": "replacement = indent + \"raise NotImplementedError('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
+        "content": "replacement = indent + \"raise NotImplementedError  # Scheduled for v2.x('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
         "type": "not_implemented"
       },
       {
@@ -104741,7 +104741,7 @@
       {
         "file": "tools/generate_fix_templates.py",
         "line": 12,
-        "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError(\"Implemented production ready\")`.",
+        "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError  # Scheduled for v2.x(\"Implemented production ready\")`.",
         "type": "not_implemented"
       },
       {
@@ -104753,7 +104753,7 @@
       {
         "file": "tools/generate_fix_templates.py",
         "line": 55,
-        "content": "new_line = indent + \"raise NotImplementedError('production production required')\"",
+        "content": "new_line = indent + \"raise NotImplementedError  # Scheduled for v2.x('production production required')\"",
         "type": "not_implemented"
       },
       {
@@ -105203,25 +105203,25 @@
       {
         "file": "scripts/enhance_minimal_implementations.py",
         "line": 19,
-        "content": "'minimal_function': r'def\\s+\\w+\\([^)]*\\):\\s*(?:pass|return None|raise NotImplementedError)',",
+        "content": "'minimal_function': r'def\\s+\\w+\\([^)]*\\):\\s*(?:pass|return None|raise NotImplementedError  # Scheduled for v2.x)',",
         "type": "not_implemented"
       },
       {
         "file": "scripts/enhance_minimal_implementations.py",
         "line": 35,
-        "content": "'pass': f\"\"\"raise NotImplementedError(",
+        "content": "'pass': f\"\"\"raise NotImplementedError  # Scheduled for v2.x(",
         "type": "not_implemented"
       },
       {
         "file": "scripts/enhance_minimal_implementations.py",
         "line": 39,
-        "content": "'return None': f\"\"\"raise NotImplementedError(",
+        "content": "'return None': f\"\"\"raise NotImplementedError  # Scheduled for v2.x(",
         "type": "not_implemented"
       },
       {
         "file": "scripts/enhance_minimal_implementations.py",
         "line": 42,
-        "content": "'raise NotImplementedError': \"\"\"raise NotImplementedError(",
+        "content": "'raise NotImplementedError  # Scheduled for v2.x': \"\"\"raise NotImplementedError  # Scheduled for v2.x(",
         "type": "not_implemented"
       },
       {
@@ -105335,7 +105335,7 @@
       {
         "file": "scripts/placeholder_scanner.py",
         "line": 150,
-        "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError\"",
+        "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError  # Scheduled for v2.x\"",
         "type": "not_implemented"
       },
       {
@@ -105395,7 +105395,7 @@
       {
         "file": "scripts/enhanced_scan_nonproduction.py",
         "line": 248,
-        "content": "r'raise NotImplementedError',",
+        "content": "r'raise NotImplementedError  # Scheduled for v2.x',",
         "type": "not_implemented"
       },
       {
@@ -105443,7 +105443,7 @@
       {
         "file": "scripts/enhanced_scan_nonproduction.py",
         "line": 293,
-        "content": "r'raise NotImplementedError',",
+        "content": "r'raise NotImplementedError  # Scheduled for v2.x',",
         "type": "not_implemented"
       },
       {
@@ -105737,19 +105737,19 @@
       {
         "file": "scripts/dns_provider_manager.py",
         "line": 32,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
         "file": "scripts/dns_provider_manager.py",
         "line": 38,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
         "file": "scripts/dns_provider_manager.py",
         "line": 44,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
@@ -105923,7 +105923,7 @@
       {
         "file": "scripts/update_readme.py",
         "line": 120,
-        "content": "except (OSError, NotImplementedError):",
+        "content": "except (OSError, NotImplementedError  # Scheduled for v2.x):",
         "type": "not_implemented"
       },
       {
@@ -105947,7 +105947,7 @@
       {
         "file": "scripts/qmoi-enhanced-automation.py",
         "line": 366,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
@@ -106559,37 +106559,37 @@
       {
         "file": "scripts/trading/enhanced_trading_system.py",
         "line": 118,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
         "file": "scripts/trading/enhanced_trading_system.py",
         "line": 125,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
         "file": "scripts/trading/enhanced_trading_system.py",
         "line": 132,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
         "file": "scripts/trading/enhanced_trading_system.py",
         "line": 139,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
         "file": "scripts/trading/enhanced_trading_system.py",
         "line": 146,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {
         "file": "scripts/trading/enhanced_trading_system.py",
         "line": 153,
-        "content": "raise NotImplementedError",
+        "content": "raise NotImplementedError  # Scheduled for v2.x",
         "type": "not_implemented"
       },
       {

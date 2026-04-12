@@ -93,7 +93,7 @@ function main(): any {
     try {
       if (processFile(f)) changed++;
     } catch (_err) {
-      console.error("error processing", f, _err && _err.message);
+      logger.error("error processing", f, _err && _err.message);
     }
   }
   logger.info(`Scanned ${files.length} files, modified ${changed} files.`);

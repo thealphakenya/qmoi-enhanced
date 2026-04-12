@@ -134,7 +134,7 @@ function POST(req: Request): any {
         );
     }
   } catch (error: unknown) {
-    console.error("Domain management API error:", error);
+    logger.error("Domain management API error:", error);
     const details = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
       { error: "Internal server error", details },
@@ -168,7 +168,7 @@ function GET(): any {
       },
     });
   } catch (error) {
-    console.error("Domain management GET error:", error);
+    logger.error("Domain management GET error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

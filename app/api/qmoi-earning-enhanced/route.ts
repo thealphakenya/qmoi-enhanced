@@ -67,7 +67,7 @@ function GET(request: NextRequest): any {
       { status: 200 },
     );
   } catch (error) {
-    console.error("Earning enhanced API error:", error);
+    logger.error("Earning enhanced API error:", error);
     return NextResponse.json(
       {
         _error: "Internal server error",

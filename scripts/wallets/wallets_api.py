@@ -94,5 +94,5 @@ def run(port=8765) -> Any:
     logger.info('Starting wallets API on https://prod.qmoi.ai:%d (token=%s)' % (port, 'SET' if API_TOKEN else 'UNSET'))
     app.run(host='prod.qmoi.ai', port=port)
 
-if __name__ == '__main__':
+
     run()

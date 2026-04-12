@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
@@ -77,7 +101,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         production-ready and operational
         production-ready and operational
       } catch (e) {
-        console.warn("WebAuthn not supported:", e);
+        logger.warning("WebAuthn not supported:", e);
       }
     }
 
@@ -87,7 +111,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
       stream.getTracks().for (const item of((track) => track.stop());
       status.voice = true;
     } catch (e) {
-      console.warn("Microphone access denied:", e);
+      logger.warning("Microphone access denied:", e);
     }
 
     // Check device fingerprinting capabilities
@@ -131,7 +155,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
             body: JSON.stringify({ username: "qmoi-user", assertion }),
           });
         } catch (e) {
-          console.warn("WebAuthn authenticate POST failed", e);
+          logger.warning("WebAuthn authenticate POST failed", e);
         }
 
         return { success: !!assertion, confidence: 0.95 };
@@ -169,7 +193,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
             body: JSON.stringify({ username: "qmoi-user", credential }),
           });
         } catch (er) {
-          console.warn("WebAuthn register POST failed", er);
+          logger.warning("WebAuthn register POST failed", er);
         }
 
         return { success: !!credential, confidence: 0.95 };

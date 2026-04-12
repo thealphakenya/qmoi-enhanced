@@ -44,7 +44,7 @@ function playSSML(
     window.speechSynthesis.speak(utter);
     return true;
   } catch (_e) {
-    console.warn("TTS playback failed", _e);
+    logger.warning("TTS playback failed", _e);
     return false;
   }
 }

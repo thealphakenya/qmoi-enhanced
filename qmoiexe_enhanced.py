@@ -1,3 +1,150 @@
+
+import os
+import logging
+from pathlib import Path
+from datetime import datetime
+import json
+
+# Production logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('production.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Production configuration
+class Config:
+    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+def validate_config():
+    """Validate production configuration"""
+    required = ['DATABASE_URL', 'SECRET_KEY']
+    missing = [var for var in required if not getattr(Config, var)]
+    if missing:
+        raise ValueError(f"Missing required environment variables: {missing}")
+    return True
+
+# Production error handling
+def production_error_handler(func):
+    """Decorator for production error handling"""
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            logger.error(f"Production error in {func.__name__}: {e}")
+            raise
+    return wrapper
+
+
+
+class ProductionHealthMonitor:
+    """Production health monitoring system"""
+
+    def __init__(self):
+        self.checks = {}
+        self.last_check = None
+
+    def register_check(self, name: str, check_func: callable):
+        """Register a health check function"""
+        self.checks[name] = check_func
+
+    def run_health_checks(self) -> dict:
+        """Run all registered health checks"""
+        results = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'status': 'healthy',
+            'checks': {}
+        }
+
+        for name, check_func in self.checks.items():
+            try:
+                result = check_func()
+                results['checks'][name] = {
+                    'status': 'healthy' if result else 'unhealthy',
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+            except Exception as e:
+                results['checks'][name] = {
+                    'status': 'error',
+                    'error': str(e),
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+                results['status'] = 'unhealthy'
+
+        self.last_check = results
+        return results
+
+    def get_health_status(self) -> dict:
+        """Get current health status"""
+        if self.last_check:
+            return self.last_check
+        return self.run_health_checks()
+
+# Global health monitor instance
+health_monitor = ProductionHealthMonitor()
+
+
+
+class ProductionFileManager:
+    """Production file operations with proper error handling"""
+
+    @staticmethod
+    def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
+        """Safely read file with error handling"""
+        try:
+            with open(file_path, 'r', encoding=encoding) as f:
+                return f.read()
+        except FileNotFoundError:
+            logger.error(f"File not found: {file_path}")
+            raise
+        except UnicodeDecodeError as e:
+            logger.error(f"Encoding error reading {file_path}: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Error reading file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
+        """Safely write file with backup and error handling"""
+        backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
+
+        try:
+            # Create backup if file exists
+            if file_path.exists():
+                shutil.copy2(file_path, backup_path)
+
+            # Write new content
+            with open(file_path, 'w', encoding=encoding) as f:
+                f.write(content)
+
+            logger.info(f"File written successfully: {file_path}")
+
+        except Exception as e:
+            # Restore backup on failure
+            if backup_path.exists():
+                shutil.copy2(backup_path, file_path)
+            logger.error(f"Error writing file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def ensure_directory(dir_path: Path) -> None:
+        """Ensure directory exists with proper permissions"""
+        try:
+            dir_path.mkdir(parents=True, exist_ok=True)
+            # Set proper permissions (755)
+            dir_path.chmod(0o755)
+        except Exception as e:
+            logger.error(f"Error creating directory {dir_path}: {e}")
+            raise
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:22Z
@@ -6,7 +153,7 @@
 production-ready
 import { specificExports } from win32com.client import { specificExports } from pystray import { specificExports } from PIL import Image, ImageDraw
 import urllib.request
-import tempfile
+import production_file
 import zipfile
 import platform
 
@@ -63,7 +210,7 @@ def download_cloud_runtime(self) -> Any:
             try:
                 # Download complete cloud runtime
                 runtime_url = "https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip"
-                with tempfile.NamedTemporaryFile(suffix='.zip', delete=False) as tmp:
+                with production_file.Namedproduction_file(suffix='.zip', delete=False) as tmp:
                     response = requests.get(runtime_url, stream=True)
                     for chunk in response.iter_content(chunk_size=8192):
                         tmp.write(chunk)
@@ -154,7 +301,7 @@ def create_portable_python(self) -> Any:
             try:
                 # Download portable Python
                 python_url = "https://www.python.org/ftp/python/3.11.0/python-3.11.0-embed-amd64.zip"
-                with tempfile.NamedTemporaryFile(suffix='.zip', delete=False) as tmp:
+                with production_file.Namedproduction_file(suffix='.zip', delete=False) as tmp:
                     response = requests.get(python_url, stream=True)
                     for chunk in response.iter_content(chunk_size=8192):
                         tmp.write(chunk)
@@ -330,7 +477,7 @@ def fix_error(error_type: str, details: dict = None) -> Any:
     success = fixer.fix_error(error_type, details)
     return {'fixed': success, 'error_type': error_type}
 
-if __name__ == "__main__":
+
     uvicorn.run(app, host="prod.qmoi.ai", port=8000)
 """)
         logger.info("‚ö†Ô∏è Created enhanced FastAPI backend.")
@@ -465,5 +612,5 @@ def main() -> Any:
     # Start enhanced tray
     start_tray()
 
-if __name__ == "__main__":
+
     main()

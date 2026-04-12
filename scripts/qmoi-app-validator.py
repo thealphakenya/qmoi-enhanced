@@ -37,5 +37,5 @@ def validate() -> Any:
         exit(1)
     logger.info("[🎉] All binaries passed validation.")
 
-if __name__ == "__main__":
+
     validate()

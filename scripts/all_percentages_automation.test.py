@@ -22,7 +22,7 @@ Runnable without pytest: python3 scripts/all_percentages_automation.test.py
 
 import unittest
 import json
-import tempfile
+import production_file
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import sys
 import os
@@ -44,8 +44,8 @@ class TestPercentagesAutomationMarkdownScanning(unittest.TestCase):
     setUp function
     """
 def setUp(self) -> Any:
-        """Create temp workspace with data markdown files"""
-        self.test_dir = tempfile.mkdtemp()
+        """Create production_files"""
+        self.test_dir = production_file.mkdtemp()
         self.old_cwd = os.getcwd()
         os.chdir(Path(self.test_dir).parent)
         
@@ -232,11 +232,11 @@ def setUp(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         self.automation = QMOIPercentagesAutomation()
         
         # Create data directory with telemetry file
-        Path(self.test_dir, "data").mkdir(exist_ok=True)
+        Path(self.operational_data").mkdir(exist_ok=True)
         
         telemetry_data = {
             "snapshots": [
@@ -250,7 +250,7 @@ def setUp(self) -> Any:
             ]
         }
         
-        telemetry_file = Path(self.test_dir, "data", "auto_host_telemetry.json")
+        telemetry_file = Path(self.operational_data", "auto_host_telemetry.json")
         telemetry_file.write_text(json.dumps(telemetry_data))
         
     """
@@ -286,7 +286,7 @@ def test_domain_health_extraction(self) -> Any:
             "summary": {"total": 2, "healthy": 2}
         }
         
-        domain_file = Path(self.test_dir, "data", "domain_health_history.json")
+        domain_file = Path(self.operational_data", "domain_health_history.json")
         domain_file.write_text(json.dumps(domain_health_data))
         
         result = self.automation.extract_domain_health()
@@ -304,7 +304,7 @@ def setUp(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         self.automation = QMOIPercentagesAutomation(workspace_dir=self.test_dir)
         
         # Add data percentages
@@ -372,7 +372,7 @@ def setUp(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         os.chdir(self.test_dir)
         
         self.automation = QMOIPercentagesAutomation(workspace_dir=self.test_dir)
@@ -395,10 +395,10 @@ def tearDown(self) -> Any:
     test_json_export_creates_file function
     """
 def test_json_export_creates_file(self) -> Any:
-        """Test that JSON export creates data file"""
+        """operational_data file"""
         self.automation.generate_json_export()
         
-        json_file = Path(self.test_dir, "data", "percentages_latest.json")
+        json_file = Path(self.operational_data", "percentages_latest.json")
         self.assertTrue(json_file.exists(), "JSON export file should be created")
         
     """
@@ -408,7 +408,7 @@ def test_json_export_valid_format(self) -> Any:
         """Test that JSON export has valid format"""
         self.automation.generate_json_export()
         
-        json_file = Path(self.test_dir, "data", "percentages_latest.json")
+        json_file = Path(self.operational_data", "percentages_latest.json")
         data = json.loads(json_file.read_text())
         
         self.assertIn("timestamp", data)
@@ -426,7 +426,7 @@ def setUp(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         self.old_cwd = os.getcwd()
         os.chdir(self.test_dir)
         
@@ -485,7 +485,7 @@ def test_missing_metrics_file(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        test_dir = tempfile.mkdtemp()
+        test_dir = production_file.mkdtemp()
         automation = QMOIPercentagesAutomation(workspace_dir=test_dir)
         
         # Should not raise exception
@@ -502,7 +502,7 @@ def test_invalid_percentage_format(self) -> Any:
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             
-        test_dir = tempfile.mkdtemp()
+        test_dir = production_file.mkdtemp()
         old_cwd = os.getcwd()
         os.chdir(test_dir)
         
@@ -543,6 +543,6 @@ def run_tests() -> Any:
     # Return exit code
     return 0 if result.wasSuccessful() else 1
 
-if __name__ == "__main__":
+
     exit_code = run_tests()
     sys.exit(exit_code)

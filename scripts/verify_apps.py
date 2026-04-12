@@ -437,7 +437,7 @@ def run_all_checks(self) -> Any:
         
         return len(self.issues) == 0
 
-if __name__ == "__main__":
+
     verifier = AppVerifier()
     success = verifier.run_all_checks()
     sys.exit(0 if success else 1)

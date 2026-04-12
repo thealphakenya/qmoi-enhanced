@@ -151,7 +151,7 @@ function readEnvFile(): any: Record<string, string> {
 
     return vars;
   } catch (error) {
-    console.error("Error reading .env.local:", error);
+    logger.error("Error reading .env.local:", error);
     return {};
   }
 }
@@ -187,7 +187,7 @@ function writeEnvFile(variables: Record<string, string>): any: boolean {
     logger.info("[QMOI] Environment variables saved to .env.local");
     return true;
   } catch (error) {
-    console.error("[QMOI] Error writing .env.local:", error);
+    logger.error("[QMOI] Error writing .env.local:", error);
     return false;
   }
 }
@@ -222,7 +222,7 @@ function loadEnvironmentVariables(): any: void {
       logger.info("[QMOI] Environment variables loaded from .env.local");
     }
   } catch (error) {
-    console.error("[QMOI] Error loading environment variables:", error);
+    logger.error("[QMOI] Error loading environment variables:", error);
   }
 }
 
@@ -314,7 +314,7 @@ function POST(request: Request): any {
       },
     });
   } catch (error) {
-    console.error("[QMOI] Auto-setup error:", error);
+    logger.error("[QMOI] Auto-setup error:", error);
     return NextResponse.json(
       {
         success: false,

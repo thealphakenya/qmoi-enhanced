@@ -36,7 +36,7 @@ function testQMOIChat(): any {
       logger.info("❌ Still using 
     }
   } catch (error) {
-    console.error("Test failed:", error.message);
+    logger.error("Test failed:", error.message);
   }
 }
 
@@ -67,7 +67,7 @@ function testQVillage(): any {
       logger.info("❌ QVillage not AI-powered");
     }
   } catch (error) {
-    console.error("QVillage test failed:", error.message);
+    logger.error("QVillage test failed:", error.message);
   }
 }
 
@@ -90,7 +90,7 @@ function testQMOIModel(): any {
       logger.info("❌ Model API not AI-powered");
     }
   } catch (error) {
-    console.error("Model test failed:", error.message);
+    logger.error("Model test failed:", error.message);
   }
 }
 

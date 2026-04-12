@@ -43,7 +43,7 @@ router.post(
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
-      console.error("[API] Scan error:", error);
+      logger.error("[API] Scan error:", error);
       res.status(500).json({
         success: false,
         error: String(error),

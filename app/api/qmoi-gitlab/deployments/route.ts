@@ -52,7 +52,7 @@ function GET(_request: NextRequest): any {
 
     return NextResponse.json({ deployments });
   } catch (error) {
-    console.error("Error fetching deployments:", error);
+    logger.error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }

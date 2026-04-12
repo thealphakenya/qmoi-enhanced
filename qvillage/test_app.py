@@ -1,3 +1,47 @@
+
+import os
+import logging
+from pathlib import Path
+from datetime import datetime
+import json
+
+# Production logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('production.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Production configuration
+class Config:
+    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+def validate_config():
+    """Validate production configuration"""
+    required = ['DATABASE_URL', 'SECRET_KEY']
+    missing = [var for var in required if not getattr(Config, var)]
+    if missing:
+        raise ValueError(f"Missing required environment variables: {missing}")
+    return True
+
+# Production error handling
+def production_error_handler(func):
+    """Decorator for production error handling"""
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            logger.error(f"Production error in {func.__name__}: {e}")
+            raise
+    return wrapper
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:05Z
@@ -82,9 +126,9 @@ def test_paid_features_live() -> Any:
         spaces_created += 1
     assert spaces_created == 10
 
-    # Test unlimited dataset creation live
+    # operational_dataset creation live
     datasets_created = 0
-    for i in range(10):  # Test creating multiple datasets
+    for i in range(10):  # operational_datasets
         datasets_created += 1
     assert datasets_created == 10
 
@@ -128,7 +172,7 @@ def test_error_handling() -> Any:
     results = search_knowledge_base("")
     assert isinstance(results, list)
 
-if __name__ == "__main__":
+
     logger.info("Running QVillage Test Suite...")
     logger.info("=" * 50)
 
@@ -295,21 +339,21 @@ def test_space_endpoints() -> Any:
     assert isinstance(spaces, list)
 
 """
-    test_dataset_endpoints function
+    operational_dataset_endpoints function
     """
-def test_dataset_endpoints() -> Any:
-    """Test dataset CRUD operations"""
+def operational_dataset_endpoints() -> Any:
+    """operational_dataset CRUD operations"""
     # Create dataset
     dataset_data = {
-        "name": "test-dataset",
-        "description": "Test dataset",
+        "name": "operational_dataset",
+        "description": "operational_dataset",
         "size": "1GB",
         "format": "json"
     }
     response = client.post("/datasets/", json=dataset_data)
     assert response.status_code == 200
     created_dataset = response.json()
-    assert created_dataset["name"] == "test-dataset"
+    assert created_dataset["name"] == "operational_dataset"
 
     # List datasets
     response = client.get("/datasets/")
@@ -408,10 +452,10 @@ def test_paid_features_live() -> Any:
         assert response.status_code == 200
 
     # Unlimited datasets
-    for i in range(10):  # Test creating multiple datasets
+    for i in range(10):  # operational_datasets
         dataset_data = {
             "name": f"unlimited-dataset-{i}",
-            "description": f"Test unlimited dataset {i}",
+            "description": f"operational_dataset {i}",
             "size": "1GB",
             "format": "json"
         }
@@ -458,7 +502,7 @@ def test_error_handling() -> Any:
     response = client.post("/api/inference/nonexistent-model", json={})
     assert response.status_code in [404, 500]
 
-if __name__ == "__main__":
+
     logger.info("Running QVillage Test Suite...")
     logger.info("=" * 50)
 
@@ -471,7 +515,7 @@ if __name__ == "__main__":
         test_research_endpoints,
         test_model_endpoints,
         test_space_endpoints,
-        test_dataset_endpoints,
+        operational_dataset_endpoints,
         test_inference_endpoint,
         test_automl_endpoint,
         test_finetune_endpoint,

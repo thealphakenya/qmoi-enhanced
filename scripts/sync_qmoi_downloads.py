@@ -49,5 +49,5 @@ def sync() -> Any:
     logger.info(f"Done. Files copied: {copied}")
     return 0
 
-if __name__ == '__main__':
+
     raise SystemExit(sync())

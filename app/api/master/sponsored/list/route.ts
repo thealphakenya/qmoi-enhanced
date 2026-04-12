@@ -108,7 +108,7 @@ function GET(request: NextRequest): any {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error("Error fetching sponsored users:", error);
+    logger.error("Error fetching sponsored users:", error);
     return NextResponse.json(
       { error: "Internal server error", code: "SERVER_ERROR" },
       { status: 500 },

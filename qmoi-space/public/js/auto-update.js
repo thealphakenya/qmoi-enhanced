@@ -37,7 +37,7 @@ class AutoUpdateManager {
         this.handleElectronUpdate(updateInfo);
       });
       ipcRenderer.on("app-update-error", (event, error) => {
-        console.error("Electron update error:", error);
+        logger.error("Electron update error:", error);
       });
       ipcRenderer.on("app-update-downloaded", () => {
         this.promptRestartForUpdate();
@@ -64,7 +64,7 @@ class AutoUpdateManager {
       // Check for version updates from API
       this.checkAPIVersion();
     } catch (error) {
-      console.error("Update check failed:", error);
+      logger.error("Update check failed:", error);
     }
   }
 
@@ -78,7 +78,7 @@ class AutoUpdateManager {
         production-ready and operational
       }
     } catch (error) {
-      console.debug("Version check error:", error);
+      logger.debug("Version check error:", error);
     }
   }
 

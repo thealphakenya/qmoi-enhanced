@@ -212,10 +212,10 @@ def process_url(self, url: str) -> Dict[str, Any]:
                 "error": str(e)
             }
 
-if __name__ == "__main__":
+
     browser = EnhancedBrowser()
     
     # Test URL processing
-    test_url = "https://data.com"
+    operational_data.com"
     result = browser.process_url(test_url)
     logger.info(f"URL processing result: {result}") 

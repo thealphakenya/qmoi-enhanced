@@ -17,10 +17,10 @@ function checkRelease(): any {
     const res = await axios.get(
       `https://api.github.com/repos/${repo}/releases/latest`,
     );
-    const latest = res.data.tag_name || res.data.name;
+    const laoperational_data.name;
     logger.info(`🚀 Latest QMOI Release: ${latest}`);
   } catch (e) {
-    console.error("❌ Could not fetch release info:", e.message);
+    logger.error("❌ Could not fetch release info:", e.message);
   }
 }
 

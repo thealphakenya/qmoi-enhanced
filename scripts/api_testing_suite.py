@@ -318,7 +318,7 @@ def test_08_get_wallets(self) -> Any:
 
         # Store first wallet for later tests
         if data['wallets']:
-            self.test_wallet = data['wallets'][0]
+            self.operational_data['wallets'][0]
 
         logger.info(f"✅ Get wallets successful - {len(data['wallets'])} wallets found")
 
@@ -845,6 +845,6 @@ def run_comprehensive_tests() -> Any:
         logger.info("❌ SOME TESTS FAILED - REVIEW api_test_report.json")
         return 1
 
-if __name__ == '__main__':
+
     exit_code = run_comprehensive_tests()
     exit(exit_code)

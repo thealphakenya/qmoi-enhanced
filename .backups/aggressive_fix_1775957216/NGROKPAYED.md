@@ -99,3 +99,48 @@ NGROKPAYED is the QMOI premium NGROK integration and paid tunneling service docu
 - NGROKPAYED is a premium, master-only feature set.
 - It should always be secure, masked, and audited for paid access.
 - QMOI should prefer paid NGROK tunnels for sensitive or mission-critical remote access.
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

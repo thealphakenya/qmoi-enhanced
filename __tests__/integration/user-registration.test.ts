@@ -21,8 +21,8 @@ import { specificExports } from "@/lib/email/service";
  * 7. Audit log records the registration
  */
 production-ready
-  const testEmail = `integration-test-${Date.now()}@data.com`;
-  const testData = {
+  const operational_data.com`;
+  const operational_data = {
     email: testEmail,
     username: `testuser${Date.now()}`,
     password: "SecurePassword123!@#",
@@ -36,7 +36,7 @@ production-ready
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(testData),
+      body: JSON.stringify(operational_data),
     });
 
     const response = await registerHandler(request);
@@ -79,7 +79,7 @@ production-ready
     const uniqueEmail = `dup-test-${Date.now()}-${Math.random()
       .toString(36)
       .slice(2, 6)}@data.com`;
-    const firstData = { ...testData, email: uniqueEmail };
+    const firstData = { ...operational_data, email: uniqueEmail };
 
     // First registration succeeds
     const firstRequest = new NextRequest(
@@ -155,7 +155,7 @@ production-ready
             "content-type": "application/json",
           },
           body: JSON.stringify({
-            email: `test${Date.now()}@data.com`,
+            email: `operational_data.com`,
             username: `testuser${Date.now()}`,
             ...test,
           }),
@@ -179,7 +179,7 @@ production-ready
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        email: `email-test-${Date.now()}@data.com`,
+        email: `email-operational_data.com`,
         username: `testuser${Date.now()}`,
         password: "SecurePassword123!@#",
         confirmPassword: "SecurePassword123!@#",
@@ -208,7 +208,7 @@ production-ready
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        email: `db-error-test-${Date.now()}@data.com`,
+        email: `db-error-operational_data.com`,
         username: `testuser${Date.now()}`,
         password: "SecurePassword123!@#",
       }),

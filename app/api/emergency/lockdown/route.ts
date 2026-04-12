@@ -62,7 +62,7 @@ function POST(request: NextRequest): any {
     }
 
   } catch (error) {
-    console.error('Emergency lockdown error:', error);
+    logger.error('Emergency lockdown error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -98,7 +98,7 @@ function GET(request: NextRequest): any {
     });
 
   } catch (error) {
-    console.error('Lockdown status check error:', error);
+    logger.error('Lockdown status check error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -137,7 +137,7 @@ function DELETE(request: NextRequest): any {
     }
 
   } catch (error) {
-    console.error('Lockdown release error:', error);
+    logger.error('Lockdown release error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

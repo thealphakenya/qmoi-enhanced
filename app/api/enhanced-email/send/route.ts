@@ -79,7 +79,7 @@ function POST(request: NextRequest): any {
       message: "Email sent successfully",
     });
   } catch (error) {
-    console.error("Failed to send email:", error);
+    logger.error("Failed to send email:", error);
     return NextResponse.json(
       { success: false, error: "Failed to send email" },
       { status: 500 },

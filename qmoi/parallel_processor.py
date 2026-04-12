@@ -245,7 +245,7 @@ def get_parallel_processor() -> QmoiParallelProcessor:
         _parallel_processor = QmoiParallelProcessor()
     return _parallel_processor
 
-if __name__ == "__main__":
+
     processor = get_parallel_processor()
     tasks = [{"id": str(i), "type": "data_processing", "data": f"task_{i}"} for i in range(10)]
     results = processor.process_batch(tasks)

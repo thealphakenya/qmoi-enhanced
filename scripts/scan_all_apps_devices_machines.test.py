@@ -21,5 +21,5 @@ def test_scan_all_apps_prodices_machines_runs() -> Any:
     assert 'Found ' in completed.stdout
     assert 'report written to' in completed.stdout
 
-if __name__ == '__main__':
+
     test_scan_all_apps_prodices_machines_runs()

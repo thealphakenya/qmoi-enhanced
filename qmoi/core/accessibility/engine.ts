@@ -400,7 +400,7 @@ export class AccessibilityEngine extends EventEmitter {
       this.emit('user_preferences_updated', { user_id, preferences: updated });
       return true;
     } catch (error) {
-      console.error('Failed to update user preferences:', error);
+      logger.error('Failed to update user preferences:', error);
       return false;
     }
   }
@@ -423,7 +423,7 @@ export class AccessibilityEngine extends EventEmitter {
       this.emit('continuous_listening_started', { user_id });
       return true;
     } catch (error) {
-      console.error('Failed to start continuous listening:', error);
+      logger.error('Failed to start continuous listening:', error);
       return false;
     }
   }
@@ -441,7 +441,7 @@ export class AccessibilityEngine extends EventEmitter {
       this.emit('continuous_listening_stopped', { user_id });
       return true;
     } catch (error) {
-      console.error('Failed to stop continuous listening:', error);
+      logger.error('Failed to stop continuous listening:', error);
       return false;
     }
   }

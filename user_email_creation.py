@@ -604,7 +604,7 @@ def get_user_emails_api(user_id: str) -> Dict:
         "accounts": accounts
     }
 
-if __name__ == "__main__":
+
     production-ready
     platform = EmailCreationPlatform()
 

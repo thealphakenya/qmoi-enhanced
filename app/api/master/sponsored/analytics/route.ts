@@ -114,7 +114,7 @@ function GET(request: NextRequest): any {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error("Error fetching sponsored analytics:", error);
+    logger.error("Error fetching sponsored analytics:", error);
     return NextResponse.json(
       { error: "Internal server error", code: "SERVER_ERROR" },
       { status: 500 },

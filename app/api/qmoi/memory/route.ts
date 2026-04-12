@@ -394,7 +394,7 @@ function scanForProjects(): any: Promise<string[]> {
 
     return projects;
   } catch (error) {
-    console.error("Error scanning for projects:", error);
+    logger.error("Error scanning for projects:", error);
     return ["QMOI-Enhanced", "AI-Trading", "Automation-System"];
   }
 }
@@ -431,7 +431,7 @@ function scanForCapabilities(): any: Promise<string[]> {
 
     return verifiedCapabilities;
   } catch (error) {
-    console.error("Error scanning capabilities:", error);
+    logger.error("Error scanning capabilities:", error);
     return ["comprehensive-awareness", "memory", "social"];
   }
 }
@@ -493,7 +493,7 @@ function getFinancialOverview(): any: Promise<any> {
       lastSnapshotUpdate: snapshot?.last_updated || null,
     };
   } catch (error) {
-    console.error("Error getting financial overview:", error);
+    logger.error("Error getting financial overview:", error);
     return {
       totalEarnings: 0,
       transactions: [],
@@ -550,7 +550,7 @@ function scanForUsers(): any: Promise<Record<string, any>> {
 
     return users;
   } catch (error) {
-    console.error("Error scanning for users:", error);
+    logger.error("Error scanning for users:", error);
     return {
       master: {
         id: "master",

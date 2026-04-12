@@ -227,7 +227,7 @@ class EmailService {
 
       await this.disconnectImap();
     } catch (error) {
-      console.error("Failed to fetch emails:", error);
+      logger.error("Failed to fetch emails:", error);
       await this.disconnectImap();
     }
 
@@ -264,7 +264,7 @@ class EmailService {
         await this.processEmailCommands(email);
       }
     } catch (error) {
-      console.error("Failed to process incoming emails:", error);
+      logger.error("Failed to process incoming emails:", error);
     }
   };
 
@@ -421,7 +421,7 @@ class EmailService {
       logger.info(`Email sent to ${options.to}:`, result.messageId);
       return true;
     } catch (error) {
-      console.error("Failed to send email:", error);
+      logger.error("Failed to send email:", error);
       return false;
     }
   };

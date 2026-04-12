@@ -60,7 +60,7 @@ function GET(request: NextRequest): any {
         }, { status: 400 });
     }
   } catch (error) {
-    console.error('Workflow API GET error:', error);
+    logger.error('Workflow API GET error:', error);
     return NextResponse.json({
       success: false,
       error: 'Internal server error'
@@ -237,7 +237,7 @@ function POST(request: NextRequest): any {
         }, { status: 400 });
     }
   } catch (error) {
-    console.error('Workflow API POST error:', error);
+    logger.error('Workflow API POST error:', error);
     return NextResponse.json({
       success: false,
       error: 'Internal server error'

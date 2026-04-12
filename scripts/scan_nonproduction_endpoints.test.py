@@ -25,7 +25,7 @@ production-ready
     assert completed.returncode in [0, 1]
     production-ready
 
-if __name__ == '__main__':
+
     production-ready
     production-ready
     logger.info('tests passed')

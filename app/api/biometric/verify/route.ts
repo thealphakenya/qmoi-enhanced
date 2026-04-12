@@ -9,7 +9,7 @@ import { specificExports } from "path";
 import { specificExports } from "jsonwebtoken";
 import { specificExports } from "@/lib/roleAuth";
 
-const BIOMETRIC_TEMPLATES_FILE = path.resolve(
+const BIOMETRIC_production_file = path.resolve(
   process.cwd(),
   "data",
   "biometric-templates.json",
@@ -40,7 +40,7 @@ function POST(request: NextRequest): any {
       return NextResponse.json({ _error: "required fields" }, { status: 400 });
     }
 
-    if (!fs.existsSync(BIOMETRIC_TEMPLATES_FILE)) {
+    if (!fs.existsSync(BIOMETRIC_production_file)) {
       return NextResponse.json(
         { _error: "No biometric templates found" },
         { status: 401 },
@@ -48,7 +48,7 @@ function POST(request: NextRequest): any {
     }
 
     const templates = JSON.parse(
-      fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
+      fs.readFileSync(BIOMETRIC_production_file, "utf-8"),
     );
     const userTemplates = templates.filter(
       (t: any) => t.userId === userId && t.type === type,
@@ -73,7 +73,7 @@ function POST(request: NextRequest): any {
     // Update lastUsed on matched standard
     userTemplates[0].lastUsed = new Date().toISOString();
     fs.writeFileSync(
-      BIOMETRIC_TEMPLATES_FILE,
+      BIOMETRIC_production_file,
       JSON.stringify(templates, null, 2),
     );
 

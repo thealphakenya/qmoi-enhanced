@@ -46,7 +46,7 @@ function MasterSecurityPage(): any {
         });
       }
     } catch (error) {
-      console.error("Failed to fetch security status:", error);
+      logger.error("Failed to fetch security status:", error);
     } finally {
       setLoading(false);
     }

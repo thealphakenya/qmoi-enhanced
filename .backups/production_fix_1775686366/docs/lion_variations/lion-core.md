@@ -50,3 +50,53 @@ Revenue models
 ---
 *This document is maintained by QMOI's autonomous evolution system*
 \n## Lion Node + Codespace Assistance\n- Environment variables: LION_APPLY, LION_ENV, LION_RUNNERS, LION_TIMEOUT, LION_MAX_MEMORY, LION_MAX_CPUS\n- Supports Node runtime auto-detection and fallback paths via lionctl and host_reachability_check\n- Works with or without GitHub Codespaces through LION_USE_CODESPACE_RESOURCES guard\n
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Overview
+
+Summarize the content and the document intent.
+
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

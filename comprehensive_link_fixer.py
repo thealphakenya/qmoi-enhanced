@@ -194,7 +194,7 @@ def save_report(self, filename: str = "comprehensive_fixes_report.json") -> Any:
         
         logger.info(f"Report saved: {filename}")
 
-if __name__ == "__main__":
+
     base_path = "/workspaces/qmoi-enhanced"
     
     logger.info(f"\n{'='*70}")

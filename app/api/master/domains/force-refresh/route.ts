@@ -35,7 +35,7 @@ function POST(): any {
       message: 'Domain validation refresh completed'
     });
   } catch (error) {
-    console.error('Error forcing domain refresh:', error);
+    logger.error('Error forcing domain refresh:', error);
     return NextResponse.json(
       { error: 'Failed to force domain refresh' },
       { status: 500 }

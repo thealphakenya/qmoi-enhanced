@@ -47,7 +47,7 @@ function GET(_request: NextRequest): any {
 
     return NextResponse.json({ jobs });
   } catch (error) {
-    console.error("Error fetching jobs:", error);
+    logger.error("Error fetching jobs:", error);
     return NextResponse.json({ jobs: [] }, { status: 500 });
   }
 }

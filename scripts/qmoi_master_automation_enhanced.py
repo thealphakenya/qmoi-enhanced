@@ -438,5 +438,5 @@ def get_master_status(self) -> Dict:
                 }
             }
 
-if __name__ == "__main__":
+
     asyncio.run(QMOIMasterAutomation().run_master_automation_cycle())

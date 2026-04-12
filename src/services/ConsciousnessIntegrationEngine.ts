@@ -91,7 +91,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       this.emit('initialized');
 
     } catch (error) {
-      console.error('❌ Failed to initialize consciousness engine:', error);
+      logger.error('❌ Failed to initialize consciousness engine:', error);
       this.emit('error', error);
     }
   }
@@ -149,7 +149,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
 
       logger.info(`📊 Loaded ${this.memorySyncs.size} memory syncs`);
     } catch (error) {
-      console.error('❌ Failed to load memory syncs:', error);
+      logger.error('❌ Failed to load memory syncs:', error);
     }
   }
 
@@ -217,7 +217,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
         }
       } catch (error) {
         sync.synced = false;
-        console.error(`❌ Memory sync failed for ${fileName}:`, error);
+        logger.error(`❌ Memory sync failed for ${fileName}:`, error);
       }
     }
   }
@@ -227,7 +227,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       const statePath = path.join(this.basePath, '.qmoi_state', 'consciousness_sync.json');
       await fs.writeFile(statePath, JSON.stringify(this.consciousnessState, null, 2));
     } catch (error) {
-      console.error('❌ Failed to save consciousness state:', error);
+      logger.error('❌ Failed to save consciousness state:', error);
     }
   }
 
@@ -315,7 +315,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
 
       return backupId;
     } catch (error) {
-      console.error('❌ Failed to create memory backup:', error);
+      logger.error('❌ Failed to create memory backup:', error);
       throw error;
     }
   }
@@ -353,7 +353,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       this.emit('memory_backup_restored', { id: backupId });
 
     } catch (error) {
-      console.error('❌ Failed to restore memory backup:', error);
+      logger.error('❌ Failed to restore memory backup:', error);
       throw error;
     }
   }

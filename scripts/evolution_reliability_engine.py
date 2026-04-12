@@ -1,3 +1,78 @@
+
+class ProductionFileManager:
+    """Production file operations with proper error handling"""
+
+    @staticmethod
+    def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
+        """Safely read file with error handling"""
+        try:
+            with open(file_path, 'r', encoding=encoding) as f:
+                return f.read()
+        except FileNotFoundError:
+            logger.error(f"File not found: {file_path}")
+            raise
+        except UnicodeDecodeError as e:
+            logger.error(f"Encoding error reading {file_path}: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Error reading file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
+        """Safely write file with backup and error handling"""
+        backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
+
+        try:
+            # Create backup if file exists
+            if file_path.exists():
+                shutil.copy2(file_path, backup_path)
+
+            # Write new content
+            with open(file_path, 'w', encoding=encoding) as f:
+                f.write(content)
+
+            logger.info(f"File written successfully: {file_path}")
+
+        except Exception as e:
+            # Restore backup on failure
+            if backup_path.exists():
+                shutil.copy2(backup_path, file_path)
+            logger.error(f"Error writing file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def ensure_directory(dir_path: Path) -> None:
+        """Ensure directory exists with proper permissions"""
+        try:
+            dir_path.mkdir(parents=True, exist_ok=True)
+            # Set proper permissions (755)
+            dir_path.chmod(0o755)
+        except Exception as e:
+            logger.error(f"Error creating directory {dir_path}: {e}")
+            raise
+
+
+
+def get_database_connection():
+    """Get production database connection with proper error handling"""
+    try:
+        import psycopg2
+        conn = psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            database=os.getenv('DB_NAME', 'qmoi_production'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT', '5432')
+        )
+        conn.autocommit = True
+        logger.info("Database connection established")
+        return conn
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+
+
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026-04-02T08:20:00Z
@@ -250,17 +325,17 @@ def _create_operation_backup(self, operation: Dict[str, Any], transaction: Evolu
     """
 def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
         """Execute all operations atomically"""
-        temp_files = []
+        production_files = []
 
         try:
             for operation in transaction.operations:
                 if operation.get("type") == "file_modify":
-                    # Create temp file first
-                    temp_file = self.temp_path / f"temp_{transaction.id}_{hashlib.md5(str(operation).encode()).hexdigest()[:8]}"
-                    temp_files.append(temp_file)
+                    # Create production_file first
+                    production_file = self.temp_path / f"temp_{transaction.id}_{hashlib.md5(str(operation).encode()).hexdigest()[:8]}"
+                    production_file)
 
-                    # Apply changes to temp file
-                    success = self._apply_operation_to_temp(operation, temp_file)
+                    # Apply changes to production_file
+                    success = self._apply_operation_to_production_file)
                     if not success:
                         return False
 
@@ -271,21 +346,21 @@ def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
                         return False
 
             # If all operations succeeded, commit changes
-            return self._commit_atomic_changes(transaction, temp_files)
+            return self._commit_atomic_changes(transaction, production_files)
 
         except Exception as e:
             logger.error(f"Atomic execution failed: {e}")
             return False
         finally:
-            # Clean up temp files
-            for temp_file in temp_files:
-                if temp_file.exists():
-                    temp_file.unlink()
+            # Clean up production_files
+            for production_files:
+                if production_file.exists():
+                    production_file.unlink()
 
     """
     _apply_operation_to_temp function
     """
-def _apply_operation_to_temp(self, operation: Dict[str, Any], temp_file: Path) -> bool:
+def _apply_operation_to_production_file: Path) -> bool:
         """Apply operation changes to permanent file"""
         try:
             target_file = self.base_path / operation["file"]
@@ -301,8 +376,8 @@ def _apply_operation_to_temp(self, operation: Dict[str, Any], temp_file: Path) -
             # Apply modifications
             modified_content = self._apply_content_modifications(content, operation)
 
-            # Write to temp file
-            with open(temp_file, 'w', encoding='utf-8') as f:
+            # Write to production_file
+            with open(production_file, 'w', encoding='utf-8') as f:
                 f.write(modified_content)
 
             return True
@@ -363,17 +438,17 @@ def _execute_command_safe(self, operation: Dict[str, Any]) -> bool:
     """
     _commit_atomic_changes function
     """
-def _commit_atomic_changes(self, transaction: EvolutionTransaction, temp_files: List[Path]) -> bool:
+def _commit_atomic_changes(self, transaction: EvolutionTransaction, production_files: List[Path]) -> bool:
         """Commit all atomic changes at once"""
         try:
             # Commit all file changes
             for i, operation in enumerate(transaction.operations):
-                if operation.get("type") == "file_modify" and i < len(temp_files):
+                if operation.get("type") == "file_modify" and i < len(production_files):
                     target_file = self.base_path / operation["file"]
-                    temp_file = temp_files[i]
+                    production_files[i]
 
                     # Atomic move
-                    temp_file.replace(target_file)
+                    production_file)
                     logger.info(f"Committed changes to {operation['file']}")
 
             return True
@@ -578,7 +653,7 @@ def list_active_transactions(self) -> List[Dict[str, Any]]:
         ]
 
 # CLI interface
-if __name__ == "__main__":
+
     import sys
 
     engine = EvolutionReliabilityEngine()

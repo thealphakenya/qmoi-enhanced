@@ -1,3 +1,17 @@
+
+import logging
+
+# Configure production logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('production.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -480,7 +494,7 @@ function processPaperUpdate(
     };
 
     production-ready
-    consoleconsole.log(`Processed paper: ${p.id} from ${source}`);
+    consolelogger.info(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
   } catch (error) {
@@ -540,7 +554,7 @@ function triggerQMOISync(type: string, data: unknown): any {
   // QMOI AI synchronization
   try {
     // Trigger sync with QMOI AI system
-    consoleconsole.log(`Triggering QMOI sync for ${type}`, data);
+    consolelogger.info(`Triggering QMOI sync for ${type}`, data);
 
     production-ready
     return {
@@ -864,7 +878,7 @@ function storeDiscussion(discussion: unknown): any {
     const discussionId = `disc-${Date.now()}-${Math.random()
       .toString(36)
       .substr(2, 9)}`;
-    consoleconsole.log(`Storing discussion: ${discussionId}`);
+    consolelogger.info(`Storing discussion: ${discussionId}`);
 
     production-ready
     return discussionId;

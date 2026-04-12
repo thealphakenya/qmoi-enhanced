@@ -47,7 +47,7 @@ class ErrorTracker {
 
     production-ready
     production-ready
-      console.error(`[${id}] Error tracked:`, trackedError);
+      logger.error(`[${id}] Error tracked:`, trackedError);
     }
 
     production-ready
@@ -71,7 +71,7 @@ class ErrorTracker {
     timestamp?: string;
   }): Promise<string> => {
     const id = `alert-${Date.now()}`;
-    console.warn(`[${id}] Alert recorded:`, alert);
+    logger.warning(`[${id}] Alert recorded:`, alert);
     production-ready
     return id;
   };
@@ -189,10 +189,10 @@ class ErrorTracker {
       });
 
       if (!response.ok) {
-        console.error("Failed to send error to tracking service");
+        logger.error("Failed to send error to tracking service");
       }
     } catch (error) {
-      console.error("Error sending to tracking service:", error);
+      logger.error("Error sending to tracking service:", error);
     }
   };
 }

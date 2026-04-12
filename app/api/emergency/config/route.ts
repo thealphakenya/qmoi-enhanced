@@ -49,7 +49,7 @@ function GET(): any {
     // For now, return default config
     return NextResponse.json(defaultConfig);
   } catch (error) {
-    console.error('Emergency config error:', error);
+    logger.error('Emergency config error:', error);
     return NextResponse.json(
       { error: 'Failed to load emergency configuration' },
       { status: 500 }
@@ -82,7 +82,7 @@ function POST(request: NextRequest): any {
       config
     });
   } catch (error) {
-    console.error('Emergency config update error:', error);
+    logger.error('Emergency config update error:', error);
     return NextResponse.json(
       { error: 'Failed to update emergency configuration' },
       { status: 500 }

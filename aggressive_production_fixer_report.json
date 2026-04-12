@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-04-12T01:37:48.090391",
+  "timestamp": "2026-04-12T05:04:10.570589",
   "root": "/workspaces/qmoi-enhanced",
-  "target_files": 19439,
-  "fixed_files": 1902,
-  "replacements_made": 13081,
-  "backup_directory": "/workspaces/qmoi-enhanced/.backups/aggressive_fix_1775957216"
+  "target_files": 0,
+  "fixed_files": 0,
+  "replacements_made": 0,
+  "backup_directory": "/workspaces/qmoi-enhanced/.backups/aggressive_fix_1775970250"
 }

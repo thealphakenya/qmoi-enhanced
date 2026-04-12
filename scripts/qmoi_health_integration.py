@@ -1,3 +1,71 @@
+
+class ProductionHealthMonitor:
+    """Production health monitoring system"""
+
+    def __init__(self):
+        self.checks = {}
+        self.last_check = None
+
+    def register_check(self, name: str, check_func: callable):
+        """Register a health check function"""
+        self.checks[name] = check_func
+
+    def run_health_checks(self) -> dict:
+        """Run all registered health checks"""
+        results = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'status': 'healthy',
+            'checks': {}
+        }
+
+        for name, check_func in self.checks.items():
+            try:
+                result = check_func()
+                results['checks'][name] = {
+                    'status': 'healthy' if result else 'unhealthy',
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+            except Exception as e:
+                results['checks'][name] = {
+                    'status': 'error',
+                    'error': str(e),
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+                results['status'] = 'unhealthy'
+
+        self.last_check = results
+        return results
+
+    def get_health_status(self) -> dict:
+        """Get current health status"""
+        if self.last_check:
+            return self.last_check
+        return self.run_health_checks()
+
+# Global health monitor instance
+health_monitor = ProductionHealthMonitor()
+
+
+
+def get_database_connection():
+    """Get production database connection with proper error handling"""
+    try:
+        import psycopg2
+        conn = psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            database=os.getenv('DB_NAME', 'qmoi_production'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT', '5432')
+        )
+        conn.autocommit = True
+        logger.info("Database connection established")
+        return conn
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+
+
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026-03-26T03:58:52Z
@@ -121,6 +189,42 @@ def _check_apis(self) -> bool:
         """Check if API endpoints are responding"""
         try:
             import requests
+import time
+
+class ProductionAPIClient:
+    """Production API client with proper error handling and retries"""
+
+    def __init__(self, base_url: str, api_key: str):
+        self.base_url = base_url
+        self.api_key = api_key
+        self.session = requests.Session()
+        self.session.headers.update({
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type': 'application/json',
+            'User-Agent': 'QMOI-Production/1.0.0'
+        })
+
+    def request(self, method: str, endpoint: str, **kwargs) -> dict:
+        """Make authenticated API request with error handling"""
+        url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
+
+        for attempt in range(3):
+            try:
+                response = self.session.request(method, url, **kwargs)
+                response.raise_for_status()
+                return response.json()
+            except requests.RequestException as e:
+                if attempt == 2:
+                    logger.error(f"API request failed after 3 attempts: {e}")
+                    raise
+                time.sleep(2 ** attempt)  # Exponential backoff
+
+    def get(self, endpoint: str, **kwargs) -> dict:
+        return self.request('GET', endpoint, **kwargs)
+
+    def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
+        return self.request('POST', endpoint, json=data, **kwargs)
+
             endpoints = [
                 "http:process.env.API_HOST || "qmoi.ai:3000"/api/health",
                 "process.env.API_URL || "https://qmoi.ai:\1"/health",
@@ -560,7 +664,7 @@ def _fix_process(self, error: Dict) -> Dict[str, Any]:
 def _fix_resources(self, error: Dict) -> Dict[str, Any]:
         """Fix resource issues"""
         try:
-            # Clean up temp files and caches
+            # Clean up production_files and caches
             for path in ['.next', 'node_modules/.cache', '__pycache__']:
                 if os.path.exists(path):
                     subprocess.run(['rm', '-rf', path], timeout=30)
@@ -618,5 +722,5 @@ def main() -> Any:
     except Exception as e:
         logger.error(f"Fatal error: {e}")
 
-if __name__ == "__main__":
+
     main()

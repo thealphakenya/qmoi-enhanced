@@ -33,7 +33,7 @@ function GET(
     }
     return NextResponse.json({ success: true, dataset });
   } catch (error) {
-    console.error("Error fetching dataset:", error);
+    logger.error("Error fetching dataset:", error);
     return NextResponse.json(
       { success: false, error: "Failed to fetch dataset" },
       { status: 500 },
@@ -60,7 +60,7 @@ function PUT(
     }
     return NextResponse.json({ success: true, dataset: updated });
   } catch (error) {
-    console.error("Error updating dataset:", error);
+    logger.error("Error updating dataset:", error);
     return NextResponse.json(
       { success: false, error: "Failed to update dataset" },
       { status: 500 },
@@ -86,7 +86,7 @@ function DELETE(
     }
     return NextResponse.json({ success: true, message: "Dataset deleted" });
   } catch (error) {
-    console.error("Error deleting dataset:", error);
+    logger.error("Error deleting dataset:", error);
     return NextResponse.json(
       { success: false, error: "Failed to delete dataset" },
       { status: 500 },
@@ -147,7 +147,7 @@ function POST(
       { status: 400 },
     );
   } catch (error) {
-    console.error("Error handling dataset action:", error);
+    logger.error("Error handling dataset action:", error);
     return NextResponse.json(
       { success: false, error: "Failed to perform action" },
       { status: 500 },

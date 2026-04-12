@@ -55,7 +55,7 @@ const AnalyticsScreen = ({ userRole }) => {
       );
       setprodiceStats(prodiceStatsRes.data);
     } catch (error) {
-      console.error("Error loading analytics:", error);
+      logger.error("Error loading analytics:", error);
       setAnalytics([
         {
           date: "2024-01-15",

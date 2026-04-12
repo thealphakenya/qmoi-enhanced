@@ -68,7 +68,7 @@ function validateAuthToken(request: NextRequest): any: Promise<AuthContext> {
       metadata: user.metadata,
     };
   } catch (error) {
-    console.error('Token validation error:', error);
+    logger.error('Token validation error:', error);
     return {
       userId: '',
       token: '',

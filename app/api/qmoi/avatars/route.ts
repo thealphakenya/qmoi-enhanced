@@ -59,7 +59,7 @@ function GET(request: NextRequest): any {
       qualityLevels: Object.keys(qualityLevels),
     });
   } catch (error) {
-    console.error("Error fetching avatars:", error);
+    logger.error("Error fetching avatars:", error);
     return NextResponse.json(
       { _error: "Failed to fetch avatars" },
       { status: 500 },
@@ -104,7 +104,7 @@ function POST(_request: NextRequest): any {
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
   } catch (error) {
-    console.error("Error in avatars API:", error);
+    logger.error("Error in avatars API:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -148,7 +148,7 @@ function switchAvatar(avatarId: string): any {
       qualityInfo: qualityLevels[avatar.qualityLevel],
     });
   } catch (error) {
-    console.error("Error switching avatar:", error);
+    logger.error("Error switching avatar:", error);
     return NextResponse.json(
       { _error: "Failed to switch avatar" },
       { status: 500 },
@@ -178,7 +178,7 @@ function upgradeAvatar(avatarId: string): any {
       improvements: ["better_animations", "enhanced_quality", "new_features"],
     });
   } catch (error) {
-    console.error("Error upgrading avatar:", error);
+    logger.error("Error upgrading avatar:", error);
     return NextResponse.json(
       { _error: "Failed to upgrade avatar" },
       { status: 500 },
@@ -216,7 +216,7 @@ function enhanceAvatar(
       ],
     });
   } catch (error) {
-    console.error("Error enhancing avatar:", error);
+    logger.error("Error enhancing avatar:", error);
     return NextResponse.json(
       { _error: "Failed to enhance avatar" },
       { status: 500 },
@@ -249,7 +249,7 @@ function customizeAvatar(avatarId: string, voiceProfile: string): any {
       ],
     });
   } catch (error) {
-    console.error("Error customizing avatar:", error);
+    logger.error("Error customizing avatar:", error);
     return NextResponse.json(
       { _error: "Failed to customize avatar" },
       { status: 500 },
@@ -280,7 +280,7 @@ function autoAvatar(): any {
       avatar: preferred,
     });
   } catch (error) {
-    console.error("Error auto selecting avatar:", error);
+    logger.error("Error auto selecting avatar:", error);
     return NextResponse.json(
       { _error: "Failed to auto select avatar" },
       { status: 500 },
@@ -387,7 +387,7 @@ function evolveAvatar(avatarId: string): any {
       evolutionSteps,
     });
   } catch (error) {
-    console.error("Error evolving avatar:", error);
+    logger.error("Error evolving avatar:", error);
     return NextResponse.json(
       { _error: "Failed to evolve avatar" },
       { status: 500 },
@@ -433,7 +433,7 @@ function researchAvatarImprovements(researchTopic?: string): any {
       researchTime: Math.floor(Math.random() * 30) + 10, // 10-40 seconds
     });
   } catch (error) {
-    console.error("Error researching avatar improvements:", error);
+    logger.error("Error researching avatar improvements:", error);
     return NextResponse.json(
       { _error: "Failed to research avatar improvements" },
       { status: 500 },
@@ -495,7 +495,7 @@ function masterCommunicate(masterMessage: string): any {
       communicationTimestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error("Error in master communication:", error);
+    logger.error("Error in master communication:", error);
     return NextResponse.json(
       { _error: "Failed to process master communication" },
       { status: 500 },

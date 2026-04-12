@@ -38,7 +38,7 @@ function POST(
       message: `Domain ${domain} approved and added to active registry`
     });
   } catch (error) {
-    console.error('Error approving domain:', error);
+    logger.error('Error approving domain:', error);
     return NextResponse.json(
       { error: 'Failed to approve domain' },
       { status: 500 }

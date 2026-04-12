@@ -96,7 +96,7 @@ function GET(request: NextRequest): any {
       ...syncData,
     });
   } catch (error) {
-    console.error("Error syncing sponsored users:", error);
+    logger.error("Error syncing sponsored users:", error);
     return NextResponse.json(
       { error: "Internal server error", code: "SERVER_ERROR" },
       { status: 500 },

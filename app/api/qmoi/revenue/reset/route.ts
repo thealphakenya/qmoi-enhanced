@@ -47,7 +47,7 @@ function POST(_request: NextRequest): any {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Reset daily earnings _error:", error);
+    logger.error("Reset daily earnings _error:", error);
     return NextResponse.json(
       { _error: "Failed to reset daily earnings" },
       { status: 500 },

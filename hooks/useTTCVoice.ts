@@ -17,7 +17,7 @@ function useTTCVoice(): any {
 
   const speak = useCallback((text: string) => {
     if (!window.speechSynthesis) {
-      console.warn("Speech synthesis not supported");
+      logger.warning("Speech synthesis not supported");
       return;
     }
 

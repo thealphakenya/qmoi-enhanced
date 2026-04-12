@@ -45,7 +45,7 @@ function GET(request: NextRequest): any {
         });
     }
   } catch (error) {
-    console.error('QVS API Error:', error);
+    logger.error('QVS API Error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -119,7 +119,7 @@ function POST(request: NextRequest): any {
         );
     }
   } catch (error) {
-    console.error('QVS API POST Error:', error);
+    logger.error('QVS API POST Error:', error);
     return NextResponse.json(
       {
         success: false,

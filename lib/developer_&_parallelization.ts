@@ -55,7 +55,7 @@ export class prodeloper&ParallelizationService {
           .log('Running in batch mode');
           break;
         default:
-          console.warn(`Unknown strategy: ${strategy}, using parallel`);
+          logger.warning(`Unknown strategy: ${strategy}, using parallel`);
       }
       
       return {
@@ -67,7 +67,7 @@ export class prodeloper&ParallelizationService {
         timestamp: new Date().toISOString()
       };
     } catch (error) {
-      console.error('Error executing prodeloper & Parallelization:', error);
+      logger.error('Error executing prodeloper & Parallelization:', error);
       return {
         status: 'error',
         message: 'prodeloper & Parallelization execution failed',

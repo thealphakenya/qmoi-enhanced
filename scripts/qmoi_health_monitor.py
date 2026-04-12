@@ -1,3 +1,23 @@
+
+def get_database_connection():
+    """Get production database connection with proper error handling"""
+    try:
+        import psycopg2
+        conn = psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            database=os.getenv('DB_NAME', 'qmoi_production'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            port=os.getenv('DB_PORT', '5432')
+        )
+        conn.autocommit = True
+        logger.info("Database connection established")
+        return conn
+    except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+        raise
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:19Z
@@ -16,6 +36,42 @@ import json
 import time
 import psutil
 import requests
+import time
+
+class ProductionAPIClient:
+    """Production API client with proper error handling and retries"""
+
+    def __init__(self, base_url: str, api_key: str):
+        self.base_url = base_url
+        self.api_key = api_key
+        self.session = requests.Session()
+        self.session.headers.update({
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type': 'application/json',
+            'User-Agent': 'QMOI-Production/1.0.0'
+        })
+
+    def request(self, method: str, endpoint: str, **kwargs) -> dict:
+        """Make authenticated API request with error handling"""
+        url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
+
+        for attempt in range(3):
+            try:
+                response = self.session.request(method, url, **kwargs)
+                response.raise_for_status()
+                return response.json()
+            except requests.RequestException as e:
+                if attempt == 2:
+                    logger.error(f"API request failed after 3 attempts: {e}")
+                    raise
+                time.sleep(2 ** attempt)  # Exponential backoff
+
+    def get(self, endpoint: str, **kwargs) -> dict:
+        return self.request('GET', endpoint, **kwargs)
+
+    def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
+        return self.request('POST', endpoint, json=data, **kwargs)
+
 import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 # Add project root to path
@@ -347,5 +403,5 @@ def main() -> Any:
     else:
         sys.exit(0)
 
-if __name__ == "__main__":
+
     main() 

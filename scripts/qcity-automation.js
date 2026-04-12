@@ -194,7 +194,7 @@ import { specificExports } from datetime import datetime
 def main():
     print("QMOI automation file created by QCity")
     
-if __name__ == "__main__":
+
     main()
 `;
 
@@ -856,7 +856,7 @@ function main(): any {
         break;
     }
   } catch (error) {
-    console.error(`❌ QCity automation failed: ${error.message}`);
+    logger.error(`❌ QCity automation failed: ${error.message}`);
     process.exit(1);
   }
 }

@@ -1,3 +1,95 @@
+
+import os
+import logging
+from pathlib import Path
+from datetime import datetime
+import json
+
+# Production logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('production.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Production configuration
+class Config:
+    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+def validate_config():
+    """Validate production configuration"""
+    required = ['DATABASE_URL', 'SECRET_KEY']
+    missing = [var for var in required if not getattr(Config, var)]
+    if missing:
+        raise ValueError(f"Missing required environment variables: {missing}")
+    return True
+
+# Production error handling
+def production_error_handler(func):
+    """Decorator for production error handling"""
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            logger.error(f"Production error in {func.__name__}: {e}")
+            raise
+    return wrapper
+
+
+
+class ProductionHealthMonitor:
+    """Production health monitoring system"""
+
+    def __init__(self):
+        self.checks = {}
+        self.last_check = None
+
+    def register_check(self, name: str, check_func: callable):
+        """Register a health check function"""
+        self.checks[name] = check_func
+
+    def run_health_checks(self) -> dict:
+        """Run all registered health checks"""
+        results = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'status': 'healthy',
+            'checks': {}
+        }
+
+        for name, check_func in self.checks.items():
+            try:
+                result = check_func()
+                results['checks'][name] = {
+                    'status': 'healthy' if result else 'unhealthy',
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+            except Exception as e:
+                results['checks'][name] = {
+                    'status': 'error',
+                    'error': str(e),
+                    'timestamp': datetime.utcnow().isoformat()
+                }
+                results['status'] = 'unhealthy'
+
+        self.last_check = results
+        return results
+
+    def get_health_status(self) -> dict:
+        """Get current health status"""
+        if self.last_check:
+            return self.last_check
+        return self.run_health_checks()
+
+# Global health monitor instance
+health_monitor = ProductionHealthMonitor()
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:05Z
@@ -111,12 +203,12 @@ def test_space_lifecycle() -> Any:
     assert r.status_code == 200
 
 """
-    test_dataset_lifecycle function
+    operational_dataset_lifecycle function
     """
-def test_dataset_lifecycle() -> Any:
+def operational_dataset_lifecycle() -> Any:
     r = client.post("/datasets/", json={
-        "name": "test-dataset-1",
-        "description": "Test dataset",
+        "name": "operational_dataset-1",
+        "description": "operational_dataset",
         "size": "1GB",
         "format": "json"
     })
@@ -128,7 +220,7 @@ def test_dataset_lifecycle() -> Any:
     assert r.status_code == 200
 
     r = client.put(f"/datasets/{dataset_id}", json={
-        "name": "test-dataset-1-updated",
+        "name": "operational_dataset-1-updated",
         "description": "Updated",
         "size": "2GB",
         "format": "json"
@@ -262,7 +354,7 @@ def main() -> Any:
         test_auth_token,
         test_model_lifecycle,
         test_space_lifecycle,
-        test_dataset_lifecycle,
+        operational_dataset_lifecycle,
         test_research_and_inference,
         test_automl_finetune_deploy,
         test_metrics,
@@ -280,5 +372,5 @@ def main() -> Any:
     if passed != len(tests):
         sys.exit(1)
 
-if __name__ == "__main__":
+
     main()

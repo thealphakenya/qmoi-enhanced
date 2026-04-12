@@ -82,7 +82,7 @@ function MasterTracksDashboard(): any {
         setStats(data.stats);
       }
     } catch (error) {
-      console.error("Failed to fetch tracks:", error);
+      logger.error("Failed to fetch tracks:", error);
     } finally {
       setLoading(false);
     }

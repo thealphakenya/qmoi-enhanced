@@ -48,7 +48,7 @@ function POST(req: NextRequest): any {
       result,
     });
   } catch (error) {
-    console.error("Visual customization error:", error);
+    logger.error("Visual customization error:", error);
     return NextResponse.json(
       { error: "Failed to update visual preferences" },
       { status: 500 },
@@ -77,7 +77,7 @@ function GET(req: NextRequest): any {
       },
     });
   } catch (error) {
-    console.error("Visual retrieval error:", error);
+    logger.error("Visual retrieval error:", error);
     return NextResponse.json(
       { error: "Failed to retrieve visual preferences" },
       { status: 500 },

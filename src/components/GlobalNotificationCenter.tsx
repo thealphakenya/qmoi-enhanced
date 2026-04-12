@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 // QMOI EVOLUTION ENHANCED: Global News & Intelligence Notification System
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-04-07T00:00:00Z
@@ -127,7 +151,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
         setNotifications(data);
       }
     } catch (error) {
-      console.error('Failed to load notifications:', error);
+      logger.error('Failed to load notifications:', error);
     } finally {
       setIsLoading(false);
     }
@@ -141,7 +165,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
         setGlobalNews(data);
       }
     } catch (error) {
-      console.error('Failed to load global news:', error);
+      logger.error('Failed to load global news:', error);
     }
   };
 
@@ -153,7 +177,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
         setDailyReports(data);
       }
     } catch (error) {
-      console.error('Failed to load daily reports:', error);
+      logger.error('Failed to load daily reports:', error);
     }
   };
 
@@ -190,7 +214,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
     };
 
     eventSource.onerror = (error) => {
-      console.error('Notification stream error:', error);
+      logger.error('Notification stream error:', error);
     };
 
     return () => eventSource.close();
@@ -243,7 +267,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
         description: `Generated ${1 + continents.length + majorCountries.length} reports for ${frequency}`
       });
     } catch (error) {
-      console.error('Failed to generate global reports:', error);
+      logger.error('Failed to generate global reports:', error);
     }
   };
 
@@ -254,7 +278,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
         prev.map(n => n.id === id ? { ...n, read: true } : n)
       );
     } catch (error) {
-      console.error('Failed to mark notification as read:', error);
+      logger.error('Failed to mark notification as read:', error);
     }
   };
 
@@ -263,7 +287,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
       await apiClient.get(`/api/notifications/mark-all-read/${masterId}`, { method: 'PUT' });
       setNotifications(prev => prev.map(n => ({ ...n, read: true })));
     } catch (error) {
-      console.error('Failed to mark all notifications as read:', error);
+      logger.error('Failed to mark all notifications as read:', error);
     }
   };
 
@@ -272,7 +296,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
       await apiClient.get(`/api/notifications/${id}`, { method: 'DELETE' });
       setNotifications(prev => prev.filter(n => n.id !== id));
     } catch (error) {
-      console.error('Failed to delete notification:', error);
+      logger.error('Failed to delete notification:', error);
     }
   };
 
@@ -289,7 +313,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
         setNotifications(prev => [newNotification, ...prev]);
       }
     } catch (error) {
-      console.error('Failed to send notification:', error);
+      logger.error('Failed to send notification:', error);
     }
   };
 
@@ -553,7 +577,7 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
     try {
       await generateDailyReport(type, target, 'critical');
     } catch (error) {
-      console.error('Failed to generate report:', error);
+      logger.error('Failed to generate report:', error);
     }
   };
 

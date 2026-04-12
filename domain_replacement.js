@@ -14,7 +14,7 @@ function replaceInFile(filePath, oldStr, newStr) {
       return true;
     }
   } catch (error) {
-    console.warn(`Warning: Could not update ${filePath}:`, error.message);
+    logger.warning(`Warning: Could not update ${filePath}:`, error.message);
   }
   return false;
 }

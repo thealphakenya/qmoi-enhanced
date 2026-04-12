@@ -93,7 +93,7 @@ export const withRoleAuth = (requiredRoles: Role[] = ["user"]) => {
 
         return handler(requestWithUser);
       } catch (error) {
-        console.error("Auth error:", error);
+        logger.error("Auth error:", error);
         return NextResponse.json(
           { error: "Authentication failed" },
           { status: 500 },
@@ -127,7 +127,7 @@ export const roleAuth = async (
 
     return decoded.role === requiredRole;
   } catch (error) {
-    console.error("Role auth error:", error);
+    logger.error("Role auth error:", error);
     return false;
   }
 };

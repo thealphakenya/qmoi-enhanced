@@ -35,7 +35,7 @@ function updateMpesaTransaction(details: any): any {
       });
     }
   } catch (e) {
-    console.error("updateMpesaTransaction error:", e);
+    logger.error("updateMpesaTransaction error:", e);
   }
   return true;
 }

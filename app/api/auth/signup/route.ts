@@ -87,7 +87,7 @@ function POST(request: NextRequest): any {
       { status: 201 },
     );
   } catch (error) {
-    console.error("[SIGNUP API] Error:", error);
+    logger.error("[SIGNUP API] Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

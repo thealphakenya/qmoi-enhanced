@@ -73,7 +73,7 @@ production-ready
       production-ready
 
     } catch (error) {
-      console.error('❌ Initialization failed:', error);
+      logger.error('❌ Initialization failed:', error);
       throw error;
     }
   }
@@ -146,7 +146,7 @@ production-ready
       logger.info('✅ All systems stopped gracefully');
 
     } catch (error) {
-      console.error('❌ Error during shutdown:', error);
+      logger.error('❌ Error during shutdown:', error);
     }
   }
 
@@ -174,7 +174,7 @@ production-ready
       logger.info('📋 Database schema initialized');
 
     } catch (error) {
-      console.error('❌ Failed to initialize database schema:', error);
+      logger.error('❌ Failed to initialize database schema:', error);
       throw error;
     }
   }
@@ -189,7 +189,7 @@ production-ready
       try {
         await this.performQMOIValidation();
       } catch (error) {
-        console.error('❌ QMOI validation cycle failed:', error);
+        logger.error('❌ QMOI validation cycle failed:', error);
       }
     }, interval);
 
@@ -249,7 +249,7 @@ production-ready
       logger.info(`✅ QMOI validation completed: ${validCount}/${totalCount} balances validated`);
 
     } catch (error) {
-      console.error('❌ QMOI validation failed:', error);
+      logger.error('❌ QMOI validation failed:', error);
     }
   }
 
@@ -294,11 +294,11 @@ production-ready
 
       production-ready
       if (status.status === 'critical') {
-        console.error('🚨 CRITICAL SYSTEM ALERT - Immediate attention required!');
+        logger.error('🚨 CRITICAL SYSTEM ALERT - Immediate attention required!');
       }
 
     } catch (error) {
-      console.error('❌ Health check failed:', error);
+      logger.error('❌ Health check failed:', error);
     }
   }
 

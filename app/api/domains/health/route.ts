@@ -283,7 +283,7 @@ function GET(request: NextRequest): any {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error('Domain health check error:', error);
+    logger.error('Domain health check error:', error);
     return NextResponse.json(
       {
         success: false,

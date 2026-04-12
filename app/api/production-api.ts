@@ -157,7 +157,7 @@ function GET_health(request: NextRequest): any: Promise<NextResponse> {
 
     return createSuccessResponse(health);
   } catch (error) {
-    console.error('Health check failed:', error);
+    logger.error('Health check failed:', error);
     production-ready and operational
   }
 }
@@ -243,7 +243,7 @@ function POST_auth_login(request: NextRequest): any: Promise<NextResponse> {
     });
 
   } catch (error) {
-    console.error('Login error:', error);
+    logger.error('Login error:', error);
     return createErrorResponse('Login failed', 500);
   }
 }
@@ -280,7 +280,7 @@ function POST_auth_refresh(request: NextRequest): any: Promise<NextResponse> {
     }
 
   } catch (error) {
-    console.error('Token refresh error:', error);
+    logger.error('Token refresh error:', error);
     return createErrorResponse('Token refresh failed', 500);
   }
 }
@@ -296,7 +296,7 @@ function POST_auth_logout(request: NextRequest): any: Promise<NextResponse> {
     return createSuccessResponse({ message: 'Logged out successfully' });
 
   } catch (error) {
-    console.error('Logout error:', error);
+    logger.error('Logout error:', error);
     return createErrorResponse('Logout failed', 500);
   }
 }
@@ -321,7 +321,7 @@ function GET_users_profile(request: NextRequest): any: Promise<NextResponse> {
     return createSuccessResponse({ user: userResult.rows[0] });
 
   } catch (error) {
-    console.error('Get profile error:', error);
+    logger.error('Get profile error:', error);
     return createErrorResponse('Failed to get profile', 500);
   }
 }
@@ -350,7 +350,7 @@ function PUT_users_profile(request: NextRequest): any: Promise<NextResponse> {
     return createSuccessResponse({ message: 'Profile updated successfully' });
 
   } catch (error) {
-    console.error('Update profile error:', error);
+    logger.error('Update profile error:', error);
     return createErrorResponse('Failed to update profile', 500);
   }
 }
@@ -378,7 +378,7 @@ function POST_users_api_key(request: NextRequest): any: Promise<NextResponse> {
     });
 
   } catch (error) {
-    console.error('Generate API key error:', error);
+    logger.error('Generate API key error:', error);
     return createErrorResponse('Failed to generate API key', 500);
   }
 }
@@ -399,7 +399,7 @@ function GET_wallets(request: NextRequest): any: Promise<NextResponse> {
     return createSuccessResponse({ wallets: walletsResult.rows });
 
   } catch (error) {
-    console.error('Get wallets error:', error);
+    logger.error('Get wallets error:', error);
     return createErrorResponse('Failed to get wallets', 500);
   }
 }
@@ -434,7 +434,7 @@ function POST_wallets(request: NextRequest): any: Promise<NextResponse> {
     }, 201);
 
   } catch (error) {
-    console.error('Create wallet error:', error);
+    logger.error('Create wallet error:', error);
     return createErrorResponse('Failed to create wallet', 500);
   }
 }
@@ -455,7 +455,7 @@ function GET_trading_portfolio(request: NextRequest): any: Promise<NextResponse>
     return createSuccessResponse({ portfolio: portfolioResult.rows });
 
   } catch (error) {
-    console.error('Get portfolio error:', error);
+    logger.error('Get portfolio error:', error);
     return createErrorResponse('Failed to get portfolio', 500);
   }
 }
@@ -506,7 +506,7 @@ function POST_trading_orders(request: NextRequest): any: Promise<NextResponse> {
     }, 201);
 
   } catch (error) {
-    console.error('Place order error:', error);
+    logger.error('Place order error:', error);
     return createErrorResponse('Failed to place order', 500);
   }
 }
@@ -534,7 +534,7 @@ function GET_analytics_dashboard(request: NextRequest): any: Promise<NextRespons
     return createSuccessResponse(dashboardData);
 
   } catch (error) {
-    console.error('Get dashboard error:', error);
+    logger.error('Get dashboard error:', error);
     return createErrorResponse('Failed to get dashboard', 500);
   }
 }
@@ -558,7 +558,7 @@ function GET_risk_assessment(request: NextRequest): any: Promise<NextResponse> {
     return createSuccessResponse(assessment);
 
   } catch (error) {
-    console.error('Get risk assessment error:', error);
+    logger.error('Get risk assessment error:', error);
     return createErrorResponse('Failed to get risk assessment', 500);
   }
 }
@@ -582,7 +582,7 @@ function GET_admin_users(request: NextRequest): any: Promise<NextResponse> {
     return createSuccessResponse({ users: usersResult.rows });
 
   } catch (error) {
-    console.error('Get users error:', error);
+    logger.error('Get users error:', error);
     return createErrorResponse('Failed to get users', 500);
   }
 }
@@ -610,7 +610,7 @@ function GET_admin_system_status(request: NextRequest): any: Promise<NextRespons
     return createSuccessResponse(status);
 
   } catch (error) {
-    console.error('Get system status error:', error);
+    logger.error('Get system status error:', error);
     return createErrorResponse('Failed to get system status', 500);
   }
 }
@@ -637,7 +637,7 @@ function POST_webhooks_stripe(request: NextRequest): any: Promise<NextResponse> 
     return createSuccessResponse({ received: true });
 
   } catch (error) {
-    console.error('Stripe webhook error:', error);
+    logger.error('Stripe webhook error:', error);
     return createErrorResponse('Webhook processing failed', 500);
   }
 }

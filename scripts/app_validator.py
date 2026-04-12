@@ -376,7 +376,7 @@ def save_report(self, output_file: str) -> Any:
             json.dump(self.results, f, indent=2)
         logger.info(f"📋 Report saved: {output_file}")
 
-if __name__ == '__main__':
+
     validator = AppValidator()
     results = validator.run_full_validation()
     validator.print_summary()

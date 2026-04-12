@@ -87,7 +87,7 @@ class QBalancesAutoUpdateSystem {
       logger.info(`✅ Q/BALANCES.md update complete. ${walletBalances.length} wallets updated. Accuracy: ${validationStatus.overallAccuracy.toFixed(2)}%`);
 
     } catch (error) {
-      console.error('❌ Q/BALANCES.md update failed:', error);
+      logger.error('❌ Q/BALANCES.md update failed:', error);
     }
   }
 

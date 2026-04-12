@@ -42,7 +42,7 @@ function waitForPort(port, callback, timeout = 20000): any {
     client.on("error", () => {
       if (Date.now() - start > timeout) {
         clearInterval(interval);
-        console.error(`[QMOI] Backend not responding on port ${port}`);
+        logger.error(`[QMOI] Backend not responding on port ${port}`);
       }
     });
   }, 500);
@@ -107,10 +107,10 @@ function startBackend(): any {
       logger.info(`[QMOI EXE] ${data}`),
     );
     pythonProcess.stderr?.on("data", (data) =>
-      console.error(`[QMOI EXE ERROR] ${data}`),
+      logger.error(`[QMOI EXE ERROR] ${data}`);,
     );
   } else {
-    console.error("qmoiexe.exe not found or not on Windows");
+    logger.error("qmoiexe.exe not found or not on Windows");
   }
 }
 
@@ -125,7 +125,7 @@ function configureAutoUpdater(): any {
     logger.info("[QMOI AUTOUPDATER] Update downloaded. Will install on quit.");
   });
   autoUpdater.on("error", (err) => {
-    console.error(`[QMOI AUTOUPDATER ERROR] ${err}`);
+    logger.error(`[QMOI AUTOUPDATER ERROR] ${err}`);
   });
 
   autoUpdater.checkForUpdatesAndNotify();

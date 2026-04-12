@@ -1,3 +1,58 @@
+
+class ProductionFileManager:
+    """Production file operations with proper error handling"""
+
+    @staticmethod
+    def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
+        """Safely read file with error handling"""
+        try:
+            with open(file_path, 'r', encoding=encoding) as f:
+                return f.read()
+        except FileNotFoundError:
+            logger.error(f"File not found: {file_path}")
+            raise
+        except UnicodeDecodeError as e:
+            logger.error(f"Encoding error reading {file_path}: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Error reading file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
+        """Safely write file with backup and error handling"""
+        backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
+
+        try:
+            # Create backup if file exists
+            if file_path.exists():
+                shutil.copy2(file_path, backup_path)
+
+            # Write new content
+            with open(file_path, 'w', encoding=encoding) as f:
+                f.write(content)
+
+            logger.info(f"File written successfully: {file_path}")
+
+        except Exception as e:
+            # Restore backup on failure
+            if backup_path.exists():
+                shutil.copy2(backup_path, file_path)
+            logger.error(f"Error writing file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def ensure_directory(dir_path: Path) -> None:
+        """Ensure directory exists with proper permissions"""
+        try:
+            dir_path.mkdir(parents=True, exist_ok=True)
+            # Set proper permissions (755)
+            dir_path.chmod(0o755)
+        except Exception as e:
+            logger.error(f"Error creating directory {dir_path}: {e}")
+            raise
+
+
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026-03-26T03:58:52Z
@@ -227,7 +282,7 @@ def do_POST(self) -> Any:
         tone = persona.get('tone', '')
 
         # debug flag from header
-        debug_mode = bool(self.headers.get('X-QMOI-DEBUG'))
+        production_mode = bool(self.headers.get('X-QMOI-DEBUG'))
 
         # Recognize declarations like "I am Master" or "My name is Leah" to update profile
         try:
@@ -257,7 +312,7 @@ def do_POST(self) -> Any:
                     memory['profiles'] = profiles
                     save_memory(memory)
                     reply_text = prefix + (f"Nice to meet you, {profile.get('name', user_id)}. I'll remember that.")
-                    if debug_mode:
+                    if production_mode:
                         reply_text += f" (tone: {tone}; model: {model})"
                     # update session
                     session['last_prompt'] = None
@@ -324,7 +379,7 @@ def is_name_question(s: str) -> bool:
 def mentions_project(s: str) -> bool:
             return 'project' in s or 'work on' in s or 'build' in s or 'prodelop' in s
 
-        debug_mode = bool(self.headers.get('X-QMOI-DEBUG'))
+        production_mode = bool(self.headers.get('X-QMOI-DEBUG'))
 
         # If user responds with a numeric choice, try to continue the previous assistant prompt
         # Find the last assistant message in the provided messages
@@ -386,7 +441,7 @@ def mentions_project(s: str) -> bool:
                 reply_text = prefix + f"Earlier you said: {recall_msg}"
             else:
                 reply_text = prefix + "I don't recall any earlier message."
-            if debug_mode:
+            if production_mode:
                 reply_text += f" (tone: {tone}; model: {model})"
         else:
             # generate a concise, helpful reply instead of echoing the whole message
@@ -410,15 +465,15 @@ def mentions_project(s: str) -> bool:
                 # default: ask for clarification or next step
                 reply_text = prefix + "Thanks — could you tell me what you'd like me to do next or give more details?"
 
-            if debug_mode:
+            if production_mode:
                 reply_text += f" (tone: {tone}; model: {model})"
 
         # optimized action: create a file when asked (used by quick_qmoi_checks)
         try:
             if last_user and 'create a file' in str(last_user).lower():
-                # prefer tests/quick_tmp_file.txt, fallback to quick_tmp_file.txt
-                cand1 = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tests', 'quick_tmp_file.txt'))
-                cand2 = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'quick_tmp_file.txt'))
+                # prefer tests/quick_production_file.txt
+                cand1 = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tests', 'quick_production_file.txt'))
+                cand2 = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'quick_production_file.txt'))
                 created = False
                 try:
                     os.makedirs(os.path.dirname(cand1), exist_ok=True)
@@ -534,5 +589,5 @@ def run(server_class=HTTPServer, handler_class=Handler) -> Any:
     except KeyboardInterrupt:
         logger.info('Stopping server')
 
-if __name__ == '__main__':
+
     run()

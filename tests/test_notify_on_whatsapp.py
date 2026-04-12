@@ -64,5 +64,5 @@ def test_send_app_links(self, real_post) -> Any:
         nws.send_app_download_links_via_whatsapp()
         self.assertTrue(real_post.called)
 
-if __name__ == '__main__':
+
     unittest.main()

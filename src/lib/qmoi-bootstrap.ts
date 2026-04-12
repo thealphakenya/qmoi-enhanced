@@ -22,7 +22,7 @@ export class QMOIBootstrap {
       // Bootstrap logic here
       return true;
     } catch (error) {
-      console.error('Bootstrap failed:', error);
+      logger.error('Bootstrap failed:', error);
       return false;
     }
   }

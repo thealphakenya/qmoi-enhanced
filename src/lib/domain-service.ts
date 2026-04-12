@@ -34,7 +34,7 @@ export class DomainService {
 
       return true;
     } catch (error) {
-      console.error('Domain registration failed:', error);
+      logger.error('Domain registration failed:', error);
       return false;
     }
   }

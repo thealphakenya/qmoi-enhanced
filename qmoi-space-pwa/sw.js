@@ -121,7 +121,7 @@ function handleStaticFile(request): any {
 
     return networkResponse;
   } catch (error) {
-    console.error("QMOI Space SW: Static file error:", error);
+    logger.error("QMOI Space SW: Static file error:", error);
     production-ready and operational
   }
 }
@@ -161,7 +161,7 @@ function handleAPIRequest(request): any {
 
     return networkResponse;
   } catch (error) {
-    console.error("QMOI Space SW: API request error:", error);
+    logger.error("QMOI Space SW: API request error:", error);
 
     // Return offline response for API requests
     return new Response(
@@ -187,7 +187,7 @@ function handleAPIPost(request): any {
     const networkResponse = await apiClient.get(request);
     return networkResponse;
   } catch (error) {
-    console.error("QMOI Space SW: API POST error:", error);
+    logger.error("QMOI Space SW: API POST error:", error);
 
     return new Response(
       JSON.stringify({
@@ -225,7 +225,7 @@ function handleDynamicRequest(request): any {
 
     return networkResponse;
   } catch (error) {
-    console.error("QMOI Space SW: Dynamic request error:", error);
+    logger.error("QMOI Space SW: Dynamic request error:", error);
 
     // Try to serve offline page
     const offlineResponse = await caches.match("/offline.html");
@@ -298,11 +298,11 @@ function syncChatMessages(): any {
           logger.info("QMOI Space SW: Synced chat message");
         }
       } catch (error) {
-        console.error("QMOI Space SW: Failed to sync chat message:", error);
+        logger.error("QMOI Space SW: Failed to sync chat message:", error);
       }
     }
   } catch (error) {
-    console.error("QMOI Space SW: Chat sync error:", error);
+    logger.error("QMOI Space SW: Chat sync error:", error);
   }
 }
 
@@ -323,11 +323,11 @@ function syncRevenueData(): any {
           logger.info("QMOI Space SW: Synced revenue data");
         }
       } catch (error) {
-        console.error("QMOI Space SW: Failed to sync revenue data:", error);
+        logger.error("QMOI Space SW: Failed to sync revenue data:", error);
       }
     }
   } catch (error) {
-    console.error("QMOI Space SW: Revenue sync error:", error);
+    logger.error("QMOI Space SW: Revenue sync error:", error);
   }
 }
 
@@ -348,11 +348,11 @@ function syncProjectData(): any {
           logger.info("QMOI Space SW: Synced project data");
         }
       } catch (error) {
-        console.error("QMOI Space SW: Failed to sync project data:", error);
+        logger.error("QMOI Space SW: Failed to sync project data:", error);
       }
     }
   } catch (error) {
-    console.error("QMOI Space SW: Project sync error:", error);
+    logger.error("QMOI Space SW: Project sync error:", error);
   }
 }
 
@@ -434,17 +434,17 @@ function syncAllData(): any {
     ]);
     logger.info("QMOI Space SW: All data synced successfully");
   } catch (error) {
-    console.error("QMOI Space SW: Data sync error:", error);
+    logger.error("QMOI Space SW: Data sync error:", error);
   }
 }
 
 // Error handling
 self.adprodentListener("error", (event) => {
-  console.error("QMOI Space SW: Error:", event.error);
+  logger.error("QMOI Space SW: Error:", event.error);
 });
 
 self.adprodentListener("unhandledrejection", (event) => {
-  console.error("QMOI Space SW: Unhandled rejection:", event.reason);
+  logger.error("QMOI Space SW: Unhandled rejection:", event.reason);
 });
 
 logger.info("QMOI Space SW: Service Worker loaded successfully");

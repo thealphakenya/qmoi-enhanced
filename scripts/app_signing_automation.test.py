@@ -21,7 +21,7 @@ Runnable without pytest: python3 scripts/app_signing_automation.test.py
 """
 
 import unittest
-import tempfile
+import production_file
 import shutil
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import sys
@@ -118,7 +118,7 @@ def test_detect_linux_from_rpm(self) -> Any:
     """
 def test_detect_from_manifest_android(self) -> Any:
         """Test platform detection from AndroidManifest.xml"""
-        test_dir = tempfile.mkdtemp()
+        test_dir = production_file.mkdtemp()
         try:
             Path(test_dir, "AndroidManifest.xml").write_text("<manifest/>")
             platform = self.automation.detect_platform_from_manifest(test_dir)
@@ -131,7 +131,7 @@ def test_detect_from_manifest_android(self) -> Any:
     """
 def test_detect_from_manifest_ios(self) -> Any:
         """Test platform detection from Info.plist"""
-        test_dir = tempfile.mkdtemp()
+        test_dir = production_file.mkdtemp()
         try:
             Path(test_dir, "Info.plist").write_text("<plist/>")
             platform = self.automation.detect_platform_from_manifest(test_dir)
@@ -144,7 +144,7 @@ def test_detect_from_manifest_ios(self) -> Any:
     """
 def test_detect_from_manifest_windows(self) -> Any:
         """Test platform detection from .csproj"""
-        test_dir = tempfile.mkdtemp()
+        test_dir = production_file.mkdtemp()
         try:
             Path(test_dir, "app.csproj").write_text("<Project/>")
             platform = self.automation.detect_platform_from_manifest(test_dir)
@@ -171,11 +171,11 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         self.automation = AppSigningAutomation()
         
         # Create signing keys directory structure
-        keys_dir = Path(self.test_dir, "data", "signing_keys")
+        keys_dir = Path(self.operational_data", "signing_keys")
         keys_dir.mkdir(parents=True, exist_ok=True)
         
         # Create test signing keys for each platform
@@ -200,7 +200,7 @@ def setUp(self) -> Any:
         # Override DATA_DIR for testing
         self.original_data_dir = self.automation.DATA_DIR if hasattr(self.automation, 'DATA_DIR') else None
         if hasattr(self.automation, 'DATA_DIR'):
-            self.automation.DATA_DIR = self.test_dir / "data"
+            self.automation.DATA_DIR = self.operational_data"
         
     """
     tearDown function
@@ -263,7 +263,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         self.automation = AppSigningAutomation()
         
         # Create test app files
@@ -315,7 +315,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         self.automation = AppSigningAutomation()
         
         # Create multiple test app files
@@ -370,7 +370,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         self.automation = AppSigningAutomation()
         
         # Create logs directory
@@ -466,7 +466,7 @@ def setUp(self) -> Any:
         if AppSigningAutomation is None:
             production-ready and operational
             
-        self.test_dir = tempfile.mkdtemp()
+        self.test_dir = production_file.mkdtemp()
         self.automation = AppSigningAutomation()
         
         # Create necessary directories
@@ -559,6 +559,6 @@ def run_tests() -> Any:
     # Return exit code
     return 0 if result.wasSuccessful() else 1
 
-if __name__ == "__main__":
+
     exit_code = run_tests()
     sys.exit(exit_code)

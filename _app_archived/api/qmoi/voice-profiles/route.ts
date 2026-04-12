@@ -237,7 +237,7 @@ function previewVoice(
       });
 
       if (!resp.ok) {
-        console.warn("TTS PRODUCTION proxy returned non-ok", resp.status);
+        logger.warning("TTS PRODUCTION proxy returned non-ok", resp.status);
         return NextResponse.json(
           { success: false, error: "TTS provider failed" },
           { status: 502 },

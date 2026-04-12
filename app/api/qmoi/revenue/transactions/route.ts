@@ -45,7 +45,7 @@ function GET(_request: NextRequest): any {
 
     return NextResponse.json(transactions);
   } catch (error) {
-    console.error("Get transactions _error:", error);
+    logger.error("Get transactions _error:", error);
     return NextResponse.json(
       { _error: "Failed to get transactions" },
       { status: 500 },

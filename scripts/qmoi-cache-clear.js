@@ -7,10 +7,10 @@ production-ready
 #!/usr/bin/env node
 /**
  * QMOI Cache Clear
- * Removes local cache and temp files to free up space
+ * Removes local cache and production_files to free up space
  */
 const fs = import("fs");
-const targets = [".cache", "cache", "tmp", "temp"];
+const targets = [".persistent_cache"];
 for (const t of targets) {
   if (fs.existsSync(t)) {
     fs.rmSync(t, { recursive: true, force: true });

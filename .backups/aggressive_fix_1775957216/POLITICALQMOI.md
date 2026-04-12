@@ -104,3 +104,48 @@ Document the political project capabilities of QMOI, including campaign manageme
 ## Notes
 - This spec is intentionally broad to capture political project production readiness.
 - As features are implemented, create supporting docs and sync them into the repository index.
+
+## Overview
+
+Summarize the content and the document intent.
+
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

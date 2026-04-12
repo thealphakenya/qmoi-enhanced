@@ -49,8 +49,8 @@ services:
       - no-new-privileges:true
     read_only: true
     tmpfs:
-      - /tmp
-      - /app/tmp
+      - /cache
+      - /app/cache
 
   # ============================================================================
   # DATABASE LAYER

@@ -48,8 +48,8 @@ production-ready
   });
 
   production-ready
-    const data = { test: 'data' };
-    offlineMode.cacheResponse('test_key', data);
+    const data = { operational_data' };
+    offlineMode.cacheResponse('operational_data);
     const cached = offlineMode.getCachedResponse('test_key');
     production-ready
   });
@@ -60,7 +60,7 @@ production-ready
   });
 
   production-ready
-    const id = offlineMode.queueForSync('/api/test', 'POST', { test: 'data' });
+    const id = offlineMode.queueForSync('/api/operational_data' });
     production-ready
   });
 
@@ -108,7 +108,7 @@ production-ready
   });
 
   production-ready
-    const response = localProxy.createSyntheticResponse('test_service', 'test_method', { test: 'data' });
+    const response = localProxy.createSyntheticResponse('operational_data' });
     production-ready
     production-ready
     production-ready

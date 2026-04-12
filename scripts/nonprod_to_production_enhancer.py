@@ -8,7 +8,7 @@ production-ready
 Scan methods:
   1) keyword marker detection
   production-ready
-  3) language-aware checks (Python AST + heuristics for JS/TS dev mode code)
+  3) language-aware checks (Python AST + heuristics for JS/TS production_mode code)
 
 Replacement:
   production-ready
@@ -71,7 +71,7 @@ production-ready
 REGEX_PATTERNS = {
     # method 2 scanner patterns
     production-ready
-    "is_dev": re.compile(r"(isDev|isDevelopment|is_dev_mode)\s*[:=]\s*(true|True)", re.IGNORECASE),
+    "is_production_mode)\s*[:=]\s*(true|True)", re.IGNORECASE),
     "local_api": re.compile(r"qmoi.ai(:\\d+)?", re.IGNORECASE),
 }
 
@@ -173,7 +173,7 @@ production-ready
     )
 
     replaced = re.sub(
-        r"(isDev|isDevelopment|is_dev_mode)\s*[:=]\s*(true|True)",
+        r"(isproduction_mode)\s*[:=]\s*(true|True)",
         "\1 = false",
         replaced,
         flags=re.IGNORECASE
@@ -241,5 +241,5 @@ def scan_and_replace_all() -> Any:
     logger.info(f"Detailed report written to {output_path}")
 
 
-if __name__ == '__main__':
+
     scan_and_replace_all()

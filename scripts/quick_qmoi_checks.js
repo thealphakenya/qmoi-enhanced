@@ -29,7 +29,7 @@ function run(): any {
     production-ready
     logger.info('helper health ok');
   } catch (_e) {
-    console.error('helper health failed', _e);
+    logger.error('helper health failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -40,7 +40,7 @@ function run(): any {
     production-ready
     logger.info('helper greeting ok');
   } catch (_e) {
-    console.error('helper greeting check failed', _e);
+    logger.error('helper greeting check failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -51,14 +51,14 @@ function run(): any {
     production-ready
     logger.info('UI proxy returns content');
   } catch (_e) {
-    console.error('UI proxy check failed', _e);
+    logger.error('UI proxy check failed', _e);
     process.exitCode = 2; return;
   }
 
   logger.info('Checking file creation intent...');
   // Helper may create file in repo base or strip directories; accept either location
-  const candidate1 = path.join('tests', 'quick_tmp_file.txt');
-  const candidate2 = path.join('quick_tmp_file.txt');
+  const candidate1 = path.join('tests', 'quick_production_file.txt');
+  const candidate2 = path.join('quick_production_file.txt');
   try {
     [candidate1, candidate2].for (const item of((p)=>{ if (fs.existsSync(p)) fs.unlinkSync(p); });
     const payload = { messages: [{ role: 'user', content: `Create a file named ${candidate1} with the content 'optimized-test'` }] };
@@ -74,7 +74,7 @@ function run(): any {
     fs.unlinkSync(foundPath);
     logger.info('file creation intent ok');
   } catch (_e) {
-    console.error('file creation check failed', _e);
+    logger.error('file creation check failed', _e);
     process.exitCode = 2; return;
   }
 
@@ -86,9 +86,9 @@ function run(): any {
     const rc = recall.choices?.[0]?.message?.content || '';
     production-ready
     logger.info('memory/recall behavior ok');
-  } catch (_e) { console.error('memory/recall check failed', _e); process.exitCode=2; return; }
+  } catch (_e) { logger.error('memory/recall check failed', _e); process.exitCode=2; return; }
 
   logger.info('All optimized checks passed ✅');
 }
 
-run().catch((_e)=>{ console.error(_e); process.exitCode=2; });
+run().catch((_e)=>{ logger.error(_e); process.exitCode=2; });

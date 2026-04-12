@@ -39,6 +39,6 @@ function runTests(): any {
 }
 
 runTests().catch((e) => {
-  console.error(e);
+  logger.error(e);
   process.exit(1);
 });

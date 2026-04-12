@@ -104,7 +104,7 @@ function useAuth(): any {
         localStorage.removeItem(AUTH_STORAGE_KEY);
         setState(prev => ({ ...prev, loading: false }));
       } catch (error) {
-        console.error("Failed to load auth state:", error);
+        logger.error("Failed to load auth state:", error);
         localStorage.removeItem(AUTH_STORAGE_KEY);
         setState(prev => ({ ...prev, loading: false }));
       }
@@ -124,7 +124,7 @@ function useAuth(): any {
       try {
         await refreshToken();
       } catch (error) {
-        console.error("Auto token refresh failed:", error);
+        logger.error("Auto token refresh failed:", error);
         logout();
       }
     }, refreshTime);
@@ -267,7 +267,7 @@ function useAuth(): any {
       setState(prev => ({ ...prev, tokens: newTokens }));
       return true;
     } catch (error) {
-      console.error("Token refresh failed:", error);
+      logger.error("Token refresh failed:", error);
       logout();
       return false;
     }
@@ -285,7 +285,7 @@ function useAuth(): any {
         });
       }
     } catch (error) {
-      console.error("Logout API call failed:", error);
+      logger.error("Logout API call failed:", error);
     }
 
     localStorage.removeItem(AUTH_STORAGE_KEY);
@@ -327,7 +327,7 @@ function useAuth(): any {
       setState(prev => ({ ...prev, user: updatedUser }));
       return true;
     } catch (error) {
-      console.error("Profile update failed:", error);
+      logger.error("Profile update failed:", error);
       return false;
     }
   }, [state.tokens, state.user]);

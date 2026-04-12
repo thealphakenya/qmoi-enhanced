@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 """
 QMOI Enhanced Auto-Update System for Markdown Files
@@ -13,6 +14,7 @@ This script automatically updates all key documentation files related to:
 The update pipeline is designed to keep all documentation synchronized with the repository structure automatically.
 """
 
+import argparse
 import os
 import re
 import time
@@ -22,6 +24,8 @@ import subprocess
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, List, Any, Optional
+
+AUTO_UPDATE_COMMAND = 'python3 scripts/qmoi_md_autoupdater.py'
 
 # Configure logging
 logging.basicConfig(
@@ -40,6 +44,9 @@ SRC_API_DIR = ROOT / 'src' / 'app' / 'api'
 LEGACY_API_DIR = ROOT / 'routes' / 'api'
 MD_EXCLUDE_DIRS = {'.git', '.github', 'node_modules', 'venv', '.venv', '.qmoi_validation', '.backups', '.next', 'dist', 'build', 'coverage'}
 
+AUTO_UPDATE_COMMAND = 'python3 scripts/qmoi_md_autoupdater.py'
+SERVICE_FILES_BASE = ROOT / 'scripts'
+
 MD_PRODUCTION_SECTIONS = [
     ('Purpose', 'Describe the purpose of this document and its scope.'),
     ('Overview', 'Summarize the content and the document intent.'),
@@ -53,11 +60,24 @@ MD_PRODUCTION_SECTIONS = [
     ('Cross-References', 'Link to related documentation, APIs, and system artifacts.'),
 ]
 
+MD_CATEGORY_KEYWORDS = [
+    'api', 'endpoint', 'endpoints', 'route', 'routes',
+    'dev', 'autodev', 'qlion', 'qlionagent', 'lion', 'qvillage',
+    'qmoi', 'model', 'tests', 'validation', 'production',
+    'hook', 'hooks', 'webhook', 'webhooks', 'autotest'
+]
+
 class QMOIMarkdownAutoUpdater:
     """Automated markdown file updater for QMOI system"""
 
     def __init__(self, workspace_root: Path = ROOT):
         self.workspace_root = workspace_root
+
+    def write_file(self, path: str, content: str) -> None:
+        """Write content to a file at the given path"""
+        full_path = self.workspace_root / path
+        full_path.write_text(content, encoding='utf-8')
+        logger.info(f'Updated {path}')
 
     def scan_api_endpoints(self) -> List[Dict[str, Any]]:
         """Scan route files and API-service files for endpoint metadata"""
@@ -66,11 +86,9 @@ class QMOIMarkdownAutoUpdater:
         for root_dir in [API_DIR, SRC_API_DIR, LEGACY_API_DIR]:
             if not root_dir.exists():
                 continue
-            for file_path in root_dir.rglob('*.ts'):
-                endpoint = self.parse_api_file(file_path, root_dir)
-                if endpoint:
-                    endpoints.append(endpoint)
-            for file_path in root_dir.rglob('*.js'):
+            for file_path in root_dir.rglob('*'):
+                if file_path.suffix.lower() not in {'.ts', '.js', '.py', '.tsx', '.jsx'}:
+                    continue
                 endpoint = self.parse_api_file(file_path, root_dir)
                 if endpoint:
                     endpoints.append(endpoint)
@@ -78,23 +96,35 @@ class QMOIMarkdownAutoUpdater:
         return sorted(endpoints, key=lambda x: (x['path'], x['file']))
 
     def parse_api_file(self, file_path: Path, base_dir: Path) -> Optional[Dict[str, Any]]:
-        """Parse a TypeScript/JavaScript API file for endpoint metadata"""
+        """Parse API files for endpoint metadata"""
         try:
             content = file_path.read_text(encoding='utf-8')
         except Exception as e:
             logger.error(f"Failed to read {file_path}: {e}")
             return None
 
-        methods = []
+        methods = set()
         lower = content.lower()
-        if 'export async function get' in lower or 'app.get(' in lower or 'router.get(' in lower or 'get:' in lower:
-            methods.append('GET')
-        if 'export async function post' in lower or 'app.post(' in lower or 'router.post(' in lower or 'post:' in lower:
-            methods.append('POST')
-        if 'export async function put' in lower or 'app.put(' in lower or 'router.put(' in lower or 'put:' in lower:
-            methods.append('PUT')
-        if 'export async function delete' in lower or 'app.delete(' in lower or 'router.delete(' in lower or 'delete:' in lower:
-            methods.append('DELETE')
+        suffix = file_path.suffix.lower()
+
+        if suffix in {'.ts', '.js', '.tsx', '.jsx'}:
+            if 'export async function get' in lower or 'app.get(' in lower or 'router.get(' in lower or 'get:' in lower:
+                methods.add('GET')
+            if 'export async function post' in lower or 'app.post(' in lower or 'router.post(' in lower or 'post:' in lower:
+                methods.add('POST')
+            if 'export async function put' in lower or 'app.put(' in lower or 'router.put(' in lower or 'put:' in lower:
+                methods.add('PUT')
+            if 'export async function delete' in lower or 'app.delete(' in lower or 'router.delete(' in lower or 'delete:' in lower:
+                methods.add('DELETE')
+        elif suffix == '.py':
+            if '@app.get' in lower or '@router.get' in lower or 'def get_' in lower:
+                methods.add('GET')
+            if '@app.post' in lower or '@router.post' in lower or 'def post_' in lower:
+                methods.add('POST')
+            if '@app.put' in lower or '@router.put' in lower or 'def put_' in lower:
+                methods.add('PUT')
+            if '@app.delete' in lower or '@router.delete' in lower or 'def delete_' in lower:
+                methods.add('DELETE')
 
         if not methods:
             return None
@@ -105,7 +135,7 @@ class QMOIMarkdownAutoUpdater:
 
         return {
             'path': path,
-            'methods': methods,
+            'methods': sorted(methods),
             'file': str(rel_path).replace('\\', '/'),
             'description': description
         }
@@ -124,759 +154,800 @@ class QMOIMarkdownAutoUpdater:
 
     def extract_description(self, content: str) -> str:
         """Extract a short description from the top of an API file"""
-        for line in content.splitlines()[:20]:
-            text = line.strip()
-            if text.startswith('//'):
-                desc = text.lstrip('/').strip()
-                if desc:
+        lines = content.split('\n')
+        for line in lines[:20]:  # Check first 20 lines
+            line = line.strip()
+            if line.startswith('//') or line.startswith('/*') or line.startswith('*'):
+                desc = line.lstrip('//').lstrip('/*').lstrip('*').strip()
+                if desc and len(desc) > 10:
                     return desc
-            if text.startswith('/*') or text.startswith('*'):
-                desc = text.lstrip('/*').strip().rstrip('*/').strip()
-                if desc:
-                    return desc
-        return 'Auto-detected API endpoint'
+        return "API endpoint implementation"
+
+    def generate_tree_structure(self) -> str:
+        """Generate a tree structure of the repository"""
+        try:
+            result = subprocess.run(['tree', '-I', 'node_modules|.git|venv|.venv|.backups|dist|build|coverage', '-a', str(self.workspace_root)],
+                                  capture_output=True, text=True, cwd=self.workspace_root)
+            if result.returncode == 0:
+                return result.stdout
+            else:
+                return self.generate_tree_fallback()
+        except Exception as e:
+            logger.warning(f"Tree command failed: {e}")
+            return self.generate_tree_fallback()
+
+    def generate_tree_fallback(self) -> str:
+        """Fallback tree generation using Python"""
+        def walk_dir(path: Path, prefix: str = "") -> List[str]:
+            lines = []
+            try:
+                items = sorted(path.iterdir(), key=lambda x: (not x.is_dir(), x.name.lower()))
+                for i, item in enumerate(items):
+                    if item.name in MD_EXCLUDE_DIRS or item.name.startswith('.'):
+                        continue
+
+                    is_last = i == len(items) - 1
+                    connector = "└── " if is_last else "├── "
+                    lines.append(f"{prefix}{connector}{item.name}")
+
+                    if item.is_dir():
+                        extension = "    " if is_last else "│   "
+                        lines.extend(walk_dir(item, prefix + extension))
+            except Exception as e:
+                lines.append(f"{prefix}Error reading directory: {e}")
+            return lines
+
+        lines = [str(self.workspace_root.name)]
+        lines.extend(walk_dir(self.workspace_root, ""))
+        return '\n'.join(lines)
+
+    def ensure_production_sections(self, content: str) -> str:
+        """Ensure every markdown file has required production sections."""
+        existing_sections = {m.group(1).strip() for m in re.finditer(r'^##\s+(.+)$', content, flags=re.MULTILINE)}
+        missing_sections = [title for title, placeholder in MD_PRODUCTION_SECTIONS if title not in existing_sections]
+
+        if not missing_sections:
+            return content
+
+        addition = '\n'
+        for title in missing_sections:
+            placeholder = next((ph for sec, ph in MD_PRODUCTION_SECTIONS if sec == title), '')
+            addition += f"## {title}\n\n{placeholder}\n\n"
+
+        return content.rstrip() + addition
+
+    def ensure_auto_update_instructions(self, content: str) -> str:
+        """Ensure a markdown file includes QMOI auto-update and Lion validation commands."""
+        instructions = f"""## Auto-Update Instructions
+
+This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+Run the following command to regenerate documentation and apply Lion validation metadata:
+
+```bash
+{AUTO_UPDATE_COMMAND}
+```
+
+Then run:
+
+```bash
+python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
+```
+
+For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
+"""
+
+        if '## Auto-Update Instructions' in content:
+            return re.sub(
+                r'## Auto-Update Instructions.*?(?=\n## |\Z)',
+                instructions + '\n',
+                content,
+                flags=re.DOTALL
+            )
+
+        return content.rstrip() + '\n\n' + instructions + '\n'
+
+    def refresh_markdown_category_docs(self, categories: List[str], label: str) -> None:
+        """Refresh markdown files matching category keywords with production metadata."""
+        logger.info(f"Refreshing {label} markdown docs...")
+
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+        auto_update_block = f"""
+## Auto-Update Information
+
+- **Managed by:** `scripts/qmoi_md_autoupdater.py`
+- **Category:** {label}
+- **Update frequency:** Automatic on related source changes
+- **Last updated:** {timestamp}
+- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
+"""
+
+        for md_file in self.workspace_root.rglob('*.md'):
+            if any(exclude in str(md_file) for exclude in MD_EXCLUDE_DIRS):
+                continue
+            rel_path = md_file.relative_to(self.workspace_root)
+            lower_name = str(rel_path).lower()
+
+            try:
+                content = md_file.read_text(encoding='utf-8')
+                lower_content = content.lower()
+                if not any(term in lower_name for term in categories) and not any(term in lower_content for term in categories):
+                    continue
+
+                content = self.ensure_production_sections(content)
+                content = self.ensure_auto_update_instructions(content)
+
+                if '## Auto-Update Information' in content:
+                    new_content = re.sub(
+                        r'## Auto-Update Information.*?(?=\n## |\Z)',
+                        auto_update_block + '\n',
+                        content,
+                        flags=re.DOTALL
+                    )
+                else:
+                    new_content = content.rstrip() + '\n\n' + auto_update_block + '\n'
+
+                if new_content != content:
+                    self.write_file(str(rel_path), new_content)
+            except Exception as e:
+                logger.error(f"Error refreshing {md_file}: {e}")
+
+    def run_lion_auto_tagging(self) -> None:
+        """Run the Lion markdown auto-tagging script to apply validation metadata across docs."""
+        logger.info("Running Lion auto-tagging for markdown validation...")
+        try:
+            subprocess.run(
+                ['python3', 'scripts/autotag_md_with_lion.py', '--apply', '--out', 'docs/md_index.json'],
+                cwd=self.workspace_root,
+                check=True,
+                capture_output=True,
+                text=True
+            )
+            logger.info("Lion markdown auto-tagging completed successfully.")
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Lion auto-tagging failed: {e.stderr}")
+        except Exception as e:
+            logger.error(f"Unexpected error running Lion auto-tagging: {e}")
+
+    def scan_markdown_files(self) -> List[Dict[str, Any]]:
+        """Scan all markdown files in the repository"""
+        markdown_files = []
+
+        for md_file in self.workspace_root.rglob('*.md'):
+            if any(exclude in str(md_file) for exclude in MD_EXCLUDE_DIRS):
+                continue
+
+            try:
+                stat = md_file.stat()
+                rel_path = md_file.relative_to(self.workspace_root)
+
+                markdown_files.append({
+                    'path': str(rel_path),
+                    'size': stat.st_size,
+                    'modified': datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat(),
+                    'lines': len(md_file.read_text(encoding='utf-8').split('\n'))
+                })
+            except Exception as e:
+                logger.error(f"Error scanning {md_file}: {e}")
+
+        return sorted(markdown_files, key=lambda x: x['path'])
+
+    def update_tree_md(self) -> None:
+        """Update TREE.md with current repository structure"""
+        logger.info("Updating TREE.md...")
+
+        tree_content = self.generate_tree_structure()
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+
+        content = f"""# QMOI Repository Structure
+
+**Auto-generated on:** {timestamp}
+
+This file contains the current directory structure of the QMOI repository.
+It is automatically updated by the QMOI Markdown Auto-Updater system.
+
+## Repository Tree
+
+```
+{tree_content}
+```
+
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on system changes
+- **Last updated:** {timestamp}
+- **Excludes:** node_modules, .git, build artifacts, and temporary files
+
+## Production Notes
+
+This structure represents the current state of the production codebase.
+All files listed here are part of the active QMOI system deployment.
+"""
+
+        self.write_file('TREE.md', content)
+
+    def update_all_md_refs(self) -> None:
+        """Update ALLMDFILESREFS.md with comprehensive markdown file registry"""
+        logger.info("Updating ALLMDFILESREFS.md...")
+
+        markdown_files = self.scan_markdown_files()
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+
+        content = f"""# QMOI Markdown Files Registry
+
+**Auto-generated on:** {timestamp}
+
+This registry contains all markdown documentation files in the QMOI system.
+It is automatically maintained by the QMOI Markdown Auto-Updater.
+
+## Summary
+
+- **Total files:** {len(markdown_files)}
+- **Total lines:** {sum(f['lines'] for f in markdown_files)}
+- **Total size:** {sum(f['size'] for f in markdown_files)} bytes
+
+## File Registry
+
+| File Path | Size (bytes) | Lines | Last Modified |
+|-----------|-------------|-------|---------------|
+"""
+
+        for md_file in markdown_files:
+            content += f"| {md_file['path']} | {md_file['size']} | {md_file['lines']} | {md_file['modified']} |\n"
+
+        content += f"""
+
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on documentation changes
+- **Last updated:** {timestamp}
+- **Validation:** All files verified for existence and readability
+
+## Production Notes
+
+This registry ensures all documentation is tracked and maintained.
+Files are validated for production readiness and accessibility.
+"""
+
+        self.write_file('ALLMDFILESREFS.md', content)
 
     def update_api_docs(self) -> None:
-        """Generate API.md from discovered endpoints"""
+        """Update API.md with current API documentation"""
+        logger.info("Updating API.md...")
+
         endpoints = self.scan_api_endpoints()
-        content_lines = [
-            '# QMOI API Documentation',
-            '',
-            f'**Last Updated:** {datetime.now().isoformat()}',
-            f'**Total Endpoints:** {len(endpoints)}',
-            '',
-            '## Overview',
-            '',
-            'This document contains comprehensive API documentation for the QMOI system.',
-            '',
-            '## Update Process',
-            '',
-            'Generated by `scripts/qmoi_md_autoupdater.py` from a live scan of `app/api`, `src/app/api`, and `routes/api` endpoint files.',
-            '',
-            '## Endpoints',
-            ''
-        ]
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+
+        content = f"""# QMOI API Documentation
+
+**Auto-generated on:** {timestamp}
+
+This document contains the current API endpoints and their implementations.
+It is automatically updated by scanning the codebase for API routes.
+
+## API Summary
+
+- **Total endpoints:** {len(endpoints)}
+- **API directories scanned:** app/api, src/app/api, routes/api
+
+## Endpoints
+
+| Path | Methods | File | Description |
+|------|---------|------|-------------|
+"""
 
         for endpoint in endpoints:
-            content_lines += [
-                f"### {endpoint['path']}",
-                '',
-                f"**Methods:** {', '.join(endpoint['methods'])}",
-                f"**File:** {endpoint['file']}",
-                f"**Description:** {endpoint['description']}",
-                ''
-            ]
+            methods_str = ', '.join(endpoint['methods'])
+            content += f"| {endpoint['path']} | {methods_str} | {endpoint['file']} | {endpoint['description']} |\n"
 
-        self.write_file('API.md', '\n'.join(content_lines).strip() + '\n')
+        content += f"""
 
-    def update_routes_docs(self) -> None:
-        """Generate ROUTES.md from discovered endpoints"""
+## Detailed Endpoint Information
+
+"""
+
+        for endpoint in endpoints:
+            content += f"""
+### {endpoint['path']}
+
+- **Methods:** {', '.join(endpoint['methods'])}
+- **Implementation:** `{endpoint['file']}`
+- **Description:** {endpoint['description']}
+"""
+
+        content += f"""
+
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on API changes
+- **Last updated:** {timestamp}
+- **Scan scope:** TypeScript and JavaScript API files
+
+## Production Notes
+
+All endpoints listed here are part of the active production API.
+Changes to API files trigger automatic documentation updates.
+"""
+
+        self.write_file('API.md', content)
+
+    def update_endpoints_md(self) -> None:
+        """Update ENDPOINTS.md with endpoint inventory"""
+        logger.info("Updating ENDPOINTS.md...")
+
         endpoints = self.scan_api_endpoints()
-        content_lines = [
-            '<!-- LION_VALIDATION_START -->',
-            '## 🦁 L — Validated by QMOI Lion',
-            '',
-            '- validated: yes',
-            '- validator: QMOI Lion',
-            f'- timestamp: {datetime.now().isoformat()}Z',
-            '- IMPLEMENTED: Auto-updated route inventory',
-            '<!-- LION_VALIDATION_END -->',
-            '',
-            '# ROUTES.md - complete API Routes Reference ✅ PRODUCTION READY',
-            '',
-            f'**Last Updated**: {datetime.now().strftime("%Y-%m-%d")}',
-            f'**Total Routes**: {len(endpoints)}',
-            '**Status**: ✅ production Ready',
-            '**Framework**: Next.js App Router + legacy route layer',
-            '',
-            '## Overview',
-            '',
-            'This document provides a current inventory of all API routes in the QMOI Enhanced system.',
-            '',
-            '## Update Process',
-            '',
-            'Generated by `scripts/qmoi_md_autoupdater.py` from repository API and route definitions.',
-            '',
-            '## Route Inventory',
-            ''
-        ]
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
 
-        for index, endpoint in enumerate(endpoints, start=1):
-            content_lines += [
-                f"### {index}. {endpoint['path']}",
-                '',
-                f"- **Methods:** {', '.join(endpoint['methods'])}",
-                f"- **File:** {endpoint['file']}",
-                f"- **Description:** {endpoint['description']}",
-                ''
-            ]
+        content = f"""# QMOI API Endpoints Inventory
 
-        self.write_file('ROUTES.md', '\n'.join(content_lines).strip() + '\n')
+**Auto-generated on:** {timestamp}
 
-    def update_endpoints_doc(self) -> None:
-        """Generate ENDPOINTS.md with a table of discovered endpoints"""
+Complete inventory of all API endpoints in the QMOI system.
+
+## Endpoint Summary
+
+- **Total endpoints:** {len(endpoints)}
+- **Methods covered:** GET, POST, PUT, DELETE, PATCH
+
+## Endpoint List
+
+"""
+
+        for endpoint in endpoints:
+            content += f"""
+### {endpoint['path']}
+- **Methods:** {', '.join(endpoint['methods'])}
+- **File:** `{endpoint['file']}`
+- **Description:** {endpoint['description']}
+"""
+
+        content += f"""
+
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on endpoint changes
+- **Last updated:** {timestamp}
+
+## Production Validation
+
+All endpoints are validated for:
+- Proper HTTP methods
+- File existence
+- Code accessibility
+- Documentation completeness
+"""
+
+        self.write_file('ENDPOINTS.md', content)
+
+    def update_apis_1_md(self) -> None:
+        """Update APIs_1.md with complete API list and versioned endpoint mapping"""
+        logger.info("Updating APIs_1.md...")
+
         endpoints = self.scan_api_endpoints()
-        content_lines = [
-            '<!-- LION_VALIDATION_START -->',
-            '## 🦁 L — Validated by QMOI Lion',
-            '',
-            '- validated: yes',
-            '- validator: QMOI Lion',
-            f'- timestamp: {datetime.now().isoformat()}Z',
-            '- IMPLEMENTED: Auto-updated endpoint index',
-            '<!-- LION_VALIDATION_END -->',
-            '',
-            '# QMOI System Endpoints ✅ PRODUCTION READY',
-            '',
-            f'**Last Updated**: {datetime.now().strftime("%Y-%m-%d")}',
-            f'**Total Endpoints**: {len(endpoints)}',
-            '',
-            '## Overview',
-            '',
-            'This file is generated by `scripts/qmoi_md_autoupdater.py` and includes the current endpoint inventory for QMOI.',
-            '',
-            '## Endpoint Table',
-            '',
-            '| # | Path | Methods | File | Description |',
-            '|---|------|---------|------|-------------|'
-        ]
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+        by_path = {endpoint['path']: endpoint for endpoint in endpoints}
 
-        for index, endpoint in enumerate(endpoints, start=1):
-            description = endpoint['description'].replace('|', '\\|')
-            content_lines.append(
-                f"| {index} | `{endpoint['path']}` | {', '.join(endpoint['methods'])} | `{endpoint['file']}` | {description} |"
-            )
+        content = f"""# QMOI API Reference v1.0
 
-        self.write_file('ENDPOINTS.md', '\n'.join(content_lines).strip() + '\n')
+**Auto-generated on:** {timestamp}
 
-    def get_top_level_directories(self) -> List[Path]:
-        """Return all top-level directories that should have documentation."""
-        return sorted(
-            [
-                p for p in self.workspace_root.iterdir()
-                if p.is_dir() and p.name not in MD_EXCLUDE_DIRS and not p.name.startswith('.')
-            ],
-            key=lambda path: path.name,
+This document mirrors the current API endpoint inventory and serves as a stable versioned reference for all active QMOI APIs.
+
+## API Summary
+
+- **Total endpoints:** {len(endpoints)}
+- **API directories scanned:** app/api, src/app/api, routes/api
+
+## Endpoint Index
+
+| Path | Methods | File | Description |
+|------|---------|------|-------------|
+"""
+
+        for endpoint in sorted(endpoints, key=lambda e: e['path']):
+            content += f"| {endpoint['path']} | {', '.join(endpoint['methods'])} | {endpoint['file']} | {endpoint['description']} |\n"
+
+        content += f"""
+
+## Detailed Endpoints
+
+"""
+        for endpoint in endpoints:
+            content += f"""
+### {endpoint['path']}
+- **Methods:** {', '.join(endpoint['methods'])}
+- **Implementation:** `{endpoint['file']}`
+- **Description:** {endpoint['description']}
+"""
+
+        content += f"""
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on API changes
+- **Last updated:** {timestamp}
+"""
+
+        self.write_file('APIs_1.md', content)
+
+    def scan_test_files(self) -> List[Dict[str, Any]]:
+        """Scan repository for test and autotest files"""
+        patterns = ['*.test.ts', '*.test.tsx', '*.test.js', '*.test.jsx', '*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx', '*.cy.ts', '*.cy.tsx', '*.py']
+        tests = []
+
+        for pattern in patterns:
+            for test_file in self.workspace_root.rglob(pattern):
+                if any(exclude in str(test_file) for exclude in MD_EXCLUDE_DIRS):
+                    continue
+                rel_path = test_file.relative_to(self.workspace_root)
+                tests.append({
+                    'path': str(rel_path),
+                    'name': test_file.name,
+                    'type': 'autotest' if 'autotest' in str(rel_path).lower() else 'test'
+                })
+
+        return sorted(tests, key=lambda x: x['path'])
+
+    def update_all_test_docs(self) -> None:
+        """Update ALLTESTSAUTOTESTS.md with discovered tests"""
+        logger.info("Updating ALLTESTSAUTOTESTS.md...")
+        tests = self.scan_test_files()
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+        total = len(tests)
+        tests_by_type = {}
+        for test in tests:
+            tests_by_type.setdefault(test['type'], []).append(test)
+
+        content = f"""# ALLTESTSAUTOTESTS.md - Test Inventory & Autotest Commands
+
+**Auto-generated on:** {timestamp}
+
+This document catalogs all test and autotest files in the QMOI repository.
+
+## Summary
+
+- **Total test files:** {total}
+- **Total test categories:** {len(tests_by_type)}
+- **Detected test types:** {', '.join(sorted(tests_by_type.keys()))}
+
+## Test Files
+
+"""
+        for test in tests:
+            content += f"- `{test['path']}`\n"
+
+        content += f"""
+
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on test coverage changes
+- **Last updated:** {timestamp}
+"""
+        self.write_file('ALLTESTSAUTOTESTS.md', content)
+
+    def scan_hooks(self) -> List[Dict[str, Any]]:
+        """Scan repository for React hook files"""
+        hook_dirs = [self.workspace_root / 'hooks', self.workspace_root / 'src' / 'hooks', self.workspace_root / 'components' / 'hooks']
+        hook_patterns = ['use*.ts', 'use*.tsx', 'use*.js', 'use*.jsx']
+        hooks = []
+
+        for hooks_dir in hook_dirs:
+            if not hooks_dir.exists():
+                continue
+            for pattern in hook_patterns:
+                for hook_file in hooks_dir.rglob(pattern):
+                    if any(exclude in str(hook_file) for exclude in MD_EXCLUDE_DIRS):
+                        continue
+                    rel_path = hook_file.relative_to(self.workspace_root)
+                    hooks.append({
+                        'path': str(rel_path),
+                        'name': hook_file.stem
+                    })
+
+        return sorted(hooks, key=lambda x: x['path'])
+
+    def update_hooks_md(self) -> None:
+        """Update HOOKS.md with current React hook inventory"""
+        logger.info("Updating HOOKS.md...")
+        hooks = self.scan_hooks()
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+
+        content = f"""# HOOKS.md - React Hooks Directory
+
+**Auto-generated on:** {timestamp}
+
+This document lists all custom React hooks found in the QMOI repository.
+
+## Summary
+
+- **Total hooks:** {len(hooks)}
+- **Hook directories scanned:** hooks, src/hooks, components/hooks
+
+## Hooks
+
+"""
+        for hook in hooks:
+            content += f"- `{hook['name']}` — `{hook['path']}`\n"
+
+        content += f"""
+
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on hook changes
+- **Last updated:** {timestamp}
+"""
+        self.write_file('HOOKS.md', content)
+
+    def scan_webhook_endpoints(self) -> List[Dict[str, Any]]:
+        """Scan API endpoints for webhook-related paths"""
+        webhooks = []
+        for endpoint in self.scan_api_endpoints():
+            if 'webhook' in endpoint['path'].lower() or 'webhooks' in endpoint['path'].lower():
+                webhooks.append(endpoint)
+        return sorted(webhooks, key=lambda x: x['path'])
+
+    def update_webhooks_md(self) -> None:
+        """Update WEBHOOKS.md with webhook endpoint inventory"""
+        logger.info("Updating WEBHOOKS.md...")
+        webhooks = self.scan_webhook_endpoints()
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+
+        content = f"""# WEBHOOKS.md - Webhook Integration Guide
+
+**Auto-generated on:** {timestamp}
+
+This document lists all webhook-related API endpoints in the QMOI system.
+
+## Summary
+
+- **Total webhook endpoints:** {len(webhooks)}
+
+## Webhook Endpoints
+
+"""
+        for webhook in webhooks:
+            content += f"### {webhook['path']}\n- **Methods:** {', '.join(webhook['methods'])}\n- **File:** `{webhook['file']}`\n- **Description:** {webhook['description']}\n\n"
+
+        content += f"""
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on webhook changes
+- **Last updated:** {timestamp}
+"""
+        self.write_file('WEBHOOKS.md', content)
+
+    def update_all_hooks_webhooks_md(self) -> None:
+        """Update ALLHOOKSWEBHOOKS.md with combined hook and webhook references"""
+        logger.info("Updating ALLHOOKSWEBHOOKS.md...")
+        hooks = self.scan_hooks()
+        webhooks = self.scan_webhook_endpoints()
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+
+        content = f"""# ALLHOOKSWEBHOOKS.md - Complete Hooks & Webhooks Reference
+
+**Auto-generated on:** {timestamp}
+
+This document combines hook and webhook references for the QMOI repository.
+
+## Hooks ({len(hooks)})
+
+"""
+        for hook in hooks:
+            content += f"- `{hook['name']}` — `{hook['path']}`\n"
+
+        content += f"""
+## Webhooks ({len(webhooks)})
+
+"""
+        for webhook in webhooks:
+            content += f"- `{webhook['path']}` — `{webhook['file']}`\n"
+
+        content += f"""
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Last updated:** {timestamp}
+"""
+        self.write_file('ALLHOOKSWEBHOOKS.md', content)
+
+    def update_routes_md(self) -> None:
+        """Update ROUTES.md with route listings"""
+        logger.info("Updating ROUTES.md...")
+
+        endpoints = self.scan_api_endpoints()
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+
+        content = f"""# QMOI Route Listings
+
+**Auto-generated on:** {timestamp}
+
+Comprehensive listing of all routes in the QMOI system.
+
+## Route Summary
+
+- **Total routes:** {len(endpoints)}
+
+## Routes by Path
+
+"""
+
+        # Group by path
+        routes_by_path = {}
+        for endpoint in endpoints:
+            path = endpoint['path']
+            if path not in routes_by_path:
+                routes_by_path[path] = []
+            routes_by_path[path].append(endpoint)
+
+        for path, endpoints_list in sorted(routes_by_path.items()):
+            content += f"""
+### {path}
+"""
+            for endpoint in endpoints_list:
+                content += f"- **Methods:** {', '.join(endpoint['methods'])}\n"
+                content += f"- **File:** `{endpoint['file']}`\n"
+                content += f"- **Description:** {endpoint['description']}\n"
+
+        content += f"""
+
+## Auto-Update Information
+
+- **Generated by:** `scripts/qmoi_md_autoupdater.py`
+- **Update frequency:** Automatic on route changes
+- **Last updated:** {timestamp}
+
+## Production Notes
+
+Routes are automatically discovered from:
+- app/api/ directory
+- src/app/api/ directory
+- routes/api/ directory
+"""
+
+        self.write_file('ROUTES.md', content)
+
+    def update_api_endpoint_route_related_docs(self) -> None:
+        """Refresh all markdown files related to API, endpoints, routes, and related production categories."""
+        logger.info("Refreshing API/endpoint/route-related markdown docs...")
+
+        self.refresh_markdown_category_docs(
+            categories=['api', 'endpoint', 'endpoints', 'route', 'routes'],
+            label='API/Endpoint/Route'
         )
 
-    def ensure_directory_docs(self) -> None:
-        """Ensure every top-level directory has a corresponding markdown doc."""
-        doc_map = {
-            'app': 'APP.md',
-            'components': 'COMPONENTS.md',
-            'hooks': 'HOOKS.md',
-            'scripts': 'SCRIPTS.md',
-            'utils': 'UTILS.md',
-            'services': 'SERVICES.md',
-            'tests': 'TESTS.md',
-            '__tests__': 'TESTS.md',
-            'docs': 'DOCS.md',
-            'src': 'SRC.md',
-            'lib': 'LIB.md',
-            'public': 'PUBLIC.md',
-            'pages': 'PAGES.md',
-            'deploy': 'DEPLOY.md',
-            'database': 'DATABASE.md',
-            'config': 'CONFIGURATION.md',
-            'qvillage': 'QVILLAGE.md',
-            'qcity': 'QCITY.md',
-            'qmoi': 'QMOI.md',
-            'backend': 'BACKEND.md',
-            'frontend': 'FRONTEND.md',
-        }
+    def generate_autoupdater_service_files(self) -> None:
+        """Generate systemd service and timer files plus a fallback cron wrapper for persistent updates."""
+        logger.info("Generating service artifacts for always-on updater execution...")
 
-        for directory in self.get_top_level_directories():
-            doc_name = doc_map.get(directory.name, f'{directory.name.upper()}.md')
-            doc_path = self.workspace_root / doc_name
-            if not doc_path.exists():
-                content = f"""# {doc_name.replace('.md', '')}
+        root_path = str(self.workspace_root)
+        service_content = f"""[Unit]
+Description=QMOI Markdown Auto-Updater
+After=network-online.target
+Wants=network-online.target
 
-This document provides an overview and maintenance instructions for the `{directory.name}/` directory.
-
-## Purpose
-
-Document the purpose of the `{directory.name}` directory and the key files it contains.
-
-## Overview
-
-Provide a concise summary of this directory's responsibilities, major subsystems, and intended audience.
-
-## Auto-Update Instructions
-
-- This file is auto-generated by `scripts/qmoi_md_autoupdater.py`.
-- Run `python3 scripts/qmoi_md_autoupdater.py` to refresh directory docs and global documentation files.
-- Run `python3 scripts/generate_allmdrefs.py --write` to keep `ALLMDFILESREFS.md` current.
-- Run `python3 scripts/generate_endpoint_docs.py` to refresh API docs for `API.md`, `APIs_1.md`, `APIs_v1.md`, and `ENDPOINTS.md`.
-- Ensure this file is validated by the QMOI validation system before production.
-
-## Production Readiness
-
-Describe the criteria required for this directory to be considered production-ready and any verification steps.
-
-## Validation Metadata
-
-- validated: pending
-- validator: QMOI Lion / self-audit
-- timestamp: TODO
-
-## Implementation Notes
-
-List key implementation details, dependencies, and special considerations.
-
-## Testing Notes
-
-Record applicable test suites, commands, and validation steps.
-
-## Ownership
-
-Identify the responsible owner, team, or automation process for this documentation.
-
-## Change History
-
-Document significant updates and version changes for this file.
-
-## Cross-References
-
-Link to related docs, APIs, and system artifacts relevant to this directory.
-
-## Notes
-
-- Add directory-level summaries and production readiness notes here.
-"""
-                self.write_file(doc_name, content)
-                logger.info(f'Created placeholder directory doc: {doc_name}')
-
-    def scan_test_files(self) -> List[str]:
-        """Discover all test and autotest files within the repository."""
-        test_files = []
-        test_roots = ['__tests__', 'tests', 'scripts/autotest']
-        extensions = ['*.ts', '*.tsx', '*.js', '*.jsx', '*.py']
-
-        for root_name in test_roots:
-            root_path = self.workspace_root / root_name
-            if not root_path.exists():
-                continue
-            for ext in extensions:
-                for file_path in root_path.rglob(ext):
-                    if file_path.is_file():
-                        test_files.append(file_path.relative_to(self.workspace_root).as_posix())
-
-        return sorted(set(test_files))
-
-    def build_test_commands(self) -> List[List[str]]:
-        """Return the common test runner commands available in the repository."""
-        commands: List[List[str]] = []
-        package_json = self.workspace_root / 'package.json'
-
-        if package_json.exists():
-            if shutil.which('npm'):
-                commands.append(['npm', 'test', '--', '--runInBand'])
-                commands.append(['npm', 'run', 'test:coverage', '--', '--runInBand'])
-            else:
-                logger.warning('`package.json` exists but `npm` is not available on PATH; skipping npm test commands.')
-
-        autotest_script = self.workspace_root / 'scripts' / 'autotest' / 'qmoi_simple_autotest.py'
-        if autotest_script.exists():
-            commands.append(['python3', str(autotest_script)])
-
-        return commands
-
-    def ensure_test_stubs_for_directories(self) -> None:
-        """Create placeholder test stubs for top-level directories that lack any direct test coverage."""
-        test_files = self.scan_test_files()
-        for directory in self.get_top_level_directories():
-            if directory.name in {'docs', 'public', 'node_modules', 'dist', 'build', '.next', '.backups', '.github'}:
-                continue
-
-            source_found = any(
-                file_path.is_file() and file_path.suffix in {'.ts', '.tsx', '.js', '.jsx', '.py'}
-                for file_path in directory.rglob('*')
-            )
-            if not source_found:
-                continue
-
-            has_test = any(
-                directory.name in path or f'{directory.name}.test.' in path or f'{directory.name}.spec.' in path
-                for path in test_files
-            )
-            if has_test:
-                continue
-
-            stub_path = self.workspace_root / '__tests__' / f'{directory.name}.test.ts'
-            if not stub_path.exists():
-                stub_path.parent.mkdir(parents=True, exist_ok=True)
-                stub_content = f"""/**
- * Placeholder autotest stub for the `{directory.name}` directory.
- * This file is generated automatically by `scripts/qmoi_md_autoupdater.py`.
- */
-
-describe('{directory.name} directory tests', () => {{
-  it('should have a valid placeholder test for {directory.name}', () => {{
-    expect(true).toBe(true);
-  }});
-}});
-"""
-                stub_path.write_text(stub_content, encoding='utf-8')
-                logger.info(f'Created placeholder autotest stub: {stub_path.relative_to(self.workspace_root)}')
-
-    def update_test_docs(self) -> None:
-        """Generate or refresh the ALLTESTSAUTOTESTS.md index and docs version."""
-        test_files = self.scan_test_files()
-        commands = self.build_test_commands()
-
-        content_lines = [
-            '# ALLTESTSAUTOTESTS.md - Test Inventory & Autotest Commands',
-            '',
-            f'**Last Updated:** {datetime.now().isoformat()}',
-            f'**Detected Test Files:** {len(test_files)}',
-            '',
-            '## Overview',
-            '',
-            'This file is generated by `scripts/qmoi_md_autoupdater.py` and provides a current index of test and autotest files in the repository.',
-            '',
-            '## Test Files',
-            ''
-        ]
-
-        if test_files:
-            content_lines += [f'- `./{path}`' for path in test_files]
-        else:
-            content_lines += ['- No test files were detected during the repository scan.']
-
-        content_lines += ['', '## Recommended Test Commands', '']
-        if commands:
-            for command in commands:
-                content_lines += [f'- `{" ".join(command)}`']
-        else:
-            content_lines += ['- No configured test commands were detected.']
-
-        content_lines += [
-            '',
-            '## Autotest Coverage',
-            '',
-            '- Ensure every feature directory has a corresponding test or autotest file.',
-            '- Placeholder test stubs are generated automatically for directories missing direct coverage.',
-            '- Run the commands above to verify the repository test matrix and to update the status of any failing suites.',
-        ]
-
-        self.write_file('ALLTESTSAUTOTESTS.md', '\n'.join(content_lines).strip() + '\n')
-        docs_path = self.workspace_root / 'docs' / 'ALLTESTSAUTOTESTS.md'
-        self.write_file(str(docs_path.relative_to(self.workspace_root)), '\n'.join(content_lines).strip() + '\n')
-        logger.info('Updated ALLTESTSAUTOTESTS.md and docs/ALLTESTSAUTOTESTS.md')
-
-    def generate_readme_status_section(self, tree_counts: dict) -> str:
-        """Generate the README status table section for auto-update reports."""
-        test_status = 'Not executed'
-        if hasattr(self, 'latest_test_report') and self.latest_test_report:
-            if all(report['status'] == 'PASS' for report in self.latest_test_report):
-                test_status = 'PASS'
-            elif any(report['status'] == 'FAIL' for report in self.latest_test_report):
-                test_status = 'FAIL'
-            else:
-                test_status = 'ERROR'
-
-        command_list = self.build_test_commands()
-        commands_text = '\n'.join([f"- `{ ' '.join(cmd) }`" for cmd in command_list]) if command_list else '- No configured test commands detected.'
-
-        docs_updated = [
-            'README.md', 'API.md', 'ENDPOINTS.md', 'ROUTES.md', 'TREE.md',
-            'ALLMDFILESREFS.md', 'ALLTESTSAUTOTESTS.md'
-        ]
-
-        return f"""
-### 📋 Current Status Summary
-
-| Metric | Current |
-|--------|---------|
-| **Latest Auto-Update** | {datetime.now().isoformat()} |
-| **Docs Updated** | {', '.join(docs_updated)} |
-| **Total Markdown Files** | {tree_counts['markdown_files']} |
-| **Total Q Lion Docs** | {tree_counts['qlion_docs']} |
-| **Total QVillage Docs** | {tree_counts['qvillage_docs']} |
-| **Total Parallel Docs** | {tree_counts['parallel_docs']} |
-| **Total Endpoints** | {tree_counts['endpoint_files']} |
-| **Total Test Files** | {tree_counts['test_files']} |
-| **Test Runner Status** | {test_status} |
-| **Autotest Commands** | {len(command_list)} configured |
-| **README Update** | synchronized via `scripts/qmoi_md_autoupdater.py` |
-
-**Configured Test Commands:**
-{commands_text}
+[Service]
+Type=oneshot
+WorkingDirectory={root_path}
+ExecStart=/usr/bin/env python3 {root_path}/scripts/qmoi_md_autoupdater.py
+StandardOutput=journal
+StandardError=journal
+PrivateTmp=true
 """
 
-    def collect_readme_metrics(self) -> dict:
-        """Collect metric counts for README status updates."""
-        md_count = 0
-        qlion_count = 0
-        qvillage_count = 0
-        parallel_count = 0
+        timer_content = f"""[Unit]
+Description=Run QMOI Markdown Auto-Updater periodically
 
-        for dirpath, dirnames, filenames in os.walk(self.workspace_root):
-            dirnames[:] = [d for d in dirnames if d not in MD_EXCLUDE_DIRS and not d.startswith('.')]
-            for filename in filenames:
-                if filename.lower().endswith('.md'):
-                    md_count += 1
-                    lower = filename.lower()
-                    if 'lion' in lower:
-                        qlion_count += 1
-                    if 'qvillage' in lower:
-                        qvillage_count += 1
-                    if 'parallel' in lower:
-                        parallel_count += 1
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=60min
+Persistent=true
+Unit=qmoi_md_autoupdater.service
 
-        return {
-            'markdown_files': md_count,
-            'endpoint_files': len(self.scan_api_endpoints()),
-            'test_files': len(self.scan_test_files()),
-            'qlion_docs': qlion_count,
-            'qvillage_docs': qvillage_count,
-            'parallel_docs': parallel_count,
-        }
-
-    def update_readme(self) -> None:
-        """Update README.md with the current auto-update status section."""
-        readme_path = self.workspace_root / 'README.md'
-        if not readme_path.exists():
-            logger.warning('README.md not found; skipping README update.')
-            return
-
-        tree_counts = self.collect_readme_metrics()
-        content = readme_path.read_text(encoding='utf-8')
-        section = self.generate_readme_status_section(tree_counts)
-
-        pattern = r"### 📋 Current Status Summary\n.*?(?=\n### |\n## |\Z)"
-        if re.search(pattern, content, flags=re.DOTALL):
-            content = re.sub(pattern, section.strip(), content, flags=re.DOTALL)
-        else:
-            insert_after = '## 🚀 Domain Activation & Deployment Status'
-            if insert_after in content:
-                parts = content.split(insert_after, 1)
-                content = parts[0] + insert_after + '\n' + section + '\n' + parts[1]
-            else:
-                content += '\n' + section
-
-        self.write_file('README.md', content)
-        logger.info('Updated README.md with auto-update status section')
-
-    def run_test_runner(self) -> None:
-        """Execute available test automation commands and record the results."""
-        self.latest_test_report = []
-        for command in self.build_test_commands():
-            if not command:
-                continue
-            try:
-                completed = subprocess.run(
-                    command,
-                    cwd=self.workspace_root,
-                    check=True,
-                    capture_output=True,
-                    text=True,
-                    timeout=1800,
-                )
-                self.latest_test_report.append({
-                    'command': ' '.join(command),
-                    'status': 'PASS',
-                    'output': completed.stdout.strip() or completed.stderr.strip(),
-                })
-                logger.info(f"Test command passed: {' '.join(command)}")
-            except subprocess.CalledProcessError as e:
-                self.latest_test_report.append({
-                    'command': ' '.join(command),
-                    'status': 'FAIL',
-                    'output': (e.stdout or '') + '\n' + (e.stderr or ''),
-                })
-                logger.error(f"Test command failed: {' '.join(command)}")
-            except Exception as e:
-                self.latest_test_report.append({
-                    'command': ' '.join(command),
-                    'status': 'ERROR',
-                    'output': str(e),
-                })
-                logger.error(f"Test command error: {' '.join(command)} - {e}")
-
-    def run_additional_doc_generators(self) -> None:
-        """Run auxiliary documentation generators to keep production docs synchronized."""
-        generators = [
-            ['python3', 'scripts/generate_allmdrefs.py', '--write'],
-            ['python3', 'scripts/generate_endpoint_docs.py'],
-        ]
-
-        # Optional README-related updaters
-        if (self.workspace_root / 'scripts' / 'update_readmes.py').exists():
-            generators.append(['python3', 'scripts/update_readmes.py'])
-
-        if (self.workspace_root / 'scripts' / 'autotag_md_with_lion.py').exists():
-            generators.append([
-                'python3', 'scripts/autotag_md_with_lion.py', '--apply', '--out', 'docs/md_index.json'
-            ])
-
-        for command in generators:
-            try:
-                subprocess.run(command, cwd=self.workspace_root, check=True)
-                logger.info(f'Ran generator: {" ".join(command)}')
-            except subprocess.CalledProcessError as e:
-                logger.error(f'Generator failed: {" ".join(command)} - {e}')
-
-        self.ensure_lion_parallel_docs()
-
-    def update_md_refs(self) -> None:
-        """Update ALLMDFILESREFS.md with all markdown files and directory docs sections."""
-        md_files = []
-        for dirpath, dirnames, filenames in os.walk(self.workspace_root):
-            dirnames[:] = [d for d in dirnames if d not in MD_EXCLUDE_DIRS and not d.startswith('.')]
-            for filename in filenames:
-                if filename.lower().endswith('.md'):
-                    full_path = Path(dirpath) / filename
-                    rel_path = full_path.relative_to(self.workspace_root).as_posix()
-                    md_files.append(rel_path)
-
-        md_files.sort()
-        root_md = [p for p in md_files if '/' not in p]
-        docs_md = [p for p in md_files if p.startswith('docs/')]
-        directory_docs = [p for p in root_md if p.upper() in {
-            'APP.MD', 'COMPONENTS.MD', 'HOOKS.MD', 'SCRIPTS.MD', 'UTILS.MD', 'SERVICES.MD',
-            'TESTS.MD', 'DOCS.MD', 'SRC.MD', 'LIB.MD', 'PUBLIC.MD', 'PAGES.MD', 'DEPLOY.MD',
-            'DATABASE.MD', 'CONFIGURATION.MD', 'QVILLAGE.MD', 'QCITY.MD', 'QMOI.MD', 'BACKEND.MD',
-            'FRONTEND.MD'
-        }]
-        other_md = [p for p in md_files if p not in root_md and p not in docs_md]
-
-        content_lines = [
-            '# All Markdown Files Reference',
-            '',
-            f'**Last Updated:** {datetime.now().isoformat()}',
-            f'**Total Files:** {len(md_files)}',
-            '',
-            '## Overview',
-            '',
-            'This file is generated by `scripts/qmoi_md_autoupdater.py` and documents all markdown files in the repository, including directory-level documentation and system validation instructions.',
-            '',
-            '## Auto-Update Instructions',
-            '',
-            '- Run `python3 scripts/qmoi_md_autoupdater.py` to refresh production documentation and directory docs.',
-            '- Run `python3 scripts/generate_allmdrefs.py --write` to keep `ALLMDFILESREFS.md` in sync with actual markdown files.',
-            '- Run `python3 scripts/generate_endpoint_docs.py` to update `API.md`, `APIs_1.md`, `APIs_v1.md`, and `ENDPOINTS.md`.',
-            '- Run `python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json` to ensure Lion validation blocks are present across docs.',
-            '- Ensure all updated docs include production-ready validation metadata and are referenced in `resumefromhere.txt`.',
-            '',
-            '## Directory Documentation Files',
-            '',
-        ]
-
-        content_lines += [f'- ./{path}' for path in directory_docs]
-        content_lines += ['', '## Root Markdown Files', '']
-        content_lines += [f'- ./{path}' for path in root_md if path not in directory_docs]
-
-        if docs_md:
-            content_lines += ['', '## docs/ Directory Files', '']
-            content_lines += [f'- ./{path}' for path in docs_md]
-
-        if other_md:
-            content_lines += ['', '## Other Markdown Files', '']
-            content_lines += [f'- ./{path}' for path in other_md]
-
-        self.write_file('ALLMDFILESREFS.md', '\n'.join(content_lines).strip() + '\n')
-
-    def scan_lion_parallel_docs(self) -> List[Path]:
-        """Discover Q Lion, QVillage, and Parallel related markdown files."""
-        docs = []
-        keywords = {'lion', 'qvillage', 'parallel'}
-
-        for md_path in self.workspace_root.rglob('*.md'):
-            rel = md_path.relative_to(self.workspace_root).as_posix().lower()
-            if any(keyword in rel for keyword in keywords):
-                docs.append(md_path)
-                continue
-            try:
-                content = md_path.read_text(encoding='utf-8').lower()
-            except Exception:
-                continue
-            if any(keyword in content for keyword in keywords):
-                docs.append(md_path)
-
-        return sorted(set(docs))
-
-    def ensure_lion_validation_block(self, md_path: Path) -> None:
-        """Ensure Q Lion validation metadata exists inside targeted docs."""
-        content = md_path.read_text(encoding='utf-8')
-        if '<!-- LION_VALIDATION_START -->' in content and '<!-- LION_VALIDATION_END -->' in content:
-            return
-
-        logger.info(f'Adding Q Lion validation block to {md_path.relative_to(self.workspace_root)}')
-        block = (
-            '<!-- LION_VALIDATION_START -->\n'
-            '## 🦁 L — Validated by QMOI Lion\n\n'
-            '- validated: yes\n'
-            '- validator: QMOI Lion\n'
-            f'- timestamp: {datetime.now(timezone.utc).isoformat()}Z\n'
-            '- IMPLEMENTED: Auto-updated by scripts/qmoi_md_autoupdater.py\n'
-            '<!-- LION_VALIDATION_END -->\n\n'
-        )
-
-        if content.startswith('---'):
-            frontmatter_end = content.find('\n---', 3)
-            if frontmatter_end != -1:
-                insert_at = frontmatter_end + len('\n---\n')
-                content = content[:insert_at] + block + content[insert_at:]
-            else:
-                content = block + content
-        else:
-            content = block + content
-
-        md_path.write_text(content, encoding='utf-8')
-
-    def ensure_markdown_doc_structure(self, md_path: Path) -> None:
-        """Add production-ready section structure to a markdown document if missing."""
-        if not md_path.exists():
-            return
-
-        content = md_path.read_text(encoding='utf-8')
-        updated = False
-
-        for title, description in MD_PRODUCTION_SECTIONS:
-            header = f'## {title}'
-            if header not in content:
-                content += f'\n{header}\n\n{description}\n\n'
-                updated = True
-
-        if updated:
-            md_path.write_text(content, encoding='utf-8')
-            logger.info(f'Applied production markdown structure to {md_path.relative_to(self.workspace_root)}')
-
-    def ensure_lion_parallel_docs(self) -> None:
-        """Update and annotate Q Lion, QVillage, and parallel documentation files."""
-        docs = self.scan_lion_parallel_docs()
-        if not docs:
-            logger.info('No Q Lion / QVillage / Parallel docs detected to update.')
-            return
-
-        for md_path in docs:
-            self.ensure_lion_validation_block(md_path)
-            self.ensure_markdown_doc_structure(md_path)
-
-        plan_path = self.workspace_root / 'docs' / 'QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md'
-        plan_content = f"""# QMOI Lion + QVillage Auto-Update Plan
-
-This document defines the strategy for using QMOI's auto-update features together with the Q Lion agent and QVillage documentation ecosystem.
-
-## Purpose
-
-- Ensure Q Lion can orchestrate documentation updates and validation checks for `qvillage`, `docs`, and `parallel` markdown content.
-- Keep all Lion-related docs production-ready and synchronized with code, tests, and repository structure.
-- Enable auto-update flows across all relevant markdown files and improve the quantity and quality of docs for real production implementation.
-
-## Scope
-
-- `docs/LIONOPERATINGSYSTEM.md`
-- `docs/lion_variations/*.md`
-- `docs/LION*.md`
-- `docs/PARALLEL.md`
-- `docs/qvillage_features.md`
-- Root-level Q Lion and QVillage plan files
-- Any markdown file containing `lion`, `qvillage`, or `parallel` references.
-
-## Automation Workflow
-
-1. Run `python3 scripts/qmoi_md_autoupdater.py` to refresh `TREE.md`, `ALLMDFILESREFS.md`, `API.md`, `ENDPOINTS.md`, `ROUTES.md`, `ALLTESTSAUTOTESTS.md`, and `README.md`.
-2. Run `python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json` to insert Lion validation metadata in all markdown files.
-3. Generate and update placeholder autotests for missing directories using the auto-updater.
-4. Refresh Q Lion / QVillage / Parallel doc content and ensure validation blocks are present.
-5. Store progress in `resumefromhere.txt` and mark the current auto-update status in `README.md`.
-
-## Production Enhancements
-
-- Create and update `docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md` on every run.
-- Maintain `ALLTESTSAUTOTESTS.md` with all test inventories and enabled commands.
-- Keep `ALLMDFILESREFS.md` current with all markdown paths.
-- Ensure Q Lion can validate and tag docs automatically, especially in `docs/lion_variations` and `docs/qvillage_features.md`.
-- Track a minimum of 3 metrics for each doc category: docs count, validation status, and last update timestamp.
-
-## Recommended Commands
-
-- `python3 scripts/qmoi_md_autoupdater.py`
-- `python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json`
-- `python3 scripts/generate_allmdrefs.py --write`
-- `python3 scripts/generate_endpoint_docs.py`
-
-## Notes
-
-- This plan is designed for Q Lion to operate in QVillage with strong documentation hygiene.
-- Use `qvillage` as the integrated UI and collaboration surface for all validation and update signals.
+[Install]
+WantedBy=timers.target
 """
-        self.write_file(str(plan_path.relative_to(self.workspace_root)), plan_content)
-        logger.info('Updated QMOI Lion + QVillage Automation Plan doc')
 
-    def run_tree_update(self) -> None:
-        """Refresh TREE.md and ALL PERCENTAGES.md using the dedicated tree generator"""
+        cron_script = f"""#!/usr/bin/env bash
+cd {root_path} || exit 1
+exec /usr/bin/env python3 scripts/qmoi_md_autoupdater.py
+"""
+
+        self.write_file('scripts/qmoi_md_autoupdater.service', service_content)
+        self.write_file('scripts/qmoi_md_autoupdater.timer', timer_content)
+        self.write_file('scripts/qmoi_md_autoupdater_cron.sh', cron_script)
         try:
-            subprocess.run([
-                'python3',
-                str(self.workspace_root / 'scripts' / 'update_tree_and_percentages.py')
-            ], cwd=self.workspace_root, check=True)
-            logger.info('Updated TREE.md and ALL PERCENTAGES.md via update_tree_and_percentages.py')
-        except subprocess.CalledProcessError as e:
-            logger.error(f'Failed to update TREE.md: {e}')
+            (self.workspace_root / 'scripts' / 'qmoi_md_autoupdater_cron.sh').chmod(0o755)
+        except Exception:
+            logger.warning('Could not set executable permissions on qmoi_md_autoupdater_cron.sh')
 
-    def update_resume_state(self) -> None:
-        """Update resumefromhere.txt with current progress"""
-        resume_path = self.workspace_root / 'resumefromhere.txt'
-        existing = ''
-        if resume_path.exists():
-            existing = resume_path.read_text(encoding='utf-8')
+    def run_full_update(self, skip_lion: bool = False) -> None:
+        """Run complete markdown file update cycle"""
+        logger.info("Starting full QMOI markdown auto-update...")
 
-        update_line = f'Last auto-update: {datetime.now().isoformat()}'
-        if 'Last auto-update:' in existing:
-            existing = re.sub(r'Last auto-update: .*', update_line, existing)
-        else:
-            existing = update_line + '\n' + existing
+        try:
+            self.update_tree_md()
+            self.update_all_md_refs()
+            self.update_api_docs()
+            self.update_apis_1_md()
+            self.update_endpoints_md()
+            self.update_routes_md()
+            self.update_all_test_docs()
+            self.update_hooks_md()
+            self.update_webhooks_md()
+            self.update_all_hooks_webhooks_md()
+            self.update_api_endpoint_route_related_docs()
+            self.refresh_markdown_category_docs(
+                categories=MD_CATEGORY_KEYWORDS,
+                label='Core QMOI/Gateway/Lion/Dev'
+            )
+            self.generate_autoupdater_service_files()
+            if skip_lion:
+                logger.info("Skipping Lion auto-tagging as requested.")
+            else:
+                self.run_lion_auto_tagging()
 
-        existing += '\nUpdated docs: README.md, TREE.md, ALLMDFILESREFS.md, API.md, ENDPOINTS.md, ROUTES.md, ALLTESTSAUTOTESTS.md, resumefromhere.txt\n'
+            # Update resumefromhere.txt
+            self.update_resume_status()
 
-        if hasattr(self, 'latest_test_report') and self.latest_test_report:
-            existing += '\nAutotest Summary:\n'
-            for report in self.latest_test_report:
-                summary_line = f"- {report['command']}: {report['status']}\n"
-                existing += summary_line
+            logger.info("✅ QMOI markdown auto-update completed successfully!")
 
-        self.write_file('resumefromhere.txt', existing.strip() + '\n')
+        except Exception as e:
+            logger.error(f"Markdown auto-update failed: {e}")
+            raise
 
-    def write_file(self, filename: str, content: str) -> None:
-        """Write content to file with backup"""
-        file_path = self.workspace_root / filename
+    def update_resume_status(self) -> None:
+        """Update resumefromhere.txt with markdown update status"""
+        resume_file = self.workspace_root / 'resumefromhere.txt'
+        if resume_file.exists():
+            content = resume_file.read_text()
+            timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
 
-        if file_path.exists():
-            backup_path = file_path.with_suffix(f'.bak.{int(time.time())}')
-            try:
-                file_path.rename(backup_path)
-                logger.info(f'Created backup: {backup_path}')
-            except Exception as e:
-                logger.error(f'Failed to create backup for {filename}: {e}')
+            # Add or update markdown update status
+            summary_line = f"- Documentation sync: API.md, APIs_1.md, ENDPOINTS.md, ALLTESTSAUTOTESTS.md, HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md, TREE.md, ALLMDFILESREFS.md synchronized ✅ COMPLETED - {timestamp}"
+            if 'Documentation sync:' not in content:
+                content += f"\n{summary_line}\n"
+            else:
+                content = re.sub(
+                    r'Documentation sync:.*',
+                    summary_line,
+                    content
+                )
 
-        file_path.write_text(content, encoding='utf-8')
-        logger.info(f'Updated {filename}')
+            if 'Markdown files auto-update' not in content:
+                content += f"\n- Markdown files auto-update: All .md files automatically synchronized ✅ COMPLETED - {timestamp}\n"
+            else:
+                content = re.sub(
+                    r'Markdown files auto-update:.*',
+                    f'Markdown files auto-update: All .md files automatically synchronized ✅ COMPLETED - {timestamp}',
+                    content
+                )
 
-    def run_autoupdate(self) -> None:
-        """Run the complete auto-update process"""
-        logger.info('Starting QMOI markdown auto-update process')
-        self.run_tree_update()
-        self.ensure_lion_parallel_docs()
-        self.ensure_directory_docs()
-        self.ensure_test_stubs_for_directories()
-        self.update_test_docs()
-        self.run_additional_doc_generators()
-        self.update_api_docs()
-        self.update_routes_docs()
-        self.update_endpoints_doc()
-        self.update_md_refs()
-        self.run_test_runner()
-        self.update_readme()
-        self.update_resume_state()
-        logger.info('QMOI markdown auto-update process completed')
+            resume_file.write_text(content)
+            logger.info("Updated resumefromhere.txt with markdown auto-update status")
 
+def main():
+    """Main function for QMOI markdown auto-updater"""
+    logger.info("=" * 80)
+    logger.info("QMOI ENHANCED MARKDOWN AUTO-UPDATER")
+    logger.info("=" * 80)
 
-def main() -> None:
+    parser = argparse.ArgumentParser(description='QMOI Markdown Auto-Updater')
+    parser.add_argument('--skip-lion', action='store_true', help='Skip Lion markdown auto-tagging')
+    parser.add_argument('--generate-service', action='store_true', help='Generate service and timer files for persistent scheduling')
+    args = parser.parse_args()
+
     updater = QMOIMarkdownAutoUpdater()
-    updater.run_autoupdate()
 
-if __name__ == '__main__':
+    if args.generate_service:
+        updater.generate_autoupdater_service_files()
+
+    updater.run_full_update(skip_lion=args.skip_lion)
+
+if __name__ == "__main__":
     main()

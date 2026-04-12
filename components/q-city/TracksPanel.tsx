@@ -86,7 +86,7 @@ function QCityTracksPanel({
         setTracks(data.tracks || []);
       }
     } catch (error) {
-      console.error("Failed to fetch tracks:", error);
+      logger.error("Failed to fetch tracks:", error);
       toast({
         title: "Error",
         description: "Failed to load tracks",

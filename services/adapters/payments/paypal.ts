@@ -82,7 +82,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
       paypal.payment.create(create_payment_json, (error: any, payment: any) => {
         if (error) {
-          console.error("[PayPalAdapter] Payment creation failed:", error);
+          logger.error("[PayPalAdapter] Payment creation failed:", error);
           reject(error);
         } else {
           const paymentId = payment.id;
@@ -112,7 +112,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
         { payer_id: "APPROVED" },
         (error: any, payment: any) => {
           if (error) {
-            console.error("[PayPalAdapter] Payment execution failed:", error);
+            logger.error("[PayPalAdapter] Payment execution failed:", error);
             WalletManager.appendAudit({
               _event: "payment_capture_failed",
               gateway: "paypal",
@@ -160,7 +160,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
         production-ready and operational
         paypal.payout.getBalance({}, (error: any, balance: any) => {
           if (error) {
-            console.error("[PayPalAdapter] Balance check failed:", error);
+            logger.error("[PayPalAdapter] Balance check failed:", error);
             resolve({
               success: false,
               error: error.message || "Failed to retrieve PayPal balance",
@@ -202,7 +202,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
         });
       });
     } catch (error) {
-      console.error("[PayPalAdapter] Balance check error:", error);
+      logger.error("[PayPalAdapter] Balance check error:", error);
       return {
         success: false,
         error: error.message || "System error during balance check",

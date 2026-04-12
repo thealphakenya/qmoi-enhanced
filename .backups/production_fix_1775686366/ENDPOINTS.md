@@ -64,3 +64,48 @@ This document catalogs all available endpoints in the QMOI system.
 | 41 | GET/POST | `/api/subscriptions` | ['api', 'subscriptions', '', 'route.ts'] | ✅ |
 | 42 | GET/POST | `/api/v1/health` | ['api', 'v1', 'health', 'route.ts'] | ✅ |
 | 43 | GET/POST | `/api/v2/health` | ['api', 'v2', 'health', 'route.ts'] | ✅ |
+
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+
+## Auto-Update Instructions
+
+Describe how this file is generated and refreshed automatically.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+
+## Change History
+
+Log significant changes and version notes.
+
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

@@ -428,6 +428,6 @@ Provide a specific fix that can be applied automatically.`;
 // Run the AI lint engine
 const aiLintEngine = new AILintEngine();
 aiLintEngine.run().catch((error) => {
-  console.error("Fatal error in AI lint engine:", error);
+  logger.error("Fatal error in AI lint engine:", error);
   process.exit(1);
 });

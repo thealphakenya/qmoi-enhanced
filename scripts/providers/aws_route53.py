@@ -214,10 +214,10 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
         except ClientError as e:
             raise ProviderError(f'Failed to verify records: {e}')
 
-if __name__ == '__main__':
+
     provider = Route53Provider()
     plan = provider.plan_dns_change('data.com', {
-        'test.data.com': {
+        'operational_data.com': {
             'type': 'A',
             'content': '1.2.3.4'
         }

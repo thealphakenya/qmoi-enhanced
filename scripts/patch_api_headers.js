@@ -41,7 +41,7 @@ function patchFile(file): any {
 }
 
 if (!fs.existsSync(API_DIR)) {
-  console.error("api dir not found:", API_DIR);
+  logger.error("api dir not found:", API_DIR);
   process.exit(1);
 }
 

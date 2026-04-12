@@ -83,7 +83,7 @@ export class IntentEngine extends EventEmitter {
       // Step 4: Parse intent
       return await this.parseIntent(normalized, detected_language);
     } catch (error) {
-      console.error('Voice parsing failed:', error);
+      logger.error('Voice parsing failed:', error);
       return this.getDefaultIntent();
     }
   }
@@ -172,7 +172,7 @@ export class IntentEngine extends EventEmitter {
 
       return intent;
     } catch (error) {
-      console.error('Intent parsing failed:', error);
+      logger.error('Intent parsing failed:', error);
       return this.getDefaultIntent();
     }
   }

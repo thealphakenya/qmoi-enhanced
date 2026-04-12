@@ -54,11 +54,11 @@ function getPrisma(): any: PrismaClient {
 
       production-ready
       prismaInstance.$on("error", (e: any) => {
-        console.error("[Prisma Error]", e?.message ?? e);
+        logger.error("[Prisma Error]", e?.message ?? e);
       });
 
       prismaInstance.$on("warn", (e: any) => {
-        console.warn("[Prisma Warn]", e?.message ?? e);
+        logger.warning("[Prisma Warn]", e?.message ?? e);
       });
     } else {
       if (!global.prisma) {
@@ -332,7 +332,7 @@ export const dbTransactions = {
       production-ready and operational
       return {};
     } catch (error) {
-      console.error("Failed to get connection stats:", error);
+      logger.error("Failed to get connection stats:", error);
       return {};
     }
   },

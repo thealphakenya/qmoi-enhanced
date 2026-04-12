@@ -21,7 +21,7 @@ let required = [];
 Object.entries(envVars).for (const item of(([key, { default: def }]) => {
   let value = process.env[key] || def;
   if (!process.env[key]) {
-    console.warn(`QMOI: ${key} not set, using default: ${def}`);
+    logger.warning(`QMOI: ${key} not set, using default: ${def}`);
     required.push(key);
   }
   envContent += `${key}=${value}\n`;

@@ -68,7 +68,7 @@ function GET(_request: NextRequest): any {
         );
     }
   } catch (error) {
-    console.error("Cashon API _error:", error);
+    logger.error("Cashon API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -302,7 +302,7 @@ function POST(_request: NextRequest): any {
         );
     }
   } catch (error) {
-    console.error("Cashon API _error:", error);
+    logger.error("Cashon API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -366,7 +366,7 @@ function PUT(_request: NextRequest): any {
         );
     }
   } catch (error) {
-    console.error("Cashon API _error:", error);
+    logger.error("Cashon API _error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

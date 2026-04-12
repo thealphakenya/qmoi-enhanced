@@ -470,7 +470,7 @@ if (command) {
       }
     })
     .catch(error => {
-      console.error('Error:', error);
+      logger.error('Error:', error);
       process.exit(1);
     });
 } else {

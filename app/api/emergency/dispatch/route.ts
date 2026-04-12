@@ -80,7 +80,7 @@ function POST(request: NextRequest): any {
     }
 
   } catch (error) {
-    console.error('Emergency dispatch error:', error);
+    logger.error('Emergency dispatch error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

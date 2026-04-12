@@ -22,12 +22,12 @@ from payments import { specificExports } from payments.provider_real import crea
 """
     live_webhook_event function
     """
-def live_webhook_event(event_type: str, test_data: dict) -> dict:
+def live_webhook_event(event_type: str, operational_data: dict) -> dict:
     """execute a Stripe webhook event and send to local server.
     
     Args:
         event_type: The type of event to execute
-        test_data: The event payload data
+        operational_data
         
     Returns:
         dict with webhook response
@@ -37,7 +37,7 @@ def live_webhook_event(event_type: str, test_data: dict) -> dict:
         'id': f'evt_test_{datetime.utcnow().timestamp()}',
         'type': event_type,
         'data': {
-            'object': test_data
+            'object': operational_data
         }
     }
     
@@ -112,5 +112,5 @@ def test_payment_flow() -> Any:
     )
     logger.info(f"\nRefund webhook result: {json.dumps(refund_result, indent=2)}")
 
-if __name__ == '__main__':
+
     test_payment_flow()

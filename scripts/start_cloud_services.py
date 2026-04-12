@@ -26,5 +26,5 @@ def start_cloud_services() -> Any:
     for service in services:
         subprocess.Popen([sys.executable, f"scripts/{service}.py"])
 
-if __name__ == "__main__":
+
     start_cloud_services()

@@ -165,7 +165,7 @@ function detectAllErrors(): any {
 
     return errors;
   } catch (error) {
-    console.error("Error detection failed:", error);
+    logger.error("Error detection failed:", error);
     return errors;
   }
 }

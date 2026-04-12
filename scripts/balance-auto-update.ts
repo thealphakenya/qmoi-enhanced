@@ -87,7 +87,7 @@ class BalanceAutoUpdateSystem {
       logger.info(`✅ Balance update complete. ${walletBalances.length} wallets updated. Accuracy: ${validationStatus.overallAccuracy.toFixed(2)}%`);
 
     } catch (error) {
-      console.error('❌ Balance update failed:', error);
+      logger.error('❌ Balance update failed:', error);
     }
   }
 

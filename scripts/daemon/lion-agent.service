@@ -1,0 +1,15 @@
+[Unit]
+Description=QMOI Lion Agent - Autonomous System Guardian
+After=network.target
+
+[Service]
+Type=simple
+User=runner
+WorkingDirectory=/workspaces/qmoi-enhanced
+ExecStart=/usr/bin/python3 scripts/lion_orchestrator.py --continuous --concurrency 2
+Restart=always
+RestartSec=10
+Environment=PYTHONPATH=/workspaces/qmoi-enhanced
+
+[Install]
+WantedBy=multi-user.target

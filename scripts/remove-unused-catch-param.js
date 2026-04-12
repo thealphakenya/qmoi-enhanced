@@ -129,6 +129,6 @@ const run = async () => {
 };
 
 run().catch((_err) => {
-  console.error(_err);
+  logger.error(_err);
   process.exit(1);
 });

@@ -38,7 +38,7 @@ function POST(_request: NextRequest): any {
       message: "Pipeline triggered successfully",
     });
   } catch (error) {
-    console.error("Error triggering pipeline:", error);
+    logger.error("Error triggering pipeline:", error);
     return NextResponse.json(
       {
         success: false,

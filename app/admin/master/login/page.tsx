@@ -51,7 +51,7 @@ function MasterLoginPage(): any {
       }
     } catch (err) {
       setError("Authentication failed. Please try again.");
-      console.error("Auth error:", err);
+      logger.error("Auth error:", err);
     } finally {
       setIsLoading(false);
     }

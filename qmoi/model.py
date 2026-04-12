@@ -329,9 +329,9 @@ def cleanup(self) -> Any:
         self.qvs.cleanup()
         self._backup_model()
 
-if __name__ == "__main__":
+
     # data usage
     model = QMOIModel()
-    result = model.process({"test": "data"})
+    result = model.process({"operational_data"})
     logger.info(f"Processing result: {result}")
     model.cleanup()

@@ -133,7 +133,7 @@ function POST(req: Request): any {
 
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
-    console.error("Voice API error:", error);
+    logger.error("Voice API error:", error);
     return NextResponse.json(
       { success: false, error: String(error) },
       { status: 500 },

@@ -1,177 +1,203 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:23Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+#!/usr/bin/env python3
+"""Unified QMOI AI download script for all supported platforms."""
 
-production-ready
+from __future__ import annotations
+import argparse
+import logging
 import os
-import sys
 import platform
-import { specificExports } from qmoi_activity_logger import log_activity
-import re
+import sys
+import time
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-GITHUB_REPO = 'thealphakenya/latest-Q-ai'
+try:
+    import requests
+except ImportError:
+    requests = None
+
+try:
+    import urllib.request as urllib_request
+except ImportError:
+    urllib_request = None
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+RELEASE_BASE = 'https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi'
+PLATFORM_MAP: Dict[str, Dict[str, str]] = {
+    'windows': {'asset': 'windows.exe', 'folder': 'windows'},
+    'mac': {'asset': 'mac.dmg', 'folder': 'mac'},
+    'linux': {'asset': 'linux.appimage', 'folder': 'linux'},
+    'linux_deb': {'asset': 'linux.deb', 'folder': 'linux'},
+    'android': {'asset': 'android.apk', 'folder': 'android'},
+    'ios': {'asset': 'ios.ipa', 'folder': 'ios'},
+    'smarttv': {'asset': 'smarttv.apk', 'folder': 'smarttv'},
+    'raspberrypi': {'asset': 'raspberrypi.img', 'folder': 'raspberrypi'},
+    'chromebook': {'asset': 'chromebook.zip', 'folder': 'chromebook'},
+}
+ALIASES: Dict[str, str] = {
+    'linux-deb': 'linux_deb',
+    'appimage': 'linux',
+    'deb': 'linux_deb',
+    'smart-tv': 'smarttv',
+    'smart tv': 'smarttv',
+    'pi': 'raspberrypi',
+}
+MIN_FILE_SIZE = 1 * 1024 * 1024
 RETRY_COUNT = 3
 RETRY_DELAY = 5
-MIN_SIZE = 1 * 1024 * 1024  # 1MB
 
-PLATFORM_MAP = {
-    'windows': {'asset_ext': '.exe', 'folder': 'windows'},
-    'mac': {'asset_ext': '.dmg', 'folder': 'mac'},
-    'linux': {'asset_ext': '.appimage', 'folder': 'linux'},
-    'linux_deb': {'asset_ext': '.deb', 'folder': 'linux'},
-    'android': {'asset_ext': '.apk', 'folder': 'android'},
-    'ios': {'asset_ext': '.ipa', 'folder': 'ios'},
-    'smarttv': {'asset_ext': '.apk', 'folder': 'smarttv'},
-    'raspberrypi': {'asset_ext': '.img', 'folder': 'raspberrypi'},
-    'chromebook': {'asset_ext': '.zip', 'folder': 'chromebook'},
-}
 
-# --- New: Extract all app download links from QMOIAPPS.md ---
-"""
-    extract_app_downloads function
-    """
-def extract_app_downloads(md_path='QMOIAPPS.md') -> Any:
-    apps = []
-    with open(md_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-    # Find all rows in the markdown table
-    rows = re.findall(r'\| ([^|]+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \| ([^|]+) \|', content)
-    for row in rows:
-        name = row[1].strip()
-        version = row[2].strip()
-        downloads = row[5].strip()
-        # Find all [Platform](url) pairs
-        links = re.findall(r'\[(\w+)\]\(([^)]+)\)', downloads)
-        for platform, url in links:
-            apps.append({'name': name, 'version': version, 'platform': platform.lower(), 'url': url})
-    return apps
+def normalize_platform(name: str) -> str:
+    key = name.strip().lower()
+    return ALIASES.get(key, key)
 
-# --- New: Download all apps for all platforms ---
-"""
-    ensure_download_dir function
-    """
-def ensure_download_dir(platform, version="latest") -> Any:
-    dir_path = os.path.join("Qmoi_downloaded_apps", platform, version)
-    os.makedirs(dir_path, exist_ok=True)
-    return dir_path
 
-"""
-    is_valid_file function
-    """
-def is_valid_file(path) -> Any:
-    return os.path.exists(path) and os.path.getsize(path) > MIN_SIZE
+def detect_platform() -> str:
+    system = platform.system().lower()
+    if system == 'darwin':
+        return 'mac'
+    if system == 'windows':
+        return 'windows'
+    if system == 'linux':
+        return 'linux'
+    return system
 
-"""
-    download_file function
-    """
-def download_file(url, path, app_name, platform) -> Any:
+
+def get_download_url(platform_name: str, version: str = 'latest') -> Optional[str]:
+    normalized = normalize_platform(platform_name)
+    info = PLATFORM_MAP.get(normalized)
+    if not info:
+        return None
+    asset = info['asset']
+    if version and version != 'latest':
+        return f'{RELEASE_BASE}/{version}/{asset}'
+    return f'{RELEASE_BASE}/{asset}'
+
+
+def ensure_download_dir(platform_name: str, version: str = 'latest') -> Path:
+    normalized = normalize_platform(platform_name)
+    folder = PLATFORM_MAP.get(normalized, {'folder': normalized})['folder']
+    download_dir = Path('Qmoi_downloaded_apps') / folder / version
+    download_dir.mkdir(parents=True, exist_ok=True)
+    return download_dir
+
+
+def valid_file(path: Path) -> bool:
+    return path.exists() and path.stat().st_size >= MIN_FILE_SIZE
+
+
+def download_with_requests(url: str, dest: Path) -> bool:
+    assert requests is not None
     for attempt in range(1, RETRY_COUNT + 1):
         try:
-            log_activity(f'Attempt {attempt}: Downloading {app_name} for {platform}', {'url': url})
-            r = requests.get(url, stream=True, timeout=30)
-            r.raise_for_status()
-            with open(path, 'wb') as f:
-                for chunk in r.iter_content(chunk_size=8192):
-                    f.write(chunk)
-            if is_valid_file(path):
-                log_activity(f'Successfully downloaded {app_name} for {platform}', {'path': path})
-                logger.info(f'Success: {path}')
+            with requests.get(url, stream=True, timeout=30) as response:
+                response.raise_for_status()
+                with dest.open('wb') as fd:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        if chunk:
+                            fd.write(chunk)
+            if valid_file(dest):
                 return True
-            else:
-                log_activity(f'File too small after download', {'size': os.path.getsize(path)})
-        except Exception as e:
-            log_activity(f'Error downloading {app_name} for {platform}', {'error': str(e), 'attempt': attempt})
-            logger.info(f'Error: {e} (attempt {attempt})')
-        import time
-        time.sleep(RETRY_DELAY)
+        except Exception as exc:
+            logger.warning('Attempt %s failed for %s: %s', attempt, url, exc)
+            if dest.exists():
+                try:
+                    dest.unlink()
+                except Exception:
+                    pass
+            time.sleep(RETRY_DELAY)
     return False
 
-# --- New: Check all download links for reachability ---
-"""
-    check_links_reachability function
-    """
-def check_links_reachability(apps, timeout=10) -> Any:
-    broken = []
-    for app in apps:
-        url = app['url']
-        name = app['name']
-        platform = app['platform']
+
+def download_with_urllib(url: str, dest: Path) -> bool:
+    if urllib_request is None:
+        return False
+    for attempt in range(1, RETRY_COUNT + 1):
         try:
-            r = requests.head(url, allow_redirects=True, timeout=timeout)
-            if r.status_code != 200:
-                logger.info(f"BROKEN: {name} [{platform}] => {url} (status {r.status_code})")
-                log_activity('Broken download link', {'app': name, 'platform': platform, 'url': url, 'status': r.status_code})
-                broken.append(app)
-            else:
-                logger.info(f"OK: {name} [{platform}] => {url}")
-        except Exception as e:
-            logger.info(f"BROKEN: {name} [{platform}] => {url} (error: {e})")
-            log_activity('Broken download link', {'app': name, 'platform': platform, 'url': url, 'error': str(e)})
-            broken.append(app)
-    return broken
-
-"""
-    update_links_to_fallback function
-    """
-def update_links_to_fallback(apps, old_domain, new_domain) -> Any:
-    updated = []
-    for app in apps:
-        if old_domain in app['url']:
-            new_url = app['url'].replace(old_domain, new_domain)
-            updated.append({**app, 'url': new_url})
-        else:
-            updated.append(app)
-    return updated
-
-"""
-    print_broken_links_report function
-    """
-def print_broken_links_report(broken) -> Any:
-    logger.info("\n--- Broken Download Links Report ---")
-    for app in broken:
-        logger.info(f"{app['name']} [{app['platform']}] => {app['url']}")
-    logger.info(f"Total broken links: {len(broken)}")
-
-# --- Main logic: Download all apps for all platforms ---
-"""
-    autodownload_all_apps function
-    """
-def autodownload_all_apps() -> Any:
-    apps = extract_app_downloads()
-    for app in apps:
-        platform = app['platform']
-        version = app['version'].lstrip('v') if app['version'] else 'latest'
-        url = app['url']
-        name = app['name']
-        ext = os.path.splitext(url)[-1].lower()
-        folder = PLATFORM_MAP.get(platform, {'folder': platform})['folder']
-        filename = f"{name.replace(' ', '').lower()}{ext}"
-        download_dir = ensure_download_dir(folder, "latest")
-        version_dir = ensure_download_dir(folder, version)
-        file_path_latest = os.path.join(download_dir, filename)
-        file_path_version = os.path.join(version_dir, filename)
-        if download_file(url, file_path_latest, name, platform):
-            if file_path_latest != file_path_version:
+            urllib_request.urlretrieve(url, dest)
+            if valid_file(dest):
+                return True
+        except Exception as exc:
+            logger.warning('Attempt %s failed for %s: %s', attempt, url, exc)
+            if dest.exists():
                 try:
-                    import shutil
-                    shutil.copy2(file_path_latest, file_path_version)
-                    log_activity('Copied file to versioned folder', {'from': file_path_latest, 'to': file_path_version})
-                except Exception as e:
-                    log_activity('Failed to copy file to versioned folder', {'error': str(e)})
-        else:
-            logger.info(f'Failed to download a valid {name} for {platform} after retries.')
-            log_activity('Failed to download after retries', {'app': name, 'platform': platform, 'url': url})
+                    dest.unlink()
+                except Exception:
+                    pass
+            time.sleep(RETRY_DELAY)
+    return False
 
-if __name__ == "__main__":
-    apps = extract_app_downloads()
-    logger.info("Checking all download links for reachability...")
-    broken = check_links_reachability(apps)
-    print_broken_links_report(broken)
-    # To update links, uncomment and set domains:
-    # fallback_domain = "downloads.qmoi.app"  # data fallback
-    # old_domain = "downloads-qmoi.tk"
-    # updated_apps = update_links_to_fallback(apps, old_domain, fallback_domain)
-    # logger.info("Updated links to fallback domain.")
-    autodownload_all_apps()
-    logger.info("All autodownloads complete.") 
+
+def download_file(url: str, dest: Path) -> bool:
+    logger.info('Downloading %s -> %s', url, dest)
+    if dest.exists() and valid_file(dest):
+        logger.info('Existing valid file found at %s', dest)
+        return True
+    if requests is not None:
+        return download_with_requests(url, dest)
+    return download_with_urllib(url, dest)
+
+
+def download_for_platform(platform_name: str, version: str = 'latest') -> bool:
+    normalized = normalize_platform(platform_name)
+    url = get_download_url(normalized, version)
+    if not url:
+        logger.error('Unsupported platform: %s', platform_name)
+        return False
+    download_dir = ensure_download_dir(normalized, version)
+    suffix = Path(url).suffix
+    filename = f'qmoi_{normalized}{suffix}'
+    dest = download_dir / filename
+    return download_file(url, dest)
+
+
+def list_supported_platforms() -> List[str]:
+    return sorted(PLATFORM_MAP.keys())
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description='Download QMOI AI app for supported platforms.')
+    parser.add_argument('platform', nargs='?', help='Platform name, or all to download every supported platform.')
+    parser.add_argument('--version', default='latest', help='Release version string (default: latest).')
+    parser.add_argument('--check-links', action='store_true', help='Check download links without downloading.')
+    parser.add_argument('--list', action='store_true', help='List supported platforms.')
+    args = parser.parse_args()
+
+    if args.list:
+        print('\n'.join(list_supported_platforms()))
+        return 0
+
+    if args.check_links:
+        if requests is None:
+            logger.error('requests is required for link validation.')
+            return 1
+        healthy = True
+        for platform_name in list_supported_platforms():
+            url = get_download_url(platform_name, args.version)
+            if not url:
+                continue
+            try:
+                resp = requests.head(url, allow_redirects=True, timeout=15)
+                if resp.status_code != 200:
+                    logger.warning('Link check failed for %s: status %s', url, resp.status_code)
+                    healthy = False
+                else:
+                    logger.info('Link OK: %s', url)
+            except Exception as exc:
+                logger.warning('Link check exception for %s: %s', url, exc)
+                healthy = False
+        return 0 if healthy else 1
+
+    requested = args.platform or detect_platform()
+    if requested.lower() == 'all':
+        success = True
+        for platform_name in list_supported_platforms():
+            success &= download_for_platform(platform_name, args.version)
+        return 0 if success else 1
+    return 0 if download_for_platform(requested, args.version) else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

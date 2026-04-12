@@ -1,3 +1,58 @@
+
+class ProductionFileManager:
+    """Production file operations with proper error handling"""
+
+    @staticmethod
+    def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
+        """Safely read file with error handling"""
+        try:
+            with open(file_path, 'r', encoding=encoding) as f:
+                return f.read()
+        except FileNotFoundError:
+            logger.error(f"File not found: {file_path}")
+            raise
+        except UnicodeDecodeError as e:
+            logger.error(f"Encoding error reading {file_path}: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Error reading file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
+        """Safely write file with backup and error handling"""
+        backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
+
+        try:
+            # Create backup if file exists
+            if file_path.exists():
+                shutil.copy2(file_path, backup_path)
+
+            # Write new content
+            with open(file_path, 'w', encoding=encoding) as f:
+                f.write(content)
+
+            logger.info(f"File written successfully: {file_path}")
+
+        except Exception as e:
+            # Restore backup on failure
+            if backup_path.exists():
+                shutil.copy2(backup_path, file_path)
+            logger.error(f"Error writing file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def ensure_directory(dir_path: Path) -> None:
+        """Ensure directory exists with proper permissions"""
+        try:
+            dir_path.mkdir(parents=True, exist_ok=True)
+            # Set proper permissions (755)
+            dir_path.chmod(0o755)
+        except Exception as e:
+            logger.error(f"Error creating directory {dir_path}: {e}")
+            raise
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:18Z
@@ -590,7 +645,7 @@ def start_cloud_services() -> Any:
     for service in services:
         subprocess.Popen([sys.executable, f"scripts/{service}.py"])
 
-if __name__ == "__main__":
+
     start_cloud_services()
 '''
     
@@ -606,6 +661,42 @@ QMOI Cloud Performance Monitor
 import time
 import psutil
 import requests
+import time
+
+class ProductionAPIClient:
+    """Production API client with proper error handling and retries"""
+
+    def __init__(self, base_url: str, api_key: str):
+        self.base_url = base_url
+        self.api_key = api_key
+        self.session = requests.Session()
+        self.session.headers.update({
+            'Authorization': f'Bearer {api_key}',
+            'Content-Type': 'application/json',
+            'User-Agent': 'QMOI-Production/1.0.0'
+        })
+
+    def request(self, method: str, endpoint: str, **kwargs) -> dict:
+        """Make authenticated API request with error handling"""
+        url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
+
+        for attempt in range(3):
+            try:
+                response = self.session.request(method, url, **kwargs)
+                response.raise_for_status()
+                return response.json()
+            except requests.RequestException as e:
+                if attempt == 2:
+                    logger.error(f"API request failed after 3 attempts: {e}")
+                    raise
+                time.sleep(2 ** attempt)  # Exponential backoff
+
+    def get(self, endpoint: str, **kwargs) -> dict:
+        return self.request('GET', endpoint, **kwargs)
+
+    def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
+        return self.request('POST', endpoint, json=data, **kwargs)
+
 
 """
     monitor_cloud_performance function
@@ -629,7 +720,7 @@ def monitor_cloud_performance() -> Any:
         
         time.sleep(60)
 
-if __name__ == "__main__":
+
     monitor_cloud_performance()
 '''
     
@@ -655,7 +746,7 @@ def optimize_cloud_costs() -> Any:
     # Implement auto-scaling
     pass
 
-if __name__ == "__main__":
+
     optimize_cloud_costs()
 '''
     
@@ -682,7 +773,7 @@ def sync_cloud_data() -> Any:
         # Update cloud storage
         time.sleep(300)  # 5 minutes
 
-if __name__ == "__main__":
+
     sync_cloud_data()
 '''
 
@@ -711,5 +802,5 @@ def main() -> Any:
     logger.info("3. Monitor: python scripts/monitor_cloud_performance.py")
     logger.info("4. Optimize: python scripts/optimize_cloud_costs.py")
 
-if __name__ == "__main__":
+
     main() 

@@ -275,7 +275,7 @@ function handler(
       error: "Method not allowed",
     });
   } catch (error) {
-    console.error("Consciousness API error:", error);
+    logger.error("Consciousness API error:", error);
     return res.status(500).json({
       success: false,
       error: error instanceof Error ? error.message : "Unknown error",

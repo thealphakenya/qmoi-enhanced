@@ -42,7 +42,7 @@ function initializeLionAgent(): any: LionAgentWorkflowMonitor {
     const token = process.env.GITHUB_TOKEN || '';
     lionAgent = new LionAgentWorkflowMonitor(token);
     lionAgent.startMonitoring().catch(err => {
-      console.error('🦁 Failed to start Lion Agent monitoring:', err);
+      logger.error('🦁 Failed to start Lion Agent monitoring:', err);
     });
   }
   return lionAgent;
@@ -121,7 +121,7 @@ function GET(request: NextRequest): any {
     return NextResponse.json(response);
 
   } catch (error) {
-    console.error('🦁 Error in workflow health endpoint:', error);
+    logger.error('🦁 Error in workflow health endpoint:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -159,7 +159,7 @@ function PUT(request: NextRequest): any {
     });
 
   } catch (error) {
-    console.error('🦁 Error in validation refresh:', error);
+    logger.error('🦁 Error in validation refresh:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

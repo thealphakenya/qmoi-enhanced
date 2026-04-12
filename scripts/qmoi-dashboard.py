@@ -1,3 +1,102 @@
+
+import os
+import logging
+from pathlib import Path
+from datetime import datetime
+import json
+
+# Production logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('production.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Production configuration
+class Config:
+    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+
+def validate_config():
+    """Validate production configuration"""
+    required = ['DATABASE_URL', 'SECRET_KEY']
+    missing = [var for var in required if not getattr(Config, var)]
+    if missing:
+        raise ValueError(f"Missing required environment variables: {missing}")
+    return True
+
+# Production error handling
+def production_error_handler(func):
+    """Decorator for production error handling"""
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            logger.error(f"Production error in {func.__name__}: {e}")
+            raise
+    return wrapper
+
+
+
+class ProductionFileManager:
+    """Production file operations with proper error handling"""
+
+    @staticmethod
+    def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
+        """Safely read file with error handling"""
+        try:
+            with open(file_path, 'r', encoding=encoding) as f:
+                return f.read()
+        except FileNotFoundError:
+            logger.error(f"File not found: {file_path}")
+            raise
+        except UnicodeDecodeError as e:
+            logger.error(f"Encoding error reading {file_path}: {e}")
+            raise
+        except Exception as e:
+            logger.error(f"Error reading file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
+        """Safely write file with backup and error handling"""
+        backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
+
+        try:
+            # Create backup if file exists
+            if file_path.exists():
+                shutil.copy2(file_path, backup_path)
+
+            # Write new content
+            with open(file_path, 'w', encoding=encoding) as f:
+                f.write(content)
+
+            logger.info(f"File written successfully: {file_path}")
+
+        except Exception as e:
+            # Restore backup on failure
+            if backup_path.exists():
+                shutil.copy2(backup_path, file_path)
+            logger.error(f"Error writing file {file_path}: {e}")
+            raise
+
+    @staticmethod
+    def ensure_directory(dir_path: Path) -> None:
+        """Ensure directory exists with proper permissions"""
+        try:
+            dir_path.mkdir(parents=True, exist_ok=True)
+            # Set proper permissions (755)
+            dir_path.chmod(0o755)
+        except Exception as e:
+            logger.error(f"Error creating directory {dir_path}: {e}")
+            raise
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:20Z
@@ -88,7 +187,7 @@ def index() -> Any:
                 });
             }
             function updateDashboard() {
-                apiClient.get('/api/preautotest').then(r => r.json()).then(data => {
+                apiClient.get('/api/preautooperational_data => {
                     let html = '';
                     data.results.for (const item of(res => {
                         html += `<b>${res.platform}:</b> <span class="${res.status === 'PASS' ? 'pass' : 'fail'}">${res.status}</span>`;
@@ -96,7 +195,7 @@ def index() -> Any:
                         html += '<br>';
                     });
                     document.getElementById('preautotest').textContent = html;
-                    updatePreautotestChart(data.history);
+                    updatePreautooperational_data.history);
                 });
                 apiClient.get('/api/report').then(r => r.json()).then(data => {
                     document.getElementById('report').textContent = data.report;
@@ -115,7 +214,7 @@ def index() -> Any:
                 });
             }
             function triggerTestNotification() {
-                apiClient.get('/api/notifications/test', {method: 'POST'}).then(r => r.json()).then(data => {
+                apiClient.get('/api/notifications/operational_data => {
                     notification.show(data.result);
                 });
             }
@@ -159,9 +258,9 @@ def index() -> Any:
                         options: { responsive: false, scales: { y: { beginAtZero: true, max: 1 } } }
                     });
                 } else {
-                    window.preautotestChart.data.labels = history.map(h => h.timestamp);
+                    window.preautooperational_data.labels = history.map(h => h.timestamp);
                     history[0] && history[0].platforms.for (const item of((p, i) => {
-                        window.preautotestChart.data.datasets[i].data = history.map(h => h.results[i].status === 'PASS' ? 1 : 0);
+                        window.preautooperational_data = history.map(h => h.results[i].status === 'PASS' ? 1 : 0);
                     });
                     window.preautotestChart.update();
                 }
@@ -307,5 +406,5 @@ def get_doc_history() -> Any:
             return f'Error reading doc history: {e}'
     return 'No documentation history file found.'
 
-if __name__ == '__main__':
+
     app.run(host='0.0.0.0', port=5055, DEBUG = false) 

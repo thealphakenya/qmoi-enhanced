@@ -25,7 +25,7 @@ function GET(request: NextRequest): any {
       count: sites.length,
     });
   } catch (error) {
-    console.error("Error fetching zero-rated sites:", error);
+    logger.error("Error fetching zero-rated sites:", error);
     return NextResponse.json(
       { success: false, error: "Failed to fetch zero-rated sites" },
       { status: 500 },
@@ -89,7 +89,7 @@ function POST(request: NextRequest): any {
       { status: 201 },
     );
   } catch (error) {
-    console.error("Error creating zero-rated site:", error);
+    logger.error("Error creating zero-rated site:", error);
     return NextResponse.json(
       { success: false, error: "Failed to create zero-rated site" },
       { status: 500 },

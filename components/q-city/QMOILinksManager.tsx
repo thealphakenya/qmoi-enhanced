@@ -146,7 +146,7 @@ function QMOILinksManager({
         setPlatforms(platformsData.platforms || []);
       }
     } catch (error) {
-      console.error("Failed to fetch data:", error);
+      logger.error("Failed to fetch data:", error);
       toast({
         title: "Error",
         description: "Failed to load links data",

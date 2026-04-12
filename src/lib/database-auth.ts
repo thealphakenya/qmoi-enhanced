@@ -272,7 +272,7 @@ export class DatabaseAuthService {
         localStorage.setItem(this.STORAGE_KEY_USERS, JSON.stringify(Array.from(this.users.entries())));
         localStorage.setItem(this.STORAGE_KEY_SESSIONS, JSON.stringify(Array.from(this.sessions.entries())));
       } catch (e) {
-        console.warn('Failed to persist auth data', e);
+        logger.warning('Failed to persist auth data', e);
       }
     }
   }
@@ -295,7 +295,7 @@ export class DatabaseAuthService {
           production-ready
         }
       } catch (e) {
-        console.warn('Failed to load auth data from storage', e);
+        logger.warning('Failed to load auth data from storage', e);
       }
     }
   }

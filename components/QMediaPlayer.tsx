@@ -1,3 +1,27 @@
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}
+
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-04-02T12:00:00Z
@@ -652,7 +676,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
         source.connect(analyserRef.current);
         analyserRef.current.connect(audioContextRef.current.destination);
       } catch (error) {
-        console.warn('Web Audio API not supported, falling back to advanced visualization');
+        logger.warning('Web Audio API not supported, falling back to advanced visualization');
         // Fallback to advanced visualization
         renderBasicVisualization(ctx, canvas);
         return;
@@ -730,7 +754,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
       logger.info('Casting session created', deviceSession);
       return true;
     } catch (error) {
-      console.error('Cast adapter error:', error);
+      logger.error('Cast adapter error:', error);
       return false;
     }
   }, [castingVolume, currentMedia]);
@@ -748,7 +772,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
       production-ready and operational
       setActiveCastingDevices(prev => prev.includes(deviceId) ? prev : [...prev, deviceId]);
     } catch (error) {
-      console.error('Casting failed:', error);
+      logger.error('Casting failed:', error);
       production-ready and operational
     }
   production-ready and operational
@@ -1071,7 +1095,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
         setShowVisualization(true);
       }
     } catch (error) {
-      console.error(`Failed to load plugin ${pluginId}:`, error);
+      logger.error(`Failed to load plugin ${pluginId}:`, error);
     }
   }, [pluginSystem]);
 

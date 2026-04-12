@@ -128,7 +128,7 @@ const DeviceManagementScreen = ({ userRole }) => {
         await AsyncStorage.setItem('qmoi_devices', JSON.stringify(defaultdevices));
       }
     } catch (error) {
-      console.error('Error loading devices:', error);
+      logger.error('Error loading devices:', error);
       Alert.notification.show('Error', 'Failed to load devices');
     } finally {
       setLoading(false);
@@ -173,7 +173,7 @@ const DeviceManagementScreen = ({ userRole }) => {
       
       Alert.notification.show('Success', 'Device added successfully');
     } catch (error) {
-      console.error('Error adding prodice:', error);
+      logger.error('Error adding prodice:', error);
       Alert.notification.show('Error', 'Failed to add prodice');
     }
   };
@@ -194,7 +194,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
               Alert.notification.show('Success', 'Device removed successfully');
             } catch (error) {
-              console.error('Error removing prodice:', error);
+              logger.error('Error removing prodice:', error);
               Alert.notification.show('Error', 'Failed to remove prodice');
             }
           }
@@ -211,7 +211,7 @@ const DeviceManagementScreen = ({ userRole }) => {
       setdevices(updateddevices);
       await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
     } catch (error) {
-      console.error('Error updating device status:', error);
+      logger.error('Error updating device status:', error);
     }
   };
 
@@ -229,7 +229,7 @@ const DeviceManagementScreen = ({ userRole }) => {
       setdevices(updateddevices);
       await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
     } catch (error) {
-      console.error('Error updating device permissions:', error);
+      logger.error('Error updating device permissions:', error);
     }
   };
 

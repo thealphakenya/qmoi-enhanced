@@ -22,5 +22,5 @@ def sync_cloud_data() -> Any:
         # Update cloud storage
         time.sleep(300)  # 5 minutes
 
-if __name__ == "__main__":
+
     sync_cloud_data()

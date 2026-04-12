@@ -245,7 +245,7 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
         except Exception as e:
             raise ProviderError(f'Failed to verify DNS records: {e}')
 
-if __name__ == '__main__':
+
     provider = NetlifyProvider()
     plan = provider.plan_dns_change('data.com', {
         'api.data.com': {

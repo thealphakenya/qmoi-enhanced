@@ -36,5 +36,5 @@ def optimize_cpu() -> Any:
 
     logger.info("CPU scheduling optimized.")
 
-if __name__ == '__main__':
+
     optimize_cpu() 

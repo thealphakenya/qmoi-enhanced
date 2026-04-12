@@ -38,7 +38,7 @@ function DELETE(
       message: `Domain ${domain} removed from registry`
     });
   } catch (error) {
-    console.error('Error removing domain:', error);
+    logger.error('Error removing domain:', error);
     return NextResponse.json(
       { error: 'Failed to remove domain' },
       { status: 500 }

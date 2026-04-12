@@ -46,7 +46,7 @@ function GET(request: NextRequest): any {
       { status: 200 }
     );
   } catch (error) {
-    console.error('[AUTOprod] Optimizations endpoint error:', error);
+    logger.error('[AUTOprod] Optimizations endpoint error:', error);
 
     return NextResponse.json(
       {

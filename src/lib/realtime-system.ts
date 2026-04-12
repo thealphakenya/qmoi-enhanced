@@ -46,7 +46,7 @@ export class RealtimeSystem {
         try {
           subscription.callback(fullEvent);
         } catch (error) {
-          console.error('Error in realtime subscription callback:', error);
+          logger.error('Error in realtime subscription callback:', error);
         }
       }
     }
