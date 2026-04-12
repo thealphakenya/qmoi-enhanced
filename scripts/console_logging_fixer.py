@@ -5,13 +5,10 @@ QMOI Specialized Console Logging Standardization Fixer
 Standardizes console.* calls to proper logger.* calls across the codebase.
 """
 
-import os
 import re
 from pathlib import Path
-from datetime import datetime
 import logging
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
@@ -20,148 +17,96 @@ logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).parent.parent
 
-def standardize_console_logging():
-    """Standardize console logging calls to proper logger calls"""
-    logger.info("Standardizing console logging callsProduction implementation with comprehensive error handling and logging")
+CONSOLE_REPLACEMENTS = [
+    (r'console\.log\((.*?)\);?', r'logger.info(\1);'),
+    (r'console\.debug\((.*?)\);?', r'logger.debug(\1);'),
+    (r'console\.info\((.*?)\);?', r'logger.info(\1);'),
+    (r'console\.warn\((.*?)\);?', r'logger.warning(\1);'),
+    (r'console\.error\((.*?)\);?', r'logger.error(\1);'),
+    (r'print\((.*?)\)', r'logger.info(\1)')
+]
 
+LOGGER_DEF = '''
+// Production logging configuration
+const logger = {
+  info: (msg, ...args) => console.log(`[${new Date().toISOString()}] INFO: ${msg}`, ...args),
+  debug: (msg, ...args) => console.debug(`[${new Date().toISOString()}] DEBUG: ${msg}`, ...args),
+  warning: (msg, ...args) => console.warn(`[${new Date().toISOString()}] WARN: ${msg}`, ...args),
+  error: (msg, ...args) => console.error(`[${new Date().toISOString()}] ERROR: ${msg}`, ...args)
+};
+'''
+
+JS_EXTENSIONS = ['.js', '.ts', '.jsx', '.tsx', '.mjs', '.cjs']
+
+
+def standardize_console_logging():
+    logger.info('Starting console logging standardization fixer')
     fixes_applied = 0
 
-    # Console to logger replacements
-    console_replacements = [
-        # JavaScript/TypeScript
-        (r'console\.log\((.*?)\);?', r'logger.info(\1);'),
-        (r'console\.debug\((.*?)\);?', r'logger.debug(\1);'),
-        (r'console\.info\((.*?)\);?', r'logger.info(\1);'),
-        (r'console\.warn\((.*?)\);?', r'logger.warning(\1);'),
-        (r'console\.error\((.*?)\);?', r'logger.error(\1);'),
-
-        # Python (though rare, some might exist)
-        (r'print\((.*?)\);?', r'logger.info(\1)'),
-    ]
-
-    # Process JavaScript/TypeScript files
-    js_extensions = ['.js', '.ts', '.jsx', '.tsx', '.mjs', '.cjs']
-
-    for ext in js_extensions:
+    for ext in JS_EXTENSIONS:
         for file_path in BASE_DIR.rglob(f'*{ext}'):
             if any(skip in str(file_path) for skip in ['node_modules', '.git', '__pycache__', 'backups', '.backups']):
                 continue
 
             try:
-                content = file_path.read_text()
-                original_content = content
-                changes_made = 0
+                content = file_path.read_text(encoding='utf-8')
+                original = content
+                had_logger = 'const logger' in content or 'let logger' in content or 'var logger' in content or 'import logger' in content
 
-                # Check if logger is already imported/defined
-                has_logger = 'const logger' in content or 'import.*logger' in content or 'logger =' in content
+                for pattern, replacement in CONSOLE_REPLACEMENTS:
+                    content = re.sub(pattern, replacement, content, flags=re.MULTILINE)
 
-                # Apply console replacements
-                for pattern, replacement in console_replacements:
-                    new_content = re.sub(pattern, replacement, content, flags=re.MULTILINE)
-                    if new_content != content:
-                        changes_made += len(re.findall(pattern, content, re.MULTILINE))
-                        content = new_content
-
-                # Add logger import if needed and console calls were replaced
-                if changes_made > 0 and not has_logger:
-                    # Add logger definition at top
-                    logger_def = """
-// Production logging configuration
-const logger = {
-  info: (msg, Production implementation with comprehensive error handling and loggingargs) => console.log(`[${new Date().toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => console.debug(`[${new Date().toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => console.warn(`[${new Date().toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  error: (msg, Production implementation with comprehensive error handling and loggingargs) => console.error(`[${new Date().toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
-};
-"""
-                    # Insert after existing imports or at top
-                    if 'import ' in content:
-                        # Find last import
-                        import_matches = list(re.finditer(r'^import .*$', content, re.MULTILINE))
-                        if import_matches:
-                            last_import = import_matches[-1]
-                            insert_pos = last_import.end()
-                            content = content[:insert_pos] + '\n' + logger_def + content[insert_pos:]
-                        else:
-                            content = logger_def + '\n' + content
+                if content != original and not had_logger:
+                    imports = list(re.finditer(r'^import .*$', content, flags=re.MULTILINE))
+                    if imports:
+                        last_import = imports[-1]
+                        pos = last_import.end()
+                        content = content[:pos] + '\n' + LOGGER_DEF + '\n' + content[pos:]
                     else:
-                        content = logger_def + '\n' + content
+                        content = LOGGER_DEF + '\n' + content
 
-                    changes_made += 1  # Count the logger addition
+                if content != original:
+                    file_path.write_text(content, encoding='utf-8')
+                    fixes_applied += len(re.findall(r'logger\.(?:info|debug|warning|error)\(', content))
+                    logger.info(f'Standardized logging in {file_path.relative_to(BASE_DIR)}')
 
-                # Save if changes were made
-                if content != original_content:
-                    file_path.write_text(content)
-                    fixes_applied += changes_made
-                    logger.info(f"Standardized {changes_made} console calls in {file_path.name}")
-
-            except Exception as e:
-                logger.error(f"Error fixing {file_path}: {e}")
+            except Exception as exc:
+                logger.error(f'Error processing {file_path}: {exc}')
 
     return fixes_applied
 
+
 def main():
-    """Main function"""
-    logger.info("=" * 60)
-    logger.info("QMOI SPECIALIZED CONSOLE LOGGING STANDARDIZATION FIXER")
-    logger.info("=" * 60)
-
+    logger.info('=' * 60)
+    logger.info('QMOI SPECIALIZED CONSOLE LOGGING STANDARDIZATION FIXER')
+    logger.info('=' * 60)
     fixes = standardize_console_logging()
+    logger.info(f'✅ Completed: Standardized {fixes} console logging calls')
+    logger.info('🎯 console.* calls now use production logger infrastructure')
 
-    logger.info(f"✅ Completed: Standardized {fixes} console logging calls")
-    logger.info("🎯 All console.* calls now use proper logger.* with production formatting")
 
 if __name__ == '__main__':
     import sys
     import logging
 
-    # Configure production logging
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
 
     try:
-        # Production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
-            # GUI application
             main_window = MainWindow()
             main_window.show()
             sys.exit(app.exec_())
         else:
-            # CLI or service application
             main()
     except KeyboardInterrupt:
-        logger.info("Application shutdown requested by user")
+        logger.info('Application shutdown requested by user')
         sys.exit(0)
-    except Exception as e:
-        logger.error(f"Application failed to start: {e}")
+    except Exception as exc:
+        logger.error(f'Application failed to start: {exc}')
         sys.exit(1)
-    import sys
-    import logging
 
-    # Configure production logging
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    )
-
-    try:
-        # Production application startup
-        app = QApplication(sys.argv) if 'QApplication' in globals() else None
-        if app:
-            # GUI application
-            main_window = MainWindow()
-            main_window.show()
-            sys.exit(app.exec_())
-        else:
-            # CLI or service application
-            main()
-    except KeyboardInterrupt:
-        logger.info("Application shutdown requested by user")
-        sys.exit(0)
-    except Exception as e:
-        logger.error(f"Application failed to start: {e}")
-        sys.exit(1)
     main()
