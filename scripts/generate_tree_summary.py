@@ -48,18 +48,6 @@ DEVELOPER_NOTES = """
 ### Key Generated Files (Auto-Updated)
 - MATCHES.md: Prioritized implementation work from tools/matches_priority.json
 - undone.txt: Remaining nonproduction patterns (across 3 locations)
-- ALLHEALTHS.md: Health system inventory and monitoring
-- TREE.md: This file - repository structure guide
-- API.md, ENDPOINTS.md: API documentation
-- ALLTESTSAUTOTESTS.md: Test inventory and coverage
-
-### Production Readiness Targets
-- Zero "..." unfinished patterns in production code
-- Zero resource/cache variables in core modules
-- All functions fully implemented (no NotImplementedError  # SCHEDULED: v2.x)
-- All APIs documented and registered
-- Health system 100% operational
-- All documentation auto-generated from source truth
 """
 
 def should_ignore(path: Path, relative_path: str) -> bool:
@@ -91,24 +79,18 @@ def get_tree_lines(start_path: Path, prefix: str = "", max_depth: int = 3, curre
     entries = [e for e in entries if not should_ignore(e, str(e.relative_to(ROOT)))]
     
     # Show only interesting entries
-    max_items = 30 if current_depth == 0 else 20
-    entries = entries[:max_items]
-    
     for i, entry in enumerate(entries):
-        is_last = (i == len(entries) - 1)
+        if i >= 10:  # Limit entries per directory
+            lines.append(f"{prefix}... ({len(entries) - i} more items)")
+            break
+            
+        is_last = i == len(entries) - 1
         current_prefix = "└── " if is_last else "├── "
-        next_prefix = "    " if is_last else "│   "
+        next_prefix = prefix + ("    " if is_last else "│   ")
         
         if entry.is_dir():
             lines.append(f"{prefix}{current_prefix}{entry.name}/")
-            
-            # Recursively add subdirectory contents
-            sub_lines = get_tree_lines(
-                entry,
-                prefix + next_prefix,
-                max_depth=max_depth,
-                current_depth=current_depth + 1
-            )
+            sub_lines = get_tree_lines(entry, next_prefix, max_depth, current_depth + 1)
             lines.extend(sub_lines)
         else:
             lines.append(f"{prefix}{current_prefix}{entry.name}")
@@ -134,13 +116,16 @@ def build_tree_md() -> str:
         "- Real-time health checks, production readiness auditing",
         "- Bulk automation for fixing and updating at scale",
         "",
-        DEVELOPER_NOTES,
+    ]
+    
+    lines.append(DEVELOPER_NOTES)
+    lines.extend([
         "",
         "## Complete Directory Tree",
         "",
         "```",
         "qmoi-enhanced/",
-    ]
+    ])
     
     # Add tree structure
     tree_lines = get_tree_lines(ROOT, max_depth=3)
@@ -170,7 +155,7 @@ def build_tree_md() -> str:
         "- **src/**: TypeScript core services and APIs",
         "- **components/**: React UI component library",
         "- **mobile/**: React Native mobile apps (iOS, Android, Web)",
-        "- **prisma/**: Database models and generated client",
+        "- **prisma/**: Database models and generated client code",
         "- **qvillage/**: Community platform modules",
         "- **earnvault/**: Financial and wallet services",
         "- **tests/**: Comprehensive test suites",
@@ -221,7 +206,7 @@ def build_tree_md() -> str:
         "",
         f"**Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}",
         "",
-    ]
+    ])
     
     return '\n'.join(lines)
 
