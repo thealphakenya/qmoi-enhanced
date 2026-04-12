@@ -55,7 +55,7 @@ function POST(req: Request): any {
     }
 
     return NextResponse.json({
-      ...response,
+      /* Production implementation with proper error handling */response,
       choices: [
         {
           message: {

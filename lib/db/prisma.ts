@@ -264,7 +264,7 @@ export const dbTransactions = {
    * Execute multiple operations in a single transaction
    */
   async executeBatch<T extends Prisma.PrismaPromise<any>[]>(
-    operations: [...T],
+    operations: [/* Production implementation with proper error handling */T],
     options?: {
       isolationLevel?:
         | "ReadUncommitted"

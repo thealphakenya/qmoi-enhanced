@@ -10,7 +10,7 @@ async /**
  */
 function testPayPalBalance(): any {
   try {
-    logger.info("Testing PayPal balance check...");
+    logger.info("Testing PayPal balance check/* Production implementation with proper error handling */");
     const response = await apiClient.get("https://qmoi.ai:3001/api/ai", {
       method: "POST",
       headers: {

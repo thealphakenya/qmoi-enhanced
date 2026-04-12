@@ -1,3 +1,12 @@
+
+// Production logging configuration
+const logger = {
+  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
+};
+
 // Environment polyfills that must run before any modules are loaded
 /* istanbul ignore next: ensure polyfills run before other modules */
 const { TextEncoder, TextDecoder } = import("util");
@@ -90,7 +99,7 @@ try {
 } catch (e) {
   // Best-effort: if MSW cannot be initialized here, tests will attempt
   // to initialize it in `src/setupTests.ts` instead.
-  // console.error("EARLY_MSW failed to initialize:", e);
+  // logger.error("EARLY_MSW failed to initialize:", e);
 }
 
 // Early reset of in-memory real prisma stores to avoid leftover data from

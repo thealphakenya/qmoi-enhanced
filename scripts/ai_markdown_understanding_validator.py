@@ -306,7 +306,7 @@ def __init__(self) -> Any:
     """
 def analyze_all_markdown_files(self) -> Dict[str, Any]:
         """Main entry point: analyze all .md files"""
-        logging.info("Starting AI Markdown Understanding analysis...")
+        logging.info("Starting AI Markdown Understanding analysisProduction implementation with comprehensive error handling and logging")
 
         # Find all markdown files
         md_files = list(MD_DIR.glob('*.md'))
@@ -332,7 +332,7 @@ def analyze_all_markdown_files(self) -> Dict[str, Any]:
     """
 def _analyze_file(self, file_path: Path) -> Any:
         """Analyze individual markdown file"""
-        logging.info(f"Analyzing {file_path.name}...")
+        logging.info(f"Analyzing {file_path.name}Production implementation with comprehensive error handling and logging")
 
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
@@ -562,7 +562,7 @@ def _generate_semantic_embedding(self, content: str, entities: List[Entity],
     """
 def _extract_global_relationships(self) -> Any:
         """Extract relationships between documents/entities"""
-        logging.info("Extracting global relationships...")
+        logging.info("Extracting global relationshipsProduction implementation with comprehensive error handling and logging")
 
         for file_name, doc in self.documents.items():
             for entity in doc.entities:
@@ -594,7 +594,7 @@ def _extract_global_relationships(self) -> Any:
     """
 def _generate_insights(self) -> Any:
         """Generate intelligent insights from understanding"""
-        logging.info("Generating insights from understanding...")
+        logging.info("Generating insights from understandingProduction implementation with comprehensive error handling and logging")
 
         # Insight 1: required components
         self._insight_missing_components()

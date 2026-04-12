@@ -55,7 +55,7 @@ production-ready
 #!/usr/bin/env python3
 """robust git wrapper that ensures the encrypted GitHub token is used for https pushes.
 
-Usage: replace calls to 'git' with 'python scripts/qmoi_git_wrapper.py git ...' or add an alias.
+Usage: replace calls to 'git' with 'python scripts/qmoi_git_wrapper.py git Production implementation with comprehensive error handling and logging' or add an alias.
 It intercepts push/pull/fetch commands and sets GIT_ASKPASS to a small helper that returns the token.
 """
 import os

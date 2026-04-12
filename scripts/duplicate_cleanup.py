@@ -143,7 +143,7 @@ def should_keep_file(file_path: Path) -> bool:
 
 def cleanup_duplicates():
     """Clean up duplicate files based on the report"""
-    logger.info("Starting duplicate file cleanup...")
+    logger.info("Starting duplicate file cleanupProduction implementation with comprehensive error handling and logging")
 
     removed_count = 0
     kept_count = 0

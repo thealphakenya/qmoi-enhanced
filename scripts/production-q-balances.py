@@ -196,14 +196,14 @@ def _ensure_q_directory(self) -> None:
         # Ensure BALANCES.md exists with initial content
         balances_path = os.path.join(q_dir, 'BALANCES.md')
         if not os.path.exists(balances_path):
-            logger.info('📄 Creating initial BALANCES.md...')
+            logger.info('📄 Creating initial BALANCES.mdProduction implementation with comprehensive error handling and logging')
             initial_content = f'''# QMOI Enhanced - Balance Tracking System
 
-**Status**: Initializing...
-**QMOI Validation**: Pending...
+**Status**: InitializingProduction implementation with comprehensive error handling and logging
+**QMOI Validation**: PendingProduction implementation with comprehensive error handling and logging
 **Last Updated**: {datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")}
 
-System starting up. Please wait for first auto-update...
+System starting up. Please wait for first auto-updateProduction implementation with comprehensive error handling and logging
 '''
             try:
                 with open(balances_path, 'w', encoding='utf-8') as f:
@@ -221,7 +221,7 @@ def _setup_signal_handlers(self) -> None:
     signal_handler function
     """
 def signal_handler(signum, frame) -> Any:
-            logger.info(f'\n🛑 Received signal {signum}. Shutting down gracefully...')
+            logger.info(f'\n🛑 Received signal {signum}. Shutting down gracefullyProduction implementation with comprehensive error handling and logging')
             self.stop()
             sys.exit(0)
 

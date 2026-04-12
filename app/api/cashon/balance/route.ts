@@ -51,7 +51,7 @@ function GET(_request: NextRequest): any {
     if (snapshot && snapshot.balances && snapshot.balances.primary_wallet) {
       const validatedCashon = snapshot.balances.primary_wallet;
       return NextResponse.json({
-        ...validatedCashon,
+        /* Production implementation with proper error handling */validatedCashon,
         source: "snapshot",
         validation: validatedCashon.validation,
       });

@@ -79,7 +79,7 @@ function POST(request: NextRequest): any {
     if (enabled) {
       setTimeout(() => {
         try {
-          logger.info("Autoprod background tasks starting...");
+          logger.info("Autoprod background tasks starting/* Production implementation with proper error handling */");
         } catch (_e) {
           /* noop */
         }

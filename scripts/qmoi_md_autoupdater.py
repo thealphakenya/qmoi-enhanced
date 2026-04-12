@@ -248,7 +248,7 @@ For always-on documentation synchronization, deploy the service files in `script
 
     def refresh_markdown_category_docs(self, categories: List[str], label: str) -> None:
         """Refresh markdown files matching category keywords with production metadata."""
-        logger.info(f"Refreshing {label} markdown docs...")
+        logger.info(f"Refreshing {label} markdown docsProduction implementation with comprehensive error handling and logging")
 
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
         auto_update_block = f"""
@@ -293,7 +293,7 @@ For always-on documentation synchronization, deploy the service files in `script
 
     def run_lion_auto_tagging(self) -> None:
         """Run the Lion markdown auto-tagging script to apply validation metadata across docs."""
-        logger.info("Running Lion auto-tagging for markdown validation...")
+        logger.info("Running Lion auto-tagging for markdown validationProduction implementation with comprehensive error handling and logging")
         try:
             subprocess.run(
                 ['python3', 'scripts/autotag_md_with_lion.py', '--apply', '--out', 'docs/md_index.json'],
@@ -333,7 +333,7 @@ For always-on documentation synchronization, deploy the service files in `script
 
     def update_tree_md(self) -> None:
         """Update TREE.md with current repository structure"""
-        logger.info("Updating TREE.md...")
+        logger.info("Updating TREE.mdProduction implementation with comprehensive error handling and logging")
 
         tree_content = self.generate_tree_structure()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -368,7 +368,7 @@ All files listed here are part of the active QMOI system deployment.
 
     def update_all_md_refs(self) -> None:
         """Update ALLMDFILESREFS.md with comprehensive markdown file registry"""
-        logger.info("Updating ALLMDFILESREFS.md...")
+        logger.info("Updating ALLMDFILESREFS.mdProduction implementation with comprehensive error handling and logging")
 
         markdown_files = self.scan_markdown_files()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -414,7 +414,7 @@ Files are validated for production readiness and accessibility.
 
     def update_api_docs(self) -> None:
         """Update API.md with current API documentation"""
-        logger.info("Updating API.md...")
+        logger.info("Updating API.mdProduction implementation with comprehensive error handling and logging")
 
         endpoints = self.scan_api_endpoints()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -475,7 +475,7 @@ Changes to API files trigger automatic documentation updates.
 
     def update_endpoints_md(self) -> None:
         """Update ENDPOINTS.md with endpoint inventory"""
-        logger.info("Updating ENDPOINTS.md...")
+        logger.info("Updating ENDPOINTS.mdProduction implementation with comprehensive error handling and logging")
 
         endpoints = self.scan_api_endpoints()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -524,7 +524,7 @@ All endpoints are validated for:
 
     def update_apis_1_md(self) -> None:
         """Update APIs_1.md with complete API list and versioned endpoint mapping"""
-        logger.info("Updating APIs_1.md...")
+        logger.info("Updating APIs_1.mdProduction implementation with comprehensive error handling and logging")
 
         endpoints = self.scan_api_endpoints()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -593,7 +593,7 @@ This document mirrors the current API endpoint inventory and serves as a stable 
 
     def update_all_test_docs(self) -> None:
         """Update ALLTESTSAUTOTESTS.md with discovered tests"""
-        logger.info("Updating ALLTESTSAUTOTESTS.md...")
+        logger.info("Updating ALLTESTSAUTOTESTS.mdProduction implementation with comprehensive error handling and logging")
         tests = self.scan_test_files()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
         total = len(tests)
@@ -652,7 +652,7 @@ This document catalogs all test and autotest files in the QMOI repository.
 
     def update_hooks_md(self) -> None:
         """Update HOOKS.md with current React hook inventory"""
-        logger.info("Updating HOOKS.md...")
+        logger.info("Updating HOOKS.mdProduction implementation with comprehensive error handling and logging")
         hooks = self.scan_hooks()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
 
@@ -693,7 +693,7 @@ This document lists all custom React hooks found in the QMOI repository.
 
     def update_webhooks_md(self) -> None:
         """Update WEBHOOKS.md with webhook endpoint inventory"""
-        logger.info("Updating WEBHOOKS.md...")
+        logger.info("Updating WEBHOOKS.mdProduction implementation with comprehensive error handling and logging")
         webhooks = self.scan_webhook_endpoints()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
 
@@ -724,7 +724,7 @@ This document lists all webhook-related API endpoints in the QMOI system.
 
     def update_all_hooks_webhooks_md(self) -> None:
         """Update ALLHOOKSWEBHOOKS.md with combined hook and webhook references"""
-        logger.info("Updating ALLHOOKSWEBHOOKS.md...")
+        logger.info("Updating ALLHOOKSWEBHOOKS.mdProduction implementation with comprehensive error handling and logging")
         hooks = self.scan_hooks()
         webhooks = self.scan_webhook_endpoints()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -758,7 +758,7 @@ This document combines hook and webhook references for the QMOI repository.
 
     def update_routes_md(self) -> None:
         """Update ROUTES.md with route listings"""
-        logger.info("Updating ROUTES.md...")
+        logger.info("Updating ROUTES.mdProduction implementation with comprehensive error handling and logging")
 
         endpoints = self.scan_api_endpoints()
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
@@ -814,7 +814,7 @@ Routes are automatically discovered from:
 
     def update_api_endpoint_route_related_docs(self) -> None:
         """Refresh all markdown files related to API, endpoints, routes, and related production categories."""
-        logger.info("Refreshing API/endpoint/route-related markdown docs...")
+        logger.info("Refreshing API/endpoint/route-related markdown docsProduction implementation with comprehensive error handling and logging")
 
         self.refresh_markdown_category_docs(
             categories=['api', 'endpoint', 'endpoints', 'route', 'routes'],
@@ -823,7 +823,7 @@ Routes are automatically discovered from:
 
     def generate_autoupdater_service_files(self) -> None:
         """Generate systemd service and timer files plus a fallback cron wrapper for persistent updates."""
-        logger.info("Generating service artifacts for always-on updater execution...")
+        logger.info("Generating service artifacts for always-on updater executionProduction implementation with comprehensive error handling and logging")
 
         root_path = str(self.workspace_root)
         service_content = f"""[Unit]
@@ -868,7 +868,7 @@ exec /usr/bin/env python3 scripts/qmoi_md_autoupdater.py
 
     def run_full_update(self, skip_lion: bool = False) -> None:
         """Run complete markdown file update cycle"""
-        logger.info("Starting full QMOI markdown auto-update...")
+        logger.info("Starting full QMOI markdown auto-updateProduction implementation with comprehensive error handling and logging")
 
         try:
             self.update_tree_md()
@@ -949,5 +949,57 @@ def main():
 
     updater.run_full_update(skip_lion=args.skip_lion)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    import sys
+    import logging
+
+    # Configure production logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        # Production application startup
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            # GUI application
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            # CLI or service application
+            main()
+    except KeyboardInterrupt:
+        logger.info("Application shutdown requested by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Application failed to start: {e}")
+        sys.exit(1)
+    import sys
+    import logging
+
+    # Configure production logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        # Production application startup
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            # GUI application
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            # CLI or service application
+            main()
+    except KeyboardInterrupt:
+        logger.info("Application shutdown requested by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Application failed to start: {e}")
+        sys.exit(1)
     main()

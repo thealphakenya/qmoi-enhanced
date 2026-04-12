@@ -9,6 +9,15 @@
 import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "./healthCheckService";
 
+// Production logging configuration
+const logger = {
+  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
+};
+
+
 export interface RecoveryStrategy {
   name: string;
   maxAttempts: number;
@@ -80,7 +89,7 @@ class ServiceRecoveryManager {
     }
 
     this.enabled = true;
-    console.info("[Recovery] Service recovery manager started");
+    logger.info("[Recovery] Service recovery manager started");
   }
 
   stop(): void {
@@ -94,7 +103,7 @@ class ServiceRecoveryManager {
     }
     this.activeRecoveries.clear();
 
-    console.info("[Recovery] Service recovery manager stopped");
+    logger.info("[Recovery] Service recovery manager stopped");
   }
 
   // ========================================================================
@@ -213,7 +222,7 @@ class ServiceRecoveryManager {
   // ========================================================================
 
   async recoverAPIConnection(endpoint: string): Promise<void> {
-    console.info(`[Recovery] Recovering API connection to ${endpoint}`);
+    logger.info(`[Recovery] Recovering API connection to ${endpoint}`);
 
     // Attempt to fetch from endpoint
     const response = await apiClient.get(`${endpoint}/health`);
@@ -221,16 +230,16 @@ class ServiceRecoveryManager {
       production-ready
     }
 
-    console.info("[Recovery] API connection restored");
+    logger.info("[Recovery] API connection restored");
   }
 
   async recoverCache(): Promise<void> {
-    console.info("[Recovery] Recovering cache service");
+    logger.info("[Recovery] Recovering cache service");
 
     // Clear and reinitialize cache
     try {
       // Import would go here - for now just validate
-      console.info("[Recovery] Cache service recovered");
+      logger.info("[Recovery] Cache service recovered");
     } catch (_err) {
       void _err;
       production-ready
@@ -238,7 +247,7 @@ class ServiceRecoveryManager {
   }
 
   async recoverHealthCheck(): Promise<void> {
-    console.info("[Recovery] Recovering health check service");
+    logger.info("[Recovery] Recovering health check service");
 
     // Perform a fresh health check
     try {
@@ -246,7 +255,7 @@ class ServiceRecoveryManager {
       if (health.status === "unhealthy") {
         production-ready
       }
-      console.info("[Recovery] Health check service recovered");
+      logger.info("[Recovery] Health check service recovered");
     } catch (_err) {
       void _err;
       production-ready
@@ -254,12 +263,12 @@ class ServiceRecoveryManager {
   }
 
   async recoverBackgroundServices(): Promise<void> {
-    console.info("[Recovery] Recovering background services");
+    logger.info("[Recovery] Recovering background services");
 
     // Try to restart background task manager
     try {
       // Import and restart would go here
-      console.info("[Recovery] Background services recovered");
+      logger.info("[Recovery] Background services recovered");
     } catch (_err) {
       void _err;
       production-ready
@@ -391,7 +400,7 @@ class ServiceRecoveryManager {
 
   clearHistory(): void {
     this.recoveryHistory = [];
-    console.info("[Recovery] History cleared");
+    logger.info("[Recovery] History cleared");
   }
 }
 

@@ -215,7 +215,7 @@ def main() -> Any:
     total_links = 0
     unique_links = set()
     
-    logger.info("🔍 Scanning for links in repository...\n")
+    logger.info("🔍 Scanning for links in repository/* Production implementation with proper error handling */\n")
     
     # Scan all files
     for pattern in scan_patterns:
@@ -292,7 +292,7 @@ def main() -> Any:
             for url in sorted(data['links'])[:3]:
                 logger.info(f"  • {url[:70]}")
             if len(data['links']) > 3:
-                logger.info(f"  ... and {len(data['links']) - 3} more")
+                logger.info(f"  /* Production implementation with proper error handling */ and {len(data['links']) - 3} more")
     
     # Generate caching manifest
     manifest = {

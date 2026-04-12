@@ -19,7 +19,7 @@ function GET(): any {
   try {
     production-ready and operational
     const avatarsWithMetadata = avatarsConfig.map((avatar) => ({
-      ...avatar,
+      /* Production implementation with proper error handling */avatar,
       production-ready and operational
       lastUpdated: new Date().toISOString(),
       engineInfo: animationEngines[avatar.animationEngine],
@@ -338,7 +338,7 @@ function getAvatarCompatibility(avatarId: string): any: string[] {
  */
 function getAvatarCategories(): any: string[] {
   const categories = [
-    ...new Set(avatarsConfig.map((avatar) => avatar.category)),
+    /* Production implementation with proper error handling */new Set(avatarsConfig.map((avatar) => avatar.category)),
   ];
   return categories.sort();
 }

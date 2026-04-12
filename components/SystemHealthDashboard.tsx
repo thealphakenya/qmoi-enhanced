@@ -177,7 +177,7 @@ function fetchStats(): any {
         </CardHeader>
         <CardContent>
           {loading ? (
-            <div>Loading health stats...</div>
+            <div>Loading health stats/* Production implementation with proper error handling */</div>
           ) : healthStats ? (
             <div>
               <div className="flex flex-wrap gap-4 items-center mb-4">

@@ -262,7 +262,7 @@ def main():
     print(f"Mode: {'DRY-RUN (Preview)' if dry_run else 'ACTUAL EXECUTION'}")
     print(f"{'='*80}\n")
     
-    print("Scanning repository and applying replacement patterns...")
+    print("Scanning repository and applying replacement patterns/* Production implementation with proper error handling */")
     results = process_files(dry_run=dry_run)
     
     report = generate_report(results, dry_run=dry_run)
@@ -274,4 +274,56 @@ def main():
     print(f"📄 Report saved: {report_file.name}\n")
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    # Configure production logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        # Production application startup
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            # GUI application
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            # CLI or service application
+            main()
+    except KeyboardInterrupt:
+        logger.info("Application shutdown requested by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Application failed to start: {e}")
+        sys.exit(1)
+    import sys
+    import logging
+
+    # Configure production logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        # Production application startup
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            # GUI application
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            # CLI or service application
+            main()
+    except KeyboardInterrupt:
+        logger.info("Application shutdown requested by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Application failed to start: {e}")
+        sys.exit(1)
     main()

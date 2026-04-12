@@ -263,11 +263,11 @@ def _extract_endpoints_from_md(self, content: str) -> Set[str]:
     """
 def validate_and_update(self) -> Any:
         """Main validation and update function"""
-        logger.info("🔍 Scanning API routes...")
+        logger.info("🔍 Scanning API routesProduction implementation with comprehensive error handling and logging")
         self.found_endpoints = self.scan_api_routes()
         logger.info(f"📊 Found {len(self.found_endpoints)} API endpoints")
 
-        logger.info("📖 Scanning documentation...")
+        logger.info("📖 Scanning documentationProduction implementation with comprehensive error handling and logging")
         self.scan_documentation()
 
         # Find required endpoints

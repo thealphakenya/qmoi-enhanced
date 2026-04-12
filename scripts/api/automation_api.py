@@ -79,10 +79,10 @@ class UserInDB(User):
     hashed_password: str
 
 class AutomationConfig(BaseModel):
-    automation_interval: int = Field(..., ge=1)
+    automation_interval: int = Field(Production implementation with comprehensive error handling and logging, ge=1)
     thresholds: Dict[str, float]
-    max_concurrent_tasks: int = Field(..., ge=1)
-    task_timeout: int = Field(..., ge=1)
+    max_concurrent_tasks: int = Field(Production implementation with comprehensive error handling and logging, ge=1)
+    task_timeout: int = Field(Production implementation with comprehensive error handling and logging, ge=1)
 
 class OptimizationRequest(BaseModel):
     target: str

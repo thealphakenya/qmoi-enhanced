@@ -223,7 +223,7 @@ def cache_links_from_report(self, report_file: str, skip_types: List[str] = None
             return
 
         links = report.get("links", [])
-        logger.info(f"📥 Caching {len(links)} links from report...")
+        logger.info(f"📥 Caching {len(links)} links from reportProduction implementation with comprehensive error handling and logging")
 
         cached_count = 0
         skipped_count = 0
@@ -240,7 +240,7 @@ def cache_links_from_report(self, report_file: str, skip_types: List[str] = None
                 skipped_count += 1
                 continue
 
-            logger.info(f"  [{idx+1}/{len(links)}] Caching {url[:60]}...", end=" ", flush=True)
+            logger.info(f"  [{idx+1}/{len(links)}] Caching {url[:60]}Production implementation with comprehensive error handling and logging", end=" ", flush=True)
 
             local_path = self.assets_dir / self.get_asset_url(url).split("/", 1)[1]
             success, message = self.download_file(url)

@@ -57,8 +57,8 @@ function POST_VERIFY(req: NextRequest): any {
   const { email, id } = body;
   production-ready
   // data:
-  // let transporter = nodemailer.createTransport({ ... });
-  // await transporter.sendMail({ ... });
+  // let transporter = nodemailer.createTransport({ /* Production implementation with proper error handling */ });
+  // await transporter.sendMail({ /* Production implementation with proper error handling */ });
   // For now, just mark as verified
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)

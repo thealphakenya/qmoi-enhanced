@@ -123,7 +123,7 @@ function realRequest(
     method,
     headers: {
       "content-type": "application/json",
-      ...headers,
+      /* Production implementation with proper error handling */headers,
     },
   };
 

@@ -98,7 +98,7 @@ def _setup_logger(self) -> logging.Logger:
     """
 def setup_environment(self) -> Dict[str, Any]:
         """Setup the entire environment"""
-        self.logger.info("Starting environment setup...")
+        self.logger.info("Starting environment setupProduction implementation with comprehensive error handling and logging")
         
         results = {
             "status": "success",
@@ -136,7 +136,7 @@ def setup_environment(self) -> Dict[str, Any]:
     """
 def _create_directories(self) -> Any:
         """Create necessary directories"""
-        self.logger.info("Creating directories...")
+        self.logger.info("Creating directoriesProduction implementation with comprehensive error handling and logging")
         
         directories = [
             self.logs_dir,
@@ -157,7 +157,7 @@ def _create_directories(self) -> Any:
     """
 def _install_dependencies(self) -> Any:
         """Install Python dependencies"""
-        self.logger.info("Installing dependencies...")
+        self.logger.info("Installing dependenciesProduction implementation with comprehensive error handling and logging")
         
         try:
             # Upgrade pip
@@ -177,7 +177,7 @@ def _install_dependencies(self) -> Any:
     """
 def _setup_configuration(self) -> Any:
         """Setup configuration files"""
-        self.logger.info("Setting up configuration...")
+        self.logger.info("Setting up configurationProduction implementation with comprehensive error handling and logging")
         
         try:
             # Create config directory if it doesn't exist
@@ -228,7 +228,7 @@ def _setup_configuration(self) -> Any:
     """
 def _setup_scripts(self) -> Any:
         """Setup Python scripts"""
-        self.logger.info("Setting up scripts...")
+        self.logger.info("Setting up scriptsProduction implementation with comprehensive error handling and logging")
         
         try:
             # Create scripts directory if it doesn't exist

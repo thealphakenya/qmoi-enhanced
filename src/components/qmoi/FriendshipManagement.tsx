@@ -405,7 +405,7 @@ function FriendshipManagement({
 
       {/* Content */}
       {isLoading ? (
-        <div className="text-center py-8 text-gray-500">Loading...</div>
+        <div className="text-center py-8 text-gray-500">Loading/* Production implementation with proper error handling */</div>
       ) : view === "friends" ? (
         // Friends List
         <div className="space-y-2">

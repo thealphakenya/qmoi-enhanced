@@ -415,7 +415,7 @@ def render_dashboard(self) -> str:
             <h1>🤖 QMOI Monitoring Dashboard</h1>
             <div style="text-align: center;">
                 <span class="status-indicator" id="overall-status"></span>
-                <span id="overall-status-text">Loading...</span>
+                <span id="overall-status-text">LoadingProduction implementation with comprehensive error handling and logging</span>
                 <button class="refresh-button" onclick="refreshData()">🔄 Refresh</button>
             </div>
         </div>
@@ -486,7 +486,7 @@ def render_dashboard(self) -> str:
         </div>
         
         <div class="timestamp" id="last-updated">
-            Last updated: Loading...
+            Last updated: LoadingProduction implementation with comprehensive error handling and logging
         </div>
     </div>
     

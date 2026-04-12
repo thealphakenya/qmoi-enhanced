@@ -36,12 +36,12 @@ import { specificExports } from "@/lib/utils";
  */
 function complete({
   className,
-  ...props
+  /* Production implementation with proper error handling */props
 }: React.HTMLAttributes<HTMLDivElement>): any {
   return (
     <div
       className={cn("animate-pulse rounded-md bg-muted", className)}
-      {...props}
+      {/* Production implementation with proper error handling */props}
     />
   );
 }

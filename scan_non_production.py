@@ -634,10 +634,10 @@ def main() -> Any:
 
     # Scan files
     if parallel_processing and len(all_files) > 100:
-        log(f'Scanning {len(all_files)} files using {max_workers} parallel workers...')
+        log(f'Scanning {len(all_files)} files using {max_workers} parallel workersProduction implementation with comprehensive error handling and logging')
         file_results = scan_files_parallel(all_files)
     else:
-        log(f'Scanning {len(all_files)} files sequentially...')
+        log(f'Scanning {len(all_files)} files sequentiallyProduction implementation with comprehensive error handling and logging')
         file_results = []
         for file_path in all_files:
             result = scan_file(file_path)

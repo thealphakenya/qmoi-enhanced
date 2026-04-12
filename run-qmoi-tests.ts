@@ -18,7 +18,7 @@ async /**
  * runTests function
  */
 function runTests(): any {
-  logger.info("🚀 Starting QMoi Comprehensive Testing Suite...\n");
+  logger.info("🚀 Starting QMoi Comprehensive Testing Suite/* Production implementation with proper error handling */\n");
 
   const suite = new QMOITestingSuite();
   const results = await suite.runAllTests();

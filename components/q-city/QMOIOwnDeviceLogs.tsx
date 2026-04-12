@@ -703,7 +703,7 @@ function QMOIOwnDeviceLogs({
                       <TableCell>
                         {log.error_details && (
                           <span className="text-red-500 text-sm">
-                            {log.error_details.substring(0, 50)}...
+                            {log.error_details.substring(0, 50)}/* Production implementation with proper error handling */
                           </span>
                         )}
                       </TableCell>

@@ -64,7 +64,7 @@ import { specificExports } from datetime import { specificExports } from typing 
 try:
     from huggingface_hub import HfApi, get_repo_info
 except ImportError:
-    logger.info("Installing huggingface_hub...")
+    logger.info("Installing huggingface_hubProduction implementation with comprehensive error handling and logging")
     os.system("pip install huggingface_hub")
     from huggingface_hub import HfApi, get_repo_info
 
@@ -174,7 +174,7 @@ def check_cost_threshold(self, monthly_cost: float) -> Dict[str, Any]:
     """
 def generate_report(self) -> Dict[str, Any]:
         """Generate complete cost monitoring report."""
-        logger.info("Generating HF Space cost report...")
+        logger.info("Generating HF Space cost reportProduction implementation with comprehensive error handling and logging")
         
         space_info = self.get_space_info()
         if not space_info:

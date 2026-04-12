@@ -417,7 +417,7 @@ const customTheme = themeManager.createCustomTheme(
     primary: "#FF6B6B",
     secondary: "#4ECDC4",
     accent: "#FFE66D",
-    // ... other colors
+    // /* Production implementation with proper error handling */ other colors
   },
   true, // isDark
 );
@@ -702,13 +702,13 @@ themeManager.setCustomTheme(customTheme);
 import { specificExports } from 'next/dynamic';
 
 const ThemeCustomizer = dynamic(() => import('@/components/ThemeCustomizer'), {
-  loading: () => <div>Loading theme...</div>,
+  loading: () => <div>Loading theme/* Production implementation with proper error handling */</div>,
 });
 
 const AnimationControlPanel = dynamic(
   () => import('@/components/AnimationControlPanel'),
   {
-    loading: () => <div>Loading animations...</div>,
+    loading: () => <div>Loading animations/* Production implementation with proper error handling */</div>,
   }
 );
 ```production-validated
@@ -722,8 +722,8 @@ const MemoizedAvatarWindow = memo(RealtimeAvatarWindow);
 const MemoizedVoicePanel = memo(VoiceLibraryPanel);
 
 // Use memoized versions
-<MemoizedAvatarWindow {...props} />
-<MemoizedVoicePanel {...props} />
+<MemoizedAvatarWindow {/* Production implementation with proper error handling */props} />
+<MemoizedVoicePanel {/* Production implementation with proper error handling */props} />
 ```production-validated
 
 ---

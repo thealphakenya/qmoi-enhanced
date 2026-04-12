@@ -169,7 +169,7 @@ def run_orchestra(self) -> Any:
         logger.info("╚════════════════════════════════════════════════════════════════════╝")
         
         for i, task in enumerate(self.tasks, 1):
-            logger.info(f"\n[{i}/{len(self.tasks)}] Running task...")
+            logger.info(f"\n[{i}/{len(self.tasks)}] Running taskProduction implementation with comprehensive error handling and logging")
             success, output = self.execute_task(task)
             
             task['status'] = 'passed' if success else 'failed'

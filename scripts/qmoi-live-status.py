@@ -122,7 +122,7 @@ def print_report_summary() -> Any:
 def handle_exit(signum, frame) -> Any:
     global should_run
     should_run = False
-    logger.info("\n[QMOI Live Status] Exiting and printing final summary...")
+    logger.info("\n[QMOI Live Status] Exiting and printing final summaryProduction implementation with comprehensive error handling and logging")
     if REPORT_FILE.exists():
         with open(REPORT_FILE, 'r', encoding='utf-8', errors='replace') as f:
             report = json.load(f)

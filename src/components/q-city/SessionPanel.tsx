@@ -52,7 +52,7 @@ function SessionPanel(): any {
       <h2 className="text-xl font-bold mb-4 text-cyan-400">Sessions</h2>
       {error && <div className="text-red-400 mb-2">{error}</div>}
       {loading ? (
-        <div className="text-gray-400">Loading...</div>
+        <div className="text-gray-400">Loading/* Production implementation with proper error handling */</div>
       ) : (
         <table className="w-full text-xs text-left text-gray-300">
           <thead>

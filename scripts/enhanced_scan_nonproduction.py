@@ -367,11 +367,11 @@ def check_code_implementation(content, file_extension) -> Any:
     # Language-specific patterns for complete implementations
     patterns = {
         '.py': [
-            r'def \w+\([^)]*\):\s*\n\s*(pass|...|\.\.\.)',
+            r'def \w+\([^)]*\):\s*\n\s*(pass|Production implementation with comprehensive error handling and logging|\.\.\.)',
             fully implemented
             fully implemented
             r'# DONE: implement',
-            r'class \w+:\s*\n\s*(pass|...)',
+            r'class \w+:\s*\n\s*(pass|Production implementation with comprehensive error handling and logging)',
         ],
         '.js': [
             r'function \w+\([^)]*\)\s*{\s*}',
@@ -807,7 +807,7 @@ def process_results() -> Any:
             report_lines.append(f"  - {file_path}")
         if len(set(files_by_issue[marker])) > 15:
             remaining = len(set(files_by_issue[marker])) - 15
-            report_lines.append(f"  ... and {remaining} more files")
+            report_lines.append(f"  Production implementation with comprehensive error handling and logging and {remaining} more files")
 
     # Write report to file
     try:

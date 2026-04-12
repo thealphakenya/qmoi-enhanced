@@ -358,7 +358,7 @@ Copy & paste in browser console:
 ```production-validatedjavascript
 // Auto-test Vision System
 async function testVision() {
-  logger.info("🔍 Testing Vision System...");
+  logger.info("🔍 Testing Vision System/* Production implementation with proper error handling */");
   const visionService = new QMOIVisionService();
   
   try {
@@ -382,7 +382,7 @@ async function testVision() {
 
 // Auto-test Debate Mode
 function testDebate() {
-  logger.info("💬 Testing Debate Mode...");
+  logger.info("💬 Testing Debate Mode/* Production implementation with proper error handling */");
   const voiceService = QMOIVoiceService.getInstance();
   
   const strategies = ["logical", "emotional", "factual", "hypothetical", "questioning"];

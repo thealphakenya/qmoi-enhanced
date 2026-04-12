@@ -96,7 +96,7 @@ def log(self, message: str) -> Any:
     """
 def validate_environment(self) -> bool:
         """Validate content deployment environment"""
-        self.log("🔍 Validating content deployment environment...")
+        self.log("🔍 Validating content deployment environmentProduction implementation with comprehensive error handling and logging")
         
         # Check if content directory exists
         content_dir = Path('content')
@@ -246,7 +246,7 @@ def run_deployment(self) -> Any:
             self.log("   Run DNS activation and SSL provisioning first.")
             return False
         
-        self.log(f"📋 Deploying content for {len(self.domains_to_process)} domains...")
+        self.log(f"📋 Deploying content for {len(self.domains_to_process)} domainsProduction implementation with comprehensive error handling and logging")
         
         success_count = 0
         for i, domain in enumerate(self.domains_to_process, 1):
@@ -258,7 +258,7 @@ def run_deployment(self) -> Any:
             # Deploy content
             if self.deploy_content(domain):
                 # Wait for deployment propagation
-                self.log(f"⏳ Waiting 15 seconds for deployment propagation...")
+                self.log(f"⏳ Waiting 15 seconds for deployment propagationProduction implementation with comprehensive error handling and logging")
                 time.sleep(15)
                 
                 # Verify deployment

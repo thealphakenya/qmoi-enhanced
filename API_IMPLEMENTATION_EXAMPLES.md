@@ -350,7 +350,7 @@ export function AutonomyDashboard() {
     return () => clearInterval(interval);
   }, []);
 
-  if (!status) return <div>Loading...</div>;
+  if (!status) return <div>Loading/* Production implementation with proper error handling */</div>;
 
   return (
     <div className="autonomy-dashboard">
@@ -507,7 +507,7 @@ export function DataWithErrorRecovery() {
       <div className="error">
         <p>{error}</p>
         <button onClick={handleRetry} disabled={retrying}>
-          {retrying ? 'Retrying...' : 'Retry'}
+          {retrying ? 'Retrying/* Production implementation with proper error handling */' : 'Retry'}
         </button>
       </div>
     );

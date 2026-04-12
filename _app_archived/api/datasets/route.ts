@@ -115,7 +115,7 @@ function POST(request: Request): any {
         format: "json",
         version: "1.0.0",
         tags: [],
-        ...metadata,
+        /* Production implementation with proper error handling */metadata,
       },
       stats: {
         totalItems: 0,

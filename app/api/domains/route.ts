@@ -98,7 +98,7 @@ function POST(req: Request): any {
       case "list": {
         const allDomains = await domainService.getAllDomains();
         const categories = [
-          ...new Set(
+          /* Production implementation with proper error handling */new Set(
             allDomains.map((d: any) => d.category).filter(Boolean) as string[],
           ),
         ];
@@ -149,7 +149,7 @@ export async /**
 function GET(): any {
   try {
     const allDomains = await domainService.getAllDomains();
-    const categories = [...new Set(allDomains.map((d: any) => d.category))];
+    const categories = [/* Production implementation with proper error handling */new Set(allDomains.map((d: any) => d.category))];
 
     return NextResponse.json({
       success: true,

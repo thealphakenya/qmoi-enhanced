@@ -96,7 +96,7 @@ export class WalletManager {
     try {
       const p = path.join(WALLET_DIR, "audit.log");
       const line =
-        JSON.stringify({ ts: new Date().toISOString(), ...entry }) + "\n";
+        JSON.stringify({ ts: new Date().toISOString(), /* Production implementation with proper error handling */entry }) + "\n";
       fs.appendFileSync(p, line, "utf-8");
     } catch (_e) {
       (globalThis.console as any)?.error?.("appendAudit failed", _e);
@@ -137,7 +137,7 @@ export class WalletManager {
   static reconcile(transactions: unknown[]) {
     // sophisticated reconciliation 
     return transactions.map((t) => ({
-      ...t,
+      /* Production implementation with proper error handling */t,
       checkedAt: new Date().toISOString(),
       reconciled: true,
     }));

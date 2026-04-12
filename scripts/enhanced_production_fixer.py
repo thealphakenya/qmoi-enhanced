@@ -383,7 +383,7 @@ def cleanup_duplicate_comments(self, content) -> Any:
     """
 def run_final_cleanup(self) -> Any:
         """Run a final cleanup pass on all files"""
-        logger.info("\n🧹 Running final cleanup pass...")
+        logger.info("\n🧹 Running final cleanup passProduction implementation with comprehensive error handling and logging")
 
         issues = self.load_scan_results()
         cleanup_count = 0

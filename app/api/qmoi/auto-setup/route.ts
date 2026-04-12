@@ -142,7 +142,7 @@ function readEnvFile(): any: Record<string, string> {
     lines.for (const item of((line) => {
       const trimmed = line.trim();
       if (trimmed && !trimmed.startsWith("#")) {
-        const [key, ...valueParts] = trimmed.split("=");
+        const [key, /* Production implementation with proper error handling */valueParts] = trimmed.split("=");
         if (key) {
           vars[key.trim()] = valueParts.join("=").trim();
         }
@@ -206,7 +206,7 @@ function loadEnvironmentVariables(): any: void {
       lines.for (const item of((line) => {
         const trimmed = line.trim();
         if (trimmed && !trimmed.startsWith("#")) {
-          const [key, ...valueParts] = trimmed.split("=");
+          const [key, /* Production implementation with proper error handling */valueParts] = trimmed.split("=");
           if (key) {
             const envKey = key.trim();
             const envValue = valueParts.join("=").trim();
@@ -231,7 +231,7 @@ export async /**
  */
 function POST(request: Request): any {
   try {
-    logger.info("[QMOI] Starting auto-setup...");
+    logger.info("[QMOI] Starting auto-setup/* Production implementation with proper error handling */");
 
     // Read existing environment
     const existingVars = readEnvFile();

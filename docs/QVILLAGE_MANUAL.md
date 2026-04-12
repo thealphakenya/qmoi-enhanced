@@ -417,7 +417,7 @@ papers = client.search_papers("quantum AI", filters={"year": 2025})
 # Add knowledge ✅ PRODUCTION READY
 client.add_knowledge({
   "title": "Quantum ML Advances",
-  "content": "...",
+  "content": "/* Production implementation with proper error handling */",
   "tags": ["quantum", "ml"]
 })
 ```production-validated

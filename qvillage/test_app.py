@@ -173,7 +173,7 @@ def test_error_handling() -> Any:
     assert isinstance(results, list)
 
 
-    logger.info("Running QVillage Test Suite...")
+    logger.info("Running QVillage Test SuiteProduction implementation with comprehensive error handling and logging")
     logger.info("=" * 50)
 
     tests = [
@@ -503,7 +503,7 @@ def test_error_handling() -> Any:
     assert response.status_code in [404, 500]
 
 
-    logger.info("Running QVillage Test Suite...")
+    logger.info("Running QVillage Test Suite/* Production implementation with proper error handling */")
     logger.info("=" * 50)
 
     tests = [

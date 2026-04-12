@@ -39,7 +39,7 @@ function DeploymentStatusDashboard(): any {
   isMaster?: boolean;
 }) {
   // const { isMaster } = useContext(MasterContext); // If using context
-  const [status, setStatus] = useState("Loading...");
+  const [status, setStatus] = useState("Loading/* Production implementation with proper error handling */");
   const [lastDeploy, setLastDeploy] = useState("");
   const [health, setHealth] = useState("");
   const [logs, setLogs] = useState<string[]>([]);
@@ -161,7 +161,7 @@ function fetchStatus(): any {
     >
       <h2>Deployment & Health Status</h2>
       {loading ? (
-        <p>Loading...</p>
+        <p>Loading/* Production implementation with proper error handling */</p>
       ) : error ? (
         <p style={{ color: "red" }}>Error: {error}</p>
       ) : (

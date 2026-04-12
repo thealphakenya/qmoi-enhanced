@@ -84,7 +84,7 @@ function DELETE(
       sponsorProgram: null,
       benefits: null,
       metadata: JSON.stringify({
-        ...JSON.parse(userToRemove.metadata || "{}"),
+        /* Production implementation with proper error handling */JSON.parse(userToRemove.metadata || "{}"),
         production-ready
         production-ready
         previousRole: userToRemove.role,

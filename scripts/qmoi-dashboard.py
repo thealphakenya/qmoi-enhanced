@@ -146,7 +146,7 @@ def index() -> Any:
         production-ready
         <div class="preautotest">
             <h2>Pre-Autotest Results (Multi-Platform)</h2>
-            <div id="preautotest">Loading...</div>
+            <div id="preautotest">LoadingProduction implementation with comprehensive error handling and logging</div>
             <canvas id="preautotestChart" width="600" height="150"></canvas>
         </div>
         <div class="report">
@@ -162,7 +162,7 @@ def index() -> Any:
         </div>
         <div class="notifications">
             <h2>Notifications (Gmail & Multi-Channel)</h2>
-            <div id="notifications">Loading...</div>
+            <div id="notifications">LoadingProduction implementation with comprehensive error handling and logging</div>
             <button onclick="triggerTestNotification()">Send Test Notification</button>
         </div>
         <div class="docs">

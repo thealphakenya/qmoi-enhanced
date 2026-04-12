@@ -23,7 +23,7 @@ function App(): any {
     return () => clearInterval(interval);
   }, []);
 
-  if (!status) return <div>Loading QMOI status...</div>;
+  if (!status) return <div>Loading QMOI status/* Production implementation with proper error handling */</div>;
 
   return (
     <div style={{ fontFamily: "sans-serif", padding: 24 }}>

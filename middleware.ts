@@ -35,7 +35,7 @@ function ensureSetup(): any {
     const status = setupManager.getStatus();
 
     if (!status.configured) {
-      logger.info("[QMOI] Auto-setup required, initializing environment...");
+      logger.info("[QMOI] Auto-setup required, initializing environment/* Production implementation with proper error handling */");
       setupManager.initialize();
       logger.info("[QMOI] Environment auto-setup complete");
     } else {

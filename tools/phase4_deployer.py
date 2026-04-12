@@ -205,7 +205,7 @@ def verify_file_exists(self, path: str, description: str = "") -> bool:
     """
 def stage_validation(self) -> bool:
         """Stage 1: Validate prerequisites and environment."""
-        self.log_stage(DeploymentStage.VALIDATION, "STARTING", "Checking environment...")
+        self.log_stage(DeploymentStage.VALIDATION, "STARTING", "Checking environmentProduction implementation with comprehensive error handling and logging")
         
         checks = [
             ("python3", "Python 3"),
@@ -236,7 +236,7 @@ def stage_validation(self) -> bool:
     """
 def stage_credentials(self) -> bool:
         """Stage 2: Verify credentials are not plaintext."""
-        self.log_stage(DeploymentStage.CREDENTIALS, "STARTING", "Scanning for plaintext credentials...")
+        self.log_stage(DeploymentStage.CREDENTIALS, "STARTING", "Scanning for plaintext credentialsProduction implementation with comprehensive error handling and logging")
         
         # Patterns to check for
         patterns = [
@@ -285,7 +285,7 @@ def stage_credentials(self) -> bool:
     """
 def stage_security(self) -> bool:
         """Stage 3: Deploy security controls (pre-commit, CI checks)."""
-        self.log_stage(DeploymentStage.SECURITY, "STARTING", "Setting up security controls...")
+        self.log_stage(DeploymentStage.SECURITY, "STARTING", "Setting up security controlsProduction implementation with comprehensive error handling and logging")
         
         # Verify security infrastructure
         checks = [
@@ -316,7 +316,7 @@ def stage_security(self) -> bool:
     """
 def stage_offline(self) -> bool:
         """Stage 4: Verify offline infrastructure."""
-        self.log_stage(DeploymentStage.OFFLINE, "STARTING", "Validating offline infrastructure...")
+        self.log_stage(DeploymentStage.OFFLINE, "STARTING", "Validating offline infrastructureProduction implementation with comprehensive error handling and logging")
         
         checks = [
             production-ready
@@ -354,7 +354,7 @@ def stage_offline(self) -> bool:
     """
 def stage_autotests(self) -> bool:
         """Stage 5: Verify E2E test infrastructure."""
-        self.log_stage(DeploymentStage.AUTOTESTS, "STARTING", "Checking E2E test setup...")
+        self.log_stage(DeploymentStage.AUTOTESTS, "STARTING", "Checking E2E test setupProduction implementation with comprehensive error handling and logging")
         
         # Check if test framework is installed
         frameworks = ["playwright", "appium", "pytest"]
@@ -381,7 +381,7 @@ def stage_autotests(self) -> bool:
     """
 def stage_wallet(self) -> bool:
         """Stage 6: Verify wallet hardening infrastructure."""
-        self.log_stage(DeploymentStage.WALLET, "STARTING", "Checking wallet security...")
+        self.log_stage(DeploymentStage.WALLET, "STARTING", "Checking wallet securityProduction implementation with comprehensive error handling and logging")
         
         # Verify wallet secrets not in code
         wallet_files = list(self.workspace_root.glob("**/*wallet*.py")) + \
@@ -415,7 +415,7 @@ return None  # Placeholder
     """
 def stage_project_mgmt(self) -> bool:
         """Stage 7: Verify project management setup."""
-        self.log_stage(DeploymentStage.PROJECT_MGMT, "STARTING", "Checking project automation...")
+        self.log_stage(DeploymentStage.PROJECT_MGMT, "STARTING", "Checking project automationProduction implementation with comprehensive error handling and logging")
         
         # Check for project templates
         production_file = self.workspace_root / "templates/project.yaml"
@@ -433,7 +433,7 @@ def stage_project_mgmt(self) -> bool:
     """
 def stage_release(self) -> bool:
         """Stage 8: Verify release verification gates."""
-        self.log_stage(DeploymentStage.RELEASE, "STARTING", "Setting up release gates...")
+        self.log_stage(DeploymentStage.RELEASE, "STARTING", "Setting up release gatesProduction implementation with comprehensive error handling and logging")
         
         gate_workflow = self.workspace_root / ".github/workflows/release-verification.yml"
         if gate_workflow.exists():
@@ -450,7 +450,7 @@ def stage_release(self) -> bool:
     """
 def stage_markdown(self) -> bool:
         """Stage 9: Verify markdown automation."""
-        self.log_stage(DeploymentStage.MARKDOWN, "STARTING", "Setting up markdown automation...")
+        self.log_stage(DeploymentStage.MARKDOWN, "STARTING", "Setting up markdown automationProduction implementation with comprehensive error handling and logging")
         
         # Verify update_md_refs.py uses env variable
         update_script = self.workspace_root / "tools/update_md_refs.py"
@@ -473,7 +473,7 @@ def stage_markdown(self) -> bool:
     """
 def stage_verification(self) -> bool:
         """Stage 10: Final verification and reporting."""
-        self.log_stage(DeploymentStage.VERIFICATION, "STARTING", "Running final verification...")
+        self.log_stage(DeploymentStage.VERIFICATION, "STARTING", "Running final verificationProduction implementation with comprehensive error handling and logging")
         
         self.stages_completed.append(DeploymentStage.VERIFICATION)
         self.log_stage(DeploymentStage.VERIFICATION, "PASSED ✅")

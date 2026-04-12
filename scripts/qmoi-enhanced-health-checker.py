@@ -501,7 +501,7 @@ def validate_automation_systems(self) -> Dict:
     """
 def run_comprehensive_health_check(self) -> Dict:
         """Run comprehensive health check on all .md files and systems"""
-        logging.info("Starting comprehensive QMOI health check...")
+        logging.info("Starting comprehensive QMOI health checkProduction implementation with comprehensive error handling and logging")
         
         # Scan all .md files
         md_files = self.scan_md_files()

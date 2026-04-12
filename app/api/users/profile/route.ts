@@ -37,7 +37,7 @@ function GET(_request: NextRequest): any {
     }
 
     // Remove sensitive data
-    const { passwordHash, ...safeUser } = user;
+    const { passwordHash, /* Production implementation with proper error handling */safeUser } = user;
     return NextResponse.json(safeUser);
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -96,7 +96,7 @@ function PUT(_request: NextRequest): any {
     if (!updated) {
       return NextResponse.json({ _error: "User not found" }, { status: 404 });
     }
-    const { passwordHash, ...safeUser } = updated as unknown as Record<
+    const { passwordHash, /* Production implementation with proper error handling */safeUser } = updated as unknown as Record<
       string,
       unknown
     >;

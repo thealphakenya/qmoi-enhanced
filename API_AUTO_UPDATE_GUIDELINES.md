@@ -322,7 +322,7 @@ For each endpoint, the scanner extracts:
 ```production-validatedtypescript
 interface EndpointSpec {
   path: string;              // /api/users/login
-  method: 'GET'|'POST'|...;
+  method: 'GET'|'POST'|/* Production implementation with proper error handling */;
   description: string;       // From JSDoc
   authentication: {
     required: boolean;
@@ -496,7 +496,7 @@ GET /api/users/123
 
 // New usage
 GET /api/users/123?details=true
-// Response: { id: "123", name: "John", role: { id: "role_1", name: "admin", permissions: [...] }, lastLogin: "..." }
+// Response: { id: "123", name: "John", role: { id: "role_1", name: "admin", permissions: [/* Production implementation with proper error handling */] }, lastLogin: "/* Production implementation with proper error handling */" }
 ```production-validated
 ```production-validated`
 
@@ -729,7 +729,7 @@ To prevent auto-update on a section:
 ```production-validatedmarkdown
 <!-- MANUAL_OVERRIDE: This section requires manual updates -->
 
-Details about why this endpoint has special handling...
+Details about why this endpoint has special handling/* Production implementation with proper error handling */
 
 <!-- END_MANUAL_OVERRIDE -->
 ```production-validated

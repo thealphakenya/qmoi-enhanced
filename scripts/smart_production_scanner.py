@@ -220,7 +220,7 @@ def scan_repository(self) -> Any:
                         self.issues_found += len(issues)
                     
                     if source_files % 50 == 0:
-                        logger.info(f"  Scanned {source_files} source files... ({self.issues_found} issues)")
+                        logger.info(f"  Scanned {source_files} source filesProduction implementation with comprehensive error handling and logging ({self.issues_found} issues)")
         
         logger.info(f"\n✅ Scan complete")
         logger.info(f"   Source files checked: {source_files}")

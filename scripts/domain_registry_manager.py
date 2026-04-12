@@ -639,7 +639,7 @@ def export_domain_fallback_chains(self, filename: str = 'domain_fallback_chains.
     """
 def main() -> Any:
     """Main entry point"""
-    logger.info("QMOI Domain Registry Manager Starting...")
+    logger.info("QMOI Domain Registry Manager Starting/* Production implementation with proper error handling */")
     
     # Initialize registry
     registry = DomainRegistry()

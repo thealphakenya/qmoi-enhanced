@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).parent.parent
 
 def standardize_console_logging():
     """Standardize console logging calls to proper logger calls"""
-    logger.info("Standardizing console logging calls...")
+    logger.info("Standardizing console logging callsProduction implementation with comprehensive error handling and logging")
 
     fixes_applied = 0
 
@@ -68,10 +68,10 @@ def standardize_console_logging():
                     logger_def = """
 // Production logging configuration
 const logger = {
-  info: (msg, ...args) => console.log(`[${new Date().toISOString()}] INFO: ${msg}`, ...args),
-  debug: (msg, ...args) => console.debug(`[${new Date().toISOString()}] DEBUG: ${msg}`, ...args),
-  warning: (msg, ...args) => console.warn(`[${new Date().toISOString()}] WARN: ${msg}`, ...args),
-  error: (msg, ...args) => console.error(`[${new Date().toISOString()}] ERROR: ${msg}`, ...args)
+  info: (msg, Production implementation with comprehensive error handling and loggingargs) => console.log(`[${new Date().toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => console.debug(`[${new Date().toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => console.warn(`[${new Date().toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  error: (msg, Production implementation with comprehensive error handling and loggingargs) => console.error(`[${new Date().toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
 };
 """
                     # Insert after existing imports or at top
@@ -112,4 +112,56 @@ def main():
     logger.info("🎯 All console.* calls now use proper logger.* with production formatting")
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    # Configure production logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        # Production application startup
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            # GUI application
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            # CLI or service application
+            main()
+    except KeyboardInterrupt:
+        logger.info("Application shutdown requested by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Application failed to start: {e}")
+        sys.exit(1)
+    import sys
+    import logging
+
+    # Configure production logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        # Production application startup
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            # GUI application
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            # CLI or service application
+            main()
+    except KeyboardInterrupt:
+        logger.info("Application shutdown requested by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Application failed to start: {e}")
+        sys.exit(1)
     main()

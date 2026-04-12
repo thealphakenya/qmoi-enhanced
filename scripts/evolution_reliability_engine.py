@@ -422,7 +422,7 @@ def _execute_command_safe(self, operation: Dict[str, Any]) -> bool:
             )
 
             if result.returncode == 0:
-                logger.info(f"Command executed successfully: {command[:50]}...")
+                logger.info(f"Command executed successfully: {command[:50]}Production implementation with comprehensive error handling and logging")
                 return True
             else:
                 logger.error(f"Command failed: {result.stderr}")

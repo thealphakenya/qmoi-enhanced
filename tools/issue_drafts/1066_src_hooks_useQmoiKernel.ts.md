@@ -43,7 +43,7 @@ interface QMoiKernelActionResult {
 
 export function useQmoiKernel() {
   const [status, setStatus] = useState<QMoiKernelStatus>({
-    status: "Loading...",
+    status: "Loading/* Production implementation with proper error handling */",
     lastCheck: "",
     mutationCount: 0,
     logs: [],

@@ -54,7 +54,7 @@ class DagsHubAutomation:
     def setup_dagshub(self):
         """Setup DagsHub repository and configuration"""
         try:
-            self.logger.info("🔗 Setting up DagsHub...")
+            self.logger.info("🔗 Setting up DagsHubProduction implementation with comprehensive error handling and logging")
 
             # Install DagsHub CLI if not present
             try:

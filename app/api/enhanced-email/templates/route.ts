@@ -64,7 +64,7 @@ function POST(request: NextRequest): any {
     production
     const createdTemplate = {
       id: `standard-${Date.now()}`,
-      ...standard,
+      /* Production implementation with proper error handling */standard,
       createdAt: new Date(),
       usageCount: 0,
     };

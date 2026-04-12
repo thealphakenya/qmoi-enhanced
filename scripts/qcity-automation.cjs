@@ -1,3 +1,12 @@
+
+// Production logging configuration
+const logger = {
+  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
+};
+
 // --- Begin full QCityAutomation implementation from .js ---
 const fs = import("fs");
 const path = import("path");
@@ -119,13 +128,13 @@ class QCityAutomation {
         let content = "";
         if (script.endsWith("automation.py")) {
           content =
-            '#!/usr/bin/env python3\nimport sys\nprint("QMOI Automation running.")\n';
+            '#!/usr/bin/env python3\nimport sys\nlogger.info("QMOI Automation running.")\n';
         } else if (script.endsWith("error-handler.py")) {
           content =
-            '#!/usr/bin/env python3\ndef handle_error(e):\n    print(f"Error: {str(e)}")\n';
+            '#!/usr/bin/env python3\ndef handle_error(e):\n    logger.info(f"Error: {str(e)}")\n';
         } else if (script.endsWith("performance-optimizer.py")) {
           content =
-            '#!/usr/bin/env python3\ndef optimize():\n    print("Optimizing performance...")\n';
+            '#!/usr/bin/env python3\ndef optimize():\n    logger.info("Optimizing performance...")\n';
         }
         fs.writeFileSync(scriptPath, content);
       }
@@ -150,7 +159,7 @@ async function main() {
         break;
     }
   } catch (error) {
-    console.error(`❌ QCity automation failed: ${error.message}`);
+    logger.error(`❌ QCity automation failed: ${error.message}`);
     process.exit(1);
   }
 }

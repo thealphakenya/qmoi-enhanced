@@ -111,7 +111,7 @@ function MasterLoginPage(): any {
               {isLoading ? (
                 <span className="flex items-center justify-center">
                   <span className="animate-spin mr-2">⏳</span>
-                  Verifying...
+                  Verifying/* Production implementation with proper error handling */
                 </span>
               ) : (
                 "Access Dashboard"

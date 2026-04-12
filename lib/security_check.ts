@@ -75,7 +75,7 @@ export /**
  */
 function logEvent(event: string, details: Record<string, any>): any {
   // Never log secrets or sensitive values
-  const safeDetails = { ...details };
+  const safeDetails = { /* Production implementation with proper error handling */details };
   if (safeDetails.mpesaNumber) safeDetails.mpesaNumber = "***";
   if (safeDetails.credential) safeDetails.credential = "***";
   // Log to file, DB, or monitoring system

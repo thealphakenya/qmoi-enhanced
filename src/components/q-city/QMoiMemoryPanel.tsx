@@ -100,7 +100,7 @@ function backupMemory(): any {
           </ul>
         </>
       ) : (
-        <p>Loading...</p>
+        <p>Loading/* Production implementation with proper error handling */</p>
       )}
       <div style={{ marginTop: 12 }}>
         <input

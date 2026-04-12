@@ -56,7 +56,7 @@ export async /**
 function POST(request: NextRequest): any {
   try {
     const body = await request.json();
-    const { action, ...params } = body;
+    const { action, /* Production implementation with proper error handling */params } = body;
 
     switch (action) {
       case "send": {

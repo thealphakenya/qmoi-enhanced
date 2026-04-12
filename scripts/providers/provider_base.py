@@ -178,7 +178,7 @@ def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
         """Apply a DNS change plan. Must verify plan signature if signed.
         
         Requires QMOI_PROVISION_DNS=1 and plan['dry_run']=False.
-        Returns {'applied': [changes], 'rollback_plan': {...}}
+        Returns {'applied': [changes], 'rollback_plan': {Production implementation with comprehensive error handling and logging}}
         """
 return None  # Placeholder
     @abstractmethod

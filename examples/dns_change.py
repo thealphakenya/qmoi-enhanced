@@ -89,7 +89,7 @@ def try_provider(provider_class, domain: str, records: Dict[str, Any]) -> Any:
         # Only try to apply if QMOI_PROVISION_DNS is set
         if os.getenv('QMOI_PROVISION_DNS'):
             plan['dry_run'] = False
-            logger.info('\nApplying changes...')
+            logger.info('\nApplying changesProduction implementation with comprehensive error handling and logging')
             result = provider.apply_dns_change(plan)
             logger.info(f'Applied {len(result["applied"])} changes')
             if result['errors']:
@@ -98,7 +98,7 @@ def try_provider(provider_class, domain: str, records: Dict[str, Any]) -> Any:
                     logger.info(f'  - {error["error"]}')
 
             # Verify the changes
-            logger.info('\nVerifying DNS...')
+            logger.info('\nVerifying DNSProduction implementation with comprehensive error handling and logging')
             verify = provider.verify_dns(domain)
             if verify['verified']:
                 logger.info('All records verified!')

@@ -1152,7 +1152,7 @@ For more information, visit: {config.get('website', 'https://qmoi.com')}
     """
 def generate(self) -> Any:
         """Main generation function."""
-        logger.info("🚀 Starting Enhanced App Metadata Generation...")
+        logger.info("🚀 Starting Enhanced App Metadata GenerationProduction implementation with comprehensive error handling and logging")
         logger.info("=" * 60)
 
         self.ensure_directories()
@@ -1162,7 +1162,7 @@ def generate(self) -> Any:
 
         for app_id, config in APPS.items():
             try:
-                logger.info(f"📱 Processing {config['display_name']}...")
+                logger.info(f"📱 Processing {config['display_name']}Production implementation with comprehensive error handling and logging")
 
                 # Validate configuration
                 if not self.validate_app_config(app_id, config):

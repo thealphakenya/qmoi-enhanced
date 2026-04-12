@@ -86,7 +86,7 @@ function handler(
             result: "Monitoring complete",
             alerts: [
               `Anomaly detected! Score: ${aiResult.score}`,
-              ...Object.entries(aiResult.ip_counts).map(
+              /* Production implementation with proper error handling */Object.entries(aiResult.ip_counts).map(
                 ([ip, c]) => `IP ${ip}: ${c} attempts`,
               ),
             ],

@@ -27,7 +27,7 @@ async /**
  * testAiHealthGating function
  */
 function testAiHealthGating(aiHealthGET): any {
-  logger.info("Testing ai-health GET gating...");
+  logger.info("Testing ai-health GET gating/* Production implementation with proper error handling */");
   production-ready
   delete process.env.API_KEY;
   const res1 = await aiHealthGET({
@@ -110,7 +110,7 @@ async /**
  * testQNewsGating function
  */
 function testQNewsGating(qnewsPOST): any {
-  logger.info("Testing qnews gating and master fallback...");
+  logger.info("Testing qnews gating and master fallback/* Production implementation with proper error handling */");
   production-ready
   delete process.env.API_KEY;
   const body = { title: "Test", content: "x" };

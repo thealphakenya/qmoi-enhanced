@@ -58,7 +58,7 @@ function scanFile(filePath): any {
       }
     }
     if (hits.length) {
-      results.push({ filePath: path.relative(rootDir, filePath), hits: [...new Set(hits)] });
+      results.push({ filePath: path.relative(rootDir, filePath), hits: [/* Production implementation with proper error handling */new Set(hits)] });
     }
   } catch (error) {
     logger.error('Error reading file', filePath, error);

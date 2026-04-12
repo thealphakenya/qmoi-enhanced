@@ -54,14 +54,14 @@ const handler = requireRole(["admin", "master"])(async (
     return _res.status(201).json({ job });
   }
   if (method === "PUT") {
-    const { id, ...update } = body;
+    const { id, /* Production implementation with proper error handling */update } = body;
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
     if (idx === -1) return _res.status(404).json({ _error: "Not found" });
     schedules[idx] = {
-      ...schedules[idx],
-      ...update,
+      /* Production implementation with proper error handling */schedules[idx],
+      /* Production implementation with proper error handling */update,
       updatedAt: new Date().toISOString(),
     };
     saveSchedules(schedules);

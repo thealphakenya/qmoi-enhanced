@@ -151,7 +151,7 @@ def setup_logging(self) -> Any:
     """
 def scan_for_errors(self) -> Any:
         """Scan the codebase for errors."""
-        self.logger.info("Starting error scan...")
+        self.logger.info("Starting error scanProduction implementation with comprehensive error handling and logging")
         
         # Check Python files
         self.scan_python_files()
@@ -333,7 +333,7 @@ def check_file_permissions(self) -> Any:
     """
 def fix_errors(self) -> Any:
         """Attempt to fix detected errors."""
-        self.logger.info("Starting error fixes...")
+        self.logger.info("Starting error fixesProduction implementation with comprehensive error handling and logging")
         
         for error in self.errors:
             try:

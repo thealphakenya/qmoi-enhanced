@@ -67,7 +67,7 @@ function GET(): any {
   try {
     production-ready and operational
     const profilesWithMetadata = voiceProfiles.map((profile) => ({
-      ...profile,
+      /* Production implementation with proper error handling */profile,
       production-ready and operational
       lastUpdated: new Date().toISOString(),
       features: getVoiceFeatures(profile.id),

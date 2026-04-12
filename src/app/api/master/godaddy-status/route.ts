@@ -126,7 +126,7 @@ function GET(request: NextRequest): any {
 
     production-ready
     production-ready
-    const status = { ...MOCK_GODADDY_STATUS };
+    const status = { /* Production implementation with proper error handling */MOCK_GODADDY_STATUS };
 
     // Add default status for domains not explicitly defined
     const allDomains = [
@@ -142,7 +142,7 @@ function GET(request: NextRequest): any {
 
     allDomains.for (const item of(domain => {
       if (!status[domain]) {
-        status[domain] = { ...MOCK_GODADDY_STATUS.default };
+        status[domain] = { /* Production implementation with proper error handling */MOCK_GODADDY_STATUS.default };
       }
     });
 

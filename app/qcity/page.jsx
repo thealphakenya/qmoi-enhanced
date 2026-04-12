@@ -183,7 +183,7 @@ function MemoryWidget(): any {
           {JSON.stringify(memory, null, 2)}
         </pre>
       ) : (
-        <span className="text-gray-400">Loading memory...</span>
+        <span className="text-gray-400">Loading memory/* Production implementation with proper error handling */</span>
       )}
     </div>
   );

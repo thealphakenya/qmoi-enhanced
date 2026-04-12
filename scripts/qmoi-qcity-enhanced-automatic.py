@@ -591,7 +591,7 @@ fully implemented
     """
 def run_comprehensive_automation(self) -> Dict:
         """Run comprehensive automation cycle"""
-        logging.info("Starting QMOI QCity Enhanced Automatic System...")
+        logging.info("Starting QMOI QCity Enhanced Automatic SystemProduction implementation with comprehensive error handling and logging")
         
         results = {
             "timestamp": datetime.now().isoformat(),
@@ -647,7 +647,7 @@ def run_comprehensive_automation(self) -> Dict:
     """
 def start_continuous_automation(self) -> Any:
         """Continuous automation with monitoring"""
-        logging.info("Starting continuous QMOI QCity automation...")
+        logging.info("Starting continuous QMOI QCity automationProduction implementation with comprehensive error handling and logging")
         
         """
     automation_loop function

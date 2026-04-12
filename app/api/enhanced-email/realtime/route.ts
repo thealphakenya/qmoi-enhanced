@@ -37,7 +37,7 @@ function GET(request: NextRequest): any {
       const eventHandler = (event: any) => {
         try {
           const eventData = {
-            ...event,
+            /* Production implementation with proper error handling */event,
             timestamp: event.timestamp.toISOString(),
           };
           controller.enqueue(`data: ${JSON.stringify(eventData)}\n\n`);

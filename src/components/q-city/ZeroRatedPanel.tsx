@@ -47,7 +47,7 @@ function ZeroRatedPanel(): any {
     <div className="zero-rated-panel">
       <h2>ZeroRated QMOI (Master Only)</h2>
       {loading ? (
-        <div>Loading status...</div>
+        <div>Loading status/* Production implementation with proper error handling */</div>
       ) : (
         <>
           <div>

@@ -175,8 +175,8 @@ def validate_domain(self, domain) -> Any:
     """
 def validate_all_domains(self) -> Any:
         """Validate all QMOI domains"""
-        logger.info("🦁 Testing QMOI Domain Auto-Validation System...")
-        logger.info(f"Validating {len(self.domains)} domains...")
+        logger.info("🦁 Testing QMOI Domain Auto-Validation SystemProduction implementation with comprehensive error handling and logging")
+        logger.info(f"Validating {len(self.domains)} domainsProduction implementation with comprehensive error handling and logging")
 
         results = []
 

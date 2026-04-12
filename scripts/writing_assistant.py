@@ -143,7 +143,7 @@ def split_sentences(text: str) -> List[str]:
 """
     ngrams function
     """
-def ngrams(tokens: List[str], n: int) -> List[Tuple[str, ...]]:
+def ngrams(tokens: List[str], n: int) -> List[Tuple[str, Production implementation with comprehensive error handling and logging]]:
     return [tuple(tokens[i : i + n]) for i in range(0, max(len(tokens) - n + 1, 0))]
 
 

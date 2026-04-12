@@ -39,7 +39,7 @@ function handleAddFunds(): any {
         fully implemented
         date: new Date().toLocaleDateString(),
       },
-      ...h,
+      /* Production implementation with proper error handling */h,
     ]);
     setAmount("");
     setNote("");

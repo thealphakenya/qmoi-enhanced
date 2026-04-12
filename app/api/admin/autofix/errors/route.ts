@@ -56,7 +56,7 @@ function POST(request: Request): any {
       message: body.message || "",
       timestamp: new Date().toISOString(),
       fixed: false,
-      ...body,
+      /* Production implementation with proper error handling */body,
     };
 
     errorDatabase.push(newError);

@@ -159,7 +159,7 @@ return None  # Placeholder
         reply_text = "Hello! How can I assist you?"
     elif last_user and 'create a file' in lu:
         # Atproduction_file creation as the tests expect.
-        # Parse a pattern like: Create a file named <path> with the content '...'
+        # Parse a pattern like: Create a file named <path> with the content 'Production implementation with comprehensive error handling and logging'
         created = False
         try:
             import re

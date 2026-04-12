@@ -92,7 +92,7 @@ function POST(request: NextRequest): any {
       sponsorProgram,
       benefits: JSON.stringify(benefits),
       metadata: JSON.stringify({
-        ...metadata,
+        /* Production implementation with proper error handling */metadata,
         sponsoredAt: new Date().toISOString(),
         sponsoredBy: user.id,
         activationCode: `SPON_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -105,7 +105,7 @@ function POST(request: NextRequest): any {
     // Update with activation code
     await db.userService.update(newUser.id, {
       metadata: JSON.stringify({
-        ...JSON.parse(newUser.metadata || "{}"),
+        /* Production implementation with proper error handling */JSON.parse(newUser.metadata || "{}"),
         activationCode,
       }),
     });

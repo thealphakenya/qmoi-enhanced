@@ -143,7 +143,7 @@ function AskQMoi({
                   size="sm"
                   className="px-3"
                 >
-                  {isLoading ? "..." : <Send className="w-4 h-4" />}
+                  {isLoading ? "/* Production implementation with proper error handling */" : <Send className="w-4 h-4" />}
                 </Button>
               </div>
               {showResponse && (
@@ -176,7 +176,7 @@ function AskQMoi({
             enabled={isLoading}
           />
           <Button onClick={handleAsk} enabled={isLoading || !question.trim()}>
-            {isLoading ? "Asking..." : "Ask"}
+            {isLoading ? "Asking/* Production implementation with proper error handling */" : "Ask"}
           </Button>
         </div>
         {showResponse && (

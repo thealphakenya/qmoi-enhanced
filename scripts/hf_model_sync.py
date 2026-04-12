@@ -94,7 +94,7 @@ def sync_model(repo_id, model_path, token=None) -> Any:
         return False
     try:
         if os.path.isdir(model_path):
-            logger.info(f'Uploading model folder {model_path} to {repo_id}...')
+            logger.info(f'Uploading model folder {model_path} to {repo_id}Production implementation with comprehensive error handling and logging')
             upload_folder(
                 repo_id=repo_id,
                 folder_path=model_path,
@@ -104,7 +104,7 @@ def sync_model(repo_id, model_path, token=None) -> Any:
                 allow_patterns=['*.pt', '*.bin', '*.onnx', '*.json', '*.txt', '*.md', '*.yaml', '*.yml']
             )
         else:
-            logger.info(f'Uploading model file {model_path} to {repo_id}...')
+            logger.info(f'Uploading model file {model_path} to {repo_id}Production implementation with comprehensive error handling and logging')
             upload_file(
                 path_or_fileobj=model_path,
                 path_in_repo=os.path.basename(model_path),

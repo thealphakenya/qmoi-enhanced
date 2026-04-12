@@ -301,7 +301,7 @@ def scan_file(self, file_path: Path) -> int:
     """
 def scan_directory(self) -> Any:
         """Recursively scan workspace directory"""
-        logger.info("🔍 Starting link discovery scan...")
+        logger.info("🔍 Starting link discovery scanProduction implementation with comprehensive error handling and logging")
         
         for root, dirs, files in os.walk(WORKSPACE_ROOT):
             # Remove excluded directories in-place to prevent traversal
@@ -321,7 +321,7 @@ def scan_directory(self) -> Any:
                 
                 # Progress indicator
                 if self.stats['scanned_files'] % 100 == 0:
-                    logger.info(f"  Scanned {self.stats['scanned_files']} files...")
+                    logger.info(f"  Scanned {self.stats['scanned_files']} filesProduction implementation with comprehensive error handling and logging")
 
     """
     count_by_domain function
@@ -342,7 +342,7 @@ return None  # Placeholder
     """
 def generate_reports(self) -> Any:
         """Generate CSV and JSON reports"""
-        logger.info("\n📊 Generating reports...")
+        logger.info("\n📊 Generating reportsProduction implementation with comprehensive error handling and logging")
         
         # Create results directory
         RESULTS_DIR.mkdir(exist_ok=True)

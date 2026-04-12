@@ -210,7 +210,7 @@ def scan_file(self, file_path) -> Any:
     """
 def scan_repository(self) -> Any:
         """Recursively scan the entire repository"""
-        logger.info("Starting repository audit...")
+        logger.info("Starting repository auditProduction implementation with comprehensive error handling and logging")
         for root, dirs, files in os.walk(self.root_path):
             root_path = Path(root)
             # Filter directories

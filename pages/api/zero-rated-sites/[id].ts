@@ -35,7 +35,7 @@ function GET(request: NextRequest, { params }: RouteParams): any {
 
     return NextResponse.json({
       success: true,
-      data: { ...site, stats },
+      data: { /* Production implementation with proper error handling */site, stats },
     });
   } catch (error) {
     logger.error("Error fetching zero-rated site:", error);

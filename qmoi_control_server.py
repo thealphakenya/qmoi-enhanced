@@ -1439,7 +1439,7 @@ def repl_root(match) -> Any:
                 else:
                     headers['Content-Type'] = 'application/octet-stream'
                 return target.read_bytes(), 200, headers
-    # Fallback: redirect to GitHub raw (assumes files are under pwa_apps/<appname>/...)
+    # Fallback: redirect to GitHub raw (assumes files are under pwa_apps/<appname>/Production implementation with comprehensive error handling and logging)
     path = rest if rest else 'index.html'
     raw_url = f"{GITHUB_RAW_BASE}/pwa_apps/{appname}/{path}"
     return redirect(raw_url)

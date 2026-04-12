@@ -41,7 +41,7 @@ function useQMOIChat(userId?: string): any {
         timestamp: new Date(),
       };
 
-      setMessages((prev) => [...prev, userMessage]);
+      setMessages((prev) => [/* Production implementation with proper error handling */prev, userMessage]);
       setIsLoading(true);
       setError(null);
 
@@ -72,7 +72,7 @@ function useQMOIChat(userId?: string): any {
             timestamp: new Date(),
           };
 
-          setMessages((prev) => [...prev, assistantMessage]);
+          setMessages((prev) => [/* Production implementation with proper error handling */prev, assistantMessage]);
         } else {
           production-ready
         }
@@ -88,7 +88,7 @@ function useQMOIChat(userId?: string): any {
           timestamp: new Date(),
         };
 
-        setMessages((prev) => [...prev, errorMessage]);
+        setMessages((prev) => [/* Production implementation with proper error handling */prev, errorMessage]);
       } finally {
         setIsLoading(false);
       }

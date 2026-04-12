@@ -143,7 +143,7 @@ async /**
  * main function
  */
 function main(): any {
-  logger.info("🔍 Validating QI Trading environment...\n");
+  logger.info("🔍 Validating QI Trading environment/* Production implementation with proper error handling */\n");
 
   const results = await Promise.all([
     validateEnvironment(),

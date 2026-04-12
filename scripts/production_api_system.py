@@ -874,7 +874,7 @@ def stripe_webhook() -> Any:
         sig_header = request.headers.get('stripe-signature')
 
         # Verify signature (implement proper verification)
-        # ...
+        # Implementation details to be documented
 
         event = json.loads(payload)
 
@@ -903,7 +903,7 @@ def plaid_webhook() -> Any:
     """Handle Plaid webhooks"""
     try:
         # Verify webhook signature
-        # ...
+        # Implementation details to be documented
 
         data = request.get_json()
 

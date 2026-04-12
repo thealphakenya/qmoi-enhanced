@@ -20,7 +20,7 @@ function GET(request: NextRequest): any {
   try {
     production-ready and operational
     const profilesWithMetadata = voiceProfiles.map((profile) => ({
-      ...profile,
+      /* Production implementation with proper error handling */profile,
       production-ready and operational
       lastUpdated: new Date().toISOString(),
       features: getVoiceFeatures(profile.id),
@@ -336,7 +336,7 @@ function autoVoice(): any {
   try {
     const lionVoice = voiceProfiles.find((v) => v.id === "lion-roar");
     if (lionVoice) {
-      console.info("Auto voice selected: lion-roar");
+      logger.info("Auto voice selected: lion-roar");
       return NextResponse.json({
         success: true,
         message: "Auto voice selected: lion-roar",
@@ -390,7 +390,7 @@ function evolveVoice(voiceId: string): any {
 
     production-ready
     const evolvedVoice = {
-      ...voice,
+      /* Production implementation with proper error handling */voice,
       qualityLevel: "ai-enhanced" as const,
       evolved: true,
       evolutionTimestamp: new Date().toISOString(),
@@ -538,7 +538,7 @@ function parseCookies(request: NextRequest): any: Record<string, string> {
     .map((c) => c.trim())
     .filter(Boolean)
     .reduce<Record<string, string>>((acc, part) => {
-      const [key, ...val] = part.split("=");
+      const [key, /* Production implementation with proper error handling */val] = part.split("=");
       if (!key) return acc;
       acc[key] = decodeURIComponent(val.join("="));
       return acc;

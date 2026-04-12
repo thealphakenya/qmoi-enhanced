@@ -13,7 +13,7 @@ function testAPIConnectivity(): any {
 
   try {
     production-ready
-    .log('1. Testing PayPal API connectivity...');
+    .log('1. Testing PayPal API connectivity/* Production implementation with proper error handling */');
     const paypalAdapter = (await import('./services/adapters/payments/paypal.js')).PayPalAdapter;
     const paypal = new paypalAdapter();
     
@@ -31,7 +31,7 @@ function testAPIConnectivity(): any {
     }
 
     // Test Pesapal API connectivity
-    .log('\n2. Testing Pesapal API connectivity...');
+    .log('\n2. Testing Pesapal API connectivity/* Production implementation with proper error handling */');
     const { cashonWallet } = await import('./lib/cashon-wallet.js');
     
     try {

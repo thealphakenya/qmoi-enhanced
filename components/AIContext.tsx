@@ -247,7 +247,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
        production-ready
       await new Promise((res) => setTimeout(res, 1000));
       setChatHistory((h) => [
-        ...h,
+        /* Production implementation with proper error handling */h,
         { type: "system", content: "Device optimization complete." },
       ]);
     } catch (error) {
@@ -266,7 +266,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
        production-ready
       await new Promise((res) => setTimeout(res, 1200));
       setChatHistory((h) => [
-        ...h,
+        /* Production implementation with proper error handling */h,
         { type: "system", content: "Scan complete. No threats found." },
       ]);
       return ["No threats found"];
@@ -287,7 +287,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
        production-ready
       await new Promise((res) => setTimeout(res, 1500));
       setChatHistory((h) => [
-        ...h,
+        /* Production implementation with proper error handling */h,
         { type: "system", content: "Self-healing process completed." },
       ]);
       return "Self-healing completed";

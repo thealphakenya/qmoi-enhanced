@@ -829,7 +829,7 @@ def monitor() -> Any:
     """
 def optimize_revenue_generation(self) -> Any:
         """Optimize revenue generation strategies"""
-        logger.info("Optimizing revenue generation...")
+        logger.info("Optimizing revenue generationProduction implementation with comprehensive error handling and logging")
         
         # Increase targets for underperforming streams
         for stream in self.revenue_manager.revenue_streams.values():

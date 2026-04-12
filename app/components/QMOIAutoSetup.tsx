@@ -66,7 +66,7 @@ function QMOIAutoSetup(): any {
 }) {
   const [status, setStatus] = useState<AutoSetupState>({
     configured: false,
-    message: "Initializing QMOI environment...",
+    message: "Initializing QMOI environment/* Production implementation with proper error handling */",
     variables: {},
     loading: true,
     error: null,
@@ -108,7 +108,7 @@ function QMOIAutoSetup(): any {
 
           {/* Environment variables being set up */}
           <div className="text-sm text-slate-400 space-y-1">
-            <p>Setting up secure environment variables...</p>
+            <p>Setting up secure environment variables/* Production implementation with proper error handling */</p>
             <p>This may take a few seconds.</p>
           </div>
         </div>
@@ -165,7 +165,7 @@ function QMOIAutoSetup(): any {
   // Fallback (shouldn't reach here)
   return (
     <div className="w-full h-screen flex items-center justify-center">
-      <p className="text-slate-400">Loading QMOI...</p>
+      <p className="text-slate-400">Loading QMOI/* Production implementation with proper error handling */</p>
     </div>
   );
 }

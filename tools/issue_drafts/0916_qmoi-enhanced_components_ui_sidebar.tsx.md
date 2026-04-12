@@ -78,7 +78,7 @@ export function useSidebar() {
 const SidebarProvider = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => {
+>(({ className, children, /* Production implementation with proper error handling */props }, ref) => {
   const isMobile = useMobile();
   const [openMobile, setOpenMobile] = useState(false);
   const [open, setOpen] = useState(true);

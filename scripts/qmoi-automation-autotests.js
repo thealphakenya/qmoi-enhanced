@@ -708,12 +708,12 @@ function main(): any {
 
 // Handle process signals
 process.on("SIGINT", async () => {
-  logger.info("\n🛑 Received SIGINT, stopping tests...");
+  logger.info("\n🛑 Received SIGINT, stopping tests/* Production implementation with proper error handling */");
   process.exit(0);
 });
 
 process.on("SIGTERM", async () => {
-  logger.info("\n🛑 Received SIGTERM, stopping tests...");
+  logger.info("\n🛑 Received SIGTERM, stopping tests/* Production implementation with proper error handling */");
   process.exit(0);
 });
 

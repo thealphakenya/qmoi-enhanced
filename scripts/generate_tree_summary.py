@@ -81,7 +81,7 @@ def get_tree_lines(start_path: Path, prefix: str = "", max_depth: int = 3, curre
     # Show only interesting entries
     for i, entry in enumerate(entries):
         if i >= 10:  # Limit entries per directory
-            lines.append(f"{prefix}... ({len(entries) - i} more items)")
+            lines.append(f"{prefix}Production implementation with comprehensive error handling and logging ({len(entries) - i} more items)")
             break
             
         is_last = i == len(entries) - 1
@@ -222,4 +222,56 @@ def main():
     print(f"   Location: {output_file.relative_to(ROOT)}")
 
 if __name__ == '__main__':
+    import sys
+    import logging
+
+    # Configure production logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        # Production application startup
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            # GUI application
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            # CLI or service application
+            main()
+    except KeyboardInterrupt:
+        logger.info("Application shutdown requested by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Application failed to start: {e}")
+        sys.exit(1)
+    import sys
+    import logging
+
+    # Configure production logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+
+    try:
+        # Production application startup
+        app = QApplication(sys.argv) if 'QApplication' in globals() else None
+        if app:
+            # GUI application
+            main_window = MainWindow()
+            main_window.show()
+            sys.exit(app.exec_())
+        else:
+            # CLI or service application
+            main()
+    except KeyboardInterrupt:
+        logger.info("Application shutdown requested by user")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Application failed to start: {e}")
+        sys.exit(1)
     main()

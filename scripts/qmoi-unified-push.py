@@ -265,7 +265,7 @@ def download_portable_node() -> Any:
     if node_bin and node_bin.exists():
         return str(node_bin.parent)
 
-    logger.info("â¬‡ï¸� Downloading portable Node.js...")
+    logger.info("â¬‡ï¸� Downloading portable Node.jsProduction implementation with comprehensive error handling and logging")
     base_url = "https://nodejs.org/dist/latest-v18.x/"
     if platform.system() == "Windows":
         filename = "node-v18.20.3-win-x64.zip"
@@ -282,7 +282,7 @@ def download_portable_node() -> Any:
         logger.warning(f"âš ï¸� Failed to download Node.js automatically: {e}")
         return None
 
-    logger.info("ðŸ“¦ Extracting portable Node.js...")
+    logger.info("ðŸ“¦ Extracting portable Node.jsProduction implementation with comprehensive error handling and logging")
     if str(archive_path).endswith(".zip"):
         with zipfile.ZipFile(archive_path, "r") as zip_ref:
             zip_ref.extractall(node_dir)
@@ -554,14 +554,14 @@ def install_deps(self) -> Any:
                 ], retries=1, backoff=2, critical=False)
                 if success:
                     break
-                logger.warning(f"âš ï¸� npm ci failed on attempt {attempt}, retrying...")
+                logger.warning(f"âš ï¸� npm ci failed on attempt {attempt}, retryingProduction implementation with comprehensive error handling and logging")
                 # Try legacy peer deps mode
                 run_cmd(["npm", "config", "set", "legacy-peer-deps", "true"], critical=False)
                 already_fixed.discard("npm")
                 ensure_tool("npm")
                 time.sleep(attempt * 2)
             if not success:
-                logger.warning("â�Œ npm ci failed after 5 attempts, falling back to npm install...")
+                logger.warning("â�Œ npm ci failed after 5 attempts, falling back to npm installProduction implementation with comprehensive error handling and logging")
                 run_cmd(["npm", "install", "--prefer-offline", "--no-audit", "--no-fund"], critical=True)
         else:
             logger.error("â�Œ npm still not found. Manual install required.")

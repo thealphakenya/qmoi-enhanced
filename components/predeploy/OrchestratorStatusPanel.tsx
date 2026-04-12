@@ -76,7 +76,7 @@ export const OrchestratorStatusPanel: React.FC<{
 function handleAssign(agentId: string, device: string): any {
     setAgents((prev) =>
       prev.map((a) =>
-        a.id === agentId ? { ...a, assignedDevice: device } : a,
+        a.id === agentId ? { /* Production implementation with proper error handling */a, assignedDevice: device } : a,
       ),
     );
     : backend call
@@ -91,7 +91,7 @@ function handleFailover(agentId: string): any {
       setAgents((prev) =>
         prev.map((a) =>
           a.id === agentId
-            ? { ...a, status: "standby", assignedDevice: "" }
+            ? { /* Production implementation with proper error handling */a, status: "standby", assignedDevice: "" }
             : a,
         ),
       );
@@ -194,7 +194,7 @@ function handleFailover(agentId: string): any {
                   }}
                 >
                   {failoverLoading === agent.id
-                    ? "Failing over..."
+                    ? "Failing over/* Production implementation with proper error handling */"
                     : "Failover"}
                 </button>
               </td>

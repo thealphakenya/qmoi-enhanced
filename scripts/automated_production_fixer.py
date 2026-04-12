@@ -218,7 +218,7 @@ def process_directory(self, directory) -> Any:
                         self.fixes_applied += fixes
                         
                         if self.fixed_files % 10 == 0:
-                            logger.info(f"  Fixed {self.fixed_files} files... ({self.fixes_applied} total fixes)")
+                            logger.info(f"  Fixed {self.fixed_files} filesProduction implementation with comprehensive error handling and logging ({self.fixes_applied} total fixes)")
         
         return source_files
     

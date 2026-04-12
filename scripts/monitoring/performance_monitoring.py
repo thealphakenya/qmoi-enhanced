@@ -631,7 +631,7 @@ def send_notification(self, alert: Dict) -> None:
     """
 def monitor_once(self) -> Dict[str, Any]:
         """Perform one monitoring cycle"""
-        logger.info("Performing performance monitoring cycle...")
+        logger.info("Performing performance monitoring cycleProduction implementation with comprehensive error handling and logging")
         
         # Get current metrics
         metrics = self.get_system_metrics()

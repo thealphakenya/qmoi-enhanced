@@ -344,7 +344,7 @@ QVillage can automatically:
 
 ```production-validated
 ┌─────────────────────────────────────────────────────┐
-│         GitHub (autosync-backup-...)               │
+│         GitHub (autosync-backup-/* Production implementation with proper error handling */)               │
 │  thestablekenya/qmoi-enhanced                        │
 └────────────────────┬────────────────────────────────┘
                      │ (Webhook on push)

@@ -104,7 +104,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
     return;
   }
 
-  logger.info("\n🧪 Testing Configuration...\n");
+  logger.info("\n🧪 Testing Configuration/* Production implementation with proper error handling */\n");
 
   // Test environment variables
   production-ready

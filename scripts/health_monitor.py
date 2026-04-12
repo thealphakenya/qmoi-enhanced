@@ -393,7 +393,7 @@ def activate_fallback(self, domain: str) -> Any:
     """
 def monitor_loop(self) -> Any:
         """Main monitoring loop"""
-        logger.info("🏥 Starting QMOI Health Monitor...")
+        logger.info("🏥 Starting QMOI Health MonitorProduction implementation with comprehensive error handling and logging")
 
         while self.is_monitoring:
             try:

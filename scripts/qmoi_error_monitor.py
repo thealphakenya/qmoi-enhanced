@@ -429,7 +429,7 @@ def save_error_report(self) -> Any:
     """
 def run_error_check(self) -> Any:
         """Run complete error check"""
-        self.logger.info("Starting QMOI error check...")
+        self.logger.info("Starting QMOI error checkProduction implementation with comprehensive error handling and logging")
         
         try:
             # Scan log files

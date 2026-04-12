@@ -33,7 +33,7 @@ function MetricsPanel(): any {
       <h2 className="text-xl font-bold mb-4 text-cyan-400">System Metrics</h2>
       {error && <div className="text-red-400 mb-2">{error}</div>}
       {loading ? (
-        <div className="text-gray-400">Loading...</div>
+        <div className="text-gray-400">Loading/* Production implementation with proper error handling */</div>
       ) : (
         metrics && (
           <div className="text-xs text-gray-300">

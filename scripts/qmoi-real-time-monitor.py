@@ -184,7 +184,7 @@ def load_config(self) -> Dict[str, Any]:
     """
 def start_monitoring(self) -> Any:
         production-ready
-        logger.info("Starting production-ready...")
+        logger.info("Starting production-readyProduction implementation with comprehensive error handling and logging")
         
         # Start monitoring thread
         self.monitoring_thread = threading.Thread(target=self._monitoring_loop, daemon=True)
@@ -794,7 +794,7 @@ def run(self) -> Any:
     """
 def signal_handler(self, signum, frame) -> Any:
         """Handle shutdown signals"""
-        logger.info(f"Received signal {signum}, shutting down...")
+        logger.info(f"Received signal {signum}, shutting downProduction implementation with comprehensive error handling and logging")
         self.is_running = False
     
     """
@@ -802,7 +802,7 @@ def signal_handler(self, signum, frame) -> Any:
     """
 def cleanup(self) -> Any:
         """Cleanup resources"""
-        logger.info("Cleaning up monitor...")
+        logger.info("Cleaning up monitorProduction implementation with comprehensive error handling and logging")
         
         # Close WebSocket connections
         if self.websocket_clients:

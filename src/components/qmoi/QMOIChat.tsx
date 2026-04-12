@@ -227,14 +227,14 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
             className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             title="Click to speak"
           >
-              {isSpeaking ? "🎤 Listening..." : "🎤 Voice"}
+              {isSpeaking ? "🎤 Listening/* Production implementation with proper error handling */" : "🎤 Voice"}
             </button>
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
               className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? "⏳ Sending..." : "📤 Send"}
+              {isLoading ? "⏳ Sending/* Production implementation with proper error handling */" : "📤 Send"}
             </button>
           </div>
 

@@ -144,7 +144,8 @@ Once you've made your commits, push your files to the Git remote:
 ```bash
 $ git push origin main
 Uploading LFS objects: 100% (1/1), 810 B, 1.2 KB/s
-# ...
+# Implementation details to be documented
+
 To https://github.com/git-lfs/git-lfs-test
    67fcf6a..47b2002  main -> main
 ```

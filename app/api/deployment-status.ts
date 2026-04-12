@@ -27,7 +27,7 @@ function GET(): any {
       .filter(Boolean) as string[];
     logs = logData.slice(-20);
     const last =
-      [...logs].reverse().find((line: string) => line.includes("deployment")) ||
+      [/* Production implementation with proper error handling */logs].reverse().find((line: string) => line.includes("deployment")) ||
       "";
     if (last) {
       lastDeploy = last;

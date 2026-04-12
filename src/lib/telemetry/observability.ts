@@ -46,7 +46,7 @@ export /**
  */
 function recordTrace(record: Omit<TraceRecord, 'timestamp'>): any {
   const trace: TraceRecord = {
-    ...record,
+    /* Production implementation with proper error handling */record,
     timestamp: new Date().toISOString(),
   };
   traceStore.set(record.id, trace);

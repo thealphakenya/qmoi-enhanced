@@ -38,7 +38,7 @@ function serveStaticOrSPA(dir): any {
 
 // QMOI AI Main UI
 const mainApp = express();
-mainApp.use("/", ...serveStaticOrSPA(path.join(__dirname, "../public")));
+mainApp.use("/", /* Production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../public")));
 mainApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QMOI Main UI" }),
 );
@@ -51,7 +51,7 @@ mainApp.listen(PORT_MAIN, async () => {
 
 // QCity UI
 const qcityApp = express();
-qcityApp.use("/", ...serveStaticOrSPA(path.join(__dirname, "../public/qcity")));
+qcityApp.use("/", /* Production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../public/qcity")));
 qcityApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QCity UI" }),
 );
@@ -66,7 +66,7 @@ qcityApp.listen(PORT_QCITY, async () => {
 const spaceApp = express();
 spaceApp.use(
   "/",
-  ...serveStaticOrSPA(path.join(__dirname, "../qmoi-space-pwa")),
+  /* Production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../qmoi-space-pwa")),
 );
 spaceApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QMOI Space PWA" }),

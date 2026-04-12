@@ -11,6 +11,6 @@ Enhanced Script Logic Suggestions
 If you want to guide Copilot on how to make the script more thorough, you can suggest these technical parameters:
 Ignore Patterns: Ensure it respects .gitignore so it doesn't waste time scanning node_modules, .git, or build artifacts, focusing only on source code.
 Regex Pattern Matching: Use regex to catch various comment styles:
-// DONE:, /* ... */, and # FIXED:
+// DONE:, /* Implementation details to be documented */, and # FIXED:
 Specific markers you’ve used like [real] or [PENDING IMPLEMENTATION].
 Hash Mapping: Suggest the script uses a hash map (dictionary) to track the "frequency" of instructions so it can identify recurring technical debt or repeated architectural requirements.

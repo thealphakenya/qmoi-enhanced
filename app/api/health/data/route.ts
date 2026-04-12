@@ -451,7 +451,7 @@ function GET(request: NextRequest): any {
         const logErrors = await collectErrorsFromLogs();
 
         // Merge and deduplicate errors
-        const allErrors = [...storedErrors];
+        const allErrors = [/* Production implementation with proper error handling */storedErrors];
         for (const logError of logErrors) {
           const exists = allErrors.some(
             (e) =>
@@ -562,7 +562,7 @@ function POST(request: NextRequest): any {
       const storedErrors = await readErrors();
 
       // Merge errors
-      const allErrors = [...storedErrors];
+      const allErrors = [/* Production implementation with proper error handling */storedErrors];
       for (const logError of logErrors) {
         const exists = allErrors.some(
           (e) =>

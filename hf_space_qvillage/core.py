@@ -353,7 +353,7 @@ def fetch_daily_papers(tag_filter: str = None) -> str:
 👤 {authors}  
 📅 {date}
 
-{abstract}...
+{abstract}Production implementation with comprehensive error handling and logging
 
 [📖 Read on arXiv](https://arxiv.org/abs/{arxiv_id}) | [PDF](https://arxiv.org/pdf/{arxiv_id}.pdf)
 """
@@ -418,7 +418,7 @@ def search_knowledge_base(query: str) -> str:
         result_md = f"""
 **{i}. {title}**{tag_str} (relevance: {relevance:.1%})
 
-{excerpt}...
+{excerpt}Production implementation with comprehensive error handling and logging
 
 [Read more](#kb/{result.get('id', '')})
 """

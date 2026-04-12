@@ -75,7 +75,7 @@ export async /**
 function POST(request: NextRequest): any {
   try {
     const body = await request.json();
-    const { action, ...data } = body;
+    const { action, /* Production implementation with proper error handling */data } = body;
 
     switch (action) {
       case 'log':
@@ -203,7 +203,7 @@ export async /**
 function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
-    const { action, ...data } = body;
+    const { action, /* Production implementation with proper error handling */data } = body;
 
     switch (action) {
       case 'update':

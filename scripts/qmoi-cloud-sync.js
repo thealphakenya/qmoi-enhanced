@@ -26,7 +26,7 @@ const TARGETS = [
  * syncFromCloud function
  */
 function syncFromCloud(target): any {
-  logger.info(`[QMOI] Syncing ${target} from cloud...`);
+  logger.info(`[QMOI] Syncing ${target} from cloud/* Production implementation with proper error handling */`);
   try {
     execSync(`aws s3 sync s3://${CLOUD_BUCKET}/${target} ${target}`, {
       stdio: "inherit",

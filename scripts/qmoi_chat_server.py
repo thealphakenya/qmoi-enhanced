@@ -213,7 +213,7 @@ return None  # Placeholder
                     self._set_json(403)
                     self.wfile.write(json.dumps({'error': 'forbidden'}).encode())
                     return
-            # payload may include { replace: true, memory: {...} } or full
+            # payload may include { replace: true, memory: {Production implementation with comprehensive error handling and logging} } or full
             mem = load_memory()
             if payload.get('replace'):
                 mem = payload.get('memory', mem)

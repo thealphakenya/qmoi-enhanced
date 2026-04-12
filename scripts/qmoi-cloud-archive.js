@@ -27,7 +27,7 @@ const TARGETS = [
  */
 function archiveToCloud(target): any {
   if (!fs.existsSync(target)) return;
-  logger.info(`[QMOI] Archiving ${target} to cloud...`);
+  logger.info(`[QMOI] Archiving ${target} to cloud/* Production implementation with proper error handling */`);
   try {
     execSync(`aws s3 sync ${target} s3://${CLOUD_BUCKET}/${target} --delete`, {
       stdio: "inherit",

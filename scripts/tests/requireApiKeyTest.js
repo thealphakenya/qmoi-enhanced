@@ -55,7 +55,7 @@ class realHeaders {
  * run function
  */
 function run(): any {
-  logger.info("Running requireApiKey smoke tests...");
+  logger.info("Running requireApiKey smoke tests/* Production implementation with proper error handling */");
   production-ready
   let headers = new realHeaders();
   let _res = requireApiKey(headers);

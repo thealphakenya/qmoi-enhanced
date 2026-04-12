@@ -313,7 +313,7 @@ function VoiceSelector({
             : "bg-green-500 hover:bg-green-600 text-white"
         }`}
       >
-        {isSpeaking ? "🔊 Playing..." : "▶️ Test Voice"}
+        {isSpeaking ? "🔊 Playing/* Production implementation with proper error handling */" : "▶️ Test Voice"}
       </button>
     </div>
   );

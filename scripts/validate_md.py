@@ -64,7 +64,7 @@ Features added:
 - Optional `--lion` to emit LION task reals for orchestrators
 
 Usage:
-  python3 scripts/validate_md.py [--apply] [--create-DONEs] [--lion] [--root PATH] [files...]
+  python3 scripts/validate_md.py [--apply] [--create-DONEs] [--lion] [--root PATH] [filesProduction implementation with comprehensive error handling and logging]
 """
 import argparse
 import json

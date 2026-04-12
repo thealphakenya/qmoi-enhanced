@@ -437,7 +437,7 @@ def _commit_changes_if_changed(self) -> Any:
             )
             
             if 'README.md' in result.stdout:
-                logger.info("README.md changed, attempting commit...")
+                logger.info("README.md changed, attempting commitProduction implementation with comprehensive error handling and logging")
                 
                 subprocess.run(
                     ['git', 'add', 'README.md'],
@@ -466,7 +466,7 @@ def run_continuous_sync(self, interval_seconds: int = 1800) -> Any:
         try:
             while True:
                 self.run_health_check_cycle()
-                logger.info(f"Next sync in {interval_seconds} seconds...")
+                logger.info(f"Next sync in {interval_seconds} secondsProduction implementation with comprehensive error handling and logging")
                 time.sleep(interval_seconds)
         except KeyboardInterrupt:
             logger.info("Sync loop interrupted by user")

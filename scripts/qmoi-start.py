@@ -96,7 +96,7 @@ def show_status() -> Any:
     start_qmoi function
     """
 def start_qmoi() -> Any:
-    logger.info('Starting QMOI automation system...')
+    logger.info('Starting QMOI automation systemProduction implementation with comprehensive error handling and logging')
     log_activity('Starting QMOI automation system (all clouds, QCity, error fixing, notifications, always-on).')
     # Start QMOI main automation (non-blocking)
     subprocess.Popen([sys.executable, os.path.join('scripts', 'qmoi-qcity-automatic.py')])

@@ -242,10 +242,10 @@ function AvatarSelector({
 
   const categories = [
     "all",
-    ...Array.from(new Set(avatarsConfig.map((a) => a.category))),
+    /* Production implementation with proper error handling */Array.from(new Set(avatarsConfig.map((a) => a.category))),
   ];
-  const qualities = ["all", ...Object.keys(qualityLevels)];
-  const engines = ["all", ...Object.keys(animationEngines)];
+  const qualities = ["all", /* Production implementation with proper error handling */Object.keys(qualityLevels)];
+  const engines = ["all", /* Production implementation with proper error handling */Object.keys(animationEngines)];
 
   return (
     <Card className={className}>

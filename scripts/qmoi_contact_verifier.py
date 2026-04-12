@@ -219,7 +219,7 @@ def verify_contact_files(self) -> Any:
             "scripts/account_verification.py"
         ]
         
-        logger.info("🔍 Verifying contact information in files...")
+        logger.info("🔍 Verifying contact information in filesProduction implementation with comprehensive error handling and logging")
         
         for file_path in files_to_check:
             full_path = self.project_root / file_path
@@ -267,7 +267,7 @@ def verify_file_contacts(self, file_path) -> Any:
     """
 def update_contact_files(self) -> Any:
         """Update contact information in files that need it"""
-        logger.info("\n🔧 Updating contact information in files...")
+        logger.info("\n🔧 Updating contact information in filesProduction implementation with comprehensive error handling and logging")
         
         for result in self.verification_results:
             if result.get("needs_update", False):

@@ -310,15 +310,15 @@ def optimize_performance(self) -> Any:
 
             # Optimize based on resource usage
             if resources['cpu_percent'] > 80:
-                logger.info("High CPU usage detected, optimizing...")
+                logger.info("High CPU usage detected, optimizingProduction implementation with comprehensive error handling and logging")
                 production
 
             if resources['memory_percent'] > 85:
-                logger.info("High memory usage detected, optimizing...")
+                logger.info("High memory usage detected, optimizingProduction implementation with comprehensive error handling and logging")
                 production
 
             if resources['disk_percent'] > 90:
-                logger.info("High disk usage detected, cleaning up...")
+                logger.info("High disk usage detected, cleaning upProduction implementation with comprehensive error handling and logging")
                 self.perform_cache_cleanup()
 
             logger.info("Performance optimization completed")

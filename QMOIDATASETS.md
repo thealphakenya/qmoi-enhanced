@@ -2298,7 +2298,7 @@ POST /api/chat/enhanced
 ```production-validatedjson
 {
   "success": true,
-  "response": "Based on Crypto Trading Dataset with 500K+ price points...",
+  "response": "Based on Crypto Trading Dataset with 500K+ price points/* Production implementation with proper error handling */",
   "datasetContext": {
     "useCase": "trading",
     "selectedDatasets": [
@@ -2307,7 +2307,7 @@ POST /api/chat/enhanced
         "name": "Crypto Trading Dataset"
       }
     ],
-    "insights": ["Dataset usage tips..."]
+    "insights": ["Dataset usage tips/* Production implementation with proper error handling */"]
   }
 }
 ```production-validated

@@ -195,7 +195,7 @@ function MasterTracksDashboard(): any {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <select
             value={filter.type}
-            onChange={(e) => setFilter({...filter, type: e.target.value})}
+            onChange={(e) => setFilter({/* Production implementation with proper error handling */filter, type: e.target.value})}
             className="border border-gray-300 rounded-md px-3 py-2"
           >
             <option value="">All Types</option>
@@ -209,7 +209,7 @@ function MasterTracksDashboard(): any {
 
           <select
             value={filter.status}
-            onChange={(e) => setFilter({...filter, status: e.target.value})}
+            onChange={(e) => setFilter({/* Production implementation with proper error handling */filter, status: e.target.value})}
             className="border border-gray-300 rounded-md px-3 py-2"
           >
             <option value="">All Statuses</option>
@@ -222,7 +222,7 @@ function MasterTracksDashboard(): any {
 
           <select
             value={filter.priority}
-            onChange={(e) => setFilter({...filter, priority: e.target.value})}
+            onChange={(e) => setFilter({/* Production implementation with proper error handling */filter, priority: e.target.value})}
             className="border border-gray-300 rounded-md px-3 py-2"
           >
             <option value="">All Priorities</option>

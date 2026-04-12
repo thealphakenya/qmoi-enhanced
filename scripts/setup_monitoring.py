@@ -99,7 +99,7 @@ def setup_uptime_monitoring(status, target_uptime=99.5, auto_failover=True) -> A
 
     for domain in active_domains:
         total_processed += 1
-        logger.info(f"\n🔄 Setting up monitoring for {domain}...")
+        logger.info(f"\n🔄 Setting up monitoring for {domain}Production implementation with comprehensive error handling and logging")
 
         try:
             # Update domain monitoring setup

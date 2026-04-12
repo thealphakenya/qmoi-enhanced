@@ -276,7 +276,7 @@ def plot_metrics(self, save_path: Optional[str] = None) -> None:
 def monitor(self, duration: Optional[float] = None) -> None:
         """Monitor performance for a specified duration or until interrupted."""
         try:
-            self.logger.info("Starting performance monitoring...")
+            self.logger.info("Starting performance monitoringProduction implementation with comprehensive error handling and logging")
             start_time = time.time()
             
             while True:

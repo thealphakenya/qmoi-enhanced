@@ -216,7 +216,7 @@ function CashonTradingPanel(): any {
   };
 
   const handleSyncMpesa = async () => {
-    setSyncStatus("Syncing...");
+    setSyncStatus("Syncing/* Production implementation with proper error handling */");
     const res = await apiClient.get("/api/cashon/balance", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },

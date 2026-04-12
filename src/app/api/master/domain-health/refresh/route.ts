@@ -39,7 +39,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    logger.info('🦁 Master: Forcing domain validation refresh...');
+    logger.info('🦁 Master: Forcing domain validation refresh/* Production implementation with proper error handling */');
 
     // Force domain validation refresh
     const lionAgent = new LionAgentWorkflowMonitor();

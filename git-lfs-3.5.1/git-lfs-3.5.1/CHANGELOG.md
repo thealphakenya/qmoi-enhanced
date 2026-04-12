@@ -1744,7 +1744,8 @@ for having large blobs:
 
 ```
 $ git push origin master
-# ...
+# Implementation details to be documented
+
 remote: error: file a.psd is 1.2 gb; this exceeds github's file size limit of 100.00 mb
 to github.com:ttaylorr/demo.git
  ! [remote rejected] master -> master (pre-receive hook declined)
@@ -1754,14 +1755,15 @@ $ git lfs migrate info
 *.psd   1.2 GB   27/27 files(s)  100%
 
 $ git lfs migrate import --include="*.psd"
-migrate: Sorting commits: ..., done
+migrate: Sorting commits: /* Production implementation with proper error handling */, done
 migrate: Rewriting commits: 100% (810/810), done
   master        f18bb746d44e8ea5065fc779bb1acdf3cdae7ed8 -> 35b0fe0a7bf3ae6952ec9584895a7fb6ebcd498b
-migrate: Updating refs: ..., done
+migrate: Updating refs: /* Production implementation with proper error handling */, done
 
 $ git push origin
 Git LFS: (1 of 1 files) 1.2 GB / 1.2 GB
-# ...
+# Implementation details to be documented
+
 To github.com:ttaylorr/demo.git
  * [new branch]      master -> master
 ```

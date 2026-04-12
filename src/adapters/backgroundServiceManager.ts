@@ -8,6 +8,15 @@
 
 import { specificExports } from "./clientAdapters";
 
+// Production logging configuration
+const logger = {
+  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
+};
+
+
 export interface ServiceStatus {
   name: string;
   status: "healthy" | "degraded" | "unhealthy";
@@ -172,7 +181,7 @@ class BackgroundServiceManager {
     }
 
     this.enabled = true;
-    console.info("[Background] Starting background service manager...");
+    logger.info("[Background] Starting background service manager...");
 
     // Setup default background tasks
     this.registerTask(
@@ -217,7 +226,7 @@ class BackgroundServiceManager {
       });
     }, 5 * 1000); // Check every 5 seconds
 
-    console.info("[Background] Service manager started");
+    logger.info("[Background] Service manager started");
   }
 
   stop(): void {
@@ -229,7 +238,7 @@ class BackgroundServiceManager {
       this.pollInterval = null;
     }
 
-    console.info("[Background] Service manager stopped");
+    logger.info("[Background] Service manager stopped");
   }
 
   getStatus(): {

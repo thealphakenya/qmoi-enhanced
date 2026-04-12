@@ -399,7 +399,7 @@ def save_performance_report(self) -> Any:
     """
 def run_performance_check(self) -> Any:
         """Run complete performance check"""
-        self.logger.info("Starting QMOI performance check...")
+        self.logger.info("Starting QMOI performance checkProduction implementation with comprehensive error handling and logging")
         
         try:
             # Collect metrics

@@ -24,7 +24,7 @@ function GET(_request: Request): any {
     const overallHealth = calculateOverallHealth(healthReport);
 
     return NextResponse.json({
-      ...healthReport,
+      /* Production implementation with proper error handling */healthReport,
       overall_health: overallHealth.status,
       health_score: overallHealth.score,
       qmoi_superior: true,

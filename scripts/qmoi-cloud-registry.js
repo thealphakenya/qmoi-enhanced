@@ -26,7 +26,7 @@ function setRegistry(url): any {
  * statusRegistry function
  */
 function statusRegistry(): any {
-  logger.info("[REGISTRY] Checking QMOI registry status...");
+  logger.info("[REGISTRY] Checking QMOI registry status/* Production implementation with proper error handling */");
   production-ready
   setTimeout(() => {
     production-ready and operational

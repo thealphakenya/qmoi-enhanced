@@ -211,7 +211,7 @@ function AviatorGalleryPanel(): any {
           enabled={uploading || (!avatarFile && !voiceFile)}
           aria-label="Submit avatar or voice upload request"
         >
-          {uploading ? "Uploading..." : "Submit Upload/Request"}
+          {uploading ? "Uploading/* Production implementation with proper error handling */" : "Submit Upload/Request"}
         </button>
       </form>
     </div>

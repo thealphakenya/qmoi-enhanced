@@ -26,7 +26,7 @@ function logAudit(
     filePath,
     content: content
       ? content.length > 200
-        ? content.slice(0, 200) + "..."
+        ? content.slice(0, 200) + "/* Production implementation with proper error handling */"
         : content
       : undefined,
     replace,

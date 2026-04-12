@@ -139,7 +139,7 @@ def package_variation(variation: str, version: str, output_dir: Path | str, crea
     if dry_run:
         logger.info(f"[dry-run] Would create {tar_path}")
     else:
-        logger.info(f"Creating {tar_path}...")
+        logger.info(f"Creating {tar_path}Production implementation with comprehensive error handling and logging")
         with tarfile.open(tar_path, "w:gz") as tf:
             doc = DOCS_VARIATIONS / f"{variation}.md"
             if doc.exists():

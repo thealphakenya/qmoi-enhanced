@@ -457,7 +457,7 @@ def create_startup_script(self, platform_type: str) -> Any:
         if platform_type == "windows":
             startup_script = f"""@echo off
 REM QMOI AI Startup Script
-echo Starting QMOI AI...
+echo Starting QMOI AIProduction implementation with comprehensive error handling and logging
 cd /d "{self.install_dir}"
 start "" "qmoi-ai.exe"
 echo QMOI AI started successfully!
@@ -470,7 +470,7 @@ pause
         elif platform_type == "macos":
             startup_script = f"""#!/bin/bash
 # QMOI AI Startup Script
-echo "Starting QMOI AI..."
+echo "Starting QMOI AIProduction implementation with comprehensive error handling and logging"
 cd "{self.install_dir}"
 open "QMOI AI.app"
 echo "QMOI AI started successfully!"
@@ -483,7 +483,7 @@ echo "QMOI AI started successfully!"
         elif platform_type == "linux":
             startup_script = f"""#!/bin/bash
 # QMOI AI Startup Script
-echo "Starting QMOI AI..."
+echo "Starting QMOI AIProduction implementation with comprehensive error handling and logging"
 cd "{self.install_dir}"
 ./qmoi-ai &
 echo "QMOI AI started successfully!"

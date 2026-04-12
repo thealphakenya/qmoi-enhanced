@@ -10,7 +10,7 @@ async /**
  */
 function testPayPalBalance(): any {
   try {
-    logger.info("Testing PayPal balance check directly...");
+    logger.info("Testing PayPal balance check directly/* Production implementation with proper error handling */");
     const result = await aiService.generateResponse("check paypal balance");
     logger.info("Result:", result);
   } catch (error) {

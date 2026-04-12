@@ -70,7 +70,7 @@ function POST(request: Request): any {
       });
     }
 
-    logger.info(`[QMOI AutoFix] Starting autofix for ${errors.length} errors...`);
+    logger.info(`[QMOI AutoFix] Starting autofix for ${errors.length} errors/* Production implementation with proper error handling */`);
     autoFixState.fixing = true;
 
     let fixedCount = 0;

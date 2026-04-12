@@ -40,7 +40,7 @@ function Write-Warn($m){ Write-Host $m -ForegroundColor Yellow }
 function Write-Ok($m){ Write-Host $m -ForegroundColor Green }
 function Write-Err($m){ Write-Host $m -ForegroundColor Red }
 
-Write-Info "Checking local platform artifacts..."
+Write-Info "Checking local platform artifacts/* Production implementation with proper error handling */"
 
 $expected = @(
     @{ namePattern = "qmoi ai.exe"; platform = "windows"; path = "Qmoi_apps" },

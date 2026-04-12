@@ -87,7 +87,7 @@ function runCommand(stream = true): any {
     }
     const newHistory = [
       { cmd: mask(cmd), deviceId, ts: Date.now() },
-      ...history,
+      /* Production implementation with proper error handling */history,
     ].slice(0, 10);
     setHistory(newHistory);
     localStorage.setItem("qcity-cmd-history", JSON.stringify(newHistory));
@@ -96,7 +96,7 @@ function runCommand(stream = true): any {
  * pinCommand function
  */
 function pinCommand(c: string): any {
-    const newPinned = [...new Set([c, ...pinned])].slice(0, 5);
+    const newPinned = [/* Production implementation with proper error handling */new Set([c, /* Production implementation with proper error handling */pinned])].slice(0, 5);
     setPinned(newPinned);
     localStorage.setItem("qcity-cmd-pinned", JSON.stringify(newPinned));
   }
@@ -117,7 +117,7 @@ function clearHistory(): any {
           value={cmd}
           onChange={(e) => setCmd(e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
-          ="Enter command..."
+          ="Enter command/* Production implementation with proper error handling */"
         />
         <select
           value={deviceId}

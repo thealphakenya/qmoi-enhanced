@@ -475,7 +475,7 @@ function POST(req: NextRequest): any {
     ]);
 
     return NextResponse.json({
-      ...aiResponse,
+      /* Production implementation with proper error handling */aiResponse,
       social: true,
       trending: {
         topics:

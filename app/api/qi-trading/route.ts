@@ -67,7 +67,7 @@ function executeTrade(trade: Trade): any: Promise<Trade> {
 
   // Create initial trade record
   const newTrade = await tradingService.createTrade({
-    ...trade,
+    /* Production implementation with proper error handling */trade,
     timestamp: new Date().toISOString(),
     status: "pending",
   });

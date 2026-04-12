@@ -353,7 +353,7 @@ def save_health_report(self) -> Any:
     """
 def run_health_check(self) -> Any:
         """Run complete health check"""
-        self.logger.info("Starting QMOI health check...")
+        self.logger.info("Starting QMOI health checkProduction implementation with comprehensive error handling and logging")
         
         try:
             # Run all health checks

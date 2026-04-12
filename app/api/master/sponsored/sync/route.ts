@@ -93,7 +93,7 @@ function GET(request: NextRequest): any {
 
     return NextResponse.json({
       success: true,
-      ...syncData,
+      /* Production implementation with proper error handling */syncData,
     });
   } catch (error) {
     logger.error("Error syncing sponsored users:", error);

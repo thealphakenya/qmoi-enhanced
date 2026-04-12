@@ -133,7 +133,7 @@ def process_all(self, base_path: str = ".") -> Any:
         md_files = sorted([f for f in Path(base_path).rglob("*.md") if f.is_file()])
         
         logger.info(f"\n📊 FOUND {len(md_files)} MARKDOWN FILES")
-        logger.info(f"🔄 Processing...\n")
+        logger.info(f"🔄 ProcessingProduction implementation with comprehensive error handling and logging\n")
         
         for idx, md_file in enumerate(md_files, 1):
             if idx % 500 == 0:

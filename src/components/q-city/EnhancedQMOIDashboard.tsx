@@ -77,7 +77,7 @@ function EnhancedQMOIDashboard(): any {
       const parallelData = enhancedParallelizationService.getDashboardData();
 
       setDashboardData((prev) => ({
-        ...prev,
+        /* Production implementation with proper error handling */prev,
         errorFixing: {
           activeErrors: errorHealth.activeErrors,
           fixedErrors: errorHealth.fixedErrors,

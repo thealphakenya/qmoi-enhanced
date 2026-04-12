@@ -198,7 +198,7 @@ def run_command(self, command: List[str], cwd: Optional[Path] = None) -> Dict:
     """
 def pre_deployment_checks(self) -> bool:
         """Run pre-deployment checks"""
-        logger.info("Running pre-deployment checks...")
+        logger.info("Running pre-deployment checksProduction implementation with comprehensive error handling and logging")
         
         checks = [
             ['node', '--version'],
@@ -225,7 +225,7 @@ def pre_deployment_checks(self) -> bool:
     """
 def install_dependencies(self) -> bool:
         """Install and update dependencies"""
-        logger.info("Installing dependencies...")
+        logger.info("Installing dependenciesProduction implementation with comprehensive error handling and logging")
         
         # Install Node.js dependencies
         npm_result = self.run_command(['npm', 'ci'])
@@ -243,7 +243,7 @@ def install_dependencies(self) -> bool:
         
         # Upgrade dependencies if forced
         if self.force_upgrade:
-            logger.info("Force upgrading dependencies...")
+            logger.info("Force upgrading dependenciesProduction implementation with comprehensive error handling and logging")
             self.run_command(['npm', 'update'])
             self.run_command(['pip', 'install', '--upgrade', '-r', 'requirements/ai_automation.txt'])
         
@@ -255,7 +255,7 @@ def install_dependencies(self) -> bool:
     """
 def optimize_build(self) -> bool:
         """Optimize build process"""
-        logger.info("Optimizing build...")
+        logger.info("Optimizing buildProduction implementation with comprehensive error handling and logging")
         
         # Run build optimization
         build_result = self.run_command(['npm', 'run', 'build:optimized'])
@@ -276,7 +276,7 @@ def optimize_build(self) -> bool:
     """
 def run_quality_checks(self) -> bool:
         """Run quality checks"""
-        logger.info("Running quality checks...")
+        logger.info("Running quality checksProduction implementation with comprehensive error handling and logging")
         
         quality_checks = [
             ['npm', 'run', 'lint'],
@@ -302,7 +302,7 @@ def run_quality_checks(self) -> bool:
     """
 def run_security_audit(self) -> bool:
         """Run security audit"""
-        logger.info("Running security audit...")
+        logger.info("Running security auditProduction implementation with comprehensive error handling and logging")
         
         security_checks = [
             ['npm', 'audit', '--audit-level', 'moderate'],
@@ -327,7 +327,7 @@ def run_security_audit(self) -> bool:
     """
 def run_tests(self) -> bool:
         """Run comprehensive tests"""
-        logger.info("Running comprehensive tests...")
+        logger.info("Running comprehensive testsProduction implementation with comprehensive error handling and logging")
         
         test_suites = [
             ['npm', 'run', 'test'],
@@ -354,7 +354,7 @@ def run_tests(self) -> bool:
     """
 def deploy(self) -> bool:
         """Deploy the application"""
-        logger.info(f"Deploying to {self.environment}...")
+        logger.info(f"Deploying to {self.environment}Production implementation with comprehensive error handling and logging")
         
         # Build for specific environment
         build_command = ['npm', 'run', f'build:{self.environment}']
@@ -437,7 +437,7 @@ production-ready
     """
 def post_deployment_checks(self) -> bool:
         """Run post-deployment checks"""
-        logger.info("Running post-deployment checks...")
+        logger.info("Running post-deployment checksProduction implementation with comprehensive error handling and logging")
         
         # Health check
         health_result = self.health_check()
@@ -502,7 +502,7 @@ def performance_check(self) -> bool:
     """
 def setup_monitoring(self) -> bool:
         """Setup monitoring and alerting"""
-        logger.info("Setting up monitoring...")
+        logger.info("Setting up monitoringProduction implementation with comprehensive error handling and logging")
         
         # Start monitoring services
         monitoring_commands = [
@@ -527,7 +527,7 @@ def setup_monitoring(self) -> bool:
     """
 def generate_report(self) -> None:
         """Generate deployment report"""
-        logger.info("Generating deployment report...")
+        logger.info("Generating deployment reportProduction implementation with comprehensive error handling and logging")
         
         self.deployment_status['end_time'] = datetime.now().isoformat()
         self.deployment_status['total_duration'] = (
@@ -546,7 +546,7 @@ def generate_report(self) -> None:
     """
 def notify_deployment(self, success: bool) -> None:
         """Notify about deployment status"""
-        logger.info("Sending deployment notification...")
+        logger.info("Sending deployment notificationProduction implementation with comprehensive error handling and logging")
         
         try:
             notification_script = self.root_dir / 'scripts' / 'utils' / 'notify_deployment.py'

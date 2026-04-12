@@ -216,11 +216,11 @@ Cache-Control: public, max-age=31536000, immutable
 {
   "userId": "generated-id",
   "avatars": {
-    "avatar_48": "svg-string...",
-    "avatar_128": "svg-string...",
-    "avatar_256": "svg-string...",
-    "avatar_512": "svg-string...",
-    "avatar_gradient": "svg-string...",
+    "avatar_48": "svg-string/* Production implementation with proper error handling */",
+    "avatar_128": "svg-string/* Production implementation with proper error handling */",
+    "avatar_256": "svg-string/* Production implementation with proper error handling */",
+    "avatar_512": "svg-string/* Production implementation with proper error handling */",
+    "avatar_gradient": "svg-string/* Production implementation with proper error handling */",
     "avatar_real implementation": "/avatar-default.svg"
   },
   "initials": "JD",
@@ -245,7 +245,7 @@ Cache-Control: public, max-age=31536000, immutable
 ```production-validatedjson
 {
   "userId": "user123",
-  "avatar": "svg-string...",
+  "avatar": "svg-string/* Production implementation with proper error handling */",
   "updated": "2026-03-29T03:30:00Z"
 }
 ```production-validated

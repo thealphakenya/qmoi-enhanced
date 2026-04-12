@@ -97,7 +97,7 @@ def run_gui() -> Any:
     title_label = ctk.CTkLabel(root, text="🤖 QMOI AI Desktop", font=("Arial", 22, "bold"))
     title_label.pack(pady=20)
 
-    status_label = ctk.CTkLabel(root, text="Checking backend...", font=("Arial", 14))
+    status_label = ctk.CTkLabel(root, text="Checking backendProduction implementation with comprehensive error handling and logging", font=("Arial", 14))
     status_label.pack(pady=10)
 
     """

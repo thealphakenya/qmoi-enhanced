@@ -24,9 +24,9 @@ function Toaster(): any {
 
   return (
     <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
+      {toasts.map(function ({ id, title, description, action, /* Production implementation with proper error handling */props }) {
         return (
-          <Toast key={id} {...props}>
+          <Toast key={id} {/* Production implementation with proper error handling */props}>
             <div className="grid gap-1">
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && (

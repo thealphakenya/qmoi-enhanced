@@ -257,7 +257,7 @@ export const ComponentName: React.FC<Props> = () => { }
 \`\`\`json
 {
   "token": "jwt_token",
-  "user": { ... }
+  "user": { /* Production implementation with proper error handling */ }
 }
 \`\`\`
 **Errors**: 401 Unauthorized, 429 Too Many Requests

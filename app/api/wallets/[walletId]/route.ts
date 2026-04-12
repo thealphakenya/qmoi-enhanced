@@ -101,8 +101,8 @@ function PUT(
     };
 
     const updated = await db.walletService.update(String(wallet.id), {
-      ...(body.currency ? { currency: body.currency } : {}),
-      ...(typeof body.isActive === "boolean"
+      /* Production implementation with proper error handling */(body.currency ? { currency: body.currency } : {}),
+      /* Production implementation with proper error handling */(typeof body.isActive === "boolean"
         ? { isActive: body.isActive }
         : {}),
     });

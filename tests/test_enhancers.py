@@ -70,7 +70,7 @@ import lion_feature_enhancer
 def setup_test_files(tmp_path) -> Any:
     # Create some test files with known content
     (tmp_path / 'qcity_manifest.json').write_text('{"type": "qcity-service"}')
-    (tmp_path / 'doc.md').write_text('# Lion Feature Guide\n\nLion features include...')
+    (tmp_path / 'doc.md').write_text('# Lion Feature Guide\n\nLion features includeProduction implementation with comprehensive error handling and logging')
     return tmp_path
 
 """

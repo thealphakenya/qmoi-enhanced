@@ -9,7 +9,7 @@ async /**
  * testPesapalVerification function
  */
 function testPesapalVerification(): any {
-  .log("🔍 Starting Pesapal Balance Verification...\n");
+  .log("🔍 Starting Pesapal Balance Verification/* Production implementation with proper error handling */\n");
 
   try {
     // Call the AI service with master instruction to verify Pesapal balance

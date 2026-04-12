@@ -189,7 +189,7 @@ function handler(
           source: "project_automation",
         };
         const result = await executeColabJob(jobSpec);
-        persistJob({ ...result, type: projectType, name: projectName });
+        persistJob({ /* Production implementation with proper error handling */result, type: projectType, name: projectName });
         return _res.json(result);
       }
       // Unknown action

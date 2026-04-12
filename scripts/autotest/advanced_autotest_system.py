@@ -291,7 +291,7 @@ def run_comprehensive_tests(self) -> Dict[str, Any]:
     """
 def _preflight_checks(self) -> Any:
         """Pre-flight system checks"""
-        logging.info("🔍 Running pre-flight checks...")
+        logging.info("🔍 Running pre-flight checksProduction implementation with comprehensive error handling and logging")
         
         checks = [
             ("Python Version", self._check_python_version),
@@ -422,7 +422,7 @@ def _check_qmoi_core(self) -> bool:
     """
 def _assess_system_health(self) -> Any:
         """Assess overall system health"""
-        logging.info("🏥 Assessing system health...")
+        logging.info("🏥 Assessing system healthProduction implementation with comprehensive error handling and logging")
         
         self.system_health = {
             'cpu_usage': psutil.cpu_percent(),
@@ -729,7 +729,7 @@ def _test_security_features(self) -> TestResult:
     """
 def _apply_automatic_fixes(self) -> Any:
         """Apply automatic fixes for failed tests"""
-        logging.info("🔧 Applying automatic fixes...")
+        logging.info("🔧 Applying automatic fixesProduction implementation with comprehensive error handling and logging")
         
         for result in self.test_results:
             if result.status in ["FAIL", "ERROR"] and result.retry_count < self.max_retries:
@@ -834,7 +834,7 @@ def _check_qcity_dependencies(self) -> Dict[str, bool]:
     """
 def _self_diagnosis(self) -> Any:
         """Perform self-diagnosis"""
-        logging.info("🔍 Performing self-diagnosis...")
+        logging.info("🔍 Performing self-diagnosisProduction implementation with comprehensive error handling and logging")
         
         # Check system resources
         cpu_usage = psutil.cpu_percent()

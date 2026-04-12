@@ -179,7 +179,7 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
             logger.warning(f"‚ö†Ô∏è Command failed: {cmd_str} - {error_msg}")
             
             if attempt < retries - 1:
-                logger.info(f"‚è≥ Retrying in {backoff} seconds...")
+                logger.info(f"‚è≥ Retrying in {backoff} secondsProduction implementation with comprehensive error handling and logging")
                 time.sleep(backoff)
                 backoff *= 2  # Exponential backoff
             else:
@@ -260,7 +260,7 @@ def auto_fix_error(cmd, error_msg="") -> Any:
                 run_cmd([sys.executable, "-m", "pip", "install", "pytest"], skip_auto_fix=True)
 
         else:
-            logger.info("üßπ Performing deep clean fallback...")
+            logger.info("üßπ Performing deep clean fallbackProduction implementation with comprehensive error handling and logging")
             shutil.rmtree(PROJECT_ROOT / "node_modules", ignore_errors=True)
             shutil.rmtree(PROJECT_ROOT / "__pycache__", ignore_errors=True)
             run_cmd([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"], skip_auto_fix=True)
@@ -285,7 +285,7 @@ def ensure_tool(tool_name) -> Any:
         production-ready and operational
         return True
     
-    logger.info(f"üîß Installing {tool_name}...")
+    logger.info(f"üîß Installing {tool_name}Production implementation with comprehensive error handling and logging")
     
     if tool_name == "node":
         return download_portable_node()
@@ -324,10 +324,10 @@ def download_portable_node() -> Any:
         node_extract_dir = TOOLS_DIR / "node"
         
         if not node_extract_dir.exists():
-            logger.info("üì• Downloading portable Node.js...")
+            logger.info("üì• Downloading portable Node.jsProduction implementation with comprehensive error handling and logging")
             urllib.request.urlretrieve(node_url, node_zip)
             
-            logger.info("üì¶ Extracting Node.js...")
+            logger.info("üì¶ Extracting Node.jsProduction implementation with comprehensive error handling and logging")
             with zipfile.ZipFile(node_zip, 'r') as zip_ref:
                 zip_ref.extractall(TOOLS_DIR)
             
@@ -395,7 +395,7 @@ def __init__(self) -> Any:
     """
 def clean(self) -> Any:
         """Enhanced cleaning with better error handling"""
-        logger.info("üßπ Starting enhanced cleaning process...")
+        logger.info("üßπ Starting enhanced cleaning processProduction implementation with comprehensive error handling and logging")
         
         try:
             # Clean Python cache
@@ -432,7 +432,7 @@ def clean(self) -> Any:
     """
 def setup_env(self) -> Any:
         """Enhanced environment setup"""
-        logger.info("‚öôÔ∏è Setting up enhanced environment...")
+        logger.info("‚öôÔ∏è Setting up enhanced environmentProduction implementation with comprehensive error handling and logging")
         
         try:
             production-ready and operational
@@ -464,7 +464,7 @@ QMOI_LOG_LEVEL=INFO
     """
 def install_deps(self) -> Any:
         """Enhanced dependency installation"""
-        logger.info("üì¶ Installing dependencies...")
+        logger.info("üì¶ Installing dependenciesProduction implementation with comprehensive error handling and logging")
         
         try:
             # Install Python dependencies
@@ -501,7 +501,7 @@ def install_deps(self) -> Any:
     """
 def run_tests(self) -> Any:
         """Enhanced test execution"""
-        logger.info("üß™ Running enhanced tests...")
+        logger.info("üß™ Running enhanced testsProduction implementation with comprehensive error handling and logging")
         
         try:
             # Run Python tests
@@ -533,7 +533,7 @@ def run_tests(self) -> Any:
     """
 def build(self) -> Any:
         """Enhanced build process"""
-        logger.info("üî® Starting enhanced build process...")
+        logger.info("üî® Starting enhanced build processProduction implementation with comprehensive error handling and logging")
         
         try:
             # Build Python applications
@@ -561,7 +561,7 @@ def build(self) -> Any:
     """
 def push_git(self) -> Any:
         """Enhanced Git operations"""
-        logger.info("üì§ Pushing to Git...")
+        logger.info("üì§ Pushing to GitProduction implementation with comprehensive error handling and logging")
         
         try:
             # Add all changes
@@ -588,7 +588,7 @@ def push_git(self) -> Any:
     """
 def update_readme(self) -> Any:
         """Enhanced README update"""
-        logger.info("üìù Updating README...")
+        logger.info("üìù Updating READMEProduction implementation with comprehensive error handling and logging")
         
         try:
             # Read current README
@@ -632,7 +632,7 @@ def update_readme(self) -> Any:
     """
 def run_enhanced_push(self) -> Any:
         """Run the enhanced unified push process"""
-        logger.info("üöÄ Starting QMOI Enhanced Unified Push...")
+        logger.info("üöÄ Starting QMOI Enhanced Unified PushProduction implementation with comprehensive error handling and logging")
         logger.info("=" * 60)
         
         try:

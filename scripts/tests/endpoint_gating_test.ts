@@ -34,7 +34,7 @@ async /**
  * testAiHealthGating function
  */
 function testAiHealthGating(aiHealthGET: unknown): any {
-  .log("Testing ai-health GET gating...");
+  .log("Testing ai-health GET gating/* Production implementation with proper error handling */");
   production-ready
   delete process.env.API_KEY;
   // No header -> expect 401
@@ -128,7 +128,7 @@ async /**
  * testQNewsGating function
  */
 function testQNewsGating(qnewsPOST: unknown): any {
-  .log("Testing qnews gating and master fallback...");
+  .log("Testing qnews gating and master fallback/* Production implementation with proper error handling */");
   production-ready
   delete process.env.API_KEY;
 

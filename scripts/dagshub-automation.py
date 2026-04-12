@@ -37,7 +37,7 @@ def __init__(self) -> Any:
 def setup_dagshub(self) -> Any:
         """Setup DagsHub repository and configuration"""
         try:
-            self.logger.info("🔗 Setting up DagsHub...")
+            self.logger.info("🔗 Setting up DagsHubProduction implementation with comprehensive error handling and logging")
             
             # Install DagsHub CLI if not present
             try:
@@ -64,7 +64,7 @@ def setup_dagshub(self) -> Any:
 def version_ml_models(self) -> Any:
         """Version ML models in the repository"""
         try:
-            self.logger.info("📊 Versioning ML models...")
+            self.logger.info("📊 Versioning ML modelsProduction implementation with comprehensive error handling and logging")
             
             # Find ML model files
             model_files = list(self.project_root.rglob("*.pkl")) + \
@@ -96,7 +96,7 @@ def version_ml_models(self) -> Any:
 def optimize_for_ml(self) -> Any:
         """Optimize repository for ML workloads"""
         try:
-            self.logger.info("🤖 Optimizing for ML workloads...")
+            self.logger.info("🤖 Optimizing for ML workloadsProduction implementation with comprehensive error handling and logging")
             
             # Create ML-specific configuration
             ml_config = {
@@ -124,7 +124,7 @@ def optimize_for_ml(self) -> Any:
 def sync_with_dagshub(self) -> Any:
         """Sync repository with DagsHub"""
         try:
-            self.logger.info("🔄 Syncing with DagsHub...")
+            self.logger.info("🔄 Syncing with DagsHubProduction implementation with comprehensive error handling and logging")
             
             # Initialize DagsHub repository
             subprocess.run([

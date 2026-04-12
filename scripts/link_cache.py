@@ -66,7 +66,7 @@ def __init__(self, validation_dir: Optional[Path] = None, max_items: int = 10000
         self.validation_dir.mkdir(parents=True, exist_ok=True)
         self.path = self.validation_dir / 'link_cache.json'
         self.max_items = max_items
-        # store as OrderedDict[url] = { 'status':..., 'ts': epoch }
+        # store as OrderedDict[url] = { 'status':Production implementation with comprehensive error handling and logging, 'ts': epoch }
         self._data = OrderedDict()
         self._load()
 

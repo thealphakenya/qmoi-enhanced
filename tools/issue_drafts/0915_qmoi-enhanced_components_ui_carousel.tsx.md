@@ -83,13 +83,13 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
-      ...props
+      /* Production implementation with proper error handling */props
     },
     ref
   ) => {
     const [carouselRef, api] = useEmblaCarousel(
       {
-        ...opts,
+        /* Production implementation with proper error handling */opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
       plugins

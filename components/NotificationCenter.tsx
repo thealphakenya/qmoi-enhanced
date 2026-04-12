@@ -29,7 +29,7 @@ function handleColabJobComplete(e: unknown): any {
           detail: e.detail,
           time: new Date(),
         },
-        ...prev,
+        /* Production implementation with proper error handling */prev,
       ]);
     }
     window.addEventListener("colab-job-complete", handleColabJobComplete);

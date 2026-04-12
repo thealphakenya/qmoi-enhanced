@@ -621,7 +621,7 @@ def _deploy_kubernetes(self) -> bool:
 def _deploy_vercel(self) -> bool:
         """Deploy to Vercel."""
         try:
-            self.logger.info("Starting Vercel deployment...")
+            self.logger.info("Starting Vercel deploymentProduction implementation with comprehensive error handling and logging")
             command = ["npx", "vercel", "--yes"]
             if self.config["targets"]["vercel"].get("prod"):
                 command.append("--prod")

@@ -344,7 +344,7 @@ def perform_comprehensive_health_check(self, domain) -> Any:
         """Perform complete health check on domain"""
         domain_info = self.domains.get(domain, {'name': domain, 'type': 'unknown'})
         
-        logger.info(f"  ⏳ Checking {domain}...", end='', flush=True)
+        logger.info(f"  ⏳ Checking {domain}Production implementation with comprehensive error handling and logging", end='', flush=True)
         
         results = {
             'domain': domain,
@@ -422,7 +422,7 @@ def validate_all_domains(self) -> Any:
         """Validate all domains with parallel processing"""
         logger.info("\n🌐 COMPREHENSIVE DOMAIN HEALTH & UI VALIDATION")
         logger.info("=" * 60)
-        logger.info(f"📍 Scanning {len(self.domains)} domains...")
+        logger.info(f"📍 Scanning {len(self.domains)} domainsProduction implementation with comprehensive error handling and logging")
         logger.info("=" * 60 + "\n")
         
         healthy_count = 0

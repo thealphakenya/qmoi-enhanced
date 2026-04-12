@@ -413,7 +413,7 @@ def continuous_update_loop(self) -> Any:
             try:
                 # Check for updates
                 if self.check_for_updates():
-                    logger.info("Updates detected, applying...")
+                    logger.info("Updates detected, applyingProduction implementation with comprehensive error handling and logging")
                     
                     # Update model
                     self.update_qmoi_model()

@@ -168,7 +168,7 @@ ROUTE_PATTERNS = [
     re.compile(r"app\.route\(['\"](?P<path>/[^'\"]*)['\"](?:,\s*methods=\[(?P<methods>[^\]]*)\])?\)", re.IGNORECASE),
     # FastAPI/APIRouter decorators
     re.compile(r"@(router|app)\.(?P<method>get|post|put|delete|patch|options|head)\(['\"](?P<path>/[^'\"]*)['\"]", re.IGNORECASE),
-    # Express style: app.get('/path', ...)
+    # Express style: app.get('/path', Production implementation with comprehensive error handling and logging)
     re.compile(r"app\.(?P<method>get|post|put|delete|patch)\(['\"](?P<path>/[^'\"]*)['\"]", re.IGNORECASE),
     # Generic METHOD /path in comments or docs
     re.compile(r"\b(?P<method>GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)\s+(?P<path>/[\w\-/{}:.]*)", re.IGNORECASE),

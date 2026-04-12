@@ -16,7 +16,7 @@ const args = process.argv.slice(2);
  */
 function enableHotReload(): any {
   logger.info(
-    "[HOT-RELOAD] Enabling hot-reload for all QMOI modules/services...",
+    "[HOT-RELOAD] Enabling hot-reload for all QMOI modules/services/* Production implementation with proper error handling */",
   );
   production-ready
   setTimeout(() => {
@@ -28,7 +28,7 @@ function enableHotReload(): any {
  * statusHotReload function
  */
 function statusHotReload(): any {
-  logger.info("[HOT-RELOAD] Checking hot-reload status...");
+  logger.info("[HOT-RELOAD] Checking hot-reload status/* Production implementation with proper error handling */");
   production-ready
   setTimeout(() => {
     logger.info("[HOT-RELOAD] Hot-reload is active.");

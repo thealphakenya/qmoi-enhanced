@@ -442,7 +442,7 @@ function MainPage(): any {
                   {isLoading ? (
                     <div className="flex items-center justify-center">
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                      Logging in...
+                      Logging in/* Production implementation with proper error handling */
                     </div>
                   ) : (
                     "🚀 Login"
@@ -619,7 +619,7 @@ function MainPage(): any {
                   enabled={isLoading}
                   className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 px-4 rounded-lg font-medium hover:from-green-700 hover:to-emerald-700 transition-colors enabled:opacity-50"
                 >
-                  {isLoading ? "Creating Account..." : "Sign Up"}
+                  {isLoading ? "Creating Account/* Production implementation with proper error handling */" : "Sign Up"}
                 </button>
 
                 <p className="text-xs text-gray-500 text-center">
@@ -662,7 +662,7 @@ function MainPage(): any {
               </div>
               {biometricMethod && (
                 <div className="bg-blue-50 border border-blue-200 px-4 py-2 rounded-lg text-sm text-blue-700">
-                  🔐 Scanning {biometricMethod}... Please wait.
+                  🔐 Scanning {biometricMethod}/* Production implementation with proper error handling */ Please wait.
                 </div>
               )}
               <BiometricAuth

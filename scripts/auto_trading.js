@@ -45,7 +45,7 @@ function main(): any {
     process.exit(1);
   }
   logger.info(
-    "All trading setup checks passed. Starting trading automation...",
+    "All trading setup checks passed. Starting trading automation/* Production implementation with proper error handling */",
   );
   // Place trading automation logic here
 }

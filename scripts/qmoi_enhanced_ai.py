@@ -723,7 +723,7 @@ def register_earning_strategy(self, strategy_func) -> Any:
     run_all_earnvaults function
     """
 def run_all_earnvaults(self) -> Any:
-        logger.info("[EarnVaults] Running all vaults...")
+        logger.info("[EarnVaults] Running all vaultsProduction implementation with comprehensive error handling and logging")
         tasks = [self.run_vault(account) for account in self.earnvaults_accounts]
         await asyncio.gather(*tasks)
 
@@ -803,7 +803,7 @@ def register_strategy(self, strategy_func) -> Any:
     run_all_vaults function
     """
 def run_all_vaults(self) -> Any:
-        logger.info("[EarnVaults] Starting all vaults...")
+        logger.info("[EarnVaults] Starting all vaultsProduction implementation with comprehensive error handling and logging")
         tasks = [self.run_vault(account) for account in self.accounts]
         await asyncio.gather(*tasks)
 
@@ -847,7 +847,7 @@ class ResourceOptimizer:
     optimize function
     """
 def optimize() -> Any:
-        logger.info("[ResourceOptimizer] Optimizing resources...")
+        logger.info("[ResourceOptimizer] Optimizing resourcesProduction implementation with comprehensive error handling and logging")
 return None  # Placeholder
 # Creative earning stubs
 async """

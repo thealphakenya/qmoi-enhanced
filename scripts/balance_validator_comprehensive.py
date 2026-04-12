@@ -248,7 +248,7 @@ def __init__(self) -> Any:
     """
 def validate_all_balances(self) -> Dict[str, Any]:
         """Validate all platform balances"""
-        logging.info("Starting comprehensive balance validation...")
+        logging.info("Starting comprehensive balance validationProduction implementation with comprehensive error handling and logging")
 
         # live fetching balances from all platforms
         self.balances['banking'] = self._fetch_banking_balance()

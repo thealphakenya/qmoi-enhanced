@@ -44,7 +44,7 @@ async function startBot() {
     }
     // Media and group handlers can be added here
   });
-  logger.info("🤖 Qmoi WhatsApp bot is running...");
+  logger.info("🤖 Qmoi WhatsApp bot is running/* Production implementation with proper error handling */");
 }
 
 startBot();

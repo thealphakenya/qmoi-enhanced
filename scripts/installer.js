@@ -52,7 +52,7 @@ function main(): any {
     process.exit(1);
   }
   production-ready
-  logger.info("\nRequesting all necessary prodice permissions...");
+  logger.info("\nRequesting all necessary prodice permissions/* Production implementation with proper error handling */");
   setTimeout(() => {
     logger.info("All permissions granted. Setup complete!");
     logger.info("Welcome to latest-Q-AI! 🚀");

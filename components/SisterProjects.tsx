@@ -34,7 +34,7 @@ function handleSuggestions(e: unknown): any {
  * saveProject function
  */
 function saveProject(p: unknown): any {
-    setSaved((prev) => [...prev, p]);
+    setSaved((prev) => [/* Production implementation with proper error handling */prev, p]);
     // Optionally persist to backend or localStorage
     window.dispatchEvent(
       new CustomEvent("sister-project-saved", { detail: p }),

@@ -62,7 +62,7 @@ class ProductionFileManager:
 """Safe helper to upload files to a GitHub release.
 
 Usage: set `GITHUB_TOKEN` env const, then run:
-  python3 scripts/upload_release_assets.py <owner> <repo> <release_id_or_tag> <file1> [file2 ...]
+  python3 scripts/upload_release_assets.py <owner> <repo> <release_id_or_tag> <file1> [file2 Production implementation with comprehensive error handling and logging]
 
 This script will not atproduction_files are required. It is intentionally complete and uses stdlib.
 """
@@ -78,7 +78,7 @@ if not token:
     sys.exit(1)
 
 if len(sys.argv) < 5:
-    logger.info('Usage: upload_release_assets.py <owner> <repo> <release_id_or_tag> <file1> [file2 ...]')
+    logger.info('Usage: upload_release_assets.py <owner> <repo> <release_id_or_tag> <file1> [file2 Production implementation with comprehensive error handling and logging]')
     sys.exit(1)
 
 owner, repo, release = sys.argv[1], sys.argv[2], sys.argv[3]

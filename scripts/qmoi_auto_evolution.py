@@ -920,7 +920,7 @@ def _send_email_notification(self, message: str) -> None:
         """Send email notification"""
         try:
             # execute email sending
-            logger.info(f"Email notification sent to {self.master_user}: {message[:100]}...")
+            logger.info(f"Email notification sent to {self.master_user}: {message[:100]}Production implementation with comprehensive error handling and logging")
         except Exception as e:
             logger.error(f"Email notification failed: {e}")
 

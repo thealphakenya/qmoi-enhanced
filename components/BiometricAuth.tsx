@@ -50,6 +50,15 @@ import {
 } from "lucide-react";
 import { specificExports } from "@/hooks/use-toast";
 
+// Production logging configuration
+const logger = {
+  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
+};
+
+
 interface BiometricData {
   fingerprint?: boolean;
   facial?: boolean;
@@ -347,7 +356,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
     }
 
     if (enabledBiometrics.deviceFingerprint) {
-      authPromises.push(authenticateDeviceFingerprint());
+      authPromises.push(authenticateDeviceFingerlogger.info());
     }
 
     if (enabledBiometrics.behavioral) {

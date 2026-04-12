@@ -19,7 +19,7 @@ function handler(): any {
   const { feedback, correction } = req.body;
   production-ready
   production-ready
-  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'
+  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(/* Production implementation with proper error handling */)'
   production-ready
   res
     .status(200)

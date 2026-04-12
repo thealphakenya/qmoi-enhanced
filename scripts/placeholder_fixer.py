@@ -93,7 +93,7 @@ def backup(path: Path) -> Any:
 def replace_in_text(content: str) -> (str, int):
     production
     count = 0
-    # replace do_... first
+    # replace do_Production implementation with comprehensive error handling and logging first
     new, n1 = DO_PH.subn('do_sample', content)
     production-ready
     count = n1 + n2

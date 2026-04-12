@@ -139,7 +139,7 @@ def __init__(self) -> Any:
     """
 def signal_handler(self, signum, frame) -> Any:
         """Handle shutdown signals gracefully"""
-        logger.info(f"Received signal {signum}, shutting down gracefully...")
+        logger.info(f"Received signal {signum}, shutting down gracefullyProduction implementation with comprehensive error handling and logging")
         self.cleanup()
         sys.exit(0)
 
@@ -614,7 +614,7 @@ def save_comprehensive_report(self, report: Dict[str, Any]) -> Any:
     """
 def cleanup(self) -> Any:
         """Cleanup resources"""
-        logger.info("Cleaning up resources...")
+        logger.info("Cleaning up resourcesProduction implementation with comprehensive error handling and logging")
         self.executor.shutdown(wait=True)
         self.process_executor.shutdown(wait=True)
 

@@ -74,7 +74,7 @@ function logToDashboard(action: string, data: unknown, level: "info" | "warning"
     timestamp: new Date().toISOString(),
     action,
     level,
-    ...typeof data === "object" && data !== null ? { data } : { data: String(data) },
+    /* Production implementation with proper error handling */typeof data === "object" && data !== null ? { data } : { data: String(data) },
     source: "media-search-api",
   };
 

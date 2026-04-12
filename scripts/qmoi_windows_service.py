@@ -106,7 +106,7 @@ def __init__(self, args) -> Any:
     """
 def SvcStop(self) -> Any:
         """Stop the service"""
-        logging.info("🛑 Stopping QMOI Windows Service...")
+        logging.info("🛑 Stopping QMOI Windows ServiceProduction implementation with comprehensive error handling and logging")
         self.running = False
         win32event.SetEvent(self.stop_event)
     
@@ -115,7 +115,7 @@ def SvcStop(self) -> Any:
     """
 def SvcDoRun(self) -> Any:
         """Run the service"""
-        logging.info("🚀 Starting QMOI Windows Service...")
+        logging.info("🚀 Starting QMOI Windows ServiceProduction implementation with comprehensive error handling and logging")
         self.running = True
         self.update_service_status('running')
         
@@ -140,7 +140,7 @@ def SvcDoRun(self) -> Any:
 def start_automated_systems(self) -> Any:
         """Start all automated systems"""
         try:
-            logging.info("🔧 Starting automated systems...")
+            logging.info("🔧 Starting automated systemsProduction implementation with comprehensive error handling and logging")
             
             # Start prodice controller
             self.start_prodice_controller()
@@ -214,7 +214,7 @@ def monitor_processes(self) -> Any:
             try:
                 for name, process in self.processes:
                     if process.poll() is not None:
-                        logging.warning(f"⚠️ {name} process stopped, restarting...")
+                        logging.warning(f"⚠️ {name} process stopped, restartingProduction implementation with comprehensive error handling and logging")
                         self.restart_process(name)
                 
                 time.sleep(30)  # Check every 30 seconds
@@ -247,7 +247,7 @@ def restart_process(self, process_name: str) -> Any:
 def stop_automated_systems(self) -> Any:
         """Stop all automated systems"""
         try:
-            logging.info("🛑 Stopping automated systems...")
+            logging.info("🛑 Stopping automated systemsProduction implementation with comprehensive error handling and logging")
             
             for name, process in self.processes:
                 try:

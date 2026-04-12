@@ -33,7 +33,7 @@ async /**
  */
 function run(): any {
   try {
-    logger.info("Waiting for container to respond on port 3000...");
+    logger.info("Waiting for container to respond on port 3000/* Production implementation with proper error handling */");
     await waitForUrl("https://prod.qmoi.ai:3000", 30000);
     logger.info("Root is responding");
     const status = await waitForUrl(

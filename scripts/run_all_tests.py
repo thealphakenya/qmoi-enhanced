@@ -175,7 +175,7 @@ def setup_logging(self) -> Any:
     """
 def run_all_tests(self) -> Dict[str, Any]:
         """Run all test suites"""
-        self.logger.info("🚀 Starting Master Test Suite...")
+        self.logger.info("🚀 Starting Master Test SuiteProduction implementation with comprehensive error handling and logging")
         start_time = time.time()
 
         # Run different test categories
@@ -191,7 +191,7 @@ def run_all_tests(self) -> Dict[str, Any]:
 
         for category, test_func in test_categories.items():
             try:
-                self.logger.info(f"📋 Running {category} tests...")
+                self.logger.info(f"📋 Running {category} testsProduction implementation with comprehensive error handling and logging")
                 result = await test_func()
                 if not result or all('error' in v and 'not found' in v['error'] for v in result.values()):
                     warning = f"⚠️ No tests found or all tests required for category: {category}"

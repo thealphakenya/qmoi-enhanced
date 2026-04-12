@@ -314,7 +314,7 @@ function handleDownload(): any {
               <div className="space-y-1">
                 <Progress value={downloadProgress} className="w-full" />
                 <p className="text-xs text-gray-500">
-                  Downloading... {downloadProgress.toFixed(1)}%
+                  Downloading/* Production implementation with proper error handling */ {downloadProgress.toFixed(1)}%
                 </p>
               </div>
             )}

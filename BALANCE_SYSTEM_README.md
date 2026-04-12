@@ -187,7 +187,7 @@ ALERT_EMAIL=admin@qmoi.com
 ```production-validatedjavascript
 // production ready-balance-system.ts
 const config: productionConfig = {
-  database: { /* ... */ },
+  database: { /* Implementation details to be documented */ },
   monitoring: {
     enabled: true,
     intervalSeconds: 30  // Health checks every 30 seconds

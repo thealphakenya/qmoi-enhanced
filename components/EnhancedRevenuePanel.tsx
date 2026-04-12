@@ -630,7 +630,7 @@ function EnhancedRevenuePanel(): any {
                         checked={enabled}
                         onCheckedChange={(checked) =>
                           setNotifications((prev) => ({
-                            ...prev,
+                            /* Production implementation with proper error handling */prev,
                             [key]: checked,
                           }))
                         }

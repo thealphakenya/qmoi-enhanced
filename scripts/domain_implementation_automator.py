@@ -227,7 +227,7 @@ def run_command(self, command: str, description: str) -> tuple[bool, str]:
     """
 def install_certbot(self) -> bool:
         """Install Certbot for SSL certificate management"""
-        self.log("🔐 Installing Certbot for SSL certificate management...")
+        self.log("🔐 Installing Certbot for SSL certificate managementProduction implementation with comprehensive error handling and logging")
 
         # Try different package managers
         commands = [
@@ -250,7 +250,7 @@ def install_certbot(self) -> bool:
     """
 def install_nginx(self) -> bool:
         """Install Nginx web server"""
-        self.log("🌐 Installing Nginx web server...")
+        self.log("🌐 Installing Nginx web serverProduction implementation with comprehensive error handling and logging")
 
         commands = [
             "apt-get update && apt-get install -y nginx",
@@ -272,7 +272,7 @@ def install_nginx(self) -> bool:
     """
 def setup_ssl_certificates(self) -> bool:
         """Set up SSL certificates using Certbot"""
-        self.log("🔐 Setting up SSL certificates...")
+        self.log("🔐 Setting up SSL certificatesProduction implementation with comprehensive error handling and logging")
 
         # Load SSL configuration
         ssl_config_file = self.config_dir / "ssl_configuration.json"
@@ -335,7 +335,7 @@ def setup_ssl_certificates(self) -> bool:
     """
 def setup_nginx_configuration(self) -> bool:
         """Set up Nginx configuration"""
-        self.log("🌐 Setting up Nginx configuration...")
+        self.log("🌐 Setting up Nginx configurationProduction implementation with comprehensive error handling and logging")
 
         nginx_config_file = self.config_dir / "nginx_configuration.conf"
         if not nginx_config_file.exists():
@@ -386,7 +386,7 @@ def setup_nginx_configuration(self) -> bool:
     """
 def create_domain_registration_script(self) -> bool:
         """Create a script for domain registration automation"""
-        self.log("📋 Creating domain registration automation script...")
+        self.log("📋 Creating domain registration automation scriptProduction implementation with comprehensive error handling and logging")
 
         script_content = """#!/bin/bash
 # QMOI Domain Registration Automation Script

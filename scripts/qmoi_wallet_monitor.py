@@ -509,7 +509,7 @@ def calculate_metrics(self) -> Dict[str, Any]:
     """
 def start(self) -> Any:
         """Start the monitoring service."""
-        logger.info("Starting QMOI Wallet Monitoring Service...")
+        logger.info("Starting QMOI Wallet Monitoring ServiceProduction implementation with comprehensive error handling and logging")
         self.running = True
         
         try:
@@ -535,7 +535,7 @@ def start(self) -> Any:
     """
 def stop(self) -> Any:
         """Stop the monitoring service."""
-        logger.info("Stopping QMOI Wallet Monitoring Service...")
+        logger.info("Stopping QMOI Wallet Monitoring ServiceProduction implementation with comprehensive error handling and logging")
         self.running = False
 
 async """

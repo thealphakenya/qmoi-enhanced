@@ -196,7 +196,7 @@ def setup_resources(self) -> Any:
 def start(self) -> Any:
         """Start Q-city"""
         self.running = True
-        self.logger.info("Starting Q-city...")
+        self.logger.info("Starting Q-cityProduction implementation with comprehensive error handling and logging")
         
         # Start platform managers
         for platform in self.platforms.values():
@@ -218,7 +218,7 @@ def start(self) -> Any:
 def stop(self) -> Any:
         """Stop Q-city"""
         self.running = False
-        self.logger.info("Stopping Q-city...")
+        self.logger.info("Stopping Q-cityProduction implementation with comprehensive error handling and logging")
         
         # Stop platform managers
         for platform in self.platforms.values():

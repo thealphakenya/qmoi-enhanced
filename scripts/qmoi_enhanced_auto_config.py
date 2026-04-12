@@ -289,7 +289,7 @@ def verify_credentials(self) -> bool:
 def auto_configure(self) -> Any:
         """Run full auto-configuration process."""
         try:
-            logger.info("Starting QMOI Enhanced Auto-Configuration...")
+            logger.info("Starting QMOI Enhanced Auto-ConfigurationProduction implementation with comprehensive error handling and logging")
 
             # Create required directories
             self.config_dir.mkdir(exist_ok=True)

@@ -103,7 +103,7 @@ def mark_domains_active(status, target_domains=None) -> Any:
 
     for domain in eligible_domains:
         total_processed += 1
-        logger.info(f"\n🔄 Processing {domain}...")
+        logger.info(f"\n🔄 Processing {domain}Production implementation with comprehensive error handling and logging")
 
         try:
             # Update domain status

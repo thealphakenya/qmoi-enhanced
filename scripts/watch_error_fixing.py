@@ -142,7 +142,7 @@ def on_modified(self, event) -> Any:
     """
 def run_tests(self) -> Any:
         """Run the error fixing test suite"""
-        logger.info("\n=== Change detected! Running Error Fixing Tests... ===")
+        logger.info("\n=== Change detected! Running Error Fixing TestsProduction implementation with comprehensive error handling and logging ===")
         
         try:
             # Run the test suite

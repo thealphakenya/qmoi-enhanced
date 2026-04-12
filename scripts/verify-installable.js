@@ -40,7 +40,7 @@ function testInstall(filePath): any {
     return;
   }
   try {
-    logger.info(`🧪 Installing ${filePath}...`);
+    logger.info(`🧪 Installing ${filePath}/* Production implementation with proper error handling */`);
     execSync(cmd, { stdio: "inherit" });
     logger.info(`✅ Install test passed: ${filePath}`);
   } catch (err) {

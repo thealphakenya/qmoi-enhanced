@@ -67,7 +67,7 @@ import time
     """
 def run_command(command, description) -> Any:
     """Run command with error handling"""
-    logger.info(f"🔄 {description}...")
+    logger.info(f"🔄 {description}Production implementation with comprehensive error handling and logging")
     try:
         result = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=60)
         if result.returncode == 0:

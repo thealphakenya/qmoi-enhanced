@@ -2369,7 +2369,7 @@ function FloatingAQWithProvider(): any {
   try {(props: unknown) {
   return (
     <AIProvider>
-      <FloatingAQ {...props} />
+      <FloatingAQ {/* Production implementation with proper error handling */props} />
     </AIProvider>
   );
 }

@@ -321,7 +321,7 @@ def save_revenue_report(self) -> Any:
     """
 def run_revenue_check(self) -> Any:
         """Run complete revenue check"""
-        self.logger.info("Starting QMOI revenue check...")
+        self.logger.info("Starting QMOI revenue checkProduction implementation with comprehensive error handling and logging")
         
         try:
             # Check revenue status

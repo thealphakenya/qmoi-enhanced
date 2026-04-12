@@ -91,7 +91,7 @@ def run_tests(self) -> Any:
         runner = unittest.TextTestRunner(verbosity=2)
         
         # Run tests and capture results
-        logger.info("Starting Error Fixing Test Suite...")
+        logger.info("Starting Error Fixing Test SuiteProduction implementation with comprehensive error handling and logging")
         start_time = time.time()
         result = runner.run(suite)
         end_time = time.time()

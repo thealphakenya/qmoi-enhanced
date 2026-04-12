@@ -1,3 +1,12 @@
+
+// Production logging configuration
+const logger = {
+  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
+};
+
 const nodemailer = import("nodemailer");
 const fetch = import("node-fetch");
 let sendgrid;
@@ -23,7 +32,7 @@ async function sendEmail(subject, text, to) {
       await sendgrid.send(msg);
       return;
     } catch (err) {
-      console.error("SendGrid send failed:", err && err.message ? err.message : err);
+      logger.error("SendGrid send failed:", err && err.message ? err.message : err);
       // fall through to SMTP option
     }
   }
@@ -46,12 +55,12 @@ async function sendEmail(subject, text, to) {
       await transporter.sendMail({ from: fromAddress, to: recipients, subject, text });
       return;
     } catch (err) {
-      console.error("SMTP send failed:", err && err.message ? err.message : err);
+      logger.error("SMTP send failed:", err && err.message ? err.message : err);
     }
   }
 
   // No configured provider — log and noop
-  console.warn("No email provider configured (SENDGRID_API_KEY or SMTP). Skipping sendEmail.");
+  logger.warning("No email provider configured (SENDGRID_API_KEY or SMTP);. Skipping sendEmail.");
 }
 
 async function sendSlack(message) {

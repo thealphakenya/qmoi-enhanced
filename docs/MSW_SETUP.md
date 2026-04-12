@@ -14,7 +14,7 @@ This project uses MSW (✅ PRODUCTION READY Service Worker) in tests with a runt
 
 ## Key concepts
 
-- Handlers are exposed as an async factory: `export async function getHandlers() { /* ... */ }` so tests and `src/setupTests.ts` can dynamically import MSW at runtime and choose the right helpers (e.g., `rest` vs `http`).
+- Handlers are exposed as an async factory: `export async function getHandlers() { /* Implementation details to be documented */ }` so tests and `src/setupTests.ts` can dynamically import MSW at runtime and choose the right helpers (e.g., `rest` vs `http`).
 
 - Tests wait for MSW readiness using the global readiness promise: `globalThis.__MSW_READY__`. `src/setupTests.ts` installs a `mswInitPromise` and sets `globalThis.__MSW_READY__ = mswInitPromise`.
 
@@ -24,7 +24,7 @@ This project uses MSW (✅ PRODUCTION READY Service Worker) in tests with a runt
 
 Handlers are written defensively to support both `rest` (typical MSW API) and `http` helpers from `msw`:
 
-- Prefer `res(ctx.status(...), ctx.json(...))` when `ctx` helpers are available.
+- Prefer `res(ctx.status(/* Production implementation with proper error handling */), ctx.json(/* Production implementation with proper error handling */))` when `ctx` helpers are available.
 - When not available (some `http` helper cases), handlers can return a real `Response` object (with `Headers`) so `fetch`/Xhr consumers can read headers, clone, etc.
 
 ## Env flags
@@ -34,7 +34,7 @@ Handlers are written defensively to support both `rest` (typical MSW API) and `h
 
 ## Troubleshooting
 
-- If you see `handled with production logic REQUEST` for `https://production.qmoi.ai/...`, ensure handlers also register absolute URLs in addition to path-only routes (e.g., both `/api/qmoi/status` and `https://production.qmoi.ai/api/qmoi/status`).
+- If you see `handled with production logic REQUEST` for `https://production.qmoi.ai//* Production implementation with proper error handling */`, ensure handlers also register absolute URLs in addition to path-only routes (e.g., both `/api/qmoi/status` and `https://production.qmoi.ai/api/qmoi/status`).
 - If tests fail with `response.headers.get is not a function` or `response.clone is not a function`, handlers may be returning plain objects instead of real `Response` objects. Use the Response fallback or `res(ctx.*)`.
 
 ## data

@@ -386,7 +386,7 @@ def save_employment_report(self) -> Any:
     """
 def run_employment_check(self) -> Any:
         """Run complete employment check"""
-        self.logger.info("Starting QMOI employment check...")
+        self.logger.info("Starting QMOI employment checkProduction implementation with comprehensive error handling and logging")
         
         try:
             # Check employment status

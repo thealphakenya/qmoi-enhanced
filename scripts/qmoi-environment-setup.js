@@ -850,7 +850,7 @@ Examples:
     }
 
     if (args.includes('--reset')) {
-      logger.info('🔄 Resetting QMOI environment...');
+      logger.info('🔄 Resetting QMOI environment/* Production implementation with proper error handling */');
       // Add reset logic here
       return;
     }

@@ -538,7 +538,7 @@ def check_link_health(self, link_id: str, config: dict) -> LinkHealth:
     """
 def perform_health_checks(self) -> Any:
         """Perform health checks for all domains and links"""
-        logger.info("Starting comprehensive health checks...")
+        logger.info("Starting comprehensive health checksProduction implementation with comprehensive error handling and logging")
 
         # Check domains
         for domain, config in self.domains.items():

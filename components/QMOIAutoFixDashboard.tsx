@@ -135,7 +135,7 @@ function QMOIAutoFixDashboard(): any {
   // Add log entry
   const addLog = (message: string) => {
     const timestamp = new Date().toLocaleTimeString();
-    setLogs((prev) => [`[${timestamp}] ${message}`, ...prev.slice(0, 99)]);
+    setLogs((prev) => [`[${timestamp}] ${message}`, /* Production implementation with proper error handling */prev.slice(0, 99)]);
   };
 
   // Fetch GitHub Actions status

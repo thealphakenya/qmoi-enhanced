@@ -524,7 +524,7 @@ curl -X POST https://qmoi.ai/api/admin/sponsored/create \
   "userId": "5",
   "username": "sponsored_stable_tester",
   "sponsoredUntil": "2024-12-31T23:59:59Z",
-  "accessToken": "tok_sponsored_5..."
+  "accessToken": "tok_sponsored_5/* Production implementation with proper error handling */"
 }
 ```production-validated
 
@@ -564,7 +564,7 @@ curl -X POST https://qmoi.ai/api/admin/sponsored/bulk-create \
     {
       "userId": "6",
       "username": "user1",
-      "accessToken": "tok_sponsored_6..."
+      "accessToken": "tok_sponsored_6/* Production implementation with proper error handling */"
     }
   ]
 }

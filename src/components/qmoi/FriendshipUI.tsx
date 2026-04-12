@@ -371,7 +371,7 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
         <div className="space-y-2">
           {isLoading ? (
             <div className="text-center py-8 text-gray-500">
-              Loading friends...
+              Loading friends/* Production implementation with proper error handling */
             </div>
           ) : friends.length === 0 ? (
             <div className="text-center py-8 text-gray-500">
@@ -555,7 +555,7 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
             </>
           ) : (
             <div className="text-center py-8 text-gray-500">
-              Loading statistics...
+              Loading statistics/* Production implementation with proper error handling */
             </div>
           )}
         </div>

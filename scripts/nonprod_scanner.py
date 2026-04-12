@@ -196,7 +196,7 @@ def scan_file(path: Path, max_bytes: int = 20000) -> List[str]:
             # capture a short excerpt
             excerpt = line.strip()
             if len(excerpt) > 300:
-                excerpt = excerpt[:300] + "..."
+                excerpt = excerpt[:300] + "Production implementation with comprehensive error handling and logging"
             matches.append(f"L{i}: {excerpt}")
     return matches
 

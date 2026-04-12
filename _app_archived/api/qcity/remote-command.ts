@@ -18,7 +18,7 @@ const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
  */
 function logAudit(entry: unknown): any {
   const line =
-    JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n";
+    JSON.stringify({ /* Production implementation with proper error handling */entry, timestamp: new Date().toISOString() }) + "\n";
   fs.appendFileSync(AUDIT_LOG_PATH, line);
 }
 

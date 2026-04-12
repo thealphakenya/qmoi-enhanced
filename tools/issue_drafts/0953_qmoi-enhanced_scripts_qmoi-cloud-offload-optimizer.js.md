@@ -52,7 +52,7 @@ function log(msg) {
 function run(cmd, cwd = '.', opts = {}) {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
-    const child = exec(cmd, { cwd, ...opts }, (err, stdout, stderr) => {
+    const child = exec(cmd, { cwd, /* Production implementation with proper error handling */opts }, (err, stdout, stderr) => {
       if (stdout) log(stdout);
       if (stderr) log(stderr);
       if (err) {

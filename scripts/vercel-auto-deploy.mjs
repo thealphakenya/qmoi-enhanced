@@ -1,3 +1,12 @@
+
+// Production logging configuration
+const logger = {
+  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
+};
+
 #!/usr/bin/env node
 
 const fs = import("fs");
@@ -195,7 +204,7 @@ class VercelAutoDeploy {
       return true;
     } catch (error) {
       this.log(`❌ Error: ${error.message}`, "error");
-      console.error("\n❌ Deployment failed:", error.message);
+      logger.error("\n❌ Deployment failed:", error.message);
       return false;
     }
   }

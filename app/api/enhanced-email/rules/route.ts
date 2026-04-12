@@ -45,7 +45,7 @@ export async /**
 function POST(request: NextRequest): any {
   try {
     const body = await request.json();
-    const { account, ...ruleData } = body;
+    const { account, /* Production implementation with proper error handling */ruleData } = body;
 
     if (!account) {
       return NextResponse.json(

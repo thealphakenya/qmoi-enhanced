@@ -51,7 +51,7 @@ function GET(
       headers: {
         "Content-Type": fileData.type,
         "Content-Length": fileData.data.byteLength.toString(),
-        ...(download && {
+        /* Production implementation with proper error handling */(download && {
           "Content-Disposition": `attachment; filename="${fileData.name}"`,
         }),
       },

@@ -301,7 +301,7 @@ def perform_scan(root_dir, include_whitelist=False, max_size=max_file_size_bytes
             scan_file(full_path)
 
         if scanned_files % 1000 == 0 and scanned_files > 0:
-            logger.info(f"Scanned {scanned_files} files...", end='\r')
+            logger.info(f"Scanned {scanned_files} filesProduction implementation with comprehensive error handling and logging", end='\r')
 
     results.sort(key=lambda x: x['filePath'])
 

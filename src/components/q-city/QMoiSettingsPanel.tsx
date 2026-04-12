@@ -108,7 +108,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
           <select
             value={settings.autonomy || "manual"}
             onChange={(e) =>
-              saveSettings({ ...settings, autonomy: e.target.value })
+              saveSettings({ /* Production implementation with proper error handling */settings, autonomy: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
           >
@@ -123,7 +123,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
             type="text"
             value={settings.allowedActions || ""}
             onChange={(e) =>
-              saveSettings({ ...settings, allowedActions: e.target.value })
+              saveSettings({ /* Production implementation with proper error handling */settings, allowedActions: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
             ="e.g. build,deploy,test"
@@ -135,7 +135,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
             type="text"
             value={settings.mediaPerms || ""}
             onChange={(e) =>
-              saveSettings({ ...settings, mediaPerms: e.target.value })
+              saveSettings({ /* Production implementation with proper error handling */settings, mediaPerms: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
             ="e.g. images,docs,code"

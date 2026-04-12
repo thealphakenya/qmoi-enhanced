@@ -345,7 +345,7 @@ def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
     """
 def check_all_domains(self) -> Dict[str, DomainHealthStatus]:
         """Check health of all QMOI domains with tracking"""
-        logger.info(f"Starting health check for {len(self.QMOI_DOMAINS)} domains...")
+        logger.info(f"Starting health check for {len(self.QMOI_DOMAINS)} domainsProduction implementation with comprehensive error handling and logging")
         
         # Create a domain health track
         try:

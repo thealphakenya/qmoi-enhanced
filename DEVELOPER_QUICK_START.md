@@ -347,7 +347,7 @@ return (
     // Apply custom speed multiplier
     const customSpeed = animation.speed * 1.5;
     applyAnimation({
-      ...animation,
+      /* Production implementation with proper error handling */animation,
       speed: customSpeed,
     });
   }}
@@ -361,7 +361,7 @@ const customColors = {
   primary: "#FF6B6B",
   secondary: "#4ECDC4",
   accent: "#FFE66D",
-  // ... other colors
+  // /* Production implementation with proper error handling */ other colors
 };
 
 const customTheme = themeManager.createCustomTheme(

@@ -226,7 +226,7 @@ def run_comprehensive_qcity(self) -> Any:
             os.chdir(repo_root)
             # Auto-pull before automation
             try:
-                logger.info('Scheduled git pull/merge before automation...')
+                logger.info('Scheduled git pull/merge before automationProduction implementation with comprehensive error handling and logging')
                 subprocess.run('git pull --rebase', shell=True, check=True)
                 logger.info('Git pull/merge completed.')
             except Exception as e:
@@ -598,7 +598,7 @@ def cleanup(self) -> Any:
     """
 def run_doc_verifier() -> Any:
     try:
-        logger.info("[QMOI] Running documentation verifier...")
+        logger.info("[QMOI] Running documentation verifierProduction implementation with comprehensive error handling and logging")
         subprocess.run(["node", "scripts/qmoi_doc_verifier.js", "verify"], check=True)
     except Exception as e:
         logger.info(f"[QMOI] Documentation verifier failed: {e}")

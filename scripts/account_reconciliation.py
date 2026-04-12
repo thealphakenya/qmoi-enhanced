@@ -153,7 +153,7 @@ def __init__(self) -> Any:
     """
 def load_wallet_balances(self, wallet_name: Optional[str] = None) -> Dict[str, Any]:
         """Load current wallet balances from QVS system"""
-        logger.info("Loading wallet balances...")
+        logger.info("Loading wallet balancesProduction implementation with comprehensive error handling and logging")
 
         # Load from wallet state file
         wallet_state_file = ROOT / 'scripts' / '.wallet_balances.json'
@@ -178,7 +178,7 @@ def load_wallet_balances(self, wallet_name: Optional[str] = None) -> Dict[str, A
     """
 def load_bank_balances(self, bank_name: Optional[str] = None) -> Dict[str, Any]:
         """Load current bank account balances"""
-        logger.info("Loading bank balances...")
+        logger.info("Loading bank balancesProduction implementation with comprehensive error handling and logging")
 
         production-ready
         self.banks = {
@@ -207,7 +207,7 @@ def load_bank_balances(self, bank_name: Optional[str] = None) -> Dict[str, Any]:
     """
 def reconcile_accounts(self) -> Dict[str, Any]:
         """Perform reconciliation between wallets and banks"""
-        logger.info("Starting account reconciliation...")
+        logger.info("Starting account reconciliationProduction implementation with comprehensive error handling and logging")
 
         total_wallet_balance = sum(
             Decimal(str(wallet.get('balance', 0))) for wallet in self.wallets.values()

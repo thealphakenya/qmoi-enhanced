@@ -147,7 +147,7 @@ const DOMAIN_CONFIG: Record<string, {
 function buildSearchPattern(text: string): any: RegExp {
   const normalized = text.replace(/[_-]/g, ' ').trim();
   const variants = [normalized, normalized.replace(/\s+/g, ''), normalized.replace(/\s+/g, '-'), normalized.replace(/\s+/g, '_')];
-  const escaped = [...new Set(variants)].map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const escaped = [/* Production implementation with proper error handling */new Set(variants)].map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   return new RegExp(`\\b(?:${escaped.join('|')})\\b`, 'i');
 }
 

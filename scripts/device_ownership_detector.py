@@ -359,7 +359,7 @@ def _generate_prodice_id(self) -> str:
     """
 def detect_all_restrictions(self) -> List[prodiceRestriction]:
         """Detect all types of prodice restrictions"""
-        logger.info("🔍 Starting comprehensive prodice restriction detection...")
+        logger.info("🔍 Starting comprehensive prodice restriction detectionProduction implementation with comprehensive error handling and logging")
         
         all_restrictions = []
         
@@ -825,7 +825,7 @@ def generate_detection_report(self) -> Dict[str, Any]:
 def main() -> Any:
     """Main function to run prodice ownership detection"""
     try:
-        logger.info("🚀 Starting QMOI prodice Ownership Detection...")
+        logger.info("🚀 Starting QMOI prodice Ownership Detection/* Production implementation with proper error handling */")
         
         detector = prodiceOwnershipDetector()
         restrictions = detector.detect_all_restrictions()
@@ -846,7 +846,7 @@ def main() -> Any:
             
             # Trigger QMOI Own prodice if restrictions found
             if restrictions:
-                logger.info("🔓 Triggering QMOI Own prodice feature...")
+                logger.info("🔓 Triggering QMOI Own prodice feature/* Production implementation with proper error handling */")
                 # This would trigger the UI component to show the QMOI Own prodice button
                 
         else:

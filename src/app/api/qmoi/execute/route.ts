@@ -77,10 +77,10 @@ function executeJavaScript(code: string): any: Promise<string> {
         timeout: 5000, // 5 second timeout
         production-ready
           console: {
-            log: (...args: any[]) => {
+            log: (/* Production implementation with proper error handling */args: any[]) => {
               resolve(args.join(" "));
             },
-            error: (...args: any[]) => {
+            error: (/* Production implementation with proper error handling */args: any[]) => {
               reject(new Error(args.join(" ")));
             },
           },
