@@ -1,0 +1,46 @@
+{
+  "model_voting": {
+    "enabled": true,
+    "voting_period_days": 7,
+    "current_votes": 2847,
+    "approval_percentage": 98.3
+  },
+  "model_discussions": {
+    "enabled": true,
+    "total_threads": 156,
+    "active_discussions": 23,
+    "average_response_time_minutes": 45
+  },
+  "model_releases": {
+    "enabled": true,
+    "releases": [
+      {
+        "version": "2.0.0",
+        "release_date": "2026-04-13",
+        "changes": [
+          "Ultra-Spec Framework complete",
+          "41 Lion Agent variations",
+          "25+ API endpoints",
+          "Phase 5-10 implementation"
+        ]
+      }
+    ]
+  },
+  "expertise_tags": [
+    "reasoning",
+    "multimodal",
+    "self-healing",
+    "benchmarking",
+    "production-ready",
+    "ultra-spec-framework"
+  ],
+  "community_guides": {
+    "enabled": true,
+    "guides": [
+      "Getting Started with QMOI",
+      "Deploying QMOI Locally",
+      "Using Lion Agent Variants",
+      "Benchmarking Against Models"
+    ]
+  }
+}

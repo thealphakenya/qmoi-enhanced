@@ -1,0 +1,46 @@
+{
+  "rollback_enabled": true,
+  "previous_version": "1.9.5",
+  "current_version": "2.0.0",
+  "update_timestamp": "2026-04-13T23:47:45.113992",
+  "steps": [
+    {
+      "step": 1,
+      "action": "Trigger canary rollout pause",
+      "estimated_duration_seconds": 30
+    },
+    {
+      "step": 2,
+      "action": "Start database rollback procedure",
+      "estimated_duration_seconds": 120
+    },
+    {
+      "step": 3,
+      "action": "Revert Kubernetes deployments",
+      "estimated_duration_seconds": 90
+    },
+    {
+      "step": 4,
+      "action": "Restore previous DNS configuration",
+      "estimated_duration_seconds": 60
+    },
+    {
+      "step": 5,
+      "action": "Verify system integrity",
+      "estimated_duration_seconds": 120
+    },
+    {
+      "step": 6,
+      "action": "Execute health checks",
+      "estimated_duration_seconds": 60
+    }
+  ],
+  "total_estimated_duration_seconds": 480,
+  "success_criteria": [
+    "All services responding",
+    "Database verified",
+    "No data loss",
+    "Health checks passed",
+    "Uptime 99.9%+"
+  ]
+}

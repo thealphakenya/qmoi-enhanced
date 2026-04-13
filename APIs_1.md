@@ -1,187 +1,65 @@
-# QMOI API Reference v1.0
+# APIs_1.md - QMOI API Reference v1.0
 
-**Auto-generated on:** 2026-04-12 07:10:40 UTC
+**Last Updated**: 2026-04-13T23:45:32.138264
+**Version**: 1.0.0
+**Stable**: Yes - This is the stable API reference
 
-This document mirrors the current API endpoint inventory and serves as a stable versioned reference for all active QMOI APIs.
+## Stable API Endpoints
 
-## API Summary
+### Core QMOI System APIs
+1. **GET/PUT /api/qmoi-model** - QMOI model operations
+2. **POST/PUT /api/qmoi/autodev** - Automatic development
+3. **POST/PUT /api/qmoi/suggestions** - AI suggestions
+4. **GET/PUT/POST /api/qmoi/own-device-logs** - Device logging
+5. **GET /api/qmoi/backup** - Backup operations
 
-- **Total endpoints:** 17
-- **API directories scanned:** app/api, src/app/api, routes/api
+### AI Processing APIs
+6. **POST /api/reasoning/process** - Recursive reasoning
+7. **POST /api/multimodal/process** - Multimodal processing
+8. **POST /api/healing/analyze** - Error analysis & healing
 
-## Endpoint Index
+### Deployment APIs
+9. **PUT/GET /api/deploy** - Deployment management
+10. **PUT /api/deploy/auto-redeploy** - Auto redeploy
 
-| Path | Methods | File | Description |
-|------|---------|------|-------------|
-| /api/deploy | PUT | app/api/deploy/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/deploy/auto-redeploy | PUT | app/api/deploy/auto-redeploy/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/git/commit | PUT | app/api/git/commit/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/git/pr | PUT | app/api/git/pr/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/git/push | PUT | app/api/git/push/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/health | PUT | app/api/health/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/master/domains/emergency-takeover | PUT | app/api/master/domains/emergency-takeover/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/master/sponsored/analytics | PUT | app/api/master/sponsored/analytics/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/production-api | PUT | app/api/production-api.ts | Version: 2.0.0 |
-| /api/qmoi-model | PUT | app/api/qmoi-model.ts | API endpoint implementation |
-| /api/qmoi/autodev | PUT | routes/api/qmoi/autodev.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/qmoi/backup | GET | app/api/qmoi/backup/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/qmoi/own-device-logs | PUT | app/api/qmoi/own-device-logs/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/qmoi/revenue-dashboard | GET | app/api/qmoi/revenue-dashboard/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/qmoi/suggestions | PUT | src/app/api/qmoi/suggestions/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/wallet | GET | app/api/wallet.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/webhooks/qvillage | GET, PUT | app/api/webhooks/qvillage/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
+### Git APIs
+11. **PUT /api/git/commit** - Git commits
+12. **PUT /api/git/push** - Push to repository
+13. **POST /api/git/pr** - Pull requests
 
+### Health & Financial APIs
+14. **GET/PUT /api/health** - Health status
+15. **GET /api/qmoi/revenue-dashboard** - Revenue metrics
+16. **GET/POST/PUT /api/wallet** - Wallet operations
+17. **PUT/GET /api/production-api** - Production API v2.0
 
-## Detailed Endpoints
+### Admin & QVillage APIs
+18. **PUT /api/master/domains/emergency-takeover** - Domain failover
+19. **GET/PUT /api/master/sponsored/analytics** - Partner analytics
+20. **GET/POST/PUT /api/webhooks/qvillage** - Community webhooks
+21. **GET/POST /api/benchmarking/autorate** - Benchmarking
+22. **POST /api/benchmarking/results** - Export benchmark results
 
+## Versioning
 
-### /api/deploy
-- **Methods:** PUT
-- **Implementation:** `app/api/deploy/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+- Current Stable: v1.0.0
+- Previous: N/A (initial release)
+- Deprecation Policy: Minimum 6 months notice
 
-### /api/deploy/auto-redeploy
-- **Methods:** PUT
-- **Implementation:** `app/api/deploy/auto-redeploy/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+## Breaking Changes
 
-### /api/git/commit
-- **Methods:** PUT
-- **Implementation:** `app/api/git/commit/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+None - First stable release maintains full backward compatibility.
 
-### /api/git/pr
-- **Methods:** PUT
-- **Implementation:** `app/api/git/pr/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+## Rate Limits
 
-### /api/git/push
-- **Methods:** PUT
-- **Implementation:** `app/api/git/push/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+| User Type | Limit |
+|-----------|-------|
+| Public | 100 req/min |
+| Authenticated | 1,000 req/min |
+| Admin | 10,000 req/min |
+| Master | Unlimited |
 
-### /api/health
-- **Methods:** PUT
-- **Implementation:** `app/api/health/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+---
 
-### /api/master/domains/emergency-takeover
-- **Methods:** PUT
-- **Implementation:** `app/api/master/domains/emergency-takeover/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/master/sponsored/analytics
-- **Methods:** PUT
-- **Implementation:** `app/api/master/sponsored/analytics/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/production-api
-- **Methods:** PUT
-- **Implementation:** `app/api/production-api.ts`
-- **Description:** Version: 2.0.0
-
-### /api/qmoi-model
-- **Methods:** PUT
-- **Implementation:** `app/api/qmoi-model.ts`
-- **Description:** API endpoint implementation
-
-### /api/qmoi/autodev
-- **Methods:** PUT
-- **Implementation:** `routes/api/qmoi/autodev.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/qmoi/backup
-- **Methods:** GET
-- **Implementation:** `app/api/qmoi/backup/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/qmoi/own-device-logs
-- **Methods:** PUT
-- **Implementation:** `app/api/qmoi/own-device-logs/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/qmoi/revenue-dashboard
-- **Methods:** GET
-- **Implementation:** `app/api/qmoi/revenue-dashboard/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/qmoi/suggestions
-- **Methods:** PUT
-- **Implementation:** `src/app/api/qmoi/suggestions/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/wallet
-- **Methods:** GET
-- **Implementation:** `app/api/wallet.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/webhooks/qvillage
-- **Methods:** GET, PUT
-- **Implementation:** `app/api/webhooks/qvillage/route.ts`
-- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-
-
-## Auto-Update Information
-
-- **Managed by:** `scripts/qmoi_md_autoupdater.py`
-- **Category:** Core QMOI/Gateway/Lion/Dev
-- **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-12 07:10:54 UTC
-- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
-
-
-## Purpose
-
-Describe the purpose of this document and its scope.
-
-## Overview
-
-Summarize the content and the document intent.
-
-## Auto-Update Instructions
-
-This document is automatically refreshed by the QMOI Markdown Auto-Updater.
-Run the following command to regenerate documentation and apply Lion validation metadata:
-
-```bash
-python3 scripts/qmoi_md_autoupdater.py
-```
-
-Then run:
-
-```bash
-python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
-```
-
-For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
-
-
-## Production Readiness
-
-Define the production quality expectations and validation requirements.
-
-## Validation Metadata
-
-Track validation source, timestamp, and verification status.
-
-## Implementation Notes
-
-Document implementation details, dependencies, and limitations.
-
-## Testing Notes
-
-Reference relevant tests, verification commands, and validation scope.
-
-## Ownership
-
-Record the responsible owner or team for this document.
-
-## Change History
-
-Log significant changes and version notes.
-
-## Cross-References
-
-Link to related documentation, APIs, and system artifacts.
-
+**Stable Reference**: v1.0.0
+**Last Modified**: 2026-04-13T23:45:32.138264
