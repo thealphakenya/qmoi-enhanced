@@ -170,3 +170,11 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+
+
+## Ultra-Spec Framework Endpoints
+- Reasoning endpoints for recursive thinking
+- Verification endpoints for fact-checking
+- Healing endpoints for error recovery
+- Multimodal endpoints for media processing
+- Benchmark endpoints for comparative analysis

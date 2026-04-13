@@ -208,3 +208,12 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+
+
+## QMOI Ultra-Spec Framework Endpoints
+- POST /api/qmoi/reasoning - Complex query reasoning
+- POST /api/qmoi/verify-facts - Chain-of-Verification
+- POST /api/qmoi/heal-errors - Self-healing operations
+- POST /api/qmoi/multimodal - Multimodal ingestion
+- GET /api/qmoi/autorate - Get autoration results
+- GET /api/qmoi/benchmarks - Get benchmark scores
