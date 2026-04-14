@@ -47,10 +47,22 @@ This document combines hook and webhook references for the QMOI repository.
 - `useQmoiKernel` — `src/hooks/useQmoiKernel.ts`
 - `useQmoiState` — `src/hooks/useQmoiState.ts`
 - `useTimezone` — `src/hooks/useTimezone.ts`
+- `usePoliticalAccessControl` — `src/hooks/usePoliticalAccessControl.ts`
+- `useRegionalIntelligence` — `src/hooks/useRegionalIntelligence.ts`
+- `usePoliticalUI` — `src/hooks/usePoliticalUI.ts`
+- `usePoliticalCampaignManager` — `src/hooks/usePoliticalCampaignManager.ts`
+- `usePoliticalMediaAutomation` — `src/hooks/usePoliticalMediaAutomation.ts`
+- `useNGROKTunnel` — `src/hooks/useNGROKTunnel.ts`
+- `useNGROKMasterUI` — `src/hooks/useNGROKMasterUI.ts`
+- `useNGROKAutoClone` — `src/hooks/useNGROKAutoClone.ts`
+- `useNGROKSecurity` — `src/hooks/useNGROKSecurity.ts`
+- `useNGROKBilling` — `src/hooks/useNGROKBilling.ts`
 
-## Webhooks (1)
+## Webhooks (3)
 
 - `/api/webhooks/qvillage` — `app/api/webhooks/qvillage/route.ts`
+- `/api/webhooks/political/campaign` — `app/api/webhooks/political/campaign/route.ts`
+- `/api/webhooks/ngrok/notifications` — `app/api/webhooks/ngrok/notifications/route.ts`
 
 
 

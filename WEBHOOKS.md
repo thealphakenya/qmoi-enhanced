@@ -15,6 +15,16 @@ This document lists all webhook-related API endpoints in the QMOI system.
 - **File:** `app/api/webhooks/qvillage/route.ts`
 - **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 
+### /api/webhooks/political/campaign
+- **Methods:** POST, GET, PUT
+- **File:** `app/api/webhooks/political/campaign/route.ts`
+- **Description:** Publishes political campaign events, status updates, and live analytics notifications
+
+### /api/webhooks/ngrok/notifications
+- **Methods:** POST
+- **File:** `app/api/webhooks/ngrok/notifications/route.ts`
+- **Description:** Receives paid NGROK tunnel status, billing alerts, and failover events
+
 
 
 

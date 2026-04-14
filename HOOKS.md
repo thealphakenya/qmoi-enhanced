@@ -53,6 +53,19 @@ This document lists all custom React hooks found in the QMOI repository.
 - `useQmoiState` — `src/hooks/useQmoiState.ts`
 - `useTimezone` — `src/hooks/useTimezone.ts`
 
+## Political Project Hooks
+- `usePoliticalAccessControl` — Manages master/sister/sponsored user access for political projects
+- `useRegionalIntelligence` — Provides region-aware campaign research and insights
+- `usePoliticalUI` — Customizes UI for political project dashboards and production windows
+- `usePoliticalCampaignManager` — Tracks agendas, messaging, and campaign progress
+- `usePoliticalMediaAutomation` — Orchestrates social media, TV, radio, and content publishing workflows
+
+## NGROK Paid Feature Hooks
+- `useNGROKTunnel` — Provisions and manages paid NGROK tunnels
+- `useNGROKMasterUI` — Controls master-only NGROK dashboard access
+- `useNGROKAutoClone` — Handles NGROK backup clone operations and failover
+- `useNGROKSecurity` — Manages NGROK encryption, masking, and secure routing
+- `useNGROKBilling` — Tracks paid NGROK usage, cost allocation, and revenue analytics
 
 
 ## Auto-Update Information
