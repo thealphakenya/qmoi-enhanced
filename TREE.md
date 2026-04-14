@@ -1,6 +1,7 @@
 # QMOI Repository Structure
 
 **Auto-generated on:** 2026-04-14 03:44:00 UTC
+**Enhanced with:** Global Revenue Management, 10 New Projects, Financial Systems
 
 This file contains the current directory structure of the QMOI repository.
 It is automatically updated by the QMOI Markdown Auto-Updater system.
@@ -40,6 +41,97 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── ALLHOOKSWEBHOOKS.md
 ├── ALLLINKS.md
 ├── ALLMDFILESREFS.bak.1775952855
+├── ALLMDFILESREFS.bak.1775952983
+├── ALLMDFILESREFS.bak.1775953072
+├── ALLMDFILESREFS.bak.1775953161
+├── ALLMDFILESREFS.bak.1775953368
+├── ALLMDFILESREFS.bak.1775953384
+├── ALLMDFILESREFS.bak.1775954796
+├── ALLMDFILESREFS.bak.1775954833
+├── ALLMDFILESREFS.bak.1775955487
+├── ALLMDFILESREFS.bak.1775955979
+├── ALLMDFILESREFS.bak.1775962857
+├── ALLMDFILESREFS.bak.1775962917
+├── ALLMDFILESREFS.bak.1775963015
+├── ALLMDFILESREFS.bak.1775963631
+├── ALLMDFILESREFS.bak.1775963685
+├── ALLMDFILESREFS.bak.1775963941
+├── ALLMDFILESREFS.bak.1775964065
+├── ALLMDFILESREFS.md
+├── ALLMDFILESREFS_ENHANCED.md
+├── ALLMDGILES.md
+├── ALLPLATFORMSVERSIONS.md
+├── ALLQMOIAIAPPSREALEASESVERSIONS.md
+├── ALLQMOIAUTOEVOLVINGENVS.md
+├── ALLSYSTEMSSTRUCTURESREFERENCES.md
+├── ALLTESTSAUTOTESTS.bak.1775962850
+├── ALLTESTSAUTOTESTS.bak.1775962910
+├── ALLTESTSAUTOTESTS.bak.1775963008
+├── ALLTESTSAUTOTESTS.bak.1775963625
+├── ALLTESTSAUTOTESTS.bak.1775963678
+├── ALLTESTSAUTOTESTS.bak.1775963934
+├── ALLTESTSAUTOTESTS.bak.1775964058
+├── ALLTESTSAUTOTESTS.md
+├── ALLUI.md
+├── ALLUITESTS.md
+├── ALLVERSIONS.md
+├── ALLWALLETSQVS.md
+├── ALL_APPS
+│   └── README.md
+├── ALL_APPS.md
+├── ALL_TODOS_HEAD.txt
+├── ALL_TODOS_SAMPLE.txt
+├── ALPHAQMOIENGINE.md
+├── API.bak.1775952854
+├── API.bak.1775952982
+├── API.bak.1775953071
+├── API.bak.1775953160
+├── API.bak.1775953368
+├── API.bak.1775953384
+├── API.bak.1775954795
+├── API.bak.1775954832
+├── API.bak.1775955486
+├── API.bak.1775955978
+├── API.bak.1775962856
+├── API.bak.1775962916
+├── API.bak.1775963014
+├── API.bak.1775963631
+├── API.bak.1775963685
+├── API.bak.1775963940
+├── API.bak.1775964064
+├── API.md
+├── APIs_1.md
+├── BALANCES.md (Enhanced with 10 new revenue projects)
+├── EMPLOYMENT.md (New - Global workforce management)
+├── ENDPOINTS.md
+├── FINANCIAL_MANAGER.md (New - Comprehensive financial management)
+├── HOOKS.md
+├── REVENUE_ENHANCEMENT_PLAN.md (New - 20+ improvement plan)
+├── ROUTES.md
+├── TREE.md (Current file)
+├── WALLET.md (New - Multi-wallet management system)
+├── WEBHOOKS.md
+├── __MOCKS__.md
+├── _APP_ARCHIVED.md
+├── _PAGES_ARCHIVED.md
+├── abc.txt
+├── abctesting.txt
+├── aggressive_production_fixer.py
+├── aggressive_production_fixer_report.json
+├── ai-self-update-cli.py
+├── ai-self-update.py
+├── ai-anomaly-service.py
+├── ai-automation-service.ts
+├── all_api_endpoints_found.txt
+├── all_md_files_clean.txt
+├── all_md_files.txt
+├── allrefs.md
+├── allrefs.txt
+├── models/
+│   └── latest/
+│       └── qmoi_enhanced_revenue.py (Enhanced with global features, 10 new projects)
+├── qmoi_revenue_memory.json (New - Memory tracking file)
+├── resumefromhere.txt (Updated with current progress)
 ├── ALLMDFILESREFS.bak.1775952983
 ├── ALLMDFILESREFS.bak.1775953072
 ├── ALLMDFILESREFS.bak.1775953161
