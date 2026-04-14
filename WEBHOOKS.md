@@ -1,29 +1,39 @@
 # WEBHOOKS.md - Webhook Integration Guide
 
-**Auto-generated on:** 2026-04-14 02:05:45 UTC
+**Auto-generated on:** 2026-04-14 03:44:11 UTC
 
 This document lists all webhook-related API endpoints in the QMOI system.
 
 ## Summary
 
-- **Total webhook endpoints:** 1
+- **Total webhook endpoints:** 5
 
 ## Webhook Endpoints
+
+### /api/alerts/webhook
+- **Methods:** DELETE, GET, PATCH, POST, PUT
+- **File:** `src/app/api/alerts/webhook/route.ts`
+- **Description:** jsonResponse function
+
+### /api/webhooks/godaddy-domain
+- **Methods:** DELETE, GET, PATCH, POST, PUT
+- **File:** `app/api/webhooks/godaddy-domain/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: GoDaddy domain management webhook
+
+### /api/webhooks/godaddy-health
+- **Methods:** DELETE, GET, PATCH, POST, PUT
+- **File:** `app/api/webhooks/godaddy-health/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: GoDaddy health webhook endpoint
+
+### /api/webhooks/payments
+- **Methods:** DELETE, GET, PATCH, POST, PUT
+- **File:** `app/api/webhooks/payments/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 
 ### /api/webhooks/qvillage
 - **Methods:** GET, PUT
 - **File:** `app/api/webhooks/qvillage/route.ts`
 - **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-
-### /api/webhooks/political/campaign
-- **Methods:** POST, GET, PUT
-- **File:** `app/api/webhooks/political/campaign/route.ts`
-- **Description:** Publishes political campaign events, status updates, and live analytics notifications
-
-### /api/webhooks/ngrok/notifications
-- **Methods:** POST
-- **File:** `app/api/webhooks/ngrok/notifications/route.ts`
-- **Description:** Receives paid NGROK tunnel status, billing alerts, and failover events
 
 
 
@@ -33,7 +43,7 @@ This document lists all webhook-related API endpoints in the QMOI system.
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
 - **Category:** Core QMOI/Gateway/Lion/Dev
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-14 02:05:50 UTC
+- **Last updated:** 2026-04-14 03:44:13 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

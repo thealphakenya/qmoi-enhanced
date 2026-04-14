@@ -1,6 +1,6 @@
 # ALLHOOKSWEBHOOKS.md - Complete Hooks & Webhooks Reference
 
-**Auto-generated on:** 2026-04-14 02:05:45 UTC
+**Auto-generated on:** 2026-04-14 03:44:11 UTC
 
 This document combines hook and webhook references for the QMOI repository.
 
@@ -47,22 +47,14 @@ This document combines hook and webhook references for the QMOI repository.
 - `useQmoiKernel` — `src/hooks/useQmoiKernel.ts`
 - `useQmoiState` — `src/hooks/useQmoiState.ts`
 - `useTimezone` — `src/hooks/useTimezone.ts`
-- `usePoliticalAccessControl` — `src/hooks/usePoliticalAccessControl.ts`
-- `useRegionalIntelligence` — `src/hooks/useRegionalIntelligence.ts`
-- `usePoliticalUI` — `src/hooks/usePoliticalUI.ts`
-- `usePoliticalCampaignManager` — `src/hooks/usePoliticalCampaignManager.ts`
-- `usePoliticalMediaAutomation` — `src/hooks/usePoliticalMediaAutomation.ts`
-- `useNGROKTunnel` — `src/hooks/useNGROKTunnel.ts`
-- `useNGROKMasterUI` — `src/hooks/useNGROKMasterUI.ts`
-- `useNGROKAutoClone` — `src/hooks/useNGROKAutoClone.ts`
-- `useNGROKSecurity` — `src/hooks/useNGROKSecurity.ts`
-- `useNGROKBilling` — `src/hooks/useNGROKBilling.ts`
 
-## Webhooks (3)
+## Webhooks (5)
 
+- `/api/alerts/webhook` — `src/app/api/alerts/webhook/route.ts`
+- `/api/webhooks/godaddy-domain` — `app/api/webhooks/godaddy-domain/route.ts`
+- `/api/webhooks/godaddy-health` — `app/api/webhooks/godaddy-health/route.ts`
+- `/api/webhooks/payments` — `app/api/webhooks/payments/route.ts`
 - `/api/webhooks/qvillage` — `app/api/webhooks/qvillage/route.ts`
-- `/api/webhooks/political/campaign` — `app/api/webhooks/political/campaign/route.ts`
-- `/api/webhooks/ngrok/notifications` — `app/api/webhooks/ngrok/notifications/route.ts`
 
 
 
@@ -71,7 +63,7 @@ This document combines hook and webhook references for the QMOI repository.
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
 - **Category:** Core QMOI/Gateway/Lion/Dev
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-14 02:05:50 UTC
+- **Last updated:** 2026-04-14 03:44:13 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

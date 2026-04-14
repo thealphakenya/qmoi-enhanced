@@ -1,6 +1,6 @@
 # HOOKS.md - React Hooks Directory
 
-**Auto-generated on:** 2026-04-14 02:05:45 UTC
+**Auto-generated on:** 2026-04-14 03:44:11 UTC
 
 This document lists all custom React hooks found in the QMOI repository.
 
@@ -53,19 +53,6 @@ This document lists all custom React hooks found in the QMOI repository.
 - `useQmoiState` — `src/hooks/useQmoiState.ts`
 - `useTimezone` — `src/hooks/useTimezone.ts`
 
-## Political Project Hooks
-- `usePoliticalAccessControl` — Manages master/sister/sponsored user access for political projects
-- `useRegionalIntelligence` — Provides region-aware campaign research and insights
-- `usePoliticalUI` — Customizes UI for political project dashboards and production windows
-- `usePoliticalCampaignManager` — Tracks agendas, messaging, and campaign progress
-- `usePoliticalMediaAutomation` — Orchestrates social media, TV, radio, and content publishing workflows
-
-## NGROK Paid Feature Hooks
-- `useNGROKTunnel` — Provisions and manages paid NGROK tunnels
-- `useNGROKMasterUI` — Controls master-only NGROK dashboard access
-- `useNGROKAutoClone` — Handles NGROK backup clone operations and failover
-- `useNGROKSecurity` — Manages NGROK encryption, masking, and secure routing
-- `useNGROKBilling` — Tracks paid NGROK usage, cost allocation, and revenue analytics
 
 
 ## Auto-Update Information
@@ -73,7 +60,7 @@ This document lists all custom React hooks found in the QMOI repository.
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
 - **Category:** Core QMOI/Gateway/Lion/Dev
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-14 02:05:50 UTC
+- **Last updated:** 2026-04-14 03:44:13 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

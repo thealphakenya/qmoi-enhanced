@@ -42,7 +42,7 @@ ROOT = Path(__file__).resolve().parent.parent
 API_DIR = ROOT / 'app' / 'api'
 SRC_API_DIR = ROOT / 'src' / 'app' / 'api'
 LEGACY_API_DIR = ROOT / 'routes' / 'api'
-MD_EXCLUDE_DIRS = {'.git', '.github', 'node_modules', 'venv', '.venv', '.qmoi_validation', '.backups', '.next', 'dist', 'build', 'coverage'}
+MD_EXCLUDE_DIRS = {'.git', '.github', 'node_modules', 'venv', '.venv', '.qmoi_validation', '.backups', '.next', 'dist', 'build', 'coverage', 'tools'}
 
 AUTO_UPDATE_COMMAND = 'python3 scripts/qmoi_md_autoupdater.py'
 SERVICE_FILES_BASE = ROOT / 'scripts'
@@ -108,14 +108,16 @@ class QMOIMarkdownAutoUpdater:
         suffix = file_path.suffix.lower()
 
         if suffix in {'.ts', '.js', '.tsx', '.jsx'}:
-            if 'export async function get' in lower or 'app.get(' in lower or 'router.get(' in lower or 'get:' in lower:
+            if 'export async function get' in lower or 'export function get' in lower or 'app.get(' in lower or 'router.get(' in lower or 'get:' in lower:
                 methods.add('GET')
-            if 'export async function post' in lower or 'app.post(' in lower or 'router.post(' in lower or 'post:' in lower:
+            if 'export async function post' in lower or 'export function post' in lower or 'app.post(' in lower or 'router.post(' in lower or 'post:' in lower:
                 methods.add('POST')
-            if 'export async function put' in lower or 'app.put(' in lower or 'router.put(' in lower or 'put:' in lower:
+            if 'export async function put' in lower or 'export function put' in lower or 'app.put(' in lower or 'router.put(' in lower or 'put:' in lower:
                 methods.add('PUT')
-            if 'export async function delete' in lower or 'app.delete(' in lower or 'router.delete(' in lower or 'delete:' in lower:
+            if 'export async function delete' in lower or 'export function delete' in lower or 'app.delete(' in lower or 'router.delete(' in lower or 'delete:' in lower:
                 methods.add('DELETE')
+            if 'export async function patch' in lower or 'export function patch' in lower or 'app.patch(' in lower or 'router.patch(' in lower or 'patch:' in lower:
+                methods.add('PATCH')
         elif suffix == '.py':
             if '@app.get' in lower or '@router.get' in lower or 'def get_' in lower:
                 methods.add('GET')
@@ -125,9 +127,12 @@ class QMOIMarkdownAutoUpdater:
                 methods.add('PUT')
             if '@app.delete' in lower or '@router.delete' in lower or 'def delete_' in lower:
                 methods.add('DELETE')
+            if '@app.patch' in lower or '@router.patch' in lower or 'def patch_' in lower:
+                methods.add('PATCH')
 
         if not methods:
-            return None
+            # Fallback to include API route files even when method declarations cannot be parsed.
+            methods = {'GET', 'POST', 'PUT', 'DELETE', 'PATCH'}
 
         rel_path = file_path.relative_to(self.workspace_root)
         path = self.normalize_api_path(file_path, base_dir)
@@ -575,18 +580,28 @@ This document mirrors the current API endpoint inventory and serves as a stable 
 
     def scan_test_files(self) -> List[Dict[str, Any]]:
         """Scan repository for test and autotest files"""
-        patterns = ['*.test.ts', '*.test.tsx', '*.test.js', '*.test.jsx', '*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx', '*.cy.ts', '*.cy.tsx', '*.py']
+        patterns = [
+            '*.test.ts', '*.test.tsx', '*.test.js', '*.test.jsx',
+            '*.spec.ts', '*.spec.tsx', '*.spec.js', '*.spec.jsx',
+            '*.cy.ts', '*.cy.tsx',
+            '*test*.py', '*autotest*.py'
+        ]
         tests = []
+        seen_paths = set()
 
         for pattern in patterns:
             for test_file in self.workspace_root.rglob(pattern):
                 if any(exclude in str(test_file) for exclude in MD_EXCLUDE_DIRS):
                     continue
                 rel_path = test_file.relative_to(self.workspace_root)
+                path = str(rel_path)
+                if path in seen_paths:
+                    continue
+                seen_paths.add(path)
                 tests.append({
-                    'path': str(rel_path),
+                    'path': path,
                     'name': test_file.name,
-                    'type': 'autotest' if 'autotest' in str(rel_path).lower() else 'test'
+                    'type': 'autotest' if 'autotest' in path.lower() else 'test'
                 })
 
         return sorted(tests, key=lambda x: x['path'])
@@ -687,7 +702,7 @@ This document lists all custom React hooks found in the QMOI repository.
         """Scan API endpoints for webhook-related paths"""
         webhooks = []
         for endpoint in self.scan_api_endpoints():
-            if 'webhook' in endpoint['path'].lower() or 'webhooks' in endpoint['path'].lower():
+            if any(keyword in endpoint['path'].lower() for keyword in ['webhook', 'webhooks']) or any(keyword in endpoint['file'].lower() for keyword in ['webhook', 'webhooks']):
                 webhooks.append(endpoint)
         return sorted(webhooks, key=lambda x: x['path'])
 
