@@ -1,0 +1,67 @@
+[
+  {
+    "camera_id": "qmoi_street_surveillance_001",
+    "camera_type": "CCTV",
+    "access_level": 9999,
+    "resolution": "4K",
+    "frame_rate": 60,
+    "coverage_area": "streets_global",
+    "connection_type": "wired",
+    "encryption": "AES-256",
+    "sync_frequency": 50,
+    "enabled": true,
+    "last_sync": "2026-04-14T00:57:57.510017"
+  },
+  {
+    "camera_id": "qmoi_road_monitoring_001",
+    "camera_type": "IP_Camera",
+    "access_level": 9999,
+    "resolution": "4K",
+    "frame_rate": 60,
+    "coverage_area": "roads_global",
+    "connection_type": "wireless",
+    "encryption": "military_grade",
+    "sync_frequency": 50,
+    "enabled": true,
+    "last_sync": "2026-04-14T00:57:57.510028"
+  },
+  {
+    "camera_id": "qmoi_thermal_imaging_001",
+    "camera_type": "Thermal",
+    "access_level": 9999,
+    "resolution": "1080p",
+    "frame_rate": 30,
+    "coverage_area": "global_thermal",
+    "connection_type": "wireless",
+    "encryption": "AES-256",
+    "sync_frequency": 100,
+    "enabled": true,
+    "last_sync": "2026-04-14T00:57:57.510032"
+  },
+  {
+    "camera_id": "qmoi_360_panoramic_001",
+    "camera_type": "360_Panoramic",
+    "access_level": 9999,
+    "resolution": "4K",
+    "frame_rate": 60,
+    "coverage_area": "global_omnidirectional",
+    "connection_type": "satellite",
+    "encryption": "military_grade",
+    "sync_frequency": 50,
+    "enabled": true,
+    "last_sync": "2026-04-14T00:57:57.510035"
+  },
+  {
+    "camera_id": "qmoi_infrared_night_vision_001",
+    "camera_type": "Infrared",
+    "access_level": 9999,
+    "resolution": "1080p",
+    "frame_rate": 30,
+    "coverage_area": "global_night_vision",
+    "connection_type": "wireless",
+    "encryption": "AES-256",
+    "sync_frequency": 100,
+    "enabled": true,
+    "last_sync": "2026-04-14T00:57:57.510038"
+  }
+]
