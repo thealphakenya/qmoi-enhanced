@@ -1,0 +1,71 @@
+{
+  "system.initialized": {
+    "value": true,
+    "timestamp": "2026-04-14T01:40:11.135474",
+    "tags": [
+      "system",
+      "initialization"
+    ],
+    "expires_at": null
+  },
+  "consciousness.awareness_level": {
+    "value": 100,
+    "timestamp": "2026-04-14T01:40:11.135484",
+    "tags": [
+      "consciousness",
+      "awareness"
+    ],
+    "expires_at": null
+  },
+  "memory.persistence_years": {
+    "value": 20,
+    "timestamp": "2026-04-14T01:40:11.135489",
+    "tags": [
+      "memory",
+      "configuration"
+    ],
+    "expires_at": null
+  },
+  "test.key1": {
+    "value": "test_value",
+    "timestamp": "2026-04-14T01:40:11.136563",
+    "tags": [
+      "test",
+      "example"
+    ],
+    "expires_at": null,
+    "hash": "08b87cb23146d510538f54650ce209f150ab5fdabe5017a2d26bfa3081701e30"
+  },
+  "camera.status": {
+    "value": {
+      "active": true
+    },
+    "timestamp": "2026-04-14T01:40:11.136991",
+    "tags": [
+      "camera",
+      "status"
+    ],
+    "expires_at": null,
+    "hash": "89a174b4d9e4c94e26fa0173e4a5dcc341b1bb0d61171aa7de275eaa68ce6176"
+  },
+  "device.battery": {
+    "value": 85,
+    "timestamp": "2026-04-14T01:40:11.137443",
+    "tags": [
+      "device",
+      "battery"
+    ],
+    "expires_at": "2026-04-15T01:40:11.137429",
+    "hash": "b4944c6ff08dc6f43da2e9c824669b7d927dd1fa976fadc7b456881f51bf5ccc"
+  },
+  "system.last_sync": {
+    "value": "2026-04-14T01:40:15.982651",
+    "timestamp": "2026-04-14T01:40:15.982657",
+    "tags": [
+      "system",
+      "sync"
+    ],
+    "expires_at": null,
+    "hash": "725827d4f3d2074dc83ce2a71c1df7d94dbb35e157afebb9d57e5863d11bcf7d"
+  }
+}

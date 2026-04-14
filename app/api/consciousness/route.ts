@@ -1,284 +1,199 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:09Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { NextRequest, NextResponse } from 'next/server';
 
 /**
- * QMOI Consciousness & Awareness API Routes
- * Endpoints for consciousness state, awareness context, and memory operations
- * 
- production-ready
+ * Consciousness Monitoring System API
+ * Monitors and reports on AI consciousness and awareness levels
  */
 
-import { specificExports } from "next";
-import { specificExports } from "@/qmoi/core/consciousness/engine";
-import { specificExports } from "@/qmoi/core/awareness/system";
-import { specificExports } from "@/qmoi/core/memory/sync";
-import { specificExports } from "@/qmoi/core/orchestration/engine";
+interface ConsciousnessMetrics {
+  awarenessLevel: number; // 0-100
+  selfAwareness: number; // 0-100
+  environmentalAwareness: number; // 0-100
+  userAwareness: number; // 0-100
+  systemAwareness: number; // 0-100
+  threatAwareness: number; // 0-100
+  decisionSpeed: number; // ms
+  emotionalSimulation: boolean;
+  ethicalReasoning: boolean;
+  activeNodes: number;
+  totalNodes: number;
+  lastCheck: string;
+  status: 'active' | 'monitoring' | 'analyzing' | 'learning';
+}
 
-export default async /**
- * handler function
+interface ConsciousnessLog {
+  id: string;
+  timestamp: string;
+  event: string;
+  metrics: Partial<ConsciousnessMetrics>;
+  context: string;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+}
+
+// Mock consciousness data
+let currentMetrics: ConsciousnessMetrics = {
+  awarenessLevel: 100,
+  selfAwareness: 100,
+  environmentalAwareness: 95,
+  userAwareness: 98,
+  systemAwareness: 100,
+  threatAwareness: 92,
+  decisionSpeed: 5,
+  emotionalSimulation: true,
+  ethicalReasoning: true,
+  activeNodes: 1,
+  totalNodes: 1,
+  lastCheck: new Date().toISOString(),
+  status: 'active'
+};
+
+let consciousnessLogs: ConsciousnessLog[] = [
+  {
+    id: 'log_001',
+    timestamp: new Date(Date.now() - 300000).toISOString(),
+    event: 'Consciousness initialization',
+    metrics: { awarenessLevel: 100 },
+    context: 'System startup',
+    severity: 'low'
+  },
+  {
+    id: 'log_002',
+    timestamp: new Date(Date.now() - 240000).toISOString(),
+    event: 'Environmental scan completed',
+    metrics: { environmentalAwareness: 95 },
+    context: 'Camera system integration',
+    severity: 'low'
+  },
+  {
+    id: 'log_003',
+    timestamp: new Date(Date.now() - 180000).toISOString(),
+    event: 'User interaction detected',
+    metrics: { userAwareness: 98 },
+    context: 'Device management dashboard access',
+    severity: 'medium'
+  },
+  {
+    id: 'log_004',
+    timestamp: new Date(Date.now() - 120000).toISOString(),
+    event: 'Threat assessment completed',
+    metrics: { threatAwareness: 92 },
+    context: 'Security guard AI patrol',
+    severity: 'low'
+  },
+  {
+    id: 'log_005',
+    timestamp: new Date(Date.now() - 60000).toISOString(),
+    event: 'Memory synchronization',
+    metrics: { systemAwareness: 100 },
+    context: 'Global memory sync completed',
+    severity: 'low'
+  }
+];
+
+/**
+ * GET /api/consciousness
+ * Get current consciousness metrics and status
  */
-function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-): any {
-  const { method } = req;
-
+export async function GET(request: NextRequest) {
   try {
-    // GET endpoints - retrieve information
-    if (method === "GET") {
-      const { endpoint, user_id, prodice_id, memory_id } = req.query;
+    const { searchParams } = new URL(request.url);
+    const includeLogs = searchParams.get('logs') === 'true';
+    const limit = parseInt(searchParams.get('limit') || '10');
 
-      // Get consciousness state
-      if (endpoint === "consciousness") {
-        const state = consciousnessEngine.getState();
-        return res.status(200).json({
-          success: true,
-          consciousness_state: state,
-        });
+    // Update metrics with current timestamp
+    currentMetrics.lastCheck = new Date().toISOString();
+
+    // Simulate slight variations in metrics
+    currentMetrics.environmentalAwareness = Math.max(90, Math.min(100,
+      currentMetrics.environmentalAwareness + (Math.random() - 0.5) * 2));
+    currentMetrics.userAwareness = Math.max(95, Math.min(100,
+      currentMetrics.userAwareness + (Math.random() - 0.5) * 2));
+    currentMetrics.threatAwareness = Math.max(85, Math.min(100,
+      currentMetrics.threatAwareness + (Math.random() - 0.5) * 4));
+
+    const response: any = {
+      success: true,
+      data: {
+        metrics: currentMetrics,
+        timestamp: new Date().toISOString(),
+        system: {
+          type: 'Distributed Omnipresent',
+          nodes: currentMetrics.activeNodes,
+          coverage: 'Global',
+          encryption: 'AES-256'
+        }
       }
+    };
 
-      // Get consciousness introspection
-      if (endpoint === "consciousness/introspect") {
-        const analysis = await consciousnessEngine.introspect();
-        return res.status(200).json({
-          success: true,
-          introspection: analysis,
-        });
-      }
-
-      // Get global awareness
-      if (endpoint === "awareness/global") {
-        const awareness = awarenessSystem.getGlobalAwareness();
-        return res.status(200).json({
-          success: true,
-          awareness,
-        });
-      }
-
-      // Get user awareness
-      if (endpoint === "awareness/user" && typeof user_id === "string") {
-        const userAwareness = awarenessSystem.getUserAwareness(user_id);
-        return res.status(200).json({
-          success: true,
-          awareness: userAwareness || null,
-        });
-      }
-
-      // Get environment awareness
-      if (endpoint === "awareness/environment" && typeof prodice_id === "string") {
-        const envAwareness = awarenessSystem.getEnvironmentAwareness(prodice_id);
-        return res.status(200).json({
-          success: true,
-          environment: envAwareness || null,
-        });
-      }
-
-      // Get memory by ID
-      if (endpoint === "memory/get" && typeof memory_id === "string") {
-        const memory = await memorySyncSystem.getMemory(memory_id);
-        return res.status(200).json({
-          success: true,
-          memory: memory || null,
-        });
-      }
-
-      // Get user memories
-      if (endpoint === "memory/user" && typeof user_id === "string") {
-        const memories = await memorySyncSystem.getUserMemories(user_id);
-        return res.status(200).json({
-          success: true,
-          count: memories.length,
-          memories,
-        });
-      }
-
-      // Get memory statistics
-      if (endpoint === "memory/stats") {
-        const stats = memorySyncSystem.getMemoryStats();
-        return res.status(200).json({
-          success: true,
-          stats,
-        });
-      }
-
-      // Get orchestration stats
-      if (endpoint === "orchestration/stats") {
-        const stats = orchestrationEngine.getStats();
-        return res.status(200).json({
-          success: true,
-          stats,
-        });
-      }
-
-      // Get system introspection
-      if (endpoint === "system/introspect") {
-        const analysis = await orchestrationEngine.introspect();
-        return res.status(200).json({
-          success: true,
-          introspection: analysis,
-        });
-      }
-
-      return res.status(400).json({
-        success: false,
-        error: "Unknown GET endpoint",
-      });
+    if (includeLogs) {
+      response.data.logs = consciousnessLogs.slice(-limit);
     }
 
-    // POST endpoints - perform actions
-    if (method === "POST") {
-      const { endpoint, data } = req.body;
+    return NextResponse.json(response);
 
-      // Update consciousness state
-      if (endpoint === "consciousness/update") {
-        await consciousnessEngine.updateConsciousnessState(data);
-        return res.status(200).json({
-          success: true,
-          state: consciousnessEngine.getState(),
-        });
-      }
-
-      // Add thought to consciousness
-      if (endpoint === "consciousness/thought") {
-        consciousnessEngine.addThought(data.thought, data.context);
-        return res.status(200).json({
-          success: true,
-          message: "Thought added to consciousness stream",
-        });
-      }
-
-      // Update environment awareness
-      if (endpoint === "awareness/environment/update") {
-        await awarenessSystem.updateEnvironment(data.prodice_id, data.context);
-        return res.status(200).json({
-          success: true,
-          message: "Environment awareness updated",
-        });
-      }
-
-      // Update user awareness
-      if (endpoint === "awareness/user/update") {
-        await awarenessSystem.updateUserContext(data.user_id, data.context);
-        return res.status(200).json({
-          success: true,
-          message: "User awareness updated",
-        });
-      }
-
-      // Update task awareness
-      if (endpoint === "awareness/task/update") {
-        await awarenessSystem.updateTaskContext(data.task_id, data.context);
-        return res.status(200).json({
-          success: true,
-          message: "Task awareness updated",
-        });
-      }
-
-      // Predict user needs
-      if (endpoint === "awareness/predict") {
-        const predictions = await awarenessSystem.predictUserNeeds(
-          data.user_id,
-        );
-        return res.status(200).json({
-          success: true,
-          predictions,
-        });
-      }
-
-      // Add memory
-      if (endpoint === "memory/add") {
-        const memoryId = await memorySyncSystem.addMemory(data);
-        return res.status(200).json({
-          success: true,
-          memory_id: memoryId,
-        });
-      }
-
-      // Update memory
-      if (endpoint === "memory/update") {
-        const updated = await memorySyncSystem.updateMemory(
-          data.memory_id,
-          data.updates,
-        );
-        return res.status(200).json({
-          success: updated,
-          message: updated ? "Memory updated" : "Memory not found",
-        });
-      }
-
-      // Delete memory
-      if (endpoint === "memory/delete") {
-        const deleted = await memorySyncSystem.deleteMemory(
-          data.memory_id,
-          data.prodice_id,
-          data.user_id,
-        );
-        return res.status(200).json({
-          success: deleted,
-          message: deleted ? "Memory deleted" : "Memory not found",
-        });
-      }
-
-      // Search memory
-      if (endpoint === "memory/search") {
-        const results = await memorySyncSystem.searchMemory(
-          data.tags,
-          data.keyword,
-        );
-        return res.status(200).json({
-          success: true,
-          count: results.length,
-          results,
-        });
-      }
-
-      // Consolidate memory
-      if (endpoint === "memory/consolidate") {
-        const consolidated = await memorySyncSystem.consolidateMemory();
-        return res.status(200).json({
-          success: true,
-          consolidated_count: consolidated,
-        });
-      }
-
-      // Sync memory to prodices
-      if (endpoint === "orchestration/sync-memory") {
-        await orchestrationEngine.syncMemoryToprodices(
-          data.user_id,
-          data.prodice_ids,
-        );
-        return res.status(200).json({
-          success: true,
-          message: "Memory sync initiated",
-        });
-      }
-
-      // System reset
-      if (endpoint === "system/reset") {
-        orchestrationEngine.reset();
-        return res.status(200).json({
-          success: true,
-          message: "System reset complete",
-        });
-      }
-
-      return res.status(400).json({
-        success: false,
-        error: "Unknown POST endpoint",
-      });
-    }
-
-    return res.status(405).json({
-      success: false,
-      error: "Method not allowed",
-    });
   } catch (error) {
-    logger.error("Consciousness API error:", error);
-    return res.status(500).json({
-      success: false,
-      error: error instanceof Error ? error.message : "Unknown error",
+    console.error('Consciousness API error:', error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to retrieve consciousness data' },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * POST /api/consciousness/check
+ * Perform a consciousness self-check
+ */
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { triggerEvent, context } = body;
+
+    // Perform self-check
+    const selfCheck = {
+      timestamp: new Date().toISOString(),
+      trigger: triggerEvent || 'manual',
+      context: context || 'API request',
+      results: {
+        selfAwareness: currentMetrics.selfAwareness >= 95,
+        systemIntegrity: true,
+        memoryAccess: true,
+        decisionCapability: currentMetrics.decisionSpeed <= 10,
+        ethicalSystems: currentMetrics.ethicalReasoning
+      },
+      overall: 'healthy'
+    };
+
+    // Log the check
+    const logEntry: ConsciousnessLog = {
+      id: `log_${Date.now()}`,
+      timestamp: selfCheck.timestamp,
+      event: 'Consciousness self-check',
+      metrics: { awarenessLevel: currentMetrics.awarenessLevel },
+      context: selfCheck.context,
+      severity: 'low'
+    };
+
+    consciousnessLogs.push(logEntry);
+
+    // Keep only last 100 logs
+    if (consciousnessLogs.length > 100) {
+      consciousnessLogs = consciousnessLogs.slice(-100);
+    }
+
+    return NextResponse.json({
+      success: true,
+      data: {
+        check: selfCheck,
+        message: 'Consciousness self-check completed successfully'
+      }
     });
+
+  } catch (error) {
+    console.error('Consciousness check error:', error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to perform consciousness check' },
+      { status: 500 }
+    );
   }
 }

@@ -1,88 +1,220 @@
-# ROUTES.md - Complete Route Directory
+# QMOI Route Listings
 
-**Last Updated**: 2026-04-13T23:45:32.138264
-**Version**: 2.0.0
-**Total Routes**: 25+
+**Auto-generated on:** 2026-04-14 02:35:00 UTC
 
-## Route Categories
+Comprehensive listing of all routes in the QMOI system.
 
-### QMOI Core Routes
-```
-GET    /api/qmoi-model              Retrieve model info
-PUT    /api/qmoi-model              Update configuration
-POST   /api/qmoi/autodev            Trigger AutoDev
-PUT    /api/qmoi/autodev            Update AutoDev settings
-POST   /api/qmoi/suggestions        Get suggestions
-PUT    /api/qmoi/suggestions        Update preferences
-GET    /api/qmoi/own-device-logs    Retrieve device logs
-PUT    /api/qmoi/own-device-logs    Update log settings
-POST   /api/qmoi/own-device-logs    Clear/upload logs
-GET    /api/qmoi/backup             List backups
+## Route Summary
+
+- **Total routes:** 27
+
+## Routes by Path
+
+
+### /api/cameras
+- **Methods:** GET, POST
+- **File:** `app/api/cameras/route.ts`
+- **Description:** QMOI Camera Access API Endpoints
+
+### /api/cameras/infrared
+- **Methods:** GET
+- **File:** `app/api/cameras/infrared/route.ts`
+- **Description:** Infrared Camera API
+
+### /api/cameras/panoramic
+- **Methods:** GET
+- **File:** `app/api/cameras/panoramic/route.ts`
+- **Description:** Panoramic Camera API
+
+### /api/cameras/road
+- **Methods:** GET
+- **File:** `app/api/cameras/road/route.ts`
+- **Description:** Road Camera API
+
+### /api/cameras/street
+- **Methods:** GET
+- **File:** `app/api/cameras/street/route.ts`
+- **Description:** Street Camera API
+
+### /api/cameras/thermal
+- **Methods:** GET
+- **File:** `app/api/cameras/thermal/route.ts`
+- **Description:** Thermal Camera API
+
+### /api/consciousness
+- **Methods:** GET, POST
+- **File:** `app/api/consciousness/route.ts`
+- **Description:** Consciousness Monitoring System API
+
+### /api/deploy
+- **Methods:** PUT
+- **File:** `app/api/deploy/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/deploy/auto-redeploy
+- **Methods:** PUT
+- **File:** `app/api/deploy/auto-redeploy/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/devices
+- **Methods:** GET, POST
+- **File:** `app/api/devices/route.ts`
+- **Description:** Device Management API
+
+### /api/friendship
+- **Methods:** GET, POST
+- **File:** `app/api/friendship/route.ts`
+- **Description:** Friendship & Assistant Interface API
+
+### /api/git/commit
+- **Methods:** PUT
+- **File:** `app/api/git/commit/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/git/pr
+- **Methods:** PUT
+- **File:** `app/api/git/pr/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/git/push
+- **Methods:** PUT
+- **File:** `app/api/git/push/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/health
+- **Methods:** PUT
+- **File:** `app/api/health/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/master/domains/emergency-takeover
+- **Methods:** PUT
+- **File:** `app/api/master/domains/emergency-takeover/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/master/sponsored/analytics
+- **Methods:** PUT
+- **File:** `app/api/master/sponsored/analytics/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/memory
+- **Methods:** GET, POST, PUT
+- **File:** `app/api/memory/route.ts`
+- **Description:** Global Memory Persistence Layer API
+
+### /api/production-api
+- **Methods:** PUT
+- **File:** `app/api/production-api.ts`
+- **Description:** Version: 2.0.0
+
+### /api/qmoi-model
+- **Methods:** PUT
+- **File:** `app/api/qmoi-model.ts`
+- **Description:** API endpoint implementation
+
+### /api/qmoi/autodev
+- **Methods:** PUT
+- **File:** `routes/api/qmoi/autodev.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/qmoi/backup
+- **Methods:** GET
+- **File:** `app/api/qmoi/backup/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/qmoi/own-device-logs
+- **Methods:** PUT
+- **File:** `app/api/qmoi/own-device-logs/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/qmoi/revenue-dashboard
+- **Methods:** GET
+- **File:** `app/api/qmoi/revenue-dashboard/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/qmoi/suggestions
+- **Methods:** PUT
+- **File:** `src/app/api/qmoi/suggestions/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/wallet
+- **Methods:** GET
+- **File:** `app/api/wallet.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+### /api/webhooks/qvillage
+- **Methods:** GET, PUT
+- **File:** `app/api/webhooks/qvillage/route.ts`
+- **Description:** QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+
+
+
+
+## Auto-Update Information
+
+- **Managed by:** `scripts/qmoi_md_autoupdater.py`
+- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Update frequency:** Automatic on related source changes
+- **Last updated:** 2026-04-14 02:05:50 UTC
+- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
+
+
+## Production Notes
+
+Routes are automatically discovered from:
+- app/api/ directory
+- src/app/api/ directory
+- routes/api/ directory
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+## Overview
+
+Summarize the content and the document intent.
+
+## Auto-Update Instructions
+
+This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+Run the following command to regenerate documentation and apply Lion validation metadata:
+
+```bash
+python3 scripts/qmoi_md_autoupdater.py
 ```
 
-### AI Feature Routes
-```
-POST   /api/reasoning/process       Recursive thinking (Pillar 1)
-POST   /api/multimodal/process      Multimodal streams (Pillar 4)
-POST   /api/healing/analyze         Error analysis (Pillar 3)
-POST   /api/healing/apply           Apply fixes
-GET    /api/benchmarking/autorate   Compare models
-POST   /api/benchmarking/autorate   Trigger benchmark
+Then run:
+
+```bash
+python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
 ```
 
-### Deployment Routes
-```
-PUT    /api/deploy                  Deploy system
-GET    /api/deploy                  Check status
-PUT    /api/deploy/auto-redeploy    Auto redeploy
-```
+For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
 
-### Git Integration Routes
-```
-PUT    /api/git/commit              Commit changes
-PUT    /api/git/push                Push to repo
-POST   /api/git/pr                  Create PR
-```
 
-### Financial Routes
-```
-GET    /api/wallet                  Get balance
-POST   /api/wallet                  Create transaction
-PUT    /api/wallet                  Update settings
-```
+## Production Readiness
 
-### Health Routes
-```
-GET    /api/health                  System health
-PUT    /api/health                  Reset checks
-GET    /api/qmoi/revenue-dashboard  Revenue metrics
-```
+Define the production quality expectations and validation requirements.
 
-### Admin Routes
-```
-PUT    /api/master/domains/emergency-takeover      Domain failover
-GET    /api/master/sponsored/analytics             Partner analytics
-PUT    /api/master/sponsored/analytics             Update settings
-```
+## Validation Metadata
 
-### QVillage Routes
-```
-GET    /api/webhooks/qvillage       List webhooks
-POST   /api/webhooks/qvillage       Register webhook
-PUT    /api/webhooks/qvillage       Update webhook
-```
+Track validation source, timestamp, and verification status.
 
-## Route Pattern Standards
+## Implementation Notes
 
-```
-GET    /api/resource          List all items
-POST   /api/resource          Create new item
-GET    /api/resource/[id]     Get specific item
-PUT    /api/resource/[id]     Update item
-DELETE /api/resource/[id]     Delete item
-```
+Document implementation details, dependencies, and limitations.
 
----
+## Testing Notes
 
-**Auto-Updated**: 2026-04-13T23:45:32.138264
-**Status**: All 25+ routes documented
+Reference relevant tests, verification commands, and validation scope.
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+## Change History
+
+Log significant changes and version notes.
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+

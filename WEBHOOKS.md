@@ -1,6 +1,6 @@
 # WEBHOOKS.md - Webhook Integration Guide
 
-**Auto-generated on:** 2026-04-12 07:10:49 UTC
+**Auto-generated on:** 2026-04-14 02:05:45 UTC
 
 This document lists all webhook-related API endpoints in the QMOI system.
 
@@ -23,7 +23,7 @@ This document lists all webhook-related API endpoints in the QMOI system.
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
 - **Category:** Core QMOI/Gateway/Lion/Dev
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-12 07:10:54 UTC
+- **Last updated:** 2026-04-14 02:05:50 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 
