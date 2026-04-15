@@ -1,7 +1,6 @@
 # QMOI Repository Structure
 
-**Auto-generated on:** 2026-04-14 03:44:00 UTC
-**Enhanced with:** Global Revenue Management, 10 New Projects, Financial Systems
+**Auto-generated on:** 2026-04-15 19:30:25 UTC
 
 This file contains the current directory structure of the QMOI repository.
 It is automatically updated by the QMOI Markdown Auto-Updater system.
@@ -18,6 +17,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── 3.md
 ├── 4.md
 ├── 44.md
+├── 5.md
 ├── @ALLMDFILESREFS.md
 ├── ACCOUNTABILITY.md
 ├── ADAPTERS.md
@@ -29,6 +29,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── AI_ENHANCEMENT_SYSTEM.md
 ├── AI_POWERED_TRADING_REPORT.json
 ├── ALL PERCENTAGES.md
+├── ALLAUTO.md
 ├── ALLCLONEDRELEASES.md
 ├── ALLCOMPONENTSTESTS.md
 ├── ALLDEVICESSETTINGS.md
@@ -63,97 +64,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── ALLPLATFORMSVERSIONS.md
 ├── ALLQMOIAIAPPSREALEASESVERSIONS.md
 ├── ALLQMOIAUTOEVOLVINGENVS.md
-├── ALLSYSTEMSSTRUCTURESREFERENCES.md
-├── ALLTESTSAUTOTESTS.bak.1775962850
-├── ALLTESTSAUTOTESTS.bak.1775962910
-├── ALLTESTSAUTOTESTS.bak.1775963008
-├── ALLTESTSAUTOTESTS.bak.1775963625
-├── ALLTESTSAUTOTESTS.bak.1775963678
-├── ALLTESTSAUTOTESTS.bak.1775963934
-├── ALLTESTSAUTOTESTS.bak.1775964058
-├── ALLTESTSAUTOTESTS.md
-├── ALLUI.md
-├── ALLUITESTS.md
-├── ALLVERSIONS.md
-├── ALLWALLETSQVS.md
-├── ALL_APPS
-│   └── README.md
-├── ALL_APPS.md
-├── ALL_TODOS_HEAD.txt
-├── ALL_TODOS_SAMPLE.txt
-├── ALPHAQMOIENGINE.md
-├── API.bak.1775952854
-├── API.bak.1775952982
-├── API.bak.1775953071
-├── API.bak.1775953160
-├── API.bak.1775953368
-├── API.bak.1775953384
-├── API.bak.1775954795
-├── API.bak.1775954832
-├── API.bak.1775955486
-├── API.bak.1775955978
-├── API.bak.1775962856
-├── API.bak.1775962916
-├── API.bak.1775963014
-├── API.bak.1775963631
-├── API.bak.1775963685
-├── API.bak.1775963940
-├── API.bak.1775964064
-├── API.md
-├── APIs_1.md
-├── BALANCES.md (Enhanced with 10 new revenue projects)
-├── EMPLOYMENT.md (New - Global workforce management)
-├── ENDPOINTS.md
-├── FINANCIAL_MANAGER.md (New - Comprehensive financial management)
-├── HOOKS.md
-├── REVENUE_ENHANCEMENT_PLAN.md (New - 20+ improvement plan)
-├── ROUTES.md
-├── TREE.md (Current file)
-├── WALLET.md (New - Multi-wallet management system)
-├── WEBHOOKS.md
-├── __MOCKS__.md
-├── _APP_ARCHIVED.md
-├── _PAGES_ARCHIVED.md
-├── abc.txt
-├── abctesting.txt
-├── aggressive_production_fixer.py
-├── aggressive_production_fixer_report.json
-├── ai-self-update-cli.py
-├── ai-self-update.py
-├── ai-anomaly-service.py
-├── ai-automation-service.ts
-├── all_api_endpoints_found.txt
-├── all_md_files_clean.txt
-├── all_md_files.txt
-├── allrefs.md
-├── allrefs.txt
-├── models/
-│   └── latest/
-│       └── qmoi_enhanced_revenue.py (Enhanced with global features, 10 new projects)
-├── qmoi_revenue_memory.json (New - Memory tracking file)
-├── resumefromhere.txt (Updated with current progress)
-├── ALLMDFILESREFS.bak.1775952983
-├── ALLMDFILESREFS.bak.1775953072
-├── ALLMDFILESREFS.bak.1775953161
-├── ALLMDFILESREFS.bak.1775953368
-├── ALLMDFILESREFS.bak.1775953384
-├── ALLMDFILESREFS.bak.1775954796
-├── ALLMDFILESREFS.bak.1775954833
-├── ALLMDFILESREFS.bak.1775955487
-├── ALLMDFILESREFS.bak.1775955979
-├── ALLMDFILESREFS.bak.1775962857
-├── ALLMDFILESREFS.bak.1775962917
-├── ALLMDFILESREFS.bak.1775963015
-├── ALLMDFILESREFS.bak.1775963631
-├── ALLMDFILESREFS.bak.1775963685
-├── ALLMDFILESREFS.bak.1775963941
-├── ALLMDFILESREFS.bak.1775964065
-├── ALLMDFILESREFS.md
-├── ALLMDFILESREFS_ENHANCED.md
-├── ALLMDGILES.md
-├── ALLPLATFORMSVERSIONS.md
-├── ALLQMOIAIAPPSREALEASESVERSIONS.md
-├── ALLQMOIAUTOEVOLVINGENVS.md
+├── ALLREGISTRIES.md
 ├── ALLSYSTEMSSTRUCTURESREFERENCES.md
 ├── ALLTESTSAUTOTESTS.bak.1775962850
 ├── ALLTESTSAUTOTESTS.bak.1775962910
@@ -343,6 +254,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── DOCUMENTATION_COMPLETION_REPORT.md
 ├── DOCUMENTATION_INDEX.md
 ├── DOCUMENTATION_MASTER_INDEX.md
+├── DOCUMENTATION_PHASE_COMPLETION_REPORT.md
 ├── DOMAIN-MANAGEMENT.md
 ├── DOMAINSANDLINKS.md
 ├── DOMAIN_AUTO_VALIDATION_SYSTEM.md
@@ -363,6 +275,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── EMAILSSYSTEM.md
 ├── EMAIL_SERVICE.md
 ├── EMPLOYEESUSERSENROLLED.md
+├── EMPLOYMENT.md
 ├── ENDPOINTS.bak.1775954795
 ├── ENDPOINTS.bak.1775954832
 ├── ENDPOINTS.bak.1775955486
@@ -414,6 +327,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── FINAL_PRODUCTION_READINESS_SUMMARY.md
 ├── FINAL_PRODUCTION_SUMMARY.md
 ├── FINAL_SESSION_COMPLETION_SUMMARY.md
+├── FINAL_SESSION_COMPREHENSIVE_REPORT.md
 ├── FINAL_SESSION_SUMMARY.md
 ├── FINAL_STATUS.txt
 ├── FINAL_STATUS_TODOS_COMPLETE.md
@@ -425,6 +339,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── FINAL_VERIFICATION_REPORT.txt
 ├── FINAL_VERIFICATION_SUMMARY.md
 ├── FINANCIALMANAGER.md
+├── FINANCIAL_MANAGER.md
 ├── GH_2.89.0_LINUX_AMD64.md
 ├── GIT-LFS-3.5.1.md
 ├── GITHUB-ACTIONS-COMPLETE.md
@@ -964,6 +879,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── RESPONSE_TIERS_QUICK_REFERENCE.md
 ├── RESULTS.md
 ├── REVENUEGENERATING.md
+├── REVENUE_ENHANCEMENT_PLAN.md
 ├── ROLES_AND_PERMISSIONS.md
 ├── ROOT_PRODUCTION_STATUS.md
 ├── ROOT_production_STATUS.md
@@ -1013,6 +929,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── SESSION_COMPLETION_SUMMARY.txt
 ├── SESSION_COMPREHENSIVE_SUMMARY_20260321.md
 ├── SESSION_CONSCIOUSNESS_IMPLEMENTATION_SUMMARY.md
+├── SESSION_DOCUMENTATION_STATUS_REPORT.md
 ├── SESSION_HANDOFF_SUMMARY.txt
 ├── SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md
 ├── SESSION_PHASE_COMPLETE.md
@@ -1050,6 +967,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── TESTS.md
 ├── TEST_ANALYSIS_REPORT.md
 ├── TEST_COVERAGE_REPORT.md
+├── THIRD-PARTYPLATFORMS.md
 ├── THOROUGH_VERIFICATION_SUMMARY.txt
 ├── THREAT_DETECTION.md
 ├── TO-DOs.md
@@ -1100,6 +1018,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── VERCEL_QMOI_AUTOFEATURES_MASTER.md
 ├── VERIFICATION_COMPLETE_2026-01-15.md
 ├── VERIFY-QCITY-STATUS.sh
+├── WALLET.md
 ├── WALLET_FINANCIAL_VALIDATION.md
 ├── WATCHDEBUG.md
 ├── WEBHOOKS.md
@@ -19590,6 +19509,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 │   │   ├── NEXT_UPGRADE_PLAN.md
 │   │   └── PLACEHOLDER_FIX_ACTIONS.md
 │   ├── verification-report.json
+│   ├── verification_report.json
 │   ├── wallets_report.json
 │   ├── workflow_fix_proposals.md
 │   └── workflows_remediation.md
@@ -20076,7 +19996,12 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── global.css
 ├── global.d.ts
 ├── hf_space_qvillage
+│   ├── 5.md
 │   ├── README.md
+│   ├── __pycache__
+│   │   ├── app.cpython-312.pyc
+│   │   ├── core.cpython-312.pyc
+│   │   └── test_app.cpython-312.pyc
 │   ├── app.py
 │   ├── core.py
 │   ├── requirements.txt
@@ -31459,6 +31384,8 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 ├── models
 │   └── latest
 │       ├── README.md
+│       ├── __pycache__
+│       │   └── qmoi_enhanced_revenue.cpython-312.pyc
 │       ├── qmoi_enhanced_advanced_model.py
 │       ├── qmoi_enhanced_model.py
 │       └── qmoi_enhanced_revenue.py
@@ -31798,6 +31725,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 │   │   ├── memory_backup_20260414_014015.json
 │   │   └── memory_backup_20260414_014016.json
 │   └── global_memory.json
+├── qmoi_global_revenue.db
 ├── qmoi_health_status.json
 ├── qmoi_installer.iss
 ├── qmoi_link_autotest_and_fix.sh
@@ -32098,6 +32026,8 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 │   ├── ADVANCED_ML_PREDICTIVE_ANALYTICS_SYSTEM_REPORT.json
 │   ├── README.md
 │   ├── __init__.py
+│   ├── __pycache__
+│   │   └── qmoi_md_autoupdater.cpython-312.pyc
 │   ├── account_reconciliation.py
 │   ├── account_verification.py
 │   ├── activate_domains.py
@@ -33265,6 +33195,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 │   ├── update_documentation.py
 │   ├── update_links.py
 │   ├── update_links_with_ngrok.py
+│   ├── update_markdown_registry.py
 │   ├── update_md_from_state.py
 │   ├── update_md_refs.py
 │   ├── update_model_card.py
@@ -33314,6 +33245,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 │   ├── verify_apk.sh
 │   ├── verify_apps.py
 │   ├── verify_artifacts.sh
+│   ├── verify_documentation.py
 │   ├── verify_exe.sh
 │   ├── verify_ipa.sh
 │   ├── wallet_balance_checker.py
@@ -35205,7 +35137,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
         ├── broadcast.js
         └── delay.js
 
-6619 directories, 28481 files
+6622 directories, 28502 files
 
 ```
 
@@ -35216,7 +35148,7 @@ node_modules|.git|venv|.venv|.backups|dist|build|coverage [error opening dir]
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
 - **Category:** Core QMOI/Gateway/Lion/Dev
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-14 03:44:13 UTC
+- **Last updated:** 2026-04-15 19:30:42 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

@@ -26,6 +26,25 @@
 
 This document lists all tests and autotests for the QMOI system, including health, self-healing, automation, error fixing, workflow, and financial transaction tests.
 
+## QMOI Ultra-Spec Feature Validation
+
+This test suite explicitly validates the core `q.md` architectural pillars:
+
+- **Logic & Reasoning**: reasoning controller, internal scratchpad generation, Chain-of-Verification, and HLE benchmark validation.
+- **Memory**: Ring Attention, Ghost Drift (GD-Attention), NVMe-backed KV cache management, and large-context consistency.
+- **Action**: self-healing workflows, traceback analysis, autonomous fixes, and retry orchestration.
+- **Vision**: raw audio/video multimodal ingestion, frame-level processing, and multimodal inference pipelines.
+- **Automation**: continuous benchmarking, arXiv research ingestion, synthetic fine-tuning, and live QVillage model card synchronization.
+
+### Feature Test Locations
+
+- `qmoi_reasoning_controller.py` — reasoning controller and CoVe validation.
+- `qmoi_gd_attention.py` — memory and Ghost Drift validation.
+- `qmoi_self_healing_loop.py` — autonomous error repair workflows.
+- `qmoi_multimodal_ingestion.py` — native multimodal ingestion.
+- `qmoi_autorate_system.py` — benchmark and automation pipeline validation.
+- `hf_space_qvillage/test_app.py` — QVillage HF Space integration and model card sync tests.
+
 ## 🚀 2026 Enhanced Test Suite
 
 ### 🤖 QVillage HF Space App Tests
@@ -605,12 +624,40 @@ Link to related documentation, APIs, and system artifacts.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Auto-Update Information
 
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
 - **Category:** Core QMOI/Gateway/Lion/Dev
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-14 03:44:13 UTC
+- **Last updated:** 2026-04-15 19:30:42 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

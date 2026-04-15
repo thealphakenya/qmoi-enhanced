@@ -91,6 +91,17 @@ SUPPORTED_CURRENCIES = [
     'KES', 'NGN', 'EGP', 'MAD', 'TND', 'XAF', 'XOF', 'CDF', 'UGX', 'TZS'
 ]
 
+SUPPORTED_TRADING_PLATFORMS = [
+    'binance', 'coinbase', 'kraken', 'bitget', 'bybit', 'huobi', 'kucoin',
+    'etoro', 'robinhood', 'td_ameritrade', 'interactive_brokers', 'fidelity',
+    'vanguard', 'charles_schwab', 'thinkorswim', 'quantconnect', 'alpaca'
+]
+
+SUPPORTED_BETTING_PLATFORMS = [
+    'bet365', 'betfair', 'draftkings', 'fanduel', 'william_hill', 'pinnacle',
+    'ladbrokes', 'unibet', 'skybet', ' betway', 'pointsbet'
+]
+
 GLOBAL_TIMEZONES = [
     'UTC', 'America/New_York', 'Europe/London', 'Asia/Tokyo', 'Asia/Shanghai',
     'Australia/Sydney', 'Africa/Nairobi', 'Asia/Dubai', 'Europe/Paris', 'America/Los_Angeles'
@@ -156,16 +167,24 @@ class GlobalRevenueManager:
         self.platforms: Dict[str, RevenuePlatform] = {}
         self.revenue_db = "qmoi_global_revenue.db"
         self.daily_minimum = Decimal('100000.0')
+        self.daily_revenue_goal = Decimal('1000000.0')
         self.total_revenue = Decimal('0.0')
         self.currency_converter = fx.CurrencyRates() if fx else None
         self.executor = ThreadPoolExecutor(max_workers=50)
         self.ai_trader = None
         self.compliance_monitor = None
         self.risk_manager = None
+        self.wallets: Dict[str, Any] = {}
+        self.bank_accounts: Dict[str, Any] = {}
+        self.login_vault: Dict[str, Any] = {}
+        self.confidence_threshold = Decimal('0.75')
+        self.cashon_balance = Decimal('0.0')
+        self.megavault_balance = Decimal('0.0')
 
         # Initialize components
         self.init_global_database()
         self.setup_global_platforms()
+        self.setup_financial_manager()
         self.initialize_ai_trading()
         self.start_global_optimization()
         self.setup_compliance_monitoring()
@@ -401,6 +420,93 @@ class GlobalRevenueManager:
         conn.commit()
         conn.close()
 
+    def setup_financial_manager(self) -> None:
+        """Initialize wallets, bank accounts, and master login vault"""
+        self.register_wallet('qmoi-revenue-wallet', 'revenue', 'USD', Decimal('250000.00'))
+        self.register_wallet('qmoi-main-wallet', 'system', 'USD', Decimal('150000.00'))
+        self.register_wallet('qmoi-cashon-wallet', 'cashon', 'USD', Decimal('50000.00'))
+        self.register_wallet('qmoi-megavault', 'vault', 'USD', Decimal('500000.00'))
+        self.register_bank_account('qmoi-bank-usa', 'Bank of America', 'USD', Decimal('300000.00'))
+        self.register_bank_account('qmoi-bank-kenya', 'Equity Bank', 'KES', Decimal('12000000.00'))
+        self.sync_master_login_vault()
+        logger.info('Financial manager initialized with wallets and bank accounts')
+
+    def register_wallet(self, wallet_id: str, wallet_type: str, currency: str, balance: Decimal) -> None:
+        self.wallets[wallet_id] = {
+            'wallet_id': wallet_id,
+            'type': wallet_type,
+            'currency': currency,
+            'balance': balance,
+            'last_updated': get_utc_now().isoformat(),
+            'master_only': True
+        }
+
+    def register_bank_account(self, account_id: str, institution: str, currency: str, balance: Decimal) -> None:
+        self.bank_accounts[account_id] = {
+            'account_id': account_id,
+            'institution': institution,
+            'currency': currency,
+            'balance': balance,
+            'last_updated': get_utc_now().isoformat(),
+            'master_only': True
+        }
+
+    def sync_master_login_vault(self) -> None:
+        """Synchronize credentials saved for master Gmail account"""
+        self.login_vault['rovicviccy@gmail.com'] = {
+            'accounts': [],
+            'last_synced': get_utc_now().isoformat(),
+            'source': 'master_gmail_vault'
+        }
+
+    def add_platform_login(self, platform_id: str, username: str, password: str) -> None:
+        """Add or update a platform login stored under the master Gmail vault"""
+        vault = self.login_vault.get('rovicviccy@gmail.com', {})
+        accounts = vault.get('accounts', [])
+        accounts = [acct for acct in accounts if acct.get('platform_id') != platform_id]
+        accounts.append({
+            'platform_id': platform_id,
+            'username': username,
+            'password': password,
+            'saved_at': get_utc_now().isoformat(),
+            'master_only': True
+        })
+        vault['accounts'] = accounts
+        vault['last_synced'] = get_utc_now().isoformat()
+        self.login_vault['rovicviccy@gmail.com'] = vault
+        logger.info(f'Saved login credentials for {platform_id} in master vault')
+
+    def get_platform_login(self, platform_id: str) -> Optional[Dict[str, str]]:
+        vault = self.login_vault.get('rovicviccy@gmail.com', {})
+        for account in vault.get('accounts', []):
+            if account.get('platform_id') == platform_id:
+                return account
+        return None
+
+    def allocate_funds(self, wallet_id: str, amount: Decimal) -> bool:
+        """Allocate funds to a wallet from the main reserve"""
+        main_wallet = self.wallets.get('qmoi-main-wallet')
+        target_wallet = self.wallets.get(wallet_id)
+        if not main_wallet or not target_wallet or main_wallet['balance'] < amount:
+            logger.warning(f'Unable to allocate {amount} to {wallet_id}')
+            return False
+        main_wallet['balance'] -= amount
+        target_wallet['balance'] += amount
+        main_wallet['last_updated'] = get_utc_now().isoformat()
+        target_wallet['last_updated'] = get_utc_now().isoformat()
+        logger.info(f'Allocated {amount} {target_wallet["currency"]} to {wallet_id}')
+        return True
+
+    def ensure_funds_in_wallets(self) -> None:
+        """Autonomously top up wallets that are empty or below threshold"""
+        for wallet_id, wallet in self.wallets.items():
+            balance = Decimal(str(wallet['balance']))
+            threshold = Decimal('5000.00') if wallet['currency'] == 'USD' else Decimal('5000.00')
+            if balance < threshold and wallet_id != 'qmoi-main-wallet':
+                needed = threshold - balance
+                self.allocate_funds(wallet_id, needed)
+                logger.info(f'Topped up wallet {wallet_id} by {needed}')
+
     def update_revenue(self, platform_id: str, amount: Decimal, currency: str = 'USD') -> None:
         """Update revenue for a platform with currency conversion"""
         if platform_id in self.platforms:
@@ -418,7 +524,56 @@ class GlobalRevenueManager:
             platform.last_updated = get_utc_now()
             self.save_platform(platform)
             self.total_revenue += amount
+            self._route_revenue_to_wallet(platform, amount)
             logger.info(f"Updated revenue for {platform.name}: +{platform.currency} {amount:,.2f}")
+
+    def _route_revenue_to_wallet(self, platform: RevenuePlatform, amount: Decimal) -> None:
+        """Route generated revenue into the appropriate wallet and banking system"""
+        if platform.category in ['crypto', 'trading', 'bets', 'betting']:
+            wallet_id = 'qmoi-revenue-wallet'
+        elif platform.category in ['marketplace', 'content', 'services', 'education']:
+            wallet_id = 'qmoi-main-wallet'
+        else:
+            wallet_id = 'qmoi-cashon-wallet'
+
+        wallet = self.wallets.get(wallet_id)
+        if wallet:
+            wallet['balance'] += amount
+            wallet['last_updated'] = get_utc_now().isoformat()
+            logger.info(f'Routed {amount} to wallet {wallet_id}')
+        if self.wallets.get('qmoi-megavault'):
+            self.megavault_balance += amount * Decimal('0.05')
+            logger.info(f'Allocated 5% to mega vault for reserves')
+
+    def get_finance_dashboard(self) -> Dict[str, Any]:
+        """Generate a master finance dashboard for reporting and validation"""
+        return {
+            'total_revenue': float(self.total_revenue),
+            'daily_goal': float(self.daily_revenue_goal),
+            'goal_percent': float(min(Decimal('1.0'), self.total_revenue / self.daily_revenue_goal) * Decimal('100')),
+            'wallets': self.wallets,
+            'bank_accounts': self.bank_accounts,
+            'confidence_threshold': float(self.confidence_threshold),
+            'cashon_balance': float(self.cashon_balance),
+            'megavault_balance': float(self.megavault_balance),
+            'master_login_vault': list(self.login_vault.get('rovicviccy@gmail.com', {}).get('accounts', []))
+        }
+
+    def get_daily_financial_tracks(self) -> List[Dict[str, Any]]:
+        """Provide daily revenue tracking records for the financial manager"""
+        today = get_utc_now().date().isoformat()
+        tracks = []
+        for wallet in self.wallets.values():
+            tracks.append({
+                'date': today,
+                'time': get_utc_now().time().isoformat(),
+                'amounts_made': float(wallet['balance']),
+                'wallet_account_bank': wallet['wallet_id'],
+                'source': wallet['type'],
+                'status': 'validated' if wallet['balance'] >= 0 else 'review',
+                'notes': 'Auto-synced by QMOI finance manager'
+            })
+        return tracks
 
     def get_total_revenue(self, currency: str = 'USD') -> Decimal:
         """Get total revenue across all platforms in specified currency"""

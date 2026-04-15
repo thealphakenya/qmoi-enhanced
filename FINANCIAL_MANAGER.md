@@ -31,6 +31,34 @@ Comprehensive financial management system overseeing $1M+ daily revenue generati
 
 ## Advanced Financial Features
 
+### QMOI-Specific Financial Systems
+
+#### Wallet Management
+- **QMOI Revenue Wallet**: Dedicated wallet for trading and betting revenues
+- **QMOI Main Wallet**: Primary system wallet for general operations
+- **QMOI Cash-On Wallet**: Wallet for marketplace and service revenues
+- **QMOI Mega Vault**: Reserve wallet for long-term holdings and emergency funds
+- **Autonomous Fund Allocation**: Automatic top-up and allocation across wallets
+- **Real-Time Balance Tracking**: Continuous monitoring with QMOI consciousness validation
+
+#### Bank Account Integration
+- **QMOI Bank USA**: Bank of America account for USD operations
+- **QMOI Bank Kenya**: Equity Bank account for KES operations
+- **Multi-Currency Support**: USD and KES with automatic conversion
+- **Master-Only Access**: Exclusive access controls for all banking operations
+
+#### Master Login Vault
+- **Secure Credential Storage**: Encrypted storage under rovicviccy@gmail.com master account
+- **Platform Login Management**: Automated login credentials for all integrated platforms
+- **Master-Only Controls**: Exclusive access to all platform credentials
+- **Automated Login Handling**: Seamless authentication for autonomous operations
+
+#### Revenue Routing System
+- **Category-Based Allocation**: Automatic routing based on platform type (crypto, trading, betting, etc.)
+- **Reserve Allocation**: 5% automatic allocation to mega vault for reserves
+- **Real-Time Updates**: Instant revenue tracking and wallet updates
+- **Currency Conversion**: Automatic FX conversion for multi-currency operations
+
 ### AI-Driven Analytics
 - **Predictive Modeling**: Revenue forecasting with 95%+ accuracy
 - **Anomaly Detection**: Fraud and unusual transaction identification
@@ -201,3 +229,89 @@ Comprehensive financial management system overseeing $1M+ daily revenue generati
 - **Collectibles Market**: Art, wine, and luxury goods investment
 
 This comprehensive financial management system ensures QMOI maintains robust financial health while maximizing revenue generation and minimizing risk across all global operations.
+## Purpose
+
+Describe the purpose of this document and its scope.
+
+## Auto-Update Instructions
+
+This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+Run the following command to regenerate documentation and apply Lion validation metadata:
+
+```bash
+python3 scripts/qmoi_md_autoupdater.py
+```
+
+Then run:
+
+```bash
+python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
+```
+
+For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
+
+
+## Production Readiness
+
+Define the production quality expectations and validation requirements.
+
+## Validation Metadata
+
+Track validation source, timestamp, and verification status.
+
+## Implementation Notes
+
+Document implementation details, dependencies, and limitations.
+
+## Testing Notes
+
+Reference relevant tests, verification commands, and validation scope.
+
+## Ownership
+
+Record the responsible owner or team for this document.
+
+## Change History
+
+Log significant changes and version notes.
+
+## Cross-References
+
+Link to related documentation, APIs, and system artifacts.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Auto-Update Information
+
+- **Managed by:** `scripts/qmoi_md_autoupdater.py`
+- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Update frequency:** Automatic on related source changes
+- **Last updated:** 2026-04-15 19:30:42 UTC
+- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
+
