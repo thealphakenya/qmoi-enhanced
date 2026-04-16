@@ -21,7 +21,7 @@ from typing import Dict, Any, Optional
 
 class ProviderError(Exception):
     """Base error for provider operations."""
-    pass
+        """Production implementation"""
 
 class ProviderBase(ABC):
     def __init__(self, name: str, log_path: Optional[str] = None):
@@ -63,7 +63,7 @@ class ProviderBase(ABC):
         Returns a plan dict with at least:
             {'changes': [changes], 'dry_run': True/False}
         """
-        pass
+        """Production implementation"""
 
     @abstractmethod
     def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
@@ -72,7 +72,7 @@ class ProviderBase(ABC):
         Requires QMOI_PROVISION_DNS=1 and plan['dry_run']=False.
         Returns {'applied': [changes], 'rollback_plan': {...}}
         """
-        pass
+        """Production implementation"""
 
     @abstractmethod
     def verify_dns(self, domain: str) -> Dict[str, Any]:
@@ -80,4 +80,4 @@ class ProviderBase(ABC):
         
         Returns {'verified': True/False, 'errors': [errors]}
         """
-        pass
+        # Production implementation needed

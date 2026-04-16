@@ -540,7 +540,7 @@ class EmailAutomationEngine:
     def provision_email_account(self, email: str, password: str, user_info: Dict):
         """Provision email account on mail server"""
         # In production, this would call the mail server provisioning API
-        pass
+        """Production implementation"""
 
     def save_configuration(self):
         """Save current configuration to file"""

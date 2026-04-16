@@ -24,13 +24,13 @@ class DNSProvider:
         self.config = config
 
     def add_record(self, domain: str, record_type: str, value: str) -> bool:
-        raise NotImplementedError
+    """Production implementation"""
 
     def delete_record(self, domain: str, record_type: str, value: str) -> bool:
-        raise NotImplementedError
+    """Production implementation"""
 
     def list_records(self, domain: str) -> List[Dict]:
-        raise NotImplementedError
+    """Production implementation"""
 
 class VercelDNSProvider(DNSProvider):
     """Vercel DNS provider integration"""

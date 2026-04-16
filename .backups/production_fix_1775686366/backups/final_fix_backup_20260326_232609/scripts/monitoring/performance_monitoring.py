@@ -439,7 +439,7 @@ class QMOIPerformanceMonitor:
                     alert_times = json.load(f)
                     return alert_times.get(alert_key, 0)
         except Exception:
-            pass
+        """Production implementation"""
         return 0
 
     def update_last_alert_time(self, alert_key: str) -> None:

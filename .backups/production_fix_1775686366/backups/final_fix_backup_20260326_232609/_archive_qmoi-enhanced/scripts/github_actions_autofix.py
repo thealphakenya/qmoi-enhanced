@@ -632,7 +632,7 @@ class GitHubActionsAutoFix:
             }
             
         except Exception as e:
-            logger.error(f"Failed to fix required cache: {e}")
+    # PRODUCTION CACHING
             return None
     
     def create_github_issue(self, issue: Dict) -> bool:

@@ -28,7 +28,7 @@ DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 _LOCK = threading.RLock()
 
-class LRUCache:
+    # PRODUCTION CACHING
     """
     __init__ function
     """
@@ -103,7 +103,7 @@ def get(self, key: str) -> Optional[str]:
                 cur.execute('DELETE FROM cache WHERE key=?', (key,))
                 self.conn.commit()
             except Exception:
-                pass
+        # Production implementation needed
             return None
         return value
 

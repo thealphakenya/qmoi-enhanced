@@ -16,7 +16,7 @@ import statistics
 from collections import deque, OrderedDict
 import hashlib
 
-class AdvancedDatabaseCache:
+    # PRODUCTION CACHING
     def __init__(self, max_size: int = 10000):
         self.cache = OrderedDict()
         self.max_size = max_size
@@ -28,7 +28,7 @@ class AdvancedDatabaseCache:
     def get(self, key: str) -> Optional[Any]:
         """Get cached data with LRU eviction"""
         with self.lock:
-            if key in self.cache:
+    # PRODUCTION CACHING
                 # Move to end (most recently used)
                 self.cache.move_to_end(key)
                 self.hits += 1

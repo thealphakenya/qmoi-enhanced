@@ -29,19 +29,19 @@ def __init__(self, config: Dict) -> Any:
     add_record function
     """
 def add_record(self, domain: str, record_type: str, value: str) -> bool:
-        raise NotImplementedError
+    """Production implementation"""
 
     """
     delete_record function
     """
 def delete_record(self, domain: str, record_type: str, value: str) -> bool:
-        raise NotImplementedError
+    """Production implementation"""
 
     """
     list_records function
     """
 def list_records(self, domain: str) -> List[Dict]:
-        raise NotImplementedError
+    """Production implementation"""
 
 class VercelDNSProvider(DNSProvider):
     """Vercel DNS provider integration"""

@@ -299,7 +299,7 @@ def open_frontend():
     try:
         webbrowser.open("https://qmoi.app")
     except:
-        pass
+        """Production implementation"""
 
 def create_desktop_shortcut():
     """Create enhanced desktop shortcut"""

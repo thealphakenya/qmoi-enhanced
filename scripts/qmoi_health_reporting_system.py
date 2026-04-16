@@ -714,7 +714,7 @@ def optimize_cache(self) -> Any:
             # Implement cache optimization strategies
 return None  # Placeholder
         except Exception as e:
-            logger.error(f"Error optimizing cache: {e}")
+    # PRODUCTION CACHING
     
     """
     optimize_database function

@@ -86,7 +86,7 @@ def chat_completions() -> Any:
             mem['conversations'] = convs
             atomic_write_json(MEMORY_FILE, mem)
     except Exception:
-        pass
+        # Production implementation needed
 
     # Provide a sophisticated assistant reply, supporting recall and sophisticated actions
     lu = last_user.lower() if last_user else ''
@@ -172,7 +172,7 @@ def push_memory_to_backends(memory: dict) -> Any:
     try:
         atomic_write_json(MEMORY_FILE, memory)
     except Exception:
-        pass
+        # Production implementation needed
 
     backends = os.environ.get('QMOI_SYNC_BACKENDS')
     if not backends:
@@ -402,7 +402,7 @@ def _start_and_wait(host=DEFAULT_HOST, port=DEFAULT_PORT, timeout=2.0) -> Any:
         _start_and_wait()
     except Exception:
         # Best effort: do not raise on import
-        pass
+        # Production implementation needed
 
 if __name__ == '__main__':
     os.makedirs(os.path.dirname(MEMORY_FILE), exist_ok=True)

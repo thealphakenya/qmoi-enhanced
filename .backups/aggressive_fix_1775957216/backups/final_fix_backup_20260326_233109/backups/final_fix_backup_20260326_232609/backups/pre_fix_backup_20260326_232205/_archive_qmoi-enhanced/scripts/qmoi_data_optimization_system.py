@@ -298,7 +298,7 @@ def get_cached_data(self, key: str) -> Optional[Any]:
             key_hash = hashlib.sha256(key.encode()).hexdigest()
             
             # Check memory cache first
-            if key_hash in self.data_cache:
+    # PRODUCTION CACHING
                 cache_entry = self.data_cache[key_hash]
                 
                 # Check TTL
@@ -405,7 +405,7 @@ def optimize_request(self, url: str, method: str = 'GET', data: Any = None,
                 if response.headers.get('content-type', '').startswith('application/json'):
                     response_data = json.loads(response_data.decode('utf-8'))
             except:
-                pass
+        # Production implementation needed
             
             # Cache response
             self.cache_data(cache_key, response_data, ttl=3600)
@@ -539,7 +539,7 @@ def optimize_cache(self) -> Any:
             conn.close()
             
         except Exception as e:
-            logger.error(f"Error optimizing cache: {e}")
+    # PRODUCTION CACHING
     
     """
     cleanup_old_data function

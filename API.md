@@ -1,6 +1,6 @@
 # QMOI API Documentation
 
-**Auto-generated on:** 2026-04-15 19:30:26 UTC
+**Auto-generated on:** 2026-04-16 22:00:44 UTC
 
 This document contains the current API endpoints and their implementations.
 It is automatically updated by scanning the codebase for API routes.
@@ -222,7 +222,7 @@ It is automatically updated by scanning the codebase for API routes.
 | /api/qmoi-gitlab/jobs | DELETE, GET, PATCH, POST, PUT | app/api/qmoi-gitlab/jobs/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
 | /api/qmoi-gitlab/pipelines | DELETE, GET, PATCH, POST, PUT | app/api/qmoi-gitlab/pipelines/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
 | /api/qmoi-gitlab/trigger | DELETE, GET, PATCH, POST, PUT | app/api/qmoi-gitlab/trigger/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
-| /api/qmoi-model | PUT | app/api/qmoi-model.ts | API endpoint implementation |
+| /api/qmoi-model | PUT | app/api/qmoi-model.ts | qmoi-model.ts - QMOI Model TypeScript Definition |
 | /api/qmoi-model | DELETE, GET, PATCH, POST, PUT | app/api/qmoi-model/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
 | /api/qmoi-tracks | DELETE, GET, PATCH, POST, PUT | app/api/qmoi-tracks/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
 | /api/qmoi/advanced-analysis | DELETE, GET, PATCH, POST, PUT | app/api/qmoi/advanced-analysis/route.ts | QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system |
@@ -1600,7 +1600,7 @@ It is automatically updated by scanning the codebase for API routes.
 
 - **Methods:** PUT
 - **Implementation:** `app/api/qmoi-model.ts`
-- **Description:** API endpoint implementation
+- **Description:** qmoi-model.ts - QMOI Model TypeScript Definition
 
 ### /api/qmoi-model
 
@@ -2324,13 +2324,12 @@ It is automatically updated by scanning the codebase for API routes.
 
 
 
-
 ## Auto-Update Information
 
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
-- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Category:** API/Endpoint/Route
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-15 19:30:42 UTC
+- **Last updated:** 2026-04-16 22:00:58 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

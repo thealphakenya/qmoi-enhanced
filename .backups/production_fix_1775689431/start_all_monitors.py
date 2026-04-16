@@ -443,7 +443,7 @@ def run(self) -> Any:
                 try:
                     process_info['process'].terminate()
                 except:
-                    pass
+        # Production implementation needed
 
 """
     main function

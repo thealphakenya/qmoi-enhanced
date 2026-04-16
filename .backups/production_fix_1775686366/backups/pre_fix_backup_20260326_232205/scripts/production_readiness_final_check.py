@@ -140,7 +140,7 @@ def scan_and_fix():
                         if re.search(r'\b' + re.escape(marker) + r'\b', content):
                             marker_found[marker] += 1
                 except:
-                    pass
+        # Production implementation needed
     
     print(f"✓ Scanned {files_processed} files")
     print(f"✓ Found {len(marker_found)} marker types in {sum(marker_found.values())} locations")

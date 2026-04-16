@@ -111,7 +111,7 @@ class productionFocusedScanner:
                             'code': line.strip()[:100]
                         })
         except:
-            pass
+        # Production implementation needed
         
         return issues
     

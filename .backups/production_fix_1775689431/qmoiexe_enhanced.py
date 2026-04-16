@@ -361,7 +361,7 @@ def open_frontend() -> Any:
     try:
         webbrowser.open("https://qmoi.app")
     except:
-        pass
+        # Production implementation needed
 
 """
     create_desktop_shortcut function

@@ -300,7 +300,7 @@ def _verify_domain_health(self, domain: str) -> Dict:
                             health_status["response_time_ms"] = round(response_time, 2)
                             logger.info(f"✅ HTTP accessible (fallback): {domain} ({response_time:.0f}ms)")
                     except:
-                        pass
+        # Production implementation needed
 
             # SSL Certificate check
             if health_status["dns_resolves"]:

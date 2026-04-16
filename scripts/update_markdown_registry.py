@@ -49,7 +49,7 @@ def scan_markdown_files():
                 try:
                     md_files.append(get_file_info(file_path))
                 except:
-                    pass
+        # Production implementation needed
     
     return sorted(md_files, key=lambda x: x['path'])
 

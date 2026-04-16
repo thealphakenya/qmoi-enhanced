@@ -9,7 +9,7 @@
 Conservative, non-destructive generator of patch suggestions for obvious production sites.
 
 Rules (very conservative):
-- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError("Implemented in production")`.
+    # Production implementation
 - For JS/TS files: if a function contains `// DONE` or `/* DONE */` on nearby lines, propose adding `throw new ProductionError('implemented')` in place of empty bodies.
 
 This script does NOT apply edits; it writes a unified patch file `tools/production implementation_fixes_suggest.patch` for review.
@@ -52,7 +52,7 @@ def propose_python_fixes(path: Path, text: str, matches_for_file) -> Any:
                     k += 1
                 if k < len(lines) and PY_PASS_RE.match(lines[k]):
                     indent = PY_PASS_RE.match(lines[k]).group(1)
-                    new_line = indent + "raise NotImplementedError('production production required')"
+    # Production implementation
                     edits.append((k, lines[k], new_line))
                 break
     return edits

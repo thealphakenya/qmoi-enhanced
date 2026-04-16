@@ -322,9 +322,9 @@ class QMOIRealTimeMonitor:
                 try:
                     async for message in websocket:
                         # Handle client messages if needed
-                        pass
+        # Production implementation needed
                 except websockets.exceptions.ConnectionClosed:
-                    pass
+        # Production implementation needed
                 finally:
                     self.websocket_clients.discard(websocket)
                     logger.info(f"WebSocket client disconnected. Total clients: {len(self.websocket_clients)}")
@@ -640,7 +640,7 @@ class QMOIRealTimeMonitor:
                 try:
                     client.close()
                 except:
-                    pass
+        # Production implementation needed
         
         logger.info("Monitor cleanup completed")
 

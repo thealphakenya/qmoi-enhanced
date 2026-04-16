@@ -328,7 +328,7 @@ def run_comprehensive_test(self) -> Any:
             try:
                 self.restore_test_backup()
             except:
-                pass
+        # Production implementation needed
             return self.test_results
 
 """

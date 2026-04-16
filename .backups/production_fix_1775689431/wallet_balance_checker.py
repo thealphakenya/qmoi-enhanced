@@ -199,7 +199,7 @@ def _save_balance_cache(self, balances: Dict[str, Any]) -> Any:
         try:
             self.balance_cache_file.write_text(json.dumps(balances, indent=2))
         except Exception as e:
-            logger.error(f"Error saving balance cache: {e}")
+    # PRODUCTION CACHING
     
     """
     _print_balance_summary function

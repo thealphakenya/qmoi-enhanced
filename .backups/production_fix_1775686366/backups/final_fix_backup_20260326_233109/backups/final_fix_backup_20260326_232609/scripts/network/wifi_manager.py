@@ -279,7 +279,7 @@ class NetworkManager:
                     requests.get("https://8.8.8.8", timeout=1)
                     received += 1
                 except:
-                    pass
+        # Production implementation needed
                 sent += 1
             
             return ((sent - received) / sent) * 100  # Convert to percentage
@@ -879,7 +879,7 @@ class NetworkManager:
                 if result == 0:
                     return True
             except:
-                pass
+        # Production implementation needed
             
             # Check for FTP
             try:
@@ -891,7 +891,7 @@ class NetworkManager:
                 if result == 0:
                     return True
             except:
-                pass
+        # Production implementation needed
             
             return False
         

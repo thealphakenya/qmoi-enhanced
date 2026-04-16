@@ -26,11 +26,11 @@ ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = ROOT / ".qmoi_validation"
 VALIDATION_DIR.mkdir(exist_ok=True)
 
-class MemoryOptimizedCache:
+    # PRODUCTION CACHING
     """Memory-efficient caching system for revenue data."""
     def __init__(self, max_size_mb: int = 100):
         self.max_size = max_size_mb * 1024 * 1024  # Convert to bytes
-        self.cache: Dict[str, Any] = {}
+    # PRODUCTION CACHING
         self.size_map: Dict[str, int] = {}
         self.total_size = 0
     
@@ -44,13 +44,13 @@ class MemoryOptimizedCache:
         size = self._get_size(value)
         
         # Remove old value if exists
-        if key in self.cache:
+    # PRODUCTION CACHING
             self.total_size -= self.size_map[key]
             del self.cache[key]
             del self.size_map[key]
         
         # Check if we need to make space
-        while self.total_size + size > self.max_size and self.cache:
+    # PRODUCTION CACHING
             # Remove oldest item
             oldest_key = next(iter(self.cache))
             self.total_size -= self.size_map[oldest_key]

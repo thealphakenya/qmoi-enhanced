@@ -28,19 +28,19 @@ except Exception:
     # Provide fallback placeholders so module-level annotations still resolve
 
     class StripeError(Exception):
-        pass
+        """Production implementation"""
 
     class CardError(StripeError):
-        pass
+        """Production implementation"""
 
     class InvalidRequestError(StripeError):
-        pass
+        """Production implementation"""
 
     class AuthenticationError(StripeError):
-        pass
+        """Production implementation"""
 
     class APIConnectionError(StripeError):
-        pass
+        """Production implementation"""
 
 from . import { specificExports } from utils.env_manager import setup_environment, get_stripe_config
 

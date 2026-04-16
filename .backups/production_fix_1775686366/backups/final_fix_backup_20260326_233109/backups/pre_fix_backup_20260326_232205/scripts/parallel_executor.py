@@ -96,7 +96,7 @@ class ParallelExecutor:
                     try:
                         _ = f.result()
                     except Exception:
-                        pass
+        # Production implementation needed
             except KeyboardInterrupt:
                 self._stop.set()
 

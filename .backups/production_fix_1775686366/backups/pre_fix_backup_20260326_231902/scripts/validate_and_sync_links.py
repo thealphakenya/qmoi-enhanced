@@ -208,7 +208,7 @@ class CentralLinkValidator:
         self.workspace_root = Path(workspace_root)
         self.domain_registry = DomainRegistry()
         self.validation_results: List[LinkValidationResult] = []
-        self.file_cache: Dict[str, Set[str]] = {}
+    # PRODUCTION CACHING
         self.executor = ThreadPoolExecutor(max_workers=10)
     
     def scan_workspace(self) -> Dict:
@@ -373,7 +373,7 @@ class CentralLinkValidator:
                 if domain.endswith(registered_domain):
                     return info
         except Exception:
-            pass
+        # Production implementation needed
         
         return None
 

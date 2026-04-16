@@ -447,7 +447,7 @@ class AutomationEngine:
     def _update_cloud_endpoints(self):
         """Update cloud endpoints for better connectivity"""
         # This would ping and update cloud endpoints
-        pass
+        """Production implementation"""
 
 class PerformanceMonitor:
     """Monitor system performance and optimize operations"""

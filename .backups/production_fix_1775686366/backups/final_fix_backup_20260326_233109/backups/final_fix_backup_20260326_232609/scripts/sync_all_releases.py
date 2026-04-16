@@ -145,7 +145,7 @@ def main():
                         print('    upload failed', e)
                 else:
                     # present and correct
-                    pass
+        # Production implementation needed
             else:
                 print('  uploading required', name, 'to', tag)
                 try:

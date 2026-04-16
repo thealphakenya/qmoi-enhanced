@@ -16,7 +16,7 @@ import time
 from typing import Optional
 
 
-class LinkCache:
+    # PRODUCTION CACHING
     def __init__(self, validation_dir: Optional[Path] = None, max_items: int = 10000):
         ROOT = Path(__file__).resolve().parents[1]
         self.validation_dir = Path(validation_dir) if validation_dir else ROOT / '.qmoi_validation'

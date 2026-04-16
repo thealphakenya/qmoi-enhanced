@@ -1,12 +1,12 @@
 # ALLAUTO.md - QMOI Full Automation Inventory
 
-**Auto-generated on:** 2026-04-15 19:30:40 UTC
+**Auto-generated on:** 2026-04-16 22:00:58 UTC
 
 This document tracks all automation scripts, auto-update systems, and auto-related documentation in the QMOI repository.
 
 ## Summary
 
-- **Total automation-related items:** 1692
+- **Total automation-related items:** 1695
 
 ## Automation Inventory
 
@@ -1506,6 +1506,7 @@ This document tracks all automation scripts, auto-update systems, and auto-relat
 - `lib/qmoiqcityautomatic.md.ts`
 - `lib/üìö_dated_&_categorized_documentation_(auto_updating).ts`
 - `lib/üõ†ô∏è_auto_updating_&_permanent_documentation.ts`
+- `models/latest/q1_automation_engine.py`
 - `qmoi-autofix-quickstart.sh`
 - `qmoi-space/public/js/auto-update.js`
 - `qmoi_auto_offload_and_link_check.sh`
@@ -1514,6 +1515,7 @@ This document tracks all automation scripts, auto-update systems, and auto-relat
 - `qmoi_link_autotest_and_fix.sh`
 - `requirements/ai_automation.txt`
 - `routes/api/qmoi/autodev.ts`
+- `scripts/__pycache__/autotag_md_with_lion.cpython-312.pyc`
 - `scripts/__pycache__/qmoi_md_autoupdater.cpython-312.pyc`
 - `scripts/ai_automation.py`
 - `scripts/all_percentages_automation.py`
@@ -1636,6 +1638,7 @@ This document tracks all automation scripts, auto-update systems, and auto-relat
 - `scripts/qmoi_auto_watcher.js`
 - `scripts/qmoi_automated_betting_system.py`
 - `scripts/qmoi_automated_device_controller.py`
+- `scripts/qmoi_autonomous_replacement.py`
 - `scripts/qmoi_autorate_system.py`
 - `scripts/qmoi_enhanced_auto_config.py`
 - `scripts/qmoi_enhanced_automation.py`
@@ -1704,13 +1707,12 @@ This document tracks all automation scripts, auto-update systems, and auto-relat
 - `validate_autonomous_systems.py`
 
 
-
 ## Auto-Update Information
 
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
-- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Category:** API/Endpoint/Route
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-15 19:30:42 UTC
+- **Last updated:** 2026-04-16 22:00:58 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

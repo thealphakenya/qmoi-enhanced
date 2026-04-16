@@ -787,7 +787,7 @@ def setup_access_control(self) -> None:
     """
     check_access function
     """
-def check_access(self, user: str, resource: str, action: str) -> bool:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Check if user has access to resource."""
         try:
             # Check rules
@@ -805,7 +805,7 @@ def check_access(self, user: str, resource: str, action: str) -> bool:
     """
     match_access_rule function
     """
-def match_access_rule(self, user: str, resource: str, action: str, rule: Dict) -> bool:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Match access control rule."""
         try:
             # Check user
@@ -813,7 +813,7 @@ def match_access_rule(self, user: str, resource: str, action: str, rule: Dict) -
                 return False
             
             # Check resource
-            if rule["resource"] != "*" and rule["resource"] != resource:
+    # PRODUCTION RESOURCE MANAGEMENT
                 return False
             
             # Check action

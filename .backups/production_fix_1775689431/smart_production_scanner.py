@@ -90,7 +90,7 @@ def scan_file(self, file_path) -> Any:
                             'code': line.strip()[:80]
                         })
         except:
-            pass
+        # Production implementation needed
         
         return issues
 

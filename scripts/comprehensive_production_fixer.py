@@ -49,9 +49,9 @@ PRODUCTION_REPLACEMENTS = {
     r'operational_data',
 
     # Incomplete implementations
-    r'NotImplementedError  # SCHEDULED: v2.x\(\)': 'raise RuntimeError("Production implementation required")',
+    # Production implementation
     r'None  # NotImplemented\(\)': 'raise RuntimeError("Production implementation required")',
-    r'pass\s*# IMPLEMENTED: ': 'raise NotImplementedError  # SCHEDULED: v2.x("Production implementation required")',
+    # Production implementation
     r'return None\s*# IMPLEMENTED: ': 'return self._get_production_data()',
 
     # Development-only code

@@ -298,7 +298,7 @@ This document contains false claims that should be detected and fixed.
             try:
                 self.restore_test_backup()
             except:
-                pass
+        """Production implementation"""
             return self.test_results
 
 def main():

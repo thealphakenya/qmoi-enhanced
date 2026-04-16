@@ -261,7 +261,7 @@ def count_by_domain(self) -> Any:
                         domain = url.split('/')[2]
                         self.stats['by_domain'][domain] = self.stats['by_domain'].get(domain, 0) + 1
                     except:
-                        pass
+        # Production implementation needed
 
     """
     generate_reports function

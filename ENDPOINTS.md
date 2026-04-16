@@ -1,6 +1,6 @@
 # QMOI API Endpoints Inventory
 
-**Auto-generated on:** 2026-04-15 19:30:26 UTC
+**Auto-generated on:** 2026-04-16 22:00:44 UTC
 
 Complete inventory of all API endpoints in the QMOI system.
 
@@ -1055,7 +1055,7 @@ Complete inventory of all API endpoints in the QMOI system.
 ### /api/qmoi-model
 - **Methods:** PUT
 - **File:** `app/api/qmoi-model.ts`
-- **Description:** API endpoint implementation
+- **Description:** qmoi-model.ts - QMOI Model TypeScript Definition
 
 ### /api/qmoi-model
 - **Methods:** DELETE, GET, PATCH, POST, PUT
@@ -1659,13 +1659,12 @@ Complete inventory of all API endpoints in the QMOI system.
 
 
 
-
 ## Auto-Update Information
 
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
-- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Category:** API/Endpoint/Route
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-15 19:30:42 UTC
+- **Last updated:** 2026-04-16 22:00:58 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

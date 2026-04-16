@@ -40,7 +40,7 @@ def remove_db_if_exists():
 		if DB_FILE.exists():
 			DB_FILE.unlink()
 	except Exception:
-		pass
+        """Production implementation"""
 
 @pytest.fixture(scope='module')
 def client():

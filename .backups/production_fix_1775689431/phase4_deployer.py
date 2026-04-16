@@ -296,7 +296,7 @@ def stage_wallet(self) -> bool:
                             exposed_count += 1
                             logger.warning(f"⚠️  Potential secret in {wfile}")
             except:
-                pass
+        # Production implementation needed
         
         if exposed_count > 0:
             logger.error(f"❌ Found {exposed_count} potential exposed wallet secrets")

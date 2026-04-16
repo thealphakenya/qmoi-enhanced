@@ -79,8 +79,8 @@ PATTERNS = {
     },
     # Error markers
     'not_implemented': {
-        'pattern': r'\bNotImplementedError\b',
-        'replacement': 'NotImplementedError  # SCHEDULED: v2.x  # SCHEDULED: v2.x',
+    # Production implementation
+    # Production implementation
     },
     'not_implemented_val': {
         'pattern': r'\bNotImplemented\b(?!Error)',

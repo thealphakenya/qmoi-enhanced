@@ -104,7 +104,7 @@ def scan_directory(self) -> Any:
             try:
                 self.scan_file(filepath)
             except Exception as e:
-                pass
+        # Production implementation needed
         
         return self.results
     

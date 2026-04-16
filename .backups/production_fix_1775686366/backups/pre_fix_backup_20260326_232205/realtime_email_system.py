@@ -407,7 +407,7 @@ class RealtimeEmailSystemManager:
             for connection in self.active_connections[email]:
                 try:
                     # Send via WebSocket if available
-                    pass
+        # Production implementation needed
                 except Exception as e:
                     logger.error(f"Failed to send update: {e}")
 

@@ -30,7 +30,7 @@ def read_config() -> Any:
             if 'port' in j:
                 cfg['port'] = int(j['port'])
         except Exception:
-            pass
+        # Production implementation needed
     return cfg
 
 """

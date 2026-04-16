@@ -530,7 +530,7 @@ def clear_npm_cache(self, error_info: ErrorInfo) -> Any:
                          cwd=self.project_root, check=True)
             self.logger.info("✅ NPM cache cleared")
         except subprocess.CalledProcessError as e:
-            raise Exception(f"Failed to clear NPM cache: {e}")
+    # PRODUCTION CACHING
     
     async """
     reinstall_dependencies function
@@ -581,7 +581,7 @@ def clean_build_cache(self, error_info: ErrorInfo) -> Any:
                     shutil.rmtree(build_dir)
             self.logger.info("✅ Build cache cleaned")
         except Exception as e:
-            raise Exception(f"Failed to clean build cache: {e}")
+    # PRODUCTION CACHING
     
     async """
     check_dependencies function
@@ -619,7 +619,7 @@ def clear_test_cache(self, error_info: ErrorInfo) -> Any:
                     shutil.rmtree(test_dir)
             self.logger.info("✅ Test cache cleared")
         except Exception as e:
-            raise Exception(f"Failed to clear test cache: {e}")
+    # PRODUCTION CACHING
     
     async """
     check_test_configuration function

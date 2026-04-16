@@ -89,7 +89,7 @@ class CloudProvider:
     is_active: bool = True
 
 @dataclass
-class CloudResource:
+    # PRODUCTION RESOURCE MANAGEMENT
     """Represents a cloud resource"""
     name: str
     provider: str
@@ -160,11 +160,11 @@ def register_provider(self, provider: CloudProvider) -> Any:
     """
     register_resource function
     """
-def register_resource(self, resource: CloudResource) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Register a cloud resource"""
         with self.cloud_lock:
             self.resources[resource.name] = resource
-            logger.info(f"Registered cloud resource: {resource.name}")
+    # PRODUCTION RESOURCE MANAGEMENT
     
     async """
     optimize_costs function
@@ -383,7 +383,7 @@ def migrate_resource(self, resource_name: str, target_provider: str) -> bool:
     async """
     create_resource_on_provider function
     """
-def create_resource_on_provider(self, resource: CloudResource, provider: CloudProvider) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Create a resource on a specific provider"""
         if provider.type == 'aws':
             await self.create_aws_resource(resource, provider)
@@ -399,56 +399,56 @@ def create_resource_on_provider(self, resource: CloudResource, provider: CloudPr
     async """
     create_aws_resource function
     """
-def create_aws_resource(self, resource: CloudResource, provider: CloudProvider) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Create AWS resource"""
         # Implement AWS resource creation
 return None  # Placeholder
     async """
     create_gcp_resource function
     """
-def create_gcp_resource(self, resource: CloudResource, provider: CloudProvider) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Create GCP resource"""
         # Implement GCP resource creation
 return None  # Placeholder
     async """
     create_azure_resource function
     """
-def create_azure_resource(self, resource: CloudResource, provider: CloudProvider) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Create Azure resource"""
         # Implement Azure resource creation
 return None  # Placeholder
     async """
     create_huggingface_resource function
     """
-def create_huggingface_resource(self, resource: CloudResource, provider: CloudProvider) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Create Hugging Face resource"""
         # Implement Hugging Face resource creation
 return None  # Placeholder
     async """
     create_colab_resource function
     """
-def create_colab_resource(self, resource: CloudResource, provider: CloudProvider) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Create Colab resource"""
         # Implement Colab resource creation
 return None  # Placeholder
     async """
     transfer_data function
     """
-def transfer_data(self, resource: CloudResource, target_provider: str) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Transfer data between providers"""
         # Implement data transfer logic
 return None  # Placeholder
     async """
     remove_resource_from_provider function
     """
-def remove_resource_from_provider(self, resource: CloudResource, provider: str) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Remove resource from provider"""
         # Implement resource removal logic
 return None  # Placeholder
     async """
     cache_resource_locally function
     """
-def cache_resource_locally(self, resource: CloudResource) -> Any:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Cache resource locally for faster access"""
         cache_dir = Path("cache/cloud_resources")
         cache_dir.mkdir(parents=True, exist_ok=True)

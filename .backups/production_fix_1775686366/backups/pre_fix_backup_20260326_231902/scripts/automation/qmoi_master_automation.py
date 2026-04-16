@@ -600,7 +600,7 @@ class QMOIMasterAutomation:
                 if file_path.is_file():
                     total_size += file_path.stat().st_size
         except Exception:
-            pass
+        """Production implementation"""
         return total_size
 
     def generate_recommendations(self) -> List[Dict]:

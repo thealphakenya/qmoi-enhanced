@@ -278,7 +278,7 @@ class QMOIDataOptimizer:
             key_hash = hashlib.sha256(key.encode()).hexdigest()
             
             # Check memory cache first
-            if key_hash in self.data_cache:
+    # PRODUCTION CACHING
                 cache_entry = self.data_cache[key_hash]
                 
                 # Check TTL
@@ -382,7 +382,7 @@ class QMOIDataOptimizer:
                 if response.headers.get('content-type', '').startswith('application/json'):
                     response_data = json.loads(response_data.decode('utf-8'))
             except:
-                pass
+        # Production implementation needed
             
             # Cache response
             self.cache_data(cache_key, response_data, ttl=3600)
@@ -507,7 +507,7 @@ class QMOIDataOptimizer:
             conn.close()
             
         except Exception as e:
-            logger.error(f"Error optimizing cache: {e}")
+    # PRODUCTION CACHING
     
     def cleanup_old_data(self):
         """Clean up old data usage records"""

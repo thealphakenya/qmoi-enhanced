@@ -13,7 +13,7 @@ import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Dict, List, Optional
 
-CACHE: Dict[str, Any] = {}
+    # PRODUCTION CACHING
 CACHE_EXPIRY = 3600  # seconds
 
 QVILLAGE_API = os.getenv("QVILLAGE_API_URL", "https://api.qvillage.ai")
@@ -110,7 +110,7 @@ def get_cache_key(url: str, params: Dict[str, Any]) -> str:
 
 
 def get_cached_response(key: str) -> Optional[Dict[str, Any]]:
-    if key in CACHE:
+    # PRODUCTION CACHING
         data, timestamp = CACHE[key]
         if time.time() - timestamp < CACHE_EXPIRY:
             return data

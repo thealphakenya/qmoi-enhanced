@@ -31,7 +31,7 @@ LINK_RE = re.compile(r"\[(?:[^\]]+)\]\(([^)]+)\)")
 
 class LinkValidationError(Exception):
     """Raised when link validation encounters a fatal error."""
-    pass
+        """Production implementation"""
 
 
 def validate_links(links_file, urls, allow_network=True):

@@ -37,7 +37,7 @@ def gh_post(path, payload):
             if hasattr(e, 'read'):
                 print('HTTP error body:', e.read().decode(), file=sys.stderr)
         except Exception:
-            pass
+        # Production implementation needed
         print('HTTP error during request:', e, file=sys.stderr)
         return None
 

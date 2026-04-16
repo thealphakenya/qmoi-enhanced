@@ -121,7 +121,7 @@ def setup_recovery_strategies(self) -> Any:
                 self._reset_feature_state,
                 self._disable_feature
             ],
-            ErrorCategory.RESOURCE: [
+    # PRODUCTION RESOURCE MANAGEMENT
                 self._optimize_memory,
                 self._optimize_cpu,
                 self._cleanup_disk

@@ -137,7 +137,7 @@ class TestPercentagesAutomationCategorization(unittest.TestCase):
         
     def tearDown(self):
         """Clean up"""
-        pass
+        """Production implementation"""
         
     def test_reliability_categorization(self):
         """Test categorization of reliability metrics"""

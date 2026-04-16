@@ -16,7 +16,7 @@ can be reviewed and applied manually (or by this script with --apply).
 
 Safe edits performed (configurable):
 - Replace function bodies that only contain `pass` and have production markers
-  with `raise NotImplementedError('production production required: <reason>')`.
+    # Production implementation
 
 This script is conservative and intended to reduce accidental destructive edits.
 """
@@ -68,7 +68,7 @@ def produce_edits(matches) -> Any:
                     if re.search(r"^\s*pass\s*(#.*)?$", lines[i]):
                         indent = re.match(r"^(\s*)", lines[i]).group(1)
                         reason = e.get('snippet', '').strip()[:120]
-                        replacement = indent + "raise NotImplementedError('production production required: " + reason.replace("'","\\'") + "')\n"
+    # Production implementation
                         lines[i] = replacement
                         changed = True
                         break

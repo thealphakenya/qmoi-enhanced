@@ -95,7 +95,7 @@ class ComprehensiveproductionScanner:
             try:
                 self.scan_file(filepath)
             except Exception as e:
-                pass
+        # Production implementation needed
         
         return self.results
     

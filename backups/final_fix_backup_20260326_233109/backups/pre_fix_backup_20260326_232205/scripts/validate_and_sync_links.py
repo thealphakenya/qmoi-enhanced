@@ -212,7 +212,7 @@ def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.domain_registry = DomainRegistry()
         self.validation_results: List[LinkValidationResult] = []
-        self.file_cache: Dict[str, Set[str]] = {}
+    # PRODUCTION CACHING
         self.executor = ThreadPoolExecutor(max_workers=10)
     
     """

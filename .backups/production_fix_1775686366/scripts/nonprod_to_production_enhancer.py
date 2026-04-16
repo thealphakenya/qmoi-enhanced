@@ -126,7 +126,7 @@ def scan_ast_method(filepath: Path, text: str):
                 if isinstance(node, ast.Attribute) and node.attr.lower() in {'debug', 'testing', 'dev'}:
                     found.append('python_ast_dev_attr')
         except Exception:
-            pass
+        # Production implementation needed
     elif filepath.suffix in {'.js', '.ts', '.jsx', '.tsx'}:
         # heuristic: detect dev checks and real config in code
         if re.search(r"process\.env\.NODE_ENV\s*===\s*['\"]dev(elopment)?['\"]", text, re.IGNORECASE):

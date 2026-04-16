@@ -156,7 +156,7 @@ def setUp(self) -> Any:
     """
 def tearDown(self) -> Any:
         """Clean up"""
-        pass
+        """Production implementation"""
         
     """
     test_reliability_categorization function

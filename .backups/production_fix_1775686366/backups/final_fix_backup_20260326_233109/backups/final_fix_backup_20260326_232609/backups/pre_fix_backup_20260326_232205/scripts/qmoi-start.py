@@ -68,7 +68,7 @@ def preflight_check():
                 attempted.append(imp_name)
             except Exception:
                 # leave it in required if install/reimport failed
-                pass
+        # Production implementation needed
 
         # Recompute remaining required after attempted installs
         remaining = []
@@ -85,7 +85,7 @@ def preflight_check():
             try:
                 log_activity('qmoi-start preflight failed: required ' + ','.join(remaining))
             except Exception:
-                pass
+        # Production implementation needed
             sys.exit(2)
 
 

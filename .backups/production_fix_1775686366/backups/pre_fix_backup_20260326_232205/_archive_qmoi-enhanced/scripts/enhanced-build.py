@@ -39,7 +39,7 @@ class QMOIEnhancedBuilder:
             subprocess.run(["taskkill", "/F", "/IM", "qmoiexe.exe"], 
                          capture_output=True, check=False)
         except:
-            pass
+        # Production implementation needed
         
         # Wait a moment for processes to terminate
         time.sleep(2)

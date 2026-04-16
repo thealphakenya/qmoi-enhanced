@@ -450,7 +450,7 @@ def _send_alert_notification(self, alert: Dict[str, Any]) -> Any:
         """Send alert notification"""
         try:
             # Implement alert notification (e.g., email, SMS, webhook)
-            pass
+        # Production implementation needed
         except Exception as e:
             self.logger.error(f"Error sending alert notification: {str(e)}")
 

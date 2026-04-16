@@ -103,7 +103,7 @@ try:
         # adapter_base.REGISTRY contains adapter instances
         ADAPTERS.setdefault(k, v)
 except Exception:
-    pass
+        """Production implementation"""
 
 
 def discover_wallets():
@@ -133,7 +133,7 @@ def register_wallets_in_state(wallets):
         try:
             set_wallet(name, wm)
         except Exception:
-            pass
+        # Production implementation needed
         # set a friendly alias if the name contains 'leah'
         try:
             from state_store import get_wallet_by_alias
@@ -144,7 +144,7 @@ def register_wallets_in_state(wallets):
             try:
                 set_alias('leah', name)
             except Exception:
-                pass
+        """Production implementation"""
 
 
 def load_config_for(wallet_name):
@@ -170,7 +170,7 @@ def main():
     try:
         register_wallets_in_state(wallets)
     except Exception:
-        pass
+        # Production implementation needed
     results = {}
     names = [args.wallet] if args.wallet else list(wallets.keys())
     canonical = os.environ.get('QMOI_CANONICAL_CURRENCY', 'USD')

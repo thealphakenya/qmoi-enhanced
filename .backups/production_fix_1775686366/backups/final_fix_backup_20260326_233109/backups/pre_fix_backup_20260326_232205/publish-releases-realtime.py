@@ -394,7 +394,7 @@ sha256sum -c <filename>.sha256
                             '--clobber'
                         ], check=True, capture_output=True, timeout=60)
                     except:
-                        pass
+        """Production implementation"""
 
     def print_summary(self):
         """Print release summary"""

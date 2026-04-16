@@ -191,7 +191,7 @@ def main():
                 req.add_header('Authorization', f'token {GITHUB_TOKEN}')
                 try:
                     with request.urlopen(req) as r:
-                        pass
+        # Production implementation needed
                 except Exception as e:
                     print(f'    delete failed: {e}')
                     continue

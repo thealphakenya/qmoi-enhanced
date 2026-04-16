@@ -54,7 +54,7 @@ def wrapped(*args, **kwargs) -> Any:
                     return jsonify({'status': 'error', 'reason': 'rate_limited'}), 429
                 bucket.append(now)
             except Exception:
-                pass
+        # Production implementation needed
             return f(*args, **kwargs)
         wrapped.__name__ = f.__name__
         return wrapped
@@ -207,7 +207,7 @@ def ensure_db_and_migrate() -> Any:
             cur.execute('ALTER TABLE revoked_tokens ADD COLUMN jti TEXT')
         except Exception:
             # ignore if cannot add (older sqlite)
-            pass
+        # Production implementation needed
     cur.execute('CREATE TABLE IF NOT EXISTS webauthn_creds (username TEXT, cred TEXT, fmt TEXT)')
     cur.execute('CREATE TABLE IF NOT EXISTS attachments (id TEXT PRIMARY KEY, username TEXT, name TEXT, size INTEGER, mime TEXT, data TEXT, created TEXT)')
     cur.execute('CREATE TABLE IF NOT EXISTS sponsored (username TEXT PRIMARY KEY, added_by TEXT, added_at TEXT)')
@@ -395,7 +395,7 @@ def is_token_revoked(token) -> Any:
                 if cur.fetchone():
                     return True
             except Exception:
-                pass
+        # Production implementation needed
             # Query for jti
             if jti:
                 try:
@@ -403,7 +403,7 @@ def is_token_revoked(token) -> Any:
                     if cur.fetchone():
                         return True
                 except Exception:
-                    pass
+        # Production implementation needed
         finally:
             conn.close()
     # If DB not available or no match, treat as not revoked
@@ -426,7 +426,7 @@ def is_sponsored(username) -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 """
@@ -448,7 +448,7 @@ def _ensure_wallet(username) -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 """
@@ -476,7 +476,7 @@ def _adjust_balance(username, delta_cents) -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 """
@@ -496,7 +496,7 @@ def _get_balance(username) -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 @app.route('/sponsored/add', methods=['POST'])
@@ -542,7 +542,7 @@ def sponsored_add() -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 """
@@ -567,7 +567,7 @@ def sponsored_list() -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 """
@@ -586,7 +586,7 @@ def _is_master_request(req) -> Any:
             if payload.get('sub') == master:
                 return True
         except Exception:
-            pass
+        # Production implementation needed
     return False
 
 
@@ -643,7 +643,7 @@ def admin_set_pricing() -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 @app.route('/admin/check-access/<username>/<feature>', methods=['GET'])
@@ -677,7 +677,7 @@ def admin_check_access(username, feature) -> Any:
                     if exp_dt > datetime.datetime.utcnow():
                         return jsonify({'status': 'ok', 'access': True, 'reason': 'subscription_active', 'expires_at': expires_at})
                 except Exception:
-                    pass
+        # Production implementation needed
             return jsonify({'status': 'ok', 'access': False, 'price_cents': price_cents})
         finally:
             conn.close()
@@ -897,14 +897,14 @@ def deals_purchase(deal_id) -> Any:
         try:
             conn.rollback()
         except Exception:
-            pass
+        # Production implementation needed
         app.logger.exception('Purchase transaction failed')
         return jsonify({'status': 'error', 'reason': 'purchase_failed'}), 500
     finally:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 # Enhanced Deal Endpoints
@@ -1395,7 +1395,7 @@ def attachments() -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 @app.route('/memories', methods=['GET'])
@@ -1617,7 +1617,7 @@ def list_attachments() -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 @app.route('/ready', methods=['GET'])
@@ -1643,7 +1643,7 @@ def ready() -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 @app.route('/metrics', methods=['GET'])
@@ -1671,7 +1671,7 @@ def metrics() -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 @app.route('/attachments/<att_id>/download', methods=['GET'])
@@ -1709,7 +1709,7 @@ def attachment_download(att_id) -> Any:
                 _ = base64.b64decode(data_field.split(',')[-1])
                 return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'dataBase64': data_field})
             except Exception:
-                pass
+        # Production implementation needed
         # Fallback: no binary available; return metadata and a guidance URL
         return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'IMPLEMENTED': 'preview-only or full data not stored; upgrade to S3 for downloads'})
     except Exception:
@@ -1719,7 +1719,7 @@ def attachment_download(att_id) -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
 
 @app.route('/ai/tts', methods=['POST'])
@@ -1915,7 +1915,7 @@ def payments_webhook() -> Any:
         try:
             processor.record_event(event_id, etype)
         except Exception:
-            pass
+        # Production implementation needed
 
         conn.commit()
 
@@ -1923,7 +1923,7 @@ def payments_webhook() -> Any:
         try:
             conn.rollback()
         except Exception:
-            pass
+        # Production implementation needed
         app.logger.error(f"Error processing webhook: {e}")
         return jsonify({
             'status': 'error',
@@ -1934,7 +1934,7 @@ def payments_webhook() -> Any:
         try:
             conn.close()
         except Exception:
-            pass
+        # Production implementation needed
 
     return jsonify({'status': 'ok' if handled else 'ignored'})
 

@@ -472,7 +472,7 @@ class QMOIErrorHandler:
                          cwd=self.project_root, check=True)
             self.logger.info("✅ NPM cache cleared")
         except subprocess.CalledProcessError as e:
-            raise Exception(f"Failed to clear NPM cache: {e}")
+    # PRODUCTION CACHING
     
     async def reinstall_dependencies(self, error_info: ErrorInfo):
         """Reinstall dependencies"""
@@ -514,7 +514,7 @@ class QMOIErrorHandler:
                     shutil.rmtree(build_dir)
             self.logger.info("✅ Build cache cleaned")
         except Exception as e:
-            raise Exception(f"Failed to clean build cache: {e}")
+    # PRODUCTION CACHING
     
     async def check_dependencies(self, error_info: ErrorInfo):
         """Check dependencies"""
@@ -543,7 +543,7 @@ class QMOIErrorHandler:
                     shutil.rmtree(test_dir)
             self.logger.info("✅ Test cache cleared")
         except Exception as e:
-            raise Exception(f"Failed to clear test cache: {e}")
+    # PRODUCTION CACHING
     
     async def check_test_configuration(self, error_info: ErrorInfo):
         """Check test configuration"""

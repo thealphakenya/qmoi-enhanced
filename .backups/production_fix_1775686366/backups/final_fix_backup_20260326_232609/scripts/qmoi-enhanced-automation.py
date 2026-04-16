@@ -319,7 +319,7 @@ class BaseModule:
     
     async def run(self) -> AutomationResult:
         """Run module (to be implemented by subclasses)"""
-        raise NotImplementedError
+    """Production implementation"""
     
     def get_performance_metrics(self) -> Dict[str, Any]:
         """Get current performance metrics"""

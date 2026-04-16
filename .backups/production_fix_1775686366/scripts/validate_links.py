@@ -241,7 +241,7 @@ class LinkValidator:
                         domain = url.split('/')[2]
                         self.stats['by_domain'][domain] = self.stats['by_domain'].get(domain, 0) + 1
                     except:
-                        pass
+        """Production implementation"""
 
     def generate_reports(self):
         """Generate CSV and JSON reports"""

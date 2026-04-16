@@ -448,7 +448,7 @@ def broadcast_update(self, email: str, event_type: str, data: Dict) -> Any:
             for connection in self.active_connections[email]:
                 try:
                     # Send via WebSocket if available
-                    pass
+        # Production implementation needed
                 except Exception as e:
                     logger.error(f"Failed to send update: {e}")
 

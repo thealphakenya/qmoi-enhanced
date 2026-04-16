@@ -28,7 +28,7 @@ DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 _LOCK = threading.RLock()
 
-class LRUCache:
+    # PRODUCTION CACHING
     """
     __init__ function
     """

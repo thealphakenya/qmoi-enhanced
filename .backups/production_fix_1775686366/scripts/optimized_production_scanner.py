@@ -90,7 +90,7 @@ class OptimizedproductionScanner:
                             'code': line.strip()[:100]
                         })
         except:
-            pass
+        """Production implementation"""
         return issues
     
     def scan_repository(self):

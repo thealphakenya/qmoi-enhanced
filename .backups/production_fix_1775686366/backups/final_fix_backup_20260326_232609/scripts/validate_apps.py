@@ -54,7 +54,7 @@ for app in apps:
                         app_report['autoupdate_helpers'] = True
                         break
                 except Exception:
-                    pass
+        # Production implementation needed
     report['apps'][app] = app_report
 
 OUT_JSON = ROOT / 'tools' / 'validation_report.json'

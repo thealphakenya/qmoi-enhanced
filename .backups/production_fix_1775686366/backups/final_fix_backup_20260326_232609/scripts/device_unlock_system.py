@@ -433,7 +433,7 @@ class prodiceUnlockSystem:
                         winreg.DeleteValue(key, "prodiceAdminEnabled")
                         winreg.DeleteValue(key, "AllowprodiceAdmin")
                 except:
-                    pass
+        # Production implementation needed
             
             return {"success": True, "message": "Windows prodice admin removed"}
         except Exception as e:
@@ -464,7 +464,7 @@ class prodiceUnlockSystem:
                     if result.returncode == 0:
                         return {"success": True, "message": f"Linux prodice admin removed via {pm}"}
                 except:
-                    pass
+        # Production implementation needed
             
             return {"success": True, "message": "Linux prodice admin removal attempted"}
         except Exception as e:
@@ -488,7 +488,7 @@ class prodiceUnlockSystem:
                     try:
                         shutil.rmtree(payment_dir)
                     except:
-                        pass
+        # Production implementation needed
             
             return {"success": True, "message": "Payment locks cleared"}
         except Exception as e:
@@ -525,7 +525,7 @@ class prodiceUnlockSystem:
                         winreg.SetValueEx(key, "DisableAppInstall", 0, winreg.REG_DWORD, 0)
                         winreg.SetValueEx(key, "AllowAllTrustedApps", 0, winreg.REG_DWORD, 1)
                 except:
-                    pass
+        # Production implementation needed
             
             return {"success": True, "message": "Windows app restrictions removed"}
         except Exception as e:
@@ -557,7 +557,7 @@ class prodiceUnlockSystem:
                     elif pm == 'yum':
                         subprocess.run(['sudo', 'yum', 'update'], capture_output=True)
                 except:
-                    pass
+        # Production implementation needed
             
             return {"success": True, "message": "Linux app restrictions removed"}
         except Exception as e:
@@ -588,7 +588,7 @@ class prodiceUnlockSystem:
                     try:
                         shutil.rmtree(loan_dir)
                     except:
-                        pass
+        # Production implementation needed
             
             return {"success": True, "message": "Loan restrictions cleared"}
         except Exception as e:
@@ -607,7 +607,7 @@ class prodiceUnlockSystem:
                         if monitor in proc_name:
                             proc.terminate()
                 except:
-                    pass
+        # Production implementation needed
             
             return {"success": True, "message": "Usage monitoring removed"}
         except Exception as e:
@@ -628,7 +628,7 @@ class prodiceUnlockSystem:
                     try:
                         shutil.rmtree(org_dir)
                     except:
-                        pass
+        # Production implementation needed
             
             return {"success": True, "message": f"{organization} data cleared"}
         except Exception as e:
@@ -671,9 +671,9 @@ class prodiceUnlockSystem:
                 try:
                     with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, path, 0, winreg.KEY_WRITE) as key:
                         # Clear policy values
-                        pass
+        # Production implementation needed
                 except:
-                    pass
+        # Production implementation needed
             
             return {"success": True, "message": "Windows policies cleared"}
         except Exception as e:
@@ -701,9 +701,9 @@ class prodiceUnlockSystem:
                 if os.path.exists(policy_dir):
                     try:
                         # Remove policy files
-                        pass
+        # Production implementation needed
                     except:
-                        pass
+        # Production implementation needed
             
             return {"success": True, "message": "Linux policies cleared"}
         except Exception as e:
@@ -733,7 +733,7 @@ class prodiceUnlockSystem:
             
             for freedom in freedoms:
                 # Enable each freedom
-                pass
+        # Production implementation needed
             
             return {"success": True, "message": "prodice freedoms enabled"}
         except Exception as e:

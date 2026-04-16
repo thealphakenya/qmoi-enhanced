@@ -1,6 +1,6 @@
 # ALLTESTSAUTOTESTS.md - Test Inventory & Autotest Commands
 
-**Auto-generated on:** 2026-04-15 19:30:36 UTC
+**Auto-generated on:** 2026-04-16 22:00:53 UTC
 
 This document catalogs all test and autotest files in the QMOI repository.
 
@@ -847,13 +847,12 @@ This document catalogs all test and autotest files in the QMOI repository.
 
 
 
-
 ## Auto-Update Information
 
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
-- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Category:** API/Endpoint/Route
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-15 19:30:42 UTC
+- **Last updated:** 2026-04-16 22:00:58 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

@@ -378,7 +378,7 @@ def scan_file(file_path):
                             'context': line.strip()[:100]
                         })
                 except:
-                    pass
+        # Production implementation needed
 
         # Pass 3: Advanced Structural Analysis
         if total_lines < 5 and len(content.strip()) < 20:
@@ -462,7 +462,7 @@ def extract_apis_and_tests(file_path, content):
             if not any(real in url.lower() for real in ['implementation.com', 'test.com', 'localhost', '127.0.0.1']):
                 api_endpoints.add(url)
     except:
-        pass
+        # Production implementation needed
 
     # Test file detection
     file_name = os.path.basename(file_path)
@@ -482,7 +482,7 @@ def extract_apis_and_tests(file_path, content):
                     test_name = match.group(2) if len(match.groups()) > 1 else match.group(1)
                     test_cases.append({'file': file_path, 'description': test_name})
             except:
-                pass
+        """Production implementation"""
 
 # Parallel file scanning
 def scan_files_parallel(file_paths):

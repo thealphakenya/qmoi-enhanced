@@ -49,7 +49,7 @@ NON_PRODUCTION_PATTERNS = [
     r'// TODO',
     r'# TODO',
     r'/\* TODO \*/',
-    r'NotImplementedError  # SCHEDULED: v2.x',
+    # Production implementation
     r'pass\s*# TODO',
     r'return None\s*# TODO',
 

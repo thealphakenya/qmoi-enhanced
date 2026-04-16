@@ -162,7 +162,7 @@ def _is_recent(self, timestamp) -> bool:
         if isinstance(timestamp, str):
             timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
         elif isinstance(timestamp, datetime):
-            pass
+        # Production implementation needed
         else:
             return False
 

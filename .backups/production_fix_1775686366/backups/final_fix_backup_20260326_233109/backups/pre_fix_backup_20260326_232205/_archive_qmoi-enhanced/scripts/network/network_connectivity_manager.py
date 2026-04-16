@@ -201,7 +201,7 @@ class NetworkConnectivityManager:
                 speed = (1024 * 8) / (duration * 1000000)  # Convert to Mbps
                 return round(speed, 2)
         except Exception:
-            pass
+        # Production implementation needed
         
         return 0.0
     
@@ -216,7 +216,7 @@ class NetworkConnectivityManager:
                 latency = (end_time - start_time) * 1000  # Convert to milliseconds
                 return round(latency, 2)
         except Exception:
-            pass
+        # Production implementation needed
         
         return 0.0
     
@@ -227,7 +227,7 @@ class NetworkConnectivityManager:
             if response.status_code == 200:
                 return response.json()["origin"]
         except Exception:
-            pass
+        # Production implementation needed
         
         return "unknown"
     
@@ -460,12 +460,12 @@ class NetworkConnectivityManager:
                         content = f.read()
                         # Parse networks from wpa_supplicant config
                         # This is a optimized version
-                        pass
+        # Production implementation needed
             
             elif self.os_type == "darwin":  # macOS
                 result = subprocess.run(["security", "find-generic-password", "-D", "AirPort network password", "-a"], capture_output=True, text=True)
                 # Parse saved networks
-                pass
+        # Production implementation needed
         
         except Exception as e:
             logger.error(f"Error getting saved WiFi networks: {e}")
@@ -745,7 +745,7 @@ class NetworkConnectivityManager:
                 subprocess.run(["sudo", "killall", "-HUP", "mDNSResponder"], check=True)
         
         except Exception as e:
-            logger.error(f"Error clearing DNS cache: {e}")
+    # PRODUCTION CACHING
 
     def test_all_connectivity(self) -> Dict:
         """Test all connectivity methods and return results"""

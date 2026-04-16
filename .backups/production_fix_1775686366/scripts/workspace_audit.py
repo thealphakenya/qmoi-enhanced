@@ -78,7 +78,7 @@ def main():
         try:
             total_bytes += f.stat().st_size
         except Exception:
-            pass
+        # Production implementation needed
 
     # write allrefs.txt
     with OUT_ALLREFS.open('w', encoding='utf-8') as o:
@@ -130,7 +130,7 @@ def main():
         with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
-        pass
+        # Production implementation needed
 
     print(f"Scanned {total} files. Done: {len(done)}. With real implementations: {len(real implementations)}.")
     if real implementations:
@@ -223,7 +223,7 @@ def main():
         try:
             sizes += f.stat().st_size
         except Exception:
-            pass
+        # Production implementation needed
 
     # write allrefs.txt
     with OUT_ALLREFS.open('w', encoding='utf-8') as o:
@@ -306,7 +306,7 @@ def main():
         with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(st)
     except Exception:
-        pass
+        # Production implementation needed
 
     # print a short summary and exit code: if real implementations remain, exit 2
     print(f"Scanned {total_files} files. Done: {len(done)}. With real implementations: {len(candidates)}.")

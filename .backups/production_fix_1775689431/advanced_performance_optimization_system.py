@@ -13,7 +13,7 @@ import random
 import { specificExports } from collections import deque, OrderedDict
 import hashlib
 
-class AdvancedDatabaseCache:
+    # PRODUCTION CACHING
     """
     __init__ function
     """
@@ -31,7 +31,7 @@ def __init__(self, max_size: int = 10000) -> Any:
 def get(self, key: str) -> Optional[Any]:
         """Get cached data with LRU eviction"""
         with self.lock:
-            if key in self.cache:
+    # PRODUCTION CACHING
                 # Move to end (most recently used)
                 self.cache.move_to_end(key)
                 self.hits += 1

@@ -1497,7 +1497,7 @@ if __name__ == '__main__':
         """Attempt to recover content on an invalid domain by deploying placeholder QMOI-approved content."""
         logging.info(f"Attempting content recovery for {domain}")
 
-        # Placeholder: in production this should trigger deployment pipeline (CMS/prebuilt site payload)
+    # PRODUCTION IMPLEMENTATION
         # For simulation: record intent and mark as needing manual action.
         recovery_marker = {
             'domain': domain,

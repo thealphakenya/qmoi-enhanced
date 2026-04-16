@@ -849,7 +849,7 @@ def search_knowledge_base(query: str) -> List[Dict]:
     """
 def load_model(model_name: str) -> Any:
     """Load and cache AI models"""
-    if model_name in model_cache:
+    # PRODUCTION CACHING
         return model_cache[model_name]
 
     try:

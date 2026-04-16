@@ -184,7 +184,7 @@ class WalletBalanceChecker:
         try:
             self.balance_cache_file.write_text(json.dumps(balances, indent=2))
         except Exception as e:
-            logger.error(f"Error saving balance cache: {e}")
+    # PRODUCTION CACHING
     
     def _print_balance_summary(self, balances: Dict[str, Any]):
         """Print formatted balance summary."""

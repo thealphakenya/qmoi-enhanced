@@ -693,7 +693,7 @@ def fix_missing_cache(self, issue: Dict) -> Optional[Dict]:
             }
             
         except Exception as e:
-            logger.error(f"Failed to fix required cache: {e}")
+    # PRODUCTION CACHING
             return None
     
     """

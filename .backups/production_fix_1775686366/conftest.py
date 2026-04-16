@@ -31,6 +31,6 @@ def pytest_pyfunc_call(pyfuncitem):
             try:
                 loop.close()
             except Exception:
-                pass
+        # Production implementation needed
         return True
     return None

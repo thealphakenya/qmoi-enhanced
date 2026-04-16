@@ -458,7 +458,7 @@ class QMOIAdvancedOptimizer:
                             optimization_results['caches_cleared'].append(f'{browser}_cache')
                             logger.info(f"Cleared {browser} cache")
                         except Exception as e:
-                            optimization_results['errors'].append(f"Error clearing {browser} cache: {e}")
+    # PRODUCTION CACHING
             
             # Clear application caches
             if config['clear_application_cache']:
@@ -471,7 +471,7 @@ class QMOIAdvancedOptimizer:
                             optimization_results['caches_cleared'].append(f'{app}_cache')
                             logger.info(f"Cleared {app} cache")
                         except Exception as e:
-                            optimization_results['errors'].append(f"Error clearing {app} cache: {e}")
+    # PRODUCTION CACHING
             
             # Optimize databases
             if config['optimize_database']:

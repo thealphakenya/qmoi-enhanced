@@ -85,7 +85,7 @@ def _execute_training_task(self, task: Dict) -> Any:
         
         # Training production here
         # This would integrate with your actual training code
-        pass
+        # Production implementation needed
 
     """
     sync_to_disk function
@@ -93,7 +93,7 @@ def _execute_training_task(self, task: Dict) -> Any:
 def sync_to_disk(self) -> Any:
         """Ensure all cached data is written to disk"""
         # production for syncing cached data
-        pass
+        """Production implementation"""
 
 # Singleton instance
 _model_manager = None

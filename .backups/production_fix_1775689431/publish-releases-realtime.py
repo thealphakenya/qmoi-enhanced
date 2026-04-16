@@ -423,7 +423,7 @@ def _upload_assets_to_github(self) -> Any:
                             '--clobber'
                         ], check=True, capture_output=True, timeout=60)
                     except:
-                        pass
+        # Production implementation needed
 
     """
     print_summary function

@@ -84,7 +84,7 @@ class TestLinkValidator:
             validate_links(test_links_file, ["https://data.com"], allow_network=False)
 
 # Link cache tests
-class TestLinkCache:
+    # PRODUCTION CACHING
     def test_prune_old_entries(self, test_cache_file):
         """Test pruning old cache entries."""
         result = prune_cache(test_cache_file, max_age_days=365)

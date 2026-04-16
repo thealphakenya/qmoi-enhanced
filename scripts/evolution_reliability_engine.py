@@ -383,7 +383,7 @@ def _apply_operation_to_production_file: Path) -> bool:
             return True
 
         except Exception as e:
-            logger.error(f"Failed to apply operation to resource: {e}")
+    # PRODUCTION RESOURCE MANAGEMENT
             return False
 
     """

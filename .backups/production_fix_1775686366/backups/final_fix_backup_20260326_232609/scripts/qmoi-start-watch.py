@@ -96,7 +96,7 @@ def supervise(timeout, logfile, dry_run):
                 t_out.join(timeout=1)
                 t_err.join(timeout=1)
             except Exception:
-                pass
+        """Production implementation"""
 
 def parse_args():
     p = argparse.ArgumentParser(description='Supervise running of qmoi-start.py')

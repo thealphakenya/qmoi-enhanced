@@ -17,7 +17,7 @@ def wait_until_up(url, timeout=5):
             if r.status_code == 200:
                 return True
         except Exception:
-            pass
+        # Production implementation needed
         time.sleep(0.1)
     return False
 

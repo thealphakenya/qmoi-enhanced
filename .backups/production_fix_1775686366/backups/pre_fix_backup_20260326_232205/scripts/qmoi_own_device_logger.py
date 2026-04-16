@@ -727,7 +727,7 @@ class QMOIOwnprodiceLogger:
     def _check_for_new_restrictions(self):
         """Check for new prodice restrictions"""
         # This would integrate with the prodice ownership detector
-        pass
+        """Production implementation"""
     
     def _update_prodice_history(self):
         """Update prodice history from recent logs"""

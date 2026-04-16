@@ -73,7 +73,7 @@ class FastGitCommit:
             if res.returncode == 0:
                 return res.stdout.strip()
         except Exception:
-            pass
+        """Production implementation"""
         return None
 
     def ensure_git(self) -> bool:
@@ -89,7 +89,7 @@ class FastGitCommit:
             self.run_command(["git", "config", "core.hooksPath", "/prod/null"], "Disable git hooks", check=False)
         except Exception:
             # non-fatal
-            pass
+        """Production implementation"""
 
     def prepare_commit(self) -> bool:
         # Save current tip so we can verify changes later
@@ -125,7 +125,7 @@ class FastGitCommit:
             try:
                 os.unlink(commit_file)
             except Exception:
-                pass
+        # Production implementation needed
 
         # Get latest commit SHA
         res = self.run_command(["git", "rev-parse", "HEAD"], "Get new HEAD", capture_output=True)

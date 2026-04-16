@@ -123,7 +123,7 @@ def main():
         with RESUME.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
-        pass
+        # Production implementation needed
 
     print(f"Checked {total} donerefs entries: kept={len(final)}, removed={len(removed)}. Report at {REPORT}")
     return 0

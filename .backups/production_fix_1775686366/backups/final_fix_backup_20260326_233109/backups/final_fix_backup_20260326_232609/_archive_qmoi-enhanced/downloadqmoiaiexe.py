@@ -34,7 +34,7 @@ def load_ngrok_token() -> Optional[str]:
                 if t:
                     return t
     except Exception:
-        pass
+        # Production implementation needed
     return None
 
 
@@ -45,7 +45,7 @@ def start_ngrok(port: int = 8080) -> Optional[str]:
         try:
             ngrok.set_auth_token(token)
         except Exception:
-            pass
+        # Production implementation needed
         try:
             tunnel = ngrok.connect(port)
             public_url = getattr(tunnel, "public_url", None) or str(tunnel)
@@ -66,7 +66,7 @@ def start_ngrok(port: int = 8080) -> Optional[str]:
             with open("ngrok_tunnel.txt", "w") as f:
                 f.write(public_url)
         except Exception:
-            pass
+        # Production implementation needed
 
     return public_url
 

@@ -409,7 +409,7 @@ class AllMonitorsStarter:
                 try:
                     process_info['process'].terminate()
                 except:
-                    pass
+        """Production implementation"""
 
 def main():
     """Main function"""

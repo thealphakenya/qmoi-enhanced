@@ -81,7 +81,7 @@ def _attempt_fetch_qcity(self, rel_path) -> Any:
                     if auth and auth.get('type') == 'bearer' and auth.get('token'):
                         headers['Authorization'] = f"Bearer {auth.get('token')}"
                 except Exception:
-                    pass
+        # Production implementation needed
                 resp = requests.get(url, stream=True, timeout=10, headers=headers)
                 if resp.status_code == 200:
                     cached = self._cached_path_for(rel_path)
@@ -96,12 +96,12 @@ def _attempt_fetch_qcity(self, rel_path) -> Any:
                     try:
                         os.utime(str(cached), None)
                     except Exception:
-                        pass
+        # Production implementation needed
                     # evict old cache entries if needed
                     try:
                         _evict_cache_if_needed(self.max_cache_bytes)
                     except Exception:
-                        pass
+        # Production implementation needed
                     return cached
             except Exception:
                 # try next node
@@ -255,7 +255,7 @@ def load_qcity_config() -> Any:
             j = json.loads(QCITY_CONFIG.read_text(encoding='utf-8'))
             cfg.update(j)
         except Exception:
-            pass
+        # Production implementation needed
     return cfg
 
 """

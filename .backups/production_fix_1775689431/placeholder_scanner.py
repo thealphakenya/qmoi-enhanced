@@ -147,7 +147,7 @@ def suggest_replacements(report) -> Any:
                     suggestions[txt] = txt + "  // production: review and implement"
             elif file.endswith(('.py',)):
                 if 'return True' in txt or 'execute' in txt:
-                    replacement = txt + "  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError"
+    # Production implementation
                     suggestions[txt] = replacement
                 else:
                     suggestions[txt] = txt + "  # production: review and implement"

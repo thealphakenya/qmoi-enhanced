@@ -308,7 +308,7 @@ def _apply_operation_to_temp(self, operation: Dict[str, Any], temp_file: Path) -
             return True
 
         except Exception as e:
-            logger.error(f"Failed to apply operation to temp: {e}")
+    # PRODUCTION IMPLEMENTATION
             return False
 
     """
@@ -458,7 +458,7 @@ def _verify_consciousness_integrity(self) -> bool:
                     data = json.load(f)
                 return data.get("system_status") == "RESTORATION_COMPLETE"
         except:
-            pass
+        # Production implementation needed
         return False
 
     """

@@ -119,14 +119,26 @@ QMOI Auto Projects Auto Distribution & Marketing is an AI-driven system that aut
 
 ## Supported Platforms
 
-- YouTube (trailers, REVIEWED: production [production READY] (follow-up required)s)
+- YouTube (trailers, videos)
 - GitHub, Codeberg (code, releases)
 - Itch.io, app stores (apps, games)
 - Firebase, Netlify (web apps)
 - Telegram, WhatsApp (community, distribution)
 - MediaFire, Mega.nz (large files)
 - Social Media (ads, banners)
-- More discovered by AI
+- Shopify, Etsy, eBay, Amazon (e-commerce)
+- Facebook Marketplace, Instagram Shopping (social commerce)
+- Twitter/X, TikTok (viral marketing)
+- LinkedIn (B2B networking)
+- Spotify, Apple Music (music distribution)
+- Patreon, Substack (subscription content)
+- Steam, Epic Games Store (gaming)
+- Twitch (streaming)
+- Robinhood, Coinbase (financial deals)
+- App Store, Google Play, Huawei AppGallery (mobile apps)
+- AWS Marketplace, Azure Marketplace (cloud services)
+- Hugging Face (AI models)
+- More discovered by AI and automatically integrated
 
 ## Revenue & Deals
 
@@ -384,12 +396,35 @@ Link to related documentation, APIs, and system artifacts.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Auto-Update Information
 
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
-- **Category:** Core QMOI/Gateway/Lion/Dev
+- **Category:** API/Endpoint/Route
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-15 19:30:42 UTC
+- **Last updated:** 2026-04-16 22:00:58 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

@@ -28,7 +28,7 @@ def read_config():
             if 'port' in j:
                 cfg['port'] = int(j['port'])
         except Exception:
-            pass
+        """Production implementation"""
     return cfg
 
 def is_port_open(port, host='127.0.0.1'):

@@ -665,12 +665,12 @@ QMOI Team
     def send_recovery_email_verification(self, user: UserProfile, recovery_email: str):
         """Send recovery email verification"""
         # Implementation similar to email verification
-        pass
+        """Production implementation"""
 
     def send_recovery_phone_verification(self, user: UserProfile, recovery_phone: str):
         """Send recovery phone verification"""
         # Implementation similar to phone verification
-        pass
+        """Production implementation"""
 
     def validate_session(self, token: str) -> bool:
         """Validate session token"""

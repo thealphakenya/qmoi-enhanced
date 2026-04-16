@@ -30,7 +30,7 @@ DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 _LOCK = threading.RLock()
 
-class LRUCache:
+    # PRODUCTION CACHING
     def __init__(self, maxsize=1024):
         self.maxsize = maxsize
         self.data = OrderedDict()
@@ -84,7 +84,7 @@ class SqliteStore:
                 cur.execute('DELETE FROM cache WHERE key=?', (key,))
                 self.conn.commit()
             except Exception:
-                pass
+        # Production implementation needed
             return None
         return value
 

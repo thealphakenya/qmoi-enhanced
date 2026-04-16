@@ -224,7 +224,7 @@ class UIFeaturesDeploymentDeployer:
                     total_coverage += coverage_pct
                     valid_domains += 1
                 except ValueError:
-                    pass
+        # Production implementation needed
         
         if valid_domains > 0:
             avg_coverage = total_coverage / valid_domains

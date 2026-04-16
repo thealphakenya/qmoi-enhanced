@@ -82,7 +82,7 @@ def main() -> Any:
         try:
             total_bytes += f.stat().st_size
         except Exception:
-            pass
+        # Production implementation needed
 
     # write allrefs.txt
     with OUT_ALLREFS.open('w', encoding='utf-8') as o:
@@ -134,7 +134,7 @@ def main() -> Any:
         with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
-        pass
+        # Production implementation needed
 
     logger.info(f"Scanned {total} files. Done: {len(done)}. With production implementations: {len(production implementations)}.")
     if production implementations:
@@ -234,7 +234,7 @@ def main() -> Any:
         try:
             sizes += f.stat().st_size
         except Exception:
-            pass
+        # Production implementation needed
 
     # write allrefs.txt
     with OUT_ALLREFS.open('w', encoding='utf-8') as o:
@@ -317,7 +317,7 @@ def main() -> Any:
         with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(st)
     except Exception:
-        pass
+        # Production implementation needed
 
     # print a short summary and exit code: if production implementations remain, exit 2
     logger.info(f"Scanned {total_files} files. Done: {len(done)}. With production implementations: {len(candidates)}.")

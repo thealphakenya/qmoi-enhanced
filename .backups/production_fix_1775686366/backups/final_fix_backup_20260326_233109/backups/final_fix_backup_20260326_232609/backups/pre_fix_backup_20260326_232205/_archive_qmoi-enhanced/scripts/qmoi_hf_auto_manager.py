@@ -79,7 +79,7 @@ class QMOIHFAutoManager:
                 logger.info(f"Repo {repo_id} already exists")
                 return True
             except HfHubHTTPError:
-                pass
+        # Production implementation needed
             
             # Create repo
             create_repo(
@@ -112,7 +112,7 @@ class QMOIHFAutoManager:
                 logger.info(f"Model repo {model_id} already exists")
                 return True
             except HfHubHTTPError:
-                pass
+        # Production implementation needed
             
             # Create model repo
             create_repo(

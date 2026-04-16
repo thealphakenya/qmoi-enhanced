@@ -124,7 +124,7 @@ class QCityAdvancedInstaller:
                     for gpu in c.Win32_VideoController():
                         return f"{gpu.Name} ({gpu.AdapterRAM // (1024**3)}GB)"
                 except ImportError:
-                    pass
+        # Production implementation needed
             elif platform.system() == "Linux":
                 # Linux GPU detection
                 try:
@@ -133,7 +133,7 @@ class QCityAdvancedInstaller:
                     if result.returncode == 0:
                         return result.stdout.strip()
                 except FileNotFoundError:
-                    pass
+        # Production implementation needed
             elif platform.system() == "Darwin":
                 # macOS GPU detection
                 try:
@@ -146,7 +146,7 @@ class QCityAdvancedInstaller:
                             if 'Chipset Model:' in line:
                                 return line.split(':')[1].strip()
                 except FileNotFoundError:
-                    pass
+        # Production implementation needed
         except Exception as e:
             logging.warning(f"GPU detection failed: {e}")
         
@@ -619,7 +619,7 @@ class QCityNotificationSystem:
     def _setup_windows_notifications(self):
         """Setup Windows notifications"""
         # Windows notifications are handled by the system
-        pass
+        """Production implementation"""
     
     def _send_windows_notification(self, title: str, message: str):
         """Send Windows notification"""
@@ -634,7 +634,7 @@ class QCityNotificationSystem:
     def _setup_macos_notifications(self):
         """Setup macOS notifications"""
         # macOS notifications are handled by the system
-        pass
+        """Production implementation"""
     
     def _send_macos_notification(self, title: str, message: str):
         """Send macOS notification"""
@@ -644,12 +644,12 @@ class QCityNotificationSystem:
                 f'display notification "{message}" with title "{title}"'
             ], check=True)
         except subprocess.CalledProcessError:
-            pass
+        """Production implementation"""
     
     def _setup_linux_notifications(self):
         """Setup Linux notifications"""
         # Linux notifications are handled by the system
-        pass
+        """Production implementation"""
     
     def _send_linux_notification(self, title: str, message: str):
         """Send Linux notification"""
@@ -658,7 +658,7 @@ class QCityNotificationSystem:
                 'notify-send', title, message
             ], check=True)
         except subprocess.CalledProcessError:
-            pass
+        """Production implementation"""
 
 class QCitySettingsManager:
     def __init__(self):

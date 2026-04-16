@@ -31,4 +31,4 @@ try:
     from .adapter_base import REGISTRY
     REGISTRY.setdefault('binance_testnet', BinanceTestnetAdapter())
 except Exception:
-    pass
+        # Production implementation needed

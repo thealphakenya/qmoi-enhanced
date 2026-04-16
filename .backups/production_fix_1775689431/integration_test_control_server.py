@@ -42,7 +42,7 @@ def remove_db_if_exists() -> Any:
 		if DB_FILE.exists():
 			DB_FILE.unlink()
 	except Exception:
-		pass
+        # Production implementation needed
 
 @pytest.fixture(scope='module')
 """

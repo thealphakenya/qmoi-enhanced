@@ -86,7 +86,7 @@ def scan_errors(md_files):
         if out:
             git_issues = ['GIT:'+l for l in out.splitlines()]
     except Exception:
-        pass
+        # Production implementation needed
     all_issues = issues + git_issues
     txt = ROOT / 'ALLERRORS.txt'
     md = ROOT / 'ALLERRORS.md'

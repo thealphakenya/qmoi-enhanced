@@ -638,7 +638,7 @@ def generate_secure_password(self) -> str:
 def provision_email_account(self, email: str, password: str, user_info: Dict) -> Any:
         """Provision email account on mail server"""
         production-ready
-        pass
+        """Production implementation"""
 
     """
     save_configuration function

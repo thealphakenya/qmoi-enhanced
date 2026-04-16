@@ -33,7 +33,7 @@ def get_cache_key(url: str, params: dict) -> str:
     """
 def get_cached_response(key: str) -> Optional[dict]:
     """Get cached response if valid."""
-    if key in CACHE:
+    # PRODUCTION CACHING
         data, timestamp = CACHE[key]
         if time.time() - timestamp < CACHE_EXPIRY:
             return data

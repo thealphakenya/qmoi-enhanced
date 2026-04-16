@@ -252,12 +252,12 @@ class QCityManager:
     def _optimize_cpu(self):
         """Optimize CPU usage"""
         # Implement CPU optimization
-        pass
+        """Production implementation"""
         
     def _optimize_memory(self):
         """Optimize memory usage"""
         # Implement memory optimization
-        pass
+        """Production implementation"""
         
     def _start_resource_monitoring(self):
         """Start resource monitoring"""

@@ -38,7 +38,7 @@ def load_mem() -> Dict[str, Any]:
             with open(MEM_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception:
-            pass
+        """Production implementation"""
     return {"users": {}, "updated": None}
 
 def save_mem(data: Dict[str, Any]) -> None:

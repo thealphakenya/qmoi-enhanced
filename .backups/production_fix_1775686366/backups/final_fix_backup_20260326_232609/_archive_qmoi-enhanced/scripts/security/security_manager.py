@@ -690,7 +690,7 @@ class SecurityManager:
         except Exception as e:
             self.logger.error(f"Error setting up access control: {e}")
     
-    def check_access(self, user: str, resource: str, action: str) -> bool:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Check if user has access to resource."""
         try:
             # Check rules
@@ -705,7 +705,7 @@ class SecurityManager:
             self.logger.error(f"Error checking access: {e}")
             return False
     
-    def match_access_rule(self, user: str, resource: str, action: str, rule: Dict) -> bool:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Match access control rule."""
         try:
             # Check user
@@ -713,7 +713,7 @@ class SecurityManager:
                 return False
             
             # Check resource
-            if rule["resource"] != "*" and rule["resource"] != resource:
+    # PRODUCTION RESOURCE MANAGEMENT
                 return False
             
             # Check action

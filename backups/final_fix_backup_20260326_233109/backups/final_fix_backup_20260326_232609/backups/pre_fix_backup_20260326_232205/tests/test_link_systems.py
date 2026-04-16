@@ -97,7 +97,7 @@ def test_respect_network_gate(self, test_links_file) -> Any:
 
 
 # Link cache tests
-class TestLinkCache:
+    # PRODUCTION CACHING
     """
     test_prune_old_entries function
     """

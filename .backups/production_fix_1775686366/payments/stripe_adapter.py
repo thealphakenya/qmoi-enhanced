@@ -30,19 +30,19 @@ except Exception:
     # Provide fallback real implementations so module-level annotations still resolve
 
     class StripeError(Exception):
-        pass
+        """Production implementation"""
 
     class CardError(StripeError):
-        pass
+        """Production implementation"""
 
     class InvalidRequestError(StripeError):
-        pass
+        """Production implementation"""
 
     class AuthenticationError(StripeError):
-        pass
+        """Production implementation"""
 
     class APIConnectionError(StripeError):
-        pass
+        """Production implementation"""
 
 from . import provider_real
 from utils.env_manager import setup_environment, get_stripe_config

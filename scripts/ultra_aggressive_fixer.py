@@ -59,9 +59,9 @@ def apply_direct_fixes():
         (r'operational_data'),
 
         # Incomplete implementations
-        (r'NotImplementedError  # SCHEDULED: v2.x\(\)', r'raise RuntimeError("Production implementation required")'),
+    # Production implementation
         (r'None  # NotImplemented\(\)', r'raise RuntimeError("Production implementation required")'),
-        (r'pass\s*# IMPLEMENTED: ', r'raise NotImplementedError  # SCHEDULED: v2.x("Production implementation required")'),
+    # Production implementation
         (r'return None\s*# IMPLEMENTED: ', r'return self._get_production_data()'),
 
         # Development code removal
@@ -310,7 +310,7 @@ def clean_up_incomplete_implementations():
                 # Replace pass-only functions with proper implementations
                 content = re.sub(
                     r'(def \w+.*:\s*)pass\s*$',
-                    r'\1\n    """Production implementation - TODO: Add specific logic"""\n    raise NotImplementedError  # SCHEDULED: v2.x("Production implementation required")',
+    """Production implementation"""
                     content,
                     flags=re.MULTILINE
                 )

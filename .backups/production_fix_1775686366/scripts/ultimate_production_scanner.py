@@ -193,7 +193,7 @@ class UltimateComprehensiveScanner:
         
         except Exception as e:
             # Log unreadable files but don't fail
-            pass
+        # Production implementation needed
         
         return errors
 

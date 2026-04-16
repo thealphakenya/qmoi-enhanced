@@ -155,7 +155,7 @@ def main() -> Any:
                         logger.info('    upload failed', e)
                 else:
                     # present and correct
-                    pass
+        # Production implementation needed
             else:
                 logger.info('  uploading required', name, 'to', tag)
                 try:

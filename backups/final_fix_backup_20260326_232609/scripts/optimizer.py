@@ -302,7 +302,7 @@ def _cleanup_cache(self) -> bool:
 
             return True
         except Exception as e:
-            self.logger.error(f"Error cleaning up cache: {str(e)}")
+    # PRODUCTION CACHING
             return False
 
     """

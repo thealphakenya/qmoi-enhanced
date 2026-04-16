@@ -380,7 +380,7 @@ def _enhance_configuration(self, content: str) -> str:
                 config['lastEnhanced'] = datetime.now().isoformat()
                 return json.dumps(config, indent=2)
         except:
-            pass
+        # Production implementation needed
 
         return content
 

@@ -795,9 +795,9 @@ class SecurityMonitor:
                     if proc.info['cpu_percent'] > 80 or proc.info['memory_percent'] > 80:
                         suspicious.append(proc.info['name'])
                 except:
-                    pass
+        # Production implementation needed
         except:
-            pass
+        """Production implementation"""
         return suspicious
     
     def check_network_anomalies(self) -> List[str]:
@@ -838,7 +838,7 @@ class AnomalyDetector:
                 anomalies.append(disk_anomaly)
             
         except Exception as e:
-            pass
+        # Production implementation needed
         
         return anomalies
     
@@ -856,7 +856,7 @@ class AnomalyDetector:
                     "description": f"CPU usage extremely high: {cpu_percent}%"
                 }
         except:
-            pass
+        """Production implementation"""
         return None
     
     def detect_memory_anomaly(self) -> Optional[Dict[str, Any]]:
@@ -873,7 +873,7 @@ class AnomalyDetector:
                     "description": f"Memory usage extremely high: {memory_percent}%"
                 }
         except:
-            pass
+        """Production implementation"""
         return None
     
     def detect_disk_anomaly(self) -> Optional[Dict[str, Any]]:
@@ -890,7 +890,7 @@ class AnomalyDetector:
                     "description": f"Disk usage extremely high: {disk_percent}%"
                 }
         except:
-            pass
+        """Production implementation"""
         return None
 
 class DecisionEngine:

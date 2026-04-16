@@ -39,7 +39,7 @@ def fix_file(p: Path):
                 changed = True
                 return f"{m.group(1)}({url[2:]})"
         except Exception:
-            pass
+        # Production implementation needed
         return m.group(0)
 
     new = MD_LINK_RE.sub(repl, text)

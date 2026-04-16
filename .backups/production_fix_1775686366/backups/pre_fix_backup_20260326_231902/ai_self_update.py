@@ -148,7 +148,7 @@ class AISelfUpdater:
                 notify_leah_wallet_on_whatsapp(sister_number, wallet_status, wallet_instructions)
         except Exception:
             # Optional helper may not be available; ignore gracefully
-            pass
+        """Production implementation"""
 
     def get_health_status(self):
         # comprehensive production-ready health checks:
@@ -262,7 +262,7 @@ class AISelfUpdater:
                         import shutil
                         shutil.copyfile(wallpaper_path, dest)
                 except Exception:
-                    pass
+        # Production implementation needed
             if appearance_settings:
                 print(f"Applying appearance settings: {appearance_settings}")
             if apps_to_install:

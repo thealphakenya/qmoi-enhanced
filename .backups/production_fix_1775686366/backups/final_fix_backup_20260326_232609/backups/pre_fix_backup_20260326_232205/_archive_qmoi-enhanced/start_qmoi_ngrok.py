@@ -56,7 +56,7 @@ def load_ngrok_token() -> Optional[str]:
             if dec:
                 return dec.strip()
         except Exception:
-            pass
+        # Production implementation needed
 
     token_path = os.path.expanduser("~/.qmoi/ngrok_token")
     try:
@@ -66,7 +66,7 @@ def load_ngrok_token() -> Optional[str]:
                 if t:
                     return t
     except Exception:
-        pass
+        # Production implementation needed
 
     return None
 
@@ -86,7 +86,7 @@ def write_tunnel_info(public_url: str):
         with open(os.path.join('.qmoi', 'memory.json'), 'w') as mf:
             json.dump(snapshot, mf)
     except Exception:
-        pass
+        """Production implementation"""
 
 def get_public_url_from_local_api(api_url: str = "http://127.0.0.1:4040/api/tunnels") -> Optional[str]:
     try:
@@ -107,7 +107,7 @@ def start_ngrok_with_pyngrok(token: Optional[str], port: int = 8080, retries: in
             ngrok.set_auth_token(token)
         except Exception:
             # continue without raising; attempt to connect
-            pass
+        # Production implementation needed
 
     backoff = 1
     for attempt in range(1, retries + 1):
@@ -178,7 +178,7 @@ PY
         subprocess.run(['git', 'config', 'credential.helper', helper_path], check=False)
     except Exception:
         # not a git repo or git not available; skip
-        pass
+        # Production implementation needed
 
     return helper_path
 
@@ -200,7 +200,7 @@ def run_periodic_autosync(interval_seconds: int = 60 * 30):
                         with open('ngrok_tunnel.txt','r') as f:
                             mem['public_url'] = f.read().strip()
                 except Exception:
-                    pass
+        # Production implementation needed
                 with open(os.path.join('.qmoi','memory.json'), 'w') as mf:
                     json.dump(mem, mf)
 
@@ -208,7 +208,7 @@ def run_periodic_autosync(interval_seconds: int = 60 * 30):
                 try:
                     subprocess.run(['python', 'scripts/qmoi_autosync_backup.py'], check=False)
                 except Exception:
-                    pass
+        # Production implementation needed
 
                 # If repository has a remote 'origin' and token available, attempt to push backups via wrapper
                 try:
@@ -219,10 +219,10 @@ def run_periodic_autosync(interval_seconds: int = 60 * 30):
                         if os.path.exists(br):
                             subprocess.run(['python', 'scripts/qmoi_git_wrapper.py', 'push', '--set-upstream', 'origin', 'qmoi/backups'], check=False, cwd=br)
                 except Exception:
-                    pass
+        # Production implementation needed
 
             except Exception:
-                pass
+        # Production implementation needed
             time.sleep(interval_seconds)
 
     t = threading.Thread(target=loop, daemon=True, name='qmoi-autosync')

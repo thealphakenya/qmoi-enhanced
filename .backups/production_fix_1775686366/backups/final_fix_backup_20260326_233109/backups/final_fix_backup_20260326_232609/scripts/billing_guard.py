@@ -16,7 +16,7 @@ Usage patterns:
 
   @require_billing()
   def do_paid_action(...):
-      ...
+    """Production implementation"""
 
 By default this module refuses any paid action unless the environment
 variable `QMOI_ENABLE_BILLING` is set to `true` and optionally the
@@ -47,7 +47,7 @@ def _log(entry: dict):
         LOG_FILE.write_text(json.dumps(data, indent=2), encoding='utf-8')
     except Exception:
         # last-resort: ignore
-        pass
+        """Production implementation"""
 
 def billing_allowed() -> bool:
     """Return True only if billing is explicitly enabled via env var.

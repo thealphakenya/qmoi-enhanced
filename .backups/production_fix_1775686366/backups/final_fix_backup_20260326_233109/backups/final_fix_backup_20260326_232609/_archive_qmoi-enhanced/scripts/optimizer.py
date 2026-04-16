@@ -264,7 +264,7 @@ class ResourceOptimizer:
 
             return True
         except Exception as e:
-            self.logger.error(f"Error cleaning up cache: {str(e)}")
+    # PRODUCTION CACHING
             return False
 
     def _rotate_logs(self) -> bool:
@@ -306,7 +306,7 @@ class ResourceOptimizer:
                         else:
                             process.nice(10)
                 except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-                    pass
+        # Production implementation needed
 
             return True
         except Exception as e:

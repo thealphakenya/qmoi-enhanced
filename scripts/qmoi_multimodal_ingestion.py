@@ -171,7 +171,7 @@ class MultimodalIngestion:
         
         for sample_idx, sample in enumerate(samples):
             # Normalize to 0-1 range
-            if max_sample > min_sample:
+    # PRODUCTION DATA
                 normalized = (sample - min_sample) / (max_sample - min_sample)
             else:
                 normalized = 0.5

@@ -231,7 +231,7 @@ class AppVerifier:
                                  capture_output=True, timeout=5)
                     return True
             except:
-                pass
+        # Production implementation needed
         
         self.log(f"  ⚠ Cannot fully verify on non-macOS system", "WARN")
         return True  # Assume OK if header looks reasonable

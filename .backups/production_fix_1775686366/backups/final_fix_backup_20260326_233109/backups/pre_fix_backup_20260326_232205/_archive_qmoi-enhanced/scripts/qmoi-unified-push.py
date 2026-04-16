@@ -142,7 +142,7 @@ def auto_fix_error(cmd, error_msg=""):
             # Prefer a non-recursive direct subprocess call
             subprocess.run(["npm", "ci"], cwd=PROJECT_ROOT, check=False)
         except Exception:
-            pass
+        # Production implementation needed
         already_fixed.add("npm-install")
 
     elif "pytest" in error_msg.lower():
@@ -234,7 +234,7 @@ def detect_version():
                     logger.info(f"ðŸ“¦ Detected Node version: {version}")
                     return version
         except Exception:
-            pass
+        # Production implementation needed
 
     pyproject_file = PROJECT_ROOT / "pyproject.toml"
     if pyproject_file.exists():
@@ -246,7 +246,7 @@ def detect_version():
                 logger.info(f"ðŸ�� Detected Python version: {version}")
                 return version
         except Exception:
-            pass
+        # Production implementation needed
 
     setup_file = PROJECT_ROOT / "setup.py"
     if setup_file.exists():
@@ -258,7 +258,7 @@ def detect_version():
                 logger.info(f"ðŸ�� Detected setup.py version: {version}")
                 return version
         except Exception:
-            pass
+        # Production implementation needed
 
     try:
         version = run_cmd(["git", "describe", "--tags", "--abbrev=0"], capture=True)
@@ -266,7 +266,7 @@ def detect_version():
             logger.info(f"ðŸ”— Using git tag version: {version.strip()}")
             return version.strip()
     except Exception:
-        pass
+        # Production implementation needed
 
     logger.warning("âš ï¸� No version detected, defaulting to 0.0.1")
     return "0.0.1"
@@ -278,7 +278,7 @@ def bump_version(version):
             parts[2] = str(int(parts[2]) + 1)
             return ".".join(parts)
     except Exception:
-        pass
+        # Production implementation needed
     return version + ".1"
 
 # -----------------------------
@@ -485,7 +485,7 @@ class QmoiPush:
             if lock_file.exists():
                 lock_file.unlink()
         except Exception:
-            pass
+        # Production implementation needed
         run_cmd(["git", "fetch", "--all"], critical=False)
         # Handle shallow clones gracefully
         run_cmd(["git", "rev-parse", "--is-shallow-repository"], critical=False)
@@ -542,7 +542,7 @@ class QmoiPush:
                     with open(path, "a", encoding="utf-8") as f:
                         f.write(f"\n\n> Auto-updated by QMOI Unified Push at {ts}\n")
             except Exception:
-                pass
+        # Production implementation needed
         append_stamp(PROJECT_ROOT / "ALLMDFILESREFS.md")
         append_stamp(PROJECT_ROOT / "QMOIAUTOprod.md")
         append_stamp(PROJECT_ROOT / "QMOISPACEprod.md")

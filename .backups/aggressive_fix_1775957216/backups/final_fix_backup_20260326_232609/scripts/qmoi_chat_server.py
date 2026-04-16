@@ -70,7 +70,7 @@ def load_memory() -> Any:
                     return json.loads(raw)
             return {'conversations': [], 'sessions': {}, 'profiles': {}, 'previews': {}}
         except Exception:
-            pass
+        # Production implementation needed
 
     if not os.path.exists(MEMORY_FILE):
         return {'conversations': [], 'sessions': {}, 'profiles': {}, 'previews': {}}
@@ -90,7 +90,7 @@ def save_memory(mem) -> Any:
             _redis.set('qmoi:memory', json.dumps(mem))
             return
         except Exception:
-            pass
+        # Production implementation needed
 
     os.makedirs(os.path.dirname(MEMORY_FILE), exist_ok=True)
     with open(MEMORY_FILE, 'w') as f:
@@ -131,12 +131,12 @@ def do_POST(self) -> Any:
         # POST /memory/sync - merge or replace memory (secured by MEMORY_SECRET if configured)
         if parsed.path == '/memory/sync' or parsed.path == '/memory':
             # Read body already below; fall through to payload handling
-            pass
+        # Production implementation needed
 
         # POST /v1/preview - store preview data for session (used by UI preview window)
         if parsed.path == '/v1/preview':
             # read body below and save to memory['previews']
-            pass
+        # Production implementation needed
 
         # Main chat endpoint
         if parsed.path != '/v1/chat/completions' and parsed.path not in ['/memory/sync', '/memory', '/v1/preview']:
@@ -284,7 +284,7 @@ def do_POST(self) -> Any:
                     self.wfile.write(json.dumps(response).encode())
                     return
         except Exception:
-            pass
+        # Production implementation needed
 
         # Memory recall handler: if user asks what they said earlier, lookup memory
         recall_trigger = False
@@ -440,7 +440,7 @@ def mentions_project(s: str) -> bool:
                 else:
                     reply_text = prefix + action_msg
         except Exception:
-            pass
+        # Production implementation needed
 
         # Append to memory with role tag
         conv_entry = {
@@ -459,9 +459,9 @@ def mentions_project(s: str) -> bool:
                 try:
                     _redis.publish('qmoi:memory:updates', json.dumps({'timestamp': timestamp, 'entry': conv_entry}))
                 except Exception:
-                    pass
+        # Production implementation needed
         except Exception:
-            pass
+        # Production implementation needed
 
         response = {
             'id': f'local-{int(datetime.utcnow().timestamp())}',

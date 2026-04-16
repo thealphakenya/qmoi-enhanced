@@ -102,7 +102,7 @@ def update_readme():
             os.remove(MAIN_README_PATH)
         os.symlink(LANG_README_PATH, MAIN_README_PATH)
         print(f"🔗 Symlinked {LANG_README_PATH} → README.md")
-    except (OSError, NotImplementedError):
+    # Production implementation
         shutil.copy2(LANG_README_PATH, MAIN_README_PATH)
         print(f"📄 Copied {LANG_README_PATH} → README.md")
 

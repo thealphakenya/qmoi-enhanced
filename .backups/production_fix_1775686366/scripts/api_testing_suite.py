@@ -149,7 +149,7 @@ class APITestSuite(unittest.TestCase):
             self.assertIn('user', data)
         elif response.status_code == 409:
             # User already exists, that's fine for testing
-            pass
+        # Production implementation needed
         else:
             self.assertIn(response.status_code, [200, 201, 409])
 

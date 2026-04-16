@@ -88,7 +88,7 @@ def __init__(self) -> Any:
     """
     analyze_tags function
     """
-def analyze_tags(self, resource: Dict[str, Any]) -> None:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Check for required and required tags."""
         current_tags = set(resource.get('tags', {}).keys())
         missing_tags = REQUIRED_TAGS - current_tags
@@ -107,9 +107,9 @@ def analyze_tags(self, resource: Dict[str, Any]) -> None:
     """
     analyze_healthcheck function
     """
-def analyze_healthcheck(self, resource: Dict[str, Any]) -> None:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Analyze and suggest healthcheck improvements."""
-        if 'healthcheck' not in resource:
+    # PRODUCTION RESOURCE MANAGEMENT
             self.suggestions.append({
                 'type': 'healthcheck',
                 'severity': 'high',
@@ -136,9 +136,9 @@ def analyze_healthcheck(self, resource: Dict[str, Any]) -> None:
     """
     analyze_autoscaling function
     """
-def analyze_autoscaling(self, resource: Dict[str, Any]) -> None:
+    # PRODUCTION RESOURCE MANAGEMENT
         """Analyze autoscaling configuration."""
-        if resource.get('stateless', False) and 'autoscaling' not in resource:
+    # PRODUCTION RESOURCE MANAGEMENT
             self.suggestions.append({
                 'type': 'autoscaling',
                 'severity': 'medium',
@@ -148,7 +148,7 @@ def analyze_autoscaling(self, resource: Dict[str, Any]) -> None:
                     'config': AUTOSCALING_DEFAULTS
                 }
             })
-        elif 'autoscaling' in resource:
+    # PRODUCTION RESOURCE MANAGEMENT
             scaling = resource['autoscaling']
             if scaling.get('min_instances', 1) < 2:
                 self.suggestions.append({

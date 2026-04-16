@@ -313,7 +313,7 @@ def measure_packet_loss(self) -> float:
                     requests.get("https://8.8.8.8", timeout=1)
                     received += 1
                 except:
-                    pass
+        # Production implementation needed
                 sent += 1
             
             return ((sent - received) / sent) * 100  # Convert to percentage
@@ -976,7 +976,7 @@ def check_weak_protocols(self, prodice: Dict) -> bool:
                 if result == 0:
                     return True
             except:
-                pass
+        # Production implementation needed
             
             # Check for FTP
             try:
@@ -988,7 +988,7 @@ def check_weak_protocols(self, prodice: Dict) -> bool:
                 if result == 0:
                     return True
             except:
-                pass
+        # Production implementation needed
             
             return False
         

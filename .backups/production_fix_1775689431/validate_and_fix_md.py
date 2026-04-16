@@ -42,7 +42,7 @@ def find_md_files(root: Path) -> Any:
             j = json.loads(idx.read_text(encoding='utf8'))
             return [root / f['path'] for f in j.get('files', [])]
         except Exception:
-            pass
+        # Production implementation needed
     # fallback: glob
     return sorted(root.rglob('*.md'))
 
