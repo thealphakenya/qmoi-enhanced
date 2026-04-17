@@ -36,7 +36,7 @@ describe('Q Global SIM Auto-Evolution System', () => {
         timestamp: new Date().toISOString()
       };
 
-      // Mock the analyzeQGlobalSIMPerformance method
+      
       const analyzeMethod = jest.fn().mockResolvedValue(mockMetrics);
 
       mockLionAgent.analyzeQGlobalSIMPerformance = analyzeMethod;

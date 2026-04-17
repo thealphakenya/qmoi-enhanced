@@ -127,7 +127,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 - https://api.whatsapp.com/send
 
-## templates/dashboard.html
+#
 
 - https://cdn.jsdelivr.net/npm/chart.js
 - https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js

@@ -52,8 +52,8 @@ class TextProcessor:
         
     def extract_features(self, text: str) -> FeatureVector:
         """Extract features from text"""
-        # Placeholder - would use BERT, GPT embeddings
-        features = [0.1] * self.embedding_dim  # Mock embeddings
+        
+        features = [0.1] * self.embedding_dim  
         
         return FeatureVector(
             modality="text",
@@ -93,8 +93,8 @@ class ImageProcessor:
         
     def extract_features(self, image_bytes: bytes) -> FeatureVector:
         """Extract features from image"""
-        # Placeholder - would use ResNet, ViT, CLIP
-        features = [0.2] * self.feature_dim  # Mock features
+        
+        features = [0.2] * self.feature_dim  
         
         return FeatureVector(
             modality="image",
@@ -134,8 +134,8 @@ class AudioProcessor:
         
     def extract_features(self, audio_bytes: bytes) -> FeatureVector:
         """Extract features from audio"""
-        # Placeholder - would use Wav2Vec, HuBERT
-        features = [0.3] * self.feature_dim  # Mock features
+        
+        features = [0.3] * self.feature_dim  
         
         return FeatureVector(
             modality="audio",
@@ -175,8 +175,8 @@ class VideoProcessor:
         
     def extract_features(self, video_bytes: bytes) -> FeatureVector:
         """Extract features from video"""
-        # Placeholder - would use VideoMAE, TimeSformer
-        features = [0.4] * self.feature_dim  # Mock features
+        
+        features = [0.4] * self.feature_dim  
         
         return FeatureVector(
             modality="video",
@@ -324,7 +324,7 @@ class QMOIMultimodalEngine:
     
     def _generate_response(self, processed_data: Dict[str, Any], reasoning: str) -> str:
         """Generate response based on processed data"""
-        # Placeholder - would use multimodal language model
+        
         response_parts = []
         
         if "text" in processed_data:

@@ -140,7 +140,7 @@ sha256sum /tmp/qmoi_ai.AppImage
 To test failure path without breaking real releases:
 
 ```bash
-# Temporarily rename/remove an asset to [production READY] non-compliance
+
 mv Qmoi_downloaded_apps/qcity_package.zip Qmoi_downloaded_apps/qcity_package.zip.bak
 
 # Run compliance check (will detect included asset)

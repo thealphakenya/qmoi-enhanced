@@ -4610,7 +4610,7 @@ These files contain system health, health check, health status, monitoring, or r
 - Run `python3 scripts/ensure_all_healths.py` to execute health checks and enforce health automation.
 - This file is part of the QMOI auto-update pipeline and should be regenerated after any health system change.
 
-## Sample Health Snippets
+#
 
 ### `.devcontainer/README.md`
 - `38: ## 🔄 Evolution Status`

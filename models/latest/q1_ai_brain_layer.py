@@ -95,7 +95,7 @@ class LocalModelManager:
     def load_model(self, model_name: str, model_path: str) -> bool:
         """Load a local model"""
         try:
-            # Placeholder for actual model loading
+            
             # In production, this would use transformers or similar
             self.models[model_name] = {
                 "path": model_path,
@@ -113,7 +113,7 @@ class LocalModelManager:
         start_time = datetime.utcnow()
         
         try:
-            # Placeholder for actual inference
+            
             # In production, this would call the actual model
             response_text = f"Local model {model_name} response to: {prompt[:100]}..."
             

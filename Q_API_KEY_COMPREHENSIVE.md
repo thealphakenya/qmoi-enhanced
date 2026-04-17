@@ -92,7 +92,7 @@ curl -X POST https://api.qmoi.dev/v2/auth/generate-key \
 
 #### 3. Key Formats
 ```
-q_dev_XXXXXXXXXXXXXXXXXXXX        # Development keys
+q_dev_XXXXXXXXXXXXXXXXXXXX        
 q_test_XXXXXXXXXXXXXXXXXXXX       # Testing/staging
 q_prod_XXXXXXXXXXXXXXXXXXXX       # Production keys
 q_sandbox_XXXXXXXXXXXXXXXXXXXX    # Sandbox/trial

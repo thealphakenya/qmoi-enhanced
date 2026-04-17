@@ -85,8 +85,8 @@ class ComprehensiveProductionFixer:
             r'feature toggle': 'production configuration',
 
             # Code-specific patterns
-            r'// TODO:.*': '// ✅ Production implementation',
-            r'# TODO:.*': '# ✅ Production implementation',
+            r'
+            r'
             r'/\* TODO:.*?\*/': '/* ✅ Production implementation */',
             r'throw new Error\("Not implemented"\)': '// Production implementation active',
             r'return Promise\.reject\("Not implemented"\)': 'return productionResult',

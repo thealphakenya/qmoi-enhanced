@@ -13,7 +13,7 @@ title: "TEMPLATES.md"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# TEMPLATES.md ✅ PRODUCTION READY
+
 
 This file documents all templates in the `templates/` directory, their usage, and integration for QCity, QMOI AI, and QMOI Space. All templates are checked to ensure they are used and served as expected. Unused or duplicate templates are marked for removal.
 

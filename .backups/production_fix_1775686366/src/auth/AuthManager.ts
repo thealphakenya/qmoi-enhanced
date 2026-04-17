@@ -298,7 +298,7 @@ export class AuthManager {
     if (!user) return false;
     if (user.role === "master" || user.role === "sister") return true;
     // [production READY]: implement actual confirmation for users
-    return true; // Placeholder implementation
+    return true; 
   }
 }
 

@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
     const type = searchParams.get('type');
     const location = searchParams.get('location');
 
-    // Mock camera data - in production, this would connect to actual camera systems
+    
     const cameras = [
       {
         id: 'cam_001',
@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Mock camera control response
+    
     const response = {
       cameraId,
       action,

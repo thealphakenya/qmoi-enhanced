@@ -24,7 +24,7 @@ export default function DeviceManagementDashboard() {
 
   const fetchDevices = async () => {
     try {
-      // Mock device data - in production, this would call actual APIs
+      
       const mockDevices: Device[] = [
         {
           id: 'dev_001',

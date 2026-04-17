@@ -198,7 +198,7 @@ def build_markdown(found):
         '- This file is part of the QMOI auto-update pipeline and should be regenerated after any health system change.',
     ])
 
-    lines.extend(['', '## Sample Health Snippets', ''])
+    lines.extend(['', '#
     for item in sorted(found, key=lambda x: str(x['path']))[:20]:
         lines.append(f'### `{item["path"]}`')
         for snippet in item['matches']:

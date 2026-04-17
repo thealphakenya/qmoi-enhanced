@@ -944,7 +944,7 @@ class AITradingSystem:
         stock_platforms = ['robinhood', 'etoro']
         for platform_id in stock_platforms:
             if platform_id in self.revenue_manager.platforms:
-                self.trading_platforms[platform_id] = f"yf_{platform_id}"  # Placeholder for yfinance integration
+                self.trading_platforms[platform_id] = f"yf_{platform_id}"  
 
     def execute_trades(self) -> None:
         """Execute AI-driven trades"""
@@ -1568,7 +1568,7 @@ if __name__ == "__main__":
 
     # Add revenue from new methods
     for method in new_methods:
-        for platform_name in method["platforms"][:2]:  # Sample first 2 platforms per method
+        for platform_name in method["platforms"][:2]:  
             platform_id = platform_name.lower().replace(" ", "_")
             sample_revenue = Decimal(str(method["daily_target"] * 0.1))  # 10% of daily target
             revenue_manager.update_revenue(platform_id, sample_revenue)

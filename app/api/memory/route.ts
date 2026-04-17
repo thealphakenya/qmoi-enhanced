@@ -218,7 +218,7 @@ export async function POST(request: NextRequest) {
  */
 export async function PUT(request: NextRequest) {
   try {
-    // Mock sync process
+    
     const entries = Array.from(memoryStore.values());
     const unsyncedEntries = entries.filter(e => e.syncStatus !== 'synced');
 

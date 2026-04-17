@@ -90,7 +90,7 @@ QMOI Enhanced Architecture
 
 ```
 qmoi-enhanced/
-├── .devcontainer/             # Development container config
+├── .devcontainer/             
 ├── .github/                   # GitHub Actions CI/CD
 ├── .husky/                    # Git hooks
 ├── .qmoi_state/              # QMOI state persistence
@@ -182,7 +182,7 @@ qmoi-enhanced/
 
 ---
 
-## Development Patterns & Best Practices
+#
 
 ### Code Quality Standards
 
@@ -197,7 +197,7 @@ const processQuery = async (query: string): Promise<void> => {
 
 // ❌ AVOID: Unfinished code
 const processQuery = async (query: string): Promise<void> => {
-  // TODO: implement this...
+  
   // ...
 };
 ```

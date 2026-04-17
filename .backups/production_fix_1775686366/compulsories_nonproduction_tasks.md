@@ -35,7 +35,7 @@
     Context: "note": "Auto-detected production-marker tokens in code and docs (in production impl
 
 
-### MOCK-STUB (1181 items)
+##
 
 **Priority Files** (showing first 20):
 
@@ -108,16 +108,16 @@
 
 #### `__tests__/QMediaPlayer.test.tsx` - 68 issue(s)
   - Line 11: `Mock`
-    Context: // Mock framer-motion
+    Context: 
   - Line 12: `mock`
     Context: jest.mock('framer-motion', () => ({
   - Line 19: `Mock`
-    Context: // Mock lucide-react icons
+    Context: 
   - ... and 65 more
 
 #### `__tests__/avatar-voice-comprehensive.test.ts` - 33 issue(s)
   - Line 7: `Mock`
-    Context: // Mock avatars config
+    Context: 
   - Line 8: `mock`
     Context: const mockAvatars = [
   - Line 35: `mock`
@@ -311,7 +311,7 @@
 
 **+ 256 more files with non-production**
 
-### PLACEHOLDER (9239 items)
+##
 
 **Priority Files** (showing first 20):
 
@@ -451,7 +451,7 @@
 
 **+ 258 more files with placeholder**
 
-### TODO-FIXME (3641 items)
+##
 
 **Priority Files** (showing first 20):
 

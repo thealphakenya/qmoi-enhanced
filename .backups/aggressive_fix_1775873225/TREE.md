@@ -55,7 +55,7 @@ The QMOI-Enhanced repository contains a comprehensive AI-powered trading and aut
 - **qvillage/** - QVillage system
 - **production_deployment/** - Production deployment configs
 
-### Development & Testing
+##
 
 - **__tests__/** - Jest test suites
 - **cypress/** - E2E testing

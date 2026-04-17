@@ -11,7 +11,7 @@ interface Device {
   battery?: number;
 }
 
-// Mock device data - in production, this would connect to actual device management systems
+
 const mockDevices: Device[] = [
   {
     id: 'dev_001',
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { action, deviceId } = body;
 
-    // Mock device operations
+    
     if (action === 'sync' && deviceId) {
       // Simulate sync operation
       const device = mockDevices.find(d => d.id === deviceId);

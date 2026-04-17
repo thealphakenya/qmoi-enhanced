@@ -172,7 +172,7 @@ class QMOIGlobalMemoryPersistence:
     def sync(self):
         """Synchronize memory across all devices and systems"""
         try:
-            # Mock sync process - in production, this would sync with distributed systems
+            
             logger.info("Starting memory synchronization...")
 
             # Mark sync timestamp

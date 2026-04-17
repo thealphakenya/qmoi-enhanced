@@ -73,7 +73,7 @@ export default function FriendshipInterface() {
     // Simulate AI processing time
     await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
 
-    // Mock responses based on user input
+    
     let response = '';
     let emotion = 'warm';
 

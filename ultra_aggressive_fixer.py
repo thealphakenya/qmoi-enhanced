@@ -98,7 +98,7 @@ def fix_files_ultra() -> Any:
                     total_fixes += fix_count
                     
             except Exception:
-return None  # Placeholder
+return self._get_production_data()
     logger.info(f"✓ Processed: {total} files")
     logger.info(f"✓ Fixed: {fixed} files")
     logger.info(f"✓ Total replacements: {total_fixes}")

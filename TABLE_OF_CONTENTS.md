@@ -416,7 +416,7 @@ For the latest updates, always refer to [TREE.md](TREE.md) for the current repos
 
 ## 📋 Project Management
 
-### TODOs & Tasks
+##
 - [ALL_TODOS_HEAD.txt](ALL_TODOS_HEAD.txt) - All TODOs
 - [ALL_TODOS_SAMPLE.txt](ALL_TODOS_SAMPLE.txt) - DONE samples
 

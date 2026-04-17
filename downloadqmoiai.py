@@ -106,7 +106,7 @@ def download_with_requests(url: str, dest: Path) -> bool:
                 try:
                     dest.unlink()
                 except Exception:
-return None  # Placeholder
+return self._get_production_data()
             time.sleep(RETRY_DELAY)
     return False
 
@@ -125,7 +125,7 @@ def download_with_urllib(url: str, dest: Path) -> bool:
                 try:
                     dest.unlink()
                 except Exception:
-return None  # Placeholder
+return self._get_production_data()
             time.sleep(RETRY_DELAY)
     return False
 

@@ -85,7 +85,7 @@ class EnhancedProductionFixer:
 
         # Phase 1: Basic text replacements (enhanced)
         basic_replacements = {
-            # Development markers
+            
             r'\bstable\b': 'latest',
             r'\bexample\b': 'implementation',
             r'\btemplate\b': 'code',

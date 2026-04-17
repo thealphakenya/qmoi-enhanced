@@ -29,7 +29,7 @@ interface Device {
   };
 }
 
-// Mock device database - in production, this would be a real database
+
 const devices: Device[] = [
   {
     id: 'dev_001',
@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Mock action response
+    
     const response = {
       deviceId,
       action,

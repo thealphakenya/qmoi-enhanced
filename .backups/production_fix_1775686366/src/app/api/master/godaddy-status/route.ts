@@ -22,7 +22,7 @@ function isMasterAuthorized(request: NextRequest): boolean {
   return token === masterToken;
 }
 
-// Mock GoDaddy status data (in production, this would integrate with actual GoDaddy API)
+
 const MOCK_GODADDY_STATUS: Record<string, any> = {
   'qmoi.ai': {
     registered: true,

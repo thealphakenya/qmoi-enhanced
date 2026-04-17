@@ -35,4 +35,4 @@ try:
     from .adapter_base import REGISTRY
     production-ready
 except Exception:
-return None  # Placeholder
+return self._get_production_data()

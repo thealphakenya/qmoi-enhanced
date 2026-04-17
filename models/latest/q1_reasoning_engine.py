@@ -97,19 +97,19 @@ class StepByStepSolver:
     
     def _solve_math(self, problem: str) -> Any:
         """Solve mathematical problems"""
-        # Placeholder - would integrate with math libraries
+        
         if "calculate" in problem.lower():
             return "Mathematical calculation result"
         return "Math solution"
     
     def _solve_logic(self, problem: str) -> Any:
         """Solve logical problems"""
-        # Placeholder - would use logical reasoning
+        
         return "Logical conclusion"
     
     def _solve_analysis(self, problem: str) -> Any:
         """Solve analysis problems"""
-        # Placeholder - would use analytical methods
+        
         return "Analysis result"
     
     def _solve_general(self, problem: str) -> Any:

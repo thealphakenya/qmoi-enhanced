@@ -33,7 +33,7 @@ title: "TEMPLATES.md"
 <!-- LION_VALIDATION_END -->
 
 
-# TEMPLATES.md
+
 
 This file documents all templates in the `templates/` directory, their usage, and integration for QCity, QMOI AI, and QMOI Space. All templates are checked to ensure they are used and served as expected. Unused or duplicate templates are marked for removal.
 

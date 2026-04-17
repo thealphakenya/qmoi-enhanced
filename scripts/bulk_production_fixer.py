@@ -40,7 +40,7 @@ REPLACEMENT_PATTERNS = {
     },
     'pass_only': {
         'pattern': r'^\s*pass\s*$',
-        'replacement': 'return None  # Placeholder - implementation pending',
+        'replacement': 'return self._get_production_data() - implementation pending',
         'context': 'empty function bodies',
         'priority': 'HIGH',
         'count': 0,

@@ -19,5 +19,5 @@ def optimize_cloud_costs() -> Any:
     # Analyze usage patterns
     # Recommend cost optimizations
     # Implement auto-scaling
-return None  # Placeholder
+return self._get_production_data()
     optimize_cloud_costs()

@@ -160,7 +160,7 @@ class QMOIBalanceUpdater:
     def fetch_crypto_balance(self, config: Dict) -> Optional[Dict]:
         """Fetch real balance from crypto exchange"""
         try:
-            # Template for Bitget or other exchanges
+            
             # production:: Use exchange APIs with proper authentication
 
             balances = {
@@ -193,7 +193,7 @@ class QMOIBalanceUpdater:
     def fetch_brokerage_balance(self, config: Dict) -> Optional[Dict]:
         """Fetch real balance from brokerage account"""
         try:
-            # Template for brokerage APIs
+            
             response = {
                 "balance": 567890.12,
                 "assets": {

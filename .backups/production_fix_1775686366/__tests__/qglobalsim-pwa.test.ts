@@ -5,7 +5,7 @@
 
 describe('Q Global SIM PWA', () => {
   beforeEach(() => {
-    // Mock service worker and PWA APIs
+    
     Object.defineProperty(navigator, 'serviceWorker', {
       value: {
         register: jest.fn().mockResolvedValue({
@@ -20,7 +20,7 @@ describe('Q Global SIM PWA', () => {
       writable: true
     });
 
-    // Mock beforeinstallprompt event
+    
     Object.defineProperty(window, 'beforeinstallprompt', {
       value: null,
       writable: true
@@ -29,7 +29,7 @@ describe('Q Global SIM PWA', () => {
 
   describe('Service Worker Registration', () => {
     test('should register service worker on page load', async () => {
-      // Mock the service worker registration script
+      
       const registerSW = async () => {
         if ('serviceWorker' in navigator) {
           try {
@@ -52,7 +52,7 @@ describe('Q Global SIM PWA', () => {
     });
 
     test('should handle service worker registration errors', async () => {
-      // Mock registration failure
+      
       navigator.serviceWorker.register = jest.fn().mockRejectedValue(new Error('Registration failed'));
 
       const registerSW = async () => {

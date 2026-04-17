@@ -51,7 +51,7 @@ class TestPercentagesAutomationMarkdownScanning(unittest.TestCase):
         # Create test markdown files
         Path(self.test_dir, "test_docs").mkdir(exist_ok=True)
         
-        # Sample markdown with percentage metrics
+        
         md_content_1 = """# System Status Report
         
 System uptime: 99.5% ✓

@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# TEMPS ✅ PRODUCTION READY
+
 
 This document provides an overview and maintenance instructions for the `temps/` directory.
 

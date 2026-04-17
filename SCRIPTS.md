@@ -244,7 +244,7 @@ This document catalogs all Python, shell, and JavaScript scripts in the `scripts
 - [`unified_ci_cd_service.ts`](scripts/services/unified_ci_cd_service.ts)
 - [`whatsapp_service.ts`](scripts/services/whatsapp_service.ts)
 
-### templates (3 files)
+##
 
 - [`README_template.en.md`](scripts/templates/README_template.en.md)
 - [`README_template.md`](scripts/templates/README_template.md)

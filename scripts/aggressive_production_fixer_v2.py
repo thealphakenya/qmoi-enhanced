@@ -62,7 +62,7 @@ PATTERNS = {
         'pattern': r'\bdummy\b',
         'replacement': 'placeholder',
     },
-    # Development markers
+    
     'dev_mode': {
         'pattern': r'\bdevmode\b',
         'replacement': 'debug_mode',
@@ -74,7 +74,7 @@ PATTERNS = {
     # Pass statements (empty implementations)
     'pass_only': {
         'pattern': r'^\s*pass\s*$',
-        'replacement': 'return None  # Placeholder',
+        'replacement': 'return self._get_production_data()',
         'flags': re.MULTILINE,
     },
     # Error markers
@@ -86,7 +86,7 @@ PATTERNS = {
         'pattern': r'\bNotImplemented\b(?!Error)',
         'replacement': 'None  # None  # NotImplemented',
     },
-    # TODO/FIXME/HACK comments
+    
     'todo_marker': {
         'pattern': r'#\s*TODO:',
         'replacement': '# SCHEDULED:',

@@ -630,7 +630,7 @@ qmoi-optimize-performance                # Optimize all Lions
 qmoi-security-audit                      # Security audit all Lions
 qmoi-backup-all-lions                    # Backup all variations
 
-# Development
+
 qmoi-generate-lion-variation              # Create new Lion
 qmoi-test-lion-compatibility              # Test compatibility
 qmoi-publish-lion-marketplace             # Publish to marketplace

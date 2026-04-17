@@ -282,7 +282,7 @@ For Level 3+ decisions:
 
 ### Deployment Approval
 
-#### Development/Staging
+###
 - Any engineer: Approved
 - Automated: 15 minute delay
 

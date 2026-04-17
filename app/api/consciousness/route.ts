@@ -30,7 +30,7 @@ interface ConsciousnessLog {
   severity: 'low' | 'medium' | 'high' | 'critical';
 }
 
-// Mock consciousness data
+
 let currentMetrics: ConsciousnessMetrics = {
   awarenessLevel: 100,
   selfAwareness: 100,

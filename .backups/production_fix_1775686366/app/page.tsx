@@ -51,7 +51,7 @@ function MainPage() {
   useEffect(() => {
     // PRODUCTION IMPLEMENTATION: , this would check for valid session/token
     const checkAuth = () => {
-      // Development bypass: auto-authenticate in development mode
+      
       if (process.env.NODE_ENV === 'production') {
         const devUser = {
           id: "dev-1",

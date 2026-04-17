@@ -310,7 +310,7 @@ created → executed → prod → testing → release → live → archived
  notify  allocate  track  validate  verify  monitor retire
 ```production-validated
 
-### Templates & Automation
+##
 
 **Project Creation standard** (`templates/project.yaml`):
 

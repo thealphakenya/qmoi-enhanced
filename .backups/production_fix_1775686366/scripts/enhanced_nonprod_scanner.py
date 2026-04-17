@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).parent.parent
 
 # Comprehensive production keywords and patterns
 production_KEYWORDS = [
-    # Temporary//* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ keywords
+    
     'DONE', 'fixed', 'HACK', 'production complete', 'TEMP', 'TEMPORARY', 'PENDING', 'COMING SOON',
     '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ TEXT', 'real', 'real', 'complete', 'PARTIAL',
     'production', 'stable', 'stable', 'stable', 'production', 'production',

@@ -2196,7 +2196,7 @@ class NeuromorphicEngine {
     // Calculate spike probability based on word characteristics
     const baseProbability = 0.1;
     const lengthFactor = Math.min(word.length / 10, 0.3);
-    const timeFactor = Math.sin(timeStep / 5) * 0.1; // Temporal modulation
+    const timeFactor = Math.sin(timeStep / 5) * 0.1; 
 
     return Math.max(0.01, Math.min(0.5, baseProbability + lengthFactor + timeFactor));
   }

@@ -33,7 +33,7 @@
 
 ```bash
 # Core Environment
-NODE_ENV=production                    # development|staging|production
+NODE_ENV=production                    
 ENVIRONMENT=production
 PORT=3000
 

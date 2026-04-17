@@ -376,7 +376,7 @@ class CrossChainInteroperabilitySystem:
         """Generate comprehensive interoperability report"""
         status = self.get_system_status()
 
-        # Sample user address for productionnstration
+        
         sample_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
 
         unified_balance = self.asset_manager.get_unified_balance(sample_address)
@@ -428,7 +428,7 @@ def main():
         print(f"QMOI Validation: {report['system_status']['qmoi_validation']['cross_chain_accuracy']:.2f}%")
         print()
 
-        # Sample balance analysis
+        
         balance = report['sample_balance_analysis']
         print('💰 SAMPLE UNIFIED BALANCE ANALYSIS')
         print('=' * 40)

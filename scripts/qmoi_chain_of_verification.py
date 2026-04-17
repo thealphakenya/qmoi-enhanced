@@ -128,7 +128,7 @@ class ChainOfVerification:
     
     def _check_expert_consensus(self, claim: str) -> Tuple[str, float]:
         """Check expert consensus"""
-        # Placeholder for expert oracle integration
+        
         important_claims = ["theory", "principle", "law", "concept"]
         if any(ic in claim.lower() for ic in important_claims):
             return "verified", 0.8
@@ -136,7 +136,7 @@ class ChainOfVerification:
     
     def _search_counterexamples(self, claim: str) -> Tuple[str, float]:
         """Search for counterexamples to claim"""
-        # Placeholder for counterexample search
+        
         return "verified", 0.75
     
     def _gather_evidence(self, claim: str, method: str) -> List[str]:

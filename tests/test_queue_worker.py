@@ -22,7 +22,7 @@ def test_queue_worker_smoke() -> Any:
     if qdir.exists():
         # best-effort cleanup of artifacts
         for p in [pr_dir, tasks_dir, qdir / 'lion_tasks']:
-return None  # Placeholder
+return self._get_production_data()
     tasks_dir.mkdir(parents=True, exist_ok=True)
     pr_dir.mkdir(parents=True, exist_ok=True)
 

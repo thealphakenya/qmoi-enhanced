@@ -51,7 +51,7 @@ production_PATTERNS = {
     "variable_naming": [
         r"\b_error\b(?!\w)",  # Underscore prefixed error (catch block)
         r"\btmp_\w+",  # permanent variables
-        r"\b_temp\w+",  # Temp prefix/suffix
+        r"\b_temp\w+",  
         r"\breal implementation_\w+",  # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
         r"\breal_\w+",  # production/production variables
         r"\bdummy_\w+",  # production variables

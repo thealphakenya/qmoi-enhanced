@@ -62,7 +62,7 @@ TERMINAL_SHELLS = {
     "sh": ["sh_posix", "sh_dash", "sh_ksh"],
 }
 
-# Development Tools & CLI
+
 DEVELOPMENT_TOOLS = {
     "build_tools": ["make", "cmake", "gradle", "maven", "bazel", "scons"],
     "package_managers": ["npm", "yarn", "pip", "poetry", "cargo", "maven"],

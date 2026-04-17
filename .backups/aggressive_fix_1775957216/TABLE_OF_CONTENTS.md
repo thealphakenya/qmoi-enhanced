@@ -161,7 +161,7 @@ This is the comprehensive table of contents for the QMOI Enhanced autonomous sys
 
 ## 🔧 Development & Operations
 
-### Development Guides
+##
 - [DEVELOPER_QUICK_START.md](DEVELOPER_QUICK_START.md) - Developer quick start
 - [DEVELOPER_STRUCTURE_COMPLETE.md](DEVELOPER_STRUCTURE_COMPLETE.md) - Developer structure
 - [CONTRIBUTING.md](CONTRIBUTING.md) - Contribution guide
@@ -416,7 +416,7 @@ For the latest updates, always refer to [TREE.md](TREE.md) for the current repos
 
 ## 📋 Project Management
 
-### TODOs & Tasks
+##
 - [ALL_TODOS_HEAD.txt](ALL_TODOS_HEAD.txt) - All TODOs
 - [ALL_TODOS_SAMPLE.txt](ALL_TODOS_SAMPLE.txt) - DONE samples
 
