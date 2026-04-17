@@ -1,122 +1,1278 @@
-# ALLHOOKSWEBHOOKS.md - Complete Hooks & Webhooks Reference
+# ALLHOOKSWEBHOOKS
 
-**Auto-generated on:** 2026-04-16 22:00:54 UTC
+**Auto-generated on:** 2026-04-17T00:57:57.434821
 
-This document combines hook and webhook references for the QMOI repository.
-
-## Hooks (41)
-
-- `use-mobile` — `hooks/use-mobile.ts`
-- `use-mobile` — `hooks/use-mobile.tsx`
-- `use-toast` — `hooks/use-toast.ts`
-- `useAIFeatureEnhancer` — `hooks/useAIFeatureEnhancer.ts`
-- `useAIHealthCheck` — `hooks/useAIHealthCheck.ts`
-- `useAnalyticsDashboard` — `hooks/useAnalyticsDashboard.ts`
-- `useAutoEarningTasks` — `hooks/useAutoEarningTasks.ts`
-- `useAutoFixAllProblems` — `hooks/useAutoFixAllProblems.ts`
-- `useBitgetTrader` — `hooks/useBitgetTrader.ts`
-- `useColabJob` — `hooks/useColabJob.ts`
-- `useDatasetManager` — `hooks/useDatasetManager.ts`
-- `useDatasets` — `hooks/useDatasets.ts`
-- `useDeviceHealth` — `hooks/useDeviceHealth.ts`
-- `useDeviceOptimizer` — `hooks/useDeviceOptimizer.ts`
-- `useErrorAutoFix` — `hooks/useErrorAutoFix.ts`
-- `useExtensionManager` — `hooks/useExtensionManager.ts`
-- `useGithubRepoManager` — `hooks/useGithubRepoManager.ts`
-- `useGlobalAutomation` — `hooks/useGlobalAutomation.ts`
-- `useGoDaddyIntegration` — `hooks/useGoDaddyIntegration.ts`
-- `useLargeFileUpload` — `hooks/useLargeFileUpload.ts`
-- `useMediaGenerationStatus` — `hooks/useMediaGenerationStatus.ts`
-- `useModelTrainer` — `hooks/useModelTrainer.ts`
-- `useProjects` — `hooks/useProjects.ts`
-- `useQCity` — `hooks/useQCity.ts`
-- `useQMOIAutoInteraction` — `hooks/useQMOIAutoInteraction.ts`
-- `useQMOIChat` — `hooks/useQMOIChat.ts`
-- `useQVillage` — `hooks/useQVillage.ts`
-- `useSystemMetrics` — `hooks/useSystemMetrics.ts`
-- `useTTCVoice` — `hooks/useTTCVoice.ts`
-- `useTaskQueue` — `hooks/useTaskQueue.ts`
-- `useTrading` — `hooks/useTrading.ts`
-- `useTradingAutomation` — `hooks/useTradingAutomation.ts`
-- `useVSCodeProblems` — `hooks/useVSCodeProblems.ts`
-- `useWhatsApp` — `hooks/useWhatsApp.ts`
-- `useAuth` — `src/hooks/useAuth.ts`
-- `useAutoProjects` — `src/hooks/useAutoProjects.ts`
-- `useQMOIChat` — `src/hooks/useQMOIChat.ts`
-- `useQmoiKernel.test` — `src/hooks/useQmoiKernel.test.ts`
-- `useQmoiKernel` — `src/hooks/useQmoiKernel.ts`
-- `useQmoiState` — `src/hooks/useQmoiState.ts`
-- `useTimezone` — `src/hooks/useTimezone.ts`
-
-## Webhooks (5)
-
-- `/api/alerts/webhook` — `src/app/api/alerts/webhook/route.ts`
-- `/api/webhooks/godaddy-domain` — `app/api/webhooks/godaddy-domain/route.ts`
-- `/api/webhooks/godaddy-health` — `app/api/webhooks/godaddy-health/route.ts`
-- `/api/webhooks/payments` — `app/api/webhooks/payments/route.ts`
-- `/api/webhooks/qvillage` — `app/api/webhooks/qvillage/route.ts`
+- **Combined hooks and webhooks**: 1270
 
 
-## Auto-Update Information
-
-- **Managed by:** `scripts/qmoi_md_autoupdater.py`
-- **Category:** API/Endpoint/Route
-- **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-16 22:00:58 UTC
-- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
-
-
-## Purpose
-
-Describe the purpose of this document and its scope.
-
-## Overview
-
-Summarize the content and the document intent.
-
-## Auto-Update Instructions
-
-This document is automatically refreshed by the QMOI Markdown Auto-Updater.
-Run the following command to regenerate documentation and apply Lion validation metadata:
-
-```bash
-python3 scripts/qmoi_md_autoupdater.py
-```
-
-Then run:
-
-```bash
-python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
-```
-
-For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
-
-
-## Production Readiness
-
-Define the production quality expectations and validation requirements.
-
-## Validation Metadata
-
-Track validation source, timestamp, and verification status.
-
-## Implementation Notes
-
-Document implementation details, dependencies, and limitations.
-
-## Testing Notes
-
-Reference relevant tests, verification commands, and validation scope.
-
-## Ownership
-
-Record the responsible owner or team for this document.
-
-## Change History
-
-Log significant changes and version notes.
-
-## Cross-References
-
-Link to related documentation, APIs, and system artifacts.
+- HOOK: .backups/aggressive_fix_1775957216/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/aggressive_fix_1775957216/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: .backups/aggressive_fix_1775957216/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: .backups/aggressive_fix_1775957216/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/src/hooks/useAutoProjects.ts
+- HOOK: .backups/aggressive_fix_1775957216/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/app/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/use-mobile.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useDatasets.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/src/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/src/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_232609/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useBitgetTrader.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useColabJob.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useDeviceHealth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useExtensionManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useLargeFileUpload.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/use-mobile.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useDatasets.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/use-mobile.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useDatasets.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/hooks/useBitgetTrader.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/hooks/useColabJob.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/hooks/useDeviceHealth.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/hooks/useExtensionManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/hooks/useLargeFileUpload.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/hooks/useProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/hooks/useQMOIAutoInteraction.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/hooks/useQVillage.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/final_fix_backup_20260326_233109/src/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useBitgetTrader.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useColabJob.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useDeviceHealth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useExtensionManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useLargeFileUpload.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/app/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/use-mobile.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useBitgetTrader.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useColabJob.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useDatasets.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useDeviceHealth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useExtensionManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useLargeFileUpload.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useQMOIAutoInteraction.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useQVillage.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/src/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/src/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/src/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_231902/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/use-mobile.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useDatasets.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/src/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/src/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/pre_fix_backup_20260326_232205/src/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/backups/src.backup.20260121144720/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/backups/src.backup.20260121144720/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: .backups/production_fix_1775686366/hooks/use-mobile.ts
+- HOOK: .backups/production_fix_1775686366/hooks/use-mobile.tsx
+- HOOK: .backups/production_fix_1775686366/hooks/use-toast.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useAIFeatureEnhancer.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useAIHealthCheck.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useAnalyticsDashboard.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useAutoEarningTasks.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useAutoFixAllProblems.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useBitgetTrader.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useColabJob.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useDatasetManager.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useDatasets.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useDeviceHealth.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useDeviceOptimizer.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useErrorAutoFix.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useExtensionManager.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useGithubRepoManager.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useGlobalAutomation.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useGoDaddyIntegration.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useLargeFileUpload.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useMediaGenerationStatus.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useModelTrainer.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useProjects.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useQCity.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useQMOIAutoInteraction.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useQVillage.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useSystemMetrics.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useTTCVoice.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useTaskQueue.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useTrading.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useTradingAutomation.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useVSCodeProblems.ts
+- HOOK: .backups/production_fix_1775686366/hooks/useWhatsApp.ts
+- HOOK: .backups/production_fix_1775686366/src/hooks/useAuth.ts
+- HOOK: .backups/production_fix_1775686366/src/hooks/useAutoProjects.ts
+- HOOK: .backups/production_fix_1775686366/src/hooks/useQMOIChat.ts
+- HOOK: .backups/production_fix_1775686366/src/hooks/useQmoiKernel.test.ts
+- HOOK: .backups/production_fix_1775686366/src/hooks/useQmoiKernel.ts
+- HOOK: .backups/production_fix_1775686366/src/hooks/useQmoiState.ts
+- HOOK: .backups/production_fix_1775686366/src/hooks/useTimezone.ts
+- HOOK: app/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/use-toast.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useAIHealthCheck.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useAutoEarningTasks.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useDatasetManager.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useDeviceOptimizer.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useErrorAutoFix.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useGithubRepoManager.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useGlobalAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useModelTrainer.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useQCity.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useQMOIChat.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useSystemMetrics.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useTTCVoice.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useTaskQueue.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useTrading.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useTradingAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useVSCodeProblems.ts
+- HOOK: backups/final_fix_backup_20260326_232609/hooks/useWhatsApp.ts
+- HOOK: backups/final_fix_backup_20260326_232609/src/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_232609/src/hooks/useQMOIChat.ts
+- HOOK: backups/final_fix_backup_20260326_232609/src/hooks/useQmoiKernel.ts
+- HOOK: backups/final_fix_backup_20260326_232609/src/hooks/useQmoiState.ts
+- HOOK: backups/final_fix_backup_20260326_232609/src/hooks/useTimezone.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useBitgetTrader.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useColabJob.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useDeviceHealth.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useExtensionManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useLargeFileUpload.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/hooks/useProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.test.ts
+- HOOK: backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/hooks/useQmoiState.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/src/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/use-mobile.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/use-mobile.tsx
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/use-toast.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAIHealthCheck.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAutoEarningTasks.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useDatasetManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useDatasets.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useDeviceOptimizer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useErrorAutoFix.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useGithubRepoManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useGlobalAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useModelTrainer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useQCity.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useQMOIChat.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useSystemMetrics.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTTCVoice.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTaskQueue.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTrading.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTradingAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useVSCodeProblems.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useWhatsApp.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useQMOIChat.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useQmoiKernel.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useQmoiState.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/hooks/useTimezone.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/use-mobile.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/use-mobile.tsx
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/use-toast.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAIHealthCheck.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAutoEarningTasks.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useDatasetManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useDatasets.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useDeviceOptimizer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useErrorAutoFix.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useGithubRepoManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useGlobalAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useModelTrainer.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useQCity.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useQMOIChat.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useSystemMetrics.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTTCVoice.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTaskQueue.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTrading.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTradingAutomation.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useVSCodeProblems.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useWhatsApp.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useAuth.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useQMOIChat.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useQmoiKernel.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useQmoiState.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/hooks/useTimezone.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/hooks/useQmoiKernel.test.ts
+- HOOK: backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/hooks/useQmoiState.ts
+- HOOK: backups/final_fix_backup_20260326_233109/hooks/useBitgetTrader.ts
+- HOOK: backups/final_fix_backup_20260326_233109/hooks/useColabJob.ts
+- HOOK: backups/final_fix_backup_20260326_233109/hooks/useDeviceHealth.ts
+- HOOK: backups/final_fix_backup_20260326_233109/hooks/useExtensionManager.ts
+- HOOK: backups/final_fix_backup_20260326_233109/hooks/useLargeFileUpload.ts
+- HOOK: backups/final_fix_backup_20260326_233109/hooks/useProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/hooks/useQMOIAutoInteraction.ts
+- HOOK: backups/final_fix_backup_20260326_233109/hooks/useQVillage.ts
+- HOOK: backups/final_fix_backup_20260326_233109/src/hooks/useAutoProjects.ts
+- HOOK: backups/final_fix_backup_20260326_233109/src/hooks/useQmoiKernel.test.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useBitgetTrader.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useColabJob.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useDeviceHealth.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useExtensionManager.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useLargeFileUpload.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useProjects.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.test.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useQmoiState.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/app/hooks/useAuth.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useQmoiKernel.test.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useQmoiState.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/use-mobile.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/use-mobile.tsx
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/use-toast.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useAIHealthCheck.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useAutoEarningTasks.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useBitgetTrader.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useColabJob.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useDatasetManager.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useDatasets.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useDeviceHealth.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useDeviceOptimizer.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useErrorAutoFix.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useExtensionManager.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useGithubRepoManager.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useGlobalAutomation.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useLargeFileUpload.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useModelTrainer.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useProjects.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useQCity.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useQMOIAutoInteraction.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useQMOIChat.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useQVillage.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useSystemMetrics.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useTTCVoice.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useTaskQueue.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useTrading.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useTradingAutomation.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useVSCodeProblems.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/hooks/useWhatsApp.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/src/hooks/useAuth.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/src/hooks/useAutoProjects.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/src/hooks/useQMOIChat.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/src/hooks/useQmoiKernel.test.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/src/hooks/useQmoiKernel.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/src/hooks/useQmoiState.ts
+- HOOK: backups/pre_fix_backup_20260326_231902/src/hooks/useTimezone.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/use-mobile.tsx
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/use-toast.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAutoEarningTasks.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDatasetManager.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useDeviceOptimizer.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useGithubRepoManager.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useModelTrainer.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useQCity.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTTCVoice.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTaskQueue.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTrading.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useVSCodeProblems.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useWhatsApp.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useAuth.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/hooks/useTimezone.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useAuth.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/hooks/useTimezone.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/use-mobile.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/use-mobile.tsx
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/use-toast.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useAIFeatureEnhancer.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useAIHealthCheck.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useAnalyticsDashboard.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useAutoEarningTasks.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useAutoFixAllProblems.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useDatasetManager.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useDatasets.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useDeviceOptimizer.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useErrorAutoFix.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useGithubRepoManager.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useGlobalAutomation.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useMediaGenerationStatus.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useModelTrainer.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useQCity.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useQMOIChat.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useSystemMetrics.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useTTCVoice.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useTaskQueue.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useTrading.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useTradingAutomation.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useVSCodeProblems.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/hooks/useWhatsApp.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/src/hooks/useAuth.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/src/hooks/useQMOIChat.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/src/hooks/useQmoiKernel.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/src/hooks/useQmoiState.ts
+- HOOK: backups/pre_fix_backup_20260326_232205/src/hooks/useTimezone.ts
+- HOOK: backups/src.backup.20260121144720/hooks/useAutoProjects.ts
+- HOOK: backups/src.backup.20260121144720/hooks/useQmoiKernel.test.ts
+- HOOK: backups/src.backup.20260121144720/hooks/useQmoiState.ts
+- HOOK: hooks/use-mobile.ts
+- HOOK: hooks/use-mobile.tsx
+- HOOK: hooks/use-toast.ts
+- HOOK: hooks/useAIFeatureEnhancer.ts
+- HOOK: hooks/useAIHealthCheck.ts
+- HOOK: hooks/useAnalyticsDashboard.ts
+- HOOK: hooks/useAutoEarningTasks.ts
+- HOOK: hooks/useAutoFixAllProblems.ts
+- HOOK: hooks/useBitgetTrader.ts
+- HOOK: hooks/useColabJob.ts
+- HOOK: hooks/useDatasetManager.ts
+- HOOK: hooks/useDatasets.ts
+- HOOK: hooks/useDeviceHealth.ts
+- HOOK: hooks/useDeviceOptimizer.ts
+- HOOK: hooks/useErrorAutoFix.ts
+- HOOK: hooks/useExtensionManager.ts
+- HOOK: hooks/useGithubRepoManager.ts
+- HOOK: hooks/useGlobalAutomation.ts
+- HOOK: hooks/useGoDaddyIntegration.ts
+- HOOK: hooks/useLargeFileUpload.ts
+- HOOK: hooks/useMediaGenerationStatus.ts
+- HOOK: hooks/useModelTrainer.ts
+- HOOK: hooks/useProjects.ts
+- HOOK: hooks/useQCity.ts
+- HOOK: hooks/useQMOIAutoInteraction.ts
+- HOOK: hooks/useQMOIChat.ts
+- HOOK: hooks/useQVillage.ts
+- HOOK: hooks/useSystemMetrics.ts
+- HOOK: hooks/useTTCVoice.ts
+- HOOK: hooks/useTaskQueue.ts
+- HOOK: hooks/useTrading.ts
+- HOOK: hooks/useTradingAutomation.ts
+- HOOK: hooks/useVSCodeProblems.ts
+- HOOK: hooks/useWhatsApp.ts
+- HOOK: src/hooks/useAuth.ts
+- HOOK: src/hooks/useAutoProjects.ts
+- HOOK: src/hooks/useQMOIChat.ts
+- HOOK: src/hooks/useQmoiKernel.test.ts
+- HOOK: src/hooks/useQmoiKernel.ts
+- HOOK: src/hooks/useQmoiState.ts
+- HOOK: src/hooks/useTimezone.ts
+- WEBHOOK: /api/alerts/webhook [ANY] -> src/app/api/alerts/webhook/route.ts
+- WEBHOOK: /api/webhooks/godaddy-domain [ANY] -> app/api/webhooks/godaddy-domain/route.ts
+- WEBHOOK: /api/webhooks/godaddy-health [ANY] -> app/api/webhooks/godaddy-health/route.ts
+- WEBHOOK: /api/webhooks/payments [ANY] -> app/api/webhooks/payments/route.ts
+- WEBHOOK: /api/webhooks/qvillage [ALL] -> app/api/webhooks/qvillage/route.ts
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/API_AUTO_UPDATE_GUIDELINES.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/API_ENDPOINTS_REFERENCE.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/APIs_1.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/APIs_v1.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/DEPLOYMENT_STATUS_V1_2_3.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/DOCUMENTATION_COMPLETION_REPORT.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/DOCUMENTATION_MASTER_INDEX.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/ENDPOINTS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/HOSTLINKSDOMAINS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/MASTERREADME.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_DEPLOYMENT_ALL_STEPS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_IMPLEMENTATION.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_READINESS_CHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_READINESS_FINAL.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_SETUP_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/QMOI-ENHANCED-SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/QMOI_MASTER_INTEGRATION_VALIDATION.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/QVILLAGESPACES.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/Q_BALANCES_AUTO_UPDATE_README.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/RELEASE_VERIFICATION_V1_2_3.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/ROOT_PRODUCTION_STATUS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/ROOT_production_STATUS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/SERVICES.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/TABLE_OF_CONTENTS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/VERCEL_AUTO_DEPLOY_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/VERCEL_QMOI_AUTOFEATURES_MASTER.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/docs/QMOIGITLABDEV.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873225/docs/qvillage_features.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/API_AUTO_UPDATE_GUIDELINES.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/AUTO_SETUP_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/EXECUTIVE_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/HOSTLINKSDOMAINS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/IMPLEMENTATION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/MASTER_ONLY_FEATURES.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/PHASE_6_EXTENDED_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_ALWAYS_ON_DEPLOYMENT.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_ALL_STEPS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_README.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_SUCCESS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_READINESS_FINAL.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_READINESS_FINAL_AUDIT.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_SETUP_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/QMOIHUGGINGFACESPACESSETUPINST.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/Q_BALANCES_AUTO_UPDATE_README.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/README_PRODUCTION.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/VERCELLINKS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/compulsories_nonproduction_tasks.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775873435/docs/LION_ORCHESTRATOR_ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/3.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/4.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/44.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/ALLHOOKSWEBHOOKS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/ALLMDFILESREFS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/NGROKPAYED.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/POLITICALQMOI.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/QMOI_COMPLETE_INTEGRATION_MASTER.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/QMOI_RELEASE_VERSION_SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/TABLE_OF_CONTENTS.md
+- WEBHOOK: webhook documentation: .backups/aggressive_fix_1775957216/WEBHOOKS.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/ALLLINKS.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/ALLMDFILESREFS.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/API_INTEGRATION_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/DEPLOYMENT-README.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/DEPLOYMENT_READY_FINAL.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/DEPLOYMENT_STATUS_V1_2_3.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_DEPLOYMENT_CHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_READINESS_AUDIT.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_READINESS_REPORT.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_READY_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/QCITYRESOURCES.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/QMOI-ENHANCED-AUTOTESTS.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/QMOI-ENHANCED-README.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/QMOICLONEGITHUB.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/QMOIDATABASE.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/QMOISTATS.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/QVILLAGE_HUGGINGFACE_INTEGRATION.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/QVILLAGE_READY_FOR_PRODUCTION.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/README_PRODUCTION.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/SESSION_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/comprehensive_fix_1775690673/TODOS_COMPLETION_VERIFICATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/3.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ACCOUNTABILITY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ALLERRORS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ALLHOOKSWEBHOOKS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ALLLINKS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ALLMDFILESREFS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ALLMDGILES.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ALLUITESTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/API_AUTO_UPDATE_GUIDELINES.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/API_ENDPOINTS_COMPLETE_AUDIT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/API_ENDPOINTS_REFERENCE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/API_INTEGRATION_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/API_REFERENCE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/APIs_1.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/APIs_v1.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/AUTOCLONE_STANDALONE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/AUTODEV_SECRETS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/AUTODEV_VALIDATION_SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/AUTO_SETUP_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/COMPLETION_REPORT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/CONTINUOUS_MONITORING_SETUP.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/CREDENTIAL_ROTATION_PLAYBOOK.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEALS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DELIVERABLES_FINAL_INVENTORY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT-README.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_CHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_FIX_QUICK_START.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_HEALTH_CHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_READY_FINAL.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_STATUS_V1_2_3.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_VERIFICATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DEVELOPER_STRUCTURE_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DOCKER_DEPLOYMENT_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DOCUMENTATION_COMPLETION_REPORT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DOCUMENTATION_INDEX.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DOCUMENTATION_MASTER_INDEX.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/DOMAIN_MANAGEMENT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/EMAILSSYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ENDPOINTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ENVIRONMENT_CONFIG.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/EXECUTIVE_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/FINAL_PRODUCTION_READINESS_REPORT_V2.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/GITHUB-ACTIONS-COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/GITHUBPAYED.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/GITHUB_WORKFLOWS_VERIFICATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/GODADDY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/GODADDYPAYED.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/HOSTLINKSDOMAINS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/HUGGINGFACEPAYED.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/IMPLEMENTATION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/MANIFEST_AND_DEPLOYMENT_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/MASTERREADME.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/MASTER_ONLY_FEATURES.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/MONITORING_API_DOCS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/MONITORING_IMPLEMENTATION_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PAYMENTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PHASE_4_QVILLAGE_HF_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PHASE_5_COMPLETION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PHASE_6_EXTENDED_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTIONCHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_ALWAYS_ON_DEPLOYMENT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_CREDENTIALS_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_ALL_STEPS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_CHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_PLAYBOOK.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_README.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_SUCCESS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_IMPLEMENTATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_IMPLEMENTATION_GUIDES.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_MONITORING_SETUP.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_AUDIT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_CHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_FINAL.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_FINAL_AUDIT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_REPORT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READY_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_SETUP.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/PRODUCTION_SETUP_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QCITYMAINDEVICE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QCITYRESOURCES.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QGLOBALSIM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI-AIRTEL-INTEGRATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI-ANIMATION-ENHANCEMENT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI-ENHANCED-AUTOTESTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI-ENHANCED-README.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI-ENHANCED-SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI-HUGGINGFACE-ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI-VOICE-ENHANCEMENT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIAUTHBIOMETRICS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIAUTOFIXREADME.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOICLONEGITHUB.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIDATABASE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIDEVICES.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIEMPLOYAUTOPAY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIGITHUBAPP.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIGITLABDEV.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIGLOBAL.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOIHUGGINGFACESPACESSETUPINST.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOISTATS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOISYSTEMEMAILS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_APIS_WEBHOOKS_ENDPOINTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_COMPLETE_INTEGRATION_MASTER.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_COMPLETE_SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_GITLAB_AUTOMATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_MARKDOWN_AUTO_UPDATE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_MASTER_INTEGRATION_VALIDATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_MEMORY_AWARENESS_SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_PHASE_3_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_PLATFORM_ARCHITECTURE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_RELEASE_VERSION_SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_SELF_UPDATE_SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_TRACKS_SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_WALLET_FINANCIAL_SYSTEMS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QMOI_WALLET_FINANCIAL_SYSTEMS_UPDATED.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QUANTUM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QVILLAGESPACES.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QVILLAGE_HUGGINGFACE_INTEGRATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QVILLAGE_IMPLEMENTATION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/QVILLAGE_READY_FOR_PRODUCTION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/Q_BALANCES_AUTO_UPDATE_README.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/README.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/README_ENHANCED.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/README_PRODUCTION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/RELEASE_NOTES_v2.4.0.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/RELEASE_VERIFICATION_V1_2_3.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ROOT_PRODUCTION_STATUS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/ROOT_production_STATUS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/SERVICES.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/SESSION_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/SESSION_PHASE_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/START_PRODUCTION_DEPLOYMENT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/TESTING.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/TODOS_COMPLETION_VERIFICATION.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/TREE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/UI_FEATURES_AUDIT_COMPREHENSIVE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/VERCELLINKS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/VERCEL_AUTO_DEPLOY_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/VERCEL_DEPLOYMENT_READY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/VERCEL_QMOI_AUTOFEATURES_MASTER.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/WEBHOOKS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/WPA.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/app/api/PRODUCTION_STATUS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/app/api/production_STATUS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/compulsories.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/compulsories_nonproduction_tasks.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/API_AUDIT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/API_REFERENCE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/APIs_v1.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/CREDENTIAL_ROTATION_PLAYBOOK.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/LION-ENHANCEMENTS-PLAN.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/LION-WEBHOOKS-ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/LIONOPERATINGSYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/LION_ORCHESTRATOR_ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/MONITORING_SYSTEM.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/QMOIGITHUBDEV.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/QMOIGITLABDEV.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/QMOIVERCELDEV.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/QMOI_MEMORY.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/QVILLAGE_MANUAL.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/REVENUE_SPEC.md.generated.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/TODOS_ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/WALLET_RUNBOOK.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/WALLET_SECURITY_PLAYBOOK.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/implemented_endpoints.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/qvillage_features.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/workflow_fix_proposals.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/docs/workflows_remediation.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/qvillage/README.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/reports/mock_and_stub_audit.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/dns_links_report.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0530_QMOIGITLABDEV.md.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0592_git-smart-sync.ps1.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0597_hooks_useWhatsApp.ts.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0926_qmoi-enhanced_git-smart-sync.ps1.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0931_qmoi-enhanced_hooks_useWhatsApp.ts.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/1063_services_adapters_payments_utils.ts.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775977879/DOCKER_DEPLOYMENT_GUIDE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775977879/QMOICLONEGITHUB.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775977879/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md
+- WEBHOOK: webhook documentation: .backups/production_fix_1775977879/Q_BALANCES_AUTO_UPDATE_README.md
+- WEBHOOK: webhook documentation: 3.md
+- WEBHOOK: webhook documentation: 4.md
+- WEBHOOK: webhook documentation: 44.md
+- WEBHOOK: webhook documentation: 5.md
+- WEBHOOK: webhook documentation: ACCOUNTABILITY.md
+- WEBHOOK: webhook documentation: AI_ENHANCEMENT_SYSTEM.md
+- WEBHOOK: webhook documentation: ALLERRORS.md
+- WEBHOOK: webhook documentation: ALLHEALTHS.md
+- WEBHOOK: webhook documentation: ALLHOOKSWEBHOOKS.md
+- WEBHOOK: webhook documentation: ALLLINKS.md
+- WEBHOOK: webhook documentation: ALLMDFILESREFS.md
+- WEBHOOK: webhook documentation: ALLMDGILES.md
+- WEBHOOK: webhook documentation: ALLTESTSAUTOTESTS.md
+- WEBHOOK: webhook documentation: ALLUITESTS.md
+- WEBHOOK: webhook documentation: API.md
+- WEBHOOK: webhook documentation: API_AUTO_UPDATE_GUIDELINES.md
+- WEBHOOK: webhook documentation: API_COMPREHENSIVE.md
+- WEBHOOK: webhook documentation: API_ENDPOINTS_COMPLETE_AUDIT.md
+- WEBHOOK: webhook documentation: API_ENDPOINTS_REFERENCE.md
+- WEBHOOK: webhook documentation: API_REFERENCE.md
+- WEBHOOK: webhook documentation: APIs_1.md
+- WEBHOOK: webhook documentation: APIs_v1.md
+- WEBHOOK: webhook documentation: AUTOCLONE_STANDALONE.md
+- WEBHOOK: webhook documentation: AUTODEV_SECRETS.md
+- WEBHOOK: webhook documentation: AUTODEV_VALIDATION_SYSTEM.md
+- WEBHOOK: webhook documentation: AUTO_SETUP_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: BUSINESS_INTELLIGENCE.md
+- WEBHOOK: webhook documentation: COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md
+- WEBHOOK: webhook documentation: COMPLETION_REPORT.md
+- WEBHOOK: webhook documentation: CONTINUOUS_MONITORING_SETUP.md
+- WEBHOOK: webhook documentation: CREDENTIAL_ROTATION_PLAYBOOK.md
+- WEBHOOK: webhook documentation: DEALS.md
+- WEBHOOK: webhook documentation: DELIVERABLES_FINAL_INVENTORY.md
+- WEBHOOK: webhook documentation: DEPLOYMENT_CHECKLIST.md
+- WEBHOOK: webhook documentation: DEPLOYMENT_FIX_QUICK_START.md
+- WEBHOOK: webhook documentation: DEPLOYMENT_HEALTH_CHECKLIST.md
+- WEBHOOK: webhook documentation: DEPLOYMENT_STATUS_V1_2_3.md
+- WEBHOOK: webhook documentation: DEPLOYMENT_VERIFICATION.md
+- WEBHOOK: webhook documentation: DEVELOPER_STRUCTURE_COMPLETE.md
+- WEBHOOK: webhook documentation: DOCKER_DEPLOYMENT_GUIDE.md
+- WEBHOOK: webhook documentation: DOCUMENTATION_COMPLETION_REPORT.md
+- WEBHOOK: webhook documentation: DOCUMENTATION_INDEX.md
+- WEBHOOK: webhook documentation: DOCUMENTATION_MASTER_INDEX.md
+- WEBHOOK: webhook documentation: DOCUMENTATION_PHASE_COMPLETION_REPORT.md
+- WEBHOOK: webhook documentation: DOMAIN_MANAGEMENT.md
+- WEBHOOK: webhook documentation: EMAILSSYSTEM.md
+- WEBHOOK: webhook documentation: ENDPOINTS.md
+- WEBHOOK: webhook documentation: ENVIRONMENT_CONFIG.md
+- WEBHOOK: webhook documentation: EXECUTIVE_SUMMARY.md
+- WEBHOOK: webhook documentation: FINAL_PRODUCTION_READINESS_REPORT_V2.md
+- WEBHOOK: webhook documentation: FINAL_SESSION_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: FINAL_SESSION_COMPREHENSIVE_REPORT.md
+- WEBHOOK: webhook documentation: GITHUB-ACTIONS-COMPLETE.md
+- WEBHOOK: webhook documentation: GITHUBPAYED.md
+- WEBHOOK: webhook documentation: GITHUB_WORKFLOWS_VERIFICATION.md
+- WEBHOOK: webhook documentation: GODADDY.md
+- WEBHOOK: webhook documentation: GODADDYPAYED.md
+- WEBHOOK: webhook documentation: HOSTLINKSDOMAINS.md
+- WEBHOOK: webhook documentation: HUGGINGFACEPAYED.md
+- WEBHOOK: webhook documentation: IMPLEMENTATION_SUMMARY.md
+- WEBHOOK: webhook documentation: MANIFEST_AND_DEPLOYMENT_GUIDE.md
+- WEBHOOK: webhook documentation: MASTERREADME.md
+- WEBHOOK: webhook documentation: MASTER_ONLY_FEATURES.md
+- WEBHOOK: webhook documentation: MONITORING_ANALYTICS_SYSTEM.md
+- WEBHOOK: webhook documentation: MONITORING_API_DOCS.md
+- WEBHOOK: webhook documentation: MONITORING_IMPLEMENTATION_GUIDE.md
+- WEBHOOK: webhook documentation: NGROKPAYED.md
+- WEBHOOK: webhook documentation: ORCHESTRATOR.md
+- WEBHOOK: webhook documentation: PAYMENTS.md
+- WEBHOOK: webhook documentation: PERFORMANCE_ANALYTICS.md
+- WEBHOOK: webhook documentation: PERFORMANCE_OPTIMIZATION_SYSTEM.md
+- WEBHOOK: webhook documentation: PHASE_4_QVILLAGE_HF_COMPLETE.md
+- WEBHOOK: webhook documentation: PHASE_5_COMPLETION.md
+- WEBHOOK: webhook documentation: PHASE_6_EXTENDED_SUMMARY.md
+- WEBHOOK: webhook documentation: POLITICALQMOI.md
+- WEBHOOK: webhook documentation: PREDICTIVE_ANALYTICS.md
+- WEBHOOK: webhook documentation: PRODUCTIONCHECKLIST.md
+- WEBHOOK: webhook documentation: PRODUCTION_ALWAYS_ON_DEPLOYMENT.md
+- WEBHOOK: webhook documentation: PRODUCTION_CREDENTIALS_GUIDE.md
+- WEBHOOK: webhook documentation: PRODUCTION_DEPLOYMENT_ALL_STEPS.md
+- WEBHOOK: webhook documentation: PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md
+- WEBHOOK: webhook documentation: PRODUCTION_DEPLOYMENT_COMPLETE.md
+- WEBHOOK: webhook documentation: PRODUCTION_DEPLOYMENT_PLAYBOOK.md
+- WEBHOOK: webhook documentation: PRODUCTION_DEPLOYMENT_README.md
+- WEBHOOK: webhook documentation: PRODUCTION_DEPLOYMENT_SUCCESS.md
+- WEBHOOK: webhook documentation: PRODUCTION_DEPLOYMENT_SYSTEM.md
+- WEBHOOK: webhook documentation: PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md
+- WEBHOOK: webhook documentation: PRODUCTION_IMPLEMENTATION.md
+- WEBHOOK: webhook documentation: PRODUCTION_IMPLEMENTATION_GUIDES.md
+- WEBHOOK: webhook documentation: PRODUCTION_MONITORING_SETUP.md
+- WEBHOOK: webhook documentation: PRODUCTION_READINESS_AUDIT.md
+- WEBHOOK: webhook documentation: PRODUCTION_READINESS_CHECKLIST.md
+- WEBHOOK: webhook documentation: PRODUCTION_READINESS_FINAL.md
+- WEBHOOK: webhook documentation: PRODUCTION_READINESS_FINAL_AUDIT.md
+- WEBHOOK: webhook documentation: PRODUCTION_SETUP.md
+- WEBHOOK: webhook documentation: PRODUCTION_SETUP_COMPLETE.md
+- WEBHOOK: webhook documentation: QCITYMAINDEVICE.md
+- WEBHOOK: webhook documentation: QGLOBALSIM.md
+- WEBHOOK: webhook documentation: QLIONAGENT.md
+- WEBHOOK: webhook documentation: QMOI-AIRTEL-INTEGRATION.md
+- WEBHOOK: webhook documentation: QMOI-ANIMATION-ENHANCEMENT.md
+- WEBHOOK: webhook documentation: QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md
+- WEBHOOK: webhook documentation: QMOI-ENHANCED-SYSTEM.md
+- WEBHOOK: webhook documentation: QMOI-HUGGINGFACE-ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: QMOI-VOICE-ENHANCEMENT.md
+- WEBHOOK: webhook documentation: QMOI.md
+- WEBHOOK: webhook documentation: QMOIAUTHBIOMETRICS.md
+- WEBHOOK: webhook documentation: QMOIAUTOFIXREADME.md
+- WEBHOOK: webhook documentation: QMOICLONEGITHUB.md
+- WEBHOOK: webhook documentation: QMOIDATABASE.md
+- WEBHOOK: webhook documentation: QMOIDEVICES.md
+- WEBHOOK: webhook documentation: QMOIEMPLOYAUTOPAY.md
+- WEBHOOK: webhook documentation: QMOIGITHUBAPP.md
+- WEBHOOK: webhook documentation: QMOIGITLABDEV.md
+- WEBHOOK: webhook documentation: QMOIGLOBAL.md
+- WEBHOOK: webhook documentation: QMOIHUGGINGFACESPACESSETUPINST.md
+- WEBHOOK: webhook documentation: QMOISYSTEMEMAILS.md
+- WEBHOOK: webhook documentation: QMOI_APIS_WEBHOOKS_ENDPOINTS.md
+- WEBHOOK: webhook documentation: QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md
+- WEBHOOK: webhook documentation: QMOI_COMPLETE_INTEGRATION_MASTER.md
+- WEBHOOK: webhook documentation: QMOI_COMPLETE_SYSTEM.md
+- WEBHOOK: webhook documentation: QMOI_GITLAB_AUTOMATION.md
+- WEBHOOK: webhook documentation: QMOI_MARKDOWN_AUTO_UPDATE.md
+- WEBHOOK: webhook documentation: QMOI_MASTER_INTEGRATION_VALIDATION.md
+- WEBHOOK: webhook documentation: QMOI_MEMORY_AWARENESS_SYSTEM.md
+- WEBHOOK: webhook documentation: QMOI_PHASE_3_COMPLETION_SUMMARY.md
+- WEBHOOK: webhook documentation: QMOI_PLATFORM_ARCHITECTURE.md
+- WEBHOOK: webhook documentation: QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md
+- WEBHOOK: webhook documentation: QMOI_PRODUCTION_DEPLOYMENT.md
+- WEBHOOK: webhook documentation: QMOI_RELEASE_VERSION_SYSTEM.md
+- WEBHOOK: webhook documentation: QMOI_SELF_UPDATE_SYSTEM.md
+- WEBHOOK: webhook documentation: QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md
+- WEBHOOK: webhook documentation: QMOI_TRACKS_SYSTEM.md
+- WEBHOOK: webhook documentation: QMOI_WALLET_FINANCIAL_SYSTEMS.md
+- WEBHOOK: webhook documentation: QMOI_WALLET_FINANCIAL_SYSTEMS_UPDATED.md
+- WEBHOOK: webhook documentation: QUANTUM.md
+- WEBHOOK: webhook documentation: QVILLAGESPACES.md
+- WEBHOOK: webhook documentation: QVILLAGE_IMPLEMENTATION_SUMMARY.md
+- WEBHOOK: webhook documentation: QVILLAGE_READY_FOR_PRODUCTION.md
+- WEBHOOK: webhook documentation: Q_BALANCES_AUTO_UPDATE_README.md
+- WEBHOOK: webhook documentation: README.md
+- WEBHOOK: webhook documentation: README_ENHANCED.md
+- WEBHOOK: webhook documentation: README_PRODUCTION.md
+- WEBHOOK: webhook documentation: RELEASE_NOTES_v2.4.0.md
+- WEBHOOK: webhook documentation: RELEASE_VERIFICATION_V1_2_3.md
+- WEBHOOK: webhook documentation: REPORTING_DASHBOARDS.md
+- WEBHOOK: webhook documentation: ROOT_PRODUCTION_STATUS.md
+- WEBHOOK: webhook documentation: ROOT_production_STATUS.md
+- WEBHOOK: webhook documentation: ROUTES.md
+- WEBHOOK: webhook documentation: ROUTES_COMPREHENSIVE.md
+- WEBHOOK: webhook documentation: SECURITY_HARDENING_SYSTEM.md
+- WEBHOOK: webhook documentation: SECURITY_MONITORING.md
+- WEBHOOK: webhook documentation: SERVICES.md
+- WEBHOOK: webhook documentation: SESSION_DOCUMENTATION_STATUS_REPORT.md
+- WEBHOOK: webhook documentation: SESSION_PHASE_COMPLETE.md
+- WEBHOOK: webhook documentation: START_PRODUCTION_DEPLOYMENT.md
+- WEBHOOK: webhook documentation: SYSTEM_MONITORING.md
+- WEBHOOK: webhook documentation: TABLE_OF_CONTENTS.md
+- WEBHOOK: webhook documentation: TESTING.md
+- WEBHOOK: webhook documentation: TREE.md
+- WEBHOOK: webhook documentation: TREE_COMPREHENSIVE.md
+- WEBHOOK: webhook documentation: UI_FEATURES_AUDIT_COMPREHENSIVE.md
+- WEBHOOK: webhook documentation: VERCELLINKS.md
+- WEBHOOK: webhook documentation: VERCEL_AUTO_DEPLOY_GUIDE.md
+- WEBHOOK: webhook documentation: VERCEL_DEPLOYMENT_READY.md
+- WEBHOOK: webhook documentation: VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md
+- WEBHOOK: webhook documentation: VERCEL_QMOI_AUTOFEATURES_MASTER.md
+- WEBHOOK: webhook documentation: WEBHOOKS.md
+- WEBHOOK: webhook documentation: WPA.md
+- WEBHOOK: webhook documentation: app/api/PRODUCTION_STATUS.md
+- WEBHOOK: webhook documentation: app/api/production_STATUS.md
+- WEBHOOK: webhook documentation: compulsories.md
+- WEBHOOK: webhook documentation: compulsories_nonproduction_tasks.md
+- WEBHOOK: webhook documentation: docs/API_AUDIT.md
+- WEBHOOK: webhook documentation: docs/API_REFERENCE.md
+- WEBHOOK: webhook documentation: docs/LION-ENHANCEMENTS-PLAN.md
+- WEBHOOK: webhook documentation: docs/LION-WEBHOOKS-ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: docs/LIONOPERATINGSYSTEM.md
+- WEBHOOK: webhook documentation: docs/LION_ORCHESTRATOR_ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: docs/MONITORING_SYSTEM.md
+- WEBHOOK: webhook documentation: docs/QMOIGITHUBDEV.md
+- WEBHOOK: webhook documentation: docs/QMOIGITLABDEV.md
+- WEBHOOK: webhook documentation: docs/QMOIVERCELDEV.md
+- WEBHOOK: webhook documentation: docs/QMOI_MEMORY.md
+- WEBHOOK: webhook documentation: docs/QVILLAGE_MANUAL.md
+- WEBHOOK: webhook documentation: docs/TODOS_ENHANCEMENTS.md
+- WEBHOOK: webhook documentation: docs/WALLET_RUNBOOK.md
+- WEBHOOK: webhook documentation: docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md
+- WEBHOOK: webhook documentation: docs/implemented_endpoints.md
+- WEBHOOK: webhook documentation: docs/qvillage_features.md
+- WEBHOOK: webhook documentation: docs/workflow_fix_proposals.md
+- WEBHOOK: webhook documentation: docs/workflows_remediation.md
+- WEBHOOK: webhook documentation: hf_space_qvillage/5.md
+- WEBHOOK: webhook documentation: reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md
+- WEBHOOK: webhook documentation: reports/mock_and_stub_audit.md
+- WEBHOOK: webhook documentation: tools/dns_links_report.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/0530_QMOIGITLABDEV.md.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/0592_git-smart-sync.ps1.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/0597_hooks_useWhatsApp.ts.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/0926_qmoi-enhanced_git-smart-sync.ps1.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/0931_qmoi-enhanced_hooks_useWhatsApp.ts.md
+- WEBHOOK: webhook documentation: tools/issue_drafts/1063_services_adapters_payments_utils.ts.md
+- WEBHOOK: webhook documentation: tools/placeholder_actions.md
 

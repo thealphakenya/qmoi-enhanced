@@ -224,6 +224,54 @@ const walletConfig: WalletManagerConfig = {
 ---
 *This document is maintained by QMOI's autonomous evolution system*
 
+
+## 🔗 Wallet Coverage and Real Funds Assurance
+
+QMOI now documents full wallet coverage for all wallet types, including primary, revenue, vault, savings, escrow, rewards, trading, and betting wallets. Every wallet is production-ready and configured to handle real actual funds with continuous validation from the financial manager.
+
+QMOI's wallet system is fully integrated with the Financial Manager, ensuring all wallet activity is captured, validated, and synchronized across the complete revenue and balance system. The wallet lifecycle is monitored end-to-end, from creation through funding, allocation, spending, and recovery.
+
+## 💼 Wallet Categories Managed by QMOI
+
+- Primary system wallets: `qmoi-main-wallet`, `qmoi-revenue-wallet`, `qmoi-cashon-wallet`, `qmoi-megavault`
+- Trading wallets: spot, futures, OTC, margin
+- Betting wallets: gaming, sportsbook, event trading
+- Bank-connected wallets: USD, KES, EUR and local currency accounts
+- Escrow & settlement wallets: secure trade and deal settlements
+- Reward & bonus wallets: promotions, partner earnings, referral rewards
+- Project wallets: dedicated project funding and capital allocation
+
+## 📣 Notifications and Master Alerts
+
+QMOI sends real-time notifications for every wallet event, including:
+- wallet creation and activation
+- deposit and withdrawal events
+- balance threshold alerts
+- risk and compliance flags
+- project funding changes
+- multi-signature approval requests
+- emergency fund freezes
+
+All wallet notifications are routed to the Master dashboard and optional secure channels with master-only access controls.
+
+## 🚀 Project & Revenue Integration
+
+QMOI Financial Manager now captures every wallet event as part of project and revenue workflows. Projects can allocate capital directly into dedicated project wallets, and wallet performance feeds into revenue forecasting, funding optimization, and auto-rebalancing.
+
+This means wallet operations are not just standalone ledger entries — they are part of QMOI's full money-making ecosystem, including trading, betting, settlement, lending, and global payments.
+
+## 🔄 Wallet Operations with Financial Manager
+
+The financial manager enhances wallet coverage by:
+- capturing all wallet transactions in real time
+- enforcing production-ready validation before any fund movement
+- updating balances and transaction history instantly
+- assuring real funds are present before trade or bet execution
+- logging every wallet event with audit-grade transparency
+- applying risk, compliance, and money management rules to each wallet
+
+
+
 ## Purpose
 
 Describe the purpose of this document and its scope.

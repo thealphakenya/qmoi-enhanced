@@ -9,6 +9,7 @@
 - Health API/endpoint definitions: 428
 - Health test and validation files: 45
 - Health reports and status datasets: 239
+- Health percentage tracking doc: `ALLPERCENTAGES.md`
 
 ## Health Document Inventory
 These files contain system health, health check, health status, monitoring, or recovery information.
@@ -24,6 +25,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `ADAPTERS.md`
 - `ADVANCED_USER_IDENTIFICATION_SYSTEM.md`
 - `ALL PERCENTAGES.md`
+- `ALLPERCENTAGES.md`
 - `ALLCLONEDRELEASES.md`
 - `ALLCOMPONENTSTESTS.md`
 - `ALLDEVICESSETTINGS.md`

@@ -6,11 +6,13 @@ This document tracks all automation scripts, auto-update systems, and auto-relat
 
 ## Summary
 
-- **Total automation-related items:** 1695
+- **Total automation-related items:** 1696
+- **Key integration doc:** `ALLPERCENTAGES.md`
 
 ## Automation Inventory
 
 - `ALLAUTO.md`
+- `ALLPERCENTAGES.md`
 - `ALLQMOIAUTOEVOLVINGENVS.md`
 - `ALLTESTSAUTOTESTS.bak.1775962850`
 - `ALLTESTSAUTOTESTS.bak.1775962910`

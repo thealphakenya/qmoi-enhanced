@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-04-17T00:23:10.935543",
+  "apis_found": [],
+  "endpoints_found": [],
+  "routes_found": [],
+  "tests_found": [],
+  "hooks_found": [],
+  "webhooks_found": [],
+  "files_processed": 2126,
+  "total_md_files": 2126,
+  "missing_items": [],
+  "enhancements_needed": []
+}

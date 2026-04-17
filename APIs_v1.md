@@ -135,6 +135,10 @@ No endpoints are deprecated in v1.0.
 
 
 
+
+
+
+
 ## AUTO-GENERATED ENDPOINTS
 
 - /api/account-automation
@@ -197,6 +201,12 @@ No endpoints are deprecated in v1.0.
 - /api/avatars/{userId}
 - /api/biometric/templates
 - /api/biometric/verify
+- /api/cameras
+- /api/cameras/infrared
+- /api/cameras/panoramic
+- /api/cameras/road
+- /api/cameras/street
+- /api/cameras/thermal
 - /api/cashon
 - /api/cashon/balance
 - /api/cashon/deposit
@@ -215,6 +225,7 @@ No endpoints are deprecated in v1.0.
 - /api/deploy/auto-redeploy
 - /api/deployment-status
 - /api/device-fingerprint
+- /api/devices
 - /api/document-backup
 - /api/domains
 - /api/domains/health
@@ -243,6 +254,7 @@ No endpoints are deprecated in v1.0.
 - /api/financial/balances
 - /api/financial/transactions
 - /api/financial/verify
+- /api/friendship
 - /api/git/branch
 - /api/git/commit
 - /api/git/pr
@@ -277,6 +289,7 @@ No endpoints are deprecated in v1.0.
 - /api/media/generate
 - /api/media/search
 - /api/media/status
+- /api/memory
 - /api/metrics
 - /api/monitor/status
 - /api/mpesa/callback

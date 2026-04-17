@@ -35,6 +35,10 @@ class QMOIBulkDocumentationUpdater:
             "MASTEROWNS.md",
             "FINAL_SYSTEM_HEALTH_REPORT.md",
             "MASTER_IDENTITY_COMPLETE.md",
+            "ALLWALLETSQVS.md",
+            "FINANCIALMANAGER.md",
+            "BALANCES.md",
+            "QMOI_WALLET_FINANCIAL_SYSTEMS.md",
         ]
 
     def update_section(self, content: str, section_name: str, new_section: str) -> Tuple[str, int]:
