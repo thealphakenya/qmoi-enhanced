@@ -91,7 +91,7 @@
 - **Error Rates**: By status code and endpoint
 - **System Resources**: CPU, memory, disk, network
 - **Consciousness Health**: Sync status, node health
-- **Queue Depths**: Processing backlog metrics
+- **Queue Depths**: Processing roadmap item metrics
 - **Cache Hit Rates**: Performance indicators
 
 ### Alerting Strategy

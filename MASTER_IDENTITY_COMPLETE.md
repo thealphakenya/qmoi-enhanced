@@ -166,7 +166,7 @@
 - Leah Chebet Simotwo (Family/Partner)
 
 **Team Members**:
-- QMOI Development Team
+- QMOI production Team
 - Alpha Q AI Systems Team
 
 ---

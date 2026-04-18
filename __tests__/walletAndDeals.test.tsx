@@ -20,7 +20,7 @@ production-ready
     );
   });
 
-  operational_data message", () => {
+  production data message", () => {
     render(<TransactionHistory transactions={[]} />);
     production-ready
   });

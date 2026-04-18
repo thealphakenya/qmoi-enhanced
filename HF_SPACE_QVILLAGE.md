@@ -6,7 +6,7 @@ This document describes the `hf_space_qvillage/` directory and its connection to
 
 - `hf_space_qvillage/app.py` — Gradio application entrypoint for Hugging Face Spaces.
 - `hf_space_qvillage/core.py` — Core business logic, arXiv integration, knowledge search, and community metrics.
-- `hf_space_qvillage/test_app.py` — Built-in production tests for HF Space functionality.
+- `hf_space_qvillage/test_app.py` — Built-production ready tests for HF Space functionality.
 - `hf_space_qvillage/requirements.txt` — Dependencies for deployment.
 - `hf_space_qvillage/5.md` — Feature and enhancement reference.
 

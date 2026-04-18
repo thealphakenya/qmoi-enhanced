@@ -127,7 +127,7 @@
                 📁 qmoi/
                   📁 voice-profiles/
                   📁 research/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 user/
                   📁 language/
                 📁 earning/
@@ -194,7 +194,7 @@
                     📁 webhooks/
                       📁 qvillage/
                     📁 qmoi/
-                      📁 voice-preview/
+                      📁 voice-PRODUCTION/
                       📁 chat/
                     📁 admin/
                       📁 rate-limits/
@@ -210,7 +210,7 @@
                   📁 routes/
                 📁 app/
                   📁 api/
-                    📁 preview/
+                    📁 PRODUCTION/
                       📁 analyze/
                 📁 components/
                   📁 q-city/
@@ -224,7 +224,7 @@
                     📁 qvillage/
                   📁 qmoi/
                     📁 voice-profiles/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                   📁 financial/
                     📁 transactions/
                   📁 health/
@@ -402,7 +402,7 @@
                       📁 qmoi/
                         📁 transcribe/
                         📁 master-mode/
-                        📁 voice-preview/
+                        📁 voice-PRODUCTION/
                       📁 admin/
                         📁 autofix/
                           📁 scan/
@@ -415,7 +415,7 @@
                 📁 app.backup.20260121144720/
                   📁 api/
                     📁 qmoi/
-                      📁 voice-preview/
+                      📁 voice-PRODUCTION/
                     📁 admin/
                       📁 rate-limits/
                       📁 audit-logs/
@@ -427,7 +427,7 @@
                 📁 services/
                 📁 app/
                   📁 api/
-                    📁 preview/
+                    📁 PRODUCTION/
                       📁 analyze/
                 📁 components/
                   📁 q-city/
@@ -440,7 +440,7 @@
                     📁 payments/
                   📁 qmoi/
                     📁 voice-profiles/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                   📁 financial/
                     📁 transactions/
                   📁 health/
@@ -462,7 +462,7 @@
               📁 api/
                 📁 automation/
                   📁 trigger/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 execute-tool/
             📁 components/
               📁 qmoi/
@@ -526,7 +526,7 @@
                 📁 qmoi/
                   📁 voice-profiles/
                   📁 research/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 user/
                   📁 language/
                   📁 revenue-dashboard/
@@ -594,7 +594,7 @@
                   📁 qvillage/
                 📁 qmoi/
                   📁 voice-profiles/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 chat/
                 📁 admin/
                   📁 rate-limits/
@@ -616,7 +616,7 @@
               📁 api/
                 📁 automation/
                   📁 trigger/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 analyze/
                   📁 execute-tool/
             📁 components/
@@ -642,7 +642,7 @@
                 📁 voice-profiles/
                 📁 research/
                 📁 upload/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
                 📁 language/
                 📁 avatars/
               📁 financial/
@@ -772,7 +772,7 @@
                   📁 qmoi/
                     📁 transcribe/
                     📁 master-mode/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                   📁 admin/
                     📁 autofix/
                       📁 scan/
@@ -785,7 +785,7 @@
                 📁 webhooks/
                   📁 qvillage/
                 📁 qmoi/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 chat/
                 📁 admin/
                   📁 rate-limits/
@@ -801,7 +801,7 @@
               📁 routes/
             📁 app/
               📁 api/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 analyze/
             📁 components/
               📁 q-city/
@@ -822,7 +822,7 @@
                 📁 wipe/
               📁 qmoi/
                 📁 voice-profiles/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
               📁 financial/
                 📁 transactions/
               📁 health/
@@ -847,7 +847,7 @@
               📁 qvillage/
             📁 qmoi/
               📁 voice-profiles/
-              📁 voice-preview/
+              📁 voice-PRODUCTION/
               📁 chat/
             📁 admin/
               📁 rate-limits/
@@ -954,7 +954,7 @@
                     📁 payments/
                     📁 qvillage/
                   📁 qmoi/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                   📁 qmoi-model/
             📁 src.backup.20260121144720/
               📁 services/
@@ -962,7 +962,7 @@
             📁 app.backup.20260121144720/
               📁 api/
                 📁 qmoi/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                 📁 admin/
                   📁 rate-limits/
                   📁 audit-logs/
@@ -974,7 +974,7 @@
             📁 services/
             📁 app/
               📁 api/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 analyze/
             📁 components/
               📁 q-city/
@@ -987,7 +987,7 @@
                 📁 payments/
               📁 qmoi/
                 📁 voice-profiles/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
               📁 financial/
                 📁 transactions/
               📁 health/
@@ -1041,7 +1041,7 @@
         📁 api/
           📁 qmoi/
             📁 voice-profiles/
-            📁 voice-preview/
+            📁 voice-PRODUCTION/
       📁 qvillage/
       📁 dashboard/
         📁 src/
@@ -1061,7 +1061,7 @@
       📁 src/
         📁 app/
           📁 api/
-            📁 preview/
+            📁 PRODUCTION/
               📁 analyze/
               📁 execute-tool/
         📁 components/
@@ -1076,7 +1076,7 @@
           📁 whatsapp-business/
           📁 qmoi/
             📁 voice-profiles/
-            📁 voice-preview/
+            📁 voice-PRODUCTION/
             📁 avatars/
           📁 qmoi-model/
         📁 components/
@@ -1234,7 +1234,7 @@
               📁 reset/
               📁 transactions/
               📁 start/
-            📁 voice-preview/
+            📁 voice-PRODUCTION/
             📁 auto-fix/
               📁 stop/
               📁 status/
@@ -1430,7 +1430,7 @@
                 📁 qmoi/
                   📁 voice-profiles/
                   📁 research/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 user/
                   📁 language/
                   📁 avatars/
@@ -1800,7 +1800,7 @@
                         📁 reset/
                         📁 transactions/
                         📁 start/
-                      📁 voice-preview/
+                      📁 voice-PRODUCTION/
                       📁 auto-fix/
                         📁 stop/
                         📁 status/
@@ -1909,7 +1909,7 @@
                       📁 health/
                         📁 stream/
                       📁 execute/
-                    📁 preview/
+                    📁 PRODUCTION/
                       📁 analyze/
                 📁 components/
                   📁 qmoi/
@@ -1996,7 +1996,7 @@
                       📁 transactions/
                       📁 start/
                     📁 visuals/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                     📁 auto-fix/
                       📁 stop/
                       📁 status/
@@ -2617,7 +2617,7 @@
                       📁 qmoi/
                         📁 transcribe/
                         📁 master-mode/
-                        📁 voice-preview/
+                        📁 voice-PRODUCTION/
                       📁 links/
                         📁 validate/
                       📁 admin/
@@ -2676,7 +2676,7 @@
                         📁 reset/
                         📁 transactions/
                         📁 start/
-                      📁 voice-preview/
+                      📁 voice-PRODUCTION/
                       📁 auto-fix/
                         📁 stop/
                         📁 status/
@@ -2777,7 +2777,7 @@
                       📁 health/
                         📁 stream/
                       📁 execute/
-                    📁 preview/
+                    📁 PRODUCTION/
                       📁 analyze/
                 📁 components/
                   📁 qmoi/
@@ -2858,7 +2858,7 @@
                       📁 transactions/
                       📁 start/
                     📁 visuals/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                     📁 auto-fix/
                       📁 stop/
                       📁 status/
@@ -3039,7 +3039,7 @@
                     📁 toggle/
                 📁 automation/
                   📁 trigger/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 execute-tool/
             📁 auth/
             📁 components/
@@ -3246,7 +3246,7 @@
                     📁 reset/
                     📁 transactions/
                     📁 start/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 auto-fix/
                     📁 stop/
                     📁 status/
@@ -3507,7 +3507,7 @@
                     📁 reset/
                     📁 transactions/
                     📁 start/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 auto-fix/
                     📁 stop/
                     📁 status/
@@ -3647,7 +3647,7 @@
                   📁 execute/
                 📁 automation/
                   📁 trigger/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 analyze/
                   📁 execute-tool/
             📁 auth/
@@ -3757,7 +3757,7 @@
                   📁 transactions/
                   📁 start/
                 📁 visuals/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
                 📁 auto-fix/
                   📁 stop/
                   📁 status/
@@ -4273,7 +4273,7 @@
                   📁 qmoi/
                     📁 transcribe/
                     📁 master-mode/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                   📁 admin/
                     📁 autofix/
                       📁 scan/
@@ -4331,7 +4331,7 @@
                     📁 reset/
                     📁 transactions/
                     📁 start/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 auto-fix/
                     📁 stop/
                     📁 status/
@@ -4440,7 +4440,7 @@
                   📁 health/
                     📁 stream/
                   📁 execute/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 analyze/
             📁 components/
               📁 qmoi/
@@ -4535,7 +4535,7 @@
                   📁 transactions/
                   📁 start/
                 📁 visuals/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
                 📁 auto-fix/
                   📁 stop/
                   📁 status/
@@ -4770,7 +4770,7 @@
                 📁 transactions/
                 📁 start/
               📁 backup/
-              📁 voice-preview/
+              📁 voice-PRODUCTION/
               📁 auto-fix/
                 📁 stop/
                 📁 status/
@@ -5258,7 +5258,7 @@
                   📁 qmoi/
                     📁 transcribe/
                     📁 master-mode/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                   📁 links/
                     📁 validate/
                   📁 admin/
@@ -5317,7 +5317,7 @@
                     📁 reset/
                     📁 transactions/
                     📁 start/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 auto-fix/
                     📁 stop/
                     📁 status/
@@ -5418,7 +5418,7 @@
                   📁 health/
                     📁 stream/
                   📁 execute/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 analyze/
             📁 components/
               📁 qmoi/
@@ -5499,7 +5499,7 @@
                   📁 transactions/
                   📁 start/
                 📁 visuals/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
                 📁 auto-fix/
                   📁 stop/
                   📁 status/
@@ -5740,7 +5740,7 @@
               📁 health/
             📁 avatars/
               📁 [userId]/
-            📁 preview/
+            📁 PRODUCTION/
               📁 analyze/
               📁 execute-tool/
             📁 global/
@@ -5888,7 +5888,7 @@
               📁 start/
             📁 backup/
             📁 visuals/
-            📁 voice-preview/
+            📁 voice-PRODUCTION/
             📁 auto-fix/
               📁 stop/
               📁 status/
@@ -6252,10 +6252,10 @@
     📄 installer.nsh
     📁 windows/
   📁 issues/
-    📄 TODO-PROD-REPORTS.md
-    📄 TODO-PROD-PLATFORMS.md
-    📄 TODO-PROD-CURATE.md
-    📄 TODO-PROD-UIUX.md
+    📄 DONE-PROD-REPORTS.md
+    📄 DONE-PROD-PLATFORMS.md
+    📄 DONE-PROD-CURATE.md
+    📄 DONE-PROD-UIUX.md
   📁 github/
     📁 workflows/
   📁 types/
@@ -6320,7 +6320,7 @@
           📁 reset/
           📁 transactions/
           📁 start/
-        📁 voice-preview/
+        📁 voice-PRODUCTION/
         📁 auto-fix/
           📁 stop/
           📁 status/
@@ -6606,7 +6606,7 @@
             📁 qmoi/
               📁 voice-profiles/
               📁 research/
-              📁 voice-preview/
+              📁 voice-PRODUCTION/
               📁 user/
               📁 language/
               📁 avatars/
@@ -6979,7 +6979,7 @@
                     📁 reset/
                     📁 transactions/
                     📁 start/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 auto-fix/
                     📁 stop/
                     📁 status/
@@ -7090,7 +7090,7 @@
                   📁 health/
                     📁 stream/
                   📁 execute/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 analyze/
             📁 components/
               📁 qmoi/
@@ -7177,7 +7177,7 @@
                   📁 transactions/
                   📁 start/
                 📁 visuals/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
                 📁 auto-fix/
                   📁 stop/
                   📁 status/
@@ -7805,7 +7805,7 @@
                   📁 qmoi/
                     📁 transcribe/
                     📁 master-mode/
-                    📁 voice-preview/
+                    📁 voice-PRODUCTION/
                   📁 links/
                     📁 validate/
                   📁 admin/
@@ -7863,7 +7863,7 @@
                     📁 reset/
                     📁 transactions/
                     📁 start/
-                  📁 voice-preview/
+                  📁 voice-PRODUCTION/
                   📁 auto-fix/
                     📁 stop/
                     📁 status/
@@ -7967,7 +7967,7 @@
                   📁 health/
                     📁 stream/
                   📁 execute/
-                📁 preview/
+                📁 PRODUCTION/
                   📁 analyze/
             📁 components/
               📁 qmoi/
@@ -8048,7 +8048,7 @@
                   📁 transactions/
                   📁 start/
                 📁 visuals/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
                 📁 auto-fix/
                   📁 stop/
                   📁 status/
@@ -8228,7 +8228,7 @@
                 📁 toggle/
             📁 automation/
               📁 trigger/
-            📁 preview/
+            📁 PRODUCTION/
               📁 execute-tool/
         📁 auth/
         📁 components/
@@ -8436,7 +8436,7 @@
                 📁 reset/
                 📁 transactions/
                 📁 start/
-              📁 voice-preview/
+              📁 voice-PRODUCTION/
               📁 auto-fix/
                 📁 stop/
                 📁 status/
@@ -8703,7 +8703,7 @@
                 📁 reset/
                 📁 transactions/
                 📁 start/
-              📁 voice-preview/
+              📁 voice-PRODUCTION/
               📁 auto-fix/
                 📁 stop/
                 📁 status/
@@ -8845,7 +8845,7 @@
               📁 execute/
             📁 automation/
               📁 trigger/
-            📁 preview/
+            📁 PRODUCTION/
               📁 analyze/
               📁 execute-tool/
         📁 auth/
@@ -8953,7 +8953,7 @@
               📁 transactions/
               📁 start/
             📁 visuals/
-            📁 voice-preview/
+            📁 voice-PRODUCTION/
             📁 auto-fix/
               📁 stop/
               📁 status/
@@ -9455,7 +9455,7 @@
               📁 qmoi/
                 📁 transcribe/
                 📁 master-mode/
-                📁 voice-preview/
+                📁 voice-PRODUCTION/
               📁 admin/
                 📁 autofix/
                   📁 scan/
@@ -9506,7 +9506,7 @@
                 📁 reset/
                 📁 transactions/
                 📁 start/
-              📁 voice-preview/
+              📁 voice-PRODUCTION/
               📁 auto-fix/
                 📁 stop/
                 📁 status/
@@ -9607,7 +9607,7 @@
               📁 health/
                 📁 stream/
               📁 execute/
-            📁 preview/
+            📁 PRODUCTION/
               📁 analyze/
         📁 components/
           📁 qmoi/
@@ -10192,7 +10192,7 @@
               📁 health/
                 📁 stream/
               📁 execute/
-            📁 preview/
+            📁 PRODUCTION/
               📁 analyze/
         📁 components/
           📁 qmoi/
@@ -10251,7 +10251,7 @@
               📁 target/
               📁 reset/
               📁 start/
-            📁 voice-preview/
+            📁 voice-PRODUCTION/
             📁 auto-fix/
               📁 stop/
               📁 status/
@@ -13031,7 +13031,7 @@
           📁 health/
         📁 avatars/
           📁 [userId]/
-        📁 preview/
+        📁 PRODUCTION/
           📁 analyze/
           📁 execute-tool/
         📁 global/
@@ -13247,7 +13247,7 @@
           📁 start/
         📁 backup/
         📁 visuals/
-        📁 voice-preview/
+        📁 voice-PRODUCTION/
         📁 auto-fix/
           📁 stop/
           📁 status/

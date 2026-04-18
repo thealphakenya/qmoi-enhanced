@@ -110,7 +110,7 @@ function testAutoprodCapabilities(): any {
   for (const test of tests) {
     try {
       logger.info(`\n🔄 Testing: ${test.name}`);
-      const response = await makeRequest(operational_data);
+      const response = await makeRequest(production data);
 
       if (response.success) {
         logger.info(`✅ ${test.name}: PASSED`);

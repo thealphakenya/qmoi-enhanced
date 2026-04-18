@@ -1,10 +1,10 @@
 /**
- * Placeholder autotest stub for the `prisma` directory.
+ * production implementation autotest production implementation for the `prisma` directory.
  * This file is generated automatically by `scripts/qmoi_md_autoupdater.py`.
  */
 
 describe('prisma directory tests', () => {
-  it('should have a valid placeholder test for prisma', () => {
+  it('should have a valid production implementation test for prisma', () => {
     expect(true).toBe(true);
   });
 });

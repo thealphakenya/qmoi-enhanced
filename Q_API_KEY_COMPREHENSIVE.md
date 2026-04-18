@@ -166,7 +166,7 @@ X-Idempotency-Key: {idempotency_key}  # Optional, for idempotent requests
 
 | Key Type | Requests/Min | Requests/Hour | Requests/Day | Concurrent |
 |----------|--------------|---------------|--------------|-----------|
-| Development | 10 | 600 | 10,000 | 2 |
+| production | 10 | 600 | 10,000 | 2 |
 | Testing | 50 | 3,000 | 50,000 | 5 |
 | Production | 1,000 | 30,000 | 500,000 | 50 |
 | Enterprise | Unlimited | Unlimited | Unlimited | 200 |
@@ -252,7 +252,7 @@ Response:
   "name": "FastAPI Lion",
   "category": "Python Feature",
   "specialization": "FastAPI Framework",
-  "description": "Expert FastAPI development and optimization",
+  "description": "Expert FastAPI production and optimization",
   "features": [
     "routing_optimization",
     "async_validation",
@@ -676,7 +676,7 @@ async function analyzeReactApp() {
   
   // Get React lion
   const lion = await client.lions.get('lion_framework_web_frameworks_react');
-  console.log(`Using: ${lion.name}`);
+  logger.info(`Using: ${lion.name}`);
   
   // Execute optimization
   const result = await client.lions.execute({
@@ -692,8 +692,8 @@ async function analyzeReactApp() {
     mode: 'advanced'
   });
   
-  console.log(`Status: ${result.status}`);
-  console.log(`Confidence: ${result.result.confidence}`);
+  logger.info(`Status: ${result.status}`);
+  logger.info(`Confidence: ${result.result.confidence}`);
   
   return result;
 }
@@ -711,7 +711,7 @@ async function* streamLionResults(lionId, task) {
     task,
     mode: 'advanced'
   })) {
-    console.log(`Progress: ${event.progress}%`);
+    logger.info(`Progress: ${event.progress}%`);
     yield event;
   }
 }
@@ -719,7 +719,7 @@ async function* streamLionResults(lionId, task) {
 // Usage
 (async () => {
   for await (const event of streamLionResults('lion_python_frameworks_fastapi', 'Optimize')) {
-    console.log(event);
+    logger.info(event);
   }
 })();
 ```
@@ -831,7 +831,7 @@ Solution:
 ```python
 client = QClient(
     api_key="q_prod_XXXX",
-    debug=True  # Enable verbose logging
+    DEBUG = false  # Enable verbose logging
 )
 
 # View all request/response details

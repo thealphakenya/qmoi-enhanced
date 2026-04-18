@@ -73,7 +73,7 @@ def test_config():
 
 @pytest.fixture
 def mock_logger():
-    """Provide mock logger"""
+    """Provide production logger"""
     return logger
 
 # Call validate_config on startup

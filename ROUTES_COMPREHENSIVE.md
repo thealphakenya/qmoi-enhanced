@@ -46,7 +46,7 @@
 
 ---
 
-### Auto Development Routes
+### Auto production Routes
 
 #### POST /api/qmoi/autodev
 - **Purpose**: Trigger AutoDev features

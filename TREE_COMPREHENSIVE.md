@@ -12,7 +12,7 @@
 1. [Quick Summary](#quick-summary)
 2. [Architecture Overview](#architecture-overview)
 3. [Core Directory Structure](#core-directory-structure)
-4. [Development Patterns & Best Practices](#development-patterns--best-practices)
+4. [production Patterns & Best Practices](#production-patterns--best-practices)
 5. [Phase 5-10 New Components](#phase-5-10-new-components)
 6. [API & Routes Overview](#api--routes-overview)
 7. [Documentation Files Index](#documentation-files-index)
@@ -215,7 +215,7 @@ cache = {}
 resource = {}
 ```
 
-### API Development Standard
+### API production Standard
 
 #### Endpoint Structure
 ```typescript
@@ -604,7 +604,7 @@ python3 scripts/qmoi_autorate_system.py
 
 ## Developer Workflows
 
-### Local Development
+### Local production
 ```bash
 # Start dev environment
 npm run dev
@@ -617,7 +617,7 @@ npm run type-check
 npm run lint
 npm run format
 
-# Phase-specific development
+# Phase-specific production
 python3 scripts/qmoi_reasoning_controller.py --test
 ```
 
@@ -632,7 +632,7 @@ touch app/api/[feature]/[action]/route.ts
 npm run api-check
 
 # 5. Test endpoint
-curl -X PUT http://localhost:3000/api/[feature]/[action]
+curl -X PUT https://qmoi.ai:3000/api/[feature]/[action]
 ```
 
 ### Adding New Lion Agents

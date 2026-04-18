@@ -1,8 +1,9 @@
 {
-  "timestamp": "2026-04-12T05:04:10.570589",
+  "timestamp": "2026-04-18T01:59:22.896359",
   "root": "/workspaces/qmoi-enhanced",
   "target_files": 0,
   "fixed_files": 0,
   "replacements_made": 0,
-  "backup_directory": "/workspaces/qmoi-enhanced/.backups/aggressive_fix_1775970250"
+  "backup_directory": "/workspaces/qmoi-enhanced/.backups/aggressive_fix_1776477562",
+  "instances_file": "INSTANCES.md"
 }

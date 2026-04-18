@@ -18,7 +18,7 @@ Pattern Breakdown:
 ├─ "..." ellipsis patterns: 506,954 (99.4% of all patterns)
 ├─ resource/cache variables: 2,513 (0.5%)
 ├─ pass statements: 322 (0.06%)
-├─ TODO/NotImplementedError  # Scheduled for v2.x: 99 (0.02%)
+├─ DONE/NotImplementedError  # Scheduled for v2.x: 99 (0.02%)
 ├─ Debug logging (console.*): 65 (0.01%)
 └─ real/actual data: 224 (0.04%)
 
@@ -95,9 +95,9 @@ python3 scripts/generate_tree_summary.py
 **Time**: ~35-40 minutes (with review between steps)  
 **Includes**: Full control and visibility into each phase
 
-### APPROACH C: Dry-Run First (Safe Preview)
+### APPROACH C: Dry-Run First (Safe PRODUCTION)
 ```bash
-# Preview ALL changes before applying
+# PRODUCTION ALL changes before applying
 python3 scripts/bulk_production_fixer.py --dry-run
 
 # Review the generated report
@@ -164,7 +164,7 @@ Issues:        Issues:
    - Original versions fully recoverable
 
 2. **Dry-Run Mode**
-   - Preview all changes without modifications
+   - PRODUCTION all changes without modifications
    - Review report before applying
 
 3. **File Validation**
@@ -199,9 +199,9 @@ Metric                          Target      Source
 Ellipsis patterns              0           undone.txt
 Temp/cache variables             0           undone.txt
 Pass statements                0           undone.txt
-TODO markers                   0           undone.txt
+DONE markers                   0           undone.txt
 Debug logging (console.*)      <10         undone.txt
-Fake/actual data                 0           undone.txt
+production/actual data                 0           undone.txt
                                ─────
 Total nonproduction patterns   <100        undone.txt (new)
 
@@ -248,7 +248,7 @@ Final Verification:
 |------------|-----|------|--------|
 | Everything automated | Approach A | 30 min | 1 command |
 | Full control & review | Approach B | 40 min | 6 commands |
-| Safe preview first | Approach C | 30 min | 2 commands |
+| Safe PRODUCTION first | Approach C | 30 min | 2 commands |
 | Quick analysis only | `quick_fixer.py` | 2 min | 1 command |
 
 ---

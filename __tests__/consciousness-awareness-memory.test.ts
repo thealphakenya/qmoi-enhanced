@@ -290,7 +290,7 @@ production-ready
         prodice_id: "prodice_001",
         action: "test_action",
         priority: "normal",
-        context: { operational_data" },
+        context: { production data" },
       },
       async () => {
         return { result: "success" };

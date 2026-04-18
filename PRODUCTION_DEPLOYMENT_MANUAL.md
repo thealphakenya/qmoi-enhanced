@@ -301,7 +301,7 @@ npm run test:load -- --users=50 --duration=60
 docker-compose -f docker-compose.prod.yml up -d monitoring
 
 # Verify monitoring endpoints
-curl http://localhost:9090/api/v1/query?query=up
+curl https://qmoi.ai:9090/api/v1/query?query=up
 # Should return: {"status": "success"}
 ```
 
@@ -322,7 +322,7 @@ kubectl get PrometheusRule
 kubectl apply -f k8s/grafana-dashboards.yaml
 
 # Access Grafana
-# http://grafana.example.com
+# https://grafana.example.com
 # Username: admin
 # Password: [see .env.production]
 ```
@@ -382,31 +382,31 @@ watch -n 1 'kubectl top pods'
 ### 8.2 Application Metrics
 ```bash
 # Check application metrics
-curl http://prometheus:9090/api/v1/query?query='http_requests_total{status="500"}'
+curl https://prometheus:9090/api/v1/query?query='http_requests_total{status="500"}'
 # Should return: 0 (no errors)
 
-curl http://prometheus:9090/api/v1/query?query='http_request_duration_seconds{quantile="0.95"}'
+curl https://prometheus:9090/api/v1/query?query='http_request_duration_seconds{quantile="0.95"}'
 # Should return: <200ms
 ```
 
 ### 8.3 User Experience Monitoring
 ```bash
 # Check real user monitoring
-curl http://analytics:9200/_search?q=error_rate
+curl https://analytics:9200/_search?q=error_rate
 # Should show: <0.1%
 
-curl http://analytics:9200/_search?q=page_load_time
+curl https://analytics:9200/_search?q=page_load_time
 # Should show: <3 seconds
 ```
 
 ### 8.4 Error Rate Monitoring
 ```bash
 # Check error tracking service
-curl http://sentry:9000/api/projects/errors/
+curl https://sentry:9000/api/projects/errors/
 # Should show: error_rate: 0%
 
 # Review recent errors
-curl http://sentry:9000/api/projects/errors/latest
+curl https://sentry:9000/api/projects/errors/latest
 # Should show: No critical errors
 ```
 
@@ -479,13 +479,13 @@ kubectl rollout restart deployment/api-service
 ### Webhook Failures
 ```bash
 # Check webhook status
-curl http://webhooks-service:8080/admin/status
+curl https://webhooks-service:8080/admin/status
 
 # Retry failed webhooks
-curl -X POST http://webhooks-service:8080/admin/retry
+curl -X POST https://webhooks-service:8080/admin/retry
 
 # Check retry queue
-curl http://webhooks-service:8080/admin/queue/depth
+curl https://webhooks-service:8080/admin/queue/depth
 ```
 
 ---

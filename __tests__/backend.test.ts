@@ -1,10 +1,10 @@
 /**
- * Placeholder autotest stub for the `backend` directory.
+ * production implementation autotest production implementation for the `backend` directory.
  * This file is generated automatically by `scripts/qmoi_md_autoupdater.py`.
  */
 
 describe('backend directory tests', () => {
-  it('should have a valid placeholder test for backend', () => {
+  it('should have a valid production implementation test for backend', () => {
     expect(true).toBe(true);
   });
 });

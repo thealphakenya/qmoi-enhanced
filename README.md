@@ -252,7 +252,7 @@ python -c "from scripts.qmoi_confidence_threshold_system import QMOIConfidenceTh
 - **Documentation:** Comprehensive docs in `/docs` folder
 - **API Reference:** Complete API documentation
 - **Examples:** Code examples and tutorials
-- **Community:** Active development community
+- **Community:** Active production community
 - **Support:** 24/7 technical support
 
 ### Contributing

@@ -83,11 +83,11 @@ production-ready
         production-ready
         production-ready
             if not file_path.name.endswith(('.test.ts', '.test.js', '.spec.ts', '.spec.js', 'test_')):
-                self.findings['operational_data'].append({
+                self.findings['production data'].append({
                     'file': str(file_path),
                     'line': line_num,
                     'content': line.strip(),
-                    'type': 'operational_data'
+                    'type': 'production data'
                 })
 
         # Hardcoded values

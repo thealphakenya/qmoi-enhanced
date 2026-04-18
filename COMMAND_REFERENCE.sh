@@ -158,7 +158,7 @@ echo "# Step 7: Collect performance baseline"
 echo "python scripts/performance-benchmark.py"
 echo ""
 
-echo "Option 3: DEVELOPMENT & CONTINUOUS ENHANCEMENT"
+echo "Option 3: production & CONTINUOUS ENHANCEMENT"
 echo "────────────────────────────────────────────────────────────────────────────────"
 echo "# Run continuous documentation updates"
 echo "python scripts/continuous_enhancement_orchestrator.py"

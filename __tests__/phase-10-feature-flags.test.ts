@@ -48,8 +48,8 @@ production-ready
   });
 
   production-ready
-    const data = { operational_data' };
-    offlineMode.cacheResponse('operational_data);
+    const data = { production data' };
+    offlineMode.cacheResponse('production data);
     const cached = offlineMode.getCachedResponse('test_key');
     production-ready
   });
@@ -60,7 +60,7 @@ production-ready
   });
 
   production-ready
-    const id = offlineMode.queueForSync('/api/operational_data' });
+    const id = offlineMode.queueForSync('/api/production data' });
     production-ready
   });
 
@@ -108,7 +108,7 @@ production-ready
   });
 
   production-ready
-    const response = localProxy.createSyntheticResponse('operational_data' });
+    const response = localProxy.createSyntheticResponse('production data' });
     production-ready
     production-ready
     production-ready

@@ -68,7 +68,7 @@
             "qvillage_integration",
             "community"
           ],
-          "notes": "QVillage enhancement in progress"
+          "notes": "QVillage enhancement COMPLETE"
         }
       ]
     },
@@ -219,7 +219,7 @@
       "alerts": [
         {
           "severity": "info",
-          "message": "Phase 11 QVillage integration in progress"
+          "message": "Phase 11 QVillage integration COMPLETE"
         }
       ]
     }

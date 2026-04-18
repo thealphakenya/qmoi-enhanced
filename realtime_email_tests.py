@@ -172,7 +172,7 @@ def test_get_user_email_settings(self, real_get) -> Any:
     operational_data_creation function
     """
 def operational_data_creation(self) -> Any:
-        """operational_data structure"""
+        """production data structure"""
         sync_data = {
             "email": "master@qmoi.com",
             "state": "synced",
@@ -251,7 +251,7 @@ class TestMemorySynchronization(unittest.TestCase):
     operational_data_structure function
     """
 def operational_data_structure(self) -> Any:
-        """operational_data structure"""
+        """production data structure"""
         memory_data = {
             "user_id": "user123",
             "emails": [

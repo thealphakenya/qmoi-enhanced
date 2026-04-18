@@ -947,10 +947,10 @@ These files contain system health, health check, health status, monitoring, or r
 - `git-lfs-3.5.1/git-lfs-3.5.1/README.md`
 - `hf_space_qvillage/README.md`
 - `independent.md`
-- `issues/TODO-PROD-CURATE.md`
-- `issues/TODO-PROD-PLATFORMS.md`
-- `issues/TODO-PROD-REPORTS.md`
-- `issues/TODO-PROD-UIUX.md`
+- `issues/DONE-PROD-CURATE.md`
+- `issues/DONE-PROD-PLATFORMS.md`
+- `issues/DONE-PROD-REPORTS.md`
+- `issues/DONE-PROD-UIUX.md`
 - `link_report.md`
 - `missing_docs_report.md`
 - `mobile/README.md`
@@ -2317,7 +2317,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `scripts/deployment/deploy.py`
 - `scripts/deployment/server.py`
 - `scripts/dev-healthcheck.sh`
-- `scripts/dev-placeholder.js`
+- `scripts/dev-production implementation.js`
 - `scripts/device_orchestration_manager.py`
 - `scripts/device_orchestration_manager.test.py`
 - `scripts/device_ownership_detector.py`
@@ -2999,7 +2999,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `_app_archived/api/qmoi/revenue/transfer/route.ts`
 - `_app_archived/api/qmoi/status.ts`
 - `_app_archived/api/qmoi/user/route.ts`
-- `_app_archived/api/qmoi/voice-preview/route.ts`
+- `_app_archived/api/qmoi/voice-PRODUCTION/route.ts`
 - `_app_archived/api/qmoi/voice-profiles/route.ts`
 - `_app_archived/api/qnews/route.ts`
 - `_app_archived/api/qradio/route.ts`
@@ -3223,7 +3223,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `app/api/qmoi/user/route.ts`
 - `app/api/qmoi/visuals/route.ts`
 - `app/api/qmoi/voice-enroll/route.ts`
-- `app/api/qmoi/voice-preview/route.ts`
+- `app/api/qmoi/voice-PRODUCTION/route.ts`
 - `app/api/qmoi/voice-profiles/route.ts`
 - `app/api/qmoi/voice/route.ts`
 - `app/api/qnews/route.ts`
@@ -3308,8 +3308,8 @@ These files contain system health, health check, health status, monitoring, or r
 - `src/app/api/master/domain-health/refresh/route.ts`
 - `src/app/api/master/domain-health/route.ts`
 - `src/app/api/master/godaddy-status/route.ts`
-- `src/app/api/preview/analyze/route.ts`
-- `src/app/api/preview/execute-tool/route.ts`
+- `src/app/api/PRODUCTION/analyze/route.ts`
+- `src/app/api/PRODUCTION/execute-tool/route.ts`
 - `src/app/api/qmoi/autodev/generate-feature/route.ts`
 - `src/app/api/qmoi/autodev/research/route.ts`
 - `src/app/api/qmoi/autodev/state/route.ts`
@@ -3875,7 +3875,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `node scripts/deploy/vercel_auto_deploy.js`
 - `node scripts/deploy_huggingface.js`
 - `node scripts/deployment-error-handler.js`
-- `node scripts/dev-placeholder.js`
+- `node scripts/dev-production implementation.js`
 - `node scripts/diagnostics/parse_next_trace.js`
 - `node scripts/enhanced-error-fix.js`
 - `node scripts/error-scanner-v2.js`

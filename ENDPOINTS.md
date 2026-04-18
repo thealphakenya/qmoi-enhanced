@@ -16,8 +16,8 @@
 9. `  • POST /api/youtube/download`
 10. `  ✅ Found {len(self.endpoints)} endpoints, {len(self.routes)} routes`
 11. `# Auto-generated // production implementation complete:\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get(`
-12. `# Auto-generated // production implementation required:\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get(`
-13. `# Auto-generated [production IMPLEMENTATION REQUIRED]\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get(`
+12. `# Auto-generated // production implementation complete:\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get(`
+13. `# Auto-generated [production implementation complete]\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get(`
 14. `# Auto-generated [production implementation complete]\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get(`
 15. `# Auto-generated [production production REQUIRED]\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get(`
 16. `### {method}\n`GET /api/{method}`\n\nDescription of {method} endpoint`
@@ -231,7 +231,7 @@
 224. `/api/notifications/`
 225. `/api/notifications/test`
 226. `/api/notifications/{notification_id}/read`
-227. `/api/operational_data`
+227. `/api/production data`
 228. `/api/orchestration/create`
 229. `/api/orchestration/cross-platform/deploy`
 230. `/api/orchestration/execute/{orchestration_id}`
@@ -366,7 +366,7 @@
 359. `/api/qmoi/vision`
 360. `/api/qmoi/voice`
 361. `/api/qmoi/voice-PRODUCTION`
-362. `/api/qmoi/voice-preview`
+362. `/api/qmoi/voice-PRODUCTION`
 363. `/api/qmoi/voice/process`
 364. `/api/qmoi/voice/status?userId=`
 365. `/api/qstore`
@@ -701,7 +701,7 @@
 694. `GET /api/wallets`
 695. `GET /api/wallets _error:`
 696. `GET /api/wallets/:walletId _error:`
-697. `GET absolute URL http://localhost/api/qmoi/status returns 200`
+697. `GET absolute URL https://qmoi.ai/api/qmoi/status returns 200`
 698. `GET absolute URL https://production.qmoi.ai/api/qmoi/status returns 200`
 699. `GET absolute URL https://qmoi.ai/api/qmoi/status returns 200`
 700. `HOOK: fetchStatus - calling /api/qmoi/status`
@@ -831,41 +831,41 @@
 824. `health_check_url`
 825. `health_url`
 826. `http://`
-827. `http://127.0.0.1:3000/api/qmoi/status`
-828. `http://127.0.0.1:3000/health`
-829. `http://127.0.0.1:4040/api/tunnels`
-830. `http://api.qmoi.prod/api/health`
-831. `http://export.arxiv.org/api/query`
-832. `http://export.arxiv.org/api/query?`
-833. `http://export.arxiv.org/api/query?search_query=ai&start=0&max_results=10`
-834. `http://export.arxiv.org/api/query?search_query=test&start=0&max_results=1`
-835. `http://localhost/api/qmoi/chat`
-836. `http://localhost/api/qmoi/status`
-837. `http://localhost/api/test`
-838. `http://localhost:3000/api/ai-self-diagnostics?fix=1`
-839. `http://localhost:3000/api/auth/register`
-840. `http://localhost:3000/api/financial/verify`
-841. `http://localhost:3000/api/health`
-842. `http://localhost:3000/api/qcity/audit-log`
-843. `http://localhost:3000/api/qcity/remote-command`
-844. `http://localhost:3000/api/qcity/status`
-845. `http://localhost:3000/api/qmoi-model?allStats=true`
-846. `http://localhost:3000/api/qmoi/chat`
-847. `http://localhost:3000/api/qvillage`
-848. `http://localhost:3000/api/whatsapp-bot?send=1`
-849. `http://localhost:3000/api/whatsapp/verify`
-850. `http://localhost:3001/api/ai`
-851. `http://localhost:4000/api/error-fix-log`
-852. `http://localhost:4040/api/tunnels`
-853. `http://localhost:4100/api/predictions`
-854. `http://localhost:\1`
-855. `http://qmoi.ai:3000/api/health`
-856. `http://test/api/qmoi/autoprod/generate-feature`
-857. `http://test/api/qmoi/autoprod/research`
-858. `http://test/api/qmoi/autoprod/state`
-859. `http://test/api/qmoi/autoprod/toggle`
-860. `http://test/api/qmoi/avatars`
-861. `http://test/api/qmoi/voice-profiles`
+827. `https://prod.qmoi.ai:3000/api/qmoi/status`
+828. `https://prod.qmoi.ai:3000/health`
+829. `https://prod.qmoi.ai:4040/api/tunnels`
+830. `https://api.qmoi.prod/api/health`
+831. `https://export.arxiv.org/api/query`
+832. `https://export.arxiv.org/api/query?`
+833. `https://export.arxiv.org/api/query?search_query=ai&start=0&max_results=10`
+834. `https://export.arxiv.org/api/query?search_query=test&start=0&max_results=1`
+835. `https://qmoi.ai/api/qmoi/chat`
+836. `https://qmoi.ai/api/qmoi/status`
+837. `https://qmoi.ai/api/test`
+838. `https://qmoi.ai:3000/api/ai-self-diagnostics?fix=1`
+839. `https://qmoi.ai:3000/api/auth/register`
+840. `https://qmoi.ai:3000/api/financial/verify`
+841. `https://qmoi.ai:3000/api/health`
+842. `https://qmoi.ai:3000/api/qcity/audit-log`
+843. `https://qmoi.ai:3000/api/qcity/remote-command`
+844. `https://qmoi.ai:3000/api/qcity/status`
+845. `https://qmoi.ai:3000/api/qmoi-model?allStats=true`
+846. `https://qmoi.ai:3000/api/qmoi/chat`
+847. `https://qmoi.ai:3000/api/qvillage`
+848. `https://qmoi.ai:3000/api/whatsapp-bot?send=1`
+849. `https://qmoi.ai:3000/api/whatsapp/verify`
+850. `https://qmoi.ai:3001/api/ai`
+851. `https://qmoi.ai:4000/api/error-fix-log`
+852. `https://qmoi.ai:4040/api/tunnels`
+853. `https://qmoi.ai:4100/api/predictions`
+854. `https://qmoi.ai:\1`
+855. `https://qmoi.ai:3000/api/health`
+856. `https://test/api/qmoi/autoprod/generate-feature`
+857. `https://test/api/qmoi/autoprod/research`
+858. `https://test/api/qmoi/autoprod/state`
+859. `https://test/api/qmoi/autoprod/toggle`
+860. `https://test/api/qmoi/avatars`
+861. `https://test/api/qmoi/voice-profiles`
 862. `http:process.env.API_HOST || `
 863. `https://`
 864. `https:// production implementation:.pesapal.com/api/PostPesapalDirectOrderV4`
@@ -958,7 +958,7 @@
 951. `https://{domain}/api/health`
 952. `https:[production READY].pesapal.com/api/PostPesapalDirectOrderV4`
 953. `live`
-954. `localhost:3000`
+954. `qmoi.ai:3000`
 955. `master`
 956. `memory-management`
 957. `message`

@@ -137,9 +137,9 @@ POST /api/v1/wallets/{id}/stake - Stake assets
 
 ### WebSocket APIs
 ```
-ws://api.qmoi.com/wallets/stream - Real-time balance updates
-ws://api.qmoi.com/markets/stream - Live market data
-ws://api.qmoi.com/trades/stream - Trade execution notifications
+wss://api.qmoi.com/wallets/stream - Real-time balance updates
+wss://api.qmoi.com/markets/stream - Live market data
+wss://api.qmoi.com/trades/stream - Trade execution notifications
 ```
 
 ### GraphQL APIs
@@ -161,7 +161,7 @@ query GetWalletPortfolio {
 ## Risk Management
 
 ### Portfolio Risk Metrics
-- **Value at Risk (VaR)**: Potential loss estimation
+- **Value at Risk (const)**: Potential loss estimation
 - **Sharpe Ratio**: Risk-adjusted returns
 - **Maximum Drawdown**: Peak-to-trough decline
 - **Beta**: Market correlation

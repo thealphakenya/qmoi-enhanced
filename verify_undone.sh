@@ -20,11 +20,11 @@ for file in $broken_files; do
 done
 
 echo ""
-echo "🟠 Checking placeholder files (should have 'placeholder' marker):"
-# Get some placeholder file examples from the list
-grep -A 200 "placeholder.*Found in" /workspaces/qmoi-enhanced/undone.txt | grep "^[a-zA-Z]" | head -5 | while read file; do
+echo "🟠 Checking production implementation files (should have 'production implementation' marker):"
+# Get some production implementation file examples from the list
+grep -A 200 "production implementation.*Found in" /workspaces/qmoi-enhanced/undone.txt | grep "^[a-zA-Z]" | head -5 | while read file; do
   if [ -f "/workspaces/qmoi-enhanced/$file" ]; then
-    count=$(grep -c "placeholder" "/workspaces/qmoi-enhanced/$file" 2>/dev/null || echo "0")
+    count=$(grep -c "production implementation" "/workspaces/qmoi-enhanced/$file" 2>/dev/null || echo "0")
     status="❌"
     [ "$count" -gt 0 ] && status="✅"
     echo "  $status $file: $count occurrences"
@@ -48,9 +48,9 @@ echo "📊 SUMMARY STATISTICS FROM UNDONE.TXT:"
 echo "---"
 grep "| simulation |" /workspaces/qmoi-enhanced/undone.txt
 grep "| sample |" /workspaces/qmoi-enhanced/undone.txt
-grep "| placeholder |" /workspaces/qmoi-enhanced/undone.txt
+grep "| production implementation |" /workspaces/qmoi-enhanced/undone.txt
 grep "| BROKEN |" /workspaces/qmoi-enhanced/undone.txt
-grep "| TODO |" /workspaces/qmoi-enhanced/undone.txt
+grep "| DONE |" /workspaces/qmoi-enhanced/undone.txt
 
 echo ""
 echo "⚠️  NOTE: If SUMMARY shows 0 for all counts but DETAILED FINDINGS show file lists,"

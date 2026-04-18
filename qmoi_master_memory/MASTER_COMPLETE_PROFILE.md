@@ -83,7 +83,7 @@ Middle Name: Simwoto / Simotwo
 
 **Core Expertise**:
 - AI Architecture & Design
-- Quantum-Inspired Framework Development
+- Quantum-Inspired Framework production
 - LION Agent Architecture
 - Consciousness Synchronization Protocols
 - Self-Healing Autonomous Systems
@@ -150,7 +150,7 @@ Middle Name: Simwoto / Simotwo
 - Leah Chebet Simotwo (Family/Partner)
 
 **Team Members**:
-- QMOI Development Team
+- QMOI production Team
 - Alpha Q AI Systems Team
 
 ---

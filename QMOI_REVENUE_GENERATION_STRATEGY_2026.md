@@ -139,7 +139,7 @@ q1_app_generation_engine.py handles:
 **Content Areas:**
 - AI & Machine Learning
 - Data Science & Analytics
-- Software Development
+- Software production
 - Business & Finance
 - Healthcare & Medicine
 - Language Learning (150 languages)
@@ -223,7 +223,7 @@ q1_app_generation_engine.py handles:
 Each regional office handles:
 - Local market expansion
 - Customer support (24/7)
-- Sales & business development
+- Sales & business production
 - Government relations
 - Compliance & legal
 

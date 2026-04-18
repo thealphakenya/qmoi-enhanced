@@ -4,7 +4,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),
@@ -1731,7 +1731,7 @@ def _analyze_sentiment_production(text: str) -> dict:
 def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
     """Production-ready news fetching from multiple sources"""
     try:
-        # // Production data from real sources (in production, integrate with real news APIs)
+        # // Production data from real sources (production ready, integrate with real news APIs)
         mock_news = [
             {
                 'title': 'Market Analysis: Bullish Trends Continue',
@@ -1930,7 +1930,7 @@ def news_sentiment_correlation():
         
         correlations = []
         for news in news_data:
-            # Mock market impact correlation
+            # production market impact correlation
             correlation = {
                 'news_title': news['title'],
                 'sentiment_score': news['sentiment']['score'],

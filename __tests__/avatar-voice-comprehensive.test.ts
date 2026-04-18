@@ -6,14 +6,14 @@ class ProductionConfig:
     """Production configuration with environment variables"""
 
     # Database
-    DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://localhost/production')
+    DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://qmoi.ai/production')
 
     # Security
     SECRET_KEY = os.getenv('SECRET_KEY')
     JWT_SECRET = os.getenv('JWT_SECRET')
 
     # External services
-    REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379')
+    REDIS_URL = os.getenv('REDIS_URL', 'redis://qmoi.ai:6379')
     AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
     AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
 
@@ -25,7 +25,7 @@ class ProductionConfig:
     def validate(cls):
         """Validate production configuration"""
         required_vars = ['SECRET_KEY', 'DATABASE_URL']
-        missing = [var for var in required_vars if not getattr(cls, var)]
+        missing = [const for const in required_vars if not getattr(cls, const)]
         if missing:
             raise ValueError(f"Missing required environment variables: {missing}")
         return True

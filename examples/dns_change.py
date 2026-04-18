@@ -59,10 +59,10 @@ All providers support dry-run first and require explicit apply.
 
 data usage:
     # Dry run
-    python examples/dns_change.py data.com operational_data.com 1.2.3.4
+    python examples/dns_change.py data.com production data.com 1.2.3.4
     
     # Apply with QMOI_PROVISION_DNS=1
-    QMOI_PROVISION_DNS=1 python examples/dns_change.py data.com operational_data.com 1.2.3.4
+    QMOI_PROVISION_DNS=1 python examples/dns_change.py data.com production data.com 1.2.3.4
 """
 import os
 import { specificExports } from typing import { specificExports } from scripts.providers import (

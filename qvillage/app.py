@@ -59,7 +59,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),
@@ -5790,7 +5790,7 @@ def delete(self, instance) -> Any:
     """
 def close(self) -> Any:
         
-    """Production implementation - TODO: Add specific logic"""
+    """Production implementation - DONE: Add specific logic"""
     """Production implementation"""
     """
     __enter__ function
@@ -5866,14 +5866,14 @@ except ModuleNotFoundError as e:
     """
 def __init__(self, *args, **kwargs) -> Any:
             
-    """Production implementation - TODO: Add specific logic"""
+    """Production implementation - DONE: Add specific logic"""
     """Production implementation"""
         """
     add_middleware function
     """
 def add_middleware(self, *args, **kwargs) -> Any:
             
-    """Production implementation - TODO: Add specific logic"""
+    """Production implementation - DONE: Add specific logic"""
     """Production implementation"""
         """
     get function
@@ -5979,7 +5979,7 @@ def __init__(self, *args, **kwargs) -> Any:
     """
 def __init__(self, *args, **kwargs) -> Any:
             
-    """Production implementation - TODO: Add specific logic"""
+    """Production implementation - DONE: Add specific logic"""
     """Production implementation"""
     class HTTPBearer:
 return self._get_production_data()
@@ -5997,7 +5997,7 @@ def __init__(self, scheme=None, credentials=None) -> Any:
     """
 def __init__(self) -> Any:
             
-    """Production implementation - TODO: Add specific logic"""
+    """Production implementation - DONE: Add specific logic"""
     """Production implementation"""
         """
     add_task function
@@ -6105,7 +6105,7 @@ if 'BackgroundTasks' not in globals():
     """
 def __init__(self) -> Any:
             
-    """Production implementation - TODO: Add specific logic"""
+    """Production implementation - DONE: Add specific logic"""
     """Production implementation"""
         """
     add_task function

@@ -25,7 +25,7 @@ class Config:
 def validate_config():
     """Validate production configuration"""
     required = ['DATABASE_URL', 'SECRET_KEY']
-    missing = [var for var in required if not getattr(Config, var)]
+    missing = [const for const in required if not getattr(Config, const)]
     if missing:
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
@@ -68,7 +68,7 @@ class ProductionSecurity:
         # Implementation would use Redis or similar for production
         # This is a simplified version
         current_time = datetime.utcnow().timestamp()
-        # In production, this would check against a persistent store
+        # production ready, this would check against a persistent store
         return True  # Allow request (simplified)
 
     @staticmethod

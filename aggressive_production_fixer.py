@@ -17,7 +17,6 @@ import hashlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import List, Tuple
-from tqdm import tqdm
 
 LOG_FORMAT = '%(asctime)s [%(levelname)s] %(message)s'
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
@@ -212,33 +211,78 @@ class AggressiveProductionFixer:
 
         return True, replacements
 
-    def update_undone_txt(self) -> None:
+    def scan_and_update_undone(self) -> None:
+        """Scan repository for nonproduction markers and update undone.txt with findings."""
+        logger.info('Starting comprehensive scan for nonproduction markers')
+        findings = {}
+        
+        for path in self.discover_files():
+            try:
+                content = path.read_text(encoding='utf-8', errors='ignore')
+                issues = []
+                for pattern in UNRESOLVED_PATTERNS:
+                    matches = pattern.findall(content)
+                    if matches:
+                        issues.extend([f"{pattern.pattern}: {match}" for match in matches[:5]])  # Limit to 5 per pattern
+                
+                if issues:
+                    findings[str(path.relative_to(self.root))] = issues
+            except Exception as e:
+                logger.warning(f'Error scanning {path}: {e}')
+        
+        # Update undone.txt
         undone_file = self.root / 'undone.txt'
-        if not undone_file.exists():
-            logger.warning('undone.txt not found; skipping update')
-            return
-
-        # Since root undone.txt is summary-formatted, preserve it and append an execution record.
-        content = undone_file.read_text(encoding='utf-8', errors='ignore')
         timestamp = datetime.datetime.now().isoformat()
-        audit_summary = f"\n## AGGRESSIVE FIXER RUN - {timestamp}\n"
-        audit_summary += f"- Target files processed: {len(self.files_to_fix)}\n"
-        audit_summary += f"- Files modified: {len(self.fixed_files)}\n"
-        audit_summary += f"- Replacements made: {self.replacements_made}\n"
-        audit_summary += f"- Backup directory: {self.backup_dir}\n"
-        content += audit_summary
+        
+        content = f"# NON-PRODUCTION IMPLEMENTATIONS TRACKER\n"
+        content += f"# Generated: {timestamp}\n"
+        content += f"# Workspace: {self.root}\n\n"
+        
+        content += "## SUMMARY\n\n"
+        content += "| Marker | Count |\n"
+        content += "|--------|-------|\n"
+        
+        marker_counts = {}
+        for issues in findings.values():
+            for issue in issues:
+                marker = issue.split(':')[0] if ':' in issue else issue
+                marker_counts[marker] = marker_counts.get(marker, 0) + 1
+        
+        for marker, count in sorted(marker_counts.items()):
+            content += f"| {marker} | {count} |\n"
+        
+        content += "\n## DETAILED FINDINGS\n\n"
+        
+        for file_path, issues in sorted(findings.items()):
+            content += f"### {file_path}\n"
+            for issue in issues:
+                content += f"- {issue}\n"
+            content += "\n"
+        
         undone_file.write_text(content, encoding='utf-8')
-        logger.info('Appended aggressive fixer run summary to undone.txt')
+        logger.info(f'Updated undone.txt with {len(findings)} files containing nonproduction markers')
 
     def generate_instances_md(self) -> None:
-        """Generate INSTANCES.md from the current undone.txt summary."""
+        """Generate INSTANCES.md from the current undone.txt summary with enhanced tracking."""
         undone_file = self.root / 'undone.txt'
         if not undone_file.exists():
             logger.warning('undone.txt not found; cannot generate INSTANCES.md')
             return
 
         parsed = self.parse_undone_summary(undone_file)
-        lines = ["# INSTANCES.md", "", "This file tracks the remaining production readiness instances from `undone.txt`.", "", "## Remaining Files"]
+        timestamp = datetime.datetime.now().isoformat()
+        
+        lines = ["# INSTANCES.md", "", "This file tracks the remaining production readiness instances from `undone.txt`.", "", "## Summary", ""]
+        
+        # Add summary statistics
+        total_files = len(parsed)
+        total_issues = sum(len(issues) for issues in parsed.values())
+        lines.append(f"- **Last Scan**: {timestamp}")
+        lines.append(f"- **Total Files with Issues**: {total_files}")
+        lines.append(f"- **Total Issues Found**: {total_issues}")
+        lines.append("")
+        
+        lines.append("## Remaining Files")
         for file_path, issues in parsed.items():
             lines.append(f"\n### {file_path}")
             if issues:
@@ -247,14 +291,22 @@ class AggressiveProductionFixer:
             else:
                 lines.append("- No explicit issue lines parsed.")
 
+        # Add scan history
+        lines.append(f"\n## Scan History")
+        lines.append(f"- **Latest Scan**: {timestamp}")
+        lines.append(f"- **Files Processed**: {len(self.files_to_fix)}")
+        lines.append(f"- **Replacements Made**: {self.replacements_made}")
+        lines.append(f"- **Backup Directory**: {self.backup_dir}")
+        
         lines.append("\n## Generation Notes")
-        lines.append("- Generated from root `undone.txt` summary.")
+        lines.append("- Generated from root `undone.txt` summary with timestamp tracking.")
         lines.append("- Use this file to track actual remaining non-production markers and plan replacement work.")
         lines.append("- Update `resumefromhere.txt` after each fix cycle.")
+        lines.append("- Re-scan capability enabled for thorough coverage.")
 
         instance_path = self.root / INSTANCES_FILENAME
         instance_path.write_text('\n'.join(lines), encoding='utf-8')
-        logger.info(f'Generated {INSTANCES_FILENAME}')
+        logger.info(f'Generated enhanced {INSTANCES_FILENAME} with timestamp and scan details')
 
     def update_resumefromhere(self) -> None:
         resume_file = self.root / 'resumefromhere.txt'
@@ -286,6 +338,9 @@ class AggressiveProductionFixer:
         logger.info(f'Backup directory: {self.backup_dir}')
         logger.info(f'Target files: {len(self.files_to_fix)}')
 
+        # First, scan and update undone.txt with current findings
+        self.scan_and_update_undone()
+
         future_to_path = {}
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             for path in self.files_to_fix:
@@ -298,9 +353,6 @@ class AggressiveProductionFixer:
                 if success:
                     self.replacements_made += replacements
                     self.fixed_files.append(path)
-
-        if not self.dry_run and self.use_undone:
-            self.update_undone_txt()
 
         if not self.dry_run:
             self.generate_instances_md()

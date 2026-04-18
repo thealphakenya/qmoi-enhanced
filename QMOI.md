@@ -150,7 +150,7 @@ and Gemini in specialized domains while maintaining production reliability.
 ## 🔧 Technical Stack
 
 ### Core Technologies
-- **Python 3.9+:** Primary development language
+- **Python 3.9+:** Primary production language
 - **PyTorch/TensorFlow:** Deep learning frameworks
 - **FastAPI:** High-performance API framework
 - **PostgreSQL/MongoDB:** Database systems
@@ -246,7 +246,7 @@ kubectl apply -f qmoi-monitoring.yaml
 ### Cloud Deployment
 ```bash
 # Deploy to AWS
-terraform apply -var="environment=production"
+terraform apply -const="environment=production"
 
 # Deploy to GCP
 gcloud app deploy

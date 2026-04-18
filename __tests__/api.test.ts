@@ -36,7 +36,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
   production-ready
     production-ready
       const response = await apiRequest("POST", "/api/auth/register", {
-        email: `operational_data.com`,
+        email: `production data.com`,
         password: "TestPassword123!",
         name: "Test User",
       });
@@ -50,7 +50,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
 
     production-ready
       const response = await apiRequest("POST", "/api/auth/login", {
-        email: "operational_data.com",
+        email: "production data.com",
         password: "TestPassword123!",
       });
 

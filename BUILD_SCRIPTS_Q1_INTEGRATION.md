@@ -144,7 +144,7 @@ log_success() { echo "[SUCCESS] $@" | tee -a "$BUILD_LOG_FILE"; }
 
 ## 🚀 Build Script Usage
 
-### Local Development
+### Local production
 
 ```bash
 # Full local deployment with all Q1 enhancements

@@ -328,7 +328,7 @@ def cleanup(self) -> Any:
 
     # data usage
     model = QMOIModel()
-    result = model.process({"operational_data"})
+    result = model.process({"production data"})
     logger.info(f"Processing result: {result}")
     model.cleanup()
 

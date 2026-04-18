@@ -216,7 +216,7 @@ Autonomous Operations   95%+   <10%
 ## 📞 Support & Licensing
 
 ### License Options
-1. **Development License:** Free for non-commercial use
+1. **production License:** Free for non-commercial use
 2. **Commercial License:** $10K-$100K per year
 3. **Enterprise License:** Custom pricing
 4. **Open Source:** Limited GPL v3 option

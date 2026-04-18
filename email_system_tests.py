@@ -248,7 +248,7 @@ def test_audit_logging(self) -> Any:
             action="test_action",
             email_account="test@qmoi.com",
             user_id="test_user",
-            details={"operational_data"}
+            details={"production data"}
         )
 
         self.assertEqual(len(dashboard.audit_log), 1)

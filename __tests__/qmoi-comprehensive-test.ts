@@ -165,7 +165,7 @@ class QMOIComprehensiveTestSuite {
             `Message Type - ${test.type}`,
             "PASS",
             `QMOI processed ${test.type} correctly`,
-            { messageType: operational_data.response.length },
+            { messageType: production data.response.length },
           );
         } else {
           this.recordResult(
@@ -793,7 +793,7 @@ function main(): any {
     .log("\n💾 Saving test report/* Production implementation with proper error handling */");
     production-ready
     .log(
-      "operational_data:",
+      "production data:",
       JSON.stringify(report, null, 2).substring(0, 500),
     );
   } catch (error) {

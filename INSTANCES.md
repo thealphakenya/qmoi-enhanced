@@ -1,215 +1,40 @@
-# QMOI Production Service Instances
+# INSTANCES.md
 
-**Last Updated**: 2026-04-18T01:08:04.341904
-**Status**: ✅ PRODUCTION READY
-**Version**: 2.1.0
-**Total Instances**: 10
+This file tracks the remaining production readiness instances from `undone.txt`.
 
-## 🔐 Master-Only Financial Features
+## Remaining Files
 
-The following features are **restricted to master users only**:
-- Revenue tracking and validation
-- Financial dashboard and analytics
-- Wallet and balance management
-- Trading operations
-- Transaction history and auditing
-- Payment processing
-- Fund management
+### SUMMARY
+- No explicit issue lines parsed.
 
-## 📊 Service Instances Summary
+### DETAILED FINDINGS
+- No explicit issue lines parsed.
 
-| # | Service | Status | Features | Master-Only |
-|---|---------|--------|----------|-------------|
-| 1 | RevenueValidator | ✅ Production | Multi-source async revenue collection | Yes |
-| 2 | FinancialDashboard | ✅ Production | Real-time financial analytics | Yes |
-| 3 | WalletManager | ✅ Production | Secure wallet operations | Yes |
-| 4 | BalanceTracker | ✅ Production | Real-time balance updates | Yes |
-| 5 | TradingEngine | ✅ Production | Automated trading system | Yes |
-| 6 | NotificationService | ✅ Production | Multi-channel notifications | No |
-| 7 | AuthService | ✅ Production | Authentication & authorization | No |
-| 8 | DatabaseService | ✅ Production | Data persistence layer | No |
-| 9 | CacheService | ✅ Production | Performance caching | No |
-| 10 | QueueService | ✅ Production | Async job processing | No |
+### AGGRESSIVE FIXER RUN - 2026-04-18T01:59:22.868298
+- Target files processed: 0
+- Files modified: 0
+- Replacements made: 0
+- Backup directory: /workspaces/qmoi-enhanced/.backups/aggressive_fix_1776477562
 
-## 🔧 Detailed Service Specifications
+### AGGRESSIVE FIXER RUN - 2026-04-18T01:59:22.880081
+- Target files processed: 0
+- Files modified: 0
+- Replacements made: 0
+- Backup directory: /workspaces/qmoi-enhanced/.backups/aggressive_fix_1776477562
 
-### RevenueValidator
-**Status**: ✅ PRODUCTION READY
-**Description**: Multi-source async revenue collection
-**Master-Only**: Yes
+### AGGRESSIVE FIXER RUN - 2026-04-18T01:59:22.887077
+- Target files processed: 0
+- Files modified: 0
+- Replacements made: 0
+- Backup directory: /workspaces/qmoi-enhanced/.backups/aggressive_fix_1776477562
 
-**Features**:
-- ✅ SQL persistence
-- ✅ Real-time validation
-- ✅ Master-only
+### AGGRESSIVE FIXER RUN - 2026-04-18T01:59:22.893481
+- Target files processed: 0
+- Files modified: 0
+- Replacements made: 0
+- Backup directory: /workspaces/qmoi-enhanced/.backups/aggressive_fix_1776477562
 
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### FinancialDashboard
-**Status**: ✅ PRODUCTION READY
-**Description**: Real-time financial analytics
-**Master-Only**: Yes
-
-**Features**:
-- ✅ Master access
-- ✅ Revenue tracking
-- ✅ Balance monitoring
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### WalletManager
-**Status**: ✅ PRODUCTION READY
-**Description**: Secure wallet operations
-**Master-Only**: Yes
-
-**Features**:
-- ✅ Master control
-- ✅ Multi-currency
-- ✅ Transaction audit
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### BalanceTracker
-**Status**: ✅ PRODUCTION READY
-**Description**: Real-time balance updates
-**Master-Only**: Yes
-
-**Features**:
-- ✅ Master visibility
-- ✅ Historical data
-- ✅ Threshold alerts
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### TradingEngine
-**Status**: ✅ PRODUCTION READY
-**Description**: Automated trading system
-**Master-Only**: Yes
-
-**Features**:
-- ✅ Master-only trades
-- ✅ Real-time data
-- ✅ Risk management
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### NotificationService
-**Status**: ✅ PRODUCTION READY
-**Description**: Multi-channel notifications
-**Master-Only**: No
-
-**Features**:
-- ✅ Email/SMS/Slack
-- ✅ Real-time delivery
-- ✅ Retry logic
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### AuthService
-**Status**: ✅ PRODUCTION READY
-**Description**: Authentication & authorization
-**Master-Only**: No
-
-**Features**:
-- ✅ MFA support
-- ✅ Master enforcement
-- ✅ Session management
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### DatabaseService
-**Status**: ✅ PRODUCTION READY
-**Description**: Data persistence layer
-**Master-Only**: No
-
-**Features**:
-- ✅ ACID compliance
-- ✅ Connection pooling
-- ✅ Backups
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### CacheService
-**Status**: ✅ PRODUCTION READY
-**Description**: Performance caching
-**Master-Only**: No
-
-**Features**:
-- ✅ Redis integration
-- ✅ High-speed access
-- ✅ Key expiration
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
-### QueueService
-**Status**: ✅ PRODUCTION READY
-**Description**: Async job processing
-**Master-Only**: No
-
-**Features**:
-- ✅ Priority queue
-- ✅ Retry mechanism
-- ✅ Dead letter
-
-**Implementation**: Production-grade
-**Database**: SQLite with ACID compliance
-**Caching**: Redis with 1-hour TTL
-**Monitoring**: Real-time health checks
-**Backup**: Automated daily backups
-
----
-
+## Generation Notes
+- Generated from root `undone.txt` summary.
+- Use this file to track actual remaining non-production markers and plan replacement work.
+- Update `resumefromhere.txt` after each fix cycle.

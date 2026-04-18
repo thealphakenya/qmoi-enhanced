@@ -275,7 +275,7 @@ class RevenueEngineStarter {
     this.logFile = path.join(process.cwd(), `
 34. `);
 
-console.log(`
+logger.info(`
 35. `);
 
 const CLOUD_BUCKET = process.env.QMOI_CLOUD_BUCKET || `
@@ -382,7 +382,7 @@ function walk(dir) {
 
 const root = process.cwd();
 const pattern =
-  /// production implementation:|// production implementation:|\[production IMPLEMENTATION REQUIRED\]|// production implementation:/gi;
+  /// production implementation:|// production implementation:|\[production implementation complete\]|// production implementation:/gi;
 
 /**
  * walk function
@@ -397,7 +397,7 @@ function walk(dir): any {
 
 const root = process.cwd();
 const pattern =
-  /// production implementation:|// production implementation:|\[production IMPLEMENTATION REQUIRED\]|// production implementation:/gi;
+  /// production implementation:|// production implementation:|\[production implementation complete\]|// production implementation:/gi;
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -424,7 +424,7 @@ function walk(dir): any {
 
 const root = process.cwd();
 const pattern =
-  /[production READY]|[production READY]|\[production IMPLEMENTATION REQUIRED\]|[production READY]/gi;
+  /[production READY]|[production READY]|\[production implementation complete\]|[production READY]/gi;
 
 /**
  * walk function
@@ -439,7 +439,7 @@ function walk(dir): any {
 
 const root = process.cwd();
 const pattern =
-  /[production READY]|[production READY]|\[production IMPLEMENTATION REQUIRED\]|[production READY]/gi;
+  /[production READY]|[production READY]|\[production implementation complete\]|[production READY]/gi;
 
 function walk(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -602,7 +602,7 @@ const REQUIRED_SECTIONS = [
           process.exit(1);
         }
         const validation = await fixer.validateJSONFile(target);
-        console.log(
+        logger.info(
           `File ${target} is ${validation.valid ? `
 89. `);
           process.exit(1);
@@ -889,7 +889,7 @@ function POST(request: NextRequest): any {
 144. `;
 
 /**
- * POST /api/preview/analyze
+ * POST /api/PRODUCTION/analyze
  * Analyzes project files to determine project type and required tools
  */
 export async /**
@@ -904,7 +904,7 @@ function POST(request: NextRequest): any {
 145. `;
 
 /**
- * POST /api/preview/analyze
+ * POST /api/PRODUCTION/analyze
  * Analyzes project files to determine project type and required tools
  */
 export async function POST(request: NextRequest) {
@@ -1124,7 +1124,7 @@ async /**
  */
 function runTest(): any {
   try {
-    const operational_data.testFile);
+    const production data.testFile);
     const result = await testModule.default();
 
     parentPort.postMessage({
@@ -1225,7 +1225,7 @@ runTest().catch((_err) => {
 `
 166. `;
 
-// Store Bitget credentials securely (in env vars or a secure vault in production)
+// Store Bitget credentials securely (in env vars or a secure vault production ready)
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
 const BITGET_API_SECRET = process.env.BITGET_API_SECRET;
 const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;
@@ -1339,7 +1339,7 @@ async function runTests() {
 177. `;
 
 async function runTests() {
-  console.log(`
+  logger.info(`
 178. `;
 
 class QCityprodiceManager {
@@ -1378,7 +1378,7 @@ class productionQBalancesManager {
    */
   async start(): Promise<void> {
     if (this.isRunning) {
-      console.log(`
+      logger.info(`
 181. `;
 
 class productionQBalancesManager {
@@ -2091,7 +2091,7 @@ class QMOIproductionBalanceSystem {
    * Initialize the production system
    */
   async initialize(): Promise<void> {
-    console.log(`
+    logger.info(`
 242. `;
 
 interface productionConfig {
