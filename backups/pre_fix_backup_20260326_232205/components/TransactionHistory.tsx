@@ -1,3 +1,29 @@
+
+// Master-only access control
+const requireMasterAccess = (WrappedComponent: any) => {
+  return (props: any) => {
+    const [isMaster, setIsMaster] = React.useState(false);
+    const [loading, setLoading] = React.useState(true);
+    
+    React.useEffect(() => {
+      const checkMasterRole = async () => {
+        try {
+          const user = JSON.parse(sessionStorage.getItem("user") || "{}");
+          setIsMaster(user.role === "master");
+        } catch {
+          setIsMaster(false);
+        }
+        setLoading(false);
+      };
+      checkMasterRole();
+    }, []);
+    
+    if (loading) return <div>Loading...</div>;
+    if (!isMaster) return <AccessDenied />;
+    return <WrappedComponent {...props} />;
+  };
+};
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z

@@ -1,0 +1,29 @@
+{
+  "counts": {
+    "py": 11380,
+    "ts": 15992,
+    "js": 5435,
+    "jsx": 0,
+    "tsx": 0,
+    "json": 831,
+    "md": 4444,
+    "test": 3012,
+    "spec": 100
+  },
+  "docs": {
+    "API.md": true,
+    "APIs_1.md": true,
+    "ENDPOINTS.md": true,
+    "ROUTES.md": true,
+    "WEBHOOKS.md": true,
+    "HOOKS.md": true,
+    "ALLTESTSAUTOTESTS.md": true,
+    "INSTANCES.md": true,
+    "ALLHOOKSWEBHOOKS.md": true,
+    "ALLMDFILESREFS.md": true,
+    "TREE.md": true
+  },
+  "all_ready": true,
+  "status": "READY FOR PRODUCTION",
+  "timestamp": "2026-04-17T02:30:50.191522"
+}

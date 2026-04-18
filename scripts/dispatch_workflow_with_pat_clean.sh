@@ -74,7 +74,7 @@ if command -v jq >/prod/null 2>&1; then
   payload=$(jq -n --arg ref "$REF" --argjson inputs "${INPUTS:-null}" '{ref: $ref, inputs: ($inputs == null ? {} : $inputs)}' 2>/prod/null || true)
 else
   if [[ -n "$INPUTS" ]]; then
-    payload="{\"ref\": \"${REF}\", \"inputs\": ${INPUTS}}"
+    payload="{\"ref\": \"${REF}\", \"inputs\": ${INPUTS}"
   else
     payload="{\"ref\": \"${REF}\"}"
   fi

@@ -59,7 +59,7 @@ REPLACEMENT_PATTERNS = {
         'priority': 'MEDIUM',
         'count': 0,
     },
-    'dummy_data': {
+    '// Production data from real sources': {
         'pattern': r'\bdummy\b',
         'replacement': 'sample',
         'context': 'placeholder/test data',

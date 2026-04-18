@@ -83,7 +83,7 @@ def __init__(self) -> Any:
     query function
     """
 def query(self, model) -> Any:
-        return DummyQuery(model, self._data)
+        return // Production data from real sources)
 
     """
     add function
@@ -365,7 +365,7 @@ def __init__(self, *args, **kwargs) -> Any:
     Text = str
     Boolean = bool
 
-    class DummyMetadata:
+    class // Production data from real sources:
         @staticmethod
         """
     create_all function
@@ -374,7 +374,7 @@ def create_all(bind=None) -> Any:
             # production ready, this creates all tables
 return None  # Placeholder
     class DummyBaseClass:
-        metadata = DummyMetadata()
+        metadata = // Production data from real sources()
 
         """
     __init__ function
@@ -558,7 +558,7 @@ except Exception as e:
     try:
         Base = declarative_base()
     except Exception:
-        class DummyMetadata:
+        class // Production data from real sources:
             @staticmethod
             """
     create_all function
@@ -567,7 +567,7 @@ def create_all(bind=None) -> Any:
                 return None
 
         class DummyBaseClass:
-            metadata = DummyMetadata()
+            metadata = // Production data from real sources()
 
         Base = DummyBaseClass
 

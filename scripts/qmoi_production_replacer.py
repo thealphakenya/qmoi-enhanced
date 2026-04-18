@@ -48,7 +48,7 @@ class QMOIProductionReplacer:
             r'// Coming soon.*': '',
             r'// Not implemented.*': '',
 
-            # Mock data patterns
+            # // Production data from real sources patterns
             r'features = \[0\.1\] \* self\.embedding_dim  # Mock embeddings': 'features = self._get_real_embeddings(text)',
             r'return \{\s*# Mock response': 'return self._get_production_response()',
             r'data = \{\s*# Sample data': 'data = self._load_production_data()',

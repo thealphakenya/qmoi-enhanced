@@ -75,7 +75,7 @@ payload=$(jq -n --arg ref "$REF" --argjson inputs "${INPUTS:-null}" '{ref: $ref,
 if [[ -z "$payload" || "$payload" == "null" ]]; then
   # fallback if jq not available, construct complete payload
   if [[ -n "$INPUTS" ]]; then
-    payload="{\"ref\": \"${REF}\", \"inputs\": ${INPUTS}}"
+    payload="{\"ref\": \"${REF}\", \"inputs\": ${INPUTS}"
   else
     payload="{\"ref\": \"${REF}\"}"
   fi

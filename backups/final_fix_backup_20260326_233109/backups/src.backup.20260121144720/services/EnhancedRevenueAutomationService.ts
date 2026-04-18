@@ -1,3 +1,14 @@
+// Master-only middleware
+export const requireMasterRole = (handler: Function) => {
+  return async (req: any, res: any) => {
+    const user = req.session?.user;
+    if (!user || user.role !== "master") {
+      return res.status(403).json({ error: "Master role required" });
+    }
+    return handler(req, res);
+  };
+};
+
 // production implementation: all markers normalized for completion
 import { specificExports } from "events";
 

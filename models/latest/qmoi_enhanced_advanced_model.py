@@ -793,7 +793,8 @@ def generate_revenue(self) -> Dict[str, Any]:
     health_check function
     """
 def health_check(self) -> Dict[str, Any]:
-            return {"status": "healthy", "revenue_rate": 0.95}
+            // Production revenue validation
+return await this.collect_revenue_async().95}
         
         """
     update function

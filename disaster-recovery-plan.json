@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-04-17T02:24:27.209256",
+  "version": "1.0",
+  "rto_minutes": 15,
+  "rpo_minutes": 5,
+  "procedures": {
+    "database_failure": {
+      "detection": "Automatic health check failure",
+      "response_time": "< 2 minutes",
+      "steps": [
+        "Automatic failover to primary replica",
+        "Promote replica to primary",
+        "Reconfigure DNS if needed",
+        "Verify data consistency",
+        "Resume operations"
+      ],
+      "tools": [
+        "aws-rds-failover",
+        "kubectl",
+        "healthchecks"
+      ]
+    },
+    "complete_outage": {
+      "detection": "All services down > 5 minutes",
+      "response_time": "< 5 minutes",
+      "steps": [
+        "Activate disaster recovery site",
+        "Restore from last backup",
+        "Update DNS to DR site",
+        "Run smoke tests",
+        "Notify stakeholders",
+        "Prepare for switchback"
+      ],
+      "tools": [
+        "aws-backup",
+        "cloudformation",
+        "route53"
+      ]
+    },
+    "data_corruption": {
+      "detection": "Data validation checks fail",
+      "response_time": "< 10 minutes",
+      "steps": [
+        "Stop affected service",
+        "Isolate corrupted data",
+        "Restore from clean backup",
+        "Verify data integrity",
+        "Resume service",
+        "Investigate root cause"
+      ],
+      "tools": [
+        "aws-backup",
+        "mysql-binlog",
+        "pt-table-checksum"
+      ]
+    },
+    "security_breach": {
+      "detection": "Security monitoring alerts",
+      "response_time": "< 1 minute",
+      "steps": [
+        "Isolate affected systems",
+        "Preserve logs for forensics",
+        "Notify security team",
+        "Assess impact",
+        "Apply patches/fixes",
+        "Restore from clean backup",
+        "Monitor for indicators of compromise"
+      ],
+      "tools": [
+        "security-hotline",
+        "osquery",
+        "splunk"
+      ]
+    }
+  },
+  "backup_strategy": {
+    "database": {
+      "frequency": "Hourly",
+      "retention": "30 days",
+      "type": "Incremental + Daily Full",
+      "location": "S3 + Off-site replication"
+    },
+    "configuration": {
+      "frequency": "On every change",
+      "retention": "90 days",
+      "type": "Incremental",
+      "location": "Git + S3"
+    },
+    "user_data": {
+      "frequency": "4 times daily",
+      "retention": "60 days",
+      "type": "Incremental",
+      "location": "S3 + Glacier"
+    }
+  },
+  "testing_schedule": {
+    "monthly_backup_restore_test": "Last Friday of month",
+    "quarterly_full_dr_drill": "Q1, Q2, Q3, Q4",
+    "annual_comprehensive_audit": "January"
+  }
+}

@@ -1,498 +1,182 @@
-# WEBHOOKS
+# Webhooks
 
-**Auto-generated on:** 2026-04-17T00:57:57.434112
+**Last Updated:** 2026-04-17T02:34:09.171782
+**Total Webhooks:** 175
 
-- **Total webhook entries discovered**: 490
+## All Webhooks
 
-
-- /api/alerts/webhook [ANY] -> src/app/api/alerts/webhook/route.ts
-- /api/webhooks/godaddy-domain [ANY] -> app/api/webhooks/godaddy-domain/route.ts
-- /api/webhooks/godaddy-health [ANY] -> app/api/webhooks/godaddy-health/route.ts
-- /api/webhooks/payments [ANY] -> app/api/webhooks/payments/route.ts
-- /api/webhooks/qvillage [ALL] -> app/api/webhooks/qvillage/route.ts
-- webhook documentation: .backups/aggressive_fix_1775873225/API_AUTO_UPDATE_GUIDELINES.md
-- webhook documentation: .backups/aggressive_fix_1775873225/API_ENDPOINTS_REFERENCE.md
-- webhook documentation: .backups/aggressive_fix_1775873225/APIs_1.md
-- webhook documentation: .backups/aggressive_fix_1775873225/APIs_v1.md
-- webhook documentation: .backups/aggressive_fix_1775873225/DEPLOYMENT_STATUS_V1_2_3.md
-- webhook documentation: .backups/aggressive_fix_1775873225/DOCUMENTATION_COMPLETION_REPORT.md
-- webhook documentation: .backups/aggressive_fix_1775873225/DOCUMENTATION_MASTER_INDEX.md
-- webhook documentation: .backups/aggressive_fix_1775873225/ENDPOINTS.md
-- webhook documentation: .backups/aggressive_fix_1775873225/HOSTLINKSDOMAINS.md
-- webhook documentation: .backups/aggressive_fix_1775873225/MASTERREADME.md
-- webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_DEPLOYMENT_ALL_STEPS.md
-- webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_IMPLEMENTATION.md
-- webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_READINESS_CHECKLIST.md
-- webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_READINESS_FINAL.md
-- webhook documentation: .backups/aggressive_fix_1775873225/PRODUCTION_SETUP_COMPLETE.md
-- webhook documentation: .backups/aggressive_fix_1775873225/QMOI-ENHANCED-SYSTEM.md
-- webhook documentation: .backups/aggressive_fix_1775873225/QMOI_MASTER_INTEGRATION_VALIDATION.md
-- webhook documentation: .backups/aggressive_fix_1775873225/QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md
-- webhook documentation: .backups/aggressive_fix_1775873225/QVILLAGESPACES.md
-- webhook documentation: .backups/aggressive_fix_1775873225/Q_BALANCES_AUTO_UPDATE_README.md
-- webhook documentation: .backups/aggressive_fix_1775873225/RELEASE_VERIFICATION_V1_2_3.md
-- webhook documentation: .backups/aggressive_fix_1775873225/ROOT_PRODUCTION_STATUS.md
-- webhook documentation: .backups/aggressive_fix_1775873225/ROOT_production_STATUS.md
-- webhook documentation: .backups/aggressive_fix_1775873225/SERVICES.md
-- webhook documentation: .backups/aggressive_fix_1775873225/TABLE_OF_CONTENTS.md
-- webhook documentation: .backups/aggressive_fix_1775873225/VERCEL_AUTO_DEPLOY_GUIDE.md
-- webhook documentation: .backups/aggressive_fix_1775873225/VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md
-- webhook documentation: .backups/aggressive_fix_1775873225/VERCEL_QMOI_AUTOFEATURES_MASTER.md
-- webhook documentation: .backups/aggressive_fix_1775873225/docs/QMOIGITLABDEV.md
-- webhook documentation: .backups/aggressive_fix_1775873225/docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md
-- webhook documentation: .backups/aggressive_fix_1775873225/docs/qvillage_features.md
-- webhook documentation: .backups/aggressive_fix_1775873435/API_AUTO_UPDATE_GUIDELINES.md
-- webhook documentation: .backups/aggressive_fix_1775873435/AUTO_SETUP_COMPLETION_SUMMARY.md
-- webhook documentation: .backups/aggressive_fix_1775873435/EXECUTIVE_SUMMARY.md
-- webhook documentation: .backups/aggressive_fix_1775873435/HOSTLINKSDOMAINS.md
-- webhook documentation: .backups/aggressive_fix_1775873435/IMPLEMENTATION_SUMMARY.md
-- webhook documentation: .backups/aggressive_fix_1775873435/MASTER_ONLY_FEATURES.md
-- webhook documentation: .backups/aggressive_fix_1775873435/PHASE_6_EXTENDED_SUMMARY.md
-- webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_ALWAYS_ON_DEPLOYMENT.md
-- webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_ALL_STEPS.md
-- webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_README.md
-- webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_SUCCESS.md
-- webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_READINESS_FINAL.md
-- webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_READINESS_FINAL_AUDIT.md
-- webhook documentation: .backups/aggressive_fix_1775873435/PRODUCTION_SETUP_COMPLETE.md
-- webhook documentation: .backups/aggressive_fix_1775873435/QMOIHUGGINGFACESPACESSETUPINST.md
-- webhook documentation: .backups/aggressive_fix_1775873435/Q_BALANCES_AUTO_UPDATE_README.md
-- webhook documentation: .backups/aggressive_fix_1775873435/README_PRODUCTION.md
-- webhook documentation: .backups/aggressive_fix_1775873435/VERCELLINKS.md
-- webhook documentation: .backups/aggressive_fix_1775873435/compulsories_nonproduction_tasks.md
-- webhook documentation: .backups/aggressive_fix_1775873435/docs/LION_ORCHESTRATOR_ENHANCEMENTS.md
-- webhook documentation: .backups/aggressive_fix_1775957216/3.md
-- webhook documentation: .backups/aggressive_fix_1775957216/4.md
-- webhook documentation: .backups/aggressive_fix_1775957216/44.md
-- webhook documentation: .backups/aggressive_fix_1775957216/ALLHOOKSWEBHOOKS.md
-- webhook documentation: .backups/aggressive_fix_1775957216/ALLMDFILESREFS.md
-- webhook documentation: .backups/aggressive_fix_1775957216/NGROKPAYED.md
-- webhook documentation: .backups/aggressive_fix_1775957216/POLITICALQMOI.md
-- webhook documentation: .backups/aggressive_fix_1775957216/PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md
-- webhook documentation: .backups/aggressive_fix_1775957216/QMOI_COMPLETE_INTEGRATION_MASTER.md
-- webhook documentation: .backups/aggressive_fix_1775957216/QMOI_RELEASE_VERSION_SYSTEM.md
-- webhook documentation: .backups/aggressive_fix_1775957216/TABLE_OF_CONTENTS.md
-- webhook documentation: .backups/aggressive_fix_1775957216/WEBHOOKS.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/ALLLINKS.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/ALLMDFILESREFS.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/API_INTEGRATION_GUIDE.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/DEPLOYMENT-README.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/DEPLOYMENT_READY_FINAL.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/DEPLOYMENT_STATUS_V1_2_3.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_COMPLETION_SUMMARY.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_DEPLOYMENT_CHECKLIST.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_READINESS_AUDIT.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_READINESS_REPORT.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/PRODUCTION_READY_SUMMARY.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/QCITYRESOURCES.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/QMOI-ENHANCED-AUTOTESTS.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/QMOI-ENHANCED-README.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/QMOICLONEGITHUB.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/QMOIDATABASE.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/QMOISTATS.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/QVILLAGE_HUGGINGFACE_INTEGRATION.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/QVILLAGE_READY_FOR_PRODUCTION.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/README_PRODUCTION.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/SESSION_COMPLETION_SUMMARY.md
-- webhook documentation: .backups/comprehensive_fix_1775690673/TODOS_COMPLETION_VERIFICATION.md
-- webhook documentation: .backups/production_fix_1775686366/3.md
-- webhook documentation: .backups/production_fix_1775686366/ACCOUNTABILITY.md
-- webhook documentation: .backups/production_fix_1775686366/ALLERRORS.md
-- webhook documentation: .backups/production_fix_1775686366/ALLHOOKSWEBHOOKS.md
-- webhook documentation: .backups/production_fix_1775686366/ALLLINKS.md
-- webhook documentation: .backups/production_fix_1775686366/ALLMDFILESREFS.md
-- webhook documentation: .backups/production_fix_1775686366/ALLMDGILES.md
-- webhook documentation: .backups/production_fix_1775686366/ALLUITESTS.md
-- webhook documentation: .backups/production_fix_1775686366/API_AUTO_UPDATE_GUIDELINES.md
-- webhook documentation: .backups/production_fix_1775686366/API_ENDPOINTS_COMPLETE_AUDIT.md
-- webhook documentation: .backups/production_fix_1775686366/API_ENDPOINTS_REFERENCE.md
-- webhook documentation: .backups/production_fix_1775686366/API_INTEGRATION_GUIDE.md
-- webhook documentation: .backups/production_fix_1775686366/API_REFERENCE.md
-- webhook documentation: .backups/production_fix_1775686366/APIs_1.md
-- webhook documentation: .backups/production_fix_1775686366/APIs_v1.md
-- webhook documentation: .backups/production_fix_1775686366/AUTOCLONE_STANDALONE.md
-- webhook documentation: .backups/production_fix_1775686366/AUTODEV_SECRETS.md
-- webhook documentation: .backups/production_fix_1775686366/AUTODEV_VALIDATION_SYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/AUTO_SETUP_COMPLETION_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md
-- webhook documentation: .backups/production_fix_1775686366/COMPLETION_REPORT.md
-- webhook documentation: .backups/production_fix_1775686366/CONTINUOUS_MONITORING_SETUP.md
-- webhook documentation: .backups/production_fix_1775686366/CREDENTIAL_ROTATION_PLAYBOOK.md
-- webhook documentation: .backups/production_fix_1775686366/DEALS.md
-- webhook documentation: .backups/production_fix_1775686366/DELIVERABLES_FINAL_INVENTORY.md
-- webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT-README.md
-- webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_CHECKLIST.md
-- webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_FIX_QUICK_START.md
-- webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_HEALTH_CHECKLIST.md
-- webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_READY_FINAL.md
-- webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_STATUS_V1_2_3.md
-- webhook documentation: .backups/production_fix_1775686366/DEPLOYMENT_VERIFICATION.md
-- webhook documentation: .backups/production_fix_1775686366/DEVELOPER_STRUCTURE_COMPLETE.md
-- webhook documentation: .backups/production_fix_1775686366/DOCKER_DEPLOYMENT_GUIDE.md
-- webhook documentation: .backups/production_fix_1775686366/DOCUMENTATION_COMPLETION_REPORT.md
-- webhook documentation: .backups/production_fix_1775686366/DOCUMENTATION_INDEX.md
-- webhook documentation: .backups/production_fix_1775686366/DOCUMENTATION_MASTER_INDEX.md
-- webhook documentation: .backups/production_fix_1775686366/DOMAIN_MANAGEMENT.md
-- webhook documentation: .backups/production_fix_1775686366/EMAILSSYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/ENDPOINTS.md
-- webhook documentation: .backups/production_fix_1775686366/ENVIRONMENT_CONFIG.md
-- webhook documentation: .backups/production_fix_1775686366/EXECUTIVE_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/FINAL_PRODUCTION_READINESS_REPORT_V2.md
-- webhook documentation: .backups/production_fix_1775686366/GITHUB-ACTIONS-COMPLETE.md
-- webhook documentation: .backups/production_fix_1775686366/GITHUBPAYED.md
-- webhook documentation: .backups/production_fix_1775686366/GITHUB_WORKFLOWS_VERIFICATION.md
-- webhook documentation: .backups/production_fix_1775686366/GODADDY.md
-- webhook documentation: .backups/production_fix_1775686366/GODADDYPAYED.md
-- webhook documentation: .backups/production_fix_1775686366/HOSTLINKSDOMAINS.md
-- webhook documentation: .backups/production_fix_1775686366/HUGGINGFACEPAYED.md
-- webhook documentation: .backups/production_fix_1775686366/IMPLEMENTATION_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/MANIFEST_AND_DEPLOYMENT_GUIDE.md
-- webhook documentation: .backups/production_fix_1775686366/MASTERREADME.md
-- webhook documentation: .backups/production_fix_1775686366/MASTER_ONLY_FEATURES.md
-- webhook documentation: .backups/production_fix_1775686366/MONITORING_API_DOCS.md
-- webhook documentation: .backups/production_fix_1775686366/MONITORING_IMPLEMENTATION_GUIDE.md
-- webhook documentation: .backups/production_fix_1775686366/PAYMENTS.md
-- webhook documentation: .backups/production_fix_1775686366/PHASE_4_QVILLAGE_HF_COMPLETE.md
-- webhook documentation: .backups/production_fix_1775686366/PHASE_5_COMPLETION.md
-- webhook documentation: .backups/production_fix_1775686366/PHASE_6_EXTENDED_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTIONCHECKLIST.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_ALWAYS_ON_DEPLOYMENT.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_COMPLETION_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_CREDENTIALS_GUIDE.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_ALL_STEPS.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_CHECKLIST.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_COMPLETE.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_PLAYBOOK.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_README.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_SUCCESS.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_IMPLEMENTATION.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_IMPLEMENTATION_GUIDES.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_MONITORING_SETUP.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_AUDIT.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_CHECKLIST.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_FINAL.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_FINAL_AUDIT.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READINESS_REPORT.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_READY_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_SETUP.md
-- webhook documentation: .backups/production_fix_1775686366/PRODUCTION_SETUP_COMPLETE.md
-- webhook documentation: .backups/production_fix_1775686366/QCITYMAINDEVICE.md
-- webhook documentation: .backups/production_fix_1775686366/QCITYRESOURCES.md
-- webhook documentation: .backups/production_fix_1775686366/QGLOBALSIM.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI-AIRTEL-INTEGRATION.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI-ANIMATION-ENHANCEMENT.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI-ENHANCED-AUTOTESTS.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI-ENHANCED-README.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI-ENHANCED-SYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI-HUGGINGFACE-ENHANCEMENTS.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI-VOICE-ENHANCEMENT.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIAUTHBIOMETRICS.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIAUTOFIXREADME.md
-- webhook documentation: .backups/production_fix_1775686366/QMOICLONEGITHUB.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIDATABASE.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIDEVICES.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIEMPLOYAUTOPAY.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIGITHUBAPP.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIGITLABDEV.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIGLOBAL.md
-- webhook documentation: .backups/production_fix_1775686366/QMOIHUGGINGFACESPACESSETUPINST.md
-- webhook documentation: .backups/production_fix_1775686366/QMOISTATS.md
-- webhook documentation: .backups/production_fix_1775686366/QMOISYSTEMEMAILS.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_APIS_WEBHOOKS_ENDPOINTS.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_COMPLETE_INTEGRATION_MASTER.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_COMPLETE_SYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_GITLAB_AUTOMATION.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_MARKDOWN_AUTO_UPDATE.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_MASTER_INTEGRATION_VALIDATION.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_MEMORY_AWARENESS_SYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_PHASE_3_COMPLETION_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_PLATFORM_ARCHITECTURE.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_RELEASE_VERSION_SYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_SELF_UPDATE_SYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_TRACKS_SYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_WALLET_FINANCIAL_SYSTEMS.md
-- webhook documentation: .backups/production_fix_1775686366/QMOI_WALLET_FINANCIAL_SYSTEMS_UPDATED.md
-- webhook documentation: .backups/production_fix_1775686366/QUANTUM.md
-- webhook documentation: .backups/production_fix_1775686366/QVILLAGESPACES.md
-- webhook documentation: .backups/production_fix_1775686366/QVILLAGE_HUGGINGFACE_INTEGRATION.md
-- webhook documentation: .backups/production_fix_1775686366/QVILLAGE_IMPLEMENTATION_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/QVILLAGE_READY_FOR_PRODUCTION.md
-- webhook documentation: .backups/production_fix_1775686366/Q_BALANCES_AUTO_UPDATE_README.md
-- webhook documentation: .backups/production_fix_1775686366/README.md
-- webhook documentation: .backups/production_fix_1775686366/README_ENHANCED.md
-- webhook documentation: .backups/production_fix_1775686366/README_PRODUCTION.md
-- webhook documentation: .backups/production_fix_1775686366/RELEASE_NOTES_v2.4.0.md
-- webhook documentation: .backups/production_fix_1775686366/RELEASE_VERIFICATION_V1_2_3.md
-- webhook documentation: .backups/production_fix_1775686366/ROOT_PRODUCTION_STATUS.md
-- webhook documentation: .backups/production_fix_1775686366/ROOT_production_STATUS.md
-- webhook documentation: .backups/production_fix_1775686366/SERVICES.md
-- webhook documentation: .backups/production_fix_1775686366/SESSION_COMPLETION_SUMMARY.md
-- webhook documentation: .backups/production_fix_1775686366/SESSION_PHASE_COMPLETE.md
-- webhook documentation: .backups/production_fix_1775686366/START_PRODUCTION_DEPLOYMENT.md
-- webhook documentation: .backups/production_fix_1775686366/TESTING.md
-- webhook documentation: .backups/production_fix_1775686366/TODOS_COMPLETION_VERIFICATION.md
-- webhook documentation: .backups/production_fix_1775686366/TREE.md
-- webhook documentation: .backups/production_fix_1775686366/UI_FEATURES_AUDIT_COMPREHENSIVE.md
-- webhook documentation: .backups/production_fix_1775686366/VERCELLINKS.md
-- webhook documentation: .backups/production_fix_1775686366/VERCEL_AUTO_DEPLOY_GUIDE.md
-- webhook documentation: .backups/production_fix_1775686366/VERCEL_DEPLOYMENT_READY.md
-- webhook documentation: .backups/production_fix_1775686366/VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md
-- webhook documentation: .backups/production_fix_1775686366/VERCEL_QMOI_AUTOFEATURES_MASTER.md
-- webhook documentation: .backups/production_fix_1775686366/WEBHOOKS.md
-- webhook documentation: .backups/production_fix_1775686366/WPA.md
-- webhook documentation: .backups/production_fix_1775686366/app/api/PRODUCTION_STATUS.md
-- webhook documentation: .backups/production_fix_1775686366/app/api/production_STATUS.md
-- webhook documentation: .backups/production_fix_1775686366/compulsories.md
-- webhook documentation: .backups/production_fix_1775686366/compulsories_nonproduction_tasks.md
-- webhook documentation: .backups/production_fix_1775686366/docs/API_AUDIT.md
-- webhook documentation: .backups/production_fix_1775686366/docs/API_REFERENCE.md
-- webhook documentation: .backups/production_fix_1775686366/docs/APIs_v1.md
-- webhook documentation: .backups/production_fix_1775686366/docs/CREDENTIAL_ROTATION_PLAYBOOK.md
-- webhook documentation: .backups/production_fix_1775686366/docs/LION-ENHANCEMENTS-PLAN.md
-- webhook documentation: .backups/production_fix_1775686366/docs/LION-WEBHOOKS-ENHANCEMENTS.md
-- webhook documentation: .backups/production_fix_1775686366/docs/LIONOPERATINGSYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/docs/LION_ORCHESTRATOR_ENHANCEMENTS.md
-- webhook documentation: .backups/production_fix_1775686366/docs/MONITORING_SYSTEM.md
-- webhook documentation: .backups/production_fix_1775686366/docs/QMOIGITHUBDEV.md
-- webhook documentation: .backups/production_fix_1775686366/docs/QMOIGITLABDEV.md
-- webhook documentation: .backups/production_fix_1775686366/docs/QMOIVERCELDEV.md
-- webhook documentation: .backups/production_fix_1775686366/docs/QMOI_MEMORY.md
-- webhook documentation: .backups/production_fix_1775686366/docs/QVILLAGE_MANUAL.md
-- webhook documentation: .backups/production_fix_1775686366/docs/REVENUE_SPEC.md.generated.md
-- webhook documentation: .backups/production_fix_1775686366/docs/TODOS_ENHANCEMENTS.md
-- webhook documentation: .backups/production_fix_1775686366/docs/WALLET_RUNBOOK.md
-- webhook documentation: .backups/production_fix_1775686366/docs/WALLET_SECURITY_PLAYBOOK.md
-- webhook documentation: .backups/production_fix_1775686366/docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md
-- webhook documentation: .backups/production_fix_1775686366/docs/implemented_endpoints.md
-- webhook documentation: .backups/production_fix_1775686366/docs/qvillage_features.md
-- webhook documentation: .backups/production_fix_1775686366/docs/workflow_fix_proposals.md
-- webhook documentation: .backups/production_fix_1775686366/docs/workflows_remediation.md
-- webhook documentation: .backups/production_fix_1775686366/qvillage/README.md
-- webhook documentation: .backups/production_fix_1775686366/reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md
-- webhook documentation: .backups/production_fix_1775686366/reports/mock_and_stub_audit.md
-- webhook documentation: .backups/production_fix_1775686366/tools/dns_links_report.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0530_QMOIGITLABDEV.md.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0592_git-smart-sync.ps1.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0597_hooks_useWhatsApp.ts.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0926_qmoi-enhanced_git-smart-sync.ps1.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/0931_qmoi-enhanced_hooks_useWhatsApp.ts.md
-- webhook documentation: .backups/production_fix_1775686366/tools/issue_drafts/1063_services_adapters_payments_utils.ts.md
-- webhook documentation: .backups/production_fix_1775977879/DOCKER_DEPLOYMENT_GUIDE.md
-- webhook documentation: .backups/production_fix_1775977879/QMOICLONEGITHUB.md
-- webhook documentation: .backups/production_fix_1775977879/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md
-- webhook documentation: .backups/production_fix_1775977879/Q_BALANCES_AUTO_UPDATE_README.md
-- webhook documentation: 3.md
-- webhook documentation: 4.md
-- webhook documentation: 44.md
-- webhook documentation: 5.md
-- webhook documentation: ACCOUNTABILITY.md
-- webhook documentation: AI_ENHANCEMENT_SYSTEM.md
-- webhook documentation: ALLERRORS.md
-- webhook documentation: ALLHEALTHS.md
-- webhook documentation: ALLHOOKSWEBHOOKS.md
-- webhook documentation: ALLLINKS.md
-- webhook documentation: ALLMDFILESREFS.md
-- webhook documentation: ALLMDGILES.md
-- webhook documentation: ALLTESTSAUTOTESTS.md
-- webhook documentation: ALLUITESTS.md
-- webhook documentation: API.md
-- webhook documentation: API_AUTO_UPDATE_GUIDELINES.md
-- webhook documentation: API_COMPREHENSIVE.md
-- webhook documentation: API_ENDPOINTS_COMPLETE_AUDIT.md
-- webhook documentation: API_ENDPOINTS_REFERENCE.md
-- webhook documentation: API_REFERENCE.md
-- webhook documentation: APIs_1.md
-- webhook documentation: APIs_v1.md
-- webhook documentation: AUTOCLONE_STANDALONE.md
-- webhook documentation: AUTODEV_SECRETS.md
-- webhook documentation: AUTODEV_VALIDATION_SYSTEM.md
-- webhook documentation: AUTO_SETUP_COMPLETION_SUMMARY.md
-- webhook documentation: BUSINESS_INTELLIGENCE.md
-- webhook documentation: COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md
-- webhook documentation: COMPLETION_REPORT.md
-- webhook documentation: CONTINUOUS_MONITORING_SETUP.md
-- webhook documentation: CREDENTIAL_ROTATION_PLAYBOOK.md
-- webhook documentation: DEALS.md
-- webhook documentation: DELIVERABLES_FINAL_INVENTORY.md
-- webhook documentation: DEPLOYMENT_CHECKLIST.md
-- webhook documentation: DEPLOYMENT_FIX_QUICK_START.md
-- webhook documentation: DEPLOYMENT_HEALTH_CHECKLIST.md
-- webhook documentation: DEPLOYMENT_STATUS_V1_2_3.md
-- webhook documentation: DEPLOYMENT_VERIFICATION.md
-- webhook documentation: DEVELOPER_STRUCTURE_COMPLETE.md
-- webhook documentation: DOCKER_DEPLOYMENT_GUIDE.md
-- webhook documentation: DOCUMENTATION_COMPLETION_REPORT.md
-- webhook documentation: DOCUMENTATION_INDEX.md
-- webhook documentation: DOCUMENTATION_MASTER_INDEX.md
-- webhook documentation: DOCUMENTATION_PHASE_COMPLETION_REPORT.md
-- webhook documentation: DOMAIN_MANAGEMENT.md
-- webhook documentation: EMAILSSYSTEM.md
-- webhook documentation: ENDPOINTS.md
-- webhook documentation: ENVIRONMENT_CONFIG.md
-- webhook documentation: EXECUTIVE_SUMMARY.md
-- webhook documentation: FINAL_PRODUCTION_READINESS_REPORT_V2.md
-- webhook documentation: FINAL_SESSION_COMPLETION_SUMMARY.md
-- webhook documentation: FINAL_SESSION_COMPREHENSIVE_REPORT.md
-- webhook documentation: GITHUB-ACTIONS-COMPLETE.md
-- webhook documentation: GITHUBPAYED.md
-- webhook documentation: GITHUB_WORKFLOWS_VERIFICATION.md
-- webhook documentation: GODADDY.md
-- webhook documentation: GODADDYPAYED.md
-- webhook documentation: HOSTLINKSDOMAINS.md
-- webhook documentation: HUGGINGFACEPAYED.md
-- webhook documentation: IMPLEMENTATION_SUMMARY.md
-- webhook documentation: MANIFEST_AND_DEPLOYMENT_GUIDE.md
-- webhook documentation: MASTERREADME.md
-- webhook documentation: MASTER_ONLY_FEATURES.md
-- webhook documentation: MONITORING_ANALYTICS_SYSTEM.md
-- webhook documentation: MONITORING_API_DOCS.md
-- webhook documentation: MONITORING_IMPLEMENTATION_GUIDE.md
-- webhook documentation: NGROKPAYED.md
-- webhook documentation: ORCHESTRATOR.md
-- webhook documentation: PAYMENTS.md
-- webhook documentation: PERFORMANCE_ANALYTICS.md
-- webhook documentation: PERFORMANCE_OPTIMIZATION_SYSTEM.md
-- webhook documentation: PHASE_4_QVILLAGE_HF_COMPLETE.md
-- webhook documentation: PHASE_5_COMPLETION.md
-- webhook documentation: PHASE_6_EXTENDED_SUMMARY.md
-- webhook documentation: POLITICALQMOI.md
-- webhook documentation: PREDICTIVE_ANALYTICS.md
-- webhook documentation: PRODUCTIONCHECKLIST.md
-- webhook documentation: PRODUCTION_ALWAYS_ON_DEPLOYMENT.md
-- webhook documentation: PRODUCTION_CREDENTIALS_GUIDE.md
-- webhook documentation: PRODUCTION_DEPLOYMENT_ALL_STEPS.md
-- webhook documentation: PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md
-- webhook documentation: PRODUCTION_DEPLOYMENT_COMPLETE.md
-- webhook documentation: PRODUCTION_DEPLOYMENT_PLAYBOOK.md
-- webhook documentation: PRODUCTION_DEPLOYMENT_README.md
-- webhook documentation: PRODUCTION_DEPLOYMENT_SUCCESS.md
-- webhook documentation: PRODUCTION_DEPLOYMENT_SYSTEM.md
-- webhook documentation: PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md
-- webhook documentation: PRODUCTION_IMPLEMENTATION.md
-- webhook documentation: PRODUCTION_IMPLEMENTATION_GUIDES.md
-- webhook documentation: PRODUCTION_MONITORING_SETUP.md
-- webhook documentation: PRODUCTION_READINESS_AUDIT.md
-- webhook documentation: PRODUCTION_READINESS_CHECKLIST.md
-- webhook documentation: PRODUCTION_READINESS_FINAL.md
-- webhook documentation: PRODUCTION_READINESS_FINAL_AUDIT.md
-- webhook documentation: PRODUCTION_SETUP.md
-- webhook documentation: PRODUCTION_SETUP_COMPLETE.md
-- webhook documentation: QCITYMAINDEVICE.md
-- webhook documentation: QGLOBALSIM.md
-- webhook documentation: QLIONAGENT.md
-- webhook documentation: QMOI-AIRTEL-INTEGRATION.md
-- webhook documentation: QMOI-ANIMATION-ENHANCEMENT.md
-- webhook documentation: QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md
-- webhook documentation: QMOI-ENHANCED-SYSTEM.md
-- webhook documentation: QMOI-HUGGINGFACE-ENHANCEMENTS.md
-- webhook documentation: QMOI-VOICE-ENHANCEMENT.md
-- webhook documentation: QMOI.md
-- webhook documentation: QMOIAUTHBIOMETRICS.md
-- webhook documentation: QMOIAUTOFIXREADME.md
-- webhook documentation: QMOICLONEGITHUB.md
-- webhook documentation: QMOIDATABASE.md
-- webhook documentation: QMOIDEVICES.md
-- webhook documentation: QMOIEMPLOYAUTOPAY.md
-- webhook documentation: QMOIGITHUBAPP.md
-- webhook documentation: QMOIGITLABDEV.md
-- webhook documentation: QMOIGLOBAL.md
-- webhook documentation: QMOIHUGGINGFACESPACESSETUPINST.md
-- webhook documentation: QMOISYSTEMEMAILS.md
-- webhook documentation: QMOI_APIS_WEBHOOKS_ENDPOINTS.md
-- webhook documentation: QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md
-- webhook documentation: QMOI_COMPLETE_INTEGRATION_MASTER.md
-- webhook documentation: QMOI_COMPLETE_SYSTEM.md
-- webhook documentation: QMOI_GITLAB_AUTOMATION.md
-- webhook documentation: QMOI_MARKDOWN_AUTO_UPDATE.md
-- webhook documentation: QMOI_MASTER_INTEGRATION_VALIDATION.md
-- webhook documentation: QMOI_MEMORY_AWARENESS_SYSTEM.md
-- webhook documentation: QMOI_PHASE_3_COMPLETION_SUMMARY.md
-- webhook documentation: QMOI_PLATFORM_ARCHITECTURE.md
-- webhook documentation: QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md
-- webhook documentation: QMOI_PRODUCTION_DEPLOYMENT.md
-- webhook documentation: QMOI_RELEASE_VERSION_SYSTEM.md
-- webhook documentation: QMOI_SELF_UPDATE_SYSTEM.md
-- webhook documentation: QMOI_SPACE_QVILLAGE_ENHANCEMENT_PLAN.md
-- webhook documentation: QMOI_TRACKS_SYSTEM.md
-- webhook documentation: QMOI_WALLET_FINANCIAL_SYSTEMS.md
-- webhook documentation: QMOI_WALLET_FINANCIAL_SYSTEMS_UPDATED.md
-- webhook documentation: QUANTUM.md
-- webhook documentation: QVILLAGESPACES.md
-- webhook documentation: QVILLAGE_IMPLEMENTATION_SUMMARY.md
-- webhook documentation: QVILLAGE_READY_FOR_PRODUCTION.md
-- webhook documentation: Q_BALANCES_AUTO_UPDATE_README.md
-- webhook documentation: README.md
-- webhook documentation: README_ENHANCED.md
-- webhook documentation: README_PRODUCTION.md
-- webhook documentation: RELEASE_NOTES_v2.4.0.md
-- webhook documentation: RELEASE_VERIFICATION_V1_2_3.md
-- webhook documentation: REPORTING_DASHBOARDS.md
-- webhook documentation: ROOT_PRODUCTION_STATUS.md
-- webhook documentation: ROOT_production_STATUS.md
-- webhook documentation: ROUTES.md
-- webhook documentation: ROUTES_COMPREHENSIVE.md
-- webhook documentation: SECURITY_HARDENING_SYSTEM.md
-- webhook documentation: SECURITY_MONITORING.md
-- webhook documentation: SERVICES.md
-- webhook documentation: SESSION_DOCUMENTATION_STATUS_REPORT.md
-- webhook documentation: SESSION_PHASE_COMPLETE.md
-- webhook documentation: START_PRODUCTION_DEPLOYMENT.md
-- webhook documentation: SYSTEM_MONITORING.md
-- webhook documentation: TABLE_OF_CONTENTS.md
-- webhook documentation: TESTING.md
-- webhook documentation: TREE.md
-- webhook documentation: TREE_COMPREHENSIVE.md
-- webhook documentation: UI_FEATURES_AUDIT_COMPREHENSIVE.md
-- webhook documentation: VERCELLINKS.md
-- webhook documentation: VERCEL_AUTO_DEPLOY_GUIDE.md
-- webhook documentation: VERCEL_DEPLOYMENT_READY.md
-- webhook documentation: VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md
-- webhook documentation: VERCEL_QMOI_AUTOFEATURES_MASTER.md
-- webhook documentation: WEBHOOKS.md
-- webhook documentation: WPA.md
-- webhook documentation: app/api/PRODUCTION_STATUS.md
-- webhook documentation: app/api/production_STATUS.md
-- webhook documentation: compulsories.md
-- webhook documentation: compulsories_nonproduction_tasks.md
-- webhook documentation: docs/API_AUDIT.md
-- webhook documentation: docs/API_REFERENCE.md
-- webhook documentation: docs/LION-ENHANCEMENTS-PLAN.md
-- webhook documentation: docs/LION-WEBHOOKS-ENHANCEMENTS.md
-- webhook documentation: docs/LIONOPERATINGSYSTEM.md
-- webhook documentation: docs/LION_ORCHESTRATOR_ENHANCEMENTS.md
-- webhook documentation: docs/MONITORING_SYSTEM.md
-- webhook documentation: docs/QMOIGITHUBDEV.md
-- webhook documentation: docs/QMOIGITLABDEV.md
-- webhook documentation: docs/QMOIVERCELDEV.md
-- webhook documentation: docs/QMOI_MEMORY.md
-- webhook documentation: docs/QVILLAGE_MANUAL.md
-- webhook documentation: docs/TODOS_ENHANCEMENTS.md
-- webhook documentation: docs/WALLET_RUNBOOK.md
-- webhook documentation: docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md
-- webhook documentation: docs/implemented_endpoints.md
-- webhook documentation: docs/qvillage_features.md
-- webhook documentation: docs/workflow_fix_proposals.md
-- webhook documentation: docs/workflows_remediation.md
-- webhook documentation: hf_space_qvillage/5.md
-- webhook documentation: reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md
-- webhook documentation: reports/mock_and_stub_audit.md
-- webhook documentation: tools/dns_links_report.md
-- webhook documentation: tools/issue_drafts/0530_QMOIGITLABDEV.md.md
-- webhook documentation: tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md
-- webhook documentation: tools/issue_drafts/0592_git-smart-sync.ps1.md
-- webhook documentation: tools/issue_drafts/0597_hooks_useWhatsApp.ts.md
-- webhook documentation: tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md
-- webhook documentation: tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md
-- webhook documentation: tools/issue_drafts/0926_qmoi-enhanced_git-smart-sync.ps1.md
-- webhook documentation: tools/issue_drafts/0931_qmoi-enhanced_hooks_useWhatsApp.ts.md
-- webhook documentation: tools/issue_drafts/1063_services_adapters_payments_utils.ts.md
-- webhook documentation: tools/placeholder_actions.md
-
+1. `1`
+2. `21`
+3. `5`
+4. `6`
+5. `ALERT_EMAIL`
+6. `Configuration`
+7. `Configure`
+8. `Configured`
+9. `Data`
+10. `Documentation`
+11. `Endpoints`
+12. `Found`
+13. `Handler`
+14. `Handling`
+15. `Integration`
+16. `JSON`
+17. `List`
+18. `Overview`
+19. `POST`
+20. `PUT`
+21. `Payload`
+22. `Processor`
+23. `Received`
+24. `Reference`
+25. `S`
+26. `Secret`
+27. `Security`
+28. `Status`
+29. `Summary`
+30. `Support`
+31. `System`
+32. `Throughput`
+33. `Type`
+34. `URL`
+35. `URLs`
+36. `Url`
+37. `_001`
+38. `_ENDPOINTS`
+39. `_SECRET`
+40. `_SIGNING_SECRET`
+41. `_URL`
+42. `_URL_1`
+43. `_URL_2`
+44. `_VERIFY_TOKEN`
+45. `_alerts`
+46. `_code`
+47. `_config`
+48. `_content`
+49. `_count`
+50. `_data`
+51. `_delivery_success`
+52. `_doc`
+53. `_docs`
+54. `_documentation`
+55. `_duplicate`
+56. `_enabled`
+57. `_endpoints`
+58. `_entries`
+59. `_error`
+60. `_event`
+61. `_events`
+62. `_events_documented`
+63. `_fast`
+64. `_file`
+65. `_found`
+66. `_in_the_system`
+67. `_lines`
+68. `_list`
+69. `_md`
+70. `_notification`
+71. `_patterns`
+72. `_processor`
+73. `_received`
+74. `_secret`
+75. `_settle_result`
+76. `_signature`
+77. `_signature_invalid`
+78. `_sorted`
+79. `_stripe`
+80. `_support`
+81. `_type`
+82. `_url`
+83. `_url_here`
+84. `active`
+85. `and`
+86. `are`
+87. `as`
+88. `available`
+89. `body`
+90. `build`
+91. `changes`
+92. `configured`
+93. `const`
+94. `count`
+95. `created`
+96. `data`
+97. `definitions`
+98. `delivery`
+99. `deployment`
+100. `documentation`
+101. `else`
+102. `endpoint`
+103. `endpoints`
+104. `entries`
+105. `error`
+106. `event`
+107. `events`
+108. `failures`
+109. `flow`
+110. `for`
+111. `function`
+112. `handled`
+113. `handler`
+114. `handlers`
+115. `handling`
+116. `health`
+117. `hooks`
+118. `https`
+119. `if`
+120. `ignature`
+121. `implementations`
+122. `in`
+123. `ingestion`
+124. `initialized`
+125. `integration`
+126. `integrations`
+127. `is`
+128. `locally`
+129. `logger`
+130. `management`
+131. `manager`
+132. `not`
+133. `notification`
+134. `notifications`
+135. `only`
+136. `or`
+137. `payload`
+138. `print`
+139. `processing`
+140. `production`
+141. `provided`
+142. `push`
+143. `rate`
+144. `received`
+145. `reference`
+146. `references`
+147. `registered`
+148. `registration`
+149. `response`
+150. `result`
+151. `retrieved`
+152. `rollout`
+153. `routes`
+154. `s`
+155. `scanned`
+156. `scanning`
+157. `schemas`
+158. `secret`
+159. `security`
+160. `self`
+161. `setup`
+162. `signature`
+163. `signatures`
+164. `signing`
+165. `specifications`
+166. `support`
+167. `system`
+168. `to`
+169. `type`
+170. `validators`
+171. `verification`
+172. `verify`
+173. `webhook_type`
+174. `webhook_url`
+175. `with`

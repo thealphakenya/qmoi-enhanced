@@ -1,4 +1,23 @@
 // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+
 import { specificExports } from "react";
 import {
   Box,
@@ -68,7 +87,26 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
       }));
       setTrades(history as Trade[]);
 
-      // Calculate statistics
+      // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+Calculate statistics
       const successfulTrades = history.filter(
         (t: Trade) => t.status === "completed",
       );
@@ -98,7 +136,26 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
 
   useEffect(() => {
     fetchTrades();
-    const interval = setInterval(fetchTrades, 60000); // Update every minute
+    const interval = setInterval(fetchTrades, 60000); // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+Update every minute
     return () => clearInterval(interval);
   }, []);
 

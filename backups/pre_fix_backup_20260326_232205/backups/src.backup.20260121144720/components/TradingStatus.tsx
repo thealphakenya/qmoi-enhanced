@@ -1,4 +1,23 @@
 // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+
 "use client";
 import { specificExports } from "react";
 import {
@@ -45,13 +64,51 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
       setIsLoading(true);
       setError(null);
 
-      // Get connection status
+      // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+Get connection status
       const connectionStatus =
         TradingManager.getInstance().getConnectionStatus();
       setIsConnected(connectionStatus.isConnected);
 
       if (connectionStatus.isConnected) {
-        // Get wallet balances
+        // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+Get wallet balances
         const balances = await TradingManager.getInstance().getWalletBalances();
         setWalletBalances(balances);
       } else {
@@ -69,7 +126,26 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
 
   useEffect(() => {
     fetchStatus();
-    const interval = setInterval(fetchStatus, 30000); // Update every 30 seconds
+    const interval = setInterval(fetchStatus, 30000); // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+Update every 30 seconds
     return () => clearInterval(interval);
   }, []);
 

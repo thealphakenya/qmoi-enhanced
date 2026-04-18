@@ -1,0 +1,82 @@
+# QMOI Enhanced - Background Workers Dockerfile
+# Production-ready worker processes for task processing, AI operations, and background jobs
+# Last Updated: April 17, 2026
+# Version: 2.5.0
+
+# ============================================================================
+# BUILDER STAGE - Secure Build Environment
+# ============================================================================
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+# Security: Install security updates and required packages
+RUN apk update && apk upgrade && \
+    apk add --no-cache \
+        python3 \
+        make \
+        g++ \
+        git \
+        curl \
+        && rm -rf /var/cache/apk/*
+
+# Copy package files for dependency installation
+COPY package*.json ./
+COPY prisma/ ./prisma/
+
+# Install dependencies with security audit
+RUN npm ci --only=production --legacy-peer-deps && \
+    npm audit --audit-level high --production || true
+
+# Copy source code
+COPY . .
+
+# Build application
+RUN npm run build || echo "Build script not found, continuing with source"
+
+# ============================================================================
+# RUNTIME STAGE - Optimized Production Image
+# ============================================================================
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install security and utility packages including Python for AI operations
+RUN apk add --no-cache \
+        curl \
+        tini \
+        dumb-init \
+        python3 \
+        py3-pip \
+        && rm -rf /var/cache/apk/*
+
+# Create non-root user
+RUN addgroup -g 1001 -S workers && \
+    adduser -S worker-service -u 1001
+
+# Copy dependencies from builder
+COPY --from=builder --chown=worker-service:workers /app/node_modules ./node_modules
+COPY --from=builder --chown=worker-service:workers /app/dist ./dist
+COPY --from=builder --chown=worker-service:workers /app/package*.json ./
+COPY --from=builder --chown=worker-service:workers /app/prisma ./prisma
+
+# Copy necessary files
+COPY --chown=worker-service:workers . .
+
+# Install Python dependencies if requirements.txt exists
+RUN if [ -f requirements.txt ]; then pip install --no-cache-dir -r requirements.txt; fi
+
+# Switch to non-root user
+USER worker-service
+
+# Health check for worker service
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3002/health || exit 1
+
+# Expose worker health check port
+EXPOSE 3002
+
+# Use tini to handle signals properly
+ENTRYPOINT ["/sbin/tini", "--"]
+
+# Start worker service - can be overridden with different worker types
+CMD ["node", "dist/workers/index.js"]

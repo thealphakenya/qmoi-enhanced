@@ -1,0 +1,263 @@
+{
+  "timestamp": "2026-04-18T01:03:24.796798",
+  "status": "COMPLETE",
+  "statistics": {
+    "files_scanned": 17964,
+    "files_updated": 281,
+    "nprod_replaced": 1344,
+    "master_controls_added": 393
+  },
+  "updates": [
+    {
+      "file": "/workspaces/qmoi-enhanced/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/prisma/generated/prisma/models/Wallet.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/services/EnhancedRevenueAutomationService.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/prisma/generated/prisma/models/Wallet.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/services/EnhancedRevenueAutomationService.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/prisma/generated/prisma/models/Wallet.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/prisma/generated/prisma/models/Wallet.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/src/services/EnhancedRevenueAutomationService.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/services/EnhancedRevenueAutomationService.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/prisma/generated/prisma/models/Wallet.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/services/EnhancedRevenueAutomationService.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/services/EnhancedRevenueAutomationService.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/src.backup.20260121144720/services/EnhancedRevenueAutomationService.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTrading.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/hooks/useAnalyticsDashboard.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/prisma/generated/prisma/models/Wallet.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/hooks/useRevenueValidation.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/src/services/EnhancedRevenueAutomationService.ts",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/components/WalletPanel.tsx",
+      "findings": 0,
+      "master_control_added": true
+    },
+    {
+      "file": "/workspaces/qmoi-enhanced/components/LeahWalletPanel.tsx",
+      "findings": 0,
+      "master_control_added": true
+    }
+  ],
+  "errors": []
+}

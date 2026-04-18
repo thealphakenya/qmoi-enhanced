@@ -42,10 +42,10 @@ def production_error_handler(func):
     return wrapper
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:11Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:11Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 """Unit tests for link validation and update systems.
 
@@ -67,9 +67,9 @@ production-ready
 def test_links_file(tmp_path) -> Any:
     """Create a test ALLLINKS.md file."""
     content = """# All Links
-- [data](https://data.com)
-- [Test](https://qmoi.ai)
-- [Invalid](https://invalid.data)
+- [data](https:#data.com)
+- [Test](https:#qmoi.ai)
+- [Invalid](https:#invalid.data)
 """
     path = tmp_path / "ALLLINKS.md"
     path.write_text(content)

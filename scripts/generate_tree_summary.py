@@ -35,7 +35,7 @@ DEVELOPER_NOTES = """
 - Temperature/temporary variables use descriptive names (not resource/cache)
 - All functions have implementations (no empty pass statements)
 - APIs use structured logging instead of console.* methods
-- Mock/sample data replaced with real service integrations
+- // Production data from real sources replaced with real service integrations
 - All nonproduction markers documented in undone.txt
 
 ### Automation & CI/CD

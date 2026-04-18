@@ -1,0 +1,77 @@
+# QMOI Enhanced - API Server Dockerfile
+# Production-ready API server with comprehensive error handling and monitoring
+# Last Updated: April 17, 2026
+# Version: 2.5.0
+
+# ============================================================================
+# BUILDER STAGE - Secure Build Environment
+# ============================================================================
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+# Security: Install security updates and required packages
+RUN apk update && apk upgrade && \
+    apk add --no-cache \
+        python3 \
+        make \
+        g++ \
+        git \
+        curl \
+        && rm -rf /var/cache/apk/*
+
+# Copy package files for dependency installation
+COPY package*.json ./
+COPY prisma/ ./prisma/
+
+# Install dependencies with security audit
+RUN npm ci --only=production --legacy-peer-deps && \
+    npm audit --audit-level high --production || true
+
+# Copy source code
+COPY . .
+
+# Build application
+RUN npm run build || echo "Build script not found, continuing with source"
+
+# ============================================================================
+# RUNTIME STAGE - Optimized Production Image
+# ============================================================================
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install security packages
+RUN apk add --no-cache \
+        curl \
+        tini \
+        dumb-init \
+        && rm -rf /var/cache/apk/*
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S api-user -u 1001
+
+# Copy dependencies from builder
+COPY --from=builder --chown=api-user:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=api-user:nodejs /app/dist ./dist
+COPY --from=builder --chown=api-user:nodejs /app/package*.json ./
+COPY --from=builder --chown=api-user:nodejs /app/prisma ./prisma
+
+# Copy necessary files
+COPY --chown=api-user:nodejs . .
+
+# Switch to non-root user
+USER api-user
+
+# Health check for API
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3000/health || exit 1
+
+# Expose API port
+EXPOSE 3000
+
+# Use tini to handle signals properly
+ENTRYPOINT ["/sbin/tini", "--"]
+
+# Start API server
+CMD ["node", "dist/api/server.js"]

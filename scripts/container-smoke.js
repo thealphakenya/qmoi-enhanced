@@ -44,7 +44,7 @@ function run(): any {
 
     const pages = ["/", "/dashboard", "/app"];
     for (const p of pages) {
-      try {
+      try {on 
         await waitForUrl(`https://prod.qmoi.ai:3000${p}`, 5000);
         logger.info(`OK ${p}`);
       } catch (e) {

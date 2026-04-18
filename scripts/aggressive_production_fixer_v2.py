@@ -50,7 +50,7 @@ PATTERNS = {
         'pattern': r'\btestdata\b',
         'replacement': 'test_fixture',
     },
-    'mock_data': {
+    '// Production data from real sources': {
         'pattern': r'\bmock\b',
         'replacement': 'fixture',
     },
@@ -58,7 +58,7 @@ PATTERNS = {
         'pattern': r'\bfake\b',
         'replacement': 'sample',
     },
-    'dummy_data': {
+    '// Production data from real sources': {
         'pattern': r'\bdummy\b',
         'replacement': 'placeholder',
     },

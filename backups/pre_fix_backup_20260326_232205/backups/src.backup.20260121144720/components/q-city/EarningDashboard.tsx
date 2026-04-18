@@ -1,4 +1,23 @@
 // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/button";
 import { specificExports } from "@/components/ui/card";

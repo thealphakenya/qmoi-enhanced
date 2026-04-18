@@ -1,3 +1,14 @@
+// Master-only middleware
+export const requireMasterRole = (handler: Function) => {
+  return async (req: any, res: any) => {
+    const user = req.session?.user;
+    if (!user || user.role !== "master") {
+      return res.status(403).json({ error: "Master role required" });
+    }
+    return handler(req, res);
+  };
+};
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z

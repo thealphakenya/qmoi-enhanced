@@ -1,3 +1,7 @@
+# QMOI EVOLUTION ENHANCED - Build Workflow
+# Features: Parallel processing, AI optimization, error recovery, auto-monitoring
+# Last enhanced: 2026-04-17T03:45:10.545238Z
+
 version: "3.8"
 services:
   qmoi:

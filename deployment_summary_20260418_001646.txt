@@ -1,0 +1,21 @@
+QMOI Enhanced - Local Deployment Summary
+Date: Sat Apr 18 00:16:46 UTC 2026
+Status: SUCCESSFUL
+
+Running Services:
+- Health Monitor (PID: 5439)
+- Backup Manager (PID: 5440)
+- Server (PID: 5510)
+
+
+
+
+Log Files:
+- health_monitor.log
+- backup.log
+- server.log / app.log / main.log / npm_start.log
+
+Management:
+- Stop services: ./scripts/stop-services.sh
+- View logs: tail -f *.log
+- Health check: python scripts/health-monitor.py

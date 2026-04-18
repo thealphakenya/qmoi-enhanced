@@ -1,8 +1,46 @@
 // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+
 import { specificExports } from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {
-  // Projects state management
+  // 
+// Master-only access control
+const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
+  const [isMaster, setIsMaster] = React.useState(false);
+  
+  React.useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      const userData = JSON.parse(user);
+      setIsMaster(userData.role === "master");
+    }
+  }, []);
+  
+  if (!isMaster) {
+    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
+  }
+  
+  return <>{children}</>;
+};
+Projects state management
   const [projects, setProjects] = useState([
     { id: 1, name: "latest Engine", status: "active", progress: 85 },
     { id: 2, name: "Q-City Deployment", status: "active", progress: 60 },
