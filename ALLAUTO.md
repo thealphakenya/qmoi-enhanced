@@ -1,12 +1,12 @@
 # ALLAUTO.md - QMOI Full Automation Inventory
 
-**Auto-generated on:** 2026-04-16 22:00:58 UTC
+**Auto-generated on:** 2026-04-18T03:04:20.738344
 
 This document tracks all automation scripts, auto-update systems, and auto-related documentation in the QMOI repository.
 
 ## Summary
 
-- **Total automation-related items:** 1696
+- **Total automation-related items:** 1697
 - **Key integration doc:** `ALLPERCENTAGES.md`
 
 ## Automation Inventory
@@ -24,6 +24,7 @@ This document tracks all automation scripts, auto-update systems, and auto-relat
 - `ALLTESTSAUTOTESTS.md`
 - `API_AUTO_UPDATE_GUIDELINES.md`
 - `AUTOCLONE_STANDALONE.md`
+- `AUTOJCA.md`
 - `AUTODEV_SECRETS.md`
 - `AUTODEV_VALIDATION_SYSTEM.md`
 - `AUTODOWNLOAD.md`
