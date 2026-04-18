@@ -231,7 +231,7 @@ function auditLogs(): any {
   });
 }
 
-// operational_data)
+// production data)
 export /**
  * coreAPIs function
  */
@@ -241,7 +241,7 @@ function coreAPIs(): any {
     const authResponse = http.post(
       `${BASE_URL}/api/auth/register`,
       JSON.stringify({
-        email: `operational_data.com`,
+        email: `production data.com`,
         username: `user-${Date.now()}`,
         password: "TestPass123!",
       }),

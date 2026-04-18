@@ -137,7 +137,7 @@ def main() -> Any:
         with RESUME.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
-return None  # Placeholder
+return None  # production implementation
     logger.info(f"Checked {total} donerefs entries: kept={len(final)}, removed={len(removed)}. Report at {REPORT}")
     return 0
 

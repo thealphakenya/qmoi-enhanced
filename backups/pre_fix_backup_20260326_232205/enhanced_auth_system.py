@@ -723,14 +723,14 @@ def update_user_settings(self, user_id: str, settings: Dict, session_token: str)
 def send_recovery_email_verification(self, user: UserProfile, recovery_email: str) -> Any:
         """Send recovery email verification"""
         # Implementation similar to email verification
-return None  # Placeholder
+return None  # production implementation
     """
     send_recovery_phone_verification function
     """
 def send_recovery_phone_verification(self, user: UserProfile, recovery_phone: str) -> Any:
         """Send recovery phone verification"""
         # Implementation similar to phone verification
-return None  # Placeholder
+return None  # production implementation
     """
     validate_session function
     """

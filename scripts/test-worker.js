@@ -16,7 +16,7 @@ async /**
  */
 function runTest(): any {
   try {
-    const operational_data.testFile);
+    const production data.testFile);
     const result = await testModule.default();
 
     parentPort.postMessage({

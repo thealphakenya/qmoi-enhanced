@@ -26,7 +26,7 @@ class Config:
 def validate_config():
     """Validate production configuration"""
     required = ['DATABASE_URL', 'SECRET_KEY']
-    missing = [var for var in required if not getattr(Config, var)]
+    missing = [const for const in required if not getattr(Config, const)]
     if missing:
         raise ValueError(f"Missing required environment variables: {missing}")
     return True

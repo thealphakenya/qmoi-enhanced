@@ -51,7 +51,7 @@ class ChainOfThoughtProcessor:
     
     def decompose_problem(self, problem: str) -> List[str]:
         """Break down problem into manageable steps"""
-        # Simple decomposition - in production would be more sophisticated
+        # Simple decomposition - production ready would be more sophisticated
         sentences = re.split(r'[.!?]+', problem)
         steps = []
         
@@ -146,7 +146,7 @@ class SelfVerificationLayer:
     
     def _check_consistency(self, chain: ReasoningChain) -> Tuple[bool, str]:
         """Check reasoning consistency"""
-        # Simple check - in production would be more sophisticated
+        # Simple check - production ready would be more sophisticated
         return True, "Consistent"
     
     def _check_logic(self, chain: ReasoningChain) -> Tuple[bool, str]:

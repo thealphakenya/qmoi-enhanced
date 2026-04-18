@@ -246,9 +246,9 @@ class QMOIUltimateEnhancerV2:
                 "Multi-modal processing requires high bandwidth"
             ],
             use_cases=[
-                "Advanced AI research and development",
+                "Advanced AI research and production",
                 "Autonomous system orchestration",
-                "Full-stack application development",
+                "Full-stack application production",
                 "Real-time multimodal analysis",
                 "Scientific research assistance",
                 "Enterprise automation solutions",
@@ -1348,7 +1348,7 @@ AUTO_TRAINING_ENDPOINTS = [
 
 ## Model Overview
 
-QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence development, surpassing all existing models including GPT-5, LLaMA, Claude, and Gemini in comprehensive capabilities, reasoning, multimodal understanding, and autonomous operation.
+QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence production, surpassing all existing models including GPT-5, LLaMA, Claude, and Gemini in comprehensive capabilities, reasoning, multimodal understanding, and autonomous operation.
 
 ### Key Differentiators
 - **Superior Intelligence:** Advanced reasoning surpassing GPT-5 level capabilities
@@ -1428,7 +1428,7 @@ QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence dev
 - **Logical Reasoning:** 99.1% (Industry Leading)
 - **Causal Reasoning:** 98.9% (Industry Leading)
 
-### Coding & Development
+### Coding & production
 - **HumanEval:** 95.2% (vs GPT-4: ~85%)
 - **MBPP (Mostly Basic Python Problems):** 94.9% (vs Claude: ~88%)
 - **Code Generation Quality:** 96.4% (Industry Leading)
@@ -1481,8 +1481,8 @@ QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence dev
 
 ### Application Generation
 - ✅ Full-stack web application creation
-- ✅ Mobile app development for all platforms
-- ✅ API development and microservices
+- ✅ Mobile app production for all platforms
+- ✅ API production and microservices
 - ✅ Database design and optimization
 - ✅ Deployment and DevOps automation
 
@@ -1494,7 +1494,7 @@ QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence dev
 - **Manufacturing:** Quality control, predictive maintenance, supply chain optimization
 - **Retail:** Personalized shopping, inventory management, demand forecasting
 
-### Research & Development
+### Research & production
 - **Scientific Research:** Hypothesis generation, data analysis, publication assistance
 - **Drug Discovery:** Molecular analysis, clinical trial design, regulatory compliance
 - **Climate Science:** Environmental monitoring, prediction modeling, policy analysis
@@ -1503,14 +1503,14 @@ QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence dev
 ### Creative Industries
 - **Content Creation:** Article writing, video production, music composition
 - **Design:** Graphic design, UI/UX creation, architectural planning
-- **Education:** Personalized learning, curriculum development, assessment creation
-- **Entertainment:** Game development, interactive storytelling, virtual experiences
+- **Education:** Personalized learning, curriculum production, assessment creation
+- **Entertainment:** Game production, interactive storytelling, virtual experiences
 
 ### Government & Public Sector
 - **Policy Analysis:** Economic modeling, social impact assessment, regulatory compliance
 - **Public Safety:** Crime prediction, emergency response, infrastructure monitoring
 - **Environmental Protection:** Climate modeling, conservation planning, disaster response
-- **Urban Planning:** City development, transportation optimization, resource allocation
+- **Urban Planning:** City production, transportation optimization, resource allocation
 
 ## Strengths
 
@@ -1556,7 +1556,7 @@ QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence dev
 - **Scientific Literature:** Integration with academic and research databases
 - **User Interactions:** Learning from all user interactions and feedback
 - **Multimodal Content:** Images, videos, audio from global sources
-- **Code Repositories:** Open source code and development data
+- **Code Repositories:** Open source code and production data
 - **API Interactions:** Learning from external API calls and responses
 
 ### Training Methodology
@@ -1587,7 +1587,7 @@ QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence dev
 - **Hardware Efficiency:** Use of energy-efficient specialized hardware
 - **Remote Inference:** Reduced data transfer through edge computing
 
-## Future Development
+## Future production
 
 ### Short-Term (6-12 months)
 - **Enhanced Multimodal:** Deeper integration of emerging sensory modalities
@@ -1670,7 +1670,7 @@ QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence dev
 - **Adversarial Training:** Robustness against adversarial attacks
 - **Model Poisoning Protection:** Detection and mitigation of training data poisoning
 - **Backdoor Prevention:** Protection against model backdoors and trojans
-- **Supply Chain Security:** Secure model development and deployment pipeline
+- **Supply Chain Security:** Secure model production and deployment pipeline
 
 ### Operational Security
 - **Access Control:** Role-based access control with least privilege
@@ -1680,7 +1680,7 @@ QMOI Ultra-Spec AI System represents the pinnacle of artificial intelligence dev
 
 ## Conclusion
 
-QMOI Ultra-Spec AI System represents the current pinnacle of artificial intelligence development, offering unparalleled capabilities in reasoning, multimodal understanding, autonomous operation, and continuous learning. With its comprehensive architecture, ethical framework, and production-ready deployment, QMOI sets the standard for what AI systems can achieve.
+QMOI Ultra-Spec AI System represents the current pinnacle of artificial intelligence production, offering unparalleled capabilities in reasoning, multimodal understanding, autonomous operation, and continuous learning. With its comprehensive architecture, ethical framework, and production-ready deployment, QMOI sets the standard for what AI systems can achieve.
 
 The system's unique combination of advanced reasoning, true multimodal processing, autonomous operation, and continuous self-improvement positions it as the most advanced AI system available, surpassing all existing models in comprehensive capabilities and real-world applicability.
 
@@ -1688,7 +1688,7 @@ The system's unique combination of advanced reasoning, true multimodal processin
 
 **Model Card Version:** 2.0  
 **Last Updated:** {datetime.utcnow().isoformat()}  
-**Maintained by:** QMOI Development Team  
+**Maintained by:** QMOI production Team  
 **Contact:** qmoi@qmoitech.com
 """
 
@@ -3090,7 +3090,7 @@ server {{
     server_name api.qmoi.com;
 
     location /api/ {{
-        proxy_pass http://qmoi_api;
+        proxy_pass https://qmoi_api;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -3313,7 +3313,7 @@ Last updated: {datetime.utcnow().isoformat()}
 - ✅ **AI-Enhanced Spaces:** Intelligent collaboration environments
 - ✅ **Multi-Modal Content Processing:** Real-time AI analysis of all content types
 - ✅ **Automated Collaboration Matching:** AI-powered team formation
-- ✅ **Continuous Learning Integration:** Personal and group skill development
+- ✅ **Continuous Learning Integration:** Personal and group skill production
 - ✅ **Advanced Content Generation:** AI-assisted content creation and enhancement
 
 ### Auto-Training System Enhancements
@@ -3465,9 +3465,9 @@ Last updated: {datetime.utcnow().isoformat()}
 - Risk modeling
 - Strategy optimization
 
-### Phase 33: Mobile App Development
+### Phase 33: Mobile App production
 **Objectives:**
-- Native mobile application development
+- Native mobile application production
 - Cross-platform compatibility
 - Mobile-optimized AI interfaces
 - Offline capability implementation
@@ -3710,7 +3710,7 @@ The QMOI Financial Manager represents the most advanced AI-driven financial mana
 ## Risk Management System
 
 ### AI-Driven Risk Assessment
-- **Portfolio Risk:** Value-at-Risk (VaR) calculations with AI enhancements
+- **Portfolio Risk:** Value-at-Risk (const) calculations with AI enhancements
 - **Position Risk:** Individual position risk monitoring and limits
 - **Market Risk:** Systematic and unsystematic risk evaluation
 - **Liquidity Risk:** Real-time liquidity assessment and management

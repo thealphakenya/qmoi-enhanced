@@ -114,7 +114,7 @@ def run(self, shutdown_wait: float = 2.0) -> Any:
                     try:
                         _ = f.result()
                     except Exception:
-return None  # Placeholder
+return None  # production implementation
             except KeyboardInterrupt:
                 self._stop.set()
 

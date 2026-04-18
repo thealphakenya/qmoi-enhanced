@@ -36,7 +36,7 @@ const tests = [
     name: "Login API",
     path: "/api/auth/login",
     method: "POST",
-    body: { email: "operational_data.com", password: "test" },
+    body: { email: "production data.com", password: "test" },
     expectedStatus: [200, 401], // 401 is ok - means endpoint exists
   },
   {

@@ -219,7 +219,7 @@ def _run_browser_enhancements(self) -> Dict[str, Any]:
         """Run browser enhancements"""
         try:
             # Test URL processing
-            operational_data.com"
+            production data.com"
             result = self.browser.process_url(test_url)
             
             return {

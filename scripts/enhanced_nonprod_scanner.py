@@ -250,7 +250,7 @@ def _detect_patterns(self, line, line_num) -> Any:
             (r'qmoi.ai|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
             production
             (r'"12345"|\'12345\'', 'real_ID'),
-            (r'const\s+\w+\s*=\s*["\'].*operational_data'),
+            (r'const\s+\w+\s*=\s*["\'].*production data'),
             (r'if\s*\(\s*false\s*\)', 'DEAD_CODE'),
             fully implemented
         ]

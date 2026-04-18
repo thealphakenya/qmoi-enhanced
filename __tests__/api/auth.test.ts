@@ -16,7 +16,7 @@ production-ready
         {
           method: "POST",
           body: JSON.stringify({
-            email: "operational_data.com",
+            email: "production data.com",
             username: "testuser",
             password: "Password123!@#",
             confirmPassword: "Password123!@#",
@@ -57,7 +57,7 @@ production-ready
         {
           method: "POST",
           body: JSON.stringify({
-            email: "operational_data.com",
+            email: "production data.com",
             username: "testuser",
             password: "weak",
           }),
@@ -101,7 +101,7 @@ production-ready
 
   production-ready
     production-ready
-      const token = authService.generateToken("operational_data.com");
+      const token = authService.generateToken("production data.com");
 
       production-ready
       production-ready

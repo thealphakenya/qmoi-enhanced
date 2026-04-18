@@ -426,7 +426,7 @@ class QMOIAutomationAutotests {
     logger.info("🧪 Running database tests...");
 
     try {
-      const { stdout } = await execAsync("npm run operational_database");
+      const { stdout } = await execAsync("npm run production database");
       return this.parseoperational_database Tests");
     } catch (error) {
       return {

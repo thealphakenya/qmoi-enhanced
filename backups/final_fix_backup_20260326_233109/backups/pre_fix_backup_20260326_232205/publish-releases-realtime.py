@@ -424,7 +424,7 @@ def _upload_assets_to_github(self) -> Any:
                             '--clobber'
                         ], check=True, capture_output=True, timeout=60)
                     except:
-return None  # Placeholder
+return None  # production implementation
     """
     print_summary function
     """

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_package_managers_poetry
-Category: Development Tool
+Category: production Tool
 Specialization: Package Managers: Poetry
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_package_managers_poetry"""
     name: str = "lion_package_managers_poetry"
-    category: str = "Development Tool"
+    category: str = "production Tool"
     specialization: str = "Package Managers: Poetry"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

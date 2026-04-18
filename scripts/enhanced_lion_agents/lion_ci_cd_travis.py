@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_ci_cd_travis
-Category: Development Tool
+Category: production Tool
 Specialization: Ci Cd: Travis
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_ci_cd_travis"""
     name: str = "lion_ci_cd_travis"
-    category: str = "Development Tool"
+    category: str = "production Tool"
     specialization: str = "Ci Cd: Travis"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

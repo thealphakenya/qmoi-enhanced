@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 QMOI BULK OPERATIONS ORCHESTRATOR v4.0
-Master script for executing all bulk operations in production mode
+Master script for executing all bulk operations production ready mode
 Always does everything in bulk, very many files at a time, the best way
 """
 

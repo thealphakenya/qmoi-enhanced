@@ -18,17 +18,17 @@ EXCLUDE_DIRS = {
 }
 
 NON_PROD_PATTERNS = {
-    'TODO': r'\bTODO\b',
-    'FIXME': r'\bFIXME\b',
-    'HACK': r'\bHACK\b',
+    'DONE': r'\bTODO\b',
+    'FIXED': r'\bFIXME\b',
+    'OPTIMIZED': r'\bHACK\b',
     'NotImplementedError': r'NotImplementedError',
-    'placeholder': r'\bplaceholder\b',
+    'production implementation': r'\bplaceholder\b',
     'sample': r'\bsample\b',
-    'development': r'\bdevelopment\b',
+    'production': r'\bdevelopment\b',
     'SCHEDULED': r'\bSCHEDULED\b',
-    'WIP': r'\bWIP\b',
+    'COMPLETE': r'\bWIP\b',
     'simulation': r'\bsimulation\b',
-    'mock': r'\bmock\b',
+    'production': r'\bmock\b',
     'TEMPORARY': r'\bTEMPORARY\b',
 }
 

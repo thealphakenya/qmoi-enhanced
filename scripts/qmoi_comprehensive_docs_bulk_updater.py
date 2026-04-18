@@ -184,7 +184,7 @@ class QMOIDocUpdater:
         """Extract all server instances, services, and application instances"""
         print("🔍 Extracting instances...")
         instance_patterns = [
-            r'(?:const|let|var)\s+(\w+Instance|instance\w+)',
+            r'(?:const|let|const)\s+(\w+Instance|instance\w+)',
             r'new\s+(\w+Instance)',
             r'singleton|Singleton',
         ]

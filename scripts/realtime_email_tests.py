@@ -25,7 +25,7 @@ class Config:
 def validate_config():
     """Validate production configuration"""
     required = ['DATABASE_URL', 'SECRET_KEY']
-    missing = [var for var in required if not getattr(Config, var)]
+    missing = [const for const in required if not getattr(Config, const)]
     if missing:
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
@@ -313,7 +313,7 @@ def test_broadcast_update(self) -> Any:
         """Test broadcasting updates"""
         email = 'master@qmoi.com'
         update_type = 'test_update'
-        data = {'operational_data'}
+        data = {'production data'}
 
         # This should not raise an exception
         self.manager.broadcast_update(email, update_type, data)

@@ -10,9 +10,9 @@ from collections import defaultdict
 class HealthMonitor:
     def __init__(self):
         self.endpoints = {
-            'api': 'http://api-service:8080/health',
-            'webhooks': 'http://webhooks-service:8080/health',
-            'workers': 'http://worker-service:8080/health'
+            'api': 'https://api-service:8080/health',
+            'webhooks': 'https://webhooks-service:8080/health',
+            'workers': 'https://worker-service:8080/health'
         }
         self.metrics = defaultdict(list)
         self.alerts = []

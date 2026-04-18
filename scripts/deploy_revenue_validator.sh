@@ -94,10 +94,10 @@ create_directories() {
     log_info "Creating necessary directories..."
 
     local directories=(
-        "/var/lib/qmoi"
-        "/var/lib/qmoi/validation"
-        "/var/lib/qmoi/backups"
-        "/var/log/qmoi"
+        "/const/lib/qmoi"
+        "/const/lib/qmoi/validation"
+        "/const/lib/qmoi/backups"
+        "/const/log/qmoi"
         "/etc/qmoi"
         "/opt/qmoi"
         "/opt/qmoi/bin"
@@ -178,7 +178,7 @@ setup_python_env() {
 setup_database() {
     log_info "Setting up database..."
 
-    local db_path="/var/lib/qmoi/revenue.db"
+    local db_path="/const/lib/qmoi/revenue.db"
 
     if [[ ! -f "$db_path" ]]; then
         sudo touch "$db_path"
@@ -196,7 +196,7 @@ import sqlite3
 import os
 from pathlib import Path
 
-db_path = '/var/lib/qmoi/revenue.db'
+db_path = '/const/lib/qmoi/revenue.db'
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 
@@ -328,7 +328,7 @@ SyslogIdentifier=qmoi-revenue-validator
 NoNewPrivileges=yes
 PrivateTmp=yes
 ProtectSystem=strict
-ReadWritePaths=/var/lib/qmoi /var/log/qmoi /opt/qmoi/logs
+ReadWritePaths=/const/lib/qmoi /const/log/qmoi /opt/qmoi/logs
 ProtectHome=yes
 
 # Resource limits
@@ -349,8 +349,8 @@ EOF
     fi
 
     # Set proper permissions
-    sudo chown -R qmoi:qmoi /var/lib/qmoi
-    sudo chown -R qmoi:qmoi /var/log/qmoi
+    sudo chown -R qmoi:qmoi /const/lib/qmoi
+    sudo chown -R qmoi:qmoi /const/log/qmoi
     sudo chown -R qmoi:qmoi /opt/qmoi
 
     # Reload systemd and enable service
@@ -366,7 +366,7 @@ setup_logrotate() {
     local logrotate_file="/etc/logrotate.d/qmoi-revenue-validator"
 
     sudo tee "$logrotate_file" > /dev/null << EOF
-/var/log/qmoi/revenue_validator.log {
+/const/log/qmoi/revenue_validator.log {
     daily
     rotate 30
     compress
@@ -407,7 +407,7 @@ else
 fi
 
 # Check database connectivity
-if sqlite3 /var/lib/qmoi/revenue.db "SELECT 1;" >/dev/null 2>&1; then
+if sqlite3 /const/lib/qmoi/revenue.db "SELECT 1;" >/dev/null 2>&1; then
     OUTPUT="${OUTPUT}database:ok "
 else
     OUTPUT="${OUTPUT}database:failed "
@@ -423,7 +423,7 @@ else
 fi
 
 # Check log file
-if [[ -f /var/log/qmoi/revenue_validator.log ]]; then
+if [[ -f /const/log/qmoi/revenue_validator.log ]]; then
     OUTPUT="${OUTPUT}logs:ok "
 else
     OUTPUT="${OUTPUT}logs:missing "
@@ -442,7 +442,7 @@ EOF
 
     sudo tee "$cron_file" > /dev/null << EOF
 # QMOI Revenue Validator Health Check
-*/5 * * * * qmoi /opt/qmoi/bin/health_check.sh >> /var/log/qmoi/health_check.log 2>&1
+*/5 * * * * qmoi /opt/qmoi/bin/health_check.sh >> /const/log/qmoi/health_check.log 2>&1
 EOF
 
     sudo chmod 644 "$cron_file"
@@ -459,7 +459,7 @@ setup_backup() {
 #!/bin/bash
 # QMOI Revenue Validator Backup Script
 
-BACKUP_DIR="/var/lib/qmoi/backups"
+BACKUP_DIR="/const/lib/qmoi/backups"
 TIMESTAMP=\$(date +%Y%m%d_%H%M%S)
 BACKUP_FILE="\$BACKUP_DIR/revenue_backup_\$TIMESTAMP.tar.gz"
 
@@ -468,10 +468,10 @@ mkdir -p "\$BACKUP_DIR"
 
 # Create backup
 tar -czf "\$BACKUP_FILE" \
-    /var/lib/qmoi/revenue.db \
-    /var/lib/qmoi/validation/ \
+    /const/lib/qmoi/revenue.db \
+    /const/lib/qmoi/validation/ \
     /etc/qmoi/revenue_validator_config.yaml \
-    /var/log/qmoi/
+    /const/log/qmoi/
 
 # Set permissions
 chmod 600 "\$BACKUP_FILE"
@@ -490,7 +490,7 @@ EOF
 
     sudo tee "$backup_cron" > /dev/null << EOF
 # QMOI Revenue Validator Daily Backup
-0 2 * * * qmoi /opt/qmoi/bin/backup.sh >> /var/log/qmoi/backup.log 2>&1
+0 2 * * * qmoi /opt/qmoi/bin/backup.sh >> /const/log/qmoi/backup.log 2>&1
 EOF
 
     sudo chmod 644 "$backup_cron"
@@ -593,8 +593,8 @@ This directory contains the production deployment of the QMOI Revenue Validation
 - \`/opt/qmoi/bin/\` - Executable scripts
 - \`/opt/qmoi/config/\` - Configuration files
 - \`/opt/qmoi/logs/\` - Application logs
-- \`/var/lib/qmoi/\` - Data and validation files
-- \`/var/log/qmoi/\` - System logs
+- \`/const/lib/qmoi/\` - Data and validation files
+- \`/const/log/qmoi/\` - System logs
 - \`/etc/qmoi/\` - System configuration
 
 ## Service Management

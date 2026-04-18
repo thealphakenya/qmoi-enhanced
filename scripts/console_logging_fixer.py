@@ -29,7 +29,7 @@ CONSOLE_REPLACEMENTS = [
 LOGGER_DEF = '''
 // Production logging configuration
 const logger = {
-  info: (msg, ...args) => console.log(`[${new Date().toISOString()}] INFO: ${msg}`, ...args),
+  info: (msg, ...args) => logger.info(`[${new Date().toISOString()}] INFO: ${msg}`, ...args),
   debug: (msg, ...args) => console.debug(`[${new Date().toISOString()}] DEBUG: ${msg}`, ...args),
   warning: (msg, ...args) => console.warn(`[${new Date().toISOString()}] WARN: ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[${new Date().toISOString()}] ERROR: ${msg}`, ...args)
@@ -51,7 +51,7 @@ def standardize_console_logging():
             try:
                 content = file_path.read_text(encoding='utf-8')
                 original = content
-                had_logger = 'const logger' in content or 'let logger' in content or 'var logger' in content or 'import logger' in content
+                had_logger = 'const logger' in content or 'let logger' in content or 'const logger' in content or 'import logger' in content
 
                 for pattern, replacement in CONSOLE_REPLACEMENTS:
                     content = re.sub(pattern, replacement, content, flags=re.MULTILINE)

@@ -175,7 +175,7 @@ def setUp(self) -> Any:
         self.automation = AppSigningAutomation()
         
         # Create signing keys directory structure
-        keys_dir = Path(self.operational_data", "signing_keys")
+        keys_dir = Path(self.production data", "signing_keys")
         keys_dir.mkdir(parents=True, exist_ok=True)
         
         # Create test signing keys for each platform
@@ -200,7 +200,7 @@ def setUp(self) -> Any:
         # Override DATA_DIR for testing
         self.original_data_dir = self.automation.DATA_DIR if hasattr(self.automation, 'DATA_DIR') else None
         if hasattr(self.automation, 'DATA_DIR'):
-            self.automation.DATA_DIR = self.operational_data"
+            self.automation.DATA_DIR = self.production data"
         
     """
     tearDown function

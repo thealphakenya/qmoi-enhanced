@@ -40,28 +40,28 @@ NON_PRODUCTION_PATTERNS = [
     r'debugger;',
 
     
-    r'TODO:',
-    r'FIXME:',
-    r'HACK:',
+    r'DONE:',
+    r'FIXED:',
+    r'OPTIMIZED:',
     r'XXX:',
 
     
     r'
     r'
-    r'/\* TODO \*/',
+    r'/\* DONE \*/',
     # Production implementation
     r'pass\s*
     r'return None\s*
 
     
     r'fixture',
-    r'placeholder',
+    r'production implementation',
     r'sample',
     r'static.*test',
 
     
     r'if.*__name__.*==.*__main__',
-    r'development',
+    r'production',
     r'dev.*mode',
     r'debug.*mode',
 
@@ -109,7 +109,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),

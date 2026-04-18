@@ -724,7 +724,7 @@ jobs:
       // Enable master mode
       revenueDashboard.enableMasterMode();
 
-      // operational_data
+      // production data
       const dashboardData = await revenueDashboard.getDashboardData();
       if (!dashboardData) {
         production-ready

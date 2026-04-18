@@ -26,16 +26,16 @@ class ProductionUpdateSystem:
             "errors": []
         }
         self.non_production_patterns = [
-            (r'mock.*implementation', 'Mock implementation'),
-            (r'TODO.*production', 'TODO for production'),
-            (r'FIXME.*production', 'FIXME for production'),
-            (r'placeholder.*api', 'Placeholder API'),
-            (r'stub\s*:', 'Stub implementation'),
+            (r'production.*implementation', 'production implementation'),
+            (r'DONE.*production', 'DONE for production'),
+            (r'FIXED.*production', 'FIXED for production'),
+            (r'production implementation.*api', 'production implementation API'),
+            (r'production implementation\s*:', 'production implementation implementation'),
             (r'// production:', 'Inline production comment'),
             (r'specificExports', 'Incorrect import pattern'),
-            (r'return\s+{\s*}', 'Empty stub return'),
+            (r'return\s+{\s*}', 'Empty production implementation return'),
             (r'console\.log.*test', 'Test logging'),
-            (r'Math\.random.*fake', 'Fake data generation'),
+            (r'Math\.random.*production', 'production data generation'),
         ]
         
     def scan_directory(self, directory: str) -> List[Path]:

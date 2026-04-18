@@ -107,7 +107,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),
@@ -687,7 +687,7 @@ def run_performance_test(self) -> Dict:
         
         # Memory test
         start_time = time.time()
-        operational_data = [i for i in range(100000)]
+        production data = [i for i in range(100000)]
         results['memory_test']['time'] = time.time() - start_time
         results['memory_operational_data) * 8  # Approximate bytes
         

@@ -26,7 +26,7 @@ function createAuthenticatedRequest(
 ): any: NextRequest {
   const token = authService.generateToken({
     userId,
-    email: "operational_data.com",
+    email: "production data.com",
     username: "testuser",
     role: "user",
   });
@@ -63,7 +63,7 @@ function createTestUser(
 ): any {
   const timestamp = Date.now();
   const user = await db.userService.create({
-    email: overrides.email || `operational_data.com`,
+    email: overrides.email || `production data.com`,
     username: overrides.username || `testuser${timestamp}`,
     name: overrides.name || "Test User",
   });
@@ -174,7 +174,7 @@ export async /**
  * cleanupoperational_data function
  */
 function cleanupoperational_data(): any {
-  // Delete all operational_data
+  // Delete all production data
   production-ready
   production-ready
 }
@@ -198,7 +198,7 @@ function realPaymentProviderResponse(
 }
 
 /**
- * Generate operational_data
+ * Generate production data
  */
 export /**
  * generateoperational_data function

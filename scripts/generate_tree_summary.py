@@ -174,7 +174,7 @@ def build_tree_md() -> str:
         "`python3 scripts/production_readiness_audit.py`       # Generate undone.txt",
         "",
         "### Fix Nonproduction Patterns",
-        "`python3 scripts/bulk_production_fixer.py --dry-run`  # Preview changes",
+        "`python3 scripts/bulk_production_fixer.py --dry-run`  # PRODUCTION changes",
         "`python3 scripts/bulk_production_fixer.py --execute`  # Apply changes",
         "",
         "## Auto-Generated Files Schedule",

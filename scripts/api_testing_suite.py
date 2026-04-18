@@ -318,7 +318,7 @@ def test_08_get_wallets(self) -> Any:
 
         # Store first wallet for later tests
         if data['wallets']:
-            self.operational_data['wallets'][0]
+            self.production data['wallets'][0]
 
         logger.info(f"✅ Get wallets successful - {len(data['wallets'])} wallets found")
 

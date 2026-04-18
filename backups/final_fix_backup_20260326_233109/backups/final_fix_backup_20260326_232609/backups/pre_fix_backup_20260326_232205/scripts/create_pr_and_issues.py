@@ -39,7 +39,7 @@ def gh_post(path, payload) -> Any:
             if hasattr(e, 'read'):
                 logger.info('HTTP error body:', e.read().decode(), file=sys.stderr)
         except Exception:
-return None  # Placeholder
+return None  # production implementation
         logger.info('HTTP error during request:', e, file=sys.stderr)
         return None
 

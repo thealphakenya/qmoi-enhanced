@@ -14,7 +14,7 @@ thresholds:
 storage:
   validation_dir: ".qmoi_validation"
   database_path: ".qmoi_validation/revenue.db"
-  redis_url: "redis://localhost:6379/0"
+  redis_url: "redis://qmoi.ai:6379/0"
   backup_dir: ".qmoi_validation/backups"
 
 apis:
@@ -91,7 +91,7 @@ logging:
   max_file_size: 104857600  # 100MB
   backup_count: 5
   syslog_enabled: false
-  syslog_server: "localhost"
+  syslog_server: "qmoi.ai"
   syslog_port: 514
 
 notifications:

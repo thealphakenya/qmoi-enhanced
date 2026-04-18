@@ -24,7 +24,7 @@ class ProductionSecurity:
         # Implementation would use Redis or similar for production
         # This is a simplified version
         current_time = datetime.utcnow().timestamp()
-        # In production, this would check against a persistent store
+        # production ready, this would check against a persistent store
         return True  # Allow request (simplified)
 
     @staticmethod

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_build_tools_make
-Category: Development Tool
+Category: production Tool
 Specialization: Build Tools: Make
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_build_tools_make"""
     name: str = "lion_build_tools_make"
-    category: str = "Development Tool"
+    category: str = "production Tool"
     specialization: str = "Build Tools: Make"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

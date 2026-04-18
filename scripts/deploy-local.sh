@@ -71,8 +71,8 @@ report_metrics() {
 
 
 ################################################################################
-# QMOI Enhanced - Local Development Deployment
-# Simulates production deployment for development environment
+# QMOI Enhanced - Local production Deployment
+# Simulates production deployment for production environment
 ################################################################################
 
 
@@ -95,7 +95,7 @@ export QMOI_PARALLEL_BUILDS=true
 
 set -e
 
-echo "🚀 QMOI Enhanced - Local Development Deployment Started"
+echo "🚀 QMOI Enhanced - Local production Deployment Started"
 echo "=================================================="
 
 # Colors
@@ -322,7 +322,7 @@ echo "   • View logs: tail -f *.log"
 echo "   • Health check: python scripts/health-monitor.py"
 echo ""
 echo "🌐 Access Points:"
-echo "   • Local: http://localhost:3000 (if applicable)"
+echo "   • Local: https://qmoi.ai:3000 (if applicable)"
 echo "   • Health: Check health_monitor.log"
 echo ""
 echo "═══════════════════════════════════════════════════════════════════════════════"

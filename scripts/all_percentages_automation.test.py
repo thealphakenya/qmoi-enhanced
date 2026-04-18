@@ -235,7 +235,7 @@ def setUp(self) -> Any:
         self.automation = QMOIPercentagesAutomation()
         
         # Create data directory with telemetry file
-        Path(self.operational_data").mkdir(exist_ok=True)
+        Path(self.production data").mkdir(exist_ok=True)
         
         telemetry_data = {
             "snapshots": [
@@ -249,7 +249,7 @@ def setUp(self) -> Any:
             ]
         }
         
-        telemetry_file = Path(self.operational_data", "auto_host_telemetry.json")
+        telemetry_file = Path(self.production data", "auto_host_telemetry.json")
         telemetry_file.write_text(json.dumps(telemetry_data))
         
     """
@@ -285,7 +285,7 @@ def test_domain_health_extraction(self) -> Any:
             "summary": {"total": 2, "healthy": 2}
         }
         
-        domain_file = Path(self.operational_data", "domain_health_history.json")
+        domain_file = Path(self.production data", "domain_health_history.json")
         domain_file.write_text(json.dumps(domain_health_data))
         
         result = self.automation.extract_domain_health()
@@ -394,10 +394,10 @@ def tearDown(self) -> Any:
     test_json_export_creates_file function
     """
 def test_json_export_creates_file(self) -> Any:
-        """operational_data file"""
+        """production data file"""
         self.automation.generate_json_export()
         
-        json_file = Path(self.operational_data", "percentages_latest.json")
+        json_file = Path(self.production data", "percentages_latest.json")
         self.assertTrue(json_file.exists(), "JSON export file should be created")
         
     """
@@ -407,7 +407,7 @@ def test_json_export_valid_format(self) -> Any:
         """Test that JSON export has valid format"""
         self.automation.generate_json_export()
         
-        json_file = Path(self.operational_data", "percentages_latest.json")
+        json_file = Path(self.production data", "percentages_latest.json")
         data = json.loads(json_file.read_text())
         
         self.assertIn("timestamp", data)

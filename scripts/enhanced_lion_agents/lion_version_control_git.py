@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_version_control_git
-Category: Development Tool
+Category: production Tool
 Specialization: Version Control: Git
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_version_control_git"""
     name: str = "lion_version_control_git"
-    category: str = "Development Tool"
+    category: str = "production Tool"
     specialization: str = "Version Control: Git"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

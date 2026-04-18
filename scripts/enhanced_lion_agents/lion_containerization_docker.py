@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_containerization_docker
-Category: Development Tool
+Category: production Tool
 Specialization: Containerization: Docker
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_containerization_docker"""
     name: str = "lion_containerization_docker"
-    category: str = "Development Tool"
+    category: str = "production Tool"
     specialization: str = "Containerization: Docker"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

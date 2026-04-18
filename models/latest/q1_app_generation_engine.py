@@ -64,7 +64,7 @@ def health():
     return jsonify({"status": "healthy", "timestamp": datetime.utcnow().isoformat()})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(DEBUG = false)
 """,
             "react_component": """
 import React, { useState, useEffect } from 'react';
@@ -224,7 +224,7 @@ INSERT INTO items (name, description) VALUES
 ('{spec.name} Item 1', 'Sample item'),
 ('{spec.name} Item 2', 'Another sample item');
 """
-        return "-- Database schema placeholder"
+        return "-- Database schema production implementation"
 
 class BugFixer:
     """Automatically fixes bugs in generated code"""
@@ -322,7 +322,7 @@ class PerformanceOptimizer:
         """Optimize JavaScript code"""
         # Simple optimizations
         optimizations = [
-            (r'var ', r'const '),  # Prefer const
+            (r'const ', r'const '),  # Prefer const
             (r'function\s+(\w+)\s*\(', r'const  = ('),  # Arrow functions
         ]
         
@@ -479,7 +479,7 @@ class QMOIAppGenerationEngine:
                 "image_name": f"{spec.name.lower()}:latest"
             },
             "environment": {
-                "development": {"debug": True},
+                "production": {"debug": True},
                 "production": {"debug": False}
             }
         }

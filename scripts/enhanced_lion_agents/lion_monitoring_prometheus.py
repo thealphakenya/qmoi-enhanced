@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_monitoring_prometheus
-Category: Development Tool
+Category: production Tool
 Specialization: Monitoring: Prometheus
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_monitoring_prometheus"""
     name: str = "lion_monitoring_prometheus"
-    category: str = "Development Tool"
+    category: str = "production Tool"
     specialization: str = "Monitoring: Prometheus"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

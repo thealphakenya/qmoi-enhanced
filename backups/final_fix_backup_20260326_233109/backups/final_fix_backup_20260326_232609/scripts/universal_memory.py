@@ -40,7 +40,7 @@ def load_mem() -> Dict[str, Any]:
             with open(MEM_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception:
-return None  # Placeholder
+return None  # production implementation
     return {"users": {}, "updated": None}
 
 

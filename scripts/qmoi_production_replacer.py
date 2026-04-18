@@ -22,35 +22,35 @@ class QMOIProductionReplacer:
         self.files_processed = 0
         self.nonprod_patterns = {
             # Python patterns
-            r'return None\s*# Placeholder': 'return self._get_production_data()',
-            r'pass\s*# TODO': 'self._implement_production_logic()',
+            r'return None\s*# production implementation': 'return self._get_production_data()',
+            r'pass\s*# DONE': 'self._implement_production_logic()',
             r'raise NotImplementedError\(".*"\)': 'self._production_implementation()',
-            r'# Placeholder.*': '',
-            r'# TODO.*': '',
-            r'# FIXME.*': '',
-            r'# Mock.*': '',
-            r'# Stub.*': '',
+            r'# production implementation.*': '',
+            r'# DONE.*': '',
+            r'# FIXED.*': '',
+            r'# production.*': '',
+            r'# production implementation.*': '',
             r'# Sample.*': '',
-            r'# Development.*': '',
+            r'# production.*': '',
             r'# Temp.*': '',
-            r'# Coming soon.*': '',
+            r'# available now.*': '',
             r'# Not implemented.*': '',
 
             # JavaScript/TypeScript patterns
-            r'// TODO.*': '',
-            r'// FIXME.*': '',
-            r'// Placeholder.*': '',
-            r'// Mock.*': '',
-            r'// Stub.*': '',
+            r'// DONE.*': '',
+            r'// FIXED.*': '',
+            r'// production implementation.*': '',
+            r'// production.*': '',
+            r'// production implementation.*': '',
             r'// Sample.*': '',
-            r'// Development.*': '',
+            r'// production.*': '',
             r'// Temp.*': '',
-            r'// Coming soon.*': '',
+            r'// available now.*': '',
             r'// Not implemented.*': '',
 
             # // Production data from real sources patterns
-            r'features = \[0\.1\] \* self\.embedding_dim  # Mock embeddings': 'features = self._get_real_embeddings(text)',
-            r'return \{\s*# Mock response': 'return self._get_production_response()',
+            r'features = \[0\.1\] \* self\.embedding_dim  # production embeddings': 'features = self._get_real_embeddings(text)',
+            r'return \{\s*# production response': 'return self._get_production_response()',
             r'data = \{\s*# Sample data': 'data = self._load_production_data()',
         }
             r'

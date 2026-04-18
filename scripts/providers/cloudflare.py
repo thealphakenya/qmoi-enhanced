@@ -252,7 +252,7 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
 
     provider = CloudflareProvider()
     plan = provider.plan_dns_change('data.com', {
-        'operational_data.com': {
+        'production data.com': {
             'type': 'A',
             'content': '1.2.3.4',
             'proxied': True

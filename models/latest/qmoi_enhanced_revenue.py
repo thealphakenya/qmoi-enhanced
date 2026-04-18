@@ -4,7 +4,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),
@@ -956,7 +956,7 @@ class AITradingSystem:
 
     def _execute_platform_trades(self, platform_id: str, trader) -> None:
         """Execute trades for specific platform"""
-        # Simplified trading logic - in production would include complex AI models
+        # Simplified trading logic - production ready would include complex AI models
         if ccxt is not None and isinstance(trader, getattr(ccxt, 'Exchange', object)):
             # Crypto trading
             self._execute_crypto_trades(trader, platform_id)
@@ -1418,8 +1418,8 @@ class GlobalRevenueStrategies:
             "Replicate Model Deployment + Scaling",
             "RunPod GPU Cloud + AI Training",
             "Vast.ai GPU Rental + Distributed Computing",
-            "Lambda Labs Cloud GPUs + AI Development",
-            "AI Consulting Services + Strategy Development",
+            "Lambda Labs Cloud GPUs + AI production",
+            "AI Consulting Services + Strategy production",
             "Data Analysis Services + Visualization",
             "Machine Learning Training + Certification",
             "AI Model Optimization + Performance Tuning"
@@ -1513,12 +1513,12 @@ class GlobalRevenueStrategies:
                 "name": "Quantum Computing Services",
                 "platforms": ["IBM Quantum", "Rigetti", "IonQ"],
                 "daily_target": 140000,
-                "description": "Quantum algorithm development, optimization services, and cloud access",
+                "description": "Quantum algorithm production, optimization services, and cloud access",
                 "automation_level": 0.55,
                 "risk_level": "high"
             },
             {
-                "name": "Metaverse Development",
+                "name": "Metaverse production",
                 "platforms": ["Decentraland", "The Sandbox", "Roblox"],
                 "daily_target": 160000,
                 "description": "Virtual world creation, land trading, and metaverse advertising",

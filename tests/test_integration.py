@@ -329,10 +329,10 @@ def test_secure_storage(self, credential_manager) -> Any:
         assert len(key) == 44  # Base64 encoded 32-byte key
         
         # Test encryption
-        operational_data'}
-        encrypted = manager.fernet.encrypt(json.dumps(operational_data).encode())
+        production data'}
+        encrypted = manager.fernet.encrypt(json.dumps(production data).encode())
         decrypted = json.loads(manager.fernet.decrypt(encrypted).decode())
-        assert decrypted == operational_data
+        assert decrypted == production data
 
 """
     main function

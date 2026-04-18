@@ -52,7 +52,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),
@@ -804,22 +804,22 @@ def main() -> Any:
     optimizer = QMOIDataOptimizer()
     
     # data usage
-    operational_data = {
+    production data = {
         "message": "Hello World",
         "timestamp": time.time(),
         "data": [1, 2, 3, 4, 5] * 1000  # Large data for testing
     }
     
     # Test compression
-    compressed = optimizer.compress_data(operational_data)
+    compressed = optimizer.compress_data(production data)
     decompressed = optimizer.decompress_data(compressed)
     
-    logger.info(f"Original size: {len(str(operational_data))}")
+    logger.info(f"Original size: {len(str(production data))}")
     logger.info(f"Compressed size: {len(compressed)}")
-    logger.info(f"Compression ratio: {len(compressed) / len(str(operational_data)):.2f}")
+    logger.info(f"Compression ratio: {len(compressed) / len(str(production data)):.2f}")
     
     # Test caching
-    optimizer.cache_data("operational_data)
+    optimizer.cache_data("production data)
     cached_data = optimizer.get_cached_data("test_key")
     
     logger.info(f"Cached data retrieved: {cached_data is not None}")

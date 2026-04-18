@@ -256,7 +256,7 @@ def check_dmg(self, filepath) -> Any:
                                  capture_output=True, timeout=5)
                     return True
             except:
-return None  # Placeholder
+return None  # production implementation
         self.log(f"  ⚠ Cannot fully verify on non-macOS system", "WARN")
         return True  # Assume OK if header looks reasonable
 

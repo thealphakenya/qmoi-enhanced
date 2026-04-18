@@ -51,7 +51,7 @@ def _log(entry: dict) -> Any:
         LOG_FILE.write_text(json.dumps(data, indent=2), encoding='utf-8')
     except Exception:
         # last-resort: ignore
-return None  # Placeholder
+return None  # production implementation
 """
     billing_allowed function
     """

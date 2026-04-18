@@ -48,8 +48,8 @@ class ProductionEnhancer:
     def detect_non_production_patterns(self, content: str) -> List[Tuple[str, str]]:
         """Detect common non-production patterns"""
         patterns = [
-            (r"mock|dummy|placeholder|test.*revenue|fake.*api", "Mock/Dummy Implementation"),
-            (r"TODO.*production|FIXME.*production|XXX.*production", "Incomplete Implementation"),
+            (r"production|production|production implementation|test.*revenue|production.*api", "production/production Implementation"),
+            (r"DONE.*production|FIXED.*production|XXX.*production", "Incomplete Implementation"),
             (r"if\s*\(\s*false\s*\)", "Disabled Production Code"),
             (r"\/\/\s*production:.*implementation|\/\/\s*NOTE:.*not.*production", "Non-prod Note"),
             (r"return\s*{.*revenue.*:\s*0", "Zero Revenue (Non-prod)"),

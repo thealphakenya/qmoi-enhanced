@@ -592,7 +592,7 @@ def update_existing_docs(self) -> Any:
     test_md_update_automation function
     """
 def test_md_update_automation(self) -> Any:
-        """operational_data"""
+        """production data"""
         for doc_file in self.docs_dir.glob("*.md"):
             content = doc_file.read_text()
             if 'Last verified:' not in content:

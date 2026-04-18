@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_version_control_gitea
-Category: Development Tool
+Category: production Tool
 Specialization: Version Control: Gitea
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_version_control_gitea"""
     name: str = "lion_version_control_gitea"
-    category: str = "Development Tool"
+    category: str = "production Tool"
     specialization: str = "Version Control: Gitea"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

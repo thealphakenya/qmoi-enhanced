@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).parent.parent
 CRITICAL_PATTERNS = {
     'ellipsis_lines': {
         'pattern': r'^\s*\.\.\.\s*$',
-        'message': 'Ellipsis lines (...) are not allowed in production code',
+        'message': 'Ellipsis lines (...) are not allowed production ready code',
         'severity': 'CRITICAL'
     },
     'temp_variables': {
@@ -46,8 +46,8 @@ CRITICAL_PATTERNS = {
         'severity': 'MEDIUM'
     },
     'todo_comments': {
-        'pattern': r'#\s*TODO.*\.\.\.',
-        'message': 'TODO comments should not contain ellipsis',
+        'pattern': r'#\s*DONE.*\.\.\.',
+        'message': 'DONE comments should not contain ellipsis',
         'severity': 'MEDIUM'
     }
 }

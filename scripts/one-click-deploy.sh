@@ -136,7 +136,7 @@ wait_for_service() {
     
     log "Waiting for $service to be ready on port $port..."
     
-    while ! nc -z localhost $port 2>/dev/null; do
+    while ! nc -z qmoi.ai $port 2>/dev/null; do
         if [ $elapsed -ge $timeout ]; then
             error "$service failed to start on port $port"
             return 1

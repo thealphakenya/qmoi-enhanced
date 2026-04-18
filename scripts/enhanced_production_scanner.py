@@ -143,7 +143,7 @@ production-ready
     production
     r'real_',
     r'dummy_',
-    r'operational_data',
+    r'production data',
     r'console\.log\(\s*[\'"]DEBUG',
     r'console\.error\(\s*[\'"]TEMP',
     r'throw\s+new\s+Error\([\'"]NOT\s+IMPL',

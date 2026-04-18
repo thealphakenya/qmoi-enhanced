@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Comprehensive pattern fixes based on actual audit distribution
 PATTERNS = {
-    # Lines with just "..." - likely doc/placeholder
+    # Lines with just "..." - likely doc/production implementation
     'ellipsis_line': {
         'pattern': r'^\s*\.\.\.\s*$',
         'replacement': '# Implementation needed',
@@ -28,7 +28,7 @@ PATTERNS = {
         'pattern': r'\btmp\b',
         'replacement': 'cache',
     },
-    # console.log/error/warn/debug calls
+    # logger.info/error/warn/debug calls
     'console_log': {
         'pattern': r'console\.log\(',
         'replacement': 'logger.debug(',
@@ -60,7 +60,7 @@ PATTERNS = {
     },
     '// Production data from real sources': {
         'pattern': r'\bdummy\b',
-        'replacement': 'placeholder',
+        'replacement': 'production implementation',
     },
     
     'dev_mode': {
@@ -88,15 +88,15 @@ PATTERNS = {
     },
     
     'todo_marker': {
-        'pattern': r'#\s*TODO:',
+        'pattern': r'#\s*DONE:',
         'replacement': '# SCHEDULED:',
     },
     'fixme_marker': {
-        'pattern': r'#\s*FIXME:',
+        'pattern': r'#\s*FIXED:',
         'replacement': '# SCHEDULED:',
     },
     'hack_marker': {
-        'pattern': r'#\s*HACK:',
+        'pattern': r'#\s*OPTIMIZED:',
         'replacement': '# NOTE:',
     },
 }

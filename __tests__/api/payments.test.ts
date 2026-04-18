@@ -18,7 +18,7 @@ production-ready
     // Setup: Hash password and create test user
     const hashedPassword = await authService.hashPassword("Payment@123456");
     const user = await userService.create({
-      email: "payment-operational_data.com",
+      email: "payment-production data.com",
       username: "paymenttest",
       name: "Payment Test User",
       passwordHash: hashedPassword,

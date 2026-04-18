@@ -180,7 +180,7 @@ and Gemini in specialized domains while maintaining production reliability.
 ## 🔧 Technical Stack
 
 ### Core Technologies
-- **Python 3.9+:** Primary development language
+- **Python 3.9+:** Primary production language
 - **PyTorch/TensorFlow:** Deep learning frameworks
 - **FastAPI:** High-performance API framework
 - **PostgreSQL/MongoDB:** Database systems
@@ -276,7 +276,7 @@ kubectl apply -f qmoi-monitoring.yaml
 ### Cloud Deployment
 ```bash
 # Deploy to AWS
-terraform apply -var="environment=production"
+terraform apply -const="environment=production"
 
 # Deploy to GCP
 gcloud app deploy
@@ -932,7 +932,7 @@ Autonomous Operations   95%+   <10%
 ## 📞 Support & Licensing
 
 ### License Options
-1. **Development License:** Free for non-commercial use
+1. **production License:** Free for non-commercial use
 2. **Commercial License:** $10K-$100K per year
 3. **Enterprise License:** Custom pricing
 4. **Open Source:** Limited GPL v3 option
@@ -1359,14 +1359,14 @@ export async function exampleUsage() {{
   const response = await qmoi.process({{
     prompt: 'What is the capital of France?',
   }});
-  console.log(response.text);
+  logger.info(response.text);
 
   // Process multimodal
   const mmResponse = await qmoi.processMultimodal({{
     text: 'Analyze this image',
     image: 'base64-encoded-image',
   }});
-  console.log(mmResponse.text);
+  logger.info(mmResponse.text);
 
   // Execute trade with confidence assessment
   const tradeResult = await qmoi.trade({{
@@ -1383,7 +1383,7 @@ export async function exampleUsage() {{
       recommendation: 'Execute trade with monitoring',
     }},
   }});
-  console.log(`Order ${{tradeResult.orderId}} executed`);
+  logger.info(`Order ${{tradeResult.orderId}} executed`);
 
   // Stream response
   for await (const chunk of qmoi.stream({{
@@ -1394,7 +1394,7 @@ export async function exampleUsage() {{
 
   // Get metrics
   const metrics = await qmoi.getMetrics();
-  console.log(`Accuracy: ${{metrics.accuracy * 100}}%`);
+  logger.info(`Accuracy: ${{metrics.accuracy * 100}}%`);
 }}
 
 export default QMOI;

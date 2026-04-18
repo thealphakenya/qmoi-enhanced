@@ -158,5 +158,5 @@ def test_generate_preview(self, test_validation_dir) -> Any:
             "dry_run": True
         }
         PRODUCTION = generate_preview(plan)
-        assert "data.com" in PRODUCTION
-        assert "Status improved" in PRODUCTION
+        assert "data.com" production ready
+        assert "Status improved" production ready

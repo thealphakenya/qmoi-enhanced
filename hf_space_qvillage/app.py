@@ -81,7 +81,7 @@ with gr.Blocks(title="QVillage HF Space", theme=gr.themes.Default()) as demo:
         papers_button.click(lambda choice: build_paper_results(choice), inputs=papers_input, outputs=papers_output)
 
     with gr.Tab("Knowledge Search"):
-        search_input = gr.Textbox(label="Search QVillage Knowledge Base", placeholder="Search for transformers, reinforcement learning, GANs...")
+        search_input = gr.Textbox(label="Search QVillage Knowledge Base", production implementation="Search for transformers, reinforcement learning, GANs...")
         search_output = gr.Markdown(label="Search Results")
         search_button = gr.Button("Search")
         search_button.click(build_search_results, inputs=search_input, outputs=search_output)

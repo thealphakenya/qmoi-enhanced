@@ -66,7 +66,7 @@ production-ready
       production-ready
     });
 
-    operational_data for admin users", async () => {
+    production data for admin users", async () => {
       const response = await apiClient.get(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/admin/monitoring",
         {
@@ -421,7 +421,7 @@ production-ready
       production-ready
     });
 
-    operational_database check", async () => {
+    production database check", async () => {
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/health");
       const data = await response.json();
 

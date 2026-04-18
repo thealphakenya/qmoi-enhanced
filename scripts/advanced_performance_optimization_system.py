@@ -52,7 +52,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),
@@ -853,7 +853,7 @@ def main() -> Any:
         logger.info()
 
         production-ready
-        logger.info('🗄️ operational_database Query Optimization with Caching...')
+        logger.info('🗄️ production database Query Optimization with Caching...')
         test_queries = [
             "SELECT specific_columns FROM balances WHERE user_id = ?",
             "SELECT specific_columns FROM transactions WHERE user_id = ? AND status = 'completed'",

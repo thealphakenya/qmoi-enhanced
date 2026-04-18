@@ -1,191 +1,257 @@
 # All Tests & Auto-Tests
 
-**Last Updated:** 2026-04-17T02:34:09.172435
-**Total Tests:** 894
-**Test Files:** 183
+**Last Updated:** 2026-04-18T02:32:33+00:00
+**Total Tests:** 250
+**Test Files:** 250
 
 ## Test Files
-
-- cache.test.ts: 46 tests
-- avatar-voice-comprehensive.test.ts: 45 tests
-- device_orchestration_manager.test.py: 33 tests
-- app_signing_automation.test.py: 31 tests
-- platform-evolution.test.ts: 29 tests
-- consciousness-awareness-memory.test.ts: 29 tests
-- realtime_email_tests.py: 26 tests
-- api.test.ts: 26 tests
-- test_qmoi_cross_repo_system.py: 24 tests
-- api_testing_suite.py: 23 tests
-- all_percentages_automation.test.py: 20 tests
-- phase-10-feature-flags.test.ts: 20 tests
-- phase-11-database-auth.test.ts: 18 tests
-- admin.test.ts: 14 tests
-- test_app_enhanced.py: 14 tests
-- test_providers.py: 13 tests
-- wallets.test.ts: 13 tests
-- payments.test.ts: 12 tests
-- test_link_systems.py: 11 tests
-- test_memory_sync.py: 11 tests
-- auth.test.ts: 11 tests
-- email_system_tests.py: 10 tests
-- qmoi-quick-test.py: 10 tests
-- system_integration_test_suite.py: 9 tests
-- advanced_autotest_system.py: 8 tests
-- test_enhancers.py: 8 tests
-- knowledgeEngine.test.ts: 8 tests
-- test_integration.py: 8 tests
-- monitoring.test.ts: 7 tests
-- user-registration.test.ts: 7 tests
-- qmoi-autodev-toggle-generate-state.test.ts: 7 tests
-- api.global-qvs.test.ts: 7 tests
-- test_app_simple.py: 7 tests
-- test_app.py: 6 tests
-- qglobalsim-pwa.test.ts: 6 tests
-- qmoi-automation-autotests.js: 6 tests
-- api.global-links.test.ts: 6 tests
-- api.knowledge.test.ts: 6 tests
-- test_qmoi_local_server.py: 6 tests
-- test_lion_agent.py: 5 tests
-- useQmoiKernel.test.ts: 5 tests
-- api.qi-spaces.test.ts: 5 tests
-- modelRegistry.test.ts: 5 tests
-- qmoi-avatar-voice.test.ts: 5 tests
-- qglobalsim-evolution.test.ts: 5 tests
-- test_billing_guard.py: 5 tests
-- test_notify_on_whatsapp.py: 4 tests
-- qmoi-autodev-research.test.ts: 4 tests
-- qmoi_comprehensive_test.py: 4 tests
-- run_all_tests.py: 4 tests
-- agentService.test.ts: 4 tests
-- run_tests.py: 4 tests
-- auto_host_manager.test.py: 4 tests
-- test-qmoi-master.js: 3 tests
-- qmoi-comprehensive-test.ts: 3 tests
-- test_payments.py: 3 tests
-- api.models.test.ts: 3 tests
-- api.agent.test.ts: 3 tests
-- api.selfTraining.test.ts: 3 tests
-- selfTraining.test.ts: 3 tests
-- api.accountability.test.ts: 3 tests
-- test_adapter_base.py: 3 tests
-- api.global-news.test.ts: 3 tests
-- test_inference_provider.js: 3 tests
-- requireApiKeyTest.ts: 3 tests
-- qmoi_simple_autotest.py: 3 tests
-- vercel-deployment-test.js: 3 tests
-- route_flags_test.ts: 3 tests
-- route_flags_test.js: 3 tests
-- auth_gating_presence_test.ts: 3 tests
-- auth_gating_presence_test.js: 3 tests
-- qmoi-parallel-autotest.js: 3 tests
-- ngrok_access_control.test.ts: 3 tests
-- political_access_control.test.ts: 3 tests
-- political_campaigns.test.ts: 3 tests
-- test-pesapal-verification.ts: 2 tests
-- test-api-connectivity.ts: 2 tests
-- test-real-money-transfer.ts: 2 tests
-- qmoi-hf-test.py: 2 tests
-- integration_test_control_server.py: 2 tests
-- scan_nonproduction_endpoints.test.py: 2 tests
-- test_pay_flow.py: 2 tests
-- comprehensive_test_runner.ts: 2 tests
-- qmoi_self_test.py: 2 tests
-- test_env_secrets.js: 2 tests
-- qmoi-automation-autotest.js: 2 tests
-- test_accessibility.js: 2 tests
-- test_qcity_remote_command.py: 2 tests
-- run_wallet_tests.py: 2 tests
-- test_financial_verification.py: 2 tests
-- qmoi_automation_autotest.py: 2 tests
-- qmoi_simple_autotest.js: 2 tests
-- endpoint_gating_test.js: 2 tests
-- endpoint_gating_test.ts: 2 tests
-- test_link_autoupdater.py: 2 tests
-- generate_revenue_spec.py: 2 tests
-- run_qmoi_test.js: 2 tests
-- run_unit_tests.py: 2 tests
-- test_qmoi_friendship.js: 2 tests
-- test_currency_convert.py: 2 tests
-- test_error_fixing_suite.py: 2 tests
-- test_qcity_audit_log.py: 2 tests
-- pwa_apps.test.ts: 2 tests
-- examples.test.ts: 2 tests
-- ml.test.ts: 2 tests
-- _app_archived.test.ts: 2 tests
-- _pages_archived.test.ts: 2 tests
-- earnvault.test.ts: 2 tests
-- prisma.test.ts: 2 tests
-- hf_space_qvillage.test.ts: 2 tests
-- pages.test.ts: 2 tests
-- services.test.ts: 2 tests
-- k6.test.ts: 2 tests
-- huggingface_space.test.ts: 2 tests
-- routes.test.ts: 2 tests
-- whatsapp-qmoi-bot.test.ts: 2 tests
-- domain-management.test.ts: 2 tests
-- __mocks__.test.ts: 2 tests
-- qmoi-space.test.ts: 2 tests
-- backend.test.ts: 2 tests
-- lib.test.ts: 2 tests
-- hooks.test.ts: 2 tests
-- mobile.test.ts: 2 tests
-- types.test.ts: 2 tests
-- tools.test.ts: 2 tests
-- ssh-backend.test.ts: 2 tests
-- cypress.test.ts: 2 tests
-- qmoi-space-pwa.test.ts: 2 tests
-- src.test.ts: 2 tests
-- qvillage.test.ts: 2 tests
-- ngrok_tunnels.test.ts: 2 tests
-- iterative-improvement-test.js: 1 tests
-- qmoi-test-runner.js: 1 tests
-- test-autodev-enhanced.js: 1 tests
-- qserver-download-tester.py: 1 tests
-- test_link_apply_preview.py: 1 tests
-- qmoi_self_test_runner.js: 1 tests
-- test_auto_watcher.js: 1 tests
-- test_dns_plan_signer.py: 1 tests
-- test_whatsapp_verification.py: 1 tests
-- MasterLinkValidator.test.ts: 1 tests
-- testnet_adapter.test.ts: 1 tests
-- qmoi-model.route.test.ts: 1 tests
-- api.qmoi.chat.test.ts: 1 tests
-- enhanced_scan_nonproduction.test.py: 1 tests
-- requireApiKeyTest.js: 1 tests
-- test_health.py: 1 tests
-- test_task_queue.py: 1 tests
-- test_md_links.py: 1 tests
-- test_adapters.py: 1 tests
-- test_webhooks.py: 1 tests
-- auto_trading.test.js: 1 tests
-- test_qcity_status.py: 1 tests
-- persona.test.ts: 1 tests
-- ci.no-model-selector.test.ts: 1 tests
-- handlers.test.ts: 1 tests
-- test_runner.py: 1 tests
-- test_hf_space_ui.py: 1 tests
-- dashboard-workflow.e2e.test.js: 1 tests
-- auth-bypass.test.ts: 1 tests
-- wallet.test.ts: 1 tests
-- accessibility.test.ts: 1 tests
-- handlers.integration.test.ts: 1 tests
-- qmoi-chat-api.test.ts: 1 tests
-- scan_tests.js: 1 tests
-- scan_all_apps_devices_machines.test.py: 1 tests
-- test_env_setup.py: 1 tests
-- test_qmoi_ai.js: 1 tests
-- test-worker.js: 1 tests
-- test_link_cache.py: 1 tests
-- test_queue_worker_integration.py: 1 tests
-- test_merge_queue_metrics.py: 1 tests
-- test_release_helper.py: 1 tests
-- test_qmoi_memory.py: 1 tests
-- test_queue_worker.py: 1 tests
-- qmoi_ultra_spec_enhancer.py: 1 tests
-- lion_python_testing_nose.py: 1 tests
-- lion_python_testing_unittest.py: 1 tests
-- lion_python_testing_hypothesis.py: 1 tests
-- lion_python_testing_pytest.py: 1 tests
-- lion_performance_load_testing.py: 1 tests
-- lion_security_penetration_testing.py: 1 tests
-- lion_python_testing_tox.py: 1 tests
+./__tests__/AlphaQAISystem.test.tsx
+./__tests__/AutoHealingPlatform.test.tsx
+./__tests__/KnowledgeEngine.test.tsx
+./__tests__/MasterLinkValidator.test.ts
+./__tests__/ModelRegistry.test.tsx
+./__tests__/QMediaPlayer.test.tsx
+./__tests__/SelfTrainingEcosystem.test.tsx
+./__tests__/__mocks__.test.ts
+./__tests__/_app_archived.test.ts
+./__tests__/_pages_archived.test.ts
+./__tests__/agentService.test.ts
+./__tests__/api.accountability.test.ts
+./__tests__/api.agent.test.ts
+./__tests__/api.global-links.test.ts
+./__tests__/api.global-news.test.ts
+./__tests__/api.global-qvs.test.ts
+./__tests__/api.knowledge.test.ts
+./__tests__/api.models.test.ts
+./__tests__/api.qi-spaces.test.ts
+./__tests__/api.qmoi.chat.test.ts
+./__tests__/api.selfTraining.test.ts
+./__tests__/api.test.ts
+./__tests__/api/admin.test.ts
+./__tests__/api/auth.test.ts
+./__tests__/api/monitoring.test.ts
+./__tests__/api/payments.test.ts
+./__tests__/api/qmoi-autodev-research.test.ts
+./__tests__/api/qmoi-autodev-toggle-generate-state.test.ts
+./__tests__/api/qmoi-avatar-voice.test.ts
+./__tests__/api/wallets.test.ts
+./__tests__/avatar-voice-comprehensive.test.ts
+./__tests__/backend.test.ts
+./__tests__/cache/cache.test.ts
+./__tests__/cache/cache.test.ts.ultra_backup
+./__tests__/chatbot.chat.test.tsx
+./__tests__/chatbot.model.test.tsx
+./__tests__/ci.no-model-selector.test.ts
+./__tests__/componentGallery.test.tsx
+./__tests__/components/AvatarSelector.test.tsx
+./__tests__/components/QAvatar.test.tsx
+./__tests__/consciousness-awareness-memory.test.ts
+./__tests__/cypress.test.ts
+./__tests__/domain-management.test.ts
+./__tests__/earnvault.test.ts
+./__tests__/evolution/platform-evolution.test.ts
+./__tests__/examples.test.ts
+./__tests__/hf_space_qvillage.test.ts
+./__tests__/hooks.test.ts
+./__tests__/huggingface_space.test.ts
+./__tests__/integration/user-registration.test.ts
+./__tests__/integration/user-registration.test.ts.ultra_backup
+./__tests__/k6.test.ts
+./__tests__/knowledgeEngine.test.ts
+./__tests__/lib.test.ts
+./__tests__/ml.test.ts
+./__tests__/mobile.test.ts
+./__tests__/modelRegistry.test.ts
+./__tests__/ngrok/ngrok_access_control.test.ts
+./__tests__/ngrok/ngrok_tunnels.test.ts
+./__tests__/pages.test.ts
+./__tests__/persona.integration.test.js
+./__tests__/persona.test.ts
+./__tests__/phase-10-feature-flags.test.ts
+./__tests__/phase-11-database-auth.test.ts
+./__tests__/phase-11-database-auth.test.ts.ultra_backup
+./__tests__/political/political_access_control.test.ts
+./__tests__/political/political_campaigns.test.ts
+./__tests__/prisma.test.ts
+./__tests__/pwa_apps.test.ts
+./__tests__/qglobalsim-evolution.test.ts
+./__tests__/qglobalsim-pwa.test.ts
+./__tests__/qmoi-comprehensive-test.ts
+./__tests__/qmoi-model.route.test.ts
+./__tests__/qmoi-space-pwa.test.ts
+./__tests__/qmoi-space.test.ts
+./__tests__/qvillage.test.ts
+./__tests__/routes.test.ts
+./__tests__/selfTraining.test.ts
+./__tests__/services.test.ts
+./__tests__/settings-panel.memory.test.tsx
+./__tests__/src.test.ts
+./__tests__/ssh-backend.test.ts
+./__tests__/tools.test.ts
+./__tests__/types.test.ts
+./__tests__/utils/test-helpers.ts
+./__tests__/wallet.test.ts
+./__tests__/walletAndDeals.test.tsx
+./__tests__/whatsapp-qmoi-bot.test.ts
+./conftest.py
+./email_system_tests.py
+./hf_space_qvillage/test_app.py
+./iterative-improvement-test.js
+./k6/load-test.js
+./lib/all_download_links_and_app_info_(size,_last_checked,_status)_are_autotested_and_auto_fixed_by_qserver..ts
+./qmoi-test-runner.js
+./qvillage/test_app.py
+./qvillage/test_app_enhanced.py
+./qvillage/test_app_simple.py
+./realtime_email_tests.py
+./run-qmoi-tests.ts
+./scripts/all_percentages_automation.test.py
+./scripts/all_percentages_automation.test.py.ultra_backup
+./scripts/api_testing_suite.py
+./scripts/app_signing_automation.test.py
+./scripts/auto_host_manager.test.py
+./scripts/autotest/advanced_autotest_system.py
+./scripts/autotest/qmoi_automation_autotest.py
+./scripts/autotest/qmoi_simple_autotest.py
+./scripts/check-latest-release.js
+./scripts/continuous_testing.py
+./scripts/device_orchestration_manager.test.py
+./scripts/enhanced_lion_agents/lion_performance_load_testing.py
+./scripts/enhanced_lion_agents/lion_python_testing_hypothesis.py
+./scripts/enhanced_lion_agents/lion_python_testing_nose.py
+./scripts/enhanced_lion_agents/lion_python_testing_pytest.py
+./scripts/enhanced_lion_agents/lion_python_testing_tox.py
+./scripts/enhanced_lion_agents/lion_python_testing_unittest.py
+./scripts/enhanced_lion_agents/lion_security_penetration_testing.py
+./scripts/enhanced_scan_nonproduction.test.py
+./scripts/enhanced_test_runner.py
+./scripts/generate_test_index.py
+./scripts/integration_test_control_server.py
+./scripts/lion_agents/lion_agent_testing.py
+./scripts/qmoi-automation-autotest.js
+./scripts/qmoi-automation-autotests.js
+./scripts/qmoi-download-link-tester.py
+./scripts/qmoi-hf-test.py
+./scripts/qmoi-install-autotest.py
+./scripts/qmoi-parallel-autotest.js
+./scripts/qmoi-quick-test.py
+./scripts/qmoi_comprehensive_test.py
+./scripts/qmoi_self_test.py
+./scripts/qmoi_self_test_runner.js
+./scripts/qmoi_simple_autotest.js
+./scripts/qserver-download-tester.py
+./scripts/realtime_email_tests.py
+./scripts/run_all_tests.py
+./scripts/run_qmoi_test.js
+./scripts/run_tests.py
+./scripts/run_unit_tests.py
+./scripts/scan_all_apps_devices_machines.test.py
+./scripts/scan_nonproduction_endpoints.test.py
+./scripts/scan_tests.js
+./scripts/services/comprehensive_test_runner.ts
+./scripts/system_integration_test_suite.py
+./scripts/test-qmoi-system.js
+./scripts/test-worker.js
+./scripts/test_android_adb.py
+./scripts/test_attachments.py
+./scripts/test_control_server_endpoints.py
+./scripts/test_deals_and_sponsored.py
+./scripts/test_env_setup.py
+./scripts/test_error_fixing_suite.py
+./scripts/test_hf_space_ui.py
+./scripts/test_pay_flow.py
+./scripts/test_payments.py
+./scripts/test_qmoi_ai.js
+./scripts/test_qmoi_autodev.js
+./scripts/test_runner.py
+./scripts/test_stripe_checkout.py
+./scripts/test_wallets.py
+./scripts/test_webhooks.py
+./scripts/test_whatsapp.js
+./scripts/tests/auth_gating_presence_test.js
+./scripts/tests/auth_gating_presence_test.ts
+./scripts/tests/endpoint_gating_test.js
+./scripts/tests/endpoint_gating_test.ts
+./scripts/tests/route_flags_test.js
+./scripts/tests/route_flags_test.ts
+./scripts/tests/test_memory_sync.py
+./scripts/update_autotest_status.py
+./scripts/vercel-deployment-test.js
+./scripts/wallets/run_wallet_tests.py
+./src/App.test.js
+./src/components/q-city/QMoiKernelPanel.integration.test.tsx
+./src/components/q-city/QMoiKernelPanel.test.tsx
+./src/hooks/useQmoiKernel.test.ts
+./src/mocks/handlers.test.ts
+./test-ai-integrations.js
+./test-api-connectivity.ts
+./test-autodev-enhanced.js
+./test-avatar-voice.js
+./test-getHandlers.js
+./test-import.js
+./test-msw-node.js
+./test-msw.js
+./test-pesapal-verification.ts
+./test-qmoi-master.js
+./test-real-money-transfer.ts
+./test_domain_validation.py
+./test_lion_agent.py
+./test_paypal.js
+./test_paypal_adapter.js
+./test_paypal_direct.js
+./test_qmoi_cross_repo_system.py
+./tests/AutoResearcher.test.ts
+./tests/accessibility/accessibility.test.ts
+./tests/api/test_health.py
+./tests/e2e/dashboard-workflow.e2e.test.js
+./tests/e2e/test_e2e_placeholder.py
+./tests/handlers.integration.test.ts
+./tests/integration/adapter-dryrun.test.ts
+./tests/integration/test_ai_integration.py
+./tests/integration/test_error_fixing_integration.py
+./tests/integration/test_financial_verification.py
+./tests/integration/test_inference_provider.js
+./tests/integration/test_qcity_audit_log.py
+./tests/integration/test_qcity_remote_command.py
+./tests/integration/test_qcity_status.py
+./tests/integration/test_session_integration.py
+./tests/integration/test_whatsapp_verification.py
+./tests/md/test_md_links.py
+./tests/payments/test_adapters.py
+./tests/qmoi-chat-api.test.ts
+./tests/scripts/auto_trading.test.js
+./tests/security/auth-bypass.test.ts
+./tests/security/test_env_secrets.js
+./tests/security/test_security_placeholder.py
+./tests/test_adapter_base.py
+./tests/test_billing_guard.py
+./tests/test_currency_convert.py
+./tests/test_dns_plan_signer.py
+./tests/test_enhancers.py
+./tests/test_integration.py
+./tests/test_link_apply_preview.py
+./tests/test_link_autoupdater.py
+./tests/test_link_cache.py
+./tests/test_link_systems.py
+./tests/test_merge_queue_metrics.py
+./tests/test_notify_on_whatsapp.py
+./tests/test_providers.py
+./tests/test_qmoi_friendship.js
+./tests/test_qmoi_local_server.py
+./tests/test_qmoi_memory.py
+./tests/test_queue_worker.py
+./tests/test_queue_worker_integration.py
+./tests/test_release_helper.py
+./tests/test_task_queue.py
+./tests/testnet_adapter.test.ts
+./tests/ui/qmoi_ui_autotest.spec.js
+./tests/unit/test_accessibility.js
+./tests/unit/test_ai_component.py
+./tests/unit/test_auto_watcher.js
+./tests/unit/test_error_fixing.py
+./tests/unit/test_multi_user_session.py
+./tests/unit/test_qi.py
+./tests/wallet.test.ts
+./tmp-inspect.js
+./tools/autotest_runner.py
+./tools/issue_drafts/1069_tests_integration_adapter-dryrun.test.ts.md

@@ -233,7 +233,7 @@ class QMOIConfidenceThresholdSystem:
         """Advanced market sentiment analysis"""
         try:
             # Simulate comprehensive sentiment analysis
-            # In production, this would integrate with:
+            # production ready, this would integrate with:
             # - News APIs (Alpha Vantage, NewsAPI)
             # - Social media sentiment (Twitter, Reddit)
             # - Technical indicators
@@ -518,7 +518,7 @@ class QMOIConfidenceThresholdSystem:
         """AI/ML model prediction confidence"""
         try:
             # Ensemble ML model predictions
-            # In production, this would use trained models
+            # production ready, this would use trained models
             confidence_score = 0.0
 
             # Model 1: LSTM time series (25% weight)

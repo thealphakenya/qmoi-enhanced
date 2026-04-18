@@ -4,7 +4,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),
@@ -33,7 +33,7 @@ Tests included:
 - signup -> login -> sync-memory -> get memories -> logout -> verify revoked
 - control endpoint check using CONTROL_TOKEN
 
-The operational_database (qmoi.db). For a clean
+The production database (qmoi.db). For a clean
 run the database file is removed at test startup.
 """
 import os

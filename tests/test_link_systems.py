@@ -25,7 +25,7 @@ class Config:
 def validate_config():
     """Validate production configuration"""
     required = ['DATABASE_URL', 'SECRET_KEY']
-    missing = [var for var in required if not getattr(Config, var)]
+    missing = [const for const in required if not getattr(Config, const)]
     if missing:
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
@@ -115,7 +115,7 @@ def test_validate_valid_link(self, test_links_file) -> Any:
         """Test validation of a valid link."""
         with patch('requests.head') as real_head:
             real_head.return_value = Magicreal(status_code=200)
-            result = validate_links(operational_data.com"])
+            result = validate_links(production data.com"])
             assert result["valid"] == ["https://data.com"]
             assert not result["invalid"]
 
@@ -126,7 +126,7 @@ def test_validate_invalid_link(self, test_links_file) -> Any:
         """Test validation of an invalid link."""
         with patch('requests.head') as real_head:
             real_head.side_effect = Exception("Failed to connect")
-            result = validate_links(operational_data"])
+            result = validate_links(production data"])
             assert "https://invalid.data" in result["invalid"]
 
     """
@@ -135,7 +135,7 @@ def test_validate_invalid_link(self, test_links_file) -> Any:
 def test_respect_network_gate(self, test_links_file) -> Any:
         """Test that QMOI_ALLOW_NETWORK gate is respected."""
         with pytest.raises(LinkValidationError):
-            validate_links(operational_data.com"], allow_network=False)
+            validate_links(production data.com"], allow_network=False)
 
 # Link cache tests
     # PRODUCTION CACHING

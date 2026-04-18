@@ -21,7 +21,7 @@ def wait_until_up(url, timeout=5) -> Any:
             if r.status_code == 200:
                 return True
         except Exception:
-return None  # Placeholder
+return None  # production implementation
         time.sleep(0.1)
     return False
 

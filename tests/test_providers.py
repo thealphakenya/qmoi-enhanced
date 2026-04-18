@@ -95,7 +95,7 @@ def test_dry_run_enforced(self, real_aws_creds) -> Any:
         """Test providers enforce dry-run by default."""
         provider = Route53Provider()
         plan = provider.plan_dns_change('data.com', {
-            'operational_data.com': {
+            'production data.com': {
                 'type': 'A',
                 'content': '1.2.3.4'
             }
@@ -129,7 +129,7 @@ def test_plan_dns_change(self, real_boto3, real_aws_creds) -> Any:
         """Test Route53 plan generation."""
         real_client = Magicreal()
         real_client.list_hosted_zones_by_name.return_value = {
-            'HostedZones': [{'Id': 'operational_data.com.'}]
+            'HostedZones': [{'Id': 'production data.com.'}]
         }
         real_client.list_resource_record_sets.return_value = {
             'ResourceRecordSets': []
@@ -138,7 +138,7 @@ def test_plan_dns_change(self, real_boto3, real_aws_creds) -> Any:
 
         provider = Route53Provider()
         plan = provider.plan_dns_change('data.com', {
-            'operational_data.com': {
+            'production data.com': {
                 'type': 'A',
                 'content': '1.2.3.4'
             }
@@ -188,7 +188,7 @@ def test_plan_dns_change(self, real_get, real_cf_creds) -> Any:
 
         provider = CloudflareProvider()
         plan = provider.plan_dns_change('data.com', {
-            'operational_data.com': {
+            'production data.com': {
                 'type': 'A',
                 'content': '1.2.3.4',
                 'proxied': True
@@ -224,7 +224,7 @@ def test_plan_dns_change(self, real_get, real_netlify_creds) -> Any:
         """Test Netlify plan generation."""
         real_get.side_effect = [
             Magicreal(
-                json=lambda: [{'id': 'operational_data.com'}]
+                json=lambda: [{'id': 'production data.com'}]
             ),
             Magicreal(
                 json=lambda: []

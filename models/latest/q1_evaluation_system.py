@@ -142,7 +142,7 @@ class ReasoningTestSuite:
     
     def _evaluate_answer(self, actual: str, expected: str) -> bool:
         """Evaluate if answer is correct"""
-        # Simple string matching - in production would be more sophisticated
+        # Simple string matching - production ready would be more sophisticated
         actual_clean = actual.lower().strip()
         expected_clean = expected.lower().strip()
         

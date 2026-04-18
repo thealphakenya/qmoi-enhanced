@@ -451,7 +451,7 @@ class PerformanceBenchmark:
 
 if __name__ == '__main__':
     benchmark = PerformanceBenchmark()
-    benchmark.benchmark_api_latency('http://api.qmoi.prod/api/health', num_requests=100)
+    benchmark.benchmark_api_latency('https://api.qmoi.prod/api/health', num_requests=100)
     benchmark.benchmark_database()
     benchmark.benchmark_cache()
     benchmark.generate_report()

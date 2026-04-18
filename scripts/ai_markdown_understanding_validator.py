@@ -25,7 +25,7 @@ class Config:
 def validate_config():
     """Validate production configuration"""
     required = ['DATABASE_URL', 'SECRET_KEY']
-    missing = [var for var in required if not getattr(Config, var)]
+    missing = [const for const in required if not getattr(Config, const)]
     if missing:
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
@@ -151,7 +151,7 @@ def get_database_connection():
     try:
         import psycopg2
         conn = psycopg2.connect(
-            host=os.getenv('DB_HOST', 'localhost'),
+            host=os.getenv('DB_HOST', 'qmoi.ai'),
             database=os.getenv('DB_NAME', 'qmoi_production'),
             user=os.getenv('DB_USER'),
             password=os.getenv('DB_PASSWORD'),

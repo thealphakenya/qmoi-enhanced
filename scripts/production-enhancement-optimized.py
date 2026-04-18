@@ -111,10 +111,10 @@ def require_master_access(func):
             
             # Replace non-production patterns
             replacements = {
-                r"TODO.*production": "Production implementation complete",
-                r"mock\s*\(.*\)": "real_data()",
+                r"DONE.*production": "Production implementation complete",
+                r"production\s*\(.*\)": "real_data()",
                 r"return\s*\{\s*revenue\s*:\s*0": "return await self.calculate_actual_revenue()",
-                r"\/\/\s*dummy.*\n": "",
+                r"\/\/\s*production.*\n": "",
                 r"console\.log\s*\(\s*['\"].*debug": "logger.info(",
             }
             

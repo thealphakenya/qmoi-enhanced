@@ -423,14 +423,14 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
                 categories["Terminal/Shell"] = 0
             categories["Terminal/Shell"] += 1
     
-    # Generate Development Tools Lions
-    logger.info("Creating Development Tools Lions...")
+    # Generate production Tools Lions
+    logger.info("Creating production Tools Lions...")
     for tool_type, tools in DEVELOPMENT_TOOLS.items():
         for tool in tools:
             name = f"lion_{tool_type}_{tool}"
             template = create_enhanced_lion_template(
                 name=name,
-                category="Development Tool",
+                category="production Tool",
                 specialization=f"{tool_type.replace('_', ' ').title()}: {tool.replace('_', ' ').title()}",
                 features=[
                     "automation",
@@ -447,9 +447,9 @@ async def generate_all_enhanced_lions() -> Dict[str, int]:
             file_path.write_text(template)
             created_count += 1
             
-            if "Development Tool" not in categories:
-                categories["Development Tool"] = 0
-            categories["Development Tool"] += 1
+            if "production Tool" not in categories:
+                categories["production Tool"] = 0
+            categories["production Tool"] += 1
     
     # Generate Framework Lions
     logger.info("Creating Framework Lions...")

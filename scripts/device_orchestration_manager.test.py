@@ -91,7 +91,7 @@ def test_save_prodice_registry_creates_file(self) -> Any:
         self.manager.prodices = test_prodices
         self.manager.save_prodice_registry()
         
-        registry_file = Path(self.operational_data", "prodice_registry.json")
+        registry_file = Path(self.production data", "prodice_registry.json")
         self.assertTrue(registry_file.exists(), "prodice registry file should be created")
         
     """

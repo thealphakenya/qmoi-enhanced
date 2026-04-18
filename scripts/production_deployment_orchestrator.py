@@ -144,8 +144,8 @@ log_info "✅ All services rolled out successfully"
 # Phase 6: Health checks
 log_info "Phase 6: Running health checks..."
 sleep 10
-curl -f http://api-service:8080/health || log_error "API health check failed"
-curl -f http://webhooks-service:8080/health || log_error "Webhooks health check failed"
+curl -f https://api-service:8080/health || log_error "API health check failed"
+curl -f https://webhooks-service:8080/health || log_error "Webhooks health check failed"
 log_info "✅ All health checks passed"
 
 # Phase 7: Smoke tests
@@ -331,9 +331,9 @@ from collections import defaultdict
 class HealthMonitor:
     def __init__(self):
         self.endpoints = {
-            'api': 'http://api-service:8080/health',
-            'webhooks': 'http://webhooks-service:8080/health',
-            'workers': 'http://worker-service:8080/health'
+            'api': 'https://api-service:8080/health',
+            'webhooks': 'https://webhooks-service:8080/health',
+            'workers': 'https://worker-service:8080/health'
         }
         self.metrics = defaultdict(list)
         self.alerts = []

@@ -34,7 +34,7 @@ production-ready
 
   production-ready
     const timestamp = Date.now();
-    const email = `operational_data.com`;
+    const email = `production data.com`;
     const username = `testuser${timestamp}`;
     const password = "SecurePass123!@#";
 
@@ -97,7 +97,7 @@ production-ready
 
   production-ready
     // Setup: Register first
-    const email = `login-operational_data.com`;
+    const email = `login-production data.com`;
     const password = "SecurePass123!@#";
 
     cy.visit("https://qmoi.ai:3000");
@@ -126,7 +126,7 @@ production-ready
     cy.visit("https://qmoi.ai:3000");
     // Login first
     cy.get('[data-testid="login-button"]').click();
-    cy.get('input[name="email"]').type("operational_data.com");
+    cy.get('input[name="email"]').type("production data.com");
     cy.get('input[name="password"]').type("SecurePass123!@#");
     cy.get('button[type="submit"]').click();
     cy.url().should("include", "/dashboard");
@@ -169,7 +169,7 @@ production-ready
     cy.visit("https://qmoi.ai:3000");
     // Login
     cy.get('[data-testid="login-button"]').click();
-    cy.get('input[name="email"]').type("operational_data.com");
+    cy.get('input[name="email"]').type("production data.com");
     cy.get('input[name="password"]').type("SecurePass123!@#");
     cy.get('button[type="submit"]').click();
   });
@@ -217,7 +217,7 @@ production-ready
   production-ready
     cy.visit("https://qmoi.ai:3000");
     cy.contains("Login").click();
-    cy.get('input[name="email"]').type("operational_data.com");
+    cy.get('input[name="email"]').type("production data.com");
     cy.get('input[name="password"]').type("SecurePass123!@#");
     cy.get('button[type="submit"]').click();
 
@@ -233,7 +233,7 @@ production-ready
   production-ready
     cy.visit("https://qmoi.ai:3000");
     cy.contains("Login").click();
-    cy.get('input[name="email"]').type("operational_data.com");
+    cy.get('input[name="email"]').type("production data.com");
     cy.get('input[name="password"]').type("SecurePass123!@#");
     cy.get('button[type="submit"]').click();
 

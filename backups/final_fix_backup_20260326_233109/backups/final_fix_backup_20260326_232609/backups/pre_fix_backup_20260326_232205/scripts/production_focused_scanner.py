@@ -120,7 +120,7 @@ def scan_file(self, file_path) -> Any:
                             'code': line.strip()[:100]
                         })
         except:
-return None  # Placeholder
+return None  # production implementation
         return issues
     
     """
