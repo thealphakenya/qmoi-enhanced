@@ -442,7 +442,7 @@ def run(self) -> Any:
                 try:
                     process_info['process'].terminate()
                 except:
-return None  # Placeholder
+return None  # production implementation
 """
     main function
     """

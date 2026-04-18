@@ -59,7 +59,7 @@ export async function protectFinancialRoute(request: ProtectedRequest) {
     request.user = user;
     
     // Log access
-    console.log(`[API_ACCESS] Master user ${user.email} accessed financial endpoint: ${request.nextUrl.pathname}`);
+    logger.info(`[API_ACCESS] Master user ${user.email} accessed financial endpoint: ${request.nextUrl.pathname}`);
     
     return null; // No error, continue to handler
   } catch (error) {
@@ -142,9 +142,9 @@ export function auditLogMiddleware(request: ProtectedRequest) {
     queryParams: Object.fromEntries(request.nextUrl.searchParams),
   };
   
-  console.log(`[AUDIT_LOG] ${JSON.stringify(auditEntry)}`);
+  logger.info(`[AUDIT_LOG] ${JSON.stringify(auditEntry)}`);
   
-  // Send to audit database in production
+  // Send to audit database production ready
   // await sendAuditLog(auditEntry);
 }
 

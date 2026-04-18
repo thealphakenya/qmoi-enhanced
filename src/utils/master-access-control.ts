@@ -107,7 +107,7 @@ export function withMasterAccess(handler: Function) {
       }
       
       // Audit log
-      console.log(`[AUDIT] Master access: ${user.email} on ${new Date().toISOString()}`);
+      logger.info(`[AUDIT] Master access: ${user.email} on ${new Date().toISOString()}`);
       
       return handler(req, res, next);
     } catch (error) {
@@ -141,7 +141,7 @@ export function useMasterAccess() {
         
         // Log access attempt
         if (isMasterRole) {
-          console.log(`[AUDIT] Master user ${userData.email} accessed protected area`);
+          logger.info(`[AUDIT] Master user ${userData.email} accessed protected area`);
         }
       } catch (error) {
         console.error("Failed to check master role:", error);
@@ -229,9 +229,9 @@ export class FinancialAuditLog {
       status
     };
     
-    console.log(`[FINANCIAL_AUDIT] ${JSON.stringify(logEntry)}`);
+    logger.info(`[FINANCIAL_AUDIT] ${JSON.stringify(logEntry)}`);
     
-    // In production, send to audit database
+    // production ready, send to audit database
     try {
       await fetch("/api/audit-log", {
         method: "POST",

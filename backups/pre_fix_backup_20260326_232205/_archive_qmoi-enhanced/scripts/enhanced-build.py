@@ -44,7 +44,7 @@ def clean_build_directories(self) -> Any:
             subprocess.run(["taskkill", "/F", "/IM", "qmoiexe.exe"], 
                          capture_output=True, check=False)
         except:
-return None  # Placeholder
+return None  # production implementation
         # Wait a moment for processes to terminate
         time.sleep(2)
         

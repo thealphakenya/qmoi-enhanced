@@ -375,14 +375,14 @@ export async function exampleUsage() {
   const response = await qmoi.process({
     prompt: 'What is the capital of France?',
   });
-  console.log(response.text);
+  logger.info(response.text);
 
   // Process multimodal
   const mmResponse = await qmoi.processMultimodal({
     text: 'Analyze this image',
     image: 'base64-encoded-image',
   });
-  console.log(mmResponse.text);
+  logger.info(mmResponse.text);
 
   // Execute trade with confidence assessment
   const tradeResult = await qmoi.trade({
@@ -399,7 +399,7 @@ export async function exampleUsage() {
       recommendation: 'Execute trade with monitoring',
     },
   });
-  console.log(`Order ${tradeResult.orderId} executed`);
+  logger.info(`Order ${tradeResult.orderId} executed`);
 
   // Stream response
   for await (const chunk of qmoi.stream({
@@ -410,7 +410,7 @@ export async function exampleUsage() {
 
   // Get metrics
   const metrics = await qmoi.getMetrics();
-  console.log(`Accuracy: ${metrics.accuracy * 100}%`);
+  logger.info(`Accuracy: ${metrics.accuracy * 100}%`);
 }
 
 export default QMOI;

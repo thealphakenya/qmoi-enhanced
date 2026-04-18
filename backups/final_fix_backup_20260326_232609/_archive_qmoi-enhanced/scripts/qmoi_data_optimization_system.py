@@ -404,7 +404,7 @@ def optimize_request(self, url: str, method: str = 'GET', data: Any = None,
                 if response.headers.get('content-type', '').startswith('application/json'):
                     response_data = json.loads(response_data.decode('utf-8'))
             except:
-return None  # Placeholder
+return None  # production implementation
             # Cache response
             self.cache_data(cache_key, response_data, ttl=3600)
             

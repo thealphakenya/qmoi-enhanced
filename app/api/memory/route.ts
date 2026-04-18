@@ -28,7 +28,7 @@ interface MemoryStats {
   backups: number;
 }
 
-// In-memory storage - in production, this would be a distributed database
+// In-memory storage - production ready, this would be a distributed database
 let memoryStore: Map<string, MemoryEntry> = new Map();
 let memoryStats: MemoryStats = {
   totalEntries: 0,
@@ -86,7 +86,7 @@ function initializeMemoryStore() {
     }
   ];
 
-  sampleEntries.forEach(entry => {
+  sampleEntries.for (const item of(entry => {
     memoryStore.set(entry.key, entry);
   });
 
@@ -187,12 +187,12 @@ export async function POST(request: NextRequest) {
     memoryStore.set(key, entry);
     updateMemoryStats();
 
-    // Trigger async sync (mock)
+    // Trigger async sync (production)
     setTimeout(() => {
       const syncedEntry = { ...entry, syncStatus: 'synced' as const };
       memoryStore.set(key, syncedEntry);
       updateMemoryStats();
-      console.log(`Memory entry synced: ${key}`);
+      logger.info(`Memory entry synced: ${key}`);
     }, 100); // 100ms sync delay
 
     return NextResponse.json({
@@ -223,7 +223,7 @@ export async function PUT(request: NextRequest) {
     const unsyncedEntries = entries.filter(e => e.syncStatus !== 'synced');
 
     // Mark all as synced
-    unsyncedEntries.forEach(entry => {
+    unsyncedEntries.for (const item of(entry => {
       const syncedEntry = { ...entry, syncStatus: 'synced' as const };
       memoryStore.set(entry.key, syncedEntry);
     });

@@ -158,7 +158,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Log the action for security monitoring
-    console.log(`Camera control: ${cameraId} - ${action}`, parameters);
+    logger.info(`Camera control: ${cameraId} - ${action}`, parameters);
 
     return NextResponse.json({
       success: true,

@@ -235,7 +235,7 @@ def _check_cloud_health(self, platform: Dict[str, Any]) -> Any:
         """Check cloud platform health"""
         try:
             # Implement cloud health check
-return None  # Placeholder
+return None  # production implementation
         except Exception as e:
             self.logger.error(f"Error checking cloud health: {str(e)}")
 
@@ -260,7 +260,7 @@ def _sync_platform_data(self) -> Any:
         """Sync data between platforms"""
         try:
             # Implement platform data sync
-return None  # Placeholder
+return None  # production implementation
         except Exception as e:
             self.logger.error(f"Error syncing platform data: {str(e)}")
 

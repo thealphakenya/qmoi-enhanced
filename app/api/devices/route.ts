@@ -192,7 +192,7 @@ export async function POST(request: NextRequest) {
     };
 
     // Log the action
-    console.log(`Device control: ${deviceId} - ${action}`, parameters);
+    logger.info(`Device control: ${deviceId} - ${action}`, parameters);
 
     return NextResponse.json({
       success: true,

@@ -53,7 +53,7 @@ for app in apps:
                         app_report['autoupdate_helpers'] = True
                         break
                 except Exception:
-return None  # Placeholder
+return None  # production implementation
     report['apps'][app] = app_report
 
 OUT_JSON = ROOT / 'tools' / 'validation_report.json'

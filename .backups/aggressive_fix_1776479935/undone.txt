@@ -1,0 +1,28 @@
+# NON-PRODUCTION IMPLEMENTATIONS TRACKER
+# Generated: 2026-04-18T02:42:16.890870
+# Workspace: /workspaces/qmoi-enhanced
+
+## SUMMARY
+
+| Marker | Count |
+|--------|-------|
+| \bPLACEHOLDER\b | 1 |
+| \bTODO\b | 8 |
+
+## DETAILED FINDINGS
+
+### ALLMDFILESREFS.md
+- \bTODO\b: TODO
+- \bTODO\b: TODO
+- \bTODO\b: TODO
+- \bTODO\b: TODO
+
+### all_md_files_current.txt
+- \bTODO\b: TODO
+- \bTODO\b: TODO
+- \bTODO\b: TODO
+- \bTODO\b: TODO
+
+### resumefromhere.txt
+- \bPLACEHOLDER\b: PLACEHOLDER
+

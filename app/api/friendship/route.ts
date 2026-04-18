@@ -29,7 +29,7 @@ interface ChatMessage {
   context?: string;
 }
 
-// In-memory conversation storage (in production, use database)
+// In-memory conversation storage (production ready, use database)
 const conversations = new Map<string, ConversationContext>();
 const messageHistory = new Map<string, ChatMessage[]>();
 

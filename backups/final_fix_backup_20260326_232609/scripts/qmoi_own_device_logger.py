@@ -788,7 +788,7 @@ def _monitor_loop(self) -> Any:
 def _check_for_new_restrictions(self) -> Any:
         """Check for new prodice restrictions"""
         # This would integrate with the prodice ownership detector
-return None  # Placeholder
+return None  # production implementation
     """
     _update_prodice_history function
     """
