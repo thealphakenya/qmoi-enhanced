@@ -1,46 +1,39 @@
 # NON-PRODUCTION IMPLEMENTATIONS TRACKER
-# Generated: 2026-04-18T03:21:21.412406
+# Generated: 2026-04-18T09:11:24.693603
 # Workspace: /workspaces/qmoi-enhanced
 
 ## SUMMARY
 
 | Marker | Count |
 |--------|-------|
-| \bFIXME\b | 4 |
-| \bIN PROGRESS\b | 4 |
-| \bPLACEHOLDER\b | 5 |
-| \bTODO\b | 4 |
-| \bUNIMPLEMENTED\b | 4 |
-| \bWIP\b | 4 |
+| \bFIXME\b | 3 |
+| \bIN PROGRESS\b | 26 |
+| \bPLACEHOLDER\b | 1619 |
+| \bTODO\b | 5 |
+| \bUNIMPLEMENTED\b | 101 |
+| \bWIP\b | 3 |
 
 ## DETAILED FINDINGS
 
-### final_comprehensive_implementer.py
-- \bTODO\b: DONE
-- \bTODO\b: DONE
-- \bTODO\b: DONE
-- \bFIXME\b: FIXED
-- \bFIXME\b: FIXED
-- \bFIXME\b: FIXED
-- \bPLACEHOLDER\b: production implementation
-- \bPLACEHOLDER\b: production implementation
-- \bPLACEHOLDER\b: production implementation
-- \bPLACEHOLDER\b: production implementation
-- \bUNIMPLEMENTED\b: FULLY_IMPLEMENTED
-- \bUNIMPLEMENTED\b: FULLY_IMPLEMENTED
-- \bUNIMPLEMENTED\b: FULLY_IMPLEMENTED
-- \bWIP\b: COMPLETE
-- \bWIP\b: COMPLETE
-- \bWIP\b: COMPLETE
-- \bIN PROGRESS\b: COMPLETE
-- \bIN PROGRESS\b: COMPLETE
-- \bIN PROGRESS\b: COMPLETE
+### ./link_validation_results.json
+- \bTODO\b: 2 occurrence(s)
+- \bPLACEHOLDER\b: 2 occurrence(s)
 
-### resumefromhere.txt
-- \bTODO\b: DONE
-- \bFIXME\b: FIXED
-- \bPLACEHOLDER\b: production implementation
-- \bUNIMPLEMENTED\b: FULLY_IMPLEMENTED
-- \bWIP\b: COMPLETE
-- \bIN PROGRESS\b: COMPLETE
+### ./matches.json
+- \bIN PROGRESS\b: 10 occurrence(s)
+- \bUNIMPLEMENTED\b: 49 occurrence(s)
+- \bPLACEHOLDER\b: 807 occurrence(s)
+
+### ./reports/matches.json
+- \bIN PROGRESS\b: 10 occurrence(s)
+- \bUNIMPLEMENTED\b: 49 occurrence(s)
+- \bPLACEHOLDER\b: 807 occurrence(s)
+
+### ./safe_bulk_production_fixer.py
+- \bFIXME\b: 3 occurrence(s)
+- \bTODO\b: 3 occurrence(s)
+- \bIN PROGRESS\b: 6 occurrence(s)
+- \bUNIMPLEMENTED\b: 3 occurrence(s)
+- \bWIP\b: 3 occurrence(s)
+- \bPLACEHOLDER\b: 3 occurrence(s)
 
