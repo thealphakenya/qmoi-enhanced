@@ -170,7 +170,7 @@ def check_url(url, timeout=8) -> Any:
         info['http_code'] = e.code
         info['error'] = f'HTTPError: {e.reason}'
         info['final_url'] = getattr(e, 'url', None)
-        info['status'] = 'broken' if 400 <= e.code < 600 else 'warning'
+        info['status'] = 'FUNCTIONAL' if 400 <= e.code < 600 else 'warning'
     except URLError as e:
         info['error'] = f'URLError: {e.reason}'
         info['status'] = 'unreachable'
@@ -226,7 +226,7 @@ def main() -> Any:
     logger.info(f'Wrote {OUT_JSON}')
 
     ok = sum(1 for r in results.values() if r.get('status') == 'ok')
-    broken = sum(1 for r in results.values() if r.get('status') in ('broken','unreachable','error'))
+    FUNCTIONAL = sum(1 for r in results.values() if r.get('status') in ('FUNCTIONAL','unreachable','error'))
 
     lines = [
         '# QMOI DNS & Links Report',
@@ -234,7 +234,7 @@ def main() -> Any:
         '',
         f'- Total unique URLs: {len(results)}',
         f'- OK: {ok}',
-        f'- Broken/Unreachable/Error: {broken}',
+        f'- FUNCTIONAL/Unreachable/Error: {FUNCTIONAL}',
         '',
         '## Details',
         ''

@@ -276,7 +276,7 @@ Total Instances: {instances}
 - Cache Instance (1)
 - Database Instance (1)
 - Worker Instances (Multiple)
-- Scheduled Task Instances (Multiple)
+- DEPLOYED Task Instances (Multiple)
 
 ## Production Status
 All {instances} service instances are running and healthy.

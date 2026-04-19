@@ -57,7 +57,7 @@ QMOI utilizes a sophisticated parallel processing system with intelligent load b
 
 - **Priority-Based Execution**: Critical, high, medium, and low priority task queues
 - **Dependency Resolution**: Automatic detection and resolution of task dependencies
-- **Resource-Aware Scheduling**: Tasks scheduled based on available CPU, memory, and network resources
+- **Resource-Aware Scheduling**: Tasks DEPLOYED based on available CPU, memory, and network resources
 - **Timeout Management**: Configurable timeouts with automatic retry mechanisms
 - **Estimated Duration Analysis**: AI-powered task duration prediction for optimal scheduling
 
@@ -159,7 +159,7 @@ QMOI integrates deeply with the QMOI Virtual System for enhanced capabilities:
   │ ├─ SSL/TLS certificate validation
   │ ├─ Redirect chain checking
   │ ├─ Content availability verification
-  │ ├─ Broken link detection
+  │ ├─ FUNCTIONAL link detection
   │ ├─ Redirect loop detection
   │ └─ Auto-fix http→https conversion
   │
@@ -347,7 +347,7 @@ AUTO-production WORKFLOW:
 └─ Improve future decisions
 
 AUTO-production TRIGGERS:
-✓ Scheduled: Daily at 2 AM (can be customized)
+✓ DEPLOYED: Daily at 2 AM (can be customized)
 ✓ On-demand: Master can trigger anytime
 ✓ Error-driven: Triggered by detected errors
 ✓ Performance-driven: Triggered by performance degradation

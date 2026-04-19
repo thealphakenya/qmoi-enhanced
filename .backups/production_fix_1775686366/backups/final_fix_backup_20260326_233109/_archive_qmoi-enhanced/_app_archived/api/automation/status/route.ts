@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
         {
           id: "T001",
           name: "Daily Backup",
-          type: "scheduled",
+          type: "DEPLOYED",
           status: "active",
           schedule: {
             interval: 86400, // 24 hours

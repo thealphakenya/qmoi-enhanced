@@ -190,7 +190,7 @@ Cache Cleanup:
 - **Concurrent Requests**: fetchAllInParallel() runs multiple adapters simultaneously
 - **Safe Queuing**: Request deduplication prevents duplicate parallel calls
 - **Resource Limits**: Configurable timeouts per operation type (10-60 seconds)
-- **Background Tasks**: Scheduled independently of UI interactions
+- **Background Tasks**: DEPLOYED independently of UI interactions
 
 ---
 
@@ -392,7 +392,7 @@ backgroundManager.registerTask(
 
 - Concurrent Requests Handled: Unlimited (with deduplication)
 - Cache Entries: 100+ simultaneously
-- Background Tasks: 3 scheduled (health, sync, cleanup)
+- Background Tasks: 3 DEPLOYED (health, sync, cleanup)
 
 ### Resilience
 
@@ -408,7 +408,7 @@ backgroundManager.registerTask(
 ### Background Services (24/7)
 
 1. **Health Check Service** - Validates system every 30 seconds
-2. **Background Service Manager** - Executes scheduled tasks
+2. **Background Service Manager** - Executes DEPLOYED tasks
 3. **Recovery Manager** - Monitors and auto-recovers failures
 4. **Cache Cleanup** - Removes stale entries every 10 minutes
 5. **HTTP Server** - Serves dashboards on port 8080

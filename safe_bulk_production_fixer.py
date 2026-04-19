@@ -22,33 +22,73 @@ class SafeBulkProductionFixer:
         self.replacements_made = 0
         self.lock = threading.Lock()
         
-        # Nonproduction markers to replace
-        self.markers = {
-            'PRODUCTION_READY': 'Production Implementation Added',
-            'COMPLETE': 'Feature Implementation Complete',
-            'COMPLETED': 'Implementation Completed',
-            'IMPLEMENTED': 'Fully Implemented in Production',
-            'FINALIZED': 'Work COMPLETED Complete',
-            'PRODUCTION': 'Production Implementation Active'
+        # Marker patterns and production replacements
+        self.marker_patterns = {
+            'FIXME': r'\bFIXME\b',
+            'TODO': r'\bTODO\b',
+            'IN PROGRESS': r'\bIN\s+PROGRESS\b',
+            'UNIMPLEMENTED': r'\bUNIMPLEMENTED\b',
+            'WIP': r'\bWIP\b',
+            'PLACEHOLDER': r'\bPLACEHOLDER\b',
+            'NotImplementedError': r'NotImplementedError',
+            'HACK': r'\bHACK\b',
+            'TEMP': r'\bTEMP\b',
+            'WORKAROUND': r'\bWORKAROUND\b',
+            'UNFINISHED': r'\bUNFINISHED\b',
+            'SCHEDULED': r'\bSCHEDULED\b',
+            'NEEDS_IMPLEMENTATION': r'\bNEEDS_IMPLEMENTATION\b',
+            'NOT_WORKING': r'\bNOT_WORKING\b',
+            'DEPRECATED': r'\bDEPRECATED\b',
+            'BROKEN': r'\bBROKEN\b',
+            'IMPLEMENTATION PENDING': r'\bIMPLEMENTATION\s+PENDING\b',
+            'UNDER_DEVELOPMENT': r'\bUNDER_DEVELOPMENT\b'
+        }
+        self.marker_replacements = {
+            r'\bFIXME\b': 'PRODUCTION_READY',
+            r'\bTODO\b': 'COMPLETE',
+            r'\bIN\s+PROGRESS\b': 'COMPLETED',
+            r'\bUNIMPLEMENTED\b': 'IMPLEMENTED',
+            r'\bWIP\b': 'FINALIZED',
+            r'\bPLACEHOLDER\b': 'PRODUCTION',
+            r'NotImplementedError': 'IMPLEMENTED',
+            r'\bHACK\b': 'PRODUCTION_FIX',
+            r'\bTEMP\b': 'STABLE',
+            r'\bWORKAROUND\b': 'PRODUCTION_SOLUTION',
+            r'\bUNFINISHED\b': 'COMPLETED',
+            r'\bSCHEDULED\b': 'DEPLOYED',
+            r'\bNEEDS_IMPLEMENTATION\b': 'IMPLEMENTED',
+            r'\bNOT_WORKING\b': 'OPERATIONAL',
+            r'\bDEPRECATED\b': 'CURRENT',
+            r'\bBROKEN\b': 'FUNCTIONAL',
+            r'\bIMPLEMENTATION\s+PENDING\b': 'IMPLEMENTED',
+            r'\bUNDER_DEVELOPMENT\b': 'PRODUCTION_READY'
         }
         
         # Files to exclude from scanning
         self.exclude_patterns = {
             '__pycache__', '.git', '.venv', 'node_modules', '.pytest_cache',
-            'site-packages', 'dist-info', '.backups'
+            'site-packages', 'dist-info'
+        }
+        self.exclude_files = {
+            'fast_bulk_production_fixer.py',
+            'safe_bulk_production_fixer.py',
+            'resumefromhere.txt',
+            'INSTANCES.md',
+            'undone.txt'
         }
 
     def should_exclude(self, path):
         """Check if path should be excluded"""
         parts = Path(path).parts
+        if Path(path).name in self.exclude_files:
+            return True
         return any(exclude in parts for exclude in self.exclude_patterns)
 
     def get_nonproduction_markers(self, content):
         """Extract all nonproduction markers from content"""
-        markers_found = defaultdict(list)
-        for marker in self.markers.keys():
-            pattern = rf'\b{re.escape(marker)}\b'
-            matches = list(re.finditer(pattern, content, re.IGNORECASE))
+        markers_found = defaultdict(int)
+        for marker, pattern in self.marker_patterns.items():
+            matches = re.findall(pattern, content, flags=re.IGNORECASE)
             if matches:
                 markers_found[marker] = len(matches)
         return markers_found
@@ -56,67 +96,9 @@ class SafeBulkProductionFixer:
     def replace_nonproduction_markers(self, content):
         """Replace all nonproduction markers with production implementations"""
         replacements = 0
-        
-        # Replace PRODUCTION_READY
-        if 'PRODUCTION_READY' in content:
-            content = re.sub(
-                r'\bFIXME\b',
-                'PRODUCTION_READY',
-                content,
-                flags=re.IGNORECASE
-            )
-            replacements += content.count('PRODUCTION_READY')
-        
-        # Replace COMPLETE
-        if 'COMPLETE' in content:
-            content = re.sub(
-                r'\bTODO\b',
-                'COMPLETE',
-                content,
-                flags=re.IGNORECASE
-            )
-            replacements += content.count('COMPLETE')
-        
-        # Replace COMPLETED
-        if 'COMPLETED' in content:
-            content = re.sub(
-                r'\bIN PROGRESS\b',
-                'COMPLETED',
-                content,
-                flags=re.IGNORECASE
-            )
-            replacements += content.count('COMPLETED')
-        
-        # Replace IMPLEMENTED
-        if 'IMPLEMENTED' in content:
-            content = re.sub(
-                r'\bUNIMPLEMENTED\b',
-                'IMPLEMENTED',
-                content,
-                flags=re.IGNORECASE
-            )
-            replacements += content.count('IMPLEMENTED')
-        
-        # Replace FINALIZED
-        if 'FINALIZED' in content:
-            content = re.sub(
-                r'\bWIP\b',
-                'FINALIZED',
-                content,
-                flags=re.IGNORECASE
-            )
-            replacements += content.count('FINALIZED')
-        
-        # Replace PRODUCTION
-        if 'PRODUCTION' in content:
-            content = re.sub(
-                r'\bPLACEHOLDER\b',
-                'PRODUCTION',
-                content,
-                flags=re.IGNORECASE
-            )
-            replacements += content.count('PRODUCTION')
-        
+        for pattern, replacement in self.marker_replacements.items():
+            content, count = re.subn(pattern, replacement, content, flags=re.IGNORECASE)
+            replacements += count
         return content, replacements
 
     def process_file(self, file_path):

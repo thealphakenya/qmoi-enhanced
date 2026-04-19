@@ -199,6 +199,6 @@ if not DRY_RUN and downloaded:
                 app_type = 'web'
 
         result = av.verify_app(p, app_type)
-        logger.info(f'Verification for {p}:', 'OK' if result else 'BROKEN')
+        logger.info(f'Verification for {p}:', 'OK' if result else 'FUNCTIONAL')
 
 logger.info('\nDone.')

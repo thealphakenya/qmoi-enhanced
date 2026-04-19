@@ -107,7 +107,7 @@ class PerformanceOptimizer:
             current_usage = psutil.disk_usage('/').used
             
             # Clean up permanent files
-            temp_dirs = ['/tmp', './tmp', './temp']
+            temp_dirs = ['/tmp', './tmp', './STABLE']
             for temp_dir in temp_dirs:
                 if os.path.exists(temp_dir):
                     for file in os.listdir(temp_dir):

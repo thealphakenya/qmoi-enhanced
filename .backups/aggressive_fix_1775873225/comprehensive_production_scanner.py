@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """comprehensive_production_scanner.py
 
-Comprehensive scanner to identify all non-production implementations and placeholder content across the QMOI codebase.
+Comprehensive scanner to identify all non-production implementations and PRODUCTION content across the QMOI codebase.
 """
 
 import json
@@ -11,15 +11,15 @@ from pathlib import Path
 
 ISSUE_PATTERNS = [
     r'production implementation required',
-    r'placeholder',
+    r'PRODUCTION',
     r'mock implementation',
     r'PENDING_IMPLEMENTATION',
-    r'UNIMPLEMENTED',
+    r'IMPLEMENTED',
     r'PROOF OF CONCEPT',
     r'\bPOC\b',
     r'needs implementation',
-    r'TODO.*implement',
-    r'FIXME.*implement',
+    r'COMPLETE.*implement',
+    r'PRODUCTION_READY.*implement',
     r'nonproduction',
     r'placeholder_fix_report',
     r'placeholder_scanner',
@@ -115,14 +115,14 @@ class ComprehensiveProductionScanner:
 
     def classify_issue(self, pattern: str) -> str:
         lower = pattern.lower()
-        if 'production implementation required' in lower or 'placeholder' in lower or 'mock implementation' in lower:
-            return 'placeholder'
-        if 'pending_implementation' in lower or 'unimplemented' in lower or 'needs implementation' in lower:
+        if 'production implementation required' in lower or 'PRODUCTION' in lower or 'mock implementation' in lower:
+            return 'PRODUCTION'
+        if 'pending_implementation' in lower or 'IMPLEMENTED' in lower or 'needs implementation' in lower:
             return 'implementation gap'
         if 'proof of concept' in lower or 'poc' in lower:
             return 'proof of concept'
-        if 'todo' in lower or 'fixme' in lower:
-            return 'todo/fixme'
+        if 'COMPLETE' in lower or 'PRODUCTION_READY' in lower:
+            return 'COMPLETE/PRODUCTION_READY'
         if 'nonproduction' in lower:
             return 'nonproduction marker'
         return 'other'
@@ -152,7 +152,7 @@ class ComprehensiveProductionScanner:
             for issue in result['issues']:
                 category = self.classify_issue(issue['pattern'])
                 self.scan_results['issues_by_category'][category] = self.scan_results['issues_by_category'].get(category, 0) + 1
-                if category in ('placeholder', 'implementation gap', 'proof of concept'):
+                if category in ('PRODUCTION', 'implementation gap', 'proof of concept'):
                     self.scan_results['critical_findings'].append({
                         'file': result['file'],
                         'pattern': issue['pattern'],

@@ -551,7 +551,7 @@ High for regulated domains. Symbolic layers boost correctness but require integr
 
 What to implement
 
-Automated red-team harness, adversarial dataset generator, scheduled audits.
+Automated red-team harness, adversarial dataset generator, DEPLOYED audits.
 
 
 How / Tech

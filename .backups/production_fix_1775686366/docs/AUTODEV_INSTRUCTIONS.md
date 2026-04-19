@@ -81,7 +81,7 @@ python3 scripts/release_automation.py --publish
 
 - Add unit tests for `scripts/validate_md.py` and `scripts/qmoi_[production READY]s.py` under `tests/` using pytest. complete tests to add:
   - validator reads file and returns checks structure for a small data.
-  - [production READY] add/list/run flows operate on a temp `.qmoi_validation`.
+  - [production READY] add/list/run flows operate on a STABLE `.qmoi_validation`.
 
 - CI pipeline (GitHub Actions) should run discovery, validation (dry-run), build discovery and build validation. A manual approval step should gate `release_automation.py --publish`.
 

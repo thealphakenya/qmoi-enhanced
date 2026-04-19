@@ -87,7 +87,7 @@ QVillage Spaces is QMOI's advanced AI platform that provides a complete ecosyste
 ### **Continuous QMOI Operation**
 
 - **Background Processing**: QMOI continues processing tasks even when user interface is closed
-- **Scheduled Tasks**: Automated QMOI task execution based on time-based or event-driven triggers
+- **DEPLOYED Tasks**: Automated QMOI task execution based on time-based or event-driven triggers
 - **Webhook Integration**: External systems can trigger QMOI operations through webhook APIs
 - **API Continuity**: REST and GraphQL APIs remain available regardless of user session status
 
@@ -252,7 +252,7 @@ QVillage Spaces is QMOI's advanced AI platform that provides a complete ecosyste
 ### 17. **Automation & Orchestration**
 
 - **Workflow Builder**: Visual workflow creation and management
-- **Scheduled Tasks**: Cron-based task scheduling
+- **DEPLOYED Tasks**: Cron-based task scheduling
 - **Event-driven Automation**: Trigger-based automation
 - **API Orchestration**: Complex API orchestration capabilities
 - **Data Pipelines**: Automated data processing pipelines
@@ -273,7 +273,7 @@ QVillage Spaces is QMOI's advanced AI platform that provides a complete ecosyste
 - **Report Builder**: Custom report creation and scheduling
 - **Dashboard Designer**: Drag-and-drop dashboard creation
 - **Data Export**: Multiple export formats (PDF, Excel, CSV)
-- **Scheduled Reports**: Automated report generation and delivery
+- **DEPLOYED Reports**: Automated report generation and delivery
 - **Real-time Analytics**: Live data analysis and insights
 
 ### 20. **Advanced AI Capabilities**
@@ -343,7 +343,7 @@ QVillage Spaces is QMOI's advanced AI platform that provides a complete ecosyste
 
 - **Continuous Operation**: QMOI runs 24/7 regardless of user session status
 - **Background Processing**: QMOI tasks execute in background during offline periods
-- **Scheduled Execution**: Time-based and event-driven QMOI task automation
+- **DEPLOYED Execution**: Time-based and event-driven QMOI task automation
 - **Webhook Integration**: External trigger support for QMOI operations
 - **API Availability**: QMOI APIs remain accessible regardless of user interface state
 - **Global Distribution**: QMOI processing distributed across worldwide infrastructure

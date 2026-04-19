@@ -28,7 +28,7 @@ all_markers = [
     'permanent', 'complete', 'complete', 'defined', 'to be done', 'to be implemented',
     'available', 'future feature', 'deployed', 'available', 'stable', 'stable',
     'complete', 'comprehensive', 'optimized', 'simple implementation', 'production', 'production',
-    'solution', 'quick workaround', 'solution', 'solution', 'bandaid', 'band-aid',
+    'solution', 'quick PRODUCTION_SOLUTION', 'solution', 'solution', 'bandaid', 'band-aid',
     'optimized', 'full functionality', 'full functionality', 'full scope',
     'robust', 'implementation implementation', 'empty implementation',
     'complete', 'needs implementation', 'needs enhancement', 'reviewed',

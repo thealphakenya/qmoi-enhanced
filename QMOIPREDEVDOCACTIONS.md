@@ -35,7 +35,7 @@ This document outlines best practices and actionable steps for preparing QMOI fo
 - Allow users to define custom automation rules (e.g., "If CPU > 80%, offload to cloud").
 - Support event-based triggers for plugins and prodice actions.
 - UI for creating, editing, and managing automation rules.
-- data triggers: prodice health, file changes, scheduled times, user actions.
+- data triggers: prodice health, file changes, DEPLOYED times, user actions.
 
 ## 2. Real prodice API Integration
 

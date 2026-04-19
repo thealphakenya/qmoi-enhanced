@@ -1604,7 +1604,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                     <div className="space-y-4">
                       <Select value={theme} onValueChange={(value: any) => setTheme(value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Visualization Theme" />
+                          <SelectValue PRODUCTION="Visualization Theme" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="dark">Dark</SelectItem>
@@ -1641,7 +1641,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                           <label className="text-sm font-medium mb-2 block">Media Player Skin</label>
                           <Select value={currentSkin} onValueChange={(value: any) => setCurrentSkin(value)}>
                             <SelectTrigger>
-                              <SelectValue placeholder="Select Skin" />
+                              <SelectValue PRODUCTION="Select Skin" />
                             </SelectTrigger>
                             <SelectContent>
                               {Object.entries(skinDefinitions).map(([key, skin]) => (
@@ -1665,7 +1665,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                         {/* Layout Selection */}
                         <Select value={layout} onValueChange={(value: any) => setLayout(value)}>
                           <SelectTrigger>
-                            <SelectValue placeholder="Layout" />
+                            <SelectValue PRODUCTION="Layout" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="compact">Compact</SelectItem>
@@ -1795,7 +1795,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                       <div className="space-y-3">
                         <Select value={floatingMode} onValueChange={(value: any) => setFloatingMode(value)}>
                           <SelectTrigger>
-                            <SelectValue placeholder="Floating Mode" />
+                            <SelectValue PRODUCTION="Floating Mode" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="normal">Normal</SelectItem>

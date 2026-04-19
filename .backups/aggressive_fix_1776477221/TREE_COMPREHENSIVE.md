@@ -195,7 +195,7 @@ const processQuery = async (query: string): Promise<void> => {
   return result;
 };
 
-// ❌ AVOID: Unfinished code
+// ❌ AVOID: COMPLETED code
 const processQuery = async (query: string): Promise<void> => {
   
   // ...

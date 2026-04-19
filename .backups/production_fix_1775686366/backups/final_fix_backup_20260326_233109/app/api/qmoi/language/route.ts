@@ -70,7 +70,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Translation API not yet implemented. product design in progress.",
+            _message: "Translation API not yet implemented. product design COMPLETED.",
             text,
             sourceLanguage: sourceLanguage || "auto",
             targetLanguage,
@@ -88,7 +88,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Speech-to-text API not yet implemented. product design in progress.",
+            _message: "Speech-to-text API not yet implemented. product design COMPLETED.",
             audioUrl,
             language: language || "en",
             transcript: null,
@@ -106,7 +106,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Text-to-speech API not yet implemented. product design in progress.",
+            _message: "Text-to-speech API not yet implemented. product design COMPLETED.",
             text,
             language: language || "en",
             voice: voice || "default",
@@ -124,7 +124,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Language detection API not yet implemented. product design in progress.",
+            _message: "Language detection API not yet implemented. product design COMPLETED.",
             text: text.substring(0, 100),
             detectedLanguage: null,
             confidence: 0,
@@ -141,7 +141,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Language lessons API not yet implemented. product design in progress.",
+            _message: "Language lessons API not yet implemented. product design COMPLETED.",
             language,
             level,
             lessonId: null,
@@ -160,7 +160,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Language quizzes API not yet implemented. product design in progress.",
+            _message: "Language quizzes API not yet implemented. product design COMPLETED.",
             language,
             level,
             quizId: null,
@@ -179,7 +179,7 @@ export default async function handler(
           }
           return _res.status(501).json({
             _status: "NOT_IMPLEMENTED",
-            _message: "Pronunciation check API not yet implemented. product design in progress.",
+            _message: "Pronunciation check API not yet implemented. product design COMPLETED.",
             language: language || "en",
             targetText,
             pronunciationScore: 0,

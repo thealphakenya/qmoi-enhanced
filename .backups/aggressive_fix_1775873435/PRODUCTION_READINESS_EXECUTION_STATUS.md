@@ -184,7 +184,7 @@ DOCUMENTATION:
 □ Deployment guide current
 
 OPERATIONS:
-□ Health checks scheduled
+□ Health checks DEPLOYED
 □ Domain monitoring active
 □ Incident logging active
 □ Audit trails recording

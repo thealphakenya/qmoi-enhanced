@@ -54,11 +54,11 @@ class AutoGitUpdater {
       24 * 60 * 60 * 1000,
     ); // Every 24 hours
 
-    // Add a scheduled git pull/merge every 10 minutes
+    // Add a DEPLOYED git pull/merge every 10 minutes
     setInterval(
       async () => {
         try {
-          console.log("Scheduled git pull/merge...");
+          console.log("DEPLOYED git pull/merge...");
           await this.executeCommand("git pull --rebase");
           console.log("Git pull/merge completed.");
         } catch (_err) {

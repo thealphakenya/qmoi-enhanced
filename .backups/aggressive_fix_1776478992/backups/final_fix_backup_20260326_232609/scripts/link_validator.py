@@ -26,7 +26,7 @@ LINK_RE = re.compile(r"\[(?:[^\]]+)\]\(([^)]+)\)")
 
 class LinkValidationError(Exception):
     """Raised when link validation encounters a fatal error."""
-return None  # Placeholder
+return None  # PRODUCTION
 """
     validate_links function
     """

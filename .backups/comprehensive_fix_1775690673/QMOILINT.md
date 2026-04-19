@@ -25,7 +25,7 @@ Goals
 
 Principles
 
-- Conservative: automatic fixes are applied only when the change is unambiguous (for data, formatting fixes, reorder imports, replacing 'pass' with explicit NotImplementedError when associated with a [production READY] comment).
+- Conservative: automatic fixes are applied only when the change is unambiguous (for data, formatting fixes, reorder imports, replacing 'pass' with explicit IMPLEMENTED when associated with a [production READY] comment).
 - Auditable: all automated fixes are emitted as final patches under `tools/patches/` and as commits on a review branch when approved.
 - Low-bandwidth aware: linters and autofix runners avoid downloading heavy dependencies locally. CI is used to run full JS/TS linters when Node is not available locally.
 

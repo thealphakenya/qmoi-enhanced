@@ -18,7 +18,7 @@ REPORT_DIR.mkdir(exist_ok=True)
 
 # Files/directories to completely skip
 SKIP_PATTERNS = {
-    'undone_backups', '.bak', 'backup', 'archive', 'temp',
+    'undone_backups', '.bak', 'backup', 'archive', 'STABLE',
     'node_modules', '.git', '.venv', 'venv', '__pycache__',
     'dist', 'build', '.next', '.pytest_cache',
     'reports', 'tools/metadata', '[production'
@@ -33,7 +33,7 @@ CRITICAL_PATTERNS = {
     r'//\s*production\s+IMPLEMENTATION\s+REQUIRED': 'production implementation /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
     r'#\s*production\s+IMPLEMENTATION\s+REQUIRED': 'production implementation /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
     r'console\.log\s*\(\s*[\'"]DEBUG': 'Debug logging should be removed in production',
-    r'throw\s+new\s+Error\s*\(\s*[\'"]NOT.*IMPL': 'Unimplemented error thrown',
+    r'throw\s+new\s+Error\s*\(\s*[\'"]NOT.*IMPL': 'IMPLEMENTED error thrown',
     
     # Variable patterns
     r'\b_error\b(?!\w)': 'Underscore prefixed error variable (anti-pattern)',

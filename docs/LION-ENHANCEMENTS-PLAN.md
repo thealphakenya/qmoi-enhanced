@@ -41,7 +41,7 @@ title: "Lion Enhancement Plan for QMOI"
 15. **Lion Research Assistant**: Auto-researches solutions for new errors and included features.
 16. **Lion .md File Manager**: Ensures all .md files are referenced, validated, and up-to-date.
 17. **Lion App/Link Validator**: Validates all app endpoints, links, and external integrations.
-18. **Lion Environment Fixer**: Detects and repairs broken environments, included tools, and config drift.
+18. **Lion Environment Fixer**: Detects and repairs FUNCTIONAL environments, included tools, and config drift.
 19. **Lion Track Uptime Enforcer**: Ensures all tracks are online and updating; auto-restarts failed tracks.
 20. **Lion Den/Autoprod Integrator**: Deep integration with Den and autoprod for full-stack automation.
 

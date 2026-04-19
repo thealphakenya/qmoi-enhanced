@@ -124,7 +124,7 @@ This creates:
 - **post-push hook**: Automatically checks deployment after `git push`
 - **pre-commit hook**: Updates VERCELLINKS.md before committing
 
-### Scheduled Cron Jobs
+### DEPLOYED Cron Jobs
 
 Add to your crontab for periodic checks:
 

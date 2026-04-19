@@ -463,7 +463,7 @@ python3 scripts/domain_health_check.py --comprehensive
 **Features**:
 - One-click enable/disable failover automation
 - Manual failover triggers
-- Scheduled maintenance mode
+- DEPLOYED maintenance mode
 - Gradual traffic shifting
 
 ### 5. **Link Management Console**

@@ -3679,10 +3679,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -6123,10 +6123,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -19423,10 +19423,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/examples/configure-output.js"
       },
       {
-        "label": "deprecated",
-        "url": "./docs/deprecated.md",
+        "label": "CURRENT",
+        "url": "./docs/CURRENT.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/docs/deprecated.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/docs/CURRENT.md"
       },
       {
         "label": "options taking varying arguments",
@@ -30750,10 +30750,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/commander/examples/configure-output.js"
       },
       {
-        "label": "deprecated",
-        "url": "./docs/deprecated.md",
+        "label": "CURRENT",
+        "url": "./docs/CURRENT.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/commander/docs/deprecated.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/commander/docs/CURRENT.md"
       },
       {
         "label": "options taking varying arguments",
@@ -34048,8 +34048,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -34072,8 +34072,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -34138,8 +34138,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       }
@@ -35699,9 +35699,9 @@
       },
       {
         "label": "Concurrency \ud83d\udc4e",
-        "url": "#concurrency-deprecated",
+        "url": "#concurrency-CURRENT",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#concurrency-deprecated"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#concurrency-CURRENT"
       },
       {
         "label": "Creating an instance",
@@ -35783,9 +35783,9 @@
       },
       {
         "label": "CancelToken \ud83d\udc4e",
-        "url": "#canceltoken-deprecated",
+        "url": "#canceltoken-CURRENT",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-deprecated"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-CURRENT"
       },
       {
         "label": "Using application/x-www-form-urlencoded format",
@@ -42068,7 +42068,7 @@
         "reason": "external URL"
       },
       {
-        "label": "deprecated",
+        "label": "CURRENT",
         "url": "https://github.com/iojs/io.js/issues/103",
         "ok": true,
         "reason": "external URL"
@@ -44307,10 +44307,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -61235,10 +61235,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -63679,10 +63679,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -76979,10 +76979,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/examples/configure-output.js"
       },
       {
-        "label": "deprecated",
-        "url": "./docs/deprecated.md",
+        "label": "CURRENT",
+        "url": "./docs/CURRENT.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/docs/deprecated.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/docs/CURRENT.md"
       },
       {
         "label": "options taking varying arguments",
@@ -88306,10 +88306,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/commander/examples/configure-output.js"
       },
       {
-        "label": "deprecated",
-        "url": "./docs/deprecated.md",
+        "label": "CURRENT",
+        "url": "./docs/CURRENT.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/commander/docs/deprecated.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/commander/docs/CURRENT.md"
       },
       {
         "label": "options taking varying arguments",
@@ -91604,8 +91604,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -91628,8 +91628,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -91694,8 +91694,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       }
@@ -93255,9 +93255,9 @@
       },
       {
         "label": "Concurrency \ud83d\udc4e",
-        "url": "#concurrency-deprecated",
+        "url": "#concurrency-CURRENT",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#concurrency-deprecated"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#concurrency-CURRENT"
       },
       {
         "label": "Creating an instance",
@@ -93339,9 +93339,9 @@
       },
       {
         "label": "CancelToken \ud83d\udc4e",
-        "url": "#canceltoken-deprecated",
+        "url": "#canceltoken-CURRENT",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-deprecated"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-CURRENT"
       },
       {
         "label": "Using application/x-www-form-urlencoded format",
@@ -99624,7 +99624,7 @@
         "reason": "external URL"
       },
       {
-        "label": "deprecated",
+        "label": "CURRENT",
         "url": "https://github.com/iojs/io.js/issues/103",
         "ok": true,
         "reason": "external URL"
@@ -101863,10 +101863,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -123829,8 +123829,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -123853,8 +123853,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -123925,8 +123925,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       }

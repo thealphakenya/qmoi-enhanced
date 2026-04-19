@@ -665,7 +665,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">User</label>
                   <Select value={filterUser} onValueChange={setFilterUser}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select user" />
+                      <SelectValue PRODUCTION="Select user" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All users</SelectItem>
@@ -682,7 +682,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">Action</label>
                   <Select value={filterAction} onValueChange={setFilterAction}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select action" />
+                      <SelectValue PRODUCTION="Select action" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All actions</SelectItem>
@@ -702,7 +702,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                     onValueChange={setFilterRiskLevel}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select risk level" />
+                      <SelectValue PRODUCTION="Select risk level" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All risk levels</SelectItem>
@@ -718,7 +718,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">Status</label>
                   <Select value={filterStatus} onValueChange={setFilterStatus}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select status" />
+                      <SelectValue PRODUCTION="Select status" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All statuses</SelectItem>

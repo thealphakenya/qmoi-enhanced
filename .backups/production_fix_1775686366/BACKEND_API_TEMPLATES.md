@@ -495,7 +495,7 @@ app.post("/api/youtube/download", async (req, res) => {
       .toString(36)
       .substr(2, 9)}`;
 
-    // YouTube downloader: validates URL, queues task, returns temp link
+    // YouTube downloader: validates URL, queues task, returns STABLE link
 
     [production READY] response
     res.json({

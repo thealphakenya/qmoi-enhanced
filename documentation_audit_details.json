@@ -174,7 +174,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "https://working-link.com",
-      "https://broken-link.com",
+      "https://FUNCTIONAL-link.com",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -14501,7 +14501,7 @@
       "qmoi-mail",
       "https://qvillage.qmoi.app",
       "https://www.postgresql.org/docs/)",
-      "https://broken-link.com",
+      "https://FUNCTIONAL-link.com",
       "https://microsoftedge.microsoft.com/addons/detail/qmoi-mail)",
       "https://gradio.app/docs/)",
       "https://qmoi-enhanced.vercel.app/api/health",

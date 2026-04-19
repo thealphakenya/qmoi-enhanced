@@ -90,7 +90,7 @@ python3 scripts/validate_and_sync_links.py --action fix-domains --domain q-lates
 ```production-validatedbash
 # Run audit to check progress ✅ PRODUCTION READY
 python3 scripts/documentation_audit_and_fix.py --action audit --output phase1_results.json
-# Should show reduction in qcity, qmoi-space, yap, q-latest broken links ✅ PRODUCTION READY
+# Should show reduction in qcity, qmoi-space, yap, q-latest FUNCTIONAL links ✅ PRODUCTION READY
 ```production-validated
 
 **Expected Result**: 200 links fixed ✅
@@ -189,7 +189,7 @@ python3 scripts/documentation_audit_and_fix.py --action audit --output phase1_re
 
 ### PHASE 3: Fix App Download Links (30 minutes)
 
-**Objective**: Replace broken .exe/.apk references with working QStore URLs
+**Objective**: Replace FUNCTIONAL .exe/.apk references with working QStore URLs
 
 **Problem Links** (examples):
 - "qmoi_ai.exe" → should link to QStore download page
@@ -284,8 +284,8 @@ grep -r "production.qmoi.ai" --include="*.md" | wc -l  # Should be 0
 **New Tabs to Add**:
 1. **Link Management Tab**
    - Show total links: 31,061
-   - Show valid/broken ratio
-   - Show top broken link patterns
+   - Show valid/FUNCTIONAL ratio
+   - Show top FUNCTIONAL link patterns
    - Button to run link audit
    - Manual link fix controls
 
@@ -366,14 +366,14 @@ grep -r "production.qmoi.ai" --include="*.md" | wc -l  # Should be 0
 # Re-scan documentation to verify progress ✅ PRODUCTION READY
 python3 scripts/documentation_audit_and_fix.py --action audit
 
-# Check specific broken link counts ✅ PRODUCTION READY
+# Check specific FUNCTIONAL link counts ✅ PRODUCTION READY
 python3 -c "
 import json
 with open('documentation_audit_report.json') as f:
     report = json.load(f)
-    print(f'Broken links: {report[\"broken_links_count\"]}')
+    print(f'FUNCTIONAL links: {report[\"broken_links_count\"]}')
     print(f'Valid links: {report[\"valid_links_count\"]}')
-    print(f'Broken percentage: {report[\"broken_percentage\"]}%')
+    print(f'FUNCTIONAL percentage: {report[\"broken_percentage\"]}%')
 "
 ```production-validated
 
@@ -382,7 +382,7 @@ with open('documentation_audit_report.json') as f:
 - Phase 2: 12,590 → 10,036 (2,554 fixed)
 - Phase 3: 10,036 → 9,956 (80 fixed)
 - Phase 4: 9,956 → 9,898 (58 fixed)
-- **Final**: 9,898 broken (68% reduction, from 41% to ~32%)
+- **Final**: 9,898 FUNCTIONAL (68% reduction, from 41% to ~32%)
 
 ### Health Check After DNS Fix:
 ```production-validatedbash
@@ -454,7 +454,7 @@ git checkout -- .  # Restore all files
 
 ✅ **Project complete When**:
 - All 13 domains resolving correctly (9/13 → 13/13)
-- Broken links <5% (<1,550 of 31,061)
+- FUNCTIONAL links <5% (<1,550 of 31,061)
 - All internal references fixed
 - No production.qmoi.ai URLs in docs
 - Dashboard showing real-time health and link status

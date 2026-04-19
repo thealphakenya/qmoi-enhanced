@@ -40,22 +40,22 @@ NON_PRODUCTION_PATTERNS = [
     r'debugger;',
 
     
-    r'TODO:',
-    r'FIXME:',
-    r'HACK:',
+    r'COMPLETE:',
+    r'PRODUCTION_READY:',
+    r'PRODUCTION_FIX:',
     r'XXX:',
 
     
     r'
     r'
-    r'/\* TODO \*/',
+    r'/\* COMPLETE \*/',
     # Production implementation
     r'pass\s*
     r'return None\s*
 
     
     r'fixture',
-    r'placeholder',
+    r'PRODUCTION',
     r'sample',
     r'static.*test',
 

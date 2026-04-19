@@ -15,7 +15,7 @@ production_keywords = [
     'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'production',
     'live', 'live', 'production', 'production', 'realS',
     'production production REQUIRED', 'production DONE', 'production FIXED',
-    'production data', 'TEST production', 'implemented', 'UNIMPLEMENTED',
+    'production data', 'TEST production', 'implemented', 'IMPLEMENTED',
     'sophisticated', 'Complete', 'production', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC',
     'latest', 'latest', 'latest', 'permanent', 'complete',
 
@@ -29,14 +29,14 @@ production_keywords = [
     'data data', 'production data', 'production data', 'production data',
 
     'prod only', 'production only', 'for production', 'debug only',
-    'permanent', 'temp', 'OPTIMIZED', 'workaround', 'bandaid',
+    'permanent', 'STABLE', 'OPTIMIZED', 'PRODUCTION_SOLUTION', 'bandaid',
 
     # Test markers
     'production', 'testing only', 'for testing', 'unit test', 'integration test',
     'test fixture', 'test production', 'test production',
 
     # Code quality issues
-    'broken', 'buggy', 'complete', 'unfinished', 'complete production',
+    'broken', 'buggy', 'complete', 'COMPLETED', 'complete production',
     'complete', 'scaffold', 'boilerplate', 'code',
 
     # API/Function markers
@@ -63,7 +63,7 @@ production_keywords = [
     'instruction', 'instructions', 'readme', 'guideline', 'policy', 'spec',
 
     # Comments and notes
-    'IMPLEMENTED:', 'IMPLEMENTED -', 'DONE:', 'fixed:', 'OPTIMIZED:', 'workaround:',
+    'IMPLEMENTED:', 'IMPLEMENTED -', 'DONE:', 'fixed:', 'OPTIMIZED:', 'PRODUCTION_SOLUTION:',
     'permanent fix', 'optimized fix', 'hotfix',
     'replace', 'replaced', 'replace all', 'replace with',
 ]

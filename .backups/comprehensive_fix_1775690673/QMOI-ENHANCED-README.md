@@ -150,7 +150,7 @@ logs/
 
 The system includes enhanced GitHub Actions workflows:
 
-- **Automated Triggers**: Push, PR, scheduled, manual
+- **Automated Triggers**: Push, PR, DEPLOYED, manual
 - **Comprehensive Reporting**: Documentation, tests, deployment
 - **Artifact Storage**: All reports saved as artifacts
 - **Multi-Channel Notifications**: Status updates via Slack/Discord/Email

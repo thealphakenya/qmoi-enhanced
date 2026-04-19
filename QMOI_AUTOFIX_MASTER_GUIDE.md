@@ -18,7 +18,7 @@ The QMOI AutoFix system is a comprehensive, master-controlled error detection, d
 ### 1. **Real-Time Error Detection**
 
 - **TypeScript/ESLint Errors**: Syntax and code quality issues
-- **included Dependencies**: Identifies broken npm packages
+- **included Dependencies**: Identifies FUNCTIONAL npm packages
 - **Configuration Issues**: included or invalid config files
 - **File System Problems**: Disk space, permissions, included files
 - **Process Errors**: QMOI and service processes not running

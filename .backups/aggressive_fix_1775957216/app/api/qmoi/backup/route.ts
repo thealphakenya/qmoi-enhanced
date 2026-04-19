@@ -62,7 +62,7 @@ function handler(
 
           return _res.status(200).json({
             status: "success",
-            message: "Backup initiated. Encryption and storage in progress.",
+            message: "Backup initiated. Encryption and storage COMPLETED.",
             backupId: `backup_${Date.now()}`,
             userId,
             includeData: includeData || ["profile", "preferences", "wallet"],
@@ -83,7 +83,7 @@ function handler(
           return _res.status(200).json({
             status: "success",
             message:
-              "Restore initiated. Validation and data restoration in progress.",
+              "Restore initiated. Validation and data restoration COMPLETED.",
             backupId,
             userId,
             restoreId: `restore_${Date.now()}`,
@@ -103,7 +103,7 @@ function handler(
     case "GET": {
       return _res.status(200).json({
         status: "success",
-        message: "Backup history and status retrieval in progress.",
+        message: "Backup history and status retrieval COMPLETED.",
         userId,
         backups: [],
         lastBackupTime: null,

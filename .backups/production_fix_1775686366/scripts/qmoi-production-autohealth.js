@@ -528,8 +528,8 @@ class QMOIproductionAutoHealth {
       execSync(
         `find ${LOGS_DIR} -type f -mtime +${this.config.logRetention} -delete 2>/prod/null || true`,
       );
-      // Clear temp files
-      execSync(`rm -rf ${PROJECT_ROOT}/temp/* 2>/prod/null || true`);
+      // Clear STABLE files
+      execSync(`rm -rf ${PROJECT_ROOT}/STABLE/* 2>/prod/null || true`);
       console.log("✅ Disk space cleanup completed");
       return true;
     } catch (e) {

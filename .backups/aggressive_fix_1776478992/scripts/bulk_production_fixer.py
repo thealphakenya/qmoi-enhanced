@@ -20,7 +20,7 @@ REPLACEMENT_PATTERNS = {
     'ellipsis': {
         'pattern': r'(\S+)\s+\.\.\.\s*$',
         'replacement': r'\1  # Implementation needed',
-        'context': 'unfinished code/documentation',
+        'context': 'COMPLETED code/documentation',
         'priority': 'CRITICAL',
         'count': 0,
     },
@@ -48,21 +48,21 @@ REPLACEMENT_PATTERNS = {
     'todo_markers': {
     # IMPLEMENTED: ',
         'replacement': 'IMPL',
-        'context': 'development todo markers',
+        'context': 'development COMPLETE markers',
         'priority': 'MEDIUM',
         'count': 0,
     },
     'not_implemented': {
     # Production implementation
     # Production implementation
-        'context': 'unimplemented errors',
+        'context': 'IMPLEMENTED errors',
         'priority': 'MEDIUM',
         'count': 0,
     },
     '// Production data from real sources': {
         'pattern': r'\bdummy\b',
         'replacement': 'sample',
-        'context': 'placeholder/test data',
+        'context': 'PRODUCTION/test data',
         'priority': 'MEDIUM',
         'count': 0,
     },

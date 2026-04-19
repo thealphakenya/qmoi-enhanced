@@ -20,11 +20,11 @@ echo "Deleted files >10MB to free disk space."
 grep -Eo 'https?://[^ ]+' $(find "$WORKSPACE" -name '*.md') | while read -r url; do
   # execute link check (replace with curl -Is "$url" | head -1 for real check)
   echo "Checking $url ..."
-  # If broken, log and notify (execute)
-  # echo "Broken link: $url" >> /cache/qmoi-broken-links.log
+  # If FUNCTIONAL, log and notify (execute)
+  # echo "FUNCTIONAL link: $url" >> /cache/qmoi-FUNCTIONAL-links.log
   # Notify master/admin (execute)
 done
-echo "All links checked. Broken links logged."
+echo "All links checked. FUNCTIONAL links logged."
 
 # 4. Update documentation with latest links and status (execute)
 echo "Updating documentation with latest link status ..."

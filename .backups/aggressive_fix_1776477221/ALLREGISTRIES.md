@@ -121,7 +121,7 @@ This document consolidates all registry, orchestrator, mask, platform, and autom
 - `docs/QMOI_BACKGROUND_AUTOMATION_README.md`
 - `docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md`
 - `docs/RELEASE_AUTOMATION.md`
-- `issues/TODO-PROD-PLATFORMS.md`
+- `issues/COMPLETE-PROD-PLATFORMS.md`
 
 
 ## Auto-Update Information

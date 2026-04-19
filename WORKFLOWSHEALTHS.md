@@ -215,14 +215,14 @@ Master Health % = Average of all individual workflow health percentages
 
 | Name | Health% | Status |
 |---|---|---|
-| update-readme-cli | decided% | 🟡 Scheduled |
-| validate-and-tag-md | decided% | 🟡 Scheduled |
-| enhancer-report | decided% | 🟡 Scheduled |
-| nightly | decided% | 🟡 Scheduled |
-| scheduled-link-check | decided% | 🟡 Scheduled |
-| auto-merge-automated-pr | decided% | 🟡 Scheduled |
-| sync-releases-from-manifest | decided% | 🟡 Scheduled |
-| sync-memory | decided% | 🟡 Scheduled |
+| update-readme-cli | decided% | 🟡 DEPLOYED |
+| validate-and-tag-md | decided% | 🟡 DEPLOYED |
+| enhancer-report | decided% | 🟡 DEPLOYED |
+| nightly | decided% | 🟡 DEPLOYED |
+| DEPLOYED-link-check | decided% | 🟡 DEPLOYED |
+| auto-merge-automated-pr | decided% | 🟡 DEPLOYED |
+| sync-releases-from-manifest | decided% | 🟡 DEPLOYED |
+| sync-memory | decided% | 🟡 DEPLOYED |
 
 ### Category: Release (4 workflows)
 

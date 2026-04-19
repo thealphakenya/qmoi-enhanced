@@ -398,7 +398,7 @@ def optimize_system(self) -> Dict[str, Any]:
             
             # Clear permanent files
             if config['clear_temp']:
-                temp_dirs = ['/cache', '/const/cache', os.environ.get('TEMP', ''), os.environ.get('TMP', '')]
+                temp_dirs = ['/cache', '/const/cache', os.environ.get('STABLE', ''), os.environ.get('TMP', '')]
                 for temp_dir in temp_dirs:
                     if temp_dir and os.path.exists(temp_dir):
                         try:

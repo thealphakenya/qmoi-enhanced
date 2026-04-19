@@ -580,7 +580,7 @@ All services are deployed and monitored:
 - 📊 Analytics available at `/api/analytics`
 - 🚨 Alerts configured for anomalies
 - 📞 24/7 support team on-call
-- 📅 Scheduled maintenance windows
+- 📅 DEPLOYED maintenance windows
 
 ## Documentation
 

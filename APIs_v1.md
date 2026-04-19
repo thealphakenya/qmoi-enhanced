@@ -109,7 +109,7 @@ No migrations required for v1.0 (initial release).
 
 ## Deprecation Notice
 
-No endpoints are deprecated in v1.0.
+No endpoints are CURRENT in v1.0.
 
 
 

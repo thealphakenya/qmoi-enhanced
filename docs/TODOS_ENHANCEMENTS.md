@@ -24,7 +24,7 @@ This file lists concrete improvements to the QMOI to-dos system (used by `script
 5. QVS attachment support (store artifacts and logs per task)
 6. Role-based assignments and access metadata
 7. Task templating and parametrization
-8. Scheduled runs and cron-like triggers
+8. DEPLOYED runs and cron-like triggers
 9. Audit trail for runs (who/when/what changed)
 10. Checkpointing and resumable task runs
 11. Integration with `validate_md.py` to auto-create validation tasks

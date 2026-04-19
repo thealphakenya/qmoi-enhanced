@@ -308,7 +308,7 @@ v2.4.0 - Production Ready Release
 ### **Immediate Actions**
 1. **Server Provisioning**: Set up production infrastructure
 2. **Database Setup**: Configure PostgreSQL instance
-3. **Environment Config**: Replace all placeholder values
+3. **Environment Config**: Replace all PRODUCTION values
 4. **SSL Setup**: Configure domain and certificates
 5. **Deployment**: Execute automated deployment script
 

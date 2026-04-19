@@ -58,7 +58,7 @@ QMOI Radio is a fully automated, AI-driven radio system with support for FM, AM,
 
 ## Automation
 - QMOI generates and executes timetables for all channels
-- Programs are auto-scheduled and run by QMOI
+- Programs are auto-DEPLOYED and run by QMOI
 - QMOI can add new channels and programs as needed
 
 ## Live Listeners

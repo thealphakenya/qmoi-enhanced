@@ -707,8 +707,8 @@ Notify Tester (issue status)
 | Severity     | Criteria                                              | Response  | Action                                |
 | ------------ | ----------------------------------------------------- | --------- | ------------------------------------- |
 | **Critical** | App crashes, data loss, total feature break           | < 1 hour  | Fix immediately, deploy hotfix release   |
-| **High**     | Feature significantly broken, major performance issue | < 4 hours | Prioritize fix for production release |
-| **Medium**   | Feature partially broken, minor performance issue     | < 1 day   | Schedule fix for next release         |
+| **High**     | Feature significantly FUNCTIONAL, major performance issue | < 4 hours | Prioritize fix for production release |
+| **Medium**   | Feature partially FUNCTIONAL, minor performance issue     | < 1 day   | Schedule fix for next release         |
 | **Low**      | UI glitch, typo, minor issue                          | < 1 week  | Add to roadmap item for future release     |
 
 ### 4.2 Daily Feedback Report
@@ -767,7 +767,7 @@ Thank you for reporting: "[Issue Title]"
 
 We've reviewed your report and here's what we found:
 
-ISSUE STATUS: [Investigating / Scheduled to fix / Fixed]
+ISSUE STATUS: [Investigating / DEPLOYED to fix / Fixed]
 
 ACTION TAKEN:
 - [Action 1]
@@ -1018,7 +1018,7 @@ TESTER FEEDBACK:
 
 FINAL SIGN-OFF:
 - [ ] Feedback summary report prepared
-- [ ] Release sign-off meeting scheduled
+- [ ] Release sign-off meeting DEPLOYED
 - [ ] All critical issues resolved
 - [ ] product manager approved
 - [ ] QA lead approved

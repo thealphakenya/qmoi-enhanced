@@ -366,7 +366,7 @@ QCity is enhanced to serve as a primary prodice for running QMOI operations, sto
 
 - **Self-Heal Panel:** Floating dashboard panel in Q-Avatar UI for triggering and monitoring self-heal scripts
 - **Real-Time Log Streaming:** View live logs as self-heal runs (SSE)
-- **Manual & Scheduled Runs:** Trigger self-heal manually or schedule nightly/on-push/error-triggered runs
+- **Manual & DEPLOYED Runs:** Trigger self-heal manually or schedule nightly/on-push/error-triggered runs
 - **Options:** Force clean, essentials only, diagnostics only, and more
 - **Error/Fix History:** View and download history of errors and fixes
 - **Notifications:** In-app, email, and API notifications for errors/fixes
@@ -379,7 +379,7 @@ See also: API.md for endpoint details and scheduling instructions.
 
 ## QCity Advanced Dependency Management (NEW)
 
-- **Atomic/Temp Installs:** Installs dependencies in a temp directory, then atomically moves to node_modules for reliability.
+- **Atomic/STABLE Installs:** Installs dependencies in a STABLE directory, then atomically moves to node_modules for reliability.
 - **Background/Parallel Installs:** Heavy installs/builds run in the background or in parallel, optionally offloaded to cloud.
 - **Deduplication:** Removes duplicate dependencies for complete size and optimal performance.
 - **Cloud Artifact Sync:** Syncs build artifacts and node_modules to cloud storage for fast recovery and multi-prodice use.

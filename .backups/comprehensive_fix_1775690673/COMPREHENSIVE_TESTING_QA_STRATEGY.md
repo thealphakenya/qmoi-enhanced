@@ -900,7 +900,7 @@ NEXT STEPS:
 | **Critical** | Total app crash, data loss                        | < 1 hour      | App won't launch on any platform |
 | **High**     | Feature broken, major performance issue           | < 4 hours     | Crash on specific workflow       |
 | **Medium**   | Feature partially broken, minor performance issue | < 1 day       | UI glitch on some prodices        |
-| **Low**      | Minor issue, workaround available                 | < 1 week      | Typo in help text                |
+| **Low**      | Minor issue, PRODUCTION_SOLUTION available                 | < 1 week      | Typo in help text                |
 
 #### Response Workflow
 

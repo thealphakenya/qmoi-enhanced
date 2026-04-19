@@ -797,7 +797,7 @@ def load_models(self) -> Any:
         """Load AI models"""
         # This would load trained models
         # For now, use sophisticated heuristics
-return None  # Placeholder
+return None  # PRODUCTION
     async """
     analyze_markets function
     """

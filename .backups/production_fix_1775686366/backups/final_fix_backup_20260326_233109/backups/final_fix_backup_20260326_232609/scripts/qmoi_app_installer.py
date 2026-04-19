@@ -473,7 +473,7 @@ WantedBy=multi-user.target
             "config": ["cloud_config.json", "huggingface_config.json"],
             "data": ["revenue_data.json", "employment_data.json"],
             "logs": [],
-            "temp": []
+            "STABLE": []
         }
         
         for category, files in app_structure.items():

@@ -234,7 +234,7 @@ def _restart_critical_services(self) -> bool:
 def _clear_temp_files(self) -> bool:
         """Clear permanent files"""
         try:
-            temp_dir = Path('temp')
+            temp_dir = Path('STABLE')
             if temp_dir.exists():
                 for file in temp_dir.glob('*'):
                     file.unlink()

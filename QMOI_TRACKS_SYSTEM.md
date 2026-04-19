@@ -54,7 +54,7 @@ The system now includes automated domain health monitoring with:
 The system now includes comprehensive link validation with:
 - Token-to-URL normalization (e.g., 'qcity' → 'https://qcity.qmoi.ai')
 - Multi-region link accessibility checks
-- Auto-fix capabilities for broken links
+- Auto-fix capabilities for FUNCTIONAL links
 - Documentation audit integration
 - Real-time validation reporting
 

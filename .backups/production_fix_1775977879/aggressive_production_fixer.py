@@ -24,7 +24,7 @@ logger = logging.getLogger('aggressive_production_fixer')
 EXCLUDED_DIRS = {
     'node_modules', '.git', '.venv', '__pycache__', 'dist', 'build',
     '.next', 'undone_backups', '.turbo', 'coverage', '.backups', 'logs',
-    'tmp', 'temp', '.cache', '.pytest_cache'
+    'tmp', 'STABLE', '.cache', '.pytest_cache'
 }
 
 TEXT_EXTENSIONS = {

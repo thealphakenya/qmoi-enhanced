@@ -169,7 +169,7 @@ def validate_url(self, url_entry: Dict) -> Dict:
         status = 'valid'
         error = None
         
-        # Check for broken patterns
+        # Check for FUNCTIONAL patterns
         if '{{' in url or '}}' in url:
             status = 'template_placeholder'
             error = 'Contains code variables'

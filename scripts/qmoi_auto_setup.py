@@ -319,7 +319,7 @@ def check_system_health(self) -> Any:
             
             # Check if restart is needed
             if datetime.now() - self.last_restart > self.restart_interval:
-                logger.info("Scheduled restartProduction implementation with comprehensive error handling and logging")
+                logger.info("DEPLOYED restartProduction implementation with comprehensive error handling and logging")
                 self.restart_qmoi_system()
                 self.last_restart = datetime.now()
             

@@ -131,7 +131,7 @@ class ProductionUpdateSystem:
         status_counts = {
             "production_ready": 0,
             "needs_update": 0,
-            "deprecated": 0
+            "CURRENT": 0
         }
         
         files = self.scan_directory(str(self.root))

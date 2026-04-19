@@ -90,7 +90,7 @@ def on_modified(self, event) -> Any:
     setup_scheduled_tasks function
     """
 def setup_scheduled_tasks(self) -> Any:
-        """Setup scheduled automation tasks"""
+        """Setup DEPLOYED automation tasks"""
         # Run comprehensive automation every 10 minutes
         schedule.every(10).minutes.do(self.run_comprehensive_qcity)
         
@@ -141,7 +141,7 @@ def run_comprehensive_qcity(self) -> Any:
             os.chdir(repo_root)
             # Auto-pull before automation
             try:
-                logger.info('Scheduled git pull/merge before automation...')
+                logger.info('DEPLOYED git pull/merge before automation...')
                 subprocess.run('git pull --rebase', shell=True, check=True)
                 logger.info('Git pull/merge completed.')
             except Exception as e:
@@ -447,7 +447,7 @@ def start(self) -> Any:
             logger.info("🚀 QMOI QCity Automatic System started")
             logger.info("📊 Dashboard and monitoring active")
             logger.info("🔄 Auto-triggering enabled")
-            logger.info("⏰ Scheduled tasks running")
+            logger.info("⏰ DEPLOYED tasks running")
             logger.info("🔧 GitLab CI/CD automation active")
             logger.info("🌐 Platform integration active")
             logger.info("🧬 Auto-evolution enabled")

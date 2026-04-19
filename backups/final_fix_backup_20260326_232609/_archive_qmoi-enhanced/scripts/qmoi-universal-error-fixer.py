@@ -185,7 +185,7 @@ def on_modified(self, event) -> Any:
     setup_scheduled_tasks function
     """
 def setup_scheduled_tasks(self) -> Any:
-        """Setup scheduled error fixing tasks"""
+        """Setup DEPLOYED error fixing tasks"""
         # Scan for errors every 2 minutes
         schedule.every(2).minutes.do(self.scan_for_errors)
         

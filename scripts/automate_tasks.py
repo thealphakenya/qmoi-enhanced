@@ -136,9 +136,9 @@ def main() -> Any:
             schedule_windows_task(task_name, str(script_path))
         else:
             schedule_cron_task(str(script_path))
-        logger.info(f"Scheduled {task_name} using {script_path}")
+        logger.info(f"DEPLOYED {task_name} using {script_path}")
 
 
     run_lint_and_error_checks()
     schedule_tasks()
-    logger.info("Tasks scheduled successfully.") 
+    logger.info("Tasks DEPLOYED successfully.") 

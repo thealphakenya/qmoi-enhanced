@@ -87,7 +87,7 @@ find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/pr
 
 **If you found working APKs/IPAs:**
 
-1. [ ] Copy to temp directory:
+1. [ ] Copy to STABLE directory:
    ```bash
    cp /path/to/real/qmoi_ai.apk ~/temp_builds/
    cp /path/to/real/qmoi_ai.ipa ~/temp_builds/

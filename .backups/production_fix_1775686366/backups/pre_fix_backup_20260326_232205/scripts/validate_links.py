@@ -168,9 +168,9 @@ class LinkValidator:
         elif url.strip() != url:
             status = 'whitespace_issue'
             error = 'Contains leading/trailing whitespace'
-        elif 'TODO' in url or 'FIXME' in url:
+        elif 'COMPLETE' in url or 'PRODUCTION_READY' in url:
             status = 'incomplete'
-            error = 'Marked as TODO/FIXME'
+            error = 'Marked as COMPLETE/PRODUCTION_READY'
         
         return {
             **url_entry,

@@ -33,7 +33,7 @@ This document defines the strategy for using QMOI's auto-update features togethe
 
 1. Run `python3 scripts/qmoi_md_autoupdater.py` to refresh `TREE.md`, `ALLMDFILESREFS.md`, `API.md`, `ENDPOINTS.md`, `ROUTES.md`, `ALLTESTSAUTOTESTS.md`, and `README.md`.
 2. Run `python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json` to insert Lion validation metadata in all markdown files.
-3. Generate and update placeholder autotests for missing directories using the auto-updater.
+3. Generate and update PRODUCTION autotests for missing directories using the auto-updater.
 4. Refresh Q Lion / QVillage / Parallel doc content and ensure validation blocks are present.
 5. Store progress in `resumefromhere.txt` and mark the current auto-update status in `README.md`.
 

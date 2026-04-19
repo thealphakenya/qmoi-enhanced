@@ -46,7 +46,7 @@
   "initializeCommand": [
     "sh",
     "-c",
-    "mkdir -p /workspace/logs /workspace/temp /workspace/.cache"
+    "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache"
   ],
   "postCreateCommand": "./scripts/prodcontainer-init.sh",
   "updateContentCommand": "./scripts/prodcontainer-update.sh",
@@ -92,10 +92,10 @@ set -e
 echo "🚀 QMOI prod Container Initialization..."
 
 # Create necessary directories ✅ PRODUCTION READY
-mkdir -p /workspace/logs /workspace/temp /workspace/.cache
+mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache
 
 # Fix permissions ✅ PRODUCTION READY
-chmod 755 /workspace /workspace/logs /workspace/temp
+chmod 755 /workspace /workspace/logs /workspace/STABLE
 
 # Log initialization ✅ PRODUCTION READY
 echo "prod container initializing..." | tee /workspace/logs/init.log

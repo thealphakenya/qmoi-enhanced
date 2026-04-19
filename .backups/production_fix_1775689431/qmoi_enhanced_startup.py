@@ -151,7 +151,7 @@ def setup_environment(self) -> Any:
         directories = [
             "employment_letters", "logs", "reports", "models/latest",
             "huggingface_space", "data", "config", "keys", "backups",
-            "cloud_cache", "temp", "artifacts", "distributions",
+            "cloud_cache", "STABLE", "artifacts", "distributions",
             "qmoi_avatars", "qmoi_deals", "qmoi_revenue", "qmoi_platforms"
         ]
         
@@ -686,7 +686,7 @@ def optimize_system(self) -> Any:
         """Optimize system performance"""
         try:
             # Clear permanent files
-            temp_dirs = ["temp", "cloud_cache", "logs"]
+            temp_dirs = ["STABLE", "cloud_cache", "logs"]
             for temp_dir in temp_dirs:
                 if os.path.exists(temp_dir):
                     for file in os.listdir(temp_dir):

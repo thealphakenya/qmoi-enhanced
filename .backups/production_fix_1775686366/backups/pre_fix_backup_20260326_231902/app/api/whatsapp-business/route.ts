@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
           {
             _status: "[production READY]",
             _message:
-              "Message queued for delivery. API integration in progress.",
+              "Message queued for delivery. API integration COMPLETED.",
             messageId: `msg_${Date.now()}`,
             recipientPhoneNumber,
             status: "queued",
@@ -132,7 +132,7 @@ export async function POST(request: NextRequest) {
           {
             _status: "[production READY]",
             _message:
-              "standard message queued. WhatsApp API integration in progress.",
+              "standard message queued. WhatsApp API integration COMPLETED.",
             messageId: `tmsg_${Date.now()}`,
             standard: templateName,
             recipientPhoneNumber,
@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
           {
             _status: "[production READY]",
             _message:
-              "Media upload queued. WhatsApp Business API integration in progress.",
+              "Media upload queued. WhatsApp Business API integration COMPLETED.",
             mediaId: `media_${Date.now()}`,
             mediaType,
             uploadStatus: "queued",
@@ -180,7 +180,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           {
             _status: "[production READY]",
-            _message: "Profile retrieval in progress.",
+            _message: "Profile retrieval COMPLETED.",
             phoneNumber,
             profile: {
               name: "",

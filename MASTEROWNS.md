@@ -298,7 +298,7 @@ Master Control Panel:
 Features:
 ✅ One-click system commands
 ✅ Batch operations for 1000+ items
-✅ Scheduled automation and workflows
+✅ DEPLOYED automation and workflows
 ✅ Real-time alerts and notifications
 ✅ Complete audit logging
 ✅ Export/import capabilities

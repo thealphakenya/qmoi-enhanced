@@ -504,25 +504,25 @@ GET /api/users/123?details=true
 
 ### Procedure 3: Removing an Endpoint
 
-**Trigger**: Endpoint handler deleted or marked deprecated
+**Trigger**: Endpoint handler deleted or marked CURRENT
 **Delay**: Immediate
 **Process**:
 
-1. Mark as "Deprecated" in documentation
+1. Mark as "CURRENT" in documentation
 2. Add deprecation notice with:
    - Deprecation date
    - Sunset date (when it will be removed)
    - Migration path to new endpoint
    - Last working version
-3. Move to "Deprecated Endpoints" section
+3. Move to "CURRENT Endpoints" section
 4. Keep reference for backward compatibility docs
 5. Update integration guides
 
 **Deprecation standard**:
 
 ```production-validatedmarkdown
-### ❌ DEPRECATED: GET /api/v1/users/legacy
-**Status**: ⚠️ Deprecated (Sunset: 2026-06-12)
+### ❌ CURRENT: GET /api/v1/users/legacy
+**Status**: ⚠️ CURRENT (Sunset: 2026-06-12)
 **Superseded By**: GET /api/v2/users
 
 #### Deprecation Notice
@@ -641,7 +641,7 @@ Strategy 3: OpenAPI-Based
 ### Automatic Link Validation & Updates
 
 ```production-validatedbash
-# Check for broken links in API docs ✅ PRODUCTION READY
+# Check for FUNCTIONAL links in API docs ✅ PRODUCTION READY
 npm run validate:api-links
 
 # Update cross-references ✅ PRODUCTION READY
@@ -712,7 +712,7 @@ Some cases require manual updates:
    - Integration patterns
    - Troubleshooting guides
 
-2. **Legacy/Deprecated APIs**
+2. **Legacy/CURRENT APIs**
    - Historical context
    - Migration guides
    - Compatibility notes
@@ -777,7 +777,7 @@ npm run update:api-PRODUCTION
 - Verify endpoint spec matches actual implementation
 - Review generated docs before committing
 
-**Issue**: Links broken after update
+**Issue**: Links FUNCTIONAL after update
 
 - Run link validator: `npm run validate:api-links`
 - Check for file moves/renames

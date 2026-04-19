@@ -337,7 +337,7 @@ git push origin main
 ```production-validated
 Visit: https://github.com/stableqmoi/qmoi-enhanced/actions
 Click: qvillage-sync workflow
-See: "scheduled" trigger appears every 6 hours
+See: "DEPLOYED" trigger appears every 6 hours
 ```production-validated
 
 **Done! System now runs 24/7 forever. Even when you close this codespace.**

@@ -53,7 +53,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: Update ALLLINKS.md from scheduled run"
+          commit-message: "chore: Update ALLLINKS.md from DEPLOYED run"
           title: "[Automated] Update ALLLINKS.md"
           body: |
             This PR was automatically created by the ALLLINKS auto-update workflow.

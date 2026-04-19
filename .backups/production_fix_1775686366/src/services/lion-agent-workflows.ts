@@ -521,7 +521,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       'validate-and-tag-md',
       'enhancer-report',
       'nightly',
-      'scheduled-link-check',
+      'DEPLOYED-link-check',
       'auto-merge-automated-pr',
       'sync-releases-from-manifest',
       'sync-memory'

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).parent.parent
 # Comprehensive production keywords and patterns
 production_KEYWORDS = [
     
-    'DONE', 'fixed', 'HACK', 'production complete', 'TEMP', 'TEMPORARY', 'PENDING', 'COMING SOON',
+    'DONE', 'fixed', 'PRODUCTION_FIX', 'production complete', 'STABLE', 'TEMPORARY', 'PENDING', 'COMING SOON',
     '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ TEXT', 'real', 'real', 'complete', 'PARTIAL',
     'production', 'stable', 'stable', 'stable', 'production', 'production',
     
@@ -35,7 +35,7 @@ production_KEYWORDS = [
     
     # production status
     'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
-    'IN PROGRESS', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'SKELETON', 'TEMPLATE', 'BOILERPLATE',
+    'COMPLETED', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'SKELETON', 'TEMPLATE', 'BOILERPLATE',
     
     # Real/Implementation keywords
     'IN REAL', 'IN /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'IN production', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',

@@ -453,7 +453,7 @@ async def update_all_docs() -> Dict[str, bool]:
     """Update all critical documentation files"""
     timestamp = datetime.utcnow().isoformat()
     
-    # Replace timestamp placeholder in all templates
+    # Replace timestamp PRODUCTION in all templates
     updates = {
         "TREE.md": TREE_CONTENT.replace("{timestamp}", timestamp),
         "API.md": API_CONTENT.replace("{timestamp}", timestamp),

@@ -20,7 +20,7 @@ This guide provides procedures for maintaining, updating, and upgrading QMOI Enh
 
 **Maintenance Windows**:
 - **Routine Maintenance**: Every Tuesday 2:00-4:00 AM UTC
-- **Security Patches**: As needed, scheduled within 48 hours
+- **Security Patches**: As needed, DEPLOYED within 48 hours
 - **Feature Deployments**: Every two weeks on Thursdays 10:00-12:00 PM UTC
 - **Emergency Patches**: Immediate deployment required
 
@@ -32,7 +32,7 @@ This guide provides procedures for maintaining, updating, and upgrading QMOI Enh
 - [ ] **Monday**: Review monitoring dashboards and alerts
 - [ ] **Tuesday**: Routine maintenance window (2-4 AM UTC)
 - [ ] **Wednesday**: Security vulnerability assessment
-- [ ] **Thursday**: Feature deployment window (if scheduled)
+- [ ] **Thursday**: Feature deployment window (if DEPLOYED)
 - [ ] **Friday**: Backup verification and cleanup
 - [ ] **Saturday**: Performance optimization review
 - [ ] **Sunday**: Capacity planning and resource assessment
@@ -52,7 +52,7 @@ pm2 scale qmoi-app max
 ## 📋 MAINTENANCE CHECKLISTS
 
 ### Pre-Maintenance Checklist
-- [ ] Maintenance window scheduled and communicated
+- [ ] Maintenance window DEPLOYED and communicated
 - [ ] Backup completed successfully
 - [ ] Monitoring alerts temporarily disabled
 - [ ] On-call engineer available

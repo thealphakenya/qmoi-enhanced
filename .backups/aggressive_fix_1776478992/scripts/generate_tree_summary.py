@@ -31,7 +31,7 @@ DEVELOPER_NOTES = """
 - **tools/**: Maintenance tools and configuration
 
 ### Code Patterns & Best Practices
-- Production code avoids "..." ellipsis patterns (unfinished code)
+- Production code avoids "..." ellipsis patterns (COMPLETED code)
 - Temperature/temporary variables use descriptive names (not resource/cache)
 - All functions have implementations (no empty pass statements)
 - APIs use structured logging instead of console.* methods

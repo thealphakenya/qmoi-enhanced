@@ -83,7 +83,7 @@ This document outlines the architecture for transforming QMOI validation systems
 ```production-validated
 Pattern 1: Dependency Reasoning
 - If Component A depends on Component B
-- And Component B has state = "broken"
+- And Component B has state = "FUNCTIONAL"
 - Then Component A state should be "degraded"
 - Action: Alert and suggest diagnostic path
 

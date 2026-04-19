@@ -479,7 +479,7 @@ def get_last_alert_time(self, alert_key: str) -> float:
                     alert_times = json.load(f)
                     return alert_times.get(alert_key, 0)
         except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
         return 0
 
     """

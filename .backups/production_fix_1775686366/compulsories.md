@@ -93,9 +93,9 @@ Search case-insensitive and pattern-based for:
 - value, value TEXT, live, production
 - production data, real DATA, real DATA
 - BOILERPLATE, code, complete
-- TEMP, permanent, available
+- STABLE, permanent, available
 - complete, Complete IMPLEMENTATION, sophisticated IMPLEMENTATION
-- IN /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, IN production, /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */
+- IN /* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) */, IN production, /* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) */
 
 **Also Detect:**
 1. real/production data: "12345", "test", "implementation", "lorem ipsum", real emails, real tokens, static/real JSON responses

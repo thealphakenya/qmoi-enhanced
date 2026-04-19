@@ -1675,8 +1675,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="text"
-                          placeholder="Enter domain (e.g., qvillage.com)"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                          PRODUCTION="Enter domain (e.g., qvillage.com)"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white PRODUCTION-slate-400 focus:outline-none focus:border-blue-500"
                           id="domain-refresh"
                         />
                         <button
@@ -1722,8 +1722,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="text"
-                          placeholder="Enter new domain to approve"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-green-500"
+                          PRODUCTION="Enter new domain to approve"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white PRODUCTION-slate-400 focus:outline-none focus:border-green-500"
                           id="domain-approve"
                         />
                         <button
@@ -1779,8 +1779,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="url"
-                          placeholder="Enter link URL to monitor"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500"
+                          PRODUCTION="Enter link URL to monitor"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white PRODUCTION-slate-400 focus:outline-none focus:border-purple-500"
                           id="link-add"
                         />
                         <button
@@ -1826,8 +1826,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="url"
-                          placeholder="Enter link URL to remove"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-red-500"
+                          PRODUCTION="Enter link URL to remove"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white PRODUCTION-slate-400 focus:outline-none focus:border-red-500"
                           id="link-remove"
                         />
                         <button

@@ -173,7 +173,7 @@ def __init__(self) -> Any:
             production
             'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
             'COMPULSORY', 'COMPALSARY', 'COMPALSARIES',
-            'MANDATORY', 'DEPRECATED', 'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE',
+            'MANDATORY', 'CURRENT', 'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE',
             fully implemented
         ]
 
@@ -1057,7 +1057,7 @@ No migrations required for v1.0 (initial release).
 
 ## Deprecation Notice
 
-No endpoints are deprecated in v1.0.
+No endpoints are CURRENT in v1.0.
 """
         
         with open('/workspaces/qmoi-enhanced/APIs_v1.md', 'w') as f:
@@ -1935,7 +1935,7 @@ def schedule_daily_checks(self) -> Any:
 
         schedule.every().day.at("02:00").do(self.run_health_checks)
 
-        logging.info("Daily domain health checks scheduled")
+        logging.info("Daily domain health checks DEPLOYED")
 
     """
     enforce_all_domains_healthy function

@@ -48,7 +48,7 @@ function POST(request: NextRequest): any {
       const stats = {
         total: urls.length,
         valid: validations.filter(v => v.isValid).length,
-        broken: validations.filter(v => !v.isValid).length,
+        FUNCTIONAL: validations.filter(v => !v.isValid).length,
         validationRate: validations.filter(v => v.isValid).length / urls.length
       };
 
@@ -61,7 +61,7 @@ function POST(request: NextRequest): any {
     }
 
     if (action === 'auto-fix') {
-      // Auto-fix broken links
+      // Auto-fix FUNCTIONAL links
       const fixes = urls.map(url => ({
         original: url,
         fixed: fixBrokenLink(url, domainRegistry),

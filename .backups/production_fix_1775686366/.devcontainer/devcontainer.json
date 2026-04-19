@@ -16,7 +16,7 @@
   "initializeCommand": [
     "sh",
     "-c",
-    "mkdir -p /workspace/logs /workspace/temp /workspace/.cache /workspace/.vscode-server"
+    "mkdir -p /workspace/logs /workspace/STABLE /workspace/.cache /workspace/.vscode-server"
   ],
   "postCreateCommand": "bash .prodcontainer/prodcontainer-init.sh",
   "updateContentCommand": "bash .prodcontainer/prodcontainer-update.sh",

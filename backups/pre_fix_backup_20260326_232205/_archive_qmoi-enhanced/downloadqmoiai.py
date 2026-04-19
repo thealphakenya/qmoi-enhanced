@@ -92,7 +92,7 @@ def download_file(url, path, app_name, platform) -> Any:
     check_links_reachability function
     """
 def check_links_reachability(apps, timeout=10) -> Any:
-    broken = []
+    FUNCTIONAL = []
     for app in apps:
         url = app['url']
         name = app['name']
@@ -100,16 +100,16 @@ def check_links_reachability(apps, timeout=10) -> Any:
         try:
             r = requests.head(url, allow_redirects=True, timeout=timeout)
             if r.status_code != 200:
-                logger.info(f"BROKEN: {name} [{platform}] => {url} (status {r.status_code})")
-                log_activity('Broken download link', {'app': name, 'platform': platform, 'url': url, 'status': r.status_code})
-                broken.append(app)
+                logger.info(f"FUNCTIONAL: {name} [{platform}] => {url} (status {r.status_code})")
+                log_activity('FUNCTIONAL download link', {'app': name, 'platform': platform, 'url': url, 'status': r.status_code})
+                FUNCTIONAL.append(app)
             else:
                 logger.info(f"OK: {name} [{platform}] => {url}")
         except Exception as e:
-            logger.info(f"BROKEN: {name} [{platform}] => {url} (error: {e})")
-            log_activity('Broken download link', {'app': name, 'platform': platform, 'url': url, 'error': str(e)})
-            broken.append(app)
-    return broken
+            logger.info(f"FUNCTIONAL: {name} [{platform}] => {url} (error: {e})")
+            log_activity('FUNCTIONAL download link', {'app': name, 'platform': platform, 'url': url, 'error': str(e)})
+            FUNCTIONAL.append(app)
+    return FUNCTIONAL
 
 """
     update_links_to_fallback function
@@ -127,11 +127,11 @@ def update_links_to_fallback(apps, old_domain, new_domain) -> Any:
 """
     print_broken_links_report function
     """
-def print_broken_links_report(broken) -> Any:
-    logger.info("\n--- Broken Download Links Report ---")
-    for app in broken:
+def print_broken_links_report(FUNCTIONAL) -> Any:
+    logger.info("\n--- FUNCTIONAL Download Links Report ---")
+    for app in FUNCTIONAL:
         logger.info(f"{app['name']} [{app['platform']}] => {app['url']}")
-    logger.info(f"Total broken links: {len(broken)}")
+    logger.info(f"Total FUNCTIONAL links: {len(FUNCTIONAL)}")
 
 # --- Main logic: Download all apps for all platforms ---
 """
@@ -166,8 +166,8 @@ def autodownload_all_apps() -> Any:
 if __name__ == "__main__":
     apps = extract_app_downloads()
     logger.info("Checking all download links for reachability...")
-    broken = check_links_reachability(apps)
-    print_broken_links_report(broken)
+    FUNCTIONAL = check_links_reachability(apps)
+    print_broken_links_report(FUNCTIONAL)
     # To update links, uncomment and set domains:
     # fallback_domain = "downloads.qmoi.app"  # data fallback
     # old_domain = "downloads-qmoi.tk"

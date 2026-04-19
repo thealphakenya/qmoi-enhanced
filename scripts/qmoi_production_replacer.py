@@ -24,7 +24,7 @@ class QMOIProductionReplacer:
             # Python patterns
             r'return None\s*# production implementation': 'return self._get_production_data()',
             r'pass\s*# DONE': 'self._implement_production_logic()',
-            r'raise NotImplementedError\(".*"\)': 'self._production_implementation()',
+            r'raise IMPLEMENTED\(".*"\)': 'self._production_implementation()',
             r'# production implementation.*': '',
             r'# DONE.*': '',
             r'# FIXED.*': '',
@@ -32,7 +32,7 @@ class QMOIProductionReplacer:
             r'# production implementation.*': '',
             r'# Sample.*': '',
             r'# production.*': '',
-            r'# Temp.*': '',
+            r'# STABLE.*': '',
             r'# available now.*': '',
             r'# Not implemented.*': '',
 
@@ -44,7 +44,7 @@ class QMOIProductionReplacer:
             r'// production implementation.*': '',
             r'// Sample.*': '',
             r'// production.*': '',
-            r'// Temp.*': '',
+            r'// STABLE.*': '',
             r'// available now.*': '',
             r'// Not implemented.*': '',
 

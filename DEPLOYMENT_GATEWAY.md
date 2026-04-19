@@ -243,7 +243,7 @@ vercel logs qmoi-enhanced --prod
 
 If deployment fails, Vercel will automatically:
 
-1. Stop broken deployment
+1. Stop FUNCTIONAL deployment
 2. Revert to previous latest version
 3. Trigger auto-fix system
 4. Retry with fixes applied

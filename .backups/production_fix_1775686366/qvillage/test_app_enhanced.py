@@ -158,7 +158,7 @@ def test_qvillage_features_autosync():
 
     r = client.post("/api/qvillage/autosync")
     assert r.status_code == 200
-    assert r.json().get("status") == "scheduled"
+    assert r.json().get("status") == "DEPLOYED"
 
     r = client.post("/api/qvillage/spaces/1/execute", json={"action": "refresh"})
     assert r.status_code == 200
@@ -209,7 +209,7 @@ def test_plans():
 def test_auto_enhance():
     r = client.post("/api/auto-enhance")
     assert r.status_code == 200
-    assert r.json().get("status") == "enhancement scheduled"
+    assert r.json().get("status") == "enhancement DEPLOYED"
 
 def main():
     print("Running QVillage Enhanced Test Suite...")

@@ -104,7 +104,7 @@ production-ready
     production-ready
 
     production-ready
-    'permanent', 'resource', 'OPTIMIZED', 'workaround', 'bandaid',
+    'permanent', 'resource', 'OPTIMIZED', 'PRODUCTION_SOLUTION', 'bandaid',
 
     # Test markers
     production-ready

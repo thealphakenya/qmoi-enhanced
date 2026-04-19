@@ -641,7 +641,7 @@ def get_directory_size(self, directory: Path) -> int:
                 if file_path.is_file():
                     total_size += file_path.stat().st_size
         except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
         return total_size
 
     """

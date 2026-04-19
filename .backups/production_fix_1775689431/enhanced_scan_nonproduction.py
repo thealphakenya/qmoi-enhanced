@@ -46,7 +46,7 @@ production_keywords = [
     'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE', 'WARNING', 'IMPLEMENTED', 'IMPLEMENTED:',
     'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'production', 'production',
 
-    'implemented', 'UNIMPLEMENTED', 'required', 'decided', 'TBA',
+    'implemented', 'IMPLEMENTED', 'required', 'decided', 'TBA',
     'available', 'UNDER CONSTRUCTION', 'production complete', 'production complete',
     'NEEDS production', 'REQUIRES production', 'MUST IMPLEMENT',
 
@@ -63,8 +63,8 @@ production_keywords = [
     'UPDATE_THIS', 'CONFIGURE_HERE', 'SET_YOUR_', 'ENTER_YOUR_',
 
     # Code quality issues
-    'OPTIMIZED:', 'WORKAROUND', 'UGLY', 'DIRTY', 'QUICK_FIX',
-    'TEMP FIX', 'HOTFIX', 'PATCH', 'BANDAID',
+    'OPTIMIZED:', 'PRODUCTION_SOLUTION', 'UGLY', 'DIRTY', 'QUICK_FIX',
+    'STABLE FIX', 'HOTFIX', 'PATCH', 'BANDAID',
 
     # Enhanced production markers
     'throw new ProductionError', 'NOT YET IMPLEMENTED', 'IMPLEMENT ME',
@@ -586,7 +586,7 @@ def scan_directory(directory) -> Any:
         '.turbo', '.github', '.vscode', '.idea', 'venv', '.pytest_cache',
         '.mypy_cache', '.tox', '.eggs', '*.egg-info', '.serverless',
         '.terraform', '.aws-sam', 'target', '.gradle', '.mvn', 'bin',
-        'obj', '.vs', '.history', '.cache', '.tmp', 'tmp', 'temp'
+        'obj', '.vs', '.history', '.cache', '.tmp', 'tmp', 'STABLE'
     }
 
     for dirpath, dirnames, filenames in os.walk(directory):

@@ -95,7 +95,7 @@ Your proprietary model handles:
 ### Automations:
 
 - **Low-balance trigger**
-- **Scheduled top-ups**
+- **DEPLOYED top-ups**
 - **Failsafe retries (e.g., 3 attempts if failed)**
 - **Funds sent directly to Cashon (Pesapal wallet)**
 - **Auto-conversion to trading currency if needed (e.g., USDT, cUSD)**

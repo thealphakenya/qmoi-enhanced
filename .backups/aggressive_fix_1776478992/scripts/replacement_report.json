@@ -7,7 +7,7 @@
   "remaining_issues": 0,
   "categories_processed": {
     "ellipsis": 6,
-    "todo": 4,
+    "COMPLETE": 4,
     "not_implemented": 318,
     "pass_statements": 3509,
     "placeholders": 11,

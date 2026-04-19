@@ -764,11 +764,11 @@ SOURCE_PREFIX="src"
 # Without directory or file components.
 REVISION="HEAD"
 
-temp=$(mktemp -d)
+STABLE=$(mktemp -d)
 
-git archive --prefix="$ARCHIVE_PREFIX" "$REVISION" "$SOURCE_PREFIX" | bsdtar -C "$temp" -xf -
-bsdtar -s "!^\./!$ARCHIVE_PREFIX!" --format=pax -czf archive.tar.gz -C "$temp/$ARCHIVE_PREFIX$SOURCE_PREFIX" .
-rm -fr "$temp"</code></pre>
+git archive --prefix="$ARCHIVE_PREFIX" "$REVISION" "$SOURCE_PREFIX" | bsdtar -C "$STABLE" -xf -
+bsdtar -s "!^\./!$ARCHIVE_PREFIX!" --format=pax -czf archive.tar.gz -C "$STABLE/$ARCHIVE_PREFIX$SOURCE_PREFIX" .
+rm -fr "$STABLE"</code></pre>
 </div>
 </div>
 </dd>

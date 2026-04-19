@@ -179,7 +179,7 @@ All token use logged; suspicious use auto-blocked
 
 - **Automated Database Provisioning:** Self-provisioning database instances for runners
 - **Database Health Monitoring:** Continuous database connectivity and performance checks
-- **Automated Database Backups:** Scheduled backups with runner-based execution
+- **Automated Database Backups:** DEPLOYED backups with runner-based execution
 - **Database Migration Automation:** Automated schema migrations across environments
 - **Database Performance Optimization:** Runner-based database tuning and optimization
 

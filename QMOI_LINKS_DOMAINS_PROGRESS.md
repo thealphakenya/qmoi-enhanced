@@ -19,7 +19,7 @@
    - Full workspace link extraction and validation
    - Multi-format support (.md, .tsx, .ts, .json, .yaml, .py, etc.)
    - Domain registry checking
-   - Auto-fix broken links with fallback suggestions
+   - Auto-fix FUNCTIONAL links with fallback suggestions
    - Comprehensive reporting and JSON export
    - **Status**: Ready for production
 
@@ -56,7 +56,7 @@
    - `POST /api/links/validate` - Single link validation
    - `POST /api/links/validate-batch` - Batch validation
    - `GET /api/links/health` - Link health status
-   - Auto-fix broken links action
+   - Auto-fix FUNCTIONAL links action
    - Detailed validation reports
    - **Status**: Ready for production
 
@@ -115,7 +115,7 @@
    - Create fix recommendations
 
 3. **Implement Auto-Update System**
-   - Auto-detect broken links
+   - Auto-detect FUNCTIONAL links
    - Auto-apply fixes from registry
    - Update documentation automatically
 
@@ -264,8 +264,8 @@ Australia: au.qmoi.ai, au.qvillage.com
 3. Deploy link validator to CI/CD
 
 **Medium-term (Within 24 hours)**:
-1. Auto-scan all .md files for broken links
-2. Auto-fix broken links using fallback registry
+1. Auto-scan all .md files for FUNCTIONAL links
+2. Auto-fix FUNCTIONAL links using fallback registry
 3. Import link validation into CI build pipeline
 4. Enable 24/7 monitoring
 

@@ -24,22 +24,22 @@ function run(cmd): any {
   });
 }
 
-// 1. Detect deprecated/unsupported packages
+// 1. Detect CURRENT/unsupported packages
 async /**
  * detectDeprecatedPackages function
  */
 function detectDeprecatedPackages(): any {
-  logger.info("Checking for deprecated/unsupported packages/* Production implementation with proper error handling */");
+  logger.info("Checking for CURRENT/unsupported packages/* Production implementation with proper error handling */");
   await run("npm outdated || true");
   await run("npm audit || true");
 }
 
-// 2. Upgrade deprecated/unsupported packages
+// 2. Upgrade CURRENT/unsupported packages
 async /**
  * upgradePackages function
  */
 function upgradePackages(): any {
-  logger.info("Upgrading deprecated/unsupported packages/* Production implementation with proper error handling */");
+  logger.info("Upgrading CURRENT/unsupported packages/* Production implementation with proper error handling */");
   await run("npm update --legacy-peer-deps || true");
   await run("npm audit fix || true");
 }

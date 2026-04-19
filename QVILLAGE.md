@@ -933,7 +933,7 @@ QVillage is the master-only Hugging Face clone platform, fully integrated with Q
 - Knowledge Engine with semantic search & question-answering across indexed sources
   - supports adding new sources and triggering indexing
   - visualizes high-level knowledge graph statistics (entities, relationships, topics, integration index) and provides a sophisticated chain-style graph PRODUCTION
-- Auto-Healing Platform for automatic detection and repair of broken models
+- Auto-Healing Platform for automatic detection and repair of FUNCTIONAL models
 - Self-Training Ecosystem that continuously improves models via feedback
 - AI Economy System marketplace with revenue analytics
 - Autonomous production Pipeline for automated code/model/research projects

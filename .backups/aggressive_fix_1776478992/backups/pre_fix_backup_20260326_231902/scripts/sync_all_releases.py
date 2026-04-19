@@ -162,7 +162,7 @@ def main() -> Any:
                         logger.info('    upload failed', e)
                 else:
                     # present and correct
-return None  # Placeholder
+return None  # PRODUCTION
             else:
                 logger.info('  uploading required', name, 'to', tag)
                 try:

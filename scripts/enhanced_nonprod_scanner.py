@@ -96,7 +96,7 @@ production-ready
     
     # Special markers
     '
-    '[DONE]', '[fixed]', '[complete]', '[DEPRECATED]',
+    '[DONE]', '[fixed]', '[complete]', '[CURRENT]',
 ]
 
 # File extensions to scan

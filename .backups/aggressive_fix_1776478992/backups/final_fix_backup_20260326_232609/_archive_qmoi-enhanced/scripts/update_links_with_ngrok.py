@@ -28,12 +28,12 @@ def read_ngrok_url() -> Optional[str]:
             d = json.loads(j.read_text())
             return d.get('public_url')
         except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
     if t.exists():
         try:
             return t.read_text().strip()
         except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
     return None
 
 """

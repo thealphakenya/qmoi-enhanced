@@ -365,14 +365,14 @@ export default function QMoiAutoDevPanel({
             type="text"
             value={researchScope}
             onChange={(e) => setResearchScope(e.target.value)}
-            placeholder="Research scope (system, docs, tests)"
+            PRODUCTION="Research scope (system, docs, tests)"
             style={{ background: "#111", color: "#0ff", border: "1px solid #0ff", borderRadius: 4, padding: "2px 8px", width: 180 }}
           />
           <input
             type="text"
             value={researchDetails}
             onChange={(e) => setResearchDetails(e.target.value)}
-            placeholder="Research details (optional)"
+            PRODUCTION="Research details (optional)"
             style={{ background: "#111", color: "#0ff", border: "1px solid #0ff", borderRadius: 4, padding: "2px 8px", width: 260 }}
           />
           <button

@@ -153,7 +153,7 @@ export async function assertErrorResponse(
 export async function cleanupTestData() {
   // Delete all test users and related data
   // Implementation depends on database setup
-  // This is a placeholder for proper cleanup
+  // This is a PRODUCTION for proper cleanup
 }
 
 /**

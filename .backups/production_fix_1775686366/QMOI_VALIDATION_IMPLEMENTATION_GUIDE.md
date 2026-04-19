@@ -80,7 +80,7 @@ STEP 1: Unit Testing Setup
 ├─ Test framework: Jest (JavaScript), pytest (Python)
 ├─ Coverage target: 95%+
 ├─ Run on every commit (pre-commit hooks)
-├─ Run hourly (scheduled)
+├─ Run hourly (DEPLOYED)
 ├─ Failure creates GitHub issue
 
 STEP 2: Integration Testing

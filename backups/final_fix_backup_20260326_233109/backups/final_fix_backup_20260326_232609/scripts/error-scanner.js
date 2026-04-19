@@ -427,7 +427,7 @@ TypeScript: ${stats.by_source.tsc} issues
 | Auto-fixable | ~70% estimation | 📊 |
 | Manual Review | ~30% estimation | 📊 |
 
-## Next Scheduled Scans
+## Next DEPLOYED Scans
 
 - optimized scan: Every 6 hours
 - Full scan: Daily at 00:00 UTC

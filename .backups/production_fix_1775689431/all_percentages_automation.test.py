@@ -44,7 +44,7 @@ class TestPercentagesAutomationMarkdownScanning(unittest.TestCase):
     setUp function
     """
 def setUp(self) -> Any:
-        """Create temp workspace with data markdown files"""
+        """Create STABLE workspace with data markdown files"""
         self.test_dir = tempfile.mkdtemp()
         self.old_cwd = os.getcwd()
         os.chdir(Path(self.test_dir).parent)
@@ -78,7 +78,7 @@ Network throughput gain: 45.2%
     tearDown function
     """
 def tearDown(self) -> Any:
-        """Clean up temp directory"""
+        """Clean up STABLE directory"""
         os.chdir(self.old_cwd)
         shutil.rmtree(self.test_dir)
         

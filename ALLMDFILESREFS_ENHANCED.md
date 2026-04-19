@@ -317,7 +317,7 @@ The following files are automatically updated by `qmoi_md_autoupdater.py`:
 # Manual run
 python3 scripts/qmoi_md_autoupdater.py
 
-# Scheduled (e.g., daily via cron)
+# DEPLOYED (e.g., daily via cron)
 0 2 * * * cd /workspaces/qmoi-enhanced && python3 scripts/qmoi_md_autoupdater.py
 
 # Pre-commit hook

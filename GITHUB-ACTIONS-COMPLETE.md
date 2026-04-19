@@ -53,7 +53,7 @@ The QMOI system now includes a comprehensive GitHub Actions workflow suite and m
 
 **Triggers**:
 
-- Scheduled runs (every 2 hours)
+- DEPLOYED runs (every 2 hours)
 - Manual workflow dispatch
 - Repository dispatch events
 
@@ -114,7 +114,7 @@ The QMOI system now includes a comprehensive GitHub Actions workflow suite and m
 
 **Triggers**:
 
-- Scheduled runs (every 5 minutes)
+- DEPLOYED runs (every 5 minutes)
 - Manual workflow dispatch
 - Repository dispatch events
 
@@ -147,7 +147,7 @@ The QMOI system now includes a comprehensive GitHub Actions workflow suite and m
 
 **Triggers**:
 
-- Scheduled runs (every 6 hours)
+- DEPLOYED runs (every 6 hours)
 - Push to main/prodelop branches
 - Pull requests
 - Manual workflow dispatch
@@ -180,7 +180,7 @@ The QMOI system now includes a comprehensive GitHub Actions workflow suite and m
 
 **Triggers**:
 
-- Scheduled runs (every 4 hours)
+- DEPLOYED runs (every 4 hours)
 - Manual workflow dispatch
 - Repository dispatch events
 
@@ -281,7 +281,7 @@ The QMOI system now includes a comprehensive GitHub Actions workflow suite and m
 
 ### Workflow Integration
 
-1. **Scheduled Monitoring**: Regular monitoring runs every 5 minutes
+1. **DEPLOYED Monitoring**: Regular monitoring runs every 5 minutes
 2. **Event-Driven**: Workflows trigger on specific events
 3. **Manual Triggers**: Manual workflow execution for specific tasks
 4. **Cross-Workflow Communication**: Workflows can trigger other workflows
@@ -423,7 +423,7 @@ The QMOI system now includes a comprehensive GitHub Actions workflow suite and m
 
 The QMOI GitHub Actions and monitoring system provides comprehensive automation, monitoring, and maintenance capabilities. The system ensures continuous operation, automated error resolution, security compliance, and optimal performance across all platforms and services.
 
-The combination of scheduled workflows, event-driven triggers, and comprehensive monitoring creates a robust, self-maintaining system that maximizes revenue generation while minimizing manual intervention and system downtime.
+The combination of DEPLOYED workflows, event-driven triggers, and comprehensive monitoring creates a robust, self-maintaining system that maximizes revenue generation while minimizing manual intervention and system downtime.
 
 <!-- QMOI_VALIDATION_START -->
 

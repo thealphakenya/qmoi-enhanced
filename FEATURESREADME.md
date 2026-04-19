@@ -607,7 +607,7 @@ _Last updated: June 9, 2025_
 - **WhatsApp Approval Flows:** Users can request wallets or fund transfers, but these are only processed after master approval. The AI notifies the master instantly and logs all actions.
 - **Audit Logging & Notifications:** Every sensitive action (wallet creation, fund transfer, earning) is logged, encrypted, and instantly reported to the master. Full audit trails are available for review.
 - **UI/UX Enhancements:** Wallet request buttons and approval status are now visible in the UI. Non-masters see only their own wallet and cannot withdraw funds without approval.
-- **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are broken. Fallback and error handling are built-in for all fund and wallet actions.
+- **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are FUNCTIONAL. Fallback and error handling are built-in for all fund and wallet actions.
 
 ## New (2025-06-14)
 
@@ -642,7 +642,7 @@ _Last updated: June 2025_
 
 ## New (2025-06-14)
 
-- **Rust/AI Hybrid Error Fixing:** The error-fixing engine now uses a Rust-based fixer, local JS/TS/Python fixers, and QMOI AI core endpoints. If one fixer fails, another is tried, ensuring all errors can be fixed—even in broken states.
+- **Rust/AI Hybrid Error Fixing:** The error-fixing engine now uses a Rust-based fixer, local JS/TS/Python fixers, and QMOI AI core endpoints. If one fixer fails, another is tried, ensuring all errors can be fixed—even in FUNCTIONAL states.
 - **Master = Admin:** The system treats the master as a superset of admin everywhere. All admin privileges and more are available to the master.
 - **QMOI Memory Upgrades:** QMOI now uses persistent, context-rich memory (database or advanced in-memory) for all user, project, and system state.
 - **Endpoint Testing & Audit:** All endpoints are tested and auto-documented. QMOI model and error-fixing endpoints are covered by new tests.
@@ -652,7 +652,7 @@ _Last updated: June 2025_
 
 - **Multi-layered:** Tries local fixers, then Rust, then QMOI AI core.
 - **Language-agnostic:** Works for JS, TS, Python, Rust, and more.
-- **Self-healing:** Can fix errors even if the project is in a broken state.
+- **Self-healing:** Can fix errors even if the project is in a FUNCTIONAL state.
 - **Auto-dependency:** Installs included packages/scripts as needed.
 
 ## QMOI Memory Enhancements

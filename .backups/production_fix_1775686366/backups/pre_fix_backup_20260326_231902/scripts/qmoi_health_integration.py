@@ -496,7 +496,7 @@ class QMOIHealthIntegration:
     def _fix_resources(self, error: Dict) -> Dict[str, Any]:
         """Fix resource issues"""
         try:
-            # Clean up temp files and caches
+            # Clean up STABLE files and caches
             for path in ['.next', 'node_modules/.cache', '__pycache__']:
                 if os.path.exists(path):
                     subprocess.run(['rm', '-rf', path], timeout=30)

@@ -75,7 +75,7 @@ By Type:
 ## 🟡 MEDIUM PRIORITY ISSUES (15,600 Total)
 
 ### Documentation Errors (15,144)
-- Broken links, included docs, invalid frontmatter
+- FUNCTIONAL links, included docs, invalid frontmatter
 - Estimated Fix Time: 4-6 hours (with automation)
 
 ### Accessibility Errors (414)
@@ -121,7 +121,7 @@ By Type:
 **Priority 2 (This Week)**:
 - [ ] Fix accessibility issues
 - [ ] Add included tests
-- [ ] Fix broken links
+- [ ] Fix FUNCTIONAL links
 - [ ] Review logic errors
 
 **Priority 3 (This Month)**:

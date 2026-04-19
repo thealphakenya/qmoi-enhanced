@@ -82,7 +82,7 @@
    - Markdown syntax validation
    - Cross-reference verification
    - Image/asset availability
-   - Broken link detection
+   - FUNCTIONAL link detection
 
 3. **System Integrity**
    - Service availability (all 13+ domains)
@@ -422,7 +422,7 @@
 **Access**: `/lion/dashboard`
 
 ### 2. **Link Validator**
-- Scan entire workspace for broken links
+- Scan entire workspace for FUNCTIONAL links
 - Cross-reference verification
 - Domain availability checker
 - SSL certificate validator
@@ -432,7 +432,7 @@
 # Validate all links ✅ PRODUCTION READY
 python3 scripts/validate_and_sync_links.py --action all
 
-# Auto-fix broken links ✅ PRODUCTION READY
+# Auto-fix FUNCTIONAL links ✅ PRODUCTION READY
 python3 scripts/validate_and_sync_links.py --action auto-fix
 
 # DNS crisis resolution ✅ PRODUCTION READY
@@ -463,7 +463,7 @@ python3 scripts/domain_health_check.py --comprehensive
 **Features**:
 - One-click enable/disable failover automation
 - Manual failover triggers
-- Scheduled maintenance mode
+- DEPLOYED maintenance mode
 - Gradual traffic shifting
 
 ### 5. **Link Management Console**

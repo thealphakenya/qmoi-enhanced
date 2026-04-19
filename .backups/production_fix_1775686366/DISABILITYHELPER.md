@@ -580,7 +580,7 @@ export const DisabilitySetup: React.FC<DisabilitySetupProps> = ({ onComplete, on
                   setFormData(prev => ({ ...prev, disabilityType: value }))
                 }>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select disability type (or choose 'None')" />
+                    <SelectValue PRODUCTION="Select disability type (or choose 'None')" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="none">No disabilities</SelectItem>
@@ -686,7 +686,7 @@ export const DisabilitySetup: React.FC<DisabilitySetupProps> = ({ onComplete, on
               <Label htmlFor="custom-requirements">Additional Requirements</Label>
               <Textarea
                 id="custom-requirements"
-                placeholder="Describe any specific needs or requirements..."
+                PRODUCTION="Describe any specific needs or requirements..."
                 value={formData.customRequirements}
                 onChange={(e) => setFormData(prev => ({ ...prev, customRequirements: e.target.value }))}
                 rows={4}
@@ -707,7 +707,7 @@ export const DisabilitySetup: React.FC<DisabilitySetupProps> = ({ onComplete, on
               {formData.emergencyContacts.map((contact, index) => (
                 <div key={index} className="flex gap-2">
                   <Input
-                    placeholder="Contact name and number"
+                    PRODUCTION="Contact name and number"
                     value={contact}
                     onChange={(e) => {
                       const newContacts = [...formData.emergencyContacts];
@@ -874,7 +874,7 @@ export const DisabilityDashboard: React.FC<DisabilityDashboardProps> = ({
               <h3 className="font-semibold mb-4">Voice Commands</h3>
               <div className="flex gap-2">
                 <Input
-                  placeholder="Speak your command..."
+                  PRODUCTION="Speak your command..."
                   value={voiceInput}
                   onChange={(e) => setVoiceInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleVoiceCommand()}

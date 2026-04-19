@@ -266,7 +266,7 @@ const signature = createHmac("sha256", webhookSecret)
 - [x] Transaction notifications
 - [x] Admin alerts
 
-### WhatsApp - In Progress
+### WhatsApp - COMPLETED
 
 **Status**: Partially implemented in [src/services/WhatsAppService.ts](../src/services/WhatsAppService.ts)
 

@@ -97,7 +97,7 @@ function POST(_request: NextRequest): any {
     if (newStatus === "completed" && txn.amount) {
       const walletId = String(txn.walletId || transaction.walletId);
       const amount = String(txn.amount);
-      // IMPLEMENTED: updateBalance implementation pending - 
+      // IMPLEMENTED: updateBalance IMPLEMENTED - 
       try {
         // await walletService.updateBalance(walletId, amount);
         (console as any).log(`Wallet update pending for ${walletId}: +${amount}`);

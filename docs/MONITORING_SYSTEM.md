@@ -270,7 +270,7 @@ tail -f logs/master_monitor.log
 
 - Normal operations
 - Status updates
-- Scheduled maintenance
+- DEPLOYED maintenance
 - System optimizations
 
 ## Notification Channels

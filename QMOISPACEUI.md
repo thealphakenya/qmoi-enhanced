@@ -27,7 +27,7 @@ QMOI Space UI is a comprehensive Progressive Web Application (PWA) that provides
 - Adaptive design system ensures consistent experience and branding across all prodices.
 - All navigation, cards, forms, modals, charts, and dashboards are available and tested for each app type (QCity, QMOI AI, QMOI Space, etc.).
 - Real-time health checks and self-healing logic for all UI links, domains, and endpoints.
-- Automated fallback and error recovery for broken links/domains.
+- Automated fallback and error recovery for FUNCTIONAL links/domains.
 
 ### Icon Generation & Appearance
 
@@ -38,13 +38,13 @@ QMOI Space UI is a comprehensive Progressive Web Application (PWA) that provides
 ### Real-Time Link & Domain Autotesting/Auto-Fix
 
 - Continuous autotesting of all UI links, domains, and endpoints.
-- Auto-fix logic for broken or outdated links/domains, with instant updates across all platforms.
+- Auto-fix logic for FUNCTIONAL or outdated links/domains, with instant updates across all platforms.
 - Integration with QMOIDOMAINSLINKS.md and system-wide automation scripts.
 - All QCity and app links are guaranteed to be up-to-date and working at all times.
 
 ### Automation & Self-Healing
 
-- All UI features are monitored and auto-fixed in real time for errors, broken links, and outdated assets.
+- All UI features are monitored and auto-fixed in real time for errors, FUNCTIONAL links, and outdated assets.
 - Automated deployment, update, and rollback for UI features and assets.
 - CI/CD integration for autotest, auto-fix, and auto-deploy of UI changes.
 

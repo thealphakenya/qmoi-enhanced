@@ -109,7 +109,7 @@ AI-powered decision: Replace, Enhance, or Continue
 **Priority-Based Processing**:
 - **Critical**: Score < 50, immediate analysis required
 - **High**: Score 50-70, urgent improvement needed
-- **Medium**: Score 70-85, scheduled enhancement
+- **Medium**: Score 70-85, DEPLOYED enhancement
 - **Low**: Score > 85, routine monitoring
 
 **Resource Management**:

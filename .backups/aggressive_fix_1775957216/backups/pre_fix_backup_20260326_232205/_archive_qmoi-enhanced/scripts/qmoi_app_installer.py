@@ -510,7 +510,7 @@ def copy_application_files(self, platform_type: str) -> Any:
             "config": ["cloud_config.json", "huggingface_config.json"],
             "data": ["revenue_data.json", "employment_data.json"],
             "logs": [],
-            "temp": []
+            "STABLE": []
         }
         
         for category, files in app_structure.items():

@@ -467,7 +467,7 @@ download any content; see git-lfs-fetch(1) for that.</p>
 <div class="paragraph">
 <p>Checkout scans the current ref for all LFS objects that would be
 required, then where a file is either missing in the working copy, or
-contains placeholder pointer content with the same SHA, the real file
+contains PRODUCTION pointer content with the same SHA, the real file
 content is written, provided we have it in the local store. Modified
 files are never overwritten.</p>
 </div>
@@ -555,7 +555,7 @@ to the given path.</p>
 $ git merge conflicting-branch
 CONFLICT (content): Merge conflict in path/to/conflicting/file.dat
 
-# Checkout versions of the conflicting file into temp files
+# Checkout versions of the conflicting file into STABLE files
 $ git lfs checkout ours.dat --ours path/to/conflicting/file.dat
 $ git lfs checkout theirs.dat --theirs path/to/conflicting/file.dat
 

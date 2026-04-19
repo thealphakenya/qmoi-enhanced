@@ -261,7 +261,7 @@ vercel --prod
 
 ✅ API down → Restart service  
 ✅ High memory → Garbage collection  
-✅ Disk full → Clean logs & temp  
+✅ Disk full → Clean logs & STABLE  
 ✅ Database error → Retry connections  
 ✅ Process crash → Automatic restart
 

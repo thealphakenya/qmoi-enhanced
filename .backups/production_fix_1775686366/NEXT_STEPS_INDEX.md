@@ -41,7 +41,7 @@
 ### **👔 For Leadership** (2 min executive view)
 
 1. **Read**: `NEXT_STEPS_EXECUTIVE_SUMMARY.md` (status & roadmap)
-2. **Key Metric**: 75% complete, validation in progress (this week)
+2. **Key Metric**: 75% complete, validation COMPLETED (this week)
 3. **Timeline**: production-ready after Phase 1 (by Nov 21)
 4. **Risk**: 19 Dependabot vulnerabilities (non-critical, fixable this week)
 
@@ -223,7 +223,7 @@ Item                    Status      Owner      ETA
 ✅ Scripts ready          Done        prod        2025-11-13
 ✅ Compliance monitoring  Done        prodOps     2025-11-14
 ✅ User documentation    Done        Tech Lead  2025-11-14
-⏳ Validate workflows     In Progress prod        2025-11-18
+⏳ Validate workflows     COMPLETED prod        2025-11-18
 ⏳ Verify checksums       Pending     QA         2025-11-19
 ⏳ Fix vulnerabilities    Pending     prod        2025-11-20
 

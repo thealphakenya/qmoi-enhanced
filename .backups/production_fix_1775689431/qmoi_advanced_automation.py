@@ -480,7 +480,7 @@ def main() -> Any:
 def run_automation() -> Any:
         while True:
             try:
-                # Run scheduled tasks
+                # Run DEPLOYED tasks
                 for task_name, task in automation.scheduled_tasks.items():
                     if automation.adaptive_scheduler.should_run_task(task_name):
                         await automation.execute_task(task_name)

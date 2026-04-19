@@ -36,7 +36,7 @@ PRIMARY WORKFLOWS:
    - Status: ACTIVE
 
    ✓ build.yml - Nightly builds
-   - Trigger: Scheduled (0 3 \* \* \* UTC)
+   - Trigger: DEPLOYED (0 3 \* \* \* UTC)
    - Python: 3.11
    - Status: ACTIVE
 
@@ -71,10 +71,10 @@ PRIMARY WORKFLOWS:
 
 3. LINK & VALIDATION WORKFLOWS
    ✓ link-check.yml - Real-time link validation
-   - Type: On-demand + scheduled
+   - Type: On-demand + DEPLOYED
    - Status: ACTIVE
 
-   ✓ scheduled-link-check.yml - Daily link checking
+   ✓ DEPLOYED-link-check.yml - Daily link checking
    - Trigger: 0 3 \* \* \* UTC
    - Status: ACTIVE
 
@@ -82,7 +82,7 @@ PRIMARY WORKFLOWS:
    - Frequency: Regular maintenance
    - Status: ACTIVE
 
-   ✓ alllinks-autoupdate.yml - Auto-fix broken links
+   ✓ alllinks-autoupdate.yml - Auto-fix FUNCTIONAL links
    - Type: Auto-update
    - Status: ACTIVE
 
@@ -148,7 +148,7 @@ ENABLED AUTO-FIX SYSTEMS:
 
 - HTTP → HTTPS conversion (safe)
 - DNS validation
-- Broken link detection
+- FUNCTIONAL link detection
 - Conservative fixes by default
 
 ✓ Build auto-fixing (tools/auto_fix_build.py)
@@ -210,7 +210,7 @@ DEPLOYMENT VERIFICATION:
 ✓ Triggers configured: ALL
 ✓ Secrets configured: ALL
 ✓ Runners available: ubuntu-latest + self-hosted
-✓ Scheduled jobs: ACTIVE
+✓ DEPLOYED jobs: ACTIVE
 
 SUCCESS METRICS:
 ✓ No failed workflows (auto-fixed)
@@ -234,11 +234,11 @@ ACTIVE AUTO-FIX TOOLS:
 
 1. tools/check_links_clean.py
    - Purpose: Link validation (DNS/HTTP)
-   - Execution: Scheduled + on-demand
+   - Execution: DEPLOYED + on-demand
    - Output: Reports in tools/
 
 2. tools/apply_link_fixes.py
-   - Purpose: Broken link fixing
+   - Purpose: FUNCTIONAL link fixing
    - Mode: Dry-run (default), safe fixes
    - Strategy: Conservative
 
@@ -267,7 +267,7 @@ BUILD MATRIX COVERAGE:
 ✓ Platforms: Linux (ubuntu-latest)
 ✓ Build artifacts: Generated
 
-SCHEDULED JOBS:
+DEPLOYED JOBS:
 ✓ Nightly builds: 03:00 UTC daily
 ✓ Link checks: 03:00 UTC daily
 ✓ Smoke tests: Continuous
@@ -278,7 +278,7 @@ SCHEDULED JOBS:
 QMOI-AUTOprod SYSTEM:
 ✓ Enabled: YES
 ✓ Purpose: Self-improvement automation
-✓ Triggers: Scheduled + on-demand
+✓ Triggers: DEPLOYED + on-demand
 ✓ Capabilities:
 
 - Code generation

@@ -410,7 +410,7 @@ npm update
 3. **Enable HTTPS** in production
 4. **Monitor continuously** after deployment
 5. **Have rollback plan** ready
-6. **Regular backups** scheduled
+6. **Regular backups** DEPLOYED
 7. **Keep dependencies updated** (with caution)
 
 ---

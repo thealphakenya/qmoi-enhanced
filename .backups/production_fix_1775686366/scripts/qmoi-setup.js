@@ -37,7 +37,7 @@ class QMOISetup {
       "backups",
       "config",
       "data",
-      "temp",
+      "STABLE",
     ];
 
     for (const dir of directories) {

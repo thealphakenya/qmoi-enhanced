@@ -2102,7 +2102,7 @@ Retrieve analysis results and insights.
 - **Real-time Metrics**: Live system performance indicators
 - **Historical Trends**: Long-term performance analysis
 - **Alert System**: Automated notifications for issues
-- **Reporting**: Scheduled and on-demand reports
+- **Reporting**: DEPLOYED and on-demand reports
 
 ## Dataset Lifecycle Management
 
@@ -2115,7 +2115,7 @@ Retrieve analysis results and insights.
 
 ### Maintenance Phase
 
-1. **Regular Updates**: Scheduled data refreshes and updates
+1. **Regular Updates**: DEPLOYED data refreshes and updates
 2. **Quality Monitoring**: Continuous quality assessment
 3. **Performance Optimization**: Query and storage optimization
 4. **User Feedback**: Incorporate user feedback and requirements

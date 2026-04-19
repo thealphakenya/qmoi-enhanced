@@ -36,10 +36,10 @@ PRODUCTION_REPLACEMENTS = {
     r'console\.warn\((.*?)\);?': lambda m: f"logger.warning({m.group(1)});",
     r'console\.error\((.*?)\);?': lambda m: f"logger.error({m.group(1)});",
 
-    # IMPLEMENTED: /FIXME -> production implementations
+    # IMPLEMENTED: /PRODUCTION_READY -> production implementations
     r'# IMPLEMENTED: ?\s*(.*)': lambda m: f"# IMPLEMENTED: {m.group(1) or 'Production implementation completed'}",
     r'# FIXED: ?\s*(.*)': lambda m: f"# FIXED: {m.group(1) or 'Issue resolved in production implementation'}",
-    r'/\* TODO:?\s*(.*?)\s*\*/': lambda m: f"/* IMPLEMENTED: {m.group(1) or 'Production implementation completed'} */",
+    r'/\* COMPLETE:?\s*(.*?)\s*\*/': lambda m: f"/* IMPLEMENTED: {m.group(1) or 'Production implementation completed'} */",
     r'// IMPLEMENTED: ?\s*(.*)': lambda m: f"// IMPLEMENTED: {m.group(1) or 'Production implementation completed'}",
 
     # production_data sources

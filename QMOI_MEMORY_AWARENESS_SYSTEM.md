@@ -100,7 +100,7 @@ LAYER 3: REAL-TIME AWARENESS MEMORY (SHORT-TERM)
 └─ Command Queue
 ├─ Pending instructions
 ├─ Queued operations
-├─ Scheduled tasks
+├─ DEPLOYED tasks
 └─ Retry state
 
 LAYER 4: VALIDATION & CONTEXT MEMORY
@@ -468,7 +468,7 @@ ERROR CATEGORIES & RESPONSES:
 │ └─ If failed: Escalate to master + notify
 │
 ├─ Link Errors
-│ ├─ Detection: Scheduled + on-demand
+│ ├─ Detection: DEPLOYED + on-demand
 │ ├─ Analysis: DNS lookup + HTTP status check
 │ ├─ Fix attempt: Auto-convert http→https (if redirect)
 │ ├─ If successful: Commit changes
@@ -548,7 +548,7 @@ VALIDATION CHECKLIST (Run Daily):
 VALIDATION TIMING:
 
 - On-demand: Can run anytime
-- Scheduled: Daily at 02:00 UTC
+- DEPLOYED: Daily at 02:00 UTC
 - After any major change: Automatic
 - Before any deployment: Pre-check
 - After any error: Post-incident

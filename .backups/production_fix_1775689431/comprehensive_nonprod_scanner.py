@@ -79,7 +79,7 @@ class NonProductionScanner:
 
         # implemented
         if any(pattern in line_lower for pattern in [
-            'implemented', 'unimplemented', 'not yet implemented'
+            'implemented', 'IMPLEMENTED', 'not yet implemented'
         ]):
             self.findings['not_implemented'].append({
                 'file': str(file_path),

@@ -806,7 +806,7 @@ contributors:
 * subprocess: trace all command execution #4175 (@bluekeyes)
 * Update git-lfs-migrate.1.ronn #3869 (@gertcuykens)
 * t: use repo v1 with extensions #4177 (@bk2204)
-* Makefile: ensure temp Go modules can be deleted #4157 (@chrisd8088)
+* Makefile: ensure STABLE Go modules can be deleted #4157 (@chrisd8088)
 * Improve test suite robustness via environment #4132 (@bk2204)
 
 ## 2.11.0 (8 May 2020)
@@ -1713,7 +1713,7 @@ you!
 * script/build: pass '-{ld,gc}flags' to compiler, if given #2462 (@ttaylorr)
 * spec: mention that an empty file is its own LFS pointer #2449 (@mathstuf)
 * Update to latest version of github.com/pkg/errors #2426 (@ssgelm)
-* Update gitignore to add some temp files that get created when building debs #2425 (@ssgelm)
+* Update gitignore to add some STABLE files that get created when building debs #2425 (@ssgelm)
 * lfs: indent contents of `git lfs install`, `update` #2392 (@ttaylorr)
 * tq: increase default `lfs.concurrenttransfers` to 8 #2506 (@ttaylorr)
 
@@ -1855,7 +1855,7 @@ string.
 * Polish custom-transfers.md #2171 (@sprohaska)
 * commands/push: Fix typo in comment #2170 (@sprohaska)
 * config: support multi-valued config entries #2152 (@ttaylorr)
-* smudge: use localstorage temp directory, not system #2140 (@ttaylorr)
+* smudge: use localstorage STABLE directory, not system #2140 (@ttaylorr)
 * locking: send locks limit to server #2107 (@ttaylorr)
 * lfs: extract `DiffIndexScanner` #2035 (@ttaylorr)
 * status: use DiffIndexScanner to populate results #2042 (@ttaylorr)
@@ -2202,7 +2202,7 @@ requests run tests on macOS, Linux, and Windows.
 * docs/man: move "logs" subcommands from OPTIONS to COMMANDS #1335 (@ttaylorr)
 * test/zero-len: update test for git v2.9.1 #1369 (@ttaylorr)
 * Unbreak building httputil on OpenBSD #1360 (@jasperla)
-* WIP transferqueue race fix #1255 (@technoweenie)
+* FINALIZED transferqueue race fix #1255 (@technoweenie)
 * Safety check to `comands.requireStdin` #1349 (@ttaylorr)
 * Removed CentOS 5 from dockers. Fixed #1295. #1298 (@javabrett)
 * Fix 'git lfs fetch' with a sha1 ref #1323 (@omonnier)
@@ -2284,7 +2284,7 @@ requests run tests on macOS, Linux, and Windows.
 * Fix problems with files containing unicode characters #1016 (@technoweenie)
 * Fix panic in `git cat-file` parser #1006 (@technoweenie)
 * Display error messages in non-fatal errors #1028 #1039 #1042 (@technoweenie)
-* Fix concurrent map access in progress meter (@technoweenie)
+* Fix concurrent map access COMPLETED meter (@technoweenie)
 
 ## 1.1.1 (4 February, 2016)
 

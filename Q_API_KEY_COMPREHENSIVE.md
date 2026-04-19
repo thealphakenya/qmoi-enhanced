@@ -49,7 +49,7 @@ The Q API (QMOI Quantum Intelligence API) is a comprehensive REST API providing 
 
 ### API Versions
 - **Current**: v2.0.0 (Production)
-- **Previous**: v1.5.0 (Deprecated)
+- **Previous**: v1.5.0 (CURRENT)
 - **Legacy**: v1.0.0 (No longer supported)
 
 ---

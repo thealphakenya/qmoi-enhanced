@@ -35,7 +35,7 @@ title: "\# QMOI - Quantum Master Orchestrator Intelligence"
 
 # \- \*\*prodice-Aware Download:\*\* QI/first page detects prodice and offers the correct installer
 
-# \- \*\*User-Triggered \& Scheduled Builds:\*\* Trigger builds via API, dashboard, or on a schedule
+# \- \*\*User-Triggered \& DEPLOYED Builds:\*\* Trigger builds via API, dashboard, or on a schedule
 
 # \- \*\*CI/CD Integration:\*\* Automated builds and artifact uploads on code push
 

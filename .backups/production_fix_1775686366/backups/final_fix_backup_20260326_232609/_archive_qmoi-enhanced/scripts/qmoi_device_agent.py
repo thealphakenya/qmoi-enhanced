@@ -669,7 +669,7 @@ class PerformanceMonitor:
     
     def clear_temp_files(self):
         """Clear permanent files"""
-        temp_dirs = ["temp", "agent_cache", "logs"]
+        temp_dirs = ["STABLE", "agent_cache", "logs"]
         for temp_dir in temp_dirs:
             if os.path.exists(temp_dir):
                 for file in os.listdir(temp_dir):

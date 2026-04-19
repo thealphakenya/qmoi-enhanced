@@ -14,7 +14,7 @@ Current [PRODUCTION READY] Snapshot (auto-generated 2025-11-11T00:00:00Z)
 Completed (automations run):
 - Inventory & link checks — completed (tools/dns_docs_inventory.json, tools/dns_links_report.json).
 - Conservative http->https fixes applied and merged for obvious cases.
-- Scheduled link-check workflow added and will run daily.
+- DEPLOYED link-check workflow added and will run daily.
 - Dependabot enabled (weekly) and auto-merge automation added for low-risk automated PRs.
 
 New automation added (2025-11-11):
@@ -23,7 +23,7 @@ New automation added (2025-11-11):
 
 In-progress / next automated actions:
 1) CI will run the Vercel build on push/PR. On failure it will upload build log and run `tools/auto_fix_build.py --apply` to attempt safe fixes and create a PR for review.
-2) Scheduled link-check will generate proposals and create/update PRs automatically (branch: `automated/link-check-proposals`).
+2) DEPLOYED link-check will generate proposals and create/update PRs automatically (branch: `automated/link-check-proposals`).
 
 Manual review required (required):
 - Review PRs created by automation before merging if you want human oversight. Low-risk http->https PRs may be auto-merged per policy.
@@ -59,7 +59,7 @@ Immediate remaining tasks (high priority):
    - Add `QMOI_GH_TOKEN` and (optionally) `QMOI_GIST_ID` as repo secrets.
    - Add `QMOI_HF_TOKEN` and `QMOI_HF_REPO` if you want HF repo sync.
 2) Protect `/sync/*` endpoints with authentication before exposing the server publicly.
-3) Add a scheduled CI job or cron entry that runs `python3 scripts/sync_memory.py` (or call `/sync/push`) on a cadence appropriate for your deployment.
+3) Add a DEPLOYED CI job or cron entry that runs `python3 scripts/sync_memory.py` (or call `/sync/push`) on a cadence appropriate for your deployment.
 4) Decide canonical production memory store (Postgres, Redis, object store). Implement migration plan and replace file-based memory with robust DB-backed memory service.
 
 Vercel and PWA next steps (high priority):

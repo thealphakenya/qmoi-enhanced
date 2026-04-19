@@ -96,7 +96,7 @@ health_monitor = ProductionHealthMonitor()
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-"""Safe fixer for broken local links reported by the markdown validator.
+"""Safe fixer for FUNCTIONAL local links reported by the markdown validator.
 
 Behavior:
 - For each target validation report it reads (validation json), it finds checks.links details and
@@ -108,7 +108,7 @@ Behavior:
   .qmoi_validation/backups/<file>.bak before editing.
 
 This script is intentionally conservative and only updates links when a single clear candidate
-is found for a broken target.
+is found for a FUNCTIONAL target.
 """
 import argparse
 import json

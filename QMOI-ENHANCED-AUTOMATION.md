@@ -25,7 +25,7 @@ The QMOI Enhanced Automation System is a comprehensive platform that provides co
 
 - **Always Running**: The system runs continuously in the background
 - **Auto-Triggering**: Automatically triggers automation when files change
-- **Scheduled Tasks**: Runs automation at regular intervals
+- **DEPLOYED Tasks**: Runs automation at regular intervals
 - **File Monitoring**: Watches for file changes and triggers automation
 
 ### 🎯 Platform Optimization
@@ -233,7 +233,7 @@ npm run clean:memory
 - **WebSocket**: wss://production.qmoi.ai:3010
 - **Real-time Updates**: Automatic updates every 2 minutes
 
-## ⏰ Scheduled Tasks
+## ⏰ DEPLOYED Tasks
 
 ### Automation Schedule
 

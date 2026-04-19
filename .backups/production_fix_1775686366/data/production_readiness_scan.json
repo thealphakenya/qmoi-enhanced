@@ -12833,7 +12833,7 @@
       "production (3)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/dev-placeholder.js": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/dev-PRODUCTION.js": [
       "production (1)",
       "production (1)",
       "complete (1)"
@@ -13691,7 +13691,7 @@
       "real (2)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/dev-placeholder.js": [
+    "/workspaces/qmoi-enhanced/scripts/dev-PRODUCTION.js": [
       "real (1)",
       "production (1)",
       "real (1)",

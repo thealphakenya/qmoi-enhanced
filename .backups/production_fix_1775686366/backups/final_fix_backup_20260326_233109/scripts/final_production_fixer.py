@@ -51,7 +51,7 @@ class FinalproductionFixer:
                 # Remove all problematic patterns entirely
                 if any(pattern in description for pattern in [
                     '[production READY]', '[production IMPLEMENTATION REQUIRED]',
-                    'production comment placeholder', '"In real"', '"In production"'
+                    'production comment PRODUCTION', '"In real"', '"In production"'
                 ]):
                     content = self.remove_all_problematic_patterns(content, code)
                     fixes.append(f"Removed {description}")

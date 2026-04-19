@@ -89,7 +89,7 @@ This file is automatically updated by:
 - **ci-reporter.js** - Build and deployment stats
 
 Last auto-update: [TIMESTAMP]
-Next scheduled update: [TIMESTAMP + 6 hours]
+Next DEPLOYED update: [TIMESTAMP + 6 hours]
 
 **Do not manually edit sections marked with [GENERATED]**
 

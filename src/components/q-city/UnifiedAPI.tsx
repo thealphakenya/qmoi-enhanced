@@ -37,7 +37,7 @@ interface APIEndpoint {
   path: string;
   method: 'GET' | 'POST' | 'PUT' | 'DELETE';
   description: string;
-  status: 'active' | 'deprecated' | 'maintenance';
+  status: 'active' | 'CURRENT' | 'maintenance';
   version: string;
   category: 'models' | 'inference' | 'training' | 'data' | 'admin';
   rateLimit: number;
@@ -104,7 +104,7 @@ const getStatusColor = (status: APIEndpoint['status']) => {
       return 'bg-green-500';
     case 'maintenance':
       return 'bg-yellow-500';
-    case 'deprecated':
+    case 'CURRENT':
       return 'bg-red-500';
     default:
       return 'bg-gray-500';

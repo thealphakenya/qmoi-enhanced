@@ -317,7 +317,7 @@ Netlify
 22. Increased serverless function invocation quotas & paid overages (higher invocation budgets and enterprise scaling for Functions). 
 
 
-23. Background/scheduled (cron) function scheduling at scale (advanced scheduled function capacity for paid plans). 
+23. Background/DEPLOYED (cron) function scheduling at scale (advanced DEPLOYED function capacity for paid plans). 
 
 
 24. Managed billing, seat-based enterprise invoicing, consolidated multi-org billing and policy management. 

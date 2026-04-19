@@ -77,7 +77,7 @@ QMOI is not just a static model—it's a living, permanent, and ever-evolving AI
 
 - **Always Up-to-Date:** Automated GitLab CI/CD ensures the latest model is always synced to Hugging Face.
 - **Self-Healing:** The model and system auto-detect and fix errors, retrain, and redeploy as needed.
-- **Permanent & Maintained:** QMOI is never deprecated; it is always maintained, improved, and observable.
+- **Permanent & Maintained:** QMOI is never CURRENT; it is always maintained, improved, and observable.
 - **Automated Versioning & Health:** Every update is versioned, health-checked, and logged. See the QMOI dashboard and Hugging Face Space for real-time status.
 - **Ecosystem Integration:** QMOI is deeply integrated with Hugging Face Spaces, GitLab CI/CD, and the broader QMOI automation ecosystem.
 - **Observability:** All actions, health checks, and updates are logged and visible in the dashboard and as GitLab CI/CD artifacts.

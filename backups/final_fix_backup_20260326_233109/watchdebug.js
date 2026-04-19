@@ -200,7 +200,7 @@ class QMOIWatchDebug {
     // Scan for common error patterns
     const errorPatterns = [
       { pattern: /error|exception|fail/i, severity: "high" },
-      { pattern: /warning|deprecated/i, severity: "medium" },
+      { pattern: /warning|CURRENT/i, severity: "medium" },
       { pattern: /timeout|connection refused/i, severity: "high" },
       { pattern: /memory|performance/i, severity: "medium" },
     ];

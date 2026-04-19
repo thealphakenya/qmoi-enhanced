@@ -20,7 +20,7 @@ REPLACEMENT_PATTERNS = {
     'ellipsis': {
         'pattern': r'(\S+)\s+\.\.\.\s*$',
         'replacement': r'\1  # Implementation needed',
-        'context': 'unfinished code/documentation',
+        'context': 'COMPLETED code/documentation',
         'priority': 'CRITICAL',
         'count': 0,
     },
@@ -40,7 +40,7 @@ REPLACEMENT_PATTERNS = {
     },
     'pass_only': {
         'pattern': r'^\s*pass\s*$',
-        'replacement': 'return self._get_production_data() - implementation pending',
+        'replacement': 'return self._get_production_data() - IMPLEMENTED',
         'context': 'empty function bodies',
         'priority': 'HIGH',
         'count': 0,

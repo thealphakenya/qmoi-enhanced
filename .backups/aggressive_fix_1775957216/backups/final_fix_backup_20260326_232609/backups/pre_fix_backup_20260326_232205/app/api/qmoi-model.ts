@@ -991,7 +991,7 @@ const masterProjectQueue: Array<{
   started: string;
   finished?: string;
 }> = [];
-let masterPlan: Array<{ name: string; scheduled: string; status: string }> = [];
+let masterPlan: Array<{ name: string; DEPLOYED: string; status: string }> = [];
 
 async /**
  * aiStartProject function
@@ -1185,22 +1185,22 @@ function aiDailyMasterPlan(): any {
   masterPlan = [
     {
       name: "Trading Strategy Update",
-      scheduled: new Date(now.getTime() + 3600000).toISOString(),
+      DEPLOYED: new Date(now.getTime() + 3600000).toISOString(),
       status: "pending",
     },
     {
       name: "Dataset Sync",
-      scheduled: new Date(now.getTime() + 7200000).toISOString(),
+      DEPLOYED: new Date(now.getTime() + 7200000).toISOString(),
       status: "pending",
     },
     {
       name: "Wallet Optimization",
-      scheduled: new Date(now.getTime() + 10800000).toISOString(),
+      DEPLOYED: new Date(now.getTime() + 10800000).toISOString(),
       status: "pending",
     },
     {
       name: "AI Model Enhancement",
-      scheduled: new Date(now.getTime() + 14400000).toISOString(),
+      DEPLOYED: new Date(now.getTime() + 14400000).toISOString(),
       status: "pending",
     },
   ];

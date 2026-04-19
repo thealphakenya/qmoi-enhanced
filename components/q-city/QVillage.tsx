@@ -156,7 +156,7 @@ interface ModelCard {
   datasets: string[];
   license: string;
   evalScore: number;
-  status: "active" | "inactive" | "deprecated";
+  status: "active" | "inactive" | "CURRENT";
   lastReviewed: string;
 }
 

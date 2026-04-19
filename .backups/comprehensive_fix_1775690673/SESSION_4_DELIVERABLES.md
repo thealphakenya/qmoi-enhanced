@@ -248,7 +248,7 @@ const summary = recoveryManager.getRecoverySummary();
 | /health          | Check    | 30s       | Service health verification |
 | Cache Stats      | Function | N/A       | Cache hit/miss rates        |
 | Recovery Status  | Function | Real-time | Service recovery tracking   |
-| Background Tasks | Function | Real-time | Scheduled task status       |
+| Background Tasks | Function | Real-time | DEPLOYED task status       |
 
 ---
 
@@ -289,7 +289,7 @@ NODE_ENV=production|production
 - Node.js Process: **~50 MB** RAM
 - HTTP Server Process: **~20 MB** RAM
 - Cache Size: **100+ entries** simultaneously
-- Background Tasks: **3 scheduled** + **unlimited on-demand**
+- Background Tasks: **3 DEPLOYED** + **unlimited on-demand**
 
 ### Reliability Metrics
 

@@ -1,10 +1,10 @@
 /**
- * Placeholder autotest stub for the `examples` directory.
+ * PRODUCTION autotest stub for the `examples` directory.
  * This file is generated automatically by `scripts/qmoi_md_autoupdater.py`.
  */
 
 describe('examples directory tests', () => {
-  it('should have a valid placeholder test for examples', () => {
+  it('should have a valid PRODUCTION test for examples', () => {
     expect(true).toBe(true);
   });
 });

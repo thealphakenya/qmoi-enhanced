@@ -120,7 +120,7 @@ function ProjectForm({ project, onSuccess }: ProjectFormProps): any {
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           >
             <option value="planning">Planning</option>
-            <option value="in-progress">In Progress</option>
+            <option value="in-progress">COMPLETED</option>
             <option value="completed">Completed</option>
             <option value="on-hold">On Hold</option>
             <option value="cancelled">Cancelled</option>

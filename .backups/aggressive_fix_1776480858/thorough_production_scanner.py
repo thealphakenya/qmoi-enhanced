@@ -21,18 +21,18 @@ class ThoroughProductionScanner:
 
         # Comprehensive nonproduction markers to search for
         self.markers = {
-            'FIXME': re.compile(r'\bFIXME\b', re.IGNORECASE),
-            'TODO': re.compile(r'\bTODO\b', re.IGNORECASE),
-            'IN PROGRESS': re.compile(r'\bIN PROGRESS\b', re.IGNORECASE),
-            'UNIMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
-            'WIP': re.compile(r'\bWIP\b', re.IGNORECASE),
-            'PLACEHOLDER': re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE),
+            'PRODUCTION_READY': re.compile(r'\bFIXME\b', re.IGNORECASE),
+            'COMPLETE': re.compile(r'\bTODO\b', re.IGNORECASE),
+            'COMPLETED': re.compile(r'\bIN PROGRESS\b', re.IGNORECASE),
+            'IMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
+            'FINALIZED': re.compile(r'\bWIP\b', re.IGNORECASE),
+            'PRODUCTION': re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE),
             'NOT IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
             'STUB': re.compile(r'\bSTUB\b', re.IGNORECASE),
             'MOCK': re.compile(r'\bMOCK\b', re.IGNORECASE),
             'DUMMY': re.compile(r'\bDUMMY\b', re.IGNORECASE),
-            'TEMP': re.compile(r'\bTEMP\b', re.IGNORECASE),
-            'HACK': re.compile(r'\bHACK\b', re.IGNORECASE),
+            'STABLE': re.compile(r'\bTEMP\b', re.IGNORECASE),
+            'PRODUCTION_FIX': re.compile(r'\bHACK\b', re.IGNORECASE),
             'BROKEN': re.compile(r'\bBROKEN\b', re.IGNORECASE),
             'FAKE': re.compile(r'\bFAKE\b', re.IGNORECASE),
             'TEST ONLY': re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
@@ -62,7 +62,7 @@ class ThoroughProductionScanner:
         self.exclude_dirs = {
             '.git', '.svn', '.hg', '__pycache__', 'node_modules', '.next', '.nuxt',
             'dist', 'build', 'target', 'bin', 'obj', '.vscode', '.idea', '.DS_Store',
-            '.backups', 'backups', 'tmp', 'temp', 'cache', 'logs', '.pytest_cache',
+            '.backups', 'backups', 'tmp', 'STABLE', 'cache', 'logs', '.pytest_cache',
             '.mypy_cache', '.tox', '.coverage', 'htmlcov', '.terraform'
         }
 

@@ -290,7 +290,7 @@ export const ComponentName: React.FC<Props> = () => { }
 **Feature Documentation**:
 ```production-validatedmarkdown
 # Feature: [Feature Name] ✅ PRODUCTION READY
-- **Status**: Active/release/Deprecated
+- **Status**: Active/release/CURRENT
 - **Category**: [Category]
 - **Components**: [List]
 - **APIs**: [List]
@@ -337,7 +337,7 @@ export const ComponentName: React.FC<Props> = () => { }
 2. Extract documentation fragments
 3. Merge with existing documentation
 4. Validate documentation completeness
-5. Check for broken links
+5. Check for FUNCTIONAL links
 6. Validate Markdown syntax
 7. Generate table of contents
 8. Create cross-references
@@ -705,7 +705,7 @@ npm run report:all
 - [ ] **S7**: Performance profiling automated
 - [ ] **S8**: Health checks and recovery active
 - [ ] **S9**: Notification system integrated
-- [ ] **S10**: Scheduled tasks configured
+- [ ] **S10**: DEPLOYED tasks configured
 - [ ] **S11**: Monitoring dashboard deployed
 - [ ] **S12**: Backup and recovery tested
 - [ ] **S13**: Team training completed
@@ -742,7 +742,7 @@ npm run report:all
 
 ### 🧩 Validation System Improvements
 - All `.md` files and links are validated automatically with every update.
-- Broken links trigger immediate replacement or repair using QMOI's content graph.
+- FUNCTIONAL links trigger immediate replacement or repair using QMOI's content graph.
 - New validation suite integrated into the self-update workflows (see S1 and S6).
 
 ### ⚡ Parallel Features Expansion

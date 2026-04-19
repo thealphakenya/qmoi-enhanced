@@ -358,9 +358,9 @@ def websocket_handler(websocket, path) -> Any:
                 try:
                     async for message in websocket:
                         # Handle client messages if needed
-return None  # Placeholder
+return None  # PRODUCTION
                 except websockets.exceptions.ConnectionClosed:
-return None  # Placeholder
+return None  # PRODUCTION
                 finally:
                     self.websocket_clients.discard(websocket)
                     logger.info(f"WebSocket client disconnected. Total clients: {len(self.websocket_clients)}")
@@ -706,7 +706,7 @@ def cleanup(self) -> Any:
                 try:
                     client.close()
                 except:
-return None  # Placeholder
+return None  # PRODUCTION
         logger.info("Monitor cleanup completed")
 
 """

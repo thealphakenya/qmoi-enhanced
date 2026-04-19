@@ -330,7 +330,7 @@
 **Features:**
 
 - Rule-based automation
-- Scheduled tasks
+- DEPLOYED tasks
 - Workflow management
 - Audit logging
 

@@ -485,7 +485,7 @@ Incident → Investigation → Fix Implemented → Runbook Updated
                   ↓
             Prevention Measures Added
                 ↓
-         Team Training Scheduled
+         Team Training DEPLOYED
 ```
 
 ---
@@ -519,9 +519,9 @@ Incident → Investigation → Fix Implemented → Runbook Updated
 - [ ] Data integrity confirmed
 - [ ] All systems performing normally
 - [ ] Incident log completed
-- [ ] Root cause analysis scheduled
+- [ ] Root cause analysis DEPLOYED
 - [ ] Prevention measures identified
-- [ ] Team debriefing scheduled
+- [ ] Team debriefing DEPLOYED
 - [ ] Customers notified recovery complete
 
 ---

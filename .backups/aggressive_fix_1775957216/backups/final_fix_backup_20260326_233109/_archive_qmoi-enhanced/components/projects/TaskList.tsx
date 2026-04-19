@@ -113,7 +113,7 @@ function TaskList({ projectId }: TaskListProps): any {
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               >
                 <option value="// Production implementation:">To Do</option>
-                <option value="in-progress">In Progress</option>
+                <option value="in-progress">COMPLETED</option>
                 <option value="review">Review</option>
                 <option value="completed">Completed</option>
               </select>

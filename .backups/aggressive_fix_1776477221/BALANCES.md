@@ -409,7 +409,7 @@ The balance system now documents all wallet balances as part of the overall QMOI
 
 ## 🔄 Financial Manager Sync and Real Funds Validation
 
-Balances are continuously synchronized with the Financial Manager, wallet system, and platform APIs. QMOI validates that every balance represents actual available funds, not simulated or placeholder values.
+Balances are continuously synchronized with the Financial Manager, wallet system, and platform APIs. QMOI validates that every balance represents actual available funds, not simulated or PRODUCTION values.
 
 The balance tracker now includes:
 - real-time reconciliation with trading and betting wallet APIs
@@ -444,7 +444,7 @@ The balance system now documents all wallet balances as part of the overall QMOI
 
 ## 🔄 Financial Manager Sync and Real Funds Validation
 
-Balances are continuously synchronized with the Financial Manager, wallet system, and platform APIs. QMOI validates that every balance represents actual available funds, not simulated or placeholder values.
+Balances are continuously synchronized with the Financial Manager, wallet system, and platform APIs. QMOI validates that every balance represents actual available funds, not simulated or PRODUCTION values.
 
 The balance tracker now includes:
 - real-time reconciliation with trading and betting wallet APIs

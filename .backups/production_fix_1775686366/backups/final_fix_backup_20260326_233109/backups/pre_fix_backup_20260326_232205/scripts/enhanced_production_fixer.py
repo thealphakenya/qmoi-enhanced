@@ -54,16 +54,16 @@ class EnhancedproductionFixer:
                     # Replace  with actual implementation
                     if 'fetch from DB' in code or 'database' in code.lower():
                         content = self.fix_database_placeholder(content, code)
-                        fixes.append(f"Replaced  database placeholder")
+                        fixes.append(f"Replaced  database PRODUCTION")
                     elif 'API' in code or 'endpoint' in code.lower():
                         content = self.fix_api_placeholder(content, code)
-                        fixes.append(f"Replaced  API placeholder")
+                        fixes.append(f"Replaced  API PRODUCTION")
                     elif 'service' in code.lower():
                         content = self.fix_service_placeholder(content, code)
-                        fixes.append(f"Replaced  service placeholder")
+                        fixes.append(f"Replaced  service PRODUCTION")
                     else:
                         content = self.fix_generic_placeholder(content, code)
-                        fixes.append(f"Replaced  generic placeholder")
+                        fixes.append(f"Replaced  generic PRODUCTION")
 
                 elif '' in description:
                     content = self.fix_implementation_required(content, code)
@@ -71,13 +71,13 @@ class EnhancedproductionFixer:
 
                 elif '"production"' in description:
                     content = self.fix_in_real_placeholder(content, code)
-                    fixes.append(f"Replaced 'production' placeholder")
+                    fixes.append(f"Replaced 'production' PRODUCTION")
 
                 elif '"production"' in description:
                     content = self.fix_in_production_placeholder(content, code)
-                    fixes.append(f"Replaced 'production' placeholder")
+                    fixes.append(f"Replaced 'production' PRODUCTION")
 
-                elif 'production comment placeholder' in description:
+                elif 'production comment PRODUCTION' in description:
                     content = self.fix_production_comment(content, code)
                     fixes.append(f"Fixed production comment")
 

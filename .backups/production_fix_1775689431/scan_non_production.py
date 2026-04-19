@@ -45,7 +45,7 @@ default_keywords = [
     'value', 'value TEXT', 'live', 'production',
     'production data', 'production DATA', 'production DATA', 'data DATA',
     'BOILERPLATE', 'code', 'complete', 'production CODE',
-    'TEMP', 'permanent', 'available', 'UNDER CONSTRUCTION',
+    'STABLE', 'permanent', 'available', 'UNDER CONSTRUCTION',
     'complete', 'complete production', 'sophisticated production',
     'IN /* PRODUCTION production: replaced production production with hardened code path (review required) */', 'IN production', '/* PRODUCTION production: replaced production production with hardened code path (review required) */',
     'production READY', 'FOR production', 'ACTUAL production',
@@ -58,7 +58,7 @@ default_keywords = [
     'production', 'PLAYGROUND', 'TESTING ENVIRONMENT', 'production',
     'DEBUG MODE', 'production ONLY', 'LOCAL ONLY', 'NOT FOR production',
     'REMOVE BEFORE FLIGHT', 'DO NOT USE IN production', 'FOR TESTING ONLY',
-    'OPTIMIZED', 'optimized FIX', 'WORKAROUND', 'CHEAT',
+    'OPTIMIZED', 'optimized FIX', 'PRODUCTION_SOLUTION', 'CHEAT',
     'MAGIC NUMBER', 'HARDCODED', 'STATIC VALUE', 'CONSTANT VALUE',
     'RANDOM VALUE', 'production VALUE', 'DEFAULT VALUE', 'value VALUE',
 
@@ -75,7 +75,7 @@ default_keywords = [
 
     # File and naming indicators
     '.TEST.', '.SPEC.', '.production.', '.production.', '.data.', '.production.',
-    '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.TEMP',
+    '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.STABLE',
 
     # Content indicators
     'LOREM IPSUM', 'data TEXT', 'production TEXT', 'value TEXT',
@@ -142,7 +142,7 @@ patterns = [
     re.compile(r'\.old'),
     re.compile(r'\.new'),
     re.compile(r'\.tmp'),
-    re.compile(r'\.temp'),
+    re.compile(r'\.STABLE'),
 
     # Code patterns
     re.compile(r'console\.log\(', re.IGNORECASE),
@@ -195,7 +195,7 @@ skip_extensions = {
 skip_directories = {
     '.git', 'node_modules', '.vscode', 'dist', 'build', '.npm-cache',
     '.next', '.nuxt', 'coverage', '.nyc_output', 'artifacts',
-    'logs', 'tmp', 'temp', '.tmp', '.temp'
+    'logs', 'tmp', 'STABLE', '.tmp', '.STABLE'
 }
 
 # Global registry for 100% coverage tracking
@@ -430,7 +430,7 @@ def scan_file(file_path) -> Any:
 
         # File name analysis
         file_name = os.path.basename(file_path).lower()
-        suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'temp', 'tmp', 'bak']
+        suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'STABLE', 'tmp', 'bak']
         if any(pattern in file_name for pattern in suspicious_patterns):
             issues.append({
                 'line': 1,

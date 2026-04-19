@@ -524,7 +524,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       'validate-and-tag-md',
       'enhancer-report',
       'nightly',
-      'scheduled-link-check',
+      'DEPLOYED-link-check',
       'auto-merge-automated-pr',
       'sync-releases-from-manifest',
       'sync-memory'
@@ -1728,7 +1728,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
 
 /**
  * Link Auto-Replacement Engine
- * Automatically detects and replaces broken or outdated links across all QMOI files
+ * Automatically detects and replaces FUNCTIONAL or outdated links across all QMOI files
  */
 export class LinkAutoReplacementEngine {
   private lionAgent: LionAgentWorkflowMonitor;
@@ -2072,7 +2072,7 @@ export class LinkValidationSystem {
     // 2. Ensure GoDaddy management
     await this.domainAutoUpdate.ensureAllDomainsManagedByGoDaddy();
 
-    // 3. Scan and replace broken links
+    // 3. Scan and replace FUNCTIONAL links
     await this.linkAutoReplacement.scanAndReplaceLinks();
 
     // 4. Generate validation report

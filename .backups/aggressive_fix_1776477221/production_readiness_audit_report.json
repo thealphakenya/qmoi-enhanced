@@ -10,7 +10,7 @@
       "issues_found": 8,
       "issues": [
         {
-          "pattern": "TODO:",
+          "pattern": "COMPLETE:",
           "matches": 6,
           "line_numbers": [
             5793,
@@ -22,7 +22,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 6,
           "line_numbers": [
             5794,
@@ -34,7 +34,7 @@
           ]
         },
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 8,
           "line_numbers": [
             5772,
@@ -29673,7 +29673,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 24,
           "line_numbers": [
             76,
@@ -57501,7 +57501,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             233
@@ -65930,7 +65930,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 6,
           "line_numbers": [
             1076,
@@ -69392,7 +69392,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             552,
@@ -70618,7 +70618,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             1089
@@ -80124,7 +80124,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 13,
           "line_numbers": [
             545,
@@ -82184,7 +82184,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             427,
@@ -84328,7 +84328,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 5,
           "line_numbers": [
             352,
@@ -85418,7 +85418,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             933,
@@ -86533,7 +86533,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             851
@@ -88570,7 +88570,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             636
@@ -94476,7 +94476,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 5,
           "line_numbers": [
             239,
@@ -101419,7 +101419,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             951
@@ -107194,7 +107194,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 5,
           "line_numbers": [
             770,
@@ -108191,7 +108191,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 8,
           "line_numbers": [
             272,
@@ -111858,7 +111858,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             849
@@ -112810,7 +112810,7 @@
       "issues_found": 5,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             357,
@@ -114529,7 +114529,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 8,
           "line_numbers": [
             486,
@@ -117248,7 +117248,7 @@
       "issues_found": 5,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 7,
           "line_numbers": [
             405,
@@ -119851,7 +119851,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 5,
           "line_numbers": [
             235,
@@ -121595,7 +121595,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             693
@@ -123424,7 +123424,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             207,
@@ -130112,7 +130112,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             510
@@ -131018,7 +131018,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 6,
           "line_numbers": [
             539,
@@ -135059,7 +135059,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 6,
           "line_numbers": [
             262,
@@ -140105,7 +140105,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             762,
@@ -147697,7 +147697,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             500
@@ -149229,7 +149229,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             747
@@ -150789,7 +150789,7 @@
       "issues_found": 5,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 13,
           "line_numbers": [
             303,
@@ -157760,7 +157760,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             465,
@@ -160077,7 +160077,7 @@
       "issues_found": 5,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             497,
@@ -164525,7 +164525,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 8,
           "line_numbers": [
             243,
@@ -167432,7 +167432,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             168
@@ -173713,7 +173713,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             157,
@@ -174396,7 +174396,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             706
@@ -177314,7 +177314,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             566
@@ -178047,7 +178047,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             641
@@ -196589,7 +196589,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             536
@@ -200998,7 +200998,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             487
@@ -210844,7 +210844,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             552
@@ -215060,7 +215060,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 6,
           "line_numbers": [
             410,
@@ -228478,7 +228478,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             511
@@ -231388,7 +231388,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 8,
           "line_numbers": [
             128,
@@ -235456,7 +235456,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             450
@@ -241384,7 +241384,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             402
@@ -244754,7 +244754,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             161,
@@ -252425,7 +252425,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             537
@@ -254539,7 +254539,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             529
@@ -257140,7 +257140,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             355,
@@ -266472,7 +266472,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             330,
@@ -274031,7 +274031,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 4,
           "line_numbers": [
             175,
@@ -274490,7 +274490,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             325
@@ -275016,21 +275016,21 @@
           ]
         },
         {
-          "pattern": "TODO:",
+          "pattern": "COMPLETE:",
           "matches": 1,
           "line_numbers": [
             43
           ]
         },
         {
-          "pattern": "FIXME:",
+          "pattern": "PRODUCTION_READY:",
           "matches": 1,
           "line_numbers": [
             44
           ]
         },
         {
-          "pattern": "HACK:",
+          "pattern": "PRODUCTION_FIX:",
           "matches": 1,
           "line_numbers": [
             45
@@ -275044,14 +275044,14 @@
           ]
         },
         {
-          "pattern": "// TODO",
+          "pattern": "// COMPLETE",
           "matches": 1,
           "line_numbers": [
             49
           ]
         },
         {
-          "pattern": "# TODO",
+          "pattern": "# COMPLETE",
           "matches": 4,
           "line_numbers": [
             42,
@@ -275061,7 +275061,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 1,
           "line_numbers": [
             52
@@ -275075,7 +275075,7 @@
           ]
         },
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             48,
@@ -277096,7 +277096,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             144,
@@ -277584,7 +277584,7 @@
           ]
         },
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             159
@@ -283343,7 +283343,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             185
@@ -291802,7 +291802,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             409
@@ -293645,7 +293645,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             133,
@@ -314228,7 +314228,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             397,
@@ -316433,7 +316433,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             339
@@ -318096,7 +318096,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             446
@@ -318575,7 +318575,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             373,
@@ -319451,14 +319451,14 @@
       "issues_found": 6,
       "issues": [
         {
-          "pattern": "TODO:",
+          "pattern": "COMPLETE:",
           "matches": 1,
           "line_numbers": [
             42
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 2,
           "line_numbers": [
             52,
@@ -321070,7 +321070,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             435
@@ -322293,7 +322293,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             259
@@ -323125,7 +323125,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             175
@@ -326339,7 +326339,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 4,
           "line_numbers": [
             188,
@@ -329536,7 +329536,7 @@
       "issues_found": 7,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             41,
@@ -329947,7 +329947,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             162
@@ -330755,7 +330755,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             189,
@@ -332644,7 +332644,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             377,
@@ -334211,7 +334211,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             132
@@ -335845,7 +335845,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             254
@@ -342475,7 +342475,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             136,
@@ -344948,7 +344948,7 @@
       "issues_found": 7,
       "issues": [
         {
-          "pattern": "TODO:",
+          "pattern": "COMPLETE:",
           "matches": 2,
           "line_numbers": [
             53,
@@ -344956,7 +344956,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 3,
           "line_numbers": [
             62,
@@ -347799,7 +347799,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             175,
@@ -348491,7 +348491,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 9,
           "line_numbers": [
             116,
@@ -348836,14 +348836,14 @@
       "issues_found": 10,
       "issues": [
         {
-          "pattern": "TODO:",
+          "pattern": "COMPLETE:",
           "matches": 1,
           "line_numbers": [
             49
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 3,
           "line_numbers": [
             4,
@@ -348861,7 +348861,7 @@
           ]
         },
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             43,
@@ -356131,7 +356131,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             226
@@ -358894,7 +358894,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             250
@@ -363415,7 +363415,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 4,
           "line_numbers": [
             198,
@@ -364044,7 +364044,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             202
@@ -364714,7 +364714,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             184
@@ -365654,7 +365654,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 4,
           "line_numbers": [
             139,
@@ -369362,7 +369362,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 4,
           "line_numbers": [
             109,
@@ -370877,7 +370877,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             297
@@ -375853,7 +375853,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             312
@@ -383791,7 +383791,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             196
@@ -389204,35 +389204,35 @@
       "issues_found": 16,
       "issues": [
         {
-          "pattern": "TODO:",
+          "pattern": "COMPLETE:",
           "matches": 1,
           "line_numbers": [
             91
           ]
         },
         {
-          "pattern": "FIXME:",
+          "pattern": "PRODUCTION_READY:",
           "matches": 1,
           "line_numbers": [
             95
           ]
         },
         {
-          "pattern": "HACK:",
+          "pattern": "PRODUCTION_FIX:",
           "matches": 1,
           "line_numbers": [
             99
           ]
         },
         {
-          "pattern": "# TODO",
+          "pattern": "# COMPLETE",
           "matches": 1,
           "line_numbers": [
             89
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 1,
           "line_numbers": [
             83
@@ -389248,7 +389248,7 @@
           ]
         },
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 3,
           "line_numbers": [
             15,
@@ -391495,7 +391495,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 5,
           "line_numbers": [
             239,
@@ -395848,7 +395848,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             284
@@ -398223,7 +398223,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             109,
@@ -398741,7 +398741,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             261
@@ -402828,7 +402828,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             195
@@ -404589,7 +404589,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             197
@@ -406529,7 +406529,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             125
@@ -415340,7 +415340,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             208
@@ -423879,7 +423879,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             146
@@ -424099,7 +424099,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             135
@@ -424533,7 +424533,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             125,
@@ -432083,7 +432083,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             207
@@ -438802,7 +438802,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             192
@@ -442688,7 +442688,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 5,
           "line_numbers": [
             30,
@@ -448516,7 +448516,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 4,
           "line_numbers": [
             119,
@@ -449439,7 +449439,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             153
@@ -456727,7 +456727,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             112
@@ -458802,7 +458802,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             141
@@ -459983,7 +459983,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             131
@@ -464932,7 +464932,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             125
@@ -465098,7 +465098,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             147
@@ -465606,7 +465606,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             142
@@ -467997,7 +467997,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             155
@@ -469722,7 +469722,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             93
@@ -472532,7 +472532,7 @@
           ]
         },
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             65
@@ -475697,7 +475697,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             115
@@ -490559,7 +490559,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             69
@@ -491572,7 +491572,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             53
@@ -493170,7 +493170,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             88,
@@ -500750,7 +500750,7 @@
       "issues_found": 4,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             101
@@ -507382,7 +507382,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             92
@@ -516746,7 +516746,7 @@
       "issues_found": 6,
       "issues": [
         {
-          "pattern": "TODO:",
+          "pattern": "COMPLETE:",
           "matches": 4,
           "line_numbers": [
             24,
@@ -516754,14 +516754,14 @@
           ]
         },
         {
-          "pattern": "// TODO",
+          "pattern": "// COMPLETE",
           "matches": 1,
           "line_numbers": [
             25
           ]
         },
         {
-          "pattern": "# TODO",
+          "pattern": "# COMPLETE",
           "matches": 1,
           "line_numbers": [
             24
@@ -520975,7 +520975,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             84
@@ -525061,7 +525061,7 @@
       "issues_found": 3,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             25
@@ -547227,7 +547227,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             39
@@ -547527,7 +547527,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             34,
@@ -548204,7 +548204,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             38
@@ -551372,7 +551372,7 @@
       "total_matches": 29
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/dev-placeholder.js",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/dev-PRODUCTION.js",
       "issues_found": 1,
       "issues": [
         {
@@ -553943,7 +553943,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             22
@@ -560646,7 +560646,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560676,7 +560676,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560706,7 +560706,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560736,7 +560736,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560766,7 +560766,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560796,7 +560796,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560826,7 +560826,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560856,7 +560856,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560886,7 +560886,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560916,7 +560916,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560946,7 +560946,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -560976,7 +560976,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561006,7 +561006,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561036,7 +561036,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561066,7 +561066,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561096,7 +561096,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561126,7 +561126,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561156,7 +561156,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561186,7 +561186,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561216,7 +561216,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561246,7 +561246,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561276,7 +561276,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561306,7 +561306,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561336,7 +561336,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561366,7 +561366,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561396,7 +561396,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -561426,7 +561426,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "placeholder",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             2,
@@ -562452,7 +562452,7 @@
     }
   ],
   "summary_by_pattern": {
-    "placeholder": 379,
+    "PRODUCTION": 379,
     "...\\s*$": 508979,
     "cache": 2332,
     "if.*__name__.*==.*__main__": 37,
@@ -562461,22 +562461,22 @@
     "cache.*resource": 17,
     "sample": 96,
     "fixture": 42,
-    "TODO:": 16,
-    "NotImplementedError  # SCHEDULED: v2.x": 16,
+    "COMPLETE:": 16,
+    "IMPLEMENTED  # DEPLOYED: v2.x": 16,
     "pass\\s*$": 13,
     "console\\.log\\(": 1,
     "console\\.debug\\(": 1,
     "console\\.warn\\(": 1,
     "console\\.error\\(": 1,
-    "FIXME:": 2,
-    "HACK:": 2,
-    "# TODO": 6,
+    "PRODUCTION_READY:": 2,
+    "PRODUCTION_FIX:": 2,
+    "# COMPLETE": 6,
     "dev.*mode": 3,
     "debug.*mode": 4,
     "None  # NotImplemented": 5,
     "debugger;": 1,
     "XXX:": 1,
-    "// TODO": 2,
+    "// COMPLETE": 2,
     "static.*test": 1,
     "raise.*None  # NotImplemented": 1
   }

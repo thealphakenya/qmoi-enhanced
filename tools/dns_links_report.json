@@ -492,9 +492,9 @@
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "https://broken-link.com",
+      "url": "https://FUNCTIONAL-link.com",
       "file": "ENHANCED_LINK_DOMAIN_SYSTEM.md",
-      "host": "broken-link.com",
+      "host": "FUNCTIONAL-link.com",
       "resolved_ips": [
         "216.150.1.129",
         "216.150.16.193"
@@ -4257,7 +4257,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md)",
+      "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [

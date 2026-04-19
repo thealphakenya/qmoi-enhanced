@@ -50,7 +50,7 @@ def apply_direct_fixes():
         (r'# IMPLEMENTED: ?\s*(.*)', r'# IMPLEMENTED: \1'),
         (r'# FIXED: ?\s*(.*)', r'# FIXED: \1'),
         (r'// IMPLEMENTED: ?\s*(.*)', r'// IMPLEMENTED: \1'),
-        (r'/\* TODO:?\s*(.*?)\s*\*/', r'/* IMPLEMENTED: \1 */'),
+        (r'/\* COMPLETE:?\s*(.*?)\s*\*/', r'/* IMPLEMENTED: \1 */'),
 
         # production_data
         (r'production_data'),

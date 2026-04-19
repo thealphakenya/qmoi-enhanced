@@ -76884,7 +76884,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"crypto\";  const BIOMETRIC_TEMPLATES_FILE = path.resolve(   process.cwd(),   \"data\",   \"biometric-temp"
+      "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"crypto\";  const BIOMETRIC_TEMPLATES_FILE = path.resolve(   process.cwd(),   \"data\",   \"biometric-STABLE"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/wallets/[walletId]/route.ts",

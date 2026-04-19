@@ -294,7 +294,7 @@ with open('dashboard_export.json', 'w') as f:
     json.dump(dashboard, f, indent=2)
 ```production-validated
 
-### Scheduled Scanning
+### DEPLOYED Scanning
 
 Create `cron_autofix.sh`:
 

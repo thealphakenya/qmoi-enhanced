@@ -22,7 +22,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 6,
           "line_numbers": [
             5794,
@@ -275061,7 +275061,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 1,
           "line_numbers": [
             52
@@ -319458,7 +319458,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 2,
           "line_numbers": [
             52,
@@ -344956,7 +344956,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 3,
           "line_numbers": [
             62,
@@ -348843,7 +348843,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 3,
           "line_numbers": [
             4,
@@ -389232,7 +389232,7 @@
           ]
         },
         {
-          "pattern": "NotImplementedError  # SCHEDULED: v2.x",
+          "pattern": "IMPLEMENTED  # DEPLOYED: v2.x",
           "matches": 1,
           "line_numbers": [
             83
@@ -562462,7 +562462,7 @@
     "sample": 96,
     "fixture": 42,
     "DONE:": 16,
-    "NotImplementedError  # SCHEDULED: v2.x": 16,
+    "IMPLEMENTED  # DEPLOYED: v2.x": 16,
     "pass\\s*$": 13,
     "console\\.log\\(": 1,
     "console\\.debug\\(": 1,

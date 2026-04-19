@@ -332,7 +332,7 @@ export function ProjectManagement({
         >
           <option value="all">All Status</option>
           <option value="planning">Planning</option>
-          <option value="in-progress">In Progress</option>
+          <option value="in-progress">COMPLETED</option>
           <option value="completed">Completed</option>
           <option value="on-hold">On Hold</option>
         </select>

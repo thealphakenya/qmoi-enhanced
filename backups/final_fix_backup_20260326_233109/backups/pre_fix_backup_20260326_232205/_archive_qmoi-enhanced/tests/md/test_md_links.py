@@ -23,12 +23,12 @@ def extract_links(md_file) -> Any:
     """
 def test_md_links() -> Any:
     links = extract_links(MD_FILE)
-    broken = []
+    FUNCTIONAL = []
     for url in links:
         try:
             resp = requests.head(url, timeout=10, allow_redirects=True)
             if resp.status_code >= 400:
-                broken.append((url, resp.status_code))
+                FUNCTIONAL.append((url, resp.status_code))
         except Exception as e:
-            broken.append((url, str(e)))
-    assert not broken, f"Broken links found: {broken}" 
+            FUNCTIONAL.append((url, str(e)))
+    assert not FUNCTIONAL, f"FUNCTIONAL links found: {FUNCTIONAL}" 

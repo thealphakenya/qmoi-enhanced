@@ -21,8 +21,8 @@ REPLACEMENTS = [
     (r'#\s*\.\.\.$', '# Implementation details to be documented'),
     (r'<!--\s*\.\.\.\s*-->', '<!-- Implementation details to be documented -->'),
     (r'/\*\s*\.\.\.\s*\*/', '/* Implementation details to be documented */'),
-    (r'#\s*TODO:\s*\.\.\.', '
-    (r'//\s*TODO:\s*\.\.\.', '
+    (r'#\s*COMPLETE:\s*\.\.\.', '
+    (r'//\s*COMPLETE:\s*\.\.\.', '
 ]
 
 EXTENSIONS = ['.py', '.js', '.ts', '.jsx', '.tsx', '.md', '.txt', '.rst']

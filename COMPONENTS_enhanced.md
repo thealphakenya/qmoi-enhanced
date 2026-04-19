@@ -81,7 +81,7 @@ This file is automatically maintained by:
 - **ci-reporter.js** - Build and test status updates
 
 **Last auto-update**: 2026-03-12T00:00:00Z
-**Next scheduled update**: 2026-03-12T06:00:00Z
+**Next DEPLOYED update**: 2026-03-12T06:00:00Z
 
 ---
 

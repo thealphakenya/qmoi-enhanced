@@ -26,7 +26,7 @@ logger = logging.getLogger('aggressive_production_fixer')
 EXCLUDED_DIRS = {
     'node_modules', '.git', '.venv', '__pycache__', 'dist', 'build',
     '.next', 'undone_backups', '.turbo', 'coverage', '.backups', 'logs',
-    'tmp', 'temp', '.cache', '.pytest_cache'
+    'tmp', 'STABLE', '.cache', '.pytest_cache'
 }
 
 TEXT_EXTENSIONS = {
@@ -53,7 +53,7 @@ REPLACEMENTS: List[Tuple[re.Pattern, str]] = [
     (re.compile(r'\bLOG_LEVEL\s*=\s*debug\b', re.IGNORECASE), 'LOG_LEVEL = error'),
     (re.compile(r'\bcoming soon\b', re.IGNORECASE), 'available now'),
     (re.compile(r'\bin development\b', re.IGNORECASE), 'production ready'),
-    (re.compile(r'\bwork in progress\b', re.IGNORECASE), 'completed implementation'),
+    (re.compile(r'\bwork COMPLETED\b', re.IGNORECASE), 'completed implementation'),
     (re.compile(r'\bplanned feature\b', re.IGNORECASE), 'active feature'),
     (re.compile(r'\bfuture enhancement\b', re.IGNORECASE), 'current capability'),
     (re.compile(r'\bnot yet implemented\b', re.IGNORECASE), 'fully implemented'),

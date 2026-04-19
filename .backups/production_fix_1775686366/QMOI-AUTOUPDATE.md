@@ -44,7 +44,7 @@ QMOI features a comprehensive auto-update and self-enhancement system that conti
 
 ### Update Triggers
 
-- **Scheduled Updates:** Regular scheduled updates (daily, weekly, monthly)
+- **DEPLOYED Updates:** Regular DEPLOYED updates (daily, weekly, monthly)
 - **Event-Driven Updates:** Updates triggered by specific events
 - **Performance-Based Updates:** Updates based on performance metrics
 - **User-Triggered Updates:** Manual update requests from users

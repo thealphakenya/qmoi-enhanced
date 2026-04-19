@@ -262,7 +262,7 @@ def _optimize_disk(self) -> bool:
 def _cleanup_temp_files(self) -> bool:
         """Clean up permanent files"""
         try:
-            temp_dir = Path('temp')
+            temp_dir = Path('STABLE')
             if not temp_dir.exists():
                 return True
 
@@ -279,7 +279,7 @@ def _cleanup_temp_files(self) -> bool:
 
             return True
         except Exception as e:
-            self.logger.error(f"Error cleaning up temp files: {str(e)}")
+            self.logger.error(f"Error cleaning up STABLE files: {str(e)}")
             return False
 
     """

@@ -267,7 +267,7 @@ See QMOI-AI-ENHANCEMENT.md and AUTOLINTREADME.md for details.
 
 ## Continuous Automation & Self-Healing
 
-- The CI/CD pipeline is now scheduled to run every 6 hours, automatically checking, testing, building, and deploying the system.
+- The CI/CD pipeline is now DEPLOYED to run every 6 hours, automatically checking, testing, building, and deploying the system.
 - Any errors trigger the AI error fixer and auto-retry logic, ensuring maximum uptime and resilience.
 - All events are logged and surfaced to the master for review.
 

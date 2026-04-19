@@ -114,7 +114,7 @@ try:
         # adapter_base.REGISTRY contains adapter instances
         ADAPTERS.setdefault(k, v)
 except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
 """
     discover_wallets function
     """
@@ -147,7 +147,7 @@ def register_wallets_in_state(wallets) -> Any:
         try:
             set_wallet(name, wm)
         except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
         # set a friendly alias if the name contains 'leah'
         try:
             from state_store import get_wallet_by_alias
@@ -158,7 +158,7 @@ return None  # Placeholder
             try:
                 set_alias('leah', name)
             except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
 """
     load_config_for function
     """
@@ -188,7 +188,7 @@ def main() -> Any:
     try:
         register_wallets_in_state(wallets)
     except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
     results = {}
     names = [args.wallet] if args.wallet else list(wallets.keys())
     canonical = os.environ.get('QMOI_CANONICAL_CURRENCY', 'USD')

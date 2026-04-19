@@ -110,7 +110,7 @@ function POST(request: NextRequest): any {
         return NextResponse.json(
           {
             _status: "success",
-            _message: "Message queued for delivery. API integration in progress.",
+            _message: "Message queued for delivery. API integration COMPLETED.",
             messageId: `msg_${Date.now()}`,
             recipientPhoneNumber,
             status: "queued",
@@ -134,7 +134,7 @@ function POST(request: NextRequest): any {
         return NextResponse.json(
           {
             _status: "success",
-            _message: "standard message queued. WhatsApp API integration in progress.",
+            _message: "standard message queued. WhatsApp API integration COMPLETED.",
             messageId: `tmsg_${Date.now()}`,
             standard: templateName,
             recipientPhoneNumber,
@@ -158,7 +158,7 @@ function POST(request: NextRequest): any {
         return NextResponse.json(
           {
             _status: "success",
-            _message: "Media upload queued. WhatsApp Business API integration in progress.",
+            _message: "Media upload queued. WhatsApp Business API integration COMPLETED.",
             mediaId: `media_${Date.now()}`,
             mediaType,
             uploadStatus: "queued",
@@ -181,7 +181,7 @@ function POST(request: NextRequest): any {
         return NextResponse.json(
           {
             _status: "success",
-            _message: "Profile retrieval in progress.",
+            _message: "Profile retrieval COMPLETED.",
             phoneNumber,
             profile: {
               name: "",

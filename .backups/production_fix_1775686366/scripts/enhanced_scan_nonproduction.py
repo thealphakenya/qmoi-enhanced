@@ -47,9 +47,9 @@ production_keywords = [
     # Instructions and guidelines
     'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED',
     'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE', 'WARNING', 'NOTE', 'NOTE:',
-    'fixed:', 'DONE:', 'HACK', 'XXX', 'BROKEN', 'real', 'DUMMY',
+    'fixed:', 'DONE:', 'PRODUCTION_FIX', 'XXX', 'BROKEN', 'real', 'DUMMY',
 
-    'NOT IMPLEMENTED', 'UNIMPLEMENTED', 'MISSING', 'TBD', 'TBA',
+    'NOT IMPLEMENTED', 'IMPLEMENTED', 'MISSING', 'TBD', 'TBA',
     'COMING SOON', 'UNDER CONSTRUCTION', 'production complete', 'production complete',
     'NEEDS IMPLEMENTATION', 'REQUIRES IMPLEMENTATION', 'MUST IMPLEMENT',
 
@@ -66,8 +66,8 @@ production_keywords = [
     'UPDATE_THIS', 'CONFIGURE_HERE', 'SET_YOUR_', 'ENTER_YOUR_',
 
     # Code quality issues
-    'HACK:', 'WORKAROUND', 'UGLY', 'DIRTY', 'QUICK_FIX',
-    'TEMP FIX', 'HOTFIX', 'PATCH', 'BANDAID',
+    'PRODUCTION_FIX:', 'PRODUCTION_SOLUTION', 'UGLY', 'DIRTY', 'QUICK_FIX',
+    'STABLE FIX', 'HOTFIX', 'PATCH', 'BANDAID',
 
     # Enhanced implementation markers
     'THROW NEW ERROR', 'NOT YET IMPLEMENTED', 'IMPLEMENT ME',
@@ -565,7 +565,7 @@ def scan_directory(directory):
         '.turbo', '.github', '.vscode', '.idea', 'venv', '.pytest_cache',
         '.mypy_cache', '.tox', '.eggs', '*.egg-info', '.serverless',
         '.terraform', '.aws-sam', 'target', '.gradle', '.mvn', 'bin',
-        'obj', '.vs', '.history', '.cache', '.tmp', 'tmp', 'temp'
+        'obj', '.vs', '.history', '.cache', '.tmp', 'tmp', 'STABLE'
     }
 
     for dirpath, dirnames, filenames in os.walk(directory):

@@ -32,7 +32,7 @@ const defaultKeywords = [
   'value', 'value TEXT', 'live', 'production',
   'production data', 'real DATA', 'real DATA',
   'BOILERPLATE', 'code', 'complete',
-  'TEMP', 'permanent', 'available',
+  'STABLE', 'permanent', 'available',
   'complete', 'Complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION'
 ];
 

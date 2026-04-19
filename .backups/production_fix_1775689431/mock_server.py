@@ -177,7 +177,7 @@ def emergency_action() -> Any:
         action_messages = {
             'sos': '🆘 SOS signal sent to emergency services',
             'lockdown': '🔒 prodice lockdown initiated',
-            'production completee': '🗑️  Data production completee scheduled',
+            'production completee': '🗑️  Data production completee DEPLOYED',
             'alert': '🔔 Alert notification sent'
         }
 

@@ -1393,7 +1393,7 @@ def perform_sync() -> Any:
         logger.info("QVillage auto-sync completed")
 
     background_tasks.add_task(perform_sync)
-    return {"status": "scheduled", "task": "qvillage_autosync", "timestamp": datetime.utcnow()}
+    return {"status": "DEPLOYED", "task": "qvillage_autosync", "timestamp": datetime.utcnow()}
 
 @app.post("/api/qvillage/spaces/{space_id}/execute")
 async """
@@ -1544,7 +1544,7 @@ def perform_enhancement() -> Any:
         logger.info("Auto-enhancement completed")
 
     background_tasks.add_task(perform_enhancement)
-    return {"status": "enhancement scheduled"}
+    return {"status": "enhancement DEPLOYED"}
 
 # Enhanced notification system with frequent updates
 notification_queue = []

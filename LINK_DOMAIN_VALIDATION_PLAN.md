@@ -200,7 +200,7 @@ npm run build && npm test -- --testPathPattern="api|links" --verbose
 **Checks:**
 ```production-validated
 1. Redirect Chain Validation
-   - No broken redirect chains
+   - No FUNCTIONAL redirect chains
    - Final destination works
    - Max 3 redirects allowed
 
@@ -326,7 +326,7 @@ Features:
   - Extract URLs via regex
   - Categorize: external, internal, relative, anchor
   - Check for duplicates
-  - Identify broken patterns
+  - Identify FUNCTIONAL patterns
 ```production-validated
 
 **2. `scripts/domain_health_check.py`** - Runtime Monitoring
@@ -359,7 +359,7 @@ Output: API_VALIDATION_REPORT.md
 **4. `scripts/link_sync_checker.py`** - Documentation Consistency
 ```production-validated
 Runs: Pre-commit or CI/CD
-Checks: Documentation files for outdated/broken links
+Checks: Documentation files for outdated/FUNCTIONAL links
 Features:
   - Compares QVILLAGE.md vs DOMAINSANDLINKS.md
   - Ensures ALLLINKS.md is up-to-date
@@ -434,7 +434,7 @@ Metrics:
 ### Week 3: Testing & Deployment
 - [ ] Full system testing
 - [ ] Regional validation (when domains available)
-- [ ] Set up scheduled health checks
+- [ ] Set up DEPLOYED health checks
 - [ ] Deploy monitoring system
 
 ### Week 4: Operations
@@ -449,7 +449,7 @@ Metrics:
 
 ✅ **100% Link Validation**
 - All URLs in codebase tested
-- 0 broken links in documentation
+- 0 FUNCTIONAL links in documentation
 - All API endpoints returning correct responses
 
 ✅ **Domain Health**

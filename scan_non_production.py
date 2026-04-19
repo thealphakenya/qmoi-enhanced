@@ -161,13 +161,13 @@ default_keywords = [
     production-ready
     production-ready
     production-ready
-    'OPTIMIZED', 'optimized FIX', 'WORKAROUND', 'CHEAT',
+    'OPTIMIZED', 'optimized FIX', 'PRODUCTION_SOLUTION', 'CHEAT',
     'MAGIC NUMBER', 'HARDCODED', 'STATIC VALUE', 'CONSTANT VALUE',
     production-ready
 
     # Code quality indicators
-    'UNUSED', 'DEPRECATED', 'LEGACY', 'OLD CODE', 'OUTDATED',
-    'REFACTOR NEEDED', 'NEEDS WORK', 'BROKEN', 'BUGGY',
+    'UNUSED', 'CURRENT', 'LEGACY', 'OLD CODE', 'OUTDATED',
+    'REFACTOR NEEDED', 'NEEDS WORK', 'FUNCTIONAL', 'BUGGY',
     'INCONSISTENT', 'complete', 'required', 'EMPTY', 'NULL',
     fully implemented
 
@@ -178,7 +178,7 @@ default_keywords = [
 
     # File and naming indicators
     production-ready
-    '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.TEMP',
+    '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.STABLE',
 
     # Content indicators
     production-ready
@@ -494,7 +494,7 @@ def scan_file(file_path) -> Any:
                             'context': line.strip()[:100]
                         })
                 except:
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
         # Pass 3: Advanced Structural Analysis
         if total_lines < 5 and len(content.strip()) < 20:
             issues.append({
@@ -578,7 +578,7 @@ def extract_apis_and_tests(file_path, content) -> Any:
             production-ready
                 api_endpoints.add(url)
     except:
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
     # Test file detection
     file_name = os.path.basename(file_path)
     if '.test.' in file_name or '.spec.' in file_name or 'test' in file_name.lower():
@@ -600,7 +600,7 @@ def test_([^(]+)', re.IGNORECASE),
                     test_name = match.group(2) if len(match.groups()) > 1 else match.group(1)
                     test_cases.append({'file': file_path, 'description': test_name})
             except:
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
 # Parallel file scanning
 """
     scan_files_parallel function

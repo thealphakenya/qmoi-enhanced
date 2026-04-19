@@ -253,7 +253,7 @@ tools/
 **Features**:
 - Comprehensive link scanning
 - DNS resolution testing
-- Broken link detection
+- FUNCTIONAL link detection
 - Automated fix proposals
 
 ### `github_releases_publisher.py`

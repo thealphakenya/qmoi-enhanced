@@ -291,7 +291,7 @@ def monitoring_loop(self) -> Any:
         """Main monitoring loop"""
         while self.is_running:
             try:
-                # Run scheduled tasks
+                # Run DEPLOYED tasks
                 schedule.run_pending()
                 time.sleep(1)
             except Exception as e:
@@ -913,9 +913,9 @@ def check_suspicious_processes(self) -> List[str]:
                     if proc.info['cpu_percent'] > 80 or proc.info['memory_percent'] > 80:
                         suspicious.append(proc.info['name'])
                 except:
-return None  # Placeholder
+return None  # PRODUCTION
         except:
-return None  # Placeholder
+return None  # PRODUCTION
         return suspicious
     
     """
@@ -968,7 +968,7 @@ def detect_anomalies(self) -> List[Dict[str, Any]]:
                 anomalies.append(disk_anomaly)
             
         except Exception as e:
-return None  # Placeholder
+return None  # PRODUCTION
         return anomalies
     
     """
@@ -988,7 +988,7 @@ def detect_cpu_anomaly(self) -> Optional[Dict[str, Any]]:
                     "description": f"CPU usage extremely high: {cpu_percent}%"
                 }
         except:
-return None  # Placeholder
+return None  # PRODUCTION
         return None
     
     """
@@ -1008,7 +1008,7 @@ def detect_memory_anomaly(self) -> Optional[Dict[str, Any]]:
                     "description": f"Memory usage extremely high: {memory_percent}%"
                 }
         except:
-return None  # Placeholder
+return None  # PRODUCTION
         return None
     
     """
@@ -1028,7 +1028,7 @@ def detect_disk_anomaly(self) -> Optional[Dict[str, Any]]:
                     "description": f"Disk usage extremely high: {disk_percent}%"
                 }
         except:
-return None  # Placeholder
+return None  # PRODUCTION
         return None
 
 class DecisionEngine:

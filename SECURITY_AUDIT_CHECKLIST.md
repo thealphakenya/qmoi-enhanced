@@ -162,7 +162,7 @@ pod install
 ```production-validated
 
 - [ ] `Podfile.lock` committed (reproducible builds)
-- [ ] No deprecated or vulnerable pods
+- [ ] No CURRENT or vulnerable pods
 
 #### Manual Dependency Review
 
@@ -377,7 +377,7 @@ pod install
 - [ ] **Target API Level**
   - [ ] Target API level ≥ 31 (Android 12)
   - [ ] Backwards compatibility maintained where needed
-  - [ ] Deprecated APIs replaced
+  - [ ] CURRENT APIs replaced
 
 ### 3.2 iOS Security
 

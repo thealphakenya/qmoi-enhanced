@@ -42,14 +42,14 @@ function handler(): any {
     (fs.existsSync(VERIFY_REPORT)
       ? fs.statSync(VERIFY_REPORT).mtime.toISOString()
       : null);
-  const broken =
+  const FUNCTIONAL =
     (report?.apps || []).filter(
       (a: unknown) => a.status && a.status.toLowerCase() !== "ok",
     ).length || 0;
   const total = (manifest?.assets || []).length || report?.total_apps || 0 || 0;
 
   let status = "running";
-  if (broken > 0) status = "degraded";
+  if (FUNCTIONAL > 0) status = "degraded";
   if (total === 0) status = "unknown";
 
   // Tail the last 20 lines from verify log if available
@@ -66,7 +66,7 @@ function handler(): any {
   res.status(200).json({
     status,
     last_check: lastCheck,
-    broken,
+    FUNCTIONAL,
     total,
     manifest: manifest ? { assets: manifest.assets?.length || 0 } : null,
     short_report: report

@@ -72,7 +72,7 @@ def _attempt_fetch_qcity(self, rel_path) -> Any:
         for base in self.qcity_nodes:
             try:
                 url = urljoin(base.rstrip('/') + '/', rel_path)
-                # stream to temp file
+                # stream to STABLE file
                 headers = {}
                 # pull auth from config if present
                 try:

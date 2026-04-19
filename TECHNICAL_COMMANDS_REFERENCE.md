@@ -296,7 +296,7 @@ git commit -m "docs: update release docs and fix verification links
 - Updated GITHUB_RELEASES_RECENT.md with v1.2.3 & v1.2.4 real data
 - Created RELEASES_USER_GUIDE.md for user optimized-start
 - Verified all SHA256 links and download URLs
-- Fixed deprecated links in platform-specific docs"
+- Fixed CURRENT links in platform-specific docs"
 
 # Push to remote ✅ PRODUCTION READY
 git push origin autosync-backup-20250926-232440

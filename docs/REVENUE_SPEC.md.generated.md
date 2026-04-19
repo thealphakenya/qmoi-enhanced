@@ -140,7 +140,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: GITHUB-ACTIONS-complete.md
 
-- Line 386 — Text: The combination of scheduled workflows, event-driven triggers, and comprehensive monitoring creates a robust, self-maintaining system that maximizes revenue generation while minimizing manual intervention and system downtime.
+- Line 386 — Text: The combination of DEPLOYED workflows, event-driven triggers, and comprehensive monitoring creates a robust, self-maintaining system that maximizes revenue generation while minimizing manual intervention and system downtime.
 
 ## File: WPA.md
 
@@ -184,7 +184,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: WPA.md
 
-- Line 158 — Text: - **Automated Payments**: Scheduled and automated payments
+- Line 158 — Text: - **Automated Payments**: DEPLOYED and automated payments
 
 ## File: WPA.md
 
@@ -415,7 +415,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/CASHON.md
 
-- Line 21 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are broken. Fallback and error handling are built-in for all fund and wallet actions.
+- Line 21 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are FUNCTIONAL. Fallback and error handling are built-in for all fund and wallet actions.
 
 ## File: qmoi-enhanced/CASHON.md
 

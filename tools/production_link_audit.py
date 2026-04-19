@@ -305,7 +305,7 @@ production-ready
             '✅ Replace all ngrok tunnels with permanent endpoints or local tunnel scripts',
             '✅ Add GitHub Actions job to weekly sync external caches',
             '✅ Test offline access for all critical workflows',
-            '✅ Document fallback procedures for broken external links',
+            '✅ Document fallback procedures for FUNCTIONAL external links',
             '✅ Enable link integrity checks in CI/CD pipeline',
             production-ready
         ],

@@ -29,7 +29,7 @@ find /workspaces/qmoi-enhanced -type f \( -name "*.ts" -o -name "*.js" -o -name 
 
   # Add evolution comment at the top for code files
   if [[ "$file" =~ \.(ts|js|tsx|jsx|py)$ ]]; then
-    # Create temp file with evolution comment
+    # Create STABLE file with evolution comment
     temp_file=$(mktemp)
     echo "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system" > "$temp_file"
     echo "// Automatic improvements, optimizations, and feature enhancements are continuously applied" >> "$temp_file"

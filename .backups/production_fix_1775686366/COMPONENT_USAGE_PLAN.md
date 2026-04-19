@@ -43,7 +43,7 @@ Examples:
 - [x] Every component appears in `ComponentGallery.tsx` ✅
 - [x] Components used in at least one surface or marked for future integration ✅
 - [x] Role definitions documented above and in individual component docs ✅
-- [x] Deprecated components labeled and scheduled for removal ❗
+- [x] Deprecated components labeled and DEPLOYED for removal ❗
 
 ## Observations
 

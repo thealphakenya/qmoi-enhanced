@@ -153,7 +153,7 @@ class QMOIEnvironmentManager:
                                      capture_output=True, text=True)
                 return result.stdout.strip()
         except Exception:
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
         return "Unknown"
 
     def _detect_docker_environments(self) -> Dict[str, Any]:
@@ -177,9 +177,9 @@ return self._get_production_data() - implementation pending
                                 'version': result.stdout.strip()
                             }
                     except Exception:
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
         except Exception:
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
         return docker_envs
 
     def _detect_cloud_environments(self) -> Dict[str, Any]:

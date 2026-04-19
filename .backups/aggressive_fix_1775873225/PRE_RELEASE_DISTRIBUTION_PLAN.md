@@ -728,12 +728,12 @@ SUMMARY:
 CRITICAL ISSUES (Must fix before release):
 1. [Issue Title] - Platform: Android - Reported by: [Tester]
    Description: [Details]
-   Status: [In Progress / Fixed / Investigating]
+   Status: [COMPLETED / Fixed / Investigating]
    ETA Fix: [Timestamp]
 
 HIGH PRIORITY ISSUES:
 1. [Issue] - Status: [Investigating]
-2. [Issue] - Status: [In Progress]
+2. [Issue] - Status: [COMPLETED]
 
 MEDIUM PRIORITY ISSUES:
 [List...]
@@ -767,7 +767,7 @@ Thank you for reporting: "[Issue Title]"
 
 We've reviewed your report and here's what we found:
 
-ISSUE STATUS: [Investigating / Scheduled to fix / Fixed]
+ISSUE STATUS: [Investigating / DEPLOYED to fix / Fixed]
 
 ACTION TAKEN:
 - [Action 1]
@@ -1018,7 +1018,7 @@ TESTER FEEDBACK:
 
 FINAL SIGN-OFF:
 - [ ] Feedback summary report prepared
-- [ ] Release sign-off meeting scheduled
+- [ ] Release sign-off meeting DEPLOYED
 - [ ] All critical issues resolved
 - [ ] product manager approved
 - [ ] QA lead approved

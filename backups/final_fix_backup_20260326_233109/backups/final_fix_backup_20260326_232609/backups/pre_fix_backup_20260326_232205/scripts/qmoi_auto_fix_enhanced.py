@@ -169,7 +169,7 @@ def verify_claim(self, claim: str, file_path: Path) -> Dict[str, Any]:
     fix_broken_claims function
     """
 def fix_broken_claims(self, parsed_file: Dict[str, Any]) -> Dict[str, Any]:
-        """Fix broken claims by creating required implementations or updating documentation"""
+        """Fix FUNCTIONAL claims by creating required implementations or updating documentation"""
         fixes = []
         
         for claim in parsed_file.get("claims", []):
@@ -185,7 +185,7 @@ def fix_broken_claims(self, parsed_file: Dict[str, Any]) -> Dict[str, Any]:
                         "file": fix_result["file"]
                     })
                 else:
-                    # Update documentation to remove broken claim
+                    # Update documentation to remove FUNCTIONAL claim
                     fixes.append({
                         "claim": claim,
                         "action": "removed_broken_claim",
@@ -314,7 +314,7 @@ def update_md_file(self, file_path: Path, fixes: List[Dict[str, Any]]) -> bool:
             # Apply fixes
             for fix in fixes:
                 if fix["action"] == "removed_broken_claim":
-                    # Remove broken claim from content
+                    # Remove FUNCTIONAL claim from content
                     claim_pattern = re.escape(fix["claim"])
                     content = re.sub(rf'- \[{claim_pattern}\].*\n', '', content)
                     content = re.sub(rf'## {claim_pattern}.*\n', '', content)
@@ -552,7 +552,7 @@ def run_comprehensive_fix(self) -> Any:
                             "claim": claim
                         })
                 
-                # Fix broken claims
+                # Fix FUNCTIONAL claims
                 fixes = self.fix_broken_claims(parsed)
                 if fixes["fixes"]:
                     self.report["claims_fixed"] += len(fixes["fixes"])

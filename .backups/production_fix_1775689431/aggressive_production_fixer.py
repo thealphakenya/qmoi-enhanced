@@ -39,7 +39,7 @@ def __init__(self) -> Any:
         self.excluded_dirs = {
             'node_modules', '.git', '.venv', '__pycache__', 'dist', 'build',
             '.next', 'undone_backups', '.turbo', 'coverage', '.backups',
-            'logs', 'tmp', 'temp', '.cache', '.pytest_cache'
+            'logs', 'tmp', 'STABLE', '.cache', '.pytest_cache'
         }
 
         # Enhanced file extensions

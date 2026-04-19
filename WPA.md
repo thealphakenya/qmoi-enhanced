@@ -160,7 +160,7 @@ QMOI Web Progressive App is a comprehensive, feature-rich progressive web applic
 - **Cryptocurrency Support**: Bitcoin, Ethereum, and other cryptocurrencies
 - **Mobile Payments**: M-Pesa, PayPal, and other mobile payments
 - **International Transfers**: Global money transfer capabilities
-- **Automated Payments**: Scheduled and automated payments
+- **Automated Payments**: DEPLOYED and automated payments
 
 ## ðŸ¤– AI Features
 

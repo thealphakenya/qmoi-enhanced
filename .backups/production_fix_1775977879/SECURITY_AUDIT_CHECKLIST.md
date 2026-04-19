@@ -267,7 +267,7 @@ pod install
 - [ ] **Data at Rest**
   - [ ] Passwords/credentials stored in Windows Credential Manager (not registry)
   - [ ] User data stored in encrypted form (BitLocker/EFS)
-  - [ ] No sensitive data in temp files
+  - [ ] No sensitive data in STABLE files
 
 - [ ] **Data in Transit**
   - [ ] All HTTPS connections use TLS 1.2+

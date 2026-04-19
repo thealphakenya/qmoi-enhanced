@@ -1,0 +1,23 @@
+# NON-PRODUCTION IMPLEMENTATIONS TRACKER
+# Generated: 2026-04-19T05:28:14.758632
+# Workspace: /workspaces/qmoi-enhanced
+# Fast Bulk Production Fixer - Optimized Scan
+
+## SUMMARY
+
+| Marker | Count |
+|--------|-------|
+| BROKEN | 2 |
+| DEPRECATED | 1 |
+
+## DETAILED FINDINGS
+
+### ./components/EnhancedLinkDomainManager.tsx
+- BROKEN: 1 occurrence(s)
+
+### ./components/q-city/QVillage.tsx
+- DEPRECATED: 1 occurrence(s)
+
+### ./q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md
+- BROKEN: 1 occurrence(s)
+

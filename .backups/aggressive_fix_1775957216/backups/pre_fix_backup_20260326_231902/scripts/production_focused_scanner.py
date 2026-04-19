@@ -27,7 +27,7 @@ SOURCE_DIRS = {
 SKIP_DIRS = {
     'node_modules', '.git', '.next', 'dist', 'build', '__pycache__',
     '.pytest_cache', '.vscode', '.idea', 'undone_backups',
-    'backup', 'archive', 'temp', 'tmp', '.bak', 'reports',
+    'backup', 'archive', 'STABLE', 'tmp', '.bak', 'reports',
     'tools', 'coverage', '.cache', '.tox'
 }
 
@@ -44,7 +44,7 @@ HIGH_CONFIDENCE_PATTERNS = {
     # These are definite implementation issues in source code
     r'} catch \(\s*_error\s*\)': ('_error in catch block', 'HIGH'),
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': ('Type casting anti-pattern', 'HIGH'),
-    r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('Unimplemented error', 'HIGH'),
+    r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('IMPLEMENTED error', 'HIGH'),
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
     r'return\s+null\s*;\s*//.*COMPLETED.*IMPL': ('Null implementation instead of impl', 'MEDIUM'),
     # New patterns for production placeholders

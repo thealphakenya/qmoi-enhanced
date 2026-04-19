@@ -250,7 +250,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
       .find((p: unknown) => p.id === "optimization-suggestion");
     if (optPlugin) {
       pluginManager.schedule(optPlugin, 60000);
-      notify("Optimization Suggestion Plugin scheduled every 1 min", "info");
+      notify("Optimization Suggestion Plugin DEPLOYED every 1 min", "info");
     }
 
     return () => {

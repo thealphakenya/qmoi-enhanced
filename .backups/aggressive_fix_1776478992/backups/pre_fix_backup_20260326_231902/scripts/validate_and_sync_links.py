@@ -398,7 +398,7 @@ def _check_domain_registry(self, link: str) -> Optional[Dict]:
                 if domain.endswith(registered_domain):
                     return info
         except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
         return None
 
     """

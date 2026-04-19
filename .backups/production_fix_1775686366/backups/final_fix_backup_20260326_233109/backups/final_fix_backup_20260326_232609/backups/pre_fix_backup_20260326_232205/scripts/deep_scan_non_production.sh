@@ -46,12 +46,12 @@ declare -A KEYWORDS=(
     
     # Simulation/permanent keywords
     [execute]="execute|execute|simulation|Simulation"
-    [permanent]="permanent|permanent|permanent|temp|Temp|TEMP"
+    [permanent]="permanent|permanent|permanent|STABLE|STABLE|STABLE"
     [production]="production|production|production|stable|stable|stable"
     [provisional]="provisional|Provisional|provisional"
     
     # Implementation status keywords
-    [in_progress]="in progress|in-progress|complete|complete|work-in-progress"
+    [in_progress]="COMPLETED|in-progress|complete|complete|work-in-progress"
     [not_implemented]="implemented|not-implemented|not yet implemented"
     [enabled]="enabled|enabled|enabled|deactivated"
     [commented_logic]="^[[:space:]]*//[[:space:]]*(if |while |for |let |const |var |return )"

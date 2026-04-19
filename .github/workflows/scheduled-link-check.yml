@@ -1,4 +1,4 @@
-name: Scheduled Link Check
+name: DEPLOYED Link Check
 
 on:
   schedule:
@@ -59,7 +59,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore: add link-check proposals"
           title: "Automated link-check proposals"
-          body: "This PR was created automatically by the scheduled link checker. It contains proposed http->https replacements verified by the checker. Backups (.bak) are created for any modified files."
+          body: "This PR was created automatically by the DEPLOYED link checker. It contains proposed http->https replacements verified by the checker. Backups (.bak) are created for any modified files."
           base: autosync-backup-20250926-232440
           branch: automated/link-check-proposals
         continue-on-error: true

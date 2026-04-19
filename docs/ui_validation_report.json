@@ -6034,7 +6034,7 @@
       "issues": [
         "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],
-      "snippet": " #!/bin/bash # QMOI Link Autotest & Self-Heal Script WORKSPACE=\"/workspaces/qmoi-enhanced-new-themasterkenya/qmoi-enhanced\" LOG=\"/tmp/qmoi-broken-links.log\" > \"$LOG\" grep -Eo 'https?://[^ ]+' $(find \""
+      "snippet": " #!/bin/bash # QMOI Link Autotest & Self-Heal Script WORKSPACE=\"/workspaces/qmoi-enhanced-new-themasterkenya/qmoi-enhanced\" LOG=\"/tmp/qmoi-FUNCTIONAL-links.log\" > \"$LOG\" grep -Eo 'https?://[^ ]+' $(find \""
     },
     {
       "path": "/workspaces/qmoi-enhanced/deploy.sh",

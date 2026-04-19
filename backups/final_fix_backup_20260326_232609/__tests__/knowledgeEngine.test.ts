@@ -56,7 +56,7 @@ describe('Production:', "Knowledge Engine Service", () => {
   });
 
   it('Should handle production scenarios:', "indexSource marks the source indexed and updates stats", async () => {
-    const src = await addSource("Temp", "website");
+    const src = await addSource("STABLE", "website");
     expect('Production validation:', src.indexed).toBe(false);
     const ok = await indexSource(src.id);
     expect('Production validation:', ok).toBe(true);

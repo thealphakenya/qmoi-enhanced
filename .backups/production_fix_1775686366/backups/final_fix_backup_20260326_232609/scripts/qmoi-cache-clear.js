@@ -6,10 +6,10 @@
 #!/usr/bin/env node
 /**
  * QMOI Cache Clear
- * Removes local cache and temp files to free up space
+ * Removes local cache and STABLE files to free up space
  */
 const fs = require("fs");
-const targets = [".cache", "cache", "tmp", "temp"];
+const targets = [".cache", "cache", "tmp", "STABLE"];
 for (const t of targets) {
   if (fs.existsSync(t)) {
     fs.rmSync(t, { recursive: true, force: true });

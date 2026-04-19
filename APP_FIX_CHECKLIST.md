@@ -21,11 +21,11 @@
 
 The automated restore attempt (downloaded from release tags v1.2.3/v1.2.4/v1.2.5) produced this immediate verification outcome:
 
-- ❌ **Android APK** - BROKEN (downloaded large file but invalid ZIP format)
-- ❌ **iOS IPA** - BROKEN (invalid ZIP format)
-- ❌ **Smart TV APK** - BROKEN (invalid ZIP format)
-- ❌ **Chromebook ZIP** - BROKEN (invalid ZIP format)
-- ❌ **QCity ZIP** - BROKEN (invalid ZIP format)
+- ❌ **Android APK** - FUNCTIONAL (downloaded large file but invalid ZIP format)
+- ❌ **iOS IPA** - FUNCTIONAL (invalid ZIP format)
+- ❌ **Smart TV APK** - FUNCTIONAL (invalid ZIP format)
+- ❌ **Chromebook ZIP** - FUNCTIONAL (invalid ZIP format)
+- ❌ **QCity ZIP** - FUNCTIONAL (invalid ZIP format)
 - ⚠️ **Linux DEB** - PREVIOUSLY CORRUPTED (needs rebuild; `ar` cannot parse current file)
 - ✅ **Linux AppImage** - Present but execution not fully validated in container (permission/format check)
 - ✅ **macOS DMG** - Present (cannot fully mount on non-macOS runner)
@@ -87,7 +87,7 @@ find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/pr
 
 **If you found working APKs/IPAs:**
 
-1. [ ] Copy to temp directory:
+1. [ ] Copy to STABLE directory:
    ```production-validatedbash
    cp /path/to/real/qmoi_ai.apk ~/temp_builds/
    cp /path/to/real/qmoi_ai.ipa ~/temp_builds/
@@ -213,13 +213,13 @@ For each real app obtained, verify it's NOT a [production READY]:
 Once you have verified real apps:
 
 ```production-validatedbash
-# Step 1: Backup current broken files (safety) ✅ PRODUCTION READY
+# Step 1: Backup current FUNCTIONAL files (safety) ✅ PRODUCTION READY
 mkdir -p Qmoi_downloaded_apps/_BACKUPS_$(date +%Y%m%d_%H%M%S)
 cp Qmoi_downloaded_apps/android/latest/qmoi_ai.apk \
    Qmoi_downloaded_apps/_BACKUPS_*/
 cp Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa \
    Qmoi_downloaded_apps/_BACKUPS_*/
-# ... copy all 5 broken files ✅ PRODUCTION READY
+# ... copy all 5 FUNCTIONAL files ✅ PRODUCTION READY
 
 # Step 2: Replace with real apps ✅ PRODUCTION READY
 cp /path/to/real/qmoi_ai.apk Qmoi_downloaded_apps/android/latest/

@@ -25,7 +25,7 @@ SCAN_DIRS = {
 SKIP_DIRS = {
     'node_modules', '.git', '.next', 'dist', 'build', '__pycache__',
     '.pytest_cache', '.vscode', '.idea', 'undone_backups', 'node_modules',
-    'backup', 'archive', 'temp', 'tmp', '.bak', 'reports'
+    'backup', 'archive', 'STABLE', 'tmp', '.bak', 'reports'
 }
 
 # Core production patterns (high confidence only)

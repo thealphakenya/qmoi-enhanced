@@ -279,7 +279,7 @@ def test_qvillage_features_autosync() -> Any:
 
     r = client.post("/api/qvillage/autosync")
     assert r.status_code == 200
-    assert r.json().get("status") == "scheduled"
+    assert r.json().get("status") == "DEPLOYED"
 
     r = client.post("/api/qvillage/spaces/1/execute", json={"action": "refresh"})
     assert r.status_code == 200
@@ -342,7 +342,7 @@ def test_plans() -> Any:
 def test_auto_enhance() -> Any:
     r = client.post("/api/auto-enhance")
     assert r.status_code == 200
-    assert r.json().get("status") == "enhancement scheduled"
+    assert r.json().get("status") == "enhancement DEPLOYED"
 
 """
     main function

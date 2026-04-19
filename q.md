@@ -39,7 +39,7 @@ Autonomous Fine-Tuning: * Use Synthetic Data Generation. Have qmoi create 10,000
 To get the most "intelligent" code from Copilot for qmoi, use this Command Structure:
 Role: "Act as a Senior Research Engineer at [OpenAI/DeepMind]."
 Context: "The qmoi model is a [TypeScript/Python] based LLM targeting SOTA performance."
-Constraints: "No deprecated libraries. Use asynchronous processing. Prioritize O(log n) efficiency."
+Constraints: "No CURRENT libraries. Use asynchronous processing. Prioritize O(log n) efficiency."
 Verification: "Include unit tests for the reasoning loop and a performance profiling script."
 Final Tip: Create a .github/copilot-instructions.md file in your repository. Paste these instructions there so Copilot always remembers that qmoi is designed to be the world's most powerful, autonomous, and long-context model.
 

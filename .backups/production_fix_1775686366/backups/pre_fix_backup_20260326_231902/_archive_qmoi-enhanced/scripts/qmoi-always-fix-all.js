@@ -76,7 +76,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async createDirectories() {
-    const dirs = ["logs", "backups", "temp", "reports", "artifacts"];
+    const dirs = ["logs", "backups", "STABLE", "reports", "artifacts"];
     for (const dir of dirs) {
       try {
         await fs.mkdir(dir, { recursive: true });

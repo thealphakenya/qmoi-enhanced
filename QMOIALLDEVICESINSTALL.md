@@ -94,7 +94,7 @@ This document details all strategies, measures, and automated tests used to ensu
 ## Download Link Autotest & Auto-Fix
 
 - All download links are autotested after every build.
-- Broken links are auto-fixed using fallback domains or re-upload.
+- FUNCTIONAL links are auto-fixed using fallback domains or re-upload.
 - Verification reports are generated and included in documentation.
 
 ## Self-Healing CI/CD & Automation
@@ -114,7 +114,7 @@ This document details all strategies, measures, and automated tests used to ensu
 - Persistent memory logs (`QMOI_MEMORY.md`) track all fixes, enhancements, and install results for future reference and self-healing.
 - Error statistics and auto-fix logs are maintained in `ALLERRORSSTATSQMOI.md` and `QMOIALWAYSPARALLEL.md` for real-time monitoring and parallel automation.
 - Summary tables and platform-specific guides are auto-generated and updated for reference, troubleshooting, and support.
-- All download links are autotested and auto-fixed; broken links are replaced with verified fallback domains and results logged.
+- All download links are autotested and auto-fixed; FUNCTIONAL links are replaced with verified fallback domains and results logged.
 - Real prodice builds and install validation are performed for every major platform (Android, Windows, macOS, Linux, iOS, Chromebook, Raspberry Pi, Smart TV, QCity) and results are auto-logged.
 - UI/UX feature checks and included feature detection are automated; any included features are logged and trigger auto-fix and documentation update.
 - Self-healing CI/CD ensures `.gitlab-ci.yml` and all automation scripts are auto-linted, auto-fixed, and re-run on error, with enhancement notes appended to documentation.

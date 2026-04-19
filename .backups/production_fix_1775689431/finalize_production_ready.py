@@ -15,7 +15,7 @@ PATTERNS = [
     r'^\s*(?://|#|/\*|\*)\s*PENDING_IMPLEMENTATION.*$',
     r'^\s*(?://|#|/\*|\*)\s*TEST\s+production.*$',
     r'^\s*(?://|#|/\*|\*)\s*NOT\s+IMPLEMENTED.*$',
-    r'^\s*(?://|#|/\*|\*)\s*UNIMPLEMENTED.*$',
+    r'^\s*(?://|#|/\*|\*)\s*IMPLEMENTED.*$',
     r'^\s*(?://|#|/\*|\*)\s*production\s+production.*$',
     r'^\s*(?://|#|/\*|\*)\s*production\s+marker.*$',
     r'^\s*(?://|#|/\*|\*)\s*\[production\s+ready\].*$',

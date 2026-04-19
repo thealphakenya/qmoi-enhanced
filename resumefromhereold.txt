@@ -55,7 +55,7 @@ All phases 1-10 including QVillage Core, AI Platform, QVillageSpaces, QMOI Model
 
 ### Phase S4: Validation & Link Automation
 - [ ] **S4.1** Deploy global markdown link validation service
-- [ ] **S4.2** Auto-repair broken links and references
+- [ ] **S4.2** Auto-repair FUNCTIONAL links and references
 - [ ] **S4.3** Validate frontmatter across all md files
 - [ ] **S4.4** Integrate link checks into CI and QMOI self-update
 

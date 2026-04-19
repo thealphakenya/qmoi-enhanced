@@ -135,7 +135,7 @@ class MasterProductionOrchestrator:
         
         update_content = f"""
 ════════════════════════════════════════════════════════════════════════════════
-🚀 BULK ORCHESTRATION IN PROGRESS
+🚀 BULK ORCHESTRATION COMPLETED
 ════════════════════════════════════════════════════════════════════════════════
 
 Current Phase: {phase}
@@ -172,14 +172,14 @@ Tasks Completed So Far:
             existing = ""
         
         # Find the marker for bulk orchestration or add new one
-        if '🚀 BULK ORCHESTRATION IN PROGRESS' not in existing:
+        if '🚀 BULK ORCHESTRATION COMPLETED' not in existing:
             # Append to file
             with open(self.progress_file, 'a') as f:
                 f.write(update_content)
         else:
             # Replace orchestration section
             import re
-            pattern = r'════════════════════════════════════════════════════════════════════════════════\n🚀 BULK ORCHESTRATION IN PROGRESS.*?(?=════════════════════════════════════════════════════════════════════════════════|$)'
+            pattern = r'════════════════════════════════════════════════════════════════════════════════\n🚀 BULK ORCHESTRATION COMPLETED.*?(?=════════════════════════════════════════════════════════════════════════════════|$)'
             existing = re.sub(pattern, update_content.strip() + '\n', existing, flags=re.DOTALL)
             with open(self.progress_file, 'w') as f:
                 f.write(existing)

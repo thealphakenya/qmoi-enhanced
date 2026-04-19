@@ -255,7 +255,7 @@ function runQVillageResearch(): any {
   });
 
   logger.info(`\n   Schedule: ${config.qvillage.autoResearch.schedule}`);
-  logger.info("   Status: Will run at scheduled time\n");
+  logger.info("   Status: Will run at DEPLOYED time\n");
 }
 
 // ============================================================================

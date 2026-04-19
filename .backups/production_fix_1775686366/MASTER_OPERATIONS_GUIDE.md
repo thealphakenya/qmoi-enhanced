@@ -340,7 +340,7 @@ then run smoke tests, then send me detailed report"
 
 QMOI will: Execute all steps in parallel, report results
 
-SCHEDULED TASKS:
+DEPLOYED TASKS:
 
 "Every Friday at 5 PM:
 

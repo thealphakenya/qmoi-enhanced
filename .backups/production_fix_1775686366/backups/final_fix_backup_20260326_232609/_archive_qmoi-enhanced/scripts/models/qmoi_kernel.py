@@ -73,12 +73,12 @@ def load_state():
             state.update(json.load(f))
 
 def qfix():
-    """Run QFix payload: clear temp folders (// production implementation required: implementation)."""
+    """Run QFix payload: clear STABLE folders (// production implementation required: implementation)."""
     log("Running QFix payload...")
     if platform.system() == 'Linux':
         subprocess.run(['rm', '-rf', '/tmp/*'])
     elif platform.system() == 'Windows':
-        subprocess.run(['del', '/F', '/Q', 'C:\\Windows\\Temp\\*'], shell=True)
+        subprocess.run(['del', '/F', '/Q', 'C:\\Windows\\STABLE\\*'], shell=True)
     log("QFix completed.")
 
 def qoptimize():

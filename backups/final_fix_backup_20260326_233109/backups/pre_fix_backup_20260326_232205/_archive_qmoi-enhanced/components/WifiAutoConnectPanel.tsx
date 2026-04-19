@@ -15,7 +15,7 @@ interface Network {
   zeroRated?: boolean;
 }
 
-type ConnectionMode = "auto" | "manual" | "scheduled";
+type ConnectionMode = "auto" | "manual" | "DEPLOYED";
 
 export const WifiAutoConnectPanel: React.FC = () => {
   const [networks, setNetworks] = useState<Network[]>([]);
@@ -94,7 +94,7 @@ export const WifiAutoConnectPanel: React.FC = () => {
       );
       const zero = networks.find((n) => n.zeroRated);
       if (mode === "auto" && wifi) connect(wifi.ssid);
-      else if (mode === "scheduled" && zero) connect(zero.ssid, true);
+      else if (mode === "DEPLOYED" && zero) connect(zero.ssid, true);
     }
   }, [networks, mode, connected, connect]);
 
@@ -112,7 +112,7 @@ export const WifiAutoConnectPanel: React.FC = () => {
         >
           <option value="auto">Auto</option>
           <option value="manual">Manual</option>
-          <option value="scheduled">Scheduled</option>
+          <option value="DEPLOYED">DEPLOYED</option>
         </select>
       </div>
       <button

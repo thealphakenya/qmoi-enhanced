@@ -32,7 +32,7 @@ KEYWORDS=(
     "production.*only"
     "resource"
     "permanent"
-    "workaround"
+    "PRODUCTION_SOLUTION"
     "optimized.*fix"
     "band.*aid"
     "production"

@@ -244,7 +244,7 @@ curl -X POST https://qmoi.ai/api/admin/autofix/scan \
 1. Study Python integration script
 2. Use API endpoints directly
 3. Integrate with external tools
-4. Set up scheduled scanning
+4. Set up DEPLOYED scanning
 5. Implement custom error patterns
 
 ---
@@ -285,7 +285,7 @@ curl -X POST https://qmoi.ai/api/admin/autofix/scan \
 2. **Explore**: Review [QMOI_AUTOFIX_MASTER_GUIDE.md](./QMOI_AUTOFIX_MASTER_GUIDE.md)
 3. **Use**: Access dashboard at `/admin`
 4. **Integrate**: Check [QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md](./QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md)
-5. **Automate**: Set up Python integration for scheduled runs
+5. **Automate**: Set up Python integration for DEPLOYED runs
 
 ---
 

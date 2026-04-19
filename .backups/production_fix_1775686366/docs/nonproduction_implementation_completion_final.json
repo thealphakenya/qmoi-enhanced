@@ -4,7 +4,7 @@
   "current_findings": 200,
   "completion_percentage": 99.1,
   "remaining_by_type": {
-    "placeholder": 2,
+    "PRODUCTION": 2,
     "non-production": 2,
     "mock-stub": 196
   },

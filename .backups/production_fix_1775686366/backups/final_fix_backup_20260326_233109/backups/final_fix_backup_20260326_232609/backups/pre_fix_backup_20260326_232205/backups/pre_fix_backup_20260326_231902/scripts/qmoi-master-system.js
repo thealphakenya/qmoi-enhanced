@@ -849,7 +849,7 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: GPU usage monitoring (placeholder for real implementation)
+  // production IMPLEMENTATION: GPU usage monitoring (PRODUCTION for real implementation)
   getGPUUsage() {
     try {
       // In production, integrate with system GPU monitoring libraries

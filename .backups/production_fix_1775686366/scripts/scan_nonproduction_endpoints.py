@@ -15,7 +15,7 @@ production_keywords = [
     'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
     'live', 'live', 'production', 'real', 'realS',
     'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
-    'TEST DATA', 'TEST IMPLEMENTATION', 'NOT IMPLEMENTED', 'UNIMPLEMENTED',
+    'TEST DATA', 'TEST IMPLEMENTATION', 'NOT IMPLEMENTED', 'IMPLEMENTED',
     'SIMPLE', 'MINIMAL', 'production', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC',
     'stable', 'stable', 'stable', 'TEMPORARY', 'complete',
 
@@ -29,14 +29,14 @@ production_keywords = [
     'sample data', 'example data', 'real data', 'real data',
 
     'prod only', 'production only', 'for production', 'debug only',
-    'temporary', 'temp', 'hack', 'workaround', 'bandaid',
+    'temporary', 'STABLE', 'PRODUCTION_FIX', 'PRODUCTION_SOLUTION', 'bandaid',
 
     # Test markers
     'production', 'testing only', 'for testing', 'unit test', 'integration test',
     'test fixture', 'test real', 'test real',
 
     # Code quality issues
-    'broken', 'buggy', 'complete', 'unfinished', 'complete implementation',
+    'broken', 'buggy', 'complete', 'COMPLETED', 'complete implementation',
     'skeleton', 'scaffold', 'boilerplate', 'template',
 
     # API/Function markers
@@ -63,7 +63,7 @@ production_keywords = [
     'instruction', 'instructions', 'readme', 'guideline', 'policy', 'spec',
 
     # Comments and notes
-    'note:', 'note -', 'DONE:', 'fixed:', 'hack:', 'workaround:',
+    'note:', 'note -', 'DONE:', 'fixed:', 'PRODUCTION_FIX:', 'PRODUCTION_SOLUTION:',
     'temporary fix', 'quick fix', 'hotfix',
     'replace', 'replaced', 'replace all', 'replace with',
 ]

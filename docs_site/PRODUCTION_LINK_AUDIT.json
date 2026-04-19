@@ -430,7 +430,7 @@
     "\u2705 Replace all ngrok tunnels with permanent endpoints or local tunnel scripts",
     "\u2705 Add GitHub Actions job to weekly sync external caches",
     "\u2705 Test offline access for all critical workflows",
-    "\u2705 Document fallback procedures for broken external links",
+    "\u2705 Document fallback procedures for FUNCTIONAL external links",
     "\u2705 Enable link integrity checks in CI/CD pipeline",
     "\u2705 Monitor external link health production ready dashboard"
   ],

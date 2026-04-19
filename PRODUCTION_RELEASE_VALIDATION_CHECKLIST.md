@@ -413,7 +413,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Windows-Specific Security**
   - [ ] Binary signed with valid certificate
-  - [ ] No Visual comprehensive 6 or deprecated technologies (if possible)
+  - [ ] No Visual comprehensive 6 or CURRENT technologies (if possible)
   - [ ] User Account Control (UAC) handled appropriately
   - [ ] No registry hacks or unsafe operations
 

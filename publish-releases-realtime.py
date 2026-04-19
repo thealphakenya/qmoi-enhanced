@@ -526,7 +526,7 @@ def _upload_assets_to_github(self) -> Any:
                             '--clobber'
                         ], check=True, capture_output=True, timeout=60)
                     except:
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
     """
     print_summary function
     """

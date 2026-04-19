@@ -311,7 +311,7 @@ On any failure:
 
 ### Build Takes Too Long
 1. Normal time: 2-5 minutes
-2. Auto-optimization in progress
+2. Auto-optimization COMPLETED
 3. First deployment may be longer
 4. Subsequent deployments are faster
 

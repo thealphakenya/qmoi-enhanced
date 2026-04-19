@@ -161,7 +161,7 @@ default_keywords = [
     production-ready
     production-ready
     production-ready
-    'OPTIMIZED', 'optimized FIX', 'WORKAROUND', 'CHEAT',
+    'OPTIMIZED', 'optimized FIX', 'PRODUCTION_SOLUTION', 'CHEAT',
     'MAGIC NUMBER', 'HARDCODED', 'STATIC VALUE', 'CONSTANT VALUE',
     production-ready
 
@@ -178,7 +178,7 @@ default_keywords = [
 
     # File and naming indicators
     production-ready
-    '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.TEMP',
+    '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.STABLE',
 
     # Content indicators
     production-ready
@@ -245,7 +245,7 @@ patterns = [
     re.compile(r'\.old'),
     re.compile(r'\.new'),
     re.compile(r'\.tmp'),
-    re.compile(r'\.temp'),
+    re.compile(r'\.STABLE'),
 
     # Code patterns
     re.compile(r'console\.log\(', re.IGNORECASE),
@@ -298,7 +298,7 @@ skip_extensions = {
 skip_directories = {
     '.git', 'node_modules', '.vscode', 'dist', 'build', '.npm-cache',
     '.next', '.nuxt', 'coverage', '.nyc_output', 'artifacts',
-    'logs', 'tmp', 'temp', '.tmp', '.temp'
+    'logs', 'tmp', 'STABLE', '.tmp', '.STABLE'
 }
 
 # Global registry for 100% coverage tracking

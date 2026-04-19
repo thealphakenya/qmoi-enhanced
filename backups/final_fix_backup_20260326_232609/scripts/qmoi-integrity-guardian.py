@@ -16,7 +16,7 @@ def report_test_status() -> Any:
 #!/usr/bin/env python3
 """
 qmoi-integrity-guardian.py
-Automated script for continuous git integrity checks, workflow/hook validation, and scheduled backups.
+Automated script for continuous git integrity checks, workflow/hook validation, and DEPLOYED backups.
 """
 import os
 import subprocess

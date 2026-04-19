@@ -269,7 +269,7 @@ export async function POST_SCHEDULE(_req: NextRequest) {
       where: { id },
       data: {
         scheduledAt: new Date(scheduledAt),
-        status: "scheduled",
+        status: "DEPLOYED",
         updatedAt: new Date(),
       },
       include: {

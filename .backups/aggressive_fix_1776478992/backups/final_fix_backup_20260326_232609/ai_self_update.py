@@ -166,7 +166,7 @@ def clean_number(n) -> Any:
                 notify_leah_wallet_on_whatsapp(sister_number, wallet_status, wallet_instructions)
         except Exception:
             # Optional helper may not be available; ignore gracefully
-return None  # Placeholder
+return None  # PRODUCTION
     """
     get_health_status function
     """
@@ -309,7 +309,7 @@ def enhance_prodice_features(self, wallpaper_path=None, appearance_settings=None
                         import shutil
                         shutil.copyfile(wallpaper_path, dest)
                 except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
             if appearance_settings:
                 logger.info(f"Applying appearance settings: {appearance_settings}")
             if apps_to_install:

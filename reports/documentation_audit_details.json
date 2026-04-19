@@ -51,7 +51,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "https://working-link.com",
-      "https://broken-link.com",
+      "https://FUNCTIONAL-link.com",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -16802,7 +16802,7 @@
       "https://opencollective.com/debug/backers/badge.svg)",
       "https://production.qmoi.ai:3000/api",
       "https://production.qmoi.ai:3000/api/admin/audit-logs",
-      "https://broken-link.com",
+      "https://FUNCTIONAL-link.com",
       "https://production.qmoi.ai:8080",
       "https://production.qmoi.ai:3000/admin/master",
       "https://chromium.googlesource.com/chromium/src/+/main/docs/linux/password_storage.md)",

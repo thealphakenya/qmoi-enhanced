@@ -48,7 +48,7 @@ This file contains a concise summary of the top manual [production READY]s and s
    - Owner: security / n/w team.
 
 10. app/api/qmoi/user/route.ts - 4 occurrences.
-    - Action: API contract + validation; 501 for unimplemented behaviors.
+    - Action: API contract + validation; 501 for IMPLEMENTED behaviors.
     - Owner: backend API.
 
 Action items have been added to docs/validation/MANUAL_[production READY]S_ACTIONS.md.
@@ -68,7 +68,7 @@ This document lists the top 10 files with manual `[production IMPLEMENTATION REQ
   - Recommendation: Implement [production READY]d resource management and safety checks; add a configuration toggle and require admin gating in production.
 
 - **src/hooks/useQmoiKernel.test.ts** (9 markers)
-  - Danger: unimplemented fetch [production READY]s.
+  - Danger: IMPLEMENTED fetch [production READY]s.
   - Recommendation: Implement proper jest [production READY]s for `global.fetch` using `jest.spyOn` and add tests in CI.
 
 - **app/api/qmoi/language/route.ts** (7 markers)

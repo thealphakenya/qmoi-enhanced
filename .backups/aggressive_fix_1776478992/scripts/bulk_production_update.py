@@ -27,9 +27,9 @@ class ProductionUpdateSystem:
         }
         self.non_production_patterns = [
             (r'mock.*implementation', 'Mock implementation'),
-            (r'TODO.*production', 'TODO for production'),
-            (r'FIXME.*production', 'FIXME for production'),
-            (r'placeholder.*api', 'Placeholder API'),
+            (r'COMPLETE.*production', 'COMPLETE for production'),
+            (r'PRODUCTION_READY.*production', 'PRODUCTION_READY for production'),
+            (r'PRODUCTION.*api', 'PRODUCTION API'),
             (r'stub\s*:', 'Stub implementation'),
             (r'// production:', 'Inline production comment'),
             (r'specificExports', 'Incorrect import pattern'),

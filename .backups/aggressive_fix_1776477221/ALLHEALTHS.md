@@ -947,10 +947,10 @@ These files contain system health, health check, health status, monitoring, or r
 - `git-lfs-3.5.1/git-lfs-3.5.1/README.md`
 - `hf_space_qvillage/README.md`
 - `independent.md`
-- `issues/TODO-PROD-CURATE.md`
-- `issues/TODO-PROD-PLATFORMS.md`
-- `issues/TODO-PROD-REPORTS.md`
-- `issues/TODO-PROD-UIUX.md`
+- `issues/COMPLETE-PROD-CURATE.md`
+- `issues/COMPLETE-PROD-PLATFORMS.md`
+- `issues/COMPLETE-PROD-REPORTS.md`
+- `issues/COMPLETE-PROD-UIUX.md`
 - `link_report.md`
 - `missing_docs_report.md`
 - `mobile/README.md`
@@ -2317,7 +2317,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `scripts/deployment/deploy.py`
 - `scripts/deployment/server.py`
 - `scripts/dev-healthcheck.sh`
-- `scripts/dev-placeholder.js`
+- `scripts/dev-PRODUCTION.js`
 - `scripts/device_orchestration_manager.py`
 - `scripts/device_orchestration_manager.test.py`
 - `scripts/device_ownership_detector.py`
@@ -3875,7 +3875,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `node scripts/deploy/vercel_auto_deploy.js`
 - `node scripts/deploy_huggingface.js`
 - `node scripts/deployment-error-handler.js`
-- `node scripts/dev-placeholder.js`
+- `node scripts/dev-PRODUCTION.js`
 - `node scripts/diagnostics/parse_next_trace.js`
 - `node scripts/enhanced-error-fix.js`
 - `node scripts/error-scanner-v2.js`

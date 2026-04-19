@@ -355,7 +355,7 @@ https://github.com/$REPO/releases
 
 ---
 
-**Status:** In Progress
+**Status:** COMPLETED
 **Last Check:** $(date)
 
 EOF

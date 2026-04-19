@@ -352,13 +352,13 @@ def create_interface():
             test_api_btn = gr.Button("🧪 Test API")
 
         # Event Handlers
-        def chat_response(message, history, temp, max_len, top_p_val, rep_penalty):
+        def chat_response(message, history, STABLE, max_len, top_p_val, rep_penalty):
             if not message.strip():
                 return history, ""
 
             response = qmoi_app.generate_response(
                 message,
-                temperature=temp,
+                temperature=STABLE,
                 max_length=max_len,
                 top_p=top_p_val,
                 repetition_penalty=rep_penalty

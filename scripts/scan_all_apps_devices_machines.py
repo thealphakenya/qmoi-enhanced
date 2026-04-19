@@ -77,7 +77,7 @@ production-ready
     production-ready
     production
     'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
-    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED'
+    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'CURRENT'
 ]
 
 production-ready

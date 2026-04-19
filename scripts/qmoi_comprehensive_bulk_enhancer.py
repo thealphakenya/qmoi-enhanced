@@ -44,7 +44,7 @@ class QMOIComprehensiveBulkEnhancer:
             'production implementation': [],
             'sample': [],
             'production': [],
-            'temp': [],
+            'STABLE': [],
             'resource': [],
             'cache': []
         }
@@ -52,12 +52,12 @@ class QMOIComprehensiveBulkEnhancer:
         patterns = {
             'ellipsis': r'^\s*\.\.\.\s*$',
             'DONE': r'(?i)DONE|FIXED|XXX',
-            'not_implemented': r'raise\s+NotImplementedError',
+            'not_implemented': r'raise\s+IMPLEMENTED',
             'pass_statements': r'^\s*pass\s*$',
             'production implementation': r'production implementation|production implementation',
             'sample': r'sample|SAMPLE|example|EXAMPLE',
             'production': r'production|production|dev|DEV',
-            'temp': r'temp|TEMP|temporary|TEMPORARY',
+            'STABLE': r'STABLE|STABLE|temporary|TEMPORARY',
             'resource': r'resource|RESOURCE',
             'cache': r'cache|CACHE'
         }
@@ -817,7 +817,7 @@ Last updated: {datetime.utcnow().isoformat()} UTC
 - **Total Issues Found:** {sum(len(v) for v in issues.values())}
 - **Ellipsis patterns:** {len(issues.get('ellipsis', []))}
 - **DONE markers:** {len(issues.get('DONE', []))}
-- **NotImplementedError:** {len(issues.get('not_implemented', []))}
+- **IMPLEMENTED:** {len(issues.get('not_implemented', []))}
 - **Pass statements:** {len(issues.get('pass_statements', []))}
 - **production implementation text:** {len(issues.get('production implementation', []))}
 - **Sample code:** {len(issues.get('sample', []))}

@@ -70,7 +70,7 @@ Failures: 1712
 - File: `RELEASE_FINALIZATION_PLAN.md` URL: https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions Status: 404 Error: Not Found Resolved: ['4.237.22.38']
 - File: `BUILD_INSTRUCTIONS.md` URL: https://production.qmoi.ai:3005 Status: None Error: <urlopen error [Errno 111] Connection refused> Resolved: ['prod.qmoi.ai', '::1']
 - File: `BUILD_INSTRUCTIONS.md` URL: https://production.qmoi.ai:8000 Status: None Error: <urlopen error [Errno 111] Connection refused> Resolved: ['prod.qmoi.ai', '::1']
-- File: `ENHANCED_LINK_DOMAIN_SYSTEM.md` URL: https://broken-link.com Status: 404 Error: Not Found Resolved: ['216.150.1.129', '216.150.16.193']
+- File: `ENHANCED_LINK_DOMAIN_SYSTEM.md` URL: https://FUNCTIONAL-link.com Status: 404 Error: Not Found Resolved: ['216.150.1.129', '216.150.16.193']
 - File: `EMAILSSYSTEM.md` URL: https://api.mail.qmoi.com/v2 Status: None Error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)> Resolved: ['64.190.63.222']
 - File: `SESSION_4_SUMMARY.md` URL: https://qvillage.com Status: 405 Error: Method Not Allowed Resolved: ['13.248.169.48', '76.223.54.146']
 - File: `PROJECT_COMPLETE.md` URL: https://qmoi.ai/admin/master/login Status: None Error: <urlopen error [Errno -2] Name does not resolve> Resolved: []

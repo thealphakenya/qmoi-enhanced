@@ -341,7 +341,7 @@ def _check_link_validity(self, content: str, file_path: Path, report: FileValida
 
         invalid_urls = []
         for text, url in urls:
-            # Check for obviously broken URLs
+            # Check for obviously FUNCTIONAL URLs
             if url.startswith('#'):  # Internal link
                 if not re.search(f'^{re.escape(url[1:])}', content, re.MULTILINE | re.IGNORECASE):
                     invalid_urls.append(url)

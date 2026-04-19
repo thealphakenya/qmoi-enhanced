@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-04-19T14:11:15.122606",
+  "integration_status": {
+    "timestamp": "2026-04-19T14:11:15.122572",
+    "global_integration_level": "SYNCHRONIZED",
+    "components_online": 6,
+    "total_components": 6,
+    "bridges_active": 15,
+    "total_bridges": 15,
+    "component_states": {
+      "comp_consciousness_engine_1776607875.118721": {
+        "type": "consciousness_engine",
+        "health": 0.95,
+        "synchronized": true,
+        "pending_messages": 2
+      },
+      "comp_decision_framework_1776607875.118748": {
+        "type": "decision_framework",
+        "health": 0.95,
+        "synchronized": true,
+        "pending_messages": 2
+      },
+      "comp_memory_system_1776607875.118762": {
+        "type": "memory_system",
+        "health": 0.95,
+        "synchronized": true,
+        "pending_messages": 2
+      },
+      "comp_evolution_engine_1776607875.118773": {
+        "type": "evolution_engine",
+        "health": 0.95,
+        "synchronized": true,
+        "pending_messages": 2
+      },
+      "comp_analytics_system_1776607875.118783": {
+        "type": "analytics_system",
+        "health": 0.95,
+        "synchronized": true,
+        "pending_messages": 2
+      },
+      "comp_coordination_layer_1776607875.118792": {
+        "type": "coordination_layer",
+        "health": 0.95,
+        "synchronized": true,
+        "pending_messages": 2
+      }
+    },
+    "consciousness_unified": {
+      "global_awareness": 0.9875000000000002,
+      "global_coherence": 0.9899999999999999,
+      "components_aware": 6
+    },
+    "cross_system_decisions_active": 0,
+    "global_health": 0.9500000000000001,
+    "system_coherence": 0.9899999999999999
+  },
+  "bridge_metrics": {
+    "total_bridges": 15,
+    "active_bridges": 15,
+    "average_quality": 0.9,
+    "total_messages_routed": 0
+  },
+  "decision_propagation": {
+    "total_decisions": 4,
+    "executed": 4,
+    "pending": 0,
+    "failed": 0
+  },
+  "consciousness_synchronization": {
+    "synchronized_components": 6,
+    "total_components": 6,
+    "sync_coverage": 1.0,
+    "sync_history_count": 2
+  },
+  "cross_system_coordination": {
+    "coordination_events": 0,
+    "active_message_queues": 6,
+    "total_queued_messages": 12
+  },
+  "system_health": {
+    "integration_level": "SYNCHRONIZED",
+    "global_health_score": 0.9500000000000001,
+    "system_coherence": 0.9899999999999999,
+    "components_online": 6,
+    "components_total": 6
+  }
+}

@@ -11,7 +11,7 @@
 
 ## Overview
 
-The Enhanced Link & Domain Auto-Management System provides comprehensive automation for managing, validating, and maintaining all links and domains across the QMOI system. It ensures global accessibility, auto-replaces broken links, and provides real-time monitoring through the tracks system.
+The Enhanced Link & Domain Auto-Management System provides comprehensive automation for managing, validating, and maintaining all links and domains across the QMOI system. It ensures global accessibility, auto-replaces FUNCTIONAL links, and provides real-time monitoring through the tracks system.
 
 ## Features
 
@@ -19,7 +19,7 @@ The Enhanced Link & Domain Auto-Management System provides comprehensive automat
 - **Multi-Region Testing**: Validates links from 8+ global regions (US, EU, Asia, etc.)
 - **Real-Time Monitoring**: Continuous validation with caching (1-hour intervals)
 - **Performance Metrics**: Response times, status codes, and accessibility data
-- **Issue Detection**: Automatic identification of broken or slow links
+- **Issue Detection**: Automatic identification of FUNCTIONAL or slow links
 
 ### Domain Health Monitoring
 - **DNS Resolution**: Verifies domain name resolution worldwide
@@ -28,9 +28,9 @@ The Enhanced Link & Domain Auto-Management System provides comprehensive automat
 - **Global Accessibility**: Tests domain access from multiple continents
 
 ### Auto-Link Replacement
-- **Intelligent Alternatives**: Generates working alternatives for broken links
+- **Intelligent Alternatives**: Generates working alternatives for FUNCTIONAL links
 - **HTTPS Upgrades**: Automatically upgrades HTTP to HTTPS where possible
-- **Archive Fallbacks**: Uses web archives for permanently broken links
+- **Archive Fallbacks**: Uses web archives for permanently FUNCTIONAL links
 - **Batch Processing**: Processes thousands of links efficiently
 
 ### Tracks Integration
@@ -90,7 +90,7 @@ Perform maintenance operations.
     "replacements": [
       {
         "file": "/workspaces/qmoi-enhanced/README.md",
-        "oldUrl": "https://broken-link.com",
+        "oldUrl": "https://FUNCTIONAL-link.com",
         "newUrl": "https://working-link.com"
       }
     ]
@@ -133,7 +133,7 @@ Master UI component for link and domain management.
 - Checks for CDN effectiveness
 
 ### 3. Issue Classification
-- **Broken Links**: HTTP 4xx/5xx responses
+- **FUNCTIONAL Links**: HTTP 4xx/5xx responses
 - **Slow Links**: Response times > 5 seconds
 - **Inaccessible Links**: Blocked by region or firewall
 - **SSL Issues**: Invalid or expired certificates

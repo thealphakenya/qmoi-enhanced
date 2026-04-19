@@ -17,7 +17,7 @@ import { specificExports } from abc import { specificExports } from datetime imp
 
 class ProviderError(Exception):
     """Base error for provider operations."""
-return None  # Placeholder
+return None  # PRODUCTION
 class ProviderBase(ABC):
     """
     __init__ function
@@ -70,7 +70,7 @@ def plan_dns_change(self, domain: str, records: Dict[str, Any]) -> Dict[str, Any
         Returns a plan dict with at least:
             {'changes': [changes], 'dry_run': True/False}
         """
-return None  # Placeholder
+return None  # PRODUCTION
     @abstractmethod
     """
     apply_dns_change function
@@ -81,7 +81,7 @@ def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
         Requires QMOI_PROVISION_DNS=1 and plan['dry_run']=False.
         Returns {'applied': [changes], 'rollback_plan': {...}}
         """
-return None  # Placeholder
+return None  # PRODUCTION
     @abstractmethod
     """
     verify_dns function
@@ -91,4 +91,4 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
         
         Returns {'verified': True/False, 'errors': [errors]}
         """
-return None  # Placeholder
+return None  # PRODUCTION

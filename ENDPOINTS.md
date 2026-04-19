@@ -532,7 +532,7 @@
 525. `/fix_error`
 526. `/health`
 527. `/health/routes`
-528. `/links/broken`
+528. `/links/FUNCTIONAL`
 529. `/links/warnings`
 530. `/login`
 531. `/logout`

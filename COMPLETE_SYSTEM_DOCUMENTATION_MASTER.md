@@ -287,7 +287,7 @@ File 5: QMOI_MARKDOWN_AUTO_UPDATE.md (45KB+, 1,500+ lines) ✅
 │ ├─ 5-phase auto-generation: Code analysis→Publication
 │ ├─ Link synchronization: Automatic & intelligent
 │ ├─ Version tracking: Semantic versioning
-│ ├─ Scheduled updates: Hourly/daily/weekly/monthly
+│ ├─ DEPLOYED updates: Hourly/daily/weekly/monthly
 │ ├─ Quality validation: Syntax, content, accuracy
 │ └─ Success metrics: 80%+ auto-generated, 99%+ syntax valid
 ├─ Key Stats:
@@ -357,7 +357,7 @@ Link Coverage:
 ├─ Total links: 5000+
 ├─ Valid links: 95%+ (4750+)
 ├─ Dead links: < 2% (< 100)
-├─ Broken: < 1% (< 50)
+├─ FUNCTIONAL: < 1% (< 50)
 └─ Auto-repaired: 90%+
 
 ==== SYSTEM HEALTH & METRICS ====

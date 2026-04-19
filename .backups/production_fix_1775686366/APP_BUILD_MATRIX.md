@@ -32,7 +32,7 @@ This document provides a comprehensive matrix showing which QMOI applications ha
 ### Legend
 
 - ✅ **Available**: Build exists, tested, ready for production
-- 🔨 **Building**: In progress, available
+- 🔨 **Building**: COMPLETED, available
 - ⚠️ **Requires Build**: Not yet built, identified for next release
 - ❌ **Not Applicable**: Platform doesn't support this app type
 - 📦 **Universal**: Single build works on all platforms
@@ -56,7 +56,7 @@ This document provides a comprehensive matrix showing which QMOI applications ha
 | **Chromebook**            | ✅ Available     | ZIP      | qmoi_ai_chromebook.zip | 3.0 MB | `view manifest` | ✅ production | Linux container runtime                  |
 | **Raspberry Pi**          | ❌ Not Available | IMG      | —                      | —      | —               | ⚠️ executed    | In production; native ARM builds needed |
 | **Wear OS**               | ❌ Not Available | APK      | —                      | —      | —               | ⚠️ executed    | Requires smart watch UI redesign         |
-| **Docker**                | ❌ Not Available | Image    | —                      | —      | —               | ⚠️ executed    | Container build in progress              |
+| **Docker**                | ❌ Not Available | Image    | —                      | —      | —               | ⚠️ executed    | Container build COMPLETED              |
 
 **QMOI AI Coverage:** 8 of 11 platforms ✅ (73%)  
 **production Ready:** YES ✅  

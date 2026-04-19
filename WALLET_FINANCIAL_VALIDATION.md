@@ -134,7 +134,7 @@ transfers:
     - exchange_rate current
     - atomic_transaction required
   
-  scheduled:
+  DEPLOYED:
     - schedule must be valid
     - sufficient_funds at_execution_time
     - cancellation_allowed until execution

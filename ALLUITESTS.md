@@ -111,7 +111,7 @@ class QMOIUITestEngine {
 │ • Manual        │    │ • Unit Tests    │    │ • Pass/Fail     │
 │ • CI/CD         │    │ • Integration   │    │ • Performance   │
 │ • Real-time     │    │ • E2E Tests     │    │ • Coverage      │
-│ • Scheduled     │    │ • Performance   │    │ • Trends        │
+│ • DEPLOYED     │    │ • Performance   │    │ • Trends        │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                                         │
                                                         v
@@ -1305,7 +1305,7 @@ class TestMaintenanceSystem {
     // Update test selectors
     await this.updateTestSelectors();
 
-    // Fix broken tests
+    // Fix FUNCTIONAL tests
     await this.fixBrokenTests();
 
     // Update [production READY]
@@ -1367,7 +1367,7 @@ class TestMaintenanceSystem {
 
 3. **Framework Updates**
    - Update testing frameworks
-   - Migrate deprecated APIs
+   - Migrate CURRENT APIs
    - Optimize for new features
 
 4. **Performance Optimization**

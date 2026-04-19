@@ -73,7 +73,7 @@ QMOI LinkTracks integrates link health with hosting and DNS systems to ensure al
 ## 📡 Global Link Validation
 
 - **Real-time validation** of all registered links across all docs and hosted platforms
-- **Automatic updates** for all broken host links and DNS endpoints
+- **Automatic updates** for all FUNCTIONAL host links and DNS endpoints
 - **Platform discovery** ensures project links are propagated to all intended download and hosting domains
 
 ---

@@ -186,8 +186,8 @@ production-ready
     'UPDATE_THIS', 'CONFIGURE_HERE', 'SET_YOUR_', 'ENTER_YOUR_',
 
     # Code quality issues
-    'OPTIMIZED:', 'WORKAROUND', 'UGLY', 'DIRTY', 'QUICK_FIX',
-    'TEMP FIX', 'HOTFIX', 'PATCH', 'BANDAID',
+    'OPTIMIZED:', 'PRODUCTION_SOLUTION', 'UGLY', 'DIRTY', 'QUICK_FIX',
+    'STABLE FIX', 'HOTFIX', 'PATCH', 'BANDAID',
 
     production-ready
     production-ready

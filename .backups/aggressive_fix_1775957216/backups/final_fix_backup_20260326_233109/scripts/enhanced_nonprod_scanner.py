@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).parent.parent
 # Comprehensive production keywords and patterns
 production_KEYWORDS = [
     # permanent/implementation keywords
-    'COMPLETED', 'RESOLVED', 'OPTIMIZED', 'WIP', 'TEMP', 'permanent', 'PENDING', 'available',
+    'COMPLETED', 'RESOLVED', 'OPTIMIZED', 'FINALIZED', 'STABLE', 'permanent', 'PENDING', 'available',
     'implementation', 'implementation TEXT', 'real', 'implementation', 'INCOMPLETE', 'full',
     'DEMO', 'BETA', 'ALPHA', 'EXPERIMENTAL', 'STAGING', 'production',
     
@@ -32,7 +32,7 @@ production_KEYWORDS = [
     
     # production status
     'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
-    'IN PROGRESS', 'release', 'complete', 'code', 'BOILERPLATE',
+    'COMPLETED', 'release', 'complete', 'code', 'BOILERPLATE',
     
     # Real/Implementation keywords
     'IN REAL', 'IN REAL IMPLEMENTATION', 'IN production', 'REAL IMPLEMENTATION',

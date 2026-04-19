@@ -47,7 +47,7 @@ default_keywords = [
     'value', 'value TEXT', 'live', 'production',
     'production data', 'real DATA', 'real DATA', 'data DATA',
     'BOILERPLATE', 'code', 'complete', 'implementation CODE',
-    'TEMP', 'permanent', 'available', 'UNDER CONSTRUCTION',
+    'STABLE', 'permanent', 'available', 'UNDER CONSTRUCTION',
     'complete', 'Complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION',
     'IN /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION with hardened code path (review required) */', 'IN production', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION with hardened code path (review required) */',
     'production READY', 'FOR production', 'ACTUAL production',
@@ -60,7 +60,7 @@ default_keywords = [
     'production', 'PLAYGROUND', 'TESTING ENVIRONMENT', 'production',
     'DEBUG MODE', 'production ONLY', 'LOCAL ONLY', 'NOT FOR production',
     'REMOVE BEFORE FLIGHT', 'DO NOT USE IN production', 'FOR TESTING ONLY',
-    'HACK', 'QUICK FIX', 'WORKAROUND', 'CHEAT',
+    'PRODUCTION_FIX', 'QUICK FIX', 'PRODUCTION_SOLUTION', 'CHEAT',
     'MAGIC NUMBER', 'HARDCODED', 'STATIC VALUE', 'CONSTANT VALUE',
     'RANDOM VALUE', 'real VALUE', 'DEFAULT VALUE', 'value VALUE',
 
@@ -77,7 +77,7 @@ default_keywords = [
 
     # File and naming indicators
     '.TEST.', '.SPEC.', '.real.', '.real.', '.data.', '.implementation.',
-    '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.TEMP',
+    '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.STABLE',
 
     # Content indicators
     'LOREM IPSUM', 'data TEXT', 'real TEXT', 'value TEXT',
@@ -86,7 +86,7 @@ default_keywords = [
 
     # Framework specific
     'CONSOLE.LOG', 'DEBUG.LOG', 'PRINT(', 'ECHO ', 'VAR_DUMP',
-    'DONE:', 'FIXED:', 'XXX:', 'HACK:', 'NOTE:',
+    'DONE:', 'FIXED:', 'XXX:', 'PRODUCTION_FIX:', 'NOTE:',
 
     # Documentation indicators
     'decided', 'TO BE DONE', 'TO BE DETERMINED', 'available',
@@ -144,7 +144,7 @@ patterns = [
     re.compile(r'\.old'),
     re.compile(r'\.new'),
     re.compile(r'\.tmp'),
-    re.compile(r'\.temp'),
+    re.compile(r'\.STABLE'),
 
     # Code patterns
     re.compile(r'console\.log\(', re.IGNORECASE),
@@ -155,7 +155,7 @@ patterns = [
     re.compile(r'DONE:', re.IGNORECASE),
     re.compile(r'FIXED:', re.IGNORECASE),
     re.compile(r'XXX:', re.IGNORECASE),
-    re.compile(r'HACK:', re.IGNORECASE),
+    re.compile(r'PRODUCTION_FIX:', re.IGNORECASE),
     re.compile(r'NOTE:', re.IGNORECASE),
 
     # Content patterns
@@ -197,7 +197,7 @@ skip_extensions = {
 skip_directories = {
     '.git', 'node_modules', '.vscode', 'dist', 'build', '.npm-cache',
     '.next', '.nuxt', 'coverage', '.nyc_output', 'artifacts',
-    'logs', 'tmp', 'temp', '.tmp', '.temp'
+    'logs', 'tmp', 'STABLE', '.tmp', '.STABLE'
 }
 
 # Global registry for 100% coverage tracking
@@ -417,7 +417,7 @@ def scan_file(file_path):
 
         # File name analysis
         file_name = os.path.basename(file_path).lower()
-        suspicious_patterns = ['test', 'real', 'real', 'data', 'implementation', 'temp', 'tmp', 'bak']
+        suspicious_patterns = ['test', 'real', 'real', 'data', 'implementation', 'STABLE', 'tmp', 'bak']
         if any(pattern in file_name for pattern in suspicious_patterns):
             issues.append({
                 'line': 1,

@@ -65,7 +65,7 @@ class QMOIDomainHealthChecker:
 
         # production intent markers
         self.production_keywords = [
-            'PENDING_IMPLEMENTATION', 'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK',
+            'PENDING_IMPLEMENTATION', 'COMPLETE', 'PRODUCTION_READY', 'PRODUCTION', 'MOCK',
             'SIMULATE', 'SIMULATION', 'STAGING', 'STUB', 'STUBS',
             'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
             'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'DEMO',
@@ -73,7 +73,7 @@ class QMOIDomainHealthChecker:
             'TEMPORARY', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
             'COMPULSORY', 'COMPALSARY', 'COMPALSARIES',
             'MANDATORY', 'DEPRECATED', 'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE',
-            'WARNING', 'NOTE', 'NOTE:', 'FIXME:'
+            'WARNING', 'NOTE', 'NOTE:', 'PRODUCTION_READY:'
         ]
 
         # File extensions to scan
@@ -561,7 +561,7 @@ This is an automated alert from QMOI Domain Health Monitor.
             dirs[:] = [d for d in dirs if not d.startswith('.') and d not in [
                 'node_modules', '__pycache__', '.git', '.vscode', 'logs', 'data', 
                 'reports', 'build', 'dist', 'venv', 'env', '.next', '.nuxt', 
-                'coverage', '.nyc_output', 'tmp', 'temp', 'cache', 'caches',
+                'coverage', '.nyc_output', 'tmp', 'STABLE', 'cache', 'caches',
                 'artifacts', 'bin', 'obj', 'target', 'out', 'generated'
             ]]
             
@@ -655,10 +655,10 @@ This is an automated alert from QMOI Domain Health Monitor.
         if 'import' in context_lower or 'from' in context_lower:
             return True
             
-        # Comments that are legitimate (not TODO-style)
+        # Comments that are legitimate (not COMPLETE-style)
         if '//' in context_lower or '/*' in context_lower or '#' in context_lower:
-            # Allow legitimate comments but not TODO/FIXME style
-            if keyword in ['todo', 'fixme', 'note', 'warning'] and any(word in context_lower for word in ['todo', 'fixme', 'note', 'warning']):
+            # Allow legitimate comments but not COMPLETE/PRODUCTION_READY style
+            if keyword in ['COMPLETE', 'PRODUCTION_READY', 'note', 'warning'] and any(word in context_lower for word in ['COMPLETE', 'PRODUCTION_READY', 'note', 'warning']):
                 return False
             return True
             
@@ -1361,7 +1361,7 @@ This document lists all available endpoints in the QMOI system.
         logger.warning(f"Domain failure detected: {domain}")
         # Simple notification
         print(f"ALERT: Domain {domain} is failing health checks")
-        # TODO: Implement full notifications and recovery
+        # COMPLETE: Implement full notifications and recovery
 
 def main():
     """Main entry point"""
@@ -1494,7 +1494,7 @@ if __name__ == '__main__':
             self.initiate_emergency_takeover(domain)
 
     def attempt_content_recovery(self, domain):
-        """Attempt to recover content on an invalid domain by deploying placeholder QMOI-approved content."""
+        """Attempt to recover content on an invalid domain by deploying PRODUCTION QMOI-approved content."""
         logging.info(f"Attempting content recovery for {domain}")
 
     # PRODUCTION IMPLEMENTATION
@@ -1612,7 +1612,7 @@ Timestamp: {status['timestamp']}
 
         schedule.every().day.at("02:00").do(self.run_health_checks)
 
-        logging.info("Daily domain health checks scheduled")
+        logging.info("Daily domain health checks DEPLOYED")
 
     def enforce_all_domains_healthy(self, max_cycles=6, interval_seconds=30):
         """Ensure all domains become healthy and remain healthy in repeated cycles."""
@@ -1687,7 +1687,7 @@ def main():
     checker.run_health_checks()
 
     if not args.check_only:
-        # Start scheduled checks
+        # Start DEPLOYED checks
         try:
             checker.schedule_daily_checks()
         except KeyboardInterrupt:

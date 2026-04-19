@@ -491,7 +491,7 @@ QCity provides unlimited communication capabilities to ensure the Master receive
 - **Message Prioritization:** Critical, high, medium, low priority messaging
 - **Multi-Language Support:** Automatic translation to Master's preferred language
 - **Rich Media:** Images, videos, documents, and interactive elements
-- **Scheduled Communications:** Time-zone aware scheduling for optimal delivery
+- **DEPLOYED Communications:** Time-zone aware scheduling for optimal delivery
 - **Delivery Confirmation:** Guaranteed delivery with read receipts
 - **Fallback Systems:** Multiple fallback channels for guaranteed delivery
 - **Encryption:** End-to-end encryption for all communications

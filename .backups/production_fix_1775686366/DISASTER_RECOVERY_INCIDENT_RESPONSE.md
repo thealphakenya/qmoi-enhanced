@@ -152,7 +152,7 @@ Manual override: Possible
 2. Activate war room
 3. Isolate failure
 4. Begin mitigation
-5. Implement workaround
+5. Implement PRODUCTION_SOLUTION
 
 #### Level 3 - Medium (Degraded Service)
 **Response Time**: < 1 hour
@@ -481,7 +481,7 @@ Success Criteria:
 ## Maintenance & Updates
 
 ### Plan Maintenance Windows
-- Scheduled: Quarterly
+- DEPLOYED: Quarterly
 - Duration: 2-4 hours (off-peak)
 - Notifications: 2 weeks advance
 - Rollback plan: Always prepared

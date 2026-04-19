@@ -31,7 +31,7 @@ function App(): any {
         <b>Projects Running:</b> {status.projects}
       </p>
       <p>
-        <b>Deals in Progress:</b> {status.deals}
+        <b>Deals COMPLETED:</b> {status.deals}
       </p>
       <p>
         <b>Device Health:</b> {status.deviceHealth}

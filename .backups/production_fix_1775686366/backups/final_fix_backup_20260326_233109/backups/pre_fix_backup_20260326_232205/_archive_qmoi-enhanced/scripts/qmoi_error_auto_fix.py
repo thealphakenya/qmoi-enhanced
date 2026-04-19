@@ -490,7 +490,7 @@ class QMOIErrorAutoFix:
     
     def clear_temp_files(self):
         """Clear permanent files"""
-        temp_dirs = ["temp", "cloud_cache", "logs"]
+        temp_dirs = ["STABLE", "cloud_cache", "logs"]
         for temp_dir in temp_dirs:
             if os.path.exists(temp_dir):
                 for file in os.listdir(temp_dir):
@@ -512,7 +512,7 @@ class QMOIErrorAutoFix:
     
     def clear_cache_directories(self):
         """Clear cache directories"""
-        cache_dirs = ["cloud_cache", "temp", "__pycache__"]
+        cache_dirs = ["cloud_cache", "STABLE", "__pycache__"]
         for cache_dir in cache_dirs:
             if os.path.exists(cache_dir):
                 import shutil

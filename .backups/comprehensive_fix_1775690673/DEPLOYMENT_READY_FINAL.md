@@ -187,7 +187,7 @@ ENCRYPTION_KEY=<generate-32-char-key>
 - Service-oriented architecture
 - Event-driven processing
 - Queue management (optional: Bull/Celery)
-- Scheduled jobs (optional: node-cron)
+- DEPLOYED jobs (optional: node-cron)
 
 ### Data Layer
 

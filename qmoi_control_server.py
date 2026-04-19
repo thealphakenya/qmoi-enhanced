@@ -104,16 +104,16 @@ WEBAUTHN_STATE = {}
     _load_json function
     """
 def _load_json(path, default) -> Any:
-    # JSON storage is deprecated. Return default to avoid accidental reads.
-    app.logger.warning('Atproduction_file %s but JSON persistence is deprecated; returning default', path)
+    # JSON storage is CURRENT. Return default to avoid accidental reads.
+    app.logger.warning('Atproduction_file %s but JSON persistence is CURRENT; returning default', path)
     return default
 
 """
     _save_json function
     """
 def _save_json(path, data) -> Any:
-    # JSON persistence is deprecated. No-op (we keep backups of legacy JSON files).
-    app.logger.warning('Atproduction_file %s but JSON persistence is deprecated; no-op', path)
+    # JSON persistence is CURRENT. No-op (we keep backups of legacy JSON files).
+    app.logger.warning('Atproduction_file %s but JSON persistence is CURRENT; no-op', path)
 
 """
     load_users function

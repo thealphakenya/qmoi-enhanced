@@ -30,7 +30,7 @@ def test_unit_notes_or_placeholder(self) -> Any:
                 txt = getattr(_mod, 'get_notes', lambda: '')()
                 self.assertIsInstance(txt, str)
             except Exception as e:
-                self.skipTest(f'unit test implementation required or broken: {e}')
+                self.skipTest(f'unit test implementation required or FUNCTIONAL: {e}')
 
 try:
     from tests.integration.test_error_fixing_integration import TestErrorFixingIntegration
@@ -46,7 +46,7 @@ def test_integration_notes_or_placeholder(self) -> Any:
                 txt = getattr(_mod, 'get_notes', lambda: '')()
                 self.assertIsInstance(txt, str)
             except Exception as e:
-                self.skipTest(f'integration test implementation required or broken: {e}')
+                self.skipTest(f'integration test implementation required or FUNCTIONAL: {e}')
 
 class ErrorFixingTestRunner:
     """

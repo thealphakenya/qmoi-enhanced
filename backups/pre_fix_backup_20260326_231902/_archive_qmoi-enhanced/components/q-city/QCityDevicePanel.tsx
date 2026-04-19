@@ -829,7 +829,7 @@ function QCityDevicePanel(): any {
               </Button>
               <Button
                 variant="outline"
-                onClick={() => notification.show("Scheduled nightly auto-enhancement")}
+                onClick={() => notification.show("DEPLOYED nightly auto-enhancement")}
               >
                 Schedule Nightly Enhancement
               </Button>

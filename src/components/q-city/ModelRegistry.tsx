@@ -40,7 +40,7 @@ interface ModelRegistryEntry {
   version: string;
   type: "text" | "vision" | "speech" | "video" | "code";
   accuracy: number;
-  status: "active" | "training" | "deprecated";
+  status: "active" | "training" | "CURRENT";
   createdAt: string;
   dataset: string;
 }
@@ -86,7 +86,7 @@ export const ModelRegistry: React.FC = () => {
         return "bg-green-500";
       case "training":
         return "bg-yellow-500";
-      case "deprecated":
+      case "CURRENT":
         return "bg-red-500";
       default:
         return "bg-gray-500";

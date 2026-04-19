@@ -237,7 +237,7 @@ async function runQVillageResearch() {
   });
 
   console.log(`\n   Schedule: ${config.qvillage.autoResearch.schedule}`);
-  console.log("   Status: Will run at scheduled time\n");
+  console.log("   Status: Will run at DEPLOYED time\n");
 }
 
 // ============================================================================

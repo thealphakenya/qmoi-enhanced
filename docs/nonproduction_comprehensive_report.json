@@ -12414,7 +12414,7 @@
         "type": "COMPLETED-RESOLVED",
         "line": 358293,
         "match": "PRODUCTION_READY",
-        "context": "\"snippet\": \"'FIXED:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'real', 'real',\","
+        "context": "\"snippet\": \"'FIXED:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'FUNCTIONAL', 'real', 'real',\","
       },
       {
         "type": "COMPLETED-RESOLVED",
@@ -108620,13 +108620,13 @@
         "type": "COMPLETED-RESOLVED",
         "line": 50,
         "match": "PRODUCTION_READY",
-        "context": "'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'real', 'production',"
+        "context": "'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'FUNCTIONAL', 'real', 'production',"
       },
       {
         "type": "real-implementation",
         "line": 50,
         "match": "production",
-        "context": "'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'real', 'production',"
+        "context": "'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'FUNCTIONAL', 'real', 'production',"
       },
       {
         "type": "real-implementation",
@@ -120968,7 +120968,7 @@
         "type": "COMPLETED-RESOLVED",
         "line": 358293,
         "match": "PRODUCTION_READY",
-        "context": "\"snippet\": \"'FIXED:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'real', 'real',\","
+        "context": "\"snippet\": \"'FIXED:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'FUNCTIONAL', 'real', 'real',\","
       },
       {
         "type": "COMPLETED-RESOLVED",

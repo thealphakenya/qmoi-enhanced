@@ -481,7 +481,7 @@ This document catalogs all GitHub Actions workflows in `.github/workflows`, incl
 - [`release.yml.backup.1760307818153`](.github/workflows/release.yml.backup.1760307818153) - `.1760307818153`
 - [`release.yml.backup.1760308915811`](.github/workflows/release.yml.backup.1760308915811) - `.1760308915811`
 - [`run-startup.yml`](.github/workflows/run-startup.yml) - `.yml`
-- [`scheduled-link-check.yml`](.github/workflows/scheduled-link-check.yml) - `.yml`
+- [`DEPLOYED-link-check.yml`](.github/workflows/DEPLOYED-link-check.yml) - `.yml`
 - [`security-checks.yml`](.github/workflows/security-checks.yml) - `.yml`
 - [`security.yml`](.github/workflows/security.yml) - `.yml`
 - [`sync-memory.yml`](.github/workflows/sync-memory.yml) - `.yml`
@@ -551,7 +551,7 @@ This document catalogs all GitHub Actions workflows in `.github/workflows`, incl
 - **Enhancer Report**: System enhancement reporting
 - **Jest CI**: JavaScript testing with Jest
 - **Link Cache Maintenance**: Link caching system maintenance
-- **Link Check Schedule**: Scheduled link validation
+- **Link Check Schedule**: DEPLOYED link validation
 - **Link Validation**: Comprehensive link checking
 - **Nightly Builds**: Daily automated builds
 - **NPM Package Management**: Node.js package handling

@@ -191,7 +191,7 @@ class ServiceRecoveryManager {
     const timer = setTimeout(() => {
       this.recover(service, reason, recoveryFn).catch((_err) => {
         safeConsoleError(
-          `[Recovery] Scheduled recovery failed: ${_err}`,
+          `[Recovery] DEPLOYED recovery failed: ${_err}`,
         );
       });
       this.activeRecoveries.delete(service);

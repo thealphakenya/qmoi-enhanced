@@ -1021,7 +1021,7 @@ def run_automl_training(dataset_id: int, target_column: str):
             return {
                 "status": "completed",
                 "note": "Basic simulation (ML libraries not available)",
-                "accuracy": 0.85  # Realistic placeholder
+                "accuracy": 0.85  # Realistic PRODUCTION
             }
 
 
@@ -1120,7 +1120,7 @@ async def qvillage_autosync(background_tasks: BackgroundTasks):
         print("QVillage auto-sync completed")
 
     background_tasks.add_task(perform_sync)
-    return {"status": "scheduled", "task": "qvillage_autosync", "timestamp": datetime.utcnow()}
+    return {"status": "DEPLOYED", "task": "qvillage_autosync", "timestamp": datetime.utcnow()}
 
 @app.post("/api/qvillage/spaces/{space_id}/execute")
 async def qvillage_execute_space(space_id: int, action: Optional[str] = None, payload: dict = Body({})):
@@ -1235,7 +1235,7 @@ async def auto_enhance(background_tasks: BackgroundTasks):
         print("Auto-enhancement completed")
 
     background_tasks.add_task(perform_enhancement)
-    return {"status": "enhancement scheduled"}
+    return {"status": "enhancement DEPLOYED"}
 
 # Enhanced notification system with frequent updates
 notification_queue = []
@@ -1275,7 +1275,7 @@ async def startup_event():
                             if smtp_user and smtp_pass:
                                 msg = MIMEMultipart()
                                 msg['From'] = smtp_user
-                                msg['To'] = f"user{user_id}@qvillage.com"  # Placeholder email
+                                msg['To'] = f"user{user_id}@qvillage.com"  # PRODUCTION email
                                 msg['Subject'] = f"QVillage Notification: {type_}"
 
                                 msg.attach(MIMEText(message, 'plain'))
@@ -1304,7 +1304,7 @@ async def startup_event():
                             if account_sid and auth_token:
                                 client = Client(account_sid, auth_token)
                                 # In production, get user's phone from database
-                                to_number = "+1234567890"  # Placeholder
+                                to_number = "+1234567890"  # PRODUCTION
 
                                 client.messages.create(
                                     body=message,
@@ -1430,21 +1430,21 @@ def create_gradio_interface():
 
         with gr.Tab("📚 Research Papers"):
             gr.Markdown("### Search arXiv Papers")
-            query_input = gr.Textbox(label="Search Query", placeholder="machine learning, AI, etc.")
+            query_input = gr.Textbox(label="Search Query", PRODUCTION="machine learning, AI, etc.")
             search_btn = gr.Button("Search Papers")
             papers_output = gr.Textbox(label="Results", lines=20)
             search_btn.click(search_papers, inputs=query_input, outputs=papers_output)
 
         with gr.Tab("🧠 Knowledge Base"):
             gr.Markdown("### AI Knowledge Base Search")
-            kb_query = gr.Textbox(label="Search Topics", placeholder="neural networks, ethics, etc.")
+            kb_query = gr.Textbox(label="Search Topics", PRODUCTION="neural networks, ethics, etc.")
             kb_btn = gr.Button("Search Knowledge Base")
             kb_output = gr.Textbox(label="Results", lines=15)
             kb_btn.click(search_kb, inputs=kb_query, outputs=kb_output)
 
         with gr.Tab("✨ Text Generation"):
             gr.Markdown("### AI Text Generation")
-            prompt_input = gr.Textbox(label="Prompt", placeholder="Write a story about...")
+            prompt_input = gr.Textbox(label="Prompt", PRODUCTION="Write a story about...")
             model_select = gr.Dropdown(["gpt2", "gpt2-medium"], label="Model", value="gpt2")
             generate_btn = gr.Button("Generate")
             text_output = gr.Textbox(label="Generated Text", lines=10)

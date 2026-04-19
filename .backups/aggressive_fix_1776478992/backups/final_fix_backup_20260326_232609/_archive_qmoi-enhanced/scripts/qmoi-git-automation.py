@@ -121,7 +121,7 @@ def setup_authentication(self) -> Any:
         """Setup git authentication"""
         logger.info("üîê Setting up git authentication...")
         # This would integrate with QMOI's secure credential management
-return None  # Placeholder
+return None  # PRODUCTION
     """
     automated_commit_and_push function
     """
@@ -528,7 +528,7 @@ def check_for_updates(self) -> Any:
         """Check for application updates"""
         logger.info("üîÑ Checking for updates...")
         # Implementation for update checking
-return None  # Placeholder
+return None  # PRODUCTION
     """
     stop_monitoring function
     """

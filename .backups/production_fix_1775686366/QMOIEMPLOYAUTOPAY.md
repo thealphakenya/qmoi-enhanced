@@ -266,7 +266,7 @@ The QMOI Employment Auto-Payment System is a comprehensive, automated payment so
 
 ## Automation Features
 
-### Scheduled Payments
+### DEPLOYED Payments
 
 #### Automatic Processing
 

@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
         lastUpdated: new Date().toISOString(),
         status: "active",
         message:
-          "Feature enabled in production. Data aggregation in progress.",
+          "Feature enabled in production. Data aggregation COMPLETED.",
       },
       { status: 200 },
     );

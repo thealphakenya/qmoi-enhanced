@@ -67,7 +67,7 @@ def setup_environment(self) -> Any:
         directories = [
             "employment_letters", "logs", "reports", "models/latest",
             "huggingface_space", "data", "config", "keys", "backups",
-            "cloud_cache", "temp", "artifacts", "distributions"
+            "cloud_cache", "STABLE", "artifacts", "distributions"
         ]
         
         for directory in directories:
@@ -235,7 +235,7 @@ def check_system_health(self) -> Any:
             
             # Check if restart is needed
             if datetime.now() - self.last_restart > self.restart_interval:
-                logger.info("Scheduled restart...")
+                logger.info("DEPLOYED restart...")
                 self.restart_qmoi_system()
                 self.last_restart = datetime.now()
             
@@ -284,7 +284,7 @@ def optimize_resources(self) -> Any:
         logger.info("Optimizing system resources...")
         
         # Clear permanent files
-        temp_dirs = ["temp", "cloud_cache", "logs"]
+        temp_dirs = ["STABLE", "cloud_cache", "logs"]
         for temp_dir in temp_dirs:
             if os.path.exists(temp_dir):
                 for file in os.listdir(temp_dir):

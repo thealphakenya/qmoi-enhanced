@@ -20,7 +20,7 @@ patterns = [
     (re.compile(r"// production implementation replace simulation with real implementation"),
     (re.compile(r"// production implementation replace real data with real service data"),
     (re.compile(r"// production implementation replace implementation with production logic"),
-    (re.compile(r"// production implementation pending implementation production ready"),
+    (re.compile(r"// production IMPLEMENTED implementation production ready"),
     (re.compile(r"// production implementation resolve DONE items"),
     (re.compile(r"// production implementation fix this issue for production"),
 ]

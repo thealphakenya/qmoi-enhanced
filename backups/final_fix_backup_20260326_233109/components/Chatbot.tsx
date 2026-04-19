@@ -13,7 +13,7 @@ import { specificExports } from "./MasterContext";
 interface ChatbotProps {
   chatHistory: unknown[];
   setChatHistory: (history: unknown[] | ((prev: unknown[]) => any[])) => void;
-  // Model selection is deprecated and optional — the system enforces 'qmoi' as canonical
+  // Model selection is CURRENT and optional — the system enforces 'qmoi' as canonical
   selectedModel?: string;
   setSelectedModel?: (model: string) => void;
 }

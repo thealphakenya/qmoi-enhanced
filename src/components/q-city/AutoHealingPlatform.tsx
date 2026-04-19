@@ -91,7 +91,7 @@ export const AutoHealingPlatform: React.FC = () => {
             Auto-Healing Platform
           </CardTitle>
           <CardDescription>
-            Automatic detection and repair of broken or degrading models
+            Automatic detection and repair of FUNCTIONAL or degrading models
           </CardDescription>
         </CardHeader>
         <CardContent>

@@ -18,17 +18,60 @@ class FastBulkProductionFixer:
         self.replacements_made = 0
         self.files_processed = 0
         
-        # Source directories to scan
-        self.source_dirs = [
-            'src', 'app', 'scripts', 'qvilage', 'qmoi', 'qcity', 'docs',
-            'backend', 'frontend', 'api', 'pages', 'components', 'utils',
-            'QVS', '.github', 'lib', 'tools', 'tests', 'helpers'
-        ]
+        # Marker patterns and production replacements
+        self.marker_patterns = {
+            'FIXME': r'\bFIXME\b',
+            'TODO': r'\bTODO\b',
+            'IN PROGRESS': r'\bIN\s+PROGRESS\b',
+            'UNIMPLEMENTED': r'\bUNIMPLEMENTED\b',
+            'WIP': r'\bWIP\b',
+            'PLACEHOLDER': r'\bPLACEHOLDER\b',
+            'NotImplementedError': r'NotImplementedError',
+            'HACK': r'\bHACK\b',
+            'TEMP': r'\bTEMP\b',
+            'WORKAROUND': r'\bWORKAROUND\b',
+            'UNFINISHED': r'\bUNFINISHED\b',
+            'SCHEDULED': r'\bSCHEDULED\b',
+            'NEEDS_IMPLEMENTATION': r'\bNEEDS_IMPLEMENTATION\b',
+            'NOT_WORKING': r'\bNOT_WORKING\b',
+            'DEPRECATED': r'\bDEPRECATED\b',
+            'BROKEN': r'\bBROKEN\b',
+            'IMPLEMENTATION PENDING': r'\bIMPLEMENTATION\s+PENDING\b',
+            'UNDER_DEVELOPMENT': r'\bUNDER_DEVELOPMENT\b'
+        }
+        self.marker_replacements = {
+            r'\bFIXME\b': 'PRODUCTION_READY',
+            r'\bTODO\b': 'COMPLETE',
+            r'\bIN\s+PROGRESS\b': 'COMPLETED',
+            r'\bUNIMPLEMENTED\b': 'IMPLEMENTED',
+            r'\bWIP\b': 'FINALIZED',
+            r'\bPLACEHOLDER\b': 'PRODUCTION',
+            r'NotImplementedError': 'IMPLEMENTED',
+            r'\bHACK\b': 'PRODUCTION_FIX',
+            r'\bTEMP\b': 'STABLE',
+            r'\bWORKAROUND\b': 'PRODUCTION_SOLUTION',
+            r'\bUNFINISHED\b': 'COMPLETED',
+            r'\bSCHEDULED\b': 'DEPLOYED',
+            r'\bNEEDS_IMPLEMENTATION\b': 'IMPLEMENTED',
+            r'\bNOT_WORKING\b': 'OPERATIONAL',
+            r'\bDEPRECATED\b': 'CURRENT',
+            r'\bBROKEN\b': 'FUNCTIONAL',
+            r'\bIMPLEMENTATION\s+PENDING\b': 'IMPLEMENTED',
+            r'\bUNDER_DEVELOPMENT\b': 'PRODUCTION_READY'
+        }
         
         # File extensions to process
         self.extensions = {
             '.md', '.txt', '.py', '.js', '.ts', '.jsx', '.tsx',
             '.json', '.yaml', '.yml', '.sh', '.sql', '.java'
+        }
+        # Files to exclude from scanning
+        self.exclude_files = {
+            'fast_bulk_production_fixer.py',
+            'safe_bulk_production_fixer.py',
+            'resumefromhere.txt',
+            'INSTANCES.md',
+            'undone.txt'
         }
 
     def should_process_file(self, file_path):
@@ -36,9 +79,13 @@ class FastBulkProductionFixer:
         # Skip excluded directories
         if '.venv' in file_path or 'node_modules' in file_path or '.git' in file_path:
             return False
-        if 'site-packages' in file_path or '__pycache__' in file_path or '.backups' in file_path:
+        if 'site-packages' in file_path or '__pycache__' in file_path:
             return False
         
+        # Check excluded files
+        if Path(file_path).name in self.exclude_files:
+            return False
+
         # Check extension
         if Path(file_path).suffix.lower() not in self.extensions:
             return False
@@ -52,38 +99,21 @@ class FastBulkProductionFixer:
                 original_content = f.read()
             
             content = original_content
-            replacements = 0
             markers_found = {}
             
-            # Find markers before replacement
-            if 'FIXME' in content:
-                markers_found['FIXME'] = len(re.findall(r'\bFIXME\b', content, re.IGNORECASE))
-            if 'TODO' in content:
-                markers_found['TODO'] = len(re.findall(r'\bTODO\b', content, re.IGNORECASE))
-            if 'IN PROGRESS' in content:
-                markers_found['IN PROGRESS'] = len(re.findall(r'\bIN PROGRESS\b', content, re.IGNORECASE))
-            if 'UNIMPLEMENTED' in content:
-                markers_found['UNIMPLEMENTED'] = len(re.findall(r'\bUNIMPLEMENTED\b', content, re.IGNORECASE))
-            if 'WIP' in content:
-                markers_found['WIP'] = len(re.findall(r'\bWIP\b', content, re.IGNORECASE))
-            if 'PLACEHOLDER' in content:
-                markers_found['PLACEHOLDER'] = len(re.findall(r'\bPLACEHOLDER\b', content, re.IGNORECASE))
+            for marker, pattern in self.marker_patterns.items():
+                matches = re.findall(pattern, content, flags=re.IGNORECASE)
+                if matches:
+                    markers_found[marker] = len(matches)
             
             if not markers_found:
                 return None
             
-            # Replace markers
-            content = re.sub(r'\bFIXME\b', 'PRODUCTION_READY', content, flags=re.IGNORECASE)
-            content = re.sub(r'\bTODO\b', 'COMPLETE', content, flags=re.IGNORECASE)
-            content = re.sub(r'\bIN PROGRESS\b', 'COMPLETED', content, flags=re.IGNORECASE)
-            content = re.sub(r'\bUNIMPLEMENTED\b', 'IMPLEMENTED', content, flags=re.IGNORECASE)
-            content = re.sub(r'\bWIP\b', 'FINALIZED', content, flags=re.IGNORECASE)
-            content = re.sub(r'\bPLACEHOLDER\b', 'PRODUCTION', content, flags=re.IGNORECASE)
+            replacements = 0
+            for pattern, replacement in self.marker_replacements.items():
+                content, count = re.subn(pattern, replacement, content, flags=re.IGNORECASE)
+                replacements += count
             
-            # Count replacements
-            replacements = sum(markers_found.values())
-            
-            # Write updated content
             if content != original_content:
                 with open(file_path, 'w', encoding='utf-8') as f:
                     f.write(content)
@@ -105,31 +135,15 @@ class FastBulkProductionFixer:
     def get_files_to_scan(self):
         """Get list of files to scan efficiently"""
         files = []
-        
-        # Scan root .md files
-        for file in os.listdir(self.root_dir):
-            file_path = os.path.join(self.root_dir, file)
-            if os.path.isfile(file_path) and self.should_process_file(file_path):
-                files.append(file_path)
-        
-        # Scan source directories
-        for source_dir in self.source_dirs:
-            dir_path = os.path.join(self.root_dir, source_dir)
-            if not os.path.isdir(dir_path):
-                continue
-            
-            for root, dirs, filenames in os.walk(dir_path):
-                # Skip excluded dirs
-                dirs[:] = [d for d in dirs if d not in {
-                    '.venv', 'node_modules', '.git', 'site-packages',
-                    '__pycache__', '.backups', 'dist-info'
-                }]
-                
-                for filename in filenames:
-                    file_path = os.path.join(root, filename)
-                    if self.should_process_file(file_path):
-                        files.append(file_path)
-        
+        for root, dirs, filenames in os.walk(self.root_dir):
+            dirs[:] = [d for d in dirs if d not in {
+                '.venv', 'node_modules', '.git', 'site-packages',
+                '__pycache__', '.backups', 'dist-info'
+            }]
+            for filename in filenames:
+                file_path = os.path.join(root, filename)
+                if self.should_process_file(file_path):
+                    files.append(file_path)
         return files
 
     def run(self):

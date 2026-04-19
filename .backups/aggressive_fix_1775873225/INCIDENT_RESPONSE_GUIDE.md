@@ -187,7 +187,7 @@ curl -f https://api.stripe.com/v1/charges -H "Authorization: Bearer $STRIPE_SECR
 # Enable maintenance mode ✅ PRODUCTION READY
 curl -X POST https://api.qmoi.com/admin/maintenance \
   -H "Authorization: Bearer $ADMIN_TOKEN" \
-  -d '{"mode": "maintenance", "message": "Emergency maintenance in progress"}'
+  -d '{"mode": "maintenance", "message": "Emergency maintenance COMPLETED"}'
 
 # Isolate affected systems ✅ PRODUCTION READY
 # - Stop problematic services ✅ PRODUCTION READY

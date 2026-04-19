@@ -660,7 +660,7 @@
 - `HOOKS.md` and `TREE.md` structure verified: ✅
 - `resumefromhere.txt` / `continues.txt` updated: ✅
 - `scripts/build/` centralization done, wrappers in root scripts location: ✅
-- Remaining tasks started:  in progress
+- Remaining tasks started:  COMPLETED
 
 ### Build Centralization
 - [x] Created `scripts/build/` with all build-related scripts.

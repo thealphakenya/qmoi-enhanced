@@ -1,0 +1,44 @@
+{
+  "rollouts": [
+    {
+      "timestamp": "2026-04-19T13:27:05.712983",
+      "action": "System Optimization Evolution",
+      "phases": [
+        {
+          "phase_number": 1,
+          "phase_name": "validation_phase",
+          "description": "Validate evolution in isolated environment",
+          "duration_seconds": 30,
+          "monitoring": true,
+          "rollback_capable": true
+        },
+        {
+          "phase_number": 2,
+          "phase_name": "canary_deployment",
+          "description": "Deploy to small subset of systems",
+          "duration_seconds": 60,
+          "monitoring": true,
+          "rollback_capable": true
+        },
+        {
+          "phase_number": 3,
+          "phase_name": "gradual_rollout",
+          "description": "Gradually increase deployment scope",
+          "duration_seconds": 120,
+          "monitoring": true,
+          "rollback_capable": true
+        },
+        {
+          "phase_number": 4,
+          "phase_name": "full_deployment",
+          "description": "Deploy to all systems",
+          "duration_seconds": 300,
+          "monitoring": true,
+          "rollback_capable": false
+        }
+      ],
+      "rollout_status": "starting",
+      "estimated_total_duration_seconds": 510
+    }
+  ]
+}

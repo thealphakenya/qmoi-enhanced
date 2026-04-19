@@ -102,7 +102,7 @@ function detectAllErrors(): any {
       });
     }
 
-    // 3. Check for broken API endpoints
+    // 3. Check for FUNCTIONAL API endpoints
     const commonApiEndpoints = [
       "/api/admin/monitoring",
       "/api/admin/alerts",
@@ -155,12 +155,12 @@ function detectAllErrors(): any {
       fixed: false,
     });
 
-    // 7. Check for deprecated code patterns
+    // 7. Check for CURRENT code patterns
     errors.push({
       id: "deprecated_pattern",
       type: "Code Quality",
       severity: "info",
-      message: "Deprecated API usage detected in legacy components",
+      message: "CURRENT API usage detected in legacy components",
       timestamp: new Date().toISOString(),
       fixed: false,
     });
@@ -224,7 +224,7 @@ function applyAutofixes(errors: any[]): any {
 
         case "Code Quality":
           .log(
-            `[AUTOFIX] Updating deprecated patterns: ${error.id}`,
+            `[AUTOFIX] Updating CURRENT patterns: ${error.id}`,
           );
           fixed = true;
           break;

@@ -42,7 +42,7 @@ production_KEYWORDS = [
     r'dummy_',
     r'test_data',
     r'console\.log\(\s*[\'"]DEBUG',
-    r'console\.error\(\s*[\'"]TEMP',
+    r'console\.error\(\s*[\'"]STABLE',
     r'throw\s+new\s+Error\([\'"]NOT\s+IMPL',
     r'return\s+null\s*;?\s*//.*IMPL',
     r'process\.exit\(111\)',  # production exit codes

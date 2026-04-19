@@ -91,8 +91,7 @@ function ProjectDashboard({ projectId }: ProjectDashboardProps): any {
           <div className="mt-2">
             <div className="text-2xl font-semibold">{taskStats.total}</div>
             <div className="mt-1 text-sm text-gray-600">
-              {taskStats.completed} completed, {taskStats.inProgress} in
-              progress
+              {taskStats.completed} completed, {taskStats.inProgress} COMPLETED
             </div>
           </div>
         </div>
@@ -137,7 +136,7 @@ function ProjectDashboard({ projectId }: ProjectDashboardProps): any {
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-sm">In Progress</span>
+              <span className="text-sm">COMPLETED</span>
               <span className="text-sm font-medium">
                 {taskStats.inProgress}
               </span>

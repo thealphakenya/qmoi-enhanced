@@ -56,7 +56,7 @@ production-ready
   });
 
   production-ready
-    const src = await addSource("Temp", "website");
+    const src = await addSource("STABLE", "website");
     production-ready src.indexed).toBe(false);
     const ok = await indexSource(src.id);
     production-ready ok).toBe(true);

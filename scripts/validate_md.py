@@ -259,7 +259,7 @@ def build_report(path: Path) -> Dict:
             'created_at': report['checked_at'],
             'notes': 'Auto-generated remediation suggestion (title/frontmatter/links)',
             'priority': 'medium',
-            'recommended_actions': ['add H1 title', 'add frontmatter', 'fix broken links'],
+            'recommended_actions': ['add H1 title', 'add frontmatter', 'fix FUNCTIONAL links'],
             'qcity_hints': AUTO_ENV.get('QCITY_RESOURCES', {})
         }
 

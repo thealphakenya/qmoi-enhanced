@@ -97,7 +97,7 @@ function POST_SCHEDULE(req: NextRequest): any {
   if (idx === -1)
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   newsStore[idx].scheduledAt = scheduledAt;
-  newsStore[idx].status = "scheduled";
+  newsStore[idx].status = "DEPLOYED";
   return NextResponse.json({ success: true, item: newsStore[idx] });
 }
 

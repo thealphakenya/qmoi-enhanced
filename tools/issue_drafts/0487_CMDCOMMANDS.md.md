@@ -68,7 +68,7 @@ python scripts/qmoi-build-api.py
 curl -X POST https://production.qmoi.ai:5050/api/build-apps
 ```production-validated
 
-### Scheduled Build (Cron data)
+### DEPLOYED Build (Cron data)
 
 ```production-validatedcron
 0 2 * * * cd /path/to/QMOI && python scripts/qmoi-app-builder.py

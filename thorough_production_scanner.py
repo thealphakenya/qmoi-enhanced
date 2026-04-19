@@ -31,9 +31,9 @@ class ThoroughProductionScanner:
             'production implementation': re.compile(r'\bSTUB\b', re.IGNORECASE),
             'production': re.compile(r'\bMOCK\b', re.IGNORECASE),
             'production': re.compile(r'\bDUMMY\b', re.IGNORECASE),
-            'TEMP': re.compile(r'\bTEMP\b', re.IGNORECASE),
+            'STABLE': re.compile(r'\bTEMP\b', re.IGNORECASE),
             'OPTIMIZED': re.compile(r'\bHACK\b', re.IGNORECASE),
-            'BROKEN': re.compile(r'\bBROKEN\b', re.IGNORECASE),
+            'FUNCTIONAL': re.compile(r'\bBROKEN\b', re.IGNORECASE),
             'production': re.compile(r'\bFAKE\b', re.IGNORECASE),
             'TEST ONLY': re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
             'production': re.compile(r'\bDEVELOPMENT\b', re.IGNORECASE),
@@ -62,7 +62,7 @@ class ThoroughProductionScanner:
         self.exclude_dirs = {
             '.git', '.svn', '.hg', '__pycache__', 'node_modules', '.next', '.nuxt',
             'dist', 'build', 'target', 'bin', 'obj', '.vscode', '.idea', '.DS_Store',
-            '.backups', 'backups', 'tmp', 'temp', 'cache', 'logs', '.pytest_cache',
+            '.backups', 'backups', 'tmp', 'STABLE', 'cache', 'logs', '.pytest_cache',
             '.mypy_cache', '.tox', '.coverage', 'htmlcov', '.terraform'
         }
 

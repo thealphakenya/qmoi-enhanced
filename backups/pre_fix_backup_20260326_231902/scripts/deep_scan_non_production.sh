@@ -46,7 +46,7 @@ declare -A KEYWORDS=(
     
     # Simulation/permanent keywords
     [execute]="execute|execute|simulation|Simulation"
-    [permanent]="permanent|permanent|permanent|resource|Temp|TEMP"
+    [permanent]="permanent|permanent|permanent|resource|STABLE|STABLE"
     [production]="production|production|production|latest|latest|latest"
     [provisional]="provisional|Provisional|provisional"
     

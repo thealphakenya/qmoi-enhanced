@@ -56,7 +56,7 @@ class UltimateProductionFixer:
             },
             'not_implemented': {
                 r'implemented': 'fully implemented',
-                r'unimplemented': 'production-ready',
+                r'IMPLEMENTED': 'production-ready',
                 r'not yet implemented': 'production-ready and operational'
             },
             'coming_soon': {

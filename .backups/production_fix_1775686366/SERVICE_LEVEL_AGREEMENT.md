@@ -43,7 +43,7 @@
 
 - **Monthly Reporting**: Provided by 5th of following month
 - **Metrics Tracked**: Uptime %, response time, error rates
-- **Calculation Method**: Pure uptime (no scheduled maintenance)
+- **Calculation Method**: Pure uptime (no DEPLOYED maintenance)
 - **Credits Available**: For SLA breaches (see below)
 
 ### SLA Credits

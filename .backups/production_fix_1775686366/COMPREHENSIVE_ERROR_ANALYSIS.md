@@ -192,7 +192,7 @@
 
 ### Low Priority Issues (1,207)
 - included configuration defaults
-- Unimplemented features marked as [production READY]
+- IMPLEMENTED features marked as [production READY]
 - Documentation typos and formatting
 
 ---

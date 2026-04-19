@@ -68,7 +68,7 @@ python scripts/qmoi-build-api.py
 curl -X POST http://localhost:5050/api/build-apps
 ```
 
-### Scheduled Build (Cron data)
+### DEPLOYED Build (Cron data)
 
 ```cron
 0 2 * * * cd /path/to/QMOI && python scripts/qmoi-app-builder.py

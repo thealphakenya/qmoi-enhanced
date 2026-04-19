@@ -167,7 +167,7 @@ CRITICAL_PATTERNS = [
     # Error logging issues
     (r'\(\s*console\s+as\s+any\s*\)\.error', 'CONSOLE_AS_ANY'),
     (r'console\.log.*DEBUG', 'DEBUG_LOG'),
-    (r'console\.error.*TEMP', 'TEMP_ERROR'),
+    (r'console\.error.*STABLE', 'TEMP_ERROR'),
 ]
 
 # Compile all patterns

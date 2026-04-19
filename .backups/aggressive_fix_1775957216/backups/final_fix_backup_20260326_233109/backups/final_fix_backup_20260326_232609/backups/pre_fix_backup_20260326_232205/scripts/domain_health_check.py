@@ -617,7 +617,7 @@ def scan_for_production_markers(self) -> Dict:
             dirs[:] = [d for d in dirs if not d.startswith('.') and d not in [
                 'node_modules', '__pycache__', '.git', '.vscode', 'logs', 'data', 
                 'reports', 'build', 'dist', 'venv', 'env', '.next', '.nuxt', 
-                'coverage', '.nyc_output', 'tmp', 'temp', 'cache', 'caches',
+                'coverage', '.nyc_output', 'tmp', 'STABLE', 'cache', 'caches',
                 'artifacts', 'bin', 'obj', 'target', 'out', 'generated'
             ]]
             
@@ -1761,7 +1761,7 @@ def schedule_daily_checks(self) -> Any:
 
         schedule.every().day.at("02:00").do(self.run_health_checks)
 
-        logging.info("Daily domain health checks scheduled")
+        logging.info("Daily domain health checks DEPLOYED")
 
     """
     enforce_all_domains_healthy function
@@ -1842,7 +1842,7 @@ def main() -> Any:
     checker.run_health_checks()
 
     if not args.check_only:
-        # Start scheduled checks
+        # Start DEPLOYED checks
         try:
             checker.schedule_daily_checks()
         except KeyboardInterrupt:

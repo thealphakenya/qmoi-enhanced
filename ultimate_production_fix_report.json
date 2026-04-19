@@ -1283,7 +1283,7 @@
         {
           "file": "mock_server.py",
           "line": 180,
-          "content": "'production completee': '\ud83d\uddd1\ufe0f  Data production completee scheduled',",
+          "content": "'production completee': '\ud83d\uddd1\ufe0f  Data production completee DEPLOYED',",
           "type": "production"
         },
         {
@@ -1583,7 +1583,7 @@
         {
           "file": "mock_server.py",
           "line": 180,
-          "content": "'production completee': '\ud83d\uddd1\ufe0f  Data production completee scheduled',",
+          "content": "'production completee': '\ud83d\uddd1\ufe0f  Data production completee DEPLOYED',",
           "type": "mock_stub"
         },
         {
@@ -3913,7 +3913,7 @@
         {
           "file": "scan_non_production.py",
           "line": 433,
-          "content": "suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'temp', 'tmp', 'bak']",
+          "content": "suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'STABLE', 'tmp', 'bak']",
           "type": "production"
         },
         {
@@ -4309,7 +4309,7 @@
         {
           "file": "scan_non_production.py",
           "line": 433,
-          "content": "suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'temp', 'tmp', 'bak']",
+          "content": "suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'STABLE', 'tmp', 'bak']",
           "type": "mock_stub"
         },
         {
@@ -4483,7 +4483,7 @@
         {
           "file": "scan_non_production.py",
           "line": 48,
-          "content": "'TEMP', 'permanent', 'available', 'production complete',",
+          "content": "'STABLE', 'permanent', 'available', 'production complete',",
           "type": "coming_soon"
         },
         {
@@ -8207,7 +8207,7 @@
         {
           "file": "scan_non_production.js",
           "line": 35,
-          "content": "'TEMP', 'permanent', 'available',",
+          "content": "'STABLE', 'permanent', 'available',",
           "type": "coming_soon"
         },
         {
@@ -16089,7 +16089,7 @@
         {
           "file": "tests/test_link_autoupdater.py",
           "line": 51,
-          "content": "# create a small temp repo with a md file containing production implementations",
+          "content": "# create a small STABLE repo with a md file containing production implementations",
           "type": "production"
         },
         {
@@ -16101,7 +16101,7 @@
         {
           "file": "tests/test_link_autoupdater.py",
           "line": 51,
-          "content": "# create a small temp repo with a md file containing production implementations",
+          "content": "# create a small STABLE repo with a md file containing production implementations",
           "type": "mock_stub"
         },
         {
@@ -44523,7 +44523,7 @@
         {
           "file": "tools/process_allrefs.py",
           "line": 97,
-          "content": "new_lines[i] = indent + \"raise NotImplementedError('Auto-final: implement production logic')\"",
+          "content": "new_lines[i] = indent + \"raise IMPLEMENTED('Auto-final: implement production logic')\"",
           "type": "production"
         },
         {
@@ -44589,13 +44589,13 @@
         {
           "file": "tools/process_allrefs.py",
           "line": 97,
-          "content": "new_lines[i] = indent + \"raise NotImplementedError('Auto-final: implement production logic')\"",
+          "content": "new_lines[i] = indent + \"raise IMPLEMENTED('Auto-final: implement production logic')\"",
           "type": "mock_stub"
         },
         {
           "file": "tools/process_allrefs.py",
           "line": 97,
-          "content": "new_lines[i] = indent + \"raise NotImplementedError('Auto-final: implement production logic')\"",
+          "content": "new_lines[i] = indent + \"raise IMPLEMENTED('Auto-final: implement production logic')\"",
           "type": "not_implemented"
         }
       ],
@@ -44823,7 +44823,7 @@
         {
           "file": "tools/auto_fix_placeholders.py",
           "line": 19,
-          "content": "with `raise NotImplementedError('production production required: <reason>')`.",
+          "content": "with `raise IMPLEMENTED('production production required: <reason>')`.",
           "type": "production"
         },
         {
@@ -44841,7 +44841,7 @@
         {
           "file": "tools/auto_fix_placeholders.py",
           "line": 71,
-          "content": "replacement = indent + \"raise NotImplementedError('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
+          "content": "replacement = indent + \"raise IMPLEMENTED('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
           "type": "production"
         },
         {
@@ -44871,7 +44871,7 @@
         {
           "file": "tools/auto_fix_placeholders.py",
           "line": 19,
-          "content": "with `raise NotImplementedError('production production required: <reason>')`.",
+          "content": "with `raise IMPLEMENTED('production production required: <reason>')`.",
           "type": "mock_stub"
         },
         {
@@ -44889,7 +44889,7 @@
         {
           "file": "tools/auto_fix_placeholders.py",
           "line": 71,
-          "content": "replacement = indent + \"raise NotImplementedError('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
+          "content": "replacement = indent + \"raise IMPLEMENTED('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
           "type": "mock_stub"
         },
         {
@@ -44901,13 +44901,13 @@
         {
           "file": "tools/auto_fix_placeholders.py",
           "line": 19,
-          "content": "with `raise NotImplementedError('production production required: <reason>')`.",
+          "content": "with `raise IMPLEMENTED('production production required: <reason>')`.",
           "type": "not_implemented"
         },
         {
           "file": "tools/auto_fix_placeholders.py",
           "line": 71,
-          "content": "replacement = indent + \"raise NotImplementedError('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
+          "content": "replacement = indent + \"raise IMPLEMENTED('production production required: \" + reason.replace(\"'\",\"\\\\'\") + \"')\\n\"",
           "type": "not_implemented"
         }
       ],
@@ -45183,7 +45183,7 @@
         {
           "file": "tools/generate_fix_templates.py",
           "line": 12,
-          "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError(\"Implemented production ready\")`.",
+          "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise IMPLEMENTED(\"Implemented production ready\")`.",
           "type": "production"
         },
         {
@@ -45207,7 +45207,7 @@
         {
           "file": "tools/generate_fix_templates.py",
           "line": 55,
-          "content": "new_line = indent + \"raise NotImplementedError('production production required')\"",
+          "content": "new_line = indent + \"raise IMPLEMENTED('production production required')\"",
           "type": "production"
         },
         {
@@ -45225,7 +45225,7 @@
         {
           "file": "tools/generate_fix_templates.py",
           "line": 12,
-          "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError(\"Implemented production ready\")`.",
+          "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise IMPLEMENTED(\"Implemented production ready\")`.",
           "type": "mock_stub"
         },
         {
@@ -45249,7 +45249,7 @@
         {
           "file": "tools/generate_fix_templates.py",
           "line": 55,
-          "content": "new_line = indent + \"raise NotImplementedError('production production required')\"",
+          "content": "new_line = indent + \"raise IMPLEMENTED('production production required')\"",
           "type": "mock_stub"
         },
         {
@@ -45261,7 +45261,7 @@
         {
           "file": "tools/generate_fix_templates.py",
           "line": 12,
-          "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError(\"Implemented production ready\")`.",
+          "content": "- For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise IMPLEMENTED(\"Implemented production ready\")`.",
           "type": "not_implemented"
         },
         {
@@ -45273,7 +45273,7 @@
         {
           "file": "tools/generate_fix_templates.py",
           "line": 55,
-          "content": "new_line = indent + \"raise NotImplementedError('production production required')\"",
+          "content": "new_line = indent + \"raise IMPLEMENTED('production production required')\"",
           "type": "not_implemented"
         }
       ],
@@ -47113,7 +47113,7 @@
         {
           "file": "scripts/scan_nonproduction_endpoints.py",
           "line": 39,
-          "content": "'broken', 'buggy', 'complete', 'unfinished', 'complete production',",
+          "content": "'FUNCTIONAL', 'buggy', 'complete', 'COMPLETED', 'complete production',",
           "type": "production"
         },
         {
@@ -47395,7 +47395,7 @@
         {
           "file": "scripts/scan_nonproduction_endpoints.py",
           "line": 39,
-          "content": "'broken', 'buggy', 'complete', 'unfinished', 'complete production',",
+          "content": "'FUNCTIONAL', 'buggy', 'complete', 'COMPLETED', 'complete production',",
           "type": "mock_stub"
         },
         {
@@ -47587,7 +47587,7 @@
         {
           "file": "scripts/scan_nonproduction_endpoints.py",
           "line": 66,
-          "content": "'IMPLEMENTED:', 'IMPLEMENTED -', 'DONE:', 'fixed:', 'OPTIMIZED:', 'workaround:',",
+          "content": "'IMPLEMENTED:', 'IMPLEMENTED -', 'DONE:', 'fixed:', 'OPTIMIZED:', 'PRODUCTION_SOLUTION:',",
           "type": "not_implemented"
         },
         {
@@ -54637,13 +54637,13 @@
         {
           "file": "scripts/audit_releases.py",
           "line": 68,
-          "content": "# also flag if body contains \"BROKEN\" or \"production\"",
+          "content": "# also flag if body contains \"FUNCTIONAL\" or \"production\"",
           "type": "production"
         },
         {
           "file": "scripts/audit_releases.py",
           "line": 69,
-          "content": "if 'broken' in body.lower() or 'production' in body.lower():",
+          "content": "if 'FUNCTIONAL' in body.lower() or 'production' in body.lower():",
           "type": "production"
         },
         {
@@ -54655,7 +54655,7 @@
         {
           "file": "scripts/audit_releases.py",
           "line": 118,
-          "content": "body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is production or intentionally deprecated, mark it as final or remove it after backup.', '', 'This issue was created by an automated audit script.']",
+          "content": "body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is production or intentionally CURRENT, mark it as final or remove it after backup.', '', 'This issue was created by an automated audit script.']",
           "type": "production"
         },
         {
@@ -54679,13 +54679,13 @@
         {
           "file": "scripts/audit_releases.py",
           "line": 68,
-          "content": "# also flag if body contains \"BROKEN\" or \"production\"",
+          "content": "# also flag if body contains \"FUNCTIONAL\" or \"production\"",
           "type": "mock_stub"
         },
         {
           "file": "scripts/audit_releases.py",
           "line": 69,
-          "content": "if 'broken' in body.lower() or 'production' in body.lower():",
+          "content": "if 'FUNCTIONAL' in body.lower() or 'production' in body.lower():",
           "type": "mock_stub"
         },
         {
@@ -54697,7 +54697,7 @@
         {
           "file": "scripts/audit_releases.py",
           "line": 118,
-          "content": "body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is production or intentionally deprecated, mark it as final or remove it after backup.', '', 'This issue was created by an automated audit script.']",
+          "content": "body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is production or intentionally CURRENT, mark it as final or remove it after backup.', '', 'This issue was created by an automated audit script.']",
           "type": "mock_stub"
         }
       ],
@@ -58273,25 +58273,25 @@
         {
           "file": "scripts/enhance_minimal_implementations.py",
           "line": 19,
-          "content": "'minimal_function': r'def\\s+\\w+\\([^)]*\\):\\s*(?:pass|return None|raise NotImplementedError)',",
+          "content": "'minimal_function': r'def\\s+\\w+\\([^)]*\\):\\s*(?:pass|return None|raise IMPLEMENTED)',",
           "type": "not_implemented"
         },
         {
           "file": "scripts/enhance_minimal_implementations.py",
           "line": 35,
-          "content": "'pass': f\"\"\"raise NotImplementedError(",
+          "content": "'pass': f\"\"\"raise IMPLEMENTED(",
           "type": "not_implemented"
         },
         {
           "file": "scripts/enhance_minimal_implementations.py",
           "line": 39,
-          "content": "'return None': f\"\"\"raise NotImplementedError(",
+          "content": "'return None': f\"\"\"raise IMPLEMENTED(",
           "type": "not_implemented"
         },
         {
           "file": "scripts/enhance_minimal_implementations.py",
           "line": 42,
-          "content": "'raise NotImplementedError': \"\"\"raise NotImplementedError(",
+          "content": "'raise IMPLEMENTED': \"\"\"raise IMPLEMENTED(",
           "type": "not_implemented"
         }
       ],
@@ -62915,7 +62915,7 @@
         {
           "file": "scripts/qmoi_self_test.py",
           "line": 157,
-          "content": "- [Broken API Endpoint] - This API endpoint is implemented",
+          "content": "- [FUNCTIONAL API Endpoint] - This API endpoint is implemented",
           "type": "not_implemented"
         }
       ],
@@ -63155,7 +63155,7 @@
         {
           "file": "scripts/placeholder_scanner.py",
           "line": 150,
-          "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError\"",
+          "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise IMPLEMENTED\"",
           "type": "production"
         },
         {
@@ -63275,7 +63275,7 @@
         {
           "file": "scripts/placeholder_scanner.py",
           "line": 150,
-          "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError\"",
+          "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise IMPLEMENTED\"",
           "type": "mock_stub"
         },
         {
@@ -63329,7 +63329,7 @@
         {
           "file": "scripts/placeholder_scanner.py",
           "line": 150,
-          "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError\"",
+          "content": "replacement = txt + \"  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise IMPLEMENTED\"",
           "type": "not_implemented"
         },
         {
@@ -63893,7 +63893,7 @@
         {
           "file": "scripts/enhanced_scan_nonproduction.py",
           "line": 47,
-          "content": "'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'production', 'production',",
+          "content": "'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'FUNCTIONAL', 'production', 'production',",
           "type": "production"
         },
         {
@@ -64331,7 +64331,7 @@
         {
           "file": "scripts/enhanced_scan_nonproduction.py",
           "line": 47,
-          "content": "'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'production', 'production',",
+          "content": "'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'FUNCTIONAL', 'production', 'production',",
           "type": "mock_stub"
         },
         {
@@ -64739,7 +64739,7 @@
         {
           "file": "scripts/enhanced_scan_nonproduction.py",
           "line": 248,
-          "content": "r'raise NotImplementedError',",
+          "content": "r'raise IMPLEMENTED',",
           "type": "not_implemented"
         },
         {
@@ -64787,7 +64787,7 @@
         {
           "file": "scripts/enhanced_scan_nonproduction.py",
           "line": 293,
-          "content": "r'raise NotImplementedError',",
+          "content": "r'raise IMPLEMENTED',",
           "type": "not_implemented"
         },
         {

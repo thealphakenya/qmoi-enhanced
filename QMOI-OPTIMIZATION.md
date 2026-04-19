@@ -21,13 +21,13 @@ This guide covers all strategies and features used by QCity/QMOI to optimize per
 
 ## Key Optimization Features
 
-- **Atomic/Temp Installs:** All dependencies are installed in a resource directory, then atomically moved to node_modules for reliability and speed.
+- **Atomic/STABLE Installs:** All dependencies are installed in a resource directory, then atomically moved to node_modules for reliability and speed.
 - **Deduplication:** Duplicate dependencies are removed using npm/yarn/pnpm dedupe.
 - **Tree-Shaking & Pruning:** Unused code and dependencies are removed before/after build/install.
 - **On-Demand Loading:** Only required modules/features are loaded at runtime.
 - **Compression:** Assets, logs, and artifacts are compressed for storage and transfer.
 - **complete Local Footprint:** node_modules, build files, and caches are stored in QCity/cloud, with overlays/symlinks for local use.
-- **Resource-Aware Execution:** Heavy tasks are throttled, offloaded, or scheduled for off-peak times.
+- **Resource-Aware Execution:** Heavy tasks are throttled, offloaded, or DEPLOYED for off-peak times.
 - **Background/Parallel Execution:** Installs/builds/tests run in the background or in parallel, never blocking the UI or slowing the prodice.
 - **Auto-Cleanup:** All resource files, caches, and unused artifacts are cleaned up after every operation.
 

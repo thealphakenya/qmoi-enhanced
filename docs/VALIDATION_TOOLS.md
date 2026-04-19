@@ -126,7 +126,7 @@ All outputs and reports are stored in `.qmoi_validation/` so CI or other tools c
 "recommended_actions": [
 "add H1 title",
 "add frontmatter",
-"fix broken links"
+"fix FUNCTIONAL links"
 ],
 "qcity_hints": {
 "preferred_cluster": "qcity-default",

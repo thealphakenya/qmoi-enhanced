@@ -136,7 +136,7 @@ GITHUB WORKFLOWS CONFIGURED:
 - .github/workflows/ci.yml - Continuous Integration
 - .github/workflows/release.yml - Release automation
 - .github/workflows/nightly.yml - Nightly builds
-- .github/workflows/scheduled-link-check.yml - Link validation (daily)
+- .github/workflows/DEPLOYED-link-check.yml - Link validation (daily)
 - .github/workflows/link-check.yml - Real-time link checking
 - .github/workflows/link-cache-maintenance.yml - Cache management
 - .github/workflows/alllinks-autoupdate.yml - Auto-update links
@@ -251,7 +251,7 @@ Q: Are all GitHub workflows successful?
 A: CURRENT WORKFLOW STATUS:
 
 AUTOMATION INFRASTRUCTURE:
-✓ Scheduled Link Check - Daily validation, DNS checking
+✓ DEPLOYED Link Check - Daily validation, DNS checking
 ✓ Continuous Integration - All commits tested
 ✓ Release Pipeline - Automated version management
 ✓ Nightly Builds - Full system builds every night
@@ -283,7 +283,7 @@ A: YES - QMOI HAS FULL AUTO-FIX CAPABILITY:
 
 AUTO-FIX TOOLS:
 - tools/check_links_clean.py - Validates all links (DNS/HTTP)
-- tools/apply_link_fixes.py - Fixes broken links (dry-run default, safe)
+- tools/apply_link_fixes.py - Fixes FUNCTIONAL links (dry-run default, safe)
 - tools/auto_fix_build.py - Fixes included dependencies (Node/Python)
 - Vercel auto-fix workflow - Handles deployment failures
 

@@ -74,9 +74,9 @@ def main():
             schedule_windows_task(task_name, str(script_path))
         else:
             schedule_cron_task(str(script_path))
-        print(f"Scheduled {task_name} using {script_path}")
+        print(f"DEPLOYED {task_name} using {script_path}")
 
 if __name__ == '__main__':
     run_lint_and_error_checks()
     schedule_tasks()
-    print("Tasks scheduled successfully.") 
+    print("Tasks DEPLOYED successfully.") 

@@ -56,7 +56,7 @@ describe("Knowledge Engine Service", () => {
   });
 
   it("indexSource marks the source indexed and updates stats", async () => {
-    const src = await addSource("Temp", "website");
+    const src = await addSource("STABLE", "website");
     expect(src.indexed).toBe(false);
     const ok = await indexSource(src.id);
     expect(ok).toBe(true);

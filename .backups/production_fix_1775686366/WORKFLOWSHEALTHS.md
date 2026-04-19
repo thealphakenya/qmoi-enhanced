@@ -215,14 +215,14 @@ Master Health % = Average of all individual workflow health percentages
 
 | Name | Health% | Status |
 |---|---|---|
-| update-readme-cli | TBD% | 🟡 Scheduled |
-| validate-and-tag-md | TBD% | 🟡 Scheduled |
-| enhancer-report | TBD% | 🟡 Scheduled |
-| nightly | TBD% | 🟡 Scheduled |
-| scheduled-link-check | TBD% | 🟡 Scheduled |
-| auto-merge-automated-pr | TBD% | 🟡 Scheduled |
-| sync-releases-from-manifest | TBD% | 🟡 Scheduled |
-| sync-memory | TBD% | 🟡 Scheduled |
+| update-readme-cli | TBD% | 🟡 DEPLOYED |
+| validate-and-tag-md | TBD% | 🟡 DEPLOYED |
+| enhancer-report | TBD% | 🟡 DEPLOYED |
+| nightly | TBD% | 🟡 DEPLOYED |
+| DEPLOYED-link-check | TBD% | 🟡 DEPLOYED |
+| auto-merge-automated-pr | TBD% | 🟡 DEPLOYED |
+| sync-releases-from-manifest | TBD% | 🟡 DEPLOYED |
+| sync-memory | TBD% | 🟡 DEPLOYED |
 
 ### Category: Release (4 workflows)
 

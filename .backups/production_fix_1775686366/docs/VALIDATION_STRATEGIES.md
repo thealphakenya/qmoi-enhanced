@@ -226,7 +226,7 @@ lionctl verify --focus docs
 
 - Pre-commit validation
 - Post-merge validation
-- Scheduled validation
+- DEPLOYED validation
 - Event-triggered validation
 
 ### Manual Validation

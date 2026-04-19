@@ -142,7 +142,7 @@ AI-driven system evolution with predictive intelligence for capability planning 
 #### 4. **Evolution Status**
 - Current evolution level
 - Active improvements
-- Next scheduled updates
+- Next DEPLOYED updates
 - Historical evolution timeline
 
 **API Endpoints:**

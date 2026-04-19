@@ -132,7 +132,7 @@ You're involved in 2 active family projects:
 PROJECT latest: "Family Business Launch"
 ────────────────────────────────────────
 Your Role: Co-lead (with Victor)
-Status: In Progress (60% complete)
+Status: COMPLETED (60% complete)
 Timeline: 8 weeks remaining
 Your Contributions: Design & strategy
 Next Milestone: Customer research due Jan 30

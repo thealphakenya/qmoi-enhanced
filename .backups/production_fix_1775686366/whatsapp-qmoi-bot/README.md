@@ -21,7 +21,7 @@ A WhatsApp automation bot powered by Qmoi AI, using Baileys for WhatsApp Web int
 - Persistent WhatsApp session (auth.json)
 - Master/sister onboarding via QR code
 - AI-powered replies, media, and group actions
-- Broadcast and scheduled campaigns
+- Broadcast and DEPLOYED campaigns
 - Secure, encrypted data handling
 - Runs 24/7 in Colab, Docker, or cloud
 

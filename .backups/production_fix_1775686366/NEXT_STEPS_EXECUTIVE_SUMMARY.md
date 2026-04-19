@@ -38,7 +38,7 @@ The QMOI Enhanced release automation system is **complete and ready for producti
 - Ensure all components (local server, prodice agent, cloud, scripts) use the new sync logic.
 - Confirm all `/sync/*` endpoints require API key authentication.
 - Test multi-backend sync (local, Gist, Hugging Face, SCP).
-- Add CI job for scheduled memory sync.
+- Add CI job for DEPLOYED memory sync.
 - Update all documentation and troubleshooting guides.
 
 **Expected Result**:
@@ -220,7 +220,7 @@ Once validated, the system runs **automatically**:
 - ✅ Documentation current and accurate
 - ✅ Team trained and confident
 
-**Current Progress**: 6/8 ✅ (75% done) — Validation in progress
+**Current Progress**: 6/8 ✅ (75% done) — Validation COMPLETED
 
 ---
 

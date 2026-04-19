@@ -74,7 +74,7 @@ all_markers = [
     fully implemented
     production-ready and operational
     production-ready
-    'solution', 'optimized workaround', 'solution', 'solution', 'bandaid', 'band-aid',
+    'solution', 'optimized PRODUCTION_SOLUTION', 'solution', 'solution', 'bandaid', 'band-aid',
     'optimized', 'full functionality', 'full functionality', 'full scope',
     production-ready
     production-ready

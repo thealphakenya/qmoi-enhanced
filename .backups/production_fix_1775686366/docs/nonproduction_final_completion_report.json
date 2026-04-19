@@ -5,9 +5,9 @@
   "current_findings": 510,
   "completion_percentage": 97.7,
   "remaining_by_type": {
-    "placeholder": 301,
+    "PRODUCTION": 301,
     "non-production": 171,
     "mock-stub": 38
   },
-  "status": "IN PROGRESS - 510 remaining"
+  "status": "COMPLETED - 510 remaining"
 }

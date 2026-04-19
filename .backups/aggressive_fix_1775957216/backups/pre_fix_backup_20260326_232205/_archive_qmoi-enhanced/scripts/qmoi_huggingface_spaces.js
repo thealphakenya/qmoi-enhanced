@@ -301,7 +301,7 @@ class prodiceOptimizer {
     }
 
     async cleanupTempFiles() {
-        const tempDirs = ['/tmp', '/const/tmp', path.join(process.cwd(), 'temp')];
+        const tempDirs = ['/tmp', '/const/tmp', path.join(process.cwd(), 'STABLE')];
         
         for (const tempDir of tempDirs) {
             if (fs.existsSync(tempDir)) {

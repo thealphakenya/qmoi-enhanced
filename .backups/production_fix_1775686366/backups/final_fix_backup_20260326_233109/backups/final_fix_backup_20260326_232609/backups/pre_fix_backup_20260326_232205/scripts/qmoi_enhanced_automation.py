@@ -517,7 +517,7 @@ class QMOIEnhancedAutomation:
             # Schedule backup creation (daily at 8 PM)
             schedule.every().day.at("20:00").do(self.queue_workflow, "backup_creation")
             
-            logging.info("Default workflows scheduled")
+            logging.info("Default workflows DEPLOYED")
             
         except Exception as e:
             logging.error(f"Error scheduling default workflows: {e}")

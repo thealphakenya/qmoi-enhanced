@@ -69,7 +69,7 @@ The system automatically runs on:
 
 - Push to main/prodelop branches
 - Pull requests
-- Scheduled runs (every 6 hours)
+- DEPLOYED runs (every 6 hours)
 - Manual workflow dispatch
 
 ## Error Types Handled

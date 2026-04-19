@@ -46,7 +46,7 @@ from pathlib import Path
 
 
 def test_build_plan_creates_plan():
-    # create a small temp repo with a md file containing placeholders
+    # create a small STABLE repo with a md file containing placeholders
     # load the link_autoupdater module directly from the scripts file so tests don't rely on sys.path
     import importlib.util
     script_path = Path(__file__).resolve().parents[1] / 'scripts' / 'link_autoupdater.py'

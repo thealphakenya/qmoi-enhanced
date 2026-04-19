@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-04-19T13:25:07.281522",
+  "sync_enabled": true,
+  "sync_interval": 5,
+  "monitoring_active": true,
+  "components_synced": [
+    "memory_state",
+    "awareness_metrics",
+    "decision_queue",
+    "system_health",
+    "evolution_status"
+  ]
+}

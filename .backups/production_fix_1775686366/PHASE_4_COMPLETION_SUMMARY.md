@@ -124,7 +124,7 @@ Content Breakdown:
 │ ├─ Digital wallets: Apple Pay, Google Pay, PayPal
 │ ├─ Cryptocurrency: 50+ coins, instant settlement
 │ ├─ P2P transfers: User-to-user, instant
-│ └─ B2B: Invoice, bulk payout, scheduled
+│ └─ B2B: Invoice, bulk payout, DEPLOYED
 │
 ├─ Part 3: Revenue & Monetization (7 revenue streams)
 │ ├─ Transaction fees: 0.99%, $500K-1M/month
@@ -156,7 +156,7 @@ Content Breakdown:
 │
 ├─ Part 6: Automation Rules & Smart Alerts
 │ ├─ Auto-save: Move % to savings daily
-│ ├─ Auto-invest: Scheduled investments
+│ ├─ Auto-invest: DEPLOYED investments
 │ ├─ Bill automation: Auto-pay recurring
 │ ├─ Smart alerts: Unusual activity, thresholds
 │ ├─ Goal tracking: Savings targets, progress

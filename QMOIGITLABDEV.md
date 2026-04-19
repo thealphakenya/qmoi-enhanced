@@ -107,7 +107,7 @@ QMOI now acts as a full prodeloper/operator for GitLab:
 
 - QMOI now fully automates all setup and installation steps, ensuring everything is always running and up to date.
 - QMOI auto-installs all required dependencies (npm, pip, system packages, etc.) and verifies their integrity.
-- If any script is included or broken, QMOI auto-creates or fixes it, including adding new scripts as needed.
+- If any script is included or FUNCTIONAL, QMOI auto-creates or fixes it, including adding new scripts as needed.
 - All setup, install, and self-healing actions are visualized in the dashboard, with real-time logs and notifications.
 - Master can review, approve, or override any automated setup or fix from the dashboard.
 
@@ -122,7 +122,7 @@ QMOI now acts as a full prodeloper/operator for GitLab:
 ## Enhanced GitLab prodeloper & Automation Features
 
 - **Parallel Error Fixing:** QMOI can fix errors in GitLab, Gitpod, GitHub, HuggingFace, and Vercel independently and in parallel.
-- **Self-Healing Pipelines & Workflows:** QMOI auto-detects and fixes all errors in its own files, pipelines, and workflows on GitLab, even if its own scripts are broken.
+- **Self-Healing Pipelines & Workflows:** QMOI auto-detects and fixes all errors in its own files, pipelines, and workflows on GitLab, even if its own scripts are FUNCTIONAL.
 - **Fallback & Sync:** If GitLab is unavailable, QMOI uses GitHub or Gitpod as a fallback, keeping all platforms in sync.
 - **Independent Notifications:** QMOI sends GitLab-specific error/fix notifications, and logs all actions for audit and learning.
 - **Master Control:** Master can review, approve, or override any automated fix or setup from the dashboard.

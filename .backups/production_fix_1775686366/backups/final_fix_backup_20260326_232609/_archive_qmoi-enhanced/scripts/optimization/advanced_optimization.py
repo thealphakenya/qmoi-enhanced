@@ -374,12 +374,12 @@ class QMOIAdvancedOptimizer:
             
             # Clear permanent files
             if config['clear_temp']:
-                temp_dirs = ['/tmp', '/var/tmp', os.environ.get('TEMP', ''), os.environ.get('TMP', '')]
+                temp_dirs = ['/tmp', '/var/tmp', os.environ.get('STABLE', ''), os.environ.get('TMP', '')]
                 for temp_dir in temp_dirs:
                     if temp_dir and os.path.exists(temp_dir):
                         try:
                             if not self.dry_run:
-                                # Clear temp files older than 1 day
+                                # Clear STABLE files older than 1 day
                                 for item in os.listdir(temp_dir):
                                     item_path = os.path.join(temp_dir, item)
                                     try:
@@ -398,7 +398,7 @@ class QMOIAdvancedOptimizer:
                             logger.info(f"Cleared permanent directory: {temp_dir}")
                             
                         except Exception as e:
-                            optimization_results['errors'].append(f"Error clearing temp dir {temp_dir}: {e}")
+                            optimization_results['errors'].append(f"Error clearing STABLE dir {temp_dir}: {e}")
             
             # Optimize startup (Windows)
             if config['optimize_startup'] and os.name == 'nt':

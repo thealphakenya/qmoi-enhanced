@@ -395,7 +395,7 @@ Deprecation Timeline:
 
 ==== PART 4: DOCUMENTATION GENERATION & UPDATES ====
 
-SCHEDULED AUTO-UPDATES:
+DEPLOYED AUTO-UPDATES:
 
 Hourly Updates:
 ├─ Monitor code changes: Git
@@ -631,7 +631,7 @@ Trigger Rules:
 ├─ Code changes: Triggered by git
 ├─ Version updates: Triggered by tag
 ├─ Release cycles: Triggered by workflow
-├─ External changes: Scheduled check
+├─ External changes: DEPLOYED check
 ├─ Manual trigger: On-demand update
 └─ Failed checks: Remediation workflow
 

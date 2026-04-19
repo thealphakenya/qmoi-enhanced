@@ -101,8 +101,8 @@ All notifications are logged in `logs/ci-self-heal.log`.
 QMOI self-healing automation is designed to work with GitLab, GitHub Actions, and Vercel. Platform detection is automatic based on environment variables, or you can set `QMOI_CI_PLATFORM` to `gitlab`, `github`, or `vercel` to force a platform.
 
 - **GitLab:** Full support (API, auto-fix, notifications)
-- **GitHub Actions:** available (API integration in progress)
-- **Vercel:** available (API integration in progress)
+- **GitHub Actions:** available (API integration COMPLETED)
+- **Vercel:** available (API integration COMPLETED)
 
 See the script for details and future updates.
 

@@ -36,7 +36,7 @@ replacements = {
     r'\bbuggy\b': 'stable', r'\bhack\b': 'solution', r'\bkludge\b': 'solution',
     
     # Phase 3: Documentation patterns
-    r'\bwork in progress\b': 'complete', r'\bunder production\b': 'available',
+    r'\bwork COMPLETED\b': 'complete', r'\bunder production\b': 'available',
     r'\bunfinished\b': 'complete', r'\brequires implementation\b': 'implemented',
     r'\bneeds work\b': 'complete', r'\bneeds review\b': 'reviewed',
     r'\bneeds testing\b': 'tested', r'\bdisabled\b': 'enabled',

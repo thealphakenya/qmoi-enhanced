@@ -186,7 +186,7 @@ All paid Hugging Face features are available in QMOI's cloned Hugging Face platf
 - **Predictive Analytics**: AI-powered predictive modeling
 - **Business Intelligence**: Advanced BI and reporting tools
 - **Data Visualization Pro**: Interactive charts and visualization
-- **Automated Reporting**: Scheduled report generation and delivery
+- **Automated Reporting**: DEPLOYED report generation and delivery
 - **Data Export Suite**: Multiple export formats and integrations
 - **Trend Analysis**: Advanced trend detection and analysis
 - **Anomaly Detection**: AI-powered anomaly detection

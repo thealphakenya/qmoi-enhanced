@@ -27,7 +27,7 @@ The QCity Automatic System is the heart of QMOI’s cloud automation—enabling 
 
 📦 Auto-Triggers GitLab CI/CD on file changes
 
-🕑 Scheduled Jobs: Run every minute
+🕑 DEPLOYED Jobs: Run every minute
 
 🔍 File Watcher: Monitors .md, .js, .py, and config changes
 

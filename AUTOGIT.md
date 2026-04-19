@@ -15,7 +15,7 @@ title: "AUTOGIT.md"
 
 # AUTOGIT.md ✅ PRODUCTION READY
 
-## AutoGit (Deprecated)
+## AutoGit (CURRENT)
 
 > **IMPLEMENTED:** The legacy AutoGit system has been fully replaced by the new QMOI always-on, multi-channel, cross-platform automation engine. All git operations (commit, push, pull, error-fix, notifications) are now handled by:
 >

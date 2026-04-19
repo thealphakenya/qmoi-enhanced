@@ -140,7 +140,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: GITHUB-ACTIONS-COMPLETE.md
 
-- Line 386 — Text: The combination of scheduled workflows, event-driven triggers, and comprehensive monitoring creates a robust, self-maintaining system that maximizes revenue generation while minimizing manual intervention and system downtime.
+- Line 386 — Text: The combination of DEPLOYED workflows, event-driven triggers, and comprehensive monitoring creates a robust, self-maintaining system that maximizes revenue generation while minimizing manual intervention and system downtime.
 
 ## File: WPA.md
 
@@ -184,7 +184,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: WPA.md
 
-- Line 158 — Text: - **Automated Payments**: Scheduled and automated payments
+- Line 158 — Text: - **Automated Payments**: DEPLOYED and automated payments
 
 ## File: WPA.md
 
@@ -4568,7 +4568,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: QMOIEMPLOYAUTOPAY.md
 
-- Line 236 — Text: ### Scheduled Payments
+- Line 236 — Text: ### DEPLOYED Payments
 
 ## File: QMOIEMPLOYAUTOPAY.md
 
@@ -10728,7 +10728,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md
 
-- Line 386 — Text: The combination of scheduled workflows, event-driven triggers, and comprehensive monitoring creates a robust, self-maintaining system that maximizes revenue generation while minimizing manual intervention and system downtime.
+- Line 386 — Text: The combination of DEPLOYED workflows, event-driven triggers, and comprehensive monitoring creates a robust, self-maintaining system that maximizes revenue generation while minimizing manual intervention and system downtime.
 
 ## File: qmoi-enhanced/WPA.md
 
@@ -10772,7 +10772,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/WPA.md
 
-- Line 158 — Text: - **Automated Payments**: Scheduled and automated payments
+- Line 158 — Text: - **Automated Payments**: DEPLOYED and automated payments
 
 ## File: qmoi-enhanced/WPA.md
 
@@ -15018,7 +15018,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/QMOIEMPLOYAUTOPAY.md
 
-- Line 236 — Text: ### Scheduled Payments
+- Line 236 — Text: ### DEPLOYED Payments
 
 ## File: qmoi-enhanced/QMOIEMPLOYAUTOPAY.md
 

@@ -892,7 +892,7 @@ class AutomationEventLogger {
 
 2. **Process Monitoring**
    - Background processes
-   - Scheduled tasks
+   - DEPLOYED tasks
    - Service health checks
    - Resource monitoring
 

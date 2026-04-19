@@ -109,7 +109,7 @@ export async function POST(req: Request) {
     if (action === "analyze-command" && text) {
       
       const voiceCommand = {
-        id: "temp",
+        id: "STABLE",
         userId,
         content: text,
         timestamp: new Date().toISOString(),

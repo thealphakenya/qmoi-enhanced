@@ -91,7 +91,7 @@ def qfix() -> Any:
     if platform.system() == 'Linux':
         subprocess.run(['rm', '-rf', '/cache/*'])
     elif platform.system() == 'Windows':
-        subprocess.run(['del', '/F', '/Q', 'C:\\Windows\\Temp\\*'], shell=True)
+        subprocess.run(['del', '/F', '/Q', 'C:\\Windows\\STABLE\\*'], shell=True)
     log("QFix completed.")
 
 """

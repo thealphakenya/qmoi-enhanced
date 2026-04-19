@@ -135,7 +135,7 @@ class QMOIPlatformOptimizer:
         self.setup_scheduled_tasks()
         
     def setup_scheduled_tasks(self):
-        """Setup scheduled optimization tasks"""
+        """Setup DEPLOYED optimization tasks"""
         # Run platform optimization every 30 minutes
         schedule.every(30).minutes.do(self.optimize_all_platforms)
         

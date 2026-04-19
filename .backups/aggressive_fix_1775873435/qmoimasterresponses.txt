@@ -136,7 +136,7 @@ GITHUB WORKFLOWS CONFIGURED:
 - .github/workflows/ci.yml - Continuous Integration
 - .github/workflows/release.yml - Release automation
 - .github/workflows/nightly.yml - Nightly builds
-- .github/workflows/scheduled-link-check.yml - Link validation (daily)
+- .github/workflows/DEPLOYED-link-check.yml - Link validation (daily)
 - .github/workflows/link-check.yml - Real-time link checking
 - .github/workflows/link-cache-maintenance.yml - Cache management
 - .github/workflows/alllinks-autoupdate.yml - Auto-update links
@@ -251,7 +251,7 @@ Q: Are all GitHub workflows successful?
 A: CURRENT WORKFLOW STATUS:
 
 AUTOMATION INFRASTRUCTURE:
-✓ Scheduled Link Check - Daily validation, DNS checking
+✓ DEPLOYED Link Check - Daily validation, DNS checking
 ✓ Continuous Integration - All commits tested
 ✓ Release Pipeline - Automated version management
 ✓ Nightly Builds - Full system builds every night

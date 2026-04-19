@@ -221,7 +221,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
   };
 
   const setupDailyReportSchedule = () => {
-    // Generate reports at scheduled times
+    // Generate reports at DEPLOYED times
     const generateScheduledReports = async () => {
       const now = new Date();
       const hour = now.getHours();

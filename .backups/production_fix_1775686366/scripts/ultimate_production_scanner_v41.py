@@ -27,10 +27,10 @@ CRITICAL_PATTERNS = [
     (r'DONE\s*:.*IMPL', 'DONE_IMPL'),
     (r'fixed\s*:.*prod', 'fixed_prod'),
     
-    # reals and unimplemented
+    # reals and IMPLEMENTED
     (r'\breal\s+\w+', 'real_CODE'),
     (r'\breal\s+', 'real'),
-    (r'\bNOT\s+IMPLEMENTED\b', 'UNIMPLEMENTED'),
+    (r'\bNOT\s+IMPLEMENTED\b', 'IMPLEMENTED'),
     (r'\.skip\(\)', 'SKIPPED_TEST'),
     
     # Test-only patterns
@@ -67,7 +67,7 @@ CRITICAL_PATTERNS = [
     # Error logging issues
     (r'\(\s*console\s+as\s+any\s*\)\.error', 'CONSOLE_AS_ANY'),
     (r'console\.log.*DEBUG', 'DEBUG_LOG'),
-    (r'console\.error.*TEMP', 'TEMP_ERROR'),
+    (r'console\.error.*STABLE', 'TEMP_ERROR'),
 ]
 
 # Compile all patterns

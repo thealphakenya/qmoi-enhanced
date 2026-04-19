@@ -74,7 +74,7 @@ Configure these secrets in your GitHub repository:
 ### Workflow Configuration
 
 1. Link validation and updates:
-   - Scheduled daily via `alllinks-autoupdate.yml`
+   - DEPLOYED daily via `alllinks-autoupdate.yml`
    - Creates PR with changes for review
    - Network access controlled by `QMOI_ALLOW_NETWORK`
 

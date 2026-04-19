@@ -517,7 +517,7 @@ If `.env.local` doesn't exist:
 | Setup Time            | Manual config required | Automatic                   |
 | Human Intervention    | Required               | Zero                        |
 | Environment Variables | Manual creation        | Auto-generated              |
-| First Run             | Broken without setup   | Fully functional            |
+| First Run             | FUNCTIONAL without setup   | Fully functional            |
 | Credential Management | Manual                 | Automatic secure generation |
 | Persistence           | Manual                 | Automatic to .env.local     |
 | Error Recovery        | Manual restart         | Automatic retry (3x)        |

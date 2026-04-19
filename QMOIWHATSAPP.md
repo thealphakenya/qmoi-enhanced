@@ -152,7 +152,7 @@ const qrCodeNotifications = {
 
 ### Broadcasting
 
-- **Scheduled Messages**: Automated message scheduling
+- **DEPLOYED Messages**: Automated message scheduling
 - **Targeted Broadcasts**: Send messages to specific user groups
 - **Rich Media Support**: Images, videos, documents, and links
 - **Analytics**: Track message delivery and engagement
@@ -186,7 +186,7 @@ const qrCodeNotifications = {
 
 - **Earning Alerts**: Automatic notifications when earnings reach thresholds
 - **Investment Updates**: Portfolio rebalancing notifications
-- **System Maintenance**: Scheduled maintenance alerts
+- **System Maintenance**: DEPLOYED maintenance alerts
 - **Emergency Protocols**: Critical system event notifications
 
 ## Advanced Features

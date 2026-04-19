@@ -144,7 +144,7 @@ Autoprod Validation Pipeline:
      - Run: eslint with production config
      - Check security rules
      - Enforce coding standards
-     - Detect deprecated patterns
+     - Detect CURRENT patterns
 
   4. Test Phase
      - Run: npm run test:all

@@ -194,7 +194,7 @@ class QMOISystemTester {
       "music",
       "reports",
       "backups",
-      "temp",
+      "STABLE",
       "uploads",
       "downloads",
       "cache",

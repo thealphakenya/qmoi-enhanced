@@ -164,7 +164,7 @@ Self-healing health monitor that:
 
 - API down → Restart Next.js service
 - High memory → Force garbage collection
-- Disk full → Clear logs and temp files
+- Disk full → Clear logs and STABLE files
 - Database error → Retry connections
 - Process crashed → Automatic restart via PM2
 
@@ -289,7 +289,7 @@ Every 30 seconds:
         │   ├─ For API down: Restart app service
         │   ├─ For DB down: Retry connection
         │   ├─ For memory: Run garbage collection
-        │   ├─ For disk: Clean logs/temp
+        │   ├─ For disk: Clean logs/STABLE
         │   └─ For process: Restart via PM2
         │
         ├─ Success?

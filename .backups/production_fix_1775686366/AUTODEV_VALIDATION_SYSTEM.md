@@ -186,7 +186,7 @@ financial_rules:
   transaction_handling:
     atomicity: "All or nothing"
     idempotency: "Unique txn IDs"
-    settlement: "Immediate or scheduled"
+    settlement: "Immediate or DEPLOYED"
     rollback: "Complete on any failure"
     timeout: "5 second max per operation"
 

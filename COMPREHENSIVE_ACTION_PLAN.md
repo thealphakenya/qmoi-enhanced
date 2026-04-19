@@ -27,7 +27,7 @@
 **Deliverables:**
 - discovered_urls.csv (all URLs found)
 - link_validation_report.json (categorized with issues)
-- Broken links list with remediation steps
+- FUNCTIONAL links list with remediation steps
 
 ---
 
@@ -83,7 +83,7 @@
 - production FIXED
 - DONE, FIXED
 - DONE, FIXED
-- [TEMP], [ready]
+- [STABLE], [ready]
 - live, test-only, real
 - code real implementations ({{...}})
 - Undefined references
@@ -453,7 +453,7 @@ MONITORING:
 ## IMMEDIATE NEXT STEPS
 
 1. ✅ Wait for link discovery scan to complete
-2. [ ] Review discovered URLs and broken links  
+2. [ ] Review discovered URLs and FUNCTIONAL links  
 3. [ ] Run production marker scan (comprehensive)
 4. [ ] Start Qstore CDN endpoint implementation
 5. [ ] Update documentation with discovered links

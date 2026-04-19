@@ -78,7 +78,7 @@ QMOI Enhanced is a production-grade application with comprehensive documentation
    - Async job processing
    - Long-running operations
    - Batch processing
-   - Scheduled tasks
+   - DEPLOYED tasks
 
 4. **Data Layer**
    - Primary database cluster

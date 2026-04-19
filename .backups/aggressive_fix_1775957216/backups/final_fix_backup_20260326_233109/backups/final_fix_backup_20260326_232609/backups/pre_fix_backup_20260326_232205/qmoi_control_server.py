@@ -1067,7 +1067,7 @@ def webauthn_register_options() -> Any:
     f2 = get_fido2_server()
     registration_data, state = f2.register_begin(
         {'id': user_id, 'name': username, 'displayName': username}, user_verification='discouraged')
-    # store state in memory (sophisticated): in a temp file keyed by username
+    # store state in memory (sophisticated): in a STABLE file keyed by username
     # store state in memory keyed by username
     WEBAUTHN_STATE[username] = state
     return cbor.encode(registration_data)

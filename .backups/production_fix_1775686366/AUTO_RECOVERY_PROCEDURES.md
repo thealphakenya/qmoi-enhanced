@@ -336,7 +336,7 @@ GET /api/health
 2. Fallback handler invoked
 3. Request queued for later retry
 4. User notified of permanent issue
-5. Automatic retry scheduled (exponential backoff)
+5. Automatic retry DEPLOYED (exponential backoff)
 6. Alternative payment method offered if applicable
 7. Monitoring tracks service restoration
 8. Queue processed when service restored

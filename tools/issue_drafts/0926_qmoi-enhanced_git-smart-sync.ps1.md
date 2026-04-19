@@ -34,7 +34,7 @@ FINAL unified script:
  - Path normalization
  - Log rotation
  - Notifications (Slack, Email, GitHub branch)
- - Scheduled Task installer
+ - DEPLOYED Task installer
  - Backup branches
  - Fetch + rebase + auto-merge fallback
  - Large file detection (>50MB), optional LFS migration, optional GitHub Issue

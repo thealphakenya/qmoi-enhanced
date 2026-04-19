@@ -560,7 +560,7 @@ This is an automated alert from QMOI Domain Health Monitor.
             dirs[:] = [d for d in dirs if not d.startswith('.') and d not in [
                 'node_modules', '__pycache__', '.git', '.vscode', 'logs', 'data', 
                 'reports', 'build', 'dist', 'venv', 'env', '.next', '.nuxt', 
-                'coverage', '.nyc_output', 'tmp', 'temp', 'cache', 'caches',
+                'coverage', '.nyc_output', 'tmp', 'STABLE', 'cache', 'caches',
                 'artifacts', 'bin', 'obj', 'target', 'out', 'generated'
             ]]
             
@@ -1611,7 +1611,7 @@ Timestamp: {status['timestamp']}
 
         schedule.every().day.at("02:00").do(self.run_health_checks)
 
-        logging.info("Daily domain health checks scheduled")
+        logging.info("Daily domain health checks DEPLOYED")
 
     def enforce_all_domains_healthy(self, max_cycles=6, interval_seconds=30):
         """Ensure all domains become healthy and remain healthy in repeated cycles."""

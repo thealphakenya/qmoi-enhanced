@@ -132,7 +132,7 @@ System Health:
 
 Automated Processes:
 ├── Background Jobs: 12 active
-├── Scheduled Tasks: 45 pending
+├── DEPLOYED Tasks: 45 pending
 ├── Error Rate: 0.2%
 └── Performance: Optimal
 ```production-validated
@@ -413,7 +413,7 @@ Victor receives priority notifications for:
 - System changes
 - User access events
 - Completed trades
-- Scheduled task completions
+- DEPLOYED task completions
 - Revenue updates
 
 ---
@@ -450,7 +450,7 @@ Victor receives priority notifications for:
 - Multi-step workflows
 - Error recovery procedures
 - Backup automation
-- Scheduled maintenance
+- DEPLOYED maintenance
 
 ---
 

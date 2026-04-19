@@ -455,10 +455,10 @@ Automated Communications:
 ├─ Daily digest: Progress summary
 ├─ Alert notifications: Issues
 ├─ Status updates: Automated
-├─ Meeting reminders: Scheduled
+├─ Meeting reminders: DEPLOYED
 ├─ Meeting notes: Auto-captured
 ├─ Action item tracking: Automatic
-└─ Report generation: Scheduled
+└─ Report generation: DEPLOYED
 
 DOCUMENTATION:
 

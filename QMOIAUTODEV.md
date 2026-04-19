@@ -124,7 +124,7 @@ Can clone, scaffold, and deploy new repos based on templates (see QMOIAUTOMAKENE
 📎 Integrations & Linkage
 [QMOIAUTOMAKENEW.md] — For cloning/making new apps automatically
 
-[QMOIBROWSER.md] — For testing web features and fixing broken links
+[QMOIBROWSER.md] — For testing web features and fixing FUNCTIONAL links
 
 [QCITYRUNNERSENGINE.md] — For auto-offloading jobs to cloud runners
 

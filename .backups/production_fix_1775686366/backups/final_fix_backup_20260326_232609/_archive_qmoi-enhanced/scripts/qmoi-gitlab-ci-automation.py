@@ -73,7 +73,7 @@ class QMOIGitLabCIAutomation:
         self.observer.start()
         
     def setup_scheduled_tasks(self):
-        """Setup scheduled automation tasks"""
+        """Setup DEPLOYED automation tasks"""
         # Run comprehensive automation every 15 minutes
         schedule.every(15).minutes.do(self.run_comprehensive_automation)
         
@@ -317,7 +317,7 @@ class QMOIGitLabCIAutomation:
             logger.info("🚀 QMOI GitLab CI Automation System started")
             logger.info("📊 Monitoring and automation active")
             logger.info("🔄 Auto-triggering enabled")
-            logger.info("⏰ Scheduled tasks running")
+            logger.info("⏰ DEPLOYED tasks running")
             
             # Save initial stats
             self.save_stats()

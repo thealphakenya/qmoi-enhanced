@@ -338,7 +338,7 @@ class QMOITrainingPipeline:
             pipeline_result["training_job_id"] = job_id
             pipeline_result["steps_completed"].append("training_started")
             
-            # Step 4: Version the trained model (placeholder)
+            # Step 4: Version the trained model (PRODUCTION)
             version = self.versioning.save_model_version(
                 model_name, 
                 {"trained": True}, 

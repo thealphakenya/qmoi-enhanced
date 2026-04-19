@@ -58,7 +58,7 @@ def __init__(self, base_path: str = ".") -> Any:
         self.base_path = Path(base_path)
         self.db_path = self.base_path / "data" / "evolution_reliability.db"
         self.backup_path = self.base_path / "backups" / "evolution_safeguards"
-        self.temp_path = self.base_path / "temp" / "evolution_atomic"
+        self.temp_path = self.base_path / "STABLE" / "evolution_atomic"
 
         # Create directories
         self.backup_path.mkdir(parents=True, exist_ok=True)
@@ -255,11 +255,11 @@ def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
         try:
             for operation in transaction.operations:
                 if operation.get("type") == "file_modify":
-                    # Create temp file first
+                    # Create STABLE file first
                     temp_file = self.temp_path / f"temp_{transaction.id}_{hashlib.md5(str(operation).encode()).hexdigest()[:8]}"
                     temp_files.append(temp_file)
 
-                    # Apply changes to temp file
+                    # Apply changes to STABLE file
                     success = self._apply_operation_to_temp(operation, temp_file)
                     if not success:
                         return False
@@ -277,7 +277,7 @@ def _execute_operations_atomic(self, transaction: EvolutionTransaction) -> bool:
             logger.error(f"Atomic execution failed: {e}")
             return False
         finally:
-            # Clean up temp files
+            # Clean up STABLE files
             for temp_file in temp_files:
                 if temp_file.exists():
                     temp_file.unlink()
@@ -301,7 +301,7 @@ def _apply_operation_to_temp(self, operation: Dict[str, Any], temp_file: Path) -
             # Apply modifications
             modified_content = self._apply_content_modifications(content, operation)
 
-            # Write to temp file
+            # Write to STABLE file
             with open(temp_file, 'w', encoding='utf-8') as f:
                 f.write(modified_content)
 

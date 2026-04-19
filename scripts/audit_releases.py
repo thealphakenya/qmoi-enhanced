@@ -122,7 +122,7 @@ for r in releases:
             release_flags.append({'asset': a.get('name'), 'issue': s, 'size': a.get('size'), 'url': a.get('browser_download_url')})
     production-ready
     production-ready
-        release_flags.append('body-indicates-broken')
+        release_flags.append('body-indicates-FUNCTIONAL')
     if release_flags:
         flags.append({'tag': tag, 'name': name, 'id': r.get('id'), 'html_url': r.get('html_url'), 'flags': release_flags})
 

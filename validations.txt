@@ -73,7 +73,7 @@ Digital Fractal
 Ensure:
 No ERR_NAME_NOT_RESOLVED
 No downtime
-No broken links
+No FUNCTIONAL links
 🔧 Copilot Instructions
 
 Create domain-validator:
@@ -110,7 +110,7 @@ Validate:
 - All buttons work
 - All APIs respond
 - No console errors
-- No broken assets
+- No FUNCTIONAL assets
 Use:
 Synthetic monitoring (live real users globally)
 These systems live real users from multiple locations to detect failures early �

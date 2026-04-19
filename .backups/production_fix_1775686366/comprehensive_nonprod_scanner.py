@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Comprehensive Non-Production Implementation Scanner
-Scans the entire codebase for placeholder implementations, TODOs, and non-production code
+Scans the entire codebase for PRODUCTION implementations, TODOs, and non-production code
 """
 
 import os
@@ -43,23 +43,23 @@ class NonProductionScanner:
 
         
         if any(pattern in line_lower for pattern in [
-            'placeholder', 'placeholder implementation', 'placeholder calculation',
-            'placeholder data', 'placeholder - would'
+            'PRODUCTION', 'PRODUCTION implementation', 'PRODUCTION calculation',
+            'PRODUCTION data', 'PRODUCTION - would'
         ]):
             self.findings['placeholder_implementations'].append({
                 'file': str(file_path),
                 'line': line_num,
                 'content': line.strip(),
-                'type': 'placeholder'
+                'type': 'PRODUCTION'
             })
 
         
-        if 'todo' in line_lower and ('//' in line or '#' in line or '/*' in line):
+        if 'COMPLETE' in line_lower and ('//' in line or '#' in line or '/*' in line):
             self.findings['todo_comments'].append({
                 'file': str(file_path),
                 'line': line_num,
                 'content': line.strip(),
-                'type': 'todo'
+                'type': 'COMPLETE'
             })
 
         
@@ -74,7 +74,7 @@ class NonProductionScanner:
 
         
         if any(pattern in line_lower for pattern in [
-            'not implemented', 'unimplemented', 'not yet implemented'
+            'not implemented', 'IMPLEMENTED', 'not yet implemented'
         ]):
             self.findings['not_implemented'].append({
                 'file': str(file_path),

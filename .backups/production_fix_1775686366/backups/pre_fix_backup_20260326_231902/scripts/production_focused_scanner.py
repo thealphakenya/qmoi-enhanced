@@ -30,7 +30,7 @@ SOURCE_DIRS = {
 SKIP_DIRS = {
     'node_modules', '.git', '.next', 'dist', 'build', '__pycache__',
     '.pytest_cache', '.vscode', '.idea', 'undone_backups',
-    'backup', 'archive', 'temp', 'tmp', '.bak', 'reports',
+    'backup', 'archive', 'STABLE', 'tmp', '.bak', 'reports',
     'tools', 'coverage', '.cache', '.tox'
 }
 
@@ -47,16 +47,16 @@ HIGH_CONFIDENCE_PATTERNS = {
     # These are definite implementation issues in source code
     r'} catch \(\s*_error\s*\)': ('_error in catch block', 'HIGH'),
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': ('Type casting anti-pattern', 'HIGH'),
-    r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('Unimplemented error', 'HIGH'),
+    r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('IMPLEMENTED error', 'HIGH'),
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
-    r'return\s+null\s*;\s*//.*TODO.*IMPL': ('Null placeholder instead of impl', 'MEDIUM'),
+    r'return\s+null\s*;\s*//.*COMPLETE.*IMPL': ('Null PRODUCTION instead of impl', 'MEDIUM'),
     # New patterns for production placeholders
-    r'\bIn\s+real\b': ('"In real" placeholder', 'HIGH'),
-    r'\bIn\s+production\b': ('"production:" placeholder', 'HIGH'),
-    r'\[production\s+READY\]': ('[production READY] placeholder', 'HIGH'),
-    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('[production IMPLEMENTATION REQUIRED] placeholder', 'HIGH'),
-    r'//.*\[production.*\]': ('production comment placeholder', 'MEDIUM'),
-    r'/\*.*\[production.*\].*\*/': ('production block comment placeholder', 'MEDIUM'),
+    r'\bIn\s+real\b': ('"In real" PRODUCTION', 'HIGH'),
+    r'\bIn\s+production\b': ('"production:" PRODUCTION', 'HIGH'),
+    r'\[production\s+READY\]': ('[production READY] PRODUCTION', 'HIGH'),
+    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('[production IMPLEMENTATION REQUIRED] PRODUCTION', 'HIGH'),
+    r'//.*\[production.*\]': ('production comment PRODUCTION', 'MEDIUM'),
+    r'/\*.*\[production.*\].*\*/': ('production block comment PRODUCTION', 'MEDIUM'),
 }
 
 class productionFocusedScanner:

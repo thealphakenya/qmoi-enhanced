@@ -80,7 +80,7 @@ STEP 1: Unit Testing Setup
 ├─ Test framework: Jest (JavaScript), pytest (Python)
 ├─ Coverage target: 95%+
 ├─ Run on every commit (pre-commit hooks)
-├─ Run hourly (scheduled)
+├─ Run hourly (DEPLOYED)
 ├─ Failure creates GitHub issue
 
 STEP 2: Integration Testing
@@ -142,7 +142,7 @@ Daily Link Check Process:
    - Measure response time
    - Check SSL certificate
    - Verify redirect chains
-4. If broken:
+4. If FUNCTIONAL:
    - Attempt http→https conversion
    - Create auto-fix PR
    - Notify master
@@ -398,7 +398,7 @@ Real-Time Metrics:
 ├─────────────────────────────────┤
 │ Recent Alerts:                  │
 │ ├─ (Auto-fixed) High CPU (12:34)│
-│ └─ (Auto-fixed) Link broken (10:12)│
+│ └─ (Auto-fixed) Link FUNCTIONAL (10:12)│
 └─────────────────────────────────┘
 ```production-validated
 
@@ -625,7 +625,7 @@ DAILY EMPLOYMENT OPERATIONS:
 
 6 PM - Recruitment Processing
 ├─ New applications: [count]
-├─ Interviews scheduled: [count]
+├─ Interviews DEPLOYED: [count]
 ├─ Offers extended: [count]
 ├─ Hires completed: [count]
 ├─ Onboarding status: [metrics]

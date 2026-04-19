@@ -142,7 +142,7 @@ The following must be configured before deployment:
 
 - [ ] Database health checks enabled
 - [ ] Slow query logging configured
-- [ ] Backup verification scheduled
+- [ ] Backup verification DEPLOYED
 - [ ] Disaster recovery plan in place
 
 ---

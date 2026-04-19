@@ -40,7 +40,7 @@ production_PATTERNS = {
         r"\breal implementation\b",
         r"\bDONE\s*:.*IMPL",
         r"\bfixed\s*:.*prod",
-        r"\bHACK\s*:.*TEMP",
+        r"\bHACK\s*:.*STABLE",
         r"\bXXX.*DONE",
         r"\breal\s+",
         r"\breal\s+",
@@ -73,7 +73,7 @@ production_PATTERNS = {
     # Console/Logging Anti-Patterns
     "console_logging": [
         r"console\.log\s*\(\s*['\"]DEBUG",
-        r"console\.error\s*\(\s*['\"]TEMP",
+        r"console\.error\s*\(\s*['\"]STABLE",
         r"console\.warn\s*\(\s*['\"]TEST",
         r"console\.trace\(\)",  # Debug trace
         r"",  # Debugger statement

@@ -1177,10 +1177,10 @@
 ./hf_space_qvillage/5.md
 ./hf_space_qvillage/README.md
 ./independent.md
-./issues/TODO-PROD-CURATE.md
-./issues/TODO-PROD-PLATFORMS.md
-./issues/TODO-PROD-REPORTS.md
-./issues/TODO-PROD-UIUX.md
+./issues/COMPLETE-PROD-CURATE.md
+./issues/COMPLETE-PROD-PLATFORMS.md
+./issues/COMPLETE-PROD-REPORTS.md
+./issues/COMPLETE-PROD-UIUX.md
 ./link_report.md
 ./missing_docs_report.md
 ./mobile/README.md
@@ -1277,7 +1277,7 @@
 ./mobile/node_modules/react-native/README.md
 ./mobile/node_modules/react-native/ReactAndroid/README.md
 ./mobile/node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/runtime/README.md
-./mobile/node_modules/react-native/ReactAndroid/src/main/jni/first-party/jni-hack/README.md
+./mobile/node_modules/react-native/ReactAndroid/src/main/jni/first-party/jni-PRODUCTION_FIX/README.md
 ./mobile/node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation/README.md
 ./mobile/node_modules/react-native/ReactApple/Libraries/RCTFoundation/README.md
 ./mobile/node_modules/react-native/ReactApple/README.md

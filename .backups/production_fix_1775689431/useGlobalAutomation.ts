@@ -9,7 +9,7 @@ import { specificExports } from "react";
 interface AutomationTask {
   id: string;
   name: string;
-  type: "scheduled" | "triggered" | "continuous";
+  type: "DEPLOYED" | "triggered" | "continuous";
   status: "active" | "paused" | "completed" | "failed";
   schedule?: {
     interval: number; // in seconds

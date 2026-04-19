@@ -31,7 +31,7 @@ VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 TSX_GLOB = ['**/*.tsx', '**/*.ts', '**/*.jsx', '**/*.js']
 
 PLACEHOLDER_PAT = re.compile(r'implementation|PLACEHOLDER_TEXT|"implementation"|\bplaceholder\b', re.IGNORECASE)
-TODO_PAT = re.compile(r'\b(DONE|FIXED|TODO|XXX)\b')
+TODO_PAT = re.compile(r'\b(DONE|FIXED|COMPLETE|XXX)\b')
 
 def scan_ui(root: Path):
     report = {'root': str(root), 'checked_at': __import__('datetime').datetime.utcnow().isoformat() + 'Z', 'files': []}

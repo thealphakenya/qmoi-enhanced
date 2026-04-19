@@ -198,7 +198,7 @@ class CentralLinkValidator:
     # Directories to exclude
     EXCLUDE_DIRS = {
         '.git', 'node_modules', '.next', '.venv', '__pycache__',
-        '.backup', '_archive', 'temp', 'build', 'dist'
+        '.backup', '_archive', 'STABLE', 'build', 'dist'
     }
     
     def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):

@@ -370,7 +370,7 @@ python tools/monitor_hf_costs.py --save-report
 
 1. [ ] Create HF Space production repo
 2. [ ] Update CI/CD secrets (prod env)
-3. [ ] Enable scheduled sync workflow
+3. [ ] Enable DEPLOYED sync workflow
 4. [ ] Monitor first 24h sync cycles
 
 ### Phase 4: Monitoring & Optimization (ongoing)

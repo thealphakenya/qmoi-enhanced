@@ -69,7 +69,7 @@ This file contains all domains and links used in the QMOI system, including thei
 - All domains and links are auto-checked and updated in real time by QMOI automation scripts.
 - If any link fails, QMOI will immediately attempt to fix it using ngrok, alternate providers, or auto-register and host a new domain.
 - QMOI can automatically register domains, set up hosting, and configure tunnels (ngrok, Cloudflare, etc.) for QCity and all apps, with no human intervention.
-- All links are autotested for validity and usage; broken links are auto-fixed or replaced using fallback (ngrok, alternate providers).
+- All links are autotested for validity and usage; FUNCTIONAL links are auto-fixed or replaced using fallback (ngrok, alternate providers).
 - Usage and platform details are tracked for every domain, including last checked date and status.
 - QMOI ensures all download links are valid and working for every app/platform, and auto-fixes any issues detected.
 - QMOI runs periodic autotests to verify all links and domains, updating this file in real time with the latest working links and details.
@@ -77,7 +77,7 @@ This file contains all domains and links used in the QMOI system, including thei
 
 - All domains and links are auto-checked and updated in real time by QMOI automation scripts.
 - QMOI can register, host, and update domains automatically using any provider (Freenom, Namecheap, GoDaddy, etc.), with no human intervention required.
-- All links are tested for validity and usage; broken links are auto-fixed or replaced using fallback (ngrok, alternate providers).
+- All links are tested for validity and usage; FUNCTIONAL links are auto-fixed or replaced using fallback (ngrok, alternate providers).
 - Usage and platform details are tracked for every domain, including last checked date and status.
 - This file is referenced in ALLMDFILESREFS.md and auto-updated in real time.
 - QMOI ensures all download links are valid and working for every app/platform, and auto-fixes any issues detected.

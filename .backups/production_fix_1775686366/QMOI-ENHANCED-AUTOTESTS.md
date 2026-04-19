@@ -356,7 +356,7 @@ The QMOI autotest system automatically:
 - CI/CD pipeline
 - Pull request validation
 - Release validation
-- Scheduled maintenance
+- DEPLOYED maintenance
 
 ## Features
 

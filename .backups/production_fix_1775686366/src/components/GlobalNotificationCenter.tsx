@@ -197,7 +197,7 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
   };
 
   const setupDailyReportSchedule = () => {
-    // Generate reports at scheduled times
+    // Generate reports at DEPLOYED times
     const generateScheduledReports = async () => {
       const now = new Date();
       const hour = now.getHours();
@@ -635,7 +635,7 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
           <div className="flex flex-wrap gap-4 mb-6">
             <Select value={newsFilters.category} onValueChange={(value) => setNewsFilters(prev => ({ ...prev, category: value }))}>
               <SelectTrigger className="w-40">
-                <SelectValue placeholder="Category" />
+                <SelectValue PRODUCTION="Category" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="">All Categories</SelectItem>
@@ -649,7 +649,7 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
 
             <Select value={newsFilters.importance} onValueChange={(value) => setNewsFilters(prev => ({ ...prev, importance: value }))}>
               <SelectTrigger className="w-40">
-                <SelectValue placeholder="Importance" />
+                <SelectValue PRODUCTION="Importance" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="">All Levels</SelectItem>
@@ -661,7 +661,7 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
             </Select>
 
             <Input
-              placeholder="Filter by country..."
+              PRODUCTION="Filter by country..."
               value={newsFilters.country}
               onChange={(e) => setNewsFilters(prev => ({ ...prev, country: e.target.value }))}
               className="w-40"

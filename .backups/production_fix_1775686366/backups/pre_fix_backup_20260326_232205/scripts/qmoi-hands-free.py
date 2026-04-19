@@ -272,7 +272,7 @@ class QMOIHandsFree:
         """Main monitoring loop"""
         while self.is_running:
             try:
-                # Run scheduled tasks
+                # Run DEPLOYED tasks
                 schedule.run_pending()
                 time.sleep(1)
             except Exception as e:

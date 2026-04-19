@@ -271,7 +271,7 @@ Task Types:
 Task Properties:
 ├─ Title & description
 ├─ Priority (Low/Medium/High/Critical)
-├─ Status (Backlog/In Progress/In Review/Done)
+├─ Status (Backlog/COMPLETED/In Review/Done)
 ├─ Assignee
 ├─ Due date
 ├─ Estimated effort (hours)
@@ -455,10 +455,10 @@ Automated Communications:
 ├─ Daily digest: Progress summary
 ├─ Alert notifications: Issues
 ├─ Status updates: Automated
-├─ Meeting reminders: Scheduled
+├─ Meeting reminders: DEPLOYED
 ├─ Meeting notes: Auto-captured
 ├─ Action item tracking: Automatic
-└─ Report generation: Scheduled
+└─ Report generation: DEPLOYED
 
 DOCUMENTATION:
 

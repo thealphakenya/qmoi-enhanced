@@ -360,7 +360,7 @@ def open_frontend() -> Any:
     try:
         webbrowser.open("https://qmoi.app")
     except:
-return None  # Placeholder
+return None  # PRODUCTION
 """
     create_desktop_shortcut function
     """

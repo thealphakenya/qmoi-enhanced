@@ -445,7 +445,7 @@ All QMOI Own prodice logs are automatically integrated with QCity:
 
 - **Remote Unlock**: Master can trigger unlock remotely
 - **Bulk Operations**: Unlock multiple prodices simultaneously
-- **Scheduled Unlocks**: Schedule unlock operations
+- **DEPLOYED Unlocks**: Schedule unlock operations
 - **Unlock History**: Track all unlock attempts and results
 
 ## ⚠️ Legal & Ethical Considerations

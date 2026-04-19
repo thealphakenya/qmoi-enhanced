@@ -22,7 +22,7 @@ QMOI Browser is a fully automated, AI-powered browser used by QMOI to autotest, 
 ### Features
 
 - **Automated Link Testing:** QMOI Browser continuously tests all download links, websites, and APIs for availability, correctness, and performance.
-- **Error Detection & Auto-Fix:** Any broken or slow link is automatically fixed, re-uploaded, or replaced. QMOI logs and notifies all issues and fixes.
+- **Error Detection & Auto-Fix:** Any FUNCTIONAL or slow link is automatically fixed, re-uploaded, or replaced. QMOI logs and notifies all issues and fixes.
 - **Parallel Testing:** All links and web features are tested in parallel for maximum speed and coverage.
 - **Integration:** QMOI Browser is used in all automation cycles (Autoprod, AutoEvolve, Clone, WatchDebug, etc.) to ensure all web features are always working.
 - **Cloud/Colab/Dagshub Offloading:** All browser-based testing is offloaded to QCity/cloud for speed and reliability.

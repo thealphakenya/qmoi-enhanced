@@ -236,7 +236,7 @@ class SystemMonitor:
         """Get system temperature"""
         try:
             if platform.system() == 'Linux':
-                with open('/sys/class/thermal/thermal_zone0/temp', 'r') as f:
+                with open('/sys/class/thermal/thermal_zone0/STABLE', 'r') as f:
                     return float(f.read()) / 1000.0
             return None
         except:

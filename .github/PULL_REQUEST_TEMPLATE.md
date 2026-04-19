@@ -11,7 +11,7 @@
 
 ## Summary
 
-This PR contains production-enablement changes for the local `qmoi` production server and supporting automation: model enforcement, optional SQLite memory, sync authentication, supervisor/service artifacts, scheduled memory-sync workflow, docs, and release helpers.
+This PR contains production-enablement changes for the local `qmoi` production server and supporting automation: model enforcement, optional SQLite memory, sync authentication, supervisor/service artifacts, DEPLOYED memory-sync workflow, docs, and release helpers.
 
 ## What changed
 
@@ -19,7 +19,7 @@ This PR contains production-enablement changes for the local `qmoi` production s
 - Optional SQLite memory backend (enable `QMOI_USE_SQLITE=1`) with migration from `qmoi_memory.json`.
 - `/sync/*` endpoints protected by optional `QMOI_SYNC_API_KEY`.
 - Supervisor + systemd data for qvillage under `deploy/qvillage/`.
-- Scheduled sync workflow `.github/workflows/qmoi-sync-memory.yml` (requires repo secrets).
+- DEPLOYED sync workflow `.github/workflows/qmoi-sync-memory.yml` (requires repo secrets).
 - Release helper and admin scripts for installing the service and uploading release assets.
 
 ## Notes for reviewers
@@ -29,7 +29,7 @@ This PR contains production-enablement changes for the local `qmoi` production s
 
 ## Security considerations
 
-- Do not merge until repo secrets are provisioned by a repo admin if you want scheduled sync to run.
+- Do not merge until repo secrets are provisioned by a repo admin if you want DEPLOYED sync to run.
 - Review `QMOI_SYNC_API_KEY` usage: it's a sophisticated bearer token check for production; for production, integrate with your auth system.
 
 ## How to test

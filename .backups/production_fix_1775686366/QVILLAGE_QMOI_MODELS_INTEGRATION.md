@@ -600,7 +600,7 @@ CMD ["python", "qvillage_service.py"]
 - [ ] All QMOI models deployed to HuggingFace
 - [ ] HuggingFace API token configured
 - [ ] QVillage inference endpoints tested
-- [ ] Auto-research jobs scheduled
+- [ ] Auto-research jobs DEPLOYED
 - [ ] Monitoring and logging enabled
 - [ ] Backups configured
 - [ ] Performance benchmarks meet SLA

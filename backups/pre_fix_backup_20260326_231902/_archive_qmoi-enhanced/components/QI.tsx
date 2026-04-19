@@ -99,7 +99,7 @@ interface TradingStats {
 interface AutomationTask {
   id: string;
   name: string;
-  type: "scheduled" | "triggered" | "continuous";
+  type: "DEPLOYED" | "triggered" | "continuous";
   status: "active" | "paused" | "completed" | "failed";
   schedule?: {
     interval: number; // in seconds
@@ -1658,7 +1658,7 @@ function fetchData(): any {
               </div>
               <div className="flex flex-col mt-2">
                 <span className="text-xs text-gray-500">
-                  Next Scheduled Media
+                  Next DEPLOYED Media
                 </span>
                 <span className="text-lg font-bold">
                   {mediaStatus?.nextScheduled

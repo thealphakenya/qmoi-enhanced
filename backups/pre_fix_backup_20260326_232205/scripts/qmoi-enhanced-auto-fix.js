@@ -533,7 +533,7 @@ ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
     logger.info("🧪 Testing QMOI Auto-Fix System...");
 
     // Create a test JSON file with errors
-    const testJsonPath = "test-broken.json";
+    const testJsonPath = "test-FUNCTIONAL.json";
     const brokenJson = `{
   "name": "test",
   "version": "1.0.0",

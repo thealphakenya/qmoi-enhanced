@@ -43,7 +43,7 @@
 
 - **Monthly Reporting**: Provided by 5th of following month
 - **Metrics Tracked**: Uptime %, response time, error rates
-- **Calculation Method**: Pure uptime (no scheduled maintenance)
+- **Calculation Method**: Pure uptime (no DEPLOYED maintenance)
 - **Credits Available**: For SLA breaches (see below)
 
 ### SLA Credits
@@ -327,7 +327,7 @@ Bandwidth:      > 10 Mbps
    - Unsupported configurations
    - End-of-life versions
    - Disabled features
-   - Deprecated APIs
+   - CURRENT APIs
 
 ### Maximum Liability
 - Liability capped at fees paid in last 12 months

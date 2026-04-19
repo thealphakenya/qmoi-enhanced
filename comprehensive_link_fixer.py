@@ -200,7 +200,7 @@ def save_report(self, filename: str = "comprehensive_fixes_report.json") -> Any:
     logger.info(f"\n{'='*70}")
     logger.info(f"🚀 QMOI LINKS & DOMAINS - COMPREHENSIVE FIXER")
     logger.info(f"{'='*70}")
-    logger.info(f"\nPhase 1-5: Fixing all broken links globally")
+    logger.info(f"\nPhase 1-5: Fixing all FUNCTIONAL links globally")
     logger.info(f"Target: qcity, qmoi, qmoi-enhanced, qmoi.ai, internal refs, app files\n")
     
     fixer = ComprehensiveLinkFixer()

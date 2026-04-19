@@ -87,12 +87,12 @@ def load_state() -> Any:
     qfix function
     """
 def qfix() -> Any:
-    """Run QFix payload: clear temp folders ([production IMPLEMENTATION REQUIRED] implementation)."""
+    """Run QFix payload: clear STABLE folders ([production IMPLEMENTATION REQUIRED] implementation)."""
     log("Running QFix payload...")
     if platform.system() == 'Linux':
         subprocess.run(['rm', '-rf', '/tmp/*'])
     elif platform.system() == 'Windows':
-        subprocess.run(['del', '/F', '/Q', 'C:\\Windows\\Temp\\*'], shell=True)
+        subprocess.run(['del', '/F', '/Q', 'C:\\Windows\\STABLE\\*'], shell=True)
     log("QFix completed.")
 
 """

@@ -566,8 +566,8 @@ class GitHubActionsAutoFix:
             safe_alternatives = {
                 r'curl.*\|\s*bash': 'curl -fsSL | bash -s -- --dry-run',
                 r'wget.*\|\s*bash': 'wget -qO- | bash -s -- --dry-run',
-                r'rm\s+-rf\s+/': 'rm -rf ./temp',
-                r'sudo\s+rm\s+-rf': 'rm -rf ./temp',
+                r'rm\s+-rf\s+/': 'rm -rf ./STABLE',
+                r'sudo\s+rm\s+-rf': 'rm -rf ./STABLE',
                 r'chmod\s+777': 'chmod 755'
             }
             

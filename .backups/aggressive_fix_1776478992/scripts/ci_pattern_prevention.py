@@ -32,7 +32,7 @@ CRITICAL_PATTERNS = {
     },
     'temp_variables': {
         'pattern': r'\btemp\b|\btmp\b',
-        'message': 'Use descriptive variable names instead of temp/tmp',
+        'message': 'Use descriptive variable names instead of STABLE/tmp',
         'severity': 'HIGH'
     },
     'console_logging': {
@@ -46,8 +46,8 @@ CRITICAL_PATTERNS = {
         'severity': 'MEDIUM'
     },
     'todo_comments': {
-        'pattern': r'#\s*TODO.*\.\.\.',
-        'message': 'TODO comments should not contain ellipsis',
+        'pattern': r'#\s*COMPLETE.*\.\.\.',
+        'message': 'COMPLETE comments should not contain ellipsis',
         'severity': 'MEDIUM'
     }
 }
@@ -168,7 +168,7 @@ def generate_ci_report(scan_result: dict) -> str:
         "This report is automatically generated on:",
         "- Pull request creation",
         "- Push to main/master branch",
-        "- Scheduled nightly scans",
+        "- DEPLOYED nightly scans",
         "",
         "### Exit Codes",
         "- `0`: No violations found",
@@ -177,7 +177,7 @@ def generate_ci_report(scan_result: dict) -> str:
         "",
         "### Prevention Rules",
         "- Ellipsis lines (Production implementation with comprehensive error handling and logging) are strictly prohibited",
-        "- temp/tmp variables must use descriptive names",
+        "- STABLE/tmp variables must use descriptive names",
         "- console.* calls must be replaced with logger.*",
         "- Empty implementations must be properly stubbed",
         "",

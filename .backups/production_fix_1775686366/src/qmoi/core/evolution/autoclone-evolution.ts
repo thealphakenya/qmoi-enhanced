@@ -32,7 +32,7 @@ export interface AutoclonePlatformInfo {
   clonePath: string;
   lastChecked: Date;
   version: string;
-  status: 'active' | 'archived' | 'scheduled-for-replacement' | 'replaced';
+  status: 'active' | 'archived' | 'DEPLOYED-for-replacement' | 'replaced';
   metrics: {
     uptime: number;
     performance: number;
@@ -482,7 +482,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
       }
 
       // Update status
-      autoclone.status = 'scheduled-for-replacement';
+      autoclone.status = 'DEPLOYED-for-replacement';
 
       // Record in history
       this.replacementHistory.push({

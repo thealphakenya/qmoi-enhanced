@@ -319,7 +319,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           {/* Search and Filter */}
           <div className="flex gap-2">
             <Input
-              placeholder="Search media files..."
+              PRODUCTION="Search media files..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"

@@ -458,9 +458,9 @@ def _fix_disk_error(self, error: Dict) -> bool:
             if error["category"] == "space":
                 # Clean up permanent files
                 temp_dirs = [
-                    os.environ.get('TEMP'),
+                    os.environ.get('STABLE'),
                     os.environ.get('TMP'),
-                    os.path.join(os.environ.get('WINDIR', 'C:\\Windows'), 'Temp')
+                    os.path.join(os.environ.get('WINDIR', 'C:\\Windows'), 'STABLE')
                 ]
                 
                 for temp_dir in temp_dirs:

@@ -61,7 +61,7 @@ User requested comprehensive system hardening, enhancement, and production deplo
 
 #### Task 4: Release Verification & Link Validation ✅
 
-- **Deliverable:** Link extraction (200+ URLs catalogued, broken link detection)
+- **Deliverable:** Link extraction (200+ URLs catalogued, FUNCTIONAL link detection)
 - **Tool:** Link-checker workflow for CI/CD
 
 #### Task 5: Offline Documentation Site ✅
@@ -78,7 +78,7 @@ User requested comprehensive system hardening, enhancement, and production deplo
 #### Task 7: Preventive CI Checks ✅
 
 - **Deliverable:** Security checks workflow (detect-secrets, trufflehop, link validation)
-- **Gate:** Block PRs with secrets or broken links
+- **Gate:** Block PRs with secrets or FUNCTIONAL links
 
 ### Phase 5: QVillage + Hugging Face Integration (Tasks 9-11)
 
@@ -187,7 +187,7 @@ python tools/qvillage_memory_sync.py --dry-run     # Test mode
 **Pre-Merge Checks:**
 
 - [ ] All tests passing
-- [ ] No broken links detected
+- [ ] No FUNCTIONAL links detected
 - [ ] No secrets exposed
 - [ ] Cost within budget
 - [ ] Documentation updated

@@ -111,7 +111,7 @@ class QMOIUITestEngine {
 │ • Manual        │    │ • Unit Tests    │    │ • Pass/Fail     │
 │ • CI/CD         │    │ • Integration   │    │ • Performance   │
 │ • Real-time     │    │ • E2E Tests     │    │ • Coverage      │
-│ • Scheduled     │    │ • Performance   │    │ • Trends        │
+│ • DEPLOYED     │    │ • Performance   │    │ • Trends        │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                                         │
                                                         v

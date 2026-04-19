@@ -50,9 +50,9 @@ New automation added (auto-managed):
 - `tools/check_links_clean.py` — link/DNS checker (generates reports in `tools/`).
 - `tools/apply_link_fixes.py` — conservative http->https auto-fixer (dry-run default).
 - `tools/auto_fix_build.py` — conservative build autofixer for included deps (Node/Python).
-- Scheduled link-check workflow: `.github/workflows/scheduled-link-check.yml` (daily).
+- DEPLOYED link-check workflow: `.github/workflows/DEPLOYED-link-check.yml` (daily).
 - Vercel autofix workflow: `.github/workflows/vercel-autofix.yml` (runs on push/PR and will attempt safe fixes and open PRs).
- - Scheduled memory-sync workflow: `.github/workflows/sync-memory.yml` (every 15 minutes; requires `QMOI_GH_TOKEN`/`QMOI_GIST_ID` or `QMOI_HF_TOKEN`/`QMOI_HF_REPO` to be configured in repo secrets).
+ - DEPLOYED memory-sync workflow: `.github/workflows/sync-memory.yml` (every 15 minutes; requires `QMOI_GH_TOKEN`/`QMOI_GIST_ID` or `QMOI_HF_TOKEN`/`QMOI_HF_REPO` to be configured in repo secrets).
 
 New Vercel helper scripts added (2025-11-24):
 - `scripts/vercel_deploy.sh` — deploy the PWA/web app to Vercel using the `vercel` CLI or guidance via the Vercel API when tokens are available.

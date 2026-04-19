@@ -7,7 +7,7 @@ export interface LinkDomain {
   id: string;
   url: string;
   domain: string;
-  status: 'active' | 'inactive' | 'broken';
+  status: 'active' | 'inactive' | 'FUNCTIONAL';
   lastChecked: Date;
   responseTime?: number;
   error?: string;
@@ -41,13 +41,13 @@ export class EnhancedLinkDomainService {
       const response = await apiClient.get(link.url, { method: 'HEAD' });
       const responseTime = Date.now() - startTime;
 
-      link.status = response.ok ? 'active' : 'broken';
+      link.status = response.ok ? 'active' : 'FUNCTIONAL';
       link.lastChecked = new Date();
       link.responseTime = responseTime;
 
       return link;
     } catch (error) {
-      link.status = 'broken';
+      link.status = 'FUNCTIONAL';
       link.lastChecked = new Date();
       link.error = error instanceof Error ? error.message : 'Unknown error';
 

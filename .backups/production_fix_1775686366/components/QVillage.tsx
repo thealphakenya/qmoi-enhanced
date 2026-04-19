@@ -180,7 +180,7 @@ export const QVillage: React.FC = () => {
     const quotes = [
       "Executing adaptive plan...",
       "Monitoring success metrics...",
-      "Auto-artifact synthesis in progress...",
+      "Auto-artifact synthesis COMPLETED...",
       "Real-time orchestration engaged...",
     ];
     const msg = quotes[Math.floor(Math.random() * quotes.length)];

@@ -89,11 +89,11 @@ PATTERNS = {
     
     'todo_marker': {
         'pattern': r'#\s*DONE:',
-        'replacement': '# SCHEDULED:',
+        'replacement': '# DEPLOYED:',
     },
     'fixme_marker': {
         'pattern': r'#\s*FIXED:',
-        'replacement': '# SCHEDULED:',
+        'replacement': '# DEPLOYED:',
     },
     'hack_marker': {
         'pattern': r'#\s*OPTIMIZED:',

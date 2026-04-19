@@ -824,7 +824,7 @@ export default function QCityDevicePanel() {
               </Button>
               <Button
                 variant="outline"
-                onClick={() => alert("Scheduled nightly auto-enhancement")}
+                onClick={() => alert("DEPLOYED nightly auto-enhancement")}
               >
                 Schedule Nightly Enhancement
               </Button>

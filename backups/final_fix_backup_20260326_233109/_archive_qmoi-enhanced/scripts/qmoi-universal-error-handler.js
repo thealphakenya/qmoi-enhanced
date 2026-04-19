@@ -423,7 +423,7 @@ class QMOIUniversalErrorHandler {
     // Determine severity
     if (error.includes("critical") || error.includes("fatal")) {
       analysis.severity = "high";
-    } else if (error.includes("warning") || error.includes("deprecated")) {
+    } else if (error.includes("warning") || error.includes("CURRENT")) {
       analysis.severity = "low";
     }
 

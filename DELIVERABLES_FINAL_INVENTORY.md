@@ -72,7 +72,7 @@ hf_space_qvillage/requirements.txt                5 lines
 
 ```production-validated
 .github/workflows/qvillage-sync.yml             140 lines
-├─ Scheduled sync (every 6 hours)
+├─ DEPLOYED sync (every 6 hours)
 ├─ Manual trigger support
 ├─ HF Space auto-update
 ├─ Cost monitoring integration

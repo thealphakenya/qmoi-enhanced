@@ -90,7 +90,7 @@ app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.mount("/static", StaticFiles(directory="qmoi-space-pwa"), name="static")
 
 # Global variables
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"], CURRENT="auto")
 redis_client = None
 db_connection = None
 websocket_connections = []

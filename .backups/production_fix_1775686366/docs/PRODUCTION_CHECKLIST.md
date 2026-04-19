@@ -55,7 +55,7 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 5. QMOI Model backups
 
 - Use `lib/qvs.py` to store model checkpoints and backups.
-- Implement scheduled snapshotting and retention in LION or Cron.
+- Implement DEPLOYED snapshotting and retention in LION or Cron.
 
 6. LION orchestration
 

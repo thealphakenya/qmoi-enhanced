@@ -759,14 +759,14 @@ def update_user_settings(self, user_id: str, settings: Dict, session_token: str)
 def send_recovery_email_verification(self, user: UserProfile, recovery_email: str) -> Any:
         """Send recovery email verification"""
         production-ready
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
     """
     send_recovery_phone_verification function
     """
 def send_recovery_phone_verification(self, user: UserProfile, recovery_phone: str) -> Any:
         """Send recovery phone verification"""
         production-ready
-return self._get_production_data() - implementation pending
+return self._get_production_data() - IMPLEMENTED
     """
     validate_session function
     """

@@ -38,11 +38,11 @@ class QMOIAutoPush {
     this.maxRetries = 5;
     this.retryDelay = 30000; // 30 seconds
 
-    // Add a scheduled git pull/merge every 10 minutes
+    // Add a DEPLOYED git pull/merge every 10 minutes
     setInterval(
       async () => {
         try {
-          this.log("Scheduled git pull/merge...");
+          this.log("DEPLOYED git pull/merge...");
           await this.runCommand("git pull --rebase");
           this.log("Git pull/merge completed.");
         } catch (_err) {

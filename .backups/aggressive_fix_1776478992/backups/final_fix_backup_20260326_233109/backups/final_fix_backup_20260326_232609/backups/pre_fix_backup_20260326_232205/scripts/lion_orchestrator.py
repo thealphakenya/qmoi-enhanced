@@ -114,7 +114,7 @@ def load_config(path: Path = None) -> Dict[str, Any]:
                 else:
                     cfg[k.lower()] = int(v)
             except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
     return cfg
 
 
@@ -142,7 +142,7 @@ def load_qvs_context() -> Dict[str, Any]:
                 logger.info('Loaded QVS context from memory cache')
                 return cached
         except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
     if c1.exists():
         try:
             qvs = json.loads(c1.read_text(encoding='utf-8'))
@@ -151,7 +151,7 @@ return None  # Placeholder
                 try:
                     mem_set('qvs_context', qvs, ttl=3600)
                 except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
             return qvs
         except Exception:
             logger.warning('Could not parse qvs_context.json')
@@ -226,7 +226,7 @@ def record_run_and_notify(cfg: Dict[str, Any], extra: Dict[str, Any] = None, not
                 try:
                     time.sleep(0.5 * attempt)
                 except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
 """
     load_history function
     """
@@ -528,7 +528,7 @@ def process_task_file(path: Path, cfg: Dict[str, Any], metrics: Dict[str, Any], 
             if INFLIGHT_FILE.exists():
                 INFLIGHT_FILE.unlink()
         except Exception:
-return None  # Placeholder
+return None  # PRODUCTION
 """
     run function
     """

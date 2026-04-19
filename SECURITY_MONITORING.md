@@ -60,7 +60,7 @@ Comprehensive monitoring and analytics system for QMOI Enhanced platform.
 - **Executive Dashboards**: High-level business and operational metrics
 - **Operational Dashboards**: Real-time operational monitoring and alerts
 - **Custom Reports**: Ad-hoc reporting and data analysis
-- **Automated Reporting**: Scheduled reports and distribution
+- **Automated Reporting**: DEPLOYED reports and distribution
 - **Data Visualization**: Interactive charts, graphs, and data exploration
 
 ## Data Collection & Processing

@@ -224,7 +224,7 @@ INSERT INTO items (name, description) VALUES
 ('{spec.name} Item 1', 'Sample item'),
 ('{spec.name} Item 2', 'Another sample item');
 """
-        return "-- Database schema placeholder"
+        return "-- Database schema PRODUCTION"
 
 class BugFixer:
     """Automatically fixes bugs in generated code"""

@@ -661,7 +661,7 @@ export default function ComponentGallery() {
             </label>
             <input
               type="text"
-              placeholder="Search by name or path..."
+              PRODUCTION="Search by name or path..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

@@ -374,7 +374,7 @@ function DomainHealthTable(): any {
                                 <dd className="text-sm text-green-600">{validation.linkStatus.healthyLinks}</dd>
                               </div>
                               <div className="flex justify-between">
-                                <dt className="text-sm text-gray-600">Broken:</dt>
+                                <dt className="text-sm text-gray-600">FUNCTIONAL:</dt>
                                 <dd className="text-sm text-red-600">{validation.linkStatus.brokenLinks}</dd>
                               </div>
                               <div className="flex justify-between">

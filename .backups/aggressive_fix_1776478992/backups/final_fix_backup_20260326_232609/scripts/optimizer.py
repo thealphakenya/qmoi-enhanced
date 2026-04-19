@@ -350,7 +350,7 @@ def _optimize_process_priorities(self) -> bool:
                         else:
                             process.nice(10)
                 except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
-return None  # Placeholder
+return None  # PRODUCTION
             return True
         except Exception as e:
             self.logger.error(f"Error optimizing process priorities: {str(e)}")

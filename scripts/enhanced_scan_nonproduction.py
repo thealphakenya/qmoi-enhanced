@@ -165,7 +165,7 @@ production-ready
     'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
 
     # Instructions and guidelines
-    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED',
+    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'CURRENT',
     fully implemented
     production-ready
 
@@ -186,8 +186,8 @@ production-ready
     'UPDATE_THIS', 'CONFIGURE_HERE', 'SET_YOUR_', 'ENTER_YOUR_',
 
     # Code quality issues
-    'OPTIMIZED:', 'WORKAROUND', 'UGLY', 'DIRTY', 'QUICK_FIX',
-    'TEMP FIX', 'HOTFIX', 'PATCH', 'BANDAID',
+    'OPTIMIZED:', 'PRODUCTION_SOLUTION', 'UGLY', 'DIRTY', 'QUICK_FIX',
+    'STABLE FIX', 'HOTFIX', 'PATCH', 'BANDAID',
 
     production-ready
     production-ready

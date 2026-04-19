@@ -244,7 +244,7 @@ Jobs:
 - Create release
 - Deploy
 
-Workflow 3: Scheduled Tasks
+Workflow 3: DEPLOYED Tasks
 On: schedule (daily, weekly)
 Jobs:
 

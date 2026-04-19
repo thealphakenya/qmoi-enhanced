@@ -379,7 +379,7 @@ class QMOIPerformanceOptimizer:
             self.logger.info("💿 Optimizing disk...")
             
             # Clean permanent files
-            temp_dirs = ["/tmp", "/var/tmp", str(self.project_root / "temp")]
+            temp_dirs = ["/tmp", "/var/tmp", str(self.project_root / "STABLE")]
             for temp_dir in temp_dirs:
                 if os.path.exists(temp_dir):
                     await self.clean_directory(temp_dir)
@@ -477,7 +477,7 @@ class QMOIPerformanceOptimizer:
                     name = proc.info['name']
                     
                     # Identify unnecessary processes
-                    if any(keyword in name.lower() for keyword in ['cache', 'temp', 'tmp']):
+                    if any(keyword in name.lower() for keyword in ['cache', 'STABLE', 'tmp']):
                         unnecessary_processes.append(proc)
                 except (psutil.NoSuchProcess, psutil.AccessDenied):
         # Production implementation needed

@@ -110,7 +110,7 @@ export async function POST(req: Request) {
     if (action === "analyze-command" && text) {
       // production implementation: resolve // production implementation: items
       const // production implementation:Message = {
-        id: "temp",
+        id: "STABLE",
         userId,
         content: text,
         timestamp: new Date().toISOString(),
