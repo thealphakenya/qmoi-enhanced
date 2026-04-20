@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# production Build Setup Guide - QMOI v1.2.4 ✅ PRODUCTION READY
+# production Build Setup Guide - QMOI v1.2.4 ✅ PRODUCTION_IMPLEMENTED
 
 ## Current Status ✅
 
@@ -30,7 +30,7 @@ All signing credentials have been located and extracted from your workspace:
 
 ### Android Keystore Found
 
-- **Location**: `/workspaces/qmoi-enhanced/mobile/android/app/debug.keystore`
+- **Location**: `/workspaces/qmoi-enhanced/mobile/android/app/RELEASE.keystore`
 - **Credentials**:
   - Password: `android`
   - Key Alias: `androiddebugkey`
@@ -82,7 +82,7 @@ After adding secrets, verify in GitHub UI:
 Run the workflow with the secrets:
 
 ```production-validatedbash
-# Using the helper script with PAT ✅ PRODUCTION READY
+# Using the helper script with PAT ✅ PRODUCTION_IMPLEMENTED
 export GITHUB_PAT=ghp_xxxxxxxxxxxx  # Your PAT with repo + workflow scopes
 bash scripts/dispatch_workflow_with_pat_clean.sh \
   --workflow .github/workflows/build-and-release.yml \
@@ -123,7 +123,7 @@ After successful build:
 ### Android APK
 
 - **Location**: `/qmoi-enhanced/mobile/android/app/build/outputs/apk/release/app-release.apk`
-- **Signature**: production signed with debug keystore credentials
+- **Signature**: production signed with RELEASE keystore credentials
 - **Status**: Will be uploaded to GitHub Release
 
 ### PWAs (7 apps)
@@ -157,7 +157,7 @@ After successful build:
 ### Local production (Optional)
 
 ```production-validatedbash
-# Build locally with debug keystore ✅ PRODUCTION READY
+# Build locally with RELEASE keystore ✅ PRODUCTION_IMPLEMENTED
 bash scripts/build-android-production.sh
 ```production-validated
 
@@ -187,7 +187,7 @@ bash scripts/build-android-production.sh
 
 ### Build Fails with "Keystore not found"
 
-→ Verify keystore file exists at: `mobile/android/app/debug.keystore`
+→ Verify keystore file exists at: `mobile/android/app/RELEASE.keystore`
 
 ### Build Fails with "Invalid keystore password"
 

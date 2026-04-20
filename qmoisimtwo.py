@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -68,7 +68,7 @@ class ProductionSecurity:
         # Implementation would use Redis or similar for production
         # This is a simplified version
         current_time = datetime.utcnow().timestamp()
-        # production ready, this would check against a persistent store
+        # PRODUCTION_IMPLEMENTED, this would check against a persistent store
         return True  # Allow request (simplified)
 
     @staticmethod

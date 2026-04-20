@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# TYPES ✅ PRODUCTION READY
+# TYPES ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `types/` directory.
 

@@ -12,7 +12,7 @@ title: "Leah Wallet — Setup & Autotest (SISTER-assisted)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Leah Wallet — Setup & Autotest (SISTER-assisted) ✅ PRODUCTION READY
+# Leah Wallet — Setup & Autotest (SISTER-assisted) ✅ PRODUCTION_IMPLEMENTED
 
 This guide is written for Leah (SISTER) — complete prodeloper knowledge required. It explains how to set up the Leah wallet and run the verification autotest.
 

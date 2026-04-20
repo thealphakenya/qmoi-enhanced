@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-04-13 23:45:00 UTC  
 **Version**: 2.0.0  
-**Status**: 25+ Routes Production Ready
+**Status**: 25+ Routes PRODUCTION_IMPLEMENTED
 
 ## Table of Contents
 
@@ -88,7 +88,7 @@
 - **Purpose**: Retrieve device-specific logs
 - **Handler**: `app/api/qmoi/own-device-logs/route.ts`
 - **Filters**:
-  - `level`: error, warn, info, debug
+  - `level`: error, warn, info, RELEASE
   - `time_range`: 1h, 6h, 24h, 7d
   - `device_id`: Specific device
 

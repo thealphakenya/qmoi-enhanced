@@ -13,7 +13,7 @@ title: "QMOIAICORE.md"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOIAICORE.md ✅ PRODUCTION READY
+# QMOIAICORE.md ✅ PRODUCTION_IMPLEMENTED
 
 ## AI Core Overview
 

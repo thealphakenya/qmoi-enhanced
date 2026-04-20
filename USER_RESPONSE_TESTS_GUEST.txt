@@ -318,7 +318,7 @@ But here's what you CAN actually do:
 GENUINE INTELLECTUAL WORK:
 ───────────────────────────
 Write a story (I'll help you develop characters, plot, dialogue)
-Debug your code (share it, I'll help find issues)
+RELEASE your code (share it, I'll help find issues)
 Learn a new concept (from quantum physics to ancient history)
 Solve a problem (yours or hypothetical)
 Brainstorm ideas (business, creative, personal)

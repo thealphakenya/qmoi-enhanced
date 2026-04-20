@@ -3,7 +3,7 @@
   "errorRate": 0.01,
   "buildSuccess": true,
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:12:57.336851"
 }

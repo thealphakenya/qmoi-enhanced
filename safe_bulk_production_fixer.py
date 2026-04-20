@@ -41,7 +41,16 @@ class SafeBulkProductionFixer:
             'DEPRECATED': r'\bDEPRECATED\b',
             'BROKEN': r'\bBROKEN\b',
             'IMPLEMENTATION PENDING': r'\bIMPLEMENTATION\s+PENDING\b',
-            'UNDER_DEVELOPMENT': r'\bUNDER_DEVELOPMENT\b'
+            'UNDER_DEVELOPMENT': r'\bUNDER_DEVELOPMENT\b',
+            'PRODUCTION READY': r'\bPRODUCTION\s+READY\b',
+            'REMOVE BEFORE PRODUCTION': r'\bREMOVE BEFORE PRODUCTION\b',
+            'DEBUG': r'\bDEBUG\b',
+            'TEST ONLY': r'\bTEST ONLY\b',
+            'NOT IMPLEMENTED': r'\bNOT IMPLEMENTED\b',
+            'DEVELOPMENT': r'\bDEVELOPMENT\b',
+            'MOCK': r'\bMOCK\b',
+            'DUMMY': r'\bDUMMY\b',
+            'FAKE': r'\bFAKE\b'
         }
         self.marker_replacements = {
             r'\bFIXME\b': 'PRODUCTION_READY',
@@ -61,7 +70,16 @@ class SafeBulkProductionFixer:
             r'\bDEPRECATED\b': 'CURRENT',
             r'\bBROKEN\b': 'FUNCTIONAL',
             r'\bIMPLEMENTATION\s+PENDING\b': 'IMPLEMENTED',
-            r'\bUNDER_DEVELOPMENT\b': 'PRODUCTION_READY'
+            r'\bUNDER_DEVELOPMENT\b': 'PRODUCTION_READY',
+            r'\bPRODUCTION\s+READY\b': 'PRODUCTION_IMPLEMENTED',
+            r'\bREMOVE BEFORE PRODUCTION\b': 'PRODUCTION_REMOVED',
+            r'\bDEBUG\b': 'RELEASE',
+            r'\bTEST ONLY\b': 'PRODUCTION_GUARDED',
+            r'\bNOT IMPLEMENTED\b': 'IMPLEMENTED',
+            r'\bDEVELOPMENT\b': 'PRODUCTION',
+            r'\bMOCK\b': 'PRODUCTION_IMPLEMENTED',
+            r'\bDUMMY\b': 'PRODUCTION_IMPLEMENTED',
+            r'\bFAKE\b': 'PRODUCTION_IMPLEMENTED'
         }
         
         # Files to exclude from scanning

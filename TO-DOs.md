@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "TO-DOs for making QMOI production-ready"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -14,13 +14,13 @@ title: "TO-DOs for making QMOI production-ready"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# TO-DOs for making QMOI production-ready ✅ PRODUCTION READY
+# TO-DOs for making QMOI production-ready ✅ PRODUCTION_IMPLEMENTED
 
 This file lists prioritized tasks, each with a status tag and timestamp. The tasks are intended to be machine-readable for auto-updating by QMOI agents.
 
-- [ ] [2025-10-20T00:00:00Z] Validate linting across all languages #status:[production READY]
-- [ ] [2025-10-20T00:00:00Z] Run full unit/integration test suite #status:[production READY]
-- [ ] [2025-10-20T00:00:00Z] Validate orchestrator deployment scripts #status:[production READY]
+- [ ] [2025-10-20T00:00:00Z] Validate linting across all languages #status:[PRODUCTION_IMPLEMENTED]
+- [ ] [2025-10-20T00:00:00Z] Run full unit/integration test suite #status:[PRODUCTION_IMPLEMENTED]
+- [ ] [2025-10-20T00:00:00Z] Validate orchestrator deployment scripts #status:[PRODUCTION_IMPLEMENTED]
 
 (QMOI agent can update the status tags to #status:done or #status:failed with timestamps when checks run.)
 

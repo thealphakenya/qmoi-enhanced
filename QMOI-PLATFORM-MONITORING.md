@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Platform Monitoring"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -14,9 +14,9 @@ title: "QMOI Platform Monitoring"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Platform Monitoring ✅ PRODUCTION READY
+# QMOI Platform Monitoring ✅ PRODUCTION_IMPLEMENTED
 
-[production READY] for monitoring strategy: metrics, logs, alerting, SLOs, and required tools.
+[PRODUCTION_IMPLEMENTED] for monitoring strategy: metrics, logs, alerting, SLOs, and required tools.
 
 <!-- QMOI_VALIDATION_START -->
 

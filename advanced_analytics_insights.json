@@ -1,41 +1,45 @@
 {
-  "timestamp": "2026-04-20T02:24:11.707427",
+  "timestamp": "2026-04-20T02:32:02.491597",
   "predictive_models": {
     "system_load": {
-      "prediction": 22.862314763850314,
-      "accuracy": 0.9927825538208861,
-      "confidence": 0.9927825538208861
+      "prediction": 22.81402296422963,
+      "accuracy": 0.9922773980582639,
+      "confidence": 0.9922773980582639
     }
   },
   "recommendations": {
     "user1": [
       [
-        "service_b",
-        6.0533109034573185
+        "service_e",
+        4.701653648781895
       ]
     ],
     "user2": [
       [
-        "service_b",
-        6.006384011776262
+        "service_a",
+        5.084058808705893
       ],
       [
-        "service_e",
-        5.0403029906472785
+        "service_b",
+        3.7021721179968976
       ]
     ],
     "user3": [
       [
+        "service_a",
+        3.3315877641939466
+      ],
+      [
         "service_e",
-        6.569701895068208
+        2.8428598321493457
       ]
     ]
   },
   "trends": {
     "performance_metric": {
       "trend": "stable",
-      "slope": -4.668304750573851e-06,
-      "confidence": 0.012563761758173086,
+      "slope": -3.1261441082909596e-06,
+      "confidence": 0.00525076011072545,
       "data_points": 167
     }
   },

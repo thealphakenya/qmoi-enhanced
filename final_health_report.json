@@ -175,7 +175,7 @@
           "mobile/node_modules/react-native/node_modules/caniuse-lite/data/features/keyboardevent-key.js",
           "mobile/node_modules/react-native/node_modules/caniuse-lite/data/features/keyboardevent-location.js",
           "mobile/node_modules/react-native/node_modules/caniuse-lite/data/features/publickeypinning.js",
-          "mobile/android/app/debug.keystore",
+          "mobile/android/app/RELEASE.keystore",
           "backups/pre_fix_backup_20260326_231902/scripts/generate_rsa_key.py",
           "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/generate_rsa_key.py",
           "backups/pre_fix_backup_20260326_231902/src/components/GlobalHotkeyService.tsx",

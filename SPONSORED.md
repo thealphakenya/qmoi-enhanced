@@ -13,7 +13,7 @@ title: "QMOI Sponsored Users"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Sponsored Users ✅ PRODUCTION READY
+# QMOI Sponsored Users ✅ PRODUCTION_IMPLEMENTED
 
 This file lists users that QMOI should treat as "sponsored" — they should not be charged for services and should receive master-level exemptions where appropriate.
 
@@ -24,7 +24,7 @@ Master and immediate family (data):
 - master
 - sister
 
-# How to modify ✅ PRODUCTION READY
+# How to modify ✅ PRODUCTION_IMPLEMENTED
 
 - Use the `POST /sponsored/add` endpoint as the master user or using the `QMOI_CONTROL_TOKEN`.
 

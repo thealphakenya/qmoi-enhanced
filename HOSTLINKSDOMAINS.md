@@ -12,7 +12,7 @@ title: "HOSTLINKSDOMAINS"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# HOSTLINKSDOMAINS ✅ PRODUCTION READY
+# HOSTLINKSDOMAINS ✅ PRODUCTION_IMPLEMENTED
 
 ## HOSTLINKS & DOMAINS — Enhancements and Action Plan
 
@@ -107,7 +107,7 @@ Enhancements (>=20) — concise description, risk, required creds, and optimized
     - Risk: medium. Creds: vault provider optional.
 
 19. Automated TLS pinning / HSTS policy templates for production hosts
-    - Provide required HSTS, CSP and security header templates and CI checks to ensure they're present production ready.
+    - Provide required HSTS, CSP and security header templates and CI checks to ensure they're present PRODUCTION_IMPLEMENTED.
     - Risk: low. Creds: none.
 
 20. Link validation CI gate for PRs (link checker)

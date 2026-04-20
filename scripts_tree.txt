@@ -227,7 +227,7 @@ scripts/
 ├── fix_removed_real implementations_batch.py
 ├── fix_underscore_params.cjs
 ├── gen_real_apps.py
-├── generate-debug-report.js
+├── generate-RELEASE-report.js
 ├── generate-release-json.js
 ├── generate_all_links.py
 ├── generate_allmdrefs.cjs

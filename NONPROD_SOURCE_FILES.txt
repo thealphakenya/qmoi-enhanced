@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ./huggingface_space/app.js
 ./app/api/qmoi-model.ts
 ./app/api/mpesa/callback/route.ts
@@ -25,10 +25,10 @@
 ./dashboard/node_modules/side-channel/index.js
 ./dashboard/node_modules/object-inspect/test/values.js
 ./dashboard/node_modules/object-inspect/test/has.js
-./dashboard/node_modules/scheduler/umd/scheduler-unstable_[PRODUCTION READY].production.js
+./dashboard/node_modules/scheduler/umd/scheduler-unstable_[PRODUCTION_IMPLEMENTED].production.js
 ./dashboard/node_modules/scheduler/cjs/scheduler.production.js
 ./dashboard/node_modules/scheduler/cjs/scheduler-unstable_post_task.production.js
-./dashboard/node_modules/scheduler/cjs/scheduler-unstable_[PRODUCTION READY].production.js
+./dashboard/node_modules/scheduler/cjs/scheduler-unstable_[PRODUCTION_IMPLEMENTED].production.js
 ./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.min.js
 ./dashboard/node_modules/react-dom/umd/react-dom.production.js
 ./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js

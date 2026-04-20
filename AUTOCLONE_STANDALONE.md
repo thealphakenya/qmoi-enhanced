@@ -17,7 +17,7 @@
 
 ```production-validatedbash
 curl https://qvillage.com/health
-# Should return: OK ✅ PRODUCTION READY
+# Should return: OK ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 2. Check GitHub Actions workflow status:
@@ -45,7 +45,7 @@ data:
 
 ```production-validatedbash
 curl https://qvillage.com/health
-# Returns: OK ✅ PRODUCTION READY
+# Returns: OK ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ## Usage: Docker
@@ -62,7 +62,7 @@ docker build -f Dockerfile.qvillage -t qvillage-standalone:latest .
 docker run -d --restart=always -e HF_API_TOKEN=... -e SLACK_WEBHOOK_URL=... -e HEALTH_PORT=8080 qvillage-standalone:latest
 ```production-validated
 
-# Autoclone & Standalone Mode — QMOI / QVillage ✅ PRODUCTION READY
+# Autoclone & Standalone Mode — QMOI / QVillage ✅ PRODUCTION_IMPLEMENTED
 
 This short guide explains the autoclone + standalone runner mode so QMOI/QVillage can run independently of any external hosting platform.
 
@@ -82,10 +82,10 @@ Principles:
 optimized Docker run (now):
 
 ```production-validatedbash
-# Build the image ✅ PRODUCTION READY
+# Build the image ✅ PRODUCTION_IMPLEMENTED
 docker build -f Dockerfile.qvillage -t qvillage-standalone:latest .
 
-# Run container (auto-clones the repo into /opt/qvillage inside the container) ✅ PRODUCTION READY
+# Run container (auto-clones the repo into /opt/qvillage inside the container) ✅ PRODUCTION_IMPLEMENTED
 docker run -d --restart=always \
   -e REPO_URL=https://github.com/thestablekenya/qmoi-enhanced.git \
   -e REPO_BRANCH=main \

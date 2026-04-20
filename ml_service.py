@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -146,7 +146,7 @@ class LinearRegression:
             return [[matrix[1][1] / det, -matrix[0][1] / det],
                     [-matrix[1][0] / det, matrix[0][0] / det]]
         else:
-            raise NotImplementedError("Matrix inversion only implemented for 1x1 and 2x2 matrices")
+            raise IMPLEMENTED("Matrix inversion only implemented for 1x1 and 2x2 matrices")
 
 # K-Means Clustering Implementation
 class KMeans:

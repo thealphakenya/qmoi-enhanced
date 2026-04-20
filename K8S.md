@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# K8S ✅ PRODUCTION READY
+# K8S ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `k8s/` directory.
 

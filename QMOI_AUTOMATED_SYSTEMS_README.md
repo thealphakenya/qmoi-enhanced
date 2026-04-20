@@ -13,7 +13,7 @@ title: "QMOI Automated Systems - complete Guide"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Automated Systems - complete Guide ✅ PRODUCTION READY
+# QMOI Automated Systems - complete Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## 🚀 Overview
 
@@ -60,37 +60,37 @@ QMOI Automated Systems provide continuous background operation for prodice owner
 ### Option 1: sophisticated Startup (required)
 
 ```production-validatedbash
-# Run the auto startup system ✅ PRODUCTION READY
+# Run the auto startup system ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi_auto_startup.py
 
-# Or create a startup script ✅ PRODUCTION READY
+# Or create a startup script ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi_auto_startup.py create-startup
-# Then double-click: start_qmoi_systems.bat ✅ PRODUCTION READY
+# Then double-click: start_qmoi_systems.bat ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Option 2: Individual Systems
 
 ```production-validatedbash
-# Start prodice controller only ✅ PRODUCTION READY
+# Start prodice controller only ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi_automated_prodice_controller.py
 
-# Start betting system only ✅ PRODUCTION READY
+# Start betting system only ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi_automated_betting_system.py
 ```production-validated
 
 ### Option 3: Windows Service (Advanced)
 
 ```production-validatedbash
-# Install as Windows service (requires admin) ✅ PRODUCTION READY
+# Install as Windows service (requires admin) ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi_windows_service.py install
 
-# Start the service ✅ PRODUCTION READY
+# Start the service ✅ PRODUCTION_IMPLEMENTED
 net start QMOIAutomatedSystem
 
-# Stop the service ✅ PRODUCTION READY
+# Stop the service ✅ PRODUCTION_IMPLEMENTED
 net stop QMOIAutomatedSystem
 
-# Uninstall the service ✅ PRODUCTION READY
+# Uninstall the service ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi_windows_service.py uninstall
 ```production-validated
 
@@ -113,13 +113,13 @@ python scripts/qmoi_windows_service.py uninstall
 ### Real-time Monitoring
 
 ```production-validatedbash
-# Monitor prodice controller logs ✅ PRODUCTION READY
+# Monitor prodice controller logs ✅ PRODUCTION_IMPLEMENTED
 tail -f logs/qmoi_prodice_controller.log
 
-# Monitor betting system logs ✅ PRODUCTION READY
+# Monitor betting system logs ✅ PRODUCTION_IMPLEMENTED
 tail -f logs/qmoi_betting_system.log
 
-# Check system status ✅ PRODUCTION READY
+# Check system status ✅ PRODUCTION_IMPLEMENTED
 cat logs/qmoi_startup_status.json
 ```production-validated
 
@@ -192,37 +192,37 @@ cat logs/qmoi_startup_status.json
 #### 1. Script Not Found
 
 ```production-validatedbash
-# Ensure you're in the correct directory ✅ PRODUCTION READY
+# Ensure you're in the correct directory ✅ PRODUCTION_IMPLEMENTED
 cd /d/QMOI
 
-# Check if scripts exist ✅ PRODUCTION READY
+# Check if scripts exist ✅ PRODUCTION_IMPLEMENTED
 ls scripts/qmoi_automated_*.py
 ```production-validated
 
 #### 2. Permission Denied
 
 ```production-validatedbash
-# Run as administrator (Windows) ✅ PRODUCTION READY
-# Right-click Command Prompt -> Run as Administrator ✅ PRODUCTION READY
+# Run as administrator (Windows) ✅ PRODUCTION_IMPLEMENTED
+# Right-click Command Prompt -> Run as Administrator ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 #### 3. Process Already Running
 
 ```production-validatedbash
-# Check running processes ✅ PRODUCTION READY
+# Check running processes ✅ PRODUCTION_IMPLEMENTED
 tasklist | findstr python
 
-# Kill existing processes ✅ PRODUCTION READY
+# Kill existing processes ✅ PRODUCTION_IMPLEMENTED
 taskkill /f /im python.exe
 ```production-validated
 
 #### 4. Log Files Not Created
 
 ```production-validatedbash
-# Create logs directory manually ✅ PRODUCTION READY
+# Create logs directory manually ✅ PRODUCTION_IMPLEMENTED
 mkdir logs
 
-# Check permissions ✅ PRODUCTION READY
+# Check permissions ✅ PRODUCTION_IMPLEMENTED
 dir logs
 ```production-validated
 

@@ -12,7 +12,7 @@ title: "Q-city Trading System"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Q-city Trading System ✅ PRODUCTION READY
+# Q-city Trading System ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 The Q-city Trading System is a comprehensive trading solution that integrates with Bitget for real-time trading, supports multiple asset types, and implements automated trading strategies with advanced risk management features.
@@ -1131,7 +1131,7 @@ This software is proprietary and confidential. Unauthorized copying, distributio
 
 For help, contact the Q-team at rovicviccy@gmail.com.
 
-# Bitget RSA API Integration (User-Generated Keys) ✅ PRODUCTION READY
+# Bitget RSA API Integration (User-Generated Keys) ✅ PRODUCTION_IMPLEMENTED
 
 - Qmoi/AI now supports Bitget's User-Generated RSA API keys for maximum security.
 - Keys are stored in the `keys/` directory (auto-ignored by git).

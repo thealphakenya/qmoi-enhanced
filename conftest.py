@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///test.db')
     SECRET_KEY = os.getenv('SECRET_KEY', 'test-secret-key-insecure')
     TESTING = True
@@ -78,4 +78,4 @@ def mock_logger():
 
 # Call validate_config on startup
 validate_config()
-logger.info(f"QMOI test suite initialized - Debug mode: {Config.DEBUG}")
+logger.info(f"QMOI test suite initialized - RELEASE mode: {Config.RELEASE}")

@@ -85,12 +85,12 @@
       {
         "pattern": "https://production.qmoi.ai:3000",
         "replacement": "https://qmoi.ai",
-        "context": "production server reference production ready docs"
+        "context": "production server reference PRODUCTION_IMPLEMENTED docs"
       },
       {
         "pattern": "https://production.qmoi.ai:8080",
         "replacement": "https://qvillage.com",
-        "context": "production server reference production ready docs"
+        "context": "production server reference PRODUCTION_IMPLEMENTED docs"
       }
     ],
     "malformed_urls": [
@@ -132,7 +132,7 @@
     }
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:13:31.391595"
 }

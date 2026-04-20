@@ -381,7 +381,7 @@
                       📁 api/
                         📁 qmoi/
                           📁 self-work/
-                            📁 debug/
+                            📁 RELEASE/
                             📁 code-review/
                             📁 run-tests/
                     📁 components/
@@ -754,7 +754,7 @@
                   📁 api/
                     📁 qmoi/
                       📁 self-work/
-                        📁 debug/
+                        📁 RELEASE/
                         📁 code-review/
                         📁 run-tests/
                 📁 components/
@@ -1847,7 +1847,7 @@
                       📁 stop-trading/
                     📁 ai-self-diagnostics/
                     📁 wifi/
-                    📁 debug/
+                    📁 RELEASE/
                       📁 users/
                     📁 analytics/
                       📁 wallets/
@@ -1899,7 +1899,7 @@
                   📁 api/
                     📁 qmoi/
                       📁 self-work/
-                        📁 debug/
+                        📁 RELEASE/
                         📁 code-review/
                         📁 run-tests/
                       📁 autodev/
@@ -2092,7 +2092,7 @@
                     📁 models/
                     📁 inference/
                     📁 spaces/
-                  📁 debug/
+                  📁 RELEASE/
                     📁 users/
                   📁 emails/
                   📁 document-backup/
@@ -2590,7 +2590,7 @@
                       📁 api/
                         📁 qmoi/
                           📁 self-work/
-                            📁 debug/
+                            📁 RELEASE/
                             📁 code-review/
                             📁 run-tests/
                     📁 components/
@@ -2718,7 +2718,7 @@
                       📁 stop-trading/
                     📁 ai-self-diagnostics/
                     📁 wifi/
-                    📁 debug/
+                    📁 RELEASE/
                       📁 users/
                     📁 analytics/
                       📁 wallets/
@@ -2768,7 +2768,7 @@
                   📁 api/
                     📁 qmoi/
                       📁 self-work/
-                        📁 debug/
+                        📁 RELEASE/
                         📁 code-review/
                       📁 autodev/
                         📁 research/
@@ -2950,7 +2950,7 @@
                     📁 models/
                     📁 inference/
                     📁 spaces/
-                  📁 debug/
+                  📁 RELEASE/
                     📁 users/
                   📁 emails/
                   📁 document-backup/
@@ -3567,7 +3567,7 @@
                   📁 scan/
                 📁 qvillage/
                 📁 qmoi-model/
-                📁 debug/
+                📁 RELEASE/
                   📁 users/
                 📁 document-backup/
                 📁 analytics/
@@ -3633,7 +3633,7 @@
               📁 api/
                 📁 qmoi/
                   📁 self-work/
-                    📁 debug/
+                    📁 RELEASE/
                     📁 code-review/
                     📁 run-tests/
                   📁 autodev/
@@ -3874,7 +3874,7 @@
                 📁 inference/
                 📁 spaces/
               📁 qmoi-model/
-              📁 debug/
+              📁 RELEASE/
                 📁 users/
               📁 emails/
               📁 document-backup/
@@ -4255,7 +4255,7 @@
                   📁 api/
                     📁 qmoi/
                       📁 self-work/
-                        📁 debug/
+                        📁 RELEASE/
                         📁 code-review/
                         📁 run-tests/
                 📁 components/
@@ -4378,7 +4378,7 @@
                   📁 stop-trading/
                 📁 ai-self-diagnostics/
                 📁 wifi/
-                📁 debug/
+                📁 RELEASE/
                   📁 users/
                 📁 analytics/
                   📁 wallets/
@@ -4430,7 +4430,7 @@
               📁 api/
                 📁 qmoi/
                   📁 self-work/
-                    📁 debug/
+                    📁 RELEASE/
                     📁 code-review/
                     📁 run-tests/
                   📁 autodev/
@@ -4633,7 +4633,7 @@
                 📁 inference/
                 📁 spaces/
               📁 qmoi-model/
-              📁 debug/
+              📁 RELEASE/
                 📁 users/
               📁 emails/
               📁 document-backup/
@@ -4830,7 +4830,7 @@
               📁 scan/
             📁 qvillage/
             📁 qmoi-model/
-            📁 debug/
+            📁 RELEASE/
               📁 users/
             📁 document-backup/
             📁 analytics/
@@ -5231,7 +5231,7 @@
                   📁 api/
                     📁 qmoi/
                       📁 self-work/
-                        📁 debug/
+                        📁 RELEASE/
                         📁 code-review/
                         📁 run-tests/
                 📁 components/
@@ -5359,7 +5359,7 @@
                   📁 stop-trading/
                 📁 ai-self-diagnostics/
                 📁 wifi/
-                📁 debug/
+                📁 RELEASE/
                   📁 users/
                 📁 analytics/
                   📁 wallets/
@@ -5409,7 +5409,7 @@
               📁 api/
                 📁 qmoi/
                   📁 self-work/
-                    📁 debug/
+                    📁 RELEASE/
                     📁 code-review/
                   📁 autodev/
                     📁 research/
@@ -5591,7 +5591,7 @@
                 📁 models/
                 📁 inference/
                 📁 spaces/
-              📁 debug/
+              📁 RELEASE/
                 📁 users/
               📁 emails/
               📁 document-backup/
@@ -5701,7 +5701,7 @@
               📁 health/
             📁 qmoi/
               📁 self-work/
-                📁 debug/
+                📁 RELEASE/
                 📁 code-review/
                 📁 run-tests/
               📁 autodev/
@@ -6007,7 +6007,7 @@
             📁 inference/
             📁 spaces/
           📁 qmoi-model/
-          📁 debug/
+          📁 RELEASE/
             📁 users/
           📁 emails/
           📁 document-backup/
@@ -7026,7 +7026,7 @@
                   📁 stop-trading/
                 📁 ai-self-diagnostics/
                 📁 wifi/
-                📁 debug/
+                📁 RELEASE/
                   📁 users/
                 📁 analytics/
                   📁 wallets/
@@ -7080,7 +7080,7 @@
               📁 api/
                 📁 qmoi/
                   📁 self-work/
-                    📁 debug/
+                    📁 RELEASE/
                     📁 code-review/
                     📁 run-tests/
                   📁 autodev/
@@ -7273,7 +7273,7 @@
                 📁 models/
                 📁 inference/
                 📁 spaces/
-              📁 debug/
+              📁 RELEASE/
                 📁 users/
               📁 emails/
               📁 document-backup/
@@ -7778,7 +7778,7 @@
                   📁 api/
                     📁 qmoi/
                       📁 self-work/
-                        📁 debug/
+                        📁 RELEASE/
                         📁 code-review/
                         📁 run-tests/
                 📁 components/
@@ -7905,7 +7905,7 @@
                   📁 stop-trading/
                 📁 ai-self-diagnostics/
                 📁 wifi/
-                📁 debug/
+                📁 RELEASE/
                   📁 users/
                 📁 analytics/
                   📁 wallets/
@@ -7958,7 +7958,7 @@
               📁 api/
                 📁 qmoi/
                   📁 self-work/
-                    📁 debug/
+                    📁 RELEASE/
                     📁 code-review/
                   📁 autodev/
                     📁 research/
@@ -8140,7 +8140,7 @@
                 📁 models/
                 📁 inference/
                 📁 spaces/
-              📁 debug/
+              📁 RELEASE/
                 📁 users/
               📁 emails/
               📁 document-backup/
@@ -8763,7 +8763,7 @@
               📁 scan/
             📁 qvillage/
             📁 qmoi-model/
-            📁 debug/
+            📁 RELEASE/
               📁 users/
             📁 document-backup/
             📁 analytics/
@@ -8831,7 +8831,7 @@
           📁 api/
             📁 qmoi/
               📁 self-work/
-                📁 debug/
+                📁 RELEASE/
                 📁 code-review/
                 📁 run-tests/
               📁 autodev/
@@ -9070,7 +9070,7 @@
             📁 inference/
             📁 spaces/
           📁 qmoi-model/
-          📁 debug/
+          📁 RELEASE/
             📁 users/
           📁 emails/
           📁 document-backup/
@@ -9437,7 +9437,7 @@
               📁 api/
                 📁 qmoi/
                   📁 self-work/
-                    📁 debug/
+                    📁 RELEASE/
                     📁 code-review/
                     📁 run-tests/
             📁 components/
@@ -9548,7 +9548,7 @@
               📁 stop-trading/
             📁 ai-self-diagnostics/
             📁 wifi/
-            📁 debug/
+            📁 RELEASE/
               📁 users/
             📁 analytics/
               📁 wallets/
@@ -9779,7 +9779,7 @@
             📁 models/
             📁 inference/
             📁 spaces/
-          📁 debug/
+          📁 RELEASE/
             📁 users/
           📁 emails/
           📁 document-backup/
@@ -10183,7 +10183,7 @@
           📁 api/
             📁 qmoi/
               📁 self-work/
-                📁 debug/
+                📁 RELEASE/
                 📁 code-review/
               📁 autodev/
                 📁 research/
@@ -12943,7 +12943,7 @@
     📁 changelogs/
   📁 test-results/
     📄 .last-run.json
-  📁 ci-debug-outputs/
+  📁 ci-RELEASE-outputs/
     📄 manual-test.txt
     📄 manual-build.txt
   📁 docker/
@@ -12992,7 +12992,7 @@
           📁 health/
         📁 qmoi/
           📁 self-work/
-            📁 debug/
+            📁 RELEASE/
             📁 code-review/
             📁 run-tests/
           📁 autodev/
@@ -13368,7 +13368,7 @@
         📁 inference/
         📁 spaces/
       📁 qmoi-model/
-      📁 debug/
+      📁 RELEASE/
         📁 users/
       📁 emails/
       📁 cameras/

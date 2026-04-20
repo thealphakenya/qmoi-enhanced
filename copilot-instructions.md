@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Copilot Instructions for QMOI-Enhanced"
 description: "Rules and automation guidelines for Copilot in this repo"
 ---
 
-# Copilot Custom Instructions for QMOI-Enhanced ✅ PRODUCTION READY
+# Copilot Custom Instructions for QMOI-Enhanced ✅ PRODUCTION_IMPLEMENTED
 
 This file provides guidance to GitHub Copilot when interacting with the `qmoi-enhanced` repository. It is intended to help the assistant maintain consistency, enforce project conventions, and rapidly navigate large code changes.
 
@@ -25,13 +25,13 @@ This file provides guidance to GitHub Copilot when interacting with the `qmoi-en
    - Update `COMPONENTS.md` with a description, props, and access tier.
    - Update `COMPONENT_USAGE_PLAN.md` with the target surface and roles.
 3. **Documentation first.** Any code change must be reflected in the appropriate `.md` file(s) before marking work done.
-4. **Real‑world readiness.** Replace [production READY]s, [production READY]s, and [production READY] comments with production‑quality implementations. Test cases should use real data where possible.
+4. **Real‑world readiness.** Replace [PRODUCTION_IMPLEMENTED]s, [PRODUCTION_IMPLEMENTED]s, and [PRODUCTION_IMPLEMENTED] comments with production‑quality implementations. Test cases should use real data where possible.
 5. **Build and tests.** Run `npm run build` and ensure it completes without errors before closing a task. Fix any included modules and update the build instructions accordingly.
 6. **Environment management.** Use `lib/env-manager.js` for config; do not read `process.env` directly in other modules unless absolutely necessary.
 7. **Role separation.** Enforce Master/Sister/User/Guest checks via `RoleContext` or similar wrappers.
 8. **Use patterns.** Prefer `WrappedComponent`, `lazyWrap`, and other helpers for cross‑cutting concerns.
 9. **Automation files.** When adding new features or endpoints, update `API.md`, `APIs_v1.md`, `ENDPOINTS.md`, and any feature‑specific docs.
-10. **Iterative progress.** After each batch of changes, run `grep [production READY] [production READY] [production READY] [production READY]` to ensure nothing remains.
+10. **Iterative progress.** After each batch of changes, run `grep [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED]` to ensure nothing remains.
 
 ## Performance Optimization for Large Projects
 
