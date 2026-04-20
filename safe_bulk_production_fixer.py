@@ -353,6 +353,58 @@ Last Updated: {self.scan_timestamp}
         
         return resume_path
 
+    def update_matches_txt(self, results):
+        """Update MATCHES.txt with current marker replacement status"""
+        matches_path = os.path.join(self.root_dir, 'MATCHES.txt')
+        lines = [
+            "QMOI SAFE BULK PRODUCTION MATCHES",
+            f"Generated: {self.scan_timestamp}",
+            "",
+            "SUMMARY:",
+            f"- Files with markers: {len(results)}",
+            f"- Total replacements: {self.replacements_made}",
+            "",
+            "TOP MATCHES:",
+        ]
+
+        for result in sorted(results, key=lambda x: -x['replacements'])[:30]:
+            lines.append(f"- {result['file']}: {result['replacements']} replacement(s)")
+
+        if len(results) > 30:
+            lines.append(f"- ... and {len(results) - 30} more files")
+
+        lines.append("")
+        lines.append("See undone.txt for details on nonproduction markers and replacement requirements.")
+
+        with open(matches_path, 'w', encoding='utf-8') as f:
+            f.write("\n".join(lines))
+
+    def update_matches_md(self, results):
+        """Update MATCHES.md with current status details"""
+        matches_md_path = os.path.join(self.root_dir, 'MATCHES.md')
+        lines = [
+            "# MATCHES.md",
+            "",
+            "## Safe Bulk Production Matches",
+            f"- Generated: {self.scan_timestamp}",
+            f"- Files with markers: {len(results)}",
+            f"- Total replacements: {self.replacements_made}",
+            "",
+            "### Top files with replacements",
+        ]
+
+        for result in sorted(results, key=lambda x: -x['replacements'])[:20]:
+            lines.append(f"- {result['file']} — {result['replacements']} replacement(s)")
+
+        if len(results) > 20:
+            lines.append(f"- ... and {len(results) - 20} more files")
+
+        lines.append("")
+        lines.append("This file is synchronized with MATCHES.txt, undone.txt, INSTANCES.md, and resumefromhere.txt.")
+
+        with open(matches_md_path, 'w', encoding='utf-8') as f:
+            f.write("\n".join(lines))
+
     def run(self):
         """Run the complete safe bulk production fixer"""
         print(f"Starting Safe Bulk Production Fixer at {self.scan_timestamp}")
@@ -376,6 +428,11 @@ Last Updated: {self.scan_timestamp}
         
         self.update_resumefromhere_txt(results)
         print("✅ Updated resumefromhere.txt")
+        
+        self.update_matches_txt(results)
+        print("✅ Updated MATCHES.txt")
+        self.update_matches_md(results)
+        print("✅ Updated MATCHES.md")
         
         print("\n🚀 Safe Bulk Production Fixer Complete!")
         return results

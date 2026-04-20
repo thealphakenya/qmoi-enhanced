@@ -1,0 +1,8 @@
+{
+    "cpu_usage_percent": 80,
+    "memory_usage_percent": 85,
+    "disk_usage_percent": 90,
+    "service_down_count": 2,
+    "error_rate_threshold": 10,
+    "response_time_ms": 5000
+}

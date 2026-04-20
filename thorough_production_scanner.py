@@ -21,25 +21,26 @@ class ThoroughProductionScanner:
 
         # Comprehensive nonproduction markers to search for
         self.markers = {
-            'FIXED': re.compile(r'\bFIXME\b', re.IGNORECASE),
-            'DONE': re.compile(r'\bTODO\b', re.IGNORECASE),
-            'COMPLETE': re.compile(r'\bIN PROGRESS\b', re.IGNORECASE),
-            'FULLY_IMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
-            'COMPLETE': re.compile(r'\bWIP\b', re.IGNORECASE),
-            'production implementation': re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE),
+            'FIXME': re.compile(r'\bFIXME\b', re.IGNORECASE),
+            'TODO': re.compile(r'\bTODO\b', re.IGNORECASE),
+            'IN PROGRESS': re.compile(r'\bIN\s+PROGRESS\b', re.IGNORECASE),
+            'WIP': re.compile(r'\bWIP\b', re.IGNORECASE),
+            'UNIMPLEMENTED': re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
+            'PLACEHOLDER': re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE),
             'NOT IMPLEMENTED': re.compile(r'\bNOT IMPLEMENTED\b', re.IGNORECASE),
-            'production implementation': re.compile(r'\bSTUB\b', re.IGNORECASE),
-            'production': re.compile(r'\bMOCK\b', re.IGNORECASE),
-            'production': re.compile(r'\bDUMMY\b', re.IGNORECASE),
-            'STABLE': re.compile(r'\bTEMP\b', re.IGNORECASE),
-            'OPTIMIZED': re.compile(r'\bHACK\b', re.IGNORECASE),
-            'FUNCTIONAL': re.compile(r'\bBROKEN\b', re.IGNORECASE),
-            'production': re.compile(r'\bFAKE\b', re.IGNORECASE),
+            'STUB': re.compile(r'\bSTUB\b', re.IGNORECASE),
+            'MOCK': re.compile(r'\bMOCK\b', re.IGNORECASE),
+            'DUMMY': re.compile(r'\bDUMMY\b', re.IGNORECASE),
+            'TEMP': re.compile(r'\bTEMP\b', re.IGNORECASE),
+            'HACK': re.compile(r'\bHACK\b', re.IGNORECASE),
+            'BROKEN': re.compile(r'\bBROKEN\b', re.IGNORECASE),
+            'FAKE': re.compile(r'\bFAKE\b', re.IGNORECASE),
             'TEST ONLY': re.compile(r'\bTEST ONLY\b', re.IGNORECASE),
-            'production': re.compile(r'\bDEVELOPMENT\b', re.IGNORECASE),
+            'DEVELOPMENT': re.compile(r'\bDEVELOPMENT\b', re.IGNORECASE),
             'DEBUG': re.compile(r'\bDEBUG\b', re.IGNORECASE),
             'REMOVE BEFORE PRODUCTION': re.compile(r'\bREMOVE BEFORE PRODUCTION\b', re.IGNORECASE),
-            'PRODUCTION READY': re.compile(r'\bPRODUCTION READY\b', re.IGNORECASE),  # This might indicate incomplete work
+            'PRODUCTION READY': re.compile(r'\bPRODUCTION READY\b', re.IGNORECASE),
+            'NotImplementedError': re.compile(r'NotImplementedError'),
         }
 
         # File extensions to scan (comprehensive list)
@@ -117,6 +118,18 @@ class ThoroughProductionScanner:
 
         return True
 
+    def is_path_excluded(self, path):
+        """Determine if path is under an excluded directory"""
+        try:
+            relative_parts = path.relative_to(self.root_dir).parts
+        except ValueError:
+            return False
+
+        for part in relative_parts:
+            if part in self.exclude_dirs or part.startswith('.'):
+                return True
+        return False
+
     def scan_file(self, file_path):
         """Scan a single file for nonproduction markers"""
         try:
@@ -168,7 +181,7 @@ class ThoroughProductionScanner:
         return files_scanned, files_with_markers
 
     def perform_thorough_scan(self):
-        """Perform a thorough scan of all directories"""
+        """Perform a thorough scan of all files in the repository"""
         print(f"🔍 Starting thorough production readiness scan...")
         print(f"📁 Root directory: {self.root_dir}")
         print(f"🕒 Scan timestamp: {self.scan_timestamp}")
@@ -178,48 +191,55 @@ class ThoroughProductionScanner:
         total_files_scanned = 0
         total_dirs_scanned = 0
 
-        # Get all directories to scan
-        directories_to_scan = []
-        for dir_path in self.root_dir.rglob('*'):
-            if self.should_scan_directory(dir_path):
-                directories_to_scan.append(dir_path)
-                total_dirs_scanned += 1
+        files_to_scan = []
+        directories_scanned = set()
 
+        for root, dirs, files in os.walk(self.root_dir):
+            dirs[:] = [d for d in dirs if self.should_scan_directory(Path(root) / d)]
+            current_dir = Path(root)
+            if self.is_path_excluded(current_dir):
+                continue
+
+            directories_scanned.add(current_dir)
+
+            for filename in files:
+                file_path = current_dir / filename
+                if self.should_scan_file(file_path):
+                    if self.is_path_excluded(file_path):
+                        continue
+                    files_to_scan.append(file_path)
+
+        total_dirs_scanned = len(directories_scanned)
         print(f"📂 Found {total_dirs_scanned} directories to scan")
+        print(f"📄 Found {len(files_to_scan)} files to scan")
 
-        # Scan directories with thread pool for performance
-        with ThreadPoolExecutor(max_workers=min(8, len(directories_to_scan))) as executor:
-            future_to_dir = {executor.submit(self.scan_directory, dir_path): dir_path for dir_path in directories_to_scan}
+        max_workers = min(8, os.cpu_count() or 1)
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = {executor.submit(self.scan_file, file_path): file_path for file_path in files_to_scan}
 
-            for future in as_completed(future_to_dir):
-                dir_path = future_to_dir[future]
+            for future in as_completed(futures):
+                file_path = futures[future]
                 try:
-                    files_scanned, files_with_markers = future.result()
-                    total_files_scanned += files_scanned
-                    all_files_with_markers.extend(files_with_markers)
-
-                    if files_with_markers:
-                        print(f"⚠️  {dir_path.relative_to(self.root_dir)}: {len(files_with_markers)} files with markers")
-
+                    result = future.result()
+                    total_files_scanned += 1
+                    if result:
+                        all_files_with_markers.append(result)
                 except Exception as e:
-                    print(f"❌ Error scanning {dir_path}: {e}")
+                    print(f"❌ Error scanning {file_path}: {e}")
                     self.results['errors'].append({
-                        'directory': str(dir_path),
+                        'file': str(file_path),
                         'error': str(e),
                         'timestamp': datetime.now().isoformat()
                     })
 
-        # Update results
         self.results['scan_info']['total_files_scanned'] = total_files_scanned
         self.results['scan_info']['total_directories_scanned'] = total_dirs_scanned
         self.results['scan_info']['files_with_markers'] = len(all_files_with_markers)
         self.results['scan_info']['total_markers_found'] = sum(f['total_markers'] for f in all_files_with_markers)
 
-        # Sort files by total markers (most problematic first)
         all_files_with_markers.sort(key=lambda x: x['total_markers'], reverse=True)
         self.results['files_with_markers'] = all_files_with_markers
 
-        # Create marker summary
         marker_summary = {}
         for file_result in all_files_with_markers:
             for marker, count in file_result['markers'].items():
@@ -229,7 +249,7 @@ class ThoroughProductionScanner:
         print("\n📊 SCAN RESULTS:")
         print(f"   Total files scanned: {total_files_scanned}")
         print(f"   Files with markers: {len(all_files_with_markers)}")
-        print(f"   Total markers found: {sum(f['total_markers'] for f in all_files_with_markers)}")
+        print(f"   Total markers found: {self.results['scan_info']['total_markers_found']}")
         print(f"   Errors encountered: {len(self.results['errors'])}")
 
         if self.results['marker_summary']:
@@ -254,8 +274,11 @@ class ThoroughProductionScanner:
             json.dump(self.results, f, indent=2, ensure_ascii=False)
         print(f"✅ Created: {json_path}")
 
-        # Update INSTANCES.md
+        # Update INSTANCES.md and other tracking files
         self.update_instances_md()
+        self.update_resumefromhere_txt()
+        self.update_matches_txt()
+        self.update_matches_md()
 
         return undone_path, json_path
 
@@ -393,6 +416,110 @@ This file tracks the remaining production readiness instances from `undone.txt`.
         with open(instances_path, 'w', encoding='utf-8') as f:
             f.write(new_content)
         print(f"✅ Updated: {instances_path}")
+
+    def update_resumefromhere_txt(self):
+        """Update resumefromhere.txt with current scan status"""
+        resumefile = self.root_dir / 'resumefromhere.txt'
+        lines = [
+            "QMOI PRODUCTION READINESS STATUS",
+            f"Last Scan: {self.scan_timestamp}",
+            f"Scan ID: {self.scan_id}",
+            "",
+            "SUMMARY:",
+            f"- Total files scanned: {self.results['scan_info']['total_files_scanned']}",
+            f"- Total directories scanned: {self.results['scan_info']['total_directories_scanned']}",
+            f"- Files with nonproduction markers: {self.results['scan_info']['files_with_markers']}",
+            f"- Total markers found: {self.results['scan_info']['total_markers_found']}",
+            "",
+            "CURRENT STATE:",
+        ]
+
+        if self.results['scan_info']['files_with_markers'] == 0:
+            lines.append("- Status: ✅ Production-ready. No nonproduction markers remain.")
+        else:
+            lines.append("- Status: ⚠️ Nonproduction markers remain. Review undone.txt and MATCHES.txt.")
+
+        lines.append("")
+        lines.append("NEXT STEPS:")
+        lines.append("1. Open undone.txt for detailed marker locations.")
+        lines.append("2. Update identified files with production implementations.")
+        lines.append("3. Re-run this scanner after fixes.")
+        lines.append("4. Keep MATCHES.txt and MATCHES.md synchronized.")
+
+        if self.results['marker_summary']:
+            lines.append("")
+            lines.append("MARKER SUMMARY:")
+            for marker, count in self.results['marker_summary'].items():
+                lines.append(f"- {marker}: {count}")
+
+        lines.append("")
+        lines.append("TRACKING FILES UPDATED:")
+        lines.append("- resumefromhere.txt")
+        lines.append("- INSTANCES.md")
+        lines.append("- MATCHES.txt")
+        lines.append("- MATCHES.md")
+        lines.append("- undone.txt")
+
+        with open(resumefile, 'w', encoding='utf-8') as f:
+            f.write("\n".join(lines))
+        print(f"✅ Updated: {resumefile}")
+
+    def update_matches_txt(self):
+        """Update MATCHES.txt with current marker findings"""
+        matches_file = self.root_dir / 'MATCHES.txt'
+        lines = [
+            "QMOI PRODUCTION MARKER MATCHES",
+            f"Generated: {self.scan_timestamp}",
+            "",
+            "SUMMARY:",
+            f"- Files with markers: {self.results['scan_info']['files_with_markers']}",
+            f"- Total markers found: {self.results['scan_info']['total_markers_found']}",
+            "",
+            "TOP MATCHES:",
+        ]
+
+        for file_result in self.results['files_with_markers'][:30]:
+            lines.append(f"- {file_result['file_path']}: {file_result['total_markers']} marker(s)")
+
+        if len(self.results['files_with_markers']) > 30:
+            lines.append(f"- ... and {len(self.results['files_with_markers']) - 30} more files")
+
+        lines.append("")
+        lines.append("For details, review undone.txt and INSTANCES.md.")
+
+        with open(matches_file, 'w', encoding='utf-8') as f:
+            f.write("\n".join(lines))
+        print(f"✅ Updated: {matches_file}")
+
+    def update_matches_md(self):
+        """Update MATCHES.md with current match inventory"""
+        matches_md = self.root_dir / 'MATCHES.md'
+        lines = [
+            "# MATCHES.md",
+            "",
+            "## Current Marker Matches",
+            f"- Generated: {self.scan_timestamp}",
+            f"- Files with markers: {self.results['scan_info']['files_with_markers']}",
+            f"- Total markers found: {self.results['scan_info']['total_markers_found']}",
+            "",
+            "### Top files with nonproduction markers",
+        ]
+
+        for file_result in self.results['files_with_markers'][:20]:
+            lines.append(f"- {file_result['file_path']} — {file_result['total_markers']} markers")
+
+        if len(self.results['files_with_markers']) > 20:
+            lines.append(f"- ... and {len(self.results['files_with_markers']) - 20} more files")
+
+        lines.append("")
+        lines.append("## Notes")
+        lines.append("- MATCHES.md is regenerated from the latest production readiness scan.")
+        lines.append("- Keep this file aligned with MATCHES.txt, INSTANCES.md, resumefromhere.txt, and undone.txt.")
+
+        with open(matches_md, 'w', encoding='utf-8') as f:
+            f.write("\n".join(lines))
+        print(f"✅ Updated: {matches_md}")
+
 
 def main():
     print("🚀 Starting Thorough Production Readiness Scanner...")

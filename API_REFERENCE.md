@@ -19,35 +19,53 @@ complete API documentation for all endpoints in the QMOI Enhanced backend.
 
 ## Authentication
 
-All endpoints (except `/auth/*`) require JWT authentication in the `Authorization` header:
+All endpoints (except `/health`) require API key authentication in the `X-API-Key` header or `Authorization` header:
 
 ```production-validatedbash
-Authorization: Bearer {accessToken}
+# Option 1: X-API-Key header
+X-API-Key: your-api-key-here
+
+# Option 2: Authorization header
+Authorization: Bearer your-api-key-here
 ```production-validated
 
-## Error Responses
+### User Roles and Permissions
 
-All error responses follow this format:
+Users can have different permission levels:
+- `read` - Read-only access to endpoints
+- `write` - Read and write access to AI services
+- `admin` - Full administrative access
+
+### Rate Limiting
+
+API requests are rate limited:
+- **60 requests per minute**
+- **1000 requests per hour**
+
+Rate limit headers are included in responses for monitoring.
+
+### Authentication Errors
 
 ```production-validatedjson
 {
-  "error": {
-    "message": "Error description",
-    "code": "ERROR_CODE",
-    "statusCode": 400
-  }
+  "error": "Authentication required",
+  "message": "Please provide an API key in X-API-Key header or Authorization header"
 }
 ```production-validated
 
-Common status codes:
+```production-validatedjson
+{
+  "error": "Invalid API key",
+  "message": "The provided API key is invalid or inactive"
+}
+```production-validated
 
-- `400` - Bad Request
-- `401` - Unauthorized
-- `403` - Forbidden
-- `404` - Not Found
-- `409` - Conflict
-- `422` - Unprocessable Entity
-- `429` - Too Many Requests
+```production-validatedjson
+{
+  "error": "Insufficient permissions",
+  "message": "Required permission: write"
+}
+```production-validated
 - `500` - Internal Server Error
 
 ---

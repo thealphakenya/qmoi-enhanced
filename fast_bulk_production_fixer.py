@@ -186,6 +186,12 @@ class FastBulkProductionFixer:
         # Update resumefromhere.txt
         self.generate_resumefromhere_txt(results)
         print("✅ Updated resumefromhere.txt")
+        
+        # Update MATCHES tracking files
+        self.generate_matches_txt(results)
+        print("✅ Updated MATCHES.txt")
+        self.generate_matches_md(results)
+        print("✅ Updated MATCHES.md")
 
     def generate_undone_txt(self, results):
         """Generate comprehensive undone.txt"""
@@ -219,6 +225,56 @@ class FastBulkProductionFixer:
         
         with open(os.path.join(self.root_dir, 'undone.txt'), 'w') as f:
             f.write(content)
+
+    def generate_matches_txt(self, results):
+        """Generate MATCHES.txt with current marker matches"""
+        content = [
+            "QMOI PRODUCTION MARKER MATCHES",
+            f"Generated: {self.scan_timestamp}",
+            "",
+            "SUMMARY:",
+            f"- Files with markers: {len(results)}",
+            f"- Total replacements made: {self.replacements_made}",
+            "",
+            "TOP MATCHES:",
+        ]
+
+        for result in sorted(results, key=lambda x: -x['replacements'])[:30]:
+            content.append(f"- {result['file']}: {result['replacements']} replacement(s)")
+
+        if len(results) > 30:
+            content.append(f"- ... and {len(results) - 30} more files")
+
+        content.append("")
+        content.append("See undone.txt for detailed marker information.")
+
+        with open(os.path.join(self.root_dir, 'MATCHES.txt'), 'w', encoding='utf-8') as f:
+            f.write("\n".join(content))
+
+    def generate_matches_md(self, results):
+        """Generate MATCHES.md with current implementation match inventory"""
+        content = [
+            "# MATCHES.md",
+            "",
+            "## Current Production Matches",
+            f"- Updated: {self.scan_timestamp}",
+            f"- Files updated: {len(results)}",
+            f"- Total replacements: {self.replacements_made}",
+            "",
+            "### Top files with delivered production replacements",
+        ]
+
+        for result in sorted(results, key=lambda x: -x['replacements'])[:20]:
+            content.append(f"- {result['file']} — {result['replacements']} replacement(s)")
+
+        if len(results) > 20:
+            content.append(f"- ... and {len(results) - 20} more files")
+
+        content.append("")
+        content.append("This file is synchronized with MATCHES.txt, undone.txt, resumefromhere.txt, and INSTANCES.md.")
+
+        with open(os.path.join(self.root_dir, 'MATCHES.md'), 'w', encoding='utf-8') as f:
+            f.write("\n".join(content))
 
     def generate_instances_md(self, results):
         """Generate INSTANCES.md with execution summary"""
