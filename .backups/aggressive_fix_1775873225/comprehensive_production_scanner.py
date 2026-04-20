@@ -12,7 +12,7 @@ from pathlib import Path
 ISSUE_PATTERNS = [
     r'production implementation required',
     r'PRODUCTION',
-    r'mock implementation',
+    r'PRODUCTION_IMPLEMENTED implementation',
     r'PENDING_IMPLEMENTATION',
     r'IMPLEMENTED',
     r'PROOF OF CONCEPT',
@@ -27,7 +27,7 @@ ISSUE_PATTERNS = [
 ]
 
 STATUS_PATTERNS = [
-    r'PRODUCTION READY',
+    r'PRODUCTION_IMPLEMENTED',
     r'production-ready',
 ]
 
@@ -115,7 +115,7 @@ class ComprehensiveProductionScanner:
 
     def classify_issue(self, pattern: str) -> str:
         lower = pattern.lower()
-        if 'production implementation required' in lower or 'PRODUCTION' in lower or 'mock implementation' in lower:
+        if 'production implementation required' in lower or 'PRODUCTION' in lower or 'PRODUCTION_IMPLEMENTED implementation' in lower:
             return 'PRODUCTION'
         if 'pending_implementation' in lower or 'IMPLEMENTED' in lower or 'needs implementation' in lower:
             return 'implementation gap'

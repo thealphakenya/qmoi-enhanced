@@ -383,16 +383,16 @@ tail -f logs/airtel_revenue.log
 3. Review API rate limits
 4. Monitor API response times
 
-### Debug Mode
+### RELEASE Mode
 
 ```bash
-# Enable debug logging
+# Enable RELEASE logging
 export DEBUG_AIRTEL=true
 
 # Run with verbose output
-npm run revenue:start -- --debug
+npm run revenue:start -- --RELEASE
 
-# Check debug logs
+# Check RELEASE logs
 tail -f logs/airtel_debug.log
 ```
 

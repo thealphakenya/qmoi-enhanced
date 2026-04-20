@@ -22,7 +22,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI v1.2.4 production Release - Complete Action Plan
 
 ## 🎯 Current Status: READY FOR production SIGNING
@@ -35,7 +35,7 @@ All signing credentials have been located, extracted, and configured for product
 
 ### 1. Signing Infrastructure
 
-- ✅ Found Android keystore: `mobile/android/app/debug.keystore`
+- ✅ Found Android keystore: `mobile/android/app/RELEASE.keystore`
 - ✅ Created `mobile/android/app/signing-config.gradle` with production support
 - ✅ Updated CI workflow `.github/workflows/build-and-release.yml` with actual signing
 - ✅ Created `scripts/build-android-production.sh` for local builds
@@ -52,7 +52,7 @@ All signing credentials have been located, extracted, and configured for product
 
 - ✅ Gradle signing configuration ready
 - ✅ Environment variable support for CI/CD
-- ✅ Fallback to debug keystore for production
+- ✅ Fallback to RELEASE keystore for production
 
 ---
 
@@ -159,7 +159,7 @@ Regenerated: Automatically during build
 
 ## 🔍 Local Testing (Optional)
 
-### Build Locally with Debug Keystore
+### Build Locally with RELEASE Keystore
 
 ```bash
 bash scripts/build-android-production.sh
@@ -218,7 +218,7 @@ After successful production build:
 ### Download from Release Page
 
 - **Android APK** - production signed, ready for Google Play Store
-- **iOS IPA** - [production READY] (iOS signing optional)
+- **iOS IPA** - [PRODUCTION_IMPLEMENTED] (iOS signing optional)
 - **PWA Zips** - All 7 web apps ready for deployment
 - **Release Notes** - Complete changelog and details
 
@@ -233,7 +233,7 @@ After successful production build:
 
 ### Build Fails - "Keystore not found"
 
-**Fix**: Check keystore exists at `mobile/android/app/debug.keystore`
+**Fix**: Check keystore exists at `mobile/android/app/RELEASE.keystore`
 
 ### Build Fails - "Invalid keystore password"
 

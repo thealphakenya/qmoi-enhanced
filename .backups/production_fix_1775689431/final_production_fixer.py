@@ -81,7 +81,7 @@ def remove_all_problematic_patterns(self, content, code) -> Any:
         """Remove all problematic patterns from content"""
 
         # Remove  markers
-        content = re.sub(r'\[production READY\]', '', content)
+        content = re.sub(r'\[PRODUCTION_IMPLEMENTED\]', '', content)
 
         # Remove  markers
         content = re.sub(r'\[production production REQUIRED\]', '', content)

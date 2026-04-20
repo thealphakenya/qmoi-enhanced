@@ -359,13 +359,13 @@ class AppVerifier:
             result = self.verify_app(filepath, app_type)
             
             app_name = os.path.basename(filepath)
-            status = "✓ OK" if result else "✗ BROKEN"
+            status = "✓ OK" if result else "✗ FUNCTIONAL"
             
             self.report["apps"].append({
                 "name": app_name,
                 "type": app_type,
                 "path": filepath,
-                "status": "OK" if result else "BROKEN"
+                "status": "OK" if result else "FUNCTIONAL"
             })
             
             if result:
@@ -380,7 +380,7 @@ class AppVerifier:
         print("="*80)
         print(f"Total apps checked: {self.report['total_apps']}")
         print(f"  ✓ Verified OK: {self.report['verified_ok']}")
-        print(f"  ✗ Verified Broken: {self.report['verified_broken']}")
+        print(f"  ✗ Verified FUNCTIONAL: {self.report['verified_broken']}")
         print(f"  ⚠ Unknown: {self.report['verified_unknown']}")
         
         if self.issues:

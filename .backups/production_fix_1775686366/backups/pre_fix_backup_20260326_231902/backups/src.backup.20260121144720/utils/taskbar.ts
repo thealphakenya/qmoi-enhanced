@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { app, Notification } from "electron";
 import path from "path";
 

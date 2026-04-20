@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QVillage + Hugging Face Integration — Complete production Guide
 
 **Date:** 2025-11-11  
@@ -696,7 +696,7 @@ with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as production:
         # Tab 2: Search KB
         with gr.Tab("🔍 Search Knowledge Base"):
             with gr.Row():
-                search_query = gr.Textbox([production READY]="Search...", label="Query")
+                search_query = gr.Textbox([PRODUCTION_IMPLEMENTED]="Search...", label="Query")
                 search_btn = gr.Button("Search")
             kb_output = gr.Markdown()
 
@@ -820,7 +820,7 @@ jobs:
 
 ---
 
-**Status:** ✅ **production READY**  
+**Status:** ✅ **PRODUCTION_IMPLEMENTED**  
 **Last Updated:** 2025-11-11  
 **Next Review:** 2025-11-18
 

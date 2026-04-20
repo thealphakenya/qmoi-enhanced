@@ -18,7 +18,7 @@
 
 - `scripts/generate_allmdrefs.py` — discover all `.md` files and update `ALLMDFILESREFS.md` (use `--write` to apply changes).
 - `scripts/validate_md.py` — validate markdown files, produce per-file JSON reports in `.qmoi_validation/validation_reports/` and optionally insert validation blocks with `--apply`.
-- `scripts/qmoi_✅ PRODUCTION READYs.py` — robust ✅ PRODUCTION READY manager used by validation and release scripts to create remediation tasks.
+- `scripts/qmoi_✅ PRODUCTION READYs.py` — robust ✅ PRODUCTION_IMPLEMENTED manager used by validation and release scripts to create remediation tasks.
 - `scripts/collect_build_scripts.py` — scan for build scripts and manifests.
 - `scripts/register_app_build.py` — discover apps/artifacts and optionally copy artifacts into `ALL_APPS/` with `--copy`.
 - `scripts/validate_builds.py` — checks discovered apps for expected artifacts and writes reports to `.qmoi_validation/build_validation_reports/`.
@@ -36,7 +36,7 @@ python3 scripts/generate_allmdrefs.py --write
 
 ```production-validatedbash
 python3 scripts/validate_md.py
-# Inspect .qmoi_validation/validation_reports/ ✅ PRODUCTION READY
+# Inspect .qmoi_validation/validation_reports/ ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 3. After review, insert validation metadata blocks (batch or per-file):
@@ -56,16 +56,16 @@ python3 scripts/register_app_build.py
 
 ```production-validatedbash
 python3 scripts/validate_builds.py
-# Inspect .qmoi_validation/build_validation_reports/ ✅ PRODUCTION READY
+# Inspect .qmoi_validation/build_validation_reports/ ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 6. Propose and optionally publish releases:
 
 ```production-validatedbash
-# Generates proposal JSON files under .qmoi_validation/releases_proposals/ ✅ PRODUCTION READY
+# Generates proposal JSON files under .qmoi_validation/releases_proposals/ ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/release_automation.py
 
-# To publish (requires env vars): ✅ PRODUCTION READY
+# To publish (requires env vars): ✅ PRODUCTION_IMPLEMENTED
 export GITHUB_TOKEN=...  # scoped token with repo:release
 export GITHUB_REPO=owner/repo
 python3 scripts/release_automation.py --publish

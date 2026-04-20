@@ -16,20 +16,20 @@
 
 ## Summary of matches
 
-- Line 3: [production READY]_prod fetch globally
-- Line 6: [production READY]_prod window.matchMedia
-- Line 9: value: jest.fn().[production READY]_prodImplementation((query) => ({
-- Line 21: [production READY]_prod localStorage
-- Line 22: const localStorage[production READY]_prod = {
-- Line 28: global.localStorage = localStorage[production READY]_prod;
-- Line 30: [production READY]_prod sessionStorage
-- Line 31: const sessionStorage[production READY]_prod = {
-- Line 37: global.sessionStorage = sessionStorage[production READY]_prod;
-- Line 39: [production READY]_prod console methods to reduce noise in tests
+- Line 3: [PRODUCTION_IMPLEMENTED]_prod fetch globally
+- Line 6: [PRODUCTION_IMPLEMENTED]_prod window.matchMedia
+- Line 9: value: jest.fn().[PRODUCTION_IMPLEMENTED]_prodImplementation((query) => ({
+- Line 21: [PRODUCTION_IMPLEMENTED]_prod localStorage
+- Line 22: const localStorage[PRODUCTION_IMPLEMENTED]_prod = {
+- Line 28: global.localStorage = localStorage[PRODUCTION_IMPLEMENTED]_prod;
+- Line 30: [PRODUCTION_IMPLEMENTED]_prod sessionStorage
+- Line 31: const sessionStorage[PRODUCTION_IMPLEMENTED]_prod = {
+- Line 37: global.sessionStorage = sessionStorage[PRODUCTION_IMPLEMENTED]_prod;
+- Line 39: [PRODUCTION_IMPLEMENTED]_prod console methods to reduce noise in tests
 
 ## required action
 
-Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

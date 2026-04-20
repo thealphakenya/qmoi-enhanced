@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# EXAMPLES ✅ PRODUCTION READY
+# EXAMPLES ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `examples/` directory.
 

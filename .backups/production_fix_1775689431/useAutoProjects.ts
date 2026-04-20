@@ -246,7 +246,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const notifyMaster = useCallback(async (message: string) => {
     try {
-      [production READY] WhatsApp notification to master
+      [PRODUCTION_IMPLEMENTED] WhatsApp notification to master
       .log("📱 WhatsApp notification to master:", message);
 
       // In /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
@@ -262,7 +262,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const createWhatsAppGroup = useCallback(async () => {
     try {
-      [production READY] creating WhatsApp group
+      [PRODUCTION_IMPLEMENTED] creating WhatsApp group
       .log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
       // In /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
@@ -284,7 +284,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
 
   const postToWhatsAppGroup = useCallback(async (message: string) => {
     try {
-      [production READY] posting to WhatsApp group
+      [PRODUCTION_IMPLEMENTED] posting to WhatsApp group
       .log("📱 Posting to WhatsApp group:", message);
 
       // In /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API

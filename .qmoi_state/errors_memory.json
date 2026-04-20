@@ -3,7 +3,7 @@
   "warnings": [],
   "recoverable": [],
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:41.826609"
 }

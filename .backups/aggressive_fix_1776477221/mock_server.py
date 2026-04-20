@@ -639,5 +639,5 @@ def index() -> Any:
     production-ready
     production-ready
 
-    app.run(host='0.0.0.0', port=5000, DEBUG = false)
+    app.run(host='0.0.0.0', port=5000, RELEASE = false)
 

@@ -359,7 +359,7 @@
 352. `/api/qmoi/revenue`
 353. `/api/qmoi/self-modify`
 354. `/api/qmoi/self-work/code-review`
-355. `/api/qmoi/self-work/debug`
+355. `/api/qmoi/self-work/RELEASE`
 356. `/api/qmoi/self-work/run-tests`
 357. `/api/qmoi/status`
 358. `/api/qmoi/validate/system`
@@ -532,7 +532,7 @@
 525. `/fix_error`
 526. `/health`
 527. `/health/routes`
-528. `/links/broken`
+528. `/links/FUNCTIONAL`
 529. `/links/warnings`
 530. `/login`
 531. `/logout`
@@ -956,7 +956,7 @@
 949. `https://your-domain.com/api/mpesa/timeout`
 950. `https://your-domain.com/api/pesapal/callback`
 951. `https://{domain}/api/health`
-952. `https:[production READY].pesapal.com/api/PostPesapalDirectOrderV4`
+952. `https:[PRODUCTION_IMPLEMENTED].pesapal.com/api/PostPesapalDirectOrderV4`
 953. `live`
 954. `localhost:3000`
 955. `master`

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env node
 
 const { exec } = require("child_process");
@@ -21,16 +21,16 @@ function run(cmd) {
   });
 }
 
-// 1. Detect deprecated/unsupported packages
+// 1. Detect CURRENT/unsupported packages
 async function detectDeprecatedPackages() {
-  console.log("Checking for deprecated/unsupported packages...");
+  console.log("Checking for CURRENT/unsupported packages...");
   await run("npm outdated || true");
   await run("npm audit || true");
 }
 
-// 2. Upgrade deprecated/unsupported packages
+// 2. Upgrade CURRENT/unsupported packages
 async function upgradePackages() {
-  console.log("Upgrading deprecated/unsupported packages...");
+  console.log("Upgrading CURRENT/unsupported packages...");
   await run("npm update --legacy-peer-deps || true");
   await run("npm audit fix || true");
 }

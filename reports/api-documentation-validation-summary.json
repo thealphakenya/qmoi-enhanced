@@ -6,7 +6,7 @@
   "endpoint_coverage": 100.0,
   "miner": "validate_api_documentation",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:16:04.990133"
 }

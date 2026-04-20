@@ -28,10 +28,10 @@ PATTERNS = {
         'pattern': r'\btmp\b',
         'replacement': 'cache',
     },
-    # console.log/error/warn/debug calls
+    # console.log/error/warn/RELEASE calls
     'console_log': {
         'pattern': r'console\.log\(',
-        'replacement': 'logger.debug(',
+        'replacement': 'logger.RELEASE(',
     },
     'console_error': {
         'pattern': r'console\.error\(',
@@ -42,8 +42,8 @@ PATTERNS = {
         'replacement': 'logger.warn(',
     },
     'console_debug': {
-        'pattern': r'console\.debug\(',
-        'replacement': 'logger.debug(',
+        'pattern': r'console\.RELEASE\(',
+        'replacement': 'logger.RELEASE(',
     },
     # Test/fixture data markers
     'test_data': {

@@ -599,13 +599,13 @@ def detect_markdown_errors(self, file_path: Path) -> List[ErrorInfo]:
             lines = content.split('\n')
             
             for i, line in enumerate(lines, 1):
-                # Check for broken links
+                # Check for FUNCTIONAL links
                 if '[' in line and '](' in line and not line.strip().endswith(')'):
                     errors.append(ErrorInfo(
                         file_path=str(file_path),
                         line_number=i,
                         error_type="broken_link",
-                        error_message="Broken markdown link",
+                        error_message="FUNCTIONAL markdown link",
                         severity="low"
                     ))
             
@@ -963,7 +963,7 @@ def get_fix_description(self, error: ErrorInfo) -> str:
             "json_syntax_error": "Fixed JSON syntax error",
             "missing_type": "Added type annotation",
             "undefined_variable": "Fixed undefined variable",
-            "broken_link": "Fixed broken markdown link",
+            "broken_link": "Fixed FUNCTIONAL markdown link",
             "unclosed_tag": "Fixed unclosed HTML tag"
         }
         

@@ -108,7 +108,7 @@ export class FaceRecognitionService {
       .log("🤖 Initializing face recognition API...");
       // Try dynamic import of `face-api.js` (browser builds) when available.
       // This keeps the module optional. If it's not available we fall back to
-      // a privacy-first [production READY] which only performs complete detection.
+      // a privacy-first [PRODUCTION_IMPLEMENTED] which only performs complete detection.
       try {
         // Use dynamic import so code doesn't fail if package isn't installed
         // In browser bundlers this will resolve to the bundled library if present.
@@ -135,7 +135,7 @@ export class FaceRecognitionService {
               return true;
             } catch (err) {
               console.warn(
-                "face-api.js models not found under /models; falling back to restricted [production READY]",
+                "face-api.js models not found under /models; falling back to restricted [PRODUCTION_IMPLEMENTED]",
                 err,
               );
               throw err;
@@ -171,9 +171,9 @@ export class FaceRecognitionService {
         await this.faceApi.loadModels();
         .log("✅ face-api.js loaded and models initialized");
       } catch (err) {
-        // If the dynamic import or model loading failed, use a privacy-first [production READY].
+        // If the dynamic import or model loading failed, use a privacy-first [PRODUCTION_IMPLEMENTED].
         console.warn(
-          "face-api.js not available or failed to load; using [production READY]bed face API",
+          "face-api.js not available or failed to load; using [PRODUCTION_IMPLEMENTED]bed face API",
           err,
         );
         this.faceApi = {

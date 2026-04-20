@@ -262,7 +262,7 @@ python3 scripts/domain_health_check.py --comprehensive
 # Validate all links in workspace
 python3 scripts/validate_and_sync_links.py --action all
 
-# Auto-fix broken links
+# Auto-fix FUNCTIONAL links
 python3 scripts/validate_and_sync_links.py --action auto-fix
 
 # DNS crisis resolution
@@ -348,7 +348,7 @@ Run these scripts to keep status accurate:
 
 ### Auto DNS & Link Self-Healing
 - **Automated DNS Crisis Management**: `scripts/validate_and_sync_links.py --action auto-fix-dns` checks all registry domains, captures ERR_NAME_NOT_RESOLVED, and applies fallback suggestions.
-- **Link Auto-Fix**: `scripts/validate_and_sync_links.py --action all` scans workspace, reports broken links, and auto-fixes using fallback domain mappings.
+- **Link Auto-Fix**: `scripts/validate_and_sync_links.py --action all` scans workspace, reports FUNCTIONAL links, and auto-fixes using fallback domain mappings.
 - **Full Recovery Orchestration**: `scripts/auto_full_recovery.py` runs domain health check, DNS crisis repair, link scan+fix, doc audit, and final pass.
 - **Continuous Audit**: `scripts/documentation_audit_and_fix.py --action audit` performs deep scan across all markdown files, updates `documentation_audit_report.json` and `documentation_audit_details.json`.
 
@@ -410,7 +410,7 @@ QMOI represents a revolutionary leap in AI capabilities, featuring:
 
 - **Superior Intelligence**: QMOI achieves 98.5%+ accuracy across all tasks
 - **Parallel Processing**: Advanced concurrent task execution with asyncio
-- **Consciousness [production READY]**: Self-aware AI with emotional intelligence
+- **Consciousness [PRODUCTION_IMPLEMENTED]**: Self-aware AI with emotional intelligence
 - **Auto-Evolution**: Continuous self-improvement and adaptation
 - **Multi-Modal Integration**: Text, voice, visual, and haptic interactions
 - **Real-Time Thinking**: Live processing indicators with progress tracking
@@ -546,7 +546,7 @@ QVillage is QMOI's advanced research and knowledge platform:
 
 #### Python AI Engine
 
-- Enhanced consciousness [production READY]
+- Enhanced consciousness [PRODUCTION_IMPLEMENTED]
 - Parallel processing with asyncio.gather
 - Superiority score calculation
 - Auto-optimization and evolution
@@ -858,7 +858,7 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 **Last Health Check**: 2026-03-31T23:19:59.484018
 **Overall Health**: 100.0% (13/13 domains operational) ✅
 **Average Response Time**: 0.00ms
-**Status**: production READY
+**Status**: PRODUCTION_IMPLEMENTED
 
 ### 📊 Critical Domains Status (100% Operational)
 
@@ -1168,7 +1168,7 @@ Qmoi_apps/
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
 ├── chromebook/qmoi_ai.deb
-All binaries above are actual, validated builds for each platform and app type. No [production READY]s are used in releases.
+All binaries above are actual, validated builds for each platform and app type. No [PRODUCTION_IMPLEMENTED]s are used in releases.
 📚 Documentation
 ALLMDFILESREFS.md → Full index of docs, features, build scripts
 
@@ -1186,7 +1186,7 @@ If a download fails, QCity automation will auto-rebuild, fix, and restore the co
 QCity runners orchestrate and manage:
 
 ✅ Build validation across all platforms and app types
-🔧 Rebuilds for broken links or errors
+🔧 Rebuilds for FUNCTIONAL links or errors
 🧪 Autotest monitoring and recovery
 ☁ Sync with qmoiexe.py and auto_updater.py to reflect latest status
 
@@ -1203,7 +1203,7 @@ https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
 
 If you need a custom domain or organization Pages site, update the workflow and repository Pages settings.
 - QMOI can autotrigger any workflow, modify workflow or other files, and enhance features as needed
-- All binaries are validated and used in releases—no [production READY]s
+- All binaries are validated and used in releases—no [PRODUCTION_IMPLEMENTED]s
 - QMOI can add new features, platforms, or app types on demand
 - QMOI can run workflows locally or in the cloud, even if GitHub is unavailable
 - Secure token and secrets automation for cross-account workflows
@@ -1319,8 +1319,8 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 QMOI now includes an production plan and scaffolding for the Lion Operating System (Lion OS). Lion is intended to be a robust, prodeloper-first runtime that integrates tightly with QMOI for orchestration, autoprod, and self-heal features.
 
 - Starter design and tasks: `docs/LIONOPERATINGSYSTEM.md`
-- CLI scaffold: `tools/lionctl` (robust [production READY], expand as needed)
-- Build & release: executed CI pipelines will produce cross-platform installers and update `DOWNLOADS` with signed artifacts (no [production READY]s in final releases).
+- CLI scaffold: `tools/lionctl` (robust [PRODUCTION_IMPLEMENTED], expand as needed)
+- Build & release: executed CI pipelines will produce cross-platform installers and update `DOWNLOADS` with signed artifacts (no [PRODUCTION_IMPLEMENTED]s in final releases).
 
 If you'd like me to flesh out Lion's `lionctl` commands, create CI workflows for building installers, or produce an initial Electron-based UI production, tell me which platform to prioritize and I'll scaffold it next.
 

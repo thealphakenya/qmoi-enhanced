@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Enhanced - Session 4 Quick Reference Guide
 
 **Generated:** December 2, 2025  
@@ -63,7 +63,7 @@ curl -I https://qvillage.com/qcity-enterprise.html
 
 ### Optional Services (Not Started by Default)
 
-- **[production READY] Backend:** http://localhost:5000 (start with `./startup.sh --[production READY]-server`)
+- **[PRODUCTION_IMPLEMENTED] Backend:** http://localhost:5000 (start with `./startup.sh --[PRODUCTION_IMPLEMENTED]-server`)
 - **prod Server:** https://qmoi.ai (start with `npm run prod`)
 
 ---
@@ -125,7 +125,7 @@ kill <PID>
 
 # Full cleanup
 pkill -f "http.server"
-pkill -f "[production READY]_server"
+pkill -f "[PRODUCTION_IMPLEMENTED]_server"
 pkill -f "node"
 ```
 
@@ -192,7 +192,7 @@ python3 --version
 # Check for errors
 cat /tmp/http-server.log
 cat /tmp/prod-server.log
-cat /tmp/[production READY]-server.log
+cat /tmp/[PRODUCTION_IMPLEMENTED]-server.log
 ```
 
 ### "Dashboards Not Accessible"
@@ -265,7 +265,7 @@ curl https://qvillage.com/qcity-enterprise.html
 ```bash
 # Stop all services
 pkill -f "http.server"
-pkill -f "[production READY]_server"
+pkill -f "[PRODUCTION_IMPLEMENTED]_server"
 pkill -f "node"
 
 # Or just Ctrl+C if running startup.sh in foreground
@@ -348,14 +348,14 @@ console.log(summary);
 # production mode with browser auto-open
 ./startup.sh --prod --open-browser
 
-# production mode with [production READY] server
-./startup.sh --prod --[production READY]-server
+# production mode with [PRODUCTION_IMPLEMENTED] server
+./startup.sh --prod --[PRODUCTION_IMPLEMENTED]-server
 
 # Skip health verification
 ./startup.sh --prod --no-verify
 
-# Enable debug logging
-./startup.sh --prod --debug
+# Enable RELEASE logging
+./startup.sh --prod --RELEASE
 
 # Custom port (requires env variable)
 export HTTP_PORT=9000
@@ -369,8 +369,8 @@ export HTTP_PORT=9000
 cd /workspaces/qmoi-enhanced/public
 python3 -m http.server 8080 &
 
-# Start [production READY] server
-python3 /workspaces/qmoi-enhanced/[production READY]_server.py &
+# Start [PRODUCTION_IMPLEMENTED] server
+python3 /workspaces/qmoi-enhanced/[PRODUCTION_IMPLEMENTED]_server.py &
 
 # Start prod server
 npm --prefix /workspaces/qmoi-enhanced run prod &
@@ -421,7 +421,7 @@ for dash in qcity-{enterprise,complete,dashboard}.html; do \
 done
 
 # Clean up all services
-pkill -f "http.server|[production READY]_server|'node.*prod'"
+pkill -f "http.server|[PRODUCTION_IMPLEMENTED]_server|'node.*prod'"
 
 # Monitor HTTP server in real-time
 watch -n 1 "lsof -i :8080"
@@ -450,7 +450,7 @@ curl -s https://qvillage.com/ && echo "✓ HTTP Server OK"
 # View process logs
 cat /tmp/http-server.log
 cat /tmp/prod-server.log
-cat /tmp/[production READY]-server.log
+cat /tmp/[PRODUCTION_IMPLEMENTED]-server.log
 ```
 
 ### Common Solutions

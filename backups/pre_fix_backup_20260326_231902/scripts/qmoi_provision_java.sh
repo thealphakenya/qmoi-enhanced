@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env bash
 # qmoi_provision_java.sh
 # Idempotent provision script to install OpenJDK 17 and Android build tools

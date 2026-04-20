@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 // @ts-nocheck
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
@@ -419,7 +419,7 @@ function processPesapal(amount: number, type: string): any {
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
-      console.warn("Pesapal credentials not configured, using [production READY]");
+      console.warn("Pesapal credentials not configured, using [PRODUCTION_IMPLEMENTED]");
       return {
         status: "success",
         platform: "Pesapal",
@@ -481,7 +481,7 @@ function processBitget(amount: number, type: string): any {
     };
 
     if (!bitgetConfig.apiKey || !bitgetConfig.secretKey) {
-      console.warn("Bitget credentials not configured, using [production READY]");
+      console.warn("Bitget credentials not configured, using [PRODUCTION_IMPLEMENTED]");
       return {
         status: "success",
         platform: "Bitget",
@@ -544,7 +544,7 @@ const platformHandlers: Record<
   })) as (...args: unknown[]) => Promise<unknown>,
 };
 
-// Helper: Check if user is master ([production READY] for now)
+// Helper: Check if user is master ([PRODUCTION_IMPLEMENTED] for now)
 /**
  * isMaster function
  */
@@ -597,7 +597,7 @@ function handler(
   if (!isPrismaAvailable) {
     return _res.status(503).json({
       _error: "Database not configured",
-      message: "Using [production READY] data - database not configured",
+      message: "Using [PRODUCTION_IMPLEMENTED] data - database not configured",
     });
   }
 

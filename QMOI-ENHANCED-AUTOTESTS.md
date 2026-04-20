@@ -24,11 +24,11 @@
 
 # QMOI Enhanced Automation Autoproduction configuration
 npm run production dbash
-# Run tests in debug mode ✅ PRODUCTION READY
-npm run test:debug
+# Run tests in RELEASE mode ✅ PRODUCTION_IMPLEMENTED
+npm run test:RELEASE
 
-# Run specific test in debug mode ✅ PRODUCTION READY
-npm run test:debug -- --testNamePattern="Button Component"
+# Run specific test in RELEASE mode ✅ PRODUCTION_IMPLEMENTED
+npm run test:RELEASE -- --testNamePattern="Button Component"
 ```production-validated
 
 ## Support

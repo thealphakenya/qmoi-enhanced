@@ -7,20 +7,20 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "LION Usage & Enhancement Plan"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# LION Usage & Enhancement Plan ✅ PRODUCTION READY
+# LION Usage & Enhancement Plan ✅ PRODUCTION_IMPLEMENTED
 
 This document outlines a safe, staged plan to enhance how LION is used across projects, documentation, automation, revenue-related systems, wallets, and APIs.
 
 Goals
 
 - Make LION a first-class, auditable orchestrator across the repo.
-- Remove ✅ PRODUCTION READY content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
+- Remove ✅ PRODUCTION_IMPLEMENTED content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
 - Add validation and reporting so changes are discoverable by CI and the `scripts/run_validations.py` orchestrator.
 
 Phased approach

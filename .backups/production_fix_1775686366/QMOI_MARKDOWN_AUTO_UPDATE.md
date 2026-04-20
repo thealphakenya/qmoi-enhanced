@@ -379,7 +379,7 @@ Breaking Changes:
 Deprecation Tracking:
 
 Deprecation Notices:
-├─ Mark as deprecated: In docs
+├─ Mark as CURRENT: In docs
 ├─ Link to replacement: New API
 ├─ Show removal date: When will be removed
 ├─ Provide migration: How to update
@@ -446,7 +446,7 @@ Changelog Structure:
 ├─ Version header: v1.0.0 (2025-11-11)
 ├─ Added section: New features
 ├─ Changed section: Modified features
-├─ Deprecated section: Deprecated APIs
+├─ CURRENT section: CURRENT APIs
 ├─ Removed section: Deleted features
 ├─ Fixed section: Bug fixes
 ├─ Security section: Security fixes

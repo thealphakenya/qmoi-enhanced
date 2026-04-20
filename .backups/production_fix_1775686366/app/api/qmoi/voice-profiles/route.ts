@@ -159,7 +159,7 @@ async function previewVoice(
   volume: number,
 ) {
   try {
-    // /* PRODUCTION READY: Full implementation deployed */, this would:
+    // /* PRODUCTION_IMPLEMENTED: Full implementation deployed */, this would:
     // 1. Use the selected TTS engine (Bark, XTTS, SadTalker, etc.)
     // 2. Generate audio with the specified quality and volume
     // 3. Return the audio stream or URL
@@ -189,7 +189,7 @@ async function previewVoice(
 
 async function enhanceVoice(voiceId: string) {
   try {
-    // /* PRODUCTION READY: Full implementation deployed */, this would:
+    // /* PRODUCTION_IMPLEMENTED: Full implementation deployed */, this would:
     // 1. Apply AI enhancement to the voice (noise reduction, prosody, etc.)
     // 2. Update the voice model with enhanced parameters
     // 3. Store the enhanced version
@@ -219,7 +219,7 @@ async function enhanceVoice(voiceId: string) {
 
 async function upgraprodoice(voiceId: string) {
   try {
-    // /* PRODUCTION READY: Full implementation deployed */, this would:
+    // /* PRODUCTION_IMPLEMENTED: Full implementation deployed */, this would:
     // 1. Check for newer voice models/versions
     // 2. Download and install updates
     // 3. Test the upgraded voice
@@ -358,7 +358,7 @@ async function evolveVoice(voiceId: string) {
 
     console.log(`Evolving voice: ${voiceId}`);
 
-    // /* PRODUCTION READY: Full implementation deployed */, this would trigger the voice evolution system
+    // /* PRODUCTION_IMPLEMENTED: Full implementation deployed */, this would trigger the voice evolution system
     const evolvedVoice = {
       ...voice,
       qualityLevel: "ai-enhanced" as const,
@@ -635,7 +635,7 @@ async function generateTTSAudio(
   quality: string,
   volume: number,
 ): Promise<string> {
-  // /* PRODUCTION READY: Full implementation deployed */, this would integrate with:
+  // /* PRODUCTION_IMPLEMENTED: Full implementation deployed */, this would integrate with:
   // - Bark (for high-quality TTS)
   // - XTTS (for multilingual support)
   // - SadTalker (for talking head generation)

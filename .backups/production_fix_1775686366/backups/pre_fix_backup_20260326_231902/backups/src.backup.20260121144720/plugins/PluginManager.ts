@@ -1,4 +1,4 @@
-// QMOI Plugin Manager [production READY]
+// QMOI Plugin Manager [PRODUCTION_IMPLEMENTED]
 
 import React from "react";
 import { prodiceHealthReviewerPlugin } from "./prodiceHealthReviewerPlugin";

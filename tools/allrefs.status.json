@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "All": {
     "category": "included"
@@ -672,7 +672,7 @@
   "components/prodice/AzureCredentialsModal.tsx": {
     "category": "skip"
   },
-  "components/prodice/prodiceIntegration[production READY]s.ts": {
+  "components/prodice/prodiceIntegration[PRODUCTION_IMPLEMENTED]s.ts": {
     "category": "skip"
   },
   "components/prodice/GCPCredentialsModal.tsx": {
@@ -738,7 +738,7 @@
   "components/\uf8ff\u00fc\u00f5\u00b0\u00f4\u220f\u00e8_automated_build,_install,_and_error_fix_strategies.tsx": {
     "category": "skip"
   },
-  "continue[production READY]s.txt": {
+  "continue[PRODUCTION_IMPLEMENTED]s.txt": {
     "category": "skip"
   },
   "cypress/e2e/qmoi_kernel_panel_concurrent_impersonation.cy.js": {
@@ -849,7 +849,7 @@
   "docs/REVENUE_SPEC.md.generated.md": {
     "category": "skip"
   },
-  "docs/[production READY]S_ENHANCEMENTS.md": {
+  "docs/[PRODUCTION_IMPLEMENTED]S_ENHANCEMENTS.md": {
     "category": "skip"
   },
   "docs/VALIDATIONSYSTEMS.md": {
@@ -876,7 +876,7 @@
   "docs/merged_remediation_plan.md": {
     "category": "skip"
   },
-  "docs/[production READY]s_report.json": {
+  "docs/[PRODUCTION_IMPLEMENTED]s_report.json": {
     "category": "manual"
   },
   "docs/qmoi_space_enhancements.md": {
@@ -1149,13 +1149,13 @@
   "package.json.bak": {
     "category": "skip"
   },
-  "payments/provider_[production READY].py": {
+  "payments/provider_[PRODUCTION_IMPLEMENTED].py": {
     "category": "skip"
   },
   "payments/stripe_adapter.py": {
     "category": "skip"
   },
-  "[production READY]_scan_summary.md": {
+  "[PRODUCTION_IMPLEMENTED]_scan_summary.md": {
     "category": "skip"
   },
   "public/favicon.ico": {
@@ -1746,7 +1746,7 @@
   "qmoi-enhanced/components/prodice/AzureCredentialsModal.tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/prodice/prodiceIntegration[production READY]s.ts": {
+  "qmoi-enhanced/components/prodice/prodiceIntegration[PRODUCTION_IMPLEMENTED]s.ts": {
     "category": "manual"
   },
   "qmoi-enhanced/components/prodice/GCPCredentialsModal.tsx": {
@@ -2784,13 +2784,13 @@
   "reports/lint-report.json": {
     "category": "skip"
   },
-  "reports/[production READY]s.json": {
+  "reports/[PRODUCTION_IMPLEMENTED]s.json": {
     "category": "manual"
   },
   "reports/suggestions.json": {
     "category": "manual"
   },
-  "resume[production READY]s.txt": {
+  "resume[PRODUCTION_IMPLEMENTED]s.txt": {
     "category": "skip"
   },
   "routes/api/qcity/ai/fix.ts": {
@@ -2853,7 +2853,7 @@
   "scripts/autotest/advanced_autotest_system.py": {
     "category": "skip"
   },
-  "scripts/check_[production READY]s.py": {
+  "scripts/check_[PRODUCTION_IMPLEMENTED]s.py": {
     "category": "manual"
   },
   "scripts/colab_manager.py": {
@@ -2922,7 +2922,7 @@
   "scripts/error_tracker.py": {
     "category": "skip"
   },
-  "scripts/expand_platform_[production READY]s.py": {
+  "scripts/expand_platform_[PRODUCTION_IMPLEMENTED]s.py": {
     "category": "skip"
   },
   "scripts/fast_git_commit.py": {
@@ -3003,7 +3003,7 @@
   "scripts/optimizer.py": {
     "category": "skip"
   },
-  "scripts/[production READY]_scanner.py": {
+  "scripts/[PRODUCTION_IMPLEMENTED]_scanner.py": {
     "category": "manual"
   },
   "scripts/platform_manager.py": {
@@ -3291,7 +3291,7 @@
   "scripts/qmoi_self_test_runner.js": {
     "category": "skip"
   },
-  "scripts/qmoi_[production READY]s.py": {
+  "scripts/qmoi_[PRODUCTION_IMPLEMENTED]s.py": {
     "category": "skip"
   },
   "scripts/qmoi_wallet_monitor.py": {
@@ -3306,13 +3306,13 @@
   "scripts/release_automation.py": {
     "category": "skip"
   },
-  "scripts/replace_[production READY]s.py": {
+  "scripts/replace_[PRODUCTION_IMPLEMENTED]s.py": {
     "category": "manual"
   },
   "scripts/revenue_enhancer.py": {
     "category": "skip"
   },
-  "scripts/run_[production READY]_scans.py": {
+  "scripts/run_[PRODUCTION_IMPLEMENTED]_scans.py": {
     "category": "skip"
   },
   "scripts/run_validations.py": {
@@ -3324,7 +3324,7 @@
   "scripts/scan_and_index.py": {
     "category": "manual"
   },
-  "scripts/scan_replace_[production READY]s.py": {
+  "scripts/scan_replace_[PRODUCTION_IMPLEMENTED]s.py": {
     "category": "manual"
   },
   "scripts/services/analytics_optimization.ts": {
@@ -3711,7 +3711,7 @@
   "teststoadd.txt": {
     "category": "skip"
   },
-  "tools/auto_fix_[production READY]s.py": {
+  "tools/auto_fix_[PRODUCTION_IMPLEMENTED]s.py": {
     "category": "auto",
     "patch": "tools/patches/74ddf5a1585e1c97907f5e3b70c046a8f629ad2e.patch"
   },
@@ -3724,7 +3724,7 @@
   "tools/extract_comments.py": {
     "category": "skip"
   },
-  "tools/find_[production READY]s.py": {
+  "tools/find_[PRODUCTION_IMPLEMENTED]s.py": {
     "category": "manual"
   },
   "tools/lion.env.data": {

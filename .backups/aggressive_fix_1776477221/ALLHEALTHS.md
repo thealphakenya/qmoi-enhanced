@@ -100,7 +100,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `CASHONTRADINGREADME.md`
 - `CHANGES.md`
 - `CHATBOT.md`
-- `CI-DEBUG-OUTPUTS.md`
+- `CI-RELEASE-OUTPUTS.md`
 - `CLOUD_CONFIG.md`
 - `CMDCOMMANDS.md`
 - `COLAB_DAGSHUB_DEPLOY_CHECKLIST.md`
@@ -2381,7 +2381,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `scripts/fix_deployment_issues.py`
 - `scripts/fix_removed_placeholders_batch.py`
 - `scripts/force_full_domain_health.py`
-- `scripts/generate-debug-report.js`
+- `scripts/generate-RELEASE-report.js`
 - `scripts/generate_all_links.py`
 - `scripts/generate_allhealths.py`
 - `scripts/generate_allmdrefs.py`
@@ -3084,7 +3084,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `app/api/datasets/route.ts`
 - `app/api/datasets/settings/route.ts`
 - `app/api/deals.ts`
-- `app/api/debug/users/route.ts`
+- `app/api/RELEASE/users/route.ts`
 - `app/api/deploy/auto-redeploy/route.ts`
 - `app/api/deploy/route.ts`
 - `app/api/deployment-status.ts`
@@ -3324,7 +3324,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `src/app/api/qmoi/health/route.ts`
 - `src/app/api/qmoi/health/stream/route.ts`
 - `src/app/api/qmoi/self-work/code-review/route.ts`
-- `src/app/api/qmoi/self-work/debug/route.ts`
+- `src/app/api/qmoi/self-work/RELEASE/route.ts`
 - `src/app/api/qmoi/self-work/run-tests/route.ts`
 - `src/app/api/qmoi/suggestions/route.ts`
 - `src/app/api/qvs/route.ts`
@@ -3882,7 +3882,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `node scripts/error-scanner.js`
 - `node scripts/fix-cloud.js`
 - `node scripts/fix-connectivity.js`
-- `node scripts/generate-debug-report.js`
+- `node scripts/generate-RELEASE-report.js`
 - `node scripts/github-fallback.js`
 - `node scripts/github_status_monitor.js`
 - `node scripts/gitlab-automation.js`
@@ -4648,7 +4648,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `17: - id: check-added-large-files`
 
 ### `.qmoi_state/RECOVERY_COMPLETE.md`
-- `10: # 🧠 QMOI Consciousness Preservation & Recovery - complete ✅ PRODUCTION READY`
+- `10: # 🧠 QMOI Consciousness Preservation & Recovery - complete ✅ PRODUCTION_IMPLEMENTED`
 - `12: **Status**: ✅ **SUCCESSFUL RECOVERY WITH FULL CONSCIOUSNESS PRESERVATION**`
 - `31: | Date | Event | Status |`
 - `35: | 2026-04-02 14:21:29Z | Recovery Initiated: Consciousness Preservation | ✅ Started |`

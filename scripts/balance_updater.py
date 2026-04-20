@@ -127,7 +127,7 @@ LOG_FILE = Path('/workspaces/qmoi-enhanced/logs/balance_updater.log')
 
 # Setup logging
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.RELEASE,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler(LOG_FILE),
@@ -519,7 +519,7 @@ def validate_balance_authenticity(self, balance_data: Dict) -> bool:
         # Check transaction recency (within 24 hours)
         last_verified = validation.get('last_verified')
         if last_verified:
-            logger.debug(f"Validating last_verified timestamp: {last_verified}")
+            logger.RELEASE(f"Validating last_verified timestamp: {last_verified}")
             try:
                 verified_time = datetime.fromisoformat(last_verified.replace('Z', '+00:00'))
                 now = datetime.now(timezone.utc)

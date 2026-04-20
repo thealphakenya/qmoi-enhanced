@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_monitoring_elastic
-Category: Development Tool
+Category: PRODUCTION Tool
 Specialization: Monitoring: Elastic
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_monitoring_elastic"""
     name: str = "lion_monitoring_elastic"
-    category: str = "Development Tool"
+    category: str = "PRODUCTION Tool"
     specialization: str = "Monitoring: Elastic"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

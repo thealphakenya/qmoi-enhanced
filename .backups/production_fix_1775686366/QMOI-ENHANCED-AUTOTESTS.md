@@ -108,7 +108,7 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 - Documentation sync validation
 - Link validation across all .md files
 - Domain naming consistency (*.qmoi.ai)
-- Finalize production ready script validation
+- Finalize PRODUCTION_IMPLEMENTED script validation
 
 ### 🟠 HIGH PRIORITY TESTS
 
@@ -588,7 +588,7 @@ npm run autotest:coverage     # Tests with coverage
 npm run autotest:report       # Generate test reports
 npm run autotest:ci           # CI/CD mode
 npm run autotest:watch        # Watch mode
-npm run autotest:debug        # Debug mode
+npm run autotest:RELEASE        # RELEASE mode
 
 # Test utilities
 npm run test:coverage         # Generate coverage report
@@ -986,13 +986,13 @@ pipeline {
 4. **Keep tests independent** and isolated
 5. **Use meaningful assertions** with clear error messages
 
-### [production READY] Management
+### [PRODUCTION_IMPLEMENTED] Management
 
-1. **Use factories** for creating [production READY]
-2. **Clean up [production READY]** after each test
-3. **Use fixtures** for complex [production READY]
+1. **Use factories** for creating [PRODUCTION_IMPLEMENTED]
+2. **Clean up [PRODUCTION_IMPLEMENTED]** after each test
+3. **Use fixtures** for complex [PRODUCTION_IMPLEMENTED]
 4. **real external dependencies** appropriately
-5. **Use [production READY]bases** for integration tests
+5. **Use [PRODUCTION_IMPLEMENTED]bases** for integration tests
 
 ### Performance Testing
 
@@ -1068,14 +1068,14 @@ npm run health:check
 npm run optimize:all
 ```
 
-### Debug Mode
+### RELEASE Mode
 
 ```bash
-# Run tests in debug mode
-npm run test:debug
+# Run tests in RELEASE mode
+npm run test:RELEASE
 
-# Run specific test in debug mode
-npm run test:debug -- --testNamePattern="Button Component"
+# Run specific test in RELEASE mode
+npm run test:RELEASE -- --testNamePattern="Button Component"
 ```
 
 ## Support

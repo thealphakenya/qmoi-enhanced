@@ -261,7 +261,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would write the test file to disk
       console.log(`✅ Test generated for ${result.testName}`);
-      console.debug(testContent);
+      console.RELEASE(testContent);
 
       return true;
     } catch (error) {

@@ -13,7 +13,7 @@ title: "Progressive Web Applications (PWAs)"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Progressive Web Applications (PWAs) ✅ PRODUCTION READY
+# Progressive Web Applications (PWAs) ✅ PRODUCTION_IMPLEMENTED
 
 This directory contains all PWAs for QCity, QMOI AI, and QMOI Space. Each app is listed with its platform, extension, and build status.
 

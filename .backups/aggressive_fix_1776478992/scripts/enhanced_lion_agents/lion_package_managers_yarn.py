@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_package_managers_yarn
-Category: Development Tool
+Category: PRODUCTION Tool
 Specialization: Package Managers: Yarn
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_package_managers_yarn"""
     name: str = "lion_package_managers_yarn"
-    category: str = "Development Tool"
+    category: str = "PRODUCTION Tool"
     specialization: str = "Package Managers: Yarn"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

@@ -252,7 +252,7 @@ class QMOIQuickTest:
         print(f"   Notification script: {'✅' if exists else '❌'}")
         
         # Test notification types
-        notification_types = ['info', 'success', 'warning', 'error', 'debug']
+        notification_types = ['info', 'success', 'warning', 'error', 'RELEASE']
         results['notification_types'] = {}
         
         for ntype in notification_types:

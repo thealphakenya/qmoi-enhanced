@@ -7,20 +7,20 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Light index — top large files"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Light index — top large files ✅ PRODUCTION READY
+# Light index — top large files ✅ PRODUCTION_IMPLEMENTED
 
 Files listed below are the largest files found. Consider excluding them from browser-based editing or using sparse-checkout.
 
 - qmoi-enhanced/.npm-cache/\_cacache/content-v2/sha512/8f/ce/e8d23e8ba8f2f7411afcca277a73e4ede600bbc4d7d8a3ab90210928ac00ba32979ac95319ac40f32a6249fc796fec49ce4296919b9de4ea4b43619c81eb — 69.2MB — exclude
 - remediation_plan.json — 59.8MB — exclude
 - matches_with_comments.json — 57.7MB — exclude
-- docs/[production READY]s_replacement_report.json — 54.2MB — exclude
+- docs/[PRODUCTION_IMPLEMENTED]s_replacement_report.json — 54.2MB — exclude
 - qmoi-enhanced/.npm-cache/\_cacache/content-v2/sha512/df/8e/6db0858cce85da4277544c3bf5ab2a4346279b171198c7da58921c18e2105168e2edf1419f8962abf454921ecdb974521ff19a8815a3ddcb93258dda1ac0 — 47.9MB — exclude
 - qmoi-enhanced/.npm-cache/\_cacache/content-v2/sha512/16/71/67f99060b1531b183b13aa8f33b27473c9dbec195f2f7e25b0528d4b0fc15398f4dd57ea2d19258a7382c979cd2849ec459c26153b8857f0ff2a40a69296 — 40.0MB — exclude
 - docs/REVENUE_SPEC.md — 23.9MB — exclude
@@ -174,7 +174,7 @@ Files listed below are the largest files found. Consider excluding them from bro
 - .npm-cache/\_cacache/content-v2/sha512/ee/1f/f07869bd77fcb043aab327e5f2fabf67ff7aa0a7fb616a505ba4e8b98b6db774f5ca8b4e0806da8f37d9d377e8c173b40a7ef0db6819c58a9629e2c24051 — 1.0MB — ok
 - .npm-cache/\_prebuilds/8e8484-better-sqlite3-v12.4.1-node-v127-linux-x64.tar.gz — 1.0MB — ok
 - qmoi-enhanced/.npm-cache/\_prebuilds/8e8484-better-sqlite3-v12.4.1-node-v127-linux-x64.tar.gz — 1.0MB — ok
-- reports/[production READY]s.json — 1023.3KB — ok
+- reports/[PRODUCTION_IMPLEMENTED]s.json — 1023.3KB — ok
 - qmoi-enhanced/.npm-cache/\_cacache/content-v2/sha512/1f/df/578d4856430d254e0c8c374e56df1406d4d87896ae7be03f247857f5743a0d4c9829eba55b268cd169cce817ec2c89a3c936dfd37277e92c6b9f1b14ab65 — 1022.5KB — ok
 - .npm-cache/\_prebuilds/fd96b4-better-sqlite3-v12.4.1-node-v127-win32-x64.tar.gz — 1001.3KB — ok
 - qmoi-enhanced/.npm-cache/\_prebuilds/fd96b4-better-sqlite3-v12.4.1-node-v127-win32-x64.tar.gz — 1001.3KB — ok

@@ -3038,7 +3038,7 @@
     "www": "www"
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:50.144059"
 }

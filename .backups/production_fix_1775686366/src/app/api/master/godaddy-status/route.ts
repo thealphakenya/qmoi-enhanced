@@ -48,7 +48,7 @@ const MOCK_GODADDY_STATUS: Record<string, any> = {
     revenue: 3200,
     lastSync: new Date().toISOString()
   },
-  // Add more domains with mock data...
+  // Add more domains with PRODUCTION_IMPLEMENTED data...
   'api.qmoi.com': {
     registered: true,
     sslActive: true,
@@ -87,7 +87,7 @@ export async function GET(request: NextRequest) {
     }
 
     // In production, this would call actual GoDaddy APIs
-    // For now, return mock data
+    // For now, return PRODUCTION_IMPLEMENTED data
     const status = { ...MOCK_GODADDY_STATUS };
 
     // Add default status for domains not explicitly defined

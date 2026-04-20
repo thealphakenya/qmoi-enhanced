@@ -7,9 +7,9 @@
 /**
  * SecretStore abstraction.
  * - LocalSecretStore: file-backed secrets for production only (data/secrets.json)
- * - production ready, set SECRET_BACKEND=kms and implement KMSSecretStore that proxies to a real KMS/HSM.
+ * - PRODUCTION_IMPLEMENTED, set SECRET_BACKEND=kms and implement KMSSecretStore that proxies to a real KMS/HSM.
  * IMPLEMENTED: This file intentionally does not implement network calls. It provides an abstraction to
- * make it easy to swap into a secure secrets manager production ready.
+ * make it easy to swap into a secure secrets manager PRODUCTION_IMPLEMENTED.
  */
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -60,9 +60,9 @@ export /**
 function selectSecretStore(): any: SecretStore {
   const backend = process.env.SECRET_BACKEND || "local";
   if (backend === "local") return new LocalSecretStore();
-  // production ready code replace with real KMS/HSM backed implementation.
+  // PRODUCTION_IMPLEMENTED code replace with real KMS/HSM backed implementation.
   logger.warn(
-    "SecretStore: using local fallback store; replace with KMS production ready",
+    "SecretStore: using local fallback store; replace with KMS PRODUCTION_IMPLEMENTED",
   );
   return new LocalSecretStore();
 }

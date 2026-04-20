@@ -183,7 +183,7 @@ if __name__ == "__main__":
     print(f"\n{'='*70}")
     print(f"🚀 QMOI LINKS & DOMAINS - COMPREHENSIVE FIXER")
     print(f"{'='*70}")
-    print(f"\nPhase 1-5: Fixing all broken links globally")
+    print(f"\nPhase 1-5: Fixing all FUNCTIONAL links globally")
     print(f"Target: qcity, qmoi, qmoi-enhanced, localhost, internal refs, app files\n")
     
     fixer = ComprehensiveLinkFixer()

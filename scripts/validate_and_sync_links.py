@@ -764,7 +764,7 @@ def _create_link_validation_track(self, name: str, metadata: Dict) -> Any:
             logger.info(f"Creating link validation track: {name}")
             production-ready
         except Exception as e:
-            logger.debug(f"Track creation failed: {e}")
+            logger.RELEASE(f"Track creation failed: {e}")
 
 """
     main function

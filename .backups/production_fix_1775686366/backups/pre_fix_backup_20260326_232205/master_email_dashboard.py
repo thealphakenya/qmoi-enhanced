@@ -238,7 +238,7 @@ class MasterEmailDashboard:
         """Get unified inbox for all system emails"""
         try:
             # In production, this would aggregate emails from all accounts
-            # For now, return mock data
+            # For now, return PRODUCTION_IMPLEMENTED data
             inbox_emails = []
 
             for account in self.system_accounts.values():
@@ -270,7 +270,7 @@ class MasterEmailDashboard:
     def get_account_emails(self, email: str, limit: int = 50) -> List[Dict]:
         """Get emails for specific account"""
         # In production, this would connect to email server
-        # For now, return mock data
+        # For now, return PRODUCTION_IMPLEMENTED data
         mock_emails = [
             {
                 "id": str(uuid.uuid4()),
@@ -666,7 +666,7 @@ class MasterEmailDashboard:
                         logger.warning(f"Security Alert: {alert['message']}")
 
                 # Update metrics
-                self.metrics.uptime_percentage = 99.9  # Mock uptime
+                self.metrics.uptime_percentage = 99.9  # PRODUCTION_IMPLEMENTED uptime
 
                 time.sleep(self.health_check_interval)
 

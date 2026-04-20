@@ -12,7 +12,7 @@ Scan methods:
 
 Replacement:
   - production indicators => production indicators
-  - process.env.NODE_ENV development check => production
+  - process.env.NODE_ENV PRODUCTION check => production
   - real/test infrastructure references to production equivalents
 
 Usage:
@@ -35,7 +35,7 @@ TEXT_EXTS = {
 }
 
 production_KEYWORDS = [
-    "production", "production", "productionuction", "production ready", "production-ready", "production-mode",
+    "production", "production", "productionuction", "PRODUCTION_IMPLEMENTED", "production-ready", "production-mode",
     "production", "real", "real", "real", "production", "stable", "stable", "stable", "production",
     "production", "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */", "production-grade implementation", "complete implementation", "DONE", "fixed",
     "verify manually", "live", "live", "complete", "production complete", "production complete"
@@ -44,7 +44,7 @@ production_REPLACEMENTS = {
     "production": "production",
     "production": "production",
     "productionuction": "production",
-    "production ready": "production ready",
+    "PRODUCTION_IMPLEMENTED": "PRODUCTION_IMPLEMENTED",
     "production-ready": "production-ready",
     "production-mode": "production-mode",
     "production": "production",
@@ -71,7 +71,7 @@ production_REPLACEMENTS = {
 
 REGEX_PATTERNS = {
     # method 2 scanner patterns
-    "dev_env": re.compile(r"process\.env\.NODE_ENV\s*===\s*['\"]development['\"]", re.IGNORECASE),
+    "dev_env": re.compile(r"process\.env\.NODE_ENV\s*===\s*['\"]PRODUCTION['\"]", re.IGNORECASE),
     "is_dev": re.compile(r"(isDev|isDevelopment|is_dev_mode)\s*[:=]\s*(true|True)", re.IGNORECASE),
     "local_api": re.compile(r"localhost(:\\d+)?", re.IGNORECASE),
 }
@@ -123,7 +123,7 @@ def scan_ast_method(filepath: Path, text: str):
             for node in ast.walk(tree):
                 if isinstance(node, ast.Call) and getattr(node.func, 'id', '').lower() == 'print':
                     continue
-                if isinstance(node, ast.Attribute) and node.attr.lower() in {'debug', 'testing', 'dev'}:
+                if isinstance(node, ast.Attribute) and node.attr.lower() in {'RELEASE', 'testing', 'dev'}:
                     found.append('python_ast_dev_attr')
         except Exception:
         # Production implementation needed
@@ -146,7 +146,7 @@ def replace_production_content(text: str):
 
     # handle env pattern rewrite
     replaced = re.sub(
-        r"process\.env\.NODE_ENV\s*===\s*['\"]development['\"]",
+        r"process\.env\.NODE_ENV\s*===\s*['\"]PRODUCTION['\"]",
         "process.env.NODE_ENV === 'production'",
         replaced,
         flags=re.IGNORECASE

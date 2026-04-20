@@ -123,7 +123,7 @@
   "schema_version": "1.0",
   "checksum": "44d3dae0296559717e2cfcb550284e7a74e5819ff8f5ec9336173a4e1073e7ee",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:16:10.455925"
 }

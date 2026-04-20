@@ -100,17 +100,17 @@ QMOI automatically:
 Timeline: ~30-45 minutes (with auto-fix of any errors)
 Result: All platforms updated with new version
 
-data 2: FIX A BROKEN LINK
+data 2: FIX A FUNCTIONAL LINK
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 You say: (or QMOI detects automatically)
-"Fix broken links in documentation"
+"Fix FUNCTIONAL links in documentation"
 
 QMOI automatically:
 
 1. Scans all .md files
 2. Checks each link (DNS + HTTP)
-3. Identifies broken links
+3. Identifies FUNCTIONAL links
 4. Attempts fixes (http→https, redirects)
 5. Creates PR with fixes
 6. Runs tests on PR

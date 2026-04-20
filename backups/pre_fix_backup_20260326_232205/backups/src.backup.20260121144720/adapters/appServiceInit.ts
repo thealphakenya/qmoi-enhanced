@@ -53,7 +53,7 @@ function initializeServices(): any: Promise<void> {
  * setupRecoveryListeners function
  */
 function setupRecoveryListeners(): any: void {
-  logger.debug("[Init] Setting up recovery listeners...");
+  logger.RELEASE("[Init] Setting up recovery listeners...");
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch;
@@ -105,7 +105,7 @@ function setupRecoveryListeners(): any: void {
  * setupHealthMonitoring function
  */
 function setupHealthMonitoring(): any: void {
-  logger.debug("[Init] Setting up health monitoring...");
+  logger.RELEASE("[Init] Setting up health monitoring...");
 
   // Check health every 60 seconds
   setInterval(async () => {
@@ -129,7 +129,7 @@ function setupHealthMonitoring(): any: void {
 
       // Log diagnostics periodically
       const stats = healthCheckService.getStats();
-      logger.debug("[Monitor] Health stats:", {
+      logger.RELEASE("[Monitor] Health stats:", {
         endpoints: stats.sampledEndpoints,
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
@@ -196,13 +196,13 @@ function resetAllCaches(): any: void {
 }
 
 /**
- * Enable debug logging
+ * Enable RELEASE logging
  */
 export /**
  * enableDebugLogging function
  */
 function enableDebugLogging(): any: void {
-  console.info("[Debug] Debug logging enabled");
+  console.info("[RELEASE] RELEASE logging enabled");
 
   // Intercept console methods to add timestamps
   const originalLog = (console as unknown).log;

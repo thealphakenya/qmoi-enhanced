@@ -7,13 +7,13 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# CI-DEBUG-OUTPUTS ✅ PRODUCTION READY
+# CI-RELEASE-OUTPUTS ✅ PRODUCTION_IMPLEMENTED
 
-This document provides an overview and maintenance instructions for the `ci-debug-outputs/` directory.
+This document provides an overview and maintenance instructions for the `ci-RELEASE-outputs/` directory.
 
 ## Purpose
 
-Document the purpose of the `ci-debug-outputs` directory and the key files it contains.
+Document the purpose of the `ci-RELEASE-outputs` directory and the key files it contains.
 
 ## Auto-Update Instructions
 

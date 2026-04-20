@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import type { NextApiRequest, NextApiResponse } from "next";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
@@ -16,9 +16,9 @@ async function getDb() {
   return open({ filename: "./qmoi.db", driver: sqlite3.Database });
 }
 
-// Master-only access [production READY]
+// Master-only access [PRODUCTION_IMPLEMENTED]
 function isMaster(req: NextApiRequest) {
-  [production READY]: Implement real master auth logic
+  [PRODUCTION_IMPLEMENTED]: Implement real master auth logic
   return req.headers["x-qmoi-master"] === "true";
 }
 

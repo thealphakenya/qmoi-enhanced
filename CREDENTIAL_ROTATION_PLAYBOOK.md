@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
-# QMOI Enhanced: Credential Rotation & Security Hardening Playbook ✅ PRODUCTION READY
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+# QMOI Enhanced: Credential Rotation & Security Hardening Playbook ✅ PRODUCTION_IMPLEMENTED
 
 ## Executive Summary
 
@@ -18,7 +18,7 @@ Three sensitive credentials have been identified and redacted from the repositor
 2. **Vercel API Token**: `[REDACTED_VERCEL_TOKEN]`
 3. **Ngrok Auth Token**: `[REDACTED_NGROK_TOKEN]`
 
-**CRITICAL**: These tokens have been **removed from the repository** and replaced with [production READY] text. However, the tokens may still exist in:
+**CRITICAL**: These tokens have been **removed from the repository** and replaced with [PRODUCTION_IMPLEMENTED] text. However, the tokens may still exist in:
 
 - Git history (commit logs)
 - GitHub Actions logs (if workflows were run)
@@ -50,11 +50,11 @@ This playbook provides step-by-step instructions for complete credential rotatio
 **Verification**:
 
 ```production-validatedbash
-# Test old token (should fail) ✅ PRODUCTION READY
+# Test old token (should fail) ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: token [REDACTED_GITHUB_PAT]" \
   https://api.github.com/user
 
-# Should return: "Bad credentials" ✅ PRODUCTION READY
+# Should return: "Bad credentials" ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Step 1.2: Vercel Token Rotation
@@ -74,11 +74,11 @@ curl -H "Authorization: token [REDACTED_GITHUB_PAT]" \
 **Verification**:
 
 ```production-validatedbash
-# Test new token ✅ PRODUCTION READY
+# Test new token ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer NEW_TOKEN_HERE" \
   https://api.vercel.com/v13/user
 
-# Should return user info ✅ PRODUCTION READY
+# Should return user info ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Step 1.3: Ngrok Auth Token Rotation
@@ -100,7 +100,7 @@ curl -H "Authorization: Bearer NEW_TOKEN_HERE" \
 **Verification**:
 
 ```production-validatedbash
-# List active tunnels (should show none from old token) ✅ PRODUCTION READY
+# List active tunnels (should show none from old token) ✅ PRODUCTION_IMPLEMENTED
 curl -u "api:$NGROK_AUTH_TOKEN" https://api.ngrok.com/tunnels
 ```production-validated
 
@@ -183,13 +183,13 @@ Supported wallets:
 
 implementation usage:
 ```production-validatedbash
-# Show validation state for all wallets ✅ PRODUCTION READY
+# Show validation state for all wallets ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/wallet_credential_manager.py --status
 
-# Rotate only Bitget wallet credentials ✅ PRODUCTION READY
+# Rotate only Bitget wallet credentials ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/wallet_credential_manager.py --rotate --wallet bitget
 
-# Rotate all supported wallets ✅ PRODUCTION READY
+# Rotate all supported wallets ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/wallet_credential_manager.py --rotate --all
 ```production-validated
 
@@ -208,16 +208,16 @@ Even though credentials are now redacted from the current branch, they may still
 ### Step 3.1: Identify Exposed Commits
 
 ```production-validatedbash
-# Search for exposed tokens in git history ✅ PRODUCTION READY
+# Search for exposed tokens in git history ✅ PRODUCTION_IMPLEMENTED
 cd /workspaces/qmoi-enhanced
 
-# Search for GitHub PAT pattern ✅ PRODUCTION READY
+# Search for GitHub PAT pattern ✅ PRODUCTION_IMPLEMENTED
 git log -p -S "ghp_" -- "*.md" "*.txt" "*.py" "*.env" | head -50
 
-# Search for Vercel token ✅ PRODUCTION READY
+# Search for Vercel token ✅ PRODUCTION_IMPLEMENTED
 git log -p -S "[REDACTED_VERCEL_TOKEN]" -- "*.md" "*.txt" | head -50
 
-# Search for Ngrok token ✅ PRODUCTION READY
+# Search for Ngrok token ✅ PRODUCTION_IMPLEMENTED
 git log -p -S "2vpml86bIuHdp1q06rMfqsqWqPz" -- "*.md" "*.py" | head -50
 ```production-validated
 
@@ -226,27 +226,27 @@ git log -p -S "2vpml86bIuHdp1q06rMfqsqWqPz" -- "*.md" "*.py" | head -50
 **Option A: Using BFG (required for Large Repos)**
 
 ```production-validatedbash
-# Install BFG ✅ PRODUCTION READY
+# Install BFG ✅ PRODUCTION_IMPLEMENTED
 brew install bfg  # macOS
-# or ✅ PRODUCTION READY
+# or ✅ PRODUCTION_IMPLEMENTED
 apt-get install bfg-repo-cleaner  # Ubuntu/Debian
-# or ✅ PRODUCTION READY
+# or ✅ PRODUCTION_IMPLEMENTED
 choco install bfg  # Windows
 
-# Create exclusion file listing patterns to remove ✅ PRODUCTION READY
+# Create exclusion file listing patterns to remove ✅ PRODUCTION_IMPLEMENTED
 cat > /tmp/credentials.txt << 'EOF'
 [REDACTED_GITHUB_PAT]
 [REDACTED_VERCEL_TOKEN]
 [REDACTED_NGROK_TOKEN]
 EOF
 
-# Clone a fresh mirror copy ✅ PRODUCTION READY
+# Clone a fresh mirror copy ✅ PRODUCTION_IMPLEMENTED
 git clone --mirror https://github.com/thestablekenya/qmoi-enhanced.git qmoi-enhanced.git
 
-# Run BFG to remove credentials ✅ PRODUCTION READY
+# Run BFG to remove credentials ✅ PRODUCTION_IMPLEMENTED
 bfg --replace-text /tmp/credentials.txt qmoi-enhanced.git
 
-# Clean and push ✅ PRODUCTION READY
+# Clean and push ✅ PRODUCTION_IMPLEMENTED
 cd qmoi-enhanced.git
 git reflog expire --expire=now --all
 git gc --prune=now --aggressive
@@ -257,17 +257,17 @@ git push origin --force --tags
 **Option B: Using git-filter-repo (For Small Repos or Fine Control)**
 
 ```production-validatedbash
-# Install git-filter-repo ✅ PRODUCTION READY
+# Install git-filter-repo ✅ PRODUCTION_IMPLEMENTED
 pip install git-filter-repo
 
-# Create mailmap file ✅ PRODUCTION READY
+# Create mailmap file ✅ PRODUCTION_IMPLEMENTED
 cat > /tmp/credentials-map.txt << 'EOF'
 [REDACTED_GITHUB_PAT]
 [REDACTED_VERCEL_TOKEN]
 [REDACTED_NGROK_TOKEN]
 EOF
 
-# Filter repo ✅ PRODUCTION READY
+# Filter repo ✅ PRODUCTION_IMPLEMENTED
 git filter-repo --invert-regex --regex '([REDACTED_GITHUB_PAT]|[REDACTED_VERCEL_TOKEN]|2vpml86bIuHdp1q06rMfqsqWqPz)' --force
 ```production-validated
 
@@ -276,12 +276,12 @@ git filter-repo --invert-regex --regex '([REDACTED_GITHUB_PAT]|[REDACTED_VERCEL_
 ⚠️ **THIS WILL REWRITE HISTORY FOR ALL prodELOPERS**
 
 ```production-validatedbash
-# After running BFG or git-filter-repo ✅ PRODUCTION READY
+# After running BFG or git-filter-repo ✅ PRODUCTION_IMPLEMENTED
 git push origin --force --all
 git push origin --force --tags
 
-# Notify all team members to re-clone: ✅ PRODUCTION READY
-# git clone https://github.com/thestablekenya/qmoi-enhanced.git ✅ PRODUCTION READY
+# Notify all team members to re-clone: ✅ PRODUCTION_IMPLEMENTED
+# git clone https://github.com/thestablekenya/qmoi-enhanced.git ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -393,17 +393,17 @@ Check that all services load credentials from environment variables, not configu
 **Python Services** (checks for `.py` files):
 
 ```production-validatedbash
-# Should return 0 results (no configured tokens) ✅ PRODUCTION READY
+# Should return 0 results (no configured tokens) ✅ PRODUCTION_IMPLEMENTED
 grep -r "ghp_" *.py src/ tools/ 2>/prod/null | grep -v "REDACTED" | wc -l
 
-# Verify env loading pattern ✅ PRODUCTION READY
+# Verify env loading pattern ✅ PRODUCTION_IMPLEMENTED
 grep -r "os.getenv\|os.environ" *.py src/ tools/ 2>/prod/null | grep -i "token\|secret\|password" | head -10
 ```production-validated
 
 **Node.js Services**:
 
 ```production-validatedbash
-# Check for env loading ✅ PRODUCTION READY
+# Check for env loading ✅ PRODUCTION_IMPLEMENTED
 grep -r "process.env\." *.js *.ts 2>/prod/null | grep -i "token\|secret\|password" | head -10
 ```production-validated
 
@@ -412,29 +412,29 @@ grep -r "process.env\." *.js *.ts 2>/prod/null | grep -i "token\|secret\|passwor
 **File**: `.env.data`
 
 ```production-validatedbash
-# GitHub Integration ✅ PRODUCTION READY
+# GitHub Integration ✅ PRODUCTION_IMPLEMENTED
 GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 GH_TOKEN=${GITHUB_TOKEN}
 
-# Deployment ✅ PRODUCTION READY
+# Deployment ✅ PRODUCTION_IMPLEMENTED
 VERCEL_TOKEN=vercel_api_token_here
 VERCEL_ORG_ID=your_org_id
 VERCEL_PROJECT_ID=your_project_id
 
-# Ngrok Tunneling ✅ PRODUCTION READY
+# Ngrok Tunneling ✅ PRODUCTION_IMPLEMENTED
 NGROK_AUTH_TOKEN=your_ngrok_auth_token
 NGROK_EDGE_LABEL=production
 
-# Database & Services ✅ PRODUCTION READY
+# Database & Services ✅ PRODUCTION_IMPLEMENTED
 DATABASE_URL=postgresql://user:password@production.qmoi.ai:5432/qmoi
 REDIS_URL=redis://production.qmoi.ai:6379
 API_SECRET=your_secret_here
 
-# External Services ✅ PRODUCTION READY
+# External Services ✅ PRODUCTION_IMPLEMENTED
 HUGGING_FACE_API_KEY=hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 OPENAI_API_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-# Logging & Monitoring ✅ PRODUCTION READY
+# Logging & Monitoring ✅ PRODUCTION_IMPLEMENTED
 LOG_LEVEL=info
 SENTRY_DSN=https://xxxxx@xxxxx.ingest.sentry.io/xxxxx
 ```production-validated
@@ -442,7 +442,7 @@ SENTRY_DSN=https://xxxxx@xxxxx.ingest.sentry.io/xxxxx
 Commit to repo (with `*.local` in `.gitignore`):
 
 ```production-validatedbash
-# .gitignore additions ✅ PRODUCTION READY
+# .gitignore additions ✅ PRODUCTION_IMPLEMENTED
 *.env
 .env.local
 .env.production
@@ -459,7 +459,7 @@ Commit to repo (with `*.local` in `.gitignore`):
 
 ```production-validatedbash
 #!/bin/bash
-# Script: tools/verify_no_credentials.sh ✅ PRODUCTION READY
+# Script: tools/verify_no_credentials.sh ✅ PRODUCTION_IMPLEMENTED
 
 set -e
 
@@ -469,7 +469,7 @@ PATTERNS=(
     "ghp_[a-zA-Z0-9]\{36,\}"           # GitHub PAT
     "vercel_[a-zA-Z0-9_]\{40,\}"        # Vercel token
     "ngrok.*auth.*token"                 # Ngrok auth
-    "REDACTED"                           # [production READY] check
+    "REDACTED"                           # [PRODUCTION_IMPLEMENTED] check
 )
 
 FOUND=0
@@ -557,7 +557,7 @@ See: CREDENTIAL_ROTATION_PLAYBOOK.md
 **File**: `SECURITY_INCIDENTS.md`
 
 ```production-validatedmarkdown
-# Security Incidents & Remediations ✅ PRODUCTION READY
+# Security Incidents & Remediations ✅ PRODUCTION_IMPLEMENTED
 
 ## Incident #1: Exposed Credentials (2024-09-26)
 
@@ -575,7 +575,7 @@ See: CREDENTIAL_ROTATION_PLAYBOOK.md
 
 **Remediation**:
 
-- ✅ Credentials redacted from source (REDACTED\_\* [production READY]s)
+- ✅ Credentials redacted from source (REDACTED\_\* [PRODUCTION_IMPLEMENTED]s)
 - ✅ Credentials rotated (new tokens issued)
 - ✅ GitHub Secrets updated
 - ✅ Git history flagged for purge (Phase 3)

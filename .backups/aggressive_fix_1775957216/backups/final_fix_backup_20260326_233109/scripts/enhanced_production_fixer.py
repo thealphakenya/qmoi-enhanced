@@ -106,8 +106,8 @@ def fix_database_placeholder(self, content, code) -> Any:
         """Replace database placeholders with actual implementations"""
         # Common database patterns
         patterns = [
-            (r'\[production READY\].*fetch from DB', 'fetchFromDatabase'),
-            (r'\[production READY\].*database', 'connectToDatabase'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*fetch from DB', 'fetchFromDatabase'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*database', 'connectToDatabase'),
             (r'production.*fetch from DB', 'fetchFromDatabase'),
             (r'production:.*fetch from DB', 'fetchFromDatabase'),
         ]
@@ -126,7 +126,7 @@ def fix_database_placeholder(self, content, code) -> Any:
 def fix_api_placeholder(self, content, code) -> Any:
         """Replace API placeholders"""
         patterns = [
-            (r'\[production READY\].*API', 'callproductionAPI'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*API', 'callproductionAPI'),
             (r'production.*API', 'callproductionAPI'),
             (r'production:.*API', 'callproductionAPI'),
         ]
@@ -144,7 +144,7 @@ def fix_api_placeholder(self, content, code) -> Any:
 def fix_service_placeholder(self, content, code) -> Any:
         """Replace service placeholders"""
         patterns = [
-            (r'\[production READY\].*service', 'initializeproductionService'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*service', 'initializeproductionService'),
             (r'production.*service', 'initializeproductionService'),
             (r'production:.*service', 'initializeproductionService'),
         ]
@@ -161,7 +161,7 @@ def fix_service_placeholder(self, content, code) -> Any:
     """
 def fix_generic_placeholder(self, content, code) -> Any:
         """Replace generic  placeholders"""
-        return re.sub(r'\[production READY\]', '// production implementation:', content)
+        return re.sub(r'\[PRODUCTION_IMPLEMENTED\]', '// production implementation:', content)
 
     """
     fix_implementation_required function

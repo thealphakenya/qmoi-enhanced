@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // Service Recovery Mechanism
 // Monitors services, detects failures, and implements automatic recovery strategies
 
@@ -178,7 +178,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
     delayMs: number,
   ): void {
-    console.debug(
+    console.RELEASE(
       `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`,
     );
 
@@ -199,7 +199,7 @@ class ServiceRecoveryManager {
     if (timer) {
       clearTimeout(timer);
       this.activeRecoveries.delete(service);
-      console.debug(`[Recovery] Cancelled recovery for ${service}`);
+      console.RELEASE(`[Recovery] Cancelled recovery for ${service}`);
     }
   }
 
@@ -349,7 +349,7 @@ class ServiceRecoveryManager {
 
   registerStrategy(service: string, strategy: RecoveryStrategy): void {
     this.strategies.set(service, strategy);
-    console.debug(`[Recovery] Registered strategy for ${service}`);
+    console.RELEASE(`[Recovery] Registered strategy for ${service}`);
   }
 
   getStrategy(service: string): RecoveryStrategy {

@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "metadata": {
     "timestamp": "2025-11-11T21:26:15.465311",
@@ -410,10 +410,10 @@
       "location": "docs_site/ml_models.md"
     },
     "local_service": {
-      "action": "[production READY]_LOCALLY",
+      "action": "[PRODUCTION_IMPLEMENTED]_LOCALLY",
       "rationale": "Requires running local services for testing",
-      "method": "Add [production READY] endpoints production ready environment",
-      "location": "tools/[production READY]_servers/"
+      "method": "Add [PRODUCTION_IMPLEMENTED] endpoints PRODUCTION_IMPLEMENTED environment",
+      "location": "tools/[PRODUCTION_IMPLEMENTED]_servers/"
     },
     "ephemeral_tunnel": {
       "action": "REPLACE_WITH_LOCAL",
@@ -426,13 +426,13 @@
     "\u2705 Verify all downloads.qmoi.app URLs are accessible and cached",
     "\u2705 Mirror critical documentation to offline docs_site/",
     "\u2705 Implement cache invalidation strategy (TTL: 7 days)",
-    "\u2705 Set up local [production READY] servers for production.qmoi.ai endpoints",
+    "\u2705 Set up local [PRODUCTION_IMPLEMENTED] servers for production.qmoi.ai endpoints",
     "\u2705 Replace all ngrok tunnels with permanent endpoints or local tunnel scripts",
     "\u2705 Add GitHub Actions job to weekly sync external caches",
     "\u2705 Test offline access for all critical workflows",
     "\u2705 Document fallback procedures for FUNCTIONAL external links",
     "\u2705 Enable link integrity checks in CI/CD pipeline",
-    "\u2705 Monitor external link health production ready dashboard"
+    "\u2705 Monitor external link health PRODUCTION_IMPLEMENTED dashboard"
   ],
   "next_steps": [
     {

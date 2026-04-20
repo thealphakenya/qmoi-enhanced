@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Comprehensive Feature Index"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -14,7 +14,7 @@ title: "QMOI Comprehensive Feature Index"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Comprehensive Feature Index ✅ PRODUCTION READY
+# QMOI Comprehensive Feature Index ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -109,7 +109,7 @@ This document provides a complete index of all QMOI features, their implementati
 | Auto-Documentation  | ✅ Active | ✅ complete   | ✅ Implemented | ✅ Verified  |
 | Claim Verification  | ✅ Active | ✅ complete   | ✅ Implemented | ✅ Verified  |
 | Self-Test Runner    | ✅ Active | ✅ complete   | ✅ Implemented | ✅ Verified  |
-| Error [production READY]    | ✅ Active | ✅ complete   | ✅ Implemented | ✅ Verified  |
+| Error [PRODUCTION_IMPLEMENTED]    | ✅ Active | ✅ complete   | ✅ Implemented | ✅ Verified  |
 | Auto-Fix Validation | ✅ Active | ✅ complete   | ✅ Implemented | ✅ Verified  |
 
 ### 👑 Master-Only Features

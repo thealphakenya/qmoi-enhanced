@@ -22,7 +22,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "production Checklist for QMOI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -37,11 +37,11 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 - Ensure `config.json` has the correct production model (e.g., `claude-sonnet-3.5` or a locally-hosted QMOI model).
 - Store sensitive credentials in a secrets manager or environment variables. DO NOT commit keys to the repo.
 
-2. Replace all [production READY]s and prod-markers
+2. Replace all [PRODUCTION_IMPLEMENTED]s and prod-markers
 
-- Run: `python3 scripts/[production READY]_scanner.py --root . --report reports/[production READY]s.json`
-- Generate suggested replacements: `python3 scripts/[production READY]_scanner.py --root . --report reports/[production READY]s.json --suggest suggestions.json`
-- Review `suggestions.json`. If acceptable, apply with caution: `python3 scripts/[production READY]_scanner.py --root . --apply --mapping suggestions.json`
+- Run: `python3 scripts/[PRODUCTION_IMPLEMENTED]_scanner.py --root . --report reports/[PRODUCTION_IMPLEMENTED]s.json`
+- Generate suggested replacements: `python3 scripts/[PRODUCTION_IMPLEMENTED]_scanner.py --root . --report reports/[PRODUCTION_IMPLEMENTED]s.json --suggest suggestions.json`
+- Review `suggestions.json`. If acceptable, apply with caution: `python3 scripts/[PRODUCTION_IMPLEMENTED]_scanner.py --root . --apply --mapping suggestions.json`
 
 3. Offload large assets
 
@@ -50,7 +50,7 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 
 4. Validate prodice integrations
 
-- Ensure `components/prodice/prodiceIntegration[production READY]s.ts` uses robust [production READY] by default and respects env flags `QMOI_DISABLE_HW=1` and `QMOI_DISABLE_CLOUD=1`.
+- Ensure `components/prodice/prodiceIntegration[PRODUCTION_IMPLEMENTED]s.ts` uses robust [PRODUCTION_IMPLEMENTED] by default and respects env flags `QMOI_DISABLE_HW=1` and `QMOI_DISABLE_CLOUD=1`.
 
 5. QMOI Model backups
 
@@ -65,7 +65,7 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 7. Tests and Validation
 
 - Run unit tests and integration checks.
-- Use dry-run flags for any tool that modifies code ([production READY] scanner, strip tool).
+- Use dry-run flags for any tool that modifies code ([PRODUCTION_IMPLEMENTED] scanner, strip tool).
 
 8. Monitoring and Observability
 
@@ -79,7 +79,7 @@ This checklist helps prepare the QMOI repository and runtime for production depl
 10. Final review
 
 - After applying fixes and offloads, run the full test suite and a smoke test.
-- Remove completed [production READY]s from `continue[production READY]s.txt`.
+- Remove completed [PRODUCTION_IMPLEMENTED]s from `continue[PRODUCTION_IMPLEMENTED]s.txt`.
 
 Notes
 

@@ -81,7 +81,7 @@ echo "================================================"
 echo
 
 # Android Keystore Base64
-KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/debug.keystore"
+KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/RELEASE.keystore"
 if [ -f "$KEYSTORE_PATH" ]; then
     echo "✓ Android Keystore Found"
     KEYSTORE_B64=$(base64 -w0 "$KEYSTORE_PATH")

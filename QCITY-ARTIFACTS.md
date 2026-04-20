@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# QCITY-ARTIFACTS ✅ PRODUCTION READY
+# QCITY-ARTIFACTS ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `qcity-artifacts/` directory.
 

@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "Wallet Module Runbook"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Wallet Module Runbook - production READY ✅ PRODUCTION READY
+# Wallet Module Runbook - PRODUCTION_IMPLEMENTED ✅ PRODUCTION_IMPLEMENTED
 
 This document describes the production-ready wallet management system and how to operate it.
 
@@ -236,7 +236,7 @@ Security and production notes
 
 - The TestnetAdapter will not use real funds unless properly implemented and credentials are provided.
 - Do not store secrets in plaintext in the state file; use Vault or GitHub Secrets for production secrets.
-- Add more adapters under `src/` for exchanges or custodians. Keep the ✅ PRODUCTION READY-first behavior for safety.
+- Add more adapters under `src/` for exchanges or custodians. Keep the ✅ PRODUCTION_IMPLEMENTED-first behavior for safety.
 
 ## 🔄 Evolution Status
 

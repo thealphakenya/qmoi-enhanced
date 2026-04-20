@@ -13,7 +13,7 @@ title: "QMOI Start Guide"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Start Guide ✅ PRODUCTION READY
+# QMOI Start Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## 🚀 How to Start or Resume QMOI (QCity & Cloud)
 

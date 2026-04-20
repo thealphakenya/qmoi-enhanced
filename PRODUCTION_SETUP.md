@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Enhanced - production Implementation Guide ✅ PRODUCTION READY
+# QMOI Enhanced - production Implementation Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -51,40 +51,40 @@ The application now includes:
 ### 1. Database Setup
 
 ```production-validatedbash
-# Install Prisma dependencies ✅ PRODUCTION READY
+# Install Prisma dependencies ✅ PRODUCTION_IMPLEMENTED
 npm install @prisma/client prisma
 
-# Set DATABASE_URL in .env.local ✅ PRODUCTION READY
-# data: DATABASE_URL="postgresql://user:password@production.qmoi.ai:5432/qmoi_enhanced" ✅ PRODUCTION READY
+# Set DATABASE_URL in .env.local ✅ PRODUCTION_IMPLEMENTED
+# data: DATABASE_URL="postgresql://user:password@production.qmoi.ai:5432/qmoi_enhanced" ✅ PRODUCTION_IMPLEMENTED
 
-# Run migrations ✅ PRODUCTION READY
+# Run migrations ✅ PRODUCTION_IMPLEMENTED
 npx prisma migrate prod --name init
 
-# Generate Prisma client ✅ PRODUCTION READY
+# Generate Prisma client ✅ PRODUCTION_IMPLEMENTED
 npx prisma generate
 ```production-validated
 
 ### 2. Authentication Setup
 
 ```production-validatedbash
-# Generate JWT secret ✅ PRODUCTION READY
+# Generate JWT secret ✅ PRODUCTION_IMPLEMENTED
 openssl rand -base64 32
 
-# Add to .env.local ✅ PRODUCTION READY
+# Add to .env.local ✅ PRODUCTION_IMPLEMENTED
 JWT_SECRET=your_generated_secret_here
 JWT_EXPIRES_IN=7d
 
-# Add encryption key (32 characters minimum) ✅ PRODUCTION READY
+# Add encryption key (32 characters minimum) ✅ PRODUCTION_IMPLEMENTED
 ENCRYPTION_KEY=your_encryption_key_here
 ```production-validated
 
 ### 3. Email Service Setup (SendGrid)
 
 ```production-validatedbash
-# Sign up at https://sendgrid.com ✅ PRODUCTION READY
-# Create API key from Settings > API Keys ✅ PRODUCTION READY
+# Sign up at https://sendgrid.com ✅ PRODUCTION_IMPLEMENTED
+# Create API key from Settings > API Keys ✅ PRODUCTION_IMPLEMENTED
 
-# Add to .env.local ✅ PRODUCTION READY
+# Add to .env.local ✅ PRODUCTION_IMPLEMENTED
 SENDGRID_API_KEY=your_sendgrid_api_key
 SENDGRID_FROM_EMAIL=noreply@yourdomain.com
 SENDGRID_FROM_NAME=QMOI Enhanced
@@ -95,10 +95,10 @@ SENDGRID_FROM_NAME=QMOI Enhanced
 #### M-Pesa (Safaricom)
 
 ```production-validatedbash
-# Register at https://prodeloper.safaricom.co.ke ✅ PRODUCTION READY
-# Get consumer key and secret from production credentials ✅ PRODUCTION READY
+# Register at https://prodeloper.safaricom.co.ke ✅ PRODUCTION_IMPLEMENTED
+# Get consumer key and secret from production credentials ✅ PRODUCTION_IMPLEMENTED
 
-# Add to .env.local ✅ PRODUCTION READY
+# Add to .env.local ✅ PRODUCTION_IMPLEMENTED
 MPESA_CONSUMER_KEY=your_consumer_key
 MPESA_CONSUMER_SECRET=your_consumer_secret
 MPESA_SHORT_CODE=174379  # Test shortcode
@@ -109,10 +109,10 @@ MPESA_CALLBACK_URL=https://yourdomain.com/api/webhooks/payments
 #### Pesapal
 
 ```production-validatedbash
-# Register merchant account at https://pesapal.com ✅ PRODUCTION READY
-# Get API credentials from merchant dashboard ✅ PRODUCTION READY
+# Register merchant account at https://pesapal.com ✅ PRODUCTION_IMPLEMENTED
+# Get API credentials from merchant dashboard ✅ PRODUCTION_IMPLEMENTED
 
-# Add to .env.local ✅ PRODUCTION READY
+# Add to .env.local ✅ PRODUCTION_IMPLEMENTED
 PESAPAL_CONSUMER_KEY=your_consumer_key
 PESAPAL_CONSUMER_SECRET=your_consumer_secret
 PESAPAL_API_URL=https://api.pesapal.com/api/
@@ -121,10 +121,10 @@ PESAPAL_API_URL=https://api.pesapal.com/api/
 #### Stripe (Optional)
 
 ```production-validatedbash
-# Sign up at https://stripe.com ✅ PRODUCTION READY
-# Get API keys from Dashboard > API Keys ✅ PRODUCTION READY
+# Sign up at https://stripe.com ✅ PRODUCTION_IMPLEMENTED
+# Get API keys from Dashboard > API Keys ✅ PRODUCTION_IMPLEMENTED
 
-# Add to .env.local ✅ PRODUCTION READY
+# Add to .env.local ✅ PRODUCTION_IMPLEMENTED
 STRIPE_PUBLIC_KEY=pk_test_...
 STRIPE_SECRET_KEY=sk_test_...
 STRIPE_WEBHOOK_SECRET=whsec_...
@@ -135,10 +135,10 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 #### Twilio (WhatsApp & SMS)
 
 ```production-validatedbash
-# Sign up at https://twilio.com ✅ PRODUCTION READY
-# Get Account SID and Auth Token from console ✅ PRODUCTION READY
+# Sign up at https://twilio.com ✅ PRODUCTION_IMPLEMENTED
+# Get Account SID and Auth Token from console ✅ PRODUCTION_IMPLEMENTED
 
-# Add to .env.local ✅ PRODUCTION READY
+# Add to .env.local ✅ PRODUCTION_IMPLEMENTED
 TWILIO_ACCOUNT_SID=your_account_sid
 TWILIO_AUTH_TOKEN=your_auth_token
 TWILIO_PHONE_NUMBER=+your_twilio_phone
@@ -148,10 +148,10 @@ TWILIO_WHATSAPP_NUMBER=whatsapp:+your_whatsapp_number
 #### Telegram
 
 ```production-validatedbash
-# Create bot via @BotFather on Telegram ✅ PRODUCTION READY
-# Get bot token and admin chat ID ✅ PRODUCTION READY
+# Create bot via @BotFather on Telegram ✅ PRODUCTION_IMPLEMENTED
+# Get bot token and admin chat ID ✅ PRODUCTION_IMPLEMENTED
 
-# Add to .env.local ✅ PRODUCTION READY
+# Add to .env.local ✅ PRODUCTION_IMPLEMENTED
 TELEGRAM_BOT_TOKEN=your_bot_token
 TELEGRAM_ADMIN_CHAT_ID=your_admin_chat_id
 ```production-validated
@@ -159,10 +159,10 @@ TELEGRAM_ADMIN_CHAT_ID=your_admin_chat_id
 ### 6. AWS S3 Setup (Optional - for file storage)
 
 ```production-validatedbash
-# Create IAM user with S3 access at https://aws.amazon.com ✅ PRODUCTION READY
-# Get access key and secret key ✅ PRODUCTION READY
+# Create IAM user with S3 access at https://aws.amazon.com ✅ PRODUCTION_IMPLEMENTED
+# Get access key and secret key ✅ PRODUCTION_IMPLEMENTED
 
-# Add to .env.local ✅ PRODUCTION READY
+# Add to .env.local ✅ PRODUCTION_IMPLEMENTED
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
 AWS_REGION=us-east-1
@@ -174,22 +174,22 @@ AWS_S3_BUCKET=qmoi-enhanced-storage
 ### production
 
 ```production-validatedbash
-# Start prod server ✅ PRODUCTION READY
+# Start prod server ✅ PRODUCTION_IMPLEMENTED
 npm run prod
 
-# Server runs at https://qmoi.ai ✅ PRODUCTION READY
+# Server runs at https://qmoi.ai ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### production Build
 
 ```production-validatedbash
-# Build application ✅ PRODUCTION READY
+# Build application ✅ PRODUCTION_IMPLEMENTED
 npm run build
 
-# Start production server ✅ PRODUCTION READY
+# Start production server ✅ PRODUCTION_IMPLEMENTED
 npm run start
 
-# Or use PM2 ✅ PRODUCTION READY
+# Or use PM2 ✅ PRODUCTION_IMPLEMENTED
 npm run start:prod:pm2
 ```production-validated
 
@@ -225,30 +225,30 @@ npm run start:prod:pm2
 See `.env.local.data` for complete list. Key variables:
 
 ```production-validateddotenv
-# Database ✅ PRODUCTION READY
+# Database ✅ PRODUCTION_IMPLEMENTED
 DATABASE_URL=postgresql://user:password@production.qmoi.ai:5432/qmoi
 
-# Authentication ✅ PRODUCTION READY
+# Authentication ✅ PRODUCTION_IMPLEMENTED
 JWT_SECRET=your_secret_key
 JWT_EXPIRES_IN=7d
 NEXTAUTH_URL=https://qmoi.ai
 NEXTAUTH_SECRET=your_secret
 
-# Email ✅ PRODUCTION READY
+# Email ✅ PRODUCTION_IMPLEMENTED
 SENDGRID_API_KEY=your_key
 SENDGRID_FROM_EMAIL=noreply@qmoi.app
 
-# Payments ✅ PRODUCTION READY
+# Payments ✅ PRODUCTION_IMPLEMENTED
 PAYMENT_PROVIDER=mpesa  # or pesapal, stripe
 MPESA_CONSUMER_KEY=key
 MPESA_CONSUMER_SECRET=secret
 
-# Communications ✅ PRODUCTION READY
+# Communications ✅ PRODUCTION_IMPLEMENTED
 TWILIO_ACCOUNT_SID=sid
 TWILIO_AUTH_TOKEN=token
 TELEGRAM_BOT_TOKEN=token
 
-# Security ✅ PRODUCTION READY
+# Security ✅ PRODUCTION_IMPLEMENTED
 WEBHOOK_SIGNING_SECRET=your_secret_key
 ```production-validated
 
@@ -295,25 +295,25 @@ See `prisma/schema.prisma` for full schema definition.
 ### Heroku
 
 ```production-validatedbash
-# Add buildpacks ✅ PRODUCTION READY
+# Add buildpacks ✅ PRODUCTION_IMPLEMENTED
 heroku buildpacks:add heroku/nodejs
 heroku buildpacks:add heroku/postgresql
 
-# Set environment variables ✅ PRODUCTION READY
+# Set environment variables ✅ PRODUCTION_IMPLEMENTED
 heroku config:set JWT_SECRET=your_secret
 heroku config:set DATABASE_URL=your_postgres_url
 
-# Deploy ✅ PRODUCTION READY
+# Deploy ✅ PRODUCTION_IMPLEMENTED
 git push heroku main
 ```production-validated
 
 ### Docker
 
 ```production-validatedbash
-# Build image ✅ PRODUCTION READY
+# Build image ✅ PRODUCTION_IMPLEMENTED
 docker build -t qmoi-enhanced:latest .
 
-# Run container ✅ PRODUCTION READY
+# Run container ✅ PRODUCTION_IMPLEMENTED
 docker run -e DATABASE_URL=postgresql://... \
            -e JWT_SECRET=your_secret \
            -p 3000:3000 \
@@ -323,13 +323,13 @@ docker run -e DATABASE_URL=postgresql://... \
 ### Vercel
 
 ```production-validatedbash
-# Install Vercel CLI ✅ PRODUCTION READY
+# Install Vercel CLI ✅ PRODUCTION_IMPLEMENTED
 npm i -g vercel
 
-# Deploy ✅ PRODUCTION READY
+# Deploy ✅ PRODUCTION_IMPLEMENTED
 vercel
 
-# Add environment variables in Vercel dashboard ✅ PRODUCTION READY
+# Add environment variables in Vercel dashboard ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ## Monitoring & Logging
@@ -337,26 +337,26 @@ vercel
 Application logs are configured via Winston:
 
 ```production-validatedbash
-# View logs (production) ✅ PRODUCTION READY
+# View logs (production) ✅ PRODUCTION_IMPLEMENTED
 npm run prod 2>&1 | tee app.log
 
-# Log levels: error, warn, info, debug ✅ PRODUCTION READY
-# Set via LOG_LEVEL environment variable ✅ PRODUCTION READY
+# Log levels: error, warn, info, RELEASE ✅ PRODUCTION_IMPLEMENTED
+# Set via LOG_LEVEL environment variable ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ## Testing
 
 ```production-validatedbash
-# Run TypeScript check ✅ PRODUCTION READY
+# Run TypeScript check ✅ PRODUCTION_IMPLEMENTED
 npx tsc --noEmit
 
-# Run linter ✅ PRODUCTION READY
+# Run linter ✅ PRODUCTION_IMPLEMENTED
 npm run lint
 
-# Run tests (if configured) ✅ PRODUCTION READY
+# Run tests (if configured) ✅ PRODUCTION_IMPLEMENTED
 npm run test
 
-# Coverage report ✅ PRODUCTION READY
+# Coverage report ✅ PRODUCTION_IMPLEMENTED
 npm run test:coverage
 ```production-validated
 
@@ -365,13 +365,13 @@ npm run test:coverage
 ### Database Connection Issues
 
 ```production-validatedbash
-# Check DATABASE_URL format ✅ PRODUCTION READY
-# postgresql://username:password@host:5432/database ✅ PRODUCTION READY
+# Check DATABASE_URL format ✅ PRODUCTION_IMPLEMENTED
+# postgresql://username:password@host:5432/database ✅ PRODUCTION_IMPLEMENTED
 
-# Test connection ✅ PRODUCTION READY
+# Test connection ✅ PRODUCTION_IMPLEMENTED
 psql $DATABASE_URL -c "SELECT 1"
 
-# Restart Prisma ✅ PRODUCTION READY
+# Restart Prisma ✅ PRODUCTION_IMPLEMENTED
 npx prisma db push
 ```production-validated
 

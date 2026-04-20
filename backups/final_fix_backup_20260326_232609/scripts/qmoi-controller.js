@@ -411,7 +411,7 @@ class QMOIController {
     const ruleLower = rule.toLowerCase();
 
     if (ruleLower.includes("no-console")) {
-      return "Console statements should be removed production ready";
+      return "Console statements should be removed PRODUCTION_IMPLEMENTED";
     } else if (ruleLower.includes("prefer-const")) {
       return "Use const for variables that are not reassigned";
     } else if (ruleLower.includes("no-unused-vars")) {

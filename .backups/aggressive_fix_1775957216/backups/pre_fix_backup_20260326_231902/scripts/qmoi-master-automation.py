@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Master Automation System
@@ -859,10 +859,10 @@ def auto_fix_missing_files_and_deps(self) -> Any:
         try:
             result = await self.safe_subprocess_run(["npm", "ls"], cwd=self.project_root)
             if result is None:
-                safe_log(self.logger, 'warning', "NPM packages required or broken. Running npm install.")
+                safe_log(self.logger, 'warning', "NPM packages required or FUNCTIONAL. Running npm install.")
                 await self.install_npm_dependencies()
             elif result.returncode != 0:
-                safe_log(self.logger, 'warning', "NPM packages required or broken. Running npm install.")
+                safe_log(self.logger, 'warning', "NPM packages required or FUNCTIONAL. Running npm install.")
                 await self.install_npm_dependencies()
         except Exception as e:
             safe_log(self.logger, 'error', f"NPM check failed: {e}")

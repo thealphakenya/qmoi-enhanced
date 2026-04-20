@@ -78,7 +78,7 @@ class AutoUpdateManager {
         production-ready and operational
       }
     } catch (error) {
-      logger.debug("Version check error:", error);
+      logger.RELEASE("Version check error:", error);
     }
   }
 

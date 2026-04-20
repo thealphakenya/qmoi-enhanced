@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Enhanced: Credential Rotation & Security Hardening Playbook
 
 ## Executive Summary
@@ -18,7 +18,7 @@ Three sensitive credentials have been identified and redacted from the repositor
 2. **Vercel API Token**: `[REDACTED_VERCEL_TOKEN]`
 3. **Ngrok Auth Token**: `[REDACTED_NGROK_TOKEN]`
 
-**CRITICAL**: These tokens have been **removed from the repository** and replaced with [production READY] text. However, the tokens may still exist in:
+**CRITICAL**: These tokens have been **removed from the repository** and replaced with [PRODUCTION_IMPLEMENTED] text. However, the tokens may still exist in:
 
 - Git history (commit logs)
 - GitHub Actions logs (if workflows were run)
@@ -469,7 +469,7 @@ PATTERNS=(
     "ghp_[a-zA-Z0-9]\{36,\}"           # GitHub PAT
     "vercel_[a-zA-Z0-9_]\{40,\}"        # Vercel token
     "ngrok.*auth.*token"                 # Ngrok auth
-    "REDACTED"                           # [production READY] check
+    "REDACTED"                           # [PRODUCTION_IMPLEMENTED] check
 )
 
 FOUND=0
@@ -575,7 +575,7 @@ See: CREDENTIAL_ROTATION_PLAYBOOK.md
 
 **Remediation**:
 
-- ✅ Credentials redacted from source (REDACTED\_\* [production READY]s)
+- ✅ Credentials redacted from source (REDACTED\_\* [PRODUCTION_IMPLEMENTED]s)
 - ✅ Credentials rotated (new tokens issued)
 - ✅ GitHub Secrets updated
 - ✅ Git history flagged for purge (Phase 3)

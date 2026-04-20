@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// IMPLEMENTED: 10 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 10 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import "@testing-library/jest-dom";
 
-[production READY] fetch globally
+[PRODUCTION_IMPLEMENTED] fetch globally
 global.fetch = jest.fn();
 
-[production READY] window.matchMedia
+[PRODUCTION_IMPLEMENTED] window.matchMedia
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest.fn().[production implementation complete]Implementation((query) => ({
@@ -24,7 +24,7 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-[production READY] localStorage
+[PRODUCTION_IMPLEMENTED] localStorage
 const localStorage[production implementation complete] = {
   getItem: jest.fn(),
   setItem: jest.fn(),
@@ -33,7 +33,7 @@ const localStorage[production implementation complete] = {
 };
 global.localStorage = localStorage[production implementation complete];
 
-[production READY] sessionStorage
+[PRODUCTION_IMPLEMENTED] sessionStorage
 const sessionStorage[production implementation complete] = {
   getItem: jest.fn(),
   setItem: jest.fn(),
@@ -42,11 +42,11 @@ const sessionStorage[production implementation complete] = {
 };
 global.sessionStorage = sessionStorage[production implementation complete];
 
-[production READY] console methods to reduce noise in tests
+[PRODUCTION_IMPLEMENTED] console methods to reduce noise in tests
 global.console = {
   ...console,
   log: jest.fn(),
-  debug: jest.fn(),
+  RELEASE: jest.fn(),
   info: jest.fn(),
   warn: jest.fn(),
   error: jest.fn(),

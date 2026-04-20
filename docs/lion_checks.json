@@ -9,7 +9,7 @@
   },
   "build_report_present": true,
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:05.185326"
 }

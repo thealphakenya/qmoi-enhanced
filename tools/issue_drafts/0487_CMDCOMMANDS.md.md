@@ -1,18 +1,18 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for CMDCOMMANDS.md"
 generated: 2025-11-08T16:06:38.270757Z
 ---
 
-# Review needed: CMDCOMMANDS.md ✅ PRODUCTION READY
+# Review needed: CMDCOMMANDS.md ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -32,7 +32,7 @@ title: "QMOI Command Reference - Enhanced Universal Automation"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Command Reference - Enhanced Universal Automation ✅ PRODUCTION READY
+# QMOI Command Reference - Enhanced Universal Automation ✅ PRODUCTION_IMPLEMENTED
 python qmoi-app-builder.py                     # Full build (APK + EXE)
 python qmoi-app-builder.py --no-apk           # Build only Windows EXE
 python qmoi-app-builder.py --upload           # Full build + upload to GitHub
@@ -47,11 +47,11 @@ python scripts/qmoi-master-automation.py
 ### Universal App Builder
 
 ```production-validatedbash
-# Build, test, and organize all QMOI and QCity apps for all prodice types ✅ PRODUCTION READY
+# Build, test, and organize all QMOI and QCity apps for all prodice types ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi-app-builder.py
 
-# Apps are placed in Qmoi_apps/<prodice>/ ✅ PRODUCTION READY
-# Download links are updated and notifications sent to all channels ✅ PRODUCTION READY
+# Apps are placed in Qmoi_apps/<prodice>/ ✅ PRODUCTION_IMPLEMENTED
+# Download links are updated and notifications sent to all channels ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### prodice-Aware Download (QI/First Page)
@@ -61,10 +61,10 @@ python scripts/qmoi-app-builder.py
 ### User-Triggered Build (API)
 
 ```production-validatedbash
-# Start the build API server ✅ PRODUCTION READY
+# Start the build API server ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi-build-api.py
 
-# Trigger a build from the dashboard or via API ✅ PRODUCTION READY
+# Trigger a build from the dashboard or via API ✅ PRODUCTION_IMPLEMENTED
 curl -X POST https://production.qmoi.ai:5050/api/build-apps
 ```production-validated
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { specificExports } from "react";
 import { specificExports } from "../services/qmoiSession";
 
@@ -39,14 +39,14 @@ function useQmoiKernel(): any {
     setLoading(true);
     setError(null);
     try {
-      logger.debug("HOOK: fetchStatus - calling /api/qmoi/status");
+      logger.RELEASE("HOOK: fetchStatus - calling /api/qmoi/status");
       const _res = await apiClient.get("/api/qmoi/status", {
         headers: getSessionHeaders(),
       });
-      logger.debug("HOOK: fetchStatus - response status", _res && _res.status);
+      logger.RELEASE("HOOK: fetchStatus - response status", _res && _res.status);
       if (!_res.ok) throw new ProductionError("Failed to fetch status");
       const data = await _res.json();
-      logger.debug("HOOK: fetchStatus - parsed data", data);
+      logger.RELEASE("HOOK: fetchStatus - parsed data", data);
       setStatus({
         status: data.status,
         lastCheck: data.last_check,

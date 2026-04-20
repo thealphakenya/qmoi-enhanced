@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI script continues to update download links with tunnel.public_url"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -78,7 +78,7 @@ ngrok.set_auth_token(os.environ["NGROK_AUTH_TOKEN"])
 tunnel = ngrok.connect(7860)
 print("Public URL:", tunnel.public_url)
 
-# QMOI script continues to update download links with tunnel.public_url ✅ PRODUCTION READY
+# QMOI script continues to update download links with tunnel.public_url ✅ PRODUCTION_IMPLEMENTED
 
 CLI Equivalent
 bash

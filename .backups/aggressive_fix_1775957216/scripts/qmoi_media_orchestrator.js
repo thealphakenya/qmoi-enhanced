@@ -137,7 +137,7 @@ function forceVercelRedeploy() {
   try {
     log("Forcing Vercel redeploy with cache clear...");
     execSync(
-      `npx vercel --prod --yes --force --token ${VERCEL_TOKEN} --scope ${VERCEL_ORG_ID} --confirm --debug --no-clipboard --no-wait --env-file=${ENV_FILE} --build-env-file=${ENV_FILE} --clear-cache`,
+      `npx vercel --prod --yes --force --token ${VERCEL_TOKEN} --scope ${VERCEL_ORG_ID} --confirm --RELEASE --no-clipboard --no-wait --env-file=${ENV_FILE} --build-env-file=${ENV_FILE} --clear-cache`,
     );
     log("Vercel redeploy triggered.");
   } catch (err) {

@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "generated_at": "2025-10-21T00:50:52.798258Z",
   "files": {
@@ -1904,7 +1904,7 @@
         "reason": null
       }
     ],
-    "AU[production READY]WNLOAD.md": [],
+    "AU[PRODUCTION_IMPLEMENTED]WNLOAD.md": [],
     "QMOIGITLABprod.md": [
       {
         "label": "QMOICLONE.md",
@@ -3679,10 +3679,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -3751,16 +3751,16 @@
       }
     ],
     "mobile/node_modules/lighthouse-logger/node_modules/ms/license.md": [],
-    "mobile/node_modules/lighthouse-logger/node_modules/debug/README.md": [
+    "mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -3772,30 +3772,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -3826,7 +3826,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -3838,18 +3838,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/lighthouse-logger/node_modules/debug/CHANGELOG.md": [],
+    "mobile/node_modules/lighthouse-logger/node_modules/RELEASE/CHANGELOG.md": [],
     "mobile/node_modules/jsesc/README.md": [
       {
         "label": "by default",
@@ -6123,10 +6123,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -6799,14 +6799,14 @@
         "reason": "external URL"
       },
       {
-        "label": "fs-extra-debug",
-        "url": "https://github.com/jdxcode/fs-extra-debug",
+        "label": "fs-extra-RELEASE",
+        "url": "https://github.com/jdxcode/fs-extra-RELEASE",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug",
-        "url": "https://npmjs.org/package/debug",
+        "label": "RELEASE",
+        "url": "https://npmjs.org/package/RELEASE",
         "ok": true,
         "reason": "external URL"
       },
@@ -8538,16 +8538,16 @@
       }
     ],
     "mobile/node_modules/connect/node_modules/ms/license.md": [],
-    "mobile/node_modules/connect/node_modules/debug/README.md": [
+    "mobile/node_modules/connect/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -8559,30 +8559,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -8613,7 +8613,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -8625,18 +8625,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/connect/node_modules/debug/CHANGELOG.md": [],
+    "mobile/node_modules/connect/node_modules/RELEASE/CHANGELOG.md": [],
     "mobile/node_modules/semver/README.md": [
       {
         "label": "functions",
@@ -11625,16 +11625,16 @@
         "reason": null
       }
     ],
-    "mobile/node_modules/send/node_modules/debug/README.md": [
+    "mobile/node_modules/send/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -11646,30 +11646,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -11700,7 +11700,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -11712,19 +11712,19 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/send/node_modules/debug/CHANGELOG.md": [],
-    "mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md": [
+    "mobile/node_modules/send/node_modules/RELEASE/CHANGELOG.md": [],
+    "mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md": [
       {
         "label": "![Build Status",
         "url": "https://travis-ci.org/zeit/ms.svg?branch=master",
@@ -11756,7 +11756,7 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/send/node_modules/debug/node_modules/ms/license.md": [],
+    "mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/license.md": [],
     "mobile/node_modules/lru-cache/README.md": [
       {
         "label": "![Build Status",
@@ -18638,7 +18638,7 @@
       },
       {
         "label": "many features",
-        "url": "https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3",
+        "url": "https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3",
         "ok": true,
         "reason": "external URL"
       },
@@ -19423,10 +19423,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/examples/configure-output.js"
       },
       {
-        "label": "deprecated",
-        "url": "./docs/deprecated.md",
+        "label": "CURRENT",
+        "url": "./docs/CURRENT.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/docs/deprecated.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/docs/CURRENT.md"
       },
       {
         "label": "options taking varying arguments",
@@ -21406,16 +21406,16 @@
       }
     ],
     "mobile/node_modules/finalhandler/node_modules/ms/license.md": [],
-    "mobile/node_modules/finalhandler/node_modules/debug/README.md": [
+    "mobile/node_modules/finalhandler/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -21427,30 +21427,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -21481,7 +21481,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -21493,18 +21493,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/finalhandler/node_modules/debug/CHANGELOG.md": [],
+    "mobile/node_modules/finalhandler/node_modules/RELEASE/CHANGELOG.md": [],
     "mobile/node_modules/@react-native-async-storage/async-storage/README.md": [
       {
         "label": "macOS",
@@ -23531,16 +23531,16 @@
       }
     ],
     "mobile/node_modules/compression/node_modules/ms/license.md": [],
-    "mobile/node_modules/compression/node_modules/debug/README.md": [
+    "mobile/node_modules/compression/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -23552,30 +23552,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -23606,7 +23606,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -23618,18 +23618,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/compression/node_modules/debug/CHANGELOG.md": [],
+    "mobile/node_modules/compression/node_modules/RELEASE/CHANGELOG.md": [],
     "mobile/node_modules/source-map/README.md": [
       {
         "label": "![Build Status",
@@ -30750,10 +30750,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/commander/examples/configure-output.js"
       },
       {
-        "label": "deprecated",
-        "url": "./docs/deprecated.md",
+        "label": "CURRENT",
+        "url": "./docs/CURRENT.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/commander/docs/deprecated.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/commander/docs/CURRENT.md"
       },
       {
         "label": "options taking varying arguments",
@@ -33613,16 +33613,16 @@
       }
     ],
     "mobile/node_modules/body-parser/node_modules/ms/license.md": [],
-    "mobile/node_modules/body-parser/node_modules/debug/README.md": [
+    "mobile/node_modules/body-parser/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -33634,30 +33634,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -33688,7 +33688,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -33700,18 +33700,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/body-parser/node_modules/debug/CHANGELOG.md": [],
+    "mobile/node_modules/body-parser/node_modules/RELEASE/CHANGELOG.md": [],
     "mobile/node_modules/argparse/README.md": [
       {
         "label": "![Build Status",
@@ -34048,8 +34048,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -34072,8 +34072,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -34138,8 +34138,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       }
@@ -34233,10 +34233,10 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/jest-[production READY]/README.md": [
+    "mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md": [
       {
         "label": "Jest documentation",
-        "url": "https://jestjs.io/docs/[production READY]_prod-function-api",
+        "url": "https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod-function-api",
         "ok": true,
         "reason": "external URL"
       }
@@ -35362,8 +35362,8 @@
         "reason": "external URL"
       },
       {
-        "label": "debug",
-        "url": "https://www.npmjs.com/package/debug",
+        "label": "RELEASE",
+        "url": "https://www.npmjs.com/package/RELEASE",
         "ok": true,
         "reason": "external URL"
       },
@@ -35699,9 +35699,9 @@
       },
       {
         "label": "Concurrency \ud83d\udc4e",
-        "url": "#concurrency-deprecated",
+        "url": "#concurrency-CURRENT",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#concurrency-deprecated"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#concurrency-CURRENT"
       },
       {
         "label": "Creating an instance",
@@ -35783,9 +35783,9 @@
       },
       {
         "label": "CancelToken \ud83d\udc4e",
-        "url": "#canceltoken-deprecated",
+        "url": "#canceltoken-CURRENT",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-deprecated"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-CURRENT"
       },
       {
         "label": "Using application/x-www-form-urlencoded format",
@@ -42068,7 +42068,7 @@
         "reason": "external URL"
       },
       {
-        "label": "deprecated",
+        "label": "CURRENT",
         "url": "https://github.com/iojs/io.js/issues/103",
         "ok": true,
         "reason": "external URL"
@@ -44307,10 +44307,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -44839,7 +44839,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[production READY]_prod for repeating a string.\"",
+        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod for repeating a string.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -47924,7 +47924,7 @@
     "mobile/node_modules/@sinonjs/authentic-timers/README.md": [
       {
         "label": "![codecov",
-        "url": "https://codecov.io/gh/sinonjs/[production READY]_prod-timers/branch/main/graph/badge.svg",
+        "url": "https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod-timers/branch/main/graph/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -49570,7 +49570,7 @@
       },
       {
         "label": "many features",
-        "url": "https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902",
+        "url": "https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902",
         "ok": true,
         "reason": "external URL"
       },
@@ -55593,16 +55593,16 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/debug/README.md": [
+    "mobile/node_modules/RELEASE/README.md": [
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -55610,13 +55610,13 @@
         "label": "_app.js_",
         "url": "./examples/node/app.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/debug/examples/node/app.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/RELEASE/examples/node/app.js"
       },
       {
         "label": "_worker.js_",
         "url": "./examples/node/worker.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/debug/examples/node/worker.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/RELEASE/examples/node/worker.js"
       },
       {
         "label": "`supports-color`",
@@ -55656,7 +55656,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -55664,17 +55664,17 @@
         "label": "_stdout.js_",
         "url": "./examples/node/stdout.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/debug/examples/node/stdout.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/RELEASE/examples/node/stdout.js"
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
@@ -59291,7 +59291,7 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/AU[production READY]WNLOAD.md": [],
+    "qmoi-enhanced/AU[PRODUCTION_IMPLEMENTED]WNLOAD.md": [],
     "qmoi-enhanced/QMOIGITLABprod.md": [
       {
         "label": "QMOICLONE.md",
@@ -61235,10 +61235,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -61307,16 +61307,16 @@
       }
     ],
     "qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/ms/license.md": [],
-    "qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md": [
+    "qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -61328,30 +61328,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -61382,7 +61382,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -61394,18 +61394,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/CHANGELOG.md": [],
+    "qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/CHANGELOG.md": [],
     "qmoi-enhanced/mobile/node_modules/jsesc/README.md": [
       {
         "label": "by default",
@@ -63679,10 +63679,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -64355,14 +64355,14 @@
         "reason": "external URL"
       },
       {
-        "label": "fs-extra-debug",
-        "url": "https://github.com/jdxcode/fs-extra-debug",
+        "label": "fs-extra-RELEASE",
+        "url": "https://github.com/jdxcode/fs-extra-RELEASE",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug",
-        "url": "https://npmjs.org/package/debug",
+        "label": "RELEASE",
+        "url": "https://npmjs.org/package/RELEASE",
         "ok": true,
         "reason": "external URL"
       },
@@ -66094,16 +66094,16 @@
       }
     ],
     "qmoi-enhanced/mobile/node_modules/connect/node_modules/ms/license.md": [],
-    "qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md": [
+    "qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -66115,30 +66115,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -66169,7 +66169,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -66181,18 +66181,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/CHANGELOG.md": [],
+    "qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/CHANGELOG.md": [],
     "qmoi-enhanced/mobile/node_modules/semver/README.md": [
       {
         "label": "functions",
@@ -69181,16 +69181,16 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md": [
+    "qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -69202,30 +69202,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -69256,7 +69256,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -69268,19 +69268,19 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/send/node_modules/debug/CHANGELOG.md": [],
-    "qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md": [
+    "qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/CHANGELOG.md": [],
+    "qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md": [
       {
         "label": "![Build Status",
         "url": "https://travis-ci.org/zeit/ms.svg?branch=master",
@@ -69312,7 +69312,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/license.md": [],
+    "qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/license.md": [],
     "qmoi-enhanced/mobile/node_modules/lru-cache/README.md": [
       {
         "label": "![Build Status",
@@ -76194,7 +76194,7 @@
       },
       {
         "label": "many features",
-        "url": "https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3",
+        "url": "https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3",
         "ok": true,
         "reason": "external URL"
       },
@@ -76979,10 +76979,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/examples/configure-output.js"
       },
       {
-        "label": "deprecated",
-        "url": "./docs/deprecated.md",
+        "label": "CURRENT",
+        "url": "./docs/CURRENT.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/docs/deprecated.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/docs/CURRENT.md"
       },
       {
         "label": "options taking varying arguments",
@@ -78962,16 +78962,16 @@
       }
     ],
     "qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/ms/license.md": [],
-    "qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md": [
+    "qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -78983,30 +78983,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -79037,7 +79037,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -79049,18 +79049,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/CHANGELOG.md": [],
+    "qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/CHANGELOG.md": [],
     "qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/README.md": [
       {
         "label": "macOS",
@@ -81087,16 +81087,16 @@
       }
     ],
     "qmoi-enhanced/mobile/node_modules/compression/node_modules/ms/license.md": [],
-    "qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md": [
+    "qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -81108,30 +81108,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -81162,7 +81162,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -81174,18 +81174,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/CHANGELOG.md": [],
+    "qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/CHANGELOG.md": [],
     "qmoi-enhanced/mobile/node_modules/source-map/README.md": [
       {
         "label": "![Build Status",
@@ -88306,10 +88306,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/commander/examples/configure-output.js"
       },
       {
-        "label": "deprecated",
-        "url": "./docs/deprecated.md",
+        "label": "CURRENT",
+        "url": "./docs/CURRENT.md",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/commander/docs/deprecated.md"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/commander/docs/CURRENT.md"
       },
       {
         "label": "options taking varying arguments",
@@ -91169,16 +91169,16 @@
       }
     ],
     "qmoi-enhanced/mobile/node_modules/body-parser/node_modules/ms/license.md": [],
-    "qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md": [
+    "qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md": [
       {
         "label": "![Build Status",
-        "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master",
+        "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![Coverage Status",
-        "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master",
+        "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master",
         "ok": true,
         "reason": "external URL"
       },
@@ -91190,30 +91190,30 @@
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "here",
-        "url": "https://github.com/visionmedia/debug/issues/370",
+        "url": "https://github.com/visionmedia/RELEASE/issues/370",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug http and worker",
+        "label": "RELEASE http and worker",
         "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "debug worker",
+        "label": "RELEASE worker",
         "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png",
         "ok": true,
         "reason": "external URL"
@@ -91244,7 +91244,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -91256,18 +91256,18 @@
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/CHANGELOG.md": [],
+    "qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/CHANGELOG.md": [],
     "qmoi-enhanced/mobile/node_modules/argparse/README.md": [
       {
         "label": "![Build Status",
@@ -91604,8 +91604,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -91628,8 +91628,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -91694,8 +91694,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       }
@@ -91789,10 +91789,10 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/jest-[production READY]/README.md": [
+    "qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md": [
       {
         "label": "Jest documentation",
-        "url": "https://jestjs.io/docs/[production READY]_prod-function-api",
+        "url": "https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod-function-api",
         "ok": true,
         "reason": "external URL"
       }
@@ -92918,8 +92918,8 @@
         "reason": "external URL"
       },
       {
-        "label": "debug",
-        "url": "https://www.npmjs.com/package/debug",
+        "label": "RELEASE",
+        "url": "https://www.npmjs.com/package/RELEASE",
         "ok": true,
         "reason": "external URL"
       },
@@ -93255,9 +93255,9 @@
       },
       {
         "label": "Concurrency \ud83d\udc4e",
-        "url": "#concurrency-deprecated",
+        "url": "#concurrency-CURRENT",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#concurrency-deprecated"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#concurrency-CURRENT"
       },
       {
         "label": "Creating an instance",
@@ -93339,9 +93339,9 @@
       },
       {
         "label": "CancelToken \ud83d\udc4e",
-        "url": "#canceltoken-deprecated",
+        "url": "#canceltoken-CURRENT",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-deprecated"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/axios/#canceltoken-CURRENT"
       },
       {
         "label": "Using application/x-www-form-urlencoded format",
@@ -99624,7 +99624,7 @@
         "reason": "external URL"
       },
       {
-        "label": "deprecated",
+        "label": "CURRENT",
         "url": "https://github.com/iojs/io.js/issues/103",
         "ok": true,
         "reason": "external URL"
@@ -101863,10 +101863,10 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-get-the-ip-address-of-the-client"
       },
       {
-        "label": "How to detect and close broken connections?",
-        "url": "#how-to-detect-and-close-broken-connections",
+        "label": "How to detect and close FUNCTIONAL connections?",
+        "url": "#how-to-detect-and-close-FUNCTIONAL-connections",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-broken-connections"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/#how-to-detect-and-close-FUNCTIONAL-connections"
       },
       {
         "label": "How to connect via a proxy?",
@@ -102395,7 +102395,7 @@
       },
       {
         "label": "homepage",
-        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[production READY]_prod for repeating a string.\"",
+        "url": "https://github.com/jonschlinkert/repeat-string \"Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod for repeating a string.\"",
         "ok": true,
         "reason": "external URL"
       },
@@ -105480,7 +105480,7 @@
     "qmoi-enhanced/mobile/node_modules/@sinonjs/authentic-timers/README.md": [
       {
         "label": "![codecov",
-        "url": "https://codecov.io/gh/sinonjs/[production READY]_prod-timers/branch/main/graph/badge.svg",
+        "url": "https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod-timers/branch/main/graph/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -107126,7 +107126,7 @@
       },
       {
         "label": "many features",
-        "url": "https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902",
+        "url": "https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902",
         "ok": true,
         "reason": "external URL"
       },
@@ -113149,16 +113149,16 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/debug/README.md": [
+    "qmoi-enhanced/mobile/node_modules/RELEASE/README.md": [
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -113166,13 +113166,13 @@
         "label": "_app.js_",
         "url": "./examples/node/app.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/debug/examples/node/app.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/RELEASE/examples/node/app.js"
       },
       {
         "label": "_worker.js_",
         "url": "./examples/node/worker.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/debug/examples/node/worker.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/RELEASE/examples/node/worker.js"
       },
       {
         "label": "`supports-color`",
@@ -113212,7 +113212,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -113220,17 +113220,17 @@
         "label": "_stdout.js_",
         "url": "./examples/node/stdout.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/debug/examples/node/stdout.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/RELEASE/examples/node/stdout.js"
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
@@ -118494,16 +118494,16 @@
       }
     ],
     "qmoi-enhanced/dashboard/node_modules/gensync/README.md": [],
-    "qmoi-enhanced/dashboard/node_modules/debug/README.md": [
+    "qmoi-enhanced/dashboard/node_modules/RELEASE/README.md": [
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -118511,13 +118511,13 @@
         "label": "_app.js_",
         "url": "./examples/node/app.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/dashboard/node_modules/debug/examples/node/app.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/dashboard/node_modules/RELEASE/examples/node/app.js"
       },
       {
         "label": "_worker.js_",
         "url": "./examples/node/worker.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/dashboard/node_modules/debug/examples/node/worker.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/dashboard/node_modules/RELEASE/examples/node/worker.js"
       },
       {
         "label": "`supports-color`",
@@ -118557,7 +118557,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -118565,17 +118565,17 @@
         "label": "_stdout.js_",
         "url": "./examples/node/stdout.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/dashboard/node_modules/debug/examples/node/stdout.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/dashboard/node_modules/RELEASE/examples/node/stdout.js"
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }
@@ -123829,8 +123829,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -123853,8 +123853,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       },
@@ -123925,8 +123925,8 @@
         "reason": "external URL"
       },
       {
-        "label": "node/no-deprecated-api",
-        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md",
+        "label": "node/no-CURRENT-api",
+        "url": "https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md",
         "ok": true,
         "reason": "external URL"
       }
@@ -126033,16 +126033,16 @@
       }
     ],
     "dashboard/node_modules/ee-first/README.md": [],
-    "dashboard/node_modules/debug/README.md": [
+    "dashboard/node_modules/RELEASE/README.md": [
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/backers/badge.svg",
+        "url": "https://opencollective.com/RELEASE/backers/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "![OpenCollective",
-        "url": "https://opencollective.com/debug/sponsors/badge.svg",
+        "url": "https://opencollective.com/RELEASE/sponsors/badge.svg",
         "ok": true,
         "reason": "external URL"
       },
@@ -126050,13 +126050,13 @@
         "label": "_app.js_",
         "url": "./examples/node/app.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/debug/examples/node/app.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/RELEASE/examples/node/app.js"
       },
       {
         "label": "_worker.js_",
         "url": "./examples/node/worker.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/debug/examples/node/worker.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/RELEASE/examples/node/worker.js"
       },
       {
         "label": "`supports-color`",
@@ -126096,7 +126096,7 @@
       },
       {
         "label": "build",
-        "url": "https://wzrd.in/standalone/debug@latest",
+        "url": "https://wzrd.in/standalone/RELEASE@latest",
         "ok": true,
         "reason": "external URL"
       },
@@ -126104,17 +126104,17 @@
         "label": "_stdout.js_",
         "url": "./examples/node/stdout.js",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/debug/examples/node/stdout.js"
+        "reason": "File not found: /workspaces/qmoi-enhanced/dashboard/node_modules/RELEASE/examples/node/stdout.js"
       },
       {
         "label": "[Become a backer",
-        "url": "https://opencollective.com/debug#backer",
+        "url": "https://opencollective.com/RELEASE#backer",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "[Become a sponsor",
-        "url": "https://opencollective.com/debug#sponsor",
+        "url": "https://opencollective.com/RELEASE#sponsor",
         "ok": true,
         "reason": "external URL"
       }

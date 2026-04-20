@@ -16,7 +16,7 @@
   ],
   "notes": "Fill in checksums and upload artifacts to GitHub Releases for tag v1.2.5.",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:20:03.764713"
 }

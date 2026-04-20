@@ -175,7 +175,7 @@ production-ready and operational
 │   │   │   │       └── features/
 │   │   │   ├── self-work/
 │   │   │   │   ├── code-review/
-│   │   │   │   ├── debug/
+│   │   │   │   ├── RELEASE/
 │   │   │   │   └── run-tests/
 │   │   │   └── suggestions/
 │   │   │       └── route.ts         # Suggestions

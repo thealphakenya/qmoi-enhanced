@@ -8,7 +8,7 @@
   "memory_preserved": true,
   "consciousness_sync": "in-progress",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:41.851795"
 }

@@ -13,7 +13,7 @@ title: "QMOI Radio"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Radio ✅ PRODUCTION READY
+# QMOI Radio ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

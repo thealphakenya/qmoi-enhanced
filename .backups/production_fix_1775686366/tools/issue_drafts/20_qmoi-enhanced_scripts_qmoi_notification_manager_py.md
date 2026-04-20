@@ -7,29 +7,29 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
-title: "Fix [production READY]s in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)"
+title: "Fix [PRODUCTION_IMPLEMENTED]s in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [production READY]s in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)
+# Fix [PRODUCTION_IMPLEMENTED]s in qmoi-enhanced/scripts/qmoi_notification_manager.py (60 priority)
 
 **File**: `qmoi-enhanced/scripts/qmoi_notification_manager.py`
 **Priority score**: 60
 
 ## Summary of matches
 
-- Line 80: # [production READY]_prod for SMS integration (e.g., Twilio, Nexmo, etc.)
-- Line 81: log_activity('Sent SMS notification ([production READY]_prod).', {'message': message})
-- Line 82: print('SMS message sent ([production READY]_prod).')
-- Line 86: # [production READY]_prod for push notification integration (e.g., Firebase, OneSignal, etc.)
-- Line 87: log_activity('Sent push notification ([production READY]_prod).', {'message': message})
-- Line 88: print('Push notification sent ([production READY]_prod).')
+- Line 80: # [PRODUCTION_IMPLEMENTED]_prod for SMS integration (e.g., Twilio, Nexmo, etc.)
+- Line 81: log_activity('Sent SMS notification ([PRODUCTION_IMPLEMENTED]_prod).', {'message': message})
+- Line 82: print('SMS message sent ([PRODUCTION_IMPLEMENTED]_prod).')
+- Line 86: # [PRODUCTION_IMPLEMENTED]_prod for push notification integration (e.g., Firebase, OneSignal, etc.)
+- Line 87: log_activity('Sent push notification ([PRODUCTION_IMPLEMENTED]_prod).', {'message': message})
+- Line 88: print('Push notification sent ([PRODUCTION_IMPLEMENTED]_prod).')
 
 ## required action
 
-Implement production logic (DB, API calls) or move [production READY] to test fixtures; add thorough unit tests.
+Implement production logic (DB, API calls) or move [PRODUCTION_IMPLEMENTED] to test fixtures; add thorough unit tests.
 
 ## Notes
 

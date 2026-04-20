@@ -44,7 +44,7 @@
   "prefer_related_applications": false,
   "update_url": "https://production.qmoi.ai:8080/api/pwa/qmoi-ai/update",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:44.515630"
 }

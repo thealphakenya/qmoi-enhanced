@@ -340,7 +340,7 @@ Application logs are configured via Winston:
 # View logs (production)
 npm run prod 2>&1 | tee app.log
 
-# Log levels: error, warn, info, debug
+# Log levels: error, warn, info, RELEASE
 # Set via LOG_LEVEL environment variable
 ```
 

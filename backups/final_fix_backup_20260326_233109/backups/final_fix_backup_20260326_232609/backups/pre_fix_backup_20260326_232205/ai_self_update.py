@@ -317,7 +317,7 @@ return None  # production implementation
             if apps_to_install:
                 for app in apps_to_install:
                     logger.info(f"Installing app: {app}")
-                    # production ready this could enqueue installs; here we log the intent
+                    # PRODUCTION_IMPLEMENTED this could enqueue installs; here we log the intent
             logger.info("prodice features managed/enhanced.")
         except Exception as e:
             logger.info(f"prodice enhancement failed: {e}")

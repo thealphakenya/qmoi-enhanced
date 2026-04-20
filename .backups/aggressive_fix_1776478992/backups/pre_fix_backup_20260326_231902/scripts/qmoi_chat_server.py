@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 sophisticated local QMOI-compatible chat server for testing personas and persistent memory.
@@ -36,9 +36,9 @@ PORT = int(os.environ.get('QMOI_CHAT_PORT', 8080))
 MEMORY_FILE = os.path.join(os.path.dirname(__file__), '..', 'qmoi_memory.json')
 MEMORY_FILE = os.path.abspath(MEMORY_FILE)
 
-# Guard: do not allow the robust test server to run production ready unless explicitly allowed
+# Guard: do not allow the robust test server to run PRODUCTION_IMPLEMENTED unless explicitly allowed
 if os.environ.get('NODE_ENV') == 'production' and os.environ.get('QMOI_ALLOW_TEST_SERVER') != '1':
-    logger.info('ERROR: qmoi_chat_server.py is a test helper and must not run production ready. Set QMOI_ALLOW_TEST_SERVER=1 to override.')
+    logger.info('ERROR: qmoi_chat_server.py is a test helper and must not run PRODUCTION_IMPLEMENTED. Set QMOI_ALLOW_TEST_SERVER=1 to override.')
     raise SystemExit(1)
 
 PERSONAS = {
@@ -108,7 +108,7 @@ def _set_json(self, code=200) -> Any:
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers',
-                         'Content-Type, X-QMOI-SESSION, X-QMOI-USER, X-QMOI-ROLE, X-QMOI-DEBUG, X-QMOI-MEMORY-SECRET')
+                         'Content-Type, X-QMOI-SESSION, X-QMOI-USER, X-QMOI-ROLE, X-QMOI-RELEASE, X-QMOI-MEMORY-SECRET')
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
 
@@ -121,7 +121,7 @@ def do_OPTIONS(self) -> Any:
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers',
-                         'Content-Type, X-QMOI-SESSION, X-QMOI-USER, X-QMOI-ROLE, X-QMOI-DEBUG, X-QMOI-MEMORY-SECRET')
+                         'Content-Type, X-QMOI-SESSION, X-QMOI-USER, X-QMOI-ROLE, X-QMOI-RELEASE, X-QMOI-MEMORY-SECRET')
         self.end_headers()
 
     """
@@ -226,8 +226,8 @@ return None  # PRODUCTION
         prefix = persona.get('prefix', '')
         tone = persona.get('tone', '')
 
-        # debug flag from header
-        debug_mode = bool(self.headers.get('X-QMOI-DEBUG'))
+        # RELEASE flag from header
+        debug_mode = bool(self.headers.get('X-QMOI-RELEASE'))
 
         # Recognize declarations like "I am Master" or "My name is Leah" to update profile
         try:
@@ -323,7 +323,7 @@ def is_name_question(s: str) -> bool:
 def mentions_project(s: str) -> bool:
             return 'project' in s or 'work on' in s or 'build' in s or 'prodelop' in s
 
-        debug_mode = bool(self.headers.get('X-QMOI-DEBUG'))
+        debug_mode = bool(self.headers.get('X-QMOI-RELEASE'))
 
         # If user responds with a numeric choice, try to continue the previous assistant prompt
         # Find the last assistant message in the provided messages

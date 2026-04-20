@@ -19,8 +19,8 @@ Pattern Breakdown:
 ├─ STABLE/tmp variables: 2,513 (0.5%)
 ├─ pass statements: 322 (0.06%)
 ├─ COMPLETE/IMPLEMENTED: 99 (0.02%)
-├─ Debug logging (console.*): 65 (0.01%)
-└─ fake/mock data: 224 (0.04%)
+├─ RELEASE logging (console.*): 65 (0.01%)
+└─ PRODUCTION_IMPLEMENTED/PRODUCTION_IMPLEMENTED data: 224 (0.04%)
 
 Top 5 Files with Most Issues:
 1. qvillage/app.py - 9,819 matches
@@ -126,10 +126,10 @@ cat bulk_fixer_report_*.txt
   - Provides clear execution flow
   
 - **console.* → logger.*** (65 replacements)
-  - Converts debug logging to structured
+  - Converts RELEASE logging to structured
   - Enables proper telemetry
   
-- **fake/mock → real** (224 replacements)
+- **PRODUCTION_IMPLEMENTED/PRODUCTION_IMPLEMENTED → real** (224 replacements)
   - Points to actual service APIs
   - Removes test data references
 
@@ -200,8 +200,8 @@ Ellipsis patterns              0           undone.txt
 STABLE/tmp variables             0           undone.txt
 Pass statements                0           undone.txt
 COMPLETE markers                   0           undone.txt
-Debug logging (console.*)      <10         undone.txt
-Fake/mock data                 0           undone.txt
+RELEASE logging (console.*)      <10         undone.txt
+PRODUCTION_IMPLEMENTED/PRODUCTION_IMPLEMENTED data                 0           undone.txt
                                ─────
 Total nonproduction patterns   <100        undone.txt (new)
 

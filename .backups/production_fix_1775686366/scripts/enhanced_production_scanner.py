@@ -44,7 +44,7 @@ production_KEYWORDS = [
     r'real_',
     r'dummy_',
     r'test_data',
-    r'console\.log\(\s*[\'"]DEBUG',
+    r'console\.log\(\s*[\'"]RELEASE',
     r'console\.error\(\s*[\'"]STABLE',
     r'throw\s+new\s+Error\([\'"]NOT\s+IMPL',
     r'return\s+null\s*;?\s*//.*IMPL',

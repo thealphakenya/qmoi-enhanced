@@ -12,7 +12,7 @@ title: "lion-lite"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# lion-lite ✅ PRODUCTION READY
+# lion-lite ✅ PRODUCTION_IMPLEMENTED
 
 Description
 
@@ -28,7 +28,7 @@ Release & packaging
 
 - Delivered as a small tar.gz and a tiny Docker image. Suitable for IoT and edge deployments.
 
-# LION-Lite (prodeloper / Hobbyist) ✅ PRODUCTION READY
+# LION-Lite (prodeloper / Hobbyist) ✅ PRODUCTION_IMPLEMENTED
 
 Purpose
 

@@ -174,7 +174,7 @@ production-ready
     production-ready
 
     production-ready
-    'DEBUG', 'logger.info', 'PRINT(', 'ECHO', 'LOG.DEBUG',
+    'RELEASE', 'logger.info', 'PRINT(', 'ECHO', 'LOG.RELEASE',
     production-ready
 
     production

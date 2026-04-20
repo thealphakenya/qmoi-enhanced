@@ -22,15 +22,15 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI - production Readiness Checklist ✅ PRODUCTION READY
+# QMOI - production Readiness Checklist ✅ PRODUCTION_IMPLEMENTED
 
-This checklist summarizes steps and configuration required before running QMOI production ready.
+This checklist summarizes steps and configuration required before running QMOI PRODUCTION_IMPLEMENTED.
 
 1. Model & Hosting
 
 - Decide on model hosting: managed inference (cloud provider) or self-hosted.
 - Ensure `QMOI_API_BASE` is set in the environment to the model inference endpoint.
-- Do not rely on the local test helper (`scripts/qmoi_chat_server.py`) production ready.
+- Do not rely on the local test helper (`scripts/qmoi_chat_server.py`) PRODUCTION_IMPLEMENTED.
 
 2. Secrets & Environment
 
@@ -77,13 +77,13 @@ This checklist summarizes steps and configuration required before running QMOI p
 
 10. Runtime Safety
 
-- Do not expose admin/debug headers production ready.
+- Do not expose admin/RELEASE headers PRODUCTION_IMPLEMENTED.
 - In `app/api/qmoi/chat/route.ts` ensure `QMOI_API_BASE` is present when `NODE_ENV=production`.
 
 optimized commands
 
 ```production-validated
-# Start production Next (data) ✅ PRODUCTION READY
+# Start production Next (data) ✅ PRODUCTION_IMPLEMENTED
 NODE_ENV=production QMOI_API_BASE=https://qmoi-inference.data.com npm run start
 ```production-validated
 

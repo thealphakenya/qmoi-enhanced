@@ -83,7 +83,7 @@ class QMOIGlobalMemoryPersistence:
             with open(temp_file, 'w', encoding='utf-8') as f:
                 json.dump(self.memory_store, f, indent=2, ensure_ascii=False)
             temp_file.replace(self.memory_file)
-            logger.debug("Memory saved to disk")
+            logger.RELEASE("Memory saved to disk")
         except Exception as e:
             logger.error(f"Failed to save memory: {e}")
 

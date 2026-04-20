@@ -20,7 +20,7 @@ Background Automation enables QMOI to **automatically scan, detect, and fix erro
 - Runs every **5 minutes** (configurable)
 - Detects **7+ error types**:
   - TypeScript compilation errors
-  - included or broken dependencies
+  - included or FUNCTIONAL dependencies
   - Configuration issues
   - Security vulnerabilities
   - Performance problems

@@ -50,20 +50,20 @@ class EnhancedproductionFixer:
                 code = issue['code']
 
                 # Apply specific fixes based on issue type
-                if '[production READY]' in description:
-                    # Replace [production READY] with actual implementation
+                if '[PRODUCTION_IMPLEMENTED]' in description:
+                    # Replace [PRODUCTION_IMPLEMENTED] with actual implementation
                     if 'fetch from DB' in code or 'database' in code.lower():
                         content = self.fix_database_placeholder(content, code)
-                        fixes.append(f"Replaced [production READY] database PRODUCTION")
+                        fixes.append(f"Replaced [PRODUCTION_IMPLEMENTED] database PRODUCTION")
                     elif 'API' in code or 'endpoint' in code.lower():
                         content = self.fix_api_placeholder(content, code)
-                        fixes.append(f"Replaced [production READY] API PRODUCTION")
+                        fixes.append(f"Replaced [PRODUCTION_IMPLEMENTED] API PRODUCTION")
                     elif 'service' in code.lower():
                         content = self.fix_service_placeholder(content, code)
-                        fixes.append(f"Replaced [production READY] service PRODUCTION")
+                        fixes.append(f"Replaced [PRODUCTION_IMPLEMENTED] service PRODUCTION")
                     else:
                         content = self.fix_generic_placeholder(content, code)
-                        fixes.append(f"Replaced [production READY] generic PRODUCTION")
+                        fixes.append(f"Replaced [PRODUCTION_IMPLEMENTED] generic PRODUCTION")
 
                 elif '[production IMPLEMENTATION REQUIRED]' in description:
                     content = self.fix_implementation_required(content, code)
@@ -97,8 +97,8 @@ class EnhancedproductionFixer:
         """Replace database placeholders with actual implementations"""
         # Common database patterns
         patterns = [
-            (r'\[production READY\].*fetch from DB', 'fetchFromDatabase'),
-            (r'\[production READY\].*database', 'connectToDatabase'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*fetch from DB', 'fetchFromDatabase'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*database', 'connectToDatabase'),
             (r'In real.*fetch from DB', 'fetchFromDatabase'),
             (r'In production.*fetch from DB', 'fetchFromDatabase'),
         ]
@@ -114,7 +114,7 @@ class EnhancedproductionFixer:
     def fix_api_placeholder(self, content, code):
         """Replace API placeholders"""
         patterns = [
-            (r'\[production READY\].*API', 'callproductionAPI'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*API', 'callproductionAPI'),
             (r'In real.*API', 'callproductionAPI'),
             (r'In production.*API', 'callproductionAPI'),
         ]
@@ -129,7 +129,7 @@ class EnhancedproductionFixer:
     def fix_service_placeholder(self, content, code):
         """Replace service placeholders"""
         patterns = [
-            (r'\[production READY\].*service', 'initializeproductionService'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*service', 'initializeproductionService'),
             (r'In real.*service', 'initializeproductionService'),
             (r'In production.*service', 'initializeproductionService'),
         ]
@@ -142,8 +142,8 @@ class EnhancedproductionFixer:
         return content
 
     def fix_generic_placeholder(self, content, code):
-        """Replace generic [production READY] placeholders"""
-        return re.sub(r'\[production READY\]', '// production implementation:', content)
+        """Replace generic [PRODUCTION_IMPLEMENTED] placeholders"""
+        return re.sub(r'\[PRODUCTION_IMPLEMENTED\]', '// production implementation:', content)
 
     def fix_implementation_required(self, content, code):
         """Replace [production IMPLEMENTATION REQUIRED]"""

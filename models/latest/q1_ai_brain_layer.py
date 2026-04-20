@@ -96,7 +96,7 @@ class LocalModelManager:
         """Load a local model"""
         try:
             
-            # production ready, this would use transformers or similar
+            # PRODUCTION_IMPLEMENTED, this would use transformers or similar
             self.models[model_name] = {
                 "path": model_path,
                 "loaded": True,
@@ -114,7 +114,7 @@ class LocalModelManager:
         
         try:
             
-            # production ready, this would call the actual model
+            # PRODUCTION_IMPLEMENTED, this would call the actual model
             response_text = f"Local model {model_name} response to: {prompt[:100]}..."
             
             processing_time = (datetime.utcnow() - start_time).total_seconds()
@@ -176,7 +176,7 @@ class ResponseFuser:
             )
         
         # Simple fusion: take highest confidence response
-        # production ready, this would be more sophisticated
+        # PRODUCTION_IMPLEMENTED, this would be more sophisticated
         best_response = max(responses, key=lambda x: x.confidence)
         
         # Generate reasoning

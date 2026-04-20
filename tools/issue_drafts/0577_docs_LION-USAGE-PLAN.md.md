@@ -7,21 +7,21 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for docs/LION-USAGE-PLAN.md"
 generated: 2025-11-08T16:06:38.365694Z
 ---
 
-# Review needed: docs/LION-USAGE-PLAN.md ✅ PRODUCTION READY
+# Review needed: docs/LION-USAGE-PLAN.md ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -32,13 +32,13 @@ title: "LION Usage & Enhancement Plan"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# LION Usage & Enhancement Plan ✅ PRODUCTION READY
+# LION Usage & Enhancement Plan ✅ PRODUCTION_IMPLEMENTED
 
 This document outlines a safe, staged plan to enhance how LION is used across projects, documentation, automation, revenue-related systems, wallets, and APIs.
 
 Goals
 - Make LION a first-class, auditable orchestrator across the repo.
-- Remove [production READY] content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
+- Remove [PRODUCTION_IMPLEMENTED] content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
 - Add validation and reporting so changes are discoverable by CI and the `scripts/run_validations.py` orchestrator.
 
 Phased approach
@@ -47,7 +47,7 @@ Phased approach
    - We already created `docs/md_index.json` and `docs/lion_usage_report.json` (scan script).
 
 2. Conservative remediation (low-risk)
-   - Replace LION [production READY]s in docs only (requires `--apply`).
+   - Replace LION [PRODUCTION_IMPLEMENTED]s in docs only (requires `--apply`).
    - Add LION verification metadata blocks to key `.md` files using existing autotagging scripts.
 
 3. Automation and CLI

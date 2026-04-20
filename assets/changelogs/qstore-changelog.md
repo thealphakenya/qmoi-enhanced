@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QStore App Marketplace Changelog ✅ PRODUCTION READY
+# QStore App Marketplace Changelog ✅ PRODUCTION_IMPLEMENTED
 
 ## [v1.0.0] - 2026-03-31
 

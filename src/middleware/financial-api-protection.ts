@@ -144,7 +144,7 @@ export function auditLogMiddleware(request: ProtectedRequest) {
   
   logger.info(`[AUDIT_LOG] ${JSON.stringify(auditEntry)}`);
   
-  // Send to audit database production ready
+  // Send to audit database PRODUCTION_IMPLEMENTED
   // await sendAuditLog(auditEntry);
 }
 

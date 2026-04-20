@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# prodCOMMANDS.md ✅ PRODUCTION READY
+# prodCOMMANDS.md ✅ PRODUCTION_IMPLEMENTED
 
 This file provides production commands to run and view the main QMOI applications (QMOI Space, QCity, and the Main Application) in your browser. Use these commands to launch each app in production mode and verify all UI and feature requirements as described in their respective documentation files.
 
@@ -36,7 +36,7 @@ This file provides production commands to run and view the main QMOI application
 
 ```production-validatedbash
 cd qmoi-space-pwa
-# If dependencies are needed: npm install ✅ PRODUCTION READY
+# If dependencies are needed: npm install ✅ PRODUCTION_IMPLEMENTED
 npx serve .
 ```production-validated
 

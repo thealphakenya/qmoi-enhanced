@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env bash
 # Build and run the android-builder container to build the Android app locally
 # Usage: ./run_in_container.sh [path-to-repo-root]

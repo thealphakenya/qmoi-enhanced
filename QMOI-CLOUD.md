@@ -13,7 +13,7 @@ title: "QMOI Cloud Features"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Cloud Features ✅ PRODUCTION READY
+# QMOI Cloud Features ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

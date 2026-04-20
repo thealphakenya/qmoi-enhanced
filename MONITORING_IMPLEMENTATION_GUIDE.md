@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
-# Phase 6 Extended: Monitoring & Observability Implementation Guide ✅ PRODUCTION READY
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+# Phase 6 Extended: Monitoring & Observability Implementation Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -76,7 +76,7 @@ Generated → Viewed → Acknowledged/Dismissed/Escalated
 
 - `acknowledge`: Mark alert as seen by admin
 - `dismiss`: Temporarily hide alert
-- `escalate`: Route to on-call team ([production READY])
+- `escalate`: Route to on-call team ([PRODUCTION_IMPLEMENTED])
 
 **Storage**: In-memory (production should use database)
 

@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Platform Security"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -16,7 +16,7 @@ title: "QMOI Platform Security"
 
 # QMOI Platform Security
 
-[production READY] covering security best practices, secret management, and vulnerability scanning for platform deployments.
+[PRODUCTION_IMPLEMENTED] covering security best practices, secret management, and vulnerability scanning for platform deployments.
 
 <!-- QMOI_VALIDATION_START -->
 

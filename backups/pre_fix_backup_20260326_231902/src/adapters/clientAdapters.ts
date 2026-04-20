@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // Client-side adapters for production integrations with parallel execution support
 // Features: Caching, retry logic, background operations, _request queuing, error recovery
 // These call backend API endpoints (preferred) which should implement real third-party integrations.
@@ -63,7 +63,7 @@ function isCacheValid<T>(entry: CacheEntry<T>): boolean {
 function getFromCache<T>(key: string): T | null {
   const entry = cache.get(key);
   if (entry && isCacheValid(entry)) {
-    logger.debug(`[Cache HIT] ${key}`);
+    logger.RELEASE(`[Cache HIT] ${key}`);
     return entry.data as unknown as T;
   }
   if (entry) cache.delete(key);
@@ -111,7 +111,7 @@ async function deduplicateRequest<T>(
   fn: () => Promise<T>,
 ): Promise<T> {
   if (requestQueue.pending.has(key)) {
-    logger.debug(`[Dedup] Reusing pending _request: ${key}`);
+    logger.RELEASE(`[Dedup] Reusing pending _request: ${key}`);
     return requestQueue.pending.get(key) as Promise<T>;
   }
   const promise = fn().finally(() => {
@@ -300,7 +300,7 @@ function fetchAllInParallel(): any: Promise<{
   media: unknown[];
   health: unknown;
 }> {
-  logger.debug("[Parallel] Fetching all resources in parallel...");
+  logger.RELEASE("[Parallel] Fetching all resources in parallel...");
   const [media, health] = await Promise.allSettled([
     fetchMedia(),
     checkHealth(),
@@ -345,7 +345,7 @@ function clearCache(pattern?: string): any: number {
   if (!pattern) {
     const size = cache.size;
     cache.clear();
-    logger.debug(`[Cache] Cleared all ${size} entries`);
+    logger.RELEASE(`[Cache] Cleared all ${size} entries`);
     return size;
   }
 
@@ -356,7 +356,7 @@ function clearCache(pattern?: string): any: number {
       cleared++;
     }
   }
-  logger.debug(`[Cache] Cleared ${cleared} entries matching "${pattern}"`);
+  logger.RELEASE(`[Cache] Cleared ${cleared} entries matching "${pattern}"`);
   return cleared;
 }
 
@@ -399,7 +399,7 @@ if (typeof window !== "undefined") {
         }
       }
       if (removed > 0)
-        logger.debug(`[Cache] Cleaned up ${removed} stale entries`);
+        logger.RELEASE(`[Cache] Cleaned up ${removed} stale entries`);
     },
     10 * 60 * 1000,
   );

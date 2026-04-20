@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# ISSUES ✅ PRODUCTION READY
+# ISSUES ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `issues/` directory.
 

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "ALLLINKS.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -715,7 +715,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://coveralls.io/github/schnittstabil/merge-options?branch=master
 - https://coveralls.io/github/tapjs/stack-utils?branch=master
 - https://coveralls.io/github/thecodrr/fdir?branch=master
-- https://coveralls.io/github/visionmedia/debug?branch=master
+- https://coveralls.io/github/visionmedia/RELEASE?branch=master
 - https://coveralls.io/github/websockets/ws
 - https://coveralls.io/r/ForbesLindesay/throat?branch=master
 - https://coveralls.io/r/STRML/async-limiter
@@ -774,7 +774,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://coveralls.io/repos/github/istanbuljs/babel-plugin-istanbul/badge.svg?branch=master
 - https://coveralls.io/repos/github/istanbuljs/test-exclude/badge.svg?branch=master
 - https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master
-- https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master
+- https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master
 - https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github
 - https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github
 - https://coveralls.io/repos/isaacs/yallist/badge.svg?service=github
@@ -886,7 +886,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/mastermatt
 - https://github.com/mozilla/source-map/blob/master/CHANGELOG.md#070
 - https://github.com/mrmlnc/fast-glob/actions/workflows/benchmark.yml?query=branch%3Amaster
-- https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md
+- https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md
 - https://github.com/nodeca/argparse/blob/master/LICENSE
 - https://github.com/nodeca/argparse/tree/master/examples
 - https://github.com/nodeca/js-yaml/actions
@@ -1044,7 +1044,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://nodejs.org/api/util.html#util_util_promisify_original
 - https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/
 - https://npmjs.com/package/
-- https://opencollective.com/debug/backers/badge.svg
+- https://opencollective.com/RELEASE/backers/badge.svg
 - https://packagephobia.now.sh/result?p=axios
 - https://poprey.com/?utm_source&#x3D
 - https://raw.github.com/jensyt/imurmurhash-js/master/imurmurhash.min.js
@@ -1073,7 +1073,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/password_manager/chrome_password_manager_client.cc
 - https://source.chromium.org/chromium/chromium/src/+/master:content/public/common/content_switches.cc
 - https://source.chromium.org/chromium/chromium/src/+/master:headless/app/headless_shell.cc
-- https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc
+- https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc
 - https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc
 - https://stakes.social/0x44d871aebF0126Bf646753E2C976Aa7e68A66c15
 - https://tid
@@ -1262,8 +1262,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://travis-ci.org/terkelg/sisteransi
 - https://travis-ci.org/terkelg/sisteransi.svg?branch=master
 - https://travis-ci.org/then/is-promise
-- https://travis-ci.org/visionmedia/debug
-- https://travis-ci.org/visionmedia/debug.svg?branch=master
+- https://travis-ci.org/visionmedia/RELEASE
+- https://travis-ci.org/visionmedia/RELEASE.svg?branch=master
 - https://travis-ci.org/watson/ci-info
 - https://travis-ci.org/watson/ci-info.svg?branch=master
 - https://travis-ci.org/websockets/ws
@@ -1632,7 +1632,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://coveralls.io/repos/github/istanbuljs/test-exclude/badge.svg?branch=master
 - https://coveralls.io/repos/github/json5/json5/badge.svg
 - https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master
-- https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master
+- https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master
 - https://coveralls.io/repos/github/zkat/json-parse-better-errors/badge.svg?branch=latest
 - https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github
 - https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github
@@ -5253,7 +5253,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/jcarpanelli/spinnies
 - https://github.com/jcrugzz
 - https://github.com/jdalton
-- https://github.com/jdxcode/fs-extra-debug
+- https://github.com/jdxcode/fs-extra-RELEASE
 - https://github.com/jelleschutter
 - https://github.com/jennings
 - https://github.com/jessetane/queue
@@ -6038,7 +6038,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/muescha
 - https://github.com/mycoboco/wcwidth.js
 - https://github.com/mysticatea/abort-controller/releases
-- https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md
+- https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md
 - https://github.com/mysticatea/eslint-plugin-node/pull/110
 - https://github.com/mysticatea/event-target-shim/releases
 - https://github.com/naronchen
@@ -6357,7 +6357,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/vercel/ms/workflows/CI/badge.svg
 - https://github.com/vercel/next.js/blob/b88f20c90bf4659b8ad5cb2a27956005eac2c7e8/packages/next/lib/find-config.ts#L43-L46
 - https://github.com/victorperin
-- https://github.com/visionmedia/debug/issues/370
+- https://github.com/visionmedia/RELEASE/issues/370
 - https://github.com/visionmedia/node-querystring
 - https://github.com/visionmedia/node-querystring/issues
 - https://github.com/visortelle
@@ -7192,17 +7192,17 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://npmjs.com/source-map-support
 - https://npmjs.org
 - https://npmjs.org/package/accepts#readme
-- https://npmjs.org/package/debug
+- https://npmjs.org/package/RELEASE
 - https://npmjs.org/package/merge2
 - https://npmjs.org/supports-color
 - https://numi.tech/?ref=qs
 - https://nvd.nist.gov/vuln/detail/CVE-2024-47764
 - https://observablehq.com/
 - https://opencollective.com/dayjs#sponsor
-- https://opencollective.com/debug#backer
-- https://opencollective.com/debug#sponsor
-- https://opencollective.com/debug/backers/badge.svg
-- https://opencollective.com/debug/sponsors/badge.svg
+- https://opencollective.com/RELEASE#backer
+- https://opencollective.com/RELEASE#sponsor
+- https://opencollective.com/RELEASE/backers/badge.svg
+- https://opencollective.com/RELEASE/sponsors/badge.svg
 - https://opencollective.com/fast-xml-parser#backer
 - https://opencollective.com/rollup#backer
 - https://opencollective.com/rollup#sponsor
@@ -7286,14 +7286,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://source.chromium.org/chromium/chromium/src/+/main:content/child/runtime_features.cc
 - https://source.chromium.org/chromium/chromium/src/+/main:content/public/common/content_switches.cc
 - https://source.chromium.org/chromium/chromium/src/+/main:headless/app/headless_shell.cc
-- https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc
+- https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc
 - https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/platform/runtime_enabled_features.json5
 - https://source.chromium.org/chromium/chromium/src/+/main:third_party/catapult/telemetry/telemetry/internal/backends/chrome/chrome_startup_args.py
 - https://source.chromium.org/chromium/chromium/src/+/main:third_party/catapult/telemetry/telemetry/internal/backends/chrome/desktop_browser_finder.py
 - https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/password_manager/chrome_password_manager_client.cc
 - https://source.chromium.org/chromium/chromium/src/+/master:content/public/common/content_switches.cc
 - https://source.chromium.org/chromium/chromium/src/+/master:headless/app/headless_shell.cc
-- https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc
+- https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc
 - https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc
 - https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc
 - https://source.chromium.org/search?q=f:catapult%20f:desktop%20symbol:GetBrowserStartupArgs&ss=chromium%2Fchromium%2Fsrc
@@ -7416,7 +7416,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://travis-ci.org/tapjs/signal-exit.png
 - https://travis-ci.org/tapjs/stack-utils.svg?branch=master
 - https://travis-ci.org/terkelg/sisteransi.svg?branch=master
-- https://travis-ci.org/visionmedia/debug.svg?branch=master
+- https://travis-ci.org/visionmedia/RELEASE.svg?branch=master
 - https://travis-ci.org/watson/ci-info.svg?branch=master
 - https://travis-ci.org/whitequark/ipaddr.js.svg
 - https://travis-ci.org/yargs/cliui.svg
@@ -7836,7 +7836,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://www.npmjs.com/package/core-js
 - https://www.npmjs.com/package/cross-env
 - https://www.npmjs.com/package/csurf
-- https://www.npmjs.com/package/debug
+- https://www.npmjs.com/package/RELEASE
 - https://www.npmjs.com/package/errorhandler
 - https://www.npmjs.com/package/expand-brackets
 - https://www.npmjs.com/package/expand-range
@@ -7926,7 +7926,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://www.w3.org/wiki/CSS/Properties/color/keywords
 - https://www.youtube.com/watch?v=OcaPu9JPenU
 - https://wzrd.in/
-- https://wzrd.in/standalone/debug
+- https://wzrd.in/standalone/RELEASE
 - https://yaml.org/
 - https://zacanger.com
 
@@ -8098,7 +8098,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://your-app.vercel.app
 - https://your-domain.com/api/airtel/callback
 
-## docs/[production READY]s_replacement_report.json
+## docs/[PRODUCTION_IMPLEMENTED]s_replacement_report.json
 
 - http://nodeca.github.com/js-yaml/
 - http://promises-aplus.github.com/promises-spec/
@@ -8148,7 +8148,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://mothereff.in/js-escapes
 - https://nodejs.org/docs/latest-v24.x/api/cli.html#--production-test-module
 - https://nodejs.org/docs/latest-v24.x/api/cli.html#--production-test-module-
-- https://registry.npmjs.org/semantic-release/-/semantic-release-0.0.0-[production READY].tgz
+- https://registry.npmjs.org/semantic-release/-/semantic-release-0.0.0-[PRODUCTION_IMPLEMENTED].tgz
 - https://rollupjs.org/introduction/
 - https://sinonjs.org/releases/latest/#supported-runtimes
 - https://snack.expo.prod/
@@ -9755,7 +9755,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://quantum.qmoi.app
 - https://www.python.org/ftp/python/3.11.0/python-3.11.0-embed-amd64.zip
 
-## reports/[production READY]s.json
+## reports/[PRODUCTION_IMPLEMENTED]s.json
 
 - http://nodeca.github.com/js-yaml/
 - http://promises-aplus.github.com/promises-spec/

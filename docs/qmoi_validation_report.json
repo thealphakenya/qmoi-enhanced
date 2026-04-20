@@ -109,7 +109,7 @@
     }
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:36.628620"
 }

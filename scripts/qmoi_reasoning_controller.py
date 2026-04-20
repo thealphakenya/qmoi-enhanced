@@ -137,7 +137,7 @@ class ReasoningController:
         domain_keywords = {
             "mathematics": ["math", "equation", "theorem", "proof", "calculate"],
             "science": ["physics", "chemistry", "biology", "quantum", "atom"],
-            "programming": ["code", "debug", "algorithm", "function", "optimize"],
+            "programming": ["code", "RELEASE", "algorithm", "function", "optimize"],
             "philosophy": ["belief", "truth", "meaning", "concept", "theory"],
             "history": ["historical", "ancient", "timeline", "event", "century"],
             "law": ["legal", "law", "constitution", "right", "statute"],

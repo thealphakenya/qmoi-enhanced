@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # donerefs verified: 2025-11-08T15:29:10.233857Z
 .cspell.json
 .cursorignore
@@ -5583,7 +5583,7 @@ Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe
 Y2.txt
 Z1.txt
 Z12.txt
-__[PRODUCTION READY]s__/file[PRODUCTION READY].js
+__[PRODUCTION_IMPLEMENTED]s__/file[PRODUCTION_IMPLEMENTED].js
 abc.txt
 ai-automation-service.ts
 app/api/ai-self-diagnostics/route.ts
@@ -5900,8 +5900,8 @@ postcss.config.mjs
 public/favicon.ico
 public/icon.svg
 public/index.html
-public/[PRODUCTION READY]-logo.svg
-public/[PRODUCTION READY].svg
+public/[PRODUCTION_IMPLEMENTED]-logo.svg
+public/[PRODUCTION_IMPLEMENTED].svg
 public/qcity-icon.svg
 public/qcity/dashboard.js
 public/qcity/index.html
@@ -9027,8 +9027,8 @@ qmoi-enhanced/postcss.config.mjs
 qmoi-enhanced/public/favicon.ico
 qmoi-enhanced/public/icon.svg
 qmoi-enhanced/public/index.html
-qmoi-enhanced/public/[PRODUCTION READY]-logo.svg
-qmoi-enhanced/public/[PRODUCTION READY].svg
+qmoi-enhanced/public/[PRODUCTION_IMPLEMENTED]-logo.svg
+qmoi-enhanced/public/[PRODUCTION_IMPLEMENTED].svg
 qmoi-enhanced/public/qcity-icon.svg
 qmoi-enhanced/push-sophisticated.ps1
 qmoi-enhanced/qcity-artifacts/qmoi_build_report.json
@@ -9111,7 +9111,7 @@ qmoi-enhanced/scripts/fix-connectivity.js
 qmoi-enhanced/scripts/fix-deploy.js
 qmoi-enhanced/scripts/fix-lint.js
 qmoi-enhanced/scripts/fix_icon.py
-qmoi-enhanced/scripts/generate-debug-report.js
+qmoi-enhanced/scripts/generate-RELEASE-report.js
 qmoi-enhanced/scripts/generate-release-json.js
 qmoi-enhanced/scripts/generate_icon_all.py
 qmoi-enhanced/scripts/generate_rsa_key.py
@@ -9205,7 +9205,7 @@ qmoi-enhanced/scripts/scripts/qmoi_hands_free.py.py
 qmoi-enhanced/scripts/scripts/qmoi_huggingface_space_enhanced.py.py
 qmoi-enhanced/scripts/scripts/qmoi_parallel_processor.py.py
 qmoi-enhanced/scripts/services/comprehensive_test_runner.ts
-qmoi-enhanced/scripts/services/notification_[PRODUCTION READY].ts
+qmoi-enhanced/scripts/services/notification_[PRODUCTION_IMPLEMENTED].ts
 qmoi-enhanced/scripts/services/plugin_loader.ts
 qmoi-enhanced/scripts/services/qmoi_secrets_manager.js
 qmoi-enhanced/scripts/services/schedule_runner.ts
@@ -9278,8 +9278,8 @@ qmoi-enhanced/src/components/ui/use-toast.tsx
 qmoi-enhanced/src/components/vercel-analytics-next.ts
 qmoi-enhanced/src/index.css
 qmoi-enhanced/src/index.js
-qmoi-enhanced/src/[PRODUCTION READY]s/handlers.ts
-qmoi-enhanced/src/[PRODUCTION READY]s/server.ts
+qmoi-enhanced/src/[PRODUCTION_IMPLEMENTED]s/handlers.ts
+qmoi-enhanced/src/[PRODUCTION_IMPLEMENTED]s/server.ts
 qmoi-enhanced/src/pages/dashboard.tsx
 qmoi-enhanced/src/plugins/PluginManager.ts
 qmoi-enhanced/src/services/ContextEngine.ts
@@ -9296,7 +9296,7 @@ qmoi-enhanced/tailwind.config.ts
 qmoi-enhanced/templates/dashboard.html
 qmoi-enhanced/tests/api/test_health.py
 qmoi-enhanced/tests/e2e/accessibility.cy.js
-qmoi-enhanced/tests/e2e/test_e2e_[PRODUCTION READY].py
+qmoi-enhanced/tests/e2e/test_e2e_[PRODUCTION_IMPLEMENTED].py
 qmoi-enhanced/tests/integration/test_ai_integration.py
 qmoi-enhanced/tests/integration/test_error_fixing_integration.py
 qmoi-enhanced/tests/integration/test_financial_verification.py
@@ -11354,7 +11354,7 @@ scripts/backup_automation.js
 scripts/build_pwas.sh
 scripts/cashon_data/balances.json
 scripts/check-latest-release.js
-scripts/check_and_replace_[PRODUCTION READY]s.py
+scripts/check_and_replace_[PRODUCTION_IMPLEMENTED]s.py
 scripts/check_balances.py
 scripts/check_github_releases.py
 scripts/ci/scan_workflows.py
@@ -11378,7 +11378,7 @@ scripts/fix-deploy.js
 scripts/fix-lint.js
 scripts/fix_broken_links.py
 scripts/fix_icon.py
-scripts/generate-debug-report.js
+scripts/generate-RELEASE-report.js
 scripts/generate-release-json.js
 scripts/generate_all_links.py
 scripts/generate_apps_inventory.py
@@ -11482,7 +11482,7 @@ scripts/restore_from_s3.py
 scripts/revenue_tracker.py
 scripts/run_as_service.sh
 scripts/run_control_server.sh
-scripts/run_[PRODUCTION READY]_scans.py
+scripts/run_[PRODUCTION_IMPLEMENTED]_scans.py
 scripts/rust_lint_fix.js
 scripts/schedule_qcity_npm_selfheal.xml
 scripts/scripts/qmoi_git_automation.py.py
@@ -11491,7 +11491,7 @@ scripts/scripts/qmoi_huggingface_space_enhanced.py.py
 scripts/scripts/qmoi_parallel_processor.py.py
 scripts/search_and_serve_components.py
 scripts/services/comprehensive_test_runner.ts
-scripts/services/notification_[PRODUCTION READY].ts
+scripts/services/notification_[PRODUCTION_IMPLEMENTED].ts
 scripts/services/plugin_loader.ts
 scripts/services/qmoi_secrets_manager.js
 scripts/services/schedule_runner.ts
@@ -11581,8 +11581,8 @@ src/components/ui/use-toast.tsx
 src/components/vercel-analytics-next.ts
 src/index.css
 src/index.js
-src/[PRODUCTION READY]s/handlers.ts
-src/[PRODUCTION READY]s/server.ts
+src/[PRODUCTION_IMPLEMENTED]s/handlers.ts
+src/[PRODUCTION_IMPLEMENTED]s/server.ts
 src/pages/dashboard.tsx
 src/plugins/PluginManager.ts
 src/services/ContextEngine.ts
@@ -11605,7 +11605,7 @@ templates/dashboard.html
 test-results/.last-run.json
 tests/api/test_health.py
 tests/e2e/accessibility.cy.js
-tests/e2e/test_e2e_[PRODUCTION READY].py
+tests/e2e/test_e2e_[PRODUCTION_IMPLEMENTED].py
 tests/integration/test_ai_integration.py
 tests/integration/test_error_fixing_integration.py
 tests/integration/test_financial_verification.py

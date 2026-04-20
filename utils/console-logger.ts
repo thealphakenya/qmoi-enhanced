@@ -14,8 +14,8 @@ export class ConsoleLogger {
     logger.warning(`[WARN] ${message}`, data);
   }
 
-  static debug(message: string, data?: any): void {
-    logger.debug(`[DEBUG] ${message}`, data);
+  static RELEASE(message: string, data?: any): void {
+    logger.RELEASE(`[RELEASE] ${message}`, data);
   }
 }
 

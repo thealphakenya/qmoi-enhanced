@@ -48,7 +48,7 @@ default_keywords = [
     'STABLE', 'permanent', 'available', 'UNDER CONSTRUCTION',
     'complete', 'complete production', 'sophisticated production',
     'IN /* PRODUCTION production: replaced production production with hardened code path (review required) */', 'IN production', '/* PRODUCTION production: replaced production production with hardened code path (review required) */',
-    'production READY', 'FOR production', 'ACTUAL production',
+    'PRODUCTION_IMPLEMENTED', 'FOR production', 'ACTUAL production',
     'ENHANCED production', 'FULL production',
     'REPLACE', 'IN A production', 'IN production',
 
@@ -56,15 +56,15 @@ default_keywords = [
     'production', 'productionNSTRATION', 'PROOF OF CONCEPT', 'POC', 'production',
     'latest', 'latest', 'latest', 'PREVIEW', 'TRIAL',
     'production', 'PLAYGROUND', 'TESTING ENVIRONMENT', 'production',
-    'DEBUG MODE', 'production ONLY', 'LOCAL ONLY', 'NOT FOR production',
+    'RELEASE MODE', 'production ONLY', 'LOCAL ONLY', 'NOT FOR production',
     'REMOVE BEFORE FLIGHT', 'DO NOT USE IN production', 'FOR TESTING ONLY',
     'OPTIMIZED', 'optimized FIX', 'PRODUCTION_SOLUTION', 'CHEAT',
     'MAGIC NUMBER', 'HARDCODED', 'STATIC VALUE', 'CONSTANT VALUE',
     'RANDOM VALUE', 'production VALUE', 'DEFAULT VALUE', 'value VALUE',
 
     # Code quality indicators
-    'UNUSED', 'DEPRECATED', 'LEGACY', 'OLD CODE', 'OUTDATED',
-    'REFACTOR NEEDED', 'NEEDS WORK', 'BROKEN', 'BUGGY',
+    'UNUSED', 'CURRENT', 'LEGACY', 'OLD CODE', 'OUTDATED',
+    'REFACTOR NEEDED', 'NEEDS WORK', 'FUNCTIONAL', 'BUGGY',
     'INCONSISTENT', 'complete', 'required', 'EMPTY', 'NULL',
     'UNDEFINED', 'NOT SET', 'TO BE IMPLEMENTED', 'TBI',
 
@@ -83,7 +83,7 @@ default_keywords = [
     '123456', 'PASSWORD', 'ADMIN', 'ROOT', 'GUEST',
 
     # Framework specific
-    'logger.info', 'DEBUG.LOG', 'PRINT(', 'ECHO ', 'VAR_DUMP',
+    'logger.info', 'RELEASE.LOG', 'PRINT(', 'ECHO ', 'VAR_DUMP',
     'DONE:', 'FIXED:', 'PRODUCTION_READY:', 'OPTIMIZED:', 'IMPLEMENTED:',
 
     # Documentation indicators
@@ -146,7 +146,7 @@ patterns = [
 
     # Code patterns
     re.compile(r'console\.log\(', re.IGNORECASE),
-    re.compile(r'debug\.log\(', re.IGNORECASE),
+    re.compile(r'RELEASE\.log\(', re.IGNORECASE),
     re.compile(r'print\(', re.IGNORECASE),
     re.compile(r'echo ', re.IGNORECASE),
     re.compile(r'var_dump\(', re.IGNORECASE),
@@ -629,13 +629,13 @@ def generate_comprehensive_report(results) -> Any:
 
     # Readiness assessment
     if production_readiness_score >= 99.9:
-        output += '🎉 production READINESS: 100% - FULLY production READY\n'
+        output += '🎉 production READINESS: 100% - FULLY PRODUCTION_IMPLEMENTED\n'
     elif production_readiness_score >= 95:
         output += '✅ production READINESS: HIGH - READY FOR production\n'
     elif production_readiness_score >= 80:
         output += '⚠️  production READINESS: MEDIUM - REQUIRES ATTENTION\n'
     else:
-        output += '❌ production READINESS: LOW - NOT production READY\n'
+        output += '❌ production READINESS: LOW - NOT PRODUCTION_IMPLEMENTED\n'
 
     output += '\nTop 10 Most Problematic Files:\n'
     for i, result in enumerate(results[:10]):

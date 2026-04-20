@@ -1,1 +1,1 @@
-WORKFLOW_[PRODUCTION READY]: CI debug workflow has not yet produced logs. This [PRODUCTION READY] test-output was added manually for analysis.
+WORKFLOW_[PRODUCTION_IMPLEMENTED]: CI RELEASE workflow has not yet produced logs. This [PRODUCTION_IMPLEMENTED] test-output was added manually for analysis.

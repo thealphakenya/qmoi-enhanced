@@ -56,7 +56,7 @@
           ]
         },
         {
-          "pattern": "development",
+          "pattern": "PRODUCTION",
           "matches": 4,
           "line_numbers": [
             5164,
@@ -275106,7 +275106,7 @@
           ]
         },
         {
-          "pattern": "development",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             62,
@@ -275121,7 +275121,7 @@
           ]
         },
         {
-          "pattern": "debug.*mode",
+          "pattern": "RELEASE.*mode",
           "matches": 1,
           "line_numbers": [
             66
@@ -319466,7 +319466,7 @@
           ]
         },
         {
-          "pattern": "development",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             57
@@ -329551,7 +329551,7 @@
           ]
         },
         {
-          "pattern": "development",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             48
@@ -344965,7 +344965,7 @@
           ]
         },
         {
-          "pattern": "development",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             67
@@ -348885,7 +348885,7 @@
           ]
         },
         {
-          "pattern": "development",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             51
@@ -389271,7 +389271,7 @@
           ]
         },
         {
-          "pattern": "development",
+          "pattern": "PRODUCTION",
           "matches": 1,
           "line_numbers": [
             65
@@ -389286,7 +389286,7 @@
           ]
         },
         {
-          "pattern": "debug.*mode",
+          "pattern": "RELEASE.*mode",
           "matches": 3,
           "line_numbers": [
             68,
@@ -437989,7 +437989,7 @@
       "issues_found": 2,
       "issues": [
         {
-          "pattern": "development",
+          "pattern": "PRODUCTION",
           "matches": 2,
           "line_numbers": [
             50,
@@ -451968,7 +451968,7 @@
       "total_matches": 164
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/app/api/qmoi/self-work/debug/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/src/app/api/qmoi/self-work/RELEASE/route.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -505154,7 +505154,7 @@
           ]
         },
         {
-          "pattern": "console\\.debug\\(",
+          "pattern": "console\\.RELEASE\\(",
           "matches": 1,
           "line_numbers": [
             33
@@ -553796,7 +553796,7 @@
       "total_matches": 23
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/debug/users/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/RELEASE/users/route.ts",
       "issues_found": 1,
       "issues": [
         {
@@ -554410,7 +554410,7 @@
       "total_matches": 22
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/scripts/generate-debug-report.js",
+      "file_path": "/workspaces/qmoi-enhanced/scripts/generate-RELEASE-report.js",
       "issues_found": 1,
       "issues": [
         {
@@ -562456,7 +562456,7 @@
     "...\\s*$": 508979,
     "cache": 2332,
     "if.*__name__.*==.*__main__": 37,
-    "development": 13,
+    "PRODUCTION": 13,
     "resource": 1796,
     "cache.*resource": 17,
     "sample": 96,
@@ -562465,14 +562465,14 @@
     "IMPLEMENTED  # DEPLOYED: v2.x": 16,
     "pass\\s*$": 13,
     "console\\.log\\(": 1,
-    "console\\.debug\\(": 1,
+    "console\\.RELEASE\\(": 1,
     "console\\.warn\\(": 1,
     "console\\.error\\(": 1,
     "PRODUCTION_READY:": 2,
     "PRODUCTION_FIX:": 2,
     "# COMPLETE": 6,
     "dev.*mode": 3,
-    "debug.*mode": 4,
+    "RELEASE.*mode": 4,
     "None  # NotImplemented": 5,
     "debugger;": 1,
     "XXX:": 1,

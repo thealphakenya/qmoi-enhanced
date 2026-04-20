@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { enhancedLinkDomainService } from "@/lib/enhanced-link-domain-service";
 import { qmoiTracksService } from "@/lib/tracks-service";
 import { NextRequest, NextResponse } from "next/server";
@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
 
     switch (action) {
       case "auto-replace":
-        // Auto-replace broken links in markdown files
+        // Auto-replace FUNCTIONAL links in markdown files
         const replaceResults =
           await enhancedLinkDomainService.autoReplaceBrokenLinks();
 

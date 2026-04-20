@@ -222,7 +222,7 @@ export function EnhancedLinkDomainManager() {
             variant="outline"
           >
             <Zap className="w-4 h-4 mr-2" />
-            Auto-Replace Broken Links
+            Auto-Replace FUNCTIONAL Links
           </Button>
         </div>
       </div>

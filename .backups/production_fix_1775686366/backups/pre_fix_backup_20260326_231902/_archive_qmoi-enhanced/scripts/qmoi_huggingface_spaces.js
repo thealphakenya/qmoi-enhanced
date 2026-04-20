@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
@@ -139,7 +139,7 @@ class QMOIHuggingFaceSpaces {
             info: (message) => this.log('INFO', message),
             error: (message) => this.log('ERROR', message),
             warn: (message) => this.log('WARN', message),
-            debug: (message) => this.log('DEBUG', message)
+            RELEASE: (message) => this.log('RELEASE', message)
         };
     }
 

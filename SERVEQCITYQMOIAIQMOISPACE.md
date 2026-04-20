@@ -13,7 +13,7 @@ title: "SERVEQCITYQMOIAIQMOISPACE.md"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# SERVEQCITYQMOIAIQMOISPACE.md ✅ PRODUCTION READY
+# SERVEQCITYQMOIAIQMOISPACE.md ✅ PRODUCTION_IMPLEMENTED
 
 This document describes how to serve QCity, QMOI AI, and QMOI Space for all apps, app types, and platforms, including automation and autofix features.
 

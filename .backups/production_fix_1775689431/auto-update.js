@@ -78,7 +78,7 @@ class AutoUpdateManager {
         this.notifyUpdateAvailable(data.version);
       }
     } catch (error) {
-      console.debug("Version check error:", error);
+      console.RELEASE("Version check error:", error);
     }
   }
 

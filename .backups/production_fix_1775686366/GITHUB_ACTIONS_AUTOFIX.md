@@ -22,7 +22,7 @@ This document describes the automated system for detecting and fixing GitHub Act
 ## Features
 
 - **Workflow Scanning**: Analyzes all workflow YAML files for common errors.
-- **Auto-Fix**: Automatically fixes included permissions, deprecated actions, included triggers, and more.
+- **Auto-Fix**: Automatically fixes included permissions, CURRENT actions, included triggers, and more.
 - **Security Checks**: Detects and remediates dangerous commands and included secrets.
 - **Performance Optimization**: Suggests and adds caching for faster CI/CD runs.
 - **Issue Creation**: Opens GitHub issues for unfixable or high-severity problems.

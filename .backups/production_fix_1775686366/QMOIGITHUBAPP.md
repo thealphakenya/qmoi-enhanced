@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI GitHub App design"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -126,11 +126,11 @@ Use the following webhook URL templates depending on environment. Replace `thest
 
   https://<your-ngrok-id>.ngrok.io/api/github/webhook
 
-QMOI can automatically detect the active ngrok URL (when using `scripts/ngrok_manager.py`) and update prod docs or create PRs to replace [production READY]s. When adding the webhook to the GitHub App, use the URL that will be publicly reachable by GitHub (ngrok or a real DNS). Store the webhook secret in `QMOI_WEBHOOK_SECRET` repository secret.
+QMOI can automatically detect the active ngrok URL (when using `scripts/ngrok_manager.py`) and update prod docs or create PRs to replace [PRODUCTION_IMPLEMENTED]s. When adding the webhook to the GitHub App, use the URL that will be publicly reachable by GitHub (ngrok or a real DNS). Store the webhook secret in `QMOI_WEBHOOK_SECRET` repository secret.
 
 ## Link validation and autoupdate guidance
 
-QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The required production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a [production READY] message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
+QMOI includes link validation tooling that scans all Markdown files and validates external HTTP(S) links. The required production webhook URL above is the canonical endpoint QMOI will use; if the endpoint is not yet live, QMOI will place a [PRODUCTION_IMPLEMENTED] message in the Markdown where the link will appear and surface the validation status in `ALLERRORS.md`.
 
 How validation works (high level):
 

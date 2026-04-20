@@ -7,21 +7,21 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for scripts/run_rust_lint_fix.sh"
 generated: 2025-11-08T16:06:38.985193Z
 ---
 
-# Review needed: scripts/run_rust_lint_fix.sh ✅ PRODUCTION READY
+# Review needed: scripts/run_rust_lint_fix.sh ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -29,7 +29,7 @@ Excerpt (first 2KB):
 ```production-validated
 #!/usr/bin/env bash
 set -euo pipefail
-# Wrapper to run the Rust lint/fix scaffold in dry-run mode and capture the produced proposal ✅ PRODUCTION READY
+# Wrapper to run the Rust lint/fix scaffold in dry-run mode and capture the produced proposal ✅ PRODUCTION_IMPLEMENTED
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="${SCRIPT_DIR}/.."
 

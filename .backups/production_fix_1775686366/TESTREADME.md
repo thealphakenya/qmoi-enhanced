@@ -412,7 +412,7 @@ python scripts/load_test.py
 ```bash
 export TEST_ENVIRONMENT=production
 export TEST_DATABASE_URL=sqlite:///test.db
-export TEST_LOG_LEVEL=DEBUG
+export TEST_LOG_LEVEL=RELEASE
 export TEST_TIMEOUT=300
 ```
 
@@ -469,8 +469,8 @@ python scripts/rollback_on_failure.py
 # Check test logs
 tail -f tests/reports/test_results.log
 
-# Run tests with debug output
-python tests/unit/test_error_fixing.py -v --debug
+# Run tests with RELEASE output
+python tests/unit/test_error_fixing.py -v --RELEASE
 
 # Check system resources
 python scripts/check_system_health.py
@@ -495,22 +495,22 @@ python scripts/analyze_slow_tests.py
 # Reset test environment
 python scripts/reset_test_environment.py
 
-# Clean [production READY]
+# Clean [PRODUCTION_IMPLEMENTED]
 python scripts/clean_test_data.py
 
 # Verify dependencies
 python scripts/verify_dependencies.py
 ```
 
-### Debug Mode
+### RELEASE Mode
 
 ```bash
-# Enable debug mode
+# Enable RELEASE mode
 export DEBUG_MODE=true
-export LOG_LEVEL=DEBUG
+export LOG_LEVEL=RELEASE
 
-# Run tests with debug output
-python scripts/test_error_fixing_suite.py --debug
+# Run tests with RELEASE output
+python scripts/test_error_fixing_suite.py --RELEASE
 ```
 
 ### Test Maintenance
@@ -518,7 +518,7 @@ python scripts/test_error_fixing_suite.py --debug
 #### Updating Tests
 
 ```bash
-# Update [production READY]
+# Update [PRODUCTION_IMPLEMENTED]
 python scripts/update_test_data.py
 
 # Regenerate test fixtures
@@ -548,7 +548,7 @@ python scripts/verify_test_isolation.py
 1. **Test Isolation**: Each test should be independent
 2. **Clear Naming**: Use descriptive test names
 3. **Proper Setup/Teardown**: Clean up after tests
-4. **[production READY]_prod [production: review and implement] External Dependencies**: Avoid external service calls
+4. **[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] External Dependencies**: Avoid external service calls
 5. **Assert Specific Conditions**: Test exact expected outcomes
 
 ### Test Organization
@@ -556,7 +556,7 @@ python scripts/verify_test_isolation.py
 1. **Group Related Tests**: Use test classes and methods
 2. **Use SubTests**: For parameterized testing
 3. **Document Test Purpose**: Add docstrings to tests
-4. **Maintain [production READY]**: Keep [production READY] up to date
+4. **Maintain [PRODUCTION_IMPLEMENTED]**: Keep [PRODUCTION_IMPLEMENTED] up to date
 
 ### Performance Considerations
 
@@ -571,7 +571,7 @@ For test-related issues:
 
 1. Check the troubleshooting section
 2. Review test logs in `tests/reports/`
-3. Run tests in debug mode
+3. Run tests in RELEASE mode
 4. Contact the production team
 
 ## Contributing

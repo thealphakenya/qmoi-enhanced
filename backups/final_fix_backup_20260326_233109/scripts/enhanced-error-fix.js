@@ -27,7 +27,7 @@ import { specificExports } from "axios";
 import { specificExports } from "path";
 import { specificExports } from "child_process";
 
-logger.info("[DEBUG] Script loaded and imports successful");
+logger.info("[RELEASE] Script loaded and imports successful");
 
 // Enhanced error tracking and reporting
 let errorLog = {
@@ -39,7 +39,7 @@ let errorLog = {
   deploymentStatus: "unknown",
 };
 
-logger.info("[DEBUG] Error log initialized");
+logger.info("[RELEASE] Error log initialized");
 
 /**
  * logError function
@@ -81,7 +81,7 @@ function logFix(errorId, fixType, details, success = true): any {
  * updateGitHubActions function
  */
 function updateGitHubActions(): any {
-  logger.info("[DEBUG] updateGitHubActions called");
+  logger.info("[RELEASE] updateGitHubActions called");
   const summary = {
     totalErrors: errorLog.errors.length,
     fixedErrors: errorLog.fixes.filter((f) => f.success).length,
@@ -90,7 +90,7 @@ function updateGitHubActions(): any {
     totalTime: Math.round((new Date() - errorLog.startTime) / 1000),
     deploymentStatus: errorLog.deploymentStatus,
   };
-  logger.info("[DEBUG] Summary calculated:", summary);
+  logger.info("[RELEASE] Summary calculated:", summary);
   // Always write summary file
   const summaryFile = "error-fix-summary.md";
   const summaryContent = `# QMOI Auto-Fix Report\n\n## Summary\n- **Total Errors**: ${
@@ -109,7 +109,7 @@ function updateGitHubActions(): any {
         }ms)`,
     )
     .join("\n")}\n\nGenerated at: ${new Date().toISOString()}\n`;
-  logger.info("[DEBUG] About to write summary file:", summaryFile);
+  logger.info("[RELEASE] About to write summary file:", summaryFile);
   fs.writeFileSync(summaryFile, summaryContent);
   logger.info(`[GITHUB] Summary written to ${summaryFile}`);
 }
@@ -333,15 +333,15 @@ export { comprehensiveErrorFix, logError, logFix, errorLog };
 
 // Run the script
 logger.info("[QMOI] Enhanced Error Fix Script Started");
-logger.info("[DEBUG] Main execution block entered");
+logger.info("[RELEASE] Main execution block entered");
 
 try {
   // Add a test error for verification
   logError("test", "This is a test error");
-  logger.info("[DEBUG] Test error logged");
+  logger.info("[RELEASE] Test error logged");
 
   comprehensiveErrorFix();
-  logger.info("[DEBUG] comprehensiveErrorFix completed");
+  logger.info("[RELEASE] comprehensiveErrorFix completed");
 
   logger.info("[QMOI] Enhanced Error Fix Script Finished");
 } catch (error) {

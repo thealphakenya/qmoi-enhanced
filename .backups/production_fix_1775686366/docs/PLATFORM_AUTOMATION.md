@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "PLATFORM AUTOMATION"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -39,7 +39,7 @@ Account lifecycle (required)
 
 Payments & Real Funds
 
-- Default: All modules operate in "dry-run/[production READY]d" mode unless an explicit `--enable-live-funds` flag AND master approval are provided.
+- Default: All modules operate in "dry-run/[PRODUCTION_IMPLEMENTED]d" mode unless an explicit `--enable-live-funds` flag AND master approval are provided.
 - Use PCI-compliant payment processors. Do not implement direct card handling unless certified.
 - Keep strict limits and require multi-party approval for transfers above configurable thresholds.
 - Add an escrow layer for marketplace/deals where QMOI acts as an agent.

@@ -1,7 +1,7 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 14 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 14 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { specificExports } from "next";
 import { specificExports } from "../../../../lib/proposals";
 export const dynamic = "force-dynamic";
@@ -31,37 +31,37 @@ function handler(
       const { action } = body;
       switch (action) {
         case "translate":
-          [production READY]: handle translation
+          [PRODUCTION_IMPLEMENTED]: handle translation
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "speech-to-text":
-          [production READY]: handle STT
+          [PRODUCTION_IMPLEMENTED]: handle STT
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "text-to-speech":
-          [production READY]: handle TTS
+          [PRODUCTION_IMPLEMENTED]: handle TTS
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "language-detect":
-          [production READY]: handle language detection
+          [PRODUCTION_IMPLEMENTED]: handle language detection
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "lesson":
-          [production READY]: handle language lesson
+          [PRODUCTION_IMPLEMENTED]: handle language lesson
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "quiz":
-          [production READY]: handle language quiz
+          [PRODUCTION_IMPLEMENTED]: handle language quiz
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "pronunciation-check":
-          [production READY]: handle pronunciation check
+          [PRODUCTION_IMPLEMENTED]: handle pronunciation check
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });

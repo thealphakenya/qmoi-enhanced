@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).parent.parent
 
 CONSOLE_REPLACEMENTS = [
     (r'console\.log\((.*?)\);?', r'logger.info(\1);'),
-    (r'console\.debug\((.*?)\);?', r'logger.debug(\1);'),
+    (r'console\.RELEASE\((.*?)\);?', r'logger.RELEASE(\1);'),
     (r'console\.info\((.*?)\);?', r'logger.info(\1);'),
     (r'console\.warn\((.*?)\);?', r'logger.warning(\1);'),
     (r'console\.error\((.*?)\);?', r'logger.error(\1);'),
@@ -30,7 +30,7 @@ LOGGER_DEF = '''
 // Production logging configuration
 const logger = {
   info: (msg, ...args) => logger.info(`[${new Date().toISOString()}] INFO: ${msg}`, ...args),
-  debug: (msg, ...args) => console.debug(`[${new Date().toISOString()}] DEBUG: ${msg}`, ...args),
+  RELEASE: (msg, ...args) => console.RELEASE(`[${new Date().toISOString()}] RELEASE: ${msg}`, ...args),
   warning: (msg, ...args) => console.warn(`[${new Date().toISOString()}] WARN: ${msg}`, ...args),
   error: (msg, ...args) => console.error(`[${new Date().toISOString()}] ERROR: ${msg}`, ...args)
 };
@@ -67,7 +67,7 @@ def standardize_console_logging():
 
                 if content != original:
                     file_path.write_text(content, encoding='utf-8')
-                    fixes_applied += len(re.findall(r'logger\.(?:info|debug|warning|error)\(', content))
+                    fixes_applied += len(re.findall(r'logger\.(?:info|RELEASE|warning|error)\(', content))
                     logger.info(f'Standardized logging in {file_path.relative_to(BASE_DIR)}')
 
             except Exception as exc:

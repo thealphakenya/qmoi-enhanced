@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-Title: ✅ PRODUCTION READY-prod-CURATE
+Title: ✅ PRODUCTION_IMPLEMENTED-prod-CURATE
 
 Summary:
 Manually review ambiguous ✅ PRODUCTION READY_prod occurrences left by the automated batch sweep and decide per-occurrence whether to replace with 'REVIEWED' or to perform a context-specific fix.

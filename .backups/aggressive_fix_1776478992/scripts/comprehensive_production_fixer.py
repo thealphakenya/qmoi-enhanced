@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).parent.parent
 PRODUCTION_REPLACEMENTS = {
     # Console logs -> proper logging
     r'console\.log\((.*?)\);?': lambda m: f"logger.info({m.group(1)});",
-    r'console\.debug\((.*?)\);?': lambda m: f"logger.debug({m.group(1)});",
+    r'console\.RELEASE\((.*?)\);?': lambda m: f"logger.RELEASE({m.group(1)});",
     r'console\.warn\((.*?)\);?': lambda m: f"logger.warning({m.group(1)});",
     r'console\.error\((.*?)\);?': lambda m: f"logger.error({m.group(1)});",
 

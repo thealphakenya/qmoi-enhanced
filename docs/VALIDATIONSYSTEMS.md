@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "QMOI Validation Systems"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Validation Systems ✅ PRODUCTION READY
+# QMOI Validation Systems ✅ PRODUCTION_IMPLEMENTED
 
 This document describes the validation systems implemented by QMOI/LION. It links to the specific validations for artifacts, apps, links, and documentation.
 
@@ -28,7 +28,7 @@ Where to find implementation
 
 - Orchestrator script: `scripts/run_validations.py`
 - Link and markdown validation: `scripts/validate_and_fix_md.py`
-- ✅ PRODUCTION READY scanning: `scripts/scan_replace_✅ PRODUCTION READYs.py`
+- ✅ PRODUCTION_IMPLEMENTED scanning: `scripts/scan_replace_✅ PRODUCTION READYs.py`
 - Build/artifact verification: `qcity-artifacts/qmoi_build_report.json` and `downloads/`
 
 Guiding principles

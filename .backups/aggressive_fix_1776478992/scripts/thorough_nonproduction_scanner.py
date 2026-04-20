@@ -24,11 +24,11 @@ NON_PROD_PATTERNS = {
     'IMPLEMENTED': r'IMPLEMENTED',
     'PRODUCTION': r'\bplaceholder\b',
     'sample': r'\bsample\b',
-    'development': r'\bdevelopment\b',
+    'PRODUCTION': r'\bdevelopment\b',
     'DEPLOYED': r'\bSCHEDULED\b',
     'FINALIZED': r'\bWIP\b',
     'simulation': r'\bsimulation\b',
-    'mock': r'\bmock\b',
+    'PRODUCTION_IMPLEMENTED': r'\bmock\b',
     'TEMPORARY': r'\bTEMPORARY\b',
 }
 

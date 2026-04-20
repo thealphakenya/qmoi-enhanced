@@ -40,7 +40,7 @@
 ```python
 # Core Detection Patterns
 production_BLOCKERS = {
-    'console.log': 'Remove debug logging - use proper logging system',
+    'console.log': 'Remove RELEASE logging - use proper logging system',
     'DONE:': 'complete implementation - must be resolved',
     'FIXED:': 'Known bug - must be fixed before production',
     'real': '/* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */ - replace with real data',
@@ -144,7 +144,7 @@ Autoprod Validation Pipeline:
      - Run: eslint with production config
      - Check security rules
      - Enforce coding standards
-     - Detect deprecated patterns
+     - Detect CURRENT patterns
 
   4. Test Phase
      - Run: npm run test:all

@@ -257,7 +257,112 @@ class ThoroughProductionScanner:
             for marker, count in self.results['marker_summary'].items():
                 print(f"   {marker}: {count}")
 
+        self.update_tracking_files()
         return self.results
+
+    def update_tracking_files(self):
+        self.write_matches_txt()
+        self.write_matches_md()
+        self.write_resume_txt()
+        self.write_instances_md()
+
+    def write_matches_txt(self):
+        path = self.root_dir / 'MATCHES.txt'
+        lines = [
+            'QMOI THOROUGH PRODUCTION SCANNER MATCHES',
+            f'Generated: {self.scan_timestamp}',
+            '',
+            'SUMMARY:',
+            f'- Total files scanned: {self.results["scan_info"]["total_files_scanned"]}',
+            f'- Files with markers: {self.results["scan_info"]["files_with_markers"]}',
+            f'- Total markers found: {self.results["scan_info"]["total_markers_found"]}',
+            '',
+            'TOP FILES WITH MARKERS:'
+        ]
+
+        for item in self.results['files_with_markers'][:30]:
+            lines.append(f'- {item["file_path"]}: {item["total_markers"]} marker(s)')
+
+        if len(self.results['files_with_markers']) > 30:
+            lines.append(f'- ... and {len(self.results["files_with_markers"]) - 30} more files')
+
+        lines.append('')
+        lines.append('See MATCHES.md, resumefromhere.txt, and INSTANCES.md for full production readiness tracking.')
+
+        path.write_text('\n'.join(lines), encoding='utf-8')
+
+    def write_matches_md(self):
+        path = self.root_dir / 'MATCHES.md'
+        lines = [
+            '# MATCHES.md',
+            '',
+            '## Thorough Production Scanner Matches',
+            f'- Generated: {self.scan_timestamp}',
+            f'- Total files scanned: {self.results["scan_info"]["total_files_scanned"]}',
+            f'- Files with markers: {self.results["scan_info"]["files_with_markers"]}',
+            f'- Total markers found: {self.results["scan_info"]["total_markers_found"]}',
+            '',
+            '### Top files with markers',
+        ]
+
+        for item in self.results['files_with_markers'][:20]:
+            lines.append(f'- {item["file_path"]} — {item["total_markers"]} marker(s)')
+
+        if len(self.results['files_with_markers']) > 20:
+            lines.append(f'- ... and {len(self.results["files_with_markers"]) - 20} more files')
+
+        lines.append('')
+        lines.append('This file is synchronized with MATCHES.txt, resumefromhere.txt, and INSTANCES.md.')
+
+        path.write_text('\n'.join(lines), encoding='utf-8')
+
+    def write_resume_txt(self):
+        path = self.root_dir / 'resumefromhere.txt'
+        lines = [
+            'QMOI ENHANCED - THOROUGH PRODUCTION SCANNER STATUS',
+            f'Last updated: {self.scan_timestamp}',
+            '',
+            '📌 CURRENT STATUS: SCAN COMPLETED',
+            '',
+            f'Total files scanned: {self.results["scan_info"]["total_files_scanned"]}',
+            f'Files with markers: {self.results["scan_info"]["files_with_markers"]}',
+            f'Total markers found: {self.results["scan_info"]["total_markers_found"]}',
+            '',
+            '✅ Tracking files updated: MATCHES.txt, MATCHES.md, INSTANCES.md',
+            '',
+            'NEXT STEPS:',
+            '- Review marker summary and remediation plan',
+            '- Run safe bulk production fixer if any markers remain',
+            '- Re-run scanner to verify final production readiness',
+        ]
+
+        path.write_text('\n'.join(lines), encoding='utf-8')
+
+    def write_instances_md(self):
+        path = self.root_dir / 'INSTANCES.md'
+        lines = [
+            '# INSTANCES.md',
+            '',
+            '## Thorough Production Scanner Execution Summary',
+            '',
+            f'- Timestamp: {self.scan_timestamp}',
+            f'- Total files scanned: {self.results["scan_info"]["total_files_scanned"]}',
+            f'- Files with markers: {self.results["scan_info"]["files_with_markers"]}',
+            f'- Total markers found: {self.results["scan_info"]["total_markers_found"]}',
+            '',
+            '### Marker summary',
+        ]
+
+        for marker, count in self.results['marker_summary'].items():
+            lines.append(f'- {marker}: {count} occurrence(s)')
+
+        lines.append('')
+        lines.append('### System status')
+        lines.append('- ✅ Scanner completed')
+        lines.append('- ✅ Tracking files refreshed')
+        lines.append('- ✅ Ready for production fixer or deployment verification')
+
+        path.write_text('\n'.join(lines), encoding='utf-8')
 
     def save_results(self):
         """Save scan results to undone.txt and other files"""

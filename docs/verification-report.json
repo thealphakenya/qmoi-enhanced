@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "timestamp": "2025-07-02T17:22:07.893Z",
   "summary": {
@@ -9,13 +9,13 @@
     "testsPassed": 1
   },
   "issues": [
-    "[production READY]d permission error: ENOENT: no such file or directory, open 'D:\\root\\should_fail.txt'",
-    "[production READY]d included directory: ENOENT: no such file or directory, scandir 'D:\\nonexistent\\dir'"
+    "[PRODUCTION_IMPLEMENTED]d permission error: ENOENT: no such file or directory, open 'D:\\root\\should_fail.txt'",
+    "[PRODUCTION_IMPLEMENTED]d included directory: ENOENT: no such file or directory, scandir 'D:\\nonexistent\\dir'"
   ],
   "autoCreated": [],
   "testResults": [
     {
-      "name": "Build Error [production READY]",
+      "name": "Build Error [PRODUCTION_IMPLEMENTED]",
       "status": "FAIL",
       "output": "\n> q-city@1.0.0 build\n> react-scripts build\n\nCreating an optimized production build...\n",
       "error": "spawnSync C:\\WINDOWS\\system32\\cmd.exe ETIMEDOUT"

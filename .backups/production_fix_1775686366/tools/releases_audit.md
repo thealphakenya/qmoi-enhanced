@@ -28,7 +28,7 @@ Total releases: 3
   - Asset: `qmoi_ai.ipa` — issue: small-size, size: 649, url: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.ipa
   - Asset: `qmoi_ai_chromebook.zip` — issue: small-size, size: 428, url: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_chromebook.zip
   - Asset: `qmoi_ai_smarttv.apk` — issue: small-size, size: 680, url: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_smarttv.apk
-  - body-indicates-broken
+  - body-indicates-FUNCTIONAL
 
 - **Release v1.2.3: All 6 QMOI Apps for 12+ Platforms** (`v1.2.3`) — https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
   - Asset: `checksums.txt` — issue: small-size, size: 114, url: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/checksums.txt

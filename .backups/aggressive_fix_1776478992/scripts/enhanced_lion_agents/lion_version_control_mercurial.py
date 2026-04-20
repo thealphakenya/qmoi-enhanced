@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_version_control_mercurial
-Category: Development Tool
+Category: PRODUCTION Tool
 Specialization: Version Control: Mercurial
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_version_control_mercurial"""
     name: str = "lion_version_control_mercurial"
-    category: str = "Development Tool"
+    category: str = "PRODUCTION Tool"
     specialization: str = "Version Control: Mercurial"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

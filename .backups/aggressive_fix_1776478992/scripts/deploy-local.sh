@@ -71,8 +71,8 @@ report_metrics() {
 
 
 ################################################################################
-# QMOI Enhanced - Local Development Deployment
-# Simulates production deployment for development environment
+# QMOI Enhanced - Local PRODUCTION Deployment
+# Simulates production deployment for PRODUCTION environment
 ################################################################################
 
 
@@ -95,7 +95,7 @@ export QMOI_PARALLEL_BUILDS=true
 
 set -e
 
-echo "🚀 QMOI Enhanced - Local Development Deployment Started"
+echo "🚀 QMOI Enhanced - Local PRODUCTION Deployment Started"
 echo "=================================================="
 
 # Colors

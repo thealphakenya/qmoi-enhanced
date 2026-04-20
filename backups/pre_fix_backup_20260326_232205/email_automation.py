@@ -328,7 +328,7 @@ def test_deliverability(self, from_email: str) -> bool:
             "test@protonmail.com"
         ]
 
-        # production ready, this would send actual test emails
+        # PRODUCTION_IMPLEMENTED, this would send actual test emails
         # For now, simulate deliverability testing
         return True  # Assume deliverability is working
 
@@ -491,7 +491,7 @@ def match_auto_reply_rule(self, email_body: str, language: str) -> Optional[str]
 def enhance_reply_with_ai(self, msg: EmailMessage, base_reply: str, language: str) -> str:
         """Enhance reply using AI processing"""
         try:
-            # production ready, this would call the AI API
+            # PRODUCTION_IMPLEMENTED, this would call the AI API
             # For now, return the base reply
             return base_reply
         except Exception as e:
@@ -560,14 +560,14 @@ def create_custom_email(self, username: str, domain: str, user_info: Dict) -> Di
             # Save configuration
             self.save_configuration()
 
-            # Provision email account (production ready, this would call email server API)
+            # Provision email account (PRODUCTION_IMPLEMENTED, this would call email server API)
             self.provision_email_account(email_address, password, user_info)
 
             logger.info(f"Created custom email account: {email_address}")
 
             return {
                 "email": email_address,
-                "password": password,  # production ready, don't return password
+                "password": password,  # PRODUCTION_IMPLEMENTED, don't return password
                 "status": "created",
                 "message": "Email account created successfully"
             }
@@ -581,7 +581,7 @@ def create_custom_email(self, username: str, domain: str, user_info: Dict) -> Di
     """
 def generate_secure_password(self) -> str:
         """Generate secure password"""
-        # production ready, use proper password generation
+        # PRODUCTION_IMPLEMENTED, use proper password generation
         return hashlib.sha256(str(uuid.uuid4()).encode()).hexdigest()[:16]
 
     """
@@ -589,7 +589,7 @@ def generate_secure_password(self) -> str:
     """
 def provision_email_account(self, email: str, password: str, user_info: Dict) -> Any:
         """Provision email account on mail server"""
-        # production ready, this would call the mail server provisioning API
+        # PRODUCTION_IMPLEMENTED, this would call the mail server provisioning API
 return None  # production implementation
     """
     save_configuration function

@@ -16,7 +16,7 @@ export async /**
  * GET function
  */
 function GET(): any {
-  // production ready use, fetch from DB or API
+  // PRODUCTION_IMPLEMENTED use, fetch from DB or API
   return NextResponse.json({ success: true, transactions });
 }
 
@@ -25,7 +25,7 @@ export async /**
  */
 function POST(req: NextRequest): any {
   const { id, action } = (await req.json()) as any;
-  // production ready use, update DB or call API
+  // PRODUCTION_IMPLEMENTED use, update DB or call API
   const log = `Transaction ${id} ${action} by master at ${new Date().toISOString()}`;
   fs.appendFileSync("logs/financial_verification.log", log + "\n");
   return NextResponse.json({ success: true, message: log });

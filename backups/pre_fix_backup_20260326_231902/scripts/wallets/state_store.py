@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 """sophisticated on-disk state store for wallet metadata and aliases.
 
 This module keeps a small JSON store under `.qmoi_state/wallets.json` that

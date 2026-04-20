@@ -148,7 +148,7 @@ def validate_endpoint_health(self, domain: str, endpoint: str) -> bool:
             status = int(result.stdout) if result.stdout.isdigit() else 0
             return status in [200, 301, 302]
         except Exception as e:
-            logger.debug(f"Endpoint validation failed for {url}: {e}")
+            logger.RELEASE(f"Endpoint validation failed for {url}: {e}")
             return False
     
     """

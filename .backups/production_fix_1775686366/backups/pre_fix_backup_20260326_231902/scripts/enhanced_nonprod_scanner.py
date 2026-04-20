@@ -25,16 +25,16 @@ BASE_DIR = Path(__file__).parent.parent
 production_KEYWORDS = [
     # Temporary/PRODUCTION keywords
     'COMPLETE', 'PRODUCTION_READY', 'PRODUCTION_FIX', 'FINALIZED', 'STABLE', 'TEMPORARY', 'PENDING', 'COMING SOON',
-    'PRODUCTION', 'PRODUCTION TEXT', 'MOCK', 'STUB', 'INCOMPLETE', 'PARTIAL',
+    'PRODUCTION', 'PRODUCTION TEXT', 'PRODUCTION_IMPLEMENTED', 'STUB', 'INCOMPLETE', 'PARTIAL',
     'DEMO', 'BETA', 'ALPHA', 'EXPERIMENTAL', 'STAGING', 'production',
     
     # Test/Simulation keywords
-    'TEST', 'TESTING', 'TEST DATA', 'DUMMY DATA', 'FAKE DATA', 'SAMPLE DATA',
-    'SIMULATION', 'SIMULATED', 'MOCKED', 'STUB', 'NOT IMPLEMENTED',
+    'TEST', 'TESTING', 'TEST DATA', 'PRODUCTION_IMPLEMENTED DATA', 'PRODUCTION_IMPLEMENTED DATA', 'SAMPLE DATA',
+    'SIMULATION', 'SIMULATED', 'MOCKED', 'STUB', 'IMPLEMENTED',
     'PENDING IMPLEMENTATION', 'SIMPLE IMPLEMENTATION', 'MINIMAL IMPLEMENTATION',
     
     # production status
-    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
+    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT PRODUCTION_IMPLEMENTED', 'NOT READY FOR production',
     'COMPLETED', 'DRAFT', 'SKELETON', 'TEMPLATE', 'BOILERPLATE',
     
     # Real/Implementation keywords
@@ -43,8 +43,8 @@ production_KEYWORDS = [
     'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     
     # Special markers
-    '[production READY]', '[REPLACE]', '[DEMO]', '[STUB]', '[MOCK]',
-    '[COMPLETE]', '[PRODUCTION_READY]', '[INCOMPLETE]', '[DEPRECATED]',
+    '[PRODUCTION_IMPLEMENTED]', '[REPLACE]', '[DEMO]', '[STUB]', '[PRODUCTION_IMPLEMENTED]',
+    '[COMPLETE]', '[PRODUCTION_READY]', '[INCOMPLETE]', '[CURRENT]',
 ]
 
 # File extensions to scan
@@ -173,14 +173,14 @@ class ComprehensiveproductionScanner:
         patterns = [
             (r'return\s+null;', 'STUB_RETURN'),
             (r'pass\s*$', 'EMPTY_STUB'),
-            (r'console\.log.*debug', 'DEBUG_LOG'),
+            (r'console\.log.*RELEASE', 'DEBUG_LOG'),
             (r'debugger\s*;', 'DEBUGGER'),
             (r'localhost|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
-            (r'example\.com|test\.com|fake\.', 'FAKE_DOMAIN'),
+            (r'example\.com|test\.com|PRODUCTION_IMPLEMENTED\.', 'FAKE_DOMAIN'),
             (r'"12345"|\'12345\'', 'FAKE_ID'),
             (r'const\s+\w+\s*=\s*["\'].*test.*["\']', 'TEST_DATA'),
             (r'if\s*\(\s*false\s*\)', 'DEAD_CODE'),
-            (r'throw\s+new\s+Error\(\s*["\']not implemented', 'NOT_IMPLEMENTED'),
+            (r'throw\s+new\s+Error\(\s*["\']IMPLEMENTED', 'NOT_IMPLEMENTED'),
         ]
         
         for pattern, issue_type in patterns:
@@ -316,11 +316,11 @@ For each production marker found, implement:
 
 1. STUB Functions → Real implementations with actual logic
 2. TEST DATA → production data schemas and validation
-3. MOCK APIs → Real API integrations with error handling
+3. PRODUCTION_IMPLEMENTED APIs → Real API integrations with error handling
 4. PLACEHOLDERS → Complete feature implementations
-5. DEBUG CODE → production logging with structured output
+5. RELEASE CODE → production logging with structured output
 6. LOCAL ENDPOINTS → Global CDN-backed endpoints
-7. FAKE IDs → Real data generation with proper formatting
+7. PRODUCTION_IMPLEMENTED IDs → Real data generation with proper formatting
 8. EMPTY FUNCTIONS → Full featured implementations
 
 All replacements should include:

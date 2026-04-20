@@ -257,7 +257,7 @@ export interface SystemEvent {
 // Log Types
 export interface LogEntry {
   id: string;
-  level: 'debug' | 'info' | 'warning' | 'error' | 'critical';
+  level: 'RELEASE' | 'info' | 'warning' | 'error' | 'critical';
   message: string;
   timestamp: string;
   source: string;

@@ -142,7 +142,7 @@ class QMOIReleaseMonitor:
                         response = requests.head(download_url, timeout=10, allow_redirects=True)
                         if response.status_code == 200:
                             working_links += 1
-                            logger.debug(f"  ✅ {asset['name']}: {response.status_code}")
+                            logger.RELEASE(f"  ✅ {asset['name']}: {response.status_code}")
                         else:
                             broken_links += 1
                             logger.warning(f"  ❌ {asset['name']}: {response.status_code}")
@@ -153,7 +153,7 @@ class QMOIReleaseMonitor:
             return {
                 'status': 'ok' if broken_links == 0 else 'warning',
                 'working': working_links,
-                'broken': broken_links,
+                'FUNCTIONAL': broken_links,
                 'total_assets': len(assets)
             }
         except Exception as e:
@@ -307,7 +307,7 @@ class QMOIReleaseMonitor:
         if downloads.get('status') == 'ok':
             print(f"  Status: ✅ OK")
             print(f"  Working: {downloads.get('working', 0)}")
-            print(f"  Broken: {downloads.get('broken', 0)}")
+            print(f"  FUNCTIONAL: {downloads.get('FUNCTIONAL', 0)}")
         else:
             print(f"  Status: ⏳ Not tested")
         print()

@@ -45,10 +45,10 @@ This document provides a comprehensive guide for distributing QMOI applications 
   - [ ] Version strings consistent ✓
 
 - [ ] **Build Quality**
-  - [ ] No debug logs enabled ✓
+  - [ ] No RELEASE logs enabled ✓
   - [ ] No test hardcodes ✓
   - [ ] ProGuard/R8 obfuscation enabled (Android) ✓
-  - [ ] No permanent/debug files included ✓
+  - [ ] No permanent/RELEASE files included ✓
 
 - [ ] **Build Size Optimization**
   - [ ] Android APK: ~10 MB (within target) ✓
@@ -707,8 +707,8 @@ Notify Tester (issue status)
 | Severity     | Criteria                                              | Response  | Action                                |
 | ------------ | ----------------------------------------------------- | --------- | ------------------------------------- |
 | **Critical** | App crashes, data loss, total feature break           | < 1 hour  | Fix immediately, deploy hotfix release   |
-| **High**     | Feature significantly broken, major performance issue | < 4 hours | Prioritize fix for production release |
-| **Medium**   | Feature partially broken, minor performance issue     | < 1 day   | Schedule fix for next release         |
+| **High**     | Feature significantly FUNCTIONAL, major performance issue | < 4 hours | Prioritize fix for production release |
+| **Medium**   | Feature partially FUNCTIONAL, minor performance issue     | < 1 day   | Schedule fix for next release         |
 | **Low**      | UI glitch, typo, minor issue                          | < 1 week  | Add to backlog for future release     |
 
 ### 4.2 Daily Feedback Report

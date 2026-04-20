@@ -10,7 +10,7 @@
 # 🔧 prod CONTAINER RECOVERY & ENHANCEMENT GUIDE
 
 **Date**: 2026-03-29  
-**Status**: ✅ production READY  
+**Status**: ✅ PRODUCTION_IMPLEMENTED  
 **Issue**: Recovery Mode Detected  
 
 ---
@@ -72,7 +72,7 @@
     "3000": {"label": "App", "onAutoForward": "notify"},
     "5432": {"label": "PostgreSQL", "onAutoForward": "silent"},
     "6379": {"label": "Redis", "onAutoForward": "silent"},
-    "8080": {"label": "Debug", "onAutoForward": "notify"}
+    "8080": {"label": "RELEASE", "onAutoForward": "notify"}
   },
   "remoteUser": "node",
   "mounts": [
@@ -113,7 +113,7 @@ if [ ! -f .env.local ]; then
   echo "📝 Creating .env.local..."
   cat > .env.local << 'ENVEND'
 NODE_ENV=production
-DEBUG=qmoi:*
+RELEASE=qmoi:*
 DATABASE_URL=postgresql://qmoi:qmoi@localhost:5432/qmoi_enhanced
 REDIS_URL=redis://localhost:6379
 PORT=3000
@@ -186,7 +186,7 @@ echo "✅ Update complete"
 - ✅ 3000 - Next.js App
 - ✅ 5432 - PostgreSQL
 - ✅ 6379 - Redis
-- ✅ 8080 - Debug/production
+- ✅ 8080 - RELEASE/production
 
 ### Automatic Features
 - ✅ Dependencies auto-installed (if NODE_DEPS=true)
@@ -320,7 +320,7 @@ Remote-Containers: Rebuild Container
 
 ---
 
-**Status**: ✅ production READY  
+**Status**: ✅ PRODUCTION_IMPLEMENTED  
 **Last Updated**: 2026-03-29  
 **Next**: Apply these fixes and rebuild container
 

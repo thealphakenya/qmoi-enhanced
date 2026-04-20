@@ -120,12 +120,12 @@ grep -n "localhost\|qcity\|qvillage\|qmoi" "${CRITICAL_FILES[0]}" | grep -v "htt
 ### 📊 Expected Improvements
 
 **Before Fixes:**
-- Broken links: 12,859 / 31,185 (41.23%)
+- FUNCTIONAL links: 12,859 / 31,185 (41.23%)
 - Critical files affected: 98
 - High priority files affected: 231
 
 **After Comprehensive Fixes:**
-- Broken links: ~1,000-2,000 / 31,185 (3-6%)
+- FUNCTIONAL links: ~1,000-2,000 / 31,185 (3-6%)
   - Most remaining will be DNS-dependent (.qmoi.ai domains)
   - Some may be intentional relative links or prod references
 
@@ -209,7 +209,7 @@ cat comprehensive_fixes_report.json | jq '{files_modified, total_replacements, e
 
 2. **Generate Comparison Report**
    - Compare `documentation_audit_report.json` (before vs. after)
-   - Identify remaining broken links
+   - Identify remaining FUNCTIONAL links
 
 3. **DNS Recovery** (separate sprint)
    - Contact domain registrar for .qmoi.ai zone config
@@ -235,7 +235,7 @@ For issues with the fixer:
 
 **Created**: 2026-03-23  
 **Status**: Ready for Execution  
-**Estimated Impact**: Fix 41% broken links across 1,950+ files
+**Estimated Impact**: Fix 41% FUNCTIONAL links across 1,950+ files
 
 ## 🔄 Evolution Status
 

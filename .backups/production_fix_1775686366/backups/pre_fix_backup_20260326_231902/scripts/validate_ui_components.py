@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 """comprehensive static validation for UI components (TSX files).
 
 produces `docs/ui_validation_report.json` summarizing placeholders, DONE/FIXED markers,

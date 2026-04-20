@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Enhanced System: Automated Environment & Credential Management
 
 ## Features
@@ -33,11 +33,11 @@ Edit `scripts/qmoi-env-setup.js` to add or modify platform variables as needed.
 
 - Audit timestamp: 2025-11-11T00:00:00Z
 - Total files scanned: 18921
-- Files considered done (no original [production READY]s): 14596
-- Files with [production READY]s detected: 0
+- Files considered done (no original [PRODUCTION_IMPLEMENTED]s): 14596
+- Files with [PRODUCTION_IMPLEMENTED]s detected: 0
 
 ## Files referenced
-- resume[production READY]s.txt
+- resume[PRODUCTION_IMPLEMENTED]s.txt
 - donerefs.txt
 - allrefs.txt
 - allrefs.md
@@ -83,11 +83,11 @@ Next suggested steps:
 
 - Audit timestamp: 2025-11-08T15:29:10.283537Z
 - Total files scanned: 18921
-- Files considered done (no original [production READY]s): 14596
-- Files with [production READY]s detected: 0
+- Files considered done (no original [PRODUCTION_IMPLEMENTED]s): 14596
+- Files with [PRODUCTION_IMPLEMENTED]s detected: 0
 
 ## Files referenced
-- resume[production READY]s.txt
+- resume[PRODUCTION_IMPLEMENTED]s.txt
 - donerefs.txt
 - allrefs.txt
 - allrefs.md

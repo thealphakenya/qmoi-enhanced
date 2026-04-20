@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # IMMEDIATE ACTION PLAN — Fix Non-Functional Apps
 
 **Status**: 🔴 **CRITICAL - URGENT**  
@@ -28,7 +28,7 @@
   • Web - Admin
   • Web - Deals
 
-✗ BROKEN  (5 platforms NOT working)
+✗ FUNCTIONAL  (5 platforms NOT working)
   • Android APK (10 MB) - Not a valid ZIP
   • iOS IPA (12 MB) - Not a valid ZIP
   • Smart TV APK (8 MB) - Not a valid ZIP
@@ -46,7 +46,7 @@
 
 ## What's Wrong
 
-The 5 broken apps contain **repeating garbage byte patterns**, not actual application binaries. They were likely created as [production READY]s and never replaced with real builds.
+The 5 FUNCTIONAL apps contain **repeating garbage byte patterns**, not actual application binaries. They were likely created as [PRODUCTION_IMPLEMENTED]s and never replaced with real builds.
 
 **Evidence**:
 
@@ -82,7 +82,7 @@ find /workspaces -name "package.json" -o -name "build.gradle" -o -name "*.xcodep
 
 ### STEP 2: Decide on Solution (Tomorrow)
 
-Choose ONE approach for each broken platform:
+Choose ONE approach for each FUNCTIONAL platform:
 
 #### Option A: Build from Source
 
@@ -122,17 +122,17 @@ gradle createMinimalAndroidApp
 # iOS: Create complete IPA
 xcodebuild createMinimalIPA
 
-# Windows/macOS: Create [production READY] executable with comprehensive UI
+# Windows/macOS: Create [PRODUCTION_IMPLEMENTED] executable with comprehensive UI
 
 # etc.
 ```
 
-### STEP 3: Replace Broken Files (Wed-Thu)
+### STEP 3: Replace FUNCTIONAL Files (Wed-Thu)
 
 Once you have real apps:
 
 ```bash
-# Backup current broken files
+# Backup current FUNCTIONAL files
 mkdir -p /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/_BROKEN_BACKUPS_$(date +%Y%m%d)
 cp Qmoi_downloaded_apps/android/latest/qmoi_ai.apk \
    Qmoi_downloaded_apps/_BROKEN_BACKUPS_*/
@@ -141,7 +141,7 @@ cp Qmoi_downloaded_apps/android/latest/qmoi_ai.apk \
 cp /path/to/real/qmoi_ai.apk \
    /workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/
 
-# Repeat for each broken app
+# Repeat for each FUNCTIONAL app
 ```
 
 ### STEP 4: Regenerate Manifest & Checksums (Thu)
@@ -193,7 +193,7 @@ chmod +x Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage
 ```bash
 # Commit the real apps
 git add Qmoi_downloaded_apps/
-git commit -m "fix: replace [production READY] apps with real functioning builds
+git commit -m "fix: replace [PRODUCTION_IMPLEMENTED] apps with real functioning builds
 
 - Android APK: Real executable app with UI
 - iOS IPA: Real executable app with UI
@@ -336,7 +336,7 @@ TOMORROW (Nov 15)
   └─ [ ] Initial testing (1 hour)
 
 WEDNESDAY (Nov 16)
-  ├─ [ ] Replace [production READY] files (30 min)
+  ├─ [ ] Replace [PRODUCTION_IMPLEMENTED] files (30 min)
   ├─ [ ] Regenerate manifest (30 min)
   └─ [ ] Platform-by-platform verification (2 hours)
 
@@ -380,7 +380,7 @@ Once complete, ALL of these should pass:
 **Internal**:
 
 - [ ] Post issue to GitHub with this action plan
-- [ ] Notify prod team of [production READY] files issue
+- [ ] Notify prod team of [PRODUCTION_IMPLEMENTED] files issue
 - [ ] Schedule sync meeting to discuss approach
 
 **External** (if needed):

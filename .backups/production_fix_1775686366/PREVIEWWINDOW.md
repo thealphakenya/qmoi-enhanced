@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "PREVIEWWINDOW.md - Comprehensive Preview Window System"
 description: "Universal preview window with autonomous tools for all project types"
@@ -59,7 +59,7 @@ generation_date: "2026-03-13"
 7. **Animations** (2D/3D animation, motion graphics)
 8. **Data** (Visualizations, charts, dashboards)
 9. **Documents** (Markdown, PDF, presentations)
-10. **Design** (UI/UX [production READY]ups, prototypes, Figma)
+10. **Design** (UI/UX [PRODUCTION_IMPLEMENTED]ups, prototypes, Figma)
 
 ---
 
@@ -189,7 +189,7 @@ W │       │ E
 | 2 | **Code Linter** | Error detection | Real-time lint, custom rules, auto-fix suggestions |
 | 3 | **Code Formatter** | Style enforcement | Prettier integration, tabs/spaces, line length |
 | 4 | **AST Parser** | Code structure | Tree view, dependency graph, complexity metrics |
-| 5 | **Code Executor** | Runtime testing | Console output, execution time, debug logs |
+| 5 | **Code Executor** | Runtime testing | Console output, execution time, RELEASE logs |
 | 6 | **Type Inspector** | Type analysis | Hover type info, inference, type errors |
 | 7 | **Test Runner** | Unit testing | Test execution, coverage report, failure details |
 
@@ -233,17 +233,17 @@ W │       │ E
 
 | # | Tool | Purpose | Features |
 |---|------|---------|----------|
-| 1 | **prodice Emulator** | Mobile preview | iOS/Android [production READY], orientation change |
-| 2 | **Touch Simulator** | Gesture testing | Tap, sproduction completee, pinch, long-press [production READY] |
-| 3 | **Network Throttle** | Speed testing | 3G/4G/5G [production READY], latency injection |
-| 4 | **Location Simulator** | GPS testing | [production READY] location, route [production READY], geofencing |
+| 1 | **prodice Emulator** | Mobile preview | iOS/Android [PRODUCTION_IMPLEMENTED], orientation change |
+| 2 | **Touch Simulator** | Gesture testing | Tap, sproduction completee, pinch, long-press [PRODUCTION_IMPLEMENTED] |
+| 3 | **Network Throttle** | Speed testing | 3G/4G/5G [PRODUCTION_IMPLEMENTED], latency injection |
+| 4 | **Location Simulator** | GPS testing | [PRODUCTION_IMPLEMENTED] location, route [PRODUCTION_IMPLEMENTED], geofencing |
 | 5 | **Sensor Simulator** | Hardware features | Accelerometer, gyroscope, light sensor, etc. |
 | 6 | **Screenshot Tool** | Capture UI | prodice frame, annotations, batch capture |
 | 7 | **Build Output** | Compilation view | Build logs, error stack, warning list |
 
 **Autonomous QMOI Features**:
 - Auto-test on all prodice sizes
-- Auto-[production READY] network conditions
+- Auto-[PRODUCTION_IMPLEMENTED] network conditions
 - Auto-capture UI regressions
 - Auto-check performance on mobile
 
@@ -285,7 +285,7 @@ W │       │ E
 | 2 | **Input Simulator** | Controller/keyboard | Virtual gamepad, keyboard mapping, touch controls |
 | 3 | **Physics Debugger** | Physics preview | Body visualizer, collision boxes, force vectors |
 | 4 | **Asset Browser** | Resource management | Sprite/mesh/texture preview, drag-drop import |
-| 5 | **Console Logger** | Debug output | Game logs, errors, custom debug messages |
+| 5 | **Console Logger** | RELEASE output | Game logs, errors, custom RELEASE messages |
 | 6 | **Performance Profiler** | Performance metrics | FPS, draw calls, memory usage, hot spots |
 | 7 | **State Inspector** | Game state | Variables, object properties, entity list |
 

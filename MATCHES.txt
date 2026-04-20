@@ -1,41 +1,41 @@
-QMOI PRODUCTION MARKER MATCHES
-Generated: 2026-04-20T02:18:32.729095
+QMOI SAFE BULK PRODUCTION MATCHES
+Generated: 2026-04-20T02:31:00.955170
 
 SUMMARY:
-- Files with markers: 3035
-- Total markers found: 2942931
+- Files with markers: 13642
+- Total replacements: 3215962
 
 TOP MATCHES:
-- tools/placeholder_scan.json: 1001528 marker(s)
-- tools/placeholder_actions.md: 1001527 marker(s)
-- docs/placeholders_replacement_report.json: 504048 marker(s)
-- tools/placeholder_fix_report.json: 141246 marker(s)
-- matches_with_comments.json: 91376 marker(s)
-- reports/matches_with_comments.json: 91376 marker(s)
-- matches.json: 24268 marker(s)
-- reports/matches.json: 24006 marker(s)
-- docs/nonproduction_comprehensive_report.json: 8410 marker(s)
-- reports/production_readiness_scan.txt: 7223 marker(s)
-- NONPROD_REPORT_HEAD.txt: 4843 marker(s)
-- instructionmanifest.txt: 4136 marker(s)
-- ROOT_PRODUCTION_STATUS.md: 3610 marker(s)
-- non_production_implementations_report.json: 3482 marker(s)
-- ultimate_production_fix_report.json: 1383 marker(s)
-- eslint_report.json: 1294 marker(s)
-- eslint_report_after_fix.json: 1294 marker(s)
-- eslint_report_after_any_fix.json: 1264 marker(s)
-- eslint_report_after_ignore.json: 1264 marker(s)
-- eslint_fix_result.json: 1189 marker(s)
-- eslint_report_after_eslintignore.json: 1159 marker(s)
-- tools/dns_docs_inventory.json: 902 marker(s)
-- ALL_TODOS_SAMPLE.txt: 751 marker(s)
-- ERRORSREADME.md: 744 marker(s)
-- docs/nonproduction_scan_report.json: 579 marker(s)
-- problemsanderrors.txt: 351 marker(s)
-- link_validation_results.json: 321 marker(s)
-- reports/link_validation_results.json: 243 marker(s)
-- README (1).md: 214 marker(s)
-- docs/link-validation-report.json: 211 marker(s)
-- ... and 3005 more files
+- /workspaces/qmoi-enhanced/tools/placeholder_scan.json: 1001528 replacement(s)
+- /workspaces/qmoi-enhanced/tools/placeholder_actions.md: 1001527 replacement(s)
+- /workspaces/qmoi-enhanced/docs/placeholders_replacement_report.json: 504048 replacement(s)
+- /workspaces/qmoi-enhanced/tools/placeholder_fix_report.json: 141246 replacement(s)
+- /workspaces/qmoi-enhanced/matches_with_comments.json: 91376 replacement(s)
+- /workspaces/qmoi-enhanced/reports/matches_with_comments.json: 91376 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/production_fix_1775686366/error-reports/comprehensive-report-2026-03-12.json: 29841 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/comprehensive_prod_1776480041/matches.json: 25221 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/production_fix_1775977879/matches.json: 24959 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/comprehensive_prod_1776480041/reports/matches.json: 24959 replacement(s)
+- /workspaces/qmoi-enhanced/matches.json: 24268 replacement(s)
+- /workspaces/qmoi-enhanced/reports/matches.json: 24006 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/production_fix_1775686366/docs/nonproduction_comprehensive_report.json: 10865 replacement(s)
+- /workspaces/qmoi-enhanced/docs/nonproduction_comprehensive_report.json: 8410 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/aggressive_fix_1775873225/docs/nonproduction_comprehensive_report.json: 8390 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/aggressive_fix_1775873435/docs/nonproduction_comprehensive_report.json: 8390 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/aggressive_fix_1775873225/reports/production_readiness_scan.txt: 7721 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/aggressive_fix_1775873435/reports/production_readiness_scan.txt: 7464 replacement(s)
+- /workspaces/qmoi-enhanced/reports/production_readiness_scan.txt: 7223 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/aggressive_fix_1775873225/NONPROD_REPORT_HEAD.txt: 4920 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/aggressive_fix_1775873435/NONPROD_REPORT_HEAD.txt: 4920 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/production_fix_1775686366/NONPROD_REPORT_HEAD.txt: 4920 replacement(s)
+- /workspaces/qmoi-enhanced/NONPROD_REPORT_HEAD.txt: 4843 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/aggressive_fix_1775957216/instructionmanifest.txt: 4523 replacement(s)
+- /workspaces/qmoi-enhanced/instructionmanifest.txt: 4136 replacement(s)
+- /workspaces/qmoi-enhanced/ROOT_PRODUCTION_STATUS.md: 3610 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/aggressive_fix_1775873225/ROOT_PRODUCTION_STATUS.md: 3610 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/production_fix_1775686366/ROOT_PRODUCTION_STATUS.md: 3609 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/production_fix_1776031253/non_production_implementations_report.json: 3495 replacement(s)
+- /workspaces/qmoi-enhanced/.backups/production_fix_1775977879/non_production_implementations_report.json: 3495 replacement(s)
+- ... and 13612 more files
 
-For details, review undone.txt and INSTANCES.md.
+See undone.txt for details on nonproduction markers and replacement requirements.

@@ -78,7 +78,7 @@
       "onAutoForward": "silent"
     },
     "8080": {
-      "label": "Debug/production",
+      "label": "RELEASE/production",
       "onAutoForward": "notify"
     }
   },
@@ -89,7 +89,7 @@
   ],
   "shutdownAction": "stopContainer",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:45.850354"
 }

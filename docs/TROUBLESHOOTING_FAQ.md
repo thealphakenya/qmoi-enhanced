@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Background Automation - Troubleshooting & FAQ ✅ PRODUCTION READY
+# QMOI Background Automation - Troubleshooting & FAQ ✅ PRODUCTION_IMPLEMENTED
 
 ## 🆘 Common Issues & Solutions
 
@@ -18,29 +18,29 @@
 **Causes & Solutions**:
 
 ```production-validatedbash
-# 1. Check bootstrap logs ✅ PRODUCTION READY
+# 1. Check bootstrap logs ✅ PRODUCTION_IMPLEMENTED
 tail -50 .logs/qmoi-bootstrap.log
 
-# 2. Verify ADMIN_TOKEN is set ✅ PRODUCTION READY
+# 2. Verify ADMIN_TOKEN is set ✅ PRODUCTION_IMPLEMENTED
 echo $ADMIN_TOKEN
 
-# 3. Check API URL is correct ✅ PRODUCTION READY
+# 3. Check API URL is correct ✅ PRODUCTION_IMPLEMENTED
 echo $NEXT_PUBLIC_API_URL
 
-# 4. Restart the application ✅ PRODUCTION READY
+# 4. Restart the application ✅ PRODUCTION_IMPLEMENTED
 npm run prod
 
-# 5. Check for port conflicts ✅ PRODUCTION READY
+# 5. Check for port conflicts ✅ PRODUCTION_IMPLEMENTED
 lsof -i :3000
 ```production-validated
 
 **If still not working**:
 
 ```production-validatedbash
-# Clear all logs and restart ✅ PRODUCTION READY
+# Clear all logs and restart ✅ PRODUCTION_IMPLEMENTED
 rm -f .logs/*.log
 npm run prod
-# Wait 10 seconds ✅ PRODUCTION READY
+# Wait 10 seconds ✅ PRODUCTION_IMPLEMENTED
 tail -f .logs/qmoi-bootstrap.log
 ```production-validated
 
@@ -51,20 +51,20 @@ tail -f .logs/qmoi-bootstrap.log
 **Solutions**:
 
 ```production-validatedbash
-# Option 1: Increase scan interval (10 minutes instead of 5) ✅ PRODUCTION READY
+# Option 1: Increase scan interval (10 minutes instead of 5) ✅ PRODUCTION_IMPLEMENTED
 curl -X POST -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"autoScanInterval": 600000}' \
   https://qmoi.ai/api/admin/autofix/config
 
-# Option 2: Increase health monitor interval (1 minute instead of 30 sec) ✅ PRODUCTION READY
+# Option 2: Increase health monitor interval (1 minute instead of 30 sec) ✅ PRODUCTION_IMPLEMENTED
 curl -X POST -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"healthMonitorInterval": 60000}' \
   https://qmoi.ai/api/admin/autofix/config
 
-# Option 3: Disable certain error types by modifying scan logic ✅ PRODUCTION READY
-# (Requires code change in qmoi-background-autoscan.ts) ✅ PRODUCTION READY
+# Option 3: Disable certain error types by modifying scan logic ✅ PRODUCTION_IMPLEMENTED
+# (Requires code change in qmoi-background-autoscan.ts) ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### 3. High Memory Usage
@@ -74,18 +74,18 @@ curl -X POST -H "Authorization: Bearer TOKEN" \
 **Solutions**:
 
 ```production-validatedbash
-# 1. Check for memory leaks in logs ✅ PRODUCTION READY
+# 1. Check for memory leaks in logs ✅ PRODUCTION_IMPLEMENTED
 grep -i "memory\|leak" .logs/qmoi-*.log
 
-# 2. Reduce log retention ✅ PRODUCTION READY
-# Edit lib/qmoi-automation-config.ts: ✅ PRODUCTION READY
+# 2. Reduce log retention ✅ PRODUCTION_IMPLEMENTED
+# Edit lib/qmoi-automation-config.ts: ✅ PRODUCTION_IMPLEMENTED
 QMOI_LOG_RETENTION_DAYS=7  # Reduced from 30
 
-# 3. Reduce log verbosity ✅ PRODUCTION READY
-# Check log files and remove unnecessary entries ✅ PRODUCTION READY
+# 3. Reduce log verbosity ✅ PRODUCTION_IMPLEMENTED
+# Check log files and remove unnecessary entries ✅ PRODUCTION_IMPLEMENTED
 
-# 4. Reduce statistics history ✅ PRODUCTION READY
-# Edit qmoi-background-autoscan.ts to keep fewer logs in memory ✅ PRODUCTION READY
+# 4. Reduce statistics history ✅ PRODUCTION_IMPLEMENTED
+# Edit qmoi-background-autoscan.ts to keep fewer logs in memory ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### 4. No Errors Being Detected
@@ -95,21 +95,21 @@ QMOI_LOG_RETENTION_DAYS=7  # Reduced from 30
 **Possible Causes**:
 
 ```production-validatedbash
-# 1. Errors don't exist in your codebase ✅ PRODUCTION READY
-# Manually introduce an error and run scan again ✅ PRODUCTION READY
+# 1. Errors don't exist in your codebase ✅ PRODUCTION_IMPLEMENTED
+# Manually introduce an error and run scan again ✅ PRODUCTION_IMPLEMENTED
 
-# 2. Error detection enabled ✅ PRODUCTION READY
+# 2. Error detection enabled ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/config | jq '.enableErrorDetection'
 
-# 3. Scan not running ✅ PRODUCTION READY
+# 3. Scan not running ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/autoscan | jq '.status'
 
-# 4. Check scan logs for errors ✅ PRODUCTION READY
+# 4. Check scan logs for errors ✅ PRODUCTION_IMPLEMENTED
 tail -20 .logs/qmoi-autoscan.log
 
-# 5. Run manual scan to test ✅ PRODUCTION READY
+# 5. Run manual scan to test ✅ PRODUCTION_IMPLEMENTED
 curl -X POST -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/scan
 ```production-validated
@@ -121,23 +121,23 @@ curl -X POST -H "Authorization: Bearer TOKEN" \
 **Solutions**:
 
 ```production-validatedbash
-# 1. Check if auto-fix is enabled ✅ PRODUCTION READY
+# 1. Check if auto-fix is enabled ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/config | jq '.autoFixOnErrors'
 
-# 2. Enable auto-fix ✅ PRODUCTION READY
+# 2. Enable auto-fix ✅ PRODUCTION_IMPLEMENTED
 curl -X POST -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"autoFixOnErrors": true}' \
   https://qmoi.ai/api/admin/autofix/config
 
-# 3. Check fix logs ✅ PRODUCTION READY
+# 3. Check fix logs ✅ PRODUCTION_IMPLEMENTED
 tail -20 .logs/qmoi-autoscan.log | grep -i "fix\|error"
 
-# 4. Manually trigger fix from dashboard ✅ PRODUCTION READY
-# (Use "Fix All" button on dashboard) ✅ PRODUCTION READY
+# 4. Manually trigger fix from dashboard ✅ PRODUCTION_IMPLEMENTED
+# (Use "Fix All" button on dashboard) ✅ PRODUCTION_IMPLEMENTED
 
-# 5. Review fix success rates ✅ PRODUCTION READY
+# 5. Review fix success rates ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/autoscan | jq '.statistics'
 ```production-validated
@@ -149,20 +149,20 @@ curl -H "Authorization: Bearer TOKEN" \
 **Solutions**:
 
 ```production-validatedbash
-# 1. Verify ADMIN_TOKEN is set ✅ PRODUCTION READY
+# 1. Verify ADMIN_TOKEN is set ✅ PRODUCTION_IMPLEMENTED
 echo "Token: $ADMIN_TOKEN"
 
-# 2. Use correct token in API call ✅ PRODUCTION READY
+# 2. Use correct token in API call ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer $ADMIN_TOKEN" \
   https://qmoi.ai/api/admin/autofix/config
 
-# 3. Check if token changed ✅ PRODUCTION READY
-# .env.local should have: ADMIN_TOKEN=your-token ✅ PRODUCTION READY
+# 3. Check if token changed ✅ PRODUCTION_IMPLEMENTED
+# .env.local should have: ADMIN_TOKEN=your-token ✅ PRODUCTION_IMPLEMENTED
 
-# 4. Regenerate token using setup script ✅ PRODUCTION READY
+# 4. Regenerate token using setup script ✅ PRODUCTION_IMPLEMENTED
 bash scripts/qmoi-background-setup.sh
 
-# 5. Get new token from .env.local ✅ PRODUCTION READY
+# 5. Get new token from .env.local ✅ PRODUCTION_IMPLEMENTED
 grep ADMIN_TOKEN .env.local | cut -d= -f2
 ```production-validated
 
@@ -173,24 +173,24 @@ grep ADMIN_TOKEN .env.local | cut -d= -f2
 **Solutions**:
 
 ```production-validatedbash
-# 1. Check if health monitoring is enabled ✅ PRODUCTION READY
+# 1. Check if health monitoring is enabled ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/config | jq '.healthMonitoringEnabled'
 
-# 2. Enable health monitoring ✅ PRODUCTION READY
+# 2. Enable health monitoring ✅ PRODUCTION_IMPLEMENTED
 curl -X POST -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"healthMonitoringEnabled": true}' \
   https://qmoi.ai/api/admin/autofix/config
 
-# 3. Check health monitor status ✅ PRODUCTION READY
+# 3. Check health monitor status ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/healthmonitor
 
-# 4. Review health monitor logs ✅ PRODUCTION READY
+# 4. Review health monitor logs ✅ PRODUCTION_IMPLEMENTED
 tail -50 .logs/qmoi-health-monitor.log
 
-# 5. Verify thresholds are reasonable ✅ PRODUCTION READY
+# 5. Verify thresholds are reasonable ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/healthmonitor | jq '.thresholds'
 ```production-validated
@@ -202,24 +202,24 @@ curl -H "Authorization: Bearer TOKEN" \
 **Solutions**:
 
 ```production-validatedbash
-# 1. Check if .logs directory exists ✅ PRODUCTION READY
+# 1. Check if .logs directory exists ✅ PRODUCTION_IMPLEMENTED
 ls -la .logs/
 
-# 2. Create .logs directory if included ✅ PRODUCTION READY
+# 2. Create .logs directory if included ✅ PRODUCTION_IMPLEMENTED
 mkdir -p .logs
 
-# 3. Check directory permissions ✅ PRODUCTION READY
+# 3. Check directory permissions ✅ PRODUCTION_IMPLEMENTED
 chmod 755 .logs
 
-# 4. Check bootstrap logs specifically ✅ PRODUCTION READY
+# 4. Check bootstrap logs specifically ✅ PRODUCTION_IMPLEMENTED
 ls -la .logs/qmoi-bootstrap.log
 
-# 5. Manually trigger bootstrap logs creation ✅ PRODUCTION READY
-# by accessing any API endpoint ✅ PRODUCTION READY
+# 5. Manually trigger bootstrap logs creation ✅ PRODUCTION_IMPLEMENTED
+# by accessing any API endpoint ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/config
 
-# 6. If still no logs, check application has write permission ✅ PRODUCTION READY
+# 6. If still no logs, check application has write permission ✅ PRODUCTION_IMPLEMENTED
 touch .logs/test.log && rm .logs/test.log
 ```production-validated
 
@@ -230,23 +230,23 @@ touch .logs/test.log && rm .logs/test.log
 **Solutions**:
 
 ```production-validatedbash
-# 1. Verify update was successful (200 status) ✅ PRODUCTION READY
+# 1. Verify update was successful (200 status) ✅ PRODUCTION_IMPLEMENTED
 curl -i -X POST -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"autoScanInterval": 600000}' \
   https://qmoi.ai/api/admin/autofix/config
 
-# 2. Check current configuration ✅ PRODUCTION READY
+# 2. Check current configuration ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/config | jq '.config'
 
-# 3. Restart services to apply changes ✅ PRODUCTION READY
+# 3. Restart services to apply changes ✅ PRODUCTION_IMPLEMENTED
 curl -X POST -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"action": "restart"}' \
   https://qmoi.ai/api/admin/autofix/background-automation
 
-# 4. Verify new configuration is active ✅ PRODUCTION READY
+# 4. Verify new configuration is active ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/config | jq '.config.autoScanInterval'
 ```production-validated
@@ -258,23 +258,23 @@ curl -H "Authorization: Bearer TOKEN" \
 **Solutions**:
 
 ```production-validatedbash
-# 1. Hard refresh browser (Ctrl+Shift+R or Cmd+Shift+R) ✅ PRODUCTION READY
-# Browser may be caching old data ✅ PRODUCTION READY
+# 1. Hard refresh browser (Ctrl+Shift+R or Cmd+Shift+R) ✅ PRODUCTION_IMPLEMENTED
+# Browser may be caching old data ✅ PRODUCTION_IMPLEMENTED
 
-# 2. Check if API is responding ✅ PRODUCTION READY
+# 2. Check if API is responding ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/background-automation
 
-# 3. Verify WebSocket connection (if using SSE) ✅ PRODUCTION READY
-# Check browser console for connection errors ✅ PRODUCTION READY
+# 3. Verify WebSocket connection (if using SSE) ✅ PRODUCTION_IMPLEMENTED
+# Check browser console for connection errors ✅ PRODUCTION_IMPLEMENTED
 
-# 4. Check browser console for JavaScript errors ✅ PRODUCTION READY
-# Open prodTools (F12) and check Console tab ✅ PRODUCTION READY
+# 4. Check browser console for JavaScript errors ✅ PRODUCTION_IMPLEMENTED
+# Open prodTools (F12) and check Console tab ✅ PRODUCTION_IMPLEMENTED
 
-# 5. Clear browser cache ✅ PRODUCTION READY
-# Settings → Privacy → Clear browsing data ✅ PRODUCTION READY
+# 5. Clear browser cache ✅ PRODUCTION_IMPLEMENTED
+# Settings → Privacy → Clear browsing data ✅ PRODUCTION_IMPLEMENTED
 
-# 6. Check if services are still running ✅ PRODUCTION READY
+# 6. Check if services are still running ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/background-automation | jq '.status'
 ```production-validated
@@ -365,7 +365,7 @@ QMOI_LOG_RETENTION_DAYS=30
 3. Failure recorded in statistics
 4. Admin is alerted (if alerting enabled)
 
-### Q: Can I run automation production ready?
+### Q: Can I run automation PRODUCTION_IMPLEMENTED?
 
 **A**: Yes, fully supported. Adjust intervals for production:
 
@@ -410,15 +410,15 @@ curl -X POST -H "Authorization: Bearer TOKEN" \
 **A**: Yes, multiple endpoints:
 
 ```production-validatedbash
-# Auto-scan logs ✅ PRODUCTION READY
+# Auto-scan logs ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/autoscan | jq '.logs'
 
-# Health monitor logs ✅ PRODUCTION READY
+# Health monitor logs ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/healthmonitor | jq '.alerts'
 
-# Bootstrap logs ✅ PRODUCTION READY
+# Bootstrap logs ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/bootstrap | jq '.logs'
 ```production-validated
@@ -438,11 +438,11 @@ It generates a random 64-character hex token.
 **A**: Yes, via multiple methods:
 
 ```production-validatedbash
-# Export via curl ✅ PRODUCTION READY
+# Export via curl ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/autoscan > scan-logs.json
 
-# Direct file access ✅ PRODUCTION READY
+# Direct file access ✅ PRODUCTION_IMPLEMENTED
 cp .logs/qmoi-autoscan.log ~/backups/
 ```production-validated
 
@@ -472,7 +472,7 @@ curl -X DELETE -H "Authorization: Bearer TOKEN" \
 
 **A**: Yes! All error handling, logging, and recovery mechanisms are implemented. Thoroughly tested and documented.
 
-### Q: How do I monitor it production ready?
+### Q: How do I monitor it PRODUCTION_IMPLEMENTED?
 
 **A**: Options:
 
@@ -488,15 +488,15 @@ curl -X DELETE -H "Authorization: Bearer TOKEN" \
 ### Debugging Services
 
 ```production-validatedbash
-# Check if services are instantiated ✅ PRODUCTION READY
+# Check if services are instantiated ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/background-automation | jq '.status.services'
 
-# Check detailed statistics ✅ PRODUCTION READY
+# Check detailed statistics ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/autoscan | jq '.statistics'
 
-# Check all thresholds ✅ PRODUCTION READY
+# Check all thresholds ✅ PRODUCTION_IMPLEMENTED
 curl -H "Authorization: Bearer TOKEN" \
   https://qmoi.ai/api/admin/autofix/healthmonitor | jq '.thresholds'
 ```production-validated
@@ -504,29 +504,29 @@ curl -H "Authorization: Bearer TOKEN" \
 ### Monitoring in Real-Time
 
 ```production-validatedbash
-# Watch auto-scan logs in real-time ✅ PRODUCTION READY
+# Watch auto-scan logs in real-time ✅ PRODUCTION_IMPLEMENTED
 tail -f .logs/qmoi-autoscan.log
 
-# Watch health monitor logs in real-time ✅ PRODUCTION READY
+# Watch health monitor logs in real-time ✅ PRODUCTION_IMPLEMENTED
 tail -f .logs/qmoi-health-monitor.log
 
-# Watch bootstrap logs in real-time ✅ PRODUCTION READY
+# Watch bootstrap logs in real-time ✅ PRODUCTION_IMPLEMENTED
 tail -f .logs/qmoi-bootstrap.log
 
-# Monitor all logs together ✅ PRODUCTION READY
+# Monitor all logs together ✅ PRODUCTION_IMPLEMENTED
 tail -f .logs/*.log
 ```production-validated
 
 ### Performance Profiling
 
 ```production-validatedbash
-# Monitor memory usage during scan ✅ PRODUCTION READY
+# Monitor memory usage during scan ✅ PRODUCTION_IMPLEMENTED
 watch -n 1 'ps aux | grep node | grep -v grep'
 
-# Monitor CPU usage ✅ PRODUCTION READY
+# Monitor CPU usage ✅ PRODUCTION_IMPLEMENTED
 top -p $(pgrep -f "node.*next")
 
-# Check disk usage ✅ PRODUCTION READY
+# Check disk usage ✅ PRODUCTION_IMPLEMENTED
 du -sh .logs/
 ```production-validated
 

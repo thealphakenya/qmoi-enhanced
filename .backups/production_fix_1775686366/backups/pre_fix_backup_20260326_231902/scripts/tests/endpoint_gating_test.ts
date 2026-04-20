@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 #!/usr/bin/env node
 import assert from "assert";
 import fs from "fs";
@@ -54,12 +54,12 @@ async function testAiHealthGating(aiHealthGET: unknown) {
   .log("ai-health gating tests passed");
 }
 
-async function testLanguage[production READY]s(languageHandler: unknown) {
-  .log("Testing qmoi/language [production READY] behavior and gating...");
+async function testLanguage[PRODUCTION_IMPLEMENTED]s(languageHandler: unknown) {
+  .log("Testing qmoi/language [PRODUCTION_IMPLEMENTED] behavior and gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
 
-  [production READY] _req/_res for NextApi handler
+  [PRODUCTION_IMPLEMENTED] _req/_res for NextApi handler
   const _res: unknown = {
     status(code: number) {
       this.statusCode = code;
@@ -85,7 +85,7 @@ async function testLanguage[production READY]s(languageHandler: unknown) {
     "language route should 401 without key",
   );
 
-  // With key -> 501 [production READY]
+  // With key -> 501 [PRODUCTION_IMPLEMENTED]
   process.env.API_KEY = "test-api";
   const res2: unknown = {
     statusCode: 0,
@@ -112,9 +112,9 @@ async function testLanguage[production READY]s(languageHandler: unknown) {
       (res2.body &&
         res2.body.error &&
         res2.body.error.includes("implemented")),
-    "language route should return 501 despite key because [production READY]",
+    "language route should return 501 despite key because [PRODUCTION_IMPLEMENTED]",
   );
-  .log("language [production READY] gating tests passed");
+  .log("language [PRODUCTION_IMPLEMENTED] gating tests passed");
 }
 
 async function testQNewsGating(qnewsPOST: unknown) {
@@ -210,7 +210,7 @@ async function runAll() {
     }
 
     await testAiHealthGating(aiHealthGET);
-    await testLanguage[production READY]s(languageHandler);
+    await testLanguage[PRODUCTION_IMPLEMENTED]s(languageHandler);
     await testQNewsGating(qnewsPOST);
     .log("All endpoint gating tests passed.");
     process.exit(0);

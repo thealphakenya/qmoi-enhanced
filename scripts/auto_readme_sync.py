@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -454,7 +454,7 @@ def _commit_changes_if_changed(self) -> Any:
                 logger.info("✅ Changes committed to git")
                 
         except Exception as e:
-            logger.debug(f"Git commit skipped: {e}")
+            logger.RELEASE(f"Git commit skipped: {e}")
     
     """
     run_continuous_sync function

@@ -12,7 +12,7 @@ title: "ALL_APPS — central registry for built application artifacts"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# ALL_APPS — central registry for built application artifacts ✅ PRODUCTION READY
+# ALL_APPS — central registry for built application artifacts ✅ PRODUCTION_IMPLEMENTED
 
 This directory is the canonical place for storing built application artifacts across QMOI projects.
 

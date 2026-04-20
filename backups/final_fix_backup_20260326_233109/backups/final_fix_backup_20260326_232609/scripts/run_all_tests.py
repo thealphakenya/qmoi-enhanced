@@ -477,7 +477,7 @@ def main() -> Any:
     if args.timeout:
         config['test_timeout'] = args.timeout
     if args.verbose:
-        config['log_level'] = 'DEBUG'
+        config['log_level'] = 'RELEASE'
 
     # Create test runner
     runner = MasterTestRunner(config)

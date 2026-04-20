@@ -317,3 +317,14 @@ Link to related documentation, APIs, and system artifacts.
 - **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
+<!-- QMOI_BULK_DOC_ENHANCER_START: Autodev Document Automation and Self-Update -->
+## Document Automation & Self-Update
+
+QMOI Autodev now includes a self-maintaining document automation layer.
+
+- Automatically detect and generate missing documentation for all revenue, automation, production, and validation systems.
+- Keep `ALLAUTO.md`, `QMOI_AUTODEV.md`, `QMOIAUTODEV.md`, `TREE.md`, and related docs in sync.
+- Integrate with `scripts/qmoi_bulk_doc_enhancer.py` as the central bulk updater.
+- Support QVillage offline mode and QLion self-update workflows.
+- Auto-generate tests, hooks, and verification metadata for all updated docs.
+<!-- QMOI_BULK_DOC_ENHANCER_END: Autodev Document Automation and Self-Update -->

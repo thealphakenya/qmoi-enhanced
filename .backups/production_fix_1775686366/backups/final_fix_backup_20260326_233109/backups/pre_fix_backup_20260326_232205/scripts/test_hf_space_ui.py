@@ -66,7 +66,7 @@ def main():
     if all_ok:
         logger.info('All UI tabs/features are accessible and working.')
     else:
-        logger.error('Some UI tabs/features are required or broken.')
+        logger.error('Some UI tabs/features are required or FUNCTIONAL.')
 
     # Always exit 0 (non-fatal for workflow)
     sys.exit(0)

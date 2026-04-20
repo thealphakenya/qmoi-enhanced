@@ -13,7 +13,7 @@ title: "Q-City Documentation"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Q-City Documentation ✅ PRODUCTION READY
+# Q-City Documentation ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -286,10 +286,10 @@ Q-City is a comprehensive system management and monitoring platform that provide
    - All adapters and components use `src/config/api.ts` which respects `NEXT_PUBLIC_API_URL` env const.
    - Backend API endpoints are configurable and environment-aware (local/prod/production/prod).
 
-2. **Debug Mode**
+2. **RELEASE Mode**
 
    ```production-validatedbash
-   python scripts/main.py --debug
+   python scripts/main.py --RELEASE
    ```production-validated
 
 3. **Custom Config**
@@ -417,7 +417,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
    - Critical errors
    - Warning errors
    - Information errors
-   - Debug errors
+   - RELEASE errors
 
 ### Error Recovery
 

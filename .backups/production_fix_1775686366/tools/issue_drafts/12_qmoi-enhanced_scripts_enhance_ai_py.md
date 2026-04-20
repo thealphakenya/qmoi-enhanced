@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
-title: "Fix [production READY]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)"
+title: "Fix [PRODUCTION_IMPLEMENTED]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [production READY]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)
+# Fix [PRODUCTION_IMPLEMENTED]s in qmoi-enhanced/scripts/enhance_ai.py (71 priority)
 
 **File**: `qmoi-enhanced/scripts/enhance_ai.py`
 **Priority score**: 71
@@ -33,7 +33,7 @@ title: "Fix [production READY]s in qmoi-enhanced/scripts/enhance_ai.py (71 prior
 
 ## required action
 
-Implement production logic (DB, API calls) or move [production READY] to test fixtures; add thorough unit tests.
+Implement production logic (DB, API calls) or move [PRODUCTION_IMPLEMENTED] to test fixtures; add thorough unit tests.
 
 ## Notes
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 /**
  * auto-update.js: Auto-update logic for QMOI Space
  * Handles PWA auto-updates and desktop app updates via Electron IPC
@@ -79,7 +79,7 @@ class AutoUpdateManager {
         this.notifyUpdateAvailable(data.version);
       }
     } catch (error) {
-      console.debug("Version check error:", error);
+      console.RELEASE("Version check error:", error);
     }
   }
 

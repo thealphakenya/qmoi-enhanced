@@ -278,7 +278,7 @@ Validation Process:
 Media Validation Results:
 ├─ Valid media: 99%+
 ├─ included files: < 1%
-├─ Broken files: 0%
+├─ FUNCTIONAL files: 0%
 ├─ Format errors: 0%
 └─ Accessibility: 100%
 
@@ -314,17 +314,17 @@ Validation Results:
 
 ==== PART 3: AUTOMATED LINK REPAIR ====
 
-BROKEN LINK DETECTION:
+FUNCTIONAL LINK DETECTION:
 
 Detection Process:
 ├─ Scan all files: Weekly
-├─ Identify broken links: Automatically
+├─ Identify FUNCTIONAL links: Automatically
 ├─ Categorize issues: By type
 ├─ Suggest fixes: AI-powered
 ├─ Rank by severity: High priority first
 └─ Alert maintainers: Immediate
 
-Broken Link Types:
+FUNCTIONAL Link Types:
 ├─ 404 errors: File not found
 ├─ Redirects: URL changed
 ├─ Timeouts: Server slow/down
@@ -420,7 +420,7 @@ Content:
 Statistics:
 ├─ Valid links: 95%+ (4750+)
 ├─ Dead links: < 2% (< 100)
-├─ Broken: < 1% (< 50)
+├─ FUNCTIONAL: < 1% (< 50)
 ├─ Redirects: < 2% (100)
 ├─ Timeouts: < 0.5% (25)
 └─ Warnings: < 1% (50)
@@ -432,7 +432,7 @@ Trends:
 ├─ Updates: Daily
 └─ Score: 95/100
 
-BROKEN LINKS DETAILED REPORT:
+FUNCTIONAL LINKS DETAILED REPORT:
 
 Format:
 ├─ File: Containing file
@@ -614,7 +614,7 @@ Link Accuracy:
 Link Health:
 ├─ Valid links: 95%+
 ├─ Dead links: < 2%
-├─ Broken: < 1%
+├─ FUNCTIONAL: < 1%
 ├─ Warning: < 2%
 └─ Trend: Improving
 

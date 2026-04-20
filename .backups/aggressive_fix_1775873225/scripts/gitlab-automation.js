@@ -301,7 +301,7 @@ class GitLabAutomation {
         `1. Run tests locally: \`npm test\`\n` +
         `2. Check test coverage: \`npm run test:coverage\`\n` +
         `3. Run specific test: \`npm test -- --testNamePattern="test name"\`\n` +
-        `4. Check test environment: \`npm run test:debug\`\n\n` +
+        `4. Check test environment: \`npm run test:RELEASE\`\n\n` +
         `### Common Test Issues:\n` +
         `- required test dependencies\n` +
         `- Environment configuration issues\n` +

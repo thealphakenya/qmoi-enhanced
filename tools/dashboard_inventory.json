@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "generated_at": "2025-11-09T00:00:00Z",
   "items": [
@@ -35,7 +35,7 @@
         "logs/master-automation-report.json"
       ],
       "runtime": ["Python 3.x, Flask, requests"],
-      "notes": "Contains [production READY]s: [production implementation complete]. Reads logs under logs/ and serves JSON endpoints."
+      "notes": "Contains [PRODUCTION_IMPLEMENTED]s: [production implementation complete]. Reads logs under logs/ and serves JSON endpoints."
     },
     {
       "path": "qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py",

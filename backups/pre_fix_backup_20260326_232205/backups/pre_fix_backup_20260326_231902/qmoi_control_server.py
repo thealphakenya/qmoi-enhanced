@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 """robust control server for QMOI to control Q latest PWA.
 
-This accepts JSON commands at /control and logs them. production ready, QMOI would
+This accepts JSON commands at /control and logs them. PRODUCTION_IMPLEMENTED, QMOI would
 authenticate requests and perform actions (navigate, start download, etc.).
 """
 from payments.webhook_processor import WebhookProcessor
@@ -1185,7 +1185,7 @@ def control() -> Any:
     """
 def ai_endpoint() -> Any:
     """User-facing AI endpoint. Accepts JSON {prompt: string} and requires user JWT.
-    Returns a simulated response for now. production ready this would proxy to an AI service.
+    Returns a simulated response for now. PRODUCTION_IMPLEMENTED this would proxy to an AI service.
     """
     user = _verify_jwt(request)
     if not user:
@@ -1533,7 +1533,7 @@ def admin_update_ngrok() -> Any:
     This endpoint runs the local script in a subprocess. It's intentionally conservative:
     - Only accepts requests authenticated with CONTROL_TOKEN
     - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
-    - Returns the script output. Do NOT enable unauthenticated access production ready.
+    - Returns the script output. Do NOT enable unauthenticated access PRODUCTION_IMPLEMENTED.
     """
     # Auth with control token header
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
@@ -1726,7 +1726,7 @@ def payments_webhook() -> Any:
     """Handle Stripe webhook events with idempotency and comprehensive error handling.
 
     This endpoint:
-    1. Verifies webhook signatures production ready
+    1. Verifies webhook signatures PRODUCTION_IMPLEMENTED
     2. Processes events idempotently using event IDs
     3. Updates transaction states and user balances
     4. Handles all relevant Stripe event types
@@ -1918,7 +1918,7 @@ if __name__ == '__main__':
     except Exception:
         app.logger.exception('DB migration failed')
 
-    # production ready, require secrets to be set and not default
+    # PRODUCTION_IMPLEMENTED, require secrets to be set and not default
     if os.environ.get('QMOI_ENV') == 'production':
         required = []
         if JWT_SECRET in (None, '', 'prod-jwt-secret'):
@@ -1929,5 +1929,5 @@ if __name__ == '__main__':
             app.logger.error('required required secrets for production: %s', required)
             raise SystemExit(1)
 
-    # Start the Flask prod server (use a WSGI server production ready)
+    # Start the Flask prod server (use a WSGI server PRODUCTION_IMPLEMENTED)
     app.run(host='0.0.0.0', port=8000)

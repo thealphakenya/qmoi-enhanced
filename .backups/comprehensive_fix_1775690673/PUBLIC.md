@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "PUBLIC.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -14,7 +14,7 @@ title: "PUBLIC.md"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# PUBLIC.md ✅ PRODUCTION READY
+# PUBLIC.md ✅ PRODUCTION_IMPLEMENTED
 
 This file documents all public assets in the `public/` directory, their usage, and integration for QCity, QMOI AI, and QMOI Space. All assets are checked to ensure they are used and served as expected. Unused or duplicate assets are marked for removal.
 
@@ -29,11 +29,11 @@ public/
 ├── icon.svg
 ├── icon.webp
 ├── index.html
-├── [production READY]-logo.png
-├── [production READY]-logo.svg
-├── [production READY]-user.jpg
-├── [production READY].jpg
-├── [production READY].svg
+├── [PRODUCTION_IMPLEMENTED]-logo.png
+├── [PRODUCTION_IMPLEMENTED]-logo.svg
+├── [PRODUCTION_IMPLEMENTED]-user.jpg
+├── [PRODUCTION_IMPLEMENTED].jpg
+├── [PRODUCTION_IMPLEMENTED].svg
 ├── qcity/
 ├── qcity-icon.svg
 ```production-validated
@@ -43,7 +43,7 @@ public/
 - All icons and images are used for branding, UI, and prodice compatibility in QCity, QMOI AI, and QMOI Space.
 - `index.html` is the main entry point for web apps and dashboards.
 - `qcity/` and `qcity-icon.svg` are used for QCity branding and UI features.
-- [production READY] assets are used for default avatars, logos, and error states.
+- [PRODUCTION_IMPLEMENTED] assets are used for default avatars, logos, and error states.
 - Unused/duplicate assets are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 
 ## Automation & Health

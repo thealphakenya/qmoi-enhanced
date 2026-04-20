@@ -12,7 +12,7 @@
     "token": "REPLACE_WITH_QCITY_TOKEN"
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:28.321785"
 }

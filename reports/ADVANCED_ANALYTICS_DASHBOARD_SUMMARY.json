@@ -116,7 +116,7 @@
     "Advanced reporting and analytics features"
   ],
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:16:09.012939"
 }

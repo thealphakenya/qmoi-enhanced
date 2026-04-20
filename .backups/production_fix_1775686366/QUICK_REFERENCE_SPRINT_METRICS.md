@@ -10,7 +10,7 @@
 # QUICK REFERENCE - Links & Domains Enhancement Sprint
 
 ## 🎯 Mission
-Fix all broken QMOI links and resolve all DNS issues to achieve 100% link validity and global domain resolution.
+Fix all FUNCTIONAL QMOI links and resolve all DNS issues to achieve 100% link validity and global domain resolution.
 
 ---
 
@@ -46,9 +46,9 @@ Failed Domains ❌ (ERR_NAME_NOT_RESOLVED):
 ```
 Total Links Found:      31,061
 Valid Links:            18,271 (58.82%) ✅
-Broken Links:           12,790 (41.18%) ❌
+FUNCTIONAL Links:           12,790 (41.18%) ❌
 
-Top 10 Broken Link Types (by frequency):
+Top 10 FUNCTIONAL Link Types (by frequency):
 1. qmoi_validation              1,078 refs → Map to actual path
 2. qmoi-enhanced                  796 refs → Map to actual path
 3. [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)    680 refs → Map to actual path
@@ -60,8 +60,8 @@ Top 10 Broken Link Types (by frequency):
 9. qmoi_ai.exe                    42 refs → QStore URL
 10. qmoi_ai.apk                   38 refs → QStore URL
 
-Critical Files (>10 broken links):  93 files
-High Priority Files (5-10 broken): 231 files
+Critical Files (>10 FUNCTIONAL links):  93 files
+High Priority Files (5-10 FUNCTIONAL): 231 files
 Documentation Files Scanned:    1,945 .md files
 ```
 
@@ -94,11 +94,11 @@ Documentation Files Scanned:    1,945 .md files
 - **Timeline**: 1-2 hours
 - **PRODUCTION_SOLUTION**: Fallback chains active (routes to qvillage.com, qglobal.org)
 
-### Issue #2: Broken Documentation Links
+### Issue #2: FUNCTIONAL Documentation Links
 - **Severity**: HIGH
 - **Status**: READY FOR FIX (automation scripts ready)
 - **Affected**: 1,945 .md files
-- **Impact**: 12,790 broken links (41.18%)
+- **Impact**: 12,790 FUNCTIONAL links (41.18%)
 - **Solution**: Execute 4-phase fix (domains, internals, downloads, localhost)
 - **Timeline**: 4 hours total
 - **Status**: Fix scripts prepared and ready
@@ -146,7 +146,7 @@ python3 scripts/validate_and_sync_links.py --action fix-domains
 |--------|---------|--------|-----|
 | Domain Health | 4/13 (31%) | 13/13 (100%) | Fix DNS |
 | Link Validity | 18,271/31,061 (59%) | 30,000+/31,061 (96%+) | Fix 12,790 links |
-| Broken Files | 1,943/1,945 (100%) | <100/1,945 (5%) | Fix configs |
+| FUNCTIONAL Files | 1,943/1,945 (100%) | <100/1,945 (5%) | Fix configs |
 | API Endpoints | 2/2 (100%) | 2/2 (100%) | Already done ✅ |
 | Dashboard Tabs | 0 new | 2 new (Links, Domains) | Add tabs |
 
@@ -159,7 +159,7 @@ python3 scripts/validate_and_sync_links.py --action fix-domains
 - `domain_fallback_chains.json` - Fallback routing
 - `domain_health_report.json` - Latest health status
 - `documentation_audit_report.json` - Audit summary
-- `documentation_audit_details.json` - Detailed broken links
+- `documentation_audit_details.json` - Detailed FUNCTIONAL links
 
 ### Scripts Ready to Execute
 - `scripts/validate_and_sync_links.py` - Link fixing
@@ -205,7 +205,7 @@ python3 scripts/validate_and_sync_links.py --action fix-domains
 
 ### Step 4: Verify Progress
 ```bash
-# Re-run audit to confirm reduced broken link count
+# Re-run audit to confirm reduced FUNCTIONAL link count
 python3 scripts/documentation_audit_and_fix.py --action audit
 # Expected: 12,790 → ~2,000 remaining (84% fix rate)
 ```
@@ -223,7 +223,7 @@ Integrate: /api/links/validate and /api/domains/health endpoints
 ```
 Checklist before production:
   ☐ DNS resolved (all 13 domains healthy)
-  ☐ Broken links <5% (<1,550 of 31,061)
+  ☐ FUNCTIONAL links <5% (<1,550 of 31,061)
   ☐ Dashboard operational with real data
   ☐ API endpoints tested and responsive
   ☐ All fallback chains verified working
@@ -300,8 +300,8 @@ npm run prod   # Start prod server
 - [ ] Verify DNS resolved: `python3 scripts/domain_health_check_advanced.py`
 - [ ] Test APIs: curl POST /api/links/validate, GET /api/domains/health
 - [ ] Dashboard renders correctly and shows real data
-- [ ] No broken links in CRITICAL_FILES list
-- [ ] Final verification: <5% broken links (1,550+ valid from 31,061)
+- [ ] No FUNCTIONAL links in CRITICAL_FILES list
+- [ ] Final verification: <5% FUNCTIONAL links (1,550+ valid from 31,061)
 
 **Deployment**:
 - [ ] All tests passing
@@ -316,7 +316,7 @@ npm run prod   # Start prod server
 
 **If new person takes over**:
 1. This sprint fixed QMOI's global link/domain infrastructure
-2. Found 41% of links broken + 9/13 domains offline
+2. Found 41% of links FUNCTIONAL + 9/13 domains offline
 3. Built complete validation/monitoring system
 4. Created 5 execution phases with automation scripts
 5. DNS fix unblocks everything else
@@ -327,7 +327,7 @@ npm run prod   # Start prod server
 2. SESSION_LINKS_DOMAINS_ENHANCEMENT_SUMMARY.md (comprehensive findings)
 3. IMPLEMENTATION_ACTION_PLAN.md (step-by-step execution)
 4. domain_health_report.json (latest health status)
-5. documentation_audit_details.json (detailed broken links)
+5. documentation_audit_details.json (detailed FUNCTIONAL links)
 
 ---
 

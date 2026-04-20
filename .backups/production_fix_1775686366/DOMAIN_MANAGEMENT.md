@@ -256,7 +256,7 @@ await domainService.updateConfig({
 - Verify DNS challenge records
 - Review certificate authority logs
 
-### Debug Mode
+### RELEASE Mode
 Enable detailed logging:
 ```typescript
 process.env.DOMAIN_DEBUG = "true";

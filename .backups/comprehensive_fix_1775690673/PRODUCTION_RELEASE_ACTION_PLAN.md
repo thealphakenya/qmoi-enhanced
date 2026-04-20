@@ -22,8 +22,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
-# QMOI v1.2.4 production Release - complete Action Plan ✅ PRODUCTION READY
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+# QMOI v1.2.4 production Release - complete Action Plan ✅ PRODUCTION_IMPLEMENTED
 
 ## 🎯 Current Status: READY FOR production SIGNING
 
@@ -35,7 +35,7 @@ All signing credentials have been located, extracted, and configured for product
 
 ### 1. Signing Infrastructure
 
-- ✅ Found Android keystore: `mobile/android/app/debug.keystore`
+- ✅ Found Android keystore: `mobile/android/app/RELEASE.keystore`
 - ✅ Created `mobile/android/app/signing-config.gradle` with production support
 - ✅ Updated CI workflow `.github/workflows/build-and-release.yml` with actual signing
 - ✅ Created `scripts/build-android-production.sh` for local builds
@@ -52,7 +52,7 @@ All signing credentials have been located, extracted, and configured for product
 
 - ✅ Gradle signing configuration ready
 - ✅ Environment variable support for CI/CD
-- ✅ Fallback to debug keystore for production
+- ✅ Fallback to RELEASE keystore for production
 
 ---
 
@@ -61,7 +61,7 @@ All signing credentials have been located, extracted, and configured for product
 ### Option A: Automated Setup (required)
 
 ```production-validatedbash
-# Requires GitHub CLI (gh) ✅ PRODUCTION READY
+# Requires GitHub CLI (gh) ✅ PRODUCTION_IMPLEMENTED
 bash scripts/add-github-secrets.sh
 ```production-validated
 
@@ -81,7 +81,7 @@ bash scripts/add-github-secrets.sh
 
 ```production-validatedbash
 bash scripts/setup-production-secrets.sh
-# Copy the long string between ---START--- and ---END--- ✅ PRODUCTION READY
+# Copy the long string between ---START--- and ---END--- ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -98,16 +98,16 @@ After adding secrets, verify in GitHub:
 ### Step 2: Dispatch the Build
 
 ```production-validatedbash
-# Method 1: Using helper script with PAT ✅ PRODUCTION READY
+# Method 1: Using helper script with PAT ✅ PRODUCTION_IMPLEMENTED
 export GITHUB_PAT=ghp_xxxxxxxxxxxx
 bash scripts/dispatch_workflow_with_pat_clean.sh \
   --workflow .github/workflows/build-and-release.yml \
   --ref v1.2.4 \
   --run
 
-# Method 2: Manual via GitHub UI ✅ PRODUCTION READY
-# Go to: https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/build-and-release.yml ✅ PRODUCTION READY
-# Click "Run workflow" → select v1.2.4 → "Run workflow" ✅ PRODUCTION READY
+# Method 2: Manual via GitHub UI ✅ PRODUCTION_IMPLEMENTED
+# Go to: https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/build-and-release.yml ✅ PRODUCTION_IMPLEMENTED
+# Click "Run workflow" → select v1.2.4 → "Run workflow" ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Step 3: Monitor Build
@@ -159,7 +159,7 @@ Regenerated: Automatically during build
 
 ## 🔍 Local Testing (Optional)
 
-### Build Locally with Debug Keystore
+### Build Locally with RELEASE Keystore
 
 ```production-validatedbash
 bash scripts/build-android-production.sh
@@ -218,7 +218,7 @@ After successful production build:
 ### Download from Release Page
 
 - **Android APK** - production signed, ready for Google Play Store
-- **iOS IPA** - [production READY] (iOS signing optional)
+- **iOS IPA** - [PRODUCTION_IMPLEMENTED] (iOS signing optional)
 - **PWA Zips** - All 7 web apps ready for deployment
 - **Release Notes** - complete changelog and details
 
@@ -233,7 +233,7 @@ After successful production build:
 
 ### Build Fails - "Keystore not found"
 
-**Fix**: Check keystore exists at `mobile/android/app/debug.keystore`
+**Fix**: Check keystore exists at `mobile/android/app/RELEASE.keystore`
 
 ### Build Fails - "Invalid keystore password"
 
@@ -252,7 +252,7 @@ After successful production build:
 **Fix**: Ensure GitHub PAT has `repo` + `workflow` scopes
 
 ```production-validatedbash
-# Check token scopes ✅ PRODUCTION READY
+# Check token scopes ✅ PRODUCTION_IMPLEMENTED
 gh auth status --show-token
 ```production-validated
 

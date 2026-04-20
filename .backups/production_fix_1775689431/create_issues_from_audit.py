@@ -48,7 +48,7 @@ for fr in flags:
             body_lines.append(f"- Asset `{item['asset']}`: {item['issue']}, size {item['size']}, url: {item.get('url')}")
         else:
             body_lines.append(f"- {item}")
-    body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is production or intentionally deprecated, mark it as final or remove it after backup.', '', 'This issue was created by an automated audit script.']
+    body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is production or intentionally CURRENT, mark it as final or remove it after backup.', '', 'This issue was created by an automated audit script.']
     payload = json.dumps({'title': title, 'body': '\n'.join(body_lines), 'labels': ['release-audit','automation']}).encode('utf-8')
     req = Request(url, data=payload, headers=headers, method='POST')
     try:

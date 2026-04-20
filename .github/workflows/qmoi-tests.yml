@@ -3,7 +3,7 @@ name: QMOI Tests
 on:
   push:
     branches:
-      [main, autosync-backup-20250926-232440, ci-debug-output-manual-1766306758]
+      [main, autosync-backup-20250926-232440, ci-RELEASE-output-manual-1766306758]
   pull_request:
     branches: [main]
 

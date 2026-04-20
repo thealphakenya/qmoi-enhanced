@@ -7,13 +7,13 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Enhanced - Auto-Recovery Procedures
 
 **Document Type:** Technical Reference  
 **Version:** 1.0  
 **Last Updated:** January 17, 2026  
-**Status:** 🟢 production Ready
+**Status:** 🟢 PRODUCTION_IMPLEMENTED
 
 ---
 
@@ -481,7 +481,7 @@ All recovery events are automatically logged with:
 ### Weekly Recovery Drills
 
 ```bash
-# 1. [production READY]base failover
+# 1. [PRODUCTION_IMPLEMENTED]base failover
 # Verify automatic recovery
 
 # 2. Test function restart

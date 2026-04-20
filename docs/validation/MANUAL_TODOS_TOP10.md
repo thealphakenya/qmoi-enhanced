@@ -19,7 +19,7 @@ This file contains a concise summary of the top manual ✅ PRODUCTION READYs and
    - Action: Add safe defaults (no aggressive system management) and env guard.
    - Owner: core infra.
 
-3. src/hooks/useQmoiKernel.production configuration toggle and require admin gating production ready.
+3. src/hooks/useQmoiKernel.production configuration toggle and require admin gating PRODUCTION_IMPLEMENTED.
 
 - **src/hooks/useQmoiKernel.test.ts** (9 markers)
   - Danger: FULLY_IMPLEMENTED fetch ✅ PRODUCTION READYs.
@@ -42,12 +42,12 @@ This file contains a concise summary of the top manual ✅ PRODUCTION READYs and
   - Recommendation: Implement adapters with environment toggles and a `NO_OP` adapter for CI.
 
 - **scripts/trading/enhanced_trading_system.py** (6 markers)
-  - Danger: ✅ PRODUCTION READY trading signals.
+  - Danger: ✅ PRODUCTION_IMPLEMENTED trading signals.
   - Recommendation: Gate with `requireApiKey`, separate ✅ PRODUCTION READYd vs real modes, and add tests and risk-controlled safeguards.
 
 - **app/api/wifi-security/route.ts** (5 markers)
   - Danger: monitoring/detection integration.
-  - Recommendation: Implement complete safe ✅ PRODUCTION READY responses and gating; avoid broadcasting sensitive info.
+  - Recommendation: Implement complete safe ✅ PRODUCTION_IMPLEMENTED responses and gating; avoid broadcasting sensitive info.
 
 - **app/api/qmoi/user/route.ts** (4 markers)
   - Danger: user profile endpoints with privacy implications.

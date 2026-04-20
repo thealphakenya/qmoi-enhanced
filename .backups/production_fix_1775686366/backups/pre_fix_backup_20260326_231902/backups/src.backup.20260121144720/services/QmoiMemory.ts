@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // In-memory storage for QMOI memory (client-side only)
 import { getSessionHeaders } from "./qmoiSession";
 interface MemoryRecord {

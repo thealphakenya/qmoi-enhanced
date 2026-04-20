@@ -103,8 +103,8 @@ def fix_file(self, file_path, issues) -> Any:
         """Replace database production implementations with actual implementations"""
         # Common database patterns
         patterns = [
-            (r'\[production READY\].*fetch from DB', 'fetchFromDatabase'),
-            (r'\[production READY\].*database', 'connectToDatabase'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*fetch from DB', 'fetchFromDatabase'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*database', 'connectToDatabase'),
             (r'production.*fetch from DB', 'fetchFromDatabase'),
             (r'production:.*fetch from DB', 'fetchFromDatabase'),
         ]
@@ -120,7 +120,7 @@ def fix_file(self, file_path, issues) -> Any:
     def fix_api_real production(self, content, code):
         """Replace API production implementations"""
         patterns = [
-            (r'\[production READY\].*API', 'callproductionAPI'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*API', 'callproductionAPI'),
             (r'production.*API', 'callproductionAPI'),
             (r'production:.*API', 'callproductionAPI'),
         ]
@@ -135,7 +135,7 @@ def fix_file(self, file_path, issues) -> Any:
     def fix_service_real production(self, content, code):
         """Replace service production implementations"""
         patterns = [
-            (r'\[production READY\].*service', 'initializeproductionService'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*service', 'initializeproductionService'),
             (r'production.*service', 'initializeproductionService'),
             (r'production:.*service', 'initializeproductionService'),
         ]
@@ -149,7 +149,7 @@ def fix_file(self, file_path, issues) -> Any:
 
     def fix_generic_real production(self, content, code):
         """Replace generic  production implementations"""
-        return re.sub(r'\[production READY\]', '
+        return re.sub(r'\[PRODUCTION_IMPLEMENTED\]', '
 
     """
     fix_implementation_required function

@@ -13,7 +13,7 @@ title: "QMOI AI Model Card (Hugging Face)"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI AI Model Card (Hugging Face) ✅ PRODUCTION READY
+# QMOI AI Model Card (Hugging Face) ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

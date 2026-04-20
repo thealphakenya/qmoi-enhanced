@@ -56,7 +56,7 @@ def load_config(self) -> Dict[str, Any]:
             'dashboard': {
                 'port': 8080,
                 'host': '0.0.0.0',
-                'debug': False,
+                'RELEASE': False,
                 'refresh_interval': 30
             },
             'monitoring_endpoints': {
@@ -1013,7 +1013,7 @@ def start_dashboard(self) -> Any:
             self.app.run(
                 host=dashboard_config['host'],
                 port=dashboard_config['port'],
-                debug=dashboard_config['debug']
+                RELEASE=dashboard_config['RELEASE']
             )
             
         except Exception as e:

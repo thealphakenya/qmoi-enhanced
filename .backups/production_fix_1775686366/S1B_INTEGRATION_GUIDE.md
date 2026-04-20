@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "S1B_INTEGRATION_GUIDE.md - Phase S1B Implementation Guide"
 description: "Quick-start guide for integrating enhanced Chatbot and Preview Window"
@@ -300,7 +300,7 @@ Content-Type: application/json
     "currentFile": "App.tsx",
     "errors": []
   },
-  "userInput": "I need to debug this error"
+  "userInput": "I need to RELEASE this error"
 }
 ```
 
@@ -351,7 +351,7 @@ export default function productionPage() {
 
         {/* Content */}
         <div style={{ flex: 1, display: 'flex', gap: '10px', padding: '10px' }}>
-          {/* Code Editor - [production READY] */}
+          {/* Code Editor - [PRODUCTION_IMPLEMENTED] */}
           <div style={{ flex: 1, background: '#f5f5f5', borderRadius: '4px' }}>
             {/* Editor content here */}
           </div>
@@ -444,13 +444,13 @@ const handleAutoDetectProject = async (files: string[]) => {
 describe('ChatbotEnhanced', () => {
   it('should render message input and send button', () => {
     render(<ChatbotEnhanced />);
-    expect(screen.getBy[production READY]Text(/Type your message/i)).toBeInTheDocument();
+    expect(screen.getBy[PRODUCTION_IMPLEMENTED]Text(/Type your message/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Send/i })).toBeInTheDocument();
   });
 
   it('should analyze context from message', async () => {
     const { container } = render(<ChatbotEnhanced />);
-    // Add [production READY]
+    // Add [PRODUCTION_IMPLEMENTED]
   });
 
   it('should create conversation branch', async () => {
@@ -556,7 +556,7 @@ console.timeEnd('Display 100 messages');
 
 // Test preview window responsiveness
 console.time('Preview drag operation');
-[production READY] drag event
+[PRODUCTION_IMPLEMENTED] drag event
 console.timeEnd('Preview drag operation');
 // Target: < 16ms (60 FPS)
 ```

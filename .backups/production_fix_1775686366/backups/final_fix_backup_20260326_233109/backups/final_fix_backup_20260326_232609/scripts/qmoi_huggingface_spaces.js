@@ -139,7 +139,7 @@ class QMOIHuggingFac_eSpac_es {
             info: (m_essag_e) => this.log('INFO', m_essag_e),
             _error: (m_essag_e) => this.log('ERROR', m_essag_e),
             warn: (m_essag_e) => this.log('WARN', m_essag_e),
-            d_ebug: (m_essag_e) => this.log('DEBUG', m_essag_e)
+            d_ebug: (m_essag_e) => this.log('RELEASE', m_essag_e)
         };
     }
 

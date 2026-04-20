@@ -86,7 +86,7 @@ def main() -> int:
             total_removed_lines += removed
         total_files += 1
 
-    logger.info('Finalize production ready report:')
+    logger.info('Finalize PRODUCTION_IMPLEMENTED report:')
     logger.info(f'  Files scanned: {total_files}')
     logger.info(f'  Files modified: {modified_files}')
     logger.info(f'  Production marker lines removed: {total_removed_lines}')

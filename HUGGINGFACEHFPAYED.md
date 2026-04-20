@@ -12,7 +12,7 @@ title: "Hugging Face (HF) - PAYED Features"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Hugging Face (HF) - PAYED Features ✅ PRODUCTION READY
+# Hugging Face (HF) - PAYED Features ✅ PRODUCTION_IMPLEMENTED
 
 This file was generated from `platformspayed.txt`.
 

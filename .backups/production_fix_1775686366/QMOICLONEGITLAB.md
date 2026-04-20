@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI GitLab Integration & Automation Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -111,7 +111,7 @@ title: "QMOI GitLab Integration & Automation Guide"
 - All actions, fixes, and enhancements are logged and auditable
 - For errors, use logs and AI/ML suggestions; master can override or roll back as needed
 
-## UI/UX REVIEWED: production-grade UI/UX work required; see follow-up issue ([production READY]-prod-UIUX)
+## UI/UX REVIEWED: production-grade UI/UX work required; see follow-up issue ([PRODUCTION_IMPLEMENTED]-prod-UIUX)
 
 (Same as in QMOICLONE.md, with GitLab-specific emphasis)
 

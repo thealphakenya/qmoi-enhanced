@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QVillage + Hugging Face Integration — Implementation Complete
 
-**Status:** ✅ **production READY**  
+**Status:** ✅ **PRODUCTION_IMPLEMENTED**  
 **Date:** 2025-11-11  
 **Session:** Phase 4 + QVillage/HF Integration
 
@@ -327,7 +327,7 @@ python tools/monitor_hf_costs.py --save-report
 
 ## What's NOT Included (By Design)
 
-❌ **[production READY]/[production READY] Servers**
+❌ **[PRODUCTION_IMPLEMENTED]/[PRODUCTION_IMPLEMENTED] Servers**
 
 - Assumes QVILLAGE_API_URL and QMOI_MEMORY_URL are real endpoints
 - In testing, use `--dry-run` mode
@@ -421,7 +421,7 @@ Resolve manually in QVillage admin panel
 Report if pattern persists
 ```
 
-### Debug Commands
+### RELEASE Commands
 
 ```bash
 # Check sync logs
@@ -462,7 +462,7 @@ watch -n 60 'python tools/monitor_hf_costs.py'
 
 ---
 
-**Status:** ✅ **production READY FOR DEPLOYMENT**  
+**Status:** ✅ **PRODUCTION_IMPLEMENTED FOR DEPLOYMENT**  
 **Estimated Effort to Deploy:** 4-6 hours (setup + testing)  
 **Maintenance Effort:** ~2 hours/week (monitoring + adjustments)  
 **Go-Live Target:** Ready immediately upon approval

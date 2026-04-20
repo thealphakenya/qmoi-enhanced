@@ -189,7 +189,7 @@ def verify_webhook_signature(payload: bytes, sig_header: str) -> Dict[str, Any]:
             logger.error(f"Webhook processing error: {e}")
             return {'ok': False, 'error': str(e)}
 
-    # production fallback - parse JSON only if not production ready
+    # production fallback - parse JSON only if not PRODUCTION_IMPLEMENTED
     if os.environ.get('QMOI_ENV') != 'production':
         try:
             event_data = json.loads(payload.decode('utf-8'))
@@ -202,5 +202,5 @@ def verify_webhook_signature(payload: bytes, sig_header: str) -> Dict[str, Any]:
 
     return {
         'ok': False,
-        'error': 'Webhook verification requires STRIPE_WEBHOOK_SECRET production ready'
+        'error': 'Webhook verification requires STRIPE_WEBHOOK_SECRET PRODUCTION_IMPLEMENTED'
     }

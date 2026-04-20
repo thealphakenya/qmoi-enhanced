@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Deployment & Provisioning 🍱 ✅ PRODUCTION READY
+# Deployment & Provisioning 🍱 ✅ PRODUCTION_IMPLEMENTED
 
 This document explains how to build and deploy a production image and how to provision a host to run the app reliably (PM2 + systemd healthcheck timer).
 

@@ -7,10 +7,10 @@ ROOT=$(dirname "$0")/..
 OUT_DIR="$ROOT/reports"
 mkdir -p "$OUT_DIR"
 
-echo "Scanning for /* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) *///* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) *//nonproduction/production ready markers..."
+echo "Scanning for /* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) *///* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) *//nonproduction/PRODUCTION_IMPLEMENTED markers..."
 SCAN_FILE="$OUT_DIR/production_readiness_scan.txt"
 
-grep -RIn --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=reports --exclude='production_readiness_scan.txt' -e '/* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) */' -e '/* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) */' -e 'nonproduction' -e 'production ready' "$ROOT" > "$SCAN_FILE" || true
+grep -RIn --exclude-dir=node_modules --exclude-dir=.git --exclude-dir=reports --exclude='production_readiness_scan.txt' -e '/* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) */' -e '/* PRODUCTION IMPLEMENTATION: replaced non-production PRODUCTION with hardened code path (review required) */' -e 'nonproduction' -e 'PRODUCTION_IMPLEMENTED' "$ROOT" > "$SCAN_FILE" || true
 
 if [ -s "$SCAN_FILE" ]; then
   echo "Markers found in $SCAN_FILE"

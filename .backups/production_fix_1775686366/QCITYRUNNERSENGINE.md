@@ -77,7 +77,7 @@ ZERORATEDQMOI.md – Zero-rated + fallback CDN links
 🧬 Self-prodeloper Logic
 Runners analyze CI logs + error patterns
 
-Autogenerate PRs to fix broken workflows
+Autogenerate PRs to fix FUNCTIONAL workflows
 
 Update CI YAML, environment, or even code based on success rate trends
 

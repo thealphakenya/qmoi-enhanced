@@ -47,7 +47,7 @@ interface GlobalFixResponse {
   time: string;
 }
 
-// In-memory AI task log (replace with persistent DB production ready)
+// In-memory AI task log (replace with persistent DB PRODUCTION_IMPLEMENTED)
 let aiTaskLog: AITaskLogEntry[] = [];
 const LOG_PATH = "/workspaces/latest-Q-ai/qmoi-tasks-log.jsonl";
 

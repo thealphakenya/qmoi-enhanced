@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 """
 QMOI Model Upgrade Plan
 Date: 2025-10-22
@@ -415,14 +415,14 @@ How / Tech
 
 Agent orchestration layer (planner + executor + verifier).
 
-[PRODUCTION READY] environments for testing multi-agent dynamics.
+[PRODUCTION_IMPLEMENTED] environments for testing multi-agent dynamics.
 
 Use multi-agent benchmarks for cooperative tasks.
 
 
 Metrics & tests
 
-Task success in agent-[PRODUCTION READY]d environments, coordination efficiency.
+Task success in agent-[PRODUCTION_IMPLEMENTED]d environments, coordination efficiency.
 
 
 Priority & tradeoffs

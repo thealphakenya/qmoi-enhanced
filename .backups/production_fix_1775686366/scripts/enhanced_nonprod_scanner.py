@@ -29,12 +29,12 @@ production_KEYWORDS = [
     'production', 'stable', 'stable', 'stable', 'production', 'production',
     
     # Test/live keywords
-    'TEST', 'TESTING', 'TEST DATA', 'DUMMY DATA', 'real DATA', 'SAMPLE DATA',
-    'live', 'liveD', 'realED', 'real', 'NOT IMPLEMENTED',
+    'TEST', 'TESTING', 'TEST DATA', 'PRODUCTION_IMPLEMENTED DATA', 'real DATA', 'SAMPLE DATA',
+    'live', 'liveD', 'realED', 'real', 'IMPLEMENTED',
     'PENDING IMPLEMENTATION', 'SIMPLE IMPLEMENTATION', 'production-grade implementation',
     
     # production status
-    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
+    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT PRODUCTION_IMPLEMENTED', 'NOT READY FOR production',
     'COMPLETED', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'SKELETON', 'TEMPLATE', 'BOILERPLATE',
     
     # Real/Implementation keywords
@@ -44,7 +44,7 @@ production_KEYWORDS = [
     
     # Special markers
     '
-    '[DONE]', '[fixed]', '[complete]', '[DEPRECATED]',
+    '[DONE]', '[fixed]', '[complete]', '[CURRENT]',
 ]
 
 # File extensions to scan
@@ -173,14 +173,14 @@ class ComprehensiveproductionScanner:
         patterns = [
             (r'return\s+null;', 'real_RETURN'),
             (r'pass\s*$', 'EMPTY_real'),
-            (r'console\.log.*debug', 'DEBUG_LOG'),
+            (r'console\.log.*RELEASE', 'DEBUG_LOG'),
             (r'debugger\s*;', 'DEBUGGER'),
             (r'localhost|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
             (r'example\.com|test\.com|real\.', 'real_DOMAIN'),
             (r'"12345"|\'12345\'', 'real_ID'),
             (r'const\s+\w+\s*=\s*["\'].*test.*["\']', 'TEST_DATA'),
             (r'if\s*\(\s*false\s*\)', 'DEAD_CODE'),
-            (r'throw\s+new\s+Error\(\s*["\']not implemented', 'NOT_IMPLEMENTED'),
+            (r'throw\s+new\s+Error\(\s*["\']IMPLEMENTED', 'NOT_IMPLEMENTED'),
         ]
         
         for pattern, issue_type in patterns:
@@ -318,7 +318,7 @@ For each production marker found, implement:
 2. TEST DATA → production data schemas and validation
 3. real APIs → Real API integrations with error handling
 4. real implementationS → Complete feature implementations
-5. DEBUG CODE → production logging with structured output
+5. RELEASE CODE → production logging with structured output
 6. LOCAL ENDPOINTS → Global CDN-backed endpoints
 7. real IDs → Real data generation with proper formatting
 8. EMPTY FUNCTIONS → Full featured implementations

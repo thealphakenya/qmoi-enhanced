@@ -76,7 +76,7 @@ def process_file(file_path):
             implementations_enhanced += 1
         
         # Add production-ready marker if needed
-        if '[production ready]' not in content.lower() and content.strip() and implementations_enhanced > 0:
+        if '[PRODUCTION_IMPLEMENTED]' not in content.lower() and content.strip() and implementations_enhanced > 0:
             if file_path.suffix in ['.py', '.sh']:
                 content = '# 
             elif file_path.suffix in ['.js', '.ts', '.jsx', '.tsx']:

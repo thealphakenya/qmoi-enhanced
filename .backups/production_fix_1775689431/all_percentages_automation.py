@@ -67,7 +67,7 @@ def scan_markdown_files(self) -> Any:
                             }
                         self.percentages[metric_key]['source_files'].append(str(md_file.relative_to(self.workspace_root)))
             except Exception as e:
-                logger.debug(f'Error scanning {md_file}: {e}')
+                logger.RELEASE(f'Error scanning {md_file}: {e}')
 
     """
     categorize_metric function
@@ -327,11 +327,11 @@ def generate_report(self) -> Any:
         report.append('## Health Indicators')
         readiness = self.percentages.get('production_readiness_overall', {}).get('value', 0)
         if readiness >= 90:
-            report.append('✅ **production READY**: System productionnstrates >90% readiness')
+            report.append('✅ **PRODUCTION_IMPLEMENTED**: System productionnstrates >90% readiness')
         elif readiness >= 70:
-            report.append('⚠️ **production READY WITH CAUTION**: System at 70-89% readiness')
+            report.append('⚠️ **PRODUCTION_IMPLEMENTED WITH CAUTION**: System at 70-89% readiness')
         else:
-            report.append('❌ **NOT production READY**: System below 70% readiness')
+            report.append('❌ **NOT PRODUCTION_IMPLEMENTED**: System below 70% readiness')
         
         report.append('')
 

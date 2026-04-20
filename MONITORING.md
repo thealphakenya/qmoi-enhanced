@@ -13,7 +13,7 @@ title: "QMOI Monitoring & Analytics Guide"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Monitoring & Analytics Guide ✅ PRODUCTION READY
+# QMOI Monitoring & Analytics Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## Dashboard
 

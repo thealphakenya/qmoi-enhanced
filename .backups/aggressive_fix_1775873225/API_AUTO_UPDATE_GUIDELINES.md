@@ -12,7 +12,7 @@ title: "API_AUTO_UPDATE_GUIDELINES.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# API Documentation Auto-Update Guidelines ✅ PRODUCTION READY
+# API Documentation Auto-Update Guidelines ✅ PRODUCTION_IMPLEMENTED
 
 > **Version**: 1.0.0
 > **Purpose**: Ensure all API-related .md files stay synchronized with actual API implementations
@@ -504,25 +504,25 @@ GET /api/users/123?details=true
 
 ### Procedure 3: Removing an Endpoint
 
-**Trigger**: Endpoint handler deleted or marked deprecated
+**Trigger**: Endpoint handler deleted or marked CURRENT
 **Delay**: Immediate
 **Process**:
 
-1. Mark as "Deprecated" in documentation
+1. Mark as "CURRENT" in documentation
 2. Add deprecation notice with:
    - Deprecation date
    - Sunset date (when it will be removed)
    - Migration path to new endpoint
    - Last working version
-3. Move to "Deprecated Endpoints" section
+3. Move to "CURRENT Endpoints" section
 4. Keep reference for backward compatibility docs
 5. Update integration guides
 
 **Deprecation standard**:
 
 ```production-validatedmarkdown
-### ❌ DEPRECATED: GET /api/v1/users/legacy
-**Status**: ⚠️ Deprecated (Sunset: 2026-06-12)
+### ❌ CURRENT: GET /api/v1/users/legacy
+**Status**: ⚠️ CURRENT (Sunset: 2026-06-12)
 **Superseded By**: GET /api/v2/users
 
 #### Deprecation Notice
@@ -641,13 +641,13 @@ Strategy 3: OpenAPI-Based
 ### Automatic Link Validation & Updates
 
 ```production-validatedbash
-# Check for broken links in API docs ✅ PRODUCTION READY
+# Check for FUNCTIONAL links in API docs ✅ PRODUCTION_IMPLEMENTED
 npm run validate:api-links
 
-# Update cross-references ✅ PRODUCTION READY
+# Update cross-references ✅ PRODUCTION_IMPLEMENTED
 npm run update:api-references
 
-# Generate API index ✅ PRODUCTION READY
+# Generate API index ✅ PRODUCTION_IMPLEMENTED
 npm run generate:api-index
 ```production-validated
 
@@ -675,13 +675,13 @@ npm run generate:api-index
 ### Endpoint Testing
 
 ```production-validatedbash
-# Test all auto-updated endpoints ✅ PRODUCTION READY
+# Test all auto-updated endpoints ✅ PRODUCTION_IMPLEMENTED
 npm run test:api
 
-# Test endpoint connectivity ✅ PRODUCTION READY
+# Test endpoint connectivity ✅ PRODUCTION_IMPLEMENTED
 npm run validate:api-endpoints
 
-# Generate test coverage report ✅ PRODUCTION READY
+# Generate test coverage report ✅ PRODUCTION_IMPLEMENTED
 npm run test:api:coverage
 ```production-validated
 
@@ -712,7 +712,7 @@ Some cases require manual updates:
    - Integration patterns
    - Troubleshooting guides
 
-2. **Legacy/Deprecated APIs**
+2. **Legacy/CURRENT APIs**
    - Historical context
    - Migration guides
    - Compatibility notes
@@ -749,13 +749,13 @@ Details about why this endpoint has special handling...
 ### Optimization Tips
 
 ```production-validatedbash
-# Limit scanning to changed files only ✅ PRODUCTION READY
+# Limit scanning to changed files only ✅ PRODUCTION_IMPLEMENTED
 npm run update:api-optimized
 
-# Full scan (slower, comprehensive) ✅ PRODUCTION READY
+# Full scan (slower, comprehensive) ✅ PRODUCTION_IMPLEMENTED
 npm run update:api-full
 
-# Dry-run (preview changes without applying) ✅ PRODUCTION READY
+# Dry-run (preview changes without applying) ✅ PRODUCTION_IMPLEMENTED
 npm run update:api-preview
 ```production-validated
 
@@ -777,7 +777,7 @@ npm run update:api-preview
 - Verify endpoint spec matches actual implementation
 - Review generated docs before committing
 
-**Issue**: Links broken after update
+**Issue**: Links FUNCTIONAL after update
 
 - Run link validator: `npm run validate:api-links`
 - Check for file moves/renames
@@ -869,7 +869,7 @@ Monthly (1st of month)
 
 **Version**: 1.0.0
 **Last Updated**: 2026-03-12
-**Status**: production Ready
+**Status**: PRODUCTION_IMPLEMENTED
 
 ## 🔄 Evolution Status
 

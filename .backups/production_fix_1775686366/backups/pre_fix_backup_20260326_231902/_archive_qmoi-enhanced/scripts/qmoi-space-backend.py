@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 # NOTE: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
@@ -102,7 +102,7 @@ app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.mount("/static", StaticFiles(directory="qmoi-space-pwa"), name="static")
 
 # Global variables
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"], CURRENT="auto")
 redis_client = None
 db_connection = None
 websocket_connections = []

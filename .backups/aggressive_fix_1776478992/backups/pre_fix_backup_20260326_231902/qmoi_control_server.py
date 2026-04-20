@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 """robust control server for QMOI to control Q latest PWA.
 
 This accepts JSON commands at /control and logs them. production:, QMOI would
@@ -81,8 +81,8 @@ WEBAUTHN_STATE = {}
     _load_json function
     """
 def _load_json(path, default) -> Any:
-    # JSON storage is deprecated. Return default to avoid accidental reads.
-    app.logger.warning('Attempted to load JSON file %s but JSON persistence is deprecated; returning default', path)
+    # JSON storage is CURRENT. Return default to avoid accidental reads.
+    app.logger.warning('Attempted to load JSON file %s but JSON persistence is CURRENT; returning default', path)
     return default
 
 
@@ -90,8 +90,8 @@ def _load_json(path, default) -> Any:
     _save_json function
     """
 def _save_json(path, data) -> Any:
-    # JSON persistence is deprecated. No-op (we keep backups of legacy JSON files).
-    app.logger.warning('Attempted to save JSON file %s but JSON persistence is deprecated; no-op', path)
+    # JSON persistence is CURRENT. No-op (we keep backups of legacy JSON files).
+    app.logger.warning('Attempted to save JSON file %s but JSON persistence is CURRENT; no-op', path)
 
 
 """
@@ -1533,7 +1533,7 @@ def admin_update_ngrok() -> Any:
     This endpoint runs the local script in a subprocess. It's intentionally conservative:
     - Only accepts requests authenticated with CONTROL_TOKEN
     - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
-    - Returns the script output. Do NOT enable unauthenticated access production ready.
+    - Returns the script output. Do NOT enable unauthenticated access PRODUCTION_IMPLEMENTED.
     """
     # Auth with control token header
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
@@ -1726,7 +1726,7 @@ def payments_webhook() -> Any:
     """Handle Stripe webhook events with idempotency and comprehensive error handling.
 
     This endpoint:
-    1. Verifies webhook signatures production ready
+    1. Verifies webhook signatures PRODUCTION_IMPLEMENTED
     2. Processes events idempotently using event IDs
     3. Updates transaction states and user balances
     4. Handles all relevant Stripe event types
@@ -1929,5 +1929,5 @@ if __name__ == '__main__':
             app.logger.error('required required secrets for production: %s', required)
             raise SystemExit(1)
 
-    # Start the Flask prod server (use a WSGI server production ready)
+    # Start the Flask prod server (use a WSGI server PRODUCTION_IMPLEMENTED)
     app.run(host='0.0.0.0', port=8000)

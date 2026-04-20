@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -459,7 +459,7 @@ return self._get_production_data()
                             logger.info(f"✅ SSL valid: {domain}")
                 except Exception as e:
                     health_status["errors"].append(f"SSL check failed: {e}")
-                    logger.debug(f"⚠️ SSL check failed: {domain} - {e}")
+                    logger.RELEASE(f"⚠️ SSL check failed: {domain} - {e}")
 
             # Overall health determination
             health_status["healthy"] = health_status["dns_resolves"] and health_status["http_accessible"]

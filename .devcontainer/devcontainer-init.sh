@@ -64,7 +64,7 @@ if [ ! -f .env.local ]; then
   cat > .env.local << 'ENVEND'
 # QMOI prod Environment
 NODE_ENV=production
-DEBUG=qmoi:*
+RELEASE=qmoi:*
 DATABASE_URL=postgresql://qmoi:qmoi@production.qmoi.ai:5432/qmoi_enhanced
 REDIS_URL=redis://production.qmoi.ai:6379
 PORT=3000

@@ -308,7 +308,7 @@ curl -X POST -H "Authorization: Bearer TOKEN" \
 **A**: QMOI detects:
 
 1. TypeScript/JavaScript compilation errors
-2. included or broken dependencies
+2. included or FUNCTIONAL dependencies
 3. Configuration file errors
 4. Security vulnerabilities
 5. Performance issues

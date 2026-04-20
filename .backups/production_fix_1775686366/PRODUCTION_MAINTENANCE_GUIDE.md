@@ -468,7 +468,7 @@ pm2 scale qmoi-app max
 
 ### Internal Support
 - **DevOps Team**: devops@qmoi.com
-- **Development Team**: dev@qmoi.com
+- **PRODUCTION Team**: dev@qmoi.com
 - **Security Team**: security@qmoi.com
 
 ### External Support

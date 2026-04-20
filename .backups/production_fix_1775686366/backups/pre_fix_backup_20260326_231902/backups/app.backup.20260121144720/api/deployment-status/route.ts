@@ -1,11 +1,11 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// NOTE: 1 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(_req: NextRequest) {
-  [production READY] deployment status data
+  [PRODUCTION_IMPLEMENTED] deployment status data
   return NextResponse.json({
     status: "Healthy",
     lastDeploy: "2025-10-04T18:00:00Z",

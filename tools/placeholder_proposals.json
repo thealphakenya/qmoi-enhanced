@@ -1,6 +1,6 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
-  "summary": "[production READY] replacement proposals generated 2025-11-20",
+  "summary": "[PRODUCTION_IMPLEMENTED] replacement proposals generated 2025-11-20",
   "entries": [
     {
       "token": "https://github.com/thestablekenya/qmoi-enhanced/releases",
@@ -10,7 +10,7 @@
       "notes": "Downloads domain is not resolving; point docs to GitHub Releases as a safe fallback. Do NOT auto-rewrite runtime configs that reference this domain without mapping."
     },
     {
-      "token": "public/favicon.ico ([production READY])",
+      "token": "public/favicon.ico ([PRODUCTION_IMPLEMENTED])",
       "occurrences": "public/index.html, public/qcity/index.html, app/layout.js, qmoi-space-pwa/index.html, many others",
       "suggested_replacement": "Add a real icon file and add an SVG fallback. (public/favicon.svg added)",
       "risk": "very-low",

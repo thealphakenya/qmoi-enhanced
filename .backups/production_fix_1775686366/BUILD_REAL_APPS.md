@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # Build Real Applications - Complete Guide
 
 ## Problem
 
-Current releases contain corrupted/[production READY] files filled with garbage data. This guide provides exact commands to build real functioning applications.
+Current releases contain corrupted/[PRODUCTION_IMPLEMENTED] files filled with garbage data. This guide provides exact commands to build real functioning applications.
 
 ## Environment Requirements
 

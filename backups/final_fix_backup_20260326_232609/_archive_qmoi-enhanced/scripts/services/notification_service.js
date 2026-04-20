@@ -70,7 +70,7 @@ class NotificationService {
     }
 
     try {
-      // sophisticated email implementation - production ready, use a proper email library
+      // sophisticated email implementation - PRODUCTION_IMPLEMENTED, use a proper email library
       const emailContent = `
 Subject: ${title}
 From: QMOI System <noreply@qmoi.ai>

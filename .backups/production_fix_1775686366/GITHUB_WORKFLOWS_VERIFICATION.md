@@ -82,7 +82,7 @@ PRIMARY WORKFLOWS:
    - Frequency: Regular maintenance
    - Status: ACTIVE
 
-   ✓ alllinks-autoupdate.yml - Auto-fix broken links
+   ✓ alllinks-autoupdate.yml - Auto-fix FUNCTIONAL links
    - Type: Auto-update
    - Status: ACTIVE
 
@@ -148,7 +148,7 @@ ENABLED AUTO-FIX SYSTEMS:
 
 - HTTP → HTTPS conversion (safe)
 - DNS validation
-- Broken link detection
+- FUNCTIONAL link detection
 - Conservative fixes by default
 
 ✓ Build auto-fixing (tools/auto_fix_build.py)
@@ -238,7 +238,7 @@ ACTIVE AUTO-FIX TOOLS:
    - Output: Reports in tools/
 
 2. tools/apply_link_fixes.py
-   - Purpose: Broken link fixing
+   - Purpose: FUNCTIONAL link fixing
    - Mode: Dry-run (default), safe fixes
    - Strategy: Conservative
 

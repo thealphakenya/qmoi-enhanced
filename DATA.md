@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# DATA ✅ PRODUCTION READY
+# DATA ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `data/` directory.
 

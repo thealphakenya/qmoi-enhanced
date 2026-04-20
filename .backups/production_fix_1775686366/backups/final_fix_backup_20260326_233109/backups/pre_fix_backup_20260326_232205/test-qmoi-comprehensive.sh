@@ -107,7 +107,7 @@ test_qmoi 14 "Problem Solving" "I have KES 10,000. Design 3 different plans: sav
 test_qmoi 15 "Problem Solving" "A website is slow but hosting is good. Diagnose possible causes." "Website Speed Diagnosis"
 test_qmoi 16 "Problem Solving" "Design an AI moderation system without using cloud services." "Edge AI Moderation"
 test_qmoi 17 "Problem Solving" "If internet access is lost, how should an AI continue learning?" "Offline AI Learning"
-test_qmoi 18 "Problem Solving" "Break down how you would debug an app that crashes only on Android." "Android Crash Debug"
+test_qmoi 18 "Problem Solving" "Break down how you would RELEASE an app that crashes only on Android." "Android Crash RELEASE"
 
 # ============================================================================
 # 🧠 SECTION 4: MEMORY & CONTEXT RETENTION (Tests 19-24)

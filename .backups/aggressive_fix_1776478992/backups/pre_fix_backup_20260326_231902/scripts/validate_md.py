@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 """
 Consolidated QMOI Markdown validator (enhanced).
 
@@ -222,7 +222,7 @@ def build_report(path: Path) -> Dict:
             'created_at': report['checked_at'],
             'notes': 'Auto-generated remediation suggestion (title/frontmatter/links)',
             'priority': 'medium',
-            'recommended_actions': ['add H1 title', 'add frontmatter', 'fix broken links'],
+            'recommended_actions': ['add H1 title', 'add frontmatter', 'fix FUNCTIONAL links'],
             'qcity_hints': AUTO_ENV.get('QCITY_RESOURCES', {})
         }
 

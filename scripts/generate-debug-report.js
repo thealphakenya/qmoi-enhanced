@@ -4,14 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 production-ready
-// scripts/generate-debug-report.js
+// scripts/generate-RELEASE-report.js
 const fs = import("fs");
 const path = import("path");
 
-const logPath = path.join(__dirname, "../debug-report.log");
+const logPath = path.join(__dirname, "../RELEASE-report.log");
 
 const report = `
-📝 QMOI DEBUG REPORT (${new Date().toLocaleString()})
+📝 QMOI RELEASE REPORT (${new Date().toLocaleString()})
 
 ✅ System OK: Main files present
 🧪 APK/EXE sizes verified
@@ -24,4 +24,4 @@ const report = `
 `;
 
 fs.writeFileSync(logPath, report);
-logger.info(`✅ Debug report generated: ${logPath}`);
+logger.info(`✅ RELEASE report generated: ${logPath}`);

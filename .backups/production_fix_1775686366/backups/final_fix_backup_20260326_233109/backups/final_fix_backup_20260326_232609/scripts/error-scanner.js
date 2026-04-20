@@ -438,7 +438,7 @@ TypeScript: ${stats.by_source.tsc} issues
 
 - [ALLERRORS.md](ALLERRORS.md) - Detailed error list
 - [QMOISTATS.md](QMOISTATS.md) - Comprehensive system statistics
-- [WATCHDEBUG.md](WATCHDEBUG.md) - Debug and monitoring system
+- [WATCHDEBUG.md](WATCHDEBUG.md) - RELEASE and monitoring system
 `;
 
     return content;

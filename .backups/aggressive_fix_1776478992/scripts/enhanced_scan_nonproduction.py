@@ -165,7 +165,7 @@ production-ready
     'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
 
     # Instructions and guidelines
-    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED',
+    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'CURRENT',
     fully implemented
     production-ready
 
@@ -174,7 +174,7 @@ production-ready
     production-ready
 
     production-ready
-    'DEBUG', 'logger.info', 'PRINT(', 'ECHO', 'LOG.DEBUG',
+    'RELEASE', 'logger.info', 'PRINT(', 'ECHO', 'LOG.RELEASE',
     production-ready
 
     production

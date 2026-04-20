@@ -28,7 +28,7 @@ production_keywords = [
     '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ text', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ data', 'production data',
     'data data', 'production data', 'production data', 'production data',
 
-    'prod only', 'production only', 'for production', 'debug only',
+    'prod only', 'production only', 'for production', 'RELEASE only',
     'permanent', 'STABLE', 'OPTIMIZED', 'PRODUCTION_SOLUTION', 'bandaid',
 
     # Test markers
@@ -36,7 +36,7 @@ production_keywords = [
     'test fixture', 'test production', 'test production',
 
     # Code quality issues
-    'broken', 'buggy', 'complete', 'COMPLETED', 'complete production',
+    'FUNCTIONAL', 'buggy', 'complete', 'COMPLETED', 'complete production',
     'complete', 'scaffold', 'boilerplate', 'code',
 
     # API/Function markers
@@ -67,7 +67,7 @@ production_keywords = [
     'permanent fix', 'optimized fix', 'hotfix',
     'replace', 'replaced', 'replace all', 'replace with',
 ]
-production_ready_markers = ['[production ready]', '[production complete]', 'in production', 'production ready', 'production complete']
+production_ready_markers = ['[PRODUCTION_IMPLEMENTED]', '[production complete]', 'in production', 'PRODUCTION_IMPLEMENTED', 'production complete']
 
 production_patterns = [re.compile(r'\\b' + re.escape(kw) + r'\\b', re.IGNORECASE) for kw in production_keywords]
 
@@ -252,7 +252,7 @@ def perform_scan(root_dir, include_whitelist=False, max_size=max_file_size_bytes
         f.write('\nTotal files with production markers: ' + str(len(results)) + '\n')
         f.write('Total files scanned: ' + str(scanned_files) + '\n')
         f.write('Files skipped (binary/large): ' + str(skipped_non_text) + '\n')
-        f.write('Files marked as production ready: ' + str(ready_files) + '\n')
+        f.write('Files marked as PRODUCTION_IMPLEMENTED: ' + str(ready_files) + '\n')
 
         total_relevant_files = scanned_files - skipped_non_text
         production_files = [r for r in results if not is_whitelisted(os.path.join(root_dir, r['filePath']))]

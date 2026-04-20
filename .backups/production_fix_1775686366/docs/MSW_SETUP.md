@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # MSW Testing Setup
 
-This project uses MSW ([production READY] Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
+This project uses MSW ([PRODUCTION_IMPLEMENTED] Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
 
 ## Key concepts
 
@@ -29,7 +29,7 @@ Handlers are written defensively to support both `rest` (typical MSW API) and `h
 
 ## Env flags
 
-- `TEST_VERBOSE=1` enables extra debug logging for handlers and fetch wrappers (helpful when diagnosing handler selection or request shapes).
+- `TEST_VERBOSE=1` enables extra RELEASE logging for handlers and fetch wrappers (helpful when diagnosing handler selection or request shapes).
 - `SHOW_MSW_UNHANDLED=1` will allow MSW's `onUnhandledRequest` logging to be visible (off by default to reduce noisy logs in CI). Use it to track leaking real network calls.
 
 ## Troubleshooting
@@ -40,7 +40,7 @@ Handlers are written defensively to support both `rest` (typical MSW API) and `h
 ## data
 
 ```js
-// src/[production READY]s/handlers.ts
+// src/[PRODUCTION_IMPLEMENTED]s/handlers.ts
 export async function getHandlers() {
   const msw = await import("msw");
   const helpers = msw.rest || msw.http;

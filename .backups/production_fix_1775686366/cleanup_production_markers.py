@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-QMOI Production Ready Marker Cleanup Script
-Systematically removes all [PRODUCTION READY] markers from the codebase
+QMOI PRODUCTION_IMPLEMENTED Marker Cleanup Script
+Systematically removes all [PRODUCTION_IMPLEMENTED] markers from the codebase
 """
 
 import os
@@ -26,7 +26,7 @@ class ProductionReadyCleaner:
         print(message)
 
     def find_files_with_markers(self):
-        """Find all files containing [PRODUCTION READY] markers."""
+        """Find all files containing [PRODUCTION_IMPLEMENTED] markers."""
         patterns = [
             "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx",
             "**/*.py", "**/*.md", "**/*.json", "**/*.txt"
@@ -39,7 +39,7 @@ class ProductionReadyCleaner:
                     try:
                         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                             content = f.read()
-                            if '[PRODUCTION READY]' in content:
+                            if '[PRODUCTION_IMPLEMENTED]' in content:
                                 files_with_markers.append(file_path)
                     except Exception as e:
                         self.log(f"Error reading {file_path}: {e}")
@@ -47,29 +47,29 @@ class ProductionReadyCleaner:
         return files_with_markers
 
     def clean_file(self, file_path: str):
-        """Clean [PRODUCTION READY] markers from a single file."""
+        """Clean [PRODUCTION_IMPLEMENTED] markers from a single file."""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
 
             original_content = content
-            markers_found = content.count('[PRODUCTION READY]')
+            markers_found = content.count('[PRODUCTION_IMPLEMENTED]')
 
             if markers_found == 0:
                 return False
 
-            # Remove [PRODUCTION READY] markers and surrounding context
-            # Pattern 1: Remove entire comment lines containing [PRODUCTION READY]
-            content = re.sub(r'^\s*//\s*\[PRODUCTION READY\].*$', '', content, flags=re.MULTILINE)
-            content = re.sub(r'^\s*#+\s*\[PRODUCTION READY\].*$', '', content, flags=re.MULTILINE)
-            content = re.sub(r'^\s*/\*\s*\[PRODUCTION READY\].*\*/$', '', content, flags=re.MULTILINE)
+            # Remove [PRODUCTION_IMPLEMENTED] markers and surrounding context
+            # Pattern 1: Remove entire comment lines containing [PRODUCTION_IMPLEMENTED]
+            content = re.sub(r'^\s*//\s*\[PRODUCTION_IMPLEMENTED\].*$', '', content, flags=re.MULTILINE)
+            content = re.sub(r'^\s*#+\s*\[PRODUCTION_IMPLEMENTED\].*$', '', content, flags=re.MULTILINE)
+            content = re.sub(r'^\s*/\*\s*\[PRODUCTION_IMPLEMENTED\].*\*/$', '', content, flags=re.MULTILINE)
 
-            # Pattern 2: Remove inline [PRODUCTION READY] markers
-            content = re.sub(r'//.*\[PRODUCTION READY\].*', '', content)
-            content = re.sub(r'#.*\[PRODUCTION READY\].*', '', content)
+            # Pattern 2: Remove inline [PRODUCTION_IMPLEMENTED] markers
+            content = re.sub(r'//.*\[PRODUCTION_IMPLEMENTED\].*', '', content)
+            content = re.sub(r'#.*\[PRODUCTION_IMPLEMENTED\].*', '', content)
 
-            # Pattern 3: Replace [PRODUCTION READY] with appropriate implementations
-            content = re.sub(r'\[PRODUCTION READY\]', 'production', content)
+            # Pattern 3: Replace [PRODUCTION_IMPLEMENTED] with appropriate implementations
+            content = re.sub(r'\[PRODUCTION_IMPLEMENTED\]', 'production', content)
 
             # Clean up extra blank lines
             content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)
@@ -90,12 +90,12 @@ class ProductionReadyCleaner:
 
     def run_cleanup(self):
         """Run the complete cleanup process."""
-        self.log("Starting QMOI Production Ready Marker Cleanup")
+        self.log("Starting QMOI PRODUCTION_IMPLEMENTED Marker Cleanup")
         self.log("=" * 60)
 
         # Find all files with markers
         files_with_markers = self.find_files_with_markers()
-        self.log(f"Found {len(files_with_markers)} files with [PRODUCTION READY] markers")
+        self.log(f"Found {len(files_with_markers)} files with [PRODUCTION_IMPLEMENTED] markers")
 
         # Clean each file
         for file_path in files_with_markers:
@@ -111,9 +111,9 @@ class ProductionReadyCleaner:
         self.log(f"Markers removed: {self.stats['markers_removed']}")
 
         if self.stats['markers_removed'] > 0:
-            self.log("✅ Production ready markers cleanup completed successfully!")
+            self.log("✅ PRODUCTION_IMPLEMENTED markers cleanup completed successfully!")
         else:
-            self.log("ℹ️ No production ready markers found to clean up.")
+            self.log("ℹ️ No PRODUCTION_IMPLEMENTED markers found to clean up.")
 
         return self.stats
 

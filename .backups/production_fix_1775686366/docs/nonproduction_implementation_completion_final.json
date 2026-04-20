@@ -6,7 +6,7 @@
   "remaining_by_type": {
     "PRODUCTION": 2,
     "non-production": 2,
-    "mock-stub": 196
+    "PRODUCTION_IMPLEMENTED-stub": 196
   },
   "replacement_stats": {
     "first_pass": 32,

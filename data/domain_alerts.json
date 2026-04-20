@@ -8,7 +8,7 @@
   "qglobal.org_Status changed: healthy \u2192 parking": "2026-03-24T17:56:54.398635",
   "stableq.ai_Status changed: parking \u2192 critical": "2026-03-31T23:26:21.825406",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:29.602983"
 }

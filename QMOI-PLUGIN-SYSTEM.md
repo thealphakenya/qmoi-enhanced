@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Plugin System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -14,7 +14,7 @@ title: "QMOI Plugin System"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Plugin System ✅ PRODUCTION READY
+# QMOI Plugin System ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -85,7 +85,7 @@ export const prodiceHealthReviewerPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    [production READY]nstration
+    [PRODUCTION_IMPLEMENTED]nstration
     const stats = {
       cpu: 72.5,
       memory: 68.2,

@@ -363,7 +363,7 @@ ${jobUrl}
 1. Run tests locally: \`npm test\`
 2. Check test coverage: \`npm run test:coverage\`
 3. Run specific test: \`npm test -- --testNamePattern="test name"\`
-4. Check test environment: \`npm run test:debug\`
+4. Check test environment: \`npm run test:RELEASE\`
 
 ### Common Test Issues:
 - required test dependencies

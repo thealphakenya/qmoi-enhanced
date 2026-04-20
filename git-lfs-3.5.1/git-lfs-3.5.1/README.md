@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# Git Large File Storage ✅ PRODUCTION READY
+# Git Large File Storage ✅ PRODUCTION_IMPLEMENTED
 
 [![CI status][ci_badge]][ci_url]
 

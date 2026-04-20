@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "LION Operating System (LION OS)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -97,7 +97,7 @@ LION is the orchestrator and robust runtime that ensures QMOI can validate its o
 
 - lionctl: a robust CLI for local interactions and scripted orchestration (dry-run by default).
 - LION agent: a small daemon (optional) that runs on orchestrator hosts and can accept signed jobs.
-- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and [production READY] scanning.
+- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and [PRODUCTION_IMPLEMENTED] scanning.
 - Payment adapters: production-ready adapters that implement a common interface to interact with the comprehensive wallet management system, payment gateways, and testnets. Implementations live under `services/payments/` and support production/testnet drivers with full integration to:
   - **Wallet Manager**: Multi-signature wallets with consciousness integration
   - **Transaction Manager**: Atomic operations with rollback capabilities
@@ -136,14 +136,14 @@ Design notes:
 - Support multi-currency payouts with real-time exchange rate integration.
 - Enable webhook notifications for payout events and reconciliation updates.
 - Implement risk assessment and compliance checking for all financial operations.
-- For on-chain operations, require a separate signer service and [production READY] flows on testnet before mainnet operations.
+- For on-chain operations, require a separate signer service and [PRODUCTION_IMPLEMENTED] flows on testnet before mainnet operations.
 
 ## Validation & continuous checks
 
 - Use `scripts/run_validations.py` to orchestrate:
   - Markdown link checks and http->https upgrades where safe
   - Artifact checksum verification against `qcity-artifacts/qmoi_build_report.json`
-  - [production READY] scanning report
+  - [PRODUCTION_IMPLEMENTED] scanning report
 - Integrate Playwright visual regression tests for critical UI components.
 - Add API route verification (OpenAPI or JSON Schema) to ensure `API.md` matches actual endpoints.
 
@@ -228,7 +228,7 @@ Files to add / next tasks
 Installer & builds
 
 - Create CI pipelines that produce cross-platform packages on merge to main.
-- Replace any [production READY] links in docs with real download locations for installers (no [production READY]s in final docs).
+- Replace any [PRODUCTION_IMPLEMENTED] links in docs with real download locations for installers (no [PRODUCTION_IMPLEMENTED]s in final docs).
 
 Telemetry & logging
 
@@ -236,7 +236,7 @@ Telemetry & logging
 
 Notes
 
-- This file is a starter plan — implementation will be incremental. Next step: generate concrete tasks in the [production READY] list (done) and start by producing `lionctl` scaffolding and a complete desktop production.
+- This file is a starter plan — implementation will be incremental. Next step: generate concrete tasks in the [PRODUCTION_IMPLEMENTED] list (done) and start by producing `lionctl` scaffolding and a complete desktop production.
 
 <!-- QMOI_VALIDATION_START -->
 

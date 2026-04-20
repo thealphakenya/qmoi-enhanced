@@ -61,9 +61,9 @@ FIX_PATTERNS = [
     (r'\s*', r'',
      'Debugger statement'),
     
-    # Fix 8: DEBUG console logs
-    (r'console\.log\s*\(\s*["\']DEBUG', r'// DEBUG: ',
-     'Debug console log'),
+    # Fix 8: RELEASE console logs
+    (r'console\.log\s*\(\s*["\']RELEASE', r'// RELEASE: ',
+     'RELEASE console log'),
     
     # Fix 9: Empty catch blocks  
     (r'catch\s*\([^)]*\)\s*{\s*}', r'catch (error) { /* Handle error */ }',
@@ -192,7 +192,7 @@ This fixer focused on:
 4. ✅ Applied targeted fixes to actual code issues
 
 NOT processed:
-- ❌ Backup files (undone_backups/ - 1000+ files with [production READY] markers)
+- ❌ Backup files (undone_backups/ - 1000+ files with [PRODUCTION_IMPLEMENTED] markers)
 - ❌ Reports and metadata (reports/, tools/metadata)
 - ❌ node_modules and external code
 - ❌ Documentation and test data files

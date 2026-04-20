@@ -125,7 +125,7 @@ API_CONTENT = """# API.md - QMOI Complete API Documentation
 
 ### Core QMOI APIs (8 endpoints)
 - `/api/qmoi-model` - Model info & config
-- `/api/qmoi/autodev` - Auto development features
+- `/api/qmoi/autodev` - Auto PRODUCTION features
 - `/api/qmoi/suggestions` - QMOI recommendations
 - `/api/qmoi/own-device-logs` - Device logging
 - `/api/qmoi/backup` - Backup management
@@ -382,7 +382,7 @@ APIS_1_CONTENT = """# APIs_1.md - QMOI API Reference v1.0
 
 ### Core QMOI System APIs
 1. **GET/PUT /api/qmoi-model** - QMOI model operations
-2. **POST/PUT /api/qmoi/autodev** - Automatic development
+2. **POST/PUT /api/qmoi/autodev** - Automatic PRODUCTION
 3. **POST/PUT /api/qmoi/suggestions** - AI suggestions
 4. **GET/PUT/POST /api/qmoi/own-device-logs** - Device logging
 5. **GET /api/qmoi/backup** - Backup operations

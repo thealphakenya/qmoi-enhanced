@@ -6,7 +6,7 @@
 export interface LogEntry {
   id: string;
   timestamp: Date;
-  level: 'info' | 'warn' | 'error' | 'debug';
+  level: 'info' | 'warn' | 'error' | 'RELEASE';
   message: string;
   context?: Record<string, any>;
   userId?: string;
@@ -27,8 +27,8 @@ export class Logger {
     this.log('error', message, context, userId);
   }
 
-  debug(message: string, context?: Record<string, any>, userId?: string): void {
-    this.log('debug', message, context, userId);
+  RELEASE(message: string, context?: Record<string, any>, userId?: string): void {
+    this.log('RELEASE', message, context, userId);
   }
 
   private log(level: LogEntry['level'], message: string, context?: Record<string, any>, userId?: string): void {

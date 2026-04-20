@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // App Service Initialization
 // Bootstraps background services, health monitoring, and recovery mechanisms
@@ -53,7 +53,7 @@ export async function initializeServices(): Promise<void> {
  * Setup automatic recovery for failed services
  */
 function setupRecoveryListeners(): void {
-  console.debug("[Init] Setting up recovery listeners...");
+  console.RELEASE("[Init] Setting up recovery listeners...");
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch.bind(window);
@@ -99,7 +99,7 @@ function setupRecoveryListeners(): void {
  * Setup continuous health monitoring
  */
 function setupHealthMonitoring(): void {
-  console.debug("[Init] Setting up health monitoring...");
+  console.RELEASE("[Init] Setting up health monitoring...");
 
   // Check health every 60 seconds
   setInterval(async () => {
@@ -123,7 +123,7 @@ function setupHealthMonitoring(): void {
 
       // Log diagnostics periodically
       const stats = healthCheckService.getStats();
-      console.debug("[Monitor] Health stats:", {
+      console.RELEASE("[Monitor] Health stats:", {
         endpoints: stats.sampledEndpoints,
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
@@ -181,10 +181,10 @@ export function resetAllCaches(): void {
 }
 
 /**
- * Enable debug logging
+ * Enable RELEASE logging
  */
 export function enableDebugLogging(): void {
-  console.info("[Debug] Debug logging enabled");
+  console.info("[RELEASE] RELEASE logging enabled");
 
   // Intercept console methods to add timestamps
   const originalLog = (console as unknown).log;

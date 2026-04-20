@@ -17,19 +17,19 @@
 ## Summary of matches
 
 - Line 174: do_sample=True,
-- Line 255: [production READY]_prod="Ask QMOI anything...",
-- Line 327: [production READY]_prod="Enter multiple prompts, one per line...",
-- Line 345: [production READY]_prod="Test prompt for API...",
+- Line 255: [PRODUCTION_IMPLEMENTED]_prod="Ask QMOI anything...",
+- Line 327: [PRODUCTION_IMPLEMENTED]_prod="Enter multiple prompts, one per line...",
+- Line 345: [PRODUCTION_IMPLEMENTED]_prod="Test prompt for API...",
 - Line 482: "do_sample": True,
 - Line 615: # Implementation for model upload
 - Line 629: # Implementation for deployment verification
-- Line 684: from unittest.[production READY]_prod import [production READY]_prod, patch
-- Line 705: with patch.object(app.model, 'generate') as [production READY]_prod_generate:
-- Line 706: [production READY]_prod_generate.return_value = torch.tensor([[1, 2, 3, 4]])
+- Line 684: from unittest.[PRODUCTION_IMPLEMENTED]_prod import [PRODUCTION_IMPLEMENTED]_prod, patch
+- Line 705: with patch.object(app.model, 'generate') as [PRODUCTION_IMPLEMENTED]_prod_generate:
+- Line 706: [PRODUCTION_IMPLEMENTED]_prod_generate.return_value = torch.tensor([[1, 2, 3, 4]])
 
 ## required action
 
-Update documentation to remove production [production READY]s and provide real deployment instructions.
+Update documentation to remove production [PRODUCTION_IMPLEMENTED]s and provide real deployment instructions.
 
 ## Notes
 

@@ -49,7 +49,7 @@ report_metrics() {{
     fi
 }}
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env bash
 set -euo pipefail
 if [ "$(id -u)" -ne 0 ]; then

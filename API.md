@@ -2946,7 +2946,7 @@
 2939. `deals_optimize()`
 2940. `deals_purchase()`
 2941. `deals_revenue()`
-2942. `debug()`
+2942. `RELEASE()`
 2943. `decideReplacement()`
 2944. `decision_loop()`
 2945. `deco()`

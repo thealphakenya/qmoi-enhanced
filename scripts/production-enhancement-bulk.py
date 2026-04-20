@@ -53,7 +53,7 @@ class ProductionEnhancer:
             (r"if\s*\(\s*false\s*\)", "Disabled Production Code"),
             (r"\/\/\s*production:.*implementation|\/\/\s*NOTE:.*not.*production", "Non-prod Note"),
             (r"return\s*{.*revenue.*:\s*0", "Zero Revenue (Non-prod)"),
-            (r"console\.log.*test|debug.*output", "Debug Output"),
+            (r"console\.log.*test|RELEASE.*output", "RELEASE Output"),
         ]
         
         findings = []
@@ -343,7 +343,7 @@ def require_master(func):
         md = f"""# QMOI Production Service Instances
 
 **Last Updated**: {timestamp}
-**Status**: ✅ PRODUCTION READY
+**Status**: ✅ PRODUCTION_IMPLEMENTED
 **System Version**: 2.0.0
 **Total Instances**: {len(instances)}
 **Files Enhanced**: {self.stats['files_updated']}
@@ -351,7 +351,7 @@ def require_master(func):
 
 ## 📊 Service Instances Summary
 
-| # | Service | Status | Version | Access Control | Production Ready |
+| # | Service | Status | Version | Access Control | PRODUCTION_IMPLEMENTED |
 |---|---------|--------|---------|-----------------|------------------|
 """
         
@@ -375,7 +375,7 @@ def require_master(func):
             
             md += f"""
 **Access Control**: Master-only
-**Production Ready**: Yes
+**PRODUCTION_IMPLEMENTED**: Yes
 **Monitoring**: Real-time
 **Backup**: Automated
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 # QMOI Enhanced Master Startup Script
 # Launches all services, verifies health, displays status dashboard
 # Usage: ./startup.sh [options]
@@ -11,7 +11,7 @@
 #   --no-verify         Skip health verification
 #   --real-server       Also start real backend server
 #   --open-browser      Automatically open browser after startup
-#   --debug             Enable debug logging
+#   --RELEASE             Enable RELEASE logging
 
 set -e  # Exit on error
 
@@ -64,7 +64,7 @@ log_error() {
 
 log_debug() {
   if [ "$DEBUG_MODE" = true ]; then
-    echo -e "${CYAN}[DEBUG]${NC} $*"
+    echo -e "${CYAN}[RELEASE]${NC} $*"
   fi
 }
 
@@ -112,7 +112,7 @@ parse_arguments() {
         OPEN_BROWSER=true
         shift
         ;;
-      --debug)
+      --RELEASE)
         DEBUG_MODE=true
         shift
         ;;
@@ -138,12 +138,12 @@ Options:
   --no-verify         Skip health verification
   --real-server       Also start real backend server
   --open-browser      Automatically open browser after startup
-  --debug             Enable debug logging
+  --RELEASE             Enable RELEASE logging
 
 Examples:
   ./startup.sh                                    # Start in production
   ./startup.sh --prod --open-browser             # Start in production with browser
-  ./startup.sh --real-server --debug             # Start with real server and debug
+  ./startup.sh --real-server --RELEASE             # Start with real server and RELEASE
   ./startup.sh --prod --no-verify                 # Start without health verification
 
 Environment Variables:
@@ -501,7 +501,7 @@ main() {
   parse_arguments "$@"
 
   log_info "Starting with environment: $ENV_MODE"
-  log_debug "Debug mode enabled"
+  log_debug "RELEASE mode enabled"
 
   check_prerequisites
   setup_environment

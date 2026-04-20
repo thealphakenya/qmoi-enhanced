@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # TECHNICAL REFERENCE — Next Steps Commands
 
 ## 🩺 Latest Automated Health Check (2026-03-31)
@@ -143,7 +143,7 @@ cat reports/release_compliance_report.json | jq '.status'
 cat reports/release_compliance_report.json | jq '.alerts | length'
 ```
 
-### [production READY] Non-Compliance (Testing)
+### [PRODUCTION_IMPLEMENTED] Non-Compliance (Testing)
 
 ```bash
 cd /workspaces/qmoi-enhanced
@@ -296,7 +296,7 @@ git commit -m "docs: update release docs and fix verification links
 - Updated GITHUB_RELEASES_RECENT.md with v1.2.3 & v1.2.4 real data
 - Created RELEASES_USER_GUIDE.md for user quick-start
 - Verified all SHA256 links and download URLs
-- Fixed deprecated links in platform-specific docs"
+- Fixed CURRENT links in platform-specific docs"
 
 # Push to remote
 git push origin autosync-backup-20250926-232440
@@ -430,7 +430,7 @@ Phase 1: Workflow Validation
 Phase 2: Compliance
 [ ] python3 scripts/generate_release_compliance_report.py
 [ ] cat reports/release_compliance_report.json | jq '.status' → "OK"
-[ ] [production READY] non-compliance (rename asset)
+[ ] [PRODUCTION_IMPLEMENTED] non-compliance (rename asset)
 [ ] Run compliance again (should fail)
 [ ] Restore asset & verify compliant again
 

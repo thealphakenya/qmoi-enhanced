@@ -17,7 +17,7 @@ function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
 
-  // production ready, verify token with your auth system
+  // PRODUCTION_IMPLEMENTED, verify token with your auth system
   // For now, check if token exists and matches admin criteria
   if (!token || token !== process.env.ADMIN_TOKEN) {
     return false;

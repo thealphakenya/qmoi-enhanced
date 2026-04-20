@@ -62,7 +62,7 @@ def generate_final_report():
             f'- Total files scanned: {scan_result.get("total_files_scanned", "N/A")}',
             f'- Files with markers: {scan_result.get("files_with_markers", "N/A")}',
             f'- Total markers found: {scan_result.get("total_markers_found", "N/A")}',
-            f'- Production ready: {"YES" if scan_result.get("production_ready") else "NO"}',
+            f'- PRODUCTION_IMPLEMENTED: {"YES" if scan_result.get("production_ready") else "NO"}',
             ''
         ])
         if scan_result.get('files_by_marker'):

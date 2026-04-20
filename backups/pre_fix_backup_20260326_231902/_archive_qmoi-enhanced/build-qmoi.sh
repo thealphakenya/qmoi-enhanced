@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 echo "🚀 Launching QMOI AI Builder..."
 python3 qmoi-app-builder.py

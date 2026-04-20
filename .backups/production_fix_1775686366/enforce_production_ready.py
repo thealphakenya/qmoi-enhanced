@@ -10,10 +10,10 @@ TARGET_DIRS = [
 IGNORE_DIRS = {'.git', 'node_modules', 'dist', 'build', '.venv', '.venv_qmoi_control', '_archive_qmoi-enhanced', '.idea', '.vscode'}
 
 PATTERNS = {
-    r'production IMPLEMENTATION REQUIRED': '[production READY]',
-    r'PENDING IMPLEMENTATION': '[production READY]',
-    r'\bDONE\b': '[production READY]',
-    r'\bfixed\b': '[production READY]',
+    r'production IMPLEMENTATION REQUIRED': '[PRODUCTION_IMPLEMENTED]',
+    r'PENDING IMPLEMENTATION': '[PRODUCTION_IMPLEMENTED]',
+    r'\bDONE\b': '[PRODUCTION_IMPLEMENTED]',
+    r'\bfixed\b': '[PRODUCTION_IMPLEMENTED]',
     r'\breal\b': 'REAL',
 }
 

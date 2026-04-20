@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# GitHub Actions Secrets Setup ✅ PRODUCTION READY
+# GitHub Actions Secrets Setup ✅ PRODUCTION_IMPLEMENTED
 
 To enable production-grade signed builds in CI, configure these secrets in your GitHub repository:
 
@@ -71,20 +71,20 @@ Once secrets are added, the CI workflow will:
 - Build signed APKs (Android) and IPAs (iOS) on tag pushes
 - Upload signed artifacts to the GitHub Release
 
-If secrets are not present, the workflow will still build but produce unsigned/debug artifacts.
+If secrets are not present, the workflow will still build but produce unsigned/RELEASE artifacts.
 
 ## Testing
 
 After adding secrets, trigger the workflow via:
 
 ```production-validatedbash
-# Using the helper script ✅ PRODUCTION READY
+# Using the helper script ✅ PRODUCTION_IMPLEMENTED
 GITHUB_PAT=<your-pat> bash scripts/dispatch_workflow_with_pat_clean.sh \
   --workflow .github/workflows/build-and-release.yml \
   --ref v1.2.4 \
   --run
 
-# Or push a new tag ✅ PRODUCTION READY
+# Or push a new tag ✅ PRODUCTION_IMPLEMENTED
 git tag -a v1.2.5 -m "test signed build"
 git push origin v1.2.5
 ```production-validated

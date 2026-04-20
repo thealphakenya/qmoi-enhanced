@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "QMOI API snapshot (APIs_v1)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI API snapshot (APIs_v1) ✅ PRODUCTION READY
+# QMOI API snapshot (APIs_v1) ✅ PRODUCTION_IMPLEMENTED
 
 This file is an automated snapshot of commonly used API endpoints implemented under `app/api/**`.
 Mutating endpoints are _proposal-first_ by default and require explicit production confirmation (`production_CONFIRMED=true` + `--real`) to actually perform state-changing actions. All mutating endpoints write proposals to `.qmoi_validation/` when not run in confirmed production mode.

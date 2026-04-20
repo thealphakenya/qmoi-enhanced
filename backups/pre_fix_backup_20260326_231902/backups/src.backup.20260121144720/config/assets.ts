@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 export interface Asset {
   type: "spot" | "futures" | "otc";
   currency: string;

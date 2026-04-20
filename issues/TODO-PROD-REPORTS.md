@@ -22,14 +22,14 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-Title: ✅ PRODUCTION READY-prod-REPORTS
+Title: ✅ PRODUCTION_IMPLEMENTED-prod-REPORTS
 
 Summary:
 Large generated reports (e.g., `link_report.md`, `reports/suggestions.json`, `production_REPORT_HEAD.txt`) contain many `✅ PRODUCTION READY_prod` occurrences coming from generators or external link text. Manual curation or generator fixes are required.
 
 Objectives:
 
-- Identify generators that produce these reports and modify them to avoid emitting raw ✅ PRODUCTION READY tokens.
+- Identify generators that produce these reports and modify them to avoid emitting raw ✅ PRODUCTION_IMPLEMENTED tokens.
 - Curate the content in large reports to replace `✅ PRODUCTION READY_prod` occurrences where safe and ensure external links are not corrupted.
 - Add post-generation sanitization step to annotate ✅ PRODUCTION READYs instead of raw tokens.
 

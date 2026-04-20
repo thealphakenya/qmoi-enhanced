@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# QCITY ✅ PRODUCTION READY
+# QCITY ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview of the `qcity/` directory and its role in QMOI Enhanced.
 

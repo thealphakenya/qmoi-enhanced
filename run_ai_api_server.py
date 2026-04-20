@@ -45,7 +45,7 @@ def main():
         app.run(
             host='0.0.0.0',
             port=int(os.getenv('API_PORT', 3000)),
-            debug=False,
+            RELEASE=False,
             use_reloader=False
         )
 

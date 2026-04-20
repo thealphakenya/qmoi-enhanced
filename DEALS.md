@@ -13,7 +13,7 @@ title: "QMOI Deals"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Deals ✅ PRODUCTION READY
+# QMOI Deals ✅ PRODUCTION_IMPLEMENTED
 
 This document explains the enhanced deals system implemented in QMOI Enhanced System.
 

@@ -440,7 +440,7 @@ def check_regional_accessibility(self, domain: str) -> Dict[str, bool]:
                     results[region] = False
                     
             except Exception as e:
-                logger.debug(f"Regional check failed for {domain} in {region}: {e}")
+                logger.RELEASE(f"Regional check failed for {domain} in {region}: {e}")
                 results[region] = False
         
         return results

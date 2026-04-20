@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // scripts/qmoi-master-debugger.js
 
 const { execSync } = require("child_process");
@@ -65,6 +65,6 @@ for (const [cmd, label] of checks) {
   results.push(result);
 }
 
-const summary = `🧠 *QMOI Debug Summary*\n\n${results.join("\n")}`;
+const summary = `🧠 *QMOI RELEASE Summary*\n\n${results.join("\n")}`;
 console.log(`\n${summary}`);
 sendTelegramReport(summary);

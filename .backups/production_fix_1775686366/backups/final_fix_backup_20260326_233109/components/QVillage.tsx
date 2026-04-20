@@ -518,7 +518,7 @@ export const QVillage: React.FC = () => {
           },
           {
             id: "app-dev-003",
-            name: "AI App Development Pipeline",
+            name: "AI App PRODUCTION Pipeline",
             type: "auto_projects",
             status: "active",
             revenue: 3200.0,

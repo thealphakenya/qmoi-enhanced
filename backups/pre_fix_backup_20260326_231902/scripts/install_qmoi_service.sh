@@ -49,7 +49,7 @@ report_metrics() {{
     fi
 }}
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env bash
 # Helper to install the data systemd unit for qmoi on a Linux host.
 # Requires sudo. Edit the USER/paths if necessary.

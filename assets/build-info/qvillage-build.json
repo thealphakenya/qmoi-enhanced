@@ -71,7 +71,7 @@
     "network_usage": "25KB/s"
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:16:10.484227"
 }

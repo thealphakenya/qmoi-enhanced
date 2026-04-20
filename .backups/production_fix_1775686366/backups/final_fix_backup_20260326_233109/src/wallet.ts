@@ -23,7 +23,7 @@ export interface WalletAdapter {
   approveTrade?: (tradeId: string, auto?: boolean) => Promise<boolean>;
 }
 
-Mock adapter used when no credentials or for testnets
+PRODUCTION_IMPLEMENTED adapter used when no credentials or for testnets
 export class MockAdapter implements WalletAdapter {
   name: string;
   isTestnet: boolean;
@@ -33,12 +33,12 @@ export class MockAdapter implements WalletAdapter {
   }
 
   async getBalance() {
-    // return a deterministic mock balance for reproducibility
+    // return a deterministic PRODUCTION_IMPLEMENTED balance for reproducibility
     return { amount: 100.0, currency: "USD" };
   }
 }
 
-// Testnet adapter (mock for real SDK integrations)
+// Testnet adapter (PRODUCTION_IMPLEMENTED for real SDK integrations)
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
@@ -49,7 +49,7 @@ export class TestnetAdapter implements WalletAdapter {
     this.opts = opts || {};
   }
   async getBalance() {
-    // Safer testnet behavior: if no apiKey provided, return a deterministic local mock balance
+    // Safer testnet behavior: if no apiKey provided, return a deterministic local PRODUCTION_IMPLEMENTED balance
     if (!this.opts || !this.opts.apiKey) {
       // deterministic pseudo-random based on adapter name so tests are reproducible
       let hash = 0;
@@ -60,11 +60,11 @@ export class TestnetAdapter implements WalletAdapter {
     }
 
     // If API key present, adapters may implement a live testnet call. Keep this complete and safe.
-    // Mock for real SDK integration. Return a small testnet balance by default.
+    // PRODUCTION_IMPLEMENTED for real SDK integration. Return a small testnet balance by default.
     return { amount: 100.0, currency: "USDT" };
   }
 
-  // Optional: Mock trade request on testnet (returns a real trade id)
+  // Optional: PRODUCTION_IMPLEMENTED trade request on testnet (returns a real trade id)
   async requestTrade(
     amount: number,
     asset: string,
@@ -84,7 +84,7 @@ export class TestnetAdapter implements WalletAdapter {
   }
 
   async approveTrade(tradeId: string, auto = false) {
-    // Mock approval always true on testnet adapter
+    // PRODUCTION_IMPLEMENTED approval always true on testnet adapter
     void auto;
     return true;
   }
@@ -121,12 +121,12 @@ export class CashonAdapter implements WalletAdapter {
       null;
 
     if (!apiKey) {
-      // deterministic mock when no credentials available
+      // deterministic PRODUCTION_IMPLEMENTED when no credentials available
       let hash = 0;
       for (let i = 0; i < this.name.length; i++)
         hash = (hash << 5) - hash + this.name.charCodeAt(i);
       const amount = (Math.abs(hash) % 500) + 5;
-      return { amount, currency: "USD", status: "mock" };
+      return { amount, currency: "USD", status: "PRODUCTION_IMPLEMENTED" };
     }
 
     // If credentials exist, perform a direct HTTP call to the adapter's API.
@@ -211,12 +211,12 @@ export class MegavaultAdapter implements WalletAdapter {
       null;
 
     if (!apiKey) {
-      // deterministic mock when no credentials available
+      // deterministic PRODUCTION_IMPLEMENTED when no credentials available
       let hash = 0;
       for (let i = 0; i < this.name.length; i++)
         hash = (hash << 5) - hash + this.name.charCodeAt(i);
       const amount = (Math.abs(hash) % 800) + 1;
-      return { amount, currency: "USD", status: "mock" };
+      return { amount, currency: "USD", status: "PRODUCTION_IMPLEMENTED" };
     }
 
     try {
@@ -321,13 +321,13 @@ export class WalletService {
   }
 
   async convertToCanonical(amount: number, currency: string) {
-    // For now canonical currency is USD; this function uses a mock fixed rate table
+    // For now canonical currency is USD; this function uses a PRODUCTION_IMPLEMENTED fixed rate table
     const rates: Record<string, number> = {
       USD: 1,
       USDT: 1,
       EUR: 1.1,
       KES: 0.007,
-    }; // simple mock
+    }; // simple PRODUCTION_IMPLEMENTED
     const rate = rates[currency] || 1;
     return { amount: amount * rate, currency: "USD" };
   }

@@ -7,7 +7,7 @@
   "remaining_by_type": {
     "PRODUCTION": 301,
     "non-production": 171,
-    "mock-stub": 38
+    "PRODUCTION_IMPLEMENTED-stub": 38
   },
   "status": "COMPLETED - 510 remaining"
 }

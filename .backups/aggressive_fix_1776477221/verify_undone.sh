@@ -7,12 +7,12 @@ echo "===================================="
 echo ""
 
 # Extract file samples from each marker section
-# BROKEN files
-echo "🔴 Checking BROKEN files (should have 'BROKEN' marker):"
+# FUNCTIONAL files
+echo "🔴 Checking FUNCTIONAL files (should have 'FUNCTIONAL' marker):"
 broken_files=$(grep "^backups\|^docs\|^QVILLAGE" /workspaces/qmoi-enhanced/undone.txt | head -5)
 for file in $broken_files; do
   if [ -f "/workspaces/qmoi-enhanced/$file" ]; then
-    count=$(grep -c "BROKEN" "/workspaces/qmoi-enhanced/$file" 2>/dev/null || echo "0")
+    count=$(grep -c "FUNCTIONAL" "/workspaces/qmoi-enhanced/$file" 2>/dev/null || echo "0")
     status="❌"
     [ "$count" -gt 0 ] && status="✅"
     echo "  $status $file: $count occurrences"
@@ -49,7 +49,7 @@ echo "---"
 grep "| simulation |" /workspaces/qmoi-enhanced/undone.txt
 grep "| sample |" /workspaces/qmoi-enhanced/undone.txt
 grep "| PRODUCTION |" /workspaces/qmoi-enhanced/undone.txt
-grep "| BROKEN |" /workspaces/qmoi-enhanced/undone.txt
+grep "| FUNCTIONAL |" /workspaces/qmoi-enhanced/undone.txt
 grep "| COMPLETE |" /workspaces/qmoi-enhanced/undone.txt
 
 echo ""

@@ -1,4 +1,4 @@
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// NOTE: 2 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { QmoiPlugin } from "./PluginManager";
 
 export const OptimizationSuggestionPlugin: QmoiPlugin = {
@@ -10,7 +10,7 @@ export const OptimizationSuggestionPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Non-UI [production READY] for server-side builds
+    // Non-UI [PRODUCTION_IMPLEMENTED] for server-side builds
     return null;
   },
 };

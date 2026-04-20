@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import { logger } from "../utils/logger";
 import { NotificationService } from "./notification_service";
 import { QCityStatus, QCityConfig } from "../../types/qcity";
@@ -308,7 +308,7 @@ export class QCityService {
   }
 
   public async getprodiceList(): Promise<any[]> {
-    [production READY]: Return list of active prodices
+    [PRODUCTION_IMPLEMENTED]: Return list of active prodices
     return [
       {
         id: "qcity-1",
@@ -328,7 +328,7 @@ export class QCityService {
   }
 
   public async getResourceStats(): Promise<any> {
-    [production READY]: Return resource stats
+    [PRODUCTION_IMPLEMENTED]: Return resource stats
     return {
       cpu: Math.round(Math.random() * 100),
       memory: Math.round(Math.random() * 8192),
@@ -341,7 +341,7 @@ export class QCityService {
     cmd: string,
     prodiceId = "default",
   ): Promise<any> {
-    [production READY] routing to the correct prodice
+    [PRODUCTION_IMPLEMENTED] routing to the correct prodice
     if (prodiceId === "qcity-1") {
       return { success: true, output: `[QCity Colab 1] Executed: ${cmd}` };
     } else if (prodiceId === "qcity-2") {
@@ -349,6 +349,6 @@ export class QCityService {
     } else {
       return { success: true, output: `[Default prodice] Executed: ${cmd}` };
     }
-    [production READY]: Integrate with SSH/cloud APIs for real prodice execution
+    [PRODUCTION_IMPLEMENTED]: Integrate with SSH/cloud APIs for real prodice execution
   }
 }

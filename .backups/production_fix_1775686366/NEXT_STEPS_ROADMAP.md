@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # Next Steps Roadmap — QMOI Enhanced Release Automation
 
 **Last Updated**: November 14, 2025  
@@ -22,7 +22,7 @@
 1. **Release Automation Workflows** (`.github/workflows/`)
    - ✅ `sync-releases-from-manifest.yml` — Daily auto-sync to final releases + on-demand full sync
    - ✅ `release-compliance-check.yml` — Weekly compliance monitoring with auto-issue creation
-   - ✅ `build-included-platforms.yml` — [production READY] for future platform builds
+   - ✅ `build-included-platforms.yml` — [PRODUCTION_IMPLEMENTED] for future platform builds
 
 2. **Release Scripts** (`scripts/`)
    - ✅ `sync_to_draft_release.py` — Safe final-release production with --publish flag
@@ -34,7 +34,7 @@
 
 3. **Release Assets**
    - ✅ `release_assets_manifest.json` — Canonical source of truth (16 assets, SHA256 checksums)
-   - ✅ 10 binaries synced to `downloads/` (real files, not [production READY]s)
+   - ✅ 10 binaries synced to `downloads/` (real files, not [PRODUCTION_IMPLEMENTED]s)
    - ✅ 6 PWA zips packaged and ready for release
    - ✅ GitHub release v1.2.3 updated with all 17 assets (corrupt exe replaced)
 
@@ -135,7 +135,7 @@ sha256sum /tmp/qmoi_ai.AppImage
 - If non-compliant: auto-creates issue with title "⚠️ Release Compliance Alert"
 - Report saved as artifact
 
-#### 2.2 [production READY] Non-Compliance (Testing)
+#### 2.2 [PRODUCTION_IMPLEMENTED] Non-Compliance (Testing)
 
 To test failure path without breaking real releases:
 
@@ -161,7 +161,7 @@ mv Qmoi_downloaded_apps/qcity_package.zip.bak Qmoi_downloaded_apps/qcity_package
 
 #### 3.1 Update GITHUB_RELEASES_RECENT.md
 
-Replace [production READY] with real release data:
+Replace [PRODUCTION_IMPLEMENTED] with real release data:
 
 ```bash
 # Fetch real recent releases and update the file
@@ -218,7 +218,7 @@ Go to: [GitHub Security → Dependabot](https://github.com/thestablekenya/qmoi-e
 
 ### Phase 5: included Platforms Build Pipeline
 
-**Objective**: Implement builds for currently-[production READY]bed platforms.
+**Objective**: Implement builds for currently-[PRODUCTION_IMPLEMENTED]bed platforms.
 
 #### 5.1 Raspberry Pi Image Build
 
@@ -227,7 +227,7 @@ Go to: [GitHub Security → Dependabot](https://github.com/thestablekenya/qmoi-e
 - [ ] Add to `release_assets_manifest.json`
 - [ ] Update workflow: `.github/workflows/build-included-platforms.yml`
 
-**Reference**: `build-included-platforms.yml` (currently a [production READY])
+**Reference**: `build-included-platforms.yml` (currently a [PRODUCTION_IMPLEMENTED])
 
 #### 5.2 Wear OS APK Build
 
@@ -324,7 +324,7 @@ Create sophisticated HTML/JS page that:
 | --------------------------------- | ------- | ---------------------------- | ------------------------ |
 | `sync-releases-from-manifest.yml` | ✅ Live | Daily (00:00 UTC) + tag push | Next tag push            |
 | `release-compliance-check.yml`    | ✅ Live | Weekly (Sun 00:00 UTC)       | Next Sunday              |
-| `build-included-platforms.yml`     | ⏳ [production READY] | Manual dispatch              | Ready for implementation |
+| `build-included-platforms.yml`     | ⏳ [PRODUCTION_IMPLEMENTED] | Manual dispatch              | Ready for implementation |
 
 ---
 

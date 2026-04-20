@@ -117,7 +117,7 @@ class LintWatcher {
         return;
       }
 
-      this.log(`File changed: ${filename} (${eventType})`, "debug");
+      this.log(`File changed: ${filename} (${eventType})`, "RELEASE");
       this.debouncedLint();
     });
 

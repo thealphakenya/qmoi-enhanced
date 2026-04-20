@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_monitoring_datadog
-Category: Development Tool
+Category: PRODUCTION Tool
 Specialization: Monitoring: Datadog
 Features: automation, integration, monitoring, error_detection, optimization, scaling, reliability
 Part of QMOI Extended Lion Ecosystem - Phase 13+
@@ -28,7 +28,7 @@ class OperationMode(Enum):
 class AgentConfig:
     """Configuration for lion_monitoring_datadog"""
     name: str = "lion_monitoring_datadog"
-    category: str = "Development Tool"
+    category: str = "PRODUCTION Tool"
     specialization: str = "Monitoring: Datadog"
     mode: OperationMode = OperationMode.STANDARD
     max_concurrency: int = 10

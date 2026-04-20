@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 # Safe QCity opener: uses sophisticated Browser if available in the environment,
 # otherwise fetches the index with curl and shows the first lines in the terminal.

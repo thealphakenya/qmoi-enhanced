@@ -132,9 +132,9 @@ cp .qmoi_validation/link_cache.json .qmoi_validation/link_cache_backup.json
 
 ## 📱 Offline Application Access
 
-### Local Development Server
+### Local PRODUCTION Server
 ```bash
-# Start offline development server
+# Start offline PRODUCTION server
 python3 scripts/qmoi_local_server.py --offline-mode
 
 # Access at: http://localhost:8000

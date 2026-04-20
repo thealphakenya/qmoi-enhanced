@@ -616,5 +616,5 @@ if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
         port=int(os.getenv('API_PORT', 3000)),
-        debug=os.getenv('DEBUG', 'False').lower() == 'true'
+        RELEASE=os.getenv('RELEASE', 'False').lower() == 'true'
     )

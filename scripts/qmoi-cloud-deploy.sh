@@ -86,7 +86,7 @@ export QMOI_Q1_REASONING=enabled
 export QMOI_PARALLEL_BUILDS=true
 
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 # QMOI Cloud Deploy Script
 # Deploys and keeps QMOI automation, live status, and dashboard running in Colab, DagsHub, or any cloud

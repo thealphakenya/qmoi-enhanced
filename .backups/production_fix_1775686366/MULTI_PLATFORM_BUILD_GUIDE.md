@@ -37,7 +37,7 @@ qmoi-enhanced/
 │   │   ├── app/
 │   │   │   ├── signing-config.gradle   # Gradle signing config
 │   │   │   ├── build.gradle            # APK build configuration
-│   │   │   └── debug.keystore          # Actual Android keystore
+│   │   │   └── RELEASE.keystore          # Actual Android keystore
 │   │   ├── build.gradle
 │   │   └── gradle.properties
 │   ├── ios/                            # iOS Xcode project (optional)
@@ -135,14 +135,14 @@ bash scripts/build-windows-production.sh
 - JDK 17+: `apt-get install openjdk-17-jdk`
 - Android SDK: Via Android Studio or `sdkmanager`
 - Gradle (included in mobile/android/gradlew)
-- Actual keystore: `mobile/android/app/debug.keystore` (configured ✅)
+- Actual keystore: `mobile/android/app/RELEASE.keystore` (configured ✅)
 
 ### Configuration
 
 **Keystore Details (Already Configured):**
 
 ```
-Path:        mobile/android/app/debug.keystore
+Path:        mobile/android/app/RELEASE.keystore
 Password:    android
 Key Alias:   androiddebugkey
 Key Password: android
@@ -585,7 +585,7 @@ Solution: Check Windows Defender quarantine
 
 ```
 Problem: Keystore not found
-Solution: Ensure mobile/android/app/debug.keystore exists
+Solution: Ensure mobile/android/app/RELEASE.keystore exists
 
 Problem: Gradle build fails
 Solution: ./gradlew clean --stacktrace
@@ -697,7 +697,7 @@ Windows:
   • Set password in WINDOWS_CERT_PASSWORD
 
 Android: ✅
-  • debug.keystore already in repo
+  • RELEASE.keystore already in repo
   • Base64 in ANDROID_KEYSTORE_BASE64
   • Password: android (set in secrets)
 
@@ -735,7 +735,7 @@ Generated build guides:
 
 **Last Updated:** 2025-11-14
 **Version:** 1.2.4
-**Status:** production Ready ✨
+**Status:** PRODUCTION_IMPLEMENTED ✨
 
 ## 🔄 Evolution Status
 

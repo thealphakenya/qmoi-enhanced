@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI API Endpoints Reference - Role-Based Access Control
 
 **Status:** ✅ Complete  
@@ -378,10 +378,10 @@ curl -X POST https://qmoi.ai/api/webauthn/register \
     "userId": "1",
     "username": "admin",
     "displayName": "Admin User",
-    "challenge": "[production READY]_challenge_data",
+    "challenge": "[PRODUCTION_IMPLEMENTED]_challenge_data",
     "credentialData": {
-      "id": "[production READY]_cred_id",
-      "publicKey": "[production READY]_public_key",
+      "id": "[PRODUCTION_IMPLEMENTED]_cred_id",
+      "publicKey": "[PRODUCTION_IMPLEMENTED]_public_key",
       "counter": 0
     }
   }'
@@ -435,11 +435,11 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{
     "userId": "1",
-    "challenge": "[production READY]_challenge",
+    "challenge": "[PRODUCTION_IMPLEMENTED]_challenge",
     "credentialId": "cred_1234567890",
-    "authenticatorData": "[production READY]_auth_data",
-    "clientDataJSON": "[production READY]_client_data",
-    "signature": "[production READY]_signature"
+    "authenticatorData": "[PRODUCTION_IMPLEMENTED]_auth_data",
+    "clientDataJSON": "[PRODUCTION_IMPLEMENTED]_client_data",
+    "signature": "[PRODUCTION_IMPLEMENTED]_signature"
   }'
 ```
 

@@ -287,7 +287,7 @@ class AutorateSystem:
         elif avg >= 80:
             return "QMOI is competitive but has room for improvement in specific areas"
         else:
-            return "QMOI needs development to match frontier models"
+            return "QMOI needs PRODUCTION to match frontier models"
     
     def get_ratings_history(self) -> List[Dict]:
         """Get rating history"""

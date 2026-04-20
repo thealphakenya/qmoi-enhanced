@@ -256,12 +256,12 @@ Access the revenue dashboard at `/qcity` (master only) to:
 - **Data Not Loading**: Check API endpoints and network connectivity
 - **Real-time Updates**: Ensure auto-refresh is enabled
 
-### Debug Mode
+### RELEASE Mode
 
-Enable debug logging:
+Enable RELEASE logging:
 
 ```bash
-export DEBUG=true
+export RELEASE=true
 npm run revenue:start
 ```
 

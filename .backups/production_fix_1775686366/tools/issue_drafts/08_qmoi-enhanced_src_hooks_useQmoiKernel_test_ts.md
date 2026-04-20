@@ -16,19 +16,19 @@
 
 ## Summary of matches
 
-- Line 4: [production READY]_prod global fetch
-- Line 5: const [production READY]_prodFetch = jest.fn();
-- Line 6: global.fetch = [production READY]_prodFetch;
-- Line 10: jest.clearAll[production READY]_prods();
-- Line 14: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({
-- Line 35: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({ ok: false });
-- Line 45: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({
-- Line 50: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({
-- Line 70: [production READY]_prodFetch.[production READY]_prodResolvedValueOnce({ ok: false });
+- Line 4: [PRODUCTION_IMPLEMENTED]_prod global fetch
+- Line 5: const [PRODUCTION_IMPLEMENTED]_prodFetch = jest.fn();
+- Line 6: global.fetch = [PRODUCTION_IMPLEMENTED]_prodFetch;
+- Line 10: jest.clearAll[PRODUCTION_IMPLEMENTED]_prods();
+- Line 14: [PRODUCTION_IMPLEMENTED]_prodFetch.[PRODUCTION_IMPLEMENTED]_prodResolvedValueOnce({
+- Line 35: [PRODUCTION_IMPLEMENTED]_prodFetch.[PRODUCTION_IMPLEMENTED]_prodResolvedValueOnce({ ok: false });
+- Line 45: [PRODUCTION_IMPLEMENTED]_prodFetch.[PRODUCTION_IMPLEMENTED]_prodResolvedValueOnce({
+- Line 50: [PRODUCTION_IMPLEMENTED]_prodFetch.[PRODUCTION_IMPLEMENTED]_prodResolvedValueOnce({
+- Line 70: [PRODUCTION_IMPLEMENTED]_prodFetch.[PRODUCTION_IMPLEMENTED]_prodResolvedValueOnce({ ok: false });
 
 ## required action
 
-Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

@@ -30,7 +30,7 @@ All signing credentials have been located and extracted from your workspace:
 
 ### Android Keystore Found
 
-- **Location**: `/workspaces/qmoi-enhanced/mobile/android/app/debug.keystore`
+- **Location**: `/workspaces/qmoi-enhanced/mobile/android/app/RELEASE.keystore`
 - **Credentials**:
   - Password: `android`
   - Key Alias: `androiddebugkey`
@@ -123,7 +123,7 @@ After successful build:
 ### Android APK
 
 - **Location**: `/qmoi-enhanced/mobile/android/app/build/outputs/apk/release/app-release.apk`
-- **Signature**: production signed with debug keystore credentials
+- **Signature**: production signed with RELEASE keystore credentials
 - **Status**: Will be uploaded to GitHub Release
 
 ### PWAs (7 apps)
@@ -157,7 +157,7 @@ After successful build:
 ### Local production (Optional)
 
 ```bash
-# Build locally with debug keystore
+# Build locally with RELEASE keystore
 bash scripts/build-android-production.sh
 ```
 
@@ -187,7 +187,7 @@ bash scripts/build-android-production.sh
 
 ### Build Fails with "Keystore not found"
 
-→ Verify keystore file exists at: `mobile/android/app/debug.keystore`
+→ Verify keystore file exists at: `mobile/android/app/RELEASE.keystore`
 
 ### Build Fails with "Invalid keystore password"
 

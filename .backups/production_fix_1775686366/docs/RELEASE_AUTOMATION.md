@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Release Automation — QMOI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -29,7 +29,7 @@ Design principles
 - Non-destructive by default: scripts write proposals and patches to `.qmoi_validation/` for human or CI review rather than pushing changes automatically.
 - Multi-source configuration: credentials and settings are discovered from (in order): environment variables, `.env` at repo root, `.qmoi_validation/.env`, and `.qmoi_validation/auto_env.json`.
 - Safe publishing: publishing requires a valid `GITHUB_TOKEN` and `GITHUB_REPO`. To avoid accidental billing or storage use, uploading large binary assets is gated and opt-in.
-- LION orchestration: validators and fixers emit LION task [production READY]s under `.qmoi_validation/lion_tasks/`. `scripts/lion_orchestrator.py` will process those tasks and create PR proposals and [production READY] items.
+- LION orchestration: validators and fixers emit LION task [PRODUCTION_IMPLEMENTED]s under `.qmoi_validation/lion_tasks/`. `scripts/lion_orchestrator.py` will process those tasks and create PR proposals and [PRODUCTION_IMPLEMENTED] items.
 
 Quick run
 

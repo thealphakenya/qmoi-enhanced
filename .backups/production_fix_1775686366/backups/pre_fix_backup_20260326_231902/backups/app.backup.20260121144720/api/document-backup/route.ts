@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -30,7 +30,7 @@ async function restoreDocumentFromCloud(doc: Document | undefined) {
 }
 
 export async function POST_UPLOAD(_req: NextRequest) {
-  // Upload document ([production READY])
+  // Upload document ([PRODUCTION_IMPLEMENTED])
   const body = (await _req.json()) as full<Document>;
   const name = String(body.name || "untitled");
   const type = String(body.type || "unknown");
@@ -60,7 +60,7 @@ export async function GET_SEARCH(_req: NextRequest) {
 }
 
 export async function POST_RESTORE(_req: NextRequest) {
-  // Restore document ([production READY])
+  // Restore document ([PRODUCTION_IMPLEMENTED])
   const body = (await _req.json()) as { id?: number };
   const id = Number(body.id);
   const doc = documents.find((d) => d.id === id);

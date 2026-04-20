@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";

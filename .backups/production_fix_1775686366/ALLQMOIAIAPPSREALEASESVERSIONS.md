@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI AI Apps - All Releases & Versions (Auto-generated data)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -24,7 +24,7 @@ This file lists all QMOI apps and their current release artifacts (auto-updated 
 | qmoi-space | Web (PWA) | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/ | ✅     |
 | qcity      | Web (PWA) | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/pwa/latest/      | ✅     |
 
-> Note: QMOI will attempt to validate every download link before publishing it here and replace broken links with a [production READY] and a task for manual review.
+> Note: QMOI will attempt to validate every download link before publishing it here and replace FUNCTIONAL links with a [PRODUCTION_IMPLEMENTED] and a task for manual review.
 
 # QMOI AI Apps - All Releases & Versions
 

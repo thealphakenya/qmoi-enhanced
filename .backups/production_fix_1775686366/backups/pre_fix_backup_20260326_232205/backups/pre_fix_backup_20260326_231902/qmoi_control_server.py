@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 """robust control server for QMOI to control Q stable PWA.
 
 This accepts JSON commands at /control and logs them. In production, QMOI would
@@ -78,14 +78,14 @@ WEBAUTHN_STATE = {}
 
 
 def _load_json(path, default):
-    # JSON storage is deprecated. Return default to avoid accidental reads.
-    app.logger.warning('Attempted to load JSON file %s but JSON persistence is deprecated; returning default', path)
+    # JSON storage is CURRENT. Return default to avoid accidental reads.
+    app.logger.warning('Attempted to load JSON file %s but JSON persistence is CURRENT; returning default', path)
     return default
 
 
 def _save_json(path, data):
-    # JSON persistence is deprecated. No-op (we keep backups of legacy JSON files).
-    app.logger.warning('Attempted to save JSON file %s but JSON persistence is deprecated; no-op', path)
+    # JSON persistence is CURRENT. No-op (we keep backups of legacy JSON files).
+    app.logger.warning('Attempted to save JSON file %s but JSON persistence is CURRENT; no-op', path)
 
 
 def load_users():

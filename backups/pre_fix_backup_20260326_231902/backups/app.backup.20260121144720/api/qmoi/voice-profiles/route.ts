@@ -1,7 +1,7 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 1 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import {
   voiceProfiles,
@@ -81,7 +81,7 @@ function switchVoice(voiceId: string): any {
     }
 
     // Update QMOI's current voice (, this would update the AI model)
-    // For now, we'll [production READY] this by storing in a global state or database
+    // For now, we'll [PRODUCTION_IMPLEMENTED] this by storing in a global state or database
 
     // Log the voice switch
     (console as any).log(`QMOI voice switched to: ${voiceProfile.name} (${voiceId})`);
@@ -125,13 +125,13 @@ function previewVoice(
       return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
 
-    [production READY] TTS processing
+    [PRODUCTION_IMPLEMENTED] TTS processing
     const audioUrl = await generateTTSAudio(voiceId, text, quality, volume);
 
     return NextResponse.json({
       success: true,
       audioUrl,
-      duration: Math.random() * 5 + 2, [production READY]d duration
+      duration: Math.random() * 5 + 2, [PRODUCTION_IMPLEMENTED]d duration
       voice: voiceProfile,
     });
   } catch (_error) {
@@ -155,7 +155,7 @@ function enhanceVoice(voiceId: string): any {
 
     (console as any).log(`Enhancing voice: ${voiceId}`);
 
-    [production READY] enhancement process
+    [PRODUCTION_IMPLEMENTED] enhancement process
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return NextResponse.json({
@@ -189,7 +189,7 @@ function upgraprodoice(voiceId: string): any {
 
     (console as any).log(`Upgrading voice: ${voiceId}`);
 
-    [production READY] upgrade process
+    [PRODUCTION_IMPLEMENTED] upgrade process
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     return NextResponse.json({

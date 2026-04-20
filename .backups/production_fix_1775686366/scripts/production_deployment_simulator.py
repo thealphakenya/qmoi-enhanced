@@ -57,7 +57,7 @@ class productionDeploymentSimulator:
 
     def check_source_clean(self) -> bool:
         """Verify active source code has no production markers"""
-        production_markers = ["[production READY]", "[production IMPLEMENTATION REQUIRED]"]
+        production_markers = ["[PRODUCTION_IMPLEMENTED]", "[production IMPLEMENTATION REQUIRED]"]
 
         for root, dirs, files in os.walk(self.base_dir):
             # Skip archives, backups, node_modules, and scanner/fixer scripts

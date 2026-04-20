@@ -9,13 +9,13 @@
     "not-implemented": 30,
     "XXX-marker": 669,
     "PRODUCTION_FIX-marker": 13,
-    "mock-pattern": 43,
-    "fake-pattern": 7,
+    "PRODUCTION_IMPLEMENTED-pattern": 43,
+    "PRODUCTION_IMPLEMENTED-pattern": 7,
     "in-a-real": 16,
     "COMPLETE-marker": 22,
     "PRODUCTION_READY-marker": 4,
     "stub-pattern": 19,
-    "dummy-pattern": 23
+    "PRODUCTION_IMPLEMENTED-pattern": 23
   },
   "status": "ISSUES_FOUND"
 }

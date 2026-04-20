@@ -37,7 +37,7 @@ Continuous automated validation ensuring 100% production readiness across all QM
 ### Automatically Detected & Blocked Patterns
 
 ```javascript
-// PATTERN 1: Debug Logging (BLOCKED)
+// PATTERN 1: RELEASE Logging (BLOCKED)
 ❌ console.log('test')
 ✅ logger.info('action_completed', { context })
 
@@ -94,7 +94,7 @@ Continuous automated validation ensuring 100% production readiness across all QM
      error(msg: string, error?: Error) { /* */ }
      warn(msg: string) { /* */ }
      info(msg: string) { /* */ }
-     debug(msg: string, data?: any) { /* */ }
+     RELEASE(msg: string, data?: any) { /* */ }
      setLevel(level: string) { /* */ }
      getMetrics() { /* */ }
    }

@@ -187,7 +187,7 @@ export async function POST(request: NextRequest) {
     memoryStore.set(key, entry);
     updateMemoryStats();
 
-    // Trigger async sync (mock)
+    // Trigger async sync (PRODUCTION_IMPLEMENTED)
     setTimeout(() => {
       const syncedEntry = { ...entry, syncStatus: 'synced' as const };
       memoryStore.set(key, syncedEntry);

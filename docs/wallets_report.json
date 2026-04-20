@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "root": "/workspaces/qmoi-enhanced",
   "found": 278,
@@ -102,7 +102,7 @@
     "docs/link_report.json",
     "docs/md-inventory.json",
     "docs/md_index.json",
-    "docs/[production READY]s_report.json",
+    "docs/[PRODUCTION_IMPLEMENTED]s_report.json",
     "docs/verification-report.json",
     "docs/wallets_report.json",
     "earnvault/ui/EnhancedTradingPanel.tsx",

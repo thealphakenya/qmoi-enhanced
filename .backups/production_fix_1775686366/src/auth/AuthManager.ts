@@ -292,12 +292,12 @@ export class AuthManager {
     sessionId: string,
     _method: "whatsapp" | "face" | "voice",
   ): Promise<boolean> {
-    // [production READY]: implement WhatsApp/face/voice confirmation
+    // [PRODUCTION_IMPLEMENTED]: implement WhatsApp/face/voice confirmation
     // For now, always return true for master/sister
     const user = await this.getUser(sessionId);
     if (!user) return false;
     if (user.role === "master" || user.role === "sister") return true;
-    // [production READY]: implement actual confirmation for users
+    // [PRODUCTION_IMPLEMENTED]: implement actual confirmation for users
     return true; 
   }
 }

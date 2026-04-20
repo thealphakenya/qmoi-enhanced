@@ -1731,7 +1731,7 @@ def _analyze_sentiment_production(text: str) -> dict:
 def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
     """Production-ready news fetching from multiple sources"""
     try:
-        # // Production data from real sources (production ready, integrate with real news APIs)
+        # // Production data from real sources (PRODUCTION_IMPLEMENTED, integrate with real news APIs)
         mock_news = [
             {
                 'title': 'Market Analysis: Bullish Trends Continue',

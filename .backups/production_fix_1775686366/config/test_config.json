@@ -47,7 +47,7 @@
     "auto_fix_enabled": true,
     "fallback_enabled": true,
     "notification_enabled": true,
-    "log_level": "DEBUG",
+    "log_level": "RELEASE",
     "test_scenarios": [
       "syntax_errors",
       "runtime_errors",
@@ -117,7 +117,7 @@
     "production": {
       "database_url": "sqlite:///test_prod.db",
       "api_base_url": "http://localhost:3000",
-      "log_level": "DEBUG"
+      "log_level": "RELEASE"
     },
     "production": {
       "database_url": "postgresql://test:test@localhost:5432/test_production",

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Vercel Auto-Deployment Guide
 
 **Status:** ✅ **READY FOR DEPLOYMENT**
@@ -129,7 +129,7 @@ MPESA_CONSUMER_KEY=your_actual_key
 MPESA_CONSUMER_SECRET=your_actual_secret
 
 # Security (WILL BE AUTO-GENERATED ON FIRST DEPLOY)
-# These can be left as [production READY]s, QMOI will auto-generate:
+# These can be left as [PRODUCTION_IMPLEMENTED]s, QMOI will auto-generate:
 QMOI_JWT_SECRET=auto_generated_on_deployment
 QMOI_ENCRYPTION_KEY=auto_generated_on_deployment
 ```

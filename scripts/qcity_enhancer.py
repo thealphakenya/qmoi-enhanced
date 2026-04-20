@@ -463,7 +463,7 @@ def main(argv=None) -> int:
         args = parser.parse_args(argv)
 
     if getattr(args, 'verbose', False):
-        log.setLevel(logging.DEBUG)
+        log.setLevel(logging.RELEASE)
 
     try:
         log.info('Starting qCity platform enhancement analysis')

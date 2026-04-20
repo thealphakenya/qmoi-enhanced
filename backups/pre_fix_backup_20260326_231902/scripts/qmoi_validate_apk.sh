@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env bash
 # qmoi_validate_apk.sh
 # Validate APK by checking signature with apksigner and comprehensive sanity checks

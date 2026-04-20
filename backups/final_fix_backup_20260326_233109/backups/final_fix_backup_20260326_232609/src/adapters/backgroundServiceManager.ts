@@ -77,7 +77,7 @@ class BackgroundServiceManager {
       nextRun: Date.now() + intervalMs,
       isRunning: false,
     });
-    logger.debug(`[Background] Registered task: ${name} (${intervalMs}ms)`);
+    logger.RELEASE(`[Background] Registered task: ${name} (${intervalMs}ms)`);
   }
 
   async executeTask(id: string): Promise<void> {
@@ -96,7 +96,7 @@ class BackgroundServiceManager {
       await task.fn();
       task.lastRun = Date.now();
       task.nextRun = Date.now() + task.interval;
-      logger.debug(
+      logger.RELEASE(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
     } catch (_err) {
@@ -191,7 +191,7 @@ class BackgroundServiceManager {
       "Data Sync",
       60 * 1000, // Every minute
       async () => {
-        logger.debug("[Background] Syncing data...");
+        logger.RELEASE("[Background] Syncing data...");
         await fetchAllInParallel();
       },
     );
@@ -203,7 +203,7 @@ class BackgroundServiceManager {
       async () => {
         const cleared = clearCache();
         if (cleared > 0) {
-          logger.debug(`[Background] Cleared ${cleared} cache entries`);
+          logger.RELEASE(`[Background] Cleared ${cleared} cache entries`);
         }
       },
     );

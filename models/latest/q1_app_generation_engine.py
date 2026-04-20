@@ -64,7 +64,7 @@ def health():
     return jsonify({"status": "healthy", "timestamp": datetime.utcnow().isoformat()})
 
 if __name__ == '__main__':
-    app.run(DEBUG = false)
+    app.run(RELEASE = false)
 """,
             "react_component": """
 import React, { useState, useEffect } from 'react';
@@ -479,8 +479,8 @@ class QMOIAppGenerationEngine:
                 "image_name": f"{spec.name.lower()}:latest"
             },
             "environment": {
-                "production": {"debug": True},
-                "production": {"debug": False}
+                "production": {"RELEASE": True},
+                "production": {"RELEASE": False}
             }
         }
         

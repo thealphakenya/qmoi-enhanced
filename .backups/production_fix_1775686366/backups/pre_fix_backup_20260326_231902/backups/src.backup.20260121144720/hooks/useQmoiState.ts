@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import { useState, useEffect, useCallback } from "react";
 
 interface QmoiState {
@@ -71,7 +71,7 @@ export const useQmoiState = (): UseQmoiStateReturn => {
 
   const [isMaster, setIsMaster] = useState(false);
 
-  [production READY] real-time updates
+  [PRODUCTION_IMPLEMENTED] real-time updates
   useEffect(() => {
     const updateInterval = setInterval(() => {
       setState((prev) => ({

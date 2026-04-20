@@ -7,10 +7,10 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # Release Remediation Guide
 
-This guide documents safe, production-ready steps to fix releases that contain [production READY] or corrupt assets.
+This guide documents safe, production-ready steps to fix releases that contain [PRODUCTION_IMPLEMENTED] or corrupt assets.
 
 Steps for maintainers
 1. Identify flagged releases: `tools/releases_audit.md` lists releases flagged by automated heuristics.

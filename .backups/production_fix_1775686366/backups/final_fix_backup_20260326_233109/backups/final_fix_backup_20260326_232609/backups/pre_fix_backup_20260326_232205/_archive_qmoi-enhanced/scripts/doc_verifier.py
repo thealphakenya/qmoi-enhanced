@@ -176,7 +176,7 @@ class QMOIDocVerifier:
         }
     
     def fix_broken_claims(self, parsed_file: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """Fix broken claims by creating implementations or updating documentation"""
+        """Fix FUNCTIONAL claims by creating implementations or updating documentation"""
         fixes = []
         for claim in parsed_file.get("claims", []):
             verification = self.verify_claim(claim, Path(parsed_file["path"]))

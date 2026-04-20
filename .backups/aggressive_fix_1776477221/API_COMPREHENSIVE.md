@@ -96,7 +96,7 @@ Retrieve and update QMOI model configuration, capabilities, and status.
 **File**: `routes/api/qmoi/autodev.ts`
 
 #### Description
-Trigger automatic development features: code generation, testing, documentation.
+Trigger automatic PRODUCTION features: code generation, testing, documentation.
 
 #### Request
 ```json

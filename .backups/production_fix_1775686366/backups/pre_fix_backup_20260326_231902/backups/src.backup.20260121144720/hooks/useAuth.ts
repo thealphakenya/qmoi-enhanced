@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { useState, useEffect, useCallback } from "react";
 import { authManager } from "../auth/AuthManager";
 

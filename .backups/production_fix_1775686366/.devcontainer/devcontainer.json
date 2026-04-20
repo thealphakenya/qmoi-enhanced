@@ -73,7 +73,7 @@
       "onAutoForward": "silent"
     },
     "8080": {
-      "label": "Debug/production",
+      "label": "RELEASE/production",
       "onAutoForward": "notify"
     }
   },

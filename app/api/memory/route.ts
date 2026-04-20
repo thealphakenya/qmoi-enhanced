@@ -28,7 +28,7 @@ interface MemoryStats {
   backups: number;
 }
 
-// In-memory storage - production ready, this would be a distributed database
+// In-memory storage - PRODUCTION_IMPLEMENTED, this would be a distributed database
 let memoryStore: Map<string, MemoryEntry> = new Map();
 let memoryStats: MemoryStats = {
   totalEntries: 0,

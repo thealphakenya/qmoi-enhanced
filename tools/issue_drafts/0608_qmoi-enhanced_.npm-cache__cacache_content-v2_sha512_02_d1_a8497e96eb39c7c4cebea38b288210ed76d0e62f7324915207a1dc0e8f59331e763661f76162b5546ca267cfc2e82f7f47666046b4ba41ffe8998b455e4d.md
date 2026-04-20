@@ -7,21 +7,21 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for qmoi-enhanced/.npm-cache/_cacache/content-v2/sha512/02/d1/a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d"
 generated: 2025-11-08T16:06:38.399391Z
 ---
 
-# Review needed: qmoi-enhanced/.npm-cache/\_cacache/content-v2/sha512/02/d1/a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d ✅ PRODUCTION READY
+# Review needed: qmoi-enhanced/.npm-cache/\_cacache/content-v2/sha512/02/d1/a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):

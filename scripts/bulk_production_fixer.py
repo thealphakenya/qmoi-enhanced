@@ -68,8 +68,8 @@ REPLACEMENT_PATTERNS = {
     },
     'console_debug': {
         'pattern': r'console\.log\(',
-        'replacement': 'logger.debug(',
-        'context': 'debug console logging',
+        'replacement': 'logger.RELEASE(',
+        'context': 'RELEASE console logging',
         'priority': 'MEDIUM',
         'count': 0,
     },

@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -35,7 +35,7 @@ export async function POST(_request: NextRequest) {
       userId,
       username,
       credentialId: credential.id || crypto.randomUUID(),
-      publicKey: credential.publicKey || "[production READY]-public-key",
+      publicKey: credential.publicKey || "[PRODUCTION_IMPLEMENTED]-public-key",
       counter: credential.counter || 0,
       transports: credential.transports || ["platform"],
       type: "webauthn",

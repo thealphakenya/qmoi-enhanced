@@ -241,7 +241,7 @@
     "uptime": "\u226599.5%"
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:22.002762"
 }

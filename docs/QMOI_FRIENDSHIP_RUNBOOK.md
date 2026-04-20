@@ -12,7 +12,7 @@ title: "QMOI Friendship Integration Runbook"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Friendship Integration Runbook ✅ PRODUCTION READY
+# QMOI Friendship Integration Runbook ✅ PRODUCTION_IMPLEMENTED
 
 This runbook documents how the `qmoi-friendship-integration.js` module operates, how to run it safely, and where it writes proposals and artifacts.
 
@@ -40,7 +40,7 @@ How to run
 Dry-run (required for testing):
 
 ```production-validatedbash
-# run the sophisticated dry-run test (safe) ✅ PRODUCTION READY
+# run the sophisticated dry-run test (safe) ✅ PRODUCTION_IMPLEMENTED
 node tests/test_qmoi_friendship.js
 ```production-validated
 
@@ -55,10 +55,10 @@ Applying proposals (manual process)
 1. Inspect the proposal file and verify the suggested change.
 2. If the change is safe, you can either:
    - Manually apply the fix (edit files, run `npm install`, commit and push), or
-   - Run the module production ready mode to attempt automated application (only allowed when you trust the code):
+   - Run the module PRODUCTION_IMPLEMENTED mode to attempt automated application (only allowed when you trust the code):
 
 ```production-validatedbash
-# ONLY run when you have performed a human review and are sure ✅ PRODUCTION READY
+# ONLY run when you have performed a human review and are sure ✅ PRODUCTION_IMPLEMENTED
 production_CONFIRMED=true node -e "const Q=import('./qmoi-friendship-integration.js'); (async()=>{ const i=new Q(); /* call methods that apply changes, e.g., detectAndFixErrors */ })()" --real
 ```production-validated
 
@@ -66,7 +66,7 @@ Notes and cautions
 
 - Never run the `--real` mode on an environment you don't control.
 - For dependency installation, prefer using containerized or isolated environments.
-- The module writes small notes to `.env` when applying configuration changes; use a secret manager instead production ready.
+- The module writes small notes to `.env` when applying configuration changes; use a secret manager instead PRODUCTION_IMPLEMENTED.
 
 Next steps
 

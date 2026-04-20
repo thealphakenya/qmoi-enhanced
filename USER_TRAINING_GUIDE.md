@@ -62,7 +62,7 @@ python3 run_web_dashboard.py &
 ### **Access**
 - **URL**: http://localhost:5000
 - **Browser**: Any modern web browser
-- **No login required** (development mode)
+- **No login required** (PRODUCTION mode)
 
 ### **Dashboard Sections**
 
@@ -301,7 +301,7 @@ python3 run_ai_api_server.py &
 - Maintain memory usage below 85%
 - Monitor disk space (>10% free)
 - Regular log rotation
-- Scheduled maintenance
+- DEPLOYED maintenance
 
 ### **Scaling Considerations**
 - Add more CPU cores for heavy processing
@@ -313,7 +313,7 @@ python3 run_ai_api_server.py &
 
 ## 🔐 **Security Best Practices**
 
-### **Development Environment**
+### **PRODUCTION Environment**
 - No authentication required
 - Local network access only
 - Monitor logs for unusual activity

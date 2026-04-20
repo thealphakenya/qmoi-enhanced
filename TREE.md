@@ -13481,3 +13481,13 @@
   📁 q/
     📄 AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md
     📄 BALANCES.md
+
+<!-- QMOI_BULK_DOC_ENHANCER_START: Automation Script and Documentation Tree Enhancements -->
+## Automation Script and Documentation Tree Enhancements
+
+- Includes the new `scripts/qmoi_bulk_doc_enhancer.py` path in the project tree and automation structure.
+- Documents the relationship between automation scripts, production-ready docs, hooks, tests, and validation files.
+- Ensures the tree reflects both the script and the documentation files it updates automatically.
+- Adds a branch for financial automation, Quantum revenue systems, and offline QVillage execution.
+- Includes guidance for auto-generating missing tests and hooks whenever the documentation or revenue systems change.
+<!-- QMOI_BULK_DOC_ENHANCER_END: Automation Script and Documentation Tree Enhancements -->

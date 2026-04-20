@@ -564,5 +564,5 @@ if __name__ == '__main__':
     logger.info("\n⚠️  IMPORTANT: This is a production server for testing only!")
     logger.info("   production actions are NOT performed.\n")
 
-    app.run(host='0.0.0.0', port=5000, DEBUG = false)
+    app.run(host='0.0.0.0', port=5000, RELEASE = false)
 

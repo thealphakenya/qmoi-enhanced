@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # Quick Start: QCity & QMOI AI
 
 ## 🚀 Open QCity Dashboard (3 options)
@@ -67,19 +67,19 @@ All key QMOI & QCity components are present:
 
 ### High Priority (production Code Replaced):
 
-- **QmoiMediaManager** — [production READY] data → [production READY]_prod [production: review and implement] [production READY] + console.warn
-- **PriceproductVerifier** — [production READY]d verification → [production READY]_prod [production: review and implement] [production READY]
-- **GlobalMail** — production send → [production READY]_prod [production: review and implement] [production READY] (mail not actually sent)
-- **GlobalFileTransfer** — production transfer → [production READY]_prod [production: review and implement] [production READY] (transfer not performed)
-- **EmergencyPanel** — production handlers → [production READY]_prod [production: review and implement] [production READY]s (SOS/lockdown/production completee not active)
-- **FloatingPreviewWindow** — production YouTube download → [production READY]_prod [production: review and implement] [production READY]
+- **QmoiMediaManager** — [PRODUCTION_IMPLEMENTED] data → [PRODUCTION_IMPLEMENTED]_prod [production: review and implement] [PRODUCTION_IMPLEMENTED] + console.warn
+- **PriceproductVerifier** — [PRODUCTION_IMPLEMENTED]d verification → [PRODUCTION_IMPLEMENTED]_prod [production: review and implement] [PRODUCTION_IMPLEMENTED]
+- **GlobalMail** — production send → [PRODUCTION_IMPLEMENTED]_prod [production: review and implement] [PRODUCTION_IMPLEMENTED] (mail not actually sent)
+- **GlobalFileTransfer** — production transfer → [PRODUCTION_IMPLEMENTED]_prod [production: review and implement] [PRODUCTION_IMPLEMENTED] (transfer not performed)
+- **EmergencyPanel** — production handlers → [PRODUCTION_IMPLEMENTED]_prod [production: review and implement] [PRODUCTION_IMPLEMENTED]s (SOS/lockdown/production completee not active)
+- **FloatingPreviewWindow** — production YouTube download → [PRODUCTION_IMPLEMENTED]_prod [production: review and implement] [PRODUCTION_IMPLEMENTED]
 
-All show clear "[production READY]_prod [production: review and implement]" [production READY]s instead of misleading production data.
+All show clear "[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]" [PRODUCTION_IMPLEMENTED]s instead of misleading production data.
 
 ## 📚 Documentation
 
 - **EXECUTION_SUMMARY.md** — Full project report
-- **[production READY]S_LIST.md** — Remediation guide for all 27 flagged components
+- **[PRODUCTION_IMPLEMENTED]S_LIST.md** — Remediation guide for all 27 flagged components
 - **production_REPORT.txt** — All 16,987 production markers (full grep results)
 - **docs/README.md** — Updated with open-in-browser commands
 
@@ -94,12 +94,12 @@ All show clear "[production READY]_prod [production: review and implement]" [pro
 - All data updates every 10-30 seconds in real-time
 - Master Mode can be toggled for advanced features
 - Server runs on port 8080 (https://qvillage.com)
-- UI is fully functional with [production READY]_prod [production: review and implement] [production READY]s (ready for integration testing)
+- UI is fully functional with [PRODUCTION_IMPLEMENTED]_prod [production: review and implement] [PRODUCTION_IMPLEMENTED]s (ready for integration testing)
 
 ## ⚠️ Important
 
 - Emergency Panel is in production MODE — Real emergency services are NOT integrated
-- Mail/File Transfer/Media services show [production READY]_prod [production: review and implement] [production READY]s
+- Mail/File Transfer/Media services show [PRODUCTION_IMPLEMENTED]_prod [production: review and implement] [PRODUCTION_IMPLEMENTED]s
 - Real API integrations required for production use
 - See EXECUTION_SUMMARY.md for detailed next steps
 

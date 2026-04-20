@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // Background service manager for parallel operations and health monitoring
 // Runs independently of UI, manages data sync, periodic health checks, and service recovery
 
@@ -77,7 +77,7 @@ class BackgroundServiceManager {
       nextRun: Date.now() + intervalMs,
       isRunning: false,
     });
-    logger.debug(`[Background] Registered task: ${name} (${intervalMs}ms)`);
+    logger.RELEASE(`[Background] Registered task: ${name} (${intervalMs}ms)`);
   }
 
   async executeTask(id: string): Promise<void> {
@@ -96,7 +96,7 @@ class BackgroundServiceManager {
       await task.fn();
       task.lastRun = Date.now();
       task.nextRun = Date.now() + task.interval;
-      logger.debug(
+      logger.RELEASE(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
     } catch (_err) {
@@ -191,7 +191,7 @@ class BackgroundServiceManager {
       "Data Sync",
       60 * 1000, // Every minute
       async () => {
-        logger.debug("[Background] Syncing data...");
+        logger.RELEASE("[Background] Syncing data...");
         await fetchAllInParallel();
       },
     );
@@ -203,7 +203,7 @@ class BackgroundServiceManager {
       async () => {
         const cleared = clearCache();
         if (cleared > 0) {
-          logger.debug(`[Background] Cleared ${cleared} cache entries`);
+          logger.RELEASE(`[Background] Cleared ${cleared} cache entries`);
         }
       },
     );

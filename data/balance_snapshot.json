@@ -147,7 +147,7 @@
   "liquidity_ratio": 0.8908055005158575,
   "all_real": true,
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:28.630424"
 }

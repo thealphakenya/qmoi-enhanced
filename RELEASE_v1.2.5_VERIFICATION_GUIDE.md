@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI v1.2.5 Release Verification Guide ✅ PRODUCTION READY
+# QMOI v1.2.5 Release Verification Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -37,19 +37,19 @@ This guide describes how to verify that all QMOI v1.2.5 release artifacts are pr
 **Command**:
 
 ```production-validatedbash
-# Download SHA256SUMS.txt from release ✅ PRODUCTION READY
+# Download SHA256SUMS.txt from release ✅ PRODUCTION_IMPLEMENTED
 curl -L https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt -o /cache/SHA256SUMS.txt
 
-# Verify all artifacts ✅ PRODUCTION READY
+# Verify all artifacts ✅ PRODUCTION_IMPLEMENTED
 cd v1.2.5_release  # or wherever you downloaded the release
 sha256sum -c /cache/SHA256SUMS.txt
 
-# Expected output: ✅ PRODUCTION READY
-# app-release.apk: OK ✅ PRODUCTION READY
-# qmoi-release.exe: OK ✅ PRODUCTION READY
-# qmoi-release.ipa: OK ✅ PRODUCTION READY
-# admin.zip: OK ✅ PRODUCTION READY
-# ... (all files should show OK) ✅ PRODUCTION READY
+# Expected output: ✅ PRODUCTION_IMPLEMENTED
+# app-release.apk: OK ✅ PRODUCTION_IMPLEMENTED
+# qmoi-release.exe: OK ✅ PRODUCTION_IMPLEMENTED
+# qmoi-release.ipa: OK ✅ PRODUCTION_IMPLEMENTED
+# admin.zip: OK ✅ PRODUCTION_IMPLEMENTED
+# ... (all files should show OK) ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 **Success Criteria**: All files show `OK`
@@ -72,16 +72,16 @@ sha256sum -c /cache/SHA256SUMS.txt
 **Full Verification (Android SDK required)**:
 
 ```production-validatedbash
-# Install Android build-tools ✅ PRODUCTION READY
+# Install Android build-tools ✅ PRODUCTION_IMPLEMENTED
 sudo apt-get install -y android-sdk-build-tools
 
-# Verify signature ✅ PRODUCTION READY
+# Verify signature ✅ PRODUCTION_IMPLEMENTED
 apksigner verify --verbose v1.2.5_release/app-release.apk
 
-# Extract manifest and check features ✅ PRODUCTION READY
+# Extract manifest and check features ✅ PRODUCTION_IMPLEMENTED
 aapt dump badging v1.2.5_release/app-release.apk
 
-# Or use apktool to decode the entire APK ✅ PRODUCTION READY
+# Or use apktool to decode the entire APK ✅ PRODUCTION_IMPLEMENTED
 apktool d v1.2.5_release/app-release.apk -o /cache/qmoi_decoded
 cat /cache/qmoi_decoded/AndroidManifest.xml  # (will be in binary format; view with Android tools)
 ```production-validated
@@ -89,16 +89,16 @@ cat /cache/qmoi_decoded/AndroidManifest.xml  # (will be in binary format; view w
 **prodice Installation & Testing**:
 
 ```production-validatedbash
-# Connect Android prodice via USB with ADB enabled ✅ PRODUCTION READY
+# Connect Android prodice via USB with ADB enabled ✅ PRODUCTION_IMPLEMENTED
 adb install -r v1.2.5_release/app-release.apk
 
-# Check installation ✅ PRODUCTION READY
+# Check installation ✅ PRODUCTION_IMPLEMENTED
 adb shell pm list packages | grep qmoi
 
-# View logs ✅ PRODUCTION READY
+# View logs ✅ PRODUCTION_IMPLEMENTED
 adb logcat | grep -i qmoi
 
-# Uninstall (if needed) ✅ PRODUCTION READY
+# Uninstall (if needed) ✅ PRODUCTION_IMPLEMENTED
 adb uninstall com.qmoi.ai  # (replace with actual package name)
 ```production-validated
 
@@ -139,24 +139,24 @@ adb uninstall com.qmoi.ai  # (replace with actual package name)
 **Full Verification (Windows)**:
 
 ```production-validatedpowershell
-# Check digital signature ✅ PRODUCTION READY
+# Check digital signature ✅ PRODUCTION_IMPLEMENTED
 Get-AuthenticodeSignature -FilePath "v1.2.5_release/qmoi-release.exe"
 
-# Check file properties ✅ PRODUCTION READY
+# Check file properties ✅ PRODUCTION_IMPLEMENTED
 (Get-Item "v1.2.5_release/qmoi-release.exe").VersionInfo
 ```production-validated
 
 **Installation & Testing (Windows)**:
 
 ```production-validatedpowershell
-# Double-click the EXE to run installer, or: ✅ PRODUCTION READY
+# Double-click the EXE to run installer, or: ✅ PRODUCTION_IMPLEMENTED
 ./qmoi-release.exe
 
-# Check installation directory (typically) ✅ PRODUCTION READY
+# Check installation directory (typically) ✅ PRODUCTION_IMPLEMENTED
 ls "C:\Program Files\QMOI" -ErrorAction SilentlyContinue
 ls "C:\Program Files (x86)\QMOI" -ErrorAction SilentlyContinue
 
-# Check event logs for install errors ✅ PRODUCTION READY
+# Check event logs for install errors ✅ PRODUCTION_IMPLEMENTED
 Get-EventLog -LogName Application -Source "QMOI*" -Newest 10
 ```production-validated
 
@@ -188,18 +188,18 @@ Get-EventLog -LogName Application -Source "QMOI*" -Newest 10
 **Full Verification (macOS)**:
 
 ```production-validatedbash
-# Extract IPA ✅ PRODUCTION READY
+# Extract IPA ✅ PRODUCTION_IMPLEMENTED
 unzip -q v1.2.5_release/qmoi-release.ipa -d /cache/qmoi_ipa
 
-# Verify code signature ✅ PRODUCTION READY
+# Verify code signature ✅ PRODUCTION_IMPLEMENTED
 APP_BUNDLE=$(find /cache/qmoi_ipa -name "*.app" | head -1)
 codesign -v "$APP_BUNDLE"
 
-# Check entitlements ✅ PRODUCTION READY
+# Check entitlements ✅ PRODUCTION_IMPLEMENTED
 codesign -d --entitlements /cache/entitlements.xml "$APP_BUNDLE"
 cat /cache/entitlements.xml
 
-# Check provisioning profile ✅ PRODUCTION READY
+# Check provisioning profile ✅ PRODUCTION_IMPLEMENTED
 PROV=$(find /cache/qmoi_ipa -name "embedded.mobileprovision")
 openssl asn1parse -inform DER -in "$PROV" | head -20
 ```production-validated
@@ -207,13 +207,13 @@ openssl asn1parse -inform DER -in "$PROV" | head -20
 **prodice Installation & Testing (macOS with Xcode)**:
 
 ```production-validatedbash
-# On simulator ✅ PRODUCTION READY
+# On simulator ✅ PRODUCTION_IMPLEMENTED
 xcrun simctl install booted v1.2.5_release/qmoi-release.ipa
 
-# Or on connected prodice via Xcode ✅ PRODUCTION READY
+# Or on connected prodice via Xcode ✅ PRODUCTION_IMPLEMENTED
 open -a Xcode v1.2.5_release/qmoi-release.ipa
 
-# Via production tools ✅ PRODUCTION READY
+# Via production tools ✅ PRODUCTION_IMPLEMENTED
 xcrun prodicectl app install --prodice <prodice-id> v1.2.5_release/qmoi-release.ipa
 ```production-validated
 
@@ -235,7 +235,7 @@ xcrun prodicectl app install --prodice <prodice-id> v1.2.5_release/qmoi-release.
 **Command**:
 
 ```production-validatedbash
-# Extract and inspect each PWA ✅ PRODUCTION READY
+# Extract and inspect each PWA ✅ PRODUCTION_IMPLEMENTED
 for pwa in admin.zip deals.zip q-latest.zip qmoi.zip qmoi-ai.zip qmoi-space.zip; do
   echo "Verifying $pwa"
   unzip -l "v1.2.5_release/$pwa" | head -20
@@ -299,12 +299,12 @@ All verification scripts are located in `scripts/` directory:
 **Usage**:
 
 ```production-validatedbash
-# Individual verification ✅ PRODUCTION READY
+# Individual verification ✅ PRODUCTION_IMPLEMENTED
 ./scripts/verify_apk.sh
 ./scripts/verify_exe.sh
 ./scripts/verify_ipa.sh
 
-# Or run all ✅ PRODUCTION READY
+# Or run all ✅ PRODUCTION_IMPLEMENTED
 ./scripts/verify_artifacts.sh
 ```production-validated
 

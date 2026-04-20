@@ -18,7 +18,7 @@ Verification summary:
 
 - Manifest assets: 16
 - Verified OK: 9
-- Verified Broken: 1
+- Verified FUNCTIONAL: 1
 
 See `reports/final_release_verification.json` for details.
 

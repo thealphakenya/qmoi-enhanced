@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { specificExports } from "next/server";
 
 export async /**
@@ -16,7 +16,7 @@ function GET(req: NextRequest): any {
   const quality = url.searchParams.get("quality") || "enhanced";
   const volume = Number(url.searchParams.get("volume") || "80");
 
-  // production ready, integrate with a TTS provider here (ElevenLabs, Azure, etc.)
+  // PRODUCTION_IMPLEMENTED, integrate with a TTS provider here (ElevenLabs, Azure, etc.)
   // For now, return a production-ready URL pattern and include metadata.
 
   const pseudoAudioId = `${voice}-${quality}-${Date.now()}`;

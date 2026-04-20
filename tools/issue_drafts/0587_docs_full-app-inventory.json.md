@@ -7,21 +7,21 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for docs/full-app-inventory.json"
 generated: 2025-11-08T16:06:38.374918Z
 ---
 
-# Review needed: docs/full-app-inventory.json ✅ PRODUCTION READY
+# Review needed: docs/full-app-inventory.json ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -40,16 +40,16 @@ Excerpt (first 2KB):
       "qfilemanager.apk",
       "qmoi ai.exe",
       "qmoi_ai.exe",
-      "qmoi_ai_[production READY].apk",
-      "qmoi_[production READY].exe"
+      "qmoi_ai_[PRODUCTION_IMPLEMENTED].apk",
+      "qmoi_[PRODUCTION_IMPLEMENTED].exe"
     ],
     "windows_latest": "/downloads/windows/latest/qmoi_ai.exe"
   },
-  "[production READY]s_detected": [
-    "/downloads/qmoi_ai_[production READY].apk",
-    "/downloads/qmoi_[production READY].exe"
+  "[PRODUCTION_IMPLEMENTED]s_detected": [
+    "/downloads/qmoi_ai_[PRODUCTION_IMPLEMENTED].apk",
+    "/downloads/qmoi_[PRODUCTION_IMPLEMENTED].exe"
   ],
-  "notes": "Inventory generated automatically. Next: replace [production READY] artifacts, import full front-ends or point to authoritative GitHub releases, run build scripts for mobile/desktop where available."
+  "notes": "Inventory generated automatically. Next: replace [PRODUCTION_IMPLEMENTED] artifacts, import full front-ends or point to authoritative GitHub releases, run build scripts for mobile/desktop where available."
 }
 
 ```production-validated

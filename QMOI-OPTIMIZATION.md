@@ -13,7 +13,7 @@ title: "QMOI Optimization Guide"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Optimization Guide ✅ PRODUCTION READY
+# QMOI Optimization Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # 🚀 QMOI Deployment Status - Release v1.2.3
 
 **Date**: November 12, 2025  
@@ -85,7 +85,7 @@
 
 **Total**: 6 Apps × 12+ Platforms = **72+ Total Builds**
 
-**⚠️ Note on qmoi_ai.exe:** There was a [production READY] in `/downloads/` but the real Windows executable (5.0 MB) is available in `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`. See the corrected inventory document for build and installation instructions.
+**⚠️ Note on qmoi_ai.exe:** There was a [PRODUCTION_IMPLEMENTED] in `/downloads/` but the real Windows executable (5.0 MB) is available in `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`. See the corrected inventory document for build and installation instructions.
 
 ---
 

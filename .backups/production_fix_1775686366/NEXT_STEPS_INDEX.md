@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # NEXT STEPS — QUICK INDEX
 
 **📅 Date**: November 14, 2025  
@@ -98,7 +98,7 @@
    └─ Auto-creates issue if non-compliant
 
 🏗️  build-included-platforms.yml
-   └─ [production READY] ready for implementation (Week 2)
+   └─ [PRODUCTION_IMPLEMENTED] ready for implementation (Week 2)
 ```
 
 ### **Release Assets** (16 total)
@@ -331,7 +331,7 @@ git push origin test-v1.2.5
 ---
 
 **System Status**: 🟢 OPERATIONAL  
-**production Ready**: After Phase 1 validation (this week)  
+**PRODUCTION_IMPLEMENTED**: After Phase 1 validation (this week)  
 **Last Updated**: November 14, 2025  
 **Questions?** Check the docs linked above or GitHub Actions logs
 

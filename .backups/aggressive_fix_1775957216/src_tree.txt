@@ -36,7 +36,7 @@ src/
 │           ├── self-work
 │           │   ├── code-review
 │           │   │   └── route.ts
-│           │   ├── debug
+│           │   ├── RELEASE
 │           │   │   └── route.ts
 │           │   └── run-tests
 │           │       └── route.ts

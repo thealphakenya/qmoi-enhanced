@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 declare module "msw" {
   export const rest: unknown;
   export const setupWorker: unknown;

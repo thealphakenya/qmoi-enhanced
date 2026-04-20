@@ -31,8 +31,8 @@ export class NetworkManager extends EventEmitter {
   }
 
   async scanNetworks(): Promise<Network[]> {
-    [production READY]: Integrate with platform-specific APIs to scan for networks
-    [production READY] scan
+    [PRODUCTION_IMPLEMENTED]: Integrate with platform-specific APIs to scan for networks
+    [PRODUCTION_IMPLEMENTED] scan
     this.networks = [
       {
         id: "wifi-1",
@@ -88,8 +88,8 @@ export class NetworkManager extends EventEmitter {
   }
 
   async connectToNetwork(networkId: string): Promise<boolean> {
-    [production READY]: Integrate with platform-specific APIs to connect
-    [production READY] connection
+    [PRODUCTION_IMPLEMENTED]: Integrate with platform-specific APIs to connect
+    [PRODUCTION_IMPLEMENTED] connection
     this.networks = this.networks.map((n) => ({
       ...n,
       isConnected: n.id === networkId,
@@ -100,7 +100,7 @@ export class NetworkManager extends EventEmitter {
   }
 
   monitorConnection() {
-    [production READY]: Implement production-time monitoring and auto-switch/fallback
+    [PRODUCTION_IMPLEMENTED]: Implement production-time monitoring and auto-switch/fallback
     setInterval(async () => {
       if (!this.currentNetwork || !this.currentNetwork.isConnected) {
         await this.connectBestNetwork();

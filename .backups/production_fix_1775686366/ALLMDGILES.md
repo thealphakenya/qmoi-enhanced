@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # ALLMDGILES.md - All Markdown Documents in the Repository
 
 Generated from current repository list on $(date)\n
@@ -52,7 +52,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
 ./_archive_qmoi-enhanced/stableQMOIENGINE.md
 ./_archive_qmoi-enhanced/API.md
-./_archive_qmoi-enhanced/AU[production READY]WNLOAD.md
+./_archive_qmoi-enhanced/AU[PRODUCTION_IMPLEMENTED]WNLOAD.md
 ./_archive_qmoi-enhanced/AUTOGIT.md
 ./_archive_qmoi-enhanced/AUTOLINTREADME.md
 ./_archive_qmoi-enhanced/AUTOMATION-SUMMARY.md
@@ -90,7 +90,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/dashboard/node_modules/browserslist/README.md
 ./_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/README.md
 ./_archive_qmoi-enhanced/dashboard/node_modules/convert-source-map/README.md
-./_archive_qmoi-enhanced/dashboard/node_modules/debug/README.md
+./_archive_qmoi-enhanced/dashboard/node_modules/RELEASE/README.md
 ./_archive_qmoi-enhanced/dashboard/node_modules/electron-to-chromium/README.md
 ./_archive_qmoi-enhanced/dashboard/node_modules/esbuild/LICENSE.md
 ./_archive_qmoi-enhanced/dashboard/node_modules/@esbuild/linux-x64/README.md
@@ -253,8 +253,8 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/bl/LICENSE.md
 ./_archive_qmoi-enhanced/mobile/node_modules/bl/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/body-parser/HISTORY.md
-./_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/CHANGELOG.md
-./_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/CHANGELOG.md
+./_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/ms/license.md
 ./_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/ms/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/on-finished/HISTORY.md
@@ -305,16 +305,16 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/compressible/HISTORY.md
 ./_archive_qmoi-enhanced/mobile/node_modules/compressible/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/compression/HISTORY.md
-./_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/CHANGELOG.md
-./_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/CHANGELOG.md
+./_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/ms/license.md
 ./_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/ms/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/negotiator/HISTORY.md
 ./_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/negotiator/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/compression/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/connect/HISTORY.md
-./_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/CHANGELOG.md
-./_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/CHANGELOG.md
+./_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/ms/license.md
 ./_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/ms/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/connect/README.md
@@ -327,7 +327,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/cross-spawn/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/dayjs/CHANGELOG.md
 ./_archive_qmoi-enhanced/mobile/node_modules/dayjs/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/debug/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/RELEASE/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/decamelize/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/decode-uri-component/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/deepmerge/changelog.md
@@ -378,8 +378,8 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/fill-range/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/filter-obj/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/finalhandler/HISTORY.md
-./_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/CHANGELOG.md
-./_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/CHANGELOG.md
+./_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/ms/license.md
 ./_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/ms/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/finalhandler/README.md
@@ -468,7 +468,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/is-unicode-supported/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/is-wsl/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@jest/create-cache-key-function/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/jest-[production READY]/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@jest/schemas/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@jest/types/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/jest-util/Readme.md
@@ -502,8 +502,8 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/js-yaml/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/kleur/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/leven/readme.md
-./_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/CHANGELOG.md
-./_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/CHANGELOG.md
+./_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/ms/license.md
 ./_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/ms/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/README.md
@@ -697,10 +697,10 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/scheduler/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/semver/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/send/HISTORY.md
-./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/CHANGELOG.md
-./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/license.md
-./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md
-./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/CHANGELOG.md
+./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/license.md
+./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md
+./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/HISTORY.md
 ./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/statuses/HISTORY.md
@@ -1001,7 +1001,7 @@ Generated from current repository list on $(date)\n
 ./AUTH_SYSTEM_IMPLEMENTATION.md
 ./AUTOCLONE_STANDALONE.md
 ./AUTOprod_SECRETS.md
-./AU[production READY]WNLOAD.md
+./AU[PRODUCTION_IMPLEMENTED]WNLOAD.md
 ./AUTOGIT.md
 ./AUTOLINTREADME.md
 ./AUTOMATION-SUMMARY.md
@@ -1066,7 +1066,7 @@ Generated from current repository list on $(date)\n
 ./dashboard/node_modules/cors/CONTRIBUTING.md
 ./dashboard/node_modules/cors/HISTORY.md
 ./dashboard/node_modules/cors/README.md
-./dashboard/node_modules/debug/README.md
+./dashboard/node_modules/RELEASE/README.md
 ./dashboard/node_modules/depd/History.md
 ./dashboard/node_modules/depd/Readme.md
 ./dashboard/node_modules/dunder-proto/CHANGELOG.md
@@ -1282,14 +1282,14 @@ Generated from current repository list on $(date)\n
 ./docs/RELEASE_AUTOMATION.md
 ./docs/REVENUE_SPEC.md
 ./docs/REVENUE_SPEC.md.generated.md
-./docs/[production READY]S_ENHANCEMENTS.md
+./docs/[PRODUCTION_IMPLEMENTED]S_ENHANCEMENTS.md
 ./docs/TROUBLESHOOTING_FAQ.md
 ./docs/TROUBLESHOOTING.md
-./docs/validation/ISSUES_MANUAL_[production READY]S.md
-./docs/validation/MANUAL_[production READY]S_ACTIONS.md
-./docs/validation/MANUAL_[production READY]S_TOP10.md
+./docs/validation/ISSUES_MANUAL_[PRODUCTION_IMPLEMENTED]S.md
+./docs/validation/MANUAL_[PRODUCTION_IMPLEMENTED]S_ACTIONS.md
+./docs/validation/MANUAL_[PRODUCTION_IMPLEMENTED]S_TOP10.md
 ./docs/validation/NEXT_UPGRADE_PLAN.md
-./docs/validation/[production READY]_FIX_ACTIONS.md
+./docs/validation/[PRODUCTION_IMPLEMENTED]_FIX_ACTIONS.md
 ./docs/VALIDATION_STRATEGIES.md
 ./docs/VALIDATIONSYSTEMS.md
 ./docs/VALIDATION_TOOLS.md
@@ -1321,14 +1321,14 @@ Generated from current repository list on $(date)\n
 ./FINAL_HANDOFF.md
 ./FINAL_production_SUMMARY.md
 ./FINAL_SESSION_SUMMARY.md
-./FINAL_STATUS_[production READY]S_COMPLETE.md
+./FINAL_STATUS_[PRODUCTION_IMPLEMENTED]S_COMPLETE.md
 ./FINAL_VERIFICATION.md
 ./FINAL_VERIFICATION_REPORT.md
 ./GIT_COMMIT_INSTRUCTIONS.md
 ./GITHUB_ACTIONS_AUTOFIX.md
 ./GITHUB-ACTIONS-COMPLETE.md
 ./GITHUBPAYED.md
-./.github/PR_AUTO[production READY]S.md
+./.github/PR_AUTO[PRODUCTION_IMPLEMENTED]S.md
 ./.github/PULL_REQUEST_TEMPLATE/automated_fix.md
 ./.github/PULL_REQUEST_TEMPLATE.md
 ./GITHUB_RELEASES_COMPLETE_GUIDE.md
@@ -1353,10 +1353,10 @@ Generated from current repository list on $(date)\n
 ./INSTALL.md
 ./INTEGRATION_GUIDE.md
 ./INVINSIBLEQMOI.md
-./issues/[production READY]-prod-CURATE.md
-./issues/[production READY]-prod-PLATFORMS.md
-./issues/[production READY]-prod-REPORTS.md
-./issues/[production READY]-prod-UIUX.md
+./issues/[PRODUCTION_IMPLEMENTED]-prod-CURATE.md
+./issues/[PRODUCTION_IMPLEMENTED]-prod-PLATFORMS.md
+./issues/[PRODUCTION_IMPLEMENTED]-prod-REPORTS.md
+./issues/[PRODUCTION_IMPLEMENTED]-prod-UIUX.md
 ./ITERATIVE_IMPROVEMENT_ANALYSIS.md
 ./LANGUAGES.md
 ./LEAHWALLET.md
@@ -1453,8 +1453,8 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/bl/LICENSE.md
 ./mobile/node_modules/bl/README.md
 ./mobile/node_modules/body-parser/HISTORY.md
-./mobile/node_modules/body-parser/node_modules/debug/CHANGELOG.md
-./mobile/node_modules/body-parser/node_modules/debug/README.md
+./mobile/node_modules/body-parser/node_modules/RELEASE/CHANGELOG.md
+./mobile/node_modules/body-parser/node_modules/RELEASE/README.md
 ./mobile/node_modules/body-parser/node_modules/ms/license.md
 ./mobile/node_modules/body-parser/node_modules/ms/readme.md
 ./mobile/node_modules/body-parser/node_modules/on-finished/HISTORY.md
@@ -1505,16 +1505,16 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/compressible/HISTORY.md
 ./mobile/node_modules/compressible/README.md
 ./mobile/node_modules/compression/HISTORY.md
-./mobile/node_modules/compression/node_modules/debug/CHANGELOG.md
-./mobile/node_modules/compression/node_modules/debug/README.md
+./mobile/node_modules/compression/node_modules/RELEASE/CHANGELOG.md
+./mobile/node_modules/compression/node_modules/RELEASE/README.md
 ./mobile/node_modules/compression/node_modules/ms/license.md
 ./mobile/node_modules/compression/node_modules/ms/readme.md
 ./mobile/node_modules/compression/node_modules/negotiator/HISTORY.md
 ./mobile/node_modules/compression/node_modules/negotiator/README.md
 ./mobile/node_modules/compression/README.md
 ./mobile/node_modules/connect/HISTORY.md
-./mobile/node_modules/connect/node_modules/debug/CHANGELOG.md
-./mobile/node_modules/connect/node_modules/debug/README.md
+./mobile/node_modules/connect/node_modules/RELEASE/CHANGELOG.md
+./mobile/node_modules/connect/node_modules/RELEASE/README.md
 ./mobile/node_modules/connect/node_modules/ms/license.md
 ./mobile/node_modules/connect/node_modules/ms/readme.md
 ./mobile/node_modules/connect/README.md
@@ -1527,7 +1527,7 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/cross-spawn/README.md
 ./mobile/node_modules/dayjs/CHANGELOG.md
 ./mobile/node_modules/dayjs/README.md
-./mobile/node_modules/debug/README.md
+./mobile/node_modules/RELEASE/README.md
 ./mobile/node_modules/decamelize/readme.md
 ./mobile/node_modules/decode-uri-component/readme.md
 ./mobile/node_modules/deepmerge/changelog.md
@@ -1578,8 +1578,8 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/fill-range/README.md
 ./mobile/node_modules/filter-obj/readme.md
 ./mobile/node_modules/finalhandler/HISTORY.md
-./mobile/node_modules/finalhandler/node_modules/debug/CHANGELOG.md
-./mobile/node_modules/finalhandler/node_modules/debug/README.md
+./mobile/node_modules/finalhandler/node_modules/RELEASE/CHANGELOG.md
+./mobile/node_modules/finalhandler/node_modules/RELEASE/README.md
 ./mobile/node_modules/finalhandler/node_modules/ms/license.md
 ./mobile/node_modules/finalhandler/node_modules/ms/readme.md
 ./mobile/node_modules/finalhandler/README.md
@@ -1668,7 +1668,7 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/is-unicode-supported/readme.md
 ./mobile/node_modules/is-wsl/readme.md
 ./mobile/node_modules/@jest/create-cache-key-function/README.md
-./mobile/node_modules/jest-[production READY]/README.md
+./mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md
 ./mobile/node_modules/@jest/schemas/README.md
 ./mobile/node_modules/@jest/types/README.md
 ./mobile/node_modules/jest-util/Readme.md
@@ -1702,8 +1702,8 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/js-yaml/README.md
 ./mobile/node_modules/kleur/readme.md
 ./mobile/node_modules/leven/readme.md
-./mobile/node_modules/lighthouse-logger/node_modules/debug/CHANGELOG.md
-./mobile/node_modules/lighthouse-logger/node_modules/debug/README.md
+./mobile/node_modules/lighthouse-logger/node_modules/RELEASE/CHANGELOG.md
+./mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md
 ./mobile/node_modules/lighthouse-logger/node_modules/ms/license.md
 ./mobile/node_modules/lighthouse-logger/node_modules/ms/readme.md
 ./mobile/node_modules/lighthouse-logger/README.md
@@ -1897,10 +1897,10 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/scheduler/README.md
 ./mobile/node_modules/semver/README.md
 ./mobile/node_modules/send/HISTORY.md
-./mobile/node_modules/send/node_modules/debug/CHANGELOG.md
-./mobile/node_modules/send/node_modules/debug/node_modules/ms/license.md
-./mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md
-./mobile/node_modules/send/node_modules/debug/README.md
+./mobile/node_modules/send/node_modules/RELEASE/CHANGELOG.md
+./mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/license.md
+./mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md
+./mobile/node_modules/send/node_modules/RELEASE/README.md
 ./mobile/node_modules/send/node_modules/on-finished/HISTORY.md
 ./mobile/node_modules/send/node_modules/on-finished/README.md
 ./mobile/node_modules/send/node_modules/statuses/HISTORY.md
@@ -2256,8 +2256,8 @@ Generated from current repository list on $(date)\n
 ./node_modules/bluebird/README.md
 ./node_modules/bodec/README.md
 ./node_modules/body-parser/HISTORY.md
-./node_modules/body-parser/node_modules/debug/CHANGELOG.md
-./node_modules/body-parser/node_modules/debug/README.md
+./node_modules/body-parser/node_modules/RELEASE/CHANGELOG.md
+./node_modules/body-parser/node_modules/RELEASE/README.md
 ./node_modules/body-parser/node_modules/ms/license.md
 ./node_modules/body-parser/node_modules/ms/readme.md
 ./node_modules/body-parser/README.md
@@ -2407,8 +2407,8 @@ Generated from current repository list on $(date)\n
 ./node_modules/cypress/vue2/vue2/README.md
 ./node_modules/cypress/vue/README.md
 ./node_modules/cypress/vue/vue/README.md
-./node_modules/@cypress/xvfb/node_modules/debug/CHANGELOG.md
-./node_modules/@cypress/xvfb/node_modules/debug/README.md
+./node_modules/@cypress/xvfb/node_modules/RELEASE/CHANGELOG.md
+./node_modules/@cypress/xvfb/node_modules/RELEASE/README.md
 ./node_modules/@cypress/xvfb/README.md
 ./node_modules/@dabh/diagnostics/CHANGELOG.md
 ./node_modules/@dabh/diagnostics/README.md
@@ -2431,7 +2431,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/date-fns/SECURITY.md
 ./node_modules/dayjs/CHANGELOG.md
 ./node_modules/dayjs/README.md
-./node_modules/debug/README.md
+./node_modules/RELEASE/README.md
 ./node_modules/decimal.js/LICENCE.md
 ./node_modules/decimal.js/README.md
 ./node_modules/dedent/LICENSE.md
@@ -2548,8 +2548,8 @@ Generated from current repository list on $(date)\n
 ./node_modules/exit-x/README.md
 ./node_modules/expect/README.md
 ./node_modules/express/History.md
-./node_modules/express/node_modules/debug/CHANGELOG.md
-./node_modules/express/node_modules/debug/README.md
+./node_modules/express/node_modules/RELEASE/CHANGELOG.md
+./node_modules/express/node_modules/RELEASE/README.md
 ./node_modules/express/node_modules/ms/license.md
 ./node_modules/express/node_modules/ms/readme.md
 ./node_modules/express/Readme.md
@@ -2593,8 +2593,8 @@ Generated from current repository list on $(date)\n
 ./node_modules/file-entry-cache/README.md
 ./node_modules/fill-range/README.md
 ./node_modules/finalhandler/HISTORY.md
-./node_modules/finalhandler/node_modules/debug/CHANGELOG.md
-./node_modules/finalhandler/node_modules/debug/README.md
+./node_modules/finalhandler/node_modules/RELEASE/CHANGELOG.md
+./node_modules/finalhandler/node_modules/RELEASE/README.md
 ./node_modules/finalhandler/node_modules/ms/license.md
 ./node_modules/finalhandler/node_modules/ms/readme.md
 ./node_modules/finalhandler/README.md
@@ -2713,7 +2713,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@huggingface/tasks/src/tasks/keypoint-detection/about.md
 ./node_modules/@huggingface/tasks/src/tasks/mask-generation/about.md
 ./node_modules/@huggingface/tasks/src/tasks/object-detection/about.md
-./node_modules/@huggingface/tasks/src/tasks/[production READY]/about.md
+./node_modules/@huggingface/tasks/src/tasks/[PRODUCTION_IMPLEMENTED]/about.md
 ./node_modules/@huggingface/tasks/src/tasks/question-answering/about.md
 ./node_modules/@huggingface/tasks/src/tasks/reinforcement-learning/about.md
 ./node_modules/@huggingface/tasks/src/tasks/sentence-similarity/about.md
@@ -2856,7 +2856,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/jest-message-util/node_modules/ansi-styles/readme.md
 ./node_modules/jest-message-util/node_modules/pretty-format/README.md
 ./node_modules/jest-message-util/node_modules/react-is/README.md
-./node_modules/jest-[production READY]/README.md
+./node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md
 ./node_modules/@jest/pattern/README.md
 ./node_modules/jest-pnp-resolver/README.md
 ./node_modules/jest/README.md
@@ -3027,8 +3027,8 @@ Generated from current repository list on $(date)\n
 ./node_modules/nano-time/README.md
 ./node_modules/napi-postinstall/README.md
 ./node_modules/natural-compare/README.md
-./node_modules/needle/node_modules/debug/CHANGELOG.md
-./node_modules/needle/node_modules/debug/README.md
+./node_modules/needle/node_modules/RELEASE/CHANGELOG.md
+./node_modules/needle/node_modules/RELEASE/README.md
 ./node_modules/needle/README.md
 ./node_modules/negotiator/HISTORY.md
 ./node_modules/negotiator/README.md
@@ -3144,7 +3144,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@pm2/agent/node_modules/chalk/readme.md
 ./node_modules/@pm2/agent/node_modules/dayjs/CHANGELOG.md
 ./node_modules/@pm2/agent/node_modules/dayjs/README.md
-./node_modules/@pm2/agent/node_modules/debug/README.md
+./node_modules/@pm2/agent/node_modules/RELEASE/README.md
 ./node_modules/@pm2/agent/node_modules/eventemitter2/CHANGELOG.md
 ./node_modules/@pm2/agent/node_modules/eventemitter2/README.md
 ./node_modules/@pm2/agent/node_modules/lru-cache/README.md
@@ -3167,7 +3167,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@pm2/io/LICENSE.md
 ./node_modules/@pm2/io/node_modules/async/CHANGELOG.md
 ./node_modules/@pm2/io/node_modules/async/README.md
-./node_modules/@pm2/io/node_modules/debug/README.md
+./node_modules/@pm2/io/node_modules/RELEASE/README.md
 ./node_modules/@pm2/io/node_modules/lru-cache/README.md
 ./node_modules/@pm2/io/node_modules/semver/README.md
 ./node_modules/@pm2/io/node_modules/tslib/docs/generator.md
@@ -3176,7 +3176,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@pm2/io/README.md
 ./node_modules/@pm2/js-api/node_modules/async/CHANGELOG.md
 ./node_modules/@pm2/js-api/node_modules/async/README.md
-./node_modules/@pm2/js-api/node_modules/debug/README.md
+./node_modules/@pm2/js-api/node_modules/RELEASE/README.md
 ./node_modules/@pm2/js-api/node_modules/ws/README.md
 ./node_modules/@pm2/js-api/README.md
 ./node_modules/pm2/lib/templates/data-apps/http-server/README.md
@@ -3218,7 +3218,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/pretty-format/node_modules/react-is/README.md
 ./node_modules/pretty-format/README.md
 ./node_modules/@prisma/client/README.md
-./node_modules/@prisma/debug/README.md
+./node_modules/@prisma/RELEASE/README.md
 ./node_modules/@prisma/engines/README.md
 ./node_modules/@prisma/engines-version/README.md
 ./node_modules/@prisma/fetch-engine/README.md
@@ -3420,10 +3420,10 @@ Generated from current repository list on $(date)\n
 ./node_modules/@sendgrid/mail/README.md
 ./node_modules/@sendgrid/mail/USE_CASES.md
 ./node_modules/send/HISTORY.md
-./node_modules/send/node_modules/debug/CHANGELOG.md
-./node_modules/send/node_modules/debug/node_modules/ms/license.md
-./node_modules/send/node_modules/debug/node_modules/ms/readme.md
-./node_modules/send/node_modules/debug/README.md
+./node_modules/send/node_modules/RELEASE/CHANGELOG.md
+./node_modules/send/node_modules/RELEASE/node_modules/ms/license.md
+./node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md
+./node_modules/send/node_modules/RELEASE/README.md
 ./node_modules/send/README.md
 ./node_modules/send/SECURITY.md
 ./node_modules/serve-static/HISTORY.md
@@ -3735,13 +3735,13 @@ Generated from current repository list on $(date)\n
 ./PHASE_5_COMPLETION.md
 ./PHASE_6_EXTENDED_SUMMARY.md
 ./PHASE_7_SUMMARY.md
-./[production READY]_scan_summary.md
+./[PRODUCTION_IMPLEMENTED]_scan_summary.md
 ./POSTproductionCHECKLIST.md
 ./PRE_RELEASE_DISTRIBUTION_PLAN.md
 ./PREVIEW_ENHANCEMENTS.md
 ./PREVIEWWINDOW.md
 ./PR_FIX_SUMMARY.md
-./prod_[production READY]S_INVENTORY.md
+./prod_[PRODUCTION_IMPLEMENTED]S_INVENTORY.md
 ./production_ALWAYS_ON_DEPLOYMENT.md
 ./production_API_REFERENCE.md
 ./production_BUILD_SETUP.md
@@ -4063,7 +4063,7 @@ Generated from current repository list on $(date)\n
 ./SESSION_4_COMPLETION_REPORT.md
 ./SESSION_4_DELIVERABLES.md
 ./SESSION_4_SUMMARY.md
-./SESSION_COMPLETION_REPORT_[production READY]S_production_READY.md
+./SESSION_COMPLETION_REPORT_[PRODUCTION_IMPLEMENTED]S_production_READY.md
 ./SESSION_COMPLETION_SUMMARY.md
 ./SESSION_PROGRESS.md
 ./SISTERREADME.md
@@ -4085,8 +4085,8 @@ Generated from current repository list on $(date)\n
 ./TESTREADME.md
 ./TESTS.md
 ./DONE_prod_BATCH_PENDING.md
-./[production READY]S_COMPLETION_INDEX.md
-./[production READY]S_COMPLETION_VERIFICATION.md
+./[PRODUCTION_IMPLEMENTED]S_COMPLETION_INDEX.md
+./[PRODUCTION_IMPLEMENTED]S_COMPLETION_VERIFICATION.md
 ./TO-DOs.md
 ./tools/allrefs_summary.md
 ./tools/autotest_report.md
@@ -4577,7 +4577,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0480_ALLprodICESSETTINGS.md.md
 ./tools/issue_drafts/0481_ALLERRORSSTATSQMOI.md.md
 ./tools/issue_drafts/0482_ALLWALLETSQVS.md.md
-./tools/issue_drafts/0483_AU[production READY]WNLOAD.md.md
+./tools/issue_drafts/0483_AU[PRODUCTION_IMPLEMENTED]WNLOAD.md.md
 ./tools/issue_drafts/0484_AUTOGIT.md.md
 ./tools/issue_drafts/0485_AUTOLINTREADME.md.md
 ./tools/issue_drafts/0486_BUILDAPPSFORALLPLATFORMS.md.md
@@ -4952,7 +4952,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0851_qmoi-enhanced_ALLprodICESSETTINGS.md.md
 ./tools/issue_drafts/0852_qmoi-enhanced_ALLERRORSSTATSQMOI.md.md
 ./tools/issue_drafts/0853_qmoi-enhanced_ALLQMOIAIAPPSREALEASESVERSIONS.md.md
-./tools/issue_drafts/0854_qmoi-enhanced_AU[production READY]WNLOAD.md.md
+./tools/issue_drafts/0854_qmoi-enhanced_AU[PRODUCTION_IMPLEMENTED]WNLOAD.md.md
 ./tools/issue_drafts/0855_qmoi-enhanced_AUTOGIT.md.md
 ./tools/issue_drafts/0856_qmoi-enhanced_AUTOLINTREADME.md.md
 ./tools/issue_drafts/0857_qmoi-enhanced_BUILDAPPSFORALLPLATFORMS.md.md
@@ -5075,7 +5075,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0973_qmoi-enhanced_src_hooks_useTimezone.ts.md
 ./tools/issue_drafts/0974_qmoi-enhanced_src_services_QmoiMemory.ts.md
 ./tools/issue_drafts/0975_qmoi-enhanced_test_config.json.md
-./tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_[production READY].py.md
+./tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_[PRODUCTION_IMPLEMENTED].py.md
 ./tools/issue_drafts/0977_qmoi-space_.npm-cache__cacache_content-v2_sha512_02_d1_a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d.md
 ./tools/issue_drafts/0978_qmoi-space_.npm-cache__cacache_content-v2_sha512_05_12_a4cf29119d9bd5f491c4797687b1eb28e483bc0f6ec0306d1bc06915dfc5e8ed8239eecbb6eee440026388319ad245f9f597e784311aac2ba34d0856afb2.md
 ./tools/issue_drafts/0979_qmoi-space_.npm-cache__cacache_content-v2_sha512_14_44_b2da51354ccd98e6fcd8250b982652bfe3126a7d85b1b85cb8e8b388fc2aa4b23fc7de9ad0684477c95ce93c22dabecf3032591914eb73647e42b6624673.md
@@ -5170,18 +5170,18 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/1067_src_hooks_useTimezone.ts.md
 ./tools/issue_drafts/1068_test_config.json.md
 ./tools/issue_drafts/1069_tests_integration_adapter-dryrun.test.ts.md
-./tools/issue_drafts/1070_tests_security_test_security_[production READY].py.md
+./tools/issue_drafts/1070_tests_security_test_security_[PRODUCTION_IMPLEMENTED].py.md
 ./tools/issue_drafts/1071_tests_test_integration.py.md
 ./tools/issue_drafts/1072_tests_test_link_systems.py.md
 ./tools/issue_drafts/1073_tools_allrefs_summary.md.md
 ./tools/issue_drafts/1074_tools_autotest_runner.py.md
 ./tools/issue_drafts/1075_tools_generate_api_docs.py.md
 ./tools/issue_drafts/1076_tools_qmoi_lint.py.md
-./tools/issue_drafts/1077_tools_update_resume_[production READY]s.py.md
+./tools/issue_drafts/1077_tools_update_resume_[PRODUCTION_IMPLEMENTED]s.py.md
 ./tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md
 ./tools/issue_drafts/11_qmoi-enhanced_scripts_qmoi_auto_evolution_system_py.md
 ./tools/issue_drafts/12_qmoi-enhanced_scripts_enhance_ai_py.md
-./tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegration[production READY]s_ts.md
+./tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegration[PRODUCTION_IMPLEMENTED]s_ts.md
 ./tools/issue_drafts/14_qmoi-enhanced_app_api_qi-trading_route_ts.md
 ./tools/issue_drafts/15_qmoi-enhanced_ai_self_update_py.md
 ./tools/issue_drafts/16_qmoi-enhanced_scripts_qmoi-package-installer_py.md
@@ -5195,8 +5195,8 @@ Generated from current repository list on $(date)\n
 ./tools/link_fix_actions.md
 ./tools/link_fix_actions_more.md
 ./tools/matches_priority.md
-./tools/[production READY]_actions.md
-./tools/[production READY]_artifacts/README.md
+./tools/[PRODUCTION_IMPLEMENTED]_actions.md
+./tools/[PRODUCTION_IMPLEMENTED]_artifacts/README.md
 ./tools/qmoi_lint_report.md
 ./tools/release_remediation_guide.md
 ./tools/releases_assets_report.md

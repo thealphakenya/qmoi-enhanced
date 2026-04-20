@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "Workspace / Codespace / QCity — Minimize prodice Data Bundles (Enhanced)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Workspace / Codespace / QCity — Minimize prodice Data Bundles (Enhanced) ✅ PRODUCTION READY
+# Workspace / Codespace / QCity — Minimize prodice Data Bundles (Enhanced) ✅ PRODUCTION_IMPLEMENTED
 
 This document describes practical strategies and architecture patterns to make the workspace and its apps use complete on-prodice data (mobile/limited-bundle prodices) while leveraging cloud/qcity resources for performance and features.
 

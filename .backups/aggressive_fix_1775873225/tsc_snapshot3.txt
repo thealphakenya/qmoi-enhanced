@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 app/api/account-automation/route.ts(17,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.
 app/api/account-automation/route.ts(41,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
@@ -951,26 +951,26 @@ components/analytics/AnalyticsCharts.tsx(32,9): error TS18046: 'e' is of type 'u
 components/analytics/AnalyticsCharts.tsx(32,40): error TS18046: 'e' is of type 'unknown'.
 components/analytics/AnalyticsCharts.tsx(33,20): error TS18046: 'e' is of type 'unknown'.
 components/analytics/AnalyticsCharts.tsx(42,21): error TS18046: 'e' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(84,11): error TS18046: 'port' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(85,11): error TS18046: 'port' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(141,11): error TS18046: 'port' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(142,11): error TS18046: 'port' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(336,13): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(339,34): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(342,20): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(348,14): error TS2571: Object is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(348,30): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(428,15): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(483,15): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(541,15): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(572,7): error TS2571: Object is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(573,7): error TS2571: Object is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(590,10): error TS2571: Object is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(590,27): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(591,33): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(597,17): error TS18046: 'command' is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(645,17): error TS2571: Object is of type 'unknown'.
-components/device/DeviceIntegration[PRODUCTION READY]s.ts(646,16): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(84,11): error TS18046: 'port' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(85,11): error TS18046: 'port' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(141,11): error TS18046: 'port' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(142,11): error TS18046: 'port' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(336,13): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(339,34): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(342,20): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(348,14): error TS2571: Object is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(348,30): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(428,15): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(483,15): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(541,15): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(572,7): error TS2571: Object is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(573,7): error TS2571: Object is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(590,10): error TS2571: Object is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(590,27): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(591,33): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(597,17): error TS18046: 'command' is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(645,17): error TS2571: Object is of type 'unknown'.
+components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts(646,16): error TS18046: 'command' is of type 'unknown'.
 components/enhanced-system-dashboard.tsx(179,29): error TS18046: 'AWSIntegration.listBuckets' is of type 'unknown'.
 components/enhanced-system-dashboard.tsx(236,29): error TS18046: 'p' is of type 'unknown'.
 components/enhanced-system-dashboard.tsx(282,40): error TS18046: 'event' is of type 'unknown'.
@@ -1453,31 +1453,31 @@ src/lib/security_check.ts(72,5): error TS18046: 'logs' is of type 'unknown'.
 src/lib/security_check.ts(75,9): error TS18046: 'logs' is of type 'unknown'.
 src/lib/security_check.ts(76,7): error TS18046: 'logs' is of type 'unknown'.
 src/lib/security_check.ts(76,22): error TS18046: 'logs' is of type 'unknown'.
-src/[PRODUCTION READY]s/handlers.test.ts(15,22): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.test.ts(15,22): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
   Types of parameters 'args' and 'args' are incompatible.
     Type 'unknown' is not assignable to type 'unknown[]'.
-src/[PRODUCTION READY]s/handlers.test.ts(16,23): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.test.ts(16,23): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
   Types of parameters 'args' and 'args' are incompatible.
     Type 'unknown' is not assignable to type 'unknown[]'.
-src/[PRODUCTION READY]s/handlers.test.ts(31,22): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.test.ts(31,22): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
   Types of parameters 'args' and 'args' are incompatible.
     Type 'unknown' is not assignable to type 'unknown[]'.
-src/[PRODUCTION READY]s/handlers.test.ts(32,23): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.test.ts(32,23): error TS2345: Argument of type '(...args: unknown[]) => { type: string; args: unknown[]; }' is not assignable to parameter of type 'FunctionLike'.
   Types of parameters 'args' and 'args' are incompatible.
     Type 'unknown' is not assignable to type 'unknown[]'.
-src/[PRODUCTION READY]s/handlers.ts(28,25): error TS2769: No overload matches this call.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(28,25): error TS2769: No overload matches this call.
   Overload 1 of 2, '(o: {}): string[]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type '{}'.
   Overload 2 of 2, '(o: object): string[]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type 'object'.
-src/[PRODUCTION READY]s/handlers.ts(122,25): error TS2769: No overload matches this call.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(122,25): error TS2769: No overload matches this call.
   Overload 1 of 2, '(o: {}): string[]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type '{}'.
   Overload 2 of 2, '(o: object): string[]', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type 'object'.
-src/[PRODUCTION READY]s/handlers.ts(152,25): error TS2339: Property 'url' does not exist on type '{}'.
-src/[PRODUCTION READY]s/handlers.ts(153,25): error TS2339: Property '_request' does not exist on type '{}'.
-src/[PRODUCTION READY]s/handlers.ts(153,43): error TS2339: Property '_request' does not exist on type '{}'.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(152,25): error TS2339: Property 'url' does not exist on type '{}'.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(153,25): error TS2339: Property '_request' does not exist on type '{}'.
+src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(153,43): error TS2339: Property '_request' does not exist on type '{}'.
 src/plugins/PluginManager.ts(94,56): error TS2769: No overload matches this call.
   Overload 1 of 2, '(timeout: string | number | Timeout | undefined): void', gave the following error.
     Argument of type 'unknown' is not assignable to parameter of type 'string | number | Timeout | undefined'.

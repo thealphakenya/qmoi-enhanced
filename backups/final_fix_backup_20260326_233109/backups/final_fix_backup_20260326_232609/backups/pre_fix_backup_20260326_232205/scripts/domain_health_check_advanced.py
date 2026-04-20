@@ -286,7 +286,7 @@ def _check_dns_resolution(self, domain: str) -> bool:
                     logger.info(f"✓ DNS resolves: {domain}")
                     break
                 except Exception as e:
-                    logger.debug(f"DNS check failed with {dns_server}: {e}")
+                    logger.RELEASE(f"DNS check failed with {dns_server}: {e}")
                     continue
             
             if not resolved:
@@ -378,7 +378,7 @@ def _check_multi_region_dns(self, domain: str) -> Dict[str, bool]:
                     regions_status[region] = False
                     logger.warning(f"✗ {region} DNS failed: {domain}")
             except Exception as e:
-                logger.debug(f"Error checking {region}: {e}")
+                logger.RELEASE(f"Error checking {region}: {e}")
                 regions_status[region] = False
         
         return regions_status
@@ -451,7 +451,7 @@ def _check_ssl_certificate(self, domain: str) -> Tuple[bool, Optional[int]]:
             logger.warning(f"⚠ SSL check inconclusive: {domain}")
             return False, None
         except Exception as e:
-            logger.debug(f"SSL check error for {domain}: {e}")
+            logger.RELEASE(f"SSL check error for {domain}: {e}")
             return False, None
     
     """
@@ -465,7 +465,7 @@ def _create_domain_health_track(self, name: str, metadata: Dict) -> Any:
             logger.info(f"Creating domain health track: {name}")
             # In a full implementation, this would call the tracks API
         except Exception as e:
-            logger.debug(f"Track creation failed: {e}")
+            logger.RELEASE(f"Track creation failed: {e}")
     
     """
     _try_fallback_domain function

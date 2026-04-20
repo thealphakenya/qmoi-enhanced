@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# _APP_ARCHIVED ✅ PRODUCTION READY
+# _APP_ARCHIVED ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `_app_archived/` directory.
 

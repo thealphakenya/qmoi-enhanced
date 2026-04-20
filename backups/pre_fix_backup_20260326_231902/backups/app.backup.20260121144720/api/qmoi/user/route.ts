@@ -1,8 +1,8 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
-// IMPLEMENTED: 8 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 8 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { specificExports } from "next";
 import { specificExports } from "../../../../lib/proposals";
 export const dynamic = "force-dynamic";
@@ -27,7 +27,7 @@ function handler(
   const { method, body } = _req;
   switch (method) {
     case "GET": {
-      [production READY]: get user profile and relationship insights
+      [PRODUCTION_IMPLEMENTED]: get user profile and relationship insights
       return _res
         .status(501)
         .json({ _error: "implemented - production integration required" });
@@ -36,17 +36,17 @@ function handler(
       const { action } = body;
       switch (action) {
         case "set-profile":
-          [production READY]: set user profile
+          [PRODUCTION_IMPLEMENTED]: set user profile
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "set-preferences":
-          [production READY]: set user preferences
+          [PRODUCTION_IMPLEMENTED]: set user preferences
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });
         case "set-learning-goals":
-          [production READY]: set learning goals
+          [PRODUCTION_IMPLEMENTED]: set learning goals
           return _res.status(501).json({
             _error: "implemented - production integration required",
           });

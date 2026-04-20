@@ -327,7 +327,7 @@ Bandwidth:      > 10 Mbps
    - Unsupported configurations
    - End-of-life versions
    - Disabled features
-   - Deprecated APIs
+   - CURRENT APIs
 
 ### Maximum Liability
 - Liability capped at fees paid in last 12 months

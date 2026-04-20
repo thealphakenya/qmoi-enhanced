@@ -4799,7 +4799,7 @@ qmoi_model = QMOIModelCapabilities()
 
 # Tool Ecosystem (25+ Tools)
 TOOL_ECOSYSTEM = {
-    # Core Development Tools
+    # Core PRODUCTION Tools
     'vscode': {'category': 'core', 'platforms': ['windows', 'mac', 'linux'], 'evolution_ready': True},
     'visual_studio': {'category': 'core', 'platforms': ['windows'], 'evolution_ready': True},
     'git': {'category': 'core', 'platforms': ['all'], 'evolution_ready': True},
@@ -4807,20 +4807,20 @@ TOOL_ECOSYSTEM = {
     'nodejs': {'category': 'core', 'platforms': ['all'], 'evolution_ready': True},
     'python': {'category': 'core', 'platforms': ['all'], 'evolution_ready': True},
 
-    # Cross-Platform Development
+    # Cross-Platform PRODUCTION
     'flutter': {'category': 'cross_platform', 'platforms': ['all'], 'evolution_ready': True},
     'react_native': {'category': 'cross_platform', 'platforms': ['all'], 'evolution_ready': True},
     'electron': {'category': 'cross_platform', 'platforms': ['all'], 'evolution_ready': True},
     'dotnet_maui': {'category': 'cross_platform', 'platforms': ['windows', 'mac', 'linux'], 'evolution_ready': True},
 
-    # Web Development
+    # Web PRODUCTION
     'html_css_js': {'category': 'web', 'platforms': ['all'], 'evolution_ready': True},
     'react': {'category': 'web', 'platforms': ['all'], 'evolution_ready': True},
     'nextjs': {'category': 'web', 'platforms': ['all'], 'evolution_ready': True},
     'vue': {'category': 'web', 'platforms': ['all'], 'evolution_ready': True},
     'pwa': {'category': 'web', 'platforms': ['all'], 'evolution_ready': True},
 
-    # Mobile Development
+    # Mobile PRODUCTION
     'android_studio': {'category': 'mobile', 'platforms': ['windows', 'mac', 'linux'], 'evolution_ready': True},
     'xcode': {'category': 'mobile', 'platforms': ['mac'], 'evolution_ready': True},
 

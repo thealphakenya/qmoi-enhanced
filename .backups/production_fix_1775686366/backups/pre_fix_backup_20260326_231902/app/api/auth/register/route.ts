@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 import { userService, walletService } from "@/lib/db/services";
 import { authService } from "@/lib/auth/service";
@@ -132,7 +132,7 @@ export async function POST(_request: NextRequest) {
       { status: 201 },
     );
   } catch (error) {
-    [production READY] resolve [production READY] items
+    [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
     try {
       const msg = error && .message;
       const code = error && .code;

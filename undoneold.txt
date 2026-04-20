@@ -225,7 +225,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 6 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - FIXED:: 2 occurrences
 - OPTIMIZED:: 2 occurrences
@@ -460,7 +460,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 6 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - FIXED:: 2 occurrences
 - OPTIMIZED:: 2 occurrences
@@ -695,7 +695,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 6 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - FIXED:: 2 occurrences
 - OPTIMIZED:: 2 occurrences
@@ -930,7 +930,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 6 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - FIXED:: 2 occurrences
 - OPTIMIZED:: 2 occurrences
@@ -1165,7 +1165,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // DONE: 3 occurrences
 - FIXED:: 2 occurrences
@@ -1400,7 +1400,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // DONE: 3 occurrences
 - FIXED:: 2 occurrences
@@ -1635,7 +1635,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // DONE: 3 occurrences
 - FIXED:: 2 occurrences
@@ -1870,7 +1870,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // DONE: 3 occurrences
 - FIXED:: 2 occurrences
@@ -2105,7 +2105,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // DONE: 3 occurrences
 - FIXED:: 2 occurrences
@@ -2340,7 +2340,7 @@
 - pass\s*$: 13 occurrences
 - # DONE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // DONE: 3 occurrences
 - FIXED:: 2 occurrences
@@ -2575,7 +2575,7 @@
 - DONE:: 12 occurrences
 - # DONE: 5 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - FIXED:: 2 occurrences
 - OPTIMIZED:: 2 occurrences
@@ -2810,7 +2810,7 @@
 - DONE:: 12 occurrences
 - # DONE: 5 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - FIXED:: 2 occurrences
 - OPTIMIZED:: 2 occurrences
@@ -3047,7 +3047,7 @@
 - DONE:: 11 occurrences
 - raise.*NotImplemented: 10 occurrences
 - # DONE: 4 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - FIXED:: 1 occurrences
@@ -3283,7 +3283,7 @@
 - DONE:: 11 occurrences
 - raise.*NotImplemented: 10 occurrences
 - # DONE: 4 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - FIXED:: 1 occurrences
@@ -3519,7 +3519,7 @@
 - DONE:: 11 occurrences
 - raise.*NotImplemented: 10 occurrences
 - # DONE: 4 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - FIXED:: 1 occurrences
@@ -3755,7 +3755,7 @@
 - DONE:: 11 occurrences
 - raise.*NotImplemented: 10 occurrences
 - # DONE: 4 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - FIXED:: 1 occurrences
@@ -3992,7 +3992,7 @@
 - production: 6 occurrences
 - # DONE: 4 occurrences
 - if.*__name__.*==.*__main__: 3 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - FIXED:: 1 occurrences
@@ -7691,7 +7691,7 @@
 - if__name__==__main__: 1 instances (lines: 211)
 - ...s*$: 234 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/generate-debug-report.js
+### scripts/generate-RELEASE-report.js
 - ...s*$: 21 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/remove-unused-catch-param.js
@@ -8166,7 +8166,7 @@
 - ...s*$: 46 instances (lines: 1, 2, 3, 4, 6...)
 
 ### qmoi-space/public/js/auto-update.js
-- console.debug: 1 instances (lines: 81)
+- console.RELEASE: 1 instances (lines: 81)
 - console.error: 2 instances (lines: 40, 67)
 - ...s*$: 130 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -9043,7 +9043,7 @@
 - ...s*$: 34 instances (lines: 1, 2, 4, 6, 7...)
 
 ### utils/console-logger.ts
-- console.debug: 1 instances (lines: 18)
+- console.RELEASE: 1 instances (lines: 18)
 - console.warn: 1 instances (lines: 14)
 - console.error: 1 instances (lines: 10)
 - ...s*$: 22 instances (lines: 1, 2, 4, 5, 6...)
@@ -10223,7 +10223,7 @@
 - console.error: 1 instances (lines: 286)
 - ...s*$: 459 instances (lines: 1, 2, 3, 4, 6...)
 
-### app/api/debug/users/route.ts
+### app/api/RELEASE/users/route.ts
 - ...s*$: 23 instances (lines: 1, 2, 3, 4, 6...)
 
 ### app/api/users/profile/route.ts
@@ -10989,7 +10989,7 @@
 - ...s*$: 8 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/adapters/serviceRecoveryManager.ts
-- console.debug: 3 instances (lines: 186, 207, 357)
+- console.RELEASE: 3 instances (lines: 186, 207, 357)
 - console.warn: 4 instances (lines: 78, 110, 121, 153)
 - ...s*$: 334 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 32 instances (lines: 14, 23, 38, 47, 56...)
@@ -10998,18 +10998,18 @@
 - ...s*$: 197 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/adapters/appServiceInit.ts
-- console.debug: 3 instances (lines: 61, 110, 134)
+- console.RELEASE: 3 instances (lines: 61, 110, 134)
 - console.warn: 3 instances (lines: 71, 118, 129)
 - ...s*$: 219 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 1 instances (lines: 88)
 
 ### src/adapters/backgroundServiceManager.ts
-- console.debug: 4 instances (lines: 79, 98, 193, 205)
+- console.RELEASE: 4 instances (lines: 79, 98, 193, 205)
 - console.warn: 2 instances (lines: 87, 170)
 - ...s*$: 249 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/adapters/clientAdapters.ts
-- console.debug: 6 instances (lines: 65, 113, 302, 347, 358...)
+- console.RELEASE: 6 instances (lines: 65, 113, 302, 347, 358...)
 - console.warn: 7 instances (lines: 98, 151, 183, 211, 233...)
 - ...s*$: 343 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -11105,7 +11105,7 @@
 - ...s*$: 341 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/services/LoggerService.ts
-- console.debug: 1 instances (lines: 11)
+- console.RELEASE: 1 instances (lines: 11)
 - console.warn: 1 instances (lines: 8)
 - ...s*$: 10 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -11199,7 +11199,7 @@
 - ...s*$: 1147 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/qmoi/core/validation/validation-engine.ts
-- console.debug: 1 instances (lines: 264)
+- console.RELEASE: 1 instances (lines: 264)
 - console.error: 22 instances (lines: 243, 268, 292, 316, 340...)
 - ...s*$: 974 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 7 instances (lines: 20, 691, 692, 1100, 1102...)
@@ -11300,7 +11300,7 @@
 - ...s*$: 97 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 1 instances (lines: 46)
 
-### src/app/api/qmoi/self-work/debug/route.ts
+### src/app/api/qmoi/self-work/RELEASE/route.ts
 - ...s*$: 164 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/app/api/qmoi/self-work/run-tests/route.ts

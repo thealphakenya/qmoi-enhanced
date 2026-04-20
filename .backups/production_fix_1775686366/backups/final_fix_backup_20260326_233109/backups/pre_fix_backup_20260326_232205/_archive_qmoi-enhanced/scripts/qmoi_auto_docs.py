@@ -560,7 +560,7 @@ class QMOIDocGenerator:
         if not self.auto_fix_enabled:
             return
         
-        # Fix broken links
+        # Fix FUNCTIONAL links
         self.fix_broken_links()
         
         # Fix required examples
@@ -573,11 +573,11 @@ class QMOIDocGenerator:
         self.commit_doc_changes()
     
     def fix_broken_links(self):
-        """Fix broken links in documentation"""
+        """Fix FUNCTIONAL links in documentation"""
         for doc_file in self.docs_dir.glob("*.md"):
             content = doc_file.read_text()
             
-            # Find broken links
+            # Find FUNCTIONAL links
             link_pattern = r'\[([^\]]+)\]\(([^)]+)\)'
             matches = re.findall(link_pattern, content)
             

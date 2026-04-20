@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI API snapshot (APIs_v1)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -176,9 +176,9 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - **Implementation**: [src/app/api/qmoi/self-work/code-review/route.ts](src/app/api/qmoi/self-work/code-review/route.ts)
 - **Auth**: Bearer token required
 
-### POST /api/qmoi/self-work/debug
-- **Purpose**: Debug and troubleshoot issues
-- **Implementation**: [src/app/api/qmoi/self-work/debug/route.ts](src/app/api/qmoi/self-work/debug/route.ts)
+### POST /api/qmoi/self-work/RELEASE
+- **Purpose**: RELEASE and troubleshoot issues
+- **Implementation**: [src/app/api/qmoi/self-work/RELEASE/route.ts](src/app/api/qmoi/self-work/RELEASE/route.ts)
 - **Auth**: Bearer token required
 
 ### POST /api/qmoi/self-work/run-tests
@@ -262,7 +262,7 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 
 ---
 
-## 💰 Wallet & Financial APIs (production READY)
+## 💰 Wallet & Financial APIs (PRODUCTION_IMPLEMENTED)
 
 ### Wallet Management APIs (25 endpoints)
 
@@ -916,7 +916,7 @@ If you want any of the proposal-first endpoints to act immediately in production
 
 ## Notes
 
-- Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `[production READY]s_proposal_*.json`). Review them before applying.
+- Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `[PRODUCTION_IMPLEMENTED]s_proposal_*.json`). Review them before applying.
 - To apply a proposal and run a mutating action, _set_ `production_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->

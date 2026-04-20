@@ -6,7 +6,7 @@
   },
   "createdAt": "2025-12-14T07:36:40.505Z",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:20:10.133891"
 }

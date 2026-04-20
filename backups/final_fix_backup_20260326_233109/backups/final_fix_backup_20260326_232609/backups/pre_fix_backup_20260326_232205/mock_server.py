@@ -573,5 +573,5 @@ if __name__ == '__main__':
     logger.info("\n⚠️  IMPORTANT: This is a real server for testing only!")
     logger.info("   Real actions are NOT performed.\n")
 
-    app.run(host='0.0.0.0', port=5000, DEBUG = false)
+    app.run(host='0.0.0.0', port=5000, RELEASE = false)
 

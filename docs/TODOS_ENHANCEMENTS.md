@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "QMOI To-dos Enhancements (20+ improvements)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI To-dos Enhancements (20+ improvements) ✅ PRODUCTION READY
+# QMOI To-dos Enhancements (20+ improvements) ✅ PRODUCTION_IMPLEMENTED
 
 This file lists concrete improvements to the QMOI to-dos system (used by `scripts/qmoi_✅ PRODUCTION READYs.py`) that will make planning, execution, validation, and LION integration more robust.
 

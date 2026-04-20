@@ -857,8 +857,8 @@ python scripts/{SCRIPT_NAME}.py
       file.endsWith('.md') || file.endsWith('.MD') || file.endsWith('.markdown')
     );
     const duration = Date.now() - start;
-    console.log('[DEBUG] projectRoot:', this.projectRoot);
-    console.log('[DEBUG] Markdown files found:', mdFiles);
+    console.log('[RELEASE] projectRoot:', this.projectRoot);
+    console.log('[RELEASE] Markdown files found:', mdFiles);
     console.log(`[REPORT] Scanned ${allFiles.length} files, found ${mdFiles.length} markdown files in ${duration}ms.`);
     if (errors.length > 0) {
       console.log('[ERRORS]', errors);
@@ -1111,7 +1111,7 @@ python scripts/{SCRIPT_NAME}.py
   }
 
   async run() {
-    console.log('[DEBUG] Markdown files at start of run:', this.mdFiles);
+    console.log('[RELEASE] Markdown files at start of run:', this.mdFiles);
     // Notify start
     try {
       execSync('python scripts/gmail_notify.py --subject "QMOI Doc Fixing Started" --body "Documentation fixing has started."');

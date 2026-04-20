@@ -101,7 +101,7 @@
 | resource/cache vars | 2,513 | 0 | ⏳ PENDING |
 | pass statements | 322 | 0 | ⏳ PENDING |
 | DONE markers | 99 | 0 | ⏳ PENDING |
-| Debug logging | 65 | <10 | ⏳ PENDING |
+| RELEASE logging | 65 | <10 | ⏳ PENDING |
 | real/actual data | 224 | 0 | ⏳ PENDING |
 | **TOTAL** | **510,157** | **<100** | ⏳ PENDING |
 

@@ -22,13 +22,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "production Checklist for QMOI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# production Checklist for QMOI ✅ PRODUCTION READY
+# production Checklist for QMOI ✅ PRODUCTION_IMPLEMENTED
 
 This checklist helps prepare the QMOI repository and runtime for production deployments. Follow each step and verify in CI or production config.md`, `docs/LIGHTWEIGHT_STRATEGY.md`, and `docs/VALIDATION_STRATEGIES.md` with production notes.
 

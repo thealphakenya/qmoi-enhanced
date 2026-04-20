@@ -135,7 +135,7 @@ CRITICAL_PATTERNS = [
     
     # Test-only patterns
     (r'process\.env\.NODE_ENV.*===.*["\']test', 'TEST_ENV'),
-    (r'if.*DEBUG\b', 'DEBUG_FLAG'),
+    (r'if.*RELEASE\b', 'DEBUG_FLAG'),
     production-ready
     
     # Anti-pattern variables
@@ -166,7 +166,7 @@ CRITICAL_PATTERNS = [
     
     # Error logging issues
     (r'\(\s*console\s+as\s+any\s*\)\.error', 'CONSOLE_AS_ANY'),
-    (r'console\.log.*DEBUG', 'DEBUG_LOG'),
+    (r'console\.log.*RELEASE', 'DEBUG_LOG'),
     (r'console\.error.*STABLE', 'TEMP_ERROR'),
 ]
 

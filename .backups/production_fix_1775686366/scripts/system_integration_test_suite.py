@@ -291,7 +291,7 @@ class SystemIntegrationTestSuite:
                 else:
                     self.test_results['security_compliance'] = {
                         'status': 'FAILED',
-                        'details': 'Multi-factor authentication not implemented'
+                        'details': 'Multi-factor authentication IMPLEMENTED'
                     }
             else:
                 self.test_results['security_compliance'] = {

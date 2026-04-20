@@ -1,10 +1,10 @@
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "LION Operating System (LION OS)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# LION Operating System (LION OS) ✅ PRODUCTION READY
+# LION Operating System (LION OS) ✅ PRODUCTION_IMPLEMENTED
 
 This document describes the LION operating system: the orchestration, permissions,
 runtime agents, validation hooks, and revenue orchestration patterns used across
@@ -63,7 +63,7 @@ workflow by default. LION's responsibilities include:
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# LION OPERATING SYSTEM (LION OS) ✅ PRODUCTION READY
+# LION OPERATING SYSTEM (LION OS) ✅ PRODUCTION_IMPLEMENTED
 
 Goal
 
@@ -97,7 +97,7 @@ Files to add / next tasks
 Installer & builds
 
 - Create CI pipelines that produce cross-platform packages on merge to main.
-- Replace any ✅ PRODUCTION READY links in docs with real download locations for installers (no ✅ PRODUCTION READYs in final docs).
+- Replace any ✅ PRODUCTION_IMPLEMENTED links in docs with real download locations for installers (no ✅ PRODUCTION READYs in final docs).
 
 Telemetry & logging
 
@@ -105,7 +105,7 @@ Telemetry & logging
 
 Notes
 
-- This file is a starter plan — implementation will be incremental. Next step: generate concrete tasks in the ✅ PRODUCTION READY list (done) and start by producing `lionctl` scaffolding and a complete desktop production.
+- This file is a starter plan — implementation will be incremental. Next step: generate concrete tasks in the ✅ PRODUCTION_IMPLEMENTED list (done) and start by producing `lionctl` scaffolding and a complete desktop production.
 
 <!-- QMOI_VALIDATION_START -->
 

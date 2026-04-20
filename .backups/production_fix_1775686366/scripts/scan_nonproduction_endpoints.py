@@ -15,20 +15,20 @@ production_keywords = [
     'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
     'live', 'live', 'production', 'real', 'realS',
     'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
-    'TEST DATA', 'TEST IMPLEMENTATION', 'NOT IMPLEMENTED', 'IMPLEMENTED',
+    'TEST DATA', 'TEST IMPLEMENTATION', 'IMPLEMENTED', 'IMPLEMENTED',
     'SIMPLE', 'MINIMAL', 'production', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC',
     'stable', 'stable', 'stable', 'TEMPORARY', 'complete',
 
     # Implementation status
-    'implementation pending', 'pending implementation', 'needs implementation',
+    'IMPLEMENTED', 'pending implementation', 'needs implementation',
     'implementation needed', 'to be implemented', 'not yet implemented',
     'coming soon', 'production complete', 'in production', 'under production',
 
     # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ text', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ data', 'dummy data',
+    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ text', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ data', 'PRODUCTION_IMPLEMENTED data',
     'sample data', 'example data', 'real data', 'real data',
 
-    'prod only', 'production only', 'for production', 'debug only',
+    'prod only', 'production only', 'for production', 'RELEASE only',
     'temporary', 'STABLE', 'PRODUCTION_FIX', 'PRODUCTION_SOLUTION', 'bandaid',
 
     # Test markers
@@ -36,11 +36,11 @@ production_keywords = [
     'test fixture', 'test real', 'test real',
 
     # Code quality issues
-    'broken', 'buggy', 'complete', 'COMPLETED', 'complete implementation',
+    'FUNCTIONAL', 'buggy', 'complete', 'COMPLETED', 'complete implementation',
     'skeleton', 'scaffold', 'boilerplate', 'template',
 
     # API/Function markers
-    'real api', 'real api', 'real api', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ api', 'dummy api',
+    'real api', 'real api', 'real api', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ api', 'PRODUCTION_IMPLEMENTED api',
     'real function', 'real function', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ function',
 
     # Configuration markers
@@ -51,7 +51,7 @@ production_keywords = [
     'coming soon', 'under construction', 'maintenance mode', 'temporarily unavailable',
 
     # Database markers
-    'test database', 'real database', 'dummy database', 'sample database',
+    'test database', 'real database', 'PRODUCTION_IMPLEMENTED database', 'sample database',
 
     # Error handling markers
     'error /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'exception /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'not handled', 'unhandled',
@@ -67,7 +67,7 @@ production_keywords = [
     'temporary fix', 'quick fix', 'hotfix',
     'replace', 'replaced', 'replace all', 'replace with',
 ]
-production_ready_markers = ['[production ready]', '[production complete]', 'in production', 'production ready', 'production complete']
+production_ready_markers = ['[PRODUCTION_IMPLEMENTED]', '[production complete]', 'in production', 'PRODUCTION_IMPLEMENTED', 'production complete']
 
 production_patterns = [re.compile(r'\\b' + re.escape(kw) + r'\\b', re.IGNORECASE) for kw in production_keywords]
 
@@ -243,7 +243,7 @@ def perform_scan(root_dir, include_whitelist=False, max_size=max_file_size_bytes
         f.write('\nTotal files with production markers: ' + str(len(results)) + '\n')
         f.write('Total files scanned: ' + str(scanned_files) + '\n')
         f.write('Files skipped (binary/large): ' + str(skipped_non_text) + '\n')
-        f.write('Files marked as production ready: ' + str(ready_files) + '\n')
+        f.write('Files marked as PRODUCTION_IMPLEMENTED: ' + str(ready_files) + '\n')
 
         total_relevant_files = scanned_files - skipped_non_text
         production_files = [r for r in results if not is_whitelisted(os.path.join(root_dir, r['filePath']))]

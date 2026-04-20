@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
-# CURL Examples: Talking to `qmoi` (Master / Sister / User) ✅ PRODUCTION READY
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
+# CURL Examples: Talking to `qmoi` (Master / Sister / User) ✅ PRODUCTION_IMPLEMENTED
 
 This document shows how to talk to a production configure env vars and run:
 
@@ -25,7 +25,7 @@ Notes:
 
 - Ensure `QMOI_GH_TOKEN` and `QMOI_HF_TOKEN` are kept secret and supplied via CI secrets or environment managers.
 - Background auto-sync: set `QMOI_SYNC_INTERVAL_SECONDS` (e.g. `300`) to enable periodic push from the production dbash
-# Verify file exists and show first line ✅ PRODUCTION READY
+# Verify file exists and show first line ✅ PRODUCTION_IMPLEMENTED
 head -n 1 abctesting.txt || echo "file not found"
 ```production-validated
 

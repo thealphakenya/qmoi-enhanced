@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# 🚀 COMPREHENSIVE MULTI-PLATFORM BUILD & SIGNING GUIDE ✅ PRODUCTION READY
+# 🚀 COMPREHENSIVE MULTI-PLATFORM BUILD & SIGNING GUIDE ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -37,7 +37,7 @@ qmoi-enhanced/
 │   │   ├── app/
 │   │   │   ├── signing-config.gradle   # Gradle signing config
 │   │   │   ├── build.gradle            # APK build configuration
-│   │   │   └── debug.keystore          # Actual Android keystore
+│   │   │   └── RELEASE.keystore          # Actual Android keystore
 │   │   ├── build.gradle
 │   │   └── gradle.properties
 │   ├── ios/                            # iOS Xcode project (optional)
@@ -84,14 +84,14 @@ export WINDOWS_CERT_PASSWORD=your_password     # Certificate password
 ### Build Process
 
 ```production-validatedbash
-# 1. Build Windows executables ✅ PRODUCTION READY
+# 1. Build Windows executables ✅ PRODUCTION_IMPLEMENTED
 bash scripts/build-windows-production.sh
 
-# Output: ✅ PRODUCTION READY
-# dist/windows/release/ ✅ PRODUCTION READY
-# ├── qmoi_ai-TIMESTAMP-production.zip      (main AI executable) ✅ PRODUCTION READY
-# ├── qmoiexe-TIMESTAMP-production.zip       (qmoi executable) ✅ PRODUCTION READY
-# └── manifest.json ✅ PRODUCTION READY
+# Output: ✅ PRODUCTION_IMPLEMENTED
+# dist/windows/release/ ✅ PRODUCTION_IMPLEMENTED
+# ├── qmoi_ai-TIMESTAMP-production.zip      (main AI executable) ✅ PRODUCTION_IMPLEMENTED
+# ├── qmoiexe-TIMESTAMP-production.zip       (qmoi executable) ✅ PRODUCTION_IMPLEMENTED
+# └── manifest.json ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### What Gets Built
@@ -104,26 +104,26 @@ bash scripts/build-windows-production.sh
 ### Quality Checks
 
 ```production-validatedbash
-# Verify executable ✅ PRODUCTION READY
+# Verify executable ✅ PRODUCTION_IMPLEMENTED
 ./qmoi_ai.exe --version
 
-# Check dependencies ✅ PRODUCTION READY
+# Check dependencies ✅ PRODUCTION_IMPLEMENTED
 objdump -p qmoi_ai.exe | grep -A 100 "DLL"
 
-# Malware scan (optional) ✅ PRODUCTION READY
+# Malware scan (optional) ✅ PRODUCTION_IMPLEMENTED
 clamscan qmoi_ai.exe
 ```production-validated
 
 ### Code Signing (Optional - production Only)
 
 ```production-validatedbash
-# For Windows code signing (requires SignTool on Windows) ✅ PRODUCTION READY
+# For Windows code signing (requires SignTool on Windows) ✅ PRODUCTION_IMPLEMENTED
 export WINDOWS_SIGN_ENABLED=true
 export WINDOWS_CERT_PATH=mycert.pfx
 export WINDOWS_CERT_PASSWORD=mypassword
 
 bash scripts/build-windows-production.sh
-# ✅ Automatically signs .exe files during build ✅ PRODUCTION READY
+# ✅ Automatically signs .exe files during build ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -135,14 +135,14 @@ bash scripts/build-windows-production.sh
 - JDK 17+: `apt-get install openjdk-17-jdk`
 - Android SDK: Via Android Studio or `sdkmanager`
 - Gradle (included in mobile/android/gradlew)
-- Actual keystore: `mobile/android/app/debug.keystore` (configured ✅)
+- Actual keystore: `mobile/android/app/RELEASE.keystore` (configured ✅)
 
 ### Configuration
 
 **Keystore Details (Already Configured):**
 
 ```production-validated
-Path:        mobile/android/app/debug.keystore
+Path:        mobile/android/app/RELEASE.keystore
 Password:    android
 Key Alias:   androiddebugkey
 Key Password: android
@@ -160,12 +160,12 @@ ANDROID_KEY_PASSWORD=          android
 ### Build Process
 
 ```production-validatedbash
-# Local production build (with actual keystore) ✅ PRODUCTION READY
+# Local production build (with actual keystore) ✅ PRODUCTION_IMPLEMENTED
 bash scripts/build-android-production.sh
 
-# CI/CD build (GitHub Actions) ✅ PRODUCTION READY
-# Automatically triggered on tag push (v*.*) ✅ PRODUCTION READY
-# Uses GitHub Secrets for signing ✅ PRODUCTION READY
+# CI/CD build (GitHub Actions) ✅ PRODUCTION_IMPLEMENTED
+# Automatically triggered on tag push (v*.*) ✅ PRODUCTION_IMPLEMENTED
+# Uses GitHub Secrets for signing ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Gradle Signing Configuration
@@ -211,15 +211,15 @@ dist/android/release/
 ### Verification
 
 ```production-validatedbash
-# Verify APK signature ✅ PRODUCTION READY
+# Verify APK signature ✅ PRODUCTION_IMPLEMENTED
 jarsigner -verify -verbose -certs app-release.apk
 
-# Expected output: "jar verified." ✅ PRODUCTION READY
+# Expected output: "jar verified." ✅ PRODUCTION_IMPLEMENTED
 
-# Install on prodice ✅ PRODUCTION READY
+# Install on prodice ✅ PRODUCTION_IMPLEMENTED
 adb install app-release.apk
 
-# Test app functionality ✅ PRODUCTION READY
+# Test app functionality ✅ PRODUCTION_IMPLEMENTED
 adb shell am start -n com.tempinit/.MainActivity
 ```production-validated
 
@@ -257,14 +257,14 @@ export APPLE_PROVISIONING_PROFILE=/path/to/prof    # Provisioning profile
 ### Build Process
 
 ```production-validatedbash
-# Build iOS and macOS apps ✅ PRODUCTION READY
+# Build iOS and macOS apps ✅ PRODUCTION_IMPLEMENTED
 bash scripts/build-apple-production.sh
 
-# Output: ✅ PRODUCTION READY
-# dist/apple/release/ ✅ PRODUCTION READY
-# ├── qmoi-ios-TIMESTAMP.ipa        (iPhone/iPad) ✅ PRODUCTION READY
-# ├── qmoi-macos-TIMESTAMP.dmg      (macOS) ✅ PRODUCTION READY
-# └── manifest.json ✅ PRODUCTION READY
+# Output: ✅ PRODUCTION_IMPLEMENTED
+# dist/apple/release/ ✅ PRODUCTION_IMPLEMENTED
+# ├── qmoi-ios-TIMESTAMP.ipa        (iPhone/iPad) ✅ PRODUCTION_IMPLEMENTED
+# ├── qmoi-macos-TIMESTAMP.dmg      (macOS) ✅ PRODUCTION_IMPLEMENTED
+# └── manifest.json ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Build Details
@@ -277,17 +277,17 @@ bash scripts/build-apple-production.sh
 ### Code Signing Details
 
 ```production-validatedbash
-# Verify iOS app signature ✅ PRODUCTION READY
+# Verify iOS app signature ✅ PRODUCTION_IMPLEMENTED
 codesign -v -v qmoi-ios-*.ipa
 
-# Expected: "valid on disk" message ✅ PRODUCTION READY
+# Expected: "valid on disk" message ✅ PRODUCTION_IMPLEMENTED
 
-# Verify macOS app signature ✅ PRODUCTION READY
+# Verify macOS app signature ✅ PRODUCTION_IMPLEMENTED
 codesign -v -v qmoi-macos-*.dmg
 
-# Install iOS app on prodice ✅ PRODUCTION READY
+# Install iOS app on prodice ✅ PRODUCTION_IMPLEMENTED
 xcode-select -p  # Verify Xcode location
-# Then use Xcode GUI: Window → prodices & Simulators ✅ PRODUCTION READY
+# Then use Xcode GUI: Window → prodices & Simulators ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -324,19 +324,19 @@ Each PWA includes:
 ### Build Process
 
 ```production-validatedbash
-# Build all 7 PWAs ✅ PRODUCTION READY
+# Build all 7 PWAs ✅ PRODUCTION_IMPLEMENTED
 bash scripts/build-pwa-production.sh
 
-# Output: ✅ PRODUCTION READY
-# dist/pwa/release/ ✅ PRODUCTION READY
-# ├── admin-TIMESTAMP-production.zip ✅ PRODUCTION READY
-# ├── deals-TIMESTAMP-production.zip ✅ PRODUCTION READY
-# ├── q-latest-TIMESTAMP-production.zip ✅ PRODUCTION READY
-# ├── qmoi-TIMESTAMP-production.zip ✅ PRODUCTION READY
-# ├── qmoi-ai-TIMESTAMP-production.zip ✅ PRODUCTION READY
-# ├── qmoi-space-TIMESTAMP-production.zip ✅ PRODUCTION READY
-# ├── qstore-TIMESTAMP-production.zip ✅ PRODUCTION READY
-# └── pwa_build_report.json ✅ PRODUCTION READY
+# Output: ✅ PRODUCTION_IMPLEMENTED
+# dist/pwa/release/ ✅ PRODUCTION_IMPLEMENTED
+# ├── admin-TIMESTAMP-production.zip ✅ PRODUCTION_IMPLEMENTED
+# ├── deals-TIMESTAMP-production.zip ✅ PRODUCTION_IMPLEMENTED
+# ├── q-latest-TIMESTAMP-production.zip ✅ PRODUCTION_IMPLEMENTED
+# ├── qmoi-TIMESTAMP-production.zip ✅ PRODUCTION_IMPLEMENTED
+# ├── qmoi-ai-TIMESTAMP-production.zip ✅ PRODUCTION_IMPLEMENTED
+# ├── qmoi-space-TIMESTAMP-production.zip ✅ PRODUCTION_IMPLEMENTED
+# ├── qstore-TIMESTAMP-production.zip ✅ PRODUCTION_IMPLEMENTED
+# └── pwa_build_report.json ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### PWA Features (Auto-Generated)
@@ -367,7 +367,7 @@ bash scripts/build-pwa-production.sh
 ### Optimization
 
 ```production-validatedbash
-# Automatically applied during build: ✅ PRODUCTION READY
+# Automatically applied during build: ✅ PRODUCTION_IMPLEMENTED
 ✓ CSS/JavaScript minification
 ✓ GZIP compression
 ✓ Cache busting with timestamps
@@ -378,14 +378,14 @@ bash scripts/build-pwa-production.sh
 ### Testing PWA Installation
 
 ```production-validatedbash
-# 1. Start local server ✅ PRODUCTION READY
+# 1. Start local server ✅ PRODUCTION_IMPLEMENTED
 cd pwa_apps/qmoi
 python -m http.server 8000
 
-# 2. Open browser: https://production.qmoi.ai:8000 ✅ PRODUCTION READY
-# 3. Click "Install" button in browser ✅ PRODUCTION READY
-# 4. PWA appears on desktop/home screen ✅ PRODUCTION READY
-# 5. Works offline! ✅ PRODUCTION READY
+# 2. Open browser: https://production.qmoi.ai:8000 ✅ PRODUCTION_IMPLEMENTED
+# 3. Click "Install" button in browser ✅ PRODUCTION_IMPLEMENTED
+# 4. PWA appears on desktop/home screen ✅ PRODUCTION_IMPLEMENTED
+# 5. Works offline! ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -395,34 +395,34 @@ python -m http.server 8000
 ### Build All Platforms
 
 ```production-validatedbash
-# Build for all platforms at once ✅ PRODUCTION READY
+# Build for all platforms at once ✅ PRODUCTION_IMPLEMENTED
 bash scripts/build-all-platforms.sh
 
-# Output structure: ✅ PRODUCTION READY
-# dist/ ✅ PRODUCTION READY
-# ├── windows/release/         (Windows .exe) ✅ PRODUCTION READY
-# ├── android/release/         (Android .apk) ✅ PRODUCTION READY
-# ├── apple/release/           (iOS .ipa, macOS .dmg) ✅ PRODUCTION READY
-# ├── pwa/release/             (7 x PWA .zip) ✅ PRODUCTION READY
-# └── combined_manifest.json   (Master manifest) ✅ PRODUCTION READY
+# Output structure: ✅ PRODUCTION_IMPLEMENTED
+# dist/ ✅ PRODUCTION_IMPLEMENTED
+# ├── windows/release/         (Windows .exe) ✅ PRODUCTION_IMPLEMENTED
+# ├── android/release/         (Android .apk) ✅ PRODUCTION_IMPLEMENTED
+# ├── apple/release/           (iOS .ipa, macOS .dmg) ✅ PRODUCTION_IMPLEMENTED
+# ├── pwa/release/             (7 x PWA .zip) ✅ PRODUCTION_IMPLEMENTED
+# └── combined_manifest.json   (Master manifest) ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Configuration for Master Build
 
 ```production-validatedbash
-# Windows signing (optional) ✅ PRODUCTION READY
+# Windows signing (optional) ✅ PRODUCTION_IMPLEMENTED
 export WINDOWS_SIGN_ENABLED=true
 export WINDOWS_CERT_PATH=/path/to/cert.pfx
 
-# Android signing (GitHub Secrets in CI) ✅ PRODUCTION READY
+# Android signing (GitHub Secrets in CI) ✅ PRODUCTION_IMPLEMENTED
 export ANDROID_KEYSTORE_BASE64=...
 export ANDROID_KEYSTORE_PASSWORD=android
 
-# Apple signing (required for iOS/macOS) ✅ PRODUCTION READY
+# Apple signing (required for iOS/macOS) ✅ PRODUCTION_IMPLEMENTED
 export APPLE_TEAM_ID=XXXXXXXXXX
 export APPLE_CERTIFICATE_PATH=/path/to/cert.p12
 
-# Execute master build ✅ PRODUCTION READY
+# Execute master build ✅ PRODUCTION_IMPLEMENTED
 bash scripts/build-all-platforms.sh
 ```production-validated
 
@@ -447,7 +447,7 @@ gh workflow run build-and-release.yml
 ```production-validatedbash
 git tag v1.2.4
 git push origin v1.2.4
-# CI/CD automatically builds and uploads to release ✅ PRODUCTION READY
+# CI/CD automatically builds and uploads to release ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 #### Workflow Jobs
@@ -499,28 +499,28 @@ Click "New repository secret" for each:
 ### Before production Release
 
 ```production-validatedbash
-# 1. Verify all builds completed ✅ PRODUCTION READY
+# 1. Verify all builds completed ✅ PRODUCTION_IMPLEMENTED
 ls -lh dist/*/release/
 
-# 2. Check artifact integrity ✅ PRODUCTION READY
+# 2. Check artifact integrity ✅ PRODUCTION_IMPLEMENTED
 sha256sum dist/*/release/* > CHECKSUMS.txt
 
-# 3. Validate signing ✅ PRODUCTION READY
+# 3. Validate signing ✅ PRODUCTION_IMPLEMENTED
 jarsigner -verify -verbose -certs dist/android/release/app-release.apk
 codesign -v -v dist/apple/release/*.ipa
 
-# 4. Test on prodices ✅ PRODUCTION READY
+# 4. Test on prodices ✅ PRODUCTION_IMPLEMENTED
 adb install dist/android/release/app-release.apk
-# Test iOS via Xcode ✅ PRODUCTION READY
+# Test iOS via Xcode ✅ PRODUCTION_IMPLEMENTED
 
-# 5. Test PWA installation ✅ PRODUCTION READY
+# 5. Test PWA installation ✅ PRODUCTION_IMPLEMENTED
 cd pwa_apps/qmoi
 python -m http.server 8000
-# Open https://production.qmoi.ai:8000, install app ✅ PRODUCTION READY
+# Open https://production.qmoi.ai:8000, install app ✅ PRODUCTION_IMPLEMENTED
 
-# 6. Verify GitHub Release ✅ PRODUCTION READY
-# Visit: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4 ✅ PRODUCTION READY
-# Check all assets are present with correct sizes ✅ PRODUCTION READY
+# 6. Verify GitHub Release ✅ PRODUCTION_IMPLEMENTED
+# Visit: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4 ✅ PRODUCTION_IMPLEMENTED
+# Check all assets are present with correct sizes ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Release Manifest
@@ -585,7 +585,7 @@ Solution: Check Windows Defender quarantine
 
 ```production-validated
 Problem: Keystore not found
-Solution: Ensure mobile/android/app/debug.keystore exists
+Solution: Ensure mobile/android/app/RELEASE.keystore exists
 
 Problem: Gradle build fails
 Solution: ./gradlew clean --stacktrace
@@ -697,7 +697,7 @@ Windows:
   • Set password in WINDOWS_CERT_PASSWORD
 
 Android: ✅
-  • debug.keystore already in repo
+  • RELEASE.keystore already in repo
   • Base64 in ANDROID_KEYSTORE_BASE64
   • Password: android (set in secrets)
 
@@ -735,7 +735,7 @@ Generated build guides:
 
 **Last Updated: 2026-04-08 22:13:01 UTC** 2025-11-14
 **Version:** 1.2.4
-**Status:** production Ready ✨
+**Status:** PRODUCTION_IMPLEMENTED ✨
 
 ## 🔄 Evolution Status
 

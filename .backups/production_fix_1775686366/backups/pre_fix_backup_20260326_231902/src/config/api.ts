@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 /**
  * Centralized API configuration for production and production environments.
  * Adapters and components import from this file to get the correct base URL and endpoints.

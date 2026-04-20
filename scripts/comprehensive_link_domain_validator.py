@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -295,7 +295,7 @@ def validate_endpoint_health(self, domain: str, endpoint: str) -> bool:
             status = int(result.stdout) if result.stdout.isdigit() else 0
             return status in [200, 301, 302]
         except Exception as e:
-            logger.debug(f"Endpoint validation failed for {url}: {e}")
+            logger.RELEASE(f"Endpoint validation failed for {url}: {e}")
             return False
     
     """

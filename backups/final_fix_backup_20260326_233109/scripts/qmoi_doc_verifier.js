@@ -414,7 +414,7 @@ function autoEncryptSecrets(): any {
     fs.writeFileSync(envPath, env);
     logAutoFix('auto', 'Encrypted secrets in .env');
     // Provide decryption utility (// production implementation:)
-    fs.writeFileSync('scripts/decrypt_env.js', `// Usage: node decrypt_env.js <encrypted_value> <secret_key>\nlogger.debug('Provide your decryption logic here.');\n`);
+    fs.writeFileSync('scripts/decrypt_env.js', `// Usage: node decrypt_env.js <encrypted_value> <secret_key>\nlogger.RELEASE('Provide your decryption logic here.');\n`);
     logAutoFix('auto', 'Generated decrypt_env.js utility');
   }
 }
@@ -947,8 +947,8 @@ function runWorker(task): any {
       file.endsWith('.md') || file.endsWith('.MD') || file.endsWith('.markdown')
     );
     const duration = Date.now() - start;
-    logger.info('[DEBUG] projectRoot:', this.projectRoot);
-    logger.info('[DEBUG] Markdown files found:', mdFiles);
+    logger.info('[RELEASE] projectRoot:', this.projectRoot);
+    logger.info('[RELEASE] Markdown files found:', mdFiles);
     logger.info(`[REPORT] Scanned ${allFiles.length} files, found ${mdFiles.length} markdown files in ${duration}ms.`);
     if (errors.length > 0) {
       logger.info('[ERRORS]', errors);
@@ -1201,7 +1201,7 @@ function runWorker(task): any {
   }
 
   async run() {
-    logger.info('[DEBUG] Markdown files at start of run:', this.mdFiles);
+    logger.info('[RELEASE] Markdown files at start of run:', this.mdFiles);
     // Notify start
     try {
       execSync('python scripts/gmail_notify.py --subject "QMOI Doc Fixing Started" --body "Documentation fixing has started."');

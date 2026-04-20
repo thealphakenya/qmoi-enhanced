@@ -1,18 +1,18 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for UNUSED_API_ENDPOINTS.md"
 generated: 2025-11-08T16:06:38.351718Z
 ---
 
-# Review needed: UNUSED_API_ENDPOINTS.md ✅ PRODUCTION READY
+# Review needed: UNUSED_API_ENDPOINTS.md ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -32,7 +32,7 @@ title: "QMOI Unused API Endpoints Report"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Unused API Endpoints Report ✅ PRODUCTION READY
+# QMOI Unused API Endpoints Report ✅ PRODUCTION_IMPLEMENTED
 
 This file lists all API endpoints discovered in the codebase and documentation that are NOT currently used in backend, UI, or test scripts. These endpoints should be prioritized for integration, testing, or deprecation review.
 
@@ -66,7 +66,7 @@ This file lists all API endpoints discovered in the codebase and documentation t
 ---
 
 ## Next Steps
-- For each endpoint above, generate a complete integration [production READY] (backend or UI) or add a test in qmoi_test.sh.
+- For each endpoint above, generate a complete integration [PRODUCTION_IMPLEMENTED] (backend or UI) or add a test in qmoi_test.sh.
 - Update API.md and CURLCOMMANDS.md to reflect new usage/tests.
 - Rerun endpoint usage checks after integration.
 

@@ -16,7 +16,7 @@
     "reason": "Binary included after rebuild"
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:43.152603"
 }

@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOIJEST"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -75,7 +75,7 @@ Notes:
 - Use Jest caching (default) and `--maxWorkers` to control CPU usage (e.g., `--maxWorkers=50%`).
 - For large monorepos, run tests per package in parallel using CI matrix or `projects` entries in Jest config.
 
-### Snapshot & [production READY] hygiene
+### Snapshot & [PRODUCTION_IMPLEMENTED] hygiene
 
 - Keep snapshots in the same repo and review snapshot updates carefully.
 - Add `--updateSnapshot` only when intentionally updating.

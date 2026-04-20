@@ -13,7 +13,7 @@ title: "QMOI Revenue Engine & M-Pesa Integration"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Revenue Engine & M-Pesa Integration ✅ PRODUCTION READY
+# QMOI Revenue Engine & M-Pesa Integration ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -63,11 +63,11 @@ QMOI's Lion variations (L-I-O-N) are now fully integrated into revenue generatio
 Create `.env.production` with your credentials:
 
 ```production-validatedbash
-# M-Pesa Configuration ✅ PRODUCTION READY
+# M-Pesa Configuration ✅ PRODUCTION_IMPLEMENTED
 CASHON_MPESA_NUMBER=0725382624
 QMOI_prod_CREDENTIAL=your_production_credential
 
-# M-Pesa API Credentials (Get from Safaricom) ✅ PRODUCTION READY
+# M-Pesa API Credentials (Get from Safaricom) ✅ PRODUCTION_IMPLEMENTED
 MPESA_CONSUMER_KEY=your_consumer_key
 MPESA_CONSUMER_SECRET=your_consumer_secret
 MPESA_PASSKEY=your_passkey
@@ -76,23 +76,23 @@ MPESA_ENVIRONMENT=production
 MPESA_INITIATOR_NAME=QMOI
 MPESA_SECURITY_CREDENTIAL=your_security_credential
 
-# QMOI Master Token ✅ PRODUCTION READY
+# QMOI Master Token ✅ PRODUCTION_IMPLEMENTED
 QMOI_MASTER_TOKEN=your_master_token
 
-# App Configuration ✅ PRODUCTION READY
+# App Configuration ✅ PRODUCTION_IMPLEMENTED
 NEXT_PUBLIC_APP_URL=https://your-app.vercel.app
 ```production-validated
 
 ### 2. Start Revenue Engine
 
 ```production-validatedbash
-# Start the revenue engine ✅ PRODUCTION READY
+# Start the revenue engine ✅ PRODUCTION_IMPLEMENTED
 npm run revenue:start
 
-# Check current earnings ✅ PRODUCTION READY
+# Check current earnings ✅ PRODUCTION_IMPLEMENTED
 npm run revenue:status
 
-# Or use the standalone script ✅ PRODUCTION READY
+# Or use the standalone script ✅ PRODUCTION_IMPLEMENTED
 node scripts/start-revenue-engine.js
 ```production-validated
 
@@ -167,7 +167,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 1. Register with Safaricom for M-Pesa API access
 2. Get your API credentials (Consumer Key, Secret, Passkey)
 3. Configure your shortcode and security credentials
-4. Test production ready environment first
+4. Test PRODUCTION_IMPLEMENTED environment first
 5. Switch to production when ready
 
 ### Transaction Flow
@@ -256,12 +256,12 @@ Access the revenue dashboard at `/qcity` (master only) to:
 - **Data Not Loading**: Check API endpoints and network connectivity
 - **Real-time Updates**: Ensure auto-refresh is enabled
 
-### Debug Mode
+### RELEASE Mode
 
-Enable debug logging:
+Enable RELEASE logging:
 
 ```production-validatedbash
-export DEBUG = false
+export RELEASE = false
 npm run revenue:start
 ```production-validated
 
@@ -313,7 +313,7 @@ For issues and questions:
 1. Check the troubleshooting section above
 2. Review logs for error details
 3. Verify environment configuration
-4. Test M-Pesa integration production ready
+4. Test M-Pesa integration PRODUCTION_IMPLEMENTED
 5. Contact support with detailed error information
 
 ## 🔄 Updates & Maintenance
@@ -328,7 +328,7 @@ For issues and questions:
 ### Version Updates
 
 - Follow semantic versioning
-- Test updates production ready environment
+- Test updates PRODUCTION_IMPLEMENTED environment
 - Maintain backward compatibility
 - Document breaking changes
 

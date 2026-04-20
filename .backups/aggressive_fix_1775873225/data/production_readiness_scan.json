@@ -17,7 +17,7 @@
     "sophisticated": 66,
     "permanent": 2,
     "DONE": 446,
-    "DEPRECATED": 63,
+    "CURRENT": 63,
     "INSTRUCTION": 24,
     "TEST IMPLEMENTATION": 3,
     "production IMPLEMENTATION REQUIRED": 44,
@@ -1362,7 +1362,7 @@
       "latest (1)",
       "latest (1)",
       "latest (1)",
-      "DEPRECATED (4)",
+      "CURRENT (4)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_auto_setup.py": [
@@ -1370,7 +1370,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-parallel-setup.js": [
       "complete (1)",
-      "DEPRECATED (2)"
+      "CURRENT (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/financial_verification.py": [
       "IMPLEMENTED (1)"
@@ -2604,13 +2604,13 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/admin/autofix/scan/route.ts": [
       "fixed (11)",
       "complete (1)",
-      "DEPRECATED (1)",
+      "CURRENT (1)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/code-review/route.ts": [
-      "DEPRECATED (1)"
+      "CURRENT (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/debug/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/RELEASE/route.ts": [
       "fixed (6)",
       "production (1)",
       "production (1)"
@@ -3529,7 +3529,7 @@
       "latest (1)",
       "latest (1)",
       "latest (1)",
-      "DEPRECATED (4)",
+      "CURRENT (4)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi_auto_setup.py": [
@@ -3537,7 +3537,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/qmoi-parallel-setup.js": [
       "complete (1)",
-      "DEPRECATED (2)"
+      "CURRENT (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/vercel_monitor_and_fix.sh": [
       "DONE (1)"
@@ -3958,9 +3958,9 @@
       "production (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/self-work/code-review/route.ts": [
-      "DEPRECATED (1)"
+      "CURRENT (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/self-work/debug/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/self-work/RELEASE/route.ts": [
       "fixed (6)",
       "production (1)",
       "production (1)"
@@ -4676,7 +4676,7 @@
       "latest (1)",
       "latest (1)",
       "latest (1)",
-      "DEPRECATED (4)",
+      "CURRENT (4)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_auto_setup.py": [
@@ -4684,7 +4684,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-parallel-setup.js": [
       "complete (1)",
-      "DEPRECATED (2)"
+      "CURRENT (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/financial_verification.py": [
       "IMPLEMENTED (1)"
@@ -6182,7 +6182,7 @@
       "latest (1)",
       "latest (1)",
       "latest (1)",
-      "DEPRECATED (4)",
+      "CURRENT (4)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_auto_setup.py": [
@@ -6190,7 +6190,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi-parallel-setup.js": [
       "complete (1)",
-      "DEPRECATED (2)"
+      "CURRENT (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/vercel_monitor_and_fix.sh": [
       "DONE (1)"
@@ -6659,7 +6659,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/app/api/admin/autofix/scan/route.ts": [
       "fixed (11)",
       "complete (1)",
-      "DEPRECATED (1)",
+      "CURRENT (1)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/app/api/admin/autofix/health/route.ts": [
@@ -6752,9 +6752,9 @@
       "production (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/code-review/route.ts": [
-      "DEPRECATED (1)"
+      "CURRENT (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/debug/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/RELEASE/route.ts": [
       "fixed (6)",
       "production (1)",
       "production (1)"
@@ -6988,7 +6988,7 @@
       "fixed (13)",
       "production (1)",
       "production (1)",
-      "DEPRECATED (1)",
+      "CURRENT (1)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/scripts/qmoi_self_test_runner.js": [
@@ -7961,7 +7961,7 @@
       "latest (1)",
       "latest (1)",
       "latest (1)",
-      "DEPRECATED (4)",
+      "CURRENT (4)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi_auto_setup.py": [
@@ -7969,7 +7969,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/qmoi-parallel-setup.js": [
       "complete (1)",
-      "DEPRECATED (2)"
+      "CURRENT (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/financial_verification.py": [
       "IMPLEMENTED (1)"
@@ -10075,7 +10075,7 @@
       "latest (1)",
       "latest (1)",
       "latest (1)",
-      "DEPRECATED (4)",
+      "CURRENT (4)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_auto_setup.py": [
@@ -10083,7 +10083,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi-parallel-setup.js": [
       "complete (1)",
-      "DEPRECATED (2)"
+      "CURRENT (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/vercel_monitor_and_fix.sh": [
       "DONE (1)"
@@ -10504,9 +10504,9 @@
       "production (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/self-work/code-review/route.ts": [
-      "DEPRECATED (1)"
+      "CURRENT (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/self-work/debug/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/self-work/RELEASE/route.ts": [
       "fixed (6)",
       "production (1)",
       "production (1)"
@@ -11038,7 +11038,7 @@
       "latest (1)",
       "latest (1)",
       "latest (1)",
-      "DEPRECATED (4)",
+      "CURRENT (4)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi_auto_setup.py": [
@@ -11046,7 +11046,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/qmoi-parallel-setup.js": [
       "complete (1)",
-      "DEPRECATED (2)"
+      "CURRENT (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/github-fallback.js": [
       "complete (1)"
@@ -12159,7 +12159,7 @@
       "latest (1)",
       "latest (1)",
       "latest (1)",
-      "DEPRECATED (4)",
+      "CURRENT (4)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi_auto_setup.py": [
@@ -12167,7 +12167,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/qmoi-parallel-setup.js": [
       "complete (1)",
-      "DEPRECATED (2)"
+      "CURRENT (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/vercel_monitor_and_fix.sh": [
       "DONE (1)"
@@ -12512,7 +12512,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/admin/autofix/scan/route.ts": [
       "fixed (11)",
       "complete (1)",
-      "DEPRECATED (1)",
+      "CURRENT (1)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/admin/autofix/health/route.ts": [
@@ -12605,9 +12605,9 @@
       "production (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/code-review/route.ts": [
-      "DEPRECATED (1)"
+      "CURRENT (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/debug/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/self-work/RELEASE/route.ts": [
       "fixed (6)",
       "production (1)",
       "production (1)"
@@ -12792,7 +12792,7 @@
       "fixed (13)",
       "production (1)",
       "production (1)",
-      "DEPRECATED (1)",
+      "CURRENT (1)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/qmoi_doc_verifier.js": [
@@ -12973,7 +12973,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/app/api/admin/autofix/scan/route.ts": [
       "fixed (11)",
       "complete (1)",
-      "DEPRECATED (1)",
+      "CURRENT (1)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/app/api/admin/autofix/fix/[errorId]/route.ts": [
@@ -13358,7 +13358,7 @@
       "WARNING (4)"
     ],
     "/workspaces/qmoi-enhanced/scripts/audit_releases.py": [
-      "DEPRECATED (1)"
+      "CURRENT (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/deploy-sophisticated.sh": [
       "production (4)",
@@ -13719,7 +13719,7 @@
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/create_issues_from_audit.py": [
-      "DEPRECATED (1)"
+      "CURRENT (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/fix_common_ts_issues.js": [
       "REPLACE (2)"
@@ -14393,7 +14393,7 @@
     "/workspaces/qmoi-enhanced/app/api/admin/autofix/scan/route.ts": [
       "fixed (11)",
       "complete (1)",
-      "DEPRECATED (1)",
+      "CURRENT (1)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/app/api/admin/autofix/health/route.ts": [
@@ -14585,9 +14585,9 @@
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/src/app/api/qmoi/self-work/code-review/route.ts": [
-      "DEPRECATED (1)"
+      "CURRENT (1)"
     ],
-    "/workspaces/qmoi-enhanced/src/app/api/qmoi/self-work/debug/route.ts": [
+    "/workspaces/qmoi-enhanced/src/app/api/qmoi/self-work/RELEASE/route.ts": [
       "fixed (6)",
       "production (1)",
       "production (1)"
@@ -14607,7 +14607,7 @@
   "production_ready": false,
   "scan_timestamp": "2026-04-03T02:40:37.153361",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:31.693811"
 }

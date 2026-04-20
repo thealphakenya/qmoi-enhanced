@@ -23,7 +23,7 @@ Thanks for contributing to QMOI! This file contains quick tips for running the p
 - MSW is initialized at test time via `src/setupTests.ts` and exposes a readiness promise at `globalThis.__MSW_READY__`.
 - Tests should await `__MSW_READY__` or install handlers deterministically per test to avoid races.
 - If you encounter unhandled requests during tests, enable `SHOW_MSW_UNHANDLED=1` to surface the origin.
-- Use `TEST_VERBOSE=1` for additional handler/request debug output when diagnosing request shape mismatches (path-only vs absolute URL), or to inspect whether handlers are being selected properly.
+- Use `TEST_VERBOSE=1` for additional handler/request RELEASE output when diagnosing request shape mismatches (path-only vs absolute URL), or to inspect whether handlers are being selected properly.
 
 ## Troubleshooting
 

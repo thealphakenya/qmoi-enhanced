@@ -54,8 +54,8 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Compile with Release Build Configuration**
   - [ ] Use `--release` or `--mode=release` flag in build command
-  - [ ] Disable debug mode: `android.debuggable=false`
-  - [ ] Strip out debug logs and test instrumentation code
+  - [ ] Disable RELEASE mode: `android.debuggable=false`
+  - [ ] Strip out RELEASE logs and test instrumentation code
   - [ ] Verify output: `*.apk` or `*.aab` (prefer AAB for Play Store)
 
 - [ ] **Sign with production Keystore**
@@ -71,7 +71,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] ProGuard rules file exists: `proguard-rules.pro`
   - [ ] Keep essential classes un-obfuscated (API/SDK compatibility classes)
   - [ ] Test that obfuscated build still functions correctly
-  - [ ] Verify obfuscated build size is optimized (10-15% smaller than debug)
+  - [ ] Verify obfuscated build size is optimized (10-15% smaller than RELEASE)
 
 #### iOS (IPA)
 
@@ -97,9 +97,9 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 #### Windows (EXE/MSI)
 
 - [ ] **Compile Release Build**
-  - [ ] Use `Release` configuration, not `Debug`
+  - [ ] Use `Release` configuration, not `RELEASE`
   - [ ] Optimization flags enabled: `/O2` or equivalent
-  - [ ] Debug symbols stripped (or externalized)
+  - [ ] RELEASE symbols stripped (or externalized)
   - [ ] Static linking configured (if applicable)
   - [ ] Output: `.exe` or `.msi` installer
 
@@ -110,7 +110,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Timestamp server used (ensures signature valid after certificate expiration)
 
 - [ ] **Binary Optimization**
-  - [ ] No debug information included (or stripped post-build)
+  - [ ] No RELEASE information included (or stripped post-build)
   - [ ] EXE/MSI size is reasonable (5-100 MB depending on features)
   - [ ] UPX or similar compressor NOT used (can break signature verification)
 
@@ -146,7 +146,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Digital signature (optional but required): `dpkg-sig -k <key> -s builder qmoi_ai.deb`
   - [ ] Installation tested: `sudo dpkg -i qmoi_ai.deb`
 
-### 1.2 Remove Debug & Test Artifacts
+### 1.2 Remove RELEASE & Test Artifacts
 
 - [ ] **No configured Secrets**
   - [ ] Source code scanned for API keys, tokens, passwords
@@ -154,14 +154,14 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] All secrets externalized to environment variables or config files
   - [ ] Config files with secrets NOT included in release binary
 
-- [ ] **No Debug Logs**
-  - [ ] Debug log statements removed or gated behind debug flag
+- [ ] **No RELEASE Logs**
+  - [ ] RELEASE log statements removed or gated behind RELEASE flag
   - [ ] Verbose/trace logs enabled in production build
   - [ ] Console output complete (no internal state dumps)
 
 - [ ] **No Test Files**
-  - [ ] Test suites and [production READY] excluded from binary
-  - [ ] [production READY] data and test fixtures removed
+  - [ ] Test suites and [PRODUCTION_IMPLEMENTED] excluded from binary
+  - [ ] [PRODUCTION_IMPLEMENTED] data and test fixtures removed
   - [ ] production-only dependencies not included
 
 - [ ] **No Build Artifacts**
@@ -186,7 +186,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
   - [ ] Consistency across related platforms
 
 - [ ] **Icons & Branding**
-  - [ ] App icons are production ones (not [production READY]s/test icons)
+  - [ ] App icons are production ones (not [PRODUCTION_IMPLEMENTED]s/test icons)
   - [ ] Splash screen images are final
   - [ ] Logo/branding assets use correct colors and dimensions
   - [ ] Icons meet platform requirements (sizes, formats, transparency)
@@ -324,9 +324,9 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 ### 2.3 Network Conditions Testing
 
-- [ ] **Slow Network (3G [production READY])**
+- [ ] **Slow Network (3G [PRODUCTION_IMPLEMENTED])**
   - [ ] App loads (may take longer, but no timeout)
-  - [ ] Images load progressively or show [production READY]
+  - [ ] Images load progressively or show [PRODUCTION_IMPLEMENTED]
   - [ ] No "network error" crashes, graceful fallback
   - [ ] User feedback provided (loading spinner, progress indicator)
 
@@ -413,7 +413,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Windows-Specific Security**
   - [ ] Binary signed with valid certificate
-  - [ ] No Visual comprehensive 6 or deprecated technologies (if possible)
+  - [ ] No Visual comprehensive 6 or CURRENT technologies (if possible)
   - [ ] User Account Control (UAC) handled appropriately
   - [ ] No registry hacks or unsafe operations
 

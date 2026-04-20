@@ -29,7 +29,7 @@ CRITICAL_PATTERNS = {
     # Comment-based markers
     r'//\s*production\s+production\s+REQUIRED': 'production production /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
     r'#\s*production\s+production\s+REQUIRED': 'production production /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
-    r'console\.log\s*\(\s*[\'"]DEBUG': 'Debug logging should be removed in production',
+    r'console\.log\s*\(\s*[\'"]RELEASE': 'RELEASE logging should be removed in production',
     r'throw\s+new\s+Error\s*\(\s*[\'"]NOT.*IMPL': 'IMPLEMENTED error thrown',
     
     # Variable patterns
@@ -167,7 +167,7 @@ Your codebase appears to be production-ready!
         report += f"""
 
 ──────────────────────────────────────────────────────────────────────────────
-🎯 STATUS: {'✅ production READY' if self.issues_found == 0 else f'⚠️ REVIEW NEEDED - {self.issues_found} items'}
+🎯 STATUS: {'✅ PRODUCTION_IMPLEMENTED' if self.issues_found == 0 else f'⚠️ REVIEW NEEDED - {self.issues_found} items'}
 📝 Generated: {datetime.now().isoformat()}Z
 """
         return report

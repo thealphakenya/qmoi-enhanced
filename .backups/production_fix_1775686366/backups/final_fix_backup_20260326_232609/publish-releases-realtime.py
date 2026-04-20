@@ -131,7 +131,7 @@ class QMOIReleasePublisher:
                         filepath = os.path.join(root, file)
                         self.assets.append(filepath)
                         self.stats['discovered'] += 1
-                        logger.debug(f"    Found: {file}")
+                        logger.RELEASE(f"    Found: {file}")
 
         # Remove duplicates and sort
         self.assets = sorted(list(set(self.assets)))
@@ -204,7 +204,7 @@ class QMOIReleasePublisher:
                 if checksum:
                     self.checksums[filepath] = checksum
                     self.stats['checksums'] += 1
-                    logger.debug(f"  {os.path.basename(filepath)}: {checksum[:16]}...")
+                    logger.RELEASE(f"  {os.path.basename(filepath)}: {checksum[:16]}...")
 
         logger.info(f"✅ Generated {self.stats['checksums']} checksums")
         return self.stats['checksums']
@@ -218,7 +218,7 @@ class QMOIReleasePublisher:
         notes = f"""# 🚀 QMOI AI Suite Release {self.version}
 
 **Released:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
-**Status:** {'🟡 final' if self.final else '🟢 production Ready'}
+**Status:** {'🟡 final' if self.final else '🟢 PRODUCTION_IMPLEMENTED'}
 **Repository:** {self.repo}
 
 ---
@@ -227,12 +227,12 @@ class QMOIReleasePublisher:
 
 | App | Version | Status |
 |-----|---------|--------|
-| QMOI AI | v1.2.3 | ✅ production Ready |
-| QCity | v2.0.1 | ✅ production Ready |
-| QShare | v1.0.0 | ✅ production Ready |
-| Yap | v1.1.0 | ✅ production Ready |
-| QStore | v1.0.0 | ✅ production Ready |
-| QVillage | v1.0.0 | ✅ production Ready |
+| QMOI AI | v1.2.3 | ✅ PRODUCTION_IMPLEMENTED |
+| QCity | v2.0.1 | ✅ PRODUCTION_IMPLEMENTED |
+| QShare | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
+| Yap | v1.1.0 | ✅ PRODUCTION_IMPLEMENTED |
+| QStore | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
+| QVillage | v1.0.0 | ✅ PRODUCTION_IMPLEMENTED |
 
 ---
 
@@ -440,7 +440,7 @@ Examples:
     args = parser.parse_args()
 
     if args.verbose:
-        logger.setLevel(logging.DEBUG)
+        logger.setLevel(logging.RELEASE)
 
     # Run publisher
     publisher = QMOIReleasePublisher(

@@ -13,7 +13,7 @@ title: "QMOI System"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI System ✅ PRODUCTION READY
+# QMOI System ✅ PRODUCTION_IMPLEMENTED
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
 

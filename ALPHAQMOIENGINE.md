@@ -13,7 +13,7 @@ title: "latest QMOI ENGINE"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# latest QMOI ENGINE ✅ PRODUCTION READY
+# latest QMOI ENGINE ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

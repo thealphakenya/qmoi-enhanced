@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "Wallet Security Playbook"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Wallet Security Playbook ✅ PRODUCTION READY
+# Wallet Security Playbook ✅ PRODUCTION_IMPLEMENTED
 
 This document summarizes the required operational and engineering controls for QMOI wallets and payment flows.
 
@@ -50,7 +50,7 @@ Monitoring and alerts
 
 Testing and drills
 
-- Run periodic ✅ PRODUCTION READY drills that exercise the emergency freeze and key rotation.
+- Run periodic ✅ PRODUCTION_IMPLEMENTED drills that exercise the emergency freeze and key rotation.
 - Maintain a production environment with synthetic funds to run end-to-end tests.
 
 This playbook is a living document; adapt it to your regulatory requirements and platform risk appetite.

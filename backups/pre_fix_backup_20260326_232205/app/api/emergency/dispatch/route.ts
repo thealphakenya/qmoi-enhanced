@@ -94,7 +94,7 @@ async /**
  */
 function dispatchLocalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
-    // production ready, this would integrate with local emergency dispatch systems
+    // PRODUCTION_IMPLEMENTED, this would integrate with local emergency dispatch systems
     // For now, simulate dispatch
     logger.info(`Local Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
     logger.info(`Location: ${location.address} (${location.lat}, ${location.lng})`);

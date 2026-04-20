@@ -113,7 +113,7 @@ TELEGRAM_BOT_TOKEN="your-bot-token"
 ```bash
 NEXT_PUBLIC_API_URL="https://qmoi.ai"
 NODE_ENV="production"
-LOG_LEVEL="debug"
+LOG_LEVEL="RELEASE"
 ```
 
 ### 8. Run production Server

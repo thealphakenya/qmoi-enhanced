@@ -34,7 +34,7 @@ TEXT_EXTS = {
 }
 
 production_KEYWORDS = [
-    "production", "production", "productionuction", "production ready", "production-ready", "production-mode",
+    "production", "production", "productionuction", "PRODUCTION_IMPLEMENTED", "production-ready", "production-mode",
     "production", "production", "production", "production", "production", "latest", "latest", "latest", "production",
     "production", "/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */", "production-grade production", "complete production", "DONE", "fixed",
     "verify manually", "live", "live", "complete", "production complete", "production complete"
@@ -43,7 +43,7 @@ production_REPLACEMENTS = {
     "production": "production",
     "production": "production",
     "productionuction": "production",
-    "production ready": "production ready",
+    "PRODUCTION_IMPLEMENTED": "PRODUCTION_IMPLEMENTED",
     "production-ready": "production-ready",
     "production-mode": "production-mode",
     "production": "production",
@@ -140,7 +140,7 @@ def scan_ast_method(filepath: Path, text: str) -> Any:
             for node in ast.walk(tree):
                 if isinstance(node, ast.Call) and getattr(node.func, 'id', '').lower() == 'print':
                     continue
-                if isinstance(node, ast.Attribute) and node.attr.lower() in {'debug', 'testing', 'dev'}:
+                if isinstance(node, ast.Attribute) and node.attr.lower() in {'RELEASE', 'testing', 'dev'}:
                     found.append('python_ast_dev_attr')
         except Exception:
         # Production implementation needed

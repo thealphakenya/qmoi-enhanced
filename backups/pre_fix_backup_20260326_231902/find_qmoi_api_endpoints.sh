@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 # Script: find_qmoi_api_endpoints.sh
 # Purpose: Locate all API endpoints in the QMOI codebase and output a summary for documentation cross-checking.

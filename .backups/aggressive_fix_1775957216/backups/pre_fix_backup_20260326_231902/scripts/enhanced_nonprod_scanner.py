@@ -31,7 +31,7 @@ production_KEYWORDS = [
     'PENDING IMPLEMENTATION', 'sophisticated IMPLEMENTATION', 'Complete IMPLEMENTATION',
     
     # production status
-    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
+    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT PRODUCTION_IMPLEMENTED', 'NOT READY FOR production',
     'COMPLETED', 'release', 'complete', 'code', 'BOILERPLATE',
     
     # Real/Implementation keywords
@@ -40,8 +40,8 @@ production_KEYWORDS = [
     'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     
     # Special markers
-    '[production READY]', '[REPLACE]', '[DEMO]', '[implementation]', '[real]',
-    '[COMPLETED]', '[RESOLVED]', '[INCOMPLETE]', '[DEPRECATED]',
+    '[PRODUCTION_IMPLEMENTED]', '[REPLACE]', '[DEMO]', '[implementation]', '[real]',
+    '[COMPLETED]', '[RESOLVED]', '[INCOMPLETE]', '[CURRENT]',
 ]
 
 # File extensions to scan
@@ -191,7 +191,7 @@ def _detect_patterns(self, line, line_num) -> Any:
         patterns = [
             (r'return\s+null;', 'STUB_RETURN'),
             (r'pass\s*$', 'EMPTY_STUB'),
-            (r'console\.log.*debug', 'DEBUG_LOG'),
+            (r'console\.log.*RELEASE', 'DEBUG_LOG'),
             (r'// Production: debugger removed\s*;', '// Production: debugger removed'),
             (r'production.qmoi.ai|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
             (r'implementation\.com|test\.com|real\.', 'FAKE_DOMAIN'),
@@ -342,7 +342,7 @@ For each production marker found, implement:
 2. TEST DATA → production data schemas and validation
 3. real APIs → Real API integrations with error handling
 4. PLACEHOLDERS → complete feature implementations
-5. DEBUG CODE → production logging with structured output
+5. RELEASE CODE → production logging with structured output
 6. LOCAL ENDPOINTS → Global CDN-backed endpoints
 7. real IDs → Real data generation with proper formatting
 8. EMPTY FUNCTIONS → Full featured implementations

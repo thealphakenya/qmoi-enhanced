@@ -1,4 +1,4 @@
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "LION Features (detailed)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -15,7 +15,7 @@ title: "LION Features (detailed)"
 
 <!-- LION_VALIDATION_END -->
 
-# LION Features (detailed) ✅ PRODUCTION READY
+# LION Features (detailed) ✅ PRODUCTION_IMPLEMENTED
 
 This document defines the features and responsibilities of the LION runtime (Lion OS / Lion agent) and how it enhances QMOI across platforms.
 

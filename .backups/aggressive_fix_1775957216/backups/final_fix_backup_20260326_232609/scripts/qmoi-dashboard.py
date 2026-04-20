@@ -307,4 +307,4 @@ def get_doc_history() -> Any:
     return 'No documentation history file found.'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5055, DEBUG = false) 
+    app.run(host='0.0.0.0', port=5055, RELEASE = false) 

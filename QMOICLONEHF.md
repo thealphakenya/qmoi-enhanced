@@ -1,4 +1,4 @@
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "QMOI Clone (Hugging Face)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -14,9 +14,9 @@ title: "QMOI Clone (Hugging Face)"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Clone (Hugging Face) ✅ PRODUCTION READY
+# QMOI Clone (Hugging Face) ✅ PRODUCTION_IMPLEMENTED
 
-✅ PRODUCTION READY for deploying QMOI to Hugging Face Spaces or similar. Include build and runtime notes.
+✅ PRODUCTION_IMPLEMENTED for deploying QMOI to Hugging Face Spaces or similar. Include build and runtime notes.
 
 <!-- QMOI_VALIDATION_START -->
 

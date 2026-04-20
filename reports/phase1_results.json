@@ -4,7 +4,7 @@
   "total_fixes": 0,
   "sample_files": [],
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:16:04.554961"
 }

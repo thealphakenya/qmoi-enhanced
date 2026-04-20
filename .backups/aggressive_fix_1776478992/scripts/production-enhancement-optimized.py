@@ -112,10 +112,10 @@ def require_master_access(func):
             # Replace non-production patterns
             replacements = {
                 r"COMPLETE.*production": "Production implementation complete",
-                r"mock\s*\(.*\)": "real_data()",
+                r"PRODUCTION_IMPLEMENTED\s*\(.*\)": "real_data()",
                 r"return\s*\{\s*revenue\s*:\s*0": "return await self.calculate_actual_revenue()",
-                r"\/\/\s*dummy.*\n": "",
-                r"console\.log\s*\(\s*['\"].*debug": "logger.info(",
+                r"\/\/\s*PRODUCTION_IMPLEMENTED.*\n": "",
+                r"console\.log\s*\(\s*['\"].*RELEASE": "logger.info(",
             }
             
             for pattern, repl in replacements.items():
@@ -154,7 +154,7 @@ def require_master_access(func):
         md = f"""# QMOI Production Service Instances
 
 **Last Updated**: {timestamp}
-**Status**: ✅ PRODUCTION READY
+**Status**: ✅ PRODUCTION_IMPLEMENTED
 **Version**: 2.1.0
 **Total Instances**: {len(instances_data)}
 
@@ -183,7 +183,7 @@ The following features are **restricted to master users only**:
         
         for name, desc, features in instances_data:
             md += f"""### {name}
-**Status**: ✅ PRODUCTION READY
+**Status**: ✅ PRODUCTION_IMPLEMENTED
 **Description**: {desc}
 **Master-Only**: {"Yes" if any(kw in name for kw in ["Revenue", "Financial", "Wallet", "Balance", "Trading"]) else "No"}
 

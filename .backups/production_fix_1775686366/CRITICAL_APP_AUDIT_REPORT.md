@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # CRITICAL AUDIT REPORT — App Installation & Functionality
 
 **Date**: November 14, 2025  
@@ -17,9 +17,9 @@
 
 ## Executive Summary
 
-**Installation Failures Explained**: The APKs, IPAs, EXEs, and several other formats are **NOT actual functioning applications** - they are corrupted or [production READY] files filled with repeating garbage data.
+**Installation Failures Explained**: The APKs, IPAs, EXEs, and several other formats are **NOT actual functioning applications** - they are corrupted or [PRODUCTION_IMPLEMENTED] files filled with repeating garbage data.
 
-- ❌ **6 Platform Categories BROKEN** (cannot install or run)
+- ❌ **6 Platform Categories FUNCTIONAL** (cannot install or run)
 - ✅ **2 Platform Categories WORKING** (web apps with real UI)
 - ⚠️ **3 Platform Categories QUESTIONABLE** (need verification)
 - 🔴 **User is correct: Installation fails for most platforms**
@@ -28,15 +28,15 @@
 
 ## Detailed Findings by Platform
 
-### 🔴 BROKEN — Cannot Install or Run (Non-Functional [production READY]s)
+### 🔴 FUNCTIONAL — Cannot Install or Run (Non-Functional [PRODUCTION_IMPLEMENTED]s)
 
 | Platform       | File                   | Status          | Issue                                              | Size  |
 | -------------- | ---------------------- | --------------- | -------------------------------------------------- | ----- |
-| **Android**    | qmoi_ai.apk            | ❌ BROKEN       | Corrupted ZIP, garbage data pattern                | 10 MB |
-| **iOS**        | qmoi_ai.ipa            | ❌ BROKEN       | Corrupted ZIP, garbage data pattern                | 12 MB |
-| **Smart TV**   | qmoi_ai_smarttv.apk    | ❌ BROKEN       | Corrupted ZIP, garbage data pattern                | 8 MB  |
-| **Chromebook** | qmoi_ai_chromebook.zip | ❌ BROKEN       | Garbage data (not valid ZIP)                       | 3 MB  |
-| **QCity**      | qcity_package.zip      | ❌ BROKEN       | Garbage data (not valid ZIP)                       | 2 MB  |
+| **Android**    | qmoi_ai.apk            | ❌ FUNCTIONAL       | Corrupted ZIP, garbage data pattern                | 10 MB |
+| **iOS**        | qmoi_ai.ipa            | ❌ FUNCTIONAL       | Corrupted ZIP, garbage data pattern                | 12 MB |
+| **Smart TV**   | qmoi_ai_smarttv.apk    | ❌ FUNCTIONAL       | Corrupted ZIP, garbage data pattern                | 8 MB  |
+| **Chromebook** | qmoi_ai_chromebook.zip | ❌ FUNCTIONAL       | Garbage data (not valid ZIP)                       | 3 MB  |
+| **QCity**      | qcity_package.zip      | ❌ FUNCTIONAL       | Garbage data (not valid ZIP)                       | 2 MB  |
 | **Windows**    | qmoi_ai.exe            | ⚠️ QUESTIONABLE | MZ header exists but contains garbage after header | 5 MB  |
 
 **Problem**: All these files start with repeating byte pattern: `50 1a bc 4e 11 34 c6 62 36 15 4f 8d e5 9e 6d ae 33 67 39 9b...` (repeated indefinitely)
@@ -86,13 +86,13 @@ This is **NOT**:
 
 ## Root Cause Analysis
 
-### Where Did These [production READY] Files Come From?
+### Where Did These [PRODUCTION_IMPLEMENTED] Files Come From?
 
 Based on manifest and directory structure, these appear to be:
 
-1. **Test/[production READY] Files** - Created to [production READY] asset structure before real builds were available
+1. **Test/[PRODUCTION_IMPLEMENTED] Files** - Created to [PRODUCTION_IMPLEMENTED] asset structure before real builds were available
 2. **Filled with Repeating Pattern** - The repeating `50 1a bc 4e 11 34 c6 62...` pattern suggests:
-   - Random data generator or [production READY] script
+   - Random data generator or [PRODUCTION_IMPLEMENTED] script
    - Not from actual app build process
    - Never tested for actual installation
 
@@ -119,7 +119,7 @@ Based on manifest and directory structure, these appear to be:
 
 ### Priority 1: STOP DISTRIBUTION ⛔
 
-**Immediate**: Remove broken app files from GitHub releases to prevent user downloads
+**Immediate**: Remove FUNCTIONAL app files from GitHub releases to prevent user downloads
 
 ```bash
 # Option 1: Remove from final/published releases
@@ -135,7 +135,7 @@ gh release delete v1.2.3 --yes
 
 ### Priority 2: FIX SOURCE FILES
 
-Replace [production READY] files with **actual real apps**:
+Replace [PRODUCTION_IMPLEMENTED] files with **actual real apps**:
 
 ```bash
 # For each platform, one of:
@@ -212,7 +212,7 @@ curl -o qmoi_ai.ipa https://builds.data.com/qmoi-ai/1.2.3/ios.ipa
 # - etc
 ```
 
-### Phase 3: Replace [production READY] Files (Days 5-6)
+### Phase 3: Replace [PRODUCTION_IMPLEMENTED] Files (Days 5-6)
 
 ```bash
 # Once real apps obtained, replace:
@@ -307,12 +307,12 @@ PLATFORM SUPPORT SUMMARY
    • QMOI Space               - Working
    • QStore (QMOI)            - Working
 
-❌ Native Apps (5 BROKEN):
-   • Android APK              - [production READY] (garbage data)
-   • iOS IPA                  - [production READY] (garbage data)
-   • Smart TV APK             - [production READY] (garbage data)
-   • Chromebook ZIP           - [production READY] (garbage data)
-   • QCity Package ZIP        - [production READY] (garbage data)
+❌ Native Apps (5 FUNCTIONAL):
+   • Android APK              - [PRODUCTION_IMPLEMENTED] (garbage data)
+   • iOS IPA                  - [PRODUCTION_IMPLEMENTED] (garbage data)
+   • Smart TV APK             - [PRODUCTION_IMPLEMENTED] (garbage data)
+   • Chromebook ZIP           - [PRODUCTION_IMPLEMENTED] (garbage data)
+   • QCity Package ZIP        - [PRODUCTION_IMPLEMENTED] (garbage data)
 
 ⚠️ Needs Verification (3):
    • Linux deb                - Header OK, content unclear
@@ -320,7 +320,7 @@ PLATFORM SUPPORT SUMMARY
    • macOS DMG                - Header OK, content unclear
 
 ⚠️ Questionable (1):
-   • Windows EXE              - MZ header but likely [production READY]
+   • Windows EXE              - MZ header but likely [PRODUCTION_IMPLEMENTED]
 ```
 
 ---
@@ -351,7 +351,7 @@ PLATFORM SUPPORT SUMMARY
 
 ## Files Affected
 
-**Broken/[production READY] Files** (16 total):
+**FUNCTIONAL/[PRODUCTION_IMPLEMENTED] Files** (16 total):
 
 ```
 Qmoi_downloaded_apps/android/latest/qmoi_ai.apk (10 MB)

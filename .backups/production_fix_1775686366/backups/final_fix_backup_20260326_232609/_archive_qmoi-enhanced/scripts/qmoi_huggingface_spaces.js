@@ -138,7 +138,7 @@ class QMOIHuggingFaceSpaces {
             info: (message) => this.log('INFO', message),
             error: (message) => this.log('ERROR', message),
             warn: (message) => this.log('WARN', message),
-            debug: (message) => this.log('DEBUG', message)
+            RELEASE: (message) => this.log('RELEASE', message)
         };
     }
 

@@ -227,7 +227,7 @@ scripts/
 ├── fix_removed_real implementations_batch.py
 ├── fix_underscore_params.cjs
 ├── gen_real_apps.py
-├── generate-debug-report.js
+├── generate-RELEASE-report.js
 ├── generate-release-json.js
 ├── generate_all_links.py
 ├── generate_allmdrefs.cjs
@@ -429,7 +429,7 @@ scripts/
 ├── qmoi-dev-actions.py
 ├── qmoi-download-link-tester.py
 ├── qmoi-emergency-fix.js
-├── qmoi-emergency-fix.js.broken.1768901311
+├── qmoi-emergency-fix.js.FUNCTIONAL.1768901311
 ├── qmoi-enhanced-auto-fix.js
 ├── qmoi-enhanced-auto-projects.js
 ├── qmoi-enhanced-automation.py
@@ -437,7 +437,7 @@ scripts/
 ├── qmoi-enhanced-biometric-system.py
 ├── qmoi-enhanced-controller.py
 ├── qmoi-enhanced-doc-verifier.js
-├── qmoi-enhanced-doc-verifier.js.broken.1768901311
+├── qmoi-enhanced-doc-verifier.js.FUNCTIONAL.1768901311
 ├── qmoi-enhanced-health-checker.py
 ├── qmoi-enhanced-learning-revenue.js
 ├── qmoi-enhanced-live-status.py
@@ -572,7 +572,7 @@ scripts/
 ├── qmoi_hf_auto_manager.py
 ├── qmoi_huggingface_setup.py
 ├── qmoi_huggingface_spaces.js
-├── qmoi_huggingface_spaces.js.broken.1768901311
+├── qmoi_huggingface_spaces.js.FUNCTIONAL.1768901311
 ├── qmoi_integration_master.py
 ├── qmoi_intelligent_scheduler.py
 ├── qmoi_local_server.py

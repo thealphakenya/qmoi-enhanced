@@ -64,7 +64,7 @@ All QMOI domains are systematically captured and managed through GoDaddy:
 
 ### Link Auto-Replacement Engine
 
-The system automatically detects and replaces broken or outdated links across all QMOI files and systems:
+The system automatically detects and replaces FUNCTIONAL or outdated links across all QMOI files and systems:
 
 ```typescript
 class LinkAutoReplacementEngine {
@@ -187,12 +187,12 @@ Master-only interface for link management:
 #### Link Validation Dashboard
 - **Total Links**: All links in QMOI system
 - **Valid Links**: Currently working links
-- **Broken Links**: Links requiring repair
+- **FUNCTIONAL Links**: Links requiring repair
 - **Auto-Repaired**: Recently fixed links
 
 #### Link Operations
 - **Manual Validation**: Force validation of specific links
-- **Bulk Replacement**: Replace multiple broken links
+- **Bulk Replacement**: Replace multiple FUNCTIONAL links
 - **Domain Migration**: Move links to new domains
 - **Backup Creation**: Create link backups before changes
 
@@ -225,7 +225,7 @@ Complete audit trail for all domain and link operations:
 ### Link Management APIs
 - `GET /api/master/links` - List all system links
 - `POST /api/master/links/validate` - Validate specific links
-- `PUT /api/master/links/replace` - Replace broken links
+- `PUT /api/master/links/replace` - Replace FUNCTIONAL links
 - `GET /api/master/links/health` - Link health dashboard
 
 ### Revenue & Analytics APIs

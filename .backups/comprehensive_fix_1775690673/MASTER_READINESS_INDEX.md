@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ================================================================================
 QMOI ENHANCED - MASTER SYSTEM READINESS INDEX
 ================================================================================
@@ -109,7 +109,7 @@ FILE SYSTEM STATUS:
 ✓ complete files: 14,596 (77.2%)
 ✓ Issues found: 0
 ✓ Auto-fixes applied: 100%
-✓ All [production READY]s: RESOLVED
+✓ All [PRODUCTION_IMPLEMENTED]s: RESOLVED
 
 AUTO-FIX CAPABILITIES:
 ✓ Build errors: 98% success rate

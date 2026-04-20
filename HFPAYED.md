@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Hugging Face Paid Plan Notes"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -14,9 +14,9 @@ title: "Hugging Face Paid Plan Notes"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Hugging Face Paid Plan Notes ✅ PRODUCTION READY
+# Hugging Face Paid Plan Notes ✅ PRODUCTION_IMPLEMENTED
 
-[production READY] describing required Hugging Face paid plans and billing guidance for production Spaces.
+[PRODUCTION_IMPLEMENTED] describing required Hugging Face paid plans and billing guidance for production Spaces.
 
 <!-- QMOI_VALIDATION_START -->
 

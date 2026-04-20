@@ -70,6 +70,6 @@ for (const [cmd, label] of checks) {
   results.push(result);
 }
 
-const summary = `🧠 *QMOI Debug Summary*\n\n${results.join("\n")}`;
+const summary = `🧠 *QMOI RELEASE Summary*\n\n${results.join("\n")}`;
 logger.info(`\n${summary}`);
 sendTelegramReport(summary);

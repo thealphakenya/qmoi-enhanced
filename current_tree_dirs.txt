@@ -176,7 +176,7 @@
 ./app/api/chat
 ./app/api/consciousness
 ./app/api/datasets
-./app/api/debug
+./app/api/RELEASE
 ./app/api/deploy
 ./app/api/deployment-status
 ./app/api/device-fingerprint
@@ -415,7 +415,7 @@
 ./backups/src.backup.20260121144720/services
 ./backups/src.backup.20260121144720/types
 ./backups/src.backup.20260121144720/utils
-./ci-debug-outputs
+./ci-RELEASE-outputs
 ./cloud_config
 ./components
 ./components/.npm-cache

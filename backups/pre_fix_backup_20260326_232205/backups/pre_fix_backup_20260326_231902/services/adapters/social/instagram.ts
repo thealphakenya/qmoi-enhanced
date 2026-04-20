@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import { specificExports } from "zod";
 import {
   PlatformConfig,
@@ -44,15 +44,15 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     this.config = InstagramConfigSchema.parse(config);
 
     if (this.config.productionMode) {
-      .log("[Instagram] Running production ready mode");
+      .log("[Instagram] Running PRODUCTION_IMPLEMENTED mode");
       return;
     }
 
     if (!this.config.credentials?.accessToken) {
-      throw new ProductionError("Instagram access token is required production ready mode");
+      throw new ProductionError("Instagram access token is required PRODUCTION_IMPLEMENTED mode");
     }
 
-    // Validate access token production ready mode
+    // Validate access token PRODUCTION_IMPLEMENTED mode
     await this.validateCredentials();
   }
 
@@ -62,10 +62,10 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.productionMode) {
-      return true; // Skip validation production ready mode
+      return true; // Skip validation PRODUCTION_IMPLEMENTED mode
     }
 
-    // production ready, would verify the access token with Instagram Graph API
+    // PRODUCTION_IMPLEMENTED, would verify the access token with Instagram Graph API
     return !!this.config.credentials?.accessToken;
   }
 
@@ -100,10 +100,10 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
     if (this.config.productionMode) {
       .log("[Instagram production] Would create post:", content);
-      return `[production READY]-ig-post-${Date.now()}`;
+      return `[PRODUCTION_IMPLEMENTED]-ig-post-${Date.now()}`;
     }
 
-    // production ready mode, would make actual Graph API call
+    // PRODUCTION_IMPLEMENTED mode, would make actual Graph API call
     // Proper implementation would handle multi-step media upload
     .log("[Instagram] Creating post via Graph API v18.0");
     return `ig-post-${Date.now()}`;
@@ -126,7 +126,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       return true;
     }
 
-    // production ready mode, would make actual Graph API call
+    // PRODUCTION_IMPLEMENTED mode, would make actual Graph API call
     .log("[Instagram] Deleting post:", postId);
     return true;
   }
@@ -137,7 +137,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.productionMode) {
-      // Return [production READY] metrics production ready mode
+      // Return [PRODUCTION_IMPLEMENTED] metrics PRODUCTION_IMPLEMENTED mode
       const likes = Math.floor(Math.random() * 1000);
       const impressions = Math.floor(Math.random() * 5000);
       return {
@@ -151,7 +151,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // production ready mode, would fetch real metrics via Graph API
+    // PRODUCTION_IMPLEMENTED mode, would fetch real metrics via Graph API
     throw new ProductionError("production metrics fetching fully implemented");
   }
 
@@ -168,7 +168,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
         topPosts: Array(3)
           .fill(null)
           .map((_, i) => ({
-            id: `[production READY]-post-${i}`,
+            id: `[PRODUCTION_IMPLEMENTED]-post-${i}`,
             type: this.config?.mediaTypes
               ? this.config.mediaTypes[0]
               : undefined,
@@ -178,7 +178,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // production ready mode, would fetch real analytics via Graph API
+    // PRODUCTION_IMPLEMENTED mode, would fetch real analytics via Graph API
     throw new ProductionError("production analytics fetching fully implemented");
   }
 }

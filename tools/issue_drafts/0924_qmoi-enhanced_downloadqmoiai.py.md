@@ -7,21 +7,21 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for qmoi-enhanced/downloadqmoiai.py"
 generated: 2025-11-08T16:06:38.795194Z
 ---
 
-# Review needed: qmoi-enhanced/downloadqmoiai.py ✅ PRODUCTION READY
+# Review needed: qmoi-enhanced/downloadqmoiai.py ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -50,7 +50,7 @@ PLATFORM_MAP = {
     'chromebook': {'asset_ext': '.zip', 'folder': 'chromebook'},
 }
 
-# --- New: Extract all app download links from QMOIAPPS.md --- ✅ PRODUCTION READY
+# --- New: Extract all app download links from QMOIAPPS.md --- ✅ PRODUCTION_IMPLEMENTED
 def extract_app_downloads(md_path='QMOIAPPS.md'):
     apps = []
     with open(md_path, 'r', encoding='utf-8') as f:
@@ -67,7 +67,7 @@ def extract_app_downloads(md_path='QMOIAPPS.md'):
             apps.append({'name': name, 'version': version, 'platform': platform.lower(), 'url': url})
     return apps
 
-# --- New: Download all apps for all platforms --- ✅ PRODUCTION READY
+# --- New: Download all apps for all platforms --- ✅ PRODUCTION_IMPLEMENTED
 def ensure_download_dir(platform, version="latest"):
     dir_path = os.path.join("Qmoi_downloaded_apps", platform, version)
     os.makedirs(dir_path, exist_ok=True)

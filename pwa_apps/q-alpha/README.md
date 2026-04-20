@@ -13,7 +13,7 @@ title: "Q latest (PWA)"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Q latest (PWA) ✅ PRODUCTION READY
+# Q latest (PWA) ✅ PRODUCTION_IMPLEMENTED
 
 Q latest is a robust Progressive Web App that aggregates QMOI, QMOI Space, and QCity into a single interface with a sophisticated menu to switch between them. This scaffold is intentionally complete — QMOI autoprod should populate the full UI features and assets.
 

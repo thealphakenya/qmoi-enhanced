@@ -76,7 +76,7 @@ BASE_DIR = Path(__file__).parent.parent
 
 # Required sections for production-ready .md files
 REQUIRED_SECTIONS = [
-    'production ready',
+    'PRODUCTION_IMPLEMENTED',
     'implementation',
     'validation',
     'health check'
@@ -160,7 +160,7 @@ def analyze_md_file(file_path: Path) -> dict:
 
         if not analysis['has_production_marker']:
             analysis['issues'].append('Missing production readiness marker')
-            analysis['recommendations'].append('Add "✅ PRODUCTION READY" marker')
+            analysis['recommendations'].append('Add "✅ PRODUCTION_IMPLEMENTED" marker')
 
         if not analysis['has_lion_validation']:
             analysis['issues'].append('Missing Lion validation')
@@ -212,8 +212,8 @@ def apply_quality_improvements(file_path: Path, analysis: dict) -> bool:
             title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
             if title_match:
                 title = title_match.group(1)
-                if '✅ PRODUCTION READY' not in title:
-                    new_title = f"# {title} ✅ PRODUCTION READY"
+                if '✅ PRODUCTION_IMPLEMENTED' not in title:
+                    new_title = f"# {title} ✅ PRODUCTION_IMPLEMENTED"
                     content = content.replace(title_match.group(0), new_title, 1)
                     modified = True
                     logger.info(f"Added production marker to {file_path.name}")

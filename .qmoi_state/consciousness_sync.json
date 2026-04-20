@@ -27,7 +27,7 @@
   ],
   "next_action": "Run npm run type-check to verify compilation success",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:41.945600"
 }

@@ -350,7 +350,7 @@ production-ready and operational
 
 ### Self-Work
 - `POST /api/qmoi/self-work/code-review` - Code review
-- `POST /api/qmoi/self-work/debug` - Debug code
+- `POST /api/qmoi/self-work/RELEASE` - RELEASE code
 - `POST /api/qmoi/self-work/run-tests` - Run tests
 
 ### Global APIs

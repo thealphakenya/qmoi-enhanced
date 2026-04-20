@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import WalletService, { [production READY]Adapter, TestnetAdapter } from "../../src/wallet";
+import WalletService, { [PRODUCTION_IMPLEMENTED]Adapter, TestnetAdapter } from "../../src/wallet";
 
-describe("WalletService with TestnetAdapter and [production READY]Adapter", () => {
+describe("WalletService with TestnetAdapter and [PRODUCTION_IMPLEMENTED]Adapter", () => {
   const stateDir = ".qmoi_state_test";
   let svc: unknown;
 
@@ -24,19 +24,19 @@ describe("WalletService with TestnetAdapter and [production READY]Adapter", () =
   });
 
   test("register adapters and get balances", async () => {
-    const [production READY] = new [production READY]Adapter("[production READY]-1", true);
+    const [PRODUCTION_IMPLEMENTED] = new [PRODUCTION_IMPLEMENTED]Adapter("[PRODUCTION_IMPLEMENTED]-1", true);
     const testnet = new TestnetAdapter("test-1");
 
-    svc.registerAdapter([production READY]);
+    svc.registerAdapter([PRODUCTION_IMPLEMENTED]);
     svc.registerAdapter(testnet);
 
     const balances = await svc.getAllBalances();
     expect(balances).toBeDefined();
-    expect(balances["[production READY]-1"]).toBeDefined();
+    expect(balances["[PRODUCTION_IMPLEMENTED]-1"]).toBeDefined();
     expect(balances["test-1"]).toBeDefined();
 
     // Check canonical amounts exist
-    expect(balances["[production READY]-1"].canonical).toHaveProperty("amount");
+    expect(balances["[PRODUCTION_IMPLEMENTED]-1"].canonical).toHaveProperty("amount");
     expect(balances["test-1"].canonical).toHaveProperty("amount");
   });
 });

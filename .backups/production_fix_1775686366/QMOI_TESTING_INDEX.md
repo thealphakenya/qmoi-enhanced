@@ -315,7 +315,7 @@ Tests will run automatically and show:
 | 404 on endpoints             | Check API routes exist            | Check  |
 | Slow responses (> 5s)        | Close other apps, check resources | System |
 | Voice test fails             | This is EXPECTED (browser-based)  | Normal |
-| All tests fail               | Check prod server output           | Debug  |
+| All tests fail               | Check prod server output           | RELEASE  |
 
 ---
 

@@ -1772,3 +1772,12 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+<!-- QMOI_BULK_DOC_ENHANCER_START: Bulk Automation Script Integration -->
+## Bulk Automation Script Integration
+
+- Adds `scripts/qmoi_bulk_doc_enhancer.py` as the canonical bulk documentation and production readiness updater.
+- This script updates core markdown files, automation inventories, and project structure metadata in bulk.
+- The enhancer supports self-updating behavior, meaning it can upgrade its own documentation and section structure as QMOI evolves.
+- It is designed to work from QVillage, offline caches, and online sync modes, so documentation and production plans stay current.
+- Includes guidance for `ALLAUTO.md`, `QMOI_AUTODEV.md`, `QMOIAUTODEV.md`, and all automation-related docs to remain synchronized.
+<!-- QMOI_BULK_DOC_ENHANCER_END: Bulk Automation Script Integration -->

@@ -5,7 +5,7 @@
   "cloud_storage": true,
   "auto_scaling": true,
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:45.800118"
 }

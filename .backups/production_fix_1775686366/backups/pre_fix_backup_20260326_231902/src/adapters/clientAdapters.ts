@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // Client-side adapters for production integrations with parallel execution support
 // Features: Caching, retry logic, background operations, _request queuing, error recovery
 // These call backend API endpoints (preferred) which should implement real third-party integrations.
@@ -60,7 +60,7 @@ function isCacheValid<T>(entry: CacheEntry<T>): boolean {
 function getFromCache<T>(key: string): T | null {
   const entry = cache.get(key);
   if (entry && isCacheValid(entry)) {
-    console.debug(`[Cache HIT] ${key}`);
+    console.RELEASE(`[Cache HIT] ${key}`);
     return entry.data as unknown as T;
   }
   if (entry) cache.delete(key);
@@ -108,7 +108,7 @@ async function deduplicateRequest<T>(
   fn: () => Promise<T>,
 ): Promise<T> {
   if (requestQueue.pending.has(key)) {
-    console.debug(`[Dedup] Reusing pending _request: ${key}`);
+    console.RELEASE(`[Dedup] Reusing pending _request: ${key}`);
     return requestQueue.pending.get(key) as Promise<T>;
   }
   const promise = fn().finally(() => {
@@ -276,7 +276,7 @@ export async function fetchAllInParallel(): Promise<{
   media: unknown[];
   health: unknown;
 }> {
-  console.debug("[Parallel] Fetching all resources in parallel...");
+  console.RELEASE("[Parallel] Fetching all resources in parallel...");
   const [media, health] = await Promise.allSettled([
     fetchMedia(),
     checkHealth(),
@@ -315,7 +315,7 @@ export function clearCache(pattern?: string): number {
   if (!pattern) {
     const size = cache.size;
     cache.clear();
-    console.debug(`[Cache] Cleared all ${size} entries`);
+    console.RELEASE(`[Cache] Cleared all ${size} entries`);
     return size;
   }
 
@@ -326,7 +326,7 @@ export function clearCache(pattern?: string): number {
       cleared++;
     }
   }
-  console.debug(`[Cache] Cleared ${cleared} entries matching "${pattern}"`);
+  console.RELEASE(`[Cache] Cleared ${cleared} entries matching "${pattern}"`);
   return cleared;
 }
 
@@ -363,7 +363,7 @@ if (typeof window !== "undefined") {
         }
       }
       if (removed > 0)
-        console.debug(`[Cache] Cleaned up ${removed} stale entries`);
+        console.RELEASE(`[Cache] Cleaned up ${removed} stale entries`);
     },
     10 * 60 * 1000,
   );

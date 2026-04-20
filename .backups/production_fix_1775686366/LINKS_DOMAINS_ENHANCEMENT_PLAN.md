@@ -22,7 +22,7 @@
 ### 2. required Link Validation System
 - No central system to validate all links across the codebase
 - Links in .md files not automatically checked
-- Broken links not detected until runtime
+- FUNCTIONAL links not detected until runtime
 - No auto-fix or recovery mechanism
 
 ### 3. QMOIMasterDashboard Icon/Feature Gaps
@@ -35,7 +35,7 @@
 ### 4. Documentation Sync Issues
 - ALLMDFILESREFS.md references may be outdated
 - No automated updates when links change
-- Broken references in documentation
+- FUNCTIONAL references in documentation
 - No consistency verification
 
 ---
@@ -50,7 +50,7 @@ Functionality:
 - Extract and categorize links by type
 - Validate each link against current domain registry
 - Generate detailed validation report
-- Identify and track broken links
+- Identify and track FUNCTIONAL links
 - Suggest fixes using fallback domains
 - Auto-apply fixes to files
 - Create audit logs
@@ -192,7 +192,7 @@ New Tab: "Domain Health"
 ### 3.3 Add Link Management Controls
 Buttons:
 - "Validate All Links" - Trigger comprehensive link check
-- "Fix Broken Links" - Auto-apply fixes from registry
+- "Fix FUNCTIONAL Links" - Auto-apply fixes from registry
 - "Generate Report" - Create validation report
 - "Sync Documentation" - Update all .md files
 - "Enable Auto-Fix" - Activate automatic link fixes
@@ -208,7 +208,7 @@ Buttons:
 ### 3.5 Add Visual Indicators & Charts
 - Domain health chart (uptime percentage)
 - Regional performance chart (response times by region)
-- Link validation chart (total/valid/broken)
+- Link validation chart (total/valid/FUNCTIONAL)
 - Failover activation chart (over time)
 - Request volume by domain
 
@@ -222,7 +222,7 @@ Buttons:
 Functionality:
 - Monitor all .md files listed in ALLMDFILESREFS.md
 - Schedule periodic link validation (every 6 hours)
-- Auto-detect broken links
+- Auto-detect FUNCTIONAL links
 - Auto-apply fixes from domain registry
 - Update links in documentation
 - Generate change reports
@@ -234,7 +234,7 @@ Process each file in ALLMDFILESREFS.md:
 1. Parse markdown content
 2. Extract all links
 3. Validate against registry
-4. Replace broken links with working versions
+4. Replace FUNCTIONAL links with working versions
 5. Add status badges
 6. Update modification timestamp
 7. Generate change summary
@@ -254,7 +254,7 @@ Endpoints:
 - `POST /api/links/validate` - Validate single link
 - `POST /api/links/validate-batch` - Validate multiple links
 - `GET /api/links/health` - Get link health status
-- `POST /api/links/auto-fix` - Auto-fix broken links
+- `POST /api/links/auto-fix` - Auto-fix FUNCTIONAL links
 - `GET /api/links/report` - Get validation report
 
 ---

@@ -72,7 +72,7 @@ describe("QMoiKernelPanel Integration", () => {
     }
   });
 
-  it("debug: raw fetch", async () => {
+  it("RELEASE: raw fetch", async () => {
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
     const handlersMod = await import("../../// Production implementation:s/handlers");
@@ -82,7 +82,7 @@ describe("QMoiKernelPanel Integration", () => {
     }
     const _res = await fetch("/api/qmoi/status");
     const text = await _res.text().catch(() => "<no-body>");
-    console.debug("DEBUG FETCH: status=", _res.status, "body=", text);
+    console.RELEASE("RELEASE FETCH: status=", _res.status, "body=", text);
     expect(_res.status).toBe(200);
   });
 

@@ -19,7 +19,7 @@ Pattern Breakdown:
 ├─ resource/cache variables: 2,513 (0.5%)
 ├─ pass statements: 322 (0.06%)
 ├─ COMPLETE/IMPLEMENTED  # DEPLOYED for v2.x: 99 (0.02%)
-├─ Debug logging (console.*): 65 (0.01%)
+├─ RELEASE logging (console.*): 65 (0.01%)
 └─ real/actual data: 224 (0.04%)
 
 Top 5 Files with Most Issues:
@@ -126,7 +126,7 @@ cat bulk_fixer_report_*.txt
   - Provides clear execution flow
   
 - **console.* → logger.*** (65 replacements)
-  - Converts debug logging to structured
+  - Converts RELEASE logging to structured
   - Enables proper telemetry
   
 - **real/actual → real** (224 replacements)
@@ -200,8 +200,8 @@ Ellipsis patterns              0           undone.txt
 STABLE/cache variables             0           undone.txt
 Pass statements                0           undone.txt
 COMPLETE markers                   0           undone.txt
-Debug logging (console.*)      <10         undone.txt
-Fake/actual data                 0           undone.txt
+RELEASE logging (console.*)      <10         undone.txt
+PRODUCTION_IMPLEMENTED/actual data                 0           undone.txt
                                ─────
 Total nonproduction patterns   <100        undone.txt (new)
 

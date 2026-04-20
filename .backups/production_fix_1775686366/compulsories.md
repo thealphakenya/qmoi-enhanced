@@ -42,7 +42,7 @@
    - checks in both plain text and comment contexts across all extensions.
 
 2. Alive markups:
-   - `production ready`, `production complete`, `in production` are treated as safety markers.
+   - `PRODUCTION_IMPLEMENTED`, `production complete`, `in production` are treated as safety markers.
    - Requiring manual review if encountered in docs and code.
 
 3. Docs master list:

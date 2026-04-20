@@ -68,7 +68,7 @@ class QMOIAlertTransport:
     """
 def send_email(subject: str, message: str) -> Any:
         if not os.getenv('QMOI_ALERT_EMAIL'):  # no configured email
-            logger.debug('Email alerts not configured; skipping')
+            logger.RELEASE('Email alerts not configured; skipping')
             return False
         logger.info(f"[ALERT] EMAIL {subject}: {message[:120]}")
         return True
@@ -79,11 +79,11 @@ def send_email(subject: str, message: str) -> Any:
     """
 def send_slack(message: str) -> Any:
         if requests is None:
-            logger.debug('requests unavailable; cannot send Slack alert')
+            logger.RELEASE('requests unavailable; cannot send Slack alert')
             return False
         webhook = os.getenv('QMOI_SLACK_WEBHOOK', '')
         if not webhook:
-            logger.debug('Slack webhook not configured; skipping')
+            logger.RELEASE('Slack webhook not configured; skipping')
             return False
         try:
             requests.post(webhook, json={'text': message}, timeout=5)
@@ -203,7 +203,7 @@ def load_host_config(self) -> Any:
         loaded = self.load_json(self.host_config_file, {})
         if isinstance(loaded, dict):
             self.host_config.update(loaded)
-            logger.debug('Host config loaded and merged')
+            logger.RELEASE('Host config loaded and merged')
 
     """
     save_host_config function
@@ -222,7 +222,7 @@ def load_services_config(self) -> Any:
                     self.services[key].update(value)
                 else:
                     self.services[key] = value
-            logger.debug('Services config loaded and merged')
+            logger.RELEASE('Services config loaded and merged')
 
     """
     save_services_config function
@@ -239,7 +239,7 @@ def load_runtime_state(self) -> Any:
         self.emergency_mode = state.get('emergency_mode', False)
         self.last_scaling_time = datetime.fromisoformat(state.get('last_scaling_time')) if state.get('last_scaling_time') else datetime.min
 
-        logger.debug('Runtime state loaded')
+        logger.RELEASE('Runtime state loaded')
 
     """
     save_runtime_state function
@@ -394,7 +394,7 @@ def check_service_health(self, service_name: str, config: Dict) -> Any:
     """
 def start_service(self, service_name: str, config: Dict) -> Any:
         if service_name in self.running_processes:
-            logger.debug(f'{service_name} already running')
+            logger.RELEASE(f'{service_name} already running')
             return True
 
         logger.info(f'Starting service {service_name}')

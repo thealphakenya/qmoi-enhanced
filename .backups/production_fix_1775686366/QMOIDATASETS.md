@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Dataset Management System
 
 ## Overview
@@ -223,7 +223,7 @@ Type: trading
 Quality: 95% | Relevance: 97%
 Update Frequency: Daily
 Best For: Strategy optimization, backtesting, algorithmic trading
-Parallel Processing: Strategy [production READY] and validation
+Parallel Processing: Strategy [PRODUCTION_IMPLEMENTED] and validation
 QVillage: Always available offline
 ```
 
@@ -957,7 +957,7 @@ Type: creative
 Quality: 95% | Relevance: 96%
 Update Frequency: Monthly
 Best For: 3D modeling, character rigging, animation principles
-Parallel Processing: Parallel rendering and [production READY]
+Parallel Processing: Parallel rendering and [PRODUCTION_IMPLEMENTED]
 QVillage: Always available offline
 ```
 
@@ -1055,7 +1055,7 @@ Type: creative
 Quality: 96% | Relevance: 97%
 Update Frequency: Weekly
 Best For: Cinematography, lighting setup, camera work
-Parallel Processing: Multi-camera lighting [production READY]
+Parallel Processing: Multi-camera lighting [PRODUCTION_IMPLEMENTED]
 QVillage: Always available offline
 ```
 
@@ -1225,7 +1225,7 @@ Type: cognitive
 Quality: 96% | Relevance: 98%
 Update Frequency: Quarterly
 Best For: Intelligence augmentation, reasoning exercises, problem solving
-Parallel Processing: Concurrent reasoning [production READY]s
+Parallel Processing: Concurrent reasoning [PRODUCTION_IMPLEMENTED]s
 QVillage: Always available offline
 ```
 
@@ -1351,7 +1351,7 @@ Type: cognitive
 Quality: 94% | Relevance: 95%
 Update Frequency: Quarterly
 Best For: Ethical decision making, philosophical analysis, wisdom production
-Parallel Processing: Moral reasoning [production READY]s
+Parallel Processing: Moral reasoning [PRODUCTION_IMPLEMENTED]s
 QVillage: Always available offline
 ```
 
@@ -1747,7 +1747,7 @@ Type: voice
 Quality: 96% | Relevance: 97%
 Update Frequency: Weekly
 Best For: Natural spoken dialogue, voice tone, and auditory conversational flow
-Parallel Processing: Multi-speaker dialogue [production READY]
+Parallel Processing: Multi-speaker dialogue [PRODUCTION_IMPLEMENTED]
 QVillage: Always available offline
 ```
 
@@ -2386,7 +2386,7 @@ Overall = 0.25 × Quality + 0.20 × Completeness +
 The system automatically detects use cases from user queries:
 
 **Trading Keywords**: trade, crypto, stock, price, chart, portfolio, profit, loss, investment
-**production Keywords**: code, programming, debug, build, deploy, function, class, algorithm
+**production Keywords**: code, programming, RELEASE, build, deploy, function, class, algorithm
 **Research Keywords**: research, paper, study, analysis, conclude, investigate, experiment
 **Language Keywords**: write, grammar, spelling, translation, language, expression, communication
 **Community Keywords**: suggest, discuss, community, opinion, feedback, share, collaborate

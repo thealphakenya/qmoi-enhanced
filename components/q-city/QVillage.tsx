@@ -276,7 +276,7 @@ function QVillage(): any {
           metadata: { version: "1.2.3", author: "QMOI" },
           version: "1.2.3",
           dependencies: ["gradio", "fastapi", "uvicorn"],
-          environment_variables: { DEBUG: "false", API_KEY: "masked" },
+          environment_variables: { RELEASE: "false", API_KEY: "masked" },
           network_config: { ports: [80, 443], ssl_enabled: true },
           storage_config: { type: "persistent", size: "10GB" },
           replica_count: 2,

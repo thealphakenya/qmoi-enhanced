@@ -13,7 +13,7 @@ title: "Troubleshooting Guide"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Troubleshooting Guide ✅ PRODUCTION READY
+# Troubleshooting Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## PowerShell Display Issues
 

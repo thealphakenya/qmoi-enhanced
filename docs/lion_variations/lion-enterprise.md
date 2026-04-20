@@ -12,7 +12,7 @@ title: "lion-enterprise"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# lion-enterprise ✅ PRODUCTION READY
+# lion-enterprise ✅ PRODUCTION_IMPLEMENTED
 
 Description
 
@@ -28,7 +28,7 @@ Release & packaging
 
 - Packaged as an OCI image with Helm chart and optional operator for Kubernetes.
 
-# LION-Enterprise (On-Prem / Air-gapped) ✅ PRODUCTION READY
+# LION-Enterprise (On-Prem / Air-gapped) ✅ PRODUCTION_IMPLEMENTED
 
 Purpose
 

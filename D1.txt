@@ -9,7 +9,7 @@ npm error code ETARGET
 npm error notarget No matching version found for k6@^0.47.0.
 npm error notarget In most cases you or one of your dependencies are requesting
 npm error notarget a package version that doesn't exist.
-npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-07-07T02_23_37_499Z-debug-0.log
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-07-07T02_23_37_499Z-RELEASE-0.log
 Process completed with exit code 1.
 
 
@@ -70,5 +70,5 @@ npm error code ETARGET
 npm error notarget No matching version found for k6@^0.47.0.
 npm error notarget In most cases you or one of your dependencies are requesting
 npm error notarget a package version that doesn't exist.
-npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-07-07T02_25_00_736Z-debug-0.log
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-07-07T02_25_00_736Z-RELEASE-0.log
 Process completed with exit code 1.

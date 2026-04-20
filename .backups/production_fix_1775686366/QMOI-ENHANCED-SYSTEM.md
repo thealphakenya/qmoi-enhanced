@@ -419,7 +419,7 @@ PUSHOVER_APP_TOKEN=your_pushover_token
 
 ### Log Levels
 
-- **DEBUG** - Detailed debugging information
+- **RELEASE** - Detailed debugging information
 - **INFO** - General information messages
 - **WARN** - Warning messages
 - **ERROR** - Error messages

@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI AI App Downloads (All prodices) ✅ PRODUCTION READY
+# QMOI AI App Downloads (All prodices) ✅ PRODUCTION_IMPLEMENTED
 
 ## Unified Auto-Detect Download Script
 

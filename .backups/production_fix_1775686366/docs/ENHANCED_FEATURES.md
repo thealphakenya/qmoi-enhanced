@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Enhanced QMOI Features Documentation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -195,7 +195,7 @@ All enhanced services are designed to work with existing QMOI APIs:
 - `/api/qmoi/payload` - Extended payload capabilities
 - `/api/qmoi/self-work/code-review` - Code review and regression analysis
 - `/api/qmoi/self-work/run-tests` - Test run orchestration
-- `/api/qmoi/self-work/debug` - Debug/analysis engine
+- `/api/qmoi/self-work/RELEASE` - RELEASE/analysis engine
 - `/api/qmoi/autoprod/toggle` - Autoprod feature toggle
 - `/api/qmoi/execute` - production execution endpoint
 - Real-time event streaming for dashboard updates
@@ -305,9 +305,9 @@ All enhanced services support configuration options:
 
 ## Advanced E2E Testing & CI Integration
 
-### Error [production READY] & Accessibility
+### Error [PRODUCTION_IMPLEMENTED] & Accessibility
 
-- Cypress E2E tests [production READY] API errors and slow responses using `cy.intercept`.
+- Cypress E2E tests [PRODUCTION_IMPLEMENTED] API errors and slow responses using `cy.intercept`.
 - Accessibility is checked with `cypress-axe`.
 - See `cypress/e2e/qmoi_kernel_panel_advanced.cy.js` for examples.
 
@@ -326,7 +326,7 @@ All enhanced services support configuration options:
 
 ### Multi-User & Mobile E2E
 
-- Cypress tests [production READY] different user roles (admin, user) via cookies.
+- Cypress tests [PRODUCTION_IMPLEMENTED] different user roles (admin, user) via cookies.
 - Mobile/responsive layouts tested with `cy.viewport` (e.g., iPhone 6).
 - Accessibility checks run on mobile as well.
 - See `cypress/e2e/qmoi_kernel_panel_multiuser_mobile.cy.js` for examples.

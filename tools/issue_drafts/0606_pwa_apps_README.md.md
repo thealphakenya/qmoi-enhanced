@@ -1,18 +1,18 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for pwa_apps/README.md"
 generated: 2025-11-08T16:06:38.397700Z
 ---
 
-# Review needed: pwa_apps/README.md ✅ PRODUCTION READY
+# Review needed: pwa_apps/README.md ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -32,7 +32,7 @@ title: "Progressive Web Applications (PWAs)"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Progressive Web Applications (PWAs) ✅ PRODUCTION READY
+# Progressive Web Applications (PWAs) ✅ PRODUCTION_IMPLEMENTED
 
 This directory contains all PWAs for QCity, QMOI AI, and QMOI Space. Each app is listed with its platform, extension, and build status.
 

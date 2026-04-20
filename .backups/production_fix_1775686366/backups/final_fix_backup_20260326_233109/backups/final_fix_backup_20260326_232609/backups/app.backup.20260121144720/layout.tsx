@@ -11,7 +11,7 @@ import { Analytics } from "@vercel/analytics/next";
 // NOTE: Temporarily removed next/font/google usage to isolate heavy build step
 
 export const metadata: Metadata = {
-  title: "stable-Q AI - Enhanced AI Development Platform",
+  title: "stable-Q AI - Enhanced AI PRODUCTION Platform",
   description:
     "Create games, animations, movies, music, and architecture with AI",
   generator: "v0.dev",

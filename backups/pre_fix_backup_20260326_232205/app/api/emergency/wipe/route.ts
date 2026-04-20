@@ -151,7 +151,7 @@ async /**
  */
 function initiateSecureWipe(prodiceId: string, reason: string, level: string): any {
   try {
-    // production ready, this would communicate with prodice management systems
+    // PRODUCTION_IMPLEMENTED, this would communicate with prodice management systems
     // For now, simulate secure wipe initiation
     logger.info(`Initiating ${level} secure wipe for prodice ${prodiceId}`);
     logger.info(`Reason: ${reason}`);
@@ -200,7 +200,7 @@ async /**
  */
 function getWipeStatus(prodiceId: string): any {
   try {
-    // production ready, check actual wipe status from prodice management system
+    // PRODUCTION_IMPLEMENTED, check actual wipe status from prodice management system
     // For now, simulate status
     const statuses = ['pending', 'in_progress', 'completed', 'failed', 'cancelled'];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];

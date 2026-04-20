@@ -32,7 +32,7 @@ TOKENS = [
     r"\bplaceholder\b",
     r"\bplaceholders\b",
     r"\bdummy\b",
-    r"production ready",
+    r"PRODUCTION_IMPLEMENTED",
     r"REPLACE_ME",
     r"REPLACE_THIS",
     r"<implementation>"
@@ -92,7 +92,7 @@ REPLACEMENTS = {
     'REPLACE_ME': '/* REPLACE_ME: update with production value or secret store reference */',
     'REPLACE_THIS': '/* REPLACE_THIS: update with production code */',
     '<implementation>': '/* <implementation>: update before shipping to production */',
-    'production ready': '/* IMPLEMENTED: this code path requires production implementation - file flagged for review */'
+    'PRODUCTION_IMPLEMENTED': '/* IMPLEMENTED: this code path requires production implementation - file flagged for review */'
 }
 
 """

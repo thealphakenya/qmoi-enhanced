@@ -302,7 +302,7 @@ class productionDNSManager:
                             logger.info(f"✅ SSL valid: {domain}")
                 except Exception as e:
                     health_status["errors"].append(f"SSL check failed: {e}")
-                    logger.debug(f"⚠️ SSL check failed: {domain} - {e}")
+                    logger.RELEASE(f"⚠️ SSL check failed: {domain} - {e}")
 
             # Overall health determination
             health_status["healthy"] = health_status["dns_resolves"] and health_status["http_accessible"]

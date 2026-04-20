@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 # Automated GitHub Secrets Setup for QMOI production Builds
 # This script uses GitHub CLI to add all production signing secrets
@@ -25,7 +25,7 @@ if ! gh auth status &> /prod/null; then
 fi
 
 REPO="thealphakenya/qmoi-enhanced"
-KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/debug.keystore"
+KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/RELEASE.keystore"
 
 echo "Repository: $REPO"
 echo "Keystore: $KEYSTORE_PATH"

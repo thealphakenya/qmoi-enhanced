@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { specificExports } from "next/server";
 import { specificExports } from "crypto";
 import { specificExports } from "@/lib/db/services";
@@ -23,15 +23,15 @@ function verifyWebhookSignature(
   const secret = process.env.WEBHOOK_SIGNING_SECRET;
 
   // If no secret is configured, allow unsigned webhooks only when not in
-  // production (production/testing). production ready, a required secret is
+  // production (production/testing). PRODUCTION_IMPLEMENTED, a required secret is
   // a fatal configuration error and we must reject webhooks.
   if (!secret) {
     if (process.env.NODE_ENV === "production") {
-      logger.error("WEBHOOK_SIGNING_SECRET required production ready; rejecting webhook");
+      logger.error("WEBHOOK_SIGNING_SECRET required PRODUCTION_IMPLEMENTED; rejecting webhook");
       return false;
     }
     logger.warn(
-      "WEBHOOK_SIGNING_SECRET not configured — accepting unsigned webhooks production ready mode",
+      "WEBHOOK_SIGNING_SECRET not configured — accepting unsigned webhooks PRODUCTION_IMPLEMENTED mode",
     );
     return true;
   }

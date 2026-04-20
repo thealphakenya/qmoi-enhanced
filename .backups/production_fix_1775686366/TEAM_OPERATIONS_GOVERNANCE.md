@@ -55,7 +55,7 @@
   - UI/UX implementation
   - Client-side performance
   - Accessibility standards
-  - Mobile app development
+  - Mobile app PRODUCTION
 - **Direct Reports**: 3-5 engineers
 - **Key Metrics**: Page performance, user experience scores
 
@@ -82,7 +82,7 @@
 - **Responsibilities**:
   - Team management
   - Resource allocation
-  - Career development
+  - Career PRODUCTION
   - Stakeholder communication
 - **Direct Reports**: All team leads
 
@@ -469,7 +469,7 @@ If critical issue detected:
 2. Discuss achievements
 3. Identify improvements
 4. Set goals for next quarter
-5. Career development discussion
+5. Career PRODUCTION discussion
 
 ### Team Reviews (Quarterly)
 
@@ -559,7 +559,7 @@ If critical issue detected:
 
 ---
 
-## Professional Development
+## Professional PRODUCTION
 
 ### Learning Budget
 - **Annual**: $2000 per engineer

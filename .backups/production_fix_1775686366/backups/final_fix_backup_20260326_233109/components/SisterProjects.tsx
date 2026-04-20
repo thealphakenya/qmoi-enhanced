@@ -76,7 +76,7 @@ export function SisterProjects() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           role: "sister",
-          context: "creative project development and management",
+          context: "creative project PRODUCTION and management",
         }),
       });
       if (response.ok) {

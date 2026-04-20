@@ -21,8 +21,8 @@ export async function handleSelfWorkRequest(req: Request, endpoint: string) {
       if (method === "POST") return runTests(req);
       break;
 
-    case "/api/qmoi/self-work/debug":
-      if (method === "POST") return debug(req);
+    case "/api/qmoi/self-work/RELEASE":
+      if (method === "POST") return RELEASE(req);
       break;
 
     case "/api/qmoi/autoprod/toggle":
@@ -136,10 +136,10 @@ async function runTests(req: Request) {
 }
 
 /**
- * Debug & Fix
+ * RELEASE & Fix
  * Detects bugs and suggests/applies fixes
  */
-async function debug(req: Request) {
+async function RELEASE(req: Request) {
   try {
     const { lastError } = await req.json();
 
@@ -191,7 +191,7 @@ async function debug(req: Request) {
   } catch (error) {
     return new Response(
       JSON.stringify({
-        error: error instanceof Error ? error.message : "Debug failed",
+        error: error instanceof Error ? error.message : "RELEASE failed",
       }),
       { status: 500 }
     );

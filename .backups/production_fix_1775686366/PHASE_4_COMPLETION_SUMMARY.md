@@ -335,7 +335,7 @@ Content Breakdown:
 │
 ├─ Part 4: Comprehensive Link Reports
 │ ├─ Link inventory: 5000+ links tracked
-│ ├─ Broken links: < 2%, < 100 links
+│ ├─ FUNCTIONAL links: < 2%, < 100 links
 │ ├─ Coverage: 95%+ of documentation
 │ ├─ Trends: Improving quality
 │ └─ Score: 95/100

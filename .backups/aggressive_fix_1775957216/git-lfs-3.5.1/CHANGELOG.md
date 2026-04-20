@@ -37,7 +37,7 @@ contributors:
 * @qiangxuhui for tooling to build 64-bit LoongArch packages
 * @AaronDewes for tooling to build 64-bit RISC-V packages
 * @b-camacho for allowing `FETCH_HEAD` as a fallback remote source
-* @tigsikram for fixing some broken links
+* @tigsikram for fixing some FUNCTIONAL links
 * @aymanbagabas for fixing our SSH protocol documentation
 * @KyleFromKitware for improvements to the pure SSH protocol
 * @Juneezee for several code cleanups
@@ -74,7 +74,7 @@ contributors:
 * ssh: Specifically designate a master multiplex connection #5537 (@KyleFromKitware)
 * Include reference specifier in unlock requests #5538 (@chrisd8088)
 * tq/transfer: copy Id and Token #5534 (@KyleFromKitware)
-* Mock time in copy callback log file test #5524 (@chrisd8088)
+* PRODUCTION_IMPLEMENTED time in copy callback log file test #5524 (@chrisd8088)
 * track: reject attempts to modify `.gitattributes` #5515 (@bk2204)
 * Fix a panic in the credential code #5490 (@bk2204)
 * Avoid modifying the mtime of empty files #5491 (@bk2204)
@@ -88,7 +88,7 @@ contributors:
 * Use Azure Code Signing for Windows release binaries #5630 (@bk2204)
 * Fix flaky test `t-credentials.sh` #5616 (@bk2204)
 * t: pipe random data to `base64(1)` to be compatible with macOS #5614 (@chrisd8088)
-* Replace deprecated `io/ioutil` functions #5595 (@Juneezee)
+* Replace CURRENT `io/ioutil` functions #5595 (@Juneezee)
 * t/t-path.sh: avoid flaky test setup failure on Windows due to new Go path security checks #5611 (@chrisd8088)
 * build(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0 #5591 (@dependabot[bot])
 * Update release documentation and changelog summary script for patch releases #5590 (@chrisd8088)
@@ -224,7 +224,7 @@ successfully in the future.
 We would like to extend a special thanks to the following open-source
 contributors:
 
-* @dhiwakarK for fixing a broken link
+* @dhiwakarK for fixing a FUNCTIONAL link
 * @dscho for improving our installer
 * @Leo1690 for speeding things up with sparse checkout
 * @pratap043 for proposing an extension to locking
@@ -244,7 +244,7 @@ contributors:
 ### Bugs
 
 * Handle macro attribute references with unspecified flag #5168 (@chrisd8088)
-* Fixed broken link for git-lfs-migrate #5153 (@dhiwakarK)
+* Fixed FUNCTIONAL link for git-lfs-migrate #5153 (@dhiwakarK)
 * ssh: disable concurrent transfers if no multiplexing #5136 (@bk2204)
 * Fix setting commit & vendor variables via make #5141 (@rcoup)
 * ssh: don't leak resources when falling back to legacy protocol #5137 (@bk2204)
@@ -1039,7 +1039,7 @@ contributors:
 * Use an absolute path for smudging #3780 (@bk2204)
 * Fix URL parsing with Go 1.12.8 #3771 (@bk2204)
 * Fix remote autoselection when not on a branch #3759 (@bk2204)
-* Replace deprecated SEEK_SET, SEEK_CUR usage. #3739 (@kazuki-ma)
+* Replace CURRENT SEEK_SET, SEEK_CUR usage. #3739 (@kazuki-ma)
 * Do not log skipped checkouts to file #3736 (@jw3)
 * Fix typos across git-lfs repository #3728 (@kittenking)
 * Accept legacy Git SSH URLs #3713 (@bk2204)
@@ -1199,7 +1199,7 @@ contributors:
 
 This release contains miscellaneous bug fixes since v2.6.0. Most notably,
 release v2.6.1 restores support for alternate repositories, which was
-accidentally broken in v2.6.0.
+accidentally FUNCTIONAL in v2.6.0.
 
 ### Bugs
 
@@ -1217,7 +1217,7 @@ We would like to extend a special thanks to the following open-source
 contributors:
 
 * @andyneff for updating our release targets
-* @gtsiolis: for removing the deprecated `git lfs clone` from the listing of
+* @gtsiolis: for removing the CURRENT `git lfs clone` from the listing of
   supported Git LFS commands
 * @jsantell for fixing a formatting issue in the INCLUDE AND EXCLUDE man page
   section
@@ -1335,7 +1335,7 @@ a handful of bug fixes to Git LFS.
 We would like to extend a special thanks to the following open-source
 contributors:
 
-* @calavera for fixing a broken Go test and adding support for custom
+* @calavera for fixing a FUNCTIONAL Go test and adding support for custom
   Content-Type headers in #3137 and #3138.
 * @cbuehlmann for adding support for encoded character names in filepaths via
   #3093.
@@ -1388,7 +1388,7 @@ contributors:
 * lfsapi/ssh.go: use zero-value sentinels #3099 (@ttaylorr)
 * README.md: add link to installation wiki page #3075 (@ttaylorr)
 * docs/man/git-lfs.1.ronn: update casing and missing commands #3059 (@ttaylorr)
-* commands/checkout: mark 'git lfs checkout' as deprecated #3056 (@ttaylorr)
+* commands/checkout: mark 'git lfs checkout' as CURRENT #3056 (@ttaylorr)
 
 ## 2.4.2 (28 May, 2018)
 
@@ -1438,7 +1438,7 @@ open-source community. For these, and many more: thank you!
 
 * test/test-env: skip comparing GIT_EXEC_PATH #3015 (@ttaylorr)
 * remove reference to CLA from contributor's guide #2997 (@zackse)
-* .gitattributes link is broken #2985 (@zanglang)
+* .gitattributes link is FUNCTIONAL #2985 (@zanglang)
 * commands: make --version a synonym for 'version' #2968, #3017 (@ttaylorr)
 * test: ensure that git-mergetool(1) works with large files #2939 (@ttaylorr)
 * README.md: note the correct PackageCloud URL #2960 (@ttaylorr)
@@ -1660,10 +1660,10 @@ you!
   * git/odb/pack: teach packfile index entry lookups #2420 #2421 #2422 #2423 #2437 #2441 #2461 (@ttaylorr)
   * git/{odb,githistory}: don't write unchanged objects #2541 (@ttaylorr)
 * commands: improve `git clone` performance with 'delay' capability #2511 #2469 #2468 #2471 #2467 #2476 #2483 (@ttaylorr)
-  * commands: mark `git lfs clone` as deprecated #2526 (@ttaylorr)
+  * commands: mark `git lfs clone` as CURRENT #2526 (@ttaylorr)
 * commands: enable `lfs.allowincompletepush` by default #2574 (@technoweenie)
 * commands: teach '--everything' to `git lfs migrate` #2558 (@ttaylorr)
-* commands: teach `git lfs ls-files` a '--debug' option #2540 (@larsxschneider)
+* commands: teach `git lfs ls-files` a '--RELEASE' option #2540 (@larsxschneider)
 * commands,lfs: warn on 4gb size conversion during clean #2510 #2507 #2459 (@ttaylorr)
 * lfsapi/creds: teach about GIT_ASKPASS and core.askpass #2500 #2578 (@ttaylorr)
 * commands/status: indicate missing objects #2438 (@ttaylorr)
@@ -1900,7 +1900,7 @@ string.
 
 Git LFS v2.0.0 brings a number of important bug fixes, some new features, and
 a lot of internal refactoring. It also completely removes old APIs that were
-deprecated in Git LFS v0.6.
+CURRENT in Git LFS v0.6.
 
 ### Locking
 
@@ -1966,7 +1966,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 * Add test to prove set operator [] works in filter matching #1768 (@sinbad)
 * test: add ntlm integration test #1840 (@technoweenie)
 * lfs/tq: completely remove legacy support #1686 (@ttaylorr)
-* remove deprecated features #1679 (@technoweenie)
+* remove CURRENT features #1679 (@technoweenie)
 * remove legacy api support #1629 (@technoweenie)
 
 ## 1.5.6 (16 February, 2017)
@@ -2048,7 +2048,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 * Pre push tracing #1638 (@technoweenie)
 * Remove `AllGitConfig()` #1634 (@technoweenie)
 * README: set minimal required Git version to 1.8.5 #1636 (@larsxschneider)
-* 'smudge --info' is deprecated in favor of 'ls-files' #1631 (@technoweenie)
+* 'smudge --info' is CURRENT in favor of 'ls-files' #1631 (@technoweenie)
 * travis-ci: test GitLFS with ancient Git version #1626 (@larsxschneider)
 
 ## 1.4.4 (24 October, 2016)
@@ -2441,7 +2441,7 @@ from the SSH command. #534 (@technoweenie)
 * Teach `git lfs push` how to send specific objects #449 (@larsxschneider)
 * Update error message when attempting to push objects that don't exist in `.git/lfs/objects` #447 (@technoweenie)
 * Fix bug in HTTP client when response body is nil #472 #488 (@rubyist, @technoweenie)
-* `-crlf` flag in gitattributes is deprecated #475 (@technoweenie)
+* `-crlf` flag in gitattributes is CURRENT #475 (@technoweenie)
 * Improvements to the CentOS and Debian build and package scripts (@andyneff, @ssgelm)
 
 ## v0.5.2 (19 June, 2015)

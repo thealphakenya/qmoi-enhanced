@@ -224,7 +224,7 @@ SECTION 10: SYSTEM ARCHITECTURE OVERVIEW
 • Cache: Redis for session and data caching
 • Queue: Bull for background job processing
 
-🔧 DEVELOPMENT TOOLS:
+🔧 PRODUCTION TOOLS:
 • Language: TypeScript 5.0+
 • Testing: Jest with 95%+ coverage
 • Linting: ESLint with Airbnb configuration

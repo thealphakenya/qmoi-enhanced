@@ -7,23 +7,23 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
-title: "[production READY] Scan Summary"
+title: "[PRODUCTION_IMPLEMENTED] Scan Summary"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
 
-Created by running `tools/find_[production READY]s.py`.
+Created by running `tools/find_[PRODUCTION_IMPLEMENTED]s.py`.
 
 - Total matches found: 27736
 - Files with matches: 1264
 
 Top data files with high counts (first entries from `allrefs.txt`):
 
-1. .qmoi_validation/[production READY]_suggestions.json — 8593 matches
-2. .qmoi_validation/[production READY]s.json — 3166 matches
-3. .qmoi_validation/[production READY]_report.json — 408 matches
+1. .qmoi_validation/[PRODUCTION_IMPLEMENTED]_suggestions.json — 8593 matches
+2. .qmoi_validation/[PRODUCTION_IMPLEMENTED]s.json — 3166 matches
+3. .qmoi_validation/[PRODUCTION_IMPLEMENTED]_report.json — 408 matches
 4. .qmoi_validation/links_report.json — 98 matches
 5. .qmoi_validation/link_update_plan.json — 54 matches
 6. qmoi-enhanced/app/api/qmoi-model.ts — 36 matches
@@ -31,7 +31,7 @@ Top data files with high counts (first entries from `allrefs.txt`):
 
 Notes & next actions
 
-- Run `tools/auto_fix_[production READY]s.py` (dry-run) to generate `[production READY]_fixes.patch` for conservative fixes.
+- Run `tools/auto_fix_[PRODUCTION_IMPLEMENTED]s.py` (dry-run) to generate `[PRODUCTION_IMPLEMENTED]_fixes.patch` for conservative fixes.
 - Review high-volume generated JSON validation files in `.qmoi_validation/` — many matches are probably auto-generated and need targeted filtering (these files may be validation artifacts rather than source code).
 - Use `tools/update_all_md_refs.py` to regenerate `ALLMDFILESREFS.md` after new .md files are added.
 

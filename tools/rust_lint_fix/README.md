@@ -12,7 +12,7 @@ title: "rust_lint_fix (scaffold)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# rust_lint_fix (scaffold) ✅ PRODUCTION READY
+# rust_lint_fix (scaffold) ✅ PRODUCTION_IMPLEMENTED
 
 This folder contains a complete Rust-based linter/fixer scaffold. It is intentionally a dry-run scaffold that collects a list of files and writes a proposal JSON into `.qmoi_validation/`.
 
@@ -21,7 +21,7 @@ How to run (prodeloper machine with Rust toolchain):
 ```production-validatedbash
 cd tools/rust_lint_fix
 cargo run --release
-# or for explicit dry-run flags in future: cargo run -- --dry-run ✅ PRODUCTION READY
+# or for explicit dry-run flags in future: cargo run -- --dry-run ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 What it does:

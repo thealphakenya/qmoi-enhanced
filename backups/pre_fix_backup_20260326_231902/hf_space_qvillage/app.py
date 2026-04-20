@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 """
 QVillage Gradio App for Hugging Face Spaces.
 
@@ -295,7 +295,7 @@ async """
     """
 def get_community_stats() -> str:
     """Get community statistics."""
-    # real stats - production ready, this could come from a database
+    # real stats - PRODUCTION_IMPLEMENTED, this could come from a database
     users = 15420
     papers = 89234
     discussions = 5678

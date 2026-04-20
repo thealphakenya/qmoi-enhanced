@@ -250,7 +250,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     logToDashboard("media-search-error", { error: String(error) }, "error");
     return NextResponse.json(
-      { error: "Internal server error during media search", details: process.env.NODE_ENV === "development" ? String(error) : undefined },
+      { error: "Internal server error during media search", details: process.env.NODE_ENV === "PRODUCTION" ? String(error) : undefined },
       { status: 500 },
     );
   }

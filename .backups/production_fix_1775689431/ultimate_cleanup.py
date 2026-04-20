@@ -21,8 +21,8 @@ def cleanup_file(file_path) -> Any:
         original_content = content
 
         # Remove all production markers and comments
-        content = re.sub(r'^\s*//\s*\[production READY\].*$', '', content, flags=re.MULTILINE)
-        content = re.sub(r'^\s*#+\s*\[production READY\].*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*//\s*\[PRODUCTION_IMPLEMENTED\].*$', '', content, flags=re.MULTILINE)
+        content = re.sub(r'^\s*#+\s*\[PRODUCTION_IMPLEMENTED\].*$', '', content, flags=re.MULTILINE)
         content = re.sub(r'^\s*//\s*\[production production REQUIRED\].*$', '', content, flags=re.MULTILINE)
         content = re.sub(r'^\s*#+\s*\[production production REQUIRED\].*$', '', content, flags=re.MULTILINE)
 
@@ -30,8 +30,8 @@ def cleanup_file(file_path) -> Any:
         content = re.sub(r'^\s*//+\s*production production: this file has no remaining production markers\s*$', '', content, flags=re.MULTILINE)
         content = re.sub(r'^\s*#+\s*production production: this file has no remaining production markers\s*$', '', content, flags=re.MULTILINE)
 
-        content = re.sub(r'//.*\[production READY\].*', '', content)
-        content = re.sub(r'#.*\[production READY\].*', '', content)
+        content = re.sub(r'//.*\[PRODUCTION_IMPLEMENTED\].*', '', content)
+        content = re.sub(r'#.*\[PRODUCTION_IMPLEMENTED\].*', '', content)
 
         # Clean up extra blank lines
         content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)

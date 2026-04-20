@@ -7,21 +7,21 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for ALLWALLETSQVS.md"
 generated: 2025-11-08T16:06:38.260469Z
 ---
 
-# Review needed: ALLWALLETSQVS.md ✅ PRODUCTION READY
+# Review needed: ALLWALLETSQVS.md ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -32,7 +32,7 @@ title: "ALL WALLETS QVS (optimized Verification Summary)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# ALL WALLETS QVS (optimized Verification Summary) ✅ PRODUCTION READY
+# ALL WALLETS QVS (optimized Verification Summary) ✅ PRODUCTION_IMPLEMENTED
 
 This file documents discovered wallet-related documentation and provides instructions to run the automated wallet optimized Verification (QV) script.
 
@@ -45,14 +45,14 @@ Discovered wallet docs (non-exhaustive)
 - `LEAHWALLET.md` — Leah/Sister wallet guide and UI notes.
 - `QMOI-REVENUE-README.md`, `QMOIREVENUEGENERATION.md`, `QMOIAUTOREVENUEEARN.md` — revenue/autorevenue docs referencing Cashon and wallet flows.
 - `CASHONTRADINGREADME.md`, `TRADINGREADME.md` — trading + wallet integration notes.
-- Various README files reference wallets and payment providers (Mpesa, Pesapal, Binance, Bitget, CashApp). Use the repository-wide [production READY] scanner to find more references.
+- Various README files reference wallets and payment providers (Mpesa, Pesapal, Binance, Bitget, CashApp). Use the repository-wide [PRODUCTION_IMPLEMENTED] scanner to find more references.
 
 Location of automated checks
 - Script: `scripts/wallets/check_wallets.py`
 - Validation output: `.qmoi_validation/all_wallets_qvs.json`
 
 How the checks work
-- Default mode: [production READY]/dry-run. No real network transfers or money movement are performed.
+- Default mode: [PRODUCTION_IMPLEMENTED]/dry-run. No real network transfers or money movement are performed.
 - To run live operations (NOT required without human review + secret manager), you must set:
   - `production_CONFIRMED=true` in the environment, and
   - pass the `--real` flag to the script.
@@ -66,7 +66,7 @@ python3 scripts/wallets/check_wallets.py
 Run (explicit live, only after human review)
 
 ```production-validatedbash
-# Only run after manual code review and secrets provisioned ✅ PRODUCTION READY
+# Only run after manual code review and secrets provisioned ✅ PRODUCTION_IMPLEMENTED
 export production_CONFIRMED=true
 python3 scripts/wallets/check_wallets.py --real
 ```production-validated

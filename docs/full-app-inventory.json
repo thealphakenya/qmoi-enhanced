@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "generated_at": "2025-10-21T00:00:00Z",
   "pwa_apps": ["q-latest", "qmoi", "qmoi-ai"],
@@ -8,14 +8,14 @@
       "qfilemanager.apk",
       "qmoi ai.exe",
       "qmoi_ai.exe",
-      "qmoi_ai_[production READY].apk",
-      "qmoi_[production READY].exe"
+      "qmoi_ai_[PRODUCTION_IMPLEMENTED].apk",
+      "qmoi_[PRODUCTION_IMPLEMENTED].exe"
     ],
     "windows_latest": "/downloads/windows/latest/qmoi_ai.exe"
   },
-  "[production READY]s_detected": [
-    "/downloads/qmoi_ai_[production READY].apk",
-    "/downloads/qmoi_[production READY].exe"
+  "[PRODUCTION_IMPLEMENTED]s_detected": [
+    "/downloads/qmoi_ai_[PRODUCTION_IMPLEMENTED].apk",
+    "/downloads/qmoi_[PRODUCTION_IMPLEMENTED].exe"
   ],
-  "notes": "Inventory generated automatically. Next: replace [production READY] artifacts, import full front-ends or point to authoritative GitHub releases, run build scripts for mobile/desktop where available."
+  "notes": "Inventory generated automatically. Next: replace [PRODUCTION_IMPLEMENTED] artifacts, import full front-ends or point to authoritative GitHub releases, run build scripts for mobile/desktop where available."
 }

@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -80,7 +80,7 @@ async function switchAvatar(avatarId: string) {
     }
 
     // Update QMOI's current avatar (in a real implementation, this would update the AI model)
-    // For now, we'll [production READY] this by storing in a global state or database
+    // For now, we'll [PRODUCTION_IMPLEMENTED] this by storing in a global state or database
 
     // Log the avatar switch
     (console as any).log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
@@ -120,7 +120,7 @@ async function upgradeAvatar(avatarId: string) {
 
     (console as any).log(`Upgrading avatar: ${avatarId}`);
 
-    [production READY] upgrade process
+    [PRODUCTION_IMPLEMENTED] upgrade process
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     return NextResponse.json({
@@ -153,7 +153,7 @@ async function enhanceAvatar(
       `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`,
     );
 
-    [production READY] enhancement process
+    [PRODUCTION_IMPLEMENTED] enhancement process
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return NextResponse.json({
@@ -183,7 +183,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
 
     (console as any).log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
 
-    [production READY] customization process
+    [PRODUCTION_IMPLEMENTED] customization process
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     return NextResponse.json({
@@ -206,7 +206,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
 }
 
 function getUpgradeStatus(avatarId: string): string {
-  [production READY] upgrade status
+  [PRODUCTION_IMPLEMENTED] upgrade status
   const statuses = ["up_to_date", "update_available", "upgrading", "error"];
   return statuses[Math.floor(Math.random() * statuses.length)];
 }

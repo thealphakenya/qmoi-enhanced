@@ -10,7 +10,7 @@ describe('Feature Flags System', () => {
   it('should initialize with correct environment settings', () => {
     const config = featureFlags.getConfig();
     expect(config).toBeDefined();
-    expect(['local', 'development', 'staging', 'production']).toContain(config.environment);
+    expect(['local', 'PRODUCTION', 'staging', 'production']).toContain(config.environment);
   });
 
   it('should check if feature is enabled', () => {

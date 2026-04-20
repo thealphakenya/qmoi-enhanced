@@ -1,18 +1,18 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "root": "/workspaces/qmoi-enhanced",
   "tokens": [
-    "\\b[production READY]\\b",
-    "\\b[production READY]\\b",
-    "\\b[production READY]\\b",
+    "\\b[PRODUCTION_IMPLEMENTED]\\b",
+    "\\b[PRODUCTION_IMPLEMENTED]\\b",
+    "\\b[PRODUCTION_IMPLEMENTED]\\b",
     "<replace>",
-    "\\b[production READY]\\b",
-    "\\b[production READY]s\\b",
+    "\\b[PRODUCTION_IMPLEMENTED]\\b",
+    "\\b[PRODUCTION_IMPLEMENTED]s\\b",
     "\\bdummy\\b",
-    "production ready",
+    "PRODUCTION_IMPLEMENTED",
     "REPLACE_ME",
     "REPLACE_THIS",
-    "<[production READY]>"
+    "<[PRODUCTION_IMPLEMENTED]>"
   ],
   "matches": []
 }

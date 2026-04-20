@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ================================================================================
 QMOI ENHANCED - APIS, WEBHOOKS, HOOKS & ENDPOINTS MASTER DOCUMENTATION
 complete API Reference for All Platforms, Services, and Integration Points
@@ -386,7 +386,7 @@ Base: https://api.safaricom.co.ke/oauth/v1
 Endpoints:
 
 - POST /mpesa/c2b/v2/registerurl (register callback)
-- POST /mpesa/c2b/v2/[production READY] ([production READY] payment)
+- POST /mpesa/c2b/v2/[PRODUCTION_IMPLEMENTED] ([PRODUCTION_IMPLEMENTED] payment)
 
 Airtel API:
 Similar structure with airtel-specific endpoints

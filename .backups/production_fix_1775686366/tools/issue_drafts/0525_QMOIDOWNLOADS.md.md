@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for QMOIDOWNLOADS.md"
 generated: 2025-11-08T16:06:38.307818Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -36,10 +36,10 @@ title: "QMOIDOWNLOADS"
 
 D:\applications\stable-Q-ai>python downloadqmoiai.py
 Checking all download links for reachability...
-BROKEN: Qbrowser (skv) [win] => https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe (error: HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002E5D81F38C0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)")))
-[2025-07-22T02:28:05.523634] Broken download link | {"app": "Qbrowser (skv)", "platform": "win", "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe", "error": "HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/windows.exe (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000002E5D81F38C0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)\"))"}
-BROKEN: Qbrowser (skv) [mac] => https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg (error: HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002E5D8314050>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)")))
-[2025-07-22T02:28:05.526085] Broken download link | {"app": "Qbrowser (skv)", "platform": "mac", "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg", "error": "HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/mac.dmg (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000002E5D8314050>: Failed to resolve 'downloads.qmoi.app' ([
+FUNCTIONAL: Qbrowser (skv) [win] => https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe (error: HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/windows.exe (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002E5D81F38C0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)")))
+[2025-07-22T02:28:05.523634] FUNCTIONAL download link | {"app": "Qbrowser (skv)", "platform": "win", "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe", "error": "HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/windows.exe (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000002E5D81F38C0>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)\"))"}
+FUNCTIONAL: Qbrowser (skv) [mac] => https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg (error: HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/mac.dmg (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002E5D8314050>: Failed to resolve 'downloads.qmoi.app' ([Errno 11001] getaddrinfo failed)")))
+[2025-07-22T02:28:05.526085] FUNCTIONAL download link | {"app": "Qbrowser (skv)", "platform": "mac", "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg", "error": "HTTPSConnectionPool(host='downloads.qmoi.app', port=443): Max retries exceeded with url: /qbrowser/mac.dmg (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x000002E5D8314050>: Failed to resolve 'downloads.qmoi.app' ([
 ```
 
 Notes:

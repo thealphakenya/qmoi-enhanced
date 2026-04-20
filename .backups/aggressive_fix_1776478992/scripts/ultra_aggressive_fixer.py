@@ -42,7 +42,7 @@ def apply_direct_fixes():
     replacements = [
         # Console logs to logging
         (r'console\.log\((.*?)\);?', r'logger.info(\1);'),
-        (r'console\.debug\((.*?)\);?', r'logger.debug(\1);'),
+        (r'console\.RELEASE\((.*?)\);?', r'logger.RELEASE(\1);'),
         (r'console\.warn\((.*?)\);?', r'logger.warning(\1);'),
         (r'console\.error\((.*?)\);?', r'logger.error(\1);'),
 
@@ -104,7 +104,7 @@ def apply_direct_fixes():
 
                 # Add production logging to JS/TS files
                 if ext in ['.js', '.ts', '.jsx', '.tsx'] and 'console.log' in content and 'const logger' not in content:
-                    content = "const logger = { info: console.log, debug: console.debug, warning: console.warn, error: console.error }; // Production logger\n\n" + content
+                    content = "const logger = { info: console.log, RELEASE: console.RELEASE, warning: console.warn, error: console.error }; // Production logger\n\n" + content
                     changes_made += 1
 
                 # Write back if changes were made
@@ -153,7 +153,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -182,14 +182,14 @@ def production_error_handler(func):
 // Production logging and error handling
 const logger = {
   info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[INFO] ${new Date();.toISOString()}: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[DEBUG] ${new Date();.toISOString()}: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  RELEASE: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.RELEASE(`[RELEASE] ${new Date();.toISOString()}: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
   warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[WARN] ${new Date();.toISOString()}: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
   error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[ERROR] ${new Date();.toISOString()}: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
 };
 
 // Production configuration
 const config = {
-  debug: process.env.DEBUG === 'true',
+  RELEASE: process.env.RELEASE === 'true',
   databaseUrl: process.env.DATABASE_URL,
   secretKey: process.env.SECRET_KEY,
   apiUrl: process.env.API_URL || 'https://api.qmoi.ai'

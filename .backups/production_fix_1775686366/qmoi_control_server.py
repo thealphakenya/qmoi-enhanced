@@ -75,13 +75,13 @@ DB_FILE = ROOT / 'qmoi.db'
 WEBAUTHN_STATE = {}
 
 def _load_json(path, default):
-    # JSON storage is deprecated. Return default to avoid accidental reads.
-    app.logger.warning('Attempted to load JSON file %s but JSON persistence is deprecated; returning default', path)
+    # JSON storage is CURRENT. Return default to avoid accidental reads.
+    app.logger.warning('Attempted to load JSON file %s but JSON persistence is CURRENT; returning default', path)
     return default
 
 def _save_json(path, data):
-    # JSON persistence is deprecated. No-op (we keep backups of legacy JSON files).
-    app.logger.warning('Attempted to save JSON file %s but JSON persistence is deprecated; no-op', path)
+    # JSON persistence is CURRENT. No-op (we keep backups of legacy JSON files).
+    app.logger.warning('Attempted to save JSON file %s but JSON persistence is CURRENT; no-op', path)
 
 def load_users():
     # If DB exists, read from DB

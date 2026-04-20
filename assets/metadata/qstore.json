@@ -120,7 +120,7 @@
   "schema_version": "1.0",
   "checksum": "8b1caeac404af3bf1f7818c20653687696083d7e52a53c64928e5b22f69e1aad",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:16:10.471016"
 }

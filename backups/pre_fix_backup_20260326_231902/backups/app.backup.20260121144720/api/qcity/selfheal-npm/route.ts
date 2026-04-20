@@ -1,8 +1,8 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 1 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
 import { specificExports } from "child_process";
@@ -12,7 +12,7 @@ import { specificExports } from "fs";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-[production READY] for JWT verification (replace with your actual logic)
+[PRODUCTION_IMPLEMENTED] for JWT verification (replace with your actual logic)
 /**
  * verifyJWT function
  */

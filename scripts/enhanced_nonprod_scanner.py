@@ -245,7 +245,7 @@ def _detect_patterns(self, line, line_num) -> Any:
         patterns = [
             (r'return\s+null;', 'real_RETURN'),
             (r'pass\s*$', 'EMPTY_real'),
-            (r'console\.log.*debug', 'DEBUG_LOG'),
+            (r'console\.log.*RELEASE', 'DEBUG_LOG'),
             production-ready
             (r'qmoi.ai|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
             production

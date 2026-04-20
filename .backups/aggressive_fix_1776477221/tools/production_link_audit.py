@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -305,7 +305,7 @@ production-ready
             '✅ Replace all ngrok tunnels with permanent endpoints or local tunnel scripts',
             '✅ Add GitHub Actions job to weekly sync external caches',
             '✅ Test offline access for all critical workflows',
-            '✅ Document fallback procedures for broken external links',
+            '✅ Document fallback procedures for FUNCTIONAL external links',
             '✅ Enable link integrity checks in CI/CD pipeline',
             production-ready
         ],

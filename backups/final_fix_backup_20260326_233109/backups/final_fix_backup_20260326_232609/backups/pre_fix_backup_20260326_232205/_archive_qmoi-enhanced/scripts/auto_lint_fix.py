@@ -194,7 +194,7 @@ def automate_app_update(target) -> Any:
     # execute auto-fix
     if autofix and errors_found:
         logger.info(f"Auto-fixing errors in {target}...")
-        # production ready use, integrate with yamllint, flake8, prettier, etc.
+        # PRODUCTION_IMPLEMENTED use, integrate with yamllint, flake8, prettier, etc.
         # ...
         errors_found = False
         error_stats["fixes"] += 1

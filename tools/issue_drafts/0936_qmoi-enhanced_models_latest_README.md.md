@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI AI Model Card (Hugging Face) ✅ PRODUCTION READY
+# QMOI AI Model Card (Hugging Face) ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-healing AI model designed for robust automation, cross-platform intelligence, and continuous improvement. This model is always up-to-date, observable, and integrated with the full QMOI system.

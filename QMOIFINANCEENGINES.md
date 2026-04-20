@@ -7,19 +7,19 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOIFINANCEENGINES"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOIFINANCEENGINES ✅ PRODUCTION READY
+# QMOIFINANCEENGINES ✅ PRODUCTION_IMPLEMENTED
 
-# QMOI FINANCE ENGINES ✅ PRODUCTION READY
+# QMOI FINANCE ENGINES ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
-This document lists required finance engines, monetization channels and a safe implementation plan for QMOI to collect, consolidate and settle revenue into the Cashon wallet. All runtime scripts are [production READY]-first (dry-run) and require explicit human gating for any real-money transfers: set environment variable production_CONFIRMED=true and pass `--real` to the CLI tools.
+This document lists required finance engines, monetization channels and a safe implementation plan for QMOI to collect, consolidate and settle revenue into the Cashon wallet. All runtime scripts are [PRODUCTION_IMPLEMENTED]-first (dry-run) and require explicit human gating for any real-money transfers: set environment variable production_CONFIRMED=true and pass `--real` to the CLI tools.
 
 ## Monetization channels (14+)
 
@@ -41,15 +41,15 @@ This document lists required finance engines, monetization channels and a safe i
 
 ## High-level wiring and rules
 
-- All monetization sources must funnel receipts / payouts into a canonical ledger (local JSON + secure DB production ready). The canonical ledger for local validations is `.qmoi_validation/cashon_ledger.json`.
-- All integrations must support a [production READY]/test mode and a production mode; production mode requires both `production_CONFIRMED=true` and an explicit `--real` flag.
+- All monetization sources must funnel receipts / payouts into a canonical ledger (local JSON + secure DB PRODUCTION_IMPLEMENTED). The canonical ledger for local validations is `.qmoi_validation/cashon_ledger.json`.
+- All integrations must support a [PRODUCTION_IMPLEMENTED]/test mode and a production mode; production mode requires both `production_CONFIRMED=true` and an explicit `--real` flag.
 - No secrets or API keys are committed to the repository. Use environment variables or a secrets manager. A helper script (`scripts/setup_github_secrets.sh`) is provided to assist prodelopers in bootstrapping repo secrets locally (requires `gh` CLI and manual confirmation).
 - Payout confirmation: every incoming payout or revenue event must be validated (receipt ID, timestamp, source, gross/net amounts). QMOI will mark receipts as "verified" after checksum and optional external API confirmation.
-- Settlements to `Cashon` are performed via a settlement script that aggregates available balances and either [production READY]s or executes transfers into the Cashon wallet (requires human gating).
+- Settlements to `Cashon` are performed via a settlement script that aggregates available balances and either [PRODUCTION_IMPLEMENTED]s or executes transfers into the Cashon wallet (requires human gating).
 
 ## Next steps (implementation plan)
 
-1. Add testnet/[production READY] adapters for every wallet provider (Cashon, Megavault, exchanges). Make these adapters part of `scripts/wallets/`.
+1. Add testnet/[PRODUCTION_IMPLEMENTED] adapters for every wallet provider (Cashon, Megavault, exchanges). Make these adapters part of `scripts/wallets/`.
 2. Implement the canonical ledger and a nightly dry-run settlement job that produces an artifact for review.
 3. Add CI checks that prevent removal of production safety gating or accidental commits of secrets.
 4. Build small connectors that can publish built artifacts to GitHub Releases (dry-run) and then, with human approval, publish real releases.

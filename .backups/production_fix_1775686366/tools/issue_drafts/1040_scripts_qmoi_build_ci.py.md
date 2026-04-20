@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for scripts/qmoi_build_ci.py"
 generated: 2025-11-08T16:06:38.984581Z
@@ -19,9 +19,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -69,7 +69,7 @@ def deploy_via_ngrok():
 def deploy_status_dashboard():
     try:
         # Create dashboard.json with install results
-        status_path = os.path.join("Qmoi_apps", "install_[production READY]_report.json")
+        status_path = os.path.join("Qmoi_apps", "install_[PRODUCTION_IMPLEMENTED]_report.json")
         dashboard_path = os.path.join("Qmoi_apps", "dashboard.json")
         if os.path.exists(status_path):
             with open(status_path, "r") as f:

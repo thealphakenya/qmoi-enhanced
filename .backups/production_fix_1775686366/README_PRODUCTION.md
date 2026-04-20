@@ -22,7 +22,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Enhanced - production-Ready Backend & API
 
 [![CI/CD Pipeline](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci-cd.yml)

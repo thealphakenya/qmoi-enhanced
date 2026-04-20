@@ -49,7 +49,7 @@ report_metrics() {{
     fi
 }}
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 
 echo "=== QMOI Role-Based Access Control Testing ==="

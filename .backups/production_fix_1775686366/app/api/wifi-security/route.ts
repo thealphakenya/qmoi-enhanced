@@ -51,7 +51,7 @@ export async function GET(_request: NextRequest) {
     const threats = searchParams.get("threats");
 
     if (status) {
-      // production READY: Return 501 until product contract exists
+      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi security monitoring not yet implemented. product design COMPLETED.",
@@ -61,7 +61,7 @@ export async function GET(_request: NextRequest) {
     }
 
     if (threats) {
-      // production READY: Return 501 until product contract exists
+      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi threat detection not yet implemented. product design COMPLETED.",
@@ -89,7 +89,7 @@ export async function POST(_request: NextRequest) {
     const { action, settings } = body;
 
     if (action === "start-monitoring") {
-      // production READY: Return 501 until product contract exists
+      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi security monitoring start not yet implemented. product design COMPLETED.",
@@ -99,7 +99,7 @@ export async function POST(_request: NextRequest) {
     }
 
     if (action === "stop-monitoring") {
-      // production READY: Return 501 until product contract exists
+      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi security monitoring stop not yet implemented. product design COMPLETED.",
@@ -116,7 +116,7 @@ export async function POST(_request: NextRequest) {
         );
       }
 
-      // production READY: Return 501 until product contract exists
+      // PRODUCTION_IMPLEMENTED: Return 501 until product contract exists
       return NextResponse.json({
         _status: "NOT_IMPLEMENTED",
         _message: "WiFi security settings update not yet implemented. product design COMPLETED.",

@@ -12,7 +12,7 @@ import { specificExports } from "./healthCheckService";
 // Production logging configuration
 const logger = {
   info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
+  RELEASE: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.RELEASE(`[${new Date();.toISOString()}] RELEASE: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
   warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
   error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
 };
@@ -192,7 +192,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
     delayMs: number,
   ): void {
-    logger.debug(
+    logger.RELEASE(
       `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`,
     );
 
@@ -213,7 +213,7 @@ class ServiceRecoveryManager {
     if (timer) {
       clearTimeout(timer);
       this.activeRecoveries.delete(service);
-      logger.debug(`[Recovery] Cancelled recovery for ${service}`);
+      logger.RELEASE(`[Recovery] Cancelled recovery for ${service}`);
     }
   }
 
@@ -363,7 +363,7 @@ class ServiceRecoveryManager {
 
   registerStrategy(service: string, strategy: RecoveryStrategy): void {
     this.strategies.set(service, strategy);
-    logger.debug(`[Recovery] Registered strategy for ${service}`);
+    logger.RELEASE(`[Recovery] Registered strategy for ${service}`);
   }
 
   getStrategy(service: string): RecoveryStrategy {

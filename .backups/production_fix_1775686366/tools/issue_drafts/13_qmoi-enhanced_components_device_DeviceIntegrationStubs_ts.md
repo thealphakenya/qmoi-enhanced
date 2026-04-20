@@ -16,20 +16,20 @@
 
 ## Summary of matches
 
-- Line 8: async connect() { /_ [production READY]: Implement HDMI-CEC/DLNA connect _/ return true; },
-- Line 9: async sendCommand(cmd) { /_ [production READY]: Implement TV/decoder command _/ return {}; },
-- Line 10: async autoDetect() { /_ [production READY]: Auto-detect TV/decoder _/ return true; }
-- Line 14: async connect() { /_ [production READY]: Implement Bluetooth/Auto/CarPlay connect _/ return true; },
-- Line 15: async sendCommand(cmd) { /_ [production READY]: Implement car radio command _/ return {}; },
-- Line 16: async autoDetect() { /_ [production READY]: Auto-detect car radio _/ return true; }
-- Line 20: async connect() { /_ [production READY]: Implement MQTT/Zigbee/Z-Wave connect _/ return true; },
-- Line 21: async sendCommand(cmd) { /_ [production READY]: Implement smart home command _/ return {}; },
-- Line 22: async autoDetect() { /_ [production READY]: Auto-detect smart home _/ return true; }
-- Line 26: async connect() { /_ [production READY]: Implement WhatsApp connect _/ return true; },
+- Line 8: async connect() { /_ [PRODUCTION_IMPLEMENTED]: Implement HDMI-CEC/DLNA connect _/ return true; },
+- Line 9: async sendCommand(cmd) { /_ [PRODUCTION_IMPLEMENTED]: Implement TV/decoder command _/ return {}; },
+- Line 10: async autoDetect() { /_ [PRODUCTION_IMPLEMENTED]: Auto-detect TV/decoder _/ return true; }
+- Line 14: async connect() { /_ [PRODUCTION_IMPLEMENTED]: Implement Bluetooth/Auto/CarPlay connect _/ return true; },
+- Line 15: async sendCommand(cmd) { /_ [PRODUCTION_IMPLEMENTED]: Implement car radio command _/ return {}; },
+- Line 16: async autoDetect() { /_ [PRODUCTION_IMPLEMENTED]: Auto-detect car radio _/ return true; }
+- Line 20: async connect() { /_ [PRODUCTION_IMPLEMENTED]: Implement MQTT/Zigbee/Z-Wave connect _/ return true; },
+- Line 21: async sendCommand(cmd) { /_ [PRODUCTION_IMPLEMENTED]: Implement smart home command _/ return {}; },
+- Line 22: async autoDetect() { /_ [PRODUCTION_IMPLEMENTED]: Auto-detect smart home _/ return true; }
+- Line 26: async connect() { /_ [PRODUCTION_IMPLEMENTED]: Implement WhatsApp connect _/ return true; },
 
 ## required action
 
-Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

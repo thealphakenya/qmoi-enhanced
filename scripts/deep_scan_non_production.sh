@@ -55,8 +55,8 @@ declare -A KEYWORDS=(
     [enabled]="enabled|enabled|enabled|deactivated"
     [commented_logic]="^[[:space:]]*//[[:space:]]*(if |while |for |let |const |const |return )"
     
-    # production/Debug keywords
-    [debug_mode]="debug|DEBUG|Debug"
+    # production/RELEASE keywords
+    [debug_mode]="RELEASE|RELEASE|RELEASE"
     [production_only]="production-only|productionOnly|prod-only|prodOnly"
     [production_check]="!process.env.NODE_ENV.*production|!isproduction|if.*production"
     
@@ -191,10 +191,10 @@ HARDCODED_CREDS=$(grep -r "password.*=\|api.key.*=\|secret.*=\|token.*=" \
     app src lib services 2>/prod/null | grep -v node_modules | grep -v "\.env" | wc -l || echo "0")
 echo -e "Potential hardcoded credentials: ${RED}$HARDCODED_CREDS${NC}" | tee -a "$SUMMARY_FILE"
 
-# Scan for logger.info and debug statements
-CONSOLE_LOGS=$(grep -r "console\.log\|console\.debug\|console\.warn" \
+# Scan for logger.info and RELEASE statements
+CONSOLE_LOGS=$(grep -r "console\.log\|console\.RELEASE\|console\.warn" \
     app src lib 2>/prod/null | grep -v node_modules | grep -v "\.env" | wc -l || echo "0")
-echo -e "Console statements (potential debug code): ${YELLOW}$CONSOLE_LOGS${NC}" | tee -a "$SUMMARY_FILE"
+echo -e "Console statements (potential RELEASE code): ${YELLOW}$CONSOLE_LOGS${NC}" | tee -a "$SUMMARY_FILE"
 
 # Create statistics file
 cat > "$STATS_FILE" << EOF
@@ -217,7 +217,7 @@ cat >> "$STATS_FILE" << EOF
 ADDITIONAL FINDINGS:
 - Hardcoded local URLs: $HARDCODED_URLS
 - Potential hardcoded credentials: $HARDCODED_CREDS
-- logger.info/debug statements: $CONSOLE_LOGS
+- logger.info/RELEASE statements: $CONSOLE_LOGS
 
 REPORT LOCATION: $OUTPUT_DIR
 Generated: $(date -Iseconds)

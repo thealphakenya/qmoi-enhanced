@@ -44,7 +44,7 @@ def fix_ellipsis_in_docs():
                     content_text = re.sub(pattern, replacement, content_text, flags=re.MULTILINE)
 
                 if ext in ['.py', '.js', '.ts', '.jsx', '.tsx']:
-                    content_text = re.sub(r'(^\s*(#|//)\s*\.\.\.)$', r'\1 Implementation details to be added production ready version', content_text, flags=re.MULTILINE)
+                    content_text = re.sub(r'(^\s*(#|//)\s*\.\.\.)$', r'\1 Implementation details to be added PRODUCTION_IMPLEMENTED version', content_text, flags=re.MULTILINE)
 
                 if content_text != original:
                     file_path.write_text(content_text, encoding='utf-8')

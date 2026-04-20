@@ -250,7 +250,7 @@ await emailService.updateConfig({
 - Review error logs
 - Validate integration configurations
 
-### Debug Mode
+### RELEASE Mode
 Enable detailed logging:
 ```typescript
 process.env.EMAIL_DEBUG = "true";

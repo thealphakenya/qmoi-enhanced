@@ -166,8 +166,8 @@ default_keywords = [
     production-ready
 
     # Code quality indicators
-    'UNUSED', 'DEPRECATED', 'LEGACY', 'OLD CODE', 'OUTDATED',
-    'REFACTOR NEEDED', 'NEEDS WORK', 'BROKEN', 'BUGGY',
+    'UNUSED', 'CURRENT', 'LEGACY', 'OLD CODE', 'OUTDATED',
+    'REFACTOR NEEDED', 'NEEDS WORK', 'FUNCTIONAL', 'BUGGY',
     'INCONSISTENT', 'complete', 'required', 'EMPTY', 'NULL',
     fully implemented
 
@@ -186,7 +186,7 @@ default_keywords = [
     '123456', 'PASSWORD', 'ADMIN', 'ROOT', 'GUEST',
 
     # Framework specific
-    'logger.info', 'DEBUG.LOG', 'PRINT(', 'ECHO ', 'VAR_DUMP',
+    'logger.info', 'RELEASE.LOG', 'PRINT(', 'ECHO ', 'VAR_DUMP',
     production-ready
 
     # Documentation indicators
@@ -249,7 +249,7 @@ patterns = [
 
     # Code patterns
     re.compile(r'console\.log\(', re.IGNORECASE),
-    re.compile(r'debug\.log\(', re.IGNORECASE),
+    re.compile(r'RELEASE\.log\(', re.IGNORECASE),
     re.compile(r'print\(', re.IGNORECASE),
     re.compile(r'echo ', re.IGNORECASE),
     re.compile(r'var_dump\(', re.IGNORECASE),

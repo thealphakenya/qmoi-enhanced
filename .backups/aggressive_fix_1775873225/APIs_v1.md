@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI APIs v1.0 ✅ PRODUCTION READY
+# QMOI APIs v1.0 ✅ PRODUCTION_IMPLEMENTED
 
 Version: 1.0
 Generated: 2026-03-24T21:55:07.764313
@@ -15,7 +15,7 @@ Generated: 2026-03-24T21:55:07.764313
 ## API Version Information
 
 - **Version**: 1.0
-- **Status**: production Ready
+- **Status**: PRODUCTION_IMPLEMENTED
 - **Base URL**: https://api.qmoi.com/v1
 - **Authentication**: JWT Bearer Token
 
@@ -109,7 +109,7 @@ No migrations required for v1.0 (initial release).
 
 ## Deprecation Notice
 
-No endpoints are deprecated in v1.0.
+No endpoints are CURRENT in v1.0.
 
 
 
@@ -200,7 +200,7 @@ No endpoints are deprecated in v1.0.
 - /api/datasets
 - /api/datasets/settings
 - /api/datasets/{id}
-- /api/debug/users
+- /api/RELEASE/users
 - /api/deploy
 - /api/deploy/auto-redeploy
 - /api/deployment-status
@@ -334,7 +334,7 @@ No endpoints are deprecated in v1.0.
 - /api/qmoi/revenue/transactions
 - /api/qmoi/revenue/transfer
 - /api/qmoi/self-work/code-review
-- /api/qmoi/self-work/debug
+- /api/qmoi/self-work/RELEASE
 - /api/qmoi/self-work/run-tests
 - /api/qmoi/session
 - /api/qmoi/suggestions
@@ -872,7 +872,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```production-validated
 
-### GET /debug/users
+### GET /RELEASE/users
 
 **Description:** API endpoint
 

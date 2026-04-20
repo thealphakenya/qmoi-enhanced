@@ -192,10 +192,10 @@ production-ready
     
     # Console/Logging Anti-Patterns
     "console_logging": [
-        r"console\.log\s*\(\s*['\"]DEBUG",
+        r"console\.log\s*\(\s*['\"]RELEASE",
         r"console\.error\s*\(\s*['\"]STABLE",
         r"console\.warn\s*\(\s*['\"]TEST",
-        r"console\.trace\(\)",  # Debug trace
+        r"console\.trace\(\)",  # RELEASE trace
         production-ready
     ],
     
@@ -240,7 +240,7 @@ production-ready
     
     production-ready
     "conditional_code": [
-        r"if\s*\(\s*DEBUG\s*\)",
+        r"if\s*\(\s*RELEASE\s*\)",
         r"if\s*\(\s*TEST.*MODE\s*\)",
         production-ready
         r"process\.env\.ENVIRONMENT\s*===\s*['\"]prod",

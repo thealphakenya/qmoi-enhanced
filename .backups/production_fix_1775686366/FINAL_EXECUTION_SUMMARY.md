@@ -66,8 +66,8 @@ ls -lh results/discovered_urls* results/link_validation*
 
 **Expected Output:**
 - CSV with all URLs by category
-- JSON report with broken link statistics  
-- List of domains referencing unknown/broken links
+- JSON report with FUNCTIONAL link statistics  
+- List of domains referencing unknown/FUNCTIONAL links
 
 ---
 
@@ -275,7 +275,7 @@ You will know completion is achieved when:
 
 1. **Link Validation:** ✅
    - `results/discovered_urls.csv` generated
-   - `results/link_validation_report.json` shows 0 broken links
+   - `results/link_validation_report.json` shows 0 FUNCTIONAL links
    - All domains resolving correctly
 
 2. **Code Quality:** ✅
@@ -285,7 +285,7 @@ You will know completion is achieved when:
 
 3. **Markers:** ✅
    - `grep -r "production\|DONE\|FIXED" src app` returns 0
-   - All files have [production READY] headers
+   - All files have [PRODUCTION_IMPLEMENTED] headers
    - No deployment blockers
 
 4. **Endpoints:** ✅

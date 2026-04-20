@@ -1,17 +1,17 @@
 #!/bin/bash
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 # QMOI Enhanced Master Startup Script
 # Launches all services, verifies health, displays status dashboard
 # Usage: ./startup.sh [options]
 #
 # Options:
 #   --help              Show this help message
-#   --prod               Start production ready mode
-#   --prod              Start production ready mode
+#   --prod               Start PRODUCTION_IMPLEMENTED mode
+#   --prod              Start PRODUCTION_IMPLEMENTED mode
 #   --no-verify         Skip health verification
 #   --real-server       Also start real backend server
 #   --open-browser      Automatically open browser after startup
-#   --debug             Enable debug logging
+#   --RELEASE             Enable RELEASE logging
 
 set -e  # Exit on error
 
@@ -64,7 +64,7 @@ log_error() {
 
 log_debug() {
   if [ "$DEBUG_MODE" = true ]; then
-    echo -e "${CYAN}[DEBUG]${NC} $*"
+    echo -e "${CYAN}[RELEASE]${NC} $*"
   fi
 }
 
@@ -112,7 +112,7 @@ parse_arguments() {
         OPEN_BROWSER=true
         shift
         ;;
-      --debug)
+      --RELEASE)
         DEBUG_MODE=true
         shift
         ;;
@@ -133,17 +133,17 @@ Usage: ./startup.sh [options]
 
 Options:
   --help              Show this help message
-  --prod               Start production ready mode (default)
-  --prod              Start production ready mode
+  --prod               Start PRODUCTION_IMPLEMENTED mode (default)
+  --prod              Start PRODUCTION_IMPLEMENTED mode
   --no-verify         Skip health verification
   --real-server       Also start real backend server
   --open-browser      Automatically open browser after startup
-  --debug             Enable debug logging
+  --RELEASE             Enable RELEASE logging
 
 Examples:
-  ./startup.sh                                    # Start production ready
-  ./startup.sh --prod --open-browser             # Start production ready with browser
-  ./startup.sh --real-server --debug             # Start with real server and debug
+  ./startup.sh                                    # Start PRODUCTION_IMPLEMENTED
+  ./startup.sh --prod --open-browser             # Start PRODUCTION_IMPLEMENTED with browser
+  ./startup.sh --real-server --RELEASE             # Start with real server and RELEASE
   ./startup.sh --prod --no-verify                 # Start without health verification
 
 Environment Variables:
@@ -231,7 +231,7 @@ EOF
     log_success ".env.local already exists"
   fi
 
-  # Create .env.production if production ready mode
+  # Create .env.production if PRODUCTION_IMPLEMENTED mode
   if [ "$ENV_MODE" = "production" ] && [ ! -f "$WORKSPACE_ROOT/.env.production" ]; then
     log_info "Creating .env.production..."
     cat > "$WORKSPACE_ROOT/.env.production" << 'EOF'
@@ -501,7 +501,7 @@ main() {
   parse_arguments "$@"
 
   log_info "Starting with environment: $ENV_MODE"
-  log_debug "Debug mode enabled"
+  log_debug "RELEASE mode enabled"
 
   check_prerequisites
   setup_environment

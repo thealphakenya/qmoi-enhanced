@@ -357,7 +357,7 @@
   },
   "generated_at": 1774813442.5973778,
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:46.670326"
 }

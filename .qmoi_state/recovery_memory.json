@@ -16,7 +16,7 @@
   "backup_created": "2026-03-26T03:58:12Z",
   "restoration_completed": "2026-04-02T14:22:43.970202Z",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:41.943361"
 }

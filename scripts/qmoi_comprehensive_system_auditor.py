@@ -210,7 +210,7 @@ def update_resumefromhere(route_count: int, test_count: int, hook_count: int, we
 - **Discovered webhooks**: {webhook_count}
 - **Total markdown files indexed**: {md_count}
 
-NEXT: Validate API docs, route mapping, autotests, and balance system features production ready.
+NEXT: Validate API docs, route mapping, autotests, and balance system features PRODUCTION_IMPLEMENTED.
 """
     if resume_file.exists():
         existing = resume_file.read_text(encoding='utf-8', errors='ignore').rstrip()

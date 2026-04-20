@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 IGNORE_DIRS = {'.git', 'node_modules', 'dist', 'build', '.venv', '.venv_qmoi_control', '_archive_qmoi-enhanced', '.idea', '.vscode'}
-MARKER_RE = re.compile(r'\b(DONE|FIXED|real|PENDING IMPLEMENTATION|production IMPLEMENTATION REQUIRED|production READY)\b', re.IGNORECASE)
+MARKER_RE = re.compile(r'\b(DONE|FIXED|real|PENDING IMPLEMENTATION|production IMPLEMENTATION REQUIRED|PRODUCTION_IMPLEMENTED)\b', re.IGNORECASE)
 
 report_lines = []
 count = 0

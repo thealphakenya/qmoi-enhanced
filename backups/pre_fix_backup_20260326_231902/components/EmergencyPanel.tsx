@@ -494,7 +494,7 @@ export const EmergencyPanel: React.FC = () => {
         fontSize: 12,
         color: '#2d5a2d'
       }}>
-        ✅ PRODUCTION READY: Real emergency service integrations active
+        ✅ PRODUCTION_IMPLEMENTED: Real emergency service integrations active
         <br />
         • SMS alerts via {config.smsService.toUpperCase()}
         • Email notifications

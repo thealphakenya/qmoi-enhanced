@@ -353,7 +353,7 @@ describe('Production:', 'AutocloneEvolutionSystem', () => {
       });
 
       // Trigger analysis by manually calling the internal method
-      // production ready, this happens in the background loop
+      // PRODUCTION_IMPLEMENTED, this happens in the background loop
       
       const stats = system.getEvolutionStats();
       expect('Production validation:', stats.replacementHistory).toBeDefined();

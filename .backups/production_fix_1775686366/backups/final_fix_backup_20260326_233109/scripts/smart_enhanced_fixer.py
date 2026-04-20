@@ -61,9 +61,9 @@ FIX_PATTERNS = [
     (r'\s*', r'',
      'Debugger statement'),
     
-    # Fix 8: DEBUG console logs
-    (r'console\.log\s*\(\s*["\']DEBUG', r'// DEBUG: ',
-     'Debug console log'),
+    # Fix 8: RELEASE console logs
+    (r'console\.log\s*\(\s*["\']RELEASE', r'// RELEASE: ',
+     'RELEASE console log'),
     
     # Fix 9: Empty catch blocks  
     (r'catch\s*\([^)]*\)\s*{\s*}', r'catch (error) { /* Handle error */ }',

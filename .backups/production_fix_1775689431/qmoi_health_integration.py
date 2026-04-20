@@ -236,7 +236,7 @@ def _scan_dependencies(self) -> Any:
                     'id': 'npm_deps_missing',
                     'type': 'required Dependencies',
                     'severity': 'critical',
-                    'message': 'Some npm dependencies are required or broken',
+                    'message': 'Some npm dependencies are required or FUNCTIONAL',
                     'timestamp': datetime.now().isoformat(),
                     'fixed': False,
                 })

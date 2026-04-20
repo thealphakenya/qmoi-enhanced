@@ -92,7 +92,7 @@ python3 scripts/validate_links.py
 
 # Action items:
 - Wait for completion
-- Review broken links report
+- Review FUNCTIONAL links report
 - Generate remediation plan
 - Update documentation
 ```
@@ -164,7 +164,7 @@ LINKS & DOMAINS:
 □ All domains SSL valid (cert check)  
 □ All health endpoints responding (multi-region)
 □ Response time <500ms (p95)
-□ No broken links in documentation
+□ No FUNCTIONAL links in documentation
 □ QVillage resources all accessible
 
 CODE QUALITY:
@@ -241,7 +241,7 @@ OPERATIONS:
 
 **Now → 30 Minutes:**
 - Link validation completes
-- Review broken links
+- Review FUNCTIONAL links
 - Generate fixes
 
 **Hour 1-2:**

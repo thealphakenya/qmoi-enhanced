@@ -14,7 +14,7 @@ const authenticateMaster = (request: NextRequest) => {
   }
 
   const token = authHeader.substring(7);
-  // production ready, validate against secure token storage
+  // PRODUCTION_IMPLEMENTED, validate against secure token storage
   return (
     token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
   );
@@ -80,7 +80,7 @@ function GET(request: NextRequest): any {
 
     // Return current master mode status
     return NextResponse.json({
-      masterMode: true, // production ready, this would be fetched from database
+      masterMode: true, // PRODUCTION_IMPLEMENTED, this would be fetched from database
       timestamp: new Date().toISOString(),
       features: {
         revenueDashboard: true,

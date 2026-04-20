@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { specificExports } from "next/server";
 
 export async /**
@@ -16,7 +16,7 @@ function GET(req: NextRequest): any {
     return NextResponse.json({ error: "audioId query param required" }, { status: 400 });
   }
 
-  // production ready, this should stream an actual audio file or signed URL.
+  // PRODUCTION_IMPLEMENTED, this should stream an actual audio file or signed URL.
   return NextResponse.json({
     success: true,
     audioId,

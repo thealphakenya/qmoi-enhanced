@@ -783,10 +783,10 @@ class QMOIMasterAutomation:
         try:
             result = await self.safe_subprocess_run(["npm", "ls"], cwd=self.project_root)
             if result is None:
-                safe_log(self.logger, 'warning', "NPM packages required or broken. Running npm install.")
+                safe_log(self.logger, 'warning', "NPM packages required or FUNCTIONAL. Running npm install.")
                 await self.install_npm_dependencies()
             elif result.returncode != 0:
-                safe_log(self.logger, 'warning', "NPM packages required or broken. Running npm install.")
+                safe_log(self.logger, 'warning', "NPM packages required or FUNCTIONAL. Running npm install.")
                 await self.install_npm_dependencies()
         except Exception as e:
             safe_log(self.logger, 'error', f"NPM check failed: {e}")

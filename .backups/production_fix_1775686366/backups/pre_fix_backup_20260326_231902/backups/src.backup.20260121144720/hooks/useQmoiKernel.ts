@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { useState, useCallback, useMemo } from "react";
 import { getSessionHeaders } from "../services/qmoiSession";
 
@@ -31,14 +31,14 @@ export function useQmoiKernel() {
     setLoading(true);
     setError(null);
     try {
-      console.debug("HOOK: fetchStatus - calling /api/qmoi/status");
+      console.RELEASE("HOOK: fetchStatus - calling /api/qmoi/status");
       const _res = await fetch("/api/qmoi/status", {
         headers: getSessionHeaders(),
       });
-      console.debug("HOOK: fetchStatus - response status", _res && _res.status);
+      console.RELEASE("HOOK: fetchStatus - response status", _res && _res.status);
       if (!_res.ok) throw new Error("Failed to fetch status");
       const data = await _res.json();
-      console.debug("HOOK: fetchStatus - parsed data", data);
+      console.RELEASE("HOOK: fetchStatus - parsed data", data);
       setStatus({
         status: data.status,
         lastCheck: data.last_check,

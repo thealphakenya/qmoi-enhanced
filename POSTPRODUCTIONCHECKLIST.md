@@ -27,7 +27,7 @@ title: "Post-production Checklist"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Post-production Checklist ✅ PRODUCTION READY
+# Post-production Checklist ✅ PRODUCTION_IMPLEMENTED
 
 This checklist contains items to run after initial production cutover.
 

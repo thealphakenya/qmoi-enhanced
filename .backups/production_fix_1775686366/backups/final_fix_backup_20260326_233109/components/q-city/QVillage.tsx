@@ -2067,7 +2067,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
                       <Code className="h-8 w-8 text-blue-600 mx-auto mb-2" />
                       <div className="text-center">
                         <div className="text-lg font-bold text-blue-700">
-                          Auto Development
+                          Auto PRODUCTION
                         </div>
                         <div className="text-sm text-blue-600">
                           Self-generating projects

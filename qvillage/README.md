@@ -78,7 +78,7 @@ pip install -r requirements.txt
 ```production-validatedbash
 export REDIS_URL="redis://production.qmoi.ai:6379"
 export DATABASE_URL="sqlite:///./qvillage.db"
-# Optional: MinIO configuration ✅ PRODUCTION READY
+# Optional: MinIO configuration ✅ PRODUCTION_IMPLEMENTED
 export MINIO_ENDPOINT="production.qmoi.ai:9000"
 export MINIO_ACCESS_KEY="minioadmin"
 export MINIO_SECRET_KEY="minioadmin"

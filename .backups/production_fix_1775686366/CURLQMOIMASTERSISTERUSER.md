@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # CURL Examples: Talking to `qmoi` (Master / Sister / User)
 
 This document shows how to talk to a local `qmoi` chat endpoint using `curl`.
@@ -128,7 +128,7 @@ If you want these curl endpoints to talk to a real LLM, replace the persona_resp
 
 This file documents how to talk to `qmoi` using curl. It includes role-specific examples (Master, Sister, ordinary User), local testing instructions, and tips to ensure QMOI uses its persistent memory during conversations.
 
-IMPORTANT: This repository includes a small local server for testing (`scripts/qmoi_chat_server.py`) that [production READY]s persona handling and persistent memory. For production you can adapt the same curl payloads to your real endpoint (OpenAI-compatible or your own REST API).
+IMPORTANT: This repository includes a small local server for testing (`scripts/qmoi_chat_server.py`) that [PRODUCTION_IMPLEMENTED]s persona handling and persistent memory. For production you can adapt the same curl payloads to your real endpoint (OpenAI-compatible or your own REST API).
 
 ---
 

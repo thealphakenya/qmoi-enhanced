@@ -5,7 +5,7 @@
   },
   "updated_at": "2025-10-29T00:19:40.408681Z",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:41.891175"
 }

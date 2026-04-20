@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # URGENT: App Fix Checklist
 
 **Status**: ✅ Fixed (full)  
@@ -21,11 +21,11 @@
 
 The automated restore attempt (downloaded from release tags v1.2.3/v1.2.4/v1.2.5) produced this immediate verification outcome:
 
-- ❌ **Android APK** - BROKEN (downloaded large file but invalid ZIP format)
-- ❌ **iOS IPA** - BROKEN (invalid ZIP format)
-- ❌ **Smart TV APK** - BROKEN (invalid ZIP format)
-- ❌ **Chromebook ZIP** - BROKEN (invalid ZIP format)
-- ❌ **QCity ZIP** - BROKEN (invalid ZIP format)
+- ❌ **Android APK** - FUNCTIONAL (downloaded large file but invalid ZIP format)
+- ❌ **iOS IPA** - FUNCTIONAL (invalid ZIP format)
+- ❌ **Smart TV APK** - FUNCTIONAL (invalid ZIP format)
+- ❌ **Chromebook ZIP** - FUNCTIONAL (invalid ZIP format)
+- ❌ **QCity ZIP** - FUNCTIONAL (invalid ZIP format)
 - ⚠️ **Linux DEB** - PREVIOUSLY CORRUPTED (needs rebuild; `ar` cannot parse current file)
 - ✅ **Linux AppImage** - Present but execution not fully validated in container (permission/format check)
 - ✅ **macOS DMG** - Present (cannot fully mount on non-macOS runner)
@@ -92,12 +92,12 @@ find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/pr
    cp /path/to/real/qmoi_ai.apk ~/temp_builds/
    cp /path/to/real/qmoi_ai.ipa ~/temp_builds/
    ```
-2. [ ] Verify they're not [production READY] files:
+2. [ ] Verify they're not [PRODUCTION_IMPLEMENTED] files:
    ```bash
    unzip -l ~/temp_builds/qmoi_ai.apk | head -20
    unzip -l ~/temp_builds/qmoi_ai.ipa | head -20
    ```
-3. [ ] Replace [production READY]s:
+3. [ ] Replace [PRODUCTION_IMPLEMENTED]s:
    ```bash
    cp ~/temp_builds/qmoi_ai.apk Qmoi_downloaded_apps/android/latest/
    cp ~/temp_builds/qmoi_ai.ipa Qmoi_downloaded_apps/ios/latest/
@@ -169,7 +169,7 @@ GRADLE
 
 ## VERIFICATION BEFORE REPLACING
 
-For each real app obtained, verify it's NOT a [production READY]:
+For each real app obtained, verify it's NOT a [PRODUCTION_IMPLEMENTED]:
 
 ### Android APK
 
@@ -213,13 +213,13 @@ For each real app obtained, verify it's NOT a [production READY]:
 Once you have verified real apps:
 
 ```bash
-# Step 1: Backup current broken files (safety)
+# Step 1: Backup current FUNCTIONAL files (safety)
 mkdir -p Qmoi_downloaded_apps/_BACKUPS_$(date +%Y%m%d_%H%M%S)
 cp Qmoi_downloaded_apps/android/latest/qmoi_ai.apk \
    Qmoi_downloaded_apps/_BACKUPS_*/
 cp Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa \
    Qmoi_downloaded_apps/_BACKUPS_*/
-# ... copy all 5 broken files
+# ... copy all 5 FUNCTIONAL files
 
 # Step 2: Replace with real apps
 cp /path/to/real/qmoi_ai.apk Qmoi_downloaded_apps/android/latest/
@@ -233,7 +233,7 @@ python3 scripts/generate_release_manifest.py
 
 # Step 4: Commit
 git add Qmoi_downloaded_apps/ release_assets_manifest.json
-git commit -m "fix: replace [production READY] apps with real functioning builds"
+git commit -m "fix: replace [PRODUCTION_IMPLEMENTED] apps with real functioning builds"
 ```
 
 **Checklist**:

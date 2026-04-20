@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Pre-production Documentation & Actions ✅ PRODUCTION READY
+# QMOI Pre-production Documentation & Actions ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -39,7 +39,7 @@ This document outlines best practices and actionable steps for preparing QMOI fo
 
 ## 2. Real prodice API Integration
 
-- Integrate real APIs for AWS, Azure, GCP, IoT, and Mobile prodice [production READY]s.
+- Integrate real APIs for AWS, Azure, GCP, IoT, and Mobile prodice [PRODUCTION_IMPLEMENTED]s.
 - Use official SDKs and secure authentication.
 - Provide UI for prodice connection, status, and management.
 - Log all prodice actions for audit and troubleshooting.

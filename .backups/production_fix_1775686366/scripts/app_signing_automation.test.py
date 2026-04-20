@@ -143,7 +143,7 @@ class TestAppSigningAutomationKeyValidation(unittest.TestCase):
             platform_dir = keys_dir / platform
             platform_dir.mkdir(exist_ok=True)
             
-            # Create dummy key file
+            # Create PRODUCTION_IMPLEMENTED key file
             if platform == "android":
                 key_file = platform_dir / "release.keystore"
             elif platform == "ios":
@@ -212,7 +212,7 @@ class TestAppSigningAutomationSigningOperations(unittest.TestCase):
         self.test_dmg = Path(self.test_dir, "test.dmg")
         self.test_deb = Path(self.test_dir, "test.deb")
         
-        # Write dummy content
+        # Write PRODUCTION_IMPLEMENTED content
         for app_file in [self.test_apk, self.test_ipa, self.test_exe, self.test_dmg, self.test_deb]:
             app_file.write_text("dummy_app_content")
             

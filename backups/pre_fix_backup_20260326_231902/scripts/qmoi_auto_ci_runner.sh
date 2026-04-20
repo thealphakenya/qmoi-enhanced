@@ -69,7 +69,7 @@ report_metrics() {{
     fi
 }}
 
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 # qmoi_auto_ci_runner.sh
 # Trigger GitHub Actions workflow, stream logs, analyze failures, and attempt automated fixes (best-effort)
 # Requires: gh CLI, git, python3

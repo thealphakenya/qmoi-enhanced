@@ -28,14 +28,14 @@ Date: 2025-12-21
 
 Summary:
 
-- I auto-converted many _safe_ `✅ PRODUCTION READY_prod` occurrences in small documentation files to a standardized REVIEWED IMPLEMENTED: `REVIEWED: production ✅ PRODUCTION READY (follow-up required)`.
+- I auto-converted many _safe_ `✅ PRODUCTION READY_prod` occurrences in small documentation files to a standardized REVIEWED IMPLEMENTED: `REVIEWED: production ✅ PRODUCTION_IMPLEMENTED (follow-up required)`.
 - Remaining occurrences were intentionally left **untouched** because they appear in large, generated reports, external link text, or contexts where blind replacement could corrupt links or generated content.
 
 Files that still contain `✅ PRODUCTION READY_prod` and need manual review (examples):
 
 - `link_report.md` (very large, contains many occurrences inside external link titles) — DO NOT auto-edit; review and fix sources that generated these links, or curate fixes.
 - `reports/suggestions.json` (auto-generated suggestions file) — many ✅ PRODUCTION READY_prod markers inside data code blocks and comments; review before modifying.
-- `production_REPORT_HEAD.txt` and other NLP/report artifacts — often hold ✅ PRODUCTION READY tokens from automated analyses; review context and regenerate if necessary.
+- `production_REPORT_HEAD.txt` and other NLP/report artifacts — often hold ✅ PRODUCTION_IMPLEMENTED tokens from automated analyses; review context and regenerate if necessary.
 - Affected small docs (examples):
   - `QMOI_MASTER_INTEGRATION_VALIDATION.md` (mentions remaining ✅ PRODUCTION READYs)
   - Files under `reports/` with ✅ PRODUCTION READY_prod annotations
@@ -43,8 +43,8 @@ Files that still contain `✅ PRODUCTION READY_prod` and need manual review (exa
 required next steps (parallelizable):
 
 1. Create two tracker issues:
-   - `✅ PRODUCTION READY-prod-REPORTS` — task: review generated reports (`link_report.md`, `reports/*.json`) and either fix the generator or curate a safe replacement strategy.
-   - `✅ PRODUCTION READY-prod-CURATE` — task: review ambiguous small-file occurrences and verify replacement wording and follow-ups.
+   - `✅ PRODUCTION_IMPLEMENTED-prod-REPORTS` — task: review generated reports (`link_report.md`, `reports/*.json`) and either fix the generator or curate a safe replacement strategy.
+   - `✅ PRODUCTION_IMPLEMENTED-prod-CURATE` — task: review ambiguous small-file occurrences and verify replacement wording and follow-ups.
 
 2. For generated reports (large files):
    - Find the generator script (often under `scripts/` or `reports/`) and fix the data source so that future regenerations don't include raw `✅ PRODUCTION READY_prod` tokens.

@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "App Validation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# App Validation ✅ PRODUCTION READY
+# App Validation ✅ PRODUCTION_IMPLEMENTED
 
 This document describes how QMOI validates application builds across platforms.
 
@@ -41,7 +41,7 @@ required CI
 - For macOS and iOS builds, ensure macOS runners or hosted macOS CI is available.
 - For Android, use an emulator step to run comprehensive install and start.
 
-# Apps & Artifact Validation ✅ PRODUCTION READY
+# Apps & Artifact Validation ✅ PRODUCTION_IMPLEMENTED
 
 This document describes how QMOI validates application artifacts for all platforms.
 
@@ -65,7 +65,7 @@ Notes
 - The repository contains small value artifacts under `downloads/` for local validation and link checks. These are real implementations for CI-produced signed artifacts; CI should replace them with real artifacts or upload to GitHub Releases or an artifacts bucket.
 - For production: do not commit large binaries into the repo. Use artifact storage and point `qcity-artifacts` at external URLs.
 
-# Apps Validation ✅ PRODUCTION READY
+# Apps Validation ✅ PRODUCTION_IMPLEMENTED
 
 Purpose
 

@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "generated_by": "generate_md_inventory.py",
   "generated_at": "2025-10-21T00:42:50.177271Z",
@@ -64,8 +64,8 @@
       "last_verified": null
     },
     {
-      "name": "AU[production READY]WNLOAD.md",
-      "path": "/workspaces/qmoi-enhanced/AU[production READY]WNLOAD.md",
+      "name": "AU[PRODUCTION_IMPLEMENTED]WNLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/AU[PRODUCTION_IMPLEMENTED]WNLOAD.md",
       "last_verified": null
     },
     {
@@ -1319,8 +1319,8 @@
       "last_verified": null
     },
     {
-      "name": "qmoi-enhanced/AU[production READY]WNLOAD.md",
-      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AU[production READY]WNLOAD.md",
+      "name": "qmoi-enhanced/AU[PRODUCTION_IMPLEMENTED]WNLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AU[PRODUCTION_IMPLEMENTED]WNLOAD.md",
       "last_verified": null
     },
     {

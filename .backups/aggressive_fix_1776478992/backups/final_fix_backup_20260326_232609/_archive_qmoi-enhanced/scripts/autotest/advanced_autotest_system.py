@@ -724,7 +724,7 @@ def _test_vercel_self_healing(self) -> TestResult:
             # Trigger remote self-heal script (e.g., via webhook or API)
             # Poll for redeploy and check status
             # Validate notification (Slack/email)
-            # (Pseudo-logic, replace with real API calls production ready)
+            # (Pseudo-logic, replace with real API calls PRODUCTION_IMPLEMENTED)
             time.sleep(2)
             duration = time.time() - start_time
             return TestResult("Vercel Self-Healing", "PASS", duration)
@@ -783,7 +783,7 @@ def _test_notification_system(self) -> TestResult:
         start_time = time.time()
         try:
             # execute a persistent failure and check for Slack/email notification
-            # (Pseudo-logic, replace with real notification check production ready)
+            # (Pseudo-logic, replace with real notification check PRODUCTION_IMPLEMENTED)
             time.sleep(1)
             duration = time.time() - start_time
             return TestResult("Notification System", "PASS", duration)

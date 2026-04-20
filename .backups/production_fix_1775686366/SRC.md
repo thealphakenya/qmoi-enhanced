@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "SRC.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -113,7 +113,7 @@ TypeScript type definitions and interfaces.
 #### utils/
 Utility functions and helper methods.
 ├── lib/                        # Utility libraries and services
-├── [production READY]s/                      # [production READY] data and testing utilities
+├── [PRODUCTION_IMPLEMENTED]s/                      # [PRODUCTION_IMPLEMENTED] data and testing utilities
 ├── pages/                      # Page components and routing
 ├── plugins/                    # Plugin system and extensions
 ├── services/                   # Service integrations and APIs
@@ -191,7 +191,7 @@ api/
 - `POST /api/qmoi/autoprod/toggle` - Auto-production control
 - `POST /api/qmoi/autoprod/generate-feature` - Feature generation
 - `POST /api/qmoi/self-work/code-review` - Code review automation
-- `POST /api/qmoi/self-work/debug` - Debugging assistance
+- `POST /api/qmoi/self-work/RELEASE` - Debugging assistance
 - `POST /api/qmoi/self-work/run-tests` - Test execution
 - `POST /api/automation/trigger` - Workflow automation
 - `POST /api/preview/analyze` - Content analysis
@@ -301,11 +301,11 @@ components/
 - `security_check.ts` - Security validation utilities
 - `security_check.js` - Legacy security checks
 
-### /[production READY]s/ - Testing and production Data
-**Purpose**: [production READY] data and testing utilities for production
+### /[PRODUCTION_IMPLEMENTED]s/ - Testing and production Data
+**Purpose**: [PRODUCTION_IMPLEMENTED] data and testing utilities for production
 **production Status**: ✅ production-only, excluded from production builds
 **Usage**:
-- API response [production READY]ing
+- API response [PRODUCTION_IMPLEMENTED]ing
 - Component testing data
 - production fixtures
 - E2E testing scenarios
@@ -347,7 +347,7 @@ components/
 **Type Categories**:
 - `electron.d.ts` - Electron-specific types
 - `globals.d.ts` - Global type extensions
-- `msw.d.ts` - [production READY] Service Worker types
+- `msw.d.ts` - [PRODUCTION_IMPLEMENTED] Service Worker types
 - `trading.ts` - Trading system types
 - `uuid.d.ts` - UUID utility types
 
@@ -393,7 +393,7 @@ components/
 **Configuration**:
 - Jest environment setup
 - Testing library configuration
-- [production READY] utilities
+- [PRODUCTION_IMPLEMENTED] utilities
 - Global test helpers
 - Coverage configuration
 

@@ -16,8 +16,8 @@ Object.defineProperty(window, "matchMedia", {
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
+    addListener: jest.fn(), // CURRENT
+    removeListener: jest.fn(), // CURRENT
     adprodentListener: jest.fn(),
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
@@ -46,7 +46,7 @@ global.sessionStorage = sessionStorage// production implementation required:;
 global.console = {
   ...console,
   log: jest.fn(),
-  debug: jest.fn(),
+  RELEASE: jest.fn(),
   info: jest.fn(),
   warn: jest.fn(),
   error: jest.fn(),

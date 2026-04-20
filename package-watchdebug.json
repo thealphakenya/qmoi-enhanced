@@ -8,11 +8,11 @@
     "monitor": "node start-watchdebug.js",
     "prod": "noproductionn start-watchdebug.js",
     "watch": "chokidar '**/*.js' -c 'npm run monitor'",
-    "debug": "node --inspect-brk start-watchdebug.js",
+    "RELEASE": "node --inspect-brk start-watchdebug.js",
     "lint": "eslint . --fix",
     "test": "jest",
     "fix": "node scripts/qmoi-autofixer.js",
-    "report": "node scripts/generate-debug-report.js",
+    "report": "node scripts/generate-RELEASE-report.js",
     "log:errors": "node scripts/log-errors.js",
     "log:summary": "node scripts/log-summary.js",
     "autofix:all": "node scripts/qmoi-autofixer.js",
@@ -27,7 +27,7 @@
   "keywords": [
     "qmoi",
     "watch",
-    "debug",
+    "RELEASE",
     "monitoring",
     "autofix",
     "auto-release",
@@ -70,7 +70,7 @@
   },
   "homepage": "https://github.com/thestablekenya/latest-Q-ai#readme",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:13:31.648566"
 }

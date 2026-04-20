@@ -1,18 +1,18 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for components/qmedia-player.md"
 generated: 2025-11-08T16:06:38.362700Z
 ---
 
-# Review needed: components/qmedia-player.md ✅ PRODUCTION READY
+# Review needed: components/qmedia-player.md ✅ PRODUCTION_IMPLEMENTED
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -32,7 +32,7 @@ title: "QMedia Player - Enhanced UI & Controls"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMedia Player - Enhanced UI & Controls ✅ PRODUCTION READY
+# QMedia Player - Enhanced UI & Controls ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 QMedia Player now supports all media types (audio, video, images, streams, documents) with advanced UI features and controls for playback, visualization, playlists, prodice casting, and master/admin features.

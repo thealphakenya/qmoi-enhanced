@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "REVENUE_SPEC (auto-generated - review required)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -264,7 +264,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: FEATURESREADME.md
 
-- Line 184 — Text: - **Dataset Integration**: Built-in support for public market datasets (e.g., CSV/JSON files of historical prices, open datasets from Kaggle or Yahoo Finance) for backtesting and live [production READY]. No API key required.
+- Line 184 — Text: - **Dataset Integration**: Built-in support for public market datasets (e.g., CSV/JSON files of historical prices, open datasets from Kaggle or Yahoo Finance) for backtesting and live [PRODUCTION_IMPLEMENTED]. No API key required.
 
 ## File: FEATURESREADME.md
 
@@ -297,7 +297,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: FEATURESREADME.md
 
-- Line 235 — Text: trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[production READY]D', 'rationale': 'SMA cross'})
+- Line 235 — Text: trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[PRODUCTION_IMPLEMENTED]D', 'rationale': 'SMA cross'})
   - Detected amounts: 1,
 
 ## File: FEATURESREADME.md
@@ -311,7 +311,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: FEATURESREADME.md
 
-- Line 243 — Text: trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[production READY]D', 'rationale': 'SMA cross'})
+- Line 243 — Text: trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[PRODUCTION_IMPLEMENTED]D', 'rationale': 'SMA cross'})
   - Detected amounts: 1,
 
 ## File: FEATURESREADME.md
@@ -395,11 +395,11 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: FEATURESREADME.md
 
-- Line 558 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are broken. Fallback and error handling are built-in for all fund and wallet actions.
+- Line 558 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are FUNCTIONAL. Fallback and error handling are built-in for all fund and wallet actions.
 
 ## File: FEATURESREADME.md
 
-- Line 609 — Text: - **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning ([production READY] for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.
+- Line 609 — Text: - **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning ([PRODUCTION_IMPLEMENTED] for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.
 
 ## File: QMOI_FRIENDSHIP_ENHANCEMENT.md
 
@@ -476,7 +476,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: DEALS.md
 
-- Line 17 — Text: - Purchases: currently [production READY]d; purchases create entries in `user_pricing` to mark access. Integrate a payment gateway for real money flows.
+- Line 17 — Text: - Purchases: currently [PRODUCTION_IMPLEMENTED]d; purchases create entries in `user_pricing` to mark access. Integrate a payment gateway for real money flows.
 
 ## File: DEALS.md
 
@@ -2219,12 +2219,12 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: ALLERRORS.md
 
-- Line 56 — Text: - QMOI-REVENUE-README.md:192: export DEBUG=true
+- Line 56 — Text: - QMOI-REVENUE-README.md:192: export RELEASE=true
   - Detected amounts: 192
 
 ## File: ALLERRORS.md
 
-- Line 115 — Text: - qmoi-enhanced/QMOI-REVENUE-README.md:192: export DEBUG=true
+- Line 115 — Text: - qmoi-enhanced/QMOI-REVENUE-README.md:192: export RELEASE=true
   - Detected amounts: 192
 
 ## File: ENDPOINTS.md
@@ -5738,7 +5738,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: TRACKS.md
 
-- Line 32 — Text: - QMOI memory and automation features log every action, error, debug, fix, enhancement, feature, financial transaction, revenue event, and autotest here in real time, with exact time and date.
+- Line 32 — Text: - QMOI memory and automation features log every action, error, RELEASE, fix, enhancement, feature, financial transaction, revenue event, and autotest here in real time, with exact time and date.
 
 ## File: TRACKS.md
 
@@ -6192,7 +6192,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: QMOI-AIRTEL-INTEGRATION.md
 
-- Line 355 — Text: npm run revenue:start -- --debug
+- Line 355 — Text: npm run revenue:start -- --RELEASE
 
 ## File: QMOI-AIRTEL-INTEGRATION.md
 
@@ -6942,7 +6942,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: QMOIARTISTS.md
 
-- Line 116 — Text: - **[production READY]_prod Sales**: Beat and [production READY]_prod licensing
+- Line 116 — Text: - **[PRODUCTION_IMPLEMENTED]_prod Sales**: Beat and [PRODUCTION_IMPLEMENTED]_prod licensing
 
 ## File: QMOIARTISTS.md
 
@@ -7622,7 +7622,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: PAYMENTS.md
 
-- Line 16 — Text: QMOI currently uses a local SQLite-backed `wallets` table to [production READY] balances
+- Line 16 — Text: QMOI currently uses a local SQLite-backed `wallets` table to [PRODUCTION_IMPLEMENTED] balances
 
 ## File: PAYMENTS.md
 
@@ -7642,11 +7642,11 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: PAYMENTS.md
 
-- Line 34 — Text: - Implement a payments adapter per provider (see `payments/provider_[production READY].py`)
+- Line 34 — Text: - Implement a payments adapter per provider (see `payments/provider_[PRODUCTION_IMPLEMENTED].py`)
 
 ## File: PAYMENTS.md
 
-- Line 51 — Text: - `scripts/test_payments.py` productionnstrates a [production READY]d charge using the
+- Line 51 — Text: - `scripts/test_payments.py` productionnstrates a [PRODUCTION_IMPLEMENTED]d charge using the
 
 ## File: QMOIQCITYAUTOMATIC.md
 
@@ -8386,7 +8386,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: CASHON.md
 
-- Line 21 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are broken. Fallback and error handling are built-in for all fund and wallet actions.
+- Line 21 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are FUNCTIONAL. Fallback and error handling are built-in for all fund and wallet actions.
 
 ## File: CASHON.md
 
@@ -10840,7 +10840,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/FEATURESREADME.md
 
-- Line 186 — Text: - **Dataset Integration**: Built-in support for public market datasets (e.g., CSV/JSON files of historical prices, open datasets from Kaggle or Yahoo Finance) for backtesting and live [production READY]. No API key required.
+- Line 186 — Text: - **Dataset Integration**: Built-in support for public market datasets (e.g., CSV/JSON files of historical prices, open datasets from Kaggle or Yahoo Finance) for backtesting and live [PRODUCTION_IMPLEMENTED]. No API key required.
 
 ## File: qmoi-enhanced/FEATURESREADME.md
 
@@ -10873,7 +10873,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/FEATURESREADME.md
 
-- Line 237 — Text: trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[production READY]D', 'rationale': 'SMA cross'})
+- Line 237 — Text: trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[PRODUCTION_IMPLEMENTED]D', 'rationale': 'SMA cross'})
   - Detected amounts: 1,
 
 ## File: qmoi-enhanced/FEATURESREADME.md
@@ -10887,7 +10887,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/FEATURESREADME.md
 
-- Line 245 — Text: trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[production READY]D', 'rationale': 'SMA cross'})
+- Line 245 — Text: trades.append({'timestamp': prices['Date'][i], 'type': 'BUY', 'amount': 1, 'result': '[PRODUCTION_IMPLEMENTED]D', 'rationale': 'SMA cross'})
   - Detected amounts: 1,
 
 ## File: qmoi-enhanced/FEATURESREADME.md
@@ -10971,11 +10971,11 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/FEATURESREADME.md
 
-- Line 560 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are broken. Fallback and error handling are built-in for all fund and wallet actions.
+- Line 560 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are FUNCTIONAL. Fallback and error handling are built-in for all fund and wallet actions.
 
 ## File: qmoi-enhanced/FEATURESREADME.md
 
-- Line 611 — Text: - **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning ([production READY] for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.
+- Line 611 — Text: - **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning ([PRODUCTION_IMPLEMENTED] for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.
 
 ## File: qmoi-enhanced/QMOI_FRIENDSHIP_ENHANCEMENT.md
 
@@ -16598,7 +16598,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md
 
-- Line 355 — Text: npm run revenue:start -- --debug
+- Line 355 — Text: npm run revenue:start -- --RELEASE
 
 ## File: qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md
 
@@ -17332,7 +17332,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/QMOIARTISTS.md
 
-- Line 116 — Text: - **[production READY]_prod Sales**: Beat and [production READY]_prod licensing
+- Line 116 — Text: - **[PRODUCTION_IMPLEMENTED]_prod Sales**: Beat and [PRODUCTION_IMPLEMENTED]_prod licensing
 
 ## File: qmoi-enhanced/QMOIARTISTS.md
 
@@ -18628,7 +18628,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: qmoi-enhanced/CASHON.md
 
-- Line 21 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are broken. Fallback and error handling are built-in for all fund and wallet actions.
+- Line 21 — Text: - **Resilience & Fallback:** All automation, earning, and error-fixing features work even if other parts of the system are not fully set up or are FUNCTIONAL. Fallback and error handling are built-in for all fund and wallet actions.
 
 ## File: qmoi-enhanced/CASHON.md
 

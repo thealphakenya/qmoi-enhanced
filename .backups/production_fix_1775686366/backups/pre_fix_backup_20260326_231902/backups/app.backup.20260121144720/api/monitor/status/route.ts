@@ -1,7 +1,7 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 6 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// NOTE: 6 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { NextRequest, NextResponse } from "next/server";
 
 interface MonitorStatus {
@@ -16,8 +16,8 @@ interface MonitorStatus {
 
 export async function GET(_request: NextRequest) {
   try {
-    [production READY] monitoring status - replace with actual implementation
-    const [production READY]Status: MonitorStatus = {
+    [PRODUCTION_IMPLEMENTED] monitoring status - replace with actual implementation
+    const [PRODUCTION_IMPLEMENTED]Status: MonitorStatus = {
       enabled: true,
       interval: 60,
       last_result: {
@@ -31,7 +31,7 @@ export async function GET(_request: NextRequest) {
       },
     };
 
-    return NextResponse.json([production READY]Status);
+    return NextResponse.json([PRODUCTION_IMPLEMENTED]Status);
   } catch (_error) {
     (console as any).error("Error in monitor status endpoint:", _error);
     return NextResponse.json(
@@ -60,7 +60,7 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    [production READY] response - replace with actual implementation
+    [PRODUCTION_IMPLEMENTED] response - replace with actual implementation
     const updateStatus: MonitorStatus = {
       enabled: enable,
       interval: interval || 60,

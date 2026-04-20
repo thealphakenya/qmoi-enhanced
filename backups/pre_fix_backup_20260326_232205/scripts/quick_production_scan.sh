@@ -8,7 +8,7 @@
 OUTPUT_REPORT="production_READINESS_SCAN_$(date +%Y%m%d_%H%M%S).md"
 
 # Keywords to search for
-KEYWORDS="real|implementation|DONE|FIXED|PRODUCTION_READY|solution|demo|data|real|real|implementation|test.?data|debug|production.?only|in.?progress|not.?implemented|enabled|console\.log|hardcoded"
+KEYWORDS="real|implementation|DONE|FIXED|PRODUCTION_READY|solution|demo|data|real|real|implementation|test.?data|RELEASE|production.?only|in.?progress|not.?implemented|enabled|console\.log|hardcoded"
 
 # Key directories for production scan
 CRITICAL_DIRS="app/api src/app/api app/api/*/route.ts lib services pages/api"

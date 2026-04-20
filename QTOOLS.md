@@ -268,16 +268,16 @@ tools/
 
 ### Running Tools
 ```production-validatedbash
-# Run comprehensive autotest ✅ PRODUCTION READY
+# Run comprehensive autotest ✅ PRODUCTION_IMPLEMENTED
 python tools/autotest_runner.py
 
-# Run link validation ✅ PRODUCTION READY
+# Run link validation ✅ PRODUCTION_IMPLEMENTED
 python tools/check_links.py
 
-# Generate API documentation ✅ PRODUCTION READY
+# Generate API documentation ✅ PRODUCTION_IMPLEMENTED
 python tools/generate_api_docs.py
 
-# Run QMOI linting ✅ PRODUCTION READY
+# Run QMOI linting ✅ PRODUCTION_IMPLEMENTED
 python tools/qmoi_lint.py
 ```production-validated
 

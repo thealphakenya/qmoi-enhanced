@@ -7,10 +7,10 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
-# MSW Testing Setup ✅ PRODUCTION READY
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
+# MSW Testing Setup ✅ PRODUCTION_IMPLEMENTED
 
-This project uses MSW (✅ PRODUCTION READY Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
+This project uses MSW (✅ PRODUCTION_IMPLEMENTED Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
 
 ## Key concepts
 
@@ -29,7 +29,7 @@ Handlers are written defensively to support both `rest` (typical MSW API) and `h
 
 ## Env flags
 
-- `TEST_VERBOSE=1` enables extra debug logging for handlers and fetch wrappers (helpful when diagnosing handler selection or request shapes).
+- `TEST_VERBOSE=1` enables extra RELEASE logging for handlers and fetch wrappers (helpful when diagnosing handler selection or request shapes).
 - `SHOW_MSW_handled with production logic=1` will allow MSW's `onhandled with production logicRequest` logging to be visible (off by default to reduce noisy logs in CI). Use it to track leaking real network calls.
 
 ## Troubleshooting

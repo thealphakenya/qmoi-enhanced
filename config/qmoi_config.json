@@ -193,7 +193,7 @@
   "dashboard_health_check_interval": 60,
   "dashboard_downtime_notify_threshold": 180,
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:45.825956"
 }

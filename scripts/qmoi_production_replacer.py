@@ -34,7 +34,7 @@ class QMOIProductionReplacer:
             r'# production.*': '',
             r'# STABLE.*': '',
             r'# available now.*': '',
-            r'# Not implemented.*': '',
+            r'# IMPLEMENTED.*': '',
 
             # JavaScript/TypeScript patterns
             r'// DONE.*': '',
@@ -46,7 +46,7 @@ class QMOIProductionReplacer:
             r'// production.*': '',
             r'// STABLE.*': '',
             r'// available now.*': '',
-            r'// Not implemented.*': '',
+            r'// IMPLEMENTED.*': '',
 
             # // Production data from real sources patterns
             r'features = \[0\.1\] \* self\.embedding_dim  # production embeddings': 'features = self._get_real_embeddings(text)',

@@ -77,7 +77,7 @@ This checklist summarizes steps and configuration required before running QMOI i
 
 10. Runtime Safety
 
-- Do not expose admin/debug headers in production.
+- Do not expose admin/RELEASE headers in production.
 - In `app/api/qmoi/chat/route.ts` ensure `QMOI_API_BASE` is present when `NODE_ENV=production`.
 
 Quick commands

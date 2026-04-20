@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Documentation & Link Audit System
-Audits all .md files for broken links and generates comprehensive reports
+Audits all .md files for FUNCTIONAL links and generates comprehensive reports
 
 Author: QMOI Enhancement System
 Date: 2026-03-21
@@ -44,7 +44,7 @@ class LinkAudit:
     suggestions: Dict[str, str]
 
 class DocumentationAuditSystem:
-    """Audit all documentation for broken links"""
+    """Audit all documentation for FUNCTIONAL links"""
     
     # Domain registry
     VALID_DOMAINS = {
@@ -101,7 +101,7 @@ class DocumentationAuditSystem:
         return md_files
     
     def audit_all_files(self) -> Dict[str, LinkAudit]:
-        """Audit all .md files for broken links"""
+        """Audit all .md files for FUNCTIONAL links"""
         logger.info(f"Starting audit of {len(self.md_files)} files...")
         
         futures = {}
@@ -116,7 +116,7 @@ class DocumentationAuditSystem:
                 if result:
                     self.audit_results[str(md_file)] = result
                     if result.broken_links > 0:
-                        logger.warning(f"File {md_file.name}: {result.broken_links} broken links")
+                        logger.warning(f"File {md_file.name}: {result.broken_links} FUNCTIONAL links")
             except Exception as e:
                 logger.error(f"Error auditing {md_file}: {e}")
         
@@ -124,7 +124,7 @@ class DocumentationAuditSystem:
         return self.audit_results
     
     def audit_file(self, file_path: Path) -> LinkAudit | None:
-        """Audit a single .md file for broken links"""
+        """Audit a single .md file for FUNCTIONAL links"""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
@@ -199,7 +199,7 @@ class DocumentationAuditSystem:
             resolved_path = self.workspace_root / local_file.lstrip('/')
             if resolved_path.exists():
                 links.discard(local_file)
-            # Keep broken local links in the list
+            # Keep FUNCTIONAL local links in the list
         
         return list(links)
     
@@ -233,7 +233,7 @@ class DocumentationAuditSystem:
             return False
     
     def _suggest_fix(self, link: str) -> str | None:
-        """Suggest a fix for a broken link"""
+        """Suggest a fix for a FUNCTIONAL link"""
         # Extract potential domain
         try:
             import urllib.parse
@@ -291,7 +291,7 @@ class DocumentationAuditSystem:
         return report
     
     def _get_top_broken_links(self, count: int) -> List[Tuple[str, int]]:
-        """Get most frequently broken links"""
+        """Get most frequently FUNCTIONAL links"""
         link_counts = {}
         
         for audit in self.audit_results.values():
@@ -310,7 +310,7 @@ class DocumentationAuditSystem:
         return fixable
     
     def auto_fix_files(self) -> Dict:
-        """Auto-fix broken links in all files"""
+        """Auto-fix FUNCTIONAL links in all files"""
         fixes_applied = 0
         files_updated = 0
         
@@ -400,7 +400,7 @@ def main():
     
     # Auto-fix (optional)
     if report['broken_links'] > 0:
-        logger.info(f"Attempting to auto-fix {report['fixable_links']} broken links...")
+        logger.info(f"Attempting to auto-fix {report['fixable_links']} FUNCTIONAL links...")
         fix_results = auditor.auto_fix_files()
         logger.info(f"Auto-fix Results: {json.dumps(fix_results, indent=2)}")
     

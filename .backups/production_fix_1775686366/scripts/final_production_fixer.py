@@ -72,7 +72,7 @@ class FinalproductionFixer:
         """Remove all problematic patterns from content"""
 
         # Remove  markers
-        content = re.sub(r'\[production READY\]', '', content)
+        content = re.sub(r'\[PRODUCTION_IMPLEMENTED\]', '', content)
 
         # Remove  markers
         content = re.sub(r'\[production IMPLEMENTATION REQUIRED\]', '', content)

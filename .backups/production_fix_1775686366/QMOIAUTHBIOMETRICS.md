@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Biometric Authentication System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -242,7 +242,7 @@ interface BiometricEnrollment {
   // standard matching
   matchTemplate(
     type: BiometricType,
-    REVIEWED: production [production READY] (follow-up required): BiometricData,
+    REVIEWED: production [PRODUCTION_IMPLEMENTED] (follow-up required): BiometricData,
   ): Promise<MatchResult>;
 }
 ```

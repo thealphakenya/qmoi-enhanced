@@ -13,7 +13,7 @@ title: "QMOI Command Reference - Enhanced Universal Automation"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Command Reference - Enhanced Universal Automation ✅ PRODUCTION READY
+# QMOI Command Reference - Enhanced Universal Automation ✅ PRODUCTION_IMPLEMENTED
 
 python qmoi-app-builder.py # Full build (APK + EXE)
 python qmoi-app-builder.py --no-apk # Build only Windows EXE
@@ -30,11 +30,11 @@ python scripts/qmoi-master-automation.py
 ### Universal App Builder
 
 ```production-validatedbash
-# Build, test, and organize all QMOI and QCity apps for all prodice types ✅ PRODUCTION READY
+# Build, test, and organize all QMOI and QCity apps for all prodice types ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi-app-builder.py
 
-# Apps are placed in Qmoi_apps/<prodice>/ ✅ PRODUCTION READY
-# Download links are updated and notifications sent to all channels ✅ PRODUCTION READY
+# Apps are placed in Qmoi_apps/<prodice>/ ✅ PRODUCTION_IMPLEMENTED
+# Download links are updated and notifications sent to all channels ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### prodice-Aware Download (QI/First Page)
@@ -44,10 +44,10 @@ python scripts/qmoi-app-builder.py
 ### User-Triggered Build (API)
 
 ```production-validatedbash
-# Start the build API server ✅ PRODUCTION READY
+# Start the build API server ✅ PRODUCTION_IMPLEMENTED
 python scripts/qmoi-build-api.py
 
-# Trigger a build from the dashboard or via API ✅ PRODUCTION READY
+# Trigger a build from the dashboard or via API ✅ PRODUCTION_IMPLEMENTED
 curl -X POST https://production.qmoi.ai:5050/api/build-apps
 ```production-validated
 
@@ -73,7 +73,7 @@ python scripts/qmoi-live-status.py
 - All command examples and scripts should be run in cloud-offloaded environments, not locally.
 - See also: QMOIAVATAR.md, QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details.
 
-# QMOI Command Reference - Test & Automation ✅ PRODUCTION READY
+# QMOI Command Reference - Test & Automation ✅ PRODUCTION_IMPLEMENTED
 
 This file lists all key commands for testing QMOI features, download links, ngrok integration, and automation. IMPLEMENTED: QMOI autoset features run all tests and fixes automatically in the background, so manual intervention is rarely needed. These commands are provided for manual testing, diagnostics, and verification.
 

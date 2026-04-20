@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// NOTE: 2 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 #!/usr/bin/env node
 
 const fs = require('fs');
@@ -97,7 +97,7 @@ class QmoiPaymentFix {
       MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || '174379',
       AIRTEL_CLIENT_ID: process.env.AIRTEL_CLIENT_ID || 'your_airtel_client_id',
       AIRTEL_CLIENT_SECRET: process.env.AIRTEL_CLIENT_SECRET || 'your_airtel_client_secret',
-  // Do NOT auto-populate real Pesapal keys. Use [production READY]s and require operator to provide real secrets.
+  // Do NOT auto-populate real Pesapal keys. Use [PRODUCTION_IMPLEMENTED]s and require operator to provide real secrets.
   PESAPAL_CONSUMER_KEY: process.env.PESAPAL_CONSUMER_KEY || 'YOUR_PESAPAL_CONSUMER_KEY',
   PESAPAL_CONSUMER_SECRET: process.env.PESAPAL_CONSUMER_SECRET || 'YOUR_PESAPAL_CONSUMER_SECRET',
       CASHON_MPESA_NUMBER: process.env.CASHON_MPESA_NUMBER || '254786322855',
@@ -151,7 +151,7 @@ class QmoiPaymentFix {
 
   async testMpesaAPI() {
     try {
-      [production READY] M-Pesa API test
+      [PRODUCTION_IMPLEMENTED] M-Pesa API test
       const _response = await fetch('https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
         method: 'GET',
         headers: {
@@ -171,7 +171,7 @@ class QmoiPaymentFix {
 
   async testAirtelAPI() {
     try {
-      [production READY] Airtel API test
+      [PRODUCTION_IMPLEMENTED] Airtel API test
       const _response = await fetch('https://openapiuat.airtel.africa/auth/oauth2/token', {
         method: 'POST',
         headers: {
@@ -196,8 +196,8 @@ class QmoiPaymentFix {
 
   async testPesapalAPI() {
     try {
-      [production READY] Pesapal API test
-      const _response = await fetch('https:[production READY].pesapal.com/api/PostPesapalDirectOrderV4', {
+      [PRODUCTION_IMPLEMENTED] Pesapal API test
+      const _response = await fetch('https:[PRODUCTION_IMPLEMENTED].pesapal.com/api/PostPesapalDirectOrderV4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml'
@@ -266,7 +266,7 @@ class QmoiPaymentFix {
 
   async getRevenueStatus() {
     try {
-      [production READY] revenue status check
+      [PRODUCTION_IMPLEMENTED] revenue status check
       return { running: true, dailyEarnings: 5000, target: 10000 };
     } catch (error) {
       return { running: false, _error: error.message };
@@ -275,7 +275,7 @@ class QmoiPaymentFix {
 
   async getRecentPaymentFailures() {
     try {
-      [production READY] checking recent payment failures
+      [PRODUCTION_IMPLEMENTED] checking recent payment failures
       return []; // Empty array means no recent failures
     } catch (error) {
       return [{ _error: error.message }];

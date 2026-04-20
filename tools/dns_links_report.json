@@ -2690,7 +2690,7 @@
       "error": null
     },
     {
-      "url": "https://opencollective.com/debug/backers/badge.svg)",
+      "url": "https://opencollective.com/RELEASE/backers/badge.svg)",
       "file": "link_report.md",
       "host": "opencollective.com",
       "resolved_ips": [
@@ -2718,7 +2718,7 @@
       "error": null
     },
     {
-      "url": "https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master)",
+      "url": "https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master)",
       "file": "link_report.md",
       "host": "coveralls.io",
       "resolved_ips": [
@@ -2746,7 +2746,7 @@
       "error": null
     },
     {
-      "url": "https://travis-ci.org/visionmedia/debug.svg?branch=master)",
+      "url": "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master)",
       "file": "link_report.md",
       "host": "travis-ci.org",
       "resolved_ips": [
@@ -5566,7 +5566,7 @@
       "error": null
     },
     {
-      "url": "https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902)",
+      "url": "https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902)",
       "file": "link_report.md",
       "host": "source.chromium.org",
       "resolved_ips": [
@@ -7079,7 +7079,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://opencollective.com/debug/sponsors/badge.svg)",
+      "url": "https://opencollective.com/RELEASE/sponsors/badge.svg)",
       "file": "link_report.md",
       "host": "opencollective.com",
       "resolved_ips": [
@@ -7107,7 +7107,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/visionmedia/debug/issues/370)",
+      "url": "https://github.com/visionmedia/RELEASE/issues/370)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -7117,7 +7117,7 @@
       "error": null
     },
     {
-      "url": "https://wzrd.in/standalone/debug@latest)",
+      "url": "https://wzrd.in/standalone/RELEASE@latest)",
       "file": "link_report.md",
       "host": "wzrd.in",
       "resolved_ips": [
@@ -7255,7 +7255,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://opencollective.com/debug#backer)",
+      "url": "https://opencollective.com/RELEASE#backer)",
       "file": "link_report.md",
       "host": "opencollective.com",
       "resolved_ips": [
@@ -7270,7 +7270,7 @@
       "error": null
     },
     {
-      "url": "https://opencollective.com/debug#sponsor)",
+      "url": "https://opencollective.com/RELEASE#sponsor)",
       "file": "link_report.md",
       "host": "opencollective.com",
       "resolved_ips": [
@@ -11010,7 +11010,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://github.com/jdxcode/fs-extra-debug)",
+      "url": "https://github.com/jdxcode/fs-extra-RELEASE)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -11074,7 +11074,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://npmjs.org/package/debug)",
+      "url": "https://npmjs.org/package/RELEASE)",
       "file": "link_report.md",
       "host": "npmjs.org",
       "resolved_ips": [
@@ -21268,7 +21268,7 @@
     }
   ],
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:59.436216"
 }

@@ -97,7 +97,7 @@ export async function createTestTransaction(
 }
 
 /**
- * Mock HTTP request with custom headers
+ * PRODUCTION_IMPLEMENTED HTTP request with custom headers
  */
 export function mockRequest(
   url: string,
@@ -157,7 +157,7 @@ export async function cleanupTestData() {
 }
 
 /**
- * Mock payment provider response
+ * PRODUCTION_IMPLEMENTED payment provider response
  */
 export function mockPaymentProviderResponse(
   status: "success" | "pending" | "failed",

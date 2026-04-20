@@ -42,16 +42,16 @@ production_keywords = [
     'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
 
     # Instructions and guidelines
-    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED',
+    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'CURRENT',
     'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE', 'WARNING', 'IMPLEMENTED', 'IMPLEMENTED:',
-    'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'production', 'production',
+    'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'FUNCTIONAL', 'production', 'production',
 
     'implemented', 'IMPLEMENTED', 'required', 'decided', 'TBA',
     'available', 'UNDER CONSTRUCTION', 'production complete', 'production complete',
     'NEEDS production', 'REQUIRES production', 'MUST IMPLEMENT',
 
     # Testing and production
-    'DEBUG', 'logger.info', 'PRINT(', 'ECHO', 'LOG.DEBUG',
+    'RELEASE', 'logger.info', 'PRINT(', 'ECHO', 'LOG.RELEASE',
     'TEST MODE', 'production', 'production MODE',
 
     # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
@@ -153,9 +153,9 @@ scan_extensions = {
     '.svg', '.csv', '.tsv', '.log', '.out', '.tmp', '.bak'
 }
 
-# production ready markers (case-insensitive)
+# PRODUCTION_IMPLEMENTED markers (case-insensitive)
 production_ready_markers = [
-    '[production ready]', '[production complete]', 'production ready',
+    '[PRODUCTION_IMPLEMENTED]', '[production complete]', 'PRODUCTION_IMPLEMENTED',
     'production complete', 'in production', 'live production',
     'production validated', 'production approved'
 ]
@@ -401,7 +401,7 @@ def check_security_concerns(content, file_extension) -> Any:
         'insecure', 'skip auth', 'bypass auth', 'disable security',
         'allow all origins', 'cors: *', 'self signed', 'test cert',
         'hardcoded password', 'hardcoded secret', 'hardcoded key',
-        'debug mode', 'verbose logging', 'sensitive data',
+        'RELEASE mode', 'verbose logging', 'sensitive data',
         'sql injection', 'xss', 'csrf disabled'
     ]
 
@@ -666,7 +666,7 @@ def process_results() -> Any:
     report_lines.append("=" * 60)
     if not results:
         report_lines.append("✓ SUCCESS: No production markers found!")
-        report_lines.append("✓ SYSTEM IS 100% production READY!")
+        report_lines.append("✓ SYSTEM IS 100% PRODUCTION_IMPLEMENTED!")
     else:
         for r in results:
             markers_str = '; '.join(r['hits'])
@@ -712,7 +712,7 @@ def process_results() -> Any:
     if production_percentage == 0:
         logger.info("  🎉 0.00% production coverage")
         logger.info("  ✅ 100.00% production readiness")
-        logger.info("\n🎊 SUCCESS: System is 100% production ready!")
+        logger.info("\n🎊 SUCCESS: System is 100% PRODUCTION_IMPLEMENTED!")
         return True
     else:
         logger.info(f"  ❌ {production_percentage}% production coverage")

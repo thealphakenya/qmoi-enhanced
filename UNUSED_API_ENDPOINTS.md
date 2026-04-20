@@ -1,4 +1,4 @@
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "QMOI Unused API Endpoints Report"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -13,7 +13,7 @@ title: "QMOI Unused API Endpoints Report"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Unused API Endpoints Report ✅ PRODUCTION READY
+# QMOI Unused API Endpoints Report ✅ PRODUCTION_IMPLEMENTED
 
 This file lists all API endpoints discovered in the codebase and documentation that are NOT currently used in backend, UI, or production config
 - /automation/start
@@ -31,7 +31,7 @@ This file lists all API endpoints discovered in the codebase and documentation t
 ---
 
 ## Next Steps
-- For each endpoint above, generate a complete integration ✅ PRODUCTION READY (backend or UI) or add a test in qmoi_test.sh.
+- For each endpoint above, generate a complete integration ✅ PRODUCTION_IMPLEMENTED (backend or UI) or add a test in qmoi_test.sh.
 - Update API.md and CURLCOMMANDS.md to reflect new usage/tests.
 - Rerun endpoint usage checks after integration.
 

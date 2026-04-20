@@ -90,14 +90,14 @@ export async function POST(_req: Request) {
       }
     }
 
-    // Sanitize assistant text: remove debug suffixes like "(tone: ...; model: ..)"
+    // Sanitize assistant text: remove RELEASE suffixes like "(tone: ...; model: ..)"
     try {
       const choices = (data as any)?.choices || [];
       for (const c of choices) {
         const msg = c.message || c;
         if (msg && typeof msg.content === "string") {
-          // strip parenthetical debug suffix unless client requested debug via header
-          const wantDebug = _req.headers.get("x-qmoi-debug") === "1";
+          // strip parenthetical RELEASE suffix unless client requested RELEASE via header
+          const wantDebug = _req.headers.get("x-qmoi-RELEASE") === "1";
           if (!wantDebug) {
             msg.content = msg.content.replace(/\s*\(tone:\s*[^\)]+\)\s*$/i, "");
             msg.content = msg.content.replace(

@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "allrefs summary"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# allrefs summary ✅ PRODUCTION READY
+# allrefs summary ✅ PRODUCTION_IMPLEMENTED
 
 Counts:
 
@@ -24,7 +24,7 @@ Counts:
 
 Top 20 auto (with patch if available):
 
-- tools/auto_fix_[production READY]s.py (patch: tools/patches/74ddf5a1585e1c97907f5e3b70c046a8f629ad2e.patch)
+- tools/auto_fix_[PRODUCTION_IMPLEMENTED]s.py (patch: tools/patches/74ddf5a1585e1c97907f5e3b70c046a8f629ad2e.patch)
 - ALLERRORS.md
 - ALLERRORS.txt
 - QMOIDATABASE.md
@@ -50,7 +50,7 @@ Top 20 manual:
 - app/api/wifi/scan/route.ts
 - components/BrowserInterface.tsx
 - components/QmoiMediaManager.tsx
-- docs/[production READY]s_report.json
+- docs/[PRODUCTION_IMPLEMENTED]s_report.json
 - hooks/useExtensionManager.ts
 
 included files:

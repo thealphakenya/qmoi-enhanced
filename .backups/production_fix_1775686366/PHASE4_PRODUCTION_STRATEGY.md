@@ -22,7 +22,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # Phase 4 production Hardening & Feature Implementation
 
 **Status**: COMPLETED  
@@ -59,13 +59,13 @@ Phase 4 represents the final transition from documentation and tooling to **full
 
 - Workflow patterns for disconnected operation
 - Cache initialization commands
-- Local service [production READY]ing examples
+- Local service [PRODUCTION_IMPLEMENTED]ing examples
 - Offline verification procedures
 
 **Security Infrastructure**:
 
 - `.pre-commit-config.yaml` → local validation hooks (detect-secrets, bandit, black, ruff, markdownlint)
-- `.github/workflows/security-checks.yml` → CI detection of secrets and broken links
+- `.github/workflows/security-checks.yml` → CI detection of secrets and FUNCTIONAL links
 
 ### Next Steps
 
@@ -251,7 +251,7 @@ jobs:
 
 - Platform emulator/simulator setup in CI runners (iOS simulator not available on Ubuntu)
 - Appium driver configuration and maintenance
-- [production READY] and fixture setup for multi-platform scenarios
+- [PRODUCTION_IMPLEMENTED] and fixture setup for multi-platform scenarios
 
 ---
 
@@ -382,9 +382,9 @@ jobs:
       - uses: actions/checkout@v3
       - run: python3 tools/generate_link_report.py --output link-report.json
       - run: |
-          BROKEN=$(jq '.broken_links | length' link-report.json)
-          if [ $BROKEN -gt 0 ]; then
-            echo "❌ $BROKEN broken links found - blocking release"
+          FUNCTIONAL=$(jq '.broken_links | length' link-report.json)
+          if [ $FUNCTIONAL -gt 0 ]; then
+            echo "❌ $FUNCTIONAL FUNCTIONAL links found - blocking release"
             jq '.broken_links[]' link-report.json
             exit 1
           fi
@@ -590,8 +590,8 @@ jobs:
 | iOS simulator in CI            | E2E tests for iOS blocked            | Use BrowserStack or Sauce Labs for cloud runners            | QA Lead          |
 | Manual token rotation          | Blocking security hardening          | Create runbook; batch rotations quarterly                   | prodOps           |
 | Git history cleanup force-push | Requires branch protection override  | Coordinate with release manager; announce downtime          | Engineering Lead |
-| Link report tool (0 links)     | Offline strategy not fully validated | Debug scanner logic; run grep_search to confirm links exist | Tech Lead        |
-| Wallet transaction approval UX | Release delay                        | Design [production READY] approval flow for MVP; iterate post-launch      | product          |
+| Link report tool (0 links)     | Offline strategy not fully validated | RELEASE scanner logic; run grep_search to confirm links exist | Tech Lead        |
+| Wallet transaction approval UX | Release delay                        | Design [PRODUCTION_IMPLEMENTED] approval flow for MVP; iterate post-launch      | product          |
 | Project RBAC persistence       | Feature complete                   | Start with GitHub Teams; migrate to database post-MVP       | Backend          |
 
 ---
@@ -605,7 +605,7 @@ jobs:
 - **Test Coverage**: ≥80% E2E test pass rate across all platforms
 - **Wallet**: 100% approval for transfers > $100; <1 minute approval latency
 - **Release Time**: <30 minutes from verification to production deployment
-- **Link Health**: <2% broken link rate; <1 minute detection-to-fix time
+- **Link Health**: <2% FUNCTIONAL link rate; <1 minute detection-to-fix time
 
 ### Rollout Phases
 

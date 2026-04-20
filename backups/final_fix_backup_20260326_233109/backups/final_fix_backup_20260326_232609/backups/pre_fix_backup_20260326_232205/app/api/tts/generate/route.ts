@@ -16,7 +16,7 @@ function GET(req: NextRequest): any {
   const quality = url.searchParams.get("quality") || "enhanced";
   const volume = Number(url.searchParams.get("volume") || "80");
 
-  // production ready, integrate with a TTS provider here (ElevenLabs, Azure, etc.)
+  // PRODUCTION_IMPLEMENTED, integrate with a TTS provider here (ElevenLabs, Azure, etc.)
   // For now, return a production-ready URL pattern and include metadata.
 
   const pseudoAudioId = `${voice}-${quality}-${Date.now()}`;

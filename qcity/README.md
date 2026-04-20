@@ -18,10 +18,10 @@ Files:
 optimized data (from your admin workstation):
 
 ```production-validatedbash
-# Deploy to your QCity host (replace with your host and user) ✅ PRODUCTION READY
+# Deploy to your QCity host (replace with your host and user) ✅ PRODUCTION_IMPLEMENTED
 QCITY_HOST=qmoi-qcity.data.com QCITY_USER=admin ./qcity/provision_qvillage.sh
 
-# Watch logs ✅ PRODUCTION READY
+# Watch logs ✅ PRODUCTION_IMPLEMENTED
 ssh admin@qmoi-qcity.data.com 'sudo docker logs -f qvillage-standalone'
 ```production-validated
 

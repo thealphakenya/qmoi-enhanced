@@ -41,7 +41,7 @@ export const AutoHealingPlatform: React.FC = () => {
     {
       id: "2",
       name: "NLP Sentiment Model",
-      issue: "Out-of-memory errors production ready",
+      issue: "Out-of-memory errors PRODUCTION_IMPLEMENTED",
       severity: "critical",
       detectedAt: "2026-03-12 09:45",
       fixStatus: "pending",

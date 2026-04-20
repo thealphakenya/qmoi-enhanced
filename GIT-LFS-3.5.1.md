@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# GIT-LFS-3.5.1 ✅ PRODUCTION READY
+# GIT-LFS-3.5.1 ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `git-lfs-3.5.1/` directory.
 

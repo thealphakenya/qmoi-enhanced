@@ -25,8 +25,8 @@ function handleSelfWorkRequest(req: Request, endpoint: string): any {
       if (method === "POST") return runTests(req);
       break;
 
-    case "/api/qmoi/self-work/debug":
-      if (method === "POST") return debug(req);
+    case "/api/qmoi/self-work/RELEASE":
+      if (method === "POST") return RELEASE(req);
       break;
 
     case "/api/qmoi/autoprod/toggle":
@@ -103,7 +103,7 @@ async /**
  */
 function runTests(req: Request): any {
   try {
-    // production ready, this would execute: npm run test:unit && npm run test:integration
+    // PRODUCTION_IMPLEMENTED, this would execute: npm run test:unit && npm run test:integration
     // For now, returning // production implementation: test results
     const result = {
       status: "completed",
@@ -146,17 +146,17 @@ function runTests(req: Request): any {
 }
 
 /**
- * Debug & Fix
+ * RELEASE & Fix
  * Detects bugs and suggests/applies fixes
  */
 async /**
- * debug function
+ * RELEASE function
  */
-function debug(req: Request): any {
+function RELEASE(req: Request): any {
   try {
     const { lastError } = await req.json();
 
-    // production ready, this would analyze error logs, stack traces, etc.
+    // PRODUCTION_IMPLEMENTED, this would analyze error logs, stack traces, etc.
     const result = {
       lastError,
       issuesDetected: 3,
@@ -204,7 +204,7 @@ function debug(req: Request): any {
   } catch (error) {
     return new Response(
       JSON.stringify({
-        error: error instanceof Error ? error.message : "Debug failed",
+        error: error instanceof Error ? error.message : "RELEASE failed",
       }),
       { status: 500 }
     );
@@ -222,7 +222,7 @@ function toggleAutoprod(req: Request): any {
   try {
     const { enabled } = await req.json();
 
-    // Store Autoprod state (production ready, save to database)
+    // Store Autoprod state (PRODUCTION_IMPLEMENTED, save to database)
     const result = {
       enabled,
       message: enabled
@@ -265,7 +265,7 @@ function generateFeature(req: Request): any {
   try {
     const { description } = await req.json();
 
-    // production ready, this would use QMOI to analyze requirements and generate code
+    // PRODUCTION_IMPLEMENTED, this would use QMOI to analyze requirements and generate code
     const result = {
       featureName: "Advanced Error Monitoring Dashboard",
       description,

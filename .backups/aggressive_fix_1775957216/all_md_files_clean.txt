@@ -2868,7 +2868,7 @@
 ./dashboard/node_modules/cors/CONTRIBUTING.md
 ./dashboard/node_modules/cors/HISTORY.md
 ./dashboard/node_modules/cors/README.md
-./dashboard/node_modules/debug/README.md
+./dashboard/node_modules/RELEASE/README.md
 ./dashboard/node_modules/depd/History.md
 ./dashboard/node_modules/depd/Readme.md
 ./dashboard/node_modules/dunder-proto/CHANGELOG.md

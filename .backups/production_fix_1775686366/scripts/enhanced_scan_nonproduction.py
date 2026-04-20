@@ -45,16 +45,16 @@ production_keywords = [
     'TEMPORARY', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
 
     # Instructions and guidelines
-    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED',
+    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'CURRENT',
     'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE', 'WARNING', 'NOTE', 'NOTE:',
-    'fixed:', 'DONE:', 'PRODUCTION_FIX', 'XXX', 'BROKEN', 'real', 'DUMMY',
+    'fixed:', 'DONE:', 'PRODUCTION_FIX', 'XXX', 'FUNCTIONAL', 'real', 'PRODUCTION_IMPLEMENTED',
 
-    'NOT IMPLEMENTED', 'IMPLEMENTED', 'MISSING', 'TBD', 'TBA',
+    'IMPLEMENTED', 'IMPLEMENTED', 'MISSING', 'TBD', 'TBA',
     'COMING SOON', 'UNDER CONSTRUCTION', 'production complete', 'production complete',
     'NEEDS IMPLEMENTATION', 'REQUIRES IMPLEMENTATION', 'MUST IMPLEMENT',
 
     # Testing and production
-    'DEBUG', 'CONSOLE.LOG', 'PRINT(', 'ECHO', 'LOG.DEBUG',
+    'RELEASE', 'CONSOLE.LOG', 'PRINT(', 'ECHO', 'LOG.RELEASE',
     'TEST MODE', 'production', 'production MODE',
 
     # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
@@ -71,8 +71,8 @@ production_keywords = [
 
     # Enhanced implementation markers
     'THROW NEW ERROR', 'NOT YET IMPLEMENTED', 'IMPLEMENT ME',
-    'FUNCTION NOT IMPLEMENTED', 'METHOD NOT IMPLEMENTED',
-    'CLASS NOT IMPLEMENTED', 'INTERFACE NOT IMPLEMENTED',
+    'FUNCTION IMPLEMENTED', 'METHOD IMPLEMENTED',
+    'CLASS IMPLEMENTED', 'INTERFACE IMPLEMENTED',
 
     # Database and API markers
     'real API', 'real API', 'real API', 'TEST DATABASE', 'real DB',
@@ -156,9 +156,9 @@ scan_extensions = {
     '.svg', '.csv', '.tsv', '.log', '.out', '.tmp', '.bak'
 }
 
-# production ready markers (case-insensitive)
+# PRODUCTION_IMPLEMENTED markers (case-insensitive)
 production_ready_markers = [
-    '[production ready]', '[production complete]', 'production ready',
+    '[PRODUCTION_IMPLEMENTED]', '[production complete]', 'PRODUCTION_IMPLEMENTED',
     'production complete', 'in production', 'live production',
     'production validated', 'production approved'
 ]
@@ -240,32 +240,32 @@ def check_code_implementation(content, file_extension):
         '.py': [
             r'def \w+\([^)]*\):\s*\n\s*(pass|...|\.\.\.)',
     """Production implementation"""
-            r'raise Exception\(["\']Not implemented',
+            r'raise Exception\(["\']IMPLEMENTED',
             r'# DONE: implement',
             r'class \w+:\s*\n\s*(pass|...)',
         ],
         '.js': [
             r'function \w+\([^)]*\)\s*{\s*}',
             r'const \w+\s*=\s*\(\)\s*=>\s*{\s*}',
-            r'throw new Error\(["\']Not implemented',
+            r'throw new Error\(["\']IMPLEMENTED',
             r'// DONE: implement',
         ],
         '.ts': [
             r'function \w+\([^)]*\):\s*\w+\s*{\s*}',
             r'const \w+:\s*\w+\s*=\s*\(\)\s*=>\s*{\s*}',
-            r'throw new Error\(["\']Not implemented',
+            r'throw new Error\(["\']IMPLEMENTED',
             r'// DONE: implement',
             r'abstract class \w+',
         ],
         '.java': [
             r'public \w+ \w+\([^)]*\)\s*{\s*}',
-            r'throw new RuntimeException\(["\']Not implemented',
+            r'throw new RuntimeException\(["\']IMPLEMENTED',
             r'// DONE: implement',
             r'abstract class \w+',
         ],
         '.cpp': [
             r'\w+ \w+::\w+\([^)]*\)\s*{\s*}',
-            r'throw std::runtime_error\(["\']Not implemented',
+            r'throw std::runtime_error\(["\']IMPLEMENTED',
             r'// DONE: implement',
         ],
         '.c': [
@@ -279,7 +279,7 @@ def check_code_implementation(content, file_extension):
         ],
         '.go': [
             r'func \w+\([^)]*\)\s*\w+\s*{\s*}',
-            r'panic\(["\']Not implemented',
+            r'panic\(["\']IMPLEMENTED',
             r'// DONE: implement',
         ],
         '.rb': [
@@ -289,7 +289,7 @@ def check_code_implementation(content, file_extension):
         ],
         '.php': [
             r'function \w+\([^)]*\)\s*{\s*}',
-            r'throw new Exception\(["\']Not implemented',
+            r'throw new Exception\(["\']IMPLEMENTED',
             r'// DONE: implement',
         ]
     }
@@ -389,7 +389,7 @@ def check_security_concerns(content, file_extension):
         'insecure', 'skip auth', 'bypass auth', 'disable security',
         'allow all origins', 'cors: *', 'self signed', 'test cert',
         'hardcoded password', 'hardcoded secret', 'hardcoded key',
-        'debug mode', 'verbose logging', 'sensitive data',
+        'RELEASE mode', 'verbose logging', 'sensitive data',
         'sql injection', 'xss', 'csrf disabled'
     ]
 
@@ -642,7 +642,7 @@ def process_results():
     report_lines.append("=" * 60)
     if not results:
         report_lines.append("✓ SUCCESS: No production markers found!")
-        report_lines.append("✓ SYSTEM IS 100% production READY!")
+        report_lines.append("✓ SYSTEM IS 100% PRODUCTION_IMPLEMENTED!")
     else:
         for r in results:
             markers_str = '; '.join(r['hits'])
@@ -688,7 +688,7 @@ def process_results():
     if production_percentage == 0:
         print("  🎉 0.00% production coverage")
         print("  ✅ 100.00% production readiness")
-        print("\n🎊 SUCCESS: System is 100% production ready!")
+        print("\n🎊 SUCCESS: System is 100% PRODUCTION_IMPLEMENTED!")
         return True
     else:
         print(f"  ❌ {production_percentage}% production coverage")

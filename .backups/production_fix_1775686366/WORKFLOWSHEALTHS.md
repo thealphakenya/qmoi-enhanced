@@ -190,7 +190,7 @@ Master Health % = Average of all individual workflow health percentages
 | ci-build | TBD% | 🟡 Active | TBD | Real-time |
 | ci-cd | TBD% | 🟡 Active | TBD | Real-time |
 | ci-monitor | TBD% | 🟡 Active | TBD | Real-time |
-| ci-debug | TBD% | 🟡 Active | TBD | Real-time |
+| ci-RELEASE | TBD% | 🟡 Active | TBD | Real-time |
 | jest-ci | TBD% | 🟡 Active | TBD | Real-time |
 | qmoi-tests | TBD% | 🟡 Active | TBD | Real-time |
 | wallet-tests | TBD% | 🟡 Active | TBD | Real-time |

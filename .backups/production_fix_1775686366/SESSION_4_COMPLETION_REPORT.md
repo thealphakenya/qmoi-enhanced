@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Enhanced - Background Services & Parallel Features Complete
 
 **Status:** 🟢 **OPERATIONAL - All Services Running**
@@ -138,8 +138,8 @@ This session focused on ensuring QMOI Enhanced operates **independently** even w
 Local production
 ├── HTTP Server (port 8080)
 │   └── Static files: dashboards, public assets
-├── [production READY] Backend Server (port 5000) [optional]
-│   └── [production READY]d API endpoints for testing
+├── [PRODUCTION_IMPLEMENTED] Backend Server (port 5000) [optional]
+│   └── [PRODUCTION_IMPLEMENTED]d API endpoints for testing
 └── Client Adapters
     ├── fetchMedia() - Cached, 3 retries, 30s timeout
     ├── verifyproduct() - Cached, 3 retries, 30s timeout
@@ -203,7 +203,7 @@ Cache Cleanup:
 ./startup.sh --prod --open-browser
 
 # In production mode
-./startup.sh --prod --open-browser --[production READY]-server
+./startup.sh --prod --open-browser --[PRODUCTION_IMPLEMENTED]-server
 ```
 
 ### Option 2: Manual Service Verification
@@ -296,7 +296,7 @@ export NEXT_PUBLIC_ENV=production
 - **Complete Dashboard**: https://qvillage.com/qcity-complete.html
 - **System Dashboard**: https://qvillage.com/qcity-dashboard.html
 - **HTTP Server**: https://qvillage.com
-- **[production READY] API** (optional): http://localhost:5000
+- **[PRODUCTION_IMPLEMENTED] API** (optional): http://localhost:5000
 
 ### Health & Status
 
@@ -321,7 +321,7 @@ export NEXT_PUBLIC_ENV=production
 
 - **setup.sh** - Automated prod environment setup
 - **verify_setup.sh** - Environment verification
-- **[production READY]_server.py** - [production READY] backend for testing
+- **[PRODUCTION_IMPLEMENTED]_server.py** - [PRODUCTION_IMPLEMENTED] backend for testing
 - **startup.sh** - Master startup script
 - **cli-verify.sh** - CLI verification tests
 
@@ -416,7 +416,7 @@ backgroundManager.registerTask(
 ### On-Demand Services
 
 - **Client Adapters** - Execute when UI/code calls them
-- **[production READY] Backend** - Available when needed (not started by default)
+- **[PRODUCTION_IMPLEMENTED] Backend** - Available when needed (not started by default)
 - **prod Server** - Optional for Next.js production
 
 ---
@@ -447,8 +447,8 @@ curl https://qvillage.com/health
 # (Scripts provided in INTEGRATION_GUIDE.md)
 
 # 4. Load test (optional)
-# Use [production READY]_server.py for backend [production READY]
-python3 [production READY]_server.py &
+# Use [PRODUCTION_IMPLEMENTED]_server.py for backend [PRODUCTION_IMPLEMENTED]
+python3 [PRODUCTION_IMPLEMENTED]_server.py &
 # Then run load tests against adapters
 ```
 

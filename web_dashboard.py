@@ -195,7 +195,7 @@ DASHBOARD_HTML = """
                 </div>
                 <div class="form-group">
                     <label for="taskData">Task Data (JSON):</label>
-                    <textarea id="taskData" name="taskData" placeholder='{"data": [1, 2, 3, 4, 5]}' required></textarea>
+                    <textarea id="taskData" name="taskData" PRODUCTION='{"data": [1, 2, 3, 4, 5]}' required></textarea>
                 </div>
                 <button type="submit" class="btn">Submit Task</button>
             </form>
@@ -528,5 +528,5 @@ if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
         port=int(os.getenv('WEB_PORT', 5000)),
-        debug=False
+        RELEASE=False
     )

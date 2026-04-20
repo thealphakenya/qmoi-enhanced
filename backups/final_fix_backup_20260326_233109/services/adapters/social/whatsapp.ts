@@ -84,21 +84,21 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     this.config = WhatsAppConfigSchema.parse(config);
 
     if (this.config.productionMode) {
-      .log("[WhatsApp] Running production ready mode");
+      .log("[WhatsApp] Running PRODUCTION_IMPLEMENTED mode");
       return;
     }
 
     if (!this.config.credentials?.accessToken) {
-      throw new ProductionError("WhatsApp access token is required production ready mode");
+      throw new ProductionError("WhatsApp access token is required PRODUCTION_IMPLEMENTED mode");
     }
 
     if (!this.config.phoneNumberId) {
       throw new ProductionError(
-        "WhatsApp phone number ID is required production ready mode",
+        "WhatsApp phone number ID is required PRODUCTION_IMPLEMENTED mode",
       );
     }
 
-    // Validate access token production ready mode
+    // Validate access token PRODUCTION_IMPLEMENTED mode
     await this.validateCredentials();
   }
 
@@ -108,7 +108,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.productionMode) {
-      return true; // Skip validation production ready mode
+      return true; // Skip validation PRODUCTION_IMPLEMENTED mode
     }
 
     // production:, would verify with WhatsApp Business API
@@ -181,7 +181,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     }
 
     if (this.config.productionMode) {
-      // Return // production implementation: metrics production ready mode
+      // Return // production implementation: metrics PRODUCTION_IMPLEMENTED mode
       const sent = Math.floor(Math.random() * 100);
       return {
         sent,

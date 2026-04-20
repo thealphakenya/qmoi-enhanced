@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Enhanced Auto-Deploy System"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -267,16 +267,16 @@ node scripts/deploy/health-check.js check
 npm run deploy:fix
 ```
 
-### Debug Mode
+### RELEASE Mode
 
-Enable debug logging:
+Enable RELEASE logging:
 
 ```bash
-# Set debug environment
-export DEBUG=true
+# Set RELEASE environment
+export RELEASE=true
 
 # Run with verbose output
-npm run deploy:vercel -- --debug
+npm run deploy:vercel -- --RELEASE
 ```
 
 ### Log Files

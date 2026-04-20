@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # Integration Guide: Frontend Adapters & Backend API
 
 **Date:** December 2, 2025  
@@ -73,11 +73,11 @@ npm run prod
 # Open https://qmoi.ai in browser
 ```
 
-### 5. Test with [production READY] Backend (No Real API)
+### 5. Test with [PRODUCTION_IMPLEMENTED] Backend (No Real API)
 
 ```bash
-# Option A: Use included [production READY] server (see Task 4 below)
-python3 [production READY]_server.py
+# Option A: Use included [PRODUCTION_IMPLEMENTED] server (see Task 4 below)
+python3 [PRODUCTION_IMPLEMENTED]_server.py
 
 # Option B: Use curl to test adapters
 curl -X POST http://localhost:8000/api/mail \
@@ -346,21 +346,21 @@ See `BACKEND_API_TEMPLATES.md` for complete code examples in:
 1. Open https://qvillage.com/qcity-enterprise.html
 2. Find QmoiMediaManager component
 3. Click "Fetch Media" button
-4. Expected: Media list loads (or [production READY] data if backend unavailable)
-5. Check console for adapter debug logs
+4. Expected: Media list loads (or [PRODUCTION_IMPLEMENTED] data if backend unavailable)
+5. Check console for adapter RELEASE logs
 ```
 
-### 2. Test with [production READY] Backend
+### 2. Test with [PRODUCTION_IMPLEMENTED] Backend
 
 ```bash
-# Start [production READY] server (Task 4)
-python3 [production READY]_server.py
+# Start [PRODUCTION_IMPLEMENTED] server (Task 4)
+python3 [PRODUCTION_IMPLEMENTED]_server.py
 
-# Update .env.local to use [production READY] backend:
+# Update .env.local to use [PRODUCTION_IMPLEMENTED] backend:
 NEXT_PUBLIC_API_URL=http://localhost:5000
 
 # Open dashboard and test all components
-# All requests go to [production READY] server, safe to test
+# All requests go to [PRODUCTION_IMPLEMENTED] server, safe to test
 ```
 
 ### 3. Manual Testing Checklist
@@ -439,9 +439,9 @@ response.headers["Access-Control-Allow-Headers"] =
 3. Restart prod server: `npm run prod`
 4. Check loaded value: `console.log(process.env.NEXT_PUBLIC_API_URL)`
 
-### Issue 5: [production READY] Data Still Showing After Backend Started
+### Issue 5: [PRODUCTION_IMPLEMENTED] Data Still Showing After Backend Started
 
-**Error:** Component shows [production READY]/fallback data even though backend is running
+**Error:** Component shows [PRODUCTION_IMPLEMENTED]/fallback data even though backend is running
 
 **Fix:**
 
@@ -453,13 +453,13 @@ response.headers["Access-Control-Allow-Headers"] =
 
 ---
 
-## Testing with [production READY] Backend
+## Testing with [PRODUCTION_IMPLEMENTED] Backend
 
-### Option A: Use Included [production READY] Server
+### Option A: Use Included [PRODUCTION_IMPLEMENTED] Server
 
 ```bash
 # See Task 4 below for setup
-python3 [production READY]_server.py
+python3 [PRODUCTION_IMPLEMENTED]_server.py
 
 # Server runs on http://localhost:5000
 # All endpoints return data responses
@@ -527,7 +527,7 @@ curl http://localhost:8000/api/media?limit=10
 
 - [ ] Backend team implements 7 API endpoints (see `BACKEND_API_TEMPLATES.md`)
 - [ ] prodeloper runs `npm install && npm run build`
-- [ ] QA starts testing with [production READY] backend (Task 4)
+- [ ] QA starts testing with [PRODUCTION_IMPLEMENTED] backend (Task 4)
 
 ### Week 2
 

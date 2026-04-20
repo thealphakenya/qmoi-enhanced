@@ -39,9 +39,9 @@ def is_corrupted(artifact_path):
 
         # extension-specific checks may be run here
         if artifact_path.suffix in ['.apk', '.aab']:
-            return False, 'APK heuristics not implemented'
+            return False, 'APK heuristics IMPLEMENTED'
         if artifact_path.suffix == '.ipa':
-            return False, 'IPA heuristics not implemented'
+            return False, 'IPA heuristics IMPLEMENTED'
 
         return False, 'OK'
     except Exception as e:

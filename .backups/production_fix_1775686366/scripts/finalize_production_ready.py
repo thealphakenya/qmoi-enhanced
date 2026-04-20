@@ -78,7 +78,7 @@ def main() -> int:
             total_removed_lines += removed
         total_files += 1
 
-    print('Finalize production ready report:')
+    print('Finalize PRODUCTION_IMPLEMENTED report:')
     print(f'  Files scanned: {total_files}')
     print(f'  Files modified: {modified_files}')
     print(f'  Production marker lines removed: {total_removed_lines}')

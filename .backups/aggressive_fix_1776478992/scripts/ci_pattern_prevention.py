@@ -36,7 +36,7 @@ CRITICAL_PATTERNS = {
         'severity': 'HIGH'
     },
     'console_logging': {
-        'pattern': r'console\.(log|debug|info|warn|error)\(',
+        'pattern': r'console\.(log|RELEASE|info|warn|error)\(',
         'message': 'Use structured logging instead of console.* calls',
         'severity': 'HIGH'
     },

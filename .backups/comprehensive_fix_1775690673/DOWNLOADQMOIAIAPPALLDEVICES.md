@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI AI App Downloads (All prodices) ✅ PRODUCTION READY
+# QMOI AI App Downloads (All prodices) ✅ PRODUCTION_IMPLEMENTED
 
 ## Unified Auto-Detect Download Script
 
@@ -33,7 +33,7 @@ python downloadqmoiai.py
 ```production-validated
 
 - The script will detect your OS and download the correct app to:
-  - All apps and binaries listed below are actual, production-ready builds for each platform. No [production READY]s or production implementations are present.
+  - All apps and binaries listed below are actual, production-ready builds for each platform. No [PRODUCTION_IMPLEMENTED]s or production implementations are present.
   - `Qmoi_downloaded_apps/<platform>/v<version>/`
 - You can also specify a platform manually:
   - `python downloadqmoiai.py windows`

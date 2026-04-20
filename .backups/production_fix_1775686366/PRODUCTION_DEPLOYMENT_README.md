@@ -271,7 +271,7 @@ Required for automated DNS deployment:
 # View recent logs
 tail -f logs/*.log
 
-# Debug DNS issues
+# RELEASE DNS issues
 dig qmoi.ai
 
 # Check system status

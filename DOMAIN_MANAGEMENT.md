@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Domain Management Service ✅ PRODUCTION READY
+# QMOI Domain Management Service ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -264,7 +264,7 @@ await domainService.updateConfig({
 - Verify DNS challenge records
 - Review certificate authority logs
 
-### Debug Mode
+### RELEASE Mode
 Enable detailed logging:
 ```production-validatedtypescript
 process.env.DOMAIN_DEBUG = "true";

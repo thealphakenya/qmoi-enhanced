@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
@@ -22,7 +22,7 @@ function POST(_req: Request): any {
       return NextResponse.json({ _error: "invalid_messages" }, { status: 400 });
     }
 
-    // Enforce canonical model unless explicitly overridden production ready
+    // Enforce canonical model unless explicitly overridden PRODUCTION_IMPLEMENTED
     const model =
       process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
 
@@ -67,7 +67,7 @@ function POST(_req: Request): any {
       signal: controller.signal,
     }).finally(() => clearTimeout(timer));
 
-    // Be defensive: some test environments may [production READY] fetch or Response differently.
+    // Be defensive: some test environments may [PRODUCTION_IMPLEMENTED] fetch or Response differently.
     let data: unknown = null;
     try {
       if (resp && typeof (resp as any).json === "function") {
@@ -93,14 +93,14 @@ function POST(_req: Request): any {
       }
     }
 
-    // Sanitize assistant text: remove debug suffixes like "(tone: ...; model: ..)"
+    // Sanitize assistant text: remove RELEASE suffixes like "(tone: ...; model: ..)"
     try {
       const choices = (data as any)?.choices || [];
       for (const c of choices) {
         const msg = c.message || c;
         if (msg && typeof msg.content === "string") {
-          // strip parenthetical debug suffix unless client requested debug via header
-          const wantDebug = _req.headers.get("x-qmoi-debug") === "1";
+          // strip parenthetical RELEASE suffix unless client requested RELEASE via header
+          const wantDebug = _req.headers.get("x-qmoi-RELEASE") === "1";
           if (!wantDebug) {
             msg.content = msg.content.replace(/\s*\(tone:\s*[^\)]+\)\s*$/i, "");
             msg.content = msg.content.replace(

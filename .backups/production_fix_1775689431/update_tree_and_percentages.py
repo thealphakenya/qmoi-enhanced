@@ -175,7 +175,7 @@ qmoi-enhanced/
 │   │   │   │       └── features/
 │   │   │   ├── self-work/
 │   │   │   │   ├── code-review/
-│   │   │   │   ├── debug/
+│   │   │   │   ├── RELEASE/
 │   │   │   │   └── run-tests/
 │   │   │   └── suggestions/
 │   │   │       └── route.ts         # Suggestions

@@ -324,7 +324,7 @@ Access previous conversations:
 ```
 📜 History
 ├─ Project Setup (2h ago)
-├─ Debug Session (1h ago)
+├─ RELEASE Session (1h ago)
 ├─ Performance Tuning (30m ago)
 └─ Current Conversation
 ```
@@ -636,12 +636,12 @@ Display in chat with metadata
     },
     {
       id: "2",
-      text: "How do I debug this issue?",
+      text: "How do I RELEASE this issue?",
       sender: "user"
     },
     {
       id: "3",
-      text: "To debug, you can:\n\`\`\`js\nconsole.log()\n\`\`\`",
+      text: "To RELEASE, you can:\n\`\`\`js\nconsole.log()\n\`\`\`",
       sender: "bot",
       metadata: {
         codeBlock: "console.log()",

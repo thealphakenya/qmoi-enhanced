@@ -233,12 +233,12 @@ The system uses different exit codes to indicate status:
    - Install required dependencies (notify-send on Linux)
    - Verify PowerShell execution policy on Windows
 
-### Debug Mode
+### RELEASE Mode
 
-Enable debug logging by setting the environment variable:
+Enable RELEASE logging by setting the environment variable:
 
 ```bash
-DEBUG=true yarn lint:auto
+RELEASE=true yarn lint:auto
 ```
 
 ## 🤝 Integration

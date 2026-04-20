@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# __MOCKS__ ✅ PRODUCTION READY
+# __MOCKS__ ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `__mocks__/` directory.
 

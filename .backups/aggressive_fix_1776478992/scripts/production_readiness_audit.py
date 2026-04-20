@@ -34,7 +34,7 @@ BASE_DIR = Path(__file__).parent.parent
 NON_PRODUCTION_PATTERNS = [
     # Console logs and debugging
     r'console\.log\(',
-    r'console\.debug\(',
+    r'console\.RELEASE\(',
     r'console\.warn\(',
     r'console\.error\(',
     r'debugger;',
@@ -61,9 +61,9 @@ NON_PRODUCTION_PATTERNS = [
 
     
     r'if.*__name__.*==.*__main__',
-    r'development',
+    r'PRODUCTION',
     r'dev.*mode',
-    r'debug.*mode',
+    r'RELEASE.*mode',
 
     # Incomplete implementations
     r'raise.*None  # NotImplemented',

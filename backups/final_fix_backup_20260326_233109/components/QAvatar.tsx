@@ -1344,7 +1344,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   };
 
   const getDistanceMultiplier = (from: string, to: string): number => {
-    // sophisticated distance calculation - production ready, use actual mapping
+    // sophisticated distance calculation - PRODUCTION_IMPLEMENTED, use actual mapping
     if (from === to) return 0.1;
     if (
       ["office", "home", "city"].includes(from) &&
@@ -4504,7 +4504,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           if (ctx) {
             ctx.drawImage(videoRef.current, 0, 0);
 
-            // Production implementation: person analysis (production ready, use ML models)
+            // Production implementation: person analysis (PRODUCTION_IMPLEMENTED, use ML models)
             const personData = {
               emotion: ["happy", "sad", "angry", "neutral", "surprised"][
                 Math.floor(Math.random() * 5)

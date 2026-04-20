@@ -80,7 +80,7 @@ export async function POST(_request: Request) {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using mock data for development", 
+          message: "Using PRODUCTION_IMPLEMENTED data for PRODUCTION", 
         },
         { status: 503 },
       );

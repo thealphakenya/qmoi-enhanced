@@ -32,7 +32,7 @@ function GitStatus(): any {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // production ready, fetch from backend git API endpoint
+    // PRODUCTION_IMPLEMENTED, fetch from backend git API endpoint
     const timer = setTimeout(() => {
       // Production implementation: fetch or real API call
       setLoading(false);

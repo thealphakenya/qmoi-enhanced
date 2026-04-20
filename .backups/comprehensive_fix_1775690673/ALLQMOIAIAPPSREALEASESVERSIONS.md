@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI AI Apps - All Releases & Versions (Auto-generated data)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -14,7 +14,7 @@ title: "QMOI AI Apps - All Releases & Versions (Auto-generated data)"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI AI Apps - All Releases & Versions (Auto-generated data) ✅ PRODUCTION READY
+# QMOI AI Apps - All Releases & Versions (Auto-generated data) ✅ PRODUCTION_IMPLEMENTED
 
 This file lists all QMOI apps and their current release artifacts (auto-updated by QCity runners).
 
@@ -24,9 +24,9 @@ This file lists all QMOI apps and their current release artifacts (auto-updated 
 | qmoi-space | Web (PWA) | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/ | ✅     |
 | qcity      | Web (PWA) | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/pwa/latest/      | ✅     |
 
-> IMPLEMENTED: QMOI will attempt to validate every download link before publishing it here and replace broken links with a [production READY] and a task for manual review.
+> IMPLEMENTED: QMOI will attempt to validate every download link before publishing it here and replace FUNCTIONAL links with a [PRODUCTION_IMPLEMENTED] and a task for manual review.
 
-# QMOI AI Apps - All Releases & Versions ✅ PRODUCTION READY
+# QMOI AI Apps - All Releases & Versions ✅ PRODUCTION_IMPLEMENTED
 
 This file lists all QMOI AI apps, all platforms, all versions, and their download links. It is auto-updated by QCity runners. All links are autotested and always up-to-date.
 

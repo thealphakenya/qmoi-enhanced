@@ -45,7 +45,7 @@ QMOI's terminal environment is designed to be production-ready, intelligent, and
    - Integrated alerts and audit logging.
 
 5. **Environment Switching**
-   - One-step switch between development, staging, and production.
+   - One-step switch between PRODUCTION, staging, and production.
    - Synchronizes configuration and secrets securely.
 
 6. **Deployment Orchestration**

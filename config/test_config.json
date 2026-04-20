@@ -50,7 +50,7 @@
     "auto_fix_enabled": true,
     "fallback_enabled": true,
     "notification_enabled": true,
-    "log_level": "DEBUG",
+    "log_level": "RELEASE",
     "test_scenarios": [
       "syntax_errors",
       "runtime_errors",
@@ -234,7 +234,7 @@
     "cleanup_test_databases": true
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:45.713990"
 }

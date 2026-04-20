@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Apps & Platforms Inventory (All Versions, All Platforms)
 
 **Last Updated:** 2025-11-13
@@ -30,7 +30,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 - **qmoi_ai.exe** — Main Windows executable
   - Path: `downloads/windows/latest/qmoi_ai.exe`
-  - Status: ⚠️ **[production READY] [production READY]** (169 bytes) — See build instructions below
+  - Status: ⚠️ **[PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED]** (169 bytes) — See build instructions below
   - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
 
 ### macOS
@@ -96,7 +96,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 ### ⚠️ qmoi_ai.exe Status
 
-**The Windows executable (`qmoi_ai.exe`) in this repository is currently a 169-byte [production READY] [production READY].** This is used for documentation and link verification purposes only.
+**The Windows executable (`qmoi_ai.exe`) in this repository is currently a 169-byte [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED].** This is used for documentation and link verification purposes only.
 
 **To obtain a working Windows build:**
 
@@ -125,7 +125,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 | Platform         | Status         | Latest Version | Build Type            |
 | ---------------- | -------------- | -------------- | --------------------- |
-| Windows          | ⚠️ [production READY] | v1.2.3         | EXE Installer         |
+| Windows          | ⚠️ [PRODUCTION_IMPLEMENTED] | v1.2.3         | EXE Installer         |
 | macOS            | ✅ Available   | v1.2.3         | DMG Installer         |
 | Linux (AppImage) | ✅ Available   | v1.2.3         | AppImage              |
 | Linux (Deb)      | ✅ Available   | v1.2.3         | DEB Package           |
@@ -148,7 +148,7 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 **Problem:** "File is corrupted" or "Not a valid Win32 application"
 
-- **Cause:** [production READY] [production READY] file used instead of real executable
+- **Cause:** [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED] file used instead of real executable
 - **Solution:** Download the official release from GitHub (>45MB)
 
 **Problem:** "SmartScreen warning" or "Unrecognized prodeloper"

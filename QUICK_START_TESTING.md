@@ -220,7 +220,7 @@ logger.info("Lighting:", context.lighting);
 // In browser console:
 const voiceService = QMOIVoiceService.getInstance();
 
-[production READY] silence detection
+[PRODUCTION_IMPLEMENTED] silence detection
 const hasSilence = voiceService.detectSpeechEnd(frequencyData);
 logger.info("Speech ended:", hasSilence);
 
@@ -366,12 +366,12 @@ async function testVision() {
     logger.info("✅ Camera access granted");
     
     // Test person analysis
-    const [production READY]Frame = { width: 1280, height: 720 };
-    const person = await visionService.analyzePerson([production READY]Frame);
+    const [PRODUCTION_IMPLEMENTED]Frame = { width: 1280, height: 720 };
+    const person = await visionService.analyzePerson([PRODUCTION_IMPLEMENTED]Frame);
     logger.info("✅ Person analysis:", person);
     
     // Test context
-    const context = await visionService.analyzeVisualContext([production READY]Frame);
+    const context = await visionService.analyzeVisualContext([PRODUCTION_IMPLEMENTED]Frame);
     logger.info("✅ Visual context:", context);
     
     logger.info("✅ Vision system operational!");

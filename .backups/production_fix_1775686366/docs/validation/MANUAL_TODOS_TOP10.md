@@ -7,9 +7,9 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-## MANUAL [production READY]s Top 10 (Summary)
+## MANUAL [PRODUCTION_IMPLEMENTED]s Top 10 (Summary)
 
-This file contains a concise summary of the top manual [production READY]s and suggested owners/actions.
+This file contains a concise summary of the top manual [PRODUCTION_IMPLEMENTED]s and suggested owners/actions.
 
 1. scripts/qmoi_master_website_automation.js - 23 occurrences.
    - Action: Split by provider; implement dry-run only in CI; require manual approval for production steps.
@@ -20,11 +20,11 @@ This file contains a concise summary of the top manual [production READY]s and s
    - Owner: core infra.
 
 3. src/hooks/useQmoiKernel.test.ts - 9 occurrences.
-   - Action: Replace [production READY]s with actual jest [production READY]s; improve coverage.
+   - Action: Replace [PRODUCTION_IMPLEMENTED]s with actual jest [PRODUCTION_IMPLEMENTED]s; improve coverage.
    - Owner: frontend test owner.
 
 4. app/api/qmoi/language/route.ts - 7 occurrences.
-   - Action: Keep [production READY] 501 responses until product design finalizes.
+   - Action: Keep [PRODUCTION_IMPLEMENTED] 501 responses until product design finalizes.
    - Owner: backend/API product.
 
 5. scripts/auto_lint_fix.py - 6 occurrences.
@@ -44,16 +44,16 @@ This file contains a concise summary of the top manual [production READY]s and s
    - Owner: trading prod team.
 
 9. app/api/wifi-security/route.ts - 5 occurrences.
-   - Action: Keep 501 until a product contract exists; add [production READY]s for testing.
+   - Action: Keep 501 until a product contract exists; add [PRODUCTION_IMPLEMENTED]s for testing.
    - Owner: security / n/w team.
 
 10. app/api/qmoi/user/route.ts - 4 occurrences.
     - Action: API contract + validation; 501 for IMPLEMENTED behaviors.
     - Owner: backend API.
 
-Action items have been added to docs/validation/MANUAL_[production READY]S_ACTIONS.md.
+Action items have been added to docs/validation/MANUAL_[PRODUCTION_IMPLEMENTED]S_ACTIONS.md.
 
-# Manual [production READY]s - Top 10 (Quick Triage)
+# Manual [PRODUCTION_IMPLEMENTED]s - Top 10 (Quick Triage)
 
 Generated: 2025-12-11T18:44:00Z
 
@@ -65,11 +65,11 @@ This document lists the top 10 files with manual `[production IMPLEMENTATION REQ
 
 - **scripts/qmoi-master-system.js** (10 markers)
   - Danger: resource management and CPU/Memory offloading — safety-critical.
-  - Recommendation: Implement [production READY]d resource management and safety checks; add a configuration toggle and require admin gating in production.
+  - Recommendation: Implement [PRODUCTION_IMPLEMENTED]d resource management and safety checks; add a configuration toggle and require admin gating in production.
 
 - **src/hooks/useQmoiKernel.test.ts** (9 markers)
-  - Danger: IMPLEMENTED fetch [production READY]s.
-  - Recommendation: Implement proper jest [production READY]s for `global.fetch` using `jest.spyOn` and add tests in CI.
+  - Danger: IMPLEMENTED fetch [PRODUCTION_IMPLEMENTED]s.
+  - Recommendation: Implement proper jest [PRODUCTION_IMPLEMENTED]s for `global.fetch` using `jest.spyOn` and add tests in CI.
 
 - **app/api/qmoi/language/route.ts** (7 markers)
   - Danger: TTS/STT and external model integration.
@@ -88,12 +88,12 @@ This document lists the top 10 files with manual `[production IMPLEMENTATION REQ
   - Recommendation: Implement adapters with environment toggles and a `NO_OP` adapter for CI.
 
 - **scripts/trading/enhanced_trading_system.py** (6 markers)
-  - Danger: [production READY] trading signals.
-  - Recommendation: Gate with `requireApiKey`, separate [production READY]d vs real modes, and add tests and risk-controlled safeguards.
+  - Danger: [PRODUCTION_IMPLEMENTED] trading signals.
+  - Recommendation: Gate with `requireApiKey`, separate [PRODUCTION_IMPLEMENTED]d vs real modes, and add tests and risk-controlled safeguards.
 
 - **app/api/wifi-security/route.ts** (5 markers)
   - Danger: monitoring/detection integration.
-  - Recommendation: Implement complete safe [production READY] responses and gating; avoid broadcasting sensitive info.
+  - Recommendation: Implement complete safe [PRODUCTION_IMPLEMENTED] responses and gating; avoid broadcasting sensitive info.
 
 - **app/api/qmoi/user/route.ts** (4 markers)
   - Danger: user profile endpoints with privacy implications.

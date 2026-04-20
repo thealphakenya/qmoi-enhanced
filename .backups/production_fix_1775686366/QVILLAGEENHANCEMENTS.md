@@ -214,7 +214,7 @@ To surpass Hugging Face completely.
 
 AI platform manager
 This AI:
-detects broken models
+detects FUNCTIONAL models
 retrains outdated models
 removes spam datasets
 improves documentation 2. Self-training ecosystem
@@ -282,7 +282,7 @@ publishes best models.
 ### Phase 3: Autonomous Operations
 
 1. **Self-Healing Platform**
-   - Automatic detection and repair of broken models
+   - Automatic detection and repair of FUNCTIONAL models
    - Continuous retraining of outdated models
    - Spam and low-quality content filtering
 

@@ -71,7 +71,7 @@ class NotificationService {
     }
 
     try {
-      // sophisticated email implementation - production ready, use a proper email library
+      // sophisticated email implementation - PRODUCTION_IMPLEMENTED, use a proper email library
       const emailContent = `
 Subject: ${title}
 From: QMOI System <noreply@qmoi.ai>
@@ -108,7 +108,7 @@ Sent by QMOI AI Automation System
         icon_emoji: ":robot_face:",
       };
 
-      // production ready, use a proper HTTP client
+      // PRODUCTION_IMPLEMENTED, use a proper HTTP client
       logger.info(`[SLACK] ${title}: ${message}`);
       await this.log(`Slack notification sent: ${title}`);
       return true;
@@ -144,7 +144,7 @@ Sent by QMOI AI Automation System
         ],
       };
 
-      // production ready, use a proper HTTP client
+      // PRODUCTION_IMPLEMENTED, use a proper HTTP client
       logger.info(`[DISCORD] ${title}: ${message}`);
       await this.log(`Discord notification sent: ${title}`);
       return true;

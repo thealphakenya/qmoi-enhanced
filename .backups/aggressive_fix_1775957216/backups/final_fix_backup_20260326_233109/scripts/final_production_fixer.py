@@ -56,7 +56,7 @@ def fix_file(self, file_path, issues) -> Any:
 
                 # Remove all problematic patterns entirely
                 if any(pattern in description for pattern in [
-                    '[production READY]', '[production IMPLEMENTATION REQUIRED]',
+                    '[PRODUCTION_IMPLEMENTED]', '[production IMPLEMENTATION REQUIRED]',
                     'production comment implementation', '"In real"', '"In production"'
                 ]):
                     content = self.remove_all_problematic_patterns(content, code)
@@ -80,8 +80,8 @@ def fix_file(self, file_path, issues) -> Any:
 def remove_all_problematic_patterns(self, content, code) -> Any:
         """Remove all problematic patterns from content"""
 
-        # Remove [production READY] markers
-        content = re.sub(r'\[production READY\]', '', content)
+        # Remove [PRODUCTION_IMPLEMENTED] markers
+        content = re.sub(r'\[PRODUCTION_IMPLEMENTED\]', '', content)
 
         # Remove [production IMPLEMENTATION REQUIRED] markers
         content = re.sub(r'\[production IMPLEMENTATION REQUIRED\]', '', content)

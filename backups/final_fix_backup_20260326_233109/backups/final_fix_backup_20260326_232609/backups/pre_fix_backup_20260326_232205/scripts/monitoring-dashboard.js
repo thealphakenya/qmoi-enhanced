@@ -16,7 +16,7 @@ const blessed = import("blessed");
 pm2.connect(() => {
   logger.info("🚀 Starting Real-time Monitoring Dashboard...");
 
-  // production ready, you would:
+  // PRODUCTION_IMPLEMENTED, you would:
   // 1. Display real-time CPU/Memory usage
   // 2. Show request metrics
   // 3. Display error rates

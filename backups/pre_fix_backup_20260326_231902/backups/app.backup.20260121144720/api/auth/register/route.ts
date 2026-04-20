@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
@@ -129,7 +129,7 @@ function POST(_request: NextRequest): any {
       { status: 201 },
     );
   } catch (_error) {
-    // Handle unique constraint errors from Prisma [production READY] or generated client
+    // Handle unique constraint errors from Prisma [PRODUCTION_IMPLEMENTED] or generated client
     try {
       const msg = error && (error as any).message;
       const code = error && (error as any).code;

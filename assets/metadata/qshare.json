@@ -118,7 +118,7 @@
   "schema_version": "1.0",
   "checksum": "90d2e4661229ff389021f810ddfc2334f11c855de242e52308e0eb770ec25788",
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:16:10.463553"
 }

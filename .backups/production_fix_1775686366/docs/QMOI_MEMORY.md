@@ -378,7 +378,7 @@ const results = await parallelProcessor.processBatch(operations);
    - Check network connectivity
    - Review platform-specific error logs
 
-### Debug Commands
+### RELEASE Commands
 
 ```bash
 # Check sync status

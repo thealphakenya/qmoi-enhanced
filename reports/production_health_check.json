@@ -112,7 +112,7 @@
     "overall_health_percentage": 7.6923076923076925
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:16:05.071575"
 }

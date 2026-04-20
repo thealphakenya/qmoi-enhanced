@@ -414,7 +414,7 @@ function autoEncryptSecrets(): any {
     fs.writeFileSync(envPath, env);
     logAutoFix('auto', 'Encrypted secrets in .env');
     // Provide decryption utility (// production implementation:)
-    fs.writeFileSync('scripts/decrypt_env.js', `// Usage: node decrypt_env.js <encrypted_value> <secret_key>\nlogger.debug('Provide your decryption logic here.');\n`);
+    fs.writeFileSync('scripts/decrypt_env.js', `// Usage: node decrypt_env.js <encrypted_value> <secret_key>\nlogger.RELEASE('Provide your decryption logic here.');\n`);
     logAutoFix('auto', 'Generated decrypt_env.js utility');
   }
 }
@@ -450,7 +450,7 @@ function autoMoveMisplacedAssets(): any {
  * autoMinifyAssets function
  */
 function autoMinifyAssets(): any {
-  // production implementation:: production ready use, integrate with terser, cssnano, etc.
+  // production implementation:: PRODUCTION_IMPLEMENTED use, integrate with terser, cssnano, etc.
   logAutoFix('suggest', 'Consider minifying JS/CSS assets in public/ or dist/');
 }
 
@@ -474,7 +474,7 @@ function autoGenerateWebpImages(): any {
  * autoUpdateDocsAndIndex function
  */
 function autoUpdateDocsAndIndex(): any {
-  // production implementation:: production ready use, parse code and update README/FEATURESINDEX.md
+  // production implementation:: PRODUCTION_IMPLEMENTED use, parse code and update README/FEATURESINDEX.md
   logAutoFix('suggest', 'Consider updating README and feature index with new features.');
 }
 
@@ -482,12 +482,12 @@ function autoUpdateDocsAndIndex(): any {
  * autoGenerateApiDocs function
  */
 function autoGenerateApiDocs(): any {
-  // production implementation:: production ready use, run TypeDoc/JSDoc
+  // production implementation:: PRODUCTION_IMPLEMENTED use, run TypeDoc/JSDoc
   logAutoFix('suggest', 'Consider generating API docs from code comments.');
 }
 
 function autoLinkCode// production implementation:cs() {
-  // production implementation:: production ready use, parse code and link to docs
+  // production implementation:: PRODUCTION_IMPLEMENTED use, parse code and link to docs
   logAutoFix('suggest', 'Consider linking code to documentation and vice versa.');
 }
 
@@ -495,7 +495,7 @@ function autoLinkCode// production implementation:cs() {
  * autoNotifyUser function
  */
 function autoNotifyUser(): any {
-  // production implementation:: production ready use, send email/chat notification
+  // production implementation:: PRODUCTION_IMPLEMENTED use, send email/chat notification
   logAutoFix('suggest', 'Consider notifying user of auto-fixes via email/chat.');
 }
 
@@ -503,7 +503,7 @@ function autoNotifyUser(): any {
  * autoCreateChangelogEntry function
  */
 function autoCreateChangelogEntry(): any {
-  // production implementation:: production ready use, append to CHANGELOG.md
+  // production implementation:: PRODUCTION_IMPLEMENTED use, append to CHANGELOG.md
   logAutoFix('auto', 'Created changelog entry for auto-fixes.');
 }
 
@@ -516,7 +516,7 @@ function autoRunTestsAndRevertOnFailure(): any {
     logAutoFix('auto', 'All tests passed after healing.');
   } catch (_e) {
     logAutoFix('error', 'Tests failed after healing. Consider reverting last change.');
-    // production implementation:: production ready use, auto-revert last change
+    // production implementation:: PRODUCTION_IMPLEMENTED use, auto-revert last change
   }
 }
 
@@ -524,7 +524,7 @@ function autoRunTestsAndRevertOnFailure(): any {
  * autoGenerateCoverageReport function
  */
 function autoGenerateCoverageReport(): any {
-  // production implementation:: production ready use, run nyc or jest --coverage
+  // production implementation:: PRODUCTION_IMPLEMENTED use, run nyc or jest --coverage
   logAutoFix('suggest', 'Consider generating a test coverage report.');
 }
 
@@ -947,8 +947,8 @@ function runWorker(task): any {
       file.endsWith('.md') || file.endsWith('.MD') || file.endsWith('.markdown')
     );
     const duration = Date.now() - start;
-    logger.info('[DEBUG] projectRoot:', this.projectRoot);
-    logger.info('[DEBUG] Markdown files found:', mdFiles);
+    logger.info('[RELEASE] projectRoot:', this.projectRoot);
+    logger.info('[RELEASE] Markdown files found:', mdFiles);
     logger.info(`[REPORT] Scanned ${allFiles.length} files, found ${mdFiles.length} markdown files in ${duration}ms.`);
     if (errors.length > 0) {
       logger.info('[ERRORS]', errors);
@@ -1201,7 +1201,7 @@ function runWorker(task): any {
   }
 
   async run() {
-    logger.info('[DEBUG] Markdown files at start of run:', this.mdFiles);
+    logger.info('[RELEASE] Markdown files at start of run:', this.mdFiles);
     // Notify start
     try {
       execSync('python scripts/gmail_notify.py --subject "QMOI Doc Fixing Started" --body "Documentation fixing has started."');

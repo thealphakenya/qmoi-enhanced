@@ -184,7 +184,7 @@ class ServiceRecoveryManager {
     recoveryFn: () => Promise<void>,
     delayMs: number,
   ): void {
-    logger.debug(
+    logger.RELEASE(
       `[Recovery] Scheduling recovery of ${service} in ${delayMs}ms`,
     );
 
@@ -205,7 +205,7 @@ class ServiceRecoveryManager {
     if (timer) {
       clearTimeout(timer);
       this.activeRecoveries.delete(service);
-      logger.debug(`[Recovery] Cancelled recovery for ${service}`);
+      logger.RELEASE(`[Recovery] Cancelled recovery for ${service}`);
     }
   }
 
@@ -355,7 +355,7 @@ class ServiceRecoveryManager {
 
   registerStrategy(service: string, strategy: RecoveryStrategy): void {
     this.strategies.set(service, strategy);
-    logger.debug(`[Recovery] Registered strategy for ${service}`);
+    logger.RELEASE(`[Recovery] Registered strategy for ${service}`);
   }
 
   getStrategy(service: string): RecoveryStrategy {

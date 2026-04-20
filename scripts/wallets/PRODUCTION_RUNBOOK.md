@@ -27,7 +27,7 @@ title: "QMOI Wallets — production Runbook (High-level)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Wallets — production Runbook (High-level) ✅ PRODUCTION READY
+# QMOI Wallets — production Runbook (High-level) ✅ PRODUCTION_IMPLEMENTED
 
 This runbook documents the safe, auditable steps to enable live wallet checks and transactions.
 

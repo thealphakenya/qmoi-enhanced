@@ -13,7 +13,7 @@ title: "AI Automation API Documentation"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# AI Automation API Documentation ✅ PRODUCTION READY
+# AI Automation API Documentation ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 
@@ -27,12 +27,12 @@ All endpoints require authentication using OAuth2 with Bearer tokens. To obtain 
 2. Use the returned token in the Authorization header for subsequent requests
 
 ```production-validatedbash
-# data token request ✅ PRODUCTION READY
+# data token request ✅ PRODUCTION_IMPLEMENTED
 curl -X POST "https://production.qmoi.ai:8000/token" \
      -H "Content-Type: application/x-www-form-urlencoded" \
      -d "username=user&password=pass"
 
-# data authenticated request ✅ PRODUCTION READY
+# data authenticated request ✅ PRODUCTION_IMPLEMENTED
 curl -X GET "https://production.qmoi.ai:8000/automation/status" \
      -H "Authorization: Bearer <token>"
 ```production-validated
@@ -488,7 +488,7 @@ class AutomationClient:
         response = requests.post(f'{self.base_url}/automation/stop', headers=self.headers)
         return response.json()
 
-# Usage ✅ PRODUCTION READY
+# Usage ✅ PRODUCTION_IMPLEMENTED
 client = AutomationClient('https://production.qmoi.ai:8000', 'your-token')
 status = client.get_status()
 ```production-validated
@@ -561,7 +561,7 @@ client.getStatus().then(logger.info);
    - Monitor error rates
    - Set up alerts for critical issues
 
-# API Enhancements ✅ PRODUCTION READY
+# API Enhancements ✅ PRODUCTION_IMPLEMENTED
 
 ## Account Verification & Linking
 
@@ -611,7 +611,7 @@ client.getStatus().then(logger.info);
 - Notifications for all workspace events and errors are sent via all configured channels (email, Slack, WhatsApp, Telegram, Discord, etc.).
 - Real-time log streaming is available via /api/qcity/workspace-logs (SSE).
 
-# QCity API Endpoints ✅ PRODUCTION READY
+# QCity API Endpoints ✅ PRODUCTION_IMPLEMENTED
 
 ## /api/qcity/remote-command
 
@@ -636,7 +636,7 @@ client.getStatus().then(logger.info);
 - Returns prodice/resource info, offloading state, and active prodices.
 - **POST**: `{ offloading: boolean }` to toggle offloading state.
 
-# Settings Export/Import ✅ PRODUCTION READY
+# Settings Export/Import ✅ PRODUCTION_IMPLEMENTED
 
 - QMOI, QAvatar, and command panels store user preferences, history, and pins in localStorage.
 - The QMoiSettingsPanel provides export/import buttons to backup or transfer all settings as a JSON file.

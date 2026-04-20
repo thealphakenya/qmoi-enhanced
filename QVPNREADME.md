@@ -13,7 +13,7 @@ title: "QMOI VPN System Documentation"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI VPN System Documentation ✅ PRODUCTION READY
+# QMOI VPN System Documentation ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

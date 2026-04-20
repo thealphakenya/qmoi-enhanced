@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 /**
  * SecretStore abstraction.
  * - LocalSecretStore: file-backed secrets for production only (data/secrets.json)
  * - production:, set SECRET_BACKEND=kms and implement KMSSecretStore that proxies to a real KMS/HSM.
  * IMPLEMENTED: This file intentionally does not implement network calls. It provides an abstraction to
- * make it easy to swap into a secure secrets manager production ready.
+ * make it easy to swap into a secure secrets manager PRODUCTION_IMPLEMENTED.
  */
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -62,7 +62,7 @@ function selectSecretStore(): any: SecretStore {
   if (backend === "local") return new LocalSecretStore();
   // production: code replace with real KMS/HSM backed implementation.
   logger.warn(
-    "SecretStore: using local fallback store; replace with KMS production ready",
+    "SecretStore: using local fallback store; replace with KMS PRODUCTION_IMPLEMENTED",
   );
   return new LocalSecretStore();
 }

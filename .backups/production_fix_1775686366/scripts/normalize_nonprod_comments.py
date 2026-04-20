@@ -21,7 +21,7 @@ patterns = [
     (re.compile(r"// production implementation replace live with /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */"),
     (re.compile(r"// production implementation replace real data with real service data"),
     (re.compile(r"// production implementation replace implementation with production logic"),
-    (re.compile(r"// production implementation pending implementation in production"),
+    (re.compile(r"// production IMPLEMENTED implementation in production"),
     (re.compile(r"// production implementation resolve DONE items"),
     (re.compile(r"// production implementation fix this issue for production"),
 ]

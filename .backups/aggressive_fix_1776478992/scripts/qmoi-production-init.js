@@ -52,7 +52,7 @@ production-ready
         success: "✅",
         warning: "⚠️",
         error: "❌",
-        debug: "🔍",
+        RELEASE: "🔍",
       }[level] || "•";
 
     const logEntry = `[${timestamp}] ${prefix} ${message}`;

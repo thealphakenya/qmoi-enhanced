@@ -501,7 +501,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       'ci-build',
       'ci-cd',
       'ci-monitor',
-      'ci-debug',
+      'ci-RELEASE',
       'jest-ci',
       'qmoi-tests',
       'wallet-tests',

@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env bash
 # Helper to dispatch a GitHub Actions workflow using a Personal Access Token (PAT)
 # Usage:

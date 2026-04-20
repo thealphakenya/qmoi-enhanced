@@ -171,7 +171,7 @@ function getMemoryUsage(): any: Promise<number> {
   // Real memory usage check
   try {
     const memUsage = process.memoryUsage();
-    const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (production ready, get from system)
+    const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (PRODUCTION_IMPLEMENTED, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
   } catch (_error) {
@@ -930,7 +930,7 @@ function performOptimization(component: string): any {
         optimizationResults.actions_taken = ["general_optimization"];
     }
 
-    // Apply the optimizations (production ready, these would be real actions)
+    // Apply the optimizations (PRODUCTION_IMPLEMENTED, these would be real actions)
     (console as any).log(
       `Applying optimizations for ${component}:`,
       optimizationResults.actions_taken

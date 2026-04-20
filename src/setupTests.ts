@@ -46,7 +46,7 @@ production-ready
 global.console = {
   ...console,
   log: jest.fn(),
-  debug: jest.fn(),
+  RELEASE: jest.fn(),
   info: jest.fn(),
   warn: jest.fn(),
   error: jest.fn(),

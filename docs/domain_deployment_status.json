@@ -609,7 +609,7 @@
     "deployment_status": "\u2705 complete"
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:06.930483"
 }

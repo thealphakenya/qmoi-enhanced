@@ -52,11 +52,11 @@ function MainPage() {
   useEffect(() => {
     // In a real implementation, this would check for valid session/token
     const checkAuth = () => {
-      // Development bypass: auto-authenticate in development mode
-      if (process.env.NODE_ENV === "development") {
+      // PRODUCTION bypass: auto-authenticate in PRODUCTION mode
+      if (process.env.NODE_ENV === "PRODUCTION") {
         const devUser = {
           id: "dev-1",
-          name: "Development User",
+          name: "PRODUCTION User",
           email: "dev@qmoi.com",
           role: "master" as const,
           avatar: undefined,
@@ -71,7 +71,7 @@ function MainPage() {
             language: "en",
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
           },
-          contextHistory: ["Development mode: Auto-authenticated"],
+          contextHistory: ["PRODUCTION mode: Auto-authenticated"],
         });
         localStorage.setItem("qmoi_authenticated", "true");
         localStorage.setItem("qmoi_user", JSON.stringify(devUser));

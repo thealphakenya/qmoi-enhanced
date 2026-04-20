@@ -83,7 +83,7 @@ def fix_file(file_path):
         
         # Add production marker if file was fixed
         if fixed and content != original:
-            if '[production ready]' not in content.lower():
+            if '[PRODUCTION_IMPLEMENTED]' not in content.lower():
                 if file_path.suffix in ['.py', '.sh']:
                     if not content.startswith('#!/'):
                         content = '# 

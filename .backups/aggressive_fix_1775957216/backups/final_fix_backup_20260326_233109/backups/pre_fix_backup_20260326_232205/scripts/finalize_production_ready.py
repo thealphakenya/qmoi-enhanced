@@ -41,7 +41,7 @@ for path in root_dir.rglob('*'):
 
     content_lower = content.lower()
     unresolved = any(re.search(pat, content, flags=re.IGNORECASE) for pat in production_patterns)
-    has_ready = '[production ready]' in content_lower
+    has_ready = '[PRODUCTION_IMPLEMENTED]' in content_lower
 
     if unresolved:
         files_with_gaps.append(str(path))

@@ -12,7 +12,7 @@ title: "LION Variations — Overview"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# LION Variations — Overview ✅ PRODUCTION READY
+# LION Variations — Overview ✅ PRODUCTION_IMPLEMENTED
 
 This document catalogs the official LION (LION = Large Intelligent Orchestration Network) variations used across QMOI. Each variation is a focused distribution or product built from the same core orchestrator/agents, optimized for different platforms and use-cases. Variations are treated as first-class artifacts and follow an automated build/release workflow.
 
@@ -48,7 +48,7 @@ How variations are used in QMOI
 
 See `docs/lion_variations/` for per-variation specifications and platform packaging instructions.
 
-# LION Variations — overview ✅ PRODUCTION READY
+# LION Variations — overview ✅ PRODUCTION_IMPLEMENTED
 
 This document catalogues the official LION product family variations, their purpose, target platforms, packaging and release strategy, and how they are used and monetized across QMOI.
 

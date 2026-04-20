@@ -194,7 +194,7 @@
     "SYSTEM STATUS: All systems operating normally"
   ],
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:44.969580"
 }

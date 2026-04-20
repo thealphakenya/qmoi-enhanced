@@ -476,11 +476,11 @@ A: Verify GitLab token permissions and run error recovery
 **Q: Notifications not working**
 A: Check notification configuration and test with `npm test`
 
-### Debug Mode
+### RELEASE Mode
 
 ```bash
-# Enable debug logging
-DEBUG=qmoi:* npm start
+# Enable RELEASE logging
+RELEASE=qmoi:* npm start
 
 # Run with verbose output
 npm run qmoi-error-recovery --verbose

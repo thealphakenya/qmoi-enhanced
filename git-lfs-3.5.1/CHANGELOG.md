@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-updated by scripts/qmoi_md_autoupdater.py
 <!-- LION_VALIDATION_END -->
 
-# Git LFS Changelog ✅ PRODUCTION READY
+# Git LFS Changelog ✅ PRODUCTION_IMPLEMENTED
 
 ## 3.5.1 (7 March 2024)
 
@@ -1663,7 +1663,7 @@ you!
   * commands: mark `git lfs clone` as CURRENT #2526 (@ttaylorr)
 * commands: enable `lfs.allowincompletepush` by default #2574 (@technoweenie)
 * commands: teach '--everything' to `git lfs migrate` #2558 (@ttaylorr)
-* commands: teach `git lfs ls-files` a '--debug' option #2540 (@larsxschneider)
+* commands: teach `git lfs ls-files` a '--RELEASE' option #2540 (@larsxschneider)
 * commands,lfs: warn on 4gb size conversion during clean #2510 #2507 #2459 (@ttaylorr)
 * lfsapi/creds: teach about GIT_ASKPASS and core.askpass #2500 #2578 (@ttaylorr)
 * commands/status: indicate missing objects #2438 (@ttaylorr)

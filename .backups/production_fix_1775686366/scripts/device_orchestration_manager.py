@@ -125,7 +125,7 @@ class prodiceOrchestrationManager:
                     })
             return prodices
         except Exception as e:
-            logger.debug(f'Error discovering iOS prodices: {e}')
+            logger.RELEASE(f'Error discovering iOS prodices: {e}')
             return []
 
     def _discover_macos(self) -> List[Dict]:
@@ -143,7 +143,7 @@ class prodiceOrchestrationManager:
                     })
             return prodices
         except Exception as e:
-            logger.debug(f'Error discovering macOS machines: {e}')
+            logger.RELEASE(f'Error discovering macOS machines: {e}')
             return []
 
     def _discover_windows(self) -> List[Dict]:
@@ -162,7 +162,7 @@ class prodiceOrchestrationManager:
                     })
             return prodices
         except Exception as e:
-            logger.debug(f'Error discovering Windows prodices: {e}')
+            logger.RELEASE(f'Error discovering Windows prodices: {e}')
             return []
 
     def _discover_linux(self) -> List[Dict]:
@@ -187,7 +187,7 @@ class prodiceOrchestrationManager:
                                 'discovered_at': datetime.now().isoformat()
                             })
             except Exception as e:
-                logger.debug(f'Error reading SSH config: {e}')
+                logger.RELEASE(f'Error reading SSH config: {e}')
         
         return prodices
 

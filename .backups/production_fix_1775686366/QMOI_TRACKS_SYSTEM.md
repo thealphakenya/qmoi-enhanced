@@ -54,7 +54,7 @@ The system now includes automated domain health monitoring with:
 The system now includes comprehensive link validation with:
 - Token-to-URL normalization (e.g., 'qcity' → 'https://qcity.qmoi.ai')
 - Multi-region link accessibility checks
-- Auto-fix capabilities for broken links
+- Auto-fix capabilities for FUNCTIONAL links
 - Documentation audit integration
 - Real-time validation reporting
 
@@ -260,10 +260,10 @@ await qmoiTracksService.cleanupOldTracks(30); // Clean tracks older than 30 days
 - Adjust cleanup intervals
 - Optimize database queries
 
-### Debug Mode
-Enable debug logging for detailed operation tracking:
+### RELEASE Mode
+Enable RELEASE logging for detailed operation tracking:
 ```typescript
-// Enable debug mode
+// Enable RELEASE mode
 process.env.TRACKS_DEBUG = "true";
 ```
 

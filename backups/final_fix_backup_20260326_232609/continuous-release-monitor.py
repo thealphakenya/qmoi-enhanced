@@ -150,7 +150,7 @@ def check_download_links(self, version: str) -> Dict:
                         response = requests.head(download_url, timeout=10, allow_redirects=True)
                         if response.status_code == 200:
                             working_links += 1
-                            logger.debug(f"  ✅ {asset['name']}: {response.status_code}")
+                            logger.RELEASE(f"  ✅ {asset['name']}: {response.status_code}")
                         else:
                             broken_links += 1
                             logger.warning(f"  ❌ {asset['name']}: {response.status_code}")

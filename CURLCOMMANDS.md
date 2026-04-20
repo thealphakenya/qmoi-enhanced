@@ -13,7 +13,7 @@ title: "QMOI CURL Commands"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI CURL Commands ✅ PRODUCTION READY
+# QMOI CURL Commands ✅ PRODUCTION_IMPLEMENTED
 
 This file contains curl commands and instructions to test all QMOI endpoints, health, autotests, error fixing, workflow, and financial features.
 

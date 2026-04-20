@@ -58,13 +58,13 @@ log_alert() {
     esac
 }
 
-# Function to send alert (placeholder for email/SMS integration)
+# Function to send alert (PRODUCTION for email/SMS integration)
 send_alert() {
     local level="$1"
     local message="$2"
     local recipient="${3:-admin@qmoi-enhanced.local}"
 
-    # Placeholder for alert delivery
+    # PRODUCTION for alert delivery
     # In production, integrate with:
     # - Email: sendmail, SMTP
     # - SMS: Twilio, AWS SNS

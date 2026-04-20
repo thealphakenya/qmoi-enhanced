@@ -108,7 +108,7 @@ The AI system can now classify errors into:
 
 AI determines the best approach for each error:
 
-- **Remove Debug Code**: Delete console statements
+- **Remove RELEASE Code**: Delete console statements
 - **Convert to Const**: Change let to const where appropriate
 - **Remove or Prefix Variables**: Handle unused variables
 - **Standardize Quotes**: Fix quote consistency

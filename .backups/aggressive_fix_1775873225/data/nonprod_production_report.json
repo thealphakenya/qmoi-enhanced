@@ -1603,7 +1603,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "FINALIZED",
         "work COMPLETED"
       ],
@@ -4440,7 +4440,7 @@
         "sandbox",
         "simulate",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "FINALIZED"
       ],
       "regex": [
@@ -4502,7 +4502,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4537,7 +4537,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4653,7 +4653,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4678,7 +4678,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4724,7 +4724,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4749,7 +4749,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4774,7 +4774,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4799,7 +4799,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4824,7 +4824,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4934,7 +4934,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -4990,7 +4990,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5036,7 +5036,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5138,7 +5138,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5257,7 +5257,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5301,7 +5301,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5357,7 +5357,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5399,7 +5399,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5453,7 +5453,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "FINALIZED",
         "work COMPLETED"
       ],
@@ -5544,7 +5544,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5584,7 +5584,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5667,7 +5667,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5703,7 +5703,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5728,7 +5728,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5753,7 +5753,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5866,7 +5866,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "FINALIZED",
         "work COMPLETED"
       ],
@@ -5892,7 +5892,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -5917,7 +5917,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -6053,7 +6053,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "FINALIZED",
         "work COMPLETED"
       ],
@@ -6425,7 +6425,7 @@
         "simulate",
         "simulation",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -7500,7 +7500,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -9256,7 +9256,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "verify manually",
         "FINALIZED",
         "work COMPLETED"
@@ -9684,7 +9684,7 @@
         "simulation",
         "staging",
         "implementation",
-        "test only",
+        "PRODUCTION_GUARDED",
         "work COMPLETED"
       ],
       "regex": [],
@@ -11907,7 +11907,7 @@
       "ast": []
     },
     {
-      "file": ".next/types/app/api/debug/users/route.ts",
+      "file": ".next/types/app/api/RELEASE/users/route.ts",
       "keywords": [
         "experimental"
       ],
@@ -13906,7 +13906,7 @@
       "ast": []
     },
     {
-      "file": ".next/server/app/api/debug/users/route.js",
+      "file": ".next/server/app/api/RELEASE/users/route.js",
       "keywords": [
         "experimental"
       ],
@@ -15594,7 +15594,7 @@
     }
   ],
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:30.733718"
 }

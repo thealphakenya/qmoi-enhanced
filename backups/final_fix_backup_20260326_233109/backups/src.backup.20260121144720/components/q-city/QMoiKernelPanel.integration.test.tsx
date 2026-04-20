@@ -72,7 +72,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     }
   });
 
-  it('Should handle production scenarios:', "debug: raw fetch", async () => {
+  it('Should handle production scenarios:', "RELEASE: raw fetch", async () => {
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
     const handlersMod = await import("../../// Production implementation:s/handlers");
@@ -82,7 +82,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     }
     const _res = await apiClient.get("/api/qmoi/status");
     const text = await _res.text().catch(() => "<no-body>");
-    logger.debug("DEBUG FETCH: status=", _res.status, "body=", text);
+    logger.RELEASE("RELEASE FETCH: status=", _res.status, "body=", text);
     expect('Production validation:', _res.status).toBe(200);
   });
 

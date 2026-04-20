@@ -13,7 +13,7 @@ title: "QMOI Memory Log"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Memory Log ✅ PRODUCTION READY
+# QMOI Memory Log ✅ PRODUCTION_IMPLEMENTED
 
 ## Automated Fixes and Features
 
@@ -38,7 +38,7 @@ title: "QMOI Memory Log"
 - Build strategies auto-selected and run for every platform.
 - All fixes and features are remembered and reapplied automatically.
 
-# QMOI AUTO-ENHANCE: Updated QMOI_MEMORY.md with latest automation, error-fix, and install results. ✅ PRODUCTION READY
+# QMOI AUTO-ENHANCE: Updated QMOI_MEMORY.md with latest automation, error-fix, and install results. ✅ PRODUCTION_IMPLEMENTED
 
 <!-- QMOI_VALIDATION_START -->
 

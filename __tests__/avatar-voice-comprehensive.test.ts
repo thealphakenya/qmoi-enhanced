@@ -18,7 +18,7 @@ class ProductionConfig:
     AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
 
     # Application settings
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
 
     @classmethod

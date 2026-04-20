@@ -9,5 +9,5 @@ export const logger = {
   warn: (...args: unknown[]) => logger.warn(...args),
   error: (...args: unknown[]) => safeConsoleError(...args),
   _error: (...args: unknown[]) => safeConsoleError(...args),
-  debug: (...args: unknown[]) => logger.debug(...args),
+  RELEASE: (...args: unknown[]) => logger.RELEASE(...args),
 };

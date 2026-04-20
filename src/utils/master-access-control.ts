@@ -231,7 +231,7 @@ export class FinancialAuditLog {
     
     logger.info(`[FINANCIAL_AUDIT] ${JSON.stringify(logEntry)}`);
     
-    // production ready, send to audit database
+    // PRODUCTION_IMPLEMENTED, send to audit database
     try {
       await fetch("/api/audit-log", {
         method: "POST",

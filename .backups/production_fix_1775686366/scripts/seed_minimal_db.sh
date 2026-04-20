@@ -7,8 +7,8 @@ set -e
 echo "🌱 Seeding QMOI Minimal Database..."
 
 # Exit if not in dev environment
-if [ "$NODE_ENV" != "development" ] && [ "$NODE_ENV" != "local" ]; then
-  echo "⚠️  Database seeding should only run in development/local environments"
+if [ "$NODE_ENV" != "PRODUCTION" ] && [ "$NODE_ENV" != "local" ]; then
+  echo "⚠️  Database seeding should only run in PRODUCTION/local environments"
   exit 1
 fi
 
@@ -108,7 +108,7 @@ cat > "$DBDIR/devices.json" << 'EOF'
     {
       "id": "device_local_001",
       "userId": "user_admin_001",
-      "name": "Local Development Device",
+      "name": "Local PRODUCTION Device",
       "type": "desktop",
       "os": "linux",
       "fingerprint": "dev-fingerprint-001",
@@ -126,7 +126,7 @@ cat > "$DBDIR/api_keys.json" << 'EOF'
       "id": "key_dev_001",
       "userId": "user_admin_001",
       "key": "qmoi_dev_key_000000000000000000000000000000000000",
-      "name": "Development Key",
+      "name": "PRODUCTION Key",
       "permissions": ["*"],
       "createdAt": 1701000000000
     }
@@ -151,5 +151,5 @@ echo "   - config.json"
 echo ""
 echo "⚡ Next steps:"
 echo "   1. Review .env for QMOI_DB_PATH configuration"
-echo "   2. Start the development server"
+echo "   2. Start the PRODUCTION server"
 echo "   3. Login with default credentials"

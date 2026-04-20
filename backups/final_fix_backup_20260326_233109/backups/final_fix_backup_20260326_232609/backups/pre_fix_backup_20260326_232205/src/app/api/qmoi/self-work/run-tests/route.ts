@@ -18,7 +18,7 @@ export async /**
  */
 function POST(request: NextRequest): any {
   try {
-    // production ready, this would:
+    // PRODUCTION_IMPLEMENTED, this would:
     // 1. Queue test execution if already running
     // 2. Execute: npm run test:unit && npm run test:integration
     // 3. Collect coverage metrics
@@ -136,7 +136,7 @@ function POST(request: NextRequest): any {
       ],
       nextSteps: [
         "Review failed tests and fix",
-        "Run tests locally to debug issues",
+        "Run tests locally to RELEASE issues",
         "Update // production implementation:s and fixtures",
         "Re-run before merging PR",
       ],

@@ -22,7 +22,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # QMOI Enhanced - production Setup Complete ✅
 
 **Build Date:** January 21, 2026  
@@ -161,7 +161,7 @@ dist/                 (Optional build directory)
 
    ```bash
    cp .env.production .env.production.local
-   # Edit all [production READY] values
+   # Edit all [PRODUCTION_IMPLEMENTED] values
    ```
 
 2. **Choose Deployment Platform**

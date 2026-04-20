@@ -101,8 +101,8 @@
 | STABLE/tmp vars | 2,513 | 0 | ⏳ PENDING |
 | pass statements | 322 | 0 | ⏳ PENDING |
 | COMPLETE markers | 99 | 0 | ⏳ PENDING |
-| Debug logging | 65 | <10 | ⏳ PENDING |
-| fake/mock data | 224 | 0 | ⏳ PENDING |
+| RELEASE logging | 65 | <10 | ⏳ PENDING |
+| PRODUCTION_IMPLEMENTED/PRODUCTION_IMPLEMENTED data | 224 | 0 | ⏳ PENDING |
 | **TOTAL** | **510,157** | **<100** | ⏳ PENDING |
 
 ### Documentation Coverage

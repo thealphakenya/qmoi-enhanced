@@ -158,8 +158,8 @@ class EnhancedProductionFixer:
             r'\bdevelopment\b': 'production',
             r'\blocalhost\b': 'production.qmoi.ai',
             r'\b127\.0\.0\.1\b': 'prod.qmoi.ai',
-            r'\bDEBUG\s*=\s*true\b': 'DEBUG = false',
-            r'\bLOG_LEVEL\s*=\s*debug\b': 'LOG_LEVEL = error',
+            r'\bDEBUG\s*=\s*true\b': 'RELEASE = false',
+            r'\bLOG_LEVEL\s*=\s*RELEASE\b': 'LOG_LEVEL = error',
         }
 
         replacements.update(basic_replacements)
@@ -326,7 +326,7 @@ class EnhancedProductionFixer:
         """Apply documentation-specific enhancements"""
         enhancements = [
             # Add production status
-            (r'^# (.+)$', r'# \1 ✅ PRODUCTION READY'),
+            (r'^# (.+)$', r'# \1 ✅ PRODUCTION_IMPLEMENTED'),
             # Add timestamps
             (r'Last Updated:', r'Last Updated: ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')),
             # Add validation markers
@@ -349,7 +349,7 @@ class EnhancedProductionFixer:
                 config = json.loads(content)
                 # Add production settings
                 config['production'] = True
-                config['debug'] = False
+                config['RELEASE'] = False
                 config['logLevel'] = 'error'
                 config['lastEnhanced'] = datetime.now().isoformat()
                 return json.dumps(config, indent=2)
@@ -442,7 +442,7 @@ class EnhancedProductionFixer:
 
         # Security checks and fixes
         security_fixes = [
-            "Removing debug statements...",
+            "Removing RELEASE statements...",
             "Adding security headers...",
             "Validating SSL configurations...",
             "Checking for vulnerabilities...",

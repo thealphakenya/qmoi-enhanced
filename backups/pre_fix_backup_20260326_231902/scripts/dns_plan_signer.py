@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 """Generate and verify signed DNS change plans.
 
 This uses an HMAC-based signature stored in `.qmoi_validation/dns_plan_key`.

@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-updated by comprehensive documentation update
 <!-- LION_VALIDATION_END -->
 
-# QMOI System Endpoints ✅ PRODUCTION READY
+# QMOI System Endpoints ✅ PRODUCTION_IMPLEMENTED
 
 **Last Updated**: 2026-04-08 (AUTO-GENERATED)
 **Total Endpoints**: 43
@@ -62,7 +62,7 @@ This document catalogs all available endpoints in the QMOI system.
 | 33 | GET/POST | `/api/qmoi/health` | ['api', 'qmoi', 'health', 'route.ts'] | ✅ |
 | 34 | GET/POST | `/api/qmoi/health/stream` | ['api', 'qmoi', 'health', 'route.ts'] | ✅ |
 | 35 | GET/POST | `/api/qmoi/self-work/code-review` | ['api', 'qmoi', 'self-work', 'route.ts'] | ✅ |
-| 36 | GET/POST | `/api/qmoi/self-work/debug` | ['api', 'qmoi', 'self-work', 'route.ts'] | ✅ |
+| 36 | GET/POST | `/api/qmoi/self-work/RELEASE` | ['api', 'qmoi', 'self-work', 'route.ts'] | ✅ |
 | 37 | GET/POST | `/api/qmoi/self-work/run-tests` | ['api', 'qmoi', 'self-work', 'route.ts'] | ✅ |
 | 38 | GET/POST | `/api/qmoi/suggestions` | ['api', 'qmoi', 'suggestions', 'route.ts'] | ✅ |
 | 39 | GET/POST | `/api/qvs` | ['api', 'qvs', '', 'route.ts'] | ✅ |

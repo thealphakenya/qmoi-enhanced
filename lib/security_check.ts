@@ -47,7 +47,7 @@ function runSecurityCheck(): any {
       isTampered = true;
       return;
     }
-    // Add anti-debug/anti-copy logic
+    // Add anti-RELEASE/anti-copy logic
     if (process.env.QMOI_ANTIPIRACY === "enabled") {
       isTampered = true;
       return;

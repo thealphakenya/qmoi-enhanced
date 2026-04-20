@@ -11,7 +11,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -221,11 +221,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 6 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
 - PRODUCTION_FIX:: 2 occurrences
@@ -246,7 +246,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -456,11 +456,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 6 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
 - PRODUCTION_FIX:: 2 occurrences
@@ -481,7 +481,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -691,11 +691,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 6 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
 - PRODUCTION_FIX:: 2 occurrences
@@ -716,7 +716,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -926,11 +926,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 6 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
 - PRODUCTION_FIX:: 2 occurrences
@@ -951,7 +951,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -1161,11 +1161,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // COMPLETE: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
@@ -1186,7 +1186,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -1396,11 +1396,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // COMPLETE: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
@@ -1421,7 +1421,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -1631,11 +1631,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // COMPLETE: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
@@ -1656,7 +1656,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -1866,11 +1866,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // COMPLETE: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
@@ -1891,7 +1891,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -2101,11 +2101,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // COMPLETE: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
@@ -2126,7 +2126,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]Production implementation with comprehensive error handling and logging
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]Production implementation with comprehensive error handling and logging
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]Production implementation with comprehensive error handling and logging
@@ -2336,11 +2336,11 @@
 - cache.*resource: 17 occurrences
 - COMPLETE:: 16 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 16 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - # COMPLETE: 7 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - // COMPLETE: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
@@ -2361,7 +2361,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]...
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]...
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]...
@@ -2570,12 +2570,12 @@
 - if.*__name__.*==.*__main__: 25 occurrences
 - cache.*resource: 17 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 17 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - COMPLETE:: 12 occurrences
 - # COMPLETE: 5 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
 - PRODUCTION_FIX:: 2 occurrences
@@ -2596,7 +2596,7 @@
 - IMPLEMENTED  # DEPLOYED: v2.x: 6 matches on lines [5794, 5870, 5877, 5983, 6001, 6109]
 - PRODUCTION: 8 matches on lines [5772, 5778, 5949, 5985, 6012, 6053, 6121, 6124]
 - sample: 2 matches on lines [7792, 7845]
-- development: 4 matches on lines [5164, 5166, 5167, 10572]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10572]
 - ...\s*$: 9712 matches on lines [2, 3, 5, 6, 7, 8, 9, 10, 11, 12]...
 - resource: 83 matches on lines [1238, 1613, 1619, 1625, 1665, 1667, 1668, 1672, 1920, 1980]...
 - cache: 48 matches on lines [1925, 3918, 3957, 4967, 5023, 5024, 5084, 5085, 5086, 5088]...
@@ -2805,12 +2805,12 @@
 - if.*__name__.*==.*__main__: 25 occurrences
 - cache.*resource: 17 occurrences
 - IMPLEMENTED  # DEPLOYED: v2.x: 17 occurrences
-- development: 13 occurrences
+- PRODUCTION: 13 occurrences
 - pass\s*$: 13 occurrences
 - COMPLETE:: 12 occurrences
 - # COMPLETE: 5 occurrences
 - None  # NotImplemented: 5 occurrences
-- debug.*mode: 4 occurrences
+- RELEASE.*mode: 4 occurrences
 - dev.*mode: 3 occurrences
 - PRODUCTION_READY:: 2 occurrences
 - PRODUCTION_FIX:: 2 occurrences
@@ -2829,8 +2829,8 @@
 ## /workspaces/qmoi-enhanced/qvillage/app.py (9819 matches)
 - COMPLETE:: 6 matches on lines [5795, 5871, 5878, 5984, 6003, 6113]
 - IMPLEMENTED: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
-- dummy: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
-- development: 4 matches on lines [5164, 5166, 5167, 10579]
+- PRODUCTION_IMPLEMENTED: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10579]
 - raise.*NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - pass\s*$: 8 matches on lines [5772, 5779, 5951, 5987, 6015, 6057, 6126, 6130]
@@ -2872,7 +2872,7 @@
 - ...\s*$: 1797 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
 
 ## /workspaces/qmoi-enhanced/components/QI.tsx (1752 matches)
-- fake: 2 matches on lines [26, 705]
+- PRODUCTION_IMPLEMENTED: 2 matches on lines [26, 705]
 - ...\s*$: 1750 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
 
 ## /workspaces/qmoi-enhanced/scripts/domain_health_check.py (1663 matches)
@@ -3034,20 +3034,20 @@
 - ...\s*$: 506342 occurrences
 - STABLE: 2312 occurrences
 - pass\s*$: 312 occurrences
-- mock: 184 occurrences
+- PRODUCTION_IMPLEMENTED: 184 occurrences
 - tmp: 144 occurrences
-- dummy: 50 occurrences
+- PRODUCTION_IMPLEMENTED: 50 occurrences
 - console\.error\(: 40 occurrences
 - if.*__name__.*==.*__main__: 24 occurrences
 - NotImplemented: 20 occurrences
 - console\.warn\(: 17 occurrences
 - IMPLEMENTED: 16 occurrences
-- development: 12 occurrences
-- fake: 11 occurrences
+- PRODUCTION: 12 occurrences
+- PRODUCTION_IMPLEMENTED: 11 occurrences
 - COMPLETE:: 11 occurrences
 - raise.*NotImplemented: 10 occurrences
 - # COMPLETE: 4 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - PRODUCTION_READY:: 1 occurrences
@@ -3064,8 +3064,8 @@
 ## /workspaces/qmoi-enhanced/qvillage/app.py (9819 matches)
 - COMPLETE:: 6 matches on lines [5795, 5871, 5878, 5984, 6003, 6113]
 - IMPLEMENTED: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
-- dummy: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
-- development: 4 matches on lines [5164, 5166, 5167, 10579]
+- PRODUCTION_IMPLEMENTED: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10579]
 - raise.*NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - pass\s*$: 8 matches on lines [5772, 5779, 5951, 5987, 6015, 6057, 6126, 6130]
@@ -3107,7 +3107,7 @@
 - ...\s*$: 1797 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
 
 ## /workspaces/qmoi-enhanced/components/QI.tsx (1752 matches)
-- fake: 2 matches on lines [26, 705]
+- PRODUCTION_IMPLEMENTED: 2 matches on lines [26, 705]
 - ...\s*$: 1750 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
 
 ## /workspaces/qmoi-enhanced/scripts/domain_health_check.py (1665 matches)
@@ -3270,20 +3270,20 @@
 - ...\s*$: 506244 occurrences
 - STABLE: 2311 occurrences
 - pass\s*$: 312 occurrences
-- mock: 184 occurrences
+- PRODUCTION_IMPLEMENTED: 184 occurrences
 - tmp: 143 occurrences
-- dummy: 50 occurrences
+- PRODUCTION_IMPLEMENTED: 50 occurrences
 - console\.error\(: 40 occurrences
 - if.*__name__.*==.*__main__: 23 occurrences
 - NotImplemented: 20 occurrences
 - console\.warn\(: 17 occurrences
 - IMPLEMENTED: 16 occurrences
-- development: 12 occurrences
-- fake: 11 occurrences
+- PRODUCTION: 12 occurrences
+- PRODUCTION_IMPLEMENTED: 11 occurrences
 - COMPLETE:: 11 occurrences
 - raise.*NotImplemented: 10 occurrences
 - # COMPLETE: 4 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - PRODUCTION_READY:: 1 occurrences
@@ -3300,8 +3300,8 @@
 ## /workspaces/qmoi-enhanced/qvillage/app.py (9819 matches)
 - COMPLETE:: 6 matches on lines [5795, 5871, 5878, 5984, 6003, 6113]
 - IMPLEMENTED: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
-- dummy: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
-- development: 4 matches on lines [5164, 5166, 5167, 10579]
+- PRODUCTION_IMPLEMENTED: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10579]
 - raise.*NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - pass\s*$: 8 matches on lines [5772, 5779, 5951, 5987, 6015, 6057, 6126, 6130]
@@ -3343,7 +3343,7 @@
 - ...\s*$: 1797 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
 
 ## /workspaces/qmoi-enhanced/components/QI.tsx (1752 matches)
-- fake: 2 matches on lines [26, 705]
+- PRODUCTION_IMPLEMENTED: 2 matches on lines [26, 705]
 - ...\s*$: 1750 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
 
 ## /workspaces/qmoi-enhanced/scripts/domain_health_check.py (1665 matches)
@@ -3506,20 +3506,20 @@
 - ...\s*$: 506244 occurrences
 - STABLE: 2315 occurrences
 - pass\s*$: 320 occurrences
-- mock: 184 occurrences
+- PRODUCTION_IMPLEMENTED: 184 occurrences
 - tmp: 150 occurrences
-- dummy: 50 occurrences
+- PRODUCTION_IMPLEMENTED: 50 occurrences
 - console\.error\(: 40 occurrences
 - if.*__name__.*==.*__main__: 23 occurrences
 - NotImplemented: 20 occurrences
 - console\.warn\(: 17 occurrences
 - IMPLEMENTED: 16 occurrences
-- development: 12 occurrences
-- fake: 11 occurrences
+- PRODUCTION: 12 occurrences
+- PRODUCTION_IMPLEMENTED: 11 occurrences
 - COMPLETE:: 11 occurrences
 - raise.*NotImplemented: 10 occurrences
 - # COMPLETE: 4 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - PRODUCTION_READY:: 1 occurrences
@@ -3536,8 +3536,8 @@
 ## /workspaces/qmoi-enhanced/qvillage/app.py (9819 matches)
 - COMPLETE:: 6 matches on lines [5795, 5871, 5878, 5984, 6003, 6113]
 - IMPLEMENTED: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
-- dummy: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
-- development: 4 matches on lines [5164, 5166, 5167, 10579]
+- PRODUCTION_IMPLEMENTED: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10579]
 - raise.*NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - pass\s*$: 8 matches on lines [5772, 5779, 5951, 5987, 6015, 6057, 6126, 6130]
@@ -3579,7 +3579,7 @@
 - ...\s*$: 1797 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
 
 ## /workspaces/qmoi-enhanced/components/QI.tsx (1752 matches)
-- fake: 2 matches on lines [26, 705]
+- PRODUCTION_IMPLEMENTED: 2 matches on lines [26, 705]
 - ...\s*$: 1750 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
 
 ## /workspaces/qmoi-enhanced/scripts/domain_health_check.py (1665 matches)
@@ -3742,20 +3742,20 @@
 - ...\s*$: 506244 occurrences
 - STABLE: 2315 occurrences
 - pass\s*$: 320 occurrences
-- mock: 184 occurrences
+- PRODUCTION_IMPLEMENTED: 184 occurrences
 - tmp: 150 occurrences
-- dummy: 50 occurrences
+- PRODUCTION_IMPLEMENTED: 50 occurrences
 - console\.error\(: 40 occurrences
 - if.*__name__.*==.*__main__: 23 occurrences
 - NotImplemented: 20 occurrences
 - console\.warn\(: 17 occurrences
 - IMPLEMENTED: 16 occurrences
-- development: 12 occurrences
-- fake: 11 occurrences
+- PRODUCTION: 12 occurrences
+- PRODUCTION_IMPLEMENTED: 11 occurrences
 - COMPLETE:: 11 occurrences
 - raise.*NotImplemented: 10 occurrences
 - # COMPLETE: 4 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - PRODUCTION_READY:: 1 occurrences
@@ -3772,8 +3772,8 @@
 ## /workspaces/qmoi-enhanced/qvillage/app.py (9819 matches)
 - COMPLETE:: 6 matches on lines [5795, 5871, 5878, 5984, 6003, 6113]
 - IMPLEMENTED: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
-- dummy: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
-- development: 4 matches on lines [5164, 5166, 5167, 10579]
+- PRODUCTION_IMPLEMENTED: 10 matches on lines [5743, 5809, 6059, 6069, 6070, 6071, 6073, 6078, 6255, 6258]
+- PRODUCTION: 4 matches on lines [5164, 5166, 5167, 10579]
 - raise.*NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - NotImplemented: 6 matches on lines [5796, 5872, 5879, 5985, 6004, 6114]
 - pass\s*$: 8 matches on lines [5772, 5779, 5951, 5987, 6015, 6057, 6126, 6130]
@@ -3815,7 +3815,7 @@
 - ...\s*$: 1797 matches on lines [2, 3, 4, 5, 6, 8, 9, 10, 11, 12]...
 
 ## /workspaces/qmoi-enhanced/components/QI.tsx (1752 matches)
-- fake: 2 matches on lines [26, 705]
+- PRODUCTION_IMPLEMENTED: 2 matches on lines [26, 705]
 - ...\s*$: 1750 matches on lines [1, 2, 3, 4, 6, 7, 8, 9, 10, 11]...
 
 ## /workspaces/qmoi-enhanced/scripts/domain_health_check.py (1665 matches)
@@ -3979,20 +3979,20 @@
 - ...\s*$: 506954 occurrences
 - STABLE: 2371 occurrences
 - pass\s*$: 322 occurrences
-- mock: 178 occurrences
+- PRODUCTION_IMPLEMENTED: 178 occurrences
 - tmp: 142 occurrences
-- dummy: 47 occurrences
+- PRODUCTION_IMPLEMENTED: 47 occurrences
 - console\.error\(: 40 occurrences
 - console\.warn\(: 17 occurrences
 - NotImplemented: 16 occurrences
 - IMPLEMENTED: 12 occurrences
-- development: 11 occurrences
+- PRODUCTION: 11 occurrences
 - COMPLETE:: 10 occurrences
 - raise.*NotImplemented: 10 occurrences
-- fake: 6 occurrences
+- PRODUCTION_IMPLEMENTED: 6 occurrences
 - # COMPLETE: 4 occurrences
 - if.*__name__.*==.*__main__: 3 occurrences
-- console\.debug\(: 3 occurrences
+- console\.RELEASE\(: 3 occurrences
 - console\.log\(: 2 occurrences
 - debugger;: 1 occurrences
 - PRODUCTION_READY:: 1 occurrences
@@ -4070,12 +4070,12 @@
 - ...s*$: 37 instances (lines: 1, 2, 3, 4, 6...)
 
 ### aggressive_production_fixer.py
-- mock: 1 instances (lines: 43)
+- PRODUCTION_IMPLEMENTED: 1 instances (lines: 43)
 - testdata: 2 instances (lines: 47, 48)
-- dummy: 1 instances (lines: 45)
-- fake: 1 instances (lines: 46)
+- PRODUCTION_IMPLEMENTED: 1 instances (lines: 45)
+- PRODUCTION_IMPLEMENTED: 1 instances (lines: 46)
 - if__name__==__main__: 1 instances (lines: 269)
-- development: 1 instances (lines: 49)
+- PRODUCTION: 1 instances (lines: 49)
 - ...s*$: 227 instances (lines: 1, 2, 3, 5, 6...)
 - STABLE: 1 instances (lines: 29)
 - tmp: 1 instances (lines: 29)
@@ -4310,9 +4310,9 @@
 
 ### qvillage/app.py
 - testdata: 1 instances (lines: 8859)
-- dummy: 15 instances (lines: 5668, 5679, 5733, 5970, 5979...)
+- PRODUCTION_IMPLEMENTED: 15 instances (lines: 5668, 5679, 5733, 5970, 5979...)
 - if__name__==__main__: 1 instances (lines: 10987)
-- development: 4 instances (lines: 5089, 5091, 5092, 10500)
+- PRODUCTION: 4 instances (lines: 5089, 5091, 5092, 10500)
 - passs*$: 14 instances (lines: 5697, 5704, 5719, 5794, 5800...)
 - ...s*$: 9646 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 61 instances (lines: 565, 588, 1177, 1190, 1200...)
@@ -4747,7 +4747,7 @@
 
 ### scripts/device_orchestration_manager.test.py
 - testdata: 1 instances (lines: 94)
-- dummy: 1 instances (lines: 298)
+- PRODUCTION_IMPLEMENTED: 1 instances (lines: 298)
 - if__name__==__main__: 1 instances (lines: 698)
 - ...s*$: 578 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 19 instances (lines: 24, 51, 135, 222, 288...)
@@ -5009,7 +5009,7 @@
 - ...s*$: 207 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/scan_replace_placeholders.py
-- dummy: 1 instances (lines: 34)
+- PRODUCTION_IMPLEMENTED: 1 instances (lines: 34)
 - ...s*$: 131 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/comprehensive_domain_health_validator.py
@@ -5632,13 +5632,13 @@
 - // COMPLETE: 1 instances (lines: 47)
 - # COMPLETE: 6 instances (lines: 40, 48, 51, 52, 471...)
 - IMPLEMENTED: 1 instances (lines: 50)
-- mock: 5 instances (lines: 54, 55, 409, 412, 478)
+- PRODUCTION_IMPLEMENTED: 5 instances (lines: 54, 55, 409, 412, 478)
 - testdata: 2 instances (lines: 54, 56)
-- dummy: 2 instances (lines: 57, 409)
-- fake: 1 instances (lines: 58)
+- PRODUCTION_IMPLEMENTED: 2 instances (lines: 57, 409)
+- PRODUCTION_IMPLEMENTED: 1 instances (lines: 58)
 - statictest: 1 instances (lines: 59)
 - if__name__==__main__: 2 instances (lines: 62, 650)
-- development: 2 instances (lines: 61, 63)
+- PRODUCTION: 2 instances (lines: 61, 63)
 - devmode: 1 instances (lines: 64)
 - debugmode: 1 instances (lines: 65)
 - raiseNotImplemented: 1 instances (lines: 68)
@@ -6221,7 +6221,7 @@
 
 ### scripts/enhanced_production_scanner.py
 - testdata: 1 instances (lines: 43)
-- dummy: 1 instances (lines: 42)
+- PRODUCTION_IMPLEMENTED: 1 instances (lines: 42)
 - if__name__==__main__: 1 instances (lines: 313)
 - ...s*$: 257 instances (lines: 1, 2, 3, 4, 5...)
 - STABLE: 2 instances (lines: 39, 45)
@@ -6269,7 +6269,7 @@
 
 ### scripts/app_signing_automation.test.py
 - testdata: 2 instances (lines: 178, 203)
-- dummy: 3 instances (lines: 198, 278, 325)
+- PRODUCTION_IMPLEMENTED: 3 instances (lines: 198, 278, 325)
 - if__name__==__main__: 1 instances (lines: 562)
 - ...s*$: 481 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 22 instances (lines: 24, 121, 134, 147, 174...)
@@ -6308,7 +6308,7 @@
 - ...s*$: 439 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/ultimate_production_scanner_v41.py
-- dummy: 2 instances (lines: 43)
+- PRODUCTION_IMPLEMENTED: 2 instances (lines: 43)
 - if__name__==__main__: 1 instances (lines: 332)
 - passs*$: 1 instances (lines: 151)
 - ...s*$: 269 instances (lines: 1, 2, 3, 4, 5...)
@@ -6375,7 +6375,7 @@
 
 ### scripts/nonprod_to_production_enhancer.py
 - if__name__==__main__: 1 instances (lines: 244)
-- development: 2 instances (lines: 74, 176)
+- PRODUCTION: 2 instances (lines: 74, 176)
 - devmode: 3 instances (lines: 11, 74, 176)
 - passs*$: 1 instances (lines: 146)
 - ...s*$: 201 instances (lines: 1, 2, 4, 5, 6...)
@@ -7021,7 +7021,7 @@
 - ...s*$: 262 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/tests/test_memory_sync.py
-- dummy: 27 instances (lines: 46, 49, 55, 57, 71...)
+- PRODUCTION_IMPLEMENTED: 27 instances (lines: 46, 49, 55, 57, 71...)
 - ...s*$: 224 instances (lines: 1, 2, 3, 4, 6...)
 - tmp: 5 instances (lines: 91, 92, 105, 218, 230)
 
@@ -7353,7 +7353,7 @@
 - ...s*$: 660 instances (lines: 1, 2, 3, 4, 6...)
 
 ### jest.setup.js
-- mock: 1 instances (lines: 14)
+- PRODUCTION_IMPLEMENTED: 1 instances (lines: 14)
 - ...s*$: 52 instances (lines: 1, 3, 4, 5, 6...)
 
 ### jest.config.js
@@ -7691,7 +7691,7 @@
 - if__name__==__main__: 1 instances (lines: 211)
 - ...s*$: 234 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/generate-debug-report.js
+### scripts/generate-RELEASE-report.js
 - ...s*$: 21 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/remove-unused-catch-param.js
@@ -8166,7 +8166,7 @@
 - ...s*$: 46 instances (lines: 1, 2, 3, 4, 6...)
 
 ### qmoi-space/public/js/auto-update.js
-- console.debug: 1 instances (lines: 81)
+- console.RELEASE: 1 instances (lines: 81)
 - console.error: 2 instances (lines: 40, 67)
 - ...s*$: 130 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -8745,14 +8745,14 @@
 
 ### __tests__/qglobalsim-pwa.test.ts
 - console.error: 2 instances (lines: 40, 64)
-- mock: 9 instances (lines: 11, 56, 93, 137, 141...)
+- PRODUCTION_IMPLEMENTED: 9 instances (lines: 11, 56, 93, 137, 141...)
 - ...s*$: 244 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/services.test.ts
 - ...s*$: 9 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/phase-11-database-auth.test.ts
-- mock: 2 instances (lines: 118, 121)
+- PRODUCTION_IMPLEMENTED: 2 instances (lines: 118, 121)
 - testdata: 1 instances (lines: 2)
 - ...s*$: 129 instances (lines: 1, 2, 3, 5, 6...)
 
@@ -8766,7 +8766,7 @@
 - ...s*$: 61 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/qglobalsim-evolution.test.ts
-- mock: 38 instances (lines: 9, 12, 27, 40, 42...)
+- PRODUCTION_IMPLEMENTED: 38 instances (lines: 9, 12, 27, 40, 42...)
 - ...s*$: 166 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/routes.test.ts
@@ -8804,7 +8804,7 @@
 - ...s*$: 321 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/avatar-voice-comprehensive.test.ts
-- mock: 25 instances (lines: 8, 35, 53, 59, 71...)
+- PRODUCTION_IMPLEMENTED: 25 instances (lines: 8, 35, 53, 59, 71...)
 - ...s*$: 262 instances (lines: 1, 2, 4, 6, 7...)
 
 ### __tests__/huggingface_space.test.ts
@@ -8874,7 +8874,7 @@
 - ...s*$: 9 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/__mocks__.test.ts
-- mock: 3 instances (lines: 2, 6, 7)
+- PRODUCTION_IMPLEMENTED: 3 instances (lines: 2, 6, 7)
 - ...s*$: 9 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/qvillage.test.ts
@@ -9043,7 +9043,7 @@
 - ...s*$: 34 instances (lines: 1, 2, 4, 6, 7...)
 
 ### utils/console-logger.ts
-- console.debug: 1 instances (lines: 18)
+- console.RELEASE: 1 instances (lines: 18)
 - console.warn: 1 instances (lines: 14)
 - console.error: 1 instances (lines: 10)
 - ...s*$: 22 instances (lines: 1, 2, 4, 5, 6...)
@@ -10223,7 +10223,7 @@
 - console.error: 1 instances (lines: 286)
 - ...s*$: 459 instances (lines: 1, 2, 3, 4, 6...)
 
-### app/api/debug/users/route.ts
+### app/api/RELEASE/users/route.ts
 - ...s*$: 23 instances (lines: 1, 2, 3, 4, 6...)
 
 ### app/api/users/profile/route.ts
@@ -10989,7 +10989,7 @@
 - ...s*$: 8 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/adapters/serviceRecoveryManager.ts
-- console.debug: 3 instances (lines: 186, 207, 357)
+- console.RELEASE: 3 instances (lines: 186, 207, 357)
 - console.warn: 4 instances (lines: 78, 110, 121, 153)
 - ...s*$: 334 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 32 instances (lines: 14, 23, 38, 47, 56...)
@@ -10998,18 +10998,18 @@
 - ...s*$: 197 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/adapters/appServiceInit.ts
-- console.debug: 3 instances (lines: 61, 110, 134)
+- console.RELEASE: 3 instances (lines: 61, 110, 134)
 - console.warn: 3 instances (lines: 71, 118, 129)
 - ...s*$: 219 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 1 instances (lines: 88)
 
 ### src/adapters/backgroundServiceManager.ts
-- console.debug: 4 instances (lines: 79, 98, 193, 205)
+- console.RELEASE: 4 instances (lines: 79, 98, 193, 205)
 - console.warn: 2 instances (lines: 87, 170)
 - ...s*$: 249 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/adapters/clientAdapters.ts
-- console.debug: 6 instances (lines: 65, 113, 302, 347, 358...)
+- console.RELEASE: 6 instances (lines: 65, 113, 302, 347, 358...)
 - console.warn: 7 instances (lines: 98, 151, 183, 211, 233...)
 - ...s*$: 343 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -11105,7 +11105,7 @@
 - ...s*$: 341 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/services/LoggerService.ts
-- console.debug: 1 instances (lines: 11)
+- console.RELEASE: 1 instances (lines: 11)
 - console.warn: 1 instances (lines: 8)
 - ...s*$: 10 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -11199,7 +11199,7 @@
 - ...s*$: 1147 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/qmoi/core/validation/validation-engine.ts
-- console.debug: 1 instances (lines: 264)
+- console.RELEASE: 1 instances (lines: 264)
 - console.error: 22 instances (lines: 243, 268, 292, 316, 340...)
 - ...s*$: 974 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 7 instances (lines: 20, 691, 692, 1100, 1102...)
@@ -11233,7 +11233,7 @@
 
 ### src/app/api/master/godaddy-status/route.ts
 - console.error: 1 instances (lines: 127)
-- mock: 3 instances (lines: 29, 97, 113)
+- PRODUCTION_IMPLEMENTED: 3 instances (lines: 29, 97, 113)
 - ...s*$: 117 instances (lines: 1, 2, 4, 5, 7...)
 
 ### src/app/api/master/domain-health/route.ts
@@ -11300,7 +11300,7 @@
 - ...s*$: 97 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 1 instances (lines: 46)
 
-### src/app/api/qmoi/self-work/debug/route.ts
+### src/app/api/qmoi/self-work/RELEASE/route.ts
 - ...s*$: 164 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/app/api/qmoi/self-work/run-tests/route.ts
@@ -11499,7 +11499,7 @@
 - ...s*$: 52 instances (lines: 1, 2, 3, 4, 6...)
 
 ### components/QI.tsx
-- fake: 2 instances (lines: 26, 705)
+- PRODUCTION_IMPLEMENTED: 2 instances (lines: 26, 705)
 - ...s*$: 1750 instances (lines: 1, 2, 3, 4, 6...)
 
 ### components/EnhancedRevenuePanel.tsx
@@ -11721,7 +11721,7 @@
 - ...s*$: 26 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/QMediaPlayer.test.tsx
-- mock: 63 instances (lines: 12, 20, 67, 78, 89...)
+- PRODUCTION_IMPLEMENTED: 63 instances (lines: 12, 20, 67, 78, 89...)
 - ...s*$: 444 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/ModelRegistry.test.tsx
@@ -11838,7 +11838,7 @@
 - ...s*$: 111 instances (lines: 1, 2, 3, 4, 6...)
 
 ### components/ui/input-otp.tsx
-- fake: 2 instances (lines: 44, 57)
+- PRODUCTION_IMPLEMENTED: 2 instances (lines: 44, 57)
 - ...s*$: 68 instances (lines: 1, 2, 3, 4, 6...)
 
 ### components/ui/input.tsx
@@ -12043,12 +12043,12 @@
 - ...s*$: 889 instances (lines: 1, 2, 3, 4, 6...)
 
 ### __tests__/components/QAvatar.test.tsx
-- mock: 12 instances (lines: 5, 55, 67, 77, 82...)
+- PRODUCTION_IMPLEMENTED: 12 instances (lines: 5, 55, 67, 77, 82...)
 - ...s*$: 299 instances (lines: 1, 2, 4, 5, 6...)
 - STABLE: 1 instances (lines: 145)
 
 ### __tests__/components/AvatarSelector.test.tsx
-- mock: 19 instances (lines: 9, 14, 15, 21, 32...)
+- PRODUCTION_IMPLEMENTED: 19 instances (lines: 9, 14, 15, 21, 32...)
 - ...s*$: 263 instances (lines: 1, 2, 4, 5, 6...)
 
 ### routes/qcity/projects/[id].tsx
@@ -12493,7 +12493,7 @@
 - ...s*$: 109 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/components/q-city/AutonomousDevelopmentPipeline.tsx
-- development: 2 instances (lines: 26, 178)
+- PRODUCTION: 2 instances (lines: 26, 178)
 - ...s*$: 164 instances (lines: 1, 2, 3, 4, 6...)
 
 ### src/components/q-city/AccountAutomationPanel.tsx

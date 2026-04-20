@@ -424,8 +424,8 @@ module.exports = {
       if (!fs.existsSync(".gitignore")) {
         const gitignoreContent = `# Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
+npm-RELEASE.log*
+yarn-RELEASE.log*
 yarn-error.log*
 
 production-ready

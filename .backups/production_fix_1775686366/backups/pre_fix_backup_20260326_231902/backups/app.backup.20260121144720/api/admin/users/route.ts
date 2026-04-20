@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db/prisma";
 import authService from "@/lib/auth/service";

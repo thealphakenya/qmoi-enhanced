@@ -61,7 +61,7 @@
     "require_real_funds_only": true
   },
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:15:28.697910"
 }

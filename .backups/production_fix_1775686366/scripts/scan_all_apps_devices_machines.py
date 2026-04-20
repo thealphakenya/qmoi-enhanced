@@ -32,10 +32,10 @@ production_keywords = [
     'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'production',
     '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'stable', 'stable', 'stable',
     'TEMPORARY', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
-    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED'
+    'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'CURRENT'
 ]
 
-production_ready_markers = ['[production ready]', '[production complete]', 'in production', 'production ready', 'production complete']
+production_ready_markers = ['[PRODUCTION_IMPLEMENTED]', '[production complete]', 'in production', 'PRODUCTION_IMPLEMENTED', 'production complete']
 
 scan_extensions = {
     '.py', '.js', '.ts', '.jsx', '.tsx', '.java', '.cpp', '.c', '.cs',

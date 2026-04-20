@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
-# QMOI Role-Based Access Control (RBAC) - Implementation Summary ✅ PRODUCTION READY
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
+# QMOI Role-Based Access Control (RBAC) - Implementation Summary ✅ PRODUCTION_IMPLEMENTED
 
 **Status:** ✅ complete  
 **Version:** 1.2.3  

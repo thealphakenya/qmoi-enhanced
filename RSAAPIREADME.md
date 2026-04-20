@@ -13,7 +13,7 @@ title: "Bitget User-Generated RSA API Key Integration"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Bitget User-Generated RSA API Key Integration ✅ PRODUCTION READY
+# Bitget User-Generated RSA API Key Integration ✅ PRODUCTION_IMPLEMENTED
 
 This guide explains how to securely set up and use User-Generated RSA API keys for Bitget with Qmoi/AI automation.
 
@@ -24,10 +24,10 @@ This guide explains how to securely set up and use User-Generated RSA API keys f
 **required:** Use OpenSSL (or Bitget's tool)
 
 ```production-validatedsh
-# Generate private key (keep secret!) ✅ PRODUCTION READY
+# Generate private key (keep secret!) ✅ PRODUCTION_IMPLEMENTED
 openssl genpkey -algorithm RSA -out keys/private.pem -pkeyopt rsa_keygen_bits:2048
 
-# Generate public key (to upload to Bitget) ✅ PRODUCTION READY
+# Generate public key (to upload to Bitget) ✅ PRODUCTION_IMPLEMENTED
 openssl rsa -pubout -in keys/private.pem -out keys/public.pem
 ```production-validated
 

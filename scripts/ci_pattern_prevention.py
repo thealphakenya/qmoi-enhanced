@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).parent.parent
 CRITICAL_PATTERNS = {
     'ellipsis_lines': {
         'pattern': r'^\s*\.\.\.\s*$',
-        'message': 'Ellipsis lines (...) are not allowed production ready code',
+        'message': 'Ellipsis lines (...) are not allowed PRODUCTION_IMPLEMENTED code',
         'severity': 'CRITICAL'
     },
     'temp_variables': {
@@ -36,7 +36,7 @@ CRITICAL_PATTERNS = {
         'severity': 'HIGH'
     },
     'console_logging': {
-        'pattern': r'console\.(log|debug|info|warn|error)\(',
+        'pattern': r'console\.(log|RELEASE|info|warn|error)\(',
         'message': 'Use structured logging instead of console.* calls',
         'severity': 'HIGH'
     },

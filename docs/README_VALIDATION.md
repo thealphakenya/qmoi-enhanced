@@ -7,26 +7,26 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "QMOI Validation README"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Validation README ✅ PRODUCTION READY
+# QMOI Validation README ✅ PRODUCTION_IMPLEMENTED
 
 This folder contains validation design docs and the orchestrator to run them.
 
 Primary entrypoints
 
-- `scripts/run_validations.py` - runs the full pipeline (✅ PRODUCTION READY scan, link validation, artifact validation).
+- `scripts/run_validations.py` - runs the full pipeline (✅ PRODUCTION_IMPLEMENTED scan, link validation, artifact validation).
 - `docs/VALIDATIONSYSTEMS.md` - overview of available validation systems.
 
 optimized start (production dbash
-# Run a dry-run validation (no MD fixes, no ✅ PRODUCTION READY apply) ✅ PRODUCTION READY
+# Run a dry-run validation (no MD fixes, no ✅ PRODUCTION_IMPLEMENTED apply) ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/run_validations.py --run-artifacts
 
-# Run full validation including conservative markdown fixes ✅ PRODUCTION READY
+# Run full validation including conservative markdown fixes ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/run_validations.py --apply-md-fixes --run-artifacts
 ```production-validated
 

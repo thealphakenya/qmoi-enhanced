@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Link Report"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -2909,10 +2909,10 @@ Found 109453 links
   - Text: - Keyword: `revenue` — snippet: "Failures\*\*: Check M-Pes" - File: `docs/REVENUE_SPEC.md` (line 3012) - Text: - Keyword: `revenue` — snippet: "ing: ```bash e"
 
 - File: `docs/REVENUE_SPEC.md` (line 17156)
-  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export DEBUG=true npm run revenue:start ` ### Log"
+  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export RELEASE=true npm run revenue:start ` ### Log"
 
 - File: `docs/REVENUE_SPEC.md` (line 17157)
-  - Text: - Keyword: `revenue` — snippet: "ing: `bash export DEBUG=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
+  - Text: - Keyword: `revenue` — snippet: "ing: `bash export RELEASE=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
 
 - File: `docs/REVENUE_SPEC.md` (line 17158)
   - Text: - Keyword: `revenue` — snippet: "Check logs for detailed information: - Revenue engine" - File: `docs/REVENUE_SPEC.md` (line 3013) - Text: - Keyword: `reven"
@@ -8988,10 +8988,10 @@ Found 109453 links
 - link_report.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - link_report.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - link_report.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - link_report.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -9024,10 +9024,10 @@ Found 109453 links
 - link_report.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - link_report.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - link_report.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -9039,10 +9039,10 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -9079,10 +9079,10 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - link_report.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -9106,10 +9106,10 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - link_report.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -9150,10 +9150,10 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - link_report.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -9163,9 +9163,9 @@ Found 109453 links
 - link_report.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -9279,7 +9279,7 @@ Found 109453 links
 - link_report.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - link_report.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - link_report.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -9359,10 +9359,10 @@ Found 109453 links
 - link_report.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - link_report.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - link_report.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - link_report.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -9395,10 +9395,10 @@ Found 109453 links
 - link_report.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - link_report.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - link_report.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -9410,10 +9410,10 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -9450,10 +9450,10 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - link_report.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -9477,10 +9477,10 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - link_report.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -9521,10 +9521,10 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - link_report.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -9534,9 +9534,9 @@ Found 109453 links
 - link_report.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -9650,7 +9650,7 @@ Found 109453 links
 - link_report.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - link_report.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - link_report.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -9744,9 +9744,9 @@ Found 109453 links
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/loose-envify.svg?branch=master) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
 - link_report.md: [http methods](https://github.com/jshttp/methods/blob/master/index.js) — external (not checked)
 - link_report.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
@@ -9887,7 +9887,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Error handling best practices](#error-handling-best-practices) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -9898,23 +9898,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [by default](#json) — OK
 - link_report.md: [many options](#api) — OK
 - link_report.md: [by default](#complete) — OK
@@ -10289,7 +10289,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -10400,8 +10400,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - link_report.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - link_report.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- link_report.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- link_report.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- link_report.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- link_report.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - link_report.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - link_report.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - link_report.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -10684,23 +10684,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - link_report.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -11191,23 +11191,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
 - link_report.md: [node](https://nodejs.org) — external (not checked)
@@ -12352,7 +12352,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [React Native CLI](../../README.md) — included
 - link_report.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -12479,7 +12479,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -12800,23 +12800,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - link_report.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - link_report.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -13144,23 +13144,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - link_report.md: [Examples](#examples) — OK
@@ -14318,7 +14318,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - link_report.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -14801,23 +14801,23 @@ console.log(style.codes.get(36));
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - link_report.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -14871,11 +14871,11 @@ console.log(style.codes.get(36));
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
 - link_report.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -14886,7 +14886,7 @@ console.log(style.codes.get(36));
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - link_report.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -14901,7 +14901,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -15086,7 +15086,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - link_report.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - link_report.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- link_report.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- link_report.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - link_report.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - link_report.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - link_report.md: [James Talmage](mailto:james@talmage.io) — included
@@ -15138,7 +15138,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [data](#data) — OK
 - link_report.md: [Axios API](#axios-api) — OK
 - link_report.md: [Request method aliases](#request-method-aliases) — OK
-- link_report.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- link_report.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - link_report.md: [Creating an instance](#creating-an-instance) — OK
 - link_report.md: [Instance methods](#instance-methods) — OK
 - link_report.md: [Request Config](#request-config) — OK
@@ -15152,7 +15152,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [Handling Errors](#handling-errors) — OK
 - link_report.md: [Cancellation](#cancellation) — OK
 - link_report.md: [AbortController](#abortcontroller) — OK
-- link_report.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- link_report.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - link_report.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - link_report.md: [URLSearchParams](#urlsearchparams) — OK
 - link_report.md: [Query string](#query-string-older-browsers) — OK
@@ -16200,7 +16200,7 @@ There are few ways to get help:
 - link_report.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - link_report.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- link_report.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- link_report.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - link_report.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - link_report.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -16610,7 +16610,7 @@ npm --prefix bench start
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -16695,7 +16695,7 @@ npm --prefix bench start
 - link_report.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - link_report.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - link_report.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - link_report.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - link_report.md: [doowb](https://github.com/doowb) — external (not checked)
 - link_report.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -17207,7 +17207,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [Prettier](https://prettier.io) — external (not checked)
-- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - link_report.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - link_report.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -17476,7 +17476,7 @@ console.log(style.codes.get(36));
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](f:_switches.cc) — included
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - link_report.md: [Node API documentation](./docs/NODE_API.md) — included
@@ -18470,8 +18470,8 @@ console.log(style.codes.get(36));
 - link_report.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - link_report.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - link_report.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -18481,10 +18481,10 @@ console.log(style.codes.get(36));
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - link_report.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -19361,7 +19361,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Error handling best practices](#error-handling-best-practices) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -19372,23 +19372,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [by default](#json) — OK
 - link_report.md: [many options](#api) — OK
 - link_report.md: [by default](#complete) — OK
@@ -19763,7 +19763,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -19874,8 +19874,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - link_report.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - link_report.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- link_report.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- link_report.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- link_report.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- link_report.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - link_report.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - link_report.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - link_report.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -20158,23 +20158,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - link_report.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -20665,23 +20665,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
 - link_report.md: [node](https://nodejs.org) — external (not checked)
@@ -21826,7 +21826,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [React Native CLI](../../README.md) — included
 - link_report.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -21953,7 +21953,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -22274,23 +22274,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - link_report.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - link_report.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -22618,23 +22618,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - link_report.md: [Examples](#examples) — OK
@@ -23792,7 +23792,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - link_report.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -24275,23 +24275,23 @@ console.log(style.codes.get(36));
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - link_report.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -24345,11 +24345,11 @@ console.log(style.codes.get(36));
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
 - link_report.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -24360,7 +24360,7 @@ console.log(style.codes.get(36));
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - link_report.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -24375,7 +24375,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -24560,7 +24560,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - link_report.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - link_report.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- link_report.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- link_report.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - link_report.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - link_report.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - link_report.md: [James Talmage](mailto:james@talmage.io) — included
@@ -24612,7 +24612,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [data](#data) — OK
 - link_report.md: [Axios API](#axios-api) — OK
 - link_report.md: [Request method aliases](#request-method-aliases) — OK
-- link_report.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- link_report.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - link_report.md: [Creating an instance](#creating-an-instance) — OK
 - link_report.md: [Instance methods](#instance-methods) — OK
 - link_report.md: [Request Config](#request-config) — OK
@@ -24626,7 +24626,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [Handling Errors](#handling-errors) — OK
 - link_report.md: [Cancellation](#cancellation) — OK
 - link_report.md: [AbortController](#abortcontroller) — OK
-- link_report.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- link_report.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - link_report.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - link_report.md: [URLSearchParams](#urlsearchparams) — OK
 - link_report.md: [Query string](#query-string-older-browsers) — OK
@@ -25674,7 +25674,7 @@ There are few ways to get help:
 - link_report.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - link_report.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- link_report.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- link_report.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - link_report.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - link_report.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -26084,7 +26084,7 @@ npm --prefix bench start
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -26169,7 +26169,7 @@ npm --prefix bench start
 - link_report.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - link_report.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - link_report.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - link_report.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - link_report.md: [doowb](https://github.com/doowb) — external (not checked)
 - link_report.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -26681,7 +26681,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [Prettier](https://prettier.io) — external (not checked)
-- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - link_report.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - link_report.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -26950,7 +26950,7 @@ console.log(style.codes.get(36));
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](f:_switches.cc) — included
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - link_report.md: [Node API documentation](./docs/NODE_API.md) — included
@@ -27944,8 +27944,8 @@ console.log(style.codes.get(36));
 - link_report.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - link_report.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - link_report.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -27955,10 +27955,10 @@ console.log(style.codes.get(36));
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - link_report.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -28817,8 +28817,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Browserslist](https://github.com/browserslist/browserslist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/update-db#readme) — external (not checked)
 - link_report.md: [JSON.stringify](https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -28828,10 +28828,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [`baseline-browser-mapping`](https://github.com/web-platform-dx/web-features/packages/baseline-browser-mapping) — external (not checked)
 - link_report.md: [W3C WebDX Community Group](https://www.w3.org/community/webdx/) — external (not checked)
 - link_report.md: [`getCompatibleVersions()` function](#get-baseline-widely-available-browser-versions-or-baseline-year-browser-versions) — OK
@@ -29688,11 +29688,11 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [JSCodeshift coproductiond](https://github.com/joyeecheung/node-dep-coproductiond#dep005) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
@@ -29704,7 +29704,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [CI](https://github.com/vercel/ms/workflows/CI/badge.svg) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org) — external (not checked)
 - link_report.md: [ms.macro](https://github.com/knpwrs/ms.macro) — external (not checked)
@@ -30042,8 +30042,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`c2bbdde`](https://github.com/ljharb/get-intrinsic/commit/c2bbddeba73a875be61484ee4680b129a6d4e0a1) — external (not checked)
 - link_report.md: [`0a84b98`](https://github.com/ljharb/get-intrinsic/commit/0a84b98b22b7cf7a748666f705b0003a493c35fd) — external (not checked)
 - link_report.md: [`9586c75`](https://github.com/ljharb/get-intrinsic/commit/9586c75866c1ee678e4d5d4dbbdef6997e511b05) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -30053,10 +30053,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
@@ -33077,10 +33077,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
   - Text: - Keyword: `revenue` — snippet: "Failures\*\*: Check M-Pes" - File: `docs/REVENUE_SPEC.md` (line 3012) - Text: - Keyword: `revenue` — snippet: "ing: ```bash e"
 
 - File: `docs/REVENUE_SPEC.md` (line 17156)
-  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export DEBUG=true npm run revenue:start ` ### Log"
+  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export RELEASE=true npm run revenue:start ` ### Log"
 
 - File: `docs/REVENUE_SPEC.md` (line 17157)
-  - Text: - Keyword: `revenue` — snippet: "ing: `bash export DEBUG=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
+  - Text: - Keyword: `revenue` — snippet: "ing: `bash export RELEASE=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
 
 - File: `docs/REVENUE_SPEC.md` (line 17158)
   - Text: - Keyword: `revenue` — snippet: "Check logs for detailed information: - Revenue engine" - File: `docs/REVENUE_SPEC.md` (line 3013) - Text: - Keyword: `reven"
@@ -39156,10 +39156,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - link_report.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - link_report.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - link_report.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -39192,10 +39192,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - link_report.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - link_report.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -39207,10 +39207,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -39247,10 +39247,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - link_report.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -39274,10 +39274,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - link_report.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -39318,10 +39318,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - link_report.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -39331,9 +39331,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -39447,7 +39447,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - link_report.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - link_report.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -39527,10 +39527,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - link_report.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - link_report.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - link_report.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -39563,10 +39563,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - link_report.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - link_report.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -39578,10 +39578,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -39618,10 +39618,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - link_report.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -39645,10 +39645,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - link_report.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -39689,10 +39689,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - link_report.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -39702,9 +39702,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -39818,7 +39818,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - link_report.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - link_report.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -39912,9 +39912,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/loose-envify.svg?branch=master) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
 - link_report.md: [http methods](https://github.com/jshttp/methods/blob/master/index.js) — external (not checked)
 - link_report.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
@@ -40055,7 +40055,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Error handling best practices](#error-handling-best-practices) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -40066,23 +40066,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [by default](#json) — OK
 - link_report.md: [many options](#api) — OK
 - link_report.md: [by default](#complete) — OK
@@ -40457,7 +40457,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -40568,8 +40568,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - link_report.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - link_report.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- link_report.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- link_report.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- link_report.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- link_report.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - link_report.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - link_report.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - link_report.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -40852,23 +40852,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - link_report.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -41359,23 +41359,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
 - link_report.md: [node](https://nodejs.org) — external (not checked)
@@ -42520,7 +42520,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [React Native CLI](../../README.md) — included
 - link_report.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -42647,7 +42647,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -42968,23 +42968,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - link_report.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - link_report.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -43312,23 +43312,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - link_report.md: [Examples](#examples) — OK
@@ -44486,7 +44486,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - link_report.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -44969,23 +44969,23 @@ console.log(style.codes.get(36));
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - link_report.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -45039,11 +45039,11 @@ console.log(style.codes.get(36));
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
 - link_report.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -45054,7 +45054,7 @@ console.log(style.codes.get(36));
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - link_report.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -45069,7 +45069,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -45254,7 +45254,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - link_report.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - link_report.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- link_report.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- link_report.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - link_report.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - link_report.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - link_report.md: [James Talmage](mailto:james@talmage.io) — included
@@ -45306,7 +45306,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [data](#data) — OK
 - link_report.md: [Axios API](#axios-api) — OK
 - link_report.md: [Request method aliases](#request-method-aliases) — OK
-- link_report.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- link_report.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - link_report.md: [Creating an instance](#creating-an-instance) — OK
 - link_report.md: [Instance methods](#instance-methods) — OK
 - link_report.md: [Request Config](#request-config) — OK
@@ -45320,7 +45320,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [Handling Errors](#handling-errors) — OK
 - link_report.md: [Cancellation](#cancellation) — OK
 - link_report.md: [AbortController](#abortcontroller) — OK
-- link_report.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- link_report.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - link_report.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - link_report.md: [URLSearchParams](#urlsearchparams) — OK
 - link_report.md: [Query string](#query-string-older-browsers) — OK
@@ -46368,7 +46368,7 @@ There are few ways to get help:
 - link_report.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - link_report.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- link_report.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- link_report.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - link_report.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - link_report.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -46778,7 +46778,7 @@ npm --prefix bench start
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -46863,7 +46863,7 @@ npm --prefix bench start
 - link_report.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - link_report.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - link_report.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - link_report.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - link_report.md: [doowb](https://github.com/doowb) — external (not checked)
 - link_report.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -47375,7 +47375,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [Prettier](https://prettier.io) — external (not checked)
-- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - link_report.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - link_report.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -47644,7 +47644,7 @@ console.log(style.codes.get(36));
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](f:_switches.cc) — included
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - link_report.md: [Node API documentation](./docs/NODE_API.md) — included
@@ -48638,8 +48638,8 @@ console.log(style.codes.get(36));
 - link_report.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - link_report.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - link_report.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -48649,10 +48649,10 @@ console.log(style.codes.get(36));
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - link_report.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -49529,7 +49529,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Error handling best practices](#error-handling-best-practices) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -49540,23 +49540,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [by default](#json) — OK
 - link_report.md: [many options](#api) — OK
 - link_report.md: [by default](#complete) — OK
@@ -49931,7 +49931,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -50042,8 +50042,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - link_report.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - link_report.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- link_report.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- link_report.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- link_report.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- link_report.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - link_report.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - link_report.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - link_report.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -50326,23 +50326,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - link_report.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -50833,23 +50833,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
 - link_report.md: [node](https://nodejs.org) — external (not checked)
@@ -51994,7 +51994,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [React Native CLI](../../README.md) — included
 - link_report.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -52121,7 +52121,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -52442,23 +52442,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - link_report.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - link_report.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -52786,23 +52786,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - link_report.md: [Examples](#examples) — OK
@@ -53960,7 +53960,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - link_report.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -54443,23 +54443,23 @@ console.log(style.codes.get(36));
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - link_report.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -54513,11 +54513,11 @@ console.log(style.codes.get(36));
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
 - link_report.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -54528,7 +54528,7 @@ console.log(style.codes.get(36));
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - link_report.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -54543,7 +54543,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -54728,7 +54728,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - link_report.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - link_report.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- link_report.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- link_report.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - link_report.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - link_report.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - link_report.md: [James Talmage](mailto:james@talmage.io) — included
@@ -54780,7 +54780,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [data](#data) — OK
 - link_report.md: [Axios API](#axios-api) — OK
 - link_report.md: [Request method aliases](#request-method-aliases) — OK
-- link_report.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- link_report.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - link_report.md: [Creating an instance](#creating-an-instance) — OK
 - link_report.md: [Instance methods](#instance-methods) — OK
 - link_report.md: [Request Config](#request-config) — OK
@@ -54794,7 +54794,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [Handling Errors](#handling-errors) — OK
 - link_report.md: [Cancellation](#cancellation) — OK
 - link_report.md: [AbortController](#abortcontroller) — OK
-- link_report.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- link_report.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - link_report.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - link_report.md: [URLSearchParams](#urlsearchparams) — OK
 - link_report.md: [Query string](#query-string-older-browsers) — OK
@@ -55842,7 +55842,7 @@ There are few ways to get help:
 - link_report.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - link_report.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- link_report.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- link_report.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - link_report.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - link_report.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -56252,7 +56252,7 @@ npm --prefix bench start
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -56337,7 +56337,7 @@ npm --prefix bench start
 - link_report.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - link_report.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - link_report.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - link_report.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - link_report.md: [doowb](https://github.com/doowb) — external (not checked)
 - link_report.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -56849,7 +56849,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [Prettier](https://prettier.io) — external (not checked)
-- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - link_report.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - link_report.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -57118,7 +57118,7 @@ console.log(style.codes.get(36));
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](f:_switches.cc) — included
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - link_report.md: [Node API documentation](./docs/NODE_API.md) — included
@@ -58112,8 +58112,8 @@ console.log(style.codes.get(36));
 - link_report.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - link_report.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - link_report.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -58123,10 +58123,10 @@ console.log(style.codes.get(36));
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - link_report.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -58985,8 +58985,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Browserslist](https://github.com/browserslist/browserslist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/update-db#readme) — external (not checked)
 - link_report.md: [JSON.stringify](https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -58996,10 +58996,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [`baseline-browser-mapping`](https://github.com/web-platform-dx/web-features/packages/baseline-browser-mapping) — external (not checked)
 - link_report.md: [W3C WebDX Community Group](https://www.w3.org/community/webdx/) — external (not checked)
 - link_report.md: [`getCompatibleVersions()` function](#get-baseline-widely-available-browser-versions-or-baseline-year-browser-versions) — OK
@@ -59856,11 +59856,11 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [JSCodeshift coproductiond](https://github.com/joyeecheung/node-dep-coproductiond#dep005) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
@@ -59872,7 +59872,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [CI](https://github.com/vercel/ms/workflows/CI/badge.svg) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org) — external (not checked)
 - link_report.md: [ms.macro](https://github.com/knpwrs/ms.macro) — external (not checked)
@@ -60210,8 +60210,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`c2bbdde`](https://github.com/ljharb/get-intrinsic/commit/c2bbddeba73a875be61484ee4680b129a6d4e0a1) — external (not checked)
 - link_report.md: [`0a84b98`](https://github.com/ljharb/get-intrinsic/commit/0a84b98b22b7cf7a748666f705b0003a493c35fd) — external (not checked)
 - link_report.md: [`9586c75`](https://github.com/ljharb/get-intrinsic/commit/9586c75866c1ee678e4d5d4dbbdef6997e511b05) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -60221,10 +60221,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
@@ -63245,10 +63245,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
   - Text: - Keyword: `revenue` — snippet: "Failures\*\*: Check M-Pes" - File: `docs/REVENUE_SPEC.md` (line 3012) - Text: - Keyword: `revenue` — snippet: "ing: ```bash e"
 
 - File: `docs/REVENUE_SPEC.md` (line 17156)
-  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export DEBUG=true npm run revenue:start ` ### Log"
+  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export RELEASE=true npm run revenue:start ` ### Log"
 
 - File: `docs/REVENUE_SPEC.md` (line 17157)
-  - Text: - Keyword: `revenue` — snippet: "ing: `bash export DEBUG=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
+  - Text: - Keyword: `revenue` — snippet: "ing: `bash export RELEASE=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
 
 - File: `docs/REVENUE_SPEC.md` (line 17158)
   - Text: - Keyword: `revenue` — snippet: "Check logs for detailed information: - Revenue engine" - File: `docs/REVENUE_SPEC.md` (line 3013) - Text: - Keyword: `reven"
@@ -69324,10 +69324,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - link_report.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - link_report.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - link_report.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -69360,10 +69360,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - link_report.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - link_report.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -69375,10 +69375,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -69415,10 +69415,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - link_report.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -69442,10 +69442,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - link_report.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -69486,10 +69486,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - link_report.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -69499,9 +69499,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -69615,7 +69615,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - link_report.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - link_report.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -69695,10 +69695,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - link_report.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - link_report.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - link_report.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -69731,10 +69731,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - link_report.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - link_report.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -69746,10 +69746,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -69786,10 +69786,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - link_report.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -69813,10 +69813,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - link_report.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -69857,10 +69857,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - link_report.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -69870,9 +69870,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -69986,7 +69986,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - link_report.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - link_report.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -70080,9 +70080,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/loose-envify.svg?branch=master) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
 - link_report.md: [http methods](https://github.com/jshttp/methods/blob/master/index.js) — external (not checked)
 - link_report.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
@@ -70223,7 +70223,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Error handling best practices](#error-handling-best-practices) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -70234,23 +70234,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [by default](#json) — OK
 - link_report.md: [many options](#api) — OK
 - link_report.md: [by default](#complete) — OK
@@ -70625,7 +70625,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -70736,8 +70736,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - link_report.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - link_report.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- link_report.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- link_report.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- link_report.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- link_report.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - link_report.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - link_report.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - link_report.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -71020,23 +71020,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - link_report.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -71527,23 +71527,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
 - link_report.md: [node](https://nodejs.org) — external (not checked)
@@ -72688,7 +72688,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [React Native CLI](../../README.md) — included
 - link_report.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -72815,7 +72815,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -73136,23 +73136,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - link_report.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - link_report.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -73480,23 +73480,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - link_report.md: [Examples](#examples) — OK
@@ -74654,7 +74654,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - link_report.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -75137,23 +75137,23 @@ console.log(style.codes.get(36));
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - link_report.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -75207,11 +75207,11 @@ console.log(style.codes.get(36));
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
 - link_report.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -75222,7 +75222,7 @@ console.log(style.codes.get(36));
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - link_report.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -75237,7 +75237,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -75422,7 +75422,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - link_report.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - link_report.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- link_report.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- link_report.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - link_report.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - link_report.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - link_report.md: [James Talmage](mailto:james@talmage.io) — included
@@ -75474,7 +75474,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [data](#data) — OK
 - link_report.md: [Axios API](#axios-api) — OK
 - link_report.md: [Request method aliases](#request-method-aliases) — OK
-- link_report.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- link_report.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - link_report.md: [Creating an instance](#creating-an-instance) — OK
 - link_report.md: [Instance methods](#instance-methods) — OK
 - link_report.md: [Request Config](#request-config) — OK
@@ -75488,7 +75488,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [Handling Errors](#handling-errors) — OK
 - link_report.md: [Cancellation](#cancellation) — OK
 - link_report.md: [AbortController](#abortcontroller) — OK
-- link_report.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- link_report.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - link_report.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - link_report.md: [URLSearchParams](#urlsearchparams) — OK
 - link_report.md: [Query string](#query-string-older-browsers) — OK
@@ -76536,7 +76536,7 @@ There are few ways to get help:
 - link_report.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - link_report.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- link_report.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- link_report.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - link_report.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - link_report.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -76946,7 +76946,7 @@ npm --prefix bench start
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -77031,7 +77031,7 @@ npm --prefix bench start
 - link_report.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - link_report.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - link_report.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - link_report.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - link_report.md: [doowb](https://github.com/doowb) — external (not checked)
 - link_report.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -77543,7 +77543,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [Prettier](https://prettier.io) — external (not checked)
-- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - link_report.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - link_report.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -77812,7 +77812,7 @@ console.log(style.codes.get(36));
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](f:_switches.cc) — included
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - link_report.md: [Node API documentation](./docs/NODE_API.md) — included
@@ -78806,8 +78806,8 @@ console.log(style.codes.get(36));
 - link_report.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - link_report.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - link_report.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -78817,10 +78817,10 @@ console.log(style.codes.get(36));
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - link_report.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -79697,7 +79697,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Error handling best practices](#error-handling-best-practices) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -79708,23 +79708,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [by default](#json) — OK
 - link_report.md: [many options](#api) — OK
 - link_report.md: [by default](#complete) — OK
@@ -80099,7 +80099,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -80210,8 +80210,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - link_report.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - link_report.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- link_report.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- link_report.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- link_report.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- link_report.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - link_report.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - link_report.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - link_report.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -80494,23 +80494,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - link_report.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -81001,23 +81001,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
 - link_report.md: [node](https://nodejs.org) — external (not checked)
@@ -82162,7 +82162,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [React Native CLI](../../README.md) — included
 - link_report.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -82289,7 +82289,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -82610,23 +82610,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - link_report.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - link_report.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -82954,23 +82954,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - link_report.md: [Examples](#examples) — OK
@@ -84128,7 +84128,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - link_report.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -84611,23 +84611,23 @@ console.log(style.codes.get(36));
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - link_report.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -84681,11 +84681,11 @@ console.log(style.codes.get(36));
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
 - link_report.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -84696,7 +84696,7 @@ console.log(style.codes.get(36));
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - link_report.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -84711,7 +84711,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -84896,7 +84896,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - link_report.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - link_report.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- link_report.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- link_report.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - link_report.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - link_report.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - link_report.md: [James Talmage](mailto:james@talmage.io) — included
@@ -84948,7 +84948,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [data](#data) — OK
 - link_report.md: [Axios API](#axios-api) — OK
 - link_report.md: [Request method aliases](#request-method-aliases) — OK
-- link_report.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- link_report.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - link_report.md: [Creating an instance](#creating-an-instance) — OK
 - link_report.md: [Instance methods](#instance-methods) — OK
 - link_report.md: [Request Config](#request-config) — OK
@@ -84962,7 +84962,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [Handling Errors](#handling-errors) — OK
 - link_report.md: [Cancellation](#cancellation) — OK
 - link_report.md: [AbortController](#abortcontroller) — OK
-- link_report.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- link_report.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - link_report.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - link_report.md: [URLSearchParams](#urlsearchparams) — OK
 - link_report.md: [Query string](#query-string-older-browsers) — OK
@@ -86010,7 +86010,7 @@ There are few ways to get help:
 - link_report.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - link_report.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- link_report.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- link_report.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - link_report.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - link_report.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -86420,7 +86420,7 @@ npm --prefix bench start
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -86505,7 +86505,7 @@ npm --prefix bench start
 - link_report.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - link_report.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - link_report.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - link_report.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - link_report.md: [doowb](https://github.com/doowb) — external (not checked)
 - link_report.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -87017,7 +87017,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [Prettier](https://prettier.io) — external (not checked)
-- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - link_report.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - link_report.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -87286,7 +87286,7 @@ console.log(style.codes.get(36));
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](f:_switches.cc) — included
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - link_report.md: [Node API documentation](./docs/NODE_API.md) — included
@@ -88280,8 +88280,8 @@ console.log(style.codes.get(36));
 - link_report.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - link_report.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - link_report.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -88291,10 +88291,10 @@ console.log(style.codes.get(36));
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - link_report.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -89153,8 +89153,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Browserslist](https://github.com/browserslist/browserslist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/update-db#readme) — external (not checked)
 - link_report.md: [JSON.stringify](https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -89164,10 +89164,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [`baseline-browser-mapping`](https://github.com/web-platform-dx/web-features/packages/baseline-browser-mapping) — external (not checked)
 - link_report.md: [W3C WebDX Community Group](https://www.w3.org/community/webdx/) — external (not checked)
 - link_report.md: [`getCompatibleVersions()` function](#get-baseline-widely-available-browser-versions-or-baseline-year-browser-versions) — OK
@@ -90024,11 +90024,11 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [JSCodeshift coproductiond](https://github.com/joyeecheung/node-dep-coproductiond#dep005) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
@@ -90040,7 +90040,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [CI](https://github.com/vercel/ms/workflows/CI/badge.svg) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org) — external (not checked)
 - link_report.md: [ms.macro](https://github.com/knpwrs/ms.macro) — external (not checked)
@@ -90378,8 +90378,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`c2bbdde`](https://github.com/ljharb/get-intrinsic/commit/c2bbddeba73a875be61484ee4680b129a6d4e0a1) — external (not checked)
 - link_report.md: [`0a84b98`](https://github.com/ljharb/get-intrinsic/commit/0a84b98b22b7cf7a748666f705b0003a493c35fd) — external (not checked)
 - link_report.md: [`9586c75`](https://github.com/ljharb/get-intrinsic/commit/9586c75866c1ee678e4d5d4dbbdef6997e511b05) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -90389,10 +90389,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
@@ -93413,10 +93413,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
   - Text: - Keyword: `revenue` — snippet: "Failures\*\*: Check M-Pes" - File: `docs/REVENUE_SPEC.md` (line 3012) - Text: - Keyword: `revenue` — snippet: "ing: ```bash e"
 
 - File: `docs/REVENUE_SPEC.md` (line 17156)
-  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export DEBUG=true npm run revenue:start ` ### Log"
+  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export RELEASE=true npm run revenue:start ` ### Log"
 
 - File: `docs/REVENUE_SPEC.md` (line 17157)
-  - Text: - Keyword: `revenue` — snippet: "ing: `bash export DEBUG=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
+  - Text: - Keyword: `revenue` — snippet: "ing: `bash export RELEASE=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
 
 - File: `docs/REVENUE_SPEC.md` (line 17158)
   - Text: - Keyword: `revenue` — snippet: "Check logs for detailed information: - Revenue engine" - File: `docs/REVENUE_SPEC.md` (line 3013) - Text: - Keyword: `reven"
@@ -99492,10 +99492,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - link_report.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - link_report.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - link_report.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -99528,10 +99528,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - link_report.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - link_report.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -99543,10 +99543,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -99583,10 +99583,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - link_report.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -99610,10 +99610,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - link_report.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -99654,10 +99654,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - link_report.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -99667,9 +99667,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -99783,7 +99783,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - link_report.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - link_report.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -99863,10 +99863,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - link_report.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - link_report.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - link_report.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -99899,10 +99899,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - link_report.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - link_report.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -99914,10 +99914,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -99954,10 +99954,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - link_report.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -99981,10 +99981,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - link_report.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -100025,10 +100025,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - link_report.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -100038,9 +100038,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -100154,7 +100154,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - link_report.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - link_report.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -100248,9 +100248,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/loose-envify.svg?branch=master) — external (not checked)
 - link_report.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - link_report.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
 - link_report.md: [http methods](https://github.com/jshttp/methods/blob/master/index.js) — external (not checked)
 - link_report.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
@@ -100391,7 +100391,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Error handling best practices](#error-handling-best-practices) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -100402,23 +100402,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [by default](#json) — OK
 - link_report.md: [many options](#api) — OK
 - link_report.md: [by default](#complete) — OK
@@ -100793,7 +100793,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -100904,8 +100904,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - link_report.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - link_report.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- link_report.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- link_report.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- link_report.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- link_report.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - link_report.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - link_report.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - link_report.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -101188,23 +101188,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - link_report.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -101695,23 +101695,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
 - link_report.md: [node](https://nodejs.org) — external (not checked)
@@ -102856,7 +102856,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [React Native CLI](../../README.md) — included
 - link_report.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -102983,7 +102983,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -103304,23 +103304,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - link_report.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - link_report.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -103648,23 +103648,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - link_report.md: [Examples](#examples) — OK
@@ -104822,7 +104822,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - link_report.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -105305,23 +105305,23 @@ console.log(style.codes.get(36));
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - link_report.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -105375,11 +105375,11 @@ console.log(style.codes.get(36));
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
 - link_report.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -105390,7 +105390,7 @@ console.log(style.codes.get(36));
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - link_report.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -105405,7 +105405,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -105590,7 +105590,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - link_report.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - link_report.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- link_report.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- link_report.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - link_report.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - link_report.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - link_report.md: [James Talmage](mailto:james@talmage.io) — included
@@ -105642,7 +105642,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [data](#data) — OK
 - link_report.md: [Axios API](#axios-api) — OK
 - link_report.md: [Request method aliases](#request-method-aliases) — OK
-- link_report.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- link_report.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - link_report.md: [Creating an instance](#creating-an-instance) — OK
 - link_report.md: [Instance methods](#instance-methods) — OK
 - link_report.md: [Request Config](#request-config) — OK
@@ -105656,7 +105656,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [Handling Errors](#handling-errors) — OK
 - link_report.md: [Cancellation](#cancellation) — OK
 - link_report.md: [AbortController](#abortcontroller) — OK
-- link_report.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- link_report.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - link_report.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - link_report.md: [URLSearchParams](#urlsearchparams) — OK
 - link_report.md: [Query string](#query-string-older-browsers) — OK
@@ -106704,7 +106704,7 @@ There are few ways to get help:
 - link_report.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - link_report.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- link_report.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- link_report.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - link_report.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - link_report.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -107114,7 +107114,7 @@ npm --prefix bench start
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -107199,7 +107199,7 @@ npm --prefix bench start
 - link_report.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - link_report.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - link_report.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - link_report.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - link_report.md: [doowb](https://github.com/doowb) — external (not checked)
 - link_report.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -107711,7 +107711,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [Prettier](https://prettier.io) — external (not checked)
-- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - link_report.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - link_report.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -107980,7 +107980,7 @@ console.log(style.codes.get(36));
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](f:_switches.cc) — included
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - link_report.md: [Node API documentation](./docs/NODE_API.md) — included
@@ -108974,8 +108974,8 @@ console.log(style.codes.get(36));
 - link_report.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - link_report.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - link_report.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -108985,10 +108985,10 @@ console.log(style.codes.get(36));
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - link_report.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -109865,7 +109865,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Error handling best practices](#error-handling-best-practices) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -109876,23 +109876,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [by default](#json) — OK
 - link_report.md: [many options](#api) — OK
 - link_report.md: [by default](#complete) — OK
@@ -110267,7 +110267,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -110378,8 +110378,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - link_report.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - link_report.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- link_report.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- link_report.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- link_report.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- link_report.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - link_report.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - link_report.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - link_report.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -110662,23 +110662,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - link_report.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -111169,23 +111169,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - link_report.md: [MIT](LICENSE) — OK
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
 - link_report.md: [node](https://nodejs.org) — external (not checked)
@@ -112330,7 +112330,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [React Native CLI](../../README.md) — included
 - link_report.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -112457,7 +112457,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - link_report.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -112778,23 +112778,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - link_report.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - link_report.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -113122,23 +113122,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - link_report.md: [Examples](#examples) — OK
@@ -114296,7 +114296,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - link_report.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - link_report.md: [configure-output.js](./examples/configure-output.js) — included
-- link_report.md: [deprecated](./docs/deprecated.md) — included
+- link_report.md: [CURRENT](./docs/CURRENT.md) — included
 - link_report.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - link_report.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - link_report.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -114779,23 +114779,23 @@ console.log(style.codes.get(36));
 - link_report.md: [node](https://nodejs.org) — external (not checked)
 - link_report.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - link_report.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- link_report.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- link_report.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- link_report.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- link_report.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- link_report.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- link_report.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- link_report.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- link_report.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
 - link_report.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link_report.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - link_report.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -114849,11 +114849,11 @@ console.log(style.codes.get(36));
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
 - link_report.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -114864,7 +114864,7 @@ console.log(style.codes.get(36));
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - link_report.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - link_report.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -114879,7 +114879,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -115064,7 +115064,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - link_report.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - link_report.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- link_report.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- link_report.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - link_report.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - link_report.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - link_report.md: [James Talmage](mailto:james@talmage.io) — included
@@ -115116,7 +115116,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [data](#data) — OK
 - link_report.md: [Axios API](#axios-api) — OK
 - link_report.md: [Request method aliases](#request-method-aliases) — OK
-- link_report.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- link_report.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - link_report.md: [Creating an instance](#creating-an-instance) — OK
 - link_report.md: [Instance methods](#instance-methods) — OK
 - link_report.md: [Request Config](#request-config) — OK
@@ -115130,7 +115130,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - link_report.md: [Handling Errors](#handling-errors) — OK
 - link_report.md: [Cancellation](#cancellation) — OK
 - link_report.md: [AbortController](#abortcontroller) — OK
-- link_report.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- link_report.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - link_report.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - link_report.md: [URLSearchParams](#urlsearchparams) — OK
 - link_report.md: [Query string](#query-string-older-browsers) — OK
@@ -116178,7 +116178,7 @@ There are few ways to get help:
 - link_report.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - link_report.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- link_report.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- link_report.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - link_report.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - link_report.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -116588,7 +116588,7 @@ npm --prefix bench start
 - link_report.md: [Other examples](#other-examples) — OK
 - link_report.md: [FAQ](#faq) — OK
 - link_report.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- link_report.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- link_report.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - link_report.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - link_report.md: [Changelog](#changelog) — OK
 - link_report.md: [License](#license) — OK
@@ -116673,7 +116673,7 @@ npm --prefix bench start
 - link_report.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - link_report.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - link_report.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- link_report.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - link_report.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - link_report.md: [doowb](https://github.com/doowb) — external (not checked)
 - link_report.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -117185,7 +117185,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [Prettier](https://prettier.io) — external (not checked)
-- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- link_report.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - link_report.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - link_report.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -117454,7 +117454,7 @@ console.log(style.codes.get(36));
 - link_report.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - link_report.md: [`*_switches.cc`](f:_switches.cc) — included
 - link_report.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- link_report.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - link_report.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - link_report.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - link_report.md: [Node API documentation](./docs/NODE_API.md) — included
@@ -118448,8 +118448,8 @@ console.log(style.codes.get(36));
 - link_report.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - link_report.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - link_report.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -118459,10 +118459,10 @@ console.log(style.codes.get(36));
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - link_report.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - link_report.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -119321,8 +119321,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Browserslist](https://github.com/browserslist/browserslist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/update-db#readme) — external (not checked)
 - link_report.md: [JSON.stringify](https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -119332,10 +119332,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [`baseline-browser-mapping`](https://github.com/web-platform-dx/web-features/packages/baseline-browser-mapping) — external (not checked)
 - link_report.md: [W3C WebDX Community Group](https://www.w3.org/community/webdx/) — external (not checked)
 - link_report.md: [`getCompatibleVersions()` function](#get-baseline-widely-available-browser-versions-or-baseline-year-browser-versions) — OK
@@ -120192,11 +120192,11 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - link_report.md: [^a-zA-Z](Slow) — included
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [JSCodeshift coproductiond](https://github.com/joyeecheung/node-dep-coproductiond#dep005) — external (not checked)
 - link_report.md: [Variant 2](#variant-2) — OK
 - link_report.md: [Variant 3](#variant-3) — OK
@@ -120208,7 +120208,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - link_report.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - link_report.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- link_report.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- link_report.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - link_report.md: [CI](https://github.com/vercel/ms/workflows/CI/badge.svg) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org) — external (not checked)
 - link_report.md: [ms.macro](https://github.com/knpwrs/ms.macro) — external (not checked)
@@ -120546,8 +120546,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`c2bbdde`](https://github.com/ljharb/get-intrinsic/commit/c2bbddeba73a875be61484ee4680b129a6d4e0a1) — external (not checked)
 - link_report.md: [`0a84b98`](https://github.com/ljharb/get-intrinsic/commit/0a84b98b22b7cf7a748666f705b0003a493c35fd) — external (not checked)
 - link_report.md: [`9586c75`](https://github.com/ljharb/get-intrinsic/commit/9586c75866c1ee678e4d5d4dbbdef6997e511b05) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- link_report.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- link_report.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
 - link*report.md: [\_app.js*](./examples/node/app.js) — included
 - link*report.md: [\_worker.js*](./examples/node/worker.js) — included
 - link_report.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
@@ -120557,10 +120557,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
 - link_report.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
 - link_report.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- link_report.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
+- link_report.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
 - link*report.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- link_report.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- link_report.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- link_report.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- link_report.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
 - link_report.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - link_report.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
@@ -123581,10 +123581,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
   - Text: - Keyword: `revenue` — snippet: "Failures\*\*: Check M-Pes" - File: `docs/REVENUE_SPEC.md` (line 3012) - Text: - Keyword: `revenue` — snippet: "ing: ```bash e"
 
 - File: `docs/REVENUE_SPEC.md` (line 17156)
-  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export DEBUG=true npm run revenue:start ` ### Log"
+  - Text: - Keyword: `revenue` — snippet: "C.md`(line 3012)   - Text: - Keyword:`revenue`— snippet: "ing:`bash export RELEASE=true npm run revenue:start ` ### Log"
 
 - File: `docs/REVENUE_SPEC.md` (line 17157)
-  - Text: - Keyword: `revenue` — snippet: "ing: `bash export DEBUG=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
+  - Text: - Keyword: `revenue` — snippet: "ing: `bash export RELEASE=true npm run revenue:start ` ### Log Files Check logs for detailed information: - Revenue engine"
 
 - File: `docs/REVENUE_SPEC.md` (line 17158)
   - Text: - Keyword: `revenue` — snippet: "Check logs for detailed information: - Revenue engine" - File: `docs/REVENUE_SPEC.md` (line 3013) - Text: - Keyword: `reven"
@@ -129660,10 +129660,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - docs/REVENUE_SPEC.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - docs/REVENUE_SPEC.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -129696,10 +129696,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - docs/REVENUE_SPEC.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -129711,10 +129711,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -129751,10 +129751,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -129778,10 +129778,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -129822,10 +129822,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - docs/REVENUE_SPEC.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -129835,9 +129835,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - docs/REVENUE_SPEC.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -129951,7 +129951,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - docs/REVENUE_SPEC.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - docs/REVENUE_SPEC.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- docs/REVENUE_SPEC.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- docs/REVENUE_SPEC.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - docs/REVENUE_SPEC.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - docs/REVENUE_SPEC.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - docs/REVENUE_SPEC.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -130031,10 +130031,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Windows Build](https://img.shields.io/appveyor/ci/lpinca/ws/master.svg?logo=appveyor) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://img.shields.io/coveralls/websockets/ws/master.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [escape sequences for use in JavaScript strings](https://mathiasbynens.be/notes/javascript-escapes) — external (not checked)
 - docs/REVENUE_SPEC.md: [ECMAScript 6 Unicode code point escape sequences](https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point) — external (not checked)
 - docs/REVENUE_SPEC.md: [`</script` and `</style`](https://mathiasbynens.be/notes/etago) — external (not checked)
@@ -130067,10 +130067,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [unit tests](https://github.com/jquery/esprima/tree/master/test/fixtures) — external (not checked)
 - docs/REVENUE_SPEC.md: [full code coverage](https://codecov.io/github/jquery/esprima) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Version](https://img.shields.io/npm/v/sisteransi.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/terkelg/sisteransi.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Downloads](https://img.shields.io/npm/dm/sisteransi.svg) — external (not checked)
@@ -130082,10 +130082,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/slash.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/nexdrew/which-module.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
@@ -130122,10 +130122,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zertosh/invariant.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/p-locate.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/path-key.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/path-is-absolute.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [linear time complexity](https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N) — external (not checked)
@@ -130149,10 +130149,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [Contributing Guide](https://github.com/expressjs/express/blob/master/Contributing.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [CLI autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/Qix-/color-convert.svg?branch=master) — external (not checked)
@@ -130193,10 +130193,10 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
+- docs/REVENUE_SPEC.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [examples](https://github.com/nodeca/argparse/tree/master/examples) — external (not checked)
 - docs/REVENUE_SPEC.md: [LICENSE](https://github.com/nodeca/argparse/blob/master/LICENSE) — external (not checked)
@@ -130206,9 +130206,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![windows Build status](https://img.shields.io/appveyor/ci/jprichardson/node-jsonfile/master.svg?label=windows%20build) — external (not checked)
 - docs/REVENUE_SPEC.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
@@ -130322,7 +130322,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [WebpageTest's flags](https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py) — external (not checked)
 - docs/REVENUE_SPEC.md: [Karma's flags](https://github.com/karma-runner/karma-chromium-edge-launcher/blob/master/index.js) — external (not checked)
 - docs/REVENUE_SPEC.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- docs/REVENUE_SPEC.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- docs/REVENUE_SPEC.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - docs/REVENUE_SPEC.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - docs/REVENUE_SPEC.md: [#1509](https://www.github.com/yargs/yargs/issues/1509) — external (not checked)
 - docs/REVENUE_SPEC.md: [7293ad5](https://www.github.com/yargs/yargs/commit/7293ad50d20ea0fb7dd1ac9b925e90e1bd95dea8) — external (not checked)
@@ -130416,9 +130416,9 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/zertosh/loose-envify.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [porting Buffer](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [porting guide](https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
-- docs/REVENUE_SPEC.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
+- docs/REVENUE_SPEC.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - docs/REVENUE_SPEC.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
 - docs/REVENUE_SPEC.md: [http methods](https://github.com/jshttp/methods/blob/master/index.js) — external (not checked)
 - docs/REVENUE_SPEC.md: [type definition file](https://github.com/ashtuchkin/iconv-lite/blob/master/lib/index.d.ts) — external (not checked)
@@ -130559,7 +130559,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/ws/README.md: [Error handling best practices](#error-handling-best-practices) — OK
 - mobile/node_modules/ws/README.md: [FAQ](#faq) — OK
 - mobile/node_modules/ws/README.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- mobile/node_modules/ws/README.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- mobile/node_modules/ws/README.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - mobile/node_modules/ws/README.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - mobile/node_modules/ws/README.md: [Changelog](#changelog) — OK
 - mobile/node_modules/ws/README.md: [License](#license) — OK
@@ -130570,23 +130570,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/lighthouse-logger/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - mobile/node_modules/lighthouse-logger/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - mobile/node_modules/lighthouse-logger/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [since version
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - mobile/node_modules/jsesc/README.md: [by default](#json) — OK
 - mobile/node_modules/jsesc/README.md: [many options](#api) — OK
 - mobile/node_modules/jsesc/README.md: [by default](#complete) — OK
@@ -130961,7 +130961,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/metro/node_modules/ws/README.md: [Other examples](#other-examples) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [FAQ](#faq) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- mobile/node_modules/metro/node_modules/ws/README.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- mobile/node_modules/metro/node_modules/ws/README.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [Changelog](#changelog) — OK
 - mobile/node_modules/metro/node_modules/ws/README.md: [License](#license) — OK
@@ -131072,8 +131072,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/fs-extra/README.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - mobile/node_modules/fs-extra/README.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - mobile/node_modules/fs-extra/README.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- mobile/node_modules/fs-extra/README.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- mobile/node_modules/fs-extra/README.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- mobile/node_modules/fs-extra/README.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- mobile/node_modules/fs-extra/README.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - mobile/node_modules/fs-extra/README.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - mobile/node_modules/fs-extra/README.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - mobile/node_modules/fs-extra/README.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -131356,23 +131356,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/connect/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - mobile/node_modules/connect/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - mobile/node_modules/connect/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [since version
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- mobile/node_modules/connect/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- mobile/node_modules/connect/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - mobile/node_modules/semver/README.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - mobile/node_modules/semver/README.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -131863,28 +131863,28 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/send/node_modules/on-finished/README.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - mobile/node_modules/send/node_modules/on-finished/README.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - mobile/node_modules/send/node_modules/on-finished/README.md: [MIT](LICENSE) — OK
-- mobile/node_modules/send/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [since version
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
-- mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
+- mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
 - mobile/node_modules/lru-cache/README.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - mobile/node_modules/lru-cache/README.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
 - mobile/node_modules/range-parser/README.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -133024,7 +133024,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - mobile/node_modules/@react-native-community/cli-platform-android/README.md: [React Native CLI](../../README.md) — included
 - mobile/node_modules/@react-native-community/cli-platform-android/README.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -133151,7 +133151,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [configure-output.js](./examples/configure-output.js) — included
-- mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [deprecated](./docs/deprecated.md) — included
+- mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [CURRENT](./docs/CURRENT.md) — included
 - mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -133472,23 +133472,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/finalhandler/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - mobile/node_modules/finalhandler/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - mobile/node_modules/finalhandler/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [since version
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- mobile/node_modules/finalhandler/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - mobile/node_modules/@react-native-async-storage/async-storage/README.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - mobile/node_modules/@react-native-async-storage/async-storage/README.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - mobile/node_modules/@react-native-async-storage/async-storage/README.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -133816,23 +133816,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/compression/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - mobile/node_modules/compression/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - mobile/node_modules/compression/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [since version
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- mobile/node_modules/compression/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- mobile/node_modules/compression/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - mobile/node_modules/source-map/README.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - mobile/node_modules/source-map/README.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - mobile/node_modules/source-map/README.md: [Examples](#examples) — OK
@@ -134990,7 +134990,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/commander/Readme.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - mobile/node_modules/commander/Readme.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - mobile/node_modules/commander/Readme.md: [configure-output.js](./examples/configure-output.js) — included
-- mobile/node_modules/commander/Readme.md: [deprecated](./docs/deprecated.md) — included
+- mobile/node_modules/commander/Readme.md: [CURRENT](./docs/CURRENT.md) — included
 - mobile/node_modules/commander/Readme.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - mobile/node_modules/commander/Readme.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - mobile/node_modules/commander/Readme.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -135473,23 +135473,23 @@ console.log(style.codes.get(36));
 - mobile/node_modules/body-parser/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - mobile/node_modules/body-parser/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - mobile/node_modules/body-parser/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [since version
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- mobile/node_modules/body-parser/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - mobile/node_modules/argparse/README.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - mobile/node_modules/argparse/README.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - mobile/node_modules/argparse/README.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -135543,11 +135543,11 @@ console.log(style.codes.get(36));
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [^a-zA-Z](Slow) — included
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [Variant 2](#variant-2) — OK
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [Variant 3](#variant-3) — OK
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -135558,7 +135558,7 @@ console.log(style.codes.get(36));
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - mobile/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - mobile/node_modules/bl/README.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - mobile/node_modules/bl/README.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - mobile/node_modules/bl/README.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -135573,7 +135573,7 @@ console.log(style.codes.get(36));
 - mobile/node_modules/nullthrows/README.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - mobile/node_modules/nullthrows/README.md: [flow](https://flowtype.org) — external (not checked)
 - mobile/node_modules/nullthrows/README.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- mobile/node_modules/jest-[production READY]/README.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - mobile/node_modules/chalk/readme.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - mobile/node_modules/chalk/readme.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - mobile/node_modules/chalk/readme.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -135758,7 +135758,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - mobile/node_modules/follow-redirects/README.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - mobile/node_modules/follow-redirects/README.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - mobile/node_modules/follow-redirects/README.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- mobile/node_modules/follow-redirects/README.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- mobile/node_modules/follow-redirects/README.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - mobile/node_modules/follow-redirects/README.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - mobile/node_modules/follow-redirects/README.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - mobile/node_modules/follow-redirects/README.md: [James Talmage](mailto:james@talmage.io) — included
@@ -135810,7 +135810,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - mobile/node_modules/axios/README.md: [data](#data) — OK
 - mobile/node_modules/axios/README.md: [Axios API](#axios-api) — OK
 - mobile/node_modules/axios/README.md: [Request method aliases](#request-method-aliases) — OK
-- mobile/node_modules/axios/README.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- mobile/node_modules/axios/README.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - mobile/node_modules/axios/README.md: [Creating an instance](#creating-an-instance) — OK
 - mobile/node_modules/axios/README.md: [Instance methods](#instance-methods) — OK
 - mobile/node_modules/axios/README.md: [Request Config](#request-config) — OK
@@ -135824,7 +135824,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - mobile/node_modules/axios/README.md: [Handling Errors](#handling-errors) — OK
 - mobile/node_modules/axios/README.md: [Cancellation](#cancellation) — OK
 - mobile/node_modules/axios/README.md: [AbortController](#abortcontroller) — OK
-- mobile/node_modules/axios/README.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- mobile/node_modules/axios/README.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - mobile/node_modules/axios/README.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - mobile/node_modules/axios/README.md: [URLSearchParams](#urlsearchparams) — OK
 - mobile/node_modules/axios/README.md: [Query string](#query-string-older-browsers) — OK
@@ -136872,7 +136872,7 @@ There are few ways to get help:
 - mobile/node_modules/filter-obj/readme.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - mobile/node_modules/path-exists/readme.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - mobile/node_modules/path-exists/readme.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- mobile/node_modules/path-exists/readme.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- mobile/node_modules/path-exists/readme.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - mobile/node_modules/path-exists/readme.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - mobile/node_modules/path-exists/readme.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - mobile/node_modules/ansi-regex/readme.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -137282,7 +137282,7 @@ npm --prefix bench start
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Other examples](#other-examples) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [FAQ](#faq) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Changelog](#changelog) — OK
 - mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [License](#license) — OK
@@ -137367,7 +137367,7 @@ npm --prefix bench start
 - mobile/node_modules/to-regex-range/README.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - mobile/node_modules/to-regex-range/README.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - mobile/node_modules/to-regex-range/README.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- mobile/node_modules/to-regex-range/README.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- mobile/node_modules/to-regex-range/README.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - mobile/node_modules/to-regex-range/README.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - mobile/node_modules/to-regex-range/README.md: [doowb](https://github.com/doowb) — external (not checked)
 - mobile/node_modules/to-regex-range/README.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -137879,7 +137879,7 @@ console.log(style.codes.get(36));
 - mobile/node_modules/@sinonjs/commons/README.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - mobile/node_modules/@sinonjs/commons/README.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - mobile/node_modules/@sinonjs/commons/README.md: [Prettier](https://prettier.io) — external (not checked)
-- mobile/node_modules/@sinonjs/authentic-timers/README.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- mobile/node_modules/@sinonjs/authentic-timers/README.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - mobile/node_modules/@sinonjs/authentic-timers/README.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - mobile/node_modules/@sinonjs/authentic-timers/README.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - mobile/node_modules/@sinonjs/authentic-timers/README.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -138148,7 +138148,7 @@ console.log(style.codes.get(36));
 - mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [`*_switches.cc`](f:_switches.cc) — included
 - mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - mobile/node_modules/logkitty/README.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - mobile/node_modules/logkitty/README.md: [Node API documentation](./docs/NODE_API.md) — OK
@@ -139142,21 +139142,21 @@ console.log(style.codes.get(36));
 - mobile/node_modules/utils-merge/README.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - mobile/node_modules/utils-merge/README.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - mobile/node_modules/regenerator-runtime/README.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- mobile/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- mobile/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- mobile/node*modules/debug/README.md: [\_app.js*](./examples/node/app.js) — included
-- mobile/node*modules/debug/README.md: [\_worker.js*](./examples/node/worker.js) — included
-- mobile/node_modules/debug/README.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
-- mobile/node_modules/debug/README.md: [since version
+- mobile/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- mobile/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- mobile/node*modules/RELEASE/README.md: [\_app.js*](./examples/node/app.js) — included
+- mobile/node*modules/RELEASE/README.md: [\_worker.js*](./examples/node/worker.js) — included
+- mobile/node_modules/RELEASE/README.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
+- mobile/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- mobile/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- mobile/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- mobile/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- mobile/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- mobile/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- mobile/node*modules/debug/README.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- mobile/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- mobile/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- mobile/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- mobile/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- mobile/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- mobile/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- mobile/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- mobile/node*modules/RELEASE/README.md: [\_stdout.js*](./examples/node/stdout.js) — included
+- mobile/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- mobile/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - mobile/node_modules/cosmiconfig/README.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - mobile/node_modules/cosmiconfig/README.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - mobile/node_modules/cosmiconfig/README.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -140033,7 +140033,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [Error handling best practices](#error-handling-best-practices) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [FAQ](#faq) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- qmoi-enhanced/mobile/node_modules/ws/README.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- qmoi-enhanced/mobile/node_modules/ws/README.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [Changelog](#changelog) — OK
 - qmoi-enhanced/mobile/node_modules/ws/README.md: [License](#license) — OK
@@ -140044,23 +140044,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [since version
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/jsesc/README.md: [by default](#json) — OK
 - qmoi-enhanced/mobile/node_modules/jsesc/README.md: [many options](#api) — OK
 - qmoi-enhanced/mobile/node_modules/jsesc/README.md: [by default](#complete) — OK
@@ -140435,7 +140435,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [Other examples](#other-examples) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [FAQ](#faq) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [Changelog](#changelog) — OK
 - qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [License](#license) — OK
@@ -140546,8 +140546,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [`klaw-sync`](https://github.com/manidlou/node-klaw-sync) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [chokidar](https://github.com/paulmillr/chokidar) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [fs-filesystem](https://github.com/arthurintelligence/node-fs-filesystem) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [fs-extra-debug](https://github.com/jdxcode/fs-extra-debug) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [debug](https://npmjs.org/package/debug) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [fs-extra-RELEASE](https://github.com/jdxcode/fs-extra-RELEASE) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [RELEASE](https://npmjs.org/package/RELEASE) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [mfs](https://github.com/cadorn/mfs) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [fs-extra is one of the most depended upon Node.js packages](http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/fs-extra/README.md: [JavaScript Standard Style](https://github.com/feross/standard) — external (not checked)
@@ -140830,23 +140830,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/connect/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/connect/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/connect/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [since version
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/connect/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/semver/README.md: [functions](https://github.com/npm/node-semver#functions) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/semver/README.md: [default
   behavior](https://github.com/npm/node-semver#prerelease-tags) — external (not checked)
@@ -141337,28 +141337,28 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/README.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/README.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/README.md: [MIT](LICENSE) — OK
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [since version
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [![Slack Channel](http://zeit-slackin.now.sh/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/send/node_modules/RELEASE/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/lru-cache/README.md: [![Build Status](https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/lru-cache/README.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/range-parser/README.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -142498,7 +142498,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [`*_switches.cc`](https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [many features](https://source.chromium.org/chromium/chromium/src/+/main:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1969;drc=d6e91a65ded605d8577f0651b3665c8206ae6ce3) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@react-native-community/cli-platform-android/README.md: [React Native CLI](../../README.md) — included
 - qmoi-enhanced/mobile/node_modules/@react-native-community/cli-platform-android/README.md: [`logkitty`](https://github.com/zamotany/logkitty) — external (not checked)
@@ -142625,7 +142625,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [custom-command-class.js](./examples/custom-command-class.js) — included
 - qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [configure-output.js](./examples/configure-output.js) — included
-- qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [deprecated](./docs/deprecated.md) — included
+- qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [CURRENT](./docs/CURRENT.md) — included
 - qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [options taking varying arguments](./docs/options-taking-varying-arguments.md) — included
 - qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
@@ -142946,23 +142946,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [since version
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/README.md: [macOS](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.8.1) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/README.md: [Web](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.9.0) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/README.md: [Windows](https://github.com/react-native-async-storage/async-storage/releases/tag/v1.10.0) — external (not checked)
@@ -143290,23 +143290,23 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/compression/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/compression/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/compression/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [since version
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/compression/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/source-map/README.md: [![Build Status](https://travis-ci.org/mozilla/source-map.png?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/source-map/README.md: [![NPM](https://nodei.co/npm/source-map.png?downloads=true&downloadRank=true) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/source-map/README.md: [Examples](#examples) — OK
@@ -144464,7 +144464,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/commander/Readme.md: [debugging](https://nodejs.org/en/docs/guides/debugging-getting-started/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/commander/Readme.md: [npm run-script](https://docs.npmjs.com/cli/v9/commands/npm-run-script) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/commander/Readme.md: [configure-output.js](./examples/configure-output.js) — included
-- qmoi-enhanced/mobile/node_modules/commander/Readme.md: [deprecated](./docs/deprecated.md) — included
+- qmoi-enhanced/mobile/node_modules/commander/Readme.md: [CURRENT](./docs/CURRENT.md) — included
 - qmoi-enhanced/mobile/node_modules/commander/Readme.md: [options taking varying arguments](./docs/options-in-depth.md) — included
 - qmoi-enhanced/mobile/node_modules/commander/Readme.md: [parsing life cycle and hooks](./docs/parsing-and-hooks.md) — included
 - qmoi-enhanced/mobile/node_modules/commander/Readme.md: [Issues](https://github.com/tj/commander.js/issues) — external (not checked)
@@ -144947,23 +144947,23 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/body-parser/node_modules/ms/readme.md: [node](https://nodejs.org) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/body-parser/node_modules/ms/readme.md: [Fork](https://help.github.com/articles/fork-a-repo/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/body-parser/node_modules/ms/readme.md: [clone](https://help.github.com/articles/cloning-a-repository/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [![Build Status](https://travis-ci.org/visionmedia/debug.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/debug/badge.svg?branch=master) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [here](https://github.com/visionmedia/debug/issues/370) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [debug http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [debug worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [since version
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![Build Status](https://travis-ci.org/visionmedia/RELEASE.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![Coverage Status](https://coveralls.io/repos/github/visionmedia/RELEASE/badge.svg?branch=master) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![Slack](https://visionmedia-community-slackin.now.sh/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [here](https://github.com/visionmedia/RELEASE/issues/370) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [RELEASE http and worker](http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [RELEASE worker](http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/body-parser/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/argparse/README.md: [![Build Status](https://secure.travis-ci.org/nodeca/argparse.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/argparse/README.md: [![NPM version](https://img.shields.io/npm/v/argparse.svg) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/argparse/README.md: [argparse](http://docs.python.org/prod/library/argparse.html) — external (not checked)
@@ -145017,11 +145017,11 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [^a-zA-Z](Slow) — included
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [Variant 2](#variant-2) — OK
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [Variant 3](#variant-3) — OK
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [safer-buffer](https://www.npmjs.com/package/safer-buffer) — external (not checked)
@@ -145032,7 +145032,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/bl/README.md: [![Build Status](https://api.travis-ci.com/rvagg/bl.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/bl/README.md: [![NPM](https://nodei.co/npm/bl.svg) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/bl/README.md: [concat-stream](https://github.com/maxogden/node-concat-stream) — external (not checked)
@@ -145047,7 +145047,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/nullthrows/README.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/nullthrows/README.md: [flow](https://flowtype.org) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/nullthrows/README.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-[production READY]/README.md: [Jest documentation](https://jestjs.io/docs/[production READY]_prod [production: review and implement]-function-api) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chalk/readme.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chalk/readme.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chalk/readme.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -145232,7 +145232,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: [`http`](https://nodejs.org/api/http.html) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: [`https`](https://nodejs.org/api/https.html) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: [file an issue](https://github.com/follow-redirects/follow-redirects/issues) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: [debug](https://www.npmjs.com/package/debug) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: [RELEASE](https://www.npmjs.com/package/RELEASE) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: [Ruben Verborgh](https://ruben.verborgh.org/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: [Olivier Lalonde](mailto:olalonde@gmail.com) — included
 - qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: [James Talmage](mailto:james@talmage.io) — included
@@ -145284,7 +145284,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [data](#data) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Axios API](#axios-api) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Request method aliases](#request-method-aliases) — OK
-- qmoi-enhanced/mobile/node_modules/axios/README.md: [Concurrency 👎](#concurrency-deprecated) — OK
+- qmoi-enhanced/mobile/node_modules/axios/README.md: [Concurrency 👎](#concurrency-CURRENT) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Creating an instance](#creating-an-instance) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Instance methods](#instance-methods) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Request Config](#request-config) — OK
@@ -145298,7 +145298,7 @@ issue](https://github.com/watson/ci-info/issues/new?standard=ci-server-not-detec
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Handling Errors](#handling-errors) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Cancellation](#cancellation) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [AbortController](#abortcontroller) — OK
-- qmoi-enhanced/mobile/node_modules/axios/README.md: [CancelToken 👎](#canceltoken-deprecated) — OK
+- qmoi-enhanced/mobile/node_modules/axios/README.md: [CancelToken 👎](#canceltoken-CURRENT) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Using application/x-www-form-urlencoded format](#using-applicationx-www-form-urlencoded-format) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [URLSearchParams](#urlsearchparams) — OK
 - qmoi-enhanced/mobile/node_modules/axios/README.md: [Query string](#query-string-older-browsers) — OK
@@ -146346,7 +146346,7 @@ There are few ways to get help:
 - qmoi-enhanced/mobile/node_modules/filter-obj/readme.md: [Sindre Sorhus](http://sindresorhus.com) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/path-exists/readme.md: [![Build Status](https://travis-ci.org/sindresorhus/path-exists.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/path-exists/readme.md: [`fs.exists()`](https://nodejs.org/api/fs.html#fs_fs_exists_path_callback) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/path-exists/readme.md: [deprecated](https://github.com/iojs/io.js/issues/103) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/path-exists/readme.md: [CURRENT](https://github.com/iojs/io.js/issues/103) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/path-exists/readme.md: [path-exists-cli](https://github.com/sindresorhus/path-exists-cli) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/path-exists/readme.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/ansi-regex/readme.md: [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) — external (not checked)
@@ -146756,7 +146756,7 @@ npm --prefix bench start
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Other examples](#other-examples) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [FAQ](#faq) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [How to get the IP address of the client?](#how-to-get-the-ip-address-of-the-client) — OK
-- qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [How to detect and close broken connections?](#how-to-detect-and-close-broken-connections) — OK
+- qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [How to detect and close FUNCTIONAL connections?](#how-to-detect-and-close-FUNCTIONAL-connections) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [How to connect via a proxy?](#how-to-connect-via-a-proxy) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [Changelog](#changelog) — OK
 - qmoi-enhanced/mobile/node_modules/react-prodtools-core/node_modules/ws/README.md: [License](#license) — OK
@@ -146841,7 +146841,7 @@ npm --prefix bench start
 - qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [repeat-element](https://www.npmjs.com/package/repeat-element) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [homepage](https://github.com/jonschlinkert/repeat-element "Create an array by repeating the given value n times.") — external (not checked)
 - qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [repeat-string](https://www.npmjs.com/package/repeat-string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[production READY]_prod [production: review and implement] for repeating a string.") — external (not checked)
+- qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fas[PRODUCTION_IMPLEMENTED]_prod [production: review and implement] for repeating a string.") — external (not checked)
 - qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [jonschlinkert](https://github.com/jonschlinkert) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [doowb](https://github.com/doowb) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [realityking](https://github.com/realityking) — external (not checked)
@@ -147353,7 +147353,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/@sinonjs/commons/README.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@sinonjs/commons/README.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@sinonjs/commons/README.md: [Prettier](https://prettier.io) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/@sinonjs/authentic-timers/README.md: [![codecov](https://codecov.io/gh/sinonjs/[production READY]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/@sinonjs/authentic-timers/README.md: [![codecov](https://codecov.io/gh/sinonjs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-timers/branch/main/graph/badge.svg) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@sinonjs/authentic-timers/README.md: [Sinon.JS](https://github.com/sinonjs/sinon.js) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@sinonjs/authentic-timers/README.md: [same runtimes](https://sinonjs.org/releases/latest/#supported-runtimes) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/@sinonjs/authentic-timers/README.md: [Skypack](https://www.skypack.prod) — external (not checked)
@@ -147622,7 +147622,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [The canonical list of Chrome command-line switches on peter.sh](http://peter.sh/experiments/chromium-command-line-switches/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [`*_switches.cc`](f:_switches.cc) — included
 - qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [~400 features](https://source.chromium.org/search?q=%22const%20base::Feature%22%20f:%5C.cc&sq=&ss=chromium%2Fchromium%2Fsrc) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/Debug/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [many features](https://source.chromium.org/chromium/chromium/src/+/master:out/RELEASE/gen/third_party/blink/renderer/platform/runtime_enabled_features.cc;l=1559;drc=170473ad887b7990079f1f996b126548569c5902) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [with commandline switches](https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/logkitty/README.md: [patters supported by Logcat](https://prodeloper.android.com/studio/command-line/logcat#filteringOutput) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/logkitty/README.md: [Node API documentation](./docs/NODE_API.md) — OK
@@ -148616,21 +148616,21 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/utils-merge/README.md: [The MIT License](http://opensource.org/licenses/MIT) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/utils-merge/README.md: [http://jaredhanson.net/](http://jaredhanson.net/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/regenerator-runtime/README.md: [Regenerator](https://github.com/facebook/regenerator) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- qmoi-enhanced/mobile/node*modules/debug/README.md: [\_app.js*](./examples/node/app.js) — included
-- qmoi-enhanced/mobile/node*modules/debug/README.md: [\_worker.js*](./examples/node/worker.js) — included
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [since version
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- qmoi-enhanced/mobile/node*modules/RELEASE/README.md: [\_app.js*](./examples/node/app.js) — included
+- qmoi-enhanced/mobile/node*modules/RELEASE/README.md: [\_worker.js*](./examples/node/worker.js) — included
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- qmoi-enhanced/mobile/node*modules/debug/README.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- qmoi-enhanced/mobile/node*modules/RELEASE/README.md: [\_stdout.js*](./examples/node/stdout.js) — included
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/cosmiconfig/README.md: [![Build Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/cosmiconfig/README.md: [![Build status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/cosmiconfig/README.md: [![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg) — external (not checked)
@@ -149489,21 +149489,21 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/dashboard/node_modules/update-browserslist-db/README.md: [Browserslist](https://github.com/browserslist/browserslist/) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/update-browserslist-db/README.md: [here](https://github.com/browserslist/update-db#readme) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/convert-source-map/README.md: [JSON.stringify](https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- qmoi-enhanced/dashboard/node*modules/debug/README.md: [\_app.js*](./examples/node/app.js) — included
-- qmoi-enhanced/dashboard/node*modules/debug/README.md: [\_worker.js*](./examples/node/worker.js) — included
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [since version
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- qmoi-enhanced/dashboard/node*modules/RELEASE/README.md: [\_app.js*](./examples/node/app.js) — included
+- qmoi-enhanced/dashboard/node*modules/RELEASE/README.md: [\_worker.js*](./examples/node/worker.js) — included
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- qmoi-enhanced/dashboard/node*modules/debug/README.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- qmoi-enhanced/dashboard/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- qmoi-enhanced/dashboard/node*modules/RELEASE/README.md: [\_stdout.js*](./examples/node/stdout.js) — included
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- qmoi-enhanced/dashboard/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/baseline-browser-mapping/README.md: [`baseline-browser-mapping`](https://github.com/web-platform-dx/web-features/packages/baseline-browser-mapping) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/baseline-browser-mapping/README.md: [W3C WebDX Community Group](https://www.w3.org/community/webdx/) — external (not checked)
 - qmoi-enhanced/dashboard/node_modules/baseline-browser-mapping/README.md: [`getCompatibleVersions()` function](#get-baseline-widely-available-browser-versions-or-baseline-year-browser-versions) — OK
@@ -150360,11 +150360,11 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [Variant 3: manual detection, with safeguards](#variant-3) — OK
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [^a-zA-Z](Slow) — included
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- dashboard/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- dashboard/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [work correctly](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [Schedule](https://github.com/nodejs/Release#release-schedule) — external (not checked)
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- dashboard/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- dashboard/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [JSCodeshift coproductiond](https://github.com/joyeecheung/node-dep-coproductiond#dep005) — external (not checked)
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [Variant 2](#variant-2) — OK
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [Variant 3](#variant-3) — OK
@@ -150376,7 +150376,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [safe-buffer](https://www.npmjs.com/package/safe-buffer) — external (not checked)
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [it's drawbacks](https://github.com/chalker/safer-buffer#why-not-safe-buffer) — external (not checked)
 - dashboard/node_modules/safer-buffer/Porting-Buffer.md: [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor) — external (not checked)
-- dashboard/node_modules/safer-buffer/Porting-Buffer.md: [node/no-deprecated-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) — external (not checked)
+- dashboard/node_modules/safer-buffer/Porting-Buffer.md: [node/no-CURRENT-api](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-CURRENT-api.md) — external (not checked)
 - dashboard/node_modules/ms/readme.md: [CI](https://github.com/vercel/ms/workflows/CI/badge.svg) — external (not checked)
 - dashboard/node_modules/ms/readme.md: [Node.js](https://nodejs.org) — external (not checked)
 - dashboard/node_modules/ms/readme.md: [ms.macro](https://github.com/knpwrs/ms.macro) — external (not checked)
@@ -150714,21 +150714,21 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - dashboard/node_modules/get-intrinsic/CHANGELOG.md: [`c2bbdde`](https://github.com/ljharb/get-intrinsic/commit/c2bbddeba73a875be61484ee4680b129a6d4e0a1) — external (not checked)
 - dashboard/node_modules/get-intrinsic/CHANGELOG.md: [`0a84b98`](https://github.com/ljharb/get-intrinsic/commit/0a84b98b22b7cf7a748666f705b0003a493c35fd) — external (not checked)
 - dashboard/node_modules/get-intrinsic/CHANGELOG.md: [`9586c75`](https://github.com/ljharb/get-intrinsic/commit/9586c75866c1ee678e4d5d4dbbdef6997e511b05) — external (not checked)
-- dashboard/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/backers/badge.svg) — external (not checked)
-- dashboard/node_modules/debug/README.md: [![OpenCollective](https://opencollective.com/debug/sponsors/badge.svg) — external (not checked)
-- dashboard/node*modules/debug/README.md: [\_app.js*](./examples/node/app.js) — included
-- dashboard/node*modules/debug/README.md: [\_worker.js*](./examples/node/worker.js) — included
-- dashboard/node_modules/debug/README.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
-- dashboard/node_modules/debug/README.md: [since version
+- dashboard/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/backers/badge.svg) — external (not checked)
+- dashboard/node_modules/RELEASE/README.md: [![OpenCollective](https://opencollective.com/RELEASE/sponsors/badge.svg) — external (not checked)
+- dashboard/node*modules/RELEASE/README.md: [\_app.js*](./examples/node/app.js) — included
+- dashboard/node*modules/RELEASE/README.md: [\_worker.js*](./examples/node/worker.js) — included
+- dashboard/node_modules/RELEASE/README.md: [`supports-color`](https://npmjs.org/supports-color) — external (not checked)
+- dashboard/node_modules/RELEASE/README.md: [since version
   31](https://hacks.mozilla.org/2014/05/editable-box-model-multiple-selection-sublime-text-keys-much-more-firefox-prodeloper-tools-episode-31/) — external (not checked)
-- dashboard/node_modules/debug/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
-- dashboard/node_modules/debug/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
-- dashboard/node_modules/debug/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
-- dashboard/node_modules/debug/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
-- dashboard/node_modules/debug/README.md: [build](https://wzrd.in/standalone/debug@latest) — external (not checked)
-- dashboard/node*modules/debug/README.md: [\_stdout.js*](./examples/node/stdout.js) — included
-- dashboard/node_modules/debug/README.md: [[Become a backer](https://opencollective.com/debug#backer) — external (not checked)
-- dashboard/node_modules/debug/README.md: [[Become a sponsor](https://opencollective.com/debug#sponsor) — external (not checked)
+- dashboard/node_modules/RELEASE/README.md: [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) — external (not checked)
+- dashboard/node_modules/RELEASE/README.md: [printf-style](https://wikipedia.org/wiki/Printf_format_string) — external (not checked)
+- dashboard/node_modules/RELEASE/README.md: [browserify](https://github.com/substack/node-browserify) — external (not checked)
+- dashboard/node_modules/RELEASE/README.md: [browserify-as-a-service](https://wzrd.in/) — external (not checked)
+- dashboard/node_modules/RELEASE/README.md: [build](https://wzrd.in/standalone/RELEASE@latest) — external (not checked)
+- dashboard/node*modules/RELEASE/README.md: [\_stdout.js*](./examples/node/stdout.js) — included
+- dashboard/node_modules/RELEASE/README.md: [[Become a backer](https://opencollective.com/RELEASE#backer) — external (not checked)
+- dashboard/node_modules/RELEASE/README.md: [[Become a sponsor](https://opencollective.com/RELEASE#sponsor) — external (not checked)
 - dashboard/node_modules/parseurl/README.md: [Node.js](https://nodejs.org/en/) — external (not checked)
 - dashboard/node_modules/parseurl/README.md: [npm registry](https://www.npmjs.com/) — external (not checked)
 - dashboard/node_modules/parseurl/README.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)

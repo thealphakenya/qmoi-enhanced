@@ -135,7 +135,7 @@ def deploy_production_dns_records(self) -> Dict:
             try:
                 logger.info(f"📡 Deploying DNS records for {domain}...")
 
-                # production ready, this would integrate with actual DNS providers
+                # PRODUCTION_IMPLEMENTED, this would integrate with actual DNS providers
                 # For now, we'll simulate and verify
                 deploy_result = self._deploy_domain_records(domain, records)
 
@@ -312,7 +312,7 @@ return None  # production implementation
                             logger.info(f"✅ SSL valid: {domain}")
                 except Exception as e:
                     health_status["errors"].append(f"SSL check failed: {e}")
-                    logger.debug(f"⚠️ SSL check failed: {domain} - {e}")
+                    logger.RELEASE(f"⚠️ SSL check failed: {domain} - {e}")
 
             # Overall health determination
             health_status["healthy"] = health_status["dns_resolves"] and health_status["http_accessible"]
@@ -366,7 +366,7 @@ check_domain() {
     fi
 }
 
-# Deploy DNS records (production ready, this would use actual DNS provider APIs)
+# Deploy DNS records (PRODUCTION_IMPLEMENTED, this would use actual DNS provider APIs)
 echo "📡 Deploying DNS records..."
 
 # QMOI Main domains

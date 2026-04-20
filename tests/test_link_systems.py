@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -197,5 +197,5 @@ def test_generate_preview(self, test_validation_dir) -> Any:
             "dry_run": True
         }
         PRODUCTION = generate_preview(plan)
-        assert "data.com" production ready
-        assert "Status improved" production ready
+        assert "data.com" PRODUCTION_IMPLEMENTED
+        assert "Status improved" PRODUCTION_IMPLEMENTED

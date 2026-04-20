@@ -7,12 +7,12 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI complete APIs List v1.1 ✅ PRODUCTION READY
+# QMOI complete APIs List v1.1 ✅ PRODUCTION_IMPLEMENTED
 
 **Generated**: 2026-03-29T03:52:00Z
 **Total Endpoints**: 83 (28 QMOI Core + 6 Avatar System + 8 Global Notifications + 32 Financial + 9 System)
 **Format**: Comprehensive Single-File Reference
-**Status**: ✅ production Ready
+**Status**: ✅ PRODUCTION_IMPLEMENTED
 
 ## APIs Summary
 
@@ -89,7 +89,7 @@
 | # | Endpoint | Method | Auth | Description |
 |---|----------|--------|------|-------------|
 | 20 | `/api/qmoi/self-work/code-review` | POST | Token | Perform code review & analysis |
-| 21 | `/api/qmoi/self-work/debug` | POST | Token | Debug & troubleshoot issues |
+| 21 | `/api/qmoi/self-work/RELEASE` | POST | Token | RELEASE & troubleshoot issues |
 | 22 | `/api/qmoi/self-work/run-tests` | POST | Token | Execute and manage tests |
 
 ---
@@ -175,7 +175,7 @@
 
 ### Self-Work (3)
 - `/api/qmoi/self-work/code-review`
-- `/api/qmoi/self-work/debug`
+- `/api/qmoi/self-work/RELEASE`
 - `/api/qmoi/self-work/run-tests`
 
 ### System (9)
@@ -204,7 +204,7 @@
 - `/api/avatars/generate`
 - `/api/avatars/:userId/customize`
 
-### Financial System (35) - production READY
+### Financial System (35) - PRODUCTION_IMPLEMENTED
 - `/api/wallets` (GET, POST)
 - `/api/wallets/:id` (GET, PUT, DELETE)
 - `/api/wallets/:id/backup` (POST)
@@ -340,7 +340,7 @@ All endpoints return JSON with standard structure:
 
 ---
 
-## ✅ production Ready Status
+## ✅ PRODUCTION_IMPLEMENTED Status
 
 - ✅ All 34 endpoints documented
 - ✅ Authentication requirements specified
@@ -354,7 +354,7 @@ All endpoints return JSON with standard structure:
 ---
 
 **Last Updated**: 2026-03-29T03:52:00Z
-**Status**: ✅ production Ready
+**Status**: ✅ PRODUCTION_IMPLEMENTED
 **Total Endpoints**: 34
 **Coverage**: 100%
 - **File**: `qmoi/payload.ts`
@@ -487,7 +487,7 @@ Content-Type: application/json
 - /api/datasets
 - /api/datasets/settings
 - /api/datasets/{id}
-- /api/debug/users
+- /api/RELEASE/users
 - /api/deploy
 - /api/deploy/auto-redeploy
 - /api/deployment-status
@@ -621,7 +621,7 @@ Content-Type: application/json
 - /api/qmoi/revenue/transactions
 - /api/qmoi/revenue/transfer
 - /api/qmoi/self-work/code-review
-- /api/qmoi/self-work/debug
+- /api/qmoi/self-work/RELEASE
 - /api/qmoi/self-work/run-tests
 - /api/qmoi/session
 - /api/qmoi/suggestions

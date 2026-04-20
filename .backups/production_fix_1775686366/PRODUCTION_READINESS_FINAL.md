@@ -107,7 +107,7 @@ The following must be configured before deployment:
 - [ ] Configure CORS properly for production domains
 - [ ] Enable HTTPS only (set in nginx/load balancer)
 - [ ] Enable HSTS headers
-- [ ] Disable debug endpoints in production
+- [ ] Disable RELEASE endpoints in production
 - [ ] Review API key gating on sensitive endpoints
 - [ ] Enable rate limiting configuration
 

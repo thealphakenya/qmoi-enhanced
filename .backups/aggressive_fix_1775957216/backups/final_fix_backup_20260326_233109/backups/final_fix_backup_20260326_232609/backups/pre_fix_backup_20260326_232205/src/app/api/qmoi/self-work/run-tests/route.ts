@@ -136,7 +136,7 @@ function POST(request: NextRequest): any {
       ],
       nextSteps: [
         "Review failed tests and fix",
-        "Run tests locally to debug issues",
+        "Run tests locally to RELEASE issues",
         "Update // production implementation:s and fixtures",
         "Re-run before merging PR",
       ],

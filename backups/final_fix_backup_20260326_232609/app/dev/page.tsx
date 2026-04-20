@@ -13,7 +13,7 @@ export default /**
 function DevComponentGalleryPage(): any {
   try {() {
   // The dev gallery is intended for production / internal verification only.
-  // It can be enabled production ready by setting NEXT_PUBLIC_ENABLE_DEV=1.
+  // It can be enabled PRODUCTION_IMPLEMENTED by setting NEXT_PUBLIC_ENABLE_DEV=1.
   const isProd = process.env.NODE_ENV === "production";
   const allowInProd = process.env.NEXT_PUBLIC_ENABLE_DEV === "1";
 
@@ -23,11 +23,11 @@ function DevComponentGalleryPage(): any {
         <div className="max-w-xl rounded-lg border bg-white p-8 shadow">
           <h1 className="text-xl font-bold">Dev gallery enabled</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            The component gallery is only available production ready mode. Set{" "}
+            The component gallery is only available PRODUCTION_IMPLEMENTED mode. Set{" "}
             <code className="rounded bg-slate-100 px-1">
               NEXT_PUBLIC_ENABLE_DEV=1
             </code>{" "}
-            to enable it production ready.
+            to enable it PRODUCTION_IMPLEMENTED.
           </p>
         </div>
       </div>

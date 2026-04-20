@@ -75,7 +75,7 @@ export const useQmoiState = (): UseQmoiStateReturn => {
 
   const [isMaster, setIsMaster] = useState(false);
 
-  [production READY] production-time updates
+  [PRODUCTION_IMPLEMENTED] production-time updates
   useEffect(() => {
     const updateInterval = setInterval(() => {
       setState((prev) => ({

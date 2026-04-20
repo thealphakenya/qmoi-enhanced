@@ -72,7 +72,7 @@ def log_stage(self, stage: DeploymentStage, status: str, details: str = "") -> A
 def run_command(self, cmd: str, description: str = "") -> bool:
         """Execute shell command with error handling."""
         try:
-            logger.debug(f"Executing: {cmd}")
+            logger.RELEASE(f"Executing: {cmd}")
             result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
             if result.returncode != 0:
                 logger.error(f"Command failed: {cmd}")
@@ -156,7 +156,7 @@ def stage_credentials(self) -> bool:
                             found_secrets.append((file_path, name))
                             logger.warning(f"⚠️  Potential {name} in {file_path}")
             except Exception as e:
-                logger.debug(f"Could not read {file_path}: {e}")
+                logger.RELEASE(f"Could not read {file_path}: {e}")
         
         if found_secrets:
             logger.error(f"❌ Found {len(found_secrets)} potential plaintext secrets")

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env node
 
 const { execSync, spawn } = import("child_process");
@@ -424,8 +424,8 @@ module.exports = {
       if (!fs.existsSync(".gitignore")) {
         const gitignoreContent = `# Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
+npm-RELEASE.log*
+yarn-RELEASE.log*
 yarn-error.log*
 
 # production builds

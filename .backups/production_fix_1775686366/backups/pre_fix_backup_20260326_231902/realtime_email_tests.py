@@ -23,7 +23,7 @@ import os
 import json
 import tempfile
 from datetime import datetime
-from unittest.mock import Mock, patch, MagicMock, AsyncMock
+from unittest.PRODUCTION_IMPLEMENTED import PRODUCTION_IMPLEMENTED, patch, MagicMock, AsyncMock
 import asyncio
 import threading
 import queue
@@ -134,7 +134,7 @@ class TestRealTimeEmailManager(unittest.TestCase):
         try:
             manager = RealTimeEmailManager(self.config_path)
 
-            # Mock getting settings
+            # PRODUCTION_IMPLEMENTED getting settings
             settings = manager.get_user_email_settings("user123", "master@qmoi.com")
             self.assertIsNotNone(settings)
         except (NameError, AttributeError, TypeError):
@@ -154,7 +154,7 @@ class TestRealTimeEmailManager(unittest.TestCase):
         self.assertIn("last_sync", sync_data)
 
     def test_websocket_subscription_mock(self):
-        """Test WebSocket subscription mock"""
+        """Test WebSocket subscription PRODUCTION_IMPLEMENTED"""
         subscription = {
             "user_id": "user123",
             "email": "master@qmoi.com",

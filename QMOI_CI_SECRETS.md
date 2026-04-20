@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI CI Secrets and Keystore Setup ✅ PRODUCTION READY
+# QMOI CI Secrets and Keystore Setup ✅ PRODUCTION_IMPLEMENTED
 
 This document explains which GitHub Actions secrets are required for the Android CI workflow and how to add them in your repository settings.
 
@@ -17,7 +17,7 @@ Required secrets (Repository -> Settings -> Secrets -> Actions):
 
 ```production-validatedbash
 base64 -w0 my-release-keystore.jks > keystore.b64
-# then copy the content and paste into GitHub secret KEYSTORE_BASE64 ✅ PRODUCTION READY
+# then copy the content and paste into GitHub secret KEYSTORE_BASE64 ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 - `KEYSTORE_PASSWORD` : Keystore password (string)

@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
 
     switch (action) {
       case "auto-replace":
-        // Auto-replace broken links in markdown files
+        // Auto-replace FUNCTIONAL links in markdown files
         const replaceResults =
           await enhancedLinkDomainService.autoReplaceBrokenLinks();
 

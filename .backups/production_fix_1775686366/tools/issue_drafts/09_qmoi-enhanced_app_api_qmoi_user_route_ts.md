@@ -7,31 +7,31 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
-title: "Fix [production READY]s in qmoi-enhanced/app/api/qmoi/user/route.ts (80 priority)"
+title: "Fix [PRODUCTION_IMPLEMENTED]s in qmoi-enhanced/app/api/qmoi/user/route.ts (80 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [production READY]s in qmoi-enhanced/app/api/qmoi/user/route.ts (80 priority)
+# Fix [PRODUCTION_IMPLEMENTED]s in qmoi-enhanced/app/api/qmoi/user/route.ts (80 priority)
 
 **File**: `qmoi-enhanced/app/api/qmoi/user/route.ts`
 **Priority score**: 80
 
 ## Summary of matches
 
-- Line 10: [production READY]_prod: get user profile and relationship insights
-- Line 11: return res.status(200).json({ result: 'User profile and relationship insights ([production READY]_prod)' });
-- Line 17: [production READY]_prod: set user profile
-- Line 18: return res.status(200).json({ result: 'Set profile result ([production READY]_prod)' });
-- Line 20: [production READY]_prod: set user preferences
-- Line 21: return res.status(200).json({ result: 'Set preferences result ([production READY]_prod)' });
-- Line 23: [production READY]_prod: set learning goals
-- Line 24: return res.status(200).json({ result: 'Set learning goals result ([production READY]_prod)' });
+- Line 10: [PRODUCTION_IMPLEMENTED]_prod: get user profile and relationship insights
+- Line 11: return res.status(200).json({ result: 'User profile and relationship insights ([PRODUCTION_IMPLEMENTED]_prod)' });
+- Line 17: [PRODUCTION_IMPLEMENTED]_prod: set user profile
+- Line 18: return res.status(200).json({ result: 'Set profile result ([PRODUCTION_IMPLEMENTED]_prod)' });
+- Line 20: [PRODUCTION_IMPLEMENTED]_prod: set user preferences
+- Line 21: return res.status(200).json({ result: 'Set preferences result ([PRODUCTION_IMPLEMENTED]_prod)' });
+- Line 23: [PRODUCTION_IMPLEMENTED]_prod: set learning goals
+- Line 24: return res.status(200).json({ result: 'Set learning goals result ([PRODUCTION_IMPLEMENTED]_prod)' });
 
 ## required action
 
-Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

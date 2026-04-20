@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env bash
 # qmoi_trigger_ci.sh
 # Trigger the Android CI workflow_dispatch via gh CLI or GitHub API

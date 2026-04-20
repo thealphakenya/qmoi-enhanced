@@ -19,7 +19,7 @@ import { specificExports } from './qmoi-notification-system.js';
 
 class QMOIEnhancedAvatarSystem {
   async enableParallelMode() {
-    // production implementation:: production ready, implement actual parallel mode logic
+    // production implementation:: PRODUCTION_IMPLEMENTED, implement actual parallel mode logic
     logger.info('🧩 enableParallelMode: Avatar system parallel mode enabled (// production implementation:).');
     return true;
   }

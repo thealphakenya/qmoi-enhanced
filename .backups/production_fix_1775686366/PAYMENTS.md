@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "PAYMENTS"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -43,7 +43,7 @@ QMOI uses real payment processing with Stripe for card payments, integrated with
    - Ensure production uses a secrets manager and TLS for webhooks
 
 3. Adapter pattern
-   - Implement a payments adapter per provider (see `payments/provider_[production READY].py`)
+   - Implement a payments adapter per provider (see `payments/provider_[PRODUCTION_IMPLEMENTED].py`)
    - Adapters must implement create_charge(username, amount_cents, currency)
    - Add webhook endpoints to receive provider events and mark transactions
      settled/failed
@@ -60,8 +60,8 @@ QMOI uses real payment processing with Stripe for card payments, integrated with
 
 ## Testing
 
-- `scripts/test_payments.py` productionnstrates a [production READY]d charge using the
-  provider [production READY] and verifies a transaction is created and marked settled.
+- `scripts/test_payments.py` productionnstrates a [PRODUCTION_IMPLEMENTED]d charge using the
+  provider [PRODUCTION_IMPLEMENTED] and verifies a transaction is created and marked settled.
 
 ## Security
 

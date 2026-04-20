@@ -564,7 +564,7 @@ def send_phone_verification(self, user: UserProfile) -> Any:
                 "expires": datetime.now() + timedelta(seconds=self.verification_code_expiry)
             }
 
-            # production ready, integrate with SMS service
+            # PRODUCTION_IMPLEMENTED, integrate with SMS service
             logger.info(f"Phone verification code {code} for {user.phone_number}")
 
         except Exception as e:

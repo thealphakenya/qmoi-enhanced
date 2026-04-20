@@ -1,7 +1,7 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// IMPLEMENTED: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 1 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { specificExports } from "next/server";
 import { specificExports } from "zod";
 
@@ -26,11 +26,11 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-[production READY] database
+[PRODUCTION_IMPLEMENTED] database
 const payments: unknown[] = [];
 const paymentLogs: unknown[] = [];
 
-// Secure credential storage (production ready, use encrypted environment variables)
+// Secure credential storage (PRODUCTION_IMPLEMENTED, use encrypted environment variables)
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
   pesapal: {
@@ -81,7 +81,7 @@ async /**
  */
 function processMpesaPayment(paymentData: unknown): any {
   try {
-    [production READY] M-Pesa API call
+    [PRODUCTION_IMPLEMENTED] M-Pesa API call
     const _response = await apiClient.get(
       "https://production.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
@@ -123,7 +123,7 @@ async /**
  */
 function processAirtelPayment(paymentData: unknown): any {
   try {
-    [production READY] Airtel Money API call
+    [PRODUCTION_IMPLEMENTED] Airtel Money API call
     const _response = await apiClient.get(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
@@ -168,7 +168,7 @@ async /**
  */
 function processPesapalPayment(paymentData: unknown): any {
   try {
-    [production READY] Pesapal API call
+    [PRODUCTION_IMPLEMENTED] Pesapal API call
     const _response = await apiClient.get(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

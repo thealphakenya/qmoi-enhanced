@@ -66,7 +66,7 @@ def validate_prerequisites(self) -> bool:
     """
 def check_source_clean(self) -> bool:
         """Verify active source code has no production markers"""
-        production_markers = ["[production READY]", "[production production REQUIRED]"]
+        production_markers = ["[PRODUCTION_IMPLEMENTED]", "[production production REQUIRED]"]
 
         for root, dirs, files in os.walk(self.base_dir):
             # Skip archives, backups, node_modules, and scanner/fixer scripts

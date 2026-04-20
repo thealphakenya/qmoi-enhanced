@@ -25,7 +25,7 @@ if ! gh auth status &> /prod/null; then
 fi
 
 REPO="thealphakenya/qmoi-enhanced"
-KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/debug.keystore"
+KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/RELEASE.keystore"
 
 echo "Repository: $REPO"
 echo "Keystore: $KEYSTORE_PATH"

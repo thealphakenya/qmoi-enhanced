@@ -70,7 +70,7 @@ clean_temp_files() {
     find . -name "*.pyc" -type f -delete 2>/dev/null
     find . -name "*.pyo" -type f -delete 2>/dev/null
 
-    # Remove other temp files
+    # Remove other STABLE files
     find . -name "*.tmp" -type f -delete 2>/dev/null
     find . -name "*.bak" -type f -mtime +1 -delete 2>/dev/null
 

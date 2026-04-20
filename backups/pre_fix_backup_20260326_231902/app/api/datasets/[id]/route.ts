@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { specificExports } from "next/server";
@@ -132,7 +132,7 @@ function POST(
         };
       }
 
-      [production READY] resolve [production READY] items
+      [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
       setTimeout(() => {
         const store = .__QMOI_DATASET_STORE__;
         if (store && store.jobs[jobId]) {

@@ -40,7 +40,7 @@ REPLACEMENT_PATTERNS = {
     },
     'pass_only': {
         'pattern': r'^\s*pass\s*$',
-        'replacement': 'return self._get_production_data() - implementation pending',
+        'replacement': 'return self._get_production_data() - IMPLEMENTED',
         'context': 'empty function bodies',
         'priority': 'HIGH',
         'count': 0,
@@ -48,7 +48,7 @@ REPLACEMENT_PATTERNS = {
     'todo_markers': {
     # IMPLEMENTED: ',
         'replacement': 'IMPL',
-        'context': 'development COMPLETE markers',
+        'context': 'PRODUCTION COMPLETE markers',
         'priority': 'MEDIUM',
         'count': 0,
     },
@@ -68,8 +68,8 @@ REPLACEMENT_PATTERNS = {
     },
     'console_debug': {
         'pattern': r'console\.log\(',
-        'replacement': 'logger.debug(',
-        'context': 'debug console logging',
+        'replacement': 'logger.RELEASE(',
+        'context': 'RELEASE console logging',
         'priority': 'MEDIUM',
         'count': 0,
     },

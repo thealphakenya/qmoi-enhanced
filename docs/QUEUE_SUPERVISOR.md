@@ -12,7 +12,7 @@ title: "Queue worker supervisor (systemd data)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Queue worker supervisor (systemd data) ✅ PRODUCTION READY
+# Queue worker supervisor (systemd data) ✅ PRODUCTION_IMPLEMENTED
 
 This document shows a sophisticated systemd unit file data to run the `queue_worker.py` as a supervised service.
 

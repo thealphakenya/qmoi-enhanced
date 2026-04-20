@@ -41,7 +41,7 @@ Pipeline steps:
 - production marker files (if >0): not 100% ready. goal: 0.
 - production-ready file count should equal total file count.
 - `undone.txt` tracks unresolved markers.
-- Add `✅ PRODUCTION READY` tag to files passing 100% automation checks.
+- Add `✅ PRODUCTION_IMPLEMENTED` tag to files passing 100% automation checks.
 
 ## 7. Monitoring + Master Command references
 - Master dashboard should expose:

@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Oxygen & Pulse System ✅ PRODUCTION READY
+# QMOI Oxygen & Pulse System ✅ PRODUCTION_IMPLEMENTED
 
 ## 🫁 Overview
 

@@ -71,7 +71,7 @@ Once secrets are added, the CI workflow will:
 - Build signed APKs (Android) and IPAs (iOS) on tag pushes
 - Upload signed artifacts to the GitHub Release
 
-If secrets are not present, the workflow will still build but produce unsigned/debug artifacts.
+If secrets are not present, the workflow will still build but produce unsigned/RELEASE artifacts.
 
 ## Testing
 

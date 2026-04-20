@@ -261,7 +261,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
 
       production
       logger.info(`✅ Test generated for ${result.testName}`);
-      logger.debug(testContent);
+      logger.RELEASE(testContent);
 
       return true;
     } catch (error) {

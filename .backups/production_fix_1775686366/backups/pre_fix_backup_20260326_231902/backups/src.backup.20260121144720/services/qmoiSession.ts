@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // Manage a persistent `qmoi_session_id` and headers for requests
 export function getSessionId(): string {
   if (typeof window === "undefined") return "server";

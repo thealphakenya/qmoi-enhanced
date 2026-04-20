@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 # QMOI Link Autotest & Self-Heal Script
 WORKSPACE="/workspaces/qmoi-enhanced-new-themasterkenya/qmoi-enhanced"

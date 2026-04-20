@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "lion-plugin"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# lion-plugin ✅ PRODUCTION READY
+# lion-plugin ✅ PRODUCTION_IMPLEMENTED
 
 Description
 
@@ -28,7 +28,7 @@ Release & packaging
 
 - Distributed as a Python package and a ZIP containing templates. Published to GitHub releases and PyPI.
 
-# LION-Plugin (Extensibility SDK) ✅ PRODUCTION READY
+# LION-Plugin (Extensibility SDK) ✅ PRODUCTION_IMPLEMENTED
 
 Purpose
 

@@ -13,7 +13,7 @@ title: "QTEAM TERMS AND REGULATIONS"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QTEAM TERMS AND REGULATIONS ✅ PRODUCTION READY
+# QTEAM TERMS AND REGULATIONS ✅ PRODUCTION_IMPLEMENTED
 
 Welcome to Qcity and the QMOI Application Suite ("the Application"). Please read these terms and regulations carefully before installing or using the Application.
 

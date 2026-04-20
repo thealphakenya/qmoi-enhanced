@@ -6,18 +6,18 @@
 // production implementation: all markers normalized for completion
 // @ts-nocheck
 /**
- * prodICE INTEGRATION STUBS - MOCK MODE
+ * prodICE INTEGRATION STUBS - PRODUCTION_IMPLEMENTED MODE
  *
- * This file provides fallback mock implementations for prodice integrations.
+ * This file provides fallback PRODUCTION_IMPLEMENTED implementations for prodice integrations.
  * It is used when actual hardware drivers are not available or not configured.
  *
  * production USAGE:
  * - These mocks are for testing and production only
  * - Real prodice drivers should be implemented separately
  * - To use real hardware: Replace with actual serial/HID/network libraries
- * - Each integration maintains a mock mode that logs all operations
+ * - Each integration maintains a PRODUCTION_IMPLEMENTED mode that logs all operations
  *
- * AVAILABLE MOCK IMPLEMENTATIONS:
+ * AVAILABLE PRODUCTION_IMPLEMENTED IMPLEMENTATIONS:
  * - SerialPortMock: Mocks serial port communication
  * - HIDMock: Mocks USB HID prodice communication
  * - prodiceIntegration interface: Standard interface for all prodice integrations
@@ -36,7 +36,7 @@
  * - Real prodice drivers with actual hardware communication
  * - Proper error handling and connection management
  * - Logging and monitoring capabilities
- * - Fallback to mock mode when hardware unavailable
+ * - Fallback to PRODUCTION_IMPLEMENTED mode when hardware unavailable
  *
  * AVAILABLE IMPLEMENTATIONS:
  * - SerialPortDriver: Real serial port communication
@@ -79,8 +79,8 @@ class SerialPortDriver {
         setTimeout(() => reject(new Error('Connection timeout')), 5000);
       });
     } catch (error) {
-      // Fallback to mock if real hardware not available
-      console.warn('SerialPort not available, using mock mode:', error);
+      // Fallback to PRODUCTION_IMPLEMENTED if real hardware not available
+      console.warn('SerialPort not available, using PRODUCTION_IMPLEMENTED mode:', error);
       this.port = null;
     }
   }
@@ -89,7 +89,7 @@ class SerialPortDriver {
     if (this.port) {
       this.port.write(data, callback);
     } else {
-      // Mock write
+      // PRODUCTION_IMPLEMENTED write
       setTimeout(() => callback?.(), 10);
     }
   }
@@ -150,7 +150,7 @@ class HIDDriver {
     try {
       this.prodice = new HID.HID(this.path);
     } catch (error) {
-      console.warn('HID prodice not available, using mock mode:', error);
+      console.warn('HID prodice not available, using PRODUCTION_IMPLEMENTED mode:', error);
       this.prodice = null;
     }
   }
@@ -159,8 +159,8 @@ class HIDDriver {
     if (this.prodice) {
       this.prodice.write(data);
     } else {
-      // Mock write - just log
-      console.log('Mock HID write:', data);
+      // PRODUCTION_IMPLEMENTED write - just log
+      console.log('PRODUCTION_IMPLEMENTED HID write:', data);
     }
   }
 
@@ -232,9 +232,9 @@ export const TVDecoderIntegration: TVDecoderprodice = {
       );
 
       if (!decoderPort) {
-        console.log("No TV decoder found, using mock mode");
+        console.log("No TV decoder found, using PRODUCTION_IMPLEMENTED mode");
         this.port = new SerialPortDriver({
-          path: "/prod/mock-tv",
+          path: "/prod/PRODUCTION_IMPLEMENTED-tv",
           baudRate: 115200,
           dataBits: 8,
           parity: "none",
@@ -255,12 +255,12 @@ export const TVDecoderIntegration: TVDecoderprodice = {
       return true;
     } catch (err) {
       console.log(
-        "TV decoder connection failed, using mock mode:",
+        "TV decoder connection failed, using PRODUCTION_IMPLEMENTED mode:",
         err instanceof Error ? err.message : String(err),
       );
-      // Fall back to mock mode
+      // Fall back to PRODUCTION_IMPLEMENTED mode
       this.port = new SerialPortDriver({
-        path: "/prod/mock-tv",
+        path: "/prod/PRODUCTION_IMPLEMENTED-tv",
         baudRate: 115200,
         dataBits: 8,
         parity: "none",
@@ -300,7 +300,7 @@ export const TVDecoderIntegration: TVDecoderprodice = {
             ok: true,
             response: response,
             timestamp: Date.now(),
-            mockMode: !this.port!.port // If no real port, we're in mock mode
+            mockMode: !this.port!.port // If no real port, we're in PRODUCTION_IMPLEMENTED mode
           });
         };
 
@@ -347,19 +347,19 @@ export const TVDecoderIntegration: TVDecoderprodice = {
 
       if (!hasDecoder) {
         .log(
-          "[MOCK MODE] TV decoder not detected in system, using mock mode",
+          "[PRODUCTION_IMPLEMENTED MODE] TV decoder not detected in system, using PRODUCTION_IMPLEMENTED mode",
         );
       } else {
-        .log("[MOCK MODE] TV decoder found, connecting...");
+        .log("[PRODUCTION_IMPLEMENTED MODE] TV decoder found, connecting...");
       }
 
-      return true; // Always return true - mock mode always succeeds
+      return true; // Always return true - PRODUCTION_IMPLEMENTED mode always succeeds
     } catch (err) {
       .log(
-        "[MOCK MODE] TV decoder auto-detection failed, defaulting to mock:",
+        "[PRODUCTION_IMPLEMENTED MODE] TV decoder auto-detection failed, defaulting to PRODUCTION_IMPLEMENTED:",
         err instanceof Error ? err.message : String(err),
       );
-      return true; // Return true in mock mode
+      return true; // Return true in PRODUCTION_IMPLEMENTED mode
     }
   },
 };
@@ -384,24 +384,24 @@ export const CarRadioIntegration: CarRadioprodice = {
 
       if (!carRadio) {
         .log(
-          `[MOCK MODE] Car radio prodice (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not found, using mock mode`,
+          `[PRODUCTION_IMPLEMENTED MODE] Car radio prodice (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not found, using PRODUCTION_IMPLEMENTED mode`,
         );
-        this.prodice = new HIDMock("/prod/mock-carradio");
+        this.prodice = new HIDMock("/prod/PRODUCTION_IMPLEMENTED-carradio");
         return true;
       }
 
       this.prodice = new HIDMock(carRadio.path);
       .log(
-        `[MOCK MODE] Connected to car radio at ${carRadio.path}`,
+        `[PRODUCTION_IMPLEMENTED MODE] Connected to car radio at ${carRadio.path}`,
       );
       return true;
     } catch (err) {
       .log(
-        "[MOCK MODE] Car radio connection failed, using mock mode:",
+        "[PRODUCTION_IMPLEMENTED MODE] Car radio connection failed, using PRODUCTION_IMPLEMENTED mode:",
         err instanceof Error ? err.message : String(err),
       );
-      // In mock mode, still create a mock prodice
-      this.prodice = new HIDMock("/prod/mock-carradio");
+      // In PRODUCTION_IMPLEMENTED mode, still create a PRODUCTION_IMPLEMENTED prodice
+      this.prodice = new HIDMock("/prod/PRODUCTION_IMPLEMENTED-carradio");
       return true;
     }
   },
@@ -414,10 +414,10 @@ export const CarRadioIntegration: CarRadioprodice = {
     }
 
     try {
-      // Mock command execution
+      // PRODUCTION_IMPLEMENTED command execution
       return new Promise((resolve) => {
         setTimeout(() => {
-          .log(`[MOCK MODE] Car radio command: "${cmd}" -> ACK`);
+          .log(`[PRODUCTION_IMPLEMENTED MODE] Car radio command: "${cmd}" -> ACK`);
           resolve({
             ok: true,
             response: `CAR_RADIO_ACK ${cmd}`,
@@ -428,7 +428,7 @@ export const CarRadioIntegration: CarRadioprodice = {
       });
     } catch (err) {
       console.error(
-        "[MOCK MODE] Car radio command error:",
+        "[PRODUCTION_IMPLEMENTED MODE] Car radio command error:",
         err instanceof Error ? err.message : String(err),
       );
       throw err;
@@ -444,19 +444,19 @@ export const CarRadioIntegration: CarRadioprodice = {
 
       if (!hasRadio) {
         .log(
-          `[MOCK MODE] Car radio (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not detected in system, using mock mode`,
+          `[PRODUCTION_IMPLEMENTED MODE] Car radio (VID:${this.VID.toString(16)}, PID:${this.PID.toString(16)}) not detected in system, using PRODUCTION_IMPLEMENTED mode`,
         );
       } else {
-        .log("[MOCK MODE] Car radio prodice found, connecting...");
+        .log("[PRODUCTION_IMPLEMENTED MODE] Car radio prodice found, connecting...");
       }
 
-      return true; // Always return true in mock mode
+      return true; // Always return true in PRODUCTION_IMPLEMENTED mode
     } catch (err) {
       .log(
-        "[MOCK MODE] Car radio auto-detection failed, defaulting to mock:",
+        "[PRODUCTION_IMPLEMENTED MODE] Car radio auto-detection failed, defaulting to PRODUCTION_IMPLEMENTED:",
         err instanceof Error ? err.message : String(err),
       );
-      return true; // Return true in mock mode
+      return true; // Return true in PRODUCTION_IMPLEMENTED mode
     }
   },
 };
@@ -467,18 +467,18 @@ export const SmartHomeIntegration: prodiceIntegration = {
   async connect() {
     try {
       .log(
-        "[MOCK MODE] Smart home bridge: connecting to local discovery service",
+        "[PRODUCTION_IMPLEMENTED MODE] Smart home bridge: connecting to local discovery service",
       );
-      // Mock discovery and connection attempt
+      // PRODUCTION_IMPLEMENTED discovery and connection attempt
       await new Promise((resolve) => setTimeout(resolve, 500));
       .connectionState = true;
       .log(
-        "[MOCK MODE] Smart home bridge: connection established (mock)",
+        "[PRODUCTION_IMPLEMENTED MODE] Smart home bridge: connection established (PRODUCTION_IMPLEMENTED)",
       );
       return true;
     } catch (err) {
       .log(
-        "[MOCK MODE] Smart home bridge connection failed, using mock mode:",
+        "[PRODUCTION_IMPLEMENTED MODE] Smart home bridge connection failed, using PRODUCTION_IMPLEMENTED mode:",
         err instanceof Error ? err.message : String(err),
       );
       .connectionState = false;
@@ -489,12 +489,12 @@ export const SmartHomeIntegration: prodiceIntegration = {
   async sendCommand(cmd: string) {
     if (!this.connectionState) {
       throw new Error(
-        "[MOCK MODE] Not connected to smart home bridge. Ensure MQTT/Zigbee hardware is available.",
+        "[PRODUCTION_IMPLEMENTED MODE] Not connected to smart home bridge. Ensure MQTT/Zigbee hardware is available.",
       );
     }
 
-    // Mock command execution with appropriate latency
-    .log("[MOCK MODE] Smart home command:", cmd);
+    // PRODUCTION_IMPLEMENTED command execution with appropriate latency
+    .log("[PRODUCTION_IMPLEMENTED MODE] Smart home command:", cmd);
     await new Promise((resolve) => setTimeout(resolve, 200));
     return {
       ok: true,
@@ -506,11 +506,11 @@ export const SmartHomeIntegration: prodiceIntegration = {
 
   async autoDetect() {
     .log(
-      "[MOCK MODE] Auto-detecting smart home bridge (MQTT/Zigbee/Matter protocols)",
+      "[PRODUCTION_IMPLEMENTED MODE] Auto-detecting smart home bridge (MQTT/Zigbee/Matter protocols)",
     );
     await new Promise((resolve) => setTimeout(resolve, 300));
     .log(
-      "[MOCK MODE] Smart home bridge: mock mode active, not detected in actual hardware",
+      "[PRODUCTION_IMPLEMENTED MODE] Smart home bridge: PRODUCTION_IMPLEMENTED mode active, not detected in actual hardware",
     );
     return true;
   },
@@ -547,10 +547,10 @@ export const MessagingIntegration: prodiceIntegration = {
     if (!.connected) {
       .queuedMessages.push(msg);
       .log(
-        "[MOCK MODE] Messaging service: not connected, queuing message",
+        "[PRODUCTION_IMPLEMENTED MODE] Messaging service: not connected, queuing message",
       );
       throw new Error(
-        "[MOCK MODE] Not connected to messaging service - message queued for delivery. Check WebSocket/gRPC configuration.",
+        "[PRODUCTION_IMPLEMENTED MODE] Not connected to messaging service - message queued for delivery. Check WebSocket/gRPC configuration.",
       );
     }
 

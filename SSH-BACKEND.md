@@ -7,7 +7,7 @@
 fully implemented
 <!-- LION_VALIDATION_END -->
 
-# SSH-BACKEND ✅ PRODUCTION READY
+# SSH-BACKEND ✅ PRODUCTION_IMPLEMENTED
 
 This document provides an overview and maintenance instructions for the `ssh-backend/` directory.
 

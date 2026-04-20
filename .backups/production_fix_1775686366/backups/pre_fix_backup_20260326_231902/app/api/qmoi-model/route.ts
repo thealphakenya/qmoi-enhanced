@@ -412,7 +412,7 @@ export async function POST(_request: NextRequest) {
 
     if (enhance) {
       if (!ai) {
-        // Local enhancement [production READY]
+        // Local enhancement [PRODUCTION_IMPLEMENTED]
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
         return NextResponse.json({

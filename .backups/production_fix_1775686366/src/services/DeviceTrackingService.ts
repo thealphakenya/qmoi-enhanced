@@ -24,12 +24,12 @@ export class prodiceTrackingService {
   }
 
   listprodices(): prodice[] {
-    [production READY]: Integrate with real prodice registry
+    [PRODUCTION_IMPLEMENTED]: Integrate with real prodice registry
     return this.prodices;
   }
 
   findprodice(prodiceId: string): prodice | null {
-    [production READY]: Integrate with location services
+    [PRODUCTION_IMPLEMENTED]: Integrate with location services
     const prodice = this.prodices.find((d) => d.id === prodiceId) || null;
     if (prodice) {
       this.notifyMaster("find", prodiceId);
@@ -38,13 +38,13 @@ export class prodiceTrackingService {
   }
 
   lockprodice(prodiceId: string): boolean {
-    [production READY]: Integrate with prodice management APIs
+    [PRODUCTION_IMPLEMENTED]: Integrate with prodice management APIs
     this.notifyMaster("lock", prodiceId);
     return true;
   }
 
   wipeprodice(prodiceId: string): boolean {
-    [production READY]: Integrate with prodice management APIs
+    [PRODUCTION_IMPLEMENTED]: Integrate with prodice management APIs
     this.notifyMaster("wipe", prodiceId);
     return true;
   }

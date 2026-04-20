@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "Issue final for PUBLIC.md"
 generated: 2025-11-08T16:06:38.283921Z
@@ -10,9 +10,9 @@ Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
 Suggested next steps:
 
-- Inspect the file and its [production READY] markers or [production READY]s.
-- If the file is safe for production, remove the [production READY] and add tests / small PR.
-- If the file is intentionally production (e.g. [production READY]d or cache), consider moving it out of the repo or documenting its purpose.
+- Inspect the file and its [PRODUCTION_IMPLEMENTED] markers or [PRODUCTION_IMPLEMENTED]s.
+- If the file is safe for production, remove the [PRODUCTION_IMPLEMENTED] and add tests / small PR.
+- If the file is intentionally production (e.g. [PRODUCTION_IMPLEMENTED]d or cache), consider moving it out of the repo or documenting its purpose.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
 
 Excerpt (first 2KB):
@@ -48,11 +48,11 @@ public/
 ├── icon.svg
 ├── icon.webp
 ├── index.html
-├── [production READY]-logo.png
-├── [production READY]-logo.svg
-├── [production READY]-user.jpg
-├── [production READY].jpg
-├── [production READY].svg
+├── [PRODUCTION_IMPLEMENTED]-logo.png
+├── [PRODUCTION_IMPLEMENTED]-logo.svg
+├── [PRODUCTION_IMPLEMENTED]-user.jpg
+├── [PRODUCTION_IMPLEMENTED].jpg
+├── [PRODUCTION_IMPLEMENTED].svg
 ├── qcity/
 ├── qcity-icon.svg
 
@@ -62,7 +62,7 @@ public/
 - All icons and images are used for branding, UI, and prodice compatibility in QCity, QMOI AI, and QMOI Space.
 - `index.html` is the main entry point for web apps and dashboards.
 - `qcity/` and `qcity-icon.svg` are used for QCity branding and UI features.
-- [production READY] assets are used for default avatars, logos, and error states.
+- [PRODUCTION_IMPLEMENTED] assets are used for default avatars, logos, and error states.
 - Unused/duplicate assets are marked for removal in SERVINGERRORSISSUES.md and will be deleted in the next cleanup.
 
 ## Automation & Health

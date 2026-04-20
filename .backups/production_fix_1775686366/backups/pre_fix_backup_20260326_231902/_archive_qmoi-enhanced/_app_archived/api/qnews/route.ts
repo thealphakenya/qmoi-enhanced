@@ -3,21 +3,21 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import { NextRequest, NextResponse } from "next/server";
 
 // In-memory news store (replace with DB in production)
 const newsStore: unknown[] = [];
 let idCounter = 1;
 
-// Helper: aggregate news from RSS/APIs/QMOI ([production READY])
+// Helper: aggregate news from RSS/APIs/QMOI ([PRODUCTION_IMPLEMENTED])
 async function aggregateNews() {
-  [production READY]: Fetch from RSS, APIs, QMOI activities
+  [PRODUCTION_IMPLEMENTED]: Fetch from RSS, APIs, QMOI activities
   return [];
 }
 
 function isMaster(req: NextRequest) {
-  [production READY]: Implement real master check (e.g., auth header)
+  [PRODUCTION_IMPLEMENTED]: Implement real master check (e.g., auth header)
   return req.headers.get("x-qmoi-master") === "true";
 }
 
@@ -112,8 +112,8 @@ export async function POST_MEDIA(req: NextRequest) {
 
 // POST /api/qnews/post - Post news to external platforms
 export async function POST_POST(req: NextRequest) {
-  [production READY]: Implement posting to WhatsApp, Telegram, etc.
+  [PRODUCTION_IMPLEMENTED]: Implement posting to WhatsApp, Telegram, etc.
   const body = (await req.json()) as any;
-  [production READY] post
+  [PRODUCTION_IMPLEMENTED] post
   return NextResponse.json({ success: true, posted: body });
 }

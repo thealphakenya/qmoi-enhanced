@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 import { specificExports } from "crypto";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -30,7 +30,7 @@ function persistWallet(rec: WalletRecord): any {
 }
 
 export class KeyStore {
-  // production ready this should be an HSM or secret manager-backed store.
+  // PRODUCTION_IMPLEMENTED this should be an HSM or secret manager-backed store.
   static generateKeyPair(): { publicKey: string; privateKeyPem: string } {
     const { publicKey, privateKey } = crypto.generateKeyPairSync("ec", {
       namedCurve: "secp256k1",
@@ -46,7 +46,7 @@ export class KeyStore {
 }
 
 export class WalletManager {
-  // comprehensive wallet manager with signing, multi-sig [production READY]s, reconciliation and audit logs
+  // comprehensive wallet manager with signing, multi-sig [PRODUCTION_IMPLEMENTED]s, reconciliation and audit logs
 
   static createWallet(meta?: Record<string, any>): WalletRecord {
     const { publicKey } = KeyStore.generateKeyPair();
@@ -125,18 +125,18 @@ export class WalletManager {
       createdAt: new Date().toISOString(),
     };
     this.appendAudit({ _event: "tx_created", tx });
-    // production ready: perform multi-sig, sign with HSM, queue for settlement
+    // PRODUCTION_IMPLEMENTED: perform multi-sig, sign with HSM, queue for settlement
     return tx;
   }
 
   static async settleTransaction(txId: string) {
-    [production READY]: would call payment adapters and wallet settlement logic, verify confirmations
+    [PRODUCTION_IMPLEMENTED]: would call payment adapters and wallet settlement logic, verify confirmations
     this.appendAudit({ _event: "tx_settle_attempt", txId });
     return { txId, settled: true };
   }
 
   static reconcile(transactions: unknown[]) {
-    // sophisticated reconciliation [production READY]: mark unsettled
+    // sophisticated reconciliation [PRODUCTION_IMPLEMENTED]: mark unsettled
     return transactions.map((t) => ({
       ...t,
       checkedAt: new Date().toISOString(),

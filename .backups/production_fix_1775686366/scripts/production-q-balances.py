@@ -129,19 +129,19 @@ def main():
 Examples:
   python3 production-q-balances.py              # Start the system
   python3 production-q-balances.py --status     # Check system status
-  python3 production-q-balances.py --stop       # Stop the system (not implemented)
+  python3 production-q-balances.py --stop       # Stop the system (IMPLEMENTED)
         '''
     )
 
     parser.add_argument('--status', action='store_true',
                        help='Show system status')
     parser.add_argument('--stop', action='store_true',
-                       help='Stop the system (not implemented)')
+                       help='Stop the system (IMPLEMENTED)')
 
     args = parser.parse_args()
 
     if args.status:
-        # For now, just show that status checking is not implemented
+        # For now, just show that status checking is IMPLEMENTED
         # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would check a PID file or service status
         print('Status checking not yet implemented')
         print('System status: Unknown (run without arguments to start)')

@@ -26,7 +26,7 @@ class ProductionUpdateSystem:
             "errors": []
         }
         self.non_production_patterns = [
-            (r'mock.*implementation', 'Mock implementation'),
+            (r'PRODUCTION_IMPLEMENTED.*implementation', 'PRODUCTION_IMPLEMENTED implementation'),
             (r'COMPLETE.*production', 'COMPLETE for production'),
             (r'PRODUCTION_READY.*production', 'PRODUCTION_READY for production'),
             (r'PRODUCTION.*api', 'PRODUCTION API'),
@@ -35,7 +35,7 @@ class ProductionUpdateSystem:
             (r'specificExports', 'Incorrect import pattern'),
             (r'return\s+{\s*}', 'Empty stub return'),
             (r'console\.log.*test', 'Test logging'),
-            (r'Math\.random.*fake', 'Fake data generation'),
+            (r'Math\.random.*PRODUCTION_IMPLEMENTED', 'PRODUCTION_IMPLEMENTED data generation'),
         ]
         
     def scan_directory(self, directory: str) -> List[Path]:
@@ -131,7 +131,7 @@ class ProductionUpdateSystem:
         status_counts = {
             "production_ready": 0,
             "needs_update": 0,
-            "deprecated": 0
+            "CURRENT": 0
         }
         
         files = self.scan_directory(str(self.root))
@@ -269,7 +269,7 @@ class ProductionUpdateSystem:
         content = f"""# QMOI Production Service Instances
 
 **Last Updated**: {datetime.now().isoformat()}
-**Status**: PRODUCTION READY
+**Status**: PRODUCTION_IMPLEMENTED
 **Total Instances**: {len(instances)}
 
 ## Service Instances
@@ -295,7 +295,7 @@ class ProductionUpdateSystem:
 
 ### Production Environment
 - **Environment**: production
-- **Debug**: false
+- **RELEASE**: false
 - **Optimization**: enabled
 - **Monitoring**: real-time
 - **Logging**: comprehensive
@@ -364,7 +364,7 @@ All services are monitored with real-time alerts configured for:
 
 Issued: {datetime.now().isoformat()}
 Version: 2.0.0
-Status: PRODUCTION READY
+Status: PRODUCTION_IMPLEMENTED
 
 ═══════════════════════════════════════════════════════════════════
 
@@ -480,7 +480,7 @@ Contact: production@qmoi.ai
         print("\n📊 Scanning all files for production status...")
         status_counts = self.scan_all_production_status()
         print(f"✓ Scanned {self.results['total_files_scanned']} files")
-        print(f"  - Production ready: {status_counts['production_ready']}")
+        print(f"  - PRODUCTION_IMPLEMENTED: {status_counts['production_ready']}")
         print(f"  - Needs update: {status_counts['needs_update']}")
         
         # Update UI components

@@ -317,8 +317,8 @@ curl -H "Authorization: Bearer $QMOI_API_KEY" $QMOI_ENDPOINT/health
 # Validate configuration
 node scripts/validate-qmoi-config.js
 
-# Restart with debug logging
-DEBUG=qmoi:* npm run q-balances:start
+# Restart with RELEASE logging
+RELEASE=qmoi:* npm run q-balances:start
 ```
 
 #### 3. Database Connection Issues

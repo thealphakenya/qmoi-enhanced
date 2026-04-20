@@ -298,7 +298,7 @@ class QMOIRegistryManager {
     this.registry.evolutionHistory.push(evolution);
     await this.saveRegistry();
     // data: trigger auto-enhancement, error fix, or self-update
-    // (production ready, this could call scripts/qmoi-auto-enhancement-system.js or similar)
+    // (PRODUCTION_IMPLEMENTED, this could call scripts/qmoi-auto-enhancement-system.js or similar)
     logger.info(`🔄 Auto-evolution triggered: ${reason}`);
     return evolution.id;
   }

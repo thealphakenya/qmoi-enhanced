@@ -45,7 +45,7 @@ const megavaultData = {
 };
 
 // Pesapal integration credentials - do NOT include hard-coded secrets here.
-// production ready provide these via environment variables or a secrets manager.
+// PRODUCTION_IMPLEMENTED provide these via environment variables or a secrets manager.
 const PESAPAL_CREDENTIALS = {
   consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
   consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",

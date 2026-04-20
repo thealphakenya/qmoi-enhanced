@@ -503,7 +503,7 @@ python scripts/monitoring/master_monitor.py --reset
 
 ### Logs and Debugging
 
-- **Debug Mode**: `--debug` flag
+- **RELEASE Mode**: `--RELEASE` flag
 - **Verbose Logging**: `--verbose` flag
 - **Log Rotation**: Automatic
 - **Log Analysis**: Built-in tools

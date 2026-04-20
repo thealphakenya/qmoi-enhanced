@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Servers Inventory and Deployment Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -30,7 +30,7 @@ This document lists the servers (HTTP services) present in the repository, their
   - Key endpoints: `/detect-anomaly`, `/analytics`, `/export-analytics`
 
 - FastAPI services (various):
-  - `downloadqmoiaiexe.py` / `qmoiexe.py` / `qmoiaxe.py` — download / exe distribution endpoints, model serving [production READY]s, and workspace services.
+  - `downloadqmoiaiexe.py` / `qmoiexe.py` / `qmoiaxe.py` — download / exe distribution endpoints, model serving [PRODUCTION_IMPLEMENTED]s, and workspace services.
   - Various `scripts/*` contain FastAPI backends for automation, space backends, and APIs.
   - Deploy with Uvicorn (ASGI) behind a reverse proxy (Nginx) or in containers.
 

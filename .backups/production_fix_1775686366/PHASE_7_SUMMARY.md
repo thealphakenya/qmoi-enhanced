@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # Phase 7: Load Testing & Caching - Implementation Summary
 
 ## Overview
@@ -244,13 +244,13 @@ export const GET = cacheRoute(handler, {
 - Concurrent gets (10 parallel)
 - Mixed operations stress test
 
-**Middleware Testing** ([production READY]s for integration):
+**Middleware Testing** ([PRODUCTION_IMPLEMENTED]s for integration):
 
 - GET response caching
 - POST/PUT/DELETE non-caching
 - Cache control header validation
 
-**Query Optimization Testing** ([production READY]s):
+**Query Optimization Testing** ([PRODUCTION_IMPLEMENTED]s):
 
 - Selective field loading
 - N+1 query prevention

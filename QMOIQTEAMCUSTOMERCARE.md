@@ -13,7 +13,7 @@ title: "QMOI Qteam Customer Care (QMOIQTEAMCUSTOMERCARE.md)"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Qteam Customer Care (QMOIQTEAMCUSTOMERCARE.md) ✅ PRODUCTION READY
+# QMOI Qteam Customer Care (QMOIQTEAMCUSTOMERCARE.md) ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

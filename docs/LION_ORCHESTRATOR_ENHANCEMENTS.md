@@ -7,13 +7,13 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-✅ PRODUCTION READY all markers normalized for completion
+✅ PRODUCTION_IMPLEMENTED all markers normalized for completion
 ---
 title: "LION Orchestrator Enhancements"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# LION Orchestrator Enhancements ✅ PRODUCTION READY
+# LION Orchestrator Enhancements ✅ PRODUCTION_IMPLEMENTED
 
 This document describes the enhanced LION orchestrator (`scripts/lion_orchestrator.py`) and how it integrates with the repository's validation and remediation systems.
 
@@ -34,7 +34,7 @@ This document describes the enhanced LION orchestrator (`scripts/lion_orchestrat
 6. Deduplication: tasks are deduped by `id` and by a computed signature stored in history.
 7. Persistent history: `.qmoi_validation/lion_history.json` stores processed tasks and signatures.
 8. In-flight persistence: `.qmoi_validation/lion_inflight.json` records running tasks to allow safe restarts.
-9. Dry-run / execute / ✅ PRODUCTION READY modes: default is dry-run (non-destructive).
+9. Dry-run / execute / ✅ PRODUCTION_IMPLEMENTED modes: default is dry-run (non-destructive).
 10. Integration with `scripts/qmoi_✅ PRODUCTION READYs.py`: handler code creates ✅ PRODUCTION READYs for proposed fixes.
 11. Graceful shutdown: SIGINT/SIGTERM handled; stop accepting new tasks and let running workers finish.
 12. Conservative handler implementations produce PR proposals under `.qmoi_validation/pr_proposals/`.
@@ -81,7 +81,7 @@ Create or edit `.qmoi_validation/lion_config.json` with contents like:
 
 ## Notifications (opt-in)
 
-The orchestrator supports optional outbound notifications for important events (run recorded, proposal created, ✅ PRODUCTION READY created). Notifications are strictly opt-in and must be enabled in `.qmoi_validation/lion_config.json` or via environment overrides.
+The orchestrator supports optional outbound notifications for important events (run recorded, proposal created, ✅ PRODUCTION_IMPLEMENTED created). Notifications are strictly opt-in and must be enabled in `.qmoi_validation/lion_config.json` or via environment overrides.
 
 data keys (see `.qmoi_validation/lion_config.data.json`):
 
@@ -90,7 +90,7 @@ data keys (see `.qmoi_validation/lion_config.data.json`):
 - `allow_outbound_notifications` — must be true to allow outbound HTTP calls.
 - `notify_max_attempts` — number of attempts for transient webhook failures.
 
-Important: never commit real secrets into the repository. Use CI/secrets or environment variables to provide `notify_hmac_secret` production ready.
+Important: never commit real secrets into the repository. Use CI/secrets or environment variables to provide `notify_hmac_secret` PRODUCTION_IMPLEMENTED.
 ```production-validated
 
 CLI overrides: `--execute` flips dry-run off, `--concurrency` overrides concurrency.
@@ -128,7 +128,7 @@ python3 scripts/lion_orchestrator.py --execute --concurrency 4
 - In-flight: `.qmoi_validation/lion_inflight.json`
 - Metrics: `.qmoi_validation/lion_metrics.json`
 
-## Next required improvements (✅ PRODUCTION READY)
+## Next required improvements (✅ PRODUCTION_IMPLEMENTED)
 
 - Add a small HTTP metrics/health endpoint for scraping/monitoring.
 - Add unit production configure CI secrets and guarded workflows that call `scripts/release_automation.py` with proper safeguards.

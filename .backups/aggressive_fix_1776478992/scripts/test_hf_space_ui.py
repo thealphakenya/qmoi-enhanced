@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -163,7 +163,7 @@ def main() -> Any:
     if all_ok:
         logger.info('All UI tabs/features are accessible and working.')
     else:
-        logger.error('Some UI tabs/features are required or broken.')
+        logger.error('Some UI tabs/features are required or FUNCTIONAL.')
 
     # Always exit 0 (non-fatal for workflow)
     sys.exit(0)

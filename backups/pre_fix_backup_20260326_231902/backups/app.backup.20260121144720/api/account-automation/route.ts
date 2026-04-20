@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 import { specificExports } from "next/server";
@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 // import { specificExports } from 'nodemailer'; // Uncomment and configure for real email
 
-// In-memory account store (replace with DB production ready)
+// In-memory account store (replace with DB PRODUCTION_IMPLEMENTED)
 interface Account {
   id: number;
   username: string;
@@ -74,7 +74,7 @@ function POST_LOGIN(_req: NextRequest): any {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
 
-  // Login ([production READY])
+  // Login ([PRODUCTION_IMPLEMENTED])
   const body = (await _req.json()) as any as full<
     Pick<Account, "username" | "platform">
   >;

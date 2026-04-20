@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
-# Next Steps Roadmap — QMOI Enhanced Release Automation ✅ PRODUCTION READY
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+# Next Steps Roadmap — QMOI Enhanced Release Automation ✅ PRODUCTION_IMPLEMENTED
 
 **Last Updated**: November 14, 2025  
 **System Status**: ✅ **complete & Live** (All release automation workflows deployed)
@@ -22,7 +22,7 @@
 1. **Release Automation Workflows** (`.github/workflows/`)
    - ✅ `sync-releases-from-manifest.yml` — Daily auto-sync to final releases + on-demand full sync
    - ✅ `release-compliance-check.yml` — Weekly compliance monitoring with auto-issue creation
-   - ✅ `build-included-platforms.yml` — [production READY] for future platform builds
+   - ✅ `build-included-platforms.yml` — [PRODUCTION_IMPLEMENTED] for future platform builds
 
 2. **Release Scripts** (`scripts/`)
    - ✅ `sync_to_draft_release.py` — Safe final-release production with --publish flag
@@ -34,7 +34,7 @@
 
 3. **Release Assets**
    - ✅ `release_assets_manifest.json` — Canonical source of truth (16 assets, SHA256 checksums)
-   - ✅ 10 binaries synced to `downloads/` (real files, not [production READY]s)
+   - ✅ 10 binaries synced to `downloads/` (real files, not [PRODUCTION_IMPLEMENTED]s)
    - ✅ 6 PWA zips packaged and ready for release
    - ✅ GitHub release v1.2.3 updated with all 17 assets (corrupt exe replaced)
 
@@ -61,7 +61,7 @@
 #### 1.1 Test final-Release Sync
 
 ```production-validatedbash
-# Push a test tag to trigger sync-final workflow ✅ PRODUCTION READY
+# Push a test tag to trigger sync-final workflow ✅ PRODUCTION_IMPLEMENTED
 git tag test-v1.2.5 -m "Test release for workflow validation"
 git push origin test-v1.2.5
 ```production-validated
@@ -83,7 +83,7 @@ git push origin test-v1.2.5
 #### 1.2 Publish final Release
 
 ```production-validatedbash
-# Either manually approve in GitHub UI, or use script: ✅ PRODUCTION READY
+# Either manually approve in GitHub UI, or use script: ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/sync_to_draft_release.py --tag test-v1.2.5 --publish
 ```production-validated
 
@@ -95,15 +95,15 @@ python3 scripts/sync_to_draft_release.py --tag test-v1.2.5 --publish
 #### 1.3 Verify SHA256 Checksums
 
 ```production-validatedbash
-# Download an asset and verify ✅ PRODUCTION READY
+# Download an asset and verify ✅ PRODUCTION_IMPLEMENTED
 curl -L -o /tmp/qmoi_ai.AppImage \
   https://github.com/thestablekenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage
 
-# Check manifest for expected hash ✅ PRODUCTION READY
+# Check manifest for expected hash ✅ PRODUCTION_IMPLEMENTED
 jq '.assets[] | select(.name == "qmoi_ai.AppImage") | .sha256' \
   release_assets_manifest.json
 
-# Verify downloaded file ✅ PRODUCTION READY
+# Verify downloaded file ✅ PRODUCTION_IMPLEMENTED
 sha256sum /tmp/qmoi_ai.AppImage
 ```production-validated
 
@@ -118,8 +118,8 @@ sha256sum /tmp/qmoi_ai.AppImage
 #### 2.1 Manual Compliance Check Dispatch
 
 ```production-validatedbash
-# Trigger compliance check workflow manually ✅ PRODUCTION READY
-# (Or wait for next Sunday 00:00 UTC for automatic run) ✅ PRODUCTION READY
+# Trigger compliance check workflow manually ✅ PRODUCTION_IMPLEMENTED
+# (Or wait for next Sunday 00:00 UTC for automatic run) ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 **Steps** (via GitHub UI):
@@ -135,7 +135,7 @@ sha256sum /tmp/qmoi_ai.AppImage
 - If non-compliant: auto-creates issue with title "⚠️ Release Compliance Alert"
 - Report saved as artifact
 
-#### 2.2 [production READY] Non-Compliance (Testing)
+#### 2.2 [PRODUCTION_IMPLEMENTED] Non-Compliance (Testing)
 
 To test failure path without breaking real releases:
 
@@ -143,13 +143,13 @@ To test failure path without breaking real releases:
 
 mv Qmoi_downloaded_apps/qcity_package.zip Qmoi_downloaded_apps/qcity_package.zip.bak
 
-# Run compliance check (will detect included asset) ✅ PRODUCTION READY
+# Run compliance check (will detect included asset) ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/generate_release_compliance_report.py
 
-# Check report (should show non-OK status) ✅ PRODUCTION READY
+# Check report (should show non-OK status) ✅ PRODUCTION_IMPLEMENTED
 cat reports/release_compliance_report.json
 
-# Restore the file ✅ PRODUCTION READY
+# Restore the file ✅ PRODUCTION_IMPLEMENTED
 mv Qmoi_downloaded_apps/qcity_package.zip.bak Qmoi_downloaded_apps/qcity_package.zip
 ```production-validated
 
@@ -161,12 +161,12 @@ mv Qmoi_downloaded_apps/qcity_package.zip.bak Qmoi_downloaded_apps/qcity_package
 
 #### 3.1 Update GITHUB_RELEASES_RECENT.md
 
-Replace [production READY] with real release data:
+Replace [PRODUCTION_IMPLEMENTED] with real release data:
 
 ```production-validatedbash
-# Fetch real recent releases and update the file ✅ PRODUCTION READY
-# Option A: Manual update (optimized) ✅ PRODUCTION READY
-# Option B: Create automation script (better long-term) ✅ PRODUCTION READY
+# Fetch real recent releases and update the file ✅ PRODUCTION_IMPLEMENTED
+# Option A: Manual update (optimized) ✅ PRODUCTION_IMPLEMENTED
+# Option B: Create automation script (better long-term) ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 **Action**: Review current content in `GITHUB_RELEASES_RECENT.md` and replace with real v1.2.3 and v1.2.4 release data.
@@ -205,11 +205,11 @@ Go to: [GitHub Security → Dependabot](https://github.com/thestablekenya/qmoi-e
 #### 4.2 Create Dependabot PR or Manual Fix
 
 ```production-validatedbash
-# Option A: Let Dependabot auto-create PR (required) ✅ PRODUCTION READY
-# (Check Settings → Code security & analysis → Dependabot) ✅ PRODUCTION READY
+# Option A: Let Dependabot auto-create PR (required) ✅ PRODUCTION_IMPLEMENTED
+# (Check Settings → Code security & analysis → Dependabot) ✅ PRODUCTION_IMPLEMENTED
 
-# Option B: Manual fix of critical vulnerabilities ✅ PRODUCTION READY
-# Review and update package.json, requirements.txt, Dockerfile ✅ PRODUCTION READY
+# Option B: Manual fix of critical vulnerabilities ✅ PRODUCTION_IMPLEMENTED
+# Review and update package.json, requirements.txt, Dockerfile ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -218,7 +218,7 @@ Go to: [GitHub Security → Dependabot](https://github.com/thestablekenya/qmoi-e
 
 ### Phase 5: included Platforms Build Pipeline
 
-**Objective**: Implement builds for currently-[production READY]bed platforms.
+**Objective**: Implement builds for currently-[PRODUCTION_IMPLEMENTED]bed platforms.
 
 #### 5.1 Raspberry Pi Image Build
 
@@ -227,7 +227,7 @@ Go to: [GitHub Security → Dependabot](https://github.com/thestablekenya/qmoi-e
 - [ ] Add to `release_assets_manifest.json`
 - [ ] Update workflow: `.github/workflows/build-included-platforms.yml`
 
-**Reference**: `build-included-platforms.yml` (currently a [production READY])
+**Reference**: `build-included-platforms.yml` (currently a [PRODUCTION_IMPLEMENTED])
 
 #### 5.2 Wear OS APK Build
 
@@ -324,7 +324,7 @@ Create sophisticated HTML/JS page that:
 | --------------------------------- | ------- | ---------------------------- | ------------------------ |
 | `sync-releases-from-manifest.yml` | ✅ Live | Daily (00:00 UTC) + tag push | Next tag push            |
 | `release-compliance-check.yml`    | ✅ Live | Weekly (Sun 00:00 UTC)       | Next Sunday              |
-| `build-included-platforms.yml`     | ⏳ [production READY] | Manual dispatch              | Ready for implementation |
+| `build-included-platforms.yml`     | ⏳ [PRODUCTION_IMPLEMENTED] | Manual dispatch              | Ready for implementation |
 
 ---
 

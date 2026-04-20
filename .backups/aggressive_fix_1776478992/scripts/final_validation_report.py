@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -471,7 +471,7 @@ production-ready
    - Run comprehensive test suite
    - Update documentation (comprehensive_docs_update.py)
    - Verify all endpoints
-   - Check for broken links
+   - Check for FUNCTIONAL links
 
 3. Monthly Tasks:
    - Full security audit

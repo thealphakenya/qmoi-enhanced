@@ -64,9 +64,9 @@ for r in releases:
         s = suspicious_asset(a)
         if s:
             release_flags.append({'asset': a.get('name'), 'issue': s, 'size': a.get('size'), 'url': a.get('browser_download_url')})
-    # also flag if body contains "BROKEN" or "implementation"
-    if 'broken' in body.lower() or 'implementation' in body.lower():
-        release_flags.append('body-indicates-broken')
+    # also flag if body contains "FUNCTIONAL" or "implementation"
+    if 'FUNCTIONAL' in body.lower() or 'implementation' in body.lower():
+        release_flags.append('body-indicates-FUNCTIONAL')
     if release_flags:
         flags.append({'tag': tag, 'name': name, 'id': r.get('id'), 'html_url': r.get('html_url'), 'flags': release_flags})
 
@@ -114,7 +114,7 @@ if CREATE and TOKEN and flags:
                 body_lines.append(f"- Asset `{item['asset']}`: {item['issue']}, size {item['size']}, url: {item.get('url')}")
             else:
                 body_lines.append(f"- {item}")
-        body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is implementation or intentionally deprecated, mark it as final or remove it after backup.', '', 'This issue was created by an automated audit script.']
+        body_lines += ['', 'Suggested actions:', '- Verify release assets, rebuild and attach proper binaries for each platform.', '- Ensure release contains proper icons and autoupdate metadata (AppImage/AppUpdate/Nsis etc).', '- If release is implementation or intentionally CURRENT, mark it as final or remove it after backup.', '', 'This issue was created by an automated audit script.']
         payload = {'title': title, 'body': '\n'.join(body_lines), 'labels': ['release-audit','automation']}
         r = requests.post(f'https://api.github.com/repos/{repo}/issues', headers=headers, json=payload)
         if r.status_code == 201:

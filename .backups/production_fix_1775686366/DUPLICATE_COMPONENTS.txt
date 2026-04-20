@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 AIContext.tsx
 AppManager.tsx
 BluetoothManager.tsx
@@ -72,7 +72,7 @@ automation/AutomationRulesPanel.tsx
 components/qmedia_player.md.tsx
 device/AWSCredentialsModal.tsx
 device/AzureCredentialsModal.tsx
-device/DeviceIntegration[PRODUCTION READY]s.ts
+device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts
 device/GCPCredentialsModal.tsx
 enhanced-system-dashboard.tsx
 enhanced_build_tools.tsx

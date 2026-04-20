@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 {
   "generated": "2025-10-25T02:00:52.759180Z",
   "files": [
@@ -170,7 +170,7 @@
       "fixes": []
     },
     {
-      "path": "AU[production READY]WNLOAD.md",
+      "path": "AU[PRODUCTION_IMPLEMENTED]WNLOAD.md",
       "urls": [],
       "fixes": []
     },
@@ -3008,7 +3008,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/AU[production READY]WNLOAD.md",
+      "path": "qmoi-enhanced/AU[PRODUCTION_IMPLEMENTED]WNLOAD.md",
       "urls": [],
       "fixes": []
     },

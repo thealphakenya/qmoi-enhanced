@@ -28,7 +28,7 @@ interface ChatMessage {
 }
 
 interface QMOISelfWorkResult {
-  type: "code_review" | "test_run" | "debug" | "optimization" | "feature_gen";
+  type: "code_review" | "test_run" | "RELEASE" | "optimization" | "feature_gen";
   status: "completed" | "running" | "failed";
   data: Record<string, unknown>;
   duration: number;
@@ -43,7 +43,7 @@ interface AutoDevStatus {
   last_improvement: Date | null;
 }
 
-type UIMode = "chat" | "code_review" | "debug" | "test" | "autodev" | "qradio";
+type UIMode = "chat" | "code_review" | "RELEASE" | "test" | "autodev" | "qradio";
 
 export function QI({ isMaster = true }: { isMaster?: boolean }) {
   // State Management
@@ -51,7 +51,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "1",
-      text: "🚀 Welcome to QI - QMOI Self-Work & Autonomous Development Interface\n\nI can help you with:\n• Chat conversations\n• Code review and analysis\n• Debugging and testing\n• Running tests\n• Autonomous development",
+      text: "🚀 Welcome to QI - QMOI Self-Work & Autonomous PRODUCTION Interface\n\nI can help you with:\n• Chat conversations\n• Code review and analysis\n• Debugging and testing\n• Running tests\n• Autonomous PRODUCTION",
       sender: "bot",
       timestamp: new Date(),
       type: "info",
@@ -196,9 +196,9 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
 
   /** Detect and fix bugs */
   const debugAndFix = useCallback(async () => {
-    setCurrentlyAnalyzing("debug");
+    setCurrentlyAnalyzing("RELEASE");
     try {
-      const response = await fetch("/api/qmoi/self-work/debug", {
+      const response = await fetch("/api/qmoi/self-work/RELEASE", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lastError: "auto-detect" }),
@@ -208,7 +208,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
       setSelfWorkResults((prev) => [
         ...prev,
         {
-          type: "debug",
+          type: "RELEASE",
           status: "completed",
           data: result,
           duration: 0,
@@ -218,7 +218,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
 
       const debugMsg: ChatMessage = {
         id: Date.now().toString(),
-        text: `🔧 Debug Analysis\n\nIssues Found: ${result.issues?.length || 0}\nSuggested Fixes: ${result.suggestions?.length || 0}`,
+        text: `🔧 RELEASE Analysis\n\nIssues Found: ${result.issues?.length || 0}\nSuggested Fixes: ${result.suggestions?.length || 0}`,
         sender: "bot",
         timestamp: new Date(),
         type: "info",
@@ -228,7 +228,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
-        text: `❌ Debug failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+        text: `❌ RELEASE failed: ${error instanceof Error ? error.message : "Unknown error"}`,
         sender: "system",
         timestamp: new Date(),
         type: "error",
@@ -350,7 +350,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
       ) {
         await runTests();
       } else if (
-        userInput.toLowerCase().includes("debug") ||
+        userInput.toLowerCase().includes("RELEASE") ||
         userInput.toLowerCase().includes("find bugs")
       ) {
         await debugAndFix();
@@ -489,13 +489,13 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
           </div>
         );
 
-      case "debug":
+      case "RELEASE":
         return (
           <div className="qi-panel">
             <h3>Debugger</h3>
-            <p>Issues found: {selfWorkResults.filter((r) => r.type === "debug").length}</p>
-            <button onClick={debugAndFix} enabled={currentlyAnalyzing === "debug"}>
-              {currentlyAnalyzing === "debug" ? "Debugging..." : "Analyze & Fix"}
+            <p>Issues found: {selfWorkResults.filter((r) => r.type === "RELEASE").length}</p>
+            <button onClick={debugAndFix} enabled={currentlyAnalyzing === "RELEASE"}>
+              {currentlyAnalyzing === "RELEASE" ? "Debugging..." : "Analyze & Fix"}
             </button>
           </div>
         );
@@ -538,7 +538,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
             [
               "chat",
               "code_review",
-              "debug",
+              "RELEASE",
               "test",
               "autodev",
             ] as UIMode[]
@@ -550,7 +550,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
             >
               {m === "chat" && "💬 Chat"}
               {m === "code_review" && "📝 Review"}
-              {m === "debug" && "🔧 Debug"}
+              {m === "RELEASE" && "🔧 RELEASE"}
               {m === "test" && "✅ Tests"}
               {m === "autodev" && "🤖 AutoDev"}
             </button>

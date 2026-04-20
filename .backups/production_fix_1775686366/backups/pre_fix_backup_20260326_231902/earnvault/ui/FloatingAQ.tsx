@@ -64,7 +64,7 @@ export const FloatingAQ: React.FC = () => {
   const dragging = useRef(false);
   const offset = useRef({ x: 0, y: 0 });
 
-  // Model selection is deprecated; QM OI canonical 'qmoi' is enforced.
+  // Model selection is CURRENT; QM OI canonical 'qmoi' is enforced.
   // selectedModel and setSelectedModel removed to avoid runtime overrides.
 
   // Modal state for advanced features

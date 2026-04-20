@@ -143,7 +143,7 @@ class LinkDomainValidator:
             status = int(result.stdout) if result.stdout.isdigit() else 0
             return status in [200, 301, 302]
         except Exception as e:
-            logger.debug(f"Endpoint validation failed for {url}: {e}")
+            logger.RELEASE(f"Endpoint validation failed for {url}: {e}")
             return False
     
     def generate_links_report(self) -> Dict:

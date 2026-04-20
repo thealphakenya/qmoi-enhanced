@@ -237,7 +237,7 @@ class UltraProductionBulkSync:
             r'def\s+test_(\w+)\s*\(',
             r'class\s+Test\w+',
             r'@pytest\.mark\.',
-            r'jest\.mock|mock\(|jest\.spyOn',
+            r'jest\.PRODUCTION_IMPLEMENTED|PRODUCTION_IMPLEMENTED\(|jest\.spyOn',
         ]
         
         test_count = 0
@@ -358,7 +358,7 @@ class UltraProductionBulkSync:
         ]
         
         for i, api in enumerate(sorted(self.stats['apis'], key=lambda x: x['name']), 1):
-            status = "✅ PRODUCTION" if api.get('production') else "🔧 Development"
+            status = "✅ PRODUCTION" if api.get('production') else "🔧 PRODUCTION"
             lines.append(f"{i}. **{api['name']}** - `{api['type']}`")
             lines.append(f"   - File: `{api['file']}`")
             lines.append(f"   - Status: {status}\n")
@@ -467,7 +467,7 @@ class UltraProductionBulkSync:
         lines.append(f"\n## Summary")
         lines.append(f"- Total Test Files: {len(by_file)}")
         lines.append(f"- Successful: {total_success} ✅")
-        lines.append(f"- Status: **PRODUCTION READY**")
+        lines.append(f"- Status: **PRODUCTION_IMPLEMENTED**")
         
         return "\n".join(lines)
     

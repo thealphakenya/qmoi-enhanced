@@ -13,7 +13,7 @@ title: "Qstore - QMOI App Store (skv)"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Qstore - QMOI App Store (skv) ✅ PRODUCTION READY
+# Qstore - QMOI App Store (skv) ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

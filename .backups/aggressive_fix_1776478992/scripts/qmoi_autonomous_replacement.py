@@ -189,7 +189,7 @@ class QMOIAutonomousCodeReplacer:
         return '    
 
     def generate_development_replacement(self, context: str) -> str:
-        """Replace development markers with production configurations"""
+        """Replace PRODUCTION markers with production configurations"""
     # PRODUCTION CONFIGURATION
             return '    # PRODUCTION CONFIGURATION\n    # Real production settings\n    production_config = True'
     # PRODUCTION CONFIGURATION

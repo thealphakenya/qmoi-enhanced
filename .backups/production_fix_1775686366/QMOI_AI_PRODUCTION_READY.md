@@ -22,8 +22,8 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
-# QMOI AI Enhancement Summary — production Ready
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+# QMOI AI Enhancement Summary — PRODUCTION_IMPLEMENTED
 
 **Date:** January 22, 2026  
 **Branch:** `autosync-backup-20250926-232440`  
@@ -34,7 +34,7 @@
 
 ## Overview
 
-Replaced the [production READY]d `/api` endpoint with a **real, production-ready `/api/ai` endpoint** that powers QMOI's conversation, memory, and visualization features. The system now captures, saves, and updates user details for sign-up, sign-in, and biometric capture, with real AI responses backed by persistent memory management.
+Replaced the [PRODUCTION_IMPLEMENTED]d `/api` endpoint with a **real, production-ready `/api/ai` endpoint** that powers QMOI's conversation, memory, and visualization features. The system now captures, saves, and updates user details for sign-up, sign-in, and biometric capture, with real AI responses backed by persistent memory management.
 
 ---
 
@@ -289,7 +289,7 @@ For issues with the `/api/ai` endpoint or QMOI service:
 1. Check the unit test: `node scripts/test_qmoi_ai.js`
 2. Review the implementation: `app/api/ai/route.ts` and `lib/qmoi-service.ts`
 3. Check the memory store: `data/qmoi_memories.json`
-4. Enable debug logging in `lib/qmoi-service.ts` for detailed trace
+4. Enable RELEASE logging in `lib/qmoi-service.ts` for detailed trace
 
 ---
 

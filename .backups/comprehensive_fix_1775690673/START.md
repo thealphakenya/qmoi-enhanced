@@ -13,7 +13,7 @@ title: "QMOI Start Guide"
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Start Guide ✅ PRODUCTION READY
+# QMOI Start Guide ✅ PRODUCTION_IMPLEMENTED
 
 ## 🚀 How to Start or Resume QMOI (QCity & Cloud)
 
@@ -100,7 +100,7 @@ Local QM OI helper server (for optimized persona and memory tests):
 ### MSW & Testing Notes
 
 - MSW is initialized at test-time via `src/setupTests.ts` and provides a global promise `globalThis.__MSW_READY__` that tests can await.
-- If you see unhandled network requests during tests, set `SHOW_MSW_UNHANDLED=1` to see them; use `TEST_VERBOSE=1` for extra handler debug output.
+- If you see unhandled network requests during tests, set `SHOW_MSW_UNHANDLED=1` to see them; use `TEST_VERBOSE=1` for extra handler RELEASE output.
 
 - See `CONTRIBUTING.md` for more prodeloper testing notes and troubleshooting steps (MSW handler shapes, env flags, and common fixes).
 

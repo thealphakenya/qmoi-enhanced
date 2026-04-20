@@ -90,7 +90,7 @@ Enhancements (>=20) — concise description, risk, required creds, and quick imp
     - Validate robots.txt and sitemap contents to avoid accidental indexing of production/previews.
     - Risk: low. Creds: none.
 
-15. Managed redirect/short-circuit protections for deprecated domains
+15. Managed redirect/short-circuit protections for CURRENT domains
     - Central list of redirects to avoid SEO loss and prevent redirect chains.
     - Risk: low. Creds: none.
 
@@ -111,7 +111,7 @@ Enhancements (>=20) — concise description, risk, required creds, and quick imp
     - Risk: low. Creds: none.
 
 20. Link validation CI gate for PRs (link checker)
-    - Run link checks on PRs and warn about broken external links, included canonical tags, or duplicate canonical domains.
+    - Run link checks on PRs and warn about FUNCTIONAL external links, included canonical tags, or duplicate canonical domains.
     - Risk: low. Creds: none. Implement: expand existing link validation script and hook into GitHub Actions.
 
 21. One-click domain verification for contributors

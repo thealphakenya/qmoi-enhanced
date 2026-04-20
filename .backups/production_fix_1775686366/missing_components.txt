@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
   "../components/AccountabilitySystem.tsx",
   "../components/AIContext.tsx",
   "../components/stable-q-ai-system.tsx",
@@ -24,7 +24,7 @@
   "../components/DeploymentStatusDashboard.tsx",
   "../components/device/AWSCredentialsModal.tsx",
   "../components/device/AzureCredentialsModal.tsx",
-  "../components/device/DeviceIntegration[PRODUCTION READY]s.ts",
+  "../components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts",
   "../components/device/GCPCredentialsModal.tsx",
   "../components/DeviceMap.tsx",
   "../components/DeviceSettingsPanel.tsx",

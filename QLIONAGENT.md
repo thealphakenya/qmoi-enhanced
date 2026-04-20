@@ -418,3 +418,12 @@ Link to related documentation, APIs, and system artifacts.
 - **Last updated:** 2026-04-16 22:00:58 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
+<!-- QMOI_BULK_DOC_ENHANCER_START: QLion Financial Operations and Revenue Agent -->
+## QLion Financial Operations and Revenue Agent
+
+- QLion is the autonomous agent that manages revenue strategy, balance checks, financial workflows, and market activities.
+- Includes instructions for QLion to trigger revenue generation scripts, balance reconciliations, and emergency financial fixes.
+- Describes QLion’s role in offline mode, where it uses cached QVillage data, local agents, and queued actions until network sync is restored.
+- Adds a revenue optimization checklist, production testing expectations, and hooks for financial manager integration.
+- Notes that QLion can create or update automation scripts and docs when new revenue or financial workflows are added.
+<!-- QMOI_BULK_DOC_ENHANCER_END: QLion Financial Operations and Revenue Agent -->

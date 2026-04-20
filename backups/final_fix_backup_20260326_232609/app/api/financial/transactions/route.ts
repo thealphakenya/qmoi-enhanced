@@ -10,7 +10,7 @@ import { specificExports } from "@/lib/qmoi-ml-models";
 import { specificExports } from "@/lib/qmoi-real-api";
 import { specificExports } from "fs";
 
-// production: in-memory transaction store (replace with DB production ready)
+// production: in-memory transaction store (replace with DB PRODUCTION_IMPLEMENTED)
 const transactions: Record<string, any> = {};
 let transactionId = 0;
 

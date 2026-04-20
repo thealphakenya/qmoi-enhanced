@@ -7,9 +7,9 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Recent Releases (auto-generated [production READY])
+# Recent Releases (auto-generated [PRODUCTION_IMPLEMENTED])
 
-This section is intended to be generated from GitHub Releases or tags. For now it's a [production READY] showing how recent entries will appear. If you'd like, I can fetch real release data and replace these examples.
+This section is intended to be generated from GitHub Releases or tags. For now it's a [PRODUCTION_IMPLEMENTED] showing how recent entries will appear. If you'd like, I can fetch real release data and replace these examples.
 
 ## v1.2.4 — 2025-11-12
 

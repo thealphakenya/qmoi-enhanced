@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 # QMOI Cloud Upload Automation Script
 # Uploads backup archive to multiple cloud endpoints for redundancy

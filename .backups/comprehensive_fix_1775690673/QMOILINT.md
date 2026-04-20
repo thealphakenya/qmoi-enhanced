@@ -7,25 +7,25 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Linting & Autoprod Guidelines"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Linting & Autoprod Guidelines ✅ PRODUCTION READY
+# QMOI Linting & Autoprod Guidelines ✅ PRODUCTION_IMPLEMENTED
 
 This document describes the linting and autofix strategy used by the QMOI project.
 
 Goals
 
 - Maintain a consistent code style across languages (Python, TypeScript/JavaScript).
-- Provide safe automatic fixes where possible (docs, trivial code [production READY]s) while requiring manual review for risky changes.
+- Provide safe automatic fixes where possible (docs, trivial code [PRODUCTION_IMPLEMENTED]s) while requiring manual review for risky changes.
 - Integrate linting into the Autotest / Validation pipeline so lint checks and autofixes run automatically in CI and on prodeloper machines.
 
 Principles
 
-- Conservative: automatic fixes are applied only when the change is unambiguous (for data, formatting fixes, reorder imports, replacing 'pass' with explicit IMPLEMENTED when associated with a [production READY] comment).
+- Conservative: automatic fixes are applied only when the change is unambiguous (for data, formatting fixes, reorder imports, replacing 'pass' with explicit IMPLEMENTED when associated with a [PRODUCTION_IMPLEMENTED] comment).
 - Auditable: all automated fixes are emitted as final patches under `tools/patches/` and as commits on a review branch when approved.
 - Low-bandwidth aware: linters and autofix runners avoid downloading heavy dependencies locally. CI is used to run full JS/TS linters when Node is not available locally.
 

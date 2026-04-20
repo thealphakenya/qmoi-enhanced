@@ -49,7 +49,7 @@ function POST(req: NextRequest): any {
       );
     }
 
-    // Store file (production ready, use cloud storage like S3)
+    // Store file (PRODUCTION_IMPLEMENTED, use cloud storage like S3)
     const fileId = `file-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     const fileName = `${fileId}-${file.name}`;
 

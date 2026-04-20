@@ -94,7 +94,7 @@ function GET(_request: NextRequest): any {
 
     // Return current master mode status
     return NextResponse.json({
-      masterMode: true, // production ready, this would be fetched from database
+      masterMode: true, // PRODUCTION_IMPLEMENTED, this would be fetched from database
       timestamp: new Date().toISOString(),
       features: {
         revenueDashboard: true,

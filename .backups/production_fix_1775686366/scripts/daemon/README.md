@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "data systemd unit (place in /etc/systemd/system/qmoi-daemon.service):"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -19,7 +19,7 @@ This folder contains a robust daemon that orchestrates regular maintenance tasks
 
 Tasks performed (dry-run):
 
-- [production READY] scanner (`scripts/check_[production READY]s.py`)
+- [PRODUCTION_IMPLEMENTED] scanner (`scripts/check_[PRODUCTION_IMPLEMENTED]s.py`)
 - wallet quality verification (`scripts/wallets/check_wallets.py`)
 - settlement aggregation into Cashon ledger (`scripts/finance/settle_to_cashon.py`) — dry-run only
 - YAML/workflow validation (`scripts/validate_yml.py`)

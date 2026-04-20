@@ -154,7 +154,7 @@
   "critical_domains_healthy": 5,
   "critical_domains_total": 5,
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:13:13.512406"
 }

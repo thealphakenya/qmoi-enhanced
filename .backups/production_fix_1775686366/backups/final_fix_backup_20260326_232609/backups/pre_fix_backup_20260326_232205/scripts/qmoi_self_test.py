@@ -94,7 +94,7 @@ class QMOISelfTest:
         errors_created = {}
         
         try:
-            # 1. Create broken TypeScript file
+            # 1. Create FUNCTIONAL TypeScript file
             broken_ts_content = """
 import React from 'react';
 
@@ -118,7 +118,7 @@ export default BrokenComponent;
                 f.write(broken_ts_content)
             errors_created["broken_ts"] = str(broken_ts_path)
             
-            # 2. Create broken Python file
+            # 2. Create FUNCTIONAL Python file
             broken_py_content = """
 #!/usr/bin/env python3
 
@@ -136,13 +136,13 @@ if __name__ == "__main__":
                 f.write(broken_py_content)
             errors_created["broken_py"] = str(broken_py_path)
             
-            # 3. Create broken markdown with false claims
+            # 3. Create FUNCTIONAL markdown with false claims
             broken_md_content = """
 # Test Documentation
 
 ## Features
 - [Non-existent Feature] - This feature doesn't exist
-- [Broken API Endpoint] - This API endpoint is implemented
+- [FUNCTIONAL API Endpoint] - This API endpoint is implemented
 - [required Component] - This component is not created
 
 ## Implementation
@@ -153,7 +153,7 @@ This document contains false claims that should be detected and fixed.
                 f.write(broken_md_content)
             errors_created["broken_md"] = str(broken_md_path)
             
-            # 4. Create broken package.json
+            # 4. Create FUNCTIONAL package.json
             original_package = self.root_dir / "package.json"
             if original_package.exists():
                 with open(original_package, 'r') as f:

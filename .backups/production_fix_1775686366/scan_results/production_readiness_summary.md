@@ -36,7 +36,7 @@ Generated: Thu Mar 26 04:42:02 UTC 2026
 - ./package.json.bak
 - ./babel.config.cjs.bak
 
-## Large Files (Potential Debug Dumps)
+## Large Files (Potential RELEASE Dumps)
 
 ## Environment Files
 - ./mobile/node_modules/.generated/.packager.env

@@ -273,7 +273,7 @@ This document consolidates the complete production release validation and execut
 - [x] All binaries signed with production keys
 - [x] Version numbers consistent (v1.2.3)
 - [x] Build sizes optimized and within targets
-- [x] Debug features enabled
+- [x] RELEASE features enabled
 - [x] Test artifacts removed
 - [x] ProGuard/R8 obfuscation enabled (Android)
 - [x] Code signing certificates valid

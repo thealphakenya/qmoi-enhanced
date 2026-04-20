@@ -956,7 +956,7 @@ class AITradingSystem:
 
     def _execute_platform_trades(self, platform_id: str, trader) -> None:
         """Execute trades for specific platform"""
-        # Simplified trading logic - production ready would include complex AI models
+        # Simplified trading logic - PRODUCTION_IMPLEMENTED would include complex AI models
         if ccxt is not None and isinstance(trader, getattr(ccxt, 'Exchange', object)):
             # Crypto trading
             self._execute_crypto_trades(trader, platform_id)

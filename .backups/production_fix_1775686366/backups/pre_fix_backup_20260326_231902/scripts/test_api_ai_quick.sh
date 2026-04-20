@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 # Integration test for /api/ai and /api/qmoi/chat endpoints
 # Requires: local Next.js prod server running on http://localhost:3000

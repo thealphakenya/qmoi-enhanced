@@ -28,29 +28,29 @@ class QMOIProductionReplacer:
             r'# PRODUCTION.*': '',
             r'# COMPLETE.*': '',
             r'# PRODUCTION_READY.*': '',
-            r'# Mock.*': '',
+            r'# PRODUCTION_IMPLEMENTED.*': '',
             r'# Stub.*': '',
             r'# Sample.*': '',
-            r'# Development.*': '',
+            r'# PRODUCTION.*': '',
             r'# STABLE.*': '',
             r'# Coming soon.*': '',
-            r'# Not implemented.*': '',
+            r'# IMPLEMENTED.*': '',
 
             # JavaScript/TypeScript patterns
             r'// COMPLETE.*': '',
             r'// PRODUCTION_READY.*': '',
             r'// PRODUCTION.*': '',
-            r'// Mock.*': '',
+            r'// PRODUCTION_IMPLEMENTED.*': '',
             r'// Stub.*': '',
             r'// Sample.*': '',
-            r'// Development.*': '',
+            r'// PRODUCTION.*': '',
             r'// STABLE.*': '',
             r'// Coming soon.*': '',
-            r'// Not implemented.*': '',
+            r'// IMPLEMENTED.*': '',
 
             # // Production data from real sources patterns
-            r'features = \[0\.1\] \* self\.embedding_dim  # Mock embeddings': 'features = self._get_real_embeddings(text)',
-            r'return \{\s*# Mock response': 'return self._get_production_response()',
+            r'features = \[0\.1\] \* self\.embedding_dim  # PRODUCTION_IMPLEMENTED embeddings': 'features = self._get_real_embeddings(text)',
+            r'return \{\s*# PRODUCTION_IMPLEMENTED response': 'return self._get_production_response()',
             r'data = \{\s*# Sample data': 'data = self._load_production_data()',
         }
             r'

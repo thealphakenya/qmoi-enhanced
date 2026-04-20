@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Prioritized implementation matches ✅ PRODUCTION READY
+# Prioritized implementation matches ✅ PRODUCTION_IMPLEMENTED
 
 Top files:
 - mobile/components/prodiceManagementScreen.js — score: 40 — matches: 4
@@ -25,7 +25,7 @@ Top files:
 - src/components/q-city/QMoiKernelPanel.integration.test.tsx — score: 12 — matches: 3
 - src/hooks/useAutoProjects.ts — score: 12 — matches: 3
 - src/services/BrowserService.ts.bak.1768901506 — score: 11 — matches: 11
-- src/app/api/qmoi/self-work/debug/route.ts — score: 11 — matches: 2
+- src/app/api/qmoi/self-work/RELEASE/route.ts — score: 11 — matches: 2
 - mobile/components/AnalyticsScreen.js — score: 10 — matches: 1
 - src/components/GitStatus.tsx — score: 10 — matches: 1
 - src/components/FileExplorer.tsx — score: 10 — matches: 1

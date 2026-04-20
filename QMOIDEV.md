@@ -22,7 +22,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI prodeloper Agent (QMOIprod) ✅ PRODUCTION READY
+# QMOI prodeloper Agent (QMOIprod) ✅ PRODUCTION_IMPLEMENTED
 
 ## Overview
 

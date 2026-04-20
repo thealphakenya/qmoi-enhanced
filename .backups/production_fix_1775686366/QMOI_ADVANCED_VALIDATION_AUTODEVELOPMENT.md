@@ -7,7 +7,7 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY]
+[PRODUCTION_IMPLEMENTED]
 ## production Readiness Snapshot
 - Scanned files: 4430
 - production markers: 358 (8.08% production)
@@ -159,7 +159,7 @@ QMOI integrates deeply with the QMOI Virtual System for enhanced capabilities:
   │ ├─ SSL/TLS certificate validation
   │ ├─ Redirect chain checking
   │ ├─ Content availability verification
-  │ ├─ Broken link detection
+  │ ├─ FUNCTIONAL link detection
   │ ├─ Redirect loop detection
   │ └─ Auto-fix http→https conversion
   │

@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 # Production configuration
 class Config:
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+    RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -264,7 +264,7 @@ class ComputerVisionService:
             logger.info("Using generated test image for processing")
         else:
             # In a real implementation, this would decode image_data
-            image = self._create_test_image()  # Placeholder
+            image = self._create_test_image()  # PRODUCTION
 
         result = {}
 

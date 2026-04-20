@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env bash
 # vercel_deploy.sh
 # Deploy the web/PWA app to Vercel. Prefers the `vercel` CLI; falls back to API guidance.

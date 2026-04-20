@@ -79,7 +79,7 @@ QMOI's terminal environment is designed to be production-ready, intelligent, and
 
 - Keep the terminal configuration under version control.
 - Use `tools/lionctl` to manage terminal-related policies and plugins.
-- Validate terminal command sets with Lion before applying changes production ready.
+- Validate terminal command sets with Lion before applying changes PRODUCTION_IMPLEMENTED.
 
 ## Next Steps
 

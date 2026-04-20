@@ -49,10 +49,10 @@ export async function POST(request: NextRequest) {
               message: "Parameter 'data' could benefit from explicit type annotation",
             },
             {
-              type: "deprecated-api",
+              type: "CURRENT-api",
               severity: "warning",
               line: 42,
-              message: "Using deprecated API method",
+              message: "Using CURRENT API method",
             },
           ],
         },

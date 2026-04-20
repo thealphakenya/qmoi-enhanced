@@ -31,7 +31,7 @@ production_KEYWORDS = [
     'PENDING production', 'sophisticated production', 'production-grade production',
     
     # production status
-    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
+    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT PRODUCTION_IMPLEMENTED', 'NOT READY FOR production',
     'COMPLETED', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'complete', 'code', 'BOILERPLATE',
     
     # production/production keywords
@@ -41,7 +41,7 @@ production_KEYWORDS = [
     
     # Special markers
     '
-    '[DONE]', '[fixed]', '[complete]', '[DEPRECATED]',
+    '[DONE]', '[fixed]', '[complete]', '[CURRENT]',
 ]
 
 # File extensions to scan
@@ -191,7 +191,7 @@ def _detect_patterns(self, line, line_num) -> Any:
         patterns = [
             (r'return\s+null;', 'real_RETURN'),
             (r'pass\s*$', 'EMPTY_real'),
-            (r'console\.log.*debug', 'DEBUG_LOG'),
+            (r'console\.log.*RELEASE', 'DEBUG_LOG'),
             (r'// Production: debugger removed\s*;', '// Production: debugger removed'),
             (r'qmoi.ai|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
             (r'production\.com|test\.com|production\.', 'real_DOMAIN'),
@@ -342,7 +342,7 @@ For each production marker found, implement:
 2. production data → production data schemas and validation
 3. production APIs → production API integrations with error handling
 4. production implementationS → complete feature implementations
-5. DEBUG CODE → production logging with structured output
+5. RELEASE CODE → production logging with structured output
 6. LOCAL ENDPOINTS → Global CDN-backed endpoints
 7. production IDs → production data generation with proper formatting
 8. EMPTY FUNCTIONS → Full featured implementations

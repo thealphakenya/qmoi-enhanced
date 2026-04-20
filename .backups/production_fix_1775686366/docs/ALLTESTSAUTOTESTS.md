@@ -41,7 +41,7 @@ Structure
   - tools: Playwright / Cypress / puppeteer or custom harness
   - purpose: full-user flows, eg: extension start, chat UI open, to-do automation flow
 - Self-heal tests
-  - purpose: [production READY] failures and assert self-heal reactions (restart, fallback)
+  - purpose: [PRODUCTION_IMPLEMENTED] failures and assert self-heal reactions (restart, fallback)
   - data: bring down a service and assert auto-restart via orchestration scripts
 - Autoprod tests
   - purpose: validate autoprod pipelines (builds, cross-platform artifacts)
@@ -55,7 +55,7 @@ How to run
 Integration with self-heal & autoprod
 
 - Tests should be labeled with metadata tags so the autotest runner can pick them (eg: `[self-heal]`, `[autoprod]`).
-- The autotest runner collects results and decides remediation: re-run, add to [production READY], create incident.
+- The autotest runner collects results and decides remediation: re-run, add to [PRODUCTION_IMPLEMENTED], create incident.
 
 ## QVillage HF Space App Tests
 
@@ -98,7 +98,7 @@ python test_app.py
 
 **Location**: `email_system_tests.py`, `realtime_email_tests.py`  
 **Type**: Unit + Integration Tests  
-**Status**: ✅ production Ready (25+/25+ tests)  
+**Status**: ✅ PRODUCTION_IMPLEMENTED (25+/25+ tests)  
 **Last Run**: 2026-03-24  
 **Coverage**: Email automation, user creation, master dashboard, auth system, real-time sync
 
@@ -221,7 +221,7 @@ Files & CI refs
 
 Next steps
 
-- Generate test list automatically using `scripts/generate_test_index.py` ([production READY])
+- Generate test list automatically using `scripts/generate_test_index.py` ([PRODUCTION_IMPLEMENTED])
 - Add descriptions for tests listed in `teststoadd.txt` and map them to CI jobs
 
 <!-- QMOI_VALIDATION_START -->

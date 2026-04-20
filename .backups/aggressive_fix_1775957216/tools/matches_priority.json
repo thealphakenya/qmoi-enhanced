@@ -113,7 +113,7 @@
           },
           {
             "line": 640,
-            "snippet": "// Debug: print real store counts to help diagnose pre-existing data",
+            "snippet": "// RELEASE: print real store counts to help diagnose pre-existing data",
             "score": 1
           },
           {
@@ -398,17 +398,17 @@
         "matches": [
           {
             "line": 24,
-            "snippet": ".[production READY]Implementation(async (input: unknown, _init: unknown) => {",
+            "snippet": ".[PRODUCTION_IMPLEMENTED]Implementation(async (input: unknown, _init: unknown) => {",
             "score": 4
           },
           {
             "line": 187,
-            "snippet": ".[production READY]Implementation(async (arg: unknown) => {",
+            "snippet": ".[PRODUCTION_IMPLEMENTED]Implementation(async (arg: unknown) => {",
             "score": 4
           },
           {
             "line": 199,
-            "snippet": ".[production READY]Implementation(async (arg: unknown) => {",
+            "snippet": ".[PRODUCTION_IMPLEMENTED]Implementation(async (arg: unknown) => {",
             "score": 4
           }
         ]
@@ -501,7 +501,7 @@
       }
     ],
     [
-      "src/app/api/qmoi/self-work/debug/route.ts",
+      "src/app/api/qmoi/self-work/RELEASE/route.ts",
       {
         "score": 11,
         "matches": [
@@ -551,7 +551,7 @@
         "matches": [
           {
             "line": 38,
-            "snippet": "[production READY] download - in production, fetch from backend",
+            "snippet": "[PRODUCTION_IMPLEMENTED] download - in production, fetch from backend",
             "score": 10
           }
         ]
@@ -577,7 +577,7 @@
         "matches": [
           {
             "line": 24,
-            "snippet": "// Google OAuth [production READY] - in production, integrate with @react-oauth/google",
+            "snippet": "// Google OAuth [PRODUCTION_IMPLEMENTED] - in production, integrate with @react-oauth/google",
             "score": 10
           }
         ]
@@ -1199,7 +1199,7 @@
         "matches": [
           {
             "line": 20,
-            "snippet": "* [production READY] implementation \u2014 integrate search/AI later.",
+            "snippet": "* [PRODUCTION_IMPLEMENTED] implementation \u2014 integrate search/AI later.",
             "score": 4
           }
         ]
@@ -1510,7 +1510,7 @@
         "matches": [
           {
             "line": 293,
-            "snippet": "[production READY]: implement WhatsApp/face/voice confirmation",
+            "snippet": "[PRODUCTION_IMPLEMENTED]: implement WhatsApp/face/voice confirmation",
             "score": 1
           },
           {
@@ -1624,7 +1624,7 @@
         "matches": [
           {
             "line": 206,
-            "snippet": "[production READY]=\"e.g., How do I implement a transformer model?\"",
+            "snippet": "[PRODUCTION_IMPLEMENTED]=\"e.g., How do I implement a transformer model?\"",
             "score": 1
           }
         ]
@@ -1676,7 +1676,7 @@
         "matches": [
           {
             "line": 134,
-            "snippet": "[production READY]: Implement endpoint creation",
+            "snippet": "[PRODUCTION_IMPLEMENTED]: Implement endpoint creation",
             "score": 1
           }
         ]
@@ -1840,7 +1840,7 @@
     ]
   ],
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:14:59.592871"
 }

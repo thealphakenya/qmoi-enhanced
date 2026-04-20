@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
-# CURL Examples: Talking to `qmoi` (Master / Sister / User) ✅ PRODUCTION READY
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+# CURL Examples: Talking to `qmoi` (Master / Sister / User) ✅ PRODUCTION_IMPLEMENTED
 
 This document shows how to talk to a local `qmoi` chat endpoint using `curl`.
 
@@ -17,7 +17,7 @@ Local prod server (provided in `scripts/qmoi_local_server.py`) listens on `https
 1. Start the local QM OI server (run in background):
 
 ```production-validatedbash
-# from repository root ✅ PRODUCTION READY
+# from repository root ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/qmoi_local_server.py &
 ```production-validated
 
@@ -33,7 +33,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
     ]
   }'
 
-# Response will be a JSON matching OpenAI-like format; assistant reply in choices[0].message.content ✅ PRODUCTION READY
+# Response will be a JSON matching OpenAI-like format; assistant reply in choices[0].message.content ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 3. Ask as `master` (system persona):
@@ -49,7 +49,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
     ]
   }'
 
-# The server heuristically detects 'master' persona and responds in Master Mode. ✅ PRODUCTION READY
+# The server heuristically detects 'master' persona and responds in Master Mode. ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 4. Ask as `sister` (system persona):
@@ -65,7 +65,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
     ]
   }'
 
-# The server detects 'sister' persona and gives a friendly reply. ✅ PRODUCTION READY
+# The server detects 'sister' persona and gives a friendly reply. ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 5. Streamed replies (IMPLEMENTED):
@@ -116,7 +116,7 @@ qmoi_query(){
     -d "$1" | jq -r '.choices[0].message.content'
 }
 
-# Usage: ✅ PRODUCTION READY
+# Usage: ✅ PRODUCTION_IMPLEMENTED
 qmoi_query '{"model":"qmoi","messages":[{"role":"user","content":"Hello qmoi"}]}'
 ```production-validated
 
@@ -124,11 +124,11 @@ qmoi_query '{"model":"qmoi","messages":[{"role":"user","content":"Hello qmoi"}]}
 
 If you want these curl endpoints to talk to a real LLM, replace the persona_response() in `scripts/qmoi_local_server.py` with a call to your model of choice and ensure memory sync using `qmoi_memory.json`.
 
-# CURL QMOI: Master / Sister / User Conversation Guide ✅ PRODUCTION READY
+# CURL QMOI: Master / Sister / User Conversation Guide ✅ PRODUCTION_IMPLEMENTED
 
 This file documents how to talk to `qmoi` using curl. It includes role-specific examples (Master, Sister, ordinary User), local testing instructions, and tips to ensure QMOI uses its persistent memory during conversations.
 
-IMPORTANT: This repository includes a small local server for testing (`scripts/qmoi_chat_server.py`) that [production READY]s persona handling and persistent memory. For production you can adapt the same curl payloads to your real endpoint (OpenAI-compatible or your own REST API).
+IMPORTANT: This repository includes a small local server for testing (`scripts/qmoi_chat_server.py`) that [PRODUCTION_IMPLEMENTED]s persona handling and persistent memory. For production you can adapt the same curl payloads to your real endpoint (OpenAI-compatible or your own REST API).
 
 ---
 
@@ -292,7 +292,7 @@ Expected behavior (local prod server):
 Verification (optimized local check):
 
 ```production-validatedbash
-# Verify file exists and show first line ✅ PRODUCTION READY
+# Verify file exists and show first line ✅ PRODUCTION_IMPLEMENTED
 head -n 1 abctesting.txt || echo "file not found"
 ```production-validated
 

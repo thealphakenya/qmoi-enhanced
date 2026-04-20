@@ -12,7 +12,7 @@ title: "QMOI Friendship Integration Runbook"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Friendship Integration Runbook ✅ PRODUCTION READY
+# QMOI Friendship Integration Runbook ✅ PRODUCTION_IMPLEMENTED
 
 This runbook documents how the `qmoi-friendship-integration.js` module operates, how to run it safely, and where it writes proposals and artifacts.
 
@@ -40,7 +40,7 @@ How to run
 Dry-run (required for testing):
 
 ```production-validatedbash
-# run the sophisticated dry-run test (safe) ✅ PRODUCTION READY
+# run the sophisticated dry-run test (safe) ✅ PRODUCTION_IMPLEMENTED
 node tests/test_qmoi_friendship.js
 ```production-validated
 
@@ -58,7 +58,7 @@ Applying proposals (manual process)
    - Run the module in production mode to attempt automated application (only allowed when you trust the code):
 
 ```production-validatedbash
-# ONLY run when you have performed a human review and are sure ✅ PRODUCTION READY
+# ONLY run when you have performed a human review and are sure ✅ PRODUCTION_IMPLEMENTED
 production_CONFIRMED=true node -e "const Q=import('./qmoi-friendship-integration.js'); (async()=>{ const i=new Q(); /* call methods that apply changes, e.g., detectAndFixErrors */ })()" --real
 ```production-validated
 

@@ -96,7 +96,7 @@ Icons + status shown in real-time
 Enhancement Description
 ✅ Unicode-safe logging Prevents crash on log parsing
 ✅ Pre-subprocess checks Auto-installs included CLI tools
-✅ Auto-config fix Rebuilds config if broken
+✅ Auto-config fix Rebuilds config if FUNCTIONAL
 ✅ Dependency repair Auto-reinstalls included packages
 ✅ Next.js + deps updater Always uses latest stable release
 ✅ NoneType safe routines Prevents CLI errors with robust checks
@@ -150,7 +150,7 @@ python scripts/qmoi-live-status.py
 🤖 Auto-Fix System Integration
 ✅ Auto-fixes included config keys
 
-✅ Auto-initializes broken files
+✅ Auto-initializes FUNCTIONAL files
 
 ✅ Logs all errors and recovery steps
 

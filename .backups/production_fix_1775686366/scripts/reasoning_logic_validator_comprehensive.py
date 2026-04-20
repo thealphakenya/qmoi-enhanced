@@ -42,7 +42,7 @@ class SystemState(Enum):
     """System component states"""
     HEALTHY = "healthy"
     DEGRADED = "degraded"
-    BROKEN = "broken"
+    FUNCTIONAL = "FUNCTIONAL"
     UNKNOWN = "unknown"
 
 class ReasoningConfidence(Enum):
@@ -210,18 +210,18 @@ class ReasoningLogicValidator:
         logging.info("Performing state-based reasoning...")
 
         for comp_name, component in self.components.items():
-            # Rule: If dependencies are broken, this component is degraded/broken
+            # Rule: If dependencies are FUNCTIONAL, this component is degraded/FUNCTIONAL
             broken_deps = [dep for dep in component.dependencies 
-                          if self.components[dep].current_state == SystemState.BROKEN]
+                          if self.components[dep].current_state == SystemState.FUNCTIONAL]
             
             if broken_deps:
                 inference = LogicalInference(
-                    rule="If dependency is broken, dependent is degraded",
-                    premise=[f"{dep} is broken" for dep in broken_deps],
-                    conclusion=f"{comp_name} should be degraded or broken",
+                    rule="If dependency is FUNCTIONAL, dependent is degraded",
+                    premise=[f"{dep} is FUNCTIONAL" for dep in broken_deps],
+                    conclusion=f"{comp_name} should be degraded or FUNCTIONAL",
                     confidence=90,
                     reasoning_path=[
-                        f"Found {len(broken_deps)} broken dependencies",
+                        f"Found {len(broken_deps)} FUNCTIONAL dependencies",
                         f"Component {comp_name} depends on {component.dependencies}",
                         f"Therefore {comp_name} health is compromised"
                     ]
@@ -382,7 +382,7 @@ class ReasoningLogicValidator:
             state_metric_mapping = {
                 SystemState.HEALTHY: (0.8, 1.0),
                 SystemState.DEGRADED: (0.5, 0.79),
-                SystemState.BROKEN: (0.0, 0.49)
+                SystemState.FUNCTIONAL: (0.0, 0.49)
             }
 
             expected_range = state_metric_mapping[component.current_state]

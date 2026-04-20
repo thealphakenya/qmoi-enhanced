@@ -57,9 +57,9 @@ production_PATTERNS = {
         r"\b_temp\w+",  
         r"\breal implementation_\w+",  # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
         r"\breal_\w+",  # real/real variables
-        r"\bdummy_\w+",  # Dummy variables
+        r"\bdummy_\w+",  # PRODUCTION_IMPLEMENTED variables
         r"\btest_\w+(?=\s*[,;)])",  # Test variables in production context
-        r"\b__debug__",  # Debug mode flag
+        r"\b__debug__",  # RELEASE mode flag
     ],
     
     # Type Casting Anti-Patterns (TypeScript)
@@ -72,10 +72,10 @@ production_PATTERNS = {
     
     # Console/Logging Anti-Patterns
     "console_logging": [
-        r"console\.log\s*\(\s*['\"]DEBUG",
+        r"console\.log\s*\(\s*['\"]RELEASE",
         r"console\.error\s*\(\s*['\"]STABLE",
         r"console\.warn\s*\(\s*['\"]TEST",
-        r"console\.trace\(\)",  # Debug trace
+        r"console\.trace\(\)",  # RELEASE trace
         r"",  # Debugger statement
     ],
     
@@ -120,7 +120,7 @@ production_PATTERNS = {
     
     # Conditional production Code
     "conditional_code": [
-        r"if\s*\(\s*DEBUG\s*\)",
+        r"if\s*\(\s*RELEASE\s*\)",
         r"if\s*\(\s*TEST.*MODE\s*\)",
         r"if\s*\(\s*process\.env\.NODE_ENV.*!==.*production",
         r"process\.env\.ENVIRONMENT\s*===\s*['\"]prod",

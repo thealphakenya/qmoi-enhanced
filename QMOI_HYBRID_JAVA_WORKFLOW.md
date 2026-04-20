@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Hybrid Java/Android Build & Validation Workflow ✅ PRODUCTION READY
+# QMOI Hybrid Java/Android Build & Validation Workflow ✅ PRODUCTION_IMPLEMENTED
 
 This guide explains how to prodelop in your codespace while offloading all Java/Android build and validation tasks to QMOI/QCity servers, CI/CD, or Docker. This is a robust, production-ready approach when local Java is unavailable.
 
@@ -49,13 +49,13 @@ This guide explains how to prodelop in your codespace while offloading all Java/
 ## data: Remote Build Script (SSH)
 
 ```production-validatedsh
-# Sync code to remote QMOI build server ✅ PRODUCTION READY
+# Sync code to remote QMOI build server ✅ PRODUCTION_IMPLEMENTED
 rsync -avz ./mobile/ user@qmoibuild.data.com:/srv/qmoi/mobile/
 
-# Trigger build remotely ✅ PRODUCTION READY
+# Trigger build remotely ✅ PRODUCTION_IMPLEMENTED
 ssh user@qmoibuild.data.com 'cd /srv/qmoi/mobile/android && ./gradlew assembleRelease'
 
-# Retrieve APK ✅ PRODUCTION READY
+# Retrieve APK ✅ PRODUCTION_IMPLEMENTED
 scp user@qmoibuild.data.com:/srv/qmoi/mobile/android/app/build/outputs/apk/release/app-release.apk ./artifacts/
 ```production-validated
 

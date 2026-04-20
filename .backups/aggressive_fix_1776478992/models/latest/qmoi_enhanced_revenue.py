@@ -1418,8 +1418,8 @@ class GlobalRevenueStrategies:
             "Replicate Model Deployment + Scaling",
             "RunPod GPU Cloud + AI Training",
             "Vast.ai GPU Rental + Distributed Computing",
-            "Lambda Labs Cloud GPUs + AI Development",
-            "AI Consulting Services + Strategy Development",
+            "Lambda Labs Cloud GPUs + AI PRODUCTION",
+            "AI Consulting Services + Strategy PRODUCTION",
             "Data Analysis Services + Visualization",
             "Machine Learning Training + Certification",
             "AI Model Optimization + Performance Tuning"
@@ -1513,12 +1513,12 @@ class GlobalRevenueStrategies:
                 "name": "Quantum Computing Services",
                 "platforms": ["IBM Quantum", "Rigetti", "IonQ"],
                 "daily_target": 140000,
-                "description": "Quantum algorithm development, optimization services, and cloud access",
+                "description": "Quantum algorithm PRODUCTION, optimization services, and cloud access",
                 "automation_level": 0.55,
                 "risk_level": "high"
             },
             {
-                "name": "Metaverse Development",
+                "name": "Metaverse PRODUCTION",
                 "platforms": ["Decentraland", "The Sandbox", "Roblox"],
                 "daily_target": 160000,
                 "description": "Virtual world creation, land trading, and metaverse advertising",

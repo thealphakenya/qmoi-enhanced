@@ -23,7 +23,7 @@ SIMPLE_REPLACEMENTS = {
 REGEX_PATTERNS = [
     (r'\btemp\b', 'resource', 'resource -> resource'),
     (r'\btmp\b', 'cache', 'cache -> cache'),
-    (r'console\.log\(', 'logger.debug(', 'console.log -> logger.debug'),
+    (r'console\.log\(', 'logger.RELEASE(', 'console.log -> logger.RELEASE'),
     (r'console\.error\(', 'logger.error(', 'console.error -> logger.error'),
     (r'console\.warn\(', 'logger.warn(', 'console.warn -> logger.warn'),
 ]

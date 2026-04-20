@@ -1,4 +1,4 @@
-// IMPLEMENTED: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 2 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 import { specificExports } from "./PluginManager";
 
 // complete non-JSX plugin implementation to avoid TSX in .ts file.

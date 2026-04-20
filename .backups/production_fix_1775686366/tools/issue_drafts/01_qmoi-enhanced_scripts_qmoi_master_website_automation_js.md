@@ -7,33 +7,33 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
-title: "Fix [production READY]s in qmoi-enhanced/scripts/qmoi_master_website_automation.js (397 priority)"
+title: "Fix [PRODUCTION_IMPLEMENTED]s in qmoi-enhanced/scripts/qmoi_master_website_automation.js (397 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [production READY]s in qmoi-enhanced/scripts/qmoi_master_website_automation.js (397 priority)
+# Fix [PRODUCTION_IMPLEMENTED]s in qmoi-enhanced/scripts/qmoi_master_website_automation.js (397 priority)
 
 **File**: `qmoi-enhanced/scripts/qmoi_master_website_automation.js`
 **Priority score**: 397
 
 ## Summary of matches
 
-- Line 28: // --- [production READY]_prod: Integrate with domain registrar API ---
-- Line 30: logAction(`Registering domain: ${domain} ([production READY]_prod)`);
-- Line 31: [production READY]: Integrate with registrar API (e.g., Namecheap, GoDaddy, Cloudflare)
-- Line 58: // Accessibility: axe-core ([production READY]_prod)
-- Line 59: // Performance/SEO: Lighthouse ([production READY]_prod)
-- Line 60: // Security: npm audit ([production READY]_prod)
-- Line 61: [production READY]: Integrate real audit tools and parse results
-- Line 62: [production READY] audit results
-- Line 70: // Auto-enhancement logic ([production READY]_prod)
-- Line 73: [production READY]: Implement real auto-fix logic
+- Line 28: // --- [PRODUCTION_IMPLEMENTED]_prod: Integrate with domain registrar API ---
+- Line 30: logAction(`Registering domain: ${domain} ([PRODUCTION_IMPLEMENTED]_prod)`);
+- Line 31: [PRODUCTION_IMPLEMENTED]: Integrate with registrar API (e.g., Namecheap, GoDaddy, Cloudflare)
+- Line 58: // Accessibility: axe-core ([PRODUCTION_IMPLEMENTED]_prod)
+- Line 59: // Performance/SEO: Lighthouse ([PRODUCTION_IMPLEMENTED]_prod)
+- Line 60: // Security: npm audit ([PRODUCTION_IMPLEMENTED]_prod)
+- Line 61: [PRODUCTION_IMPLEMENTED]: Integrate real audit tools and parse results
+- Line 62: [PRODUCTION_IMPLEMENTED] audit results
+- Line 70: // Auto-enhancement logic ([PRODUCTION_IMPLEMENTED]_prod)
+- Line 73: [PRODUCTION_IMPLEMENTED]: Implement real auto-fix logic
 
 ## required action
 
-Replace [production READY] [production READY]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
+Replace [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED]s with real API integrations, add environment-safe fallbacks, and add unit/integration tests.
 
 ## Notes
 

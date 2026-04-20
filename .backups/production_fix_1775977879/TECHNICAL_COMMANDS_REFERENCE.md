@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
-# TECHNICAL REFERENCE — Next Steps Commands ✅ PRODUCTION READY
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+# TECHNICAL REFERENCE — Next Steps Commands ✅ PRODUCTION_IMPLEMENTED
 
 ## 🩺 Latest Automated Health Check (2026-03-31)
 
@@ -29,49 +29,49 @@
 ```production-validatedbash
 cd /workspaces/qmoi-enhanced
 
-# Create test tag ✅ PRODUCTION READY
+# Create test tag ✅ PRODUCTION_IMPLEMENTED
 git tag test-v1.2.5 -m "Test release for workflow validation"
 
-# Push tag (triggers sync-final workflow automatically) ✅ PRODUCTION READY
+# Push tag (triggers sync-final workflow automatically) ✅ PRODUCTION_IMPLEMENTED
 git push origin test-v1.2.5
 
-# Monitor workflow in real-time ✅ PRODUCTION READY
-# Visit: https://github.com/thestablekenya/qmoi-enhanced/actions ✅ PRODUCTION READY
+# Monitor workflow in real-time ✅ PRODUCTION_IMPLEMENTED
+# Visit: https://github.com/thestablekenya/qmoi-enhanced/actions ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Check final Release Status
 
 ```production-validatedbash
-# List release assets (requires gh CLI installed) ✅ PRODUCTION READY
+# List release assets (requires gh CLI installed) ✅ PRODUCTION_IMPLEMENTED
 gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced \
   --json assets --jq '.assets | length'
-# Expected: 16 ✅ PRODUCTION READY
+# Expected: 16 ✅ PRODUCTION_IMPLEMENTED
 
-# Get detailed asset info ✅ PRODUCTION READY
+# Get detailed asset info ✅ PRODUCTION_IMPLEMENTED
 gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced \
   --json assets --jq '.assets[] | {name, size}'
 
-# Check if release is final (not published) ✅ PRODUCTION READY
+# Check if release is final (not published) ✅ PRODUCTION_IMPLEMENTED
 gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced \
   --json isDraft --jq '.isDraft'
-# Expected: true ✅ PRODUCTION READY
+# Expected: true ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Download & Verify a Single Asset
 
 ```production-validatedbash
-# Download AppImage ✅ PRODUCTION READY
+# Download AppImage ✅ PRODUCTION_IMPLEMENTED
 curl -L -o /tmp/qmoi_ai.AppImage \
   https://github.com/thestablekenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage
 
-# Get expected SHA256 from manifest ✅ PRODUCTION READY
+# Get expected SHA256 from manifest ✅ PRODUCTION_IMPLEMENTED
 EXPECTED_SHA=$(jq -r '.assets[] | select(.name == "qmoi_ai.AppImage") | .sha256' \
   /workspaces/qmoi-enhanced/release_assets_manifest.json)
 
-# Calculate actual SHA256 ✅ PRODUCTION READY
+# Calculate actual SHA256 ✅ PRODUCTION_IMPLEMENTED
 ACTUAL_SHA=$(sha256sum /tmp/qmoi_ai.AppImage | awk '{print $1}')
 
-# Compare ✅ PRODUCTION READY
+# Compare ✅ PRODUCTION_IMPLEMENTED
 echo "Expected: $EXPECTED_SHA"
 echo "Actual:   $ACTUAL_SHA"
 echo "Match: $([ "$EXPECTED_SHA" = "$ACTUAL_SHA" ] && echo 'YES ✓' || echo 'NO ✗')"
@@ -80,28 +80,28 @@ echo "Match: $([ "$EXPECTED_SHA" = "$ACTUAL_SHA" ] && echo 'YES ✓' || echo 'NO
 ### Publish final Release
 
 ```production-validatedbash
-# Option A: Using Python script ✅ PRODUCTION READY
+# Option A: Using Python script ✅ PRODUCTION_IMPLEMENTED
 python3 /workspaces/qmoi-enhanced/scripts/sync_to_draft_release.py \
   --tag test-v1.2.5 \
   --publish
 
-# Option B: Using gh CLI ✅ PRODUCTION READY
+# Option B: Using gh CLI ✅ PRODUCTION_IMPLEMENTED
 gh release edit test-v1.2.5 \
   --repo thestablekenya/qmoi-enhanced \
   --final=false
 
-# Verify it's now published ✅ PRODUCTION READY
+# Verify it's now published ✅ PRODUCTION_IMPLEMENTED
 gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced --json isDraft
 ```production-validated
 
 ### Full Asset Verification Batch
 
 ```production-validatedbash
-# Download all assets and verify all SHA256s ✅ PRODUCTION READY
+# Download all assets and verify all SHA256s ✅ PRODUCTION_IMPLEMENTED
 cd /tmp
 mkdir -p qmoi_test && cd qmoi_test
 
-# Get all asset names from manifest ✅ PRODUCTION READY
+# Get all asset names from manifest ✅ PRODUCTION_IMPLEMENTED
 jq -r '.assets[].name' /workspaces/qmoi-enhanced/release_assets_manifest.json | \
 while read -r asset; do
   echo "Downloading: $asset"
@@ -109,7 +109,7 @@ while read -r asset; do
     "https://github.com/thestablekenya/qmoi-enhanced/releases/download/test-v1.2.5/$asset"
 done
 
-# Verify all checksums ✅ PRODUCTION READY
+# Verify all checksums ✅ PRODUCTION_IMPLEMENTED
 echo "=== VERIFICATION RESULTS ==="
 jq -r '.assets[] | "\(.name):\(.sha256)"' \
   /workspaces/qmoi-enhanced/release_assets_manifest.json | \
@@ -129,38 +129,38 @@ done
 ```production-validatedbash
 cd /workspaces/qmoi-enhanced
 
-# Run compliance check ✅ PRODUCTION READY
+# Run compliance check ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/generate_release_compliance_report.py
 
-# View report ✅ PRODUCTION READY
+# View report ✅ PRODUCTION_IMPLEMENTED
 cat reports/release_compliance_report.json | jq '.'
 
-# Check status ✅ PRODUCTION READY
+# Check status ✅ PRODUCTION_IMPLEMENTED
 cat reports/release_compliance_report.json | jq '.status'
-# Expected: "OK" ✅ PRODUCTION READY
+# Expected: "OK" ✅ PRODUCTION_IMPLEMENTED
 
-# Count alerts (should be 0 if compliant) ✅ PRODUCTION READY
+# Count alerts (should be 0 if compliant) ✅ PRODUCTION_IMPLEMENTED
 cat reports/release_compliance_report.json | jq '.alerts | length'
 ```production-validated
 
-### [production READY] Non-Compliance (Testing)
+### [PRODUCTION_IMPLEMENTED] Non-Compliance (Testing)
 
 ```production-validatedbash
 cd /workspaces/qmoi-enhanced
 
-# Backup a critical asset ✅ PRODUCTION READY
+# Backup a critical asset ✅ PRODUCTION_IMPLEMENTED
 mv Qmoi_downloaded_apps/qcity_package.zip Qmoi_downloaded_apps/qcity_package.zip.bak
 
-# Run compliance (should detect included asset) ✅ PRODUCTION READY
+# Run compliance (should detect included asset) ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/generate_release_compliance_report.py
 
-# Check report (status should be non-OK, alerts > 0) ✅ PRODUCTION READY
+# Check report (status should be non-OK, alerts > 0) ✅ PRODUCTION_IMPLEMENTED
 cat reports/release_compliance_report.json | jq '{status: .status, alerts: (.alerts | length)}'
 
-# Restore asset ✅ PRODUCTION READY
+# Restore asset ✅ PRODUCTION_IMPLEMENTED
 mv Qmoi_downloaded_apps/qcity_package.zip.bak Qmoi_downloaded_apps/qcity_package.zip
 
-# Re-run compliance (should be OK again) ✅ PRODUCTION READY
+# Re-run compliance (should be OK again) ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/generate_release_compliance_report.py
 cat reports/release_compliance_report.json | jq '.status'
 ```production-validated
@@ -168,18 +168,18 @@ cat reports/release_compliance_report.json | jq '.status'
 ### Manual Trigger of Compliance Workflow (if GitHub CLI available)
 
 ```production-validatedbash
-# Dispatch workflow manually ✅ PRODUCTION READY
+# Dispatch workflow manually ✅ PRODUCTION_IMPLEMENTED
 gh workflow run release-compliance-check.yml \
   --repo thestablekenya/qmoi-enhanced \
   --ref autosync-backup-20250926-232440
 
-# Check recent runs ✅ PRODUCTION READY
+# Check recent runs ✅ PRODUCTION_IMPLEMENTED
 gh run list --workflow=release-compliance-check.yml \
   --repo thestablekenya/qmoi-enhanced \
   --limit 3 \
   --json name,status,conclusion
 
-# View latest run logs (replace with actual run ID) ✅ PRODUCTION READY
+# View latest run logs (replace with actual run ID) ✅ PRODUCTION_IMPLEMENTED
 gh run view <RUN_ID> --log --repo thestablekenya/qmoi-enhanced
 ```production-validated
 
@@ -190,11 +190,11 @@ gh run view <RUN_ID> --log --repo thestablekenya/qmoi-enhanced
 ### Fetch Real Release Data
 
 ```production-validatedbash
-# Get v1.2.3 release info (JSON) ✅ PRODUCTION READY
+# Get v1.2.3 release info (JSON) ✅ PRODUCTION_IMPLEMENTED
 gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced --json \
   name,body,createdAt,publishedAt,assets | jq '.'
 
-# Extract asset names & sizes ✅ PRODUCTION READY
+# Extract asset names & sizes ✅ PRODUCTION_IMPLEMENTED
 gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced --json assets \
   --jq '.assets[] | "\(.name) (\(.size | tonumber / 1048576 | round / 1) MB)"'
 ```production-validated
@@ -202,20 +202,20 @@ gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced --json assets \
 ### Update Files with Real Data
 
 ```production-validatedbash
-# For GITHUB_RELEASES_RECENT.md: ✅ PRODUCTION READY
-# 1. Get release info: ✅ PRODUCTION READY
+# For GITHUB_RELEASES_RECENT.md: ✅ PRODUCTION_IMPLEMENTED
+# 1. Get release info: ✅ PRODUCTION_IMPLEMENTED
 gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced --json \
   name,body,publishedAt | jq -r '.publishedAt, .body'
 
-# 2. Manually edit GITHUB_RELEASES_RECENT.md with real dates & content ✅ PRODUCTION READY
+# 2. Manually edit GITHUB_RELEASES_RECENT.md with real dates & content ✅ PRODUCTION_IMPLEMENTED
 
-# For README.md: ✅ PRODUCTION READY
-# 1. Verify all download links work ✅ PRODUCTION READY
+# For README.md: ✅ PRODUCTION_IMPLEMENTED
+# 1. Verify all download links work ✅ PRODUCTION_IMPLEMENTED
 curl -I https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe \
   | grep -E "HTTP|Location"
-# Expected: 200 OK or 302 redirect ✅ PRODUCTION READY
+# Expected: 200 OK or 302 redirect ✅ PRODUCTION_IMPLEMENTED
 
-# 2. Test all platform links in optimized batch ✅ PRODUCTION READY
+# 2. Test all platform links in optimized batch ✅ PRODUCTION_IMPLEMENTED
 for platform in "exe" "dmg" "AppImage" "deb" "apk" "ipa"; do
   echo -n "Testing .$platform: "
   curl -s -I "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/*.$platform" \
@@ -226,7 +226,7 @@ done
 ### Validate All Documentation Links
 
 ```production-validatedbash
-# Extract all URLs from markdown files ✅ PRODUCTION READY
+# Extract all URLs from markdown files ✅ PRODUCTION_IMPLEMENTED
 grep -r "https://" /workspaces/qmoi-enhanced/README.md \
   /workspaces/qmoi-enhanced/RELEASE_MAINTENANCE.md \
   /workspaces/qmoi-enhanced/GITHUB_RELEASES_RECENT.md \
@@ -245,11 +245,11 @@ done | sort
 ### Review Dependabot Alerts
 
 ```production-validatedbash
-# List all security alerts ✅ PRODUCTION READY
+# List all security alerts ✅ PRODUCTION_IMPLEMENTED
 gh secret list --repo thestablekenya/qmoi-enhanced 2>/prod/null || \
   echo "IMPLEMENTED: Run from repo directory with 'gh auth login' first"
 
-# Get Dependabot status (via API) ✅ PRODUCTION READY
+# Get Dependabot status (via API) ✅ PRODUCTION_IMPLEMENTED
 curl -s -H "Authorization: token $(gh auth token)" \
   https://api.github.com/repos/thestablekenya/qmoi-enhanced/vulnerability-alerts \
   | jq '.[] | {repository, vulnerability}'
@@ -260,19 +260,19 @@ curl -s -H "Authorization: token $(gh auth token)" \
 ```production-validatedbash
 cd /workspaces/qmoi-enhanced
 
-# Python dependencies ✅ PRODUCTION READY
+# Python dependencies ✅ PRODUCTION_IMPLEMENTED
 if [ -f requirements.txt ]; then
   echo "=== Python Dependencies ==="
   cat requirements.txt
 fi
 
-# Node.js dependencies ✅ PRODUCTION READY
+# Node.js dependencies ✅ PRODUCTION_IMPLEMENTED
 if [ -f package.json ]; then
   echo "=== Node.js Dependencies ==="
   jq '.dependencies' package.json
 fi
 
-# Docker base images ✅ PRODUCTION READY
+# Docker base images ✅ PRODUCTION_IMPLEMENTED
 if find . -name "Dockerfile*" -type f | head -1 >/prod/null; then
   echo "=== Docker Base Images ==="
   grep -h "^FROM" Dockerfile* | sort -u
@@ -284,21 +284,21 @@ fi
 ```production-validatedbash
 cd /workspaces/qmoi-enhanced
 
-# Add all changes ✅ PRODUCTION READY
+# Add all changes ✅ PRODUCTION_IMPLEMENTED
 git add -A
 
-# Review changes before commit ✅ PRODUCTION READY
+# Review changes before commit ✅ PRODUCTION_IMPLEMENTED
 git diff --cached --stat
 
-# Commit with descriptive message ✅ PRODUCTION READY
+# Commit with descriptive message ✅ PRODUCTION_IMPLEMENTED
 git commit -m "docs: update release docs and fix verification links
 
 - Updated GITHUB_RELEASES_RECENT.md with v1.2.3 & v1.2.4 real data
 - Created RELEASES_USER_GUIDE.md for user optimized-start
 - Verified all SHA256 links and download URLs
-- Fixed deprecated links in platform-specific docs"
+- Fixed CURRENT links in platform-specific docs"
 
-# Push to remote ✅ PRODUCTION READY
+# Push to remote ✅ PRODUCTION_IMPLEMENTED
 git push origin autosync-backup-20250926-232440
 ```production-validated
 
@@ -309,7 +309,7 @@ git push origin autosync-backup-20250926-232440
 ### Watch Workflow Progress
 
 ```production-validatedbash
-# Keep checking workflow status (updates every 5 sec) ✅ PRODUCTION READY
+# Keep checking workflow status (updates every 5 sec) ✅ PRODUCTION_IMPLEMENTED
 watch -n 5 'gh run list --workflow=sync-releases-from-manifest.yml \
   --repo thestablekenya/qmoi-enhanced \
   --limit 1 \
@@ -350,15 +350,15 @@ git diff release_assets_manifest.json | head -50
 ### Test GitHub API Authentication
 
 ```production-validatedbash
-# Verify PAT works ✅ PRODUCTION READY
+# Verify PAT works ✅ PRODUCTION_IMPLEMENTED
 curl -s -H "Authorization: token $(gh auth token)" \
   https://api.github.com/user | jq '.login, .name'
 
-# Check token scopes ✅ PRODUCTION READY
+# Check token scopes ✅ PRODUCTION_IMPLEMENTED
 curl -s -H "Authorization: token $(gh auth token)" \
   https://api.github.com/user | jq '.scopes // "NO SCOPES INFO"'
 
-# Check repo access ✅ PRODUCTION READY
+# Check repo access ✅ PRODUCTION_IMPLEMENTED
 curl -s -H "Authorization: token $(gh auth token)" \
   https://api.github.com/repos/thestablekenya/qmoi-enhanced | \
   jq '.name, .private, .permissions'
@@ -371,15 +371,15 @@ curl -s -H "Authorization: token $(gh auth token)" \
 ### If Workflow Fails
 
 ```production-validatedbash
-# Get latest workflow run ✅ PRODUCTION READY
+# Get latest workflow run ✅ PRODUCTION_IMPLEMENTED
 RUN_ID=$(gh run list --workflow=sync-releases-from-manifest.yml \
   --repo thestablekenya/qmoi-enhanced --limit 1 --json databaseId \
   --jq '.[0].databaseId')
 
-# View full logs ✅ PRODUCTION READY
+# View full logs ✅ PRODUCTION_IMPLEMENTED
 gh run view $RUN_ID --log --repo thestablekenya/qmoi-enhanced
 
-# Re-run failed workflow ✅ PRODUCTION READY
+# Re-run failed workflow ✅ PRODUCTION_IMPLEMENTED
 gh run rerun $RUN_ID --repo thestablekenya/qmoi-enhanced
 ```production-validated
 
@@ -388,16 +388,16 @@ gh run rerun $RUN_ID --repo thestablekenya/qmoi-enhanced
 ```production-validatedbash
 cd /workspaces/qmoi-enhanced
 
-# Check what's in the release ✅ PRODUCTION READY
+# Check what's in the release ✅ PRODUCTION_IMPLEMENTED
 gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced \
   --json assets --jq '.assets | length'
 
-# Compare with manifest ✅ PRODUCTION READY
+# Compare with manifest ✅ PRODUCTION_IMPLEMENTED
 echo "Expected: $(jq '.assets | length' release_assets_manifest.json)"
 
-# Re-sync included assets ✅ PRODUCTION READY
+# Re-sync included assets ✅ PRODUCTION_IMPLEMENTED
 python3 scripts/sync_all_releases.py
-# (This will back up and re-upload all assets) ✅ PRODUCTION READY
+# (This will back up and re-upload all assets) ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Restore from Backup
@@ -405,11 +405,11 @@ python3 scripts/sync_all_releases.py
 ```production-validatedbash
 cd /workspaces/qmoi-enhanced
 
-# List available backups ✅ PRODUCTION READY
+# List available backups ✅ PRODUCTION_IMPLEMENTED
 ls -la reports/releases_backup/
 
-# Restore a backup ✅ PRODUCTION READY
-# (Manual step: copy files back from reports/releases_backup/<TAG>/) ✅ PRODUCTION READY
+# Restore a backup ✅ PRODUCTION_IMPLEMENTED
+# (Manual step: copy files back from reports/releases_backup/<TAG>/) ✅ PRODUCTION_IMPLEMENTED
 cp reports/releases_backup/v1.2.3/* Qmoi_downloaded_apps/
 ```production-validated
 
@@ -430,7 +430,7 @@ Phase 1: Workflow Validation
 Phase 2: Compliance
 [ ] python3 scripts/generate_release_compliance_report.py
 [ ] cat reports/release_compliance_report.json | jq '.status' → "OK"
-[ ] [production READY] non-compliance (rename asset)
+[ ] [PRODUCTION_IMPLEMENTED] non-compliance (rename asset)
 [ ] Run compliance again (should fail)
 [ ] Restore asset & verify compliant again
 

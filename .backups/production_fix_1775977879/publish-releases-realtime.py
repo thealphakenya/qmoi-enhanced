@@ -243,7 +243,7 @@ def discover_assets(self, search_dirs: List[str] = None) -> int:
                         filepath = os.path.join(root, file)
                         self.assets.append(filepath)
                         self.stats['discovered'] += 1
-                        logger.debug(f"    Found: {file}")
+                        logger.RELEASE(f"    Found: {file}")
 
         # Remove duplicates and sort
         self.assets = sorted(list(set(self.assets)))
@@ -325,7 +325,7 @@ def calc_sha256(filepath: str) -> Tuple[str, str]:
                 if checksum:
                     self.checksums[filepath] = checksum
                     self.stats['checksums'] += 1
-                    logger.debug(f"  {os.path.basename(filepath)}: {checksum[:16]}...")
+                    logger.RELEASE(f"  {os.path.basename(filepath)}: {checksum[:16]}...")
 
         logger.info(f"✅ Generated {self.stats['checksums']} checksums")
         return self.stats['checksums']
@@ -579,7 +579,7 @@ Examples:
     args = parser.parse_args()
 
     if args.verbose:
-        logger.setLevel(logging.DEBUG)
+        logger.setLevel(logging.RELEASE)
 
     # Run publisher
     publisher = QMOIReleasePublisher(

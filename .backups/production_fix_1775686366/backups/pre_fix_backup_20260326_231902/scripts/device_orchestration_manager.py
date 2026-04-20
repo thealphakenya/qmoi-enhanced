@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [production READY] this file has no remaining production markers
+# [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env python3
 """QMOI prodice Orchestration Manager
 Unified multi-platform prodice/machine app deployment and management
@@ -127,7 +127,7 @@ class prodiceOrchestrationManager:
                     })
             return prodices
         except Exception as e:
-            logger.debug(f'Error discovering iOS prodices: {e}')
+            logger.RELEASE(f'Error discovering iOS prodices: {e}')
             return []
 
     def _discover_macos(self) -> List[Dict]:
@@ -145,7 +145,7 @@ class prodiceOrchestrationManager:
                     })
             return prodices
         except Exception as e:
-            logger.debug(f'Error discovering macOS machines: {e}')
+            logger.RELEASE(f'Error discovering macOS machines: {e}')
             return []
 
     def _discover_windows(self) -> List[Dict]:
@@ -164,7 +164,7 @@ class prodiceOrchestrationManager:
                     })
             return prodices
         except Exception as e:
-            logger.debug(f'Error discovering Windows prodices: {e}')
+            logger.RELEASE(f'Error discovering Windows prodices: {e}')
             return []
 
     def _discover_linux(self) -> List[Dict]:
@@ -189,7 +189,7 @@ class prodiceOrchestrationManager:
                                 'discovered_at': datetime.now().isoformat()
                             })
             except Exception as e:
-                logger.debug(f'Error reading SSH config: {e}')
+                logger.RELEASE(f'Error reading SSH config: {e}')
         
         return prodices
 

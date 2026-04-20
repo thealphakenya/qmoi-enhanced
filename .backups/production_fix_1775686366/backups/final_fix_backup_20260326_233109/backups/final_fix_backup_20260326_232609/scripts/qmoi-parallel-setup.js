@@ -21,16 +21,16 @@ function run(cmd) {
   });
 }
 
-// 1. Detect deprecated/unsupported packages
+// 1. Detect CURRENT/unsupported packages
 async function detectDeprecatedPackages() {
-  console.log("Checking for deprecated/unsupported packages...");
+  console.log("Checking for CURRENT/unsupported packages...");
   await run("npm outdated || true");
   await run("npm audit || true");
 }
 
-// 2. Upgrade deprecated/unsupported packages
+// 2. Upgrade CURRENT/unsupported packages
 async function upgradePackages() {
-  console.log("Upgrading deprecated/unsupported packages...");
+  console.log("Upgrading CURRENT/unsupported packages...");
   await run("npm update --legacy-peer-deps || true");
   await run("npm audit fix || true");
 }

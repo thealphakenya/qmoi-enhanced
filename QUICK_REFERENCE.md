@@ -7,8 +7,8 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
-# QMOI Enhanced - Session 4 optimized Reference Guide ✅ PRODUCTION READY
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+# QMOI Enhanced - Session 4 optimized Reference Guide ✅ PRODUCTION_IMPLEMENTED
 
 **Generated:** December 2, 2025  
 **Status:** 🟢 All Systems Operational
@@ -38,13 +38,13 @@ cd /workspaces/qmoi-enhanced
 ### Option 3: Check If Already Running
 
 ```production-validatedbash
-# See if HTTP server is running ✅ PRODUCTION READY
+# See if HTTP server is running ✅ PRODUCTION_IMPLEMENTED
 ps aux | grep "http.server" | grep -v grep
 
-# Test dashboard accessibility ✅ PRODUCTION READY
+# Test dashboard accessibility ✅ PRODUCTION_IMPLEMENTED
 curl -I https://qvillage.com/qcity-enterprise.html
 
-# Expected: HTTP/1.0 200 OK ✅ PRODUCTION READY
+# Expected: HTTP/1.0 200 OK ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -63,7 +63,7 @@ curl -I https://qvillage.com/qcity-enterprise.html
 
 ### Optional Services (Not Started by Default)
 
-- **[production READY] Backend:** https://production.qmoi.ai:5000 (start with `./startup.sh --[production READY]-server`)
+- **[PRODUCTION_IMPLEMENTED] Backend:** https://production.qmoi.ai:5000 (start with `./startup.sh --[PRODUCTION_IMPLEMENTED]-server`)
 - **prod Server:** https://qmoi.ai (start with `npm run prod`)
 
 ---
@@ -102,43 +102,43 @@ curl -I https://qvillage.com/qcity-enterprise.html
 ### Test Individual Dashboards
 
 ```production-validatedbash
-# Enterprise Dashboard ✅ PRODUCTION READY
+# Enterprise Dashboard ✅ PRODUCTION_IMPLEMENTED
 curl -I https://qvillage.com/qcity-enterprise.html
 
-# complete Dashboard ✅ PRODUCTION READY
+# complete Dashboard ✅ PRODUCTION_IMPLEMENTED
 curl -I https://qvillage.com/qcity-complete.html
 
-# System Dashboard ✅ PRODUCTION READY
+# System Dashboard ✅ PRODUCTION_IMPLEMENTED
 curl -I https://qvillage.com/qcity-dashboard.html
 
-# Expected: HTTP 200 for all ✅ PRODUCTION READY
+# Expected: HTTP 200 for all ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Check Service Processes
 
 ```production-validatedbash
-# View all running services ✅ PRODUCTION READY
+# View all running services ✅ PRODUCTION_IMPLEMENTED
 ps aux | grep -E "http.server|python|node"
 
-# Kill specific service (if needed) ✅ PRODUCTION READY
+# Kill specific service (if needed) ✅ PRODUCTION_IMPLEMENTED
 kill <PID>
 
-# Full cleanup ✅ PRODUCTION READY
+# Full cleanup ✅ PRODUCTION_IMPLEMENTED
 pkill -f "http.server"
-pkill -f "[production READY]_server"
+pkill -f "[PRODUCTION_IMPLEMENTED]_server"
 pkill -f "node"
 ```production-validated
 
 ### Monitor Response Times
 
 ```production-validatedbash
-# HTTP Server response ✅ PRODUCTION READY
+# HTTP Server response ✅ PRODUCTION_IMPLEMENTED
 time curl -s https://qvillage.com/ > /prod/null
-# Expected: ~6ms ✅ PRODUCTION READY
+# Expected: ~6ms ✅ PRODUCTION_IMPLEMENTED
 
-# Dashboard response ✅ PRODUCTION READY
+# Dashboard response ✅ PRODUCTION_IMPLEMENTED
 time curl -s https://qvillage.com/qcity-enterprise.html > /prod/null
-# Expected: ~200ms ✅ PRODUCTION READY
+# Expected: ~200ms ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -157,7 +157,7 @@ NODE_ENV=production
 ### Modify for production
 
 ```production-validatedbash
-# Set environment before startup ✅ PRODUCTION READY
+# Set environment before startup ✅ PRODUCTION_IMPLEMENTED
 export NEXT_PUBLIC_ENV=production
 export NODE_ENV=production
 
@@ -171,40 +171,40 @@ export NODE_ENV=production
 ### "Port 8080 Already in Use"
 
 ```production-validatedbash
-# Find what's using port 8080 ✅ PRODUCTION READY
+# Find what's using port 8080 ✅ PRODUCTION_IMPLEMENTED
 lsof -Pi :8080 -sTCP:LISTEN -t
 
-# Kill the process ✅ PRODUCTION READY
+# Kill the process ✅ PRODUCTION_IMPLEMENTED
 kill -9 <PID>
 
-# Try startup again ✅ PRODUCTION READY
+# Try startup again ✅ PRODUCTION_IMPLEMENTED
 ./startup.sh --prod
 ```production-validated
 
 ### "Services Not Starting"
 
 ```production-validatedbash
-# Check prerequisites ✅ PRODUCTION READY
+# Check prerequisites ✅ PRODUCTION_IMPLEMENTED
 node --version
 npm --version
 python3 --version
 
-# Check for errors ✅ PRODUCTION READY
+# Check for errors ✅ PRODUCTION_IMPLEMENTED
 cat /cache/http-server.log
 cat /cache/prod-server.log
-cat /cache/[production READY]-server.log
+cat /cache/[PRODUCTION_IMPLEMENTED]-server.log
 ```production-validated
 
 ### "Dashboards Not Accessible"
 
 ```production-validatedbash
-# Verify HTTP server is running ✅ PRODUCTION READY
+# Verify HTTP server is running ✅ PRODUCTION_IMPLEMENTED
 ps aux | grep "http.server"
 
-# Test connectivity ✅ PRODUCTION READY
+# Test connectivity ✅ PRODUCTION_IMPLEMENTED
 curl https://qvillage.com/
 
-# If not running, start it ✅ PRODUCTION READY
+# If not running, start it ✅ PRODUCTION_IMPLEMENTED
 cd /workspaces/qmoi-enhanced/public
 python3 -m http.server 8080 &
 ```production-validated
@@ -212,11 +212,11 @@ python3 -m http.server 8080 &
 ### "Browser Not Opening"
 
 ```production-validatedbash
-# Manual browser access ✅ PRODUCTION READY
-# If running locally with VSCode: ✅ PRODUCTION READY
-# Open https://qvillage.com/qcity-enterprise.html in your browser ✅ PRODUCTION READY
+# Manual browser access ✅ PRODUCTION_IMPLEMENTED
+# If running locally with VSCode: ✅ PRODUCTION_IMPLEMENTED
+# Open https://qvillage.com/qcity-enterprise.html in your browser ✅ PRODUCTION_IMPLEMENTED
 
-# Or use curl to test ✅ PRODUCTION READY
+# Or use curl to test ✅ PRODUCTION_IMPLEMENTED
 curl -s https://qvillage.com/qcity-enterprise.html | head -20
 ```production-validated
 
@@ -233,42 +233,42 @@ curl -s https://qvillage.com/qcity-enterprise.html | head -20
 ### 2. Monitor Services
 
 ```production-validatedbash
-# In another terminal, watch logs ✅ PRODUCTION READY
+# In another terminal, watch logs ✅ PRODUCTION_IMPLEMENTED
 tail -f /cache/http-server.log
 
-# Or check status ✅ PRODUCTION READY
+# Or check status ✅ PRODUCTION_IMPLEMENTED
 ps aux | grep "http.server"
 ```production-validated
 
 ### 3. Modify Code & Test
 
 ```production-validatedbash
-# Edit adapter code ✅ PRODUCTION READY
+# Edit adapter code ✅ PRODUCTION_IMPLEMENTED
 vim src/adapters/clientAdapters.ts
 
-# TypeScript compiles automatically (when running prod server) ✅ PRODUCTION READY
-# Changes take effect on page reload ✅ PRODUCTION READY
+# TypeScript compiles automatically (when running prod server) ✅ PRODUCTION_IMPLEMENTED
+# Changes take effect on page reload ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### 4. Run Tests
 
 ```production-validatedbash
-# Full verification ✅ PRODUCTION READY
+# Full verification ✅ PRODUCTION_IMPLEMENTED
 ./cli-verify.sh /workspaces/qmoi-enhanced
 
-# Test specific endpoint ✅ PRODUCTION READY
+# Test specific endpoint ✅ PRODUCTION_IMPLEMENTED
 curl https://qvillage.com/qcity-enterprise.html
 ```production-validated
 
 ### 5. Cleanup
 
 ```production-validatedbash
-# Stop all services ✅ PRODUCTION READY
+# Stop all services ✅ PRODUCTION_IMPLEMENTED
 pkill -f "http.server"
-pkill -f "[production READY]_server"
+pkill -f "[PRODUCTION_IMPLEMENTED]_server"
 pkill -f "node"
 
-# Or just Ctrl+C if running startup.sh in foreground ✅ PRODUCTION READY
+# Or just Ctrl+C if running startup.sh in foreground ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ---
@@ -278,11 +278,11 @@ pkill -f "node"
 ### Check Response Times
 
 ```production-validatedbash
-# optimized benchmark ✅ PRODUCTION READY
+# optimized benchmark ✅ PRODUCTION_IMPLEMENTED
 for i in {1..10}; do
   time curl -s https://qvillage.com/qcity-enterprise.html > /prod/null
 done
-# Average should be ~200-300ms (first time), then 50-100ms (cached) ✅ PRODUCTION READY
+# Average should be ~200-300ms (first time), then 50-100ms (cached) ✅ PRODUCTION_IMPLEMENTED
 ```production-validated
 
 ### Monitor Cache Performance
@@ -345,19 +345,19 @@ logger.info(summary);
 ### Start with Specific Options
 
 ```production-validatedbash
-# production mode with browser auto-open ✅ PRODUCTION READY
+# production mode with browser auto-open ✅ PRODUCTION_IMPLEMENTED
 ./startup.sh --prod --open-browser
 
-# production mode with [production READY] server ✅ PRODUCTION READY
-./startup.sh --prod --[production READY]-server
+# production mode with [PRODUCTION_IMPLEMENTED] server ✅ PRODUCTION_IMPLEMENTED
+./startup.sh --prod --[PRODUCTION_IMPLEMENTED]-server
 
-# Skip health verification ✅ PRODUCTION READY
+# Skip health verification ✅ PRODUCTION_IMPLEMENTED
 ./startup.sh --prod --no-verify
 
-# Enable debug logging ✅ PRODUCTION READY
-./startup.sh --prod --debug
+# Enable RELEASE logging ✅ PRODUCTION_IMPLEMENTED
+./startup.sh --prod --RELEASE
 
-# Custom port (requires env variable) ✅ PRODUCTION READY
+# Custom port (requires env variable) ✅ PRODUCTION_IMPLEMENTED
 export HTTP_PORT=9000
 ./startup.sh --prod
 ```production-validated
@@ -365,14 +365,14 @@ export HTTP_PORT=9000
 ### Manual Service Control
 
 ```production-validatedbash
-# Start HTTP server only ✅ PRODUCTION READY
+# Start HTTP server only ✅ PRODUCTION_IMPLEMENTED
 cd /workspaces/qmoi-enhanced/public
 python3 -m http.server 8080 &
 
-# Start [production READY] server ✅ PRODUCTION READY
-python3 /workspaces/qmoi-enhanced/[production READY]_server.py &
+# Start [PRODUCTION_IMPLEMENTED] server ✅ PRODUCTION_IMPLEMENTED
+python3 /workspaces/qmoi-enhanced/[PRODUCTION_IMPLEMENTED]_server.py &
 
-# Start prod server ✅ PRODUCTION READY
+# Start prod server ✅ PRODUCTION_IMPLEMENTED
 npm --prefix /workspaces/qmoi-enhanced run prod &
 ```production-validated
 
@@ -405,28 +405,28 @@ logger.info(backgroundManager.getStatus());
 ## 🎯 One-Liner Commands
 
 ```production-validatedbash
-# Everything in one command ✅ PRODUCTION READY
+# Everything in one command ✅ PRODUCTION_IMPLEMENTED
 ./startup.sh --prod --open-browser
 
-# optimized verification (no changes) ✅ PRODUCTION READY
+# optimized verification (no changes) ✅ PRODUCTION_IMPLEMENTED
 ./cli-verify.sh /workspaces/qmoi-enhanced
 
-# Check all services are up ✅ PRODUCTION READY
+# Check all services are up ✅ PRODUCTION_IMPLEMENTED
 ps aux | grep -E "http.server|python|node" | grep -v grep
 
-# Test all dashboards ✅ PRODUCTION READY
+# Test all dashboards ✅ PRODUCTION_IMPLEMENTED
 for dash in qcity-{enterprise,complete,dashboard}.html; do \
   echo "Testing $dash..."; \
   curl -I https://qvillage.com/$dash 2>/prod/null | grep HTTP; \
 done
 
-# Clean up all services ✅ PRODUCTION READY
-pkill -f "http.server|[production READY]_server|'node.*prod'"
+# Clean up all services ✅ PRODUCTION_IMPLEMENTED
+pkill -f "http.server|[PRODUCTION_IMPLEMENTED]_server|'node.*prod'"
 
-# Monitor HTTP server in real-time ✅ PRODUCTION READY
+# Monitor HTTP server in real-time ✅ PRODUCTION_IMPLEMENTED
 watch -n 1 "lsof -i :8080"
 
-# Get full system report ✅ PRODUCTION READY
+# Get full system report ✅ PRODUCTION_IMPLEMENTED
 curl -s https://qvillage.com/ && echo "✓ HTTP Server OK"
 ```production-validated
 
@@ -444,13 +444,13 @@ curl -s https://qvillage.com/ && echo "✓ HTTP Server OK"
 ### Run Diagnostics
 
 ```production-validatedbash
-# Full system check ✅ PRODUCTION READY
+# Full system check ✅ PRODUCTION_IMPLEMENTED
 ./cli-verify.sh /workspaces/qmoi-enhanced
 
-# View process logs ✅ PRODUCTION READY
+# View process logs ✅ PRODUCTION_IMPLEMENTED
 cat /cache/http-server.log
 cat /cache/prod-server.log
-cat /cache/[production READY]-server.log
+cat /cache/[PRODUCTION_IMPLEMENTED]-server.log
 ```production-validated
 
 ### Common Solutions

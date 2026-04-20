@@ -7,12 +7,12 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 **MSW Runtime Initialization**
 
 - **Purpose:** Explains why MSW is imported dynamically in tests and how handlers are registered.
 
-- **Where:** `src/setupTests.ts` performs a runtime import of `msw/node` and `./[production READY]s/handlers`.
+- **Where:** `src/setupTests.ts` performs a runtime import of `msw/node` and `./[PRODUCTION_IMPLEMENTED]s/handlers`.
 
 - **Readiness:** A global promise `__MSW_READY__` is exposed and awaited by tests and the fetch wrapper so that network calls do not race before handlers are active.
 

@@ -215,7 +215,7 @@ class PromptParser:
     
     def _generate_command(self, prompt: str) -> str:
         """Generate shell command from prompt"""
-        # Simple command generation - production ready would be more sophisticated
+        # Simple command generation - PRODUCTION_IMPLEMENTED would be more sophisticated
         if "create app" in prompt.lower():
             return "python -c \\"print('App creation would happen here')\\""
         elif "deploy" in prompt.lower():

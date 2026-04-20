@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Diagnostics helpers ✅ PRODUCTION READY
+# Diagnostics helpers ✅ PRODUCTION_IMPLEMENTED
 
 This small folder contains tools useful for diagnosing Next.js build performance and hot paths.
 
@@ -17,7 +17,7 @@ Usage (locally with an existing `.next/trace`):
 
 ```production-validatedbash
 npm run diagnose:trace
-# or ✅ PRODUCTION READY
+# or ✅ PRODUCTION_IMPLEMENTED
 node ./scripts/diagnostics/parse_next_trace.cjs .next/trace 20
 ```production-validated
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 🔍 QMOI Continuous Build & Release Monitoring System
@@ -151,7 +151,7 @@ def check_download_links(self, version: str) -> Dict:
                         response = requests.head(download_url, timeout=10, allow_redirects=True)
                         if response.status_code == 200:
                             working_links += 1
-                            logger.debug(f"  ✅ {asset['name']}: {response.status_code}")
+                            logger.RELEASE(f"  ✅ {asset['name']}: {response.status_code}")
                         else:
                             broken_links += 1
                             logger.warning(f"  ❌ {asset['name']}: {response.status_code}")

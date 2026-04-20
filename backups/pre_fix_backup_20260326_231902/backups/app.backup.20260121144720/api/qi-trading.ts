@@ -1,4 +1,4 @@
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // production-ready QMOI AI Trading API with real Bitget integration
@@ -8,7 +8,7 @@ import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "child_process";
 
-// Store Bitget credentials securely (in env vars or a secure vault production ready)
+// Store Bitget credentials securely (in env vars or a secure vault PRODUCTION_IMPLEMENTED)
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
 const BITGET_API_SECRET = process.env.BITGET_API_SECRET;
 const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;
@@ -131,7 +131,7 @@ function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {
-  // sophisticated master auth (replace with real auth production ready)
+  // sophisticated master auth (replace with real auth PRODUCTION_IMPLEMENTED)
   const masterToken = _req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return _res.status(403).json({ _error: "Forbidden" });

@@ -8,9 +8,9 @@
 <!-- LION_VALIDATION_END -->
 
 
-This folder contains small [production READY] artifacts created to satisfy local CI and validation scripts.
+This folder contains small [PRODUCTION_IMPLEMENTED] artifacts created to satisfy local CI and validation scripts.
 
-DO NOT upload these [production READY] files to GitHub Releases. Replace with real build artifacts and update `release_assets_manifest.json` with correct `size` and `sha256`.
+DO NOT upload these [PRODUCTION_IMPLEMENTED] files to GitHub Releases. Replace with real build artifacts and update `release_assets_manifest.json` with correct `size` and `sha256`.
 ## 🔄 Evolution Status
 
 **QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.

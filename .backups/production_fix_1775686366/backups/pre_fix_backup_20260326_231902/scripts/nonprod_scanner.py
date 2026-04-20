@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [production READY]
+# [PRODUCTION_IMPLEMENTED]
 """Fast conservative scanner to find files in donerefs.txt that contain
 instructions/todos or obvious "not for production" markers.
 

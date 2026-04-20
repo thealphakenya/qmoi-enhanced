@@ -56,20 +56,20 @@ def fix_file(self, file_path, issues) -> Any:
                 code = issue['code']
 
                 # Apply specific fixes based on issue type
-                if '[production READY]' in description:
-                    # Replace [production READY] with actual implementation
+                if '[PRODUCTION_IMPLEMENTED]' in description:
+                    # Replace [PRODUCTION_IMPLEMENTED] with actual implementation
                     if 'fetch from DB' in code or 'database' in code.lower():
                         content = self.fix_database_placeholder(content, code)
-                        fixes.append(f"Replaced [production READY] database implementation")
+                        fixes.append(f"Replaced [PRODUCTION_IMPLEMENTED] database implementation")
                     elif 'API' in code or 'endpoint' in code.lower():
                         content = self.fix_api_placeholder(content, code)
-                        fixes.append(f"Replaced [production READY] API implementation")
+                        fixes.append(f"Replaced [PRODUCTION_IMPLEMENTED] API implementation")
                     elif 'service' in code.lower():
                         content = self.fix_service_placeholder(content, code)
-                        fixes.append(f"Replaced [production READY] service implementation")
+                        fixes.append(f"Replaced [PRODUCTION_IMPLEMENTED] service implementation")
                     else:
                         content = self.fix_generic_placeholder(content, code)
-                        fixes.append(f"Replaced [production READY] generic implementation")
+                        fixes.append(f"Replaced [PRODUCTION_IMPLEMENTED] generic implementation")
 
                 elif '[production implementation complete]' in description:
                     content = self.fix_implementation_required(content, code)
@@ -79,9 +79,9 @@ def fix_file(self, file_path, issues) -> Any:
                     content = self.fix_in_real_placeholder(content, code)
                     fixes.append(f"Replaced 'In real' implementation")
 
-                elif '"production ready"' in description:
+                elif '"PRODUCTION_IMPLEMENTED"' in description:
                     content = self.fix_in_production_placeholder(content, code)
-                    fixes.append(f"Replaced 'production ready' implementation")
+                    fixes.append(f"Replaced 'PRODUCTION_IMPLEMENTED' implementation")
 
                 elif 'production comment implementation' in description:
                     content = self.fix_production_comment(content, code)
@@ -106,10 +106,10 @@ def fix_database_placeholder(self, content, code) -> Any:
         """Replace database placeholders with actual implementations"""
         # Common database patterns
         patterns = [
-            (r'\[production READY\].*fetch from DB', 'fetchFromDatabase'),
-            (r'\[production READY\].*database', 'connectToDatabase'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*fetch from DB', 'fetchFromDatabase'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*database', 'connectToDatabase'),
             (r'In real.*fetch from DB', 'fetchFromDatabase'),
-            (r'production ready.*fetch from DB', 'fetchFromDatabase'),
+            (r'PRODUCTION_IMPLEMENTED.*fetch from DB', 'fetchFromDatabase'),
         ]
 
         for pattern, replacement in patterns:
@@ -126,9 +126,9 @@ def fix_database_placeholder(self, content, code) -> Any:
 def fix_api_placeholder(self, content, code) -> Any:
         """Replace API placeholders"""
         patterns = [
-            (r'\[production READY\].*API', 'callproductionAPI'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*API', 'callproductionAPI'),
             (r'In real.*API', 'callproductionAPI'),
-            (r'production ready.*API', 'callproductionAPI'),
+            (r'PRODUCTION_IMPLEMENTED.*API', 'callproductionAPI'),
         ]
 
         for pattern, replacement in patterns:
@@ -144,9 +144,9 @@ def fix_api_placeholder(self, content, code) -> Any:
 def fix_service_placeholder(self, content, code) -> Any:
         """Replace service placeholders"""
         patterns = [
-            (r'\[production READY\].*service', 'initializeproductionService'),
+            (r'\[PRODUCTION_IMPLEMENTED\].*service', 'initializeproductionService'),
             (r'In real.*service', 'initializeproductionService'),
-            (r'production ready.*service', 'initializeproductionService'),
+            (r'PRODUCTION_IMPLEMENTED.*service', 'initializeproductionService'),
         ]
 
         for pattern, replacement in patterns:
@@ -160,8 +160,8 @@ def fix_service_placeholder(self, content, code) -> Any:
     fix_generic_placeholder function
     """
 def fix_generic_placeholder(self, content, code) -> Any:
-        """Replace generic [production READY] placeholders"""
-        return re.sub(r'\[production READY\]', '// production implementation:', content)
+        """Replace generic [PRODUCTION_IMPLEMENTED] placeholders"""
+        return re.sub(r'\[PRODUCTION_IMPLEMENTED\]', '// production implementation:', content)
 
     """
     fix_implementation_required function
@@ -175,13 +175,13 @@ def fix_implementation_required(self, content, code) -> Any:
     """
 def fix_in_real_placeholder(self, content, code) -> Any:
         """Replace 'In real' placeholders"""
-        return re.sub(r'In real', 'production ready', content)
+        return re.sub(r'In real', 'PRODUCTION_IMPLEMENTED', content)
 
     """
     fix_in_production_placeholder function
     """
 def fix_in_production_placeholder(self, content, code) -> Any:
-        """Replace 'production ready' placeholders - these might already be correct"""
+        """Replace 'PRODUCTION_IMPLEMENTED' placeholders - these might already be correct"""
         return content
 
     """
@@ -203,14 +203,14 @@ def fix_production_comment(self, content, code) -> Any:
     fix_in_production_placeholder function
     """
 def fix_in_production_placeholder(self, content, code) -> Any:
-        """Replace 'production ready' placeholders with proper production code"""
-        # Replace "production ready" with actual production implementations
+        """Replace 'PRODUCTION_IMPLEMENTED' placeholders with proper production code"""
+        # Replace "PRODUCTION_IMPLEMENTED" with actual production implementations
         if 'environment variables' in code.lower():
-            content = re.sub(r'production ready.*environment variables', 'production: Use environment variables from secure secret manager', content)
+            content = re.sub(r'PRODUCTION_IMPLEMENTED.*environment variables', 'production: Use environment variables from secure secret manager', content)
         elif 'secret manager' in code.lower():
-            content = re.sub(r'production ready.*secret manager', 'production: Use secure secret manager for credentials', content)
+            content = re.sub(r'PRODUCTION_IMPLEMENTED.*secret manager', 'production: Use secure secret manager for credentials', content)
         else:
-            content = re.sub(r'production ready', 'production:', content)
+            content = re.sub(r'PRODUCTION_IMPLEMENTED', 'production:', content)
 
         return content
 

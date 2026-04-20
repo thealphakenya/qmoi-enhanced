@@ -314,7 +314,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                     stable-Q AI Dashboard
                   </h1>
                   <p className="text-slate-600 dark:text-slate-400">
-                    Enhanced AI-powered development platform
+                    Enhanced AI-powered PRODUCTION platform
                   </p>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -427,7 +427,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                     <CardHeader>
                       <CardTitle>Active Projects</CardTitle>
                       <CardDescription>
-                        Manage and monitor your development projects
+                        Manage and monitor your PRODUCTION projects
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -498,7 +498,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                           <span>Voice Interface</span>
                         </CardTitle>
                         <CardDescription>
-                          Voice-controlled development environment
+                          Voice-controlled PRODUCTION environment
                         </CardDescription>
                       </CardHeader>
                       <CardContent>

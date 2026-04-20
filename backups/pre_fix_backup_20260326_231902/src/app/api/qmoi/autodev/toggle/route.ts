@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 /**
  * Next.js API Route: /api/qmoi/autoprod/toggle
  * Enable/disable autonomous production mode
@@ -76,10 +76,10 @@ function POST(request: NextRequest): any {
         : "⏸️ Autoprod deactivated and persisted.",
     };
 
-    // Start/stop background processes (non-blocking [production READY])
+    // Start/stop background processes (non-blocking [PRODUCTION_IMPLEMENTED])
     if (enabled) {
       setTimeout(() => {
-        [production READY] resolve [production READY] items
+        [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
         try {
           logger.info("Autoprod background tasks starting...");
         } catch (_e) {

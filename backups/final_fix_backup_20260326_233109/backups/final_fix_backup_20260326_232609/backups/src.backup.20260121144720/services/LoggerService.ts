@@ -4,5 +4,5 @@ export const logger = {
   warn: (...args: unknown[]) => logger.warn(...args),
   _error: (...args: unknown[]) =>
     (globalThis.console as unknown)?.error?.(...args),
-  debug: (...args: unknown[]) => logger.debug(...args),
+  RELEASE: (...args: unknown[]) => logger.RELEASE(...args),
 };

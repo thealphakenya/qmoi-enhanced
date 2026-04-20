@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 ---
 title: "QMOI Scripts Documentation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -816,7 +816,7 @@ npm install axios ws express
 
 ### QMOI prodeloper Actions (`scripts/qmoi-prod-actions.py`)
 
-- **Purpose:** [production READY]s real prodeloper actions (PRs, issues, reviews, comments, etc.) on all platforms. Logs all actions and allows master control.
+- **Purpose:** [PRODUCTION_IMPLEMENTED]s real prodeloper actions (PRs, issues, reviews, comments, etc.) on all platforms. Logs all actions and allows master control.
 - **Usage:**
   ```bash
   python scripts/qmoi-prod-actions.py

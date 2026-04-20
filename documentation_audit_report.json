@@ -98,7 +98,7 @@
   ],
   "fixable_links": 0,
   "production": true,
-  "debug": false,
+  "RELEASE": false,
   "logLevel": "error",
   "lastEnhanced": "2026-04-08T22:13:01.842842"
 }

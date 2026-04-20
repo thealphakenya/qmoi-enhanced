@@ -68,7 +68,7 @@ report_metrics() {{
     fi
 }}
 
-// [production READY] this file has no remaining production markers
+// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 #!/bin/bash
 # GitHub Secrets Setup for production Android & iOS Builds
 # This script generates and displays the secrets needed for GitHub Actions
@@ -81,7 +81,7 @@ echo "================================================"
 echo
 
 # Android Keystore Base64
-KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/debug.keystore"
+KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/RELEASE.keystore"
 if [ -f "$KEYSTORE_PATH" ]; then
     echo "✓ Android Keystore Found"
     KEYSTORE_B64=$(base64 -w0 "$KEYSTORE_PATH")

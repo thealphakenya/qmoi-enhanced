@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+[PRODUCTION_IMPLEMENTED] all markers normalized for completion
 // Main Components
 "../components/AccountabilitySystem.tsx",
 "../components/AIContext.tsx", 
@@ -110,7 +110,7 @@
 // Device Components
 "../components/device/AWSCredentialsModal.tsx",
 "../components/device/AzureCredentialsModal.tsx",
-"../components/device/DeviceIntegration[PRODUCTION READY]s.ts",
+"../components/device/DeviceIntegration[PRODUCTION_IMPLEMENTED]s.ts",
 "../components/device/GCPCredentialsModal.tsx",
 
 // Predeploy Components

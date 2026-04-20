@@ -140,7 +140,7 @@ def scan_ast_method(filepath: Path, text: str) -> Any:
             for node in ast.walk(tree):
                 if isinstance(node, ast.Call) and getattr(node.func, 'id', '').lower() == 'print':
                     continue
-                if isinstance(node, ast.Attribute) and node.attr.lower() in {'debug', 'testing', 'dev'}:
+                if isinstance(node, ast.Attribute) and node.attr.lower() in {'RELEASE', 'testing', 'dev'}:
                     found.append('python_ast_dev_attr')
         except Exception:
 return self._get_production_data()

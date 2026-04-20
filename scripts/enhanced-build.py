@@ -618,7 +618,7 @@ exe = EXE(
     a.datas,
     [],
     name='qmoiexe_enhanced',
-    debug=False,
+    RELEASE=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
