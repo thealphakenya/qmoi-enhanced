@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[production_IMPLEMENTED] all markers normalized for completion
 {
   "version": "v1.2.3",
   "platforms": [
@@ -9,5 +9,5 @@
       "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_x86_64.AppImage"
     }
   ],
-  "notes": "Replace [PRODUCTION_IMPLEMENTED]s with actual artifact filenames, checksums and URLs before uploading."
+  "notes": "Replace [production_IMPLEMENTED]s with actual artifact filenames, checksums and URLs before uploading."
 }

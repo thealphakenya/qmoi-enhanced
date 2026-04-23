@@ -16,7 +16,7 @@
 .github/workflows/dry-run-tests.yml
 .github/workflows/enhancer-report.yml
 .github/workflows/full-start-smoke.yml
-.github/workflows/jest-ci.yml
+.github/workflows/# production: # production: # production: jest removed removed removed-ci.yml
 .github/workflows/link-cache-maintenance.yml
 .github/workflows/link-check.yml
 .github/workflows/link-validation.yml
@@ -5565,7 +5565,7 @@
 .venv_qmoi_control/bin/pip3.11
 .venv_qmoi_control/bin/py.test
 .venv_qmoi_control/bin/pygmentize
-.venv_qmoi_control/bin/pytest
+.venv_qmoi_control/bin/# production: # production: # production: pytest removed removed removed
 .venv_qmoi_control/bin/wheel
 .venv_qmoi_control/pyvenv.cfg
 ALLCLONEDRELEASES.md
@@ -5845,9 +5845,9 @@ huggingface_space/server.js
 installer/LICENSE.txt
 installer/installer.nsh
 installer/windows/qmoi_ai_installer.iss
-jest.config.cjs
-jest.config.js
-jest.setup.js
+# production: # production: # production: jest removed removed removed.config.cjs
+# production: # production: # production: jest removed removed removed.config.js
+# production: # production: # production: jest removed removed removed.setup.js
 k8s/deployment-orchestrator.yaml
 k8s/deployment-worker.yaml
 k8s/service-metrics.yaml
@@ -8992,7 +8992,7 @@ qmoi-enhanced/huggingface_space/server.js
 qmoi-enhanced/installer/LICENSE.txt
 qmoi-enhanced/installer/installer.nsh
 qmoi-enhanced/installer/windows/qmoi_ai_installer.iss
-qmoi-enhanced/jest.config.js
+qmoi-enhanced/# production: # production: # production: jest removed removed removed.config.js
 qmoi-enhanced/launch.json
 qmoi-enhanced/live_qmoi_ngrok_url.txt
 qmoi-enhanced/local_release_verification.json

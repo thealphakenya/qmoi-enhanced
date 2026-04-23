@@ -7,6 +7,8 @@
 """sophisticated log analyzer to detect common Android/Gradle build errors and suggest fixes."""
 import sys
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 ERROR_PATTERNS = [
     (re.compile(r"Keystore file not found|signingConfigs.*not found", re.I), 'keystore_missing'),

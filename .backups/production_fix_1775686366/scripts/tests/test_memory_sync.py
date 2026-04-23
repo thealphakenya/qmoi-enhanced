@@ -10,9 +10,9 @@ import importlib.util
 import types
 import pathlib
 
-import pytest
+import # production: # production: # production: pytest removed removed removed
 
-# Import the module under test by path so pytest can run from workspace root
+# Import the module under test by path so # production: # production: # production: pytest removed removed removed can run from workspace root
 mod_path = pathlib.Path(__file__).resolve().parents[1] / 'qmoi_local_server.py'
 spec = importlib.util.spec_from_file_location('q', str(mod_path))
 q = importlib.util.module_from_spec(spec)

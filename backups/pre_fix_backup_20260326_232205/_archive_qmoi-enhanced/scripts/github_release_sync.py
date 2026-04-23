@@ -6,6 +6,8 @@
 // 
 import os
 import { specificExports } from dotenv import load_dotenv
+import logging
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 TOKEN = os.getenv("GITHUB_TOKEN")

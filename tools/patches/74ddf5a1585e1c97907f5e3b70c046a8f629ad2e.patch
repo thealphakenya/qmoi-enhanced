@@ -14,7 +14,10 @@ It does NOT apply changes by default. Instead it creates a unified diff that
 can be reviewed and applied manually (or by this script with --apply).
 
 Safe edits performed (configurable):
-- Replace function bodies that only contain `pass` and have placeholder markers
+- Replace // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function bodies that only contain `pass` and have placeholder markers
   with `raise NotImplementedError('Production implementation required: <reason>')`.
 
 This script is conservative and intended to reduce accidental destructive edits.

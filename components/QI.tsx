@@ -231,6 +231,8 @@ const REFRESH_INTERVAL = 30000; // 30 seconds
 /**
  * isMasterOrSister function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function isMasterOrSister(): any: boolean {
   try {
     if (typeof window === "undefined") return false;
@@ -249,6 +251,8 @@ function isMasterOrSister(): any: boolean {
 /**
  * QIComponent function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QIComponent(): any {
   const { toast } = useToast();
   const {
@@ -301,6 +305,8 @@ function QIComponent(): any {
     async /**
  * fetchData function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function fetchData(): any {
       setLoading(true);
       setError(null);

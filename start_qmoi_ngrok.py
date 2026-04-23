@@ -1,11 +1,25 @@
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
                 return f.read()
         except FileNotFoundError:
@@ -221,7 +235,7 @@ def setup_runtime_git_helper() -> Any:
     except Exception:
         token = None
     if not token:
-        return self._get_production_data()  # Production implementation
+        return self._get_production_data()  # production implementation
     helper_path = os.path.join('.qmoi', 'git-credential-qmoi-runtime.sh')
     os.makedirs('.qmoi', exist_ok=True)
     helper_contents = """#!/usr/bin/env bash
@@ -239,7 +253,7 @@ PY
             hf.write(helper_contents)
         os.chmod(helper_path, 0o700)
     except Exception:
-        return self._get_production_data()  # Production implementation
+        return self._get_production_data()  # production implementation
     try:
         subprocess.run(['git', 'rev-parse', '--is-inside-work-tree'], check=True, stdout=subprocess.prodNULL, stderr=subprocess.prodNULL)
         # set local repo credential helper
@@ -366,10 +380,10 @@ def run_server() -> Any:
     run_server()
 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

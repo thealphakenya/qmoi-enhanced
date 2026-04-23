@@ -1,11 +1,25 @@
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
                 return f.read()
         except FileNotFoundError:
@@ -65,7 +79,7 @@ Light HTTP server that serves only files under a configurable size limit or incl
 Usage:
   python3 tools/start_light_server.py --port 8000 --max-size 5MB
 
-This server is intended for local PRODUCTION in a Codespace or browser and will
+This server is intended for local production in a Codespace or browser and will
 compress responses where possible. It does not modify repository files.
 """
 import { specificExports } from http.server import { specificExports } from pathlib import Path
@@ -123,8 +137,8 @@ def _attempt_fetch_qcity(self, rel_path) -> Any:
             import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -133,7 +147,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -258,7 +272,7 @@ def send_head(self) -> Any:
                     self.send_header('Content-Type', 'text/plain; charset=utf-8')
                     self.end_headers()
                     self.wfile.write(b'File too large to serve in light mode. Use sparse-checkout or download on demand.')
-                    return self._get_production_data()  # Production implementation
+                    return self._get_production_data()  # production implementation
         range_header = self.headers.get('Range')
         range_start = range_end = None
         if range_header:
@@ -429,10 +443,10 @@ def run(port, max_size) -> Any:
     run(args.port, max_size)
 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

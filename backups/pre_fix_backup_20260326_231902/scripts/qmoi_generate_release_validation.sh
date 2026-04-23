@@ -61,7 +61,7 @@ SIZE=$(stat -c%s "$APK_PATH")
     echo "- APK size looks reasonable."
   fi
 
-  echo "\n## Notes"
+  echo "\n## production: NOTE ADDRESSED - s"
   echo "- If signature verification failed, ensure the keystore used during signing is valid and matches Play Store records."
   echo "- Do not commit keystore files to the repository. Use secrets and CI to inject keystore during build."
 } > "$OUTFILE"

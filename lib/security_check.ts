@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:27Z
@@ -75,7 +76,7 @@ export /**
  */
 function logEvent(event: string, details: Record<string, any>): any {
   // Never log secrets or sensitive values
-  const safeDetails = { /* Production implementation with proper error handling */details };
+  const safeDetails = { /* production implementation with proper error handling */details };
   if (safeDetails.mpesaNumber) safeDetails.mpesaNumber = "***";
   if (safeDetails.credential) safeDetails.credential = "***";
   // Log to file, DB, or monitoring system

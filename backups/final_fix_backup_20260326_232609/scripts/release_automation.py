@@ -31,6 +31,8 @@ import urllib.request
 import urllib.parse
 import ssl
 import uuid
+import logging
+logger = logging.getLogger(__name__)
 
 """
     load_auto_env function

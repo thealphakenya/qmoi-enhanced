@@ -13,6 +13,8 @@ import json
 import os
 import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import dataclass
 import { specificExports } from .parallel_processor import { specificExports } from .qvs_system import QVSSystem
+import logging
+logger = logging.getLogger(__name__)
 
 
 @dataclass

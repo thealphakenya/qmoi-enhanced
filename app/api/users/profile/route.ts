@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -37,7 +38,7 @@ function GET(_request: NextRequest): any {
     }
 
     // Remove sensitive data
-    const { passwordHash, /* Production implementation with proper error handling */safeUser } = user;
+    const { passwordHash, /* production implementation with proper error handling */safeUser } = user;
     return NextResponse.json(safeUser);
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -96,7 +97,7 @@ function PUT(_request: NextRequest): any {
     if (!updated) {
       return NextResponse.json({ _error: "User not found" }, { status: 404 });
     }
-    const { passwordHash, /* Production implementation with proper error handling */safeUser } = updated as unknown as Record<
+    const { passwordHash, /* production implementation with proper error handling */safeUser } = updated as unknown as Record<
       string,
       unknown
     >;

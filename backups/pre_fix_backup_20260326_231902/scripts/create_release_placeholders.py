@@ -17,6 +17,8 @@ The script backs up the original manifest to `release_assets_manifest.json.bak`.
 import json
 import { specificExports } from pathlib import Path
 import time
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / 'release_assets_manifest.json'

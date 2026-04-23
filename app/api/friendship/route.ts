@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
@@ -29,7 +30,7 @@ interface ChatMessage {
   context?: string;
 }
 
-// In-memory conversation storage (PRODUCTION_IMPLEMENTED, use database)
+// In-memory conversation storage (production_IMPLEMENTED, use database)
 const conversations = new Map<string, ConversationContext>();
 const messageHistory = new Map<string, ChatMessage[]>();
 

@@ -19,7 +19,7 @@ from pyngrok import ngrok
 # --- Phase 1: Ngrok Auto-Startup ---
 tunnel_url = None
 # Attempt to start an ngrok tunnel if NGROK_AUTH_TOKEN is provided via env.
-# NOTE: Do NOT hardcode the ngrok auth token in repository files. Provide it
+# production: NOTE ADDRESSED - Do NOT hardcode the ngrok auth token in repository files. Provide it
 # via environment variables or a secure secret manager in production.
 tunnel_url = None
 ngrok_token = os.environ.get("NGROK_AUTH_TOKEN")
@@ -189,6 +189,6 @@ if __name__ == "__main__":
     if tunnel_url:
         webbrowser.open(tunnel_url + "/downloads/index.html")
     else:
-        print("⚠️ No public tunnel available. Use http://localhost:8080/downloads/index.html")
+        print("⚠️ No public tunnel available. Use https://production-db.qmoi.ai/downloads/index.html")
 
     uvicorn.run(app, host="0.0.0.0", port=8080)

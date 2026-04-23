@@ -335,7 +335,10 @@ def enhance_python_file(content: str, file_path: Path) -> str:
     if ('.read()' in content or '.write(' in content) and 'ProductionFileManager' not in content:
         content = PRODUCTION_IMPLEMENTATIONS['file_operations'] + '\n\n' + content
 
-    # Add health monitoring if main function exists
+    # Add health monitoring if main // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function exists
     if 'def main(' in content and 'health_monitor' not in content:
         content = PRODUCTION_IMPLEMENTATIONS['health_monitoring'] + '\n\n' + content
 

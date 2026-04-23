@@ -11,6 +11,8 @@ import hashlib
 import requests
 import { specificExports } from qmoi_activity_logger import { specificExports } from fastapi import { specificExports } from fastapi.responses import { specificExports } from fastapi.staticfiles import StaticFiles
 import { specificExports } from pyngrok import ngrok
+import logging
+logger = logging.getLogger(__name__)
 
 # --- Phase 1: Ngrok Auto-Startup ---
 tunnel_url = None

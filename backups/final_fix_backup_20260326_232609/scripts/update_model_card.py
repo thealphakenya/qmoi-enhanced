@@ -26,6 +26,8 @@ import sys
 import argparse
 import { specificExports } from datetime import { specificExports } from huggingface_hub import HfApi, upload_file, hf_hub_download
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 logging.basicConfig(
     level=logging.INFO,

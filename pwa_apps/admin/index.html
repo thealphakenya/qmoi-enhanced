@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:39.239933 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.794420 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:07.102931 -->
 <!doctype html>
 <html>
   <head>
@@ -72,7 +75,10 @@
       let token = localStorage.getItem("qmoi_master_token") || "";
       if (token) headers["Authorization"] = "Bearer " + token;
 
-      async function refresh() {
+      async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function refresh() {
         const res = await apiClient.get(API + "admin/users", { headers });
         if (res.status === 403) {
           notification.show("Forbidden: need master token");
@@ -95,7 +101,10 @@
         }
       }
 
-      async function checkSponsored(username) {
+      async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function checkSponsored(username) {
         const res = await apiClient.get(API + "sponsored/list", { headers });
         const j = await res.json();
         const exists = (j.sponsored || []).find((x) => x.username === username);

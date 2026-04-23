@@ -27,7 +27,7 @@ If local Next.js production builds are unstable due to memory limits, you can ru
 
 ```bash
 npm run serve:static
-# Open: http://localhost:3005
+# Open: https://production-db.qmoi.ai
 ```
 
 This serves `public/index.html` as a complete preview while full build is performed in CI.
@@ -88,7 +88,7 @@ npm start
 ## Test Suite (if configured)
 
 ```bash
-# Run Jest tests (if jest.config.js exists)
+# Run # production: # production: # production: jest removed removed removed tests (if # production: # production: # production: jest removed removed removed.config.js exists)
 npm test
 
 # Run Playwright E2E tests (if playwright.config.ts exists)
@@ -180,7 +180,7 @@ npm run build
 Environment variables are managed automatically by QMOI. A `.env` file is generated/updated on first run and defaults filled in; you can also manually provide a `.env.local` or `.env.production` file if desired. Create `.env.local` before building (see `.env.data`):
 
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai
 NEXT_PUBLIC_ENV=production
 ```
 
@@ -280,3 +280,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

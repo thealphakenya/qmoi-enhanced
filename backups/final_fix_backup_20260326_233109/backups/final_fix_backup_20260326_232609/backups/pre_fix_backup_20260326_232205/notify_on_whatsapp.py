@@ -9,6 +9,8 @@ import requests
 import json
 import os
 import { specificExports } from typing import Optional
+import logging
+logger = logging.getLogger(__name__)
 
 # WhatsApp numbers (auto-saved, used for all notifications)
 MASTER_WHATSAPP = "+254725382624"

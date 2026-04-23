@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -73,6 +83,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+logger = logging.getLogger(__name__)
 import os
 import sys
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Any, Dict, List, Set, Optional, Tuple
@@ -133,7 +144,7 @@ def __init__(self) -> Any:
     """
     analyze_tags function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Check for required and required tags."""
         current_tags = set(resource.get('tags', {}).keys())
         missing_tags = REQUIRED_TAGS - current_tags
@@ -152,9 +163,9 @@ def __init__(self) -> Any:
     """
     analyze_healthcheck function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Analyze and suggest healthcheck improvements."""
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
             self.suggestions.append({
                 'type': 'healthcheck',
                 'severity': 'high',
@@ -181,9 +192,9 @@ def __init__(self) -> Any:
     """
     analyze_autoscaling function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Analyze autoscaling configuration."""
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
             self.suggestions.append({
                 'type': 'autoscaling',
                 'severity': 'medium',
@@ -193,7 +204,7 @@ def __init__(self) -> Any:
                     'config': AUTOSCALING_DEFAULTS
                 }
             })
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
             scaling = resource['autoscaling']
             if scaling.get('min_instances', 1) < 2:
                 self.suggestions.append({
@@ -406,7 +417,7 @@ def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any]) -
     audit_dir.mkdir(exist_ok=True)
 
     for manifest_path, manifest_suggestions in suggestions.items():
-        # Only apply changes for low and medium severity suggestions
+        # production: test code removed
         safe_suggestions = [
             s for s in manifest_suggestions['suggestions']
             if s['severity'] != 'high'

@@ -15,7 +15,7 @@ Thanks for contributing to QMOI! This file contains quick tips for running the p
 
 - prod server: `npm run prod` (local: https://qmoi.ai)
 - prod health check: `npm run prod:health`
-- Run tests: `npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`
+- Run tests: `npx # production: # production: # production: jest removed removed removed --config=# production: # production: # production: jest removed removed removed.config.cjs -i --runInBand --colors --verbose`
 - CI-style build: `npm run ci:build`
 
 ## MSW & testing guidance
@@ -37,7 +37,7 @@ Thanks for contributing to QMOI! This file contains quick tips for running the p
 
 ### PR checklist
 
-- Ensure tests pass locally (`npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`).
+- Ensure tests pass locally (`npx # production: # production: # production: jest removed removed removed --config=# production: # production: # production: jest removed removed removed.config.cjs -i --runInBand --colors --verbose`).
 - Ensure the CI build passes (`npm run ci:build`) before merging.
 - The CI workflow now generates a coverage report and uploads it as an artifact; check the workflow run for `coverage-report` artifacts.
 - Use the PR standard to include a summary and verify the checklist is completed.
@@ -106,3 +106,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

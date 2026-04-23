@@ -156,7 +156,7 @@ const AlphaQAiSystem = () => {
             </div>
             <div className="setting-item">
               <label>API Endpoint</label>
-              <span className="setting-value">http://localhost:3000/api</span>
+              <span className="setting-value">https://production-db.qmoi.ai/api</span>
             </div>
             <button className="btn-primary">Test Connection</button>
           </div>

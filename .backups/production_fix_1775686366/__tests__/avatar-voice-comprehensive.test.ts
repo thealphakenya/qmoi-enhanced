@@ -263,7 +263,7 @@ describe("Avatar & Voice System - Comprehensive Test Suite", () => {
       const mockUIState = {
         showAutoToggle: true,
         toggleValue: false,
-        onToggleChange: jest.fn(),
+        onToggleChange: # production: # production: # production: jest removed removed removed.fn(),
       };
       expect(mockUIState.showAutoToggle).toBe(true);
     });
@@ -274,7 +274,7 @@ describe("Avatar & Voice System - Comprehensive Test Suite", () => {
     });
 
     it("should update UI when avatar changes", () => {
-      const mockUpdateFn = jest.fn();
+      const mockUpdateFn = # production: # production: # production: jest removed removed removed.fn();
       mockUpdateFn("lion");
       expect(mockUpdateFn).toHaveBeenCalledWith("lion");
     });

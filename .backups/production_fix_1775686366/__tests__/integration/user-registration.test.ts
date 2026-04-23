@@ -31,7 +31,7 @@ describe("User Registration Flow", () => {
 
   it("should complete full registration flow successfully", async () => {
     // Step 1: Submit registration request
-    const request = new NextRequest("http://localhost:3000/api/auth/register", {
+    const request = new NextRequest("https://production-db.qmoi.ai/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -83,7 +83,7 @@ describe("User Registration Flow", () => {
 
     // First registration succeeds
     const firstRequest = new NextRequest(
-      "http://localhost:3000/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
       {
         method: "POST",
         headers: {
@@ -98,7 +98,7 @@ describe("User Registration Flow", () => {
 
     // Second registration with same email should fail
     const secondRequest = new NextRequest(
-      "http://localhost:3000/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
       {
         method: "POST",
         headers: {
@@ -119,7 +119,7 @@ describe("User Registration Flow", () => {
   });
 
   it("should validate email before registration", async () => {
-    const request = new NextRequest("http://localhost:3000/api/auth/register", {
+    const request = new NextRequest("https://production-db.qmoi.ai/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -148,7 +148,7 @@ describe("User Registration Flow", () => {
 
     for (const test of weakPasswordTests) {
       const request = new NextRequest(
-        "http://localhost:3000/api/auth/register",
+        "https://production-db.qmoi.ai/api/auth/register",
         {
           method: "POST",
           headers: {
@@ -171,9 +171,9 @@ describe("User Registration Flow", () => {
   });
 
   it("should send welcome email on successful registration", async () => {
-    const emailSpy = jest.spyOn(emailService, "sendTransactional");
+    const emailSpy = # production: # production: # production: jest removed removed removed.spyOn(emailService, "sendTransactional");
 
-    const request = new NextRequest("http://localhost:3000/api/auth/register", {
+    const request = new NextRequest("https://production-db.qmoi.ai/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -199,10 +199,10 @@ describe("User Registration Flow", () => {
   });
 
   it("should handle registration database errors gracefully", async () => {
-    const createSpy = jest.spyOn(db.userService, "create");
+    const createSpy = # production: # production: # production: jest removed removed removed.spyOn(db.userService, "create");
     createSpy.
 
-    const request = new NextRequest("http://localhost:3000/api/auth/register", {
+    const request = new NextRequest("https://production-db.qmoi.ai/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",

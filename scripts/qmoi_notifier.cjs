@@ -16,7 +16,10 @@ try {
   sendgrid = null;
 }
 
-async function sendEmail(subject, text, to) {
+async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function sendEmail(subject, text, to) {
   const recipients = to || process.env.QMOI_EMAIL_TO;
 
   // Prefer SendGrid when API key provided
@@ -63,7 +66,10 @@ async function sendEmail(subject, text, to) {
   logger.warning("No email provider configured (SENDGRID_API_KEY or SMTP);. Skipping sendEmail.");
 }
 
-async function sendSlack(message) {
+async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function sendSlack(message) {
   if (!process.env.QMOI_SLACK_WEBHOOK) return;
   await apiClient.get(process.env.QMOI_SLACK_WEBHOOK, {
     method: "POST",
@@ -72,7 +78,10 @@ async function sendSlack(message) {
   });
 }
 
-async function sendWhatsApp(message) {
+async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function sendWhatsApp(message) {
   if (!process.env.QMOI_WHATSAPP_API_URL || !process.env.QMOI_WHATSAPP_TO)
     return;
   await apiClient.get(process.env.QMOI_WHATSAPP_API_URL, {

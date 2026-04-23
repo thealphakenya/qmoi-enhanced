@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +57,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -138,7 +152,7 @@ def __init__(self) -> Any:
     """
 def run_all_tests(self) -> Dict[str, Any]:
         """Run the complete system integration test suite"""
-        logger.info('🧪 Starting QMOI Enhanced System Integration Test SuiteProduction implementation with comprehensive error handling and logging')
+        logger.info('🧪 Starting QMOI Enhanced System Integration Test Suiteproduction implementation with comprehensive error handling and logging')
         logger.info('=' * 60)
 
         # Test 1: Balance System Integration
@@ -170,7 +184,7 @@ def run_all_tests(self) -> Dict[str, Any]:
     """
 def test_balance_system_integration(self) -> None:
         """Test balance system integration with auto-updates"""
-        logger.info('🔄 Testing Balance System IntegrationProduction implementation with comprehensive error handling and logging')
+        logger.info('🔄 Testing Balance System Integrationproduction implementation with comprehensive error handling and logging')
 
         try:
             # Start balance auto-update system
@@ -234,7 +248,7 @@ def test_balance_system_integration(self) -> None:
     """
 def test_qmoi_consciousness_integration(self) -> None:
         """Test QMOI consciousness integration across systems"""
-        logger.info('🧠 Testing QMOI Consciousness IntegrationProduction implementation with comprehensive error handling and logging')
+        logger.info('🧠 Testing QMOI Consciousness Integrationproduction implementation with comprehensive error handling and logging')
 
         try:
             # Check consciousness metrics
@@ -286,7 +300,7 @@ def test_qmoi_consciousness_integration(self) -> None:
     """
 def test_multi_platform_synchronization(self) -> None:
         """Test cross-platform synchronization capabilities"""
-        logger.info('🔗 Testing Multi-Platform SynchronizationProduction implementation with comprehensive error handling and logging')
+        logger.info('🔗 Testing Multi-Platform Synchronizationproduction implementation with comprehensive error handling and logging')
 
         try:
             # live platform synchronization
@@ -330,7 +344,7 @@ def test_multi_platform_synchronization(self) -> None:
     """
 def test_performance_load(self) -> None:
         """Test system performance under load"""
-        logger.info('⚡ Testing Performance and LoadProduction implementation with comprehensive error handling and logging')
+        logger.info('⚡ Testing Performance and Loadproduction implementation with comprehensive error handling and logging')
 
         try:
             # live load testing
@@ -382,7 +396,7 @@ def test_performance_load(self) -> None:
     """
 def test_security_compliance(self) -> None:
         """Test security and compliance features"""
-        logger.info('🔒 Testing Security and ComplianceProduction implementation with comprehensive error handling and logging')
+        logger.info('🔒 Testing Security and Complianceproduction implementation with comprehensive error handling and logging')
 
         try:
             # Check security features
@@ -434,7 +448,7 @@ def test_security_compliance(self) -> None:
     """
 def test_analytics_reporting(self) -> None:
         """Test analytics and reporting capabilities"""
-        logger.info('📊 Testing Analytics and ReportingProduction implementation with comprehensive error handling and logging')
+        logger.info('📊 Testing Analytics and Reportingproduction implementation with comprehensive error handling and logging')
 
         try:
             # Generate analytics data
@@ -487,7 +501,7 @@ def test_analytics_reporting(self) -> None:
     """
 def test_concurrent_access(self) -> None:
         """Test multi-user concurrent access validation"""
-        logger.info('👥 Testing Concurrent Access ValidationProduction implementation with comprehensive error handling and logging')
+        logger.info('👥 Testing Concurrent Access Validationproduction implementation with comprehensive error handling and logging')
 
         try:
             # live concurrent users

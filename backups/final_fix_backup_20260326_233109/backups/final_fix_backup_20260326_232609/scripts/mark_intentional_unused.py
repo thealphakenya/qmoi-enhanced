@@ -26,6 +26,8 @@ Optionally pass a limit:
 import argparse
 import os
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 ISSUES_FILE = "SERVINGERRORSISSUES.md"
 MARKER = "INTENTIONAL_UNUSED"

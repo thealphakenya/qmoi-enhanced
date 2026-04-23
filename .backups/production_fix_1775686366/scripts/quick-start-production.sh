@@ -37,7 +37,7 @@ NODE_ENV=production
 ENVIRONMENT=production
 
 # API Configuration
-NEXT_PUBLIC_API_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai
 NEXT_PUBLIC_APP_NAME=QMOI-Enhanced
 
 # Database

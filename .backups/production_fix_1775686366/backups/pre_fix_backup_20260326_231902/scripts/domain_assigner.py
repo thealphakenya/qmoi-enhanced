@@ -67,7 +67,7 @@ for p in platforms:
     }
     assignments.append(a)
     hosts_lines.append(f"# {p}")
-    hosts_lines.append(f"127.0.0.1\t{domain} {mini}")
+    hosts_lines.append(f"production-db.qmoi.ai\t{domain} {mini}")
 
 ASSIGN_JSON.write_text(json.dumps({'generated_at': datetime.utcnow().isoformat() + 'Z', 'assignments': assignments}, indent=2), encoding='utf-8')
 HOSTS_SAMPLE.write_text('\n'.join(hosts_lines), encoding='utf-8')

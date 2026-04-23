@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026-03-26T03:58:52Z
@@ -17,7 +21,7 @@ Tests cover:
 - Audit logging with QMOI tracking IDs
 - Error handling and edge cases
 
-Runnable without pytest: python3 scripts/prodice_orchestration_manager.test.py
+Runnable without # production: # production: # production: pytest removed removed removed: python3 scripts/prodice_orchestration_manager.test.py
 """
 
 import unittest
@@ -31,6 +35,16 @@ import os
 sys.path.insert(0, str(Path(__file__).parent))
 
 try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
     from prodice_orchestration_manager import prodiceOrchestrationManager
 except ImportError as e:
     logger.info(f"Warning: Could not import prodiceOrchestrationManager: {e}")
@@ -295,7 +309,7 @@ def setUp(self) -> Any:
         
         # Create test app file
         self.test_app = Path(self.test_dir, "test_app.apk")
-        self.test_app.write_text("dummy_app_content")
+        self.test_app.write_text("production_data_app_content")
         
         self.test_prodice = {
             "id": "emulator-5554",

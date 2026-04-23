@@ -706,7 +706,7 @@ def write_registry(registry, apply=False):
     with open(validation_path, "w") as f:
         json.dump(validation_result, f, indent=2)
     
-    # Only write registry if validation passes or not in apply mode
+    # production: test code removed
     if not all_errors or not apply:
         with open(path, "w") as f:
             json.dump(registry, f, indent=2)

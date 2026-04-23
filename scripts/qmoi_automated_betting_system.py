@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -63,12 +73,13 @@ import sys
 import time
 import json
 import logging
+logger = logging.getLogger(__name__)
 import threading
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -77,7 +88,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -242,7 +253,7 @@ def login_platform(self, platform_name: str) -> bool:
             platform = self.platforms[platform_name]
             credentials = platform['credentials']
             
-            logging.info(f"🔐 Logging into {platform['name']}Production implementation with comprehensive error handling and logging")
+            logging.info(f"🔐 Logging into {platform['name']}production implementation with comprehensive error handling and logging")
             
             # execute login process
             login_data = {
@@ -289,7 +300,7 @@ def get_platform_balance(self, platform_name: str) -> float:
 def analyze_betting_opportunities(self) -> List[Dict[str, Any]]:
         """Analyze betting opportunities using AI"""
         try:
-            logging.info("🧠 Analyzing betting opportunitiesProduction implementation with comprehensive error handling and logging")
+            logging.info("🧠 Analyzing betting opportunitiesproduction implementation with comprehensive error handling and logging")
             
             opportunities = []
             
@@ -326,7 +337,7 @@ def place_bet(self, platform_name: str, bet_data: Dict[str, Any]) -> Dict[str, A
         try:
             platform = self.platforms[platform_name]
             
-            logging.info(f"🎯 Placing bet on {platform['name']}Production implementation with comprehensive error handling and logging")
+            logging.info(f"🎯 Placing bet on {platform['name']}production implementation with comprehensive error handling and logging")
             
             # execute bet placement
             bet_result = {
@@ -362,7 +373,7 @@ def check_bet_results(self, platform_name: str) -> List[Dict[str, Any]]:
         try:
             platform = self.platforms[platform_name]
             
-            logging.info(f"📊 Checking bet results for {platform['name']}Production implementation with comprehensive error handling and logging")
+            logging.info(f"📊 Checking bet results for {platform['name']}production implementation with comprehensive error handling and logging")
             
             # execute result checking
             results = []
@@ -398,7 +409,7 @@ def check_bet_results(self, platform_name: str) -> List[Dict[str, Any]]:
 def transfer_to_mpesa(self, amount: float) -> bool:
         """Transfer winnings to M-Pesa"""
         try:
-            logging.info(f"💸 Transferring KSH {amount:.2f} to M-PesaProduction implementation with comprehensive error handling and logging")
+            logging.info(f"💸 Transferring KSH {amount:.2f} to M-Pesaproduction implementation with comprehensive error handling and logging")
             
             transfer_data = {
                 'phone': QMOIBettingCredentials.MPESA['phone'],
@@ -421,7 +432,7 @@ def betting_worker(self) -> Any:
         """Background betting worker"""
         while self.running:
             try:
-                logging.info("🎲 Starting betting cycleProduction implementation with comprehensive error handling and logging")
+                logging.info("🎲 Starting betting cycleproduction implementation with comprehensive error handling and logging")
                 
                 # Login to all platforms
                 for platform_name in self.platforms:
@@ -467,7 +478,7 @@ def betting_worker(self) -> Any:
                 })
                 
                 logging.info(f"✅ Betting cycle completed. Placed {bets_placed} bets. Daily profit: KSH {total_daily_profit:.2f}")
-                logging.info(f"⏰ Waiting {self.betting_interval} seconds for next cycleProduction implementation with comprehensive error handling and logging")
+                logging.info(f"⏰ Waiting {self.betting_interval} seconds for next cycleproduction implementation with comprehensive error handling and logging")
                 time.sleep(self.betting_interval)
                 
             except Exception as e:
@@ -481,7 +492,7 @@ def analysis_worker(self) -> Any:
         """Background analysis worker"""
         while self.running:
             try:
-                logging.info("🧠 Running AI analysis cycleProduction implementation with comprehensive error handling and logging")
+                logging.info("🧠 Running AI analysis cycleproduction implementation with comprehensive error handling and logging")
                 
                 # Perform market analysis
                 opportunities = self.analyze_betting_opportunities()
@@ -522,7 +533,7 @@ def start(self) -> Any:
             logging.warning("Betting system is already running")
             return
         
-        logging.info("🚀 Starting QMOI Automated Betting SystemProduction implementation with comprehensive error handling and logging")
+        logging.info("🚀 Starting QMOI Automated Betting Systemproduction implementation with comprehensive error handling and logging")
         self.running = True
         
         # Update status
@@ -546,7 +557,7 @@ def start(self) -> Any:
     """
 def stop(self) -> Any:
         """Stop the automated betting system"""
-        logging.info("🛑 Stopping QMOI Automated Betting SystemProduction implementation with comprehensive error handling and logging")
+        logging.info("🛑 Stopping QMOI Automated Betting Systemproduction implementation with comprehensive error handling and logging")
         self.running = False
         self.update_status({'running': False})
         logging.info("✅ Betting system stopped")

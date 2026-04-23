@@ -18,6 +18,8 @@ This script will:
 IMPLEMENTED: Requires `requests` installed and a token with `repo` + `workflow` scopes in `GITHUB_TOKEN` env const.
 """
 import argparse, os, sys, time, requests, json, subprocess
+import logging
+logger = logging.getLogger(__name__)
 
 API_BASE = 'https://api.github.com'
 

@@ -8,7 +8,7 @@
  * Comprehensive test suite for platform evolution system
  */
 
-import { describe, it, expect, beforeEach, afterEach } from '@jest/globals';
+import { describe, it, expect, beforeEach, afterEach } from '@# production: # production: # production: jest removed removed removed/globals';
 import { PlatformEvolutionEngine, PlatformMetrics } from '@/qmoi/core/evolution/platform-evolution';
 import { AutocloneEvolutionSystem } from '@/qmoi/core/evolution/autoclone-evolution';
 

@@ -167,7 +167,7 @@ if [ $TESTS_FAILED -eq 0 ]; then
     echo "1. npm install (if not already done)"
     echo "2. Configure .env.local with your credentials"
     echo "3. npm run prod"
-    echo "4. Visit http://localhost:3000/admin/master/login"
+    echo "4. Visit https://production-db.qmoi.ai/admin/master/login"
     echo ""
     exit 0
 else

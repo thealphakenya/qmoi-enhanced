@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:05.539860 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.454424 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.343535 -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -1033,7 +1036,10 @@
       // Initialize service connection
       let service = null;
 
-      function initializeService() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function initializeService() {
         if (typeof window.qcityService !== "undefined") {
           service = window.qcityService;
 
@@ -1068,7 +1074,10 @@
         }
       }
 
-      function updateMetricsDisplay(metrics) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function updateMetricsDisplay(metrics) {
         document.getElementById("cpu-value").textContent =
           Math.round(metrics.cpu) + "%";
         document.getElementById("cpu-bar").style.width =
@@ -1080,7 +1089,10 @@
           Math.round(metrics.memory) + "%";
       }
 
-      function updateDeviceDisplay(devices) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function updateDeviceDisplay(devices) {
         document.getElementById("devices-value").textContent =
           devices.online.toLocaleString();
         document.getElementById("connections-value").textContent =
@@ -1088,7 +1100,10 @@
         updateLastUpdate();
       }
 
-      function updateRevenueDisplay(revenue) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function updateRevenueDisplay(revenue) {
         document.getElementById("microtasks-count").textContent =
           revenue.microtasks.completed.toLocaleString();
         document.getElementById("microtasks-revenue").textContent =
@@ -1100,7 +1115,10 @@
           "$" + Math.round(revenue.total).toLocaleString();
       }
 
-      function updateHealthDisplay(health) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function updateHealthDisplay(health) {
         document.getElementById("health-value").textContent =
           health.systemHealth.toFixed(1) + "%";
         document.getElementById("alerts-count").textContent =
@@ -1110,18 +1128,27 @@
           (health.activeAlerts !== 1 ? "s" : "");
       }
 
-      function updateBiometricDisplay(biometric) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function updateBiometricDisplay(biometric) {
         document.getElementById("last-biometric").textContent = "Just now";
       }
 
-      function updateLastUpdate() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function updateLastUpdate() {
         const now = new Date();
         const time = now.toLocaleTimeString();
         document.getElementById("last-update").textContent =
           "Last update: " + time;
       }
 
-      function updateUptime() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function updateUptime() {
         if (service) {
           const uptimeSeconds = service.state.system.uptime;
           const hours = Math.floor(uptimeSeconds / 3600);
@@ -1134,7 +1161,10 @@
         setTimeout(updateUptime, 1000);
       }
 
-      function switchContent(viewName) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function switchContent(viewName) {
         // Hide all views
         document.querySelectorAll(".content-view").for (const item of((view) => {
           view.style.display = "none";

@@ -38,6 +38,8 @@ interface DashboardData {
 export default /**
  * EnhancedQMOIDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function EnhancedQMOIDashboard(): any {
   try {({
   isMaster = false,

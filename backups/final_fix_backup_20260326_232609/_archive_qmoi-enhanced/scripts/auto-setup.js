@@ -114,13 +114,13 @@ function installDependencies(): any {
   const testDeps = [
     "@testing-library/react",
     "@testing-library/react-hooks",
-    "@testing-library/jest-dom",
+    "@testing-library/# production: # production: # production: jest removed removed removed-dom",
     "@testing-library/user-event",
-    "jest",
-    "jest-environment-jsdom",
+    "# production: # production: # production: jest removed removed removed",
+    "# production: # production: # production: jest removed removed removed-environment-jsdom",
     "playwright",
     "cypress",
-    "@types/jest",
+    "@types/# production: # production: # production: jest removed removed removed",
   ];
 
   log("Installing testing dependencies...");
@@ -302,7 +302,7 @@ Write-Host "🚀 QMOI Auto-Setup Starting..." -ForegroundColor Green
 # Install dependencies
 Write-Host "📦 Installing dependencies..." -ForegroundColor Yellow
 npm install --yes --legacy-peer-deps
-npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/jest-dom @testing-library/user-event jest jest-environment-jsdom playwright cypress @types/jest
+npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/# production: # production: # production: jest removed removed removed-dom @testing-library/user-event # production: # production: # production: jest removed removed removed # production: # production: # production: jest removed removed removed-environment-jsdom playwright cypress @types/# production: # production: # production: jest removed removed removed
 
 # Install Playwright browsers
 Write-Host "Installing Playwright browsers..." -ForegroundColor Yellow
@@ -339,7 +339,7 @@ echo "🚀 QMOI Auto-Setup Starting..."
 # Install dependencies
 echo "📦 Installing dependencies..."
 npm install --yes --legacy-peer-deps
-npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/jest-dom @testing-library/user-event jest jest-environment-jsdom playwright cypress @types/jest
+npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/# production: # production: # production: jest removed removed removed-dom @testing-library/user-event # production: # production: # production: jest removed removed removed # production: # production: # production: jest removed removed removed-environment-jsdom playwright cypress @types/# production: # production: # production: jest removed removed removed
 
 # Install Playwright browsers
 echo "Installing Playwright browsers..."

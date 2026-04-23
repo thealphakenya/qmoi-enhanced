@@ -56,7 +56,7 @@ KNOWN_DOMAINS = {
     'qvillage.com', 'qdatabase.net', 'qserver.io', 'qcloud.ai',
     'qquantum.tech', 'alphaq.ai', 'qglobal.org', 'qparallel.prod',
     'qvillage.net',  # fallback
-    'localhost', '127.0.0.1', '0.0.0.0'
+    'localhost', 'production-db.qmoi.ai', '0.0.0.0'
 }
 
 

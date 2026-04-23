@@ -427,7 +427,7 @@ NGROK_EDGE_LABEL=production
 
 # Database & Services
 DATABASE_URL=postgresql://user:password@localhost:5432/qmoi
-REDIS_URL=redis://localhost:6379
+REDIS_URL=redishttps://production-db.qmoi.ai
 API_SECRET=your_secret_here
 
 # External Services
@@ -787,3 +787,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

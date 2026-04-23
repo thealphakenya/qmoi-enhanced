@@ -1,6 +1,10 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
-QMOI Enhanced - Production Deployment Orchestrator
+QMOI Enhanced - production Deployment Orchestrator
 Automated deployment management with monitoring, scaling, and recovery
 """
 
@@ -85,7 +89,7 @@ def create_deployment_script():
     script = '''#!/bin/bash
 set -e
 
-echo "🚀 QMOI Enhanced - Production Deployment Started"
+echo "🚀 QMOI Enhanced - production Deployment Started"
 echo "=================================================="
 
 # Colors
@@ -167,7 +171,7 @@ done
 log_info "✅ Monitoring complete"
 
 log_info "=================================================="
-log_info "🎉 Production Deployment Completed Successfully!"
+log_info "🎉 production Deployment Completed Successfully!"
 echo ""
 echo "Next steps:"
 echo "1. Monitor production metrics"
@@ -207,6 +211,16 @@ class AutoScalingController:
     def get_metrics(self, service):
         """Get current metrics for service"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             result = subprocess.run(
                 f'kubectl top pods -l app={service} --no-headers',
                 shell=True, capture_output=True, text=True
@@ -413,7 +427,7 @@ if __name__ == '__main__':
 def setup_production_automation():
     """Set up all production automation"""
     print("\n" + "="*80)
-    print("QMOI ENHANCED - PRODUCTION DEPLOYMENT AUTOMATION SETUP")
+    print("QMOI ENHANCED - production DEPLOYMENT AUTOMATION SETUP")
     print("="*80 + "\n")
     
     # Create deployment config
@@ -451,7 +465,7 @@ def setup_production_automation():
     print(f"✅ Health monitor created: {monitor_path}")
     
     print("\n" + "="*80)
-    print("✅ PRODUCTION AUTOMATION SETUP COMPLETE")
+    print("✅ production AUTOMATION SETUP COMPLETE")
     print("="*80)
     print("\nNew automation tools available:")
     print("  • deployment-config.json - Deployment configuration")

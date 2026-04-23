@@ -12,6 +12,8 @@ Serves the QCity Enterprise dashboard with proper routing
 
 import os
 import { specificExports } from http.server import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 class QCityHTTPRequestHandler(SimpleHTTPRequestHandler):
     """Custom HTTP handler for QCity that serves the dashboard"""

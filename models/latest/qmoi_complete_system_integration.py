@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:34.593610 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.756699 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.434715 -->
 #!/usr/bin/env python3
 """
 QMOI Complete System Integration
@@ -14,6 +17,16 @@ logger = logging.getLogger(__name__)
 
 # Import all phase modules
 try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
     from models.latest.phase_27_ml_enhancement import MLPhase27Engine, MLPrediction
 except ImportError:
     MLPhase27Engine = None

@@ -62,7 +62,7 @@ Thiaks ensures:
 
 ---
 
-## Notes
+## production: NOTE ADDRESSED - s
 
 - This list is generated using a best-effort static search for file references; it may produce false positives (e.g., files used via dynamic imports or string-only references).
 - If you add components and they are expected to be used dynamically, update the script to recognize those patterns or link them explicitly from an entrypoint.
@@ -130,3 +130,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

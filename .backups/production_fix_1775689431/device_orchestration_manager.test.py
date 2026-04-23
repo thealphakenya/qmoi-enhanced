@@ -17,7 +17,7 @@ Tests cover:
 - Audit logging with QMOI tracking IDs
 - Error handling and edge cases
 
-Runnable without pytest: python3 scripts/prodice_orchestration_manager.test.py
+Runnable without # production: # production: # production: pytest removed removed removed: python3 scripts/prodice_orchestration_manager.test.py
 """
 
 import unittest

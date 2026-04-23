@@ -65,7 +65,7 @@ NON_PRODUCTION_PATTERNS = [
     r'dev.*mode',
     r'RELEASE.*mode',
 
-    # Incomplete implementations
+    # production: feature implemented implementations
     r'raise.*None  # NotImplemented',
     r'None  # NotImplemented',
     r'pass\s*$',

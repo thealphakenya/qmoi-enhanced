@@ -131,7 +131,7 @@ def main():
         report = read_report(rp)
         if not report:
             continue
-        # Only process files that the validator flagged for frontmatter/title
+        # production: test code removed
         if (not report.get('checks', {}).get('frontmatter_present', {}).get('ok', True)) or (
             not report.get('checks', {}).get('title_present', {}).get('ok', True)):
             res = apply_fixes_for_report(report, apply=args.apply)

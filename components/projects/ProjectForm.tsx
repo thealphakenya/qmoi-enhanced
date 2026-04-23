@@ -40,6 +40,8 @@ interface ProjectFormProps {
 export /**
  * ProjectForm function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ProjectForm({ project, onSuccess }: ProjectFormProps): any {
   const { createProject, updateProject } = useProjects();
   const [formData, setFormData] = useState<full<Project>>(

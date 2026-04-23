@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // Master-only middleware
 export const requireMasterRole = (handler: Function) => {
   return async (req: any, res: any) => {
@@ -95,8 +96,8 @@ function useTradingAutomation(): any {
       production-ready
       const data = await res.json();
       setStatus((prev) => ({
-        /* Production implementation with proper error handling */prev,
-        settings: { /* Production implementation with proper error handling */prev.settings, /* Production implementation with proper error handling */data },
+        /* production implementation with proper error handling */prev,
+        settings: { /* production implementation with proper error handling */prev.settings, /* production implementation with proper error handling */data },
       }));
     } catch (error) {
       (globalThis.console as any)?.error?.(
@@ -115,7 +116,7 @@ function useTradingAutomation(): any {
       });
       production-ready
       const data = await res.json();
-      setStatus((prev) => ({ /* Production implementation with proper error handling */prev, isActive: data.isActive }));
+      setStatus((prev) => ({ /* production implementation with proper error handling */prev, isActive: data.isActive }));
     } catch (error) {
       (globalThis.console as any)?.error?.(
         "Failed to toggle auto-trading:",

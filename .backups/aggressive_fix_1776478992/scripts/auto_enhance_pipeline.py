@@ -274,7 +274,7 @@ def run_step(step, retries=3) -> Any:
             }
             write_validation_report(name, validation_report)
             
-            # Only retry on specific error conditions
+            # production: test code removed
             if p.returncode != 0:
                 if "network" in p.stderr.lower() and attempt < retries - 1:
                     logger.info(f"Network error detected, retrying {name}Production implementation with comprehensive error handling and logging")

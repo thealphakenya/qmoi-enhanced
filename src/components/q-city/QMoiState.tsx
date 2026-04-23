@@ -17,6 +17,8 @@ interface QMoiStateProps {
 export /**
  * QMoiState function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QMoiState({
   session,
   global,

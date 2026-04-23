@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
@@ -299,7 +309,7 @@ def get_high_memory_processes(self, threshold_mb: float = 100.0) -> List[Dict]:
     """
 def cleanup_files(self) -> Dict[str, Any]:
         """Clean up permanent and cache files"""
-        logger.info("Starting file cleanupProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting file cleanupproduction implementation with comprehensive error handling and logging")
         
         cleanup_results = {
             'files_removed': 0,
@@ -390,7 +400,7 @@ def cleanup_logs_directory(self, cleanup_results: Dict[str, Any]) -> None:
     """
 def optimize_processes(self) -> Dict[str, Any]:
         """Optimize running processes"""
-        logger.info("Starting process optimizationProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting process optimizationproduction implementation with comprehensive error handling and logging")
         
         optimization_results = {
             'processes_terminated': 0,
@@ -455,7 +465,7 @@ def optimize_processes(self) -> Dict[str, Any]:
     """
 def optimize_system(self) -> Dict[str, Any]:
         """Perform system-level optimizations"""
-        logger.info("Starting system optimizationProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting system optimizationproduction implementation with comprehensive error handling and logging")
         
         optimization_results = {
             'optimizations_applied': [],
@@ -532,7 +542,7 @@ def optimize_system(self) -> Dict[str, Any]:
     """
 def optimize_applications(self) -> Dict[str, Any]:
         """Optimize applications and their caches"""
-        logger.info("Starting application optimizationProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting application optimizationproduction implementation with comprehensive error handling and logging")
         
         optimization_results = {
             'caches_cleared': [],
@@ -554,7 +564,7 @@ def optimize_applications(self) -> Dict[str, Any]:
                             optimization_results['caches_cleared'].append(f'{browser}_cache')
                             logger.info(f"Cleared {browser} cache")
                         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
             
             # Clear application caches
             if config['clear_application_cache']:
@@ -567,7 +577,7 @@ def optimize_applications(self) -> Dict[str, Any]:
                             optimization_results['caches_cleared'].append(f'{app}_cache')
                             logger.info(f"Cleared {app} cache")
                         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
             
             # Optimize databases
             if config['optimize_database']:
@@ -663,7 +673,7 @@ def optimize_databases(self) -> List[str]:
     """
 def generate_optimization_report(self) -> Dict[str, Any]:
         """Generate comprehensive optimization report"""
-        logger.info("Generating optimization reportProduction implementation with comprehensive error handling and logging")
+        logger.info("Generating optimization reportproduction implementation with comprehensive error handling and logging")
         
         # Get final system state
         final_system_info = self.get_system_info()
@@ -772,7 +782,7 @@ def save_optimization_report(self, report: Dict[str, Any]) -> None:
     """
 def run_full_optimization(self) -> bool:
         """Run the complete optimization process"""
-        logger.info("Starting QMOI advanced optimizationProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting QMOI advanced optimizationproduction implementation with comprehensive error handling and logging")
         
         try:
             # Step 1: File cleanup
@@ -834,11 +844,11 @@ def main() -> Any:
     
     try:
         if args.file_cleanup_only:
-            # Only file cleanup
+            # production: test code removed
             results = optimizer.cleanup_files()
             logger.info(json.dumps(results, indent=2, default=str))
         elif args.process_optimization_only:
-            # Only process optimization
+            # production: test code removed
             results = optimizer.optimize_processes()
             logger.info(json.dumps(results, indent=2, default=str))
         else:

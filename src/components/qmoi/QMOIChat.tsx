@@ -40,6 +40,8 @@ interface QMOIChatProps {
 export /**
  * QMOIChat function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
   const { messages, isLoading, error, sendMessage, clearMessages } =
     useQMOIChat(userId);

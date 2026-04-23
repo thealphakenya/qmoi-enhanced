@@ -4,6 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 """
     get_public_ip function

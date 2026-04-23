@@ -19,6 +19,8 @@ import psutil
 import shutil
 import requests
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 class QMOIGitAutomation:
     """Enhanced git automation with app management capabilities"""

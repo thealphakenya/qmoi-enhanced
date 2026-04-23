@@ -73,6 +73,8 @@ interface Track {
 export /**
  * EnhancedLinkDomainManager function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function EnhancedLinkDomainManager(): any {
   const [stats, setStats] = useState<ValidationStats | null>(null);
   const [isLoading, setIsLoading] = useState(false);

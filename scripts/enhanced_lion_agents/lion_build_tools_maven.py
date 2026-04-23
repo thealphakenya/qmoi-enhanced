@@ -65,6 +65,16 @@ class LionBuildToolsMavenLion:
         """Initialize the Lion agent"""
         logger.info(f"Initializing {self.config.name}...")
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Validate configuration
             if not self.config.specialization:
                 raise ValueError("Specialization is required")

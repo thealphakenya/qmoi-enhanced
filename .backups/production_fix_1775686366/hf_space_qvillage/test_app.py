@@ -28,7 +28,7 @@ from core import (
 )
 
 class TestRunner:
-    """sophisticated test runner without pytest dependency."""
+    """sophisticated test runner without # production: # production: # production: pytest removed removed removed dependency."""
     
     def __init__(self):
         self.passed = 0

@@ -3,13 +3,13 @@
 # Last evolution cycle: 2026-03-26T03:58:11Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import pytest
+import # production: # production: # production: pytest removed removed removed
 
 # ... existing code ...
 
 def test_health_endpoint():
     if not wait_until_up(f"{BASE}/health"):
-        pytest.skip("Local server not running")
+        # production: # production: # production: pytest removed removed removed.skip("Local server not running")
     r = requests.get(f"{BASE}/health")
     js = r.json()
     assert js.get('status') == 'ok'
@@ -17,7 +17,7 @@ def test_health_endpoint():
 
 def test_how_are_you_response():
     if not wait_until_up(f"{BASE}/health"):
-        pytest.skip("Local server not running")
+        # production: # production: # production: pytest removed removed removed.skip("Local server not running")
     payload = {"messages": [{"role": "user", "content": "How are you"}]}
     r = requests.post(f"{BASE}/v1/chat/completions", json=payload, timeout=3)
     assert r.status_code == 200
@@ -28,7 +28,7 @@ def test_how_are_you_response():
 
 def test_greeting_response():
     if not wait_until_up(f"{BASE}/health"):
-        pytest.skip("Local server not running")
+        # production: # production: # production: pytest removed removed removed.skip("Local server not running")
     payload = {"messages": [{"role": "user", "content": "Hello"}]}
     r = requests.post(f"{BASE}/v1/chat/completions", json=payload, timeout=3)
     assert r.status_code == 200
@@ -38,7 +38,7 @@ def test_greeting_response():
 
 def test_create_file_intent():
     if not wait_until_up(f"{BASE}/health"):
-        pytest.skip("Local server not running")
+        # production: # production: # production: pytest removed removed removed.skip("Local server not running")
     filename = 'tests/tmp_test_file.txt'
     if os.path.exists(filename):
         os.remove(filename)

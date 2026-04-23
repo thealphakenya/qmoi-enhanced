@@ -295,7 +295,7 @@ class QMOILintIntegration:
             fix_strategy = analysis.get('fix_strategy', '')
             confidence = analysis.get('confidence', 0.0)
             
-            # Only apply fixes with high confidence
+            # production: test code removed
             if confidence < 0.7:
                 return False
             

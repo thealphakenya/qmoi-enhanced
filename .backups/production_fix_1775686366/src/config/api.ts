@@ -48,7 +48,7 @@ function getCurrentEnvironment(): Environment {
 const configMap: Record<Environment, ApiConfig> = {
   local: {
     environment: "local",
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://localhost:3000",
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://production-db.qmoi.ai",
     endpoints: {
       media: "/api/media",
       verify: "/api/verify",
@@ -64,7 +64,7 @@ const configMap: Record<Environment, ApiConfig> = {
   },
   production: {
     environment: "production",
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "http://localhost:3000",
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://production-db.qmoi.ai",
     endpoints: {
       media: "/api/media",
       verify: "/api/verify",

@@ -14,6 +14,8 @@ import json
 import os
 import { specificExports } from concurrent.futures import { specificExports } from datetime import { specificExports } from typing import { specificExports } from urllib.request import { specificExports } from xml.etree import ElementTree as ET
 import threading
+import logging
+logger = logging.getLogger(__name__)
 
 # Notification system
 notification_queue = asyncio.Queue()

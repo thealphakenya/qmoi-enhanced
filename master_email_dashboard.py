@@ -28,8 +28,8 @@ import queue
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -38,7 +38,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -47,6 +47,16 @@ class ProductionAPIClient:
 
         for attempt in range(3):
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
@@ -65,6 +75,8 @@ class ProductionAPIClient:
 import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 import uuid
 import hashlib
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(

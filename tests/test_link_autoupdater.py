@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026-03-26T03:58:11Z
@@ -14,6 +18,14 @@ import json
 def test_autoupdater_dry_run_creates_plan() -> Any:
     production_file.mkdtemp(prefix='qmoi-test-'))
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         # create a small all_links.json data
         data = {
             'generated_at': '2025-01-01T00:00:00Z',

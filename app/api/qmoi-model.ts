@@ -1,8 +1,9 @@
+console.log("production mode initialized");
 // qmoi-model.ts - QMOI Model TypeScript Definition
 // Generated: 2026-04-16T19:16:21.174549
 
 /**
- * QMOI Model - Production-ready AI system for enterprise intelligence
+ * QMOI Model - production-ready AI system for enterprise intelligence
  */
 
 // ============================================================================
@@ -369,6 +370,7 @@ export function createQMOI(apiKey: string): QMOI {
  * Example usage
  */
 export async function exampleUsage() {
+  try {
   const qmoi = createQMOI('your-api-key');
 
   // Process text
@@ -414,3 +416,9 @@ export async function exampleUsage() {
 }
 
 export default QMOI;
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

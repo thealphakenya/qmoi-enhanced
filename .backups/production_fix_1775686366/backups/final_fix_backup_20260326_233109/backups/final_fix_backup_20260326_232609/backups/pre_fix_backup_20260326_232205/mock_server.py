@@ -13,7 +13,7 @@ Usage:
   python3 mock_server.py
 
 Then update .env.local:
-  NEXT_PUBLIC_API_URL=http://localhost:5000
+  NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai
   
 Open dashboard and test components.
 """
@@ -126,7 +126,7 @@ def upload_file():
         return jsonify({
             'success': True,
             'fileId': file_id,
-            'url': f'http://localhost:5000/files/{file_id}',
+            'url': f'https://production-db.qmoi.ai/files/{file_id}',
             'size': file_size,
             'name': file.filename,
             'timestamp': datetime.now().isoformat(),
@@ -276,7 +276,7 @@ def youtube_download():
         return jsonify({
             'success': True,
             'downloadId': download_id,
-            'url': f'http://localhost:5000/downloads/{download_id}.{format_type}',
+            'url': f'https://production-db.qmoi.ai/downloads/{download_id}.{format_type}',
             'format': format_type,
             'quality': quality,
             'expiresIn': 3600,
@@ -437,7 +437,7 @@ def index():
         <h1>🚀 QCity Backend real Server</h1>
         
         <div class="status">
-            <strong>✅ Server Status:</strong> Running on http://localhost:5000
+            <strong>✅ Server Status:</strong> Running on https://production-db.qmoi.ai
         </div>
         
         <div class="warning">
@@ -512,13 +512,13 @@ def index():
         
         <h2>Testing</h2>
         <p>Update <code>.env.local</code> to use this real server:</p>
-        <pre>NEXT_PUBLIC_API_URL=http://localhost:5000</pre>
+        <pre>NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai</pre>
         
         <p>Then test with curl:</p>
-        <pre>curl http://localhost:5000/api/health</pre>
+        <pre>curl https://production-db.qmoi.ai/api/health</pre>
         
         <p>Or use the frontend dashboard:</p>
-        <pre>http://localhost:8080/qcity-enterprise.html</pre>
+        <pre>https://production-db.qmoi.ai/qcity-enterprise.html</pre>
         
         <h2>Logs</h2>
         <p>All requests are logged to console. Check terminal output for details.</p>
@@ -534,7 +534,7 @@ if __name__ == '__main__':
     print("\n" + "="*60)
     print("🚀 QCity Backend real Server")
     print("="*60)
-    print("\n📍 Server running on http://localhost:5000")
+    print("\n📍 Server running on https://production-db.qmoi.ai")
     print("\n📋 Endpoints:")
     print("  • GET  /api/health")
     print("  • POST /api/mail")
@@ -543,12 +543,12 @@ if __name__ == '__main__':
     print("  • POST /api/verify")
     print("  • POST /api/youtube/download")
     print("  • GET  /api/media")
-    print("\n📖 Test page: http://localhost:5000")
+    print("\n📖 Test page: https://production-db.qmoi.ai")
     print("\n⚙️  Setup:")
     print("  1. Update .env.local:")
-    print("     NEXT_PUBLIC_API_URL=http://localhost:5000")
+    print("     NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai")
     print("\n  2. Open dashboard:")
-    print("     http://localhost:8080/qcity-enterprise.html")
+    print("     https://production-db.qmoi.ai/qcity-enterprise.html")
     print("\n  3. Test components (they'll call this real server)")
     print("\n⚠️  IMPORTANT: This is a real server for testing only!")
     print("   Real actions are NOT performed.\n")

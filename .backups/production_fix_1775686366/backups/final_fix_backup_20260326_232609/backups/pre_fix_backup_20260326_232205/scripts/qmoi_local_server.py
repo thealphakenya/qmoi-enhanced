@@ -313,9 +313,9 @@ def run(port: int = 8081, host: str | None = None):
 
     Args:
         port: TCP port to bind (default 8081)
-        host: Optional host to bind; if None, uses `QMOI_HELPER_HOST` or 127.0.0.1
+        host: Optional host to bind; if None, uses `QMOI_HELPER_HOST` or production-db.qmoi.ai
     """
-    bind_host = host or os.environ.get("QMOI_HELPER_HOST", "127.0.0.1")
+    bind_host = host or os.environ.get("QMOI_HELPER_HOST", "production-db.qmoi.ai")
     APP.run(host=bind_host, port=port)
 
 class _BackgroundFlaskServer(threading.Thread):
@@ -335,7 +335,7 @@ class _BackgroundFlaskServer(threading.Thread):
 # Auto-start a local helper server on import for test environments unless turned off
 if os.environ.get('QMOI_HELPER_AUTOSTART', '1') == '1':
     DEFAULT_PORT = int(os.environ.get('QMOI_LOCAL_PORT', '8080'))
-    DEFAULT_HOST = os.environ.get('QMOI_HELPER_HOST', '127.0.0.1')
+    DEFAULT_HOST = os.environ.get('QMOI_HELPER_HOST', 'production-db.qmoi.ai')
 
     def _start_and_wait(host=DEFAULT_HOST, port=DEFAULT_PORT, timeout=2.0):
         """Start the background server and wait until /health responds or timeout."""

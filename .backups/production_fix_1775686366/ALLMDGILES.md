@@ -217,12 +217,12 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/helper-string-parser/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/helper-validator-identifier/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/helper-validator-option/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/babel-jest/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/parser/CHANGELOG.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/parser/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/babel-plugin-istanbul/CHANGELOG.md
 ./_archive_qmoi-enhanced/mobile/node_modules/babel-plugin-istanbul/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/babel-plugin-jest-hoist/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/babel-plugin-# production: # production: # production: jest removed removed removed-hoist/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/plugin-syntax-async-generators/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/plugin-syntax-bigint/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/plugin-syntax-class-properties/README.md
@@ -240,7 +240,7 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/plugin-syntax-private-property-in-object/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/plugin-syntax-top-level-await/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/babel-preset-current-node-syntax/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/babel-preset-jest/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/babel-preset-# production: # production: # production: jest removed removed removed/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/standard/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@babel/traverse--for-generate-function-map/README.md
@@ -467,15 +467,15 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/is-unicode-supported/readme.md
 ./_archive_qmoi-enhanced/mobile/node_modules/is-wsl/readme.md
-./_archive_qmoi-enhanced/mobile/node_modules/@jest/create-cache-key-function/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/@jest/schemas/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/@jest/types/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/jest-util/Readme.md
-./_archive_qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md
-./_archive_qmoi-enhanced/mobile/node_modules/jest-validate/README.md
-./_archive_qmoi-enhanced/mobile/node_modules/jest-worker/node_modules/supports-color/readme.md
-./_archive_qmoi-enhanced/mobile/node_modules/jest-worker/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/create-cache-key-function/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-[PRODUCTION_IMPLEMENTED]/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/schemas/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-util/Readme.md
+./_archive_qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md
+./_archive_qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/README.md
+./_archive_qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md
+./_archive_qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/joi/LICENSE.md
 ./_archive_qmoi-enhanced/mobile/node_modules/joi/README.md
 ./_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/gen-mapping/README.md
@@ -1417,12 +1417,12 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/@babel/helper-string-parser/README.md
 ./mobile/node_modules/@babel/helper-validator-identifier/README.md
 ./mobile/node_modules/@babel/helper-validator-option/README.md
-./mobile/node_modules/babel-jest/README.md
+./mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md
 ./mobile/node_modules/@babel/parser/CHANGELOG.md
 ./mobile/node_modules/@babel/parser/README.md
 ./mobile/node_modules/babel-plugin-istanbul/CHANGELOG.md
 ./mobile/node_modules/babel-plugin-istanbul/README.md
-./mobile/node_modules/babel-plugin-jest-hoist/README.md
+./mobile/node_modules/babel-plugin-# production: # production: # production: jest removed removed removed-hoist/README.md
 ./mobile/node_modules/@babel/plugin-syntax-async-generators/README.md
 ./mobile/node_modules/@babel/plugin-syntax-bigint/README.md
 ./mobile/node_modules/@babel/plugin-syntax-class-properties/README.md
@@ -1440,7 +1440,7 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/@babel/plugin-syntax-private-property-in-object/README.md
 ./mobile/node_modules/@babel/plugin-syntax-top-level-await/README.md
 ./mobile/node_modules/babel-preset-current-node-syntax/README.md
-./mobile/node_modules/babel-preset-jest/README.md
+./mobile/node_modules/babel-preset-# production: # production: # production: jest removed removed removed/README.md
 ./mobile/node_modules/@babel/runtime/README.md
 ./mobile/node_modules/@babel/standard/README.md
 ./mobile/node_modules/@babel/traverse--for-generate-function-map/README.md
@@ -1667,15 +1667,15 @@ Generated from current repository list on $(date)\n
 ./mobile/node_modules/istanbul-lib-instrument/README.md
 ./mobile/node_modules/is-unicode-supported/readme.md
 ./mobile/node_modules/is-wsl/readme.md
-./mobile/node_modules/@jest/create-cache-key-function/README.md
-./mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md
-./mobile/node_modules/@jest/schemas/README.md
-./mobile/node_modules/@jest/types/README.md
-./mobile/node_modules/jest-util/Readme.md
-./mobile/node_modules/jest-validate/node_modules/camelcase/readme.md
-./mobile/node_modules/jest-validate/README.md
-./mobile/node_modules/jest-worker/node_modules/supports-color/readme.md
-./mobile/node_modules/jest-worker/README.md
+./mobile/node_modules/@# production: # production: # production: jest removed removed removed/create-cache-key-function/README.md
+./mobile/node_modules/# production: # production: # production: jest removed removed removed-[PRODUCTION_IMPLEMENTED]/README.md
+./mobile/node_modules/@# production: # production: # production: jest removed removed removed/schemas/README.md
+./mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md
+./mobile/node_modules/# production: # production: # production: jest removed removed removed-util/Readme.md
+./mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md
+./mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/README.md
+./mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md
+./mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md
 ./mobile/node_modules/joi/LICENSE.md
 ./mobile/node_modules/joi/README.md
 ./mobile/node_modules/@jridgewell/gen-mapping/README.md
@@ -2130,7 +2130,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@babel/helper-validator-identifier/README.md
 ./node_modules/@babel/helper-validator-option/README.md
 ./node_modules/@babel/helper-wrap-function/README.md
-./node_modules/babel-jest/README.md
+./node_modules/babel-# production: # production: # production: jest removed removed removed/README.md
 ./node_modules/@babel/parser/CHANGELOG.md
 ./node_modules/@babel/parser/README.md
 ./node_modules/@babel/plugin-bugfix-firefox-class-in-computed-class-key/README.md
@@ -2140,7 +2140,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly/README.md
 ./node_modules/babel-plugin-istanbul/CHANGELOG.md
 ./node_modules/babel-plugin-istanbul/README.md
-./node_modules/babel-plugin-jest-hoist/README.md
+./node_modules/babel-plugin-# production: # production: # production: jest removed removed removed-hoist/README.md
 ./node_modules/babel-plugin-macros/CHANGELOG.md
 ./node_modules/babel-plugin-macros/README.md
 ./node_modules/babel-plugin-polyfill-corejs2/README.md
@@ -2226,7 +2226,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/babel-preset-current-node-syntax/README.md
 ./node_modules/@babel/preset-env/CONTRIBUTING.md
 ./node_modules/@babel/preset-env/README.md
-./node_modules/babel-preset-jest/README.md
+./node_modules/babel-preset-# production: # production: # production: jest removed removed removed/README.md
 ./node_modules/@babel/preset-modules/README.md
 ./node_modules/@babel/preset-react/README.md
 ./node_modules/@babel/preset-typescript/README.md
@@ -2815,67 +2815,67 @@ Generated from current repository list on $(date)\n
 ./node_modules/is-unicode-supported/readme.md
 ./node_modules/jackspeak/LICENSE.md
 ./node_modules/jackspeak/README.md
-./node_modules/jest-changed-files/node_modules/execa/readme.md
-./node_modules/jest-changed-files/node_modules/get-stream/readme.md
-./node_modules/jest-changed-files/node_modules/human-signals/CHANGELOG.md
-./node_modules/jest-changed-files/node_modules/human-signals/README.md
-./node_modules/jest-changed-files/README.md
-./node_modules/jest-circus/node_modules/ansi-styles/readme.md
-./node_modules/jest-circus/node_modules/pretty-format/README.md
-./node_modules/jest-circus/node_modules/react-is/README.md
-./node_modules/jest-circus/README.md
-./node_modules/jest-cli/README.md
-./node_modules/jest-config/node_modules/ansi-styles/readme.md
-./node_modules/jest-config/node_modules/pretty-format/README.md
-./node_modules/jest-config/node_modules/react-is/README.md
-./node_modules/@jest/core/node_modules/ansi-styles/readme.md
-./node_modules/@jest/core/node_modules/pretty-format/README.md
-./node_modules/@jest/core/node_modules/react-is/README.md
-./node_modules/@jest/core/README.md
-./node_modules/jest-diff/node_modules/ansi-styles/readme.md
-./node_modules/jest-diff/node_modules/pretty-format/README.md
-./node_modules/jest-diff/node_modules/react-is/README.md
-./node_modules/jest-diff/README.md
-./node_modules/@jest/diff-sequences/README.md
-./node_modules/jest-docblock/README.md
-./node_modules/jest-each/node_modules/ansi-styles/readme.md
-./node_modules/jest-each/node_modules/pretty-format/README.md
-./node_modules/jest-each/node_modules/react-is/README.md
-./node_modules/jest-each/README.md
-./node_modules/@jest/expect/README.md
-./node_modules/@jest/expect-utils/README.md
-./node_modules/jest-haste-map/README.md
-./node_modules/jest-leak-detector/node_modules/ansi-styles/readme.md
-./node_modules/jest-leak-detector/node_modules/pretty-format/README.md
-./node_modules/jest-leak-detector/node_modules/react-is/README.md
-./node_modules/jest-leak-detector/README.md
-./node_modules/jest-matcher-utils/node_modules/ansi-styles/readme.md
-./node_modules/jest-matcher-utils/node_modules/pretty-format/README.md
-./node_modules/jest-matcher-utils/node_modules/react-is/README.md
-./node_modules/jest-matcher-utils/README.md
-./node_modules/jest-message-util/node_modules/ansi-styles/readme.md
-./node_modules/jest-message-util/node_modules/pretty-format/README.md
-./node_modules/jest-message-util/node_modules/react-is/README.md
-./node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md
-./node_modules/@jest/pattern/README.md
-./node_modules/jest-pnp-resolver/README.md
-./node_modules/jest/README.md
-./node_modules/@jest/schemas/README.md
-./node_modules/jest-snapshot/node_modules/ansi-styles/readme.md
-./node_modules/jest-snapshot/node_modules/pretty-format/README.md
-./node_modules/jest-snapshot/node_modules/react-is/README.md
-./node_modules/jest-snapshot/node_modules/semver/README.md
-./node_modules/@jest/transform/node_modules/convert-source-map/README.md
-./node_modules/@jest/types/README.md
-./node_modules/jest-util/node_modules/picomatch/README.md
-./node_modules/jest-util/Readme.md
-./node_modules/jest-validate/node_modules/ansi-styles/readme.md
-./node_modules/jest-validate/node_modules/camelcase/readme.md
-./node_modules/jest-validate/node_modules/pretty-format/README.md
-./node_modules/jest-validate/node_modules/react-is/README.md
-./node_modules/jest-validate/README.md
-./node_modules/jest-worker/node_modules/supports-color/readme.md
-./node_modules/jest-worker/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-changed-files/node_modules/execa/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-changed-files/node_modules/get-stream/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-changed-files/node_modules/human-signals/CHANGELOG.md
+./node_modules/# production: # production: # production: jest removed removed removed-changed-files/node_modules/human-signals/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-changed-files/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-circus/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-circus/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-circus/node_modules/react-is/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-circus/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-cli/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-config/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-config/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-config/node_modules/react-is/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/core/node_modules/ansi-styles/readme.md
+./node_modules/@# production: # production: # production: jest removed removed removed/core/node_modules/pretty-format/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/core/node_modules/react-is/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/core/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-diff/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-diff/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-diff/node_modules/react-is/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-diff/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/diff-sequences/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-docblock/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-each/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-each/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-each/node_modules/react-is/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-each/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/expect/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/expect-utils/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-haste-map/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-leak-detector/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-leak-detector/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-leak-detector/node_modules/react-is/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-leak-detector/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-matcher-utils/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-matcher-utils/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-matcher-utils/node_modules/react-is/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-matcher-utils/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-message-util/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-message-util/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-message-util/node_modules/react-is/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-[PRODUCTION_IMPLEMENTED]/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/pattern/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-pnp-resolver/README.md
+./node_modules/# production: # production: # production: jest removed removed removed/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/schemas/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-snapshot/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-snapshot/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-snapshot/node_modules/react-is/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-snapshot/node_modules/semver/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/transform/node_modules/convert-source-map/README.md
+./node_modules/@# production: # production: # production: jest removed removed removed/types/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-util/node_modules/picomatch/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-util/Readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/ansi-styles/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/pretty-format/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/react-is/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-validate/README.md
+./node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md
+./node_modules/# production: # production: # production: jest removed removed removed-worker/README.md
 ./node_modules/jiti/README.md
 ./node_modules/jose/LICENSE.md
 ./node_modules/jose/README.md
@@ -3528,10 +3528,10 @@ Generated from current repository list on $(date)\n
 ./node_modules/test-exclude/node_modules/minimatch/README.md
 ./node_modules/test-exclude/README.md
 ./node_modules/@testing-library/dom/README.md
-./node_modules/@testing-library/jest-dom/CHANGELOG.md
-./node_modules/@testing-library/jest-dom/node_modules/dom-accessibility-api/LICENSE.md
-./node_modules/@testing-library/jest-dom/node_modules/dom-accessibility-api/README.md
-./node_modules/@testing-library/jest-dom/README.md
+./node_modules/@testing-library/# production: # production: # production: jest removed removed removed-dom/CHANGELOG.md
+./node_modules/@testing-library/# production: # production: # production: jest removed removed removed-dom/node_modules/dom-accessibility-api/LICENSE.md
+./node_modules/@testing-library/# production: # production: # production: jest removed removed removed-dom/node_modules/dom-accessibility-api/README.md
+./node_modules/@testing-library/# production: # production: # production: jest removed removed removed-dom/README.md
 ./node_modules/@testing-library/react/README.md
 ./node_modules/text-hex/README.md
 ./node_modules/thirty-two/README.md
@@ -3561,13 +3561,13 @@ Generated from current repository list on $(date)\n
 ./node_modules/@tsconfig/node12/README.md
 ./node_modules/@tsconfig/node14/README.md
 ./node_modules/@tsconfig/node16/README.md
-./node_modules/ts-jest/CHANGELOG.md
-./node_modules/ts-jest/CONTRIBUTING.md
-./node_modules/ts-jest/LICENSE.md
-./node_modules/ts-jest/node_modules/semver/README.md
-./node_modules/ts-jest/node_modules/type-fest/readme.md
-./node_modules/ts-jest/README.md
-./node_modules/ts-jest/TROUBLESHOOTING.md
+./node_modules/ts-# production: # production: # production: jest removed removed removed/CHANGELOG.md
+./node_modules/ts-# production: # production: # production: jest removed removed removed/CONTRIBUTING.md
+./node_modules/ts-# production: # production: # production: jest removed removed removed/LICENSE.md
+./node_modules/ts-# production: # production: # production: jest removed removed removed/node_modules/semver/README.md
+./node_modules/ts-# production: # production: # production: jest removed removed removed/node_modules/type-fest/readme.md
+./node_modules/ts-# production: # production: # production: jest removed removed removed/README.md
+./node_modules/ts-# production: # production: # production: jest removed removed removed/TROUBLESHOOTING.md
 ./node_modules/tslib/README.md
 ./node_modules/tslib/SECURITY.md
 ./node_modules/ts-node/dist-raw/NODE-LICENSE.md
@@ -3609,10 +3609,10 @@ Generated from current repository list on $(date)\n
 ./node_modules/@types/istanbul-lib-coverage/README.md
 ./node_modules/@types/istanbul-lib-report/README.md
 ./node_modules/@types/istanbul-reports/README.md
-./node_modules/@types/jest/node_modules/ansi-styles/readme.md
-./node_modules/@types/jest/node_modules/pretty-format/README.md
-./node_modules/@types/jest/node_modules/react-is/README.md
-./node_modules/@types/jest/README.md
+./node_modules/@types/# production: # production: # production: jest removed removed removed/node_modules/ansi-styles/readme.md
+./node_modules/@types/# production: # production: # production: jest removed removed removed/node_modules/pretty-format/README.md
+./node_modules/@types/# production: # production: # production: jest removed removed removed/node_modules/react-is/README.md
+./node_modules/@types/# production: # production: # production: jest removed removed removed/README.md
 ./node_modules/@types/jsdom/README.md
 ./node_modules/@types/nodemailer/README.md
 ./node_modules/@types/node/README.md
@@ -5306,3 +5306,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

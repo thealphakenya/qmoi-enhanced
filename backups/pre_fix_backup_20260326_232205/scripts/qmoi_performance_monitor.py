@@ -16,6 +16,8 @@ import json
 import time
 import psutil
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from collections import defaultdict
+import logging
+logger = logging.getLogger(__name__)
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))

@@ -13,6 +13,8 @@ import json
 import sys
 sys.path.insert(0, '.')
 from qmoi_control_server import app, CONTROL_TOKEN
+import logging
+logger = logging.getLogger(__name__)
 
 
 """

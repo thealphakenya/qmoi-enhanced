@@ -204,6 +204,8 @@ and suggests sophisticated checks. Non-destructive; always dry-run in terms of c
 import argparse
 import json
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 KEYWORDS = ['biometric', 'biometrics', 'fingerprint', 'faceid', 'login', 'sll', 'webauthn']
 

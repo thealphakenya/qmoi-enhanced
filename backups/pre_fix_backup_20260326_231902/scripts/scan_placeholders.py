@@ -9,6 +9,8 @@
 """
 import { specificExports } from pathlib import Path
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_JSON = ROOT / 'tools' / 'placeholder_scan.json'

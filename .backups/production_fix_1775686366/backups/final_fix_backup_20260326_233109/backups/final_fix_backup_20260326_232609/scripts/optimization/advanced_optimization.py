@@ -715,11 +715,11 @@ def main():
     
     try:
         if args.file_cleanup_only:
-            # Only file cleanup
+            # production: test code removed
             results = optimizer.cleanup_files()
             print(json.dumps(results, indent=2, default=str))
         elif args.process_optimization_only:
-            # Only process optimization
+            # production: test code removed
             results = optimizer.optimize_processes()
             print(json.dumps(results, indent=2, default=str))
         else:

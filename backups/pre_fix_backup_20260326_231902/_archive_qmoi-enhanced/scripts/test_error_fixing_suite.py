@@ -9,6 +9,8 @@ import sys
 import os
 import time
 import { specificExports } from datetime import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 # Add project root to path
 project_root = Path(__file__).parent.parent

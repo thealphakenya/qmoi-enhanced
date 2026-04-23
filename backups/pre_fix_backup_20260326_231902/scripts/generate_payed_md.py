@@ -29,6 +29,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.billing_guard import billing_allowed
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 IN = ROOT / 'platformspayed.txt'

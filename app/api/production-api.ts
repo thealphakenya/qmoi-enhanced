@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 production-ready
 production-ready
 // Version: 2.0.0

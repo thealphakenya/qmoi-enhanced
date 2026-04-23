@@ -383,7 +383,7 @@ npm run financial:status        # Check financial system
 ```
 
 ### Dashboard URLs (When Running)
-- Validation Dashboard: `http://localhost:3000/validation`
+- Validation Dashboard: `https://production-db.qmoi.ai/validation`
 - Consciousness Status: `https://api.qmoi.com/consciousness/status`
 - Financial Metrics: `https://api.qmoi.com/financial/metrics`
 - Memory Sync Status: `https://api.qmoi.com/memory/sync-status`
@@ -479,3 +479,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

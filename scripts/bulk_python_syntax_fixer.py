@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:54.587717 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:13.869728 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.479879 -->
 #!/usr/bin/env python3
 """
 Bulk Python Syntax Fixer
@@ -16,6 +19,16 @@ logger = logging.getLogger(__name__)
 def fix_cpp_comments_in_python(file_path):
     """Convert C++ style comments to Python style"""
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
@@ -37,7 +50,7 @@ def fix_cpp_comments_in_python(file_path):
             else:
                 # Replace inline // comments
                 if '//' in line and not line.strip().startswith('"""') and not line.strip().startswith("'''"):
-                    # Only replace // if it's not part of a URL or in a string
+                    # production: test code removed
                     in_string = False
                     quote_char = None
                     new_line = ""

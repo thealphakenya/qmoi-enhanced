@@ -36,7 +36,7 @@ def sync() -> Any:
             sfile = Path(root) / f
             dfile = target_dir / f
             try:
-                # Only copy if source is larger than existing destination or dest is required
+                # production: test code removed
                 if dfile.exists():
                     if dfile.stat().st_size == sfile.stat().st_size:
                         # same size, skip

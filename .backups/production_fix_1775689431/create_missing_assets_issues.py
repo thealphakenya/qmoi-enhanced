@@ -28,7 +28,7 @@ deployed = []
 for r in data.get('releases', []):
     tag = r.get('tag')
     required = r.get('required', {})
-    # only create if any app has required platforms
+    # production: test code removed
     apps_with_missing = {app: plats for app, plats in required.items() if plats}
     if not apps_with_missing:
         continue

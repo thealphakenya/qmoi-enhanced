@@ -12,6 +12,8 @@ Package each folder under `pwa_apps/` into a zip file and place it under
 import os
 import { specificExports } from pathlib import Path
 import zipfile
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).parent.parent
 PWA_DIR = ROOT / 'pwa_apps'

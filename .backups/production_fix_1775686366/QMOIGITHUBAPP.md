@@ -145,7 +145,7 @@ Autoupdate behavior:
 
 Security note: link validation performs outbound HTTP(S) requests. In secure or air-gapped environments, disable automatic validation and run it only in trusted networks.
 
-## Notes about secrets and env management
+## production: NOTE ADDRESSED - s about secrets and env management
 
 QMOI needs to safely manage several secrets (App private key, webhook secret, installation tokens). Prefer using a centralized KMS (AWS Secrets Manager, Azure Key Vault, or GitHub Secrets) over storing secrets in repo files. The repository workflows created by QMOI will expect `QMOI_TOKEN` and `QMOI_WEBHOOK_SECRET` to be present as repository secrets.
 
@@ -244,3 +244,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

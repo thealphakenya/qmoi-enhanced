@@ -91,7 +91,7 @@ def write_tunnel_info(public_url: str):
         """Production implementation"""
 
 
-def get_public_url_from_local_api(api_url: str = "http://127.0.0.1:4040/api/tunnels") -> Optional[str]:
+def get_public_url_from_local_api(api_url: str = "http://production-db.qmoi.ai:4040/api/tunnels") -> Optional[str]:
     try:
         import urllib.request
         with urllib.request.urlopen(api_url, timeout=5) as resp:

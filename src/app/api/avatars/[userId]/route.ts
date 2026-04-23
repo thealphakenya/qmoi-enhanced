@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 /**
  * Avatar Management API Endpoint
  * Handles avatar generation, retrieval, and customization

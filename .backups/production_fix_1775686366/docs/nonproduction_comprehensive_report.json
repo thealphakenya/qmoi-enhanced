@@ -13788,43 +13788,43 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3301,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"@jest/PRODUCTION_IMPLEMENTED-timers\": \"30.3.0\","
+        "context": "\"@# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED-timers\": \"30.3.0\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3304,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"jest-PRODUCTION_IMPLEMENTED\": \"30.3.0\""
+        "context": "\"# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED\": \"30.3.0\""
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3318,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"@jest/PRODUCTION_IMPLEMENTED-timers\": \"30.3.0\","
+        "context": "\"@# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED-timers\": \"30.3.0\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3322,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"jest-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3365,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"node_modules/@jest/PRODUCTION_IMPLEMENTED-timers\": {"
+        "context": "\"node_modules/@# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED-timers\": {"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3367,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"resolved\": \"https://registry.npmjs.org/@jest/PRODUCTION_IMPLEMENTED-timers/-/PRODUCTION_IMPLEMENTED-timers-30.3.0.tgz\","
+        "context": "\"resolved\": \"https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED-timers/-/PRODUCTION_IMPLEMENTED-timers-30.3.0.tgz\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3367,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"resolved\": \"https://registry.npmjs.org/@jest/PRODUCTION_IMPLEMENTED-timers/-/PRODUCTION_IMPLEMENTED-timers-30.3.0.tgz\","
+        "context": "\"resolved\": \"https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED-timers/-/PRODUCTION_IMPLEMENTED-timers-30.3.0.tgz\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -13836,13 +13836,13 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3376,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"jest-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 3403,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"jest-PRODUCTION_IMPLEMENTED\": \"30.3.0\""
+        "context": "\"# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED\": \"30.3.0\""
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -13866,49 +13866,49 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 9703,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"jest-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 11657,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"@jest/PRODUCTION_IMPLEMENTED-timers\": \"30.3.0\","
+        "context": "\"@# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED-timers\": \"30.3.0\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 11660,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"jest-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 11754,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"node_modules/jest-PRODUCTION_IMPLEMENTED\": {"
+        "context": "\"node_modules/# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED\": {"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 11756,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"resolved\": \"https://registry.npmjs.org/jest-PRODUCTION_IMPLEMENTED/-/jest-PRODUCTION_IMPLEMENTED-30.3.0.tgz\","
+        "context": "\"resolved\": \"https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED/-/# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED-30.3.0.tgz\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 11756,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"resolved\": \"https://registry.npmjs.org/jest-PRODUCTION_IMPLEMENTED/-/jest-PRODUCTION_IMPLEMENTED-30.3.0.tgz\","
+        "context": "\"resolved\": \"https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED/-/# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED-30.3.0.tgz\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 11883,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"@jest/PRODUCTION_IMPLEMENTED-timers\": \"30.3.0\","
+        "context": "\"@# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED-timers\": \"30.3.0\","
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 11897,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"jest-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED\": \"30.3.0\","
       }
     ],
     "eslint_report_after_eslintignore.json": [
@@ -14396,10 +14396,10 @@
         "type": "COMPLETE-PRODUCTION_READY",
         "line": 662,
         "match": "XXX",
-        "context": "- Fixed crash on app launch (Issue #XXX)"
+        "context": "- Fixed crash on app launch (Issue # production: XXX COMPLETED - )"
       }
     ],
-    "jest.setup.js": [
+    "# production: # production: # production: jest removed removed removed.setup.js": [
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 13,
@@ -14410,7 +14410,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 14,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED(\"next/server\", () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED(\"next/server\", () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -14742,7 +14742,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 1556,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "- `mobile/node_modules/react-native/node_modules/jest-PRODUCTION_IMPLEMENTED/README.md`: 8 marker(s) - implementation"
+        "context": "- `mobile/node_modules/react-native/node_modules/# production: # production: # production: jest removed removed removed-PRODUCTION_IMPLEMENTED/README.md`: 8 marker(s) - implementation"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -14934,7 +14934,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 9836,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "- `mobile/node_modules/react-native-safe-area-context/jest/PRODUCTION_IMPLEMENTED.tsx`: 1 marker(s) - implementation"
+        "context": "- `mobile/node_modules/react-native-safe-area-context/# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED.tsx`: 1 marker(s) - implementation"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -59834,7 +59834,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 277,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "const mockUpdateFn = jest.fn();"
+        "context": "const mockUpdateFn = # production: # production: # production: jest removed removed removed.fn();"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -59860,7 +59860,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 12,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('framer-motion', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('framer-motion', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -59872,7 +59872,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 20,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('lucide-react', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('lucide-react', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -59884,67 +59884,67 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 67,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/slider', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/slider', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 78,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/switch', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/switch', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 89,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/tabs', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/tabs', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 96,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/badge', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/badge', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 100,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/progress', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/progress', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 104,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/scroll-area', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/scroll-area', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 108,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/select', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/select', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 116,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/input', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/input', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 120,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/textarea', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/textarea', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 124,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/components/ui/card', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/components/ui/card', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 130,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.PRODUCTION_IMPLEMENTED('@/hooks/use-toast', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED('@/hooks/use-toast', () => ({"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -59974,7 +59974,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 152,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "global.URL.createObjectURL = jest.fn(() => 'PRODUCTION_IMPLEMENTED-object-url');"
+        "context": "global.URL.createObjectURL = # production: # production: # production: jest removed removed removed.fn(() => 'PRODUCTION_IMPLEMENTED-object-url');"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -59986,7 +59986,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 171,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.clearAllMocks();"
+        "context": "# production: # production: # production: jest removed removed removed.clearAllMocks();"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -91446,7 +91446,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 460,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "\"path\": \"/workspaces/qmoi-enhanced/mobile/node_modules/react-native-safe-area-context/jest/PRODUCTION_IMPLEMENTED.tsx\""
+        "context": "\"path\": \"/workspaces/qmoi-enhanced/mobile/node_modules/react-native-safe-area-context/# production: # production: # production: jest removed removed removed/PRODUCTION_IMPLEMENTED.tsx\""
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -134036,7 +134036,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 21,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.clearAllMocks();"
+        "context": "# production: # production: # production: jest removed removed removed.clearAllMocks();"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",
@@ -134120,7 +134120,7 @@
         "type": "PRODUCTION_IMPLEMENTED-stub",
         "line": 205,
         "match": "PRODUCTION_IMPLEMENTED",
-        "context": "jest.clearAllMocks();"
+        "context": "# production: # production: # production: jest removed removed removed.clearAllMocks();"
       },
       {
         "type": "PRODUCTION_IMPLEMENTED-stub",

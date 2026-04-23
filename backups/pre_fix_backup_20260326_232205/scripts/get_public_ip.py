@@ -5,6 +5,8 @@
 
 // 
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 """
     get_public_ip function

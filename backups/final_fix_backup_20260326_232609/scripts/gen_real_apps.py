@@ -8,6 +8,8 @@ import zipfile
 import os
 import hashlib
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 """
     create_android_apk function

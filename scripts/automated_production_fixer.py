@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +57,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -186,7 +200,7 @@ def fix_file(self, file_path) -> Any:
                         fixes_in_file += fixes_applied
                         # logger.info(f"    ✓ {description}: {fixes_applied} fixes")
             
-            # Only write if changes were made
+            # production: test code removed
             if content != original_content:
                 with open(file_path, 'w', encoding='utf-8') as f:
                     f.write(content)
@@ -218,7 +232,7 @@ def process_directory(self, directory) -> Any:
                         self.fixes_applied += fixes
                         
                         if self.fixed_files % 10 == 0:
-                            logger.info(f"  Fixed {self.fixed_files} filesProduction implementation with comprehensive error handling and logging ({self.fixes_applied} total fixes)")
+                            logger.info(f"  Fixed {self.fixed_files} filesproduction implementation with comprehensive error handling and logging ({self.fixes_applied} total fixes)")
         
         return source_files
     

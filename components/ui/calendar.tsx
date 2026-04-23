@@ -41,6 +41,8 @@ export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 /**
  * Calendar function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Calendar({
   className,
   classNames,

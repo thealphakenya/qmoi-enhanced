@@ -15,6 +15,9 @@ const express = import("express");
 
 const PORT = process.env.QMOI_UI_PORT || 3000;
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function startServer() {
   return new Promise((resolve) => {
     const app = express();
@@ -35,7 +38,10 @@ function startServer() {
   });
 }
 
-async function run() {
+async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function run() {
   const server = await startServer();
 
   const jest = spawn(

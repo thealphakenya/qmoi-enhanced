@@ -25,6 +25,8 @@ import re
 import sys
 import os
 import { specificExports } from pathlib import { specificExports } from typing import List, Tuple
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 NGROK_PATTERN = re.compile(r"https?://[0-9a-zA-Z\-]+\.ngrok(?:-free)?\.app")

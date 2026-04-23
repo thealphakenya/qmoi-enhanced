@@ -148,12 +148,12 @@ export function UserProfile({ userId, userName }) {
 
 #### GET Avatar
 ```bash
-curl "http://localhost:3000/api/avatars/user123?size=128&style=professional"
+curl "https://production-db.qmoi.ai/api/avatars/user123?size=128&style=professional"
 ```
 
 #### Generate New Avatar
 ```bash
-curl -X POST http://localhost:3000/api/avatars/generate \
+curl -X POST https://production-db.qmoi.ai/api/avatars/generate \
   -H "Content-Type: application/json" \
   -d '{
     "userId": "user123",
@@ -165,7 +165,7 @@ curl -X POST http://localhost:3000/api/avatars/generate \
 
 #### Customize Avatar
 ```bash
-curl -X PUT http://localhost:3000/api/avatars/user123/customize \
+curl -X PUT https://production-db.qmoi.ai/api/avatars/user123/customize \
   -H "Content-Type: application/json" \
   -d '{
     "style": "creative",
@@ -175,7 +175,7 @@ curl -X PUT http://localhost:3000/api/avatars/user123/customize \
 
 #### Delete Avatar Cache
 ```bash
-curl -X DELETE http://localhost:3000/api/avatars/user123
+curl -X DELETE https://production-db.qmoi.ai/api/avatars/user123
 ```
 
 ---
@@ -402,10 +402,10 @@ export async function createUserProfile(userData) {
 
 ```bash
 # Wrong
-curl http://localhost:3000/api/avatars/user/123
+curl https://production-db.qmoi.ai/api/avatars/user/123
 
 # Correct
-curl http://localhost:3000/api/avatars/user%2F123
+curl https://production-db.qmoi.ai/api/avatars/user%2F123
 ```
 
 ### Cache Not Updating
@@ -561,3 +561,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -34,6 +34,8 @@ def auto_enhance_ci_and_docs() -> Any:
 import sys
 import os
 import subprocess
+import logging
+logger = logging.getLogger(__name__)
 
 """
     auto_lint_fix function

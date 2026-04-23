@@ -29,7 +29,7 @@ This folder contains helper scripts to aggregate wallet balances and produce a C
   export production_CONFIRMED=true
   python3 scripts/finance/settle_to_cashon.py --report .qmoi_validation/cashon_ledger.json --real
 
-## Notes
+## production: NOTE ADDRESSED - s
 
 - By default, the script reads `.qmoi_validation/all_wallets_qvs.json`. Make sure your wallet QV runs have been executed in dry-run mode before attempting settlement.
 - Real transfer code is intentionally implemented in this repository. Implementing live API calls requires adding provider-specific, audited code and secrets stored in a secure vault.
@@ -98,3 +98,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

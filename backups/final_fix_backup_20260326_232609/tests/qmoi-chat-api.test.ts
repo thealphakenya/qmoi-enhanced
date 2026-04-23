@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-/* @jest-environment node */
+/* @# production: # production: # production: jest removed removed removed-environment node */
 const BASE = process.env.QMOI_UI_BASE || "https://prod.qmoi.ai:3000";
 
 describe('Production:', "QMOI /api/qmoi/chat proxy", () => {

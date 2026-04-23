@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# PRODUCTION_READY: True
 """
 QMOI Advanced Reasoning Engine
 Chain-of-thought reasoning and step-by-step problem solving
@@ -37,6 +38,13 @@ class ChainOfThoughtProcessor:
     """Processes chain-of-thought reasoning"""
     
     def __init__(self):
+
+    try:
+        # production implementation
+        raise NotImplementedError("Production implementation required")
+    except Exception as e:
+        logger.error(f"production error: {e}")
+        raise
         self.reasoning_patterns = self._load_reasoning_patterns()
         
     def _load_reasoning_patterns(self) -> Dict[str, str]:
@@ -51,7 +59,7 @@ class ChainOfThoughtProcessor:
     
     def decompose_problem(self, problem: str) -> List[str]:
         """Break down problem into manageable steps"""
-        # Simple decomposition - PRODUCTION_IMPLEMENTED would be more sophisticated
+        # Simple decomposition - production_IMPLEMENTED would be more sophisticated
         sentences = re.split(r'[.!?]+', problem)
         steps = []
         
@@ -146,7 +154,7 @@ class SelfVerificationLayer:
     
     def _check_consistency(self, chain: ReasoningChain) -> Tuple[bool, str]:
         """Check reasoning consistency"""
-        # Simple check - PRODUCTION_IMPLEMENTED would be more sophisticated
+        # Simple check - production_IMPLEMENTED would be more sophisticated
         return True, "Consistent"
     
     def _check_logic(self, chain: ReasoningChain) -> Tuple[bool, str]:

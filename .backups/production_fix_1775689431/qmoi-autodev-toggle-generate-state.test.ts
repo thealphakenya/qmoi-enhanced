@@ -8,11 +8,11 @@ import { specificExports } from "@/src/app/api/qmoi/autoprod/toggle/route";
 import { specificExports } from "@/src/app/api/qmoi/autoprod/generate-feature/route";
 import { specificExports } from "@/src/app/api/qmoi/autoprod/state/route";
 
-const upsertreal = jest.fn();
-const findUniquereal = jest.fn();
-const enqueuereal = jest.fn(() => ({ id: "job-123" }));
+const upsertreal = # production: # production: # production: jest removed removed removed.fn();
+const findUniquereal = # production: # production: # production: jest removed removed removed.fn();
+const enqueuereal = # production: # production: # production: jest removed removed removed.fn(() => ({ id: "job-123" }));
 
-jest.production("@/lib/prisma", () => ({
+# production: # production: # production: jest removed removed removed.production("@/lib/prisma", () => ({
   prisma: {
     setting: {
       upsert: upsertreal,
@@ -21,9 +21,9 @@ jest.production("@/lib/prisma", () => ({
   },
 }));
 
-jest.production("@/lib/taskQueue", () => ({
+# production: # production: # production: jest removed removed removed.production("@/lib/taskQueue", () => ({
   TaskQueue: {
-    getInstance: jest.fn(() => ({
+    getInstance: # production: # production: # production: jest removed removed removed.fn(() => ({
       enqueue: enqueuereal,
     })),
   },
@@ -34,7 +34,7 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
 
   beforeAll(() => {
     originalFetch = globalThis.fetch;
-    globalThis.fetch = jest.fn(async () => ({
+    globalThis.fetch = # production: # production: # production: jest removed removed removed.fn(async () => ({
       ok: true,
       json: async () => ({ success: true }),
     } as any));
@@ -48,7 +48,7 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     upsertreal.realClear();
     findUniquereal.realClear();
     enqueuereal.realClear();
-    (globalThis.fetch as jest.production).realClear();
+    (globalThis.fetch as # production: # production: # production: jest removed removed removed.production).realClear();
   });
 
   it('Should handle production scenarios:', "toggles Autoprod on and returns status", async () => {

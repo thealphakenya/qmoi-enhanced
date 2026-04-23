@@ -114,6 +114,8 @@ interface QMOIStateProviderProps {
 export /**
  * QMOIStateProvider function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
   const [state, setState] = useState<QMOIState>({
     // Avatar State
@@ -336,6 +338,8 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
 export /**
  * useQMOIState function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function useQMOIState(): any {
   const context = useContext(QMOIContext);
   if (context === undefined) {

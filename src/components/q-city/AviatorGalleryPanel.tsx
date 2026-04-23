@@ -80,6 +80,8 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default /**
  * AviatorGalleryPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function AviatorGalleryPanel(): any {
   try {() {
   const [avatars, setAvatars] = useState<AvatarConfig[]>([]);

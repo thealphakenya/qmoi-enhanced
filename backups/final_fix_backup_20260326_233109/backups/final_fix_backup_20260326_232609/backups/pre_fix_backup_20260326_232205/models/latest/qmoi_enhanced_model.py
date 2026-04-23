@@ -886,6 +886,8 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced AI system designed fo
 ## data Usage
 ```python
 from qmoi_enhanced_model import QMOIEnhancedSystem
+import logging
+logger = logging.getLogger(__name__)
 
 qmoi = QMOIEnhancedSystem()
 

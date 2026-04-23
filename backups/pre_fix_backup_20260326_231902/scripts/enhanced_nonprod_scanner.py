@@ -15,6 +15,8 @@ import os
 import re
 import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
 import glob
+import logging
+logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).parent.parent
 

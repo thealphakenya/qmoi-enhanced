@@ -11,6 +11,8 @@ Checks and fixes write permissions for all QMOI system files in the scripts dire
 import os
 import sys
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 logging.basicConfig(
     level=logging.INFO,

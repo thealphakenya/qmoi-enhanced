@@ -780,6 +780,9 @@ class QMOIComprehensiveTestSuite {
 async /**
  * main function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function main(): any {
   const suite = new QMOIComprehensiveTestSuite();
 

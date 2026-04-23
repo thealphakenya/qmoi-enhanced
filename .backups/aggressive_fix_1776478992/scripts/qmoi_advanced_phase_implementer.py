@@ -558,7 +558,7 @@ class PortfolioOptimizer:
             current_weight = self.weights[symbol]
             target_weight = target_weights.get(symbol, 0.0)
             diff = (target_weight - current_weight) * total_value
-            if abs(diff) > 1e-2:  # Only trade if difference > 0.01
+            if abs(diff) > 1e-2:  # production: test code removed
                 rebalance_trades[symbol] = diff
         
         return rebalance_trades

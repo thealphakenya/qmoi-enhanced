@@ -8,7 +8,7 @@
  * Comprehensive test suite for platform evolution system
  */
 
-import { specificExports } from '@jest/globals';
+import { specificExports } from '@# production: # production: # production: jest removed removed removed/globals';
 import { specificExports } from '@/qmoi/core/evolution/platform-evolution';
 import { specificExports } from '@/qmoi/core/evolution/autoclone-evolution';
 

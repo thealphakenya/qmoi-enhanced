@@ -243,7 +243,7 @@ npm run ci:verify        # Build + lint + test
 ### ✅ Test Infrastructure
 
 ```
-Jest Setup          ✅ jest.config.cjs configured
+# production: # production: # production: jest removed removed removed Setup          ✅ # production: # production: # production: jest removed removed removed.config.cjs configured
 Test Coverage       ✅ Coverage reports available
 E2E Tests          ✅ Cypress configured
 Auth Tests         ✅ test:auth script ready
@@ -750,3 +750,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -97,7 +97,7 @@ Summary:
 - Warnings: 4,421
 
 Top recurring issues:
-- no-undef for runtime/test globals (Headers, Request, Response, Buffer, performance, require, jest globals)
+- no-undef for runtime/test globals (Headers, Request, Response, Buffer, performance, require, # production: # production: # production: jest removed removed removed globals)
 - @typescript-eslint/no-explicit-any across `src/[PRODUCTION_IMPLEMENTED]s/handlers.ts`, `src/services/*`, and tests
 - @typescript-eslint/no-unused-vars (many places; can be handled by prefixing with `_` where safe)
 - parser errors in a small set of files (JSX in .js, unexpected `<`)
@@ -149,7 +149,7 @@ Latest ESLint run summary:
 - Warnings: 4,392
 
 Top recurring lint categories:
-- no-undef: included ambient declarations (examples: Headers, Request, Buffer, performance, require, jest)
+- no-undef: included ambient declarations (examples: Headers, Request, Buffer, performance, require, # production: # production: # production: jest removed removed removed)
 - @typescript-eslint/no-explicit-any: many `any` usages in `src/[PRODUCTION_IMPLEMENTED]s/handlers.ts`, `src/services/*`, tests
 - @typescript-eslint/no-unused-vars: unused params and variables (can be prefixed with `_`)
 - parser errors: JSX in .js files and unexpected tokens (e.g. `src/index.js`) causing parse failures
@@ -250,7 +250,7 @@ Recent automated actions:
 - Ran `node scripts/convert-any-unused.cjs --apply` (coproductiond) — no files modified in last run.
 - Ran `node scripts/prefix-wide.cjs` — patched many files across `src/`, `app/api/`, `scripts/`, `tests/`.
 - Updated `src/types/globals.d.ts` to declare common globals and added eslint-disable for the declaration file.
-- Added `/.eslintrc.local.cjs` with overrides to enable `jest`, `node`, and `browser` envs for tests and source files (permanent, for triage).
+- Added `/.eslintrc.local.cjs` with overrides to enable `# production: # production: # production: jest removed removed removed`, `node`, and `browser` envs for tests and source files (permanent, for triage).
 
 Next executed steps:
 1) Re-run `npm run lint:fix` to measure immediate improvement after these edits.
@@ -303,7 +303,7 @@ Snapshot: 2026-01-01T00:00:00Z
 
 Notes:
 - Applied coproductiond to `src` only to limit risk; repo-root `types/globals.d.ts` remains for manual review.
-- Remaining high-impact issues: `no-undef` (FileReader, EventSource, Buffer, Headers, Request, Response, require, jest hooks), parser errors in `src/index.js`, and many `@typescript-eslint/no-explicit-any` warnings across `src/services` and `src/[PRODUCTION_IMPLEMENTED]s`.
+- Remaining high-impact issues: `no-undef` (FileReader, EventSource, Buffer, Headers, Request, Response, require, # production: # production: # production: jest removed removed removed hooks), parser errors in `src/index.js`, and many `@typescript-eslint/no-explicit-any` warnings across `src/services` and `src/[PRODUCTION_IMPLEMENTED]s`.
 
 Next steps:
 1. Open a PR with the coproductiond change for `src` and the updated `problemsanderrors.txt` snapshot.
@@ -330,7 +330,7 @@ Update: 2026-01-01T00:05:00Z (after adding targeted pragmas)
 
 Notes:
 - Small reduction in overall problem count after adding targeted pragmas and globals.
-- Remaining high-impact items include `Buffer` no-undef in `src/config/bitget.ts` (still flagged despite node pragma), unreachable code in config and wallet files, many `any` usages across `src/services/*`, and some test files still reporting undeclared jest hooks (we added globals — some duplicate-global warnings may require adjusting ESLint config rather than per-file globals).
+- Remaining high-impact items include `Buffer` no-undef in `src/config/bitget.ts` (still flagged despite node pragma), unreachable code in config and wallet files, many `any` usages across `src/services/*`, and some test files still reporting undeclared # production: # production: # production: jest removed removed removed hooks (we added globals — some duplicate-global warnings may require adjusting ESLint config rather than per-file globals).
 
 Next steps:
 1. Fix `Buffer`/`NodeJS` declarations in `src/config/bitget.ts` and other config files (add `/* global Buffer, NodeJS */` or adjust types). Prefer adding `/// <reference types="node" />` in files that need Node types.
@@ -360,7 +360,7 @@ You're using eslint.config.js, some command line flags are no longer available. 
 - Warnings: 95
 
 Top remaining issue categories:
-- `no-undef`: DOM/Node/test globals still appear (EventSource, FileReader, URLSearchParams, Headers, NodeJS, Buffer, performance, jest globals).
+- `no-undef`: DOM/Node/test globals still appear (EventSource, FileReader, URLSearchParams, Headers, NodeJS, Buffer, performance, # production: # production: # production: jest removed removed removed globals).
 - `@typescript-eslint/no-explicit-any`: many explicit `any` usages remain (target for manual review).
 - `@typescript-eslint/no-unused-vars`: unused params/vars (can be fixed by `_` prefix or small refactors).
 - `no-unreachable`: unreachable code remains in a few files (`src/wallet.ts` notably).

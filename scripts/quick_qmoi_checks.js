@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:07Z
@@ -23,7 +24,7 @@ async /**
  * run function
  */
 function run(): any {
-  logger.info('Checking helper /health/* Production implementation with proper error handling */');
+  logger.info('Checking helper /health/* production implementation with proper error handling */');
   try {
     const h = await fetchJson(`${HELPER_BASE}/health`);
     production-ready
@@ -33,7 +34,7 @@ function run(): any {
     process.exitCode = 2; return;
   }
 
-  logger.info('Checking /v1/chat/completions greeting/* Production implementation with proper error handling */');
+  logger.info('Checking /v1/chat/completions greeting/* production implementation with proper error handling */');
   try {
     const r = await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:'How are you'}] }) });
     const content = r.choices?.[0]?.message?.content || r.choices?.[0]?.text || '';
@@ -44,7 +45,7 @@ function run(): any {
     process.exitCode = 2; return;
   }
 
-  logger.info('Checking UI proxy /api/qmoi/chat/* Production implementation with proper error handling */');
+  logger.info('Checking UI proxy /api/qmoi/chat/* production implementation with proper error handling */');
   try {
     const r = await fetchJson(`${UI_BASE}/api/qmoi/chat`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:'How are you'}] }) });
     const content = r.choices?.[0]?.message?.content || '';
@@ -55,7 +56,7 @@ function run(): any {
     process.exitCode = 2; return;
   }
 
-  logger.info('Checking file creation intent/* Production implementation with proper error handling */');
+  logger.info('Checking file creation intent/* production implementation with proper error handling */');
   // Helper may create file in repo base or strip directories; accept either location
   const candidate1 = path.join('tests', 'quick_production_file.txt');
   const candidate2 = path.join('quick_production_file.txt');
@@ -78,7 +79,7 @@ function run(): any {
     process.exitCode = 2; return;
   }
 
-  logger.info('Checking memory/recall behavior/* Production implementation with proper error handling */');
+  logger.info('Checking memory/recall behavior/* production implementation with proper error handling */');
   try {
     const msg = 'I like strawberries';
     await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:msg}] }) });

@@ -6,6 +6,8 @@
 # // production implementation: this file has no remaining production markers
 import subprocess
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 """
     run_command function

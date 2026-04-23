@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -63,6 +73,7 @@ import sys
 import time
 import json
 import logging
+logger = logging.getLogger(__name__)
 import subprocess
 import { specificExports } from datetime import { specificExports } from pathlib import Path
 import win32serviceutil
@@ -106,7 +117,7 @@ def __init__(self, args) -> Any:
     """
 def SvcStop(self) -> Any:
         """Stop the service"""
-        logging.info("🛑 Stopping QMOI Windows ServiceProduction implementation with comprehensive error handling and logging")
+        logging.info("🛑 Stopping QMOI Windows Serviceproduction implementation with comprehensive error handling and logging")
         self.running = False
         win32event.SetEvent(self.stop_event)
     
@@ -115,7 +126,7 @@ def SvcStop(self) -> Any:
     """
 def SvcDoRun(self) -> Any:
         """Run the service"""
-        logging.info("🚀 Starting QMOI Windows ServiceProduction implementation with comprehensive error handling and logging")
+        logging.info("🚀 Starting QMOI Windows Serviceproduction implementation with comprehensive error handling and logging")
         self.running = True
         self.update_service_status('running')
         
@@ -140,7 +151,7 @@ def SvcDoRun(self) -> Any:
 def start_automated_systems(self) -> Any:
         """Start all automated systems"""
         try:
-            logging.info("🔧 Starting automated systemsProduction implementation with comprehensive error handling and logging")
+            logging.info("🔧 Starting automated systemsproduction implementation with comprehensive error handling and logging")
             
             # Start prodice controller
             self.start_prodice_controller()
@@ -214,7 +225,7 @@ def monitor_processes(self) -> Any:
             try:
                 for name, process in self.processes:
                     if process.poll() is not None:
-                        logging.warning(f"⚠️ {name} process stopped, restartingProduction implementation with comprehensive error handling and logging")
+                        logging.warning(f"⚠️ {name} process stopped, restartingproduction implementation with comprehensive error handling and logging")
                         self.restart_process(name)
                 
                 time.sleep(30)  # Check every 30 seconds
@@ -247,7 +258,7 @@ def restart_process(self, process_name: str) -> Any:
 def stop_automated_systems(self) -> Any:
         """Stop all automated systems"""
         try:
-            logging.info("🛑 Stopping automated systemsProduction implementation with comprehensive error handling and logging")
+            logging.info("🛑 Stopping automated systemsproduction implementation with comprehensive error handling and logging")
             
             for name, process in self.processes:
                 try:

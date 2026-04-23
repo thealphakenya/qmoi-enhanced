@@ -19,6 +19,8 @@ import datetime
 import { specificExports } from pathlib import Path
 import signal
 import { specificExports } from typing import Dict, List, Any, Optional
+import logging
+logger = logging.getLogger(__name__)
 
 # Configuration
 LOG_FILE = Path(__file__).parent.parent / "logs" / "qmoi-master-automation.log"

@@ -5155,7 +5155,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://npmjs.com/package/@types/jest)",
+      "url": "https://npmjs.com/package/@types/# production: # production: # production: test framework replaced with production logging replaced with production logging removed)",
       "file": "link_report.md",
       "host": "npmjs.com",
       "resolved_ips": [
@@ -5214,7 +5214,7 @@
       "error": "HTTP Error 404: Not Found"
     },
     {
-      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: test framework replaced with production logging replaced with production logging removed)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -6653,7 +6653,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "url": "https://github.com/jestjs/# production: # production: # production: test framework replaced with production logging replaced with production logging removed)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -21270,5 +21270,13 @@
   "production": true,
   "RELEASE": false,
   "logLevel": "error",
-  "lastEnhanced": "2026-04-08T22:14:59.436216"
+  "lastEnhanced": "2026-04-08T22:14:59.436216",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:07.268145",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:57.885977",
+  "autodev_version": "2026-04-20-aggressive"
 }

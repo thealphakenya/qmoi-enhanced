@@ -14,6 +14,8 @@ Applies intelligent reasoning, inference, consistency checking, and problem anal
 
 import json
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from enum import Enum
+import logging
+logger = logging.getLogger(__name__)
 
 # Configuration
 WORKSPACE_ROOT = Path('/workspaces/qmoi-enhanced')

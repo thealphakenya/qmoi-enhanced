@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
@@ -64,10 +65,10 @@ function POST(request: NextRequest): any {
     const comparison = {
       models: modelsToCompare,
       analysis: {
-        bestAccuracy: Math.max(/* Production implementation with proper error handling */modelsToCompare.map(m => m.accuracy)),
-        bestSpeed: Math.max(/* Production implementation with proper error handling */modelsToCompare.map(m => m.speed)),
-        bestReliability: Math.max(/* Production implementation with proper error handling */modelsToCompare.map(m => m.reliability)),
-        lowestResourceUsage: Math.min(/* Production implementation with proper error handling */modelsToCompare.map(m => m.resourceUsage)),
+        bestAccuracy: Math.max(/* production implementation with proper error handling */modelsToCompare.map(m => m.accuracy)),
+        bestSpeed: Math.max(/* production implementation with proper error handling */modelsToCompare.map(m => m.speed)),
+        bestReliability: Math.max(/* production implementation with proper error handling */modelsToCompare.map(m => m.reliability)),
+        lowestResourceUsage: Math.min(/* production implementation with proper error handling */modelsToCompare.map(m => m.resourceUsage)),
         rankings: {
           byAccuracy: modelsToCompare
             .sort((a, b) => b.accuracy - a.accuracy)

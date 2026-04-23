@@ -13,6 +13,8 @@ and known binary directories to avoid hangs in large workspaces.
 import { specificExports } from pathlib import Path
 import re
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 

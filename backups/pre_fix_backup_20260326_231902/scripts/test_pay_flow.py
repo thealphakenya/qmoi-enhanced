@@ -12,6 +12,8 @@ import os
 import sqlite3
 import json
 import { specificExports } from payments import provider_stub, stripe_adapter
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 DB = os.path.join(ROOT, 'qmoi.db')

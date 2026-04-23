@@ -9,6 +9,8 @@ import sys
 import json
 import { specificExports } from qmoi_activity_logger import { specificExports } from pathlib import Path
 import time
+import logging
+logger = logging.getLogger(__name__)
 
 GITHUB_REPO = 'thealphakenya/latest-Q-ai'
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')

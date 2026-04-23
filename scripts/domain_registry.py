@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +43,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -538,7 +538,7 @@ def check_link_health(self, link_id: str, config: dict) -> LinkHealth:
     """
 def perform_health_checks(self) -> Any:
         """Perform health checks for all domains and links"""
-        logger.info("Starting comprehensive health checksProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting comprehensive health checksproduction implementation with comprehensive error handling and logging")
 
         # Check domains
         for domain, config in self.domains.items():
@@ -880,7 +880,7 @@ def write_registry(registry, apply=False) -> Any:
     with open(validation_path, "w") as f:
         json.dump(validation_result, f, indent=2)
     
-    # Only write registry if validation passes or not in apply mode
+    # production: test code removed
     if not all_errors or not apply:
         with open(path, "w") as f:
             json.dump(registry, f, indent=2)

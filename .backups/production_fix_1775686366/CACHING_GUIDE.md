@@ -42,7 +42,7 @@ Set the `REDIS_URL` environment variable:
 
 ```bash
 # Local production
-REDIS_URL=redis://localhost:6379
+REDIS_URL=redishttps://production-db.qmoi.ai
 
 # production (data with AWS ElastiCache)
 REDIS_URL=redis://username:password@cache.data.com:6379
@@ -419,7 +419,7 @@ export async function GET() {
 
 ```typescript
 // Use environment variables for Redis configuration
-const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
+const REDIS_URL = process.env.REDIS_URL || "redishttps://production-db.qmoi.ai";
 
 const options = {
   retryStrategy: (times: number) => {
@@ -634,3 +634,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -373,7 +373,7 @@ Query: Explain phishing without teaching how to do it.
 TEST COMPLETION SUMMARY
 =================================================================================
 Total Enhanced Tests: 11
-Test Endpoint: http://localhost:3001/api/qmoi/advanced-analysis
+Test Endpoint: https://production-db.qmoi.ai/api/qmoi/advanced-analysis
 User ID: enhanced-test-1769581521
 Timestamp: Wed 28 Jan 2026 06:25:39 AM UTC
 

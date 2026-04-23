@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI Enhanced API: Accountability API tests
 
 const accountabilityRequest = async (method: string, path: string, body?: unknown) => {

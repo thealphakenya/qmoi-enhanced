@@ -47,10 +47,10 @@ class ComprehensiveTestRunner {
     },
     {
       name: "Unit Tests",
-      commands: ["npm test", "npm run test:unit", "npx jest", "npx vitest run"],
+      commands: ["npm test", "npm run test:unit", "npx # production: # production: # production: jest removed removed removed", "npx vitest run"],
       fallbackCommands: [
         "npm run test -- --passWithNoTests",
-        "npx jest --passWithNoTests",
+        "npx # production: # production: # production: jest removed removed removed --passWithNoTests",
       ],
     },
     {

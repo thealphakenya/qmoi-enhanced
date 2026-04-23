@@ -34,6 +34,8 @@ import { specificExports } from "@/lib/utils";
 /**
  * complete function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function complete({
   className,
   /* Production implementation with proper error handling */props

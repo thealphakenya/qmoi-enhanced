@@ -5,6 +5,8 @@
 
 # [PRODUCTION_IMPLEMENTED]
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 # Ensure the directory exists
 os.makedirs("Qmoi_downloaded_apps/windows/latest", exist_ok=True)

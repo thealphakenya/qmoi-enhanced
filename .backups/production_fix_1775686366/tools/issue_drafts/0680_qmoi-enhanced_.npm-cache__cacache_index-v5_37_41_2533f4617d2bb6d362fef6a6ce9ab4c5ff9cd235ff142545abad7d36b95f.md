@@ -28,7 +28,7 @@ Excerpt (first 2KB):
 
 ```
 
-dc61fcb2126613707457c869d437a16ae796ef3e	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@jest/core/-/core-29.7.0.tgz","integrity":"sha512-n7aeXWKMnGtDA48y8TLWJPJmLmmZ642Ceo78cYWEpiD7FzDgmNDV/GCVRorPABdXLJZ/9wzzgZAlHjXjxDHGsg==","time":1760365065821,"size":30748,"metadata":{"time":1760365064078,"url":"https://registry.npmjs.org/@jest/core/-/core-29.7.0.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:43 GMT","etag":"\"0d2f3445c798f419d2c5d900336ece29\"","last-modified":"Tue, 12 Sep 2023 06:44:06 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
+dc61fcb2126613707457c869d437a16ae796ef3e	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/core/-/core-29.7.0.tgz","integrity":"sha512-n7aeXWKMnGtDA48y8TLWJPJmLmmZ642Ceo78cYWEpiD7FzDgmNDV/GCVRorPABdXLJZ/9wzzgZAlHjXjxDHGsg==","time":1760365065821,"size":30748,"metadata":{"time":1760365064078,"url":"https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/core/-/core-29.7.0.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:43 GMT","etag":"\"0d2f3445c798f419d2c5d900336ece29\"","last-modified":"Tue, 12 Sep 2023 06:44:06 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
 ```
 
 Notes:
@@ -98,3 +98,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

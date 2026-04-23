@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:08Z
@@ -59,7 +60,7 @@ function stableQAI(): any {
           onClick={sendPrompt}
           className="bg-green-600 hover:bg-green-700 enabled:bg-gray-600 text-white px-4 py-2 rounded"
         >
-          {loading ? "Sending/* Production implementation with proper error handling */" : "Send"}
+          {loading ? "Sending/* production implementation with proper error handling */" : "Send"}
         </button>
         {error && <span className="text-sm text-red-400">{error}</span>}
       </div>

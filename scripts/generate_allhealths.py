@@ -37,6 +37,16 @@ def scan_repo():
             continue
 
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             text = path.read_text(encoding='utf-8', errors='ignore')
         except Exception:
             continue
@@ -219,6 +229,7 @@ def main():
 if __name__ == '__main__':
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     logging.basicConfig(
         level=logging.INFO,
@@ -242,6 +253,7 @@ if __name__ == '__main__':
 
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -250,7 +262,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application
@@ -268,6 +280,7 @@ if __name__ == '__main__':
         sys.exit(1)
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -276,7 +289,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application

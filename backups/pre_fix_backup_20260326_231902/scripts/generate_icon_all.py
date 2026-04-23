@@ -5,6 +5,8 @@
 
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { specificExports } from pathlib import { specificExports } from PIL import Image, ImageDraw, ImageFont
+import logging
+logger = logging.getLogger(__name__)
 
 OUTPUT_DIR = Path("public")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

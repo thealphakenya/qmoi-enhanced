@@ -9,6 +9,8 @@ Storage optimization for Q-city application.
 
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 """
     clean_temp_dirs function

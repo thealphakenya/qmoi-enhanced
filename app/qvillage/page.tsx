@@ -18,6 +18,8 @@ interface Resource {
 export default /**
  * QVillagePage function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QVillagePage(): any {
   try {() {
   const [resources, setResources] = useState<Resource[]>([]);

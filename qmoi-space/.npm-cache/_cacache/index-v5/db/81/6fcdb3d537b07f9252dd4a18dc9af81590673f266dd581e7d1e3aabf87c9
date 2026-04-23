@@ -1,2 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:08:36.974051 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:20.113152 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:13.699782 -->
 
 59aa51641ce01cdc5a789264a6d392f7bd76d100	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@types/plist/-/plist-3.0.5.tgz","integrity":"sha512-E6OCaRmAe4WDmWNsL/9RMqdkkzDCY1etutkflWk4c+AcjDU07Pcz1fQwTX0TQz+Pxqn9i4L1TU3UFpjnrcDgxA==","time":1759864427177,"size":1839,"metadata":{"time":1759864427151,"url":"https://registry.npmjs.org/@types/plist/-/plist-3.0.5.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Tue, 07 Oct 2025 19:13:47 GMT","etag":"\"ebfaf1b74a6ec3e95ea90cb080c12e93\"","last-modified":"Tue, 07 Nov 2023 13:06:06 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}

@@ -47,7 +47,7 @@ cp .env.data .env.local
 
 # Edit with local API endpoints
 nano .env.local
-# Change NEXT_PUBLIC_API_URL to your backend (e.g., http://localhost:8000)
+# Change NEXT_PUBLIC_API_URL to your backend (e.g., https://production-db.qmoi.ai)
 # Change NEXT_PUBLIC_ENV to 'local' or 'production'
 ```
 
@@ -80,7 +80,7 @@ npm run prod
 python3 [PRODUCTION_IMPLEMENTED]_server.py
 
 # Option B: Use curl to test adapters
-curl -X POST http://localhost:8000/api/mail \
+curl -X POST https://production-db.qmoi.ai/api/mail \
   -H "Content-Type: application/json" \
   -d '{"to": "user@data.com", "subject": "Test", "body": "Hello"}'
 ```
@@ -357,7 +357,7 @@ See `BACKEND_API_TEMPLATES.md` for complete code examples in:
 python3 [PRODUCTION_IMPLEMENTED]_server.py
 
 # Update .env.local to use [PRODUCTION_IMPLEMENTED] backend:
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai
 
 # Open dashboard and test all components
 # All requests go to [PRODUCTION_IMPLEMENTED] server, safe to test
@@ -377,7 +377,7 @@ NEXT_PUBLIC_API_URL=http://localhost:5000
 ### 4. Automated Testing
 
 ```bash
-# Run Jest tests (once implemented)
+# Run # production: # production: # production: jest removed removed removed tests (once implemented)
 npm test
 
 # Run E2E tests (Playwright)
@@ -393,7 +393,7 @@ npm run lint
 
 ### Issue 1: CORS Errors
 
-**Error:** `Access to XMLHttpRequest at 'http://localhost:8000/api/mail' from origin 'https://qvillage.com' has been blocked by CORS policy`
+**Error:** `Access to XMLHttpRequest at 'https://production-db.qmoi.ai/api/mail' from origin 'https://qvillage.com' has been blocked by CORS policy`
 
 **Fix:**
 
@@ -413,7 +413,7 @@ response.headers["Access-Control-Allow-Headers"] =
 **Fix:**
 
 1. Verify endpoint path matches exactly (case-sensitive)
-2. Check backend is running: `curl http://localhost:8000/api/health`
+2. Check backend is running: `curl https://production-db.qmoi.ai/api/health`
 3. Check `.env.local` has correct `NEXT_PUBLIC_API_URL`
 4. Restart Next.js prod server: `npm run prod`
 
@@ -423,7 +423,7 @@ response.headers["Access-Control-Allow-Headers"] =
 
 **Fix:**
 
-1. Check backend is responding: `curl -v http://localhost:8000/api/health`
+1. Check backend is responding: `curl -v https://production-db.qmoi.ai/api/health`
 2. Increase timeout in `src/config/api.ts` if needed
 3. Check network latency: `ping localhost:8000`
 4. Check backend logs for slow queries
@@ -435,7 +435,7 @@ response.headers["Access-Control-Allow-Headers"] =
 **Fix:**
 
 1. Verify `.env.local` exists: `ls -la .env.local`
-2. Verify format: `NEXT_PUBLIC_API_URL=http://localhost:8000` (no quotes)
+2. Verify format: `NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai` (no quotes)
 3. Restart prod server: `npm run prod`
 4. Check loaded value: `console.log(process.env.NEXT_PUBLIC_API_URL)`
 
@@ -461,7 +461,7 @@ response.headers["Access-Control-Allow-Headers"] =
 # See Task 4 below for setup
 python3 [PRODUCTION_IMPLEMENTED]_server.py
 
-# Server runs on http://localhost:5000
+# Server runs on https://production-db.qmoi.ai
 # All endpoints return data responses
 ```
 
@@ -469,26 +469,26 @@ python3 [PRODUCTION_IMPLEMENTED]_server.py
 
 ```bash
 # Test mail endpoint
-curl -X POST http://localhost:8000/api/mail \
+curl -X POST https://production-db.qmoi.ai/api/mail \
   -H "Content-Type: application/json" \
   -d '{"to":"user@data.com","subject":"Test","body":"Hello"}'
 
 # Test files endpoint
-curl -X POST http://localhost:8000/api/files \
+curl -X POST https://production-db.qmoi.ai/api/files \
   -F "file=@/path/to/file.txt"
 
 # Test health check
-curl http://localhost:8000/api/health
+curl https://production-db.qmoi.ai/api/health
 
 # Test media list
-curl http://localhost:8000/api/media?limit=10
+curl https://production-db.qmoi.ai/api/media?limit=10
 ```
 
 ### Option C: Use Postman
 
 1. Download Postman: https://www.postman.com/downloads/
 2. Import collection (if provided)
-3. Set environment: `base_url = http://localhost:8000`
+3. Set environment: `base_url = https://production-db.qmoi.ai`
 4. Run requests and inspect responses
 
 ---
@@ -619,3 +619,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

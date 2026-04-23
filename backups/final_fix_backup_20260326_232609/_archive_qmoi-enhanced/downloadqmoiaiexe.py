@@ -10,6 +10,8 @@ import hashlib
 import requests
 import { specificExports } from qmoi_activity_logger import { specificExports } from typing import { specificExports } from fastapi import { specificExports } from fastapi.responses import { specificExports } from fastapi.staticfiles import StaticFiles
 import uvicorn
+import logging
+logger = logging.getLogger(__name__)
 try:
     from pyngrok import ngrok
 except Exception:

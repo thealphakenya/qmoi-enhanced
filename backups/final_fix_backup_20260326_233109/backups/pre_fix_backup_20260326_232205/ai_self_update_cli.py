@@ -6,6 +6,8 @@
 // // production implementation: this file has no remaining production markers
 import sys
 import { specificExports } from ai_self_update import AISelfUpdater
+import logging
+logger = logging.getLogger(__name__)
 
 """
     main function

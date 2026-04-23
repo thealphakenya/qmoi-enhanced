@@ -21,6 +21,8 @@ Notes:
 """
 import argparse
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 """
     load_status function

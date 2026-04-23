@@ -40,6 +40,8 @@ interface WrapperProps {
 export /**
  * WrappedComponent function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function WrappedComponent({
   component,
   componentProps = {},
@@ -61,7 +63,9 @@ function WrappedComponent({
 }
 
 // Helper to ease creation of lazy variants
-export function lazyWrap<T extends ComponentType<any>>(comp: T) {
+export // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function lazyWrap<T extends ComponentType<any>>(comp: T) {
   return (props: React.ComponentProps<T>) => (
     <WrappedComponent component={comp} componentProps={props} lazy />
   );

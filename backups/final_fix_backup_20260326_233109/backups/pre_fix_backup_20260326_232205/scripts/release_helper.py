@@ -17,6 +17,8 @@ import argparse
 import json
 import tarfile
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 # optional env_manager integration
 try:
     from scripts import env_manager

@@ -81,16 +81,16 @@
     }
   },
   "pattern_replacements": {
-    "localhost_patterns": [
+    "production-db.qmoi.ai_patterns": [
       {
         "pattern": "https://production.qmoi.ai:3000",
         "replacement": "https://qmoi.ai",
-        "context": "production server reference PRODUCTION_IMPLEMENTED docs"
+        "context": "production server reference production_IMPLEMENTED docs"
       },
       {
         "pattern": "https://production.qmoi.ai:8080",
         "replacement": "https://qvillage.com",
-        "context": "production server reference PRODUCTION_IMPLEMENTED docs"
+        "context": "production server reference production_IMPLEMENTED docs"
       }
     ],
     "malformed_urls": [
@@ -134,5 +134,13 @@
   "production": true,
   "RELEASE": false,
   "logLevel": "error",
-  "lastEnhanced": "2026-04-08T22:13:31.391595"
+  "lastEnhanced": "2026-04-08T22:13:31.391595",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:00.375585",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:20.894128",
+  "autodev_version": "2026-04-20-aggressive"
 }

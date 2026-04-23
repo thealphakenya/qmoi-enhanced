@@ -10,7 +10,7 @@ import TransactionHistory from "../components/TransactionHistory";
 import DealsPopup from "../components/DealsPopup";
 import DealsList from "../components/DealsList";
 
-global.fetch = jest.fn();
+global.fetch = # production: # production: # production: jest removed removed removed.fn();
 
 describe("Wallet and Deals components", () => {
   test("WalletPanel displays balance", () => {
@@ -44,8 +44,8 @@ describe("API routes", () => {
       const { default: handler } = await import("../app/api/deals");
       const 
       const 
-        status: jest.fn().
-        json: jest.fn().
+        status: # production: # production: # production: jest removed removed removed.fn().
+        json: # production: # production: # production: jest removed removed removed.fn().
       };
       await handler(
       expect(

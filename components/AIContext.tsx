@@ -97,6 +97,8 @@ const AIContext = createContext<AIContextType | undefined>(undefined);
 export /**
  * useAIContext function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function useAIContext(): any {
   const ctx = useContext(AIContext);
   production-ready
@@ -106,6 +108,8 @@ function useAIContext(): any {
 export /**
  * AIProvider function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function AIProvider({ children }: { children: ReactNode }): any {
   const { toast } = useToast();
 

@@ -12,6 +12,16 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
     import requests
 except ImportError:
     requests = None
@@ -233,7 +243,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application
@@ -259,7 +269,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application

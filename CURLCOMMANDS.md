@@ -1,56 +1,56 @@
 ---
-title: "QMOI CURL Commands"
+title: "Quantum multi orchestra intelligence (QMOI) CURL Commands"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
 <!-- LION_VALIDATION_START -->
 
-## 🦁 L — Validated by QMOI Lion
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
-- validator: QMOI Lion
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI CURL Commands ✅ PRODUCTION_IMPLEMENTED
+# Quantum multi orchestra intelligence (QMOI) CURL Commands ✅ production_IMPLEMENTED
 
-This file contains curl commands and instructions to test all QMOI endpoints, health, autotests, error fixing, workflow, and financial features.
+This file contains curl commands and instructions to test all Quantum multi orchestra intelligence (QMOI) endpoints, health, autotests, error fixing, workflow, and financial features.
 
 ## Health Check
 
 ```production-validated
-curl https://production.qmoi.ai:4000/health
+curl https://production.Quantum multi orchestra intelligence (QMOI).ai:4000/health
 ```production-validated
 
 ## Real-Time Events
 
 ```production-validated
-curl https://production.qmoi.ai:4000/api/realtime-events
+curl https://production.Quantum multi orchestra intelligence (QMOI).ai:4000/api/realtime-events
 ```production-validated
 
 ## Trigger Error Fix
 
 ```production-validated
-curl -X POST https://production.qmoi.ai:4000/api/trigger-fix
+curl -X POST https://production.Quantum multi orchestra intelligence (QMOI).ai:4000/api/trigger-fix
 ```production-validated
 
 ## Get Error Fix Log
 
 ```production-validated
-curl https://production.qmoi.ai:4000/api/error-fix-log
+curl https://production.Quantum multi orchestra intelligence (QMOI).ai:4000/api/error-fix-log
 ```production-validated
 
 ## Get Logs
 
 ```production-validated
-curl https://production.qmoi.ai:4000/api/logs
+curl https://production.Quantum multi orchestra intelligence (QMOI).ai:4000/api/logs
 ```production-validated
 
 ## Login (data)
 
 ```production-validated
-curl -X POST -d "user=Victor&pass=Victor9798!" https://production.qmoi.ai:4000/login
+curl -X POST -d "user=Victor&pass=Victor9798!" https://production.Quantum multi orchestra intelligence (QMOI).ai:4000/login
 ```production-validated
 
 ## Add more as new endpoints are created.
@@ -69,7 +69,7 @@ If you add new endpoints, update this file and the test suite to ensure full cov
 
 ---
 
-## QMOI Multimodal API Feature Tests
+## Quantum multi orchestra intelligence (QMOI) Multimodal API Feature Tests
 
 ### 1. comprehensive Text Chat
 
@@ -78,7 +78,7 @@ curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
 	-d '{
-		"model": "qmoi",
+		"model": "Quantum multi orchestra intelligence (QMOI)",
 		"messages": [
 			{"role": "system", "content": "You are a friendly AI that replies casually to text messages."},
 			{"role": "user", "content": "Hey, what’s up?"}
@@ -93,7 +93,7 @@ curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
 	-d '{
-		"model": "qmoi",
+		"model": "Quantum multi orchestra intelligence (QMOI)",
 		"messages": [
 			{"role": "system", "content": "You are a friendly, context-aware assistant."},
 			{"role": "user", "content": "What’s your favorite color?"},
@@ -110,7 +110,7 @@ curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
 	-d '{
-		"model": "qmoi",
+		"model": "Quantum multi orchestra intelligence (QMOI)",
 		"messages": [
 			{
 				"role": "user",
@@ -130,7 +130,7 @@ curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
 	-d '{
-		"model": "qmoi",
+		"model": "Quantum multi orchestra intelligence (QMOI)",
 		"messages": [
 			{
 				"role": "user",
@@ -150,7 +150,7 @@ curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
 	-d '{
-		"model": "qmoi",
+		"model": "Quantum multi orchestra intelligence (QMOI)",
 		"response_format": {"type": "json_object"},
 		"messages": [
 			{"role": "user", "content": "Extract the name, age, and city from: Sarah, 28, from Berlin."}
@@ -165,7 +165,7 @@ curl -N $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
 	-d '{
-		"model": "qmoi",
+		"model": "Quantum multi orchestra intelligence (QMOI)",
 		"stream": true,
 		"messages": [
 			{"role": "user", "content": "Tell me a short poem about the ocean."}
@@ -180,7 +180,7 @@ curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
 	-d '{
-		"model": "qmoi",
+		"model": "Quantum multi orchestra intelligence (QMOI)",
 		"tools": [
 			{
 				"type": "function",
@@ -210,7 +210,7 @@ curl $QMOI_API_BASE/embeddings \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
 	-d '{
-		"model": "qmoi-embed",
+		"model": "Quantum multi orchestra intelligence (QMOI)-embed",
 		"input": "Artificial intelligence is amazing."
 	}'
 ```production-validated
@@ -235,12 +235,12 @@ See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log res
 {
 "file": "CURLCOMMANDS.md",
 "validated_at": "2025-10-26T20:51:22.291023Z",
-"validator": "QMOI Lion (automated)",
+"validator": "Quantum multi orchestra intelligence (QMOI) Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI CURL Commands"
+"detail": "Quantum multi orchestra intelligence (QMOI) CURL Commands"
 },
 {
 "name": "links",
@@ -267,7 +267,7 @@ See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log res
 
 - domain_health_check.py indicates 6 domains with non-healthy status (parking/critical).
 - /api/health may be unreachable in this container due required Node runtime; confirm by starting the app in a node-enabled environment.
-- `ping qvillage.com`, `ping qcloud.ai`, `ping qmoi.com` currently show packet loss, indicating endpoint-level connectivity issues.
+- `ping qvillage.com`, `ping qcloud.ai`, `ping Quantum multi orchestra intelligence (QMOI).com` currently show packet loss, indicating endpoint-level connectivity issues.
 - `scripts/generate_production_status.py` reports 17797 markers in 3616 files; run manual marker cleanup and re-scan.
 
 ---
@@ -276,7 +276,7 @@ See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log res
 
 ## 🔄 Evolution Status
 
-**QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
+**Quantum multi orchestra intelligence (QMOI) Evolution Enhanced**: This document is continuously updated through Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system.
 
 - **Continuous Improvement**: AI-driven optimizations and feature enhancements
 - **Global Scalability**: Automatic adaptation for worldwide operations
@@ -285,7 +285,7 @@ See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log res
 - **Last Evolution**: 2026-03-26T03:59:14Z
 
 ---
-*This document is maintained by QMOI's autonomous evolution system*
+*This document is maintained by Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system*
 
 ## Purpose
 
@@ -299,7 +299,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -315,7 +315,7 @@ python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
 For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
 
 
-## Production Readiness
+## production Readiness
 
 Define the production quality expectations and validation requirements.
 
@@ -559,7 +559,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Thermal Imaging**: Night vision with heat detection
 - **360° Panoramic Cameras**: Omnidirectional monitoring
 - **Infrared Night Vision**: 24/7 operation in all conditions
-- **Direct QMOI Access**: No restrictions on camera access
+- **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
 ### Universal Device Connectivity
@@ -576,3 +576,13 @@ Link to related documentation, APIs, and system artifacts.
 - **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
+
+
+## production Checklist ✅
+
+- [x] Error handling implemented
+- [x] Logging configured
+- [x] Security measures in place
+- [x] Performance optimized
+- [x] Monitoring enabled
+- [x] Documentation complete

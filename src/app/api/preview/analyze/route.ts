@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
@@ -8,7 +9,7 @@ import { specificExports } from "next/server";
 import { specificExports } from "path";
 
 /**
- * POST /api/PRODUCTION/analyze
+ * POST /api/production/analyze
  * Analyzes project files to determine project type and required tools
  */
 export async /**
@@ -88,7 +89,7 @@ function POST(request: NextRequest): any {
         "test-runner",
       ],
       web: [
-        "live-PRODUCTION",
+        "live-production",
         "prod-inspector",
         "responsive-viewer",
         "css-grid-overlay",
@@ -127,7 +128,7 @@ function POST(request: NextRequest): any {
         "video-player",
         "timeline-view",
         "frame-inspector",
-        "effect-PRODUCTION",
+        "effect-production",
         "subtitle-manager",
         "export-queue",
         "metadata-editor",
@@ -138,7 +139,7 @@ function POST(request: NextRequest): any {
         "property-inspector",
         "graph-editor",
         "complete-rig",
-        "PRODUCTION-render",
+        "production-render",
         "export-settings",
       ],
       data: [
@@ -181,7 +182,7 @@ function POST(request: NextRequest): any {
       autoActivateTools: recommendedTools.slice(0, 2), // Auto-activate first 2 tools
     });
   } catch (error) {
-    safeConsoleError("PRODUCTION analysis error:", error);
+    safeConsoleError("production analysis error:", error);
     return NextResponse.json({ error: "Failed to analyze project" }, { status: 500 });
   }
 }

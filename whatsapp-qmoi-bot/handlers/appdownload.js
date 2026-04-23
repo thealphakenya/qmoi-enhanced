@@ -1,17 +1,18 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-production-ready
-async /**
- * askprodiceTypeAndSendLink function
- */
-function askprodiceTypeAndSendLink(sock, jid): any {
-  await sock.sendMessage(jid, {
-    text: "Which prodice do you want to download the app for? (android/apple/windows/linux)",
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.826741 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.240752 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.060807 -->
+async function askprodiceTypeAndSendLink(sock, jid) {
+  try {
+  return sock.sendMessage(jid, {
+    text: "Which product type do you want to download the app for? (android/apple/windows/linux)",
   });
-  // The next message handler should listen for the reply and call sendDownloadLink
 }
 
 module.exports = askprodiceTypeAndSendLink;
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

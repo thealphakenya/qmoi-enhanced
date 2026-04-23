@@ -6,6 +6,8 @@
 // production implementation: this file has no remaining production markers
 import os
 import { specificExports } from qmoi_activity_logger import log_activity
+import logging
+logger = logging.getLogger(__name__)
 
 GITHUB_REPO = 'thealphakenya/latest-Q-ai'
 IPA_NAME = 'qmoi ai.ipa'

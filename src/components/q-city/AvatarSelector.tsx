@@ -50,6 +50,8 @@ interface AvatarSelectorProps {
 export /**
  * AvatarSelector function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function AvatarSelector({
   currentVoiceId,
   onAvatarChange,

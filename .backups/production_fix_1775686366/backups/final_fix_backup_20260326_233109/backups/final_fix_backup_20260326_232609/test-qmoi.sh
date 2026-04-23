@@ -16,7 +16,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-prod_SERVER_URL="http://localhost:3000"
+prod_SERVER_URL="https://production-db.qmoi.ai"
 MASTER_USER="master-user-001"
 TEST_USER="test-user-001"
 

@@ -10,6 +10,8 @@ Backup remote release assets and replace with local files listed in release_asse
 Usage: GITHUB_TOKEN=<token> python3 scripts/replace_all_release_assets.py --owner thealphakenya --repo qmoi-enhanced --tag v1.2.5
 """
 import argparse, json, os, sys, subprocess, time, requests
+import logging
+logger = logging.getLogger(__name__)
 
 p = argparse.ArgumentParser()
 p.add_argument('--owner', required=True)

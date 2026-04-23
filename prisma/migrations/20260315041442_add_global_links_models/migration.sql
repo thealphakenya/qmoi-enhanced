@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:39.290420 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.817510 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:07.122978 -->
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL PRIMARY KEY,

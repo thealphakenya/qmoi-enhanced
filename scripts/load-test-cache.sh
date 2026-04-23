@@ -667,5 +667,8 @@ main() {
   esac
 }
 
-# Run main function with all arguments
+# Run main // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function with all arguments
 main "$@"

@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:55.796309 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.799383 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.468750 -->
 #!/usr/bin/env python3
 """
 Autonomous Service Runner
@@ -39,6 +42,16 @@ def main():
     logger.info("Autonomous Service starting...")
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         # Initialize the service
         logger.info("Autonomous Service ready and waiting for requests")
 

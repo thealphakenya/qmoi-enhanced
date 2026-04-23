@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:16Z
@@ -19,7 +20,7 @@ function handler(): any {
   const { feedback, correction } = req.body;
   production-ready
   production-ready
-  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(/* Production implementation with proper error handling */)'
+  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(/* production implementation with proper error handling */)'
   production-ready
   res
     .status(200)

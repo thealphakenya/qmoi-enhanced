@@ -5,6 +5,8 @@
 
 # // production implementation:
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_BASE = os.path.join(ROOT_DIR, "Qmoi_apps")

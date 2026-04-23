@@ -16,6 +16,8 @@ import sys
 import { specificExports } from typing import Dict, List, Optional
 import requests
 import subprocess
+import logging
+logger = logging.getLogger(__name__)
 
 class DNSProvider:
     """Base class for DNS providers"""

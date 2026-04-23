@@ -13,6 +13,8 @@ Usage:
 This will overwrite .qmoi/{name}_token.enc with the new encrypted secret.
 """
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 
 """

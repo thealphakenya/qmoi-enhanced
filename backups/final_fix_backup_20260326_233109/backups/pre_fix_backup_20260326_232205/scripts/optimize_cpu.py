@@ -10,6 +10,8 @@ CPU scheduling optimization for Q-city application.
 
 import os
 import psutil
+import logging
+logger = logging.getLogger(__name__)
 
 """
     optimize_cpu function

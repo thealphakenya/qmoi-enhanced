@@ -17,6 +17,8 @@ import hashlib
 import asyncio
 import aiohttp
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, Any, Optional, List
+import logging
+logger = logging.getLogger(__name__)
 
 # Setup logging
 logging.basicConfig(level=logging.INFO,

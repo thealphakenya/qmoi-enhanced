@@ -34,6 +34,8 @@ import { specificExports } from "next/image";
 export /**
  * EnhancedPreviewWindow function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function EnhancedPreviewWindow(): any {
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<
@@ -44,6 +46,8 @@ function EnhancedPreviewWindow(): any {
   /**
  * handleFileChange function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -58,6 +62,8 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
   /**
  * handleYoutubeChange function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
     setYoutubeUrl(e.target.value);
     setMediaType("youtube");

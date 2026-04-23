@@ -6,6 +6,8 @@
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { specificExports } from pathlib import Path
 import subprocess
+import logging
+logger = logging.getLogger(__name__)
 
 """
     validate_app function

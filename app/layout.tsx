@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.605358 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.649494 -->
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -45,6 +47,8 @@ fully implemented
 export default /**
  * RootLayout function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function RootLayout(): any {
   try {({
   children,

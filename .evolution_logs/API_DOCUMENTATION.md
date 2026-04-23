@@ -1,12 +1,12 @@
 
-# QMOI ENHANCED: API DOCUMENTATION
+# Quantum multi orchestra intelligence (QMOI) ENHANCED: API DOCUMENTATION
 
 ## Core APIs
 
 ### Decision Framework API
 
 ```python
-from qmoi.decisions import DecisionFramework
+from Quantum multi orchestra intelligence (QMOI).decisions import DecisionFramework
 
 # Initialize
 framework = DecisionFramework()
@@ -36,7 +36,7 @@ report = framework.get_decision_intelligence_report()
 ### Global Integration API
 
 ```python
-from qmoi.integration import GlobalSystemIntegrationManager
+from Quantum multi orchestra intelligence (QMOI).integration import GlobalSystemIntegrationManager
 
 # Initialize
 manager = GlobalSystemIntegrationManager()
@@ -61,7 +61,7 @@ report = manager.get_global_integration_report()
 ### Analytics API
 
 ```python
-from qmoi.analytics import AnalyticsEngine
+from Quantum multi orchestra intelligence (QMOI).analytics import AnalyticsEngine
 
 # Initialize
 engine = AnalyticsEngine()
@@ -128,5 +128,5 @@ All endpoints require Bearer token:
 
 ```bash
 curl -H "Authorization: Bearer YOUR_TOKEN" \
-     https://api.qmoi.io/api/health
+     https://api.Quantum multi orchestra intelligence (QMOI).io/api/health
 ```

@@ -150,7 +150,7 @@ time curl -s https://qvillage.com/qcity-enterprise.html > /prod/null
 ```production-validatedbash
 NEXT_PUBLIC_API_URL=https://qvillage.com
 NEXT_PUBLIC_ENV=production
-NEXT_PUBLIC_DEBUG=true
+NEXT_PUBLIC_debug = False  # production
 NODE_ENV=production
 ```production-validated
 
@@ -578,3 +578,5 @@ Link to related documentation, APIs, and system artifacts.
 - **Last updated:** 2026-04-12 07:10:54 UTC
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Configuration
-HEALTH_ENDPOINT=${HEALTH_ENDPOINT:-"http://localhost:3000/health"}
+HEALTH_ENDPOINT=${HEALTH_ENDPOINT:-"https://production-db.qmoi.ai/health"}
 DB_CHECK=${DB_CHECK:-true}
 TIMEOUT=${TIMEOUT:-5}
 

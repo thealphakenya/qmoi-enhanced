@@ -1,9 +1,9 @@
 // 
 #!/bin/bash
 # Integration test for /api/ai and /api/qmoi/chat endpoints
-# Requires: local Next.js prod server running on http://localhost:3000
+# Requires: local Next.js prod server running on https://production-db.qmoi.ai
 
-BASE_URL="${BASE_URL:-http://localhost:3000}"
+BASE_URL="${BASE_URL:-https://production-db.qmoi.ai}"
 ENDPOINT_AI="${BASE_URL}/api/ai"
 ENDPOINT_CHAT="${BASE_URL}/api/qmoi/chat"
 

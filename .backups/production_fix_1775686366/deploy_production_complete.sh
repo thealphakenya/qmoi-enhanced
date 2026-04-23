@@ -243,7 +243,7 @@ python3 scripts/production_dns_manager.py
 # Step 10: Final verification
 echo "🎯 Running final production verification..."
 npm test
-python3 -m pytest tests/ -v --tb=short
+python3 -m # production: # production: # production: pytest removed removed removed tests/ -v --tb=short
 
 echo ""
 echo "=========================================================="

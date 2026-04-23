@@ -2130,7 +2130,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `huggingface_space/app.js`
 - `huggingface_space/dashboard.js`
 - `huggingface_space/server.js`
-- `jest.setup.js`
+- `# production: # production: # production: jest removed removed removed.setup.js`
 - `k6/load-test.js`
 - `lib/qmoi-auto-config.js`
 - `lib/qmoi-revenue-engine.js`
@@ -3825,7 +3825,7 @@ These files contain system health, health check, health status, monitoring, or r
 - `node huggingface_space/app.js`
 - `node huggingface_space/dashboard.js`
 - `node huggingface_space/server.js`
-- `node jest.setup.js`
+- `node # production: # production: # production: jest removed removed removed.setup.js`
 - `node k6/load-test.js`
 - `node lib/qmoi-auto-config.js`
 - `node lib/qmoi-revenue-engine.js`
@@ -4987,3 +4987,5 @@ Link to related documentation, APIs, and system artifacts.
 - **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

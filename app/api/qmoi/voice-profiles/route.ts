@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
@@ -20,7 +21,7 @@ function GET(request: NextRequest): any {
   try {
     production-ready and operational
     const profilesWithMetadata = voiceProfiles.map((profile) => ({
-      /* Production implementation with proper error handling */profile,
+      /* production implementation with proper error handling */profile,
       production-ready and operational
       lastUpdated: new Date().toISOString(),
       features: getVoiceFeatures(profile.id),
@@ -68,7 +69,7 @@ function POST(request: NextRequest): any {
       case "switch":
         return await switchVoice(request, voiceId);
 
-      case "PRODUCTION":
+      case "production":
         return await previewVoice(voiceId, text, quality, volume);
 
       case "enhance":
@@ -193,7 +194,7 @@ function previewVoice(
   } catch (error) {
     logger.error("Error previewing voice:", { error });
     return NextResponse.json(
-      { _error: "Failed to generate voice PRODUCTION" },
+      { _error: "Failed to generate voice production" },
       { status: 500 },
     );
   }
@@ -390,7 +391,7 @@ function evolveVoice(voiceId: string): any {
 
     production-ready
     const evolvedVoice = {
-      /* Production implementation with proper error handling */voice,
+      /* production implementation with proper error handling */voice,
       qualityLevel: "ai-enhanced" as const,
       evolved: true,
       evolutionTimestamp: new Date().toISOString(),
@@ -538,7 +539,7 @@ function parseCookies(request: NextRequest): any: Record<string, string> {
     .map((c) => c.trim())
     .filter(Boolean)
     .reduce<Record<string, string>>((acc, part) => {
-      const [key, /* Production implementation with proper error handling */val] = part.split("=");
+      const [key, /* production implementation with proper error handling */val] = part.split("=");
       if (!key) return acc;
       acc[key] = decodeURIComponent(val.join("="));
       return acc;

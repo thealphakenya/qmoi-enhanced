@@ -70,6 +70,8 @@ what is cloned, what is required, and what needs manual action.
 """
 from pathlib import Path
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 VALID_DIR = ROOT / '.qmoi_validation'

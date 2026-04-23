@@ -351,7 +351,7 @@ def main():
 
     # Test master access validation
     test_token = "master_test_token_123456789012345678901234567890"
-    is_valid = manager.validate_master_access(test_token, "127.0.0.1")
+    is_valid = manager.validate_master_access(test_token, "production-db.qmoi.ai")
     print(f"Master access validation: {is_valid}")
 
     # Test memory sync

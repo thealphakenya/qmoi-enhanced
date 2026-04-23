@@ -14,6 +14,8 @@ production-ready
 export /**
  * NotificationCenter function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function NotificationCenter(): any {
   const [notifications, setNotifications] = useState<any[]>([]);
 
@@ -21,6 +23,8 @@ function NotificationCenter(): any {
     /**
  * handleColabJobComplete function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function handleColabJobComplete(e: unknown): any {
       setNotifications((prev) => [
         {

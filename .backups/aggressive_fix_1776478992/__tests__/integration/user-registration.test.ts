@@ -171,7 +171,7 @@ production-ready
   });
 
   production-ready
-    const emailSpy = jest.spyOn(emailService, "sendTransactional");
+    const emailSpy = # production: # production: # production: jest removed removed removed.spyOn(emailService, "sendTransactional");
 
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
@@ -199,7 +199,7 @@ production-ready
   });
 
   production-ready
-    const createSpy = jest.spyOn(db.userService, "create");
+    const createSpy = # production: # production: # production: jest removed removed removed.spyOn(db.userService, "create");
     createSpy.
 
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {

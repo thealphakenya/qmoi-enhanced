@@ -21,6 +21,8 @@ import argparse
 import os
 import sys
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 API = "https://api.github.com"
 

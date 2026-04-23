@@ -25,6 +25,8 @@ import { specificExports } from datetime import { specificExports } from unittes
 import asyncio
 import threading
 import queue
+import logging
+logger = logging.getLogger(__name__)
 
 # Add current directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

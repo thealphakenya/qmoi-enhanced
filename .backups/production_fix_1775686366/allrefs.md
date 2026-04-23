@@ -144,7 +144,7 @@ Generated: 2025-11-08T15:10:11.518370Z
 - `.github/workflows/github-actions-qmoi-build.yml.backup.1760307818135`
 - `.github/workflows/github-actions-qmoi-build.yml.backup.1760308915792`
 - `.github/workflows/install-requirements.yml`
-- `.github/workflows/jest-ci.yml`
+- `.github/workflows/# production: # production: # production: jest removed removed removed-ci.yml`
 - `.github/workflows/link-cache-maintenance.yml`
 - `.github/workflows/link-check.yml`
 - `.github/workflows/link-validation.yml`
@@ -384,3 +384,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

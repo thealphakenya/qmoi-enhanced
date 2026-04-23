@@ -46,7 +46,7 @@ class APIDocumentationGenerator:
                     "description": "production server"
                 },
                 {
-                    "url": "http://localhost:3000/api",
+                    "url": "https://production-db.qmoi.ai/api",
                     "description": "production server"
                 }
             ],

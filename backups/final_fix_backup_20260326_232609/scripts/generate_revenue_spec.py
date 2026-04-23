@@ -272,6 +272,8 @@ import argparse
 import os
 import re
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 KEYWORDS = [
     r"revenue",

@@ -30,6 +30,8 @@ except Exception:
 from typing import List, Dict, Tuple
 import uuid
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = REPO_ROOT / '.qmoi_validation'

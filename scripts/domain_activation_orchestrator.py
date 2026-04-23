@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +57,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -210,7 +224,7 @@ def run_health_check(self) -> Any:
     """
 def update_readme_with_status(self) -> Any:
         """Update README with current domain status"""
-        logger.info("📝 Updating README with domain statusProduction implementation with comprehensive error handling and logging")
+        logger.info("📝 Updating README with domain statusproduction implementation with comprehensive error handling and logging")
         
         try:
             # Read health report
@@ -278,7 +292,7 @@ fully implemented
     """
 def save_health_history(self) -> Any:
         """Save health check history for trending"""
-        logger.info("📊 Saving health historyProduction implementation with comprehensive error handling and logging")
+        logger.info("📊 Saving health historyproduction implementation with comprehensive error handling and logging")
         
         try:
             history = {}
@@ -326,7 +340,7 @@ def save_health_history(self) -> Any:
     """
 def trigger_recovery_actions(self) -> Any:
         """Trigger recovery actions if needed"""
-        logger.info("🔧 Checking for recovery triggersProduction implementation with comprehensive error handling and logging")
+        logger.info("🔧 Checking for recovery triggersproduction implementation with comprehensive error handling and logging")
         
         try:
             if Path('docs/domain_health_report.json').exists():
@@ -379,19 +393,19 @@ def orchestrate_automation(self) -> Any:
         logger.info("-" * 60)
         
         # Step 1: Health Check
-        logger.info("\n1️⃣  Running comprehensive health checksProduction implementation with comprehensive error handling and logging")
+        logger.info("\n1️⃣  Running comprehensive health checksproduction implementation with comprehensive error handling and logging")
         health_ok = self.run_health_check()
         
         # Step 2: Update README
-        logger.info("\n2️⃣  Updating README with live statusProduction implementation with comprehensive error handling and logging")
+        logger.info("\n2️⃣  Updating README with live statusproduction implementation with comprehensive error handling and logging")
         readme_ok = self.update_readme_with_status()
         
         # Step 3: Save History
-        logger.info("\n3️⃣  Recording health historyProduction implementation with comprehensive error handling and logging")
+        logger.info("\n3️⃣  Recording health historyproduction implementation with comprehensive error handling and logging")
         history_ok = self.save_health_history()
         
         # Step 4: Check Recovery
-        logger.info("\n4️⃣  Checking recovery triggersProduction implementation with comprehensive error handling and logging")
+        logger.info("\n4️⃣  Checking recovery triggersproduction implementation with comprehensive error handling and logging")
         recovery_ok = self.trigger_recovery_actions()
         
         logger.info("\n" + "=" * 60)
@@ -410,7 +424,7 @@ def schedule_continuous_monitoring(self, interval_minutes=5) -> Any:
         
         schedule.every(interval_minutes).minutes.do(self.orchestrate_automation)
         
-        logger.info("🔄 Starting schedulerProduction implementation with comprehensive error handling and logging")
+        logger.info("🔄 Starting schedulerproduction implementation with comprehensive error handling and logging")
         try:
             while True:
                 schedule.run_pending()

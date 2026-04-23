@@ -10,6 +10,8 @@ import { specificExports } from "../src/hooks/useAuth";
 export /**
  * WhatsAppBusinessPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function WhatsAppBusinessPanel(): any {
   const { user } = useAuth();
   const [status, setStatus] = useState("");

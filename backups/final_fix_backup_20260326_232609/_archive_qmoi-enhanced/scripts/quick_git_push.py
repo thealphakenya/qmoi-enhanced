@@ -12,6 +12,8 @@ import subprocess
 import sys
 import os
 import time
+import logging
+logger = logging.getLogger(__name__)
 
 """
     run_command function

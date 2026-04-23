@@ -268,7 +268,7 @@ const summary = recoveryManager.getRecoverySummary();
 # Created by startup.sh automatically ✅ PRODUCTION_IMPLEMENTED
 NEXT_PUBLIC_API_URL=https://qvillage.com
 NEXT_PUBLIC_ENV=production|production
-NEXT_PUBLIC_DEBUG=true|false
+NEXT_PUBLIC_debug = False  # production|false
 NODE_ENV=production|production
 ```production-validated
 
@@ -581,3 +581,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

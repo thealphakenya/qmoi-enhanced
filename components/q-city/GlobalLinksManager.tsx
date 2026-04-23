@@ -77,6 +77,8 @@ interface GlobalLink {
 export /**
  * GlobalLinksManager function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function GlobalLinksManager(): any {
   const [healthReports, setHealthReports] = useState<GlobalHealthReport[]>([]);
   const [globalStats, setGlobalStats] = useState<GlobalStats | null>(null);

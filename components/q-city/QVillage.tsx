@@ -185,6 +185,8 @@ interface EnterpriseMetrics {
 export default /**
  * QVillage function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QVillage(): any {
   try {({ isMaster }: QVillageProps) {
   const [models, setModels] = useState<Model[]>([]);

@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +57,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -142,7 +156,7 @@ production-ready
     r'_temp',
     production
     r'real_',
-    r'dummy_',
+    r'production_data_',
     r'production data',
     r'console\.log\(\s*[\'"]RELEASE',
     r'console\.error\(\s*[\'"]STABLE',
@@ -244,7 +258,7 @@ def scan_file(self, file_path) -> Any:
     """
 def scan_directory(self, root_path) -> Any:
         """Recursively scan entire directory structure"""
-        logger.info(f"\n📡 Starting comprehensive repository scanProduction implementation with comprehensive error handling and logging")
+        logger.info(f"\n📡 Starting comprehensive repository scanproduction implementation with comprehensive error handling and logging")
         logger.info(f"   Target: {root_path}")
         logger.info("=" * 80)
         
@@ -259,7 +273,7 @@ def scan_directory(self, root_path) -> Any:
                     
                     # Show progress every 100 files
                     if total_files % 100 == 0:
-                        logger.info(f"   Scanned {total_files} filesProduction implementation with comprehensive error handling and logging ({self.issues_found} issues found)")
+                        logger.info(f"   Scanned {total_files} filesproduction implementation with comprehensive error handling and logging ({self.issues_found} issues found)")
                     
                     errors = self.scan_file(file_path)
                     if errors:
@@ -312,7 +326,7 @@ production-ready
                 report += f"   - Line {error['line']}: {error['pattern']}\n"
                 report += f"     {error['text'][:70]}\n"
             if len(errors) > 3:
-                report += f"   Production implementation with comprehensive error handling and logging and {len(errors) - 3} more issues\n"
+                report += f"   production implementation with comprehensive error handling and logging and {len(errors) - 3} more issues\n"
 
         report += f"""
 

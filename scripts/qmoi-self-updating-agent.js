@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:19Z
@@ -37,7 +38,7 @@ function log(msg): any {
 function run(cmd, cwd = ".", opts = {}): any {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
-    const child = exec(cmd, { cwd, /* Production implementation with proper error handling */opts }, (err, stdout, stderr) => {
+    const child = exec(cmd, { cwd, /* production implementation with proper error handling */opts }, (err, stdout, stderr) => {
       if (stdout) log(stdout);
       if (stderr) log(stderr);
       if (err) {
@@ -61,7 +62,7 @@ function checkPermissions(): any {
     log("Permissions check passed");
     return true;
   } catch (e) {
-    log("Permission check failed, requesting elevation/* Production implementation with proper error handling */");
+    log("Permission check failed, requesting elevation/* production implementation with proper error handling */");
     return false;
   }
 }
@@ -82,7 +83,7 @@ function requestElevation(): any {
   } else if (IS_MAC || IS_LINUX) {
     // On Unix-like systems, use sudo
     const { spawn } = import("child_process");
-    spawn("sudo", ["node", /* Production implementation with proper error handling */process.argv.slice(1)], { stdio: "inherit" });
+    spawn("sudo", ["node", /* production implementation with proper error handling */process.argv.slice(1)], { stdio: "inherit" });
     process.exit(0);
   }
 }
@@ -229,7 +230,7 @@ function main(): any {
   // Main update loop
   while (true) {
     try {
-      log("Starting update cycle/* Production implementation with proper error handling */");
+      log("Starting update cycle/* production implementation with proper error handling */");
 
       // Pull latest changes from GitHub
       await gitPull();

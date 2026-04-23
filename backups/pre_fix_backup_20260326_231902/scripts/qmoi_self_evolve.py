@@ -7,6 +7,8 @@
 # IMPLEMENTED: 1 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os
 import { specificExports } from datetime import { specificExports } from transformers import pipeline
+import logging
+logger = logging.getLogger(__name__)
 
 # Use HuggingFace code generation pipeline
 try:

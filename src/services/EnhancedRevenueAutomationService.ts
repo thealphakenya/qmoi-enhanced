@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // Master-only middleware
 export const requireMasterRole = (handler: Function) => {
   return async (req: any, res: any) => {

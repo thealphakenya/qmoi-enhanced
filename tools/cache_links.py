@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +47,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -223,7 +227,7 @@ def cache_links_from_report(self, report_file: str, skip_types: List[str] = None
             return
 
         links = report.get("links", [])
-        logger.info(f"📥 Caching {len(links)} links from reportProduction implementation with comprehensive error handling and logging")
+        logger.info(f"📥 Caching {len(links)} links from reportproduction implementation with comprehensive error handling and logging")
 
         cached_count = 0
         skipped_count = 0
@@ -240,7 +244,7 @@ def cache_links_from_report(self, report_file: str, skip_types: List[str] = None
                 skipped_count += 1
                 continue
 
-            logger.info(f"  [{idx+1}/{len(links)}] Caching {url[:60]}Production implementation with comprehensive error handling and logging", end=" ", flush=True)
+            logger.info(f"  [{idx+1}/{len(links)}] Caching {url[:60]}production implementation with comprehensive error handling and logging", end=" ", flush=True)
 
             local_path = self.assets_dir / self.get_asset_url(url).split("/", 1)[1]
             success, message = self.download_file(url)

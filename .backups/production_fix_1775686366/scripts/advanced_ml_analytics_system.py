@@ -516,7 +516,7 @@ class AdvancedMLPredictor:
             target_weight = target_weights.get(asset, 0)
             weight_diff = target_weight - current_weight
 
-            if abs(weight_diff) > 0.01:  # Only trade if difference > 1%
+            if abs(weight_diff) > 0.01:  # production: test code removed
                 trade_value = weight_diff * total_value
                 trade_type = 'BUY' if trade_value > 0 else 'SELL'
 

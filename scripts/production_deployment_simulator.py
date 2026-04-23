@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +57,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -159,7 +173,7 @@ def log(self, message: str) -> Any:
     """
 def validate_prerequisites(self) -> bool:
         """Validate all deployment prerequisites"""
-        self.log("🔍 Validating deployment prerequisitesProduction implementation with comprehensive error handling and logging")
+        self.log("🔍 Validating deployment prerequisitesproduction implementation with comprehensive error handling and logging")
 
         checks = [
             ("Active source code clean", self.check_source_clean),
@@ -249,7 +263,7 @@ def check_build_scripts(self) -> bool:
     """
 def create_deployment_artifacts(self) -> Any:
         """Create deployment artifacts and manifests"""
-        self.log("📦 Creating deployment artifactsProduction implementation with comprehensive error handling and logging")
+        self.log("📦 Creating deployment artifactsproduction implementation with comprehensive error handling and logging")
 
         # Create deployment manifest
         manifest = {
@@ -408,7 +422,7 @@ def live_deployment_process(self) -> Any:
         ]
 
         for i, step in enumerate(steps, 1):
-            self.log(f"[{i:2d}/{len(steps)}] {step}Production implementation with comprehensive error handling and logging ✅ liveD")
+            self.log(f"[{i:2d}/{len(steps)}] {step}production implementation with comprehensive error handling and logging ✅ liveD")
 
         self.log("✅ Deployment live completed successfully")
 

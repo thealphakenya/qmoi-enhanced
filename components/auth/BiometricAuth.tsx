@@ -190,6 +190,8 @@ interface BiometricAuthProps {
 export default /**
  * BiometricAuth function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function BiometricAuth(): any {
   try {({
   onAuthSuccess,

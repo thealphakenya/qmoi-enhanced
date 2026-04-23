@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
@@ -90,8 +100,8 @@ import psutil
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -100,7 +110,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -377,7 +387,7 @@ def check_component_health(self, component_name: str, config: Dict[str, Any]) ->
     """
 def check_all_components(self) -> Dict[str, Any]:
         """Check health of all components"""
-        logger.info("Checking all system componentsProduction implementation with comprehensive error handling and logging")
+        logger.info("Checking all system componentsproduction implementation with comprehensive error handling and logging")
         
         component_results = {}
         overall_status = 'healthy'
@@ -407,7 +417,7 @@ def check_all_components(self) -> Dict[str, Any]:
     """
 def check_process_health(self) -> Dict[str, Any]:
         """Check health of important processes"""
-        logger.info("Checking process healthProduction implementation with comprehensive error handling and logging")
+        logger.info("Checking process healthproduction implementation with comprehensive error handling and logging")
         
         important_processes = [
             'node', 'python', 'npm', 'git', 'nginx', 'pm2'
@@ -453,7 +463,7 @@ def check_process_health(self) -> Dict[str, Any]:
     """
 def check_file_system_health(self) -> Dict[str, Any]:
         """Check file system health"""
-        logger.info("Checking file system healthProduction implementation with comprehensive error handling and logging")
+        logger.info("Checking file system healthproduction implementation with comprehensive error handling and logging")
         
         fs_results = {}
         
@@ -517,7 +527,7 @@ def check_file_system_health(self) -> Dict[str, Any]:
     """
 def check_network_connectivity(self) -> Dict[str, Any]:
         """Check network connectivity"""
-        logger.info("Checking network connectivityProduction implementation with comprehensive error handling and logging")
+        logger.info("Checking network connectivityproduction implementation with comprehensive error handling and logging")
         
         network_results = {}
         
@@ -566,7 +576,7 @@ def check_network_connectivity(self) -> Dict[str, Any]:
     """
 def generate_system_status_report(self) -> Dict[str, Any]:
         """Generate comprehensive system status report"""
-        logger.info("Generating system status reportProduction implementation with comprehensive error handling and logging")
+        logger.info("Generating system status reportproduction implementation with comprehensive error handling and logging")
         
         try:
             # Gather all status information
@@ -819,7 +829,7 @@ def save_status_report(self, report: Dict[str, Any]) -> None:
     """
 def monitor_once(self) -> Dict[str, Any]:
         """Perform one monitoring cycle"""
-        logger.info("Performing system status monitoring cycleProduction implementation with comprehensive error handling and logging")
+        logger.info("Performing system status monitoring cycleproduction implementation with comprehensive error handling and logging")
         
         report = self.generate_system_status_report()
         

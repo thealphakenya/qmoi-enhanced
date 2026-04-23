@@ -73,6 +73,8 @@ export const OrchestratorStatusPanel: React.FC<{
   /**
  * handleAssign function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function handleAssign(agentId: string, device: string): any {
     setAgents((prev) =>
       prev.map((a) =>
@@ -85,6 +87,8 @@ function handleAssign(agentId: string, device: string): any {
   /**
  * handleFailover function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function handleFailover(agentId: string): any {
     setFailoverLoading(agentId);
     setTimeout(() => {

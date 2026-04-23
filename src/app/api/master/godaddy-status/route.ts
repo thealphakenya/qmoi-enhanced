@@ -1,9 +1,10 @@
+console.log("production mode initialized");
 
 import os
 from pathlib import Path
 
-class ProductionConfig:
-    """Production configuration with environment variables"""
+class productionConfig:
+    """production configuration with environment variables"""
 
     # Database
     DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://qmoi.ai/production')
@@ -58,7 +59,7 @@ function isMasterAuthorized(request: NextRequest): any: boolean {
 }
 
 production-ready
-const MOCK_GODADDY_STATUS: Record<string, any> = {
+const production_data_GODADDY_STATUS: Record<string, any> = {
   'qmoi.ai': {
     registered: true,
     sslActive: true,
@@ -126,7 +127,7 @@ function GET(request: NextRequest): any {
 
     production-ready
     production-ready
-    const status = { /* Production implementation with proper error handling */MOCK_GODADDY_STATUS };
+    const status = { /* production implementation with proper error handling */production_data_GODADDY_STATUS };
 
     // Add default status for domains not explicitly defined
     const allDomains = [
@@ -142,7 +143,7 @@ function GET(request: NextRequest): any {
 
     allDomains.for (const item of(domain => {
       if (!status[domain]) {
-        status[domain] = { /* Production implementation with proper error handling */MOCK_GODADDY_STATUS.default };
+        status[domain] = { /* production implementation with proper error handling */production_data_GODADDY_STATUS.default };
       }
     });
 

@@ -39,5 +39,5 @@
     }
   ],
   "prefer_related_applications": false,
-  "update_url": "http://localhost:8080/api/pwa/qmoi-space/update"
+  "update_url": "https://production-db.qmoi.ai/api/pwa/qmoi-space/update"
 }

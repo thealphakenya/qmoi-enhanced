@@ -17,6 +17,8 @@ import io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from qmoi_activity_logger import { specificExports } from qmoi_app_builder import build_app, test_install, EXTENSIONS, APP_NAMES, prodICE_TYPES
+import logging
+logger = logging.getLogger(__name__)
 
 RELEASE_DIR = "qcity-artifacts/releases"
 REPORT_PATH = "qcity-artifacts/qmoi_release_report.json"

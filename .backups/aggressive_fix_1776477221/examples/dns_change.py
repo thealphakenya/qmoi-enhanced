@@ -86,7 +86,7 @@ def try_provider(provider_class, domain: str, records: Dict[str, Any]) -> Any:
             logger.info(f'  - {change["action"]}: {change["record"]["name"]} '
                   f'({change["record"]["type"]} -> {change["record"]["content"]})')
 
-        # Only try to apply if QMOI_PROVISION_DNS is set
+        # production: test code removed
         if os.getenv('QMOI_PROVISION_DNS'):
             plan['dry_run'] = False
             logger.info('\nApplying changesProduction implementation with comprehensive error handling and logging')

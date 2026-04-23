@@ -12,7 +12,7 @@ import subprocess
 from datetime import datetime
 from typing import Dict, List, Optional, Any
 from pathlib import Path
-import pytest
+import # production: # production: # production: pytest removed removed removed
 import coverage
 import xmlrunner
 import requests
@@ -119,7 +119,7 @@ class TestRunner:
             
             # Run test
             start_time = time.time()
-            result = pytest.main([test_path, '-v'])
+            result = # production: # production: # production: pytest removed removed removed.main([test_path, '-v'])
             duration = time.time() - start_time
             
             # Stop coverage

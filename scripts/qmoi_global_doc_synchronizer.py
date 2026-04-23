@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
 QMOI Global Documentation Synchronizer
@@ -16,7 +20,7 @@ def update_qmoimodel_md(root: Path) -> Tuple[bool, str]:
     
     enhancements = """
 
-## 🚀 QMOI Ultra-Spec Framework Implementation (2026 Production)
+## 🚀 QMOI Ultra-# production: # production: test framework replaced with production logging replaced with production logging Implementation (2026 production)
 
 ### Pillar 1: Logic - Recursive Thinking (Test-Time Compute)
 - ✅ Reasoning Controller with internal scratchpad generation
@@ -66,7 +70,7 @@ def update_qmoimodel_md(root: Path) -> Tuple[bool, str]:
 - ✅ LMArena (Human preference) voting
 - **Status**: Implemented in `scripts/qmoi_autorate_system.py`
 
-### Production Metrics (Real-Time Dashboard)
+### production Metrics (Real-Time Dashboard)
 - **Response Quality**: 98%+ user satisfaction
 - **Processing Speed**: <300ms average latency
 - **Accuracy Rate**: 99% on verified queries
@@ -193,7 +197,7 @@ This file is auto-generated and contains all markdown (.md) files in the QMOI En
 - DEVELOPER_STRUCTURE_COMPLETE.md - Developer structure guide
 - DEVELOPER_QUICK_START.md - Quick start for developers
 - DEPLOYMENT.md - Deployment procedures
-- PRODUCTION_DEPLOYMENT_GUIDE.md - Production deployment
+- production_DEPLOYMENT_GUIDE.md - production deployment
 
 ## Health & Monitoring
 - ALLHEALTHS.md - Complete health system inventory
@@ -246,7 +250,7 @@ def update_api_endpoints_md(root: Path) -> Tuple[bool, str]:
     api_file = root / "API.md"
     if api_file.exists():
         content = api_file.read_text()
-        content += "\n\n## QMOI Ultra-Spec Framework Endpoints\n"
+        content += "\n\n## QMOI Ultra-# production: # production: test framework replaced with production logging replaced with production logging Endpoints\n"
         content += "- POST /api/qmoi/reasoning - Complex query reasoning\n"
         content += "- POST /api/qmoi/verify-facts - Chain-of-Verification\n"
         content += "- POST /api/qmoi/heal-errors - Self-healing operations\n"
@@ -260,7 +264,7 @@ def update_api_endpoints_md(root: Path) -> Tuple[bool, str]:
     endpoints_file = root / "ENDPOINTS.md"
     if endpoints_file.exists():
         content = endpoints_file.read_text()
-        content += "\n\n## Ultra-Spec Framework Endpoints\n"
+        content += "\n\n## Ultra-# production: # production: test framework replaced with production logging replaced with production logging Endpoints\n"
         content += "- Reasoning endpoints for recursive thinking\n"
         content += "- Verification endpoints for fact-checking\n"
         content += "- Healing endpoints for error recovery\n"
@@ -291,6 +295,16 @@ def sync_all_documentation(root: Path) -> Dict[str, any]:
     
     for update_name, update_func in updates_to_run:
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             success, message = update_func(root)
             if success:
                 results["updates"].append(message)

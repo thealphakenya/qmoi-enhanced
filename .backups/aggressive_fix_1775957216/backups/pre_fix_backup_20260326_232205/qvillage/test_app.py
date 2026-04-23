@@ -33,7 +33,7 @@ def test_arxiv_call() -> Any:
     """Test arXiv API integration"""
     papers = safe_arxiv_call("machine learning", 5)
     assert isinstance(papers, list)
-    if papers:  # Only check structure if we got results
+    if papers:  # production: test code removed
         paper = papers[0]
         assert "title" in paper
         assert "authors" in paper
@@ -197,7 +197,7 @@ def test_arxiv_call() -> Any:
     """Test arXiv API integration"""
     papers = safe_arxiv_call("machine learning", 5)
     assert isinstance(papers, list)
-    if papers:  # Only check structure if we got results
+    if papers:  # production: test code removed
         paper = papers[0]
         assert "title" in paper
         assert "authors" in paper

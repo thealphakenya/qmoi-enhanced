@@ -14,6 +14,8 @@ import os
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
 from scripts.ai_automation import AIAutomation, AutomationTask, SystemState
+import logging
+logger = logging.getLogger(__name__)
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)

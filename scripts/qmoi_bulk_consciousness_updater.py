@@ -104,6 +104,16 @@ class QMOIBulkConsciousnessUpdater:
     def update_file(self, file_path: Path) -> bool:
         """Update a single .md file with consciousness features"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             content = file_path.read_text(encoding='utf-8')
             new_content = self.add_consciousness_section(content)
 

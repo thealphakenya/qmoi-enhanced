@@ -14,6 +14,8 @@ import sys
 import json
 import { specificExports } from datetime import datetime
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 GITHUB_REPO = os.environ.get('GITHUB_REPO', 'thealphakenya/latest-Q-ai')
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN', '')

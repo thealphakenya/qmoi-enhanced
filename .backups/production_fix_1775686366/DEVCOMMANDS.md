@@ -42,7 +42,7 @@ npx serve .
 
 **Access:**
 
-- Open [http://localhost:5000](http://localhost:5000) in your browser.
+- Open [https://production-db.qmoi.ai](https://production-db.qmoi.ai) in your browser.
 - All PWA features (offline, install prompt, notifications) should be available.
 
 ---
@@ -111,8 +111,8 @@ python3 scripts/auto_host_manager.py --api
 ```
 
 **Access (API mode):**
-- http://localhost:8001/status
-- http://localhost:8001/health
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai/health
 
 **Validation:**
 - Ensure `data/host_config.json`, `data/services.json`, `data/domain_health_history.json`, and `data/auto_host_telemetry.json` are present and updated.
@@ -217,3 +217,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

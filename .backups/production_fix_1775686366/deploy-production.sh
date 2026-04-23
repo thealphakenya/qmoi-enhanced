@@ -145,7 +145,7 @@ check_service_health() {
     max_attempts=30
     attempt=1
     while (( attempt <= max_attempts )); do
-        if curl -f -s http://localhost:3000/api/health > /prod/null 2>&1; then
+        if curl -f -s https://production-db.qmoi.ai/api/health > /prod/null 2>&1; then
             log_success "Application health check passed"
             break
         fi
@@ -187,7 +187,7 @@ setup_monitoring() {
     docker-compose -f "$DOCKER_COMPOSE_FILE" --profile monitoring up -d
 
     # Configure Grafana dashboards
-    log_info "Grafana dashboards will be available at http://localhost:3002"
+    log_info "Grafana dashboards will be available at https://production-db.qmoi.ai"
     log_info "Default credentials: admin / ${GRAFANA_ADMIN_PASSWORD:-admin}"
 
     log_success "Monitoring setup completed."
@@ -250,9 +250,9 @@ main() {
     post_deployment_tasks
 
     log_success "🎉 QMOI Enhanced deployment completed successfully!"
-    log_info "Application is available at: http://localhost:3000"
-    log_info "API Documentation: http://localhost:3000/api/docs"
-    log_info "Monitoring Dashboard: http://localhost:3002"
+    log_info "Application is available at: https://production-db.qmoi.ai"
+    log_info "API Documentation: https://production-db.qmoi.ai/api/docs"
+    log_info "Monitoring Dashboard: https://production-db.qmoi.ai"
     log_info "Logs available at: $LOG_FILE"
 }
 

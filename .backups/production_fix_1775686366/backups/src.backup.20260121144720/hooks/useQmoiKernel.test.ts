@@ -1,6 +1,6 @@
 
-/* eslint-env jest */
-/* eslint-env jest, node */
+/* eslint-env # production: # production: # production: jest removed removed removed */
+/* eslint-env # production: # production: # production: jest removed removed removed, node */
 // NOTE: 14 
 import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
@@ -10,7 +10,7 @@ global.fetch =
 
 describe("useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAll
+    # production: # production: # production: jest removed removed removed.clearAll
   });
 
   it("fetches status successfully", async () => {

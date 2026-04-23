@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:08Z
@@ -35,7 +36,7 @@ function GET(request: NextRequest, { params }: RouteParams): any {
 
     return NextResponse.json({
       success: true,
-      data: { /* Production implementation with proper error handling */site, stats },
+      data: { /* production implementation with proper error handling */site, stats },
     });
   } catch (error) {
     logger.error("Error fetching zero-rated site:", error);

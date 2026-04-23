@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:39.248222 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.798399 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:07.106762 -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -351,14 +354,20 @@
       });
 
       // --- Auth handlers ---
-      function _setToken(t) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function _setToken(t) {
         localStorage.setItem("qmoi_token", t);
         localStorage.setItem("qstable_token", t);
         document.getElementById("user-info").style.display = "block";
         document.getElementById("auth-forms").style.display = "none";
         document.getElementById("who").innerText = "Logged in";
       }
-      function _clearToken() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function _clearToken() {
         localStorage.removeItem("qmoi_token");
         localStorage.removeItem("qstable_token");
         document.getElementById("user-info").style.display = "none";
@@ -373,13 +382,19 @@
       }
       let autosyncIntervalId = null;
 
-      function startAutosync() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function startAutosync() {
         if (!autosyncIntervalId) {
           autosyncOnce();
           autosyncIntervalId = setInterval(autosyncOnce, 30000);
         }
       }
-      function stopAutosync() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function stopAutosync() {
         if (autosyncIntervalId) {
           clearInterval(autosyncIntervalId);
           autosyncIntervalId = null;
@@ -442,26 +457,38 @@
 
       // --- Memory autosync ---
       // local memories stored in localStorage.qmoi_memories as JSON array
-      function _getLocalMemories() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function _getLocalMemories() {
         try {
           return JSON.parse(localStorage.getItem("qmoi_memories") || "[]");
         } catch (e) {
           return [];
         }
       }
-      function _setLocalMemories(arr) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function _setLocalMemories(arr) {
         localStorage.setItem("qmoi_memories", JSON.stringify(arr));
       }
 
       // --- Attachment handling (@attach) ---
-      function _getLocalAttachments() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function _getLocalAttachments() {
         try {
           return JSON.parse(localStorage.getItem("qmoi_attachments") || "[]");
         } catch (e) {
           return [];
         }
       }
-      function _setLocalAttachments(arr) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function _setLocalAttachments(arr) {
         localStorage.setItem("qmoi_attachments", JSON.stringify(arr));
       }
 
@@ -488,7 +515,10 @@
         reader.readAsDataURL(f);
       });
 
-      function renderAttachments() {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function renderAttachments() {
         const ul = document.getElementById("attach-list");
         ul.textContent = "";
         for (const a of _getLocalAttachments()) {
@@ -499,7 +529,10 @@
       }
       renderAttachments();
 
-      async function autosyncOnce() {
+      async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function autosyncOnce() {
         const t =
           localStorage.getItem("qstable_token") ||
           localStorage.getItem("qmoi_token");

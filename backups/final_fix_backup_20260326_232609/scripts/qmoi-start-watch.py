@@ -19,6 +19,8 @@ import threading
 import time
 import os
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 SCRIPT_PATH = os.path.join(os.path.dirname(__file__), 'qmoi-start.py')
 LOG_DIR = os.path.join(os.path.dirname(__file__), '../logs')

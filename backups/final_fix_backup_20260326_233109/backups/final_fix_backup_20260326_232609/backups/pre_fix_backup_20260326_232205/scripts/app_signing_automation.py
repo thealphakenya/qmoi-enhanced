@@ -13,6 +13,8 @@ import json
 import os
 import subprocess
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, Optional, List
+import logging
+logger = logging.getLogger(__name__)
 
 LOG_DIR = Path('/workspaces/qmoi-enhanced/logs')
 DATA_DIR = Path('/workspaces/qmoi-enhanced/data')

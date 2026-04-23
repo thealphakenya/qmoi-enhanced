@@ -58,6 +58,8 @@ interface DomainAcquisitionStatus {
 export default /**
  * MasterDomainHealthDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterDomainHealthDashboard(): any {
   try {() {
   const router = useRouter();

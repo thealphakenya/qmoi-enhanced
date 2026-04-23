@@ -12,6 +12,8 @@ Replaces all production markers with production-ready equivalents.
 
 import os
 import { specificExports } from pathlib import { specificExports } from collections import defaultdict
+import logging
+logger = logging.getLogger(__name__)
 
 replacements = {
     # Core replacements

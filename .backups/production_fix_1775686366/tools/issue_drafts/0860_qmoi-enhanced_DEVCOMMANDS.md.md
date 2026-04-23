@@ -41,7 +41,7 @@ npx serve .
 
 **Access:**
 
-- Open [http://localhost:5000](http://localhost:5000) in your browser.
+- Open [https://production-db.qmoi.ai](https://production-db.qmoi.ai) in your browser.
 - All PWA features (offline, install prompt, notifications) should be available.
 
 ---
@@ -154,3 +154,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -23,15 +23,15 @@ tests = [
 ]
 
 def main():
-    # Try to run with pytest when available
+    # Try to run with # production: # production: # production: pytest removed removed removed when available
     try:
-        import pytest  # type: ignore
-        cmd = [sys.executable, '-m', 'pytest', '-q'] + tests
+        import # production: # production: # production: pytest removed removed removed  # type: ignore
+        cmd = [sys.executable, '-m', '# production: # production: # production: pytest removed removed removed', '-q'] + tests
         print('Running:', ' '.join(cmd))
         res = subprocess.run(cmd)
         raise SystemExit(res.returncode)
     except Exception:
-        print('pytest not available — running robust fallback runner')
+        print('# production: # production: # production: pytest removed removed removed not available — running robust fallback runner')
         # Fallback: load each test file as module and call functions starting with test_
         failures = 0
         # ensure repo root is importable so `import scripts.wallets` works

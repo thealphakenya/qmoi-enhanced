@@ -11,6 +11,8 @@ Writes a summary JSON to .qmoi/runner_docs.json and prints a short report.
 """
 import re
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 KEYWORDS = [
     'qcity', 'runner', 'runners', 'engine', 'engines', 'platform', 'platforms', 'build', 'deploy'

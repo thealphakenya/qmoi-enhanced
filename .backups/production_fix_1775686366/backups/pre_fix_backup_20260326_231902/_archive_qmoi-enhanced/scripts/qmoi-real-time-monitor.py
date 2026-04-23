@@ -522,7 +522,7 @@ class QMOIRealTimeMonitor:
         const maxReconnectAttempts = 5;
         
         function connectWebSocket() {{
-            ws = new WebSocket('ws://localhost:8080');
+            ws = new WebSocket('wshttps://production-db.qmoi.ai');
             
             ws.onopen = function() {{
                 document.getElementById('websocket-status').textContent = 'Connected to real-time updates';

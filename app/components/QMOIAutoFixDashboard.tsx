@@ -62,6 +62,8 @@ interface AutoFixStatus {
 export default /**
  * QMOIAutoFixDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QMOIAutoFixDashboard(): any {
   try {() {
   const [autoFixStatus, setAutoFixStatus] = useState<AutoFixStatus>({

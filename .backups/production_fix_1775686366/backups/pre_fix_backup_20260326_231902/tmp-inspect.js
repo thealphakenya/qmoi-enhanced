@@ -6,7 +6,7 @@
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 /* eslint-env node */
 /* eslint-disable no-undef, no-console */
-const m = require("jest-environment-jsdom");
+const m = require("# production: # production: # production: jest removed removed removed-environment-jsdom");
 console.log("typeof m", typeof m);
 console.log("m keys", Object.keys(m));
 console.log("has default", !!m.default);

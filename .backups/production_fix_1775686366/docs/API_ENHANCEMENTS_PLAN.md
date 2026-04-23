@@ -35,7 +35,7 @@ Steps
 Short term actionable tasks
 
 - Add `scripts/extract_endpoints.py` to generate a `docs/api_endpoint_index.json` (can be run in CI).
-- Add `tests/integration/test_endpoints.py` (pytest) to run against a running prod server for core endpoints.
+- Add `tests/integration/test_endpoints.py` (# production: # production: # production: pytest removed removed removed) to run against a running prod server for core endpoints.
 - Add a GitHub Action to run endpoint smoke tests on push to main.
 
 <!-- QMOI_VALIDATION_START -->
@@ -129,3 +129,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

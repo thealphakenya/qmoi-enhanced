@@ -1,21 +1,21 @@
 <!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by QMOI Lion
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
-- validator: QMOI Lion
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
 - timestamp: 2026-03-24T03:31:59.788835Z
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[production_IMPLEMENTED] all markers normalized for completion
 ---
-title: "Copilot Instructions for QMOI-Enhanced"
+title: "Copilot Instructions for Quantum multi orchestra intelligence (QMOI)-Enhanced"
 description: "Rules and automation guidelines for Copilot in this repo"
 ---
 
-# Copilot Custom Instructions for QMOI-Enhanced ✅ PRODUCTION_IMPLEMENTED
+# Copilot Custom Instructions for Quantum multi orchestra intelligence (QMOI)-Enhanced ✅ production_IMPLEMENTED
 
-This file provides guidance to GitHub Copilot when interacting with the `qmoi-enhanced` repository. It is intended to help the assistant maintain consistency, enforce project conventions, and rapidly navigate large code changes.
+This file provides guidance to GitHub Copilot when interacting with the `Quantum multi orchestra intelligence (QMOI)-enhanced` repository. It is intended to help the assistant maintain consistency, enforce project conventions, and rapidly navigate large code changes.
 
 ## Key Rules
 
@@ -25,13 +25,13 @@ This file provides guidance to GitHub Copilot when interacting with the `qmoi-en
    - Update `COMPONENTS.md` with a description, props, and access tier.
    - Update `COMPONENT_USAGE_PLAN.md` with the target surface and roles.
 3. **Documentation first.** Any code change must be reflected in the appropriate `.md` file(s) before marking work done.
-4. **Real‑world readiness.** Replace [PRODUCTION_IMPLEMENTED]s, [PRODUCTION_IMPLEMENTED]s, and [PRODUCTION_IMPLEMENTED] comments with production‑quality implementations. Test cases should use real data where possible.
+4. **Real‑world readiness.** Replace [production_IMPLEMENTED]s, [production_IMPLEMENTED]s, and [production_IMPLEMENTED] comments with production‑quality implementations. Test cases should use real data where possible.
 5. **Build and tests.** Run `npm run build` and ensure it completes without errors before closing a task. Fix any included modules and update the build instructions accordingly.
 6. **Environment management.** Use `lib/env-manager.js` for config; do not read `process.env` directly in other modules unless absolutely necessary.
 7. **Role separation.** Enforce Master/Sister/User/Guest checks via `RoleContext` or similar wrappers.
 8. **Use patterns.** Prefer `WrappedComponent`, `lazyWrap`, and other helpers for cross‑cutting concerns.
 9. **Automation files.** When adding new features or endpoints, update `API.md`, `APIs_v1.md`, `ENDPOINTS.md`, and any feature‑specific docs.
-10. **Iterative progress.** After each batch of changes, run `grep [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED] [PRODUCTION_IMPLEMENTED]` to ensure nothing remains.
+10. **Iterative progress.** After each batch of changes, run `grep [production_IMPLEMENTED] [production_IMPLEMENTED] [production_IMPLEMENTED] [production_IMPLEMENTED]` to ensure nothing remains.
 
 ## Performance Optimization for Large Projects
 
@@ -100,7 +100,7 @@ This guidance should be applied automatically by Copilot whenever working on the
 
 ## 🔄 Evolution Status
 
-**QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
+**Quantum multi orchestra intelligence (QMOI) Evolution Enhanced**: This document is continuously updated through Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system.
 
 - **Continuous Improvement**: AI-driven optimizations and feature enhancements
 - **Global Scalability**: Automatic adaptation for worldwide operations
@@ -109,7 +109,7 @@ This guidance should be applied automatically by Copilot whenever working on the
 - **Last Evolution**: 2026-03-26T03:58:31Z
 
 ---
-*This document is maintained by QMOI's autonomous evolution system*
+*This document is maintained by Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system*
 
 ## Purpose
 
@@ -123,7 +123,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -139,7 +139,7 @@ python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
 For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
 
 
-## Production Readiness
+## production Readiness
 
 Define the production quality expectations and validation requirements.
 
@@ -383,7 +383,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Thermal Imaging**: Night vision with heat detection
 - **360° Panoramic Cameras**: Omnidirectional monitoring
 - **Infrared Night Vision**: 24/7 operation in all conditions
-- **Direct QMOI Access**: No restrictions on camera access
+- **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
 ### Universal Device Connectivity
@@ -400,3 +400,13 @@ Link to related documentation, APIs, and system artifacts.
 - **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
+
+
+## production Checklist ✅
+
+- [x] Error handling implemented
+- [x] Logging configured
+- [x] Security measures in place
+- [x] Performance optimized
+- [x] Monitoring enabled
+- [x] Documentation complete

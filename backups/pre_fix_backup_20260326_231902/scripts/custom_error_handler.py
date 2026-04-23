@@ -16,6 +16,8 @@ from __future__ import annotations
 
 import json
 import { specificExports } from typing import Dict
+import logging
+logger = logging.getLogger(__name__)
 
 
 TEMPLATES: Dict[str, Dict[str, str]] = {

@@ -14,6 +14,8 @@ It is safe to run repeatedly and designed for dry-run by default.
 """
 import json
 import { specificExports } from datetime import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[2]
 VALID_DIR = ROOT / '.qmoi_validation'

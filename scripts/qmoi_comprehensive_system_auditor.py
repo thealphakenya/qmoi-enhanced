@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
 QMOI Comprehensive System Audit & Enhancement Suite
@@ -35,6 +39,16 @@ def normalize_endpoint(endpoint: str) -> str:
 def derive_endpoint_from_file(path: Path) -> str:
     for root in API_ROOTS:
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             rel = path.relative_to(root)
             parts = list(rel.parent.parts)
             endpoint = '/api/' + '/'.join([p for p in parts if p != 'api'])
@@ -210,7 +224,7 @@ def update_resumefromhere(route_count: int, test_count: int, hook_count: int, we
 - **Discovered webhooks**: {webhook_count}
 - **Total markdown files indexed**: {md_count}
 
-NEXT: Validate API docs, route mapping, autotests, and balance system features PRODUCTION_IMPLEMENTED.
+NEXT: Validate API docs, route mapping, autotests, and balance system features production_IMPLEMENTED.
 """
     if resume_file.exists():
         existing = resume_file.read_text(encoding='utf-8', errors='ignore').rstrip()

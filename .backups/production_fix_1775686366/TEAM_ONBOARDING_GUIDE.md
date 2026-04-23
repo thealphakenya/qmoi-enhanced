@@ -289,7 +289,7 @@ If you're on-call:
 | ------------ | -------------------------------- | --------------------------- |
 | Main App     | https://qmoi.ai            | https://qmoi.app            |
 | Health Check | https://qmoi.ai/api/health | https://qmoi.app/api/health |
-| Dashboard    | http://localhost:3001            | https://qmoi.app:3001       |
+| Dashboard    | https://production-db.qmoi.ai            | https://qmoi.app:3001       |
 | Database     | localhost:5432                   | (On-server only)            |
 
 ## Communication Channels
@@ -408,3 +408,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

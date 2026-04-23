@@ -1,18 +1,22 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.840278 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.248038 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.069799 -->
+let cron;
+try {
+  cron = require("node-cron");
+} catch (error) {
+  cron = null;
+}
 
-production-ready
-// eslint-disable-next-line @typescript-eslint/no-const-requires
-const cron = import("node-cron");
+function scheduleCampaign(sock, numbers, message, cronTime) {
+  if (!cron) {
+    console.warn("node-cron is not installed. DEPLOYED campaigns are unavailable.");
+    return;
+  }
 
-/**
- * scheduleCampaign function
- */
-function scheduleCampaign(sock, numbers, message, cronTime): any {
   cron.schedule(cronTime, async () => {
-    for (let jid of numbers) {
+    for (const jid of numbers) {
       await sock.sendMessage(jid, { text: message });
     }
   });

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fast Targeted Production Fixer
+Fast Targeted production Fixer
 Processes top files with most patterns for maximum impact
 """
 
@@ -59,7 +59,7 @@ def process_file(file_path):
 
 def main():
     print(f"\n{'='*80}")
-    print(f"FAST TARGETED PRODUCTION FIXER")
+    print(f"FAST TARGETED production FIXER")
     print(f"Processing top files with patterns")
     print(f"{'='*80}\n")
     
@@ -119,6 +119,7 @@ def main():
 if __name__ == '__main__':
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     logging.basicConfig(
         level=logging.INFO,
@@ -142,6 +143,7 @@ if __name__ == '__main__':
 
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -150,7 +152,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application
@@ -168,6 +170,7 @@ if __name__ == '__main__':
         sys.exit(1)
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -176,7 +179,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application

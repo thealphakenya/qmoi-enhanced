@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI Complete Production Sync - Master Orchestrator
+QMOI Complete production Sync - Master Orchestrator
 Runs all update scripts in proper sequence for complete production hardening
 """
 
@@ -12,7 +12,7 @@ from typing import List, Dict
 
 ROOT = Path(__file__).resolve().parent.parent
 
-class ProductionSyncOrchestrator:
+class productionSyncOrchestrator:
     """Orchestrates all production synchronization tasks"""
     
     def __init__(self):
@@ -41,6 +41,16 @@ class ProductionSyncOrchestrator:
             return False
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             cmd = ['python3', str(script_path)]
             if args:
                 cmd.extend(args)
@@ -88,7 +98,7 @@ class ProductionSyncOrchestrator:
     def run_sync_pipeline(self):
         """Execute complete production synchronization"""
         print(f"\n{'='*80}")
-        print("QMOI COMPLETE PRODUCTION SYNC - MASTER ORCHESTRATOR")
+        print("QMOI COMPLETE production SYNC - MASTER ORCHESTRATOR")
         print(f"{'='*80}")
         print(f"Started: {self.start_time.strftime('%Y-%m-%d %H:%M:%S UTC')}\n")
         
@@ -105,9 +115,9 @@ class ProductionSyncOrchestrator:
         self.run_script('generate_allhealths')
         self.verify_file_exists('ALLHEALTHS.md')
         
-        # Phase 3: Production Readiness Audit
+        # Phase 3: production Readiness Audit
         print(f"\n{'─'*80}")
-        print("PHASE 3: PRODUCTION READINESS AUDIT")
+        print("PHASE 3: production READINESS AUDIT")
         print(f"{'─'*80}")
         self.run_script('production_readiness_audit')
         
@@ -130,7 +140,7 @@ class ProductionSyncOrchestrator:
         
         report = [
             f"\n{'='*80}",
-            "PRODUCTION SYNC FINAL REPORT",
+            "production SYNC FINAL REPORT",
             f"{'='*80}",
             f"Start Time:    {self.start_time.strftime('%Y-%m-%d %H:%M:%S UTC')}",
             f"End Time:      {end_time.strftime('%Y-%m-%d %H:%M:%S UTC')}",
@@ -178,7 +188,7 @@ class ProductionSyncOrchestrator:
             "",
             "  3. Commit and push changes:",
             "     git add -A",
-            "     git commit -m 'QMOI: Production sync complete'",
+            "     git commit -m 'QMOI: production sync complete'",
             "     git push origin autosync-backup-20250926-232440",
             "",
             f"{'='*80}\n",
@@ -193,7 +203,7 @@ class ProductionSyncOrchestrator:
         print(f"📄 Full report saved: {report_file.name}")
 
 def main():
-    orchestrator = ProductionSyncOrchestrator()
+    orchestrator = productionSyncOrchestrator()
     
     try:
         orchestrator.run_sync_pipeline()
@@ -215,6 +225,7 @@ def main():
 if __name__ == '__main__':
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     logging.basicConfig(
         level=logging.INFO,
@@ -238,6 +249,7 @@ if __name__ == '__main__':
 
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -246,7 +258,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application
@@ -264,6 +276,7 @@ if __name__ == '__main__':
         sys.exit(1)
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -272,7 +285,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application

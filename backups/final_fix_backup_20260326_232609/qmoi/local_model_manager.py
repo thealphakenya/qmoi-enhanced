@@ -13,6 +13,8 @@ import os
 import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 import threading
 import queue
+import logging
+logger = logging.getLogger(__name__)
 
 class QmoiLocalModelManager:
     """

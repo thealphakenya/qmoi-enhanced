@@ -13,6 +13,8 @@ Generates complete audit reports and deployment readiness verification
 import subprocess
 import json
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 WORKSPACE_ROOT = Path('/workspaces/qmoi-enhanced')
 SCRIPTS_DIR = WORKSPACE_ROOT / 'scripts'

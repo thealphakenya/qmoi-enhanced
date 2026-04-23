@@ -87,6 +87,8 @@ const deviceIntegrations = [
 export /**
  * EnhancedSystemDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
   const [metrics, setMetrics] = useState<SystemMetrics>({
     cpu: 45,

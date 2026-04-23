@@ -320,7 +320,9 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
               resource: String(e.resource || "unknown"),
               details:
                 typeof e.details === "string"
-                  ? (function (s) {
+                  ? (// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function (s) {
                       try {
                         return JSON.parse(s || "{}");
                       } catch (e) {

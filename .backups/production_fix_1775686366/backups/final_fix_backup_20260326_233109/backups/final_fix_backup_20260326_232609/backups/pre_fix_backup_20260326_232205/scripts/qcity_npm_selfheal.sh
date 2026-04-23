@@ -42,7 +42,7 @@ if [ $FORCE_CLEAN -eq 1 ]; then
 fi
 
 # Essentials list
-ESSENTIALS=(npm yarn pnpm node-gyp typescript eslint prettier nodemon pm2 npm-check-updates ts-node rimraf cross-env dotenv-cli serve http-server concurrently jest mocha nyc tsc webpack vite)
+ESSENTIALS=(npm yarn pnpm node-gyp typescript eslint prettier nodemon pm2 npm-check-updates ts-node rimraf cross-env dotenv-cli serve http-server concurrently # production: # production: # production: jest removed removed removed # production: # production: # production: mocha removed removed removed nyc tsc webpack vite)
 
 ensure_global() {
   PKG=$1
@@ -140,7 +140,7 @@ fi
 SEND_API_NOTIFICATION=0
 SEND_EMAIL_NOTIFICATION=0
 if [ $SEND_API_NOTIFICATION -eq 1 ]; then
-  curl -X POST -H "Content-Type: application/json" -d '{"type":"system","priority":"high","message":"NPM Self-Heal completed."}' http://localhost:3000/api/qcity/notifications
+  curl -X POST -H "Content-Type: application/json" -d '{"type":"system","priority":"high","message":"NPM Self-Heal completed."}' https://production-db.qmoi.ai/api/qcity/notifications
 fi
 if [ $SEND_EMAIL_NOTIFICATION -eq 1 ]; then
   echo "NPM Self-Heal completed. See attached log." | mail -s "[QCity] NPM Self-Heal Run" -A $LOGFILE admin@yourdomain.com

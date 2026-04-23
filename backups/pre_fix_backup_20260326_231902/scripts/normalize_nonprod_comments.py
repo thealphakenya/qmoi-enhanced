@@ -14,6 +14,8 @@ keywords = [
 ]
 
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 patterns = [
     (re.compile(r"//\s*\[production data\].*", re.IGNORECASE), "// [production DONE] replace test dataset implementation with real integration"),

@@ -13,6 +13,8 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * QiSpaces function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QiSpaces(): any {
   const [spaces, setSpaces] = useState<string[]>(["latest", "latest"]);
   const [newSpace, setNewSpace] = useState("");

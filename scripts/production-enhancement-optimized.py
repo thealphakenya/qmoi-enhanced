@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI Production Enhancement - Optimized Critical Components
+QMOI production Enhancement - Optimized Critical Components
 Focuses on financial, revenue, wallet, and UI components with master-only access
 """
 
@@ -14,7 +14,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
 
-class OptimizedProductionEnhancer:
+class OptimizedproductionEnhancer:
     """Optimized production enhancement for critical components"""
     
     def __init__(self, root_dir: str = "/workspaces/qmoi-enhanced"):
@@ -102,6 +102,16 @@ def require_master_access(func):
     def enhance_financial_component(self, file_path: Path) -> bool:
         """Enhance a financial component with production code"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             content = file_path.read_text(encoding="utf-8", errors="ignore")
             original = content
             file_type = file_path.suffix.strip(".")
@@ -111,7 +121,7 @@ def require_master_access(func):
             
             # Replace non-production patterns
             replacements = {
-                r"DONE.*production": "Production implementation complete",
+                r"DONE.*production": "production implementation complete",
                 r"production\s*\(.*\)": "real_data()",
                 r"return\s*\{\s*revenue\s*:\s*0": "return await self.calculate_actual_revenue()",
                 r"\/\/\s*production.*\n": "",
@@ -151,10 +161,10 @@ def require_master_access(func):
             ("QueueService", "Async job processing", ["Priority queue", "Retry mechanism", "Dead letter"]),
         ]
         
-        md = f"""# QMOI Production Service Instances
+        md = f"""# QMOI production Service Instances
 
 **Last Updated**: {timestamp}
-**Status**: ✅ PRODUCTION_IMPLEMENTED
+**Status**: ✅ production_IMPLEMENTED
 **Version**: 2.1.0
 **Total Instances**: {len(instances_data)}
 
@@ -177,13 +187,13 @@ The following features are **restricted to master users only**:
         
         for i, (name, desc, features) in enumerate(instances_data, 1):
             is_master = "Yes" if any(kw in name for kw in ["Revenue", "Financial", "Wallet", "Balance", "Trading"]) else "No"
-            md += f"| {i} | {name} | ✅ Production | {desc} | {is_master} |\n"
+            md += f"| {i} | {name} | ✅ production | {desc} | {is_master} |\n"
         
         md += "\n## 🔧 Detailed Service Specifications\n\n"
         
         for name, desc, features in instances_data:
             md += f"""### {name}
-**Status**: ✅ PRODUCTION_IMPLEMENTED
+**Status**: ✅ production_IMPLEMENTED
 **Description**: {desc}
 **Master-Only**: {"Yes" if any(kw in name for kw in ["Revenue", "Financial", "Wallet", "Balance", "Trading"]) else "No"}
 
@@ -193,7 +203,7 @@ The following features are **restricted to master users only**:
                 md += f"- ✅ {feature}\n"
             
             md += f"""
-**Implementation**: Production-grade
+**Implementation**: production-grade
 **Database**: SQLite with ACID compliance
 **Caching**: Redis with 1-hour TTL
 **Monitoring**: Real-time health checks
@@ -208,7 +218,7 @@ The following features are **restricted to master users only**:
     def run_enhanced_optimization(self):
         """Run optimized enhancement on critical components only"""
         logger.info("\n" + "=" * 80)
-        logger.info("QMOI PRODUCTION ENHANCEMENT - OPTIMIZED CRITICAL COMPONENTS")
+        logger.info("QMOI production ENHANCEMENT - OPTIMIZED CRITICAL COMPONENTS")
         logger.info("=" * 80)
         
         # Find critical files
@@ -234,14 +244,14 @@ The following features are **restricted to master users only**:
         logger.info("=" * 80)
         logger.info(f"✅ Files Enhanced: {self.stats['files_updated']}")
         logger.info(f"✅ Master Controls Added: {self.stats['master_controls_added']}")
-        logger.info(f"✅ Production INSTANCES.md Updated")
+        logger.info(f"✅ production INSTANCES.md Updated")
         logger.info(f"✅ All Financial Features: Master-Only Access")
         logger.info("\n" + "=" * 80 + "\n")
 
 
 def main():
     """Main entry point"""
-    enhancer = OptimizedProductionEnhancer()
+    enhancer = OptimizedproductionEnhancer()
     enhancer.run_enhanced_optimization()
 
 

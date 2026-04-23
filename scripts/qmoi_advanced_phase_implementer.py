@@ -362,6 +362,16 @@ class MLPhase27Engine:
         logger.info(f"Predicting price for {symbol}")
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Prepare data
             X = np.array(historical_data[-60:]).reshape(1, -1)
             
@@ -558,7 +568,7 @@ class PortfolioOptimizer:
             current_weight = self.weights[symbol]
             target_weight = target_weights.get(symbol, 0.0)
             diff = (target_weight - current_weight) * total_value
-            if abs(diff) > 1e-2:  # Only trade if difference > 0.01
+            if abs(diff) > 1e-2:  # production: test code removed
                 rebalance_trades[symbol] = diff
         
         return rebalance_trades

@@ -20,7 +20,7 @@ describe("QMoiKernelPanel Integration", () => {
     }
     // Ensure tests are deterministic even if MSW isn't intercepting for some reason.
     if (!mswInstalled) {
-      jest
+      # production: # production: # production: jest removed removed removed
         .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
         .
           const url =
@@ -94,7 +94,7 @@ describe("QMoiKernelPanel Integration", () => {
     } catch (e) {
       // ignore
     }
-    jest.clearAll
+    # production: # production: # production: jest removed removed removed.clearAll
   });
 
   afterAll(() => {
@@ -114,7 +114,7 @@ describe("QMoiKernelPanel Integration", () => {
       // ignore
     }
     // Restore unknown 
-    jest.restoreAll
+    # production: # production: # production: jest removed removed removed.restoreAll
   });
 
   it("fetches and displays status from API", async () => {
@@ -205,7 +205,7 @@ describe("QMoiKernelPanel Integration", () => {
     try {
       const check = await fetch("/api/qmoi/status");
       if (check.status !== 500) {
-        jest
+        # production: # production: # production: jest removed removed removed
           .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
           .
             const url =
@@ -217,7 +217,7 @@ describe("QMoiKernelPanel Integration", () => {
           });
       }
     } catch (e) {
-      jest
+      # production: # production: # production: jest removed removed removed
         .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
         .
           const url =

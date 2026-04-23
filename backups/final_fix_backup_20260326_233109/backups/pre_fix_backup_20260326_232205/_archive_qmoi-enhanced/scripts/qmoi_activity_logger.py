@@ -6,6 +6,8 @@
 // // production implementation: this file has no remaining production markers
 import datetime
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 """
     log_activity function

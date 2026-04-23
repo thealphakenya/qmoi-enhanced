@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:34.540478 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.724835 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.405107 -->
 
 #!/usr/bin/env bash
 # sophisticated supervisor loop to keep the local QM OI server running for qvillage.

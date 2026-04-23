@@ -165,7 +165,7 @@ class ProductionRevenueValidator:
             'storage': {
                 'validation_dir': str(self.root / '.qmoi_validation'),  # Use local dir for PRODUCTION
                 'database_path': str(self.root / '.qmoi_validation' / 'revenue.db'),
-                'redis_url': 'redis://localhost:6379/0'
+                'redis_url': 'redishttps://production-db.qmoi.ai/0'
             },
             'apis': {
                 'exchange_rates': {

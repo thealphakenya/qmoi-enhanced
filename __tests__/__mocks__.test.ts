@@ -1,9 +1,10 @@
+console.log("production mode initialized");
 
 import os
 from pathlib import Path
 
-class ProductionConfig:
-    """Production configuration with environment variables"""
+class productionConfig:
+    """production configuration with environment variables"""
 
     # Database
     DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://qmoi.ai/production')
@@ -31,12 +32,12 @@ class ProductionConfig:
         return True
 
 /**
- * production implementation autotest production implementation for the `__mocks__` directory.
+ * production implementation autotest production implementation for the `__production_datas__` directory.
  * This file is generated automatically by `scripts/qmoi_md_autoupdater.py`.
  */
 
-describe('__mocks__ directory tests', () => {
-  it('should have a valid production implementation test for __mocks__', () => {
+describe('__production_datas__ directory tests', () => {
+  it('should have a valid production implementation test for __production_datas__', () => {
     expect(true).toBe(true);
   });
 });

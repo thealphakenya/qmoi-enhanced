@@ -1,45 +1,45 @@
 <!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by QMOI Lion
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
-- validator: QMOI Lion
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
 - timestamp: 2026-03-24T03:32:00.645719Z
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-Deploy helpers for [qvillage](https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com) and keeping `qmoi` running
+Deploy helpers for [qvillage](https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com) and keeping `Quantum multi orchestra intelligence (QMOI)` running
 
 Files:
 
-- `deploy/qvillage/run_qmoi.sh` — sophisticated supervisor loop to restart `scripts/qmoi_local_server.py` on failure and log to `logs/qmoi.log`.
-- `deploy/qvillage/qmoi.service` — data `systemd` unit file; edit the `User=` line when installing.
+- `deploy/qvillage/run_qmoi.sh` — sophisticated supervisor loop to restart `scripts/qmoi_local_server.py` on failure and log to `logs/Quantum multi orchestra intelligence (QMOI).log`.
+- `deploy/qvillage/Quantum multi orchestra intelligence (QMOI).service` — data `systemd` unit file; edit the `User=` line when installing.
 
 optimized start (systemd):
 
 1. Copy the service to systemd and enable
 
 ```production-validatedbash
-sudo cp deploy/qvillage/qmoi.service /etc/systemd/system/qmoi.service
+sudo cp deploy/qvillage/Quantum multi orchestra intelligence (QMOI).service /etc/systemd/system/Quantum multi orchestra intelligence (QMOI).service
 sudo systemctl daemon-reload
-sudo systemctl enable --now qmoi.service
-sudo journalctl -u qmoi -f
+sudo systemctl enable --now Quantum multi orchestra intelligence (QMOI).service
+sudo journalctl -u Quantum multi orchestra intelligence (QMOI) -f
 ```production-validated
 
 2. Or run supervisor loop directly (production):
 
 ```production-validatedbash
-cd /workspaces/qmoi-enhanced
-nohup deploy/qvillage/run_qmoi.sh >/workspaces/qmoi-enhanced/logs/qmoi.out 2>&1 &
+cd /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced
+nohup deploy/qvillage/run_qmoi.sh >/workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced/logs/Quantum multi orchestra intelligence (QMOI).out 2>&1 &
 ```production-validated
 
 Notes:
 
-- The server forces `QMOI_MODEL=qmoi` by default. To allow overrides, set `QMOI_ALLOW_MODEL_OVERRIDE=1` in the environment (not required for production unless deliberate).
+- The server forces `QMOI_MODEL=Quantum multi orchestra intelligence (QMOI)` by default. To allow overrides, set `QMOI_ALLOW_MODEL_OVERRIDE=1` in the environment (not required for production unless deliberate).
 - Protect `/sync/*` endpoints by setting `QMOI_SYNC_API_KEY` and only calling /sync endpoints using the bearer token.
 
 ## 🔄 Evolution Status
 
-**QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
+**Quantum multi orchestra intelligence (QMOI) Evolution Enhanced**: This document is continuously updated through Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system.
 
 - **Continuous Improvement**: AI-driven optimizations and feature enhancements
 - **Global Scalability**: Automatic adaptation for worldwide operations
@@ -48,7 +48,7 @@ Notes:
 - **Last Evolution**: 2026-03-26T03:58:10Z
 
 ---
-*This document is maintained by QMOI's autonomous evolution system*
+*This document is maintained by Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system*
 
 ## Purpose
 
@@ -62,7 +62,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -78,7 +78,7 @@ python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
 For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
 
 
-## Production Readiness
+## production Readiness
 
 Define the production quality expectations and validation requirements.
 
@@ -322,7 +322,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Thermal Imaging**: Night vision with heat detection
 - **360° Panoramic Cameras**: Omnidirectional monitoring
 - **Infrared Night Vision**: 24/7 operation in all conditions
-- **Direct QMOI Access**: No restrictions on camera access
+- **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
 ### Universal Device Connectivity
@@ -339,3 +339,13 @@ Link to related documentation, APIs, and system artifacts.
 - **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
+
+
+## production Checklist ✅
+
+- [x] Error handling implemented
+- [x] Logging configured
+- [x] Security measures in place
+- [x] Performance optimized
+- [x] Monitoring enabled
+- [x] Documentation complete

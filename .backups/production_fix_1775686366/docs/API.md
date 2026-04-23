@@ -28,12 +28,12 @@ All endpoints require authentication using OAuth2 with Bearer tokens. To obtain 
 
 ```bash
 # data token request
-curl -X POST "http://localhost:8000/token" \
+curl -X POST "https://production-db.qmoi.ai/token" \
      -H "Content-Type: application/x-www-form-urlencoded" \
      -d "username=user&password=pass"
 
 # data authenticated request
-curl -X GET "http://localhost:8000/automation/status" \
+curl -X GET "https://production-db.qmoi.ai/automation/status" \
      -H "Authorization: Bearer <token>"
 ```
 
@@ -397,7 +397,7 @@ API requests are limited to:
 The system also provides a WebSocket API for real-time updates:
 
 ```javascript
-const ws = new WebSocket("ws://localhost:8000/ws");
+const ws = new WebSocket("wshttps://production-db.qmoi.ai/ws");
 
 ws.onmessage = (event) => {
   const data = JSON.parse(event.data);
@@ -489,7 +489,7 @@ class AutomationClient:
         return response.json()
 
 # Usage
-client = AutomationClient('http://localhost:8000', 'your-token')
+client = AutomationClient('https://production-db.qmoi.ai', 'your-token')
 status = client.get_status()
 ```
 
@@ -530,7 +530,7 @@ class AutomationClient {
 }
 
 // Usage
-const client = new AutomationClient("http://localhost:8000", "your-token");
+const client = new AutomationClient("https://production-db.qmoi.ai", "your-token");
 client.getStatus().then(console.log);
 ```
 
@@ -728,3 +728,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:08:06.948172 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:14.432466 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:10.370574 -->
 # Use NVIDIA CUDA base image
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu20.04
 

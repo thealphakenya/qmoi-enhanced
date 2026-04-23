@@ -22079,14 +22079,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.635Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.635Z"
     },
@@ -22345,7 +22345,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.635Z"
     },
@@ -22506,7 +22506,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.635Z"
     },
@@ -28260,7 +28260,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.656Z"
     },
@@ -30738,14 +30738,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.659Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.659Z"
     },
@@ -31004,7 +31004,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.659Z"
     },
@@ -31165,7 +31165,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.659Z"
     },
@@ -36919,7 +36919,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.665Z"
     },
@@ -41770,14 +41770,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.671Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.671Z"
     },
@@ -42036,7 +42036,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.671Z"
     },
@@ -42197,7 +42197,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.672Z"
     },
@@ -47951,7 +47951,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.677Z"
     },
@@ -50429,14 +50429,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.680Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.680Z"
     },
@@ -50695,7 +50695,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.680Z"
     },
@@ -50856,7 +50856,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.680Z"
     },
@@ -56610,7 +56610,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.688Z"
     },
@@ -61461,14 +61461,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.694Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.694Z"
     },
@@ -61727,7 +61727,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.694Z"
     },
@@ -61888,7 +61888,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.694Z"
     },
@@ -67642,7 +67642,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.700Z"
     },
@@ -70120,14 +70120,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
@@ -70386,7 +70386,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
@@ -70547,7 +70547,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
@@ -76301,7 +76301,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.708Z"
     },
@@ -81152,14 +81152,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.717Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.717Z"
     },
@@ -81418,7 +81418,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.717Z"
     },
@@ -81579,7 +81579,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.717Z"
     },
@@ -87333,7 +87333,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.723Z"
     },
@@ -89811,14 +89811,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.725Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.725Z"
     },
@@ -90077,7 +90077,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.726Z"
     },
@@ -90238,7 +90238,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.726Z"
     },
@@ -95992,7 +95992,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.731Z"
     },
@@ -100843,14 +100843,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.737Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.737Z"
     },
@@ -101109,7 +101109,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.737Z"
     },
@@ -101270,7 +101270,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.738Z"
     },
@@ -107024,7 +107024,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.743Z"
     },
@@ -109502,14 +109502,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
@@ -109768,7 +109768,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
@@ -109929,7 +109929,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
@@ -115683,7 +115683,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.755Z"
     },
@@ -147032,14 +147032,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.635Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.635Z"
       },
@@ -147298,7 +147298,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.635Z"
       },
@@ -147459,7 +147459,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.635Z"
       },
@@ -153213,7 +153213,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.656Z"
       },
@@ -155691,14 +155691,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.659Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.659Z"
       },
@@ -155957,7 +155957,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.659Z"
       },
@@ -156118,7 +156118,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.659Z"
       },
@@ -161872,7 +161872,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.665Z"
       },
@@ -166723,14 +166723,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.671Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.671Z"
       },
@@ -166989,7 +166989,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.671Z"
       },
@@ -167150,7 +167150,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.672Z"
       },
@@ -172904,7 +172904,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.677Z"
       },
@@ -175382,14 +175382,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.680Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.680Z"
       },
@@ -175648,7 +175648,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.680Z"
       },
@@ -175809,7 +175809,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.680Z"
       },
@@ -181563,7 +181563,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.688Z"
       },
@@ -186414,14 +186414,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.694Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.694Z"
       },
@@ -186680,7 +186680,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.694Z"
       },
@@ -186841,7 +186841,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.694Z"
       },
@@ -192595,7 +192595,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.700Z"
       },
@@ -195073,14 +195073,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
@@ -195339,7 +195339,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
@@ -195500,7 +195500,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
@@ -201254,7 +201254,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.708Z"
       },
@@ -206105,14 +206105,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.717Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.717Z"
       },
@@ -206371,7 +206371,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.717Z"
       },
@@ -206532,7 +206532,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.717Z"
       },
@@ -212286,7 +212286,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.723Z"
       },
@@ -214764,14 +214764,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.725Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.725Z"
       },
@@ -215030,7 +215030,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.726Z"
       },
@@ -215191,7 +215191,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.726Z"
       },
@@ -220945,7 +220945,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.731Z"
       },
@@ -225796,14 +225796,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.737Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.737Z"
       },
@@ -226062,7 +226062,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.737Z"
       },
@@ -226223,7 +226223,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.738Z"
       },
@@ -231977,7 +231977,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.743Z"
       },
@@ -234455,14 +234455,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
@@ -234721,7 +234721,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
@@ -234882,7 +234882,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
@@ -240636,7 +240636,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.755Z"
       },

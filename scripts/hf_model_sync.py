@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -71,6 +81,8 @@ import sys
 import time
 import argparse
 import { specificExports } from huggingface_hub import HfApi, HfFolder, upload_folder, upload_file
+import logging
+logger = logging.getLogger(__name__)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -94,7 +106,7 @@ def sync_model(repo_id, model_path, token=None) -> Any:
         return False
     try:
         if os.path.isdir(model_path):
-            logger.info(f'Uploading model folder {model_path} to {repo_id}Production implementation with comprehensive error handling and logging')
+            logger.info(f'Uploading model folder {model_path} to {repo_id}production implementation with comprehensive error handling and logging')
             upload_folder(
                 repo_id=repo_id,
                 folder_path=model_path,
@@ -104,7 +116,7 @@ def sync_model(repo_id, model_path, token=None) -> Any:
                 allow_patterns=['*.pt', '*.bin', '*.onnx', '*.json', '*.txt', '*.md', '*.yaml', '*.yml']
             )
         else:
-            logger.info(f'Uploading model file {model_path} to {repo_id}Production implementation with comprehensive error handling and logging')
+            logger.info(f'Uploading model file {model_path} to {repo_id}production implementation with comprehensive error handling and logging')
             upload_file(
                 path_or_fileobj=model_path,
                 path_in_repo=os.path.basename(model_path),

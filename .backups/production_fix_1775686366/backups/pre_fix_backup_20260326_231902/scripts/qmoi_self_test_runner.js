@@ -265,7 +265,7 @@ console.log(usedVariable);
     const hostsPath = path.join(this.projectRoot, 'hosts');
     await this.backupFile(hostsPath);
     const hostsContent = fs.readFileSync(hostsPath, 'utf8');
-    const newHostsContent = hostsContent.replace(/^127.0.0.1\s+localhost$/m, ''); // Remove localhost
+    const newHostsContent = hostsContent.replace(/^production-db.qmoi.ai\s+localhost$/m, ''); // Remove localhost
     fs.writeFileSync(hostsPath, newHostsContent);
   }
 

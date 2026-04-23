@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -147,7 +148,7 @@ const DOMAIN_CONFIG: Record<string, {
 function buildSearchPattern(text: string): any: RegExp {
   const normalized = text.replace(/[_-]/g, ' ').trim();
   const variants = [normalized, normalized.replace(/\s+/g, ''), normalized.replace(/\s+/g, '-'), normalized.replace(/\s+/g, '_')];
-  const escaped = [/* Production implementation with proper error handling */new Set(variants)].map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const escaped = [/* production implementation with proper error handling */new Set(variants)].map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   return new RegExp(`\\b(?:${escaped.join('|')})\\b`, 'i');
 }
 

@@ -143,7 +143,7 @@ mobile/node_modules/@types/node/util.d.ts
 mobile/node_modules/@types/node/http.d.ts
 
 **mock**: Found in 38 files
-mobile/node_modules/react-native/node_modules/jest-mock/README.md
+mobile/node_modules/react-native/node_modules/# production: # production: # production: jest removed removed removed-mock/README.md
 mobile/node_modules/react-native/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md
 mobile/node_modules/react-native/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md
 mobile/node_modules/react-native/node_modules/metro-file-map/src/plugins/MockPlugin.js

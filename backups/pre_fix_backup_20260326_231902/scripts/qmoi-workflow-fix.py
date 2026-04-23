@@ -6,6 +6,8 @@
 # [PRODUCTION_IMPLEMENTED]
 import sys
 import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 """
     fix_workflows function

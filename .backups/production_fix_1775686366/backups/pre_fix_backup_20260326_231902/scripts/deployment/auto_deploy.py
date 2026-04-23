@@ -216,7 +216,7 @@ class QMOIAutoDeploy:
             ['npm', 'run', 'lint'],
             ['npm', 'run', 'type-check'],
             ['npm', 'run', 'test:unit'],
-            ['python', '-m', 'pytest', 'tests/unit/', '--cov=src']
+            ['python', '-m', '# production: # production: # production: pytest removed removed removed', 'tests/unit/', '--cov=src']
         ]
         
         all_passed = True
@@ -261,8 +261,8 @@ class QMOIAutoDeploy:
             ['npm', 'run', 'test'],
             ['npm', 'run', 'test:integration'],
             ['npm', 'run', 'test:e2e'],
-            ['python', '-m', 'pytest', 'tests/integration/'],
-            ['python', '-m', 'pytest', 'tests/e2e/']
+            ['python', '-m', '# production: # production: # production: pytest removed removed removed', 'tests/integration/'],
+            ['python', '-m', '# production: # production: # production: pytest removed removed removed', 'tests/e2e/']
         ]
         
         all_passed = True

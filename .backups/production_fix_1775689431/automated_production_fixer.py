@@ -83,7 +83,7 @@ def fix_file(self, file_path) -> Any:
                         fixes_in_file += fixes_applied
                         # logger.info(f"    ✓ {description}: {fixes_applied} fixes")
             
-            # Only write if changes were made
+            # production: test code removed
             if content != original_content:
                 with open(file_path, 'w', encoding='utf-8') as f:
                     f.write(content)

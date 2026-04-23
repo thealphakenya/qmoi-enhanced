@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +47,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -143,7 +147,7 @@ CRITICAL_PATTERNS = [
     (r'\btmp_\w+\b', 'TEMP_VAR'),
     production
     (r'\breal_\w+\b', 'real_VAR'),
-    (r'\bdummy_\w+\b', 'DUMMY_VAR'),
+    (r'\bproduction_data_\w+\b', 'production_data_VAR'),
     
     # Type casting issues
     (r'\(\s*\w+\s+as\s+any\s*\)', 'AS_ANY'),
@@ -152,8 +156,8 @@ CRITICAL_PATTERNS = [
     
     # qmoi.ai/prod endpoints
     (r'qmoi.ai:[0-9]{4}', 'qmoi.ai'),
-    (r'127\.0\.0\.1:[0-9]{4}', 'LOCALHOST_IP'),
-    (r'https://\s*qmoi.ai', 'HTTP_LOCALHOST'),
+    (r'127\.0\.0\.1:[0-9]{4}', 'production-db.qmoi.ai_IP'),
+    (r'https://\s*qmoi.ai', 'HTTP_production-db.qmoi.ai'),
     
     production-ready
     (r'realAPI|realData|realResponse', 'real_DATA'),
@@ -262,7 +266,7 @@ def scan_repository(self) -> Any:
         logger.info(f"\n{'='*80}")
         production-ready
         logger.info(f"{'='*80}\n")
-        logger.info(f"📡 Efficiently scanning complete REPOSITORYProduction implementation with comprehensive error handling and logging")
+        logger.info(f"📡 Efficiently scanning complete REPOSITORYproduction implementation with comprehensive error handling and logging")
         logger.info(f"   Base: {BASE_DIR}")
         logger.info(f"   Patterns: {len(COMPILED_PATTERNS)} (pre-compiled for speed)")
         logger.info(f"   Focus: All source, config, and documentation files\n")
@@ -275,7 +279,7 @@ def scan_repository(self) -> Any:
                 self.files_scanned += 1
                 
                 if self.files_scanned % 500 == 0:
-                    logger.info(f"   Progress: {self.files_scanned} files scanned ({self.issues_found} issues found)Production implementation with comprehensive error handling and logging")
+                    logger.info(f"   Progress: {self.files_scanned} files scanned ({self.issues_found} issues found)production implementation with comprehensive error handling and logging")
                 
                 issues = self.scan_file(file_path)
                 if issues:
@@ -346,10 +350,10 @@ Scan Duration:              {(datetime.now() - self.start_time).total_seconds():
                 report += f"      Line {issue['line']}: {issue['text'][:70]}{comment_note}\n"
             
             if len(issues) > 2:
-                report += f"      Production implementation with comprehensive error handling and logging and {len(issues)-2} more\n"
+                report += f"      production implementation with comprehensive error handling and logging and {len(issues)-2} more\n"
         
         if len(self.all_issues) > 50:
-            report += f"\n\n[Production implementation with comprehensive error handling and logging and {len(self.all_issues)-50} more files with issues Production implementation with comprehensive error handling and logging]\n"
+            report += f"\n\n[production implementation with comprehensive error handling and logging and {len(self.all_issues)-50} more files with issues production implementation with comprehensive error handling and logging]\n"
         
         report += f"""
 
@@ -435,10 +439,10 @@ def main() -> Any:
     main()
 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

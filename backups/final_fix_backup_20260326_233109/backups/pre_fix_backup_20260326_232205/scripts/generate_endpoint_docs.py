@@ -5,6 +5,8 @@
 
 # // production implementation: this file has no remaining production markers
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 root = Path('app/api')
 entries = []

@@ -136,7 +136,7 @@ async function runTests(): Promise<any> {
     "npm test",
     "npm run test:unit",
     "npm run test:integration",
-    "npx jest",
+    "npx # production: # production: # production: jest removed removed removed",
     "npx vitest run",
   ];
 

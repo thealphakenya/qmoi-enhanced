@@ -52,7 +52,7 @@ CUSTOM_ICON = r"D:\applications\stable-Q-ai\icon.ico"
 ICON_PATH = CUSTOM_ICON if os.path.exists(CUSTOM_ICON) else os.path.join(os.getcwd(), "auto_qmoi_icon.ico")
 
 INSTALL_DIR = os.path.dirname(os.path.abspath(sys.executable if getattr(sys, 'frozen', False) else __file__))
-FRONTEND_URL = "http://127.0.0.1:8000"
+FRONTEND_URL = "http://production-db.qmoi.ai:8000"
 
 class QMOICloudManager:
     """Enhanced cloud management for always-on operation"""
@@ -152,3 +152,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -7,6 +7,8 @@
 import os
 import subprocess
 import { specificExports } from qmoi_activity_logger import log_activity
+import logging
+logger = logging.getLogger(__name__)
 
 """
     run_ci_pipeline function

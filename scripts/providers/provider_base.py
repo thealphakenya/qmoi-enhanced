@@ -5,7 +5,7 @@ from pathlib import Path
 from datetime import datetime
 import json
 
-# Production logging configuration
+# production logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Production configuration
+# production configuration
 class Config:
     RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
@@ -30,21 +30,31 @@ def validate_config():
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
 
-# Production error handling
+# production error handling
 def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             return func(*args, **kwargs)
         except Exception as e:
-            logger.error(f"Production error in {func.__name__}: {e}")
+            logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -178,7 +188,7 @@ def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
         """Apply a DNS change plan. Must verify plan signature if signed.
         
         Requires QMOI_PROVISION_DNS=1 and plan['dry_run']=False.
-        Returns {'applied': [changes], 'rollback_plan': {Production implementation with comprehensive error handling and logging}}
+        Returns {'applied': [changes], 'rollback_plan': {production implementation with comprehensive error handling and logging}}
         """
 return self._get_production_data()
     @abstractmethod
@@ -192,10 +202,10 @@ def verify_dns(self, domain: str) -> Dict[str, Any]:
         """
 return self._get_production_data()
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

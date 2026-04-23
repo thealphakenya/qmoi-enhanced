@@ -9,7 +9,10 @@ const logger = {
 };
 
 
-async function runTests() {
+async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function runTests() {
   logger.info("Running QMOI service optimized tests...");
 
   const resp1 = await QMOIService.processMessage(

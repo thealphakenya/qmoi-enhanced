@@ -10,7 +10,7 @@ import importlib.util
 import types
 import pathlib
 
-import pytest
+import # production: # production: # production: pytest removed removed removed
 
 # import { specificExports } from workspace root
 mod_path = pathlib.Path(__file__).resolve().parents[1] / 'qmoi_local_server.py'

@@ -101,7 +101,7 @@ python tools/monitor_hf_costs.py
 # Test Gradio UI
 cd hf_space_qvillage
 pip install -r requirements.txt
-python app.py  # http://localhost:7860
+python app.py  # https://production-db.qmoi.ai
 ```
 
 ### Step 2: Configure GitHub
@@ -233,7 +233,7 @@ cd hf_space_qvillage
 python app.py
 ```
 
-**Output:** Web UI at http://localhost:7860
+**Output:** Web UI at https://production-db.qmoi.ai
 
 #### `.github/workflows/qvillage-sync.yml`
 
@@ -383,7 +383,7 @@ Test: .github/workflows/qvillage-sync.yml manually
 ```
 Solution: cd hf_space_qvillage && pip install -r requirements.txt
 Then: python app.py
-Check: http://localhost:7860
+Check: https://production-db.qmoi.ai
 ```
 
 ---
@@ -489,3 +489,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

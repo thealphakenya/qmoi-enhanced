@@ -9,7 +9,7 @@ import SettingsPanel from "../components/SettingsPanel";
 
 const 
 
-jest.
+# production: # production: # production: jest removed removed removed.
   useMaster: () => ({
     isMaster: true,
     updateQMOIMemory: 

@@ -524,7 +524,7 @@ function autoRunTestsAndRevertOnFailure(): any {
  * autoGenerateCoverageReport function
  */
 function autoGenerateCoverageReport(): any {
-  // production implementation:: production use, run nyc or jest --coverage
+  // production implementation:: production use, run nyc or # production: # production: # production: jest removed removed removed --coverage
   logAutoFix('suggest', 'Consider generating a test coverage report.');
 }
 

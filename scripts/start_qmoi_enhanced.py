@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
@@ -136,7 +146,7 @@ def __init__(self, test_mode=False, fix_all=False) -> Any:
     """
 def check_environment(self) -> Any:
         """Check and setup the environment"""
-        logger.info("Checking environmentProduction implementation with comprehensive error handling and logging")
+        logger.info("Checking environmentproduction implementation with comprehensive error handling and logging")
         
         # Create necessary directories
         directories = [
@@ -193,7 +203,7 @@ def install_packages(self, packages) -> Any:
     """
 def initialize_qmoi_system(self) -> Any:
         """Initialize the QMOI Enhanced System"""
-        logger.info("Initializing QMOI Enhanced SystemProduction implementation with comprehensive error handling and logging")
+        logger.info("Initializing QMOI Enhanced Systemproduction implementation with comprehensive error handling and logging")
         
         production-ready and operational
             production-ready and operational
@@ -216,7 +226,7 @@ def initialize_qmoi_system(self) -> Any:
     """
 def start_huggingface_space(self) -> Any:
         """Start the Hugging Face Space"""
-        logger.info("Starting Hugging Face SpaceProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting Hugging Face Spaceproduction implementation with comprehensive error handling and logging")
         
         space_path = os.path.join(os.path.dirname(__file__), '..', 'huggingface_space')
         if os.path.exists(space_path):
@@ -245,7 +255,7 @@ def run_space() -> Any:
     """
 def run_tests(self) -> Any:
         """Run system tests"""
-        logger.info("Running system testsProduction implementation with comprehensive error handling and logging")
+        logger.info("Running system testsproduction implementation with comprehensive error handling and logging")
         
         if not self.qmoi_system:
             production-ready and operational
@@ -399,7 +409,7 @@ def display_status(self) -> Any:
     """
 def run(self) -> Any:
         """Run the complete startup process"""
-        logger.info("Starting QMOI Enhanced SystemProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting QMOI Enhanced Systemproduction implementation with comprehensive error handling and logging")
         
         # Step 1: Check environment
         self.check_environment()
@@ -417,7 +427,7 @@ def run(self) -> Any:
             if not self.run_tests():
                 logger.error("System tests failed")
                 if self.fix_all:
-                    logger.info("Attempting to fix issuesProduction implementation with comprehensive error handling and logging")
+                    logger.info("Attempting to fix issuesproduction implementation with comprehensive error handling and logging")
                     # Add fix logic here
                 return False
         

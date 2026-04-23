@@ -36,6 +36,8 @@ import { specificExports } from "next/navigation";
 export /**
  * RegisterForm function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function RegisterForm(): any {
   const router = useRouter();
   const [formData, setFormData] = useState({

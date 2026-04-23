@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 # Simple healthcheck for production app and PM2 auto-restart
 set -euo pipefail
-HOST=${1:-http://localhost:3000}
+HOST=${1:-https://production-db.qmoi.ai}
 TIMEOUT=${2:-5}
 
 HTTP_CODE=$(curl -s -o /prod/null -w "%{http_code}" --max-time "$TIMEOUT" "$HOST" || echo "000")

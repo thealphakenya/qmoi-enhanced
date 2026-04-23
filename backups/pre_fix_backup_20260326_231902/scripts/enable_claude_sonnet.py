@@ -12,6 +12,8 @@ This script updates configurations and validates the deployment.
 import json
 import os
 import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
+import logging
+logger = logging.getLogger(__name__)
 
 """
     load_config function

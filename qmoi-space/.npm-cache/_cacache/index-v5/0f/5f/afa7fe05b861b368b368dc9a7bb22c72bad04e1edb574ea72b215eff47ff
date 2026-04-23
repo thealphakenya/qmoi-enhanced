@@ -1,2 +1,4 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:21.755058 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:14.626878 -->
 
 463157f8ded869c21849e59e241ad3774cef4e56	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@types%2fbabel__traverse","integrity":"sha512-nfKYXqVDzRgSDDbMvw1JNb1CmIwnmAFxBfKzlqWgVA3KReZOLihy99/etmRSWBf99ZdlImjEb/02WkI4OhZcMQ==","time":1759864421636,"size":51236,"metadata":{"time":1759864421629,"url":"https://registry.npmjs.org/@types%2fbabel__traverse","reqHeaders":{"accept":"application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*"},"resHeaders":{"cache-control":"public, max-age=300","content-encoding":"gzip","content-type":"application/vnd.npm.install-v1+json","date":"Tue, 07 Oct 2025 19:13:41 GMT","etag":"W/\"07a29f6d08fa56a784dc26a381058ffb\"","last-modified":"Sun, 03 Aug 2025 06:25:59 GMT","vary":"accept-encoding, accept"},"options":{"compress":true}}}

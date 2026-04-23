@@ -301,7 +301,7 @@ npm run test:load -- --users=50 --duration=60
 docker-compose -f docker-compose.prod.yml up -d monitoring
 
 # Verify monitoring endpoints
-curl http://localhost:9090/api/v1/query?query=up
+curl https://production-db.qmoi.ai/api/v1/query?query=up
 # Should return: {"status": "success"}
 ```
 
@@ -545,3 +545,6 @@ curl http://webhooks-service:8080/admin/queue/depth
 **Next Review:** After deployment completion
 
 For more information, see the full documentation in the repository root.
+
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

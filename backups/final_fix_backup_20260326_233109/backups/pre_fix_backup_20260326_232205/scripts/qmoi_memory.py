@@ -22,6 +22,8 @@ import os
 import sqlite3
 import threading
 import { specificExports } from pathlib import { specificExports } from typing import Any, Optional
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = REPO_ROOT / '.qmoi_validation' / 'qmoi_memory.db'

@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.613643 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.658344 -->
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,7 +15,9 @@ interface Device {
   battery?: number;
 }
 
-export default function DeviceManagementDashboard() {
+export default // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function DeviceManagementDashboard() {
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');

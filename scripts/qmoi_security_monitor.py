@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +43,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -145,13 +145,14 @@ import re
 import glob
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Tuple, Optional, Any
 import logging
+logger = logging.getLogger(__name__)
 import sqlite3
 import psutil
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -160,7 +161,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -1149,8 +1150,7 @@ def scan_config_vulnerabilities(self) -> List[Dict[str, Any]]:
                     with open(config_path, 'r', encoding='utf-8') as f:
                         content = f.read()
                     
-                    # Check for hardcoded secrets
-                    secret_patterns = [
+                    # Check for                     secret_patterns = [
                         r"password\s*[:=]\s*['\"][^'\"]+['\"]",
                         r"secret\s*[:=]\s*['\"][^'\"]+['\"]",
                         r"api_key\s*[:=]\s*['\"][^'\"]+['\"]",
@@ -1165,8 +1165,7 @@ def scan_config_vulnerabilities(self) -> List[Dict[str, Any]]:
                                 "file_path": str(config_path),
                                 "line_number": 0,
                                 "pattern": pattern,
-                                "description": f"Hardcoded secret found in {config_file}",
-                                "timestamp": datetime.now().isoformat()
+                                "description": f"                                "timestamp": datetime.now().isoformat()
                             }
                             
                             vulnerabilities.append(vulnerability)

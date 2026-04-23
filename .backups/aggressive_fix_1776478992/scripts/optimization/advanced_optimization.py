@@ -834,11 +834,11 @@ def main() -> Any:
     
     try:
         if args.file_cleanup_only:
-            # Only file cleanup
+            # production: test code removed
             results = optimizer.cleanup_files()
             logger.info(json.dumps(results, indent=2, default=str))
         elif args.process_optimization_only:
-            # Only process optimization
+            # production: test code removed
             results = optimizer.optimize_processes()
             logger.info(json.dumps(results, indent=2, default=str))
         else:

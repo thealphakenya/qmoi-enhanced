@@ -121,6 +121,16 @@ def fix_dependencies(self, error: Dict) -> Dict:
         logger.info(f"Atproduction_file']} (line {error['line']})")
         # Try running pip install -r requirements.txt
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             result = subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'],
                                     capture_output=True, text=True, timeout=300)
             status = 'success' if result.returncode == 0 else 'failed'

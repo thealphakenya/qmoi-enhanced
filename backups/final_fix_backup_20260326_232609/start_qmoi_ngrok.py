@@ -6,6 +6,8 @@
 import os
 import { specificExports } from pyngrok import { specificExports } from fastapi import { specificExports } from fastapi.staticfiles import StaticFiles
 import uvicorn
+import logging
+logger = logging.getLogger(__name__)
 
 # ✅ Start Ngrok tunnel if NGROK_AUTH_TOKEN is provided via environment
 ngrok_token = os.environ.get("NGROK_AUTH_TOKEN")

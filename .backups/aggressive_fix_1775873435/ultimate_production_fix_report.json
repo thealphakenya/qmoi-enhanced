@@ -815,7 +815,7 @@
         {
           "file": "comprehensive_nonprod_scanner.py",
           "line": 72,
-          "content": "if not any(skip in line_lower for skip in ['jest.production', 'mockedfunction', 'mockmedia']):",
+          "content": "if not any(skip in line_lower for skip in ['# production: # production: # production: jest removed removed removed.production', 'mockedfunction', 'mockmedia']):",
           "type": "production"
         },
         {
@@ -7907,39 +7907,39 @@
           "type": "not_implemented"
         }
       ],
-      "jest.setup.js": [
+      "# production: # production: # production: jest removed removed removed.setup.js": [
         {
-          "file": "jest.setup.js",
+          "file": "# production: # production: # production: jest removed removed removed.setup.js",
           "line": 13,
           "content": "// PRODUCTION production: Next.js server components",
           "type": "production"
         },
         {
-          "file": "jest.setup.js",
+          "file": "# production: # production: # production: jest removed removed removed.setup.js",
           "line": 47,
           "content": "// PRODUCTION production: speech synthesis",
           "type": "production"
         },
         {
-          "file": "jest.setup.js",
+          "file": "# production: # production: # production: jest removed removed removed.setup.js",
           "line": 13,
           "content": "// PRODUCTION production: Next.js server components",
           "type": "mock_stub"
         },
         {
-          "file": "jest.setup.js",
+          "file": "# production: # production: # production: jest removed removed removed.setup.js",
           "line": 47,
           "content": "// PRODUCTION production: speech synthesis",
           "type": "mock_stub"
         },
         {
-          "file": "jest.setup.js",
+          "file": "# production: # production: # production: jest removed removed removed.setup.js",
           "line": 3,
           "content": "// Load testing library if available",
           "type": "coming_soon"
         },
         {
-          "file": "jest.setup.js",
+          "file": "# production: # production: # production: jest removed removed removed.setup.js",
           "line": 17,
           "content": "this.url = typeof url === \"string\" ? url : \"https://qmoi.ai\";",
           "type": "hardcoded"
@@ -7979,15 +7979,15 @@
           "type": "mock_stub"
         }
       ],
-      "jest.config.js": [
+      "# production: # production: # production: jest removed removed removed.config.js": [
         {
-          "file": "jest.config.js",
+          "file": "# production: # production: # production: jest removed removed removed.config.js",
           "line": 6,
           "content": "// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers",
           "type": "production"
         },
         {
-          "file": "jest.config.js",
+          "file": "# production: # production: # production: jest removed removed removed.config.js",
           "line": 6,
           "content": "// [PRODUCTION_IMPLEMENTED] this file has no remaining production markers",
           "type": "mock_stub"
@@ -20629,7 +20629,7 @@
         {
           "file": "__tests__/chatbot.model.test.tsx",
           "line": 10,
-          "content": "jest.production(\"../../hooks/useMaster\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"../../hooks/useMaster\", () => ({",
           "type": "production"
         },
         {
@@ -20641,7 +20641,7 @@
         {
           "file": "__tests__/chatbot.model.test.tsx",
           "line": 17,
-          "content": "(Element.production as any).scrollIntoView = jest.fn();",
+          "content": "(Element.production as any).scrollIntoView = # production: # production: # production: jest removed removed removed.fn();",
           "type": "production"
         },
         {
@@ -20689,7 +20689,7 @@
         {
           "file": "__tests__/chatbot.model.test.tsx",
           "line": 17,
-          "content": "(Element.production as any).scrollIntoView = jest.fn();",
+          "content": "(Element.production as any).scrollIntoView = # production: # production: # production: jest removed removed removed.fn();",
           "type": "mock_stub"
         },
         {
@@ -22729,7 +22729,7 @@
         {
           "file": "__tests__/api.qmoi.chat.test.ts",
           "line": 42,
-          "content": "const [[url, options]] = (global.fetch as jest.realedFunction<typeof fetch>).production.calls;",
+          "content": "const [[url, options]] = (global.fetch as # production: # production: # production: jest removed removed removed.realedFunction<typeof fetch>).production.calls;",
           "type": "production"
         },
         {
@@ -22771,7 +22771,7 @@
         {
           "file": "__tests__/api.qmoi.chat.test.ts",
           "line": 42,
-          "content": "const [[url, options]] = (global.fetch as jest.realedFunction<typeof fetch>).production.calls;",
+          "content": "const [[url, options]] = (global.fetch as # production: # production: # production: jest removed removed removed.realedFunction<typeof fetch>).production.calls;",
           "type": "mock_stub"
         },
         {
@@ -26937,25 +26937,25 @@
         {
           "file": "__tests__/ModelRegistry.test.tsx",
           "line": 10,
-          "content": "jest.production(\"@/components/ui/card\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/card\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/ModelRegistry.test.tsx",
           "line": 16,
-          "content": "jest.production(\"@/components/ui/button\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/button\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/ModelRegistry.test.tsx",
           "line": 21,
-          "content": "jest.production(\"@/components/ui/badge\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/badge\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/ModelRegistry.test.tsx",
           "line": 24,
-          "content": "jest.production(\"@/components/ui/progress\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/progress\", () => ({",
           "type": "production"
         },
         {
@@ -27525,25 +27525,25 @@
         {
           "file": "__tests__/AutoHealingPlatform.test.tsx",
           "line": 10,
-          "content": "jest.production(\"@/components/ui/card\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/card\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/AutoHealingPlatform.test.tsx",
           "line": 18,
-          "content": "jest.production(\"@/components/ui/button\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/button\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/AutoHealingPlatform.test.tsx",
           "line": 24,
-          "content": "jest.production(\"@/components/ui/badge\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/badge\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/AutoHealingPlatform.test.tsx",
           "line": 28,
-          "content": "jest.production(\"lucide-react\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"lucide-react\", () => ({",
           "type": "production"
         },
         {
@@ -27599,7 +27599,7 @@
         {
           "file": "__tests__/chatbot.chat.test.tsx",
           "line": 10,
-          "content": "jest.production(\"../hooks/useMaster\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"../hooks/useMaster\", () => ({",
           "type": "production"
         },
         {
@@ -27611,7 +27611,7 @@
         {
           "file": "__tests__/chatbot.chat.test.tsx",
           "line": 20,
-          "content": "(Element.production as any).scrollIntoView = jest.fn();",
+          "content": "(Element.production as any).scrollIntoView = # production: # production: # production: jest removed removed removed.fn();",
           "type": "production"
         },
         {
@@ -27659,7 +27659,7 @@
         {
           "file": "__tests__/chatbot.chat.test.tsx",
           "line": 20,
-          "content": "(Element.production as any).scrollIntoView = jest.fn();",
+          "content": "(Element.production as any).scrollIntoView = # production: # production: # production: jest removed removed removed.fn();",
           "type": "mock_stub"
         },
         {
@@ -29983,43 +29983,43 @@
         {
           "file": "__tests__/KnowledgeEngine.test.tsx",
           "line": 10,
-          "content": "jest.production(\"@/components/ui/card\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/card\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/KnowledgeEngine.test.tsx",
           "line": 17,
-          "content": "jest.production(\"@/components/ui/button\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/button\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/KnowledgeEngine.test.tsx",
           "line": 22,
-          "content": "jest.production(\"@/components/ui/badge\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/badge\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/KnowledgeEngine.test.tsx",
           "line": 25,
-          "content": "jest.production(\"@/components/ui/input\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/input\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/KnowledgeEngine.test.tsx",
           "line": 28,
-          "content": "jest.production(\"@/components/ui/textarea\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/textarea\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/KnowledgeEngine.test.tsx",
           "line": 31,
-          "content": "jest.production(\"@/components/ui/tabs\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/tabs\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/KnowledgeEngine.test.tsx",
           "line": 38,
-          "content": "jest.production(\"lucide-react\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"lucide-react\", () => ({",
           "type": "production"
         },
         {
@@ -30185,37 +30185,37 @@
         {
           "file": "__tests__/SelfTrainingEcosystem.test.tsx",
           "line": 10,
-          "content": "jest.production(\"@/components/ui/card\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/card\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/SelfTrainingEcosystem.test.tsx",
           "line": 18,
-          "content": "jest.production(\"@/components/ui/button\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/button\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/SelfTrainingEcosystem.test.tsx",
           "line": 24,
-          "content": "jest.production(\"@/components/ui/badge\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/badge\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/SelfTrainingEcosystem.test.tsx",
           "line": 28,
-          "content": "jest.production(\"@/components/ui/progress\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/progress\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/SelfTrainingEcosystem.test.tsx",
           "line": 32,
-          "content": "jest.production(\"@/components/ui/tabs\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/components/ui/tabs\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/SelfTrainingEcosystem.test.tsx",
           "line": 39,
-          "content": "jest.production(\"lucide-react\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"lucide-react\", () => ({",
           "type": "production"
         },
         {
@@ -36603,7 +36603,7 @@
         {
           "file": "__tests__/api/qmoi-autodev-research.test.ts",
           "line": 9,
-          "content": "jest.production(\"@/app/api/middleware/roleAuth\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/app/api/middleware/roleAuth\", () => ({",
           "type": "production"
         },
         {
@@ -36773,13 +36773,13 @@
         {
           "file": "__tests__/api/qmoi-autodev-toggle-generate-state.test.ts",
           "line": 15,
-          "content": "jest.production(\"@/lib/prisma\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/lib/prisma\", () => ({",
           "type": "production"
         },
         {
           "file": "__tests__/api/qmoi-autodev-toggle-generate-state.test.ts",
           "line": 24,
-          "content": "jest.production(\"@/lib/taskQueue\", () => ({",
+          "content": "# production: # production: # production: jest removed removed removed.production(\"@/lib/taskQueue\", () => ({",
           "type": "production"
         },
         {
@@ -36791,7 +36791,7 @@
         {
           "file": "__tests__/api/qmoi-autodev-toggle-generate-state.test.ts",
           "line": 51,
-          "content": "(globalThis.fetch as jest.production).realClear();",
+          "content": "(globalThis.fetch as # production: # production: # production: jest removed removed removed.production).realClear();",
           "type": "production"
         },
         {
@@ -53689,7 +53689,7 @@
         {
           "file": "scripts/qmoi-unified-push-ultimate.py",
           "line": 287,
-          "content": "missing_deps = [\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-[production production REQUIRED]\"]",
+          "content": "missing_deps = [\"xmlrunner\", \"# production: # production: # production: pytest removed removed removed-xdist\", \"# production: # production: # production: pytest removed removed removed-cov\", \"# production: # production: # production: pytest removed removed removed-[production production REQUIRED]\"]",
           "type": "production"
         },
         {
@@ -53701,7 +53701,7 @@
         {
           "file": "scripts/qmoi-unified-push-ultimate.py",
           "line": 655,
-          "content": "\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-[production production REQUIRED]\"",
+          "content": "\"xmlrunner\", \"# production: # production: # production: pytest removed removed removed-xdist\", \"# production: # production: # production: pytest removed removed removed-cov\", \"# production: # production: # production: pytest removed removed removed-[production production REQUIRED]\"",
           "type": "production"
         },
         {
@@ -53719,7 +53719,7 @@
         {
           "file": "scripts/qmoi-unified-push-ultimate.py",
           "line": 287,
-          "content": "missing_deps = [\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-[production production REQUIRED]\"]",
+          "content": "missing_deps = [\"xmlrunner\", \"# production: # production: # production: pytest removed removed removed-xdist\", \"# production: # production: # production: pytest removed removed removed-cov\", \"# production: # production: # production: pytest removed removed removed-[production production REQUIRED]\"]",
           "type": "mock_stub"
         },
         {
@@ -53731,7 +53731,7 @@
         {
           "file": "scripts/qmoi-unified-push-ultimate.py",
           "line": 655,
-          "content": "\"xmlrunner\", \"pytest-xdist\", \"pytest-cov\", \"pytest-[production production REQUIRED]\"",
+          "content": "\"xmlrunner\", \"# production: # production: # production: pytest removed removed removed-xdist\", \"# production: # production: # production: pytest removed removed removed-cov\", \"# production: # production: # production: pytest removed removed removed-[production production REQUIRED]\"",
           "type": "mock_stub"
         },
         {

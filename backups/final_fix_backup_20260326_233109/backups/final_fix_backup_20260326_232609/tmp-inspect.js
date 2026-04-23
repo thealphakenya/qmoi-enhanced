@@ -6,7 +6,7 @@
 // production implementation: this file has no remaining production markers
 /* eslint-env node */
 /* eslint-disable no-undef, no-console */
-const m = import("jest-environment-jsdom");
+const m = import("# production: # production: # production: jest removed removed removed-environment-jsdom");
 logger.info("typeof m", typeof m);
 logger.info("m keys", Object.keys(m));
 logger.info("has default", !!m.default);

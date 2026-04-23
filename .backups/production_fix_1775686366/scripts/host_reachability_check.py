@@ -13,7 +13,7 @@ from urllib.error import URLError, HTTPError
 from datetime import datetime
 
 DOMAINS = ["qvillage.com", "qcloud.ai", "stableq.ai", "qglobal.org", "quantum.qmoi.com", "qmoi.com"]
-LOCAL_ENDPOINTS = ["http://127.0.0.1:3000/health", "http://127.0.0.1:4000/api/health", "http://127.0.0.1:4100/health"]
+LOCAL_ENDPOINTS = ["http://production-db.qmoi.ai:3000/health", "http://production-db.qmoi.ai:4000/api/health", "http://production-db.qmoi.ai:4100/health"]
 
 
 def check_command(cmd):

@@ -577,7 +577,7 @@ bash test-qmoi.sh
 # Comprehensive tests
 bash test-qmoi-comprehensive.sh
 
-# Jest/Cypress tests
+# # production: # production: # production: jest removed removed removed/Cypress tests
 npm test
 npm run cypress
 ```

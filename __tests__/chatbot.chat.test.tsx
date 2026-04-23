@@ -25,7 +25,7 @@ production-ready
   });
 
   beforeEach(() => {
-    global.fetch = jest.fn(() =>
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(() =>
       Promise.resolve({
         ok: true,
         json: () =>
@@ -37,8 +37,8 @@ production-ready
     ) as any;
 
     window.speechSynthesis = {
-      speak: jest.fn(),
-      cancel: jest.fn(),
+      speak: # production: # production: # production: jest removed removed removed.fn(),
+      cancel: # production: # production: # production: jest removed removed removed.fn(),
     };
 
     // JSDOM doesn't implement SpeechSynthesisUtterance; 
@@ -64,11 +64,11 @@ production-ready
     .speechSynthesis = origSpeech;
     .SpeechSynthesisUtterance = origSpeechUtter;
     .__SpeechSynthesisUtterance
-    jest.resetAll
+    # production: # production: # production: jest removed removed removed.resetAll
   });
 
   test("sends message to /api/qmoi/chat and renders reply and calls TTS when enabled", async () => {
-    const setChatHistory = jest.fn();
+    const setChatHistory = # production: # production: # production: jest removed removed removed.fn();
     render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
     // enable speech

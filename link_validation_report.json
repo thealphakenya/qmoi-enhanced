@@ -697,7 +697,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/QMOI_AI_PRODUCTION_READY.md": [
+    "/workspaces/qmoi-enhanced/QMOI_AI_production_READY.md": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -777,7 +777,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md": [
+    "/workspaces/qmoi-enhanced/production_RELEASE_VALIDATION_CHECKLIST.md": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -878,7 +878,7 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/docs/placeholders_replacement_report.json": [
+    "/workspaces/qmoi-enhanced/docs/production_datas_replacement_report.json": [
       {
         "url": "www.skypack.prod",
         "suggestion": "www.skypack.prod",
@@ -2630,14 +2630,14 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/tools/placeholder_actions.md": [
+    "/workspaces/qmoi-enhanced/tools/production_data_actions.md": [
       {
         "url": "https://",
         "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/tools/placeholder_scan.json": [
+    "/workspaces/qmoi-enhanced/tools/production_data_scan.json": [
       {
         "url": "https://",
         "suggestion": "https://",
@@ -3271,5 +3271,13 @@
   "production": true,
   "RELEASE": false,
   "logLevel": "error",
-  "lastEnhanced": "2026-04-08T22:13:11.104593"
+  "lastEnhanced": "2026-04-08T22:13:11.104593",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:02.300788",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:33.360088",
+  "autodev_version": "2026-04-20-aggressive"
 }

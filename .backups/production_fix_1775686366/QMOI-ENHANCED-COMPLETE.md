@@ -280,8 +280,8 @@ python scripts/start_qmoi_enhanced.py
 
 ### 4. Access the System
 
-- **Hugging Face Space**: http://localhost:7861
-- **API Status**: http://localhost:7860/status
+- **Hugging Face Space**: https://production-db.qmoi.ai
+- **API Status**: https://production-db.qmoi.ai/status
 - **System Reports**: reports/qmoi_startup_report.json
 
 ## 📊 System Capabilities
@@ -471,3 +471,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

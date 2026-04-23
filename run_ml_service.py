@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:55.764336 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.776281 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.441341 -->
 #!/usr/bin/env python3
 """
 ML Service Runner
@@ -39,6 +42,16 @@ def main():
     logger.info("ML Service starting...")
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         # Initialize the service
         logger.info("ML Service ready and waiting for requests")
 

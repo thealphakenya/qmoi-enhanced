@@ -13,7 +13,7 @@ class ProductionConfig:
     JWT_SECRET = os.getenv('JWT_SECRET')
 
     # External services
-    REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379')
+    REDIS_URL = os.getenv('REDIS_URL', 'redishttps://production-db.qmoi.ai')
     AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
     AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
 
@@ -40,7 +40,7 @@ production-ready
     production-ready
     Object.defineProperty(navigator, 'serviceWorker', {
       value: {
-        register: jest.fn().mockResolvedValue({
+        register: # production: # production: # production: jest removed removed removed.fn().mockResolvedValue({
           active: { state: 'activated' },
           waiting: null,
           installing: null
@@ -85,7 +85,7 @@ production-ready
 
     test('should handle service worker registration errors', async () => {
       production-ready
-      navigator.serviceWorker.register = jest.fn().mockRejectedValue(new Error('Registration failed'));
+      navigator.serviceWorker.register = # production: # production: # production: jest removed removed removed.fn().mockRejectedValue(new Error('Registration failed'));
 
       const registerSW = async () => {
         if ('serviceWorker' in navigator) {
@@ -122,7 +122,7 @@ production-ready
 
       // Simulate beforeinstallprompt event
       const event = new Event('beforeinstallprompt');
-      (event as any).prompt = jest.fn().mockResolvedValue({ outcome: 'accepted' });
+      (event as any).prompt = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue({ outcome: 'accepted' });
       (event as any).userChoice = Promise.resolve({ outcome: 'accepted' });
 
       window.dispatchEvent(event);
@@ -166,18 +166,18 @@ production-ready
   production-ready
     test('should cache essential resources', async () => {
       const cache = {
-        addAll: jest.fn().mockResolvedValue(undefined)
+        addAll: # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(undefined)
       };
 
       const caches = {
-        open: jest.fn().mockResolvedValue(cache)
+        open: # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(cache)
       };
 
       (global as any).caches = caches;
 
       // Simulate service worker install event
       const installEvent = {
-        waitUntil: jest.fn()
+        waitUntil: # production: # production: # production: jest removed removed removed.fn()
       };
 
       const CACHE_NAME = 'qglobalsim-v1';
@@ -202,18 +202,18 @@ production-ready
     test('should serve cached content when offline', async () => {
       const cachedResponse = { ok: true, data: 'cached content' };
       const cache = {
-        match: jest.fn().mockResolvedValue(cachedResponse)
+        match: # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(cachedResponse)
       };
 
       const caches = {
-        match: jest.fn().mockResolvedValue(cachedResponse)
+        match: # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(cachedResponse)
       };
 
       (global as any).caches = caches;
 
       // Simulate fetch event
       const fetchEvent = {
-        respondWith: jest.fn(),
+        respondWith: # production: # production: # production: jest removed removed removed.fn(),
         request: new Request('/qglobalsim/index.html')
       };
 
@@ -311,7 +311,7 @@ production-ready
       `;
 
       const element = document.getElementById('features');
-      const scrollIntoViewMock = jest.fn();
+      const scrollIntoViewMock = # production: # production: # production: jest removed removed removed.fn();
       element.scrollIntoView = scrollIntoViewMock;
 
       scrollToSection('features');

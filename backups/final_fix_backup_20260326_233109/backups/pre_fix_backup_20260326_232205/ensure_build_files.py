@@ -6,6 +6,8 @@
 // // production implementation: this file has no remaining production markers
 # ensure_build_files.py
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 # Required files with complete content
 """

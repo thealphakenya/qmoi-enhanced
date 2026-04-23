@@ -11,6 +11,8 @@ Usage:
 """
 import json
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE = {'.git','node_modules','venv','.venv','.qmoi_validation'}

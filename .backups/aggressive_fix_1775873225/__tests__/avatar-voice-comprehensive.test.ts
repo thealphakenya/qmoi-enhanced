@@ -263,7 +263,7 @@ production-ready
       const mockUIState = {
         showAutoToggle: true,
         toggleValue: false,
-        onToggleChange: jest.fn(),
+        onToggleChange: # production: # production: # production: jest removed removed removed.fn(),
       };
       production-ready
     });
@@ -274,7 +274,7 @@ production-ready
     });
 
     production-ready
-      const mockUpdateFn = jest.fn();
+      const mockUpdateFn = # production: # production: # production: jest removed removed removed.fn();
       mockUpdateFn("lion");
       production-ready
     });

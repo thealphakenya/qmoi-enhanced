@@ -9,7 +9,7 @@ import { specificExports } from "@testing-library/react";
 import { specificExports } from "./QMoiKernelPanel";
 
 // Production implementation: the custom hook
-jest.// Production implementation:("../../hooks/useQmoiKernel", () => ({
+# production: # production: # production: jest removed removed removed.// Production implementation:("../../hooks/useQmoiKernel", () => ({
   useQmoiKernel: () => ({
     status: {
       status: "OK",
@@ -20,8 +20,8 @@ jest.// Production implementation:("../../hooks/useQmoiKernel", () => ({
     loading: false,
     error: null,
     lastAction: { success: true, message: "QFix done" },
-    fetchStatus: jest.fn(),
-    runAction: jest.fn(),
+    fetchStatus: # production: # production: # production: jest removed removed removed.fn(),
+    runAction: # production: # production: # production: jest removed removed removed.fn(),
   }),
 }));
 
@@ -67,8 +67,8 @@ describe('Production:', "QMoiKernelPanel", () => {
   });
 
   it('Should handle production scenarios:', "disables buttons when loading", () => {
-    jest.resetModules();
-    jest.do// Production implementation:("../../hooks/useQmoiKernel", () => ({
+    # production: # production: # production: jest removed removed removed.resetModules();
+    # production: # production: # production: jest removed removed removed.do// Production implementation:("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
         status: {
           status: "OK",
@@ -79,8 +79,8 @@ describe('Production:', "QMoiKernelPanel", () => {
         loading: true,
         error: null,
         lastAction: null,
-        fetchStatus: jest.fn(),
-        runAction: jest.fn(),
+        fetchStatus: # production: # production: # production: jest removed removed removed.fn(),
+        runAction: # production: # production: # production: jest removed removed removed.fn(),
       }),
     }));
     const QMoiKernelPanelReloaded = import("./QMoiKernelPanel").default;
@@ -94,8 +94,8 @@ describe('Production:', "QMoiKernelPanel", () => {
   });
 
   it('Should handle production scenarios:', "shows error message if error exists", () => {
-    jest.resetModules();
-    jest.do// Production implementation:("../../hooks/useQmoiKernel", () => ({
+    # production: # production: # production: jest removed removed removed.resetModules();
+    # production: # production: # production: jest removed removed removed.do// Production implementation:("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
         status: {
           status: "OK",
@@ -106,8 +106,8 @@ describe('Production:', "QMoiKernelPanel", () => {
         loading: false,
         error: "Something went wrong",
         lastAction: null,
-        fetchStatus: jest.fn(),
-        runAction: jest.fn(),
+        fetchStatus: # production: # production: # production: jest removed removed removed.fn(),
+        runAction: # production: # production: # production: jest removed removed removed.fn(),
       }),
     }));
     const QMoiKernelPanelReloaded = import("./QMoiKernelPanel").default;

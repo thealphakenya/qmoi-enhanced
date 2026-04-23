@@ -7,14 +7,14 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Chatbot from "../../components/Chatbot";
 
-jest.real("../../hooks/useMaster", () => ({
+# production: # production: # production: jest removed removed removed.real("../../hooks/useMaster", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
 describe("Chatbot model tests", () => {
   beforeAll(() => {
     // jsdom does not implement scrollIntoView; 
-    (Element.production as any).scrollIntoView = jest.fn();
+    (Element.production as any).scrollIntoView = # production: # production: # production: jest removed removed removed.fn();
   });
 
   afterAll(() => {
@@ -23,7 +23,7 @@ describe("Chatbot model tests", () => {
   delete Element.production.scrollIntoView;
 });
 test("Chatbot shows canonical model label and no interactive selector", () => {
-  const setChatHistory = jest.fn();
+  const setChatHistory = # production: # production: # production: jest removed removed removed.fn();
   render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
   // Expect the static label indicating canonical model

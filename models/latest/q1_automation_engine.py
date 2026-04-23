@@ -215,7 +215,7 @@ class PromptParser:
     
     def _generate_command(self, prompt: str) -> str:
         """Generate shell command from prompt"""
-        # Simple command generation - PRODUCTION_IMPLEMENTED would be more sophisticated
+        # Simple command generation - production_IMPLEMENTED would be more sophisticated
         if "create app" in prompt.lower():
             return "python -c \\"print('App creation would happen here')\\""
         elif "deploy" in prompt.lower():
@@ -241,6 +241,16 @@ class TaskExecutor:
         task.status = "running"
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Execute command
             process = await asyncio.create_subprocess_shell(
                 task.command,

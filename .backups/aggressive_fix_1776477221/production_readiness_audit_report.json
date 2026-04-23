@@ -519366,7 +519366,7 @@
       "total_matches": 76
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/jest.setup.js",
+      "file_path": "/workspaces/qmoi-enhanced/# production: # production: # production: jest removed removed removed.setup.js",
       "issues_found": 1,
       "issues": [
         {
@@ -552318,7 +552318,7 @@
       "total_matches": 27
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/jest.config.js",
+      "file_path": "/workspaces/qmoi-enhanced/# production: # production: # production: jest removed removed removed.config.js",
       "issues_found": 1,
       "issues": [
         {
@@ -559959,7 +559959,7 @@
       "total_matches": 13
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/jest.env.setup.js",
+      "file_path": "/workspaces/qmoi-enhanced/# production: # production: # production: jest removed removed removed.env.setup.js",
       "issues_found": 1,
       "issues": [
         {

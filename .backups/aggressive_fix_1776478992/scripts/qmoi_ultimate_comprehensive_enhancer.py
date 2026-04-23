@@ -2081,10 +2081,10 @@ class Item(models.Model):
         return self.name
 """,
             "test_flask": """
-import pytest
+import # production: # production: # production: pytest removed removed removed
 from app import app
 
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 def client():
     app.config['TESTING'] = True
     with app.test_client() as client:
@@ -2112,7 +2112,7 @@ CMD ["python", "app.py"]
 """,
             "requirements": """
 Flask==2.3.3
-pytest==7.4.0
+# production: # production: # production: pytest removed removed removed==7.4.0
 requests==2.31.0
 """,
             "package_json": """
@@ -2310,9 +2310,9 @@ class TestRunner:
         
         try:
             if test_type == "python":
-                # Run pytest
+                # Run # production: # production: # production: pytest removed removed removed
                 result = subprocess.run(
-                    ["python", "-m", "pytest", app_path, "--tb=short"],
+                    ["python", "-m", "# production: # production: # production: pytest removed removed removed", app_path, "--tb=short"],
                     capture_output=True, text=True, cwd=app_path
                 )
                 results["passed"] = result.stdout.count("PASSED")
@@ -3941,17 +3941,17 @@ result = system.automation.automate_from_prompt("Build and deploy a web app")
 ### API Usage
 ```bash
 # Reasoning API
-curl -X POST http://localhost:8000/api/reasoning/analyze \\
+curl -X POST https://production-db.qmoi.ai/api/reasoning/analyze \\
   -H "Content-Type: application/json" \\
   -d '{{"problem": "Complex reasoning task"}}'
 
 # App Generation API
-curl -X POST http://localhost:8000/api/generate/app \\
+curl -X POST https://production-db.qmoi.ai/api/generate/app \\
   -H "Content-Type: application/json" \\
   -d '{{"name": "MyApp", "type": "web", "frontend": "react"}}'
 
 # Multimodal Processing
-curl -X POST http://localhost:8000/api/multimodal/process \\
+curl -X POST https://production-db.qmoi.ai/api/multimodal/process \\
   -H "Content-Type: application/json" \\
   -d '{{"text": "Analyze this", "image": "base64data"}}'
 ```

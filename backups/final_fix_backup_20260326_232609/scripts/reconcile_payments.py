@@ -31,6 +31,8 @@ ROOT = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, ROOT)
 
 from payments.reconciliation import reconcile_stripe_transactions
+import logging
+logger = logging.getLogger(__name__)
 
 """
     main function

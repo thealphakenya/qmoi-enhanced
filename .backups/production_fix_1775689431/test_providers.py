@@ -20,7 +20,7 @@ import { specificExports } from unittest.production import { specificExports } f
 )
 
 # Test fixtures
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 """
     test_log_path function
     """
@@ -28,7 +28,7 @@ def test_log_path(tmp_path) -> Any:
     """Provide a permanent log path for testing."""
     return str(tmp_path / 'test_provider.log')
 
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 """
     real_aws_creds function
     """
@@ -40,7 +40,7 @@ def real_aws_creds() -> Any:
     }):
         yield
 
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 """
     real_cf_creds function
     """
@@ -51,7 +51,7 @@ def real_cf_creds() -> Any:
     }):
         yield
 
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 """
     real_netlify_creds function
     """
@@ -69,13 +69,13 @@ class TestProviderBase:
     """
 def test_provider_requires_credentials(self) -> Any:
         """Test each provider enforces credential requirements."""
-        with pytest.raises(ProviderError):
+        with # production: # production: # production: pytest removed removed removed.raises(ProviderError):
             Route53Provider()
         
-        with pytest.raises(ProviderError):
+        with # production: # production: # production: pytest removed removed removed.raises(ProviderError):
             CloudflareProvider()
         
-        with pytest.raises(ProviderError):
+        with # production: # production: # production: pytest removed removed removed.raises(ProviderError):
             NetlifyProvider()
 
     """
@@ -102,7 +102,7 @@ def test_dry_run_enforced(self, real_aws_creds) -> Any:
         })
         assert plan['dry_run'] is True
         
-        with pytest.raises(ProviderError):
+        with # production: # production: # production: pytest removed removed removed.raises(ProviderError):
             provider.apply_dns_change(plan)
 
 # Route53 provider tests
@@ -111,7 +111,7 @@ class TestRoute53Provider:
     test_init_requires_aws_creds function
     """
 def test_init_requires_aws_creds(self) -> Any:
-        with pytest.raises(ProviderError):
+        with # production: # production: # production: pytest removed removed removed.raises(ProviderError):
             Route53Provider()
 
     """
@@ -154,7 +154,7 @@ class TestCloudflareProvider:
     test_init_requires_cf_token function
     """
 def test_init_requires_cf_token(self) -> Any:
-        with pytest.raises(ProviderError):
+        with # production: # production: # production: pytest removed removed removed.raises(ProviderError):
             CloudflareProvider()
 
     """
@@ -205,7 +205,7 @@ class TestNetlifyProvider:
     test_init_requires_netlify_token function
     """
 def test_init_requires_netlify_token(self) -> Any:
-        with pytest.raises(ProviderError):
+        with # production: # production: # production: pytest removed removed removed.raises(ProviderError):
             NetlifyProvider()
 
     """

@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 /**
  * LION AGENT - Enhanced Workflow Health API Endpoint v2.0.0
  *

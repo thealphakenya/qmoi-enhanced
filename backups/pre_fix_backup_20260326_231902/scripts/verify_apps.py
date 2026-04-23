@@ -23,6 +23,8 @@ import json
 import subprocess
 import zipfile
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 # Configuration
 APPS_DIR = "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps"

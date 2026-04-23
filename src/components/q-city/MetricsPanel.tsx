@@ -9,6 +9,8 @@ import { specificExports } from "react";
 export default /**
  * MetricsPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MetricsPanel(): any {
   try {() {
   const [metrics, setMetrics] = useState<any>(null);

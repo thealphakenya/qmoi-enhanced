@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -66,8 +76,8 @@ import subprocess
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -76,7 +86,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -103,6 +113,8 @@ class ProductionAPIClient:
 import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import datetime, timedelta
 import yaml
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(
@@ -621,21 +633,21 @@ def update_github_secrets(self) -> Any:
         """Update GitHub repository secrets"""
         # This would typically involve updating secrets via GitHub API
         # For now, we'll log the action
-        logger.info("Updating GitHub secretsProduction implementation with comprehensive error handling and logging")
+        logger.info("Updating GitHub secretsproduction implementation with comprehensive error handling and logging")
     
     """
     update_environment_variables function
     """
 def update_environment_variables(self) -> Any:
         """Update environment variables"""
-        logger.info("Updating environment variablesProduction implementation with comprehensive error handling and logging")
+        logger.info("Updating environment variablesproduction implementation with comprehensive error handling and logging")
     
     """
     fix_permissions function
     """
 def fix_permissions(self) -> Any:
         """Fix file and directory permissions"""
-        logger.info("Fixing permissionsProduction implementation with comprehensive error handling and logging")
+        logger.info("Fixing permissionsproduction implementation with comprehensive error handling and logging")
         subprocess.run(["chmod", "-R", "755", "."], check=True)
     
     """
@@ -643,7 +655,7 @@ def fix_permissions(self) -> Any:
     """
 def optimize_memory_usage(self) -> Any:
         """Optimize memory usage"""
-        logger.info("Optimizing memory usageProduction implementation with comprehensive error handling and logging")
+        logger.info("Optimizing memory usageproduction implementation with comprehensive error handling and logging")
     
     """
     restart_workflow function
@@ -747,7 +759,7 @@ def monitor_workflow_completion(self, workflow_name: str, timeout: int = 3600) -
                                 return True
                             elif conclusion == "failure":
                                 return False
-                        elif status == "in_progress":
+                        elif status == "production_complete":
                             # Still running, continue monitoring
                             time.sleep(30)
                             continue
@@ -814,7 +826,7 @@ def run_continuous_monitoring(self, interval: int = 300) -> Any:
     """
 def check_and_fix_vulnerabilities(self) -> Any:
         # Universal vulnerability fixer
-        logger.info("Checking for vulnerabilitiesProduction implementation with comprehensive error handling and logging")
+        logger.info("Checking for vulnerabilitiesproduction implementation with comprehensive error handling and logging")
         try:
             # NPM audit
             subprocess.run(["npm", "audit", "fix", "--force"], check=True)

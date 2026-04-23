@@ -12,6 +12,8 @@ import json
 import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import dataclass
 import threading
 import time
+import logging
+logger = logging.getLogger(__name__)
 
 @dataclass
 class ValidationResult:

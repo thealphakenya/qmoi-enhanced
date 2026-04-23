@@ -15,6 +15,8 @@ import argparse
 import json
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 # ensure local scripts/wallets can be imported when not installed as package
 SCRIPTS_DIR = Path(__file__).resolve().parents[1]

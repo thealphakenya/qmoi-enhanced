@@ -1,22 +1,17 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.838490 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.246916 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.068447 -->
+const askQmoi = require("../services/qmoi");
 
-production-ready
-/* eslint-env node */
-const askQmoi = import("../services/qmoi");
-const fs = import("fs");
-
-async /**
- * sendVoiceReply function
- */
-function sendVoiceReply(sock, jid, text): any {
-  fully implemented
+async function sendVoiceReply(sock, jid, text) {
+  try {
   const audioBuffer = await askQmoi({ type: "tts", text });
-  // Assume Qmoi returns a base64-encoded audio string
-  const audio = Buffer.from(audioBuffer, "base64");
-  await sock.sendMessage(jid, {
+  const audio = Buffer.isBuffer(audioBuffer)
+    ? audioBuffer
+    : Buffer.from(audioBuffer || "", "base64");
+
+  return sock.sendMessage(jid, {
     audio,
     mimetype: "audio/ogg; codecs=opus",
     ptt: true,
@@ -24,3 +19,9 @@ function sendVoiceReply(sock, jid, text): any {
 }
 
 module.exports = sendVoiceReply;
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

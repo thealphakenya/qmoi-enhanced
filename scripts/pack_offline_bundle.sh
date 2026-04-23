@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:58.102892 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:13.952143 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.627259 -->
 
 #!/usr/bin/env bash
 # Create a self-contained offline bundle of PWAs and server code

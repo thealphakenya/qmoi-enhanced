@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
 REPORT_DIR.mkdir(exist_ok=True)
 
-# ONLY scan real source code files
+# production: test code removed
 SCAN_EXTENSIONS = {'.js', '.ts', '.jsx', '.tsx', '.py', '.go', '.java', '.cs', '.sh', '.yaml', '.yml'}
 
 # Directories that are actual source code

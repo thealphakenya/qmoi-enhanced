@@ -71,6 +71,8 @@ const SidebarContext = React.createContext<SidebarContextType>({
 export /**
  * useSidebar function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function useSidebar(): any {
   const context = React.useContext(SidebarContext);
   if (!context) {

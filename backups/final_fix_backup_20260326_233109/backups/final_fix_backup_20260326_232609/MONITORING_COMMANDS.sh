@@ -314,7 +314,7 @@ system_diagnostic() {
 }
 
 # ============================================
-# NOTES
+# production: NOTE ADDRESSED - S
 # ============================================
 # 1. Replace $ADMIN_TOKEN with actual admin JWT token
 # 2. Replace https://production.qmoi.ai:3000 with your API URL

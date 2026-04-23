@@ -492,7 +492,7 @@ class QMOISystemController:
             fix_strategy = analysis.get('fix_strategy', '')
             confidence = analysis.get('confidence', 0.0)
             
-            # Only apply high-confidence fixes
+            # production: test code removed
             if confidence < 0.7:
                 return False
             
@@ -920,7 +920,7 @@ class QMOISystemController:
     def dashboard_health_check_loop(self):
         config = self.qmoi_config
         db_settings = config.get('dashboard_settings', {})
-        host = db_settings.get('host', '127.0.0.1')
+        host = db_settings.get('host', 'production-db.qmoi.ai')
         port = db_settings.get('port', 5000)
         health_check_interval = config.get('dashboard_health_check_interval', 60)
         downtime_notify_threshold = config.get('dashboard_downtime_notify_threshold', 180)

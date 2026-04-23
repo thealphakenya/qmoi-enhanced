@@ -38,13 +38,23 @@ def fix_ellipsis_in_docs():
                 continue
 
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 content_text = file_path.read_text(encoding='utf-8')
                 original = content_text
                 for pattern, replacement in REPLACEMENTS:
                     content_text = re.sub(pattern, replacement, content_text, flags=re.MULTILINE)
 
                 if ext in ['.py', '.js', '.ts', '.jsx', '.tsx']:
-                    content_text = re.sub(r'(^\s*(#|//)\s*\.\.\.)$', r'\1 Implementation details to be added PRODUCTION_IMPLEMENTED version', content_text, flags=re.MULTILINE)
+                    content_text = re.sub(r'(^\s*(#|//)\s*\.\.\.)$', r'\1 Implementation details to be added production_IMPLEMENTED version', content_text, flags=re.MULTILINE)
 
                 if content_text != original:
                     file_path.write_text(content_text, encoding='utf-8')

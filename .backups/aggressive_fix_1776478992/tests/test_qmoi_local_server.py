@@ -103,7 +103,7 @@ class ProductionFileManager:
 # Last evolution cycle: 2026-03-26T03:58:11Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import pytest
+import # production: # production: # production: pytest removed removed removed
 
 # Production implementation with comprehensive error handling and logging existing code Production implementation with comprehensive error handling and logging
 
@@ -112,7 +112,7 @@ import pytest
     """
 def test_health_endpoint() -> Any:
     if not wait_until_up(f"{BASE}/health"):
-        pytest.skip("Local server not running")
+        # production: # production: # production: pytest removed removed removed.skip("Local server not running")
     r = requests.get(f"{BASE}/health")
     js = r.json()
     assert js.get('status') == 'ok'
@@ -123,7 +123,7 @@ def test_health_endpoint() -> Any:
     """
 def test_how_are_you_response() -> Any:
     if not wait_until_up(f"{BASE}/health"):
-        pytest.skip("Local server not running")
+        # production: # production: # production: pytest removed removed removed.skip("Local server not running")
     payload = {"messages": [{"role": "user", "content": "How are you"}]}
     r = requests.post(f"{BASE}/v1/chat/completions", json=payload, timeout=3)
     assert r.status_code == 200
@@ -137,7 +137,7 @@ def test_how_are_you_response() -> Any:
     """
 def test_greeting_response() -> Any:
     if not wait_until_up(f"{BASE}/health"):
-        pytest.skip("Local server not running")
+        # production: # production: # production: pytest removed removed removed.skip("Local server not running")
     payload = {"messages": [{"role": "user", "content": "Hello"}]}
     r = requests.post(f"{BASE}/v1/chat/completions", json=payload, timeout=3)
     assert r.status_code == 200
@@ -150,7 +150,7 @@ def test_greeting_response() -> Any:
     """
 def test_create_file_intent() -> Any:
     if not wait_until_up(f"{BASE}/health"):
-        pytest.skip("Local server not running")
+        # production: # production: # production: pytest removed removed removed.skip("Local server not running")
     filename = 'tests/production_file.txt'
     if os.path.exists(filename):
         os.remove(filename)

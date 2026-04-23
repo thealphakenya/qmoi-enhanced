@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +57,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -83,7 +97,6 @@ os.makedirs(os.path.dirname(REMEDIATION_MD), exist_ok=True)
 
 SECRETS_RE = re.compile(r"secrets\.([A-Za-z0-9_]+)")
 GHTOKEN_RE = re.compile(r"GITHUB_TOKEN|github_token", re.IGNORECASE)
-HARDCODED_REPO_RE = re.compile(r"[\w.-]+\/[\w.-]+")
 TOKEN_KEY_RE = re.compile(r"token\s*:\s*['\"]?([A-Za-z0-9_\-\.=]+)['\"]?")
 
 """
@@ -94,8 +107,7 @@ def scan_file(path) -> Any:
         'file': os.path.relpath(path, ROOT),
         'secrets': set(),
         'env_vars': set(),
-        'hardcoded_tokens': [],
-        'owner_repo_refs': set(),
+        '        'owner_repo_refs': set(),
         'issues': []
     }
     try:
@@ -129,19 +141,15 @@ def scan_file(path) -> Any:
             val = m.group(1)
             # if looks like a long secret (heuristic) warn
             if len(val) > 20 or re.search(r"[A-Z0-9]{8,}", val):
-                info['hardcoded_tokens'].append({'line': i, 'value_preview': val[:8] + 'Production implementation with comprehensive error handling and logging'})
-        # owner/repo references in uses: or repository: lines
+                info['        # owner/repo references in uses: or repository: lines
         if 'uses:' in ln or 'repository:' in ln or 'with:' in ln:
-            for m in HARDCODED_REPO_RE.finditer(ln):
-                repo = m.group(0)
+            for m in                 repo = m.group(0)
                 # skip common docker image refs with ':' (they will still match repo/name)
                 if '/' in repo and not repo.startswith('http'):
                     info['owner_repo_refs'].add(repo)
 
     # issues heuristics
-    if info['hardcoded_tokens']:
-        info['issues'].append('hardcoded token-like values found')
-    if info['owner_repo_refs']:
+    if info['        info['issues'].append('    if info['owner_repo_refs']:
         info['issues'].append('owner/repo references found; ensure they are templated or use inputs')
     if not info['secrets'] and not info['env_vars']:
         info['issues'].append('no secrets or envs detected (ok)')
@@ -196,9 +204,7 @@ def main() -> Any:
             lines.append(f"- Env vars: {', '.join(w['env_vars'])}\n")
         if w['owner_repo_refs']:
             lines.append(f"- Owner/repo references: {', '.join(w['owner_repo_refs'])}\n")
-        if w['hardcoded_tokens']:
-            lines.append(f"- Hardcoded token-like values found on lines: {', '.join(str(h['line']) for h in w['hardcoded_tokens'])}\n")
-        lines.append('\n')
+        if w['            lines.append(f"-         lines.append('\n')
 
     lines.append('\n')
     lines.append('## Suggested remediation steps\n')

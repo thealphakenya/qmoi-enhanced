@@ -66,7 +66,7 @@ src/
 - **App.tsx**: Main React application component with routing and layout
 - **index.css**: Global CSS styles and theme definitions
 - **index.js**: React application entry point
-- **setupTests.ts**: Jest testing configuration and setup
+- **setupTests.ts**: # production: # production: # production: jest removed removed removed testing configuration and setup
 - **wallet.ts**: Cryptocurrency wallet integration utilities
 
 ### Directory Contents
@@ -388,10 +388,10 @@ components/
 ## 🧪 Testing Infrastructure
 
 ### setupTests.ts
-**Purpose**: Jest and testing library configuration
+**Purpose**: # production: # production: # production: jest removed removed removed and testing library configuration
 **production Status**: ✅ production-ready testing setup
 **Configuration**:
-- Jest environment setup
+- # production: # production: # production: jest removed removed removed environment setup
 - Testing library configuration
 - [PRODUCTION_IMPLEMENTED] utilities
 - Global test helpers
@@ -452,7 +452,7 @@ components/
 - UI libraries (custom component library)
 - State management (Zustand, Redux)
 - API clients (Axios, Fetch API)
-- Testing frameworks (Jest, React Testing Library)
+- Testing frameworks (# production: # production: # production: jest removed removed removed, React Testing Library)
 
 ### Internal Dependencies
 - Shared utilities and helpers
@@ -614,3 +614,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

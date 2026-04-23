@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // QMOI Enhanced API Testing Suite
-// Run with: npm test or npx jest --config=jest.config.js
+// Run with: npm test or npx # production: # production: # production: jest removed removed removed --config=# production: # production: # production: jest removed removed removed.config.js
 // IMPLEMENTED: These are integration tests requiring a running server or proper MSW setup
 // For now, skipping to focus on component/hook tests
 

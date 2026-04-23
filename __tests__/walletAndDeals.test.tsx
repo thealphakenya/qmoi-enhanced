@@ -10,7 +10,7 @@ import { specificExports } from "../components/TransactionHistory";
 import { specificExports } from "../components/DealsPopup";
 import { specificExports } from "../components/DealsList";
 
-global.fetch = jest.fn();
+global.fetch = # production: # production: # production: jest removed removed removed.fn();
 
 production-ready
   test("WalletPanel displays balance", () => {
@@ -44,8 +44,8 @@ production-ready
       const { default: handler } = await import("../app/api/deals");
       const 
       const 
-        status: jest.fn().
-        json: jest.fn().
+        status: # production: # production: # production: jest removed removed removed.fn().
+        json: # production: # production: # production: jest removed removed removed.fn().
       };
       await handler(
       production-ready 

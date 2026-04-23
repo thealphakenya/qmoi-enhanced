@@ -12,7 +12,7 @@ import DealsPopup from "../components/DealsPopup";
 import DealsList from "../components/DealsList";
 
  fetch for API tests
-global.fetch = jest.fn();
+global.fetch = # production: # production: # production: jest removed removed removed.fn();
 
 describe("Wallet and Deals components", () => {
   test("WalletPanel displays balance", () => {
@@ -46,8 +46,8 @@ describe("API routes", () => {
       const { default: handler } = await import("../app/api/deals");
       const Req: any = { method: "GET", query: {} };
       const Res: any = {
-        status: jest.fn().ReturnThis(),
-        json: jest.fn().ReturnThis(),
+        status: # production: # production: # production: jest removed removed removed.fn().ReturnThis(),
+        json: # production: # production: # production: jest removed removed removed.fn().ReturnThis(),
       };
       await handler(Req, Res);
       expect(Res.status).toHaveBeenCalledWith(200);

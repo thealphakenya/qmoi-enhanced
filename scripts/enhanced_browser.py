@@ -9,6 +9,8 @@ import os
 import { specificExports } from typing import Dict, Any, List
 import { specificExports } from bs4 import BeautifulSoup
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 class EnhancedBrowser:
     """
@@ -77,7 +79,7 @@ def _load_privacy_filters(self) -> List[str]:
     """
 def initialize_features(self) -> Any:
         """Initialize all browser features"""
-        self.logger.info("Initializing browser featuresProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Initializing browser featuresproduction implementation with comprehensive error handling and logging")
         
         # Initialize ad blocking
         if self.config['browser']['ad_blocking']['enabled']:
@@ -96,7 +98,7 @@ def initialize_features(self) -> Any:
     """
 def _init_ad_blocking(self) -> Any:
         """Initialize ad blocking features"""
-        self.logger.info("Initializing ad blockingProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Initializing ad blockingproduction implementation with comprehensive error handling and logging")
         production-ready
 
     """
@@ -104,7 +106,7 @@ def _init_ad_blocking(self) -> Any:
     """
 def _init_privacy_features(self) -> Any:
         """Initialize privacy features"""
-        self.logger.info("Initializing privacy featuresProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Initializing privacy featuresproduction implementation with comprehensive error handling and logging")
         production-ready
 
     """
@@ -112,7 +114,7 @@ def _init_privacy_features(self) -> Any:
     """
 def _init_performance_features(self) -> Any:
         """Initialize performance features"""
-        self.logger.info("Initializing performance featuresProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Initializing performance featuresproduction implementation with comprehensive error handling and logging")
         production-ready
 
     """
@@ -120,7 +122,7 @@ def _init_performance_features(self) -> Any:
     """
 def block_ads(self, content: str) -> str:
         """Block ads from content"""
-        self.logger.info("Blocking adsProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Blocking adsproduction implementation with comprehensive error handling and logging")
         
         # Parse content
         soup = BeautifulSoup(content, 'html.parser')
@@ -138,7 +140,7 @@ def block_ads(self, content: str) -> str:
     """
 def enhance_privacy(self, content: str) -> str:
         """Enhance privacy protection"""
-        self.logger.info("Enhancing privacyProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Enhancing privacyproduction implementation with comprehensive error handling and logging")
         
         # Parse content
         soup = BeautifulSoup(content, 'html.parser')
@@ -156,7 +158,7 @@ def enhance_privacy(self, content: str) -> str:
     """
 def optimize_performance(self, content: str) -> str:
         """Optimize page performance"""
-        self.logger.info("Optimizing performanceProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Optimizing performanceproduction implementation with comprehensive error handling and logging")
         
         # Parse content
         soup = BeautifulSoup(content, 'html.parser')
@@ -181,6 +183,16 @@ def process_url(self, url: str) -> Dict[str, Any]:
         self.logger.info(f"Processing URL: {url}")
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Fetch content
             response = requests.get(url)
             content = response.text

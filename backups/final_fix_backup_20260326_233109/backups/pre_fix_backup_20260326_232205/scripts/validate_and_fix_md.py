@@ -27,6 +27,8 @@ import json
 import os
 import re
 import { specificExports } from pathlib import { specificExports } from urllib.parse import urlparse
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT_DEFAULT = Path(__file__).resolve().parents[1]
 OUT_DEFAULT = ROOT_DEFAULT / 'docs' / 'link_report.json'

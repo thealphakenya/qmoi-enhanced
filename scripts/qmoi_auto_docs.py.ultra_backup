@@ -754,7 +754,10 @@ def add_missing_examples(self) -> Any:
     """
 def generate_example_from_content(self, content: str) -> Optional[str]:
         """Generate data from documentation content"""
-        # Extract component/function name
+        # Extract component/// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function name
         name_match = re.search(r'#\s+(\w+)', content)
         if name_match:
             name = name_match.group(1)

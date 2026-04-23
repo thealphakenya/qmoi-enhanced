@@ -5,6 +5,8 @@
 
 # 
 from pathlib import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 scan_files = 4430
 production_files = 358

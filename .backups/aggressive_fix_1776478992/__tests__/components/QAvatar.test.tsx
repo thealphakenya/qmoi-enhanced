@@ -13,7 +13,7 @@ class ProductionConfig:
     JWT_SECRET = os.getenv('JWT_SECRET')
 
     # External services
-    REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379')
+    REDIS_URL = os.getenv('REDIS_URL', 'redishttps://production-db.qmoi.ai')
     AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
     AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
 

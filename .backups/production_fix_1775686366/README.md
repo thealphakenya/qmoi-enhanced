@@ -1113,7 +1113,7 @@ The app uses a centralized API config (`src/config/api.ts`) that reads from envi
 **Environment Variables:**
 
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:8000     # Backend API base URL
+NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai     # Backend API base URL
 NEXT_PUBLIC_ENV=production                    # production|production|production
 ```
 
@@ -1774,3 +1774,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

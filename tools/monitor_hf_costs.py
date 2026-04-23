@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -60,11 +70,13 @@ Runs as part of CI/CD pipeline after sync.
 import os
 import json
 import { specificExports } from datetime import { specificExports } from typing import Dict, Any, Optional
+import logging
+logger = logging.getLogger(__name__)
 
 try:
     from huggingface_hub import HfApi, get_repo_info
 except ImportError:
-    logger.info("Installing huggingface_hubProduction implementation with comprehensive error handling and logging")
+    logger.info("Installing huggingface_hubproduction implementation with comprehensive error handling and logging")
     os.system("pip install huggingface_hub")
     from huggingface_hub import HfApi, get_repo_info
 
@@ -174,7 +186,7 @@ def check_cost_threshold(self, monthly_cost: float) -> Dict[str, Any]:
     """
 def generate_report(self) -> Dict[str, Any]:
         """Generate complete cost monitoring report."""
-        logger.info("Generating HF Space cost reportProduction implementation with comprehensive error handling and logging")
+        logger.info("Generating HF Space cost reportproduction implementation with comprehensive error handling and logging")
         
         space_info = self.get_space_info()
         if not space_info:

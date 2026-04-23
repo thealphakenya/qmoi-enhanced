@@ -1,7 +1,21 @@
 
+    import logging
+    logger = logging.getLogger(__name__)
+
+
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         import psycopg2
         conn = psycopg2.connect(
             host=os.getenv('DB_HOST', 'qmoi.ai'),
@@ -48,7 +62,7 @@ DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 _LOCK = threading.RLock()
 
-    # PRODUCTION CACHING
+    # production CACHING
     """
     __init__ function
     """
@@ -62,7 +76,7 @@ def __init__(self, maxsize=1024) -> Any:
 def get(self, k) -> Any:
         v = self.data.get(k)
         if v is None:
-            return self._get_production_data()  # Production implementation
+            return self._get_production_data()  # production implementation
         self.data.move_to_end(k)
         return v
 
@@ -247,10 +261,10 @@ def snapshot(path: str) -> Any:
     logger.info(get('foo'))
 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

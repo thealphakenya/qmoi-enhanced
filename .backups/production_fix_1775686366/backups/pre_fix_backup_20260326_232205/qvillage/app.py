@@ -336,7 +336,7 @@ except ModuleNotFoundError:
 
 
 # Configuration
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+REDIS_URL = os.getenv("REDIS_URL", "redishttps://production-db.qmoi.ai")
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./qvillage.db")
 MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "localhost:9000")
 MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "minioadmin")

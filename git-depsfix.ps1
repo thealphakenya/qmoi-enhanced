@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:01.179540 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.320837 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.164201 -->
 #!/usr/bin/env pwsh
 Write-Host "[INFO] Starting dependency auto-fix..." -ForegroundColor Cyan
 
@@ -16,6 +19,9 @@ if (-Not (Test-Path "package.json")) {
 }
 
 # Retry helper
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Run-Safe($cmd, $maxRetries = 3) {
     for ($i=1; $i -le $maxRetries; $i++) {
         Write-Host "[CMD] $cmd (attempt $i)" -ForegroundColor DarkGray

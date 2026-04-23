@@ -28,6 +28,8 @@ import subprocess
 import argparse
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import List, Dict, Tuple, Optional
 import concurrent.futures
+import logging
+logger = logging.getLogger(__name__)
 
 # Setup logging
 logging.basicConfig(

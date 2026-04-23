@@ -730,7 +730,7 @@
       "wiki.qmoi.com)": 1,
       "support.qmoi.com": 1,
       "wiki.qmoi.com": 1,
-      "github-pages-PRODUCTION.qmoi.app": 4,
+      "github-pages-production.qmoi.app": 4,
       "forms.gle": 4,
       "cdn.qmoi.app": 6,
       "www.webpagetest.org": 4,
@@ -739,7 +739,7 @@
       "sentry.io": 4,
       "artillery.io": 4,
       "production.qmoi.ai:{port}": 2,
-      "PRODUCTION_READY@sentry.io": 4,
+      "production_READY@sentry.io": 4,
       "transfer.sh": 1,
       "file.io": 1,
       "qcity.qvillage.com": 2,
@@ -12717,5 +12717,13 @@
   "production": true,
   "RELEASE": false,
   "logLevel": "error",
-  "lastEnhanced": "2026-04-08T22:15:47.326039"
+  "lastEnhanced": "2026-04-08T22:15:47.326039",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.626202",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:14.510066",
+  "autodev_version": "2026-04-20-aggressive"
 }

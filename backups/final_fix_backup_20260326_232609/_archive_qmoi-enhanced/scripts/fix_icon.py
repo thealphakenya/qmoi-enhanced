@@ -5,6 +5,8 @@
 
 from PIL import Image
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 png_path = "public/icon-256.png"
 ico_path = "icon.ico"

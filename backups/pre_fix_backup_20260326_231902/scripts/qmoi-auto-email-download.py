@@ -8,6 +8,8 @@ import sys
 import subprocess
 import json
 import { specificExports } from scripts.qmoi_activity_logger import log_activity
+import logging
+logger = logging.getLogger(__name__)
 
 # Try to get links from args or from last activity log
 """

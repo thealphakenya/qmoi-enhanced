@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.492198 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.240595 -->
 # This file must be used with "source bin/activate.csh" *from csh*.
 # You cannot run it directly.
 # Created by Davide Di Blasi <davidedb@gmail.com>.

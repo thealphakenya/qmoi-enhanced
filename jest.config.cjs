@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:01.111930 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.261742 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.097055 -->
 /**
  * Root Jest configuration for QMOI monorepo / multi-package repository.
  * - Conservative defaults for TypeScript + React testing (ts-jest)
@@ -53,7 +56,10 @@ module.exports = {
     "!src/**/__mocks__/**",
     "!src/**/__tests__/**",
   ],
-  coverageThreshold: (function () {
+  coverageThreshold: (// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function () {
     const isCi =
       process.env.CI === "true" || process.env.GITHUB_ACTIONS === "true";
     // Skip when explicitly requested or when running on GitHub Actions

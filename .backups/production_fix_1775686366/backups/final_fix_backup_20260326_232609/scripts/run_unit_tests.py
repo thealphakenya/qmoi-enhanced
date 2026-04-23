@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-Simple test runner for small local tests without pytest installed.
+Simple test runner for small local tests without # production: # production: # production: pytest removed removed removed installed.
 It imports `tests.test_billing_guard` and runs any callables whose name
 starts with 'test_'.
 """

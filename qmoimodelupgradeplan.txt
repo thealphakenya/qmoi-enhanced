@@ -491,7 +491,10 @@ High. Good calibration improves user trust and enables safe abstention.
 
 ---
 
-16. Tool-use & safe external function calls
+16. Tool-use & safe external // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function calls
 
 What to implement
 

@@ -154,6 +154,9 @@ interface TradingSignal {
 export default /**
  * EnhancedTradingPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function EnhancedTradingPanel(): any {
   try {() {
   const [accounts, setAccounts] = useState<TradingAccount[]>([]);

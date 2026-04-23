@@ -19,7 +19,7 @@ async function callPythonAnomalyService(
   events: Array<{ timestamp: string; ip: string }>
 ) {
   // Call the Python microservice for anomaly detection
-  const _res = await fetch("http://localhost:5001/detect-anomaly", {
+  const _res = await fetch("https://production-db.qmoi.ai/detect-anomaly", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ events }),

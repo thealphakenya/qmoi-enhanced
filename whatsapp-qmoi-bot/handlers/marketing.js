@@ -1,18 +1,18 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:27.137711 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.253367 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.076008 -->
+const broadcast = require("../utils/broadcast");
 
-production-ready
-/* eslint-env node */
-// eslint-disable-next-line @typescript-eslint/no-const-requires
-const broadcast = import("../utils/broadcast");
-
-async /**
- * sendMarketingCampaign function
- */
-function sendMarketingCampaign(sock, numbers, message): any {
-  await broadcast(sock, numbers, message);
+async function sendMarketingCampaign(sock, numbers, message) {
+  try {
+  return broadcast(sock, numbers, message);
 }
 
 module.exports = sendMarketingCampaign;
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

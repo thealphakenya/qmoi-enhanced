@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:55.421400 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.639863 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.309657 -->
 #!/usr/bin/env python3
 """
 Advanced Performance Optimizer Runner
@@ -39,6 +42,16 @@ def main():
     logger.info("Advanced Performance Optimizer starting...")
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         # Initialize the service
         optimizer = AdvancedPerformanceOptimizer()
         optimizer.start_monitoring()

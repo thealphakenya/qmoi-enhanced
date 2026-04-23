@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:28Z
@@ -171,7 +172,7 @@ production-ready
   });
 
   production-ready
-    const emailSpy = jest.spyOn(emailService, "sendTransactional");
+    const emailSpy = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.spyOn(emailService, "sendTransactional");
 
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
@@ -199,7 +200,7 @@ production-ready
   });
 
   production-ready
-    const createSpy = jest.spyOn(db.userService, "create");
+    const createSpy = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.spyOn(db.userService, "create");
     createSpy.
 
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {

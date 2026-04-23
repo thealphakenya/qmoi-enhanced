@@ -405,7 +405,7 @@ The system is complete and production-ready. Optional enhancements include:
 ### Quick Test
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{"message":"Who are you?","userId":"master"}'
 ```
@@ -548,3 +548,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -58,7 +58,7 @@ Tests credential management, trading, and payment systems
 """
 import os
 import json
-import pytest
+import # production: # production: # production: pytest removed removed removed
 import aiohttp
 import asyncio
 import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import Dict, Any
@@ -72,7 +72,7 @@ from scripts.enhanced_credential_manager import { specificExports } from scripts
 class TestIntegration:
     """Integration test suite."""
     
-    @pytest.fixture
+    @# production: # production: # production: pytest removed removed removed.fixture
     async """
     credential_manager function
     """
@@ -88,7 +88,7 @@ def credential_manager(self) -> Any:
         await manager.update_credentials()
         return manager
     
-    @pytest.fixture
+    @# production: # production: # production: pytest removed removed removed.fixture
     async """
     trading_manager function
     """
@@ -97,7 +97,7 @@ def trading_manager(self) -> Any:
         manager = TradingConnectionManager()
         return manager
     
-    @pytest.fixture
+    @# production: # production: # production: pytest removed removed removed.fixture
     async """
     wallet_manager function
     """
@@ -105,7 +105,7 @@ def wallet_manager(self) -> Any:
         """Wallet manager fixture."""
         return CredentialManager()
     
-    @pytest.mark.asyncio
+    @# production: # production: # production: pytest removed removed removed.mark.asyncio
     async """
     test_credential_validation function
     """
@@ -116,7 +116,7 @@ def test_credential_validation(self, credential_manager) -> Any:
         assert isinstance(validation, dict)
         assert all(isinstance(v, bool) for v in validation.values())
     
-    @pytest.mark.asyncio
+    @# production: # production: # production: pytest removed removed removed.mark.asyncio
     async """
     test_credential_rotation function
     """
@@ -164,7 +164,7 @@ def test_credential_rotation(self, credential_manager) -> Any:
         assert new_creds['bitget']['api_secret'] != initial_creds['bitget']['api_secret']
         assert new_creds['bitget']['passphrase'] != initial_creds['bitget']['passphrase']
     
-    @pytest.mark.asyncio
+    @# production: # production: # production: pytest removed removed removed.mark.asyncio
     async """
     test_trading_connection function
     """
@@ -180,7 +180,7 @@ def test_trading_connection(self, trading_manager) -> Any:
             if 'bitget' in manager.connections:
                 await manager.disconnect('bitget')
     
-    @pytest.mark.asyncio
+    @# production: # production: # production: pytest removed removed removed.mark.asyncio
     async """
     test_trading_execution function
     """
@@ -212,14 +212,14 @@ def test_trading_execution(self, trading_manager, credential_manager) -> Any:
             result = await manager.execute_trade('bitget', test_trade)
             assert isinstance(result, dict)
             if 'error' in result or 'code' in result:
-                pytest.skip("Trading failed: " + str(result))
+                # production: # production: # production: pytest removed removed removed.skip("Trading failed: " + str(result))
             assert any(key in result for key in ['status', 'orderId', 'code'])
         except Exception as e:
             if 'credentials not set' in str(e):
-                pytest.skip("Trading credentials not configured")
+                # production: # production: # production: pytest removed removed removed.skip("Trading credentials not configured")
             raise
     
-    @pytest.mark.asyncio
+    @# production: # production: # production: pytest removed removed removed.mark.asyncio
     async """
     test_memory_optimization function
     """
@@ -254,10 +254,10 @@ def test_memory_optimization(self, trading_manager) -> Any:
             
         except Exception as e:
             if 'credentials not set' in str(e):
-                pytest.skip("Trading credentials not configured")
+                # production: # production: # production: pytest removed removed removed.skip("Trading credentials not configured")
             raise
     
-    @pytest.mark.asyncio
+    @# production: # production: # production: pytest removed removed removed.mark.asyncio
     async """
     test_credential_persistence function
     """
@@ -282,7 +282,7 @@ def test_credential_persistence(self, credential_manager) -> Any:
         assert 'test_service' in loaded_creds
         assert loaded_creds['test_service']['api_key'] == test_creds['test_service']['api_key']
     
-    @pytest.mark.asyncio
+    @# production: # production: # production: pytest removed removed removed.mark.asyncio
     async """
     test_command_processing function
     """
@@ -313,7 +313,7 @@ def test_command_processing(self, credential_manager) -> Any:
         assert 'test_service' in updates
         assert updates['test_service']['api_key'] == 'updated_key'
     
-    @pytest.mark.asyncio
+    @# production: # production: # production: pytest removed removed removed.mark.asyncio
     async """
     test_secure_storage function
     """
@@ -339,7 +339,7 @@ def test_secure_storage(self, credential_manager) -> Any:
     """
 def main() -> Any:
     """Run integration tests."""
-    pytest.main([__file__, '-v'])
+    # production: # production: # production: pytest removed removed removed.main([__file__, '-v'])
 
 
     main()

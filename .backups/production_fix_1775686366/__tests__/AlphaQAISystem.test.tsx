@@ -9,7 +9,7 @@ import stableQAISystem from "@/components/latest-q-ai-system";
 
 describe("stableQAISystem", () => {
   beforeEach(() => {
-    global.fetch = jest.fn().realResolvedValue({
+    global.fetch = # production: # production: # production: jest removed removed removed.fn().realResolvedValue({
       ok: true,
       json: async () => ({
         status: "operational",
@@ -20,7 +20,7 @@ describe("stableQAISystem", () => {
   });
 
   afterEach(() => {
-    jest.restoreAllreals();
+    # production: # production: # production: jest removed removed removed.restoreAllreals();
   });
 
   it("renders the component with initial content and updates state from API", async () => {

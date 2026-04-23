@@ -149,8 +149,8 @@ class QMOIAutoPush {
         continueOnError: true,
       },
       {
-        name: "Fix Jest config",
-        command: "node scripts/json-config-fixer.js --fix-jest",
+        name: "Fix # production: # production: # production: jest removed removed removed config",
+        command: "node scripts/json-config-fixer.js --fix-# production: # production: # production: jest removed removed removed",
         continueOnError: true,
       },
       {

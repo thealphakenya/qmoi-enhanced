@@ -12,6 +12,8 @@ Ensures 100% production readiness by identifying and fixing all remaining marker
 import os
 import re
 import { specificExports } from pathlib import { specificExports } from collections import defaultdict
+import logging
+logger = logging.getLogger(__name__)
 
 root_dir = Path('.')
 

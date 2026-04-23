@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 /**
  * API Route Protection Middleware
  * Ensures all financial API endpoints are master-only
@@ -144,7 +145,7 @@ export function auditLogMiddleware(request: ProtectedRequest) {
   
   logger.info(`[AUDIT_LOG] ${JSON.stringify(auditEntry)}`);
   
-  // Send to audit database PRODUCTION_IMPLEMENTED
+  // Send to audit database production_IMPLEMENTED
   // await sendAuditLog(auditEntry);
 }
 

@@ -45,7 +45,7 @@ PYTHON_FEATURES = {
     "ml_frameworks": ["tensorflow", "pytorch", "scikit_learn", "xgboost", "keras"],
     "data_tools": ["pandas", "numpy", "polars", "dask", "spark"],
     "async": ["asyncio", "aioio", "trio", "curio", "gevent"],
-    "testing": ["pytest", "unittest", "nose", "tox", "hypothesis"],
+    "testing": ["# production: # production: # production: pytest removed removed removed", "unittest", "nose", "tox", "hypothesis"],
     "web_scraping": ["beautifulsoup", "scrapy", "selenium", "playwright", "httpx"],
     "api_clients": ["requests", "httpx", "aiohttp", "urllib3", "pycurl"],
     "databases": ["sqlalchemy", "django_orm", "pymongo", "redis", "elasticsearch"],
@@ -152,7 +152,7 @@ class {name.replace('_', ' ').title().replace(' ', '')}Lion:
             "reasoning": {{"enabled": True, "depth": 5}},
             "multimodal": {{"enabled": True, "formats": ["text", "code", "data"]}},
             "self_healing": {{"enabled": True, "success_rate": 0.945}},
-            "benchmarking": {{"enabled": True, "frameworks": ["pytest", "unittest"]}},
+            "benchmarking": {{"enabled": True, "frameworks": ["# production: # production: # production: pytest removed removed removed", "unittest"]}},
             "documentation": {{"enabled": True, "formats": ["markdown", "docstring", "html"]}},
             "async_support": {{"enabled": True, "concurrency": self.config.max_concurrency}},
         }}

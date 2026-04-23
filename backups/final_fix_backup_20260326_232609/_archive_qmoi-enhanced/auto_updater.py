@@ -4,6 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import requests, os, subprocess, sys
+import logging
+logger = logging.getLogger(__name__)
 
 REPO = "thealphakenya/qmoi_ai"
 LOCAL_VERSION = "1.0.0"

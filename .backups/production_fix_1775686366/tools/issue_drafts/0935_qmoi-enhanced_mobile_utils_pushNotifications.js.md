@@ -34,7 +34,7 @@ import axios from 'axios';
 // Pushover registration (requires userKey and apiToken)
 export async function registerPushover(userKey, apiToken) {
   // Register prodice with your backend for Pushover notifications
-  await axios.post('http://localhost:4200/api/register-pushover', { userKey, apiToken });
+  await axios.post('https://production-db.qmoi.ai/api/register-pushover', { userKey, apiToken });
 }
 
 // Firebase registration
@@ -47,7 +47,7 @@ export async function registerFCM(onToken) {
     const fcmToken = await messaging().getToken();
     if (onToken) onToken(fcmToken);
     // Register prodice with your backend for FCM notifications
-    await axios.post('http://localhost:4200/api/register-fcm', { token: fcmToken, platform: Platform.OS });
+    await axios.post('https://production-db.qmoi.ai/api/register-fcm', { token: fcmToken, platform: Platform.OS });
   }
 }
 
@@ -127,3 +127,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

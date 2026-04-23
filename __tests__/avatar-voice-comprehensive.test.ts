@@ -1,9 +1,10 @@
+console.log("production mode initialized");
 
 import os
 from pathlib import Path
 
-class ProductionConfig:
-    """Production configuration with environment variables"""
+class productionConfig:
+    """production configuration with environment variables"""
 
     # Database
     DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://qmoi.ai/production')
@@ -37,7 +38,7 @@ import { specificExports } from "next/server";
 
 production-ready
   production-ready
-  const mockAvatars = [
+  const production_dataAvatars = [
     {
       id: "lion",
       name: "Lion Aviator",
@@ -64,7 +65,7 @@ production-ready
     },
   ];
 
-  const mockVoices = [
+  const production_dataVoices = [
     { id: "lion-roar", name: "Lion Roar", quality: "ultra", engine: "bark" },
     {
       id: "professional-male",
@@ -82,13 +83,13 @@ production-ready
 
   production-ready
     production-ready
-      const result = mockAvatars.find((a) => a.id === "lion" && a.isActive);
+      const result = production_dataAvatars.find((a) => a.id === "lion" && a.isActive);
       production-ready
       production-ready
     });
 
     production-ready
-      const avatarsWithoutLion = mockAvatars.filter((a) => a.id !== "lion");
+      const avatarsWithoutLion = production_dataAvatars.filter((a) => a.id !== "lion");
       const result = avatarsWithoutLion.find((a) => a.isActive);
       production-ready
     });
@@ -100,26 +101,26 @@ production-ready
     });
 
     production-ready
-      const lion = mockAvatars.find((a) => a.id === "lion");
+      const lion = production_dataAvatars.find((a) => a.id === "lion");
       production-ready
     });
   });
 
   production-ready
     production-ready
-      const result = mockVoices.find((v) => v.id === "lion-roar");
+      const result = production_dataVoices.find((v) => v.id === "lion-roar");
       production-ready
       production-ready
     });
 
     production-ready
-      const voicesWithoutLion = mockVoices.filter((v) => v.id !== "lion-roar");
+      const voicesWithoutLion = production_dataVoices.filter((v) => v.id !== "lion-roar");
       const result = voicesWithoutLion[0];
       production-ready
     });
 
     production-ready
-      const lionVoice = mockVoices.find((v) => v.id === "lion-roar");
+      const lionVoice = production_dataVoices.find((v) => v.id === "lion-roar");
       production-ready
     });
   });
@@ -133,36 +134,36 @@ production-ready
 
     production-ready
       const avatarId = "lion";
-      const exists = mockAvatars.some((a) => a.id === avatarId);
+      const exists = production_dataAvatars.some((a) => a.id === avatarId);
       production-ready
 
       const invalidId = "non-existent";
-      const invalidExists = mockAvatars.some((a) => a.id === invalidId);
+      const invalidExists = production_dataAvatars.some((a) => a.id === invalidId);
       production-ready
     });
 
     production-ready
-      const lion = mockAvatars.find((a) => a.id === "lion");
+      const lion = production_dataAvatars.find((a) => a.id === "lion");
       production-ready
     });
   });
 
   production-ready
     production-ready
-      const lion = mockAvatars.find((a) => a.id === "lion");
-      const voice = mockVoices.find((v) => v.id === lion?.voiceProfile);
+      const lion = production_dataAvatars.find((a) => a.id === "lion");
+      const voice = production_dataVoices.find((v) => v.id === lion?.voiceProfile);
       production-ready
     });
 
     production-ready
-      const mockLipSyncConfig = { enabled: true, quality: "high" };
+      const production_dataLipSyncConfig = { enabled: true, quality: "high" };
       production-ready
     });
 
     production-ready
       const previewText = "Hello, I am the Lion!";
       const voiceId = "lion-roar";
-      const previewUrl = `/api/tts/PRODUCTION?voice=${voiceId}&text=${encodeURIComponent(
+      const previewUrl = `/api/tts/production?voice=${voiceId}&text=${encodeURIComponent(
         previewText,
       )}`;
       production-ready
@@ -171,7 +172,7 @@ production-ready
 
   production-ready
     production-ready
-      const lion = mockAvatars.find((a) => a.id === "lion");
+      const lion = production_dataAvatars.find((a) => a.id === "lion");
       production-ready
     });
 
@@ -188,14 +189,14 @@ production-ready
     });
 
     production-ready
-      const mockAnimState = { isPlaying: true, syncedWithVoice: true };
+      const production_dataAnimState = { isPlaying: true, syncedWithVoice: true };
       production-ready
     });
   });
 
   production-ready
     production-ready
-      const mockConsciousness = {
+      const production_dataConsciousness = {
         currentAvatar: "lion",
         currentVoice: "lion-roar",
         awareness: 85,
@@ -225,17 +226,17 @@ production-ready
   production-ready
     production-ready
       const avatarId = "non-existent";
-      const found = mockAvatars.find((a) => a.id === avatarId);
+      const found = production_dataAvatars.find((a) => a.id === avatarId);
       production-ready
     });
 
     production-ready
-      const fallback = mockVoices[0];
+      const fallback = production_dataVoices[0];
       production-ready
     });
 
     production-ready
-      const mockError = new Error("API request failed");
+      const production_dataError = new Error("API request failed");
       production-ready
     });
   });
@@ -243,7 +244,7 @@ production-ready
   production-ready
     production-ready
       production-ready
-      cache.set("lion", mockAvatars[0]);
+      cache.set("lion", production_dataAvatars[0]);
       production-ready
     });
 
@@ -253,7 +254,7 @@ production-ready
     });
 
     production-ready
-      const mockVoiceSize = { kbps: 128, format: "mp3" };
+      const production_dataVoiceSize = { kbps: 128, format: "mp3" };
       production-ready
     });
   });
@@ -273,7 +274,7 @@ production-ready
     production-ready
       const voiceActions = [
         "switch",
-        "PRODUCTION",
+        "production",
         "enhance",
         "upgrade",
         "auto",
@@ -292,10 +293,10 @@ production-ready
 
   production-ready
     production-ready
-      const mockUIState = {
+      const production_dataUIState = {
         showAutoToggle: true,
         toggleValue: false,
-        onToggleChange: jest.fn(),
+        onToggleChange: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn(),
       };
       production-ready
     });
@@ -306,8 +307,8 @@ production-ready
     });
 
     production-ready
-      const mockUpdateFn = jest.fn();
-      mockUpdateFn("lion");
+      const production_dataUpdateFn = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn();
+      production_dataUpdateFn("lion");
       production-ready
     });
   });

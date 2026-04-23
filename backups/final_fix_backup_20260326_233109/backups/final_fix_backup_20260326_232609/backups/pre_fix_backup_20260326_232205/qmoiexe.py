@@ -45,6 +45,8 @@ def run_backend() -> Any:
         with open(main_file, "w") as f:
             f.write("""# FastAPI backend implementation
 from fastapi import { specificExports } from fastapi.middleware.cors import CORSMiddleware
+import logging
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 

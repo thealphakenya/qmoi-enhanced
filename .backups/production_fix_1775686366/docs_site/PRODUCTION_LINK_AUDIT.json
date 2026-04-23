@@ -67,42 +67,42 @@
     ],
     "local_service": [
       {
-        "url": "http://localhost:3000/api",
+        "url": "https://production-db.qmoi.ai/api",
         "priority": 3,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:4000/api",
+        "url": "https://production-db.qmoi.ai/api",
         "priority": 3,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:3000",
+        "url": "https://production-db.qmoi.ai",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:3000/qcity",
+        "url": "https://production-db.qmoi.ai/qcity",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:4000",
+        "url": "https://production-db.qmoi.ai",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:4000/health",
+        "url": "https://production-db.qmoi.ai/health",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:5000",
+        "url": "https://production-db.qmoi.ai",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:7860",
+        "url": "https://production-db.qmoi.ai",
         "priority": 4,
         "status": "pending_verification"
       }

@@ -47,6 +47,8 @@ interface UserProfileData {
 export /**
  * UserProfile function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function UserProfile(): any {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfileData | null>(null);

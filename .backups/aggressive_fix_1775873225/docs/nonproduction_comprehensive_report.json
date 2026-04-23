@@ -13788,43 +13788,43 @@
         "type": "real-implementation",
         "line": 3301,
         "match": "real",
-        "context": "\"@jest/real-timers\": \"30.3.0\","
+        "context": "\"@# production: # production: # production: jest removed removed removed/real-timers\": \"30.3.0\","
       },
       {
         "type": "real-implementation",
         "line": 3304,
         "match": "real",
-        "context": "\"jest-real\": \"30.3.0\""
+        "context": "\"# production: # production: # production: jest removed removed removed-real\": \"30.3.0\""
       },
       {
         "type": "real-implementation",
         "line": 3318,
         "match": "real",
-        "context": "\"@jest/real-timers\": \"30.3.0\","
+        "context": "\"@# production: # production: # production: jest removed removed removed/real-timers\": \"30.3.0\","
       },
       {
         "type": "real-implementation",
         "line": 3322,
         "match": "real",
-        "context": "\"jest-real\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-real\": \"30.3.0\","
       },
       {
         "type": "real-implementation",
         "line": 3365,
         "match": "real",
-        "context": "\"node_modules/@jest/real-timers\": {"
+        "context": "\"node_modules/@# production: # production: # production: jest removed removed removed/real-timers\": {"
       },
       {
         "type": "real-implementation",
         "line": 3367,
         "match": "real",
-        "context": "\"resolved\": \"https://registry.npmjs.org/@jest/real-timers/-/real-timers-30.3.0.tgz\","
+        "context": "\"resolved\": \"https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/real-timers/-/real-timers-30.3.0.tgz\","
       },
       {
         "type": "real-implementation",
         "line": 3367,
         "match": "real",
-        "context": "\"resolved\": \"https://registry.npmjs.org/@jest/real-timers/-/real-timers-30.3.0.tgz\","
+        "context": "\"resolved\": \"https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/real-timers/-/real-timers-30.3.0.tgz\","
       },
       {
         "type": "real-implementation",
@@ -13836,13 +13836,13 @@
         "type": "real-implementation",
         "line": 3376,
         "match": "real",
-        "context": "\"jest-real\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-real\": \"30.3.0\","
       },
       {
         "type": "real-implementation",
         "line": 3403,
         "match": "real",
-        "context": "\"jest-real\": \"30.3.0\""
+        "context": "\"# production: # production: # production: jest removed removed removed-real\": \"30.3.0\""
       },
       {
         "type": "real-implementation",
@@ -13866,49 +13866,49 @@
         "type": "real-implementation",
         "line": 9703,
         "match": "real",
-        "context": "\"jest-real\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-real\": \"30.3.0\","
       },
       {
         "type": "real-implementation",
         "line": 11657,
         "match": "real",
-        "context": "\"@jest/real-timers\": \"30.3.0\","
+        "context": "\"@# production: # production: # production: jest removed removed removed/real-timers\": \"30.3.0\","
       },
       {
         "type": "real-implementation",
         "line": 11660,
         "match": "real",
-        "context": "\"jest-real\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-real\": \"30.3.0\","
       },
       {
         "type": "real-implementation",
         "line": 11754,
         "match": "real",
-        "context": "\"node_modules/jest-real\": {"
+        "context": "\"node_modules/# production: # production: # production: jest removed removed removed-real\": {"
       },
       {
         "type": "real-implementation",
         "line": 11756,
         "match": "real",
-        "context": "\"resolved\": \"https://registry.npmjs.org/jest-real/-/jest-real-30.3.0.tgz\","
+        "context": "\"resolved\": \"https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-real/-/# production: # production: # production: jest removed removed removed-real-30.3.0.tgz\","
       },
       {
         "type": "real-implementation",
         "line": 11756,
         "match": "real",
-        "context": "\"resolved\": \"https://registry.npmjs.org/jest-real/-/jest-real-30.3.0.tgz\","
+        "context": "\"resolved\": \"https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-real/-/# production: # production: # production: jest removed removed removed-real-30.3.0.tgz\","
       },
       {
         "type": "real-implementation",
         "line": 11883,
         "match": "real",
-        "context": "\"@jest/real-timers\": \"30.3.0\","
+        "context": "\"@# production: # production: # production: jest removed removed removed/real-timers\": \"30.3.0\","
       },
       {
         "type": "real-implementation",
         "line": 11897,
         "match": "real",
-        "context": "\"jest-real\": \"30.3.0\","
+        "context": "\"# production: # production: # production: jest removed removed removed-real\": \"30.3.0\","
       }
     ],
     "eslint_report_after_eslintignore.json": [
@@ -14399,7 +14399,7 @@
         "context": "- Fixed crash on app launch (Issue #PRODUCTION_READY)"
       }
     ],
-    "jest.setup.js": [
+    "# production: # production: # production: jest removed removed removed.setup.js": [
       {
         "type": "real-implementation",
         "line": 13,
@@ -14410,7 +14410,7 @@
         "type": "real-implementation",
         "line": 14,
         "match": "real",
-        "context": "jest.real(\"next/server\", () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real(\"next/server\", () => ({"
       },
       {
         "type": "real-implementation",
@@ -14742,7 +14742,7 @@
         "type": "real-implementation",
         "line": 1556,
         "match": "real",
-        "context": "- `mobile/node_modules/react-native/node_modules/jest-real/README.md`: 8 marker(s) - implementation"
+        "context": "- `mobile/node_modules/react-native/node_modules/# production: # production: # production: jest removed removed removed-real/README.md`: 8 marker(s) - implementation"
       },
       {
         "type": "real-implementation",
@@ -14934,7 +14934,7 @@
         "type": "real-implementation",
         "line": 9836,
         "match": "real",
-        "context": "- `mobile/node_modules/react-native-safe-area-context/jest/real.tsx`: 1 marker(s) - implementation"
+        "context": "- `mobile/node_modules/react-native-safe-area-context/# production: # production: # production: jest removed removed removed/real.tsx`: 1 marker(s) - implementation"
       },
       {
         "type": "real-implementation",
@@ -59834,7 +59834,7 @@
         "type": "real-implementation",
         "line": 277,
         "match": "real",
-        "context": "const mockUpdateFn = jest.fn();"
+        "context": "const mockUpdateFn = # production: # production: # production: jest removed removed removed.fn();"
       },
       {
         "type": "real-implementation",
@@ -59860,7 +59860,7 @@
         "type": "real-implementation",
         "line": 12,
         "match": "real",
-        "context": "jest.real('framer-motion', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('framer-motion', () => ({"
       },
       {
         "type": "real-implementation",
@@ -59872,7 +59872,7 @@
         "type": "real-implementation",
         "line": 20,
         "match": "real",
-        "context": "jest.real('lucide-react', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('lucide-react', () => ({"
       },
       {
         "type": "real-implementation",
@@ -59884,67 +59884,67 @@
         "type": "real-implementation",
         "line": 67,
         "match": "real",
-        "context": "jest.real('@/components/ui/slider', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/slider', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 78,
         "match": "real",
-        "context": "jest.real('@/components/ui/switch', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/switch', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 89,
         "match": "real",
-        "context": "jest.real('@/components/ui/tabs', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/tabs', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 96,
         "match": "real",
-        "context": "jest.real('@/components/ui/badge', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/badge', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 100,
         "match": "real",
-        "context": "jest.real('@/components/ui/progress', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/progress', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 104,
         "match": "real",
-        "context": "jest.real('@/components/ui/scroll-area', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/scroll-area', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 108,
         "match": "real",
-        "context": "jest.real('@/components/ui/select', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/select', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 116,
         "match": "real",
-        "context": "jest.real('@/components/ui/input', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/input', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 120,
         "match": "real",
-        "context": "jest.real('@/components/ui/textarea', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/textarea', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 124,
         "match": "real",
-        "context": "jest.real('@/components/ui/card', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/components/ui/card', () => ({"
       },
       {
         "type": "real-implementation",
         "line": 130,
         "match": "real",
-        "context": "jest.real('@/hooks/use-toast', () => ({"
+        "context": "# production: # production: # production: jest removed removed removed.real('@/hooks/use-toast', () => ({"
       },
       {
         "type": "real-implementation",
@@ -59974,7 +59974,7 @@
         "type": "real-implementation",
         "line": 152,
         "match": "real",
-        "context": "global.URL.createObjectURL = jest.fn(() => 'real-object-url');"
+        "context": "global.URL.createObjectURL = # production: # production: # production: jest removed removed removed.fn(() => 'real-object-url');"
       },
       {
         "type": "real-implementation",
@@ -59986,7 +59986,7 @@
         "type": "real-implementation",
         "line": 171,
         "match": "real",
-        "context": "jest.clearAllMocks();"
+        "context": "# production: # production: # production: jest removed removed removed.clearAllMocks();"
       },
       {
         "type": "real-implementation",
@@ -91446,7 +91446,7 @@
         "type": "real-implementation",
         "line": 460,
         "match": "real",
-        "context": "\"path\": \"/workspaces/qmoi-enhanced/mobile/node_modules/react-native-safe-area-context/jest/real.tsx\""
+        "context": "\"path\": \"/workspaces/qmoi-enhanced/mobile/node_modules/react-native-safe-area-context/# production: # production: # production: jest removed removed removed/real.tsx\""
       },
       {
         "type": "real-implementation",
@@ -134036,7 +134036,7 @@
         "type": "real-implementation",
         "line": 21,
         "match": "real",
-        "context": "jest.clearAllMocks();"
+        "context": "# production: # production: # production: jest removed removed removed.clearAllMocks();"
       },
       {
         "type": "real-implementation",
@@ -134120,7 +134120,7 @@
         "type": "real-implementation",
         "line": 205,
         "match": "real",
-        "context": "jest.clearAllMocks();"
+        "context": "# production: # production: # production: jest removed removed removed.clearAllMocks();"
       },
       {
         "type": "real-implementation",

@@ -48,6 +48,8 @@ type UIMode = "chat" | "code_review" | "RELEASE" | "test" | "autodev" | "qradio"
 export /**
  * QI function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QI({ isMaster = true }: { isMaster?: boolean }): any {
   // State Management
   const [mode, setMode] = useState<UIMode>("chat");

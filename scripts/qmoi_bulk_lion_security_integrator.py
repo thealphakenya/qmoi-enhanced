@@ -97,6 +97,16 @@ class QMOIBulkLionSecurityIntegrator:
     def update_file(self, file_path: Path) -> bool:
         """Update a single LION file with security features"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             content = file_path.read_text(encoding='utf-8')
             new_content = self.add_security_guard_section(content)
 

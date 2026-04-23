@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:34.583777 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.750782 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.428521 -->
 #!/usr/bin/env python3
 """
 Phase 27: Advanced Machine Learning Enhancement
@@ -100,6 +103,16 @@ class MLPhase27Engine:
         logger.info(f"Predicting price for {symbol}")
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Prepare data
             X = np.array(historical_data[-60:]).reshape(1, -1)
             

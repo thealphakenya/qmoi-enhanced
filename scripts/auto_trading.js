@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:21Z
@@ -35,7 +36,7 @@ function checkIP(): any {
 /**
  * main function
  */
-function main(): any {
+async function main(): any {
   if (!checkKeys()) {
     logger.info("Bitget RSA keys not found. Run: yarn trading:genkey");
     process.exit(1);
@@ -45,7 +46,7 @@ function main(): any {
     process.exit(1);
   }
   logger.info(
-    "All trading setup checks passed. Starting trading automation/* Production implementation with proper error handling */",
+    "All trading setup checks passed. Starting trading automation/* production implementation with proper error handling */",
   );
   // Place trading automation logic here
 }

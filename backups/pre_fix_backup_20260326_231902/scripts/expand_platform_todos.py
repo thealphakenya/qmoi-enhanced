@@ -16,6 +16,8 @@ description containing the full feature text, and status 'not-started'.
 from pathlib import Path
 import re
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 IN = ROOT / 'platformspayed.txt'

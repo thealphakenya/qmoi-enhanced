@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: GoDaddy domain management webhook
 // This endpoint receives GoDaddy domain registration and DNS update webhooks.
 import { specificExports } from "next/server";

@@ -17,7 +17,7 @@ Tests cover:
 - Master file update logic
 - Edge cases and error handling
 
-Runnable without pytest: python3 scripts/all_percentages_automation.test.py
+Runnable without # production: # production: # production: pytest removed removed removed: python3 scripts/all_percentages_automation.test.py
 """
 
 import unittest

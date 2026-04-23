@@ -8,6 +8,8 @@ import os
 import subprocess
 import sys
 import platform
+import logging
+logger = logging.getLogger(__name__)
 
 # Robust import for log_activity
 try:

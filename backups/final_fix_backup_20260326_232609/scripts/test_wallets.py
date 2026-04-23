@@ -6,6 +6,8 @@
 #!/usr/bin/env python3
 from qmoi_control_server import app
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 """
     pretty function

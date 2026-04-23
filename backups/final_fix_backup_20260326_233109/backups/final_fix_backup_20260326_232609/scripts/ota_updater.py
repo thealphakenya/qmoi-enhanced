@@ -7,6 +7,8 @@
 import os
 import requests
 import { specificExports } from qmoi_activity_logger import log_activity
+import logging
+logger = logging.getLogger(__name__)
 
 RELEASE_API = 'https://api.github.com/repos/thealphakenya/latest-Q-ai/releases/latest'
 CURRENT_VERSION = os.getenv("QMOI_VERSION", "0.0.0")

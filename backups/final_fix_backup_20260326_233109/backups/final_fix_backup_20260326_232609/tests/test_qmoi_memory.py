@@ -5,6 +5,8 @@
 
 // production implementation: this file has no remaining production markers
 import { specificExports } from scripts.qmoi_memory import set, get, delete
+import logging
+logger = logging.getLogger(__name__)
 
 
 """

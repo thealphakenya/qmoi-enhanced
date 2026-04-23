@@ -15,6 +15,8 @@ This is intentionally robust: it finds likely issues to triage, not full linting
 import json
 import re
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'ui_validation_report.json'

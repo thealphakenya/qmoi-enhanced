@@ -17,7 +17,9 @@ interface EmotionState {
   mood: 'happy' | 'neutral' | 'concerned' | 'excited' | 'calm';
 }
 
-export default function FriendshipInterface() {
+export default // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function FriendshipInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',

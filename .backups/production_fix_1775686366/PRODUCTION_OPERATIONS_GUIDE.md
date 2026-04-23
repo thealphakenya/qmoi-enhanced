@@ -102,8 +102,8 @@ npm run dev
 npm run build && npm start
 
 # 5. Verify health
-curl http://localhost:3001/health
-curl http://localhost:4000/health
+curl https://production-db.qmoi.ai/health
+curl https://production-db.qmoi.ai/health
 ```
 
 ### PM2 Process Management
@@ -136,7 +136,7 @@ pm2 stop all
 python3 scripts/domain_health_check.py
 
 # 2. Check system metrics
-curl http://localhost:3001/api/metrics
+curl https://production-db.qmoi.ai/api/metrics
 
 # 3. Review overnight logs
 pm2 logs
@@ -216,18 +216,18 @@ The system continuously monitors:
 
 ```bash
 # Check all APIs
-curl -X GET http://localhost:3001/health
-curl -X GET http://localhost:4000/health
-curl -X GET http://localhost:4100/health
+curl -X GET https://production-db.qmoi.ai/health
+curl -X GET https://production-db.qmoi.ai/health
+curl -X GET https://production-db.qmoi.ai/health
 
 # Verify database
-curl -X GET http://localhost:3001/api/db/status
+curl -X GET https://production-db.qmoi.ai/api/db/status
 
 # Check message queue
-curl -X GET http://localhost:3001/api/queue/status
+curl -X GET https://production-db.qmoi.ai/api/queue/status
 
 # View analytics
-curl -X GET http://localhost:3001/api/analytics/dashboard
+curl -X GET https://production-db.qmoi.ai/api/analytics/dashboard
 ```
 
 ### Viewing Reports
@@ -349,13 +349,13 @@ npm audit
 tail -100 /var/log/app/api.log
 
 # 2. Verify database connection
-curl http://localhost:3001/api/db/status
+curl https://production-db.qmoi.ai/api/db/status
 
 # 3. Check Redis connection
-curl http://localhost:3001/api/redis/status
+curl https://production-db.qmoi.ai/api/redis/status
 
 # 4. Review error rates
-curl http://localhost:3001/api/metrics
+curl https://production-db.qmoi.ai/api/metrics
 ```
 
 #### Database Issues
@@ -388,7 +388,7 @@ pm2 status
 pm2 restart all
 
 # 3. Check health
-curl http://localhost:3001/health
+curl https://production-db.qmoi.ai/health
 
 # 4. If still down, enable fallback
 pm2 start fallback-server
@@ -446,16 +446,16 @@ npm run deploy:emergency
 
 ```bash
 # 1. Enable rate limiting
-curl -X POST http://localhost:3001/api/security/rate-limit/enable
+curl -X POST https://production-db.qmoi.ai/api/security/rate-limit/enable
 
 # 2. Activate geo-blocking if needed
-curl -X POST http://localhost:3001/api/security/geo-block/enable
+curl -X POST https://production-db.qmoi.ai/api/security/geo-block/enable
 
 # 3. Scale horizontally
 pm2 cluster 4
 
 # 4. Monitor attack
-curl http://localhost:3001/api/security/attacks
+curl https://production-db.qmoi.ai/api/security/attacks
 
 # 5. Contact security team
 # See Contact & Support section
@@ -472,10 +472,10 @@ curl http://localhost:3001/api/security/attacks
 export ENABLE_REDIS=true
 
 # View cache stats
-curl http://localhost:3001/api/cache/stats
+curl https://production-db.qmoi.ai/api/cache/stats
 
 # Clear cache if needed
-curl -X POST http://localhost:3001/api/cache/clear
+curl -X POST https://production-db.qmoi.ai/api/cache/clear
 ```
 
 ### Database Optimization
@@ -551,10 +551,10 @@ export DATABASE_URL="your-url"
 
 ```bash
 # Delete user data
-curl -X DELETE http://localhost:3001/api/users/id/data
+curl -X DELETE https://production-db.qmoi.ai/api/users/id/data
 
 # Export user data
-curl -X GET http://localhost:3001/api/users/id/export
+curl -X GET https://production-db.qmoi.ai/api/users/id/export
 
 # Review privacy logs
 tail -100 logs/privacy.log
@@ -667,3 +667,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

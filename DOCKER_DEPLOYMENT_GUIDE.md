@@ -1,15 +1,15 @@
 <!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by QMOI Lion
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
-- validator: QMOI Lion
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
 - timestamp: 2026-03-24T03:31:59.676513Z
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# 🐳 Docker Deployment Guide — Run Anywhere, Anytime ✅ PRODUCTION_IMPLEMENTED
+# 🐳 Docker Deployment Guide — Run Anywhere, Anytime ✅ production_IMPLEMENTED
 
-**Status:** ✅ **CONTAINERIZED PRODUCTION_IMPLEMENTED**  
+**Status:** ✅ **CONTAINERIZED production_IMPLEMENTED**  
 **Date:** November 11, 2025  
 **Runs:** Docker, Kubernetes, AWS ECS, Railway, Render, etc.
 
@@ -20,60 +20,60 @@
 ### Build the Docker Image
 
 ```production-validatedbash
-cd /workspaces/qmoi-enhanced
+cd /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced
 
-# Create Dockerfile ✅ PRODUCTION_IMPLEMENTED
+# Create Dockerfile ✅ production_IMPLEMENTED
 cat > Dockerfile.qvillage << 'EOF'
 FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy source code ✅ PRODUCTION_IMPLEMENTED
+# Copy source code ✅ production_IMPLEMENTED
 COPY tools/qvillage_memory_sync.py .
 COPY tools/monitor_hf_costs.py .
 COPY hf_space_qvillage/requirements.txt .
 
-# Install dependencies ✅ PRODUCTION_IMPLEMENTED
+# Install dependencies ✅ production_IMPLEMENTED
 RUN pip install --no-cache-dir httpx asyncio pydantic python-dotenv huggingface-hub
 
-# Environment variables (passed at runtime) ✅ PRODUCTION_IMPLEMENTED
+# Environment variables (passed at runtime) ✅ production_IMPLEMENTED
 ENV QVILLAGE_API_URL=https://api.qvillage.ai
-ENV QMOI_MEMORY_URL=https://memory.qmoi.ai
+ENV QMOI_MEMORY_URL=https://memory.Quantum multi orchestra intelligence (QMOI).ai
 ENV LOG_LEVEL=INFO
 
-# Run sync engine (every 1 hour, forever) ✅ PRODUCTION_IMPLEMENTED
+# Run sync engine (every 1 hour, forever) ✅ production_IMPLEMENTED
 CMD ["python", "qvillage_memory_sync.py", "--interval", "3600"]
 EOF
 
-# Build image ✅ PRODUCTION_IMPLEMENTED
+# Build image ✅ production_IMPLEMENTED
 docker build -f Dockerfile.qvillage -t qvillage-sync:latest .
 
-# Tag for Docker Hub (optional) ✅ PRODUCTION_IMPLEMENTED
+# Tag for Docker Hub (optional) ✅ production_IMPLEMENTED
 docker tag qvillage-sync:latest thestablekenya/qvillage-sync:latest
 ```production-validated
 
 ### Run Locally (Forever)
 
 ```production-validatedbash
-# Run the container (will keep running) ✅ PRODUCTION_IMPLEMENTED
+# Run the container (will keep running) ✅ production_IMPLEMENTED
 docker run -d --restart=always \
   --name qvillage-sync \
   -e HF_API_TOKEN=$HF_API_TOKEN \
   -e QVILLAGE_API_URL=https://api.qvillage.ai \
-  -e QMOI_MEMORY_URL=https://memory.qmoi.ai \
+  -e QMOI_MEMORY_URL=https://memory.Quantum multi orchestra intelligence (QMOI).ai \
   -e SLACK_WEBHOOK_URL=$SLACK_WEBHOOK_URL \
   qvillage-sync:latest
 
-# Verify it's running ✅ PRODUCTION_IMPLEMENTED
+# Verify it's running ✅ production_IMPLEMENTED
 docker logs qvillage-sync
 
-# See running container ✅ PRODUCTION_IMPLEMENTED
+# See running container ✅ production_IMPLEMENTED
 docker ps | grep qvillage-sync
 
-# Stop (if needed) ✅ PRODUCTION_IMPLEMENTED
+# Stop (if needed) ✅ production_IMPLEMENTED
 docker stop qvillage-sync
 
-# Start again ✅ PRODUCTION_IMPLEMENTED
+# Start again ✅ production_IMPLEMENTED
 docker start qvillage-sync
 ```production-validated
 
@@ -88,10 +88,10 @@ docker start qvillage-sync
 **Easiest cloud deployment (5 minutes)**
 
 ```production-validatedbash
-# 1. Push to Docker Hub ✅ PRODUCTION_IMPLEMENTED
+# 1. Push to Docker Hub ✅ production_IMPLEMENTED
 docker push thestablekenya/qvillage-sync:latest
 
-# 2. Create railway.yaml ✅ PRODUCTION_IMPLEMENTED
+# 2. Create railway.yaml ✅ production_IMPLEMENTED
 cat > railway.yaml << 'EOF'
 services:
   qvillage-sync:
@@ -99,21 +99,21 @@ services:
     environment:
       HF_API_TOKEN: ${HF_API_TOKEN}
       QVILLAGE_API_URL: https://api.qvillage.ai
-      QMOI_MEMORY_URL: https://memory.qmoi.ai
+      QMOI_MEMORY_URL: https://memory.Quantum multi orchestra intelligence (QMOI).ai
       SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL}
     restart: always
 EOF
 
-# 3. Deploy ✅ PRODUCTION_IMPLEMENTED
+# 3. Deploy ✅ production_IMPLEMENTED
 railway up
 
-# That's it! Running 24/7 on railway.app ✅ PRODUCTION_IMPLEMENTED
+# That's it! Running 24/7 on railway.app ✅ production_IMPLEMENTED
 ```production-validated
 
 ### Option 2: Kubernetes (Enterprise)
 
 ```production-validatedyaml
-# qvillage-sync-deployment.yaml ✅ PRODUCTION_IMPLEMENTED
+# qvillage-sync-deployment.yaml ✅ production_IMPLEMENTED
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -145,7 +145,7 @@ spec:
             - name: QVILLAGE_API_URL
               value: "https://api.qvillage.ai"
             - name: QMOI_MEMORY_URL
-              value: "https://memory.qmoi.ai"
+              value: "https://memory.Quantum multi orchestra intelligence (QMOI).ai"
             - name: SLACK_WEBHOOK_URL
               valueFrom:
                 secretKeyRef:
@@ -184,7 +184,7 @@ spec:
                 - name: QVILLAGE_API_URL
                   value: "https://api.qvillage.ai"
                 - name: QMOI_MEMORY_URL
-                  value: "https://memory.qmoi.ai"
+                  value: "https://memory.Quantum multi orchestra intelligence (QMOI).ai"
                 - name: SLACK_WEBHOOK_URL
                   valueFrom:
                     secretKeyRef:
@@ -196,15 +196,15 @@ spec:
 Deploy to Kubernetes:
 
 ```production-validatedbash
-# Create secrets ✅ PRODUCTION_IMPLEMENTED
+# Create secrets ✅ production_IMPLEMENTED
 kubectl create secret generic qvillage-secrets \
   --from-literal=hf-token=$HF_API_TOKEN \
   --from-literal=slack-webhook=$SLACK_WEBHOOK_URL
 
-# Deploy ✅ PRODUCTION_IMPLEMENTED
+# Deploy ✅ production_IMPLEMENTED
 kubectl apply -f qvillage-sync-deployment.yaml
 
-# Verify ✅ PRODUCTION_IMPLEMENTED
+# Verify ✅ production_IMPLEMENTED
 kubectl get deployments
 kubectl logs -f deployment/qvillage-sync
 ```production-validated
@@ -230,7 +230,7 @@ kubectl logs -f deployment/qvillage-sync
         },
         {
           "name": "QMOI_MEMORY_URL",
-          "value": "https://memory.qmoi.ai"
+          "value": "https://memory.Quantum multi orchestra intelligence (QMOI).ai"
         }
       ],
       "secrets": [
@@ -270,7 +270,7 @@ aws ecs create-service \
 ### Option 4: systemd (Linux Server)
 
 ```production-validatedini
-# /etc/systemd/system/qvillage-sync.service ✅ PRODUCTION_IMPLEMENTED
+# /etc/systemd/system/qvillage-sync.service ✅ production_IMPLEMENTED
 [Unit]
 Description=QVillage Memory Sync Service
 After=network-online.target
@@ -285,7 +285,7 @@ ExecStart=/usr/bin/docker run \
   --name qvillage-sync \
   -e HF_API_TOKEN=${HF_API_TOKEN} \
   -e QVILLAGE_API_URL=https://api.qvillage.ai \
-  -e QMOI_MEMORY_URL=https://memory.qmoi.ai \
+  -e QMOI_MEMORY_URL=https://memory.Quantum multi orchestra intelligence (QMOI).ai \
   -e SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL} \
   thestablekenya/qvillage-sync:latest
 
@@ -306,7 +306,7 @@ sudo systemctl enable qvillage-sync
 sudo systemctl start qvillage-sync
 sudo systemctl status qvillage-sync
 
-# View logs ✅ PRODUCTION_IMPLEMENTED
+# View logs ✅ production_IMPLEMENTED
 sudo journalctl -u qvillage-sync -f
 ```production-validated
 
@@ -317,7 +317,7 @@ sudo journalctl -u qvillage-sync -f
 **Run entire stack locally or in cloud:**
 
 ```production-validatedyaml
-# docker-compose.yml ✅ PRODUCTION_IMPLEMENTED
+# docker-compose.yml ✅ production_IMPLEMENTED
 version: "3.8"
 
 services:
@@ -329,7 +329,7 @@ services:
     environment:
       HF_API_TOKEN: ${HF_API_TOKEN}
       QVILLAGE_API_URL: https://api.qvillage.ai
-      QMOI_MEMORY_URL: https://memory.qmoi.ai
+      QMOI_MEMORY_URL: https://memory.Quantum multi orchestra intelligence (QMOI).ai
       SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL}
       LOG_LEVEL: INFO
     restart: always
@@ -362,19 +362,19 @@ networks:
 **Run:**
 
 ```production-validatedbash
-# Create .env file ✅ PRODUCTION_IMPLEMENTED
+# Create .env file ✅ production_IMPLEMENTED
 cat > .env << 'EOF'
 HF_API_TOKEN=hf_xxxxx
 SLACK_WEBHOOK_URL=https://hooks.slack.com/...
 EOF
 
-# Start ✅ PRODUCTION_IMPLEMENTED
+# Start ✅ production_IMPLEMENTED
 docker-compose up -d
 
-# View logs ✅ PRODUCTION_IMPLEMENTED
+# View logs ✅ production_IMPLEMENTED
 docker-compose logs -f qvillage-sync
 
-# Stop ✅ PRODUCTION_IMPLEMENTED
+# Stop ✅ production_IMPLEMENTED
 docker-compose down
 ```production-validated
 
@@ -383,28 +383,28 @@ docker-compose down
 ## 📊 MONITORING DOCKER CONTAINER
 
 ```production-validatedbash
-# View logs (last 50 lines) ✅ PRODUCTION_IMPLEMENTED
+# View logs (last 50 lines) ✅ production_IMPLEMENTED
 docker logs --tail 50 qvillage-sync
 
-# Follow logs (real-time) ✅ PRODUCTION_IMPLEMENTED
+# Follow logs (real-time) ✅ production_IMPLEMENTED
 docker logs -f qvillage-sync
 
-# View container stats (CPU, memory) ✅ PRODUCTION_IMPLEMENTED
+# View container stats (CPU, memory) ✅ production_IMPLEMENTED
 docker stats qvillage-sync
 
-# Inspect container ✅ PRODUCTION_IMPLEMENTED
+# Inspect container ✅ production_IMPLEMENTED
 docker inspect qvillage-sync
 
-# Execute command inside container ✅ PRODUCTION_IMPLEMENTED
+# Execute command inside container ✅ production_IMPLEMENTED
 docker exec qvillage-sync python -c "import sys; print(sys.version)"
 
-# Check if running ✅ PRODUCTION_IMPLEMENTED
+# Check if running ✅ production_IMPLEMENTED
 docker ps | grep qvillage-sync
 
-# Restart container ✅ PRODUCTION_IMPLEMENTED
+# Restart container ✅ production_IMPLEMENTED
 docker restart qvillage-sync
 
-# Remove container ✅ PRODUCTION_IMPLEMENTED
+# Remove container ✅ production_IMPLEMENTED
 docker rm qvillage-sync
 ```production-validated
 
@@ -415,13 +415,13 @@ docker rm qvillage-sync
 **Key flags for `docker run`:**
 
 ```production-validatedbash
-# Restart only if exit code != 0 ✅ PRODUCTION_IMPLEMENTED
+# Restart only if exit code != 0 ✅ production_IMPLEMENTED
 docker run --restart=on-failure:5  # Implementation needed
-# Restart always (required) ✅ PRODUCTION_IMPLEMENTED
+# Restart always (required) ✅ production_IMPLEMENTED
 docker run --restart=always  # Implementation needed
-# No restart (default) ✅ PRODUCTION_IMPLEMENTED
+# No restart (default) ✅ production_IMPLEMENTED
 docker run --restart=no  # Implementation needed
-# Restart unless stopped ✅ PRODUCTION_IMPLEMENTED
+# Restart unless stopped ✅ production_IMPLEMENTED
 docker run --restart=unless-stopped  # Implementation needed
 ```production-validated
 
@@ -456,16 +456,16 @@ restart_policy:
 **Horizontal scaling (multiple instances):**
 
 ```production-validatedbash
-# Docker Swarm ✅ PRODUCTION_IMPLEMENTED
+# Docker Swarm ✅ production_IMPLEMENTED
 docker swarm init
 docker service create --replicas 3 \
   -e HF_API_TOKEN=$HF_API_TOKEN \
   thestablekenya/qvillage-sync:latest
 
-# Kubernetes ✅ PRODUCTION_IMPLEMENTED
+# Kubernetes ✅ production_IMPLEMENTED
 kubectl scale deployment qvillage-sync --replicas=3
 
-# Docker Compose (with load balancer) ✅ PRODUCTION_IMPLEMENTED
+# Docker Compose (with load balancer) ✅ production_IMPLEMENTED
 version: '3.8'
 services:
   qvillage-sync:
@@ -509,7 +509,7 @@ services:
 
 ## 🔐 Autoclone & Standalone Mode (platform-agnostic)
 
-If you want QMOI / QVillage to be fully independent (no HF/GitHub/Vercel required), use the autoclone + standalone runner option. This will:
+If you want Quantum multi orchestra intelligence (QMOI) / QVillage to be fully independent (no HF/GitHub/Vercel required), use the autoclone + standalone runner option. This will:
 
 - Clone (or update) the repository at container start or on a server.
 - Install complete runtime dependencies (from `hf_space_qvillage/requirements.txt`).
@@ -524,12 +524,12 @@ Files added to support this mode:
 optimized run (local Docker):
 
 ```production-validatedbash
-# Build image ✅ PRODUCTION_IMPLEMENTED
+# Build image ✅ production_IMPLEMENTED
 docker build -f Dockerfile.qvillage -t qvillage-standalone:latest .
 
-# Run (autoclone into /opt/qvillage inside container) ✅ PRODUCTION_IMPLEMENTED
+# Run (autoclone into /opt/qvillage inside container) ✅ production_IMPLEMENTED
 docker run -d --restart=always \
-  -e REPO_URL=https://github.com/thestablekenya/qmoi-enhanced.git \
+  -e REPO_URL=https://github.com/thestablekenya/Quantum multi orchestra intelligence (QMOI)-enhanced.git \
   -e REPO_DIR=/opt/qvillage \
   -e RUN_INTERVAL_SECONDS=3600 \
   -e HF_API_TOKEN=$HF_API_TOKEN \
@@ -545,7 +545,7 @@ Notes:
 
 ## 🔄 Evolution Status
 
-**QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
+**Quantum multi orchestra intelligence (QMOI) Evolution Enhanced**: This document is continuously updated through Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system.
 
 - **Continuous Improvement**: AI-driven optimizations and feature enhancements
 - **Global Scalability**: Automatic adaptation for worldwide operations
@@ -554,7 +554,7 @@ Notes:
 - **Last Evolution**: 2026-03-26T03:58:28Z
 
 ---
-*This document is maintained by QMOI's autonomous evolution system*
+*This document is maintained by Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system*
 
 ## Purpose
 
@@ -568,7 +568,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -584,7 +584,7 @@ python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
 For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
 
 
-## Production Readiness
+## production Readiness
 
 Define the production quality expectations and validation requirements.
 
@@ -828,7 +828,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Thermal Imaging**: Night vision with heat detection
 - **360° Panoramic Cameras**: Omnidirectional monitoring
 - **Infrared Night Vision**: 24/7 operation in all conditions
-- **Direct QMOI Access**: No restrictions on camera access
+- **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
 ### Universal Device Connectivity

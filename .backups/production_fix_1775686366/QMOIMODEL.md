@@ -190,7 +190,7 @@ Relevant config keys (in `config.json` or passed via config file):
 - `ai.model.status_poll` - whether to expose `/api/qmoi/status` endpoint (enabled by default).
 - `ai.model.research_enabled` - enable/disable automatic web/internet research when uncertain.
 
-## Notes for prodelopers
+## production: NOTE ADDRESSED - s for prodelopers
 
 - The current aggregator implementation is conservative and intentionally sophisticated. Replace the [PRODUCTION_IMPLEMENTED] inference calls with real model calls when integrating third-party models.
 - Tests should assert that `model` override query params are ignored and that responses always include `model: "qmoi"`.
@@ -317,3 +317,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

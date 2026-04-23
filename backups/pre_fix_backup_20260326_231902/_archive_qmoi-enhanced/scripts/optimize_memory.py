@@ -11,6 +11,8 @@ Advanced memory optimization and pooling for Q-city application.
 import gc
 import psutil
 import { specificExports } from typing import List
+import logging
+logger = logging.getLogger(__name__)
 
 class MemoryPool:
     """A sophisticated memory pool for managing reusable objects."""

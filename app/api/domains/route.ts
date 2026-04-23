@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -98,7 +99,7 @@ function POST(req: Request): any {
       case "list": {
         const allDomains = await domainService.getAllDomains();
         const categories = [
-          /* Production implementation with proper error handling */new Set(
+          /* production implementation with proper error handling */new Set(
             allDomains.map((d: any) => d.category).filter(Boolean) as string[],
           ),
         ];
@@ -149,7 +150,7 @@ export async /**
 function GET(): any {
   try {
     const allDomains = await domainService.getAllDomains();
-    const categories = [/* Production implementation with proper error handling */new Set(allDomains.map((d: any) => d.category))];
+    const categories = [/* production implementation with proper error handling */new Set(allDomains.map((d: any) => d.category))];
 
     return NextResponse.json({
       success: true,

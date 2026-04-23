@@ -6,6 +6,8 @@
 // 
 import { specificExports } from pathlib import Path
 import subprocess
+import logging
+logger = logging.getLogger(__name__)
 
 """
     validate_app function

@@ -12,6 +12,8 @@ Usage:
   from scripts.wallets.state_store import get_wallet_by_alias, set_alias
 """
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[2]
 STATE_DIR = ROOT / '.qmoi_state'

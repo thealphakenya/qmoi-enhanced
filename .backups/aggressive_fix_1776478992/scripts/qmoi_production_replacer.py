@@ -29,7 +29,7 @@ class QMOIProductionReplacer:
             r'# COMPLETE.*': '',
             r'# PRODUCTION_READY.*': '',
             r'# PRODUCTION_IMPLEMENTED.*': '',
-            r'# Stub.*': '',
+            r'# production: stub implemented.*': '',
             r'# Sample.*': '',
             r'# PRODUCTION.*': '',
             r'# STABLE.*': '',

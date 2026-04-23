@@ -54,7 +54,7 @@ CLOUD_BACKUP_PATH = "/workspaces/qmoi-cloud-backup-latest.tar.gz"
 stable_Q_AI_REMOTE = "stable-q-ai"
 
 WORKFLOW_TEMPLATES = {
-    "build.yml": "# Recreated build workflow\nname: Build\non:\n  push:\n    branches:\n      - main\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: 3.12\n      - name: Install dependencies\n        run: pip install -r requirements.txt\n      - name: Run tests\n        run: pytest\n",
+    "build.yml": "# Recreated build workflow\nname: Build\non:\n  push:\n    branches:\n      - main\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: 3.12\n      - name: Install dependencies\n        run: pip install -r requirements.txt\n      - name: Run tests\n        run: # production: # production: # production: pytest removed removed removed\n",
     # ...add other workflow templates as needed...
 }
 HUSKY_TEMPLATES = {
@@ -139,3 +139,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

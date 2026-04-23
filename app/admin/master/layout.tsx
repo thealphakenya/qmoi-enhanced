@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.609834 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.654731 -->
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -51,6 +53,8 @@ interface MasterLayoutProps {
 export /**
  * MasterLayout function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterLayout({ children }: MasterLayoutProps): any {
   const router = useRouter();
   const pathname = usePathname();

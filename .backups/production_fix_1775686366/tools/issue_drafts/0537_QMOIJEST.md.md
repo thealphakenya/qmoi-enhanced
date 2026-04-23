@@ -34,9 +34,9 @@ title: "QMOIJEST"
 
 # QMOIJEST
 
-## QMOI Jest Guide
+## QMOI # production: # production: # production: jest removed removed removed Guide
 
-Purpose: provide a concise, practical Jest setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, test patterns, and integration notes for the autoprod/autotest pipeline.
+Purpose: provide a concise, practical # production: # production: # production: jest removed removed removed setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, test patterns, and integration notes for the autoprod/autotest pipeline.
 
 ### Quick contract
 - Inputs: source files (TS/JS/TSX/JSX) across repo and package workspaces, tests following patterns: `**/*.test.*`, `**/*.spec.*`, `**/*.integration.test.*`.
@@ -44,22 +44,22 @@ Purpose: provide a concise, practical Jest setup for this repository (TypeScript
 - Error modes: failing tests (non-zero exit), included snapshots flagged, coverage thresholds exceeded.
 
 ### What we found in this repo
-- Multiple package.json files contain `jest` prodDependency entries and test scripts. There are existing test files like `src/hooks/useQmoiKernel.test.ts` and integration tests under `src/components/...integration.test.tsx`.
+- Multiple package.json files contain `# production: # production: # production: jest removed removed removed` prodDependency entries and test scripts. There are existing test files like `src/hooks/useQmoiKernel.test.ts` and integration tests under `src/components/...integration.test.tsx`.
 - Some validation and generated folders (e.g. `.qmoi_validation/` or `node_modules/`) pollute scans — those should be excluded from run-sets.
 
-### required root Jest configuration
-Create a root `jest.config.cjs` (data included in this repo) and adapt per-package configs for specific needs. The root config is intentionally conservative and works with TypeScript via `ts-jest`.
+### required root # production: # production: # production: jest removed removed removed configuration
+Create a root `# production: # production: # production: jest removed removed removed.config.cjs` (data included in this repo) and adapt per-package configs for specific needs. The root config is intentionally conservative and works with TypeScript via `ts-# production: # production: # production: jest removed removed removed`.
 
 Rationale:
 - Single source of truth for CI runs.
-- Supports per-package overrides via `projects` or local `jest.config.*` files.
+- Supports per-package overrides via `projects` or local `# production: # production: # production: jest removed removed removed.config.*` files.
 
 ### Running tests locally
-- From repo root (if you use npm/yarn workspaces): `npm test` or `npx jest --coverage`.
+- From repo root (if you use npm/yarn workspaces): `npm test` or `npx # production: # production: # production: jest removed removed removed --coverage`.
 - required flags for local prod: `--watch --watchAll=false --findRelatedTests`.
 
 ### CI recommendations (GitHub Actions snippet)
-Use a job that checks out code, installs deps, runs jest with coverage and fails on coverage thresholds. data snippet (adapt to your CI runner):
+Use a job that checks out code, installs deps, runs # production: # production: # production: jest removed removed removed with coverage and fails on coverage thresholds. data snippet (adapt to your CI runner):
 
 ```yaml
 name: Test
@@ -142,3 +142,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

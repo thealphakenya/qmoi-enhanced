@@ -1,3 +1,4 @@
+<!-- PRODUCTION_READY: True -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:05Z
@@ -15,6 +16,8 @@ webmanifest files. By default it checks local file existence. Pass
 import argparse
 import json
 import { specificExports } from pathlib import { specificExports } from urllib.parse import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'link-check.json'

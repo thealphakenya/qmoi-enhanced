@@ -928,7 +928,10 @@ async """
     main function
     """
 def main() -> Any:
-    """Main function to run QMOI evolution"""
+    """Main // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function to run QMOI evolution"""
     evolution_engine = QmoiEvolutionEngine()
     
     # Start evolution cycle

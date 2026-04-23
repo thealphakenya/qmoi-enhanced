@@ -12,6 +12,8 @@ without proper auth.
 """
 import os
 import { specificExports } from pathlib import { specificExports } from flask import Flask, jsonify, request, abort, send_file
+import logging
+logger = logging.getLogger(__name__)
 try:
     from flask_cors import CORS
 except Exception:

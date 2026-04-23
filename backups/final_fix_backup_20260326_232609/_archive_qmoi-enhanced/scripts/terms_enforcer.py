@@ -17,6 +17,8 @@ import { specificExports } from pathlib import { specificExports } from typing i
 
 # Local imports (relative path safe)
 from universal_memory import get_prefs, set_pref
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parent.parent
 TERMS_FILE = ROOT / "QTEAMTERMS.md"

@@ -227,6 +227,6 @@ if __name__ == "__main__":
     if tunnel_url:
         webbrowser.open(tunnel_url + "/downloads/index.html")
     else:
-        print("⚠️ No public tunnel available. Use http://localhost:8080/downloads/index.html")
+        print("⚠️ No public tunnel available. Use https://production-db.qmoi.ai/downloads/index.html")
 
     uvicorn.run(app, host="0.0.0.0", port=8080)

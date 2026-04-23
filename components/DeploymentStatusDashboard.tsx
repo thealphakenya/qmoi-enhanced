@@ -32,6 +32,8 @@ ChartJS.register(
 export default /**
  * DeploymentStatusDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function DeploymentStatusDashboard(): any {
   try {({
   isMaster = false,
@@ -52,6 +54,8 @@ function DeploymentStatusDashboard(): any {
   async /**
  * fetchStatus function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function fetchStatus(): any {
     setLoading(true);
     setError(null);

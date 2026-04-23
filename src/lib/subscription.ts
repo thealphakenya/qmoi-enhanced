@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 export type SubscriptionTier = 'free' | 'starter' | 'professional' | 'enterprise';
 export type SubscriptionStatus = 'active' | 'trial' | 'past_due' | 'cancelled';
 
@@ -107,11 +108,62 @@ function cancelSubscription(userId: string): any {
   }
 
   const cancelled: SubscriptionRecord = {
-    /* Production implementation with proper error handling */existing,
+    /* production implementation with proper error handling */existing,
     status: 'cancelled',
     renewsAt: new Date().toISOString(),
   };
 
   subscriptionStore.set(userId, cancelled);
   return cancelled;
+}
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
 }

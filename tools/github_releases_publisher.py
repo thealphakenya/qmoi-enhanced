@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +57,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -323,7 +337,7 @@ production-ready and operational
         for build in builds:
             size_mb = build.file_size / (1024 * 1024)
             sha256_short = build.sha256_hash[:10] if build.sha256_hash != "web-app" else "web"
-            notes += f"| {build.platform} | [Download]({build.download_url}) | {size_mb:.2f} MB | `{sha256_short}Production implementation with comprehensive error handling and logging` |\n"
+            notes += f"| {build.platform} | [Download]({build.download_url}) | {size_mb:.2f} MB | `{sha256_short}production implementation with comprehensive error handling and logging` |\n"
 
         notes += """
 ## Installation Instructions
@@ -608,7 +622,7 @@ set -e
 REPO="thestablekenya/qmoi-enhanced"
 VERSION="v1.2.3"
 
-echo "Publishing QMOI Releases to GitHubProduction implementation with comprehensive error handling and logging"
+echo "Publishing QMOI Releases to GitHubproduction implementation with comprehensive error handling and logging"
 
 # Create release
 gh release create $VERSION \\
@@ -618,14 +632,14 @@ gh release create $VERSION \\
   --final=false
 
 # Upload assets for QMOI AI
-echo "Uploading QMOI AI assetsProduction implementation with comprehensive error handling and logging"
+echo "Uploading QMOI AI assetsproduction implementation with comprehensive error handling and logging"
 gh release upload $VERSION \\
   --repo $REPO \\
   Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe \\
   --clobber
 
 # Upload web apps
-echo "Uploading PWA appsProduction implementation with comprehensive error handling and logging"
+echo "Uploading PWA appsproduction implementation with comprehensive error handling and logging"
 for app in pwa_apps/*/; do
   app_name=$(basename "$app")
   gh release upload $VERSION \\
@@ -635,7 +649,7 @@ for app in pwa_apps/*/; do
 done
 
 # Verify release
-echo "Verifying releaseProduction implementation with comprehensive error handling and logging"
+echo "Verifying releaseproduction implementation with comprehensive error handling and logging"
 gh release view $VERSION --repo $REPO
 
 echo "✅ Release published successfully!"

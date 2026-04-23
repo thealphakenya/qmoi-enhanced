@@ -21,6 +21,8 @@ import datetime
 import json
 import os
 import { specificExports } from pathlib import { specificExports } from decimal import Decimal, InvalidOperation
+import logging
+logger = logging.getLogger(__name__)
 
 # Make sure we can import local wallet helpers even when scripts/ isn't a package
 SCRIPTS_DIR = Path(__file__).resolve().parents[1]

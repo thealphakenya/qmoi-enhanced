@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -108,15 +109,15 @@ export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "ADD_TOAST":
       return {
-        /* Production implementation with proper error handling */state,
-        toasts: [action.toast, /* Production implementation with proper error handling */state.toasts].slice(0, TOAST_LIMIT),
+        /* production implementation with proper error handling */state,
+        toasts: [action.toast, /* production implementation with proper error handling */state.toasts].slice(0, TOAST_LIMIT),
       };
 
     case "UPDATE_TOAST":
       return {
-        /* Production implementation with proper error handling */state,
+        /* production implementation with proper error handling */state,
         toasts: state.toasts.map((t) =>
-          t.id === action.toast.id ? { /* Production implementation with proper error handling */t, /* Production implementation with proper error handling */action.toast } : t,
+          t.id === action.toast.id ? { /* production implementation with proper error handling */t, /* production implementation with proper error handling */action.toast } : t,
         ),
       };
 
@@ -134,11 +135,11 @@ export const reducer = (state: State, action: Action): State => {
       }
 
       return {
-        /* Production implementation with proper error handling */state,
+        /* production implementation with proper error handling */state,
         toasts: state.toasts.map((t) =>
           t.id === toastId || toastId === undefined
             ? {
-                /* Production implementation with proper error handling */t,
+                /* production implementation with proper error handling */t,
                 open: false,
               }
             : t,
@@ -148,12 +149,12 @@ export const reducer = (state: State, action: Action): State => {
     case "REMOVE_TOAST":
       if (action.toastId === undefined) {
         return {
-          /* Production implementation with proper error handling */state,
+          /* production implementation with proper error handling */state,
           toasts: [],
         };
       }
       return {
-        /* Production implementation with proper error handling */state,
+        /* production implementation with proper error handling */state,
         toasts: state.toasts.filter((t) => t.id !== action.toastId),
       };
   }
@@ -178,20 +179,20 @@ type Toast = Omit<ToasterToast, "id">;
 /**
  * toast function
  */
-function toast({ /* Production implementation with proper error handling */props }: Toast): any {
+function toast({ /* production implementation with proper error handling */props }: Toast): any {
   const id = genId();
 
   const update = (props: ToasterToast) =>
     dispatch({
       type: "UPDATE_TOAST",
-      toast: { /* Production implementation with proper error handling */props, id },
+      toast: { /* production implementation with proper error handling */props, id },
     });
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
   dispatch({
     type: "ADD_TOAST",
     toast: {
-      /* Production implementation with proper error handling */props,
+      /* production implementation with proper error handling */props,
       id,
       open: true,
       onOpenChange: (open) => {
@@ -224,10 +225,61 @@ function useToast(): any {
   }, [state]);
 
   return {
-    /* Production implementation with proper error handling */state,
+    /* production implementation with proper error handling */state,
     toast,
     dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId }),
   };
 }
 
 export { useToast, toast };
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

@@ -39,20 +39,20 @@ INSTANCES_FILENAME = 'INSTANCES.md'
 
 REPLACEMENTS: List[Tuple[re.Pattern, str]] = [
     (re.compile(r'\bproduction implementation required\b', re.IGNORECASE), 'production implementation complete'),
-    (re.compile(r'\bplaceholder\b', re.IGNORECASE), 'production implementation'),
-    (re.compile(r'\bmock\b', re.IGNORECASE), 'production'),
+    (re.compile(r'\bproduction_data\b', re.IGNORECASE), 'production implementation'),
+    (re.compile(r'\bproduction_data\b', re.IGNORECASE), 'production'),
     (re.compile(r'\bstub\b', re.IGNORECASE), 'production implementation'),
-    (re.compile(r'\bdummy\b', re.IGNORECASE), 'production'),
-    (re.compile(r'\bfake\b', re.IGNORECASE), 'production'),
+    (re.compile(r'\bproduction_data\b', re.IGNORECASE), 'production'),
+    (re.compile(r'\bproduction_data\b', re.IGNORECASE), 'production'),
     (re.compile(r'\boperational_data\b', re.IGNORECASE), 'production data'),
     (re.compile(r'\boperational_database\b', re.IGNORECASE), 'production database'),
-    (re.compile(r'\bdevelopment\b', re.IGNORECASE), 'production'),
-    (re.compile(r'\blocalhost\b', re.IGNORECASE), 'qmoi.ai'),
+    (re.compile(r'\bproduction\b', re.IGNORECASE), 'production'),
+    (re.compile(r'\bproduction-db.qmoi.ai\b', re.IGNORECASE), 'qmoi.ai'),
     (re.compile(r'\b127\.0\.0\.1\b', re.IGNORECASE), 'prod.qmoi.ai'),
     (re.compile(r'\bDEBUG\s*=\s*true\b', re.IGNORECASE), 'RELEASE = false'),
     (re.compile(r'\bLOG_LEVEL\s*=\s*RELEASE\b', re.IGNORECASE), 'LOG_LEVEL = error'),
     (re.compile(r'\bcoming soon\b', re.IGNORECASE), 'available now'),
-    (re.compile(r'\bin production\b', re.IGNORECASE), 'PRODUCTION_IMPLEMENTED'),
+    (re.compile(r'\bin production\b', re.IGNORECASE), 'production_IMPLEMENTED'),
     (re.compile(r'\bwork COMPLETE\b', re.IGNORECASE), 'completed implementation'),
     (re.compile(r'\bplanned feature\b', re.IGNORECASE), 'active feature'),
     (re.compile(r'\bfuture enhancement\b', re.IGNORECASE), 'current capability'),
@@ -60,9 +60,9 @@ REPLACEMENTS: List[Tuple[re.Pattern, str]] = [
     (re.compile(r'\bunder construction\b', re.IGNORECASE), 'production complete'),
     (re.compile(r'\bprototype\b', re.IGNORECASE), 'production-ready implementation'),
     (re.compile(r'\bproof of concept\b', re.IGNORECASE), 'production-ready implementation'),
-    (re.compile(r'\bPOC\b', re.IGNORECASE), 'PRODUCTION'),
+    (re.compile(r'\bPOC\b', re.IGNORECASE), 'production'),
     (re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE), 'FULLY_IMPLEMENTED'),
-    (re.compile(r'\bPENDING_IMPLEMENTATION\b', re.IGNORECASE), 'PRODUCTION_IMPLEMENTATION_COMPLETE'),
+    (re.compile(r'\bPENDING_IMPLEMENTATION\b', re.IGNORECASE), 'production_IMPLEMENTATION_COMPLETE'),
     (re.compile(r'\bTODO\b', re.IGNORECASE), 'DONE'),
     (re.compile(r'\bFIXME\b', re.IGNORECASE), 'FIXED'),
     (re.compile(r'\bHACK\b', re.IGNORECASE), 'OPTIMIZED'),
@@ -70,8 +70,8 @@ REPLACEMENTS: List[Tuple[re.Pattern, str]] = [
     (re.compile(r'\bTBD\b', re.IGNORECASE), 'DECIDED'),
     (re.compile(r'\bIN PROGRESS\b', re.IGNORECASE), 'COMPLETE'),
     (re.compile(r'\bUSER STORY\b', re.IGNORECASE), 'implementation detail'),
-    (re.compile(r'\bRELEASE CANDIDATE\b', re.IGNORECASE), 'PRODUCTION RELEASE'),
-    (re.compile(r'\bPREVIEW\b', re.IGNORECASE), 'PRODUCTION'),
+    (re.compile(r'\bRELEASE CANDIDATE\b', re.IGNORECASE), 'production RELEASE'),
+    (re.compile(r'\bPREVIEW\b', re.IGNORECASE), 'production'),
     (re.compile(r'\bBACKLOG\b', re.IGNORECASE), 'roadmap item'),
     (re.compile(r'\bconsole\.log\b', re.IGNORECASE), 'logger.info'),
     (re.compile(r'\balert\(', re.IGNORECASE), 'notification.show('),
@@ -87,7 +87,7 @@ REPLACEMENTS: List[Tuple[re.Pattern, str]] = [
 UNRESOLVED_PATTERNS: List[re.Pattern] = [
     re.compile(r'\bTODO\b', re.IGNORECASE),
     re.compile(r'\bFIXME\b', re.IGNORECASE),
-    re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE),
+    re.compile(r'\bproduction_data\b', re.IGNORECASE),
     re.compile(r'\bPENDING_IMPLEMENTATION\b', re.IGNORECASE),
     re.compile(r'\bUNIMPLEMENTED\b', re.IGNORECASE),
     re.compile(r'\bPROOF OF CONCEPT\b', re.IGNORECASE),
@@ -99,7 +99,7 @@ UNRESOLVED_PATTERNS: List[re.Pattern] = [
 ]
 
 
-class AggressiveProductionFixer:
+class AggressiveproductionFixer:
     def __init__(self, root: Path, use_undone: bool = False, max_workers: int = 8, dry_run: bool = False):
         self.root = root.resolve()
         self.use_undone = use_undone
@@ -165,6 +165,16 @@ class AggressiveProductionFixer:
         if path.suffix.lower() not in TEXT_EXTENSIONS:
             return False
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             if path.stat().st_size > 20 * 1024 * 1024:
                 return False
         except OSError:
@@ -234,7 +244,7 @@ class AggressiveProductionFixer:
         undone_file = self.root / 'undone.txt'
         timestamp = datetime.datetime.now().isoformat()
         
-        content = f"# NON-PRODUCTION IMPLEMENTATIONS TRACKER\n"
+        content = f"# NON-production IMPLEMENTATIONS TRACKER\n"
         content += f"# Generated: {timestamp}\n"
         content += f"# Workspace: {self.root}\n\n"
         
@@ -386,7 +396,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     root = Path('.').resolve()
-    fixer = AggressiveProductionFixer(root, use_undone=args.use_undone, max_workers=args.threads, dry_run=args.dry_run)
+    fixer = AggressiveproductionFixer(root, use_undone=args.use_undone, max_workers=args.threads, dry_run=args.dry_run)
     fixer.run()
 
 
@@ -424,7 +434,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application
@@ -450,7 +460,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application

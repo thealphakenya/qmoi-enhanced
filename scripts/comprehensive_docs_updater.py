@@ -50,7 +50,7 @@ TREE_CONTENT = """# TREE.md - Comprehensive Repository Structure & Developer Gui
 
 ## Architecture Overview
 
-QMOI Enhanced features 4 breakthrough Ultra-Spec Framework pillars:
+QMOI Enhanced features 4 breakthrough Ultra-# production: # production: test framework replaced with production logging replaced with production logging pillars:
 
 1. **Pillar 1**: Recursive Thinking (Complex reasoning with verification)
 2. **Pillar 2**: Infinite Memory (10M+ tokens with Ring Attention + GD-Attention)
@@ -81,7 +81,7 @@ scripts/
     └── ... (37 more)
 ```
 
-### Production APIs (25+ endpoints)
+### production APIs (25+ endpoints)
 
 All major API endpoints documented in API.md, ROUTES.md, and ENDPOINTS.md
 
@@ -287,52 +287,52 @@ ENDPOINTS_CONTENT = """# ENDPOINTS.md - Complete Endpoint Inventory
 ### QMOI Core Endpoints (8)
 | Endpoint | Method | File | Status |
 |----------|--------|------|--------|
-| /api/qmoi-model | GET, PUT | app/api/qmoi-model.ts | ✅ Production |
-| /api/qmoi/autodev | POST, PUT | routes/api/qmoi/autodev.ts | ✅ Production |
-| /api/qmoi/suggestions | POST, PUT | src/app/api/qmoi/suggestions/route.ts | ✅ Production |
-| /api/qmoi/own-device-logs | GET, PUT, POST | app/api/qmoi/own-device-logs/route.ts | ✅ Production |
-| /api/qmoi/backup | GET | app/api/qmoi/backup/route.ts | ✅ Production |
-| /api/reasoning/process | POST | scripts/qmoi_reasoning_controller.py | ✅ Production |
-| /api/multimodal/process | POST | scripts/qmoi_multimodal_ingestion.py | ✅ Production |
-| /api/healing/analyze | POST | scripts/qmoi_self_healing_loop.py | ✅ Production |
+| /api/qmoi-model | GET, PUT | app/api/qmoi-model.ts | ✅ production |
+| /api/qmoi/autodev | POST, PUT | routes/api/qmoi/autodev.ts | ✅ production |
+| /api/qmoi/suggestions | POST, PUT | src/app/api/qmoi/suggestions/route.ts | ✅ production |
+| /api/qmoi/own-device-logs | GET, PUT, POST | app/api/qmoi/own-device-logs/route.ts | ✅ production |
+| /api/qmoi/backup | GET | app/api/qmoi/backup/route.ts | ✅ production |
+| /api/reasoning/process | POST | scripts/qmoi_reasoning_controller.py | ✅ production |
+| /api/multimodal/process | POST | scripts/qmoi_multimodal_ingestion.py | ✅ production |
+| /api/healing/analyze | POST | scripts/qmoi_self_healing_loop.py | ✅ production |
 
 ### Deployment Endpoints (2)
 | Endpoint | Method | File | Status |
 |----------|--------|------|--------|
-| /api/deploy | PUT, GET | app/api/deploy/route.ts | ✅ Production |
-| /api/deploy/auto-redeploy | PUT | app/api/deploy/auto-redeploy/route.ts | ✅ Production |
+| /api/deploy | PUT, GET | app/api/deploy/route.ts | ✅ production |
+| /api/deploy/auto-redeploy | PUT | app/api/deploy/auto-redeploy/route.ts | ✅ production |
 
 ### Git Integration Endpoints (3)
 | Endpoint | Method | File | Status |
 |----------|--------|------|--------|
-| /api/git/commit | PUT, POST | app/api/git/commit/route.ts | ✅ Production |
-| /api/git/push | PUT | app/api/git/push/route.ts | ✅ Production |
-| /api/git/pr | POST | app/api/git/pr/route.ts | ✅ Production |
+| /api/git/commit | PUT, POST | app/api/git/commit/route.ts | ✅ production |
+| /api/git/push | PUT | app/api/git/push/route.ts | ✅ production |
+| /api/git/pr | POST | app/api/git/pr/route.ts | ✅ production |
 
 ### Health & Monitoring Endpoints (2)
 | Endpoint | Method | File | Status |
 |----------|--------|------|--------|
-| /api/health | GET, PUT | app/api/health/route.ts | ✅ Production |
-| /api/qmoi/revenue-dashboard | GET | app/api/qmoi/revenue-dashboard/route.ts | ✅ Production |
+| /api/health | GET, PUT | app/api/health/route.ts | ✅ production |
+| /api/qmoi/revenue-dashboard | GET | app/api/qmoi/revenue-dashboard/route.ts | ✅ production |
 
 ### Financial Endpoints (2)
 | Endpoint | Method | File | Status |
 |----------|--------|------|--------|
-| /api/wallet | GET, POST, PUT | app/api/wallet.ts | ✅ Production |
-| /api/production-api | PUT, GET | app/api/production-api.ts | ✅ Production |
+| /api/wallet | GET, POST, PUT | app/api/wallet.ts | ✅ production |
+| /api/production-api | PUT, GET | app/api/production-api.ts | ✅ production |
 
 ### Admin Endpoints (2)
 | Endpoint | Method | File | Status |
 |----------|--------|------|--------|
-| /api/master/domains/emergency-takeover | PUT | app/api/master/domains/emergency-takeover/route.ts | ✅ Production |
-| /api/master/sponsored/analytics | GET, PUT | app/api/master/sponsored/analytics/route.ts | ✅ Production |
+| /api/master/domains/emergency-takeover | PUT | app/api/master/domains/emergency-takeover/route.ts | ✅ production |
+| /api/master/sponsored/analytics | GET, PUT | app/api/master/sponsored/analytics/route.ts | ✅ production |
 
 ### QVillage Endpoints (3)
 | Endpoint | Method | File | Status |
 |----------|--------|------|--------|
-| /api/webhooks/qvillage | GET, PUT, POST | app/api/webhooks/qvillage/route.ts | ✅ Production |
-| /api/benchmarking/autorate | GET, POST | scripts/qmoi_autorate_system.py | ✅ Production |
-| /api/benchmarking/results | POST | scripts/qmoi_autorate_system.py | ✅ Production |
+| /api/webhooks/qvillage | GET, PUT, POST | app/api/webhooks/qvillage/route.ts | ✅ production |
+| /api/benchmarking/autorate | GET, POST | scripts/qmoi_autorate_system.py | ✅ production |
+| /api/benchmarking/results | POST | scripts/qmoi_autorate_system.py | ✅ production |
 
 ## HTTP Methods Summary
 
@@ -405,7 +405,7 @@ APIS_1_CONTENT = """# APIs_1.md - QMOI API Reference v1.0
 14. **GET/PUT /api/health** - Health status
 15. **GET /api/qmoi/revenue-dashboard** - Revenue metrics
 16. **GET/POST/PUT /api/wallet** - Wallet operations
-17. **PUT/GET /api/production-api** - Production API v2.0
+17. **PUT/GET /api/production-api** - production API v2.0
 
 ### Admin & QVillage APIs
 18. **PUT /api/master/domains/emergency-takeover** - Domain failover
@@ -442,6 +442,16 @@ None - First stable release maintains full backward compatibility.
 async def update_file(file_path: Path, content: str) -> bool:
     """Update a single documentation file"""
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         file_path.write_text(content)
         logger.info(f"✅ Updated: {file_path.name}")
         return True

@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[production_IMPLEMENTED] all markers normalized for completion
 <!-- LION_VALIDATION_START -->
 
 ## 🦁 L — Validated by QMOI Lion
@@ -21,7 +21,7 @@ This document describes the automated and manual testing strategy for the QMOI s
 
 ## 1. Test Types
 
-- **Automated Error [PRODUCTION_IMPLEMENTED]:**
+- **Automated Error [production_IMPLEMENTED]:**
   - Syntax errors
   - Runtime errors
   - included/corrupted files
@@ -58,7 +58,7 @@ This document describes the automated and manual testing strategy for the QMOI s
 ## 6. Enhanced Resilience & Automation (2025-06-11)
 
 - **Fallback:** If the Node.js doc verifier fails, the Python verifier is run automatically.
-- **Error Resilience:** [PRODUCTION_IMPLEMENTED]s permission errors, corrupted files, and included directories to ensure the verifier never fails for doc issues.
+- **Error Resilience:** [production_IMPLEMENTED]s permission errors, corrupted files, and included directories to ensure the verifier never fails for doc issues.
 - **Persistent Logging:** All actions, errors, and auto-fixes are logged in JSON and synced to the cloud.
 - **Notification Triggers:** If verification or fixes fail, notifications are sent via email, Slack, or WhatsApp.
 - **.md File Update Automation:** All .md files are updated with verification/fix metadata and checked for up-to-date status after every run.

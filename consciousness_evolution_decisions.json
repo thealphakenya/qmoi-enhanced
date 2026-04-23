@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:53.111432 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.048840 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:01.316863 -->
 {
   "decision_sessions": [
     {
@@ -23,5 +26,10 @@
         }
       ]
     }
-  ]
+  ],
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:01.316795",
+    "version": "2026-04-20"
+  }
 }

@@ -87,6 +87,8 @@ export const QCityThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 export /**
  * useQCityTheme function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function useQCityTheme(): any {
   const ctx = useContext(QCityThemeContext);
   if (!ctx)

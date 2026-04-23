@@ -15,6 +15,8 @@ import json
 import hashlib
 import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 # Configuration
 ROOT = Path(__file__).parent

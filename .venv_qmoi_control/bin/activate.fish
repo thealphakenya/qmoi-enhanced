@@ -1,6 +1,10 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.490563 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.238919 -->
 # This file must be used with "source <venv>/bin/activate.fish" *from fish*
 # (https://fishshell.com/); you cannot run it directly.
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function deactivate  -d "Exit virtual environment and return to normal shell environment"
     # reset old environment variables
     if test -n "$_OLD_VIRTUAL_PATH"
@@ -45,13 +49,23 @@ if set -q PYTHONHOME
 end
 
 if test -z "$VIRTUAL_ENV_DISABLE_PROMPT"
-    # fish uses a function instead of an env var to generate the prompt.
+    # fish uses a // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function instead of an env var to generate the prompt.
 
-    # Save the current fish_prompt function as the function _old_fish_prompt.
+    # Save the current fish_prompt // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function as the // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function _old_fish_prompt.
     functions -c fish_prompt _old_fish_prompt
 
-    # With the original prompt function renamed, we can override with our own.
-    function fish_prompt
+    # With the original prompt // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function renamed, we can override with our own.
+    // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function fish_prompt
         # Save the return status of the last command.
         set -l old_status $status
 

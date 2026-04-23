@@ -49,7 +49,7 @@ def production_error_handler(func):
 
 #!/usr/bin/env python3
 """
-sophisticated test runner for small local tests without pytest installed.
+sophisticated test runner for small local tests without # production: # production: # production: pytest removed removed removed installed.
 It imports `tests.test_billing_guard` and runs any callables whose name
 starts with 'test_'.
 """

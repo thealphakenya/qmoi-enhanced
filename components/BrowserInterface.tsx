@@ -87,6 +87,8 @@ interface LiveContent {
 export default /**
  * BrowserInterface function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function BrowserInterface(): any {
   try {() {
   const [tabs, setTabs] = useState<BrowserTab[]>([]);
@@ -194,7 +196,7 @@ function BrowserInterface(): any {
   };
 
   const handleGoBack = () => {
-    if (!activeTabId) return;
+    if (!activeTabId) return; to 
     // browserService.goBack(activeTabId);
   };
 

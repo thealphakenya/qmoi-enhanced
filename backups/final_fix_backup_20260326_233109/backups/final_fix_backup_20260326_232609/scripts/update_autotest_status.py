@@ -5,6 +5,8 @@
 
 // production implementation: this file has no remaining production markers
 import json, os
+import logging
+logger = logging.getLogger(__name__)
 status = {
     "windows": "✅ PASS" if os.path.exists("dist/qmoi ai.exe") else "❌ FAIL",
     # Other prodices can be checked similarly

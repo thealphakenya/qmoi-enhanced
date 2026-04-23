@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +53,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -120,8 +130,8 @@ import time
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -130,7 +140,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -232,7 +242,7 @@ def load_config(self) -> Dict[str, Any]:
     """
 def start_notification_system(self) -> Any:
         """Start the notification system"""
-        logger.info("Starting QMOI Master Notifications SystemProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting QMOI Master Notifications Systemproduction implementation with comprehensive error handling and logging")
         
         # Start notification processing thread
         self.notification_thread = threading.Thread(target=self._notification_loop, daemon=True)
@@ -671,7 +681,7 @@ def save_notification_stats(self) -> Any:
 def run(self) -> Any:
         """Run the notification system"""
         try:
-            logger.info("Starting QMOI Master Notifications SystemProduction implementation with comprehensive error handling and logging")
+            logger.info("Starting QMOI Master Notifications Systemproduction implementation with comprehensive error handling and logging")
             
             # Start notification system
             self.start_notification_system()
@@ -699,7 +709,7 @@ def run(self) -> Any:
     """
 def cleanup(self) -> Any:
         """Cleanup notification system"""
-        logger.info("Cleaning up notification systemProduction implementation with comprehensive error handling and logging")
+        logger.info("Cleaning up notification systemproduction implementation with comprehensive error handling and logging")
         
         # Send shutdown notification
         self.send_info_notification("QMOI Master Notifications System shutting down")

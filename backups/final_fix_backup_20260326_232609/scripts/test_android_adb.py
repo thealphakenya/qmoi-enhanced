@@ -5,6 +5,8 @@
 
 import os
 import subprocess
+import logging
+logger = logging.getLogger(__name__)
 
 apk_path = "Qmoi_apps/android/qmoi ai.apk"
 

@@ -17,6 +17,8 @@ This is a robust test server (not production). It simulates role-based replies.
 import json
 import os
 import { specificExports } from http.server import { specificExports } from urllib.parse import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 # Optional redis integration for cross-platform memory sync
 REDIS_URL = os.environ.get('QMOI_REDIS_URL')

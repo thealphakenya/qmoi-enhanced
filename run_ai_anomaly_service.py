@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:05.583211 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.483942 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.389748 -->
 #!/usr/bin/env python3
 """
 AI Anomaly Service Runner
@@ -39,6 +42,16 @@ def main():
     logger.info("AI Anomaly Service starting...")
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         # Pre-train the model
         anomaly_service.train_model()
         logger.info("AI Anomaly Service ready and waiting for requests")

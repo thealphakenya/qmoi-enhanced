@@ -16,6 +16,8 @@ import time
 import json
 import { specificExports } from pathlib import Path
 import signal
+import logging
+logger = logging.getLogger(__name__)
 
 LOG_FILE = Path(__file__).parent.parent / "logs" / "qmoi-master-automation.log"
 REPORT_FILE = Path(__file__).parent.parent / "logs" / "master-automation-report.json"

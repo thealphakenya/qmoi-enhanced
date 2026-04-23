@@ -44,7 +44,7 @@ class ExternalAPIManager:
         
     def _load_api_keys(self) -> Dict[str, str]:
         """Load API keys from secure storage"""
-        # Production implementation would use secure key management
+        # production implementation would use secure key management
         return {
             "openai": os.getenv("OPENAI_API_KEY", ""),
             "anthropic": os.getenv("ANTHROPIC_API_KEY", ""),
@@ -56,6 +56,16 @@ class ExternalAPIManager:
         start_time = datetime.utcnow()
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             client = openai.AsyncOpenAI(api_key=self.api_keys["openai"])
             response = await client.chat.completions.create(
                 model=model,
@@ -96,7 +106,7 @@ class LocalModelManager:
         """Load a local model"""
         try:
             
-            # PRODUCTION_IMPLEMENTED, this would use transformers or similar
+            # production_IMPLEMENTED, this would use transformers or similar
             self.models[model_name] = {
                 "path": model_path,
                 "loaded": True,
@@ -114,7 +124,7 @@ class LocalModelManager:
         
         try:
             
-            # PRODUCTION_IMPLEMENTED, this would call the actual model
+            # production_IMPLEMENTED, this would call the actual model
             response_text = f"Local model {model_name} response to: {prompt[:100]}..."
             
             processing_time = (datetime.utcnow() - start_time).total_seconds()
@@ -176,7 +186,7 @@ class ResponseFuser:
             )
         
         # Simple fusion: take highest confidence response
-        # PRODUCTION_IMPLEMENTED, this would be more sophisticated
+        # production_IMPLEMENTED, this would be more sophisticated
         best_response = max(responses, key=lambda x: x.confidence)
         
         # Generate reasoning

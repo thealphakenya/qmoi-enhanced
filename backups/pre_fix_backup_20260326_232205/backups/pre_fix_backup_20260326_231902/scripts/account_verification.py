@@ -6,6 +6,8 @@
 # [PRODUCTION_IMPLEMENTED]
 import requests
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 MASTER_EMAIL = "rovicviccy@gmail.com"
 MASTER_WHATSAPP = "+254786322855"

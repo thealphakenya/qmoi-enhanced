@@ -18,6 +18,8 @@ import argparse
 import json
 import os
 import fnmatch
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 

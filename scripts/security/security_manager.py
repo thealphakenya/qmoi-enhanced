@@ -1,6 +1,6 @@
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -90,8 +90,8 @@ import psutil
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -100,7 +100,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -899,7 +899,7 @@ def setup_access_control(self) -> None:
     """
     check_access function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Check if user has access to resource."""
         try:
             # Check rules
@@ -917,7 +917,7 @@ def setup_access_control(self) -> None:
     """
     match_access_rule function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Match access control rule."""
         try:
             # Check user
@@ -925,7 +925,7 @@ def setup_access_control(self) -> None:
                 return False
             
             # Check resource
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
                 return False
             
             # Check action

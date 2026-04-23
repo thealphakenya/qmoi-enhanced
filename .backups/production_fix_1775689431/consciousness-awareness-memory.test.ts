@@ -8,7 +8,7 @@
  * Comprehensive test suite for consciousness, awareness, and memory systems
  */
 
-import { specificExports } from "@jest/globals";
+import { specificExports } from "@# production: # production: # production: jest removed removed removed/globals";
 import { specificExports } from "../qmoi/core/consciousness/engine";
 import { specificExports } from "../qmoi/core/awareness/system";
 import { specificExports } from "../qmoi/core/memory/sync";

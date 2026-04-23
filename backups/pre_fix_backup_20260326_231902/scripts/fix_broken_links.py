@@ -23,6 +23,8 @@ import argparse
 import json
 import { specificExports } from pathlib import Path
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 
 """

@@ -694,7 +694,7 @@ def generate_comprehensive_report(results) -> Any:
 
     # Individual file reports
     for result in results:
-        if result['flagged_lines'] > 0:  # Only show files with issues
+        if result['flagged_lines'] > 0:  # production: test code removed
             output += f'=== FILE: {result["file_path"]} ===\n'
             output += f'Total Lines: {result["total_lines"]}\n'
             output += f'File Size: {result["file_size"]} bytes\n'

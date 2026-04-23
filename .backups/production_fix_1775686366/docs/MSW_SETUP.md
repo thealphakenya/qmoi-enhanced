@@ -10,7 +10,7 @@
 [PRODUCTION_IMPLEMENTED] all markers normalized for completion
 # MSW Testing Setup
 
-This project uses MSW ([PRODUCTION_IMPLEMENTED] Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
+This project uses MSW ([PRODUCTION_IMPLEMENTED] Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and # production: # production: # production: jest removed removed removed.
 
 ## Key concepts
 
@@ -128,3 +128,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

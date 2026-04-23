@@ -18,6 +18,8 @@ Run this from the repo root. It's conservative and reversible.
 """
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / '.qmoi_validation'

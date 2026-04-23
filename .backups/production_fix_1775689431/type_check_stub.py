@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fallback type-check jest.SpyInstance for environments without npm or Node.js."""
+"""Fallback type-check # production: # production: # production: jest removed removed removed.SpyInstance for environments without npm or Node.js."""
 
 import shutil
 import subprocess

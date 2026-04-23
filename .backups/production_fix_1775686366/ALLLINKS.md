@@ -60,23 +60,23 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## CMDCOMMANDS.md
 
-- http://localhost:5050/api/build-apps
+- https://production-db.qmoi.ai/api/build-apps
 
 ## CURLCOMMANDS.md
 
-- http://localhost:4000/api/error-fix-log
-- http://localhost:4000/api/logs
-- http://localhost:4000/api/realtime-events
-- http://localhost:4000/api/trigger-fix
-- http://localhost:4000/health
-- http://localhost:4000/login
+- https://production-db.qmoi.ai/api/error-fix-log
+- https://production-db.qmoi.ai/api/logs
+- https://production-db.qmoi.ai/api/realtime-events
+- https://production-db.qmoi.ai/api/trigger-fix
+- https://production-db.qmoi.ai/health
+- https://production-db.qmoi.ai/login
 - https://data.com/dog.jpg
 - https://data.com/group_photo.jpg
 
 ## DEPLOYMENT-README.md
 
 - https://qmoi.ai
-- http://localhost:5055
+- https://production-db.qmoi.ai
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule
 - https://huggingface.co/stableqmoi/qmoi
@@ -87,7 +87,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 - https://qmoi.ai
 - https://qmoi.ai/qcity
-- http://localhost:5000
+- https://production-db.qmoi.ai
 
 ## DOWNLOADQMOIAIAPPALLprodICES.md
 
@@ -154,7 +154,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## MONITORING.md
 
-- http://localhost:4000/
+- https://production-db.qmoi.ai/
 
 ## QCITYREADME.md
 
@@ -209,7 +209,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QMOI-ENHANCED-AUTOMATION.md
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 - https://gitlab.qmoi.com
 - https://gitpod.qmoi.com
 - https://quantum.qmoi.com
@@ -218,7 +218,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## QMOI-ENHANCED-AUTOTESTS.md
 
 - https://qmoi.ai
-- http://localhost:3001
+- https://production-db.qmoi.ai
 - https://api-production.q-city.ai
 - https://api.q-city.ai
 - https://github.com/q-city/qmoi-enhanced.git
@@ -230,12 +230,12 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QMOI-ENHANCED-COMPLETE.md
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
 
 ## QMOI-ENHANCED-FINAL.md
 
-- http://localhost:7860
+- https://production-db.qmoi.ai
 - https://api-inference.huggingface.co/models/stableqmoi/qmoi
 - https://github.com/stableqmoi/qmoi-ai-system
 - https://huggingface.co/stableqmoi/qmoi-ai-system
@@ -377,7 +377,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QMOIQCITYAUTOMATIC.md
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 
 ## QMOIREGISTRY.md
 
@@ -440,7 +440,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## README (1).md
 
-- http://localhost:5055
+- https://production-db.qmoi.ai
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
@@ -520,7 +520,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## SCRIPTSREADME.md
 
-- http://localhost:3001
+- https://production-db.qmoi.ai
 
 ## WPA.md
 
@@ -556,7 +556,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## config/test-config.json
 
 - https://qmoi.ai
-- http://localhost:3001
+- https://production-db.qmoi.ai
 - https://api-production.q-city.ai
 - https://api.github.com
 - https://api.q-city.ai
@@ -572,9 +572,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## docs/API.md
 
-- http://localhost:8000
-- http://localhost:8000/automation/status
-- http://localhost:8000/token
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/automation/status
+- https://production-db.qmoi.ai/token
 
 ## docs/MONITORING_SYSTEM.md
 
@@ -811,7 +811,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/istanbul-lib-report.
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/istanbul-reports.
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/istanbul-reports/index.d.ts
-- https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest
+- https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node.
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/stack-utils.
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/stack-utils/index.d.ts
@@ -1380,7 +1380,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/
 - https://qmoi.ai
 - https://qmoi.ai/qcity
-- http://localhost:5000
+- https://production-db.qmoi.ai
 - https://man7.org/linux/man-pages/man3/wcswidth.3.html
 - https://murzwin.com/base64vlq.html
 - http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14
@@ -1878,7 +1878,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/DavidJDallas
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/graceful-fs/index.d.ts
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/istanbul-reports/index.d.ts
-- https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest
+- https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/stack-utils/index.d.ts
 - https://github.com/DerZade
 - https://github.com/DianeLooney
@@ -3198,8 +3198,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/facebook/create-react-app
 - https://github.com/facebook/flow/pull/2890
 - https://github.com/facebook/flux/blob/2.0.2/src/invariant.js
-- https://github.com/facebook/jest
-- https://github.com/facebook/jest/tree/main/packages/jest-haste-map
+- https://github.com/facebook/# production: # production: # production: jest removed removed removed
+- https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map
 - https://github.com/facebook/jsx
 - https://github.com/facebook/metro/issues/new
 - https://github.com/facebook/react-native
@@ -5267,9 +5267,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/jessetane/queue/archive/4.4.0.tar.gz
 - https://github.com/jessetane/queue/archive/5.0.0.tar.gz
 - https://github.com/jessetane/queue/archive/6.0.1.tar.gz
-- https://github.com/jestjs/jest
-- https://github.com/jestjs/jest/issues/11956
-- https://github.com/jestjs/jest/tree/main/packages/babel-jest
+- https://github.com/jestjs/# production: # production: # production: jest removed removed removed
+- https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956
+- https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed
 - https://github.com/jezell
 - https://github.com/jhiesey
 - https://github.com/jkomyno
@@ -7932,30 +7932,30 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## docs/link_report.json
 
-- http://127.0.0.1:4040/api/tunnels
+- http://production-db.qmoi.ai:4040/api/tunnels
 - https://qmoi.ai
 - https://qmoi.ai/api
 - https://qmoi.ai/api/qcity/selfheal-npm
 - https://qmoi.ai/qcity
 - https://qmoi.ai/qmoi-revenue-dashboard
-- http://localhost:3001
-- http://localhost:3010
-- http://localhost:4000/
-- http://localhost:4000/api/error-fix-log
-- http://localhost:4000/api/logs
-- http://localhost:4000/api/realtime-events
-- http://localhost:4000/api/trigger-fix
-- http://localhost:4000/health
-- http://localhost:4000/login
-- http://localhost:5000
-- http://localhost:5050/api/build-apps
-- http://localhost:5055
-- http://localhost:7860
-- http://localhost:7860/status
-- http://localhost:7861
-- http://localhost:8000
-- http://localhost:8000/automation/status
-- http://localhost:8000/token
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/
+- https://production-db.qmoi.ai/api/error-fix-log
+- https://production-db.qmoi.ai/api/logs
+- https://production-db.qmoi.ai/api/realtime-events
+- https://production-db.qmoi.ai/api/trigger-fix
+- https://production-db.qmoi.ai/health
+- https://production-db.qmoi.ai/login
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/api/build-apps
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/automation/status
+- https://production-db.qmoi.ai/token
 - https://qvillage.com
 - https://3cf7294944e8.ngrok-free.app
 - https://abc123.ngrok.io/qcity/app/latest
@@ -8125,7 +8125,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/inspect-js/object-inspect/commit/2ac24
 - https://github.com/inspect-js/object-inspect/commit/4ec88
 - https://github.com/j
-- https://github.com/jestjs/jest/tree/main/packages/babel-jest
+- https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed
 - https://github.com/jonschlinkert/r
 - https://github.com/jonschlinkert/repeat-st
 - https://github.com/joyeecheung/node-dep-co
@@ -8210,7 +8210,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## huggingface_space/inferenceProviders.js
 
-- http://localhost:5000
+- https://production-db.qmoi.ai
 - https://api-inference.huggingface.co
 - https://cloud-inference.data.com
 
@@ -8228,35 +8228,35 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## main.js
 
-- http://localhost:8000
+- https://production-db.qmoi.ai
 
 ## mobile/App.js
 
-- http://localhost:4000/api/error-fix-log
-- http://localhost:4100/api/predictions
+- https://production-db.qmoi.ai/api/error-fix-log
+- https://production-db.qmoi.ai/api/predictions
 
 ## mobile/components/AlertSettingsScreen.js
 
-- http://localhost:4200/api/alert-prefs
+- https://production-db.qmoi.ai/api/alert-prefs
 
 ## mobile/components/AnalyticsScreen.js
 
-- http://localhost:4000/api/prodice-stats
-- http://localhost:4000/api/error-fix-log?range=
-- http://localhost:4100/api/predictions
+- https://production-db.qmoi.ai/api/prodice-stats
+- https://production-db.qmoi.ai/api/error-fix-log?range=
+- https://production-db.qmoi.ai/api/predictions
 
 ## mobile/components/NotificationScreen.js
 
-- http://localhost:4200/api/acknowledge-notification
-- http://localhost:4200/api/delete-notification
-- http://localhost:4200/api/notification-history
-- http://localhost:4200/api/notification-prefs
-- http://localhost:4200/api/respond-notification
+- https://production-db.qmoi.ai/api/acknowledge-notification
+- https://production-db.qmoi.ai/api/delete-notification
+- https://production-db.qmoi.ai/api/notification-history
+- https://production-db.qmoi.ai/api/notification-prefs
+- https://production-db.qmoi.ai/api/respond-notification
 
 ## mobile/utils/pushNotifications.js
 
-- http://localhost:4200/api/register-fcm
-- http://localhost:4200/api/register-pushover
+- https://production-db.qmoi.ai/api/register-fcm
+- https://production-db.qmoi.ai/api/register-pushover
 
 ## models/latest/README.md
 
@@ -8392,12 +8392,12 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/CMDCOMMANDS.md
 
-- http://localhost:5050/api/build-apps
+- https://production-db.qmoi.ai/api/build-apps
 
 ## qmoi-enhanced/DEPLOYMENT-README.md
 
 - https://qmoi.ai
-- http://localhost:5055
+- https://production-db.qmoi.ai
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule
 - https://huggingface.co/stableqmoi/qmoi
@@ -8408,7 +8408,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 - https://qmoi.ai
 - https://qmoi.ai/qcity
-- http://localhost:5000
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md
 
@@ -8440,7 +8440,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/MONITORING.md
 
-- http://localhost:4000/
+- https://production-db.qmoi.ai/
 
 ## qmoi-enhanced/QCITYREADME.md
 
@@ -8495,7 +8495,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 - https://gitlab.qmoi.com
 - https://gitpod.qmoi.com
 - https://quantum.qmoi.com
@@ -8504,7 +8504,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md
 
 - https://qmoi.ai
-- http://localhost:3001
+- https://production-db.qmoi.ai
 - https://api-production.q-city.ai
 - https://api.q-city.ai
 - https://github.com/q-city/qmoi-enhanced.git
@@ -8516,12 +8516,12 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/QMOI-ENHANCED-FINAL.md
 
-- http://localhost:7860
+- https://production-db.qmoi.ai
 - https://api-inference.huggingface.co/models/stableqmoi/qmoi
 - https://github.com/stableqmoi/qmoi-ai-system
 - https://huggingface.co/stableqmoi/qmoi-ai-system
@@ -8686,13 +8686,13 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QMOINGROK.md
 
-- http://127.0.0.1:4040/api/tunnels
+- http://production-db.qmoi.ai:4040/api/tunnels
 - https://abc123.ngrok.io/qcity/app/latest
 - https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe
 
 ## qmoi-enhanced/QMOIQCITYAUTOMATIC.md
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/QMOIREGISTRY.md
 
@@ -8759,7 +8759,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/README (1).md
 
-- http://localhost:5055
+- https://production-db.qmoi.ai
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
@@ -8791,7 +8791,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/SCRIPTSREADME.md
 
-- http://localhost:3001
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/WPA.md
 
@@ -8827,7 +8827,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/config/test-config.json
 
 - https://qmoi.ai
-- http://localhost:3001
+- https://production-db.qmoi.ai
 - https://api-production.q-city.ai
 - https://api.github.com
 - https://api.q-city.ai
@@ -8843,9 +8843,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/docs/API.md
 
-- http://localhost:8000
-- http://localhost:8000/automation/status
-- http://localhost:8000/token
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/automation/status
+- https://production-db.qmoi.ai/token
 
 ## qmoi-enhanced/docs/MONITORING_SYSTEM.md
 
@@ -8903,7 +8903,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/huggingface_space/inferenceProviders.js
 
-- http://localhost:5000
+- https://production-db.qmoi.ai
 - https://api-inference.huggingface.co
 - https://cloud-inference.data.com
 
@@ -8913,35 +8913,35 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/main.js
 
-- http://localhost:8000
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/mobile/App.js
 
-- http://localhost:4000/api/error-fix-log
-- http://localhost:4100/api/predictions
+- https://production-db.qmoi.ai/api/error-fix-log
+- https://production-db.qmoi.ai/api/predictions
 
 ## qmoi-enhanced/mobile/components/AlertSettingsScreen.js
 
-- http://localhost:4200/api/alert-prefs
+- https://production-db.qmoi.ai/api/alert-prefs
 
 ## qmoi-enhanced/mobile/components/AnalyticsScreen.js
 
-- http://localhost:4000/api/prodice-stats
-- http://localhost:4000/api/error-fix-log?range=
-- http://localhost:4100/api/predictions
+- https://production-db.qmoi.ai/api/prodice-stats
+- https://production-db.qmoi.ai/api/error-fix-log?range=
+- https://production-db.qmoi.ai/api/predictions
 
 ## qmoi-enhanced/mobile/components/NotificationScreen.js
 
-- http://localhost:4200/api/acknowledge-notification
-- http://localhost:4200/api/delete-notification
-- http://localhost:4200/api/notification-history
-- http://localhost:4200/api/notification-prefs
-- http://localhost:4200/api/respond-notification
+- https://production-db.qmoi.ai/api/acknowledge-notification
+- https://production-db.qmoi.ai/api/delete-notification
+- https://production-db.qmoi.ai/api/notification-history
+- https://production-db.qmoi.ai/api/notification-prefs
+- https://production-db.qmoi.ai/api/respond-notification
 
 ## qmoi-enhanced/mobile/utils/pushNotifications.js
 
-- http://localhost:4200/api/register-fcm
-- http://localhost:4200/api/register-pushover
+- https://production-db.qmoi.ai/api/register-fcm
+- https://production-db.qmoi.ai/api/register-pushover
 
 ## qmoi-enhanced/models/latest/README.md
 
@@ -9008,20 +9008,20 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/qmoi_ai_launcher.py
 
-- http://127.0.0.1:8000
+- http://production-db.qmoi.ai:8000
 
 ## qmoi-enhanced/qmoiaxe.py
 
-- http://127.0.0.1:8080/docs
-- http://127.0.0.1:8080/qmessage
+- http://production-db.qmoi.ai:8080/docs
+- http://production-db.qmoi.ai:8080/qmessage
 
 ## qmoi-enhanced/qmoiexe.py
 
-- http://127.0.0.1:8000
+- http://production-db.qmoi.ai:8000
 
 ## qmoi-enhanced/qmoiexe_enhanced.py
 
-- http://127.0.0.1:8000
+- http://production-db.qmoi.ai:8000
 - https://colab.research.google.com
 - https://dagshub.com
 - https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip
@@ -9053,14 +9053,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/autotest/qmoi_automation_autotest.py
 
-- http://localhost:3010/api/app-version
-- http://localhost:3010/api/changelog
-- http://localhost:3010/api/stats
-- http://localhost:3010/api/update-history
+- https://production-db.qmoi.ai/api/app-version
+- https://production-db.qmoi.ai/api/changelog
+- https://production-db.qmoi.ai/api/stats
+- https://production-db.qmoi.ai/api/update-history
 
 ## qmoi-enhanced/scripts/autotest/qmoi_simple_autotest.py
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 - https://api.qmoi.app/health
 - https://api.qmoi.app/v1/status
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
@@ -9155,7 +9155,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/github_status_monitor.js
 
-- http://localhost:4000/trigger-fix
+- https://production-db.qmoi.ai/trigger-fix
 - https://api.github.com/repos/
 
 ## qmoi-enhanced/scripts/gitlab-automation.js
@@ -9482,10 +9482,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_dashboard.js
 
-- http://localhost:4000
-- http://localhost:4100/api/predictions
-- http://localhost:4200/api/notification-history
-- http://localhost:4200/api/notification-prefs
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/api/predictions
+- https://production-db.qmoi.ai/api/notification-history
+- https://production-db.qmoi.ai/api/notification-prefs
 
 ## qmoi-enhanced/scripts/qmoi_prodice_agent.py
 
@@ -9493,8 +9493,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_enhanced_startup.py
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/scripts/qmoi_env_manager.js
 
@@ -9502,9 +9502,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_error_auto_fix.py
 
-- http://localhost:7860/status
-- http://localhost:7861
-- http://localhost:8000/health
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/health
 - https://www.google.com
 
 ## qmoi-enhanced/scripts/qmoi_gitlab_automation.py
@@ -9516,8 +9516,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/scripts/qmoi_health_monitor.py
 
 - https://qmoi.ai/api/health
-- http://localhost:7860/status
-- http://localhost:8000/health
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai/health
 
 ## qmoi-enhanced/scripts/qmoi_hf_auto_manager.py
 
@@ -9543,7 +9543,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_media_orchestrator.js
 
-- http://localhost:3001/api/health
+- https://production-db.qmoi.ai/api/health
 
 ## qmoi-enhanced/scripts/qmoi_notification_manager.py
 
@@ -9567,7 +9567,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_simple_autotest.js
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
@@ -9583,7 +9583,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/setup_qmoi_environment.py
 
-- http://localhost:7861
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/scripts/start_monitoring_system.py
 
@@ -9591,8 +9591,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/start_qmoi_enhanced.py
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/scripts/templates/README_template.en.md
 
@@ -9650,7 +9650,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/start_qmoi_ngrok.py
 
-- http://127.0.0.1:4040/api/tunnels
+- http://production-db.qmoi.ai:4040/api/tunnels
 
 ## qmoi-enhanced/templates/dashboard.html
 
@@ -9683,7 +9683,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/tests/ui/qmoi_ui_autotest.spec.js
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 
 ## qmoi-enhanced/vercel.json
 
@@ -9704,7 +9704,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/whatsapp-qmoi-bot/services/qmoi.js
 
-- http://localhost:5001/qmoi
+- https://production-db.qmoi.ai/qmoi
 
 ## qmoi-friendship-integration.js
 
@@ -9729,7 +9729,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi_ai_launcher.py
 
-- http://127.0.0.1:8000
+- http://production-db.qmoi.ai:8000
 
 ## qmoi_control_server.py
 
@@ -9737,16 +9737,16 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoiaxe.py
 
-- http://127.0.0.1:8080/docs
-- http://127.0.0.1:8080/qmessage
+- http://production-db.qmoi.ai:8080/docs
+- http://production-db.qmoi.ai:8080/qmessage
 
 ## qmoiexe.py
 
-- http://127.0.0.1:8000
+- http://production-db.qmoi.ai:8000
 
 ## qmoiexe_enhanced.py
 
-- http://127.0.0.1:8000
+- http://production-db.qmoi.ai:8000
 - https://colab.research.google.com
 - https://dagshub.com
 - https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip
@@ -9770,7 +9770,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/inspect-js/object-inspect/commit/2ac24d7e58cd388ad093c33249e413e05bbfd6c3
 - https://github.com/inspect-js/object-inspect/commit/4ec8893ea9bfd28065ca3638cf6762424bf44352
 - https://github.com/inspect-js/object-inspect/commit/b453f6ceeebf8a1b738a1029754092e0367a4134
-- https://github.com/jestjs/jest/tree/main/packages/babel-jest
+- https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed
 - https://github.com/jonschlinkert/repeat-string
 - https://github.com/joyeecheung/node-dep-co
 - https://github.com/layaxx
@@ -9815,7 +9815,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/inspect-js/object-inspect/commit/2ac24d7e58cd388ad093c33249e413e05bbfd6c3
 - https://github.com/inspect-js/object-inspect/commit/4ec8893ea9bfd28065ca3638cf6762424bf44352
 - https://github.com/inspect-js/object-inspect/commit/b453f6ceeebf8a1b738a1029754092e0367a4134
-- https://github.com/jestjs/jest/tree/main/packages/babel-jest
+- https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed
 - https://github.com/jonschlinkert/repeat-string
 - https://github.com/joyeecheung/node-dep-co
 - https://github.com/layaxx
@@ -9868,14 +9868,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/autotest/qmoi_automation_autotest.py
 
-- http://localhost:3010/api/app-version
-- http://localhost:3010/api/changelog
-- http://localhost:3010/api/stats
-- http://localhost:3010/api/update-history
+- https://production-db.qmoi.ai/api/app-version
+- https://production-db.qmoi.ai/api/changelog
+- https://production-db.qmoi.ai/api/stats
+- https://production-db.qmoi.ai/api/update-history
 
 ## scripts/autotest/qmoi_simple_autotest.py
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 - https://api.qmoi.app/health
 - https://api.qmoi.app/v1/status
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
@@ -9982,7 +9982,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/github_status_monitor.js
 
-- http://localhost:4000/trigger-fix
+- https://production-db.qmoi.ai/trigger-fix
 - https://api.github.com/repos/
 
 ## scripts/gitlab-automation.js
@@ -10271,7 +10271,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-ultimate-automation.py
 
-- http://localhost:4040/api/tunnels
+- https://production-db.qmoi.ai/api/tunnels
 - https://colab.research.google.com
 - https://dagshub.com
 - https://huggingface.co
@@ -10322,8 +10322,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_enhanced_startup.py
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
 
 ## scripts/qmoi_env_manager.js
 
@@ -10331,9 +10331,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_error_auto_fix.py
 
-- http://localhost:7860/status
-- http://localhost:7861
-- http://localhost:8000/health
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
+- https://production-db.qmoi.ai/health
 - https://www.google.com
 
 ## scripts/qmoi_gitlab_automation.py
@@ -10345,8 +10345,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## scripts/qmoi_health_monitor.py
 
 - https://qmoi.ai/api/health
-- http://localhost:7860/status
-- http://localhost:8000/health
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai/health
 
 ## scripts/qmoi_hf_auto_manager.py
 
@@ -10374,7 +10374,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_media_orchestrator.js
 
-- http://localhost:3001/api/health
+- https://production-db.qmoi.ai/api/health
 
 ## scripts/qmoi_notification_manager.py
 
@@ -10398,7 +10398,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_simple_autotest.js
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
@@ -10418,7 +10418,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/setup_qmoi_environment.py
 
-- http://localhost:7861
+- https://production-db.qmoi.ai
 
 ## scripts/start_monitoring_system.py
 
@@ -10426,8 +10426,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/start_qmoi_enhanced.py
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production-db.qmoi.ai/status
+- https://production-db.qmoi.ai
 
 ## scripts/templates/README_template.en.md
 
@@ -10450,7 +10450,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/test_webhooks.py
 
-- http://localhost:8000/payments/webhook
+- https://production-db.qmoi.ai/payments/webhook
 
 ## scripts/trading/enhanced_trading_system.py
 
@@ -10503,7 +10503,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/wallets/wallets_api.py
 
-- http://127.0.0.1:%d
+- http://production-db.qmoi.ai:%d
 
 ## scripts/whatsapp_verification.py
 
@@ -10544,7 +10544,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## tests/ui/qmoi_ui_autotest.spec.js
 
-- http://localhost:3010
+- https://production-db.qmoi.ai
 
 ## tools/lionlaunch.json
 
@@ -10569,7 +10569,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## whatsapp-qmoi-bot/services/qmoi.js
 
-- http://localhost:5001/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)
+- https://production-db.qmoi.ai/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
 
@@ -10635,3 +10635,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

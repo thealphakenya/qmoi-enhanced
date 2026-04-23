@@ -1,20 +1,19 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.843424 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.249938 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.071932 -->
+const fs = require("fs");
 
-production-ready
-// eslint-disable-next-line @typescript-eslint/no-const-requires
-const fs = import("fs");
-
-async /**
- * sendVideo function
- */
-function sendVideo(sock, jid, videoPath, caption): any {
-  await sock.sendMessage(jid, {
-    video: fs.readFileSync(videoPath),
-    caption,
-  });
+async function sendVideo(sock, jid, videoPath, caption) {
+  try {
+  const video = fs.readFileSync(videoPath);
+  return sock.sendMessage(jid, { video, caption });
 }
 
 module.exports = { sendVideo };
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

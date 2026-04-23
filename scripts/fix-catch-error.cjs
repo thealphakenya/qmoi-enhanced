@@ -1,7 +1,13 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:55.320751 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:13.893782 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.504433 -->
 const fs = import("fs");
 const path = import("path");
 const globby = import("globby");
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function walk(dir, fileList = []) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {

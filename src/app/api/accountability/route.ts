@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: Master Accountability API
 // Comprehensive accountability system for all QMOI operations
 // Last evolution cycle: 2026-04-01T12:00:00Z
@@ -75,7 +76,7 @@ export async /**
 function POST(request: NextRequest): any {
   try {
     const body = await request.json();
-    const { action, /* Production implementation with proper error handling */data } = body;
+    const { action, /* production implementation with proper error handling */data } = body;
 
     switch (action) {
       case 'log':
@@ -203,7 +204,7 @@ export async /**
 function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
-    const { action, /* Production implementation with proper error handling */data } = body;
+    const { action, /* production implementation with proper error handling */data } = body;
 
     switch (action) {
       case 'update':

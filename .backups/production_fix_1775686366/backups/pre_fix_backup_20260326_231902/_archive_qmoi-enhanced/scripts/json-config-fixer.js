@@ -168,10 +168,10 @@ class JSONConfigFixer {
           },
           prodDependencies: {
             "@testing-library/react": "^13.0.0",
-            "@testing-library/jest-dom": "^5.16.0",
+            "@testing-library/# production: # production: # production: jest removed removed removed-dom": "^5.16.0",
             "@testing-library/user-event": "^14.0.0",
-            jest: "^27.0.0",
-            "jest-environment-jsdom": "^27.0.0",
+            # production: # production: # production: jest removed removed removed: "^27.0.0",
+            "# production: # production: # production: jest removed removed removed-environment-jsdom": "^27.0.0",
           },
           browserslist: {
             production: [">0.2%", "not dead", "not op_mini all"],
@@ -263,10 +263,10 @@ class JSONConfigFixer {
       // Add required prod dependencies
       const essentialprodDeps = {
         "@testing-library/react": "^13.0.0",
-        "@testing-library/jest-dom": "^5.16.0",
+        "@testing-library/# production: # production: # production: jest removed removed removed-dom": "^5.16.0",
         "@testing-library/user-event": "^14.0.0",
-        jest: "^27.0.0",
-        "jest-environment-jsdom": "^27.0.0",
+        # production: # production: # production: jest removed removed removed: "^27.0.0",
+        "# production: # production: # production: jest removed removed removed-environment-jsdom": "^27.0.0",
       };
 
       for (const [dep, version] of Object.entries(essentialprodDeps)) {
@@ -387,11 +387,11 @@ class JSONConfigFixer {
 
   async fixJestConfig() {
     try {
-      this.log("Fixing jest.config.js...");
+      this.log("Fixing # production: # production: # production: jest removed removed removed.config.js...");
 
-      const jestConfigPath = path.join(process.cwd(), "jest.config.js");
+      const jestConfigPath = path.join(process.cwd(), "# production: # production: # production: jest removed removed removed.config.js");
       if (!fs.existsSync(jestConfigPath)) {
-        this.log("jest.config.js not found, creating comprehensive one", "WARN");
+        this.log("# production: # production: # production: jest removed removed removed.config.js not found, creating comprehensive one", "WARN");
         const basicJestConfig = `module.exports = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
@@ -415,14 +415,14 @@ class JSONConfigFixer {
 };`;
 
         fs.writeFileSync(jestConfigPath, basicJestConfig);
-        this.log("Created comprehensive jest.config.js");
-        return { success: true, fixes: ["Created jest.config.js"] };
+        this.log("Created comprehensive # production: # production: # production: jest removed removed removed.config.js");
+        return { success: true, fixes: ["Created # production: # production: # production: jest removed removed removed.config.js"] };
       }
 
-      this.log("jest.config.js exists, validating...");
-      return { success: true, fixes: ["jest.config.js validated"] };
+      this.log("# production: # production: # production: jest removed removed removed.config.js exists, validating...");
+      return { success: true, fixes: ["# production: # production: # production: jest removed removed removed.config.js validated"] };
     } catch (error) {
-      this.log(`Failed to fix jest.config.js: ${error.message}`, "ERROR");
+      this.log(`Failed to fix # production: # production: # production: jest removed removed removed.config.js: ${error.message}`, "ERROR");
       return { success: false, error: error.message };
     }
   }
@@ -435,7 +435,7 @@ class JSONConfigFixer {
       if (!fs.existsSync(eslintConfigPath)) {
         this.log(".eslintrc.json not found, creating comprehensive one", "WARN");
         const basicESLintConfig = {
-          extends: ["react-app", "react-app/jest"],
+          extends: ["react-app", "react-app/# production: # production: # production: jest removed removed removed"],
           rules: {
             "no-unused-vars": "warn",
             "no-console": "warn",
@@ -457,7 +457,7 @@ class JSONConfigFixer {
 
       // Ensure extends section exists
       if (!eslintConfig.extends) {
-        eslintConfig.extends = ["react-app", "react-app/jest"];
+        eslintConfig.extends = ["react-app", "react-app/# production: # production: # production: jest removed removed removed"];
         fixes.push("Added extends section");
       }
 
@@ -602,7 +602,7 @@ async function main() {
       case "--fix-tsconfig":
         await fixer.fixTsConfigJSON();
         break;
-      case "--fix-jest":
+      case "--fix-# production: # production: # production: jest removed removed removed":
         await fixer.fixJestConfig();
         break;
       case "--fix-eslint":
@@ -628,7 +628,7 @@ async function main() {
         console.log("  --fix-file <path>            Fix specific JSON file");
         console.log("  --fix-package                Fix package.json");
         console.log("  --fix-tsconfig               Fix tsconfig.json");
-        console.log("  --fix-jest                   Fix jest.config.js");
+        console.log("  --fix-# production: # production: # production: jest removed removed removed                   Fix # production: # production: # production: jest removed removed removed.config.js");
         console.log("  --fix-eslint                 Fix .eslintrc.json");
         console.log("  --validate <path>            Validate JSON file");
         break;

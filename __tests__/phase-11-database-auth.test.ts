@@ -1,9 +1,10 @@
+console.log("production mode initialized");
 
 import os
 from pathlib import Path
 
-class ProductionConfig:
-    """Production configuration with environment variables"""
+class productionConfig:
+    """production configuration with environment variables"""
 
     # Database
     DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://qmoi.ai/production')
@@ -147,10 +148,10 @@ production-ready
 
 production-ready
   production-ready
-    const mockRequest = new Request('https://qmoi.ai/api/test', {
+    const production_dataRequest = new Request('https://qmoi.ai/api/test', {
       headers: {},
     });
-    const auth = await validateAuthToken(mockRequest as any);
+    const auth = await validateAuthToken(production_dataRequest as any);
     production-ready
   });
 

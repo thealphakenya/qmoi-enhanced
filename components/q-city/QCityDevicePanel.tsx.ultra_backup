@@ -63,6 +63,8 @@ interface Workspace {
 export default /**
  * QCityDevicePanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QCityDevicePanel(): any {
   try {() {
   const { role } = useRole();

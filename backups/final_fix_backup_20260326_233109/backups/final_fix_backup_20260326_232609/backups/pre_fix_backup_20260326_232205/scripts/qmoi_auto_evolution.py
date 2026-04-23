@@ -281,6 +281,8 @@ def _generate_caching_code(self) -> str:
         return """
 // Auto-generated caching optimization
 import { specificExports } from 'react';
+import logging
+logger = logging.getLogger(__name__)
 
 export const cachedDataFetch = cache(async (key: string) => {
     const cached = await redis.get(key);

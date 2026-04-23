@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """Advanced health monitoring for production"""
 
@@ -20,6 +24,16 @@ class HealthMonitor:
     def check_health(self, service, url):
         """Check health of a service"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             response = requests.get(url, timeout=5)
             return response.status_code == 200
         except Exception as e:

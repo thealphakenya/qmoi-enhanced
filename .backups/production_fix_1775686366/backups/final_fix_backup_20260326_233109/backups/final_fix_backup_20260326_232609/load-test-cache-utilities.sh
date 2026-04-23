@@ -14,8 +14,8 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-BASE_URL="${BASE_URL:-http://localhost:3000}"
-REDIS_URL="${REDIS_URL:-redis://localhost:6379}"
+BASE_URL="${BASE_URL:-https://production-db.qmoi.ai}"
+REDIS_URL="${REDIS_URL:-redishttps://production-db.qmoi.ai}"
 ADMIN_TOKEN="${ADMIN_TOKEN:-}"
 
 # Helper functions
@@ -109,8 +109,8 @@ GENERAL:
   help               Show this help message
 
 ENVIRONMENT VARIABLES:
-  BASE_URL           API base URL (default: http://localhost:3000)
-  REDIS_URL          Redis URL (default: redis://localhost:6379)
+  BASE_URL           API base URL (default: https://production-db.qmoi.ai)
+  REDIS_URL          Redis URL (default: redishttps://production-db.qmoi.ai)
   ADMIN_TOKEN        Admin JWT token
 
 EOF

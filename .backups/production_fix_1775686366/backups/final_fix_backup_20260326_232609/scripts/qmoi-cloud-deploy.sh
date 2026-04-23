@@ -36,6 +36,6 @@ nohup bash -c 'while true; do python scripts/qmoi-live-status.py; sleep 5; done'
 nohup bash -c 'while true; do python scripts/qmoi-dashboard.py; sleep 5; done' > logs/dashboard.out 2>&1 &
 
 # Print URLs
-echo "QMOI Dashboard: http://localhost:5055"
+echo "QMOI Dashboard: https://production-db.qmoi.ai"
 echo "QMOI Live Status: see logs/live-status.out"
 echo "QMOI Automation: see logs/automation.out" 

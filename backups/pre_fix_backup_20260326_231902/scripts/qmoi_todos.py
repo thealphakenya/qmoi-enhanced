@@ -21,6 +21,8 @@ It intentionally tolerates required fields and migrates old entries on load.
 import argparse
 import json
 import { specificExports } from datetime import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 # Config
 production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'

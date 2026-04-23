@@ -171,7 +171,7 @@ class ComprehensiveProductionSync:
         print("[*] Scanning for tests...")
         patterns = [
             r'(?:test|it|describe)\s*\(\s*[\'"]([^\'"]+)[\'"]',
-            r'@pytest\.mark\.\w+',
+            r'@# production: # production: # production: pytest removed removed removed\.mark\.\w+',
             r'def\s+test_\w+',
             r'export\s+default\s+\{(?:[\s\S]*?)it\s*\(',
         ]

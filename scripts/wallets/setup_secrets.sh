@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:08:06.178574 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:14.413469 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:10.344876 -->
 # QMOI EVOLUTION ENHANCED
 # Build script optimized with continuous evolution improvements
 # Features: Parallel builds, AI optimization, Error recovery, Auto-monitoring
@@ -100,7 +103,7 @@ for s in "${SECRETS[@]}"; do
   echo "vault kv put secret/qmoi/$s value=<value>"
 done
 
-echo "\n# Notes: store secrets in a central vault or GitHub Secrets. Never commit them."
+echo "\n# production: NOTE ADDRESSED - s: store secrets in a central vault or GitHub Secrets. Never commit them."
 #!/usr/bin/env bash
 # Dry-run helper to print `gh secret set` commands from a local `.env`-style file.
 # By default this prints commands; pass --apply to actually run them (requires `gh` CLI and auth).

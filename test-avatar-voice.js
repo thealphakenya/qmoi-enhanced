@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:11Z
@@ -31,9 +32,9 @@ logger.info('Voice selection result:', voiceResult.success ? 'Success' : 'Failed
 const windowResult = QMOIService.openAvatarWindow('master');
 logger.info('Avatar window opened:', windowResult.success ? 'Success' : 'Failed');
 
-// Test opening PRODUCTION window
+// Test opening production window
 const previewResult = QMOIService.openPreviewWindow('sister');
-logger.info('PRODUCTION window opened:', previewResult.success ? 'Success' : 'Failed');
+logger.info('production window opened:', previewResult.success ? 'Success' : 'Failed');
 
 // Test query processing for avatar commands
 const avatarQueryResult = await QMOIService.processQuery('show avatar', 'master');

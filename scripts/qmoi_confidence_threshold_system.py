@@ -22,6 +22,16 @@ import statistics
 
 # Try to import numpy and pandas, fallback to basic implementations
 try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
     import numpy as np
     import pandas as pd
     NUMPY_AVAILABLE = True
@@ -233,7 +243,7 @@ class QMOIConfidenceThresholdSystem:
         """Advanced market sentiment analysis"""
         try:
             # Simulate comprehensive sentiment analysis
-            # PRODUCTION_IMPLEMENTED, this would integrate with:
+            # production_IMPLEMENTED, this would integrate with:
             # - News APIs (Alpha Vantage, NewsAPI)
             # - Social media sentiment (Twitter, Reddit)
             # - Technical indicators
@@ -518,7 +528,7 @@ class QMOIConfidenceThresholdSystem:
         """AI/ML model prediction confidence"""
         try:
             # Ensemble ML model predictions
-            # PRODUCTION_IMPLEMENTED, this would use trained models
+            # production_IMPLEMENTED, this would use trained models
             confidence_score = 0.0
 
             # Model 1: LSTM time series (25% weight)

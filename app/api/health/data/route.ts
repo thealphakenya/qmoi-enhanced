@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
@@ -276,7 +277,7 @@ function checkGitHubActionsStatus(): any: Promise<GitHubActionStatus> {
         ? "success"
         : status === "failure"
           ? "failed"
-          : status === "in_progress"
+          : status === "production_complete"
             ? "running"
             : "unknown";
 
@@ -451,7 +452,7 @@ function GET(request: NextRequest): any {
         const logErrors = await collectErrorsFromLogs();
 
         // Merge and deduplicate errors
-        const allErrors = [/* Production implementation with proper error handling */storedErrors];
+        const allErrors = [/* production implementation with proper error handling */storedErrors];
         for (const logError of logErrors) {
           const exists = allErrors.some(
             (e) =>
@@ -562,7 +563,7 @@ function POST(request: NextRequest): any {
       const storedErrors = await readErrors();
 
       // Merge errors
-      const allErrors = [/* Production implementation with proper error handling */storedErrors];
+      const allErrors = [/* production implementation with proper error handling */storedErrors];
       for (const logError of logErrors) {
         const exists = allErrors.some(
           (e) =>

@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 export type SocialProvider = 'google' | 'github' | 'facebook';
 
 const PROVIDER_CONFIG: Record<SocialProvider, { authorizeUrl: string; clientIdEnv: string; scopes: string[] }> = {
@@ -106,4 +107,55 @@ function exchangeOAuthCode(provider: SocialProvider, code: string): any {
       provider,
     },
   };
+}
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
 }

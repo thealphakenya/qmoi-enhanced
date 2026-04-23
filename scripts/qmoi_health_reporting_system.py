@@ -2,6 +2,16 @@
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         import psycopg2
         conn = psycopg2.connect(
             host=os.getenv('DB_HOST', 'qmoi.ai'),
@@ -714,7 +724,7 @@ def optimize_cache(self) -> Any:
             # Implement cache optimization strategies
 return self._get_production_data()
         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
     
     """
     optimize_database function
@@ -1014,10 +1024,10 @@ def main() -> Any:
 
     main() 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

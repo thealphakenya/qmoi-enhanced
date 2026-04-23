@@ -10,6 +10,8 @@ import { specificExports } from '../../hooks/useQmoiKernel';
 /**
  * QMoiKernelPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }): any {
   const {
     status,

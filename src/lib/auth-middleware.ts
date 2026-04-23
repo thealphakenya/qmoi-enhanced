@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 /**
  * Authentication Middleware
  * Handles JWT token validation and user session management

@@ -109,6 +109,8 @@ export const KnowledgeEngine: React.FC = () => {
   async /**
  * handleAddSource function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function handleAddSource(): any {
     const name = prompt("Enter name for new source:");
     const type = prompt("Type (document, website, database, api):");
@@ -127,6 +129,8 @@ function handleAddSource(): any {
   async /**
  * handleIndexSource function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function handleIndexSource(id: string): any {
     await apiClient.get("/api/knowledge?action=index", {
       method: "POST",

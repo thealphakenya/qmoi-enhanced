@@ -160,7 +160,7 @@ Total: 15 Files | ~3700 Lines of Code | PRODUCTION_IMPLEMENTED
    $ npm run dev
 
 4. Open admin dashboard:
-   http://localhost:3000/admin
+   https://production-db.qmoi.ai/admin
 
 5. Click "🔧 QMOI AutoFix System" tab
 

@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -175,7 +176,7 @@ function useQVillage(): any {
       });
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
-      setState((prev) => ({ /* Production implementation with proper error handling */prev, status: "error" }));
+      setState((prev) => ({ /* production implementation with proper error handling */prev, status: "error" }));
     } finally {
       setLoading(false);
     }
@@ -188,7 +189,7 @@ function useQVillage(): any {
       const res = await apiClient.get(`/api/tracks?limit=${limit}`);
       const json = await res.json();
       if (json.success && Array.isArray(json.tracks)) {
-        setState((prev) => ({ /* Production implementation with proper error handling */prev, tracks: json.tracks }));
+        setState((prev) => ({ /* production implementation with proper error handling */prev, tracks: json.tracks }));
       }
       return json;
     } catch (err) {
@@ -222,8 +223,8 @@ function useQVillage(): any {
         const json = await res.json();
         if (json.success && json.track) {
           setState((prev) => ({
-            /* Production implementation with proper error handling */prev,
-            tracks: [json.track, /* Production implementation with proper error handling */(prev.tracks || [])].slice(0, 100),
+            /* production implementation with proper error handling */prev,
+            tracks: [json.track, /* production implementation with proper error handling */(prev.tracks || [])].slice(0, 100),
           }));
         }
         return json;
@@ -310,7 +311,7 @@ function useQVillage(): any {
   }, [fetchAllData]);
 
   return {
-    /* Production implementation with proper error handling */state,
+    /* production implementation with proper error handling */state,
     loading,
     error,
     tracksLoading,
@@ -350,8 +351,8 @@ function useQVillageStatus(): any {
       wsRef.current.onmessage = (event: MessageEvent) => {
         const data = JSON.parse(event.data);
         setStatus((prev) => ({
-          /* Production implementation with proper error handling */prev,
-          /* Production implementation with proper error handling */data,
+          /* production implementation with proper error handling */prev,
+          /* production implementation with proper error handling */data,
           lastUpdate: new Date().toISOString(),
         }));
       };
@@ -436,7 +437,7 @@ function useQMOIThinking(): any {
                   : prev.stage;
 
         return {
-          /* Production implementation with proper error handling */prev,
+          /* production implementation with proper error handling */prev,
           progress: newProgress,
           stage: newStage,
           superiorityScore: Math.min((newProgress / 100) * 0.99, 0.98),
@@ -448,7 +449,7 @@ function useQMOIThinking(): any {
     setTimeout(() => {
       clearInterval(progressInterval);
       setThinkingState((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        /* production implementation with proper error handling */prev,
         isThinking: false,
         progress: 100,
         stage: "complete",
@@ -461,25 +462,25 @@ function useQMOIThinking(): any {
 
   const addParallelTask = useCallback((task: QVillageParallelTask) => {
     setThinkingState((prev) => ({
-      /* Production implementation with proper error handling */prev,
+      /* production implementation with proper error handling */prev,
       parallelTasks: [
-        /* Production implementation with proper error handling */prev.parallelTasks,
-        { /* Production implementation with proper error handling */task, id: Date.now(), status: "running" },
+        /* production implementation with proper error handling */prev.parallelTasks,
+        { /* production implementation with proper error handling */task, id: Date.now(), status: "running" },
       ],
     }));
   }, []);
 
   const completeParallelTask = useCallback((taskId: number) => {
     setThinkingState((prev) => ({
-      /* Production implementation with proper error handling */prev,
+      /* production implementation with proper error handling */prev,
       parallelTasks: prev.parallelTasks.map((task) =>
-        task.id === taskId ? { /* Production implementation with proper error handling */task, status: "complete" } : task,
+        task.id === taskId ? { /* production implementation with proper error handling */task, status: "complete" } : task,
       ),
     }));
   }, []);
 
   return {
-    /* Production implementation with proper error handling */thinkingState,
+    /* production implementation with proper error handling */thinkingState,
     startThinking,
     addParallelTask,
     completeParallelTask,
@@ -503,7 +504,7 @@ function useQVillageAccessibility(): any {
   const updateSetting = useCallback(
     (setting: string, value: unknown) => {
       setAccessibilitySettings((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        /* production implementation with proper error handling */prev,
         [setting]: value,
       }));
 
@@ -511,7 +512,7 @@ function useQVillageAccessibility(): any {
       localStorage.setItem(
         "qvillage_accessibility",
         JSON.stringify({
-          /* Production implementation with proper error handling */accessibilitySettings,
+          /* production implementation with proper error handling */accessibilitySettings,
           [setting]: value,
         }),
       );
@@ -547,7 +548,7 @@ function useQVillageAccessibility(): any {
   }, [loadSettings]);
 
   return {
-    /* Production implementation with proper error handling */accessibilitySettings,
+    /* production implementation with proper error handling */accessibilitySettings,
     updateSetting,
     resetSettings,
   };
@@ -578,7 +579,7 @@ function useQVillagePerformance(): any {
   const recordMetric = useCallback(
     (metricName: string, value: number, timestamp = Date.now()) => {
       setMetrics((prev) => [
-        /* Production implementation with proper error handling */prev.slice(-99),
+        /* production implementation with proper error handling */prev.slice(-99),
         {
           // Keep last 100 metrics
           name: metricName,
@@ -589,7 +590,7 @@ function useQVillagePerformance(): any {
 
       // Update current performance state
       setPerformance((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        /* production implementation with proper error handling */prev,
         [metricName]: value,
       }));
     },
@@ -626,7 +627,7 @@ function useQVillagePerformance(): any {
   }, [performance]);
 
   return {
-    /* Production implementation with proper error handling */performance,
+    /* production implementation with proper error handling */performance,
     metrics,
     recordMetric,
     getAverageMetric,
@@ -666,7 +667,7 @@ function useQVillageAutoHeal(): any {
       return health;
     } catch (err) {
       setHealthStatus((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        /* production implementation with proper error handling */prev,
         overall: "error",
         lastCheck: new Date().toISOString(),
       }));
@@ -714,7 +715,7 @@ function useQVillageAutoHeal(): any {
   }, [checkHealth, scheduleHealthCheck]);
 
   return {
-    /* Production implementation with proper error handling */healthStatus,
+    /* production implementation with proper error handling */healthStatus,
     checkHealth,
     applyAutoFix,
     scheduleHealthCheck,
@@ -743,10 +744,10 @@ function useQVillageNotifications(): any {
       id: Date.now(),
       timestamp: new Date().toISOString(),
       read: false,
-      /* Production implementation with proper error handling */safePayload,
+      /* production implementation with proper error handling */safePayload,
     };
 
-    setNotifications((prev) => [newNotification, /* Production implementation with proper error handling */prev.slice(0, 49)]); // Keep last 50
+    setNotifications((prev) => [newNotification, /* production implementation with proper error handling */prev.slice(0, 49)]); // Keep last 50
     setUnreadCount((prev) => prev + 1);
 
     // Auto-remove after 1 hour
@@ -762,13 +763,13 @@ function useQVillageNotifications(): any {
 
   const markAsRead = useCallback((id: unknown) => {
     setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { /* Production implementation with proper error handling */n, read: true } : n)),
+      prev.map((n) => (n.id === id ? { /* production implementation with proper error handling */n, read: true } : n)),
     );
     setUnreadCount((prev) => Math.max(0, prev - 1));
   }, []);
 
   const markAllAsRead = useCallback(() => {
-    setNotifications((prev) => prev.map((n) => ({ /* Production implementation with proper error handling */n, read: true })));
+    setNotifications((prev) => prev.map((n) => ({ /* production implementation with proper error handling */n, read: true })));
     setUnreadCount(0);
   }, []);
 

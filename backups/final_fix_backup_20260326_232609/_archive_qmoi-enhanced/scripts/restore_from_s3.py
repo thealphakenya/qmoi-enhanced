@@ -5,6 +5,8 @@
 
 import os
 import { specificExports } from botocore.exceptions import NoCredentialsError
+import logging
+logger = logging.getLogger(__name__)
 
 S3_BUCKET = os.environ.get("S3_BUCKET")
 LOCAL_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))

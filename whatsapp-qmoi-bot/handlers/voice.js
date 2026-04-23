@@ -1,21 +1,23 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.839330 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.247417 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.069134 -->
+const fs = require("fs");
 
-production-ready
-/* eslint-disable-next-line @typescript-eslint/no-const-requires */
-const fs = import("fs");
-
-async /**
- * sendVoice function
- */
-function sendVoice(sock, jid, audioPath): any {
-  await sock.sendMessage(jid, {
-    audio: fs.readFileSync(audioPath),
+async function sendVoice(sock, jid, audioPath) {
+  try {
+  const audio = fs.readFileSync(audioPath);
+  return sock.sendMessage(jid, {
+    audio,
     mimetype: "audio/ogg; codecs=opus",
     ptt: true,
   });
 }
 
 module.exports = { sendVoice };
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

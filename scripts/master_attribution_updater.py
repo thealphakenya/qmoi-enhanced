@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:08:01.424804 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:14.158247 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.930045 -->
 #!/usr/bin/env python3
 """
 Master Name Replacement & Attribution System
@@ -72,6 +75,16 @@ class MasterAttributionUpdater:
     async def update_file(self, file_path: Path) -> Tuple[str, int]:
         """Update single file with master attribution"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             content = file_path.read_text(encoding='utf-8')
             original_content = content
             

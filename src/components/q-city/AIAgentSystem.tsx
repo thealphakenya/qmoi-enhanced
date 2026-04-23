@@ -145,7 +145,9 @@ export const AIAgentSystem: React.FC = () => {
             AI Agent System
           </CardTitle>
           <CardDescription>
-            Autonomous agents with function calling and tool orchestration
+            Autonomous agents with // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function calling and tool orchestration
             capabilities
           </CardDescription>
         </CardHeader>
@@ -265,7 +267,9 @@ export const AIAgentSystem: React.FC = () => {
 
             <TabsContent value="functions" className="space-y-4">
               <p className="text-sm text-gray-400">
-                Recent function calls from agents:
+                Recent // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function calls from agents:
               </p>
               <div className="space-y-3">
                 {functionCalls.map((call) => (

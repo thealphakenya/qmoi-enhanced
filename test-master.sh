@@ -93,7 +93,10 @@ NC='\033[0m'
 TESTS_PASSED=0
 TESTS_FAILED=0
 
-# Helper function to print test result
+# Helper // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function to print test result
 test_result() {
     if [ $1 -eq 0 ]; then
         echo -e "${GREEN}✓${NC} $2"

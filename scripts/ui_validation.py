@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 #!/usr/bin/env python3
@@ -54,7 +64,7 @@ This script validates that all UI components are properly documented,
 implemented, and production-ready. It checks for:
 - Component existence and file integrity
 - Documentation coverage in UI.md
-- Production markers and validation
+- production markers and validation
 - Missing implementations
 - Health status of UI components
 """
@@ -103,7 +113,7 @@ def validate_ui_component(component_path: Path) -> dict:
         validation['size'] = len(content)
 
         # Check for production markers
-        if 'PRODUCTION_IMPLEMENTED' in content or '✅ PRODUCTION' in content:
+        if 'production_IMPLEMENTED' in content or '✅ production' in content:
             validation['has_production_marker'] = True
 
         # Check for Lion validation
@@ -137,7 +147,7 @@ def validate_ui_component(component_path: Path) -> dict:
 
 def validate_ui_coverage():
     """Validate complete UI coverage"""
-    logger.info("Starting UI coverage validationProduction implementation with comprehensive error handling and logging")
+    logger.info("Starting UI coverage validationproduction implementation with comprehensive error handling and logging")
 
     # Read UI inventory
     ui_tree_file = BASE_DIR / 'ui_tree.txt'
@@ -196,7 +206,7 @@ def validate_ui_coverage():
     logger.info(f"Validated: {validation_results['validated_components']}")
     logger.info(f"With errors: {validation_results['components_with_errors']}")
     logger.info(f"With warnings: {validation_results['components_with_warnings']}")
-    logger.info(f"PRODUCTION_IMPLEMENTED: {validation_results['production_ready_components']}")
+    logger.info(f"production_IMPLEMENTED: {validation_results['production_ready_components']}")
     logger.info(f"Lion validated: {validation_results['lion_validated_components']}")
 
     return validation_results['components_with_errors'] == 0
@@ -221,12 +231,12 @@ def update_ui_documentation(validation_results):
 **Validated Components:** {validation_results['validated_components']}
 **Components with Errors:** {validation_results['components_with_errors']}
 **Components with Warnings:** {validation_results['components_with_warnings']}
-**PRODUCTION_IMPLEMENTED:** {validation_results['production_ready_components']}
+**production_IMPLEMENTED:** {validation_results['production_ready_components']}
 **Lion Validated:** {validation_results['lion_validated_components']}
 
 ### Validation Status
 - {'✅' if validation_results['components_with_errors'] == 0 else '❌'} All components exist and are readable
-- {'✅' if validation_results['production_ready_components'] > 0 else '⚠️'} Production markers present
+- {'✅' if validation_results['production_ready_components'] > 0 else '⚠️'} production markers present
 - {'✅' if validation_results['lion_validated_components'] > 0 else '⚠️'} Lion validation applied
 
 """

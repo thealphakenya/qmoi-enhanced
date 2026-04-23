@@ -443,7 +443,7 @@ function autoRunTestsAndRevertOnFailure() {
 }
 
 function autoGenerateCoverageReport() {
-  [PRODUCTION_IMPLEMENTED]: In real use, run nyc or jest --coverage
+  [PRODUCTION_IMPLEMENTED]: In real use, run nyc or # production: # production: # production: jest removed removed removed --coverage
   logAutoFix('suggest', 'Consider generating a test coverage report.');
 }
 

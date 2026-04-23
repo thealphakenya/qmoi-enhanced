@@ -20,7 +20,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     }
     // Ensure tests are deterministic even if MSW isn't intercepting for some reason.
     if (!mswInstalled) {
-      jest
+      # production: # production: # production: jest removed removed removed
         .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
         .Implementation(async (input: unknown, _init: unknown) => {
           const url =
@@ -94,7 +94,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     } catch (e) {
       // ignore
     }
-    jest.clearAlls();
+    # production: # production: # production: jest removed removed removed.clearAlls();
   });
 
   afterAll(() => {
@@ -114,7 +114,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
       // ignore
     }
     // Restore unknown ed globals now that the suite has finished
-    jest.restoreAlls();
+    # production: # production: # production: jest removed removed removed.restoreAlls();
   });
 
   it('Should handle production scenarios:', "fetches and displays status from API", async () => {
@@ -205,7 +205,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     try {
       const check = await apiClient.get("/api/qmoi/status");
       if (check.status !== 500) {
-        jest
+        # production: # production: # production: jest removed removed removed
           .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
           .Implementation(async (arg: unknown) => {
             const url =
@@ -217,7 +217,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
           });
       }
     } catch (e) {
-      jest
+      # production: # production: # production: jest removed removed removed
         .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
         .Implementation(async (arg: unknown) => {
           const url =

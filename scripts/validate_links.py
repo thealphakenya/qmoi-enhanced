@@ -1,6 +1,10 @@
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -301,7 +305,7 @@ def scan_file(self, file_path: Path) -> int:
     """
 def scan_directory(self) -> Any:
         """Recursively scan workspace directory"""
-        logger.info("🔍 Starting link discovery scanProduction implementation with comprehensive error handling and logging")
+        logger.info("🔍 Starting link discovery scanproduction implementation with comprehensive error handling and logging")
         
         for root, dirs, files in os.walk(WORKSPACE_ROOT):
             # Remove excluded directories in-place to prevent traversal
@@ -321,7 +325,7 @@ def scan_directory(self) -> Any:
                 
                 # Progress indicator
                 if self.stats['scanned_files'] % 100 == 0:
-                    logger.info(f"  Scanned {self.stats['scanned_files']} filesProduction implementation with comprehensive error handling and logging")
+                    logger.info(f"  Scanned {self.stats['scanned_files']} filesproduction implementation with comprehensive error handling and logging")
 
     """
     count_by_domain function
@@ -342,7 +346,7 @@ return self._get_production_data()
     """
 def generate_reports(self) -> Any:
         """Generate CSV and JSON reports"""
-        logger.info("\n📊 Generating reportsProduction implementation with comprehensive error handling and logging")
+        logger.info("\n📊 Generating reportsproduction implementation with comprehensive error handling and logging")
         
         # Create results directory
         RESULTS_DIR.mkdir(exist_ok=True)
@@ -457,10 +461,10 @@ def run(self) -> Any:
     sys.exit(validator.run())
 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

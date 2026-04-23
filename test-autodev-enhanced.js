@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:32Z
@@ -117,7 +118,7 @@ function testAutoprodCapabilities(): any {
         logger.info(`   Response: ${response.message}`);
         if (response.response) {
           logger.info(
-            `   AI Response: ${response.response.substring(0, 100)}/* Production implementation with proper error handling */`,
+            `   AI Response: ${response.response.substring(0, 100)}/* production implementation with proper error handling */`,
           );
         }
       } else {
@@ -153,7 +154,7 @@ function testAIServiceDirectly(): any {
       const response = await makeRequest("/api/ai", { message: test });
 
       if (response && typeof response === "string") {
-        logger.info(`✅ AI Response: ${response.substring(0, 150)}/* Production implementation with proper error handling */`);
+        logger.info(`✅ AI Response: ${response.substring(0, 150)}/* production implementation with proper error handling */`);
       } else {
         logger.info(`❌ Unexpected response format`);
       }

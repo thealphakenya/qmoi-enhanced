@@ -16,6 +16,8 @@ Outputs `tools/validation_report.json` and `tools/validation_report.md`.
 """
 import json
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parent.parent
 icons_dir = ROOT / 'tools' / 'release_templates' / 'icons'

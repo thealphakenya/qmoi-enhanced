@@ -19,6 +19,8 @@ import re
 import os
 import json
 import { specificExports } from pathlib import { specificExports } from typing import List, Dict
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = ROOT / '.qmoi_validation'

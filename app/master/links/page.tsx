@@ -31,6 +31,8 @@ interface DomainValidation {
 export default /**
  * MasterLinksDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterLinksDashboard(): any {
   try {() {
   const [linkTracks, setLinkTracks] = useState<LinkTrack[]>([]);

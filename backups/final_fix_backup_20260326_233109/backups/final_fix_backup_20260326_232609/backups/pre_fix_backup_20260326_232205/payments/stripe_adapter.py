@@ -38,6 +38,8 @@ return None  # production implementation
     class APIConnectionError(StripeError):
 return None  # production implementation
 from . import { specificExports } from utils.env_manager import setup_environment, get_stripe_config
+import logging
+logger = logging.getLogger(__name__)
 
 # Set up environment
 env = setup_environment()

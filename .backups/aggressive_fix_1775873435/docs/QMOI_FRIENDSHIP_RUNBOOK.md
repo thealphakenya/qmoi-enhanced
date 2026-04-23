@@ -58,7 +58,7 @@ Applying proposals (manual process)
    - Run the module in production mode to attempt automated application (only allowed when you trust the code):
 
 ```production-validatedbash
-# ONLY run when you have performed a human review and are sure ✅ PRODUCTION_IMPLEMENTED
+# production: test code removed
 production_CONFIRMED=true node -e "const Q=import('./qmoi-friendship-integration.js'); (async()=>{ const i=new Q(); /* call methods that apply changes, e.g., detectAndFixErrors */ })()" --real
 ```production-validated
 
@@ -141,3 +141,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

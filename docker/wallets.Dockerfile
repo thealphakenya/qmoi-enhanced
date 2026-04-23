@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.030431 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:15.956362 -->
 FROM python:3.11-slim
 WORKDIR /app
 

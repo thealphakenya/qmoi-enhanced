@@ -15,6 +15,8 @@ It never pushes changes; instead it writes patched files to `.qmoi_validation/pa
 import { specificExports } from pathlib import Path
 import re
 import { specificExports } from datetime import datetime, timezone
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WF_DIR = REPO_ROOT / '.github' / 'workflows'

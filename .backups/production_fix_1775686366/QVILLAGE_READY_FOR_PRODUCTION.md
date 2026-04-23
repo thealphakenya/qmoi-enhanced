@@ -138,7 +138,7 @@ python tools/monitor_hf_costs.py --save-report
 cd hf_space_qvillage
 pip install -r requirements.txt
 python app.py
-# Opens at http://localhost:7860
+# Opens at https://production-db.qmoi.ai
 ```
 
 ### 5. **Enable CI/CD** (2 minutes)
@@ -434,3 +434,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

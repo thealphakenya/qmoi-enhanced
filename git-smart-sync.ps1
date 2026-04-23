@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:57.643139 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.920621 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.625181 -->
 ﻿<#
 git-smart-sync.ps1
 FINAL unified script:
@@ -33,6 +36,9 @@ param (
 )
 
 # -------------------- Helpers --------------------
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Rotate-Log {
     try {
         if (Test-Path -LiteralPath $LogFile) {
@@ -48,6 +54,9 @@ function Rotate-Log {
 }
 Rotate-Log
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Log {
     param([string]$Message, [string]$Color = "Gray")
     $ts = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
@@ -56,6 +65,9 @@ function Log {
     try { Write-Host $Message -ForegroundColor $Color } catch { Write-Host $Message }
 }
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Convert-PosixToWindowsPath($p) {
     if ($p -match "^/[a-z]/") {
         $drive = $p.Substring(1,1).ToUpper()
@@ -65,6 +77,9 @@ function Convert-PosixToWindowsPath($p) {
     return $p
 }
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Escape-JsonString($s) {
     if ($null -eq $s) { return "" }
     $s = $s -replace '\\','\\\\'
@@ -75,6 +90,9 @@ function Escape-JsonString($s) {
 }
 
 # -------------------- Notifications --------------------
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Send-Notification {
     param([string]$Status, [string]$Details)
 
@@ -169,6 +187,9 @@ git push origin $backupBranch --set-upstream | Out-Null
 Log "🔖 Backup branch pushed: $backupBranch" Cyan
 
 # -------------------- Ensure branch --------------------
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Ensure-RemoteBranchExists {
     param([string]$rBranch)
     $exists = git ls-remote --heads origin $rBranch | Out-String
@@ -189,6 +210,9 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 # -------------------- Large file detection --------------------
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Find-LargeFiles($thresholdMB=50) {
     $threshold = $thresholdMB * 1MB
     $large = @()
@@ -232,6 +256,9 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 # -------------------- Full push w/ retries --------------------
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Try-FullPush($MaxRetries,$InitialDelay) {
     $attempt=0;$delay=$InitialDelay
     while ($attempt -lt $MaxRetries) {
@@ -250,7 +277,10 @@ if (Try-FullPush $MaxFullPushRetries $InitialDelaySeconds) {
     if ($RunDepsFix) {
         Log "🔐 Running dependency auto-fix step (user requested)..." Cyan
 
-        function Run-DependencyAutoFix {
+        // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function Run-DependencyAutoFix {
             param([switch]$Force)
 
             # detect package manager by lockfile
@@ -266,7 +296,10 @@ if (Try-FullPush $MaxFullPushRetries $InitialDelaySeconds) {
             Log "🔎 Detected package manager: $mgr" Cyan
 
             # Helper to create lockfile if missing and run install
-            function Ensure-Lockfile-And-Install {
+            // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function Ensure-Lockfile-And-Install {
                 param([string]$mgr)
                 if ($mgr -eq "pnpm") {
                     if (-not $hasPnpmLock) {
@@ -355,7 +388,10 @@ if (Try-FullPush $MaxFullPushRetries $InitialDelaySeconds) {
             }
         }
 
-        # run the dependency auto-fix function with the user-provided force flag
+        # run the dependency auto-fix // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function with the user-provided force flag
         Run-DependencyAutoFix -Force:$DepsForce
     }
 

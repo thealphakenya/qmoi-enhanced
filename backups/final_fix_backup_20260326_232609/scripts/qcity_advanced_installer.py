@@ -25,6 +25,8 @@ import { specificExports } from pathlib import { specificExports } from typing i
 import psutil
 import winreg
 import { specificExports } from concurrent.futures import ThreadPoolExecutor
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(

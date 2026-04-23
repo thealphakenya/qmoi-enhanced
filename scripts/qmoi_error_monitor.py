@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,7 +43,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
@@ -429,7 +429,7 @@ def save_error_report(self) -> Any:
     """
 def run_error_check(self) -> Any:
         """Run complete error check"""
-        self.logger.info("Starting QMOI error checkProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Starting QMOI error checkproduction implementation with comprehensive error handling and logging")
         
         try:
             # Scan log files

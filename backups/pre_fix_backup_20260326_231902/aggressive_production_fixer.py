@@ -12,6 +12,8 @@ Target: Replace ALL production markers comprehensively across entire system.
 
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 # Aggressive replacement map
 replacements = {

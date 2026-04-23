@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:01.121324 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.268844 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.103894 -->
 #!/usr/bin/env python3
 """
 CV Service Runner
@@ -39,6 +42,16 @@ def main():
     logger.info("CV Service starting...")
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         # Initialize the service
         logger.info("CV Service ready and waiting for requests")
 

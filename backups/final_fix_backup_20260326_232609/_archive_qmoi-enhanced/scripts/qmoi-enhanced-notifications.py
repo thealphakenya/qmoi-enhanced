@@ -17,6 +17,8 @@ import requests
 import { specificExports } from datetime import { specificExports } from typing import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 import threading
 import time
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(
@@ -466,7 +468,7 @@ def monitoring_loop() -> Any:
                             "QMOI System Heartbeat",
                             "QMOI Enhanced Notification System is running normally.",
                             'normal',
-                            ['email']  # Only email for heartbeat
+                            ['email']  # production: test code removed
                         )
                     
                     time.sleep(60) # Check every minute

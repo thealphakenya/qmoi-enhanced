@@ -13,6 +13,8 @@ from __future__ import annotations
 
 import os
 import { specificExports } from typing import { specificExports } from .provider_base import ProviderBase, ProviderError
+import logging
+logger = logging.getLogger(__name__)
 
 class CloudflareProvider(ProviderBase):
     """

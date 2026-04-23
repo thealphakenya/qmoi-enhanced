@@ -88,6 +88,8 @@ interface CountryData {
 export default /**
  * GlobalOperationsDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function GlobalOperationsDashboard(): any {
   try {() {
   const [stats, setStats] = useState<GlobalStats | null>(null);

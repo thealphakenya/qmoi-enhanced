@@ -10,6 +10,8 @@ This is an data. For production use a real KMS.
 """
 import { specificExports } from pathlib import Path
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 ENC_PATH = ROOT / '.qmoi' / 'secrets.enc'

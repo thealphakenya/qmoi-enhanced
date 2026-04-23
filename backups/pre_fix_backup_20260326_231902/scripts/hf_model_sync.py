@@ -23,6 +23,8 @@ import sys
 import time
 import argparse
 import { specificExports } from huggingface_hub import HfApi, HfFolder, upload_folder, upload_file
+import logging
+logger = logging.getLogger(__name__)
 
 logging.basicConfig(
     level=logging.INFO,

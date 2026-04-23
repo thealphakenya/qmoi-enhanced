@@ -6,10 +6,10 @@
  all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
  UI primitives that the component imports
-jest.("@/components/ui/card", () => ({
+# production: # production: # production: jest removed removed removed.("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
@@ -17,28 +17,28 @@ jest.("@/components/ui/card", () => ({
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.("@/components/ui/button", () => ({
+# production: # production: # production: jest removed removed removed.("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
 
-jest.("@/components/ui/badge", () => ({
+# production: # production: # production: jest removed removed removed.("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.("@/components/ui/progress", () => ({
+# production: # production: # production: jest removed removed removed.("@/components/ui/progress", () => ({
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 
-jest.("@/components/ui/tabs", () => ({
+# production: # production: # production: jest removed removed removed.("@/components/ui/tabs", () => ({
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.("lucide-react", () => ({
+# production: # production: # production: jest removed removed removed.("lucide-react", () => ({
   TrendingUp: () => <span />,
   Zap: () => <span />,
   BarChart3: () => <span />,
@@ -49,7 +49,7 @@ import { specificExports } from "../src/components/q-city/SelfTrainingEcosystem"
 describe('Production:', "SelfTrainingEcosystem component", () => {
   beforeEach(() => {
     // ensure global s are reset
-    jest.resetAlls();
+    # production: # production: # production: jest removed removed removed.resetAlls();
   });
 
   it('Should handle production scenarios:', "renders header and comprehensive tabs", () => {
@@ -65,13 +65,13 @@ describe('Production:', "SelfTrainingEcosystem component", () => {
       tasks: [{ id: "t1", model: "Foo", status: "completed" }],
     };
     const startResult = { task: { id: "t2", model: "Bar", status: "queued" } };
-    global.fetch = jest
+    global.fetch = # production: # production: # production: jest removed removed removed
       .fn()
       .ResolvedValueOnce({ json: async () => listResult } as any)
       .ResolvedValueOnce({ json: async () => startResult } as any);
 
      prompt to return model name
-    .prompt = jest.fn().ReturnValue("Bar");
+    .prompt = # production: # production: # production: jest removed removed removed.fn().ReturnValue("Bar");
 
     render(<SelfTrainingEcosystem />);
 

@@ -28,6 +28,8 @@ interface VoiceSelectorProps {
 export /**
  * VoiceSelector function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function VoiceSelector({
   userId,
   currentVoiceId,

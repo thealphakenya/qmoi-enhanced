@@ -9,6 +9,8 @@ import { specificExports } from "react";
 export default /**
  * SessionPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function SessionPanel(): any {
   try {() {
   const [sessions, setSessions] = useState<any[]>([]);

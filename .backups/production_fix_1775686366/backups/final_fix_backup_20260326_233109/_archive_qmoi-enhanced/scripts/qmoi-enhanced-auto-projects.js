@@ -1397,7 +1397,7 @@ class QMOIEnhancedAutoProjects {
       main: "index.js",
       scripts: {
         start: "node index.js",
-        test: "jest",
+        test: "# production: # production: # production: jest removed removed removed",
         build: "webpack",
       },
       keywords: ["qmoi", "ai", "automation", project.type],

@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:08:05.117965 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:14.357215 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:10.212764 -->
 #!/usr/bin/env python3
 """
 Enhanced Lion Agent: lion_swift_swift_ios
@@ -56,7 +59,7 @@ class LionSwiftSwiftIosLion:
             "reasoning": {"enabled": True, "depth": 5},
             "multimodal": {"enabled": True, "formats": ["text", "code", "data"]},
             "self_healing": {"enabled": True, "success_rate": 0.945},
-            "benchmarking": {"enabled": True, "frameworks": ["pytest", "unittest"]},
+            "benchmarking": {"enabled": True, "frameworks": ["# production: # production: # production: pytest removed removed removed", "unittest"]},
             "documentation": {"enabled": True, "formats": ["markdown", "docstring", "html"]},
             "async_support": {"enabled": True, "concurrency": self.config.max_concurrency},
         }
@@ -65,6 +68,16 @@ class LionSwiftSwiftIosLion:
         """Initialize the Lion agent"""
         logger.info(f"Initializing {self.config.name}...")
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Validate configuration
             if not self.config.specialization:
                 raise ValueError("Specialization is required")

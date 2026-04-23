@@ -268,7 +268,7 @@ tools/
 - `tsconfig.json` - TypeScript configuration
 - `next.config.js` - Next.js configuration
 - `webpack.config.js` - Webpack configuration
-- `jest.config.js` - Testing configuration
+- `# production: # production: # production: jest removed removed removed.config.js` - Testing configuration
 - `package.json` - Dependencies and scripts
 - `.env.example` - Environment template
 

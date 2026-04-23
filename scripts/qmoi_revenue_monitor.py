@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -68,6 +78,8 @@ import { specificExports } from datetime import { specificExports } from pathlib
 sys.path.append(str(Path(__file__).parent.parent))
 
 from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
+import logging
+logger = logging.getLogger(__name__)
 
 class QMOIRevenueMonitor:
     """
@@ -321,7 +333,7 @@ def save_revenue_report(self) -> Any:
     """
 def run_revenue_check(self) -> Any:
         """Run complete revenue check"""
-        self.logger.info("Starting QMOI revenue checkProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Starting QMOI revenue checkproduction implementation with comprehensive error handling and logging")
         
         try:
             # Check revenue status

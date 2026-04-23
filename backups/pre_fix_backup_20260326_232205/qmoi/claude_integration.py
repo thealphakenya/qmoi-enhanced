@@ -9,6 +9,8 @@
 QMOI Claude Integration - Handles Claude Sonnet integration with fallback to local models
 """
 import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from .local_model_manager import { specificExports } from .parallel_processor import get_parallel_processor
+import logging
+logger = logging.getLogger(__name__)
 
 class QmoiClaudeIntegration:
     """

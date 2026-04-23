@@ -64,6 +64,8 @@ interface FriendshipUIProps {
 export /**
  * FriendshipUI function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
   const { toast } = useToast();
   const [friends, setFriends] = useState<Friend[]>([]);

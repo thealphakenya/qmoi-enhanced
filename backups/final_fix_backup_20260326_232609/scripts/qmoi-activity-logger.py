@@ -5,6 +5,8 @@
 
 import json
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 LOG_PATH = 'logs/qmoi-activity-log.json'
 

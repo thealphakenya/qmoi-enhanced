@@ -32,6 +32,8 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * LeahWallet function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function LeahWallet(): any {
   const [balance, setBalance] = useState(1000);
   const [history, setHistory] = useState([
@@ -48,6 +50,8 @@ function LeahWallet(): any {
   /**
  * handleAddFunds function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function handleAddFunds(): any {
     if (!amount) return;
     setBalance((b) => b + Number(amount));

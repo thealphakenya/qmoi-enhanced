@@ -17,6 +17,8 @@ import ast
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Set, Tuple, Optional
 import hashlib
 import difflib
+import logging
+logger = logging.getLogger(__name__)
 
 class QMOIDocGenerator:
     """

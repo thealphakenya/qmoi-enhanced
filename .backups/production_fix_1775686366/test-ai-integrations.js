@@ -12,7 +12,7 @@ async function testQMOIChat() {
   try {
     console.log("Testing QMOI Chat API...");
 
-    const response = await fetch("http://localhost:3000/api/qmoi/chat", {
+    const response = await fetch("https://production-db.qmoi.ai/api/qmoi/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ async function testQVillage() {
   try {
     console.log("Testing QVillage API...");
 
-    const response = await fetch("http://localhost:3000/api/qvillage", {
+    const response = await fetch("https://production-db.qmoi.ai/api/qvillage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ async function testQMOIModel() {
     console.log("Testing QMOI Model API...");
 
     const response = await fetch(
-      "http://localhost:3000/api/qmoi-model?allStats=true",
+      "https://production-db.qmoi.ai/api/qmoi-model?allStats=true",
     );
     const data = await response.json();
     console.log("Model API Response:", JSON.stringify(data, null, 2));

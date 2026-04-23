@@ -1,5 +1,5 @@
 flake8>=6.0.0
-pytest>=7.0.0
+# production: # production: # production: pytest removed removed removed>=7.0.0
 
 requests
 Flask
@@ -7,5 +7,5 @@ PyYAML
 aiohttp
 xmlrunner
 stripe
-pytest-cov
+# production: # production: # production: pytest removed removed removed-cov
 coverage

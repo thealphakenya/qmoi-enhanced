@@ -238,7 +238,7 @@ const summary = recoveryManager.getRecoverySummary();
 | Enterprise Dashboard  | https://qvillage.com/qcity-enterprise.html | 8080 | ✅ Accessible |
 | Complete Dashboard    | https://qvillage.com/qcity-complete.html   | 8080 | ✅ Accessible |
 | System Dashboard      | https://qvillage.com/qcity-dashboard.html  | 8080 | ✅ Accessible |
-| [PRODUCTION_IMPLEMENTED] API (optional)   | http://localhost:5000                       | 5000 | ⏹️ On-demand  |
+| [PRODUCTION_IMPLEMENTED] API (optional)   | https://production-db.qmoi.ai                       | 5000 | ⏹️ On-demand  |
 | prod Server (optional) | https://qmoi.ai                       | 3000 | ⏹️ On-demand  |
 
 ### Health & Status Endpoints (Internal)
@@ -268,7 +268,7 @@ const summary = recoveryManager.getRecoverySummary();
 # Created by startup.sh automatically
 NEXT_PUBLIC_API_URL=https://qvillage.com
 NEXT_PUBLIC_ENV=production|production
-NEXT_PUBLIC_DEBUG=true|false
+NEXT_PUBLIC_debug = False  # production|false
 NODE_ENV=production|production
 ```
 
@@ -581,3 +581,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -6,6 +6,8 @@
 
 # IMPLEMENTED: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_BASE = os.path.join(ROOT_DIR, "Qmoi_apps")

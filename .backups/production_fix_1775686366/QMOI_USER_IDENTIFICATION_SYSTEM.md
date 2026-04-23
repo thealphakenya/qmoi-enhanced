@@ -399,7 +399,7 @@ static selfIdentificationContexts = {
 ### Test Master Access
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{
     "message": "Who are you?",
@@ -411,7 +411,7 @@ curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
 ### Test Sister Access
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{
     "message": "Can I view the master data?",
@@ -423,7 +423,7 @@ curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
 ### Test Guest Access
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{
     "message": "What can you help with?",
@@ -573,3 +573,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

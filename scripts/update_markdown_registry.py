@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
 Update Markdown Files Registry
@@ -49,7 +53,7 @@ def scan_markdown_files():
                 try:
                     md_files.append(get_file_info(file_path))
                 except:
-        # Production implementation needed
+        # production implementation needed
     
     return sorted(md_files, key=lambda x: x['path'])
 

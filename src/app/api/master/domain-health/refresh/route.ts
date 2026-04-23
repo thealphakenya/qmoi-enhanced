@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 /**
  * Master Domain Health Refresh API Route
  *
@@ -39,7 +40,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    logger.info('🦁 Master: Forcing domain validation refresh/* Production implementation with proper error handling */');
+    logger.info('🦁 Master: Forcing domain validation refresh/* production implementation with proper error handling */');
 
     // Force domain validation refresh
     const lionAgent = new LionAgentWorkflowMonitor();

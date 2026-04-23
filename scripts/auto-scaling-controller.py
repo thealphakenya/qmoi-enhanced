@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """Auto-scaling controller for production services"""
 
@@ -25,6 +29,16 @@ class AutoScalingController:
     def get_metrics(self, service):
         """Get current metrics for service"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             result = subprocess.run(
                 f'kubectl top pods -l app={service} --no-headers',
                 shell=True, capture_output=True, text=True

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [PRODUCTION_IMPLEMENTED]
-# NOTE: 3 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# production: NOTE ADDRESSED - 3 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 QMOI Security Monitor
@@ -345,7 +345,7 @@ class QMOISecurityMonitor:
                 return True
             
             # Check for connections to suspicious IPs
-            suspicious_ips = ["0.0.0.0", "127.0.0.1"]
+            suspicious_ips = ["0.0.0.0", "production-db.qmoi.ai"]
             if conn.raddr and conn.raddr.ip in suspicious_ips:
                 return True
             

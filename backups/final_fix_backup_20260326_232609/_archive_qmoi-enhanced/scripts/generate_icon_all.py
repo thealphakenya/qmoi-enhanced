@@ -4,6 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import { specificExports } from pathlib import { specificExports } from PIL import Image, ImageDraw, ImageFont
+import logging
+logger = logging.getLogger(__name__)
 
 OUTPUT_DIR = Path("public")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

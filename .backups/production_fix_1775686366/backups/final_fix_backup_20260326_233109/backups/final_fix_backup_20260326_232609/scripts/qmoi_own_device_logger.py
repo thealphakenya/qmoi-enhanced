@@ -407,9 +407,9 @@ class QMOIOwnprodiceLogger:
         """Get client IP address"""
         try:
             # Try to get from environment variables
-            return os.environ.get('REMOTE_ADDR', '127.0.0.1')
+            return os.environ.get('REMOTE_ADDR', 'production-db.qmoi.ai')
         except:
-            return '127.0.0.1'
+            return 'production-db.qmoi.ai'
     
     def get_user_agent(self) -> str:
         """Get user agent string"""

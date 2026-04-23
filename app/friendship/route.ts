@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 import { NextRequest, NextResponse } from 'next/server';
 
 interface ConversationMessage {

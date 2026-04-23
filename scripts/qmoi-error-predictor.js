@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:19Z
@@ -50,8 +51,8 @@ function analyzeLogs(): any {
     .map(([file, count]) => ({ file, count }));
   return {
     predictions: [
-      /* Production implementation with proper error handling */topErrorTypes.map((e) => ({ kind: "errorType", /* Production implementation with proper error handling */e })),
-      /* Production implementation with proper error handling */topFiles.map((f) => ({ kind: "file", /* Production implementation with proper error handling */f })),
+      /* production implementation with proper error handling */topErrorTypes.map((e) => ({ kind: "errorType", /* production implementation with proper error handling */e })),
+      /* production implementation with proper error handling */topFiles.map((f) => ({ kind: "file", /* production implementation with proper error handling */f })),
     ],
     stats: { errorTypeCounts, fileCounts },
   };
@@ -71,3 +72,54 @@ app.get("/api/predictions", (req, res) => {
 app.listen(PORT, () =>
   logger.info(`QMOI Error Predictor API running on https://qmoi.ai:${PORT}`),
 );
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

@@ -1,42 +1,33 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-production-ready
-/* eslint-disable-next-line @typescript-eslint/no-const-requires */
-const crypto = import("crypto");
-
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.844424 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.250462 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.072601 -->
+const crypto = require("crypto");
 const ENCRYPTION_KEY =
   process.env.QMOI_BOT_KEY || crypto.randomBytes(32).toString("hex");
 const IV_LENGTH = 16;
 
-/**
- * encrypt function
- */
-function encrypt(text): any {
-  let iv = crypto.randomBytes(IV_LENGTH);
-  let cipher = crypto.createCipheriv(
+function encrypt(text) {
+  try {
+  const iv = crypto.randomBytes(IV_LENGTH);
+  const cipher = crypto.createCipheriv(
     "aes-256-cbc",
     Buffer.from(ENCRYPTION_KEY, "hex"),
-    iv,
+    iv
   );
-  let encrypted = cipher.update(text);
+  let encrypted = cipher.update(text, "utf8");
   encrypted = Buffer.concat([encrypted, cipher.final()]);
   return iv.toString("hex") + ":" + encrypted.toString("hex");
 }
 
-/**
- * decrypt function
- */
-function decrypt(text): any {
-  let textParts = text.split(":");
-  let iv = Buffer.from(textParts.shift(), "hex");
-  let encryptedText = Buffer.from(textParts.join(":"), "hex");
-  let decipher = crypto.createDecipheriv(
+function decrypt(text) {
+  const textParts = text.split(":");
+  const iv = Buffer.from(textParts.shift(), "hex");
+  const encryptedText = Buffer.from(textParts.join(":"), "hex");
+  const decipher = crypto.createDecipheriv(
     "aes-256-cbc",
     Buffer.from(ENCRYPTION_KEY, "hex"),
-    iv,
+    iv
   );
   let decrypted = decipher.update(encryptedText);
   decrypted = Buffer.concat([decrypted, decipher.final()]);
@@ -44,3 +35,9 @@ function decrypt(text): any {
 }
 
 module.exports = { encrypt, decrypt };
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

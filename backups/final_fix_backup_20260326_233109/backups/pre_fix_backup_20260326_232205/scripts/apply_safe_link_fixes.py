@@ -19,6 +19,8 @@ import re
 import { specificExports } from pathlib import Path
 import os
 import shutil
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 REPORT = REPO_ROOT / ".qmoi_validation" / "link_normalization_report.txt"

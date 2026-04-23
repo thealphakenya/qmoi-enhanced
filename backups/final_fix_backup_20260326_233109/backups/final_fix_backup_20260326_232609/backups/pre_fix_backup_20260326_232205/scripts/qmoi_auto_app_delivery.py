@@ -5,6 +5,8 @@
 
 # // production implementation:
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 """
     find_apps_in_md function

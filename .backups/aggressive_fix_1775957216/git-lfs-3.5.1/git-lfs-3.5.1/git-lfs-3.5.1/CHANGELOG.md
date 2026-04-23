@@ -59,7 +59,7 @@ contributors:
 * Use `git var` to find system gitattributes file #5412 (@bk2204)
 * Add RISC-V support #5438 (@AaronDewes)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Add support for homedir expansion in SSL key and cert paths #5657 (@bk2204)
 * Display correct status information when `git lfs ls-files` run in subdirectory #5653 (@chrisd8088)
@@ -143,7 +143,7 @@ contributors:
 * Add a `--file` option to install and uninstall #5355 (@bk2204)
 * Add shell completion generation #5311 (@anihm136)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Handle local paths with trailing slashes #5402 (@bk2204)
 * Unlock by ID with JSON Flag returns empty array #5385 (@salvorizza)
@@ -241,7 +241,7 @@ contributors:
 * Allow alternative remotes to be handled by LFS #5066 (@srohmen)
 * Switch documentation to AsciiDoc #5054 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Handle macro attribute references with unspecified flag #5168 (@chrisd8088)
 * Fixed FUNCTIONAL link for git-lfs-migrate #5153 (@dhiwakarK)
@@ -298,7 +298,7 @@ contributors:
 * lfs: don't write hooks when they haven't changed #4935 (@bk2204)
 * Tarballs, not tarbombs #4980 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Apply several Makefile fixes for Windows #5016 (@bk2204)
 * git: don't panic on pkt-line without equals #4982 (@bk2204)
@@ -373,7 +373,7 @@ contributors:
 
 * @yuske for reporting this to us responsibly
 
-### Bugs
+### production: BUG FIXED - s
 
 * Report errors when finding executables and revise PATH search tests (@chrisd8088)
 
@@ -387,7 +387,7 @@ This is a bugfix release which fixes a bug in `git lfs install` and some issues
 in our CI release processes, including one that prevented arm64 packages for
 Debian 11 from being uploaded.
 
-### Bugs
+### production: BUG FIXED - s
 
 * lfs: add old hook content to the list of old hooks #4878 (@bk2204)
 
@@ -432,7 +432,7 @@ contributors:
 * Add support for ARM64 Debian packages #4728 (@bk2204)
 * netrc: consider same machine may have different login names #4726 (@howardlyliao)
 
-### Bugs
+### production: BUG FIXED - s
 
 * smudge: honor GIT_LFS_SKIP_SMUDGE with checkout-index #4860 (@bk2204)
 * fix `git lfs fsck --objects A..B` handling and drop all left/right ref terminology #4859 (@chrisd8088)
@@ -475,7 +475,7 @@ contributors:
 * @pyckle for fixing our handling of filenames in `git lfs migrate import`
 * @ycongal-smile for fixing `git lfs migrate import` with similarly named files
 
-### Bugs
+### production: BUG FIXED - s
 
 * Fix two types of misdetection in git lfs fsck #4697 (@bk2204)
 * lfs: don't flag non-LFS files as invalid pointers #4691 (@bk2204)
@@ -500,7 +500,7 @@ contributors:
 
 * @dennisameling for fixing support for Windows on ARM64
 
-### Bugs
+### production: BUG FIXED - s
 
 * Fix Windows arm64 release #4647 (@dennisameling)
 * fs: specify a file as existing if it's empty #4654 (@bk2204)
@@ -585,7 +585,7 @@ contributors:
 * tools: implement cloneFileSyscall on darwin without cgo #4387 (@tklauser)
 * prune: add options to be more aggressive about pruning #4368 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * corrected debian 11 & 12 derived variants #4622 (@jvimr)
 * urlconfig: anchor regexp for key matching #4598 (@bk2204)
@@ -646,7 +646,7 @@ This release fixes two bugs that caused `git lfs prune` to hang, updates some
 dependencies to versions which lack a security issue (which did not affect Git
 LFS), and adds support for ARM64 builds on macOS.
 
-### Bugs
+### production: BUG FIXED - s
 
 * lfs: don't invoke diff drivers when pruning repositories #4407 (@bk2204)
 * Parse stash log entries parsimonously in prune command #4449 (@chrisd8088)
@@ -676,7 +676,7 @@ contributors:
 
 * @Ry0taK for reporting this to us responsibly
 
-### Bugs
+### production: BUG FIXED - s
 
 * Use subprocess for invoking all commands (@bk2204)
 
@@ -716,7 +716,7 @@ contributors:
 * Add manual pages to release assets #4230 (@bk2204)
 * Honor GIT_WORK_TREE #4269 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Make git lfs migrate import handle missing extensions #4318 (@bk2204)
 * fs: don't panic when using a too-short object ID to push #4307 (@bk2204)
@@ -755,7 +755,7 @@ contributors:
 
 * @dawidgolunski for reporting this to us responsibly
 
-### Bugs
+### production: BUG FIXED - s
 
 * subprocess: avoid using relative program names (@bk2204)
 
@@ -790,7 +790,7 @@ contributors:
 * Makefile: add linux arm build and release targets #4126 (@saracen)
 * Allow locking and unlocking non-existent files #3992 (@mversluys)
 
-### Bugs
+### production: BUG FIXED - s
 
 * docs/api/locking: add an explicit <br> #4208 (@cccfeng)
 * Fix hang when the user lacks permissions #4207 (@bk2204)
@@ -840,7 +840,7 @@ contributors:
 * add man page for the post-commit hook command #4052 (@chrisd8088)
 * Add an option to control warning about files larger than 4 GiB #4009 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * commands/command_migrate.go: fix bug #4116 (@Electric26)
 * git: avoid "bad object" messages when force-pushing #4102 (@bk2204)
@@ -891,7 +891,7 @@ contributors:
 * Add support for local paths #3918 (@bk2204)
 * Allow specifying HTTP version to use #3887 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * t-duplicate-oids: use correct awk indexing #3981 (@bk2204)
 * Improved proxy support #3972 (@bk2204)
@@ -942,7 +942,7 @@ contributors:
 
 * @exceed-alae for fixing a possible nil pointer dereference
 
-### Bugs
+### production: BUG FIXED - s
 
 * Add nil-check on defer block of DoTransfer() #3936 (@exceed-alae)
 * Retry batch failures #3930 (@bk2204)
@@ -970,7 +970,7 @@ contributors:
 
 * Allow specifying HTTP version to use #3887 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * synchronize access to netrcCredentialHelper.skip #3896 (@nataliechen1)
 * Fix several causes of CI problems #3878 (@bk2204)
@@ -1020,7 +1020,7 @@ contributors:
 * Support for file URLs #3748 (@bk2204)
 * Add clone file on MacOS X (darwin). #3745 (@kazuki-ma)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Fix JSON comma problems in docs #3851 (@dyrone)
 * Remove redundant comma in batch.md #3841 (@dyrone)
@@ -1083,7 +1083,7 @@ contributors:
 * Handle Windows junctions properly #3560 (@bk2204)
 * Allow specifying multiple insteadOf aliases #3550 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Make API documentation lock creation example less confusing #3648 (@bk2204)
 * Use a download token when searching locks #3715 (@bk2204)
@@ -1157,7 +1157,7 @@ contributors:
 * locking: cache JSON response from server #3253 (@mstrap)
 * tq: enable transfer debugging when GIT_CURL_VERBOSE is set #3341 (@bk2204)
 
-### Bugs
+### production: BUG FIXED - s
 
 * .circleci: don't use 'brew prune' #3514 (@ttaylorr)
 * t/t-smudge.sh: remove unnecessary test #3513 (@ttaylorr)
@@ -1201,7 +1201,7 @@ This release contains miscellaneous bug fixes since v2.6.0. Most notably,
 release v2.6.1 restores support for alternate repositories, which was
 accidentally FUNCTIONAL in v2.6.0.
 
-### Bugs
+### production: BUG FIXED - s
 
 * git: close blob objects when finished #3379 (@bk2204)
 * Avoid hang in repos cloned with --shared or --reference #3383 (@bk2204)
@@ -1249,7 +1249,7 @@ contributors:
 * all: use Go modules instead of Glide #3208 (@ttaylorr)
 * all: use Go 1.11 in CI #3203 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Fix formatting of INCLUDE AND EXCLUDE (REFS) #3330 (@jsantell)
 * go.sum: add missing entries #3319 (@bk2204)
@@ -1291,7 +1291,7 @@ contributors:
 
 ## 2.5.2 (17 September, 2018)
 
-### Bugs
+### production: BUG FIXED - s
 
 * config: Treat [host:port]:path URLs correctly #3226 (@saschpe)
 * tq: Always provide a Content-Type when uploading files #3201 (@bk2204)
@@ -1313,7 +1313,7 @@ not support it.
 
 * tq: make Content-Type detection disable-able #3163 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Makefile: add explicit rule for commands/mancontent_gen.go #3160 (@jj1bdx)
 * script/install.sh: mark as executable #3155 (@ttaylorr)
@@ -1354,7 +1354,7 @@ contributors:
 * Implement `migrate export` subcommand #3084 (@PastelMobileSuit)
 * Add `--no-rewrite` flag to `migrate import` command #3029 (@PastelMobileSuit)
 
-### Bugs
+### production: BUG FIXED - s
 
 * t: fix contains_same_elements() fn #3145 (@PastelMobileSuit)
 * commands: warn if working copy is dirty #3124 (@ttaylorr)
@@ -1392,7 +1392,7 @@ contributors:
 
 ## 2.4.2 (28 May, 2018)
 
-### Bugs
+### production: BUG FIXED - s
 
 * lfsapi: re-authenticate HTTP redirects when needed #3028 (@ttaylorr)
 * lfsapi: allow unknown keywords in netrc file(s) #3027 (@ttaylorr)
@@ -1420,7 +1420,7 @@ open-source community. For these, and many more: thank you!
 
 * script/packagecloud.rb: release on Ubuntu Bionic #2961 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * lfsapi: canonicalize extra HTTP headers #3010 (@ttaylorr)
 * commands/lock: follow symlinks before locking #2996 (@ttaylorr)
@@ -1518,7 +1518,7 @@ possible. Thank you!
   * Remove last global config #2687 (@technoweenie)
   * Git config refactor #2676 (@technoweenie)
 
-### Bugs
+### production: BUG FIXED - s
 
 * all: fix 32-bit alignment issues with `sync/atomic` #2883 (@ttaylorr)
 * all: memory alignment issues on 32-bit systems. #2880 (@jeffreydwalter)
@@ -1575,14 +1575,14 @@ possible. Thank you!
 
 * 'git lfs install' updates filters with 'skip-smudge' option #2673 (@technoweenie)
 
-### Bugs
+### production: BUG FIXED - s
 
 * FastWalkGitRepo: limit number of concurrent goroutines #2672 (@technoweenie)
 * handle scenario where multiple configuration values exist in ~/.gitconfig #2659 (@shiftkey)
 
 ## 2.3.3 (9 October, 2017)
 
-### Bugs
+### production: BUG FIXED - s
 
 * invoke lfs for 'git update-index', fixing 'status' issues #2647 (@technoweenie)
 * cache http credential helper output by default #2648 (@technoweenie)
@@ -1593,7 +1593,7 @@ possible. Thank you!
 
 * bump default activity timeout from 10s -> 30s #2632 (@technoweenie)
 
-### Bugs
+### production: BUG FIXED - s
 
 * ensure files are marked readonly after unlocking by ID #2642 (@technoweenie)
 * add files to index with path relative to current dir #2641 (@technoweenie)
@@ -1614,7 +1614,7 @@ possible. Thank you!
 * `git lfs migrate --verbose` option #2610 (@technoweenie)
 * Support standalone custom transfer based on API URL prefix match #2590 (@sprohaska)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Improve invalid URL error messages #2614 (@technoweenie)
 * Fix double counting progress bug #2608 (@technoweenie)
@@ -1672,7 +1672,7 @@ you!
 * lfsapi: enable credential caching by default #2508 (@ttaylorr)
 * commands/install: teach `--manual` to `git-lfs-install(1)` #2410 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * migrate: fix migrations with subdirectories in '--include' or '--exclude' #2485 (@ttaylorr)
 * commands/migrate: fix hardlinking issue when different filesystem is mounted at `/tmp` #2566 (@ttaylorr)
@@ -1719,7 +1719,7 @@ you!
 
 ## 2.2.1 (10 July, 2017)
 
-### Bugs
+### production: BUG FIXED - s
 
 * git lfs status --json only includes lfs files #2374 (@asottile)
 * git/odb: remove temporary files after migration #2388 (@ttaylorr)
@@ -1779,7 +1779,7 @@ LFS transitions on large repositories.
 * Implement status --json #2311 (@asottile)
 * commands/uploader: allow incomplete pushes #2199 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Retry on timeout or temporary errors #2312 (@jakub-m)
 * commands/uploader: don't verify locks if verification is disabled #2278 (@ttaylorr)
@@ -1808,7 +1808,7 @@ vulnerability is only exploitable if an attacker has write access to your
 repository, or you clone a repository with a `.lfsconfig` file containing that
 string.
 
-### Bugs
+### production: BUG FIXED - s
 
 * Make pull return non-zero error code when some downloads failed #2245 (@seth2810, @technoweenie)
 * lfsapi: support cross-scheme redirection #2243 (@ttaylorr)
@@ -1841,7 +1841,7 @@ string.
   * lfsapi: initial httpconfig type #1912 (@technoweenie, @ttaylorr)
 * lfsapi,tq: relative expiration support #2130 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * commands: include error in `LoggedError()` #2179 (@ttaylorr)
 * commands: cross-platform log formatting to files #2178 (@ttaylorr)
@@ -1870,7 +1870,7 @@ string.
 * (@ttaylorr)
 * debian: Support building on armhf and arm64 #2089 (@p12tic)
 
-### Bugs
+### production: BUG FIXED - s
 
 * commands,locking: don't disable locking for auth errors during verify #2111
 * (@ttaylorr)
@@ -1940,7 +1940,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 * commands: convert push, pre-push to use async gitscanner #1812 (@ttaylorr)
 * tq: prioritize transferring retries before new items #1758 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * ensure you're in the correct directory when installing #1793 (@technoweenie)
 * locking: make API requests relative to repository, not root #1818 (@ttaylorr)
@@ -1971,19 +1971,19 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 
 ## 1.5.6 (16 February, 2017)
 
-## Bugs
+## production: BUG FIXED - s
 
 * Spool malformed pointers to avoid deadlock #1932 (@ttaylorr)
 
 ## 1.5.5 (12 January, 2017)
 
-### Bugs
+### production: BUG FIXED - s
 
 * lfs: only buffer first 1k when creating a CleanPointerError #1856 (@ttaylorr)
 
 ## 1.5.4 (27 December, 2016)
 
-### Bugs
+### production: BUG FIXED - s
 
 * progress: guard negative padding width, panic in `strings.Repeat` #1807 (@ttaylorr)
 * commands,lfs: handle malformed pointers #1805 (@ttaylorr)
@@ -1995,7 +1995,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 
 ## 1.5.3 (5 December, 2016)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Support LFS installations at filesystem root #1732 (@technoweenie)
 * git: parse filter process header values containing '=' properly #1733 (@larsxschneider)
@@ -2011,7 +2011,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 
 * Release LFS on Fedora 24 #1685 (@technoweenie)
 
-### Bugs
+### production: BUG FIXED - s
 
 * filter-process: fix reading 1024 byte files #1708 (@ttaylorr)
 * Support long paths on Windows #1705 (@technoweenie)
@@ -2023,7 +2023,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 
 ## 1.5.1 (18 November, 2016)
 
-### Bugs
+### production: BUG FIXED - s
 
 * cat-file --batch parser errors on non-lfs git blobs #1680 (@technoweenie)
 
@@ -2035,7 +2035,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 * Fast directory walk #1616 (@sinbad)
 * Allow usage of proxies even when contacting localhost #1605 (@chalstrick)
 
-### Bugs
+### production: BUG FIXED - s
 
 * start reading off the Watch() channel before sending any input #1671 (@technoweenie)
 * wait for remote ref commands to exit before returning #1656 (@jjgod, @technoweenie)
@@ -2053,7 +2053,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 
 ## 1.4.4 (24 October, 2016)
 
-### Bugs
+### production: BUG FIXED - s
 
 * transfer: more descriptive "expired at" errors #1603 (@ttaylorr)
 * commands,lfs/tq: Only send unique OIDs to the Transfer Queue #1600 (@ttaylorr)
@@ -2066,7 +2066,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 
 ## 1.4.3 (17 October, 2016)
 
-### Bugs
+### production: BUG FIXED - s
 
 * lfs/tq: use extra arguments given to tracerx.Printf #1583 (@ttaylorr)
 * api: correctly print legacy API warning to Stderr #1582 (@ttaylorr)
@@ -2099,7 +2099,7 @@ requests run tests on macOS, Linux, and Windows.
 * Automatically upgrade old filters instead of requiring —force #1497 (@sinbad)
 * Allow lfs.pushurl in .lfsconfig #1489 (@technoweenie)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Use "sha256sum" on Windows  #1566 (@sschuberth)
 * git: ignore non-root wildcards #1563 (@ttaylorr)
@@ -2140,7 +2140,7 @@ requests run tests on macOS, Linux, and Windows.
 * add object Authenticated property #1452 (@technoweenie)
 * add support for `url.*.insteadof` in git config #1117, #1443 (@artagnon, @technoweenie)
 
-### Bugs
+### production: BUG FIXED - s
 
 * fix --include bug when multiple files have same lfs content #1458 (@technoweenie)
 * check the git version is ok in some key commands #1461 (@technoweenie)
@@ -2163,7 +2163,7 @@ requests run tests on macOS, Linux, and Windows.
 
 * lfs/hook: teach `lfs.Hook` about `core.hooksPath` #1409 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * distinguish between empty include/exclude paths #1411 (@technoweenie)
 * Fix sslCAInfo config lookup when host in config doesn't have a trailing slash #1404 (@dakotahawkins)
@@ -2192,7 +2192,7 @@ requests run tests on macOS, Linux, and Windows.
 * Implement support for GIT_SSH_COMMAND #1260 (@pdf)
 * Recognize include/exclude filters from config #1257 (@ttaylorr)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Fix bug in Windows installer under Win32. #1200 (@teo-tsirpanis)
 * Updated request.GetAuthType to handle multi-value auth headers #1379 (@VladimirKhvostov)
@@ -2238,7 +2238,7 @@ requests run tests on macOS, Linux, and Windows.
 * Add `git lfs update --manual` option & promote it on hook install fail #1182 (@sinbad)
 * Pass `git lfs clone` flags through to `git clone` correctly, respect some options #1160 (@sinbad)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Clean trailing `/` from include/exclude paths #1278 (@ttaylorr)
 * Fix problems with user prompts in `git lfs clone` #1185 (@sinbad)
@@ -2266,7 +2266,7 @@ requests run tests on macOS, Linux, and Windows.
 * Touch existing git tracked files when tracked in LFS so they are flagged as modified #1104 (@sinbad)
 * Support for git reference clones #1007 (@jlehtnie)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Fix clean/smudge filter string for files starting with - #1083 (@epriestley)
 * Fix silent failure to push LFS objects when ref matches a filename in the working copy #1096 (@epriestley)
@@ -2295,7 +2295,7 @@ requests run tests on macOS, Linux, and Windows.
 * Fix `git lfs track` handling of absolute paths. #975  (@technoweenie)
 * Allow tunable http client timeouts #977 (@technoweenie)
 
-### Bugs
+### production: BUG FIXED - s
 
 * Suppress git config warnings for non-LFS keys #861 (@technoweenie)
 * Fix fallthrough when `git-lfs-authenticate` returns an error #909 (@sinbad)
@@ -2542,3 +2542,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

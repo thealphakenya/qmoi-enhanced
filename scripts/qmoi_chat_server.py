@@ -1,11 +1,25 @@
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
                 return f.read()
         except FileNotFoundError:
@@ -185,12 +199,12 @@ def do_POST(self) -> Any:
         if parsed.path == '/memory/sync' or parsed.path == '/memory':
             # Read body already below; fall through to payload handling
 return self._get_production_data()
-        # POST /v1/PRODUCTION - store PRODUCTION data for session (used by UI PRODUCTION window)
-        if parsed.path == '/v1/PRODUCTION':
+        # POST /v1/production - store production data for session (used by UI production window)
+        if parsed.path == '/v1/production':
             # read body below and save to memory['previews']
 return self._get_production_data()
         # Main chat endpoint
-        if parsed.path != '/v1/chat/completions' and parsed.path not in ['/memory/sync', '/memory', '/v1/PRODUCTION']:
+        if parsed.path != '/v1/chat/completions' and parsed.path not in ['/memory/sync', '/memory', '/v1/production']:
             self._set_json(404)
             self.wfile.write(json.dumps({'error': 'Not Found'}).encode())
             return
@@ -213,7 +227,7 @@ return self._get_production_data()
                     self._set_json(403)
                     self.wfile.write(json.dumps({'error': 'forbidden'}).encode())
                     return
-            # payload may include { replace: true, memory: {Production implementation with comprehensive error handling and logging} } or full
+            # payload may include { replace: true, memory: {production implementation with comprehensive error handling and logging} } or full
             mem = load_memory()
             if payload.get('replace'):
                 mem = payload.get('memory', mem)
@@ -231,8 +245,8 @@ return self._get_production_data()
             self.wfile.write(json.dumps({'status': 'ok'}).encode())
             return
 
-        # Handle PRODUCTION POST
-        if parsed.path == '/v1/PRODUCTION':
+        # Handle production POST
+        if parsed.path == '/v1/production':
             mem = load_memory()
             session_id = payload.get('sessionId') or self.headers.get('X-QMOI-SESSION') or 'anon'
             previews = mem.setdefault('previews', {})
@@ -586,10 +600,10 @@ def run(server_class=HTTPServer, handler_class=Handler) -> Any:
     run()
 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

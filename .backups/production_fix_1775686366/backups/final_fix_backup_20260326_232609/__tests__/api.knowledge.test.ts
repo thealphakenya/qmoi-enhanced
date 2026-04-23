@@ -14,7 +14,7 @@ const apiRequest = async (
   path: string,
   body?: unknown,
 ): Promise<ApiResponse> => {
-  const res = await fetch(`http://localhost:3000${path}`, {
+  const res = await fetch(`https://production-db.qmoi.ai${path}`, {
     method,
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,

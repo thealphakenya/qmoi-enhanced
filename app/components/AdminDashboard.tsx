@@ -52,6 +52,8 @@ interface Alert {
 export default /**
  * AdminDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function AdminDashboard(): any {
   try {() {
   const [monitoring, setMonitoring] = useState<HealthMetrics | null>(null);
@@ -369,6 +371,8 @@ function AdminDashboard(): any {
 /**
  * formatUptime function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function formatUptime(seconds: number): any: string {
   const days = Math.floor(seconds / 86400);
   const hours = Math.floor((seconds % 86400) / 3600);

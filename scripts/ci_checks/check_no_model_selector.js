@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:56Z
@@ -19,7 +20,7 @@ function scanPaths(paths, patterns): any {
     if (stat.isDirectory()) {
       const files = fs.readdirSync(p);
       for (const f of files) {
-        matches.push(/* Production implementation with proper error handling */scanPaths([path.join(p, f)], patterns));
+        matches.push(/* production implementation with proper error handling */scanPaths([path.join(p, f)], patterns));
       }
     } else {
       // Only scan text files

@@ -9,6 +9,8 @@ import { specificExports } from "react";
 export default /**
  * RelationshipInsightsPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function RelationshipInsightsPanel(): any {
   try {() {
   return (

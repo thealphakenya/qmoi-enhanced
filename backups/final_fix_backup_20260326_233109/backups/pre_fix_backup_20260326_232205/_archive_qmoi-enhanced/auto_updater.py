@@ -5,6 +5,8 @@
 
 // // production implementation: this file has no remaining production markers
 import requests, os, subprocess, sys
+import logging
+logger = logging.getLogger(__name__)
 
 REPO = "thealphakenya/qmoi_ai"
 LOCAL_VERSION = "1.0.0"

@@ -6,6 +6,8 @@
 // 
 from pydrive.auth import { specificExports } from pydrive.drive import GoogleDrive
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 APPS_DIR = "Qmoi_apps"
 

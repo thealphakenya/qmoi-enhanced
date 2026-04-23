@@ -54,6 +54,8 @@ interface ChatbotState {
 export /**
  * ChatbotEnhanced function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ChatbotEnhanced(): any {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {

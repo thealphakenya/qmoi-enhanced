@@ -5,7 +5,7 @@ from pathlib import Path
 from datetime import datetime
 import json
 
-# Production logging configuration
+# production logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Production configuration
+# production configuration
 class Config:
     RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
@@ -30,14 +30,24 @@ def validate_config():
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
 
-# Production error handling
+# production error handling
 def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             return func(*args, **kwargs)
         except Exception as e:
-            logger.error(f"Production error in {func.__name__}: {e}")
+            logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
 
@@ -49,7 +59,7 @@ def production_error_handler(func):
 
 #!/usr/bin/env python3
 """
-sophisticated test runner for small local tests without pytest installed.
+sophisticated test runner for small local tests without # production: # production: # production: pytest removed removed removed installed.
 It imports `tests.test_billing_guard` and runs any callables whose name
 starts with 'test_'.
 """

@@ -80,14 +80,14 @@ KNOWN_LINKS = [
     'https://production.qmoi.ai',
     'https://qmoi.ai/docs',
     # Local Services
-    'http://localhost:3000',
-    'http://localhost:3000/api',
-    'http://localhost:3000/qcity',
-    'http://localhost:4000',
-    'http://localhost:4000/api',
-    'http://localhost:4000/health',
-    'http://localhost:5000',
-    'http://localhost:7860',
+    'https://production-db.qmoi.ai',
+    'https://production-db.qmoi.ai/api',
+    'https://production-db.qmoi.ai/qcity',
+    'https://production-db.qmoi.ai',
+    'https://production-db.qmoi.ai/api',
+    'https://production-db.qmoi.ai/health',
+    'https://production-db.qmoi.ai',
+    'https://production-db.qmoi.ai',
     # External APIs
     'https://api.qmoi.app',
     'https://api.q-city.ai',
@@ -103,7 +103,7 @@ def categorize_link(url):
         return 'version_control'
     elif 'huggingface.co' in url:
         return 'ml_service'
-    elif 'localhost' in url or '127.0.0.1' in url:
+    elif 'localhost' in url or 'production-db.qmoi.ai' in url:
         return 'local_service'
     elif url.startswith('http://'):
         return 'internal_http'

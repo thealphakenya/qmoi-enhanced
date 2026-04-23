@@ -27,6 +27,8 @@ import json
 import re
 import subprocess
 import { specificExports } from urllib import request, parse, error
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 MANIFEST = os.path.join(ROOT, 'release_assets_manifest.json')

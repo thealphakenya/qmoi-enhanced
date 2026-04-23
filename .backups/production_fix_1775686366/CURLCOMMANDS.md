@@ -20,37 +20,37 @@ This file contains curl commands and instructions to test all QMOI endpoints, he
 ## Health Check
 
 ```
-curl http://localhost:4000/health
+curl https://production-db.qmoi.ai/health
 ```
 
 ## Real-Time Events
 
 ```
-curl http://localhost:4000/api/realtime-events
+curl https://production-db.qmoi.ai/api/realtime-events
 ```
 
 ## Trigger Error Fix
 
 ```
-curl -X POST http://localhost:4000/api/trigger-fix
+curl -X POST https://production-db.qmoi.ai/api/trigger-fix
 ```
 
 ## Get Error Fix Log
 
 ```
-curl http://localhost:4000/api/error-fix-log
+curl https://production-db.qmoi.ai/api/error-fix-log
 ```
 
 ## Get Logs
 
 ```
-curl http://localhost:4000/api/logs
+curl https://production-db.qmoi.ai/api/logs
 ```
 
 ## Login (data)
 
 ```
-curl -X POST -d "user=Victor&pass=Victor9798!" http://localhost:4000/login
+curl -X POST -d "user=Victor&pass=Victor9798!" https://production-db.qmoi.ai/login
 ```
 
 ## Add more as new endpoints are created.
@@ -336,3 +336,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

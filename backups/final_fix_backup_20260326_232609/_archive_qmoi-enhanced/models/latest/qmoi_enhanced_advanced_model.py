@@ -22,6 +22,8 @@ import requests
 import subprocess
 import psutil
 import platform
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

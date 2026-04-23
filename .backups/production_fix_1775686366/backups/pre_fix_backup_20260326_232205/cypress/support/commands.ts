@@ -8,7 +8,7 @@
  * Login command
  */
 Cypress.Commands.add("login", (email: string, password: string) => {
-  cy.visit("http://localhost:3000");
+  cy.visit("https://production-db.qmoi.ai");
   cy.contains("Login").click();
   cy.get('input[name="email"]').type(email);
   cy.get('input[name="password"]').type(password);
@@ -22,7 +22,7 @@ Cypress.Commands.add("login", (email: string, password: string) => {
 Cypress.Commands.add(
   "register",
   (email: string, username: string, password: string) => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://production-db.qmoi.ai");
     cy.contains("Register").click();
     cy.get('input[name="email"]').type(email);
     cy.get('input[name="username"]').type(username);

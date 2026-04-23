@@ -39,7 +39,7 @@ class APITestSuite(unittest.TestCase):
 
     def setUp(self):
         """Set up test environment"""
-        self.base_url = os.getenv('API_BASE_URL', 'http://localhost:3000/api')
+        self.base_url = os.getenv('API_BASE_URL', 'https://production-db.qmoi.ai/api')
         self.test_user = {
             'email': 'test@example.com',
             'password': 'TestPassword123!',
@@ -525,7 +525,7 @@ class LoadTestSuite(unittest.TestCase):
     """Load testing suite for API endpoints"""
 
     def setUp(self):
-        self.base_url = os.getenv('API_BASE_URL', 'http://localhost:3000/api')
+        self.base_url = os.getenv('API_BASE_URL', 'https://production-db.qmoi.ai/api')
         self.concurrency = int(os.getenv('LOAD_TEST_CONCURRENCY', '10'))
         self.duration = int(os.getenv('LOAD_TEST_DURATION', '30'))  # seconds
 
@@ -601,7 +601,7 @@ class IntegrationTestSuite(unittest.TestCase):
     """Integration testing suite for complex workflows"""
 
     def setUp(self):
-        self.base_url = os.getenv('API_BASE_URL', 'http://localhost:3000/api')
+        self.base_url = os.getenv('API_BASE_URL', 'https://production-db.qmoi.ai/api')
         self.session = requests.Session()
 
     def tearDown(self):

@@ -8,7 +8,7 @@ import { specificExports } from "@testing-library/react";
 import { specificExports } from "./QMoiKernelPanel";
 
  the custom hook
-jest.("../../hooks/useQmoiKernel", () => ({
+# production: # production: # production: jest removed removed removed.("../../hooks/useQmoiKernel", () => ({
   useQmoiKernel: () => ({
     status: {
       status: "OK",
@@ -19,8 +19,8 @@ jest.("../../hooks/useQmoiKernel", () => ({
     loading: false,
     error: null,
     lastAction: { success: true, message: "QFix done" },
-    fetchStatus: jest.fn(),
-    runAction: jest.fn(),
+    fetchStatus: # production: # production: # production: jest removed removed removed.fn(),
+    runAction: # production: # production: # production: jest removed removed removed.fn(),
   }),
 }));
 
@@ -66,8 +66,8 @@ production-ready
   });
 
   production-ready
-    jest.resetModules();
-    jest.do("../../hooks/useQmoiKernel", () => ({
+    # production: # production: # production: jest removed removed removed.resetModules();
+    # production: # production: # production: jest removed removed removed.do("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
         status: {
           status: "OK",
@@ -78,8 +78,8 @@ production-ready
         loading: true,
         error: null,
         lastAction: null,
-        fetchStatus: jest.fn(),
-        runAction: jest.fn(),
+        fetchStatus: # production: # production: # production: jest removed removed removed.fn(),
+        runAction: # production: # production: # production: jest removed removed removed.fn(),
       }),
     }));
     const QMoiKernelPanelReloaded = import("./QMoiKernelPanel").default;
@@ -93,8 +93,8 @@ production-ready
   });
 
   production-ready
-    jest.resetModules();
-    jest.do("../../hooks/useQmoiKernel", () => ({
+    # production: # production: # production: jest removed removed removed.resetModules();
+    # production: # production: # production: jest removed removed removed.do("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
         status: {
           status: "OK",
@@ -105,8 +105,8 @@ production-ready
         loading: false,
         error: "Something went wrong",
         lastAction: null,
-        fetchStatus: jest.fn(),
-        runAction: jest.fn(),
+        fetchStatus: # production: # production: # production: jest removed removed removed.fn(),
+        runAction: # production: # production: # production: jest removed removed removed.fn(),
       }),
     }));
     const QMoiKernelPanelReloaded = import("./QMoiKernelPanel").default;

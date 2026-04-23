@@ -13,7 +13,7 @@
 import https from "https";
 import http from "http";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://production-db.qmoi.ai";
 
 async function makeRequest(endpoint, data) {
   return new Promise((resolve, reject) => {

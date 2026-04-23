@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:55.248204 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.549397 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.201921 -->
 npm install
 pip install -r requirements.txt -r requirements/test_requirements.txt
 npm run qmoi:autodev:full

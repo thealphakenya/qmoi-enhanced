@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:25.501832 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.545838 -->
 
 // Master-only access control
 const requireMasterAccess = (WrappedComponent: any) => {

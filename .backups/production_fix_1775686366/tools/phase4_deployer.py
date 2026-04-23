@@ -230,7 +230,7 @@ class QMOIPhase4Deployer:
         self.log_stage(DeploymentStage.AUTOTESTS, "STARTING", "Checking E2E test setup...")
         
         # Check if test framework is installed
-        frameworks = ["playwright", "appium", "pytest"]
+        frameworks = ["playwright", "appium", "# production: # production: # production: pytest removed removed removed"]
         installed = []
         for fw in frameworks:
             result = subprocess.run(f"pip list | grep {fw}", shell=True, capture_output=True)

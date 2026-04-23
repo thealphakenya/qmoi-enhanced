@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:50.377610 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:05.859435 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:00.897349 -->
 [Setup]
 AppName=QMOI AI
 AppVersion=1.0

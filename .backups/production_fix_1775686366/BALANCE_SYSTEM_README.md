@@ -221,13 +221,13 @@ The system provides real-time monitoring of:
 
 ```bash
 # Get system status
-curl http://localhost:3000/api/balance/status
+curl https://production-db.qmoi.ai/api/balance/status
 
 # Get monitoring report
-curl http://localhost:3000/api/balance/health
+curl https://production-db.qmoi.ai/api/balance/health
 
 # Get active alerts
-curl http://localhost:3000/api/balance/alerts
+curl https://production-db.qmoi.ai/api/balance/alerts
 ```
 
 ### Alert Types
@@ -551,7 +551,7 @@ npm run balance:start:prod
 - **TypeScript**: Strict type checking enabled
 - **ESLint**: Airbnb configuration with custom rules
 - **Prettier**: Consistent code formatting
-- **Jest**: Comprehensive test coverage required
+- **# production: # production: # production: jest removed removed removed**: Comprehensive test coverage required
 
 ### Testing
 
@@ -661,3 +661,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

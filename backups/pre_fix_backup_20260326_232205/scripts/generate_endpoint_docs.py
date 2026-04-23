@@ -5,6 +5,8 @@
 
 # 
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 root = Path('app/api')
 entries = []

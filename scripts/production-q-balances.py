@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +57,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -196,14 +210,14 @@ def _ensure_q_directory(self) -> None:
         # Ensure BALANCES.md exists with initial content
         balances_path = os.path.join(q_dir, 'BALANCES.md')
         if not os.path.exists(balances_path):
-            logger.info('📄 Creating initial BALANCES.mdProduction implementation with comprehensive error handling and logging')
+            logger.info('📄 Creating initial BALANCES.mdproduction implementation with comprehensive error handling and logging')
             initial_content = f'''# QMOI Enhanced - Balance Tracking System
 
-**Status**: InitializingProduction implementation with comprehensive error handling and logging
-**QMOI Validation**: PendingProduction implementation with comprehensive error handling and logging
+**Status**: Initializingproduction implementation with comprehensive error handling and logging
+**QMOI Validation**: Pendingproduction implementation with comprehensive error handling and logging
 **Last Updated**: {datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")}
 
-System starting up. Please wait for first auto-updateProduction implementation with comprehensive error handling and logging
+System starting up. Please wait for first auto-updateproduction implementation with comprehensive error handling and logging
 '''
             try:
                 with open(balances_path, 'w', encoding='utf-8') as f:
@@ -221,7 +235,7 @@ def _setup_signal_handlers(self) -> None:
     signal_handler function
     """
 def signal_handler(signum, frame) -> Any:
-            logger.info(f'\n🛑 Received signal {signum}. Shutting down gracefullyProduction implementation with comprehensive error handling and logging')
+            logger.info(f'\n🛑 Received signal {signum}. Shutting down gracefullyproduction implementation with comprehensive error handling and logging')
             self.stop()
             sys.exit(0)
 

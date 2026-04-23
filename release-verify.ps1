@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:54.399207 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.232288 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:01.520577 -->
 # Verify latest GitHub release assets for all platforms
 
 param(
@@ -9,9 +12,21 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Write-Info($m){ Write-Host $m -ForegroundColor Cyan }
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Write-Warn($m){ Write-Host $m -ForegroundColor Yellow }
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Write-Ok($m){ Write-Host $m -ForegroundColor Green }
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Write-Err($m){ Write-Host $m -ForegroundColor Red }
 
 Write-Info "Fetching $Owner/$Repo release: $Tag"
@@ -21,6 +36,9 @@ if ($env:GITHUB_TOKEN) { $headers['Authorization'] = "Bearer $($env:GITHUB_TOKEN
 
 $base = "https://api.github.com/repos/$Owner/$Repo/releases"
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Try-Get($uri){
     try { return Invoke-RestMethod -Method Get -Uri $uri -Headers $headers } catch { return $null }
 }

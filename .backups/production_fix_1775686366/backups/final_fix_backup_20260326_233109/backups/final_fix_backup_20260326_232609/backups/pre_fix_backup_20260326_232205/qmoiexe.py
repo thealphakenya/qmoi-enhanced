@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # // production implementation:
-# NOTE: 1 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# production: NOTE ADDRESSED - 1 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os, subprocess, threading, webbrowser, sys, time, winshell
 from win32com.client import Dispatch
 from pystray import Icon as TrayIcon, Menu as TrayMenu, MenuItem as TrayMenuItem
@@ -19,7 +19,7 @@ CUSTOM_ICON = r"D:\applications\stable-Q-ai\icon.ico"
 ICON_PATH = CUSTOM_ICON if os.path.exists(CUSTOM_ICON) else os.path.join(os.getcwd(), "auto_qmoi_icon.ico")
 
 INSTALL_DIR = os.path.dirname(os.path.abspath(sys.executable if getattr(sys, 'frozen', False) else __file__))
-FRONTEND_URL = "http://127.0.0.1:8000"
+FRONTEND_URL = "http://production-db.qmoi.ai:8000"
 
 def generate_icon():
     if not os.path.exists(ICON_PATH):
@@ -60,7 +60,7 @@ def root():
     return {'status': 'ready'}""")
         print("⚠️ Created complete FastAPI backend as // production implementation required:.")
     
-    subprocess.Popen(["uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"])
+    subprocess.Popen(["uvicorn", "main:app", "--host", "production-db.qmoi.ai", "--port", "8000"])
 
 def open_frontend():
     print("🌐 Waiting for frontend to be available...")

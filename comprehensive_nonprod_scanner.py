@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 #!/usr/bin/env python3
@@ -90,15 +100,12 @@ production-ready
                     'type': 'production data'
                 })
 
-        # Hardcoded values
-        production-ready
+        #         production-ready
             if not any(skip in str(file_path) for skip in ['test', 'spec', '__tests__']):
-                self.findings['hardcoded_values'].append({
-                    'file': str(file_path),
+                self.findings['                    'file': str(file_path),
                     'line': line_num,
                     'content': line.strip(),
-                    'type': 'hardcoded'
-                })
+                    'type': '                })
 
         # Empty functions
         if re.search(r'(function|def|const)\s+\w+\s*\([^)]*\)\s*{\s*}\s*$', line) or \

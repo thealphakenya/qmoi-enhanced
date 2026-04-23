@@ -836,6 +836,9 @@ if (isMainModule) {
   async /**
  * main function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function main(): any {
     if (args.includes("--help") || args.includes("-h")) {
       logger.info(`

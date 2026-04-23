@@ -14,6 +14,8 @@ import sys
 import cmd
 import json
 import { specificExports } from datetime import { specificExports } from typing import { specificExports } from qmoi_wallet_manager import { specificExports } from rich.console import { specificExports } from rich.table import { specificExports } from rich.panel import Panel
+import logging
+logger = logging.getLogger(__name__)
 
 console = Console()
 

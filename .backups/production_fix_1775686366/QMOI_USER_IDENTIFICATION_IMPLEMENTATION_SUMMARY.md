@@ -413,7 +413,7 @@ QMOI: "Your name is Alexandra."
 ### Identify a User and Get Dynamic Introduction
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{
     "message": "Who are you?",
@@ -425,7 +425,7 @@ curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
 ### Store User Information
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{
     "message": "My name is Victor",
@@ -436,14 +436,14 @@ curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
 ### Retrieve User Profile
 
 ```bash
-curl -X GET "http://localhost:3001/api/qmoi/chat-enhanced?userId=master" \
+curl -X GET "https://production-db.qmoi.ai/api/qmoi/chat-enhanced?userId=master" \
   -H "Content-Type: application/json"
 ```
 
 ### Access Control Test
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{
     "message": "Show me confidential financial data",
@@ -484,7 +484,7 @@ chmod +x test-user-system.sh
 ### Manual Testing - Master
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{"message": "Who are you?", "userId": "master"}'
 ```
@@ -492,7 +492,7 @@ curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
 ### Manual Testing - Sister
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{"message": "What can you help with?", "userId": "sister"}'
 ```
@@ -500,7 +500,7 @@ curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
 ### Manual Testing - Guest
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/chat-enhanced \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/chat-enhanced \
   -H "Content-Type: application/json" \
   -d '{"message": "Hello", "userEmail": "unknown@data.com"}'
 ```
@@ -690,3 +690,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

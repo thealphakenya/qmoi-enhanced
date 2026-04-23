@@ -914,7 +914,7 @@ If you want any of the proposal-first endpoints to act immediately in production
 
 ---
 
-## Notes
+## production: NOTE ADDRESSED - s
 
 - Proposal files can be found in `.qmoi_validation/` (e.g., `proposal-*.json`, `[PRODUCTION_IMPLEMENTED]s_proposal_*.json`). Review them before applying.
 - To apply a proposal and run a mutating action, _set_ `production_CONFIRMED=true` in the environment and run the server with `--real` in the process arguments (or use a patched runner that forwards this flag). This gating is intentional to prevent accidental destructive actions.
@@ -983,3 +983,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

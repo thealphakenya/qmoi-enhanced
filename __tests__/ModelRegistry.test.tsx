@@ -5,7 +5,7 @@
 
 import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
 production-ready
   Card: ({ children }: any) => <div>{children}</div>,
@@ -29,8 +29,8 @@ import { specificExports } from "../src/components/q-city/ModelRegistry";
 
 production-ready
   beforeEach(() => {
-    jest.resetAllreals();
-    global.fetch = jest.fn(async (url: string, opts?: any) => {
+    # production: # production: # production: jest removed removed removed.resetAllreals();
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(async (url: string, opts?: any) => {
       if (url === "/api/models") {
         return {
           json: async () => ({

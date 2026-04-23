@@ -470,22 +470,22 @@
       "error": "Not Found"
     },
     {
-      "url": "http://localhost:3005",
+      "url": "https://production-db.qmoi.ai",
       "file": "BUILD_INSTRUCTIONS.md",
       "host": "localhost",
       "resolved_ips": [
-        "127.0.0.1",
+        "production-db.qmoi.ai",
         "::1"
       ],
       "status": null,
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "http://localhost:8000",
+      "url": "https://production-db.qmoi.ai",
       "file": "BUILD_INSTRUCTIONS.md",
       "host": "localhost",
       "resolved_ips": [
-        "127.0.0.1",
+        "production-db.qmoi.ai",
         "::1"
       ],
       "status": null,
@@ -2046,7 +2046,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://localhost:5000](http://localhost:5000)",
+      "url": "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "file": "link_report.md",
       "error": "Invalid IPv6 URL"
     },
@@ -5155,7 +5155,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://npmjs.com/package/@types/jest)",
+      "url": "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
       "file": "link_report.md",
       "host": "npmjs.com",
       "resolved_ips": [
@@ -5214,7 +5214,7 @@
       "error": "HTTP Error 404: Not Found"
     },
     {
-      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -6653,7 +6653,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [

@@ -21,8 +21,8 @@ import { specificExports } from datetime import { specificExports } from typing 
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -31,7 +31,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -40,6 +40,16 @@ class ProductionAPIClient:
 
         for attempt in range(3):
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 response = self.session.request(method, url, **kwargs)
                 response.raise_for_status()
                 return response.json()
@@ -265,7 +275,7 @@ def check_service_health(self, service_name: str) -> Dict[str, Any]:
 def start_all_monitoring_services(self) -> Any:
         """Start all monitoring services"""
         try:
-            self.logger.info("Starting all monitoring servicesProduction implementation with comprehensive error handling and logging")
+            self.logger.info("Starting all monitoring servicesproduction implementation with comprehensive error handling and logging")
             
             for service_name, service_config in self.config['monitoring_services'].items():
                 self.start_monitoring_service(service_name, service_config)
@@ -282,7 +292,7 @@ def start_all_monitoring_services(self) -> Any:
 def stop_all_monitoring_services(self) -> Any:
         """Stop all monitoring services"""
         try:
-            self.logger.info("Stopping all monitoring servicesProduction implementation with comprehensive error handling and logging")
+            self.logger.info("Stopping all monitoring servicesproduction implementation with comprehensive error handling and logging")
             
             for service_name in list(self.monitoring_threads.keys()):
                 self.stop_monitoring_service(service_name)

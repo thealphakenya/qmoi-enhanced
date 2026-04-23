@@ -7,6 +7,8 @@
 # IMPLEMENTED: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import requests
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 # WhatsApp numbers (auto-saved, used for all notifications)
 MASTER_WHATSAPP = "+254725382624"

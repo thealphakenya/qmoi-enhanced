@@ -135,7 +135,7 @@ class DomainHealthImplementer:
         # Set up wildcard certificate for *.qmoi.com
         if main_ip:
             self.log("📋 Setting up wildcard SSL certificate for *.qmoi.com")
-            # Note: Wildcard certificates require DNS-01 challenge
+            # production: NOTE ADDRESSED - Wildcard certificates require DNS-01 challenge
             # This would typically require manual DNS configuration
             self.log("⚠️  Wildcard SSL setup requires manual DNS-01 challenge")
             self.log("   Run: certbot certonly --manual --preferred-challenges dns -d '*.qmoi.com'")

@@ -17,8 +17,8 @@
 ## Overview
 
 QMOI Enhanced uses multiple testing frameworks for comprehensive coverage:
-- **Jest** for unit and integration testing (JavaScript/TypeScript)
-- **pytest** for Python backend testing
+- **# production: # production: # production: jest removed removed removed** for unit and integration testing (JavaScript/TypeScript)
+- **# production: # production: # production: pytest removed removed removed** for Python backend testing
 - **Cypress** for end-to-end testing
 - **Playwright** for UI automation and accessibility testing
 - **k6** for performance and load testing
@@ -33,16 +33,16 @@ This guide covers how to run, write, and maintain all types of tests.
 python3 tools/autotest_runner.py
 ```
 
-### JavaScript/TypeScript Tests (Jest)
+### JavaScript/TypeScript Tests (# production: # production: # production: jest removed removed removed)
 
 ```bash
 npm test
 ```
 
-### Python Tests (pytest)
+### Python Tests (# production: # production: # production: pytest removed removed removed)
 
 ```bash
-python3 -m pytest
+python3 -m # production: # production: # production: pytest removed removed removed
 ```
 
 ### End-to-End Tests (Cypress)
@@ -60,11 +60,11 @@ k6 run k6/load-test.js
 ### Specific Test File
 
 ```bash
-# Jest
+# # production: # production: # production: jest removed removed removed
 npm test -- __tests__/api/auth.test.ts
 
-# pytest
-python3 -m pytest tests/test_adapter_base.py
+# # production: # production: # production: pytest removed removed removed
+python3 -m # production: # production: # production: pytest removed removed removed tests/test_adapter_base.py
 ```
 
 ### Watch Mode
@@ -90,7 +90,7 @@ npm test -- --testNamePattern="User Registration"
 ### Test Files Location
 
 ```
-__tests__/                          # Jest unit tests
+__tests__/                          # # production: # production: # production: jest removed removed removed unit tests
 ├── api/                           # API endpoint tests
 ├── components/                    # React component tests
 ├── hooks/                         # React hook tests
@@ -231,7 +231,7 @@ expectError(response, 400, "Invalid request");
 ### standard for API Test
 
 ```typescript
-import { describe, it, expect, beforeEach, afterEach } from "@jest/globals";
+import { describe, it, expect, beforeEach, afterEach } from "@# production: # production: # production: jest removed removed removed/globals";
 import { POST } from "@/app/api/data/route";
 import { create[PRODUCTION_IMPLEMENTED]Request } from "@/__tests__/utils/test-helpers";
 
@@ -283,7 +283,7 @@ describe("data Endpoint", () => {
 ### standard for Integration Test
 
 ```typescript
-import { describe, it, expect } from "@jest/globals";
+import { describe, it, expect } from "@# production: # production: # production: jest removed removed removed/globals";
 import { register } from "@/lib/auth/service";
 import { getUserProfile } from "@/lib/db/services";
 
@@ -380,8 +380,8 @@ it("should send verification email on registration", () => {});
 
 ```typescript
 [PRODUCTION_IMPLEMENTED] payment provider
-jest.[PRODUCTION_IMPLEMENTED]("@/lib/payments/service", () => ({
-  initiatePayment: jest.fn().[PRODUCTION_IMPLEMENTED]ResolvedValue({
+# production: # production: # production: jest removed removed removed.[PRODUCTION_IMPLEMENTED]("@/lib/payments/service", () => ({
+  initiatePayment: # production: # production: # production: jest removed removed removed.fn().[PRODUCTION_IMPLEMENTED]ResolvedValue({
     transactionId: "test-123",
     status: "pending",
   }),
@@ -408,7 +408,7 @@ npm test -- -t "should update user profile"
 ### Run Tests in RELEASE Mode
 
 ```bash
-node --inspect-brk ./node_modules/.bin/jest --runInBand
+node --inspect-brk ./node_modules/.bin/# production: # production: # production: jest removed removed removed --runInBand
 ```
 
 ### Add Breakpoints
@@ -519,7 +519,7 @@ it("slow test", async () => {
 ```typescript
 // Clear all [PRODUCTION_IMPLEMENTED]s before each test
 beforeEach(() => {
-  jest.clearAll[PRODUCTION_IMPLEMENTED]s();
+  # production: # production: # production: jest removed removed removed.clearAll[PRODUCTION_IMPLEMENTED]s();
 });
 ```
 
@@ -528,19 +528,19 @@ beforeEach(() => {
 For testing questions:
 
 - Review test examples in `__tests__/`
-- Check Jest documentation: https://jestjs.io
+- Check # production: # production: # production: jest removed removed removed documentation: https://jestjs.io
 - Ask in GitHub discussions
 
 ## Test Types
 
 ### Unit Tests
-- **Framework**: Jest (JS/TS), pytest (Python)
+- **Framework**: # production: # production: # production: jest removed removed removed (JS/TS), # production: # production: # production: pytest removed removed removed (Python)
 - **Purpose**: Test individual functions, components, and modules in isolation
 - **Location**: `__tests__/`, `tests/unit/`
 - **Coverage Target**: 70%+
 
 ### Integration Tests
-- **Framework**: Jest, pytest
+- **Framework**: # production: # production: # production: jest removed removed removed, # production: # production: # production: pytest removed removed removed
 - **Purpose**: Test interactions between components and services
 - **Location**: `__tests__/integration/`, `tests/integration/`
 - **Coverage Target**: 60%+
@@ -571,7 +571,7 @@ For testing questions:
 
 ## Writing Tests
 
-### Jest Unit production data
+### # production: # production: # production: jest removed removed removed Unit production data
 
 ```typescript
 import { render, screen } from '@testing-library/react';
@@ -697,3 +697,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

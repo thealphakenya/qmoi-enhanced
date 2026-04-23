@@ -7,6 +7,8 @@ Completely removes all production implementations and placeholders
 import os
 import re
 import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from collections import defaultdict
+import logging
+logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).parent.parent
 

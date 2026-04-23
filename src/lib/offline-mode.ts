@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 /**
  * Offline Mode Manager
  * Handles offline-first operation, local caching, and synchronization

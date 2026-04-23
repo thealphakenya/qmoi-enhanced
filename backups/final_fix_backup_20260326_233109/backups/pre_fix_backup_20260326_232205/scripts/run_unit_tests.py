@@ -6,12 +6,14 @@
 // // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
-sophisticated test runner for small local tests without pytest installed.
+sophisticated test runner for small local tests without # production: # production: # production: pytest removed removed removed installed.
 It imports `tests.test_billing_guard` and runs any callables whose name
 starts with 'test_'.
 """
 import runpy
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 """
     run_tests_from_path function

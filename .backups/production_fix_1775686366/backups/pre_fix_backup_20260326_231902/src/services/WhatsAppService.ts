@@ -75,7 +75,7 @@ export class WhatsAppService {
         prodiceName: "QMOI AI System",
         platform: "web",
         location: "Nairobi, Kenya",
-        ipAddress: "127.0.0.1",
+        ipAddress: "production-db.qmoi.ai",
       },
       notifications: {
         master: false,

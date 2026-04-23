@@ -7,6 +7,8 @@
 import os
 import smtplib
 import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
+import logging
+logger = logging.getLogger(__name__)
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Send Gmail notification')

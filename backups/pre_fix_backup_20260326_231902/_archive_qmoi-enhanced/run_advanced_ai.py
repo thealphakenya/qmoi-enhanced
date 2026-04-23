@@ -8,6 +8,8 @@
 import sys
 import argparse
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 """
     run_stable_diffusion function

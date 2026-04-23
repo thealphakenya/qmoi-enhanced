@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +57,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -140,7 +154,7 @@ def log(self, message) -> Any:
     """
 def run_command(self, command, description, skip_on_error=False) -> Any:
         """Run command with error handling"""
-        self.log(f"🔄 {description}Production implementation with comprehensive error handling and logging")
+        self.log(f"🔄 {description}production implementation with comprehensive error handling and logging")
         try:
             result = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=60)
             if result.returncode == 0:
@@ -162,7 +176,7 @@ def run_command(self, command, description, skip_on_error=False) -> Any:
     """
 def resolve_package_conflicts(self) -> Any:
         """Resolve package.json conflicts"""
-        self.log("🔧 Resolving package.json conflictsProduction implementation with comprehensive error handling and logging")
+        self.log("🔧 Resolving package.json conflictsproduction implementation with comprehensive error handling and logging")
         
         # Backup current package.json
         shutil.copy('package.json', 'package.json.backup')
@@ -180,7 +194,7 @@ def resolve_package_conflicts(self) -> Any:
     """
 def fix_deployment_issues(self) -> Any:
         """Fix deployment-related issues"""
-        self.log("🚀 Fixing deployment issuesProduction implementation with comprehensive error handling and logging")
+        self.log("🚀 Fixing deployment issuesproduction implementation with comprehensive error handling and logging")
         
         # Update package.json type field
         self.run_command('npm pkg set type="module"', "Set package type to module")
@@ -198,7 +212,7 @@ def fix_deployment_issues(self) -> Any:
     """
 def fix_import_issues(self) -> Any:
         """Fix import issues in enhanced services"""
-        self.log("📦 Fixing import issuesProduction implementation with comprehensive error handling and logging")
+        self.log("📦 Fixing import issuesproduction implementation with comprehensive error handling and logging")
         
         # Create a compatibility layer for enhanced services
         compatibility_code = '''
@@ -223,7 +237,7 @@ export class EnhancedServicesCompatibility {
     """
 def update_workflows(self) -> Any:
         """Update GitHub workflows to work with enhanced features"""
-        self.log("⚙️ Updating GitHub workflowsProduction implementation with comprehensive error handling and logging")
+        self.log("⚙️ Updating GitHub workflowsproduction implementation with comprehensive error handling and logging")
         
         # Update CI/CD workflows to handle enhanced features
         workflow_updates = {
@@ -255,7 +269,7 @@ def update_workflows(self) -> Any:
     """
 def create_deployment_fix(self) -> Any:
         """Create deployment fix for Vercel/Netlify"""
-        self.log("🌐 Creating deployment fixesProduction implementation with comprehensive error handling and logging")
+        self.log("🌐 Creating deployment fixesproduction implementation with comprehensive error handling and logging")
         
         # Create vercel.json for proper deployment
         vercel_config = {

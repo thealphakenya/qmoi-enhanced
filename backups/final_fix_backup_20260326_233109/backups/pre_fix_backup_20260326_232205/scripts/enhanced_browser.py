@@ -9,6 +9,8 @@ import os
 import { specificExports } from typing import Dict, Any, List
 import { specificExports } from bs4 import BeautifulSoup
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 class EnhancedBrowser:
     """

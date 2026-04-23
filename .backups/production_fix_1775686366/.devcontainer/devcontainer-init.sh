@@ -66,7 +66,7 @@ if [ ! -f .env.local ]; then
 NODE_ENV=production
 RELEASE=qmoi:*
 DATABASE_URL=postgresql://qmoi:qmoi@localhost:5432/qmoi_enhanced
-REDIS_URL=redis://localhost:6379
+REDIS_URL=redishttps://production-db.qmoi.ai
 PORT=3000
 JWT_SECRET=prod-secret-change-in-production
 ENVEND

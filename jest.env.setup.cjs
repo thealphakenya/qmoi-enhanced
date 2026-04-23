@@ -146,7 +146,10 @@ try {
         this.method = (init && init.method) || "GET";
         this.headers = new (
           global.Headers ||
-          function (h) {
+          // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function (h) {
             this._map = h || {};
           }
         )(init && init.headers ? init.headers : {});

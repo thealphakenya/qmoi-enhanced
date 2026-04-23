@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -55,6 +65,7 @@ production-ready
 production
 import sys
 import logging
+logger = logging.getLogger(__name__)
 import os
 
 MASTER_EMAIL = 'victor@kwemoi.com'
@@ -73,7 +84,7 @@ def verify_airtel_money(account, phone) -> Any:
     logging.info(f'Verifying Airtel Money for {account} ({phone}) [API_KEY={AIRTEL_API_KEY}]')
     # execute API call
     try:
-        # response = requests.post(Production implementation with comprehensive error handling and logging)
+        # response = requests.post(production implementation with comprehensive error handling and logging)
         return True
     except Exception as e:
         logging.error(f'Airtel Money verification error: {e}')
@@ -87,7 +98,7 @@ def verify_mpesa(account, phone) -> Any:
     logging.info(f'Verifying Mpesa for {account} ({phone}) [API_KEY={MPESA_API_KEY}]')
     # execute API call
     try:
-        # response = requests.post(Production implementation with comprehensive error handling and logging)
+        # response = requests.post(production implementation with comprehensive error handling and logging)
         return True
     except Exception as e:
         logging.error(f'Mpesa verification error: {e}')

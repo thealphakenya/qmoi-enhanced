@@ -1,3 +1,7 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:19:53.592264 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:19:14.479167 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:25.719666 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.823031 -->
 torch>=2.0.0
 transformers>=4.30.0
 numpy>=1.24.0
@@ -19,9 +23,9 @@ python-jose>=3.3.0
 passlib>=1.7.4
 python-multipart>=0.0.6
 email-validator>=2.0.0
-pytest>=7.4.0
-pytest-asyncio>=0.21.0
-pytest-cov>=4.1.0
+# production: # production: # production: pytest removed removed removed>=7.4.0
+# production: # production: # production: pytest removed removed removed-asyncio>=0.21.0
+# production: # production: # production: pytest removed removed removed-cov>=4.1.0
 black>=23.7.0
 isort>=5.12.0
 flake8>=6.1.0

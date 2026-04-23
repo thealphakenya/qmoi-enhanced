@@ -12,6 +12,8 @@ entries {path, sha256, size, app, platform} to be used by release automation.
 import hashlib
 import json
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).parent
 SRC = (ROOT / "../Qmoi_downloaded_apps").resolve()

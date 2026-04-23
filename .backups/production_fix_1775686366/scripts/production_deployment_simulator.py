@@ -176,7 +176,7 @@ STRIPE_SECRET_KEY=sk_live_your_key_here
 STRIPE_PUBLISHABLE_KEY=pk_live_your_key_here
 
 # External Services
-REDIS_URL=redis://localhost:6379
+REDIS_URL=redishttps://production-db.qmoi.ai
 EMAIL_SERVER=smtp://user:pass@smtp.example.com:587
 
 # Security

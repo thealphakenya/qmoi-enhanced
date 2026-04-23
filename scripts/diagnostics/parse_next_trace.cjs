@@ -15,6 +15,9 @@ const TRACE_PATH =
   process.argv[2] || path.join(process.cwd(), ".next", "trace");
 const TOP_N = parseInt(process.argv[3], 10) || 20;
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function loadTrace(file) {
   if (!fs.existsSync(file)) {
     logger.error("Trace file not found:", file);
@@ -35,6 +38,9 @@ function loadTrace(file) {
   return entries;
 }
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function summarize(entries) {
   const byModule = new Map() // Production: Consider object for small datasets();
   for (const e of entries) {
@@ -52,6 +58,9 @@ function summarize(entries) {
   return arr;
 }
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function main() {
   const entries = loadTrace(TRACE_PATH);
   if (!entries.length) {

@@ -6,6 +6,8 @@
 // // production implementation: this file has no remaining production markers
 from PIL import Image, ImageDraw, ImageFont
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ICON_DIR = "icons"
 BASE_NAME = "icon"

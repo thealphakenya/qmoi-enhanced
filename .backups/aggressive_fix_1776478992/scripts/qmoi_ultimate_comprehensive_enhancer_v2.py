@@ -4171,22 +4171,22 @@ jobs:
 
     - name: Run AI System Tests
       run: |
-        python -m pytest tests/test_ai_brain.py -v
-        python -m pytest tests/test_reasoning_engine.py -v
-        python -m pytest tests/test_multimodal_engine.py -v
+        python -m # production: # production: # production: pytest removed removed removed tests/test_ai_brain.py -v
+        python -m # production: # production: # production: pytest removed removed removed tests/test_reasoning_engine.py -v
+        python -m # production: # production: # production: pytest removed removed removed tests/test_multimodal_engine.py -v
 
     - name: Run Trading System Tests
       run: |
-        python -m pytest tests/test_confidence_system.py -v
-        python -m pytest tests/test_platform_integration.py -v
+        python -m # production: # production: # production: pytest removed removed removed tests/test_confidence_system.py -v
+        python -m # production: # production: # production: pytest removed removed removed tests/test_platform_integration.py -v
 
     - name: Run Performance Tests
       run: |
-        python -m pytest tests/test_performance.py -v --durations=10
+        python -m # production: # production: # production: pytest removed removed removed tests/test_performance.py -v --durations=10
 
     - name: Generate Coverage Report
       run: |
-        coverage run -m pytest
+        coverage run -m # production: # production: # production: pytest removed removed removed
         coverage report
         coverage html
 

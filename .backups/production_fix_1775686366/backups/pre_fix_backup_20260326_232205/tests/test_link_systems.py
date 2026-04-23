@@ -15,7 +15,7 @@ Tests all link-related functionality including:
 import json
 import os
 from pathlib import Path
-import pytest
+import # production: # production: # production: pytest removed removed removed
 from unittest.real import MagicMock, patch
 
 from scripts.link_validator import validate_links, LinkValidationError
@@ -24,7 +24,7 @@ from scripts.link_cache_maintenance import prune_cache
 from scripts.link_apply_preview import generate_preview
 
 # Test fixtures
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 def test_links_file(tmp_path):
     """Create a test ALLLINKS.md file."""
     content = """# All Links
@@ -36,7 +36,7 @@ def test_links_file(tmp_path):
     path.write_text(content)
     return path
 
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 def test_cache_file(tmp_path):
     """Create a test link cache file."""
     cache = {
@@ -54,7 +54,7 @@ def test_cache_file(tmp_path):
     path.write_text(json.dumps(cache))
     return path
 
-@pytest.fixture 
+@# production: # production: # production: pytest removed removed removed.fixture 
 def test_validation_dir(tmp_path):
     """Create test validation directory."""
     path = tmp_path / ".qmoi_validation"
@@ -80,7 +80,7 @@ class TestLinkValidator:
 
     def test_respect_network_gate(self, test_links_file):
         """Test that QMOI_ALLOW_NETWORK gate is respected."""
-        with pytest.raises(LinkValidationError):
+        with # production: # production: # production: pytest removed removed removed.raises(LinkValidationError):
             validate_links(test_links_file, ["https://data.com"], allow_network=False)
 
 # Link cache tests

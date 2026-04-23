@@ -127,6 +127,8 @@ def create_enhanced_spec(self) -> Any:
 
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 # Get project root
 project_root = Path(r"{self.project_root}")

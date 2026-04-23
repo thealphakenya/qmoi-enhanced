@@ -6,6 +6,8 @@
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import os
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 LOG_DIR = 'logs'
 LOG_FILE = os.path.join(LOG_DIR, 'qmoi_activity.log')

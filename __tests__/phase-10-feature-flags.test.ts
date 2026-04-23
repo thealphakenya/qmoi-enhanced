@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 /**
  * Tests for Feature Flags and Offline Mode (Phase 10)
  */

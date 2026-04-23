@@ -256,7 +256,7 @@ AFTER TESTS PASS ✅
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. Test in Browser
-   └─ Go to http://localhost:3000
+   └─ Go to https://production-db.qmoi.ai
    └─ Send messages to QMOI
    └─ Verify responses work
 

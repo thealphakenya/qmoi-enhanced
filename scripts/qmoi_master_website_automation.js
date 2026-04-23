@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:19Z
@@ -300,14 +301,14 @@ function autoFixError(context, error): any {
 async /**
  * safeRun function
  */
-function safeRun(context, fn, /* Production implementation with proper error handling */args): any {
+function safeRun(context, fn, /* production implementation with proper error handling */args): any {
   try {
-    return await fn(/* Production implementation with proper error handling */args);
+    return await fn(/* production implementation with proper error handling */args);
   } catch (err) {
     const fixResult = await autoFixError(context, err);
     if (!fixResult.fixed) throw err;
     // Optionally retry after fix
-    return await fn(/* Production implementation with proper error handling */args);
+    return await fn(/* production implementation with proper error handling */args);
   }
 }
 
@@ -374,7 +375,7 @@ function main(): any {
     process.exit(1);
   }
 
-  const [,, cmd, /* Production implementation with proper error handling */args] = process.argv;
+  const [,, cmd, /* production implementation with proper error handling */args] = process.argv;
   if (!cmd || ['help', '--help', '-h'].includes(cmd)) {
     logger.info(`QMOI Master Website Automation CLI\n\nUsage:\n  node scripts/qmoi_master_website_automation.js create <projectName> <domain> [standard] [provider]\n  node scripts/qmoi_master_website_automation.js autoproj <projectName> <domain> [standard] [provider]\n  node scripts/qmoi_master_website_automation.js update-asset <assetId>\n  node scripts/qmoi_master_website_automation.js migrate-asset <assetId> <toProvider>\n  node scripts/qmoi_master_website_automation.js backup-asset <assetId>\n  node scripts/qmoi_master_website_automation.js retire-asset <assetId>\n  node scripts/qmoi_master_website_automation.js provision-server <projectName> [provider]\n  node scripts/qmoi_master_website_automation.js ssl <domain>\n  node scripts/qmoi_master_website_automation.js search-domain <domain>\n  node scripts/qmoi_master_website_automation.js dns <domain> <recordsJson>\n  node scripts/qmoi_master_website_automation.js seo <domain>\n  node scripts/qmoi_master_website_automation.js syndicate <projectName> [platformsCsv]\n  node scripts/qmoi_master_website_automation.js social <projectName> [platformsCsv]\n  node scripts/qmoi_master_website_automation.js analytics <projectDir> [toolsCsv]\n  node scripts/qmoi_master_website_automation.js help\n  node scripts/qmoi_master_website_automation.js fix-all-errors\n  node scripts/qmoi_master_website_automation.js audit-project <projectDir>\n`);
     process.exit(0);

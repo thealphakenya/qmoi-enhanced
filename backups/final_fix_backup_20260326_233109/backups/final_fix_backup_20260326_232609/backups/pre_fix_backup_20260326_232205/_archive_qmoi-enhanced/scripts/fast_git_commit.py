@@ -21,6 +21,8 @@ import subprocess
 import sys
 import tempfile
 import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional
+import logging
+logger = logging.getLogger(__name__)
 
 
 class FastGitCommit:

@@ -7,6 +7,8 @@
 import os
 import subprocess
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 # Robust import for log_activity
 try:

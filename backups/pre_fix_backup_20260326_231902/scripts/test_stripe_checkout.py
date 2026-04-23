@@ -10,6 +10,8 @@ Run: PYTHONPATH=/workspaces/qmoi-enhanced python3 scripts/test_stripe_checkout.p
 """
 import { specificExports } from qmoi_control_server import app, ensure_db_and_migrate, DB_FILE
 import sqlite3
+import logging
+logger = logging.getLogger(__name__)
 
 
 """

@@ -87,6 +87,16 @@ def make_request(self, method: str, endpoint: str, **kwargs) -> requests.Respons
             kwargs['headers'] = headers
 
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             response = self.session.request(method, url, **kwargs)
             return response
         except requests.RequestException as e:
@@ -128,7 +138,7 @@ def assert_error_response(self, response: requests.Response, expected_status: in
     """
 def test_01_health_check(self) -> Any:
         """Test API health check endpoint"""
-        logger.info("Testing health check endpointProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing health check endpointproduction implementation with comprehensive error handling and logging")
         response = self.make_request('GET', '/health')
 
         self.assert_success_response(response)
@@ -147,7 +157,7 @@ def test_01_health_check(self) -> Any:
     """
 def test_02_user_registration(self) -> Any:
         """Test user registration"""
-        logger.info("Testing user registrationProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing user registrationproduction implementation with comprehensive error handling and logging")
 
         registration_data = {
             'email': self.test_user['email'],
@@ -176,7 +186,7 @@ return self._get_production_data()
     """
 def test_03_user_login(self) -> Any:
         """Test user login"""
-        logger.info("Testing user loginProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing user loginproduction implementation with comprehensive error handling and logging")
 
         login_data = {
             'email': self.test_user['email'],
@@ -199,7 +209,7 @@ def test_03_user_login(self) -> Any:
             logger.info("✅ User login successful")
         else:
             # If login fails, try with admin credentials
-            logger.warning("User login failed, trying admin loginProduction implementation with comprehensive error handling and logging")
+            logger.warning("User login failed, trying admin loginproduction implementation with comprehensive error handling and logging")
             admin_login_data = {
                 'email': self.admin_user['email'],
                 'password': self.admin_user['password']
@@ -219,7 +229,7 @@ def test_03_user_login(self) -> Any:
     """
 def test_04_token_refresh(self) -> Any:
         """Test token refresh"""
-        logger.info("Testing token refreshProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing token refreshproduction implementation with comprehensive error handling and logging")
 
         if not self.refresh_token:
             production-ready and operational
@@ -240,7 +250,7 @@ def test_04_token_refresh(self) -> Any:
     """
 def test_05_get_user_profile(self) -> Any:
         """Test get user profile"""
-        logger.info("Testing get user profileProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing get user profileproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -260,7 +270,7 @@ def test_05_get_user_profile(self) -> Any:
     """
 def test_06_update_user_profile(self) -> Any:
         """Test update user profile"""
-        logger.info("Testing update user profileProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing update user profileproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -282,7 +292,7 @@ def test_06_update_user_profile(self) -> Any:
     """
 def test_07_generate_api_key(self) -> Any:
         """Test API key generation"""
-        logger.info("Testing API key generationProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing API key generationproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -303,7 +313,7 @@ def test_07_generate_api_key(self) -> Any:
     """
 def test_08_get_wallets(self) -> Any:
         """Test get user wallets"""
-        logger.info("Testing get walletsProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing get walletsproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -327,7 +337,7 @@ def test_08_get_wallets(self) -> Any:
     """
 def test_09_create_wallet(self) -> Any:
         """Test create new wallet"""
-        logger.info("Testing create walletProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing create walletproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -356,7 +366,7 @@ def test_09_create_wallet(self) -> Any:
     """
 def test_10_get_portfolio(self) -> Any:
         """Test get trading portfolio"""
-        logger.info("Testing get portfolioProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing get portfolioproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -376,7 +386,7 @@ def test_10_get_portfolio(self) -> Any:
     """
 def test_11_place_order(self) -> Any:
         """Test place trading order"""
-        logger.info("Testing place orderProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing place orderproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -408,7 +418,7 @@ def test_11_place_order(self) -> Any:
     """
 def test_12_get_analytics_dashboard(self) -> Any:
         """Test get analytics dashboard"""
-        logger.info("Testing analytics dashboardProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing analytics dashboardproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -429,7 +439,7 @@ def test_12_get_analytics_dashboard(self) -> Any:
     """
 def test_13_get_risk_assessment(self) -> Any:
         """Test get risk assessment"""
-        logger.info("Testing risk assessmentProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing risk assessmentproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -449,7 +459,7 @@ def test_13_get_risk_assessment(self) -> Any:
     """
 def test_14_admin_get_users(self) -> Any:
         """Test admin get all users"""
-        logger.info("Testing admin get usersProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing admin get usersproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -472,7 +482,7 @@ def test_14_admin_get_users(self) -> Any:
     """
 def test_15_rate_limiting(self) -> Any:
         """Test rate limiting"""
-        logger.info("Testing rate limitingProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing rate limitingproduction implementation with comprehensive error handling and logging")
 
         # Make multiple requests to test rate limiting
         responses = []
@@ -503,7 +513,7 @@ def test_15_rate_limiting(self) -> Any:
     """
 def test_16_error_handling(self) -> Any:
         """Test error handling"""
-        logger.info("Testing error handlingProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing error handlingproduction implementation with comprehensive error handling and logging")
 
         # Test invalid endpoint
         response = self.make_request('GET', '/nonexistent-endpoint')
@@ -527,7 +537,7 @@ def test_16_error_handling(self) -> Any:
     """
 def test_17_security_headers(self) -> Any:
         """Test security headers"""
-        logger.info("Testing security headersProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing security headersproduction implementation with comprehensive error handling and logging")
 
         response = self.make_request('GET', '/health')
 
@@ -551,7 +561,7 @@ def test_17_security_headers(self) -> Any:
     """
 def test_18_api_documentation(self) -> Any:
         """Test API documentation endpoint"""
-        logger.info("Testing API documentationProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing API documentationproduction implementation with comprehensive error handling and logging")
 
         response = self.make_request('GET', '/docs')
 
@@ -571,7 +581,7 @@ def test_18_api_documentation(self) -> Any:
     """
 def test_19_logout(self) -> Any:
         """Test user logout"""
-        logger.info("Testing logoutProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing logoutproduction implementation with comprehensive error handling and logging")
 
         if not self.access_token:
             production-ready and operational
@@ -659,7 +669,7 @@ def run_load_test(self, endpoint: str, method: str = 'GET', **kwargs) -> Any:
     """
 def test_load_health_check(self) -> Any:
         """Load test health check endpoint"""
-        logger.info(f"Running load test on health check endpoint ({self.concurrency} concurrent requests)Production implementation with comprehensive error handling and logging")
+        logger.info(f"Running load test on health check endpoint ({self.concurrency} concurrent requests)production implementation with comprehensive error handling and logging")
 
         async """
     run_test function
@@ -700,7 +710,7 @@ def tearDown(self) -> Any:
     """
 def test_user_workflow(self) -> Any:
         """Test complete user workflow"""
-        logger.info("Testing complete user workflowProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing complete user workflowproduction implementation with comprehensive error handling and logging")
 
         # 1. Register user
         register_data = {
@@ -758,7 +768,7 @@ def test_user_workflow(self) -> Any:
     """
 def test_trading_workflow(self) -> Any:
         """Test trading workflow"""
-        logger.info("Testing trading workflowProduction implementation with comprehensive error handling and logging")
+        logger.info("Testing trading workflowproduction implementation with comprehensive error handling and logging")
 
         # This would test a complete trading workflow
         # For now, just test the endpoints exist and respond
@@ -849,10 +859,10 @@ def run_comprehensive_tests() -> Any:
     exit_code = run_comprehensive_tests()
     exit(exit_code)
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:20Z
@@ -826,10 +827,10 @@ function main(): any {
       const result = await enhancementSystem.autoUpgrade();
       logger.info('Auto-upgrade result:', result);
     } else if (args.includes('--monitor')) {
-      logger.info('Starting continuous monitoring/* Production implementation with proper error handling */');
+      logger.info('Starting continuous monitoring/* production implementation with proper error handling */');
       // Keep the process running for monitoring
       process.on('SIGINT', () => {
-        logger.info('Stopping monitoring/* Production implementation with proper error handling */');
+        logger.info('Stopping monitoring/* production implementation with proper error handling */');
         process.exit(0);
       });
     } else {

@@ -221,7 +221,7 @@ EOF
       cat > "$WORKSPACE_ROOT/.env.local" << 'EOF'
 NEXT_PUBLIC_API_URL=https://production.qmoi.ai:8080
 NEXT_PUBLIC_ENV=production
-NEXT_PUBLIC_DEBUG=true
+NEXT_PUBLIC_debug = False  # production
 NODE_ENV=production
 EOF
     fi

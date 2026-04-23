@@ -29,6 +29,8 @@ interface MasterOverview {
 export default /**
  * MasterPortal function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterPortal(): any {
   try {() {
   const [token, setToken] = useState<string>(

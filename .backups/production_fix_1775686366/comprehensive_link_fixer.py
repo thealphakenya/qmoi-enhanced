@@ -38,8 +38,8 @@ class ComprehensiveLinkFixer:
         return {
             # Phase 4: Localhost replacements
             "localhost": {
-                "http://localhost:3000": "https://qmoi.ai",
-                "http://localhost:8080": "https://qvillage.com",
+                "https://production-db.qmoi.ai": "https://qmoi.ai",
+                "https://production-db.qmoi.ai": "https://qvillage.com",
                 "localhost:3000": "qmoi.ai",
                 "localhost:8080": "qvillage.com",
             },

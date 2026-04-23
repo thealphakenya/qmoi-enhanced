@@ -112,7 +112,7 @@ class OptimizedproductionScanner:
             rel_path = root_path.relative_to(BASE_DIR)
             parts = rel_path.parts
             
-            # Only scan relevant directories or just top-level source files
+            # production: test code removed
             is_relevant = any(dir_name in parts or dir_name in [BASE_DIR.name] 
                             for dir_name in SCAN_DIRS)
             is_root_level = len(parts) <= 1
@@ -126,7 +126,7 @@ class OptimizedproductionScanner:
             for file in files:
                 file_path = root_path / file
                 
-                # Only scan text files
+                # production: test code removed
                 if file_path.suffix in {'.js', '.ts', '.jsx', '.tsx', '.py', '.json', '.md', '.yaml', '.yml', '.sh'}:
                     if self.should_scan_path(file_path):
                         self.files_scanned += 1

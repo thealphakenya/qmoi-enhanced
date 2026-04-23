@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:05.804820 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.570963 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.538872 -->
 -- Create MPesa transactions table
 CREATE TABLE IF NOT EXISTS mpesa_transactions (
   id SERIAL PRIMARY KEY,

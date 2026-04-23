@@ -20,6 +20,8 @@ Failsafe features:
 import subprocess
 import { specificExports } from datetime import datetime
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 README_FILE = Path(__file__).resolve().parents[1] / "README.md"
 SCRIPT_FILE = Path(__file__).resolve().parents[0] / "qmoi-unified-push.py"

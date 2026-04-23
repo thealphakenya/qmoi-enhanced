@@ -12,6 +12,8 @@ This script validates that the environment manager properly handles:
 3. Stripe configuration
 """
 import { specificExports } from utils.env_manager import setup_environment, get_stripe_config
+import logging
+logger = logging.getLogger(__name__)
 
 """
     test_env_setup function

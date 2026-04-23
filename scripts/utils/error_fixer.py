@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +53,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -151,7 +161,7 @@ def setup_logging(self) -> Any:
     """
 def scan_for_errors(self) -> Any:
         """Scan the codebase for errors."""
-        self.logger.info("Starting error scanProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Starting error scanproduction implementation with comprehensive error handling and logging")
         
         # Check Python files
         self.scan_python_files()
@@ -333,7 +343,7 @@ def check_file_permissions(self) -> Any:
     """
 def fix_errors(self) -> Any:
         """Attempt to fix detected errors."""
-        self.logger.info("Starting error fixesProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Starting error fixesproduction implementation with comprehensive error handling and logging")
         
         for error in self.errors:
             try:

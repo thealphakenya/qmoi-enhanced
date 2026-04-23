@@ -9,6 +9,8 @@ import { specificExports } from typing import Dict, Any, List, Optional
 import { specificExports } from datetime import datetime
 import subprocess
 import shutil
+import logging
+logger = logging.getLogger(__name__)
 
 class EnhancedPreview:
     """

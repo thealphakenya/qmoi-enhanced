@@ -31,7 +31,7 @@ def read_config():
         """Production implementation"""
     return cfg
 
-def is_port_open(port, host='127.0.0.1'):
+def is_port_open(port, host='production-db.qmoi.ai'):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(0.5)
     try:

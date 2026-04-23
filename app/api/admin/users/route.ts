@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
@@ -109,7 +110,7 @@ function GET(_request: NextRequest): any {
     return NextResponse.json(
       {
         users: users.map((u: any) => ({
-          /* Production implementation with proper error handling */u,
+          /* production implementation with proper error handling */u,
           walletCount: u._count?.wallets || 0,
           transactionCount: u._count?.transactions || 0,
         })),
@@ -195,9 +196,9 @@ function PUT(_request: NextRequest): any {
     const updatedUser = await db.user.update({
       where: { id: userId },
       data: {
-        /* Production implementation with proper error handling */(role && { role }),
-        /* Production implementation with proper error handling */(emailVerified !== undefined && { emailVerified }),
-        /* Production implementation with proper error handling */(twoFactorEnabled !== undefined && { twoFactorEnabled }),
+        /* production implementation with proper error handling */(role && { role }),
+        /* production implementation with proper error handling */(emailVerified !== undefined && { emailVerified }),
+        /* production implementation with proper error handling */(twoFactorEnabled !== undefined && { twoFactorEnabled }),
       },
       select: {
         id: true,

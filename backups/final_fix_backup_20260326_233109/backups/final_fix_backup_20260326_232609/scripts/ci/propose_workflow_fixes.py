@@ -30,6 +30,8 @@ Run:
 import json
 import os
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 REPORT = os.path.join(ROOT, '.qmoi_validation', 'workflows_report.json')

@@ -23,6 +23,8 @@ import json
 import shutil
 import os
 import math
+import logging
+logger = logging.getLogger(__name__)
 
 SIZE_UNITS = {
     'B': 1,

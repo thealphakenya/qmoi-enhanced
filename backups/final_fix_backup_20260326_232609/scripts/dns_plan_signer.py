@@ -16,6 +16,8 @@ import hmac
 import hashlib
 import secrets
 import time
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 QM_VALID = ROOT / '.qmoi_validation'

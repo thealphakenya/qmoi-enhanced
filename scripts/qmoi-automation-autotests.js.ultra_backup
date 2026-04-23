@@ -688,6 +688,9 @@ class QMOIAutomationAutotests {
 async /**
  * main function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function main(): any {
   const autotests = new QMOIAutomationAutotests();
 

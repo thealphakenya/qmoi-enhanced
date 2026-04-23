@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:55.713287 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.736287 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.406762 -->
 #!/usr/bin/env python3
 """
 Web Dashboard Runner
@@ -40,6 +43,16 @@ def main():
     logger.info("Web Dashboard starting...")
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         # Start the Flask app
         logger.info("Web Dashboard ready and listening on port 5000")
         app.run(

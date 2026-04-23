@@ -501,7 +501,7 @@ For the latest updates, always refer to [TREE.md](TREE.md) for the current repos
 - [next.config.js](next.config.js) - Next.js configuration
 - [tailwind.config.js](tailwind.config.js) - Tailwind CSS configuration
 - [eslint.config.js](eslint.config.js) - ESLint configuration
-- [jest.config.cjs](jest.config.cjs) - Jest testing configuration
+- [# production: # production: # production: jest removed removed removed.config.cjs](# production: # production: # production: jest removed removed removed.config.cjs) - # production: # production: # production: jest removed removed removed testing configuration
 
 ---
 
@@ -853,3 +853,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

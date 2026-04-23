@@ -184,7 +184,7 @@ const result = await orchestrationEngine.orchestrateAction(
 - `POST ?endpoint=orchestration/sync-memory` - Sync memories
 - ... and 15+ more
 
-**Base URL**: `http://localhost:3000/api/consciousness`
+**Base URL**: `https://production-db.qmoi.ai/api/consciousness`
 
 ---
 
@@ -646,3 +646,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

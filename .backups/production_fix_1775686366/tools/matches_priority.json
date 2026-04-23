@@ -63,7 +63,7 @@
         "matches": [
           {
             "line": 76,
-            "snippet": "// Ensure fetch exists; if not, provide a Jest real (MSW will set up an implementation)",
+            "snippet": "// Ensure fetch exists; if not, provide a # production: # production: # production: jest removed removed removed real (MSW will set up an implementation)",
             "score": 4
           },
           {
@@ -133,7 +133,7 @@
           },
           {
             "line": 753,
-            "snippet": "// Install a default jest `fetch` real if one is not already present. This",
+            "snippet": "// Install a default # production: # production: # production: jest removed removed removed `fetch` real if one is not already present. This",
             "score": 1
           },
           {

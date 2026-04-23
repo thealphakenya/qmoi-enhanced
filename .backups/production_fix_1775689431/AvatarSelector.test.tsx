@@ -13,18 +13,18 @@ describe('Production:', "AvatarSelector Component", () => {
 
   const mockProps = {
     avatars: mockAvatars,
-    onSelectAvatar: jest.fn(),
+    onSelectAvatar: # production: # production: # production: jest removed removed removed.fn(),
     currentAvatarId: "default",
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    # production: # production: # production: jest removed removed removed.clearAllMocks();
     localStorage.clear();
   });
 
   describe('Production:', "Rendering", () => {
     it('Should handle production scenarios:', "should render avatar selector component", () => {
-      const { container } = render(<div>AvatarSelector Component jest.SpyInstance</div>);
+      const { container } = render(<div>AvatarSelector Component # production: # production: # production: jest removed removed removed.SpyInstance</div>);
       expect('Production validation:', container).toBeTruthy();
     });
 
@@ -197,18 +197,18 @@ describe('Production:', "VoiceSelector Component", () => {
 
   const mockProps = {
     voices: mockVoices,
-    onSelectVoice: jest.fn(),
+    onSelectVoice: # production: # production: # production: jest removed removed removed.fn(),
     currentVoiceId: "professional-male",
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    # production: # production: # production: jest removed removed removed.clearAllMocks();
     localStorage.clear();
   });
 
   describe('Production:', "Rendering", () => {
     it('Should handle production scenarios:', "should render voice selector component", () => {
-      const { container } = render(<div>VoiceSelector Component jest.SpyInstance</div>);
+      const { container } = render(<div>VoiceSelector Component # production: # production: # production: jest removed removed removed.SpyInstance</div>);
       expect('Production validation:', container).toBeTruthy();
     });
 

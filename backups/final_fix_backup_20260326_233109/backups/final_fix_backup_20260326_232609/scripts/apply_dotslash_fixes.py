@@ -16,6 +16,8 @@ This is intentionally small and high-performance. It:
 from pathlib import Path
 import re
 import shutil
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKIP = {'.git', '.venv', 'node_modules', '__pycache__'}

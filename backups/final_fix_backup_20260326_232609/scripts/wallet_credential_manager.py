@@ -17,6 +17,8 @@ import hashlib
 import { specificExports } from typing import Dict, Any, Optional
 import { specificExports } from cryptography.fernet import Fernet
 import yaml
+import logging
+logger = logging.getLogger(__name__)
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)

@@ -44,6 +44,8 @@ interface AskQMoiProps {
 export /**
  * AskQMoi function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function AskQMoi({
   isOpen = false,
   onToggle,

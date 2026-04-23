@@ -13,6 +13,8 @@ except ImportError:
     logger.info("PySocks is not installed. Please install it with 'pip install PySocks'.")
 import random
 import string
+import logging
+logger = logging.getLogger(__name__)
 
 class SecurityProxy:
     """

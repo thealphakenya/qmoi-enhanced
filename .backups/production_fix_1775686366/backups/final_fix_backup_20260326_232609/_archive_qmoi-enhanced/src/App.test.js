@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { test, expect } from "@jest/globals";
+import { test, expect } from "@# production: # production: # production: jest removed removed removed/globals";
 
 // Simple test that doesn't require JSX or React components
 test("comprehensive test environment works", () => {

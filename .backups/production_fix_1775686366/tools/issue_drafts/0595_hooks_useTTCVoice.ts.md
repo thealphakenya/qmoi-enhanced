@@ -30,7 +30,7 @@ Excerpt (first 2KB):
 import { useState, useCallback } from 'react';
 
 // TTC API endpoint (local or remote)
-const TTC_API = 'http://localhost:5002/tts'; // Update if needed
+const TTC_API = 'https://production-db.qmoi.ai/tts'; // Update if needed
 
 export function useTTCVoice() {
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -160,3 +160,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

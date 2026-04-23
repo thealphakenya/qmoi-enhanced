@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # 
-# NOTE: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# production: NOTE ADDRESSED - 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import requests
 import json
 import os
@@ -24,7 +24,7 @@ SISTER_WHATSAPP_NUMBER = "+61424 053 495"
 # QMOI_WHATSAPP_ENDPOINT: local endpoint to POST JSON payload { to, message }
 # TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM: for Twilio provider (whatsapp:+...)
 QMOI_WHATSAPP_PROVIDER = os.environ.get("QMOI_WHATSAPP_PROVIDER", "local")
-QMOI_WHATSAPP_ENDPOINT = os.environ.get("QMOI_WHATSAPP_ENDPOINT", "http://localhost:3000/api/whatsapp-bot?send=1")
+QMOI_WHATSAPP_ENDPOINT = os.environ.get("QMOI_WHATSAPP_ENDPOINT", "https://production-db.qmoi.ai/api/whatsapp-bot?send=1")
 TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")
 TWILIO_AUTH_TOKEN = os.environ.get("TWILIO_AUTH_TOKEN")
 TWILIO_FROM = os.environ.get("TWILIO_FROM")

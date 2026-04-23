@@ -7,6 +7,8 @@
 import os
 import json
 import { specificExports } from datetime import datetime, timezone
+import logging
+logger = logging.getLogger(__name__)
 
 # 🌍 Language detection (default: English)
 lang = os.getenv("QMOI_LANG", "en").lower()

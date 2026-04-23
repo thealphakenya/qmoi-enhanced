@@ -94,8 +94,8 @@ pre-commit run --all-files
 - Security tests: SAST, DAST, penetration, dependency
 
 **Platforms to Test**:
-- QI Desktop (Jest, Enzyme, Puppeteer)
-- QCity Mobile (React Native, Jest)
+- QI Desktop (# production: # production: # production: jest removed removed removed, Enzyme, Puppeteer)
+- QCity Mobile (React Native, # production: # production: # production: jest removed removed removed)
 - iOS app (XCTest, Appium)
 - Android app (Espresso, Appium)
 - Web PWA (Cypress, Selenium)
@@ -398,3 +398,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

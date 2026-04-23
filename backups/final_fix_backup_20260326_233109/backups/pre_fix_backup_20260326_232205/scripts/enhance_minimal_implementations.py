@@ -11,6 +11,8 @@ Finds all 'complete' implementations and enhances them to production-ready quali
 
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 root_dir = Path('.')
 

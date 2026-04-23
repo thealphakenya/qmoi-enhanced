@@ -4,6 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import { specificExports } from github import { specificExports } from github import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_NAME = "thealphakenya/latest-Q-ai"
 ZIP_PATH = "QMOI_AI_All_Platforms.zip"

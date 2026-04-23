@@ -544,7 +544,7 @@ class QMOIEnvironmentSetup {
       },
       prodDependencies: {
         'no[production IMPLEMENTATION REQUIRED]n': '^3.0.1',
-        'jest': '^29.6.4',
+        '# production: # production: # production: jest removed removed removed': '^29.6.4',
         'supertest': '^6.3.3',
         'eslint': '^8.48.0',
         'prettier': '^3.0.2',

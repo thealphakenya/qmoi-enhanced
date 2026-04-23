@@ -6,6 +6,8 @@
 // production implementation: this file has no remaining production markers
 import os
 import subprocess
+import logging
+logger = logging.getLogger(__name__)
 
 """
     set_wallpaper function

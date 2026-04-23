@@ -13,7 +13,7 @@ class ProductionConfig:
     JWT_SECRET = os.getenv('JWT_SECRET')
 
     # External services
-    REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379')
+    REDIS_URL = os.getenv('REDIS_URL', 'redishttps://production-db.qmoi.ai')
     AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
     AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
 
@@ -48,8 +48,8 @@ production-ready
       },
       knownQMOIDomains: new Set(['qglobalsim.qmoi.ai']),
       safeLog: {
-        info: jest.fn(),
-        error: jest.fn()
+        info: # production: # production: # production: jest removed removed removed.fn(),
+        error: # production: # production: # production: jest removed removed removed.fn()
       }
     };
   });
@@ -69,7 +69,7 @@ production-ready
       };
 
       production-ready
-      const analyzeMethod = jest.fn().mockResolvedValue(mockMetrics);
+      const analyzeMethod = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(mockMetrics);
 
       mockLionAgent.analyzeQGlobalSIMPerformance = analyzeMethod;
 
@@ -110,7 +110,7 @@ production-ready
         }
       ];
 
-      const generateMethod = jest.fn().mockResolvedValue(proposals);
+      const generateMethod = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(proposals);
       mockLionAgent.generateQGlobalSIMEvolutionProposals = generateMethod;
 
       const result = await mockLionAgent.generateQGlobalSIMEvolutionProposals(metrics);
@@ -132,7 +132,7 @@ production-ready
         implementationComplexity: 'low'
       };
 
-      const applyMethod = jest.fn().mockResolvedValue(true);
+      const applyMethod = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(true);
       mockLionAgent.applyQGlobalSIMEvolution = applyMethod;
 
       const result = await mockLionAgent.applyQGlobalSIMEvolution([proposal]);
@@ -153,7 +153,7 @@ production-ready
         timestamp: new Date().toISOString()
       };
 
-      const validateMethod = jest.fn().mockResolvedValue(validationResult);
+      const validateMethod = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(validationResult);
       mockLionAgent.validateQGlobalSIMEvolution = validateMethod;
 
       const result = await mockLionAgent.validateQGlobalSIMEvolution();
@@ -166,7 +166,7 @@ production-ready
 
   production-ready
     test('should update QMOI consciousness with Q Global SIM awareness', () => {
-      mockLionAgent.updateConsciousnessWithQGlobalSIM = jest.fn();
+      mockLionAgent.updateConsciousnessWithQGlobalSIM = # production: # production: # production: jest removed removed removed.fn();
 
       mockLionAgent.updateConsciousnessWithQGlobalSIM();
 
@@ -209,10 +209,10 @@ production-ready
         timestamp: new Date().toISOString()
       };
 
-      mockLionAgent.analyzeQGlobalSIMPerformance = jest.fn().mockResolvedValue(mockMetrics);
-      mockLionAgent.generateQGlobalSIMEvolutionProposals = jest.fn().mockResolvedValue(mockProposals);
-      mockLionAgent.applyQGlobalSIMEvolution = jest.fn().mockResolvedValue(true);
-      mockLionAgent.validateQGlobalSIMEvolution = jest.fn().mockResolvedValue(mockValidation);
+      mockLionAgent.analyzeQGlobalSIMPerformance = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(mockMetrics);
+      mockLionAgent.generateQGlobalSIMEvolutionProposals = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(mockProposals);
+      mockLionAgent.applyQGlobalSIMEvolution = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(true);
+      mockLionAgent.validateQGlobalSIMEvolution = # production: # production: # production: jest removed removed removed.fn().mockResolvedValue(mockValidation);
 
       // Execute the full evolution cycle
       await mockLionAgent.analyzeQGlobalSIMPerformance();

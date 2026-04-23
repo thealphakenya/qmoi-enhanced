@@ -14,6 +14,8 @@ import os
 import json
 import hashlib
 import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import Dict, List, Tuple
+import logging
+logger = logging.getLogger(__name__)
 
 class AppValidator:
     """Validates QMOI apps for integrity, installation compatibility, and standards"""

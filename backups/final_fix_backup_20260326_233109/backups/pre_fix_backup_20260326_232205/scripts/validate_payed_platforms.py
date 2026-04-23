@@ -32,6 +32,8 @@ report = {
 }
 
 import datetime
+import logging
+logger = logging.getLogger(__name__)
 report['checked_at'] = datetime.datetime.utcnow().isoformat() + 'Z'
 
 for p in ROOT.glob('*PAYED.md'):

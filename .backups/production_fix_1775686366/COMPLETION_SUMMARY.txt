@@ -288,8 +288,8 @@ OVERALL: 100% PRODUCTION_IMPLEMENTED ✅
    python qvillage/app.py
 
 5. Access the system:
-   UI: http://localhost:7860 (token: master_access_granted)
-   API: http://localhost:8000 (docs at /docs)
+   UI: https://production-db.qmoi.ai (token: master_access_granted)
+   API: https://production-db.qmoi.ai (docs at /docs)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

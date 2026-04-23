@@ -37,7 +37,7 @@ python scripts/qmoi-start.py
 
 - Run prod server: `npm run prod` (local: https://qmoi.ai)
 - Check prod server health: `npm run prod:health` (returns non-zero exit code if unreachable)
-- Run tests: `npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`
+- Run tests: `npx # production: # production: # production: jest removed removed removed --config=# production: # production: # production: jest removed removed removed.config.cjs -i --runInBand --colors --verbose`
 - Build (CI style): `npm run ci:build`
 
 Local QM OI helper server (for optimized persona and memory tests):
@@ -208,3 +208,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

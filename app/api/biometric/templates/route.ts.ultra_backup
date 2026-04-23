@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.785491 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.134652 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
@@ -17,6 +19,8 @@ const BIOMETRIC_TEMPLATES_FILE = path.resolve(
 /**
  * ensureFile function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ensureFile(): any {
   const dir = path.dirname(BIOMETRIC_TEMPLATES_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
@@ -27,6 +31,8 @@ function ensureFile(): any {
 export async /**
  * GET function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function GET(): any {
   try {
     ensureFile();
@@ -45,6 +51,8 @@ function GET(): any {
 export async /**
  * POST function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function POST(_request: NextRequest): any {
   try {
     ensureFile();

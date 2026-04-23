@@ -40,6 +40,8 @@ interface TaskFormProps {
 export /**
  * TaskForm function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function TaskForm({ projectId, task, onSuccess }: TaskFormProps): any {
   const { projects, addTask, updateTask } = useProjects();
   const project = projects.find((p) => p.id === projectId);

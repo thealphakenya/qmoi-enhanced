@@ -2512,10 +2512,10 @@
 ./issues/[PRODUCTION_IMPLEMENTED]-PROD-REPORTS.md
 ./issues/[PRODUCTION_IMPLEMENTED]-PROD-UIUX.md
 ./iterative-improvement-test.mjs
-./jest.config.cjs
-./jest.env.setup.cjs
-./jest.env.setup.js
-./jest.setup.js
+./# production: # production: # production: jest removed removed removed.config.cjs
+./# production: # production: # production: jest removed removed removed.env.setup.cjs
+./# production: # production: # production: jest removed removed removed.env.setup.js
+./# production: # production: # production: jest removed removed removed.setup.js
 ./lib/1._universal_language_runtime_(`qmoi_universal_runtime.py`).ts
 ./lib/25+_programming_languages.ts
 ./lib/5._functional_programming_languages.ts

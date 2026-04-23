@@ -171,7 +171,7 @@ export async function POST(req: Request) {
     }
 
     // Try external QMOI service
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
+    const qbase = process.env.QMOI_API_BASE || "http://production-db.qmoi.ai:8080";
     const target = `${qbase}/memory/sync`;
 
     const headers: Record<string, string> = {
@@ -262,7 +262,7 @@ export async function POST(req: Request) {
 export async function GET() {
   try {
     // Try external service first
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
+    const qbase = process.env.QMOI_API_BASE || "http://production-db.qmoi.ai:8080";
     const target = `${qbase}/memory`;
     const headers: Record<string, string> = {
       "Content-Type": "application/json",

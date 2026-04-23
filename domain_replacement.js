@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 const fs = require('fs');
 const path = require('path');
 
@@ -31,7 +32,7 @@ function findFiles(dir, pattern) {
     const stat = fs.statSync(fullPath);
 
     if (stat.isDirectory() && !item.startsWith('.') && item !== 'node_modules') {
-      files.push(/* Production implementation with proper error handling */findFiles(fullPath, pattern));
+      files.push(/* production implementation with proper error handling */findFiles(fullPath, pattern));
     } else if (stat.isFile() && pattern.test(item)) {
       files.push(fullPath);
     }
@@ -44,7 +45,7 @@ const oldDomain = 'qvs.qmoi.ai';
 const newDomain = 'qvs.qmoi.ai';
 const pattern = /\.(md|ts|js|json|txt|yml|yaml)$/;
 
-logger.info(`🔄 Replacing ${oldDomain} with ${newDomain} throughout the system/* Production implementation with proper error handling */`);
+logger.info(`🔄 Replacing ${oldDomain} with ${newDomain} throughout the system/* production implementation with proper error handling */`);
 
 const files = findFiles('.', pattern);
 let replacements = 0;

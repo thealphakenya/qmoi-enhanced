@@ -8,6 +8,8 @@ import os
 import sys
 import requests
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 LOG_FILE = 'logs/qmoi_simple_autotest.log'
 

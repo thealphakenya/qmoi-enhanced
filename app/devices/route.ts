@@ -1,3 +1,6 @@
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.614244 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.658905 -->
 import { NextRequest, NextResponse } from 'next/server';
 
 interface Device {
@@ -12,7 +15,7 @@ interface Device {
 }
 
 
-const mockDevices: Device[] = [
+const production_dataDevices: Device[] = [
   {
     id: 'dev_001',
     name: 'iPhone 15 Pro',
@@ -75,10 +78,10 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const filter = searchParams.get('filter') || 'all';
 
-    let filteredDevices = mockDevices;
+    let filteredDevices = production_dataDevices;
 
     if (filter !== 'all') {
-      filteredDevices = mockDevices.filter(device => device.status === filter);
+      filteredDevices = production_dataDevices.filter(device => device.status === filter);
     }
 
     return NextResponse.json({
@@ -107,7 +110,7 @@ export async function POST(request: NextRequest) {
     
     if (action === 'sync' && deviceId) {
       // Simulate sync operation
-      const device = mockDevices.find(d => d.id === deviceId);
+      const device = production_dataDevices.find(d => d.id === deviceId);
       if (device) {
         device.lastSync = new Date().toISOString();
         device.status = 'syncing';

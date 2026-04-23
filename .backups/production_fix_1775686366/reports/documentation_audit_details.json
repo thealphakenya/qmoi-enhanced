@@ -72,14 +72,14 @@
     "valid_links": 2,
     "broken_links": 8,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qcity",
       "qcity-complete.html",
-      "http://localhost:8080/qcity-dashboard.html",
-      "http://localhost:8080/qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-complete.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "qmoi-enhanced",
-      "http://localhost:8080"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -145,9 +145,9 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/admin/audit-logs",
-      "http://localhost:3000/api/admin/monitoring"
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/admin/audit-logs",
+      "https://production-db.qmoi.ai/api/admin/monitoring"
     ],
     "suggestions": {}
   },
@@ -168,10 +168,10 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3005",
+      "https://production-db.qmoi.ai",
       "qcity",
-      "http://localhost:3000",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -216,7 +216,7 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html"
+      "https://production-db.qmoi.ai/qcity-enterprise.html"
     ],
     "suggestions": {}
   },
@@ -309,12 +309,12 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000/admin/master/activity",
-      "http://localhost:3000/api/qmoi/auto-setup",
+      "https://production-db.qmoi.ai/admin/master/activity",
+      "https://production-db.qmoi.ai/api/qmoi/auto-setup",
       "qmoi",
-      "http://localhost:3000/admin/master/login",
+      "https://production-db.qmoi.ai/admin/master/login",
       "qmoi-enhanced",
-      "http://localhost:3000/admin/master"
+      "https://production-db.qmoi.ai/admin/master"
     ],
     "suggestions": {}
   },
@@ -340,7 +340,7 @@
       "https://api.qmoi.app/api/admin/audit-logs",
       "https://api.qmoi.app/api",
       "https://your-service.com/alerts",
-      "http://localhost:3000/api",
+      "https://production-db.qmoi.ai/api",
       "https://api.qmoi.app/api/admin/monitoring",
       "https://production.qmoi.app/api"
     ],
@@ -382,10 +382,10 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000",
-      "http://localhost:3000/api/qmoi/auto-setup",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/qmoi/auto-setup",
       "qmoi",
-      "http://localhost:3000/admin/master/login",
+      "https://production-db.qmoi.ai/admin/master/login",
       "qmoi-enhanced",
       "https://yourdomain.com"
     ],
@@ -397,8 +397,8 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/autofix/scan"
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/autofix/scan"
     ],
     "suggestions": {}
   },
@@ -421,9 +421,9 @@
     "broken_links": 4,
     "broken_link_list": [
       "qmoi-enhanced",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi",
-      "http://localhost:3000/admin/master/login"
+      "https://production-db.qmoi.ai/admin/master/login"
     ],
     "suggestions": {}
   },
@@ -478,7 +478,7 @@
       "qmoi_db",
       "https://your-sentry-dsn",
       "https://your-domain.com",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "https://hooks.slack.com/services/YOUR/WEBHOOK",
       "qmoi-health-monitor",
       "qmoi-app",
@@ -549,9 +549,9 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/users/productionte",
-      "http://localhost:3000/api/admin/users/promote",
-      "http://localhost:3000/api/user/rate-limit-status"
+      "https://production-db.qmoi.ai/api/admin/users/productionte",
+      "https://production-db.qmoi.ai/api/admin/users/promote",
+      "https://production-db.qmoi.ai/api/user/rate-limit-status"
     ],
     "suggestions": {}
   },
@@ -626,8 +626,8 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "http://localhost:3000",
-      "http://localhost:3000/admin/master/login"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/admin/master/login"
     ],
     "suggestions": {}
   },
@@ -643,7 +643,7 @@
       "https://nginx.org/en/docs/)",
       "qmoi-backup",
       "https://letsencrypt.org/)",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "qmoi-support",
       "qmoi-app",
       "https://letsencrypt.org/",
@@ -676,7 +676,7 @@
     "valid_links": 2,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/master/links",
+      "https://production-db.qmoi.ai/api/admin/master/links",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -707,8 +707,8 @@
       "qmoi_ai.apk",
       "qmoi_validation",
       "qmoi_validation_frontmatter",
-      "http://localhost:3000",
-      "http://localhost:3000(.*)",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai(.*)",
       "yap",
       "https://qmoi.ai$1",
       "qmoi-enhanced"
@@ -785,9 +785,9 @@
     "broken_links": 5,
     "broken_link_list": [
       "qcity-complete.html",
-      "http://localhost:8080/",
-      "http://localhost:8080/qcity-enterprise.html",
-      "http://localhost:3000/",
+      "https://production-db.qmoi.ai/",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -823,20 +823,20 @@
     "broken_link_list": [
       "qcity",
       "q-stable",
-      "http://localhost:8000',",
+      "https://production-db.qmoi.ai',",
       "https://qvillage.com')",
       "qmoi-space",
       "qmoi_ai.exe",
-      "http://localhost:3000/api/links/validate",
+      "https://production-db.qmoi.ai/api/links/validate",
       "qmoi",
       "qmoi_ai.apk",
       "qmoi_validation",
       "qmoi_validation_frontmatter",
-      "http://localhost:3000",
-      "http://localhost:3000',",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai',",
       "yap",
       "qmoi-enhanced",
-      "http://localhost:3000/api/domains/health?action=critical"
+      "https://production-db.qmoi.ai/api/domains/health?action=critical"
     ],
     "suggestions": {}
   },
@@ -848,7 +848,7 @@
     "broken_link_list": [
       "https://api.yourdomain.com",
       "qmoi",
-      "http://localhost:3000/"
+      "https://production-db.qmoi.ai/"
     ],
     "suggestions": {}
   },
@@ -908,10 +908,10 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/financial/summary",
-      "http://localhost:3000/api/admin/master/auth",
-      "http://localhost:3000/api/admin/autofix/background-automation",
-      "http://localhost:3000/admin/master/login"
+      "https://production-db.qmoi.ai/api/admin/financial/summary",
+      "https://production-db.qmoi.ai/api/admin/master/auth",
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation",
+      "https://production-db.qmoi.ai/admin/master/login"
     ],
     "suggestions": {}
   },
@@ -932,13 +932,13 @@
     "broken_links": 9,
     "broken_link_list": [
       "https://qmoi.app",
-      "http://localhost:3000/api/health?type=detailed",
-      "http://localhost:3000/api/admin/rate-limits",
-      "http://localhost:3000/api/admin/alerts",
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/admin/monitoring",
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/audit-logs",
+      "https://production-db.qmoi.ai/api/health?type=detailed",
+      "https://production-db.qmoi.ai/api/admin/rate-limits",
+      "https://production-db.qmoi.ai/api/admin/alerts",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/admin/monitoring",
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/audit-logs",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -966,7 +966,7 @@
       "stableqmoi",
       "qmoi",
       "qmoi-prod-actions.py",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "qmoi_validation_frontmatter",
       "qmoi_master_notifications",
       "qmoi_stats"
@@ -1034,10 +1034,10 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi",
       "qmoi-comprehensive-test",
-      "http://localhost:3000/api/qmoi/chat",
+      "https://production-db.qmoi.ai/api/qmoi/chat",
       "qmoi-enhanced",
       "qmoi-comprehensive-test.ts"
     ],
@@ -1082,10 +1082,10 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/autofix/background-automation",
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation",
       "qmoi-enhanced",
-      "http://localhost:3000/api/admin/autofix/config"
+      "https://production-db.qmoi.ai/api/admin/autofix/config"
     ],
     "suggestions": {}
   },
@@ -1096,7 +1096,7 @@
     "broken_links": 6,
     "broken_link_list": [
       "qcity",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://your-domain.com/api/health",
       "qmoi",
       "qmoiprod.md.ts",
@@ -1210,8 +1210,8 @@
       "qmoi_prod",
       "https://api-production.q-city.ai",
       "qmoi",
-      "http://localhost:3001",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
       "https://production.q-city.ai",
       "qmoi_prod",
       "qmoi-enhanced"
@@ -1239,7 +1239,7 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi",
       "qmoi-comprehensive-test",
       "qmoi-enhanced",
@@ -1275,7 +1275,7 @@
     "broken_link_list": [
       "qmoi-user-system",
       "qmoi",
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "suggestions": {}
   },
@@ -1285,15 +1285,15 @@
     "valid_links": 0,
     "broken_links": 9,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qcity-complete.html",
-      "http://localhost:5000",
-      "http://localhost:8080/qcity-dashboard.html",
-      "http://localhost:8080/qcity-complete.html",
-      "http://localhost:8080/",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-complete.html",
+      "https://production-db.qmoi.ai/",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "qmoi-enhanced",
-      "http://localhost:8080"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -1324,17 +1324,17 @@
     "broken_links": 27,
     "broken_link_list": [
       "https://owasp.org/www-project-top-ten/)",
-      "http://localhost:3000/api/wallets",
+      "https://production-db.qmoi.ai/api/wallets",
       "https://www.typescriptlang.org/docs/)",
       "https://img.shields.io/badge/code%20quality-A-brightgreen",
       "https://img.shields.io/badge/node-20%2B-brightgreen",
-      "http://localhost:3000/api/users/profile",
+      "https://production-db.qmoi.ai/api/users/profile",
       "https://img.shields.io/badge/typescript-5.2-blue)",
       "https://docs.qmoi.app",
       "qmoi-app",
       "https://img.shields.io/badge/license-MIT-green)",
       "https://owasp.org/www-project-top-ten/",
-      "http://localhost:3000/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
       "https://img.shields.io/badge/typescript-5.2-blue",
       "https://www.typescriptlang.org/)",
       "https://nodejs.org/en/docs/guides/",
@@ -1342,7 +1342,7 @@
       "https://www.prisma.io/docs/)",
       "https://www.prisma.io/docs/",
       "https://www.typescriptlang.org/docs/",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://nodejs.org/)",
       "https://img.shields.io/badge/license-MIT-green",
       "https://img.shields.io/badge/code%20quality-A-brightgreen)",
@@ -1369,12 +1369,12 @@
     "valid_links": 7,
     "broken_links": 11,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi-master",
       "https://huggingface.co/stableqmoi/qmoi).",
       "https://huggingface.co/stableqmoi/qmoi",
       "stableqmoi",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "qmoi",
       "qmoi-autoprod.yml",
       "qmoi-database",
@@ -1469,7 +1469,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi",
-      "qmoi-jest"
+      "qmoi-# production: # production: # production: jest removed removed removed"
     ],
     "suggestions": {}
   },
@@ -1531,10 +1531,10 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://production-api.qmoi.app",
-      "http://localhost:8000",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "https://api.qmoi.app",
       "qmoi-enhanced"
     ],
@@ -1549,7 +1549,7 @@
       "qmoi_validation_frontmatter",
       "qmoi-content-monetization.js",
       "qmoi-revenue-dashboard",
-      "http://localhost:3000/qmoi-revenue-dashboard"
+      "https://production-db.qmoi.ai/qmoi-revenue-dashboard"
     ],
     "suggestions": {}
   },
@@ -1559,7 +1559,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi"
     ],
     "suggestions": {}
@@ -1604,7 +1604,7 @@
     "broken_link_list": [
       "https://your-sentry-dsn",
       "https://your-domain.com",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "https://hooks.slack.com/services/YOUR/WEBHOOK",
       "qmoi_state",
       "qmoi-dashboard",
@@ -1689,7 +1689,7 @@
     "broken_link_list": [
       "https://api.pesapal.com",
       "qmoi-enhanced",
-      "http://localhost:3000/admin/master/login"
+      "https://production-db.qmoi.ai/admin/master/login"
     ],
     "suggestions": {}
   },
@@ -1709,7 +1709,7 @@
       "qvillage",
       "qvillage.ai",
       "qmoi-enhanced",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -1719,14 +1719,14 @@
     "valid_links": 0,
     "broken_links": 8,
     "broken_link_list": [
-      "http://localhost:3001/api/auth/login",
-      "http://localhost:3001/api/qmoi/master/financial-dashboard",
-      "http://localhost:3001/api/qmoi/master/users",
+      "https://production-db.qmoi.ai/api/auth/login",
+      "https://production-db.qmoi.ai/api/qmoi/master/financial-dashboard",
+      "https://production-db.qmoi.ai/api/qmoi/master/users",
       "qmoi",
-      "http://localhost:3001/api/qmoi/master/system-config",
-      "http://localhost:3001/api/qmoi/master/trading",
-      "http://localhost:3001/api/qmoi/master/config",
-      "http://localhost:3001/api/qmoi/master/logs"
+      "https://production-db.qmoi.ai/api/qmoi/master/system-config",
+      "https://production-db.qmoi.ai/api/qmoi/master/trading",
+      "https://production-db.qmoi.ai/api/qmoi/master/config",
+      "https://production-db.qmoi.ai/api/qmoi/master/logs"
     ],
     "suggestions": {}
   },
@@ -1771,7 +1771,7 @@
     "broken_link_list": [
       "qmoi_validation_frontmatter",
       "qmoi",
-      "http://localhost:4000/"
+      "https://production-db.qmoi.ai/"
     ],
     "suggestions": {}
   },
@@ -1815,14 +1815,14 @@
     "broken_links": 9,
     "broken_link_list": [
       "qmoi-memory",
-      "http://localhost:8080/sync/pull",
+      "https://production-db.qmoi.ai/sync/pull",
       "https://api.openai.com/v1/chat/completions",
       "qmoi",
-      "http://localhost:8080/sync/push",
-      "http://localhost:8080/v1/chat/completions",
+      "https://production-db.qmoi.ai/sync/push",
+      "https://production-db.qmoi.ai/v1/chat/completions",
       "qmoi_query",
       "qmoi-local-20251113083800",
-      "http://localhost:8080"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -1851,7 +1851,7 @@
       "https://www.typescriptlang.org/)",
       "https://img.shields.io/badge/Next.js-15.5.8-black",
       "https://img.shields.io/badge/Prisma-6.19.1-2D3748)",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://img.shields.io/badge/TypeScript-5.2.0-blue)",
       "https://img.shields.io/badge/Prisma-6.19.1-2D3748",
       "qmoi-enhanced"
@@ -1917,11 +1917,11 @@
     "valid_links": 0,
     "broken_links": 7,
     "broken_link_list": [
-      "http://127.0.0.1:8080/memory",
+      "http://production-db.qmoi.ai:8080/memory",
       "qmoi",
-      "http://localhost:3000)",
-      "http://127.0.0.1:8080/sync/push",
-      "http://127.0.0.1:8080/v1/chat/completions",
+      "https://production-db.qmoi.ai)",
+      "http://production-db.qmoi.ai:8080/sync/push",
+      "http://production-db.qmoi.ai:8080/v1/chat/completions",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced"
     ],
@@ -1934,8 +1934,8 @@
     "broken_links": 3,
     "broken_link_list": [
       "qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html",
-      "http://localhost:8080)"
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
+      "https://production-db.qmoi.ai)"
     ],
     "suggestions": {}
   },
@@ -1956,11 +1956,11 @@
       "qmoi",
       "qmoi-macos-",
       "qmoi_ai.spec",
-      "http://localhost:8000,",
+      "https://production-db.qmoi.ai,",
       "qmoi-ai",
       "qmoi_ai-TIMESTAMP-production.zip",
       "qmoi-ai-TIMESTAMP-production.zip",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "qstore",
       "qmoi-ai.zip",
       "qmoi-enhanced"
@@ -1983,7 +1983,7 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qcity_",
       "qmoiprod.md.ts",
       "qmoi-enhanced",
@@ -2129,7 +2129,7 @@
       "http://git.io/stackframe)",
       "https://img.shields.io/npm/v/@react-native/prod-middleware?color=brightgreen&label=npm%20package",
       "https://travis-ci.org/sindresorhus/mimic-fn.svg?branch=master)",
-      "http://localhost:3000/qcity",
+      "https://production-db.qmoi.ai/qcity",
       "https://img.shields.io/badge/code_style-standard-brightgreen.svg",
       "https://travis-ci.org/Rob--W/proxy-from-env.svg?branch=master)",
       "https://babeljs.io/docs/babel-helper-plugin-utils)",
@@ -2473,7 +2473,7 @@
       "https://docs.python.org/3.9/library/argparse.html",
       "https://www.npmjs.com/package/ws)",
       "https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc)",
-      "https://npmjs.com/package/@types/jest",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed",
       "https://eemeli.org/yaml/#finding-and-modifying-nodes",
       "https://nodejs.org/api/child_process.html#child_process_subprocess_stdout)",
       "https://img.shields.io/npm/l/universalify.svg)",
@@ -2866,7 +2866,7 @@
       "https://nodejs.org/api/stream.html#stream_class_stream_writable)",
       "https://tidelift.com/subscription/pkg/npm-promise?utm_source=npm-promise&utm_medium=referral&utm_campaign=enterprise&utm_term=repo",
       "https://travis-ci.com/sindresorhus/split-on-first.svg?branch=master)",
-      "http://localhost:3000/qcity)",
+      "https://production-db.qmoi.ai/qcity)",
       "https://opencollective.com/RELEASE#backer",
       "https://img.shields.io/travis/jprichardson/node-fs-extra/master.svg",
       "https://opencollective.com/RELEASE#sponsor",
@@ -2968,7 +2968,7 @@
       "http://prodtoolscommunity.herokuapp.com",
       "http://tools.ietf.org/html/rfc3986",
       "https://rollupjs.org/javascript-api/)",
-      "https://npmjs.com/package/@types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
       "https://img.shields.io/coveralls/Qix-/node-error-ex.svg?style=flat-square)",
       "https://saucelabs.com/browser-matrix/run-parallel.svg",
       "https://img.shields.io/coveralls/stacktracejs/stackframe.svg?style=flat-square",
@@ -3426,7 +3426,7 @@
       "https://render.com/)",
       "https://img.shields.io/travis/websockets/ws/master.svg?logo=travis)",
       "https://svelte.prod/docs/kit/web-standards#Fetch-APIs",
-      "http://localhost:5000)",
+      "https://production-db.qmoi.ai)",
       "https://magnum-ci.com",
       "https://tidelift.com/subscription/pkg/npm-istanbuljs-load-nyc-config?utm_source=npm-istanbuljs-load-nyc-config&utm_medium=referral&utm_campaign=enterprise",
       "http://sindresorhus.com",
@@ -3992,7 +3992,7 @@
       "https://babeljs.io/docs/en/babel-plugin-syntax-class-properties)",
       "https://nodejs.org/api/https.html#https_https_request_options_callback",
       "https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70",
-      "http://localhost:3000)",
+      "https://production-db.qmoi.ai)",
       "https://prodeloper.mozilla.org/en-US/docs/Web/API/AbortSignal",
       "https://nodejs.org/api/globals.html#globals_queuemicrotask_callback)",
       "http://keepachangelog.com/",
@@ -4366,7 +4366,7 @@
       "https://cloud.githubusercontent.com/assets/5233399/19420267/388f556e-93ad-11e6-813e-7c5c396be322.png",
       "https://nodejs.org/api/cli.html#cli_options",
       "https://nodejs.org/api/modules.html#modules_caching",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://www.npmjs.com/package/verb",
       "https://user-images.githubusercontent.com/39191/30349667-92a7a086-97c8-11e7-86b2-1365e3d407e3.png",
       "https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)",
@@ -4417,7 +4417,7 @@
       "https://source.chromium.org/chromium/chromium/src/+/master:headless/app/headless_shell.cc;drc=df45d1abbc20abc7670643adda6d9625eea55b4d",
       "http://docs.taskcluster.net",
       "https://travis-ci.org/istanbuljs/istanbul-lib-coverage.svg?branch=master)",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://ci.testling.com/juliangruber/balanced-match.png)",
       "https://nodejs.org/api/https.html)",
       "https://mathiasbynens.be/notes/etago#comment-8)",
@@ -4662,11 +4662,11 @@
       "qmoi-ai-v1.2.3-windows.exe",
       "qmoi-ai-v1.2.3-smarttv.apk",
       "qmoi_ai.img",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "qmoi-enhanced",
       "https://vercel.com/dashboard/projects/qmoi-enhanced",
       "https://qcloud.ai/models",
-      "http://localhost:8080/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
       "https://qdatabase.net/api/health",
       "https://qserver.io/resources",
       "https://vercel.com/thestablekenya/qmoi-enhanced",
@@ -4680,7 +4680,7 @@
       "https://qdatabase.net/api",
       "qmoi-ai-v1.2.3-ios.ipa",
       "qvillage",
-      "http://localhost:8080/qcity-complete.html",
+      "https://production-db.qmoi.ai/qcity-complete.html",
       "qmoi-ai-v1.2.3-linux.deb",
       "https://qvillage.qmoi.app",
       "https://qcloud.ai/api/health",
@@ -4723,7 +4723,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_authenticated",
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -4738,14 +4738,14 @@
       "https://data.com",
       "qmoi-database",
       "qmoi-tracks",
-      "http://localhost:8080/sync/status",
+      "https://production-db.qmoi.ai/sync/status",
       "qmoi-gitlab",
       "qmoi-production-app",
       "https://data.com/webhook",
       "qmoi-transformer-v1",
       "qmoi",
       "qvillage",
-      "http://localhost:8080/sync/push",
+      "https://production-db.qmoi.ai/sync/push",
       "qmoi_validation_frontmatter",
       "qmoi-model",
       "qmoi-earning-enhanced",
@@ -4853,12 +4853,12 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/autofix/fix-all",
-      "http://localhost:3000/api/admin/autofix/status",
+      "https://production-db.qmoi.ai/api/admin/autofix/fix-all",
+      "https://production-db.qmoi.ai/api/admin/autofix/status",
       "qmoi_health_integration",
       "qmoi-enhanced",
       "https://monitoring.data.com/api/metrics",
-      "http://localhost:3000/api/admin/autofix/scan"
+      "https://production-db.qmoi.ai/api/admin/autofix/scan"
     ],
     "suggestions": {}
   },
@@ -4902,7 +4902,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi-",
-      "http://localhost:3000/admin"
+      "https://production-db.qmoi.ai/admin"
     ],
     "suggestions": {}
   },
@@ -4923,7 +4923,7 @@
     "broken_links": 12,
     "broken_link_list": [
       "https://your-domain.com",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "https://your-domain.com/admin",
       "https://your-domain.com/api/docs",
       "qmoi_prod",
@@ -4979,14 +4979,14 @@
     "broken_link_list": [
       "qcity-backend",
       "http://localhost:$",
-      "http://localhost:8000/api/verify",
-      "http://localhost:8000/api/mail",
-      "http://localhost:8000/api/files",
-      "http://localhost:8000",
-      "http://localhost:8000/api/youtube/download",
-      "http://localhost:8000/api/emergency",
-      "http://localhost:8000/api/media?limit=10",
-      "http://localhost:8000/api/health"
+      "https://production-db.qmoi.ai/api/verify",
+      "https://production-db.qmoi.ai/api/mail",
+      "https://production-db.qmoi.ai/api/files",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/youtube/download",
+      "https://production-db.qmoi.ai/api/emergency",
+      "https://production-db.qmoi.ai/api/media?limit=10",
+      "https://production-db.qmoi.ai/api/health"
     ],
     "suggestions": {}
   },
@@ -5020,7 +5020,7 @@
     "valid_links": 5,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3000/api/...",
+      "https://production-db.qmoi.ai/api/...",
       "https://",
       "qvillage",
       "qstore",
@@ -5078,7 +5078,7 @@
       "qmoi-earning-enhanced",
       "qmoi-backups-prod",
       "qmoi-audio",
-      "http://localhost:3000/api/qmoi/user"
+      "https://production-db.qmoi.ai/api/qmoi/user"
     ],
     "suggestions": {}
   },
@@ -5148,7 +5148,7 @@
     "broken_links": 4,
     "broken_link_list": [
       "qmoi-enhanced",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://vercel.com",
       "https://your-domain.vercel.app"
     ],
@@ -5189,16 +5189,16 @@
       "q-stable",
       "qmoi-space",
       "qmoi_ai.exe",
-      "http://localhost:3000/api/links/validate",
+      "https://production-db.qmoi.ai/api/links/validate",
       "qmoi",
       "qvillage",
       "qmoi_ai.apk",
       "qmoi_validation",
       "qmoi_validation_frontmatter",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "yap",
       "qmoi-enhanced",
-      "http://localhost:3000/api/domains/health?action=critical"
+      "https://production-db.qmoi.ai/api/domains/health?action=critical"
     ],
     "suggestions": {}
   },
@@ -5222,7 +5222,7 @@
       "qvillage-standalone",
       "qvillage-sync",
       "qvillage",
-      "http://localhost:8080/health"
+      "https://production-db.qmoi.ai/health"
     ],
     "suggestions": {}
   },
@@ -5239,7 +5239,7 @@
       "qmoi-ai-system",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "qmoi_validation_frontmatter",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -5249,11 +5249,11 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/autofix/fix-all",
-      "http://localhost:3000/api/admin/autofix/status",
+      "https://production-db.qmoi.ai/api/admin/autofix/fix-all",
+      "https://production-db.qmoi.ai/api/admin/autofix/status",
       "qmoi_health_integration",
       "qmoi-enhanced",
-      "http://localhost:3000/api/admin/autofix/scan"
+      "https://production-db.qmoi.ai/api/admin/autofix/scan"
     ],
     "suggestions": {}
   },
@@ -5359,8 +5359,8 @@
     "broken_links": 6,
     "broken_link_list": [
       "https://qmoi.app",
-      "http://localhost:3000",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/health",
       "qmoi-sophisticated-start",
       "qmoi_state",
       "qmoi-enhanced"
@@ -5386,7 +5386,7 @@
     "broken_link_list": [
       "https://owasp.org/www-project-api-security/",
       "https://www.nist.gov/cyberframework/",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://owasp.org/www-project-top-ten/",
       "https://expressjs.com/en/advanced/best-practice-security.html"
     ],
@@ -5399,8 +5399,8 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi_validation_frontmatter",
-      "http://localhost:7861",
-      "http://localhost:7860/status"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/status"
     ],
     "suggestions": {}
   },
@@ -5423,7 +5423,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi",
-      "http://localhost:3000/api/auth/login"
+      "https://production-db.qmoi.ai/api/auth/login"
     ],
     "suggestions": {}
   },
@@ -5451,7 +5451,7 @@
       "qmoi-enhanced-",
       "https://qmoi-enhanced.vercel.app/api/auth/signup",
       "qmoi-enhanced",
-      "http://localhost:3000/api/auth/signup",
+      "https://production-db.qmoi.ai/api/auth/signup",
       "qmoi-enhanced-xwi3"
     ],
     "suggestions": {}
@@ -5538,7 +5538,7 @@
       "qvillage",
       "qvillage.ai",
       "qmoi-enhanced",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -5667,7 +5667,7 @@
       "https://qmoi.app:3001",
       "qmoi-alerts",
       "qmoi-deployments",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "qmoi-support",
       "qmoi-app",
       "qmoi-general",
@@ -5675,11 +5675,11 @@
       "https://www.postgresql.org/docs/",
       "https://nextjs.org/docs)",
       "https://www.prisma.io/docs/)",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://www.prisma.io/docs/",
       "https://pm2.keymetrics.io/docs",
       "https://qmoi.app",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://qmoi.app/api/health",
       "qmoi-enhanced",
       "https://nextjs.org/docs",
@@ -5694,7 +5694,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi-enhanced",
-      "http://localhost:3000/admin/master/login"
+      "https://production-db.qmoi.ai/admin/master/login"
     ],
     "suggestions": {}
   },
@@ -5719,7 +5719,7 @@
       "stableqmoi",
       "qvillage",
       "qvillage.ai",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -5748,7 +5748,7 @@
       "qmoi_ai.apk",
       "qmoi_validation",
       "qmoi_validation_frontmatter",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "yap",
       "qmoi-enhanced"
     ],
@@ -5919,7 +5919,7 @@
       "https://badgen.net/coveralls/c/github/visionmedia/bytes.js/master",
       "https://codereview.chromium.org/1978563002",
       "https://www.heroku.com",
-      "http://localhost:4200/api/alert-prefs",
+      "https://production-db.qmoi.ai/api/alert-prefs",
       "https://api.tvmaze.com",
       "https://tidelift.com/subscription/pkg/npm-istanbuljs-schema?utm_source=n",
       "https://qmoi.app",
@@ -5932,7 +5932,7 @@
       "https://badges.greenkeeper.io/nexdrew/which-module.svg",
       "https://img.shields.io/npm/dm/image-size.svg",
       "https://babeljs.io/docs/en/next/babel-plugin-syntax-optional-chaining.html",
-      "http://localhost:3000/qmoi-revenue-dashboard",
+      "https://production-db.qmoi.ai/qmoi-revenue-dashboard",
       "https://nodei.co/npm/color-name.png?mini=true",
       "https://bestpractices.coreinfrastructure.org/projects/9058/badge",
       "https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types",
@@ -5958,7 +5958,7 @@
       "https://www.bithound.io/github/alexindigo/asynckit/badges/score.svg",
       "https://www.npmjs.com/package/contains-path",
       "https://travis-ci.org/mysticatea/abort-controller",
-      "http://localhost:3000/qcity",
+      "https://production-db.qmoi.ai/qcity",
       "https://paul.vorba.ch/",
       "https://img.shields.io/badge/code_style-standard-brightgreen.svg",
       "https://tidelift.com/subscription/pkg/npm-base64-js?utm_source=npm-base64-js&utm_medium=referral&utm_campaign=readme",
@@ -5968,7 +5968,7 @@
       "https://www.npmjs.com/package/repeat-element",
       "https://travis-ci.org/sindresorhus/cli-cursor.svg?branch=master",
       "https://travis-ci.org/kevva/shebang-command",
-      "http://localhost:8080",
+      "https://production-db.qmoi.ai",
       "https://img.shields.io/travis/jshttp/fresh/master.svg",
       "https://coveralls.io/r/jshttp/negotiator?branch=master",
       "https://circleci.com/gh/sinonjs/commons.svg?style=svg",
@@ -5979,7 +5979,7 @@
       "https://www.npmjs.com/package/is-absolute",
       "https://nodejs.org/api/worker_threads.html",
       "https://reactnavigation.org/docs/native-stack-navigator.html",
-      "http://localhost:4200/api/notification-prefs",
+      "https://production-db.qmoi.ai/api/notification-prefs",
       "https://david-dm.org/alexreardon/memoize-one.svg",
       "https://www.unicode.org/Public/MAPPINGS/",
       "https://vercel.app",
@@ -6015,7 +6015,7 @@
       "https://gitlab.com/api/v4",
       "https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches",
       "https://img.shields.io/codecov/c/github/ehmicky/human-signals.svg?label=tested&logo=codecov",
-      "http://localhost:3000/api/database/health",
+      "https://production-db.qmoi.ai/api/database/health",
       "https://expo.prod/eas",
       "https://ponyfoo.com/articles/polyfills-or-ponyfills",
       "https://badgen.net/github/checks/pillarjs/send/master?label=linux",
@@ -6103,7 +6103,7 @@
       "https://travis-ci.org/kevva/shebang-command.svg?branch=master",
       "https://hapi.prod/family/topo/changelog/",
       "https://nodejs.org/api/querystring.html",
-      "http://localhost:3000/api/financial/verify",
+      "https://production-db.qmoi.ai/api/financial/verify",
       "https://badgen.net/travis/dougwilson/nodejs-depd/master?label=linux",
       "https://badgen.net/github/checks/jshttp/on-headers/master?label=ci",
       "https://coveralls.io/r/jshttp/compressible?branch=master",
@@ -6121,7 +6121,7 @@
       "https://travis-ci.org/micromatch/anymatch.svg?branch=master",
       "https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit",
       "https://ws.binaryws.com/websockets/v3",
-      "http://localhost:5050/api/build-apps",
+      "https://production-db.qmoi.ai/api/build-apps",
       "https://mathiasbynens.be/notes/javascript-escapes#hexadecimal",
       "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/",
       "https://aws.amazon.com/codebuild/",
@@ -6154,7 +6154,7 @@
       "https://img.shields.io/npm/v/ci-info.svg",
       "https://www.npmjs.com/package/kind-of",
       "https://prodeloper.mozilla.org/en-US/docs/Web/API/User_Timing_API",
-      "http://localhost:4200/api/delete-notification",
+      "https://production-db.qmoi.ai/api/delete-notification",
       "https://www.cve.org/CVERecord?id=CVE-2025-7339",
       "https://babeljs.io/docs/en/babel-plugin-syntax-class-properties",
       "https://vite.prod/guide/features.html",
@@ -6209,7 +6209,7 @@
       "qmoigateway.data.com",
       "https://nodejs.org/docs/latest/api/documentation.html#documentation_stability_index",
       "https://json5.github.io/json5-spec/",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://nodejs.org/docs/latest-v24.x/api/cli.html#--production-test-module",
       "https://www.npmjs.org/package/multiparty#readme",
       "https://coveralls.io/github/nexdrew/which-module?branch=master",
@@ -6222,7 +6222,7 @@
       "https://docs.python.org/3.9/library/argparse.html",
       "https://eemeli.org/yaml/#finding-and-modifying-nodes",
       "qmoisystem.com",
-      "http://localhost:4100/api/predictions",
+      "https://production-db.qmoi.ai/api/predictions",
       "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=",
       "https://www.npmjs.com/package/extglob",
       "https://bugs.webkit.org/show_bug.cgi?id=176685",
@@ -6243,13 +6243,13 @@
       "https://tools.ietf.org/html/rfc6838#section-5",
       "https://stable-q-ai.com",
       "https://api.ipify.org",
-      "http://127.0.0.1:8000",
+      "http://production-db.qmoi.ai:8000",
       "https://stackoverflow.com/questions/tagged/python",
       "http://www.apple.com/DTDs/PropertyList-1.0.dtd",
       "https://facebook.github.io/watchman/",
       "https://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words",
       "https://www.caniuse.com/#feat=urlsearchparams",
-      "http://localhost:3010/api/update-history",
+      "https://production-db.qmoi.ai/api/update-history",
       "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling",
       "https://v8.prod/docs/stack-trace-api",
       "https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo",
@@ -6261,7 +6261,7 @@
       "https://www.npmjs.com/package/repeat-string",
       "https://exiftool.org/TagNames/EXIF.html#:~:text=0x0112",
       "https://peter.sh/experiments/chromium-command-line-switches/",
-      "http://localhost:3000/qmoi-",
+      "https://production-db.qmoi.ai/qmoi-",
       "https://gruntjs.com/",
       "https://codespaces.",
       "https://img.shields.io/npm/v/is-number.svg?style=flat",
@@ -6330,7 +6330,7 @@
       "https://babeljs.io/docs/en/next/babel-plugin-syntax-async-generators.html",
       "https://nodejs.org/api/child_process.html#child_process_subprocess_kill_signal",
       "https://huggingface.co/join",
-      "http://localhost:3000/api/qmoi/avatars",
+      "https://production-db.qmoi.ai/api/qmoi/avatars",
       "https://coveralls.io/github/form-data/form-data?branch=master",
       "http://msdn.microsoft.com/en-us/library/ms646997.aspx",
       "https://coveralls.io/github/thecodrr/fdir?branch=master",
@@ -6356,7 +6356,7 @@
       "https://nodei.co/npm/string_decoder.png?downloads=true&downloadRank=true",
       "https://codecov.io/gh/Kilian/electron-to-chromium",
       "http://w",
-      "http://localhost:3000/api/ai-self-diagnostics?fix=1",
+      "https://production-db.qmoi.ai/api/ai-self-diagnostics?fix=1",
       "https://img.shields.io/npm/v/sisteransi.svg",
       "https://img.shields.io/badge/%E2%80%8B-medium-4cc61e.svg?logo=medium",
       "https://www.npmjs.com/package/koa",
@@ -6382,7 +6382,7 @@
       "https://www.npmjs.com/package/combined-stream2",
       "https://www.patreon.com/juliangruber",
       "http://hudson-ci.org",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://codemix.com/opaque-types-in-javascript/",
       "https://eemeli.org/yaml/#identifying-node-types",
       "https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chrome_content_browser_client.cc",
@@ -6407,9 +6407,9 @@
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options",
       "https://www.appveyor.com",
       "https://web-platform-dx.github.io/baseline-browser-mapping/all_versions_object.json",
-      "http://localhost:4000/api/error-fix-log?range=",
+      "https://production-db.qmoi.ai/api/error-fix-log?range=",
       "https://docs.npmjs.com/cli/v9/commands/npm-run-script",
-      "http://localhost:3000/api/qcity/selfheal-npm",
+      "https://production-db.qmoi.ai/api/qcity/selfheal-npm",
       "https://reactnavigation.org/docs/custom-routers/",
       "https://about.gitlab.com/gitlab-ci/",
       "https://data.com/",
@@ -6423,7 +6423,7 @@
       "https://vite.prod/config/server-options.html#server-middlewaremode",
       "https://nodejs.org/api/process.html#process_process_platform",
       "https://badgen.net/coveralls/c/github/pillarjs/send/master",
-      "http://localhost:4000/",
+      "https://production-db.qmoi.ai/",
       "https://babeljs.io/docs/babel-runtime",
       "https://www.npmjs.org/package/connect-busboy#readme",
       "https://travis-ci.org/yargs/require-main-filename.png",
@@ -6482,13 +6482,13 @@
       "https://babeljs.io/docs/en/config-files#supported-file-extensions",
       "https://img.shields.io/coveralls/stacktracejs/error-stack-parser.svg?style=flat-square",
       "https://img.shields.io/coveralls/pillarjs/router/master.svg",
-      "http://127.0.0.1:%d",
+      "http://production-db.qmoi.ai:%d",
       "https://www.npmjs.com/package/keygrip",
       "https://www.bitget.com/api-doc/common/rsa-authentication.html",
-      "http://localhost:3000/api/whatsapp-bot?send=1",
+      "https://production-db.qmoi.ai/api/whatsapp-bot?send=1",
       "https://eemeli.org/yaml/#parsing-yaml",
-      "http://localhost:8000/payments/webhook",
-      "http://localhost:3010/api/stats",
+      "https://production-db.qmoi.ai/payments/webhook",
+      "https://production-db.qmoi.ai/api/stats",
       "https://travis-ci.org/mysticatea/abort-controller.svg?branch=master",
       "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse",
       "https://coveralls.io/github/istanbuljs/babel-plugin-istanbul?branch=master",
@@ -6497,7 +6497,7 @@
       "https://q-city.ai",
       "https://coveralls.io/github/SamVerschueren/decode-uri-component?branch=master",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg",
-      "http://localhost:8000/token",
+      "https://production-db.qmoi.ai/token",
       "https://prodeloper.mozilla.org/en-US/docs/Web/API/Performance_Timeline",
       "https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square",
       "https://ci.appveyor.com/api/projects/status/ol2q94g1932cy14a/branch/master?svg=true",
@@ -6523,7 +6523,7 @@
       "https://babeljs.io/docs/babel-plugin-transform-react-jsx-self",
       "https://img.shields.io/npm/dm/iconv-lite.svg",
       "https://coveralls.io/r/pillarjs/send?branch=master",
-      "http://localhost:7860/status",
+      "https://production-db.qmoi.ai/status",
       "https://tidelift.com/subscription/pkg/npm-qs?utm_source=npm-qs&utm_medium=referral&utm_campaign=enterprise&utm_term=repo",
       "https://api.qmoi.app",
       "https://npmjs.org/package/accepts#readme",
@@ -6543,7 +6543,7 @@
       "https://www.amazon.com",
       "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then",
       "https://tidelift.com/subscription/pkg/npm-babel-plugin-istanbul?utm_source=npm-babel-plugin-istanbul&utm_medium=referral&utm_campaign=enterprise&utm_term=repo",
-      "http://localhost:4000/api/error-fix-log",
+      "https://production-db.qmoi.ai/api/error-fix-log",
       "https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github",
       "https://discord.com/api/webhooks/your/webhook/url",
@@ -6555,7 +6555,7 @@
       "https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping",
       "https://img.shields.io/badge/gzipped-1.8k-green.svg?style=flat-square",
       "https://img.shields.io/codecov/c/github/danez/pirates/master.svg?style=flat",
-      "http://localhost:4200/api/register-pushover",
+      "https://production-db.qmoi.ai/api/register-pushover",
       "https://babeljs.io/docs/babel-compat-data",
       "https://jestjs.io/docs/",
       "https://tidelift.com/subscription/pkg/npm-test-exclude?utm_source=npm-te",
@@ -6569,7 +6569,7 @@
       "https://babeljs.io/",
       "https://avatars3.githubusercontent.com/u/783335?s=100&v=4",
       "https://moltar.github.io/typescript-runtime-type-benchmarks/",
-      "http://localhost:4000/api/realtime-events",
+      "https://production-db.qmoi.ai/api/realtime-events",
       "qmoi-revenue-",
       "https://nodejs.org/api/util.html#util_util_promisify_original",
       "https://travis-ci.org/chalk/supports-color",
@@ -6584,7 +6584,7 @@
       "https://codecov.io/gh/davidtheclark/cosmiconfig",
       "https://david-dm.org/mysticatea/abort-controller.svg",
       "https://releases.qmoi.app/",
-      "http://localhost:3001/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "https://openapiuat.airtel.africa/auth/oauth2/token",
       "https://bugs.chromium.org/p/chromedriver/issues/detail?id=1015",
       "https://gitter.im/ehmicky/human-signals",
@@ -6605,9 +6605,9 @@
       "https://sindresorhus.com",
       "https://img.shields.io/npm/types/chalk.svg",
       "qcity_prodice_manager.py",
-      "http://localhost:8000/automation/status",
+      "https://production-db.qmoi.ai/automation/status",
       "http://npm.im/glob",
-      "http://localhost:3000/api/trading/status",
+      "https://production-db.qmoi.ai/api/trading/status",
       "https://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end",
       "https://api.cashon.data",
       "https://nodesecurity.io/report",
@@ -6635,18 +6635,18 @@
       "https://naturalintelligence.github.io/fast-xml-parser/",
       "https://community.retool.com/t/i-am-attempting-to-append-several-text-fields-to-a-google-sheet-but-receiving-a-json5-invalid-character-error/7626",
       "https://img.shields.io/node/v/human-signals.svg?logo=node.js",
-      "http://localhost:8080/downloads/index.html",
+      "https://production-db.qmoi.ai/downloads/index.html",
       "https://coveralls.io/repos/isaacs/node-lru-cache/badge.svg?service=github",
       "https://hacks.mozilla.org/2013/05/compiling-to-javascript-and-debugging-with-source-maps/",
       "https://dom.spec.whatwg.org/#interface-AbortSignal",
       "https://www.npmjs.com/package/connect-multiparty",
-      "http://localhost:4000/api/trigger-fix",
+      "https://production-db.qmoi.ai/api/trigger-fix",
       "http://zeit-slackin.now.sh/badge.svg",
       "https://undici.nodejs.org/#/",
       "https://codereview.chromium.org/2819813002/",
       "https://avatars.githubusercontent.com/u/12586868?v&#x3D",
       "https://travis-ci.org/sindresorhus/path-key.svg?branch=master",
-      "http://localhost:4000/api/prodice-stats",
+      "https://production-db.qmoi.ai/api/prodice-stats",
       "https://img.shields.io/coveralls/Qix-/node-error-ex.svg?style=flat-square",
       "https://rollupjs.org/command-line-interface/",
       "https://dagshub.com",
@@ -6702,11 +6702,11 @@
       "https://img.shields.io/npm/v/chrome-launcher.svg",
       "https://www.shippable.com/",
       "https://codecov.",
-      "http://localhost:4000/login",
+      "https://production-db.qmoi.ai/login",
       "qmoiaiexe.py",
       "https://your-domain.com/api/airtel/callback",
       "https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camel",
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai",
       "https://superposition.design",
       "https://www.npmjs.com/package/expand-brackets",
       "https://img.shields.io/coveralls/github/RyanZim/universalify/master.svg",
@@ -6864,7 +6864,7 @@
       "https://img.shields.io/github/workflow/status/jshttp/content-disposition/ci/master?label=ci",
       "https://zacanger.com",
       "https://web-platform-dx.github.io/baseline-browser-mapping/all_versions_object_with_supports.json",
-      "http://localhost:3010/api/app-version",
+      "https://production-db.qmoi.ai/api/app-version",
       "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex",
       "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
       "https://img.shields.io/npm/dm/braces.svg?style=flat",
@@ -6883,7 +6883,7 @@
       "https://www.npmjs.com/package/pkg-conf",
       "https://travis-ci.org/isaacs/minimatch.svg?branch=master",
       "https://api.telegram.org/bot",
-      "http://localhost:3000/api/automation/status",
+      "https://production-db.qmoi.ai/api/automation/status",
       "https://joi.prod/resources/status/#joi",
       "https://img.shields.io/npm/dt/micromatch.svg?style=flat",
       "https://coveralls.io/github/schnittstabil/merge-options?branch=master",
@@ -6907,21 +6907,21 @@
       "https://source.chromium.org/search?q=f:_switches%5C.cc&ss=chromium%2Fchromium%2Fsrc",
       "https://img.shields.io/npm/dm/abort-controller.svg",
       "https://www.npmjs.com/package/compression",
-      "http://localhost:4200/api/acknowledge-notification",
+      "https://production-db.qmoi.ai/api/acknowledge-notification",
       "https://web-platform-dx.github.io/baseline-browser-mapping/with_downstream/all_versions_array_with_supports.json",
       "https://nodejs.org/api/child_process.html#child_process_child_process_spawnsync_command_args_options",
-      "http://localhost:8080/api/status",
+      "https://production-db.qmoi.ai/api/status",
       "https://img.shields.io/npm/v/electron-to-chromium.svg",
       "https://huggingface.co/spaces/stableqmoi/qmoi-space",
       "https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point",
-      "http://localhost:4000/trigger-fix",
+      "https://production-db.qmoi.ai/trigger-fix",
       "https://badgen.net/github/checks/jshttp/accepts/master?label=ci",
       "https://babeljs.io/docs/en/next/babel-plugin-syntax-nullish-coalescing-operator.html",
-      "http://localhost:4000",
-      "http://localhost:3000/api",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api",
       "https://coveralls.io/r/jshttp/cookie?branch=master",
       "https://travis-ci.org/Rob--W/proxy-from-env.svg?branch=master",
-      "http://127.0.0.1:8080/docs",
+      "http://production-db.qmoi.ai:8080/docs",
       "https://img.shields.io/travis/Qix-/node-is-arrayish.svg?style=flat-square",
       "https://img.shields.io/npm/v/braces.svg?style=flat",
       "https://source.chromium.org/chromium/chromium/src/+/main:headless/app/headless_shell.cc",
@@ -6943,7 +6943,7 @@
       "https://docs.taskcluster.net",
       "https://nodejs.org/api/zlib.html#class-brotlioptions",
       "https://chromium.googlesource.com/chromium/src/+/main/docs/linux/password_storage.md",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "https://vite.prod/guide/api-javascript.html",
       "https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit",
       "https://gitpod.io/button/open-in-gitpod.svg",
@@ -6975,7 +6975,7 @@
       "https://caniuse.com/promises",
       "https://travis-ci.org/isaacs/node-lru-cache",
       "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
-      "http://localhost:3000/api/whatsapp/verify",
+      "https://production-db.qmoi.ai/api/whatsapp/verify",
       "https://api.qmoi.app/health",
       "https://nodejs.org/en/docs/guides/debugging-getting-started/",
       "qmoi-system",
@@ -7033,7 +7033,7 @@
       "http://npm.im/fastparallel",
       "https://travis-ci.org/lydell/js-tokens",
       "https://badgen.net/coveralls/c/github/expressjs/body-parser/master",
-      "http://127.0.0.1:4040/api/tunnels",
+      "http://production-db.qmoi.ai:4040/api/tunnels",
       "https://www.cloudflare.com",
       "https://badgen.net/coveralls/c/github/jshttp/proxy-addr/master",
       "https://travis-ci.org/sindresorhus/restore-cursor.svg?branch=master",
@@ -7046,7 +7046,7 @@
       "https://travis-ci.org/sindresorhus/shebang-regex",
       "https://stakes.social/0x44d871aebF0126Bf646753E2C976Aa7e68A66c15",
       "qmoi_ai_launcher.py",
-      "http://localhost:3000/api/qmoi/voice-profiles",
+      "https://production-db.qmoi.ai/api/qmoi/voice-profiles",
       "https://www.npmjs.com/package/qs",
       "https://img.shields.io/coveralls/form-data/form-data/v4.0.4.svg?label=code+coverage",
       "https://badges.greenkeeper.io/ForbesLindesay/throat.svg",
@@ -7069,7 +7069,7 @@
       "https://joi.prod/policies/",
       "https://www.npmjs.com/package/micromatch",
       "https://eemeli.org/yaml/#parser",
-      "http://localhost:3000/qmoi-revenue-",
+      "https://production-db.qmoi.ai/qmoi-revenue-",
       "https://img.shields.io/npm/v/to-regex-range.svg?style=flat",
       "https://travis-ci.com/sindresorhus/find-up.svg?branch=master",
       "https://www.psychocats.net/ubuntu/graphicalsudo",
@@ -7094,13 +7094,13 @@
       "https://badgen.net/coveralls/c/github/jshttp/on-headers/master",
       "https://day.js.org/docs/en/plugin/plugin",
       "https://stackoverflow.com/questions/56700680/keychain-query-always-returns-errsecitemnotfound-after-upgrading-to-ios-13",
-      "http://localhost:7861",
+      "https://production-db.qmoi.ai",
       "https://secure.travis-ci.org/nodeca/argparse.svg?branch=master",
       "https://nodejs.org",
       "https://heartbleed.com/",
       "https://img.shields.io/npm/v/form-data.svg",
       "https://goo.gl/8MmCMG",
-      "http://localhost:3010/api/changelog",
+      "https://production-db.qmoi.ai/api/changelog",
       "https://www.typescriptlang.org/docs/handbook/advanced-types.html#predefined-conditional-types",
       "https://www.npmjs.com/package/safer-buffer",
       "https://avatars.githubusercontent.com/u/9430821?v&#x3D",
@@ -7121,7 +7121,7 @@
       "https://prodeloper.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/find",
       "https://img.shields.io/coveralls/jshttp/vary/master.svg",
       "https://img.shields.io/npm/dm/promise.svg?style=for-the-badge",
-      "http://localhost:3000/api/qcity/remote-command",
+      "https://production-db.qmoi.ai/api/qcity/remote-command",
       "https://coveralls.io/github/isaacs/node-lru-cache",
       "https://huggingface.co",
       "https://api.air",
@@ -7156,7 +7156,7 @@
       "https://img.shields.io/npm/dm/axios.svg?style=flat-square",
       "https://coveralls.io/r/jessetane/queue",
       "https://travis-ci.org/sindresorhus/serialize-error",
-      "http://localhost:4000/health",
+      "https://production-db.qmoi.ai/health",
       "https://gitlab.com/api/v4/projects/",
       "https://docs.python.org/prod/library/argparse.html#mutual-exclusion",
       "https://huggingface.co/spaces/",
@@ -7201,7 +7201,7 @@
       "https://img.shields.io/codecov/c/github/jquery/esprima/master.svg",
       "https://tidelift.com/subscription/pkg/npm-chalk?utm_source=npm-chalk&utm_medium=referral&utm_campaign=enterprise&utm_term=repo",
       "https://coveralls.io/repos/yargs/set-blocking/badge.svg?branch=",
-      "http://localhost:4040/api/tunnels",
+      "https://production-db.qmoi.ai/api/tunnels",
       "https://nodejs.org/api/child_process.html#child_process_subprocess_stderr",
       "https://bugs.chromium.org/p/chromium/issues/detail?id=74848#c26",
       "http://deno.land/x/escalade",
@@ -7223,7 +7223,7 @@
       "https://esprima.org/doc",
       "https://img.shields.io/npm/dm/esprima.svg",
       "https://babeljs.io/docs/babel-helper-string-parser",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "qmoi_ai_arm.tar.gz",
       "https://vercel.app/",
       "https://screwdriver.cd/",
@@ -7245,7 +7245,7 @@
       "https://travis-ci.org/grncdr/merge-stream",
       "https://travis-ci.com/sindresorhus/is-interactive.svg?branch=master",
       "https://nodejs.org/api/stream.html#stream_class_stream_writable",
-      "http://localhost:5001/qmoi",
+      "https://production-db.qmoi.ai/qmoi",
       "https://vuldb.com/?api=1&service=",
       "https://chromium.googlesource.com/chromium/src/+/master/docs/linux/password_storage.md",
       "yap",
@@ -7324,7 +7324,7 @@
       "https://nodejs.org/api/modules.html#modules_the_module_object",
       "https://tidelift.com/subscription/pkg/npm-istanbuljs-schema?utm_source=npm-istanbuljs-schema&utm_medium=referral&utm_campaign=enterprise",
       "https://img.shields.io/badge/ask%20me-anything-1abc9c.svg",
-      "http://127.0.0.1:8080/qmessage",
+      "http://production-db.qmoi.ai:8080/qmessage",
       "https://img.shields.io/github/workflow/status/stacktracejs/stackframe/Continuous%20Integration/master?logo=github&style=flat-square",
       "qcity",
       "https://data.com/app-latest.apk",
@@ -7419,7 +7419,7 @@
       "https://coveralls.io/r/jshttp/statuses?branch=master",
       "https://eemeli.org/yaml/#yaml-parse",
       "https://chromium.googlesource.com/chromium/src/+/HEAD/docs/media/media_router.md",
-      "http://localhost:4000/api/logs",
+      "https://production-db.qmoi.ai/api/logs",
       "https://babeljs.io/docs/en/next/babel-plugin-syntax-numeric-separator.html",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "https://qmoi.app/space",
@@ -7458,7 +7458,7 @@
       "https://badgen.net/npm/dt/chalk",
       "https://vite.prod",
       "https://codecov.io/github/bemusic/bemuse",
-      "http://localhost:3000/api/ai/health",
+      "https://production-db.qmoi.ai/api/ai/health",
       "https://coveralls.io/r/micromatch/anymatch?branch=master",
       "https://nodesecurity.io/",
       "https://travis-ci.com/sindresorhus/type-fest",
@@ -7468,7 +7468,7 @@
       "https://chromeprodtools.github.io/prodtools-protocol/tot/Browser/#method-getBrowserCommandLine",
       "https://cs.chromium.org/chromium/src/chrome/test/chromedriver/chrome_launcher.cc?type=cs&q=f:chrome_launcher++kDesktopSwitches&sq=package:chromium",
       "https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches",
-      "http://localhost:3000/api/qcity/status",
+      "https://production-db.qmoi.ai/api/qcity/status",
       "https://img.shields.io/badge/Rolling%20Versions-Enabled-brightgreen?style=for-the-badge",
       "https://travis-ci.org/sindresorhus/import-fresh.svg?branch=master",
       "http://npm.im/fastseries",
@@ -7477,7 +7477,7 @@
       "https://babeljs.io/docs/babel-helper-validator-identifier",
       "https://qmoi.space",
       "https://travis-ci.org/tapjs/stack-utils.svg?branch=master",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "https://nodejs.org/en/",
       "https://day.js.org/docs/en/i18n/i18n",
       "https://img.shields.io/npm/v/anser.svg",
@@ -7508,7 +7508,7 @@
       "https://nodejs.org/api/fs.html#fs_fs_copyfile_src_dest_flags_callback",
       "http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/",
       "https://avatars.githubusercontent.com/u/174297?v=4",
-      "http://localhost:3000/qmoi-revenue-d",
+      "https://production-db.qmoi.ai/qmoi-revenue-d",
       "https://creativecommons.org/licenses/by-sa/4.0/",
       "https://axios-http.com/assets/sponsors/opencollective/dfa9670ad5e66eea17315332453c7f4e3a3b5905.png",
       "https://qcity.qmoi.app/",
@@ -7575,8 +7575,8 @@
       "https://cloud.githubusercontent.com/assets/5233399/19420267/388f556e-93ad-11e6-813e-7c5c396be322.png",
       "https://nodejs.org/api/cli.html#cli_options",
       "https://nodejs.org/api/modules.html#modules_caching",
-      "http://localhost:3000",
-      "http://localhost:8000/health",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/health",
       "https://www.npmjs.com/package/verb",
       "https://docs.python.org/prod/library/argparse.html",
       "https://travis-ci.org/evanw/node-source-map-support",
@@ -7617,8 +7617,8 @@
       "https://encoding.spec.whatwg.org/",
       "https://avatars2.githubusercontent.com/u/27246?v=4",
       "https://coveralls.io/r/jshttp/type-is?branch=master",
-      "http://localhost:4200/api/notification-history",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai/api/notification-history",
+      "https://production-db.qmoi.ai",
       "https://gradio.app/docs/",
       "https://david-dm.org/isaacs/rimraf.svg",
       "https://coveralls.io/r/stacktracejs/stackframe?branch=master",
@@ -7689,7 +7689,7 @@
       "https://travis-ci.com/github/sindresorhus/locate-path",
       "https://cloud.githubusercontent.com/assets/5233399/19420264/3133497e-93ad-11e6-9a6a-2da59c4f5c13.png",
       "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules",
-      "http://localhost:3000/api/qcity/audit-log",
+      "https://production-db.qmoi.ai/api/qcity/audit-log",
       "https://www.npmjs.com/package/electron-to-chromium",
       "https://secure.travis-ci.org/pvorb/node-clone.png",
       "https://tidelift.com/subscription/pkg/npm-qs?utm_source=npm-qs&utm_mediu",
@@ -7702,7 +7702,7 @@
       "https://travis-ci.org/zertosh/loose-envify.svg?branch=master",
       "https://coveralls.io/github/isaacs/yallist",
       "https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe",
-      "http://localhost:4200/api/register-fcm",
+      "https://production-db.qmoi.ai/api/register-fcm",
       "http://node-cors-client.herokuapp.com/",
       "https://travis-ci.org/sindresorhus/object-assign",
       "https://android-prodelopers.googleblog.com/2015/10/new-in-android-",
@@ -7714,7 +7714,7 @@
       "https://eemeli.org/yaml/v1/",
       "https://www.rfc-editor.org/rfc/rfc3986#section-3.3",
       "http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14",
-      "http://localhost:4200/api/respond-notification",
+      "https://production-db.qmoi.ai/api/respond-notification",
       "https://en.wikipedia.org/wiki/Code_point",
       "https://qcity.ai",
       "https://coveralls.io/r/jshttp/content-disposition?branch=master",
@@ -7754,15 +7754,15 @@
     "broken_links": 10,
     "broken_link_list": [
       "qcity-complete.html",
-      "http://localhost:5000",
-      "http://localhost:8080/qcity-enterprise.html**",
-      "http://localhost:8080/qcity-dashboard.html",
-      "http://localhost:8080/health",
-      "http://localhost:8080/qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/qcity-enterprise.html**",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/health",
+      "https://production-db.qmoi.ai/qcity-complete.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "http://api.data.com",
       "qmoi-enhanced",
-      "http://localhost:8080"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -7785,8 +7785,8 @@
     "broken_link_list": [
       "qmoi-backup",
       "https://qmoi.app",
-      "http://localhost:3000",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/health",
       "qmoi",
       "https://qmoi.app/api/health",
       "qmoi-app",
@@ -7853,7 +7853,7 @@
     "valid_links": 0,
     "broken_links": 1,
     "broken_link_list": [
-      "http://localhost:3000/admin"
+      "https://production-db.qmoi.ai/admin"
     ],
     "suggestions": {}
   },
@@ -7898,7 +7898,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi"
     ],
     "suggestions": {}
@@ -7975,17 +7975,17 @@
     "valid_links": 0,
     "broken_links": 11,
     "broken_link_list": [
-      "http://localhost:3000/api/webauthn/register",
-      "http://localhost:3000",
-      "http://localhost:3000/api/biometric/templates",
-      "http://localhost:3000/api/qmoi/session",
-      "http://localhost:3000/api/voice/enroll",
+      "https://production-db.qmoi.ai/api/webauthn/register",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/biometric/templates",
+      "https://production-db.qmoi.ai/api/qmoi/session",
+      "https://production-db.qmoi.ai/api/voice/enroll",
       "qmoi",
-      "http://localhost:3000/api/auth/login",
-      "http://localhost:3000/api/webauthn/authenticate",
+      "https://production-db.qmoi.ai/api/auth/login",
+      "https://production-db.qmoi.ai/api/webauthn/authenticate",
       "qmoi-enhanced",
-      "http://localhost:3000/api/voice/verify",
-      "http://localhost:3000/api/biometric/verify"
+      "https://production-db.qmoi.ai/api/voice/verify",
+      "https://production-db.qmoi.ai/api/biometric/verify"
     ],
     "suggestions": {}
   },
@@ -8022,10 +8022,10 @@
       "qvillage",
       "qvillage.ai",
       "qmoi",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://oauth2:$",
       "https://qvillage.ai)",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://api.qvillage.ai",
       "https://arxiv.org/abs/{p['arxiv_id']}",
       "https://discord.gg/qvillage)",
@@ -8044,7 +8044,7 @@
       "qmoi-",
       "https://yourdomain.com",
       "qmoi",
-      "http://localhost:3000/admin/master/login"
+      "https://production-db.qmoi.ai/admin/master/login"
     ],
     "suggestions": {}
   },
@@ -8064,7 +8064,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/master/links",
+      "https://production-db.qmoi.ai/api/admin/master/links",
       "qmoi-enhanced",
       "qstore"
     ],
@@ -8182,7 +8182,7 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi-automation-config",
       "qmoi-automation-manager",
       "qmoi-enhanced",
@@ -8293,7 +8293,7 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qmoi",
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "suggestions": {}
   },
@@ -8374,7 +8374,7 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi-comprehensive-test",
       "qmoi",
       "qmoi-comprehensive-test.ts"
@@ -8399,8 +8399,8 @@
     "broken_links": 4,
     "broken_link_list": [
       "https://",
-      "http://localhost:3000",
-      "http://localhost:3000/api/ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/ai",
       "qmoi_ai.js"
     ],
     "suggestions": {}
@@ -8438,7 +8438,7 @@
       "qmoi",
       "https://builds.data.com/qmoi-ai/latest/android/release.apk",
       "qmoi-ai-ios-source",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "qmoi_ai.apk",
       "qmoi-ai.zip",
       "qmoi_ai.AppImage",
@@ -8469,10 +8469,10 @@
     "valid_links": 1,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000",
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/health/services",
-      "http://localhost:3000/api/health/db",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/health/services",
+      "https://production-db.qmoi.ai/api/health/db",
       "qmoi-enhanced",
       "qmoi_app"
     ],
@@ -8485,7 +8485,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "http://localhost/api/...",
-      "http://localhost:3000)"
+      "https://production-db.qmoi.ai)"
     ],
     "suggestions": {}
   },
@@ -8538,12 +8538,12 @@
     "valid_links": 1,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000/api/webauthn/register",
+      "https://production-db.qmoi.ai/api/webauthn/register",
       "qcity",
-      "http://localhost:3000/api/qmoi/session",
+      "https://production-db.qmoi.ai/api/qmoi/session",
       "qmoi",
-      "http://localhost:3000/api/auth/login",
-      "http://localhost:3000/api/webauthn/authenticate"
+      "https://production-db.qmoi.ai/api/auth/login",
+      "https://production-db.qmoi.ai/api/webauthn/authenticate"
     ],
     "suggestions": {}
   },
@@ -8612,17 +8612,17 @@
     "valid_links": 0,
     "broken_links": 11,
     "broken_link_list": [
-      "http://localhost:3000",
-      "http://localhost:8080/$dash",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/$dash",
       "qcity-complete.html",
       "qcity-",
-      "http://localhost:5000",
-      "http://localhost:8080/qcity-dashboard.html",
-      "http://localhost:8080/qcity-complete.html",
-      "http://localhost:8080/",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-complete.html",
+      "https://production-db.qmoi.ai/",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "qmoi-enhanced",
-      "http://localhost:8080"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -8634,7 +8634,7 @@
     "broken_link_list": [
       "qmoiaideb.py",
       "qmoiaiap",
-      "http://localhost:5050/api/build-apps",
+      "https://production-db.qmoi.ai/api/build-apps",
       "qmoiaiappimage.py",
       "qmoiaiipad.py",
       "qmoiaizip.py",
@@ -8666,16 +8666,16 @@
     "valid_links": 2,
     "broken_links": 11,
     "broken_link_list": [
-      "http://localhost:3000/api/payments/initiate",
+      "https://production-db.qmoi.ai/api/payments/initiate",
       "qmoi_superiority_score",
       "qvillage",
       "https://support.qmoi.app",
       "https://api.qmoi.app/api",
       "https://production-api.qmoi.app/api",
-      "http://localhost:3000/api/wallets",
-      "http://localhost:3000/api",
+      "https://production-db.qmoi.ai/api/wallets",
+      "https://production-db.qmoi.ai/api",
       "https://docs.qmoi.app",
-      "http://localhost:3000/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
       "https://data.com/pic.jpg"
     ],
     "suggestions": {}
@@ -8726,11 +8726,11 @@
     "valid_links": 13,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3000/api/links/validate",
+      "https://production-db.qmoi.ai/api/links/validate",
       "qmoi",
-      "http://localhost:3000/api/domains/health?action=status",
-      "http://localhost:3000/api/domains/health?domain=qmoi.ai",
-      "http://localhost:3000/api/domains/health?action=critical"
+      "https://production-db.qmoi.ai/api/domains/health?action=status",
+      "https://production-db.qmoi.ai/api/domains/health?domain=qmoi.ai",
+      "https://production-db.qmoi.ai/api/domains/health?action=critical"
     ],
     "suggestions": {}
   },
@@ -8771,9 +8771,9 @@
     "broken_links": 5,
     "broken_link_list": [
       "qcity-complete.html",
-      "http://localhost:8080/qcity-dashboard.html",
-      "http://localhost:8080/qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-complete.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -8784,11 +8784,11 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3000/api/auth/profile",
-      "http://localhost:3000/api/auth/settings",
-      "http://localhost:3000/api/auth/signin",
-      "http://localhost:3000/api/auth/signup",
-      "http://localhost:3000/api/auth/biometric/capture"
+      "https://production-db.qmoi.ai/api/auth/profile",
+      "https://production-db.qmoi.ai/api/auth/settings",
+      "https://production-db.qmoi.ai/api/auth/signin",
+      "https://production-db.qmoi.ai/api/auth/signup",
+      "https://production-db.qmoi.ai/api/auth/biometric/capture"
     ],
     "suggestions": {}
   },
@@ -8822,7 +8822,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "https://jestjs.io",
-      "http://localhost:3000/api/health');"
+      "https://production-db.qmoi.ai/api/health');"
     ],
     "suggestions": {}
   },
@@ -8866,7 +8866,7 @@
     "broken_link_list": [
       "https://registry.npmjs.org/",
       "qmoi-enhanced-automation",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "qmoi",
       "qmoi_validation_frontmatter",
       "qmoi-dashboard-enhance"
@@ -8888,8 +8888,8 @@
       "qmoi_ai.apk",
       "qmoi_validation",
       "qmoi_validation_frontmatter",
-      "http://localhost:3000/api/domains/health",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai/api/domains/health",
+      "https://production-db.qmoi.ai",
       "yap",
       "qmoi-enhanced"
     ],
@@ -8953,7 +8953,7 @@
     "broken_links": 4,
     "broken_link_list": [
       "qvillage-standalone",
-      "http://localhost:8080/health",
+      "https://production-db.qmoi.ai/health",
       "qvillage",
       "qmoi-enhanced"
     ],
@@ -8998,7 +8998,7 @@
     "broken_links": 9,
     "broken_link_list": [
       "https://prodelopers.google.com/web/tools/lighthouse",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi-api",
       "https://artillery.io",
       "https://www.datadoghq.com",
@@ -9055,7 +9055,7 @@
     "valid_links": 0,
     "broken_links": 1,
     "broken_link_list": [
-      "http://localhost:3001"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -9131,7 +9131,7 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qmoi",
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "suggestions": {}
   },
@@ -9204,13 +9204,13 @@
     "valid_links": 0,
     "broken_links": 7,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi-automation-manager",
       "qmoi-background-autoscan",
-      "http://localhost:3000/admin",
+      "https://production-db.qmoi.ai/admin",
       "qmoi-health-monitor",
-      "http://localhost:3000/api/admin/autofix/background-automation",
-      "http://localhost:3000/api/admin/autofix/config"
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation",
+      "https://production-db.qmoi.ai/api/admin/autofix/config"
     ],
     "suggestions": {}
   },
@@ -9362,7 +9362,7 @@
       "qmoiaideb.py",
       "qmoiaismarttvapk.py",
       "qmoiaiapk.py",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "qstore",
       "yap",
       "qmoi-enhanced"
@@ -9403,7 +9403,7 @@
     "broken_links": 17,
     "broken_link_list": [
       "qmoi-production-backups",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://api.qmoi.app/health",
       "qmoi_prod",
       "https://api.qmoi.app/api/webhooks/payments",
@@ -9418,7 +9418,7 @@
       "qmoi-prod-backups",
       "qmoi-enhanced",
       "qmoi-production",
-      "http://localhost:3000/api/webhooks/payments"
+      "https://production-db.qmoi.ai/api/webhooks/payments"
     ],
     "suggestions": {}
   },
@@ -9429,8 +9429,8 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi_health_integration",
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/autofix/scan"
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/autofix/scan"
     ],
     "suggestions": {}
   },
@@ -9453,7 +9453,7 @@
     "valid_links": 0,
     "broken_links": 1,
     "broken_link_list": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -9515,8 +9515,8 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/qmoi/chat",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/qmoi/chat",
       "https://your-domain.com/api/health",
       "qvillage",
       "qmoi",
@@ -9540,7 +9540,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi"
     ],
     "suggestions": {}
@@ -9621,7 +9621,7 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi",
       "qmoi-comprehensive-test",
       "qmoi-enhanced",
@@ -9635,7 +9635,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:8080/v1/chat/completions",
+      "https://production-db.qmoi.ai/v1/chat/completions",
       "qmoi"
     ],
     "suggestions": {}
@@ -9676,13 +9676,13 @@
     "valid_links": 1,
     "broken_links": 7,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/sponsored/update",
-      "http://localhost:3000/api/admin/sponsored/delete",
+      "https://production-db.qmoi.ai/api/admin/sponsored/update",
+      "https://production-db.qmoi.ai/api/admin/sponsored/delete",
       "qmoi-auto-refresh-system",
-      "http://localhost:3000/api/admin/sponsored/create",
-      "http://localhost:3000/api/admin/sponsored/suspend",
-      "http://localhost:3000/api/master/sponsored/add",
-      "http://localhost:3000/api/admin/sponsored/bulk-create"
+      "https://production-db.qmoi.ai/api/admin/sponsored/create",
+      "https://production-db.qmoi.ai/api/admin/sponsored/suspend",
+      "https://production-db.qmoi.ai/api/master/sponsored/add",
+      "https://production-db.qmoi.ai/api/admin/sponsored/bulk-create"
     ],
     "suggestions": {}
   },
@@ -9702,7 +9702,7 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "http://localhost:3000/api/users/register",
+      "https://production-db.qmoi.ai/api/users/register",
       "qmoi_validation_frontmatter",
       "https://api.data.com/api/v2/users/123')",
       "https://api.data.com/api/v1/users/legacy?id=123')"
@@ -9735,7 +9735,7 @@
     "valid_links": 8,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi-prod-artifacts",
       "qmoi_prod",
       "qmoi",
@@ -9760,9 +9760,9 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "qmoi-enhanced",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "http://10.0.0.12:3000"
     ],
     "suggestions": {}
@@ -9783,7 +9783,7 @@
     "valid_links": 0,
     "broken_links": 1,
     "broken_link_list": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -9795,8 +9795,8 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qmoi",
-      "http://localhost:3001/api/qmoi/chat-enhanced?userId=master",
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced?userId=master",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "suggestions": {}
   },
@@ -9872,9 +9872,9 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "http://localhost:3000/api/chat/enhanced",
+      "https://production-db.qmoi.ai/api/chat/enhanced",
       "qmoi-enhanced",
-      "http://localhost:3000/api/datasets"
+      "https://production-db.qmoi.ai/api/datasets"
     ],
     "suggestions": {}
   },
@@ -9884,14 +9884,14 @@
     "valid_links": 0,
     "broken_links": 8,
     "broken_link_list": [
-      "http://localhost:3000",
-      "http://localhost:3000/qcity)",
-      "http://localhost:3000/qcity",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/qcity)",
+      "https://production-db.qmoi.ai/qcity",
       "qcity",
-      "http://localhost:5000",
-      "http://localhost:5000)",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai)",
       "qmoi-space-pwa",
-      "http://localhost:3000)"
+      "https://production-db.qmoi.ai)"
     ],
     "suggestions": {}
   },
@@ -9916,7 +9916,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation_frontmatter",
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -9976,18 +9976,18 @@
     "valid_links": 0,
     "broken_links": 12,
     "broken_link_list": [
-      "http://localhost:3001/api/qmoi/family/messages",
-      "http://localhost:3001/api/qmoi/family/messages/search?query=project",
-      "http://localhost:3001/api/qmoi/family/settings/personal",
-      "http://localhost:3001/api/qmoi/family/projects",
-      "http://localhost:3001/api/qmoi/family/calendar/event_001/reminder",
-      "http://localhost:3001/api/qmoi/family/projects/proj_001",
-      "http://localhost:3001/api/qmoi/family/wallet/approve-withdrawal",
+      "https://production-db.qmoi.ai/api/qmoi/family/messages",
+      "https://production-db.qmoi.ai/api/qmoi/family/messages/search?query=project",
+      "https://production-db.qmoi.ai/api/qmoi/family/settings/personal",
+      "https://production-db.qmoi.ai/api/qmoi/family/projects",
+      "https://production-db.qmoi.ai/api/qmoi/family/calendar/event_001/reminder",
+      "https://production-db.qmoi.ai/api/qmoi/family/projects/proj_001",
+      "https://production-db.qmoi.ai/api/qmoi/family/wallet/approve-withdrawal",
       "qmoi",
-      "http://localhost:3001/api/qmoi/family/settings",
-      "http://localhost:3001/api/qmoi/family/wallet/request-withdrawal",
-      "http://localhost:3001/api/qmoi/family/wallet/status",
-      "http://localhost:3001/api/qmoi/family/calendar"
+      "https://production-db.qmoi.ai/api/qmoi/family/settings",
+      "https://production-db.qmoi.ai/api/qmoi/family/wallet/request-withdrawal",
+      "https://production-db.qmoi.ai/api/qmoi/family/wallet/status",
+      "https://production-db.qmoi.ai/api/qmoi/family/calendar"
     ],
     "suggestions": {}
   },
@@ -9997,16 +9997,16 @@
     "valid_links": 0,
     "broken_links": 11,
     "broken_link_list": [
-      "http://localhost:8080/api/logs",
+      "https://production-db.qmoi.ai/api/logs",
       "qcity-complete.html",
-      "http://localhost:8080/qcity-service.js",
-      "http://localhost:8080)",
-      "http://localhost:8080/qcity-enterprise.html**",
-      "http://localhost:8080/qcity-dashboard.html",
-      "http://localhost:8080/api/biometric-status",
-      "http://localhost:8080/qcity-complete.html",
+      "https://production-db.qmoi.ai/qcity-service.js",
+      "https://production-db.qmoi.ai)",
+      "https://production-db.qmoi.ai/qcity-enterprise.html**",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/api/biometric-status",
+      "https://production-db.qmoi.ai/qcity-complete.html",
       "qcity-service",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -10033,7 +10033,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:3000/admin",
+      "https://production-db.qmoi.ai/admin",
       "qmoi"
     ],
     "suggestions": {}
@@ -10097,7 +10097,7 @@
       "qmoi",
       "qmoi_ai.apk",
       "qmoi-ai",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi_ai_installer.exe",
       "qstore",
       "qmoi-enhanced",
@@ -10186,7 +10186,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:3000/admin",
+      "https://production-db.qmoi.ai/admin",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -10211,10 +10211,10 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi",
-      "http://localhost:3000)",
-      "http://localhost:3000/admin/master/login",
+      "https://production-db.qmoi.ai)",
+      "https://production-db.qmoi.ai/admin/master/login",
       "qmoi-enhanced",
       "https://yourdomain.com"
     ],
@@ -10228,7 +10228,7 @@
     "broken_link_list": [
       "qmoi_validation_frontmatter",
       "qmoi-revenue-dashboard",
-      "http://localhost:3000/qmoi-revenue-dashboard"
+      "https://production-db.qmoi.ai/qmoi-revenue-dashboard"
     ],
     "suggestions": {}
   },
@@ -10315,7 +10315,7 @@
       "qvillage",
       "qvillage.ai",
       "qvillage-sync",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -10402,7 +10402,7 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qmoi",
-      "http://localhost:3000/admin/master/login"
+      "https://production-db.qmoi.ai/admin/master/login"
     ],
     "suggestions": {}
   },
@@ -10476,7 +10476,7 @@
       "https://qmoi-space.qmoi.ai)**",
       "qcity",
       "qmoi_ai.ipa",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "https://img.shields.io/badge/Release-v1.2.3-blue?style=flat-square)",
       "qmoi_ai.exe",
       "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)",
@@ -10493,30 +10493,30 @@
       "https://img.shields.io/badge/Coverage-unknown-lightgrey?style=flat-square",
       "qmoi-ai-v1-2-3---actual-binary-releases-8-platforms",
       "qmoi-ai-v1.2.3-android.apk",
-      "http://localhost:8080/q-stable.html",
+      "https://production-db.qmoi.ai/q-stable.html",
       "qmoi_ai_chromebook.zip",
       "qmoi-ai-v1.2.3-windows.exe",
       "qmoi-ai-pwa.webmanifest",
       "qmoi_ai.deb",
-      "http://localhost:8080/qmoi-ai.html)",
+      "https://production-db.qmoi.ai/qmoi-ai.html)",
       "https://qshare.qmoi.ai)**",
       "https://qmoi.ai)**",
       "https://yap.qmoi.ai)**",
       "qvillage",
       "qmoi",
       "qmoi_ai.zip",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "https://q-stable.qmoi.ai)**",
       "q-stable",
       "qmoi-space",
       "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
       "qmoi_enhanced_ai.py",
       "qmoi-ai-pwa.zip",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/",
       "qmoi-ai.html",
       "qmoi-ai-v1.2.3-chromebook.zip",
-      "http://localhost:8080/qmoi-space.html",
+      "https://production-db.qmoi.ai/qmoi-space.html",
       "https://img.shields.io/badge/Apps-6-success?style=flat-square",
       "https://qcity.qmoi.ai)**",
       "qmoi-ai-v1.2.3-smarttv.apk",
@@ -10524,9 +10524,9 @@
       "qmoi_ai_smarttv.apk",
       "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/)",
       "qmoi_ai.bat",
-      "http://localhost:8080/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
       "qmoi-ai-v1.2.3-linux-appimage",
-      "http://localhost:8080/qmoi-ai.html",
+      "https://production-db.qmoi.ai/qmoi-ai.html",
       "qmoi-ai-v1.2.3-ios.ipa",
       "qmoi_ai.dmg",
       "https://img.shields.io/badge/Platforms-12+-success?style=flat-square",
@@ -10564,7 +10564,7 @@
     "valid_links": 0,
     "broken_links": 1,
     "broken_link_list": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -10574,10 +10574,10 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "http://localhost:8080/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
       "qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html",
-      "http://localhost:8080/qcity-complete.html"
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/qcity-complete.html"
     ],
     "suggestions": {}
   },
@@ -10588,7 +10588,7 @@
     "broken_links": 7,
     "broken_link_list": [
       "https://your-domain.com",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "qmoi-dashboard",
       "qmoi-health-monitor",
       "qmoi-app",
@@ -10769,9 +10769,9 @@
     "broken_link_list": [
       "qcity",
       "qcity-complete.html",
-      "http://localhost:8080/qcity-dashboard.html",
-      "http://localhost:8080/qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html"
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-complete.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html"
     ],
     "suggestions": {}
   },
@@ -10820,7 +10820,7 @@
       "qvillage",
       "qvillage.ai",
       "qmoi-enhanced",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -10895,7 +10895,7 @@
       "https://www.prisma.io/docs/",
       "https://pesapal.com/api)",
       "https://aws.amazon.com",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://prodeloper.safaricom.co.ke/",
       "https://prodeloper.safaricom.co.ke",
       "qmoi-enhanced",
@@ -11049,7 +11049,7 @@
       "https://qvillage.qmoi.app",
       "https://qmoi-enhanced.vercel.app/api/qvillage/inference/batch/batch_job_123",
       "qmoi-voice-recognition",
-      "http://localhost:8000/health",
+      "https://production-db.qmoi.ai/health",
       "qmoi-models",
       "qvillage-overview",
       "https://qmoi-enhanced.vercel.app/api/qvillage/research/research_12345",
@@ -11069,17 +11069,17 @@
     "valid_links": 0,
     "broken_links": 11,
     "broken_link_list": [
-      "http://localhost:4000/api/error-fix-log",
+      "https://production-db.qmoi.ai/api/error-fix-log",
       "https://data.com/group_photo.jpg",
-      "http://localhost:4000/api/logs",
+      "https://production-db.qmoi.ai/api/logs",
       "qmoi",
-      "http://localhost:4000/health",
+      "https://production-db.qmoi.ai/health",
       "qmoi_validation_frontmatter",
-      "http://localhost:4000/login",
+      "https://production-db.qmoi.ai/login",
       "https://data.com/dog.jpg",
       "qmoi-embed",
-      "http://localhost:4000/api/realtime-events",
-      "http://localhost:4000/api/trigger-fix"
+      "https://production-db.qmoi.ai/api/realtime-events",
+      "https://production-db.qmoi.ai/api/trigger-fix"
     ],
     "suggestions": {}
   },
@@ -11116,21 +11116,21 @@
     "valid_links": 0,
     "broken_links": 15,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://api.data.com",
-      "http://localhost:5000",
-      "http://localhost:8000)",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai)",
       "https://www.postman.com/downloads/",
-      "http://localhost:8000/api/mail",
-      "http://localhost:8000/api/files",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai/api/mail",
+      "https://production-db.qmoi.ai/api/files",
+      "https://production-db.qmoi.ai",
       "https://production-api.data.com",
-      "http://localhost:8080/qcity-enterprise.html",
-      "http://localhost:8080'",
-      "http://localhost:8000/api/media?limit=10",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
+      "https://production-db.qmoi.ai'",
+      "https://production-db.qmoi.ai/api/media?limit=10",
       "qmoi-enhanced",
-      "http://localhost:8000/api/health",
-      "http://localhost:8000/api/mail'"
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/mail'"
     ],
     "suggestions": {}
   },
@@ -11219,7 +11219,7 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qmoi",
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "suggestions": {}
   },
@@ -11388,9 +11388,9 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "http://localhost:8080/qcity-enterprise.html**",
+      "https://production-db.qmoi.ai/qcity-enterprise.html**",
       "qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -11423,7 +11423,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi-enhanced",
-      "http://localhost:3000/admin/master/login"
+      "https://production-db.qmoi.ai/admin/master/login"
     ],
     "suggestions": {}
   },
@@ -11475,14 +11475,14 @@
     "valid_links": 0,
     "broken_links": 8,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/rate-limits",
-      "http://localhost:3000/api/admin/alerts",
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/admin/audit-logs?action=DELETE&resource=user&skip=0&take=50",
-      "http://localhost:3000/api/admin/monitoring",
+      "https://production-db.qmoi.ai/api/admin/rate-limits",
+      "https://production-db.qmoi.ai/api/admin/alerts",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/admin/audit-logs?action=DELETE&resource=user&skip=0&take=50",
+      "https://production-db.qmoi.ai/api/admin/monitoring",
       "qmoi",
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/audit-logs"
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/audit-logs"
     ],
     "suggestions": {}
   },
@@ -11587,7 +11587,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi",
-      "http://localhost:3000/api/domains/health?action=critical"
+      "https://production-db.qmoi.ai/api/domains/health?action=critical"
     ],
     "suggestions": {}
   },
@@ -11811,8 +11811,8 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/autofix/background-automation"
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation"
     ],
     "suggestions": {}
   },
@@ -11866,7 +11866,7 @@
     "valid_links": 0,
     "broken_links": 1,
     "broken_link_list": [
-      "http://localhost:3000/"
+      "https://production-db.qmoi.ai/"
     ],
     "suggestions": {}
   },
@@ -11900,7 +11900,7 @@
       "qvillage-sync",
       "qmoiaiexe.py",
       "qmoi-enhanced",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -11959,9 +11959,9 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/autofix/background-automation",
-      "http://localhost:3000/api/admin/autofix/config"
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation",
+      "https://production-db.qmoi.ai/api/admin/autofix/config"
     ],
     "suggestions": {}
   },
@@ -11994,11 +11994,11 @@
     "broken_link_list": [
       "qcity",
       "qcity-admin-key",
-      "http://localhost:8000',",
+      "https://production-db.qmoi.ai',",
       "qmoi",
-      "http://localhost:8000/automation/status",
-      "http://localhost:8000/token",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai/automation/status",
+      "https://production-db.qmoi.ai/token",
+      "https://production-db.qmoi.ai",
       "qmoi_validation_frontmatter"
     ],
     "suggestions": {}
@@ -12035,7 +12035,7 @@
     "valid_links": 0,
     "broken_links": 1,
     "broken_link_list": [
-      "http://localhost:3000/admin"
+      "https://production-db.qmoi.ai/admin"
     ],
     "suggestions": {}
   },
@@ -12057,13 +12057,13 @@
     "valid_links": 0,
     "broken_links": 7,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/autofix/autoscan",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai/api/admin/autofix/autoscan",
+      "https://production-db.qmoi.ai",
       "qmoi-automation-manager",
       "qmoi-automation-config",
-      "http://localhost:3000/api/admin/autofix/healthmonitor",
-      "http://localhost:3000/api/admin/autofix/background-automation",
-      "http://localhost:3000/api/admin/autofix/config"
+      "https://production-db.qmoi.ai/api/admin/autofix/healthmonitor",
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation",
+      "https://production-db.qmoi.ai/api/admin/autofix/config"
     ],
     "suggestions": {}
   },
@@ -12098,8 +12098,8 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/qvillage",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/qvillage",
       "qvillage_client",
       "qvillage",
       "qmoi",
@@ -12155,7 +12155,7 @@
     "broken_links": 12,
     "broken_link_list": [
       "qmoi-content-monetization.js",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://q-city.ai",
       "qcity",
       "qmoi-revenue-dashboard",
@@ -12165,7 +12165,7 @@
       "qmoi-bot",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
-      "http://localhost:3000/qmoi-revenue-dashboard"
+      "https://production-db.qmoi.ai/qmoi-revenue-dashboard"
     ],
     "suggestions": {}
   },
@@ -12176,7 +12176,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi_validation_frontmatter",
-      "http://localhost:8080",
+      "https://production-db.qmoi.ai",
       "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
     ],
     "suggestions": {}
@@ -12241,13 +12241,13 @@
     "valid_links": 2,
     "broken_links": 8,
     "broken_link_list": [
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "qmoi",
       "qvillage",
       "qmoi_enhanced_ai",
       "qmoi_enhanced",
       "qmoi-network",
-      "http://localhost:3000/api/qmoi/chat",
+      "https://production-db.qmoi.ai/api/qmoi/chat",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -12320,12 +12320,12 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/autofix/autoscan",
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/autofix/healthmonitor",
-      "http://localhost:3000/api/admin/autofix/background-automation",
-      "http://localhost:3000/api/admin/autofix/bootstrap",
-      "http://localhost:3000/api/admin/autofix/config"
+      "https://production-db.qmoi.ai/api/admin/autofix/autoscan",
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/autofix/healthmonitor",
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation",
+      "https://production-db.qmoi.ai/api/admin/autofix/bootstrap",
+      "https://production-db.qmoi.ai/api/admin/autofix/config"
     ],
     "suggestions": {}
   },
@@ -12388,15 +12388,15 @@
     "valid_links": 0,
     "broken_links": 9,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/autofix/autoscan",
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai/api/admin/autofix/autoscan",
+      "https://production-db.qmoi.ai",
       "qmoi-automation-manager",
       "qmoi-bootstrap",
-      "http://localhost:3000/admin",
-      "http://localhost:3000/api/admin/autofix/healthmonitor",
-      "http://localhost:3000/api/admin/autofix/background-automation",
-      "http://localhost:3000/api/admin/autofix/bootstrap",
-      "http://localhost:3000/api/admin/autofix/config"
+      "https://production-db.qmoi.ai/admin",
+      "https://production-db.qmoi.ai/api/admin/autofix/healthmonitor",
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation",
+      "https://production-db.qmoi.ai/api/admin/autofix/bootstrap",
+      "https://production-db.qmoi.ai/api/admin/autofix/config"
     ],
     "suggestions": {}
   },
@@ -12449,13 +12449,13 @@
     "valid_links": 0,
     "broken_links": 7,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/autofix/autoscan",
-      "http://localhost:3000/api/admin/autofix/healthmonitor",
-      "http://localhost:3000/api/admin/autofix/background-automation",
+      "https://production-db.qmoi.ai/api/admin/autofix/autoscan",
+      "https://production-db.qmoi.ai/api/admin/autofix/healthmonitor",
+      "https://production-db.qmoi.ai/api/admin/autofix/background-automation",
       "qmoi-",
-      "http://localhost:3000/api/admin/autofix/scan",
-      "http://localhost:3000/api/admin/autofix/bootstrap",
-      "http://localhost:3000/api/admin/autofix/config"
+      "https://production-db.qmoi.ai/api/admin/autofix/scan",
+      "https://production-db.qmoi.ai/api/admin/autofix/bootstrap",
+      "https://production-db.qmoi.ai/api/admin/autofix/config"
     ],
     "suggestions": {}
   },
@@ -12465,10 +12465,10 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "http://localhost:3000",
-      "http://localhost:3000/api/qmoi/auto-setup",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/qmoi/auto-setup",
       "qmoi",
-      "http://localhost:3000/admin/master/login",
+      "https://production-db.qmoi.ai/admin/master/login",
       "qmoi-enhanced",
       "https://yourdomain.com"
     ],
@@ -12496,10 +12496,10 @@
     "broken_links": 6,
     "broken_link_list": [
       "qcity-complete.html",
-      "http://localhost:8080/qcity-dashboard.html",
-      "http://localhost:8080/qcity-complete.html",
-      "http://localhost:8080/qcity-enterprise.html",
-      "http://localhost:3000/",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-complete.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/",
       "qmoi_validation_frontmatter"
     ],
     "suggestions": {}
@@ -13063,7 +13063,7 @@
       "https://travis-ci.org/mysticatea/event-target-shim.svg?branch=master)",
       "https://img.shields.io/coveralls/jessetane/queue.svg?style=flat-square&branch=master",
       "https://coveralls.io/r/pillarjs/router?branch=master",
-      "http://localhost:3000/qmoi-",
+      "https://production-db.qmoi.ai/qmoi-",
       "https://travis-ci.org/sindresorhus/parse-json.svg?branch=master",
       "https://badgen.net/github/checks/jshttp/content-type/master?label=ci",
       "http://travis-ci.org/jprichardson/node-fs-extra)",
@@ -13256,7 +13256,7 @@
       "https://travis-ci.org/visionmedia/RELEASE.svg?branch=master",
       "https://travis-ci.com/sindresorhus/is-interactive.svg?branch=master",
       "qmoi-enhan",
-      "http://localhost:3000/qmoi-revenue-dashboard",
+      "https://production-db.qmoi.ai/qmoi-revenue-dashboard",
       "https://ci.appveyor.com/api/projects/status/ol2q94g1932cy14a/branch/master?svg=true)",
       "https://img.shields.io/appveyor/ci/jprichardson/node-fs-extra/master.svg?label=windows%20build)",
       "qmoi-b",
@@ -13472,7 +13472,7 @@
       "https://tidelift.com/subscription/pkg/npm-onetime?utm_source=npm-onetime",
       "https://ci.appveyor.com/project/jprichardson/node-fs-extra/branch/master)",
       "https://travis-ci.org/sindresorhus/caller-callsite.svg?branch=master)",
-      "https://npmjs.com/package/@types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/sindresorhus/locate-path.svg?branch=master",
       "https://img.shields.io/travis/jessetane/queue.svg?style=flat-square&branch=master)",
       "https://coveralls.io/r/pillarjs/parseurl?branch=master",
@@ -13500,7 +13500,7 @@
       "https://travis-ci.com/sindresorhus/find-up.svg?branch=master)",
       "https://travis-ci.org/chalk/strip-ansi)",
       "https://travis-ci.org/sindresorhus/slash.svg?branch=master",
-      "https://npmjs.com/package/@types/jest",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed",
       "https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(1",
       "https://codecov.io/gh/Kilian/electron-to-chromium)",
       "https://travis-ci.org/chalk/ansi-regex.svg?branch=master",
@@ -13564,7 +13564,7 @@
       "qmoi-erro",
       "https://codecov.io/github/jquery/esprima))",
       "https://hapi.prod",
-      "http://localhost:3000/qmoi-revenue-d",
+      "https://production-db.qmoi.ai/qmoi-revenue-d",
       "https://img.shields.io/travis/jquery/esprima/master.svg",
       "https://travis-ci.org/sindresorhus/is-fullwidth-code-point.svg?branch=master",
       "https://source.chromium.org/chromium/chromium/src/+/master:chrome/browser/password_manager/chrome_password_manager_client.cc;l=295-298;drc=00053fb4d880a925c890193b74a8ff35e1cef2a0",
@@ -13600,7 +13600,7 @@
       "https://travis-ci.org/zertosh/nullthrows.svg?branch=master)",
       "https://img.shields.io/coveralls/jshttp/negotiator/master.svg",
       "https://badgen.net/github/checks/jshttp/http-errors/master?label=ci",
-      "http://localhost:3000/qmoi-revenue-",
+      "https://production-db.qmoi.ai/qmoi-revenue-",
       "qmoi_enhanced_reven",
       "https://img.shields.io/coveralls/stacktracejs/stackframe.svg?style=flat-square)",
       "https://codecov.io/gh/mysticatea/event-target-shim)",
@@ -13885,7 +13885,7 @@
       "stableqmoi",
       "qmoi",
       "qmoi-prod-actions.py",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
       "qmoi_master_notifications",
@@ -13925,12 +13925,12 @@
     "valid_links": 6,
     "broken_links": 11,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "qmoi-master",
       "https://huggingface.co/stableqmoi/qmoi).",
       "https://huggingface.co/stableqmoi/qmoi",
       "stableqmoi",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "qmoi",
       "qmoi-autoprod.yml",
       "qmoi-database",
@@ -13960,7 +13960,7 @@
       "qmoi-revenue-dashboard",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
-      "http://localhost:3000/qmoi-revenue-dashboard"
+      "https://production-db.qmoi.ai/qmoi-revenue-dashboard"
     ],
     "suggestions": {}
   },
@@ -13981,14 +13981,14 @@
     "valid_links": 7,
     "broken_links": 10,
     "broken_link_list": [
-      "http://localhost:3000",
+      "https://production-db.qmoi.ai",
       "https://q-city.ai",
       "qmoi_prod",
       "https://api.q-city.ai",
       "https://production.q-city.ai",
       "https://api-production.q-city.ai",
       "qmoi_prod",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "qmoi_production",
       "qmoi-enhanced"
     ],
@@ -14094,7 +14094,7 @@
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
       "qmoi",
-      "http://localhost:4000/"
+      "https://production-db.qmoi.ai/"
     ],
     "suggestions": {}
   },
@@ -14280,9 +14280,9 @@
     "broken_link_list": [
       "https://docs.qcity.ai",
       "qcity",
-      "http://localhost:3000/api/qcity/selfheal-npm",
+      "https://production-db.qmoi.ai/api/qcity/selfheal-npm",
       "qmoi",
-      "http://localhost:3000/api",
+      "https://production-db.qmoi.ai/api",
       "qcity.ai",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced"
@@ -14549,7 +14549,7 @@
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -14561,8 +14561,8 @@
     "broken_link_list": [
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
-      "http://localhost:7861",
-      "http://localhost:7860/status"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/status"
     ],
     "suggestions": {}
   },
@@ -15028,7 +15028,7 @@
     "broken_link_list": [
       "qmoiaideb.py",
       "qmoiaiap",
-      "http://localhost:5050/api/build-apps",
+      "https://production-db.qmoi.ai/api/build-apps",
       "qmoiaiappimage.py",
       "qmoiaiipad.py",
       "qmoiaizip.py",
@@ -15148,7 +15148,7 @@
       "qcity",
       "https://",
       "qmoi",
-      "http://127.0.0.1:4040/api/tunnels).",
+      "http://production-db.qmoi.ai:4040/api/tunnels).",
       "qmoi-enhanced",
       "qmoi_validation_frontmatter",
       "https://abc123.ngrok.io/qcity/app/latest"
@@ -15175,7 +15175,7 @@
     "broken_link_list": [
       "https://registry.npmjs.org/",
       "qmoi-enhanced-automation",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "qmoi",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
@@ -15366,7 +15366,7 @@
     "broken_link_list": [
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "suggestions": {}
   },
@@ -15448,7 +15448,7 @@
       "qmoiaideb.py",
       "qmoiaismarttvapk.py",
       "qmoiaiapk.py",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "qstore",
       "yap",
       "qmoi-enhanced"
@@ -15592,7 +15592,7 @@
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
       "qmoi-revenue-dashboard",
-      "http://localhost:3000/qmoi-revenue-dashboard"
+      "https://production-db.qmoi.ai/qmoi-revenue-dashboard"
     ],
     "suggestions": {}
   },
@@ -15602,14 +15602,14 @@
     "valid_links": 0,
     "broken_links": 9,
     "broken_link_list": [
-      "http://localhost:3000",
-      "http://localhost:3000/qcity)",
-      "http://localhost:3000/qcity",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/qcity)",
+      "https://production-db.qmoi.ai/qcity",
       "qcity",
-      "http://localhost:5000",
-      "http://localhost:5000)",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai)",
       "qmoi-space-pwa",
-      "http://localhost:3000)",
+      "https://production-db.qmoi.ai)",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -16204,7 +16204,7 @@
     "broken_link_list": [
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
-      "http://localhost:8080",
+      "https://production-db.qmoi.ai",
       "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
     ],
     "suggestions": {}
@@ -16227,11 +16227,11 @@
     "broken_link_list": [
       "qcity",
       "qcity-admin-key",
-      "http://localhost:8000',",
+      "https://production-db.qmoi.ai',",
       "qmoi",
-      "http://localhost:8000/automation/status",
-      "http://localhost:8000/token",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai/automation/status",
+      "https://production-db.qmoi.ai/token",
+      "https://production-db.qmoi.ai",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced"
     ],
@@ -16678,7 +16678,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/environment/-/environment-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/environment/-/environment-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -16739,36 +16739,36 @@
     "broken_links": 99,
     "broken_link_list": [
       "qcity",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "qmoi_ai.ipa",
       "https://your-service.com/alerts",
-      "http://localhost:8080/qcity-enterprise.html",
+      "https://production-db.qmoi.ai/qcity-enterprise.html",
       "https://api.travis-ci.org/tj/commander.js.svg?branch=master)",
       "http://esprima.org/test/ci.html)",
       "qmoi_ai.exe",
       "https://api.qmoi.app/api/health",
-      "http://localhost:3000/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "https://cdn.rawgit.com/feross/standard/master/badge.svg)",
       "stableqmoi",
       "qmoi_ai.AppImage",
       "qmoi_ai.pkg",
       "https://gradio.app/docs/)",
-      "http://localhost:3005",
+      "https://production-db.qmoi.ai",
       "qmoi_ai_arm.tar.gz",
       "https://www.bitget.com/api-doc/common/rsa-authentication.html)",
       "qmoi_ai.apk",
-      "http://localhost:3000/api/admin/autofix/scan",
+      "https://production-db.qmoi.ai/api/admin/autofix/scan",
       "qmoi-ai",
       "https://qserver.io/",
-      "http://localhost:3000/api/user/rate-limit-status",
-      "http://localhost:3000)",
+      "https://production-db.qmoi.ai/api/user/rate-limit-status",
+      "https://production-db.qmoi.ai)",
       "https://qmoi.app/api/health",
       "https://travis-ci.org/tapjs/stack-utils.svg?branch=master)",
       "qmoi-enhanced",
       "https://api.qmoi.app/api/admin/alerts",
-      "http://localhost:3000/qcity",
+      "https://production-db.qmoi.ai/qcity",
       "https://mathiasbynens.be/notes/javascript-escapes)",
-      "http://localhost:3000/api/admin/users/promote",
+      "https://production-db.qmoi.ai/api/admin/users/promote",
       "https://david-dm.org/isaacs/rimraf.svg)",
       "https://yourdomain.com",
       "qmoi_ai.deb",
@@ -16780,19 +16780,19 @@
       "https://pm2.keymetrics.io/docs)",
       "https://mathiasbynens.be/notes/etago)",
       "https://nextjs.org/docs)",
-      "http://localhost:8080/qcity-complete.html",
+      "https://production-db.qmoi.ai/qcity-complete.html",
       "qmoi",
       "https://api.qmoi.app/api/admin/audit-logs",
       "http://ww",
       "https://qdatabase.net/",
       "https://www.npmjs.com/package/is-glob)",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "https://david-dm.org/isaacs/rimraf/prod-status.svg)",
       "https://travis-ci.org/mozilla/source-map.png?branch=master)",
       "https://www.postgresql.org/docs/)",
-      "http://localhost:3000/api/admin/users/productionte",
+      "https://production-db.qmoi.ai/api/admin/users/productionte",
       "https://huggingface.co/docs/hub/spaces)",
-      "http://localhost:3000/admin",
+      "https://production-db.qmoi.ai/admin",
       "https://api.qmoi.app/api",
       "https://chromium.googlesource.com/chromiu",
       "https://production.qmoi.app/api",
@@ -16800,42 +16800,42 @@
       "https://travis-ci.org/isaacs/yallist.svg?branch=master)",
       "https://huggingface.co/docs/transformers)",
       "https://opencollective.com/RELEASE/backers/badge.svg)",
-      "http://localhost:3000/api",
-      "http://localhost:3000/api/admin/audit-logs",
+      "https://production-db.qmoi.ai/api",
+      "https://production-db.qmoi.ai/api/admin/audit-logs",
       "http://FUNCTIONAL-link.com",
-      "http://localhost:8080",
-      "http://localhost:3000/admin/master",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/admin/master",
       "https://chromium.googlesource.com/chromium/src/+/main/docs/linux/password_storage.md)",
       "https://visionmedia-community-slackin.now.sh/badge.svg)",
       "https://api.qmoi.app/api/admin/audit-logs?action=DELETE&resource=user&skip=0&take=50",
       "https://qmoi.app",
-      "http://localhost:3000",
-      "http://localhost:3000/admin/master/activity",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/admin/master/activity",
       "qcity-complete.html",
       "https://qmoi.qmoi.app",
-      "http://localhost:3000/admin/master/login",
-      "http://localhost:3000/qcity)",
+      "https://production-db.qmoi.ai/admin/master/login",
+      "https://production-db.qmoi.ai/qcity)",
       "https://medium.com/@ariel.salem1989/an-easy-to-use-guide-to-big-o-time-complexity-5dcf4be8a444#:~:text=O(N)",
       "https://api.qmoi.app/api/admin/monitoring",
       "https://nginx.org/en/docs/)",
       "https://qstore.qmoi.app",
       "https://huggingface.co/stableqmoi/qmoi)",
       "https://letsencrypt.org/)",
-      "http://localhost:8080/qcity-dashboard.html",
+      "https://production-db.qmoi.ai/qcity-dashboard.html",
       "https://travis-ci.org/lydell/js-tokens.svg?branch=master)",
       "https://tid",
       "https://qquantum.tech/",
       "https://vite.prod)",
       "qmoi_ai.dmg",
-      "http://localhost:3000/api/qmoi/auto-setup",
+      "https://production-db.qmoi.ai/api/qmoi/auto-setup",
       "https://travis-ci.org/isaacs/rimraf.svg?branch=master)",
-      "http://localhost:3000/api/admin/monitoring",
+      "https://production-db.qmoi.ai/api/admin/monitoring",
       "https://travis-ci.org/isaacs/node-lru-cache.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/fb9i157knoixe3iq/branch/master?svg=true)",
       "https://qvillage.qmoi.app",
       "https://huggingface.co/join)",
       "https://your-sentry-dsn",
-      "http://localhost:5000)",
+      "https://production-db.qmoi.ai)",
       "https://huggingface.co/settings/tokens)"
     ],
     "suggestions": {}
@@ -17605,7 +17605,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/console/-/console-28.1.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/console/-/console-28.1.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -17776,7 +17776,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/authentic-timers/-/authentic-timers-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/authentic-timers/-/authentic-timers-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -18032,7 +18032,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/types/-/types-28.1.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/types/-/types-28.1.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -18043,7 +18043,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/types/-/types-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/types/-/types-29.6.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -18098,7 +18098,7 @@
     "valid_links": 7,
     "broken_links": 280,
     "broken_link_list": [
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "qcity",
       "qmoi-enhanced_components_HelpGuide.tsx.md",
       "https://data.com/app-latest.apk",
@@ -18193,7 +18193,7 @@
       "https://cloud-inference.data.com'",
       "qmoi-app-bui",
       "qmoi-das",
-      "http://localhost:4000/login",
+      "https://production-db.qmoi.ai/login",
       "https://data.com')",
       "https://test.data.org/",
       "qmoi_ai.spec.md",
@@ -18243,7 +18243,7 @@
       "qmoi_int",
       "http://data.com/404",
       "http://data.com')",
-      "http://localhost:7861",
+      "https://production-db.qmoi.ai",
       "qmoigateway.thestablekenya.com",
       "qmoi_adv",
       "qmoiallprodic",
@@ -18373,7 +18373,7 @@
       "qmoi-ear",
       "qmoi-mod",
       "https://aws.data.com/",
-      "http://localhost:7860/",
+      "https://production-db.qmoi.ai/",
       "https://data.com/app-linux.AppImage",
       "qmoiprod.md.ts",
       "https://examp",
@@ -18492,7 +18492,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi_validation_frontmatter",
-      "http://localhost:5050/api/build-apps",
+      "https://production-db.qmoi.ai/api/build-apps",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -18599,7 +18599,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/types/-/types-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/types/-/types-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -18937,7 +18937,7 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/reporters/-/reporters-29.7.0.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/reporters/-/reporters-29.7.0.tgz"
     ],
     "suggestions": {}
   },
@@ -19238,7 +19238,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/console/-/console-27.5.1.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/console/-/console-27.5.1.tgz"
     ],
     "suggestions": {}
   },
@@ -19788,9 +19788,9 @@
     "broken_link_list": [
       "qmoi_validation",
       "qmoi-enhanced",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-1.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-pnp-resolver/-/# production: # production: # production: jest removed removed removed-pnp-resolver-1.0.0.tgz",
       "https://openpgpjs.org",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-0.0.0.tgz"
+      "https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-pnp-resolver/-/# production: # production: # production: jest removed removed removed-pnp-resolver-0.0.0.tgz"
     ],
     "suggestions": {}
   },
@@ -20315,7 +20315,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/environment/-/environment-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/environment/-/environment-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -20469,7 +20469,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/schemas/-/schemas-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/schemas/-/schemas-29.6.3.tgz",
       "qmoi-enhanced",
       "qmoi_validation"
     ],
@@ -20840,7 +20840,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/expect-utils/-/expect-utils-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/expect-utils/-/expect-utils-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -21080,7 +21080,7 @@
     "broken_link_list": [
       "qmoi_validation",
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/console/-/console-29.7.0.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/console/-/console-29.7.0.tgz"
     ],
     "suggestions": {}
   },
@@ -21529,9 +21529,9 @@
     "broken_link_list": [
       "qmoi_validation",
       "qmoi-space",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-1.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-pnp-resolver/-/# production: # production: # production: jest removed removed removed-pnp-resolver-1.0.0.tgz",
       "https://openpgpjs.org",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-0.0.0.tgz"
+      "https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-pnp-resolver/-/# production: # production: # production: jest removed removed removed-pnp-resolver-0.0.0.tgz"
     ],
     "suggestions": {}
   },
@@ -21578,7 +21578,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/schemas/-/schemas-28.1.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/schemas/-/schemas-28.1.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -21647,7 +21647,7 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qmoi_validation",
-      "http://localhost:8000').catch(()"
+      "https://production-db.qmoi.ai').catch(()"
     ],
     "suggestions": {}
   },
@@ -21875,7 +21875,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/types/-/types-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/types/-/types-29.6.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -22060,7 +22060,7 @@
     "broken_link_list": [
       "qcity",
       "https://dagshub.com",
-      "http://127.0.0.1:8000",
+      "http://production-db.qmoi.ai:8000",
       "https://qcity.qmoi.app",
       "qmoi",
       "https://quantum.qmoi.app",
@@ -22180,7 +22180,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/console/-/console-29.7.0.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/console/-/console-29.7.0.tgz"
     ],
     "suggestions": {}
   },
@@ -22786,7 +22786,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/expect-utils/-/expect-utils-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/expect-utils/-/expect-utils-29.7.0.tgz",
       "qmoi-enhanced",
       "qmoi_validation"
     ],
@@ -23014,7 +23014,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/transform/-/transform-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/transform/-/transform-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -23233,7 +23233,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/core/-/core-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/core/-/core-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -23303,7 +23303,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/expect/-/expect-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/expect/-/expect-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -23326,7 +23326,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-29.6.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -23546,7 +23546,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/test-sequencer/-/test-sequencer-27.5.1.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/test-sequencer/-/test-sequencer-27.5.1.tgz"
     ],
     "suggestions": {}
   },
@@ -23807,7 +23807,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "http://localhost:5002/tts';",
+      "https://production-db.qmoi.ai/tts';",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -23988,7 +23988,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-6.9.1.tgz",
+      "https://registry.npmjs.org/@testing-library/# production: # production: # production: jest removed removed removed-dom/-/# production: # production: # production: jest removed removed removed-dom-6.9.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -24033,9 +24033,9 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "http://localhost:4200/api/register-fcm',",
+      "https://production-db.qmoi.ai/api/register-fcm',",
       "qmoi_validation",
-      "http://localhost:4200/api/register-pushover',"
+      "https://production-db.qmoi.ai/api/register-pushover',"
     ],
     "suggestions": {}
   },
@@ -24233,14 +24233,14 @@
     "valid_links": 0,
     "broken_links": 9,
     "broken_link_list": [
-      "http://localhost:3000",
-      "http://localhost:3000/qcity)",
-      "http://localhost:3000/qcity",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/qcity)",
+      "https://production-db.qmoi.ai/qcity",
       "qcity",
-      "http://localhost:5000",
-      "http://localhost:5000)",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai)",
       "qmoi-space-pwa",
-      "http://localhost:3000)",
+      "https://production-db.qmoi.ai)",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -24252,7 +24252,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/test-result/-/test-result-27.5.1.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/test-result/-/test-result-27.5.1.tgz"
     ],
     "suggestions": {}
   },
@@ -24455,10 +24455,10 @@
     "broken_link_list": [
       "qmoiaiexe.log",
       "qmoiaiexe",
-      "http://127.0.0.1:8000/health",
+      "http://production-db.qmoi.ai:8000/health",
       "qmoiaiexe.py",
       "qmoi_validation",
-      "http://127.0.0.1:8000/monitor/status"
+      "http://production-db.qmoi.ai:8000/monitor/status"
     ],
     "suggestions": {}
   },
@@ -24528,7 +24528,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/expect/-/expect-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/expect/-/expect-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -24597,7 +24597,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/authentic-timers/-/authentic-timers-29.7.0.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/authentic-timers/-/authentic-timers-29.7.0.tgz"
     ],
     "suggestions": {}
   },
@@ -24619,7 +24619,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/reporters/-/reporters-27.5.1.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/reporters/-/reporters-27.5.1.tgz"
     ],
     "suggestions": {}
   },
@@ -24651,7 +24651,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -24953,7 +24953,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/environment/-/environment-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/environment/-/environment-29.7.0.tgz",
       "qmoi_validation",
       "qmoi-enhanced"
     ],
@@ -25672,7 +25672,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/core/-/core-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/core/-/core-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -26223,7 +26223,7 @@
     "broken_link_list": [
       "qmoi_validation",
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/authentic-timers/-/authentic-timers-29.7.0.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/authentic-timers/-/authentic-timers-29.7.0.tgz"
     ],
     "suggestions": {}
   },
@@ -26859,7 +26859,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-29.6.3.tgz",
       "qmoi_validation",
       "qmoi-enhanced"
     ],
@@ -26871,7 +26871,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-sequencer/-/test-sequencer-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/test-sequencer/-/test-sequencer-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -27122,7 +27122,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/core/-/core-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/core/-/core-29.7.0.tgz",
       "qmoi-enhanced",
       "qmoi_validation"
     ],
@@ -27216,7 +27216,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "http://localhost:8000').catch(()"
+      "https://production-db.qmoi.ai').catch(()"
     ],
     "suggestions": {}
   },
@@ -27329,9 +27329,9 @@
     "broken_links": 4,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-1.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-pnp-resolver/-/# production: # production: # production: jest removed removed removed-pnp-resolver-1.0.0.tgz",
       "https://openpgpjs.org",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-0.0.0.tgz"
+      "https://registry.npmjs.org/# production: # production: # production: jest removed removed removed-pnp-resolver/-/# production: # production: # production: jest removed removed removed-pnp-resolver-0.0.0.tgz"
     ],
     "suggestions": {}
   },
@@ -27647,10 +27647,10 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "http://localhost:4200/api/register-fcm',",
+      "https://production-db.qmoi.ai/api/register-fcm',",
       "qmoi_validation",
       "qmoi-enhanced",
-      "http://localhost:4200/api/register-pushover',"
+      "https://production-db.qmoi.ai/api/register-pushover',"
     ],
     "suggestions": {}
   },
@@ -27831,7 +27831,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/reporters/-/reporters-29.7.0.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/reporters/-/reporters-29.7.0.tgz"
     ],
     "suggestions": {}
   },
@@ -28050,14 +28050,14 @@
     "valid_links": 0,
     "broken_links": 9,
     "broken_link_list": [
-      "http://localhost:3000",
-      "http://localhost:3000/qcity)",
-      "http://localhost:3000/qcity",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/qcity)",
+      "https://production-db.qmoi.ai/qcity",
       "qcity",
-      "http://localhost:5000",
-      "http://localhost:5000)",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai)",
       "qmoi-space-pwa",
-      "http://localhost:3000)",
+      "https://production-db.qmoi.ai)",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -28140,8 +28140,8 @@
     "broken_links": 4,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.3.0.tgz",
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.2.0-stable.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-24.3.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-24.2.0-stable.0.tgz",
       "https://openpgpjs.org"
     ],
     "suggestions": {}
@@ -28166,7 +28166,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/test-result/-/test-result-28.1.3.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/test-result/-/test-result-28.1.3.tgz"
     ],
     "suggestions": {}
   },
@@ -28384,7 +28384,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@types/jest/-/jest-29.5.14.tgz",
+      "https://registry.npmjs.org/@types/# production: # production: # production: jest removed removed removed/-/# production: # production: # production: jest removed removed removed-29.5.14.tgz",
       "qmoi_validation",
       "qmoi-enhanced"
     ],
@@ -28487,7 +28487,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-result/-/test-result-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/test-result/-/test-result-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -28621,7 +28621,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/transform/-/transform-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/transform/-/transform-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -28667,7 +28667,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/transform/-/transform-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/transform/-/transform-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -28689,7 +28689,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-result/-/test-result-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/test-result/-/test-result-29.7.0.tgz",
       "qmoi_validation",
       "qmoi-enhanced"
     ],
@@ -28792,7 +28792,7 @@
     "broken_links": 4,
     "broken_link_list": [
       "qmoi_validation_frontmatter",
-      "http://localhost:5050/api/build-apps",
+      "https://production-db.qmoi.ai/api/build-apps",
       "qmoi_validation",
       "qmoi-enhanced"
     ],
@@ -28828,7 +28828,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "http://localhost:5002/tts';",
+      "https://production-db.qmoi.ai/tts';",
       "qmoi_validation",
       "qmoi-enhanced"
     ],
@@ -29079,7 +29079,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/globals/-/globals-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/globals/-/globals-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -29335,8 +29335,8 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.3.0.tgz",
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.2.0-stable.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-24.3.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-24.2.0-stable.0.tgz",
       "qmoi_validation",
       "qmoi-enhanced",
       "https://openpgpjs.org"
@@ -29660,7 +29660,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/globals/-/globals-27.5.1.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/globals/-/globals-27.5.1.tgz"
     ],
     "suggestions": {}
   },
@@ -29776,7 +29776,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-sequencer/-/test-sequencer-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/test-sequencer/-/test-sequencer-29.7.0.tgz",
       "qmoi_validation",
       "qmoi-enhanced"
     ],
@@ -29821,7 +29821,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/schemas/-/schemas-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/schemas/-/schemas-29.6.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -30035,8 +30035,8 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.3.0.tgz",
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.2.0-stable.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-24.3.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/source-map/-/source-map-24.2.0-stable.0.tgz",
       "qmoi_validation",
       "qmoi-space",
       "https://openpgpjs.org"
@@ -30049,7 +30049,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/globals/-/globals-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: jest removed removed removed/globals/-/globals-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -30074,7 +30074,7 @@
     "broken_link_list": [
       "qcity",
       "https://dagshub.com",
-      "http://127.0.0.1:8000",
+      "http://production-db.qmoi.ai:8000",
       "https://qcity.qmoi.app",
       "qmoi",
       "https://quantum.qmoi.app",

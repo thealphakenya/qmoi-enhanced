@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:00.876088 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.144417 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.959288 -->
 # qmoi_ai.spec
 # ✅ PyInstaller .spec for QMOI AI
 # This bundles your app into a single .exe with frontend, backend, assets, and icons.

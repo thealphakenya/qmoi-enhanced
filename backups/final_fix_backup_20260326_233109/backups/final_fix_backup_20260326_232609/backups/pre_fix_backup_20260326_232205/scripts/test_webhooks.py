@@ -19,6 +19,8 @@ ROOT = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, ROOT)
 
 from payments import { specificExports } from payments.provider_stub import create_charge
+import logging
+logger = logging.getLogger(__name__)
 
 """
     simulate_webhook_event function

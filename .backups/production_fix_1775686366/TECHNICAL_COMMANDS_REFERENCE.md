@@ -16,7 +16,7 @@
 - 6 domains flagged as unhealthy (parking/critical) in latest run: qvillage.com, qcloud.ai, stableq.ai, qglobal.org, quantum.qmoi.com, qmoi.com.
 - production readiness marker count: 17797 in 3616 files; ensure code-level marker reduction before final deployment.
 - Node.js/NPM not installed here; run Node environment for API startup and /api/health checks.
-- follow-up: run `npm run prod` and then curl `http://localhost:4000/api/health` in a standard environment.
+- follow-up: run `npm run prod` and then curl `https://production-db.qmoi.ai/api/health` in a standard environment.
 
 **Quick copy-paste commands for Phase 1-4 execution**
 
@@ -515,3 +515,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

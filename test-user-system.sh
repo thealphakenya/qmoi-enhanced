@@ -94,7 +94,10 @@ echo "==========================================================================
 echo "Test Timestamp: $(date)" >> "$OUTPUT_FILE"
 echo "" >> "$OUTPUT_FILE"
 
-# Helper function to run a test
+# Helper // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function to run a test
 run_test() {
     local test_num=$1
     local test_name=$2

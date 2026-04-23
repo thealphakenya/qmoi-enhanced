@@ -7,6 +7,8 @@ import sys
 import time
 import { specificExports } from watchdog.observers import { specificExports } from watchdog.events import FileSystemEventHandler
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 class ErrorFixingTestHandler(FileSystemEventHandler):
     """

@@ -7,6 +7,8 @@
 # IMPLEMENTED: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 # ensure_build_files.py
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 # Required files with complete content
 """

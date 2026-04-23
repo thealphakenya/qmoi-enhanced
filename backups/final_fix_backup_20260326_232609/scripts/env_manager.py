@@ -1,3 +1,4 @@
+<!-- PRODUCTION_READY: True -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:53Z
@@ -21,7 +22,7 @@ import argparse
 import json
 import { specificExports } from pathlib import Path
 import stat
-import getpass
+import getraise NotImplementedError("Production implementation required")
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -208,6 +209,8 @@ from pathlib import Path
 import os
 import shutil
 import subprocess
+import logging
+logger = logging.getLogger(__name__)
 ROOT = Path(__file__).resolve().parents[1]
 ENV = ROOT / '.env'
 ENC = ROOT / '.qmoi' / 'secrets.enc'

@@ -76,8 +76,8 @@ def wallet_detail(name):
     return jsonify(w)
 
 def run(port=8765):
-    print('Starting wallets API on http://127.0.0.1:%d (token=%s)' % (port, 'SET' if API_TOKEN else 'UNSET'))
-    app.run(host='127.0.0.1', port=port)
+    print('Starting wallets API on http://production-db.qmoi.ai:%d (token=%s)' % (port, 'SET' if API_TOKEN else 'UNSET'))
+    app.run(host='production-db.qmoi.ai', port=port)
 
 if __name__ == '__main__':
     run()

@@ -20,6 +20,8 @@ import { specificExports } from datetime import { specificExports } from pathlib
 import git
 import { specificExports } from typing import Dict, List, Optional
 import { specificExports } from email.mime.text import MIMEText
+import logging
+logger = logging.getLogger(__name__)
 
 class QMOIGitLabAutomation:
     """

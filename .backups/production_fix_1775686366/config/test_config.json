@@ -116,7 +116,7 @@
   "environments": {
     "production": {
       "database_url": "sqlite:///test_prod.db",
-      "api_base_url": "http://localhost:3000",
+      "api_base_url": "https://production-db.qmoi.ai",
       "log_level": "RELEASE"
     },
     "production": {

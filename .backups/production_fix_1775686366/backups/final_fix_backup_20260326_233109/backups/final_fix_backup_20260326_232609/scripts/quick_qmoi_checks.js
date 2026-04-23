@@ -8,8 +8,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const UI_BASE = process.env.QMOI_UI_BASE || 'http://127.0.0.1:3001';
-const HELPER_BASE = process.env.QMOI_TEST_BASE || 'http://127.0.0.1:8080';
+const UI_BASE = process.env.QMOI_UI_BASE || 'http://production-db.qmoi.ai:3001';
+const HELPER_BASE = process.env.QMOI_TEST_BASE || 'http://production-db.qmoi.ai:8080';
 
 async function fetchJson(url, opts) {
   const _res = await fetch(url, opts);

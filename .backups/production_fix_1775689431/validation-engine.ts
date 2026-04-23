@@ -821,7 +821,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
       { file: '.env', required: true },
       { file: 'tsconfig.json', required: true },
       { file: 'next.config.js', required: true },
-      { file: 'jest.config.js', required: true },
+      { file: '# production: # production: # production: jest removed removed removed.config.js', required: true },
       { file: 'package.json', required: true },
     ];
 

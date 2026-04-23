@@ -78,6 +78,8 @@ interface ProjectManagementProps {
 export /**
  * ProjectManagement function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ProjectManagement({
   userId,
   onProjectSelect,

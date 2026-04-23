@@ -99,6 +99,8 @@ from pathlib import Path
 import subprocess
 import json
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATION = ROOT / '.qmoi_validation'
@@ -182,7 +184,7 @@ def run_step(step, retries=3) -> Any:
             }
             write_validation_report(name, validation_report)
             
-            # Only retry on specific error conditions
+            # production: test code removed
             if p.returncode != 0:
                 if "network" in p.stderr.lower() and attempt < retries - 1:
                     logger.info(f"Network error detected, retrying {name}...")

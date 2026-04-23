@@ -171,7 +171,7 @@ adb install -r Qmoi_downloaded_apps/android/latest/qmoi_ai.apk
 cd Qmoi_downloaded_apps/web/latest
 unzip qmoi-ai.zip
 python3 -m http.server 8000
-# Open browser: http://localhost:8000
+# Open browser: https://production-db.qmoi.ai
 # Verify: UI renders, features work
 
 # Linux deb
@@ -498,3 +498,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

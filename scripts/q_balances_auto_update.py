@@ -1,11 +1,25 @@
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
                 return f.read()
         except FileNotFoundError:
@@ -114,7 +128,7 @@ def start(self) -> None:
             return
 
         self.is_running = True
-        logger.info('🦁 Starting QMOI Q/BALANCES.md Auto-Update SystemProduction implementation with comprehensive error handling and logging')
+        logger.info('🦁 Starting QMOI Q/BALANCES.md Auto-Update Systemproduction implementation with comprehensive error handling and logging')
 
         # Initial update
         self._perform_update()
@@ -149,7 +163,7 @@ def _run_update_loop(self) -> None:
 def _perform_update(self) -> None:
         """Perform a complete balance update for q/BALANCES.md"""
         try:
-            logger.info('🔄 Performing Q/BALANCES.md updateProduction implementation with comprehensive error handling and logging')
+            logger.info('🔄 Performing Q/BALANCES.md updateproduction implementation with comprehensive error handling and logging')
 
             # Get all wallet balances
             wallet_balances = self._get_all_wallet_balances()

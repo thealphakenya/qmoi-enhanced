@@ -1314,7 +1314,7 @@ def apply_space_template(template_id: str, space: Space) -> Dict:
         "ml_training": {
             "resources": {"cpu": "8", "memory": "32GB", "gpu": "1", "storage": "100GB"},
             "dependencies": ["tensorflow", "pytorch", "cuda", "jupyter"],
-            "environment_variables": {"MLFLOW_TRACKING_URI": "http://localhost:5000"},
+            "environment_variables": {"MLFLOW_TRACKING_URI": "https://production-db.qmoi.ai"},
             "settings": {"auto_start": True, "persistent_storage": True}
         },
         "web_app": {
@@ -5160,7 +5160,7 @@ except ModuleNotFoundError:
     gr = None
 
 # Configuration
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+REDIS_URL = os.getenv("REDIS_URL", "redishttps://production-db.qmoi.ai")
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./qvillage.db")
 MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "localhost:9000")
 MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY", "minioadmin")

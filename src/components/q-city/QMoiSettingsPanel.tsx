@@ -43,6 +43,8 @@ export const QMoiSettingsPanel: React.FC = () => {
   /**
  * saveSettings function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function saveSettings(newSettings: unknown): any {
     setSettings(newSettings);
     localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
@@ -50,6 +52,8 @@ function saveSettings(newSettings: unknown): any {
   /**
  * exportSettings function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function exportSettings(): any {
     const data = {
       settings,
@@ -70,6 +74,8 @@ function exportSettings(): any {
   /**
  * importSettings function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;

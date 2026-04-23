@@ -63,7 +63,7 @@ curl -I https://qvillage.com/qcity-enterprise.html
 
 ### Optional Services (Not Started by Default)
 
-- **[PRODUCTION_IMPLEMENTED] Backend:** http://localhost:5000 (start with `./startup.sh --[PRODUCTION_IMPLEMENTED]-server`)
+- **[PRODUCTION_IMPLEMENTED] Backend:** https://production-db.qmoi.ai (start with `./startup.sh --[PRODUCTION_IMPLEMENTED]-server`)
 - **prod Server:** https://qmoi.ai (start with `npm run prod`)
 
 ---
@@ -150,7 +150,7 @@ time curl -s https://qvillage.com/qcity-enterprise.html > /prod/null
 ```bash
 NEXT_PUBLIC_API_URL=https://qvillage.com
 NEXT_PUBLIC_ENV=production
-NEXT_PUBLIC_DEBUG=true
+NEXT_PUBLIC_debug = False  # production
 NODE_ENV=production
 ```
 
@@ -539,3 +539,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -467,7 +467,7 @@ def monitoring_loop() -> Any:
                             "QMOI System Heartbeat",
                             "QMOI Enhanced Notification System is running normally.",
                             'normal',
-                            ['email']  # Only email for heartbeat
+                            ['email']  # production: test code removed
                         )
                     
                     time.sleep(60) # Check every minute

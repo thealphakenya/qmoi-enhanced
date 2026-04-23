@@ -24,6 +24,8 @@ import argparse
 import json
 import os
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 VALIDATION_DIR = os.path.join(BASE_DIR, '.qmoi_validation')

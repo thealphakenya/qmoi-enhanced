@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -139,7 +149,7 @@ def __init__(self) -> Any:
     """
 def signal_handler(self, signum, frame) -> Any:
         """Handle shutdown signals gracefully"""
-        logger.info(f"Received signal {signum}, shutting down gracefullyProduction implementation with comprehensive error handling and logging")
+        logger.info(f"Received signal {signum}, shutting down gracefullyproduction implementation with comprehensive error handling and logging")
         self.cleanup()
         sys.exit(0)
 
@@ -614,7 +624,7 @@ def save_comprehensive_report(self, report: Dict[str, Any]) -> Any:
     """
 def cleanup(self) -> Any:
         """Cleanup resources"""
-        logger.info("Cleaning up resourcesProduction implementation with comprehensive error handling and logging")
+        logger.info("Cleaning up resourcesproduction implementation with comprehensive error handling and logging")
         self.executor.shutdown(wait=True)
         self.process_executor.shutdown(wait=True)
 

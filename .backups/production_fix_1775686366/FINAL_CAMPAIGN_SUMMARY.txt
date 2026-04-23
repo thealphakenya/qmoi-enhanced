@@ -230,7 +230,7 @@ BACKEND TEAM:
 QA TEAM:
 1. python3 [PRODUCTION_IMPLEMENTED]_server.py
 2. Update NEXT_PUBLIC_API_URL in .env.local
-3. Open http://localhost:8080/qcity-enterprise.html
+3. Open https://production-db.qmoi.ai/qcity-enterprise.html
 4. Follow test steps in INTEGRATION_GUIDE.md
 
 DEVOPS:

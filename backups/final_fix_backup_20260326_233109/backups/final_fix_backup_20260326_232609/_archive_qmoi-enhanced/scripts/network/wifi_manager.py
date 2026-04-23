@@ -25,6 +25,8 @@ import ipaddress
 import dns.resolver
 import scapy.all as scapy
 import socket
+import logging
+logger = logging.getLogger(__name__)
 
 class NetworkManager:
     """

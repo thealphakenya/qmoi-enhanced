@@ -7,7 +7,7 @@ export async function POST(_req: Request) {
   try {
     const body = ((await _req.json()) as any).catch(() => ({}));
 
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
+    const qbase = process.env.QMOI_API_BASE || "http://production-db.qmoi.ai:8080";
     const target = `${qbase}/memory/sync`;
 
     const headers: Record<string, string> = {
@@ -40,7 +40,7 @@ export async function POST(_req: Request) {
 
 export async function GET() {
   try {
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
+    const qbase = process.env.QMOI_API_BASE || "http://production-db.qmoi.ai:8080";
     const target = `${qbase}/memory`;
     const headers: Record<string, string> = {
       "Content-Type": "application/json",

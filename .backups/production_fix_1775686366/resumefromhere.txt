@@ -659,7 +659,7 @@ The QMOI domain ecosystem now features:
   - Placeholder Implementations: 83 (mainly lion-agent-workflows.ts, qvillage/app.py)
   - Mock Stubs: 219 (test files + production code)
   - Not Implemented: 79 (functions needing real logic)
-  - Hardcoded Values: 274 (localhost, 127.0.0.1, example.com)
+  - Hardcoded Values: 274 (localhost, production-db.qmoi.ai, example.com)
   - Test Data: 29 (sample data in production)
   - Coming Soon: 12 (placeholder text)
   - TODO Comments: 3 (incomplete tasks)
@@ -709,7 +709,7 @@ The QMOI domain ecosystem now features:
 - **Target**: 274 hardcoded values
 - **Priority Files**: Configuration files, environment variables, constants
 - **Actions**:
-  - Replace localhost/127.0.0.1 with configurable host settings
+  - Replace localhost/production-db.qmoi.ai with configurable host settings
   - Move hardcoded URLs to environment variables
   - Implement proper configuration management
   - Add validation for configuration values
@@ -1542,8 +1542,8 @@ find . -type f \( -name "*.js" -o -name "*.ts" -o -name "*.tsx" -o -name "*.py" 
 To deploy QVillage Enhanced:
 1. Install dependencies: `pip install -r requirements.txt`
 2. Run application: `python qvillage/app.py`
-3. Access UI: `http://localhost:7860` (token: master_access_granted)
-4. Access API: `http://localhost:8000` with docs at `/docs`
+3. Access UI: `https://production-db.qmoi.ai` (token: master_access_granted)
+4. Access API: `https://production-db.qmoi.ai` with docs at `/docs`
 
 ---
 

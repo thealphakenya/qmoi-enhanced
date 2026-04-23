@@ -56,6 +56,8 @@ interface WifiPanelProps {
 export /**
  * WifiPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function WifiPanel({ onClose }: WifiPanelProps): any {
   const [networks, setNetworks] = useState<WifiNetwork[]>([]);
   const [loading, setLoading] = useState(false);

@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +53,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -796,7 +806,7 @@ def fix_missing_cache(self, issue: Dict) -> Optional[Dict]:
             }
             
         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
             return None
     
     """
@@ -898,7 +908,7 @@ def scan_workflow_logs_for_dependency_errors(self) -> List[Dict]:
 def trigger_self_healing_if_needed(self, errors: List[Dict]) -> None:
         """Trigger the self-healing script if dependency errors are found"""
         if errors:
-            logger.info('Dependency errors detected in workflow logs. Triggering self-healing scriptProduction implementation with comprehensive error handling and logging')
+            logger.info('Dependency errors detected in workflow logs. Triggering self-healing scriptproduction implementation with comprehensive error handling and logging')
             try:
                 result = subprocess.run([sys.executable, 'scripts/qmoi_self_healing_enhanced.py'], capture_output=True, text=True, timeout=900)
                 logger.info('Self-healing script output: ' + result.stdout + result.stderr)

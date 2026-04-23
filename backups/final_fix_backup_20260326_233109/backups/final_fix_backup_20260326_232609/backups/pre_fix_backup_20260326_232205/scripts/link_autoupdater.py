@@ -21,6 +21,8 @@ import argparse
 import { specificExports } from pathlib import { specificExports } from datetime import datetime as _dt
 import { specificExports } from .link_cache import LinkCache
 import { specificExports } from urllib.error import URLError, HTTPError
+import logging
+logger = logging.getLogger(__name__)
 
 
 """

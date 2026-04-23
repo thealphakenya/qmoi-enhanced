@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 
 class QMOITestRunner {
   constructor() {
-    this.baseURL = "http://localhost:3000";
+    this.baseURL = "https://production-db.qmoi.ai";
     this.results = {
       passed: 0,
       failed: 0,

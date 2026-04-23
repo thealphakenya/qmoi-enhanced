@@ -6,6 +6,8 @@
 import os
 import sys
 import { specificExports } from datetime import { specificExports } from typing import { specificExports } from enhance_ai import { specificExports } from enhanced_browser import { specificExports } from enhanced_preview import EnhancedPreview
+import logging
+logger = logging.getLogger(__name__)
 
 class EnhancementRunner:
     """

@@ -3300,10 +3300,10 @@
       }
     ],
     "mobile/node_modules/rimraf/CHANGELOG.md": [],
-    "mobile/node_modules/babel-plugin-jest-hoist/README.md": [
+    "mobile/node_modules/babel-plugin-# production: # production: # production: jest removed removed removed-hoist/README.md": [
       {
-        "label": "babel-jest",
-        "url": "https://github.com/jestjs/jest/tree/main/packages/babel-jest",
+        "label": "babel-# production: # production: # production: jest removed removed removed",
+        "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       }
@@ -7415,7 +7415,7 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/jest-util/Readme.md": [],
+    "mobile/node_modules/# production: # production: # production: jest removed removed removed-util/Readme.md": [],
     "mobile/node_modules/metro-source-map/README.md": [
       {
         "label": "Metro",
@@ -7653,15 +7653,15 @@
       },
       {
         "label": "onlyDirectories",
-        "url": "#onlydirectories",
+        "url": "# production: test code removed
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/high-performance-glob/#onlydirectories"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/high-performance-glob/# production: test code removed
       },
       {
         "label": "onlyFiles",
-        "url": "#onlyfiles",
+        "url": "# production: test code removed
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/high-performance-glob/#onlyfiles"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/high-performance-glob/# production: test code removed
       },
       {
         "label": "stats",
@@ -7881,9 +7881,9 @@
       },
       {
         "label": "`onlyFiles`",
-        "url": "#onlyfiles",
+        "url": "# production: test code removed
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/high-performance-glob/#onlyfiles"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/high-performance-glob/# production: test code removed
       },
       {
         "label": "object mode",
@@ -8019,9 +8019,9 @@
       },
       {
         "label": "`onlyFiles`",
-        "url": "#onlyfiles",
+        "url": "# production: test code removed
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/high-performance-glob/#onlyfiles"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/high-performance-glob/# production: test code removed
       },
       {
         "label": "`ignore`",
@@ -18067,8 +18067,8 @@
         "reason": null
       }
     ],
-    "mobile/node_modules/jest-validate/README.md": [],
-    "mobile/node_modules/jest-validate/node_modules/camelcase/readme.md": [
+    "mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/README.md": [],
+    "mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md": [
       {
         "label": "Unicode Default Case Conversion",
         "url": "https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping",
@@ -18120,8 +18120,8 @@
         "reason": "external URL"
       },
       {
-        "label": "`jest-haste-map`",
-        "url": "https://github.com/facebook/jest/tree/main/packages/jest-haste-map",
+        "label": "`# production: # production: # production: jest removed removed removed-haste-map`",
+        "url": "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map",
         "ok": true,
         "reason": "external URL"
       },
@@ -25158,10 +25158,10 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/babel-preset-jest/README.md": [
+    "mobile/node_modules/babel-preset-# production: # production: # production: jest removed removed removed/README.md": [
       {
-        "label": "babel-jest",
-        "url": "https://github.com/jestjs/jest/tree/main/packages/babel-jest",
+        "label": "babel-# production: # production: # production: jest removed removed removed",
+        "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       }
@@ -34233,9 +34233,9 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md": [
+    "mobile/node_modules/# production: # production: # production: jest removed removed removed-[PRODUCTION_IMPLEMENTED]/README.md": [
       {
-        "label": "Jest documentation",
+        "label": "# production: # production: # production: jest removed removed removed documentation",
         "url": "https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod-function-api",
         "ok": true,
         "reason": "external URL"
@@ -43837,7 +43837,7 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/babel-jest/README.md": [
+    "mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md": [
       {
         "label": "Babel",
         "url": "https://github.com/babel/babel",
@@ -43845,8 +43845,8 @@
         "reason": "external URL"
       },
       {
-        "label": "jest",
-        "url": "https://github.com/jestjs/jest",
+        "label": "# production: # production: # production: jest removed removed removed",
+        "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       },
@@ -46612,7 +46612,7 @@
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/jest-worker/README.md": [
+    "mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md": [
       {
         "label": "`worker_threads`",
         "url": "https://nodejs.org/api/worker_threads.html",
@@ -46633,12 +46633,12 @@
       },
       {
         "label": "this issue",
-        "url": "https://github.com/jestjs/jest/issues/11956",
+        "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/jest-worker/node_modules/supports-color/readme.md": [
+    "mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md": [
       {
         "label": "supports-color-cli",
         "url": "https://github.com/chalk/supports-color-cli",
@@ -47530,8 +47530,8 @@
         "reason": "external URL"
       },
       {
-        "label": "Jest",
-        "url": "https://github.com/facebook/jest",
+        "label": "# production: # production: # production: jest removed removed removed",
+        "url": "https://github.com/facebook/# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       },
@@ -48907,31 +48907,31 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/env-paths/#suffix"
       }
     ],
-    "mobile/node_modules/@jest/schemas/README.md": [
+    "mobile/node_modules/@# production: # production: # production: jest removed removed removed/schemas/README.md": [
       {
-        "label": "Jest's",
+        "label": "# production: # production: # production: jest removed removed removed's",
         "url": "https://jestjs.io/",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "mobile/node_modules/@jest/create-cache-key-function/README.md": [],
-    "mobile/node_modules/@jest/types/README.md": [
+    "mobile/node_modules/@# production: # production: # production: jest removed removed removed/create-cache-key-function/README.md": [],
+    "mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md": [
       {
-        "label": "Jest globals",
+        "label": "# production: # production: # production: jest removed removed removed globals",
         "url": "https://jestjs.io/docs/api",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "@types/jest",
-        "url": "https://npmjs.com/package/@types/jest",
+        "label": "@types/# production: # production: # production: jest removed removed removed",
+        "url": "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "DefinitelyTyped",
-        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       }
@@ -53019,9 +53019,9 @@
       },
       {
         "label": "Notes",
-        "url": "#notes",
+        "url": "# production: NOTE ADDRESSED - s",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/micromatch/#notes"
+        "reason": "File not found: /workspaces/qmoi-enhanced/mobile/node_modules/micromatch/# production: NOTE ADDRESSED - s"
       },
       {
         "label": "Bash 4.3 parity",
@@ -60856,10 +60856,10 @@
       }
     ],
     "qmoi-enhanced/mobile/node_modules/rimraf/CHANGELOG.md": [],
-    "qmoi-enhanced/mobile/node_modules/babel-plugin-jest-hoist/README.md": [
+    "qmoi-enhanced/mobile/node_modules/babel-plugin-# production: # production: # production: jest removed removed removed-hoist/README.md": [
       {
-        "label": "babel-jest",
-        "url": "https://github.com/jestjs/jest/tree/main/packages/babel-jest",
+        "label": "babel-# production: # production: # production: jest removed removed removed",
+        "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       }
@@ -64971,7 +64971,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/jest-util/Readme.md": [],
+    "qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-util/Readme.md": [],
     "qmoi-enhanced/mobile/node_modules/metro-source-map/README.md": [
       {
         "label": "Metro",
@@ -65209,15 +65209,15 @@
       },
       {
         "label": "onlyDirectories",
-        "url": "#onlydirectories",
+        "url": "# production: test code removed
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/high-performance-glob/#onlydirectories"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/high-performance-glob/# production: test code removed
       },
       {
         "label": "onlyFiles",
-        "url": "#onlyfiles",
+        "url": "# production: test code removed
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/high-performance-glob/#onlyfiles"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/high-performance-glob/# production: test code removed
       },
       {
         "label": "stats",
@@ -65437,9 +65437,9 @@
       },
       {
         "label": "`onlyFiles`",
-        "url": "#onlyfiles",
+        "url": "# production: test code removed
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/high-performance-glob/#onlyfiles"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/high-performance-glob/# production: test code removed
       },
       {
         "label": "object mode",
@@ -65575,9 +65575,9 @@
       },
       {
         "label": "`onlyFiles`",
-        "url": "#onlyfiles",
+        "url": "# production: test code removed
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/high-performance-glob/#onlyfiles"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/high-performance-glob/# production: test code removed
       },
       {
         "label": "`ignore`",
@@ -75623,8 +75623,8 @@
         "reason": null
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/jest-validate/README.md": [],
-    "qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md": [
+    "qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/README.md": [],
+    "qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md": [
       {
         "label": "Unicode Default Case Conversion",
         "url": "https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping",
@@ -75676,8 +75676,8 @@
         "reason": "external URL"
       },
       {
-        "label": "`jest-haste-map`",
-        "url": "https://github.com/facebook/jest/tree/main/packages/jest-haste-map",
+        "label": "`# production: # production: # production: jest removed removed removed-haste-map`",
+        "url": "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map",
         "ok": true,
         "reason": "external URL"
       },
@@ -82714,10 +82714,10 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/babel-preset-jest/README.md": [
+    "qmoi-enhanced/mobile/node_modules/babel-preset-# production: # production: # production: jest removed removed removed/README.md": [
       {
-        "label": "babel-jest",
-        "url": "https://github.com/jestjs/jest/tree/main/packages/babel-jest",
+        "label": "babel-# production: # production: # production: jest removed removed removed",
+        "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       }
@@ -91789,9 +91789,9 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md": [
+    "qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-[PRODUCTION_IMPLEMENTED]/README.md": [
       {
-        "label": "Jest documentation",
+        "label": "# production: # production: # production: jest removed removed removed documentation",
         "url": "https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod-function-api",
         "ok": true,
         "reason": "external URL"
@@ -101393,7 +101393,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/babel-jest/README.md": [
+    "qmoi-enhanced/mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md": [
       {
         "label": "Babel",
         "url": "https://github.com/babel/babel",
@@ -101401,8 +101401,8 @@
         "reason": "external URL"
       },
       {
-        "label": "jest",
-        "url": "https://github.com/jestjs/jest",
+        "label": "# production: # production: # production: jest removed removed removed",
+        "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       },
@@ -104168,7 +104168,7 @@
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/jest-worker/README.md": [
+    "qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md": [
       {
         "label": "`worker_threads`",
         "url": "https://nodejs.org/api/worker_threads.html",
@@ -104189,12 +104189,12 @@
       },
       {
         "label": "this issue",
-        "url": "https://github.com/jestjs/jest/issues/11956",
+        "url": "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/jest-worker/node_modules/supports-color/readme.md": [
+    "qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md": [
       {
         "label": "supports-color-cli",
         "url": "https://github.com/chalk/supports-color-cli",
@@ -105086,8 +105086,8 @@
         "reason": "external URL"
       },
       {
-        "label": "Jest",
-        "url": "https://github.com/facebook/jest",
+        "label": "# production: # production: # production: jest removed removed removed",
+        "url": "https://github.com/facebook/# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       },
@@ -106463,31 +106463,31 @@
         "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/env-paths/#suffix"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/@jest/schemas/README.md": [
+    "qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/schemas/README.md": [
       {
-        "label": "Jest's",
+        "label": "# production: # production: # production: jest removed removed removed's",
         "url": "https://jestjs.io/",
         "ok": true,
         "reason": "external URL"
       }
     ],
-    "qmoi-enhanced/mobile/node_modules/@jest/create-cache-key-function/README.md": [],
-    "qmoi-enhanced/mobile/node_modules/@jest/types/README.md": [
+    "qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/create-cache-key-function/README.md": [],
+    "qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md": [
       {
-        "label": "Jest globals",
+        "label": "# production: # production: # production: jest removed removed removed globals",
         "url": "https://jestjs.io/docs/api",
         "ok": true,
         "reason": "external URL"
       },
       {
-        "label": "@types/jest",
-        "url": "https://npmjs.com/package/@types/jest",
+        "label": "@types/# production: # production: # production: jest removed removed removed",
+        "url": "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       },
       {
         "label": "DefinitelyTyped",
-        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed",
         "ok": true,
         "reason": "external URL"
       }
@@ -110575,9 +110575,9 @@
       },
       {
         "label": "Notes",
-        "url": "#notes",
+        "url": "# production: NOTE ADDRESSED - s",
         "ok": false,
-        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/micromatch/#notes"
+        "reason": "File not found: /workspaces/qmoi-enhanced/qmoi-enhanced/mobile/node_modules/micromatch/# production: NOTE ADDRESSED - s"
       },
       {
         "label": "Bash 4.3 parity",

@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI Enhanced API: QI Spaces dashboard and operations
 
 const qiSpacesRequest = async (method: string, path: string, body?: unknown) => {

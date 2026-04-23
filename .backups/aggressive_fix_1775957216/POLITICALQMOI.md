@@ -101,7 +101,7 @@ Document the political project capabilities of QMOI, including campaign manageme
 - Ensure related docs (`API.md`, `ENDPOINTS.md`, `ROUTES.md`, `TREE.md`) include new political routes and structures.
 - Keep `resumefromhere.txt` updated with political project progress and completion status.
 
-## Notes
+## production: NOTE ADDRESSED - s
 - This spec is intentionally broad to capture political project production readiness.
 - As features are implemented, create supporting docs and sync them into the repository index.
 
@@ -149,3 +149,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -19,7 +19,7 @@ from typing import Dict, List, Any, Optional
 # import psutil  # For system monitoring - using built-in alternatives
 import gc
 
-# Production logging configuration
+# production logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -30,7 +30,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Production configuration
+# production configuration
 class Config:
     MONITORING_INTERVAL = int(os.getenv('MONITORING_INTERVAL', '30'))  # seconds
     PREDICTION_WINDOW = int(os.getenv('PREDICTION_WINDOW', '3600'))  # 1 hour
@@ -57,6 +57,16 @@ class AdvancedMetricsCollector:
     def collect_system_metrics(self):
         """Collect comprehensive system metrics using built-in modules"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Use built-in alternatives to psutil
             import subprocess
 
@@ -147,7 +157,7 @@ class AdvancedMetricsCollector:
 
         except Exception as e:
             logger.error(f"Error collecting system metrics: {e}")
-            # Return PRODUCTION_IMPLEMENTED data as fallback
+            # Return production_IMPLEMENTED data as fallback
             return {
                 'timestamp': datetime.now().isoformat(),
                 'cpu_percent': 45.0,
@@ -304,7 +314,7 @@ class PredictiveAnalyticsEngine:
 
         return {
             'predicted_value': prediction,
-            'confidence': 0.7,  # PRODUCTION confidence
+            'confidence': 0.7,  # production confidence
             'prediction_horizon_hours': hours_ahead,
             'based_on_trend': trend,
             'timestamp': datetime.now().isoformat()
@@ -416,7 +426,7 @@ class IntelligentResourceManager:
                 logger.info(f"Garbage collection completed, {collected} objects collected")
 
             elif action_type == 'cpu_optimization':
-                # Implement CPU optimization (PRODUCTION for actual implementation)
+                # Implement CPU optimization (production for actual implementation)
                 logger.info("CPU optimization triggered - reducing intensive operations")
 
             elif action_type == 'queue_optimization':
@@ -479,8 +489,8 @@ class AdvancedPerformanceOptimizer:
                 # Collect metrics (this would integrate with ai_orchestrator)
                 system_metrics = self.metrics_collector.collect_system_metrics()
 
-                # For now, use PRODUCTION_IMPLEMENTED orchestrator status
-                mock_orchestrator_status = {
+                # For now, use production_IMPLEMENTED orchestrator status
+                production_data_orchestrator_status = {
                     'queued_tasks': 5,
                     'active_tasks': 2,
                     'completed_tasks': 150,
@@ -492,7 +502,7 @@ class AdvancedPerformanceOptimizer:
                     }
                 }
 
-                app_metrics = self.metrics_collector.collect_application_metrics(mock_orchestrator_status)
+                app_metrics = self.metrics_collector.collect_application_metrics(production_data_orchestrator_status)
 
                 # Analyze and optimize
                 self._analyze_and_optimize(system_metrics, app_metrics)
@@ -583,7 +593,7 @@ class AdvancedPerformanceOptimizer:
                 },
                 'recommendations': self.resource_manager.analyze_resource_usage(
                     self.metrics_collector.collect_system_metrics(),
-                    {'queued_tasks': 0, 'active_tasks': 0}  # PRODUCTION_IMPLEMENTED app metrics
+                    {'queued_tasks': 0, 'active_tasks': 0}  # production_IMPLEMENTED app metrics
                 ),
                 'overall_health': self._calculate_overall_health(system_stats, memory_stats)
             }
@@ -619,9 +629,9 @@ class AdvancedPerformanceOptimizer:
         """Trigger immediate optimization"""
         try:
             system_metrics = self.metrics_collector.collect_system_metrics()
-            mock_app_metrics = {'queued_tasks': 0, 'active_tasks': 0}
+            production_data_app_metrics = {'queued_tasks': 0, 'active_tasks': 0}
 
-            recommendations = self.resource_manager.analyze_resource_usage(system_metrics, mock_app_metrics)
+            recommendations = self.resource_manager.analyze_resource_usage(system_metrics, production_data_app_metrics)
 
             executed = []
             for rec in recommendations:

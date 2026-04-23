@@ -181,7 +181,7 @@ Family Wallet: QMOI_FAMILY_001
 ### Withdrawal Request (Leah)
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/family/wallet/request-withdrawal \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/family/wallet/request-withdrawal \
   -H "Authorization: Bearer LEAH_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -194,7 +194,7 @@ curl -X POST http://localhost:3001/api/qmoi/family/wallet/request-withdrawal \
 ### Withdrawal Approval (Victor)
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/family/wallet/approve-withdrawal \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/family/wallet/approve-withdrawal \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -206,7 +206,7 @@ curl -X POST http://localhost:3001/api/qmoi/family/wallet/approve-withdrawal \
 ### Check Wallet Status (Both)
 
 ```bash
-curl -X GET http://localhost:3001/api/qmoi/family/wallet/status \
+curl -X GET https://production-db.qmoi.ai/api/qmoi/family/wallet/status \
   -H "Authorization: Bearer USER_TOKEN"
 ```
 
@@ -217,7 +217,7 @@ curl -X GET http://localhost:3001/api/qmoi/family/wallet/status \
 ### Create Family Project (Victor Only)
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/family/projects \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/family/projects \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -232,7 +232,7 @@ curl -X POST http://localhost:3001/api/qmoi/family/projects \
 ### Update Project Status (Both)
 
 ```bash
-curl -X PUT http://localhost:3001/api/qmoi/family/projects/proj_001 \
+curl -X PUT https://production-db.qmoi.ai/api/qmoi/family/projects/proj_001 \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -245,7 +245,7 @@ curl -X PUT http://localhost:3001/api/qmoi/family/projects/proj_001 \
 ### View Family Projects (Both)
 
 ```bash
-curl -X GET http://localhost:3001/api/qmoi/family/projects \
+curl -X GET https://production-db.qmoi.ai/api/qmoi/family/projects \
   -H "Authorization: Bearer USER_TOKEN"
 ```
 
@@ -256,7 +256,7 @@ curl -X GET http://localhost:3001/api/qmoi/family/projects \
 ### Add Family Event (Both)
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/family/calendar \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/family/calendar \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -272,14 +272,14 @@ curl -X POST http://localhost:3001/api/qmoi/family/calendar \
 ### View Family Calendar (Both)
 
 ```bash
-curl -X GET http://localhost:3001/api/qmoi/family/calendar \
+curl -X GET https://production-db.qmoi.ai/api/qmoi/family/calendar \
   -H "Authorization: Bearer USER_TOKEN"
 ```
 
 ### Set Event Reminder (Individual)
 
 ```bash
-curl -X PUT http://localhost:3001/api/qmoi/family/calendar/event_001/reminder \
+curl -X PUT https://production-db.qmoi.ai/api/qmoi/family/calendar/event_001/reminder \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -295,7 +295,7 @@ curl -X PUT http://localhost:3001/api/qmoi/family/calendar/event_001/reminder \
 ### Send Family Message
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/family/messages \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/family/messages \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -308,14 +308,14 @@ curl -X POST http://localhost:3001/api/qmoi/family/messages \
 ### Retrieve Family Messages
 
 ```bash
-curl -X GET http://localhost:3001/api/qmoi/family/messages \
+curl -X GET https://production-db.qmoi.ai/api/qmoi/family/messages \
   -H "Authorization: Bearer USER_TOKEN"
 ```
 
 ### Search Family Communication
 
 ```bash
-curl -X GET "http://localhost:3001/api/qmoi/family/messages/search?query=project" \
+curl -X GET "https://production-db.qmoi.ai/api/qmoi/family/messages/search?query=project" \
   -H "Authorization: Bearer USER_TOKEN"
 ```
 
@@ -326,7 +326,7 @@ curl -X GET "http://localhost:3001/api/qmoi/family/messages/search?query=project
 ### Configure Family Preferences (Victor)
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/family/settings \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/family/settings \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -341,7 +341,7 @@ curl -X POST http://localhost:3001/api/qmoi/family/settings \
 ### Update Personal Family Preferences (Both)
 
 ```bash
-curl -X PUT http://localhost:3001/api/qmoi/family/settings/personal \
+curl -X PUT https://production-db.qmoi.ai/api/qmoi/family/settings/personal \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -612,3 +612,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

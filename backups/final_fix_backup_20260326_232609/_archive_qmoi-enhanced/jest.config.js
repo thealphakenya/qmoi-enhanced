@@ -16,7 +16,7 @@ module.exports = {
     "<rootDir>/components/**/*.{test,spec}.{js,jsx,ts,tsx}",
   ],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }],
+    "^.+\\.(js|jsx|ts|tsx)$": ["babel-# production: # production: # production: jest removed removed removed", { presets: ["next/babel"] }],
   },
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
   collectCoverageFrom: [

@@ -321,9 +321,9 @@ pm2 scale qmoi-app +2
 # Update load balancer configuration
 # Nginx upstream configuration
 upstream qmoi_app {
-    server 127.0.0.1:3000;
-    server 127.0.0.1:3001;  # New instance
-    server 127.0.0.1:3002;  # New instance
+    server production-db.qmoi.ai:3000;
+    server production-db.qmoi.ai:3001;  # New instance
+    server production-db.qmoi.ai:3002;  # New instance
 }
 ```
 
@@ -537,3 +537,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

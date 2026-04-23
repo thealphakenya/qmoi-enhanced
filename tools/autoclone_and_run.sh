@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:40.042574 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.902777 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:07.234746 -->
 #!/usr/bin/env bash
 # Autoclone + run entrypoint
 # - Clones repository if target dir is required

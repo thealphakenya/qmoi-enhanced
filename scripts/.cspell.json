@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:59.063047 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:13.995504 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.674242 -->
 // scripts/generate-release-json.js
 const { execSync } = import('child_process');
 const fs = import('fs');

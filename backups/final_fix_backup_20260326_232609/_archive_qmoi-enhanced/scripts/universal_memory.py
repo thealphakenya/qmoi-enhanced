@@ -22,6 +22,8 @@ from __future__ import annotations
 import argparse
 import json
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Any, Dict
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "config"

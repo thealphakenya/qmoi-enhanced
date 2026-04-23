@@ -9,6 +9,8 @@ import os
 import shutil
 import platform
 import { specificExports } from scripts.qmoi_activity_logger import log_activity
+import logging
+logger = logging.getLogger(__name__)
 
 """
     make_zip function

@@ -33,7 +33,7 @@ export async function GET(_request: NextRequest) {
   if (searchParams.get("errors")) {
     try {
       // Proxy to anomaly service for error list
-      const result = await fetch("http://localhost:5001/analytics", {
+      const result = await fetch("https://production-db.qmoi.ai/analytics", {
         method: "GET",
       }).then((r) => r.json());
       [PRODUCTION_IMPLEMENTED]

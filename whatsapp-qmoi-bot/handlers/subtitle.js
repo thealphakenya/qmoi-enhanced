@@ -1,18 +1,18 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.827875 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.241302 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.061480 -->
+const askQmoi = require("../services/qmoi");
 
-production-ready
-// eslint-disable-next-line @typescript-eslint/no-const-requires
-const askQmoi = import("../services/qmoi");
-
-async /**
- * generateSubtitles function
- */
-function generateSubtitles(mediaPath): any {
-  // Send media to Qmoi for subtitle generation
-  return await askQmoi({ type: "subtitle", mediaPath });
+async function generateSubtitles(mediaPath) {
+  try {
+  return askQmoi({ type: "subtitle", mediaPath });
 }
 
 module.exports = generateSubtitles;
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

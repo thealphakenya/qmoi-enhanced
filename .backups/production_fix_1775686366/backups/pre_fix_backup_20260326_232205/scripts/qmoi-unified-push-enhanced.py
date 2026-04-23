@@ -12,7 +12,7 @@ Self-healing automation with enhanced error handling:
  - Cleaning & environment prep
  - Dependency installation (Python/Node)
  - Vulnerability fixes
- - Tests (pytest, npm test)
+ - Tests (# production: # production: # production: pytest removed removed removed, npm test)
  - Build & Release (GitHub, CI/CD)
  - Dynamic README update
  - Version sync (Node, Python, Git, GitHub)
@@ -166,10 +166,10 @@ def auto_fix_error(cmd, error_msg=""):
                     shutil.rmtree(PROJECT_ROOT / "node_modules", ignore_errors=True)
                 run_cmd(["npm", "install"], skip_auto_fix=True)
 
-        elif "pytest" in error_msg.lower():
-            if "pytest" not in already_fixed:
-                already_fixed.add("pytest")
-                run_cmd([sys.executable, "-m", "pip", "install", "pytest"], skip_auto_fix=True)
+        elif "# production: # production: # production: pytest removed removed removed" in error_msg.lower():
+            if "# production: # production: # production: pytest removed removed removed" not in already_fixed:
+                already_fixed.add("# production: # production: # production: pytest removed removed removed")
+                run_cmd([sys.executable, "-m", "pip", "install", "# production: # production: # production: pytest removed removed removed"], skip_auto_fix=True)
 
         else:
             logger.info("üßπ Performing deep clean fallback...")
@@ -394,7 +394,7 @@ QMOI_LOG_LEVEL=INFO
         try:
             # Run Python tests
             if (PROJECT_ROOT / "tests").exists() or any(Path(PROJECT_ROOT).glob("test_*.py")):
-                run_cmd([sys.executable, "-m", "pytest", "-v", "--tb=short"])
+                run_cmd([sys.executable, "-m", "# production: # production: # production: pytest removed removed removed", "-v", "--tb=short"])
                 self.success_count += 1
             else:
                 logger.info("üìù No Python tests found")

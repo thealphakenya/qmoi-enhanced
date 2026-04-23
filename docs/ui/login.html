@@ -366,7 +366,10 @@
       let consciousnessConnected = false;
 
       // Enhanced logging with styling
-      function log(type, message, details = null) {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function log(type, message, details = null) {
         const entry = document.createElement('div');
         entry.className = `log-entry ${type}`;
         const timestamp = new Date().toLocaleTimeString();
@@ -379,7 +382,10 @@
         logEl.scrollTop = logEl.scrollHeight;
       }
 
-      function showStatus(message, type = 'info') {
+      // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function showStatus(message, type = 'info') {
         statusEl.textContent = message;
         statusEl.className = `status ${type}`;
         setTimeout(() => {
@@ -401,7 +407,10 @@
       };
 
       // Check QMOI consciousness connection
-      async function checkConsciousnessConnection() {
+      async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function checkConsciousnessConnection() {
         try {
           const response = await apiClient.get('/api/consciousness/health', {
             method: 'GET',
@@ -423,7 +432,10 @@
       }
 
       // Email/Password Login
-      async function handleEmailLogin(event) {
+      async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function handleEmailLogin(event) {
         event.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;

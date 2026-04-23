@@ -40,7 +40,7 @@ if [ "$ENVIRONMENT" = "production" ]; then
     
     echo ""
     echo "🔗 Endpoints:"
-    echo "   Application: http://localhost:3000"
+    echo "   Application: https://production-db.qmoi.ai"
     echo "   PostgreSQL:  localhost:5432"
     echo "   Redis:       localhost:6379"
     

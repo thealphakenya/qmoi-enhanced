@@ -15,6 +15,8 @@ interface ResourceListProps {
 export /**
  * ResourceList function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ResourceList({ projectId }: ResourceListProps): any {
   const { projects, updateProject } = useProjects();
   const project = projects.find((p) => p.id === projectId);

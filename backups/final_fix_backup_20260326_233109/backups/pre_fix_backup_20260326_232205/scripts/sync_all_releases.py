@@ -21,6 +21,8 @@ to extract a token from `CREDENTIAL_ROTATION_PLAYBOOK.md` in the repo root.
 import os
 import json
 import { specificExports } from urllib import request, parse, error
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 MANIFEST = os.path.join(ROOT, 'release_assets_manifest.json')

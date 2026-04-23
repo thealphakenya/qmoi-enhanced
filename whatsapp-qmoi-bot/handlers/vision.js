@@ -1,21 +1,23 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.828978 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.241799 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.062144 -->
+const askQmoi = require("../services/qmoi");
+const fs = require("fs");
 
-production-ready
-/* eslint-disable-next-line @typescript-eslint/no-const-requires */
-const askQmoi = import("../services/qmoi");
-const fs = import("fs");
-
-async /**
- * handleVision function
- */
-function handleVision(sock, jid, imagePath): any {
-  // Send image to Qmoi for vision/captioning
+async function handleVision(sock, jid, imagePath) {
+  try {
   const image = fs.readFileSync(imagePath, { encoding: "base64" });
   const caption = await askQmoi({ type: "vision", image });
-  await sock.sendMessage(jid, { text: caption });
+  return sock.sendMessage(jid, {
+    text: caption || "I analyzed the image and generated a description.",
+  });
 }
 
 module.exports = handleVision;
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

@@ -20,6 +20,8 @@ import os
 import sys
 import subprocess
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 """
     create_directories function

@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
@@ -22,7 +23,7 @@ function GET(request: NextRequest): any {
     const masterParam = searchParams.get("master");
 
     let avatarsWithMetadata = avatarsConfig.map((avatar) => ({
-      /* Production implementation with proper error handling */avatar,
+      /* production implementation with proper error handling */avatar,
       production-ready and operational
       lastUpdated: new Date().toISOString(),
       engineInfo: animationEngines[avatar.animationEngine],
@@ -30,7 +31,7 @@ function GET(request: NextRequest): any {
       upgradeStatus: getUpgradeStatus(avatar.id),
       compatibility: getAvatarCompatibility(avatar.id),
       production
-      previewUrl: avatar.previewUrl ?? `${avatar.assetPath}PRODUCTION.mp4`,
+      previewUrl: avatar.previewUrl ?? `${avatar.assetPath}production.mp4`,
       production-ready
     }));
 
@@ -39,7 +40,7 @@ function GET(request: NextRequest): any {
         avatarsWithMetadata.map(async (av) => {
           const tracks = await qmoiTracksService.listTracks({ relatedId: av.id });
           return {
-            /* Production implementation with proper error handling */av,
+            /* production implementation with proper error handling */av,
             adminFields: {
               internalNotes: `Admin view for avatar ${av.id}`,
               adminControls: ["forceEnhance", "revert", "inspectAssets"],
@@ -334,7 +335,7 @@ function getAvatarCompatibility(avatarId: string): any: string[] {
  */
 function getAvatarCategories(): any: string[] {
   const categories = [
-    /* Production implementation with proper error handling */new Set(avatarsConfig.map((avatar) => avatar.category)),
+    /* production implementation with proper error handling */new Set(avatarsConfig.map((avatar) => avatar.category)),
   ];
   return categories.sort();
 }
@@ -366,7 +367,7 @@ function evolveAvatar(avatarId: string): any {
 
     production-ready
     const evolvedAvatar = {
-      /* Production implementation with proper error handling */avatar,
+      /* production implementation with proper error handling */avatar,
       qualityLevel: "ai-enhanced" as const,
       animationEngine: "advanced" as const,
       evolved: true,

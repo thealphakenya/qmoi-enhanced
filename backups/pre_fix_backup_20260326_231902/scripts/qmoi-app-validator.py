@@ -5,6 +5,8 @@
 
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 targets = {
     "qmoi_ai.exe": 10_000_000,

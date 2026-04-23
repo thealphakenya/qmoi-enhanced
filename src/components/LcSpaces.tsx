@@ -13,6 +13,8 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * LcSpaces function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function LcSpaces(): any {
   const [spaces, setSpaces] = useState<string[]>(["LC1", "LC2"]);
   const [newSpace, setNewSpace] = useState("");

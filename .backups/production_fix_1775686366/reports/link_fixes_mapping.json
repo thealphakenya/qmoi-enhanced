@@ -83,12 +83,12 @@
   "pattern_replacements": {
     "localhost_patterns": [
       {
-        "pattern": "http://localhost:3000",
+        "pattern": "https://production-db.qmoi.ai",
         "replacement": "https://qmoi.ai",
         "context": "production server reference in production docs"
       },
       {
-        "pattern": "http://localhost:8080",
+        "pattern": "https://production-db.qmoi.ai",
         "replacement": "https://qvillage.com",
         "context": "production server reference in production docs"
       }

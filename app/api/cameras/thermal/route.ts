@@ -1,3 +1,6 @@
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.772469 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.121322 -->
 import { NextRequest, NextResponse } from 'next/server';
 
 /**

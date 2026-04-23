@@ -290,6 +290,8 @@ from fastapi import { specificExports } from fastapi.middleware.cors import CORS
 import uvicorn
 import asyncio
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="QMOI AI Enhanced", version="2.0.0")
 

@@ -5,6 +5,8 @@
 
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 """
     get_public_ip function

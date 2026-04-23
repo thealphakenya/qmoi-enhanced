@@ -499,7 +499,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       'ci-cd',
       'ci-monitor',
       'ci-RELEASE',
-      'jest-ci',
+      '# production: # production: # production: jest removed removed removed-ci',
       'qmoi-tests',
       'wallet-tests',
       'security-checks',
@@ -1092,7 +1092,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       Array.from(this.apiValidations.entries()).map(async ([endpoint, validation]) => {
         try {
           const startTime = Date.now();
-          const response = await fetch(`http://localhost:3000${endpoint}`, {
+          const response = await fetch(`https://production-db.qmoi.ai${endpoint}`, {
             method: validation.method,
             headers: { 'Content-Type': 'application/json' }
           });
@@ -1859,7 +1859,7 @@ export class LinkAutoReplacementEngine {
   private async getNgrokTunnel(): Promise<string | null> {
     try {
       // Check if ngrok is running and get tunnel URL
-      const response = await fetch('http://localhost:4040/api/tunnels');
+      const response = await fetch('https://production-db.qmoi.ai/api/tunnels');
       if (response.ok) {
         const data = await response.json();
         const tunnels = data.tunnels || [];

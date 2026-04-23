@@ -170,6 +170,8 @@ def setup_runtime_git_helper() -> Any:
 read -r prompt
 python - <<'PY'
 from scripts.qmoi_secret_manager import get_named_secret
+import logging
+logger = logging.getLogger(__name__)
 tok = get_named_secret('github')
 if tok:
     # Git will ask for password; print token

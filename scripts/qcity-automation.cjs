@@ -143,7 +143,10 @@ class QCityAutomation {
 }
 // --- End full QCityAutomation implementation ---
 
-async function main() {
+async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function main() {
   const qcity = new QCityAutomation();
   const args = process.argv.slice(2);
   const command = args[0];

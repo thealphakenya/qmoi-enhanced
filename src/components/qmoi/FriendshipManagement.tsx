@@ -66,6 +66,8 @@ interface FriendshipManagementProps {
 export /**
  * FriendshipManagement function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function FriendshipManagement({
   userId,
   onFriendSelect,

@@ -5,6 +5,8 @@
 
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 import { specificExports } from pydrive2.auth import { specificExports } from pydrive2.drive import GoogleDrive
+import logging
+logger = logging.getLogger(__name__)
 
 GOOGLE_DRIVE_FOLDER_ID = os.environ.get("GOOGLE_DRIVE_FOLDER_ID")
 LOCAL_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))

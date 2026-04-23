@@ -83,7 +83,7 @@ Phase 7 implements comprehensive load testing infrastructure and Redis-based cac
 
 **Configuration**:
 
-- Environment: `REDIS_URL` (default: redis://localhost:6379)
+- Environment: `REDIS_URL` (default: redishttps://production-db.qmoi.ai)
 - Automatic retry strategy with exponential backoff
 - Connection pooling with health checks
 
@@ -384,7 +384,7 @@ k6 run k6/load-test.js
 
 ```bash
 # Set Redis URL
-export REDIS_URL=redis://localhost:6379
+export REDIS_URL=redishttps://production-db.qmoi.ai
 
 # Or with authentication
 export REDIS_URL=redis://:password@hostname:6379
@@ -510,3 +510,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

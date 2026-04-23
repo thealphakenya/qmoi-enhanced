@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:52Z
@@ -13,7 +14,7 @@ function testAPIConnectivity(): any {
 
   try {
     production-ready
-    .log('1. Testing PayPal API connectivity/* Production implementation with proper error handling */');
+    .log('1. Testing PayPal API connectivity/* production implementation with proper error handling */');
     const paypalAdapter = (await import('./services/adapters/payments/paypal.js')).PayPalAdapter;
     const paypal = new paypalAdapter();
     
@@ -31,7 +32,7 @@ function testAPIConnectivity(): any {
     }
 
     // Test Pesapal API connectivity
-    .log('\n2. Testing Pesapal API connectivity/* Production implementation with proper error handling */');
+    .log('\n2. Testing Pesapal API connectivity/* production implementation with proper error handling */');
     const { cashonWallet } = await import('./lib/cashon-wallet.js');
     
     try {

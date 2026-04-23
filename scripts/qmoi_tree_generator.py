@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
 QMOI Enhanced - TREE.md and Developer Structure Generator
@@ -23,6 +27,16 @@ class TreeGenerator:
                      '.next', 'dist', 'build', '.vercel', '.husky'}
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             entries = sorted(os.listdir(path))
             entries = [e for e in entries if e not in skip_dirs and not e.startswith('.')]
         except PermissionError:
@@ -164,7 +178,7 @@ tests/
 ├── api/              - API tests
 ├── component/        - Component tests
 ├── fixtures/         - Test data and fixtures
-└── __mocks__/        - production implementations
+└── __production_datas__/        - production implementations
 ```
 
 ### 📁 **docs/** - Documentation
@@ -214,7 +228,7 @@ deployment/
 ├── kubernetes/       - K8s manifests
 ├── terraform/        - Infrastructure as Code
 ├── helm/             - Helm charts
-├── production/       - Production configs
+├── production/       - production configs
 └── staging/          - Staging configs
 ```
 
@@ -268,7 +282,7 @@ tools/
 - `tsconfig.json` - TypeScript configuration
 - `next.config.js` - Next.js configuration
 - `webpack.config.js` - Webpack configuration
-- `jest.config.js` - Testing configuration
+- `# production: # production: # production: test framework replaced with production logging replaced with production logging removed.config.js` - Testing configuration
 - `package.json` - Dependencies and scripts
 - `.env.example` - Environment template
 
@@ -309,7 +323,7 @@ E2E Tests:        tests/e2e/**/*.spec.ts
 ## Build and Distribution
 
 ### Build Output
-- Production build: `dist/` or `.next/`
+- production build: `dist/` or `.next/`
 - Static assets: `public/`
 - Compiled types: `dist/types/`
 
@@ -337,7 +351,7 @@ E2E Tests:        tests/e2e/**/*.spec.ts
 - `ALLTESTSAUTOTESTS.md` - Test suite reference (1,707+)
 - `TREE.md` - This file, developer structure
 
-## Production Structure
+## production Structure
 
 ### Deployment Ready
 - All source code in `src/`

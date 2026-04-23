@@ -103,7 +103,7 @@ curl -X POST -H "Authorization: Bearer $MASTER_TOKEN" \
 - If no root cause is identified, the system re-checks logs after a redeploy.
 - The system will not apply destructive changes automatically; it only proposes fixes and triggers safe redeploy steps.
 
-## Notes for Operators
+## production: NOTE ADDRESSED - s for Operators
 
 - Always keep `VERCEL_TOKEN` and `VERCEL_PROJECT_ID` secure.
 - Confirm that Vercel auto-deploy is enabled in the project settings.
@@ -155,3 +155,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

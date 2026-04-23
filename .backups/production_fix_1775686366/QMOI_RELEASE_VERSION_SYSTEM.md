@@ -36,7 +36,7 @@ STAGE 2: VALIDATION GATES (QMOI Validation Framework)
 │ └─ Dependency audit
 │
 ├─ Automated testing
-│ └─ Unit tests (Jest, Pytest)
+│ └─ Unit tests (# production: # production: # production: jest removed removed removed, # production: # production: # production: pytest removed removed removed)
 │ └─ Integration tests
 │ └─ E2E tests (Selenium, Cypress)
 │ └─ Performance tests
@@ -298,8 +298,8 @@ VALIDATION TOOLS USED:
 - SonarQube (Code quality)
 - Snyk (Security)
 - OWASP ZAP (Security scanning)
-- Jest (Unit tests)
-- Pytest (Python tests)
+- # production: # production: # production: jest removed removed removed (Unit tests)
+- # production: # production: # production: pytest removed removed removed (Python tests)
 - Selenium/Cypress (E2E tests)
 - Lighthouse (Web performance)
 - LinkChecker (Link validation)
@@ -670,3 +670,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

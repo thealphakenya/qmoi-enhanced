@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
@@ -201,7 +202,7 @@ function GET(_request: NextRequest): any {
         tasks,
         ai_provider: ai ? "openai" : "local",
         production-ready and operational
-          ? "gpt-4-turbo-PRODUCTION, gpt-3.5-turbo"
+          ? "gpt-4-turbo-production, gpt-3.5-turbo"
           : "local-enhanced",
         status: ai ? "operational" : "degraded",
       });
@@ -256,7 +257,7 @@ export async /**
 function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
-    const { enhance, desc, model = "gpt-4-turbo-PRODUCTION", prompt, action, data } = body;
+    const { enhance, desc, model = "gpt-4-turbo-production", prompt, action, data } = body;
 
     // Handle core engine actions
     if (action) {

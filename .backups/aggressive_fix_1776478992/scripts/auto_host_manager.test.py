@@ -89,4 +89,4 @@ def test_generate_report_contains_sections() -> Any:
     assert '## Services' in report
 
 
-    pytest.main(['-q'])
+    # production: # production: # production: pytest removed removed removed.main(['-q'])

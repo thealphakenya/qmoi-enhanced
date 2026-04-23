@@ -831,9 +831,9 @@
 824. `health_check_url`
 825. `health_url`
 826. `http://`
-827. `http://127.0.0.1:3000/api/qmoi/status`
-828. `http://127.0.0.1:3000/health`
-829. `http://127.0.0.1:4040/api/tunnels`
+827. `http://production-db.qmoi.ai:3000/api/qmoi/status`
+828. `http://production-db.qmoi.ai:3000/health`
+829. `http://production-db.qmoi.ai:4040/api/tunnels`
 830. `http://api.qmoi.prod/api/health`
 831. `http://export.arxiv.org/api/query`
 832. `http://export.arxiv.org/api/query?`
@@ -842,22 +842,22 @@
 835. `http://localhost/api/qmoi/chat`
 836. `http://localhost/api/qmoi/status`
 837. `http://localhost/api/test`
-838. `http://localhost:3000/api/ai-self-diagnostics?fix=1`
-839. `http://localhost:3000/api/auth/register`
-840. `http://localhost:3000/api/financial/verify`
-841. `http://localhost:3000/api/health`
-842. `http://localhost:3000/api/qcity/audit-log`
-843. `http://localhost:3000/api/qcity/remote-command`
-844. `http://localhost:3000/api/qcity/status`
-845. `http://localhost:3000/api/qmoi-model?allStats=true`
-846. `http://localhost:3000/api/qmoi/chat`
-847. `http://localhost:3000/api/qvillage`
-848. `http://localhost:3000/api/whatsapp-bot?send=1`
-849. `http://localhost:3000/api/whatsapp/verify`
-850. `http://localhost:3001/api/ai`
-851. `http://localhost:4000/api/error-fix-log`
-852. `http://localhost:4040/api/tunnels`
-853. `http://localhost:4100/api/predictions`
+838. `https://production-db.qmoi.ai/api/ai-self-diagnostics?fix=1`
+839. `https://production-db.qmoi.ai/api/auth/register`
+840. `https://production-db.qmoi.ai/api/financial/verify`
+841. `https://production-db.qmoi.ai/api/health`
+842. `https://production-db.qmoi.ai/api/qcity/audit-log`
+843. `https://production-db.qmoi.ai/api/qcity/remote-command`
+844. `https://production-db.qmoi.ai/api/qcity/status`
+845. `https://production-db.qmoi.ai/api/qmoi-model?allStats=true`
+846. `https://production-db.qmoi.ai/api/qmoi/chat`
+847. `https://production-db.qmoi.ai/api/qvillage`
+848. `https://production-db.qmoi.ai/api/whatsapp-bot?send=1`
+849. `https://production-db.qmoi.ai/api/whatsapp/verify`
+850. `https://production-db.qmoi.ai/api/ai`
+851. `https://production-db.qmoi.ai/api/error-fix-log`
+852. `https://production-db.qmoi.ai/api/tunnels`
+853. `https://production-db.qmoi.ai/api/predictions`
 854. `http://localhost:\1`
 855. `http://qmoi.ai:3000/api/health`
 856. `http://test/api/qmoi/autoprod/generate-feature`
@@ -1008,3 +1008,6 @@
 1001. `{url}/api/health`
 1002. `| {i} | GET/POST | `/api/{endpoint}` | {file_path} | ✅ |\n`
 1003. `✅ Created app/api/qmoi-model.ts`
+
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -58,6 +58,8 @@ interface AutoSetupResponse {
 export default /**
  * QMOIAutoSetup function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QMOIAutoSetup(): any {
   try {({
   children,

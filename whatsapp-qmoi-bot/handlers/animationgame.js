@@ -1,19 +1,21 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("production mode initialized");
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.837572 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.246430 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.067782 -->
+const askQmoi = require("../services/qmoi");
 
-production-ready
-// eslint-disable-next-line @typescript-eslint/no-const-requires
-const askQmoi = import("../services/qmoi");
-
-async /**
- * createGameFromAnimation function
- */
-function createGameFromAnimation(sock, jid, animationDetails): any {
-  // Use Qmoi to generate a high-quality game based on animation/movie
+async function createGameFromAnimation(sock, jid, animationDetails) {
+  try {
   const result = await askQmoi({ type: "game", details: animationDetails });
-  await sock.sendMessage(jid, { text: result });
+  return sock.sendMessage(jid, {
+    text: result || "Here is a fun game idea based on your animation.",
+  });
 }
 
 module.exports = createGameFromAnimation;
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

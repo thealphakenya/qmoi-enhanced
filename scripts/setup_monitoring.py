@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +57,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 #!/usr/bin/env python3
@@ -99,7 +113,7 @@ def setup_uptime_monitoring(status, target_uptime=99.5, auto_failover=True) -> A
 
     for domain in active_domains:
         total_processed += 1
-        logger.info(f"\n🔄 Setting up monitoring for {domain}Production implementation with comprehensive error handling and logging")
+        logger.info(f"\n🔄 Setting up monitoring for {domain}production implementation with comprehensive error handling and logging")
 
         try:
             # Update domain monitoring setup

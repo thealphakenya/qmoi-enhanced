@@ -302,7 +302,7 @@
       "recommendations": []
     },
     {
-      "path": "QMOI_AUTO_TESTING_UI_DEVELOPMENT.md",
+      "path": "QMOI_AUTO_TESTING_UI_production.md",
       "exists": true,
       "size": 1784,
       "has_production_marker": false,
@@ -317,7 +317,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -531,7 +531,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION.md",
+      "path": "production.md",
       "exists": true,
       "size": 1651,
       "has_production_marker": true,
@@ -916,7 +916,7 @@
       "recommendations": []
     },
     {
-      "path": "QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "path": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "exists": true,
       "size": 18697,
       "has_production_marker": true,
@@ -989,7 +989,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -1010,7 +1010,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -1045,7 +1045,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -1116,7 +1116,7 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Consider adding cross-references to related documentation"
       ]
     },
@@ -1204,7 +1204,7 @@
       ]
     },
     {
-      "path": "FINAL_PRODUCTION_READINESS.md",
+      "path": "FINAL_production_READINESS.md",
       "exists": true,
       "size": 7548,
       "has_production_marker": true,
@@ -1220,7 +1220,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "path": "production_NEXT_STEPS_COMPLETE.md",
       "exists": true,
       "size": 16157,
       "has_production_marker": true,
@@ -1322,7 +1322,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+      "path": "production_READINESS_EXECUTION_STATUS.md",
       "exists": true,
       "size": 10718,
       "has_production_marker": true,
@@ -1622,7 +1622,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_COMPLETION_SUMMARY.md",
+      "path": "production_COMPLETION_SUMMARY.md",
       "exists": true,
       "size": 2976,
       "has_production_marker": true,
@@ -1717,7 +1717,7 @@
       "recommendations": []
     },
     {
-      "path": "PHASE4_PRODUCTION_STRATEGY.md",
+      "path": "PHASE4_production_STRATEGY.md",
       "exists": true,
       "size": 2393,
       "has_production_marker": true,
@@ -1751,13 +1751,13 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
+      "path": "production_DEPLOYMENT_PLAYBOOK.md",
       "exists": true,
       "size": 6458,
       "has_production_marker": true,
@@ -1906,7 +1906,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION_API_REFERENCE.md",
+      "path": "production_API_REFERENCE.md",
       "exists": true,
       "size": 13268,
       "has_production_marker": true,
@@ -2141,7 +2141,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_READINESS_CHECKLIST_FINAL.md",
+      "path": "production_READINESS_CHECKLIST_FINAL.md",
       "exists": true,
       "size": 3822,
       "has_production_marker": true,
@@ -2235,7 +2235,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -2327,7 +2327,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -2366,7 +2366,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -2419,7 +2419,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -2541,7 +2541,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -2702,12 +2702,12 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Consider adding cross-references to related documentation"
       ]
     },
     {
-      "path": "START_PRODUCTION_DEPLOYMENT.md",
+      "path": "START_production_DEPLOYMENT.md",
       "exists": true,
       "size": 14631,
       "has_production_marker": true,
@@ -2771,13 +2771,13 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
     },
     {
-      "path": "PRODUCTION_READINESS_REPORT.md",
+      "path": "production_READINESS_REPORT.md",
       "exists": true,
       "size": 3148,
       "has_production_marker": true,
@@ -2844,7 +2844,7 @@
       "recommendations": []
     },
     {
-      "path": "SESSION5_PRODUCTION_SUMMARY.md",
+      "path": "SESSION5_production_SUMMARY.md",
       "exists": true,
       "size": 14267,
       "has_production_marker": true,
@@ -2958,7 +2958,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_BUILD_SETUP.md",
+      "path": "production_BUILD_SETUP.md",
       "exists": true,
       "size": 7983,
       "has_production_marker": true,
@@ -3056,7 +3056,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_README.md",
+      "path": "production_DEPLOYMENT_README.md",
       "exists": true,
       "size": 10254,
       "has_production_marker": true,
@@ -3400,7 +3400,7 @@
       ]
     },
     {
-      "path": "README_PRODUCTION.md",
+      "path": "README_production.md",
       "exists": true,
       "size": 6292,
       "has_production_marker": true,
@@ -3432,7 +3432,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_VALIDATION.md",
+      "path": "production_DEPLOYMENT_VALIDATION.md",
       "exists": true,
       "size": 1602,
       "has_production_marker": true,
@@ -3503,7 +3503,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add Lion validation block with timestamp",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
@@ -3529,7 +3529,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_READY_SUMMARY.md",
+      "path": "production_READY_SUMMARY.md",
       "exists": true,
       "size": 3039,
       "has_production_marker": true,
@@ -3562,7 +3562,7 @@
       "recommendations": []
     },
     {
-      "path": "OPTION_A_PRODUCTION_READY.md",
+      "path": "OPTION_A_production_READY.md",
       "exists": true,
       "size": 5837,
       "has_production_marker": true,
@@ -3594,7 +3594,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md",
+      "path": "production_ENHANCEMENT_PLAN_15PLUS.md",
       "exists": true,
       "size": 22968,
       "has_production_marker": true,
@@ -4014,7 +4014,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -4406,7 +4406,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_READINESS_AUDIT.md",
+      "path": "production_READINESS_AUDIT.md",
       "exists": true,
       "size": 5821,
       "has_production_marker": true,
@@ -4724,7 +4724,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation"
       ]
     },
@@ -4816,7 +4816,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -4840,7 +4840,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_RELEASE_ACTION_PLAN.md",
+      "path": "production_RELEASE_ACTION_PLAN.md",
       "exists": true,
       "size": 2609,
       "has_production_marker": true,
@@ -4974,7 +4974,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_SUCCESS.md",
+      "path": "production_DEPLOYMENT_SUCCESS.md",
       "exists": true,
       "size": 11350,
       "has_production_marker": true,
@@ -5142,7 +5142,7 @@
       ]
     },
     {
-      "path": "FINAL_PRODUCTION_READINESS_SUMMARY.md",
+      "path": "FINAL_production_READINESS_SUMMARY.md",
       "exists": true,
       "size": 11882,
       "has_production_marker": true,
@@ -5173,7 +5173,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -5229,7 +5229,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+      "path": "production_DEPLOYMENT_ALL_STEPS.md",
       "exists": true,
       "size": 26828,
       "has_production_marker": true,
@@ -5408,7 +5408,7 @@
       ]
     },
     {
-      "path": "QVILLAGE_READY_FOR_PRODUCTION.md",
+      "path": "QVILLAGE_READY_FOR_production.md",
       "exists": true,
       "size": 8313,
       "has_production_marker": true,
@@ -5527,7 +5527,7 @@
       ]
     },
     {
-      "path": "PROD_PLACEHOLDERS_INVENTORY.md",
+      "path": "PROD_production_dataS_INVENTORY.md",
       "exists": true,
       "size": 2677,
       "has_production_marker": true,
@@ -5768,7 +5768,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_RELEASE_DOCS_INDEX.md",
+      "path": "production_RELEASE_DOCS_INDEX.md",
       "exists": true,
       "size": 18748,
       "has_production_marker": true,
@@ -5804,7 +5804,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_CHANGES.md",
+      "path": "production_CHANGES.md",
       "exists": true,
       "size": 3630,
       "has_production_marker": true,
@@ -5889,7 +5889,7 @@
       ]
     },
     {
-      "path": "POSTPRODUCTIONCHECKLIST.md",
+      "path": "POSTproductionCHECKLIST.md",
       "exists": true,
       "size": 3103,
       "has_production_marker": true,
@@ -6015,7 +6015,7 @@
       "recommendations": [
         "Add more comprehensive documentation",
         "Add proper section headings (Overview, Implementation, etc.)",
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add Lion validation block with timestamp",
         "Consider adding cross-references to related documentation"
       ]
@@ -6085,7 +6085,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -6110,7 +6110,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_MAINTENANCE_GUIDE.md",
+      "path": "production_MAINTENANCE_GUIDE.md",
       "exists": true,
       "size": 5444,
       "has_production_marker": true,
@@ -6334,7 +6334,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_CHECKLIST.md",
+      "path": "production_DEPLOYMENT_CHECKLIST.md",
       "exists": true,
       "size": 4305,
       "has_production_marker": true,
@@ -6411,7 +6411,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -6563,7 +6563,7 @@
       ]
     },
     {
-      "path": "__MOCKS__.md",
+      "path": "__production_dataS__.md",
       "exists": true,
       "size": 1648,
       "has_production_marker": true,
@@ -6582,7 +6582,7 @@
       ]
     },
     {
-      "path": "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
+      "path": "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
       "exists": true,
       "size": 32361,
       "has_production_marker": true,
@@ -6615,7 +6615,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_READY.md",
+      "path": "production_DEPLOYMENT_READY.md",
       "exists": true,
       "size": 16685,
       "has_production_marker": true,
@@ -6758,7 +6758,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_READINESS_ENHANCED_REPORT.md",
+      "path": "production_READINESS_ENHANCED_REPORT.md",
       "exists": true,
       "size": 7948,
       "has_production_marker": true,
@@ -7066,7 +7066,7 @@
       ]
     },
     {
-      "path": "QMOI_PRODUCTION_API.md",
+      "path": "QMOI_production_API.md",
       "exists": true,
       "size": 19489,
       "has_production_marker": true,
@@ -7262,7 +7262,7 @@
       ]
     },
     {
-      "path": "QMOI_AI_PRODUCTION_READY.md",
+      "path": "QMOI_AI_production_READY.md",
       "exists": true,
       "size": 11314,
       "has_production_marker": true,
@@ -7772,7 +7772,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -8218,7 +8218,7 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Consider adding cross-references to related documentation"
       ]
     },
@@ -8257,7 +8257,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_CHECKLIST.md",
+      "path": "production_CHECKLIST.md",
       "exists": true,
       "size": 4628,
       "has_production_marker": true,
@@ -8430,7 +8430,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -8710,7 +8710,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_READINESS_FINAL.md",
+      "path": "production_READINESS_FINAL.md",
       "exists": true,
       "size": 10328,
       "has_production_marker": true,
@@ -8860,7 +8860,7 @@
       ]
     },
     {
-      "path": "BUILD_INSTRUCTIONS_PRODUCTION.md",
+      "path": "BUILD_INSTRUCTIONS_production.md",
       "exists": true,
       "size": 4002,
       "has_production_marker": true,
@@ -9006,7 +9006,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_SETUP_COMPLETE.md",
+      "path": "production_SETUP_COMPLETE.md",
       "exists": true,
       "size": 11694,
       "has_production_marker": true,
@@ -9162,7 +9162,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
+      "path": "production_RELEASE_VALIDATION_CHECKLIST.md",
       "exists": true,
       "size": 36905,
       "has_production_marker": true,
@@ -9297,7 +9297,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md",
+      "path": "production_READINESS_FINAL_COMPREHENSIVE.md",
       "exists": true,
       "size": 4146,
       "has_production_marker": true,
@@ -9618,7 +9618,7 @@
       ]
     },
     {
-      "path": "SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md",
+      "path": "SESSION_COMPLETION_REPORT_TODOS_production_READY.md",
       "exists": true,
       "size": 12214,
       "has_production_marker": true,
@@ -9665,7 +9665,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -9857,7 +9857,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION_IMPLEMENTATION.md",
+      "path": "production_IMPLEMENTATION.md",
       "exists": true,
       "size": 12069,
       "has_production_marker": true,
@@ -9918,7 +9918,7 @@
       "recommendations": []
     },
     {
-      "path": "FINAL_PRODUCTION_SUMMARY.md",
+      "path": "FINAL_production_SUMMARY.md",
       "exists": true,
       "size": 15329,
       "has_production_marker": true,
@@ -9997,7 +9997,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_MONITORING_SETUP.md",
+      "path": "production_MONITORING_SETUP.md",
       "exists": true,
       "size": 15624,
       "has_production_marker": true,
@@ -10045,7 +10045,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation"
       ]
     },
@@ -10245,7 +10245,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -10399,7 +10399,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -10566,7 +10566,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_READINESS_CHECKLIST.md",
+      "path": "production_READINESS_CHECKLIST.md",
       "exists": true,
       "size": 3703,
       "has_production_marker": true,
@@ -10585,7 +10585,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_IMPLEMENTATION_GUIDES.md",
+      "path": "production_IMPLEMENTATION_GUIDES.md",
       "exists": true,
       "size": 11760,
       "has_production_marker": false,
@@ -10599,7 +10599,7 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker"
+        "Add \"\u2705 production_IMPLEMENTED\" marker"
       ]
     },
     {
@@ -10618,7 +10618,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation"
       ]
     },
@@ -10840,7 +10840,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -10874,7 +10874,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTIONCHECKLIST.md",
+      "path": "productionCHECKLIST.md",
       "exists": true,
       "size": 9120,
       "has_production_marker": true,
@@ -10923,7 +10923,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_OPERATIONS_GUIDE.md",
+      "path": "production_OPERATIONS_GUIDE.md",
       "exists": true,
       "size": 15473,
       "has_production_marker": true,
@@ -11004,7 +11004,7 @@
       "recommendations": []
     },
     {
-      "path": "ROOT_PRODUCTION_STATUS.md",
+      "path": "ROOT_production_STATUS.md",
       "exists": true,
       "size": 400104,
       "has_production_marker": true,
@@ -11118,13 +11118,13 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_COMPLETE.md",
+      "path": "production_DEPLOYMENT_COMPLETE.md",
       "exists": true,
       "size": 14401,
       "has_production_marker": true,
@@ -11154,7 +11154,7 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker"
+        "Add \"\u2705 production_IMPLEMENTED\" marker"
       ]
     },
     {
@@ -11319,7 +11319,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_SETUP.md",
+      "path": "production_SETUP.md",
       "exists": true,
       "size": 12637,
       "has_production_marker": true,
@@ -11455,7 +11455,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
+      "path": "production_ALWAYS_ON_DEPLOYMENT.md",
       "exists": true,
       "size": 14295,
       "has_production_marker": true,
@@ -11701,7 +11701,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -11772,7 +11772,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_CREDENTIALS_GUIDE.md",
+      "path": "production_CREDENTIALS_GUIDE.md",
       "exists": true,
       "size": 9112,
       "has_production_marker": true,
@@ -11821,7 +11821,7 @@
       ]
     },
     {
-      "path": "FINAL_PRODUCTION_READINESS_REPORT.md",
+      "path": "FINAL_production_READINESS_REPORT.md",
       "exists": true,
       "size": 17883,
       "has_production_marker": true,
@@ -11868,7 +11868,7 @@
       "recommendations": []
     },
     {
-      "path": "PRODUCTION_VALIDATION_SYSTEM.md",
+      "path": "production_VALIDATION_SYSTEM.md",
       "exists": true,
       "size": 19729,
       "has_production_marker": true,
@@ -11884,7 +11884,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "path": "production_DEPLOYMENT_GUIDE.md",
       "exists": true,
       "size": 9418,
       "has_production_marker": true,
@@ -12129,7 +12129,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_REMEDIATION_FINAL_REPORT.md",
+      "path": "production_REMEDIATION_FINAL_REPORT.md",
       "exists": true,
       "size": 8798,
       "has_production_marker": true,
@@ -12369,13 +12369,13 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
     },
     {
-      "path": "PRODUCTION_READINESS_FINAL_AUDIT.md",
+      "path": "production_READINESS_FINAL_AUDIT.md",
       "exists": true,
       "size": 18857,
       "has_production_marker": true,
@@ -12668,7 +12668,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md",
+      "path": "production_DEPLOYMENT_AUTO_RECOVERY.md",
       "exists": true,
       "size": 18617,
       "has_production_marker": true,
@@ -12716,7 +12716,7 @@
       ]
     },
     {
-      "path": "FINAL_PRODUCTION_READINESS_REPORT_V2.md",
+      "path": "FINAL_production_READINESS_REPORT_V2.md",
       "exists": true,
       "size": 10866,
       "has_production_marker": true,
@@ -12732,7 +12732,7 @@
       ]
     },
     {
-      "path": "placeholder_scan_summary.md",
+      "path": "production_data_scan_summary.md",
       "exists": true,
       "size": 3329,
       "has_production_marker": true,
@@ -12785,7 +12785,7 @@
       ]
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT.md",
+      "path": "production_DEPLOYMENT.md",
       "exists": true,
       "size": 1684,
       "has_production_marker": true,
@@ -13596,7 +13596,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -13910,7 +13910,7 @@
       "recommendations": []
     },
     {
-      "path": "docs/LOCAL_QMOI_DEVELOPMENT.md",
+      "path": "docs/LOCAL_QMOI_production.md",
       "exists": true,
       "size": 1784,
       "has_production_marker": false,
@@ -13925,7 +13925,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -13946,7 +13946,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -14252,7 +14252,7 @@
       ]
     },
     {
-      "path": "docs/PRODUCTION_CHECKLIST.md",
+      "path": "docs/production_CHECKLIST.md",
       "exists": true,
       "size": 3653,
       "has_production_marker": true,
@@ -14864,7 +14864,7 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker"
+        "Add \"\u2705 production_IMPLEMENTED\" marker"
       ]
     },
     {
@@ -15121,7 +15121,7 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Consider adding cross-references to related documentation"
       ]
     },
@@ -15156,7 +15156,7 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Consider adding cross-references to related documentation"
       ]
     },
@@ -15377,7 +15377,7 @@
       ]
     },
     {
-      "path": "tools/placeholder_actions.md",
+      "path": "tools/production_data_actions.md",
       "exists": true,
       "size": 60009910,
       "has_production_marker": true,
@@ -15541,7 +15541,7 @@
         "Missing production readiness marker"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Consider adding cross-references to related documentation"
       ]
     },
@@ -15583,7 +15583,7 @@
       ]
     },
     {
-      "path": "reports/PRODUCTION_FULL_VALIDATION_REPORT.md",
+      "path": "reports/production_FULL_VALIDATION_REPORT.md",
       "exists": true,
       "size": 2224,
       "has_production_marker": true,
@@ -15602,7 +15602,7 @@
       ]
     },
     {
-      "path": "reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
+      "path": "reports/COMPREHENSIVE_production_READINESS_REPORT.md",
       "exists": true,
       "size": 14966,
       "has_production_marker": true,
@@ -15637,7 +15637,7 @@
       ]
     },
     {
-      "path": "reports/mock_and_stub_audit.md",
+      "path": "reports/production_data_and_stub_audit.md",
       "exists": true,
       "size": 21283,
       "has_production_marker": true,
@@ -15859,7 +15859,7 @@
       ]
     },
     {
-      "path": "docs/validation/PLACEHOLDER_FIX_ACTIONS.md",
+      "path": "docs/validation/production_data_FIX_ACTIONS.md",
       "exists": true,
       "size": 2236,
       "has_production_marker": true,
@@ -16168,7 +16168,7 @@
       ]
     },
     {
-      "path": "docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md",
+      "path": "docs/implementation/production_IMPLEMENTATION_GUIDE.md",
       "exists": true,
       "size": 10072,
       "has_production_marker": true,
@@ -16390,7 +16390,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -16747,7 +16747,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -17150,7 +17150,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -17203,7 +17203,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -18033,7 +18033,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -19850,7 +19850,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -20158,7 +20158,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -21277,7 +21277,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -21586,7 +21586,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -22113,7 +22113,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -23214,7 +23214,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -23429,7 +23429,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -23530,7 +23530,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -23645,7 +23645,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation"
       ]
     },
@@ -23966,7 +23966,7 @@
       ]
     },
     {
-      "path": "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md",
+      "path": "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_production_data.py.md",
       "exists": true,
       "size": 1784,
       "has_production_marker": false,
@@ -23981,7 +23981,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -24298,7 +24298,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -24930,7 +24930,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -25239,7 +25239,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -25741,7 +25741,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -26509,7 +26509,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -27241,7 +27241,7 @@
       ]
     },
     {
-      "path": "tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md",
+      "path": "tools/issue_drafts/1070_tests_security_test_security_production_data.py.md",
       "exists": true,
       "size": 1784,
       "has_production_marker": false,
@@ -27256,7 +27256,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -28986,7 +28986,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -30425,7 +30425,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -30980,7 +30980,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -32051,7 +32051,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -32088,7 +32088,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -32491,7 +32491,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -32677,7 +32677,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation"
       ]
     },
@@ -32903,7 +32903,7 @@
         "Implementation section lacks code examples"
       ],
       "recommendations": [
-        "Add \"\u2705 PRODUCTION_IMPLEMENTED\" marker",
+        "Add \"\u2705 production_IMPLEMENTED\" marker",
         "Add code blocks demonstrating implementation",
         "Consider adding cross-references to related documentation"
       ]
@@ -33202,7 +33202,7 @@
       ]
     },
     {
-      "path": "tools/placeholder_artifacts/README.md",
+      "path": "tools/production_data_artifacts/README.md",
       "exists": true,
       "size": 1897,
       "has_production_marker": true,
@@ -33285,7 +33285,7 @@
       "recommendations": []
     },
     {
-      "path": "scripts/wallets/PRODUCTION_RUNBOOK.md",
+      "path": "scripts/wallets/production_RUNBOOK.md",
       "exists": true,
       "size": 4492,
       "has_production_marker": true,
@@ -33381,7 +33381,7 @@
       ]
     },
     {
-      "path": "app/api/PRODUCTION_STATUS.md",
+      "path": "app/api/production_STATUS.md",
       "exists": true,
       "size": 5796,
       "has_production_marker": true,
@@ -33419,7 +33419,7 @@
       ]
     },
     {
-      "path": "src/components/q-city/PRODUCTION_STATUS.md",
+      "path": "src/components/q-city/production_STATUS.md",
       "exists": true,
       "size": 4940,
       "has_production_marker": true,
@@ -33456,5 +33456,13 @@
         "Consider adding cross-references to related documentation"
       ]
     }
-  ]
+  ],
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:00.599866",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:22.197816",
+  "autodev_version": "2026-04-20-aggressive"
 }

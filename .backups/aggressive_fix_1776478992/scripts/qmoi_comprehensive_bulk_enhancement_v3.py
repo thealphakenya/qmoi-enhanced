@@ -668,16 +668,16 @@ assert result["relevance"] > 0.85
 
 ```bash
 # Run all tests
-pytest tests/ -v
+# production: # production: # production: pytest removed removed removed tests/ -v
 
 # Run specific test suite
-pytest tests/test_trading.py -v
+# production: # production: # production: pytest removed removed removed tests/test_trading.py -v
 
 # Run with coverage
-pytest tests/ --cov=qmoi --cov-report=html
+# production: # production: # production: pytest removed removed removed tests/ --cov=qmoi --cov-report=html
 
 # Run performance benchmarks
-pytest tests/benchmarks/ -v
+# production: # production: # production: pytest removed removed removed tests/benchmarks/ -v
 
 # Run load tests
 locust -f tests/load_tests.py

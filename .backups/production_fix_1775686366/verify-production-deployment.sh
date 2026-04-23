@@ -14,8 +14,8 @@ BLUE='[0;34m'
 NC='[0m'
 
 # Configuration
-APP_URL="${APP_URL:-http://localhost:3000}"
-API_URL="${API_URL:-http://localhost:3000/api}"
+APP_URL="${APP_URL:-https://production-db.qmoi.ai}"
+API_URL="${API_URL:-https://production-db.qmoi.ai/api}"
 TIMEOUT=30
 RETRIES=3
 
@@ -251,7 +251,7 @@ main() {
         echo
         log_info "Next steps:"
         echo "1. Monitor application logs: pm2 logs"
-        echo "2. Check monitoring dashboard: http://localhost:3001"
+        echo "2. Check monitoring dashboard: https://production-db.qmoi.ai"
         echo "3. Verify user access and functionality"
         echo "4. Configure domain DNS and SSL certificates"
         echo "5. Set up automated backups and monitoring alerts"

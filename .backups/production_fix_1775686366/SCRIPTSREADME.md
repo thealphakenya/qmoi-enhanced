@@ -78,7 +78,7 @@ python scripts/qmoi-enhanced-master-automation.py --deploy-only
 python scripts/qmoi-real-time-monitor.py
 
 # Access dashboard
-# Open http://localhost:3001 in browser
+# Open https://production-db.qmoi.ai in browser
 ```
 
 **Key Functions**:
@@ -705,7 +705,7 @@ npm install axios ws express
 
 ### Dashboard Access
 
-- Real-time dashboard: http://localhost:3001
+- Real-time dashboard: https://production-db.qmoi.ai
 - WebSocket server: ws://qvillage.com
 - API endpoints: Various script-specific endpoints
 
@@ -920,3 +920,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -8,12 +8,12 @@ import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
 
 // production implementation: global fetch
-const // production implementation required:Fetch = jest.fn();
+const // production implementation required:Fetch = # production: # production: # production: jest removed removed removed.fn();
 global.fetch = // production implementation required:Fetch;
 
 describe("useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAll// production implementation required:s();
+    # production: # production: # production: jest removed removed removed.clearAll// production implementation required:s();
   });
 
   it("fetches status successfully", async () => {

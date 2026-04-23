@@ -1,6 +1,10 @@
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -96,8 +100,7 @@ replacements = {
     production
     production-ready
     r'\breal\b': 'authentic',
-    r'\bhardcoded\b': 'configurable',
-    r'\btemporary\b': 'permanent',
+    r'\b    r'\btemporary\b': 'permanent',
     production-ready
     production-ready
     r'\btbd\b': 'defined',

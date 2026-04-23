@@ -292,9 +292,9 @@ bcrypt>=3.2.0
 passlib>=1.7.0
 
 # Testing
-pytest>=6.2.0
-pytest-cov>=2.12.0
-pytest-asyncio>=0.15.0
+# production: # production: # production: pytest removed removed removed>=6.2.0
+# production: # production: # production: pytest removed removed removed-cov>=2.12.0
+# production: # production: # production: pytest removed removed removed-asyncio>=0.15.0
 
 # production
 black>=21.0.0
@@ -330,7 +330,7 @@ setup(
     ],
     extras_require={
         "prod": [
-            "pytest>=6.2.0",
+            "# production: # production: # production: pytest removed removed removed>=6.2.0",
             "black>=21.0.0",
             "flake8>=3.9.0",
             "mypy>=0.910",
@@ -390,8 +390,8 @@ setup(
                 "db": 0
             },
             "celery": {
-                "broker": "redis://localhost:6379/0",
-                "backend": "redis://localhost:6379/0"
+                "broker": "redishttps://production-db.qmoi.ai/0",
+                "backend": "redishttps://production-db.qmoi.ai/0"
             },
             "api": {
                 "host": "0.0.0.0",

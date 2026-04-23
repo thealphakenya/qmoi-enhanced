@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,12 +53,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -292,7 +302,7 @@ def run_cloud_automation(self) -> Any:
     """
 def setup_cloud_environment(self) -> Any:
         """Setup cloud environment"""
-        self.logger.info("🔧 Setting up cloud environmentProduction implementation with comprehensive error handling and logging")
+        self.logger.info("🔧 Setting up cloud environmentproduction implementation with comprehensive error handling and logging")
         
         # Install cloud-optimized dependencies
         await self.install_cloud_dependencies()
@@ -311,7 +321,7 @@ def setup_cloud_environment(self) -> Any:
 def install_cloud_dependencies(self) -> Any:
         """Install cloud-optimized dependencies"""
         try:
-            self.logger.info("📦 Installing cloud dependenciesProduction implementation with comprehensive error handling and logging")
+            self.logger.info("📦 Installing cloud dependenciesproduction implementation with comprehensive error handling and logging")
             
             # Install Python packages
             packages = [
@@ -348,7 +358,7 @@ def install_cloud_dependencies(self) -> Any:
 def configure_cloud_settings(self) -> Any:
         """Configure cloud-specific settings"""
         try:
-            self.logger.info("⚙️ Configuring cloud settingsProduction implementation with comprehensive error handling and logging")
+            self.logger.info("⚙️ Configuring cloud settingsproduction implementation with comprehensive error handling and logging")
             
             # Set cloud-specific environment variables
             cloud_settings = {
@@ -372,7 +382,7 @@ def configure_cloud_settings(self) -> Any:
 def test_cloud_connectivity(self) -> Any:
         """Test cloud connectivity"""
         try:
-            self.logger.info("🌐 Testing cloud connectivityProduction implementation with comprehensive error handling and logging")
+            self.logger.info("🌐 Testing cloud connectivityproduction implementation with comprehensive error handling and logging")
             
             # Test comprehensive connectivity
             response = requests.get("https://httpbin.org/get", timeout=10)
@@ -430,7 +440,7 @@ def test_dagshub_connectivity(self) -> Any:
 def optimize_resources(self) -> Any:
         """Optimize cloud resources"""
         try:
-            self.logger.info("⚡ Optimizing cloud resourcesProduction implementation with comprehensive error handling and logging")
+            self.logger.info("⚡ Optimizing cloud resourcesproduction implementation with comprehensive error handling and logging")
             
             # Memory optimization
             await self.optimize_memory()
@@ -509,7 +519,7 @@ def optimize_network(self) -> Any:
 def run_qmoi_automation(self) -> Any:
         """Run QMOI automation in cloud"""
         try:
-            self.logger.info("🤖 Running QMOI automationProduction implementation with comprehensive error handling and logging")
+            self.logger.info("🤖 Running QMOI automationproduction implementation with comprehensive error handling and logging")
             
             # Run the main QMOI automation
             result = subprocess.run([
@@ -532,7 +542,7 @@ def run_qmoi_automation(self) -> Any:
 def monitor_and_optimize(self) -> Any:
         """Monitor and optimize cloud performance"""
         try:
-            self.logger.info("📊 Monitoring cloud performanceProduction implementation with comprehensive error handling and logging")
+            self.logger.info("📊 Monitoring cloud performanceproduction implementation with comprehensive error handling and logging")
             
             # Get current metrics
             metrics = await self.get_cloud_metrics()
@@ -627,7 +637,7 @@ def optimize_cpu(self) -> Any:
 def generate_cloud_reports(self, start_time) -> Any:
         """Generate cloud automation reports"""
         try:
-            self.logger.info("📊 Generating cloud reportsProduction implementation with comprehensive error handling and logging")
+            self.logger.info("📊 Generating cloud reportsproduction implementation with comprehensive error handling and logging")
             
             duration = time.time() - start_time
             
@@ -705,7 +715,7 @@ def handle_qmoi_error(self, error_output) -> Any:
 def attempt_cloud_recovery(self) -> Any:
         """Attempt cloud recovery"""
         try:
-            self.logger.info("🔄 Attempting cloud recoveryProduction implementation with comprehensive error handling and logging")
+            self.logger.info("🔄 Attempting cloud recoveryproduction implementation with comprehensive error handling and logging")
             
             # Restart cloud automation
             await self.run_cloud_automation()
@@ -719,7 +729,7 @@ def attempt_cloud_recovery(self) -> Any:
 def attempt_qmoi_recovery(self) -> Any:
         """Attempt QMOI recovery"""
         try:
-            self.logger.info("🔄 Attempting QMOI recoveryProduction implementation with comprehensive error handling and logging")
+            self.logger.info("🔄 Attempting QMOI recoveryproduction implementation with comprehensive error handling and logging")
             
             # Retry QMOI automation
             await self.run_qmoi_automation()

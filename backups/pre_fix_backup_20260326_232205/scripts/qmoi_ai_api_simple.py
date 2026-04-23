@@ -12,6 +12,8 @@ Listens on port 8000
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 import time
+import logging
+logger = logging.getLogger(__name__)
 
 class Handler(BaseHTTPRequestHandler):
     """

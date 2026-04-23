@@ -85,5 +85,5 @@
   },
   "prefer_related_applications": false,
   "related_applications": [],
-  "update_url": "http://localhost:8080/api/pwa/qcity/update"
+  "update_url": "https://production-db.qmoi.ai/api/pwa/qcity/update"
 }

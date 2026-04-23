@@ -181,6 +181,16 @@ def execute_master_command(self, command: MasterCommand) -> Dict:
         command.status = "executing"
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             if command.command == "start_all_modules":
                 result = await self.start_all_modules()
             elif command.command == "stop_all_modules":

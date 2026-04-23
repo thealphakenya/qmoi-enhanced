@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:07Z
@@ -38,7 +39,7 @@ function serveStaticOrSPA(dir): any {
 
 // QMOI AI Main UI
 const mainApp = express();
-mainApp.use("/", /* Production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../public")));
+mainApp.use("/", /* production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../public")));
 mainApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QMOI Main UI" }),
 );
@@ -51,7 +52,7 @@ mainApp.listen(PORT_MAIN, async () => {
 
 // QCity UI
 const qcityApp = express();
-qcityApp.use("/", /* Production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../public/qcity")));
+qcityApp.use("/", /* production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../public/qcity")));
 qcityApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QCity UI" }),
 );
@@ -66,7 +67,7 @@ qcityApp.listen(PORT_QCITY, async () => {
 const spaceApp = express();
 spaceApp.use(
   "/",
-  /* Production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../qmoi-space-pwa")),
+  /* production implementation with proper error handling */serveStaticOrSPA(path.join(__dirname, "../qmoi-space-pwa")),
 );
 spaceApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QMOI Space PWA" }),

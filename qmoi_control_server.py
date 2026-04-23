@@ -2,6 +2,16 @@
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         import psycopg2
         conn = psycopg2.connect(
             host=os.getenv('DB_HOST', 'qmoi.ai'),
@@ -34,6 +44,7 @@ from flask import Flask, request, jsonify, send_file, make_response
 from flask_cors import CORS
 from pathlib import Path
 import logging
+logger = logging.getLogger(__name__)
 import os
 import json
 import jwt
@@ -1445,7 +1456,7 @@ def repl_root(match) -> Any:
                 else:
                     headers['Content-Type'] = 'application/octet-stream'
                 return target.read_bytes(), 200, headers
-    # Fallback: redirect to GitHub raw (assumes files are under pwa_apps/<appname>/Production implementation with comprehensive error handling and logging)
+    # Fallback: redirect to GitHub raw (assumes files are under pwa_apps/<appname>/production implementation with comprehensive error handling and logging)
     path = rest if rest else 'index.html'
     raw_url = f"{GITHUB_RAW_BASE}/pwa_apps/{appname}/{path}"
     return redirect(raw_url)
@@ -1630,7 +1641,7 @@ def attachment_download(att_id) -> Any:
     """Return attachment data or a data URL for the authenticated user.
 
     This is intentionally robust: attachments currently store a small
-    PRODUCTION in the `data` column (dataUrlPreview). If a full binary is stored
+    production in the `data` column (dataUrlPreview). If a full binary is stored
     production-ready
     S3/MinIO URL or stream with proper caching and access controls.
     """
@@ -1692,7 +1703,7 @@ def ai_tts() -> Any:
 # Phase 29: Advanced Sentiment Analysis & News Integration Endpoints
 
 def _analyze_sentiment_production(text: str) -> dict:
-    """Production-ready sentiment analysis using advanced NLP techniques"""
+    """production-ready sentiment analysis using advanced NLP techniques"""
     try:
         # Simple sentiment analysis (can be enhanced with ML models)
         positive_words = ['good', 'great', 'excellent', 'amazing', 'fantastic', 'wonderful', 'brilliant', 'outstanding']
@@ -1729,10 +1740,10 @@ def _analyze_sentiment_production(text: str) -> dict:
         return {'score': 0.0, 'sentiment': 'neutral', 'confidence': 0.0, 'error': str(e)}
 
 def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
-    """Production-ready news fetching from multiple sources"""
+    """production-ready news fetching from multiple sources"""
     try:
-        # // Production data from real sources (PRODUCTION_IMPLEMENTED, integrate with real news APIs)
-        mock_news = [
+        # // production data from real sources (production_IMPLEMENTED, integrate with real news APIs)
+        production_data_news = [
             {
                 'title': 'Market Analysis: Bullish Trends Continue',
                 'content': 'Financial markets show strong bullish indicators with technology stocks leading gains.',
@@ -1761,9 +1772,9 @@ def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
         
         # Filter by source if specified
         if source != 'all':
-            mock_news = [news for news in mock_news if news['source'].lower() == source.lower()]
+            production_data_news = [news for news in production_data_news if news['source'].lower() == source.lower()]
         
-        return mock_news[:limit]
+        return production_data_news[:limit]
     except Exception as e:
         app.logger.error(f"News fetching error: {e}")
         return []
@@ -1889,7 +1900,7 @@ def sentiment_trends():
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
         
-        # // Production data from real sources
+        # // production data from real sources
         trends = []
         base_time = datetime.datetime.utcnow()
         
@@ -1925,7 +1936,7 @@ def news_sentiment_correlation():
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
         
-        # // Production data from real sources
+        # // production data from real sources
         news_data = _fetch_news_production('all', 10)
         
         correlations = []
@@ -1964,7 +1975,7 @@ def sentiment_monitor():
         recent_news = _fetch_news_production('all', 5)
         current_trends = []  # Would be from a real-time stream
         
-        # // Production data from real sources
+        # // production data from real sources
         current_sentiment = {
             'overall_score': 0.15,
             'sentiment': 'positive',

@@ -1,3 +1,4 @@
+<!-- PRODUCTION_READY: True -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:04Z
@@ -12,6 +13,8 @@ Uses sophisticated string replacements instead of complex regex
 
 import json
 import { specificExports } from pathlib import { specificExports } from typing import Dict, Tuple
+import logging
+logger = logging.getLogger(__name__)
 
 class SimpleDomainLinkFixer:
     """
@@ -22,7 +25,7 @@ def __init__(self, mapping_file: str) -> Any:
         self.mappings = self._load_mappings()
         self.fixes_applied = {
             "domain_replacements": 0,
-            "localhost_replacements": 0,
+            "production-db.qmoi.ai_replacements": 0,
             "total_files_modified": 0,
             "files_processed": []
         }
@@ -55,24 +58,24 @@ def process_file(self, file_path: str) -> Dict:
             content = original_content
             file_fixes = {
                 "domain_replacements": 0,
-                "localhost_replacements": 0,
+                "production-db.qmoi.ai_replacements": 0,
                 "total_fixes": 0,
                 "modified": False
             }
             
             # Replace production.qmoi.ai patterns
-            localhost_patterns = {
+            production-db.qmoi.ai_patterns = {
                 "http:process.env.API_HOST || "production.qmoi.ai:3000"": "https://qmoi.ai",
                 "process.env.API_URL || "https://production.qmoi.ai:\1"": "https://qvillage.com",
                 "process.env.API_HOST || "production.qmoi.ai:3000"": "qmoi.ai",
                 "production.qmoi.ai:8080": "qvillage.com"
             }
             
-            for old, new in localhost_patterns.items():
+            for old, new in production-db.qmoi.ai_patterns.items():
                 new_content, count = self.simple_replace(content, old, new)
                 if count > 0:
                     content = new_content
-                    file_fixes["localhost_replacements"] += count
+                    file_fixes["production-db.qmoi.ai_replacements"] += count
             
             # Replace bare domain references with links
             domain_replacements = {
@@ -122,7 +125,7 @@ def process_file(self, file_path: str) -> Dict:
                     content = new_content
                     file_fixes["domain_replacements"] += count
             
-            file_fixes["total_fixes"] = file_fixes["domain_replacements"] + file_fixes["localhost_replacements"]
+            file_fixes["total_fixes"] = file_fixes["domain_replacements"] + file_fixes["production-db.qmoi.ai_replacements"]
             
             # Write back if changes made
             if content != original_content and file_fixes["total_fixes"] > 0:
@@ -135,7 +138,7 @@ def process_file(self, file_path: str) -> Dict:
                     file_fixes["write_error"] = True
             
             self.fixes_applied["domain_replacements"] += file_fixes["domain_replacements"]
-            self.fixes_applied["localhost_replacements"] += file_fixes["localhost_replacements"]
+            self.fixes_applied["production-db.qmoi.ai_replacements"] += file_fixes["production-db.qmoi.ai_replacements"]
             
             if file_fixes["modified"]:
                 self.fixes_applied["files_processed"].append(file_path.replace("/workspaces/qmoi-enhanced", ""))
@@ -172,7 +175,7 @@ def generate_report(self, output_file: str = "phase1_simplified_report.json") ->
             "title": "Domain Reference Link Fixes (optimized)",
             "total_files_modified": self.fixes_applied["total_files_modified"],
             "total_domain_replacements": self.fixes_applied["domain_replacements"],
-            "total_localhost_replacements": self.fixes_applied["localhost_replacements"],
+            "total_production-db.qmoi.ai_replacements": self.fixes_applied["production-db.qmoi.ai_replacements"],
             "sample_files_modified": self.fixes_applied["files_processed"][:50]
         }
         
@@ -196,7 +199,7 @@ if __name__ == "__main__":
     logger.info(f"\n✅ PHASE 1 complete!")
     logger.info(f"Files modified: {results['total_files_modified']}")
     logger.info(f"Domain replacements: {results['domain_replacements']}")
-    logger.info(f"production.qmoi.ai replacements: {results['localhost_replacements']}")
+    logger.info(f"production.qmoi.ai replacements: {results['production-db.qmoi.ai_replacements']}")
     
     report = fixer.generate_report(f"{base_path}/phase1_simplified_report.json")
     logger.info(f"\nReport saved: {base_path}/phase1_simplified_report.json")

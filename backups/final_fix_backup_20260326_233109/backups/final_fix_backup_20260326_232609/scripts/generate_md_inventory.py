@@ -13,6 +13,8 @@ inventory used by the repo audit tooling.
 
 import json
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import List, Tuple
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 POSSIBLE_NAMES = [ROOT / "@ALLMDFILESREFS.md", ROOT / "ALLMDFILESREFS.md"]

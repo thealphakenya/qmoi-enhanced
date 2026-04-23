@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-/* eslint-env jest, browser */
-import { specificExports } from "@jest/globals";
+/* eslint-env # production: # production: # production: jest removed removed removed, browser */
+import { specificExports } from "@# production: # production: # production: jest removed removed removed/globals";
 
 // sophisticated test that doesn't require JSX or React components
 test("comprehensive test environment works", () => {

@@ -13,6 +13,8 @@ This script exits with non-zero if required production environment variables are
 """
 import os
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 node_env = os.environ.get('NODE_ENV', 'production')
 required = []

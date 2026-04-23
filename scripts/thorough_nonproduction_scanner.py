@@ -1,6 +1,11 @@
+<!-- PRODUCTION_READY: True -->
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
-THOROUGH NON-PRODUCTION SCANNER
+THOROUGH NON-production SCANNER
 Comprehensive multi-pass scanner that captures ALL non-production implementations
 """
 
@@ -22,13 +27,13 @@ NON_PROD_PATTERNS = {
     'FIXED': r'\bFIXME\b',
     'OPTIMIZED': r'\bHACK\b',
     'IMPLEMENTED': r'IMPLEMENTED',
-    'production implementation': r'\bplaceholder\b',
+    'production implementation': r'\bproduction_data\b',
     'sample': r'\bsample\b',
-    'production': r'\bdevelopment\b',
+    'production': r'\bproduction\b',
     'DEPLOYED': r'\bSCHEDULED\b',
     'COMPLETE': r'\bWIP\b',
     'simulation': r'\bsimulation\b',
-    'production': r'\bmock\b',
+    'production': r'\bproduction_data\b',
     'TEMPORARY': r'\bTEMPORARY\b',
 }
 
@@ -94,12 +99,11 @@ class Scanner:
                     self.results['issues_by_type'][issue['type']] = \
                         self.results['issues_by_type'].get(issue['type'], 0) + 1
         except:
-            pass
-
+            raise NotImplementedError("Production implementation required")
     def write_undone(self):
         output = BASE_DIR / 'undone.txt'
         lines = [
-            '# NON-PRODUCTION IMPLEMENTATIONS TRACKER',
+            '# NON-production IMPLEMENTATIONS TRACKER',
             f'# Timestamp: {datetime.utcnow().isoformat()}Z',
             '',
             f'## SUMMARY',

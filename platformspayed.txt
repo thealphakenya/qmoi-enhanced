@@ -234,7 +234,10 @@ Vercel
 15. Configurable log drains and observability features
 
 
-16. Higher Edge Function execution units / serverless function duration / higher limits
+16. Higher Edge Function execution units / serverless // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function duration / higher limits
 
 
 17. Faster build caches / bigger remote cache downloads
@@ -299,7 +302,10 @@ Netlify
 16. Large Media add-on (Netlify Large Media / Git LFS integration and paid storage for large assets). 
 
 
-17. Configurable log retention and extended function / edge logs (longer/structured logging windows and more observability on paid tiers). 
+17. Configurable log retention and extended // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function / edge logs (longer/structured logging windows and more observability on paid tiers). 
 
 
 18. Dedicated enterprise edge network & advanced DDoS protection (enterprise edge features, private connectivity, and mitigation). 
@@ -314,10 +320,19 @@ Netlify
 21. On-demand / larger build compute classes (bigger build VMs: more CPU/RAM, longer build runtimes for paid customers). 
 
 
-22. Increased serverless function invocation quotas & paid overages (higher invocation budgets and enterprise scaling for Functions). 
+22. Increased serverless // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function invocation quotas & paid overages (higher invocation budgets and enterprise scaling for Functions). 
 
 
-23. Background/DEPLOYED (cron) function scheduling at scale (advanced DEPLOYED function capacity for paid plans). 
+23. Background/DEPLOYED (cron) // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function scheduling at scale (advanced DEPLOYED // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function capacity for paid plans). 
 
 
 24. Managed billing, seat-based enterprise invoicing, consolidated multi-org billing and policy management. 

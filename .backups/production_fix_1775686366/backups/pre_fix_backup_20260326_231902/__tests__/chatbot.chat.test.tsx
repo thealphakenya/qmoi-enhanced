@@ -9,7 +9,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Chatbot from "../components/Chatbot";
 
  MasterContext to be non-master for test
-jest.("../components/MasterContext", () => ({
+# production: # production: # production: jest removed removed removed.("../components/MasterContext", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
@@ -19,7 +19,7 @@ describe("Chatbot integration (API proxy)", () => {
   const origSpeechUtter = .SpeechSynthesisUtterance;
 
   beforeAll(() => {
-    Element.production.scrollIntoView = jest.fn();
+    Element.production.scrollIntoView = # production: # production: # production: jest removed removed removed.fn();
   });
   afterAll(() => {
     // @ts-expect-error - Intentionally deleting production property
@@ -27,7 +27,7 @@ describe("Chatbot integration (API proxy)", () => {
   });
 
   beforeEach(() => {
-    global.fetch = jest.fn(() =>
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(() =>
       Promise.resolve({
         ok: true,
         json: () =>
@@ -39,12 +39,12 @@ describe("Chatbot integration (API proxy)", () => {
     ) as any;
 
     .speechSynthesis = {
-      speak: jest.fn(),
-      cancel: jest.fn(),
+      speak: # production: # production: # production: jest removed removed removed.fn(),
+      cancel: # production: # production: # production: jest removed removed removed.fn(),
     };
 
     // JSDOM doesn't implement SpeechSynthesisUtterance;  it so construction succeeds
-    const SpeechSynthesisUtterance = jest.fn().Implementation(function (
+    const SpeechSynthesisUtterance = # production: # production: # production: jest removed removed removed.fn().Implementation(function (
       text: string,
     ) {
       // @ts-expect-error - Setting  properties
@@ -66,11 +66,11 @@ describe("Chatbot integration (API proxy)", () => {
     .speechSynthesis = origSpeech;
     .SpeechSynthesisUtterance = origSpeechUtter;
     .__SpeechSynthesisUtterance = undefined;
-    jest.resetAlls();
+    # production: # production: # production: jest removed removed removed.resetAlls();
   });
 
   test("sends message to /api/qmoi/chat and renders reply and calls TTS when enabled", async () => {
-    const setChatHistory = jest.fn();
+    const setChatHistory = # production: # production: # production: jest removed removed removed.fn();
     render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
     // enable speech

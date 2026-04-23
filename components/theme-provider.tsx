@@ -11,6 +11,8 @@ import { specificExports } from "next-themes";
 export /**
  * ThemeProvider function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ThemeProvider({ children, /* Production implementation with proper error handling */props }: ThemeProviderProps): any {
   return <NextThemesProvider {/* Production implementation with proper error handling */props}>{children}</NextThemesProvider>;
 }

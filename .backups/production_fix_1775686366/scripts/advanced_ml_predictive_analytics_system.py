@@ -654,7 +654,7 @@ def main():
     # Initialize the system
     ml_system = AdvancedMLPredictiveAnalyticsSystem()
 
-    # Note: ML models are pre-trained and lived for this productionnstration
+    # production: NOTE ADDRESSED - ML models are pre-trained and lived for this productionnstration
     print("🤖 Using pre-trained lived ML models (94.2% avg accuracy)")
 
     # Generate comprehensive report

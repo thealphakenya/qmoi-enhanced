@@ -263,14 +263,14 @@ This document catalogs all test files, test cases, and automation tests in the Q
 ## Test Statistics
 
 - **Total Test Files**: {len([t for t in test_files if t.strip()])}
-- **Jest Tests**: {len([t for t in test_files if 'jest' in t.lower() or t.endswith('.test.ts') or t.endswith('.test.tsx')])}
+- **# production: # production: # production: jest removed removed removed Tests**: {len([t for t in test_files if '# production: # production: # production: jest removed removed removed' in t.lower() or t.endswith('.test.ts') or t.endswith('.test.tsx')])}
 - **Cypress Tests**: {len([t for t in test_files if 'cypress' in t.lower()])}
 - **Integration Tests**: {len([t for t in test_files if 'integration' in t.lower()])}
 - **Test Documentation Files**: 20
 
 ## Test Files by Category
 
-### Jest Tests ({len([t for t in test_files if t.endswith('.test.ts') or t.endswith('.test.tsx')])})
+### # production: # production: # production: jest removed removed removed Tests ({len([t for t in test_files if t.endswith('.test.ts') or t.endswith('.test.tsx')])})
 
 """
     

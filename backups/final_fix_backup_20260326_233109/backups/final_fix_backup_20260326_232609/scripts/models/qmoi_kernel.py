@@ -19,6 +19,8 @@ import json
 import hashlib
 import requests
 import { specificExports } from datetime import { specificExports } from .qmoi_personality import qmoi_personality_respond, evolve_personality_from_feedback
+import logging
+logger = logging.getLogger(__name__)
 
 # === CONFIG ===
 CONFIG = {

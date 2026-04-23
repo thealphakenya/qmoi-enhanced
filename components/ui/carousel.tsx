@@ -65,6 +65,8 @@ const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 /**
  * useCarousel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function useCarousel(): any {
   const context = React.useContext(CarouselContext);
 

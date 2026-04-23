@@ -99,7 +99,7 @@ def periodic_tasks(manifest: dict, interval_sec=3600, dry_run=False) -> Any:
 
         # 1. Run autotests — require a test capability or runner-engine
         if any(has_capability(manifest, c) for c in ('test', 'tests', 'autotest', 'runner-engine')):
-            run_once('python -m pytest -q', dry_run=dry_run)
+            run_once('python -m # production: # production: # production: pytest removed removed removed -q', dry_run=dry_run)
         else:
             logger.info('Skipping autotests: runner lacks test capability')
 

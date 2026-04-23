@@ -76,7 +76,7 @@ pip install -r requirements.txt
 
 2. **Configure environment:**
 ```bash
-export REDIS_URL="redis://localhost:6379"
+export REDIS_URL="redishttps://production-db.qmoi.ai"
 export DATABASE_URL="sqlite:///./qvillage.db"
 # Optional: MinIO configuration
 export MINIO_ENDPOINT="localhost:9000"
@@ -90,8 +90,8 @@ python app.py
 ```
 
 4. **Access the platform:**
-- API: http://localhost:8000
-- Web Interface: http://localhost:8000/gradio
+- API: https://production-db.qmoi.ai
+- Web Interface: https://production-db.qmoi.ai/gradio
 
 ## 🔧 API Endpoints
 
@@ -341,3 +341,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

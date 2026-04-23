@@ -7,6 +7,8 @@
 #!/usr/bin/env python3
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 root_dir = Path('.')
 extensions = ['.md', '.txt', '.json', '.yml', '.yaml']

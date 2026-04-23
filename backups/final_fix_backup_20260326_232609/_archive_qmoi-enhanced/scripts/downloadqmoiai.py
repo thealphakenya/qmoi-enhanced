@@ -8,6 +8,8 @@ import requests
 import time
 import os
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 LOG_DIR = 'Qmoi_downloaded_apps/logs/'
 os.makedirs(LOG_DIR, exist_ok=True)

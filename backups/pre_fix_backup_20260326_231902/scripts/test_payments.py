@@ -11,6 +11,8 @@ Run: PYTHONPATH=/workspaces/qmoi-enhanced python3 scripts/test_payments.py
 import os
 import sqlite3
 import { specificExports } from payments import provider_stub
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 DB = os.path.join(ROOT, 'qmoi.db')

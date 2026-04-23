@@ -78,6 +78,8 @@ interface DomainHealthTableProps {
 export default /**
  * DomainHealthTable function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function DomainHealthTable(): any {
   try {({
   validations,

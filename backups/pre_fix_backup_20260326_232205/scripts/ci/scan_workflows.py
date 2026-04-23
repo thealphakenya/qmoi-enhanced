@@ -25,6 +25,8 @@ Run:
 import json
 import os
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 WORKFLOWS_DIR = os.path.join(ROOT, '.github', 'workflows')

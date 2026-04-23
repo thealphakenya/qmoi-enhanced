@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 production-ready
 
@@ -93,6 +97,16 @@ def is_excluded(path: Path) -> bool:
     """
 def read_file(filepath: Path) -> Any:
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         return filepath.read_text(encoding='utf-8', errors='ignore')
     except Exception:
         return None

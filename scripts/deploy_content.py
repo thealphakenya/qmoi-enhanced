@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +57,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 #!/usr/bin/env python3
@@ -96,7 +110,7 @@ def log(self, message: str) -> Any:
     """
 def validate_environment(self) -> bool:
         """Validate content deployment environment"""
-        self.log("🔍 Validating content deployment environmentProduction implementation with comprehensive error handling and logging")
+        self.log("🔍 Validating content deployment environmentproduction implementation with comprehensive error handling and logging")
         
         # Check if content directory exists
         content_dir = Path('content')
@@ -246,7 +260,7 @@ def run_deployment(self) -> Any:
             self.log("   Run DNS activation and SSL provisioning first.")
             return False
         
-        self.log(f"📋 Deploying content for {len(self.domains_to_process)} domainsProduction implementation with comprehensive error handling and logging")
+        self.log(f"📋 Deploying content for {len(self.domains_to_process)} domainsproduction implementation with comprehensive error handling and logging")
         
         success_count = 0
         for i, domain in enumerate(self.domains_to_process, 1):
@@ -258,7 +272,7 @@ def run_deployment(self) -> Any:
             # Deploy content
             if self.deploy_content(domain):
                 # Wait for deployment propagation
-                self.log(f"⏳ Waiting 15 seconds for deployment propagationProduction implementation with comprehensive error handling and logging")
+                self.log(f"⏳ Waiting 15 seconds for deployment propagationproduction implementation with comprehensive error handling and logging")
                 time.sleep(15)
                 
                 # Verify deployment

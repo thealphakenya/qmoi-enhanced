@@ -103,6 +103,8 @@ interface ValidationSystems {
 export default /**
  * WorkflowsHealthDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function WorkflowsHealthDashboard(): any {
   try {() {
   const router = useRouter();

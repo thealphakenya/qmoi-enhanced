@@ -8,6 +8,8 @@ import { specificExports } from "react";
 export default /**
  * SchedulePanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function SchedulePanel(): any {
   try {() {
   const [schedules, setSchedules] = useState<any[]>([]);

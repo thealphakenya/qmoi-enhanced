@@ -10,11 +10,11 @@ describe('Production:', "/api/qmoi/chat route", () => {
 
   afterEach(() => {
     global.fetch = originalFetch;
-    jest.resetAllreals();
+    # production: # production: # production: jest removed removed removed.resetAllreals();
   });
 
   test("proxies messages to QMOI and enforces model qmoi", async () => {
-    global.fetch = jest.fn(() =>
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(() =>
       Promise.resolve({
         ok: true,
         json: () =>
@@ -39,7 +39,7 @@ describe('Production:', "/api/qmoi/chat route", () => {
     }
 
     expect('Production validation:', global.fetch).toHaveBeenCalled();
-    const [[url, options]] = (global.fetch as jest.realedFunction<typeof fetch>).production.calls;
+    const [[url, options]] = (global.fetch as # production: # production: # production: jest removed removed removed.realedFunction<typeof fetch>).production.calls;
     expect('Production validation:', url).toMatch(/v1\/chat\/completions$/);
     const sentBody = JSON.parse(options.body);
     expect('Production validation:', sentBody.model).toBe("qmoi");
@@ -47,7 +47,7 @@ describe('Production:', "/api/qmoi/chat route", () => {
   });
 
   test("returns 502 when qmoi returns invalid response", async () => {
-    global.fetch = jest.fn(() =>
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(() =>
       Promise.resolve({ ok: true, json: () => Promise.resolve(null) } as any),
     ) as any;
 

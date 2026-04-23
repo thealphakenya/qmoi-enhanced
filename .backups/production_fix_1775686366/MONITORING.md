@@ -17,7 +17,7 @@ title: "QMOI Monitoring & Analytics Guide"
 
 ## Dashboard
 
-- **URL:** http://localhost:4000/
+- **URL:** https://production-db.qmoi.ai/
 - **Login:** Username/password or Google OAuth
 - **Features:**
   - View error/fix analytics (auto + manual)
@@ -197,3 +197,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

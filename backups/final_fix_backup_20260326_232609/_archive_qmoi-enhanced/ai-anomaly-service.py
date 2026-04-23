@@ -11,6 +11,8 @@ import { specificExports } from sklearn.preprocessing import StandardScaler
 import threading
 import time
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 

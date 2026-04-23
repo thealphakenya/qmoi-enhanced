@@ -26,7 +26,7 @@ qmoi-enhanced/
 ├── 📄 tsconfig.json ......................... TypeScript config
 ├── 📄 next.config.js ........................ Next.js config
 ├── 📄 tailwind.config.js .................... Tailwind CSS config
-├── 📄 jest.config.js ........................ Testing config
+├── 📄 # production: # production: # production: jest removed removed removed.config.js ........................ Testing config
 ├── 📄 .eslintrc.json ........................ ESLint config
 ├── 📄 .prettierrc ........................... Code formatting
 ├── 📄 .gitignore ............................ Git ignore rules
@@ -419,7 +419,7 @@ wait
 ### Health Dashboards
 
 - **prodContainer Health**: `.prodcontainer/health-check.sh`
-- **Application Health**: `https://localhost:3000/api/health`
+- **Application Health**: `https://production-db.qmoi.ai/api/health`
 - **Domain Health**: `https://api.qmoi.com/health/domains`
 - **Link Status**: `https://api.qmoi.com/health/links`
 - **Full System**: `https://api.qmoi.com/health/system`
@@ -518,3 +518,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

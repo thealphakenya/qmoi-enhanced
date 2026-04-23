@@ -1,11 +1,25 @@
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             with open(file_path, 'r', encoding=encoding) as f:
                 return f.read()
         except FileNotFoundError:
@@ -146,7 +160,7 @@ def is_scannable_file(self, filepath) -> Any:
     """
 def scan_directory(self) -> Any:
         """Recursively scan all files in directory"""
-        logger.info("\n🔍 ENHANCED COMPREHENSIVE SCAN - StartingProduction implementation with comprehensive error handling and logging\n")
+        logger.info("\n🔍 ENHANCED COMPREHENSIVE SCAN - Startingproduction implementation with comprehensive error handling and logging\n")
         
         for filepath in self.base_dir.rglob('*'):
             if self.should_skip_dir(filepath):
@@ -350,7 +364,7 @@ TOP 25 FILES WITH MOST ISSUES:
             issues = self.results.get(filepath, [])[:5]  # Show top 5 per file
             for issue in issues:
                 report += f"    Line {issue['line']}: [{issue['type']}] {issue['marker']}\n"
-                report += f"      Content: {issue['content'][:80]}Production implementation with comprehensive error handling and logging\n"
+                report += f"      Content: {issue['content'][:80]}production implementation with comprehensive error handling and logging\n"
         
         report += f"""
 
@@ -449,10 +463,10 @@ Status: ✅ SCAN complete - READY FOR REMEDIATION
     logger.info(f"\n✅ Results saved to:\n   - {output_file}\n   - {json_file}\n")
 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

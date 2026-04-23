@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +57,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -387,14 +401,14 @@ def _print_detailed_status(self, report: Dict[str, Any]) -> Any:
         if recent_errors:
             logger.info("\n❌ RECENT ERRORS:")
             for error in recent_errors:
-                logger.info(f"  {error['component']}: {error['error'][:100]}Production implementation with comprehensive error handling and logging")
+                logger.info(f"  {error['component']}: {error['error'][:100]}production implementation with comprehensive error handling and logging")
         
         # Recent Successes
         recent_successes = report.get("success_summary", [])[-5:]  # Last 5 successes
         if recent_successes:
             logger.info("\n✅ RECENT SUCCESSES:")
             for success in recent_successes:
-                logger.info(f"  {success['component']}: {success['success'][:100]}Production implementation with comprehensive error handling and logging")
+                logger.info(f"  {success['component']}: {success['success'][:100]}production implementation with comprehensive error handling and logging")
 
     """
     _send_status_notifications function
@@ -472,7 +486,7 @@ def start_monitoring(self) -> Any:
 def handle_exit(signum, frame) -> Any:
     global should_run
     should_run = False
-    logger.info("\n[QMOI Enhanced Live Status] Exiting and printing final summaryProduction implementation with comprehensive error handling and logging")
+    logger.info("\n[QMOI Enhanced Live Status] Exiting and printing final summaryproduction implementation with comprehensive error handling and logging")
     if ENHANCED_REPORT_FILE.exists():
         with open(ENHANCED_REPORT_FILE, 'r', encoding='utf-8') as f:
             report = json.load(f)

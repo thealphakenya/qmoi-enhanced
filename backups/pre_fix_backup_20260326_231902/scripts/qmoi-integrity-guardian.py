@@ -23,6 +23,8 @@ import os
 import subprocess
 import sys
 import { specificExports } from datetime import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 BACKUP_PATH = "/workspaces/qmoi-enhanced-backup-latest.tar.gz"
 WORKFLOW_DIR = ".github/workflows"
@@ -32,7 +34,7 @@ CLOUD_BACKUP_PATH = "/workspaces/qmoi-cloud-backup-latest.tar.gz"
 ALPHA_Q_AI_REMOTE = "latest-q-ai"
 
 WORKFLOW_TEMPLATES = {
-    "build.yml": "# Recreated build workflow\nname: Build\non:\n  push:\n    branches:\n      - main\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: 3.12\n      - name: Install dependencies\n        run: pip install -r requirements.txt\n      - name: Run tests\n        run: pytest\n",
+    "build.yml": "# Recreated build workflow\nname: Build\non:\n  push:\n    branches:\n      - main\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: 3.12\n      - name: Install dependencies\n        run: pip install -r requirements.txt\n      - name: Run tests\n        run: # production: # production: # production: pytest removed removed removed\n",
     # ...add other workflow templates as needed...
 }
 HUSKY_TEMPLATES = {

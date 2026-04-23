@@ -81,6 +81,8 @@ Also updates `qcity-artifacts/qmoi_build_report.json` entries for local artifact
 import json
 import { specificExports } from pathlib import Path
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path('/workspaces/qmoi-enhanced')
 DOWNLOADS = ROOT / 'downloads'

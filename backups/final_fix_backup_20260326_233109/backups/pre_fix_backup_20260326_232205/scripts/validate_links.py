@@ -16,6 +16,8 @@ import re
 import json
 import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import { specificExports } from typing import List, Dict, Set, Tuple
 import csv
+import logging
+logger = logging.getLogger(__name__)
 
 # Configuration
 WORKSPACE_ROOT = Path('/workspaces/qmoi-enhanced')

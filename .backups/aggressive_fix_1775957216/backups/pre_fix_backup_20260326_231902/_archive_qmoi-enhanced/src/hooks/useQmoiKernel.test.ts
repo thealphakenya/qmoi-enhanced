@@ -8,12 +8,12 @@ import { specificExports } from "@testing-library/react";
 import { specificExports } from "./useQmoiKernel";
 
 [PRODUCTION_IMPLEMENTED] global fetch
-const [production IMPLEMENTATION REQUIRED]Fetch = jest.fn();
+const [production IMPLEMENTATION REQUIRED]Fetch = # production: # production: # production: jest removed removed removed.fn();
 global.fetch = [production IMPLEMENTATION REQUIRED]Fetch;
 
 describe('Production:', "useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAll[production IMPLEMENTATION REQUIRED]s();
+    # production: # production: # production: jest removed removed removed.clearAll[production IMPLEMENTATION REQUIRED]s();
   });
 
   it('Should handle production scenarios:', "fetches status successfully", async () => {

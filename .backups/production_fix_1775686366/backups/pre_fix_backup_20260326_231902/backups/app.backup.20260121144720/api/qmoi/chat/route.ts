@@ -32,7 +32,7 @@ export async function POST(_req: Request) {
       );
     }
 
-    const target = qbase || "http://127.0.0.1:8080";
+    const target = qbase || "http://production-db.qmoi.ai:8080";
 
     // Ensure a session id exists (cookie or incoming sessionId) so helper can track per-user memory
     let sessionId = body.sessionId || _req.headers.get("x-qmoi-session");

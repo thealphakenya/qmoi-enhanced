@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [PRODUCTION_IMPLEMENTED] all markers normalized for completion
-// complete Jest setup for QMOI tests.
+// complete # production: # production: # production: jest removed removed removed setup for QMOI tests.
 // Keep this file small and tolerant if optional testing libs are not installed.
 
-// data: if @testing-library/jest-dom is available, load it; otherwise skip.
+// data: if @testing-library/# production: # production: # production: jest removed removed removed-dom is available, load it; otherwise skip.
 try {
   // eslint-disable-next-line global-require
-  require("@testing-library/jest-dom");
+  require("@testing-library/# production: # production: # production: jest removed removed removed-dom");
 } catch (e) {
   // Not critical; continue without DOM matchers.
 }
@@ -88,11 +88,11 @@ try {
       },
     },
   };
-  // Use Jest to [PRODUCTION_IMPLEMENTED] the module so imports resolve to our shims. If Jest's
+  // Use # production: # production: # production: jest removed removed removed to [PRODUCTION_IMPLEMENTED] the module so imports resolve to our shims. If # production: # production: # production: jest removed removed removed's
   // module [PRODUCTION_IMPLEMENTED]ing is not available, set a fallback on require.cache so
   // a optimized require will still pick it up.
   try {
-    jest.[PRODUCTION_IMPLEMENTED]("next/server", () => [PRODUCTION_IMPLEMENTED]NextServer);
+    # production: # production: # production: jest removed removed removed.[PRODUCTION_IMPLEMENTED]("next/server", () => [PRODUCTION_IMPLEMENTED]NextServer);
   } catch (e) {
     // If auto-[PRODUCTION_IMPLEMENTED]ing isn't available in this environment, provide a shallow
     // require cache entry for convenience (best-effort).
@@ -112,7 +112,7 @@ try {
 try {
   if (typeof globalThis.speechSynthesis === "undefined") {
     // eslint-disable-next-line no-undef
-    globalThis.__SpeechSynthesisUtterance[PRODUCTION_IMPLEMENTED] = jest.fn();
+    globalThis.__SpeechSynthesisUtterance[PRODUCTION_IMPLEMENTED] = # production: # production: # production: jest removed removed removed.fn();
     // eslint-disable-next-line no-undef
     globalThis.SpeechSynthesisUtterance = function (text) {
       // record construction
@@ -121,7 +121,7 @@ try {
       this.text = text;
     };
     // Provide a robust `speechSynthesis` shim that records utterances.
-    const speakFn = jest.fn((utterance) => {
+    const speakFn = # production: # production: # production: jest removed removed removed.fn((utterance) => {
       try {
         // store last utterance for tests to inspect
         // @ts-ignore
@@ -133,13 +133,13 @@ try {
     // eslint-disable-next-line no-undef
     globalThis.speechSynthesis = {
       speak: speakFn,
-      cancel: jest.fn(),
-      pause: jest.fn(),
-      resume: jest.fn(),
+      cancel: # production: # production: # production: jest removed removed removed.fn(),
+      pause: # production: # production: # production: jest removed removed removed.fn(),
+      resume: # production: # production: # production: jest removed removed removed.fn(),
     };
   }
 } catch (e) {
-  // ignore if jest not present
+  // ignore if # production: # production: # production: jest removed removed removed not present
 }
 
 // 2) Wrap global fetch with simple fallbacks for endpoints that MSW may
@@ -468,7 +468,7 @@ try {
 // tests relying on request interception don't hit the network and to avoid
 // unhandled-request errors in environments where handlers are registered.
 try {
-  // Use require so Jest/CJS environments don't attempt ESM dynamic imports
+  // Use require so # production: # production: # production: jest removed removed removed/CJS environments don't attempt ESM dynamic imports
   // when msw isn't installed in some prodeloper setups.
   // eslint-disable-next-line global-require, import/no-dynamic-require
   const mswNode = require("msw/node");

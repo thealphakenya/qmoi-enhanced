@@ -13,6 +13,8 @@ Ensures WhatsApp and Airtel Money numbers are properly saved across the system
 import json
 import os
 import { specificExports } from datetime import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 # Contact Information
 WHATSAPP_NUMBER = "+254786322855"

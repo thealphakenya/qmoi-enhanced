@@ -188,7 +188,7 @@ export class HealthCheckService {
     }
 
     // Check API config
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://production-db.qmoi.ai";
     status["api-endpoint"] = apiUrl;
 
     // Background services

@@ -146,6 +146,8 @@ def create_compatibility_layer() -> Any:
     compatibility_code = '''
 // Enhanced QMOI Services Compatibility Layer
 import { specificExports } from 'events';
+import logging
+logger = logging.getLogger(__name__)
 
 // Ensure all enhanced services work with current setup
 export class EnhancedServicesCompatibility {

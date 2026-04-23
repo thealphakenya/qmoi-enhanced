@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
 Core functions for the QVillage HF Space application.
@@ -13,7 +17,7 @@ import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Dict, List, Optional
 
-    # PRODUCTION CACHING
+    # production CACHING
 CACHE_EXPIRY = 3600  # seconds
 
 QVILLAGE_API = os.getenv("QVILLAGE_API_URL", "https://api.qvillage.ai")
@@ -110,7 +114,7 @@ def get_cache_key(url: str, params: Dict[str, Any]) -> str:
 
 
 def get_cached_response(key: str) -> Optional[Dict[str, Any]]:
-    # PRODUCTION CACHING
+    # production CACHING
         data, timestamp = CACHE[key]
         if time.time() - timestamp < CACHE_EXPIRY:
             return data
@@ -147,6 +151,14 @@ def safe_arxiv_call(query: str, max_results: int = 20) -> Dict[str, Any]:
 
     url = f"{base_url}?{urllib.parse.urlencode(params)}"
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         with ThreadPoolExecutor(max_workers=4) as executor:
             future = executor.submit(_fetch_url, url, 30)
             response_text = future.result(timeout=35)

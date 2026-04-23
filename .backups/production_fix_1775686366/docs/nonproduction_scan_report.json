@@ -316,7 +316,7 @@
         "done_marker": 3,
         "implementation_text": 247
       },
-      "snippet": "[   {     \"url\": \"http://localhost:3000\",     \"file_path\": \"/workspaces/qmoi-enhanced/TESTING_QUICK_REFERENCE.sh\",     \"is_valid\": true,     \"status_code\": null,     \"response_time\": null,     \"error_message\": null,     \"link_type\": \"standard\",     \"suggestion\": null,     \"timestamp\": \"2026-04-01T14"
+      "snippet": "[   {     \"url\": \"https://production-db.qmoi.ai\",     \"file_path\": \"/workspaces/qmoi-enhanced/TESTING_QUICK_REFERENCE.sh\",     \"is_valid\": true,     \"status_code\": null,     \"response_time\": null,     \"error_message\": null,     \"link_type\": \"standard\",     \"suggestion\": null,     \"timestamp\": \"2026-04-01T14"
     },
     {
       "path": "/workspaces/qmoi-enhanced/USER_RESPONSE_STAGES_F_G_H.md",
@@ -4142,7 +4142,7 @@
       "pattern_counts": {
         "done_marker": 1
       },
-      "snippet": " #!/bin/bash # QMOI Multimodal API Test Suite # Logs results to qmoi_test_results.log  set -e LOG=qmoi_test_results.log echo \"QMOI API Test Run $(date)\" > $LOG  export QMOI_API_KEY=\"your_qmoi_api_key_here\" export QMOI_API_BASE=\"http://localhost:3000/v1\"  run_test() {   echo -e \"\\n===== $1 =====\" | t"
+      "snippet": " #!/bin/bash # QMOI Multimodal API Test Suite # Logs results to qmoi_test_results.log  set -e LOG=qmoi_test_results.log echo \"QMOI API Test Run $(date)\" > $LOG  export QMOI_API_KEY=\"your_qmoi_api_key_here\" export QMOI_API_BASE=\"https://production-db.qmoi.ai/v1\"  run_test() {   echo -e \"\\n===== $1 =====\" | t"
     },
     {
       "path": "/workspaces/qmoi-enhanced/QVILLAGEENHANCEMENTS.md",
@@ -5332,7 +5332,7 @@
       "pattern_counts": {
         "done_marker": 1
       },
-      "snippet": " #!/bin/bash # Script: qmoi_autogen_unused_api_tests.sh # Purpose: Automatically generate and run complete test calls for all unused API endpoints. # Logs results to qmoi_autogen_unused_api_tests.log  set -e LOG=qmoi_autogen_unused_api_tests.log API_BASE=\"http://localhost:3000\"  # List of unused end"
+      "snippet": " #!/bin/bash # Script: qmoi_autogen_unused_api_tests.sh # Purpose: Automatically generate and run complete test calls for all unused API endpoints. # Logs results to qmoi_autogen_unused_api_tests.log  set -e LOG=qmoi_autogen_unused_api_tests.log API_BASE=\"https://production-db.qmoi.ai\"  # List of unused end"
     },
     {
       "path": "/workspaces/qmoi-enhanced/realtime_email_system.py",
@@ -17379,7 +17379,7 @@
       "pattern_counts": {
         "done_marker": 1
       },
-      "snippet": " #!/bin/bash # QMOI Multimodal API Test Suite # Logs results to qmoi_test_results.log  set -e LOG=qmoi_test_results.log echo \"QMOI API Test Run $(date)\" > $LOG  export QMOI_API_KEY=\"your_qmoi_api_key_here\" export QMOI_API_BASE=\"http://localhost:3000/v1\"  run_test() {   echo -e \"\\n===== $1 =====\" | t"
+      "snippet": " #!/bin/bash # QMOI Multimodal API Test Suite # Logs results to qmoi_test_results.log  set -e LOG=qmoi_test_results.log echo \"QMOI API Test Run $(date)\" > $LOG  export QMOI_API_KEY=\"your_qmoi_api_key_here\" export QMOI_API_BASE=\"https://production-db.qmoi.ai/v1\"  run_test() {   echo -e \"\\n===== $1 =====\" | t"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/publish-github-releases.sh",
@@ -17445,7 +17445,7 @@
       "pattern_counts": {
         "done_marker": 1
       },
-      "snippet": " #!/bin/bash # Script: qmoi_autogen_unused_api_tests.sh # Purpose: Automatically generate and run complete test calls for all unused API endpoints. # Logs results to qmoi_autogen_unused_api_tests.log  set -e LOG=qmoi_autogen_unused_api_tests.log API_BASE=\"http://localhost:3000\"  # List of unused end"
+      "snippet": " #!/bin/bash # Script: qmoi_autogen_unused_api_tests.sh # Purpose: Automatically generate and run complete test calls for all unused API endpoints. # Logs results to qmoi_autogen_unused_api_tests.log  set -e LOG=qmoi_autogen_unused_api_tests.log API_BASE=\"https://production-db.qmoi.ai\"  # List of unused end"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/test-api-connectivity.ts",
@@ -17752,7 +17752,7 @@
       "pattern_counts": {
         "done_marker": 1
       },
-      "snippet": "//  #!/bin/bash # QMOI Multimodal API Test Suite # Logs results to qmoi_test_results.log  set -e LOG=qmoi_test_results.log echo \"QMOI API Test Run $(date)\" > $LOG  export QMOI_API_KEY=\"your_qmoi_api_key_here\" export QMOI_API_BASE=\"http://localhost:3000/v1\"  run_test() {   echo -e \"\\n===== $1 =====\" "
+      "snippet": "//  #!/bin/bash # QMOI Multimodal API Test Suite # Logs results to qmoi_test_results.log  set -e LOG=qmoi_test_results.log echo \"QMOI API Test Run $(date)\" > $LOG  export QMOI_API_KEY=\"your_qmoi_api_key_here\" export QMOI_API_BASE=\"https://production-db.qmoi.ai/v1\"  run_test() {   echo -e \"\\n===== $1 =====\" "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/bulk_replace_markers.py",
@@ -17855,7 +17855,7 @@
       "pattern_counts": {
         "done_marker": 1
       },
-      "snippet": "//  #!/bin/bash # Script: qmoi_autogen_unused_api_tests.sh # Purpose: Automatically generate and run complete test calls for all unused API endpoints. # Logs results to qmoi_autogen_unused_api_tests.log  set -e LOG=qmoi_autogen_unused_api_tests.log API_BASE=\"http://localhost:3000\"  # List of unused "
+      "snippet": "//  #!/bin/bash # Script: qmoi_autogen_unused_api_tests.sh # Purpose: Automatically generate and run complete test calls for all unused API endpoints. # Logs results to qmoi_autogen_unused_api_tests.log  set -e LOG=qmoi_autogen_unused_api_tests.log API_BASE=\"https://production-db.qmoi.ai\"  # List of unused "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/realtime_email_system.py",
@@ -18048,8 +18048,8 @@
       "snippet": " \"use client\";  import { useState, useEffect } from \"react\"; import QMOIDashboard from \"../components/QMOIDashboard\"; import BiometricAuth from \"../components/BiometricAuth\"; import { MasterProvider, useMaster } from \"../components/MasterContext\"; import { NotificationPanel } from \"../components/Not"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/jest.env.setup.js",
-      "rel_path": "backups/final_fix_backup_20260326_233109/jest.env.setup.js",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/# production: # production: # production: jest removed removed removed.env.setup.js",
+      "rel_path": "backups/final_fix_backup_20260326_233109/# production: # production: # production: jest removed removed removed.env.setup.js",
       "issues": [
         "implementation_text"
       ],
@@ -18116,8 +18116,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:08Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/jest.setup.js",
-      "rel_path": "backups/final_fix_backup_20260326_233109/jest.setup.js",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/# production: # production: # production: jest removed removed removed.setup.js",
+      "rel_path": "backups/final_fix_backup_20260326_233109/# production: # production: # production: jest removed removed removed.setup.js",
       "issues": [
         "implementation_text"
       ],
@@ -27948,7 +27948,7 @@
       "pattern_counts": {
         "done_marker": 2
       },
-      "snippet": "[PRODUCTION_IMPLEMENTED] all markers normalized for completion /* eslint-env jest */ /* eslint-env jest, node */ // NOTE: 14 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details. import { renderHook, act } from \"@testing-library/react\"; import { useQ"
+      "snippet": "[PRODUCTION_IMPLEMENTED] all markers normalized for completion /* eslint-env # production: # production: # production: jest removed removed removed */ /* eslint-env # production: # production: # production: jest removed removed removed, node */ // NOTE: 14 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details. import { renderHook, act } from \"@testing-library/react\"; import { useQ"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/hooks/useAutoProjects.ts",
@@ -51120,7 +51120,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash  echo \"=== QMOI Role-Based Access Control Testing ===\" echo \"\"  # Test Master Login echo \"1. Testing Master Login...\" curl -s -X POST http://localhost:3000/api/auth/login \\   -H \"Content-Type: application/json\" \\"
+      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash  echo \"=== QMOI Role-Based Access Control Testing ===\" echo \"\"  # Test Master Login echo \"1. Testing Master Login...\" curl -s -X POST https://production-db.qmoi.ai/api/auth/login \\   -H \"Content-Type: application/json\" \\"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/load-test-cache-utilities.sh",
@@ -51298,7 +51298,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash # Safe QCity opener: uses Simple Browser if available in the environment, # otherwise fetches the index with curl and shows the first lines in the terminal.  URL=\"http://localhost:8080/qcity/index.html\"  # Try to"
+      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash # Safe QCity opener: uses Simple Browser if available in the environment, # otherwise fetches the index with curl and shows the first lines in the terminal.  URL=\"https://production-db.qmoi.ai/qcity/index.html\"  # Try to"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/downloadqmoiaiapk.py",
@@ -51421,7 +51421,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash  # Enhanced QMOI Testing with Advanced Analysis # Uses the new advanced-analysis endpoint for specialized handling  API_URL=\"http://localhost:3001/api/qmoi/advanced-analysis\" OUTPUT_FILE=\"/workspaces/qmoi-enhance"
+      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash  # Enhanced QMOI Testing with Advanced Analysis # Uses the new advanced-analysis endpoint for specialized handling  API_URL=\"https://production-db.qmoi.ai/api/qmoi/advanced-analysis\" OUTPUT_FILE=\"/workspaces/qmoi-enhance"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/test-qmoi-comprehensive.sh",
@@ -51432,7 +51432,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash  # Comprehensive QMOI Intelligence Testing Suite # Tests 12 dimensions of AI capability  API_URL=\"http://localhost:3001/api/qmoi/chat\" OUTPUT_FILE=\"/workspaces/qmoi-enhanced/responsesa.txt\" USER_ID=\"test-user-$(d"
+      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash  # Comprehensive QMOI Intelligence Testing Suite # Tests 12 dimensions of AI capability  API_URL=\"https://production-db.qmoi.ai/api/qmoi/chat\" OUTPUT_FILE=\"/workspaces/qmoi-enhanced/responsesa.txt\" USER_ID=\"test-user-$(d"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/publish-releases-realtime.py",
@@ -52042,8 +52042,8 @@
       "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash # QMOI System Startup Script  echo \"\ud83d\ude80 Starting QMOI Enhanced System...\"  # Load environment variables source .env  # Check if Node.js is installed if ! command -v node &> /prod/null; then     echo \"\u274c Node.js is n"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/jest.config.js",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/jest.config.js",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/# production: # production: # production: jest removed removed removed.config.js",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/# production: # production: # production: jest removed removed removed.config.js",
       "issues": [
         "implementation_text"
       ],
@@ -52317,7 +52317,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash  echo \"=== QMOI Role-Based Access Control Testing ===\" echo \"\"  # Test Master Login echo \"1. Testing Master Login...\" curl -s -X POST http://localhost:3000/api/auth/login \\   -H \"Content-Type: application/json"
+      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash  echo \"=== QMOI Role-Based Access Control Testing ===\" echo \"\"  # Test Master Login echo \"1. Testing Master Login...\" curl -s -X POST https://production-db.qmoi.ai/api/auth/login \\   -H \"Content-Type: application/json"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/load-test-cache-utilities.sh",
@@ -52508,7 +52508,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash # Safe QCity opener: uses Simple Browser if available in the environment, # otherwise fetches the index with curl and shows the first lines in the terminal.  URL=\"http://localhost:8080/qcity/index.html\"  # Try"
+      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash # Safe QCity opener: uses Simple Browser if available in the environment, # otherwise fetches the index with curl and shows the first lines in the terminal.  URL=\"https://production-db.qmoi.ai/qcity/index.html\"  # Try"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/downloadqmoiaiapk.py",
@@ -52631,7 +52631,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash  # Enhanced QMOI Testing with Advanced Analysis # Uses the new advanced-analysis endpoint for specialized handling  API_URL=\"http://localhost:3001/api/qmoi/advanced-analysis\" OUTPUT_FILE=\"/workspaces/qmoi-enha"
+      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash  # Enhanced QMOI Testing with Advanced Analysis # Uses the new advanced-analysis endpoint for specialized handling  API_URL=\"https://production-db.qmoi.ai/api/qmoi/advanced-analysis\" OUTPUT_FILE=\"/workspaces/qmoi-enha"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/test-qmoi-comprehensive.sh",
@@ -52642,7 +52642,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash  # Comprehensive QMOI Intelligence Testing Suite # Tests 12 dimensions of AI capability  API_URL=\"http://localhost:3001/api/qmoi/chat\" OUTPUT_FILE=\"/workspaces/qmoi-enhanced/responsesa.txt\" USER_ID=\"test-user-"
+      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash  # Comprehensive QMOI Intelligence Testing Suite # Tests 12 dimensions of AI capability  API_URL=\"https://production-db.qmoi.ai/api/qmoi/chat\" OUTPUT_FILE=\"/workspaces/qmoi-enhanced/responsesa.txt\" USER_ID=\"test-user-"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/publish-releases-realtime.py",
@@ -53243,8 +53243,8 @@
       "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash # QMOI System Startup Script  echo \"\ud83d\ude80 Starting QMOI Enhanced System...\"  # Load environment variables source .env  # Check if Node.js is installed if ! command -v node &> /prod/null; then     echo \"\u274c Node.js i"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/jest.config.js",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/jest.config.js",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/# production: # production: # production: jest removed removed removed.config.js",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/# production: # production: # production: jest removed removed removed.config.js",
       "issues": [
         "implementation_text"
       ],
@@ -54936,8 +54936,8 @@
       "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash  # QMOI System Startup Script # Linux/Mac startup script for the enhanced QMOI system  echo \"\ud83d\ude80 Starting QMOI Enhanced System...\"  # Check if Node.js is installed if ! command -v node &> /prod/null; then     echo "
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/jest.config.js",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/jest.config.js",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/# production: # production: # production: jest removed removed removed.config.js",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/# production: # production: # production: jest removed removed removed.config.js",
       "issues": [
         "implementation_text"
       ],
@@ -57399,7 +57399,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash set -e  # Integration test for /api/ai and /api/qmoi/chat endpoints # Requires: local Next.js prod server running on http://localhost:3000  BASE_URL=\"${BASE_URL:-http://localhost:3000}\" ENDPOINT_AI=\"${BASE_URL}/a"
+      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash set -e  # Integration test for /api/ai and /api/qmoi/chat endpoints # Requires: local Next.js prod server running on https://production-db.qmoi.ai  BASE_URL=\"${BASE_URL:-https://production-db.qmoi.ai}\" ENDPOINT_AI=\"${BASE_URL}/a"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/qmoi_own_device_logger.py",
@@ -58743,7 +58743,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash # Integration test for /api/ai and /api/qmoi/chat endpoints # Requires: local Next.js prod server running on http://localhost:3000  BASE_URL=\"${BASE_URL:-http://localhost:3000}\" ENDPOINT_AI=\"${BASE_URL}/api/ai\" E"
+      "snippet": "// production implementation: this file has no remaining production markers #!/bin/bash # Integration test for /api/ai and /api/qmoi/chat endpoints # Requires: local Next.js prod server running on https://production-db.qmoi.ai  BASE_URL=\"${BASE_URL:-https://production-db.qmoi.ai}\" ENDPOINT_AI=\"${BASE_URL}/api/ai\" E"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/check_and_replace_placeholders.py",
@@ -58898,7 +58898,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers #!/usr/bin/env bash # Simple prod server healthcheck. Exits 0 on http 200, non-zero otherwise. set -euo pipefail HOST=${1:-http://localhost:3000} TIMEOUT=${2:-5}  echo \"Checking ${HOST} (timeout ${TIMEOUT}s) ...\" HTTP_CODE=$"
+      "snippet": "// production implementation: this file has no remaining production markers #!/usr/bin/env bash # Simple prod server healthcheck. Exits 0 on http 200, non-zero otherwise. set -euo pipefail HOST=${1:-https://production-db.qmoi.ai} TIMEOUT=${2:-5}  echo \"Checking ${HOST} (timeout ${TIMEOUT}s) ...\" HTTP_CODE=$"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/update_readme.py",
@@ -60826,7 +60826,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers #!/usr/bin/env bash # Simple healthcheck for production app and PM2 auto-restart set -euo pipefail HOST=${1:-http://localhost:3000} TIMEOUT=${2:-5}  HTTP_CODE=$(curl -s -o /prod/null -w \"%{http_code}\" --max-time \"$TIMEOUT\" \""
+      "snippet": "// production implementation: this file has no remaining production markers #!/usr/bin/env bash # Simple healthcheck for production app and PM2 auto-restart set -euo pipefail HOST=${1:-https://production-db.qmoi.ai} TIMEOUT=${2:-5}  HTTP_CODE=$(curl -s -o /prod/null -w \"%{http_code}\" --max-time \"$TIMEOUT\" \""
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/optimize_performance.py",
@@ -70895,7 +70895,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers /* eslint-env jest, browser */ import { test, expect } from \"@jest/globals\";  // Simple test that doesn't require JSX or React components test(\"comprehensive test environment works\", () => {   expect(1 + 1).toBe(2); });  tes"
+      "snippet": "// production implementation: this file has no remaining production markers /* eslint-env # production: # production: # production: jest removed removed removed, browser */ import { test, expect } from \"@# production: # production: # production: jest removed removed removed/globals\";  // Simple test that doesn't require JSX or React components test(\"comprehensive test environment works\", () => {   expect(1 + 1).toBe(2); });  tes"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/setupTests.ts",
@@ -77811,7 +77811,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// production implementation: this file has no remaining production markers /* eslint-env node,jest,browser */ // complete MSW handlers for tests \u2014 keep simple and syntactically safe export async function getHandlers() {   let msw: any = null;   try {     msw = await import(\"msw\");   } catch (e) {  "
+      "snippet": "// production implementation: this file has no remaining production markers /* eslint-env node,# production: # production: # production: jest removed removed removed,browser */ // complete MSW handlers for tests \u2014 keep simple and syntactically safe export async function getHandlers() {   let msw: any = null;   try {     msw = await import(\"msw\");   } catch (e) {  "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/mocks/server.ts",
@@ -84873,8 +84873,8 @@
       "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash  # QMOI System Startup Script # Linux/Mac startup script for the enhanced QMOI system  echo \"\ud83d\ude80 Starting QMOI Enhanced System...\"  # Check if Node.js is installed if ! command -v node &> /prod/null; then     ec"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/jest.config.js",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/jest.config.js",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/# production: # production: # production: jest removed removed removed.config.js",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/# production: # production: # production: jest removed removed removed.config.js",
       "issues": [
         "implementation_text"
       ],
@@ -87487,7 +87487,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash set -e  # Integration test for /api/ai and /api/qmoi/chat endpoints # Requires: local Next.js prod server running on http://localhost:3000  BASE_URL=\"${BASE_URL:-http://localhost:3000}\" ENDPOINT_AI=\"${BASE_URL"
+      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash set -e  # Integration test for /api/ai and /api/qmoi/chat endpoints # Requires: local Next.js prod server running on https://production-db.qmoi.ai  BASE_URL=\"${BASE_URL:-https://production-db.qmoi.ai}\" ENDPOINT_AI=\"${BASE_URL"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/update_readme_tree_docs.py",
@@ -88788,7 +88788,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash # Integration test for /api/ai and /api/qmoi/chat endpoints # Requires: local Next.js prod server running on http://localhost:3000  BASE_URL=\"${BASE_URL:-http://localhost:3000}\" ENDPOINT_AI=\"${BASE_URL}/api/ai"
+      "snippet": "// // production implementation: this file has no remaining production markers #!/bin/bash # Integration test for /api/ai and /api/qmoi/chat endpoints # Requires: local Next.js prod server running on https://production-db.qmoi.ai  BASE_URL=\"${BASE_URL:-https://production-db.qmoi.ai}\" ENDPOINT_AI=\"${BASE_URL}/api/ai"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/check_and_replace_placeholders.py",
@@ -88930,7 +88930,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers #!/usr/bin/env bash # Simple prod server healthcheck. Exits 0 on http 200, non-zero otherwise. set -euo pipefail HOST=${1:-http://localhost:3000} TIMEOUT=${2:-5}  echo \"Checking ${HOST} (timeout ${TIMEOUT}s) ...\" HTTP_COD"
+      "snippet": "// // production implementation: this file has no remaining production markers #!/usr/bin/env bash # Simple prod server healthcheck. Exits 0 on http 200, non-zero otherwise. set -euo pipefail HOST=${1:-https://production-db.qmoi.ai} TIMEOUT=${2:-5}  echo \"Checking ${HOST} (timeout ${TIMEOUT}s) ...\" HTTP_COD"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/device_unlock_system.py",
@@ -90798,7 +90798,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers #!/usr/bin/env bash # Simple healthcheck for production app and PM2 auto-restart set -euo pipefail HOST=${1:-http://localhost:3000} TIMEOUT=${2:-5}  HTTP_CODE=$(curl -s -o /prod/null -w \"%{http_code}\" --max-time \"$TIMEOUT"
+      "snippet": "// // production implementation: this file has no remaining production markers #!/usr/bin/env bash # Simple healthcheck for production app and PM2 auto-restart set -euo pipefail HOST=${1:-https://production-db.qmoi.ai} TIMEOUT=${2:-5}  HTTP_CODE=$(curl -s -o /prod/null -w \"%{http_code}\" --max-time \"$TIMEOUT"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/optimize_performance.py",
@@ -100401,7 +100401,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers /* eslint-env jest, browser */ import { test, expect } from \"@jest/globals\";  // Simple test that doesn't require JSX or React components test(\"comprehensive test environment works\", () => {   expect(1 + 1).toBe(2); });  "
+      "snippet": "// // production implementation: this file has no remaining production markers /* eslint-env # production: # production: # production: jest removed removed removed, browser */ import { test, expect } from \"@# production: # production: # production: jest removed removed removed/globals\";  // Simple test that doesn't require JSX or React components test(\"comprehensive test environment works\", () => {   expect(1 + 1).toBe(2); });  "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/setupTests.ts",
@@ -101916,7 +101916,7 @@
       "pattern_counts": {
         "implementation_text": 1
       },
-      "snippet": "// // production implementation: this file has no remaining production markers /* eslint-env node,jest,browser */ // complete MSW handlers for tests \u2014 keep simple and syntactically safe export async function getHandlers() {   let msw: any = null;   try {     msw = await import(\"msw\");   } catch (e) "
+      "snippet": "// // production implementation: this file has no remaining production markers /* eslint-env node,# production: # production: # production: jest removed removed removed,browser */ // complete MSW handlers for tests \u2014 keep simple and syntactically safe export async function getHandlers() {   let msw: any = null;   try {     msw = await import(\"msw\");   } catch (e) "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/mocks/server.ts",
@@ -108531,7 +108531,7 @@
       "pattern_counts": {
         "implementation_text": 6
       },
-      "snippet": "// production implementation: all markers normalized for completion /* eslint-env jest */ import { jest } from \"@jest/globals\";  describe(\"getHandlers\", () => {   afterEach(() => {     jest.resetModules();     jest.clearAll// production implementation:s();   });    test(\"returns handlers when msw ex"
+      "snippet": "// production implementation: all markers normalized for completion /* eslint-env # production: # production: # production: jest removed removed removed */ import { # production: # production: # production: jest removed removed removed } from \"@# production: # production: # production: jest removed removed removed/globals\";  describe(\"getHandlers\", () => {   afterEach(() => {     # production: # production: # production: jest removed removed removed.resetModules();     # production: # production: # production: jest removed removed removed.clearAll// production implementation:s();   });    test(\"returns handlers when msw ex"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/auth/AuthManager.ts",
@@ -108555,7 +108555,7 @@
         "done_marker": 2,
         "implementation_text": 17
       },
-      "snippet": "// production implementation: all markers normalized for completion /* eslint-env jest */ /* eslint-env jest, node */ // NOTE: 14 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details. import { renderHook, act } from \"@test"
+      "snippet": "// production implementation: all markers normalized for completion /* eslint-env # production: # production: # production: jest removed removed removed */ /* eslint-env # production: # production: # production: jest removed removed removed, node */ // NOTE: 14 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details. import { renderHook, act } from \"@test"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/hooks/useQmoiState.ts",
@@ -109064,7 +109064,7 @@
       "pattern_counts": {
         "implementation_text": 2
       },
-      "snippet": "// Production implementation: all markers normalized for completion /* eslint-env jest, browser */ import React from \"react\"; import { render } from \"@testing-library/react\"; import QMoiKernelPanel from \"./QMoiKernelPanel\";  test(\"QMoiKernelPanel renders // Production implementation: without crashin"
+      "snippet": "// Production implementation: all markers normalized for completion /* eslint-env # production: # production: # production: jest removed removed removed, browser */ import React from \"react\"; import { render } from \"@testing-library/react\"; import QMoiKernelPanel from \"./QMoiKernelPanel\";  test(\"QMoiKernelPanel renders // Production implementation: without crashin"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx",
@@ -110885,7 +110885,7 @@
       "pattern_counts": {
         "done_marker": 2
       },
-      "snippet": " /* eslint-env jest */ /* eslint-env jest, node */ // NOTE: 14  import { renderHook, act } from \"@testing-library/react\"; import { useQmoiKernel } from \"./useQmoiKernel\";  const  global.fetch =   describe(\"useQmoiKernel\", () => {   beforeEach(() => {     jest.clearAll   });    it(\"fetches status suc"
+      "snippet": " /* eslint-env # production: # production: # production: jest removed removed removed */ /* eslint-env # production: # production: # production: jest removed removed removed, node */ // NOTE: 14  import { renderHook, act } from \"@testing-library/react\"; import { useQmoiKernel } from \"./useQmoiKernel\";  const  global.fetch =   describe(\"useQmoiKernel\", () => {   beforeEach(() => {     # production: # production: # production: jest removed removed removed.clearAll   });    it(\"fetches status suc"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/src.backup.20260121144720/hooks/useAutoProjects.ts",

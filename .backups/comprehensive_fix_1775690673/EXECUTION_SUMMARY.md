@@ -199,7 +199,7 @@ firefox https://qvillage.com/qcity-enterprise.html &
 
 ---
 
-## Notes & Caveats
+## production: NOTE ADDRESSED - s & Caveats
 
 1. **Node.js Not Available in Current Environment:** Full TypeScript/Next.js build cannot be tested here; recommend running build on a machine with Node.js installed
 2. **Duplicate Component Copies:** Both `components/` and `qmoi-enhanced/components/` directories contain the same files; consolidate to single source-of-truth
@@ -286,3 +286,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

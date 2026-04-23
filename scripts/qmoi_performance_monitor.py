@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,7 +43,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -64,6 +64,8 @@ import json
 import time
 import psutil
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from collections import defaultdict
+import logging
+logger = logging.getLogger(__name__)
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -399,7 +401,7 @@ def save_performance_report(self) -> Any:
     """
 def run_performance_check(self) -> Any:
         """Run complete performance check"""
-        self.logger.info("Starting QMOI performance checkProduction implementation with comprehensive error handling and logging")
+        self.logger.info("Starting QMOI performance checkproduction implementation with comprehensive error handling and logging")
         
         try:
             # Collect metrics

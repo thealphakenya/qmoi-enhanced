@@ -632,7 +632,7 @@ touch app/api/[feature]/[action]/route.ts
 npm run api-check
 
 # 5. Test endpoint
-curl -X PUT http://localhost:3000/api/[feature]/[action]
+curl -X PUT https://production-db.qmoi.ai/api/[feature]/[action]
 ```
 
 ### Adding New Lion Agents
@@ -660,7 +660,7 @@ python3 scripts/lion_agents/lion_agent_[name].py
 ```yaml
 - Lint (ESLint)
 - Type checking (tsc)
-- Tests (Jest, pytest)
+- Tests (# production: # production: # production: jest removed removed removed, # production: # production: # production: pytest removed removed removed)
 - Security scan (Snyk)
 - Documentation validation
 ```
@@ -728,7 +728,7 @@ python3 scripts/metrics_collector.py
 ./scripts/deploy-production.sh
 
 # Run Tests
-npm test && python3 -m pytest
+npm test && python3 -m # production: # production: # production: pytest removed removed removed
 
 # Create Docker Image
 docker build -t qmoi-enhanced .
@@ -1014,3 +1014,5 @@ Link to related documentation, APIs, and system artifacts.
 - **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

@@ -1,12 +1,20 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:00.815794 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.100136 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.887210 -->
 {
+  "enabled": true,
+  "api_key_required": true,
+  "rate_limiting": {
     "enabled": true,
-    "api_key_required": true,
-    "rate_limiting": {
-        "enabled": true,
-        "requests_per_minute": 60,
-        "requests_per_hour": 1000
-    },
-    "session_timeout": 3600,
-    "max_api_keys_per_user": 5,
-    "require_https": false
+    "requests_per_minute": 60,
+    "requests_per_hour": 1000
+  },
+  "session_timeout": 3600,
+  "max_api_keys_per_user": 5,
+  "require_https": false,
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:02.887168",
+    "version": "2026-04-20"
+  }
 }

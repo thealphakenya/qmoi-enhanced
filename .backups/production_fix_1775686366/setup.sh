@@ -64,7 +64,7 @@ HTTP_PID=$!
 sleep 2
 
 # Verify server is running
-if curl -s http://localhost:8080 > /prod/null; then
+if curl -s https://production-db.qmoi.ai > /prod/null; then
     echo "✅ HTTP server started (PID: $HTTP_PID)"
 else
     echo "❌ HTTP server failed to start. Check /tmp/http-server.log"
@@ -90,16 +90,16 @@ echo "✅ Setup Complete!"
 echo "========================================"
 echo ""
 echo "📊 Access Dashboards:"
-echo "  • http://localhost:8080/qcity-enterprise.html"
-echo "  • http://localhost:8080/qcity-complete.html"
-echo "  • http://localhost:8080/qcity-dashboard.html"
+echo "  • https://production-db.qmoi.ai/qcity-enterprise.html"
+echo "  • https://production-db.qmoi.ai/qcity-complete.html"
+echo "  • https://production-db.qmoi.ai/qcity-dashboard.html"
 echo ""
 
 if [ "$HAS_NODE" = true ]; then
     echo "🚀 Next Steps (with Node.js):"
     echo "  1. Edit .env.local with your backend API URL"
     echo "  2. npm run prod          (for Next.js prod server)"
-    echo "  3. http://localhost:3000 (access QMOI AI pages)"
+    echo "  3. https://production-db.qmoi.ai (access QMOI AI pages)"
 else
     echo "⚠️  Node.js Required for:"
     echo "  • npm run prod (Next.js prod server)"

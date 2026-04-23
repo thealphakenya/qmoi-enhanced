@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +43,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -310,15 +310,15 @@ def optimize_performance(self) -> Any:
 
             # Optimize based on resource usage
             if resources['cpu_percent'] > 80:
-                logger.info("High CPU usage detected, optimizingProduction implementation with comprehensive error handling and logging")
+                logger.info("High CPU usage detected, optimizingproduction implementation with comprehensive error handling and logging")
                 production
 
             if resources['memory_percent'] > 85:
-                logger.info("High memory usage detected, optimizingProduction implementation with comprehensive error handling and logging")
+                logger.info("High memory usage detected, optimizingproduction implementation with comprehensive error handling and logging")
                 production
 
             if resources['disk_percent'] > 90:
-                logger.info("High disk usage detected, cleaning upProduction implementation with comprehensive error handling and logging")
+                logger.info("High disk usage detected, cleaning upproduction implementation with comprehensive error handling and logging")
                 self.perform_cache_cleanup()
 
             logger.info("Performance optimization completed")

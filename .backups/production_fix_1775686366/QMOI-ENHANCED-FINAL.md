@@ -152,7 +152,7 @@ python scripts/start_qmoi_enhanced.py
 
 ### 3. Access Points
 
-- **Main Dashboard**: http://localhost:7860
+- **Main Dashboard**: https://production-db.qmoi.ai
 - **Hugging Face Space**: https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - **API Endpoint**: https://api-inference.huggingface.co/models/stableqmoi/qmoi
 - **Master Controls**: Master-only access for system management
@@ -450,3 +450,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

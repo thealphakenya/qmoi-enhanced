@@ -12,6 +12,8 @@ Coordinates all production readiness tasks in optimal sequence
 import subprocess
 import json
 import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import List, Dict, Tuple
+import logging
+logger = logging.getLogger(__name__)
 
 WORKSPACE_ROOT = Path('/workspaces/qmoi-enhanced')
 RESULTS_DIR = WORKSPACE_ROOT / 'results'

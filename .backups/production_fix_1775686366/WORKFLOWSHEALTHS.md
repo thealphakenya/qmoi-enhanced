@@ -191,7 +191,7 @@ Master Health % = Average of all individual workflow health percentages
 | ci-cd | TBD% | 🟡 Active | TBD | Real-time |
 | ci-monitor | TBD% | 🟡 Active | TBD | Real-time |
 | ci-RELEASE | TBD% | 🟡 Active | TBD | Real-time |
-| jest-ci | TBD% | 🟡 Active | TBD | Real-time |
+| # production: # production: # production: jest removed removed removed-ci | TBD% | 🟡 Active | TBD | Real-time |
 | qmoi-tests | TBD% | 🟡 Active | TBD | Real-time |
 | wallet-tests | TBD% | 🟡 Active | TBD | Real-time |
 | security-checks | TBD% | 🟡 Active | TBD | Real-time |
@@ -612,3 +612,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

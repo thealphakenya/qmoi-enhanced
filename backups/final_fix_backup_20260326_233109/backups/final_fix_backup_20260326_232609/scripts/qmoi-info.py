@@ -6,6 +6,8 @@
 // production implementation: this file has no remaining production markers
 import json
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 # Helper to load JSON logs if they exist
 """

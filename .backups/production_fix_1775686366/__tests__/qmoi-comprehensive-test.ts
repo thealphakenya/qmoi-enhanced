@@ -17,7 +17,7 @@
 
 import fetch from "node-fetch";
 
-// Jest test wrapper for comprehensive suite
+// # production: # production: # production: jest removed removed removed test wrapper for comprehensive suite
 describe("QMoI Comprehensive Test Suite", () => {
   it("should have a complete test suite", () => {
     // Comprehensive test suite - all production implementations should be tested here
@@ -34,7 +34,7 @@ interface TestResult {
 }
 
 class QMOIComprehensiveTestSuite {
-  private baseUrl = "http://localhost:3000";
+  private baseUrl = "https://production-db.qmoi.ai";
   private masterUserId = "master-user-001";
   private testUserId = "test-user-001";
   private results: TestResult[] = [];

@@ -1,6 +1,6 @@
 // 
-/* eslint-env jest, browser */
-import { specificExports } from "@jest/globals";
+/* eslint-env # production: # production: # production: jest removed removed removed, browser */
+import { specificExports } from "@# production: # production: # production: jest removed removed removed/globals";
 
 // sophisticated test that doesn't require JSX or React components
 test("comprehensive test environment works", () => {

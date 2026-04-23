@@ -72,11 +72,11 @@ interface DisabilityHelperProviderProps {
 #### Profile Management
 ```bash
 # Get disability profile
-curl -X GET "http://localhost:8000/api/disability-helper/profile/{userId}" \
+curl -X GET "https://production-db.qmoi.ai/api/disability-helper/profile/{userId}" \
   -H "Authorization: Bearer {token}"
 
 # Update disability profile
-curl -X PUT "http://localhost:8000/api/disability-helper/profile/{userId}" \
+curl -X PUT "https://production-db.qmoi.ai/api/disability-helper/profile/{userId}" \
   -H "Content-Type: application/json" \
   -d '{
     "disabilityType": "Visual Impairment",
@@ -89,7 +89,7 @@ curl -X PUT "http://localhost:8000/api/disability-helper/profile/{userId}" \
 #### Assistance & Commands
 ```bash
 # Request assistance
-curl -X POST "http://localhost:8000/api/disability-helper/assist" \
+curl -X POST "https://production-db.qmoi.ai/api/disability-helper/assist" \
   -H "Content-Type: application/json" \
   -d '{
     "userId": "user123",
@@ -98,7 +98,7 @@ curl -X POST "http://localhost:8000/api/disability-helper/assist" \
   }'
 
 # Voice command processing
-curl -X POST "http://localhost:8000/api/disability-helper/voice" \
+curl -X POST "https://production-db.qmoi.ai/api/disability-helper/voice" \
   -H "Content-Type: application/json" \
   -d '{
     "userId": "user123",
@@ -107,7 +107,7 @@ curl -X POST "http://localhost:8000/api/disability-helper/voice" \
   }'
 
 # Emergency assistance
-curl -X POST "http://localhost:8000/api/disability-helper/emergency" \
+curl -X POST "https://production-db.qmoi.ai/api/disability-helper/emergency" \
   -H "Content-Type: application/json" \
   -d '{
     "userId": "user123",
@@ -229,37 +229,37 @@ curl -X POST "http://localhost:8000/api/disability-helper/emergency" \
 ### System Health
 ```bash
 # Check disability helper service health
-curl -X GET "http://localhost:8000/api/health/disability-helper" \
+curl -X GET "https://production-db.qmoi.ai/api/health/disability-helper" \
   -H "Authorization: Bearer {token}"
 
 # Check AI adaptation engine
-curl -X GET "http://localhost:8000/api/health/ai-adaptation" \
+curl -X GET "https://production-db.qmoi.ai/api/health/ai-adaptation" \
   -H "Authorization: Bearer {token}"
 
 # Check emergency response system
-curl -X GET "http://localhost:8000/api/health/emergency-system" \
+curl -X GET "https://production-db.qmoi.ai/api/health/emergency-system" \
   -H "Authorization: Bearer {token}"
 ```
 
 ### User-Specific Health
 ```bash
 # Check user profile health
-curl -X GET "http://localhost:8000/api/health/user/{userId}/disability-profile" \
+curl -X GET "https://production-db.qmoi.ai/api/health/user/{userId}/disability-profile" \
   -H "Authorization: Bearer {token}"
 
 # Check adaptation effectiveness
-curl -X GET "http://localhost:8000/api/health/user/{userId}/adaptation-metrics" \
+curl -X GET "https://production-db.qmoi.ai/api/health/user/{userId}/adaptation-metrics" \
   -H "Authorization: Bearer {token}"
 ```
 
 ### Performance Metrics
 ```bash
 # Get system performance metrics
-curl -X GET "http://localhost:8000/api/metrics/disability-helper" \
+curl -X GET "https://production-db.qmoi.ai/api/metrics/disability-helper" \
   -H "Authorization: Bearer {token}"
 
 # Get user satisfaction scores
-curl -X GET "http://localhost:8000/api/metrics/user-satisfaction" \
+curl -X GET "https://production-db.qmoi.ai/api/metrics/user-satisfaction" \
   -H "Authorization: Bearer {token}"
 ```
 
@@ -1035,3 +1035,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

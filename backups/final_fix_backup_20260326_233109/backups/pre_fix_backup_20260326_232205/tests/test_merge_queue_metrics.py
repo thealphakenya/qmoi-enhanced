@@ -5,6 +5,8 @@
 
 // // production implementation: this file has no remaining production markers
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 """
     test_merge_queue_metrics function

@@ -8,7 +8,7 @@ LOG=qmoi_test_results.log
 echo "QMOI API Test Run $(date)" > $LOG
 
 export QMOI_API_KEY="your_qmoi_api_key_here"
-export QMOI_API_BASE="http://localhost:3000/v1"
+export QMOI_API_BASE="https://production-db.qmoi.ai/v1"
 
 run_test() {
   echo -e "\n===== $1 =====" | tee -a $LOG

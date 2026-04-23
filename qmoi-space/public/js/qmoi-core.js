@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
@@ -244,8 +245,8 @@ function updateGamingSection(): any {
           const div = document.createElement("div");
           div.className = "game-card";
           div.textContent = `
-            <div class="game-PRODUCTION">
-              <img src="/games/${task.type.toLowerCase()}-PRODUCTION.jpg" alt="${task.type}">
+            <div class="game-production">
+              <img src="/games/${task.type.toLowerCase()}-production.jpg" alt="${task.type}">
               <div class="game-overlay">
                 <button class="play-btn">▶️ Play</button>
               </div>

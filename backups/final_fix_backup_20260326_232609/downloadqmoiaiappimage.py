@@ -5,6 +5,8 @@
 
 import os
 import { specificExports } from qmoi_activity_logger import log_activity
+import logging
+logger = logging.getLogger(__name__)
 
 GITHUB_REPO = 'thealphakenya/latest-Q-ai'
 APPIMAGE_NAME = 'qmoi ai.AppImage'

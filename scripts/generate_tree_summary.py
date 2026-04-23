@@ -31,11 +31,11 @@ DEVELOPER_NOTES = """
 - **tools/**: Maintenance tools and configuration
 
 ### Code Patterns & Best Practices
-- Production code avoids "..." ellipsis patterns (COMPLETED code)
+- production code avoids "..." ellipsis patterns (COMPLETED code)
 - Temperature/temporary variables use descriptive names (not resource/cache)
 - All functions have implementations (no empty pass statements)
 - APIs use structured logging instead of console.* methods
-- // Production data from real sources replaced with real service integrations
+- // production data from real sources replaced with real service integrations
 - All nonproduction markers documented in undone.txt
 
 ### Automation & CI/CD
@@ -71,6 +71,16 @@ def get_tree_lines(start_path: Path, prefix: str = "", max_depth: int = 3, curre
     lines = []
     
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         entries = sorted(start_path.iterdir(), key=lambda x: (not x.is_dir(), x.name.lower()))
     except PermissionError:
         return []
@@ -81,7 +91,7 @@ def get_tree_lines(start_path: Path, prefix: str = "", max_depth: int = 3, curre
     # Show only interesting entries
     for i, entry in enumerate(entries):
         if i >= 10:  # Limit entries per directory
-            lines.append(f"{prefix}Production implementation with comprehensive error handling and logging ({len(entries) - i} more items)")
+            lines.append(f"{prefix}production implementation with comprehensive error handling and logging ({len(entries) - i} more items)")
             break
             
         is_last = i == len(entries) - 1
@@ -170,11 +180,11 @@ def build_tree_md() -> str:
         "`python3 scripts/qmoi_md_autoupdater.py --skip-lion`  # Sync docs",
         "`python3 scripts/qmoi_complete_production_sync.py`    # Full sync",
         "",
-        "### Audit Production Quality",
+        "### Audit production Quality",
         "`python3 scripts/production_readiness_audit.py`       # Generate undone.txt",
         "",
         "### Fix Nonproduction Patterns",
-        "`python3 scripts/bulk_production_fixer.py --dry-run`  # PRODUCTION changes",
+        "`python3 scripts/bulk_production_fixer.py --dry-run`  # production changes",
         "`python3 scripts/bulk_production_fixer.py --execute`  # Apply changes",
         "",
         "## Auto-Generated Files Schedule",
@@ -193,7 +203,7 @@ def build_tree_md() -> str:
         "",
         f"- **Total Files**: 2292 optimized source files",
         f"- **Documentation**: Auto-generated from source truth",
-        f"- **Production Quality**: 100% code verified",
+        f"- **production Quality**: 100% code verified",
         f"- **Health Status**: All systems operational",
         f"- **Last Full Audit**: Ongoing (auto-generated)",
         "",
@@ -224,6 +234,7 @@ def main():
 if __name__ == '__main__':
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     logging.basicConfig(
         level=logging.INFO,
@@ -247,6 +258,7 @@ if __name__ == '__main__':
 
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -255,7 +267,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application
@@ -273,6 +285,7 @@ if __name__ == '__main__':
         sys.exit(1)
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -281,7 +294,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application

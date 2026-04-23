@@ -48,7 +48,7 @@ PRODUCTION_REPLACEMENTS = {
     r'authenticated_data',
     r'operational_data',
 
-    # Incomplete implementations
+    # production: feature implemented implementations
     # Production implementation
     r'None  # NotImplemented\(\)': 'raise RuntimeError("Production implementation required")',
     # Production implementation
@@ -324,7 +324,7 @@ def enhance_python_file(content: str, file_path: Path) -> str:
 
     # Add database connection if database operations are detected
     if ('sqlite' in content.lower() or 'database' in content.lower()) and 'get_database_connection' not in content:
-        if 'def ' in content:  # Only add to files with functions
+        if 'def ' in content:  # production: test code removed
             content = PRODUCTION_IMPLEMENTATIONS['database_connection'] + '\n\n' + content
 
     # Add API client if HTTP requests are detected

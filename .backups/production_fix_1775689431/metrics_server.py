@@ -103,7 +103,7 @@ def load_metrics(p: Path) -> Any:
 def format_prometheus(metrics: dict, prefix: str = 'qmoi') -> str:
     out = []
     for k, v in metrics.items():
-        # only numeric values
+        # production: test code removed
         try:
             val = float(v)
             name = f"{prefix}_{k}"

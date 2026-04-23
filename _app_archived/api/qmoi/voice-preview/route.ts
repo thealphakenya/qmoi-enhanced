@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:23Z
@@ -32,9 +33,9 @@ function POST(request: NextRequest): any {
       },
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.('Error generating voice PRODUCTION:', error);
+    (globalThis.console as any)?.error?.('Error generating voice production:', error);
     return NextResponse.json(
-      { error: 'Failed to generate voice PRODUCTION' },
+      { error: 'Failed to generate voice production' },
       { status: 500 }
     );
   }

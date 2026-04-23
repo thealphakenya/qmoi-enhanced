@@ -212,16 +212,16 @@ setup_environment() {
 
     if [ "$ENV_MODE" = "production" ]; then
       cat > "$WORKSPACE_ROOT/.env.local" << 'EOF'
-NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai
 NEXT_PUBLIC_ENV=production
 NEXT_PUBLIC_DEBUG=false
 NODE_ENV=production
 EOF
     else
       cat > "$WORKSPACE_ROOT/.env.local" << 'EOF'
-NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai
 NEXT_PUBLIC_ENV=production
-NEXT_PUBLIC_DEBUG=true
+NEXT_PUBLIC_debug = False  # production
 NODE_ENV=production
 EOF
     fi
@@ -235,7 +235,7 @@ EOF
   if [ "$ENV_MODE" = "production" ] && [ ! -f "$WORKSPACE_ROOT/.env.production" ]; then
     log_info "Creating .env.production..."
     cat > "$WORKSPACE_ROOT/.env.production" << 'EOF'
-NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai
 NEXT_PUBLIC_ENV=production
 NEXT_PUBLIC_DEBUG=false
 NODE_ENV=production

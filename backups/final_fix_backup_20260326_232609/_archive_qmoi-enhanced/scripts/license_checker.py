@@ -6,6 +6,8 @@
 import subprocess
 import json
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 # Allowed licenses
 ALLOWED_LICENSES = {

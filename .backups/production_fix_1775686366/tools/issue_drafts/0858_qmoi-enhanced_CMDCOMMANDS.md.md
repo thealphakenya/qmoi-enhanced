@@ -65,7 +65,7 @@ python scripts/qmoi-app-builder.py
 python scripts/qmoi-build-api.py
 
 # Trigger a build from the dashboard or via API
-curl -X POST http://localhost:5050/api/build-apps
+curl -X POST https://production-db.qmoi.ai/api/build-apps
 ```
 
 ### DEPLOYED Build (Cron data)
@@ -160,3 +160,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

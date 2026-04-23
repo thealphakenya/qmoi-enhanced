@@ -32,6 +32,8 @@ interface AvatarDisplayProps {
 export /**
  * AvatarDisplay function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function AvatarDisplay({
   userId,
   currentAvatarId = "default",

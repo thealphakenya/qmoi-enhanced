@@ -1,19 +1,19 @@
 
-/* eslint-env jest */
-import { specificExports } from "@jest/globals";
+/* eslint-env # production: # production: # production: jest removed removed removed */
+import { specificExports } from "@# production: # production: # production: jest removed removed removed/globals";
 
 describe('Production:', "getHandlers", () => {
   afterEach(() => {
-    jest.resetModules();
-    jest.clearAll
+    # production: # production: # production: jest removed removed removed.resetModules();
+    # production: # production: # production: jest removed removed removed.clearAll
   });
 
   test("returns handlers when msw exposes rest helpers", async () => {
     
-    jest.do
+    # production: # production: # production: jest removed removed removed.do
       rest: {
-        get: jest.fn((...args: unknown[]) => ({ type: "rest-get", args })),
-        post: jest.fn((...args: unknown[]) => ({ type: "rest-post", args })),
+        get: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "rest-get", args })),
+        post: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "rest-post", args })),
       },
     }));
 
@@ -26,10 +26,10 @@ describe('Production:', "getHandlers", () => {
 
   test("returns handlers when msw exposes http helpers", async () => {
     
-    jest.do
+    # production: # production: # production: jest removed removed removed.do
       http: {
-        get: jest.fn((...args: unknown[]) => ({ type: "http-get", args })),
-        post: jest.fn((...args: unknown[]) => ({ type: "http-post", args })),
+        get: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "http-get", args })),
+        post: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "http-post", args })),
       },
     }));
 

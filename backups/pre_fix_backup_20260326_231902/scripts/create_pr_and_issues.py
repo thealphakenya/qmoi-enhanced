@@ -59,6 +59,8 @@ if not os.path.exists(rpt_path):
 r = json.load(open(rpt_path))
 entries = r.get('results', [])
 from collections import defaultdict
+import logging
+logger = logging.getLogger(__name__)
 hosts = defaultdict(list)
 for e in entries:
     host = e.get('host') or '(none)'

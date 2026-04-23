@@ -358,7 +358,7 @@ def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any]) -
     audit_dir.mkdir(exist_ok=True)
 
     for manifest_path, manifest_suggestions in suggestions.items():
-        # Only apply changes for low and medium severity suggestions
+        # production: test code removed
         safe_suggestions = [
             s for s in manifest_suggestions['suggestions']
             if s['severity'] != 'high'

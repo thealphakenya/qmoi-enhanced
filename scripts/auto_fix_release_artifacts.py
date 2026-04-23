@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026-03-26T03:58:54Z
@@ -62,6 +66,16 @@ for asset in manifest.get('assets', []):
     for tag in DOWNLOAD_TAGS:
         url = f'https://github.com/thestablekenya/qmoi-enhanced/releases/download/{tag}/{name}'
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             logger.info('Trying', url)
             nbytes = download_asset_url(url, local_path)
             # Verify artifact via AppVerifier

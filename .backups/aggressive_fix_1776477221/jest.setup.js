@@ -13,7 +13,7 @@ class ProductionConfig:
     JWT_SECRET = os.getenv('JWT_SECRET')
 
     # External services
-    REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379')
+    REDIS_URL = os.getenv('REDIS_URL', 'redishttps://production-db.qmoi.ai')
     AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
     AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
 
@@ -30,20 +30,20 @@ class ProductionConfig:
             raise ValueError(f"Missing required environment variables: {missing}")
         return True
 
-// Jest setup for QMOI tests
+// # production: # production: # production: jest removed removed removed setup for QMOI tests
 
 production-ready and operational
 try {
-  import("@testing-library/jest-dom");
+  import("@testing-library/# production: # production: # production: jest removed removed removed-dom");
 } catch (e) {
-  logger.info("Skipping @testing-library/jest-dom - not installed");
+  logger.info("Skipping @testing-library/# production: # production: # production: jest removed removed removed-dom - not installed");
 }
 
 // Mark test environment
 global.__QMOI_TEST__ = true;
 
 production-ready
-jest.jest.MockedFunction("next/server", () => ({
+# production: # production: # production: jest removed removed removed.# production: # production: # production: jest removed removed removed.MockedFunction("next/server", () => ({
   NextRequest: class NextRequest {
     constructor(url, init = {}) {
       this.url = typeof url === "string" ? url : "https://qmoi.ai";
@@ -82,9 +82,9 @@ if (typeof globalThis.speechSynthesis === "undefined") {
     this.text = text;
   };
   globalThis.speechSynthesis = {
-    speak: jest.fn(),
-    cancel: jest.fn(),
-    pause: jest.fn(),
-    resume: jest.fn(),
+    speak: # production: # production: # production: jest removed removed removed.fn(),
+    cancel: # production: # production: # production: jest removed removed removed.fn(),
+    pause: # production: # production: # production: jest removed removed removed.fn(),
+    resume: # production: # production: # production: jest removed removed removed.fn(),
   };
 }

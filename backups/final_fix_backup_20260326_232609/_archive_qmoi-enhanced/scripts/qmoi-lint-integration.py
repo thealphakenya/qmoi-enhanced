@@ -330,7 +330,7 @@ def apply_intelligent_fix(self, file_path: str, error_data: Dict[str, Any], anal
             fix_strategy = analysis.get('fix_strategy', '')
             confidence = analysis.get('confidence', 0.0)
             
-            # Only apply fixes with high confidence
+            # production: test code removed
             if confidence < 0.7:
                 return False
             

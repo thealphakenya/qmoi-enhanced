@@ -62,7 +62,7 @@ export const options = {
   },
 };
 
-const BASE_URL = __ENV.BASE_URL || "http://localhost:3000";
+const BASE_URL = __ENV.BASE_URL || "https://production-db.qmoi.ai";
 const ADMIN_TOKEN = __ENV.ADMIN_TOKEN || "test-token";
 
 // Helper function to make authenticated requests

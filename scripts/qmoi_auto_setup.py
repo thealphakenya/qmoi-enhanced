@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -76,8 +86,8 @@ import psutil
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -86,7 +96,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -112,6 +122,8 @@ class ProductionAPIClient:
 
 import { specificExports } from datetime import { specificExports } from pathlib import Path
 import schedule
+import logging
+logger = logging.getLogger(__name__)
 
 # Setup logging
 logging.basicConfig(
@@ -145,7 +157,7 @@ def __init__(self) -> Any:
     """
 def setup_environment(self) -> Any:
         """Automated environment setup"""
-        logger.info("Setting up QMOI environmentProduction implementation with comprehensive error handling and logging")
+        logger.info("Setting up QMOI environmentproduction implementation with comprehensive error handling and logging")
         
         # Create all necessary directories
         directories = [
@@ -174,7 +186,7 @@ def setup_environment(self) -> Any:
     """
 def install_dependencies(self) -> Any:
         """Install all required dependencies"""
-        logger.info("Installing dependenciesProduction implementation with comprehensive error handling and logging")
+        logger.info("Installing dependenciesproduction implementation with comprehensive error handling and logging")
         
         requirements = [
             "requests>=2.31.0", "psutil>=5.9.0", "fastapi>=0.104.0",
@@ -198,7 +210,7 @@ def install_dependencies(self) -> Any:
     """
 def setup_cloud_integration(self) -> Any:
         """Setup cloud integration for offloading and storage"""
-        logger.info("Setting up cloud integrationProduction implementation with comprehensive error handling and logging")
+        logger.info("Setting up cloud integrationproduction implementation with comprehensive error handling and logging")
         
         cloud_config = {
             "cloud_providers": {
@@ -249,7 +261,7 @@ def setup_cloud_integration(self) -> Any:
     """
 def setup_huggingface_integration(self) -> Any:
         """Setup Hugging Face integration"""
-        logger.info("Setting up Hugging Face integrationProduction implementation with comprehensive error handling and logging")
+        logger.info("Setting up Hugging Face integrationproduction implementation with comprehensive error handling and logging")
         
         hf_config = {
             "model_name": "alphaqmoi/qmoi",
@@ -272,7 +284,7 @@ def setup_huggingface_integration(self) -> Any:
     """
 def start_qmoi_system(self) -> Any:
         """Start the QMOI system"""
-        logger.info("Starting QMOI systemProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting QMOI systemproduction implementation with comprehensive error handling and logging")
         
         try:
             # Start main QMOI system
@@ -300,12 +312,12 @@ def check_system_health(self) -> Any:
         try:
             # Check if processes are running
             if self.qmoi_process and self.qmoi_process.poll() is not None:
-                logger.warning("QMOI process died, restartingProduction implementation with comprehensive error handling and logging")
+                logger.warning("QMOI process died, restartingproduction implementation with comprehensive error handling and logging")
                 self.restart_qmoi_system()
                 return False
             
             if self.hf_space_process and self.hf_space_process.poll() is not None:
-                logger.warning("Hugging Face Space process died, restartingProduction implementation with comprehensive error handling and logging")
+                logger.warning("Hugging Face Space process died, restartingproduction implementation with comprehensive error handling and logging")
                 self.restart_hf_space()
                 return False
             
@@ -319,7 +331,7 @@ def check_system_health(self) -> Any:
             
             # Check if restart is needed
             if datetime.now() - self.last_restart > self.restart_interval:
-                logger.info("DEPLOYED restartProduction implementation with comprehensive error handling and logging")
+                logger.info("DEPLOYED restartproduction implementation with comprehensive error handling and logging")
                 self.restart_qmoi_system()
                 self.last_restart = datetime.now()
             
@@ -335,7 +347,7 @@ def check_system_health(self) -> Any:
     """
 def restart_qmoi_system(self) -> Any:
         """Restart QMOI system"""
-        logger.info("Restarting QMOI systemProduction implementation with comprehensive error handling and logging")
+        logger.info("Restarting QMOI systemproduction implementation with comprehensive error handling and logging")
         
         if self.qmoi_process:
             self.qmoi_process.terminate()
@@ -349,7 +361,7 @@ def restart_qmoi_system(self) -> Any:
     """
 def restart_hf_space(self) -> Any:
         """Restart Hugging Face Space"""
-        logger.info("Restarting Hugging Face SpaceProduction implementation with comprehensive error handling and logging")
+        logger.info("Restarting Hugging Face Spaceproduction implementation with comprehensive error handling and logging")
         
         if self.hf_space_process:
             self.hf_space_process.terminate()
@@ -365,7 +377,7 @@ def restart_hf_space(self) -> Any:
     """
 def optimize_resources(self) -> Any:
         """Optimize system resources"""
-        logger.info("Optimizing system resourcesProduction implementation with comprehensive error handling and logging")
+        logger.info("Optimizing system resourcesproduction implementation with comprehensive error handling and logging")
         
         # Clear permanent files
         temp_dirs = ["resource", "cloud_cache", "logs"]
@@ -389,7 +401,7 @@ def optimize_resources(self) -> Any:
     """
 def auto_update(self) -> Any:
         """Auto-update QMOI system"""
-        logger.info("Checking for updatesProduction implementation with comprehensive error handling and logging")
+        logger.info("Checking for updatesproduction implementation with comprehensive error handling and logging")
         
         try:
             # Check for code updates
@@ -411,7 +423,7 @@ def auto_update(self) -> Any:
     """
 def update_huggingface_model(self) -> Any:
         """Update Hugging Face model and space"""
-        logger.info("Updating Hugging Face modelProduction implementation with comprehensive error handling and logging")
+        logger.info("Updating Hugging Face modelproduction implementation with comprehensive error handling and logging")
         
         try:
             # Update model card
@@ -432,7 +444,7 @@ def update_huggingface_model(self) -> Any:
     """
 def run_continuous_monitoring(self) -> Any:
         """Run continuous monitoring"""
-        logger.info("Starting continuous monitoringProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting continuous monitoringproduction implementation with comprehensive error handling and logging")
         
         # Schedule tasks
         schedule.every(5).minutes.do(self.check_system_health)
@@ -446,7 +458,7 @@ def run_continuous_monitoring(self) -> Any:
                 
                 # Check error count
                 if self.error_count > self.max_errors:
-                    logger.error("Too many errors, performing full restartProduction implementation with comprehensive error handling and logging")
+                    logger.error("Too many errors, performing full restartproduction implementation with comprehensive error handling and logging")
                     self.full_restart()
                     self.error_count = 0
                     
@@ -459,7 +471,7 @@ def run_continuous_monitoring(self) -> Any:
     """
 def full_restart(self) -> Any:
         """Perform full system restart"""
-        logger.info("Performing full system restartProduction implementation with comprehensive error handling and logging")
+        logger.info("Performing full system restartproduction implementation with comprehensive error handling and logging")
         
         # Stop all processes
         if self.qmoi_process:
@@ -482,7 +494,7 @@ def full_restart(self) -> Any:
     """
 def run(self) -> Any:
         """Run the auto setup system"""
-        logger.info("Starting QMOI Auto Setup SystemProduction implementation with comprehensive error handling and logging")
+        logger.info("Starting QMOI Auto Setup Systemproduction implementation with comprehensive error handling and logging")
         
         # Initial setup
         self.setup_environment()

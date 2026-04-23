@@ -6,7 +6,7 @@
 
 set -e
 LOG=qmoi_autogen_unused_api_tests.log
-API_BASE="http://localhost:3000"
+API_BASE="https://production-db.qmoi.ai"
 
 # List of unused endpoints (update as needed)
 ENDPOINTS=(

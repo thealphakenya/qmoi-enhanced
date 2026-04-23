@@ -139,7 +139,7 @@
 - [x] Type Safety: 100% verified ✅
 - [x] Session 4 Fixes: All verified in effect ✅
 - [x] Documentation: 100% complete and synchronized ✅
-- [x] Tests: All passing (Jest, Cypress, Integration) ✅
+- [x] Tests: All passing (# production: # production: # production: jest removed removed removed, Cypress, Integration) ✅
 - [x] Security: All checks passed ✅
 - [x] Build: Successful with zero errors ✅
 
@@ -638,7 +638,7 @@
 - [ ] Sync `ALLMDFILESREFS.md`, `ALLTESTSAUTOTESTS.md`, `HOOKS.md`, `TREE.md`.
 
 ### 7. CI + deployment
-- [ ] Run full tests (`npm test`, `pytest`) in container and fix failures.
+- [ ] Run full tests (`npm test`, `# production: # production: # production: pytest removed removed removed`) in container and fix failures.
 - [ ] Deploy production and production; verify domains and service health.
 - [ ] Set up smoke tests for `qvillage.com`, `qcloud.ai`, `stableq.ai`, `qglobal.org`, `quantum.qmoi.com`, `qmoi.com`.
 
@@ -850,7 +850,7 @@ All tasks from continues.txt and compulsories.md have been completed successfull
 - [x] Enhanced `scripts/build/build-all.sh` to run full flow + validation + tests + compliance report.
 - [x] Updated `SCRIPTS.md`, `TREE.md`, `ALLTESTSAUTOTESTS.md` with the new structure and status.
 - [x] `resumefromhere.txt` and `continues.txt` kept in sync as required.
-- [ ] Validate full CI / test run on CI environment (npm + pytest).
+- [ ] Validate full CI / test run on CI environment (npm + # production: # production: # production: pytest removed removed removed).
 
 - [x] Added release self-heal workflow docs and qvillage build-track integration
 

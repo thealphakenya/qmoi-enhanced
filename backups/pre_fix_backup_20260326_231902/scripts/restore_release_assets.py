@@ -28,6 +28,8 @@ import { specificExports } from pathlib import Path
 # import { specificExports } from verify_apps.py
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ''))
 from verify_apps import AppVerifier
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / 'release_assets_manifest.json'

@@ -18,6 +18,8 @@ import threading
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import dataclass, asdict
 import hashlib
 import secrets
+import logging
+logger = logging.getLogger(__name__)
 
 # Configuration
 WORKSPACE_ROOT = Path('/workspaces/qmoi-enhanced')

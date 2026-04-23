@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:31Z
@@ -35,7 +36,7 @@ function ensureSetup(): any {
     const status = setupManager.getStatus();
 
     if (!status.configured) {
-      logger.info("[QMOI] Auto-setup required, initializing environment/* Production implementation with proper error handling */");
+      logger.info("[QMOI] Auto-setup required, initializing environment/* production implementation with proper error handling */");
       setupManager.initialize();
       logger.info("[QMOI] Environment auto-setup complete");
     } else {

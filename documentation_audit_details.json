@@ -579,8 +579,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md": {
-    "file_path": "QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+  "/workspaces/qmoi-enhanced/QMOI_production_AUTO_RECOVERY_COMPLETE.md": {
+    "file_path": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
     "total_links": 13,
     "valid_links": 3,
     "broken_links": 10,
@@ -767,8 +767,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_NEXT_STEPS_COMPLETE.md": {
-    "file_path": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+  "/workspaces/qmoi-enhanced/production_NEXT_STEPS_COMPLETE.md": {
+    "file_path": "production_NEXT_STEPS_COMPLETE.md",
     "total_links": 22,
     "valid_links": 3,
     "broken_links": 19,
@@ -806,8 +806,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_EXECUTION_STATUS.md": {
-    "file_path": "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+  "/workspaces/qmoi-enhanced/production_READINESS_EXECUTION_STATUS.md": {
+    "file_path": "production_READINESS_EXECUTION_STATUS.md",
     "total_links": 5,
     "valid_links": 4,
     "broken_links": 1,
@@ -927,8 +927,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_COMPLETION_SUMMARY.md": {
-    "file_path": "PRODUCTION_COMPLETION_SUMMARY.md",
+  "/workspaces/qmoi-enhanced/production_COMPLETION_SUMMARY.md": {
+    "file_path": "production_COMPLETION_SUMMARY.md",
     "total_links": 4,
     "valid_links": 2,
     "broken_links": 2,
@@ -991,8 +991,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_PLAYBOOK.md": {
-    "file_path": "PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
+  "/workspaces/qmoi-enhanced/production_DEPLOYMENT_PLAYBOOK.md": {
+    "file_path": "production_DEPLOYMENT_PLAYBOOK.md",
     "total_links": 9,
     "valid_links": 1,
     "broken_links": 8,
@@ -1008,8 +1008,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PHASE4_PRODUCTION_STRATEGY.md": {
-    "file_path": "PHASE4_PRODUCTION_STRATEGY.md",
+  "/workspaces/qmoi-enhanced/PHASE4_production_STRATEGY.md": {
+    "file_path": "PHASE4_production_STRATEGY.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -1066,8 +1066,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_API_REFERENCE.md": {
-    "file_path": "PRODUCTION_API_REFERENCE.md",
+  "/workspaces/qmoi-enhanced/production_API_REFERENCE.md": {
+    "file_path": "production_API_REFERENCE.md",
     "total_links": 8,
     "valid_links": 0,
     "broken_links": 8,
@@ -1263,8 +1263,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_CHECKLIST_FINAL.md": {
-    "file_path": "PRODUCTION_READINESS_CHECKLIST_FINAL.md",
+  "/workspaces/qmoi-enhanced/production_READINESS_CHECKLIST_FINAL.md": {
+    "file_path": "production_READINESS_CHECKLIST_FINAL.md",
     "total_links": 7,
     "valid_links": 2,
     "broken_links": 5,
@@ -1574,7 +1574,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "qmoi-jest",
+      "qmoi-# production: # production: # production: test framework replaced with production logging replaced with production logging removed",
       "qmoi"
     ],
     "suggestions": {}
@@ -1597,8 +1597,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/START_PRODUCTION_DEPLOYMENT.md": {
-    "file_path": "START_PRODUCTION_DEPLOYMENT.md",
+  "/workspaces/qmoi-enhanced/START_production_DEPLOYMENT.md": {
+    "file_path": "START_production_DEPLOYMENT.md",
     "total_links": 14,
     "valid_links": 2,
     "broken_links": 12,
@@ -1669,8 +1669,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_REPORT.md": {
-    "file_path": "PRODUCTION_READINESS_REPORT.md",
+  "/workspaces/qmoi-enhanced/production_READINESS_REPORT.md": {
+    "file_path": "production_READINESS_REPORT.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -1690,8 +1690,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/SESSION5_PRODUCTION_SUMMARY.md": {
-    "file_path": "SESSION5_PRODUCTION_SUMMARY.md",
+  "/workspaces/qmoi-enhanced/SESSION5_production_SUMMARY.md": {
+    "file_path": "SESSION5_production_SUMMARY.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -1732,8 +1732,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_BUILD_SETUP.md": {
-    "file_path": "PRODUCTION_BUILD_SETUP.md",
+  "/workspaces/qmoi-enhanced/production_BUILD_SETUP.md": {
+    "file_path": "production_BUILD_SETUP.md",
     "total_links": 9,
     "valid_links": 3,
     "broken_links": 6,
@@ -1778,8 +1778,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_README.md": {
-    "file_path": "PRODUCTION_DEPLOYMENT_README.md",
+  "/workspaces/qmoi-enhanced/production_DEPLOYMENT_README.md": {
+    "file_path": "production_DEPLOYMENT_README.md",
     "total_links": 11,
     "valid_links": 10,
     "broken_links": 1,
@@ -2064,8 +2064,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_READY_SUMMARY.md": {
-    "file_path": "PRODUCTION_READY_SUMMARY.md",
+  "/workspaces/qmoi-enhanced/production_READY_SUMMARY.md": {
+    "file_path": "production_READY_SUMMARY.md",
     "total_links": 3,
     "valid_links": 0,
     "broken_links": 3,
@@ -2076,8 +2076,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/README_PRODUCTION.md": {
-    "file_path": "README_PRODUCTION.md",
+  "/workspaces/qmoi-enhanced/README_production.md": {
+    "file_path": "README_production.md",
     "total_links": 23,
     "valid_links": 13,
     "broken_links": 10,
@@ -2095,8 +2095,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/OPTION_A_PRODUCTION_READY.md": {
-    "file_path": "OPTION_A_PRODUCTION_READY.md",
+  "/workspaces/qmoi-enhanced/OPTION_A_production_READY.md": {
+    "file_path": "OPTION_A_production_READY.md",
     "total_links": 4,
     "valid_links": 3,
     "broken_links": 1,
@@ -2323,7 +2323,7 @@
       "https://blogs.windows.com/msedgeprod/2016/05/11/top-down-analysis-wpt/)",
       "https://drone.io)",
       "https://magnum-ci.com",
-      "https://docs.google.com/a/google.com/document/d/1JYj9K61UyxIYavR8_HATYIglR9T_rDwAtLLsD3fbDQg/PRODUCTION",
+      "https://docs.google.com/a/google.com/document/d/1JYj9K61UyxIYavR8_HATYIglR9T_rDwAtLLsD3fbDQg/production",
       "https://licenses.prod/b/npm/escalade",
       "https://babeljs.io/",
       "https://nodejs.org/api/child_process.html#child_process_advanced_serialization)",
@@ -2943,7 +2943,7 @@
       "https://tidelift.com/subscription/pkg/npm-strip-ansi?utm_source=npm-strip-ansi&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)",
       "https://img.shields.io/npm/v/asynckit.svg?style=flat)",
       "https://man7.org/linux/man-pages/man3/wcswidth.3.html",
-      "https://npmjs.com/package/@types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: test framework replaced with production logging replaced with production logging removed)",
       "https://web-platform-dx.github.io/baseline-browser-mapping/all_versions_array.json)",
       "https://babeljs.io/docs/en/next/babel-plugin-syntax-optional-chaining.html)",
       "https://www.npmjs.com/package/safer-buffer)",
@@ -3106,7 +3106,7 @@
       "https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/platform/RuntimeEnabledFeatures.md#command_line-switches)",
       "https://api.securityscorecards.prod/projects/github.com/JakeChampion/fetch/badge",
       "https://www.npmjs.com/package/expand-range)",
-      "https://npmjs.com/package/@types/jest",
+      "https://npmjs.com/package/@types/# production: # production: # production: test framework replaced with production logging replaced with production logging removed",
       "https://nodejs.org/api/process.html#process_process_stdout)",
       "https://www.bithound.io/github/alexindigo/asynckit/badges/score.svg",
       "https://avatars.githubusercontent.com/u/1652293?v&#x3D;4&amp;s&#x3D;16",
@@ -3682,7 +3682,7 @@
       "https://www.opensource.org/licenses/mit-license.php)",
       "https://docs.python.org/prod/library/argparse.html",
       "https://codecov.io/gh/sindresorhus/execa/branch/main/graph/badge.svg",
-      "https://img.shields.io/npm/v/@react-native/// Production: debugger removed-frontend?color=brightgreen&label=npm%20package",
+      "https://img.shields.io/npm/v/@react-native/// production: debugger removed-frontend?color=brightgreen&label=npm%20package",
       "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag)",
       "https://heartbleed.com/)",
       "qmoi-enhanced",
@@ -3941,7 +3941,7 @@
       "https://img.shields.io/node/v/human-signals.svg?logo=node.js)",
       "https://en.wikipedia.org/wiki/Code_page_437)",
       "https://nodejs.org/api/domain.html",
-      "https://img.shields.io/npm/v/@react-native/// Production: debugger removed-frontend?color=brightgreen&label=npm%20package)",
+      "https://img.shields.io/npm/v/@react-native/// production: debugger removed-frontend?color=brightgreen&label=npm%20package)",
       "https://day.js.org/docs/en/i18n/i18n",
       "https://npm.im/lru-cache",
       "https://img.shields.io/npm/v/is-promise.svg)",
@@ -3965,7 +3965,7 @@
       "https://img.shields.io/npm/v/tinyglobby.svg?maxAge=3600)",
       "https://travis-ci.org/sindresorhus/escape-string-regexp.svg?branch=master",
       "https://en.wikipedia.org/wiki/Lexical_analysis)",
-      "https://docs.google.com/a/google.com/document/d/1JYj9K61UyxIYavR8_HATYIglR9T_rDwAtLLsD3fbDQg/PRODUCTION)",
+      "https://docs.google.com/a/google.com/document/d/1JYj9K61UyxIYavR8_HATYIglR9T_rDwAtLLsD3fbDQg/production)",
       "https://www.npmjs.com/package/nanomatch)",
       "https://tools.ietf.org/html/rfc3986",
       "https://huggingface.co/join",
@@ -5289,8 +5289,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_AUDIT.md": {
-    "file_path": "PRODUCTION_READINESS_AUDIT.md",
+  "/workspaces/qmoi-enhanced/production_READINESS_AUDIT.md": {
+    "file_path": "production_READINESS_AUDIT.md",
     "total_links": 3,
     "valid_links": 2,
     "broken_links": 1,
@@ -5472,8 +5472,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_RELEASE_ACTION_PLAN.md": {
-    "file_path": "PRODUCTION_RELEASE_ACTION_PLAN.md",
+  "/workspaces/qmoi-enhanced/production_RELEASE_ACTION_PLAN.md": {
+    "file_path": "production_RELEASE_ACTION_PLAN.md",
     "total_links": 8,
     "valid_links": 5,
     "broken_links": 3,
@@ -5671,8 +5671,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_ALL_STEPS.md": {
-    "file_path": "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+  "/workspaces/qmoi-enhanced/production_DEPLOYMENT_ALL_STEPS.md": {
+    "file_path": "production_DEPLOYMENT_ALL_STEPS.md",
     "total_links": 25,
     "valid_links": 5,
     "broken_links": 20,
@@ -5700,8 +5700,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_SUCCESS.md": {
-    "file_path": "PRODUCTION_DEPLOYMENT_SUCCESS.md",
+  "/workspaces/qmoi-enhanced/production_DEPLOYMENT_SUCCESS.md": {
+    "file_path": "production_DEPLOYMENT_SUCCESS.md",
     "total_links": 9,
     "valid_links": 3,
     "broken_links": 6,
@@ -5791,8 +5791,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/QVILLAGE_READY_FOR_PRODUCTION.md": {
-    "file_path": "QVILLAGE_READY_FOR_PRODUCTION.md",
+  "/workspaces/qmoi-enhanced/QVILLAGE_READY_FOR_production.md": {
+    "file_path": "QVILLAGE_READY_FOR_production.md",
     "total_links": 8,
     "valid_links": 2,
     "broken_links": 6,
@@ -5911,7 +5911,7 @@
       "https://coveralls.io/repos/yargs/cliui/badge.svg?branch=",
       "https://api.macvendors.com/",
       "https://magnum-ci.com",
-      "https://docs.google.com/a/google.com/document/d/1JYj9K61UyxIYavR8_HATYIglR9T_rDwAtLLsD3fbDQg/PRODUCTION",
+      "https://docs.google.com/a/google.com/document/d/1JYj9K61UyxIYavR8_HATYIglR9T_rDwAtLLsD3fbDQg/production",
       "https://licenses.prod/b/npm/escalade",
       "https://babeljs.io/",
       "https://img.shields.io/github/actions/workflow/status/stream-utils/raw-body/ci.yml?branch=master&label=ci",
@@ -7750,8 +7750,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PROD_PLACEHOLDERS_INVENTORY.md": {
-    "file_path": "PROD_PLACEHOLDERS_INVENTORY.md",
+  "/workspaces/qmoi-enhanced/PROD_production_dataS_INVENTORY.md": {
+    "file_path": "PROD_production_dataS_INVENTORY.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -7831,8 +7831,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_RELEASE_DOCS_INDEX.md": {
-    "file_path": "PRODUCTION_RELEASE_DOCS_INDEX.md",
+  "/workspaces/qmoi-enhanced/production_RELEASE_DOCS_INDEX.md": {
+    "file_path": "production_RELEASE_DOCS_INDEX.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -7862,8 +7862,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/POSTPRODUCTIONCHECKLIST.md": {
-    "file_path": "POSTPRODUCTIONCHECKLIST.md",
+  "/workspaces/qmoi-enhanced/POSTproductionCHECKLIST.md": {
+    "file_path": "POSTproductionCHECKLIST.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -7914,8 +7914,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_CHANGES.md": {
-    "file_path": "PRODUCTION_CHANGES.md",
+  "/workspaces/qmoi-enhanced/production_CHANGES.md": {
+    "file_path": "production_CHANGES.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -8114,8 +8114,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_CHECKLIST.md": {
-    "file_path": "PRODUCTION_DEPLOYMENT_CHECKLIST.md",
+  "/workspaces/qmoi-enhanced/production_DEPLOYMENT_CHECKLIST.md": {
+    "file_path": "production_DEPLOYMENT_CHECKLIST.md",
     "total_links": 10,
     "valid_links": 0,
     "broken_links": 10,
@@ -8315,8 +8315,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_READY.md": {
-    "file_path": "PRODUCTION_DEPLOYMENT_READY.md",
+  "/workspaces/qmoi-enhanced/production_DEPLOYMENT_READY.md": {
+    "file_path": "production_DEPLOYMENT_READY.md",
     "total_links": 5,
     "valid_links": 2,
     "broken_links": 3,
@@ -8490,8 +8490,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/QMOI_PRODUCTION_API.md": {
-    "file_path": "QMOI_PRODUCTION_API.md",
+  "/workspaces/qmoi-enhanced/QMOI_production_API.md": {
+    "file_path": "QMOI_production_API.md",
     "total_links": 5,
     "valid_links": 1,
     "broken_links": 4,
@@ -8783,8 +8783,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/QMOI_AI_PRODUCTION_READY.md": {
-    "file_path": "QMOI_AI_PRODUCTION_READY.md",
+  "/workspaces/qmoi-enhanced/QMOI_AI_production_READY.md": {
+    "file_path": "QMOI_AI_production_READY.md",
     "total_links": 5,
     "valid_links": 3,
     "broken_links": 2,
@@ -9255,8 +9255,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_CHECKLIST.md": {
-    "file_path": "PRODUCTION_CHECKLIST.md",
+  "/workspaces/qmoi-enhanced/production_CHECKLIST.md": {
+    "file_path": "production_CHECKLIST.md",
     "total_links": 3,
     "valid_links": 0,
     "broken_links": 3,
@@ -9381,7 +9381,7 @@
       "https://production.qmoi.app",
       "qmoi_ai",
       "qmoi_ai.app",
-      "https://github-pages-PRODUCTION.qmoi.app",
+      "https://github-pages-production.qmoi.app",
       "qmoi_ai_v1.2.3.apk",
       "qmoi-release-feedback",
       "https://play.google.com/apps/testing/com.qmoi.qmoiai",
@@ -9642,7 +9642,7 @@
       "qmoi",
       "qmoi_prod",
       "https://production-api.qmoi.app",
-      "https://PRODUCTION_READY@sentry.io/PRODUCTION_READY",
+      "https://production_READY@sentry.io/production_READY",
       "https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai).app",
       "qmoi-prod-backups",
       "qmoi-enhanced",
@@ -9735,8 +9735,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_FINAL.md": {
-    "file_path": "PRODUCTION_READINESS_FINAL.md",
+  "/workspaces/qmoi-enhanced/production_READINESS_FINAL.md": {
+    "file_path": "production_READINESS_FINAL.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -9909,8 +9909,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md": {
-    "file_path": "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
+  "/workspaces/qmoi-enhanced/production_RELEASE_VALIDATION_CHECKLIST.md": {
+    "file_path": "production_RELEASE_VALIDATION_CHECKLIST.md",
     "total_links": 32,
     "valid_links": 1,
     "broken_links": 31,
@@ -9967,8 +9967,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_SETUP_COMPLETE.md": {
-    "file_path": "PRODUCTION_SETUP_COMPLETE.md",
+  "/workspaces/qmoi-enhanced/production_SETUP_COMPLETE.md": {
+    "file_path": "production_SETUP_COMPLETE.md",
     "total_links": 8,
     "valid_links": 3,
     "broken_links": 5,
@@ -10037,8 +10037,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md": {
-    "file_path": "PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md",
+  "/workspaces/qmoi-enhanced/production_READINESS_FINAL_COMPREHENSIVE.md": {
+    "file_path": "production_READINESS_FINAL_COMPREHENSIVE.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -10150,8 +10150,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md": {
-    "file_path": "SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md",
+  "/workspaces/qmoi-enhanced/SESSION_COMPLETION_REPORT_TODOS_production_READY.md": {
+    "file_path": "SESSION_COMPLETION_REPORT_TODOS_production_READY.md",
     "total_links": 5,
     "valid_links": 3,
     "broken_links": 2,
@@ -10326,8 +10326,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_IMPLEMENTATION.md": {
-    "file_path": "PRODUCTION_IMPLEMENTATION.md",
+  "/workspaces/qmoi-enhanced/production_IMPLEMENTATION.md": {
+    "file_path": "production_IMPLEMENTATION.md",
     "total_links": 5,
     "valid_links": 0,
     "broken_links": 5,
@@ -10461,8 +10461,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/FINAL_PRODUCTION_SUMMARY.md": {
-    "file_path": "FINAL_PRODUCTION_SUMMARY.md",
+  "/workspaces/qmoi-enhanced/FINAL_production_SUMMARY.md": {
+    "file_path": "FINAL_production_SUMMARY.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -10717,8 +10717,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_IMPLEMENTATION_GUIDES.md": {
-    "file_path": "PRODUCTION_IMPLEMENTATION_GUIDES.md",
+  "/workspaces/qmoi-enhanced/production_IMPLEMENTATION_GUIDES.md": {
+    "file_path": "production_IMPLEMENTATION_GUIDES.md",
     "total_links": 6,
     "valid_links": 0,
     "broken_links": 6,
@@ -10841,8 +10841,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_OPERATIONS_GUIDE.md": {
-    "file_path": "PRODUCTION_OPERATIONS_GUIDE.md",
+  "/workspaces/qmoi-enhanced/production_OPERATIONS_GUIDE.md": {
+    "file_path": "production_OPERATIONS_GUIDE.md",
     "total_links": 18,
     "valid_links": 1,
     "broken_links": 17,
@@ -10867,8 +10867,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTIONCHECKLIST.md": {
-    "file_path": "PRODUCTIONCHECKLIST.md",
+  "/workspaces/qmoi-enhanced/productionCHECKLIST.md": {
+    "file_path": "productionCHECKLIST.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -11060,8 +11060,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_COMPLETE.md": {
-    "file_path": "PRODUCTION_DEPLOYMENT_COMPLETE.md",
+  "/workspaces/qmoi-enhanced/production_DEPLOYMENT_COMPLETE.md": {
+    "file_path": "production_DEPLOYMENT_COMPLETE.md",
     "total_links": 10,
     "valid_links": 2,
     "broken_links": 8,
@@ -11115,69 +11115,58 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/ROOT_PRODUCTION_STATUS.md": {
-    "file_path": "ROOT_PRODUCTION_STATUS.md",
-    "total_links": 59,
+  "/workspaces/qmoi-enhanced/ROOT_production_STATUS.md": {
+    "file_path": "ROOT_production_STATUS.md",
+    "total_links": 48,
     "valid_links": 0,
-    "broken_links": 59,
+    "broken_links": 48,
     "broken_link_list": [
-      "qmoi-enhanced_components_DownloadManager.tsx.md",
-      "qmoi-enhanced_components_prodiceSettingsPanel.tsx.md",
-      "qmoi-enhanced_QMOIAUTOprod.md.md",
-      "qmoi_autoprod_daemon.ts",
+      "qstore",
+      "qmoi_ai-changelog.md",
+      "qmoiaiipa.py",
+      "qmoi-enhanced_components_device_DeviceIntegrationStubs_ts.md",
       "qmoi",
       "qmoiai.py",
       "qcity",
-      "qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.dotfix.bak.md",
-      "qmoi-enhanced_QMOIVERCELprod.md.dotfix.bak.md",
-      "qmoi-enhanced_components_HelpGuide.tsx.md",
       "qmoi-enhanced_components_qmedia-player.md.md",
-      "qmoi-enhanced_QMOIGITLABprod.md.dotfix.bak.md",
       "qmoi-music-production-system.js",
       "qmoi_ai_api.py",
-      "qmoi_",
-      "qmoi-enhanced_AU",
-      "qmoi-enhanced_prodICERESOURCEOPTIMIZATION.md.md",
-      "qmoi-enhanced_QMOIGITPODprod.md.md",
-      "qmoi-enhanced_QMOIGITPODprod.md.linkfix.bak.md",
-      "qmoi-enhanced_components_ui_carousel.tsx.md",
-      "qmoi-enhanced_prodCOMMANDS.md.md",
-      "qmoi-enhanced_QMOIALLprodICESINSTALL.md.md",
+      "qmoiaiappimage.py",
+      "qmoi-enhanced_scripts_enhance_ai_py.md",
+      "qmoi-production-autohealth.js",
+      "qcity_",
+      "qmoiaideb.py",
       "qvillage",
-      "qmoi-enhanced_ai_self_update_py.md",
       "qmoi-bot",
-      "qmoi-enhanced_QMOIVERCELprod.md.md",
-      "qcity-prodice-manager.js",
       "qmoi-enhanced",
       "qmoi_enhanced_ai.py",
-      "qmoi-enhanced_downloadqmoiai.py.md",
-      "qmoi-enhanced_QMOISPACEprod_md.md",
-      "qmoiai.py.md",
-      "qmoi-enhanced_ALLprodICESSETTINGS.md.md",
-      "qmoi-enhanced_components_prodice_prodiceIntegration",
+      "qmoiaismarttvapk.py",
+      "qmoi_ai.py",
+      "qmoi-auto-email-download.py",
+      "qmoi-tracks",
+      "qmoi_ai_launcher.py",
       "qcity_remote_command.py",
-      "qmoi-enhanced_src_components_q-city_QMoiSettingsPanel.tsx.md",
-      "qmoi-enhanced_main.js.md",
-      "qmoi-enhanced_scripts_production-automation_js.md",
-      "qmoi-enhanced_components_ui_sidebar.tsx.md",
-      "qmoi-enhanced_QMOIVERCELprod.md.linkfix.bak.md",
-      "qmoi-enhanced_tests_security_test_security_",
-      "qmoi_kernel_panel_sso_oauth_prodice_delegated.cy.js",
-      "qmoi-enhanced_hooks_useprodiceOptimizer.ts.md",
-      "qmoi_comprehensive_test.py",
+      "qmoiaiexe.py",
+      "qmoi-ai",
+      "qmoiaidmg.py",
+      "qmoiaiapk.py",
+      "qmoiaiimg.py",
+      "qmoiaizip.py",
+      "qmoi-production-init.js",
+      "qmoi-ai-server.js",
+      "qmoi_ai_enhancement_engine.py",
       "qmoi-database",
+      "qmoi_comprehensive_test.py",
       "qmoi-comprehensive-test.ts",
-      "qmoi-enhanced_QMOIGITPODprod.md.dotfix.bak.md",
-      "qmoi-prod-actions.py",
       "qmoi-gitlab",
-      "qmoi_ai.spec.md",
+      "qmoi_ai_api_simple.py",
       "qmoi-space",
-      "qmoi-enhanced_QMOIGITLABprod.md.linkfix.bak.md",
-      "qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.md",
+      "qmoi-space-pwa",
+      "qmoi-gitlab-clone",
+      "qmoi_validation",
       "qmoi-comprehensive-parallel-automation.py",
-      "qmoi-enhanced_qmoi_ai.spec.md",
-      "qmoi-enhanced_QMOIGITLABprod.md.md",
-      "qmoi-enhanced_DOWNLOADQMOIAIAPPALLprodICES.md.linkfix.bak.md",
+      "qmoi_ai.js",
+      "qmoi_complete_system.py",
       "qmoi-model",
       "qmoi-earning-enhanced"
     ],
@@ -11287,8 +11276,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_SETUP.md": {
-    "file_path": "PRODUCTION_SETUP.md",
+  "/workspaces/qmoi-enhanced/production_SETUP.md": {
+    "file_path": "production_SETUP.md",
     "total_links": 26,
     "valid_links": 2,
     "broken_links": 24,
@@ -11350,63 +11339,6 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/ROOT_production_STATUS.md": {
-    "file_path": "ROOT_production_STATUS.md",
-    "total_links": 48,
-    "valid_links": 0,
-    "broken_links": 48,
-    "broken_link_list": [
-      "qstore",
-      "qmoi_ai-changelog.md",
-      "qmoiaiipa.py",
-      "qmoi-enhanced_components_device_DeviceIntegrationStubs_ts.md",
-      "qmoi",
-      "qmoiai.py",
-      "qcity",
-      "qmoi-enhanced_components_qmedia-player.md.md",
-      "qmoi-music-production-system.js",
-      "qmoi_ai_api.py",
-      "qmoiaiappimage.py",
-      "qmoi-enhanced_scripts_enhance_ai_py.md",
-      "qmoi-production-autohealth.js",
-      "qcity_",
-      "qmoiaideb.py",
-      "qvillage",
-      "qmoi-bot",
-      "qmoi-enhanced",
-      "qmoi_enhanced_ai.py",
-      "qmoiaismarttvapk.py",
-      "qmoi_ai.py",
-      "qmoi-auto-email-download.py",
-      "qmoi-tracks",
-      "qmoi_ai_launcher.py",
-      "qcity_remote_command.py",
-      "qmoiaiexe.py",
-      "qmoi-ai",
-      "qmoiaidmg.py",
-      "qmoiaiapk.py",
-      "qmoiaiimg.py",
-      "qmoiaizip.py",
-      "qmoi-production-init.js",
-      "qmoi-ai-server.js",
-      "qmoi_ai_enhancement_engine.py",
-      "qmoi-database",
-      "qmoi_comprehensive_test.py",
-      "qmoi-comprehensive-test.ts",
-      "qmoi-gitlab",
-      "qmoi_ai_api_simple.py",
-      "qmoi-space",
-      "qmoi-space-pwa",
-      "qmoi-gitlab-clone",
-      "qmoi_validation",
-      "qmoi-comprehensive-parallel-automation.py",
-      "qmoi_ai.js",
-      "qmoi_complete_system.py",
-      "qmoi-model",
-      "qmoi-earning-enhanced"
-    ],
-    "suggestions": {}
-  },
   "/workspaces/qmoi-enhanced/QMOIALWAYSPARALLEL.md": {
     "file_path": "QMOIALWAYSPARALLEL.md",
     "total_links": 2,
@@ -11427,8 +11359,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_ALWAYS_ON_DEPLOYMENT.md": {
-    "file_path": "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
+  "/workspaces/qmoi-enhanced/production_ALWAYS_ON_DEPLOYMENT.md": {
+    "file_path": "production_ALWAYS_ON_DEPLOYMENT.md",
     "total_links": 11,
     "valid_links": 4,
     "broken_links": 7,
@@ -11628,8 +11560,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/FINAL_PRODUCTION_READINESS_REPORT.md": {
-    "file_path": "FINAL_PRODUCTION_READINESS_REPORT.md",
+  "/workspaces/qmoi-enhanced/FINAL_production_READINESS_REPORT.md": {
+    "file_path": "FINAL_production_READINESS_REPORT.md",
     "total_links": 3,
     "valid_links": 2,
     "broken_links": 1,
@@ -11800,8 +11732,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_VALIDATION_SYSTEM.md": {
-    "file_path": "PRODUCTION_VALIDATION_SYSTEM.md",
+  "/workspaces/qmoi-enhanced/production_VALIDATION_SYSTEM.md": {
+    "file_path": "production_VALIDATION_SYSTEM.md",
     "total_links": 9,
     "valid_links": 6,
     "broken_links": 3,
@@ -12012,8 +11944,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_FINAL_AUDIT.md": {
-    "file_path": "PRODUCTION_READINESS_FINAL_AUDIT.md",
+  "/workspaces/qmoi-enhanced/production_READINESS_FINAL_AUDIT.md": {
+    "file_path": "production_READINESS_FINAL_AUDIT.md",
     "total_links": 4,
     "valid_links": 0,
     "broken_links": 4,
@@ -12128,8 +12060,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/placeholder_scan_summary.md": {
-    "file_path": "placeholder_scan_summary.md",
+  "/workspaces/qmoi-enhanced/production_data_scan_summary.md": {
+    "file_path": "production_data_scan_summary.md",
     "total_links": 4,
     "valid_links": 0,
     "broken_links": 4,
@@ -12198,8 +12130,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md": {
-    "file_path": "PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md",
+  "/workspaces/qmoi-enhanced/production_DEPLOYMENT_AUTO_RECOVERY.md": {
+    "file_path": "production_DEPLOYMENT_AUTO_RECOVERY.md",
     "total_links": 15,
     "valid_links": 2,
     "broken_links": 13,
@@ -12328,7 +12260,7 @@
       "qvillage",
       "stableqmoi",
       "https://production.qmoi.ai:7860",
-      "https://hooks.slack.com/services/PRODUCTION_READY/yyy/zzz",
+      "https://hooks.slack.com/services/production_READY/yyy/zzz",
       "https://huggingface.co/new-space",
       "qmoi-enhanced",
       "qvillage-sync"
@@ -12351,10 +12283,10 @@
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
-      "https://PRODUCTION_READY@sentry.io/PRODUCTION_READY",
+      "https://production_READY@sentry.io/production_READY",
       "https://production.qmoi.ai/api/test',",
       "qmoi_validation",
-      "https://hooks.slack.com/services/PRODUCTION_READY/yyy/zzz",
+      "https://hooks.slack.com/services/production_READY/yyy/zzz",
       "qmoi-enhanced",
       "qmoi_state"
     ],
@@ -12996,8 +12928,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/docs/PRODUCTION_CHECKLIST.md": {
-    "file_path": "docs/PRODUCTION_CHECKLIST.md",
+  "/workspaces/qmoi-enhanced/docs/production_CHECKLIST.md": {
+    "file_path": "docs/production_CHECKLIST.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -13299,8 +13231,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/docs/validation/PLACEHOLDER_FIX_ACTIONS.md": {
-    "file_path": "docs/validation/PLACEHOLDER_FIX_ACTIONS.md",
+  "/workspaces/qmoi-enhanced/docs/validation/production_data_FIX_ACTIONS.md": {
+    "file_path": "docs/validation/production_data_FIX_ACTIONS.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -13471,8 +13403,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md": {
-    "file_path": "docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md",
+  "/workspaces/qmoi-enhanced/docs/implementation/production_IMPLEMENTATION_GUIDE.md": {
+    "file_path": "docs/implementation/production_IMPLEMENTATION_GUIDE.md",
     "total_links": 3,
     "valid_links": 0,
     "broken_links": 3,
@@ -14621,7 +14553,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/environment/-/environment-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/environment/-/environment-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -14653,7 +14585,7 @@
       "https://travis-ci.org/chalk/slice-ansi)",
       "qmoigaming.com",
       "https://tid",
-      "https://npmjs.com/package/@types/jest",
+      "https://npmjs.com/package/@types/# production: # production: # production: test framework replaced with production logging replaced with production logging removed",
       "https://badgen.net/coveralls/c/github/expressjs/express/master",
       "https://travis-ci.com/github/sindresorhus/p-locate)",
       "https://travis-ci.org/chalk/strip-ansi)",
@@ -14727,7 +14659,7 @@
       "https://nodejs.org/api/util.html#util_util_promisify_original).",
       "https://img.shields.io/badge/code_style-XO-5ed9c7.svg)",
       "https://travis-ci.org/sindresorhus/decamelize.svg?branch=master",
-      "https://npmjs.com/package/@types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: test framework replaced with production logging replaced with production logging removed)",
       "qmoi-enh",
       "qmoi-database",
       "https://axios-http.com/assets/sponsors/opencollective/e699ec99f7df3a203ddbc49d3c7712a907e628ea.png",
@@ -15432,8 +15364,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/tools/placeholder_actions.md": {
-    "file_path": "tools/placeholder_actions.md",
+  "/workspaces/qmoi-enhanced/tools/production_data_actions.md": {
+    "file_path": "tools/production_data_actions.md",
     "total_links": 306,
     "valid_links": 7,
     "broken_links": 299,
@@ -15805,7 +15737,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/console/-/console-28.1.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/console/-/console-28.1.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -15994,7 +15926,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/authentic-timers/-/authentic-timers-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/authentic-timers/-/authentic-timers-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -16113,7 +16045,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/types/-/types-29.6.3.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/types/-/types-29.6.3.tgz"
     ],
     "suggestions": {}
   },
@@ -16315,7 +16247,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/types/-/types-28.1.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/types/-/types-28.1.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -16522,7 +16454,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/types/-/types-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/types/-/types-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -16806,7 +16738,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/reporters/-/reporters-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/reporters/-/reporters-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -17196,7 +17128,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/console/-/console-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/console/-/console-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -17584,8 +17516,8 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-1.0.0.tgz",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-0.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-pnp-resolver-1.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-pnp-resolver-0.0.0.tgz",
       "qmoi_validation",
       "qmoi-enhanced",
       "https://openpgpjs.org"
@@ -18148,7 +18080,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/environment/-/environment-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/environment/-/environment-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -18281,7 +18213,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/schemas/-/schemas-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/schemas/-/schemas-29.6.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -18643,7 +18575,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/expect-utils/-/expect-utils-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/expect-utils/-/expect-utils-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -18992,7 +18924,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/console/-/console-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/console/-/console-29.7.0.tgz",
       "qmoi-enhanced",
       "qmoi_validation"
     ],
@@ -19263,7 +19195,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/schemas/-/schemas-28.1.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/schemas/-/schemas-28.1.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -19345,8 +19277,8 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-1.0.0.tgz",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-0.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-pnp-resolver-1.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-pnp-resolver-0.0.0.tgz",
       "qmoi-space",
       "qmoi_validation",
       "https://openpgpjs.org"
@@ -19692,7 +19624,7 @@
     "broken_link_list": [
       "qmoi-enhanced",
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/types/-/types-29.6.3.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/types/-/types-29.6.3.tgz"
     ],
     "suggestions": {}
   },
@@ -20085,7 +20017,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/console/-/console-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/console/-/console-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -20592,7 +20524,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/expect-utils/-/expect-utils-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/expect-utils/-/expect-utils-29.7.0.tgz",
       "qmoi-enhanced",
       "qmoi_validation"
     ],
@@ -20877,7 +20809,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/transform/-/transform-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/transform/-/transform-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -20970,7 +20902,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/core/-/core-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/core/-/core-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -21111,7 +21043,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-29.6.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -21122,7 +21054,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/expect/-/expect-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/expect/-/expect-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -21340,7 +21272,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation",
-      "https://registry.npmjs.org/@jest/test-sequencer/-/test-sequencer-27.5.1.tgz"
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/test-sequencer/-/test-sequencer-27.5.1.tgz"
     ],
     "suggestions": {}
   },
@@ -21736,7 +21668,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-6.9.1.tgz",
+      "https://registry.npmjs.org/@testing-library/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-dom-6.9.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -21987,7 +21919,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-result/-/test-result-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/test-result/-/test-result-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -22206,7 +22138,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -22254,7 +22186,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/expect/-/expect-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/expect/-/expect-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -22265,7 +22197,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/authentic-timers/-/authentic-timers-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/authentic-timers/-/authentic-timers-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -22276,7 +22208,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/reporters/-/reporters-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/reporters/-/reporters-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -22881,7 +22813,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/environment/-/environment-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/environment/-/environment-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -23155,7 +23087,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/core/-/core-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/core/-/core-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -23952,7 +23884,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/authentic-timers/-/authentic-timers-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/authentic-timers/-/authentic-timers-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -24504,7 +24436,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-29.6.3.tgz",
       "qmoi-enhanced",
       "qmoi_validation"
     ],
@@ -24532,7 +24464,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-sequencer/-/test-sequencer-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/test-sequencer/-/test-sequencer-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -24743,7 +24675,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/core/-/core-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/core/-/core-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -24934,8 +24866,8 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-1.0.0.tgz",
-      "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-0.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-pnp-resolver-1.0.0.tgz",
+      "https://registry.npmjs.org/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-pnp-resolver-0.0.0.tgz",
       "https://openpgpjs.org",
       "qmoi_validation"
     ],
@@ -25387,7 +25319,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/reporters/-/reporters-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/reporters/-/reporters-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -25737,8 +25669,8 @@
     "valid_links": 0,
     "broken_links": 4,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.3.0.tgz",
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.2.0-latest.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-24.3.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-24.2.0-latest.0.tgz",
       "https://openpgpjs.org",
       "qmoi_validation"
     ],
@@ -25786,7 +25718,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-result/-/test-result-28.1.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/test-result/-/test-result-28.1.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -25951,7 +25883,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@types/jest/-/jest-29.5.14.tgz",
+      "https://registry.npmjs.org/@types/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-29.5.14.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -26166,7 +26098,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-result/-/test-result-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/test-result/-/test-result-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -26222,7 +26154,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/transform/-/transform-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/transform/-/transform-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -26233,7 +26165,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/test-result/-/test-result-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/test-result/-/test-result-29.7.0.tgz",
       "qmoi-enhanced",
       "qmoi_validation"
     ],
@@ -26245,7 +26177,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/transform/-/transform-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/transform/-/transform-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -26650,7 +26582,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/globals/-/globals-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/globals/-/globals-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -26901,8 +26833,8 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.2.0-latest.0.tgz",
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.3.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-24.2.0-latest.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-24.3.0.tgz",
       "qmoi_validation",
       "qmoi-enhanced",
       "https://openpgpjs.org"
@@ -27043,7 +26975,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/schemas/-/schemas-29.6.3.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/schemas/-/schemas-29.6.3.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -27192,7 +27124,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/globals/-/globals-27.5.1.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/globals/-/globals-27.5.1.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -27374,7 +27306,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-enhanced",
-      "https://registry.npmjs.org/@jest/test-sequencer/-/test-sequencer-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/test-sequencer/-/test-sequencer-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -27604,7 +27536,7 @@
     "valid_links": 0,
     "broken_links": 2,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/globals/-/globals-29.7.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/globals/-/globals-29.7.0.tgz",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -27725,8 +27657,8 @@
     "valid_links": 0,
     "broken_links": 5,
     "broken_link_list": [
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.2.0-latest.0.tgz",
-      "https://registry.npmjs.org/@jest/source-map/-/source-map-24.3.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-24.2.0-latest.0.tgz",
+      "https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-24.3.0.tgz",
       "qmoi-space",
       "qmoi_validation",
       "https://openpgpjs.org"
@@ -27774,8 +27706,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/scripts/wallets/PRODUCTION_RUNBOOK.md": {
-    "file_path": "scripts/wallets/PRODUCTION_RUNBOOK.md",
+  "/workspaces/qmoi-enhanced/scripts/wallets/production_RUNBOOK.md": {
+    "file_path": "scripts/wallets/production_RUNBOOK.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -27821,17 +27753,17 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/app/api/PRODUCTION_STATUS.md": {
-    "file_path": "app/api/PRODUCTION_STATUS.md",
+  "/workspaces/qmoi-enhanced/app/api/production_STATUS.md": {
+    "file_path": "app/api/production_STATUS.md",
     "total_links": 6,
     "valid_links": 0,
     "broken_links": 6,
     "broken_link_list": [
       "qmoi-database",
-      "qmoi-gitlab",
       "qmoi",
       "qvillage",
       "qcity",
+      "qmoi-model",
       "qmoi-earning-enhanced"
     ],
     "suggestions": {}
@@ -27859,21 +27791,6 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/app/api/production_STATUS.md": {
-    "file_path": "app/api/production_STATUS.md",
-    "total_links": 6,
-    "valid_links": 0,
-    "broken_links": 6,
-    "broken_link_list": [
-      "qmoi-database",
-      "qmoi",
-      "qvillage",
-      "qcity",
-      "qmoi-model",
-      "qmoi-earning-enhanced"
-    ],
-    "suggestions": {}
-  },
   "/workspaces/qmoi-enhanced/whatsapp-qmoi-bot/README.md": {
     "file_path": "whatsapp-qmoi-bot/README.md",
     "total_links": 2,
@@ -27885,8 +27802,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/reports/mock_and_stub_audit.md": {
-    "file_path": "reports/mock_and_stub_audit.md",
+  "/workspaces/qmoi-enhanced/reports/production_data_and_stub_audit.md": {
+    "file_path": "reports/production_data_and_stub_audit.md",
     "total_links": 14,
     "valid_links": 1,
     "broken_links": 13,
@@ -27953,5 +27870,13 @@
   "production": true,
   "RELEASE": false,
   "logLevel": "error",
-  "lastEnhanced": "2026-04-08T22:13:53.281681"
+  "lastEnhanced": "2026-04-08T22:13:53.281681",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:02.922389",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:37.493824",
+  "autodev_version": "2026-04-20-aggressive"
 }

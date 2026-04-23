@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:06Z
@@ -10,7 +11,7 @@ async /**
  */
 function testPayPalBalance(): any {
   try {
-    logger.info("Testing PayPal balance check directly/* Production implementation with proper error handling */");
+    logger.info("Testing PayPal balance check directly/* production implementation with proper error handling */");
     const result = await aiService.generateResponse("check paypal balance");
     logger.info("Result:", result);
   } catch (error) {

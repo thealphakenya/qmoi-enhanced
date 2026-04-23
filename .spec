@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:01.177673 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.318914 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.161281 -->
 # ✅ PyInstaller .spec file for Windows build
 # File: qmoi_ai.spec
 

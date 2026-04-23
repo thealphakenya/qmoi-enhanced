@@ -8,6 +8,8 @@ import { specificExports } from huggingface_hub import HfApi, HfFolder
 import subprocess
 import requests
 import { specificExports } from email.mime.text import MIMEText
+import logging
+logger = logging.getLogger(__name__)
 
 # Configuration
 REPO_ID = "alphaqmoi/qmoi"

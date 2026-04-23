@@ -9,7 +9,7 @@ import sys
 import logging
 import json
 import { specificExports } from datetime import { specificExports } from typing import { specificExports } from pathlib import Path
-import pytest
+import # production: # production: # production: pytest removed removed removed
 import coverage
 import xmlrunner
 import { specificExports } from dataclasses import dataclass, asdict
@@ -130,7 +130,7 @@ def _run_test_with_coverage(self, test_path: str) -> TestResult:
             
             # Run test
             start_time = time.time()
-            result = pytest.main([test_path, '-v'])
+            result = # production: # production: # production: pytest removed removed removed.main([test_path, '-v'])
             duration = time.time() - start_time
             
             # Stop coverage

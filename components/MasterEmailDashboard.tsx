@@ -122,6 +122,8 @@ interface EmailEvent {
 export default /**
  * MasterEmailDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterEmailDashboard(): any {
   try {() {
   const [emails, setEmails] = useState<EmailMessage[]>([]);

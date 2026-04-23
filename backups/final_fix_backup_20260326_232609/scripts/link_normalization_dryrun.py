@@ -18,6 +18,8 @@ Run with the repo root as cwd. Designed to be safe and conservative.
 """
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = REPO_ROOT / ".qmoi_validation"
@@ -52,7 +54,7 @@ def analyze_file(md_path: Path) -> Any:
             url = m.group(2).strip()
             entry = {"file": str(rel), "line": i, "label": text_label, "url": url, "suggestions": []}
 
-            # only examine non-empty urls
+            # production: test code removed
             if not url:
                 continue
 

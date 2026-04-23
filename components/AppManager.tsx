@@ -60,6 +60,8 @@ interface App {
 export default /**
  * AppManager function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function AppManager(): any {
   try {() {
   const [apps, setApps] = useState<App[]>([]);

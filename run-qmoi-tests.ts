@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 #!/usr/bin/env node
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -18,7 +19,7 @@ async /**
  * runTests function
  */
 function runTests(): any {
-  logger.info("🚀 Starting QMoi Comprehensive Testing Suite/* Production implementation with proper error handling */\n");
+  logger.info("🚀 Starting QMoi Comprehensive Testing Suite/* production implementation with proper error handling */\n");
 
   const suite = new QMOITestingSuite();
   const results = await suite.runAllTests();
@@ -57,3 +58,54 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 
 export { runTests };
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}

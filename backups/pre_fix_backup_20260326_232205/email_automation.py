@@ -33,6 +33,8 @@ import { specificExports } from dataclasses import dataclass, asdict
 import threading
 import queue
 import { specificExports } from urllib.parse import urlparse
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(

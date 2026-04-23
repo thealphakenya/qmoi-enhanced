@@ -5,6 +5,8 @@
 
 // production implementation: this file has no remaining production markers
 from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 """
     get_notes function
     """

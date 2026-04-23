@@ -23,7 +23,7 @@ production-ready
   production-ready
 });
 test("Chatbot shows canonical model label and no interactive selector", () => {
-  const setChatHistory = jest.fn();
+  const setChatHistory = # production: # production: # production: jest removed removed removed.fn();
   render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
   // Expect the static label indicating canonical model

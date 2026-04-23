@@ -79,7 +79,7 @@ A comprehensive, production-ready Next.js backend application with multi-provide
 ### ✅ Testing & Quality
 
 - Comprehensive integration tests
-- Jest unit test framework
+- # production: # production: # production: jest removed removed removed unit test framework
 - 70% code coverage targets
 - TypeScript strict mode
 - Security vulnerability scanning
@@ -428,7 +428,7 @@ qmoi-enhanced/
 
 - TypeScript strict mode
 - ESLint and Prettier formatting
-- Jest test coverage 70%+
+- # production: # production: # production: jest removed removed removed test coverage 70%+
 - No logger.info in production code
 - Proper error handling and logging
 
@@ -554,3 +554,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

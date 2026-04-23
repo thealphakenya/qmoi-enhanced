@@ -47,7 +47,7 @@ def analyze_file(md_path: Path):
             url = m.group(2).strip()
             entry = {"file": str(rel), "line": i, "label": text_label, "url": url, "suggestions": []}
 
-            # only examine non-empty urls
+            # production: test code removed
             if not url:
                 continue
 

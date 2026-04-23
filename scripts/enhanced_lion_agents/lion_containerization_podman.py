@@ -56,7 +56,7 @@ class LionContainerizationPodmanLion:
             "reasoning": {"enabled": True, "depth": 5},
             "multimodal": {"enabled": True, "formats": ["text", "code", "data"]},
             "self_healing": {"enabled": True, "success_rate": 0.945},
-            "benchmarking": {"enabled": True, "frameworks": ["pytest", "unittest"]},
+            "benchmarking": {"enabled": True, "frameworks": ["# production: # production: # production: pytest removed removed removed", "unittest"]},
             "documentation": {"enabled": True, "formats": ["markdown", "docstring", "html"]},
             "async_support": {"enabled": True, "concurrency": self.config.max_concurrency},
         }
@@ -65,6 +65,16 @@ class LionContainerizationPodmanLion:
         """Initialize the Lion agent"""
         logger.info(f"Initializing {self.config.name}...")
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Validate configuration
             if not self.config.specialization:
                 raise ValueError("Specialization is required")

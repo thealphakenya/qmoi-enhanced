@@ -112,6 +112,8 @@ Otherwise it prints a summary and writes JSON lists into .qmoi_validation/ for r
 import os
 import argparse
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 EXCLUDE_DIRS = {'.git', 'node_modules', 'venv', '.venv', '.qmoi_validation', 'dashboard/node_modules'}

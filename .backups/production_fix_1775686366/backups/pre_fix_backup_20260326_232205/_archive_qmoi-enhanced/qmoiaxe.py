@@ -25,7 +25,7 @@ def qmessage():
     return {"message": "Hello from QMOI backend!"}
 
 def run_backend():
-    uvicorn.run(app, host="127.0.0.1", port=8080, log_level="info")
+    uvicorn.run(app, host="production-db.qmoi.ai", port=8080, log_level="info")
 
 # -------------------------------
 # CUSTOMTKINTER GUI
@@ -46,7 +46,7 @@ def run_gui():
 
     def call_api():
         try:
-            r = requests.get("http://127.0.0.1:8080/qmessage")
+            r = requests.get("http://production-db.qmoi.ai:8080/qmessage")
             if r.status_code == 200:
                 status_label.configure(text="✅ " + r.json()["message"])
             else:
@@ -57,7 +57,7 @@ def run_gui():
     api_button = ctk.CTkButton(root, text="Call Backend", command=call_api)
     api_button.pack(pady=12)
 
-    docs_button = ctk.CTkButton(root, text="Open Swagger UI", command=lambda: webbrowser.open("http://127.0.0.1:8080/docs"))
+    docs_button = ctk.CTkButton(root, text="Open Swagger UI", command=lambda: webbrowser.open("http://production-db.qmoi.ai:8080/docs"))
     docs_button.pack(pady=12)
 
     exit_button = ctk.CTkButton(root, text="Exit", command=root.destroy)

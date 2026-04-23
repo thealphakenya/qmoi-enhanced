@@ -5,7 +5,7 @@ from pathlib import Path
 from datetime import datetime
 import json
 
-# Production logging configuration
+# production logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Production configuration
+# production configuration
 class Config:
     RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
@@ -30,21 +30,31 @@ def validate_config():
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
 
-# Production error handling
+# production error handling
 def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             return func(*args, **kwargs)
         except Exception as e:
-            logger.error(f"Production error in {func.__name__}: {e}")
+            logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
 
 
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -87,12 +97,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -306,7 +316,7 @@ def __init__(self) -> Any:
     """
 def analyze_all_markdown_files(self) -> Dict[str, Any]:
         """Main entry point: analyze all .md files"""
-        logging.info("Starting AI Markdown Understanding analysisProduction implementation with comprehensive error handling and logging")
+        logging.info("Starting AI Markdown Understanding analysisproduction implementation with comprehensive error handling and logging")
 
         # Find all markdown files
         md_files = list(MD_DIR.glob('*.md'))
@@ -332,7 +342,7 @@ def analyze_all_markdown_files(self) -> Dict[str, Any]:
     """
 def _analyze_file(self, file_path: Path) -> Any:
         """Analyze individual markdown file"""
-        logging.info(f"Analyzing {file_path.name}Production implementation with comprehensive error handling and logging")
+        logging.info(f"Analyzing {file_path.name}production implementation with comprehensive error handling and logging")
 
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
@@ -562,7 +572,7 @@ def _generate_semantic_embedding(self, content: str, entities: List[Entity],
     """
 def _extract_global_relationships(self) -> Any:
         """Extract relationships between documents/entities"""
-        logging.info("Extracting global relationshipsProduction implementation with comprehensive error handling and logging")
+        logging.info("Extracting global relationshipsproduction implementation with comprehensive error handling and logging")
 
         for file_name, doc in self.documents.items():
             for entity in doc.entities:
@@ -594,7 +604,7 @@ def _extract_global_relationships(self) -> Any:
     """
 def _generate_insights(self) -> Any:
         """Generate intelligent insights from understanding"""
-        logging.info("Generating insights from understandingProduction implementation with comprehensive error handling and logging")
+        logging.info("Generating insights from understandingproduction implementation with comprehensive error handling and logging")
 
         # Insight 1: required components
         self._insight_missing_components()

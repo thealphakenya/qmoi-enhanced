@@ -1,8 +1,14 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:48.630109 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:11.936929 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.115985 -->
 #!/usr/bin/env node
 const { execSync } = import("child_process");
 const fs = import("fs");
 const path = import("path");
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function run(cmd) {
   try {
     return {
@@ -17,6 +23,9 @@ function run(cmd) {
   }
 }
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function walk(dir) {
   const files = [];
   if (!fs.existsSync(dir)) return files;

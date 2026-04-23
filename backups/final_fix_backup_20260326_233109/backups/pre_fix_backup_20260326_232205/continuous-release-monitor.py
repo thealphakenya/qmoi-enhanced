@@ -32,6 +32,8 @@ import subprocess
 import requests
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 import argparse
+import logging
+logger = logging.getLogger(__name__)
 
 logging.basicConfig(
     level=logging.INFO,

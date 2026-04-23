@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:55.355915 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:13.909423 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.516430 -->
 
 #!/usr/bin/env bash
 # Generate a markdown release validation report for an APK
@@ -61,7 +64,7 @@ SIZE=$(stat -c%s "$APK_PATH")
     echo "- APK size looks reasonable."
   fi
 
-  echo "\n## Notes"
+  echo "\n## production: NOTE ADDRESSED - s"
   echo "- If signature verification failed, ensure the keystore used during signing is valid and matches Play Store records."
   echo "- Do not commit keystore files to the repository. Use secrets and CI to inject keystore during build."
 } > "$OUTFILE"

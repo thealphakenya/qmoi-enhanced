@@ -9,7 +9,7 @@ const fetch = require("node-fetch");
 async function testPayPalBalance() {
   try {
     console.log("Testing PayPal balance check...");
-    const response = await fetch("http://localhost:3001/api/ai", {
+    const response = await fetch("https://production-db.qmoi.ai/api/ai", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

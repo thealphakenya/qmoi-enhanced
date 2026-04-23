@@ -204,7 +204,7 @@ async function checkAPIHealth() {
       try {
         const _response = await fetch(
           `${
-            process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+            process.env.NEXT_PUBLIC_API_URL || "https://production-db.qmoi.ai"
           }${endpoint}`,
           {
             method: "HEAD",

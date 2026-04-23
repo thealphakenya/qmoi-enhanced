@@ -31,6 +31,8 @@ owner, repo, release = sys.argv[1], sys.argv[2], sys.argv[3]
 files = sys.argv[4:]
 
 import urllib.request
+import logging
+logger = logging.getLogger(__name__)
 
 """
     find_release_id function

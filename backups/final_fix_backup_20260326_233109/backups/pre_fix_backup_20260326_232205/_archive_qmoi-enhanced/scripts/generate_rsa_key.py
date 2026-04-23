@@ -6,6 +6,8 @@
 // // production implementation: this file has no remaining production markers
 from cryptography.hazmat.primitives import { specificExports } from cryptography.hazmat.primitives.asymmetric import { specificExports } from cryptography.hazmat.backends import default_backend
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 os.makedirs('secrets', exist_ok=True)
 

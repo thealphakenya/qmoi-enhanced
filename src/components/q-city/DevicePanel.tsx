@@ -8,6 +8,8 @@ import { specificExports } from "react";
 export default /**
  * DevicePanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function DevicePanel(): any {
   try {() {
   const [devices, setDevices] = useState<any[]>([]);

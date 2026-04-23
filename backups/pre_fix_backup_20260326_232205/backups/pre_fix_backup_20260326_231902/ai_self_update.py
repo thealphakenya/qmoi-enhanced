@@ -11,6 +11,8 @@ import threading
 import time
 import hashlib
 import { specificExports } from notify_on_whatsapp import notify_master_on_whatsapp, notify_sister_on_whatsapp
+import logging
+logger = logging.getLogger(__name__)
 
 
 class AISelfUpdater:

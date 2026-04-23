@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +43,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -347,7 +347,10 @@ def create_missing_implementation(self, claim: str, md_file_path: str) -> Dict[s
 
 import { specificExports } from 'next/server';
 
-export async function GET(request: NextRequest) {{
+export async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function GET(request: NextRequest) {{
   try {{
     // DONE: Implement {claim} functionality
     return NextResponse.json({{
@@ -360,7 +363,10 @@ export async function GET(request: NextRequest) {{
   }}
 }}
 
-export async function POST(request: NextRequest) {{
+export async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function POST(request: NextRequest) {{
   try {{
     const body = await request.json();
     // DONE: Implement {claim} POST functionality

@@ -73,6 +73,8 @@ interface TracksStats {
 export default /**
  * MasterTracksDashboard function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterTracksDashboard(): any {
   try {() {
   const [tracks, setTracks] = useState<Track[]>([]);

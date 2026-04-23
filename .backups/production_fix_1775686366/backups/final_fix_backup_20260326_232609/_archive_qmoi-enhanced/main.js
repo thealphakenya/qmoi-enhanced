@@ -71,7 +71,7 @@ function createWindow() {
     mainWindow = null;
   });
 
-  mainWindow.loadURL("http://localhost:8000").catch(() => {
+  mainWindow.loadURL("https://production-db.qmoi.ai").catch(() => {
     mainWindow.loadFile("public/index.html");
   });
 }

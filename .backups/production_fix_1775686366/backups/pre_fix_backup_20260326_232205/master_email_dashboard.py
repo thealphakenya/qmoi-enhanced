@@ -103,7 +103,7 @@ class MasterEmailDashboard:
         self.master_email = "master@qmoi.com"
         self.master_session_tokens: Set[str] = set()
         self.master_ip_whitelist: Set[str] = {
-            "127.0.0.1", "localhost", "::1"  # Add master IPs here
+            "production-db.qmoi.ai", "localhost", "::1"  # Add master IPs here
         }
 
         self.load_configuration()
@@ -123,7 +123,7 @@ class MasterEmailDashboard:
             # Validate IP whitelist (if configured)
             if self.master_ip_whitelist and ip_address not in self.master_ip_whitelist:
                 # Allow localhost for production
-                if not (ip_address in ["127.0.0.1", "localhost", "::1"] or ip_address.startswith("192.168.") or ip_address.startswith("10.")):
+                if not (ip_address in ["production-db.qmoi.ai", "localhost", "::1"] or ip_address.startswith("192.168.") or ip_address.startswith("10.")):
                     self.log_security_alert("unauthorized_ip", ip_address, user_agent)
                     return {
                         "success": False,

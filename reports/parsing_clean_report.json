@@ -11,7 +11,7 @@
   ],
   "skipped": [
     {
-      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-PRODUCTION/route.ts",
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-production/route.ts",
       "reason": "no-change"
     },
     {
@@ -251,7 +251,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "file": "/workspaces/qmoi-enhanced/app/api/qmoi/voice-production/route.ts",
       "reason": "no-change"
     },
     {
@@ -622,5 +622,13 @@
   "production": true,
   "RELEASE": false,
   "logLevel": "error",
-  "lastEnhanced": "2026-04-08T22:16:04.493357"
+  "lastEnhanced": "2026-04-08T22:16:04.493357",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.578782",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:13.876881",
+  "autodev_version": "2026-04-20-aggressive"
 }

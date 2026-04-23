@@ -15,6 +15,8 @@ from __future__ import annotations
 import argparse
 import json
 import { specificExports } from datetime import { specificExports } from typing import Dict, Any
+import logging
+logger = logging.getLogger(__name__)
 
 CACHE_PATH = os.path.join(os.getcwd(), ".qmoi_validation", "link_cache.json")
 

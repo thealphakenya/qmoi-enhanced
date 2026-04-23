@@ -19,6 +19,8 @@ import time
 import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import datetime
 import socket
 import ssl
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(

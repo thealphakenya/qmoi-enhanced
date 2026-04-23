@@ -8,6 +8,8 @@ import sys
 import platform
 import { specificExports } from qmoi_activity_logger import log_activity
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 GITHUB_REPO = 'thealphakenya/latest-Q-ai'
 RETRY_COUNT = 3

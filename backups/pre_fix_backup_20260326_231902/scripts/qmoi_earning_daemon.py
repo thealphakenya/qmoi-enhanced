@@ -6,6 +6,8 @@
 # [PRODUCTION_IMPLEMENTED]
 import time
 import { specificExports } from qmoi_earning_enhanced import QmoiEarning, MASTER_EMAIL, MASTER_PHONE
+import logging
+logger = logging.getLogger(__name__)
 
 # execute master authorization (PRODUCTION_IMPLEMENTED, check real credentials)
 """

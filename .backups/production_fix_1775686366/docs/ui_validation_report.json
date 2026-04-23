@@ -5257,7 +5257,7 @@
         "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker",
         "large-file"
       ],
-      "snippet": "[   {     \"url\": \"http://localhost:3000\",     \"file_path\": \"/workspaces/qmoi-enhanced/TESTING_QUICK_REFERENCE.sh\",     \"is_valid\": true,     \"status_code\": null,     \"response_time\": null,     \"error_"
+      "snippet": "[   {     \"url\": \"https://production-db.qmoi.ai\",     \"file_path\": \"/workspaces/qmoi-enhanced/TESTING_QUICK_REFERENCE.sh\",     \"is_valid\": true,     \"status_code\": null,     \"response_time\": null,     \"error_"
     },
     {
       "path": "/workspaces/qmoi-enhanced/eslint_report_after_fix.json",

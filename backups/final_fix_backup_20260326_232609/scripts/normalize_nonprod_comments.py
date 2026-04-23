@@ -13,6 +13,8 @@ keywords = [
 ]
 
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 patterns = [
     (re.compile(r"// production implementation replace test dataset implementation with real integration"),

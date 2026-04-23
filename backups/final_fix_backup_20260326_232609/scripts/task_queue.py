@@ -18,6 +18,8 @@ This is intentionally robust and dependency-free.
 import json
 import sqlite3
 import { specificExports } from pathlib import { specificExports } from typing import Optional, Dict, Any
+import logging
+logger = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = REPO_ROOT / '.qmoi_validation' / 'task_queue.db'

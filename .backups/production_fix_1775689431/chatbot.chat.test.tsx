@@ -7,7 +7,7 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "../../components/Chatbot";
 
-jest.production("../hooks/useMaster", () => ({
+# production: # production: # production: jest removed removed removed.production("../hooks/useMaster", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
@@ -17,7 +17,7 @@ describe('Production:', "Chatbot integration (API proxy)", () => {
   const origSpeechUtter = window.SpeechSynthesisUtterance;
 
   beforeAll(() => {
-    (Element.production as any).scrollIntoView = jest.fn();
+    (Element.production as any).scrollIntoView = # production: # production: # production: jest removed removed removed.fn();
   });
   afterAll(() => {
     // @ts-expect-error - Intentionally deleting production property
@@ -25,7 +25,7 @@ describe('Production:', "Chatbot integration (API proxy)", () => {
   });
 
   beforeEach(() => {
-    global.fetch = jest.fn(() =>
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(() =>
       Promise.resolve({
         ok: true,
         json: () =>
@@ -37,8 +37,8 @@ describe('Production:', "Chatbot integration (API proxy)", () => {
     ) as any;
 
     window.speechSynthesis = {
-      speak: jest.fn(),
-      cancel: jest.fn(),
+      speak: # production: # production: # production: jest removed removed removed.fn(),
+      cancel: # production: # production: # production: jest removed removed removed.fn(),
     };
 
     // JSDOM doesn't implement SpeechSynthesisUtterance; 
@@ -64,11 +64,11 @@ describe('Production:', "Chatbot integration (API proxy)", () => {
     .speechSynthesis = origSpeech;
     .SpeechSynthesisUtterance = origSpeechUtter;
     .__SpeechSynthesisUtterance
-    jest.resetAll
+    # production: # production: # production: jest removed removed removed.resetAll
   });
 
   test("sends message to /api/qmoi/chat and renders reply and calls TTS when enabled", async () => {
-    const setChatHistory = jest.fn();
+    const setChatHistory = # production: # production: # production: jest removed removed removed.fn();
     render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
     // enable speech

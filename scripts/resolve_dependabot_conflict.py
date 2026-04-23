@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +57,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -67,7 +81,7 @@ import os
     """
 def update_ws_dependency() -> Any:
     """Update ws dependency to resolve dependabot conflict"""
-    logger.info("🔧 Updating ws dependencyProduction implementation with comprehensive error handling and logging")
+    logger.info("🔧 Updating ws dependencyproduction implementation with comprehensive error handling and logging")
     
     try:
         # Read current package.json
@@ -95,7 +109,7 @@ def update_ws_dependency() -> Any:
     """
 def commit_and_push() -> Any:
     """Commit and push the changes"""
-    logger.info("🚀 Committing and pushing changesProduction implementation with comprehensive error handling and logging")
+    logger.info("🚀 Committing and pushing changesproduction implementation with comprehensive error handling and logging")
     
     try:
         # Add all changes

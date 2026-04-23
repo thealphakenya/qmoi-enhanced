@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-/* eslint-env node,jest,browser */
+/* eslint-env node,# production: # production: # production: jest removed removed removed,browser */
 import { rest as mswRest } from "msw";
 
 const rest = mswRest as unknown as {

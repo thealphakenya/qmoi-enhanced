@@ -10,6 +10,8 @@ Run: PYTHONPATH=/workspaces/qmoi-enhanced python3 scripts/test_attachments.py
 """
 import os
 import { specificExports } from qmoi_control_server import app, ensure_db_and_migrate
+import logging
+logger = logging.getLogger(__name__)
 
 ensure_db_and_migrate()
 

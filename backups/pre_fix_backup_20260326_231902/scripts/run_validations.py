@@ -149,6 +149,8 @@ import hashlib
 import sys
 import { specificExports } from datetime import datetime
 import shutil
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / 'docs'

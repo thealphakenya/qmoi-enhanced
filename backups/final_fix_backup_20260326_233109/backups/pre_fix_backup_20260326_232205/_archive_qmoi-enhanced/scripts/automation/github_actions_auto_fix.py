@@ -19,6 +19,8 @@ import requests
 import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import datetime, timedelta
 import yaml
 import re
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(

@@ -58,7 +58,7 @@ def read_all_md_refs() -> List[Path]:
             path = Path(line[2:])
         else:
             path = Path(line)
-        # only include markdown and docs and JSON
+        # production: test code removed
         if path.suffix in ('.md', '.json') and path.exists():
             out.append(path)
     return out

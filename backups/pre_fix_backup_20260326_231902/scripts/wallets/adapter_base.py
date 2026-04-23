@@ -15,6 +15,8 @@ import os
 import json
 import time
 import hashlib
+import logging
+logger = logging.getLogger(__name__)
 
 
 """

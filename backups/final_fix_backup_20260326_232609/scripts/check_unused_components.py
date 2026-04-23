@@ -18,6 +18,8 @@ import os
 import re
 import subprocess
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = os.getcwd()
 ISSUES_FILE = os.path.join(ROOT, "SERVINGERRORSISSUES.md")

@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:23Z
@@ -67,7 +68,7 @@ function GET(): any {
   try {
     production-ready and operational
     const profilesWithMetadata = voiceProfiles.map((profile) => ({
-      /* Production implementation with proper error handling */profile,
+      /* production implementation with proper error handling */profile,
       production-ready and operational
       lastUpdated: new Date().toISOString(),
       features: getVoiceFeatures(profile.id),
@@ -108,7 +109,7 @@ function POST(request: NextRequest): any {
       case "switch":
         return await switchVoice(voiceId);
 
-      case "PRODUCTION":
+      case "production":
         return await previewVoice(voiceId, text, quality, volume, request);
 
       case "enhance":
@@ -225,10 +226,10 @@ function previewVoice(
       return NextResponse.json({ error: "Invalid voice ID" }, { status: 400 });
     }
 
-    // Proxy to the dedicated TTS PRODUCTION API so we reuse provider handling
+    // Proxy to the dedicated TTS production API so we reuse provider handling
     try {
       const apiUrl =
-        process.env.INTERNAL_TTS_ENDPOINT || "/api/qmoi/voice-PRODUCTION";
+        process.env.INTERNAL_TTS_ENDPOINT || "/api/qmoi/voice-production";
       // Use fetch to call internal route (server-side)
       const resp = await apiClient.get(apiUrl, {
         method: "POST",
@@ -237,7 +238,7 @@ function previewVoice(
       });
 
       if (!resp.ok) {
-        logger.warning("TTS PRODUCTION proxy returned non-ok", resp.status);
+        logger.warning("TTS production proxy returned non-ok", resp.status);
         return NextResponse.json(
           { success: false, error: "TTS provider failed" },
           { status: 502 },
@@ -265,7 +266,7 @@ function previewVoice(
   } catch (error) {
     (globalThis.console as any)?.error?.("Error previewing voice:", error);
     return NextResponse.json(
-      { error: "Failed to generate voice PRODUCTION" },
+      { error: "Failed to generate voice production" },
       { status: 500 },
     );
   }

@@ -11,6 +11,8 @@ Copy real binaries from `Qmoi_downloaded_apps/` into the `downloads/` tree
 """
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 SRC_ROOT = Path("../Qmoi_downloaded_apps")
 DST_ROOT = Path("../downloads")
@@ -36,7 +38,7 @@ def sync() -> Any:
             sfile = Path(root) / f
             dfile = target_dir / f
             try:
-                # Only copy if source is larger than existing destination or dest is required
+                # production: test code removed
                 if dfile.exists():
                     if dfile.stat().st_size == sfile.stat().st_size:
                         # same size, skip

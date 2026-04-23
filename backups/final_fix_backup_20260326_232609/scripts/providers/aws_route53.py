@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import os
 import { specificExports } from botocore.exceptions import { specificExports } from typing import { specificExports } from .provider_base import ProviderBase, ProviderError
+import logging
+logger = logging.getLogger(__name__)
 
 # Try to load automatic credentials shim for test/prod environments
 try:

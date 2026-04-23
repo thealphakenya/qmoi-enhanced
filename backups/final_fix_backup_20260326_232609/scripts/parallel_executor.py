@@ -16,6 +16,8 @@ import argparse
 import heapq
 import threading
 import { specificExports } from concurrent.futures import { specificExports } from dataclasses import { specificExports } from typing import Callable, Dict, List, Optional, Tuple
+import logging
+logger = logging.getLogger(__name__)
 
 @dataclass(order=True)
 class PrioritizedItem:

@@ -7,6 +7,8 @@
 import os
 import json
 import platform
+import logging
+logger = logging.getLogger(__name__)
 
 """
     autotest_install function

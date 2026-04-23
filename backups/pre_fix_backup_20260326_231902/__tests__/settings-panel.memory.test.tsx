@@ -9,9 +9,9 @@ import { specificExports } from "@testing-library/react";
 import { specificExports } from "../components/SettingsPanel";
 
  MasterContext used by SettingsPanel
-const UpdateQMOIMemory = jest.fn();
+const UpdateQMOIMemory = # production: # production: # production: jest removed removed removed.fn();
 
-jest.("../components/MasterContext", () => ({
+# production: # production: # production: jest removed removed removed.("../components/MasterContext", () => ({
   useMaster: () => ({
     isMaster: true,
     updateQMOIMemory: UpdateQMOIMemory,

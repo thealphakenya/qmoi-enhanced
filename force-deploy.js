@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:16Z
@@ -28,7 +29,7 @@ try {
     "components",
     "components/ui",
     "components/chat",
-    "components/PRODUCTION",
+    "components/production",
     "components/ai-features",
     "lib",
     "scripts",
@@ -64,7 +65,7 @@ try {
   // Commit (ignore if nothing to commit)
   try {
     execSync(
-      'git commit -m "complete latest-Q AI System with Chat, PRODUCTION, and Enhanced Features"',
+      'git commit -m "complete latest-Q AI System with Chat, production, and Enhanced Features"',
     );
     logger.info("✅ Changes committed");
   } catch (err) {

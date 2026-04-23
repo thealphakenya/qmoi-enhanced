@@ -1,3 +1,7 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """Performance benchmarking for production systems"""
 
@@ -21,6 +25,16 @@ class PerformanceBenchmark:
         cmd = f"ab -n {num_requests} -c 10 {endpoint}"
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
             output = result.stdout
             

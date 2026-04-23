@@ -73,7 +73,7 @@ class Config:
     DB_MAX_OVERFLOW = int(os.getenv('DB_MAX_OVERFLOW', '30'))
 
     # Redis Configuration
-    REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
+    REDIS_URL = os.getenv('REDIS_URL', 'redishttps://production-db.qmoi.ai/0')
     REDIS_CACHE_TTL = int(os.getenv('REDIS_CACHE_TTL', '3600'))
 
     # External API Keys
@@ -132,7 +132,7 @@ app.config.from_object(Config)
 # Initialize extensions
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["https://qmoi.ai", "https://app.qmoi.ai", "http://localhost:3000"],
+        "origins": ["https://qmoi.ai", "https://app.qmoi.ai", "https://production-db.qmoi.ai"],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization", "X-API-Key"],
         "expose_headers": ["X-Total-Count", "X-Rate-Limit-Remaining"],

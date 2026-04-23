@@ -29,6 +29,8 @@ import requests
 import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 import uuid
 import hashlib
+import logging
+logger = logging.getLogger(__name__)
 
 # Configure logging
 logging.basicConfig(

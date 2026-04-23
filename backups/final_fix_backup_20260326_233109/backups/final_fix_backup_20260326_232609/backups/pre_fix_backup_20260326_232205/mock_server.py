@@ -21,6 +21,8 @@ Open dashboard and test components.
 import os
 import { specificExports } from datetime import { specificExports } from flask import { specificExports } from flask_cors import { specificExports } from io import BytesIO
 import uuid
+import logging
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)

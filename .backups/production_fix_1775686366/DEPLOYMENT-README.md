@@ -1256,7 +1256,7 @@ The QMOI Enhanced Auto-Deploy System provides a comprehensive, self-healing, and
 - Run the real-time dashboard for logs, reports, and health:
   ```bash
   python scripts/qmoi-dashboard.py
-  # Access at http://localhost:5055
+  # Access at https://production-db.qmoi.ai
   ```
 - Use the cloud deploy script to keep all automation, live status, and dashboard running in Colab, DagsHub, or any cloud:
   ```bash
@@ -1351,3 +1351,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

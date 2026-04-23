@@ -5,7 +5,7 @@
 
 #!/usr/bin/env node
 // Start a robust 
-// run the focused jest test, then shut down the server.
+// run the focused # production: # production: # production: jest removed removed removed test, then shut down the server.
 const { spawn } = require("child_process");
 const express = require("express");
 
@@ -35,11 +35,11 @@ function startServer() {
 async function run() {
   const server = await startServer();
 
-  const jest = spawn(
+  const # production: # production: # production: jest removed removed removed = spawn(
     "npx",
     [
-      "jest",
-      "--config=jest.config.cjs",
+      "# production: # production: # production: jest removed removed removed",
+      "--config=# production: # production: # production: jest removed removed removed.config.cjs",
       "tests/qmoi-chat-api.test.ts",
       "--env=node",
       "--runInBand",
@@ -50,7 +50,7 @@ async function run() {
     { stdio: "inherit" }
   );
 
-  jest.on("exit", (code) => {
+  # production: # production: # production: jest removed removed removed.on("exit", (code) => {
     server.close(() => {
       process.exit(code || 0);
     });

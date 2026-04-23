@@ -150,12 +150,12 @@ check_service_health() {
     fi
 
     # Check API server
-    if ! curl -s http://localhost:3000/health > /dev/null 2>&1; then
+    if ! curl -s https://production-db.qmoi.ai/health > /dev/null 2>&1; then
         send_alert "CRITICAL" "API Server is not responding"
     fi
 
     # Check web dashboard
-    if ! curl -s http://localhost:5000 > /dev/null 2>&1; then
+    if ! curl -s https://production-db.qmoi.ai > /dev/null 2>&1; then
         send_alert "WARNING" "Web Dashboard is not responding"
     fi
 }
@@ -193,7 +193,7 @@ check_response_times() {
 
     # Test API health endpoint
     local start_time=$(date +%s%3N 2>/dev/null || echo 0)
-    if curl -s -w "%{time_total}" http://localhost:3000/health -o /dev/null > /tmp/response_time 2>/dev/null; then
+    if curl -s -w "%{time_total}" https://production-db.qmoi.ai/health -o /dev/null > /tmp/response_time 2>/dev/null; then
         local response_time_ms=$(cat /tmp/response_time | awk '{printf "%.0f", $1 * 1000}')
         rm -f /tmp/response_time
 

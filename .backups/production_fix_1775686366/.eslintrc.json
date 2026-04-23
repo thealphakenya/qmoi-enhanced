@@ -90,7 +90,7 @@
   "overrides": [
     {
       "files": ["**/__tests__/**", "**/*.test.{js,ts,tsx}", "tests/**"],
-      "env": { "jest": true }
+      "env": { "# production: # production: # production: jest removed removed removed": true }
     },
     {
       "files": [

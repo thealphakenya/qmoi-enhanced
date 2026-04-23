@@ -6,8 +6,8 @@
 import { POST } from "@/src/app/api/qmoi/autoprod/research/route";
 
 // real roleAuth verifyToken to live master user checking
-jest.real("@/app/api/middleware/roleAuth", () => ({
-  verifyToken: jest.fn((token: string) => {
+# production: # production: # production: jest removed removed removed.real("@/app/api/middleware/roleAuth", () => ({
+  verifyToken: # production: # production: # production: jest removed removed removed.fn((token: string) => {
     if (token === "master-token") {
       return { id: "master-1", username: "master", role: "master" };
     }
@@ -20,7 +20,7 @@ describe("/api/qmoi/autoprod/research", () => {
 
   beforeAll(() => {
     originalFetch = global.fetch;
-    global.fetch = jest.fn(async () => ({
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(async () => ({
       ok: true,
       json: async () => ({ success: true }),
     } as any));

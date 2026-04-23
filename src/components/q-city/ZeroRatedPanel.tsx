@@ -24,6 +24,8 @@ const fetchZeroRatedStatus = async () => {
 export default /**
  * ZeroRatedPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ZeroRatedPanel(): any {
   try {() {
   const { isMaster } = useQMOIAuth();

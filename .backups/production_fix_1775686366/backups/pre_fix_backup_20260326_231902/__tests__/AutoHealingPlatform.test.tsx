@@ -6,10 +6,10 @@
  all markers normalized for completion
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
  UI primitives to avoid dependency on styling
-jest.("@/components/ui/card", () => ({
+# production: # production: # production: jest removed removed removed.("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
@@ -17,17 +17,17 @@ jest.("@/components/ui/card", () => ({
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.("@/components/ui/button", () => ({
+# production: # production: # production: jest removed removed removed.("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
 
-jest.("@/components/ui/badge", () => ({
+# production: # production: # production: jest removed removed removed.("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.("lucide-react", () => ({
+# production: # production: # production: jest removed removed removed.("lucide-react", () => ({
   AlertTriangle: () => <span />,
   Zap: () => <span />,
   TrendingUp: () => <span />,

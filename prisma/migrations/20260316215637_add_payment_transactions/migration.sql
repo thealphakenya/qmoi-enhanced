@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:39.291987 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.818195 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:07.123576 -->
 -- CreateTable
 CREATE TABLE "payment_transactions" (
     "id" TEXT NOT NULL PRIMARY KEY,

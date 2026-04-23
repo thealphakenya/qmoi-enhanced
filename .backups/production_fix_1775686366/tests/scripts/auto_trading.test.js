@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-/* eslint-env jest,node */
+/* eslint-env # production: # production: # production: jest removed removed removed,node */
 /* eslint-disable no-undef, no-console */
 const fs = require("fs");
 const path = require("path");
@@ -45,7 +45,7 @@ describe("auto_trading script", () => {
   });
 
   test("fetchPublicIp uses fetch when available", async () => {
-    global.fetch = jest.fn().
+    global.fetch = # production: # production: # production: jest removed removed removed.fn().
     const out = await fetchPublicIp();
     expect(out).toContain("Your public IP address is: 1.2.3.4");
     delete global.fetch;

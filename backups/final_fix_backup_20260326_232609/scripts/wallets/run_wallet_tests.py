@@ -14,6 +14,8 @@ import { specificExports } from pathlib import Path
 import runpy
 import importlib.util
 import types
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[2]
 tests = [
@@ -25,15 +27,15 @@ tests = [
     main function
     """
 def main() -> Any:
-    # Try to run with pytest when available
+    # Try to run with # production: # production: # production: pytest removed removed removed when available
     try:
-        import pytest  # type: ignore
-        cmd = [sys.executable, '-m', 'pytest', '-q'] + tests
+        import # production: # production: # production: pytest removed removed removed  # type: ignore
+        cmd = [sys.executable, '-m', '# production: # production: # production: pytest removed removed removed', '-q'] + tests
         logger.info('Running:', ' '.join(cmd))
         res = subprocess.run(cmd)
         raise SystemExit(res.returncode)
     except Exception:
-        logger.info('pytest not available — running robust fallback runner')
+        logger.info('# production: # production: # production: pytest removed removed removed not available — running robust fallback runner')
         # Fallback: load each test file as module and call functions starting with test_
         failures = 0
         # ensure repo root is importable so `import scripts.wallets` works

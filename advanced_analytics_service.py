@@ -18,7 +18,7 @@ import math
 import random
 from typing import Dict, List, Any, Optional, Tuple
 
-# Production logging configuration
+# production logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -29,7 +29,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Production configuration
+# production configuration
 class Config:
     ANALYSIS_INTERVAL = int(os.getenv('ANALYSIS_INTERVAL', '60'))  # seconds
     PREDICTION_HORIZON = int(os.getenv('PREDICTION_HORIZON', '86400'))  # 24 hours
@@ -320,6 +320,16 @@ class AdvancedAnalyticsService:
         """Main analysis loop"""
         while self.is_running:
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 self._perform_analysis()
                 time.sleep(Config.ANALYSIS_INTERVAL)
             except Exception as e:

@@ -151,6 +151,8 @@ interface QMOIOwnDeviceLogsProps {
 export /**
  * QMOIOwnDeviceLogs function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QMOIOwnDeviceLogs({
   isMaster,
   onExport,

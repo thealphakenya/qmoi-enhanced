@@ -6,7 +6,7 @@
 import requests
 
 def test_financial_verification_airtel():
-    resp = requests.post('http://localhost:3000/api/financial/verify', json={
+    resp = requests.post('https://production-db.qmoi.ai/api/financial/verify', json={
         'service': 'airtel',
         'account': 'test@master.com'
     })
@@ -16,7 +16,7 @@ def test_financial_verification_airtel():
     assert 'verification successful' in data['result']
 
 def test_financial_verification_mpesa():
-    resp = requests.post('http://localhost:3000/api/financial/verify', json={
+    resp = requests.post('https://production-db.qmoi.ai/api/financial/verify', json={
         'service': 'mpesa',
         'account': 'test@master.com'
     })

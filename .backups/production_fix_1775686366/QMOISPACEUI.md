@@ -328,7 +328,7 @@ qmoi-space-pwa/
 
 ### Testing
 
-- **Jest**: Unit testing framework
+- **# production: # production: # production: jest removed removed removed**: Unit testing framework
 - **Cypress**: End-to-end testing
 - **Lighthouse**: Performance auditing
 - **Accessibility Testing**: WCAG compliance
@@ -502,3 +502,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

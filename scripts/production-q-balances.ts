@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 #!/usr/bin/env node
 
 production-ready

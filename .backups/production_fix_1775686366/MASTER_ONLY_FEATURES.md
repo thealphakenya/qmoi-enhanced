@@ -164,7 +164,7 @@ Activity Log:
 **Authentication**: Master token required
 
 ```bash
-curl -X GET http://localhost:3001/api/qmoi/master/financial-dashboard \
+curl -X GET https://production-db.qmoi.ai/api/qmoi/master/financial-dashboard \
   -H "Authorization: Bearer MASTER_TOKEN"
 ```
 
@@ -175,7 +175,7 @@ curl -X GET http://localhost:3001/api/qmoi/master/financial-dashboard \
 **Authentication**: Master token required
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/master/system-config \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/master/system-config \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -191,7 +191,7 @@ curl -X POST http://localhost:3001/api/qmoi/master/system-config \
 **Authentication**: Master token required
 
 ```bash
-curl -X GET http://localhost:3001/api/qmoi/master/users \
+curl -X GET https://production-db.qmoi.ai/api/qmoi/master/users \
   -H "Authorization: Bearer MASTER_TOKEN"
 ```
 
@@ -202,7 +202,7 @@ curl -X GET http://localhost:3001/api/qmoi/master/users \
 **Authentication**: Master token required
 
 ```bash
-curl -X GET http://localhost:3001/api/qmoi/master/logs \
+curl -X GET https://production-db.qmoi.ai/api/qmoi/master/logs \
   -H "Authorization: Bearer MASTER_TOKEN"
 ```
 
@@ -213,7 +213,7 @@ curl -X GET http://localhost:3001/api/qmoi/master/logs \
 **Authentication**: Master token required
 
 ```bash
-curl -X POST http://localhost:3001/api/qmoi/master/trading \
+curl -X POST https://production-db.qmoi.ai/api/qmoi/master/trading \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -325,7 +325,7 @@ curl -X POST http://localhost:3001/api/qmoi/master/trading \
 ### Login data
 
 ```bash
-curl -X POST http://localhost:3001/api/auth/login \
+curl -X POST https://production-db.qmoi.ai/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "victor@kwemoi.com",
@@ -491,14 +491,14 @@ Victor receives priority notifications for:
 To view current master configuration:
 
 ```bash
-curl -X GET http://localhost:3001/api/qmoi/master/config \
+curl -X GET https://production-db.qmoi.ai/api/qmoi/master/config \
   -H "Authorization: Bearer MASTER_TOKEN"
 ```
 
 To update master configuration:
 
 ```bash
-curl -X PUT http://localhost:3001/api/qmoi/master/config \
+curl -X PUT https://production-db.qmoi.ai/api/qmoi/master/config \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -611,3 +611,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

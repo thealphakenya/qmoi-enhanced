@@ -65,8 +65,8 @@ declare global {
   var console: Console;
   var NodeJS: unknown;
 
-  // Jest test globals
-  const jest: unknown;
+  // # production: # production: # production: jest removed removed removed test globals
+  const # production: # production: # production: jest removed removed removed: unknown;
   function describe(name: string, fn: (...args: unknown[]) => any): void;
   function it(name: string, fn: (...args: unknown[]) => any): void;
   function test(name: string, fn: (...args: unknown[]) => any): void;

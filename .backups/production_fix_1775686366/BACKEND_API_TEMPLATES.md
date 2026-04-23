@@ -203,7 +203,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(helmet());
 app.use(compression());
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'],
+  origin: process.env.ALLOWED_ORIGINS?.split(',') || ['https://production-db.qmoi.ai'],
   credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
@@ -604,7 +604,7 @@ app.listen(PORT, () => {
 
 ```
 PORT=8000
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_API_URL=https://production-db.qmoi.ai
 
 # Mail
 MAIL_SERVICE=gmail
@@ -1212,32 +1212,32 @@ docker run -p 8000:8000 qcity-backend
 
 ```bash
 # Test health check
-curl http://localhost:8000/api/health
+curl https://production-db.qmoi.ai/api/health
 
 # Test mail endpoint
-curl -X POST http://localhost:8000/api/mail \
+curl -X POST https://production-db.qmoi.ai/api/mail \
   -H "Content-Type: application/json" \
   -d '{"to":"user@data.com","subject":"Test","body":"Hello"}'
 
 # Test emergency endpoint
-curl -X POST http://localhost:8000/api/emergency \
+curl -X POST https://production-db.qmoi.ai/api/emergency \
   -H "Content-Type: application/json" \
   -d '{"action":"sos","reason":"Test"}'
 
 # Test file upload
-curl -X POST http://localhost:8000/api/files \
+curl -X POST https://production-db.qmoi.ai/api/files \
   -F "file=@test.txt"
 
 # Test media list
-curl http://localhost:8000/api/media?limit=10
+curl https://production-db.qmoi.ai/api/media?limit=10
 
 # Test verification
-curl -X POST http://localhost:8000/api/verify \
+curl -X POST https://production-db.qmoi.ai/api/verify \
   -H "Content-Type: application/json" \
   -d '{"sku":"123456"}'
 
 # Test YouTube download
-curl -X POST http://localhost:8000/api/youtube/download \
+curl -X POST https://production-db.qmoi.ai/api/youtube/download \
   -H "Content-Type: application/json" \
   -d '{"url":"https://www.youtube.com/watch?v=..."}'
 ```
@@ -1711,7 +1711,7 @@ const SECURITY_MIDDLEWARE = {
 
       const allowedOrigins = process.env.ALLOWED_ORIGINS ?
         process.env.ALLOWED_ORIGINS.split(',') :
-        ['http://localhost:3000', 'https://yourdomain.com'];
+        ['https://production-db.qmoi.ai', 'https://yourdomain.com'];
 
       if (allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
@@ -1866,7 +1866,7 @@ const TEST_INTEGRATION = {
   },
 
   async runSingleTest(test) {
-    const baseUrl = process.env.BASE_URL || 'http://localhost:8000';
+    const baseUrl = process.env.BASE_URL || 'https://production-db.qmoi.ai';
     const url = `${baseUrl}${test.endpoint}`;
 
     const options = {
@@ -1913,7 +1913,7 @@ LOAD_TEST_ENABLED=false
 LOAD_TEST_TYPE=advanced
 
 # External Services
-REDIS_URL=redis://localhost:6379
+REDIS_URL=redishttps://production-db.qmoi.ai
 CACHE_TTL=3600
 ```
 
@@ -1926,7 +1926,7 @@ CACHE_TTL=3600
 echo "Starting backend deployment..."
 
 # Health checks
-curl -f http://localhost:8000/api/health || exit 1
+curl -f https://production-db.qmoi.ai/api/health || exit 1
 
 # Database migration
 npm run db:migrate
@@ -2005,3 +2005,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

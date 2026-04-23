@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:57.819833 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.040883 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.800223 -->
 #!/usr/bin/env python3
 """
 AI API Server Runner
@@ -40,6 +43,16 @@ def main():
     logger.info("AI API Server starting...")
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         # Start the Flask app
         logger.info("AI API Server ready and listening on port 3000")
         app.run(

@@ -1,4 +1,4 @@
-[PRODUCTION_IMPLEMENTED] all markers normalized for completion
+[production_IMPLEMENTED] all markers normalized for completion
 {
   "timestamp": "2026-03-12T23:17:52.839Z",
   "summary": {
@@ -4852,14 +4852,14 @@
     {
       "type": "syntax",
       "category": "typescript",
-      "message": "src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(2,10): error TS2614: Module '\"msw\"' has no exported member 'http'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
+      "message": "src/[production_IMPLEMENTED]s/handlers.ts(2,10): error TS2614: Module '\"msw\"' has no exported member 'http'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:31.214Z"
     },
     {
       "type": "syntax",
       "category": "typescript",
-      "message": "src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(2,16): error TS2614: Module '\"msw\"' has no exported member 'HttpResponse'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
+      "message": "src/[production_IMPLEMENTED]s/handlers.ts(2,16): error TS2614: Module '\"msw\"' has no exported member 'HttpResponse'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:31.214Z"
     },
@@ -5041,7 +5041,10 @@
     {
       "type": "syntax",
       "category": "typescript",
-      "message": "src/services/ErrorFixingService.ts(98,27): error TS2347: Untyped function calls may not accept type arguments.",
+      "message": "src/services/ErrorFixingService.ts(98,27): error TS2347: Untyped // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function calls may not accept type arguments.",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:31.215Z"
     },
@@ -9605,7 +9608,7 @@
     {
       "type": "performance",
       "category": "complex_component",
-      "message": "Component too complex (792 lines): components/prodice/prodiceIntegration[PRODUCTION_IMPLEMENTED]s.ts",
+      "message": "Component too complex (792 lines): components/prodice/prodiceIntegration[production_IMPLEMENTED]s.ts",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:56.129Z"
     },
@@ -12811,7 +12814,7 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in .github/PR_AUTO[PRODUCTION_IMPLEMENTED]S.md",
+      "message": "included frontmatter in .github/PR_AUTO[production_IMPLEMENTED]S.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.425Z"
     },
@@ -13917,7 +13920,7 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in AU[PRODUCTION_IMPLEMENTED]WNLOAD.md",
+      "message": "included frontmatter in AU[production_IMPLEMENTED]WNLOAD.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.432Z"
     },
@@ -14701,7 +14704,7 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in FINAL_STATUS_[PRODUCTION_IMPLEMENTED]S_COMPLETE.md",
+      "message": "included frontmatter in FINAL_STATUS_[production_IMPLEMENTED]S_COMPLETE.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.439Z"
     },
@@ -15590,7 +15593,7 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in prod_[PRODUCTION_IMPLEMENTED]S_INVENTORY.md",
+      "message": "included frontmatter in prod_[production_IMPLEMENTED]S_INVENTORY.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.446Z"
     },
@@ -16808,7 +16811,7 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in SESSION_COMPLETION_REPORT_[PRODUCTION_IMPLEMENTED]S_production_READY.md",
+      "message": "included frontmatter in SESSION_COMPLETION_REPORT_[production_IMPLEMENTED]S_production_READY.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.463Z"
     },
@@ -17046,21 +17049,21 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in [PRODUCTION_IMPLEMENTED]S_COMPLETION_INDEX.md",
+      "message": "included frontmatter in [production_IMPLEMENTED]S_COMPLETION_INDEX.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.464Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in [PRODUCTION_IMPLEMENTED]S_COMPLETION_VERIFICATION.md",
+      "message": "included frontmatter in [production_IMPLEMENTED]S_COMPLETION_VERIFICATION.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.464Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in [PRODUCTION_IMPLEMENTED]_prod_BATCH_PENDING.md",
+      "message": "included frontmatter in [production_IMPLEMENTED]_prod_BATCH_PENDING.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.464Z"
     },
@@ -19454,21 +19457,21 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in docs/validation/ISSUES_MANUAL_[PRODUCTION_IMPLEMENTED]S.md",
+      "message": "included frontmatter in docs/validation/ISSUES_MANUAL_[production_IMPLEMENTED]S.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.586Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in docs/validation/MANUAL_[PRODUCTION_IMPLEMENTED]S_ACTIONS.md",
+      "message": "included frontmatter in docs/validation/MANUAL_[production_IMPLEMENTED]S_ACTIONS.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.586Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in docs/validation/MANUAL_[PRODUCTION_IMPLEMENTED]S_TOP10.md",
+      "message": "included frontmatter in docs/validation/MANUAL_[production_IMPLEMENTED]S_TOP10.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.590Z"
     },
@@ -19482,35 +19485,35 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in docs/validation/[PRODUCTION_IMPLEMENTED]_FIX_ACTIONS.md",
+      "message": "included frontmatter in docs/validation/[production_IMPLEMENTED]_FIX_ACTIONS.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.590Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in issues/[PRODUCTION_IMPLEMENTED]-prod-CURATE.md",
+      "message": "included frontmatter in issues/[production_IMPLEMENTED]-prod-CURATE.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.590Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in issues/[PRODUCTION_IMPLEMENTED]-prod-PLATFORMS.md",
+      "message": "included frontmatter in issues/[production_IMPLEMENTED]-prod-PLATFORMS.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.590Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in issues/[PRODUCTION_IMPLEMENTED]-prod-REPORTS.md",
+      "message": "included frontmatter in issues/[production_IMPLEMENTED]-prod-REPORTS.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.590Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in issues/[PRODUCTION_IMPLEMENTED]-prod-UIUX.md",
+      "message": "included frontmatter in issues/[production_IMPLEMENTED]-prod-UIUX.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.590Z"
     },
@@ -22079,14 +22082,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.635Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.635Z"
     },
@@ -22345,7 +22348,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.635Z"
     },
@@ -22506,7 +22509,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.635Z"
     },
@@ -28260,7 +28263,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.656Z"
     },
@@ -30738,14 +30741,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.659Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.659Z"
     },
@@ -31004,7 +31007,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.659Z"
     },
@@ -31165,7 +31168,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.659Z"
     },
@@ -36919,7 +36922,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.665Z"
     },
@@ -41770,14 +41773,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.671Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.671Z"
     },
@@ -42036,7 +42039,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.671Z"
     },
@@ -42197,7 +42200,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.672Z"
     },
@@ -47951,7 +47954,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.677Z"
     },
@@ -50429,14 +50432,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.680Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.680Z"
     },
@@ -50695,7 +50698,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.680Z"
     },
@@ -50856,7 +50859,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.680Z"
     },
@@ -56610,7 +56613,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.688Z"
     },
@@ -61461,14 +61464,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.694Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.694Z"
     },
@@ -61727,7 +61730,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.694Z"
     },
@@ -61888,7 +61891,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.694Z"
     },
@@ -67642,7 +67645,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.700Z"
     },
@@ -70120,14 +70123,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
@@ -70386,7 +70389,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
@@ -70547,7 +70550,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
@@ -76301,7 +76304,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.708Z"
     },
@@ -81152,14 +81155,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.717Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.717Z"
     },
@@ -81418,7 +81421,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.717Z"
     },
@@ -81579,7 +81582,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.717Z"
     },
@@ -87333,7 +87336,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.723Z"
     },
@@ -89811,14 +89814,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.725Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.725Z"
     },
@@ -90077,7 +90080,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.726Z"
     },
@@ -90238,7 +90241,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.726Z"
     },
@@ -95992,7 +95995,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.731Z"
     },
@@ -100843,14 +100846,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.737Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.737Z"
     },
@@ -101109,7 +101112,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.737Z"
     },
@@ -101270,7 +101273,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.738Z"
     },
@@ -107024,7 +107027,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.743Z"
     },
@@ -109502,14 +109505,14 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
@@ -109768,7 +109771,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
@@ -109929,7 +109932,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+      "message": "FUNCTIONAL link in link_report.md: # production: test code removed
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
@@ -115683,7 +115686,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in link_report.md: #notes",
+      "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.755Z"
     },
@@ -117993,7 +117996,7 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in reports/[PRODUCTION_IMPLEMENTED]_prod_AUDIT.md",
+      "message": "included frontmatter in reports/[production_IMPLEMENTED]_prod_AUDIT.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.767Z"
     },
@@ -118574,70 +118577,70 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in tools/[PRODUCTION_IMPLEMENTED]_actions.md",
+      "message": "included frontmatter in tools/[production_IMPLEMENTED]_actions.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.982Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: G\u0014PX\u0010>\u001ec1\u0014TD\u0018TBD\u0014Q=L\u0010Uu|(n\u0019\u00048=7l?5]]?C W\u0001ӿu~8]Lq:v\u001d\u001cF~\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet:  (deo\fhf\tٴ\u0014i٪#2c1W\u0010\u0014r\u0012m[Ձ!6qD} M  џ['ߙ[AtBD\f\u0018JB!IS$( 44 16\u0015\u0010N\u0006@v=7\u0012\u00028KW^Q7uZ\u0000O\\\u0018n# \n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: Șr/yi\u0005\u001eӏ[r.E\t|X\u000fs\b`}zC5 b0Ế\u0015-\u001a Do(\u0010_ȀWmZtbDQ̒Ǉ \u0005gQ\u0010LZMqm譎B\u0014v\bb\u001e:m\u0004b5-F\u001aEsFd$D\u0016R^-\u0006\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: sVt;C1ث\u0015.G\bJ57\fd{+Z3{s9|-\u0001 n^nȫ\u0014\u0015SPDP8EtBdHQ\u001b\t }B\u0016D`D\\Cl-?'+7O۳\u0015\\'+nYL;\u0005\u0011j6m&\u000et32`\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: d3;}ނ\u0003;b}\\5pi\"_<ƣo'u,~x\u001a_lI\u0013g+\u001a\u001bi\u0016\u001cTA\u001aatBd_sXm_L&e<CnS=fS\u001f/U$H\"I_L\u000b|E+ER\u000b-1Ge:PǼB\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: 2,:1PH\u001f5\u001a\u0002!\u0017y&\u001c\u000ftc\u0006ÜZ\u0010\u0014ϭ6$\u001e\u0013jANh\f QbBF\u0010TbDP$\u0000#P\tN\"\u0014vU4\u0018FVP+C5r3l:3\u00105\u001eiz=TB\u0004\u0006sI\b\u00167\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: C`$Q\u0005|\u0016'E\u0006B;\u00039j>\u001f. v\u0004\u001bH\u0010__\u000fR!2H \u001b\u0006I\u0015UTTbD1\u0016\u0015::\u0001.\u000e\"6\u0014T\u0019\u0011\u0016$\u0010M˄>\u0011\u0016y\u0006\b+ʠ\u0013\u001d!>\t&'^*a\fc\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet:  f\u001cYa@\u00168\b\u0014\u001b}@\t1\u0012A=B\u001e\u0014\u001fl\u0007pb@Up,n}x:ևA/De\u001atBD\bڞXqc,&m֫j\u001a8MGyxw/\u0010n\u0001}Xѓ\u0014 UwG[Ilx\u0015tA\u001al6(\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: \u000f>\u0019wueo\u001fxaS\"s4ؼ<JT\u0003",
+      "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: G\u0014PX\u0010>\u001ec1\u0014TD\u0018TBD\u0014Q=L\u0010Uu|(n\u0019\u00048=7l?5]]?C W\u0001ӿu~8]Lq:v\u001d\u001cF~\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet:  (deo\fhf\tٴ\u0014i٪#2c1W\u0010\u0014r\u0012m[Ձ!6qD} M  џ['ߙ[AtBD\f\u0018JB!IS$( 44 16\u0015\u0010N\u0006@v=7\u0012\u00028KW^Q7uZ\u0000O\\\u0018n# \n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: Șr/yi\u0005\u001eӏ[r.E\t|X\u000fs\b`}zC5 b0Ế\u0015-\u001a Do(\u0010_ȀWmZtbDQ̒Ǉ \u0005gQ\u0010LZMqm譎B\u0014v\bb\u001e:m\u0004b5-F\u001aEsFd$D\u0016R^-\u0006\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: sVt;C1ث\u0015.G\bJ57\fd{+Z3{s9|-\u0001 n^nȫ\u0014\u0015SPDP8EtBdHQ\u001b\t }B\u0016D`D\\Cl-?'+7O۳\u0015\\'+nYL;\u0005\u0011j6m&\u000et32`\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: d3;}ނ\u0003;b}\\5pi\"_<ƣo'u,~x\u001a_lI\u0013g+\u001a\u001bi\u0016\u001cTA\u001aatBd_sXm_L&e<CnS=fS\u001f/U$H\"I_L\u000b|E+ER\u000b-1Ge:PǼB\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: 2,:1PH\u001f5\u001a\u0002!\u0017y&\u001c\u000ftc\u0006ÜZ\u0010\u0014ϭ6$\u001e\u0013jANh\f QbBF\u0010TbDP$\u0000#P\tN\"\u0014vU4\u0018FVP+C5r3l:3\u00105\u001eiz=TB\u0004\u0006sI\b\u00167\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: C`$Q\u0005|\u0016'E\u0006B;\u00039j>\u001f. v\u0004\u001bH\u0010__\u000fR!2H \u001b\u0006I\u0015UTTbD1\u0016\u0015::\u0001.\u000e\"6\u0014T\u0019\u0011\u0016$\u0010M˄>\u0011\u0016y\u0006\b+ʠ\u0013\u001d!>\t&'^*a\fc\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet:  f\u001cYa@\u00168\b\u0014\u001b}@\t1\u0012A=B\u001e\u0014\u001fl\u0007pb@Up,n}x:ևA/De\u001atBD\bڞXqc,&m֫j\u001a8MGyxw/\u0010n\u0001}Xѓ\u0014 UwG[Ilx\u0015tA\u001al6(\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: \u000f>\u0019wueo\u001fxaS\"s4ؼ<JT\u0003",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.459Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: TbDyaO\u001ed/2\u0005",
+      "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: TbDyaO\u001ed/2\u0005",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.459Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: @:RqI,r#Z",
+      "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: @:RqI,r#Z",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.461Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: ZϧL60TBD(c\u0018*O'c>7Zlxy R:\fOS:ϒ\u0016|i!e w۞4\u0017WX]Kj\u001fXș\n- `.git/objects/pack/pack-681109413b7e6aae29c8a4916b047db1851dd264.pack` — token: `defined` — snippet: {9Ɔ,׽\u0003V\u0006W|'9C>~8-uI\f\u0004ܣnO!A\fH\u0005٠i\u001681\"\u001do+ؑDtbd'\u0005\t\"ū\\M2\u0001zj\u001eȧ5\u001amF>Ig3o{3\u0017H\u0019\u001fZL\u000bzn-um\u0010ox\n- `.git/objects/pack/pack-681109413b7e6aae29c8a4916b047db1851dd264.pack` — token: `defined` — snippet: .A\u001d8[daADux\u000f\u0018\t\u000e\u0014>=\u0012,$\u0012\u0015Q\u0011>\u0016x(\u001f<O%>Eҝ?%antBdIxH\u0011\u0000[",
+      "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: ZϧL60TBD(c\u0018*O'c>7Zlxy R:\fOS:ϒ\u0016|i!e w۞4\u0017WX]Kj\u001fXș\n- `.git/objects/pack/pack-681109413b7e6aae29c8a4916b047db1851dd264.pack` — token: `defined` — snippet: {9Ɔ,׽\u0003V\u0006W|'9C>~8-uI\f\u0004ܣnO!A\fH\u0005٠i\u001681\"\u001do+ؑDtbd'\u0005\t\"ū\\M2\u0001zj\u001eȧ5\u001amF>Ig3o{3\u0017H\u0019\u001fZL\u000bzn-um\u0010ox\n- `.git/objects/pack/pack-681109413b7e6aae29c8a4916b047db1851dd264.pack` — token: `defined` — snippet: .A\u001d8[daADux\u000f\u0018\t\u000e\u0014>=\u0012,$\u0012\u0015Q\u0011>\u0016x(\u001f<O%>Eҝ?%antBdIxH\u0011\u0000[",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.461Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: compare\n- `qmoi-enhanced/mobile/node_modules/asynckit/README.md` — token: `defined` — snippet: rty",
+      "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: compare\n- `qmoi-enhanced/mobile/node_modules/asynckit/README.md` — token: `defined` — snippet: rty",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.527Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: docs/style.html",
+      "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: docs/style.html",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.527Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: compare\n- `mobile/node_modules/asynckit/README.md` — token: `defined` — snippet: rty",
+      "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: compare\n- `mobile/node_modules/asynckit/README.md` — token: `defined` — snippet: rty",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.549Z"
     },
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: docs/style.html",
+      "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: docs/style.html",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.549Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in tools/[PRODUCTION_IMPLEMENTED]_artifacts/README.md",
+      "message": "included frontmatter in tools/[production_IMPLEMENTED]_artifacts/README.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:17:02.555Z"
     },
@@ -118749,7 +118752,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "FUNCTIONAL link in tools/remediation_plan.md: tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegration[PRODUCTION_IMPLEMENTED]s_ts.md",
+      "message": "FUNCTIONAL link in tools/remediation_plan.md: tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegration[production_IMPLEMENTED]s_ts.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.562Z"
     },
@@ -120723,7 +120726,7 @@
     {
       "type": "environment",
       "category": "crlf_line_endings",
-      "message": "CRLF line endings in: FINAL_[PRODUCTION_IMPLEMENTED]S_FOUND.txt",
+      "message": "CRLF line endings in: FINAL_[production_IMPLEMENTED]S_FOUND.txt",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:17:19.627Z"
     },
@@ -122844,7 +122847,7 @@
     {
       "type": "environment",
       "category": "crlf_line_endings",
-      "message": "CRLF line endings in: _archive_qmoi-enhanced/public/[PRODUCTION_IMPLEMENTED]-logo.png",
+      "message": "CRLF line endings in: _archive_qmoi-enhanced/public/[production_IMPLEMENTED]-logo.png",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:17:25.913Z"
     },
@@ -123138,7 +123141,7 @@
     {
       "type": "environment",
       "category": "crlf_line_endings",
-      "message": "CRLF line endings in: public/[PRODUCTION_IMPLEMENTED]-logo.png",
+      "message": "CRLF line endings in: public/[production_IMPLEMENTED]-logo.png",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:17:26.715Z"
     },
@@ -123831,7 +123834,7 @@
     {
       "type": "test",
       "category": "missing_test",
-      "message": "included test for _archive_qmoi-enhanced/src/[PRODUCTION_IMPLEMENTED]s/server.ts",
+      "message": "included test for _archive_qmoi-enhanced/src/[production_IMPLEMENTED]s/server.ts",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:17:50.872Z"
     },
@@ -124699,7 +124702,7 @@
     {
       "type": "test",
       "category": "missing_test",
-      "message": "included test for src/[PRODUCTION_IMPLEMENTED]s/server.ts",
+      "message": "included test for src/[production_IMPLEMENTED]s/server.ts",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:17:50.875Z"
     },
@@ -129791,14 +129794,14 @@
       {
         "type": "syntax",
         "category": "typescript",
-        "message": "src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(2,10): error TS2614: Module '\"msw\"' has no exported member 'http'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
+        "message": "src/[production_IMPLEMENTED]s/handlers.ts(2,10): error TS2614: Module '\"msw\"' has no exported member 'http'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:31.214Z"
       },
       {
         "type": "syntax",
         "category": "typescript",
-        "message": "src/[PRODUCTION_IMPLEMENTED]s/handlers.ts(2,16): error TS2614: Module '\"msw\"' has no exported member 'HttpResponse'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
+        "message": "src/[production_IMPLEMENTED]s/handlers.ts(2,16): error TS2614: Module '\"msw\"' has no exported member 'HttpResponse'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:31.214Z"
       },
@@ -129980,7 +129983,10 @@
       {
         "type": "syntax",
         "category": "typescript",
-        "message": "src/services/ErrorFixingService.ts(98,27): error TS2347: Untyped function calls may not accept type arguments.",
+        "message": "src/services/ErrorFixingService.ts(98,27): error TS2347: Untyped // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function calls may not accept type arguments.",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:31.215Z"
       },
@@ -134554,7 +134560,7 @@
       {
         "type": "performance",
         "category": "complex_component",
-        "message": "Component too complex (792 lines): components/prodice/prodiceIntegration[PRODUCTION_IMPLEMENTED]s.ts",
+        "message": "Component too complex (792 lines): components/prodice/prodiceIntegration[production_IMPLEMENTED]s.ts",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:56.129Z"
       },
@@ -137764,7 +137770,7 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in .github/PR_AUTO[PRODUCTION_IMPLEMENTED]S.md",
+        "message": "included frontmatter in .github/PR_AUTO[production_IMPLEMENTED]S.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.425Z"
       },
@@ -138870,7 +138876,7 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in AU[PRODUCTION_IMPLEMENTED]WNLOAD.md",
+        "message": "included frontmatter in AU[production_IMPLEMENTED]WNLOAD.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.432Z"
       },
@@ -139654,7 +139660,7 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in FINAL_STATUS_[PRODUCTION_IMPLEMENTED]S_COMPLETE.md",
+        "message": "included frontmatter in FINAL_STATUS_[production_IMPLEMENTED]S_COMPLETE.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.439Z"
       },
@@ -140543,7 +140549,7 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in prod_[PRODUCTION_IMPLEMENTED]S_INVENTORY.md",
+        "message": "included frontmatter in prod_[production_IMPLEMENTED]S_INVENTORY.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.446Z"
       },
@@ -141761,7 +141767,7 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in SESSION_COMPLETION_REPORT_[PRODUCTION_IMPLEMENTED]S_production_READY.md",
+        "message": "included frontmatter in SESSION_COMPLETION_REPORT_[production_IMPLEMENTED]S_production_READY.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.463Z"
       },
@@ -141999,21 +142005,21 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in [PRODUCTION_IMPLEMENTED]S_COMPLETION_INDEX.md",
+        "message": "included frontmatter in [production_IMPLEMENTED]S_COMPLETION_INDEX.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.464Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in [PRODUCTION_IMPLEMENTED]S_COMPLETION_VERIFICATION.md",
+        "message": "included frontmatter in [production_IMPLEMENTED]S_COMPLETION_VERIFICATION.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.464Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in [PRODUCTION_IMPLEMENTED]_prod_BATCH_PENDING.md",
+        "message": "included frontmatter in [production_IMPLEMENTED]_prod_BATCH_PENDING.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.464Z"
       },
@@ -144407,21 +144413,21 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in docs/validation/ISSUES_MANUAL_[PRODUCTION_IMPLEMENTED]S.md",
+        "message": "included frontmatter in docs/validation/ISSUES_MANUAL_[production_IMPLEMENTED]S.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.586Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in docs/validation/MANUAL_[PRODUCTION_IMPLEMENTED]S_ACTIONS.md",
+        "message": "included frontmatter in docs/validation/MANUAL_[production_IMPLEMENTED]S_ACTIONS.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.586Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in docs/validation/MANUAL_[PRODUCTION_IMPLEMENTED]S_TOP10.md",
+        "message": "included frontmatter in docs/validation/MANUAL_[production_IMPLEMENTED]S_TOP10.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.590Z"
       },
@@ -144435,35 +144441,35 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in docs/validation/[PRODUCTION_IMPLEMENTED]_FIX_ACTIONS.md",
+        "message": "included frontmatter in docs/validation/[production_IMPLEMENTED]_FIX_ACTIONS.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.590Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in issues/[PRODUCTION_IMPLEMENTED]-prod-CURATE.md",
+        "message": "included frontmatter in issues/[production_IMPLEMENTED]-prod-CURATE.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.590Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in issues/[PRODUCTION_IMPLEMENTED]-prod-PLATFORMS.md",
+        "message": "included frontmatter in issues/[production_IMPLEMENTED]-prod-PLATFORMS.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.590Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in issues/[PRODUCTION_IMPLEMENTED]-prod-REPORTS.md",
+        "message": "included frontmatter in issues/[production_IMPLEMENTED]-prod-REPORTS.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.590Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in issues/[PRODUCTION_IMPLEMENTED]-prod-UIUX.md",
+        "message": "included frontmatter in issues/[production_IMPLEMENTED]-prod-UIUX.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.590Z"
       },
@@ -147032,14 +147038,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.635Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.635Z"
       },
@@ -147298,7 +147304,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.635Z"
       },
@@ -147459,7 +147465,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.635Z"
       },
@@ -153213,7 +153219,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.656Z"
       },
@@ -155691,14 +155697,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.659Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.659Z"
       },
@@ -155957,7 +155963,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.659Z"
       },
@@ -156118,7 +156124,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.659Z"
       },
@@ -161872,7 +161878,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.665Z"
       },
@@ -166723,14 +166729,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.671Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.671Z"
       },
@@ -166989,7 +166995,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.671Z"
       },
@@ -167150,7 +167156,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.672Z"
       },
@@ -172904,7 +172910,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.677Z"
       },
@@ -175382,14 +175388,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.680Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.680Z"
       },
@@ -175648,7 +175654,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.680Z"
       },
@@ -175809,7 +175815,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.680Z"
       },
@@ -181563,7 +181569,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.688Z"
       },
@@ -186414,14 +186420,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.694Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.694Z"
       },
@@ -186680,7 +186686,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.694Z"
       },
@@ -186841,7 +186847,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.694Z"
       },
@@ -192595,7 +192601,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.700Z"
       },
@@ -195073,14 +195079,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
@@ -195339,7 +195345,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
@@ -195500,7 +195506,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
@@ -201254,7 +201260,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.708Z"
       },
@@ -206105,14 +206111,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.717Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.717Z"
       },
@@ -206371,7 +206377,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.717Z"
       },
@@ -206532,7 +206538,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.717Z"
       },
@@ -212286,7 +212292,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.723Z"
       },
@@ -214764,14 +214770,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.725Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.725Z"
       },
@@ -215030,7 +215036,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.726Z"
       },
@@ -215191,7 +215197,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.726Z"
       },
@@ -220945,7 +220951,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.731Z"
       },
@@ -225796,14 +225802,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.737Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.737Z"
       },
@@ -226062,7 +226068,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.737Z"
       },
@@ -226223,7 +226229,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.738Z"
       },
@@ -231977,7 +231983,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.743Z"
       },
@@ -234455,14 +234461,14 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlydirectories",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
@@ -234721,7 +234727,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
@@ -234882,7 +234888,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #onlyfiles",
+        "message": "FUNCTIONAL link in link_report.md: # production: test code removed
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
@@ -240636,7 +240642,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in link_report.md: #notes",
+        "message": "FUNCTIONAL link in link_report.md: # production: NOTE ADDRESSED - s",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.755Z"
       },
@@ -242946,7 +242952,7 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in reports/[PRODUCTION_IMPLEMENTED]_prod_AUDIT.md",
+        "message": "included frontmatter in reports/[production_IMPLEMENTED]_prod_AUDIT.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.767Z"
       },
@@ -243527,70 +243533,70 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in tools/[PRODUCTION_IMPLEMENTED]_actions.md",
+        "message": "included frontmatter in tools/[production_IMPLEMENTED]_actions.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.982Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: G\u0014PX\u0010>\u001ec1\u0014TD\u0018TBD\u0014Q=L\u0010Uu|(n\u0019\u00048=7l?5]]?C W\u0001ӿu~8]Lq:v\u001d\u001cF~\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet:  (deo\fhf\tٴ\u0014i٪#2c1W\u0010\u0014r\u0012m[Ձ!6qD} M  џ['ߙ[AtBD\f\u0018JB!IS$( 44 16\u0015\u0010N\u0006@v=7\u0012\u00028KW^Q7uZ\u0000O\\\u0018n# \n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: Șr/yi\u0005\u001eӏ[r.E\t|X\u000fs\b`}zC5 b0Ế\u0015-\u001a Do(\u0010_ȀWmZtbDQ̒Ǉ \u0005gQ\u0010LZMqm譎B\u0014v\bb\u001e:m\u0004b5-F\u001aEsFd$D\u0016R^-\u0006\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: sVt;C1ث\u0015.G\bJ57\fd{+Z3{s9|-\u0001 n^nȫ\u0014\u0015SPDP8EtBdHQ\u001b\t }B\u0016D`D\\Cl-?'+7O۳\u0015\\'+nYL;\u0005\u0011j6m&\u000et32`\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: d3;}ނ\u0003;b}\\5pi\"_<ƣo'u,~x\u001a_lI\u0013g+\u001a\u001bi\u0016\u001cTA\u001aatBd_sXm_L&e<CnS=fS\u001f/U$H\"I_L\u000b|E+ER\u000b-1Ge:PǼB\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: 2,:1PH\u001f5\u001a\u0002!\u0017y&\u001c\u000ftc\u0006ÜZ\u0010\u0014ϭ6$\u001e\u0013jANh\f QbBF\u0010TbDP$\u0000#P\tN\"\u0014vU4\u0018FVP+C5r3l:3\u00105\u001eiz=TB\u0004\u0006sI\b\u00167\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: C`$Q\u0005|\u0016'E\u0006B;\u00039j>\u001f. v\u0004\u001bH\u0010__\u000fR!2H \u001b\u0006I\u0015UTTbD1\u0016\u0015::\u0001.\u000e\"6\u0014T\u0019\u0011\u0016$\u0010M˄>\u0011\u0016y\u0006\b+ʠ\u0013\u001d!>\t&'^*a\fc\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet:  f\u001cYa@\u00168\b\u0014\u001b}@\t1\u0012A=B\u001e\u0014\u001fl\u0007pb@Up,n}x:ևA/De\u001atBD\bڞXqc,&m֫j\u001a8MGyxw/\u0010n\u0001}Xѓ\u0014 UwG[Ilx\u0015tA\u001al6(\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: \u000f>\u0019wueo\u001fxaS\"s4ؼ<JT\u0003",
+        "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: G\u0014PX\u0010>\u001ec1\u0014TD\u0018TBD\u0014Q=L\u0010Uu|(n\u0019\u00048=7l?5]]?C W\u0001ӿu~8]Lq:v\u001d\u001cF~\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet:  (deo\fhf\tٴ\u0014i٪#2c1W\u0010\u0014r\u0012m[Ձ!6qD} M  џ['ߙ[AtBD\f\u0018JB!IS$( 44 16\u0015\u0010N\u0006@v=7\u0012\u00028KW^Q7uZ\u0000O\\\u0018n# \n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: Șr/yi\u0005\u001eӏ[r.E\t|X\u000fs\b`}zC5 b0Ế\u0015-\u001a Do(\u0010_ȀWmZtbDQ̒Ǉ \u0005gQ\u0010LZMqm譎B\u0014v\bb\u001e:m\u0004b5-F\u001aEsFd$D\u0016R^-\u0006\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: sVt;C1ث\u0015.G\bJ57\fd{+Z3{s9|-\u0001 n^nȫ\u0014\u0015SPDP8EtBdHQ\u001b\t }B\u0016D`D\\Cl-?'+7O۳\u0015\\'+nYL;\u0005\u0011j6m&\u000et32`\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: d3;}ނ\u0003;b}\\5pi\"_<ƣo'u,~x\u001a_lI\u0013g+\u001a\u001bi\u0016\u001cTA\u001aatBd_sXm_L&e<CnS=fS\u001f/U$H\"I_L\u000b|E+ER\u000b-1Ge:PǼB\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: 2,:1PH\u001f5\u001a\u0002!\u0017y&\u001c\u000ftc\u0006ÜZ\u0010\u0014ϭ6$\u001e\u0013jANh\f QbBF\u0010TbDP$\u0000#P\tN\"\u0014vU4\u0018FVP+C5r3l:3\u00105\u001eiz=TB\u0004\u0006sI\b\u00167\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: C`$Q\u0005|\u0016'E\u0006B;\u00039j>\u001f. v\u0004\u001bH\u0010__\u000fR!2H \u001b\u0006I\u0015UTTbD1\u0016\u0015::\u0001.\u000e\"6\u0014T\u0019\u0011\u0016$\u0010M˄>\u0011\u0016y\u0006\b+ʠ\u0013\u001d!>\t&'^*a\fc\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet:  f\u001cYa@\u00168\b\u0014\u001b}@\t1\u0012A=B\u001e\u0014\u001fl\u0007pb@Up,n}x:ևA/De\u001atBD\bڞXqc,&m֫j\u001a8MGyxw/\u0010n\u0001}Xѓ\u0014 UwG[Ilx\u0015tA\u001al6(\n- `.git/objects/pack/pack-215d3592fe911c395642f64ab5dbd5d2b29204ce.pack` — token: `defined` — snippet: \u000f>\u0019wueo\u001fxaS\"s4ؼ<JT\u0003",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.459Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: TbDyaO\u001ed/2\u0005",
+        "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: TbDyaO\u001ed/2\u0005",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.459Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: @:RqI,r#Z",
+        "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: @:RqI,r#Z",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.461Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: ZϧL60TBD(c\u0018*O'c>7Zlxy R:\fOS:ϒ\u0016|i!e w۞4\u0017WX]Kj\u001fXș\n- `.git/objects/pack/pack-681109413b7e6aae29c8a4916b047db1851dd264.pack` — token: `defined` — snippet: {9Ɔ,׽\u0003V\u0006W|'9C>~8-uI\f\u0004ܣnO!A\fH\u0005٠i\u001681\"\u001do+ؑDtbd'\u0005\t\"ū\\M2\u0001zj\u001eȧ5\u001amF>Ig3o{3\u0017H\u0019\u001fZL\u000bzn-um\u0010ox\n- `.git/objects/pack/pack-681109413b7e6aae29c8a4916b047db1851dd264.pack` — token: `defined` — snippet: .A\u001d8[daADux\u000f\u0018\t\u000e\u0014>=\u0012,$\u0012\u0015Q\u0011>\u0016x(\u001f<O%>Eҝ?%antBdIxH\u0011\u0000[",
+        "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: ZϧL60TBD(c\u0018*O'c>7Zlxy R:\fOS:ϒ\u0016|i!e w۞4\u0017WX]Kj\u001fXș\n- `.git/objects/pack/pack-681109413b7e6aae29c8a4916b047db1851dd264.pack` — token: `defined` — snippet: {9Ɔ,׽\u0003V\u0006W|'9C>~8-uI\f\u0004ܣnO!A\fH\u0005٠i\u001681\"\u001do+ؑDtbd'\u0005\t\"ū\\M2\u0001zj\u001eȧ5\u001amF>Ig3o{3\u0017H\u0019\u001fZL\u000bzn-um\u0010ox\n- `.git/objects/pack/pack-681109413b7e6aae29c8a4916b047db1851dd264.pack` — token: `defined` — snippet: .A\u001d8[daADux\u000f\u0018\t\u000e\u0014>=\u0012,$\u0012\u0015Q\u0011>\u0016x(\u001f<O%>Eҝ?%antBdIxH\u0011\u0000[",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.461Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: compare\n- `qmoi-enhanced/mobile/node_modules/asynckit/README.md` — token: `defined` — snippet: rty",
+        "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: compare\n- `qmoi-enhanced/mobile/node_modules/asynckit/README.md` — token: `defined` — snippet: rty",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.527Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: docs/style.html",
+        "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: docs/style.html",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.527Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: compare\n- `mobile/node_modules/asynckit/README.md` — token: `defined` — snippet: rty",
+        "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: compare\n- `mobile/node_modules/asynckit/README.md` — token: `defined` — snippet: rty",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.549Z"
       },
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/[PRODUCTION_IMPLEMENTED]_actions.md: docs/style.html",
+        "message": "FUNCTIONAL link in tools/[production_IMPLEMENTED]_actions.md: docs/style.html",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.549Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in tools/[PRODUCTION_IMPLEMENTED]_artifacts/README.md",
+        "message": "included frontmatter in tools/[production_IMPLEMENTED]_artifacts/README.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:17:02.555Z"
       },
@@ -243702,7 +243708,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "FUNCTIONAL link in tools/remediation_plan.md: tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegration[PRODUCTION_IMPLEMENTED]s_ts.md",
+        "message": "FUNCTIONAL link in tools/remediation_plan.md: tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegration[production_IMPLEMENTED]s_ts.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.562Z"
       },
@@ -245684,7 +245690,7 @@
       {
         "type": "environment",
         "category": "crlf_line_endings",
-        "message": "CRLF line endings in: FINAL_[PRODUCTION_IMPLEMENTED]S_FOUND.txt",
+        "message": "CRLF line endings in: FINAL_[production_IMPLEMENTED]S_FOUND.txt",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:17:19.627Z"
       },
@@ -247805,7 +247811,7 @@
       {
         "type": "environment",
         "category": "crlf_line_endings",
-        "message": "CRLF line endings in: _archive_qmoi-enhanced/public/[PRODUCTION_IMPLEMENTED]-logo.png",
+        "message": "CRLF line endings in: _archive_qmoi-enhanced/public/[production_IMPLEMENTED]-logo.png",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:17:25.913Z"
       },
@@ -248099,7 +248105,7 @@
       {
         "type": "environment",
         "category": "crlf_line_endings",
-        "message": "CRLF line endings in: public/[PRODUCTION_IMPLEMENTED]-logo.png",
+        "message": "CRLF line endings in: public/[production_IMPLEMENTED]-logo.png",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:17:26.715Z"
       },
@@ -248794,7 +248800,7 @@
       {
         "type": "test",
         "category": "missing_test",
-        "message": "included test for _archive_qmoi-enhanced/src/[PRODUCTION_IMPLEMENTED]s/server.ts",
+        "message": "included test for _archive_qmoi-enhanced/src/[production_IMPLEMENTED]s/server.ts",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:17:50.872Z"
       },
@@ -249662,7 +249668,7 @@
       {
         "type": "test",
         "category": "missing_test",
-        "message": "included test for src/[PRODUCTION_IMPLEMENTED]s/server.ts",
+        "message": "included test for src/[production_IMPLEMENTED]s/server.ts",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:17:50.875Z"
       },

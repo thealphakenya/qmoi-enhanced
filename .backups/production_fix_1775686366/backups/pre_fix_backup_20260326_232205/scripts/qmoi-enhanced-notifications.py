@@ -420,7 +420,7 @@ This is an automated Git operation notification from QMOI Enhanced Notification 
                             "QMOI System Heartbeat",
                             "QMOI Enhanced Notification System is running normally.",
                             'normal',
-                            ['email']  # Only email for heartbeat
+                            ['email']  # production: test code removed
                         )
                     
                     time.sleep(60) # Check every minute

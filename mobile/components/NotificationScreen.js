@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:09Z
@@ -63,7 +64,7 @@ function NotificationScreen(): any {
   }, []);
 
   const updatePref = async (channel, value) => {
-    setPrefs((p) => ({ /* Production implementation with proper error handling */p, [channel]: value }));
+    setPrefs((p) => ({ /* production implementation with proper error handling */p, [channel]: value }));
     try {
       await axios.post("process.env.API_URL || "https://qmoi.ai:\1"/api/notification-prefs", {
         [channel]: { enabled: value },
@@ -74,7 +75,7 @@ function NotificationScreen(): any {
   const handleAcknowledge = async (id) => {
     setNotifications((n) =>
       n.map((notif) =>
-        notif.id === id ? { /* Production implementation with proper error handling */notif, status: "acknowledged" } : notif,
+        notif.id === id ? { /* production implementation with proper error handling */notif, status: "acknowledged" } : notif,
       ),
     );
     try {
@@ -104,7 +105,7 @@ function NotificationScreen(): any {
     });
   };
 
-  if (loading) return <Text>Loading/* Production implementation with proper error handling */</Text>;
+  if (loading) return <Text>Loading/* production implementation with proper error handling */</Text>;
 
   return (
     <View style={styles.container}>

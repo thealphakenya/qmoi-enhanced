@@ -5,6 +5,8 @@
 
 # [PRODUCTION_IMPLEMENTED]
 import random
+import logging
+logger = logging.getLogger(__name__)
 
 # === Step 1: Define Core Personality ===
 PERSONALITY_PROFILE = {

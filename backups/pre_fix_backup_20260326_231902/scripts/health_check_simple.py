@@ -14,6 +14,8 @@ import json
 import os
 import subprocess
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 """
     check_domain_health function

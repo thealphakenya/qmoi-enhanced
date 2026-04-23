@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
@@ -12,8 +13,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // Master authentication middleware
-// SECURITY: Only environment variable tokens are accepted, never hardcoded
-const authenticateMaster = (_request: NextRequest) => {
+// SECURITY: Only environment variable tokens are accepted, never const authenticateMaster = (_request: NextRequest) => {
   const authHeader = _request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return false;

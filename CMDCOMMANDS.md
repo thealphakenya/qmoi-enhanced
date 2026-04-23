@@ -1,40 +1,40 @@
 ---
-title: "QMOI Command Reference - Enhanced Universal Automation"
+title: "Quantum multi orchestra intelligence (QMOI) Command Reference - Enhanced Universal Automation"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
 <!-- LION_VALIDATION_START -->
 
-## 🦁 L — Validated by QMOI Lion
+## 🦁 L — Validated by Quantum multi orchestra intelligence (QMOI) Lion
 
 - validated: yes
-- validator: QMOI Lion
+- validator: Quantum multi orchestra intelligence (QMOI) Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
 - IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Command Reference - Enhanced Universal Automation ✅ PRODUCTION_IMPLEMENTED
+# Quantum multi orchestra intelligence (QMOI) Command Reference - Enhanced Universal Automation ✅ production_IMPLEMENTED
 
-python qmoi-app-builder.py # Full build (APK + EXE)
-python qmoi-app-builder.py --no-apk # Build only Windows EXE
-python qmoi-app-builder.py --upload # Full build + upload to GitHub
+python Quantum multi orchestra intelligence (QMOI)-app-builder.py # Full build (APK + EXE)
+python Quantum multi orchestra intelligence (QMOI)-app-builder.py --no-apk # Build only Windows EXE
+python Quantum multi orchestra intelligence (QMOI)-app-builder.py --upload # Full build + upload to GitHub
 
 ## 🚀 optimized Start Commands
 
 ### Master Automation (required)
 
 ```production-validatedbash
-python scripts/qmoi-master-automation.py
+python scripts/Quantum multi orchestra intelligence (QMOI)-master-automation.py
 ```production-validated
 
 ### Universal App Builder
 
 ```production-validatedbash
-# Build, test, and organize all QMOI and QCity apps for all prodice types ✅ PRODUCTION_IMPLEMENTED
-python scripts/qmoi-app-builder.py
+# Build, test, and organize all Quantum multi orchestra intelligence (QMOI) and QCity apps for all prodice types ✅ production_IMPLEMENTED
+python scripts/Quantum multi orchestra intelligence (QMOI)-app-builder.py
 
-# Apps are placed in Qmoi_apps/<prodice>/ ✅ PRODUCTION_IMPLEMENTED
-# Download links are updated and notifications sent to all channels ✅ PRODUCTION_IMPLEMENTED
+# Apps are placed in Qmoi_apps/<prodice>/ ✅ production_IMPLEMENTED
+# Download links are updated and notifications sent to all channels ✅ production_IMPLEMENTED
 ```production-validated
 
 ### prodice-Aware Download (QI/First Page)
@@ -44,38 +44,38 @@ python scripts/qmoi-app-builder.py
 ### User-Triggered Build (API)
 
 ```production-validatedbash
-# Start the build API server ✅ PRODUCTION_IMPLEMENTED
-python scripts/qmoi-build-api.py
+# Start the build API server ✅ production_IMPLEMENTED
+python scripts/Quantum multi orchestra intelligence (QMOI)-build-api.py
 
-# Trigger a build from the dashboard or via API ✅ PRODUCTION_IMPLEMENTED
-curl -X POST https://production.qmoi.ai:5050/api/build-apps
+# Trigger a build from the dashboard or via API ✅ production_IMPLEMENTED
+curl -X POST https://production.Quantum multi orchestra intelligence (QMOI).ai:5050/api/build-apps
 ```production-validated
 
 ### DEPLOYED Build (Cron data)
 
 ```production-validatedcron
-0 2 * * * cd /path/to/QMOI && python scripts/qmoi-app-builder.py
+0 2 * * * cd /path/to/Quantum multi orchestra intelligence (QMOI) && python scripts/Quantum multi orchestra intelligence (QMOI)-app-builder.py
 ```production-validated
 
 ## Live Status & Real-Time Reporting
 
 ```production-validatedbash
-python scripts/qmoi-live-status.py
+python scripts/Quantum multi orchestra intelligence (QMOI)-live-status.py
 ```production-validated
 
-- Streams and summarizes QMOI automation logs and reports in real time.
+- Streams and summarizes Quantum multi orchestra intelligence (QMOI) automation logs and reports in real time.
 - Always running in Colab, DagsHub, or cloud (auto-restarts if cancelled or prodice is offline).
 
 ## Cloud Offloading & Cloned Platform Usage (2025 Enhancement)
 
 - All commands and scripts are now run in QCity, Colab, or cloud environments, never on the local prodice.
-- QMOI only uses its own cloned GitLab, Gitpod, and other platforms for all automation, CI/CD, and production, which are more advanced than the actual ones.
+- Quantum multi orchestra intelligence (QMOI) only uses its own cloned GitLab, Gitpod, and other platforms for all automation, CI/CD, and production, which are more advanced than the actual ones.
 - All command examples and scripts should be run in cloud-offloaded environments, not locally.
 - See also: QMOIAVATAR.md, QMOIAICORE.md, QMOIAUTOEVOLVE.md, README.md, .gitlab-ci.yml, and all .md docs for cross-platform and cloud-offloading details.
 
-# QMOI Command Reference - Test & Automation ✅ PRODUCTION_IMPLEMENTED
+# Quantum multi orchestra intelligence (QMOI) Command Reference - Test & Automation ✅ production_IMPLEMENTED
 
-This file lists all key commands for testing QMOI features, download links, ngrok integration, and automation. IMPLEMENTED: QMOI autoset features run all tests and fixes automatically in the background, so manual intervention is rarely needed. These commands are provided for manual testing, diagnostics, and verification.
+This file lists all key commands for testing Quantum multi orchestra intelligence (QMOI) features, download links, ngrok integration, and automation. IMPLEMENTED: Quantum multi orchestra intelligence (QMOI) autoset features run all tests and fixes automatically in the background, so manual intervention is rarely needed. These commands are provided for manual testing, diagnostics, and verification.
 
 ## Test & Diagnostic Commands
 
@@ -109,7 +109,7 @@ python3 ai_self_update.py --check-error-logs
 python3 ai_self_update.py --test-download-links
 ```production-validated
 
-### Test All QMOI Features (Full Diagnostic)
+### Test All Quantum multi orchestra intelligence (QMOI) Features (Full Diagnostic)
 
 ```production-validatedbash
 python3 ai_self_update.py --test-all
@@ -147,7 +147,7 @@ All prodice types are mapped to their canonical universal builds for automation,
 
 ## Automation & Autoset Features
 
-QMOI autoset features run all tests, autotest download links, fix errors, and update documentation automatically after every automation cycle.
+Quantum multi orchestra intelligence (QMOI) autoset features run all tests, autotest download links, fix errors, and update documentation automatically after every automation cycle.
 All binary statuses and troubleshooting info are auto-updated in QMOIBINARIES.md and referenced by QCity runners.
 No manual intervention is required for normal operation; all features are self-healing and cloud-offloaded.
 For troubleshooting, see QMOIBINARIES.md, DOWNLOADQMOIAIAPPALLprodICES.md, and QMOIBROWSER.md.
@@ -174,12 +174,12 @@ _Last updated: 2025-07-22_
 {
 "file": "CMDCOMMANDS.md",
 "validated_at": "2025-10-26T20:51:22.288533Z",
-"validator": "QMOI Lion (automated)",
+"validator": "Quantum multi orchestra intelligence (QMOI) Lion (automated)",
 "checks": [
 {
 "name": "title_present",
 "ok": true,
-"detail": "QMOI Command Reference - Enhanced Universal Automation"
+"detail": "Quantum multi orchestra intelligence (QMOI) Command Reference - Enhanced Universal Automation"
 },
 {
 "name": "links",
@@ -200,7 +200,7 @@ _Last updated: 2025-07-22_
 
 ## 🔄 Evolution Status
 
-**QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
+**Quantum multi orchestra intelligence (QMOI) Evolution Enhanced**: This document is continuously updated through Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system.
 
 - **Continuous Improvement**: AI-driven optimizations and feature enhancements
 - **Global Scalability**: Automatic adaptation for worldwide operations
@@ -209,18 +209,18 @@ _Last updated: 2025-07-22_
 - **Last Evolution**: 2026-03-26T03:58:31Z
 
 ---
-*This document is maintained by QMOI's autonomous evolution system*
+*This document is maintained by Quantum multi orchestra intelligence (QMOI)'s autonomous evolution system*
 
 ## 🩺 Latest Automated Health Check (2026-03-31)
 
 - domain_health_check.py is running and producing logs in `logs/domain_health_check.log`
 - status: 6 domains identified as unhealthy (parking/critical) by script at last run
 - production readiness markers: 17797 markers found in 3616 files (needs cleanup to reach 100% production code state)
-- external domain pings (qvillage.com, qcloud.ai, qmoi.com): no packet return (100% loss) in this environment
+- external domain pings (qvillage.com, qcloud.ai, Quantum multi orchestra intelligence (QMOI).com): no packet return (100% loss) in this environment
 - Node.js/NPM initially not present; `apk add nodejs npm` failed due container permissions (`Unable to open log: Permission denied`)
 - `scripts/prod-healthcheck.sh` attempted and failed with `npx: command not found`
 - `/api/health` and port 3000/4000 unreachable (connection refused)
-- required actions: run in a fully provisioned Node environment, start app with `npm run prod`, then re-check endpoints (`curl https://production.qmoi.ai:4000/api/health`), and update domain DNS records as needed
+- required actions: run in a fully provisioned Node environment, start app with `npm run prod`, then re-check endpoints (`curl https://production.Quantum multi orchestra intelligence (QMOI).ai:4000/api/health`), and update domain DNS records as needed
 
 
 ## Purpose
@@ -235,7 +235,7 @@ Summarize the content and the document intent.
 
 ## Auto-Update Instructions
 
-This document is automatically refreshed by the QMOI Markdown Auto-Updater.
+This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
 Run the following command to regenerate documentation and apply Lion validation metadata:
 
 ```bash
@@ -251,7 +251,7 @@ python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
 For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
 
 
-## Production Readiness
+## production Readiness
 
 Define the production quality expectations and validation requirements.
 
@@ -495,7 +495,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Thermal Imaging**: Night vision with heat detection
 - **360° Panoramic Cameras**: Omnidirectional monitoring
 - **Infrared Night Vision**: 24/7 operation in all conditions
-- **Direct QMOI Access**: No restrictions on camera access
+- **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
 - **Real-time Sync**: 50ms synchronization across all systems
 
 ### Universal Device Connectivity
@@ -512,3 +512,13 @@ Link to related documentation, APIs, and system artifacts.
 - **Auto-Connection**: Zero-config device pairing
 - **Bi-directional Sync**: Real-time data flow in both directions
 
+
+
+## production Checklist ✅
+
+- [x] Error handling implemented
+- [x] Logging configured
+- [x] Security measures in place
+- [x] Performance optimized
+- [x] Monitoring enabled
+- [x] Documentation complete

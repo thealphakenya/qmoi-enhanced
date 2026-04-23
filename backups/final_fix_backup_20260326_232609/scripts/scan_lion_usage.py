@@ -12,6 +12,8 @@ This is conservative: read-only and safe to run in CI or locally.
 """
 import json
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'lion_usage_report.json'

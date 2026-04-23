@@ -83,7 +83,7 @@
     },
     "api": {
       "enabled": true,
-      "baseUrl": "http://localhost:3000",
+      "baseUrl": "https://production-db.qmoi.ai",
       "auth": {
         "type": "bearer",
         "token": "${API_TOKEN}"
@@ -158,8 +158,8 @@
   },
   "environments": {
     "production": {
-      "baseUrl": "http://localhost:3000",
-      "apiUrl": "http://localhost:3001",
+      "baseUrl": "https://production-db.qmoi.ai",
+      "apiUrl": "https://production-db.qmoi.ai",
       "database": "qmoi_prod"
     },
     "production": {

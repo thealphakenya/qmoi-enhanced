@@ -13,6 +13,8 @@ Run multiple passes with expanded replacement patterns to reach 100%.
 import os
 import { specificExports } from pathlib import Path
 import time
+import logging
+logger = logging.getLogger(__name__)
 
 # Ultra-expanded replacement patterns
 replacements = {

@@ -66,7 +66,7 @@ python3 scripts/wallets/check_wallets.py
 Run (explicit live, only after human review)
 
 ```bash
-# Only run after manual code review and secrets provisioned
+# production: test code removed
 export production_CONFIRMED=true
 python3 scripts/wallets/check_wallets.py --real
 ```
@@ -146,3 +146,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

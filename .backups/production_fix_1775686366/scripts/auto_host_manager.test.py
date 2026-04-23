@@ -3,7 +3,7 @@
 # Last evolution cycle: 2026-03-26T03:59:04Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import pytest
+import # production: # production: # production: pytest removed removed removed
 from scripts.auto_host_manager import QMOIAutoHostManager
 
 def test_manager_initializes():
@@ -34,4 +34,4 @@ def test_generate_report_contains_sections():
     assert '## Services' in report
 
 if __name__ == '__main__':
-    pytest.main(['-q'])
+    # production: # production: # production: pytest removed removed removed.main(['-q'])

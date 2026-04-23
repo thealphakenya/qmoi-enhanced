@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // Auth utilities
 // Authentication helper functions
 

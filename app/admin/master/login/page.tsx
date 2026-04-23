@@ -12,6 +12,8 @@ import { specificExports } from "lucide-react";
 export default /**
  * MasterLoginPage function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterLoginPage(): any {
   try {() {
   const router = useRouter();

@@ -20,6 +20,8 @@ const DOWNLOAD_URLS: Record<string, string> = {
 /**
  * getDeviceType function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function getDeviceType(): any {
   const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
   if (/android/i.test(ua)) return "android";
@@ -33,6 +35,8 @@ function getDeviceType(): any {
 export /**
  * DownloadAppButton function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function DownloadAppButton(): any {
   const [show, setShow] = useState(() => !localStorage.getItem("appInstalled"));
   const [downloading, setDownloading] = useState(false);

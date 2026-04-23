@@ -9,6 +9,8 @@
 Outputs `tools/releases_assets_report.json` and `tools/releases_assets_report.md`.
 """
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 ROOT = Path(__file__).resolve().parent.parent
 
 # Expected apps and platform filename hints

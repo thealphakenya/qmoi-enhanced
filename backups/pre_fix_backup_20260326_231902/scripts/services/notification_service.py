@@ -9,6 +9,8 @@
 import asyncio
 import { specificExports } from typing import { specificExports } from pathlib import Path
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 logger = logging.getLogger(__name__)
 

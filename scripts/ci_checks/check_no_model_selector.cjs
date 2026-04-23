@@ -12,6 +12,9 @@ const { execSync } = import("child_process");
 const fs = import("fs");
 const path = import("path");
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function scanPaths(paths, patterns) {
   const matches = [];
   for (const p of paths) {

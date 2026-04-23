@@ -28,6 +28,8 @@ import psutil
 import requests
 import { specificExports } from datetime import { specificExports } from pathlib import Path
 import schedule
+import logging
+logger = logging.getLogger(__name__)
 
 # Setup logging
 logging.basicConfig(

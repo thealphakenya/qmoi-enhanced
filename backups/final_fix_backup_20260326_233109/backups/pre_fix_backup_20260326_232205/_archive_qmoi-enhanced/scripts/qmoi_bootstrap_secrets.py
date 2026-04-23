@@ -88,6 +88,8 @@ read -r url
 # QMOI git credential helper: prints username and password for https pushes
 GHTOKEN=$(python - <<'PY'
 from scripts.qmoi_secret_manager import get_named_secret
+import logging
+logger = logging.getLogger(__name__)
 logger.info(get_named_secret('github') or '')
 PY
 )

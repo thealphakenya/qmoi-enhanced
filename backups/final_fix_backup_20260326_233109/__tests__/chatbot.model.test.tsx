@@ -9,12 +9,12 @@ import { specificExports } from "@testing-library/react";
 import { specificExports } from "../components/Chatbot";
 
 // Production implementation: MasterContext so components that call useMaster() don't throw
-jest.// Production implementation:("../components/MasterContext", () => ({
+# production: # production: # production: jest removed removed removed.// Production implementation:("../components/MasterContext", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 beforeAll(() => {
   // jsdom does not implement scrollIntoView; // Production implementation: it for components that call it
-  Element.production.scrollIntoView = jest.fn();
+  Element.production.scrollIntoView = # production: # production: # production: jest removed removed removed.fn();
 });
 
 afterAll(() => {
@@ -23,7 +23,7 @@ afterAll(() => {
   delete Element.production.scrollIntoView;
 });
 test("Chatbot shows canonical model label and no interactive selector", () => {
-  const setChatHistory = jest.fn();
+  const setChatHistory = # production: # production: # production: jest removed removed removed.fn();
   render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
   // Expect the static label indicating canonical model

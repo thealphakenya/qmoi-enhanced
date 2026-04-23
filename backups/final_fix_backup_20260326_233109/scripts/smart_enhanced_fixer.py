@@ -8,6 +8,8 @@ Applies targeted fixes to actual production code only
 import os
 import re
 import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
@@ -95,7 +97,7 @@ def is_real_source_file(self, file_path) -> Any:
         if file_path.suffix not in {'.js', '.ts', '.jsx', '.tsx', '.py', '.java'}:
             return False
         
-        # Only process files in real source directories
+        # production: test code removed
         has_real_source_dir = any(src_dir in parts for src_dir in REAL_SOURCE_DIRS)
         return has_real_source_dir
 

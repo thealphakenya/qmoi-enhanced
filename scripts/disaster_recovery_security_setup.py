@@ -1,6 +1,10 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
 #!/usr/bin/env python3
 """
-QMOI Enhanced - Production Disaster Recovery & Security System
+QMOI Enhanced - production Disaster Recovery & Security System
 Complete disaster recovery, backup management, and security hardening
 """
 
@@ -127,6 +131,16 @@ class BackupManager:
         print(f"Starting database backup: {backup_file}")
         
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             # Backup command
             cmd = f"mysqldump -u root -p$DB_PASSWORD --all-databases | gzip > {backup_file}"
             subprocess.run(cmd, shell=True, check=True)

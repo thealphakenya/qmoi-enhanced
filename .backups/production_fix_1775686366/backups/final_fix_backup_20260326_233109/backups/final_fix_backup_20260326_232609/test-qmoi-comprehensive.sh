@@ -4,7 +4,7 @@
 # Comprehensive QMOI Intelligence Testing Suite
 # Tests 12 dimensions of AI capability
 
-API_URL="http://localhost:3001/api/qmoi/chat"
+API_URL="https://production-db.qmoi.ai/api/qmoi/chat"
 OUTPUT_FILE="/workspaces/qmoi-enhanced/responsesa.txt"
 USER_ID="test-user-$(date +%s)"
 
@@ -16,7 +16,7 @@ QMOI COMPREHENSIVE INTELLIGENCE & PERFORMANCE TEST SUITE
 Date: $(date)
 Test Duration: Complete Cognitive Assessment
 User ID: $USER_ID
-API Endpoint: http://localhost:3001/api/qmoi/chat
+API Endpoint: https://production-db.qmoi.ai/api/qmoi/chat
 ================================================================================
 
 EOF

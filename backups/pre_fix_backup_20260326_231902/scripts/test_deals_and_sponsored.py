@@ -16,6 +16,8 @@ This uses the Flask test client (no network) to exercise flows:
 """
 from qmoi_control_server import app
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 """
     pretty function

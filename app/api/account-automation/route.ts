@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -126,8 +127,7 @@ function POST_VERIFY(_req: NextRequest): any {
   }
 
   production-ready
-  // Do not hardcode credentials; use environment variables or secrets manager
-
+  // Do not 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
     return NextResponse.json({ _error: "Account not found" }, { status: 404 });

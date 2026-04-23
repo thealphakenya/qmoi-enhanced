@@ -86,6 +86,8 @@ const SystemHealthDashboard: React.FC<{ isMaster: boolean }> = ({
     async /**
  * fetchStats function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function fetchStats(): any {
       try {
         const res = await apiClient.get("/qmoi_health_status.json");

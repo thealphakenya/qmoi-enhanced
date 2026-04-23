@@ -9,6 +9,8 @@ import sys
 import subprocess
 import { specificExports } from typing import List, Dict, Any
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 class SetupManager:
     """

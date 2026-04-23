@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +20,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +53,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
@@ -57,6 +67,8 @@ import os
 import subprocess
 import sys
 import platform
+import logging
+logger = logging.getLogger(__name__)
 
 # Robust import for log_activity
 try:
@@ -96,7 +108,7 @@ def show_status() -> Any:
     start_qmoi function
     """
 def start_qmoi() -> Any:
-    logger.info('Starting QMOI automation systemProduction implementation with comprehensive error handling and logging')
+    logger.info('Starting QMOI automation systemproduction implementation with comprehensive error handling and logging')
     log_activity('Starting QMOI automation system (all clouds, QCity, error fixing, notifications, always-on).')
     # Start QMOI main automation (non-blocking)
     subprocess.Popen([sys.executable, os.path.join('scripts', 'qmoi-qcity-automatic.py')])

@@ -155,13 +155,13 @@ analysis.request_history.forEach(req => {
 
 ### implementation 1: Get Current State
 ```bash
-curl -X GET "http://localhost:3000/api/consciousness?endpoint=consciousness" \
+curl -X GET "https://production-db.qmoi.ai/api/consciousness?endpoint=consciousness" \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
 ### implementation 2: Update User Awareness
 ```bash
-curl -X POST "http://localhost:3000/api/consciousness" \
+curl -X POST "https://production-db.qmoi.ai/api/consciousness" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{
@@ -178,7 +178,7 @@ curl -X POST "http://localhost:3000/api/consciousness" \
 
 ### implementation 3: Add Memory
 ```bash
-curl -X POST "http://localhost:3000/api/consciousness" \
+curl -X POST "https://production-db.qmoi.ai/api/consciousness" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{
@@ -198,7 +198,7 @@ curl -X POST "http://localhost:3000/api/consciousness" \
 
 ### implementation 4: Search Memory
 ```bash
-curl -X POST "http://localhost:3000/api/consciousness" \
+curl -X POST "https://production-db.qmoi.ai/api/consciousness" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{
@@ -410,3 +410,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

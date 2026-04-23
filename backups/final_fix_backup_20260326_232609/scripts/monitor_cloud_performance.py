@@ -10,6 +10,8 @@ QMOI Cloud Performance Monitor
 import time
 import psutil
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 """
     monitor_cloud_performance function

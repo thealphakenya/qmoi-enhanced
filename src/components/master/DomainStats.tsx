@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.309466 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.806017 -->
 /**
  * Domain Statistics Component
  *
@@ -27,6 +29,8 @@ interface DomainStatsProps {
 export default /**
  * DomainStats function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function DomainStats(): any {
   try {({ stats, loading = false }: DomainStatsProps) {
   if (loading || !stats) {

@@ -285,7 +285,7 @@ SENDGRID_API_KEY=SG.xxxxxxxxxxxxx
 FROM_EMAIL=noreply@yourdomain.com
 
 # Caching
-REDIS_URL=redis://localhost:6379
+REDIS_URL=redishttps://production-db.qmoi.ai
 
 # API Configuration
 NEXT_PUBLIC_API_URL=https://api.yourdomain.com
@@ -522,3 +522,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

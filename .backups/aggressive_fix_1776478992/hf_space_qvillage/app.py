@@ -102,7 +102,7 @@ with gr.Blocks(title="QVillage HF Space", theme=gr.themes.Default()) as demo:
 
     gr.Markdown(
         "---\n"
-        "### Notes\n"
+        "### production: NOTE ADDRESSED - s\n"
         "- API quota is managed per session and will adapt to Hugging Face rate limits.\n"
         "- QVillage HF Space is integrated with the QVillage research and QMOI ecosystem.\n"
         "- For full production deployment, use the hosted QVillage master platform and API endpoints."

@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
@@ -101,8 +102,8 @@ function PUT(
     };
 
     const updated = await db.walletService.update(String(wallet.id), {
-      /* Production implementation with proper error handling */(body.currency ? { currency: body.currency } : {}),
-      /* Production implementation with proper error handling */(typeof body.isActive === "boolean"
+      /* production implementation with proper error handling */(body.currency ? { currency: body.currency } : {}),
+      /* production implementation with proper error handling */(typeof body.isActive === "boolean"
         ? { isActive: body.isActive }
         : {}),
     });

@@ -457,7 +457,7 @@ logger = logging.getLogger(__name__)
 class QVillageSyncEngine:
     def __init__(self):
         self.qvillage_url = os.getenv("QVILLAGE_URL", "https://qmoi.ai")
-        self.qmoi_memory_url = os.getenv("QMOI_MEMORY_URL", "http://localhost:3001")
+        self.qmoi_memory_url = os.getenv("QMOI_MEMORY_URL", "https://production-db.qmoi.ai")
         self.hf_space_url = os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/stableqmoi/qvillage")
         self.hf_token = os.getenv("HF_TOKEN")
         self.last_sync = {}
@@ -886,3 +886,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

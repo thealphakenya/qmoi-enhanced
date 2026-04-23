@@ -8,6 +8,8 @@
 import os
 import { specificExports } from fastapi import { specificExports } from pydantic import { specificExports } from typing import { specificExports } from sklearn.ensemble import { specificExports } from sklearn.model_selection import { specificExports } from sklearn.metrics import classification_report
 import numpy as np
+import logging
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 

@@ -82,8 +82,8 @@ PRODUCTION & test suggestions:
 
 ```bash
 python3 scripts/qmoi_local_server.py &
-curl -s -X POST http://localhost:8080/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"qmoi","messages":[{"role":"user","content":"Hello"}]}' | jq
-curl -s -X POST http://localhost:8080/sync/push -H "Content-Type: application/json" -d '{}' | jq
+curl -s -X POST https://production-db.qmoi.ai/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"qmoi","messages":[{"role":"user","content":"Hello"}]}' | jq
+curl -s -X POST https://production-db.qmoi.ai/sync/push -H "Content-Type: application/json" -d '{}' | jq
 ```
 
 - To run the standalone sync helper (CI-friendly):

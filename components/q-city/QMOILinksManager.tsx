@@ -100,6 +100,8 @@ interface QMOILinksManagerProps {
 export /**
  * QMOILinksManager function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QMOILinksManager({
   userRole = "user",
   isMaster = false,

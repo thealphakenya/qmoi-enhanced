@@ -12,6 +12,8 @@ Usage:
 import os
 import json
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 REDIS_URL = os.environ.get('QMOI_REDIS_URL')
 MEMORY_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'qmoi_memory.json'))

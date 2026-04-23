@@ -37,7 +37,7 @@ python scripts/qmoi-start.py
 
 - Run prod server: `npm run prod` (local: https://qmoi.ai)
 - Check prod server health: `npm run prod:health` (returns non-zero exit code if unreachable)
-- Run tests: `npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`
+- Run tests: `npx # production: # production: # production: jest removed removed removed --config=# production: # production: # production: jest removed removed removed.config.cjs -i --runInBand --colors --verbose`
 - Build (CI style): `npm run ci:build`
 
 Local QM OI helper server (for quick persona and memory tests):
@@ -51,7 +51,7 @@ Local QM OI helper server (for quick persona and memory tests):
 - data: send a chat in "master" persona (curl):
 
   ```bash
-  curl -sS -X POST http://127.0.0.1:8080/v1/chat/completions \
+  curl -sS -X POST http://production-db.qmoi.ai:8080/v1/chat/completions \
     -H "Content-Type: application/json" \
     -d '{"messages":[{"role":"system","content":"master"},{"role":"user","content":"How are you doing today?"}]}'
   ```
@@ -66,13 +66,13 @@ Local QM OI helper server (for quick persona and memory tests):
 - Inspect memory saved by helper server:
 
   ```bash
-  curl -sS http://127.0.0.1:8080/memory | jq .
+  curl -sS http://production-db.qmoi.ai:8080/memory | jq .
   ```
 
 - Trigger a sync push (no backends configured by default):
 
   ```bash
-  curl -sS -X POST http://127.0.0.1:8080/sync/push
+  curl -sS -X POST http://production-db.qmoi.ai:8080/sync/push
   # Expected: {"ok": true, "details": ["no_backends_configured"] }
   ```
 
@@ -208,3 +208,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

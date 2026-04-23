@@ -82,9 +82,9 @@
       "https://github.com/thestablekenya/qmoi-enhanced/actions/runs/19868173025)"
     ],
     "BUILD_INSTRUCTIONS.md": [
-      "http://localhost:3005",
+      "https://production-db.qmoi.ai",
       "https://qmoi.ai",
-      "http://localhost:8000"
+      "https://production-db.qmoi.ai"
     ],
     "ENHANCED_LINK_DOMAIN_SYSTEM.md": [
       "http://FUNCTIONAL-link.com",
@@ -412,7 +412,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -940,8 +940,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -1300,8 +1300,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -1484,7 +1484,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -3689,7 +3689,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -4479,7 +4479,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -7206,7 +7206,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -7591,7 +7591,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -7735,7 +7735,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -7955,8 +7955,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -9280,7 +9280,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -9413,7 +9413,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -11618,7 +11618,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -12408,7 +12408,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -15135,7 +15135,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -15520,7 +15520,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -15664,7 +15664,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -15884,8 +15884,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -18933,7 +18933,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -19461,8 +19461,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -19821,8 +19821,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -20005,7 +20005,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -22210,7 +22210,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -23000,7 +23000,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -25727,7 +25727,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -26112,7 +26112,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -26256,7 +26256,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -26476,8 +26476,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -27801,7 +27801,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -27934,7 +27934,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -30139,7 +30139,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -30929,7 +30929,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -33656,7 +33656,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -34041,7 +34041,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -34185,7 +34185,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -34405,8 +34405,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -37454,7 +37454,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -37982,8 +37982,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -38342,8 +38342,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -38526,7 +38526,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -40731,7 +40731,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -41521,7 +41521,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -44248,7 +44248,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -44633,7 +44633,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -44777,7 +44777,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -44997,8 +44997,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -46322,7 +46322,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -46455,7 +46455,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -48660,7 +48660,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -49450,7 +49450,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -52177,7 +52177,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -52562,7 +52562,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -52706,7 +52706,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -52926,8 +52926,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -55975,7 +55975,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -56503,8 +56503,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -56863,8 +56863,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -57047,7 +57047,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -59252,7 +59252,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -60042,7 +60042,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -62769,7 +62769,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -63154,7 +63154,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -63298,7 +63298,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -63518,8 +63518,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -64843,7 +64843,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -64976,7 +64976,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -67181,7 +67181,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -67971,7 +67971,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -70698,7 +70698,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -71083,7 +71083,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -71227,7 +71227,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -71447,8 +71447,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -74496,7 +74496,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -75024,8 +75024,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -75384,8 +75384,8 @@
       "https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)",
@@ -75568,7 +75568,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -77773,7 +77773,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -78563,7 +78563,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -81290,7 +81290,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -81675,7 +81675,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -81819,7 +81819,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -82039,8 +82039,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -83364,7 +83364,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -83497,7 +83497,7 @@
       "http://npm.im/graceful-fs)",
       "http://npm.im/glob)",
       "https://github.com/substack/node-mkdirp)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://www.npmjs.com/package/negotiator)",
       "https://www.npmjs.com/package/koa)",
       "https://nodejs.org/en/)",
@@ -85702,7 +85702,7 @@
       "https://github.com/sindresorhus/humanize-string)",
       "https://github.com/sindresorhus/camelcase-keys)",
       "https://metrobundler.prod/)",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map)",
       "https://github.com/facebook/metro/issues/new)",
       "https://github.com/GoogleChrome/chrome-launcher/workflows/",
       "https://img.shields.io/npm/v/chrome-launcher.svg)",
@@ -86492,7 +86492,7 @@
       "https://travis-ci.org/sindresorhus/callsites.svg?branch=master)",
       "https://v8.prod/docs/stack-trace-api)",
       "https://sindresorhus.com)",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed)",
       "https://browsersl.ist/)",
       "https://github.com/browserslist/browserslist#readme)",
       "https://github.com/danez/pirates/wiki/Projects-using-Pirates)",
@@ -89219,7 +89219,7 @@
       "https://github.com/andersem)",
       "https://github.com/haddadnj)",
       "https://github.com/babel/babel)",
-      "https://github.com/jestjs/jest)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed)",
       "https://jestjs.io/docs/configuration#transform-object-string-string)",
       "https://img.shields.io/npm/v/is-glob.svg?style=flat)",
       "https://img.shields.io/npm/dm/is-glob.svg?style=flat)",
@@ -89604,7 +89604,7 @@
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/worker_threads.html)",
       "https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options)",
-      "https://github.com/jestjs/jest/issues/11956)",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956)",
       "https://github.com/chalk/supports-color-cli)",
       "https://github.com/chalk/chalk)",
       "https://github.com/sindresorhus)",
@@ -89748,7 +89748,7 @@
       "https://github.com/infinitered/solidarity)",
       "https://github.com/gatsbyjs/gatsby)",
       "https://github.com/styled-components/styled-components)",
-      "https://github.com/facebook/jest)",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed)",
       "https://github.com/apollographql/apollo-client)",
       "https://github.com/KittyKatt/screenFetch)",
       "https://github.com/infinitered/solidarity)",
@@ -89968,8 +89968,8 @@
       "https://github.com/sindresorhus/make-dir)",
       "https://jestjs.io/)",
       "https://jestjs.io/docs/api)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)",
@@ -92908,7 +92908,7 @@
       "https://qmoi.ai",
       "https://qmoi.ai'",
       "https://qvillage.com')",
-      "http://localhost:8000'",
+      "https://production-db.qmoi.ai'",
       "https://qvillage.com/api')",
       "https://qmoi.ai/api/links/validate",
       "https://qvillage.com",
@@ -92949,8 +92949,8 @@
       "https://qmoi.ai"
     ],
     "SCRIPTSREADME.md": [
-      "http://localhost:3001",
-      "http://localhost:3001"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai"
     ],
     "production_API_REFERENCE.md": [
       "https://your-domain.vercel.app/api",
@@ -93039,7 +93039,7 @@
     "QMOI-ENHANCED-AUTOTESTS.md": [
       "https://github.com/q-city/qmoi-enhanced.git",
       "https://qmoi.ai",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://production.q-city.ai",
       "https://api-production.q-city.ai",
       "https://q-city.ai",
@@ -93102,9 +93102,9 @@
       "https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3"
     ],
     "QMOI_USER_IDENTIFICATION_SYSTEM.md": [
-      "http://localhost:3001/api/qmoi/chat-enhanced",
-      "http://localhost:3001/api/qmoi/chat-enhanced",
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "README_ENHANCED.md": [
       "https://github.com/thestablekenya/qmoi-enhanced/workflows/CI%2FCD/badge.svg)](https://github.com/thestablekenya/qmoi-enhanced/actions)",
@@ -93130,7 +93130,7 @@
       "https://qvillage.com/qcity-enterprise.html",
       "https://qvillage.com/qcity-complete.html",
       "https://qvillage.com/qcity-dashboard.html",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://qmoi.ai",
       "https://qvillage.com",
       "https://qvillage.com/qcity-enterprise.html",
@@ -93162,7 +93162,7 @@
       "https://webaim.org/resources/contrastchecker/"
     ],
     "test_paypal.js": [
-      "http://localhost:3001/api/ai"
+      "https://production-db.qmoi.ai/api/ai"
     ],
     "QMOI-AUTOMATION-COMPLETE.md": [
       "https://qmoi.ai/qmoi-revenue-dashboard"
@@ -93176,12 +93176,12 @@
       "https://qmoi.ai",
       "https://production.qmoi.ai",
       "https://qmoi.ai",
-      "http://localhost:5055"
+      "https://production-db.qmoi.ai"
     ],
     "test-ai-integrations.js": [
-      "http://localhost:3000/api/qmoi/chat",
-      "http://localhost:3000/api/qvillage",
-      "http://localhost:3000/api/qmoi-model?allStats=true"
+      "https://production-db.qmoi.ai/api/qmoi/chat",
+      "https://production-db.qmoi.ai/api/qvillage",
+      "https://production-db.qmoi.ai/api/qmoi-model?allStats=true"
     ],
     "GITHUB_RELEASES_REALTIME_GUIDE.md": [
       "https://github.com/thestablekenya/qmoi-enhanced/actions",
@@ -93209,7 +93209,7 @@
       "https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced"
     ],
     "CAMPAIGN_COMPLETION_SUMMARY.md": [
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "https://production-api.qmoi.app",
       "https://api.qmoi.app",
       "https://qvillage.com/qcity-enterprise.html",
@@ -93245,17 +93245,17 @@
       "https://qvillage.net/api/health"
     ],
     "MASTER_ONLY_FEATURES.md": [
-      "http://localhost:3001/api/qmoi/master/financial-dashboard",
-      "http://localhost:3001/api/qmoi/master/system-config",
-      "http://localhost:3001/api/qmoi/master/users",
-      "http://localhost:3001/api/qmoi/master/logs",
-      "http://localhost:3001/api/qmoi/master/trading",
-      "http://localhost:3001/api/auth/login",
-      "http://localhost:3001/api/qmoi/master/config",
-      "http://localhost:3001/api/qmoi/master/config"
+      "https://production-db.qmoi.ai/api/qmoi/master/financial-dashboard",
+      "https://production-db.qmoi.ai/api/qmoi/master/system-config",
+      "https://production-db.qmoi.ai/api/qmoi/master/users",
+      "https://production-db.qmoi.ai/api/qmoi/master/logs",
+      "https://production-db.qmoi.ai/api/qmoi/master/trading",
+      "https://production-db.qmoi.ai/api/auth/login",
+      "https://production-db.qmoi.ai/api/qmoi/master/config",
+      "https://production-db.qmoi.ai/api/qmoi/master/config"
     ],
     "SESSION_COMPLETION_SUMMARY.md": [
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai",
       "https://api.qvillage.ai",
       "https://memory.qmoi.ai",
       "https://hooks.slack.com/services/",
@@ -93263,16 +93263,16 @@
       "https://huggingface.co/spaces/stableqmoi/qvillage",
       "https://github.com/settings/tokens",
       "https://vercel.com/account/tokens",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "MONITORING.md": [
-      "http://localhost:4000/"
+      "https://production-db.qmoi.ai/"
     ],
     "MULTI_PLATFORM_BUILD_GUIDE.md": [
       "https://prodeloper.apple.com/account",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4"
     ],
     "CURLQMOIMASTERSISTERUSER.md": [
@@ -93313,9 +93313,9 @@
     ],
     "START.md": [
       "https://qmoi.ai)",
-      "http://127.0.0.1:8080/v1/chat/completions",
-      "http://127.0.0.1:8080/memory",
-      "http://127.0.0.1:8080/sync/push"
+      "http://production-db.qmoi.ai:8080/v1/chat/completions",
+      "http://production-db.qmoi.ai:8080/memory",
+      "http://production-db.qmoi.ai:8080/sync/push"
     ],
     "OPTION_A_production_READY.md": [
       "https://qmoi.ai",
@@ -93628,14 +93628,14 @@
     "BACKEND_API_TEMPLATES.md": [
       "http://localhost:$",
       "http://localhost:$",
-      "http://localhost:8000",
-      "http://localhost:8000/api/health",
-      "http://localhost:8000/api/mail",
-      "http://localhost:8000/api/emergency",
-      "http://localhost:8000/api/files",
-      "http://localhost:8000/api/media?limit=10",
-      "http://localhost:8000/api/verify",
-      "http://localhost:8000/api/youtube/download",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/mail",
+      "https://production-db.qmoi.ai/api/emergency",
+      "https://production-db.qmoi.ai/api/files",
+      "https://production-db.qmoi.ai/api/media?limit=10",
+      "https://production-db.qmoi.ai/api/verify",
+      "https://production-db.qmoi.ai/api/youtube/download",
       "https://www.youtube.com/watch?v="
     ],
     "QMOICLONEGITHUB.md": [
@@ -93674,7 +93674,7 @@
       "https://qvillage.com/health"
     ],
     "QMOI-ENHANCED-FINAL.md": [
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
       "https://github.com/stableqmoi/qmoi-ai-system",
@@ -93709,17 +93709,17 @@
       "https://github.com/qcity/ai",
       "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
       "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
-      "http://localhost:5050/api/build-apps",
-      "http://localhost:4000/api/error-fix-log",
-      "http://localhost:4000/api/logs",
-      "http://localhost:4000/api/realtime-events",
-      "http://localhost:4000/api/trigger-fix",
-      "http://localhost:4000/health",
-      "http://localhost:4000/login",
+      "https://production-db.qmoi.ai/api/build-apps",
+      "https://production-db.qmoi.ai/api/error-fix-log",
+      "https://production-db.qmoi.ai/api/logs",
+      "https://production-db.qmoi.ai/api/realtime-events",
+      "https://production-db.qmoi.ai/api/trigger-fix",
+      "https://production-db.qmoi.ai/health",
+      "https://production-db.qmoi.ai/login",
       "https://data.com/dog.jpg",
       "https://data.com/group_photo.jpg",
       "https://qmoi.ai",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml",
       "https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule",
       "https://huggingface.co/stableqmoi/qmoi",
@@ -93727,7 +93727,7 @@
       "https://production.qmoi.ai",
       "https://qmoi.ai",
       "https://qmoi.ai/qcity",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
@@ -93782,7 +93782,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
       "https://github.com/qmoi/independent-qmoi.git",
       "https://github.com/your-repo/qmoi-system.git",
-      "http://localhost:4000/",
+      "https://production-db.qmoi.ai/",
       "https://q-city.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
@@ -93822,13 +93822,13 @@
       "https://api.airtel.com/status",
       "https://your-domain.com/api/airtel/callback",
       "https://qmoi.ai/qmoi-revenue-dashboard",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://gitlab.qmoi.com",
       "https://gitpod.qmoi.com",
       "https://quantum.qmoi.com",
       "https://registry.npmjs.org/",
       "https://qmoi.ai",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://api-production.q-city.ai",
       "https://api.q-city.ai",
       "https://github.com/q-city/qmoi-enhanced.git",
@@ -93837,9 +93837,9 @@
       "https://github.com/q-city/qmoi-enhanced/wiki",
       "https://q-city.ai",
       "https://production.q-city.ai",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
       "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
       "https://github.com/stableqmoi/qmoi-ai-system",
       "https://huggingface.co/stableqmoi/qmoi-ai-system",
@@ -93939,7 +93939,7 @@
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status",
       "https://data-1234.ngrok.io/downloads/qbrowser/windows.exe",
       "https://data-1234.ngrok.io/qcity/app/latest",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://api.mybank.com/balance?account=12345",
       "https://api.mytrading.com/markets",
       "https://github.com/qmoi-ai/qmoi-space.git",
@@ -93984,7 +93984,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
@@ -94055,7 +94055,7 @@
       "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
       "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
       "https://www.bitget.com/api-doc/common/rsa-authentication.html",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://api.qmoi.app",
       "https://qmoi.ai/api/ai-self-diagnostics?fix=1",
       "https://qmoi.ai/api/whatsapp-bot?send=1",
@@ -94070,7 +94070,7 @@
       "https://discord.com/api/webhooks/your/webhook/url",
       "https://hooks.slack.com/services/your/webhook/url",
       "https://qmoi.ai",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://api-production.q-city.ai",
       "https://api.github.com",
       "https://api.q-city.ai",
@@ -94080,9 +94080,9 @@
       "https://qmoi.ai",
       "https://stable-q-ai.com",
       "https://production.stable-q-ai.com",
-      "http://localhost:8000",
-      "http://localhost:8000/automation/status",
-      "http://localhost:8000/token",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/automation/status",
+      "https://production-db.qmoi.ai/token",
       "https://qvillage.com",
       "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
       "https://github.com/your-org/q-city.git",
@@ -94310,7 +94310,7 @@
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/istanbul-lib-report",
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/istanbul-reports",
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/istanbul-reports/index.d.ts",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed",
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/stack-utils",
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/stack-utils/index.d.ts",
@@ -94873,7 +94873,7 @@
       "https://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/",
       "https://qmoi.ai",
       "https://qmoi.ai/qcity",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://man7.org/linux/man-pages/man3/wcswidth.3.html",
       "https://murzwin.com/base64vlq.html",
       "http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14",
@@ -95371,7 +95371,7 @@
       "https://github.com/DavidJDallas",
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/graceful-fs/index.d.ts",
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/istanbul-reports/index.d.ts",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed",
       "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/stack-utils/index.d.ts",
       "https://github.com/DerZade",
       "https://github.com/DianeLooney",
@@ -96691,8 +96691,8 @@
       "https://github.com/facebook/create-react-app",
       "https://github.com/facebook/flow/pull/2890",
       "https://github.com/facebook/flux/blob/2.0.2/src/invariant.js",
-      "https://github.com/facebook/jest",
-      "https://github.com/facebook/jest/tree/main/packages/jest-haste-map",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed",
+      "https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map",
       "https://github.com/facebook/jsx",
       "https://github.com/facebook/metro/issues/new",
       "https://github.com/facebook/react-native",
@@ -98760,9 +98760,9 @@
       "https://github.com/jessetane/queue/archive/4.4.0.tar.gz",
       "https://github.com/jessetane/queue/archive/5.0.0.tar.gz",
       "https://github.com/jessetane/queue/archive/6.0.1.tar.gz",
-      "https://github.com/jestjs/jest",
-      "https://github.com/jestjs/jest/issues/11956",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed",
       "https://github.com/jezell",
       "https://github.com/jhiesey",
       "https://github.com/jkomyno",
@@ -101422,30 +101422,30 @@
       "https://wzrd.in/standalone/RELEASE",
       "https://yaml.org/",
       "https://zacanger.com",
-      "http://127.0.0.1:4040/api/tunnels",
+      "http://production-db.qmoi.ai:4040/api/tunnels",
       "https://qmoi.ai",
       "https://qmoi.ai/api",
       "https://qmoi.ai/api/qcity/selfheal-npm",
       "https://qmoi.ai/qcity",
       "https://qmoi.ai/qmoi-revenue-dashboard",
-      "http://localhost:3001",
-      "http://localhost:3010",
-      "http://localhost:4000/",
-      "http://localhost:4000/api/error-fix-log",
-      "http://localhost:4000/api/logs",
-      "http://localhost:4000/api/realtime-events",
-      "http://localhost:4000/api/trigger-fix",
-      "http://localhost:4000/health",
-      "http://localhost:4000/login",
-      "http://localhost:5000",
-      "http://localhost:5050/api/build-apps",
-      "http://localhost:5055",
-      "http://localhost:7860",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
-      "http://localhost:8000",
-      "http://localhost:8000/automation/status",
-      "http://localhost:8000/token",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/",
+      "https://production-db.qmoi.ai/api/error-fix-log",
+      "https://production-db.qmoi.ai/api/logs",
+      "https://production-db.qmoi.ai/api/realtime-events",
+      "https://production-db.qmoi.ai/api/trigger-fix",
+      "https://production-db.qmoi.ai/health",
+      "https://production-db.qmoi.ai/login",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/build-apps",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/automation/status",
+      "https://production-db.qmoi.ai/token",
       "https://qvillage.com",
       "https://3cf7294944e8.ngrok-free.app",
       "https://abc123.ngrok.io/qcity/app/latest",
@@ -101612,7 +101612,7 @@
       "https://github.com/inspect-js/object-inspect/commit/2ac24",
       "https://github.com/inspect-js/object-inspect/commit/4ec88",
       "https://github.com/j",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed",
       "https://github.com/jonschlinkert/r",
       "https://github.com/jonschlinkert/repeat-st",
       "https://github.com/joyeecheung/node-dep-co",
@@ -101661,7 +101661,7 @@
       "https://api.github.com/repos/",
       "https://github.com/thestablekenya/stable-Q-ai",
       "https://github.com/thestablekenya/stable-Q-ai",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://api-inference.huggingface.co",
       "https://cloud-inference.data.com",
       "https://api.whatsapp.com/send",
@@ -101670,20 +101670,20 @@
       "https://your-domain.com/api/mpesa/result",
       "https://your-domain.com/api/mpesa/timeout",
       "https://3cf7294944e8.ngrok-free.app",
-      "http://localhost:8000",
-      "http://localhost:4000/api/error-fix-log",
-      "http://localhost:4100/api/predictions",
-      "http://localhost:4200/api/alert-prefs",
-      "http://localhost:4000/api/prodice-stats",
-      "http://localhost:4000/api/error-fix-log?range=",
-      "http://localhost:4100/api/predictions",
-      "http://localhost:4200/api/acknowledge-notification",
-      "http://localhost:4200/api/delete-notification",
-      "http://localhost:4200/api/notification-history",
-      "http://localhost:4200/api/notification-prefs",
-      "http://localhost:4200/api/respond-notification",
-      "http://localhost:4200/api/register-fcm",
-      "http://localhost:4200/api/register-pushover",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/error-fix-log",
+      "https://production-db.qmoi.ai/api/predictions",
+      "https://production-db.qmoi.ai/api/alert-prefs",
+      "https://production-db.qmoi.ai/api/prodice-stats",
+      "https://production-db.qmoi.ai/api/error-fix-log?range=",
+      "https://production-db.qmoi.ai/api/predictions",
+      "https://production-db.qmoi.ai/api/acknowledge-notification",
+      "https://production-db.qmoi.ai/api/delete-notification",
+      "https://production-db.qmoi.ai/api/notification-history",
+      "https://production-db.qmoi.ai/api/notification-prefs",
+      "https://production-db.qmoi.ai/api/respond-notification",
+      "https://production-db.qmoi.ai/api/register-fcm",
+      "https://production-db.qmoi.ai/api/register-pushover",
       "https://gitlab.com/qmoi/QMOI",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "https://api.github.com",
@@ -101768,9 +101768,9 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
       "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
       "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
-      "http://localhost:5050/api/build-apps",
+      "https://production-db.qmoi.ai/api/build-apps",
       "https://qmoi.ai",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml",
       "https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule",
       "https://huggingface.co/stableqmoi/qmoi",
@@ -101778,7 +101778,7 @@
       "https://production.qmoi.ai",
       "https://qmoi.ai",
       "https://qmoi.ai/qcity",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
@@ -101798,7 +101798,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
       "https://github.com/qmoi/independent-qmoi.git",
       "https://github.com/your-repo/qmoi-system.git",
-      "http://localhost:4000/",
+      "https://production-db.qmoi.ai/",
       "https://q-city.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
@@ -101838,13 +101838,13 @@
       "https://api.airtel.com/status",
       "https://your-domain.com/api/airtel/callback",
       "https://qmoi.ai/qmoi-revenue-dashboard",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://gitlab.qmoi.com",
       "https://gitpod.qmoi.com",
       "https://quantum.qmoi.com",
       "https://registry.npmjs.org/",
       "https://qmoi.ai",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://api-production.q-city.ai",
       "https://api.q-city.ai",
       "https://github.com/q-city/qmoi-enhanced.git",
@@ -101853,9 +101853,9 @@
       "https://github.com/q-city/qmoi-enhanced/wiki",
       "https://q-city.ai",
       "https://production.q-city.ai",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
       "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
       "https://github.com/stableqmoi/qmoi-ai-system",
       "https://huggingface.co/stableqmoi/qmoi-ai-system",
@@ -101981,10 +101981,10 @@
       "https://huggingface.co/spaces/",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status",
-      "http://127.0.0.1:4040/api/tunnels",
+      "http://production-db.qmoi.ai:4040/api/tunnels",
       "https://abc123.ngrok.io/qcity/app/latest",
       "https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://api.mybank.com/balance?account=12345",
       "https://api.mytrading.com/markets",
       "https://space.qmoi.app/",
@@ -102030,7 +102030,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
@@ -102053,7 +102053,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
       "https://www.bitget.com/api-doc/common/rsa-authentication.html",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://api.qmoi.app",
       "https://qmoi.ai/api/ai-self-diagnostics?fix=1",
       "https://qmoi.ai/api/whatsapp-bot?send=1",
@@ -102068,7 +102068,7 @@
       "https://discord.com/api/webhooks/your/webhook/url",
       "https://hooks.slack.com/services/your/webhook/url",
       "https://qmoi.ai",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://api-production.q-city.ai",
       "https://api.github.com",
       "https://api.q-city.ai",
@@ -102078,9 +102078,9 @@
       "https://qmoi.ai",
       "https://stable-q-ai.com",
       "https://production.stable-q-ai.com",
-      "http://localhost:8000",
-      "http://localhost:8000/automation/status",
-      "http://localhost:8000/token",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/automation/status",
+      "https://production-db.qmoi.ai/token",
       "https://qvillage.com",
       "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
       "https://github.com/your-org/q-city.git",
@@ -102096,24 +102096,24 @@
       "https://api.github.com/repos/",
       "https://github.com/thestablekenya/stable-Q-ai",
       "https://github.com/thestablekenya/stable-Q-ai",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://api-inference.huggingface.co",
       "https://cloud-inference.data.com",
       "https://3cf7294944e8.ngrok-free.app",
-      "http://localhost:8000",
-      "http://localhost:4000/api/error-fix-log",
-      "http://localhost:4100/api/predictions",
-      "http://localhost:4200/api/alert-prefs",
-      "http://localhost:4000/api/prodice-stats",
-      "http://localhost:4000/api/error-fix-log?range=",
-      "http://localhost:4100/api/predictions",
-      "http://localhost:4200/api/acknowledge-notification",
-      "http://localhost:4200/api/delete-notification",
-      "http://localhost:4200/api/notification-history",
-      "http://localhost:4200/api/notification-prefs",
-      "http://localhost:4200/api/respond-notification",
-      "http://localhost:4200/api/register-fcm",
-      "http://localhost:4200/api/register-pushover",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/error-fix-log",
+      "https://production-db.qmoi.ai/api/predictions",
+      "https://production-db.qmoi.ai/api/alert-prefs",
+      "https://production-db.qmoi.ai/api/prodice-stats",
+      "https://production-db.qmoi.ai/api/error-fix-log?range=",
+      "https://production-db.qmoi.ai/api/predictions",
+      "https://production-db.qmoi.ai/api/acknowledge-notification",
+      "https://production-db.qmoi.ai/api/delete-notification",
+      "https://production-db.qmoi.ai/api/notification-history",
+      "https://production-db.qmoi.ai/api/notification-prefs",
+      "https://production-db.qmoi.ai/api/respond-notification",
+      "https://production-db.qmoi.ai/api/register-fcm",
+      "https://production-db.qmoi.ai/api/register-pushover",
       "https://gitlab.com/qmoi/QMOI",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "https://api.github.com",
@@ -102138,11 +102138,11 @@
       "https://qmoi.app/space",
       "https://qmoi.space",
       "https://qmoi.space/manifest.json",
-      "http://127.0.0.1:8000",
-      "http://127.0.0.1:8080/docs",
-      "http://127.0.0.1:8080/qmessage",
-      "http://127.0.0.1:8000",
-      "http://127.0.0.1:8000",
+      "http://production-db.qmoi.ai:8000",
+      "http://production-db.qmoi.ai:8080/docs",
+      "http://production-db.qmoi.ai:8080/qmessage",
+      "http://production-db.qmoi.ai:8000",
+      "http://production-db.qmoi.ai:8000",
       "https://colab.research.google.com",
       "https://dagshub.com",
       "https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip",
@@ -102159,11 +102159,11 @@
       "https://dagshub.com",
       "https://huggingface.co",
       "https://huggingface.co/api/models",
-      "http://localhost:3010/api/app-version",
-      "http://localhost:3010/api/changelog",
-      "http://localhost:3010/api/stats",
-      "http://localhost:3010/api/update-history",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai/api/app-version",
+      "https://production-db.qmoi.ai/api/changelog",
+      "https://production-db.qmoi.ai/api/stats",
+      "https://production-db.qmoi.ai/api/update-history",
+      "https://production-db.qmoi.ai",
       "https://api.qmoi.app/health",
       "https://api.qmoi.app/v1/status",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
@@ -102207,7 +102207,7 @@
       "https://gitlab.com",
       "https://api.github.com/repos/",
       "https://api.github.com/repos/",
-      "http://localhost:4000/trigger-fix",
+      "https://production-db.qmoi.ai/trigger-fix",
       "https://api.github.com/repos/",
       "https://gitlab.com",
       "https://gitlab.com",
@@ -102360,24 +102360,24 @@
       "https://www.cloudflare.com",
       "https://www.github.com",
       "https://www.google.com",
-      "http://localhost:4000",
-      "http://localhost:4100/api/predictions",
-      "http://localhost:4200/api/notification-history",
-      "http://localhost:4200/api/notification-prefs",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/predictions",
+      "https://production-db.qmoi.ai/api/notification-history",
+      "https://production-db.qmoi.ai/api/notification-prefs",
       "https://www.google.com",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
       "https://data.com/webhook",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
-      "http://localhost:8000/health",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/health",
       "https://www.google.com",
       "https://api.vercel.com/v1/projects/",
       "https://gitlab.com",
       "https://qmoi-gitlab.qmoi.ai",
       "https://qmoi.ai/api/health",
-      "http://localhost:7860/status",
-      "http://localhost:8000/health",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai/health",
       "https://api.github.com/repos/qmoi-ai/qmoi-advanced/hooks",
       "https://huggingface.co/api/repos/",
       "https://api-inference.huggingface.co/models/",
@@ -102391,7 +102391,7 @@
       "https://aws.data.com/",
       "https://data.com/",
       "https://vercel.app/",
-      "http://localhost:3001/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "https://api.telegram.org/bot",
       "https://openapiuat.airtel.africa/auth/oauth2/token",
       "https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",
@@ -102400,17 +102400,17 @@
       "https://your-domain.com/api/pesapal/callback",
       "https://api.github.com/repos/",
       "https://api.data.com",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
       "https://data.com",
       "https://api.abuseipdb.com/api/v2/check?ipAddress=",
       "https://vuldb.com/?api=1&service=",
-      "http://localhost:7861",
+      "https://production-db.qmoi.ai",
       "https://qvillage.com",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
       "https://github.com/thestablekenya/qmoi-enhanced/releases",
@@ -102429,7 +102429,7 @@
       "https://data.com/api/login",
       "https://api.telegram.org/bot",
       "https://api.whatsapp.com/send",
-      "http://127.0.0.1:4040/api/tunnels",
+      "http://production-db.qmoi.ai:4040/api/tunnels",
       "https://cdn.jsdelivr.net/npm/chart.js",
       "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js",
       "https://api.qmoi.app/health",
@@ -102438,7 +102438,7 @@
       "https://qmoi.ai/api/qcity/remote-command",
       "https://qmoi.ai/api/qcity/status",
       "https://qmoi.ai/api/whatsapp/verify",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://openapi.vercel.sh/vercel.json",
       "https://api.vercel.com/v1",
       "https://gitlab.com/api/v4",
@@ -102447,19 +102447,19 @@
       "https://data.com/app-ios.ipa",
       "https://data.com/app-linux.AppImage",
       "https://data.com/app-windows.exe",
-      "http://localhost:5001/qmoi",
+      "https://production-db.qmoi.ai/qmoi",
       "https://api.vercel.com/v1",
       "https://gitlab.com/api/v4",
       "https://fonts.googleapis.com/css2?family=Inter:wght",
       "https://qmoi.app/space",
       "https://qmoi.space",
       "https://qmoi.space/manifest.json",
-      "http://127.0.0.1:8000",
+      "http://production-db.qmoi.ai:8000",
       "https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440",
-      "http://127.0.0.1:8080/docs",
-      "http://127.0.0.1:8080/qmessage",
-      "http://127.0.0.1:8000",
-      "http://127.0.0.1:8000",
+      "http://production-db.qmoi.ai:8080/docs",
+      "http://production-db.qmoi.ai:8080/qmessage",
+      "http://production-db.qmoi.ai:8000",
+      "http://production-db.qmoi.ai:8000",
       "https://colab.research.google.com",
       "https://dagshub.com",
       "https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip",
@@ -102480,7 +102480,7 @@
       "https://github.com/inspect-js/object-inspect/commit/2ac24d7e58cd388ad093c33249e413e05bbfd6c3",
       "https://github.com/inspect-js/object-inspect/commit/4ec8893ea9bfd28065ca3638cf6762424bf44352",
       "https://github.com/inspect-js/object-inspect/commit/b453f6ceeebf8a1b738a1029754092e0367a4134",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed",
       "https://github.com/jonschlinkert/repeat-string",
       "https://github.com/joyeecheung/node-dep-co",
       "https://github.com/layaxx",
@@ -102522,7 +102522,7 @@
       "https://github.com/inspect-js/object-inspect/commit/2ac24d7e58cd388ad093c33249e413e05bbfd6c3",
       "https://github.com/inspect-js/object-inspect/commit/4ec8893ea9bfd28065ca3638cf6762424bf44352",
       "https://github.com/inspect-js/object-inspect/commit/b453f6ceeebf8a1b738a1029754092e0367a4134",
-      "https://github.com/jestjs/jest/tree/main/packages/babel-jest",
+      "https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed",
       "https://github.com/jonschlinkert/repeat-string",
       "https://github.com/joyeecheung/node-dep-co",
       "https://github.com/layaxx",
@@ -102560,11 +102560,11 @@
       "https://dagshub.com",
       "https://huggingface.co",
       "https://huggingface.co/api/models",
-      "http://localhost:3010/api/app-version",
-      "http://localhost:3010/api/changelog",
-      "http://localhost:3010/api/stats",
-      "http://localhost:3010/api/update-history",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai/api/app-version",
+      "https://production-db.qmoi.ai/api/changelog",
+      "https://production-db.qmoi.ai/api/stats",
+      "https://production-db.qmoi.ai/api/update-history",
+      "https://production-db.qmoi.ai",
       "https://api.qmoi.app/health",
       "https://api.qmoi.app/v1/status",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
@@ -102611,7 +102611,7 @@
       "https://gitlab.com",
       "https://api.github.com/repos/",
       "https://api.github.com/repos/",
-      "http://localhost:4000/trigger-fix",
+      "https://production-db.qmoi.ai/trigger-fix",
       "https://api.github.com/repos/",
       "https://gitlab.com",
       "https://gitlab.com",
@@ -102747,7 +102747,7 @@
       "https://api.gitpod.io/v1",
       "https://gitlab.com/api/v4",
       "https://api.telegram.org/bot",
-      "http://localhost:4040/api/tunnels",
+      "https://production-db.qmoi.ai/api/tunnels",
       "https://colab.research.google.com",
       "https://dagshub.com",
       "https://huggingface.co",
@@ -102768,19 +102768,19 @@
       "https://www.github.com",
       "https://www.google.com",
       "https://www.google.com",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
       "https://data.com/webhook",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
-      "http://localhost:8000/health",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/health",
       "https://www.google.com",
       "https://api.vercel.com/v1/projects/",
       "https://gitlab.com",
       "https://qmoi-gitlab.qmoi.ai",
       "https://qmoi.ai/api/health",
-      "http://localhost:7860/status",
-      "http://localhost:8000/health",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai/health",
       "https://api.github.com/repos/qmoi-ai/qmoi-advanced/hooks",
       "https://huggingface.co/api/repos/",
       "https://api-inference.huggingface.co/models/",
@@ -102796,7 +102796,7 @@
       "https://indexing.googleapis.com/v3/urlNotifications:publish",
       "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrl?apikey=",
       "https://vercel.app/",
-      "http://localhost:3001/api/health",
+      "https://production-db.qmoi.ai/api/health",
       "https://api.telegram.org/bot",
       "https://openapiuat.airtel.africa/auth/oauth2/token",
       "https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",
@@ -102805,7 +102805,7 @@
       "https://your-domain.com/api/pesapal/callback",
       "https://api.github.com/repos/",
       "https://api.data.com",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
@@ -102813,10 +102813,10 @@
       "https://data.com",
       "https://api.abuseipdb.com/api/v2/check?ipAddress=",
       "https://vuldb.com/?api=1&service=",
-      "http://localhost:7861",
+      "https://production-db.qmoi.ai",
       "https://qvillage.com",
-      "http://localhost:7860/status",
-      "http://localhost:7861",
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
       "https://github.com/thestablekenya/qmoi-enhanced/releases",
@@ -102824,7 +102824,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
-      "http://localhost:8000/payments/webhook",
+      "https://production-db.qmoi.ai/payments/webhook",
       "https://api.pesapal.com",
       "https://ws.binaryws.com/websockets/v3",
       "https://github.com/your-org/stable-Q-ai",
@@ -102841,7 +102841,7 @@
       "https://api.cashon.data",
       "https://api.exchangerate.host",
       "https://api.exchangerate.host/latest?base=",
-      "http://127.0.0.1:%d",
+      "http://production-db.qmoi.ai:%d",
       "https://api.whatsapp.com/send",
       "https://cdn.jsdelivr.net/npm/chart.js",
       "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js",
@@ -102852,7 +102852,7 @@
       "https://qmoi.ai/api/[qcity](https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)/status",
       "https://qmoi.ai/api/whatsapp/verify",
       "https://data.com/ABC_DEF",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://releases.qmoi.app/",
       "https://openapi.vercel.sh/vercel.json",
       "https://api.vercel.com/v1",
@@ -102862,7 +102862,7 @@
       "https://data.com/app-ios.ipa",
       "https://data.com/app-linux.AppImage",
       "https://data.com/app-windows.exe",
-      "http://localhost:5001/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)"
+      "https://production-db.qmoi.ai/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)"
     ],
     "QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md": [
       "https://qmoi.ai/api/admin/autofix/scan",
@@ -102895,7 +102895,7 @@
       "https://qmoi.ai"
     ],
     "DELIVERABLES_FINAL_INVENTORY.md": [
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai",
       "https://api.qvillage.ai",
       "https://memory.qmoi.ai",
       "https://huggingface.co/new-space"
@@ -102933,8 +102933,8 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
     ],
     "QMOI-ENHANCED-COMPLETE.md": [
-      "http://localhost:7861",
-      "http://localhost:7860/status"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/status"
     ],
     "RBAC_IMPLEMENTATION_SUMMARY.md": [
       "https://qmoi.ai/api/auth/login",
@@ -102989,7 +102989,7 @@
       "https://qmoi.app",
       "https://qmoi.ai/api/health",
       "https://qmoi.app/api/health",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://qmoi.app:3001",
       "https://nextjs.org/docs)",
       "https://pm2.keymetrics.io/docs)",
@@ -103007,7 +103007,7 @@
       "https://huggingface.co/new-space",
       "https://api.qvillage.ai",
       "https://memory.qmoi.ai",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai"
     ],
     "RELEASE_v1.2.5_INSPECTION.md": [
       "https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-ai",
@@ -103037,7 +103037,7 @@
       "https://qvillage.com/qcity-complete.html",
       "https://qvillage.com/qcity-dashboard.html",
       "https://qvillage.com",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://qvillage.com/health",
       "https://qvillage.com/qcity-enterprise.html**"
     ],
@@ -103072,7 +103072,7 @@
       "https://qvillage.ai",
       "https://qvillage.ai/login?session=",
       "https://qmoi.ai",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://huggingface.co/spaces/stableqmoi/qvillage",
       "https://api.qvillage.ai",
       "https://arxiv.org/abs/",
@@ -103128,7 +103128,7 @@
       "https://qmoi.ai/admin/master/login"
     ],
     "main.js": [
-      "http://localhost:8000"
+      "https://production-db.qmoi.ai"
     ],
     "GITHUB_RELEASES_GUIDE.md": [
       "https://github.com/thestablekenya/qmoi-ai",
@@ -103176,7 +103176,7 @@
       "https://qmoi.ai"
     ],
     "QMOI_USER_IDENTIFICATION_INDEX.md": [
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "RELEASE_v1.2.5_PUBLISH_REPORT.md": [
       "https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.5"
@@ -103255,7 +103255,7 @@
     ],
     "APP_FIX_ACTION_PLAN.md": [
       "https://builds.data.com/qmoi-ai/latest/android/release.apk",
-      "http://localhost:8000"
+      "https://production-db.qmoi.ai"
     ],
     "QUICK_TEST_START.md": [
       "https://qmoi.ai"
@@ -103292,7 +103292,7 @@
       "http://localhost/api/"
     ],
     "qmoi-test-runner.js": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "QMOIREGISTRY.md": [
       "https://api.mybank.com/balance?account=12345",
@@ -103337,7 +103337,7 @@
       "https://qvillage.com/qcity-complete.html",
       "https://qvillage.com/qcity-dashboard.html",
       "https://qvillage.com/",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://qmoi.ai",
       "https://qvillage.com/qcity-enterprise.html",
       "https://qvillage.com/qcity-complete.html",
@@ -103355,7 +103355,7 @@
       "https://qvillage.com/[qcity](https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)-enterprise.html"
     ],
     "CMDCOMMANDS.md": [
-      "http://localhost:5050/api/build-apps"
+      "https://production-db.qmoi.ai/api/build-apps"
     ],
     "Qstore.md": [
       "https://Qstore.qmoi.ai",
@@ -103416,13 +103416,13 @@
       "https://qmoi.ai/api/health')"
     ],
     "QMOI-ENHANCED-AUTOMATION.md": [
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://registry.npmjs.org/",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://gitlab.qmoi.com",
       "https://gitpod.qmoi.com",
       "https://quantum.qmoi.com",
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "QMOINGROK.md": [
       "https://data-1234.ngrok.io/downloads/qbrowser/windows.exe",
@@ -103489,17 +103489,17 @@
       "https://qmoi.ai/admin"
     ],
     "USER_SYSTEM_QUICK_REFERENCE.md": [
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "cypress.config.ts": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "QMOICLONEHUGGINGFACE.md": [
       "https://huggingface.qmoi.com"
     ],
     "VERIFICATION_COMPLETE_2026-01-15.md": [
-      "http://localhost:3001",
-      "http://localhost:3001"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai"
     ],
     "RELEASE_v1.2.3_COMPLETE.md": [
       "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3",
@@ -103622,7 +103622,7 @@
       "https://master.qmoi.com/api/emails/auto-validate](https://master.qmoi.com/api/emails/auto-validate)"
     ],
     "test-autoprod-enhanced.js": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "BUILD_INSTRUCTIONS_production.md": [
       "https://qmoi.ai"
@@ -103645,7 +103645,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi",
       "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi",
       "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi",
@@ -103790,7 +103790,7 @@
       "https://qvillage.com/[qcity](https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)-enterprise.html**"
     ],
     "QMOIQCITYAUTOMATIC.md": [
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "SESSION_COMPLETION_REPORT_DONES_production_READY.md": [
       "https://qmoi.ai",
@@ -103802,13 +103802,13 @@
       "https://qmoi.ai"
     ],
     "QMOI_USER_IDENTIFICATION_IMPLEMENTATION_SUMMARY.md": [
-      "http://localhost:3001/api/qmoi/chat-enhanced",
-      "http://localhost:3001/api/qmoi/chat-enhanced",
-      "http://localhost:3001/api/qmoi/chat-enhanced?userId=master",
-      "http://localhost:3001/api/qmoi/chat-enhanced",
-      "http://localhost:3001/api/qmoi/chat-enhanced",
-      "http://localhost:3001/api/qmoi/chat-enhanced",
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced?userId=master",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced",
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "QUICK_ACTION_CHECKLIST.md": [
       "https://github.com/thestablekenya/qmoi-enhanced/releases",
@@ -103833,11 +103833,11 @@
       "https://qmoi.ai/api/chat/enhanced"
     ],
     "prodCOMMANDS.md": [
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)",
-      "http://localhost:8001/status",
-      "http://localhost:8001/health"
+      "https://production-db.qmoi.ai/status",
+      "https://production-db.qmoi.ai/health"
     ],
     "production_IMPLEMENTATION.md": [
       "https://supabase.com",
@@ -103869,20 +103869,20 @@
       "https://api.vercel.com/v1"
     ],
     "FAMILY_FEATURES_GUIDE.md": [
-      "http://localhost:3001/api/qmoi/family/wallet/request-withdrawal",
-      "http://localhost:3001/api/qmoi/family/wallet/approve-withdrawal",
-      "http://localhost:3001/api/qmoi/family/wallet/status",
-      "http://localhost:3001/api/qmoi/family/projects",
-      "http://localhost:3001/api/qmoi/family/projects/proj_001",
-      "http://localhost:3001/api/qmoi/family/projects",
-      "http://localhost:3001/api/qmoi/family/calendar",
-      "http://localhost:3001/api/qmoi/family/calendar",
-      "http://localhost:3001/api/qmoi/family/calendar/event_001/reminder",
-      "http://localhost:3001/api/qmoi/family/messages",
-      "http://localhost:3001/api/qmoi/family/messages",
-      "http://localhost:3001/api/qmoi/family/messages/search?query=project",
-      "http://localhost:3001/api/qmoi/family/settings",
-      "http://localhost:3001/api/qmoi/family/settings/personal"
+      "https://production-db.qmoi.ai/api/qmoi/family/wallet/request-withdrawal",
+      "https://production-db.qmoi.ai/api/qmoi/family/wallet/approve-withdrawal",
+      "https://production-db.qmoi.ai/api/qmoi/family/wallet/status",
+      "https://production-db.qmoi.ai/api/qmoi/family/projects",
+      "https://production-db.qmoi.ai/api/qmoi/family/projects/proj_001",
+      "https://production-db.qmoi.ai/api/qmoi/family/projects",
+      "https://production-db.qmoi.ai/api/qmoi/family/calendar",
+      "https://production-db.qmoi.ai/api/qmoi/family/calendar",
+      "https://production-db.qmoi.ai/api/qmoi/family/calendar/event_001/reminder",
+      "https://production-db.qmoi.ai/api/qmoi/family/messages",
+      "https://production-db.qmoi.ai/api/qmoi/family/messages",
+      "https://production-db.qmoi.ai/api/qmoi/family/messages/search?query=project",
+      "https://production-db.qmoi.ai/api/qmoi/family/settings",
+      "https://production-db.qmoi.ai/api/qmoi/family/settings/personal"
     ],
     "VERCEL_DEPLOYMENT_STATUS.md": [
       "https://vercel.com/oauth/prodice?user_code=YOUR_CODE",
@@ -103895,11 +103895,11 @@
       "https://github.com/thestablekenya/qmoi-enhanced",
       "https://[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced.vercel.app"
     ],
-    "jest.setup.js": [
+    "# production: # production: # production: jest removed removed removed.setup.js": [
       "http://localhost"
     ],
     "QVILLAGE_IMPLEMENTATION_SUMMARY.md": [
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai",
       "https://huggingface.co/new-space",
       "https://api.qvillage.ai",
       "https://memory.qmoi.ai",
@@ -104010,7 +104010,7 @@
       "https://qvillage.com/qmoi-space.html",
       "https://qvillage.com/q-stable.html",
       "https://qmoi.ai",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -104153,37 +104153,37 @@
       "https://github.com/stableqmoi/qmoi-enhanced/actions"
     ],
     "MANIFEST_AND_DEPLOYMENT_GUIDE.md": [
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai",
       "https://api.qvillage.ai",
       "https://memory.qmoi.ai",
       "https://hooks.slack.com/services/",
       "https://huggingface.co/new-space",
       "https://huggingface.co/spaces/stableqmoi/qvillage",
-      "http://localhost:7860",
-      "http://localhost:7860"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai"
     ],
     "INTEGRATION_GUIDE.md": [
-      "http://localhost:8000)",
+      "https://production-db.qmoi.ai)",
       "https://qvillage.com/qcity-enterprise.html",
       "https://qmoi.ai",
-      "http://localhost:8000/api/mail",
+      "https://production-db.qmoi.ai/api/mail",
       "https://qvillage.com/qcity-enterprise.html",
       "https://qvillage.com/qcity-enterprise.html",
       "https://qvillage.com/qcity-enterprise.html",
       "https://qvillage.com/qcity-enterprise.html",
-      "http://localhost:5000",
-      "http://localhost:8000/api/mail'",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/mail'",
       "https://qvillage.com'",
-      "http://localhost:8000/api/health",
-      "http://localhost:8000/api/health",
-      "http://localhost:8000",
-      "http://localhost:5000",
-      "http://localhost:8000/api/mail",
-      "http://localhost:8000/api/files",
-      "http://localhost:8000/api/health",
-      "http://localhost:8000/api/media?limit=10",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/api/mail",
+      "https://production-db.qmoi.ai/api/files",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/media?limit=10",
       "https://www.postman.com/downloads/",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
       "https://qmoi.ai",
       "https://production-api.data.com",
       "https://api.data.com"
@@ -104245,16 +104245,16 @@
       "https://qmoi-enhanced.vercel.app/api/qvillage/models/register-hf",
       "https://qmoi-enhanced.vercel.app/api/qvillage/models/sync-hf",
       "https://qvillage.qmoi.app",
-      "http://localhost:8000/health",
+      "https://production-db.qmoi.ai/health",
       "https://qmoi-enhanced.vercel.app/api/qvillage/models/metrics"
     ],
     "CURLCOMMANDS.md": [
-      "http://localhost:4000/health",
-      "http://localhost:4000/api/realtime-events",
-      "http://localhost:4000/api/trigger-fix",
-      "http://localhost:4000/api/error-fix-log",
-      "http://localhost:4000/api/logs",
-      "http://localhost:4000/login",
+      "https://production-db.qmoi.ai/health",
+      "https://production-db.qmoi.ai/api/realtime-events",
+      "https://production-db.qmoi.ai/api/trigger-fix",
+      "https://production-db.qmoi.ai/api/error-fix-log",
+      "https://production-db.qmoi.ai/api/logs",
+      "https://production-db.qmoi.ai/login",
       "https://data.com/dog.jpg",
       "https://data.com/group_photo.jpg"
     ],
@@ -104283,7 +104283,7 @@
       "https://github.com/trufflesecurity/trufflehog)"
     ],
     "ENHANCEMENT_COMPLETE_SUMMARY.md": [
-      "http://localhost:3001/api/qmoi/chat-enhanced"
+      "https://production-db.qmoi.ai/api/qmoi/chat-enhanced"
     ],
     "QMOI_TRACKS_SYSTEM.md": [
       "https://qcity.qmoi.ai')"
@@ -104419,7 +104419,7 @@
       "https://qvillage.qmoi.app"
     ],
     "PHASE_4_QVILLAGE_HF_COMPLETE.md": [
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai",
       "https://github.com/stableqmoi/qmoi-enhanced.git",
       "https://api.qvillage.ai",
       "https://memory.qmoi.ai",
@@ -104498,10 +104498,10 @@
       "https://qmoi.ai/admin"
     ],
     "docs/API.md": [
-      "http://localhost:8000/token",
-      "http://localhost:8000/automation/status",
-      "http://localhost:8000'",
-      "http://localhost:8000"
+      "https://production-db.qmoi.ai/token",
+      "https://production-db.qmoi.ai/automation/status",
+      "https://production-db.qmoi.ai'",
+      "https://production-db.qmoi.ai"
     ],
     "docs/IMPLEMENTATION_CHECKLIST.md": [
       "https://qmoi.ai/admin"
@@ -105401,8 +105401,8 @@
       "https://raw.githubusercontent.com/tabrindle/envinfo/master/logo.png",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)](https://codecov.io/gh/sinonjs/commons)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)](https://travis-ci.org/isaacs/node-glob/)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)](https://ci.appveyor.com/project/isaacs/node-glob)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)](https://coveralls.io/github/isaacs/node-glob?branch=master)",
@@ -105958,8 +105958,8 @@
       "https://raw.githubusercontent.com/tabrindle/envinfo/master/logo.png",
       "https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg)](https://codecov.io/gh/sinonjs/commons)",
       "https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility)",
-      "https://npmjs.com/package/@types/jest)",
-      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest)",
+      "https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed)",
+      "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed)",
       "https://travis-ci.org/isaacs/node-glob.svg?branch=master)](https://travis-ci.org/isaacs/node-glob/)",
       "https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)](https://ci.appveyor.com/project/isaacs/node-glob)",
       "https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github)](https://coveralls.io/github/isaacs/node-glob?branch=master)",
@@ -106246,8 +106246,8 @@
       "https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)-artifacts"
     ],
     "qvillage/README.md": [
-      "http://localhost:8000",
-      "http://localhost:8000/gradio"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/gradio"
     ],
     "qmoi-space/index.html": [
       "https://qmoi.space"
@@ -106296,13 +106296,13 @@
       "https://www.google.com"
     ],
     "components/WifiPanel.tsx": [
-      "http://localhost:5001",
-      "http://localhost:5001",
-      "http://localhost:5001/monitor",
-      "http://localhost:5001/analytics",
-      "http://localhost:5001/analytics/hourly",
-      "http://localhost:5001/export-analytics",
-      "http://localhost:5001/alert"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/monitor",
+      "https://production-db.qmoi.ai/analytics",
+      "https://production-db.qmoi.ai/analytics/hourly",
+      "https://production-db.qmoi.ai/export-analytics",
+      "https://production-db.qmoi.ai/alert"
     ],
     "components/DownloadQApp.tsx": [
       "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.apk",
@@ -106346,57 +106346,57 @@
       "https://data.com"
     ],
     "mobile/App.js": [
-      "http://localhost:4000/api/error-fix-log')",
-      "http://localhost:4100/api/predictions')"
+      "https://production-db.qmoi.ai/api/error-fix-log')",
+      "https://production-db.qmoi.ai/api/predictions')"
     ],
     "mobile/components/AlertSettingsScreen.js": [
-      "http://localhost:4200/api/alert-prefs')",
-      "http://localhost:4200/api/alert-prefs'"
+      "https://production-db.qmoi.ai/api/alert-prefs')",
+      "https://production-db.qmoi.ai/api/alert-prefs'"
     ],
     "mobile/components/AnalyticsScreen.js": [
-      "http://localhost:4000/api/error-fix-log?range=$",
-      "http://localhost:4100/api/predictions",
-      "http://localhost:4000/api/prodice-stats"
+      "https://production-db.qmoi.ai/api/error-fix-log?range=$",
+      "https://production-db.qmoi.ai/api/predictions",
+      "https://production-db.qmoi.ai/api/prodice-stats"
     ],
     "mobile/components/NotificationScreen.js": [
-      "http://localhost:4200/api/notification-history",
-      "http://localhost:4200/api/notification-prefs",
-      "http://localhost:4200/api/notification-prefs",
-      "http://localhost:4200/api/acknowledge-notification",
-      "http://localhost:4200/api/delete-notification",
-      "http://localhost:4200/api/respond-notification"
+      "https://production-db.qmoi.ai/api/notification-history",
+      "https://production-db.qmoi.ai/api/notification-prefs",
+      "https://production-db.qmoi.ai/api/notification-prefs",
+      "https://production-db.qmoi.ai/api/acknowledge-notification",
+      "https://production-db.qmoi.ai/api/delete-notification",
+      "https://production-db.qmoi.ai/api/respond-notification"
     ],
     "mobile/utils/pushNotifications.js": [
-      "http://localhost:4200/api/register-pushover",
-      "http://localhost:4200/api/register-fcm"
+      "https://production-db.qmoi.ai/api/register-pushover",
+      "https://production-db.qmoi.ai/api/register-fcm"
     ],
     "templates/dashboard.html": [
       "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js",
       "https://cdn.jsdelivr.net/npm/chart.js"
     ],
     "cypress/e2e/user-flows.cy.ts": [
-      "http://localhost:3000",
-      "http://localhost:3000",
-      "http://localhost:3000",
-      "http://localhost:3000",
-      "http://localhost:3000/dashboard/wallets",
-      "http://localhost:3000/dashboard/wallets",
-      "http://localhost:3000/dashboard/wallets",
-      "http://localhost:3000/dashboard/profile",
-      "http://localhost:3000",
-      "http://localhost:3000/dashboard/pay",
-      "http://localhost:3000/dashboard/pay",
-      "http://localhost:3000/dashboard/pay",
-      "http://localhost:3000/dashboard/pay",
-      "http://localhost:3000/dashboard",
-      "http://localhost:3000",
-      "http://localhost:3000/dashboard",
-      "http://localhost:3000",
-      "http://localhost:3000/dashboard"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/dashboard/wallets",
+      "https://production-db.qmoi.ai/dashboard/wallets",
+      "https://production-db.qmoi.ai/dashboard/wallets",
+      "https://production-db.qmoi.ai/dashboard/profile",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/dashboard/pay",
+      "https://production-db.qmoi.ai/dashboard/pay",
+      "https://production-db.qmoi.ai/dashboard/pay",
+      "https://production-db.qmoi.ai/dashboard/pay",
+      "https://production-db.qmoi.ai/dashboard",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/dashboard",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/dashboard"
     ],
     "cypress/support/commands.ts": [
-      "http://localhost:3000",
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai"
     ],
     "deploy/README.md": [
       "https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)"
@@ -106785,14 +106785,14 @@
       "https://api.gitpod.io/v1"
     ],
     "tests/qmoi-chat-api.test.ts": [
-      "http://127.0.0.1:3000"
+      "http://production-db.qmoi.ai:3000"
     ],
     "tests/handlers.integration.test.ts": [
       "http://localhost/api/qmoi/status",
       "http://localhost/api/qmoi/status"
     ],
     "tests/ui/qmoi_ui_autotest.spec.js": [
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/QMOISPACEprod.md": [
       "https://github.com/qmoi-ai/qmoi-space.git",
@@ -106839,8 +106839,8 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa"
     ],
     "_archive_qmoi-enhanced/SCRIPTSREADME.md": [
-      "http://localhost:3001",
-      "http://localhost:3001"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/QMOIALLPLATFORMS.md": [
       "https://qcity.qmoi.app/"
@@ -106848,7 +106848,7 @@
     "_archive_qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md": [
       "https://github.com/q-city/qmoi-enhanced.git",
       "https://qmoi.ai",
-      "http://localhost:3001",
+      "https://production-db.qmoi.ai",
       "https://production.q-city.ai",
       "https://api-production.q-city.ai",
       "https://q-city.ai",
@@ -106868,7 +106868,7 @@
       "https://qmoi.ai",
       "https://production.qmoi.ai",
       "https://qmoi.ai",
-      "http://localhost:5055"
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/QCITYREADME.md": [
       "https://q-city.ai"
@@ -106881,7 +106881,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage)"
     ],
     "_archive_qmoi-enhanced/MONITORING.md": [
-      "http://localhost:4000/"
+      "https://production-db.qmoi.ai/"
     ],
     "_archive_qmoi-enhanced/QMOIAPPS.md": [
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -107052,7 +107052,7 @@
       "https://github.qmoi.com"
     ],
     "_archive_qmoi-enhanced/QMOI-ENHANCED-FINAL.md": [
-      "http://localhost:7860",
+      "https://production-db.qmoi.ai",
       "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
       "https://github.com/stableqmoi/qmoi-ai-system",
@@ -107088,8 +107088,8 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
     ],
     "_archive_qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md": [
-      "http://localhost:7861",
-      "http://localhost:7860/status"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/status"
     ],
     "_archive_qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md": [
       "https://huggingface.co/join))",
@@ -107119,7 +107119,7 @@
       "https://your-app.vercel.app"
     ],
     "_archive_qmoi-enhanced/main.js": [
-      "http://localhost:8000"
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/WPA.md": [
       "https://api.qmoi.app"
@@ -107167,7 +107167,7 @@
       "https://api.mybank.com/balance?account=12345"
     ],
     "_archive_qmoi-enhanced/CMDCOMMANDS.md": [
-      "http://localhost:5050/api/build-apps"
+      "https://production-db.qmoi.ai/api/build-apps"
     ],
     "_archive_qmoi-enhanced/Qstore.md": [
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
@@ -107207,18 +107207,18 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)"
     ],
     "_archive_qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md": [
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://registry.npmjs.org/",
-      "http://localhost:3010",
+      "https://production-db.qmoi.ai",
       "https://gitlab.qmoi.com",
       "https://gitpod.qmoi.com",
       "https://quantum.qmoi.com",
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/QMOINGROK.md": [
       "https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe",
       "https://abc123.ngrok.io/qcity/app/latest",
-      "http://127.0.0.1:4040/api/tunnels)"
+      "http://production-db.qmoi.ai:4040/api/tunnels)"
     ],
     "_archive_qmoi-enhanced/QMOICLONEHUGGINGFACE.md": [
       "https://huggingface.qmoi.com"
@@ -107244,7 +107244,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
-      "http://localhost:5055",
+      "https://production-db.qmoi.ai",
       "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi",
       "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi",
       "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi",
@@ -107257,14 +107257,14 @@
       "https://github.com/thestablekenya/stable-Q-ai/releases)"
     ],
     "_archive_qmoi-enhanced/QMOIQCITYAUTOMATIC.md": [
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md": [
       "https://hooks.slack.com/services/...'",
       "https://discord.com/api/webhooks/...'"
     ],
     "_archive_qmoi-enhanced/prodCOMMANDS.md": [
-      "http://localhost:5000](http://localhost:5000)",
+      "https://production-db.qmoi.ai](https://production-db.qmoi.ai)",
       "https://qmoi.ai/qcity](https://qmoi.ai/qcity)",
       "https://qmoi.ai](https://qmoi.ai)"
     ],
@@ -107333,10 +107333,10 @@
       "https://gitlab.com/api/v4"
     ],
     "_archive_qmoi-enhanced/docs/API.md": [
-      "http://localhost:8000/token",
-      "http://localhost:8000/automation/status",
-      "http://localhost:8000'",
-      "http://localhost:8000"
+      "https://production-db.qmoi.ai/token",
+      "https://production-db.qmoi.ai/automation/status",
+      "https://production-db.qmoi.ai'",
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/docs/MONITORING_SYSTEM.md": [
       "https://qvillage.com",
@@ -107386,13 +107386,13 @@
       "https://www.google.com"
     ],
     "_archive_qmoi-enhanced/components/WifiPanel.tsx": [
-      "http://localhost:5001",
-      "http://localhost:5001",
-      "http://localhost:5001/monitor",
-      "http://localhost:5001/analytics",
-      "http://localhost:5001/analytics/hourly",
-      "http://localhost:5001/export-analytics",
-      "http://localhost:5001/alert"
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai/monitor",
+      "https://production-db.qmoi.ai/analytics",
+      "https://production-db.qmoi.ai/analytics/hourly",
+      "https://production-db.qmoi.ai/export-analytics",
+      "https://production-db.qmoi.ai/alert"
     ],
     "_archive_qmoi-enhanced/components/DownloadQApp.tsx": [
       "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.apk'",
@@ -107430,29 +107430,29 @@
       "https://qmoi.app/download"
     ],
     "_archive_qmoi-enhanced/mobile/App.js": [
-      "http://localhost:4000/api/error-fix-log')",
-      "http://localhost:4100/api/predictions')"
+      "https://production-db.qmoi.ai/api/error-fix-log')",
+      "https://production-db.qmoi.ai/api/predictions')"
     ],
     "_archive_qmoi-enhanced/mobile/components/AlertSettingsScreen.js": [
-      "http://localhost:4200/api/alert-prefs')",
-      "http://localhost:4200/api/alert-prefs'"
+      "https://production-db.qmoi.ai/api/alert-prefs')",
+      "https://production-db.qmoi.ai/api/alert-prefs'"
     ],
     "_archive_qmoi-enhanced/mobile/components/AnalyticsScreen.js": [
-      "http://localhost:4000/api/error-fix-log?range=$",
-      "http://localhost:4100/api/predictions",
-      "http://localhost:4000/api/prodice-stats"
+      "https://production-db.qmoi.ai/api/error-fix-log?range=$",
+      "https://production-db.qmoi.ai/api/predictions",
+      "https://production-db.qmoi.ai/api/prodice-stats"
     ],
     "_archive_qmoi-enhanced/mobile/components/NotificationScreen.js": [
-      "http://localhost:4200/api/notification-history",
-      "http://localhost:4200/api/notification-prefs",
-      "http://localhost:4200/api/notification-prefs",
-      "http://localhost:4200/api/acknowledge-notification",
-      "http://localhost:4200/api/delete-notification",
-      "http://localhost:4200/api/respond-notification"
+      "https://production-db.qmoi.ai/api/notification-history",
+      "https://production-db.qmoi.ai/api/notification-prefs",
+      "https://production-db.qmoi.ai/api/notification-prefs",
+      "https://production-db.qmoi.ai/api/acknowledge-notification",
+      "https://production-db.qmoi.ai/api/delete-notification",
+      "https://production-db.qmoi.ai/api/respond-notification"
     ],
     "_archive_qmoi-enhanced/mobile/utils/pushNotifications.js": [
-      "http://localhost:4200/api/register-pushover",
-      "http://localhost:4200/api/register-fcm"
+      "https://production-db.qmoi.ai/api/register-pushover",
+      "https://production-db.qmoi.ai/api/register-fcm"
     ],
     "_archive_qmoi-enhanced/templates/dashboard.html": [
       "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js",
@@ -107468,21 +107468,21 @@
       "https://api.gitpod.io/v1"
     ],
     "_archive_qmoi-enhanced/tests/ui/qmoi_ui_autotest.spec.js": [
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/routes/api/qmoi/autoprod.ts": [
       "https://stable-q-ai.vercel.app"
     ],
     "_archive_qmoi-enhanced/huggingface_space/inferenceProviders.js": [
       "https://api-inference.huggingface.co",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://cloud-inference.data.com"
     ],
     "_archive_qmoi-enhanced/public/qcity.html": [
       "https://api.qcity.local"
     ],
     "_archive_qmoi-enhanced/hooks/useTTCVoice.ts": [
-      "http://localhost:5002/tts"
+      "https://production-db.qmoi.ai/tts"
     ],
     "_archive_qmoi-enhanced/qmoi-space-pwa/index.html": [
       "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
@@ -107507,7 +107507,7 @@
       "https://gitpod.io/#$"
     ],
     "_archive_qmoi-enhanced/scripts/qmoi_media_orchestrator.js": [
-      "http://localhost:3001/api/health"
+      "https://production-db.qmoi.ai/api/health"
     ],
     "_archive_qmoi-enhanced/scripts/qmoi_self_test_runner.js": [
       "https://api.data.com']"
@@ -107523,7 +107523,7 @@
       "https://api.github.com/repos/$"
     ],
     "_archive_qmoi-enhanced/scripts/github_status_monitor.js": [
-      "http://localhost:4000/trigger-fix",
+      "https://production-db.qmoi.ai/trigger-fix",
       "https://api.github.com/repos/$"
     ],
     "_archive_qmoi-enhanced/scripts/qmoi_master_website_automation.js": [
@@ -107586,17 +107586,17 @@
       "https://your-app.vercel.app)"
     ],
     "_archive_qmoi-enhanced/scripts/qmoi_dashboard.js": [
-      "http://localhost:4100/api/predictions",
-      "http://localhost:4200/api/notification-prefs",
-      "http://localhost:4200/api/notification-history",
-      "http://localhost:4200/api/notification-prefs",
-      "http://localhost:4000"
+      "https://production-db.qmoi.ai/api/predictions",
+      "https://production-db.qmoi.ai/api/notification-prefs",
+      "https://production-db.qmoi.ai/api/notification-history",
+      "https://production-db.qmoi.ai/api/notification-prefs",
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/scripts/qmoi_simple_autotest.js": [
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "_archive_qmoi-enhanced/scripts/notify-telegram.js": [
       "https://github.com/thestablekenya/stable-Q-ai/releases",
@@ -107674,14 +107674,14 @@
     ],
     "_archive_qmoi-enhanced/scripts/deploy/vercel_auto_deploy.js": [
       "https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git",
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/health"
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/health"
     ],
     "_archive_qmoi-enhanced/scripts/services/platform_discovery.ts": [
       "https://data.com"
     ],
     "_archive_qmoi-enhanced/scripts/services/comprehensive_test_runner.ts": [
-      "http://localhost:3000$"
+      "https://production-db.qmoi.ai$"
     ],
     "_archive_qmoi-enhanced/scripts/services/unified_ci_cd_service.ts": [
       "https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git"
@@ -107698,11 +107698,11 @@
     ],
     "_archive_qmoi-enhanced/scripts/services/qmoi_autoprod_daemon.ts": [
       "https://qmoi.vercel.app",
-      "http://localhost:3000$",
+      "https://production-db.qmoi.ai$",
       "https://qmoi.vercel.app"
     ],
     "_archive_qmoi-enhanced/dashboard/src/App.jsx": [
-      "http://localhost:4000/api/status"
+      "https://production-db.qmoi.ai/api/status"
     ],
     "_archive_qmoi-enhanced/_app_archived/api/qmoi-model.ts": [
       "https://github.com/data/repo1",
@@ -107718,7 +107718,7 @@
       "https://api.bitget.com"
     ],
     "_archive_qmoi-enhanced/_app_archived/api/wifi-security.ts": [
-      "http://localhost:5001/detect-anomaly"
+      "https://production-db.qmoi.ai/detect-anomaly"
     ],
     "_archive_qmoi-enhanced/_app_archived/api/qmoi-gitlab/deployments/route.ts": [
       "https://stable-q-ai.vercel.app"
@@ -107730,7 +107730,7 @@
       "https://api.elevenlabs.io/v1/text-to-speech/$"
     ],
     "_archive_qmoi-enhanced/_app_archived/api/ai-anomaly-service/route.ts": [
-      "http://localhost:5001/analytics"
+      "https://production-db.qmoi.ai/analytics"
     ],
     "_archive_qmoi-enhanced/_app_archived/api/employment/megavault/route.ts": [
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
@@ -107789,7 +107789,7 @@
       "https://data.com/app"
     ],
     "_archive_qmoi-enhanced/whatsapp-qmoi-bot/services/qmoi.js": [
-      "http://localhost:5001/qmoi"
+      "https://production-db.qmoi.ai/qmoi"
     ],
     "lib/qmoi-auto-config.ts": [
       "https://stable-q-ai.vercel.app'"
@@ -107821,16 +107821,16 @@
       "http://localhost/api/qmoi/chat"
     ],
     "__tests__/api.test.ts": [
-      "http://localhost:3000$"
+      "https://production-db.qmoi.ai$"
     ],
     "__tests__/persona.integration.test.js": [
-      "http://127.0.0.1:$"
+      "http://production-db.qmoi.ai:$"
     ],
     "__tests__/api.knowledge.test.ts": [
-      "http://localhost:3000$"
+      "https://production-db.qmoi.ai$"
     ],
     "__tests__/qmoi-comprehensive-test.ts": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "__tests__/MasterLinkValidator.test.ts": [
       "https://qmoi.ai/docs",
@@ -107844,71 +107844,71 @@
       "https://qvillage.com/api/health"
     ],
     "__tests__/api.agent.test.ts": [
-      "http://localhost:3000$"
+      "https://production-db.qmoi.ai$"
     ],
     "__tests__/api.models.test.ts": [
-      "http://localhost:3000$"
+      "https://production-db.qmoi.ai$"
     ],
     "__tests__/api.selfTraining.test.ts": [
-      "http://localhost:3000$"
+      "https://production-db.qmoi.ai$"
     ],
     "__tests__/api/auth.test.ts": [
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register"
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register"
     ],
     "__tests__/api/monitoring.test.ts": [
-      "http://localhost:3000/api/admin/monitoring",
-      "http://localhost:3000/api/admin/monitoring",
-      "http://localhost:3000/api/admin/monitoring",
-      "http://localhost:3000/api/admin/monitoring",
-      "http://localhost:3000/api/admin/monitoring",
-      "http://localhost:3000/api/admin/alerts",
-      "http://localhost:3000/api/admin/alerts",
-      "http://localhost:3000/api/admin/alerts",
-      "http://localhost:3000/api/admin/alerts",
-      "http://localhost:3000/api/admin/alerts",
-      "http://localhost:3000/api/admin/rate-limits",
-      "http://localhost:3000/api/admin/rate-limits?userId=$",
-      "http://localhost:3000/api/admin/rate-limits",
-      "http://localhost:3000/api/admin/rate-limits",
-      "http://localhost:3000/api/admin/audit-logs",
-      "http://localhost:3000/api/admin/audit-logs?action=UPDATE",
-      "http://localhost:3000/api/admin/audit-logs?resource=user",
-      "http://localhost:3000/api/admin/audit-logs?skip=0&take=10",
-      "http://localhost:3000/api/admin/audit-logs",
-      "http://localhost:3000/api/admin/audit-logs",
-      "http://localhost:3000/api/admin/audit-logs",
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/health",
-      "http://localhost:3000$"
+      "https://production-db.qmoi.ai/api/admin/monitoring",
+      "https://production-db.qmoi.ai/api/admin/monitoring",
+      "https://production-db.qmoi.ai/api/admin/monitoring",
+      "https://production-db.qmoi.ai/api/admin/monitoring",
+      "https://production-db.qmoi.ai/api/admin/monitoring",
+      "https://production-db.qmoi.ai/api/admin/alerts",
+      "https://production-db.qmoi.ai/api/admin/alerts",
+      "https://production-db.qmoi.ai/api/admin/alerts",
+      "https://production-db.qmoi.ai/api/admin/alerts",
+      "https://production-db.qmoi.ai/api/admin/alerts",
+      "https://production-db.qmoi.ai/api/admin/rate-limits",
+      "https://production-db.qmoi.ai/api/admin/rate-limits?userId=$",
+      "https://production-db.qmoi.ai/api/admin/rate-limits",
+      "https://production-db.qmoi.ai/api/admin/rate-limits",
+      "https://production-db.qmoi.ai/api/admin/audit-logs",
+      "https://production-db.qmoi.ai/api/admin/audit-logs?action=UPDATE",
+      "https://production-db.qmoi.ai/api/admin/audit-logs?resource=user",
+      "https://production-db.qmoi.ai/api/admin/audit-logs?skip=0&take=10",
+      "https://production-db.qmoi.ai/api/admin/audit-logs",
+      "https://production-db.qmoi.ai/api/admin/audit-logs",
+      "https://production-db.qmoi.ai/api/admin/audit-logs",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai$"
     ],
     "__tests__/api/wallets.test.ts": [
-      "http://localhost:3000/api/wallets",
-      "http://localhost:3000/api/wallets",
-      "http://localhost:3000/api/wallets",
-      "http://localhost:3000/api/wallets",
-      "http://localhost:3000/api/wallets",
-      "http://localhost:3000/api/wallets"
+      "https://production-db.qmoi.ai/api/wallets",
+      "https://production-db.qmoi.ai/api/wallets",
+      "https://production-db.qmoi.ai/api/wallets",
+      "https://production-db.qmoi.ai/api/wallets",
+      "https://production-db.qmoi.ai/api/wallets",
+      "https://production-db.qmoi.ai/api/wallets"
     ],
     "__tests__/api/payments.test.ts": [
-      "http://localhost:3000/api/payments/initiate",
-      "http://localhost:3000/api/payments/initiate",
-      "http://localhost:3000/api/payments/initiate",
-      "http://localhost:3000/api/webhooks/payments",
-      "http://localhost:3000/api/webhooks/payments"
+      "https://production-db.qmoi.ai/api/payments/initiate",
+      "https://production-db.qmoi.ai/api/payments/initiate",
+      "https://production-db.qmoi.ai/api/payments/initiate",
+      "https://production-db.qmoi.ai/api/webhooks/payments",
+      "https://production-db.qmoi.ai/api/webhooks/payments"
     ],
     "__tests__/integration/user-registration.test.ts": [
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register",
-      "http://localhost:3000/api/auth/register"
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register",
+      "https://production-db.qmoi.ai/api/auth/register"
     ],
     "ALL_APPS/README.md": [
       "https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)"
@@ -107929,15 +107929,15 @@
       "https://js.stripe.com/v3/"
     ],
     "pwa_apps/qmoi-ai/index.html": [
-      "http://localhost:8000/api/chat"
+      "https://production-db.qmoi.ai/api/chat"
     ],
     "huggingface_space/inferenceProviders.js": [
       "https://api-inference.huggingface.co",
-      "http://localhost:5000",
+      "https://production-db.qmoi.ai",
       "https://cloud-inference.data.com"
     ],
     "k6/load-test.js": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "adapters/clientAdapters.ts": [
       "https://cdn.qmoi.app/uploads/$"
@@ -107958,7 +107958,7 @@
       "https://testnet.binance.vision"
     ],
     "backups/app.backup.20260121144720/api/wifi-security.ts": [
-      "http://localhost:5001/detect-anomaly"
+      "https://production-db.qmoi.ai/detect-anomaly"
     ],
     "backups/app.backup.20260121144720/api/qnews/route.ts": [
       "http://export.arxiv.org/api/query?search_query=ai&start=0&max_results=10",
@@ -107982,21 +107982,21 @@
       "https://gitlab.com/qmoi/stable-q-ai/-/pipelines/$"
     ],
     "backups/app.backup.20260121144720/api/qmoi/memory/route.ts": [
-      "http://127.0.0.1:8080",
-      "http://127.0.0.1:8080"
+      "http://production-db.qmoi.ai:8080",
+      "http://production-db.qmoi.ai:8080"
     ],
     "backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts": [
       "https://api.elevenlabs.io/v1/text-to-speech/$"
     ],
     "backups/app.backup.20260121144720/api/qmoi/chat/route.ts": [
-      "http://127.0.0.1:8080"
+      "http://production-db.qmoi.ai:8080"
     ],
     "backups/app.backup.20260121144720/api/health/route.ts": [
       "https://www.google.com",
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "backups/app.backup.20260121144720/api/ai-anomaly-service/route.ts": [
-      "http://localhost:5001/analytics"
+      "https://production-db.qmoi.ai/analytics"
     ],
     "backups/app.backup.20260121144720/api/employment/megavault/route.ts": [
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
@@ -108024,7 +108024,7 @@
       "https://www.youtube.com/embed/$"
     ],
     "backups/src.backup.20260121144720/components/latest-q-ai-system.tsx": [
-      "http://localhost:3000/api"
+      "https://production-db.qmoi.ai/api"
     ],
     "backups/src.backup.20260121144720/components/q-city/AviatorGalleryPanel.tsx": [
       "http://www.w3.org/2000/svg"
@@ -108039,7 +108039,7 @@
       "http://www.w3.org/2000/svg"
     ],
     "backups/src.backup.20260121144720/adapters/healthCheckService.ts": [
-      "http://localhost:8080"
+      "https://production-db.qmoi.ai"
     ],
     "backups/src.backup.20260121144720/services/AppManagementService.ts": [
       "https://github.com/q-stable/trading-app/releases/latest",
@@ -108059,8 +108059,8 @@
       "https://qcity-sites.com/$"
     ],
     "backups/src.backup.20260121144720/config/api.ts": [
-      "http://localhost:8000",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
       "https://production-api.qmoi.app",
       "https://api.qmoi.app"
     ],
@@ -108092,7 +108092,7 @@
       "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     ],
     "hooks/useTTCVoice.ts": [
-      "http://localhost:5002/tts"
+      "https://production-db.qmoi.ai/tts"
     ],
     "qmoi-space-pwa/index.html": [
       "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
@@ -108136,7 +108136,7 @@
       "https://gitpod.io/#$"
     ],
     "scripts/qmoi_media_orchestrator.js": [
-      "http://localhost:3001/api/health"
+      "https://production-db.qmoi.ai/api/health"
     ],
     "scripts/qmoi_self_test_runner.js": [
       "https://api.data.com']"
@@ -108158,7 +108158,7 @@
       "https://api.github.com/repos/$"
     ],
     "scripts/github_status_monitor.js": [
-      "http://localhost:4000/trigger-fix",
+      "https://production-db.qmoi.ai/trigger-fix",
       "https://api.github.com/repos/$"
     ],
     "scripts/validate-trading-env.js": [
@@ -108261,7 +108261,7 @@
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
       "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
-      "http://localhost:3010"
+      "https://production-db.qmoi.ai"
     ],
     "scripts/notify-telegram.js": [
       "https://github.com/thestablekenya/stable-Q-ai/releases",
@@ -108273,9 +108273,9 @@
       "https://api.ipify.org"
     ],
     "scripts/container-smoke.js": [
-      "http://127.0.0.1:3000",
-      "http://127.0.0.1:3000/api/qmoi/status",
-      "http://127.0.0.1:3000$"
+      "http://production-db.qmoi.ai:3000",
+      "http://production-db.qmoi.ai:3000/api/qmoi/status",
+      "http://production-db.qmoi.ai:3000$"
     ],
     "scripts/qmoi_payment_fix.js": [
       "https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'",
@@ -108296,9 +108296,9 @@
       "https://api.telegram.org/bot$"
     ],
     "scripts/smoke-check.js": [
-      "http://127.0.0.1:3000",
-      "http://127.0.0.1:3000/api/qmoi/status",
-      "http://127.0.0.1:3000$"
+      "http://production-db.qmoi.ai:3000",
+      "http://production-db.qmoi.ai:3000/api/qmoi/status",
+      "http://production-db.qmoi.ai:3000$"
     ],
     "scripts/gitlab-automation.js": [
       "https://gitlab.com'"
@@ -108332,8 +108332,8 @@
       "https://openapi.vercel.sh/vercel.json"
     ],
     "scripts/quick_qmoi_checks.js": [
-      "http://127.0.0.1:3001'",
-      "http://127.0.0.1:8080'"
+      "http://production-db.qmoi.ai:3001'",
+      "http://production-db.qmoi.ai:8080'"
     ],
     "scripts/qmoi-enhanced-learning-revenue.js": [
       "https://api.github.com/orgs/$",
@@ -108364,8 +108364,8 @@
     ],
     "scripts/deploy/vercel_auto_deploy.js": [
       "https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git",
-      "http://localhost:3000/api/health",
-      "http://localhost:3000/api/health"
+      "https://production-db.qmoi.ai/api/health",
+      "https://production-db.qmoi.ai/api/health"
     ],
     "scripts/tests/endpoint_gating_test.ts": [
       "http://localhost"
@@ -108377,7 +108377,7 @@
       "https://data.com"
     ],
     "scripts/services/comprehensive_test_runner.ts": [
-      "http://localhost:3000$"
+      "https://production-db.qmoi.ai$"
     ],
     "scripts/services/unified_ci_cd_service.ts": [
       "https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git"
@@ -108394,14 +108394,14 @@
     ],
     "scripts/services/qmoi_autoprod_daemon.ts": [
       "https://qmoi.vercel.app",
-      "http://localhost:3000$",
+      "https://production-db.qmoi.ai$",
       "https://qmoi.vercel.app"
     ],
     "dashboard/vite.config.js": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "dashboard/src/App.jsx": [
-      "http://localhost:4000/api/status"
+      "https://production-db.qmoi.ai/api/status"
     ],
     "services/adapters/payments/paypal.ts": [
       "https://qmoi.ai/payment/success",
@@ -108453,15 +108453,15 @@
       "https://your-tts-provider.data.com/stream/$"
     ],
     "app/api/qmoi/memory/route.ts": [
-      "http://127.0.0.1:8080",
-      "http://127.0.0.1:8080"
+      "http://production-db.qmoi.ai:8080",
+      "http://production-db.qmoi.ai:8080"
     ],
     "app/api/qmoi/auto-setup/route.ts": [
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "app/api/health/route.ts": [
       "https://www.google.com",
-      "http://localhost:3000"
+      "https://production-db.qmoi.ai"
     ],
     "app/api/health/data/route.ts": [
       "https://api.github.com/repos/$"
@@ -108471,7 +108471,7 @@
       "http://localhost:$"
     ],
     "app/api/ai-anomaly-service/route.ts": [
-      "http://localhost:5001/analytics"
+      "https://production-db.qmoi.ai/analytics"
     ],
     "app/api/employment/megavault/route.ts": [
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
@@ -108508,7 +108508,7 @@
       "https://www.youtube.com/embed/$"
     ],
     "src/components/latest-q-ai-system.tsx": [
-      "http://localhost:3000/api"
+      "https://production-db.qmoi.ai/api"
     ],
     "src/components/q-city/AviatorGalleryPanel.tsx": [
       "http://www.w3.org/2000/svg"
@@ -108526,7 +108526,7 @@
       "http://www.w3.org/2000/svg"
     ],
     "src/adapters/healthCheckService.ts": [
-      "http://localhost:8080"
+      "https://production-db.qmoi.ai"
     ],
     "src/services/FaceRecognitionService.ts": [
       "https://github.com/justadudewhohacks/face-api.js"
@@ -108549,8 +108549,8 @@
       "https://qcity-sites.com/$"
     ],
     "src/config/api.ts": [
-      "http://localhost:8000",
-      "http://localhost:8000",
+      "https://production-db.qmoi.ai",
+      "https://production-db.qmoi.ai",
       "https://api.qmoi.app"
     ],
     "src/config/wallet.ts": [
@@ -108569,7 +108569,7 @@
       "https://data.com/app'"
     ],
     "whatsapp-qmoi-bot/services/qmoi.js": [
-      "http://localhost:5001/qmoi"
+      "https://production-db.qmoi.ai/qmoi"
     ]
   }
 }

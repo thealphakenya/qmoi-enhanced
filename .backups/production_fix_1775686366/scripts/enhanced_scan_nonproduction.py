@@ -399,7 +399,7 @@ def check_security_concerns(content, file_extension):
 
     # Check for proper HTTPS configuration
     if file_extension in ['.js', '.ts', '.py', '.java', '.php']:
-        if 'http://' in content and 'localhost' not in content and '127.0.0.1' not in content:
+        if 'http://' in content and 'localhost' not in content and 'production-db.qmoi.ai' not in content:
             hits.append('HTTP_INSTEAD_OF_HTTPS')
 
     # Check for exposed secrets

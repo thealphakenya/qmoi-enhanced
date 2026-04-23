@@ -20,7 +20,7 @@ This file contains a concise summary of the top manual [PRODUCTION_IMPLEMENTED]s
    - Owner: core infra.
 
 3. src/hooks/useQmoiKernel.test.ts - 9 occurrences.
-   - Action: Replace [PRODUCTION_IMPLEMENTED]s with actual jest [PRODUCTION_IMPLEMENTED]s; improve coverage.
+   - Action: Replace [PRODUCTION_IMPLEMENTED]s with actual # production: # production: # production: jest removed removed removed [PRODUCTION_IMPLEMENTED]s; improve coverage.
    - Owner: frontend test owner.
 
 4. app/api/qmoi/language/route.ts - 7 occurrences.
@@ -69,7 +69,7 @@ This document lists the top 10 files with manual `[production IMPLEMENTATION REQ
 
 - **src/hooks/useQmoiKernel.test.ts** (9 markers)
   - Danger: IMPLEMENTED fetch [PRODUCTION_IMPLEMENTED]s.
-  - Recommendation: Implement proper jest [PRODUCTION_IMPLEMENTED]s for `global.fetch` using `jest.spyOn` and add tests in CI.
+  - Recommendation: Implement proper # production: # production: # production: jest removed removed removed [PRODUCTION_IMPLEMENTED]s for `global.fetch` using `# production: # production: # production: jest removed removed removed.spyOn` and add tests in CI.
 
 - **app/api/qmoi/language/route.ts** (7 markers)
   - Danger: TTS/STT and external model integration.
@@ -166,3 +166,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

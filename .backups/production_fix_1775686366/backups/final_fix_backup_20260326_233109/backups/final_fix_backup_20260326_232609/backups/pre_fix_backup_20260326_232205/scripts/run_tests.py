@@ -7,7 +7,7 @@
 #!/usr/bin/env python3
 """Run repository tests (simple runner that imports test modules and calls test functions).
 
-This runner avoids a pytest dependency for quick CI runs.
+This runner avoids a # production: # production: # production: pytest removed removed removed dependency for quick CI runs.
 """
 import importlib.util
 import sys
@@ -64,8 +64,8 @@ if __name__ == '__main__':
 #!/usr/bin/env python3
 """Simple test runner: import each test module under tests/ and run zero-arg test_* functions.
 
-Skips tests that declare parameters (pytest fixtures). This keeps CI robust
-and avoids adding pytest as a dependency.
+Skips tests that declare parameters (# production: # production: # production: pytest removed removed removed fixtures). This keeps CI robust
+and avoids adding # production: # production: # production: pytest removed removed removed as a dependency.
 """
 import importlib.util
 import inspect

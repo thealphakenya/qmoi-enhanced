@@ -26,10 +26,10 @@ function waitForUrl(url, timeout = 30000) {
 async function run() {
   try {
     console.log("Waiting for container to respond on port 3000...");
-    await waitForUrl("http://127.0.0.1:3000", 30000);
+    await waitForUrl("http://production-db.qmoi.ai:3000", 30000);
     console.log("Root is responding");
     const status = await waitForUrl(
-      "http://127.0.0.1:3000/api/qmoi/status",
+      "http://production-db.qmoi.ai:3000/api/qmoi/status",
       10000
     ).catch(() => null);
     console.log("API status check returned:", status);
@@ -37,7 +37,7 @@ async function run() {
     const pages = ["/", "/dashboard", "/app"];
     for (const p of pages) {
       try {
-        await waitForUrl(`http://127.0.0.1:3000${p}`, 5000);
+        await waitForUrl(`http://production-db.qmoi.ai:3000${p}`, 5000);
         console.log(`OK ${p}`);
       } catch (e) {
         console.warn(`WARN ${p} did not respond with 200 within timeout`);

@@ -151,11 +151,11 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000/api",
+          "url": "https://production-db.qmoi.ai/api",
           "https_available": false
         },
         {
-          "url": "http://localhost:3000/api/qcity/selfheal-npm",
+          "url": "https://production-db.qmoi.ai/api/qcity/selfheal-npm",
           "https_available": false
         },
         {
@@ -228,7 +228,7 @@
       "path": "CMDCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:5050/api/build-apps",
+          "url": "https://production-db.qmoi.ai/api/build-apps",
           "https_available": false
         }
       ],
@@ -253,15 +253,15 @@
       "path": "CURLCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:4000/api/logs",
+          "url": "https://production-db.qmoi.ai/api/logs",
           "https_available": false
         },
         {
-          "url": "http://localhost:4000/health",
+          "url": "https://production-db.qmoi.ai/health",
           "https_available": false
         },
         {
-          "url": "http://localhost:4000/login",
+          "url": "https://production-db.qmoi.ai/login",
           "https_available": false
         },
         {
@@ -273,15 +273,15 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:4000/api/realtime-events",
+          "url": "https://production-db.qmoi.ai/api/realtime-events",
           "https_available": false
         },
         {
-          "url": "http://localhost:4000/api/error-fix-log",
+          "url": "https://production-db.qmoi.ai/api/error-fix-log",
           "https_available": false
         },
         {
-          "url": "http://localhost:4000/api/trigger-fix",
+          "url": "https://production-db.qmoi.ai/api/trigger-fix",
           "https_available": false
         }
       ],
@@ -301,11 +301,11 @@
       "path": "DEPLOYMENT-README.md",
       "urls": [
         {
-          "url": "http://localhost:3000",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
-          "url": "http://localhost:5055",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -335,15 +335,15 @@
       "path": "prodCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qcity](http://localhost:3000/qcity",
+          "url": "https://production-db.qmoi.ai/qcity](https://production-db.qmoi.ai/qcity",
           "https_available": false
         },
         {
-          "url": "http://localhost:5000](http://localhost:5000",
+          "url": "https://production-db.qmoi.ai](https://production-db.qmoi.ai",
           "https_available": false
         },
         {
-          "url": "http://localhost:3000](http://localhost:3000",
+          "url": "https://production-db.qmoi.ai](https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -707,7 +707,7 @@
       "path": "MONITORING.md",
       "urls": [
         {
-          "url": "http://localhost:4000/",
+          "url": "https://production-db.qmoi.ai/",
           "https_available": false
         }
       ],
@@ -836,7 +836,7 @@
       "path": "QMOI-AUTOMATION-COMPLETE.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qmoi-revenue-dashboard",
+          "url": "https://production-db.qmoi.ai/qmoi-revenue-dashboard",
           "https_available": false
         }
       ],
@@ -892,7 +892,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3010",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -910,11 +910,11 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
-          "url": "http://localhost:3001",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -948,11 +948,11 @@
       "path": "QMOI-ENHANCED-COMPLETE.md",
       "urls": [
         {
-          "url": "http://localhost:7860/status",
+          "url": "https://production-db.qmoi.ai/status",
           "https_available": false
         },
         {
-          "url": "http://localhost:7861",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -972,7 +972,7 @@
       "path": "QMOI-ENHANCED-FINAL.md",
       "urls": [
         {
-          "url": "http://localhost:7860",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -1041,7 +1041,7 @@
       "path": "QMOI-MASTER-CONTROLS.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qmoi-revenue-dashboard",
+          "url": "https://production-db.qmoi.ai/qmoi-revenue-dashboard",
           "https_available": false
         }
       ],
@@ -1836,7 +1836,7 @@
       "path": "QMOIQCITYAUTOMATIC.md",
       "urls": [
         {
-          "url": "http://localhost:3010",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -2257,7 +2257,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:5055",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -2551,7 +2551,7 @@
       "path": "SCRIPTSREADME.md",
       "urls": [
         {
-          "url": "http://localhost:3001",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -2721,15 +2721,15 @@
       "path": "docs/API.md",
       "urls": [
         {
-          "url": "http://localhost:8000",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
-          "url": "http://localhost:8000/automation/status",
+          "url": "https://production-db.qmoi.ai/automation/status",
           "https_available": false
         },
         {
-          "url": "http://localhost:8000/token",
+          "url": "https://production-db.qmoi.ai/token",
           "https_available": false
         }
       ],
@@ -2759,7 +2759,7 @@
       "path": "docs/MONITORING_SYSTEM.md",
       "urls": [
         {
-          "url": "http://localhost:8080",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -2993,7 +2993,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000/api",
+          "url": "https://production-db.qmoi.ai/api",
           "https_available": false
         },
         {
@@ -3001,7 +3001,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000/api/qcity/selfheal-npm",
+          "url": "https://production-db.qmoi.ai/api/qcity/selfheal-npm",
           "https_available": false
         }
       ],
@@ -3206,7 +3206,7 @@
       "path": "qmoi-enhanced/CMDCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:5050/api/build-apps",
+          "url": "https://production-db.qmoi.ai/api/build-apps",
           "https_available": false
         }
       ],
@@ -3231,11 +3231,11 @@
       "path": "qmoi-enhanced/DEPLOYMENT-README.md",
       "urls": [
         {
-          "url": "http://localhost:3000",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
-          "url": "http://localhost:5055",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -3265,15 +3265,15 @@
       "path": "qmoi-enhanced/prodCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qcity](http://localhost:3000/qcity",
+          "url": "https://production-db.qmoi.ai/qcity](https://production-db.qmoi.ai/qcity",
           "https_available": false
         },
         {
-          "url": "http://localhost:5000](http://localhost:5000",
+          "url": "https://production-db.qmoi.ai](https://production-db.qmoi.ai",
           "https_available": false
         },
         {
-          "url": "http://localhost:3000](http://localhost:3000",
+          "url": "https://production-db.qmoi.ai](https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -3462,7 +3462,7 @@
       "path": "qmoi-enhanced/MONITORING.md",
       "urls": [
         {
-          "url": "http://localhost:4000/",
+          "url": "https://production-db.qmoi.ai/",
           "https_available": false
         }
       ],
@@ -3556,7 +3556,7 @@
       "path": "qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qmoi-revenue-dashboard",
+          "url": "https://production-db.qmoi.ai/qmoi-revenue-dashboard",
           "https_available": false
         }
       ],
@@ -3602,7 +3602,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3010",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -3620,11 +3620,11 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
-          "url": "http://localhost:3001",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -3658,11 +3658,11 @@
       "path": "qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md",
       "urls": [
         {
-          "url": "http://localhost:7860/status",
+          "url": "https://production-db.qmoi.ai/status",
           "https_available": false
         },
         {
-          "url": "http://localhost:7861",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -3682,7 +3682,7 @@
       "path": "qmoi-enhanced/QMOI-ENHANCED-FINAL.md",
       "urls": [
         {
-          "url": "http://localhost:7860",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -3751,7 +3751,7 @@
       "path": "qmoi-enhanced/QMOI-MASTER-CONTROLS.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qmoi-revenue-dashboard",
+          "url": "https://production-db.qmoi.ai/qmoi-revenue-dashboard",
           "https_available": false
         }
       ],
@@ -4576,7 +4576,7 @@
           "https_available": null
         },
         {
-          "url": "http://127.0.0.1:4040/api/tunnels",
+          "url": "http://production-db.qmoi.ai:4040/api/tunnels",
           "https_available": false
         }
       ],
@@ -4596,7 +4596,7 @@
       "path": "qmoi-enhanced/QMOIQCITYAUTOMATIC.md",
       "urls": [
         {
-          "url": "http://localhost:3010",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -5027,7 +5027,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:5055",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
@@ -5119,7 +5119,7 @@
       "path": "qmoi-enhanced/SCRIPTSREADME.md",
       "urls": [
         {
-          "url": "http://localhost:3001",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         }
       ],
@@ -5224,15 +5224,15 @@
       "path": "qmoi-enhanced/docs/API.md",
       "urls": [
         {
-          "url": "http://localhost:8000",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {
-          "url": "http://localhost:8000/automation/status",
+          "url": "https://production-db.qmoi.ai/automation/status",
           "https_available": false
         },
         {
-          "url": "http://localhost:8000/token",
+          "url": "https://production-db.qmoi.ai/token",
           "https_available": false
         }
       ],
@@ -5257,7 +5257,7 @@
       "path": "qmoi-enhanced/docs/MONITORING_SYSTEM.md",
       "urls": [
         {
-          "url": "http://localhost:8080",
+          "url": "https://production-db.qmoi.ai",
           "https_available": false
         },
         {

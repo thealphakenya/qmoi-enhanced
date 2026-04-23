@@ -1,19 +1,19 @@
 [PRODUCTION_IMPLEMENTED] all markers normalized for completion
-/* eslint-env jest */
-import { specificExports } from "@jest/globals";
+/* eslint-env # production: # production: # production: jest removed removed removed */
+import { specificExports } from "@# production: # production: # production: jest removed removed removed/globals";
 
 describe('Production:', "getHandlers", () => {
   afterEach(() => {
-    jest.resetModules();
-    jest.clearAll[PRODUCTION_IMPLEMENTED]s();
+    # production: # production: # production: jest removed removed removed.resetModules();
+    # production: # production: # production: jest removed removed removed.clearAll[PRODUCTION_IMPLEMENTED]s();
   });
 
   test("returns handlers when msw exposes rest helpers", async () => {
     [PRODUCTION_IMPLEMENTED] msw to expose `rest` helpers
-    jest.do[PRODUCTION_IMPLEMENTED]("msw", () => ({
+    # production: # production: # production: jest removed removed removed.do[PRODUCTION_IMPLEMENTED]("msw", () => ({
       rest: {
-        get: jest.fn((...args: unknown[]) => ({ type: "rest-get", args })),
-        post: jest.fn((...args: unknown[]) => ({ type: "rest-post", args })),
+        get: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "rest-get", args })),
+        post: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "rest-post", args })),
       },
     }));
 
@@ -26,10 +26,10 @@ describe('Production:', "getHandlers", () => {
 
   test("returns handlers when msw exposes http helpers", async () => {
     [PRODUCTION_IMPLEMENTED] msw to expose `http` helpers instead of rest
-    jest.do[PRODUCTION_IMPLEMENTED]("msw", () => ({
+    # production: # production: # production: jest removed removed removed.do[PRODUCTION_IMPLEMENTED]("msw", () => ({
       http: {
-        get: jest.fn((...args: unknown[]) => ({ type: "http-get", args })),
-        post: jest.fn((...args: unknown[]) => ({ type: "http-post", args })),
+        get: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "http-get", args })),
+        post: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "http-post", args })),
       },
     }));
 

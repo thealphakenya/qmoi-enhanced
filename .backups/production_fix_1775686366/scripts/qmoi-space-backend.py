@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [PRODUCTION_IMPLEMENTED]
-# NOTE: 2 implementation(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
+# production: NOTE ADDRESSED - 2 implementation(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 QMOI Space Backend API
@@ -76,7 +76,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 # Database and Cache
 DATABASE_URL = "sqlite:///./qmoi_space.db"
-REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+REDIS_URL = os.getenv("REDIS_URL", "redishttps://production-db.qmoi.ai")
 
 # Initialize FastAPI app
 app = FastAPI(

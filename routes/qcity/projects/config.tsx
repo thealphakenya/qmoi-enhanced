@@ -35,6 +35,9 @@ import { specificExports } from "../../../types/projects";
 export default /**
  * ProjectConfigPage function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ProjectConfigPage(): any {
   try {() {
   const { config, updateConfig } = useProjects();

@@ -346,7 +346,7 @@ class ContinuousEnhancementOrchestrator:
             indent = ' ' * 2 * level
             content += f'{indent}📁 {os.path.basename(root)}/\n'
             
-            if level < 2:  # Only show first 2 levels
+            if level < 2:  # production: test code removed
                 for file in files[:5]:  # Limit files shown
                     content += f'{indent}  📄 {file}\n'
                 if len(files) > 5:

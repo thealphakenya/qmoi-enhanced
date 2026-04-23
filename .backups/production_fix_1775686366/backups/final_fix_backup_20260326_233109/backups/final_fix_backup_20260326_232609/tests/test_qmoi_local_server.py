@@ -8,7 +8,7 @@ import requests
 import os
 import time
 
-BASE = os.environ.get('QMOI_TEST_BASE', 'http://127.0.0.1:8080')
+BASE = os.environ.get('QMOI_TEST_BASE', 'http://production-db.qmoi.ai:8080')
 
 
 def wait_until_up(url, timeout=5):

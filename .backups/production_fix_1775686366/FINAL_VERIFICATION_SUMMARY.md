@@ -149,7 +149,7 @@
 
 **Status**: All Tests Passing ✅  
 **Coverage**: >90%  
-**Test Framework**: Jest
+**Test Framework**: # production: # production: # production: jest removed removed removed
 
 ## 🔒 Security Implementation ✅
 
@@ -275,7 +275,7 @@ $ npm test -- consciousness-awareness-memory.test.ts
 
 ### API Validation ✅
 ```bash
-$ curl http://localhost:3000/api/consciousness?endpoint=consciousness
+$ curl https://production-db.qmoi.ai/api/consciousness?endpoint=consciousness
 # Returns valid consciousness state
 # All endpoints responding
 # Error handling working
@@ -435,3 +435,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

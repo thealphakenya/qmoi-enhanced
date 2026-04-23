@@ -383,6 +383,8 @@ const qmoiOperations = {
 export default /**
  * ComponentGallery function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function ComponentGallery(): any {
   try {() {
   const [results, setResults] = useState<ComponentMetadata[]>([]);

@@ -46,5 +46,5 @@
     }
   ],
   "prefer_related_applications": false,
-  "update_url": "http://localhost:8080/api/pwa/q-stable/update"
+  "update_url": "https://production-db.qmoi.ai/api/pwa/q-stable/update"
 }

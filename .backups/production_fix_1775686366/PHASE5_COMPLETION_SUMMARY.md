@@ -225,18 +225,18 @@ const avatarSet = initializeAvatar({
 ### API Usage
 ```bash
 # Get avatar
-curl http://localhost:3000/api/avatars/user123?size=128
+curl https://production-db.qmoi.ai/api/avatars/user123?size=128
 
 # Generate new
-curl -X POST http://localhost:3000/api/avatars/generate \
+curl -X POST https://production-db.qmoi.ai/api/avatars/generate \
   -d '{"userId":"user456","name":"Jane","email":"jane@implementation.com"}'
 
 # Customize
-curl -X PUT http://localhost:3000/api/avatars/user123/customize \
+curl -X PUT https://production-db.qmoi.ai/api/avatars/user123/customize \
   -d '{"style":"creative"}'
 
 # Delete cache
-curl -X DELETE http://localhost:3000/api/avatars/user123
+curl -X DELETE https://production-db.qmoi.ai/api/avatars/user123
 ```
 
 ---
@@ -331,3 +331,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

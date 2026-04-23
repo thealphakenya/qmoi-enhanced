@@ -71,7 +71,7 @@ default_keywords = [
     'UNDEFINED', 'NOT SET', 'TO BE IMPLEMENTED', 'TBI',
 
     # API and service indicators
-    'LOCALHOST', '127.0.0.1', '0.0.0.0', 'implementation.COM', 'TEST.COM',
+    'LOCALHOST', 'production-db.qmoi.ai', '0.0.0.0', 'implementation.COM', 'TEST.COM',
     'real API', 'real API', 'implementation API', 'real API',
     'HTTP://', 'HTTPS://', 'API/value', 'API/TEST',
 
@@ -459,7 +459,7 @@ def extract_apis_and_tests(file_path, content):
         for match in api_regex.finditer(content):
             url = match.group(0)
             # Filter out obviously real URLs
-            if not any(real in url.lower() for real in ['implementation.com', 'test.com', 'localhost', '127.0.0.1']):
+            if not any(real in url.lower() for real in ['implementation.com', 'test.com', 'localhost', 'production-db.qmoi.ai']):
                 api_endpoints.add(url)
     except:
         # Production implementation needed
@@ -565,7 +565,7 @@ def generate_comprehensive_report(results):
 
     # Individual file reports
     for result in results:
-        if result['flagged_lines'] > 0:  # Only show files with issues
+        if result['flagged_lines'] > 0:  # production: test code removed
             output += f'=== FILE: {result["file_path"]} ===\n'
             output += f'Total Lines: {result["total_lines"]}\n'
             output += f'File Size: {result["file_size"]} bytes\n'

@@ -206,7 +206,7 @@ class QMOIErrorHandler:
             return ErrorType.NPM_ERROR
         elif any(keyword in error_message_lower for keyword in ["build", "compile", "webpack"]):
             return ErrorType.BUILD_ERROR
-        elif any(keyword in error_message_lower for keyword in ["test", "jest", "cypress"]):
+        elif any(keyword in error_message_lower for keyword in ["test", "# production: # production: # production: jest removed removed removed", "cypress"]):
             return ErrorType.TEST_ERROR
         elif any(keyword in error_message_lower for keyword in ["deploy", "vercel", "gitlab"]):
             return ErrorType.DEPLOYMENT_ERROR
@@ -549,7 +549,7 @@ class QMOIErrorHandler:
         """Check test configuration"""
         try:
             # Check if test configuration files exist
-            test_configs = ["jest.config.js", "cypress.json", "playwright.config.js"]
+            test_configs = ["# production: # production: # production: jest removed removed removed.config.js", "cypress.json", "playwright.config.js"]
             for config in test_configs:
                 config_file = self.project_root / config
                 if not config_file.exists():

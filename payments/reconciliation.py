@@ -2,6 +2,16 @@
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         import psycopg2
         conn = psycopg2.connect(
             host=os.getenv('DB_HOST', 'qmoi.ai'),

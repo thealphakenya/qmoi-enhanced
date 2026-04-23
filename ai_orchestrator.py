@@ -20,7 +20,7 @@ except ImportError as e:
     logging.warning(f"Some AI services not available: {e}")
     SERVICES_AVAILABLE = False
 
-# Production logging configuration
+# production logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -31,7 +31,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Production configuration
+# production configuration
 class Config:
     RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
@@ -45,14 +45,14 @@ def validate_config():
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
 
-# Production error handling
+# production error handling
 def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
         except Exception as e:
-            logger.error(f"Production error in {func.__name__}: {e}")
+            logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
 
@@ -131,9 +131,8 @@ class TaskOrchestrator:
     def process_next_task(self):
         """Process the next task in queue"""
         if not self.task_queue:
-            return None
-
-        # Sort by priority (high > normal > low)
+                # production implementation
+    return None
         priority_order = {'high': 2, 'normal': 1, 'low': 0}
         self.task_queue.sort(key=lambda x: priority_order.get(x['priority'], 1), reverse=True)
 

@@ -111,7 +111,7 @@ def scan_test_files() -> Any:
             if any(part in {'node_modules', '.git', '.next', 'dist', 'build', 'coverage', 'backups'} for part in test_file.relative_to(BASE_DIR).parts):
                 continue
             relative_path = str(test_file.relative_to(BASE_DIR))
-            kind = 'Cypress' if test_file.suffix == '.ts' and test_file.name.endswith('.cy.ts') else 'Jest'
+            kind = 'Cypress' if test_file.suffix == '.ts' and test_file.name.endswith('.cy.ts') else '# production: # production: # production: jest removed removed removed'
             if test_file.suffix == '.tsx' and test_file.name.endswith('.cy.tsx'):
                 kind = 'Cypress'
             tests.append({'file': relative_path, 'type': kind})
@@ -574,13 +574,13 @@ This document catalogs all test files, test cases, and automation tests in the Q
 ## Test Statistics
 
 - **Total Test Files**: {test_count}
-- **Jest Tests**: {jest_count}
+- **# production: # production: # production: jest removed removed removed Tests**: {jest_count}
 - **Cypress Tests**: {cypress_count}
 - **Integration Tests**: {integration_count}
 
 ## Test Files by Category
 
-### Jest Tests ({jest_count})
+### # production: # production: # production: jest removed removed removed Tests ({jest_count})
 {jest_tests}
 
 ### Cypress Tests ({cypress_count})
@@ -675,7 +675,7 @@ npm test -- --coverage
 **Last Updated**: {timestamp}Z
 """
     
-    jest_tests = "\n".join([f"- [{t['file']}]({t['file']})" for t in tests if t['type'] == 'Jest'][:20])
+    jest_tests = "\n".join([f"- [{t['file']}]({t['file']})" for t in tests if t['type'] == '# production: # production: # production: jest removed removed removed'][:20])
     cypress_tests = "\n".join([f"- [{t['file']}]({t['file']})" for t in tests if t['type'] == 'Cypress'][:20])
     api_tests = "\n".join([f"- [{t['file']}]({t['file']})" for t in tests if 'api' in t['file'].lower()][:10])
     unit_tests = "\n".join([f"- [{t['file']}]({t['file']})" for t in tests if 'unit' in t['file'].lower() or 'test' in t['file'].lower()][:10])
@@ -686,7 +686,7 @@ npm test -- --coverage
         timestamp=datetime.utcnow().isoformat(),
         date_formatted=datetime.now().strftime("%Y-%m-%d"),
         test_count=len(tests),
-        jest_count=len([t for t in tests if t['type'] == 'Jest']),
+        jest_count=len([t for t in tests if t['type'] == '# production: # production: # production: jest removed removed removed']),
         cypress_count=len([t for t in tests if t['type'] == 'Cypress']),
         integration_count=len([t for t in tests if 'integration' in t['file'].lower()]),
         jest_tests=jest_tests,
@@ -970,7 +970,7 @@ def generate_tree_md(endpoints, hooks, tests, md_files) -> Any:
 - `docs/` - Documentation, specifications, and how-to guides
 - `scripts/` - Automation, validation, and documentation generation scripts
 - `lib/` - Core libraries, services, and platform integration modules
-- `__tests__/` - Jest test suites
+- `__tests__/` - # production: # production: # production: jest removed removed removed test suites
 - `tests/` - Additional test suites and validation scripts
 - `cypress/` - End-to-end test suites
 
@@ -986,7 +986,7 @@ def generate_tree_md(endpoints, hooks, tests, md_files) -> Any:
 - `src/hooks/` - {hooks_dirs[1].exists() and len(list(hooks_dirs[1].rglob('use*.ts*'))) or 0} hook files
 
 ### Test Structure
-- `__tests__/` - Jest test files
+- `__tests__/` - # production: # production: # production: jest removed removed removed test files
 - `tests/` - Additional test files
 - `cypress/` - Cypress E2E files
 
@@ -997,7 +997,7 @@ def generate_tree_md(endpoints, hooks, tests, md_files) -> Any:
 - `HOOKS.md`, `WEBHOOKS.md`, `ALLHOOKSWEBHOOKS.md` - Hook and webhook references
 - `TREE.md` - Developer tree structure
 
-## Notes
+## production: NOTE ADDRESSED - s
 
 This file is generated from the current repository state and tracks all major developer-facing structures, ensuring the documentation and code structure remain aligned.
 

@@ -49,7 +49,7 @@
       "mtime": 1775966083.3657613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/BUILD_INSTRUCTIONS_PRODUCTION.md",
+      "path": ".backups/aggressive_fix_1775873225/BUILD_INSTRUCTIONS_production.md",
       "size": 4025,
       "mtime": 1775966083.3657613
     },
@@ -184,7 +184,7 @@
       "mtime": 1775966083.3967612
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PHASE4_PRODUCTION_STRATEGY.md",
+      "path": ".backups/aggressive_fix_1775873225/PHASE4_production_STRATEGY.md",
       "size": 2415,
       "mtime": 1775966083.3967612
     },
@@ -219,52 +219,52 @@
       "mtime": 1775966083.4017613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_CHANGES.md",
+      "path": ".backups/aggressive_fix_1775873225/production_CHANGES.md",
       "size": 3639,
       "mtime": 1775966083.4017613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+      "path": ".backups/aggressive_fix_1775873225/production_DEPLOYMENT_ALL_STEPS.md",
       "size": 28218,
       "mtime": 1775966083.4037611
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "path": ".backups/aggressive_fix_1775873225/production_DEPLOYMENT_GUIDE.md",
       "size": 9525,
       "mtime": 1775966083.4047613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_IMPLEMENTATION.md",
+      "path": ".backups/aggressive_fix_1775873225/production_IMPLEMENTATION.md",
       "size": 12162,
       "mtime": 1775966083.4047613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_READINESS_CHECKLIST.md",
+      "path": ".backups/aggressive_fix_1775873225/production_READINESS_CHECKLIST.md",
       "size": 3762,
       "mtime": 1775966083.4057612
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_READINESS_ENHANCED_REPORT.md",
+      "path": ".backups/aggressive_fix_1775873225/production_READINESS_ENHANCED_REPORT.md",
       "size": 8003,
       "mtime": 1775966083.4067612
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_READINESS_EXECUTION_STATUS.md",
+      "path": ".backups/aggressive_fix_1775873225/production_READINESS_EXECUTION_STATUS.md",
       "size": 10899,
       "mtime": 1775966083.4067612
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_READINESS_FINAL.md",
+      "path": ".backups/aggressive_fix_1775873225/production_READINESS_FINAL.md",
       "size": 10376,
       "mtime": 1775966083.4077613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_REMEDIATION_FINAL_REPORT.md",
+      "path": ".backups/aggressive_fix_1775873225/production_REMEDIATION_FINAL_REPORT.md",
       "size": 8957,
       "mtime": 1775966083.4087613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/PRODUCTION_SETUP_COMPLETE.md",
+      "path": ".backups/aggressive_fix_1775873225/production_SETUP_COMPLETE.md",
       "size": 11807,
       "mtime": 1775966083.4097612
     },
@@ -394,7 +394,7 @@
       "mtime": 1775966083.4317613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/ROOT_PRODUCTION_STATUS.md",
+      "path": ".backups/aggressive_fix_1775873225/ROOT_production_STATUS.md",
       "size": 400125,
       "mtime": 1775966083.4367611
     },
@@ -514,7 +514,7 @@
       "mtime": 1775966083.4677613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md",
+      "path": ".backups/aggressive_fix_1775873225/docs/implementation/production_IMPLEMENTATION_GUIDE.md",
       "size": 10142,
       "mtime": 1775966083.4677613
     },
@@ -534,7 +534,7 @@
       "mtime": 1775966083.4707613
     },
     {
-      "path": ".backups/aggressive_fix_1775873225/scripts/wallets/PRODUCTION_RUNBOOK.md",
+      "path": ".backups/aggressive_fix_1775873225/scripts/wallets/production_RUNBOOK.md",
       "size": 4508,
       "mtime": 1775966083.4707613
     },
@@ -634,7 +634,7 @@
       "mtime": 1775966083.4857612
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/FINAL_PRODUCTION_SUMMARY.md",
+      "path": ".backups/aggressive_fix_1775873435/FINAL_production_SUMMARY.md",
       "size": 15952,
       "mtime": 1775966083.4867613
     },
@@ -679,82 +679,82 @@
       "mtime": 1775966083.4937613
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
+      "path": ".backups/aggressive_fix_1775873435/production_ALWAYS_ON_DEPLOYMENT.md",
       "size": 14574,
       "mtime": 1775966083.4937613
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_CHECKLIST.md",
+      "path": ".backups/aggressive_fix_1775873435/production_CHECKLIST.md",
       "size": 4636,
       "mtime": 1775966083.4947612
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+      "path": ".backups/aggressive_fix_1775873435/production_DEPLOYMENT_ALL_STEPS.md",
       "size": 28242,
       "mtime": 1775966083.4957612
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "path": ".backups/aggressive_fix_1775873435/production_DEPLOYMENT_GUIDE.md",
       "size": 9531,
       "mtime": 1775966083.4967613
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_README.md",
+      "path": ".backups/aggressive_fix_1775873435/production_DEPLOYMENT_README.md",
       "size": 10412,
       "mtime": 1775966083.4977612
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_DEPLOYMENT_SUCCESS.md",
+      "path": ".backups/aggressive_fix_1775873435/production_DEPLOYMENT_SUCCESS.md",
       "size": 12414,
       "mtime": 1775966083.4977612
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_MAINTENANCE_GUIDE.md",
+      "path": ".backups/aggressive_fix_1775873435/production_MAINTENANCE_GUIDE.md",
       "size": 5502,
       "mtime": 1775966083.4987612
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_READINESS_EXECUTION_STATUS.md",
+      "path": ".backups/aggressive_fix_1775873435/production_READINESS_EXECUTION_STATUS.md",
       "size": 10896,
       "mtime": 1775966083.499761
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_READINESS_FINAL.md",
+      "path": ".backups/aggressive_fix_1775873435/production_READINESS_FINAL.md",
       "size": 10379,
       "mtime": 1775966083.5007613
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_READINESS_FINAL_AUDIT.md",
+      "path": ".backups/aggressive_fix_1775873435/production_READINESS_FINAL_AUDIT.md",
       "size": 19117,
       "mtime": 1775966083.5017612
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_RELEASE_DOCS_INDEX.md",
+      "path": ".backups/aggressive_fix_1775873435/production_RELEASE_DOCS_INDEX.md",
       "size": 18891,
       "mtime": 1775966083.5027611
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
+      "path": ".backups/aggressive_fix_1775873435/production_RELEASE_VALIDATION_CHECKLIST.md",
       "size": 36996,
       "mtime": 1775966083.5037613
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_REMEDIATION_FINAL_REPORT.md",
+      "path": ".backups/aggressive_fix_1775873435/production_REMEDIATION_FINAL_REPORT.md",
       "size": 8961,
       "mtime": 1775966083.5047612
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_SETUP_COMPLETE.md",
+      "path": ".backups/aggressive_fix_1775873435/production_SETUP_COMPLETE.md",
       "size": 11813,
       "mtime": 1775966083.5057611
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PRODUCTION_VALIDATION_SYSTEM.md",
+      "path": ".backups/aggressive_fix_1775873435/production_VALIDATION_SYSTEM.md",
       "size": 19785,
       "mtime": 1775966083.5067613
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/PROD_PLACEHOLDERS_INVENTORY.md",
+      "path": ".backups/aggressive_fix_1775873435/PROD_production_dataS_INVENTORY.md",
       "size": 2695,
       "mtime": 1775966083.5077612
     },
@@ -864,7 +864,7 @@
       "mtime": 1775966083.5267613
     },
     {
-      "path": ".backups/aggressive_fix_1775873435/README_PRODUCTION.md",
+      "path": ".backups/aggressive_fix_1775873435/README_production.md",
       "size": 6358,
       "mtime": 1775966083.5277612
     },
@@ -1039,7 +1039,7 @@
       "mtime": 1775966083.5637612
     },
     {
-      "path": ".backups/aggressive_fix_1775957216/PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md",
+      "path": ".backups/aggressive_fix_1775957216/production_ENHANCEMENT_PLAN_15PLUS.md",
       "size": 22987,
       "mtime": 1775966083.5647612
     },
@@ -1259,62 +1259,62 @@
       "mtime": 1775966083.6487613
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/OPTION_A_PRODUCTION_READY.md",
+      "path": ".backups/comprehensive_fix_1775690673/OPTION_A_production_READY.md",
       "size": 11673,
       "mtime": 1775966083.6497612
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PHASE4_PRODUCTION_STRATEGY.md",
+      "path": ".backups/comprehensive_fix_1775690673/PHASE4_production_STRATEGY.md",
       "size": 23068,
       "mtime": 1775966083.6507611
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_API_REFERENCE.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_API_REFERENCE.md",
       "size": 13291,
       "mtime": 1775966083.6517613
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_COMPLETION_SUMMARY.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_COMPLETION_SUMMARY.md",
       "size": 14826,
       "mtime": 1775966083.6527612
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_DEPLOYMENT_CHECKLIST.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_DEPLOYMENT_CHECKLIST.md",
       "size": 11848,
       "mtime": 1775966083.6537611
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_MAINTENANCE_GUIDE.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_MAINTENANCE_GUIDE.md",
       "size": 14715,
       "mtime": 1775966083.6547613
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_READINESS_AUDIT.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_READINESS_AUDIT.md",
       "size": 13997,
       "mtime": 1775966083.6557612
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_READINESS_CHECKLIST_FINAL.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_READINESS_CHECKLIST_FINAL.md",
       "size": 13972,
       "mtime": 1775966083.6567612
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_READINESS_REPORT.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_READINESS_REPORT.md",
       "size": 8040,
       "mtime": 1775966083.657761
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_READY_SUMMARY.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_READY_SUMMARY.md",
       "size": 12171,
       "mtime": 1775966083.6587613
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PRODUCTION_RELEASE_ACTION_PLAN.md",
+      "path": ".backups/comprehensive_fix_1775690673/production_RELEASE_ACTION_PLAN.md",
       "size": 10888,
       "mtime": 1775966083.6597612
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/PROD_PLACEHOLDERS_INVENTORY.md",
+      "path": ".backups/comprehensive_fix_1775690673/PROD_production_dataS_INVENTORY.md",
       "size": 4176,
       "mtime": 1775966083.660761
     },
@@ -1444,7 +1444,7 @@
       "mtime": 1775966083.6837611
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/QVILLAGE_READY_FOR_PRODUCTION.md",
+      "path": ".backups/comprehensive_fix_1775690673/QVILLAGE_READY_FOR_production.md",
       "size": 12837,
       "mtime": 1775966083.6847613
     },
@@ -1454,7 +1454,7 @@
       "mtime": 1775966083.6857612
     },
     {
-      "path": ".backups/comprehensive_fix_1775690673/README_PRODUCTION.md",
+      "path": ".backups/comprehensive_fix_1775690673/README_production.md",
       "size": 14245,
       "mtime": 1775966083.6867611
     },
@@ -1929,7 +1929,7 @@
       "mtime": 1775966083.9427612
     },
     {
-      "path": ".backups/production_fix_1775686366/BUILD_INSTRUCTIONS_PRODUCTION.md",
+      "path": ".backups/production_fix_1775686366/BUILD_INSTRUCTIONS_production.md",
       "size": 3993,
       "mtime": 1775966083.943761
     },
@@ -2439,27 +2439,27 @@
       "mtime": 1775966084.0317612
     },
     {
-      "path": ".backups/production_fix_1775686366/FINAL_PRODUCTION_READINESS.md",
+      "path": ".backups/production_fix_1775686366/FINAL_production_READINESS.md",
       "size": 7830,
       "mtime": 1775966084.032761
     },
     {
-      "path": ".backups/production_fix_1775686366/FINAL_PRODUCTION_READINESS_REPORT.md",
+      "path": ".backups/production_fix_1775686366/FINAL_production_READINESS_REPORT.md",
       "size": 18101,
       "mtime": 1775966084.0337613
     },
     {
-      "path": ".backups/production_fix_1775686366/FINAL_PRODUCTION_READINESS_REPORT_V2.md",
+      "path": ".backups/production_fix_1775686366/FINAL_production_READINESS_REPORT_V2.md",
       "size": 10825,
       "mtime": 1775966084.0347612
     },
     {
-      "path": ".backups/production_fix_1775686366/FINAL_PRODUCTION_READINESS_SUMMARY.md",
+      "path": ".backups/production_fix_1775686366/FINAL_production_READINESS_SUMMARY.md",
       "size": 11983,
       "mtime": 1775966084.0347612
     },
     {
-      "path": ".backups/production_fix_1775686366/FINAL_PRODUCTION_SUMMARY.md",
+      "path": ".backups/production_fix_1775686366/FINAL_production_SUMMARY.md",
       "size": 15724,
       "mtime": 1775966084.035761
     },
@@ -2859,7 +2859,7 @@
       "mtime": 1775966084.1027613
     },
     {
-      "path": ".backups/production_fix_1775686366/OPTION_A_PRODUCTION_READY.md",
+      "path": ".backups/production_fix_1775686366/OPTION_A_production_READY.md",
       "size": 11113,
       "mtime": 1775966084.1037612
     },
@@ -2884,7 +2884,7 @@
       "mtime": 1775966084.1057613
     },
     {
-      "path": ".backups/production_fix_1775686366/PHASE4_PRODUCTION_STRATEGY.md",
+      "path": ".backups/production_fix_1775686366/PHASE4_production_STRATEGY.md",
       "size": 22230,
       "mtime": 1775966084.1067612
     },
@@ -2949,7 +2949,7 @@
       "mtime": 1775966084.1177611
     },
     {
-      "path": ".backups/production_fix_1775686366/POSTPRODUCTIONCHECKLIST.md",
+      "path": ".backups/production_fix_1775686366/POSTproductionCHECKLIST.md",
       "size": 3090,
       "mtime": 1775966084.1177611
     },
@@ -2969,212 +2969,212 @@
       "mtime": 1775966084.1207612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTIONCHECKLIST.md",
+      "path": ".backups/production_fix_1775686366/productionCHECKLIST.md",
       "size": 8575,
       "mtime": 1775966084.121761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
+      "path": ".backups/production_fix_1775686366/production_ALWAYS_ON_DEPLOYMENT.md",
       "size": 13192,
       "mtime": 1775966084.121761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_API_REFERENCE.md",
+      "path": ".backups/production_fix_1775686366/production_API_REFERENCE.md",
       "size": 12517,
       "mtime": 1775966084.1227612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_BUILD_SETUP.md",
+      "path": ".backups/production_fix_1775686366/production_BUILD_SETUP.md",
       "size": 7888,
       "mtime": 1775966084.1237612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_CHANGES.md",
+      "path": ".backups/production_fix_1775686366/production_CHANGES.md",
       "size": 3611,
       "mtime": 1775966084.124761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_CHECKLIST.md",
+      "path": ".backups/production_fix_1775686366/production_CHECKLIST.md",
       "size": 4543,
       "mtime": 1775966084.124761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_COMPLETION_SUMMARY.md",
+      "path": ".backups/production_fix_1775686366/production_COMPLETION_SUMMARY.md",
       "size": 14254,
       "mtime": 1775966084.1257613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_CREDENTIALS_GUIDE.md",
+      "path": ".backups/production_fix_1775686366/production_CREDENTIALS_GUIDE.md",
       "size": 7458,
       "mtime": 1775966084.1267612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_ALL_STEPS.md",
       "size": 26310,
       "mtime": 1775966084.1277611
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_AUTO_RECOVERY.md",
       "size": 14771,
       "mtime": 1775966084.1287613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_CHECKLIST.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_CHECKLIST.md",
       "size": 11163,
       "mtime": 1775966084.1297612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_COMPLETE.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_COMPLETE.md",
       "size": 13751,
       "mtime": 1775966084.1297612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_GUIDE.md",
       "size": 8196,
       "mtime": 1775966084.1307611
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_PLAYBOOK.md",
       "size": 5485,
       "mtime": 1775966084.1317613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_README.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_README.md",
       "size": 9273,
       "mtime": 1775966084.1317613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_READY.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_READY.md",
       "size": 16203,
       "mtime": 1775966084.1327612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_SUCCESS.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_SUCCESS.md",
       "size": 11511,
       "mtime": 1775966084.1337612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_DEPLOYMENT_VALIDATION.md",
+      "path": ".backups/production_fix_1775686366/production_DEPLOYMENT_VALIDATION.md",
       "size": 1607,
       "mtime": 1775966084.134761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_IMPLEMENTATION.md",
+      "path": ".backups/production_fix_1775686366/production_IMPLEMENTATION.md",
       "size": 11221,
       "mtime": 1775966084.134761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_IMPLEMENTATION_GUIDES.md",
+      "path": ".backups/production_fix_1775686366/production_IMPLEMENTATION_GUIDES.md",
       "size": 11591,
       "mtime": 1775966084.1357613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_MAINTENANCE_GUIDE.md",
+      "path": ".backups/production_fix_1775686366/production_MAINTENANCE_GUIDE.md",
       "size": 12223,
       "mtime": 1775966084.1367612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_MONITORING_SETUP.md",
+      "path": ".backups/production_fix_1775686366/production_MONITORING_SETUP.md",
       "size": 16955,
       "mtime": 1775966084.137761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "path": ".backups/production_fix_1775686366/production_NEXT_STEPS_COMPLETE.md",
       "size": 15176,
       "mtime": 1775966084.1387613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_OPERATIONS_GUIDE.md",
+      "path": ".backups/production_fix_1775686366/production_OPERATIONS_GUIDE.md",
       "size": 12279,
       "mtime": 1775966084.1397612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_AUDIT.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_AUDIT.md",
       "size": 13929,
       "mtime": 1775966084.1407611
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_CHECKLIST.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_CHECKLIST.md",
       "size": 3734,
       "mtime": 1775966084.1407611
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_CHECKLIST_FINAL.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_CHECKLIST_FINAL.md",
       "size": 13171,
       "mtime": 1775966084.1417613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_ENHANCED_REPORT.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_ENHANCED_REPORT.md",
       "size": 7847,
       "mtime": 1775966084.1417613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_EXECUTION_STATUS.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_EXECUTION_STATUS.md",
       "size": 10173,
       "mtime": 1775966084.1427612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_FINAL.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_FINAL.md",
       "size": 10324,
       "mtime": 1775966084.1437612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_FINAL_AUDIT.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_FINAL_AUDIT.md",
       "size": 17651,
       "mtime": 1775966084.144761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_FINAL_COMPREHENSIVE.md",
       "size": 4061,
       "mtime": 1775966084.1457613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READINESS_REPORT.md",
+      "path": ".backups/production_fix_1775686366/production_READINESS_REPORT.md",
       "size": 7932,
       "mtime": 1775966084.1457613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_READY_SUMMARY.md",
+      "path": ".backups/production_fix_1775686366/production_READY_SUMMARY.md",
       "size": 11475,
       "mtime": 1775966084.1467612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_RELEASE_ACTION_PLAN.md",
+      "path": ".backups/production_fix_1775686366/production_RELEASE_ACTION_PLAN.md",
       "size": 10273,
       "mtime": 1775966084.147761
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_RELEASE_DOCS_INDEX.md",
+      "path": ".backups/production_fix_1775686366/production_RELEASE_DOCS_INDEX.md",
       "size": 18847,
       "mtime": 1775966084.1487613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
+      "path": ".backups/production_fix_1775686366/production_RELEASE_VALIDATION_CHECKLIST.md",
       "size": 36806,
       "mtime": 1775966084.1507611
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_REMEDIATION_FINAL_REPORT.md",
+      "path": ".backups/production_fix_1775686366/production_REMEDIATION_FINAL_REPORT.md",
       "size": 8722,
       "mtime": 1775966084.1517613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_SETUP.md",
+      "path": ".backups/production_fix_1775686366/production_SETUP.md",
       "size": 10765,
       "mtime": 1775966084.1517613
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_SETUP_COMPLETE.md",
+      "path": ".backups/production_fix_1775686366/production_SETUP_COMPLETE.md",
       "size": 11249,
       "mtime": 1775966084.1527612
     },
     {
-      "path": ".backups/production_fix_1775686366/PRODUCTION_VALIDATION_SYSTEM.md",
+      "path": ".backups/production_fix_1775686366/production_VALIDATION_SYSTEM.md",
       "size": 18966,
       "mtime": 1775966084.1537611
     },
     {
-      "path": ".backups/production_fix_1775686366/PROD_PLACEHOLDERS_INVENTORY.md",
+      "path": ".backups/production_fix_1775686366/PROD_production_dataS_INVENTORY.md",
       "size": 4136,
       "mtime": 1775966084.154761
     },
@@ -3959,7 +3959,7 @@
       "mtime": 1775966084.2837613
     },
     {
-      "path": ".backups/production_fix_1775686366/QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
+      "path": ".backups/production_fix_1775686366/QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
       "size": 36774,
       "mtime": 1775966084.2847612
     },
@@ -3969,7 +3969,7 @@
       "mtime": 1775966084.285761
     },
     {
-      "path": ".backups/production_fix_1775686366/QMOI_AI_PRODUCTION_READY.md",
+      "path": ".backups/production_fix_1775686366/QMOI_AI_production_READY.md",
       "size": 11065,
       "mtime": 1775966084.285761
     },
@@ -4049,7 +4049,7 @@
       "mtime": 1775966084.2987611
     },
     {
-      "path": ".backups/production_fix_1775686366/QMOI_AUTO_TESTING_UI_DEVELOPMENT.md",
+      "path": ".backups/production_fix_1775686366/QMOI_AUTO_TESTING_UI_production.md",
       "size": 1785,
       "mtime": 1775966084.2987611
     },
@@ -4229,12 +4229,12 @@
       "mtime": 1775966084.325761
     },
     {
-      "path": ".backups/production_fix_1775686366/QMOI_PRODUCTION_API.md",
+      "path": ".backups/production_fix_1775686366/QMOI_production_API.md",
       "size": 18153,
       "mtime": 1775966084.3267612
     },
     {
-      "path": ".backups/production_fix_1775686366/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "path": ".backups/production_fix_1775686366/QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "size": 18676,
       "mtime": 1775966084.3267612
     },
@@ -4514,7 +4514,7 @@
       "mtime": 1775966084.8247612
     },
     {
-      "path": ".backups/production_fix_1775686366/QVILLAGE_READY_FOR_PRODUCTION.md",
+      "path": ".backups/production_fix_1775686366/QVILLAGE_READY_FOR_production.md",
       "size": 11895,
       "mtime": 1775966084.825761
     },
@@ -4574,7 +4574,7 @@
       "mtime": 1775966084.838761
     },
     {
-      "path": ".backups/production_fix_1775686366/README_PRODUCTION.md",
+      "path": ".backups/production_fix_1775686366/README_production.md",
       "size": 13071,
       "mtime": 1775966084.838761
     },
@@ -4679,7 +4679,7 @@
       "mtime": 1775966084.8547611
     },
     {
-      "path": ".backups/production_fix_1775686366/ROOT_PRODUCTION_STATUS.md",
+      "path": ".backups/production_fix_1775686366/ROOT_production_STATUS.md",
       "size": 399369,
       "mtime": 1775966084.8607612
     },
@@ -4774,7 +4774,7 @@
       "mtime": 1775966084.8897612
     },
     {
-      "path": ".backups/production_fix_1775686366/SESSION5_PRODUCTION_SUMMARY.md",
+      "path": ".backups/production_fix_1775686366/SESSION5_production_SUMMARY.md",
       "size": 14077,
       "mtime": 1775966084.8907611
     },
@@ -4804,7 +4804,7 @@
       "mtime": 1775966084.894761
     },
     {
-      "path": ".backups/production_fix_1775686366/SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md",
+      "path": ".backups/production_fix_1775686366/SESSION_COMPLETION_REPORT_TODOS_production_READY.md",
       "size": 11963,
       "mtime": 1775966084.8957613
     },
@@ -4879,7 +4879,7 @@
       "mtime": 1775966084.907761
     },
     {
-      "path": ".backups/production_fix_1775686366/START_PRODUCTION_DEPLOYMENT.md",
+      "path": ".backups/production_fix_1775686366/START_production_DEPLOYMENT.md",
       "size": 12572,
       "mtime": 1775966084.9087613
     },
@@ -5189,7 +5189,7 @@
       "mtime": 1775966084.9617612
     },
     {
-      "path": ".backups/production_fix_1775686366/app/api/PRODUCTION_STATUS.md",
+      "path": ".backups/production_fix_1775686366/app/api/production_STATUS.md",
       "size": 5783,
       "mtime": 1775966084.9627612
     },
@@ -5419,7 +5419,7 @@
       "mtime": 1775966084.9977612
     },
     {
-      "path": ".backups/production_fix_1775686366/docs/LOCAL_QMOI_DEVELOPMENT.md",
+      "path": ".backups/production_fix_1775686366/docs/LOCAL_QMOI_production.md",
       "size": 1785,
       "mtime": 1775966084.9977612
     },
@@ -5479,7 +5479,7 @@
       "mtime": 1775966085.0077612
     },
     {
-      "path": ".backups/production_fix_1775686366/docs/PRODUCTION_CHECKLIST.md",
+      "path": ".backups/production_fix_1775686366/docs/production_CHECKLIST.md",
       "size": 5591,
       "mtime": 1775966085.0087612
     },
@@ -5644,7 +5644,7 @@
       "mtime": 1775966085.0417612
     },
     {
-      "path": ".backups/production_fix_1775686366/docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md",
+      "path": ".backups/production_fix_1775686366/docs/implementation/production_IMPLEMENTATION_GUIDE.md",
       "size": 10108,
       "mtime": 1775966085.042761
     },
@@ -5769,7 +5769,7 @@
       "mtime": 1775966085.059761
     },
     {
-      "path": ".backups/production_fix_1775686366/docs/validation/PLACEHOLDER_FIX_ACTIONS.md",
+      "path": ".backups/production_fix_1775686366/docs/validation/production_data_FIX_ACTIONS.md",
       "size": 2237,
       "mtime": 1775966085.0607612
     },
@@ -5824,7 +5824,7 @@
       "mtime": 1775966085.0667613
     },
     {
-      "path": ".backups/production_fix_1775686366/placeholder_scan_summary.md",
+      "path": ".backups/production_fix_1775686366/production_data_scan_summary.md",
       "size": 3350,
       "mtime": 1775966085.0667613
     },
@@ -5879,7 +5879,7 @@
       "mtime": 1775966085.0747612
     },
     {
-      "path": ".backups/production_fix_1775686366/reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
+      "path": ".backups/production_fix_1775686366/reports/COMPREHENSIVE_production_READINESS_REPORT.md",
       "size": 15190,
       "mtime": 1775966085.075761
     },
@@ -5889,12 +5889,12 @@
       "mtime": 1775966085.075761
     },
     {
-      "path": ".backups/production_fix_1775686366/reports/PRODUCTION_FULL_VALIDATION_REPORT.md",
+      "path": ".backups/production_fix_1775686366/reports/production_FULL_VALIDATION_REPORT.md",
       "size": 2212,
       "mtime": 1775966085.0767612
     },
     {
-      "path": ".backups/production_fix_1775686366/reports/mock_and_stub_audit.md",
+      "path": ".backups/production_fix_1775686366/reports/production_data_and_stub_audit.md",
       "size": 20864,
       "mtime": 1775966085.0777612
     },
@@ -5954,7 +5954,7 @@
       "mtime": 1775966085.0847611
     },
     {
-      "path": ".backups/production_fix_1775686366/scripts/wallets/PRODUCTION_RUNBOOK.md",
+      "path": ".backups/production_fix_1775686366/scripts/wallets/production_RUNBOOK.md",
       "size": 4473,
       "mtime": 1775966085.085761
     },
@@ -5964,7 +5964,7 @@
       "mtime": 1775966085.085761
     },
     {
-      "path": ".backups/production_fix_1775686366/src/components/q-city/PRODUCTION_STATUS.md",
+      "path": ".backups/production_fix_1775686366/src/components/q-city/production_STATUS.md",
       "size": 4927,
       "mtime": 1775966085.0867612
     },
@@ -10744,7 +10744,7 @@
       "mtime": 1775966087.885761
     },
     {
-      "path": ".backups/production_fix_1775686366/tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md",
+      "path": ".backups/production_fix_1775686366/tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_production_data.py.md",
       "size": 1785,
       "mtime": 1775966087.885761
     },
@@ -11214,7 +11214,7 @@
       "mtime": 1775966087.9397612
     },
     {
-      "path": ".backups/production_fix_1775686366/tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md",
+      "path": ".backups/production_fix_1775686366/tools/issue_drafts/1070_tests_security_test_security_production_data.py.md",
       "size": 1785,
       "mtime": 1775966087.9397612
     },
@@ -11339,7 +11339,7 @@
       "mtime": 1775966087.952761
     },
     {
-      "path": ".backups/production_fix_1775686366/tools/placeholder_artifacts/README.md",
+      "path": ".backups/production_fix_1775686366/tools/production_data_artifacts/README.md",
       "size": 1898,
       "mtime": 1775966087.952761
     },
@@ -11789,7 +11789,7 @@
       "mtime": 1775966088.893761
     },
     {
-      "path": "BUILD_INSTRUCTIONS_PRODUCTION.md",
+      "path": "BUILD_INSTRUCTIONS_production.md",
       "size": 4028,
       "mtime": 1775966088.894761
     },
@@ -12394,27 +12394,27 @@
       "mtime": 1775966089.001761
     },
     {
-      "path": "FINAL_PRODUCTION_READINESS.md",
+      "path": "FINAL_production_READINESS.md",
       "size": 7978,
       "mtime": 1775966089.001761
     },
     {
-      "path": "FINAL_PRODUCTION_READINESS_REPORT.md",
+      "path": "FINAL_production_READINESS_REPORT.md",
       "size": 18108,
       "mtime": 1775966089.002761
     },
     {
-      "path": "FINAL_PRODUCTION_READINESS_REPORT_V2.md",
+      "path": "FINAL_production_READINESS_REPORT_V2.md",
       "size": 11133,
       "mtime": 1775966089.003761
     },
     {
-      "path": "FINAL_PRODUCTION_READINESS_SUMMARY.md",
+      "path": "FINAL_production_READINESS_SUMMARY.md",
       "size": 12086,
       "mtime": 1775966089.004761
     },
     {
-      "path": "FINAL_PRODUCTION_SUMMARY.md",
+      "path": "FINAL_production_SUMMARY.md",
       "size": 15955,
       "mtime": 1775966089.005761
     },
@@ -12894,7 +12894,7 @@
       "mtime": 1775966089.079761
     },
     {
-      "path": "OPTION_A_PRODUCTION_READY.md",
+      "path": "OPTION_A_production_READY.md",
       "size": 5956,
       "mtime": 1775966089.080761
     },
@@ -12919,7 +12919,7 @@
       "mtime": 1775966089.083761
     },
     {
-      "path": "PHASE4_PRODUCTION_STRATEGY.md",
+      "path": "PHASE4_production_STRATEGY.md",
       "size": 2412,
       "mtime": 1775966089.083761
     },
@@ -12989,7 +12989,7 @@
       "mtime": 1775966089.095761
     },
     {
-      "path": "POSTPRODUCTIONCHECKLIST.md",
+      "path": "POSTproductionCHECKLIST.md",
       "size": 3118,
       "mtime": 1775966089.096761
     },
@@ -13014,227 +13014,227 @@
       "mtime": 1775966089.099761
     },
     {
-      "path": "PRODUCTION.md",
+      "path": "production.md",
       "size": 1637,
       "mtime": 1775966089.100761
     },
     {
-      "path": "PRODUCTIONCHECKLIST.md",
+      "path": "productionCHECKLIST.md",
       "size": 9256,
       "mtime": 1775966089.100761
     },
     {
-      "path": "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
+      "path": "production_ALWAYS_ON_DEPLOYMENT.md",
       "size": 14577,
       "mtime": 1775966089.101761
     },
     {
-      "path": "PRODUCTION_API_REFERENCE.md",
+      "path": "production_API_REFERENCE.md",
       "size": 13285,
       "mtime": 1775966089.102761
     },
     {
-      "path": "PRODUCTION_BUILD_SETUP.md",
+      "path": "production_BUILD_SETUP.md",
       "size": 8078,
       "mtime": 1775966089.103761
     },
     {
-      "path": "PRODUCTION_CHANGES.md",
+      "path": "production_CHANGES.md",
       "size": 3645,
       "mtime": 1775966089.103761
     },
     {
-      "path": "PRODUCTION_CHECKLIST.md",
+      "path": "production_CHECKLIST.md",
       "size": 4645,
       "mtime": 1775966089.104761
     },
     {
-      "path": "PRODUCTION_COMPLETION_SUMMARY.md",
+      "path": "production_COMPLETION_SUMMARY.md",
       "size": 3019,
       "mtime": 1775966089.104761
     },
     {
-      "path": "PRODUCTION_CREDENTIALS_GUIDE.md",
+      "path": "production_CREDENTIALS_GUIDE.md",
       "size": 9288,
       "mtime": 1775966089.105761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT.md",
+      "path": "production_DEPLOYMENT.md",
       "size": 1670,
       "mtime": 1775966089.106761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+      "path": "production_DEPLOYMENT_ALL_STEPS.md",
       "size": 28452,
       "mtime": 1775966089.107761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md",
+      "path": "production_DEPLOYMENT_AUTO_RECOVERY.md",
       "size": 18956,
       "mtime": 1775966089.108761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_CHECKLIST.md",
+      "path": "production_DEPLOYMENT_CHECKLIST.md",
       "size": 4324,
       "mtime": 1775966089.108761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_COMPLETE.md",
+      "path": "production_DEPLOYMENT_COMPLETE.md",
       "size": 14765,
       "mtime": 1775966089.109761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_GUIDE.md",
+      "path": "production_DEPLOYMENT_GUIDE.md",
       "size": 9534,
       "mtime": 1775966089.110761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
+      "path": "production_DEPLOYMENT_PLAYBOOK.md",
       "size": 6539,
       "mtime": 1775966089.111761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_README.md",
+      "path": "production_DEPLOYMENT_README.md",
       "size": 10415,
       "mtime": 1775966089.112761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_READY.md",
+      "path": "production_DEPLOYMENT_READY.md",
       "size": 17059,
       "mtime": 1775966089.113761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_SUCCESS.md",
+      "path": "production_DEPLOYMENT_SUCCESS.md",
       "size": 12417,
       "mtime": 1775966089.113761
     },
     {
-      "path": "PRODUCTION_DEPLOYMENT_VALIDATION.md",
+      "path": "production_DEPLOYMENT_VALIDATION.md",
       "size": 1636,
       "mtime": 1775966089.114761
     },
     {
-      "path": "PRODUCTION_ENHANCEMENT_PLAN_15PLUS.md",
+      "path": "production_ENHANCEMENT_PLAN_15PLUS.md",
       "size": 22995,
       "mtime": 1775966089.115761
     },
     {
-      "path": "PRODUCTION_IMPLEMENTATION.md",
+      "path": "production_IMPLEMENTATION.md",
       "size": 12155,
       "mtime": 1775966089.116761
     },
     {
-      "path": "PRODUCTION_IMPLEMENTATION_GUIDES.md",
+      "path": "production_IMPLEMENTATION_GUIDES.md",
       "size": 11878,
       "mtime": 1775966089.117761
     },
     {
-      "path": "PRODUCTION_MAINTENANCE_GUIDE.md",
+      "path": "production_MAINTENANCE_GUIDE.md",
       "size": 5505,
       "mtime": 1775966089.117761
     },
     {
-      "path": "PRODUCTION_MONITORING_SETUP.md",
+      "path": "production_MONITORING_SETUP.md",
       "size": 18222,
       "mtime": 1775966089.118761
     },
     {
-      "path": "PRODUCTION_NEXT_STEPS_COMPLETE.md",
+      "path": "production_NEXT_STEPS_COMPLETE.md",
       "size": 17280,
       "mtime": 1775966089.119761
     },
     {
-      "path": "PRODUCTION_OPERATIONS_GUIDE.md",
+      "path": "production_OPERATIONS_GUIDE.md",
       "size": 15730,
       "mtime": 1775966089.120761
     },
     {
-      "path": "PRODUCTION_READINESS_AUDIT.md",
+      "path": "production_READINESS_AUDIT.md",
       "size": 5961,
       "mtime": 1775966089.120761
     },
     {
-      "path": "PRODUCTION_READINESS_CHECKLIST.md",
+      "path": "production_READINESS_CHECKLIST.md",
       "size": 3759,
       "mtime": 1775966089.121761
     },
     {
-      "path": "PRODUCTION_READINESS_CHECKLIST_FINAL.md",
+      "path": "production_READINESS_CHECKLIST_FINAL.md",
       "size": 3917,
       "mtime": 1775966089.122761
     },
     {
-      "path": "PRODUCTION_READINESS_ENHANCED_REPORT.md",
+      "path": "production_READINESS_ENHANCED_REPORT.md",
       "size": 8010,
       "mtime": 1775966089.122761
     },
     {
-      "path": "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+      "path": "production_READINESS_EXECUTION_STATUS.md",
       "size": 10899,
       "mtime": 1775966089.123761
     },
     {
-      "path": "PRODUCTION_READINESS_FINAL.md",
+      "path": "production_READINESS_FINAL.md",
       "size": 10388,
       "mtime": 1775966089.124761
     },
     {
-      "path": "PRODUCTION_READINESS_FINAL_AUDIT.md",
+      "path": "production_READINESS_FINAL_AUDIT.md",
       "size": 19123,
       "mtime": 1775966089.125761
     },
     {
-      "path": "PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md",
+      "path": "production_READINESS_FINAL_COMPREHENSIVE.md",
       "size": 4192,
       "mtime": 1775966089.126761
     },
     {
-      "path": "PRODUCTION_READINESS_REPORT.md",
+      "path": "production_READINESS_REPORT.md",
       "size": 3177,
       "mtime": 1775966089.126761
     },
     {
-      "path": "PRODUCTION_READY_SUMMARY.md",
+      "path": "production_READY_SUMMARY.md",
       "size": 3075,
       "mtime": 1775966089.127761
     },
     {
-      "path": "PRODUCTION_RELEASE_ACTION_PLAN.md",
+      "path": "production_RELEASE_ACTION_PLAN.md",
       "size": 2643,
       "mtime": 1775966089.127761
     },
     {
-      "path": "PRODUCTION_RELEASE_DOCS_INDEX.md",
+      "path": "production_RELEASE_DOCS_INDEX.md",
       "size": 18894,
       "mtime": 1775966089.129761
     },
     {
-      "path": "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
+      "path": "production_RELEASE_VALIDATION_CHECKLIST.md",
       "size": 37002,
       "mtime": 1775966089.130761
     },
     {
-      "path": "PRODUCTION_REMEDIATION_FINAL_REPORT.md",
+      "path": "production_REMEDIATION_FINAL_REPORT.md",
       "size": 8964,
       "mtime": 1775966089.130761
     },
     {
-      "path": "PRODUCTION_SETUP.md",
+      "path": "production_SETUP.md",
       "size": 12770,
       "mtime": 1775966089.131761
     },
     {
-      "path": "PRODUCTION_SETUP_COMPLETE.md",
+      "path": "production_SETUP_COMPLETE.md",
       "size": 11816,
       "mtime": 1775966089.132761
     },
     {
-      "path": "PRODUCTION_VALIDATION_SYSTEM.md",
+      "path": "production_VALIDATION_SYSTEM.md",
       "size": 19788,
       "mtime": 1775966089.133761
     },
     {
-      "path": "PROD_PLACEHOLDERS_INVENTORY.md",
+      "path": "PROD_production_dataS_INVENTORY.md",
       "size": 2698,
       "mtime": 1775966089.134761
     },
@@ -14059,7 +14059,7 @@
       "mtime": 1775966089.264761
     },
     {
-      "path": "QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md",
+      "path": "QMOI_ADVANCED_VALIDATION_AUTOproduction.md",
       "size": 36781,
       "mtime": 1775966089.265761
     },
@@ -14069,7 +14069,7 @@
       "mtime": 1775966089.266761
     },
     {
-      "path": "QMOI_AI_PRODUCTION_READY.md",
+      "path": "QMOI_AI_production_READY.md",
       "size": 11413,
       "mtime": 1775966089.267761
     },
@@ -14149,7 +14149,7 @@
       "mtime": 1775966089.281761
     },
     {
-      "path": "QMOI_AUTO_TESTING_UI_DEVELOPMENT.md",
+      "path": "QMOI_AUTO_TESTING_UI_production.md",
       "size": 1792,
       "mtime": 1775966089.281761
     },
@@ -14334,12 +14334,12 @@
       "mtime": 1775966089.311761
     },
     {
-      "path": "QMOI_PRODUCTION_API.md",
+      "path": "QMOI_production_API.md",
       "size": 19621,
       "mtime": 1775966089.312761
     },
     {
-      "path": "QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "path": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "size": 20555,
       "mtime": 1775966089.312761
     },
@@ -14619,7 +14619,7 @@
       "mtime": 1775966089.361761
     },
     {
-      "path": "QVILLAGE_READY_FOR_PRODUCTION.md",
+      "path": "QVILLAGE_READY_FOR_production.md",
       "size": 8443,
       "mtime": 1775966089.361761
     },
@@ -14684,7 +14684,7 @@
       "mtime": 1775966089.373761
     },
     {
-      "path": "README_PRODUCTION.md",
+      "path": "README_production.md",
       "size": 6361,
       "mtime": 1775966089.374761
     },
@@ -14804,7 +14804,7 @@
       "mtime": 1775966089.390761
     },
     {
-      "path": "ROOT_PRODUCTION_STATUS.md",
+      "path": "ROOT_production_STATUS.md",
       "size": 400128,
       "mtime": 1775966089.395761
     },
@@ -14909,7 +14909,7 @@
       "mtime": 1775966089.423761
     },
     {
-      "path": "SESSION5_PRODUCTION_SUMMARY.md",
+      "path": "SESSION5_production_SUMMARY.md",
       "size": 14441,
       "mtime": 1775966089.424761
     },
@@ -14939,7 +14939,7 @@
       "mtime": 1775966975.1787267
     },
     {
-      "path": "SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md",
+      "path": "SESSION_COMPLETION_REPORT_TODOS_production_READY.md",
       "size": 12463,
       "mtime": 1775966089.429761
     },
@@ -15024,7 +15024,7 @@
       "mtime": 1775966089.442761
     },
     {
-      "path": "START_PRODUCTION_DEPLOYMENT.md",
+      "path": "START_production_DEPLOYMENT.md",
       "size": 14853,
       "mtime": 1775966089.4437609
     },
@@ -15399,7 +15399,7 @@
       "mtime": 1775966089.506761
     },
     {
-      "path": "__MOCKS__.md",
+      "path": "__production_dataS__.md",
       "size": 1634,
       "mtime": 1775966089.506761
     },
@@ -15409,7 +15409,7 @@
       "mtime": 1775966089.507761
     },
     {
-      "path": "app/api/PRODUCTION_STATUS.md",
+      "path": "app/api/production_STATUS.md",
       "size": 5811,
       "mtime": 1775966089.508761
     },
@@ -15639,7 +15639,7 @@
       "mtime": 1775966091.079761
     },
     {
-      "path": "docs/LOCAL_QMOI_DEVELOPMENT.md",
+      "path": "docs/LOCAL_QMOI_production.md",
       "size": 1792,
       "mtime": 1775966091.079761
     },
@@ -15699,7 +15699,7 @@
       "mtime": 1775966091.0887609
     },
     {
-      "path": "docs/PRODUCTION_CHECKLIST.md",
+      "path": "docs/production_CHECKLIST.md",
       "size": 3674,
       "mtime": 1775966091.089761
     },
@@ -15874,7 +15874,7 @@
       "mtime": 1775966091.120761
     },
     {
-      "path": "docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md",
+      "path": "docs/implementation/production_IMPLEMENTATION_GUIDE.md",
       "size": 10139,
       "mtime": 1775966091.120761
     },
@@ -15999,7 +15999,7 @@
       "mtime": 1775966091.1417608
     },
     {
-      "path": "docs/validation/PLACEHOLDER_FIX_ACTIONS.md",
+      "path": "docs/validation/production_data_FIX_ACTIONS.md",
       "size": 2252,
       "mtime": 1775966091.142761
     },
@@ -16109,7 +16109,7 @@
       "mtime": 1775966878.1047304
     },
     {
-      "path": "placeholder_scan_summary.md",
+      "path": "production_data_scan_summary.md",
       "size": 3357,
       "mtime": 1775966091.7177608
     },
@@ -16164,7 +16164,7 @@
       "mtime": 1775966091.725761
     },
     {
-      "path": "reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
+      "path": "reports/COMPREHENSIVE_production_READINESS_REPORT.md",
       "size": 15238,
       "mtime": 1775966091.7267609
     },
@@ -16174,12 +16174,12 @@
       "mtime": 1775966091.7277608
     },
     {
-      "path": "reports/PRODUCTION_FULL_VALIDATION_REPORT.md",
+      "path": "reports/production_FULL_VALIDATION_REPORT.md",
       "size": 2238,
       "mtime": 1775966091.728761
     },
     {
-      "path": "reports/mock_and_stub_audit.md",
+      "path": "reports/production_data_and_stub_audit.md",
       "size": 21308,
       "mtime": 1775966091.729761
     },
@@ -16239,7 +16239,7 @@
       "mtime": 1775966091.7377608
     },
     {
-      "path": "scripts/wallets/PRODUCTION_RUNBOOK.md",
+      "path": "scripts/wallets/production_RUNBOOK.md",
       "size": 4511,
       "mtime": 1775966091.738761
     },
@@ -16249,7 +16249,7 @@
       "mtime": 1775966091.738761
     },
     {
-      "path": "src/components/q-city/PRODUCTION_STATUS.md",
+      "path": "src/components/q-city/production_STATUS.md",
       "size": 4955,
       "mtime": 1775966091.7397609
     },
@@ -21029,7 +21029,7 @@
       "mtime": 1775966095.5317607
     },
     {
-      "path": "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md",
+      "path": "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_production_data.py.md",
       "size": 1792,
       "mtime": 1775966095.5327609
     },
@@ -21499,7 +21499,7 @@
       "mtime": 1775966095.5937607
     },
     {
-      "path": "tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md",
+      "path": "tools/issue_drafts/1070_tests_security_test_security_production_data.py.md",
       "size": 1792,
       "mtime": 1775966095.5947607
     },
@@ -21624,12 +21624,12 @@
       "mtime": 1775966095.6117609
     },
     {
-      "path": "tools/placeholder_actions.md",
+      "path": "tools/production_data_actions.md",
       "size": 61212239,
       "mtime": 1775966096.6157608
     },
     {
-      "path": "tools/placeholder_artifacts/README.md",
+      "path": "tools/production_data_artifacts/README.md",
       "size": 1905,
       "mtime": 1775966096.6957607
     },
@@ -21692,5 +21692,13 @@
     "ENDPOINTS.md",
     "docs/ALLTESTSAUTOTESTS.md",
     "docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md"
-  ]
+  ],
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:06.509719",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:51.793567",
+  "autodev_version": "2026-04-20-aggressive"
 }

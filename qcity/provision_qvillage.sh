@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:35.924461 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.112923 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.957135 -->
 
 #!/usr/bin/env bash
 # Provision QVillage on a QCity machine (generic SSH-based helper)

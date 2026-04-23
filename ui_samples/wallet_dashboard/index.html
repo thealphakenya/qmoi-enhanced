@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:39.043679 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.677003 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:06.966789 -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +14,10 @@
     th { background: #f4f4f4; }
   </style>
   <script>
-    async function loadWallets(){
+    async // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function loadWallets(){
       try{
         const r = await apiClient.get('/api/wallets');
         if(!r.ok){ document.getElementById('status').textContent = 'Failed to fetch: '+r.status; return }

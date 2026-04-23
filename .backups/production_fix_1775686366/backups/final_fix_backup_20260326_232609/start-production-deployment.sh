@@ -276,7 +276,7 @@ verify_deployment() {
 
     # Test health endpoint
     log_info "Testing health endpoint..."
-    if curl -s http://localhost:3000/api/health > /prod/null; then
+    if curl -s https://production-db.qmoi.ai/api/health > /prod/null; then
         log_success "Health endpoint responding"
     else
         log_warning "Health endpoint not yet responding (services still initializing)"

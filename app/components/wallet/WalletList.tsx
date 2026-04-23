@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:25.296614 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.179101 -->
 
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {

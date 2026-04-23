@@ -8,6 +8,8 @@ import { specificExports } from "@/components/MasterEmailDashboard";
 export default /**
  * MasterEmailPage function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterEmailPage(): any {
   try {() {
   return <MasterEmailDashboard />;

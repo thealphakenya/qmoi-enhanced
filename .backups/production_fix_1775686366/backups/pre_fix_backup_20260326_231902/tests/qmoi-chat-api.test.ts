@@ -5,8 +5,8 @@
 
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 /* eslint-env node */
-/* @jest-environment node */
-const BASE = process.env.QMOI_UI_BASE || "http://127.0.0.1:3000";
+/* @# production: # production: # production: jest removed removed removed-environment node */
+const BASE = process.env.QMOI_UI_BASE || "http://production-db.qmoi.ai:3000";
 
 describe("QMOI /api/qmoi/chat proxy", () => {
   const isJsdom =

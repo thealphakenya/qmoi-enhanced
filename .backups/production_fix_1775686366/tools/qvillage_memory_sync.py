@@ -60,8 +60,8 @@ class QVillageSyncEngine:
         hf_token: str = None,
         dry_run: bool = False,
     ):
-        self.qvillage_url = qvillage_url or os.getenv("QVILLAGE_API_URL", "http://localhost:3000")
-        self.qmoi_memory_url = qmoi_memory_url or os.getenv("QMOI_MEMORY_URL", "http://localhost:3001")
+        self.qvillage_url = qvillage_url or os.getenv("QVILLAGE_API_URL", "https://production-db.qmoi.ai")
+        self.qmoi_memory_url = qmoi_memory_url or os.getenv("QMOI_MEMORY_URL", "https://production-db.qmoi.ai")
         self.hf_space_url = hf_space_url or os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/stableqmoi/qvillage")
         self.hf_token = hf_token or os.getenv("HF_API_TOKEN")
         self.dry_run = dry_run
@@ -85,7 +85,7 @@ class QVillageSyncEngine:
         """Check if URL is valid and not localhost in CI."""
         if not url or url.strip() == "":
             return False
-        if url.startswith("http://localhost") or url.startswith("http://127.0.0.1"):
+        if url.startswith("http://localhost") or url.startswith("http://production-db.qmoi.ai"):
             # In CI, localhost is not available
             return False
         try:

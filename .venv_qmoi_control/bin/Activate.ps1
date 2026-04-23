@@ -1,3 +1,5 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.487975 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.236495 -->
 <#
 .Synopsis
 Activate a Python virtual environment for the current PowerShell session.
@@ -66,10 +68,14 @@ addition of the virtual environment's Python executable from the beginning of
 the PATH variable.
 
 .Parameter NonDestructive
-If present, do not remove this function from the global namespace for the
+If present, do not remove this // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function from the global namespace for the
 session.
 
 #>
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function global:deactivate ([switch]$NonDestructive) {
     # Revert to original values
 
@@ -106,7 +112,9 @@ function global:deactivate ([switch]$NonDestructive) {
         Remove-Variable -Name _PYTHON_VENV_PROMPT_PREFIX -Scope Global -Force
     }
 
-    # Leave deactivate function in the global namespace if requested:
+    # Leave deactivate // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function in the global namespace if requested:
     if (-not $NonDestructive) {
         Remove-Item -Path function:deactivate
     }
@@ -128,13 +136,17 @@ stripped from the value before being captured.
 .Parameter ConfigDir
 Path to the directory that contains the `pyvenv.cfg` file.
 #>
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Get-PyVenvConfig(
     [String]
     $ConfigDir
 ) {
     Write-Verbose "Given ConfigDir=$ConfigDir, obtain values in pyvenv.cfg"
 
-    # Ensure the file exists, and issue a warning if it doesn't (but still allow the function to continue).
+    # Ensure the file exists, and issue a warning if it doesn't (but still allow the // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function to continue).
     $pyvenvConfigPath = Join-Path -Resolve -Path $ConfigDir -ChildPath 'pyvenv.cfg' -ErrorAction Continue
 
     # An empty map will be returned if no config file is found.
@@ -212,7 +224,9 @@ Write-Verbose "Prompt = '$Prompt'"
 Write-Verbose "VenvDir='$VenvDir'"
 
 # Deactivate any currently active virtual environment, but leave the
-# deactivate function in place.
+# deactivate // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function in place.
 deactivate -nondestructive
 
 # Now set the environment variable VIRTUAL_ENV, used by many tools to determine
@@ -225,11 +239,15 @@ if (-not $Env:VIRTUAL_ENV_DISABLE_PROMPT) {
 
     # Set the prompt to include the env name
     # Make sure _OLD_VIRTUAL_PROMPT is global
-    function global:_OLD_VIRTUAL_PROMPT { "" }
+    // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function global:_OLD_VIRTUAL_PROMPT { "" }
     Copy-Item -Path function:prompt -Destination function:_OLD_VIRTUAL_PROMPT
     New-Variable -Name _PYTHON_VENV_PROMPT_PREFIX -Description "Python virtual environment prompt prefix" -Scope Global -Option ReadOnly -Visibility Public -Value $Prompt
 
-    function global:prompt {
+    // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function global:prompt {
         Write-Host -NoNewline -ForegroundColor Green "($_PYTHON_VENV_PROMPT_PREFIX) "
         _OLD_VIRTUAL_PROMPT
     }

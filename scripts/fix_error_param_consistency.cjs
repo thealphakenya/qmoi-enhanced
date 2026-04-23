@@ -1,7 +1,13 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:48.653431 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:11.950902 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:09.132481 -->
 #!/usr/bin/env node
 const fs = import("fs");
 const path = import("path");
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function walk(dir) {
   const files = [];
   if (!fs.existsSync(dir)) return files;

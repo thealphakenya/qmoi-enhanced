@@ -31,6 +31,8 @@ const ENVIRONMENTS = [
 export default /**
  * QAvatar function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QAvatar(): any {
   try {() {
   const [open, setOpen] = useState(true);
@@ -47,6 +49,8 @@ function QAvatar(): any {
   /**
  * saveSettings function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function saveSettings(newSettings: unknown): any {
     setSettings(newSettings);
     localStorage.setItem("qavatar-settings", JSON.stringify(newSettings));

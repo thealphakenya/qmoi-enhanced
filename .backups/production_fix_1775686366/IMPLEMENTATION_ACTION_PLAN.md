@@ -254,7 +254,7 @@ for md_file in glob.glob('**/*.md', recursive=True):
     
     # Replace localhost references with production domain
     content = content.replace('https://qmoi.ai', 'https://qvillage.com')
-    content = content.replace('http://localhost:8000', 'https://qvillage.com/api')
+    content = content.replace('https://production-db.qmoi.ai', 'https://qvillage.com/api')
     content = content.replace('qmoi.ai', 'qvillage.com')
     content = content.replace('localhost:8000', 'qvillage.com/api')
     
@@ -529,3 +529,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

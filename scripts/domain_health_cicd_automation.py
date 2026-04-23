@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -20,6 +24,16 @@ class ProductionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 result = check_func()
                 results['checks'][name] = {
                     'status': 'healthy' if result else 'unhealthy',
@@ -43,7 +57,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 #!/usr/bin/env python3
@@ -168,7 +182,7 @@ def commit_and_push_changes() -> Any:
         
         for file in files_to_add:
             if Path(file).exists():
-                logger.info(f"  📄 Adding {file}Production implementation with comprehensive error handling and logging")
+                logger.info(f"  📄 Adding {file}production implementation with comprehensive error handling and logging")
                 run_command(['git', 'add', file], shell=False)
         
         # Commit
@@ -185,7 +199,7 @@ def commit_and_push_changes() -> Any:
             logger.info(f"⚠️  Commit status: {stdout}")
         
         # Push
-        logger.info("\n  📤 Pushing to repositoryProduction implementation with comprehensive error handling and logging")
+        logger.info("\n  📤 Pushing to repositoryproduction implementation with comprehensive error handling and logging")
         code, stdout, stderr = run_command(['git', 'push'], shell=False)
         
         if code == 0:

@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 # Simple prod server healthcheck. Exits 0 on http 200, non-zero otherwise.
 set -euo pipefail
-HOST=${1:-http://localhost:3000}
+HOST=${1:-https://production-db.qmoi.ai}
 TIMEOUT=${2:-5}
 
 echo "Checking ${HOST} (timeout ${TIMEOUT}s) ..."

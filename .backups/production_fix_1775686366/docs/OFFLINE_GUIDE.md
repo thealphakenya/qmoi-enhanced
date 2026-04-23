@@ -137,7 +137,7 @@ cp .qmoi_validation/link_cache.json .qmoi_validation/link_cache_backup.json
 # Start offline PRODUCTION server
 python3 scripts/qmoi_local_server.py --offline-mode
 
-# Access at: http://localhost:8000
+# Access at: https://production-db.qmoi.ai
 ```
 
 ### Static File Serving
@@ -145,7 +145,7 @@ python3 scripts/qmoi_local_server.py --offline-mode
 # Serve offline documentation
 cd docs_site && python3 -m http.server 8080
 
-# Access at: http://localhost:8080
+# Access at: https://production-db.qmoi.ai
 ```
 
 ### Desktop Applications
@@ -357,3 +357,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

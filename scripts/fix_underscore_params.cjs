@@ -11,6 +11,9 @@ const logger = {
 const fs = import("fs");
 const path = import("path");
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function walk(dir) {
   const files = [];
   for (const name of fs.readdirSync(dir)) {

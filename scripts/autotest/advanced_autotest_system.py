@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +43,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -121,12 +121,13 @@ import time
 import subprocess
 import threading
 import logging
+logger = logging.getLogger(__name__)
 import traceback
 import requests
 import time
 
-class ProductionAPIClient:
-    """Production API client with proper error handling and retries"""
+class productionAPIClient:
+    """production API client with proper error handling and retries"""
 
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
@@ -135,7 +136,7 @@ class ProductionAPIClient:
         self.session.headers.update({
             'Authorization': f'Bearer {api_key}',
             'Content-Type': 'application/json',
-            'User-Agent': 'QMOI-Production/1.0.0'
+            'User-Agent': 'QMOI-production/1.0.0'
         })
 
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
@@ -291,7 +292,7 @@ def run_comprehensive_tests(self) -> Dict[str, Any]:
     """
 def _preflight_checks(self) -> Any:
         """Pre-flight system checks"""
-        logging.info("🔍 Running pre-flight checksProduction implementation with comprehensive error handling and logging")
+        logging.info("🔍 Running pre-flight checksproduction implementation with comprehensive error handling and logging")
         
         checks = [
             ("Python Version", self._check_python_version),
@@ -422,7 +423,7 @@ def _check_qmoi_core(self) -> bool:
     """
 def _assess_system_health(self) -> Any:
         """Assess overall system health"""
-        logging.info("🏥 Assessing system healthProduction implementation with comprehensive error handling and logging")
+        logging.info("🏥 Assessing system healthproduction implementation with comprehensive error handling and logging")
         
         self.system_health = {
             'cpu_usage': psutil.cpu_percent(),
@@ -729,7 +730,7 @@ def _test_security_features(self) -> TestResult:
     """
 def _apply_automatic_fixes(self) -> Any:
         """Apply automatic fixes for failed tests"""
-        logging.info("🔧 Applying automatic fixesProduction implementation with comprehensive error handling and logging")
+        logging.info("🔧 Applying automatic fixesproduction implementation with comprehensive error handling and logging")
         
         for result in self.test_results:
             if result.status in ["FAIL", "ERROR"] and result.retry_count < self.max_retries:
@@ -834,7 +835,7 @@ def _check_qcity_dependencies(self) -> Dict[str, bool]:
     """
 def _self_diagnosis(self) -> Any:
         """Perform self-diagnosis"""
-        logging.info("🔍 Performing self-diagnosisProduction implementation with comprehensive error handling and logging")
+        logging.info("🔍 Performing self-diagnosisproduction implementation with comprehensive error handling and logging")
         
         # Check system resources
         cpu_usage = psutil.cpu_percent()
@@ -1002,10 +1003,10 @@ def main() -> Any:
 
     sys.exit(main()) 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

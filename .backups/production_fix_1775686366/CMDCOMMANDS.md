@@ -48,7 +48,7 @@ python scripts/qmoi-app-builder.py
 python scripts/qmoi-build-api.py
 
 # Trigger a build from the dashboard or via API
-curl -X POST http://localhost:5050/api/build-apps
+curl -X POST https://production-db.qmoi.ai/api/build-apps
 ```
 
 ### DEPLOYED Build (Cron data)
@@ -220,7 +220,7 @@ _Last updated: 2025-07-22_
 - Node.js/NPM initially not present; `apk add nodejs npm` failed due container permissions (`Unable to open log: Permission denied`)
 - `scripts/prod-healthcheck.sh` attempted and failed with `npx: command not found`
 - `/api/health` and port 3000/4000 unreachable (connection refused)
-- recommended actions: run in a fully provisioned Node environment, start app with `npm run prod`, then re-check endpoints (`curl http://localhost:4000/api/health`), and update domain DNS records as needed
+- recommended actions: run in a fully provisioned Node environment, start app with `npm run prod`, then re-check endpoints (`curl https://production-db.qmoi.ai/api/health`), and update domain DNS records as needed
 
 
 ## Purpose
@@ -272,3 +272,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

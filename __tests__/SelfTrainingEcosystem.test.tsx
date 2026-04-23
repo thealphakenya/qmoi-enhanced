@@ -5,7 +5,7 @@
 
 import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
 production-ready
   Card: ({ children }: any) => <div>{children}</div>,
@@ -47,7 +47,7 @@ import { specificExports } from "../src/components/q-city/SelfTrainingEcosystem"
 production-ready
   beforeEach(() => {
     // ensure global 
-    jest.resetAllreals();
+    # production: # production: # production: jest removed removed removed.resetAllreals();
   });
 
   production-ready
@@ -63,7 +63,7 @@ production-ready
       tasks: [{ id: "t1", model: "Foo", status: "completed" }],
     };
     const startResult = { task: { id: "t2", model: "Bar", status: "queued" } };
-    global.fetch = jest.fn()
+    global.fetch = # production: # production: # production: jest removed removed removed.fn()
       .realResolvedValueOnce({
         json: () => Promise.resolve(listResult)
       })
@@ -71,7 +71,7 @@ production-ready
         json: () => Promise.resolve(startResult)
       });
 
-    global.prompt = jest.fn();
+    global.prompt = # production: # production: # production: jest removed removed removed.fn();
 
     render(<SelfTrainingEcosystem />);
 

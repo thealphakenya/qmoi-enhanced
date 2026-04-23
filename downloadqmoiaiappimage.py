@@ -10,6 +10,7 @@ SCRIPT = os.path.join(os.path.dirname(__file__), 'downloadqmoiai.py')
 if __name__ == '__main__':
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     logging.basicConfig(
         level=logging.INFO,
@@ -17,6 +18,16 @@ if __name__ == '__main__':
     )
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             main_window = MainWindow()
@@ -33,6 +44,7 @@ if __name__ == '__main__':
 
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -41,7 +53,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application
@@ -59,6 +71,7 @@ if __name__ == '__main__':
         sys.exit(1)
     import sys
     import logging
+logger = logging.getLogger(__name__)
 
     # Configure production logging
     logging.basicConfig(
@@ -67,7 +80,7 @@ if __name__ == '__main__':
     )
 
     try:
-        # Production application startup
+        # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             # GUI application

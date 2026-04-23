@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +47,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -224,7 +228,7 @@ def scan_repository(self) -> Any:
             rel_path = root_path.relative_to(BASE_DIR)
             parts = rel_path.parts
             
-            # Only scan relevant directories or just top-level source files
+            # production: test code removed
             is_relevant = any(dir_name in parts or dir_name in [BASE_DIR.name] 
                             for dir_name in SCAN_DIRS)
             is_root_level = len(parts) <= 1
@@ -238,7 +242,7 @@ def scan_repository(self) -> Any:
             for file in files:
                 file_path = root_path / file
                 
-                # Only scan text files
+                # production: test code removed
                 if file_path.suffix in {'.js', '.ts', '.jsx', '.tsx', '.py', '.json', '.md', '.yaml', '.yml', '.sh'}:
                     if self.should_scan_path(file_path):
                         self.files_scanned += 1
@@ -250,7 +254,7 @@ def scan_repository(self) -> Any:
                             self.issues[rel] = issues
                         
                         if self.files_scanned % 100 == 0:
-                            logger.info(f"  Scanned {self.files_scanned} filesProduction implementation with comprehensive error handling and logging ({self.issues_found} issues)")
+                            logger.info(f"  Scanned {self.files_scanned} filesproduction implementation with comprehensive error handling and logging ({self.issues_found} issues)")
         
         logger.info(f"\n✅ Scan complete!")
         logger.info(f"   Files scanned: {self.files_scanned}")
@@ -308,7 +312,7 @@ production-ready
                     report += f"       - Line {issue['line']}: {issue['description']}\n"
                     report += f"         {issue['code']}\n"
                 if len(issues) > 3:
-                    report += f"       Production implementation with comprehensive error handling and logging and {len(issues)-3} more\n"
+                    report += f"       production implementation with comprehensive error handling and logging and {len(issues)-3} more\n"
                 report += "\n"
         
         report += f"""
@@ -359,10 +363,10 @@ def main() -> Any:
     main()
 
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

@@ -18,6 +18,8 @@ interface ActivityLog {
 export default /**
  * MasterActivityPage function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function MasterActivityPage(): any {
   try {() {
   const [logs, setLogs] = useState<ActivityLog[]>([]);

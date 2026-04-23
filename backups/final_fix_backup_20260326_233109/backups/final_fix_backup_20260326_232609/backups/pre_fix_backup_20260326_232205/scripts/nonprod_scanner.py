@@ -27,6 +27,8 @@ import sys
 import os
 import re
 import { specificExports } from pathlib import { specificExports } from typing import List, Dict
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parents[1]
 DONEREFS = ROOT / "donerefs.txt"

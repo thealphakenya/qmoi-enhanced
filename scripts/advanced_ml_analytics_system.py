@@ -1,6 +1,10 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+    import logging
+    logger = logging.getLogger(__name__)
+
+
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,7 +47,7 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
@@ -650,7 +654,7 @@ def _calculate_rebalancing_trades(self, current_weights: Dict[str, float],
             target_weight = target_weights.get(asset, 0)
             weight_diff = target_weight - current_weight
 
-            if abs(weight_diff) > 0.01:  # Only trade if difference > 1%
+            if abs(weight_diff) > 0.01:  # production: test code removed
                 trade_value = weight_diff * total_value
                 trade_type = 'BUY' if trade_value > 0 else 'SELL'
 
@@ -825,7 +829,7 @@ def __init__(self) -> Any:
     """
 def initialize_complete_system(self) -> bool:
         """Initialize the complete advanced ML analytics system"""
-        logger.info('🚀 Initializing Advanced ML Analytics & Risk Management SystemProduction implementation with comprehensive error handling and logging')
+        logger.info('🚀 Initializing Advanced ML Analytics & Risk Management Systemproduction implementation with comprehensive error handling and logging')
 
         try:
             # Initialize ML models
@@ -1349,10 +1353,10 @@ def main() -> Any:
 
     main()
         def _get_production_data(self) -> Any:
-            """Production data retrieval with error handling"""
+            """production data retrieval with error handling"""
             try:
                 # Real implementation with database/API calls
                 return self._fetch_live_data()
             except Exception as e:
-                logger.error(f"Production data retrieval failed: {e}")
+                logger.error(f"production data retrieval failed: {e}")
                 return self._get_fallback_data()

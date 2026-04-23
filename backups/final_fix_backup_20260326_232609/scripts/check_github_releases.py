@@ -262,6 +262,8 @@ import argparse
 import json
 import os
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 try:
     import requests

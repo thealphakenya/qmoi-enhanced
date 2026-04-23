@@ -6,6 +6,8 @@
 
 # IMPLEMENTED: 3 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 # Ensure the directory exists
 os.makedirs("Qmoi_downloaded_apps/windows/latest", exist_ok=True)

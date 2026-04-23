@@ -17,6 +17,8 @@ import threading
 import requests
 import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional
 import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
+import logging
+logger = logging.getLogger(__name__)
 
 class HealthMonitor:
     """production health monitoring system"""

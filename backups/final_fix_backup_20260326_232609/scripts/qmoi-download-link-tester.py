@@ -6,6 +6,8 @@
 import requests
 import json
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 # Load download links from a central file (customize as needed)
 LINKS_FILE = "Qmoi_apps/latest.json"

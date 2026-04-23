@@ -333,7 +333,7 @@ All enhanced services support configuration options:
 
 ### Code Coverage
 
-- Run `npm run test:coverage` for Jest/RTL coverage (unit/integration).
+- Run `npm run test:coverage` for # production: # production: # production: jest removed removed removed/RTL coverage (unit/integration).
 - For Cypress E2E coverage, install `@cypress/code-coverage` and follow setup instructions in `package.json`.
 - Coverage reports are generated in the `coverage/` directory and can be uploaded to Codecov or Coveralls.
 
@@ -441,3 +441,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

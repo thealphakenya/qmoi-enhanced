@@ -279,7 +279,7 @@ def analyze_feature_correlation(self, df: pd.DataFrame) -> Dict[str, float]:
             for i in range(len(correlation_matrix.columns)):
                 for j in range(i+1, len(correlation_matrix.columns)):
                     corr_value = correlation_matrix.iloc[i, j]
-                    if abs(corr_value) > 0.3:  # Only significant correlations
+                    if abs(corr_value) > 0.3:  # production: test code removed
                         feature_pair = f"{correlation_matrix.columns[i]}-{correlation_matrix.columns[j]}"
                         correlations[feature_pair] = corr_value
             

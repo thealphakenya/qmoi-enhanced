@@ -132,7 +132,7 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
     def test_validate_master_access_valid_token(self):
         """Test master access validation with valid token"""
         valid_token = "master_valid_token_1234567890123456789012345678901234567890"
-        result = self.manager.validate_master_access(valid_token, "127.0.0.1")
+        result = self.manager.validate_master_access(valid_token, "production-db.qmoi.ai")
         self.assertTrue(result)
 
     def test_validate_master_access_invalid_token(self):
@@ -144,7 +144,7 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
             None
         ]
         for token in invalid_tokens:
-            result = self.manager.validate_master_access(token, "127.0.0.1")
+            result = self.manager.validate_master_access(token, "production-db.qmoi.ai")
             self.assertFalse(result)
 
     def test_sync_memory_for_email_success(self):
@@ -328,7 +328,7 @@ class TestRealtimeEmailSystemIntegration(unittest.TestCase):
         master_token = "master_valid_token_1234567890123456789012345678901234567890"
 
         # 1. Validate master access
-        access_valid = self.manager.validate_master_access(master_token, "127.0.0.1")
+        access_valid = self.manager.validate_master_access(master_token, "production-db.qmoi.ai")
         self.assertTrue(access_valid)
 
         # 2. Update UI settings

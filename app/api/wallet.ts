@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -143,7 +144,7 @@ function createTransaction(
     const transaction = await prisma.transaction.create({
       data: {
         walletId,
-        /* Production implementation with proper error handling */transactionData,
+        /* production implementation with proper error handling */transactionData,
       },
     });
 
@@ -535,17 +536,17 @@ function processBitget(amount: number, type: string): any {
 
 const platformHandlers: Record<
   string,
-  (/* Production implementation with proper error handling */args: unknown[]) => Promise<unknown>
+  (/* production implementation with proper error handling */args: unknown[]) => Promise<unknown>
 > = {
-  Mpesa: processMpesa as (/* Production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
-  Binance: processBinance as (/* Production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
-  Pesapal: processPesapal as (/* Production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
-  Bitget: processBitget as (/* Production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
+  Mpesa: processMpesa as (/* production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
+  Binance: processBinance as (/* production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
+  Pesapal: processPesapal as (/* production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
+  Bitget: processBitget as (/* production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
   Cashon: (async (_amount: number, _type?: string) => ({
     status: "success",
     platform: "Cashon",
     amount: _amount,
-  })) as (/* Production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
+  })) as (/* production implementation with proper error handling */args: unknown[]) => Promise<unknown>,
 };
 
 /**
@@ -676,7 +677,7 @@ function handler(
           metadata: result,
         });
 
-        logAction("deposit", { /* Production implementation with proper error handling */transaction, result });
+        logAction("deposit", { /* production implementation with proper error handling */transaction, result });
 
         if (whatsappService) {
           await whatsappService.sendMessageToMaster(
@@ -724,7 +725,7 @@ function handler(
           metadata: result,
         });
 
-        logAction("withdraw", { /* Production implementation with proper error handling */transaction, result });
+        logAction("withdraw", { /* production implementation with proper error handling */transaction, result });
 
         if (whatsappService) {
           await whatsappService.sendMessageToMaster(

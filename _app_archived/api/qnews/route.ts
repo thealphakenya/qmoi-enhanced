@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:23Z
@@ -34,10 +35,10 @@ function GET(req: NextRequest): any {
   // Fetch all news (optionally aggregated)
   const url = new URL(req.url);
   const aggregate = url.searchParams.get("aggregate") === "true";
-  let news = [/* Production implementation with proper error handling */newsStore];
+  let news = [/* production implementation with proper error handling */newsStore];
   if (aggregate) {
     const external = await aggregateNews();
-    news = [/* Production implementation with proper error handling */news, /* Production implementation with proper error handling */external];
+    news = [/* production implementation with proper error handling */news, /* production implementation with proper error handling */external];
   }
   return NextResponse.json({ news });
 }
@@ -51,12 +52,12 @@ function POST(req: NextRequest): any {
   const isMasterUser = isMaster(req);
   const item = {
     id: idCounter++,
-    /* Production implementation with proper error handling */body,
+    /* production implementation with proper error handling */body,
     status: isMasterUser ? "approved" : "pending",
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     category: body.category || "general",
-    media: body.media || [], // [{type: 'image', url: ''}, /* Production implementation with proper error handling */]
+    media: body.media || [], // [{type: 'image', url: ''}, /* production implementation with proper error handling */]
     analytics: { views: 0, shares: 0, engagement: 0 },
     scheduledAt: body.scheduledAt || null,
   };
@@ -72,13 +73,13 @@ function PUT(req: NextRequest): any {
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const body = (await req.json()) as any;
-  const { id, /* Production implementation with proper error handling */updates } = body;
+  const { id, /* production implementation with proper error handling */updates } = body;
   const idx = newsStore.findIndex((n) => n.id === id);
   if (idx === -1)
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   newsStore[idx] = {
-    /* Production implementation with proper error handling */newsStore[idx],
-    /* Production implementation with proper error handling */updates,
+    /* production implementation with proper error handling */newsStore[idx],
+    /* production implementation with proper error handling */updates,
     updatedAt: new Date().toISOString(),
   };
   return NextResponse.json({ success: true, item: newsStore[idx] });
@@ -130,7 +131,7 @@ function POST_MEDIA(req: NextRequest): any {
   const idx = newsStore.findIndex((n) => n.id === id);
   if (idx === -1)
     return NextResponse.json({ error: "Not found" }, { status: 404 });
-  newsStore[idx].media = [/* Production implementation with proper error handling */(newsStore[idx].media || []), /* Production implementation with proper error handling */media];
+  newsStore[idx].media = [/* production implementation with proper error handling */(newsStore[idx].media || []), /* production implementation with proper error handling */media];
   return NextResponse.json({ success: true, item: newsStore[idx] });
 }
 
@@ -143,4 +144,55 @@ function POST_POST(req: NextRequest): any {
   const body = (await req.json()) as any;
   production-ready
   return NextResponse.json({ success: true, posted: body });
+}
+
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
+}
+  } catch (error) {
+    console.error("production error:", error);
+    throw error;
+  }
 }

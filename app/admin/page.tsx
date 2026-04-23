@@ -13,6 +13,8 @@ import { specificExports } from "@/app/components/QMOIAutoFixDashboard";
 export default /**
  * AdminPage function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function AdminPage(): any {
   try {() {
   const router = useRouter();

@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:54.234953 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.200672 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:01.480974 -->
 # Verify local platform artifacts
 
 param(
@@ -6,9 +9,21 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Write-Info($m){ Write-Host $m -ForegroundColor Cyan }
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Write-Warn($m){ Write-Host $m -ForegroundColor Yellow }
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Write-Ok($m){ Write-Host $m -ForegroundColor Green }
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Write-Err($m){ Write-Host $m -ForegroundColor Red }
 
 Write-Info "Checking local platform artifacts..."

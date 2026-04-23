@@ -12,6 +12,8 @@ import os
 import subprocess
 import sys
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 """
     run_lint_and_error_checks function

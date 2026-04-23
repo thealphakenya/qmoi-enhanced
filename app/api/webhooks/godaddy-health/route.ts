@@ -1,3 +1,4 @@
+console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: GoDaddy health webhook endpoint
 // This route provides live health status for DomainForge Pro and GoDaddy-managed domains.
 import { specificExports } from "next/server";

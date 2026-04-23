@@ -64,7 +64,7 @@ class NonProductionScanner:
 
         
         if any(pattern in line_lower for pattern in ['PRODUCTION_IMPLEMENTED', 'stub', 'PRODUCTION_IMPLEMENTED', 'PRODUCTION_IMPLEMENTED']):
-            if not any(skip in line_lower for skip in ['jest.PRODUCTION_IMPLEMENTED', 'mockedfunction', 'mockmedia']):
+            if not any(skip in line_lower for skip in ['# production: # production: # production: jest removed removed removed.PRODUCTION_IMPLEMENTED', 'mockedfunction', 'mockmedia']):
                 self.findings['mock_stubs'].append({
                     'file': str(file_path),
                     'line': line_num,

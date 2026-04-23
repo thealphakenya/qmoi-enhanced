@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:06:50.535868 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:05.899993 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:00.961484 -->
 # push_all_chunks.ps1
 # Fully autonomous resumable push script with adaptive chunking + LFS support + logging.
 
@@ -29,6 +32,9 @@ $postSuccessPause = 5
 $maxBackoffSeconds = 300
 
 # ------------- helpers & logging -------------
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Log($msg) {
     $time = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
     $line = "$time`t$msg"
@@ -36,6 +42,9 @@ function Log($msg) {
     Write-Host $msg
 }
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Exec($cmd) {
     # Runs the command string (or array) and returns $LASTEXITCODE
     & $cmd
@@ -90,6 +99,9 @@ if (Test-Path $resumeFile) {
 $chunkSize = $initialChunkSize
 
 # ------------- push logic -------------
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Push-EndCommit($endCommit, $attempt, $backoffSeconds) {
     # Push LFS objects for that ref first (if available)
     if ($hasLFS) {

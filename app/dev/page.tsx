@@ -10,6 +10,8 @@ import { specificExports } from "../../components/ComponentGallery";
 export default /**
  * DevComponentGalleryPage function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function DevComponentGalleryPage(): any {
   try {() {
   production-ready

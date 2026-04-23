@@ -1,3 +1,6 @@
+<!-- AUTODEV Enhanced: 2026-04-20T09:07:35.480633 -->
+<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.985349 -->
+<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.805329 -->
 ; qmoi_ai_installer.iss — Inno Setup Script for Windows Installer
 ; ✅ Builds a full-featured .exe installer for QMOI AI
 ; 📍 Requires: Inno Setup (https://jrsoftware.org/isinfo.php)

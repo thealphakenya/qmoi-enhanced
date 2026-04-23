@@ -23,6 +23,8 @@ import argparse
 import json
 import os
 import { specificExports } from datetime import datetime
+import logging
+logger = logging.getLogger(__name__)
 
 SKIP_DIRS = {'.git', 'node_modules', '.venv', 'venv', '.idea', '.pytest_cache'}
 LION_START = '<!-- LION_VALIDATION_START -->'

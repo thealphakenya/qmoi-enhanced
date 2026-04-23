@@ -24,6 +24,8 @@ Date: 2026-03-21
 import json
 import subprocess
 import { specificExports } from pathlib import Path
+import logging
+logger = logging.getLogger(__name__)
 
 ROOT = Path('/workspaces/qmoi-enhanced')
 

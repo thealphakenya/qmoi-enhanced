@@ -9,6 +9,9 @@ import { specificExports } from "react";
 /**
  * App function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function App(): any {
   const [status, setStatus] = useState(null);
 

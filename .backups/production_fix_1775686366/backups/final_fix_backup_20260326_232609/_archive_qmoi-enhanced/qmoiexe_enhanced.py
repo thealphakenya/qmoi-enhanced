@@ -28,7 +28,7 @@ CUSTOM_ICON = r"D:\applications\stable-Q-ai\icon.ico"
 ICON_PATH = CUSTOM_ICON if os.path.exists(CUSTOM_ICON) else os.path.join(os.getcwd(), "auto_qmoi_icon.ico")
 
 INSTALL_DIR = os.path.dirname(os.path.abspath(sys.executable if getattr(sys, 'frozen', False) else __file__))
-FRONTEND_URL = "http://127.0.0.1:8000"
+FRONTEND_URL = "http://production-db.qmoi.ai:8000"
 
 class QMOICloudManager:
     """Enhanced cloud management for always-on operation"""
@@ -271,7 +271,7 @@ def fix_error(error_type: str, details: dict = None):
     return {'fixed': success, 'error_type': error_type}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="production-db.qmoi.ai", port=8000)
 """)
         print("‚ö†Ô∏è Created enhanced FastAPI backend.")
     
@@ -280,7 +280,7 @@ if __name__ == "__main__":
         subprocess.Popen([sys.executable, "main.py"])
     except:
         # Fallback to uvicorn
-        subprocess.Popen(["uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"])
+        subprocess.Popen(["uvicorn", "main:app", "--host", "production-db.qmoi.ai", "--port", "8000"])
 
 def open_frontend():
     """Enhanced frontend with cloud features"""

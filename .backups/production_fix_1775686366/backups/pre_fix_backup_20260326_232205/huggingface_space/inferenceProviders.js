@@ -18,7 +18,7 @@ let providers = [
     id: "hf",
     url: "https://api-inference.huggingface.co",
   },
-  { name: "Local Model", id: "local", url: "http://localhost:5000" },
+  { name: "Local Model", id: "local", url: "https://production-db.qmoi.ai" },
   {
     name: "Cloud Provider",
     id: "cloud",

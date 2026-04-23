@@ -514,7 +514,7 @@ Found 109453 links
 - link_report.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- link_report.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- link_report.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - link_report.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - link_report.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -9256,8 +9256,8 @@ Found 109453 links
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -9627,8 +9627,8 @@ Found 109453 links
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -9824,7 +9824,7 @@ Found 109453 links
 - link_report.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - link_report.md: [glob](http://npm.im/glob) — external (not checked)
 - link_report.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - link_report.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -10540,8 +10540,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [absolute](#absolute) — OK
 - link_report.md: [markDirectories](#markdirectories) — OK
 - link_report.md: [objectMode](#objectmode) — OK
-- link_report.md: [onlyDirectories](#onlydirectories) — OK
-- link_report.md: [onlyFiles](#onlyfiles) — OK
+- link_report.md: [onlyDirectories](# production: test code removed
+- link_report.md: [onlyFiles](# production: test code removed
 - link_report.md: [stats](#stats) — OK
 - link_report.md: [unique](#unique) — OK
 - link_report.md: [Matching control](#matching-control) — OK
@@ -10578,7 +10578,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Options](#options-3) — OK
 - link_report.md: [`cwd`](#cwd) — OK
 - link_report.md: [`stats`](#stats) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [object mode](#objectmode) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [object mode](#objectmode) — OK
@@ -10601,7 +10601,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`extglob`](#extglob) — OK
 - link_report.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - link_report.md: [`baseNameMatch`](#basenamematch) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [`ignore`](#ignore) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [`absolute`](#absolute) — OK
@@ -12267,7 +12267,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
 - link_report.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - link_report.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- link_report.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- link_report.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - link_report.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - link_report.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - link_report.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -13409,7 +13409,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - link_report.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - link_report.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -14901,7 +14901,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -16535,7 +16535,7 @@ npm --prefix bench start
 - link_report.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - link_report.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
 - link_report.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- link_report.md: [jest](https://github.com/jestjs/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - link_report.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
@@ -16997,7 +16997,7 @@ console.log(style.codes.get(36));
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- link_report.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
+- link_report.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
 - link_report.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
 - link_report.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
@@ -17143,7 +17143,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - link_report.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - link_report.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- link_report.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - link_report.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -17371,10 +17371,10 @@ console.log(style.codes.get(36));
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
-- link_report.md: [Jest's](https://jestjs.io/) — external (not checked)
-- link_report.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -18047,7 +18047,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Regex character classes](#regex-character-classes) — OK
 - link_report.md: [Regex groups](#regex-groups) — OK
 - link_report.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- link_report.md: [Notes](#notes) — OK
+- link_report.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - link_report.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - link_report.md: [Backslashes](#backslashes) — OK
 - link_report.md: [Benchmarks](#benchmarks) — OK
@@ -19099,7 +19099,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- link_report.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- link_report.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - link_report.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - link_report.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -19298,7 +19298,7 @@ console.log(style.codes.get(36));
 - link_report.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - link_report.md: [glob](http://npm.im/glob) — external (not checked)
 - link_report.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - link_report.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -20014,8 +20014,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [absolute](#absolute) — OK
 - link_report.md: [markDirectories](#markdirectories) — OK
 - link_report.md: [objectMode](#objectmode) — OK
-- link_report.md: [onlyDirectories](#onlydirectories) — OK
-- link_report.md: [onlyFiles](#onlyfiles) — OK
+- link_report.md: [onlyDirectories](# production: test code removed
+- link_report.md: [onlyFiles](# production: test code removed
 - link_report.md: [stats](#stats) — OK
 - link_report.md: [unique](#unique) — OK
 - link_report.md: [Matching control](#matching-control) — OK
@@ -20052,7 +20052,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Options](#options-3) — OK
 - link_report.md: [`cwd`](#cwd) — OK
 - link_report.md: [`stats`](#stats) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [object mode](#objectmode) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [object mode](#objectmode) — OK
@@ -20075,7 +20075,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`extglob`](#extglob) — OK
 - link_report.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - link_report.md: [`baseNameMatch`](#basenamematch) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [`ignore`](#ignore) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [`absolute`](#absolute) — OK
@@ -21741,7 +21741,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
 - link_report.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - link_report.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- link_report.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- link_report.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - link_report.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - link_report.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - link_report.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -22883,7 +22883,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - link_report.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - link_report.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -24375,7 +24375,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -26009,7 +26009,7 @@ npm --prefix bench start
 - link_report.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - link_report.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
 - link_report.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- link_report.md: [jest](https://github.com/jestjs/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - link_report.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
@@ -26471,7 +26471,7 @@ console.log(style.codes.get(36));
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- link_report.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
+- link_report.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
 - link_report.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
 - link_report.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
@@ -26617,7 +26617,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - link_report.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - link_report.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- link_report.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - link_report.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -26845,10 +26845,10 @@ console.log(style.codes.get(36));
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
-- link_report.md: [Jest's](https://jestjs.io/) — external (not checked)
-- link_report.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -27521,7 +27521,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Regex character classes](#regex-character-classes) — OK
 - link_report.md: [Regex groups](#regex-groups) — OK
 - link_report.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- link_report.md: [Notes](#notes) — OK
+- link_report.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - link_report.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - link_report.md: [Backslashes](#backslashes) — OK
 - link_report.md: [Benchmarks](#benchmarks) — OK
@@ -30682,7 +30682,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- link_report.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- link_report.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - link_report.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - link_report.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -39424,8 +39424,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -39795,8 +39795,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -39992,7 +39992,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - link_report.md: [glob](http://npm.im/glob) — external (not checked)
 - link_report.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - link_report.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -40708,8 +40708,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [absolute](#absolute) — OK
 - link_report.md: [markDirectories](#markdirectories) — OK
 - link_report.md: [objectMode](#objectmode) — OK
-- link_report.md: [onlyDirectories](#onlydirectories) — OK
-- link_report.md: [onlyFiles](#onlyfiles) — OK
+- link_report.md: [onlyDirectories](# production: test code removed
+- link_report.md: [onlyFiles](# production: test code removed
 - link_report.md: [stats](#stats) — OK
 - link_report.md: [unique](#unique) — OK
 - link_report.md: [Matching control](#matching-control) — OK
@@ -40746,7 +40746,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Options](#options-3) — OK
 - link_report.md: [`cwd`](#cwd) — OK
 - link_report.md: [`stats`](#stats) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [object mode](#objectmode) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [object mode](#objectmode) — OK
@@ -40769,7 +40769,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`extglob`](#extglob) — OK
 - link_report.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - link_report.md: [`baseNameMatch`](#basenamematch) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [`ignore`](#ignore) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [`absolute`](#absolute) — OK
@@ -42435,7 +42435,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
 - link_report.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - link_report.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- link_report.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- link_report.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - link_report.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - link_report.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - link_report.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -43577,7 +43577,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - link_report.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - link_report.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -45069,7 +45069,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -46703,7 +46703,7 @@ npm --prefix bench start
 - link_report.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - link_report.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
 - link_report.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- link_report.md: [jest](https://github.com/jestjs/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - link_report.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
@@ -47165,7 +47165,7 @@ console.log(style.codes.get(36));
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- link_report.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
+- link_report.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
 - link_report.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
 - link_report.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
@@ -47311,7 +47311,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - link_report.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - link_report.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- link_report.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - link_report.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -47539,10 +47539,10 @@ console.log(style.codes.get(36));
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
-- link_report.md: [Jest's](https://jestjs.io/) — external (not checked)
-- link_report.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -48215,7 +48215,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Regex character classes](#regex-character-classes) — OK
 - link_report.md: [Regex groups](#regex-groups) — OK
 - link_report.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- link_report.md: [Notes](#notes) — OK
+- link_report.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - link_report.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - link_report.md: [Backslashes](#backslashes) — OK
 - link_report.md: [Benchmarks](#benchmarks) — OK
@@ -49267,7 +49267,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- link_report.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- link_report.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - link_report.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - link_report.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -49466,7 +49466,7 @@ console.log(style.codes.get(36));
 - link_report.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - link_report.md: [glob](http://npm.im/glob) — external (not checked)
 - link_report.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - link_report.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -50182,8 +50182,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [absolute](#absolute) — OK
 - link_report.md: [markDirectories](#markdirectories) — OK
 - link_report.md: [objectMode](#objectmode) — OK
-- link_report.md: [onlyDirectories](#onlydirectories) — OK
-- link_report.md: [onlyFiles](#onlyfiles) — OK
+- link_report.md: [onlyDirectories](# production: test code removed
+- link_report.md: [onlyFiles](# production: test code removed
 - link_report.md: [stats](#stats) — OK
 - link_report.md: [unique](#unique) — OK
 - link_report.md: [Matching control](#matching-control) — OK
@@ -50220,7 +50220,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Options](#options-3) — OK
 - link_report.md: [`cwd`](#cwd) — OK
 - link_report.md: [`stats`](#stats) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [object mode](#objectmode) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [object mode](#objectmode) — OK
@@ -50243,7 +50243,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`extglob`](#extglob) — OK
 - link_report.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - link_report.md: [`baseNameMatch`](#basenamematch) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [`ignore`](#ignore) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [`absolute`](#absolute) — OK
@@ -51909,7 +51909,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
 - link_report.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - link_report.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- link_report.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- link_report.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - link_report.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - link_report.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - link_report.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -53051,7 +53051,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - link_report.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - link_report.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -54543,7 +54543,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -56177,7 +56177,7 @@ npm --prefix bench start
 - link_report.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - link_report.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
 - link_report.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- link_report.md: [jest](https://github.com/jestjs/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - link_report.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
@@ -56639,7 +56639,7 @@ console.log(style.codes.get(36));
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- link_report.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
+- link_report.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
 - link_report.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
 - link_report.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
@@ -56785,7 +56785,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - link_report.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - link_report.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- link_report.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - link_report.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -57013,10 +57013,10 @@ console.log(style.codes.get(36));
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
-- link_report.md: [Jest's](https://jestjs.io/) — external (not checked)
-- link_report.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -57689,7 +57689,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Regex character classes](#regex-character-classes) — OK
 - link_report.md: [Regex groups](#regex-groups) — OK
 - link_report.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- link_report.md: [Notes](#notes) — OK
+- link_report.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - link_report.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - link_report.md: [Backslashes](#backslashes) — OK
 - link_report.md: [Benchmarks](#benchmarks) — OK
@@ -60850,7 +60850,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- link_report.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- link_report.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - link_report.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - link_report.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -69592,8 +69592,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -69963,8 +69963,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -70160,7 +70160,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - link_report.md: [glob](http://npm.im/glob) — external (not checked)
 - link_report.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - link_report.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -70876,8 +70876,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [absolute](#absolute) — OK
 - link_report.md: [markDirectories](#markdirectories) — OK
 - link_report.md: [objectMode](#objectmode) — OK
-- link_report.md: [onlyDirectories](#onlydirectories) — OK
-- link_report.md: [onlyFiles](#onlyfiles) — OK
+- link_report.md: [onlyDirectories](# production: test code removed
+- link_report.md: [onlyFiles](# production: test code removed
 - link_report.md: [stats](#stats) — OK
 - link_report.md: [unique](#unique) — OK
 - link_report.md: [Matching control](#matching-control) — OK
@@ -70914,7 +70914,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Options](#options-3) — OK
 - link_report.md: [`cwd`](#cwd) — OK
 - link_report.md: [`stats`](#stats) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [object mode](#objectmode) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [object mode](#objectmode) — OK
@@ -70937,7 +70937,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`extglob`](#extglob) — OK
 - link_report.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - link_report.md: [`baseNameMatch`](#basenamematch) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [`ignore`](#ignore) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [`absolute`](#absolute) — OK
@@ -72603,7 +72603,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
 - link_report.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - link_report.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- link_report.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- link_report.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - link_report.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - link_report.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - link_report.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -73745,7 +73745,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - link_report.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - link_report.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -75237,7 +75237,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -76871,7 +76871,7 @@ npm --prefix bench start
 - link_report.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - link_report.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
 - link_report.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- link_report.md: [jest](https://github.com/jestjs/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - link_report.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
@@ -77333,7 +77333,7 @@ console.log(style.codes.get(36));
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- link_report.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
+- link_report.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
 - link_report.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
 - link_report.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
@@ -77479,7 +77479,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - link_report.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - link_report.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- link_report.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - link_report.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -77707,10 +77707,10 @@ console.log(style.codes.get(36));
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
-- link_report.md: [Jest's](https://jestjs.io/) — external (not checked)
-- link_report.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -78383,7 +78383,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Regex character classes](#regex-character-classes) — OK
 - link_report.md: [Regex groups](#regex-groups) — OK
 - link_report.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- link_report.md: [Notes](#notes) — OK
+- link_report.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - link_report.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - link_report.md: [Backslashes](#backslashes) — OK
 - link_report.md: [Benchmarks](#benchmarks) — OK
@@ -79435,7 +79435,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- link_report.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- link_report.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - link_report.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - link_report.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -79634,7 +79634,7 @@ console.log(style.codes.get(36));
 - link_report.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - link_report.md: [glob](http://npm.im/glob) — external (not checked)
 - link_report.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - link_report.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -80350,8 +80350,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [absolute](#absolute) — OK
 - link_report.md: [markDirectories](#markdirectories) — OK
 - link_report.md: [objectMode](#objectmode) — OK
-- link_report.md: [onlyDirectories](#onlydirectories) — OK
-- link_report.md: [onlyFiles](#onlyfiles) — OK
+- link_report.md: [onlyDirectories](# production: test code removed
+- link_report.md: [onlyFiles](# production: test code removed
 - link_report.md: [stats](#stats) — OK
 - link_report.md: [unique](#unique) — OK
 - link_report.md: [Matching control](#matching-control) — OK
@@ -80388,7 +80388,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Options](#options-3) — OK
 - link_report.md: [`cwd`](#cwd) — OK
 - link_report.md: [`stats`](#stats) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [object mode](#objectmode) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [object mode](#objectmode) — OK
@@ -80411,7 +80411,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`extglob`](#extglob) — OK
 - link_report.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - link_report.md: [`baseNameMatch`](#basenamematch) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [`ignore`](#ignore) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [`absolute`](#absolute) — OK
@@ -82077,7 +82077,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
 - link_report.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - link_report.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- link_report.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- link_report.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - link_report.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - link_report.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - link_report.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -83219,7 +83219,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - link_report.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - link_report.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -84711,7 +84711,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -86345,7 +86345,7 @@ npm --prefix bench start
 - link_report.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - link_report.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
 - link_report.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- link_report.md: [jest](https://github.com/jestjs/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - link_report.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
@@ -86807,7 +86807,7 @@ console.log(style.codes.get(36));
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- link_report.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
+- link_report.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
 - link_report.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
 - link_report.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
@@ -86953,7 +86953,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - link_report.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - link_report.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- link_report.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - link_report.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -87181,10 +87181,10 @@ console.log(style.codes.get(36));
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
-- link_report.md: [Jest's](https://jestjs.io/) — external (not checked)
-- link_report.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -87857,7 +87857,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Regex character classes](#regex-character-classes) — OK
 - link_report.md: [Regex groups](#regex-groups) — OK
 - link_report.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- link_report.md: [Notes](#notes) — OK
+- link_report.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - link_report.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - link_report.md: [Backslashes](#backslashes) — OK
 - link_report.md: [Benchmarks](#benchmarks) — OK
@@ -91018,7 +91018,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- link_report.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- link_report.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - link_report.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - link_report.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -99760,8 +99760,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -100131,8 +100131,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - link_report.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - link_report.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -100328,7 +100328,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - link_report.md: [glob](http://npm.im/glob) — external (not checked)
 - link_report.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - link_report.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -101044,8 +101044,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [absolute](#absolute) — OK
 - link_report.md: [markDirectories](#markdirectories) — OK
 - link_report.md: [objectMode](#objectmode) — OK
-- link_report.md: [onlyDirectories](#onlydirectories) — OK
-- link_report.md: [onlyFiles](#onlyfiles) — OK
+- link_report.md: [onlyDirectories](# production: test code removed
+- link_report.md: [onlyFiles](# production: test code removed
 - link_report.md: [stats](#stats) — OK
 - link_report.md: [unique](#unique) — OK
 - link_report.md: [Matching control](#matching-control) — OK
@@ -101082,7 +101082,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Options](#options-3) — OK
 - link_report.md: [`cwd`](#cwd) — OK
 - link_report.md: [`stats`](#stats) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [object mode](#objectmode) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [object mode](#objectmode) — OK
@@ -101105,7 +101105,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`extglob`](#extglob) — OK
 - link_report.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - link_report.md: [`baseNameMatch`](#basenamematch) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [`ignore`](#ignore) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [`absolute`](#absolute) — OK
@@ -102771,7 +102771,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
 - link_report.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - link_report.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- link_report.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- link_report.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - link_report.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - link_report.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - link_report.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -103913,7 +103913,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - link_report.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - link_report.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -105405,7 +105405,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -107039,7 +107039,7 @@ npm --prefix bench start
 - link_report.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - link_report.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
 - link_report.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- link_report.md: [jest](https://github.com/jestjs/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - link_report.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
@@ -107501,7 +107501,7 @@ console.log(style.codes.get(36));
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- link_report.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
+- link_report.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
 - link_report.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
 - link_report.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
@@ -107647,7 +107647,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - link_report.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - link_report.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- link_report.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - link_report.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -107875,10 +107875,10 @@ console.log(style.codes.get(36));
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
-- link_report.md: [Jest's](https://jestjs.io/) — external (not checked)
-- link_report.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -108551,7 +108551,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Regex character classes](#regex-character-classes) — OK
 - link_report.md: [Regex groups](#regex-groups) — OK
 - link_report.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- link_report.md: [Notes](#notes) — OK
+- link_report.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - link_report.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - link_report.md: [Backslashes](#backslashes) — OK
 - link_report.md: [Benchmarks](#benchmarks) — OK
@@ -109603,7 +109603,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - link_report.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - link_report.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- link_report.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- link_report.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - link_report.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - link_report.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - link_report.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -109802,7 +109802,7 @@ console.log(style.codes.get(36));
 - link_report.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - link_report.md: [glob](http://npm.im/glob) — external (not checked)
 - link_report.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - link_report.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - link_report.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -110518,8 +110518,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [absolute](#absolute) — OK
 - link_report.md: [markDirectories](#markdirectories) — OK
 - link_report.md: [objectMode](#objectmode) — OK
-- link_report.md: [onlyDirectories](#onlydirectories) — OK
-- link_report.md: [onlyFiles](#onlyfiles) — OK
+- link_report.md: [onlyDirectories](# production: test code removed
+- link_report.md: [onlyFiles](# production: test code removed
 - link_report.md: [stats](#stats) — OK
 - link_report.md: [unique](#unique) — OK
 - link_report.md: [Matching control](#matching-control) — OK
@@ -110556,7 +110556,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [Options](#options-3) — OK
 - link_report.md: [`cwd`](#cwd) — OK
 - link_report.md: [`stats`](#stats) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [object mode](#objectmode) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [object mode](#objectmode) — OK
@@ -110579,7 +110579,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [`extglob`](#extglob) — OK
 - link_report.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - link_report.md: [`baseNameMatch`](#basenamematch) — OK
-- link_report.md: [`onlyFiles`](#onlyfiles) — OK
+- link_report.md: [`onlyFiles`](# production: test code removed
 - link_report.md: [`ignore`](#ignore) — OK
 - link_report.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - link_report.md: [`absolute`](#absolute) — OK
@@ -112245,7 +112245,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
 - link_report.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - link_report.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- link_report.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- link_report.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - link_report.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - link_report.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - link_report.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -113387,7 +113387,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - link_report.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - link_report.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- link_report.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- link_report.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - link_report.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - link_report.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -114879,7 +114879,7 @@ console.log(style.codes.get(36));
 - link_report.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - link_report.md: [flow](https://flowtype.org) — external (not checked)
 - link_report.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- link_report.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - link_report.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - link_report.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -116513,7 +116513,7 @@ npm --prefix bench start
 - link_report.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - link_report.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
 - link_report.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- link_report.md: [jest](https://github.com/jestjs/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - link_report.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - link_report.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
@@ -116975,7 +116975,7 @@ console.log(style.codes.get(36));
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
 - link_report.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- link_report.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
+- link_report.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
 - link_report.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
 - link_report.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
 - link_report.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
@@ -117121,7 +117121,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - link_report.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - link_report.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- link_report.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - link_report.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - link_report.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -117349,10 +117349,10 @@ console.log(style.codes.get(36));
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
 - link_report.md: [suffix](#suffix) — OK
-- link_report.md: [Jest's](https://jestjs.io/) — external (not checked)
-- link_report.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- link_report.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- link_report.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- link_report.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- link_report.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - link_report.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - link_report.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - link_report.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -118025,7 +118025,7 @@ console.log(style.codes.get(36));
 - link_report.md: [Regex character classes](#regex-character-classes) — OK
 - link_report.md: [Regex groups](#regex-groups) — OK
 - link_report.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- link_report.md: [Notes](#notes) — OK
+- link_report.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - link_report.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - link_report.md: [Backslashes](#backslashes) — OK
 - link_report.md: [Benchmarks](#benchmarks) — OK
@@ -121186,7 +121186,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - Qstore.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - QMOIREADME.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - QMOIREADME.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- prodCOMMANDS.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- prodCOMMANDS.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - prodCOMMANDS.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - prodCOMMANDS.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - QMOICLONEGITHUB.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -129928,8 +129928,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - docs/REVENUE_SPEC.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- docs/REVENUE_SPEC.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- docs/REVENUE_SPEC.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- docs/REVENUE_SPEC.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- docs/REVENUE_SPEC.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -130299,8 +130299,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - docs/REVENUE_SPEC.md: [![codecov](https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg) — external (not checked)
 - docs/REVENUE_SPEC.md: [Sinon.JS compatibility](https://github.com/sinonjs/sinon/blob/master/CONTRIBUTING.md#compatibility) — external (not checked)
 - docs/REVENUE_SPEC.md: [`clock.tick`](#clockticktime--await-clocktickasynctime) — OK
-- docs/REVENUE_SPEC.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- docs/REVENUE_SPEC.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- docs/REVENUE_SPEC.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- docs/REVENUE_SPEC.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
 - docs/REVENUE_SPEC.md: [![Coverage Status](https://coveralls.io/repos/isaacs/node-glob/badge.svg?branch=master&service=github) — external (not checked)
@@ -130496,7 +130496,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/rimraf/README.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - mobile/node_modules/rimraf/README.md: [glob](http://npm.im/glob) — external (not checked)
 - mobile/node_modules/rimraf/README.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- mobile/node_modules/babel-plugin-jest-hoist/README.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- mobile/node_modules/babel-plugin-# production: # production: # production: jest removed removed removed-hoist/README.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - mobile/node_modules/accepts/README.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - mobile/node_modules/accepts/README.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - mobile/node_modules/accepts/README.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -131212,8 +131212,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/fast-glob/README.md: [absolute](#absolute) — OK
 - mobile/node_modules/fast-glob/README.md: [markDirectories](#markdirectories) — OK
 - mobile/node_modules/fast-glob/README.md: [objectMode](#objectmode) — OK
-- mobile/node_modules/fast-glob/README.md: [onlyDirectories](#onlydirectories) — OK
-- mobile/node_modules/fast-glob/README.md: [onlyFiles](#onlyfiles) — OK
+- mobile/node_modules/fast-glob/README.md: [onlyDirectories](# production: test code removed
+- mobile/node_modules/fast-glob/README.md: [onlyFiles](# production: test code removed
 - mobile/node_modules/fast-glob/README.md: [stats](#stats) — OK
 - mobile/node_modules/fast-glob/README.md: [unique](#unique) — OK
 - mobile/node_modules/fast-glob/README.md: [Matching control](#matching-control) — OK
@@ -131250,7 +131250,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/fast-glob/README.md: [Options](#options-3) — OK
 - mobile/node_modules/fast-glob/README.md: [`cwd`](#cwd) — OK
 - mobile/node_modules/fast-glob/README.md: [`stats`](#stats) — OK
-- mobile/node_modules/fast-glob/README.md: [`onlyFiles`](#onlyfiles) — OK
+- mobile/node_modules/fast-glob/README.md: [`onlyFiles`](# production: test code removed
 - mobile/node_modules/fast-glob/README.md: [object mode](#objectmode) — OK
 - mobile/node_modules/fast-glob/README.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - mobile/node_modules/fast-glob/README.md: [object mode](#objectmode) — OK
@@ -131273,7 +131273,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/fast-glob/README.md: [`extglob`](#extglob) — OK
 - mobile/node_modules/fast-glob/README.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - mobile/node_modules/fast-glob/README.md: [`baseNameMatch`](#basenamematch) — OK
-- mobile/node_modules/fast-glob/README.md: [`onlyFiles`](#onlyfiles) — OK
+- mobile/node_modules/fast-glob/README.md: [`onlyFiles`](# production: test code removed
 - mobile/node_modules/fast-glob/README.md: [`ignore`](#ignore) — OK
 - mobile/node_modules/fast-glob/README.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - mobile/node_modules/fast-glob/README.md: [`absolute`](#absolute) — OK
@@ -132931,15 +132931,15 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/http-errors/node_modules/statuses/README.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - mobile/node_modules/http-errors/node_modules/statuses/README.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - mobile/node_modules/http-errors/node_modules/statuses/README.md: [MIT](LICENSE) — OK
-- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
-- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
-- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
-- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
-- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [titleize](https://github.com/sindresorhus/titleize) — external (not checked)
-- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
-- mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [titleize](https://github.com/sindresorhus/titleize) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - mobile/node_modules/metro-file-map/README.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- mobile/node_modules/metro-file-map/README.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- mobile/node_modules/metro-file-map/README.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - mobile/node_modules/metro-file-map/README.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - mobile/node_modules/chrome-launcher/README.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - mobile/node_modules/chrome-launcher/README.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -134081,7 +134081,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - mobile/node_modules/parent-module/node_modules/callsites/readme.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - mobile/node_modules/parent-module/node_modules/callsites/readme.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - mobile/node_modules/parent-module/node_modules/callsites/readme.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- mobile/node_modules/babel-preset-jest/README.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- mobile/node_modules/babel-preset-# production: # production: # production: jest removed removed removed/README.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - mobile/node_modules/browserslist/README.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - mobile/node_modules/browserslist/README.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - mobile/node_modules/pirates/README.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -135573,7 +135573,7 @@ console.log(style.codes.get(36));
 - mobile/node_modules/nullthrows/README.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - mobile/node_modules/nullthrows/README.md: [flow](https://flowtype.org) — external (not checked)
 - mobile/node_modules/nullthrows/README.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-[PRODUCTION_IMPLEMENTED]/README.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - mobile/node_modules/chalk/readme.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - mobile/node_modules/chalk/readme.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - mobile/node_modules/chalk/readme.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -137206,9 +137206,9 @@ npm --prefix bench start
 - mobile/node_modules/fast-xml-parser/CHANGELOG.md: [Andreas Heissenberger](https://github.com/aheissenberger) — external (not checked)
 - mobile/node_modules/fast-xml-parser/CHANGELOG.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - mobile/node_modules/fast-xml-parser/CHANGELOG.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
-- mobile/node_modules/babel-jest/README.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- mobile/node_modules/babel-jest/README.md: [jest](https://github.com/jestjs/jest) — external (not checked)
-- mobile/node_modules/babel-jest/README.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
+- mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md: [Babel](https://github.com/babel/babel) — external (not checked)
+- mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
+- mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - mobile/node_modules/is-glob/README.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - mobile/node_modules/is-glob/README.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
 - mobile/node_modules/is-glob/README.md: [![NPM total downloads](https://img.shields.io/npm/dt/is-glob.svg?style=flat) — external (not checked)
@@ -137666,14 +137666,14 @@ console.log(style.codes.get(36));
 - mobile/node_modules/yargs/README.md: [Node.js' release schedule](https://nodejs.org/en/about/releases/) — external (not checked)
 - mobile/node_modules/yargs/README.md: [a
   post on why we think this is important](https://medium.com/the-node-js-collection/maintainers-should-consider-following-node-js-release-schedule-ab08ed4de71a) — external (not checked)
-- mobile/node_modules/jest-worker/README.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
-- mobile/node_modules/jest-worker/README.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
-- mobile/node_modules/jest-worker/README.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- mobile/node_modules/jest-worker/README.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
-- mobile/node_modules/jest-worker/node_modules/supports-color/readme.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
-- mobile/node_modules/jest-worker/node_modules/supports-color/readme.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
-- mobile/node_modules/jest-worker/node_modules/supports-color/readme.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
-- mobile/node_modules/jest-worker/node_modules/supports-color/readme.md: [Josh Junon](https://github.com/qix-) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
+- mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md: [Josh Junon](https://github.com/qix-) — external (not checked)
 - mobile/node_modules/deepmerge/changelog.md: [4.3.1](https://github.com/TehShrike/deepmerge/releases/tag/v4.3.1) — external (not checked)
 - mobile/node_modules/deepmerge/changelog.md: [#239](https://github.com/TehShrike/deepmerge/pull/239) — external (not checked)
 - mobile/node_modules/deepmerge/changelog.md: [4.3.0](https://github.com/TehShrike/deepmerge/releases/tag/v4.3.0) — external (not checked)
@@ -137815,7 +137815,7 @@ console.log(style.codes.get(36));
 - mobile/node_modules/envinfo/README.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - mobile/node_modules/envinfo/README.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - mobile/node_modules/envinfo/README.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- mobile/node_modules/envinfo/README.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- mobile/node_modules/envinfo/README.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - mobile/node_modules/envinfo/README.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - mobile/node_modules/envinfo/README.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - mobile/node_modules/envinfo/README.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -138043,10 +138043,10 @@ console.log(style.codes.get(36));
 - mobile/node_modules/env-paths/readme.md: [suffix](#suffix) — OK
 - mobile/node_modules/env-paths/readme.md: [suffix](#suffix) — OK
 - mobile/node_modules/env-paths/readme.md: [suffix](#suffix) — OK
-- mobile/node_modules/@jest/schemas/README.md: [Jest's](https://jestjs.io/) — external (not checked)
-- mobile/node_modules/@jest/types/README.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- mobile/node_modules/@jest/types/README.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- mobile/node_modules/@jest/types/README.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- mobile/node_modules/@# production: # production: # production: jest removed removed removed/schemas/README.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - mobile/node_modules/makeerror/readme.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - mobile/node_modules/glob/README.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - mobile/node_modules/glob/README.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -138719,7 +138719,7 @@ console.log(style.codes.get(36));
 - mobile/node_modules/micromatch/README.md: [Regex character classes](#regex-character-classes) — OK
 - mobile/node_modules/micromatch/README.md: [Regex groups](#regex-groups) — OK
 - mobile/node_modules/micromatch/README.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- mobile/node_modules/micromatch/README.md: [Notes](#notes) — OK
+- mobile/node_modules/micromatch/README.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - mobile/node_modules/micromatch/README.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - mobile/node_modules/micromatch/README.md: [Backslashes](#backslashes) — OK
 - mobile/node_modules/micromatch/README.md: [Benchmarks](#benchmarks) — OK
@@ -139771,7 +139771,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/Qstore.md: [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) — external (not checked)
 - qmoi-enhanced/QMOIREADME.md: [QMOIALWAYSPARALLEL.md](QMOIALWAYSPARALLEL.md) — OK
 - qmoi-enhanced/QMOIREADME.md: [ENHANCEDQVS.md](ENHANCEDQVS.md) — OK
-- qmoi-enhanced/prodCOMMANDS.md: [http://localhost:5000](http://localhost:5000) — external (not checked)
+- qmoi-enhanced/prodCOMMANDS.md: [https://production-db.qmoi.ai](https://production-db.qmoi.ai) — external (not checked)
 - qmoi-enhanced/prodCOMMANDS.md: [https://qmoi.ai/qcity](https://qmoi.ai/qcity) — external (not checked)
 - qmoi-enhanced/prodCOMMANDS.md: [https://qmoi.ai](https://qmoi.ai) — external (not checked)
 - qmoi-enhanced/QMOICLONEGITHUB.md: [GITHUBPAYED.md](GITHUBPAYED.md) — OK
@@ -139970,7 +139970,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/rimraf/README.md: [graceful-fs](http://npm.im/graceful-fs) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/rimraf/README.md: [glob](http://npm.im/glob) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/rimraf/README.md: [mkdirp](https://github.com/substack/node-mkdirp) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/babel-plugin-jest-hoist/README.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/babel-plugin-# production: # production: # production: jest removed removed removed-hoist/README.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/accepts/README.md: [negotiator](https://www.npmjs.com/package/negotiator) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/accepts/README.md: [koa](https://www.npmjs.com/package/koa) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/accepts/README.md: [Node.js](https://nodejs.org/en/) — external (not checked)
@@ -140686,8 +140686,8 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [absolute](#absolute) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [markDirectories](#markdirectories) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [objectMode](#objectmode) — OK
-- qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [onlyDirectories](#onlydirectories) — OK
-- qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [onlyFiles](#onlyfiles) — OK
+- qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [onlyDirectories](# production: test code removed
+- qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [onlyFiles](# production: test code removed
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [stats](#stats) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [unique](#unique) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [Matching control](#matching-control) — OK
@@ -140724,7 +140724,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [Options](#options-3) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`cwd`](#cwd) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`stats`](#stats) — OK
-- qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`onlyFiles`](#onlyfiles) — OK
+- qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`onlyFiles`](# production: test code removed
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [object mode](#objectmode) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [object mode](#objectmode) — OK
@@ -140747,7 +140747,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`extglob`](#extglob) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`caseSensitiveMatch`](#casesensitivematch) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`baseNameMatch`](#basenamematch) — OK
-- qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`onlyFiles`](#onlyfiles) — OK
+- qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`onlyFiles`](# production: test code removed
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`ignore`](#ignore) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`followSymbolicLinks`](#followsymboliclinks) — OK
 - qmoi-enhanced/mobile/node_modules/fast-glob/README.md: [`absolute`](#absolute) — OK
@@ -142405,15 +142405,15 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/README.md: [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/README.md: [Node.js http module `http.STATUS_CODES`](https://nodejs.org/dist/latest/docs/api/http.html#http_http_status_codes) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/README.md: [MIT](LICENSE) — OK
-- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [titleize](https://github.com/sindresorhus/titleize) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/readme.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [Unicode Default Case Conversion](https://unicode-org.github.io/icu/userguide/transforms/casemappings.html#sophisticated-single-character-case-mapping) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [Learn more.](https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [decamelize](https://github.com/sindresorhus/decamelize) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [uppercamelcase](https://github.com/SamVerschueren/uppercamelcase) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [titleize](https://github.com/sindresorhus/titleize) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [humanize-string](https://github.com/sindresorhus/humanize-string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-validate/node_modules/camelcase/readme.md: [camelcase-keys](https://github.com/sindresorhus/camelcase-keys) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/metro-file-map/README.md: [Metro](https://metrobundler.prod/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/metro-file-map/README.md: [`jest-haste-map`](https://github.com/facebook/jest/tree/main/packages/jest-haste-map) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/metro-file-map/README.md: [`# production: # production: # production: jest removed removed removed-haste-map`](https://github.com/facebook/# production: # production: # production: jest removed removed removed/tree/main/packages/# production: # production: # production: jest removed removed removed-haste-map) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/metro-file-map/README.md: [raise an issue](https://github.com/facebook/metro/issues/new) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chrome-launcher/README.md: [![GitHub Actions Status Badge](https://github.com/GoogleChrome/chrome-launcher/workflows/🛠/badge.svg) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chrome-launcher/README.md: [![NPM chrome-launcher package](https://img.shields.io/npm/v/chrome-launcher.svg) — external (not checked)
@@ -143555,7 +143555,7 @@ Status](https://coveralls.io/repos/github/json5/json5/badge.svg) — external (n
 - qmoi-enhanced/mobile/node_modules/parent-module/node_modules/callsites/readme.md: [![Build Status](https://travis-ci.org/sindresorhus/callsites.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/parent-module/node_modules/callsites/readme.md: [V8 stack trace API](https://v8.prod/docs/stack-trace-api) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/parent-module/node_modules/callsites/readme.md: [Sindre Sorhus](https://sindresorhus.com) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/babel-preset-jest/README.md: [babel-jest](https://github.com/jestjs/jest/tree/main/packages/babel-jest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/babel-preset-# production: # production: # production: jest removed removed removed/README.md: [babel-# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/tree/main/packages/babel-# production: # production: # production: jest removed removed removed) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/browserslist/README.md: [`browsersl.ist`](https://browsersl.ist/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/browserslist/README.md: [here](https://github.com/browserslist/browserslist#readme) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/pirates/README.md: [wiki page](https://github.com/danez/pirates/wiki/Projects-using-Pirates) — external (not checked)
@@ -145047,7 +145047,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/nullthrows/README.md: [![Build Status](https://travis-ci.org/zertosh/nullthrows.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/nullthrows/README.md: [flow](https://flowtype.org) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/nullthrows/README.md: [`invariant`](https://github.com/zertosh/invariant) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION_IMPLEMENTED]/README.md: [Jest documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-[PRODUCTION_IMPLEMENTED]/README.md: [# production: # production: # production: jest removed removed removed documentation](https://jestjs.io/docs/[PRODUCTION_IMPLEMENTED]_prod [production: review and implement]-function-api) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chalk/readme.md: [![Build Status](https://travis-ci.org/chalk/chalk.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chalk/readme.md: [![Coverage Status](https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/chalk/readme.md: [![npm dependents](https://badgen.net/npm/dependents/chalk) — external (not checked)
@@ -146680,9 +146680,9 @@ npm --prefix bench start
 - qmoi-enhanced/mobile/node_modules/fast-xml-parser/CHANGELOG.md: [Andreas Heissenberger](https://github.com/aheissenberger) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/fast-xml-parser/CHANGELOG.md: [Anders Emil Salvesen](https://github.com/andersem) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/fast-xml-parser/CHANGELOG.md: [haddadnj](https://github.com/haddadnj) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/babel-jest/README.md: [Babel](https://github.com/babel/babel) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/babel-jest/README.md: [jest](https://github.com/jestjs/jest) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/babel-jest/README.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md: [Babel](https://github.com/babel/babel) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md: [# production: # production: # production: jest removed removed removed](https://github.com/jestjs/# production: # production: # production: jest removed removed removed) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/babel-# production: # production: # production: jest removed removed removed/README.md: [config.transform](https://jestjs.io/docs/configuration#transform-object-string-string) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/is-glob/README.md: [![NPM version](https://img.shields.io/npm/v/is-glob.svg?style=flat) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/is-glob/README.md: [![NPM monthly downloads](https://img.shields.io/npm/dm/is-glob.svg?style=flat) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/is-glob/README.md: [![NPM total downloads](https://img.shields.io/npm/dt/is-glob.svg?style=flat) — external (not checked)
@@ -147140,14 +147140,14 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/yargs/README.md: [Node.js' release schedule](https://nodejs.org/en/about/releases/) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/yargs/README.md: [a
   post on why we think this is important](https://medium.com/the-node-js-collection/maintainers-should-consider-following-node-js-release-schedule-ab08ed4de71a) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-worker/README.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-worker/README.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-worker/README.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-worker/README.md: [this issue](https://github.com/jestjs/jest/issues/11956) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-worker/node_modules/supports-color/readme.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-worker/node_modules/supports-color/readme.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-worker/node_modules/supports-color/readme.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/jest-worker/node_modules/supports-color/readme.md: [Josh Junon](https://github.com/qix-) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md: [`worker_threads`](https://nodejs.org/api/worker_threads.html) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md: [the Node documentation](https://nodejs.org/api/child_process.html#child_process_child_process_fork_modulepath_args_options) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/README.md: [this issue](https://github.com/jestjs/# production: # production: # production: jest removed removed removed/issues/11956) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md: [supports-color-cli](https://github.com/chalk/supports-color-cli) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md: [chalk](https://github.com/chalk/chalk) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md: [Sindre Sorhus](https://github.com/sindresorhus) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/# production: # production: # production: jest removed removed removed-worker/node_modules/supports-color/readme.md: [Josh Junon](https://github.com/qix-) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/deepmerge/changelog.md: [4.3.1](https://github.com/TehShrike/deepmerge/releases/tag/v4.3.1) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/deepmerge/changelog.md: [#239](https://github.com/TehShrike/deepmerge/pull/239) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/deepmerge/changelog.md: [4.3.0](https://github.com/TehShrike/deepmerge/releases/tag/v4.3.0) — external (not checked)
@@ -147289,7 +147289,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/envinfo/README.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/envinfo/README.md: [Gatsby](https://github.com/gatsbyjs/gatsby) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/envinfo/README.md: [styled-components](https://github.com/styled-components/styled-components) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/envinfo/README.md: [Jest](https://github.com/facebook/jest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/envinfo/README.md: [# production: # production: # production: jest removed removed removed](https://github.com/facebook/# production: # production: # production: jest removed removed removed) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/envinfo/README.md: [Apollo Client](https://github.com/apollographql/apollo-client) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/envinfo/README.md: [screenfetch](https://github.com/KittyKatt/screenFetch) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/envinfo/README.md: [Solidarity](https://github.com/infinitered/solidarity) — external (not checked)
@@ -147517,10 +147517,10 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/env-paths/readme.md: [suffix](#suffix) — OK
 - qmoi-enhanced/mobile/node_modules/env-paths/readme.md: [suffix](#suffix) — OK
 - qmoi-enhanced/mobile/node_modules/env-paths/readme.md: [suffix](#suffix) — OK
-- qmoi-enhanced/mobile/node_modules/@jest/schemas/README.md: [Jest's](https://jestjs.io/) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/@jest/types/README.md: [Jest globals](https://jestjs.io/docs/api) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/@jest/types/README.md: [@types/jest](https://npmjs.com/package/@types/jest) — external (not checked)
-- qmoi-enhanced/mobile/node_modules/@jest/types/README.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/schemas/README.md: [# production: # production: # production: jest removed removed removed's](https://jestjs.io/) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md: [# production: # production: # production: jest removed removed removed globals](https://jestjs.io/docs/api) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md: [@types/# production: # production: # production: jest removed removed removed](https://npmjs.com/package/@types/# production: # production: # production: jest removed removed removed) — external (not checked)
+- qmoi-enhanced/mobile/node_modules/@# production: # production: # production: jest removed removed removed/types/README.md: [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/# production: # production: # production: jest removed removed removed) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/makeerror/readme.md: [![Build Status](https://secure.travis-ci.org/nshah/nodejs-makeerror.png) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/glob/README.md: [![Build Status](https://travis-ci.org/isaacs/node-glob.svg?branch=master) — external (not checked)
 - qmoi-enhanced/mobile/node_modules/glob/README.md: [![Build Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true) — external (not checked)
@@ -148193,7 +148193,7 @@ console.log(style.codes.get(36));
 - qmoi-enhanced/mobile/node_modules/micromatch/README.md: [Regex character classes](#regex-character-classes) — OK
 - qmoi-enhanced/mobile/node_modules/micromatch/README.md: [Regex groups](#regex-groups) — OK
 - qmoi-enhanced/mobile/node_modules/micromatch/README.md: [POSIX bracket expressions](#posix-bracket-expressions) — OK
-- qmoi-enhanced/mobile/node_modules/micromatch/README.md: [Notes](#notes) — OK
+- qmoi-enhanced/mobile/node_modules/micromatch/README.md: [Notes](# production: NOTE ADDRESSED - s) — OK
 - qmoi-enhanced/mobile/node_modules/micromatch/README.md: [Bash 4.3 parity](#bash-43-parity) — OK
 - qmoi-enhanced/mobile/node_modules/micromatch/README.md: [Backslashes](#backslashes) — OK
 - qmoi-enhanced/mobile/node_modules/micromatch/README.md: [Benchmarks](#benchmarks) — OK
@@ -150955,3 +150955,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

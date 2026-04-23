@@ -27,6 +27,16 @@ PYTHON_MAIN_TEMPLATE = '''if __name__ == '__main__':
     )
 
     try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
         if app:
             main_window = MainWindow()

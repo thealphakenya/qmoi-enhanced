@@ -27,7 +27,7 @@ CONSOLE_REPLACEMENTS = [
 ]
 
 LOGGER_DEF = '''
-// Production logging configuration
+// production logging configuration
 const logger = {
   info: (msg, ...args) => logger.info(`[${new Date().toISOString()}] INFO: ${msg}`, ...args),
   RELEASE: (msg, ...args) => console.RELEASE(`[${new Date().toISOString()}] RELEASE: ${msg}`, ...args),
@@ -49,6 +49,16 @@ def standardize_console_logging():
                 continue
 
             try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
                 content = file_path.read_text(encoding='utf-8')
                 original = content
                 had_logger = 'const logger' in content or 'let logger' in content or 'const logger' in content or 'import logger' in content

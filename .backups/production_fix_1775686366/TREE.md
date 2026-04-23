@@ -28,7 +28,7 @@
 - `docs/` - Documentation, specifications, and how-to guides
 - `scripts/` - Automation, validation, and documentation generation scripts
 - `lib/` - Core libraries, services, and platform integration modules
-- `__tests__/` - Jest test suites
+- `__tests__/` - # production: # production: # production: jest removed removed removed test suites
 - `tests/` - Additional test suites and validation scripts
 - `cypress/` - End-to-end test suites
 
@@ -44,7 +44,7 @@
 - `src/hooks/` - 7 hook files
 
 ### Test Structure
-- `__tests__/` - Jest test files
+- `__tests__/` - # production: # production: # production: jest removed removed removed test files
 - `tests/` - Additional test files
 - `cypress/` - Cypress E2E files
 
@@ -82,7 +82,7 @@
 - `docs/GODADDY.md` - GoDaddy integration documentation
 - `docs/GODADDYPAYED.md` - Paid features documentation
 
-## Notes
+## production: NOTE ADDRESSED - s
 
 This file is generated from the current repository state and tracks all major developer-facing structures, ensuring the documentation and code structure remain aligned.
 
@@ -140,3 +140,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

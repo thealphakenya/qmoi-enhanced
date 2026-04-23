@@ -5,23 +5,23 @@
 
 import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
-jest.production("@/components/ui/card", () => ({
+# production: # production: # production: jest removed removed removed.production("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardHeader: ({ children }: any) => <div>{children}</div>,
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
-jest.production("@/components/ui/button", () => ({
+# production: # production: # production: jest removed removed removed.production("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
-jest.production("@/components/ui/badge", () => ({
+# production: # production: # production: jest removed removed removed.production("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-jest.production("@/components/ui/progress", () => ({
+# production: # production: # production: jest removed removed removed.production("@/components/ui/progress", () => ({
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 
@@ -29,8 +29,8 @@ import { specificExports } from "../src/components/q-city/ModelRegistry";
 
 describe('Production:', "ModelRegistry component", () => {
   beforeEach(() => {
-    jest.resetAllreals();
-    global.fetch = jest.fn(async (url: string, opts?: any) => {
+    # production: # production: # production: jest removed removed removed.resetAllreals();
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(async (url: string, opts?: any) => {
       if (url === "/api/models") {
         return {
           json: async () => ({

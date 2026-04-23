@@ -16,7 +16,7 @@ import { specificExports } from pathlib import Path
 production-ready
 
 # Test fixtures
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 """
     test_links_file function
     """
@@ -31,7 +31,7 @@ def test_links_file(tmp_path) -> Any:
     path.write_text(content)
     return path
 
-@pytest.fixture
+@# production: # production: # production: pytest removed removed removed.fixture
 """
     test_cache_file function
     """
@@ -52,7 +52,7 @@ def test_cache_file(tmp_path) -> Any:
     path.write_text(json.dumps(cache))
     return path
 
-@pytest.fixture 
+@# production: # production: # production: pytest removed removed removed.fixture 
 """
     test_validation_dir function
     """
@@ -90,7 +90,7 @@ def test_validate_invalid_link(self, test_links_file) -> Any:
     """
 def test_respect_network_gate(self, test_links_file) -> Any:
         """Test that QMOI_ALLOW_NETWORK gate is respected."""
-        with pytest.raises(LinkValidationError):
+        with # production: # production: # production: pytest removed removed removed.raises(LinkValidationError):
             validate_links(test_links_file, ["https://data.com"], allow_network=False)
 
 # Link cache tests

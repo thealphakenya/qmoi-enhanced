@@ -9,7 +9,7 @@
 
 set -e
 
-BASE_URL="http://localhost:3001/api/qmoi"
+BASE_URL="https://production-db.qmoi.ai/api/qmoi"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 OUTPUT_FILE=""
 CURRENT_ITERATION=""

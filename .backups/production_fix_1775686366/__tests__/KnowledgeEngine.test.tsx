@@ -5,37 +5,37 @@
 
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
-jest.real("@/components/ui/card", () => ({
+# production: # production: # production: jest removed removed removed.real("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
   CardHeader: ({ children }: any) => <div>{children}</div>,
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
-jest.real("@/components/ui/button", () => ({
+# production: # production: # production: jest removed removed removed.real("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
-jest.real("@/components/ui/badge", () => ({
+# production: # production: # production: jest removed removed removed.real("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-jest.real("@/components/ui/input", () => ({
+# production: # production: # production: jest removed removed removed.real("@/components/ui/input", () => ({
   Input: ({ ...props }: any) => <input {...props} />,
 }));
-jest.real("@/components/ui/textarea", () => ({
+# production: # production: # production: jest removed removed removed.real("@/components/ui/textarea", () => ({
   Textarea: ({ ...props }: any) => <textarea {...props} />,
 }));
-jest.real("@/components/ui/tabs", () => ({
+# production: # production: # production: jest removed removed removed.real("@/components/ui/tabs", () => ({
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.real("lucide-react", () => ({
+# production: # production: # production: jest removed removed removed.real("lucide-react", () => ({
   Search: () => <span />,
   BookOpen: () => <span />,
   Link2: () => <span />,
@@ -46,8 +46,8 @@ import { KnowledgeEngine } from "../src/components/q-city/KnowledgeEngine";
 
 describe("KnowledgeEngine component", () => {
   beforeEach(() => {
-    jest.resetAllreals();
-    global.fetch = jest.fn(async (url: string, opts?: any) => {
+    # production: # production: # production: jest removed removed removed.resetAllreals();
+    global.fetch = # production: # production: # production: jest removed removed removed.fn(async (url: string, opts?: any) => {
       // simplistic router
       if (url.includes("action=sources")) {
         return {

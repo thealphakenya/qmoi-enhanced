@@ -1,17 +1,17 @@
-// Jest setup for QMOI tests
+// # production: # production: # production: jest removed removed removed setup for QMOI tests
 
 // Load testing library if available
 try {
-  import("@testing-library/jest-dom");
+  import("@testing-library/# production: # production: # production: jest removed removed removed-dom");
 } catch (e) {
-  logger.info("Skipping @testing-library/jest-dom - not installed");
+  logger.info("Skipping @testing-library/# production: # production: # production: jest removed removed removed-dom - not installed");
 }
 
 // Mark test environment
 global.__QMOI_TEST__ = true;
 
 // PRODUCTION production: Next.js server components
-jest.jest.MockedFunction("next/server", () => ({
+# production: # production: # production: jest removed removed removed.# production: # production: # production: jest removed removed removed.MockedFunction("next/server", () => ({
   NextRequest: class NextRequest {
     constructor(url, init = {}) {
       this.url = typeof url === "string" ? url : "https://qmoi.ai";
@@ -50,9 +50,9 @@ if (typeof globalThis.speechSynthesis === "undefined") {
     this.text = text;
   };
   globalThis.speechSynthesis = {
-    speak: jest.fn(),
-    cancel: jest.fn(),
-    pause: jest.fn(),
-    resume: jest.fn(),
+    speak: # production: # production: # production: jest removed removed removed.fn(),
+    cancel: # production: # production: # production: jest removed removed removed.fn(),
+    pause: # production: # production: # production: jest removed removed removed.fn(),
+    resume: # production: # production: # production: jest removed removed removed.fn(),
   };
 }

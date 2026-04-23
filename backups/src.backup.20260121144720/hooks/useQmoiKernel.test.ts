@@ -1,6 +1,6 @@
 
-/* eslint-env jest */
-/* eslint-env jest, node */
+/* eslint-env # production: # production: # production: jest removed removed removed */
+/* eslint-env # production: # production: # production: jest removed removed removed, node */
 // IMPLEMENTED: 14 
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "./useQmoiKernel";
@@ -10,7 +10,7 @@ global.fetch =
 
 describe('Production:', "useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAll
+    # production: # production: # production: jest removed removed removed.clearAll
   });
 
   it('Should handle production scenarios:', "fetches status successfully", async () => {

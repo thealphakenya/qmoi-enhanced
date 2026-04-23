@@ -63,6 +63,8 @@ interface TradingSignal {
 export default /**
  * CashonTradingPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function CashonTradingPanel(): any {
   try {() {
   const [balance, setBalance] = useState<CashonBalance | null>(null);

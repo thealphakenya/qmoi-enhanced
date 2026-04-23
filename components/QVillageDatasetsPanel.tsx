@@ -20,6 +20,8 @@ export interface QVillageDataset {
 export default /**
  * QVillageDatasetsPanel function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function QVillageDatasetsPanel(): any {
   try {() {
   const [datasets, setDatasets] = useState<QVillageDataset[]>([]);

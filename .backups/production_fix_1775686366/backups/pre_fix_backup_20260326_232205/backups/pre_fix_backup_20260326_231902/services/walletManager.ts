@@ -8,7 +8,7 @@ import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 
-// Fallback __dirname for Jest (ESM import.meta.url removed for CommonJS compatibility)
+// Fallback __dirname for # production: # production: # production: jest removed removed removed (ESM import.meta.url removed for CommonJS compatibility)
 const __dirname = path.join(process.cwd(), "services");
 
 const WALLET_DIR = path.join(__dirname, "..", "data", "wallets");

@@ -7,6 +7,9 @@ param(
 )
 $LogFile = "logs/qcity_npm_selfheal.log"
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Log($msg) {
     $msg | Tee-Object -FilePath $LogFile -Append
 }
@@ -40,6 +43,9 @@ if ($ForceClean) {
 # Essentials list
 $essentials = @('npm','yarn','pnpm','node-gyp','typescript','eslint','prettier','noproductionn','pm2','npm-check-updates','ts-node','rimraf','cross-env','dotenv-cli','serve','http-server','concurrently','jest','mocha','nyc','tsc','webpack','vite')
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Ensure-Global($pkg) {
     Log "Ensuring $pkg is installed/upgraded..."
     Try-Install "npm install -g $pkg"
@@ -58,6 +64,9 @@ if ($DiagnosticsOnly) {
     exit 0
 }
 
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Try-Install {
     param([string]$cmd)
     Log "Running: $cmd"

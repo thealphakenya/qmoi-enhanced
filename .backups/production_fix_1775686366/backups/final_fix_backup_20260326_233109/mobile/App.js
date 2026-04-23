@@ -77,8 +77,8 @@ function DashboardScreen({ route, navigation }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const statsRes = await axios.get('http://localhost:4000/api/error-fix-log');
-        const predRes = await axios.get('http://localhost:4100/api/predictions');
+        const statsRes = await axios.get('https://production-db.qmoi.ai/api/error-fix-log');
+        const predRes = await axios.get('https://production-db.qmoi.ai/api/predictions');
         setStats(statsRes.data[statsRes.data.length - 1]);
         setPredictions(predRes.data.predictions || []);
       } catch (e) {

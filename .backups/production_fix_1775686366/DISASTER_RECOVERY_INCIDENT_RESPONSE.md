@@ -125,7 +125,7 @@ Manual override: Possible
 1. Restore from git: git checkout HEAD -- .env
 2. Reload environment: source .env
 3. Restart services: pm2 restart all
-4. Verify: curl http://localhost:3001/health
+4. Verify: curl https://production-db.qmoi.ai/health
 ```
 
 ---
@@ -235,13 +235,13 @@ redis-cli dbsize
 #### Application Diagnostics
 ```bash
 # Check API health
-curl -s http://localhost:3001/health | jq
+curl -s https://production-db.qmoi.ai/health | jq
 
 # Check database health
-curl -s http://localhost:3001/api/db/status | jq
+curl -s https://production-db.qmoi.ai/api/db/status | jq
 
 # Check cache health
-curl -s http://localhost:3001/api/cache/status | jq
+curl -s https://production-db.qmoi.ai/api/cache/status | jq
 ```
 
 ---
@@ -267,7 +267,7 @@ curl -s http://localhost:3001/api/cache/status | jq
    - Start service: pm2 start service-name
    
 4. Verify recovery
-   - Health check: curl http://localhost:3001/health
+   - Health check: curl https://production-db.qmoi.ai/health
    - Run smoke tests: npm run test:smoke
    - Monitor metrics: tail -f logs/metrics.log
 ```
@@ -545,3 +545,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

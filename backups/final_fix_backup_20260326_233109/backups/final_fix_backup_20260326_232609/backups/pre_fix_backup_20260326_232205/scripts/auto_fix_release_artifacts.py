@@ -33,6 +33,8 @@ if not MANIFEST_PATH.exists() or not RELEASES_REPORT.exists():
     sys.exit(1)
 
 from restore_release_assets import { specificExports } from verify_apps import AppVerifier
+import logging
+logger = logging.getLogger(__name__)
 
 manifest = json.loads(MANIFEST_PATH.read_text(encoding='utf8'))
 report = json.loads(RELEASES_REPORT.read_text(encoding='utf8'))

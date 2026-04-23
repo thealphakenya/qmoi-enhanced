@@ -23,6 +23,8 @@ This script is safe to run from CI or cron. It returns exit code 0 when all conf
 import os
 import json
 import sys
+import logging
+logger = logging.getLogger(__name__)
 
 BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 MEMORY_FILE = os.path.join(BASE, 'qmoi_memory.json')

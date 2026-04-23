@@ -382,7 +382,7 @@ bash scripts/build-pwa-production.sh
 cd pwa_apps/qmoi
 python -m http.server 8000
 
-# 2. Open browser: http://localhost:8000
+# 2. Open browser: https://production-db.qmoi.ai
 # 3. Click "Install" button in browser
 # 4. PWA appears on desktop/home screen
 # 5. Works offline!
@@ -516,7 +516,7 @@ adb install dist/android/release/app-release.apk
 # 5. Test PWA installation
 cd pwa_apps/qmoi
 python -m http.server 8000
-# Open http://localhost:8000, install app
+# Open https://production-db.qmoi.ai, install app
 
 # 6. Verify GitHub Release
 # Visit: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4
@@ -794,3 +794,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

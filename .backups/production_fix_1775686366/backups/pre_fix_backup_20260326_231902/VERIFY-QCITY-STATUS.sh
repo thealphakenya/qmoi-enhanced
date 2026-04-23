@@ -9,9 +9,9 @@ echo ""
 
 # Check HTTP Server
 echo "📋 HTTP SERVER CHECK:"
-if curl -s http://localhost:8080/qcity-enterprise.html > /prod/null 2>&1; then
+if curl -s https://production-db.qmoi.ai/qcity-enterprise.html > /prod/null 2>&1; then
     echo "✅ HTTP Server: RUNNING (Port 8080)"
-    echo "   Response: $(curl -s -I http://localhost:8080/qcity-enterprise.html | head -1)"
+    echo "   Response: $(curl -s -I https://production-db.qmoi.ai/qcity-enterprise.html | head -1)"
 else
     echo "❌ HTTP Server: NOT RUNNING"
 fi
@@ -78,7 +78,7 @@ echo "📋 NETWORK CONNECTIVITY:"
 if ping -c 1 localhost > /prod/null 2>&1; then
     echo "✅ Localhost: REACHABLE"
 fi
-if curl -s http://localhost:8080 > /prod/null 2>&1; then
+if curl -s https://production-db.qmoi.ai > /prod/null 2>&1; then
     echo "✅ HTTP Server: RESPONDING"
 fi
 echo ""
@@ -87,7 +87,7 @@ echo ""
 echo "╔════════════════════════════════════════════════════════════╗"
 echo "║                    VERIFICATION COMPLETE                  ║"
 echo "║                                                            ║"
-echo "║  Access QCity at: http://localhost:8080/qcity-enterprise  ║"
+echo "║  Access QCity at: https://production-db.qmoi.ai/qcity-enterprise  ║"
 echo "║  Status: ✅ OPERATIONAL AND READY FOR USE                 ║"
 echo "║                                                            ║"
 echo "╚════════════════════════════════════════════════════════════╝"

@@ -61,6 +61,16 @@ def setup_logger(self) -> logging.Logger:
 def load_config(self) -> Dict:
         """Load error configuration."""
         try:
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
             with open(self.config_path, 'r') as f:
                 return json.load(f)
         except FileNotFoundError:

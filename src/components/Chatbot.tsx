@@ -12,6 +12,8 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * Chatbot function
  */
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
 function Chatbot(): any {
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState<string>("");

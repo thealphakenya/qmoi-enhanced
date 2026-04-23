@@ -71,11 +71,11 @@ interface GlobalAssetProviderProps {
 #### Asset Management
 ```bash
 # Get all assets for master
-curl -X GET "http://localhost:8000/api/global-assets/{masterId}" \
+curl -X GET "https://production-db.qmoi.ai/api/global-assets/{masterId}" \
   -H "Authorization: Bearer {token}"
 
 # Add new asset
-curl -X POST "http://localhost:8000/api/global-assets/{masterId}" \
+curl -X POST "https://production-db.qmoi.ai/api/global-assets/{masterId}" \
   -H "Content-Type: application/json" \
   -d '{
     "type": "land",
@@ -96,19 +96,19 @@ curl -X POST "http://localhost:8000/api/global-assets/{masterId}" \
   }'
 
 # Update asset
-curl -X PUT "http://localhost:8000/api/global-assets/{masterId}/{assetId}" \
+curl -X PUT "https://production-db.qmoi.ai/api/global-assets/{masterId}/{assetId}" \
   -H "Content-Type: application/json" \
   -d '{"financials": {"currentValue": 6000000}}'
 
 # Remove asset
-curl -X DELETE "http://localhost:8000/api/global-assets/{masterId}/{assetId}" \
+curl -X DELETE "https://production-db.qmoi.ai/api/global-assets/{masterId}/{assetId}" \
   -H "Authorization: Bearer {token}"
 ```
 
 #### Acquisition & Investment
 ```bash
 # Auto-acquire assets
-curl -X POST "http://localhost:8000/api/global-assets/acquire" \
+curl -X POST "https://production-db.qmoi.ai/api/global-assets/acquire" \
   -H "Content-Type: application/json" \
   -d '{
     "masterId": "master123",
@@ -122,22 +122,22 @@ curl -X POST "http://localhost:8000/api/global-assets/acquire" \
   }'
 
 # Get investment opportunities
-curl -X GET "http://localhost:8000/api/global-assets/opportunities" \
+curl -X GET "https://production-db.qmoi.ai/api/global-assets/opportunities" \
   -H "Authorization: Bearer {token}"
 ```
 
 #### Reporting & Analytics
 ```bash
 # Generate portfolio report
-curl -X GET "http://localhost:8000/api/global-assets/{masterId}/report" \
+curl -X GET "https://production-db.qmoi.ai/api/global-assets/{masterId}/report" \
   -H "Authorization: Bearer {token}"
 
 # Get performance analytics
-curl -X GET "http://localhost:8000/api/global-assets/{masterId}/analytics" \
+curl -X GET "https://production-db.qmoi.ai/api/global-assets/{masterId}/analytics" \
   -H "Authorization: Bearer {token}"
 
 # Risk assessment
-curl -X GET "http://localhost:8000/api/global-assets/{masterId}/risk-assessment" \
+curl -X GET "https://production-db.qmoi.ai/api/global-assets/{masterId}/risk-assessment" \
   -H "Authorization: Bearer {token}"
 ```
 
@@ -254,37 +254,37 @@ curl -X GET "http://localhost:8000/api/global-assets/{masterId}/risk-assessment"
 ### System Health
 ```bash
 # Check global asset management health
-curl -X GET "http://localhost:8000/api/health/global-assets" \
+curl -X GET "https://production-db.qmoi.ai/api/health/global-assets" \
   -H "Authorization: Bearer {token}"
 
 # Check portfolio synchronization
-curl -X GET "http://localhost:8000/api/health/portfolio-sync" \
+curl -X GET "https://production-db.qmoi.ai/api/health/portfolio-sync" \
   -H "Authorization: Bearer {token}"
 
 # Check compliance monitoring
-curl -X GET "http://localhost:8000/api/health/compliance-monitor" \
+curl -X GET "https://production-db.qmoi.ai/api/health/compliance-monitor" \
   -H "Authorization: Bearer {token}"
 ```
 
 ### Asset-Specific Health
 ```bash
 # Check specific asset health
-curl -X GET "http://localhost:8000/api/health/asset/{assetId}" \
+curl -X GET "https://production-db.qmoi.ai/api/health/asset/{assetId}" \
   -H "Authorization: Bearer {token}"
 
 # Check geographic region health
-curl -X GET "http://localhost:8000/api/health/region/{country}" \
+curl -X GET "https://production-db.qmoi.ai/api/health/region/{country}" \
   -H "Authorization: Bearer {token}"
 ```
 
 ### Financial Health
 ```bash
 # Check portfolio financial health
-curl -X GET "http://localhost:8000/api/health/portfolio-financial" \
+curl -X GET "https://production-db.qmoi.ai/api/health/portfolio-financial" \
   -H "Authorization: Bearer {token}"
 
 # Check investment performance
-curl -X GET "http://localhost:8000/api/health/investment-performance" \
+curl -X GET "https://production-db.qmoi.ai/api/health/investment-performance" \
   -H "Authorization: Bearer {token}"
 ```
 
@@ -864,3 +864,5 @@ Log significant changes and version notes.
 
 Link to related documentation, APIs, and system artifacts.
 
+## ⚛️ Quantum Integration
+This document is part of the Quantum multi orchestra intelligence (QMOI) system and includes quantum feature integration capabilities.

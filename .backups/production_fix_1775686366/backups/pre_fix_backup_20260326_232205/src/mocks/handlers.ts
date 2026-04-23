@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-/* eslint-env node,jest,browser */
+/* eslint-env node,# production: # production: # production: jest removed removed removed,browser */
 import { rest as mswRest } from "msw";
 
 const rest = mswRest as unknown as {

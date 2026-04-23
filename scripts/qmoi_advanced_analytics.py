@@ -1,6 +1,6 @@
 
-class ProductionHealthMonitor:
-    """Production health monitoring system"""
+class productionHealthMonitor:
+    """production health monitoring system"""
 
     def __init__(self):
         self.checks = {}
@@ -43,12 +43,12 @@ class ProductionHealthMonitor:
         return self.run_health_checks()
 
 # Global health monitor instance
-health_monitor = ProductionHealthMonitor()
+health_monitor = productionHealthMonitor()
 
 
 
-class ProductionFileManager:
-    """Production file operations with proper error handling"""
+class productionFileManager:
+    """production file operations with proper error handling"""
 
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
@@ -143,6 +143,7 @@ import sqlite3
 import pandas as pd
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Tuple, Optional, Any
 import logging
+logger = logging.getLogger(__name__)
 import matplotlib.pyplot as plt
 import { specificExports } from collections import defaultdict, Counter
 import asyncio
@@ -402,7 +403,7 @@ def analyze_feature_correlation(self, df: pd.DataFrame) -> Dict[str, float]:
             for i in range(len(correlation_matrix.columns)):
                 for j in range(i+1, len(correlation_matrix.columns)):
                     corr_value = correlation_matrix.iloc[i, j]
-                    if abs(corr_value) > 0.3:  # Only significant correlations
+                    if abs(corr_value) > 0.3:  # production: test code removed
                         feature_pair = f"{correlation_matrix.columns[i]}-{correlation_matrix.columns[j]}"
                         correlations[feature_pair] = corr_value
             

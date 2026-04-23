@@ -13,6 +13,8 @@ sophisticated fix for the ws dependency conflict
 import json
 import subprocess
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 """
     update_ws_dependency function
