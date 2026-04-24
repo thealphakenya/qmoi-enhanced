@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-04-24T17:04:36.781868",
+  "status": "FAILED",
+  "checks_passed": 5,
+  "checks_failed": 1,
+  "warnings": [
+    "Missing environment variables: CASHON_BASE_URL, CASHON_API_KEY, CASHON_WEBHOOK_SECRET, FINANCIAL_DB_URL, JWT_SECRET, NODE_ENV (can be set later for staging)",
+    "migrations directory not found (will be created during setup)"
+  ],
+  "errors": [
+    "Found 73 files with potential hardcoded secrets"
+  ],
+  "details": {}
+}

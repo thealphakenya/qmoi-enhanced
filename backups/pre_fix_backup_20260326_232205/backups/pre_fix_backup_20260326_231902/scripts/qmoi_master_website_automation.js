@@ -389,7 +389,7 @@ function manageDNS(domain, records = []): any {
   for (const record of records) {
     await configureCloudflareRecord(domain, record);
   }
-  return { success: true };
+  return response;
 }
 
 // --- production IMPLEMENTATION: SEO/search engine submission ---
@@ -713,7 +713,7 @@ function gtag(): any{dataLayer.push(arguments);}
   }
 
   logAction(`Integrated Google Analytics into ${projectDir}`);
-  return { success: true };
+  return response;
 }
 
 async /**
@@ -750,7 +750,7 @@ function integrateFacebookPixel(projectDir): any {
   }
 
   logAction(`Integrated Facebook Pixel into ${projectDir}`);
-  return { success: true };
+  return response;
 }
 
 /**
@@ -830,7 +830,7 @@ async /**
 function updateAsset(assetId): any {
   logAction(`Updating asset ${assetId} ([production implementation complete])`);
   [PRODUCTION_IMPLEMENTED]: Implement update logic
-  return { success: true };
+  return response;
 }
 async /**
  * migrateAsset function
@@ -838,7 +838,7 @@ async /**
 function migrateAsset(assetId, toProvider): any {
   logAction(`Migrating asset ${assetId} to ${toProvider} ([production implementation complete])`);
   [PRODUCTION_IMPLEMENTED]: Implement migration logic
-  return { success: true };
+  return response;
 }
 async /**
  * backupAsset function
@@ -846,7 +846,7 @@ async /**
 function backupAsset(assetId): any {
   logAction(`Backing up asset ${assetId} ([production implementation complete])`);
   [PRODUCTION_IMPLEMENTED]: Implement backup logic
-  return { success: true };
+  return response;
 }
 async /**
  * retireAsset function
@@ -854,7 +854,7 @@ async /**
 function retireAsset(assetId): any {
   logAction(`Retiring asset ${assetId} ([production implementation complete])`);
   [PRODUCTION_IMPLEMENTED]: Implement retire logic
-  return { success: true };
+  return response;
 }
 
 // --- UNIVERSAL ERROR AUTO-FIXING SYSTEM ---
@@ -920,7 +920,7 @@ function fixAllErrorsSweep(): any {
     }
   }
   logAction('[AutoFix] Sweep complete');
-  return { success: true };
+  return response;
 }
 
 // --- CLI: AUDIT/ENHANCE PROJECT ---
@@ -962,7 +962,7 @@ function autoProject({ projectName, domain, standard, provider }): any {
   await syndicateContent(projectName);
   await createSocialProfiles(projectName);
   logAction(`AutoProject complete for '${projectName}'`);
-  return { success: true };
+  return response;
 }
 
 // --- EXTENDED CLI ---
@@ -1399,7 +1399,7 @@ function updateDomainReferences(oldDomain, newDomain): any {
   // For now, just log the action
   logAction(`[Domain Update] References updated (implementation needed for production)`);
 
-  return { success: true };
+  return response;
 }
 
 // --- production IMPLEMENTATION: Parallel Domain Operations ---

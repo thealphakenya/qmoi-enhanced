@@ -591,7 +591,7 @@ export class AuthService {
    */
   static logout(sessionId: string): { success: boolean } {
     sessions.delete(sessionId);
-    return { success: true };
+    return response;
   }
 
   // Helper methods

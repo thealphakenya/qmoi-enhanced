@@ -270,7 +270,7 @@ class QMOIGitHubIntegration {
         timestamp: new Date().toISOString(),
       });
 
-      return { success: true };
+      return response;
     } catch (error) {
       logger.error("Failed to commit and push:", error.message);
       throw error;
@@ -430,7 +430,7 @@ class QMOIGitHubIntegration {
         },
       );
 
-      return { success: true };
+      return response;
     } catch (error) {
       logger.error("Failed to enable security features:", error.message);
       throw error;

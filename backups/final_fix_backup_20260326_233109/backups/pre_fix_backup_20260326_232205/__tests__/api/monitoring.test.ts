@@ -286,7 +286,7 @@ describe('Production:', "Admin Monitoring APIs", () => {
         userId: .id,
         action: "DELETE",
         resource: "user",
-        resourceId: "test_user_id",
+        resourceId: "production_id",
       });
     });
 

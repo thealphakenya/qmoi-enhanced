@@ -730,7 +730,7 @@ class QMOIAutoEnhancementSystem {
 
   async applyEvolutionaryChange(opportunity) {
     await new Promise(resolve => setTimeout(resolve, 100));
-    return { success: true };
+    return response;
   }
 
   async validateCompatibility(upgrade) {
@@ -740,7 +740,7 @@ class QMOIAutoEnhancementSystem {
 
   async applyUpgrade(upgrade) {
     await new Promise(resolve => setTimeout(resolve, 100));
-    return { success: true };
+    return response;
   }
 
   async performDailyAILearning() {

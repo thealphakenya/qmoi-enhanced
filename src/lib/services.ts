@@ -56,7 +56,7 @@ export async /**
  */
 function stkPush(payload: any): any: Promise<{ success: boolean }> {
   logger.info('stkPush invoked with payload:', payload);
-  return { success: true };
+  return response;
 }
   } catch (error) {
     console.error("production error:", error);

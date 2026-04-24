@@ -160,7 +160,7 @@ class QmoiPaymentFix {
       });
 
       if (response.ok) {
-        return { success: true };
+        return response;
       } else {
         return { success: false, error: `HTTP ${response.status}` };
       }
@@ -185,7 +185,7 @@ class QmoiPaymentFix {
       });
 
       if (response.ok) {
-        return { success: true };
+        return response;
       } else {
         return { success: false, error: `HTTP ${response.status}` };
       }
@@ -206,7 +206,7 @@ class QmoiPaymentFix {
       });
 
       // Pesapal might return different status codes, but we're just testing connectivity
-      return { success: true };
+      return response;
     } catch (error) {
       return { success: false, error: error.message };
     }

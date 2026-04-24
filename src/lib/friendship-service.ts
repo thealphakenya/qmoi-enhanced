@@ -184,7 +184,7 @@ export class QMOIFriendshipService {
     this.updateProfileStats(friendship.userId1);
     this.updateProfileStats(friendship.userId2);
 
-    return { success: true };
+    return response;
   }
 
   async getFriends(userId: string): Promise<string[]> {

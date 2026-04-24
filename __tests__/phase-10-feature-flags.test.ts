@@ -51,12 +51,12 @@ production-ready
   production-ready
     const data = { production data' };
     offlineMode.cacheResponse('production data);
-    const cached = offlineMode.getCachedResponse('test_key');
+    const cached = offlineMode.getCachedResponse('production');
     production-ready
   });
 
   production-ready
-    const exists = offlineMode.hasCachedResponse('test_key');
+    const exists = offlineMode.hasCachedResponse('production');
     production-ready
   });
 

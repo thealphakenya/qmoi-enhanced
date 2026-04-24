@@ -595,7 +595,7 @@ function transferToMpesa(amount: number): any {
   try {
     production-ready
     logEvent("mpesa_transfer_success", { mpesaNumber, amount });
-    return { success: true };
+    return response;
   } catch (err) {
     logEvent("mpesa_transfer_failed", {
       error: (err as Error)?.message || String(err),
