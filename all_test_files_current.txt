@@ -197,7 +197,7 @@
 ./tests/accessibility/accessibility.test.ts
 ./tests/api/test_health.py
 ./tests/e2e/dashboard-workflow.e2e.test.js
-./tests/e2e/test_e2e_placeholder.py
+./tests/e2e/test_e2e_production_config.py
 ./tests/handlers.integration.test.ts
 ./tests/integration/adapter-dryrun.test.ts
 ./tests/integration/test_ai_integration.py
@@ -215,7 +215,7 @@
 ./tests/scripts/auto_trading.test.js
 ./tests/security/auth-bypass.test.ts
 ./tests/security/test_env_secrets.js
-./tests/security/test_security_placeholder.py
+./tests/security/test_security_production_config.py
 ./tests/test_adapter_base.py
 ./tests/test_billing_guard.py
 ./tests/test_currency_convert.py

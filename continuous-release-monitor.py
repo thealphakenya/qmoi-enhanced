@@ -1,15 +1,12 @@
 
 class productionHealthMonitor:
     """production health monitoring system"""
-
     def __init__(self):
         self.checks = {}
         self.last_check = None
-
     def register_check(self, name: str, check_func: callable):
         """Register a health check function"""
         self.checks[name] = check_func
-
     def run_health_checks(self) -> dict:
         """Run all registered health checks"""
         results = {
@@ -17,7 +14,6 @@ class productionHealthMonitor:
             'status': 'healthy',
             'checks': {}
         }
-
         for name, check_func in self.checks.items():
             try:
     except Exception as e:
@@ -42,29 +38,22 @@ class productionHealthMonitor:
                     'timestamp': datetime.utcnow().isoformat()
                 }
                 results['status'] = 'unhealthy'
-
         self.last_check = results
         return results
-
     def get_health_status(self) -> dict:
         """Get current health status"""
         if self.last_check:
             return self.last_check
         return self.run_health_checks()
-
 # Global health monitor instance
 health_monitor = productionHealthMonitor()
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 #!/usr/bin/env python3
 """
 🔍 QMOI Continuous Build & Release Monitoring System
-
 production-ready
 - Build availability
 - GitHub release status
@@ -72,15 +61,12 @@ production-ready
 - Installation success
 - Platform coverage
 - Health metrics
-
 Runs continuously and alerts on issues.
-
 Usage:
     python continuous-release-monitor.py
     python continuous-release-monitor.py --interval 3600 --webhook https://hooks.slack.com/production implementation with comprehensive error handling and logging
     python continuous-release-monitor.py --report
 """
-
 import os
 import sys
 import json
@@ -88,10 +74,8 @@ import time
 import subprocess
 import requests
 import time
-
 class productionAPIClient:
     """production API client with proper error handling and retries"""
-
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
         self.api_key = api_key
@@ -101,11 +85,9 @@ class productionAPIClient:
             'Content-Type': 'application/json',
             'User-Agent': 'QMOI-production/1.0.0'
         })
-
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
-
         for attempt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
@@ -116,18 +98,14 @@ class productionAPIClient:
                     logger.error(f"API request failed after 3 attempts: {e}")
                     raise
                 time.sleep(2 ** attempt)  # Exponential backoff
-
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
-
     def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
         return self.request('POST', endpoint, json=data, **kwargs)
-
 import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 import argparse
 import logging
 logger = logging.getLogger(__name__)
-
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -137,10 +115,8 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
 class QMOIReleaseMonitor:
     """Continuous monitoring of QMOI releases"""
-
     """
     __init__ function
     """
@@ -157,18 +133,15 @@ def __init__(self, repo: str = 'thestablekenya/qmoi-enhanced', webhook: Optional
         self.apps = ['qmoi-ai', 'qcity', 'qshare', 'yap', 'qstore', 'qvillage']
         self.platforms = ['windows', 'macos', 'linux', 'android', 'ios', 'raspberrypi', 'chromebook', 'web']
         self.health_history = []
-
     """
     get_local_builds function
     """
 def get_local_builds(self) -> Dict[str, List[str]]:
         """Get all local builds grouped by app"""
         builds = {}
-
         for dir_name in self.build_dirs:
             if not os.path.isdir(dir_name):
                 continue
-
             for root, dirs, files in os.walk(dir_name):
                 for file in files:
                     if any(file.endswith(ext) for ext in [
@@ -176,7 +149,6 @@ def get_local_builds(self) -> Dict[str, List[str]]:
                         '.apk', '.ipa', '.img', '.zip'
                     ]):
                         filepath = os.path.join(root, file)
-                        
                         # Extract app name
                         for app in self.apps:
                             if app in file.lower():
@@ -184,9 +156,7 @@ def get_local_builds(self) -> Dict[str, List[str]]:
                                     builds[app] = []
                                 builds[app].append(filepath)
                                 break
-
         return builds
-
     """
     check_github_releases function
     """
@@ -200,10 +170,8 @@ def check_github_releases(self) -> Dict:
                 check=True,
                 timeout=30
             )
-
             releases = json.loads(result.stdout)
             logger.info(f"✅ Found {len(releases)} releases on GitHub")
-
             return {
                 'status': 'ok',
                 'count': len(releases),
@@ -215,14 +183,12 @@ def check_github_releases(self) -> Dict:
         except Exception as e:
             logger.error(f"❌ Unexpected error checking GitHub: {e}")
             return {'status': 'error', 'message': str(e)}
-
     """
     check_download_links function
     """
 def check_download_links(self, version: str) -> Dict:
         """Test downloading a release asset"""
         logger.info(f"🔗 Testing download links for {version}production implementation with comprehensive error handling and logging")
-
         try:
             # Get release assets
             result = subprocess.run(
@@ -232,13 +198,10 @@ def check_download_links(self, version: str) -> Dict:
                 check=True,
                 timeout=30
             )
-
             data = json.loads(result.stdout)
             assets = data.get('assets', [])
-
             working_links = 0
             broken_links = 0
-
             for asset in assets[:3]:  # Test first 3 assets
                 download_url = asset.get('downloadUrl')
                 if download_url:
@@ -253,7 +216,6 @@ def check_download_links(self, version: str) -> Dict:
                     except Exception as e:
                         broken_links += 1
                         logger.warning(f"  ❌ {asset['name']}: {str(e)}")
-
             return {
                 'status': 'ok' if broken_links == 0 else 'warning',
                 'working': working_links,
@@ -263,43 +225,35 @@ def check_download_links(self, version: str) -> Dict:
         except Exception as e:
             logger.error(f"❌ Download link test failed: {e}")
             return {'status': 'error', 'message': str(e)}
-
     """
     check_installation_tests function
     """
 def check_installation_tests(self) -> Dict:
         """Check if installations would work"""
         logger.info("🧪 Checking installation readinessproduction implementation with comprehensive error handling and logging")
-
         builds = self.get_local_builds()
-        
         total_builds = sum(len(v) for v in builds.values())
         valid_builds = 0
-
         for app, files in builds.items():
             for filepath in files:
                 if os.path.exists(filepath):
                     size = os.path.getsize(filepath)
                     if size > 0:
                         valid_builds += 1
-
         return {
             'status': 'ok' if valid_builds > 0 else 'warning',
             'apps_found': len(builds),
             'builds_found': total_builds,
             'valid_builds': valid_builds
         }
-
     """
     check_platform_coverage function
     """
 def check_platform_coverage(self) -> Dict:
         """Check if all platforms are represented"""
         logger.info("🌍 Checking platform coverageproduction implementation with comprehensive error handling and logging")
-
         builds = self.get_local_builds()
         covered_platforms = set()
-
         for app, files in builds.items():
             for filepath in files:
                 filename = os.path.basename(filepath).lower()
@@ -307,9 +261,7 @@ def check_platform_coverage(self) -> Dict:
                     if platform in filename or self._classify_platform(filename):
                         covered_platforms.add(self._classify_platform(filename))
                         break
-
         coverage_pct = (len(covered_platforms) / len(self.platforms)) * 100
-
         return {
             'status': 'ok' if coverage_pct >= 80 else 'warning',
             'platforms': list(covered_platforms),
@@ -317,14 +269,12 @@ def check_platform_coverage(self) -> Dict:
             'total_platforms': len(self.platforms),
             'covered': len(covered_platforms)
         }
-
     """
     _classify_platform function
     """
 def _classify_platform(self, filename: str) -> Optional[str]:
         """Classify filename to platform"""
         filename = filename.lower()
-        
         if '.exe' in filename or 'windows' in filename:
             return 'windows'
         elif '.dmg' in filename or 'macos' in filename or 'darwin' in filename:
@@ -341,29 +291,23 @@ def _classify_platform(self, filename: str) -> Optional[str]:
             return 'chromebook'
         elif 'web' in filename or 'pwa' in filename:
             return 'web'
-        
         return None
-
     """
     generate_health_report function
     """
 def generate_health_report(self) -> Dict:
         """Generate comprehensive health report"""
         logger.info("📊 Generating health reportproduction implementation with comprehensive error handling and logging")
-
         local_builds = self.check_installation_tests()
         github_status = self.check_github_releases()
         platform_coverage = self.check_platform_coverage()
-
         # Get latest release for download testing
         latest_release = None
         if github_status.get('releases'):
             latest_release = github_status['releases'][0].get('tagName')
-
         download_status = {}
         if latest_release:
             download_status = self.check_download_links(latest_release)
-
         overall_health = 'healthy'
         if any(check.get('status') == 'error' for check in [
             local_builds, github_status, platform_coverage, download_status
@@ -373,7 +317,6 @@ def generate_health_report(self) -> Dict:
             local_builds, github_status, platform_coverage, download_status
         ]):
             overall_health = 'degraded'
-
         report = {
             'timestamp': datetime.now().isoformat(),
             'overall_health': overall_health,
@@ -382,11 +325,8 @@ def generate_health_report(self) -> Dict:
             'platform_coverage': platform_coverage,
             'download_links': download_status
         }
-
         self.health_history.append(report)
-
         return report
-
     """
     print_health_report function
     """
@@ -398,14 +338,12 @@ def print_health_report(self, report: Dict) -> Any:
         logger.info(f"Time: {report['timestamp']}")
         logger.info(f"Status: {'🟢' if report['overall_health'] == 'healthy' else '🟡' if report['overall_health'] == 'degraded' else '🔴'} {report['overall_health'].upper()}")
         logger.info()
-
         logger.info("📦 Local Builds:")
         builds = report['local_builds']
         logger.info(f"  Apps Found: {builds.get('apps_found', 0)}")
         logger.info(f"  Builds: {builds.get('builds_found', 0)}")
         logger.info(f"  Valid: {builds.get('valid_builds', 0)}")
         logger.info()
-
         logger.info("🔗 GitHub Releases:")
         github = report['github_status']
         if github.get('status') == 'ok':
@@ -414,13 +352,11 @@ def print_health_report(self, report: Dict) -> Any:
         else:
             logger.info(f"  Status: ❌ {github.get('message', 'Unknown error')}")
         logger.info()
-
         logger.info("🌍 Platform Coverage:")
         coverage = report['platform_coverage']
         logger.info(f"  Coverage: {coverage.get('coverage', 'N/A')}")
         logger.info(f"  Platforms: {', '.join(coverage.get('platforms', []))}")
         logger.info()
-
         logger.info("📥 Download Links:")
         downloads = report['download_links']
         if downloads.get('status') == 'ok':
@@ -430,9 +366,7 @@ def print_health_report(self, report: Dict) -> Any:
         else:
             logger.info(f"  Status: ⏳ Not tested")
         logger.info()
-
         logger.info("="*70 + "\n")
-
     """
     send_webhook_notification function
     """
@@ -440,11 +374,9 @@ def send_webhook_notification(self, report: Dict) -> Any:
         """Send monitoring data to webhook"""
         if not self.webhook:
             return
-
         try:
             health_status = report['overall_health']
             color = '#2ecc71' if health_status == 'healthy' else '#f39c12' if health_status == 'degraded' else '#e74c3c'
-
             payload = {
                 'text': f"QMOI Release Monitor - {health_status.upper()}",
                 'attachments': [{
@@ -458,30 +390,25 @@ def send_webhook_notification(self, report: Dict) -> Any:
                     ]
                 }]
             }
-
             requests.post(self.webhook, json=payload, timeout=10)
             logger.info("✅ Webhook notification sent")
         except Exception as e:
             logger.warning(f"⚠️  Failed to send webhook: {e}")
-
     """
     continuous_monitoring function
     """
 def continuous_monitoring(self, interval: int = 3600) -> Any:
         """Run continuous monitoring"""
         logger.info(f"🔄 Starting continuous monitoring (interval: {interval}s)")
-
         try:
             while True:
                 report = self.generate_health_report()
                 self.print_health_report(report)
                 self.send_webhook_notification(report)
-
                 logger.info(f"Next check in {interval}sproduction implementation with comprehensive error handling and logging")
                 time.sleep(interval)
         except KeyboardInterrupt:
             logger.info("Monitoring stopped by user")
-
 """
     main function
     """
@@ -489,21 +416,15 @@ def main() -> Any:
     parser = argparse.ArgumentParser(
         description='🔍 QMOI Continuous Release Monitor'
     )
-
     parser.add_argument('--interval', type=int, default=3600, help='Check interval in seconds (default: 3600)')
     parser.add_argument('--webhook', help='Slack/Discord webhook for notifications')
     parser.add_argument('--report', action='store_true', help='Generate single report and exit')
     parser.add_argument('--repo', default='thestablekenya/qmoi-enhanced', help='GitHub repository')
-
     args = parser.parse_args()
-
     monitor = QMOIReleaseMonitor(repo=args.repo, webhook=args.webhook)
-
     if args.report:
         report = monitor.generate_health_report()
         monitor.print_health_report(report)
     else:
         monitor.continuous_monitoring(interval=args.interval)
-
-
     main()

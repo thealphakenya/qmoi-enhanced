@@ -165,16 +165,6 @@ class AggressiveproductionFixer:
         if path.suffix.lower() not in TEXT_EXTENSIONS:
             return False
         try:
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
             if path.stat().st_size > 20 * 1024 * 1024:
                 return False
         except OSError:
@@ -476,4 +466,3 @@ if __name__ == '__main__':
     except Exception as e:
         logger.error(f"Application failed to start: {e}")
         sys.exit(1)
-    main()

@@ -44,20 +44,13 @@ USERS_FILE = 'users.json'
 # Load authentication configuration
 def load_auth_config():
     try:
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
         with open(AUTH_CONFIG_FILE, 'r') as f:
             return json.load(f)
     except FileNotFoundError:
         logger.warning("Auth config not found, authentication disabled")
+        return {'enabled': False, 'api_key_required': False}
+    except Exception as e:
+        logger.error(f"Error loading auth config: {e}")
         return {'enabled': False, 'api_key_required': False}
 
 # Load API keys

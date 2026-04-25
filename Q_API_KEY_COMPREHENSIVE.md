@@ -64,7 +64,7 @@ The Q API (Quantum multi orchestra intelligence (QMOI) Quantum Intelligence API)
 curl -X POST https://api.Quantum multi orchestra intelligence (QMOI).dev/v2/auth/register \
   -H "Content-Type: application/json" \
   -d '{
-    "email": "user@example.com",
+    "email": "user@qmoi.ai",
     "password": "secure_password",
     "name": "Your Name"
   }'

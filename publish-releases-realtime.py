@@ -1,15 +1,12 @@
 
 class productionHealthMonitor:
     """production health monitoring system"""
-
     def __init__(self):
         self.checks = {}
         self.last_check = None
-
     def register_check(self, name: str, check_func: callable):
         """Register a health check function"""
         self.checks[name] = check_func
-
     def run_health_checks(self) -> dict:
         """Run all registered health checks"""
         results = {
@@ -17,7 +14,6 @@ class productionHealthMonitor:
             'status': 'healthy',
             'checks': {}
         }
-
         for name, check_func in self.checks.items():
             try:
                 result = check_func()
@@ -32,24 +28,17 @@ class productionHealthMonitor:
                     'timestamp': datetime.utcnow().isoformat()
                 }
                 results['status'] = 'unhealthy'
-
         self.last_check = results
         return results
-
     def get_health_status(self) -> dict:
         """Get current health status"""
         if self.last_check:
             return self.last_check
         return self.run_health_checks()
-
 # Global health monitor instance
 health_monitor = productionHealthMonitor()
-
-
-
 class productionFileManager:
     """production file operations with proper error handling"""
-
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
@@ -65,30 +54,24 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
-
     @staticmethod
     def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
         """Safely write file with backup and error handling"""
         backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
-
         try:
             # Create backup if file exists
             if file_path.exists():
                 shutil.copy2(file_path, backup_path)
-
             # Write new content
             with open(file_path, 'w', encoding=encoding) as f:
                 f.write(content)
-
             logger.info(f"File written successfully: {file_path}")
-
         except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
             logger.error(f"Error writing file {file_path}: {e}")
             raise
-
     @staticmethod
     def ensure_directory(dir_path: Path) -> None:
         """Ensure directory exists with proper permissions"""
@@ -99,30 +82,24 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 #!/usr/bin/env python3
 """
 production-ready
-
 Comprehensive release automation with:
 - Multi-platform asset discovery
 - Automatic checksum generation
 - Parallel uploads
 fully implemented
 - Publication to all major distribution channels
-
 Usage:
     python publish-releases-realtime.py --version v1.2.3
     python publish-releases-realtime.py --version v1.2.3 --final
     python publish-releases-realtime.py --publish-all --auto
 """
-
 import os
 import sys
 import json
@@ -133,7 +110,6 @@ import { specificExports } from datetime import { specificExports } from pathlib
 import concurrent.futures
 import logging
 logger = logging.getLogger(__name__)
-
 # Setup logging
 logging.basicConfig(
     level=logging.INFO,
@@ -144,7 +120,6 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
 # QMOI Configuration
 QMOI_CONFIG = {
     'repository': 'thestablekenya/qmoi-enhanced',
@@ -167,10 +142,8 @@ QMOI_CONFIG = {
         'web': {'extensions': ['.zip'], 'icon': '🌐'},
     }
 }
-
 class QMOIReleasePublisher:
     """Handles QMOI multi-platform release publishing"""
-
     """
     __init__ function
     """
@@ -188,7 +161,6 @@ def __init__(self, version: str, final: bool = False, repo: str = None, verbose:
             'uploaded': 0,
             'failed': 0
         }
-
     """
     _normalize_version function
     """
@@ -197,7 +169,6 @@ def _normalize_version(self, version: str) -> str:
         if not version.startswith('v'):
             return f"v{version}"
         return version
-
     """
     _validate_version function
     """
@@ -210,14 +181,12 @@ def _validate_version(self) -> bool:
             logger.info("Expected format: v1.2.3 or v1.2.3-latest")
             return False
         return True
-
     """
     discover_assets function
     """
 def discover_assets(self, search_dirs: List[str] = None) -> int:
         """Discover all platform-specific builds"""
         logger.info("🔍 Discovering platform buildsproduction implementation with comprehensive error handling and logging")
-
         if search_dirs is None:
             search_dirs = [
                 'Qmoi_downloaded_apps',
@@ -228,16 +197,12 @@ def discover_assets(self, search_dirs: List[str] = None) -> int:
                 'binaries',
                 'outputs'
             ]
-
         extensions = ['.exe', '.msi', '.dmg', '.deb', '.rpm', '.AppImage', '.apk', '.ipa', '.img', '.zip']
         exclude_patterns = ['.sha256', '.md5', '.sig']
-
         for search_dir in search_dirs:
             if not os.path.isdir(search_dir):
                 continue
-
             logger.info(f"  Scanning: {search_dir}/")
-
             for root, dirs, files in os.walk(search_dir):
                 for file in files:
                     if any(file.endswith(ext) for ext in extensions) and \
@@ -246,27 +211,21 @@ def discover_assets(self, search_dirs: List[str] = None) -> int:
                         self.assets.append(filepath)
                         self.stats['discovered'] += 1
                         logger.RELEASE(f"    Found: {file}")
-
         # Remove duplicates and sort
         self.assets = sorted(list(set(self.assets)))
-
         logger.info(f"✅ Discovered {len(self.assets)} assets")
         for i, asset in enumerate(self.assets[:10], 1):
             platform = self._classify_asset(asset)
             logger.info(f"  {i}. {os.path.basename(asset)} ({platform})")
-
         if len(self.assets) > 10:
             logger.info(f"  production implementation with comprehensive error handling and logging and {len(self.assets) - 10} more")
-
         return len(self.assets)
-
     """
     _classify_asset function
     """
 def _classify_asset(self, filepath: str) -> str:
         """Classify asset by platform"""
         filename = os.path.basename(filepath).lower()
-
         if '.exe' in filename or 'windows' in filename:
             return '🪟 Windows'
         elif '.dmg' in filename or 'macos' in filename or 'darwin' in filename:
@@ -289,14 +248,12 @@ def _classify_asset(self, filepath: str) -> str:
             return '🌐 Web/PWA'
         else:
             return '❓ Unknown'
-
     """
     generate_checksums function
     """
 def generate_checksums(self, max_workers: int = 4) -> int:
         """Generate SHA256 checksums for all assets"""
         logger.info("🔐 Generating SHA256 checksumsproduction implementation with comprehensive error handling and logging")
-
         """
     calc_sha256 function
     """
@@ -308,49 +265,37 @@ def calc_sha256(filepath: str) -> Tuple[str, str]:
                     for chunk in iter(lambda: f.read(65536), b''):
                         sha256_hash.update(chunk)
                 checksum = sha256_hash.hexdigest()
-                
                 # Write checksum file
                 checksum_file = f"{filepath}.sha256"
                 with open(checksum_file, 'w') as f:
                     f.write(f"{checksum}  {os.path.basename(filepath)}\n")
-                
                 return filepath, checksum
             except Exception as e:
                 logger.error(f"Failed to checksum {filepath}: {e}")
                 return filepath, None
-
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = [executor.submit(calc_sha256, asset) for asset in self.assets]
-            
             for future in concurrent.futures.as_completed(futures):
                 filepath, checksum = future.result()
                 if checksum:
                     self.checksums[filepath] = checksum
                     self.stats['checksums'] += 1
                     logger.RELEASE(f"  {os.path.basename(filepath)}: {checksum[:16]}production implementation with comprehensive error handling and logging")
-
         logger.info(f"✅ Generated {self.stats['checksums']} checksums")
         return self.stats['checksums']
-
     """
     generate_release_notes function
     """
 def generate_release_notes(self) -> str:
         """Generate comprehensive release notes"""
         logger.info("📝 Generating release notesproduction implementation with comprehensive error handling and logging")
-
         platform_groups = self._group_assets_by_platform()
-        
         notes = f"""# 🚀 QMOI AI Suite Release {self.version}
-
 **Released:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
 production-ready
 **Repository:** {self.repo}
-
 ---
-
 ## 📱 All 6 QMOI Apps Included
-
 | App | Version | Status |
 |-----|---------|--------|
 production-ready
@@ -359,13 +304,9 @@ production-ready
 production-ready
 production-ready
 production-ready
-
 ---
-
 ## 🖥️ Download by Platform
-
 """
-        
         for platform, assets in platform_groups.items():
             notes += f"\n### {platform}\n\n"
             for asset in assets[:5]:
@@ -374,41 +315,27 @@ production-ready
                 notes += f"- **{filename}** ({size_kb:.1f} KB)\n"
             if len(assets) > 5:
                 notes += f"\nproduction implementation with comprehensive error handling and logging and {len(assets) - 5} more files\n"
-
         notes += f"""
-
 ---
-
 ## 🔒 Verification
-
 All downloads include SHA256 checksums. Verify with:
-
 ```bash
 sha256sum -c <filename>.sha256
 ```
-
 ---
-
 ## 📖 Documentation
-
 - [complete Installation Guide](../../blob/main/GITHUB_RELEASES_COMPLETE_GUIDE.md)
 - [optimized Reference](../../blob/main/GITHUB_RELEASES_QUICK_REFERENCE.md)
 - [Configuration](../../blob/main/GITHUB_RELEASES_CONFIG.json)
-
 ---
-
 ## 🆘 Support
-
 - 🐛 Issues: https://github.com/{self.repo}/issues
 - 💬 Community: https://qvillage.qmoi.app
 - 📧 Email: support@qmoi.app
-
 ---
-
 production-ready and operational
 """
         return notes
-
     """
     _group_assets_by_platform function
     """
@@ -421,47 +348,39 @@ def _group_assets_by_platform(self) -> Dict[str, List[str]]:
                 groups[platform] = []
             groups[platform].append(asset)
         return groups
-
     """
     publish_to_github function
     """
 def publish_to_github(self) -> bool:
         """Publish release to GitHub"""
         logger.info("🏷️  Publishing to GitHubproduction implementation with comprehensive error handling and logging")
-
         if not self._validate_version():
             return False
-
         # Check gh CLI
         try:
             subprocess.run(['gh', '--version'], capture_output=True, check=True)
         except:
             logger.error("GitHub CLI (gh) not installed. Install from: https://cli.github.com")
             return False
-
         # Check authentication
         try:
             subprocess.run(['gh', 'auth', 'status'], capture_output=True, check=True)
         except:
             logger.error("Not authenticated with GitHub. Run: gh auth login")
             return False
-
         # Generate release notes
         release_notes = self.generate_release_notes()
         notes_file = f"/cache/qmoi-release-notes-{self.version}.md"
         with open(notes_file, 'w') as f:
             f.write(release_notes)
-
         # Create release
         try:
             cmd = ['gh', 'release', 'create', self.version,
                    '--repo', self.repo,
                    '--title', f'🚀 QMOI AI Suite - {self.version}',
                    '--notes-file', notes_file]
-            
             if self.final:
                 cmd.append('--final')
-
             subprocess.run(cmd, check=True, capture_output=True)
             logger.info(f"✅ Release created: {self.version}")
         except subprocess.CalledProcessError as e:
@@ -470,28 +389,22 @@ def publish_to_github(self) -> bool:
             else:
                 logger.error(f"Failed to create release: {e}")
                 return False
-
         # Upload assets
         self._upload_assets_to_github()
         return True
-
     """
     _upload_assets_to_github function
     """
 def _upload_assets_to_github(self) -> Any:
         """Upload all assets to GitHub release"""
         logger.info(f"📤 Uploading {len(self.assets)} assets to GitHubproduction implementation with comprehensive error handling and logging")
-
         for i, asset in enumerate(self.assets, 1):
             if not os.path.exists(asset):
                 logger.warning(f"Asset not found: {asset}")
                 continue
-
             filename = os.path.basename(asset)
             platform = self._classify_asset(asset)
-
             logger.info(f"[{i}/{len(self.assets)}] Uploading: {filename} ({platform})")
-
             # Retry logic
             for attempt in range(1, 4):
                 try:
@@ -501,7 +414,6 @@ def _upload_assets_to_github(self) -> Any:
                         asset,
                         '--clobber'
                     ], check=True, capture_output=True, timeout=300)
-                    
                     logger.info(f"  ✅ Uploaded successfully")
                     self.stats['uploaded'] += 1
                     break
@@ -515,7 +427,6 @@ def _upload_assets_to_github(self) -> Any:
                     else:
                         logger.error(f"  ❌ Upload failed after 3 attempts")
                         self.stats['failed'] += 1
-
             # Upload checksum file
             if asset in self.checksums:
                 checksum_file = f"{asset}.sha256"
@@ -550,7 +461,6 @@ def print_summary(self) -> Any:
         for platform, assets in self._group_assets_by_platform().items():
             logger.info(f"  {platform}: {len(assets)} files")
         logger.info("\n" + "="*70)
-
 """
     main function
     """
@@ -563,25 +473,19 @@ def main() -> Any:
 Examples:
   production-ready
   python publish-releases-realtime.py --version v1.2.3
-
   # Create final for testing
   python publish-releases-realtime.py --version v1.3.0-latest --final
-
   # Enable verbose logging
   python publish-releases-realtime.py --version v1.2.3 --verbose
         """
     )
-
     parser.add_argument('--version', required=True, help='Release version (e.g., v1.2.3)')
     parser.add_argument('--final', action='store_true', help='Create as final release')
     parser.add_argument('--repo', help='GitHub repository')
     parser.add_argument('--verbose', action='store_true', help='Verbose logging')
-
     args = parser.parse_args()
-
     if args.verbose:
         logger.setLevel(logging.RELEASE)
-
     # Run publisher
     publisher = QMOIReleasePublisher(
         version=args.version,
@@ -589,18 +493,13 @@ Examples:
         repo=args.repo,
         verbose=args.verbose
     )
-
     # Execute workflow
     if not publisher.discover_assets():
         logger.warning("No assets discovered - will create empty release")
-
     publisher.generate_checksums()
     publisher.publish_to_github()
     publisher.print_summary()
-
-
     main()
-
         def _get_production_data(self) -> Any:
             """production data retrieval with error handling"""
             try:

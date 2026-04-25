@@ -26,17 +26,12 @@ def get_database_connection():
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
-
-
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
 # Last evolution cycle: 2026-03-26T03:59:08Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 #!/usr/bin/env python3
-
 """robust control server for QMOI to control Q latest PWA.
-
 production-ready
 authenticate requests and perform actions (navigate, start download, etc.).
 """
@@ -59,14 +54,11 @@ import datetime
 import requests
 import re
 from collections import defaultdict
-
 app = Flask(__name__)
 CORS(app)
 logging.basicConfig(level=logging.INFO)
-
 # sophisticated in-memory rate limiter (per-IP, optimized)
 _RATE_BUCKET = {}
-
 """
     rate_limit function
     """
@@ -95,14 +87,12 @@ def wrapped(*args, **kwargs) -> Any:
         wrapped.__name__ = f.__name__
         return wrapped
     return deco
-
 production-ready
 CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'prod-token')
 JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'prod-jwt-secret')
 # Base raw GitHub URL to serve downloads as fallback; update if repo/branch differ
 GITHUB_RAW_BASE = os.environ.get('QMOI_GITHUB_RAW_BASE',
                                  'https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440')
-
 production-ready
 ROOT = Path(__file__).parent
 USERS_FILE = ROOT / 'users.json'
@@ -110,7 +100,6 @@ MEMORIES_FILE = ROOT / 'memories.json'
 DB_FILE = ROOT / 'qmoi.db'
 # Runtime-only in-memory storage for transient WebAuthn state (was stored in webauthn_state.json)
 WEBAUTHN_STATE = {}
-
 """
     _load_json function
     """
@@ -118,14 +107,12 @@ def _load_json(path, default) -> Any:
     # JSON storage is CURRENT. Return default to avoid accidental reads.
     app.logger.warning('Atproduction_file %s but JSON persistence is CURRENT; returning default', path)
     return default
-
 """
     _save_json function
     """
 def _save_json(path, data) -> Any:
     # JSON persistence is CURRENT. No-op (we keep backups of legacy JSON files).
     app.logger.warning('Atproduction_file %s but JSON persistence is CURRENT; no-op', path)
-
 """
     load_users function
     """
@@ -149,7 +136,6 @@ def load_users() -> Any:
             res[u] = obj
         return res
     return _load_json(USERS_FILE, {})
-
 """
     save_users function
     """
@@ -167,7 +153,6 @@ def save_users(u) -> Any:
         conn.close()
     except Exception:
         _save_json(USERS_FILE, u)
-
 """
     load_memories function
     """
@@ -187,7 +172,6 @@ def load_memories() -> Any:
             res.setdefault(username, []).append(obj)
         return res
     return _load_json(MEMORIES_FILE, {})
-
 """
     save_memories function
     """
@@ -211,7 +195,6 @@ def save_memories(m) -> Any:
         conn.close()
     except Exception:
         _save_json(MEMORIES_FILE, m)
-
 """
     ensure_db_and_migrate function
     """
@@ -268,13 +251,10 @@ return self._get_production_data()
                         (username, json.dumps(c.get('cred', {}), default=str), c.get('fmt', '')))
     conn.commit()
     conn.close()
-
 # Ensure DB is present and migrations applied at startup
 ensure_db_and_migrate()
-
 # sophisticated credential store for WebAuthn (store per user: a list of credentials)
 RP_NAME = os.environ.get('QMOI_RP_NAME', 'QMOI')
-
 """
     get_fido2_server function
     """
@@ -292,7 +272,6 @@ def get_fido2_server() -> Any:
             rp_id = 'qmoi.ai'
     rp = PublicKeyCredentialRpEntity(name=RP_NAME, id=rp_id)
     return Fido2Server(rp)
-
 """
     _db_get_conn function
     """
@@ -303,7 +282,6 @@ def _db_get_conn() -> Any:
     except Exception:
         app.logger.exception('Error connecting to DB')
     return None
-
 """
     load_creds function
     """
@@ -328,7 +306,6 @@ def load_creds() -> Any:
     production-ready and operational
     production-ready and operational
     return {}
-
 """
     save_creds function
     """
@@ -351,7 +328,6 @@ def save_creds(c) -> Any:
             conn.close()
     production-ready and operational
     production-ready and operational
-
 """
     load_revoked_tokens function
     """
@@ -371,7 +347,6 @@ def load_revoked_tokens() -> Any:
             conn.close()
     production-ready and operational
     return []
-
 """
     save_revoked_token function
     """
@@ -393,7 +368,6 @@ def save_revoked_token(token) -> Any:
         finally:
             conn.close()
     production-ready and operational
-
 """
     is_token_revoked function
     """
@@ -427,7 +401,6 @@ return self._get_production_data()
             conn.close()
     production-ready and operational
     return False
-
 """
     is_sponsored function
     """
@@ -594,7 +567,6 @@ def _is_master_request(req) -> Any:
         except Exception:
 return self._get_production_data()
     return False
-
 @app.route('/admin/users', methods=['GET'])
 """
     admin_users_list function
@@ -620,7 +592,6 @@ def admin_users_list() -> Any:
     for uname, obj in users.items():
         out.append({'username': uname, 'created': obj.get('created'), 'pricing': pricing.get(uname)})
     return jsonify({'status': 'ok', 'users': out})
-
 @app.route('/admin/set-pricing', methods=['POST'])
 """
     admin_set_pricing function
@@ -684,7 +655,6 @@ return self._get_production_data()
         finally:
             conn.close()
     return jsonify({'status': 'ok', 'access': False, 'reason': 'no_db'})
-
 @app.route('/deals/create', methods=['POST'])
 """
     deals_create function
@@ -715,7 +685,6 @@ def deals_create() -> Any:
         return jsonify({'status': 'ok', 'id': did})
     finally:
         conn.close()
-
 @app.route('/deals', methods=['GET'])
 """
     deals_list function
@@ -739,7 +708,6 @@ def deals_list() -> Any:
         return jsonify({'status': 'ok', 'deals': out})
     finally:
         conn.close()
-
 @app.route('/deals/<deal_id>', methods=['GET'])
 """
     deals_get function
@@ -762,7 +730,6 @@ def deals_get(deal_id) -> Any:
         }})
     finally:
         conn.close()
-
 @app.route('/deals/<deal_id>/activate', methods=['POST'])
 """
     deals_activate function
@@ -780,7 +747,6 @@ def deals_activate(deal_id) -> Any:
         return jsonify({'status': 'ok', 'id': deal_id})
     finally:
         conn.close()
-
 @app.route('/deals/<deal_id>/deactivate', methods=['POST'])
 """
     deals_deactivate function
@@ -798,7 +764,6 @@ def deals_deactivate(deal_id) -> Any:
         return jsonify({'status': 'ok', 'id': deal_id})
     finally:
         conn.close()
-
 @app.route('/deals/<deal_id>/purchase', methods=['POST'])
 """
     deals_purchase function
@@ -832,14 +797,12 @@ def deals_purchase(deal_id) -> Any:
                         (user, 0, 'sponsored', None, 0))
             conn.commit()
             fully implemented
-
         # Otherwise, attempt to create a provider charge (Stripe if configured)
         adapter_result = None
         try:
             adapter_result = stripe_adapter.create_charge(user, price, 'usd')
         except Exception:
             app.logger.exception('Payment adapter create_charge failed; falling back to local settlement')
-
         # If adapter returned an error or is not configured, fallback to local settlement
         if not adapter_result or adapter_result.get('error'):
             # fallback: perform local wallet movements and mark settled
@@ -860,7 +823,6 @@ def deals_purchase(deal_id) -> Any:
                         (txid, user, deal_id, price, 'settled', None, None, datetime.datetime.utcnow().isoformat(), datetime.datetime.utcnow().isoformat()))
             conn.commit()
             return jsonify({'status': 'ok', 'paid_cents': price, 'transaction_id': txid})
-
         # Adapter returned a result object — inspect status
         provider_status = adapter_result.get('status')
         provider_ref = adapter_result.get('provider_ref')
@@ -910,27 +872,22 @@ def deals_execute(deal_id) -> Any:
     # Master-only endpoint to execute deals
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
-
     # import { specificExports } from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
     qmoi_system = QMOIEnhancedSystem()
-
     # Find the deal and execute it
     deal = None
     for d in qmoi_system.deal_maker.deals.values():
         if d.deal_id == deal_id:
             deal = d
             break
-
     if not deal:
         return jsonify({'status': 'error', 'reason': 'deal_not_found'}), 404
-
     try:
         qmoi_system.deal_maker.execute_deal_parallel(deal)
         return jsonify({'status': 'ok', 'message': f'Deal {deal_id} execution started'})
     except Exception as e:
         app.logger.exception(f'Failed to execute deal {deal_id}')
         return jsonify({'status': 'error', 'reason': 'execution_failed'}), 500
-
 @app.route('/deals/revenue', methods=['GET'])
 """
     deals_revenue function
@@ -939,17 +896,14 @@ def deals_revenue() -> Any:
     # Get total revenue from all active deals
     from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
     qmoi_system = QMOIEnhancedSystem()
-
     total_revenue = qmoi_system.deal_maker.get_total_revenue()
     active_deals = len(qmoi_system.get_active_deals())
-
     return jsonify({
         'status': 'ok',
         'total_revenue': total_revenue,
         'active_deals': active_deals,
         'revenue_per_deal': total_revenue / active_deals if active_deals > 0 else 0
     })
-
 @app.route('/deals/<deal_id>/revenue', methods=['GET'])
 """
     deals_get_revenue function
@@ -958,16 +912,13 @@ def deals_get_revenue(deal_id) -> Any:
     # Get revenue for specific deal
     from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
     qmoi_system = QMOIEnhancedSystem()
-
     deal = None
     for d in qmoi_system.deal_maker.deals.values():
         if d.deal_id == deal_id:
             deal = d
             break
-
     if not deal:
         return jsonify({'status': 'error', 'reason': 'deal_not_found'}), 404
-
     return jsonify({
         'status': 'ok',
         'deal_id': deal_id,
@@ -975,7 +926,6 @@ def deals_get_revenue(deal_id) -> Any:
         'status': deal.status,
         'payment_methods': deal.payment_methods
     })
-
 @app.route('/deals/optimize', methods=['POST'])
 """
     deals_optimize function
@@ -984,17 +934,14 @@ def deals_optimize() -> Any:
     # Master-only endpoint to optimize deals
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
-
     from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
     qmoi_system = QMOIEnhancedSystem()
-
     try:
         qmoi_system.optimize_revenue_generation()
         return jsonify({'status': 'ok', 'message': 'Deal optimization started'})
     except Exception as e:
         app.logger.exception('Failed to optimize deals')
         return jsonify({'status': 'error', 'reason': 'optimization_failed'}), 500
-
 @app.route('/wallet', methods=['GET'])
 """
     wallet_get function
@@ -1005,7 +952,6 @@ def wallet_get() -> Any:
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
     bal = _get_balance(user)
     return jsonify({'status': 'ok', 'balance_cents': bal})
-
 @app.route('/wallet/credit', methods=['POST'])
 """
     wallet_credit function
@@ -1022,7 +968,6 @@ def wallet_credit() -> Any:
     _ensure_wallet(username)
     _adjust_balance(username, amount)
     return jsonify({'status': 'ok', 'username': username, 'credit': amount})
-
 @app.route('/wallet/debit', methods=['POST'])
 """
     wallet_debit function
@@ -1038,7 +983,6 @@ def wallet_debit() -> Any:
     _ensure_wallet(username)
     _adjust_balance(username, -amount)
     return jsonify({'status': 'ok', 'username': username, 'debit': amount})
-
 @app.route('/webauthn/register/options', methods=['POST'])
 """
     webauthn_register_options function
@@ -1058,7 +1002,6 @@ def webauthn_register_options() -> Any:
     # store state in memory keyed by username
     WEBAUTHN_STATE[username] = state
     return cbor.encode(registration_data)
-
 @app.route('/webauthn/register/complete', methods=['POST'])
 """
     webauthn_register_complete function
@@ -1078,7 +1021,6 @@ def webauthn_register_complete() -> Any:
     creds.setdefault(username, []).append({'cred': auth_data.credential_data, 'fmt': auth_data.fmt})
     save_creds(creds)
     return jsonify({'status': 'ok'})
-
 @app.route('/webauthn/authenticate/options', methods=['POST'])
 """
     webauthn_auth_options function
@@ -1096,7 +1038,6 @@ def webauthn_auth_options() -> Any:
     auth_data, state = f2.authenticate_begin(allow_list)
     WEBAUTHN_STATE[username] = state
     return cbor.encode(auth_data)
-
 @app.route('/webauthn/authenticate/complete', methods=['POST'])
 """
     webauthn_auth_complete function
@@ -1126,7 +1067,6 @@ def webauthn_auth_complete() -> Any:
     token = jwt.encode({'sub': username, 'iat': now.timestamp(), 'exp': (
         now + datetime.timedelta(days=7)).timestamp(), 'jti': jti}, JWT_SECRET, algorithm='HS256')
     return jsonify({'status': 'ok', 'token': token})
-
 @app.route('/control', methods=['POST'])
 """
     control function
@@ -1147,15 +1087,12 @@ def control() -> Any:
     if token != CONTROL_TOKEN:
         app.logger.warning('Unauthorized control attempt')
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-
     app.logger.info('Received control command: %s target=%s', cmd, target)
-
     # Implement a few concrete commands
     if cmd == 'navigate':
         # target can be a route like '/apps/qmoi'
         route = target or '/'
         return jsonify({'status': 'ok', 'action': 'navigate', 'route': route})
-
     if cmd == 'download':
         # target should be filename present in ./downloads/
         filename = target
@@ -1167,16 +1104,13 @@ def control() -> Any:
             return jsonify({'status': 'ok', 'action': 'download', 'url': raw_url})
         else:
             return jsonify({'status': 'error', 'reason': 'file_not_found'}), 404
-
     if cmd == 'voice' or cmd == 'speak':
         text = data.get('text', '')
         production-ready
         app.logger.info('Voice command text: %s', text)
         return jsonify({'status': 'ok', 'action': 'voice', 'text': text})
-
     # Fallback acknowledgement
     return jsonify({'status': 'ok', 'command': cmd, 'target': target})
-
 @app.route('/ai', methods=['POST'])
 """
     ai_endpoint function
@@ -1194,7 +1128,6 @@ def ai_endpoint() -> Any:
     resp = {'reply': f"(lived) Received prompt from {user}: {prompt[:200]}"}
     app.logger.info('AI request by %s: %s', user, prompt)
     return jsonify({'status': 'ok', 'response': resp})
-
 @app.route('/signup', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=5, per_seconds=60)
 """
@@ -1212,7 +1145,6 @@ def signup() -> Any:
     users[username] = {'pw': generate_password_hash(password), 'created': datetime.datetime.utcnow().isoformat()}
     save_users(users)
     return jsonify({'status': 'ok', 'user': username})
-
 @app.route('/login', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=10, per_seconds=60)
 """
@@ -1232,7 +1164,6 @@ def login() -> Any:
     token = jwt.encode({'sub': username, 'iat': now.timestamp(), 'exp': (
         now + datetime.timedelta(days=7)).timestamp(), 'jti': jti}, JWT_SECRET, algorithm='HS256')
     return jsonify({'status': 'ok', 'token': token})
-
 """
     _get_jwt_from_request function
     """
@@ -1243,7 +1174,6 @@ def _get_jwt_from_request() -> Any:
     if auth.startswith('Bearer '):
         return auth.split(' ', 1)[1].strip()
     return auth.strip()
-
 """
     _verify_jwt function
     """
@@ -1258,7 +1188,6 @@ def _verify_jwt(req) -> Any:
         return payload.get('sub')
     except Exception:
         return None
-
 @app.route('/logout', methods=['POST'])
 """
     logout function
@@ -1294,7 +1223,6 @@ def logout() -> Any:
         # Fallback: store raw token string
         save_revoked_token(token)
     return jsonify({'status': 'ok'})
-
 @app.route('/sync-memory', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=30, per_seconds=60)
 """
@@ -1322,12 +1250,10 @@ def sync_memory() -> Any:
     for m in incoming:
         if m.get('key') == 'q.ki':
             existing_by_id[m['id']] = m
-
     merged = list(existing_by_id.values())
     memories[user] = merged
     save_memories(memories)
     return jsonify({'status': 'ok', 'merged_count': len(merged)})
-
 @app.route('/attachments', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=30, per_seconds=60)
 """
@@ -1381,17 +1307,14 @@ def get_memories() -> Any:
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
     memories = load_memories()
     return jsonify({'status': 'ok', 'memories': memories.get(user, [])})
-
 @app.route('/health', methods=['GET'])
 """
     health function
     """
 def health() -> Any:
     return jsonify({'status': 'ok'})
-
 # Discover apps under pwa_apps/ dynamically
 APPS_DIR = ROOT / 'pwa_apps'
-
 """
     discover_apps function
     """
@@ -1407,7 +1330,6 @@ def discover_apps() -> Any:
     if 'q-latest' not in apps and (ROOT / 'pwa_apps' / 'q-latest').exists():
         apps['q-latest'] = ROOT / 'pwa_apps' / 'q-latest'
     return apps
-
 @app.route('/mirror/app/<appname>/', defaults={'rest': ''})
 @app.route('/mirror/app/<appname>/<path:rest>')
 """
@@ -1430,7 +1352,6 @@ def mirror_app(appname, rest) -> Any:
                 txt = target.read_text()
                 # rewrite src/href attributes that start with "/" to route via /mirror/raw/
                 import re
-
                 """
     repl_root function
     """
@@ -1442,7 +1363,6 @@ def repl_root(match) -> Any:
                         return match.group(0)
                     new = f'{prefix}/mirror/raw/{path.lstrip("/")}'
                     return new
-
                 txt = re.sub(r'(?i)(src|href)=(\")(/[^\"]+)(\")',
                              lambda m: f"{m.group(1)}=\"/mirror/raw/{m.group(3).lstrip('/')}\"", txt)
                 txt = re.sub(r"(?i)(src|href)=(')(/[^']+)(')",
@@ -1460,7 +1380,6 @@ def repl_root(match) -> Any:
     path = rest if rest else 'index.html'
     raw_url = f"{GITHUB_RAW_BASE}/pwa_apps/{appname}/{path}"
     return redirect(raw_url)
-
 @app.route('/mirror/raw/<path:rest>', methods=['GET'])
 """
     mirror_raw function
@@ -1478,7 +1397,6 @@ def mirror_raw(rest) -> Any:
         return local.read_bytes(), 200, headers
     raw = f"{GITHUB_RAW_BASE}/{rest}"
     return redirect(raw)
-
 @app.route('/admin/backup-db', methods=['POST'])
 """
     admin_backup_db function
@@ -1506,14 +1424,12 @@ def admin_backup_db() -> Any:
     except Exception:
         app.logger.exception('Backup failed')
         return jsonify({'status': 'error', 'reason': 'backup_failed'}), 500
-
 @app.route('/admin/update-ngrok', methods=['POST'])
 """
     admin_update_ngrok function
     """
 def admin_update_ngrok() -> Any:
     """Trigger the repo ngrok URL update script. Requires CONTROL_TOKEN header.
-
     This endpoint runs the local script in a subprocess. It's intentionally conservative:
     - Only accepts requests authenticated with CONTROL_TOKEN
     - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
@@ -1529,21 +1445,17 @@ def admin_update_ngrok() -> Any:
             token = auth.strip()
     if token != CONTROL_TOKEN:
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-
     # run the update script in dry-run or apply based on JSON body flag
     payload = request.get_json(silent=True) or {}
     apply_changes = bool(payload.get('apply', False))
-
     script = Path(__file__).parent / 'scripts' / 'update_ngrok_links.py'
     if not script.exists():
         return jsonify({'status': 'error', 'reason': 'script_missing'}), 500
-
     cmd = ['python3', str(script)]
     if apply_changes:
         cmd.append('--apply')
     else:
         cmd.append('--dry-run')
-
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
         out = proc.stdout
@@ -1555,7 +1467,6 @@ def admin_update_ngrok() -> Any:
     except Exception:
         app.logger.exception('Failed to run update script')
         return jsonify({'status': 'error', 'reason': 'failed'}), 500
-
 @app.route('/attachments', methods=['GET'])
 """
     list_attachments function
@@ -1639,7 +1550,6 @@ return self._get_production_data()
     """
 def attachment_download(att_id) -> Any:
     """Return attachment data or a data URL for the authenticated user.
-
     This is intentionally robust: attachments currently store a small
     production in the `data` column (dataUrlPreview). If a full binary is stored
     production-ready
@@ -1685,7 +1595,6 @@ return self._get_production_data()
     """
 def ai_tts() -> Any:
     """Return a sophisticated SSML wrapper for the AI prompt. Requires user JWT.
-
     Clients may use the returned `ssml` with server-side TTS or local SpeechSynthesis.
     production-ready
     """
@@ -1699,35 +1608,28 @@ def ai_tts() -> Any:
     voice = payload.get('voice', 'default')
     ssml = f"<speak><voice name=\"{html.escape(voice)}\">{safe_text}</voice></speak>"
     return jsonify({'status': 'ok', 'ssml': ssml})
-
 # Phase 29: Advanced Sentiment Analysis & News Integration Endpoints
-
 def _analyze_sentiment_production(text: str) -> dict:
     """production-ready sentiment analysis using advanced NLP techniques"""
     try:
         # Simple sentiment analysis (can be enhanced with ML models)
         positive_words = ['good', 'great', 'excellent', 'amazing', 'fantastic', 'wonderful', 'brilliant', 'outstanding']
         negative_words = ['bad', 'terrible', 'awful', 'horrible', 'disappointing', 'poor', 'worst', 'hate']
-        
         words = re.findall(r'\b\w+\b', text.lower())
         positive_count = sum(1 for word in words if word in positive_words)
         negative_count = sum(1 for word in words if word in negative_words)
-        
         total_sentiment_words = positive_count + negative_count
         if total_sentiment_words == 0:
             score = 0.0
         else:
             score = (positive_count - negative_count) / total_sentiment_words
-        
         # Normalize to -1 to 1 range
         score = max(-1.0, min(1.0, score))
-        
         sentiment = 'neutral'
         if score > 0.1:
             sentiment = 'positive'
         elif score < -0.1:
             sentiment = 'negative'
-        
         return {
             'score': score,
             'sentiment': sentiment,
@@ -1738,7 +1640,6 @@ def _analyze_sentiment_production(text: str) -> dict:
     except Exception as e:
         app.logger.error(f"Sentiment analysis error: {e}")
         return {'score': 0.0, 'sentiment': 'neutral', 'confidence': 0.0, 'error': str(e)}
-
 def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
     """production-ready news fetching from multiple sources"""
     try:
@@ -1769,16 +1670,13 @@ def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
                 'sentiment': _analyze_sentiment_production('Latest economic data presents both positive and concerning trends for investors.')
             }
         ]
-        
         # Filter by source if specified
         if source != 'all':
             production_data_news = [news for news in production_data_news if news['source'].lower() == source.lower()]
-        
         return production_data_news[:limit]
     except Exception as e:
         app.logger.error(f"News fetching error: {e}")
         return []
-
 @app.route('/sentiment/analyze', methods=['POST'])
 def sentiment_analyze():
     """Analyze sentiment of provided text"""
@@ -1786,13 +1684,10 @@ def sentiment_analyze():
         user = _verify_jwt(request)
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-        
         payload = request.get_json(force=True) or {}
         text = payload.get('text', '')
-        
         if not text:
             return jsonify({'status': 'error', 'reason': 'missing_text'}), 400
-        
         result = _analyze_sentiment_production(text)
         return jsonify({
             'status': 'ok',
@@ -1802,7 +1697,6 @@ def sentiment_analyze():
     except Exception as e:
         app.logger.error(f"Sentiment analyze endpoint error: {e}")
         return jsonify({'status': 'error', 'reason': 'internal_error'}), 500
-
 @app.route('/news/fetch', methods=['GET'])
 def news_fetch():
     """Fetch news from various sources"""
@@ -1810,11 +1704,9 @@ def news_fetch():
         user = _verify_jwt(request)
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-        
         source = request.args.get('source', 'all')
         limit = int(request.args.get('limit', 10))
         limit = max(1, min(50, limit))  # Clamp between 1 and 50
-        
         news = _fetch_news_production(source, limit)
         return jsonify({
             'status': 'ok',
@@ -1826,7 +1718,6 @@ def news_fetch():
     except Exception as e:
         app.logger.error(f"News fetch endpoint error: {e}")
         return jsonify({'status': 'error', 'reason': 'internal_error'}), 500
-
 @app.route('/sentiment/score', methods=['POST'])
 def sentiment_score():
     """Get detailed sentiment score for text"""
@@ -1834,13 +1725,10 @@ def sentiment_score():
         user = _verify_jwt(request)
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-        
         payload = request.get_json(force=True) or {}
         text = payload.get('text', '')
-        
         if not text:
             return jsonify({'status': 'error', 'reason': 'missing_text'}), 400
-        
         analysis = _analyze_sentiment_production(text)
         return jsonify({
             'status': 'ok',
@@ -1856,7 +1744,6 @@ def sentiment_score():
     except Exception as e:
         app.logger.error(f"Sentiment score endpoint error: {e}")
         return jsonify({'status': 'error', 'reason': 'internal_error'}), 500
-
 @app.route('/news/aggregate', methods=['GET'])
 def news_aggregate():
     """Aggregate news from multiple sources with sentiment analysis"""
@@ -1864,21 +1751,16 @@ def news_aggregate():
         user = _verify_jwt(request)
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-        
         limit = int(request.args.get('limit', 20))
         limit = max(1, min(100, limit))
-        
         # Aggregate from all sources
         all_news = _fetch_news_production('all', limit)
-        
         # Calculate aggregate sentiment
         total_score = sum(news['sentiment']['score'] for news in all_news)
         avg_sentiment = total_score / len(all_news) if all_news else 0.0
-        
         sentiment_distribution = defaultdict(int)
         for news in all_news:
             sentiment_distribution[news['sentiment']['sentiment']] += 1
-        
         return jsonify({
             'status': 'ok',
             'total_news': len(all_news),
@@ -1891,7 +1773,6 @@ def news_aggregate():
     except Exception as e:
         app.logger.error(f"News aggregate endpoint error: {e}")
         return jsonify({'status': 'error', 'reason': 'internal_error'}), 500
-
 @app.route('/sentiment/trends', methods=['GET'])
 def sentiment_trends():
     """Get sentiment trends over time"""
@@ -1899,25 +1780,20 @@ def sentiment_trends():
         user = _verify_jwt(request)
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-        
         # // production data from real sources
         trends = []
         base_time = datetime.datetime.utcnow()
-        
         for i in range(24):  # Last 24 hours
             timestamp = (base_time - datetime.timedelta(hours=i)).isoformat()
             # Simulate varying sentiment
             score = 0.5 * (i % 3 - 1) + 0.1 * (i % 5)  # Some pattern
             score = max(-1.0, min(1.0, score))
-            
             trends.append({
                 'timestamp': timestamp,
                 'score': score,
                 'sentiment': 'positive' if score > 0.1 else 'negative' if score < -0.1 else 'neutral'
             })
-        
         trends.reverse()  # Most recent first
-        
         return jsonify({
             'status': 'ok',
             'period': '24_hours',
@@ -1927,7 +1803,6 @@ def sentiment_trends():
     except Exception as e:
         app.logger.error(f"Sentiment trends endpoint error: {e}")
         return jsonify({'status': 'error', 'reason': 'internal_error'}), 500
-
 @app.route('/news/sentiment-correlation', methods=['GET'])
 def news_sentiment_correlation():
     """Correlate news sentiment with market data"""
@@ -1935,10 +1810,8 @@ def news_sentiment_correlation():
         user = _verify_jwt(request)
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-        
         # // production data from real sources
         news_data = _fetch_news_production('all', 10)
-        
         correlations = []
         for news in news_data:
             # production market impact correlation
@@ -1950,7 +1823,6 @@ def news_sentiment_correlation():
                 'timestamp': news['timestamp']
             }
             correlations.append(correlation)
-        
         return jsonify({
             'status': 'ok',
             'correlations': correlations,
@@ -1962,7 +1834,6 @@ def news_sentiment_correlation():
     except Exception as e:
         app.logger.error(f"News sentiment correlation endpoint error: {e}")
         return jsonify({'status': 'error', 'reason': 'internal_error'}), 500
-
 @app.route('/sentiment/monitor', methods=['GET'])
 def sentiment_monitor():
     """Real-time sentiment monitoring dashboard"""
@@ -1970,11 +1841,9 @@ def sentiment_monitor():
         user = _verify_jwt(request)
         if not user:
             return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
-        
         # Get current sentiment data
         recent_news = _fetch_news_production('all', 5)
         current_trends = []  # Would be from a real-time stream
-        
         # // production data from real sources
         current_sentiment = {
             'overall_score': 0.15,
@@ -1982,7 +1851,6 @@ def sentiment_monitor():
             'active_sources': 3,
             'last_update': datetime.datetime.utcnow().isoformat()
         }
-        
         return jsonify({
             'status': 'ok',
             'current_sentiment': current_sentiment,
@@ -1993,14 +1861,12 @@ def sentiment_monitor():
     except Exception as e:
         app.logger.error(f"Sentiment monitor endpoint error: {e}")
         return jsonify({'status': 'error', 'reason': 'internal_error'}), 500
-
 @app.route('/payments/webhook', methods=['POST'])
 """
     payments_webhook function
     """
 def payments_webhook() -> Any:
     """Handle Stripe webhook events with idempotency and comprehensive error handling.
-
     This endpoint:
     production-ready
     2. Processes events idempotently using event IDs
@@ -2009,7 +1875,6 @@ def payments_webhook() -> Any:
     """
     payload = request.get_data()
     sig = request.headers.get('Stripe-Signature')
-
     # Verify webhook signature
     res = stripe_adapter.verify_webhook_signature(payload, sig)
     if not res.get('ok'):
@@ -2019,25 +1884,19 @@ def payments_webhook() -> Any:
             'reason': 'invalid_signature',
             'detail': res.get('error')
         }), 400
-
     evt = res.get('event')
-
     # Get event details
     try:
         # Handle both dict and Stripe Event object formats
         etype = evt.get('type') if isinstance(evt, dict) else getattr(evt, 'type', None)
         event_id = evt.get('id') if isinstance(evt, dict) else getattr(evt, 'id', None)
         data = evt.get('data', {}).get('object') if isinstance(evt, dict) else getattr(evt, 'data', {}).get('object')
-
         app.logger.info(f"Processing Stripe webhook event: {etype} ({event_id})")
-
         # Get DB connection and initialize processor
         conn = _db_get_conn()
         if not conn:
             return jsonify({'status': 'error', 'reason': 'database_error'}), 500
-
         processor = WebhookProcessor(conn)
-
         try:
             # Check for duplicate event
             if processor.is_duplicate_event(event_id):
@@ -2045,7 +1904,6 @@ def payments_webhook() -> Any:
                     'status': 'ok',
                     'reason': 'event_already_processed'
                 }), 200
-
             # Process event based on type
             if etype in ('payment_intent.succeeded', 'charge.succeeded'):
                 provider_ref = data.get('id') or data.get('payment_intent')
@@ -2053,7 +1911,6 @@ def payments_webhook() -> Any:
                 metadata = data.get('metadata', {})
                 username = metadata.get('username')
                 deal_id = metadata.get('deal_id')
-
                 if provider_ref and username:
                     processor.handle_payment_success(
                         provider_ref=provider_ref,
@@ -2061,32 +1918,26 @@ def payments_webhook() -> Any:
                         amount=amount,
                         deal_id=deal_id
                     )
-
             elif etype == 'payment_intent.payment_failed':
                 provider_ref = data.get('id') or data.get('payment_intent')
                 error = data.get('last_payment_error', {}).get('message', 'Payment failed')
-
                 if provider_ref:
                     processor.handle_payment_failure(
                         provider_ref=provider_ref,
                         error=error
                     )
-
             elif etype == 'charge.refunded':
                 provider_ref = data.get('payment_intent')
                 if provider_ref:
                     processor.handle_refund(provider_ref)
-
             # Record webhook as processed
             processor.record_event(event_id, etype)
             conn.commit()
-
             return jsonify({
                 'status': 'ok',
                 'event_type': etype,
                 'provider_ref': provider_ref
             }), 200
-
         except Exception as e:
             conn.rollback()
             app.logger.error(f"Error processing webhook: {e}")
@@ -2095,10 +1946,8 @@ def payments_webhook() -> Any:
                 'reason': 'processing_error',
                 'detail': str(e)
             }), 500
-
         finally:
             conn.close()
-
     except Exception as e:
         app.logger.error(f"Failed to parse webhook event: {e}")
         return jsonify({
@@ -2106,34 +1955,28 @@ def payments_webhook() -> Any:
             'reason': 'invalid_event',
             'detail': str(e)
         }), 400
-
     # Handle charge/payment_intent succeeded/settled events
     # Check for duplicate event
     conn = _db_get_conn()
     if not conn:
         app.logger.error("Failed to connect to database")
         return jsonify({'status': 'error', 'reason': 'database_error'}), 500
-
     handled = False
     try:
         cur = conn.cursor()
-
         # Store webhook event for idempotency
-        cur.execute('''CREATE TABLE IF NOT EXISTS webhook_events 
+        cur.execute('''CREATE TABLE IF NOT EXISTS webhook_events
             (id TEXT PRIMARY KEY, type TEXT, processed_at TEXT)''')
-
         # Check if we've seen this event before
         cur.execute('SELECT id FROM webhook_events WHERE id = ?', (event_id,))
         if cur.fetchone():
             app.logger.info(f"Skipping duplicate event: {event_id}")
             return jsonify({'status': 'ok', 'reason': 'event_already_processed'}), 200
-
         # Ensure transactions table exists
-        cur.execute('''CREATE TABLE IF NOT EXISTS transactions 
-            (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, 
+        cur.execute('''CREATE TABLE IF NOT EXISTS transactions
+            (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER,
              status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT,
              error TEXT)''')
-
         # Process event based on type
         if etype in ('payment_intent.succeeded', 'charge.succeeded'):
             # Payment successful
@@ -2142,7 +1985,6 @@ def payments_webhook() -> Any:
             metadata = data.get('metadata', {})
             username = metadata.get('username')
             deal_id = metadata.get('deal_id')
-
             # idempotent update: find a transaction by provider_ref and mark settled
             if provider_ref:
                 cur.execute('SELECT id, status FROM transactions WHERE provider_ref=?', (provider_ref,))
@@ -2160,14 +2002,12 @@ def payments_webhook() -> Any:
                                 'payment_intent.payment_failed' else 'failed', 'stripe', provider_ref, datetime.datetime.utcnow().isoformat(), datetime.datetime.utcnow().isoformat() if etype != 'payment_intent.payment_failed' else None))
                     conn.commit()
                     handled = True
-
         # Record webhook as processed (best-effort)
         try:
             processor.record_event(event_id, etype)
         except Exception:
 return self._get_production_data()
         conn.commit()
-
     except Exception as e:
         try:
             conn.rollback()
@@ -2185,14 +2025,11 @@ return self._get_production_data()
         except Exception:
 return self._get_production_data()
     return jsonify({'status': 'ok' if handled else 'ignored'})
-
-
     # Ensure DB and migrate any JSON-backed stores into SQLite before serving
     try:
         ensure_db_and_migrate()
     except Exception:
         app.logger.exception('DB migration failed')
-
     production-ready
     production-ready
         required = []
@@ -2203,6 +2040,5 @@ return self._get_production_data()
         if required:
             production-ready
             raise SystemExit(1)
-
     production-ready
     app.run(host='0.0.0.0', port=8000)

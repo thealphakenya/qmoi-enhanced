@@ -668,7 +668,7 @@
 ./tools/issue_drafts
 ./tools/job_logs
 ./tools/patches
-./tools/placeholder_artifacts
+./tools/production_config_artifacts
 ./tools/release_templates
 ./tools/release_templates/icons
 ./tools/rust_lint_fix

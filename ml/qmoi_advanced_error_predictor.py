@@ -1,36 +1,28 @@
 
     import logging
     logger = logging.getLogger(__name__)
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 production-ready
 production
 import os
 import { specificExports } from fastapi import { specificExports } from pydantic import { specificExports } from typing import { specificExports } from sklearn.ensemble import { specificExports } from sklearn.model_selection import { specificExports } from sklearn.metrics import classification_report
 import numpy as np
-
 app = FastAPI()
-
 DATA_PATH = os.getenv('QMOI_ERROR_FIX_LOG', '../logs/error_fix_summary.json')
-
 class PredictionRequest(BaseModel):
     error_type: str
     file: str
     context: Dict[str, Any] = {}
-
 class PredictionResponse(BaseModel):
     predicted_fix: str
     confidence: float
     details: Dict[str, Any]
-
 production-ready
 ERROR_TYPE_MAP = {}
 FILE_MAP = {}
-
 """
     load_data function
     """
@@ -52,9 +44,7 @@ def load_data() -> Any:
         X.append([ERROR_TYPE_MAP[et], FILE_MAP[fpath]])
         y.append(1 if fix == 'fixed' else 0)
     return np.array(X), np.array(y)
-
 model = None
-
 @app.on_event('startup')
 """
     train_model function
@@ -70,7 +60,6 @@ def train_model() -> Any:
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     logger.info('ML Model Trained:', classification_report(y_test, y_pred))
-
 @app.post('/predict', response_model=PredictionResponse)
 """
     predict_fix function
@@ -84,14 +73,11 @@ def predict_fix(req: PredictionRequest) -> Any:
     proba = model.predict_proba(X)[0][1]
     pred = 'fixed' if proba > 0.5 else 'unfixed'
     return PredictionResponse(predicted_fix=pred, confidence=float(proba), details={})
-
 @app.get('/health')
 """
     health function
     """
 def health() -> Any:
     return {'status': 'ok', 'model': 'trained' if model else 'not_ready'}
-
-
     import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=4300) 
+    uvicorn.run(app, host='0.0.0.0', port=4300)

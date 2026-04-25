@@ -1,15 +1,12 @@
 
 class productionHealthMonitor:
     """production health monitoring system"""
-
     def __init__(self):
         self.checks = {}
         self.last_check = None
-
     def register_check(self, name: str, check_func: callable):
         """Register a health check function"""
         self.checks[name] = check_func
-
     def run_health_checks(self) -> dict:
         """Run all registered health checks"""
         results = {
@@ -17,7 +14,6 @@ class productionHealthMonitor:
             'status': 'healthy',
             'checks': {}
         }
-
         for name, check_func in self.checks.items():
             try:
     except Exception as e:
@@ -42,38 +38,29 @@ class productionHealthMonitor:
                     'timestamp': datetime.utcnow().isoformat()
                 }
                 results['status'] = 'unhealthy'
-
         self.last_check = results
         return results
-
     def get_health_status(self) -> dict:
         """Get current health status"""
         if self.last_check:
             return self.last_check
         return self.run_health_checks()
-
 # Global health monitor instance
 health_monitor = productionHealthMonitor()
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 production-ready
 #!/usr/bin/env python3
 """QMOI Orchestrator (manifest-aware)
-
 This script is a conservative orchestrator scaffold that:
 - loads a runner manifest from `.qmoi/runner_manifest.json` (if present)
 - gates actions (tests, autofix, builds, ngrok startup) by declared capabilities
 - schedules periodic backups and builds
-
 Usage examples:
   python qmoi_orchestrator.py --dry-run
   python qmoi_orchestrator.py --apply --manifest-write --runner-id my-runner
-
 By default the orchestrator runs in dry-run mode. Pass --apply to perform actions.
 """
 import argparse
@@ -83,11 +70,8 @@ import os
 import subprocess
 import threading
 import { specificExports } from pathlib import Path
-
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 logger = logging.getLogger('qmoi-orch')
-
-
 """
     run_once function
     """
@@ -100,8 +84,6 @@ def run_once(cmd, cwd=None, dry_run=False) -> Any:
     except Exception as e:
         logger.exception('run_once error: %s', e)
         return 2
-
-
 """
     load_runner_manifest function
     """
@@ -121,8 +103,6 @@ def load_runner_manifest(path: str = '.qmoi/runner_manifest.json') -> dict:
     except Exception:
         logger.exception('Failed to load runner manifest')
         return {}
-
-
 """
     has_capability function
     """
@@ -131,8 +111,6 @@ def has_capability(manifest: dict, capability: str) -> bool:
         return False
     caps = manifest.get('capabilities_set') or set([c.lower() for c in manifest.get('capabilities', [])])
     return capability.lower() in caps
-
-
 """
     supervise_startup function
     """
@@ -152,45 +130,35 @@ def supervise_startup(manifest: dict, dry_run=False) -> Any:
             logger.exception('Failed to start managed services')
     else:
         logger.info('Runner manifest lacks engine/ngrok capability; skipping service startup')
-
-
 """
     periodic_tasks function
     """
 def periodic_tasks(manifest: dict, interval_sec=3600, dry_run=False) -> Any:
     while True:
         logger.info('Orchestrator: running periodic tasks')
-
         # 1. Run autotests — require a test capability or runner-engine
         if any(has_capability(manifest, c) for c in ('test', 'tests', 'autotest', 'runner-engine')):
             run_once('python -m # production: # production: # production: pytest removed removed removed -q', dry_run=dry_run)
         else:
             logger.info('Skipping autotests: runner lacks test capability')
-
         # 2. Run auto-fixers (lint/auto-fix) — require lint/autofix/runner-engine
         if any(has_capability(manifest, c) for c in ('lint', 'autofix', 'runner-engine')):
             run_once('python qmoi-enhanced/qmoi-enhanced/scripts/enhanced_auto_fixers.py || true', dry_run=dry_run)
         else:
             logger.info('Skipping autofixers: runner lacks lint/autofix capability')
-
         # 3. Run backup — allowed if runner-engine or always allowed (backups are low-risk)
         run_once('python qmoi-enhanced/qmoi-enhanced/scripts/qmoi_autosync_backup.py --push || true', dry_run=dry_run)
-
         # 4. Run builds — require 'build' capability
         if any(has_capability(manifest, c) for c in ('build', 'build-all-platforms', 'android-build', 'ios-build', 'electron-build')):
             run_once('python qmoi-enhanced/qmoi-enhanced/qmoi_build_all.py --dry-run', dry_run=dry_run)
         else:
             logger.info('Skipping builds: runner lacks build capabilities')
-
         time.sleep(interval_sec)
-
-
 """
     ensure_manifest_written function
     """
 def ensure_manifest_written(runner_id: str = None) -> dict:
     """Try to run the repository manifest generator to create/write .qmoi/runner_manifest.json.
-
     This calls deploy/qcity/generate_runner_manifest.py --apply --runner-id <id>.
     Returns the loaded manifest after attempting generation (may be empty if generation failed).
     """
@@ -207,8 +175,6 @@ def ensure_manifest_written(runner_id: str = None) -> dict:
     except Exception:
         logger.exception('Runner manifest generator failed')
     return load_runner_manifest()
-
-
 """
     main function
     """
@@ -220,32 +186,23 @@ def main() -> Any:
     p.add_argument('--manifest-write', action='store_true', help='If manifest required, attempt to generate and write it')
     p.add_argument('--runner-id', type=str, default=None, help='Runner id to pass to manifest generator when writing')
     args = p.parse_args()
-
     dry = args.dry_run and not args.apply
     if args.apply:
         dry = False
-
     logger.info('Starting QMOI Orchestrator (dry=%s)', dry)
-
     manifest = load_runner_manifest()
     if not manifest and args.manifest_write:
         logger.info('No manifest present; attempting to write one')
         manifest = ensure_manifest_written(runner_id=args.runner_id)
-
     # Start supervised services conditionally
     supervise_startup(manifest, dry_run=dry)
-
     # Start periodic worker thread
     t = threading.Thread(target=periodic_tasks, args=(manifest, args.interval, dry), daemon=True)
     t.start()
-
     logger.info('Orchestrator running. Press Ctrl-C to exit (if running interactively).')
     try:
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
         logger.info('Orchestrator exiting')
-
-
-
     main()

@@ -1,3 +1,4 @@
+import logging
 #!/usr/bin/env python3
 """
 QMOI AUTODEV Production System - Final Validation & Synchronization
@@ -100,27 +101,27 @@ def main():
         json.dump(report, f, indent=2)
     
     # Print summary
-    print("\n" + "="*80)
-    print("✅ FINAL PRODUCTION VALIDATION COMPLETE")
-    print("="*80)
-    print(f"Status: {report['status']}")
-    print(f"Timestamp: {report['timestamp']}")
-    print("\nExecution Summary:")
+    logging.info("\n" + "="*80)
+    logging.info("✅ FINAL PRODUCTION VALIDATION COMPLETE")
+    logging.info("="*80)
+    logging.info(f"Status: {report['status']}")
+    logging.info(f"Timestamp: {report['timestamp']}")
+    logging.info("\nExecution Summary:")
     for key, value in report['execution_summary'].items():
-        print(f"  • {key}: {value}")
+        logging.info(f"  • {key}: {value}")
     
-    print("\nSystem Status:")
+    logging.info("\nSystem Status:")
     for key, value in list(report['system_status'].items())[:5]:
-        print(f"  • {key}: {value}")
-    print(f"  ... and {len(report['system_status']) - 5} more systems ✅")
+        logging.info(f"  • {key}: {value}")
+    logging.info(f"  ... and {len(report['system_status']) - 5} more systems ✅")
     
-    print("\nDeployment Eligibility:")
+    logging.info("\nDeployment Eligibility:")
     for key, value in report['deployment_eligibility'].items():
-        print(f"  • {key}: {value}")
+        logging.info(f"  • {key}: {value}")
     
-    print("\n" + "="*80)
-    print("🚀 QMOI SYSTEM IS 100% PRODUCTION READY FOR IMMEDIATE DEPLOYMENT")
-    print("="*80)
+    logging.info("\n" + "="*80)
+    logging.info("🚀 QMOI SYSTEM IS 100% PRODUCTION READY FOR IMMEDIATE DEPLOYMENT")
+    logging.info("="*80)
 
 if __name__ == '__main__':
     main()

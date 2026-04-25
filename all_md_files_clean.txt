@@ -993,7 +993,7 @@
 ./.backups/production_fix_1775686366/issues/DONE-PROD-UIUX.md
 ./.backups/production_fix_1775686366/mobile/README.md
 ./.backups/production_fix_1775686366/models/latest/README.md
-./.backups/production_fix_1775686366/placeholder_scan_summary.md
+./.backups/production_fix_1775686366/production_config_scan_summary.md
 ./.backups/production_fix_1775686366/production_deployment/DEPLOYMENT_CHECKLIST.md
 ./.backups/production_fix_1775686366/pwa_apps/README.md
 ./.backups/production_fix_1775686366/pwa_apps/q-alpha/README.md
@@ -1977,7 +1977,7 @@
 ./.backups/production_fix_1775686366/tools/issue_drafts/0973_qmoi-enhanced_src_hooks_useTimezone.ts.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/0974_qmoi-enhanced_src_services_QmoiMemory.ts.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/0975_qmoi-enhanced_test_config.json.md
-./.backups/production_fix_1775686366/tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md
+./.backups/production_fix_1775686366/tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_production_config.py.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/0977_qmoi-space_.npm-cache__cacache_content-v2_sha512_02_d1_a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/0978_qmoi-space_.npm-cache__cacache_content-v2_sha512_05_12_a4cf29119d9bd5f491c4797687b1eb28e483bc0f6ec0306d1bc06915dfc5e8ed8239eecbb6eee440026388319ad245f9f597e784311aac2ba34d0856afb2.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/0979_qmoi-space_.npm-cache__cacache_content-v2_sha512_14_44_b2da51354ccd98e6fcd8250b982652bfe3126a7d85b1b85cb8e8b388fc2aa4b23fc7de9ad0684477c95ce93c22dabecf3032591914eb73647e42b6624673.md
@@ -2071,7 +2071,7 @@
 ./.backups/production_fix_1775686366/tools/issue_drafts/1067_src_hooks_useTimezone.ts.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/1068_test_config.json.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/1069_tests_integration_adapter-dryrun.test.ts.md
-./.backups/production_fix_1775686366/tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md
+./.backups/production_fix_1775686366/tools/issue_drafts/1070_tests_security_test_security_production_config.py.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/1071_tests_test_integration.py.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/1072_tests_test_link_systems.py.md
 ./.backups/production_fix_1775686366/tools/issue_drafts/1073_tools_allrefs_summary.md.md
@@ -2096,7 +2096,7 @@
 ./.backups/production_fix_1775686366/tools/link_fix_actions.md
 ./.backups/production_fix_1775686366/tools/link_fix_actions_more.md
 ./.backups/production_fix_1775686366/tools/matches_priority.md
-./.backups/production_fix_1775686366/tools/placeholder_artifacts/README.md
+./.backups/production_fix_1775686366/tools/production_config_artifacts/README.md
 ./.backups/production_fix_1775686366/tools/qmoi_lint_report.md
 ./.backups/production_fix_1775686366/tools/release_remediation_guide.md
 ./.backups/production_fix_1775686366/tools/releases_assets_report.md
@@ -3104,7 +3104,7 @@
 ./link_report.md
 ./mobile/README.md
 ./models/latest/README.md
-./placeholder_scan_summary.md
+./production_config_scan_summary.md
 ./production_deployment/DEPLOYMENT_CHECKLIST.md
 ./pwa_apps/README.md
 ./pwa_apps/q-alpha/README.md
@@ -4088,7 +4088,7 @@
 ./tools/issue_drafts/0973_qmoi-enhanced_src_hooks_useTimezone.ts.md
 ./tools/issue_drafts/0974_qmoi-enhanced_src_services_QmoiMemory.ts.md
 ./tools/issue_drafts/0975_qmoi-enhanced_test_config.json.md
-./tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md
+./tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_production_config.py.md
 ./tools/issue_drafts/0977_qmoi-space_.npm-cache__cacache_content-v2_sha512_02_d1_a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d.md
 ./tools/issue_drafts/0978_qmoi-space_.npm-cache__cacache_content-v2_sha512_05_12_a4cf29119d9bd5f491c4797687b1eb28e483bc0f6ec0306d1bc06915dfc5e8ed8239eecbb6eee440026388319ad245f9f597e784311aac2ba34d0856afb2.md
 ./tools/issue_drafts/0979_qmoi-space_.npm-cache__cacache_content-v2_sha512_14_44_b2da51354ccd98e6fcd8250b982652bfe3126a7d85b1b85cb8e8b388fc2aa4b23fc7de9ad0684477c95ce93c22dabecf3032591914eb73647e42b6624673.md
@@ -4182,7 +4182,7 @@
 ./tools/issue_drafts/1067_src_hooks_useTimezone.ts.md
 ./tools/issue_drafts/1068_test_config.json.md
 ./tools/issue_drafts/1069_tests_integration_adapter-dryrun.test.ts.md
-./tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md
+./tools/issue_drafts/1070_tests_security_test_security_production_config.py.md
 ./tools/issue_drafts/1071_tests_test_integration.py.md
 ./tools/issue_drafts/1072_tests_test_link_systems.py.md
 ./tools/issue_drafts/1073_tools_allrefs_summary.md.md
@@ -4207,8 +4207,8 @@
 ./tools/link_fix_actions.md
 ./tools/link_fix_actions_more.md
 ./tools/matches_priority.md
-./tools/placeholder_actions.md
-./tools/placeholder_artifacts/README.md
+./tools/production_config_actions.md
+./tools/production_config_artifacts/README.md
 ./tools/qmoi_lint_report.md
 ./tools/release_remediation_guide.md
 ./tools/releases_assets_report.md

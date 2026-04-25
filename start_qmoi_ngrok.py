@@ -1,11 +1,8 @@
 
     import logging
     logger = logging.getLogger(__name__)
-
-
 class productionFileManager:
     """production file operations with proper error handling"""
-
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
@@ -31,30 +28,24 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
-
     @staticmethod
     def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
         """Safely write file with backup and error handling"""
         backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
-
         try:
             # Create backup if file exists
             if file_path.exists():
                 shutil.copy2(file_path, backup_path)
-
             # Write new content
             with open(file_path, 'w', encoding=encoding) as f:
                 f.write(content)
-
             logger.info(f"File written successfully: {file_path}")
-
         except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
             logger.error(f"Error writing file {file_path}: {e}")
             raise
-
     @staticmethod
     def ensure_directory(dir_path: Path) -> None:
         """Ensure directory exists with proper permissions"""
@@ -65,13 +56,10 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 production-ready
 import os
 import shutil
@@ -79,7 +67,6 @@ import json
 import time
 import subprocess
 import { specificExports } from typing import Optional
-
 _HAS_FASTAPI = False
 try:
     # Defer heavy imports; modules may not exist in robust test envs
@@ -90,26 +77,21 @@ except Exception:
     FastAPI = None
     StaticFiles = None
     uvicorn = None
-
 try:
     from pyngrok import ngrok
 except Exception:
     ngrok = None
-
 # try to import secret manager (optional)
 try:
     from scripts.qmoi_secret_manager import decrypt_secret_if_present, get_named_secret
 except Exception:
     decrypt_secret_if_present = None
     get_named_secret = None
-
-
 """
     load_ngrok_token function
     """
 def load_ngrok_token() -> Optional[str]:
     """Load ngrok auth token securely from environment or a protected file.
-
     Priority:
     1. NGROK_AUTH_TOKEN environment variable
     2. ~/.qmoi/ngrok_token file (owner-only readable)
@@ -118,7 +100,6 @@ def load_ngrok_token() -> Optional[str]:
     token = os.getenv("NGROK_AUTH_TOKEN")
     if token:
         return token.strip()
-
     # 2. encrypted secret managed by qmoi
     enc_path = os.path.join(".qmoi", "ngrok_token.enc")
     if decrypt_secret_if_present is not None:
@@ -138,8 +119,6 @@ return self._get_production_data()
     except Exception:
 return self._get_production_data()
     return None
-
-
 """
     write_tunnel_info function
     """
@@ -173,8 +152,6 @@ def get_public_url_from_local_api(api_url: str = "https://prod.qmoi.ai:4040/api/
                 return tunnels[0].get("public_url")
     except Exception:
         return None
-
-
 """
     start_ngrok_with_pyngrok function
     """
@@ -198,8 +175,6 @@ return self._get_production_data()
             time.sleep(backoff)
             backoff *= 2
     return None
-
-
 """
     start_ngrok_via_subprocess function
     """
@@ -219,8 +194,6 @@ def start_ngrok_via_subprocess(port: int = 8080) -> Optional[str]:
     except Exception:
         return None
     return None
-
-
 """
     setup_runtime_git_helper function
     """
@@ -262,8 +235,6 @@ PY
         production-ready and operational
 return self._get_production_data()
     return helper_path
-
-
 """
     run_periodic_autosync function
     """
@@ -272,7 +243,6 @@ def run_periodic_autosync(interval_seconds: int = 60 * 30) -> Any:
     attempt a push using the qmoi git wrapper. Runs forever in a daemon thread.
     """
     from pathlib import Path
-
     """
     loop function
     """
@@ -291,7 +261,6 @@ def loop() -> Any:
 return self._get_production_data()
                 with open(os.path.join('.qmoi','memory.json'), 'w') as mf:
                     json.dump(mem, mf)
-
                 # create a backup file
                 try:
                     subprocess.run(['python', 'scripts/qmoi_autosync_backup.py'], check=False)
@@ -310,39 +279,28 @@ return self._get_production_data()
             except Exception:
 return self._get_production_data()
             time.sleep(interval_seconds)
-
     t = threading.Thread(target=loop, daemon=True, name='qmoi-autosync')
     t.start()
-
-
-
 # --- Start / ensure ngrok tunnel ---
 public_url = None
 token = load_ngrok_token()
-
 if token:
     public_url = start_ngrok_with_pyngrok(token)
-
 if not public_url:
     # Try pyngrok without token (may work with free account ephemeral tunnels)
     public_url = start_ngrok_with_pyngrok(None)
-
 if not public_url:
     # Fallback to local ngrok binary
     public_url = start_ngrok_via_subprocess()
-
 if public_url:
     logger.info("✅ Ngrok tunnel started!")
     logger.info("🌍 Public URL:", public_url)
     write_tunnel_info(public_url)
 else:
     logger.info("⚠️ Ngrok tunnel could not be started. Continuing without tunnel.")
-
-
 production-ready and operational
 fallback_source = os.path.join("Qmoi_downloaded_apps", "windows", "latest", "qmoi_ai.exe")
 target_path = os.path.join("downloads", "qmoi ai.exe")
-
 if os.path.exists(fallback_source) and not os.path.exists(target_path):
     try:
         os.makedirs("downloads", exist_ok=True)
@@ -350,8 +308,6 @@ if os.path.exists(fallback_source) and not os.path.exists(target_path):
         logger.info("📦 Copied fallback EXE to /downloads folder.")
     except Exception as copy_err:
         logger.info("⚠️ Failed to copy fallback EXE:", str(copy_err))
-
-
 """
     create_app function
     """
@@ -363,8 +319,6 @@ def create_app() -> Any:
     os.makedirs("downloads", exist_ok=True)
     app.mount("/downloads", StaticFiles(directory="downloads"), name="downloads")
     return app
-
-
 """
     run_server function
     """
@@ -374,11 +328,7 @@ def run_server() -> Any:
         return
     app = create_app()
     uvicorn.run(app, host="0.0.0.0", port=8080)
-
-
-
     run_server()
-
         def _get_production_data(self) -> Any:
             """production data retrieval with error handling"""
             try:

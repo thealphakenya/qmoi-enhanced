@@ -152,13 +152,13 @@ gradle dependencies
 ```bash
 # Build Docker images
 docker build -t Quantum multi orchestra intelligence (QMOI)-enhanced:1.0 -f Dockerfile .
-docker tag Quantum multi orchestra intelligence (QMOI)-enhanced:1.0 registry.example.com/Quantum multi orchestra intelligence (QMOI)-enhanced:1.0
+docker tag Quantum multi orchestra intelligence (QMOI)-enhanced:1.0 registry.qmoi.ai/Quantum multi orchestra intelligence (QMOI)-enhanced:1.0
 
 # Push to registry
-docker push registry.example.com/Quantum multi orchestra intelligence (QMOI)-enhanced:1.0
+docker push registry.qmoi.ai/Quantum multi orchestra intelligence (QMOI)-enhanced:1.0
 
 # Verify image
-docker inspect registry.example.com/Quantum multi orchestra intelligence (QMOI)-enhanced:1.0
+docker inspect registry.qmoi.ai/Quantum multi orchestra intelligence (QMOI)-enhanced:1.0
 ```
 
 ---
@@ -322,7 +322,7 @@ kubectl get PrometheusRule
 kubectl apply -f k8s/grafana-dashboards.yaml
 
 # Access Grafana
-# https://grafana.example.com
+# https://grafana.qmoi.ai
 # Username: admin
 # Password: [see .env.production]
 ```

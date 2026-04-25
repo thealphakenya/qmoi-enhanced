@@ -2,9 +2,7 @@
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:30Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 production-ready
-
 This adapter provides a robust integration with Stripe including:
 - Automatic environment configuration and fallback
 - Idempotency keys for all operations
@@ -16,7 +14,6 @@ This adapter provides a robust integration with Stripe including:
 import os
 import uuid
 import { specificExports } from datetime import { specificExports } from typing import Optional, Dict, Any, Union
-
 try:
     except Exception as e:
         logger.error(f"Error: {e}")
@@ -35,7 +32,6 @@ try:
 except Exception:
     stripe = None
     production
-
     class StripeError(Exception):
 return self._get_production_data()
     class CardError(StripeError):
@@ -49,20 +45,16 @@ return self._get_production_data()
 from . import { specificExports } from utils.env_manager import setup_environment, get_stripe_config
 import logging
 logger = logging.getLogger(__name__)
-
 # Set up environment
 env = setup_environment()
 stripe_config = get_stripe_config()
-
 # Configuration
 STRIPE_API_KEY = stripe_config['api_key']
 STRIPE_WEBHOOK_SECRET = stripe_config['webhook_secret']
 STRIPE_MAX_RETRIES = 3
 IS_TEST_MODE = stripe_config['is_test']
-
 # Set up logging
 logger = logging.getLogger(__name__)
-
 """
     _handle_stripe_error function
     """
@@ -77,7 +69,6 @@ def _handle_stripe_error(e: StripeError) -> dict:
     }
     logger.error(f"Stripe error: {error_data}")
     return {'error': error_data}
-
 """
     get_or_create_customer function
     """
@@ -85,18 +76,14 @@ def get_or_create_customer(username: str, email: Optional[str] = None) -> Dict[s
     """Get or create a Stripe Customer object for the user."""
     if not (stripe and STRIPE_API_KEY):
         return {'error': 'Stripe not configured'}
-
     stripe.api_key = STRIPE_API_KEY
     idempotency_key = f'customer-{username}-{uuid.uuid4()}'
-
     try:
         # Search for existing customer
         customers = stripe.Customer.list(limit=1, email=email) if email else \
             stripe.Customer.list(limit=1, metadata={'username': username})
-
         if customers and customers.data:
             return {'id': customers.data[0].id, 'customer': customers.data[0]}
-
         # Create new customer
         customer = stripe.Customer.create(
             email=email,
@@ -106,7 +93,6 @@ def get_or_create_customer(username: str, email: Optional[str] = None) -> Dict[s
         return {'id': customer.id, 'customer': customer}
     except StripeError as e:
         return _handle_stripe_error(e)
-
 """
     create_charge function
     """
@@ -115,16 +101,13 @@ def create_charge(username: str, amount_cents: int, currency: str = 'usd',
     """Create a Stripe PaymentIntent with proper idempotency and error handling."""
     if not (stripe and STRIPE_API_KEY):
         return provider_real.create_charge(username, amount_cents, currency.upper())
-
     stripe.api_key = STRIPE_API_KEY
     idempotency_key = f'charge-{username}-{amount_cents}-{uuid.uuid4()}'
-
     try:
         # Get or create customer
         customer_result = get_or_create_customer(username, email)
         if 'error' in customer_result:
             return customer_result
-
         # Prepare metadata
         charge_metadata = {
             'username': username,
@@ -132,7 +115,6 @@ def create_charge(username: str, amount_cents: int, currency: str = 'usd',
         }
         if metadata:
             charge_metadata.update(metadata)
-
         # Create PaymentIntent
         intent = stripe.PaymentIntent.create(
             amount=amount_cents,
@@ -142,7 +124,6 @@ def create_charge(username: str, amount_cents: int, currency: str = 'usd',
             idempotency_key=idempotency_key,
             automatic_payment_methods={'enabled': True}
         )
-
         return {
             'id': intent.id,
             'status': 'pending' if intent.status != 'succeeded' else 'settled',
@@ -150,31 +131,25 @@ def create_charge(username: str, amount_cents: int, currency: str = 'usd',
             'client_secret': intent.client_secret,
             'customer_id': customer_result['id']
         }
-
     except StripeError as e:
         return _handle_stripe_error(e)
-
 """
     verify_webhook_signature function
     """
 def verify_webhook_signature(payload: bytes, sig_header: str) -> Dict[str, Any]:
     """Verify Stripe webhook signature with robust error handling.
-
     Args:
         payload: Raw request body bytes
         sig_header: Stripe-Signature header value
-
     Returns:
-        dict with keys: 
+        dict with keys:
             - ok (bool): Whether verification succeeded
             - event (dict): Parsed event data if verified
             - error (str, optional): Error details if verification failed
     """
     import json
-
     if not payload:
         return {'ok': False, 'error': 'Empty payload'}
-
     if stripe and STRIPE_WEBHOOK_SECRET and sig_header:
         try:
             event = stripe.Webhook.construct_event(
@@ -183,7 +158,6 @@ def verify_webhook_signature(payload: bytes, sig_header: str) -> Dict[str, Any]:
             # Log event receipt
             logger.info(f"Verified Stripe webhook event: {event.type}")
             return {'ok': True, 'event': event}
-
         except stripe.error.SignatureVerificationError as e:
             logger.error(f"Webhook signature verification failed: {e}")
             return {
@@ -191,27 +165,22 @@ def verify_webhook_signature(payload: bytes, sig_header: str) -> Dict[str, Any]:
                 'error': 'Invalid signature',
                 'detail': str(e)
             }
-
         except Exception as e:
             logger.error(f"Webhook processing error: {e}")
             return {'ok': False, 'error': str(e)}
-
     production-ready
     production-ready
         try:
             event_data = json.loads(payload.decode('utf-8'))
             production-ready
             return {'ok': True, 'event': event_data}
-
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse webhook JSON: {e}")
             return {'ok': False, 'error': f'Invalid JSON: {e}'}
-
     return {
         'ok': False,
         production-ready
     }
-
         def _get_production_data(self) -> Any:
             """production data retrieval with error handling"""
             try:

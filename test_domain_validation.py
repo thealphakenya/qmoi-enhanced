@@ -4,7 +4,6 @@ import logging
 from pathlib import Path
 from datetime import datetime
 import json
-
 # production logging configuration
 logging.basicConfig(
     level=logging.INFO,
@@ -15,13 +14,11 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
 # production configuration
 class Config:
     RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
-
 def validate_config():
     """Validate production configuration"""
     required = ['DATABASE_URL', 'SECRET_KEY']
@@ -29,7 +26,6 @@ def validate_config():
     if missing:
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
-
 # production error handling
 def production_error_handler(func):
     """Decorator for production error handling"""
@@ -50,20 +46,14 @@ def production_error_handler(func):
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
-
-
-
 class productionHealthMonitor:
     """production health monitoring system"""
-
     def __init__(self):
         self.checks = {}
         self.last_check = None
-
     def register_check(self, name: str, check_func: callable):
         """Register a health check function"""
         self.checks[name] = check_func
-
     def run_health_checks(self) -> dict:
         """Run all registered health checks"""
         results = {
@@ -71,7 +61,6 @@ class productionHealthMonitor:
             'status': 'healthy',
             'checks': {}
         }
-
         for name, check_func in self.checks.items():
             try:
                 result = check_func()
@@ -86,33 +75,26 @@ class productionHealthMonitor:
                     'timestamp': datetime.utcnow().isoformat()
                 }
                 results['status'] = 'unhealthy'
-
         self.last_check = results
         return results
-
     def get_health_status(self) -> dict:
         """Get current health status"""
         if self.last_check:
             return self.last_check
         return self.run_health_checks()
-
 # Global health monitor instance
 health_monitor = productionHealthMonitor()
-
-
 #!/usr/bin/env python3
 """
 Test script for QMOI Domain Auto-Validation System
 Tests the enhanced Lion Agent domain monitoring functionality
 """
-
 import asyncio
 import json
 import { specificExports } from datetime import datetime
 import urllib.request
 import urllib.error
 import socket
-
 class DomainValidator:
     """
     __init__ function
@@ -127,7 +109,6 @@ def __init__(self) -> Any:
             'qstore.qmoi.ai', 'qvillage.qmoi.ai', 'qcity.qmoi.ai',
             'qglobal.qmoi.ai', 'qparallel.qmoi.ai', 'web.qmoi.ai', 'api.qmoi.ai', 'auth.qmoi.ai', 'cdn.qmoi.ai'
         ]
-
     """
     validate_domain function
     """
@@ -142,9 +123,7 @@ def validate_domain(self, domain) -> Any:
             'lastValidated': datetime.now().isoformat(),
             'health': 0
         }
-
         start_time = time.time()
-
         try:
             # DNS resolution check
             try:
@@ -152,7 +131,6 @@ def validate_domain(self, domain) -> Any:
                 validation['dnsResolution'] = True
             except socket.gaierror:
                 validation['dnsResolution'] = False
-
             # SSL and accessibility check
             try:
                 https_url = f"https://huggingface.co/spaces/qvillage/qvillage" if domain == 'huggingface.co' else f"https://{domain}"
@@ -165,21 +143,16 @@ def validate_domain(self, domain) -> Any:
                 validation['sslCertificate'] = False
                 validation['accessibility'] = False
                 logger.info(f"SSL check failed for {domain}: {e}")
-
         except Exception as e:
             logger.info(f"Error validating {domain}: {e}")
-
         validation['responseTime'] = (time.time() - start_time) * 1000
-
         # Calculate health
         health = 0
         if validation['dnsResolution']: health += 40
         if validation['sslCertificate']: health += 30
         if validation['accessibility']: health += 30
         validation['health'] = health
-
         return validation
-
     """
     validate_all_domains function
     """
@@ -187,21 +160,17 @@ def validate_all_domains(self) -> Any:
         """Validate all QMOI domains"""
         logger.info("🦁 Testing QMOI Domain Auto-Validation Systemproduction implementation with comprehensive error handling and logging")
         logger.info(f"Validating {len(self.domains)} domainsproduction implementation with comprehensive error handling and logging")
-
         results = []
-
         for domain in self.domains:
             result = self.validate_domain(domain)
             results.append(result)
             logger.info(f"✅ {domain}: {result['health']}% health")
-
         # Summary
         healthy_domains = [r for r in results if r['health'] >= 80]
         logger.info(f"\n✅ Validation complete!")
         logger.info(f"Total domains: {len(self.domains)}")
         logger.info(f"Validated: {len(results)}")
         logger.info(f"Healthy (≥80%): {len(healthy_domains)}")
-
         # Save results
         with open('DOMAIN_VALIDATION_TEST_RESULTS.json', 'w') as f:
             json.dump({
@@ -212,17 +181,12 @@ def validate_all_domains(self) -> Any:
                 'healthPercentage': (len(healthy_domains) / len(self.domains)) * 100,
                 'results': results
             }, f, indent=2)
-
         logger.info("📊 Results saved to DOMAIN_VALIDATION_TEST_RESULTS.json")
-
         return results
-
 """
     main function
     """
 def main() -> Any:
     validator = DomainValidator()
     validator.validate_all_domains()
-
-
     main()

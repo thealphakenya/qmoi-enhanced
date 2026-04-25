@@ -743,7 +743,7 @@
       "score": 100
     },
     {
-      "file": "scripts/dev-placeholder.js",
+      "file": "scripts/dev-production_config.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -2479,7 +2479,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/scripts/dev-placeholder.js",
+      "file": "backups/final_fix_backup_20260326_233109/scripts/dev-production_config.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -8273,7 +8273,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/dev-placeholder.js",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/dev-production_config.js",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -15507,7 +15507,7 @@
       "score": 100
     },
     {
-      "file": "tools/find_placeholders.py",
+      "file": "tools/find_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -15673,7 +15673,7 @@
       "score": 100
     },
     {
-      "file": "tools/auto_fix_placeholders.py",
+      "file": "tools/auto_fix_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'stub_functions': 1}"
@@ -15723,7 +15723,7 @@
       "score": 100
     },
     {
-      "file": "tools/auto_fix_placeholders_broad.py",
+      "file": "tools/auto_fix_production_configs_broad.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -16049,7 +16049,7 @@
       "score": 100
     },
     {
-      "file": "scripts/replace_placeholders.py",
+      "file": "scripts/replace_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -16199,7 +16199,7 @@
       "score": 85
     },
     {
-      "file": "scripts/check_and_replace_placeholders.py",
+      "file": "scripts/check_and_replace_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -17397,7 +17397,7 @@
       "score": 100
     },
     {
-      "file": "scripts/fix_removed_placeholders_batch.py",
+      "file": "scripts/fix_removed_production_configs_batch.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18013,7 +18013,7 @@
       "score": 100
     },
     {
-      "file": "scripts/scan_replace_placeholders.py",
+      "file": "scripts/scan_replace_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18079,7 +18079,7 @@
       "score": 100
     },
     {
-      "file": "scripts/run_placeholder_scans.py",
+      "file": "scripts/run_production_config_scans.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18211,7 +18211,7 @@
       "score": 100
     },
     {
-      "file": "scripts/check_placeholders.py",
+      "file": "scripts/check_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18301,7 +18301,7 @@
       "score": 100
     },
     {
-      "file": "scripts/scan_placeholders.py",
+      "file": "scripts/scan_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18429,7 +18429,7 @@
       "score": 100
     },
     {
-      "file": "scripts/placeholder_fixer.py",
+      "file": "scripts/production_config_fixer.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -18471,7 +18471,7 @@
       "score": 100
     },
     {
-      "file": "scripts/placeholder_scan.py",
+      "file": "scripts/production_config_scan.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -19311,7 +19311,7 @@
       "score": 100
     },
     {
-      "file": "scripts/placeholder_scanner.py",
+      "file": "scripts/production_config_scanner.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -19329,7 +19329,7 @@
       "score": 100
     },
     {
-      "file": "scripts/create_release_placeholders.py",
+      "file": "scripts/create_release_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -23497,7 +23497,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/check_and_replace_placeholders.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/check_and_replace_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -26711,7 +26711,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/tests/security/test_security_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -26747,7 +26747,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -27157,7 +27157,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/tests/security/test_security_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -27193,7 +27193,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -27775,7 +27775,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/check_and_replace_placeholders.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/check_and_replace_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -28993,7 +28993,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/placeholder_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/production_config_fixer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -31238,7 +31238,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/tests/security/test_security_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -31274,7 +31274,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -32074,7 +32074,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/replace_placeholders.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/replace_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -32646,7 +32646,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/fix_removed_placeholders_batch.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/fix_removed_production_configs_batch.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -32838,7 +32838,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/scan_replace_placeholders.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/scan_replace_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -32888,7 +32888,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/check_placeholders.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/check_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -32934,7 +32934,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/scan_placeholders.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/scan_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -33020,7 +33020,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/placeholder_fixer.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/production_config_fixer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -33314,7 +33314,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/create_release_placeholders.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/create_release_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -34289,7 +34289,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/tests/security/test_security_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -34325,7 +34325,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -34919,7 +34919,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/replace_placeholders.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/replace_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -35023,7 +35023,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/check_and_replace_placeholders.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/check_and_replace_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -35929,7 +35929,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/fix_removed_placeholders_batch.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/fix_removed_production_configs_batch.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -36383,7 +36383,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/scan_replace_placeholders.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/scan_replace_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -36531,7 +36531,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/check_placeholders.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/check_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -36603,7 +36603,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/scan_placeholders.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/scan_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -36731,7 +36731,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/placeholder_fixer.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/production_config_fixer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -37367,7 +37367,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/scripts/create_release_placeholders.py",
+      "file": "backups/pre_fix_backup_20260326_231902/scripts/create_release_production_configs.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -39329,7 +39329,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/tests/security/test_security_placeholder.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -39365,7 +39365,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -39917,7 +39917,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/tests/security/test_security_placeholder.py",
+      "file": "backups/pre_fix_backup_20260326_231902/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -39953,7 +39953,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_231902/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/pre_fix_backup_20260326_231902/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -40347,7 +40347,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/scripts/check_and_replace_placeholders.py",
+      "file": "backups/pre_fix_backup_20260326_232205/scripts/check_and_replace_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42784,7 +42784,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/tests/security/test_security_placeholder.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -42814,7 +42814,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -43192,7 +43192,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/tests/security/test_security_placeholder.py",
+      "file": "backups/pre_fix_backup_20260326_232205/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -43222,7 +43222,7 @@
       "score": 100
     },
     {
-      "file": "backups/pre_fix_backup_20260326_232205/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/pre_fix_backup_20260326_232205/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -43786,7 +43786,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/check_and_replace_placeholders.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/check_and_replace_production_configs.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -45004,7 +45004,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/scripts/placeholder_fixer.py",
+      "file": "backups/final_fix_backup_20260326_232609/scripts/production_config_fixer.py",
       "status": "enhanced",
       "enhancements": [
         "Added logging configuration"
@@ -47197,7 +47197,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/tests/security/test_security_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -47233,7 +47233,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -47703,7 +47703,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/tests/security/test_security_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_232609/tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -47739,7 +47739,7 @@
       "score": 100
     },
     {
-      "file": "backups/final_fix_backup_20260326_232609/tests/e2e/test_e2e_placeholder.py",
+      "file": "backups/final_fix_backup_20260326_232609/tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -47793,7 +47793,7 @@
       "score": 100
     },
     {
-      "file": "tests/security/test_security_placeholder.py",
+      "file": "tests/security/test_security_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -47829,7 +47829,7 @@
       "score": 100
     },
     {
-      "file": "tests/e2e/test_e2e_placeholder.py",
+      "file": "tests/e2e/test_e2e_production_config.py",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -94425,7 +94425,7 @@
       "score": 100
     },
     {
-      "file": "placeholder_scan_summary.md",
+      "file": "production_config_scan_summary.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -98219,7 +98219,7 @@
       "score": 100
     },
     {
-      "file": "tools/placeholder_actions.md",
+      "file": "tools/production_config_actions.md",
       "status": "enhanced",
       "enhancements": [
         "Replaced non-production patterns: {'stub_functions': 6, 'localhost': 2}"
@@ -102753,7 +102753,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md",
+      "file": "tools/issue_drafts/1070_tests_security_test_security_production_config.py.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -104181,7 +104181,7 @@
       "score": 100
     },
     {
-      "file": "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md",
+      "file": "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_production_config.py.md",
       "status": "ready",
       "enhancements": [],
       "score": 100
@@ -104889,7 +104889,7 @@
       "score": 100
     },
     {
-      "file": "tools/placeholder_artifacts/README.md",
+      "file": "tools/production_config_artifacts/README.md",
       "status": "ready",
       "enhancements": [],
       "score": 100

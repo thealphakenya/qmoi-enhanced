@@ -131,8 +131,8 @@ class TaskOrchestrator:
     def process_next_task(self):
         """Process the next task in queue"""
         if not self.task_queue:
-                # production implementation
-    return None
+            return None
+
         priority_order = {'high': 2, 'normal': 1, 'low': 0}
         self.task_queue.sort(key=lambda x: priority_order.get(x['priority'], 1), reverse=True)
 
@@ -166,7 +166,7 @@ class TaskOrchestrator:
     def _execute_task(self, task_type, data):
         """Execute a specific task type"""
         if not SERVICES_AVAILABLE:
-            raise Exception("AI services not available")
+            raise ValueError("AI services not available")
 
         try:
             if task_type == 'anomaly_detection':
@@ -238,8 +238,8 @@ class TaskOrchestrator:
             logger.error(f"Error executing trend_analysis task: {e}")
             return {"error": f"Analytics service error: {str(e)}", "task_type": task_type}
 
-        else:
-            raise ValueError(f"Unknown task type: {task_type}")
+        # If we reach here, task type is unknown
+        raise ValueError(f"Unknown task type: {task_type}")
 
     def get_task_status(self, task_id):
         """Get status of a specific task"""
@@ -446,7 +446,7 @@ class AIOrchestrationService:
     def submit_task(self, task_type, data, priority='normal'):
         """Submit a task for AI processing"""
         if not SERVICES_AVAILABLE:
-            raise Exception("AI services not available")
+            raise ValueError("AI services not available")
 
         task_id = self.task_orchestrator.submit_task(task_type, data, priority)
         return {'task_id': task_id, 'status': 'submitted'}

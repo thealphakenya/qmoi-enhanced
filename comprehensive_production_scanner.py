@@ -4,7 +4,6 @@ import logging
 from pathlib import Path
 from datetime import datetime
 import json
-
 # production logging configuration
 logging.basicConfig(
     level=logging.INFO,
@@ -15,13 +14,11 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
 # production configuration
 class Config:
     RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
-
 def validate_config():
     """Validate production configuration"""
     required = ['DATABASE_URL', 'SECRET_KEY']
@@ -29,7 +26,6 @@ def validate_config():
     if missing:
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
-
 # production error handling
 def production_error_handler(func):
     """Decorator for production error handling"""
@@ -50,20 +46,14 @@ def production_error_handler(func):
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
-
-
-
 class productionHealthMonitor:
     """production health monitoring system"""
-
     def __init__(self):
         self.checks = {}
         self.last_check = None
-
     def register_check(self, name: str, check_func: callable):
         """Register a health check function"""
         self.checks[name] = check_func
-
     def run_health_checks(self) -> dict:
         """Run all registered health checks"""
         results = {
@@ -71,7 +61,6 @@ class productionHealthMonitor:
             'status': 'healthy',
             'checks': {}
         }
-
         for name, check_func in self.checks.items():
             try:
                 result = check_func()
@@ -86,24 +75,17 @@ class productionHealthMonitor:
                     'timestamp': datetime.utcnow().isoformat()
                 }
                 results['status'] = 'unhealthy'
-
         self.last_check = results
         return results
-
     def get_health_status(self) -> dict:
         """Get current health status"""
         if self.last_check:
             return self.last_check
         return self.run_health_checks()
-
 # Global health monitor instance
 health_monitor = productionHealthMonitor()
-
-
-
 class productionFileManager:
     """production file operations with proper error handling"""
-
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
@@ -119,30 +101,24 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
-
     @staticmethod
     def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
         """Safely write file with backup and error handling"""
         backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
-
         try:
             # Create backup if file exists
             if file_path.exists():
                 shutil.copy2(file_path, backup_path)
-
             # Write new content
             with open(file_path, 'w', encoding=encoding) as f:
                 f.write(content)
-
             logger.info(f"File written successfully: {file_path}")
-
         except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
             logger.error(f"Error writing file {file_path}: {e}")
             raise
-
     @staticmethod
     def ensure_directory(dir_path: Path) -> None:
         """Ensure directory exists with proper permissions"""
@@ -153,23 +129,16 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
-
-
 import logging
-
 logger = logging.getLogger(__name__)
-
 #!/usr/bin/env python3
 """comprehensive_production_scanner.py
-
 Comprehensive scanner to identify all non-production implementations and production implementation content across the QMOI codebase.
 """
-
 import json
 import re
 from datetime import datetime
 from pathlib import Path
-
 ISSUE_PATTERNS = [
     r'production implementation complete',
     r'production implementation',
@@ -186,12 +155,10 @@ ISSUE_PATTERNS = [
     r'production_data_scanner',
     r'production_data_actions',
 ]
-
 STATUS_PATTERNS = [
     r'production_IMPLEMENTED',
     r'production-ready',
 ]
-
 EXCLUDE_DIRS = {
     'node_modules',
     '.git',
@@ -202,11 +169,9 @@ EXCLUDE_DIRS = {
     'dist',
     'build',
 }
-
 TEXT_EXTENSIONS = {
     '.py', '.ts', '.tsx', '.js', '.jsx', '.md', '.json', '.yaml', '.yml', '.sh', '.bash', '.txt', '.cfg', '.ini', '.toml'
 }
-
 class ComprehensiveproductionScanner:
     def __init__(self):
         self.issue_patterns = [re.compile(pat, re.IGNORECASE) for pat in ISSUE_PATTERNS]
@@ -224,10 +189,8 @@ class ComprehensiveproductionScanner:
             'issues_by_category': {},
             'critical_findings': [],
         }
-
     def is_text_file(self, file_path: Path) -> bool:
         return file_path.suffix.lower() in TEXT_EXTENSIONS
-
     def scan_file(self, file_path: Path):
         if not self.is_text_file(file_path):
             return None
@@ -235,7 +198,6 @@ class ComprehensiveproductionScanner:
             text = file_path.read_text(encoding='utf-8', errors='ignore')
         except Exception:
             return None
-
         issues = []
         status_markers = []
         for pattern in self.issue_patterns:
@@ -250,7 +212,6 @@ class ComprehensiveproductionScanner:
                     'line': line,
                     'category': self.classify_issue(pattern.pattern),
                 })
-
         for pattern in self.status_patterns:
             for match in pattern.finditer(text):
                 line = text.count('\n', 0, match.start()) + 1
@@ -262,10 +223,8 @@ class ComprehensiveproductionScanner:
                     'snippet': snippet,
                     'line': line,
                 })
-
         if not issues and not status_markers:
             return None
-
         return {
             'file': str(file_path.relative_to(Path.cwd())),
             'issues': issues,
@@ -273,7 +232,6 @@ class ComprehensiveproductionScanner:
             'issue_count': len(issues),
             'status_count': len(status_markers),
         }
-
     def classify_issue(self, pattern: str) -> str:
         lower = pattern.lower()
         if 'production implementation complete' in lower or 'production implementation' in lower or 'production implementation' in lower:
@@ -287,7 +245,6 @@ class ComprehensiveproductionScanner:
         if 'nonproduction' in lower:
             return 'nonproduction marker'
         return 'other'
-
     def scan_directory(self, root: str):
         root_path = Path(root)
         for file_path in root_path.rglob('*'):
@@ -306,10 +263,8 @@ class ComprehensiveproductionScanner:
                 self.scan_results['files_with_status_markers'] += 1
                 self.scan_results['total_status_markers_found'] += result['status_count']
             self.scan_results['files'].append(result)
-
             directory = str(file_path.parent.relative_to(root_path) or '.')
             self.scan_results['files_by_directory'][directory] = self.scan_results['files_by_directory'].get(directory, 0) + 1
-
             for issue in result['issues']:
                 category = self.classify_issue(issue['pattern'])
                 self.scan_results['issues_by_category'][category] = self.scan_results['issues_by_category'].get(category, 0) + 1
@@ -319,12 +274,10 @@ class ComprehensiveproductionScanner:
                         'pattern': issue['pattern'],
                         'snippet': issue['snippet'],
                     })
-
     def save_report(self, output_file: str = 'comprehensive_production_scan_report.json'):
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(self.scan_results, f, indent=2, ensure_ascii=False)
-        print(f'📄 Report saved to {output_file}')
-
+        logging.info(f'📄 Report saved to {output_file}')
     def write_undone(self, output_file: str = 'undone.txt'):
         lines = [
             '# QMOI COMPREHENSIVE NONproduction IMPLEMENTATIONS TRACKER',
@@ -361,32 +314,26 @@ class ComprehensiveproductionScanner:
         lines.append('Run `python3 comprehensive_production_scanner.py` to refresh this tracker and regenerate the report.')
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write('\n'.join(lines) + '\n')
-        print(f'📄 Updated undone tracker at {output_file}')
-
+        logging.info(f'📄 Updated undone tracker at {output_file}')
     def print_summary(self):
-        print('\n' + '='*80)
-        print('🎯 COMPREHENSIVE production READINESS SCAN RESULTS')
-        print('='*80)
-        print(f"📊 Total files scanned: {self.scan_results['total_files_scanned']}")
-        print(f"⚠️  Files with issues: {self.scan_results['files_with_issues']}")
-        print(f"🔍 Total issues found: {self.scan_results['total_issues_found']}")
-        print(f"🕒 Scan completed: {self.scan_results['timestamp']}")
-        print('\n📈 Issues by Category:')
+        logging.info('\n' + '='*80)
+        logging.info('🎯 COMPREHENSIVE production READINESS SCAN RESULTS')
+        logging.info('='*80)
+        logging.info(f"📊 Total files scanned: {self.scan_results['total_files_scanned']}")
+        logging.info(f"⚠️  Files with issues: {self.scan_results['files_with_issues']}")
+        logging.info(f"🔍 Total issues found: {self.scan_results['total_issues_found']}")
+        logging.info(f"🕒 Scan completed: {self.scan_results['timestamp']}")
+        logging.info('\n📈 Issues by Category:')
         for category, count in self.scan_results['issues_by_category'].items():
-            print(f"  • {category}: {count}")
+            logging.info(f"  • {category}: {count}")
         if self.scan_results['critical_findings']:
-            print(f"\n🚨 Critical Findings: {len(self.scan_results['critical_findings'])}")
+            logging.info(f"\n🚨 Critical Findings: {len(self.scan_results['critical_findings'])}")
             for finding in self.scan_results['critical_findings'][:5]:
-                print(f"  • {finding['file']} - {finding['pattern']}")
-
-
+                logging.info(f"  • {finding['file']} - {finding['pattern']}")
 def main():
     scanner = ComprehensiveproductionScanner()
     scanner.scan_directory(str(Path.cwd()))
     scanner.save_report()
     scanner.write_undone()
     scanner.print_summary()
-
-
-
     main()

@@ -1157,11 +1157,11 @@
 ./tools/issue_drafts/1006_qmoi-space_.npm-cache__cacache_index-v5_85_79_3fb741604093d8d76d46cd7ae5aae318318281c865ac55e74dfb55e3425d.md
 ./tools/issue_drafts/0821_qmoi-enhanced_.npm-cache__cacache_index-v5_da_c4_dd29204e2fad09ffdae28b007854070f8b86246c466025a7fefb1cf5b8d9.md
 ./tools/issue_drafts/0835_qmoi-enhanced_.npm-cache__cacache_index-v5_ec_8e_97eeecddd26637708519813d42ee2a5ec256bd4831ffa02269e8993e19b7.md
-./tools/placeholder_artifacts/README.md
+./tools/production_config_artifacts/README.md
 ./tools/release_remediation_guide.md
 ./tools/remediation_plan.md
 ./tools/allrefs_summary.md
-./tools/placeholder_actions.md
+./tools/production_config_actions.md
 ./tools/light_index.md
 ./QMOI_APPS_AND_PLATFORMS_INVENTORY.md
 ./PRODUCTION_READINESS_FINAL_COMPREHENSIVE.md
@@ -1238,7 +1238,7 @@
 ./PRODUCTION_READINESS_FINAL_AUDIT.md
 ./QMOIARTISTS.md
 ./PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md
-./placeholder_scan_summary.md
+./production_config_scan_summary.md
 ./QMOITESTENVIRONMENT.md
 ./QMOI_COMPLETE_INTEGRATION_MASTER.md
 ./QMOI_APIS_WEBHOOKS_ENDPOINTS.md

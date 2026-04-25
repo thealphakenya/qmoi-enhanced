@@ -320,16 +320,6 @@ class AdvancedAnalyticsService:
         """Main analysis loop"""
         while self.is_running:
             try:
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
                 self._perform_analysis()
                 time.sleep(Config.ANALYSIS_INTERVAL)
             except Exception as e:
@@ -434,30 +424,30 @@ def main():
     """Main entry point for testing"""
     service = AdvancedAnalyticsService()
 
-    print("Starting Advanced Analytics Service...")
+    logging.info("Starting Advanced Analytics Service...")
     service.start_service()
 
     # Test predictions
     prediction = service.get_prediction("system_load", 10.0)
-    print(f"System load prediction: {prediction}")
+    logging.info(f"System load prediction: {prediction}")
 
     # Test recommendations
     recs = service.get_recommendations("user1", 3)
-    print(f"Recommendations for user1: {recs}")
+    logging.info(f"Recommendations for user1: {recs}")
 
     # Test trend analysis
     trend = service.get_trend_analysis("performance_metric")
-    print(f"Performance trend: {trend}")
+    logging.info(f"Performance trend: {trend}")
 
     # Generate insights
     insights = service.generate_insights()
-    print(f"Generated insights with {len(insights)} categories")
+    logging.info(f"Generated insights with {len(insights)} categories")
 
     # Run for a short time
     time.sleep(5)
 
     service.stop_service()
-    print("Advanced Analytics Service test completed")
+    logging.info("Advanced Analytics Service test completed")
 
 # Global service instance
 analytics_service = AdvancedAnalyticsService()

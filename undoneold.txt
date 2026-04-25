@@ -4501,7 +4501,7 @@
 - if__name__==__main__: 1 instances (lines: 81)
 - ...s*$: 73 instances (lines: 1, 2, 3, 4, 6...)
 
-### tools/find_placeholders.py
+### tools/find_production_configs.py
 - if__name__==__main__: 1 instances (lines: 132)
 - ...s*$: 120 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 1 instances (lines: 32)
@@ -4575,7 +4575,7 @@
 - passs*$: 1 instances (lines: 64)
 - ...s*$: 119 instances (lines: 1, 2, 3, 4, 6...)
 
-### tools/auto_fix_placeholders_broad.py
+### tools/auto_fix_production_configs_broad.py
 - if__name__==__main__: 1 instances (lines: 91)
 - ...s*$: 100 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -4602,7 +4602,7 @@
 - if__name__==__main__: 1 instances (lines: 109)
 - ...s*$: 104 instances (lines: 1, 2, 3, 4, 6...)
 
-### tools/auto_fix_placeholders.py
+### tools/auto_fix_production_configs.py
 - if__name__==__main__: 1 instances (lines: 119)
 - passs*$: 1 instances (lines: 59)
 - ...s*$: 105 instances (lines: 1, 2, 3, 4, 6...)
@@ -5008,7 +5008,7 @@
 - if__name__==__main__: 1 instances (lines: 212)
 - ...s*$: 207 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/scan_replace_placeholders.py
+### scripts/scan_replace_production_configs.py
 - production: 1 instances (lines: 34)
 - ...s*$: 131 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -5405,7 +5405,7 @@
 ### scripts/test_payments.py
 - ...s*$: 37 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/create_release_placeholders.py
+### scripts/create_release_production_configs.py
 - ...s*$: 70 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/qmoi_md_autoupdater.py
@@ -5562,7 +5562,7 @@
 - if__name__==__main__: 1 instances (lines: 33)
 - ...s*$: 38 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/placeholder_scanner.py
+### scripts/production_config_scanner.py
 - if__name__==__main__: 1 instances (lines: 192)
 - ...s*$: 173 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -5764,7 +5764,7 @@
 - if__name__==__main__: 1 instances (lines: 132)
 - ...s*$: 112 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/fix_removed_placeholders_batch.py
+### scripts/fix_removed_production_configs_batch.py
 - if__name__==__main__: 2 instances (lines: 121, 240)
 - ...s*$: 214 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -5794,7 +5794,7 @@
 - if__name__==__main__: 1 instances (lines: 105)
 - ...s*$: 97 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/replace_placeholders.py
+### scripts/replace_production_configs.py
 - if__name__==__main__: 1 instances (lines: 166)
 - ...s*$: 145 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -5817,7 +5817,7 @@
 - if__name__==__main__: 1 instances (lines: 38)
 - ...s*$: 46 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/run_placeholder_scans.py
+### scripts/run_production_config_scans.py
 - if__name__==__main__: 1 instances (lines: 73)
 - ...s*$: 63 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -5863,7 +5863,7 @@
 - if__name__==__main__: 1 instances (lines: 273)
 - ...s*$: 234 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/placeholder_fixer.py
+### scripts/production_config_fixer.py
 - if__name__==__main__: 1 instances (lines: 127)
 - ...s*$: 112 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -6038,7 +6038,7 @@
 - if__name__==__main__: 1 instances (lines: 73)
 - ...s*$: 63 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/check_and_replace_placeholders.py
+### scripts/check_and_replace_production_configs.py
 - ...s*$: 14 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/device_ownership_detector.py
@@ -6278,7 +6278,7 @@
 - if__name__==__main__: 1 instances (lines: 694)
 - ...s*$: 599 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/scan_placeholders.py
+### scripts/scan_production_configs.py
 - ...s*$: 48 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/duplicate_cleanup.py
@@ -6461,7 +6461,7 @@
 - if__name__==__main__: 1 instances (lines: 97)
 - ...s*$: 84 instances (lines: 1, 2, 3, 4, 6...)
 
-### scripts/check_placeholders.py
+### scripts/check_production_configs.py
 - if__name__==__main__: 1 instances (lines: 65)
 - ...s*$: 58 instances (lines: 1, 2, 3, 4, 6...)
 
@@ -6505,7 +6505,7 @@
 - ...s*$: 61 instances (lines: 1, 2, 3, 4, 6...)
 - STABLE: 1 instances (lines: 12)
 
-### scripts/placeholder_scan.py
+### scripts/production_config_scan.py
 - ...s*$: 141 instances (lines: 1, 2, 3, 4, 6...)
 
 ### scripts/qmoi-workflow-fix.py
@@ -6922,13 +6922,13 @@
 ### tests/integration/test_session_integration.py
 - ...s*$: 15 instances (lines: 1, 2, 3, 4, 6...)
 
-### tests/e2e/test_e2e_placeholder.py
+### tests/e2e/test_e2e_production_config.py
 - ...s*$: 15 instances (lines: 1, 2, 3, 4, 6...)
 
 ### tests/payments/test_adapters.py
 - ...s*$: 15 instances (lines: 1, 2, 3, 4, 6...)
 
-### tests/security/test_security_placeholder.py
+### tests/security/test_security_production_config.py
 - ...s*$: 15 instances (lines: 1, 2, 3, 4, 6...)
 
 ### domain-management/auto-adaptation/health_maintenance.py

@@ -57,16 +57,6 @@ class AdvancedMetricsCollector:
     def collect_system_metrics(self):
         """Collect comprehensive system metrics using built-in modules"""
         try:
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
             # Use built-in alternatives to psutil
             import subprocess
 
@@ -652,24 +642,24 @@ class AdvancedPerformanceOptimizer:
 
 # Test the performance optimizer
 if __name__ == "__main__":
-    print("Testing Advanced Performance Optimizer...")
+    logging.info("Testing Advanced Performance Optimizer...")
 
     # Initialize optimizer
     optimizer = AdvancedPerformanceOptimizer()
 
     # Collect some metrics
-    print("Collecting system metrics...")
+    logging.info("Collecting system metrics...")
     metrics = optimizer.metrics_collector.collect_system_metrics()
-    print(f"System metrics collected: CPU {metrics.get('cpu_percent', 'N/A')}%, Memory {metrics.get('memory_percent', 'N/A')}%")
+    logging.info(f"System metrics collected: CPU {metrics.get('cpu_percent', 'N/A')}%, Memory {metrics.get('memory_percent', 'N/A')}%")
 
     # Generate performance report
-    print("Generating performance report...")
+    logging.info("Generating performance report...")
     report = optimizer.get_performance_report()
-    print(f"Performance report generated with health: {report.get('overall_health', 'unknown')}")
+    logging.info(f"Performance report generated with health: {report.get('overall_health', 'unknown')}")
 
     # Test optimization
-    print("Running optimization...")
+    logging.info("Running optimization...")
     opt_result = optimizer.optimize_now()
-    print(f"Optimization completed: {len(opt_result.get('optimizations_executed', []))} actions executed")
+    logging.info(f"Optimization completed: {len(opt_result.get('optimizations_executed', []))} actions executed")
 
-    print("Advanced Performance Optimizer test completed successfully!")
+    logging.info("Advanced Performance Optimizer test completed successfully!")

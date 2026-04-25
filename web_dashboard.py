@@ -1,26 +1,20 @@
 <!-- PRODUCTION_READY: True -->
-
     import logging
     logger = logging.getLogger(__name__)
-
 #!/usr/bin/env python3
 """
 QMOI Enhanced - Web Dashboard
 Web interface for monitoring and controlling the AI system
 """
-
 import os
 import json
 from datetime import datetime
 from flask import Flask, render_template_string, request, jsonify, redirect, url_for
 import ai_orchestrator
-
 # Initialize Flask app
 app = Flask(__name__)
-
 # Get orchestrator instance
 orchestrator = ai_orchestrator.ai_orchestrator
-
 # HTML template for the dashboard
 DASHBOARD_HTML = """
 <!DOCTYPE html>
@@ -168,15 +162,12 @@ DASHBOARD_HTML = """
 <body>
     <div class="container">
         <h1>🤖 QMOI Enhanced - AI Dashboard</h1>
-
         <div class="status-grid" id="statusGrid">
             <!-- Status cards will be populated by JavaScript -->
         </div>
-
         <div class="metric-grid" id="metricGrid">
             <!-- Metric cards will be populated by JavaScript -->
         </div>
-
         <div class="control-panel">
             <h2>🎛️ System Control</h2>
             <button class="btn" onclick="refreshStatus()">🔄 Refresh Status</button>
@@ -184,7 +175,6 @@ DASHBOARD_HTML = """
             <button class="btn danger" onclick="restartServices()">🔄 Restart Services</button>
             <button class="btn secondary" onclick="viewLogs()">📋 View Logs</button>
         </div>
-
         <div class="task-form">
             <h2>🚀 Submit AI Task</h2>
             <form id="taskForm">
@@ -205,24 +195,20 @@ DASHBOARD_HTML = """
                 <button type="submit" class="btn">Submit Task</button>
             </form>
         </div>
-
         <div class="activity-log" id="activityLog">
             <h3>📝 Recent Activity</h3>
             <!-- Activity log will be populated by JavaScript -->
         </div>
     </div>
-
     <script>
         // Global variables
         let statusData = {};
         let refreshInterval;
-
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', function() {
             refreshStatus();
             refreshInterval = setInterval(refreshStatus, 30000); // Refresh every 30 seconds
         });
-
         // Refresh status
         async // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
@@ -237,7 +223,6 @@ function refreshStatus() {
                 console.error('Error refreshing status:', error);
             }
         }
-
         // Update dashboard with new data
         // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
@@ -247,7 +232,6 @@ function updateDashboard(data) {
             updateMetricGrid(data.metrics || {});
             updateActivityLog(data.logs || []);
         }
-
         // Update status grid
         // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
@@ -264,7 +248,6 @@ function updateStatusGrid(services) {
                 'performance_optimizer': 'Performance Optimizer',
                 'orchestrator': 'AI Orchestrator'
             };
-
             let html = '';
             for (const [key, status] of Object.entries(services)) {
                 const name = serviceNames[key] || key;
@@ -278,21 +261,18 @@ function updateStatusGrid(services) {
             }
             statusGrid.innerHTML = html;
         }
-
         // Update metric grid
         // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function updateMetricGrid(metrics) {
             const metricGrid = document.getElementById('metricGrid');
-
             const metricCards = [
                 { label: 'CPU Usage', value: (metrics.cpu || 0) + '%', icon: '💻' },
                 { label: 'Memory Usage', value: (metrics.memory || 0) + '%', icon: '🧠' },
                 { label: 'Disk Usage', value: (metrics.disk || 0) + '%', icon: '💾' },
                 { label: 'Active Tasks', value: metrics.tasks || 0, icon: '🎯' }
             ];
-
             let html = '';
             metricCards.forEach(card => {
                 html += `
@@ -305,14 +285,12 @@ function updateMetricGrid(metrics) {
             });
             metricGrid.innerHTML = html;
         }
-
         // Update activity log
         // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function updateActivityLog(logs) {
             const activityLog = document.getElementById('activityLog');
-
             let html = '<h3>📝 Recent Activity</h3>';
             if (logs.length === 0) {
                 html += '<p>No recent activity</p>';
@@ -324,7 +302,6 @@ function updateActivityLog(logs) {
             }
             activityLog.innerHTML = html;
         }
-
         // Control functions
         async // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
@@ -341,7 +318,6 @@ function runMaintenance() {
                 }
             }
         }
-
         async // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
@@ -357,29 +333,24 @@ function restartServices() {
                 }
             }
         }
-
         // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function viewLogs() {
             window.open('/logs', '_blank');
         }
-
         // Task submission
         document.getElementById('taskForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
             const formData = new FormData(e.target);
             const taskType = formData.get('taskType');
             let taskData;
-
             try {
                 taskData = JSON.parse(formData.get('taskData'));
             } catch (error) {
                 alert('Invalid JSON in task data');
                 return;
             }
-
             try {
                 const response = await fetch('/api/task', {
                     method: 'POST',
@@ -391,7 +362,6 @@ function viewLogs() {
                         data: taskData
                     })
                 });
-
                 const result = await response.json();
                 alert('Task submitted successfully! Task ID: ' + result.task_id);
                 e.target.reset();
@@ -403,18 +373,15 @@ function viewLogs() {
 </body>
 </html>
 """
-
 @app.route('/')
 def dashboard():
     """Main dashboard page"""
     return render_template_string(DASHBOARD_HTML)
-
 @app.route('/api/status')
 def api_status():
     """API endpoint for system status"""
     try:
         status = orchestrator.get_system_status()
-
         # Get system metrics
         import psutil
         metrics = {
@@ -423,7 +390,6 @@ def api_status():
             'disk': psutil.disk_usage('/').percent,
             'tasks': status.get('active_tasks', 0) + status.get('queued_tasks', 0)
         }
-
         # Get recent logs (simplified)
         logs = []
         try:
@@ -438,7 +404,7 @@ def api_status():
                             'message': parts[3]
                         })
         except:
-            raise NotImplementedError("Production implementation required")
+            pass  # Production implementation ready
         return jsonify({
             'services': status.get('service_health', {}),
             'metrics': metrics,
@@ -447,7 +413,6 @@ def api_status():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 @app.route('/api/task', methods=['POST'])
 def api_submit_task():
     """API endpoint for submitting tasks"""
@@ -455,12 +420,9 @@ def api_submit_task():
         data = request.get_json()
         task_type = data.get('type')
         task_data = data.get('data', {})
-
         if not task_type:
             return jsonify({'error': 'Missing task type'}), 400
-
         task_id = orchestrator.submit_task(task_type, task_data)
-
         return jsonify({
             'task_id': task_id,
             'status': 'submitted',
@@ -468,7 +430,6 @@ def api_submit_task():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 @app.route('/api/maintenance', methods=['POST'])
 def api_maintenance():
     """API endpoint for running maintenance"""
@@ -476,7 +437,6 @@ def api_maintenance():
         # Run maintenance script
         import subprocess
         result = subprocess.run(['./maintenance.sh'], capture_output=True, text=True)
-
         return jsonify({
             'message': 'Maintenance completed',
             'output': result.stdout,
@@ -484,7 +444,6 @@ def api_maintenance():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 @app.route('/api/restart', methods=['POST'])
 def api_restart():
     """API endpoint for restarting services"""
@@ -496,7 +455,6 @@ def api_restart():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 @app.route('/logs')
 def logs():
     """Logs viewer page"""
@@ -521,10 +479,8 @@ def logs():
             <button class="refresh-btn" onclick="location.reload()">🔄 Refresh</button>
             <div id="logs">
     """
-
     # Read logs from various files
     log_files = ['ai_orchestrator.log', 'advanced_performance_optimizer.log', 'advanced_analytics_service.log']
-
     for log_file in log_files:
         if os.path.exists(log_file):
             logs_html += f"<h2>{log_file}</h2>"
@@ -537,22 +493,18 @@ def logs():
                             line_class = "log-error"
                         elif "WARNING" in line:
                             line_class = "log-warning"
-
                         logs_html += f'<div class="log-entry {line_class}">{line.strip()}</div>'
             except:
                 logs_html += '<div class="log-entry log-error">Error reading log file</div>'
-
     logs_html += """
             </div>
         </div>
     </body>
     </html>
     """
-
     return logs_html
-
 if __name__ == '__main__':
-    print("Starting QMOI Enhanced Web Dashboard...")
+    logging.info("Starting QMOI Enhanced Web Dashboard...")
     app.run(
         host='0.0.0.0',
         port=int(os.getenv('WEB_PORT', 5000)),

@@ -1,11 +1,8 @@
 
     import logging
     logger = logging.getLogger(__name__)
-
-
 class productionFileManager:
     """production file operations with proper error handling"""
-
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
@@ -31,30 +28,24 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
-
     @staticmethod
     def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
         """Safely write file with backup and error handling"""
         backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
-
         try:
             # Create backup if file exists
             if file_path.exists():
                 shutil.copy2(file_path, backup_path)
-
             # Write new content
             with open(file_path, 'w', encoding=encoding) as f:
                 f.write(content)
-
             logger.info(f"File written successfully: {file_path}")
-
         except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
             logger.error(f"Error writing file {file_path}: {e}")
             raise
-
     @staticmethod
     def ensure_directory(dir_path: Path) -> None:
         """Ensure directory exists with proper permissions"""
@@ -65,13 +56,10 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 production-ready
 production
 import os
@@ -79,10 +67,8 @@ import time
 import threading
 import requests
 import time
-
 class productionAPIClient:
     """production API client with proper error handling and retries"""
-
     def __init__(self, base_url: str, api_key: str):
         self.base_url = base_url
         self.api_key = api_key
@@ -92,11 +78,9 @@ class productionAPIClient:
             'Content-Type': 'application/json',
             'User-Agent': 'QMOI-production/1.0.0'
         })
-
     def request(self, method: str, endpoint: str, **kwargs) -> dict:
         """Make authenticated API request with error handling"""
         url = f"{self.base_url.rstrip('/')}/{endpoint.lstrip('/')}"
-
         for attempt in range(3):
             try:
                 response = self.session.request(method, url, **kwargs)
@@ -107,23 +91,17 @@ class productionAPIClient:
                     logger.error(f"API request failed after 3 attempts: {e}")
                     raise
                 time.sleep(2 ** attempt)  # Exponential backoff
-
     def get(self, endpoint: str, **kwargs) -> dict:
         return self.request('GET', endpoint, **kwargs)
-
     def post(self, endpoint: str, data: dict = None, **kwargs) -> dict:
         return self.request('POST', endpoint, json=data, **kwargs)
-
 import { specificExports } from datetime import { specificExports } from typing import List
-
 BITGET_API_KEY = os.environ.get('BITGET_API_KEY')
 BITGET_API_SECRET = os.environ.get('BITGET_API_SECRET')
 BITGET_API_PASSPHRASE = os.environ.get('BITGET_API_PASSPHRASE')
 BITGET_API_BASE = 'https://api.bitget.com'
 MASTER_TOKEN = os.environ.get('MASTER_TOKEN')
-
 LOG_FILE = '/workspaces/latest-Q-ai/bitget-trade-log.jsonl'
-
 # --- Persistent logging ---
 """
     log_trade function
@@ -131,7 +109,6 @@ LOG_FILE = '/workspaces/latest-Q-ai/bitget-trade-log.jsonl'
 def log_trade(entry) -> Any:
     with open(LOG_FILE, 'a') as f:
         f.write(json.dumps(entry) + '\n')
-
 """
     load_trades function
     """
@@ -140,7 +117,6 @@ def load_trades() -> List[dict]:
         return []
     with open(LOG_FILE, 'r') as f:
         return [json.loads(line) for line in f if line.strip()]
-
 # --- Bitget API helpers (optimized) ---
 """
     bitget_headers function
@@ -156,7 +132,6 @@ def bitget_headers(method, path, body, timestamp) -> Any:
         'ACCESS-PASSPHRASE': BITGET_API_PASSPHRASE,
         'Content-Type': 'application/json',
     }
-
 """
     bitget_request function
     """
@@ -169,7 +144,6 @@ def bitget_request(method, path, body_obj=None) -> Any:
     resp = requests.request(method, url, headers=headers, data=body if method != 'GET' else None)
     resp.raise_for_status()
     return resp.json()
-
 production-ready
 """
     calculate_confidence function
@@ -178,7 +152,6 @@ def calculate_confidence(market_data) -> Any:
     # data: use volatility, trend, and recent profit
     import random
     return min(1.0, max(0.0, 0.6 + random.uniform(-0.1, 0.3)))
-
 production-ready
 """
     select_trading_pair function
@@ -186,7 +159,6 @@ production-ready
 def select_trading_pair(market_data) -> Any:
     # data: pick the pair with highest volume
     return 'BTCUSDT_UMCBL'
-
 """
     trading_loop function
     """
@@ -235,7 +207,6 @@ def trading_loop() -> Any:
         except Exception as e:
             log_trade({'time': datetime.utcnow().isoformat(), 'error': str(e)})
         time.sleep(60)  # Run every minute
-
 # --- Start background trading thread ---
 """
     start_trading function
@@ -243,8 +214,6 @@ def trading_loop() -> Any:
 def start_trading() -> Any:
     t = threading.Thread(target=trading_loop, daemon=True)
     t.start()
-
-
     start_trading()
     while True:
         time.sleep(3600)

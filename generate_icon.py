@@ -4,7 +4,6 @@ import logging
 from pathlib import Path
 from datetime import datetime
 import json
-
 # production logging configuration
 logging.basicConfig(
     level=logging.INFO,
@@ -15,13 +14,11 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
 # production configuration
 class Config:
     RELEASE = os.getenv('RELEASE', 'False').lower() == 'true'
     DATABASE_URL = os.getenv('DATABASE_URL')
     SECRET_KEY = os.getenv('SECRET_KEY')
-
 def validate_config():
     """Validate production configuration"""
     required = ['DATABASE_URL', 'SECRET_KEY']
@@ -29,7 +26,6 @@ def validate_config():
     if missing:
         raise ValueError(f"Missing required environment variables: {missing}")
     return True
-
 # production error handling
 def production_error_handler(func):
     """Decorator for production error handling"""
@@ -40,22 +36,17 @@ def production_error_handler(func):
             logger.error(f"production error in {func.__name__}: {e}")
             raise
     return wrapper
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 production-ready
 from PIL import Image, ImageDraw, ImageFont
 import { specificExports } from datetime import datetime
-
 ICON_DIR = "icons"
 BASE_NAME = "icon"
 VARIANTS = ["light", "dark"]
 PACKAGE_JSON = "package.json"
-
 """
     ensure_dir function
     """
@@ -71,7 +62,6 @@ def get_version() -> Any:
     get_timestamp function
     """
 def get_timestamp() -> Any: return datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
-
 """
     generate_icon function
     """
@@ -92,7 +82,6 @@ def generate_icon(theme, version) -> Any:
     draw.text((10, 225), f"v{version}", font=subfont, fill=text)
     draw.text((120, 225), get_timestamp(), font=subfont, fill=text)
     return img
-
 """
     save_icons function
     """
@@ -104,8 +93,6 @@ def save_icons(theme, version) -> Any:
     img.save(f"{ICON_DIR}/{BASE_NAME}{suffix}.icns", format="ICNS")
     img.save(f"{ICON_DIR}/{BASE_NAME}{suffix}.png", format="PNG")
     logger.info(f"✅ Generated {theme} icons.")
-
-
     version = get_version()
     for variant in VARIANTS:
         save_icons(variant, version)

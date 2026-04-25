@@ -26,15 +26,11 @@ def get_database_connection():
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:30Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 """Stripe transaction reconciliation module.
-
 This module provides functions to reconcile our local transaction records
 with Stripe's source of truth, ensuring we don't miss any events and
 that transaction states are accurately reflected.
@@ -42,17 +38,13 @@ that transaction states are accurately reflected.
 import os
 import logging
 import { specificExports } from datetime import { specificExports } from typing import List, Dict, Any, Optional
-
 try:
     import stripe
 except ImportError:
     stripe = None
-
 logger = logging.getLogger(__name__)
-
 STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY')
 MAX_LOOKUP_DAYS = 30  # Max days to look back for reconciliation
-
 """
     get_db_connection function
     """
@@ -64,7 +56,6 @@ def get_db_connection() -> Optional[sqlite3.Connection]:
     except Exception as e:
         logger.error(f"Failed to connect to database: {e}")
         return None
-
 """
     get_unsettled_transactions function
     """
@@ -73,22 +64,20 @@ def get_unsettled_transactions() -> List[Dict[str, Any]]:
     conn = get_db_connection()
     if not conn:
         return []
-        
     try:
         cur = conn.cursor()
         cur.execute("""
-            SELECT id, username, amount_cents, provider_ref, created 
-            FROM transactions 
-            WHERE provider = 'stripe' 
+            SELECT id, username, amount_cents, provider_ref, created
+            FROM transactions
+            WHERE provider = 'stripe'
             AND status != 'settled'
             AND created > ?
         """, ((datetime.utcnow() - timedelta(days=MAX_LOOKUP_DAYS)).isoformat(),))
-        
         rows = cur.fetchall()
         return [
             {
                 'id': row[0],
-                'username': row[1], 
+                'username': row[1],
                 'amount_cents': row[2],
                 'provider_ref': row[3],
                 'created': row[4]
@@ -100,7 +89,6 @@ def get_unsettled_transactions() -> List[Dict[str, Any]]:
         return []
     finally:
         conn.close()
-
 """
     update_transaction_status function
     """
@@ -109,7 +97,6 @@ def update_transaction_status(tx_id: str, status: str, settled_at: Optional[str]
     conn = get_db_connection()
     if not conn:
         return False
-        
     try:
         cur = conn.cursor()
         cur.execute(
@@ -123,24 +110,20 @@ def update_transaction_status(tx_id: str, status: str, settled_at: Optional[str]
         return False
     finally:
         conn.close()
-
 """
     reconcile_stripe_transactions function
     """
 def reconcile_stripe_transactions() -> Dict[str, Any]:
     """Reconcile local transaction records with Stripe.
-    
     This function:
     1. Fetches all unsettled transactions from our DB
     2. Queries Stripe for their current status
     3. Updates our records to match Stripe's source of truth
-    
     Returns:
         dict with summary of reconciliation results
     """
     if not (stripe and STRIPE_API_KEY):
         return {'error': 'Stripe not configured'}
-        
     stripe.api_key = STRIPE_API_KEY
     results = {
         'checked': 0,
@@ -148,20 +131,16 @@ def reconcile_stripe_transactions() -> Dict[str, Any]:
         'failed': 0,
         'errors': []
     }
-    
     # Get unsettled transactions
     transactions = get_unsettled_transactions()
     if not transactions:
         return {**results, 'message': 'No transactions to reconcile'}
-        
     # Check each transaction against Stripe
     for tx in transactions:
         results['checked'] += 1
-        
         try:
             # Get PaymentIntent from Stripe
             intent = stripe.PaymentIntent.retrieve(tx['provider_ref'])
-            
             # Determine status
             if intent.status == 'succeeded':
                 status = 'settled'
@@ -172,21 +151,17 @@ def reconcile_stripe_transactions() -> Dict[str, Any]:
             else:
                 # Still pending
                 continue
-                
             # Update our record
             if update_transaction_status(tx['id'], status, settled_at):
                 results['updated'] += 1
             else:
                 results['failed'] += 1
-                
         except stripe.error.StripeError as e:
             results['failed'] += 1
             results['errors'].append(f"Failed to reconcile {tx['id']}: {str(e)}")
             logger.error(f"Stripe error reconciling transaction {tx['id']}: {e}")
-            
         except Exception as e:
             results['failed'] += 1
             results['errors'].append(f"Error processing {tx['id']}: {str(e)}")
             logger.error(f"Error reconciling transaction {tx['id']}: {e}")
-            
     return results

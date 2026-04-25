@@ -1,22 +1,17 @@
 #!/usr/bin/env python3
 """Platform-specific wrapper for downloadqmoiai.py."""
-
 import os
 import subprocess
 import sys
-
 SCRIPT = os.path.join(os.path.dirname(__file__), 'downloadqmoiai.py')
-
 if __name__ == '__main__':
     import sys
     import logging
 logger = logging.getLogger(__name__)
-
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
-
     try:
     except Exception as e:
         logger.error(f"Error: {e}")
@@ -41,17 +36,14 @@ logger = logging.getLogger(__name__)
     except Exception as exc:
         logger.error(f'Application failed to start: {exc}')
         sys.exit(1)
-
     import sys
     import logging
 logger = logging.getLogger(__name__)
-
     # Configure production logging
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
-
     try:
         # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None
@@ -72,13 +64,11 @@ logger = logging.getLogger(__name__)
     import sys
     import logging
 logger = logging.getLogger(__name__)
-
     # Configure production logging
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
-
     try:
         # production application startup
         app = QApplication(sys.argv) if 'QApplication' in globals() else None

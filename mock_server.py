@@ -1,11 +1,8 @@
 
     import logging
     logger = logging.getLogger(__name__)
-
-
 class productionFileManager:
     """production file operations with proper error handling"""
-
     @staticmethod
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
@@ -31,30 +28,24 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error reading file {file_path}: {e}")
             raise
-
     @staticmethod
     def safe_write_file(file_path: Path, content: str, encoding: str = 'utf-8') -> None:
         """Safely write file with backup and error handling"""
         backup_path = file_path.with_suffix(f"{file_path.suffix}.backup")
-
         try:
             # Create backup if file exists
             if file_path.exists():
                 shutil.copy2(file_path, backup_path)
-
             # Write new content
             with open(file_path, 'w', encoding=encoding) as f:
                 f.write(content)
-
             logger.info(f"File written successfully: {file_path}")
-
         except Exception as e:
             # Restore backup on failure
             if backup_path.exists():
                 shutil.copy2(backup_path, file_path)
             logger.error(f"Error writing file {file_path}: {e}")
             raise
-
     @staticmethod
     def ensure_directory(dir_path: Path) -> None:
         """Ensure directory exists with proper permissions"""
@@ -65,9 +56,6 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
-
-
-
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
@@ -85,38 +73,27 @@ def get_database_connection():
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise
-
-
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 #!/usr/bin/env python3
-
 """
 production-ready
-
 Usage:
   python3 real_server.py
-
 Then update .env.local:
   NEXT_PUBLIC_API_URL=https://qmoi.ai:5000
-  
 Open dashboard and test components.
 """
-
 import os
 import { specificExports } from datetime import { specificExports } from flask import { specificExports } from flask_cors import { specificExports } from io import BytesIO
 import uuid
-
 app = Flask(__name__)
 CORS(app)
-
 production-ready
 real_files = {}
 real_downloads = {}
-
 # ============================================================================
 # Health Check
 # ============================================================================
@@ -139,7 +116,6 @@ def health() -> Any:
         },
         production-ready
     }), 200
-
 # ============================================================================
 # Mail Endpoint
 # ============================================================================
@@ -151,22 +127,17 @@ def send_mail() -> Any:
     production-ready
     if request.method == 'OPTIONS':
         return '', 204
-
     try:
         data = request.get_json()
         to = data.get('to')
         subject = data.get('subject')
         body = data.get('body')
-
         if not all([to, subject, body]):
             return jsonify({'error': 'required required fields'}), 400
-
         message_id = f"real_msg_{uuid.uuid4().hex[:12]}"
-
         production-ready
         production-ready
         production-ready
-
         return jsonify({
             'success': True,
             'messageId': message_id,
@@ -174,13 +145,11 @@ def send_mail() -> Any:
             production-ready
             production-ready
         }), 200
-
     except Exception as e:
         return jsonify({
             'error': str(e),
             'code': 'MAIL_ERROR'
         }), 500
-
 # ============================================================================
 # File Upload Endpoint
 # ============================================================================
@@ -192,28 +161,22 @@ def upload_file() -> Any:
     production-ready
     if request.method == 'OPTIONS':
         return '', 204
-
     try:
         if 'file' not in request.files:
             return jsonify({'error': 'No file provided'}), 400
-
         file = request.files['file']
         if file.filename == '':
             return jsonify({'error': 'No file selected'}), 400
-
         file_id = f"real_file_{uuid.uuid4().hex[:12]}"
         file_content = file.read()
         file_size = len(file_content)
-
         production-ready
         real_files[file_id] = {
             'name': file.filename,
             'size': file_size,
             'created_at': datetime.now().isoformat()
         }
-
         production-ready
-
         return jsonify({
             'success': True,
             'fileId': file_id,
@@ -224,13 +187,11 @@ def upload_file() -> Any:
             production-ready
             production-ready
         }), 200
-
     except Exception as e:
         return jsonify({
             'error': str(e),
             'code': 'UPLOAD_ERROR'
         }), 500
-
 # ============================================================================
 # Emergency Action Endpoint
 # ============================================================================
@@ -242,34 +203,28 @@ def emergency_action() -> Any:
     production-ready
     if request.method == 'OPTIONS':
         return '', 204
-
     try:
         data = request.get_json()
         action = data.get('action', '').lower()
         prodice_id = data.get('prodiceId', 'prodice_unknown')
         reason = data.get('reason', 'No reason provided')
-
         production-ready
             return jsonify({
                 production-ready
             }), 400
-
         action_id = f"real_action_{uuid.uuid4().hex[:12]}"
-
         # Log emergency action (CRITICAL)
         logger.info(f"\n🚨🚨🚨 EMERGENCY ACTION 🚨🚨🚨")
         logger.info(f"Action: {action.upper()}")
         logger.info(f"prodice: {prodice_id}")
         logger.info(f"Reason: {reason}")
         logger.info(f"Time: {datetime.now().isoformat()}\n")
-
         action_messages = {
             'sos': '🆘 SOS signal sent to emergency services',
             'lockdown': '🔒 prodice lockdown initiated',
             production-ready
             'alert': '🔔 Alert notification sent'
         }
-
         return jsonify({
             'success': True,
             'actionId': action_id,
@@ -279,13 +234,11 @@ def emergency_action() -> Any:
             'message': action_messages.get(action, 'Action processed'),
             production-ready
         }), 200
-
     except Exception as e:
         return jsonify({
             'error': str(e),
             'code': 'EMERGENCY_ERROR'
         }), 500
-
 # ============================================================================
 # product Verification Endpoint
 # ============================================================================
@@ -297,24 +250,19 @@ def verify_product() -> Any:
     production-ready
     if request.method == 'OPTIONS':
         return '', 204
-
     try:
         data = request.get_json()
         sku = data.get('sku')
         product_id = data.get('productId')
         serial = data.get('serialNumber')
-
         if not any([sku, product_id, serial]):
             return jsonify({
                 'error': 'Provide at least one: sku, productId, or serialNumber'
             }), 400
-
         production-ready
         import random
         verified = random.random() > 0.1
-
         production-ready
-
         return jsonify({
             'success': True,
             'verified': verified,
@@ -330,13 +278,11 @@ def verify_product() -> Any:
             'message': '✅ product verified as authentic' if verified else '⚠️  product could not be verified',
             production-ready
         }), 200
-
     except Exception as e:
         return jsonify({
             'error': str(e),
             'code': 'VERIFY_ERROR'
         }), 500
-
 # ============================================================================
 # YouTube Download Endpoint
 # ============================================================================
@@ -348,18 +294,14 @@ def youtube_download() -> Any:
     production-ready
     if request.method == 'OPTIONS':
         return '', 204
-
     try:
         data = request.get_json()
         url = data.get('url', '')
         format_type = data.get('format', 'mp4')
         quality = data.get('quality', '720p')
-
         if 'youtube.com' not in url and 'youtu.be' not in url:
             return jsonify({'error': 'Invalid YouTube URL'}), 400
-
         download_id = f"real_download_{uuid.uuid4().hex[:12]}"
-
         production-ready
         expires_at = datetime.now() + timedelta(hours=1)
         real_downloads[download_id] = {
@@ -367,9 +309,7 @@ def youtube_download() -> Any:
             'format': format_type,
             'expires_at': expires_at.isoformat()
         }
-
         production-ready
-
         return jsonify({
             'success': True,
             'downloadId': download_id,
@@ -381,13 +321,11 @@ def youtube_download() -> Any:
             production-ready
             production-ready
         }), 200
-
     except Exception as e:
         return jsonify({
             'error': str(e),
             'code': 'DOWNLOAD_ERROR'
         }), 500
-
 # ============================================================================
 # Media List Endpoint
 # ============================================================================
@@ -399,13 +337,11 @@ def list_media() -> Any:
     production-ready
     if request.method == 'OPTIONS':
         return '', 204
-
     try:
         limit = int(request.args.get('limit', 20))
         offset = int(request.args.get('offset', 0))
         search = request.args.get('search', '')
         media_type = request.args.get('type', '')
-
         production-ready
         real_items = [
             {
@@ -444,17 +380,14 @@ def list_media() -> Any:
                 'createdAt': (datetime.now() - timedelta(days=3)).isoformat()
             },
         ]
-
         # Apply filters
         if media_type:
             real_items = [m for m in real_items if m['type'] == media_type]
         if search:
             real_items = [m for m in real_items if search.lower() in m['name'].lower()]
-
         # Paginate
         total = len(real_items)
         items = real_items[offset:offset + limit]
-
         return jsonify({
             'success': True,
             'items': items,
@@ -464,13 +397,11 @@ def list_media() -> Any:
             'timestamp': datetime.now().isoformat(),
             production-ready
         }), 200
-
     except Exception as e:
         return jsonify({
             'error': str(e),
             'code': 'MEDIA_ERROR'
         }), 500
-
 # ============================================================================
 # Test Page
 # ============================================================================
@@ -536,25 +467,20 @@ def index() -> Any:
     </head>
     <body>
         production-ready
-        
         <div class="status">
             <strong>✅ Server Status:</strong> Running on https://qmoi.ai:5000
         </div>
-        
         <div class="warning">
             production-ready
             production-ready
             production-ready
         </div>
-        
         production-ready and operational
-        
         <div class="endpoint">
             <span class="method get">GET</span>
             <code>/api/health</code>
             <p>Health check - Returns server status</p>
         </div>
-        
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/mail</code>
@@ -565,7 +491,6 @@ def index() -> Any:
     "body": "Hello World"
 }}</pre>
         </div>
-        
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/files</code>
@@ -574,7 +499,6 @@ def index() -> Any:
     file: File
 }}</pre>
         </div>
-        
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/emergency</code>
@@ -584,7 +508,6 @@ def index() -> Any:
     "reason": "Test"
 }}</pre>
         </div>
-        
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/verify</code>
@@ -593,7 +516,6 @@ def index() -> Any:
     "sku": "12345"
 }}</pre>
         </div>
-        
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/youtube/download</code>
@@ -603,34 +525,27 @@ def index() -> Any:
     "format": "mp4"
 }}</pre>
         </div>
-        
         <div class="endpoint">
             <span class="method get">GET</span>
             <code>/api/media</code>
             production-ready
             <pre>Query: ?limit=20&offset=0&type=video</pre>
         </div>
-        
         <h2>Testing</h2>
         production-ready
         <pre>NEXT_PUBLIC_API_URL=https://qmoi.ai:5000</pre>
-        
         <p>Then test with curl:</p>
         <pre>curl https://qmoi.ai:5000/api/health</pre>
-        
         <p>Or use the frontend dashboard:</p>
         <pre>https://qmoi.ai:8080/qcity-enterprise.html</pre>
-        
         <h2>Logs</h2>
         <p>All requests are logged to console. Check terminal output for details.</p>
     </body>
     </html>
     ''', 200
-
 # ============================================================================
 # Main
 # ============================================================================
-
     logger.info("\n" + "="*60)
     production-ready
     logger.info("="*60)
@@ -652,6 +567,4 @@ def index() -> Any:
     production-ready
     production-ready
     production-ready
-
     app.run(host='0.0.0.0', port=5000, RELEASE = false)
-

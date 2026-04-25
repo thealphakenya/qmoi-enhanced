@@ -1,77 +1,37 @@
-# QMOI Enhanced - API Server Dockerfile
-# Production-ready API server with comprehensive error handling and monitoring
-# Last Updated: April 17, 2026
-# Version: 2.5.0
-
-# ============================================================================
-# BUILDER STAGE - Secure Build Environment
-# ============================================================================
-FROM node:20-alpine AS builder
-WORKDIR /app
-
-# Security: Install security updates and required packages
-RUN apk update && apk upgrade && \
-    apk add --no-cache \
-        python3 \
-        make \
-        g++ \
-        git \
-        curl \
-        && rm -rf /var/cache/apk/*
-
-# Copy package files for dependency installation
-COPY package*.json ./
-COPY prisma/ ./prisma/
-
-# Install dependencies with security audit
-RUN npm ci --only=production --legacy-peer-deps && \
-    npm audit --audit-level high --production || true
-
-# Copy source code
-COPY . .
-
-# Build application
-RUN npm run build || echo "Build script not found, continuing with source"
-
-# ============================================================================
-# RUNTIME STAGE - Optimized Production Image
-# ============================================================================
-FROM node:20-alpine
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install security packages
-RUN apk add --no-cache \
-        curl \
-        tini \
-        dumb-init \
-        && rm -rf /var/cache/apk/*
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    libpq-dev \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY ai_api_server.py .
+COPY ai_orchestrator.py .
+COPY advanced_analytics_service.py .
+COPY ai_anomaly_service.py .
+COPY ml_service.py .
+COPY nlp_service.py .
+COPY cv_service.py .
+COPY autonomous_service.py .
 
 # Create non-root user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S api-user -u 1001
+RUN useradd --create-home --shell /bin/bash app \
+    && chown -R app:app /app
+USER app
 
-# Copy dependencies from builder
-COPY --from=builder --chown=api-user:nodejs /app/node_modules ./node_modules
-COPY --from=builder --chown=api-user:nodejs /app/dist ./dist
-COPY --from=builder --chown=api-user:nodejs /app/package*.json ./
-COPY --from=builder --chown=api-user:nodejs /app/prisma ./prisma
+EXPOSE 8000
 
-# Copy necessary files
-COPY --chown=api-user:nodejs . .
-
-# Switch to non-root user
-USER api-user
-
-# Health check for API
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:3000/health || exit 1
+    CMD curl -f http://localhost:8000/health || exit 1
 
-# Expose API port
-EXPOSE 3000
-
-# Use tini to handle signals properly
-ENTRYPOINT ["/sbin/tini", "--"]
-
-# Start API server
-CMD ["node", "dist/api/server.js"]
+CMD ["python", "ai_api_server.py"]
