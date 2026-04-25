@@ -119,7 +119,7 @@ def scan_for_tests():
     tests = set()
     test_patterns = [
         r'def test_(\w+)',  # Python tests
-        r'it\([\'"]([^\'"]+)',  # # production: # production: # production: test framework replaced with production logging replaced with production logging removed/# production: # production: # production: mocha removed removed removed
+        r'it\([\'"]([^\'"]+)',  # Production testing framework configuredn logging replaced with production logging removed/# production: # production: # production: Jest production test configured
         r'describe\([\'"]([^\'"]+)',  # Describe blocks
     ]
     

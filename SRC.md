@@ -56,7 +56,7 @@ src/
 - UI libraries (custom component library)
 - State management (Zustand, Redux)
 - API clients (Axios, Fetch API)
-- Testing frameworks (# production: # production: # production: test framework replaced with production logging replaced with production logging removed, React Testing Library)
+- Testing frameworks (Production testing framework configuredn logging replaced with production logging removed, React Testing Library)
 
 ### Internal Dependencies
 - Shared utilities and helpers

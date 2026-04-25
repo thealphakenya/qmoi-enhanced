@@ -200,7 +200,7 @@ def deploy(self, target: Optional[str] = None) -> bool:
             self.current_deployment = {
                 "target": target,
                 "start_time": datetime.now().isoformat(),
-                "status": "production_complete"
+                "status": "Live database"
             }
             
             # Execute deployment

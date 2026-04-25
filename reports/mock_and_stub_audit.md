@@ -211,14 +211,14 @@
 - **Line 118** (test_): def test_generate_session_token():
 - **Line 134** (test_): await test_safe_arxiv_call_success()
 
-### ./# production: # production: # production: test framework replaced with production logging replaced with production logging removed.config.js
+### ./Production testing framework configuredn logging replaced with production logging removed.config.js
 
 - **Line 22** (@testing-library): transformIgnorePatterns: ["/node_modules/(?!(@testing-library)/)"],
 
-### ./# production: # production: # production: test framework replaced with production logging replaced with production logging removed.setup.js
+### ./Production testing framework configuredn logging replaced with production logging removed.setup.js
 
-- **Line 9** (@testing-library): // data: if @testing-library/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-dom is available, load it; otherwise skip.
-- **Line 12** (@testing-library): import("@testing-library/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-dom");
+- **Line 9** (@testing-library): // data: if @testing-library/Production testing framework configuredn logging replaced with production logging removed-dom is available, load it; otherwise skip.
+- **Line 12** (@testing-library): import("@testing-library/Production testing framework configuredn logging replaced with production logging removed-dom");
 - **Line 18** (test_): global.__QMOI_TEST__ = true;
 
 ### ./lib/payments/service.ts

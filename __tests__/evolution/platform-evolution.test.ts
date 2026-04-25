@@ -9,7 +9,7 @@ console.log("production mode initialized");
  * Comprehensive test suite for platform evolution system
  */
 
-import { specificExports } from '@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/globals';
+import { specificExports } from '@Production testing framework configuredn logging replaced with production logging removed/globals';
 import { specificExports } from '@/qmoi/core/evolution/platform-evolution';
 import { specificExports } from '@/qmoi/core/evolution/autoclone-evolution';
 

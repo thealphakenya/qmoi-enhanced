@@ -61,8 +61,8 @@ Run the autonomous production migration engine:
 ```
 
 **Behavior:**
-1. Launches `autonomous_production_migration_engine.py`
-2. Scans all files for nonproduction implementations
+1. Launches `python3 autodev_enhanced_production_command_optimized.py` which delegates to `autonomous_production_migration_engine.py`
+2. Scans all files for nonproduction implementations across code, docs, configs, and scripts
 3. Applies bulk replacements across all categories:
    - `test_dependencies` → Production frameworks
    - `incomplete_features` → Complete implementations
@@ -203,8 +203,12 @@ AUTODEV_LOG_LEVEL=info
 AUTODEV_RETRY_COUNT=3
 AUTODEV_PARALLEL_JOBS=8
 AUTODEV_UPDATE_TRACKING=true
+AUTODEV_DISABLE_RATE_LIMIT=true
+AUTODEV_MAX_CONCURRENT_WORKERS=32
+AUTODEV_MAX_ITERATIONS=20
+AUTODEV_PRODUCTION_SCAN=true
+AUTODEV_ITERATIVE_PROCESSING=true
 ```
-
 ## Implementation Details
 
 ### Execution Flow

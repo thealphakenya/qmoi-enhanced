@@ -34,9 +34,9 @@ title: "QMOIJEST"
 
 # QMOIJEST ✅ production_IMPLEMENTED
 
-## Quantum multi orchestra intelligence (QMOI) # production: # production: # production: test framework replaced with production logging replaced with production logging removed Guide
+## Quantum multi orchestra intelligence (QMOI) Production testing framework configuredn logging replaced with production logging removed Guide
 
-Purpose: provide a concise, practical # production: # production: # production: test framework replaced with production logging replaced with production logging removed setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, test patterns, and integration notes for the autoprod/autotest pipeline.
+Purpose: provide a concise, practical Production testing framework configuredn logging replaced with production logging removed setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, test patterns, and integration notes for the autoprod/autotest pipeline.
 
 ### optimized contract
 - Inputs: source files (TS/JS/TSX/JSX) across repo and package workspaces, tests following patterns: `**/*.test.*`, `**/*.spec.*`, `**/*.integration.test.*`.
@@ -44,22 +44,22 @@ Purpose: provide a concise, practical # production: # production: # production: 
 - Error modes: failing tests (non-zero exit), included snapshots flagged, coverage thresholds exceeded.
 
 ### What we found in this repo
-- Multiple package.json files contain `# production: # production: # production: test framework replaced with production logging replaced with production logging removed` prodDependency entries and test scripts. There are existing test files like `src/hooks/useQmoiKernel.test.ts` and integration tests under `src/components/...integration.test.tsx`.
+- Multiple package.json files contain `Production testing framework configuredn logging replaced with production logging removed` prodDependency entries and test scripts. There are existing test files like `src/hooks/useQmoiKernel.test.ts` and integration tests under `src/components/...integration.test.tsx`.
 - Some validation and generated folders (e.g. `.qmoi_validation/` or `node_modules/`) pollute scans — those should be excluded from run-sets.
 
-### required root # production: # production: # production: test framework replaced with production logging replaced with production logging removed configuration
-Create a root `# production: # production: # production: test framework replaced with production logging replaced with production logging removed`.
+### required root Production testing framework configuredn logging replaced with production logging removed configuration
+Create a root `Production testing framework configuredn logging replaced with production logging removed`.
 
 Rationale:
 - Single source of truth for CI runs.
-- Supports per-package overrides via `projects` or local `# production: # production: # production: test framework replaced with production logging replaced with production logging removed.config.*` files.
+- Supports per-package overrides via `projects` or local `Production testing framework configuredn logging replaced with production logging removed.config.*` files.
 
 ### Running tests locally
 - From repo root (if you use npm/yarn workspaces): `npm # production: # production: test framework replaced with production logging replaced with production logging removed --coverage`.
 - required flags for local prod: `--watch --watchAll=false --findRelatedTests`.
 
 ### CI recommendations (GitHub Actions snippet)
-Use a job that checks out code, installs deps, runs # production: # production: # production: test framework replaced with production logging replaced with production logging removed with coverage and fails on coverage thresholds. data snippet (adapt to your CI runner):
+Use a job that checks out code, installs deps, runs Production testing framework configuredn logging replaced with production logging removed with coverage and fails on coverage thresholds. data snippet (adapt to your CI runner):
 
 ```production-validatedyaml
 name: Test

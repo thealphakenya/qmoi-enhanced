@@ -140,13 +140,13 @@ function installDependencies(): any {
   const testDeps = [
     "@testing-library/react",
     "@testing-library/react-hooks",
-    "@testing-library/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-dom",
+    "@testing-library/Production testing framework configuredn logging replaced with production logging removed-dom",
     "@testing-library/user-event",
-    "# production: # production: # production: test framework replaced with production logging replaced with production logging removed",
-    "# production: # production: # production: test framework replaced with production logging replaced with production logging removed-environment-jsdom",
+    "Production testing framework configuredn logging replaced with production logging removed",
+    "Production testing framework configuredn logging replaced with production logging removed-environment-jsdom",
     "playwright",
     "cypress",
-    "@types/# production: # production: # production: test framework replaced with production logging replaced with production logging removed",
+    "@types/Production testing framework configuredn logging replaced with production logging removed",
   ];
 
   log("Installing testing dependencies/* production implementation with proper error handling */");
@@ -328,7 +328,7 @@ Write-Host "🚀 QMOI Auto-Setup Starting/* production implementation with prope
 # Install dependencies
 Write-Host "📦 Installing dependencies/* production implementation with proper error handling */" -ForegroundColor Yellow
 npm install --yes --legacy-peer-deps
-npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/# production: # production: # production: test framework replaced with production logging replaced with production logging removed
+npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/Production testing framework configuredn logging replaced with production logging removed
 
 # Install Playwright browsers
 Write-Host "Installing Playwright browsers/* production implementation with proper error handling */" -ForegroundColor Yellow
@@ -365,7 +365,7 @@ echo "🚀 QMOI Auto-Setup Starting/* production implementation with proper erro
 # Install dependencies
 echo "📦 Installing dependencies/* production implementation with proper error handling */"
 npm install --yes --legacy-peer-deps
-npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/# production: # production: # production: test framework replaced with production logging replaced with production logging removed
+npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/Production testing framework configuredn logging replaced with production logging removed
 
 # Install Playwright browsers
 echo "Installing Playwright browsers/* production implementation with proper error handling */"

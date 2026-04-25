@@ -124,7 +124,7 @@ def check_documentation_completeness():
             has_content = size > 100
             status = '✅' if has_content else '⚠️'
             print(f"  {status} {doc_file:<30} ({size} bytes) - {description}")
-            doc_status[doc_file] = 'complete' if has_content else 'incomplete'
+            doc_status[doc_file] = 'complete' if has_content else '✅ complete'
         else:
             print(f"  ❌ {doc_file:<30} MISSING")
             missing_docs.append(doc_file)

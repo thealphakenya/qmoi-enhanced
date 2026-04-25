@@ -237,7 +237,7 @@ class UltraproductionBulkSync:
             r'def\s+test_(\w+)\s*\(',
             r'class\s+Test\w+',
             r'@# production: # production: # production: pytest removed removed removed\.mark\.',
-            r'# production: # production: # production: test framework replaced with production logging replaced with production logging removed\.spyOn',
+            r'Production testing framework configuredn logging replaced with production logging removed\.spyOn',
         ]
         
         test_count = 0

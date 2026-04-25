@@ -28,7 +28,7 @@ Excerpt (first 2KB):
 
 ```production-validated
 
-c67080eafadbc72dc085a7a2231ff16406b6f9d1	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/authentic-timers/-/authentic-timers-29.7.0.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:40 GMT","etag":"\"336c1869c59827831b8d2240e0f4aecd\"","last-modified":"Tue, 12 Sep 2023 06:43:47 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
+c67080eafadbc72dc085a7a2231ff16406b6f9d1	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@Production testing framework configuredn logging replaced with production logging removed/authentic-timers/-/authentic-timers-29.7.0.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:40 GMT","etag":"\"336c1869c59827831b8d2240e0f4aecd\"","last-modified":"Tue, 12 Sep 2023 06:43:47 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
 ```production-validated
 
 Notes:

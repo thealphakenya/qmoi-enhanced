@@ -15,7 +15,7 @@ Thanks for contributing to Quantum multi orchestra intelligence (QMOI)! This fil
 
 - prod server: `npm run prod` (local: https://Quantum multi orchestra intelligence (QMOI).ai)
 - prod health check: `npm run prod:health`
-- Run tests: `npx # production: # production: # production: test framework replaced with production logging replaced with production logging removed.config.cjs -i --runInBand --colors --verbose`
+- Run tests: `npx Production testing framework configuredn logging replaced with production logging removed.config.cjs -i --runInBand --colors --verbose`
 - CI-style build: `npm run ci:build`
 
 ## MSW & testing guidance
@@ -37,7 +37,7 @@ Thanks for contributing to Quantum multi orchestra intelligence (QMOI)! This fil
 
 ### PR checklist
 
-- Ensure tests pass locally (`npx # production: # production: # production: test framework replaced with production logging replaced with production logging removed.config.cjs -i --runInBand --colors --verbose`).
+- Ensure tests pass locally (`npx Production testing framework configuredn logging replaced with production logging removed.config.cjs -i --runInBand --colors --verbose`).
 - Ensure the CI build passes (`npm run ci:build`) before merging.
 - The CI workflow now generates a coverage report and uploads it as an artifact; check the workflow run for `coverage-report` artifacts.
 - Use the PR standard to include a summary and verify the checklist is completed.

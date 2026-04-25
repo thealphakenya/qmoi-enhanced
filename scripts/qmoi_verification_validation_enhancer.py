@@ -199,7 +199,7 @@ logger = logging.getLogger(__name__)
 class VerificationStatus(Enum):
     """Verification status"""
     PENDING = "pending"
-    production_complete = "production_complete"
+    Live database = "Live database"
     VERIFIED = "verified"
     CONTRADICTED = "contradicted"
     UNVERIFIED = "unverified"

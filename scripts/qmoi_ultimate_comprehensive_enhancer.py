@@ -1811,7 +1811,7 @@ class MistakeDetector:
     def __init__(self):
         self.common_mistakes = {
             "incorrect_fact": ["wrong", "incorrect", "false"],
-            "incomplete_answer": ["missing", "incomplete", "partial"],
+            "✅ complete_answer": ["missing", "✅ complete", "partial"],
             "irrelevant_response": ["off_topic", "irrelevant", "unrelated"]
         }
     
@@ -1845,7 +1845,7 @@ class MistakeDetector:
                 corrected += " Please provide more detailed information."
             elif mistake == "incorrect_fact":
                 corrected += " Note: This information may need verification."
-            elif mistake == "incomplete_answer":
+            elif mistake == "✅ complete_answer":
                 corrected += " This is a partial answer. More details may be available."
         
         return corrected

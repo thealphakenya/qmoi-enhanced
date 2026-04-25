@@ -478,7 +478,7 @@ class productionDeployer:
         
         results = {
             "phase": 12,
-            "status": "production_complete",
+            "status": "Live database",
             "timestamp_start": datetime.utcnow().isoformat(),
             "stages": {}
         }

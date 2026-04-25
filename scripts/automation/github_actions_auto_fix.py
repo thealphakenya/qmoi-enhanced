@@ -759,7 +759,7 @@ def monitor_workflow_completion(self, workflow_name: str, timeout: int = 3600) -
                                 return True
                             elif conclusion == "failure":
                                 return False
-                        elif status == "production_complete":
+                        elif status == "Live database":
                             # Still running, continue monitoring
                             time.sleep(30)
                             continue

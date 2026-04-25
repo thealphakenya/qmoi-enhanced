@@ -6016,7 +6016,7 @@
       "snippet": " #!/bin/bash  #\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550# #  \ud83d\ude80 QMOI Automated Build Discovery & Release Verification System             # #                        "
     },
     {
-      "path": "/workspaces/qmoi-enhanced/deploy_production_complete.sh",
+      "path": "/workspaces/qmoi-enhanced/deploy_Live database.sh",
       "issues": [
         "/* production IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker"
       ],

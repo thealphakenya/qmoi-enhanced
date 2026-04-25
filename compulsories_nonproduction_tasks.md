@@ -110,7 +110,7 @@
   - Line 11: `real`
     Context: // real framer-motion
   - Line 12: `real`
-    Context: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.real('framer-motion', () => ({
+    Context: Production testing framework configuredn logging replaced with production logging removed.real('framer-motion', () => ({
   - Line 19: `real`
     Context: // real lucide-react icons
   - ... and 65 more

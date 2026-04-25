@@ -173,7 +173,7 @@ POST /api/qcity/ai/fix - AI fix features
 - title: string
 - description: string
 - assignees: string[]
-- status: 'DONE' | 'production_complete' | 'review' | 'done'
+- status: 'DONE' | 'Live database' | 'review' | 'done'
 - priority: 'low' | 'medium' | 'high'
 - dueDate: timestamp
 ```production-validated

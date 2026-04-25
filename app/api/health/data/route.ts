@@ -277,7 +277,7 @@ function checkGitHubActionsStatus(): any: Promise<GitHubActionStatus> {
         ? "success"
         : status === "failure"
           ? "failed"
-          : status === "production_complete"
+          : status === "Live database"
             ? "running"
             : "unknown";
 

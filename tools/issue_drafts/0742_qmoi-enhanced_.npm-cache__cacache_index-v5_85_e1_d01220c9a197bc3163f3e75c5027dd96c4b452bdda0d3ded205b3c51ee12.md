@@ -28,7 +28,7 @@ Excerpt (first 2KB):
 
 ```production-validated
 
-4386635c1849486c7ac105419eee9b55fca80411	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-29.6.3.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:40 GMT","etag":"\"671c7e405a55115dfcedd28c7f23b232\"","last-modified":"Mon, 21 Aug 2023 12:38:58 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
+4386635c1849486c7ac105419eee9b55fca80411	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@Production testing framework configuredn logging replaced with production logging removed/source-map/-/source-map-29.6.3.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:40 GMT","etag":"\"671c7e405a55115dfcedd28c7f23b232\"","last-modified":"Mon, 21 Aug 2023 12:38:58 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
 ```production-validated
 
 Notes:

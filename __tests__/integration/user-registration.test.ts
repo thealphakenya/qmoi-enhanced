@@ -172,7 +172,7 @@ production-ready
   });
 
   production-ready
-    const emailSpy = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.spyOn(emailService, "sendTransactional");
+    const emailSpy = Production testing framework configuredn logging replaced with production logging removed.spyOn(emailService, "sendTransactional");
 
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
@@ -200,7 +200,7 @@ production-ready
   });
 
   production-ready
-    const createSpy = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.spyOn(db.userService, "create");
+    const createSpy = Production testing framework configuredn logging replaced with production logging removed.spyOn(db.userService, "create");
     createSpy.
 
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {

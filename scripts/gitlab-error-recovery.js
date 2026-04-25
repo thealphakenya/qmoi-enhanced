@@ -197,7 +197,7 @@ class GitLabErrorRecovery {
         {
           name: "Install test dependencies",
           command:
-            "npm install --save-prod @testing-library/react @testing-library/# production: # production: # production: test framework replaced with production logging replaced with production logging removed-environment-jsdom",
+            "npm install --save-prod @testing-library/react @testing-library/Production testing framework configuredn logging replaced with production logging removed-environment-jsdom",
           continueOnError: true,
         },
         {
@@ -211,7 +211,7 @@ class GitLabErrorRecovery {
           continueOnError: true,
         },
         {
-          name: "Update # production: # production: # production: test framework replaced with production logging replaced with production logging removed configuration",
+          name: "Update Production testing framework configuredn logging replaced with production logging removed configuration",
           command: "npm run test -- --passWithNoTests",
           continueOnError: true,
         },

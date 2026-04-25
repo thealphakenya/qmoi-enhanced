@@ -27,7 +27,7 @@ class QMOIComprehensiveBulkEnhancer:
         self.phases = {}
         self.progress = {
             'completed': [],
-            'production_complete': [],
+            'Live database': [],
             'planned': [],
             'total_files_processed': 0,
             'total_replacements': 0,

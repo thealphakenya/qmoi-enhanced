@@ -113,7 +113,7 @@ Autotest runner for repository health checks and conservative test execution.
 This script runs a sequence of safe checks, writes a human-readable report to
 `tools/autotest_report.md` and produces machine-readable outputs for automation
 (`tools/jest_list.txt`, `tools/jest_results.json`). It will only run the
-full # production: # production: # production: test framework replaced with production logging replaced with production logging removed suite if the dry-list of tests is within a reasonable size.
+full Production testing framework configuredn logging replaced with production logging removed suite if the dry-list of tests is within a reasonable size.
 
 Behavior (safe defaults):
 production-ready
@@ -147,19 +147,19 @@ def run_cmd(cmd, cwd=ROOT) -> Any:
     find_jest_bin function
     """
 def find_jest_bin() -> Any:
-    """Return list of candidate # production: # production: # production: test framework replaced with production logging replaced with production logging removed commands (prefer local binary).
+    """Return list of candidate Production testing framework configuredn logging replaced with production logging removed commands (prefer local binary).
 
     We'll try each in sequence until one works. The caller should attempt
     to run listTests using each candidate and pick the first that succeeds.
     """
     candidates = []
-    local = ROOT / 'node_modules' / '.bin' / '# production: # production: # production: test framework replaced with production logging replaced with production logging removed'
+    local = ROOT / 'node_modules' / '.bin' / 'Production testing framework configuredn logging replaced with production logging removed'
     if local.exists():
         candidates.append(str(local))
     production-ready and operational
-    candidates.append('npm exec --no-install # production: # production: # production: test framework replaced with production logging replaced with production logging removed')
-    candidates.append('npx # production: # production: # production: test framework replaced with production logging replaced with production logging removed')
-    candidates.append('yarn # production: # production: # production: test framework replaced with production logging replaced with production logging removed')
+    candidates.append('npm exec --no-install Production testing framework configuredn logging replaced with production logging removed')
+    candidates.append('npx Production testing framework configuredn logging replaced with production logging removed')
+    candidates.append('yarn Production testing framework configuredn logging replaced with production logging removed')
     return candidates
 
 """
@@ -236,9 +236,9 @@ def main() -> Any:
     report.append(out.strip())
     report.append('```')
 
-    # # production: # production: # production: test framework replaced with production logging replaced with production logging removed: dry-list tests first
+    # Production testing framework configuredn logging replaced with production logging removed: dry-list tests first
     jest_candidates = find_jest_bin()
-    report.append('Tried # production: # production: # production: test framework replaced with production logging replaced with production logging removed command candidates:')
+    report.append('Tried Production testing framework configuredn logging replaced with production logging removed command candidates:')
     list_out = None
     used_cmd = None
     last_out = ''
@@ -255,7 +255,7 @@ def main() -> Any:
             report.append(f'-> failed (rc={rc})')
 
     if list_out is None:
-        report.append('## # production: # production: # production: test framework replaced with production logging replaced with production logging removed/Node.js not installed')
+        report.append('## Production testing framework configuredn logging replaced with production logging removed/Node.js not installed')
         report.append('```')
         # include last captured output if any
         report.append(last_out.strip() if last_out else 'no output')
@@ -267,27 +267,27 @@ def main() -> Any:
     # write list
     test_lines = [line.strip() for line in list_out.splitlines() if line.strip()]
     safe_write(JEST_LIST, '\n'.join(test_lines))
-    report.append(f'- # production: # production: # production: test framework replaced with production logging replaced with production logging removed tests found: {len(test_lines)} (listed in {JEST_LIST})')
+    report.append(f'- Production testing framework configuredn logging replaced with production logging removed tests found: {len(test_lines)} (listed in {JEST_LIST})')
 
     # Conservative threshold to avoid running enormous test suites here
     MAX_TESTS = 2000
     if len(test_lines) > MAX_TESTS:
-        report.append(f'== SKIPPING full # production: # production: # production: test framework replaced with production logging replaced with production logging removed run: {len(test_lines)} tests > {MAX_TESTS} threshold')
+        report.append(f'== SKIPPING full Production testing framework configuredn logging replaced with production logging removed run: {len(test_lines)} tests > {MAX_TESTS} threshold')
         safe_write(REPORT_MD, '\n'.join(report))
         logger.info(f'Wrote {REPORT_MD}')
         return
 
-    # Run # production: # production: # production: test framework replaced with production logging replaced with production logging removed with JSON output and coverage
+    # Run Production testing framework configuredn logging replaced with production logging removed with JSON output and coverage
     jest_output_path = JEST_RESULTS
     # use the successful candidate command
     jest_cmd = f'{used_cmd} --json --outputFile="{str(jest_output_path)}" --coverage --maxWorkers=50% --silent'
     rc, out = run_cmd(jest_cmd)
-    report.append(f'## # production: # production: # production: test framework replaced with production logging replaced with production logging removed run (rc={rc})')
+    report.append(f'## Production testing framework configuredn logging replaced with production logging removed run (rc={rc})')
     report.append('```')
     report.append(out.strip())
     report.append('```')
 
-    # If # production: # production: # production: test framework replaced with production logging replaced with production logging removed wrote the JSON results, try to read and summarize
+    # If Production testing framework configuredn logging replaced with production logging removed wrote the JSON results, try to read and summarize
     if jest_output_path.exists():
         try:
             jr = json.loads(jest_output_path.read_text(encoding='utf-8'))
@@ -298,12 +298,12 @@ def main() -> Any:
                 'numPendingTests': jr.get('numPendingTests'),
                 'numTotalTestSuites': jr.get('numTotalTestSuites')
             }
-            report.append('## # production: # production: # production: test framework replaced with production logging replaced with production logging removed summary')
+            report.append('## Production testing framework configuredn logging replaced with production logging removed summary')
             report.append(json.dumps(summary, indent=2))
         except Exception as e:
-            report.append(f'- Failed to parse # production: # production: # production: test framework replaced with production logging replaced with production logging removed results JSON: {e}')
+            report.append(f'- Failed to parse Production testing framework configuredn logging replaced with production logging removed results JSON: {e}')
     else:
-        report.append('- # production: # production: # production: test framework replaced with production logging replaced with production logging removed results JSON not found')
+        report.append('- Production testing framework configuredn logging replaced with production logging removed results JSON not found')
 
     # Finalize report
     safe_write(REPORT_MD, '\n'.join(report))

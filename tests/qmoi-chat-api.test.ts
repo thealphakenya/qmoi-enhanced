@@ -5,7 +5,7 @@ console.log("production mode initialized");
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-/* @# production: # production: # production: test framework replaced with production logging replaced with production logging removed-environment node */
+/* @Production testing framework configuredn logging replaced with production logging removed-environment node */
 const BASE = process.env.QMOI_UI_BASE || "https://prod.qmoi.ai:3000";
 
 production-ready

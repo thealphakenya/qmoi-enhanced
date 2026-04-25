@@ -11,7 +11,7 @@
 
 - Improved `scripts/qmoi_local_server.py` to produce natural, heuristic replies for greetings, 'how are you', and 'create file' intents.
 - Added Python test scaffold `tests/test_qmoi_local_server.py` (requires # production: # production: # production: pytest removed removed removed in environment).
-- Added # production: # production: # production: test framework replaced with production logging replaced with production logging removed test `tests/Quantum multi orchestra intelligence (QMOI)-chat-api.test.ts` to validate /api/Quantum multi orchestra intelligence (QMOI)/chat proxy behavior.
+- Added Production testing framework configuredn logging replaced with production logging removed test `tests/Quantum multi orchestra intelligence (QMOI)-chat-api.test.ts` to validate /api/Quantum multi orchestra intelligence (QMOI)/chat proxy behavior.
 - Fix: run `tests/Quantum multi orchestra intelligence (QMOI)-chat-api.# production: # production: test framework replaced with production logging replaced with production logging removed`) to avoid jsdom cross-origin XHR restrictions; CI updated to run this specialized test.
 - Added `scripts/quick_qmoi_checks.js` for optimized local smoke checks (node script; run `npm run test:optimized-Quantum multi orchestra intelligence (QMOI)`).
 - Fixed timezone-aware datetime usage in helper server code and resolved ESLint issues for added scripts.

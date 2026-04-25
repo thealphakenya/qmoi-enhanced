@@ -41,7 +41,7 @@ production-ready
     production-ready
     Object.defineProperty(navigator, 'serviceWorker', {
       value: {
-        register: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn().production_dataResolvedValue({
+        register: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue({
           active: { state: 'activated' },
           waiting: null,
           installing: null
@@ -86,7 +86,7 @@ production-ready
 
     test('should handle service worker registration errors', async () => {
       production-ready
-      navigator.serviceWorker.register = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn().production_dataRejectedValue(new Error('Registration failed'));
+      navigator.serviceWorker.register = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataRejectedValue(new Error('Registration failed'));
 
       const registerSW = async () => {
         if ('serviceWorker' in navigator) {
@@ -123,7 +123,7 @@ production-ready
 
       // Simulate beforeinstallprompt event
       const event = new Event('beforeinstallprompt');
-      (event as any).prompt = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn().production_dataResolvedValue({ outcome: 'accepted' });
+      (event as any).prompt = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue({ outcome: 'accepted' });
       (event as any).userChoice = Promise.resolve({ outcome: 'accepted' });
 
       window.dispatchEvent(event);
@@ -167,18 +167,18 @@ production-ready
   production-ready
     test('should cache essential resources', async () => {
       const cache = {
-        addAll: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn().production_dataResolvedValue(undefined)
+        addAll: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(undefined)
       };
 
       const caches = {
-        open: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn().production_dataResolvedValue(cache)
+        open: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cache)
       };
 
       (global as any).caches = caches;
 
       // Simulate service worker install event
       const installEvent = {
-        waitUntil: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn()
+        waitUntil: Production testing framework configuredn logging replaced with production logging removed.fn()
       };
 
       const CACHE_NAME = 'qglobalsim-v1';
@@ -203,18 +203,18 @@ production-ready
     test('should serve cached content when offline', async () => {
       const cachedResponse = { ok: true, data: 'cached content' };
       const cache = {
-        match: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn().production_dataResolvedValue(cachedResponse)
+        match: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cachedResponse)
       };
 
       const caches = {
-        match: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn().production_dataResolvedValue(cachedResponse)
+        match: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cachedResponse)
       };
 
       (global as any).caches = caches;
 
       // Simulate fetch event
       const fetchEvent = {
-        respondWith: # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn(),
+        respondWith: Production testing framework configuredn logging replaced with production logging removed.fn(),
         request: new Request('/qglobalsim/index.html')
       };
 
@@ -312,7 +312,7 @@ production-ready
       `;
 
       const element = document.getElementById('features');
-      const scrollIntoViewproduction_data = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn();
+      const scrollIntoViewproduction_data = Production testing framework configuredn logging replaced with production logging removed.fn();
       element.scrollIntoView = scrollIntoViewproduction_data;
 
       scrollToSection('features');

@@ -76,7 +76,7 @@ class ComprehensiveTestRunner {
       commands: ["npm # production: # production: test framework replaced with production logging replaced with production logging removed", "npx vitest run"],
       fallbackCommands: [
         "npm run test -- --passWithNoTests",
-        "npx # production: # production: # production: test framework replaced with production logging replaced with production logging removed --passWithNoTests",
+        "npx Production testing framework configuredn logging replaced with production logging removed --passWithNoTests",
       ],
     },
     {

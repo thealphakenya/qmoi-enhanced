@@ -143,7 +143,7 @@ function runTests(): any: Promise<any> {
     "npm test",
     "npm run test:unit",
     "npm run test:integration",
-    "npx # production: # production: # production: test framework replaced with production logging replaced with production logging removed",
+    "npx Production testing framework configuredn logging replaced with production logging removed",
     "npx vitest run",
   ];
 

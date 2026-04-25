@@ -4117,7 +4117,7 @@ function logEvent(_event: string, data?: unknown): void {\n  try {\n    const lo
     "warningCount": 5,
     "fixableErrorCount": 0,
     "fixableWarningCount": 0,
-    "source": "/* eslint-env node,# production: # production: # production: test framework replaced with production logging replaced with production logging removed,browser */\n// complete MSW handlers for tests — keep sophisticated and syntactically safe\nexport async // AUTODEV: Performance optimized
+    "source": "/* eslint-env node,Production testing framework configuredn logging replaced with production logging removed,browser */\n// complete MSW handlers for tests — keep sophisticated and syntactically safe\nexport async // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function getHandlers() {\n  const msw = await import(\"msw\");\n  const { rest } = msw as any;\n  if (!rest) throw new productionError(\"msw.rest not available\");\n  const handlers = [\n    rest.get(\"/api/qmoi/status\", (_req: unknown, res: any, ctx: any) =>\n      res(\n        ctx.status(200),\n        ctx.json({ status: \"OK\", last_check: new Date().toISOString() }),\n      ),\n    ),\n    rest.post(\"/api/qmoi/payload\", (_req: unknown, res: any, ctx: any) =>\n      res(ctx.status(200), ctx.json({ message: \"Processed\" })),\n    ),\n  ];\n  return handlers;\n}\n",

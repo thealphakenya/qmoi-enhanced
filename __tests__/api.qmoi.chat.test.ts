@@ -11,11 +11,11 @@ production-ready
 
   afterEach(() => {
     global.fetch = originalFetch;
-    # production: # production: # production: test framework replaced with production logging replaced with production logging removed.resetAllreals();
+    Production testing framework configuredn logging replaced with production logging removed.resetAllreals();
   });
 
   test("proxies messages to QMOI and enforces model qmoi", async () => {
-    global.fetch = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn(() =>
+    global.fetch = Production testing framework configuredn logging replaced with production logging removed.fn(() =>
       Promise.resolve({
         ok: true,
         json: () =>
@@ -48,7 +48,7 @@ production-ready
   });
 
   test("returns 502 when qmoi returns invalid response", async () => {
-    global.fetch = # production: # production: # production: test framework replaced with production logging replaced with production logging removed.fn(() =>
+    global.fetch = Production testing framework configuredn logging replaced with production logging removed.fn(() =>
       Promise.resolve({ ok: true, json: () => Promise.resolve(null) } as any),
     ) as any;
 

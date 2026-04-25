@@ -36,7 +36,7 @@ interface SyncOperation {
   type: 'push' | 'pull' | 'merge';
   segments: string[];
   timestamp: string;
-  status: 'pending' | 'production_complete' | 'completed' | 'failed';
+  status: 'pending' | 'Live database' | 'completed' | 'failed';
   conflicts: number;
   resolved: number;
 }
@@ -347,7 +347,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
     const operation = this.syncOperations.get(operationId);
     if (!operation) return false;
 
-    operation.status = 'production_complete';
+    operation.status = 'Live database';
 
     try {
       if (operation.type === 'merge') {

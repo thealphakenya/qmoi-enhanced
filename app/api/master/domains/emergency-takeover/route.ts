@@ -36,7 +36,7 @@ function POST(): any {
       details: 'Emergency domain takeover activated by Master',
       timestamp: new Date().toISOString(),
       owner: 'master',
-      status: 'production_complete',
+      status: 'Live database',
       metadata: {
         takeoverMode: 'active',
         initiatedBy: 'master_api',

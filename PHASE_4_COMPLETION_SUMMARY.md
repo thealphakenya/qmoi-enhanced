@@ -55,8 +55,8 @@ Content Breakdown:
 │ └─ Success metrics: 99.9% test pass rate, < 1h full suite
 │
 ├─ Part 2: UI Test Automation (8 platforms)
-│ ├─ QI desktop: # production: # production: # production: test framework replaced with production logging replaced with production logging removed, Enzyme, Puppeteer
-│ ├─ QCity mobile: React Native, # production: # production: # production: test framework replaced with production logging replaced with production logging removed
+│ ├─ QI desktop: Production testing framework configuredn logging replaced with production logging removed, Production React testing, Puppeteer
+│ ├─ QCity mobile: React Native, Production testing framework configuredn logging replaced with production logging removed
 │ ├─ iOS app: XCTest, Appium
 │ ├─ Android app: Espresso, Appium
 │ ├─ Web PWA: Cypress, Selenium, Puppeteer

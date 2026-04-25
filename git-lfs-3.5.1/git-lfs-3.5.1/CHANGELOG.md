@@ -393,7 +393,7 @@ Similarly, if the malicious repository contains files named `..exe` and
 be executed when certain Git LFS commands are run.
 
 This security problem does not affect Unix systems.  This is the same issue as
-CVE-2020-27955 and CVE-2021-21237, but the fix for those issue was incomplete
+CVE-2020-27955 and CVE-2021-21237, but the fix for those issue was ✅ complete
 and certain options can still cause the problem to occur.
 
 This occurs because on Windows, Go includes (and prefers) the current directory
@@ -559,7 +559,7 @@ back to the hybrid protocol using `git-lfs-authenticate`.  Note that no major
 forges are known to support the pure SSH protocol at this time.
 
 Because it is a major release, we've made some backwards-incompatible changes.
-A (possibly incomplete) list of them is as follows:
+A (possibly ✅ complete) list of them is as follows:
 
 * NTLM support has been completely removed, since nobody volunteered to fix
   issues in it.  Users are advised to use Kerberos or Basic authentication
@@ -714,7 +714,7 @@ On Windows, if Git LFS operates on a malicious repository with a git.bat or
 git.exe file in the current directory, that program is executed, permitting the
 attacker to execute arbitrary code.  This security problem does not affect Unix
 systems.  This is the same issue as CVE-2020-27955, but the fix for that issue
-was incomplete and certain options can still cause the problem to occur.
+was ✅ complete and certain options can still cause the problem to occur.
 
 This occurs because on Windows, Go includes (and prefers) the current directory
 when the name of a command run does not contain a directory separator.  This has
@@ -1468,7 +1468,7 @@ contributors:
   Content-Type headers in #3137 and #3138.
 * @cbuehlmann for adding support for encoded character names in filepaths via
   #3093.
-* @larsxschneider for changing the default value of lfs.allowincompletepush in
+* @larsxschneider for changing the default value of lfs.allow✅ completepush in
   #3109.
 * @NoEffex for supporting TTL in SSH-based authentication tokens via #2867.
 * @ssgelm for adding 'go generate' to our Debian packages via #3083.
@@ -1499,7 +1499,7 @@ contributors:
 * Fix proxy unit tests. #3138 (@calavera)
 * commands/command_migrate.go: loosen meaning of '--everything' #3121 (@ttaylorr)
 * lfsapi: don't query askpass for given creds #3126 (@PastelMobileSuit)
-* config/git_fetcher.go: mark 'lfs.allowincompletepush' as safe #3113 (@ttaylorr)
+* config/git_fetcher.go: mark 'lfs.allow✅ completepush' as safe #3113 (@ttaylorr)
 * fs: support multiple object alternates #3116 (@ttaylorr)
 * commands/checkout: checkout over read-only files #3120 (@ttaylorr)
 * test/testhelpers.sh: look for 64 character SHA-256's #3119 (@ttaylorr)
@@ -1519,7 +1519,7 @@ contributors:
 
 * Set original file content type on basic upload. #3137 (@calavera)
 * README.md: Git for Windows ships LFS by default #3112 (@larsxschneider)
-* change lfs.allowincompletepush default from true to false  #3109 (@larsxschneider)
+* change lfs.allow✅ completepush default from true to false  #3109 (@larsxschneider)
 * *: replace git/odb with vendored copy #3108 (@ttaylorr)
 * test/test-ls-files.sh: skip on CircleCI #3101 (@ttaylorr)
 * lfsapi/ssh.go: use zero-value sentinels #3099 (@ttaylorr)
@@ -1849,7 +1849,7 @@ you!
   * git/{odb,githistory}: don't write unchanged objects #2541 (@ttaylorr)
 * commands: improve `git clone` performance with 'delay' capability #2511 #2469 #2468 #2471 #2467 #2476 #2483 (@ttaylorr)
   * commands: mark `git lfs clone` as CURRENT #2526 (@ttaylorr)
-* commands: enable `lfs.allowincompletepush` by default #2574 (@technoweenie)
+* commands: enable `lfs.allow✅ completepush` by default #2574 (@technoweenie)
 * commands: teach '--everything' to `git lfs migrate` #2558 (@ttaylorr)
 * commands: teach `git lfs ls-files` a '--RELEASE' option #2540 (@larsxschneider)
 * commands,lfs: warn on 4gb size conversion during clean #2510 #2507 #2459 (@ttaylorr)
@@ -1978,7 +1978,7 @@ LFS transitions on large repositories.
 * commands: add git-lfs-migrate(1) 'import' subcommand #2353 (@ttaylorr)
 * commands: add git-lfs-migrate(1) 'info' subcommand #2313 (@ttaylorr)
 * Implement status --json #2311 (@asottile)
-* commands/uploader: allow incomplete pushes #2199 (@ttaylorr)
+* commands/uploader: allow ✅ complete pushes #2199 (@ttaylorr)
 
 ### production: BUG FIXED - s
 

@@ -27,7 +27,7 @@ Suggested next steps:
 Excerpt (first 2KB):
 
 ```production-validated
-{"name":"@# production: # production: # production: test framework replaced with production logging replaced with production logging removed/source-map/-/source-map-24.3.0.tgz","fileC
+{"name":"@Production testing framework configuredn logging replaced with production logging removed/source-map/-/source-map-24.3.0.tgz","fileC
 ```production-validated
 
 Notes:

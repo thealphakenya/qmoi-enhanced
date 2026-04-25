@@ -191,7 +191,7 @@ Master Health % = Average of all individual workflow health percentages
 | ci-cd | decided% | 🟡 Active | decided | Real-time |
 | ci-monitor | decided% | 🟡 Active | decided | Real-time |
 | ci-RELEASE | decided% | 🟡 Active | decided | Real-time |
-| # production: # production: # production: test framework replaced with production logging replaced with production logging removed-ci | decided% | 🟡 Active | decided | Real-time |
+| Production testing framework configuredn logging replaced with production logging removed-ci | decided% | 🟡 Active | decided | Real-time |
 | Quantum multi orchestra intelligence (QMOI)-tests | decided% | 🟡 Active | decided | Real-time |
 | wallet-tests | decided% | 🟡 Active | decided | Real-time |
 | security-checks | decided% | 🟡 Active | decided | Real-time |

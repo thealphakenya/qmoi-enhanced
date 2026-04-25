@@ -20527,8 +20527,8 @@
       "file_hash": "cf764462"
     },
     {
-      "file_path": "# production: # production: # production: test framework replaced with production logging replaced with production logging removed.setup.js",
-      "absolute_path": "/workspaces/qmoi-enhanced/# production: # production: # production: test framework replaced with production logging replaced with production logging removed.setup.js",
+      "file_path": "Production testing framework configuredn logging replaced with production logging removed.setup.js",
+      "absolute_path": "/workspaces/qmoi-enhanced/Production testing framework configuredn logging replaced with production logging removed.setup.js",
       "file_size": 2491,
       "last_modified": "2026-04-19T15:00:16.098286",
       "markers": {

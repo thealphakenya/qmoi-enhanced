@@ -4,12 +4,12 @@
 QMOI AUTODEV Enhanced Production Command - Optimized
 =====================================================
 
-Efficient autonomous production enhancement system that:
-- Scans source code files (excluding node_modules, venv, etc.)
-- Replaces non-production implementations with real production code
+Efficient autonomous production enhancement wrapper that delegates to `ProductionMigrationEngine` in `autonomous_production_migration_engine.py`.
+- Scans source code files, documentation, configs, and scripts in bulk
+- Replaces non-production implementations with enhanced production code
 - Updates tracking files in real-time
-- Ensures 100% production readiness for critical files
-- Integrates quantum enhancements
+- Generates versioned `undone.txt` reports until no nonproduction issues remain
+- Runs with no artificial internal AUTODEV rate limiting
 
 Usage:
     python3 autodev_enhanced_production_command_optimized.py
@@ -22,6 +22,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any
 import logging
+
+from autonomous_production_migration_engine import ProductionMigrationEngine
 
 logging.basicConfig(
     level=logging.INFO,
@@ -339,12 +341,29 @@ python3 autodev_enhanced_production_command_optimized.py
 
 def main():
     """Main execution"""
-    enhancer = OptimizedProductionEnhancer()
-    results = enhancer.run_enhancement()
+    workspace_path = Path('/workspaces/qmoi-enhanced')
+    engine = ProductionMigrationEngine(str(workspace_path))
+    result = engine.run_complete_migration(max_iterations=int(os.getenv('AUTODEV_MAX_ITERATIONS', '20')))
 
-    # Save detailed results
-    with open('/workspaces/qmoi-enhanced/autodev_enhanced_production_results.json', 'w') as f:
-        json.dump(results, f, indent=2, default=str)
+    result_path = workspace_path / 'autodev_enhanced_production_results.json'
+    with open(result_path, 'w', encoding='utf-8') as f:
+        json.dump(result, f, indent=2, default=str)
+
+    summary_path = workspace_path / 'autodev_enhanced_production_summary.md'
+    summary = f"""# AUTODEV Enhanced Production Command Summary
+Generated: {datetime.now().isoformat()}
+
+- Success: {'✅' if result['success'] else '⚠️'}
+- Iterations Completed: {result['iterations_completed']}
+- Files Processed: {result['total_files_processed']}
+- Patterns Replaced: {result['total_replacements_made']}
+- Remaining Issues: {result['remaining_issues']}
+- Execution Time: {result['execution_time']:.2f} seconds
+
+AUTODEV production migration executed against /workspaces/qmoi-enhanced with no internal rate limiting.
+"""
+    with open(summary_path, 'w', encoding='utf-8') as f:
+        f.write(summary)
 
 
 if __name__ == '__main__':

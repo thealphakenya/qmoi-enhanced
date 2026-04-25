@@ -236,7 +236,7 @@ curl -X PUT https://production.Quantum multi orchestra intelligence (QMOI).ai:30
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "status": "production_complete",
+    "status": "Live database",
     "progress": 45,
     "notes": "On schedule for deadline"
   }'

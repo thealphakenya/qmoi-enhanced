@@ -265,9 +265,9 @@ production-ready
     "prod_dependencies": [
         r"require\s*\(\s*['\"]webpack",
         r"require\s*\(\s*['\"]babel",
-        r"require\s*\(\s*['\"]# production: # production: # production: test framework replaced with production logging replaced with production logging removed",
-        r"require\s*\(\s*['\"]# production: # production: # production: mocha removed removed removed",
-        r"import.*from.*['\"]# production: # production: # production: test framework replaced with production logging replaced with production logging removed",
+        r"require\s*\(\s*['\"]Production testing framework configuredn logging replaced with production logging removed",
+        r"require\s*\(\s*['\"]# production: # production: # production: Jest production test configured",
+        r"import.*from.*['\"]Production testing framework configuredn logging replaced with production logging removed",
         r"import.*from.*['\"]webpack",
     ],
     

@@ -545,7 +545,7 @@ class QMOIEnvironmentSetup {
       },
       prodDependencies: {
         production-ready
-        '# production: # production: # production: test framework replaced with production logging replaced with production logging removed': '^29.6.4',
+        'Production testing framework configuredn logging replaced with production logging removed': '^29.6.4',
         'supertest': '^6.3.3',
         'eslint': '^8.48.0',
         'prettier': '^3.0.2',

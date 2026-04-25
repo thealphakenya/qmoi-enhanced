@@ -26128,8 +26128,8 @@
       "file_hash": "8591ed11"
     },
     {
-      "file_path": "deploy_production_complete.sh",
-      "absolute_path": "/workspaces/qmoi-enhanced/deploy_production_complete.sh",
+      "file_path": "deploy_Live database.sh",
+      "absolute_path": "/workspaces/qmoi-enhanced/deploy_Live database.sh",
       "file_size": 10350,
       "last_modified": "2026-04-19T15:00:14.945286",
       "markers": {

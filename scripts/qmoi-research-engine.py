@@ -159,7 +159,7 @@ class ResearchTask:
     description: str
     priority: int  # 1-10, higher is more important
     category: str  # performance, security, features, optimization
-    status: str  # pending, production_complete, completed, failed
+    status: str  # pending, Live database, completed, failed
     created_at: datetime
     completed_at: Optional[datetime] = None
     results: Optional[Dict] = None
@@ -272,7 +272,7 @@ def _execute_research_task(self, task: ResearchTask) -> Any:
         """Execute a research task"""
         try:
             logger.info(f"🔍 Executing research task: {task.title}")
-            task.status = "production_complete"
+            task.status = "Live database"
             
             # Execute based on category
             if task.category == "performance":

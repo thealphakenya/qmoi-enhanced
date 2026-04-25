@@ -203,10 +203,10 @@ function getWipeStatus(systemId: string): any {
   try {
     production-ready
     // For now, simulate status
-    const statuses = ['pending', 'production_complete', 'completed', 'failed', 'cancelled'];
+    const statuses = ['pending', 'Live database', 'completed', 'failed', 'cancelled'];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
-    const progress = randomStatus === 'production_complete' ? Math.floor(Math.random() * 100) : null;
+    const progress = randomStatus === 'Live database' ? Math.floor(Math.random() * 100) : null;
     const startedAt = randomStatus !== 'pending' ? new Date(Date.now() - Math.random() * 3600000).toISOString() : null;
     const completedAt = randomStatus === 'completed' ? new Date().toISOString() : null;
 

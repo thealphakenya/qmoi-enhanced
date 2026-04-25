@@ -822,7 +822,7 @@ ${result.message.includes('requiresAuth') ? 'Required' : 'Not required'}
       { file: '.env', required: true },
       { file: 'tsconfig.json', required: true },
       { file: 'next.config.js', required: true },
-      { file: '# production: # production: # production: test framework replaced with production logging replaced with production logging removed.config.js', required: true },
+      { file: 'Production testing framework configuredn logging replaced with production logging removed.config.js', required: true },
       { file: 'package.json', required: true },
     ];
 

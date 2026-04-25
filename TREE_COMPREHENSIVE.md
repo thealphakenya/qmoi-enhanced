@@ -663,7 +663,7 @@ python3 scripts/lion_agents/lion_agent_[name].py
 ```yaml
 - Lint (ESLint)
 - Type checking (tsc)
-- Tests (# production: # production: # production: test framework replaced with production logging replaced with production logging removed, # production: # production: # production: pytest removed removed removed)
+- Tests (Production testing framework configuredn logging replaced with production logging removed, # production: # production: # production: pytest removed removed removed)
 - Security scan (Snyk)
 - Documentation validation
 ```

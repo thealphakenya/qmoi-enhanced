@@ -503,7 +503,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       'ci-cd',
       'ci-monitor',
       'ci-RELEASE',
-      '# production: # production: # production: test framework replaced with production logging replaced with production logging removed-ci',
+      'Production testing framework configuredn logging replaced with production logging removed-ci',
       'qmoi-tests',
       'wallet-tests',
       'security-checks',
