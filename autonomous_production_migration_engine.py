@@ -25,6 +25,10 @@ class ProductionMigrationEngine:
         self.disable_rate_limit = os.getenv('AUTODEV_DISABLE_RATE_LIMIT', 'true').lower() in ('true', '1', 'yes')
         self.undone_dir = self.workspace / 'undone_versions'
         self.undone_dir.mkdir(exist_ok=True)
+        self.tracks_path = self.workspace / 'autodevtracks.md'
+        self._initialize_autodev_tracks()
+        self.tracks_path = self.workspace / 'autodevtracks.md'
+        self._initialize_autodev_tracks()
 
         # Nonproduction patterns to replace
         self.nonprod_patterns = {
@@ -134,6 +138,8 @@ class ProductionMigrationEngine:
                     print(f"🔍 Scanning... found {file_count} files so far")
 
         print(f"📊 Total files to scan: {file_count}")
+        if file_count > 0:
+            self._write_autodev_progress(0, file_count)
 
         # Scan files with progress tracking
         processed = 0
@@ -141,6 +147,7 @@ class ProductionMigrationEngine:
             processed += 1
             if processed % 100 == 0:
                 print(f"🔍 Scanning [{processed}/{file_count}]...")
+                self._write_autodev_progress(processed, file_count)
 
             try:
                 with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -161,6 +168,7 @@ class ProductionMigrationEngine:
                 print(f"Error scanning {file_path}: {e}")
                 continue
 
+        self._write_autodev_progress(file_count, file_count, complete=True)
         return issues
 
     def _should_skip_file(self, file_path: Path) -> bool:
@@ -404,9 +412,34 @@ Session: {self.session_id}
         with open(self.workspace / 'undone.txt', 'w', encoding='utf-8') as f:
             f.write(report)
 
+    def _initialize_autodev_tracks(self):
+        """Initialize the AUTODEV track file with a live header"""
+        if not self.tracks_path.exists():
+            header = "# AUTODEV TRACKS - Live Execution Journal\n\n"
+            header += f"**Created:** {self.timestamp}\n"
+            header += f"**Session ID:** {self.session_id}\n"
+            header += "**Current Engine:** `autonomous_production_migration_engine.py`\n"
+            header += "**Status:** 🔄 ACTIVE SCANNING\n"
+            header += "**Tracking Files:** `resumefromhere.txt`, `INSTANCES.md`, `INSTANCES.txt`, `MATCHES.md`, `MATCHES.txt`\n\n"
+            header += "## Live Run Summary\n"
+            header += "- Active scan mode: Continuous production migration\n"
+            header += "- Versioned undone report generation enabled\n"
+            header += "- Rate limiting disabled by default\n"
+            header += "- Iterations tracking starts on first run\n\n"
+            self.tracks_path.write_text(header, encoding='utf-8')
+
+    def _write_autodev_progress(self, processed: int, total: int, complete: bool = False):
+        """Write interim scan progress to autodevtracks.md"""
+        if not self.tracks_path.exists():
+            self._initialize_autodev_tracks()
+        now = datetime.now().isoformat()
+        progress_line = f"[{now}] Scan progress: {processed}/{total} files scanned ({processed*100/total:.1f}%){' - COMPLETE' if complete else ''}\n"
+        with open(self.tracks_path, 'a', encoding='utf-8') as f:
+            f.write(progress_line)
+
     def _update_autodev_tracks(self, total_issues: int, replacements: Dict[str, int], version: int):
         """Update autodevtracks.md with current run status"""
-        track_path = self.workspace / 'autodevtracks.md'
+        track_path = self.tracks_path
         now = datetime.now().isoformat()
         summary = {
             'timestamp': now,
@@ -417,7 +450,8 @@ Session: {self.session_id}
             'remaining_issues': total_issues,
             'replacements_this_iteration': sum(replacements.values()),
             'rate_limit_disabled': self.disable_rate_limit,
-            'max_workers': self.max_workers
+            'max_workers': self.max_workers,
+            'undone_versioned_report': str(self.undone_dir / f'undone_v{version}.txt')
         }
 
         header = f"## AUTODEV TRACK - {now}\n"
@@ -625,9 +659,16 @@ This file is synchronized with INSTANCES.md, MATCHES.txt, and resumefromhere.txt
         with open(self.workspace / 'MATCHES.md', 'w') as f:
             f.write(content)
 
-    def run_complete_migration(self, max_iterations: int = 10) -> Dict[str, any]:
+    def run_complete_migration(self, max_iterations: int = None) -> Dict[str, any]:
         """Run complete migration until no nonproduction issues remain"""
+        if max_iterations is None:
+            try:
+                max_iterations = int(os.getenv('AUTODEV_MAX_ITERATIONS', '50'))
+            except ValueError:
+                max_iterations = 50
+
         print("🚀 Starting QMOI Enhanced Production Migration Engine...")
+        print(f"🔢 Maximum iterations configured: {max_iterations}")
 
         for iteration in range(max_iterations):
             self.stats['iterations'] = iteration + 1
@@ -644,6 +685,7 @@ This file is synchronized with INSTANCES.md, MATCHES.txt, and resumefromhere.txt
 
             if total_issues == 0:
                 print("✅ No nonproduction issues found! Migration complete.")
+                self.update_tracking_files(issues, {}, iteration + 1)
                 break
 
             # Apply replacements
@@ -664,10 +706,15 @@ This file is synchronized with INSTANCES.md, MATCHES.txt, and resumefromhere.txt
             print(f"   Files modified this iteration: {self.stats['files_modified']}")
             print(f"   Patterns replaced: {sum(replacements.values())}")
 
+            if iteration == max_iterations - 1 and total_issues > 0:
+                print("⚠️ Reached maximum configured iterations with remaining issues. Review `undone.txt` and rerun with a higher `AUTODEV_MAX_ITERATIONS` if needed.")
+
         # Final validation
         print("\n🎯 Running final validation...")
         final_issues = self.scan_for_nonprod_issues()
         final_total = sum(len(issue_list) for issue_list in final_issues.values())
+
+        self.update_tracking_files(final_issues, {}, self.stats['iterations'] + 1)
 
         result = {
             'success': final_total == 0,
@@ -683,10 +730,16 @@ This file is synchronized with INSTANCES.md, MATCHES.txt, and resumefromhere.txt
 
         return result
 
+
 def main():
     workspace_path = "/workspaces/qmoi-enhanced"
     engine = ProductionMigrationEngine(workspace_path)
-    result = engine.run_complete_migration()
+    max_iterations = None
+    try:
+        max_iterations = int(os.getenv('AUTODEV_MAX_ITERATIONS', '50'))
+    except ValueError:
+        max_iterations = 50
+    result = engine.run_complete_migration(max_iterations=max_iterations)
 
     # Generate final report
     report = f"""# QMOI Enhanced Production Migration - Final Report
