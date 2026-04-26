@@ -75,7 +75,7 @@ class ProductionDeployment:
             },
             "database": {
                 "type": "postgresql",
-                "host": os.getenv("DB_HOST", "localhost"),
+                "host": os.getenv("DB_HOST", "production-api.qmoi-enhanced.com"),
                 "port": int(os.getenv("DB_PORT", "5432")),
                 "name": os.getenv("DB_NAME", "qmoi_production"),
                 "user": os.getenv("DB_USER", "qmoi_user"),
@@ -141,7 +141,7 @@ class ProductionDeployment:
                     "depends_on": ["database", "redis"],
                     "restart": "unless-stopped",
                     "healthcheck": {
-                        "test": ["CMD", "curl", "-f", "http://localhost:8000/health"],
+                        "test": ["CMD", "curl", "-f", "http://production-api.qmoi-enhanced.com:8000/health"],
                         "interval": "30s",
                         "timeout": "10s",
                         "retries": 3
@@ -309,7 +309,7 @@ USER app
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\
-    CMD curl -f http://localhost:8000/health || exit 1
+    CMD curl -f http://production-api.qmoi-enhanced.com:8000/health || exit 1
 
 CMD ["python", "ai_api_server.py"]""",
 
@@ -769,7 +769,7 @@ wait_for_services() {
     print_status "Waiting for API server..."
     timeout=60
     while [[ $timeout -gt 0 ]]; do
-        if curl -f http://localhost:8000/health 2>/dev/null; then
+        if curl -f http://production-api.qmoi-enhanced.com:8000/health 2>/dev/null; then
             break
         fi
         sleep 2
@@ -789,7 +789,7 @@ run_post_deployment_tests() {
     print_status "Running post-deployment tests..."
 
     # Test API endpoints
-    if curl -f http://localhost:8000/health; then
+    if curl -f http://production-api.qmoi-enhanced.com:8000/health; then
         print_status "✅ API server health check passed"
     else
         print_error "❌ API server health check failed"
@@ -797,7 +797,7 @@ run_post_deployment_tests() {
     fi
 
     # Test Grafana
-    if curl -f http://localhost:3000/api/health 2>/dev/null; then
+    if curl -f http://production-api.qmoi-enhanced.com:3000/api/health 2>/dev/null; then
         print_status "✅ Grafana health check passed"
     else
         print_warning "⚠️  Grafana health check failed (may take longer to start)"
@@ -811,11 +811,11 @@ show_deployment_info() {
     print_status "🚀 Deployment completed successfully!"
     echo ""
     echo "📊 Service Endpoints:"
-    echo "  🌐 API Server:     http://localhost:8000"
-    echo "  📊 Grafana:        http://localhost:3000 (admin/${GRAFANA_PASSWORD})"
-    echo "  📈 Prometheus:     http://localhost:9090"
-    echo "  🐘 Database:       localhost:5432"
-    echo "  🔴 Redis:          localhost:6379"
+    echo "  🌐 API Server:     http://production-api.qmoi-enhanced.com:8000"
+    echo "  📊 Grafana:        http://production-api.qmoi-enhanced.com:3000 (admin/${GRAFANA_PASSWORD})"
+    echo "  📈 Prometheus:     http://production-api.qmoi-enhanced.com:9090"
+    echo "  🐘 Database:       production-api.qmoi-enhanced.com:5432"
+    echo "  🔴 Redis:          production-api.qmoi-enhanced.com:6379"
     echo ""
     echo "🔧 Management Commands:"
     echo "  📊 View logs:      docker-compose -f docker-compose.production.yml logs -f"
@@ -936,21 +936,21 @@ ENVIRONMENT=production
 DEBUG=false
 
 # Database
-DB_HOST=localhost
+DB_HOST=production-api.qmoi-enhanced.com
 DB_PORT=5432
 DB_NAME=qmoi_production
 DB_USER=qmoi_user
 DB_PASSWORD=CHANGE_THIS_IN_PRODUCTION
 
 # Redis
-REDIS_URL=redis://localhost:6379
+REDIS_URL=redis://production-api.qmoi-enhanced.com:6379
 
 # Security
 JWT_SECRET=CHANGE_THIS_IN_PRODUCTION
 API_KEY_REQUIRED=true
 
 # Monitoring
-PROMETHEUS_URL=http://localhost:9090
+PROMETHEUS_URL=http://production-api.qmoi-enhanced.com:9090
 GRAFANA_PASSWORD=CHANGE_THIS_IN_PRODUCTION
 ALERT_WEBHOOK=
 

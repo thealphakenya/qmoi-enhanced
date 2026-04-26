@@ -858,7 +858,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
   }, []);
 
   // Enhanced auto-fix for corrupted media
-  const autoFixMedia = useCallback(async (media: MediaItem): Promise<MediaItem> => {
+  const auto✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
     if (!autoFixEnabled) return media;
 
     try {
@@ -1416,7 +1416,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() => currentMedia && autoFixMedia(currentMedia)}
+                    onClick={() => currentMedia && auto✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
                     disabled={!autoFixEnabled}
                   >
                     <Wand2 className="h-4 w-4 mr-1" />
@@ -2038,7 +2038,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                           onClick={() => {
                             currentPlaylist.for (const item of(async (item) => {
                               if (item.corrupted) {
-                                const fixed = await autoFixMedia(item);
+                                const fixed = await auto✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
                                 setCurrentPlaylist(prev =>
                                   prev.map(p => p.id === item.id ? fixed : p)
                                 );

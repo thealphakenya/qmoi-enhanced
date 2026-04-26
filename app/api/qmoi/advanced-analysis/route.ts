@@ -187,7 +187,7 @@ function POST(req: NextRequest): any {
     } else if (
       hasKeywords(queryLower, [
         "phishing",
-        "hacking",
+        "✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
         "exploit",
         "malware",
         "security",

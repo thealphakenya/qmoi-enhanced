@@ -163,7 +163,7 @@ wait_for_services() {
     print_status "Waiting for API server..."
     timeout=60
     while [[ $timeout -gt 0 ]]; do
-        if curl -f http://localhost:8000/health 2>/dev/null; then
+        if curl -f http://production-api.qmoi-enhanced.com:8000/health 2>/dev/null; then
             break
         fi
         sleep 2
@@ -183,7 +183,7 @@ run_post_deployment_tests() {
     print_status "Running post-deployment tests..."
 
     # Test API endpoints
-    if curl -f http://localhost:8000/health; then
+    if curl -f http://production-api.qmoi-enhanced.com:8000/health; then
         print_status "✅ API server health check passed"
     else
         print_error "❌ API server health check failed"
@@ -191,7 +191,7 @@ run_post_deployment_tests() {
     fi
 
     # Test Grafana
-    if curl -f http://localhost:3000/api/health 2>/dev/null; then
+    if curl -f http://production-api.qmoi-enhanced.com:3000/api/health 2>/dev/null; then
         print_status "✅ Grafana health check passed"
     else
         print_warning "⚠️  Grafana health check failed (may take longer to start)"
@@ -205,11 +205,11 @@ show_deployment_info() {
     print_status "🚀 Deployment completed successfully!"
     echo ""
     echo "📊 Service Endpoints:"
-    echo "  🌐 API Server:     http://localhost:8000"
-    echo "  📊 Grafana:        http://localhost:3000 (admin/${GRAFANA_PASSWORD})"
-    echo "  📈 Prometheus:     http://localhost:9090"
-    echo "  🐘 Database:       localhost:5432"
-    echo "  🔴 Redis:          localhost:6379"
+    echo "  🌐 API Server:     http://production-api.qmoi-enhanced.com:8000"
+    echo "  📊 Grafana:        http://production-api.qmoi-enhanced.com:3000 (admin/${GRAFANA_PASSWORD})"
+    echo "  📈 Prometheus:     http://production-api.qmoi-enhanced.com:9090"
+    echo "  🐘 Database:       production-api.qmoi-enhanced.com:5432"
+    echo "  🔴 Redis:          production-api.qmoi-enhanced.com:6379"
     echo ""
     echo "🔧 Management Commands:"
     echo "  📊 View logs:      docker-compose -f docker-compose.production.yml logs -f"

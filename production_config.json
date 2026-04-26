@@ -32,7 +32,7 @@
   },
   "database": {
     "type": "postgresql",
-    "host": "localhost",
+    "host": "production-api.qmoi-enhanced.com",
     "port": 5432,
     "name": "qmoi_production",
     "user": "qmoi_user",

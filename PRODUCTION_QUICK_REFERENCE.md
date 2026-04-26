@@ -43,7 +43,7 @@ npm run build
 NODE_ENV=production npm start
 
 # Verify running
-curl http://localhost:3000/health
+curl http://production-api.qmoi-enhanced.com:3000/health
 ```
 
 ### 4. Validate Everything

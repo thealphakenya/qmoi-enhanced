@@ -422,7 +422,7 @@ case "$1" in
         echo ""
         echo "Examples:"
         echo "  $0 init"
-        echo "  $0 create-user john password123 john@example.com admin"
+        echo "  $0 create-user john password123 john@qmoi-enhanced.com admin"
         echo "  $0 generate-key john read,write"
         echo "  $0 list-keys"
         echo "  $0 validate-key abc123..."

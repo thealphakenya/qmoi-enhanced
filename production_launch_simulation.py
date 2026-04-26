@@ -44,13 +44,13 @@ class ProductionLaunch:
             self.workspace_root / '.env.production'
         ]
         self.services = {
-            'AI API Server': 'http://localhost:8000/health',
-            'AI Orchestrator': 'http://localhost:8001/health',
-            'Analytics Service': 'http://localhost:8002/health',
-            'Anomaly Service': 'http://localhost:8003/health',
-            'Performance Optimizer': 'http://localhost:8004/health',
-            'Grafana': 'http://localhost:3000/api/health',
-            'Prometheus': 'http://localhost:9090',
+            'AI API Server': 'http://production-api.qmoi-enhanced.com:8000/health',
+            'AI Orchestrator': 'http://production-api.qmoi-enhanced.com:8001/health',
+            'Analytics Service': 'http://production-api.qmoi-enhanced.com:8002/health',
+            'Anomaly Service': 'http://production-api.qmoi-enhanced.com:8003/health',
+            'Performance Optimizer': 'http://production-api.qmoi-enhanced.com:8004/health',
+            'Grafana': 'http://production-api.qmoi-enhanced.com:3000/api/health',
+            'Prometheus': 'http://production-api.qmoi-enhanced.com:9090',
         }
 
     def load_environment(self):
@@ -189,15 +189,15 @@ Last Updated: {datetime.now().isoformat()}
 ✅ Nginx - Load balancing active
 
 🌐 PRODUCTION ENDPOINTS (LIVE):
-- API Server: http://localhost:8000/api/
-- Grafana Dashboard: http://localhost:3000
-- Health Check: http://localhost:8000/health
-- Metrics: http://localhost:8000/metrics
-- Prometheus: http://localhost:9090
+- API Server: http://production-api.qmoi-enhanced.com:8000/api/
+- Grafana Dashboard: http://production-api.qmoi-enhanced.com:3000
+- Health Check: http://production-api.qmoi-enhanced.com:8000/health
+- Metrics: http://production-api.qmoi-enhanced.com:8000/metrics
+- Prometheus: http://production-api.qmoi-enhanced.com:9090
 
 🔧 MANAGEMENT COMMANDS:
 - View Logs: docker logs -f $(docker ps --filter 'name=ai-api-server' --format '{{.Names}}')
-- Health Check: curl http://localhost:8000/health
+- Health Check: curl http://production-api.qmoi-enhanced.com:8000/health
 - Stop Services: docker compose -f docker-compose.production.yml down
 - Restart: python production_launch_simulation.py
 

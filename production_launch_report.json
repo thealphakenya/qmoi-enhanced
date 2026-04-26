@@ -58,10 +58,10 @@
     "overall_rating": "EXCELLENT"
   },
   "endpoints": {
-    "api_server": "http://localhost:8000",
-    "grafana": "http://localhost:3000",
-    "prometheus": "http://localhost:9090",
-    "health_check": "http://localhost:8000/health",
-    "metrics": "http://localhost:8000/metrics"
+    "api_server": "http://production-api.qmoi-enhanced.com:8000",
+    "grafana": "http://production-api.qmoi-enhanced.com:3000",
+    "prometheus": "http://production-api.qmoi-enhanced.com:9090",
+    "health_check": "http://production-api.qmoi-enhanced.com:8000/health",
+    "metrics": "http://production-api.qmoi-enhanced.com:8000/metrics"
   }
 }

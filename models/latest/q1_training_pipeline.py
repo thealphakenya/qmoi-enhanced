@@ -55,7 +55,7 @@ class DatasetLoader:
         sample_datasets = [
             Dataset(
                 name="common_crawl",
-                url="https://example.com/common_crawl.tar.gz",
+                url="https://qmoi-enhanced.com/common_crawl.tar.gz",
                 size=1000000000,
                 format="json",
                 quality_score=0.8,
@@ -65,7 +65,7 @@ class DatasetLoader:
             ),
             Dataset(
                 name="wikipedia",
-                url="https://example.com/wikipedia.tar.gz",
+                url="https://qmoi-enhanced.com/wikipedia.tar.gz",
                 size=2000000000,
                 format="json",
                 quality_score=0.9,

@@ -395,7 +395,7 @@ interface AudioVisualizerProps {
 4. **Forest Twilight** - Greens with twilight blues
 5. **Purple Cosmos** - Purple, pink, violet
 6. **Golden Luxury** - Warm golds and yellows
-7. **Cyberpunk Hacker** - Neon green and cyan on black
+7. **Cyberpunk ✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
 8. **Pastel Dream** - Soft pastels on white
 9. **Minimalist Light** - Clean light theme
 

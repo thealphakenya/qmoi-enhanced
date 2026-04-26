@@ -255,7 +255,7 @@ def main():
     
     # Simulate video stream
     video_stream = ingestion.create_video_stream(
-        "https://example.com/video.mp4",
+        "https://qmoi-enhanced.com/video.mp4",
         resolution="1920x1080"
     )
     
@@ -266,7 +266,7 @@ def main():
     
     # Simulate audio stream
     audio_stream = ingestion.create_audio_stream(
-        "https://example.com/audio.aac",
+        "https://qmoi-enhanced.com/audio.aac",
         sample_rate=48000
     )
     

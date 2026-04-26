@@ -621,11 +621,11 @@ supports proxies which use Basic or no authentication, and it doesn&#8217;t
 currently support Digest or Kerberos authentication.</p>
 <div class="paragraph">
 <p>If you&#8217;re using a proxy, we recommend that you set the full URL in the proxy
-value, including a scheme.  Thus, <code><a href="https://example.com:3128" class="bare">https://example.com:3128</a></code> is a better choice
-than <code>example.com:3128</code>.  If you need a username and password, they must be
+value, including a scheme.  Thus, <code><a href="https://qmoi-enhanced.com:3128" class="bare">https://qmoi-enhanced.com:3128</a></code> is a better choice
+than <code>qmoi-enhanced.com:3128</code>.  If you need a username and password, they must be
 percent-encoded in the URL, so a username of <code>foo\bar</code> with a password of
 <code>abc@123+</code> using the above proxy would be
-<code><a href="https://foo%5cbar:abc%40123%2b@example.com:3128" class="bare">https://foo%5cbar:abc%40123%2b@example.com:3128</a></code>.</p>
+<code><a href="https://foo%5cbar:abc%40123%2b@qmoi-enhanced.com:3128" class="bare">https://foo%5cbar:abc%40123%2b@qmoi-enhanced.com:3128</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Note that, just like with Git, proxies must not modify, buffer, tamper with, or
@@ -655,7 +655,7 @@ single file containing PKCS#1 certificates, one following the other.</p>
 <p>For example, on Debian, to set this option to provide the default behavior, you
 could run <code>git config http.sslCAPath /etc/ssl/certs</code>.  Note that it&#8217;s also
 possible to set these configuration options on a per-URL basis, like so: <code>git
-config http.https://example.com/.sslCAPath /etc/ssl/certs</code>.</p>
+config http.https://qmoi-enhanced.com/.sslCAPath /etc/ssl/certs</code>.</p>
 </div>
 <div class="paragraph">
 <p>Note that PKCS#12 files are a Git for Windows extension to Git and are not
@@ -681,7 +681,7 @@ passphrase.</p>
 </div>
 <div class="paragraph">
 <p>Usually you will want to specify these values on a per-URL basis, such as the
-following: <code>git config http.https://example.com/.sslKey
+following: <code>git config http.https://qmoi-enhanced.com/.sslKey
 /home/user/.certs/mine.key</code>.</p>
 </div>
 <div class="paragraph">

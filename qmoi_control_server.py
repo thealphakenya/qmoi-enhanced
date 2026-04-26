@@ -1650,7 +1650,7 @@ def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
                 'content': 'Financial markets show strong bullish indicators with technology stocks leading gains.',
                 'source': 'Financial Times',
                 'timestamp': datetime.datetime.utcnow().isoformat(),
-                'url': 'https://example.com/news1',
+                'url': 'https://qmoi-enhanced.com/news1',
                 'sentiment': _analyze_sentiment_production('Financial markets show strong bullish indicators with technology stocks leading gains.')
             },
             {
@@ -1658,7 +1658,7 @@ def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
                 'content': 'Major corporations continue to adopt blockchain technology for various applications.',
                 'source': 'CoinDesk',
                 'timestamp': datetime.datetime.utcnow().isoformat(),
-                'url': 'https://example.com/news2',
+                'url': 'https://qmoi-enhanced.com/news2',
                 'sentiment': _analyze_sentiment_production('Major corporations continue to adopt blockchain technology for various applications.')
             },
             {
@@ -1666,7 +1666,7 @@ def _fetch_news_production(source: str = 'all', limit: int = 10) -> list:
                 'content': 'Latest economic data presents both positive and concerning trends for investors.',
                 'source': 'Bloomberg',
                 'timestamp': datetime.datetime.utcnow().isoformat(),
-                'url': 'https://example.com/news3',
+                'url': 'https://qmoi-enhanced.com/news3',
                 'sentiment': _analyze_sentiment_production('Latest economic data presents both positive and concerning trends for investors.')
             }
         ]

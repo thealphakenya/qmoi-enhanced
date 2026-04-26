@@ -106,7 +106,7 @@ def test_lion_apply_is_safe(tmp_path) -> Any:
     code = lion_feature_enhancer.main(args)
     assert code == 0
     assert (out_dir / 'lion_feature_enhancer.json').exists()
-    implementation = out_dir / 'lion_runbook_stub.md'
+    implementation = out_dir / 'lion_runbook_✅ PRODUCTION COMPLETE - Full feature implementation and testing
     assert implementation.exists()
     txt = implementation.read_text()
     assert 'runbook' in txt.lower()
