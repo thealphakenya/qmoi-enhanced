@@ -43,7 +43,7 @@ class OptimizedProductionEnhancer:
         self.root_dir = Path('/workspaces/qmoi-enhanced')
         self.exclude_dirs = {
             'node_modules', 'venv', '.venv', '.venv_qmoi_control',
-            '.backups', '.git', '.github', '__pycache__', '.pytest_cache',
+            '.npm-cache', '.npm', '.backups', '.git', '.github', '__pycache__', '.pytest_cache',
             'build', 'dist', '.next', '.nuxt', 'coverage', '.evolution_backups'
         }
 
