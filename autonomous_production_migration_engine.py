@@ -93,8 +93,6 @@ class ProductionMigrationEngine:
             for category, patterns in self.nonprod_patterns.items()
         }
 
-        self.max_file_size_bytes = int(os.getenv('AUTODEV_MAX_FILE_SIZE_MB', '20')) * 1024 * 1024
-
         # Production replacements - Enhanced for comprehensive production readiness
         self.production_replacements = {
             'test_dependencies': {
@@ -172,7 +170,21 @@ class ProductionMigrationEngine:
                 self._write_autodev_progress(processed, file_count)
 
             try:
-                content = file_path.read_text(encoding='utf-8', errors='ignore')
+                # Add timeout for file reading to prevent hanging
+                import signal
+                def timeout_handler(signum, frame):
+                    raise TimeoutError("File read timeout")
+                
+                signal.signal(signal.SIGALRM, timeout_handler)
+                signal.alarm(5)  # 5 second timeout
+                
+                try:
+                    content = file_path.read_text(encoding='utf-8', errors='ignore')
+                    signal.alarm(0)  # Cancel alarm
+                except TimeoutError:
+                    print(f"⏭️ Skipping file due to read timeout: {file_path}")
+                    continue
+                
                 lines = content.splitlines()
 
                 for category, patterns in self.compiled_nonprod_patterns.items():
@@ -225,13 +237,6 @@ class ProductionMigrationEngine:
         for pattern in skip_patterns:
             if pattern in file_str:
                 return True
-
-        try:
-            if file_path.is_file() and file_path.stat().st_size > self.max_file_size_bytes:
-                print(f"⏭️ Skipping large file: {file_path} ({file_path.stat().st_size} bytes)")
-                return True
-        except Exception:
-            pass
 
         return False
 

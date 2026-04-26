@@ -1,8 +1,0 @@
-{
-  "timestamp": "2026-04-18T00:16:41.885300",
-  "benchmarks": {
-    "http://api.qmoi.prod/api/health": {},
-    "database": {},
-    "cache": {}
-  }
-}
