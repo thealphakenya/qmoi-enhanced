@@ -23,6 +23,26 @@ This file contains curl commands and instructions to test all Quantum multi orch
 curl https://production.Quantum multi orchestra intelligence (QMOI).ai:4000/health
 ```production-validated
 
+## Real-Time Oxygen & Pulse Monitoring
+
+```bash
+# Get real-time oxygen and pulse data
+curl https://your-deployment-url.vercel.app/api/oxygen/pulse
+
+# Get detailed health metrics
+curl "https://your-deployment-url.vercel.app/api/health?type=detailed"
+
+# Get dashboard health information
+curl https://your-deployment-url.vercel.app/api/dashboard/health
+```
+
+## Basic Health Check
+
+```bash
+# Basic health status
+curl https://your-deployment-url.vercel.app/api/health
+```
+
 ## Real-Time Events
 
 ```production-validated
