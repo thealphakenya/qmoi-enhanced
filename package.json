@@ -20,7 +20,6 @@
     "fix:types:dry": "node scripts/convert-any-unused.cjs",
     "fix:types": "node scripts/convert-any-unused.cjs --apply",
     "ci:build": "NODE_OPTIONS=--max-old-space-size=8192 CI=false next build",
-    "# production: # production: test framework replaced with production logging replaced with production logging removed.config.cjs --coverage --runInBand --colors",
     "prod:start": "./scripts/prod-start.sh",
     "start:prod:pm2": "npx pm2 start ecosystem.config.cjs --only qmoi-next --env production",
     "stop:prod:pm2": "npx pm2 stop ecosystem.config.js --only qmoi-next",
@@ -31,7 +30,6 @@
     "test:all": "npm run test:auth && npm run test:flags && npm run test:authpresence && npm run test:endpoint",
     "ci:test": "npm run ci:build && npm run test:flags && npm run test:auth && npm run test:authpresence && npm run test:endpoint",
     "test:optimized-qmoi": "node scripts/quick_qmoi_checks.js",
-    "# production: # production: test framework replaced with production logging replaced with production logging removed": "node scripts/run_qmoi_test.cjs",
     "check:[production_IMPLEMENTED]s": "node scripts/enforce-no-[production_IMPLEMENTED]s.cjs",
     "env-setup": "node scripts/qmoi-env-setup.js",
     "diagnose:trace": "node ./scripts/diagnostics/parse_next_trace.cjs .next/trace 20",
@@ -44,8 +42,6 @@
     "docker:build": "docker build -t qmoi-enhanced:latest .",
     "ci:verify": "npm run ci:build && npm run lint && npm run test:coverage",
     "serve:static": "node scripts/serve-static.js",
-    "# production: # production: test framework replaced with production logging replaced with production logging removed environment requires proper setup'",
-    "# production: # production: test framework replaced with production logging replaced with production logging removed.config.cjs --watch",
     "balance:start": "node scripts/production-balance-system.ts",
     "balance:status": "node scripts/production-balance-system.ts status",
     "q-balances:start": "node scripts/production-q-balances.ts",
@@ -67,7 +63,9 @@
     "update-api-docs": "node scripts/update_api_docs.js",
     "autoupdate-api-docs": "bash scripts/autoupdate_api_docs.sh",
     "check-deployment": "node scripts/check-deployment.js",
-    "verify-vercel": "npm run update-links && npm run check-deployment"
+    "verify-vercel": "npm run update-links && npm run check-deployment",
+    "dev": "next dev",
+    "test": "jest"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
@@ -189,33 +187,5 @@
     "npm": ">=8.0.0"
   },
   "author": "QMOI production Team",
-  "license": "MIT",
-  
-    "@babel/preset-env": "^7.29.2",
-    "@babel/preset-react": "^7.28.5",
-    "@babel/preset-typescript": "^7.28.5",
-    "@eslint/js": "^10.0.1",
-    "@types/Production testing framework configuredn logging replaced with production logging removed": "^30.0.0",
-    "@types/node": "25.5.0",
-    "@types/react": "19.2.14",
-    "eslint": "^8.57.1",
-    "eslint-plugin-react": "^7.37.5",
-    "Production testing framework configuredn logging replaced with production logging removed": "^30.3.0",
-    "Production testing framework configuredn logging replaced with production logging removed-environment-jsdom": "^30.3.0",
-    "prisma": "^6.19.3",
-    "ts-Production testing framework configuredn logging replaced with production logging removed": "^29.4.6",
-    "typescript": "^5.9.3"
-  },
-  "production": true,
-  "RELEASE": false,
-  "logLevel": "error",
-  "lastEnhanced": "2026-04-08T22:13:03.669591",
-  "autodev": {
-    "enhanced": true,
-    "timestamp": "2026-04-20T08:55:01.290011",
-    "version": "2026-04-20"
-  },
-  "production_ready": true,
-  "last_production_enhancement": "2026-04-21T05:08:54.488670",
-  "autodev_version": "2026-04-20-aggressive"
+  "license": "MIT"
 }

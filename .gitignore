@@ -200,3 +200,15 @@ loaded_apps/**
 /generated/prisma
 v1.2.5_release/*.zip
 .env*.local
+
+# Security
+secrets.json
+security_logs/
+vulnerability_reports/
+# Security and Secrets
+*.key
+*.pem
+*.p12
+.npmrc
+.yarnrc
+config/local.json
