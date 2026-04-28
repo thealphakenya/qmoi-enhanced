@@ -4,7 +4,7 @@
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-03-24T03:31:59.810479Z
+- timestamp: 2026-04-28T12:00:00.000000Z
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
@@ -822,7 +822,7 @@ Link to related documentation, APIs, and system artifacts.
 - **Managed by:** `scripts/qmoi_md_autoupdater.py`
 - **Category:** API/Endpoint/Route
 - **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-16 22:00:58 UTC
+- **Last updated:** 2026-04-28T12:00:00.000000Z
 - **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
 
 

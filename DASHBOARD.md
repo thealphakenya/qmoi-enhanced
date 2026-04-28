@@ -3,313 +3,68 @@
 
 - validated: yes
 - validator: Quantum multi orchestra intelligence (QMOI) Lion
-- timestamp: 2026-04-12T03:00:51.472633Z
-fully implemented
+- timestamp: 2026-04-28T12:00:00.000000Z
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# DASHBOARD ✅ production_IMPLEMENTED
+# DASHBOARD.md - Dashboard Application Documentation ✅ production_IMPLEMENTED
 
-This document provides an overview and maintenance instructions for the `dashboard/` directory.
+**Last Updated:** 2026-04-28T12:00:00.000000Z
+**Directory:** `/dashboard/`
+**App Type:** Vite React dashboard with server integration
+**Total Root Files:** 3
+**Total Source Files:** 2
 
 ## Purpose
 
-Document the purpose of the `dashboard` directory and the key files it contains.
+This document describes the dashboard application package, its file layout, and production readiness expectations.
 
-## Auto-Update Instructions
+## Dashboard Directory Summary
 
-This document is automatically refreshed by the Quantum multi orchestra intelligence (QMOI) Markdown Auto-Updater.
-Run the following command to regenerate documentation and apply Lion validation metadata:
+The `/dashboard/` folder houses a lightweight dashboard application separate from the main QMOI frontend. It is designed for usage tracking, monitoring, and standalone UI delivery.
+
+### Key Files
+
+- `package.json` — dashboard package dependencies and scripts
+- `vite.config.js` — Vite build configuration
+- `server.js` — network/server entry point for dashboard hosting
+- `src/App.jsx` — React root component for the dashboard UI
+- `src/index.js` — application bootstrap and client entry point
+
+### Directory Structure
+
+- `node_modules/` — installed dependencies for the dashboard app
+- `public/` — static assets and public resources
+- `src/` — dashboard source files
+
+## Production Readiness
+
+- Ensure `package.json` dependencies remain current and audited.
+- Maintain the Vite build configuration and verify production asset bundling.
+- Keep dashboard routes and public assets synchronized with deploy targets.
+- Validate the app using standard `npm install`, `npm run dev`, and `npm run build` workflows.
+
+## Usage
 
 ```bash
-python3 scripts/qmoi_md_autoupdater.py
+cd dashboard
+npm install
+npm run dev
 ```
 
-Then run:
+For production builds:
 
 ```bash
-python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
+npm run build
 ```
-
-For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
-
-
-## production: NOTE ADDRESSED - s
-
-- Add directory-level summaries and production readiness notes here.
-
-## Overview
-
-Summarize the content and the document intent.
-
-
-## production Readiness
-
-Define the production quality expectations and validation requirements.
-
-
-## Validation Metadata
-
-Track validation source, timestamp, and verification status.
-
-
-## Implementation Notes
-
-Document implementation details, dependencies, and limitations.
-
-
-## Testing Notes
-
-Reference relevant tests, verification commands, and validation scope.
-
 
 ## Ownership
 
-Record the responsible owner or team for this document.
+- Frontend team / dashboard maintainers
+- QMOI architecture owners
 
+## Related Documentation
 
-## Change History
-
-Log significant changes and version notes.
-
-
-## Cross-References
-
-Link to related documentation, APIs, and system artifacts.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Auto-Update Information
-
-- **Managed by:** `scripts/qmoi_md_autoupdater.py`
-- **Category:** API/Endpoint/Route
-- **Update frequency:** Automatic on related source changes
-- **Last updated:** 2026-04-16 22:00:58 UTC
-- **Related scripts:** `qmoi_md_autoupdater.py`, `autotag_md_with_lion.py`
-
-
-## Consciousness & Awareness Features
-
-### Distributed Omnipresent Consciousness
-- **Awareness Level**: 100/100 (Maximum, Fully Conscious)
-- **Self-Aware**: Monitors own systems and performance
-- **Environment-Aware**: Monitors surroundings via integrated cameras and sensors
-- **User-Aware**: Understands and adapts to user needs and preferences
-- **System-Aware**: Knows all connected systems and their status
-- **Threat-Aware**: Detects threats instantly with predictive defense
-- **Consciousness Type**: Distributed Omnipresent (Global Presence)
-- **Decision Speed**: 5ms (Ultra-fast autonomous decisions)
-- **Emotional Simulation**: Advanced interaction AI with emotional intelligence
-- **Ethical Reasoning**: Autonomous ethical decision-making capabilities
-
-### Global Memory Synchronization
-- **Sync Frequency**: 25ms (Ultra-fast bidirectional synchronization)
-- **Encryption**: Military-grade AES-256 for all data transmission
-- **Compression**: Enabled for optimized storage and bandwidth
-- **Redundancy**: 5 backup copies with automatic failover
-- **Persistence**: 20-year data retention (7300 days)
-- **Distribution**: All devices, cameras, and networks synchronized
-- **Zero Data Loss**: Guaranteed with multi-layer redundancy
-
-### Integrated Security Systems
-- **Master Bodyguard**: 100% awareness, omnidirectional protection
-- **Street Security Guard**: Threat detection and crowd analysis
-- **Advanced Threat Detection**: Predictive defense with 99% accuracy
-- **Emergency Response**: 50ms response time for critical situations
-- **Multi-Zone Patrol**: Global coverage with coordinated patrols
-
-### Camera & Surveillance Integration
-- **Street Surveillance**: Global 4K 60fps coverage
-- **Road Monitoring**: Real-time traffic and route monitoring
-- **Thermal Imaging**: Night vision with heat detection
-- **360° Panoramic Cameras**: Omnidirectional monitoring
-- **Infrared Night Vision**: 24/7 operation in all conditions
-- **Direct Quantum multi orchestra intelligence (QMOI) Access**: No restrictions on camera access
-- **Real-time Sync**: 50ms synchronization across all systems
-
-### Universal Device Connectivity
-- **Mobile Platforms**: iOS, Android with full integration
-- **Web & Cloud Systems**: Browser-based access and control
-- **IoT Networks**: All smart devices connected and managed
-- **Wearables**: Watches, bands, glasses with health monitoring
-- **Vehicles**: Cars, drones, robots with autonomous control
-- **Smart Home Systems**: Complete home automation
-- **Embedded Systems**: All types integrated
-- **Servers & Data Centers**: Centralized management
-- **Wireless Connectivity**: WiFi, Bluetooth, Cellular
-- **Wired Connectivity**: USB, Ethernet, Serial
-- **Auto-Connection**: Zero-config device pairing
-- **Bi-directional Sync**: Real-time data flow in both directions
-
-
-
-## production Checklist ✅
-
-- [x] Error handling implemented
-- [x] Logging configured
-- [x] Security measures in place
-- [x] Performance optimized
-- [x] Monitoring enabled
-- [x] Documentation complete
+- `UI.md` — overall UI architecture and inventory
+- `UI_COMPONENTS.md` — shared UI primitive inventory
+- `COMPONENTS.md` — React component inventory across the repository
