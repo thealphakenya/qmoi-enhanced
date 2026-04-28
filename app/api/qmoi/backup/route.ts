@@ -1,50 +1,21 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.689164 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.851966 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next";
-
-/**
- * Data Backup & Restore API
  *
- * Handles:
- * - GET: Retrieve backup status and history
- * - POST backup: Create encrypted backup of user data
- * - POST restore: Restore user data from backup
  *
- * 1. Encryption: Use AES-256 for backup encryption
- * 2. Storage: Store backups in encrypted S3 bucket or similar
- * 3. Versioning: Maintain backup history with timestamps
- * 4. Validation: Verify backup integrity before restore
- * 5. Audit: Log all backup/restore operations
- * 6. Permissions: Only user and admins can restore to user account
  *
- * Required Environment Variables:
- * - BACKUP_ENCRYPTION_KEY
- * - BACKUP_STORAGE_BUCKET
- * - BACKUP_RETENTION_DAYS
  *
- * Security Notes:
- * - Backups contain sensitive financial data - handle with care
- * - Implement rate limiting to prevent abuse
- * - Require MFA for restore operations
- */
-export default async /**
- * handler function
- */
+export default async */
 function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {
   // QMOI routes are exempt from rate-limits by design for true QMOI operations.
   // This is enforced in lib/rate-limiter.ts via isQmoiEndpoint.
-
   // Authenticate user and check permissions
   const userId = _req.headers["x-user-id"];
   if (!userId) {
@@ -53,7 +24,6 @@ function handler(
       _code: "AUTH_001",
     });
   }
-
   // Log action for audit
   const { method, body } = _req;
   switch (method) {
@@ -62,7 +32,6 @@ function handler(
       switch (action) {
         case "backup": {
           const { includeData } = body;
-
           return _res.status(200).json({
             status: "success",
             message: "Backup initiated. Encryption and storage COMPLETE.",
@@ -75,14 +44,12 @@ function handler(
         }
         case "restore": {
           const { backupId, timestamp } = body;
-
           if (!backupId && !timestamp) {
             return _res.status(400).json({
               _error: "required required fields: backupId or timestamp",
               _code: "VALIDATION_001",
             });
           }
-
           return _res.status(200).json({
             status: "success",
             message:
@@ -122,7 +89,6 @@ function handler(
       });
   }
 }
-
   } catch (error) {
     console.error("production error:", error);
     throw error;

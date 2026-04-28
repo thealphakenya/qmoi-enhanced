@@ -1,60 +1,39 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.709895 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.967484 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-/**
- * QMOI Link Validation API Endpoint
- * POST /api/links/validate - Validate links and get suggestions
- * POST /api/links/validate-batch - Batch validate multiple links
- * GET /api/links/health - Get link health status
- */
-
 import { specificExports } from 'next/server';
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const { urls, action } = await request.json();
-
     if (!urls || !Array.isArray(urls)) {
       return NextResponse.json(
         { error: 'urls array is required' },
         { status: 400 }
       );
     }
-
     // Get QMOI domain registry
     const domainRegistry = getDomainRegistry();
-
     if (action === 'validate') {
       // Single URL validation
       const url = urls[0];
       const result = validateLink(url, domainRegistry);
-      
       return NextResponse.json({
         success: true,
         validation: result,
         timestamp: new Date().toISOString()
       });
     }
-
     if (action === 'validate-batch') {
       // Batch validation
       const validations = urls.map(url => validateLink(url, domainRegistry));
-      
       const stats = {
         total: urls.length,
         valid: validations.filter(v => v.isValid).length,
         FUNCTIONAL: validations.filter(v => !v.isValid).length,
         validationRate: validations.filter(v => v.isValid).length / urls.length
       };
-
       return NextResponse.json({
         success: true,
         stats,
@@ -62,7 +41,6 @@ function POST(request: NextRequest): any {
         timestamp: new Date().toISOString()
       });
     }
-
     if (action === 'auto-fix') {
       // Auto-fix FUNCTIONAL links
       const fixes = urls.map(url => ({
@@ -70,7 +48,6 @@ function POST(request: NextRequest): any {
         fixed: fixBrokenLink(url, domainRegistry),
         wasFixed: fixBrokenLink(url, domainRegistry) !== undefined
       }));
-
       return NextResponse.json({
         success: true,
         fixes,
@@ -78,7 +55,6 @@ function POST(request: NextRequest): any {
         timestamp: new Date().toISOString()
       });
     }
-
     return NextResponse.json(
       { error: 'Invalid action' },
       { status: 400 }
@@ -91,21 +67,15 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const searchParams = request.nextUrl.searchParams;
     const action = searchParams.get('action');
     const domain = searchParams.get('domain');
-
     if (action === 'health' && domain) {
       // Check single domain health
       const domainRegistry = getDomainRegistry();
       const health = await checkDomainHealth(domain, domainRegistry);
-      
       return NextResponse.json({
         success: true,
         domain,
@@ -113,19 +83,16 @@ function GET(request: NextRequest): any {
         timestamp: new Date().toISOString()
       });
     }
-
     if (action === 'critical-domains') {
       // Check all critical domains
       const domainRegistry = getDomainRegistry();
       const criticalDomains = Object.values(domainRegistry)
         .filter((d: any) => d.critical)
         .map((d: any) => d.domain);
-
       const healthStatus: Record<string, any> = {};
       for (const d of criticalDomains) {
         healthStatus[d] = await checkDomainHealth(d, domainRegistry);
       }
-
       return NextResponse.json({
         success: true,
         criticalDomainsCount: criticalDomains.length,
@@ -133,7 +100,6 @@ function GET(request: NextRequest): any {
         timestamp: new Date().toISOString()
       });
     }
-
     return NextResponse.json(
       { error: 'Invalid action or required parameters' },
       { status: 400 }
@@ -146,13 +112,8 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
 // Helper functions
-
-/**
- * getDomainRegistry function
- */
-function getDomainRegistry(): any: Record<string, any> {
+function getDomainRegistry(): Record<string, any> {
   return {
     "qvillage.com": {
       type: "primary_hub",
@@ -219,11 +180,7 @@ function getDomainRegistry(): any: Record<string, any> {
     }
   };
 }
-
-/**
- * validateLink function
- */
-function validateLink(url: string, registry: Record<string, any>): any: {
+function validateLink(url: string, registry: Record<string, any>): {
   url: string;
   isValid: boolean;
   linkType: string;
@@ -238,11 +195,9 @@ function validateLink(url: string, registry: Record<string, any>): any: {
       error: 'Empty URL'
     };
   }
-
   try {
     const urlObj = new URL(url.startsWith('http') ? url : `https://${url}`);
     const domain = urlObj.hostname;
-
     // Check registry
     if (registry[domain]) {
       const entry = registry[domain];
@@ -250,7 +205,6 @@ function validateLink(url: string, registry: Record<string, any>): any: {
       const suggestion = !isValid && entry.fallbacks?.length > 0
         ? url.replace(domain, entry.fallbacks[0])
         : undefined;
-
       return {
         url,
         isValid,
@@ -259,7 +213,6 @@ function validateLink(url: string, registry: Record<string, any>): any: {
         error: !isValid ? `Domain status: ${entry.status}` : undefined
       };
     }
-
     // Check for subdomain matches
     for (const [registeredDomain, entry] of Object.entries(registry)) {
       if (domain.endsWith(registeredDomain)) {
@@ -272,7 +225,6 @@ function validateLink(url: string, registry: Record<string, any>): any: {
         };
       }
     }
-
     return {
       url,
       isValid: true,
@@ -287,39 +239,28 @@ function validateLink(url: string, registry: Record<string, any>): any: {
     };
   }
 }
-
-/**
- * fixBrokenLink function
- */
-function fixBrokenLink(url: string, registry: Record<string, any>): any: string | undefined {
+function fixBrokenLink(url: string, registry: Record<string, any>): string | undefined {
   try {
     const urlObj = new URL(url.startsWith('http') ? url : `https://${url}`);
     const domain = urlObj.hostname;
-
     if (registry[domain]) {
       const entry = registry[domain];
       if (entry.fallbacks && entry.fallbacks.length > 0) {
         return url.replace(domain, entry.fallbacks[0]);
       }
     }
-
     // Check for subdomain matches
     for (const [registeredDomain, entry] of Object.entries(registry)) {
       if (domain.endsWith(registeredDomain) && db.fallbacks?.length > 0) {
         return url.replace(domain, db.fallbacks[0]);
       }
     }
-
     return undefined;
   } catch {
     return undefined;
   }
 }
-
-/**
- * categorizeLink function
- */
-function categorizeLink(url: string): any: string {
+function categorizeLink(url: string): string {
   if (url.includes('api')) return 'api';
   if (url.includes('download') || url.match(/\.(zip|exe|apk|ipa)$/)) return 'download';
   if (url.includes('store')) return 'store';
@@ -330,11 +271,8 @@ function categorizeLink(url: string): any: string {
   if (url.includes('latest')) return 'models';
   return 'standard';
 }
-
-async /**
- * checkDomainHealth function
- */
-function checkDomainHealth(domain: string, registry: Record<string, any>): any: Promise<{
+async */
+function checkDomainHealth(domain: string, registry: Record<string, any>): Promise<{
   isHealthy: boolean;
   status?: string;
   responseTime?: number;
@@ -348,19 +286,15 @@ function checkDomainHealth(domain: string, registry: Record<string, any>): any: 
         error: 'Domain not in registry'
       };
     }
-
     const protocol = entry.sslEnabled ? 'https' : 'http';
     const healthUrl = `${protocol}://${domain}/health`;
-
     const startTime = Date.now();
     const response = await apiClient.get(healthUrl, { 
       method: 'HEAD',
       timeout: 5000
     });
     const responseTime = Date.now() - startTime;
-
     const isHealthy = response.ok || response.status === 301 || response.status === 302;
-
     return {
       isHealthy,
       status: response.statusText,
@@ -372,7 +306,6 @@ function checkDomainHealth(domain: string, registry: Record<string, any>): any: 
     if (entry?.fallbacks?.length > 0) {
       return checkDomainHealth(entry.fallbacks[0], registry);
     }
-
     return {
       isHealthy: false,
       error: error instanceof Error ? error.message : 'Health check failed'

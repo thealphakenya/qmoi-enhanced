@@ -1,13 +1,9 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.792776 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.141695 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import {
   listDatasets,
@@ -22,17 +18,11 @@ import {
   syncDatasetsWithCloud,
   autoDiscoverDatasets,
 } from "@/lib/dataset-store";
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   try {
     await initDatasetStore();
-
     const datasets = await listDatasets();
     const syncStatus = await getCloudSyncStatus();
-
     return NextResponse.json({
       success: true,
       data: datasets,
@@ -46,21 +36,15 @@ function GET(): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: Request): any {
+export async function POST(request: Request): any {
   try {
     await initDatasetStore();
     const body = (await request.json()) as any;
     const action = String(body?.action || "list").toLowerCase();
-
     // Selection, analysis, and dataset operations
     if (action === "list") {
       return NextResponse.json({ success: true, data: await listDatasets() });
     }
-
     if (action === "get") {
       const id = body.id || body.datasetId;
       if (!id) {
@@ -81,13 +65,11 @@ function POST(request: Request): any {
       }
       return NextResponse.json({ success: true, dataset });
     }
-
     if (action === "select") {
       const context = body.context || {};
       const selectedDatasets = await selectDatasets(context);
       return NextResponse.json({ success: true, selectedDatasets });
     }
-
     if (action === "analyze") {
       const datasetIds: string[] = Array.isArray(body.datasetIds)
         ? body.datasetIds
@@ -95,7 +77,6 @@ function POST(request: Request): any {
       const analyses = await analyzeDatasets(datasetIds);
       return NextResponse.json({ success: true, analyses });
     }
-
     if (action === "recommend") {
       const context = body.context || {};
       const selectedDatasets = await selectDatasets(context);
@@ -107,7 +88,6 @@ function POST(request: Request): any {
         reasons: [],
       });
     }
-
     if (action === "query") {
       const filters = body.filters || body.context || {};
       const all = await listDatasets();
@@ -135,7 +115,6 @@ function POST(request: Request): any {
       });
       return NextResponse.json({ success: true, results });
     }
-
     if (action === "statistics") {
       const datasets = await listDatasets();
       const totalSize = datasets.reduce(
@@ -155,7 +134,6 @@ function POST(request: Request): any {
       };
       return NextResponse.json({ success: true, stats });
     }
-
     if (
       action === "sync" ||
       action === "force_sync" ||
@@ -165,13 +143,11 @@ function POST(request: Request): any {
       if (action === "force_sync") {
         await initDatasetStore({ forceRefresh: true });
       }
-
       if (action === "auto_discover") {
         const discovery = await autoDiscoverDatasets();
         const status = getCloudSyncStatus();
         return NextResponse.json({ success: true, discovery, status });
       }
-
       const syncResult = await syncDatasetsWithCloud();
       const status = getCloudSyncStatus();
       return NextResponse.json({
@@ -180,7 +156,6 @@ function POST(request: Request): any {
         status,
       });
     }
-
     if (action === "create") {
       const { name, description, type, metadata } = body;
       if (!name || !type) {
@@ -189,7 +164,6 @@ function POST(request: Request): any {
           { status: 400 },
         );
       }
-
       const dataset = await createDataset({
         name,
         type,
@@ -200,7 +174,6 @@ function POST(request: Request): any {
       });
       return NextResponse.json({ success: true, dataset });
     }
-
     if (action === "update") {
       const { id, updates } = body;
       if (!id) {
@@ -218,7 +191,6 @@ function POST(request: Request): any {
       }
       return NextResponse.json({ success: true, dataset });
     }
-
     if (action === "delete") {
       const { id } = body;
       if (!id) {
@@ -230,7 +202,6 @@ function POST(request: Request): any {
       const deleted = await deleteDataset(id);
       return NextResponse.json({ success: deleted, id });
     }
-
     return NextResponse.json(
       {
         success: false,

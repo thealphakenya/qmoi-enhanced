@@ -3,15 +3,10 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/qmoi-service";
-
-export async /**
- * POST function
- */
-function POST(req: Request): any {
+export async function POST(req: Request): any {
   try {
     let body: any = {};
     try {
@@ -19,7 +14,6 @@ function POST(req: Request): any {
     } catch (_e) {
       return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
     }
-
     const {
       messages,
       input,
@@ -27,7 +21,6 @@ function POST(req: Request): any {
       userId = "anonymous",
       context = {},
     } = body;
-
     let userMessage = input;
     if (
       !userMessage &&
@@ -38,23 +31,19 @@ function POST(req: Request): any {
       const lastMsg = messages[messages.length - 1];
       userMessage = lastMsg.content || lastMsg.text || "";
     }
-
     if (!userMessage) {
       return NextResponse.json(
         { error: "No message provided" },
         { status: 400 },
       );
     }
-
     const response = await qmoiService.processRequest({ prompt: userMessage });
-
     if (!response || !response.success) {
       return NextResponse.json(
         { error: "QMOI service error", details: response },
         { status: 500 },
       );
     }
-
     return NextResponse.json({
       /* production implementation with proper error handling */response,
       choices: [
@@ -77,11 +66,7 @@ function POST(req: Request): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   return NextResponse.json({
     name: "QMOI /api/ai Bridge",
     version: "1.0.0",

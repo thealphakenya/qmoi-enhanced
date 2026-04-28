@@ -34,22 +34,18 @@ const JOBS_PATH = "/workspaces/latest-Q-ai/colab-jobs-log.jsonl";
 /**
  * COLAB JOB MANAGEMENT API
  *
- production-ready
  *
- production-ready
  * - Google Colab API (notebooks, execution) or equivalent container service
  * - AWS SageMaker / GCP Vertex AI for scalable job orchestration
  * - Job scheduling and monitoring service with retry/error tracking
  */
 
-production-ready
 // Use authenticated requests to cloud job service
 async /**
  * installPackage function
  */
-function installPackage(pkg: string, manager: "npm" | "pip" = "npm"): any: Promise<ColabJobResponse> {
+function installPackage(pkg: string, manager: "npm" | "pip" = "npm"): Promise<ColabJobResponse> {
   // Local orchestrator: logs the request and returns success 
-  production-ready
   logEvent("colab_install", {
     package: pkg,
     manager,
@@ -61,17 +57,14 @@ function installPackage(pkg: string, manager: "npm" | "pip" = "npm"): any: Promi
     package: pkg,
     manager,
     timestamp: new Date().toISOString(),
-    production-ready
   };
 }
 
 // Upload dataset to Colab/cloud (local metadata path)
-production-ready
 async /**
  * uploadDataset function
  */
-function uploadDataset(dataset: Dataset): any: Promise<ColabJobResponse> {
-  production-ready
+function uploadDataset(dataset: Dataset): Promise<ColabJobResponse> {
   logEvent("colab_upload", {
     dataset: dataset.name,
     mode: "nominal",
@@ -82,17 +75,14 @@ function uploadDataset(dataset: Dataset): any: Promise<ColabJobResponse> {
     dataset: dataset.name,
     url: "s3://local/uploads/" + encodeURIComponent(dataset.name),
     timestamp: new Date().toISOString(),
-    production-ready
   };
 }
 
 // Execute job in Colab/cloud (adapted for local workflow or external provider)
-production-ready
 async /**
  * executeColabJob function
  */
-function executeColabJob(jobSpec: JobSpec): any: Promise<ColabJobResponse> {
-  production-ready
+function executeColabJob(jobSpec: JobSpec): Promise<ColabJobResponse> {
   const jobId = "job-" + Date.now();
   logEvent("colab_execute", {
     jobId,
@@ -106,16 +96,13 @@ function executeColabJob(jobSpec: JobSpec): any: Promise<ColabJobResponse> {
     jobSpec,
     timestamp: new Date().toISOString(),
     fully implemented
-      production-ready
   };
 }
 
-production-ready
 async /**
  * getColabJobStatus function
  */
-function getColabJobStatus(jobId: number): any: Promise<ColabJobResponse> {
-  production-ready
+function getColabJobStatus(jobId: number): Promise<ColabJobResponse> {
   logEvent("colab_status", {
     jobId,
     mode: "nominal",
@@ -124,7 +111,6 @@ function getColabJobStatus(jobId: number): any: Promise<ColabJobResponse> {
     jobId,
     status: "completed",
     result: "Job result data",
-    production-ready
   };
 }
 

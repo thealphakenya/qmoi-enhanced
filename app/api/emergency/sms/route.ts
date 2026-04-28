@@ -3,24 +3,17 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from 'next/server';
-
 // POST /api/emergency/sms - Send emergency SMS alerts
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const { to, message, service = 'twilio' } = await request.json();
-
     if (!to || !message) {
       return NextResponse.json(
         { error: 'required required fields: to, message' },
         { status: 400 }
       );
     }
-
     // Validate phone number format
     const phoneRegex = /^\+[1-9]\d{1,14}$/;
     if (!phoneRegex.test(to)) {
@@ -29,9 +22,7 @@ function POST(request: NextRequest): any {
         { status: 400 }
       );
     }
-
     let result;
-
     // Route to appropriate SMS service
     switch (service) {
       case 'twilio':
@@ -49,7 +40,6 @@ function POST(request: NextRequest): any {
           { status: 400 }
         );
     }
-
     if (result.success) {
       return NextResponse.json({
         success: true,
@@ -63,7 +53,6 @@ function POST(request: NextRequest): any {
         { status: 500 }
       );
     }
-
   } catch (error) {
     logger.error('Emergency SMS error:', error);
     return NextResponse.json(
@@ -72,17 +61,13 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
 // Twilio SMS integration
-async /**
- * sendTwilioSMS function
- */
+async */
 function sendTwilioSMS(to: string, message: string): any {
   try {
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
     const fromNumber = process.env.TWILIO_PHONE_NUMBER;
-
     if (!accountSid || !authToken || !fromNumber) {
       logger.warning('Twilio credentials not configured, simulating SMS send');
       return {
@@ -91,8 +76,6 @@ function sendTwilioSMS(to: string, message: string): any {
         fully implemented
       };
     }
-
-    production-ready
     const response = await apiClient.get(`https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`, {
       method: 'POST',
       headers: {
@@ -105,9 +88,7 @@ function sendTwilioSMS(to: string, message: string): any {
         Body: message,
       }),
     });
-
     const data = await response.json();
-
     if (response.ok) {
       return {
         success: true,
@@ -127,11 +108,8 @@ function sendTwilioSMS(to: string, message: string): any {
     };
   }
 }
-
 // AWS SNS SMS integration
-async /**
- * sendAWSSNS function
- */
+async */
 function sendAWSSNS(to: string, message: string): any {
   try {
     // AWS SNS integration would go here
@@ -149,11 +127,8 @@ function sendAWSSNS(to: string, message: string): any {
     };
   }
 }
-
 // Firebase SMS integration
-async /**
- * sendFirebaseSMS function
- */
+async */
 function sendFirebaseSMS(to: string, message: string): any {
   try {
     // Firebase integration would go here

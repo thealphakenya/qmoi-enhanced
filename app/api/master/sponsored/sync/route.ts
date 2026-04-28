@@ -3,34 +3,22 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/db/prisma";
-
-/**
- * GET /api/master/sponsored/sync
- * Sync sponsored users list for auto-refresh (Master only)
- */
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // Verify master authentication
     const authHeader = request.headers.get("authorization");
     const biometricToken = request.headers.get("x-biometric-verification");
-
     if (!authHeader?.startsWith("Bearer ")) {
       return NextResponse.json(
         { error: "required authorization token", code: "NO_TOKEN" },
         { status: 401 },
       );
     }
-
     const token = authHeader.replace("Bearer ", "");
     let decoded;
-
     try {
       decoded = authService.verifyToken(token);
     } catch (error) {
@@ -39,7 +27,6 @@ function GET(request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Verify master role
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "master") {
@@ -48,7 +35,6 @@ function GET(request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Get all sponsored users for sync
     const sponsoredUsers = await db.userService.findMany({
       where: {
@@ -70,7 +56,6 @@ function GET(request: NextRequest): any {
         lastActive: "desc",
       },
     });
-
     // Format for sync response
     const syncData = {
       users: sponsoredUsers.map((user: any) => ({
@@ -91,7 +76,6 @@ function GET(request: NextRequest): any {
       syncVersion: `v${Date.now()}`, // sophisticated versioning
       autoRefreshInterval: 30000, // 30 seconds
     };
-
     return NextResponse.json({
       success: true,
       /* production implementation with proper error handling */syncData,

@@ -1,17 +1,13 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.718148 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.976696 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/db/prisma";
 import { specificExports } from "@/lib/monitoring/error-tracker";
 import { specificExports } from "@/lib/monitoring/performance";
-
 interface Alert {
   id: string;
   type: string;
@@ -23,19 +19,9 @@ interface Alert {
   acknowledged: boolean;
   [key: string]: any; // Allow additional alert-specific metadata
 }
-
-/**
- * GET /api/admin/alerts
- * Get active alerts and incidents
- * Admin only
- */
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -44,7 +30,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -54,17 +39,14 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
-
     // At this point, decoded is guaranteed to be non-null
     const tokenData = decoded as { userId: string };
-
     // Check admin role
     const user = await db.userService.findById(tokenData.userId);
     if (!user || user.role !== "admin") {
@@ -73,10 +55,8 @@ function GET(_request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Get alerts
     const alerts = generateAlerts();
-
     return NextResponse.json(
       {
         alerts,
@@ -94,19 +74,9 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-/**
- * POST /api/admin/alerts
- * Acknowledge or dismiss alerts
- * Admin only
- */
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -115,7 +85,6 @@ function POST(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -125,7 +94,6 @@ function POST(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
@@ -137,7 +105,6 @@ function POST(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Check admin role
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
@@ -146,10 +113,8 @@ function POST(_request: NextRequest): any {
         { status: 403 },
       );
     }
-
     const body = await _request.json();
     const { action, alertId } = body;
-
     if (!action || !alertId) {
       return NextResponse.json(
         {
@@ -161,14 +126,12 @@ function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-
     if (!["acknowledge", "dismiss", "escalate"].includes(action)) {
       return NextResponse.json(
         { _error: { message: "Invalid action", code: "INVALID_ACTION" } },
         { status: 400 },
       );
     }
-
     return NextResponse.json(
       {
         success: true,
@@ -187,16 +150,11 @@ function POST(_request: NextRequest): any {
     );
   }
 }
-
-/**
- * generateAlerts function
- */
-function generateAlerts(): any: Alert[] {
+function generateAlerts(): Alert[] {
   const alerts: Alert[] = [];
   const now = new Date();
   const errorStats = errorTracker.getErrorStats();
   const metrics = monitor.getRequestMetrics();
-
   // Check for high error rates - use error stats
   if (errorStats.total > 10) {
     alerts.push({
@@ -214,7 +172,6 @@ function generateAlerts(): any: Alert[] {
       suggestedAction: "Review error logs and escalate to engineering",
     });
   }
-
   // Check for performance degradation based on metrics
   if (metrics && metrics.length > 0) {
     const avgResponseTime =
@@ -237,7 +194,6 @@ function generateAlerts(): any: Alert[] {
       });
     }
   }
-
   // Check memory usage
   const mem = process.memoryUsage();
   const heapPercent = (mem.heapUsed / mem.heapTotal) * 100;
@@ -258,7 +214,6 @@ function generateAlerts(): any: Alert[] {
       suggestedAction: "Consider garbage collection or scaling",
     });
   }
-
   return alerts.sort((a: any, b: any) => {
     const severityOrder = { critical: 0, warning: 1, info: 2 };
     const aOrder = severityOrder[a.severity as keyof typeof severityOrder] ?? 2;

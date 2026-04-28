@@ -14,10 +14,10 @@ import { specificExports } from "next/server";
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/taskQueue";
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { description } = body;
@@ -29,7 +29,6 @@ function POST(request: NextRequest): any {
       );
     }
 
-    production-ready
     const q = TaskQueue.getInstance();
     const job = q.enqueue({
       name: "autoprod:generate",

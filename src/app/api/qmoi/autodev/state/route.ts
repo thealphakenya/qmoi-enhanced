@@ -9,10 +9,10 @@ console.log("production mode initialized");
 import { specificExports } from "@/lib/prisma";
 import { specificExports } from "next/server";
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const record = await prisma.setting.findUnique({
       where: { key: "autoprod.state" },

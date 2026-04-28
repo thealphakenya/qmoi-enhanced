@@ -3,34 +3,19 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "crypto";
-
-/**
- * QMOI Auto-Setup API Endpoint
- * Automatically generates and validates environment variables
- */
-
 interface EnvVariable {
   key: string;
   value: string;
   description: string;
 }
-
-/**
- * generateSecureToken function
- */
-function generateSecureToken(length: number = 32): any: string {
+function generateSecureToken(length: number = 32): string {
   return crypto.randomBytes(length).toString("hex");
 }
-
-/**
- * generateEnvironmentVariables function
- */
-function generateEnvironmentVariables(): any: EnvVariable[] {
+function generateEnvironmentVariables(): EnvVariable[] {
   return [
     {
       key: "MASTER_PASSWORD",
@@ -49,7 +34,6 @@ function generateEnvironmentVariables(): any: EnvVariable[] {
     },
     {
       key: "NODE_ENV",
-      production-ready
       description: "Node environment",
     },
     {
@@ -124,22 +108,15 @@ function generateEnvironmentVariables(): any: EnvVariable[] {
     },
   ];
 }
-
-/**
- * readEnvFile function
- */
-function readEnvFile(): any: Record<string, string> {
+function readEnvFile(): Record<string, string> {
   const envPath = path.join(process.cwd(), ".env.local");
-
   try {
     if (!fs.existsSync(envPath)) {
       return {};
     }
-
     const content = fs.readFileSync(envPath, "utf-8");
     const lines = content.split("\n");
     const vars: Record<string, string> = {};
-
     lines.for (const item of((line) => {
       const trimmed = line.trim();
       if (trimmed && !trimmed.startsWith("#")) {
@@ -149,41 +126,30 @@ function readEnvFile(): any: Record<string, string> {
         }
       }
     });
-
     return vars;
   } catch (error) {
     logger.error("Error reading .env.local:", error);
     return {};
   }
 }
-
-/**
- * writeEnvFile function
- */
-function writeEnvFile(variables: Record<string, string>): any: boolean {
+function writeEnvFile(variables: Record<string, string>): boolean {
   try {
     const envPath = path.join(process.cwd(), ".env.local");
-
     // Create comment header
     const header = `# QMOI Auto-Generated Environment Variables
 # Generated: ${new Date().toISOString()}
 # This file is auto-generated. Modifications are safe and will be preserved.
-
 `;
-
     // Convert variables to service.env format
     const lines = Object.entries(variables)
       .map(([key, value]) => `${key}=${value}`)
       .join("\n");
-
     const content = header + lines + "\n";
-
     // Ensure directory exists
     const dirPath = path.dirname(envPath);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath, { recursive: true });
     }
-
     fs.writeFileSync(envPath, content, "utf-8");
     logger.info("[QMOI] Environment variables saved to .env.local");
     return true;
@@ -192,18 +158,12 @@ function writeEnvFile(variables: Record<string, string>): any: boolean {
     return false;
   }
 }
-
-/**
- * loadEnvironmentVariables function
- */
-function loadEnvironmentVariables(): any: void {
+function loadEnvironmentVariables(): void {
   const envPath = path.join(process.cwd(), ".env.local");
-
   try {
     if (fs.existsSync(envPath)) {
       const content = fs.readFileSync(envPath, "utf-8");
       const lines = content.split("\n");
-
       lines.for (const item of((line) => {
         const trimmed = line.trim();
         if (trimmed && !trimmed.startsWith("#")) {
@@ -211,7 +171,6 @@ function loadEnvironmentVariables(): any: void {
           if (key) {
             const envKey = key.trim();
             const envValue = valueParts.join("=").trim();
-
             // Only set if not already set by process
             if (!process.env[envKey]) {
               process.env[envKey] = envValue;
@@ -219,31 +178,22 @@ function loadEnvironmentVariables(): any: void {
           }
         }
       });
-
       logger.info("[QMOI] Environment variables loaded from .env.local");
     }
   } catch (error) {
     logger.error("[QMOI] Error loading environment variables:", error);
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: Request): any {
+export async function POST(request: Request): any {
   try {
     logger.info("[QMOI] Starting auto-setup/* production implementation with proper error handling */");
-
     // Read existing environment
     const existingVars = readEnvFile();
-
     // Generate all required variables
     const requiredVars = generateEnvironmentVariables();
-
     // Merge: keep existing, add new ones
     const finalVars: Record<string, string> = {};
     const statusVariables: Record<string, boolean> = {};
-
     for (const variable of requiredVars) {
       if (existingVars[variable.key]) {
         // Keep existing variable
@@ -255,10 +205,8 @@ function POST(request: Request): any {
         statusVariables[variable.key] = true;
       }
     }
-
     // Write to .env.local
     const writeSuccess = writeEnvFile(finalVars);
-
     if (!writeSuccess) {
       return NextResponse.json(
         {
@@ -269,10 +217,8 @@ function POST(request: Request): any {
         { status: 500 },
       );
     }
-
     // Load variables into process.env
     loadEnvironmentVariables();
-
     // Verify critical variables are set
     const criticalVars = [
       "MASTER_PASSWORD",
@@ -282,7 +228,6 @@ function POST(request: Request): any {
     const allCriticalSet = criticalVars.every(
       (varName) => process.env[varName],
     );
-
     if (!allCriticalSet) {
       return NextResponse.json(
         {
@@ -293,7 +238,6 @@ function POST(request: Request): any {
         { status: 500 },
       );
     }
-
     logger.info("[QMOI] Auto-setup completed successfully");
     logger.info("[QMOI] Environment variables configured:");
     logger.info(
@@ -303,7 +247,6 @@ function POST(request: Request): any {
     logger.info(
       `  - NEXT_PUBLIC_API_URL: ${process.env.NEXT_PUBLIC_API_URL || "✗"}`,
     );
-
     return NextResponse.json({
       success: true,
       message: "QMOI environment auto-configured successfully. Ready to start!",
@@ -326,15 +269,10 @@ function POST(request: Request): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(request: Request): any {
+export async function GET(request: Request): any {
   try {
     // Load current environment
     loadEnvironmentVariables();
-
     // Get status
     const status = {
       masterPassword: process.env.MASTER_PASSWORD
@@ -342,7 +280,6 @@ function GET(request: Request): any {
         : "✗ required",
       adminToken: process.env.ADMIN_TOKEN ? "✓ Configured" : "✗ required",
       apiUrl: process.env.NEXT_PUBLIC_API_URL || "✗ required",
-      production-ready
       autoScanEnabled:
         process.env.QMOI_AUTO_SCAN_ENABLED === "true"
           ? "✓ Enabled"
@@ -352,7 +289,6 @@ function GET(request: Request): any {
           ? "✓ Enabled"
           : "✗ enabled",
     };
-
     return NextResponse.json({
       success: true,
       status,

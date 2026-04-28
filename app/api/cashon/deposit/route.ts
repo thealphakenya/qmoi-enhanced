@@ -3,21 +3,14 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/cashon-wallet";
 import { specificExports } from "../../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
 // POST /api/cashon/deposit
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {
@@ -27,22 +20,16 @@ function POST(_request: NextRequest): any {
       }
       return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
-
     const canRun =
-      production-ready
-      production-ready
     const runtimeToken = process.env.MASTER_TOKEN || "";
-
     const body = await _request.json();
     const { amount } = body;
-
     if (!amount || amount < 10) {
       return NextResponse.json(
         { _error: "Invalid amount - minimum KES 10" },
         { status: 400 },
       );
     }
-
     const proposal = {
       id: `cashon-deposit-${Date.now()}`,
       timestamp: new Date().toISOString(),
@@ -59,7 +46,6 @@ function POST(_request: NextRequest): any {
         message: "Deposit proposed (dry-run)",
       });
     }
-
     const depositId = await cashonWallet.initiateDeposit(amount, runtimeToken);
     return NextResponse.json({
       success: true,

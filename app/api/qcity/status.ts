@@ -11,10 +11,10 @@ console.log("production mode initialized");
 import { specificExports } from "next/server";
 import { specificExports } from "@/scripts/services/qcity_service";
 
-export async /**
+/**
  * GET function
  */
-function GET(_req: NextRequest): any {
+export async function GET(_req: NextRequest): any {
   const qcityService = new QCityService();
   await qcityService.initialize();
   const status = qcityService.getStatus();

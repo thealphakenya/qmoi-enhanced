@@ -1,26 +1,17 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.740313 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.999295 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from 'next/server';
-
-export async /**
- * POST function
- */
-function POST(
+export async function POST(
   request: Request,
   { params }: { params: { domain: string } }
 ): any {
   try {
     const domain = decodeURIComponent(params.domain);
-
     // Approve the domain (add to active registry)
     // This would update the domain registry to mark the domain as approved
-
     // Log to QMOI_TRACKS
     const trackEntry = {
       id: `domain_approve_${Date.now()}`,
@@ -32,10 +23,8 @@ function POST(
       status: 'completed',
       metadata: { domain, action: 'approved' },
     };
-
     // Save to tracks
     // await saveTrack(trackEntry);
-
     return NextResponse.json({
       success: true,
       message: `Domain ${domain} approved and added to active registry`

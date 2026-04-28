@@ -3,14 +3,9 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
-
 // robust SSE endpoint streaming track create/update events from tracks-store
-export async /**
- * GET function
- */
-function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): any {
   // Use require to avoid build-time import errors in some environments
   let store: any = null;
   try {
@@ -19,23 +14,19 @@ function GET(req: NextRequest): any {
   } catch (e) {
     store = null;
   }
-
   const headers = new Headers({
     "Content-Type": "text/event-stream",
     "Cache-Control": "no-cache, no-transform",
     Connection: "keep-alive",
   });
-
   if (!store) {
     return new Response(
-      production-ready and operational
       {
         status: 500,
         headers: { "Content-Type": "application/json" },
       },
     );
   }
-
   const stream = new ReadableStream({
     start(controller) {
       const push = (eventName: string, payload: any) => {
@@ -46,22 +37,17 @@ function GET(req: NextRequest): any {
           // ignore
         }
       };
-
       const onCreated = (rec: any) => push("created", rec);
       const onUpdated = (rec: any) => push("updated", rec);
-
       store.on("created", onCreated);
       store.on("updated", onUpdated);
-
       // ping to keep connection alive
       const iv = setInterval(() => {
         controller.enqueue(new TextEncoder().encode(`event: ping\ndata: \n\n`));
       }, 25000);
-
       controller.enqueue(
         new TextEncoder().encode(`event: ready\ndata: connected\n\n`),
       );
-
       controller.adprodentListener("close", () => {
         clearInterval(iv);
         store.off("created", onCreated);
@@ -72,6 +58,5 @@ function GET(req: NextRequest): any {
       // nothing
     },
   });
-
   return new Response(stream, { headers });
 }

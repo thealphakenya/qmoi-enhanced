@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Evolution - Replace Model Endpoint
  * Handles autonomous and manual model replacement requests
- production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -17,10 +16,10 @@ import { specificExports } from '@/lib/qmoi-state';
 
 export const runtime = 'nodejs';
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     // Verify master-only access for autonomous replacements
     const user = await withAuthentication(request);
@@ -104,10 +103,10 @@ function POST(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     

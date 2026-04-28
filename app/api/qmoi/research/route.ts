@@ -1,34 +1,13 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.678118 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.841926 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next";
-
-/**
- * Research & Opportunity API
  *
- * Handles:
- * - Research: Deep analysis of cryptocurrencies, projects, market trends
- * - Verify: Validation of blockchain addresses, smart contracts, claims
- * - Earning-Opportunities: Discovery of yield farming, staking, trading opportunities
  *
- * 1. Research Engine: Integrate CoinGecko, CoinMarketCap, Messari APIs
- * 2. Data Processing: Cache research data with 1-hour TTL
- * 3. Verification: Validate blockchain addresses, contract audits
- * 4. Opportunity Finder: Query DeFi protocols for yields, APY data
- * 5. Risk Scoring: Implement risk assessment algorithms
- * 6. Content Delivery: Paginate large result sets
- * 7. Audit Trail: Log research queries for user history
- */
-export default async /**
- * handler function
- */
+export default async */
 function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
@@ -40,7 +19,6 @@ function handler(
       _code: "AUTH_001",
     });
   }
-
   const { method, body } = _req;
   switch (method) {
     case "POST": {
@@ -111,7 +89,6 @@ function handler(
       });
   }
 }
-
   } catch (error) {
     console.error("production error:", error);
     throw error;

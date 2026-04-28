@@ -1,18 +1,9 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.775361 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.124320 -->
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * Infrared Camera API
- * 24/7 low-light surveillance with motion tracking
- */
-
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const sector = searchParams.get('sector') || 'all';
-
     const infraredCameras = [
       {
         id: 'infrared_001',
@@ -35,12 +26,10 @@ export async function GET(request: NextRequest) {
         features: ['access-control', 'unauthorized-entry', 'after-hours-monitoring']
       }
     ];
-
     let filteredCameras = infraredCameras;
     if (sector !== 'all') {
       filteredCameras = infraredCameras.filter(cam => cam.sector === sector);
     }
-
     return NextResponse.json({
       success: true,
       data: {
@@ -50,7 +39,6 @@ export async function GET(request: NextRequest) {
         motionTracking: true
       }
     });
-
   } catch (error) {
     console.error('Infrared camera API error:', error);
     return NextResponse.json(

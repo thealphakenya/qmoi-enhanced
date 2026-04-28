@@ -3,19 +3,12 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next";
 import { specificExports } from "fs";
 import { specificExports } from "path";
-
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
-
-/**
- * parseLogLine function
- */
 function parseLogLine(line: string): any {
   try {
     return JSON.parse(line);
@@ -23,10 +16,7 @@ function parseLogLine(line: string): any {
     return null;
   }
 }
-
 export default /**
- * handler function
- */
 function handler(): any {
   try {(_req: NextApiRequest, _res: NextApiResponse) {
   const key = _req.headers["x-qcity-admin-key"];

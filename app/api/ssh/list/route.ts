@@ -3,38 +3,17 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
-
-/**
- * SSH File Listing API
  *
  fully implemented
- * SSH client library (node-ssh) is not compatible with Next.js server components.
  *
- * 1. Deploy SSH service as separate microservice
- * 2. Use SSH gateway with REST proxy
- * 3. Implement SFTP client instead
- * 4. Use WebSocket tunnel to SSH server
- * 5. Container-based SSH access with Docker API
  *
- production-ready
- * Clients should use alternative file access methods (S3, GCS, etc.)
  *
- * Required Environment Variables:
- * - SSH_HOST, SSH_PORT, SSH_USERNAME
- * - SSH_KEY_PATH or SSH_PASSWORD
- */
-export async /**
- * POST function
- */
-function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
     const body = await req.json();
     const { path, host, credentials } = body;
-
     if (!path || !host) {
       return NextResponse.json(
         {
@@ -44,11 +23,9 @@ function POST(req: NextRequest): any {
         { status: 400 },
       );
     }
-
     return NextResponse.json(
       {
         _status: "success",
-        production-ready and operational
         host,
         path,
         files: [],

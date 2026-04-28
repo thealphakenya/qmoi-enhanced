@@ -21,7 +21,7 @@ export default /**
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function QVillagePage(): any {
-  try {() {
+  try {
   const [resources, setResources] = useState<Resource[]>([]);
   const [loading, setLoading] = useState(true);
 

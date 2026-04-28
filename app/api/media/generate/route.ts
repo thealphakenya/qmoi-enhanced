@@ -3,16 +3,12 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
 // Cloud-offloading and dashboard integration utilities
 interface CloudTask {
   id: string;
@@ -25,12 +21,8 @@ interface CloudTask {
   result?: unknown;
   error?: string;
 }
-
 // Master authentication
-/**
- * isMaster function
- */
-function isMaster(_req: NextRequest): any: boolean {
+function isMaster(_req: NextRequest): boolean {
   const masterToken = _req.headers.get("x-master-token");
   const adminKey = _req.headers.get("x-qmoi-admin-key");
   return (
@@ -38,11 +30,7 @@ function isMaster(_req: NextRequest): any: boolean {
     adminKey === process.env.ADMIN_KEY
   );
 }
-
 // UTF-8 safe logging
-/**
- * logToDashboard function
- */
 function logToDashboard(
   action: string,
   data: unknown,
@@ -55,11 +43,8 @@ function logToDashboard(
     data: typeof data === "string" ? data : JSON.stringify(data),
     source: "media-generation-api",
   };
-
   // Sanitize for UTF-8 safety (remove control characters)
   /**
- * removeControlChars function
- */
 function removeControlChars(s: string): any {
     return Array.from(s)
       .filter((ch) => {
@@ -70,73 +55,55 @@ function removeControlChars(s: string): any {
   }
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
   logger.info(sanitizedLog);
-
-  production-ready
   // Requires: Socket.io or Next.js WebSocket integration
   return logEntry;
 }
-
 // Pre-autotest logic
-async /**
- * runPreAutotest function
- */
+async */
 function runPreAutotest(
   mediaType: string,
   prompt: string,
-): any: Promise<{ passed: boolean; issues: string[] }> {
+): Promise<{ passed: boolean; issues: string[] }> {
   const issues: string[] = [];
-
   // Check prompt safety
   if (prompt.length > 1000) {
     issues.push("Prompt too long");
   }
-
   // Check for inappropriate content (comprehensive check)
   const inappropriateWords = ["inappropriate", "unsafe", "harmful"];
   if (inappropriateWords.some((word) => prompt.toLowerCase().includes(word))) {
     issues.push("Content flagged for review");
   }
-
   // Check media type compatibility
   const validTypes = ["image", "video", "audio", "3d-model", "animation"];
   if (!validTypes.includes(mediaType)) {
     issues.push("Invalid media type");
   }
-
   return {
     passed: issues.length === 0,
     issues,
   };
 }
-
 // Cloud-offloading function
-async /**
- * offloadToCloud function
- */
-function offloadToCloud(task: CloudTask): any: Promise<CloudTask> {
+async */
+function offloadToCloud(task: CloudTask): Promise<CloudTask> {
   try {
     // Determine best cloud provider based on task type
     const cloudProvider = task.type === "video" ? "colab" : "dagshub";
-
     logToDashboard("cloud-offload-start", {
       taskId: task.id,
       provider: cloudProvider,
     });
-
     await new Promise((resolve) => setTimeout(resolve, 2000));
-
     task.status = "processing";
     task.progress = 50;
     task.cloudProvider = cloudProvider;
     task.updatedAt = new Date().toISOString();
-
     logToDashboard("cloud-offload-progress", {
       taskId: task.id,
       progress: task.progress,
     });
-
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
     task.status = "completed";
     task.progress = 100;
     task.result = {
@@ -151,46 +118,35 @@ function offloadToCloud(task: CloudTask): any: Promise<CloudTask> {
       },
     };
     task.updatedAt = new Date().toISOString();
-
     logToDashboard("cloud-offload-complete", {
       taskId: task.id,
       result: task.result,
     });
-
     return task;
   } catch (error) {
     task.status = "failed";
     task.error = _error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
-
     logToDashboard(
       "cloud-offload-error",
       { taskId: task.id, _error: task.error },
       "error",
     );
-
     return task;
   }
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { type, prompt, quality = "high", masterOverride = false } = body;
-
     if (!type || !prompt) {
       return NextResponse.json(
         { _error: "Type and prompt are required" },
         { status: 400 },
       );
     }
-
     // Run pre-autotest
     const autotestResult = await runPreAutotest(type, prompt);
-
     if (!autotestResult.passed && !masterOverride) {
       logToDashboard(
         "pre-autotest-failed",
@@ -206,7 +162,6 @@ function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-
     const apiAuth = requireApiKey(_request.headers);
     if (masterOverride && !apiAuth.ok && !isMaster(_request)) {
       const _r = apiAuth.response;
@@ -217,7 +172,6 @@ function POST(_request: NextRequest): any {
         { status: _r?.status ?? 403 },
       );
     }
-
     // Create cloud task
     const task: CloudTask = {
       id: Math.random().toString(36).substring(7),
@@ -228,17 +182,14 @@ function POST(_request: NextRequest): any {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
-
     logToDashboard("media-generation-start", {
       taskId: task.id,
       type,
       prompt,
       quality,
     });
-
     // Start cloud-offloaded processing
     const processedTask = await offloadToCloud(task);
-
     return NextResponse.json({
       success: true,
       task: processedTask,
@@ -249,28 +200,20 @@ function POST(_request: NextRequest): any {
     const errorMessage =
       _error instanceof Error ? error.message : "Unknown error";
     logToDashboard("media-generation-error", { _error: errorMessage }, "error");
-
     return NextResponse.json(
       { _error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
 }
-
 // GET endpoint for task status
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const { searchParams } = new URL(_request.url);
     const taskId = searchParams.get("taskId");
-
     if (!taskId) {
       return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
     }
-
-    production-ready
     // For cloud jobs: use Celery, Bull, or AWS SQS for async task tracking
     const cloudTask: CloudTask = {
       id: taskId,
@@ -290,7 +233,6 @@ function GET(_request: NextRequest): any {
         },
       },
     };
-
     return NextResponse.json({
       success: true,
       task: cloudTask,
@@ -300,7 +242,6 @@ function GET(_request: NextRequest): any {
     const errorMessage =
       _error instanceof Error ? error.message : "Unknown error";
     logToDashboard("media-status-error", { _error: errorMessage }, "error");
-
     return NextResponse.json(
       { _error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },

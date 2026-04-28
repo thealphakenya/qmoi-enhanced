@@ -1,36 +1,25 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.811507 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.159400 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth-service";
 import { specificExports } from "@/lib/db/services";
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { userId } = body;
-
     if (!userId) {
       return NextResponse.json(
         { error: "userId is required" },
         { status: 400 },
       );
     }
-
     const { auth, biometric } = await AuthService.getUserProfile(userId);
-
     if (!auth) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
-
     return NextResponse.json(
       {
         success: true,
@@ -94,33 +83,23 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * PUT function
- */
-function PUT(request: NextRequest): any {
+export async function PUT(request: NextRequest): any {
   try {
     const authHeader = request.headers.get("authorization");
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return NextResponse.json({ error: "No token provided" }, { status: 401 });
     }
-
     const session = AuthService.verifySession(token);
-
     if (!session) {
       return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
-
     const userId = session.userId;
     const body = await request.json();
-
     // Update user profile
     const updatedUser = await userService.update(userId, body);
-
     if (!updatedUser) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
-
     return NextResponse.json({
       success: true,
       user: {

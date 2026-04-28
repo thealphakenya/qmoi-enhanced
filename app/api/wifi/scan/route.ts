@@ -3,11 +3,8 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
-
 interface WiFiNetwork {
   ssid: string;
   bssid: string;
@@ -17,14 +14,8 @@ interface WiFiNetwork {
   frequency: number;
   quality: number;
 }
-
-production-ready
-async /**
- * scanWiFiNetworks function
- */
-function scanWiFiNetworks(): any: Promise<WiFiNetwork[]> {
-  production-ready
-  production-ready and operational
+async */
+function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
   // Parse output and return formatted network list
   return [
     {
@@ -56,10 +47,7 @@ function scanWiFiNetworks(): any: Promise<WiFiNetwork[]> {
     },
   ];
 }
-
-async /**
- * connectToWiFi function
- */
+async */
 function connectToWiFi({
   ssid,
   password,
@@ -68,7 +56,7 @@ function connectToWiFi({
   ssid: string;
   password: string;
   bssid?: string;
-}): any: Promise<{
+}): Promise<{
   success: boolean;
   details?: unknown;
   message?: string;
@@ -76,14 +64,8 @@ function connectToWiFi({
   _note?: string;
   _error?: string;
 }> {
-  production-ready
   // Requires: nmcli (Linux), netsh (Windows), or node-wifiscanner
-  production-ready
-
-  production-ready
   const testPassword =
-    production-ready
-
   if (password === testPassword) {
     return {
       success: true,
@@ -104,13 +86,8 @@ function connectToWiFi({
     };
   }
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
-    production-ready
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
   } catch (error) {
@@ -124,23 +101,16 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { ssid, password, bssid } = body;
-
     if (!ssid || !password) {
       return NextResponse.json(
         { _error: "SSID and password are required" },
         { status: 400 },
       );
     }
-
-    production-ready
     const connectionResult = await connectToWiFi({ ssid, password, bssid });
     if (connectionResult.success) {
       return NextResponse.json({

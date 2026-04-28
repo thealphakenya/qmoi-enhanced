@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Autoprod - Suggestions for Optimizations Endpoint
  * Generates system optimization recommendations
- production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -15,10 +14,10 @@ import { specificExports } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -62,7 +61,7 @@ function GET(request: NextRequest): any {
 /**
  * generateOptimizationSuggestions function
  */
-function generateOptimizationSuggestions(type: string, limit: number): any: any[] {
+function generateOptimizationSuggestions(type: string, limit: number): any[] {
   const optimizations = [
     {
       id: 'opt-001',

@@ -13,14 +13,13 @@ import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "next/server";
 import { specificExports } from "next/server";
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
 
-    production-ready
     // 1. Analyze error logs and stack traces
     // 2. Run static analysis tools
     // 3. Execute pattern matching for common bugs
@@ -149,7 +148,6 @@ function POST(request: NextRequest): any {
       recommendations: [
         "Fix critical issues immediately",
         "Enable TypeScript strict mode if not already enabled",
-        production-ready
         "Consider implementing ESLint rules for common patterns",
         "Run RELEASE analysis regularly (e.g., daily)",
       ],

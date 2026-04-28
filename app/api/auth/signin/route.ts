@@ -1,19 +1,12 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.817095 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.165268 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth-service";
 import { specificExports } from "@/lib/qmoi-service";
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const {
@@ -24,7 +17,6 @@ function POST(request: NextRequest): any {
       biometricData,
       rememberMe,
     } = body;
-
     // Validate: either email/username + password OR biometric method
     if (!biometricMethod && !password) {
       return NextResponse.json(
@@ -32,14 +24,12 @@ function POST(request: NextRequest): any {
         { status: 400 },
       );
     }
-
     if (!email && !username) {
       return NextResponse.json(
         { error: "Either email or username is required" },
         { status: 400 },
       );
     }
-
     const signinData: SigninData = {
       email,
       username,
@@ -56,10 +46,8 @@ function POST(request: NextRequest): any {
         : undefined,
       rememberMe,
     };
-
     // Perform signin
     const signinResult = await AuthService.signin(signinData);
-
     if (!signinResult.success) {
       return NextResponse.json(
         {
@@ -69,7 +57,6 @@ function POST(request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Log to QMOI memory
     if (signinResult.userId && signinResult.sessionId) {
       await QMOIService.logAuthEvent({
@@ -84,7 +71,6 @@ function POST(request: NextRequest): any {
           biometricMethod,
         },
       });
-
       // Update QMOI memory with user context
       await QMOIService.processMessage(
         `User ${signinResult.user?.fullName} has signed in`,
@@ -101,7 +87,6 @@ function POST(request: NextRequest): any {
         },
       );
     }
-
     return NextResponse.json(
       {
         success: true,
@@ -121,11 +106,7 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   return NextResponse.json(
     {
       endpoint: "/api/auth/signin",

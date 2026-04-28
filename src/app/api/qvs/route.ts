@@ -7,10 +7,10 @@ console.log("production mode initialized");
 import { specificExports } from 'next/server';
 import { specificExports } from '@/qmoi/core/qvs/qvs-system';
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
@@ -58,10 +58,10 @@ function GET(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, config } = body;

@@ -18,7 +18,7 @@ const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
 /**
  * loadUsers function
  */
-function loadUsers(): any: unknown[] {
+function loadUsers(): unknown[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));

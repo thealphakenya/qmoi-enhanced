@@ -28,7 +28,6 @@ async /**
  * getStatus function
  */
 function getStatus(): any {
-  production-ready
   
   return {
     running: true,
@@ -50,10 +49,10 @@ function getStatus(): any {
 
 let isContinuousRunning = false;
 
-export async /**
+/**
  * POST function
  */
-function POST(_req: NextRequest): any {
+export async function POST(_req: NextRequest): any {
   const { mode } = (await _req.json() as any);
 
   if (mode === "start") {

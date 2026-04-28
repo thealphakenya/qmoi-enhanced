@@ -1,26 +1,18 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.702262 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.957888 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/projects-service";
-
-export async /**
- * GET function
- */
-function GET(req: Request): any {
+export async function GET(req: Request): any {
   try {
     const { searchParams } = new URL(req.url);
     const action = searchParams.get("action");
     const userId = searchParams.get("userId");
     const projectId = searchParams.get("projectId");
     const category = searchParams.get("category");
-
     if (action === "list") {
       const projects = await ProjectsService.getProjects(
         userId || undefined,
@@ -31,7 +23,6 @@ function GET(req: Request): any {
         count: projects.length,
       });
     }
-
     if (action === "get" && projectId) {
       const project = await ProjectsService.getProjectById(projectId);
       if (!project) {
@@ -42,7 +33,6 @@ function GET(req: Request): any {
       }
       return NextResponse.json({ success: true, project });
     }
-
     if (action === "capabilities") {
       const capabilities = await ProjectsService.getCapabilities(
         category || undefined,
@@ -53,14 +43,12 @@ function GET(req: Request): any {
         count: capabilities.length,
       });
     }
-
     if (action === "analytics") {
       const analytics = await ProjectsService.getProjectAnalytics(
         userId || undefined,
       );
       return NextResponse.json({ success: true, analytics });
     }
-
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
     logger.error("Projects API GET error:", error);
@@ -70,11 +58,7 @@ function GET(req: Request): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(req: Request): any {
+export async function POST(req: Request): any {
   try {
     const body = await req.json();
     const {
@@ -90,11 +74,9 @@ function POST(req: Request): any {
       capabilityData,
       updates,
     } = body;
-
     if (!userId) {
       return NextResponse.json({ error: "userId required" }, { status: 400 });
     }
-
     if (action === "create") {
       const project = await ProjectsService.createProject({
         name,
@@ -110,7 +92,6 @@ function POST(req: Request): any {
         message: "Project created successfully",
       });
     }
-
     if (action === "update" && projectId && updates) {
       const project = await ProjectsService.updateProject(
         projectId,
@@ -128,12 +109,10 @@ function POST(req: Request): any {
         message: "Project updated successfully",
       });
     }
-
     if (action === "delete" && projectId) {
       const result = await ProjectsService.deleteProject(projectId);
       return NextResponse.json(result);
     }
-
     if (action === "add-task" && projectId && taskData) {
       const task = await ProjectsService.addTask(projectId, taskData);
       if (!task) {
@@ -148,7 +127,6 @@ function POST(req: Request): any {
         message: "Task added successfully",
       });
     }
-
     if (action === "update-task" && projectId && taskData?.id) {
       const task = await ProjectsService.updateTask(
         projectId,
@@ -164,7 +142,6 @@ function POST(req: Request): any {
         message: "Task updated successfully",
       });
     }
-
     if (action === "register-capability" && capabilityData) {
       const capability =
         await ProjectsService.registerCapability(capabilityData);
@@ -174,7 +151,6 @@ function POST(req: Request): any {
         message: "Capability registered successfully",
       });
     }
-
     if (action === "update-capability-usage" && capabilityData?.id) {
       await ProjectsService.updateCapabilityUsage(
         capabilityData.id,
@@ -185,7 +161,6 @@ function POST(req: Request): any {
         message: "Capability usage updated",
       });
     }
-
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
     logger.error("Projects API POST error:", error);

@@ -1,47 +1,31 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.683267 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.846734 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
 import { specificExports } from "../../../../lib/security_check";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
 // Verify master token
-/**
- * verifyMasterToken function
- */
-function verifyMasterToken(_req: NextRequest): any: boolean {
+function verifyMasterToken(_req: NextRequest): boolean {
   const masterToken = _req.headers.get("x-qmoi-master");
   return masterToken === process.env.QMOI_MASTER_TOKEN;
 }
-
-export async /**
- * GET function
- */
-function GET(_req: NextRequest): any {
+export async function GET(_req: NextRequest): any {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
-
   try {
     const url = new URL(_req.url);
     const action = url.searchParams.get("action");
-
     // load engine dynamically to support various module systems
     const mod = await import("../../../../lib/qmoi-revenue-engine");
     const qmoiRevenueEngine = mod.qmoiRevenueEngine || mod.default || mod;
-
     switch (action) {
       case "status":
         return NextResponse.json({
@@ -50,18 +34,15 @@ function GET(_req: NextRequest): any {
           dailyProgress: qmoiRevenueEngine.getDailyProgress(),
           streams: qmoiRevenueEngine.getRevenueStreams(),
         });
-
       case "transactions":
         const limit = parseInt(url.searchParams.get("limit") || "50");
         return NextResponse.json({
           transactions: qmoiRevenueEngine.getTransactions(limit),
         });
-
       case "streams":
         return NextResponse.json({
           streams: qmoiRevenueEngine.getRevenueStreams(),
         });
-
       default:
         return NextResponse.json({
           totalEarnings: qmoiRevenueEngine.getTotalEarnings(),
@@ -79,24 +60,17 @@ function GET(_req: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(_req: NextRequest): any {
+export async function POST(_req: NextRequest): any {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
-
   try {
     const { action } = (await _req.json()) as any;
-
     // Load engine dynamically
     const mod = await import("../../../../lib/qmoi-revenue-engine");
     const qmoiRevenueEngine: unknown =
       mod.qmoiRevenueEngine || mod.default || mod;
-
     switch (action) {
       case "start":
         if (qmoiRevenueEngine.startRevenueGeneration) {
@@ -109,7 +83,6 @@ function POST(_req: NextRequest): any {
           success: true,
           message: "Revenue engine started",
         });
-
       case "stop":
         if (qmoiRevenueEngine.stop) {
           qmoiRevenueEngine.stop();
@@ -121,7 +94,6 @@ function POST(_req: NextRequest): any {
           success: true,
           message: "Revenue engine stopped",
         });
-
       case "transfer":
         const amount = qmoiRevenueEngine.getTotalEarnings?.() || 0;
         if (amount > 0) {
@@ -139,7 +111,6 @@ function POST(_req: NextRequest): any {
             message: "No earnings to transfer",
           });
         }
-
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }

@@ -1,24 +1,16 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.693010 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.855146 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "../../../../../lib/proposals";
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   // API key gating for status checks
   const auth = libProposals.requireApiKey(_request.headers);
   if (!auth.ok) {
@@ -32,7 +24,6 @@ function GET(_request: NextRequest): any {
   }
   try {
     const workflowsDir = path.join(process.cwd(), ".github", "workflows");
-
     const status = {
       status: "unknown" as
         | "success"
@@ -46,12 +37,10 @@ function GET(_request: NextRequest): any {
       duration: "0s",
       workflow: "qmoi-auto-fix.yml",
     };
-
     // Check if workflows directory exists
     try {
       await fs.access(workflowsDir);
       const workflows = await fs.readdir(workflowsDir);
-
       if (workflows.includes("qmoi-auto-fix.yml")) {
         status.workflow = "qmoi-auto-fix.yml";
         status.status = "configured";
@@ -64,16 +53,13 @@ function GET(_request: NextRequest): any {
     } catch (e) {
       status.status = "not_configured";
     }
-
     // Check for recent log files that might indicate recent runs
     try {
       const logsDir = path.join(process.cwd(), "logs");
       const logFiles = await fs.readdir(logsDir);
-
       const autoFixLogs = logFiles.filter(
         (file) => file.includes("qmoi_auto_fix") && file.endsWith(".log"),
       );
-
       if (autoFixLogs.length > 0) {
         // Get the most recent log
         const latestLog = autoFixLogs.sort().pop();
@@ -81,7 +67,6 @@ function GET(_request: NextRequest): any {
           const logPath = path.join(logsDir, latestLog);
           const logStats = await fs.stat(logPath);
           status.last_run = logStats.mtime.toISOString();
-
           // Determine status based on log content
           try {
             const logContent = await fs.readFile(logPath, "utf-8");
@@ -103,7 +88,6 @@ function GET(_request: NextRequest): any {
     } catch (error) {
       logger.info("Error checking logs:", error);
     }
-
     return NextResponse.json(status);
   } catch (error) {
     logger.error("Error getting GitHub status:", error);

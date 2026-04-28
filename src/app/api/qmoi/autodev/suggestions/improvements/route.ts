@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Autoprod - Suggestions for Improvements Endpoint
  * Generates AI-powered suggestions for system improvements
- production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -24,14 +23,13 @@ export interface SuggestionCategory {
     description: string;
     estimatedImpact: string;
     effort: 'low' | 'medium' | 'high';
-    production-ready
   }[];
 }
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -75,10 +73,10 @@ function GET(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -127,7 +125,7 @@ function POST(request: NextRequest): any {
 /**
  * generateImprovementSuggestions function
  */
-function generateImprovementSuggestions(category: string, limit: number): any: SuggestionCategory[] {
+function generateImprovementSuggestions(category: string, limit: number): SuggestionCategory[] {
   const allSuggestions: SuggestionCategory[] = [
     {
       category: 'performance',
@@ -138,7 +136,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Add Redis caching layer for frequently accessed API endpoints',
           estimatedImpact: '40% latency reduction',
           effort: 'medium',
-          production-ready
             'Add Redis to infrastructure',
             'Implement cache decorator on API handlers',
             'Set up cache invalidation strategy',
@@ -150,7 +147,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Add indexes and optimize slow queries in consciousness and memory systems',
           estimatedImpact: '35% query time reduction',
           effort: 'high',
-          production-ready
             'Run EXPLAIN ANALYZE on slow queries',
             'Add composite indexes on frequently filtered columns',
             'Implement query batching',
@@ -162,7 +158,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Implement HTTP/2 server push for critical assets',
           estimatedImpact: '20% page load improvement',
           effort: 'low',
-          production-ready
             'Configure server HTTP/2 settings',
             'Identify critical assets for pushing',
             'Implement push manifest strategy',
@@ -179,7 +174,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Add circuit breakers to external service integrations',
           estimatedImpact: '99.5% uptime improvement',
           effort: 'high',
-          production-ready
             'Implement circuit breaker library',
             'Configure fallback strategies',
             'Set up monitoring and alerts',
@@ -191,7 +185,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Comprehensive health checks for all critical systems',
           estimatedImpact: 'Faster failure detection',
           effort: 'medium',
-          production-ready
             'Create /health/detailed endpoint',
             'Check database connectivity',
             'Check memory sync status',
@@ -209,7 +202,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Add intelligent rate limiting to prevent abuse',
           estimatedImpact: 'Protection against DDoS attacks',
           effort: 'medium',
-          production-ready
             'Implement rate limiter middleware',
             'Configure per-endpoint limits',
             'Add exponential backoff for clients',
@@ -221,7 +213,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Add comprehensive security headers to all responses',
           estimatedImpact: '100% protection against common attacks',
           effort: 'low',
-          production-ready
             'Add HSTS header',
             'Add CSP policy',
             'Add X-Frame-Options',
@@ -233,7 +224,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Automated rotation of API keys and secrets',
           estimatedImpact: 'Reduced impact of key compromise',
           effort: 'high',
-          production-ready
             'Create key rotation scheduler',
             'Implement versioned API keys',
             'Set up gradual key migration',
@@ -251,7 +241,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Break monolith into smaller, independently scalable services',
           estimatedImpact: '10x horizontal scaling capability',
           effort: 'high',
-          production-ready
             'Identify service boundaries',
             'Implement API gateway',
             'Set up service discovery',
@@ -263,7 +252,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Implement async processing with message queues',
           estimatedImpact: '5x request throughput improvement',
           effort: 'high',
-          production-ready
             'Set up RabbitMQ or Kafka',
             'Convert long-running operations to async',
             'Implement worker processes',
@@ -281,7 +269,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Add trace collection across all services',
           estimatedImpact: 'complete request visibility',
           effort: 'high',
-          production-ready
             'Set up OpenTelemetry',
             'Configure trace collection',
             'Set up Jaeger or similar',
@@ -293,7 +280,6 @@ function generateImprovementSuggestions(category: string, limit: number): any: S
           description: 'Implement application-specific metrics',
           estimatedImpact: 'Better business insights',
           effort: 'medium',
-          production-ready
             'Identify key business metrics',
             'Implement metric collectors',
             'Set up aggregation pipeline',
@@ -318,12 +304,11 @@ function processSuggestionAction(
   suggestionId: string,
   action: string,
   feedback?: string
-): any: Promise<any> {
+): Promise<any> {
   switch (action) {
     case 'implement':
       return {
         fully implemented
-        production-ready
         priority: 'high',
         assignedTo: 'autoprod-system',
         estimatedCompletion: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
@@ -344,6 +329,5 @@ function processSuggestionAction(
       };
 
     default:
-      production-ready
   }
 }

@@ -1,22 +1,14 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.748696 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.007268 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/track-service";
-
-export async /**
- * POST function
- */
-function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const action = url.searchParams.get('action');
-
     if (action === 'log') {
       // Log a track entry
       const body = await req.json();
@@ -33,27 +25,22 @@ function POST(req: NextRequest): any {
         metadata: body.metadata || {},
         owner: "master",
       };
-
       const track = await trackService.addTrack(payload);
       return NextResponse.json({ success: true, track });
     }
-
     if (action === 'report') {
       // Generate TRACKS.md report
       const tracks = await trackService.getTracks(1000, "master");
-
       // Filter domain management tracks
       const domainTracks = tracks.filter(track =>
         track.type === 'DOMAIN_MANAGEMENT' ||
         track.metadata?.domain ||
         track.title?.includes('DOMAIN')
       );
-
       // Generate markdown report
       let report = `# QMOI Master Domain Management Report\n\n`;
       report += `Generated: ${new Date().toISOString()}\n\n`;
       report += `Total Domain Actions: ${domainTracks.length}\n\n`;
-
       report += `## Recent Domain Actions\n\n`;
       domainTracks.slice(0, 50).for (const item of(track => {
         report += `### ${track.title}\n`;
@@ -65,7 +52,6 @@ function POST(req: NextRequest): any {
         }
         report += `\n`;
       });
-
       return new NextResponse(report, {
         headers: {
           'Content-Type': 'text/markdown',
@@ -73,7 +59,6 @@ function POST(req: NextRequest): any {
         }
       });
     }
-
     return NextResponse.json(
       { error: 'Invalid action parameter' },
       { status: 400 }
@@ -86,29 +71,21 @@ function POST(req: NextRequest): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const action = url.searchParams.get('action');
-
     if (action === 'report') {
       // Same as POST report
       const tracks = await trackService.getTracks(1000, "master");
-
       const domainTracks = tracks.filter(track =>
         track.type === 'DOMAIN_MANAGEMENT' ||
         track.metadata?.domain ||
         track.title?.includes('DOMAIN')
       );
-
       let report = `# QMOI Master Domain Management Report\n\n`;
       report += `Generated: ${new Date().toISOString()}\n\n`;
       report += `Total Domain Actions: ${domainTracks.length}\n\n`;
-
       report += `## Recent Domain Actions\n\n`;
       domainTracks.slice(0, 50).for (const item of(track => {
         report += `### ${track.title}\n`;
@@ -120,7 +97,6 @@ function GET(req: NextRequest): any {
         }
         report += `\n`;
       });
-
       return new NextResponse(report, {
         headers: {
           'Content-Type': 'text/markdown',
@@ -128,14 +104,12 @@ function GET(req: NextRequest): any {
         }
       });
     }
-
     // Default: return recent domain tracks
     const tracks = await trackService.getTracks(100, "master");
     const domainTracks = tracks.filter(track =>
       track.type === 'DOMAIN_MANAGEMENT' ||
       track.metadata?.domain
     );
-
     return NextResponse.json({
       success: true,
       tracks: domainTracks,

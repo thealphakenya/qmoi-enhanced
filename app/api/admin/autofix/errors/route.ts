@@ -3,52 +3,35 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
-
 let errorDatabase: any[] = [];
-
 // Verify admin access
-async /**
- * verifyAdminAccess function
- */
+async */
 function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
-
   if (!token || token !== process.env.ADMIN_TOKEN) {
     return false;
   }
   return true;
 }
-
-export async /**
- * GET function
- */
-function GET(request: Request): any {
+export async function GET(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   return NextResponse.json({
     errors: errorDatabase,
     count: errorDatabase.length,
     timestamp: new Date().toISOString(),
   });
 }
-
-export async /**
- * POST function
- */
-function POST(request: Request): any {
+export async function POST(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   try {
     const body = await request.json();
-
     // Add new errors to database
     const newError = {
       id: `err_${Date.now()}`,
@@ -59,9 +42,7 @@ function POST(request: Request): any {
       fixed: false,
       /* production implementation with proper error handling */body,
     };
-
     errorDatabase.push(newError);
-
     return NextResponse.json({
       success: true,
       error: newError,

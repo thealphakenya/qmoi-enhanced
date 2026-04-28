@@ -34,7 +34,7 @@ export default /**
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function MasterLinksDashboard(): any {
-  try {() {
+  try {
   const [linkTracks, setLinkTracks] = useState<LinkTrack[]>([]);
   const [domainValidations, setDomainValidations] = useState<DomainValidation[]>([]);
   const [loading, setLoading] = useState(true);

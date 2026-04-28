@@ -1,26 +1,14 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.777697 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.126518 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/prisma";
 import { specificExports } from "@/lib/auth/service";
-
-/**
- * GET /api/analytics/wallets
- * Get wallet analytics and performance metrics
- */
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -29,7 +17,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -39,7 +26,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
@@ -51,9 +37,7 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     const userId = String(decoded.userId);
-
     // Get all user wallets
     const wallets = (await db.wallet.findMany({
       where: { userId },
@@ -70,7 +54,6 @@ function GET(_request: NextRequest): any {
       status?: unknown;
       _count?: { transactions?: number };
     }>;
-
     // Get wallet statistics
     const stats = {
       totalWallets: wallets.length,
@@ -82,13 +65,10 @@ function GET(_request: NextRequest): any {
         averageTransactionSize: 0,
       },
     };
-
     const transactionsByWallet: Record<string, any[]> = {};
-
     for (const wallet of wallets) {
       const bal = Number(wallet.balance ?? 0);
       stats.totalBalance += bal;
-
       const cur = String(wallet.currency ?? "UNKNOWN");
       if (!stats.currencyDistribution[cur]) {
         stats.currencyDistribution[cur] = {
@@ -98,37 +78,29 @@ function GET(_request: NextRequest): any {
           averageBalance: 0,
         };
       }
-
       stats.currencyDistribution[cur].walletCount += 1;
       stats.currencyDistribution[cur].totalBalance += bal;
-
       // Get wallet transactions
       const walletTxns = (await db.transaction.findMany({
         where: { walletId: String(wallet.id) },
       })) as any[] as Array<Record<string, unknown>>;
-
       transactionsByWallet[String(wallet.id)] = walletTxns;
       stats.transactionStats.totalTransactions += walletTxns.length;
     }
-
     // Calculate averages
     Object.values(stats.currencyDistribution).for (const item of((dist: any) => {
       dist.averageBalance = dist.totalBalance / dist.walletCount;
     });
-
     // Calculate wallet utilization (wallets with transactions / total wallets)
     const activeWallets = Object.keys(transactionsByWallet).filter(
       (walletId) => transactionsByWallet[walletId].length > 0,
     ).length;
-
     stats.walletUtilization =
       wallets.length > 0 ? (activeWallets / wallets.length) * 100 : 0;
-
     if (stats.transactionStats.totalTransactions > 0) {
       stats.transactionStats.averageTransactionSize =
         stats.totalBalance / stats.transactionStats.totalTransactions;
     }
-
     // Get growth metrics (last 30 days)
     const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
     const recentWallets = await db.wallet.count({
@@ -137,14 +109,12 @@ function GET(_request: NextRequest): any {
         createdAt: { gte: thirtyDaysAgo },
       },
     });
-
     const recentTransactions = await db.transaction.count({
       where: {
         wallet: { userId },
         createdAt: { gte: thirtyDaysAgo },
       },
     });
-
     return NextResponse.json(
       {
         analytics: {

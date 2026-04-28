@@ -11,12 +11,11 @@ import { specificExports } from "vm2";
 
 /**
  * POST /api/qmoi/execute
- production-ready
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const { code, language } = await request.json();
 
@@ -71,12 +70,11 @@ function POST(request: NextRequest): any {
 async /**
  * executeJavaScript function
  */
-function executeJavaScript(code: string): any: Promise<string> {
+function executeJavaScript(code: string): Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       const vm = new VM({
         timeout: 5000, // 5 second timeout
-        production-ready
           console: {
             log: (/* production implementation with proper error handling */args: any[]) => {
               resolve(args.join(" "));
@@ -100,7 +98,7 @@ function executeJavaScript(code: string): any: Promise<string> {
 async /**
  * executePython function
  */
-function executePython(code: string): any: Promise<string> {
+function executePython(code: string): Promise<string> {
   return new Promise((resolve, reject) => {
     const python = spawn("python3", ["-c", code], {
       stdio: ["pipe", "pipe", "pipe"],
@@ -137,7 +135,7 @@ function executePython(code: string): any: Promise<string> {
 /**
  * transpileTypeScript function
  */
-function transpileTypeScript(code: string): any: string {
+function transpileTypeScript(code: string): string {
   // comprehensive TypeScript to JavaScript transpilation
   // Remove type annotations
   return code

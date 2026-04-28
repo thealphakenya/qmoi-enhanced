@@ -3,10 +3,10 @@ console.log("production mode initialized");
 <!-- AUTODEV Enhanced: 2026-04-20T08:55:16.211573 -->
 import { specificExports } from '@/lib/telemetry/observability';
 
-export async /**
+/**
  * GET function
  */
-function GET(): any {
+export async function GET(): any {
   const traces = getTraceStatus();
   return new Response(
     JSON.stringify({

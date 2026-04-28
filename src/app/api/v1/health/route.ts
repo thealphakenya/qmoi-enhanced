@@ -1,10 +1,10 @@
 console.log("production mode initialized");
 import { specificExports } from 'next/server';
 
-export async /**
+/**
  * GET function
  */
-function GET(): any {
+export async function GET(): any {
   return NextResponse.json({
     status: 'ok',
     version: 'v1',

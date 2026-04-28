@@ -3,25 +3,14 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/db/prisma";
 import { specificExports } from "@/lib/monitoring/performance";
 import { specificExports } from "@/lib/monitoring/error-tracker";
-
-/**
- * GET /api/admin/monitoring
- * Get comprehensive monitoring dashboard data
- * Admin only
- */
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -30,7 +19,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -40,7 +28,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
@@ -52,7 +39,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Check admin role
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
@@ -61,7 +47,6 @@ function GET(_request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Gather monitoring data
     const monitoring = {
       timestamp: new Date().toISOString(),
@@ -81,10 +66,8 @@ function GET(_request: NextRequest): any {
         version: "2.0.0",
       },
     };
-
     // Add health score
     const healthScore = calculateHealthScore(monitoring);
-
     return NextResponse.json(
       {
         monitoring: {
@@ -108,13 +91,8 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-/**
- * calculateHealthScore function
- */
-function calculateHealthScore(monitoring: Record<string, unknown>): any: number {
+function calculateHealthScore(monitoring: Record<string, unknown>): number {
   let score = 100;
-
   // Check memory usage (safe access)
   const system = monitoring["system"] as Record<string, unknown> | undefined;
   const memory = system
@@ -127,7 +105,6 @@ function calculateHealthScore(monitoring: Record<string, unknown>): any: number 
       score -= 10; // High memory usage
     }
   }
-
   // Check errors
   const errorsObj = (monitoring["errors"] as Record<string, unknown>) || {};
   const totalErrors = (
@@ -141,7 +118,6 @@ function calculateHealthScore(monitoring: Record<string, unknown>): any: number 
   if (totalErrors > 10) {
     score -= Math.min(30, totalErrors);
   }
-
   // Check performance
   type PerfMetric = { successRate?: string | number } & Record<string, unknown>;
   const perfObj = (monitoring["performance"] as Record<string, unknown>) || {};
@@ -155,6 +131,5 @@ function calculateHealthScore(monitoring: Record<string, unknown>): any: number 
   if (failedMetrics.length > 0) {
     score -= failedMetrics.length * 5;
   }
-
   return Math.max(0, score);
 }

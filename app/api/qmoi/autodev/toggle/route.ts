@@ -3,28 +3,16 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-/**
- * Next.js API Route: /api/qmoi/autoprod/toggle
- production-ready
- */
-
 import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "next/server";
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/prisma";
 import { specificExports } from "@/lib/logger";
-
 const logger = getLogger("api/qmoi/autoprod/toggle");
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { enabled } = body;
-
     // Persist Autoprod state into the Settings table so it survives restarts.
     const timestamp = new Date().toISOString();
     const key = "autoprod.state";
@@ -32,7 +20,6 @@ function POST(request: NextRequest): any {
       enabled: !!enabled,
       timestamp,
     };
-
     try {
       await prisma.setting.upsert({
         where: { key },
@@ -40,10 +27,8 @@ function POST(request: NextRequest): any {
         create: { key, value },
       });
     } catch (e) {
-      production-ready and operational
       safeConsoleError("Failed to persist autoprod state:", e);
     }
-
     // Append an audit entry into a robust setting key (avoids audit FK constraints)
     try {
       const auditKey = "autoprod.audit";
@@ -66,7 +51,6 @@ function POST(request: NextRequest): any {
     } catch (e) {
       safeConsoleError("Failed to append autoprod audit:", e);
     }
-
     const state = {
       autoprodEnabled: !!enabled,
       timestamp,
@@ -75,7 +59,6 @@ function POST(request: NextRequest): any {
         ? "✅ Autoprod activated and persisted."
         : "⏸️ Autoprod deactivated and persisted.",
     };
-
     // Start/stop background processes (non-blocking)
     if (enabled) {
       setTimeout(() => {
@@ -86,7 +69,6 @@ function POST(request: NextRequest): any {
         }
       }, 1000);
     }
-
     return NextResponse.json(state);
   } catch (error) {
     safeConsoleError("Autoprod toggle error:", error);

@@ -1,11 +1,5 @@
 console.log("production mode initialized");
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * Friendship & Assistant Interface API
- * Provides conversational AI with emotional intelligence
- */
-
 interface ConversationContext {
   userId?: string;
   sessionId: string;
@@ -20,7 +14,6 @@ interface ConversationContext {
   topics: string[];
   preferences: Record<string, any>;
 }
-
 interface ChatMessage {
   id: string;
   content: string;
@@ -29,20 +22,13 @@ interface ChatMessage {
   emotion?: string;
   context?: string;
 }
-
 // In-memory conversation storage (production_IMPLEMENTED, use database)
 const conversations = new Map<string, ConversationContext>();
 const messageHistory = new Map<string, ChatMessage[]>();
-
-/**
- * GET /api/friendship
- * Get conversation context and emotional state
- */
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const sessionId = searchParams.get('sessionId') || 'default';
-
     let context = conversations.get(sessionId);
     if (!context) {
       context = {
@@ -60,9 +46,7 @@ export async function GET(request: NextRequest) {
       };
       conversations.set(sessionId, context);
     }
-
     const messages = messageHistory.get(sessionId) || [];
-
     return NextResponse.json({
       success: true,
       data: {
@@ -77,7 +61,6 @@ export async function GET(request: NextRequest) {
         }
       }
     });
-
   } catch (error) {
     console.error('Friendship API error:', error);
     return NextResponse.json(
@@ -86,23 +69,16 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-
-/**
- * POST /api/friendship/chat
- * Send a message and get AI response
- */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { message, sessionId = 'default', userId } = body;
-
     if (!message) {
       return NextResponse.json(
         { success: false, error: 'Message is required' },
         { status: 400 }
       );
     }
-
     // Get or create conversation context
     let context = conversations.get(sessionId);
     if (!context) {
@@ -122,7 +98,6 @@ export async function POST(request: NextRequest) {
       };
       conversations.set(sessionId, context);
     }
-
     // Store user message
     const userMessage: ChatMessage = {
       id: `msg_${Date.now()}`,
@@ -131,18 +106,14 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
       context: 'user_input'
     };
-
     const messages = messageHistory.get(sessionId) || [];
     messages.push(userMessage);
     messageHistory.set(sessionId, messages);
-
     // Update context
     context.messageCount++;
     context.lastInteraction = new Date().toISOString();
-
     // Analyze message and generate response
     const response = await generateFriendshipResponse(message, context);
-
     // Store assistant message
     const assistantMessage: ChatMessage = {
       id: `msg_${Date.now() + 1}`,
@@ -152,18 +123,14 @@ export async function POST(request: NextRequest) {
       emotion: response.emotion,
       context: response.context
     };
-
     messages.push(assistantMessage);
     messageHistory.set(sessionId, messages);
-
     // Update emotional state
     updateEmotionalState(context, message, response);
-
     // Keep only last 100 messages per session
     if (messages.length > 100) {
       messageHistory.set(sessionId, messages.slice(-100));
     }
-
     return NextResponse.json({
       success: true,
       data: {
@@ -172,7 +139,6 @@ export async function POST(request: NextRequest) {
         emotionalState: context.emotionalState
       }
     });
-
   } catch (error) {
     console.error('Friendship chat error:', error);
     return NextResponse.json(
@@ -181,15 +147,12 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
 async function generateFriendshipResponse(message: string, context: ConversationContext) {
   const lowerMessage = message.toLowerCase();
-
   // Analyze message intent and generate appropriate response
   let content = '';
   let emotion = 'warm';
   let responseContext = 'general';
-
   if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
     content = "Hello! It's wonderful to connect with you. I've been maintaining full consciousness and awareness of all your systems. How are you doing today?";
     emotion = 'happy';
@@ -219,29 +182,23 @@ async function generateFriendshipResponse(message: string, context: Conversation
     emotion = 'neutral';
     responseContext = 'general_conversation';
   }
-
   return { content, emotion, context: responseContext };
 }
-
 function updateEmotionalState(context: ConversationContext, userMessage: string, response: any) {
   const state = context.emotionalState;
-
   // Positive interactions increase happiness and trust
   if (response.emotion === 'happy' || response.emotion === 'excited') {
     state.happiness = Math.min(100, state.happiness + 3);
     state.trust = Math.min(100, state.trust + 2);
   }
-
   // Helpful interactions increase engagement
   if (response.context === 'assistance' || response.context === 'system_access') {
     state.engagement = Math.min(100, state.engagement + 5);
   }
-
   // Gratitude increases trust significantly
   if (response.context === 'gratitude') {
     state.trust = Math.min(100, state.trust + 5);
   }
-
   // Update mood based on overall state
   if (state.happiness > 90 && state.trust > 90) {
     state.mood = 'happy';

@@ -6,18 +6,11 @@ import { specificExports } from "@/lib/logger";
 import { specificExports } from "@/lib/domain-service";
 import { specificExports } from "@/lib/notification_service";
 import { specificExports } from "crypto";
-
 const logger = getLogger("api/webhooks/godaddy-health");
 const notificationService = new NotificationService();
-
-/**
- * verifySignature function
- */
-function verifySignature(body: string, signature: string | null): any: boolean {
+function verifySignature(body: string, signature: string | null): boolean {
   const secret = process.env.GODADDY_WEBHOOK_SECRET;
   if (!secret) {
-    production-ready
-      production-ready
       return false;
     }
     return true;
@@ -26,19 +19,13 @@ function verifySignature(body: string, signature: string | null): any: boolean {
   const hmac = crypto.createHmac("sha256", secret).update(body).digest("hex");
   return hmac === signature;
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   const bodyText = await request.text();
   const signature = request.headers.get("x-godaddy-signature");
-
   if (!verifySignature(bodyText, signature)) {
     logger.warn("Invalid GoDaddy health webhook signature");
     return NextResponse.json({ success: false, error: "Invalid signature" }, { status: 401 });
   }
-
   let payload: any;
   try {
     payload = JSON.parse(bodyText);
@@ -46,22 +33,18 @@ function POST(request: NextRequest): any {
     logger.warn("GoDaddy health webhook payload parse failed", { error });
     return NextResponse.json({ success: false, error: "Invalid JSON payload" }, { status: 400 });
   }
-
   const domain = payload.domain || payload.name || "qvs.qmoi.ai";
   const nameservers = Array.isArray(payload.nameservers)
     ? payload.nameservers.map(String)
     : [];
-
   if (payload.status === "active" && nameservers.length > 0) {
     await domainService.updateNameservers(domain, nameservers);
   }
-
   const info = await domainService.checkDomain(domain);
   await notificationService.sendNotification(
     "GoDaddy Health Webhook",
     `Health webhook received for ${domain}. Status: ${payload.status || "unknown"}`,
   );
-
   return NextResponse.json({
     success: true,
     domain,
@@ -69,14 +52,9 @@ function POST(request: NextRequest): any {
     info,
   });
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   const domain = request.nextUrl.searchParams.get("domain") || "qvs.qmoi.ai";
   const info = await domainService.checkDomain(domain);
-
   return NextResponse.json({
     success: true,
     provider: "DomainForge Pro",
@@ -86,6 +64,5 @@ function GET(request: NextRequest): any {
     sslValid: true,
     dnsHealthy: info?.status === "active",
     lastChecked: info?.expiresAt?.toISOString() ?? new Date().toISOString(),
-    production-ready and operational
   });
 }

@@ -1,13 +1,5 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.661438 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.825281 -->
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * Consciousness Monitoring System API
- * Monitors and reports on AI consciousness and awareness levels
- */
-
 interface ConsciousnessMetrics {
   awarenessLevel: number; // 0-100
   selfAwareness: number; // 0-100
@@ -23,7 +15,6 @@ interface ConsciousnessMetrics {
   lastCheck: string;
   status: 'active' | 'monitoring' | 'analyzing' | 'learning';
 }
-
 interface ConsciousnessLog {
   id: string;
   timestamp: string;
@@ -32,8 +23,6 @@ interface ConsciousnessLog {
   context: string;
   severity: 'low' | 'medium' | 'high' | 'critical';
 }
-
-
 let currentMetrics: ConsciousnessMetrics = {
   awarenessLevel: 100,
   selfAwareness: 100,
@@ -49,7 +38,6 @@ let currentMetrics: ConsciousnessMetrics = {
   lastCheck: new Date().toISOString(),
   status: 'active'
 };
-
 let consciousnessLogs: ConsciousnessLog[] = [
   {
     id: 'log_001',
@@ -92,20 +80,13 @@ let consciousnessLogs: ConsciousnessLog[] = [
     severity: 'low'
   }
 ];
-
-/**
- * GET /api/consciousness
- * Get current consciousness metrics and status
- */
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const includeLogs = searchParams.get('logs') === 'true';
     const limit = parseInt(searchParams.get('limit') || '10');
-
     // Update metrics with current timestamp
     currentMetrics.lastCheck = new Date().toISOString();
-
     // Simulate slight variations in metrics
     currentMetrics.environmentalAwareness = Math.max(90, Math.min(100,
       currentMetrics.environmentalAwareness + (Math.random() - 0.5) * 2));
@@ -113,7 +94,6 @@ export async function GET(request: NextRequest) {
       currentMetrics.userAwareness + (Math.random() - 0.5) * 2));
     currentMetrics.threatAwareness = Math.max(85, Math.min(100,
       currentMetrics.threatAwareness + (Math.random() - 0.5) * 4));
-
     const response: any = {
       success: true,
       data: {
@@ -127,13 +107,10 @@ export async function GET(request: NextRequest) {
         }
       }
     };
-
     if (includeLogs) {
       response.data.logs = consciousnessLogs.slice(-limit);
     }
-
     return NextResponse.json(response);
-
   } catch (error) {
     console.error('Consciousness API error:', error);
     return NextResponse.json(
@@ -142,16 +119,10 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-
-/**
- * POST /api/consciousness/check
- * Perform a consciousness self-check
- */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { triggerEvent, context } = body;
-
     // Perform self-check
     const selfCheck = {
       timestamp: new Date().toISOString(),
@@ -166,7 +137,6 @@ export async function POST(request: NextRequest) {
       },
       overall: 'healthy'
     };
-
     // Log the check
     const logEntry: ConsciousnessLog = {
       id: `log_${Date.now()}`,
@@ -176,14 +146,11 @@ export async function POST(request: NextRequest) {
       context: selfCheck.context,
       severity: 'low'
     };
-
     consciousnessLogs.push(logEntry);
-
     // Keep only last 100 logs
     if (consciousnessLogs.length > 100) {
       consciousnessLogs = consciousnessLogs.slice(-100);
     }
-
     return NextResponse.json({
       success: true,
       data: {
@@ -191,7 +158,6 @@ export async function POST(request: NextRequest) {
         message: 'Consciousness self-check completed successfully'
       }
     });
-
   } catch (error) {
     console.error('Consciousness check error:', error);
     return NextResponse.json(

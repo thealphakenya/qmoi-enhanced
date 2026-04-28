@@ -15,10 +15,10 @@ import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qmoi/autoprod/research");
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const authHeader = request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
@@ -38,7 +38,6 @@ function POST(request: NextRequest): any {
     const researchId = `qmoiautoresearch-${Date.now()}`;
     const baselineInsights = [
       "Sync API docs with route map",
-      production-ready
       "Confirm health and percent coverage metrics from all monitoring scripts",
     ];
 
@@ -46,7 +45,6 @@ function POST(request: NextRequest): any {
       ? [
           `Scope: ${scope}`,
           `Focus: ${String(details).slice(0, 180)}`,
-          production-ready
         ]
       : [];
 

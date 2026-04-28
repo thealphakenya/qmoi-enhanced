@@ -1,18 +1,9 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.774656 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.123581 -->
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * Road Camera API
- * Real-time road monitoring and traffic analysis
- */
-
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const route = searchParams.get('route') || 'all';
-
     const roadCameras = [
       {
         id: 'road_001',
@@ -35,12 +26,10 @@ export async function GET(request: NextRequest) {
         features: ['congestion-monitoring', 'emergency-vehicle-priority']
       }
     ];
-
     let filteredCameras = roadCameras;
     if (route !== 'all') {
       filteredCameras = roadCameras.filter(cam => cam.route === route);
     }
-
     return NextResponse.json({
       success: true,
       data: {
@@ -50,7 +39,6 @@ export async function GET(request: NextRequest) {
         trafficAnalysis: true
       }
     });
-
   } catch (error) {
     console.error('Road camera API error:', error);
     return NextResponse.json(

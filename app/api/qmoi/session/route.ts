@@ -1,31 +1,19 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.699387 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.954815 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "crypto";
-
 const SESSIONS_FILE = path.resolve(process.cwd(), "data", "sessions.json");
-
-/**
- * ensureFile function
- */
 function ensureFile(): any {
   const dir = path.dirname(SESSIONS_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   if (!fs.existsSync(SESSIONS_FILE)) fs.writeFileSync(SESSIONS_FILE, "[]");
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     ensureFile();
     const body = await _request.json();
@@ -35,18 +23,14 @@ function POST(_request: NextRequest): any {
       role?: string;
       biometricMethods?: string[];
     };
-
     if (!userId) {
       return NextResponse.json({ _error: "required userId" }, { status: 400 });
     }
-
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8")) as any[];
-
     // End existing sessions for user
     sessions.for (const item of((s) => {
       if (s.userId === userId && s.active) s.active = false;
     });
-
     const session = {
       id: crypto.randomUUID(),
       userId,
@@ -58,10 +42,8 @@ function POST(_request: NextRequest): any {
       expiresAt: new Date(Date.now() + 8 * 60 * 60 * 1000).toISOString(),
       lastActivity: new Date().toISOString(),
     };
-
     sessions.push(session);
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-
     return NextResponse.json({
       success: true,
       sessionId: session.id,
@@ -75,40 +57,30 @@ function POST(_request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     ensureFile();
     const sessionId = _request.nextUrl.searchParams.get("sessionId");
-
     if (!sessionId) {
       return NextResponse.json(
         { _error: "required sessionId" },
         { status: 400 },
       );
     }
-
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8")) as any[];
     const session = sessions.find((s) => s.id === sessionId);
-
     if (!session || !session.active) {
       return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
     }
-
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
       return NextResponse.json({ _error: "Session expired" }, { status: 401 });
     }
-
     // Update lastActivity
     session.lastActivity = new Date().toISOString();
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-
     return NextResponse.json({ success: true, session });
   } catch (error) {
     return NextResponse.json(

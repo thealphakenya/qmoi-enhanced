@@ -3,34 +3,22 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/db/prisma";
-
-/**
- * POST /api/master/sponsored/add
- * Add a new sponsored user (Master only)
- */
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     // Verify master authentication
     const authHeader = request.headers.get("authorization");
     const biometricToken = request.headers.get("x-biometric-verification");
-
     if (!authHeader?.startsWith("Bearer ")) {
       return NextResponse.json(
         { error: "required authorization token", code: "NO_TOKEN" },
         { status: 401 },
       );
     }
-
     const token = authHeader.replace("Bearer ", "");
     let decoded;
-
     try {
       decoded = authService.verifyToken(token);
     } catch (error) {
@@ -39,7 +27,6 @@ function POST(request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Verify master role
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "master") {
@@ -48,7 +35,6 @@ function POST(request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Parse request body
     const body = await request.json();
     const {
@@ -62,7 +48,6 @@ function POST(request: NextRequest): any {
       },
       metadata = {},
     } = body;
-
     // Validate required fields
     if (!username || !email) {
       return NextResponse.json(
@@ -70,7 +55,6 @@ function POST(request: NextRequest): any {
         { status: 400 },
       );
     }
-
     // Check if user already exists
     const existingUser = await db.userService.findByUsernameOrEmail(
       username,
@@ -82,7 +66,6 @@ function POST(request: NextRequest): any {
         { status: 409 },
       );
     }
-
     // Create sponsored user
     const newUser = await db.userService.create({
       username,
@@ -99,10 +82,8 @@ function POST(request: NextRequest): any {
         activationCode: `SPON_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       }),
     });
-
     // Generate activation code
     const activationCode = `SPON_2026_${newUser.id.slice(-8).toUpperCase()}`;
-
     // Update with activation code
     await db.userService.update(newUser.id, {
       metadata: JSON.stringify({
@@ -110,7 +91,6 @@ function POST(request: NextRequest): any {
         activationCode,
       }),
     });
-
     return NextResponse.json({
       success: true,
       message: "Sponsored user created successfully",

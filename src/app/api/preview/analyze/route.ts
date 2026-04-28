@@ -12,10 +12,10 @@ import { specificExports } from "path";
  * POST /api/production/analyze
  * Analyzes project files to determine project type and required tools
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const { projectId, files } = await request.json();
 
@@ -118,7 +118,6 @@ function POST(request: NextRequest): any {
       games: [
         "game-canvas",
         "input-simulator",
-        production-ready
         "asset-browser",
         "console-logger",
         "performance-profiler",
@@ -164,7 +163,6 @@ function POST(request: NextRequest): any {
         "design-canvas",
         "component-library",
         "style-inspector",
-        production-ready
         "responsive-tester",
         "handoff-guide",
         "collaboration-view",

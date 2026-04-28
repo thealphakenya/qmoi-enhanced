@@ -15,7 +15,7 @@ import { specificExports } from 'next/server';
 /**
  * isMasterAuthorized function
  */
-function isMasterAuthorized(request: NextRequest): any: boolean {
+function isMasterAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization');
   const masterToken = process.env.MASTER_TOKEN || '';
 
@@ -27,10 +27,10 @@ function isMasterAuthorized(request: NextRequest): any: boolean {
   return token === masterToken;
 }
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const isMaster = isMasterAuthorized(request);
 

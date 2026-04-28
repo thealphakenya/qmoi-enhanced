@@ -9,10 +9,10 @@ import { specificExports } from 'next/server';
 import { specificExports } from '@/qmoi/core/global/global-operations';
 import { specificExports } from '@/utils/console-logger';
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action') || 'stats';
@@ -68,10 +68,10 @@ function GET(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, data } = body;
@@ -263,10 +263,10 @@ function POST(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * PUT function
  */
-function PUT(request: NextRequest): any {
+export async function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, data } = body;
@@ -344,10 +344,10 @@ function PUT(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * DELETE function
  */
-function DELETE(request: NextRequest): any {
+export async function DELETE(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');

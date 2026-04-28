@@ -3,16 +3,10 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/qmoi-service";
-
-export async /**
- * POST function
- */
-function POST(req: Request): any {
+export async function POST(req: Request): any {
   try {
     let body: any = {};
     try {
@@ -20,7 +14,6 @@ function POST(req: Request): any {
     } catch (_e) {
       return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
     }
-
     const {
       messages,
       input,
@@ -28,7 +21,6 @@ function POST(req: Request): any {
       userId = "anonymous-user",
       context = {},
     } = body;
-
     // Support both message arrays and sophisticated input
     let userMessage = input;
     if (
@@ -40,25 +32,21 @@ function POST(req: Request): any {
       const lastMsg = messages[messages.length - 1];
       userMessage = lastMsg.content || lastMsg.text || "";
     }
-
     if (!userMessage) {
       return NextResponse.json(
         { error: "No message provided" },
         { status: 400 },
       );
     }
-
     // Process with QMOI service
     const response = await QMOIService.processQuery(
       userMessage,
       userId,
       context,
     );
-
     if (!response.success) {
       return NextResponse.json(response, { status: 500 });
     }
-
     return NextResponse.json({
       /* production implementation with proper error handling */response,
       choices: [
@@ -81,11 +69,7 @@ function POST(req: Request): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   return NextResponse.json({
     name: "QMOI Chat API",
     version: "2.0.1",
@@ -95,7 +79,6 @@ function GET(): any {
       "memory-integration",
       "qvillage-features",
       "biometric-aware",
-      production-ready
     ],
   });
 }

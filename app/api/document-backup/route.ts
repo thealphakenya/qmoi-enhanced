@@ -3,17 +3,13 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { specificExports } from "next/server";
 import { specificExports } from "fs/promises";
 import { specificExports } from "path";
-
 // Persistent document backup is stored under this directory.
 const BACKUP_ROOT = path.join(process.cwd(), "data", "document-backups");
 const INDEX_FILE = path.join(BACKUP_ROOT, "index.json");
-
 interface DocumentRecord {
   id: string;
   name: string;
@@ -22,10 +18,7 @@ interface DocumentRecord {
   createdAt: string;
   updatedAt: string;
 }
-
-async /**
- * ensureBackupDir function
- */
+async */
 function ensureBackupDir(): any {
   await fs.mkdir(BACKUP_ROOT, { recursive: true });
   try {
@@ -34,44 +27,28 @@ function ensureBackupDir(): any {
     await fs.writeFile(INDEX_FILE, JSON.stringify({ docs: [] }, null, 2));
   }
 }
-
-async /**
- * readIndex function
- */
-function readIndex(): any: Promise<{ docs: DocumentRecord[] }> {
+async */
+function readIndex(): Promise<{ docs: DocumentRecord[] }> {
   await ensureBackupDir();
   const raw = await fs.readFile(INDEX_FILE, "utf-8");
   return JSON.parse(raw);
 }
-
-async /**
- * writeIndex function
- */
+async */
 function writeIndex(index: { docs: DocumentRecord[] }): any {
   await ensureBackupDir();
   await fs.writeFile(INDEX_FILE, JSON.stringify(index, null, 2));
 }
-
-/**
- * requireApiKey function
- */
-function requireApiKey(request: NextRequest): any: boolean {
+function requireApiKey(request: NextRequest): boolean {
   const key = process.env.DOCUMENT_BACKUP_API_KEY;
   if (!key) {
-    production-ready
   }
   const provided = request.headers.get("x-api-key");
   return provided === key;
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   if (!requireApiKey(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
   const body = (await request.json()) as {
     action?: string;
     name?: string;
@@ -80,15 +57,12 @@ function POST(request: NextRequest): any {
     id?: string;
     query?: string;
   };
-
   const action = body.action;
-
   try {
     if (action === "upload") {
       const name = String(body.name || "untitled");
       const type = String(body.type || "unknown");
       const content = body.content;
-
       const index = await readIndex();
       const id = `doc_${Date.now()}_${Math.random().toString(16).slice(2)}`;
       const filename = `${id}.json`;
@@ -100,24 +74,19 @@ function POST(request: NextRequest): any {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
-
       // Persist document to disk
       await fs.writeFile(
         path.join(BACKUP_ROOT, filename),
         JSON.stringify({ /* production implementation with proper error handling */record, content }, null, 2),
       );
-
       index.docs.unshift(record);
       await writeIndex(index);
-
       return NextResponse.json({ success: true, doc: record });
     }
-
     if (action === "list") {
       const index = await readIndex();
       return NextResponse.json({ docs: index.docs });
     }
-
     if (action === "search") {
       const q = String(body.query || "").toLowerCase();
       const index = await readIndex();
@@ -129,7 +98,6 @@ function POST(request: NextRequest): any {
       );
       return NextResponse.json({ docs: results });
     }
-
     if (action === "restore") {
       const id = String(body.id || "");
       const index = await readIndex();
@@ -137,12 +105,10 @@ function POST(request: NextRequest): any {
       if (!doc) {
         return NextResponse.json({ error: "Not found" }, { status: 404 });
       }
-
       const raw = await fs.readFile(path.join(BACKUP_ROOT, doc.path), "utf-8");
       const parsed = JSON.parse(raw);
       return NextResponse.json({ doc: parsed });
     }
-
     return NextResponse.json(
       { error: "Unknown action. Use: upload, restore, search, list" },
       { status: 400 },

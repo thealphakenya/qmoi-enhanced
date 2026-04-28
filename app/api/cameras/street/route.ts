@@ -1,18 +1,9 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.773946 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.122836 -->
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * Street Camera API
- * Global street surveillance with 4K 60fps coverage
- */
-
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const location = searchParams.get('location') || 'all';
-
     const streetCameras = [
       {
         id: 'street_001',
@@ -35,12 +26,10 @@ export async function GET(request: NextRequest) {
         features: ['crowd-monitoring', 'traffic-analysis', 'incident-detection']
       }
     ];
-
     let filteredCameras = streetCameras;
     if (location !== 'all') {
       filteredCameras = streetCameras.filter(cam => cam.location === location);
     }
-
     return NextResponse.json({
       success: true,
       data: {
@@ -50,7 +39,6 @@ export async function GET(request: NextRequest) {
         realTimeSync: true
       }
     });
-
   } catch (error) {
     console.error('Street camera API error:', error);
     return NextResponse.json(

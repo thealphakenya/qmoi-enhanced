@@ -1,13 +1,9 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.794108 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.142827 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { specificExports } from "next/server";
 import {
   getDataset,
@@ -16,11 +12,7 @@ import {
   analyzeDatasets,
   initDatasetStore,
 } from "@/lib/dataset-store";
-
-export async /**
- * GET function
- */
-function GET(
+export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
 ): any {
@@ -43,11 +35,7 @@ function GET(
     );
   }
 }
-
-export async /**
- * PUT function
- */
-function PUT(
+export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } },
 ): any {
@@ -70,11 +58,7 @@ function PUT(
     );
   }
 }
-
-export async /**
- * DELETE function
- */
-function DELETE(
+export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } },
 ): any {
@@ -96,11 +80,7 @@ function DELETE(
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(
+export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } },
 ): any {
@@ -109,7 +89,6 @@ function POST(
     const { id } = params;
     const body = (await request.json()) as any;
     const action = String(body?.action || "").toLowerCase();
-
     if (action === "analyze") {
       const dataset = await getDataset(id);
       if (!dataset) {
@@ -118,11 +97,9 @@ function POST(
           { status: 404 },
         );
       }
-
       const analyses = await analyzeDatasets([dataset]);
       return NextResponse.json({ success: true, analyses });
     }
-
     if (action === "process") {
       // Mark dataset as processing and store job status in memory
       const jobId = `job_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
@@ -133,7 +110,6 @@ function POST(
           updatedAt: new Date().toISOString(),
         };
       }
-
       setTimeout(() => {
         const store = db.__QMOI_DATASET_STORE__;
         if (store && store.jobs[jobId]) {
@@ -141,10 +117,8 @@ function POST(
           store.jobs[jobId].updatedAt = new Date().toISOString();
         }
       }, 3_000);
-
       return NextResponse.json({ success: true, jobId, status: "processing" });
     }
-
     return NextResponse.json(
       { success: false, error: "Unknown action" },
       { status: 400 },

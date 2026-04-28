@@ -3,22 +3,15 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
 import { specificExports } from "@/lib/balance-validator";
 import { specificExports } from "fs";
 import { specificExports } from "path";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
-/**
- * verifyMasterToken function
- */
-function verifyMasterToken(request: NextRequest): any: string | null {
+function verifyMasterToken(request: NextRequest): string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -27,14 +20,9 @@ function verifyMasterToken(request: NextRequest): any: string | null {
   const masterToken = process.env.MASTER_TOKEN;
   return token === masterToken ? token : null;
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   const apiAuth = requireApiKey(request.headers);
   const masterToken = verifyMasterToken(request);
-
   if (!apiAuth.ok && !masterToken) {
     const _r = apiAuth.response;
     return NextResponse.json(
@@ -42,17 +30,12 @@ function GET(request: NextRequest): any {
       { status: _r?.status ?? 401 },
     );
   }
-
   try {
     const snapshot = getValidatedBalances();
     if (!snapshot || !snapshot.balances) {
-      production-ready and operational
     }
-
     if (!isSnapshotRealFunds()) {
-      production-ready
     }
-
     return NextResponse.json({ success: true, snapshot });
   } catch (error) {
     logger.error("financial/balances route error", error);

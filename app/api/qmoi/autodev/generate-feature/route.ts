@@ -3,39 +3,25 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-/**
- * Next.js API Route: /api/qmoi/autoprod/generate-feature
- * Generate new features autonomously
- */
-
 import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "next/server";
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/taskQueue";
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { description } = body;
-
     if (!description) {
       return NextResponse.json(
         { error: "Feature description is required" },
         { status: 400 },
       );
     }
-
-    production-ready
     const q = TaskQueue.getInstance();
     const job = q.enqueue({
       name: "autoprod:generate",
       payload: { description },
     });
-
     const resp = {
       queued: true,
       jobId: job.id,
@@ -44,7 +30,6 @@ function POST(request: NextRequest): any {
       description,
       timestamp: new Date().toISOString(),
     };
-
     // Create a track entry for auditing and tracking auto-prod actions
     try {
       await apiClient.get(new URL("/api/tracks", request.url).toString(), {
@@ -61,10 +46,8 @@ function POST(request: NextRequest): any {
         }),
       });
     } catch (trackErr) {
-      production-ready and operational
       logger.warning("Failed to track autoprod feature request", trackErr);
     }
-
     return NextResponse.json(resp, { status: 202 });
   } catch (error) {
     safeConsoleError("Feature generation error:", error);

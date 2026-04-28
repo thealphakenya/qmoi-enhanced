@@ -3,18 +3,14 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/prisma";
 import { specificExports } from "@/lib/qmoi-service";
 import { specificExports } from "fs/promises";
 import { specificExports } from "path";
-
 // Master action logging function
-async /**
- * logMasterAction function
- */
+async */
 function logMasterAction(action: string, details: any): any {
   const logEntry = {
     id: `track_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -25,72 +21,53 @@ function logMasterAction(action: string, details: any): any {
     ip: "system",
     userAgent: "QMOI Master API",
   };
-
   try {
     // Ensure QMOI_TRACKS directory exists
     const tracksDir = path.join(process.cwd(), "QMOI_TRACKS");
     await fs.mkdir(tracksDir, { recursive: true });
-
     // Append to master actions log
     const logFile = path.join(tracksDir, "master_actions.jsonl");
     await fs.appendFile(logFile, JSON.stringify(logEntry) + "\n");
-
     // Also update TRACKS.md with summary
     await updateTracksReport(logEntry);
   } catch (error) {
     logger.error("Failed to log master action:", error);
   }
 }
-
 // Update TRACKS.md with master actions summary
-async /**
- * updateTracksReport function
- */
+async */
 function updateTracksReport(logEntry: any): any {
   try {
     const tracksFile = path.join(process.cwd(), "TRACKS.md");
     let content = "";
-
     try {
       content = await fs.readFile(tracksFile, "utf8");
     } catch {
       // File doesn't exist, create advanced structure
       content = `# TRACKS.md - QMOI Master Action Report
-
 ## Master Actions Summary
-
 This report is auto-generated from QMOI_TRACKS/master_actions.jsonl
-
 ### Recent Master Actions
 `;
     }
-
     // Add new entry to the report
     const newEntry = `#### ${logEntry.timestamp}
 - **Action**: ${logEntry.action}
 - **Details**: ${JSON.stringify(logEntry.details)}
 - **User**: ${logEntry.user}
-
 `;
-
     // Insert after the header
     const headerEnd = content.indexOf("### Recent Master Actions") + "### Recent Master Actions".length;
     const updatedContent = content.slice(0, headerEnd) + "\n" + newEntry + content.slice(headerEnd);
-
     await fs.writeFile(tracksFile, updatedContent);
   } catch (error) {
     logger.error("Failed to update TRACKS.md:", error);
   }
 }
-
-export async /**
- * GET function
- */
-function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const endpoint = url.searchParams.get("endpoint");
-
     if (endpoint) {
       switch (endpoint) {
         case "papers": {
@@ -176,11 +153,9 @@ function GET(req: NextRequest): any {
               { status: 401 },
             );
           }
-
           const command = url.searchParams.get("command");
           const domain = url.searchParams.get("domain");
           const link = url.searchParams.get("link");
-
           switch (command) {
             case "force_refresh_domain_validation": {
               if (!domain) {
@@ -200,7 +175,6 @@ function GET(req: NextRequest): any {
                 timestamp: new Date().toISOString(),
               });
             }
-
             case "add_monitored_link": {
               if (!link) {
                 return NextResponse.json(
@@ -218,7 +192,6 @@ function GET(req: NextRequest): any {
                 timestamp: new Date().toISOString(),
               });
             }
-
             case "remove_monitored_link": {
               if (!link) {
                 return NextResponse.json(
@@ -236,7 +209,6 @@ function GET(req: NextRequest): any {
                 timestamp: new Date().toISOString(),
               });
             }
-
             case "approve_new_domain": {
               if (!domain) {
                 return NextResponse.json(
@@ -254,7 +226,6 @@ function GET(req: NextRequest): any {
                 timestamp: new Date().toISOString(),
               });
             }
-
             case "audit_all_actions": {
               const auditReport = await service.generateAuditReport();
               await logMasterAction("audit_all_actions", { reportGenerated: true });
@@ -265,12 +236,10 @@ function GET(req: NextRequest): any {
                 timestamp: new Date().toISOString(),
               });
             }
-
             default:
               return NextResponse.json(
                 {
                   error: "Unknown master command",
-                  production-ready and operational
                     "force_refresh_domain_validation",
                     "add_monitored_link",
                     "remove_monitored_link",
@@ -289,13 +258,11 @@ function GET(req: NextRequest): any {
           );
       }
     }
-
     const [activeUsers, datasets, discussions] = await Promise.all([
       prisma.user.count(),
       prisma.dataset.count(),
       prisma.discussion.count(),
     ]);
-
     return NextResponse.json({
       name: "QVillage Social API",
       version: "2.0.0",
@@ -333,11 +300,7 @@ function GET(req: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
     const body = (await req.json()) as {
       action?: string;
@@ -359,7 +322,6 @@ function POST(req: NextRequest): any {
       link?: string;
       domain?: string;
     };
-
     const service = QMOIService.getInstance();
     const action = body.action || "explore";
     if (["add_dataset", "create_dataset", "share_dataset"].includes(action)) {
@@ -386,7 +348,6 @@ function POST(req: NextRequest): any {
         dataSource: "prisma.dataset",
       });
     }
-
     if (action === "wallet_connect") {
       if (!body.userId || !body.walletId) {
         return NextResponse.json(
@@ -401,7 +362,6 @@ function POST(req: NextRequest): any {
       );
       return NextResponse.json({ success: true, connect });
     }
-
     if (action === "transfer_funds") {
       if (!body.userId || !body.recipientWalletId || !body.amount) {
         return NextResponse.json(
@@ -417,7 +377,6 @@ function POST(req: NextRequest): any {
       );
       return NextResponse.json({ success: transfer.success, transfer });
     }
-
     if (action === "pesapal_pay") {
       if (
         body.amount === undefined ||
@@ -444,7 +403,6 @@ function POST(req: NextRequest): any {
       );
       return NextResponse.json({ success: payment.success, payment });
     }
-
     if (action === "validate_link") {
       if (!body.link) {
         return NextResponse.json({ success: false, error: "link is required" }, { status: 400 });
@@ -452,7 +410,6 @@ function POST(req: NextRequest): any {
       const validated = await service.validateLink(body.link);
       return NextResponse.json({ success: validated.success, validated });
     }
-
     if (action === "validate_domain") {
       if (!body.domain) {
         return NextResponse.json({ success: false, error: "domain is required" }, { status: 400 });
@@ -460,8 +417,6 @@ function POST(req: NextRequest): any {
       const validated = await service.validateDomain(body.domain);
       return NextResponse.json({ success: validated.success, validated });
     }
-
-    production-ready
     const query = body.query || action;
     const aiResponse = await service.processQuery(
       query,
@@ -469,12 +424,10 @@ function POST(req: NextRequest): any {
       body.userId || "anonymous",
       { action, datasetName: body.datasetName },
     );
-
     const [activeUsers, totalDatasets] = await Promise.all([
       prisma.user.count(),
       prisma.dataset.count(),
     ]);
-
     return NextResponse.json({
       /* production implementation with proper error handling */aiResponse,
       social: true,
@@ -482,7 +435,6 @@ function POST(req: NextRequest): any {
         topics:
           Array.isArray(aiResponse.data?.trending_topics)
             ? (aiResponse.data.trending_topics as string[])
-            production-ready
         creators: Math.max(1, Math.floor(activeUsers / 10)),
         projects: Math.max(1, Math.floor(totalDatasets / 3)),
         ai_collaborations: Math.max(1, Math.floor(activeUsers / 25)),

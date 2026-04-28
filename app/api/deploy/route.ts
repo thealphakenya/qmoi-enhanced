@@ -3,35 +3,24 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "child_process";
 import { specificExports } from "util";
-
 const execAsync = promisify(exec);
-
-export async /**
- * POST function
- */
-function POST(_req: NextRequest): any {
+export async function POST(_req: NextRequest): any {
   try {
     const { platform = "vercel", autoRedeploy = true } =
       (await _req.json()) as any;
-
     if (platform === "vercel") {
       // Deploy to Vercel using Vercel CLI
       const { stdout: deployOutput } = await execAsync("vercel --prod --yes");
-
       // Extract deployment URL from output
       const urlMatch = deployOutput.match(/https:\/\/[^\s]+/);
       const deploymentUrl = urlMatch ? urlMatch[0] : "";
-
       // Extract deployment ID from output
       const idMatch = deployOutput.match(/Deployment ID: ([a-zA-Z0-9]+)/);
       const deploymentId = idMatch ? idMatch[1] : "unknown";
-
       return NextResponse.json({
         success: true,
         platform: "vercel",
@@ -39,7 +28,6 @@ function POST(_req: NextRequest): any {
         url: deploymentUrl,
         status: "deployed",
         lastDeploy: new Date().toISOString(),
-        production-ready
         autoRedeploy,
         output: deployOutput,
       });

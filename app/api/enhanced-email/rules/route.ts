@@ -3,29 +3,21 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/enhanced-email-service";
-
 // GET /api/enhanced-email/rules - Get auto-reply rules
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const account = searchParams.get("account");
-
     if (!account) {
       return NextResponse.json(
         { success: false, error: "Account parameter is required" },
         { status: 400 },
       );
     }
-
     const rules = qmoiEnhancedEmailService.getAutoReplyRules(account);
-
     return NextResponse.json({
       success: true,
       rules,
@@ -38,28 +30,21 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
 // POST /api/enhanced-email/rules - Create auto-reply rule
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { account, /* production implementation with proper error handling */ruleData } = body;
-
     if (!account) {
       return NextResponse.json(
         { success: false, error: "Account parameter is required" },
         { status: 400 },
       );
     }
-
     const rule = await qmoiEnhancedEmailService.addAutoReplyRule(
       account,
       ruleData,
     );
-
     return NextResponse.json({
       success: true,
       rule,

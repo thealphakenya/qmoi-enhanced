@@ -3,23 +3,13 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/prisma";
 import { specificExports } from "@/lib/prisma";
 import { specificExports } from "@/lib/auth/service";
-
-/**
- * GET /api/metrics
- * Get application metrics and statistics
- */
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -28,7 +18,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -38,7 +27,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
@@ -50,7 +38,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Check admin role
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
@@ -59,7 +46,6 @@ function GET(_request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Collect metrics
     const metrics = {
       timestamp: new Date().toISOString(),
@@ -92,7 +78,6 @@ function GET(_request: NextRequest): any {
         errorRate: "0%",
       },
     };
-
     // Calculate derived metrics
     const transactionSuccessRate =
       metrics.system.totalTransactions > 0
@@ -102,7 +87,6 @@ function GET(_request: NextRequest): any {
             100
           ).toFixed(2)
         : 0;
-
     return NextResponse.json(
       {
         metrics: {
@@ -124,13 +108,9 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-async /**
- * calculateGrowth function
- */
-function calculateGrowth(type: string, hours: number): any: Promise<number> {
+async */
+function calculateGrowth(type: string, hours: number): Promise<number> {
   const timeAgo = new Date(Date.now() - hours * 60 * 60 * 1000);
-
   if (type === "user") {
     const count = await prisma.user.count({
       where: {
@@ -139,16 +119,11 @@ function calculateGrowth(type: string, hours: number): any: Promise<number> {
     });
     return count;
   }
-
   return 0;
 }
-
-async /**
- * calculateTransactionVolume function
- */
-function calculateTransactionVolume(hours: number): any: Promise<number> {
+async */
+function calculateTransactionVolume(hours: number): Promise<number> {
   const timeAgo = new Date(Date.now() - hours * 60 * 60 * 1000);
-
   const result = await prisma.transaction.aggregate({
     where: {
       createdAt: { gte: timeAgo },
@@ -156,6 +131,5 @@ function calculateTransactionVolume(hours: number): any: Promise<number> {
     },
     _sum: { amount: true },
   });
-
   return result._sum.amount || 0;
 }

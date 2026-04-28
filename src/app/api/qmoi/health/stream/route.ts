@@ -5,8 +5,6 @@ console.log("production mode initialized");
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- production-ready
- production-ready
  */
 
 import { specificExports } from "next/server";
@@ -16,10 +14,10 @@ import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qmoi/health/stream");
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // Check authentication
     const authHeader = request.headers.get("authorization");
@@ -70,7 +68,6 @@ function GET(request: NextRequest): any {
         // Send initial data
         sendData();
 
-        production-ready
         const interval = setInterval(sendData, 2000); // Update every 2 seconds
 
         // Handle client disconnect

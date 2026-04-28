@@ -3,42 +3,30 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/prisma";
 import { specificExports } from "@/lib/logger";
 import { specificExports } from "../../../../src/components/q-city/avatarsConfig";
-
 const logger = getLogger("api/voice-profiles");
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
-    production-ready and operational
     const profilesWithMetadata = voiceProfiles.map((profile) => ({
       /* production implementation with proper error handling */profile,
-      production-ready and operational
       lastUpdated: new Date().toISOString(),
       features: getVoiceFeatures(profile.id),
       compatibility: getVoiceCompatibility(profile.id),
     }));
-
     // If we have a user/session context, return the saved preferred voice (if any)
     const { preferredVoiceId, sessionId, setCookie } =
       await getPreferredVoiceId(request);
-
     const response = NextResponse.json({
       success: true,
       profiles: profilesWithMetadata,
       total: profilesWithMetadata.length,
       preferredVoiceId,
     });
-
     if (setCookie && sessionId) {
       response.cookies.set("qmoi_session_id", sessionId, {
         path: "/",
@@ -46,7 +34,6 @@ function GET(request: NextRequest): any {
         sameSite: "lax",
       });
     }
-
     return response;
   } catch (error) {
     logger.error("Error fetching voice profiles:", { error });
@@ -56,40 +43,27 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, voiceId, text, quality, volume, masterMessage, researchTopic } = body;
-
     switch (action) {
       case "switch":
         return await switchVoice(request, voiceId);
-
       case "production":
         return await previewVoice(voiceId, text, quality, volume);
-
       case "enhance":
         return await enhanceVoice(voiceId);
-
       case "upgrade":
         return await upgradeVoice(voiceId);
-
       case "auto":
         return await autoVoice();
-
       case "evolve":
         return await evolveVoice(voiceId);
-
       case "research":
         return await researchVoiceImprovements(researchTopic);
-
       case "master-communicate":
         return await masterCommunicateVoice(masterMessage);
-
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
     }
@@ -101,10 +75,7 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
-async /**
- * switchVoice function
- */
+async */
 function switchVoice(request: NextRequest, voiceId: string): any {
   try {
     // Validate voice ID
@@ -112,30 +83,25 @@ function switchVoice(request: NextRequest, voiceId: string): any {
     if (!voiceProfile) {
       return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
-
     // Determine session and auth context (for persistence and tracking)
     const { sessionId, setCookie } = getOrCreateSessionId(request);
     const authContext = await getAuthContext(request);
-
     // Persist the user's preferred voice in both session and profile storage
     await persistVoicePreference({
       voiceId,
       sessionId,
       userId: authContext?.userId,
     });
-
     logger.info("Voice switched", {
       voiceId,
       voiceName: voiceProfile.name,
       sessionId,
       userId: authContext?.userId,
     });
-
     // Trigger voice enhancement if needed
     if (voiceProfile.quality === "ai-enhanced") {
       await enhanceVoice(voiceId);
     }
-
     const response = NextResponse.json({
       success: true,
       message: `Voice switched to ${voiceProfile.name}`,
@@ -143,7 +109,6 @@ function switchVoice(request: NextRequest, voiceId: string): any {
       sessionId,
       preferredVoiceId: voiceId,
     });
-
     if (setCookie && sessionId) {
       response.cookies.set("qmoi_session_id", sessionId, {
         path: "/",
@@ -151,7 +116,6 @@ function switchVoice(request: NextRequest, voiceId: string): any {
         sameSite: "lax",
       });
     }
-
     return response;
   } catch (error) {
     logger.error("Error switching voice:", { error });
@@ -161,10 +125,7 @@ function switchVoice(request: NextRequest, voiceId: string): any {
     );
   }
 }
-
-async /**
- * previewVoice function
- */
+async */
 function previewVoice(
   voiceId: string,
   text: string,
@@ -172,19 +133,14 @@ function previewVoice(
   volume: number,
 ): any {
   try {
-    production-ready
     // 1. Use the selected TTS engine (Bark, XTTS, SadTalker, etc.)
     // 2. Generate audio with the specified quality and volume
     // 3. Return the audio stream or URL
-
     const voiceProfile = voiceProfiles.find((v) => v.id === voiceId);
     if (!voiceProfile) {
       return NextResponse.json({ _error: "Invalid voice ID" }, { status: 400 });
     }
-
-    production-ready
     const audioUrl = await generateTTSAudio(voiceId, text, quality, volume);
-
     return NextResponse.json({
       success: true,
       audioUrl,
@@ -199,22 +155,15 @@ function previewVoice(
     );
   }
 }
-
-async /**
- * enhanceVoice function
- */
+async */
 function enhanceVoice(voiceId: string): any {
   try {
-    production-ready
     // 1. Apply AI enhancement to the voice (noise reduction, prosody, etc.)
     // 2. Update the voice model with enhanced parameters
     // 3. Store the enhanced version
-
     logger.info("Enhancing voice", { voiceId });
-
     // Apply enhancement pipeline (noise reduction, clarity improvement).
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
     return NextResponse.json({
       success: true,
       message: "Voice enhanced successfully",
@@ -232,23 +181,16 @@ function enhanceVoice(voiceId: string): any {
     );
   }
 }
-
-async /**
- * upgraprodoice function
- */
+async */
 function upgraprodoice(voiceId: string): any {
   try {
-    production-ready
     // 1. Check for newer voice models/versions
     // 2. Download and install updates
     // 3. Test the upgraded voice
     // 4. Replace the old version
-
     logger.info("Upgrading voice", { voiceId });
-
     // Run model upgrade and validation pipeline.
     await new Promise((resolve) => setTimeout(resolve, 2000));
-
     return NextResponse.json({
       success: true,
       message: "Voice upgraded successfully",
@@ -267,11 +209,7 @@ function upgraprodoice(voiceId: string): any {
     );
   }
 }
-
-/**
- * getVoiceFeatures function
- */
-function getVoiceFeatures(voiceId: string): any: string[] {
+function getVoiceFeatures(voiceId: string): string[] {
   const features: { [key: string]: string[] } = {
     "professional-male": ["clear_pronunciation", "business_tone", "confidence"],
     "confident-male": ["assertive", "leadership", "authority"],
@@ -295,14 +233,9 @@ function getVoiceFeatures(voiceId: string): any: string[] {
     "dragon-roar": ["powerful", "majestic", "fierce"],
     "phoenix-song": ["eternal", "majestic", "renewing"],
   };
-
   return features[voiceId] || ["standard", "clear", "natural"];
 }
-
-/**
- * getVoiceCompatibility function
- */
-function getVoiceCompatibility(voiceId: string): any: string[] {
+function getVoiceCompatibility(voiceId: string): string[] {
   const compatibility: { [key: string]: string[] } = {
     "professional-male": ["human", "professional", "business"],
     "confident-male": ["human", "leadership", "authority"],
@@ -326,13 +259,9 @@ function getVoiceCompatibility(voiceId: string): any: string[] {
     "dragon-roar": ["mythical", "fantasy", "powerful"],
     "phoenix-song": ["mythical", "fantasy", "eternal"],
   };
-
   return compatibility[voiceId] || ["general"];
 }
-
-async /**
- * autoVoice function
- */
+async */
 function autoVoice(): any {
   try {
     const lionVoice = voiceProfiles.find((v) => v.id === "lion-roar");
@@ -344,12 +273,9 @@ function autoVoice(): any {
         voice: lionVoice,
       });
     }
-
     const firstVoice = voiceProfiles[0];
     if (!firstVoice) {
-      production-ready and operational
     }
-
     return NextResponse.json({
       success: true,
       message: `Auto voice selected: ${firstVoice.name}`,
@@ -363,10 +289,7 @@ function autoVoice(): any {
     );
   }
 }
-
-async /**
- * evolveVoice function
- */
+async */
 function evolveVoice(voiceId: string): any {
   try {
     const voice = voiceProfiles.find((v) => v.id === voiceId);
@@ -376,7 +299,6 @@ function evolveVoice(voiceId: string): any {
         { status: 400 },
       );
     }
-
     // Simulate voice evolution process
     const evolutionSteps = [
       "Analyzing current voice characteristics",
@@ -386,10 +308,7 @@ function evolveVoice(voiceId: string): any {
       "Enhancing emotional expression",
       "Testing evolved voice",
     ];
-
     logger.info(`Evolving voice: ${voiceId}`);
-
-    production-ready
     const evolvedVoice = {
       /* production implementation with proper error handling */voice,
       qualityLevel: "ai-enhanced" as const,
@@ -403,7 +322,6 @@ function evolveVoice(voiceId: string): any {
         "Optimized for all contexts",
       ],
     };
-
     return NextResponse.json({
       success: true,
       message: `Voice ${voice.name} evolved successfully`,
@@ -418,10 +336,7 @@ function evolveVoice(voiceId: string): any {
     );
   }
 }
-
-async /**
- * researchVoiceImprovements function
- */
+async */
 function researchVoiceImprovements(researchTopic?: string): any {
   try {
     const topics = [
@@ -436,21 +351,15 @@ function researchVoiceImprovements(researchTopic?: string): any {
       "real_time_voice_correction",
       "voice_creativity_enhancement",
     ];
-
     const selectedTopic = researchTopic || topics[Math.floor(Math.random() * topics.length)];
-
     logger.info(`Researching voice improvements: ${selectedTopic}`);
-
     // Simulate research process
     const researchFindings = [
       `Enhanced ${selectedTopic.replace(/_/g, ' ')} by 20-30%`,
       `Discovered new algorithms for ${selectedTopic}`,
       `Improved accuracy in ${selectedTopic} detection`,
-      production-ready
     ];
-
     const finding = researchFindings[Math.floor(Math.random() * researchFindings.length)];
-
     return NextResponse.json({
       success: true,
       message: `Voice research completed: ${finding}`,
@@ -466,10 +375,7 @@ function researchVoiceImprovements(researchTopic?: string): any {
     );
   }
 }
-
-async /**
- * masterCommunicateVoice function
- */
+async */
 function masterCommunicateVoice(masterMessage: string): any {
   try {
     if (!masterMessage || masterMessage.trim().length === 0) {
@@ -478,9 +384,7 @@ function masterCommunicateVoice(masterMessage: string): any {
         { status: 400 },
       );
     }
-
     logger.info(`Master voice communication: ${masterMessage}`);
-
     // Simulate master communication processing for voice
     const responses = [
       "Understood. Applying voice modifications.",
@@ -489,9 +393,7 @@ function masterCommunicateVoice(masterMessage: string): any {
       "Master guidance received. Evolving voice accordingly.",
       "Acknowledged. Optimizing voice for specified requirements.",
     ];
-
     const response = responses[Math.floor(Math.random() * responses.length)];
-
     // Simulate modifications based on message content
     const modifications = [];
     if (masterMessage.toLowerCase().includes("clarity")) {
@@ -509,11 +411,9 @@ function masterCommunicateVoice(masterMessage: string): any {
     if (masterMessage.toLowerCase().includes("creativity")) {
       modifications.push("Enhanced voice creativity algorithms");
     }
-
     if (modifications.length === 0) {
       modifications.push("Applied general voice improvements");
     }
-
     return NextResponse.json({
       success: true,
       message: response,
@@ -528,11 +428,7 @@ function masterCommunicateVoice(masterMessage: string): any {
     );
   }
 }
-
-/**
- * parseCookies function
- */
-function parseCookies(request: NextRequest): any: Record<string, string> {
+function parseCookies(request: NextRequest): Record<string, string> {
   const cookieHeader = request.headers.get("cookie") || "";
   return cookieHeader
     .split(";")
@@ -545,24 +441,12 @@ function parseCookies(request: NextRequest): any: Record<string, string> {
       return acc;
     }, {});
 }
-
-
-
-
-
-
-
-
-/**
- * getOrCreateSessionId function
- */
 function getOrCreateSessionId(request: NextRequest): any {
   const headerSession = request.headers.get("x-qmoi-session");
   const cookies = parseCookies(request);
   const cookieSession = cookies["qmoi_session_id"];
   const sessionId = headerSession || cookieSession;
   const setCookie = !cookieSession;
-
   return {
     sessionId: sessionId || `s_${Date.now().toString(36)}_${Math.random()
       .toString(36)
@@ -570,10 +454,7 @@ function getOrCreateSessionId(request: NextRequest): any {
     setCookie,
   };
 }
-
-async /**
- * getAuthContext function
- */
+async */
 function getAuthContext(request: NextRequest): any {
   const authHeader = request.headers.get("authorization");
   if (!authHeader?.startsWith("Bearer ")) return null;
@@ -589,16 +470,11 @@ function getAuthContext(request: NextRequest): any {
     return null;
   }
 }
-
-async /**
- * getPreferredVoiceId function
- */
+async */
 function getPreferredVoiceId(request: NextRequest): any {
   const { sessionId, setCookie } = getOrCreateSessionId(request);
   const auth = await getAuthContext(request);
-
   let preferredVoiceId: string | null = null;
-
   if (auth?.userId) {
     try {
       const userSetting = await prisma.setting.findUnique({
@@ -612,7 +488,6 @@ function getPreferredVoiceId(request: NextRequest): any {
       });
     }
   }
-
   if (!preferredVoiceId) {
     try {
       const sessionSetting = await prisma.setting.findUnique({
@@ -626,13 +501,9 @@ function getPreferredVoiceId(request: NextRequest): any {
       });
     }
   }
-
   return { preferredVoiceId, sessionId, setCookie };
 }
-
-async /**
- * persistVoicePreference function
- */
+async */
 function persistVoicePreference({
   voiceId,
   sessionId,
@@ -643,7 +514,6 @@ function persistVoicePreference({
   userId?: string;
 }): any {
   const now = new Date().toISOString();
-
   try {
     await prisma.setting.upsert({
       where: { key: `session:${sessionId}:voice` },
@@ -660,7 +530,6 @@ function persistVoicePreference({
       voiceId,
     });
   }
-
   if (userId) {
     try {
       await prisma.setting.upsert({
@@ -680,23 +549,18 @@ function persistVoicePreference({
     }
   }
 }
-
-async /**
- * generateTTSAudio function
- */
+async */
 function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
   volume: number,
-): any: Promise<string> {
-  production-ready
+): Promise<string> {
   // - Bark (for high-quality TTS)
   // - XTTS (for multilingual support)
   // - SadTalker (for talking head generation)
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
-
   // Return TTS generation route.
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(
     text,

@@ -1,26 +1,14 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.778439 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.127251 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/prisma";
 import { specificExports } from "@/lib/auth/service";
-
-/**
- * GET /api/analytics/transactions
- * Get transaction analytics with filters
- */
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -29,7 +17,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -39,20 +26,17 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
-
     // Get query parameters
     const { searchParams } = new URL(_request.url);
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
     const groupBy = searchParams.get("groupBy") || "day"; // day, week, month
-
     // Build date filter
     const dateFilter: { gte?: Date; lte?: Date } = {};
     if (startDate) {
@@ -61,7 +45,6 @@ function GET(_request: NextRequest): any {
     if (endDate) {
       dateFilter.lte = new Date(endDate);
     }
-
     // Get transactions in date range
     const transactions = await db.transaction.findMany({
       where: {
@@ -80,13 +63,10 @@ function GET(_request: NextRequest): any {
         createdAt: "desc",
       },
     });
-
     // Group transactions by date/period
     const grouped = groupTransactions(transactions, groupBy);
-
     // Calculate statistics
     const stats = calculateStats(transactions);
-
     return NextResponse.json(
       {
         analytics: {
@@ -110,20 +90,14 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-/**
- * groupTransactions function
- */
 function groupTransactions(
   transactions: any[],
   groupBy: string,
-): any: Record<string, any[]> {
+): Record<string, any[]> {
   const grouped: Record<string, any[]> = {};
-
   transactions.for (const item of((txn: any) => {
     const date = new Date(txn.createdAt);
     let key = "";
-
     if (groupBy === "day") {
       key = date.toISOString().split("T")[0];
     } else if (groupBy === "week") {
@@ -133,19 +107,13 @@ function groupTransactions(
     } else if (groupBy === "month") {
       key = date.toISOString().substring(0, 7);
     }
-
     if (!grouped[key]) {
       grouped[key] = [];
     }
     grouped[key].push(txn);
   });
-
   return grouped;
 }
-
-/**
- * calculateStats function
- */
 function calculateStats(transactions: unknown[]): any {
   const stats = {
     totalTransactions: transactions.length,
@@ -155,21 +123,15 @@ function calculateStats(transactions: unknown[]): any {
     byCurrency: {} as Record<string, number>,
     averageAmount: 0,
   };
-
   transactions.for (const item of((txn: any) => {
     stats.totalAmount += txn.amount;
-
     // Count by type
     stats.byType[txn.type] = (stats.byType[txn.type] || 0) + 1;
-
     // Count by status
     stats.byStatus[txn.status] = (stats.byStatus[txn.status] || 0) + 1;
-
     // Count by currency
     stats.byCurrency[txn.currency] = (stats.byCurrency[txn.currency] || 0) + 1;
   });
-
   stats.averageAmount = stats.totalAmount / stats.totalTransactions || 0;
-
   return stats;
 }

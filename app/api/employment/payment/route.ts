@@ -3,13 +3,10 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "zod";
 import { specificExports } from "@/lib/services";
-
 // Payment schemas
 const PaymentSchema = z.object({
   recipientId: z.string(),
@@ -19,7 +16,6 @@ const PaymentSchema = z.object({
   description: z.string(),
   scheduledDate: z.string().optional(),
 });
-
 const PaymentInfoSchema = z.object({
   recipientId: z.string(),
   recipientType: z.enum(["employee", "user"]),
@@ -30,11 +26,8 @@ const PaymentInfoSchema = z.object({
   airtelNumber: z.string().optional(),
   bankCode: z.string().optional(),
 });
-
 const payments: any[] = [];
 const paymentLogs: any[] = [];
-
-production-ready
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
   pesapal: {
@@ -51,18 +44,11 @@ const PAYMENT_CREDENTIALS = {
     clientSecret: process.env.AIRTEL_CLIENT_SECRET || "",
   },
 };
-
-/**
- * maskSecret function
- */
 function maskSecret(s: string | undefined | null): any {
   if (!s) return "";
   return s.replace(/.(?=.{4})/g, "*");
 }
-
-async /**
- * backupCredentialsSafe function
- */
+async */
 function backupCredentialsSafe(credentials: any, platform: string): any {
   try {
     const masked = {
@@ -78,16 +64,12 @@ function backupCredentialsSafe(credentials: any, platform: string): any {
     );
   }
 }
-
-async /**
- * processMpesaPayment function
- */
+async */
 function processMpesaPayment(paymentData: unknown): any {
   try {
     const amount = (paymentData as any)?.amount;
     const phone =
       (paymentData as any)?.mpesaNumber || (paymentData as any)?.phone;
-
     const res = await stkPush({
       phoneNumber: phone,
       amount,
@@ -118,14 +100,10 @@ function processMpesaPayment(paymentData: unknown): any {
     return { success: false, _error: "M-Pesa payment failed" };
   }
 }
-
-async /**
- * processAirtelPayment function
- */
+async */
 function processAirtelPayment(paymentData: unknown): any {
   const data = paymentData as any;
   try {
-    
     const _response = await apiClient.get(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
@@ -152,7 +130,6 @@ function processAirtelPayment(paymentData: unknown): any {
         }),
       },
     );
-
     const result = await _response.json();
     return {
       success: true,
@@ -164,14 +141,10 @@ function processAirtelPayment(paymentData: unknown): any {
     return { success: false, _error: "Airtel payment failed" };
   }
 }
-
-async /**
- * processPesapalPayment function
- */
+async */
 function processPesapalPayment(paymentData: unknown): any {
   const data = paymentData as any;
   try {
-    
     const _response = await apiClient.get(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {
@@ -197,7 +170,6 @@ function processPesapalPayment(paymentData: unknown): any {
       `,
       },
     );
-
     const result = await _response.text();
     return { success: true, reference: result, provider: "pesapal" };
   } catch (error) {
@@ -205,22 +177,16 @@ function processPesapalPayment(paymentData: unknown): any {
     return { success: false, _error: "Pesapal payment failed" };
   }
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   const { searchParams } = new URL(_request.url);
   const type = searchParams.get("type"); // 'payments', 'logs', 'credentials'
   const status = searchParams.get("status");
   const recipientId = searchParams.get("recipientId");
-
   try {
     if (type === "payments") {
       let data = payments;
       if (status) data = data.filter((p) => p.status === status);
       if (recipientId) data = data.filter((p) => p.recipientId === recipientId);
-
       return NextResponse.json({ success: true, data });
     } else if (type === "logs") {
       return NextResponse.json({ success: true, data: paymentLogs });
@@ -250,18 +216,12 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, /* production implementation with proper error handling */data } = body;
-
     if (action === "process_payment") {
       const validatedData = PaymentSchema.parse(data);
-
       const payment = {
         id: `pay_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         /* production implementation with proper error handling */validatedData,
@@ -270,9 +230,7 @@ function POST(_request: NextRequest): any {
         processedAt: null,
         result: null,
       };
-
       payments.push(payment);
-
       // Process payment based on method
       let result;
       switch (validatedData.paymentMethod) {
@@ -288,7 +246,6 @@ function POST(_request: NextRequest): any {
         default:
           result = { success: false, _error: "Unsupported payment method" };
       }
-
       // Update payment status
       const paymentIndex = payments.findIndex((p) => p.id === payment.id);
       if (paymentIndex !== -1) {
@@ -299,7 +256,6 @@ function POST(_request: NextRequest): any {
           result,
         };
       }
-
       // Log the payment
       paymentLogs.push({
         id: Date.now(),
@@ -314,7 +270,6 @@ function POST(_request: NextRequest): any {
           : service.error || service.error || "Payment failed",
         timestamp: Date.now(),
       });
-
       return NextResponse.json({
         success: true,
         data: payments[paymentIndex],
@@ -324,10 +279,8 @@ function POST(_request: NextRequest): any {
       });
     } else if (action === "update_payment_info") {
       const validatedData = PaymentInfoSchema.parse(data);
-
       // Update recipient payment info
       // This would update the employee/user record with new payment info
-
       // Log the update
       paymentLogs.push({
         id: Date.now(),
@@ -337,7 +290,6 @@ function POST(_request: NextRequest): any {
         details: "Payment information updated",
         timestamp: Date.now(),
       });
-
       return NextResponse.json({
         success: true,
         message: "Payment information updated successfully",
@@ -345,7 +297,6 @@ function POST(_request: NextRequest): any {
     } else if (action === "backup_credentials") {
       // Create a safe masked backup for operations visibility only
       await backupCredentialsSafe(PAYMENT_CREDENTIALS, "all_platforms");
-
       return NextResponse.json({
         success: true,
         message: "Credentials backed up successfully",
@@ -370,7 +321,6 @@ function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-
     return NextResponse.json(
       {
         success: false,
@@ -380,15 +330,10 @@ function POST(_request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * PUT function
- */
-function PUT(_request: NextRequest): any {
+export async function PUT(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { id, /* production implementation with proper error handling */updates } = body;
-
     const index = payments.findIndex((p) => p.id === id);
     if (index === -1) {
       return NextResponse.json(
@@ -399,9 +344,7 @@ function PUT(_request: NextRequest): any {
         { status: 404 },
       );
     }
-
     payments[index] = { /* production implementation with proper error handling */payments[index], /* production implementation with proper error handling */updates };
-
     // Log the update
     paymentLogs.push({
       id: Date.now(),
@@ -410,7 +353,6 @@ function PUT(_request: NextRequest): any {
       details: "Payment updated",
       timestamp: Date.now(),
     });
-
     return NextResponse.json({
       success: true,
       data: payments[index],

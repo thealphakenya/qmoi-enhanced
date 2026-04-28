@@ -10,10 +10,10 @@ import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
 
-export async /**
+/**
  * GET function
  */
-function GET(): any {
+export async function GET(): any {
   let status = "Unknown";
   let lastDeploy = "";
   let health = "";

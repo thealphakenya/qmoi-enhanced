@@ -11,10 +11,10 @@ import { specificExports } from "next/server";
 // Triggers an automated UI or workflow event based on QMOI reasoning.
 // This endpoint allows QMOI to autonomously open windows, activate tools, or perform actions.
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { event, projectType, conditions, payload } = body;

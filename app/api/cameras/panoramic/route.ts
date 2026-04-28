@@ -1,18 +1,9 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.773221 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.122090 -->
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * Panoramic Camera API
- * 360-degree omnidirectional surveillance
- */
-
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const area = searchParams.get('area') || 'all';
-
     const panoramicCameras = [
       {
         id: 'panoramic_001',
@@ -35,12 +26,10 @@ export async function GET(request: NextRequest) {
         features: ['vehicle-tracking', 'space-occupancy', 'security-patrol']
       }
     ];
-
     let filteredCameras = panoramicCameras;
     if (area !== 'all') {
       filteredCameras = panoramicCameras.filter(cam => cam.area === area);
     }
-
     return NextResponse.json({
       success: true,
       data: {
@@ -50,7 +39,6 @@ export async function GET(request: NextRequest) {
         crowdAnalysis: true
       }
     });
-
   } catch (error) {
     console.error('Panoramic camera API error:', error);
     return NextResponse.json(

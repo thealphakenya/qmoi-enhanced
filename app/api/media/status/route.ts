@@ -3,22 +3,15 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/prisma";
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   try {
     const tasks = await prisma.mediaTask.findMany({
       orderBy: { updatedAt: "desc" },
       take: 100,
     });
-
     const typedTasks = Array.isArray(tasks) ? tasks : [];
     const totalTasks = typedTasks.length;
     const completedTasks = typedTasks.filter(
@@ -36,7 +29,6 @@ function GET(): any {
           return acc + (stats?.estimatedProcessingTime ?? 0);
         }, 0) / typedTasks.length
       : 0;
-
     return NextResponse.json({
       tasks,
       stats: {
@@ -47,11 +39,9 @@ function GET(): any {
         averageProcessingTime,
       },
       dataSource: "prisma.mediaTask",
-      production-ready
     });
   } catch (error) {
     globalThis.console?.error?.("Error fetching media status:", error);
-
     return NextResponse.json(
       {
         tasks: [],
@@ -62,7 +52,6 @@ function GET(): any {
           processingTasks: 0,
           averageProcessingTime: 0,
         },
-        production-ready
       },
       { status: 500 },
     );

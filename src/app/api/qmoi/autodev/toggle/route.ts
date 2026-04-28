@@ -6,7 +6,6 @@ console.log("production mode initialized");
 
 /**
  * Next.js API Route: /api/qmoi/autoprod/toggle
- production-ready
  */
 
 import { specificExports } from "@/utils/safeConsole";
@@ -17,10 +16,10 @@ import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qmoi/autoprod/toggle");
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { enabled } = body;

@@ -3,21 +3,16 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 import { specificExports } from "child_process";
 import { specificExports } from "util";
 import { specificExports } from "path";
 import { specificExports } from "fs";
-
 const execAsync = promisify(exec);
-
 interface LogRequest {
   log_type?: string;
   prodice_id?: string;
@@ -25,18 +20,13 @@ interface LogRequest {
   date_to?: string;
   limit?: number;
 }
-
 interface ExportRequest {
   type: string;
   prodice_id?: string;
   date_from?: string;
   date_to?: string;
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     const body: LogRequest = await _request.json();
     const {
@@ -46,8 +36,6 @@ function POST(_request: NextRequest): any {
       date_to,
       limit = 100,
     } = body;
-
-    production-ready and operational
     const apiAuth = requireApiKey(_request.headers);
     const isMaster = apiAuth.ok || (await checkMasterAccess(_request));
     if (!isMaster) {
@@ -59,7 +47,6 @@ function POST(_request: NextRequest): any {
         { status: apiAuth.ok ? 403 : (_r?.status ?? 403) },
       );
     }
-
     // Get project root directory
     const projectRoot = process.cwd();
     const loggerScript = path.join(
@@ -67,7 +54,6 @@ function POST(_request: NextRequest): any {
       "scripts",
       "qmoi_own_prodice_logger.py",
     );
-
     // Check if logger script exists
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
@@ -75,32 +61,25 @@ function POST(_request: NextRequest): any {
         { status: 404 },
       );
     }
-
     // Build command arguments
     const args = ["--log-type", log_type, "--limit", limit.toString()];
-
     if (prodice_id) {
       args.push("--prodice-id", prodice_id);
     }
-
     if (date_from) {
       args.push("--date-from", date_from);
     }
-
     if (date_to) {
       args.push("--date-to", date_to);
     }
-
     // Execute the logger script
     const { stdout, stderr } = await execAsync(
       `python "${loggerScript}" ${args.join(" ")}`,
       { cwd: projectRoot },
     );
-
     if (stderr) {
       logger.error("Logger script stderr:", stderr);
     }
-
     // Parse the output
     let logs;
     try {
@@ -112,7 +91,6 @@ function POST(_request: NextRequest): any {
         { status: 500 },
       );
     }
-
     return NextResponse.json(logs);
   } catch (error) {
     logger.error("QMOI Own prodice Logs API _error:", error);
@@ -122,13 +100,8 @@ function POST(_request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
-    production-ready and operational
     const apiAuth = requireApiKey(_request.headers);
     const isMaster = apiAuth.ok || (await checkMasterAccess(_request));
     if (!isMaster) {
@@ -140,7 +113,6 @@ function GET(_request: NextRequest): any {
         { status: apiAuth.ok ? 403 : (_r?.status ?? 403) },
       );
     }
-
     // Get comprehensive statistics
     const projectRoot = process.cwd();
     const loggerScript = path.join(
@@ -148,19 +120,16 @@ function GET(_request: NextRequest): any {
       "scripts",
       "qmoi_own_prodice_logger.py",
     );
-
     if (!fs.existsSync(loggerScript)) {
       return NextResponse.json(
         { _error: "QMOI Own prodice Logger not found" },
         { status: 404 },
       );
     }
-
     const { stdout } = await execAsync(
       `python "${loggerScript}" --statistics`,
       { cwd: projectRoot },
     );
-
     let stats;
     try {
       stats = JSON.parse(stdout);
@@ -171,7 +140,6 @@ function GET(_request: NextRequest): any {
         { status: 500 },
       );
     }
-
     return NextResponse.json(stats);
   } catch (error) {
     logger.error("QMOI Own prodice Statistics API _error:", error);
@@ -181,27 +149,21 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-async /**
- * checkMasterAccess function
- */
-function checkMasterAccess(_request: NextRequest): any: Promise<boolean> {
+async */
+function checkMasterAccess(_request: NextRequest): Promise<boolean> {
   try {
     // Get authorization header
     const authHeader = _request.headers.get("authorization");
     if (!authHeader) {
       return false;
     }
-
     // Check for master token or session
     const token = authHeader.replace("Bearer ", "");
-
     // You can implement your own master authentication logic here
     // For now, we'll check if the token contains 'master' or 'admin'
     if (token.includes("master") || token.includes("admin")) {
       return true;
     }
-
     // Check for master session in cookies
     const cookies = _request.headers.get("cookie");
     if (
@@ -210,7 +172,6 @@ function checkMasterAccess(_request: NextRequest): any: Promise<boolean> {
     ) {
       return true;
     }
-
     return false;
   } catch (error) {
     logger.error("Master access check _error:", error);

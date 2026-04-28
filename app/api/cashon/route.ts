@@ -3,22 +3,15 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/cashon-wallet";
 import { specificExports } from "@/lib/qmoi-trader";
 import { specificExports } from "../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
 // GET /api/cashon/balance
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     // Read endpoints respect API key when configured
     const auth = libProposals.requireApiKey(_request.headers);
@@ -31,37 +24,30 @@ function GET(_request: NextRequest): any {
         );
       return NextResponse.json(r.body, { status: r.status });
     }
-
     const masterToken = process.env.MASTER_TOKEN || "";
     const url = new URL(_request.url);
     const path = url.pathname.split("/").pop();
-
     switch (path) {
       case "balance": {
         const balance = await cashonWallet.getBalance(masterToken);
         return NextResponse.json(balance);
       }
-
       case "trading-status": {
         const status = await cashonWallet.getTradingStatus();
         return NextResponse.json(status);
       }
-
       case "qmoi-status": {
         const qmoiStatus = await qmoiTrader.getStatus();
         return NextResponse.json(qmoiStatus);
       }
-
       case "signals": {
         const signals = qmoiTrader.getRecentSignals(10);
         return NextResponse.json(signals);
       }
-
       case "performance": {
         const performance = await qmoiTrader.getPerformanceMetrics();
         return NextResponse.json(performance);
       }
-
       default:
         return NextResponse.json(
           { _error: "Invalid endpoint" },
@@ -76,12 +62,8 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
 // POST /api/cashon/actions
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     // API-key gating for mutating actions
     const auth = libProposals.requireApiKey(_request.headers);
@@ -94,14 +76,10 @@ function POST(_request: NextRequest): any {
         );
       return NextResponse.json(r.body, { status: r.status });
     }
-
-    production-ready
     const runtimeToken = process.env.MASTER_TOKEN || "";
-
     const url = new URL(_request.url);
     const path = url.pathname.split("/").pop();
     const body = await _request.json();
-
     switch (path) {
       case "deposit": {
         const { amount } = body;
@@ -111,7 +89,6 @@ function POST(_request: NextRequest): any {
             { status: 400 },
           );
         }
-
         const proposal = {
           id: `deposit-${Date.now()}`,
           timestamp: new Date().toISOString(),
@@ -125,14 +102,12 @@ function POST(_request: NextRequest): any {
             message: "Deposit proposed (dry-run)",
           });
         }
-
         const depositId = await cashonWallet.initiateDeposit(
           amount,
           runtimeToken,
         );
         return NextResponse.json({ success: true, depositId });
       }
-
       case "approve-deposit": {
         const { transactionId } = body;
         if (!transactionId) {
@@ -160,7 +135,6 @@ function POST(_request: NextRequest): any {
         );
         return NextResponse.json({ success: approved });
       }
-
       case "withdraw": {
         const { withdrawAmount } = body;
         if (!withdrawAmount || withdrawAmount < 10) {
@@ -188,7 +162,6 @@ function POST(_request: NextRequest): any {
         );
         return NextResponse.json({ success: true, withdrawalId });
       }
-
       case "start-trading": {
         const proposal = {
           id: `start-trading-${Date.now()}`,
@@ -210,7 +183,6 @@ function POST(_request: NextRequest): any {
           message: "AI trading started",
         });
       }
-
       case "stop-trading": {
         const proposal = {
           id: `stop-trading-${Date.now()}`,
@@ -231,7 +203,6 @@ function POST(_request: NextRequest): any {
           message: "AI trading stopped",
         });
       }
-
       case "trade": {
         const { tradeAmount, asset, strategy, confidence } = body;
         if (!tradeAmount || !asset || !strategy || !confidence) {
@@ -267,7 +238,6 @@ function POST(_request: NextRequest): any {
         );
         return NextResponse.json({ success: true, tradeId });
       }
-
       case "approve-trade": {
         const { tradeId: tradeToApprove } = body;
         if (!tradeToApprove) {
@@ -295,7 +265,6 @@ function POST(_request: NextRequest): any {
         );
         return NextResponse.json({ success: tradeApproved });
       }
-
       default:
         return NextResponse.json(
           { _error: "Invalid endpoint" },
@@ -310,12 +279,8 @@ function POST(_request: NextRequest): any {
     );
   }
 }
-
 // PUT /api/cashon/config
-export async /**
- * PUT function
- */
-function PUT(_request: NextRequest): any {
+export async function PUT(_request: NextRequest): any {
   try {
     // API-key gating for config changes
     const auth = libProposals.requireApiKey(_request.headers);
@@ -328,12 +293,9 @@ function PUT(_request: NextRequest): any {
         );
       return NextResponse.json(r.body, { status: r.status });
     }
-
-    production-ready
     const url = new URL(_request.url);
     const path = url.pathname.split("/").pop();
     const body = await _request.json();
-
     switch (path) {
       case "strategy": {
         const { strategyId, updates } = body;
@@ -359,7 +321,6 @@ function PUT(_request: NextRequest): any {
         qmoiTrader.updateStrategy(strategyId, updates);
         return NextResponse.json({ success: true });
       }
-
       default:
         return NextResponse.json(
           { _error: "Invalid endpoint" },

@@ -1,3 +1,4 @@
+"use client";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -27,7 +28,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"use client";
 
 import { specificExports } from "react";
 import {

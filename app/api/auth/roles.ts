@@ -14,7 +14,7 @@ export type Role = (typeof ROLES)[number];
 export /**
  * hasRole function
  */
-function hasRole(userRole: Role, required: Role): any: boolean {
+function hasRole(userRole: Role, required: Role): boolean {
   return ROLES.indexOf(userRole) >= ROLES.indexOf(required);
 }
 

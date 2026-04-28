@@ -1,6 +1,4 @@
 console.log("production mode initialized");
-production-ready
-production-ready
 // Version: 2.0.0
 // Date: 2026-03-30
 
@@ -32,14 +30,14 @@ const RATE_LIMITS = {
 /**
  * generateApiKey function
  */
-function generateApiKey(): any: string {
+function generateApiKey(): string {
   return 'qmoi_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
 /**
  * validateEmail function
  */
-function validateEmail(email: string): any: boolean {
+function validateEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
@@ -47,7 +45,7 @@ function validateEmail(email: string): any: boolean {
 /**
  * sanitizeInput function
  */
-function sanitizeInput(input: string): any: string {
+function sanitizeInput(input: string): string {
   return input.replace(/[<>]/g, '');
 }
 
@@ -55,11 +53,10 @@ function sanitizeInput(input: string): any: string {
 async /**
  * authenticateRequest function
  */
-function authenticateRequest(request: NextRequest): any: Promise<any> {
+function authenticateRequest(request: NextRequest): Promise<any> {
   const authHeader = request.headers.get('authorization');
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    production-ready
   }
 
   const token = authHeader.substring(7);
@@ -68,7 +65,6 @@ function authenticateRequest(request: NextRequest): any: Promise<any> {
     const decoded = jwt.verify(token, JWT_SECRET);
     return decoded;
   } catch (error) {
-    production-ready
   }
 }
 
@@ -76,18 +72,16 @@ function authenticateRequest(request: NextRequest): any: Promise<any> {
 async /**
  * authenticateApiKey function
  */
-function authenticateApiKey(request: NextRequest): any: Promise<any> {
+function authenticateApiKey(request: NextRequest): Promise<any> {
   const apiKey = request.headers.get('x-api-key');
 
   if (!apiKey) {
-    production-ready
   }
 
   // Verify API key in database
   const user = await db.query('SELECT specific_columns FROM users WHERE api_key = $1', [apiKey]);
 
   if (!user.rows.length) {
-    production-ready
   }
 
   return user.rows[0];
@@ -97,12 +91,10 @@ function authenticateApiKey(request: NextRequest): any: Promise<any> {
 async /**
  * checkRateLimit function
  */
-function checkRateLimit(request: NextRequest, limit: string): any: Promise<void> {
-  production-ready
+function checkRateLimit(request: NextRequest, limit: string): Promise<void> {
   const isLimited = await rateLimit(ip, limit);
 
   if (isLimited) {
-    production-ready
   }
 }
 
@@ -110,7 +102,7 @@ function checkRateLimit(request: NextRequest, limit: string): any: Promise<void>
 /**
  * createErrorResponse function
  */
-function createErrorResponse(message: string, status: number = 400): any: NextResponse {
+function createErrorResponse(message: string, status: number = 400): NextResponse {
   return NextResponse.json(
     {
       error: { message, code: status },
@@ -124,7 +116,7 @@ function createErrorResponse(message: string, status: number = 400): any: NextRe
 /**
  * createSuccessResponse function
  */
-function createSuccessResponse(data: any, status: number = 200): any: NextResponse {
+function createSuccessResponse(data: any, status: number = 200): NextResponse {
   return NextResponse.json(
     {
       data,
@@ -136,10 +128,10 @@ function createSuccessResponse(data: any, status: number = 200): any: NextRespon
 }
 
 // Health check endpoint
-export async /**
+/**
  * GET_health function
  */
-function GET_health(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_health(request: NextRequest): Promise<NextResponse> {
   try {
     // Check database connection
     await db.query('SELECT 1');
@@ -164,10 +156,10 @@ function GET_health(request: NextRequest): any: Promise<NextResponse> {
 }
 
 // Authentication routes
-export async /**
+/**
  * POST_auth_login function
  */
-function POST_auth_login(request: NextRequest): any: Promise<NextResponse> {
+export async function POST_auth_login(request: NextRequest): Promise<NextResponse> {
   try {
     await checkRateLimit(request, RATE_LIMITS.auth);
 
@@ -249,10 +241,10 @@ function POST_auth_login(request: NextRequest): any: Promise<NextResponse> {
   }
 }
 
-export async /**
+/**
  * POST_auth_refresh function
  */
-function POST_auth_refresh(request: NextRequest): any: Promise<NextResponse> {
+export async function POST_auth_refresh(request: NextRequest): Promise<NextResponse> {
   try {
     const body = await request.json();
     const { refreshToken } = body;
@@ -286,10 +278,10 @@ function POST_auth_refresh(request: NextRequest): any: Promise<NextResponse> {
   }
 }
 
-export async /**
+/**
  * POST_auth_logout function
  */
-function POST_auth_logout(request: NextRequest): any: Promise<NextResponse> {
+export async function POST_auth_logout(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
     await logActivity(auth.userId, 'logout');
@@ -303,10 +295,10 @@ function POST_auth_logout(request: NextRequest): any: Promise<NextResponse> {
 }
 
 // User management routes
-export async /**
+/**
  * GET_users_profile function
  */
-function GET_users_profile(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_users_profile(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -327,10 +319,10 @@ function GET_users_profile(request: NextRequest): any: Promise<NextResponse> {
   }
 }
 
-export async /**
+/**
  * PUT_users_profile function
  */
-function PUT_users_profile(request: NextRequest): any: Promise<NextResponse> {
+export async function PUT_users_profile(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
     const body = await request.json();
@@ -357,10 +349,10 @@ function PUT_users_profile(request: NextRequest): any: Promise<NextResponse> {
 }
 
 // API Key management
-export async /**
+/**
  * POST_users_api_key function
  */
-function POST_users_api_key(request: NextRequest): any: Promise<NextResponse> {
+export async function POST_users_api_key(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -385,10 +377,10 @@ function POST_users_api_key(request: NextRequest): any: Promise<NextResponse> {
 }
 
 // Wallet routes
-export async /**
+/**
  * GET_wallets function
  */
-function GET_wallets(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_wallets(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -405,10 +397,10 @@ function GET_wallets(request: NextRequest): any: Promise<NextResponse> {
   }
 }
 
-export async /**
+/**
  * POST_wallets function
  */
-function POST_wallets(request: NextRequest): any: Promise<NextResponse> {
+export async function POST_wallets(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
     const body = await request.json();
@@ -441,10 +433,10 @@ function POST_wallets(request: NextRequest): any: Promise<NextResponse> {
 }
 
 // Trading routes
-export async /**
+/**
  * GET_trading_portfolio function
  */
-function GET_trading_portfolio(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_trading_portfolio(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -461,10 +453,10 @@ function GET_trading_portfolio(request: NextRequest): any: Promise<NextResponse>
   }
 }
 
-export async /**
+/**
  * POST_trading_orders function
  */
-function POST_trading_orders(request: NextRequest): any: Promise<NextResponse> {
+export async function POST_trading_orders(request: NextRequest): Promise<NextResponse> {
   try {
     await checkRateLimit(request, RATE_LIMITS.trading);
 
@@ -513,10 +505,10 @@ function POST_trading_orders(request: NextRequest): any: Promise<NextResponse> {
 }
 
 // Analytics routes
-export async /**
+/**
  * GET_analytics_dashboard function
  */
-function GET_analytics_dashboard(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_analytics_dashboard(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -541,10 +533,10 @@ function GET_analytics_dashboard(request: NextRequest): any: Promise<NextRespons
 }
 
 // Risk management routes
-export async /**
+/**
  * GET_risk_assessment function
  */
-function GET_risk_assessment(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_risk_assessment(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -565,10 +557,10 @@ function GET_risk_assessment(request: NextRequest): any: Promise<NextResponse> {
 }
 
 // Admin routes
-export async /**
+/**
  * GET_admin_users function
  */
-function GET_admin_users(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_admin_users(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -588,10 +580,10 @@ function GET_admin_users(request: NextRequest): any: Promise<NextResponse> {
   }
 }
 
-export async /**
+/**
  * GET_admin_system_status function
  */
-function GET_admin_system_status(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_admin_system_status(request: NextRequest): Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -617,10 +609,10 @@ function GET_admin_system_status(request: NextRequest): any: Promise<NextRespons
 }
 
 // Webhook routes
-export async /**
+/**
  * POST_webhooks_stripe function
  */
-function POST_webhooks_stripe(request: NextRequest): any: Promise<NextResponse> {
+export async function POST_webhooks_stripe(request: NextRequest): Promise<NextResponse> {
   try {
     const body = await request.text();
     const sig = request.headers.get('stripe-signature');
@@ -644,14 +636,13 @@ function POST_webhooks_stripe(request: NextRequest): any: Promise<NextResponse> 
 }
 
 // API documentation
-export async /**
+/**
  * GET_docs function
  */
-function GET_docs(request: NextRequest): any: Promise<NextResponse> {
+export async function GET_docs(request: NextRequest): Promise<NextResponse> {
   const docs = {
     title: 'QMOI Enhanced API',
     version: '2.0.0',
-    production-ready
     baseUrl: 'https://api.qmoi.ai',
     endpoints: {
       auth: [

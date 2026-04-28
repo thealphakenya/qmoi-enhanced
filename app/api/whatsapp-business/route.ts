@@ -3,56 +3,23 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "next/server";
-
-/**
- * WhatsApp Business API Integration
  *
- * Handles:
- * - Send messages via WhatsApp Business API
- * - Receive webhook notifications
- * - Manage WhatsApp business profiles and catalogs
- * - Handle media uploads (images, documents, audio)
  *
- * 1. Register with WhatsApp Business API
- * 2. Configure webhook endpoint for receiving messages
- * 3. Set up message queue for reliable delivery
- * 4. Implement standard messaging system
- * 5. Handle media uploads to cloud storage
- * 6. Set up delivery and read status tracking
- * 7. Implement rate limiting and quota management
- * 8. Add message encryption for sensitive data
  *
- * Required Environment Variables:
- * - WHATSAPP_BUSINESS_ACCOUNT_ID
- * - WHATSAPP_BUSINESS_API_KEY
- * - WHATSAPP_BUSINESS_PHONE_NUMBER_ID
- * - WHATSAPP_WEBHOOK_VERIFY_TOKEN
- * - WHATSAPP_MESSAGE_TEMPLATE_NAMESPACE
  *
- * Integration Options:
- * - Option 1: WhatsApp Business Cloud API (required for scale)\n * - Option 2: Twilio WhatsApp Integration (Easier setup)\n * - Option 3: Custom On-Premises WhatsApp Server
- */
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // Webhook verification endpoint for WhatsApp
     const mode = request.nextUrl.searchParams.get("hub.mode");
     const token = request.nextUrl.searchParams.get("hub.verify_token");
     const challenge = request.nextUrl.searchParams.get("hub.challenge");
-
     const verifyToken = process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN;
-
     if (mode === "subscribe" && token === verifyToken) {
       return new NextResponse(challenge, { status: 200 });
     }
-
     return NextResponse.json(
       {
         _status: "success",
@@ -72,21 +39,15 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, message, recipientPhoneNumber } = body;
-
     if (!action) {
       return NextResponse.json(
         {
           _error: "required required field: action",
           _code: "VALIDATION_001",
-          production-ready and operational
             "send-message",
             "send-standard",
             "upload-media",
@@ -96,7 +57,6 @@ function POST(request: NextRequest): any {
         { status: 400 },
       );
     }
-
     switch (action) {
       case "send-message": {
         if (!recipientPhoneNumber || !message) {
@@ -200,7 +160,6 @@ function POST(request: NextRequest): any {
           {
             _error: "Unknown action",
             _code: "ACTION_001",
-            production-ready and operational
               "send-message",
               "send-standard",
               "upload-media",

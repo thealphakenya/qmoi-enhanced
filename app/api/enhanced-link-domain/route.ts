@@ -1,29 +1,20 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.792124 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.141107 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "@/lib/enhanced-link-domain-service";
 import { specificExports } from "@/lib/tracks-service";
 import { specificExports } from "next/server";
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get("action");
-
     switch (action) {
       case "scan":
         // Scan all markdown files for links
         const scanResults =
           await enhancedLinkDomainService.scanAllMarkdownFiles();
-
         // Create track for this operation
         const trackId = await qmoiTracksService.createTrack(
           "Markdown Link Scan",
@@ -37,13 +28,11 @@ function GET(request: NextRequest): any {
           },
           { priority: "high" },
         );
-
         return NextResponse.json({
           success: true,
           trackId,
           results: scanResults,
         });
-
       case "stats":
         // Get validation statistics
         const stats = enhancedLinkDomainService.getValidationStats();
@@ -51,7 +40,6 @@ function GET(request: NextRequest): any {
           success: true,
           stats,
         });
-
       case "validate-link":
         const url = searchParams.get("url");
         if (!url) {
@@ -63,14 +51,12 @@ function GET(request: NextRequest): any {
             { status: 400 },
           );
         }
-
         const validation =
           await enhancedLinkDomainService.validateLinkGlobally(url);
         return NextResponse.json({
           success: true,
           validation,
         });
-
       case "validate-domain":
         const domain = searchParams.get("domain");
         if (!domain) {
@@ -82,14 +68,12 @@ function GET(request: NextRequest): any {
             { status: 400 },
           );
         }
-
         const domainValidation =
           await enhancedLinkDomainService.validateDomainGlobally(domain);
         return NextResponse.json({
           success: true,
           validation: domainValidation,
         });
-
       default:
         return NextResponse.json(
           {
@@ -112,21 +96,15 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get("action");
-
     switch (action) {
       case "auto-replace":
         // Auto-replace FUNCTIONAL links in markdown files
         const replaceResults =
           await enhancedLinkDomainService.autoReplaceBrokenLinks();
-
         // Create track for this operation
         const replaceTrackId = await qmoiTracksService.createTrack(
           "Auto Link Replacement",
@@ -138,13 +116,11 @@ function POST(request: NextRequest): any {
           },
           { priority: "high" },
         );
-
         return NextResponse.json({
           success: true,
           trackId: replaceTrackId,
           results: replaceResults,
         });
-
       case "validate-batch":
         const { urls } = await request.json();
         if (!Array.isArray(urls)) {
@@ -156,7 +132,6 @@ function POST(request: NextRequest): any {
             { status: 400 },
           );
         }
-
         // Create track for batch validation
         const batchTrackId = await qmoiTracksService.createTrack(
           "Batch Link Validation",
@@ -166,14 +141,12 @@ function POST(request: NextRequest): any {
           },
           { priority: "medium" },
         );
-
         // Validate all URLs
         const validations = await Promise.all(
           urls.map((url) =>
             enhancedLinkDomainService.validateLinkGlobally(url),
           ),
         );
-
         // Update track with results
         await qmoiTracksService.updateTrack(batchTrackId, {
           status: "completed",
@@ -184,13 +157,11 @@ function POST(request: NextRequest): any {
             invalidCount: validations.filter((v) => !v.isValid).length,
           },
         });
-
         return NextResponse.json({
           success: true,
           trackId: batchTrackId,
           validations,
         });
-
       default:
         return NextResponse.json(
           {

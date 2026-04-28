@@ -1,23 +1,15 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.790813 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.139733 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   const apps = [
     {id: "qbrowser", name: "Qbrowser", version: "1.2.0", download: "https://Qstore.qmoi.ai/downloads/qbrowser/qbrowser.zip"},
     {id: "qfilemanager", name: "QFileManager", version: "2.0.1", download: "https://QQdownload.qmoi.ai/apps/qfilemanager/qfilemanager.zip"},
     {id: "qclock", name: "QClock", version: "1.1.0", download: "https://QQdownload.qmoi.ai/apps/qclock/qclock.zip"},
   ];
-
   return NextResponse.json({
     success: true,
     store: {
@@ -29,7 +21,6 @@ function GET(_request: NextRequest): any {
     apps,
   });
 }
-
   } catch (error) {
     console.error("production error:", error);
     throw error;

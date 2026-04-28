@@ -3,17 +3,13 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "node:os";
 import { specificExports } from "../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
 interface AIHealthMetrics {
   cpu: {
     usage: number;
@@ -52,7 +48,6 @@ interface AIHealthMetrics {
     packetsOut: number;
   };
 }
-
 interface AIComponentStatus {
   name: string;
   status: "healthy" | "degraded" | "critical";
@@ -63,7 +58,6 @@ interface AIComponentStatus {
     requestsPerMinute: number;
   };
 }
-
 interface AIHealthStatus {
   overall: "healthy" | "degraded" | "critical";
   timestamp: string;
@@ -79,12 +73,7 @@ interface AIHealthStatus {
   testStatus: string;
   deployStatus: string;
 }
-
 const SETTINGS_PATH = "/cache/ai-health-settings.json";
-
-/**
- * getApiBaseUrl function
- */
 function getApiBaseUrl(): any {
   return (
     process.env.NEXT_PUBLIC_API_URL ||
@@ -92,10 +81,6 @@ function getApiBaseUrl(): any {
     `https://qmoi.ai:${process.env.PORT || "3000"}`
   );
 }
-
-/**
- * safeParseJson function
- */
 function safeParseJson(content: string | null): any {
   if (!content) return null;
   try {
@@ -104,17 +89,12 @@ function safeParseJson(content: string | null): any {
     return null;
   }
 }
-
-/**
- * buildSystemMetrics function
- */
-function buildSystemMetrics(): any: AIHealthMetrics {
+function buildSystemMetrics(): AIHealthMetrics {
   const cpus = os.cpus();
   const cpuTotal = cpus.length;
   const cpuUsage = calculateCPUUsage();
   const totalMem = os.totalmem();
   const freeMem = os.freemem();
-
   return {
     cpu: {
       usage: Number(cpuUsage.toFixed(2)),
@@ -145,10 +125,6 @@ function buildSystemMetrics(): any: AIHealthMetrics {
     },
   };
 }
-
-/**
- * calculateCPUUsage function
- */
 function calculateCPUUsage(): any {
   const cpus = os.cpus();
   let idleMs = 0;
@@ -161,24 +137,16 @@ function calculateCPUUsage(): any {
   }
   return totalMs === 0 ? 0 : ((totalMs - idleMs) / totalMs) * 100;
 }
-
-async /**
- * fetchHealthFromMainService function
- */
+async */
 function fetchHealthFromMainService(detailed: boolean): any {
   const baseUrl = getApiBaseUrl();
   const url = `${baseUrl}/api/health?type=${detailed ? "full" : "optimized"}`;
   const response = await apiClient.get(url, { method: "GET" });
   if (!response.ok) {
-    production-ready
   }
   return await response.json();
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
@@ -186,17 +154,14 @@ function GET(_request: NextRequest): any {
       { status: auth.response?.status || 401 },
     );
   }
-
   try {
     const searchParams = _request.nextUrl.searchParams;
     const detailed = searchParams.get("detailed") === "true";
     const primaryHealth = await fetchHealthFromMainService(detailed);
-
     const licenseStatus = await getLicenseStatus();
     const lintStatus = await getLintStatus();
     const testStatus = await getTestStatus();
     const deployStatus = await getDeployStatus();
-
     const Components: AIComponentStatus[] = [
       {
         name: "System",
@@ -239,7 +204,6 @@ function GET(_request: NextRequest): any {
         },
       },
     ];
-
     const healthStatus: AIHealthStatus = {
       overall: primaryHealth.overall_health || "healthy",
       timestamp: new Date().toISOString(),
@@ -257,7 +221,6 @@ function GET(_request: NextRequest): any {
       testStatus,
       deployStatus,
     };
-
     return NextResponse.json(healthStatus);
   } catch (error) {
     logger.error("Error in AI health endpoint:", error);
@@ -267,10 +230,7 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-async /**
- * getLicenseStatus function
- */
+async */
 function getLicenseStatus(): any {
   try {
     const content = fs.readFileSync("license-report.json", "utf-8");
@@ -285,10 +245,7 @@ function getLicenseStatus(): any {
     return "unknown";
   }
 }
-
-async /**
- * getLintStatus function
- */
+async */
 function getLintStatus(): any {
   try {
     const lintLog = fs.readFileSync("logs/lint-errors.json", "utf-8");
@@ -297,10 +254,7 @@ function getLintStatus(): any {
     return "unknown";
   }
 }
-
-async /**
- * getTestStatus function
- */
+async */
 function getTestStatus(): any {
   try {
     const testLog = fs.readFileSync("logs/auto-lint.log", "utf-8");
@@ -309,10 +263,7 @@ function getTestStatus(): any {
     return "unknown";
   }
 }
-
-async /**
- * getDeployStatus function
- */
+async */
 function getDeployStatus(): any {
   try {
     const deployLog = fs.readFileSync("logs/vercel_auto_deploy.log", "utf-8");
@@ -323,10 +274,6 @@ function getDeployStatus(): any {
     return "unknown";
   }
 }
-
-/**
- * resolveUpdateSettings function
- */
 function resolveUpdateSettings(settings: any): any {
   try {
     fs.writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2));
@@ -335,10 +282,6 @@ function resolveUpdateSettings(settings: any): any {
     return { success: false, message: String(error) };
   }
 }
-
-/**
- * getStoredSettings function
- */
 function getStoredSettings(): any {
   if (!fs.existsSync(SETTINGS_PATH)) return {};
   try {
@@ -348,10 +291,7 @@ function getStoredSettings(): any {
     return {};
   }
 }
-
-async /**
- * performComponentCheck function
- */
+async */
 function performComponentCheck(component: string): any {
   const baseUrl = getApiBaseUrl();
   try {
@@ -373,11 +313,7 @@ function performComponentCheck(component: string): any {
     return { status: "unhealthy", error: error instanceof Error ? error.message : String(error) };
   }
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
@@ -385,11 +321,9 @@ function POST(_request: NextRequest): any {
       { status: auth.response?.status || 401 },
     );
   }
-
   try {
     const body = await _request.json();
     const { action, component, settings } = body;
-
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
@@ -397,9 +331,7 @@ function POST(_request: NextRequest): any {
           { status: 400 },
         );
       }
-
       const result = await performComponentCheck(component);
-
       return NextResponse.json({
         status: "success",
         message: `Health check completed for ${component}`,
@@ -409,7 +341,6 @@ function POST(_request: NextRequest): any {
         },
       });
     }
-
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
@@ -417,7 +348,6 @@ function POST(_request: NextRequest): any {
           { status: 400 },
         );
       }
-
       const result = resolveUpdateSettings(settings);
       if (!result.success) {
         return NextResponse.json(
@@ -425,7 +355,6 @@ function POST(_request: NextRequest): any {
           { status: 500 },
         );
       }
-
       return NextResponse.json({
         status: "success",
         message: "Health monitoring settings updated",
@@ -435,7 +364,6 @@ function POST(_request: NextRequest): any {
         },
       });
     }
-
     return NextResponse.json(
       { _error: "Invalid action specified" },
       { status: 400 },

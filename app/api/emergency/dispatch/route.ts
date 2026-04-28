@@ -3,14 +3,9 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from 'next/server';
-
 // POST /api/emergency/dispatch - Dispatch emergency services
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const {
       type,
@@ -19,14 +14,12 @@ function POST(request: NextRequest): any {
       priority = 'high',
       service = 'local'
     } = await request.json();
-
     if (!type || !location || !details) {
       return NextResponse.json(
         { error: 'required required fields: type, location, details' },
         { status: 400 }
       );
     }
-
     // Validate emergency type
     const validTypes = ['police', 'fire', 'medical', 'rescue', 'security'];
     if (!validTypes.includes(type)) {
@@ -35,7 +28,6 @@ function POST(request: NextRequest): any {
         { status: 400 }
       );
     }
-
     // Validate location format
     if (!location.lat || !location.lng || !location.address) {
       return NextResponse.json(
@@ -43,9 +35,7 @@ function POST(request: NextRequest): any {
         { status: 400 }
       );
     }
-
     let result;
-
     // Route to appropriate dispatch service
     switch (service) {
       case 'local':
@@ -63,7 +53,6 @@ function POST(request: NextRequest): any {
           { status: 400 }
         );
     }
-
     if (result.success) {
       return NextResponse.json({
         success: true,
@@ -79,7 +68,6 @@ function POST(request: NextRequest): any {
         { status: 500 }
       );
     }
-
   } catch (error) {
     logger.error('Emergency dispatch error:', error);
     return NextResponse.json(
@@ -88,19 +76,14 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
 // Local emergency dispatch (911 equivalent)
-async /**
- * dispatchLocalEmergency function
- */
+async */
 function dispatchLocalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
-    production-ready
     // For now, live dispatch
     logger.info(`Local Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
     logger.info(`Location: ${location.address} (${location.lat}, ${location.lng})`);
     logger.info(`Details: ${details}`);
-
     // live response time based on type and priority
     const responseTimes = {
       police: { high: '5-10 minutes', medium: '15-20 minutes', low: '30-45 minutes' },
@@ -109,9 +92,7 @@ function dispatchLocalEmergency(type: string, location: any, details: string, pr
       rescue: { high: '8-12 minutes', medium: '18-25 minutes', low: '35-50 minutes' },
       security: { high: '10-15 minutes', medium: '20-30 minutes', low: '45-60 minutes' }
     };
-
     const estimatedResponse = responseTimes[type as keyof typeof responseTimes]?.[priority as keyof typeof responseTimes.police] || 'Unknown';
-
     return {
       success: true,
       dispatchId: `local_${type}_${Date.now()}`,
@@ -125,11 +106,8 @@ function dispatchLocalEmergency(type: string, location: any, details: string, pr
     };
   }
 }
-
 // National emergency dispatch
-async /**
- * dispatchNationalEmergency function
- */
+async */
 function dispatchNationalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
     // National dispatch integration would go here
@@ -147,11 +125,8 @@ function dispatchNationalEmergency(type: string, location: any, details: string,
     };
   }
 }
-
 // International emergency dispatch
-async /**
- * dispatchInternationalEmergency function
- */
+async */
 function dispatchInternationalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
     // International dispatch integration would go here

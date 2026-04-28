@@ -3,10 +3,10 @@ console.log("production mode initialized");
 <!-- AUTODEV Enhanced: 2026-04-20T08:55:16.212144 -->
 import { specificExports } from '@/lib/realtime/stream';
 
-export async /**
+/**
  * GET function
  */
-function GET(): any {
+export async function GET(): any {
   const stream = createRealtimeEventStream();
   return new Response(stream, {
     headers: {

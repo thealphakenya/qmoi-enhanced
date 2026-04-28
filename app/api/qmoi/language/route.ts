@@ -1,42 +1,17 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.703623 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.959251 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next";
 import { specificExports } from "../../../../lib/proposals";
 import { specificExports } from "@/lib/rate-limiter";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
-/**
- * Language & Translation API
  *
- * Handles:
- * - Translate: Text translation between languages
- * - Speech-to-Text: Convert audio to text
- * - Text-to-Speech: Convert text to audio
- * - Language-Detect: Identify language of text
- * - Lesson: Language learning lessons
- * - Quiz: Language proficiency quizzes
- * - Pronunciation-Check: Verify pronunciation
  *
- * 1. Translation: Integrate Google Translate API or similar
- * 2. Speech Services: Use Google Cloud Speech-to-Text and Text-to-Speech
- * 3. Language Detection: Use textcat or similar library
- * 4. Learning Content: Query lesson database by language/level
- * 5. Audio Processing: Handle file uploads, format conversion (mp3, wav, m4a)
- * 6. Rate Limiting: Implement per-user daily quotas
- * 7. Caching: Cache common translations for performance
- */
-export default async /**
- * handler function
- */
+export default async */
 function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
@@ -52,7 +27,6 @@ function handler(
       retryAfterSeconds: rateLimit.retryAfterSeconds,
     });
   }
-
   const auth = requireApiKey(new Headers(_req.headers as any) as any);
   if (!auth.ok) {
     return _res
@@ -205,7 +179,6 @@ function handler(
       });
   }
 }
-
   } catch (error) {
     console.error("production error:", error);
     throw error;

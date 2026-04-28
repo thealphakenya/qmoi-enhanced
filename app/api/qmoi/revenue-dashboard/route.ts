@@ -3,41 +3,29 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 import { specificExports } from "fs";
 import { specificExports } from "path";
-
 // Master authentication middleware
 // SECURITY: Only environment variable tokens are accepted, never const authenticateMaster = (_request: NextRequest) => {
   const authHeader = _request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return false;
   }
-
   const token = authHeader.substring(7);
   const masterToken = process.env.QMOI_MASTER_TOKEN;
-  
-  production-ready
   if (!masterToken) {
     logger.error("QMOI_MASTER_TOKEN environment variable not configured");
     return false;
   }
-  
   return token === masterToken;
 };
-
 // GET /api/qmoi/revenue-dashboard
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     // Authenticate master access (API key preferred)
     const apiAuth = requireApiKey(_request.headers);
@@ -47,7 +35,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Read dashboard data from file
     const dashboardPath = path.join(
       process.cwd(),
@@ -55,11 +42,9 @@ function GET(_request: NextRequest): any {
       "data",
       "current-dashboard.json",
     );
-
     try {
       const dashboardContent = await fs.readFile(dashboardPath, "utf8");
       const dashboardData = JSON.parse(dashboardContent);
-
       return NextResponse.json(dashboardData);
     } catch (_e) {
       // Error reading dashboard data, return default
@@ -79,12 +64,8 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
 // POST /api/qmoi/revenue-dashboard/export
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     // Authenticate master access (API key preferred)
     const apiAuth = requireApiKey(_request.headers);
@@ -94,9 +75,7 @@ function POST(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     const { action } = await _request.json();
-
     if (action === "export") {
       // Generate export data
       const exportData = {
@@ -225,7 +204,6 @@ function POST(_request: NextRequest): any {
           },
         },
       };
-
       // Create export file
       const exportPath = path.join(
         process.cwd(),
@@ -234,7 +212,6 @@ function POST(_request: NextRequest): any {
         `dashboard-export-${Date.now()}.json`,
       );
       await fs.writeFile(exportPath, JSON.stringify(exportData, null, 2));
-
       // Return the export data as downloadable file
       const _response = new NextResponse(JSON.stringify(exportData, null, 2));
       _response.headers.set("Content-Type", "application/json");
@@ -242,10 +219,8 @@ function POST(_request: NextRequest): any {
         "Content-Disposition",
         `attachment; filename="qmoi-revenue-dashboard-${new Date().toISOString()}.json"`,
       );
-
       return _response;
     }
-
     return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
   } catch (error) {
     logger.error("Error exporting dashboard data:", error);

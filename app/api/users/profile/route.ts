@@ -3,23 +3,17 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/email/service";
-
 // GET /api/users/profile - Get current user profile
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
       return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
-
     const token = authHeader.substring(7);
     let decoded;
     try {
@@ -27,16 +21,13 @@ function GET(_request: NextRequest): any {
     } catch (e) {
       return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
-
     if (!decoded?.userId) {
       return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
-
     const user = await db.userService.getById(decoded.userId);
     if (!user) {
       return NextResponse.json({ _error: "User not found" }, { status: 404 });
     }
-
     // Remove sensitive data
     const { passwordHash, /* production implementation with proper error handling */safeUser } = user;
     return NextResponse.json(safeUser);
@@ -51,18 +42,13 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
 // PUT /api/users/profile - Update user profile
-export async /**
- * PUT function
- */
-function PUT(_request: NextRequest): any {
+export async function PUT(_request: NextRequest): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
       return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
-
     const token = authHeader.substring(7);
     let decoded;
     try {
@@ -70,11 +56,9 @@ function PUT(_request: NextRequest): any {
     } catch (e) {
       return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
-
     if (!decoded?.userId) {
       return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
     }
-
     const body = (await _request.json()) as {
       firstName?: string;
       lastName?: string;
@@ -84,7 +68,6 @@ function PUT(_request: NextRequest): any {
       bio?: string;
       [key: string]: unknown;
     };
-
     // Validate update data
     const updateData: Record<string, unknown> = {};
     if (body.firstName) updateData.firstName = body.firstName;
@@ -92,7 +75,6 @@ function PUT(_request: NextRequest): any {
     if (body.phoneNumber) updateData.phoneNumber = body.phoneNumber;
     if (body.dateOfBirth) updateData.dateOfBirth = new Date(body.dateOfBirth);
     if (body.bio) updateData.bio = body.bio;
-
     const updated = await db.userService.update(decoded.userId, updateData);
     if (!updated) {
       return NextResponse.json({ _error: "User not found" }, { status: 404 });
@@ -101,7 +83,6 @@ function PUT(_request: NextRequest): any {
       string,
       unknown
     >;
-
     return NextResponse.json(safeUser);
   } catch (error) {
     (globalThis.console as any)?.error?.(

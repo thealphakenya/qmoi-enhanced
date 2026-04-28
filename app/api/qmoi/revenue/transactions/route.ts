@@ -1,25 +1,16 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.687750 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.850817 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 // @ts-nocheck
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     // Prefer API key based auth, fallback to QMOI_MASTER_API_KEY
     const apiAuth = requireApiKey(_request.headers);
@@ -35,17 +26,14 @@ function GET(_request: NextRequest): any {
         { status: _r?.status ?? 401 },
       );
     }
-
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
     const qmoiRevenueEngine: unknown =
       mod.qmoiRevenueEngine || mod.default || mod;
-
     const transactions = qmoiRevenueEngine.getTransactionHistory
       ? qmoiRevenueEngine.getTransactionHistory(50)
       : qmoiRevenueEngine.getTransactions
         ? qmoiRevenueEngine.getTransactions(50)
         : [];
-
     return NextResponse.json(transactions);
   } catch (error) {
     logger.error("Get transactions _error:", error);

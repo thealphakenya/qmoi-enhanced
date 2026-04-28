@@ -1,24 +1,16 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.652684 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.818366 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/payments/service";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/notifications/service";
 import { specificExports } from "@/lib/rate-limiter";
 import { specificExports } from "@/lib/logger";
-
 const logger = getLogger("api/payments/initiate");
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   const rateLimit = await enforceRateLimitForLegacy(
     "/api/payments/initiate",
     _request.headers as any,
@@ -47,7 +39,6 @@ function POST(_request: NextRequest): any {
       userEmail?: string;
       userPhone?: string;
     };
-
     // Validate input
     if (!body.walletId || !body.amount || body.amount <= 0) {
       return NextResponse.json(
@@ -55,11 +46,9 @@ function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-
     const amount = Math.ceil(body.amount);
     const currency = body.currency || "KES";
     const provider = body.provider || "mpesa";
-
     // Create initial transaction record
     const transaction = await transactionService.create({
       walletId: body.walletId,
@@ -74,7 +63,6 @@ function POST(_request: NextRequest): any {
         initiatedAt: new Date().toISOString(),
       },
     });
-
     if (!transaction) {
       logger.error("Failed to create transaction record");
       return NextResponse.json(
@@ -82,7 +70,6 @@ function POST(_request: NextRequest): any {
         { status: 500 },
       );
     }
-
     let paymentResponse: unknown = null;
     try {
       paymentResponse = await paymentService.initiatePayment(
@@ -109,7 +96,6 @@ function POST(_request: NextRequest): any {
         { status: 502 },
       );
     }
-
     // Normalize initiation result from various providers
     const resp: any = paymentResponse || {};
     const normalized = {
@@ -143,7 +129,6 @@ function POST(_request: NextRequest): any {
       raw: resp,
       status: resp.status || (resp.success === true ? "processing" : null),
     };
-
     if (!normalized.success) {
       await transactionService.updateStatus(transaction.id, "failed");
       return NextResponse.json(
@@ -151,7 +136,6 @@ function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-
     // Persist provider transaction id (if any) and mark processing
     await transactionService.updateStatus(transaction.id, "processing", {
       transactionId: normalized.transactionId || undefined,
@@ -160,7 +144,6 @@ function POST(_request: NextRequest): any {
           ? { providerResponse: normalized.raw }
           : undefined,
     });
-
     // Send notification to user
     if (body.userEmail) {
       try {
@@ -180,7 +163,6 @@ function POST(_request: NextRequest): any {
         logger.warn("Failed to send notification", { error: notifyError });
       }
     }
-
     return NextResponse.json({
       success: true,
       transaction: {

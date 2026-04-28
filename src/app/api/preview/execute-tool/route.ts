@@ -11,10 +11,10 @@ import { specificExports } from "next/server";
  * POST /api/production/execute-tool
  * Executes a specific tool and returns results
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const { toolId, projectId, params } = await request.json();
 
@@ -87,7 +87,6 @@ function executeCodeLinter(params: any): any {
   const { code, language } = params;
   if (!code) return { errors: [], warnings: [] };
 
-  production-ready
   const errors: any[] = [];
   const warnings: any[] = [];
   const lines = code.split("\n");
@@ -165,7 +164,6 @@ function executeCodeFormatter(params: any): any {
   if (!code) return { formatted: "", changed: false };
 
   try {
-    production-ready
     const prettierModule = await import('prettier');
     const prettier = prettierModule.default ?? prettierModule;
 

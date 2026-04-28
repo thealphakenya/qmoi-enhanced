@@ -11,7 +11,7 @@ export default /**
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function MasterEmailPage(): any {
-  try {() {
+  try {
   return <MasterEmailDashboard />;
 }
 

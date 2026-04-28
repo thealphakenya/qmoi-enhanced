@@ -1,5 +1,10 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.609834 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.654731 -->
+"use client";
+
+// AUTODEV Enhanced: 2026-04-20T09:01:23.609834
+// AUTODEV Enhanced: 2026-04-20T08:55:17.654731
+
+import React from "react";
+import { ReactNode } from "react";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -12,7 +17,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
+    console.error('React Error Boundary caught an error:', error, errorInfo);
   }
 
   render() {
@@ -28,8 +33,6 @@ class ErrorBoundary extends React.Component {
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-"use client";
 
 import { specificExports } from "react";
 import { specificExports } from "next/link";

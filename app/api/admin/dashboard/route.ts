@@ -1,27 +1,14 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.718843 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.977566 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/prisma";
 import { specificExports } from "@/lib/auth/service";
-
-/**
- * GET /api/admin/dashboard
- * Get admin dashboard statistics
- * Requires authentication and admin role
- */
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -30,7 +17,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Verify token synchronously
     let decoded;
     try {
@@ -41,7 +27,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
@@ -53,7 +38,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Check if user is admin
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
@@ -62,7 +46,6 @@ function GET(_request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Get dashboard statistics
     const totalUsers = await db.user.count();
     const activeUsers = await db.user.count({
@@ -72,23 +55,18 @@ function GET(_request: NextRequest): any {
         },
       },
     });
-
     const totalTransactions = await db.transaction.count();
     const completedTransactions = await db.transaction.count({
       where: { status: "completed" },
     });
-
     const totalWallets = await db.wallet.count();
-
     // Get transaction volume
     const transactionVolume = await db.transaction.aggregate({
       where: { status: "completed" },
       _sum: { amount: true },
     });
-
     // Get revenue (assume 2% transaction fee)
     const revenue = (transactionVolume._sum.amount || 0) * 0.02;
-
     // Get top users by wallet count (as a proxy for transaction activity)
     const topUsers = await db.user.findMany({
       take: 5,
@@ -106,7 +84,6 @@ function GET(_request: NextRequest): any {
         },
       },
     });
-
     return NextResponse.json(
       {
         dashboard: {

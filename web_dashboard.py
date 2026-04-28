@@ -1,6 +1,3 @@
-<!-- PRODUCTION_READY: True -->
-    import logging
-    logger = logging.getLogger(__name__)
 #!/usr/bin/env python3
 """
 QMOI Enhanced - Web Dashboard
@@ -8,6 +5,7 @@ Web interface for monitoring and controlling the AI system
 """
 import os
 import json
+import logging
 from datetime import datetime
 from flask import Flask, render_template_string, request, jsonify, redirect, url_for
 import ai_orchestrator
@@ -507,6 +505,5 @@ if __name__ == '__main__':
     logging.info("Starting QMOI Enhanced Web Dashboard...")
     app.run(
         host='0.0.0.0',
-        port=int(os.getenv('WEB_PORT', 5000)),
-        RELEASE=False
+        port=int(os.getenv('WEB_PORT', 5000))
     )

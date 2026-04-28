@@ -3,16 +3,11 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/email-service";
-
 // GET /api/emails - Get emails for account
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const account = searchParams.get("account");
@@ -21,22 +16,18 @@ function GET(request: NextRequest): any {
     const limit = searchParams.get("limit")
       ? parseInt(searchParams.get("limit")!)
       : undefined;
-
     if (!account) {
       return NextResponse.json(
         { success: false, error: "Account parameter is required" },
         { status: 400 },
       );
     }
-
     const emails = await qmoiEmailService.getEmails(account, {
       label: label || undefined,
       unreadOnly,
       limit,
     });
-
     const stats = await qmoiEmailService.getEmailStats();
-
     return NextResponse.json({
       success: true,
       emails,
@@ -49,16 +40,11 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
 // POST /api/emails - Send email or perform email actions
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, /* production implementation with proper error handling */params } = body;
-
     switch (action) {
       case "send": {
         const {
@@ -70,7 +56,6 @@ function POST(request: NextRequest): any {
           bcc,
           attachments,
         } = params;
-
         if (!from || !to || !subject || !emailBody) {
           return NextResponse.json(
             {
@@ -80,7 +65,6 @@ function POST(request: NextRequest): any {
             { status: 400 },
           );
         }
-
         const success = await qmoiEmailService.sendEmail(
           from,
           to,
@@ -92,44 +76,35 @@ function POST(request: NextRequest): any {
             attachments,
           },
         );
-
         return NextResponse.json({
           success,
           message: success ? "Email sent successfully" : "Failed to send email",
         });
       }
-
       case "receive": {
         const { account } = params;
-
         if (!account) {
           return NextResponse.json(
             { success: false, error: "Account is required" },
             { status: 400 },
           );
         }
-
         const emails = await qmoiEmailService.receiveEmails(account);
-
         return NextResponse.json({
           success: true,
           emails,
           count: emails.length,
         });
       }
-
       case "markAsRead": {
         const { account, messageId } = params;
-
         if (!account || !messageId) {
           return NextResponse.json(
             { success: false, error: "Account and messageId are required" },
             { status: 400 },
           );
         }
-
         const success = await qmoiEmailService.markAsRead(account, messageId);
-
         return NextResponse.json({
           success,
           message: success
@@ -137,23 +112,19 @@ function POST(request: NextRequest): any {
             : "Failed to mark email as read",
         });
       }
-
       case "createAccount": {
         const { username, domain, password } = params;
-
         if (!username || !domain) {
           return NextResponse.json(
             { success: false, error: "Username and domain are required" },
             { status: 400 },
           );
         }
-
         const account = await qmoiEmailService.createEmailAccount(
           username,
           domain,
           { password },
         );
-
         return NextResponse.json({
           success: true,
           account: {
@@ -162,16 +133,13 @@ function POST(request: NextRequest): any {
           },
         });
       }
-
       case "autoProcess": {
         const results = await qmoiEmailService.autoProcessEmails();
-
         return NextResponse.json({
           success: true,
           results,
         });
       }
-
       default:
         return NextResponse.json(
           { success: false, error: "Invalid action" },

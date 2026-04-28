@@ -3,12 +3,10 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "fs/promises";
 import { specificExports } from "fs";
 import { specificExports } from "path";
-
 const ROOT_DIR = process.cwd();
 const ALLOWED_EXTENSIONS = [
   ".ts",
@@ -22,28 +20,16 @@ const ALLOWED_EXTENSIONS = [
   ".yaml",
   ".env",
 ];
-
-/**
- * isSafePath function
- */
-function isSafePath(requestedPath: string): any: boolean {
+function isSafePath(requestedPath: string): boolean {
   const resolved = path.resolve(ROOT_DIR, requestedPath);
   return resolved.startsWith(ROOT_DIR);
 }
-
-/**
- * sanitizePath function
- */
-function sanitizePath(requestedPath: string): any: string {
+function sanitizePath(requestedPath: string): string {
   // Prevent navigating out of the project root
   const normalized = path.normalize(requestedPath || "");
   if (normalized.startsWith("..")) return "";
   return normalized;
 }
-
-/**
- * formatFileItem function
- */
 function formatFileItem(
   filePath: string,
   stats: fsSync.Stats,
@@ -59,10 +45,7 @@ function formatFileItem(
     modified: stats.mtime.toISOString(),
   };
 }
-
-async /**
- * readDirectory function
- */
+async */
 function readDirectory(dir: string, basePath: string): any {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const items = [];
@@ -89,48 +72,32 @@ function readDirectory(dir: string, basePath: string): any {
   }
   return items;
 }
-
-/**
- * requireApiKey function
- */
-function requireApiKey(req: NextRequest): any: boolean {
+function requireApiKey(req: NextRequest): boolean {
   const key = process.env.FILE_EXPLORER_API_KEY;
   if (!key) {
-    production-ready
-    production-ready
   }
   const provided = req.headers.get("x-api-key");
   return provided === key;
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     if (!requireApiKey(request)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
     const url = new URL(request.url);
     const requestedPath = sanitizePath(url.searchParams.get("path") || "");
     const targetDir = path.join(ROOT_DIR, requestedPath);
-
     if (!isSafePath(requestedPath)) {
       return NextResponse.json({ error: "Invalid path" }, { status: 400 });
     }
-
     const stats = await fs.stat(targetDir).catch(() => null);
-
     if (!stats || !stats.isDirectory()) {
       return NextResponse.json(
         { error: "Directory not found" },
         { status: 404 },
       );
     }
-
     const items = await readDirectory(targetDir, ROOT_DIR);
-
     return NextResponse.json({
       path: requestedPath || ".",
       items,

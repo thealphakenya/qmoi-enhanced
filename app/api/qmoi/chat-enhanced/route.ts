@@ -1,24 +1,12 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.700724 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.956360 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/qmoi-user-system";
 import { specificExports } from "@/lib/qmoi-enhanced-intelligence";
-
-/**
- * Enhanced QMOI Chat Endpoint with User Identification
- * Routes messages through user-aware response system
- */
-
-export async /**
- * POST function
- */
-function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
     const body = await req.json();
     const {
@@ -28,21 +16,18 @@ function POST(req: NextRequest): any {
       userName = null,
       context = null,
     } = body;
-
     if (!message || typeof message !== "string") {
       return NextResponse.json(
         { error: "Valid message required" },
         { status: 400 },
       );
     }
-
     // Step 1: Identify the user
     const userProfile = QMOIUserSystem.identifyUser(
       userId,
       null,
       userEmail || userName,
     );
-
     // Step 2: Check if this is a greeting/identification request
     const isGreeting =
       message.toLowerCase().includes("who are you") ||
@@ -50,14 +35,12 @@ function POST(req: NextRequest): any {
       message.toLowerCase().includes("who is") ||
       message.toLowerCase().includes("identify yourself") ||
       message.toLowerCase().includes("what can you do");
-
     let response: any = {
       success: true,
       userIdentified: userProfile.identified,
       userRole: userProfile.role,
       displayName: userProfile.displayName,
     };
-
     // Step 3: Generate dynamic introduction if greeting
     if (isGreeting) {
       const introduction = QMOIUserSystem.generateDynamicIntroduction(
@@ -77,7 +60,6 @@ function POST(req: NextRequest): any {
         accessLevel: userProfile.accessLevel,
         isFamily: userProfile.isFamily,
       };
-
       // Step 5: Check access and apply restrictions
       const accessCheck = QMOIUserSystem.checkAccess(
         userProfile,
@@ -93,16 +75,13 @@ function POST(req: NextRequest): any {
           { status: 403 },
         );
       }
-
       // Step 6: Add context-aware prefix
       const prefix = QMOIUserSystem.generateContextAwarePrefix(userProfile);
       response.contextPrefix = prefix;
       response.fullMessage = prefix + message;
       response.type = "contextual_response";
-
       // Step 7: Apply specialized handling if needed
       const messageLower = message.toLowerCase();
-
       // Memory operations
       if (
         messageLower.includes("my name is") ||
@@ -121,7 +100,6 @@ function POST(req: NextRequest): any {
           response.stored = { realName: nameMatch[1] };
         }
       }
-
       // Retrieve stored information
       if (
         messageLower.includes("what is my name") ||
@@ -137,7 +115,6 @@ function POST(req: NextRequest): any {
           response.retrievalContext = `I remember that your name is ${storedInfo.value}.`;
         }
       }
-
       // Financial data access check
       if (
         messageLower.includes("financial") ||
@@ -155,7 +132,6 @@ function POST(req: NextRequest): any {
             "Financial data access restricted to master only";
         }
       }
-
       // System configuration access check
       if (
         messageLower.includes("system") ||
@@ -172,7 +148,6 @@ function POST(req: NextRequest): any {
         }
       }
     }
-
     // Step 8: Add user profile information (only what they should see)
     response.profile = {
       id: userProfile.id,
@@ -181,7 +156,6 @@ function POST(req: NextRequest): any {
       accessLevel: userProfile.accessLevel,
       hasFullAccess: userProfile.accessLevel >= 100,
     };
-
     // Step 9: Add session information
     response.session = {
       userId: userProfile.id,
@@ -190,7 +164,6 @@ function POST(req: NextRequest): any {
       permissions: userProfile.permissions.slice(0, 3), // Show first 3 permissions
       totalPermissions: userProfile.permissions.length,
     };
-
     return NextResponse.json(response);
   } catch (error) {
     logger.error("Chat endpoint error:", error);
@@ -203,18 +176,10 @@ function POST(req: NextRequest): any {
     );
   }
 }
-
-/**
- * GET endpoint for user profile information
- */
-export async /**
- * GET function
- */
-function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): any {
   try {
     const userId = req.nextUrl.searchParams.get("userId") || "guest";
     const profile = QMOIUserSystem.getUserProfile(userId);
-
     return NextResponse.json({
       success: true,
       profile,

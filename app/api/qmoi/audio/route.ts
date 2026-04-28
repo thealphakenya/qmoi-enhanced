@@ -1,44 +1,29 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.702929 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.958538 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/qmoi-service";
 import { specificExports } from "@/lib/transcribe";
-
-/**
- * Audio/Voice Message Processing
- * Handles audio transcription and processing
- */
-export async /**
- * POST function
- */
-function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
     const formData = await req.formData();
     const audio = formData.get("audio") as File;
     const userId = (formData.get("userId") as string) || "anonymous";
-
     if (!audio) {
       return NextResponse.json(
         { error: "No audio file provided" },
         { status: 400 },
       );
     }
-
     // Convert audio to text
     const transcript = await transcribeHelper(audio);
-
     // Process with QMOI service
     const response = await QMOIService.processQuery(transcript, userId, {
       messageType: "audio",
       originalAudioSize: audio.size,
     });
-
     return NextResponse.json({
       success: true,
       transcript,
@@ -54,5 +39,4 @@ function POST(req: NextRequest): any {
     );
   }
 }
-
 // Transcription delegated to `lib/transcribe.ts`.

@@ -1,13 +1,5 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.729016 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.988848 -->
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * Device Management API
- * Comprehensive device connectivity and management
- */
-
 interface Device {
   id: string;
   name: string;
@@ -31,8 +23,6 @@ interface Device {
     free: number;
   };
 }
-
-
 const devices: Device[] = [
   {
     id: 'dev_001',
@@ -105,32 +95,22 @@ const devices: Device[] = [
     storage: { total: 256000, used: 80000, free: 176000 }
   }
 ];
-
-/**
- * GET /api/devices
- * List all devices with optional filtering
- */
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const type = searchParams.get('type');
     const status = searchParams.get('status');
     const platform = searchParams.get('platform');
-
     let filteredDevices = devices;
-
     if (type) {
       filteredDevices = filteredDevices.filter(d => d.type === type);
     }
-
     if (status) {
       filteredDevices = filteredDevices.filter(d => d.status === status);
     }
-
     if (platform) {
       filteredDevices = filteredDevices.filter(d => d.platform === platform);
     }
-
     // Calculate stats
     const stats = {
       total: devices.length,
@@ -140,7 +120,6 @@ export async function GET(request: NextRequest) {
       types: [...new Set(devices.map(d => d.type))],
       platforms: [...new Set(devices.map(d => d.platform))]
     };
-
     return NextResponse.json({
       success: true,
       data: {
@@ -149,7 +128,6 @@ export async function GET(request: NextRequest) {
         lastUpdated: new Date().toISOString()
       }
     });
-
   } catch (error) {
     console.error('Device API error:', error);
     return NextResponse.json(
@@ -158,23 +136,16 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-
-/**
- * POST /api/devices
- * Control device operations (sync, restart, update, etc.)
- */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { deviceId, action, parameters } = body;
-
     if (!deviceId || !action) {
       return NextResponse.json(
         { success: false, error: 'Device ID and action are required' },
         { status: 400 }
       );
     }
-
     // Find device
     const device = devices.find(d => d.id === deviceId);
     if (!device) {
@@ -183,8 +154,6 @@ export async function POST(request: NextRequest) {
         { status: 404 }
       );
     }
-
-    
     const response = {
       deviceId,
       action,
@@ -193,15 +162,12 @@ export async function POST(request: NextRequest) {
       parameters: parameters || {},
       result: `Action '${action}' executed successfully on ${device.name}`
     };
-
     // Log the action
     logger.info(`Device control: ${deviceId} - ${action}`, parameters);
-
     return NextResponse.json({
       success: true,
       data: response
     });
-
   } catch (error) {
     console.error('Device control error:', error);
     return NextResponse.json(

@@ -1,30 +1,19 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.776837 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.125766 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/logger";
 import { specificExports } from "@/lib/notification_service";
-
 const logger = getLogger("/api/notifications/test");
 const notificationService = new NotificationService();
-
 const VALID_TYPES = new Set(["email", "slack", "discord", "whatsapp", "console"]);
-
-export async /**
- * POST function
- */
-function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
     const body: any = await req.json();
     const { type, recipient } = body;
-
     logger.info("Received notification test request", { type, recipient });
-
     if (!type || typeof type !== "string" || !VALID_TYPES.has(type)) {
       logger.warn("Invalid notification type", { type });
       return NextResponse.json(
@@ -35,7 +24,6 @@ function POST(req: NextRequest): any {
         { status: 400 },
       );
     }
-
     if (!recipient || typeof recipient !== "string") {
       logger.warn("Invalid recipient", { recipient });
       return NextResponse.json(
@@ -46,18 +34,15 @@ function POST(req: NextRequest): any {
         { status: 400 },
       );
     }
-
     const channels = ["console"];
     if (type !== "console") {
       channels.push(type);
     }
-
     const notification = await notificationService.sendNotification(
       `Test ${type} notification`,
       `Sending to ${recipient}`,
       channels,
     );
-
     return NextResponse.json({
       success: true,
       message: `Test notification processed for ${type} to ${recipient}`,

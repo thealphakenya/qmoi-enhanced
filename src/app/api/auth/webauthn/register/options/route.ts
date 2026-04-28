@@ -9,10 +9,10 @@ import { specificExports } from 'crypto';
  * Initiates biometric registration process by providing options to client
  * Client then uses this to create a credential with the prodice's biometric sensor
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email } = body;

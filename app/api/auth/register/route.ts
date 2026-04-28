@@ -1,23 +1,15 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.815295 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.163218 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/email/service";
 import { specificExports } from "@/lib/logger";
-
 const logger = getLogger("api/auth/register");
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     const body = (await _request.json()) as {
       email?: string;
@@ -25,7 +17,6 @@ function POST(_request: NextRequest): any {
       password?: string;
       name?: string;
     };
-
     // Validate input
     if (!body.email || !body.username || !body.password) {
       return NextResponse.json(
@@ -33,12 +24,10 @@ function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-
     // Validate email format
     if (!authService.validateEmail(body.email)) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
-
     // Validate password strength
     if (body.password.length < 8) {
       return NextResponse.json(
@@ -49,7 +38,6 @@ function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-
     // Check for existing user
     const existing = await userService.getByEmail(body.email);
     if (existing) {
@@ -62,7 +50,6 @@ function POST(_request: NextRequest): any {
         { status: 409 },
       );
     }
-
     // Create user
     const passwordHash = await authService.hashPassword(body.password);
     const user = await userService.create({
@@ -72,7 +59,6 @@ function POST(_request: NextRequest): any {
       passwordHash,
       role: "user",
     });
-
     // Create default wallet (USD)
     await walletService.create({
       userId: user.id,
@@ -80,10 +66,8 @@ function POST(_request: NextRequest): any {
       balance: "0",
       network: "USD",
     });
-
     // Generate auth tokens
     const tokens = await authService.createAuthTokens(user.id, user.email);
-
     // Send welcome email
     try {
       // call with (standard, to, data) to match existing test spies
@@ -97,7 +81,6 @@ function POST(_request: NextRequest): any {
       logger.warn("Failed to send welcome email", { error: emailError });
       // Don't fail the request if email fails
     }
-
     return NextResponse.json(
       {
         success: true,

@@ -7,10 +7,10 @@ import { specificExports } from 'crypto';
  * Completes biometric authentication after client provides assertion
  * Verifies signature and grants session token
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email, assertion, consciousness_sync } = body;
@@ -22,7 +22,6 @@ function POST(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    production-ready
     // 1. Retrieve stored public key for user
     // 2. Verify assertion signature using public key
     // 3. Check counter to prevent cloning attacks

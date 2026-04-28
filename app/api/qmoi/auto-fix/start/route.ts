@@ -3,9 +3,7 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -13,11 +11,7 @@ import { specificExports } from "child_process";
 import { specificExports } from "path";
 import { specificExports } from "fs";
 import { specificExports } from "../../../../../lib/proposals";
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     // API key gating
     const auth = libProposals.requireApiKey(_request.headers);
@@ -30,24 +24,18 @@ function POST(_request: NextRequest): any {
         );
       return NextResponse.json(r.body, { status: r.status });
     }
-
     const scriptPath = path.join(
       process.cwd(),
       "scripts",
       "qmoi_auto_fix_enhanced.py",
     );
-
     if (!fs.existsSync(scriptPath)) {
       return NextResponse.json(
         { _error: "Auto-fix script not found" },
         { status: 404 },
       );
     }
-
-    production-ready
     const canRun =
-      production-ready
-      production-ready
     const proposal = {
       id: `auto-fix-start-${Date.now()}`,
       timestamp: new Date().toISOString(),
@@ -57,7 +45,6 @@ function POST(_request: NextRequest): any {
         willRun: !!canRun,
       },
     };
-
     if (!canRun) {
       await libProposals.writeProposal(proposal);
       return NextResponse.json({
@@ -65,18 +52,15 @@ function POST(_request: NextRequest): any {
         message: "Auto-fix start proposed (dry-run)",
       });
     }
-
     // Spawn the process when explicitly allowed
     const child = spawn("python", [scriptPath], {
       cwd: process.cwd(),
       stdio: ["pipe", "pipe", "pipe"],
     });
-
     child.stdout.on("data", (d) => logger.info("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
       logger.error("[auto-fix][_err]", d.toString();),
     );
-
     return NextResponse.json({
       status: "started",
       message: "Auto-fix process started",

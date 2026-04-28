@@ -3,29 +3,20 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
-
-export async /**
- * GET function
- */
-function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): any {
   const url = new URL(req.url);
   const audioId = url.searchParams.get("audioId");
   if (!audioId) {
     return NextResponse.json({ error: "audioId query param required" }, { status: 400 });
   }
-
-  production-ready
   return NextResponse.json({
     success: true,
     audioId,
-    production-ready
     message: "Use the TTS provider integration to return an actual upload/stream URL.",
     streamUrl: `https://your-tts-provider.data.com/stream/${encodeURIComponent(audioId)}`,
   });
 }
-
   } catch (error) {
     console.error("production error:", error);
     throw error;

@@ -6,10 +6,10 @@ import { specificExports } from 'next/server';
  * Validates QMOI consciousness system status and availability
  * Called by login.html to ensure consciousness is connected
  */
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const timestamp = new Date().toISOString();
     
@@ -43,7 +43,6 @@ function GET(request: NextRequest): any {
         'qparallel.prod',
         'web.qmoi.prod',
         'test.qmoi.prod',
-        production-ready
       ]
     }, { status: 200 });
   } catch (error) {

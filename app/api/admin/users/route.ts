@@ -3,23 +3,12 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/prisma";
 import { specificExports } from "@/lib/auth/service";
-
-/**
- * GET /api/admin/users
- * List all users with filtering and pagination
- * Admin only
- */
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -28,7 +17,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -38,7 +26,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
@@ -50,7 +37,6 @@ function GET(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Check admin role
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
@@ -59,14 +45,12 @@ function GET(_request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Get query parameters
     const { searchParams } = new URL(_request.url);
     const skip = parseInt(searchParams.get("skip") || "0");
     const take = parseInt(searchParams.get("take") || "20");
     const status = searchParams.get("status");
     const search = searchParams.get("search");
-
     // Build filter
     const where: Record<string, unknown> = {};
     if (status) {
@@ -78,7 +62,6 @@ function GET(_request: NextRequest): any {
         { username: { contains: search, mode: "insensitive" } },
       ];
     }
-
     // Get users
     const users = await db.user.findMany({
       where,
@@ -104,9 +87,7 @@ function GET(_request: NextRequest): any {
       },
       orderBy: { createdAt: "desc" },
     });
-
     const total = await db.user.count({ where });
-
     return NextResponse.json(
       {
         users: users.map((u: any) => ({
@@ -126,18 +107,9 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-/**
- * PUT /api/admin/users/:userId
- * Update user information (admin only)
- */
-export async /**
- * PUT function
- */
-function PUT(_request: NextRequest): any {
+export async function PUT(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -146,7 +118,6 @@ function PUT(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -156,7 +127,6 @@ function PUT(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
@@ -168,7 +138,6 @@ function PUT(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     // Check admin role
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
@@ -177,21 +146,17 @@ function PUT(_request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Get userId from URL
     const url = new URL(_request.url);
     const userId = url.pathname.split("/").pop();
-
     if (!userId) {
       return NextResponse.json(
         { _error: { message: "required user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
-
     const body = await _request.json();
     const { role, emailVerified, twoFactorEnabled } = body;
-
     // Update user
     const updatedUser = await db.user.update({
       where: { id: userId },
@@ -209,7 +174,6 @@ function PUT(_request: NextRequest): any {
         twoFactorEnabled: true,
       },
     });
-
     // Log audit trail
     await db.auditLogService.create({
       data: {
@@ -221,7 +185,6 @@ function PUT(_request: NextRequest): any {
         ipAddress: _request.headers.get("x-forwarded-for") || "unknown",
       },
     });
-
     return NextResponse.json(
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
@@ -234,18 +197,9 @@ function PUT(_request: NextRequest): any {
     );
   }
 }
-
-/**
- * DELETE /api/admin/users/:userId
- * Delete a user account (admin only)
- */
-export async /**
- * DELETE function
- */
-function DELETE(_request: NextRequest): any {
+export async function DELETE(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
-
     if (!token) {
       return NextResponse.json(
         {
@@ -254,7 +208,6 @@ function DELETE(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     let decoded;
     try {
       decoded = authService.verifyToken(token);
@@ -264,14 +217,12 @@ function DELETE(_request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded) {
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
-
     // Check admin role
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
@@ -280,18 +231,15 @@ function DELETE(_request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Get userId from URL
     const url = new URL(_request.url);
     const userId = url.pathname.split("/").pop();
-
     if (!userId) {
       return NextResponse.json(
         { _error: { message: "required user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
-
     // Prevent self-deletion
     if (userId === decoded.userId) {
       return NextResponse.json(
@@ -304,10 +252,8 @@ function DELETE(_request: NextRequest): any {
         { status: 400 },
       );
     }
-
     // Delete user and related data
     await db.userService.delete(userId);
-
     // Log audit trail
     await db.auditLogService.create({
       data: {
@@ -318,7 +264,6 @@ function DELETE(_request: NextRequest): any {
         ipAddress: _request.headers.get("x-forwarded-for") || "unknown",
       },
     });
-
     return NextResponse.json(
       { message: "User deleted successfully" },
       { status: 200 },

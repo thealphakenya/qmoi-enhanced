@@ -1,3 +1,4 @@
+"use client";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
@@ -22,7 +23,6 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"use client";
 
 import { specificExports } from "react";
 
@@ -65,7 +65,7 @@ export default /**
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function QMOIAutoFixDashboard(): any {
-  try {() {
+  try {
   const [autoFixStatus, setAutoFixStatus] = useState<AutoFixStatus>({
     scanning: false,
     fixing: false,

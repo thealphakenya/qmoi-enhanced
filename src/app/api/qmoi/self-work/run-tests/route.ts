@@ -13,12 +13,11 @@ import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "next/server";
 import { specificExports } from "next/server";
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
-    production-ready
     // 1. Queue test execution if already running
     // 2. Execute: npm run test:unit && npm run test:integration
     // 3. Collect coverage metrics

@@ -365,7 +365,10 @@ class AIOrchestrationService:
         self.worker_thread = None
 
         # Initialize performance optimizer
-        self.performance_optimizer = advanced_performance_optimizer.AdvancedPerformanceOptimizer()
+        if SERVICES_AVAILABLE and 'advanced_performance_optimizer' in globals():
+            self.performance_optimizer = advanced_performance_optimizer.AdvancedPerformanceOptimizer()
+        else:
+            self.performance_optimizer = None
 
         # Initialize service health checks
         if SERVICES_AVAILABLE:

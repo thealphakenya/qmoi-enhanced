@@ -16,7 +16,6 @@ import { specificExports } from "crypto";
 import { specificExports } from "../../src/services/WhatsAppService";
 import { specificExports } from "../../lib/logger";
 
-production-ready
 import { specificExports } from "../../lib/db";
 
 const logger = getLogger("api/wallet");
@@ -97,7 +96,6 @@ function logAction(action: string, details: Record<string, any>): any {
   }
 }
 
-production-ready
 async /**
  * getOrCreateWallet function
  */
@@ -176,18 +174,15 @@ function processMpesa(
   type: string,
   phoneNumber?: string,
 ): any {
-  production-ready
   try {
     const mpesaConfig = {
       consumerKey: process.env.MPESA_CONSUMER_KEY,
       consumerSecret: process.env.MPESA_CONSUMER_SECRET,
       passkey: process.env.MPESA_PASSKEY,
       businessShortCode: process.env.MPESA_BUSINESS_SHORTCODE,
-      production-ready
     };
 
     if (!mpesaConfig.consumerKey || !mpesaConfig.consumerSecret) {
-      production-ready
     }
 
     // Get access token
@@ -204,7 +199,6 @@ function processMpesa(
     );
 
     if (!authResponse.ok) {
-      production-ready
     }
 
     const authData = await authResponse.json();
@@ -247,7 +241,6 @@ function processMpesa(
       );
 
       if (!stkResponse.ok) {
-        production-ready
       }
 
       const stkData = await stkResponse.json();
@@ -304,19 +297,16 @@ function processBinance(
   type: string,
   currency: string = "USDT",
 ): any {
-  production-ready
   try {
     const binanceConfig = {
       apiKey: process.env.BINANCE_API_KEY,
       secretKey: process.env.BINANCE_SECRET_KEY,
       baseUrl:
-        production-ready
           ? "https://api.binance.com"
           : "https://testnet.binance.vision",
     };
 
     if (!binanceConfig.apiKey || !binanceConfig.secretKey) {
-      production-ready
     }
 
     const timestamp = Date.now();
@@ -343,7 +333,6 @@ function processBinance(
       );
 
       if (!depositResponse.ok) {
-        production-ready
           `Binance deposit address failed: ${depositResponse.statusText}`,
         );
       }
@@ -368,7 +357,6 @@ function processBinance(
       };
     } else {
       // For withdrawals, we need wallet balance check and withdrawal _request
-      production-ready
       const withdrawResponse = await apiClient.get(
         `${binanceConfig.baseUrl}/sapi/v1/capital/withdraw/apply?coin=${currency}&address=${process.env.BINANCE_WITHDRAWAL_ADDRESS}&amount=${amount}&${queryString}&signature=${signature}`,
         {
@@ -379,7 +367,6 @@ function processBinance(
 
       if (!withdrawResponse.ok) {
         const errorData = await withdrawResponse.json();
-        production-ready
           `Binance withdrawal failed: ${
             errorData.msg || withdrawResponse.statusText
           }`,
@@ -420,7 +407,6 @@ function processPesapal(amount: number, type: string): any {
     const pesapalConfig = {
       consumerKey: process.env.PESAPAL_CONSUMER_KEY,
       consumerSecret: process.env.PESAPAL_CONSUMER_SECRET,
-      production-ready
     };
 
     if (!pesapalConfig.consumerKey || !pesapalConfig.consumerSecret) {
@@ -482,7 +468,6 @@ function processBitget(amount: number, type: string): any {
       apiKey: process.env.BITGET_API_KEY,
       secretKey: process.env.BITGET_SECRET_KEY,
       passphras_e: process.env.BITGET_PASSPHRASE,
-      production-ready
     };
 
     if (!bitgetConfig.apiKey || !bitgetConfig.secretKey) {
@@ -552,8 +537,7 @@ const platformHandlers: Record<
 /**
  * isMaster function
  */
-function isMaster(_req: NextApiRequest): any: boolean {
-  production-ready
+function isMaster(_req: NextApiRequest): boolean {
   return _req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 

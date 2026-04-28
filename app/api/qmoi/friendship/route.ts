@@ -1,29 +1,20 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.696519 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.857995 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/friendship-service";
-
-export async /**
- * GET function
- */
-function GET(req: Request): any {
+export async function GET(req: Request): any {
   try {
     const { searchParams } = new URL(req.url);
     const action = searchParams.get("action");
     const userId = searchParams.get("userId");
     const friendId = searchParams.get("friendId");
-
     if (!userId) {
       return NextResponse.json({ error: "userId required" }, { status: 400 });
     }
-
     if (action === "get") {
       const result = await QMOIFriendshipService.getFriendships(userId);
       return NextResponse.json({
@@ -33,7 +24,6 @@ function GET(req: Request): any {
         userProfile: result.userProfile,
       });
     }
-
     if (action === "list") {
       const result = await QMOIFriendshipService.getFriendships(userId);
       return NextResponse.json({
@@ -42,7 +32,6 @@ function GET(req: Request): any {
         count: result.friendships.length,
       });
     }
-
     if (action === "pending") {
       const result = await QMOIFriendshipService.getFriendships(userId);
       return NextResponse.json({
@@ -51,7 +40,6 @@ function GET(req: Request): any {
         count: result.pendingRequests.length,
       });
     }
-
     if (action === "stats") {
       const result = await QMOIFriendshipService.getFriendships(userId);
       const stats = {
@@ -62,13 +50,11 @@ function GET(req: Request): any {
       };
       return NextResponse.json({ success: true, stats });
     }
-
     if (action === "activity") {
       const voiceHistory =
         (await QMOIFriendshipService.getVoiceHistory?.(userId, 20)) || [];
       return NextResponse.json({ success: true, activity: voiceHistory });
     }
-
     if (action === "get-friend" && friendId) {
       const result = await QMOIFriendshipService.getFriendships(userId);
       const friend = result.friendships.find(
@@ -83,7 +69,6 @@ function GET(req: Request): any {
       }
       return NextResponse.json({ success: true, friend });
     }
-
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
     logger.error("Friendship API GET error:", error);
@@ -93,11 +78,7 @@ function GET(req: Request): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(req: Request): any {
+export async function POST(req: Request): any {
   try {
     const body = await req.json();
     const {
@@ -109,11 +90,9 @@ function POST(req: Request): any {
       updates,
       friendshipId,
     } = body;
-
     if (!userId) {
       return NextResponse.json({ error: "userId required" }, { status: 400 });
     }
-
     if (action === "create" && friendId) {
       const result = await QMOIFriendshipService.createFriendship({
         userId,
@@ -122,7 +101,6 @@ function POST(req: Request): any {
       });
       return NextResponse.json(result);
     }
-
     if (action === "accept" && friendshipId) {
       const result = await QMOIFriendshipService.acceptFriendship(
         friendshipId,
@@ -130,7 +108,6 @@ function POST(req: Request): any {
       );
       return NextResponse.json(result);
     }
-
     if (action === "update" && friendshipId && updates) {
       const result = await QMOIFriendshipService.updateFriendship(
         friendshipId,
@@ -138,24 +115,20 @@ function POST(req: Request): any {
       );
       return NextResponse.json(result);
     }
-
     if (action === "delete" && friendshipId) {
       const result = await QMOIFriendshipService.deleteFriendship(friendshipId);
       return NextResponse.json(result);
     }
-
     if (action === "identify-user" && friendProfile) {
       const userProfile =
         await QMOIFriendshipService.identifyUser(friendProfile);
       return NextResponse.json({ success: true, userProfile });
     }
-
     if (action === "get-recommendations") {
       const recommendations =
         await QMOIFriendshipService.getSocialRecommendations(userId);
       return NextResponse.json({ success: true, recommendations });
     }
-
     return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   } catch (error) {
     logger.error("Friendship API POST error:", error);

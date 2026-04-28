@@ -1,31 +1,21 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.739161 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.998553 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from 'next/server';
 import { specificExports } from '@/lib/qmoi/link_manager';
-
-export async /**
- * GET function
- */
-function GET(request: Request): any {
+export async function GET(request: Request): any {
   try {
     const url = new URL(request.url);
     const action = url.searchParams.get('action');
-
     if (action === 'status') {
       // Get current domain status for dashboard
       let validations = getDomainStats();
-
       // If no validations exist, validate all domains
       if (validations.length === 0) {
         validations = await validateAllDomains();
       }
-
       // Transform to dashboard format
       const domainData = {
         totalDomains: validations.length,
@@ -41,16 +31,13 @@ function GET(request: Request): any {
           error: v.error,
         })),
       };
-
       return NextResponse.json(domainData);
     }
-
     // Default GET behavior
     let validations = getDomainStats();
     if (validations.length === 0) {
       validations = await validateAllDomains();
     }
-
     return NextResponse.json({ validations });
   } catch (error) {
     logger.error('Error fetching domain stats:', error);
@@ -60,19 +47,13 @@ function GET(request: Request): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: Request): any {
+export async function POST(request: Request): any {
   try {
     const url = new URL(request.url);
     const action = url.searchParams.get('action');
-
     if (action === 'force-refresh') {
       // Force re-validation of all domains
       const validations = await validateAllDomains();
-
       // Log to QMOI_TRACKS
       const trackEntry = {
         id: `domain_refresh_${Date.now()}`,
@@ -84,21 +65,17 @@ function POST(request: Request): any {
         status: 'completed',
         metadata: { validationsCount: validations.length },
       };
-
       fully implemented
       // await saveTrack(trackEntry);
-
       return NextResponse.json({
         success: true,
         validations,
         message: 'Domain validation refresh completed'
       });
     }
-
     if (action === 'emergency-takeover') {
       // Activate emergency takeover mode
       // This would implement the emergency domain switching logic
-
       // Log to QMOI_TRACKS
       const trackEntry = {
         id: `emergency_takeover_${Date.now()}`,
@@ -110,16 +87,13 @@ function POST(request: Request): any {
         status: 'completed',
         metadata: { takeoverMode: 'active' },
       };
-
       // Save to tracks
       // await saveTrack(trackEntry);
-
       return NextResponse.json({
         success: true,
         message: 'Emergency takeover activated'
       });
     }
-
     // Default POST behavior
     const validations = await validateAllDomains();
     return NextResponse.json({ validations });

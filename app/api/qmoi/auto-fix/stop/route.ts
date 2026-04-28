@@ -3,22 +3,15 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 import { specificExports } from "child_process";
 import { specificExports } from "util";
 import { specificExports } from "../../../../../lib/proposals";
-
 const execAsync = promisify(exec);
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     // API key gating
     const auth = libProposals.requireApiKey(_request.headers);
@@ -28,11 +21,8 @@ function POST(_request: NextRequest): any {
         return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
-
     // Proposal-first: only actually kill processes when explicitly allowed
     const canRun =
-      production-ready
-      production-ready
     const proposal = {
       id: `auto-fix-stop-${Date.now()}`,
       timestamp: new Date().toISOString(),
@@ -46,17 +36,13 @@ function POST(_request: NextRequest): any {
         message: "Stop auto-fix proposed (dry-run)",
       });
     }
-
     // Find and kill Python processes running the auto-fix script
     const command =
       process.platform === "win32"
         ? 'tasklist /FI "IMAGENAME eq python.exe" /FO CSV'
         : "ps aux | grep python";
-
     const { stdout } = await execAsync(command);
-
     let killedProcesses = 0;
-
     if (process.platform === "win32") {
       // Windows: Parse tasklist output and kill processes
       const lines = stdout.split("\n").slice(1); // Skip header
@@ -92,7 +78,6 @@ function POST(_request: NextRequest): any {
         }
       }
     }
-
     return NextResponse.json({
       status: "stopped",
       message: `Stopped ${killedProcesses} auto-fix processes`,

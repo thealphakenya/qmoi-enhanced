@@ -20,10 +20,10 @@ function jsonResponse(body: unknown, status = 200): any {
   });
 }
 
-export async /**
+/**
  * GET function
  */
-function GET(
+export async function GET(
   request: Request,
   { params }: { params: { provider: string } },
 ): any {
@@ -39,10 +39,10 @@ function GET(
   return Response.redirect(redirectUrl);
 }
 
-export async /**
+/**
  * POST function
  */
-function POST(
+export async function POST(
   request: Request,
   { params }: { params: { provider: string } },
 ): any {

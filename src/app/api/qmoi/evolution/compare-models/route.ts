@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Evolution - Compare Models Endpoint
  * Compares performance metrics between models
- production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -17,10 +16,10 @@ import { specificExports } from '@/lib/qmoi-state';
 
 export const runtime = 'nodejs';
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -102,10 +101,10 @@ function POST(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -157,7 +156,7 @@ function GET(request: NextRequest): any {
 /**
  * generateRecommendations function
  */
-function generateRecommendations(models: any[]): any: string[] {
+function generateRecommendations(models: any[]): string[] {
   const recommendations: string[] = [];
   
   const qmoiModels = models.filter(m => m.isQMOI);

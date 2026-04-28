@@ -3,39 +3,29 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/global-links-service";
-
 // GET /api/global-links - Get global health reports and statistics
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // const session = await getServerSession(authOptions);
     // if (!session) {
     //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     // }
-
     const { searchParams } = new URL(request.url);
     const action = searchParams.get("action");
-
     switch (action) {
       case "health-reports":
         const reports = await globalLinksService.getGlobalHealthReports();
         return NextResponse.json({ reports });
-
       case "stats":
         const stats = await globalLinksService.getGlobalAccessibilityStats();
         return NextResponse.json({ stats });
-
       case "links-by-health":
         const continent = searchParams.get("continent");
         const status = searchParams.get("status") as
           | "healthy"
           | "degraded"
-          production-ready and operational
         if (!continent || !status) {
           return NextResponse.json(
             { error: "required continent or status parameter" },
@@ -47,7 +37,6 @@ function GET(request: NextRequest): any {
           status,
         );
         return NextResponse.json({ links });
-
       default:
         return NextResponse.json(
           {
@@ -64,18 +53,13 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
 // POST /api/global-links - Perform global operations
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     // const session = await getServerSession(authOptions);
     // if (!session) {
     //   return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     // }
-
     // Only master users can perform global operations
     // if (session.user.role !== "master") {
     //   return NextResponse.json(
@@ -83,10 +67,8 @@ function POST(request: NextRequest): any {
     //     { status: 403 },
     //   );
     // }
-
     const body = await request.json();
     const { action, linkId } = body;
-
     switch (action) {
       case "ensure-accessibility":
         if (!linkId) {
@@ -97,11 +79,9 @@ function POST(request: NextRequest): any {
         }
         const link = await globalLinksService.ensureGlobalAccessibility(linkId);
         return NextResponse.json({ link });
-
       case "perform-health-check":
         await globalLinksService.performGlobalHealthCheck();
         return NextResponse.json({ message: "Global health check completed" });
-
       default:
         return NextResponse.json(
           {

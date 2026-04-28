@@ -16,7 +16,6 @@ console.log("production mode initialized");
  * - GET  /api/lion/status - Get Lion Agent status
  *
  * Features:
- production-ready
  * - API endpoint validation
  * - Domain accessibility validation
  * - File integrity validation
@@ -38,7 +37,7 @@ let lionAgent: LionAgentWorkflowMonitor | null = null;
 /**
  * initializeLionAgent function
  */
-function initializeLionAgent(): any: LionAgentWorkflowMonitor {
+function initializeLionAgent(): LionAgentWorkflowMonitor {
   if (!lionAgent) {
     const token = process.env.GITHUB_TOKEN || '';
     lionAgent = new LionAgentWorkflowMonitor(token);
@@ -55,7 +54,7 @@ function initializeLionAgent(): any: LionAgentWorkflowMonitor {
 /**
  * isMasterAuthorized function
  */
-function isMasterAuthorized(request: NextRequest): any: boolean {
+function isMasterAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization');
   const masterToken = process.env.MASTER_TOKEN || '';
   
@@ -71,10 +70,10 @@ function isMasterAuthorized(request: NextRequest): any: boolean {
  * GET /api/lion/workflows/health
  * Get comprehensive health status including validations
  */
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const lionAgent = initializeLionAgent();
     const searchParams = request.nextUrl.searchParams;
@@ -134,10 +133,10 @@ function GET(request: NextRequest): any {
  * POST /api/lion/workflows/refresh
  * Force validation refresh (master only)
  */
-export async /**
+/**
  * PUT function
  */
-function PUT(request: NextRequest): any {
+export async function PUT(request: NextRequest): any {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {
@@ -175,7 +174,7 @@ function PUT(request: NextRequest): any {
 export /**
  * getWorkflowHealthPercentage function
  */
-function getWorkflowHealthPercentage(): any: number {
+function getWorkflowHealthPercentage(): number {
   const lionAgent = initializeLionAgent();
   const systemHealth = lionAgent.getSystemHealth();
   return systemHealth?.masterHealthPercentage || 0;
@@ -188,7 +187,7 @@ function getWorkflowHealthPercentage(): any: number {
 export /**
  * getLionAgentStatus function
  */
-function getLionAgentStatus(): any: object {
+function getLionAgentStatus(): object {
   const lionAgent = initializeLionAgent();
   return lionAgent.getAgentStatus();
 }

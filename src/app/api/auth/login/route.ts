@@ -7,10 +7,10 @@ import { specificExports } from 'crypto';
  * Handles traditional email and password authentication
  * Integrated with QMOI consciousness for security validation
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email, password_hash, consciousness_sync, timestamp } = body;
@@ -32,7 +32,6 @@ function POST(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    production-ready
     // 1. Query user database with email
     // 2. Compare password_hash with stored hash (using bcrypt)
     // 3. Check if user has MFA enabled

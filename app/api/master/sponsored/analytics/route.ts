@@ -1,38 +1,24 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.747362 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.005856 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/db/prisma";
-
-/**
- * GET /api/master/sponsored/analytics
- * Get sponsored users analytics (Master only)
- */
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // Verify master authentication
     const authHeader = request.headers.get("authorization");
     const biometricToken = request.headers.get("x-biometric-verification");
-
     if (!authHeader?.startsWith("Bearer ")) {
       return NextResponse.json(
         { error: "required authorization token", code: "NO_TOKEN" },
         { status: 401 },
       );
     }
-
     const token = authHeader.replace("Bearer ", "");
     let decoded;
-
     try {
       decoded = authService.verifyToken(token);
     } catch (error) {
@@ -41,14 +27,12 @@ function GET(request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded) {
       return NextResponse.json(
         { error: "Invalid token", code: "INVALID_TOKEN" },
         { status: 401 },
       );
     }
-
     // Verify master role
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "master") {
@@ -57,22 +41,18 @@ function GET(request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Get sponsored users count
     const sponsoredUsers = await db.userService.findMany({
       where: {
         OR: [{ isSponsored: true }, { role: "sponsored" }],
       },
     });
-
     const totalUsers = sponsoredUsers.length;
-
     // Calculate active users (users active in last 24 hours)
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const activeUsers = sponsoredUsers.filter(
       (user: any) => user.lastActive && user.lastActive > oneDayAgo,
     ).length;
-
     const analytics = {
       totalUsers,
       activeUsers,
@@ -110,7 +90,6 @@ function GET(request: NextRequest): any {
         throughput: 1500, // requests per minute
       },
     };
-
     return NextResponse.json({
       success: true,
       analytics,

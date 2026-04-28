@@ -1,33 +1,22 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.732723 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.992802 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "child_process";
 import { specificExports } from "util";
-
 const execAsync = promisify(exec);
-
-export async /**
- * POST function
- */
-function POST(_req: NextRequest): any {
+export async function POST(_req: NextRequest): any {
   try {
     const { enabled = true } = (await _req.json()) as any;
-
     if (enabled) {
       // Enable auto-redeploy by setting up webhooks or CI/CD
       // For Vercel, this is typically handled through GitHub integration
       const { stdout: hookOutput } = await execAsync(
         "vercel env pull .env.local",
       );
-
       return NextResponse.json({
         success: true,
         autoRedeploy: true,

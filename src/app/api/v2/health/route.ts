@@ -2,10 +2,10 @@ console.log("production mode initialized");
 import { specificExports } from 'next/server';
 import { specificExports } from '@/lib/telemetry/observability';
 
-export async /**
+/**
  * GET function
  */
-function GET(): any {
+export async function GET(): any {
   const overview = getObservabilityOverview();
   return NextResponse.json({
     status: 'ok',

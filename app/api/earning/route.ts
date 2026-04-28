@@ -3,12 +3,8 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
-
-production-ready
 const strategies = [
   { id: 1, name: "Trading Bot", status: "active" },
   { id: 2, name: "Yield Farming", status: "inactive" },
@@ -21,41 +17,24 @@ const analytics = {
   activeStrategies: 2,
   errors: 0,
 };
-
-export async /**
- * GET_STRATEGIES function
- */
-function GET_STRATEGIES(_req: NextRequest): any {
+export async function GET_STRATEGIES(_req: NextRequest): any {
   // List earning strategies
   return NextResponse.json({ strategies });
 }
-
-export async /**
- * POST_MONITOR function
- */
-function POST_MONITOR(_req: NextRequest): any {
+export async function POST_MONITOR(_req: NextRequest): any {
   // Start/stop monitoring
   const body = (await _req.json()) as any;
   monitoring = !!body.monitor;
   return NextResponse.json({ monitoring });
 }
-
-export async /**
- * GET_ANALYTICS function
- */
-function GET_ANALYTICS(_req: NextRequest): any {
+export async function GET_ANALYTICS(_req: NextRequest): any {
   // Get earning analytics
   return NextResponse.json({ analytics });
 }
-
-export async /**
- * POST_SELF_HEAL function
- */
-function POST_SELF_HEAL(_req: NextRequest): any {
+export async function POST_SELF_HEAL(_req: NextRequest): any {
   // Trigger self-healing 
   const fixedErrors = Math.max(0, analytics.errors);
   analytics.errors = 0;
-
   const result = {
     success: true,
     action: "self_heal",
@@ -64,20 +43,13 @@ function POST_SELF_HEAL(_req: NextRequest): any {
     validated: true,
     errorsFixed: fixedErrors,
     fully implemented
-      production-ready
   };
-
   return NextResponse.json(result);
 }
-
 // Unified GET/POST handlers for routing
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   const url = new URL(request.url);
   const action = url.searchParams.get("action");
-
   try {
     if (action === "strategies") {
       return GET_STRATEGIES(request);
@@ -99,11 +71,7 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   let body: any = {};
   try {
     body = await request.json();
@@ -113,9 +81,7 @@ function POST(request: NextRequest): any {
       { status: 400 },
     );
   }
-
   const action = body.action;
-
   try {
     if (action === "monitor") {
       return POST_MONITOR(request);

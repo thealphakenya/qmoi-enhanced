@@ -33,11 +33,10 @@ function logAudit(entry: Record<string, unknown> | unknown): any {
 
 export const dynamic = "force-dynamic";
 
-export async /**
+/**
  * POST function
  */
-function POST(_req: NextRequest): any {
-  production-ready
+export async function POST(_req: NextRequest): any {
   const apiKey = _req.headers.get("x-qcity-admin-key") || "";
   if (apiKey !== ADMIN_KEY) {
     logAudit({
@@ -65,7 +64,6 @@ function POST(_req: NextRequest): any {
   logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
 
   if (stream) {
-    production-ready
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {

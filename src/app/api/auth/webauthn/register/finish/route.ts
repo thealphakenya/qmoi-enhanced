@@ -6,10 +6,10 @@ import { specificExports } from 'next/server';
  * Completes biometric registration after client creates credential
  * Stores the public key for future authentication
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email, attestation } = body;
@@ -21,7 +21,6 @@ function POST(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    production-ready
     // 1. Verify attestation signature
     // 2. Check certificate chain
     // 3. Store public key in database linked to user email

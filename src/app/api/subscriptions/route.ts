@@ -22,15 +22,15 @@ function jsonResponse(body: unknown, status = 200): any {
 /**
  * getQueryParam function
  */
-function getQueryParam(request: Request, key: string): any: string | null {
+function getQueryParam(request: Request, key: string): string | null {
   const url = new URL(request.url);
   return url.searchParams.get(key);
 }
 
-export async /**
+/**
  * GET function
  */
-function GET(request: Request): any {
+export async function GET(request: Request): any {
   const userId = getQueryParam(request, 'userId') || 'guest';
   const subscription = getSubscription(userId);
 
@@ -43,10 +43,10 @@ function GET(request: Request): any {
   });
 }
 
-export async /**
+/**
  * POST function
  */
-function POST(request: Request): any {
+export async function POST(request: Request): any {
   const body = await request.json();
   const userId = (body as any).userId || 'guest';
   const tier = (body as any).tier as SubscriptionTier;
@@ -63,10 +63,10 @@ function POST(request: Request): any {
   });
 }
 
-export async /**
+/**
  * DELETE function
  */
-function DELETE(request: Request): any {
+export async function DELETE(request: Request): any {
   const userId = getQueryParam(request, 'userId') || 'guest';
   const result = await cancelSubscription(userId);
 

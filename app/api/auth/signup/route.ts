@@ -1,19 +1,12 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.814671 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.162564 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth-service";
 import { specificExports } from "@/lib/qmoi-service";
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const {
@@ -26,7 +19,6 @@ function POST(request: NextRequest): any {
       acceptTerms,
       biometricEnrollment,
     } = body;
-
     // Validate required fields
     if (!email || !username || !password || !fullName) {
       return NextResponse.json(
@@ -34,7 +26,6 @@ function POST(request: NextRequest): any {
         { status: 400 },
       );
     }
-
     const signupData: SignupData = {
       email,
       username,
@@ -45,10 +36,8 @@ function POST(request: NextRequest): any {
       acceptTerms,
       biometricEnrollment,
     };
-
     // Perform signup
     const signupResult = await AuthService.signup(signupData);
-
     if (!signupResult.success) {
       return NextResponse.json(
         {
@@ -58,7 +47,6 @@ function POST(request: NextRequest): any {
         { status: 400 },
       );
     }
-
     // Log to QMOI memory
     if (signupResult.userId && signupResult.sessionId) {
       await QMOIService.logAuthEvent({
@@ -73,7 +61,6 @@ function POST(request: NextRequest): any {
         },
       });
     }
-
     // Return session and user info
     return NextResponse.json(
       {
@@ -97,11 +84,7 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   return NextResponse.json(
     {
       endpoint: "/api/auth/signup",

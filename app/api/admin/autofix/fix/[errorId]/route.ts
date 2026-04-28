@@ -1,46 +1,31 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.721628 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.980883 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
-
 // Verify admin access
-async /**
- * verifyAdminAccess function
- */
+async */
 function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
-
   if (!token || token !== process.env.ADMIN_TOKEN) {
     return false;
   }
   return true;
 }
-
-export async /**
- * POST function
- */
-function POST(
+export async function POST(
   request: Request,
   { params }: { params: { errorId: string } }
 ): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   const errorId = params.errorId;
-
   try {
 logger.info(`[QMOI AutoFix] Attempting to fix error: ${errorId}`);
-
     const fixSuccess = Math.random() > 0.2; // 80% success rate
-
     if (fixSuccess) {
       return NextResponse.json({
         success: true,

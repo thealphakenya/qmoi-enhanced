@@ -1,18 +1,11 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.709059 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.966176 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/links-service";
-
-export async /**
- * GET function
- */
-function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const category = url.searchParams.get("category") || undefined;
@@ -22,7 +15,6 @@ function GET(req: NextRequest): any {
         : url.searchParams.get("isZeroRated") === "false"
           ? false
           : undefined;
-
     const links = await linksService.getLinks(category, isZeroRated);
     return NextResponse.json({ success: true, links, count: links.length });
   } catch (error) {
@@ -35,11 +27,7 @@ function GET(req: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
     const body = await req.json();
     const link = await linksService.addLink(body);

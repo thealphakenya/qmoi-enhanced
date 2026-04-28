@@ -9,10 +9,10 @@ import { specificExports } from 'crypto';
  * Initiates biometric authentication by providing assertion options
  * Client uses this to prompt user for biometric input
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email } = body;

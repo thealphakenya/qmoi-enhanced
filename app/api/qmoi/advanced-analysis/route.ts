@@ -3,18 +3,9 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/qmoi-enhanced-intelligence";
-
-/**
- * Advanced QMOI Analysis Endpoint
- * Provides specialized responses with background research, memory, and enhanced reasoning
- */
-export async /**
- * POST function
- */
-function POST(req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
     const {
       query,
@@ -22,19 +13,15 @@ function POST(req: NextRequest): any {
       context = {},
       requireResearch = true,
     } = await req.json();
-
     if (!query) {
       return NextResponse.json({ error: "Query is required" }, { status: 400 });
     }
-
     const queryLower = query.toLowerCase();
     let response: any = { success: true };
-
     // Helper function for flexible keyword matching
     const hasKeywords = (text: string, keywords: string[]): boolean => {
       return keywords.some((keyword) => text.includes(keyword.toLowerCase()));
     };
-
     // Detect request type and apply specialized handler with improved matching
     if (
       hasKeywords(queryLower, ["explain", "teach", "how", "what is"]) &&
@@ -47,7 +34,6 @@ function POST(req: NextRequest): any {
           : queryLower.includes("kenya") || queryLower.includes("kenyan")
             ? "kenyan"
             : "general";
-
       response = QMOIEnhancedIntelligence.handleEconomicExplanation(
         "inflation",
         level,
@@ -203,7 +189,6 @@ function POST(req: NextRequest): any {
         type: "general_analysis",
       };
     }
-
     // Perform background research if requested
     if (requireResearch) {
       const research = await QMOIEnhancedIntelligence.performBackgroundResearch(
@@ -212,7 +197,6 @@ function POST(req: NextRequest): any {
       response.research = research;
       response.processedAt = new Date();
     }
-
     return NextResponse.json(response);
   } catch (error) {
     logger.error("Enhanced analysis error:", error);
@@ -222,19 +206,10 @@ function POST(req: NextRequest): any {
     );
   }
 }
-
-/**
- * GET endpoint for retrieving stored memories
- */
-export async /**
- * GET function
- */
-function GET(req: NextRequest): any {
+export async function GET(req: NextRequest): any {
   try {
     const userId = req.nextUrl.searchParams.get("userId") || "anonymous";
-
     const memories = QMOIEnhancedIntelligence.getAllMemory(userId);
-
     return NextResponse.json({
       success: true,
       userId,

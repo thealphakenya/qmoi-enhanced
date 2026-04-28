@@ -1,18 +1,12 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.787638 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.136765 -->
 // QMOI EVOLUTION ENHANCED: QI Spaces global dashboard API
 // Last evolution cycle: 2026-03-28T12:00:00Z
-
 // Type reals for environments without `next` type declarations
 type NextRequest = Request;
-
 const NextResponse = {
   json: (body: unknown, init: ResponseInit = {}) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json", ...(init.headers || {}) }, ...init }),
 };
-
 import { specificExports } from "@/lib/global-links-service";
-
 const QMOIServiceFallback = {
   async getQVillageMetrics() {
     return {
@@ -30,21 +24,15 @@ const QMOIServiceFallback = {
     };
   },
 };
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const url = new URL(request.url);
     const action = url.searchParams.get("action") || "dashboard";
-
     switch (action) {
       case "dashboard": {
         const stats = await globalLinksService.getGlobalAccessibilityStats();
         const qvillageMetrics = await QMOIServiceFallback.getQVillageMetrics();
         const health = await globalLinksService.getGlobalHealthReports();
-
         return NextResponse.json({
           success: true,
           data: {
@@ -55,17 +43,14 @@ function GET(request: NextRequest): any {
           },
         });
       }
-
       case "regions": {
         const health = await globalLinksService.getGlobalHealthReports();
         return NextResponse.json({ success: true, data: health.summary });
       }
-
       case "statistics": {
         const stats = await globalLinksService.getGlobalAccessibilityStats();
         return NextResponse.json({ success: true, data: stats });
       }
-
       default:
         return NextResponse.json({ error: "Invalid action", validActions: ["dashboard", "regions", "statistics"] }, { status: 400 });
     }
@@ -74,19 +59,13 @@ function GET(request: NextRequest): any {
     return NextResponse.json({ error: "QI Spaces API error", details }, { status: 500 });
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const action = body.action;
-
     if (!action) {
       return NextResponse.json({ error: "action is required" }, { status: 400 });
     }
-
     switch (action) {
       case "trigger-auto-evolve": {
         const result = await QMOIServiceFallback.autoEvolve();

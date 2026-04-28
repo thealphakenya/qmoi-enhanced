@@ -3,21 +3,14 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/domain-service";
-
-export async /**
- * POST function
- */
-function POST(req: Request): any {
+export async function POST(req: Request): any {
   try {
     const body = await req.json();
     const { action, domain, category, oldDomain, newDomain, description } =
       body;
-
     switch (action) {
       case "add":
         if (!domain || !category) {
@@ -38,7 +31,6 @@ function POST(req: Request): any {
             ? `Domain ${domain} added successfully`
             : `Failed to add domain ${domain}`,
         });
-
       case "update":
         if (!oldDomain || !newDomain) {
           return NextResponse.json(
@@ -56,7 +48,6 @@ function POST(req: Request): any {
             ? `Domain updated from ${oldDomain} to ${newDomain}`
             : `Failed to update domain`,
         });
-
       case "remove":
         if (!domain) {
           return NextResponse.json(
@@ -71,7 +62,6 @@ function POST(req: Request): any {
             ? `Domain ${domain} removed successfully`
             : `Failed to remove domain ${domain}`,
         });
-
       case "validate":
         const validation = await domainService.validateDomains();
         return NextResponse.json({
@@ -79,7 +69,6 @@ function POST(req: Request): any {
           message: `Validation complete: ${validation.valid.length} valid, ${validation.invalid.length} invalid`,
           data: validation,
         });
-
       case "scan":
         const newDomains = await domainService.scanCodebaseForDomains();
         return NextResponse.json({
@@ -87,7 +76,6 @@ function POST(req: Request): any {
           message: `Scan complete. Found ${newDomains.length} potential new domains`,
           data: newDomains,
         });
-
       case "autoUpdate":
         const autoUpdateResult = await domainService.autoUpdateDomains();
         return NextResponse.json({
@@ -95,7 +83,6 @@ function POST(req: Request): any {
           message: `Auto-update complete. Added: ${autoUpdateResult.added}, Updated: ${autoUpdateResult.updated}, Removed: ${autoUpdateResult.removed}`,
           data: autoUpdateResult,
         });
-
       case "list": {
         const allDomains = await domainService.getAllDomains();
         const categories = [
@@ -113,7 +100,6 @@ function POST(req: Request): any {
             };
           }),
         );
-
         return NextResponse.json({
           success: true,
           message: `Found ${allDomains.length} domains across ${categories.length} categories`,
@@ -124,7 +110,6 @@ function POST(req: Request): any {
           },
         });
       }
-
       default:
         return NextResponse.json(
           {
@@ -143,15 +128,10 @@ function POST(req: Request): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   try {
     const allDomains = await domainService.getAllDomains();
     const categories = [/* production implementation with proper error handling */new Set(allDomains.map((d: any) => d.category))];
-
     return NextResponse.json({
       success: true,
       message: `QMOI Domain Management System - ${allDomains.length} domains monitored`,

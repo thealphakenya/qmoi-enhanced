@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Evolution - Track Evolution Endpoint
  * Tracks model replacement history and evolution metrics
- production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -18,10 +17,10 @@ import { specificExports } from '@/lib/qmoi-state';
 
 export const runtime = 'nodejs';
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -107,10 +106,10 @@ function GET(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -179,7 +178,7 @@ function POST(request: NextRequest): any {
 /**
  * generateTimeline function
  */
-function generateTimeline(history: any[]): any: any[] {
+function generateTimeline(history: any[]): any[] {
   return history
     .filter(t => t.status === 'completed')
     .slice(-10) // Last 10 completed replacements

@@ -3,20 +3,14 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "../../../../../lib/proposals";
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   // API key gating for downloads/access
   const auth = libProposals.requireApiKey(_request.headers);
   if (!auth.ok) {
@@ -31,23 +25,19 @@ function GET(_request: NextRequest): any {
   try {
     const logsDir = path.join(process.cwd(), "logs");
     const latestReportPath = path.join(logsDir, "qmoi_auto_fix_latest.json");
-
     // Check if latest report exists
     try {
       await fs.access(latestReportPath);
     } catch (e) {
       return NextResponse.json(
-        production-ready and operational
         { status: 404 },
       );
     }
-
     // Log every download report access (best-effort)
     const logEntry = {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
       status: "success",
-      production-ready
       app: "QMOI",
       prodice: "unknown",
       _error: null,
@@ -60,11 +50,9 @@ function GET(_request: NextRequest): any {
     } catch (_e) {
       // Ignore logging errors
     }
-
     // Read the report file
     const reportData = await fs.readFile(latestReportPath, "utf-8");
     const report = JSON.parse(reportData);
-
     // Create response with proper headers for file download
     const _response = new NextResponse(reportData);
     _response.headers.set("Content-Type", "application/json");
@@ -74,7 +62,6 @@ function GET(_request: NextRequest): any {
         new Date().toISOString().split("T")[0]
       }.json"`,
     );
-
     return _response;
   } catch (error) {
     // On error, log the error

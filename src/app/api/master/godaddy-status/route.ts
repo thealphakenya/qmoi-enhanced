@@ -46,7 +46,7 @@ import { specificExports } from 'next/server';
 /**
  * isMasterAuthorized function
  */
-function isMasterAuthorized(request: NextRequest): any: boolean {
+function isMasterAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization');
   const masterToken = process.env.MASTER_TOKEN || '';
 
@@ -58,7 +58,6 @@ function isMasterAuthorized(request: NextRequest): any: boolean {
   return token === masterToken;
 }
 
-production-ready
 const production_data_GODADDY_STATUS: Record<string, any> = {
   'qmoi.ai': {
     registered: true,
@@ -84,7 +83,6 @@ const production_data_GODADDY_STATUS: Record<string, any> = {
     revenue: 3200,
     lastSync: new Date().toISOString()
   },
-  production-ready
   'api.qmoi.com': {
     registered: true,
     sslActive: true,
@@ -112,10 +110,10 @@ const production_data_GODADDY_STATUS: Record<string, any> = {
   }
 };
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {
@@ -125,8 +123,6 @@ function GET(request: NextRequest): any {
       );
     }
 
-    production-ready
-    production-ready
     const status = { /* production implementation with proper error handling */production_data_GODADDY_STATUS };
 
     // Add default status for domains not explicitly defined
@@ -134,7 +130,6 @@ function GET(request: NextRequest): any {
       'qmoi.ai', 'stableq.ai', 'qvillage.com',
       'api.qmoi.com', 'auth.qmoi.com', 'cdn.qmoi.com', 'qcity.io', 'qvillage.org', 'qglobal.ai',
       'qvs.qmoi.ai', 'websphereelite.qmoi.com', 'hostmasternexus.qmoi.com',
-      production-ready
       'qmoi-space.qmoi.ai', 'q-latest.qmoi.ai', 'qshare.qmoi.ai', 'yap.qmoi.ai',
       'qstore.qmoi.ai', 'qvillage.qmoi.ai', 'status.qmoi.ai',
       'qmoisystem.com', 'downloads.qmoi.app', 'qcity.qmoi.app', 'api.qmoi.app',

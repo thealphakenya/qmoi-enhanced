@@ -3,39 +3,26 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
 import { specificExports } from "@/lib/balance-validator";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 import { specificExports } from "../../../../lib/cashon-wallet";
 import { specificExports } from "../../../../lib/security_check";
-
 // Verify master token
-/**
- * verifyMasterToken function
- */
-function verifyMasterToken(_request: NextRequest): any: string | null {
+function verifyMasterToken(_request: NextRequest): string | null {
   const authHeader = _request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
   }
-
   const token = authHeader.substring(7);
   const masterToken = process.env.MASTER_TOKEN;
-
   return token === masterToken ? token : null;
 }
-
 // GET /api/cashon/balance
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const apiAuth = requireApiKey(_request.headers);
     const masterToken = verifyMasterToken(_request);
@@ -46,8 +33,6 @@ function GET(_request: NextRequest): any {
         { status: _r?.status ?? 401 },
       );
     }
-
-    production-ready
     const snapshot = getValidatedBalances();
     if (snapshot && snapshot.balances && snapshot.balances.primary_wallet) {
       const validatedCashon = snapshot.balances.primary_wallet;
@@ -57,7 +42,6 @@ function GET(_request: NextRequest): any {
         validation: validatedCashon.validation,
       });
     }
-
     const balance = await cashonWallet.getBalance(masterToken ?? "");
     const url = new URL(_request.url);
     if (url.searchParams.get("mpesaInfo") === "true") {
@@ -68,7 +52,6 @@ function GET(_request: NextRequest): any {
       return NextResponse.json({ mpesaNumberMasked: masked });
     }
     if (url.searchParams.get("logs") === "true") {
-      production-ready
       const logs: unknown[] = [];
       return NextResponse.json({ logs });
     }
@@ -81,12 +64,8 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
 // POST /api/cashon/balance
-export async /**
- * POST function
- */
-function POST(_req: Request): any {
+export async function POST(_req: Request): any {
   const { action } = (await _req.json()) as any;
   if (action === "sync-mpesa") {
     const mpesaNumber = process.env.CASHON_MPESA_NUMBER;
@@ -97,9 +76,7 @@ function POST(_req: Request): any {
         { status: 500 },
       );
     }
-    production-ready
     try {
-      production-ready
       logEvent("mpesa_sync_success", { mpesaNumber });
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
@@ -112,7 +89,6 @@ function POST(_req: Request): any {
       });
     }
   }
-
   // If action is not recognized, return a bad request response
   return new Response(JSON.stringify({ _error: "Invalid action" }), {
     status: 400,

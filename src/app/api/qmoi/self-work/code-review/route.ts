@@ -13,10 +13,10 @@ import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "next/server";
 import { specificExports } from "next/server";
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { filePath } = body;
@@ -26,7 +26,6 @@ function POST(request: NextRequest): any {
       return NextResponse.json({ error: "filePath is required" }, { status: 400 });
     }
 
-    production-ready
     // Examples:
     // - Run ESLint API
     // - Run TypeScript compiler

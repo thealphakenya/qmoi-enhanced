@@ -1,36 +1,26 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.816464 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.164550 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth-service";
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { userId, biometricMethod, confidence, verified, metadata } = body;
-
     if (!userId || !biometricMethod) {
       return NextResponse.json(
         { error: "userId and biometricMethod are required" },
         { status: 400 },
       );
     }
-
     if (!["fingerprint", "facial", "voice"].includes(biometricMethod)) {
       return NextResponse.json(
         { error: "Invalid biometricMethod. Must be: fingerprint|facial|voice" },
         { status: 400 },
       );
     }
-
     const biometricCapture: BiometricCapture = {
       method: biometricMethod,
       confidence: confidence || 0.9,
@@ -38,13 +28,11 @@ function POST(request: NextRequest): any {
       verified: verified !== false,
       metadata,
     };
-
     const result = await AuthService.captureBiometric(
       userId,
       biometricMethod,
       biometricCapture,
     );
-
     if (!result.success) {
       return NextResponse.json(
         {
@@ -54,7 +42,6 @@ function POST(request: NextRequest): any {
         { status: 400 },
       );
     }
-
     return NextResponse.json(
       {
         success: true,
@@ -73,11 +60,7 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   return NextResponse.json(
     {
       endpoint: "/api/auth/biometric/capture",

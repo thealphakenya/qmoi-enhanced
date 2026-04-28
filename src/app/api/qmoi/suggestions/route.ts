@@ -11,10 +11,10 @@ import { specificExports } from "next/server";
  * POST /api/qmoi/suggestions
  * Generates intelligent suggestions based on context and user input
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const { context, userInput } = await request.json();
 
@@ -43,7 +43,7 @@ function POST(request: NextRequest): any {
 /**
  * generateSuggestions function
  */
-function generateSuggestions(input: string, context: any): any: string[] {
+function generateSuggestions(input: string, context: any): string[] {
   const suggestions: string[] = [];
 
   // Analyze input keywords
@@ -51,7 +51,6 @@ function generateSuggestions(input: string, context: any): any: string[] {
 
   // Code-related suggestions
   if (lowerInput.includes("error") || lowerInput.includes("bug")) {
-    production-ready
     suggestions.push("Check the error logs");
     suggestions.push("Use type checking to catch early");
   }

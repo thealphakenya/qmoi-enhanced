@@ -6,7 +6,6 @@ console.log("production mode initialized");
 
 /**
  * QMOI Health API Route
- production-ready
  */
 
 import { specificExports } from "next/server";
@@ -16,10 +15,10 @@ import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qmoi/health");
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // Check authentication
     const authHeader = request.headers.get("authorization");
@@ -70,10 +69,10 @@ function GET(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     // Check authentication
     const authHeader = request.headers.get("authorization");

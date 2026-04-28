@@ -3,20 +3,13 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next";
 import { specificExports } from "child_process";
 import { specificExports } from "fs";
 import { specificExports } from "path";
-
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
-
-/**
- * logAudit function
- */
 function logAudit(entry: unknown): any {
   const _e = (entry as Record<string, unknown>) || {};
   fs.appendFileSync(
@@ -24,17 +17,10 @@ function logAudit(entry: unknown): any {
     JSON.stringify({ /* production implementation with proper error handling */_e, timestamp: new Date().toISOString() }) + "\n",
   );
 }
-
-/**
- * maskCommand function
- */
 function maskCommand(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
-
-export default async /**
- * handler function
- */
+export default async */
 function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,

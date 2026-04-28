@@ -1,27 +1,18 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.756916 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.015409 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
 import { specificExports } from "child_process";
 import { specificExports } from "os";
 import { specificExports } from "fs";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
-/**
- * verifyJWT function
- */
-function verifyJWT(token: string): any: { valid: boolean; role?: string } {
+function verifyJWT(token: string): { valid: boolean; role?: string } {
   try {
     const payload = JSON.parse(
       Buffer.from(token.split(".")[1], "base64").toString(),
@@ -34,10 +25,6 @@ function verifyJWT(token: string): any: { valid: boolean; role?: string } {
     return { valid: false };
   }
 }
-
-/**
- * logAudit function
- */
 function logAudit(
   action: string,
   user: string,
@@ -53,10 +40,6 @@ function logAudit(
   };
   fs.appendFileSync("logs/qcity_audit.log", JSON.stringify(entry) + "\n");
 }
-
-/**
- * logDownloadFix function
- */
 function logDownloadFix(
   action: string,
   user: string,
@@ -75,11 +58,7 @@ function logDownloadFix(
   };
   fs.appendFileSync("logs/download_fixes.log", JSON.stringify(entry) + "\n");
 }
-
-export async /**
- * POST function
- */
-function POST(_req: NextRequest): any {
+export async function POST(_req: NextRequest): any {
   const apiAuth = requireApiKey(_req.headers);
   let jwt: { valid: boolean; role?: string } = { valid: false };
   if (apiAuth.ok) {
@@ -95,14 +74,12 @@ function POST(_req: NextRequest): any {
       return new Response("Insufficient permissions", { status: 403 });
     }
   }
-
   let _options: Record<string, unknown> = {};
   try {
     _options = (await _req.json()) as Record<string, unknown>;
   } catch (e) {
     void e;
   }
-
   // Determine script and args
   let script, args;
   if (os.platform() === "win32") {
@@ -125,17 +102,14 @@ function POST(_req: NextRequest): any {
     if (_options.upgradeAll) args.push("--upgrade-all");
     if (_options.diagnosticsOnly) args.push("--diagnostics-only");
   }
-
   // SSE streaming
   const { readable, writable } = new TransformStream();
   const writer = writable.getWriter();
   const encoder = new TextEncoder();
-
   const ps = spawn(script, args);
   const user = jwt.role || "unknown";
   logAudit("selfheal-trigger", user, _options, "started");
   logDownloadFix("selfheal-trigger", user, _options, "started");
-
   ps.stdout.on("data", (data) => {
     writer.write(encoder.encode(`data: ${data.toString()}\n`));
   });
@@ -158,7 +132,6 @@ function POST(_req: NextRequest): any {
       code === 0 ? "success" : "error",
     );
   });
-
   return new Response(readable, {
     headers: {
       "Content-Type": "text/_event-stream",

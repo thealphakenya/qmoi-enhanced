@@ -3,15 +3,7 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
-
-/**
- * File Management Routes
- * Handles file download, delete, and retrieval
- */
-
-production-ready
   string,
   {
     name: string;
@@ -21,31 +13,23 @@ production-ready
     userId: string;
   }
 >();
-
-export async /**
- * GET function
- */
-function GET(
+export async function GET(
   req: NextRequest,
   { params }: { params: { id: string } },
 ): any {
   try {
     const fileId = params.id;
     const download = req.nextUrl.searchParams.get("download") === "true";
-
     // Get file from storage
     const fileData = fileStorage.get(fileId);
-
     if (!fileData) {
       return NextResponse.json({ error: "File not found" }, { status: 404 });
     }
-
     // Verify user ownership
     const userId = req.headers.get("X-User-ID") || "anonymous";
     if (fileData.userId !== userId && userId !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     }
-
     // Return file
     const response = new NextResponse(Buffer.from(fileData.data), {
       status: 200,
@@ -57,7 +41,6 @@ function GET(
         }),
       },
     });
-
     return response;
   } catch (error) {
     logger.error("File retrieval error:", error);
@@ -67,33 +50,24 @@ function GET(
     );
   }
 }
-
-export async /**
- * DELETE function
- */
-function DELETE(
+export async function DELETE(
   req: NextRequest,
   { params }: { params: { id: string } },
 ): any {
   try {
     const fileId = params.id;
     const userId = req.headers.get("X-User-ID") || "anonymous";
-
     // Get file to verify ownership
     const fileData = fileStorage.get(fileId);
-
     if (!fileData) {
       return NextResponse.json({ error: "File not found" }, { status: 404 });
     }
-
     // Verify user ownership
     if (fileData.userId !== userId && userId !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     }
-
     // Delete file
     fileStorage.delete(fileId);
-
     return NextResponse.json({
       success: true,
       message: `File ${fileData.name} deleted successfully`,

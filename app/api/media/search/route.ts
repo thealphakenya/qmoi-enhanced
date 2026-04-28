@@ -1,12 +1,8 @@
 console.log("production mode initialized");
-production-ready
 // Last evolution cycle: 2026-04-06T03:15:00Z
-
 import { specificExports } from "next/server";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
 interface MediaSearchRequest {
   query: string;
   type?: string;
@@ -26,7 +22,6 @@ interface MediaSearchRequest {
     };
   };
 }
-
 interface MediaItem {
   id: string;
   title: string;
@@ -42,23 +37,14 @@ interface MediaItem {
   quality: string;
   relevanceScore: number;
 }
-
-/**
- * requireApiKey function
- */
-function requireApiKey(request: NextRequest): any: boolean {
+function requireApiKey(request: NextRequest): boolean {
   const requiredKey = process.env.MEDIA_SEARCH_API_KEY || process.env.QMOI_API_KEY;
   if (!requiredKey) {
-    production-ready
   }
   const provided = request.headers.get("x-api-key") || request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
   return provided === requiredKey;
 }
-
-/**
- * isMaster function
- */
-function isMaster(request: NextRequest): any: boolean {
+function isMaster(request: NextRequest): boolean {
   const masterToken = request.headers.get("x-master-token");
   const adminKey = request.headers.get("x-qmoi-admin-key");
   return (
@@ -66,10 +52,6 @@ function isMaster(request: NextRequest): any: boolean {
     adminKey === process.env.ADMIN_KEY
   );
 }
-
-/**
- * logToDashboard function
- */
 function logToDashboard(action: string, data: unknown, level: "info" | "warning" | "error" = "info"): any {
   const payload = {
     timestamp: new Date().toISOString(),
@@ -78,13 +60,11 @@ function logToDashboard(action: string, data: unknown, level: "info" | "warning"
     /* production implementation with proper error handling */typeof data === "object" && data !== null ? { data } : { data: String(data) },
     source: "media-search-api",
   };
-
   logger.info(`[${level.toUpperCase()}] ${action}:`, payload);
   if (globalThis.qmoi?.dashboard?.log) {
     globalThis.qmoi.dashboard.log(payload);
   }
 }
-
 const MEDIA_CATALOG: MediaItem[] = [
   {
     id: "media_001",
@@ -142,28 +122,18 @@ const MEDIA_CATALOG: MediaItem[] = [
     relevanceScore: 0.92,
   },
 ];
-
-/**
- * normalizeSearchText function
- */
-function normalizeSearchText(item: MediaItem): any: string {
+function normalizeSearchText(item: MediaItem): string {
   return [item.title, item.name, item.tags.join(" "), item.type, item.quality, JSON.stringify(item.metadata)]
     .join(" ")
     .toLowerCase();
 }
-
-/**
- * filterMediaCatalog function
- */
-function filterMediaCatalog(searchRequest: MediaSearchRequest): any: MediaItem[] {
+function filterMediaCatalog(searchRequest: MediaSearchRequest): MediaItem[] {
   const { query, type, limit = 50, sortBy = "relevance", filters } = searchRequest;
   const normalizedQuery = query.trim().toLowerCase();
-
   const results = MEDIA_CATALOG.filter((item) => {
     if (type && item.type !== type) {
       return false;
     }
-
     if (filters?.category && item.type !== filters.category) {
       return false;
     }
@@ -173,14 +143,12 @@ function filterMediaCatalog(searchRequest: MediaSearchRequest): any: MediaItem[]
     if (filters?.format && !filters.format.includes(item.type)) {
       return false;
     }
-
     if (filters?.sizeRange) {
       const { min, max } = filters.sizeRange;
       if (item.size < min || item.size > max) {
         return false;
       }
     }
-
     if (filters?.dateRange) {
       const createdAt = new Date(item.createdAt).getTime();
       const from = new Date(filters.dateRange.from).getTime();
@@ -189,15 +157,12 @@ function filterMediaCatalog(searchRequest: MediaSearchRequest): any: MediaItem[]
         return false;
       }
     }
-
     if (!normalizedQuery) {
       return true;
     }
-
     const doc = normalizeSearchText(item);
     return doc.includes(normalizedQuery);
   });
-
   switch (sortBy) {
     case "date":
       results.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -213,19 +178,13 @@ function filterMediaCatalog(searchRequest: MediaSearchRequest): any: MediaItem[]
       results.sort((a, b) => b.relevanceScore - a.relevanceScore);
       break;
   }
-
   return results.slice(0, Math.min(limit, 100));
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   if (!requireApiKey(request)) {
     logToDashboard("media-search-unauthorized", { ip: request.ip }, "warning");
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
   let body: MediaSearchRequest;
   try {
     body = await request.json();
@@ -233,23 +192,19 @@ function POST(request: NextRequest): any {
     logToDashboard("media-search-invalid-json", { error: String(error) }, "warning");
     return NextResponse.json({ error: "Invalid JSON payload" }, { status: 400 });
   }
-
   if (!body.query || typeof body.query !== "string") {
     return NextResponse.json({ error: "Query parameter is required and must be a string" }, { status: 400 });
   }
-
   const isMasterUser = isMaster(request);
   if (body.limit && body.limit > 100 && !isMasterUser) {
     return NextResponse.json({ error: "Limit exceeds maximum allowed for non-master users" }, { status: 403 });
   }
-
   logToDashboard("media-search-started", {
     query: body.query,
     type: body.type,
     limit: body.limit,
     isMaster: isMasterUser,
   });
-
   try {
     const items = filterMediaCatalog(body);
     const response = {
@@ -263,39 +218,30 @@ function POST(request: NextRequest): any {
         cacheUsed: false,
       },
     };
-
     logToDashboard("media-search-completed", { query: body.query, totalResults: items.length });
     return NextResponse.json(response);
   } catch (error) {
     logToDashboard("media-search-error", { error: String(error) }, "error");
     return NextResponse.json(
-      production-ready
       { status: 500 },
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   const url = new URL(request.url);
   const query = url.searchParams.get("q");
   if (!query) {
     return NextResponse.json({ error: "Query parameter 'q' is required" }, { status: 400 });
   }
-
   const type = url.searchParams.get("type") || undefined;
   const limit = Number(url.searchParams.get("limit") || "20");
   const sortBy = (url.searchParams.get("sortBy") as MediaSearchRequest["sortBy"]) || "relevance";
-
   const requestBody: MediaSearchRequest = {
     query,
     type,
     limit,
     sortBy,
   };
-
   try {
     const items = filterMediaCatalog(requestBody);
     return NextResponse.json({ success: true, query, totalResults: items.length, items });

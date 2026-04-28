@@ -1,15 +1,7 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.712705 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.970632 -->
-/**
- * API to collect and validate all endpoints
- * Used for auto-generating API documentation
- */
-
 import { specificExports } from 'next/server';
 import { specificExports } from 'fs';
 import { specificExports } from 'path';
-
 interface EndpointInfo {
   path: string;
   methods: string[];
@@ -17,11 +9,7 @@ interface EndpointInfo {
   authenticated: boolean;
   description?: string;
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const endpoints = collectAllEndpoints();
     return NextResponse.json({
@@ -40,23 +28,16 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
-/**
- * collectAllEndpoints function
- */
-function collectAllEndpoints(): any: EndpointInfo[] {
+function collectAllEndpoints(): EndpointInfo[] {
   const endpoints: EndpointInfo[] = [];
   const apiDir = path.join(process.cwd(), 'app', 'api');
-
   // Recursively walk through API directory
   walkDirectory(apiDir, (file: string, relativePath: string) => {
     if (file.endsWith('route.ts') || file.endsWith('route.js')) {
       const content = fs.readFileSync(file, 'utf-8');
-
       // Extract HTTP methods from the file
       const methods = extractMethods(content);
       const apiPath = normalizeApiPath(relativePath);
-
       if (methods.length > 0) {
         endpoints.push({
           path: apiPath,
@@ -68,20 +49,13 @@ function collectAllEndpoints(): any: EndpointInfo[] {
       }
     }
   });
-
   return endpoints;
 }
-
-/**
- * walkDirectory function
- */
 function walkDirectory(dir: string, callback: (file: string, relative: string): any => void) {
   const items = fs.readdirSync(dir);
-
   for (const item of items) {
     const fullPath = path.join(dir, item);
     const stat = fs.statSync(fullPath);
-
     if (stat.isDirectory()) {
       walkDirectory(fullPath, callback);
     } else if (stat.isFile()) {
@@ -90,20 +64,14 @@ function walkDirectory(dir: string, callback: (file: string, relative: string): 
     }
   }
 }
-
-/**
- * extractMethods function
- */
-function extractMethods(content: string): any: string[] {
+function extractMethods(content: string): string[] {
   const methods = new Set<string>();
-
   // Match export function patterns
   const patterns = [
     /export\s+(?:async\s+)?function\s+(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS)/gi,
     /export\s+const\s+\w+\s*=\s*(?:async\s+)?\(.*?\)\s*=>\s*\{(?:[\s\S]*?)(?:GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS)/gi,
     /router\.(?:get|post|put|delete|patch|head|options)\(/gi,
   ];
-
   for (const pattern of patterns) {
     let match;
     while ((match = pattern.exec(content)) !== null) {
@@ -113,45 +81,28 @@ function extractMethods(content: string): any: string[] {
       }
     }
   }
-
   return Array.from(methods);
 }
-
-/**
- * normalizeApiPath function
- */
-function normalizeApiPath(filePath: string): any: string {
+function normalizeApiPath(filePath: string): string {
   // Convert: app/api/users/[id]/route.ts -> /api/users/[id]
   let apiPath = filePath
     .replace(/\\/g, '/') // Normalize slashes
     .replace(/^app\/api\//, '/api/') // Replace app/api prefix
     .replace(/\/route\.[tj]s$/, ''); // Remove route.ts extension
-
   // Handle [id] style dynamic routes
   return apiPath.includes('[') ? apiPath : apiPath;
 }
-
-/**
- * checkAuthentication function
- */
-function checkAuthentication(content: string): any: boolean {
+function checkAuthentication(content: string): boolean {
   const authPatterns = [
     /auth|Authorization|Bearer|JWT|token|session|userId|authenticated/i,
   ];
-
   return authPatterns.some(pattern => pattern.test(content));
 }
-
-/**
- * extractDescription function
- */
-function extractDescription(content: string): any: string | undefined {
+function extractDescription(content: string): string | undefined {
   // Try to extract JSDoc or inline comments
   const jsdocMatch = content.match(/\/\*\*[\s\S]*?\*\/|\/\/\s*(.+)/);
-
   if (jsdocMatch) {
     return jsdocMatch[1] || jsdocMatch[0].split('\n')[0];
   }
-
   return undefined;
 }

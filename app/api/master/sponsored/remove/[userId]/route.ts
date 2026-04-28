@@ -3,19 +3,10 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/db/prisma";
-
-/**
- * DELETE /api/master/sponsored/remove/[userId]
- * Remove a sponsored user (Master only)
- */
-export async /**
- * DELETE function
- */
-function DELETE(
+export async function DELETE(
   request: NextRequest,
   { params }: { params: { userId: string } },
 ): any {
@@ -23,17 +14,14 @@ function DELETE(
     // Verify master authentication
     const authHeader = request.headers.get("authorization");
     const biometricToken = request.headers.get("x-biometric-verification");
-
     if (!authHeader?.startsWith("Bearer ")) {
       return NextResponse.json(
         { error: "required authorization token", code: "NO_TOKEN" },
         { status: 401 },
       );
     }
-
     const token = authHeader.replace("Bearer ", "");
     let decoded;
-
     try {
       decoded = authService.verifyToken(token);
     } catch (error) {
@@ -42,7 +30,6 @@ function DELETE(
         { status: 401 },
       );
     }
-
     // Verify master role
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "master") {
@@ -51,16 +38,13 @@ function DELETE(
         { status: 403 },
       );
     }
-
     const { userId } = params;
-
     if (!userId) {
       return NextResponse.json(
         { error: "User ID is required", code: "MISSING_USER_ID" },
         { status: 400 },
       );
     }
-
     // Find the user to remove
     const userToRemove = await db.userService.findById(userId);
     if (!userToRemove) {
@@ -69,7 +53,6 @@ function DELETE(
         { status: 404 },
       );
     }
-
     // Verify user is sponsored
     if (!userToRemove.isSponsored && userToRemove.role !== "sponsored") {
       return NextResponse.json(
@@ -77,8 +60,6 @@ function DELETE(
         { status: 400 },
       );
     }
-
-    production-ready
     await db.userService.update(userId, {
       role: "regular",
       isSponsored: false,
@@ -86,12 +67,9 @@ function DELETE(
       benefits: null,
       metadata: JSON.stringify({
         /* production implementation with proper error handling */JSON.parse(userToRemove.metadata || "{}"),
-        production-ready
-        production-ready
         previousRole: userToRemove.role,
       }),
     });
-
     return NextResponse.json({
       success: true,
       message: "Sponsored user removed successfully",

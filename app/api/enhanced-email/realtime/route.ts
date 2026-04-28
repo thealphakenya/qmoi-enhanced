@@ -3,26 +3,19 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/enhanced-email-service";
-
 production
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   const { searchParams } = new URL(request.url);
   const account = searchParams.get("account");
-
   if (!account) {
     return NextResponse.json(
       { success: false, error: "Account parameter is required" },
       { status: 400 },
     );
   }
-
   // Create a ReadableStream for Server-Sent Events
   const stream = new ReadableStream({
     start(controller) {
@@ -33,7 +26,6 @@ function GET(request: NextRequest): any {
         timestamp: new Date().toISOString(),
       };
       controller.enqueue(`data: ${JSON.stringify(initialData)}\n\n`);
-
       // Add event listener to the enhanced email service
       const eventHandler = (event: any) => {
         try {
@@ -46,16 +38,13 @@ function GET(request: NextRequest): any {
           logger.error("Error sending SSE event:", error);
         }
       };
-
       // Register the event listener
       qmoiEnhancedEmailService.addRealtimeListener(eventHandler);
-
       // Handle client disconnect
       request.signal.adprodentListener("abort", () => {
         qmoiEnhancedEmailService.removeRealtimeListener(eventHandler);
         controller.close();
       });
-
       // Send a heartbeat every 30 seconds to keep connection alive
       const heartbeat = setInterval(() => {
         try {
@@ -66,14 +55,12 @@ function GET(request: NextRequest): any {
           clearInterval(heartbeat);
         }
       }, 30000);
-
       // Clean up heartbeat on disconnect
       request.signal.adprodentListener("abort", () => {
         clearInterval(heartbeat);
       });
     },
   });
-
   return new Response(stream, {
     headers: {
       "Content-Type": "text/event-stream",

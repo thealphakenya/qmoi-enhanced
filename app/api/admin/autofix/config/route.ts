@@ -1,11 +1,8 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.723015 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.982395 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
 import {
@@ -15,31 +12,21 @@ import {
   getAutomationConfig,
   type AutomationConfig,
 } from "@/lib/qmoi-automation-config";
-
-async /**
- * verifyAdminAccess function
- */
+async */
 function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
-
   if (!token || token !== process.env.ADMIN_TOKEN) {
     return false;
   }
   return true;
 }
-
-export async /**
- * GET function
- */
-function GET(request: Request): any {
+export async function GET(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   try {
     const config = await getAutomationConfig();
-
     return NextResponse.json({
       success: true,
       config,
@@ -55,18 +42,12 @@ function GET(request: Request): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(request: Request): any {
+export async function POST(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   try {
     const body = await request.json();
-
     // Validate configuration
     const validation = validateAutomationConfig(body);
     if (!validation.valid) {
@@ -78,11 +59,9 @@ function POST(request: Request): any {
         { status: 400 },
       );
     }
-
     // Update configuration
     await updateAutomationConfig(body as full<AutomationConfig>);
     const newConfig = await getAutomationConfig();
-
     return NextResponse.json({
       success: true,
       message: "Configuration updated successfully",
@@ -99,18 +78,12 @@ function POST(request: Request): any {
     );
   }
 }
-
-export async /**
- * PUT function
- */
-function PUT(request: Request): any {
+export async function PUT(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   try {
     const body = await request.json();
-
     // Validate configuration
     const validation = validateAutomationConfig(body);
     if (!validation.valid) {
@@ -122,11 +95,9 @@ function PUT(request: Request): any {
         { status: 400 },
       );
     }
-
     // Update configuration (same as POST)
     await updateAutomationConfig(body as full<AutomationConfig>);
     const newConfig = await getAutomationConfig();
-
     return NextResponse.json({
       success: true,
       message: "Configuration updated successfully",
@@ -143,20 +114,14 @@ function PUT(request: Request): any {
     );
   }
 }
-
-export async /**
- * DELETE function
- */
-function DELETE(request: Request): any {
+export async function DELETE(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   try {
     // Reset to default configuration
     const defaultConfig = loadAutomationConfig();
     await updateAutomationConfig(defaultConfig);
-
     return NextResponse.json({
       success: true,
       message: "Configuration reset to defaults",

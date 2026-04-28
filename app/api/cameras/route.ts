@@ -1,13 +1,5 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.771695 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.120523 -->
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * QMOI Camera Access API Endpoints
- * Provides secure access to all integrated camera systems
- */
-
 // Camera types configuration
 const CAMERA_TYPES = {
   street: {
@@ -41,18 +33,11 @@ const CAMERA_TYPES = {
     features: ['24-7-monitoring', 'low-light', 'motion-tracking']
   }
 };
-
-/**
- * GET /api/cameras
- * List all available cameras and their status
- */
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const type = searchParams.get('type');
     const location = searchParams.get('location');
-
-    
     const cameras = [
       {
         id: 'cam_001',
@@ -100,17 +85,13 @@ export async function GET(request: NextRequest) {
         features: CAMERA_TYPES.infrared.features
       }
     ];
-
     let filteredCameras = cameras;
-
     if (type) {
       filteredCameras = cameras.filter(cam => cam.type === type);
     }
-
     if (location) {
       filteredCameras = filteredCameras.filter(cam => cam.location === location);
     }
-
     return NextResponse.json({
       success: true,
       data: {
@@ -125,7 +106,6 @@ export async function GET(request: NextRequest) {
         }
       }
     });
-
   } catch (error) {
     console.error('Camera API Error:', error);
     return NextResponse.json(
@@ -134,24 +114,16 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-
-/**
- * POST /api/cameras
- * Control camera operations (pan, tilt, zoom, etc.)
- */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { cameraId, action, parameters } = body;
-
     if (!cameraId || !action) {
       return NextResponse.json(
         { success: false, error: 'Camera ID and action are required' },
         { status: 400 }
       );
     }
-
-    
     const response = {
       cameraId,
       action,
@@ -159,15 +131,12 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
       parameters: parameters || {}
     };
-
     // Log the action for security monitoring
     logger.info(`Camera control: ${cameraId} - ${action}`, parameters);
-
     return NextResponse.json({
       success: true,
       data: response
     });
-
   } catch (error) {
     console.error('Camera control error:', error);
     return NextResponse.json(

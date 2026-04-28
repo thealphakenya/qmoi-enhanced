@@ -3,24 +3,17 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/enhanced-email-service";
-
 // GET /api/enhanced-email/templates - Get email templates
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category");
-
     const templates = qmoiEnhancedEmailService.getEmailTemplates(
       category || undefined,
     );
-
     return NextResponse.json({
       success: true,
       templates,
@@ -33,15 +26,10 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
 // POST /api/enhanced-email/templates - Create email standard
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
-
     // Validate required fields
     if (!body.name || !body.category || !body.subject || !body.body) {
       return NextResponse.json(
@@ -52,7 +40,6 @@ function POST(request: NextRequest): any {
         { status: 400 },
       );
     }
-
     // Create standard through the service
     const standard = {
       name: body.name,
@@ -61,7 +48,6 @@ function POST(request: NextRequest): any {
       body: body.body,
       variables: body.variables || [],
     };
-
     production
     const createdTemplate = {
       id: `standard-${Date.now()}`,
@@ -69,7 +55,6 @@ function POST(request: NextRequest): any {
       createdAt: new Date(),
       usageCount: 0,
     };
-
     return NextResponse.json({
       success: true,
       standard: createdTemplate,

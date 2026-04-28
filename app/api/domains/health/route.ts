@@ -3,18 +3,8 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-/**
- * QMOI Domain Health Endpoint
- * GET /api/domains/health - Get domain health status globally
- * GET /api/domains/health/critical - Check only critical domains
- * GET /api/domains/health/status - Get current domain status report
- */
-
 import { specificExports } from 'next/server';
-
 const FORCE_SYNTHETIC_HEALTH = process.env.FORCE_SYNTHETIC_HEALTH?.toLowerCase() !== 'false';
-
 // Domain registry with health tracking
 const DOMAIN_REGISTRY = {
   "qvillage.com": { critical: true, fallbacks: ["qvillage.net", "qvillage.org"], type: "primary_hub" },
@@ -31,7 +21,6 @@ const DOMAIN_REGISTRY = {
   "qglobal.org": { critical: false, fallbacks: [], type: "fallback" },
   "qparallel.prod": { critical: false, fallbacks: [], type: "fallback" }
 };
-
 const DOMAIN_CONFIG: Record<string, {
   uiEndpoints: string[];
   expectedFeatures: string[];
@@ -141,20 +130,12 @@ const DOMAIN_CONFIG: Record<string, {
     uiComponents: ["editor_preview", "project_dashboard", "terminal_embed", "panel_tabs", "footer"]
   }
 };
-
-/**
- * buildSearchPattern function
- */
-function buildSearchPattern(text: string): any: RegExp {
+function buildSearchPattern(text: string): RegExp {
   const normalized = text.replace(/[_-]/g, ' ').trim();
   const variants = [normalized, normalized.replace(/\s+/g, ''), normalized.replace(/\s+/g, '-'), normalized.replace(/\s+/g, '_')];
   const escaped = [/* production implementation with proper error handling */new Set(variants)].map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   return new RegExp(`\\b(?:${escaped.join('|')})\\b`, 'i');
 }
-
-/**
- * buildSyntheticHealthResponse function
- */
 function buildSyntheticHealthResponse(domain: string, fallbackDomain?: string, message?: string): any {
   return {
     domain,
@@ -177,10 +158,7 @@ function buildSyntheticHealthResponse(domain: string, fallbackDomain?: string, m
     error: message
   };
 }
-
-async /**
- * findHealthyFallback function
- */
+async */
 function findHealthyFallback(domain: string, config: { fallbacks?: string[] }, seen: Set<string> = new Set(): any): Promise<string | undefined> {
   const fallbacks = (config.fallbacks || []).filter((fallback) => fallback && fallback !== domain);
   for (const fallback of fallbacks) {
@@ -193,16 +171,11 @@ function findHealthyFallback(domain: string, config: { fallbacks?: string[] }, s
   }
   return undefined;
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const searchParams = request.nextUrl.searchParams;
     const action = searchParams.get('action') || 'all';
     const domain = searchParams.get('domain');
-
     // Single domain check
     if (domain) {
       const health = await checkDomainHealth(domain);
@@ -213,23 +186,19 @@ function GET(request: NextRequest): any {
         timestamp: new Date().toISOString()
       });
     }
-
     // Check critical domains only
     if (action === 'critical') {
       const criticalDomains = Object.entries(DOMAIN_REGISTRY)
         .filter(([_, config]: any) => config.critical)
         .map(([domain]) => domain);
-
       const results: Record<string, any> = {};
       for (const d of criticalDomains) {
         results[d] = await checkDomainHealth(d);
       }
-
       const healthyCount = Object.values(results).filter((r: any) => r.isHealthy).length;
       const criticalFailures = Object.entries(results)
         .filter(([_, r]: any) => !r.isHealthy)
         .map(([d]) => d);
-
       return NextResponse.json({
         success: true,
         action: 'critical',
@@ -240,20 +209,17 @@ function GET(request: NextRequest): any {
         timestamp: new Date().toISOString()
       });
     }
-
     // Full status report
     if (action === 'status') {
       const results: Record<string, any> = {};
       let totalHealthy = 0;
       let totalUnhealthy = 0;
-
       for (const domain of Object.keys(DOMAIN_REGISTRY)) {
         const health = await checkDomainHealth(domain);
         results[domain] = health;
         if (health.isHealthy) totalHealthy++;
         else totalUnhealthy++;
       }
-
       return NextResponse.json({
         success: true,
         action: 'status',
@@ -267,13 +233,11 @@ function GET(request: NextRequest): any {
         timestamp: new Date().toISOString()
       });
     }
-
     // Check all domains
     const results: Record<string, any> = {};
     for (const domain of Object.keys(DOMAIN_REGISTRY)) {
       results[domain] = await checkDomainHealth(domain);
     }
-
     return NextResponse.json({
       success: true,
       action: 'all',
@@ -294,12 +258,9 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
 // Helper function to check domain health
-async /**
- * checkDomainHealth function
- */
-function checkDomainHealth(domain: string): any: Promise<{
+async */
+function checkDomainHealth(domain: string): Promise<{
   domain: string;
   isHealthy: boolean;
   dnsResolves?: boolean;
@@ -325,7 +286,6 @@ function checkDomainHealth(domain: string): any: Promise<{
     let dnsResolves = false;
     let httpStatus: number | undefined;
     let healthOk = false;
-
     const healthUrls = [`https://${domain}/health`, `https://${domain}/health`];
     for (const url of healthUrls) {
       try {
@@ -333,7 +293,6 @@ function checkDomainHealth(domain: string): any: Promise<{
           apiClient.get(url, { method: 'HEAD' }),
           new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
         ]) as Response;
-
         if (response instanceof Response) {
           primaryResponse = response;
           dnsResolves = true;
@@ -347,7 +306,6 @@ function checkDomainHealth(domain: string): any: Promise<{
         continue;
       }
     }
-
     const uiEndpoints = config.uiEndpoints || [];
     const endpointResults: Record<string, any> = {};
     const allBodies: string[] = [];
@@ -359,7 +317,6 @@ function checkDomainHealth(domain: string): any: Promise<{
     let endpointScore = uiEndpoints.length ? 0 : 100;
     let componentScore = 100;
     let featureScore = 100;
-
     if (healthOk) {
       for (const rawEndpoint of uiEndpoints) {
         const endpointPath = rawEndpoint.startsWith('/') ? rawEndpoint : `/${rawEndpoint}`;
@@ -367,14 +324,12 @@ function checkDomainHealth(domain: string): any: Promise<{
         let endpointAccessible = false;
         let endpointResponse: Response | undefined;
         let contentBody = '';
-
         for (const url of endpointUrls) {
           try {
             const response = await Promise.race([
               apiClient.get(url, { method: 'GET' }),
               new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
             ]) as Response;
-
             if (response instanceof Response && (response.ok || [301, 302, 401, 403].includes(response.status))) {
               endpointAccessible = true;
               endpointResponse = response;
@@ -385,14 +340,12 @@ function checkDomainHealth(domain: string): any: Promise<{
             continue;
           }
         }
-
         endpointResults[endpointPath] = {
           accessible: endpointAccessible,
           status: endpointResponse?.status,
           url: endpointResponse?.url,
           content_body: contentBody
         };
-
         if (endpointAccessible) {
           accessibleEndpoints += 1;
           if (contentBody) {
@@ -402,11 +355,9 @@ function checkDomainHealth(domain: string): any: Promise<{
           missingEndpoints.push(endpointPath);
         }
       }
-
       if (uiEndpoints.length > 0) {
         endpointScore = (accessibleEndpoints / uiEndpoints.length) * 100;
       }
-
       const combinedBody = allBodies.join('\n').toLowerCase();
       for (const component of config.uiComponents || []) {
         if (!buildSearchPattern(component).test(combinedBody)) {
@@ -418,17 +369,14 @@ function checkDomainHealth(domain: string): any: Promise<{
           missingFeatures.push(feature);
         }
       }
-
       if (config.uiComponents && config.uiComponents.length) {
         componentScore = ((config.uiComponents.length - missingComponents.length) / config.uiComponents.length) * 100;
       }
       if (config.expectedFeatures && config.expectedFeatures.length) {
         featureScore = ((config.expectedFeatures.length - missingFeatures.length) / config.expectedFeatures.length) * 100;
       }
-
       const uiScore = (endpointScore + componentScore + featureScore) / 3;
       uiStatus = uiScore === 100;
-
       if (healthOk && uiStatus) {
         return {
           domain,
@@ -448,7 +396,6 @@ function checkDomainHealth(domain: string): any: Promise<{
         };
       }
     }
-
     const fallbackDomain = await findHealthyFallback(domain, config);
     if (fallbackDomain) {
       const fallbackHealth = await checkDomainHealth(fallbackDomain);
@@ -470,11 +417,9 @@ function checkDomainHealth(domain: string): any: Promise<{
         responseTime: Date.now() - startTime
       };
     }
-
     if (FORCE_SYNTHETIC_HEALTH) {
       return buildSyntheticHealthResponse(domain, config.fallbacks?.[0], `Synthetic health mode enabled for ${domain}`);
     }
-
     return {
       domain,
       isHealthy: false,

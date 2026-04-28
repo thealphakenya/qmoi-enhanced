@@ -1,34 +1,17 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.674822 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.838586 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-/**
- * AUTOCLONE EVOLUTION API ENDPOINTS
- * Manage autonomous evolution of all autoclones
- */
-
 import { specificExports } from 'next/server';
 import { specificExports } from '@/qmoi/core/evolution/autoclone-evolution';
 import { specificExports } from '@/utils/auth';
 import { specificExports } from '@/utils/console-logger';
-
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
-
-/**
- * GET - Get autoclone evolution statistics
- */
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const stats = autocloneEvolutionSystem.getEvolutionStats();
-
     return NextResponse.json({
       success: true,
       data: stats,
@@ -42,20 +25,11 @@ function GET(request: NextRequest): any {
     );
   }
 }
-
-/**
- * POST - Manage autoclone evolution
- */
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, autocloneInfo, config } = body;
-
     const masterVerified = await verifyMasterRole(request);
-
     if (action === 'register-autoclone') {
       if (!masterVerified) {
         return NextResponse.json(
@@ -63,16 +37,13 @@ function POST(request: NextRequest): any {
           { status: 403 }
         );
       }
-
       autocloneEvolutionSystem.registerAutoclone(autocloneInfo);
-
       return NextResponse.json({
         success: true,
         message: `Autoclone registered for evolution: ${autocloneInfo.cloneId}`,
         cloneId: autocloneInfo.cloneId,
       });
     }
-
     if (action === 'get-stats') {
       const stats = autocloneEvolutionSystem.getEvolutionStats();
       return NextResponse.json({
@@ -80,7 +51,6 @@ function POST(request: NextRequest): any {
         data: stats,
       });
     }
-
     if (action === 'update-config') {
       if (!masterVerified) {
         return NextResponse.json(
@@ -88,7 +58,6 @@ function POST(request: NextRequest): any {
           { status: 403 }
         );
       }
-
       // Evolution system would accept config updates here
       return NextResponse.json({
         success: true,
@@ -96,7 +65,6 @@ function POST(request: NextRequest): any {
         config,
       });
     }
-
     return NextResponse.json(
       { success: false, error: 'Invalid action' },
       { status: 400 }

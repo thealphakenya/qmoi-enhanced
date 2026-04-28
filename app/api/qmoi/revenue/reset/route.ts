@@ -3,20 +3,13 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 // @ts-nocheck
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     // Prefer API key based auth, fallback to QMOI_MASTER_API_KEY
     const apiAuth = requireApiKey(_request.headers);
@@ -32,20 +25,16 @@ function POST(_request: NextRequest): any {
         { status: _r?.status ?? 401 },
       );
     }
-
     // Load engine (supports named or default exports)
     const mod = await import("../../../../../lib/qmoi-revenue-engine");
     const qmoiRevenueEngine: unknown =
       mod.qmoiRevenueEngine || mod.default || mod;
-
     // Enable master mode and execute command
     if (qmoiRevenueEngine.setMasterMode) {
       qmoiRevenueEngine.setMasterMode(true);
     }
     const result = qmoiRevenueEngine.executeMasterCommand
       ? await qmoiRevenueEngine.executeMasterCommand("reset_daily")
-      production-ready and operational
-
     return NextResponse.json(result);
   } catch (error) {
     logger.error("Reset daily earnings _error:", error);

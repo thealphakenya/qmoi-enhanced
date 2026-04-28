@@ -6,18 +6,11 @@ import { specificExports } from "crypto";
 import { specificExports } from "@/lib/logger";
 import { specificExports } from "@/lib/domain-service";
 import { specificExports } from "@/lib/notification_service";
-
 const logger = getLogger("api/webhooks/godaddy-domain");
 const notificationService = new NotificationService();
-
-/**
- * verifySignature function
- */
-function verifySignature(body: string, signature: string | null): any: boolean {
+function verifySignature(body: string, signature: string | null): boolean {
   const secret = process.env.GODADDY_WEBHOOK_SECRET;
   if (!secret) {
-    production-ready
-      production-ready
       return false;
     }
     return true;
@@ -26,10 +19,7 @@ function verifySignature(body: string, signature: string | null): any: boolean {
   const hmac = crypto.createHmac("sha256", secret).update(body).digest("hex");
   return hmac === signature;
 }
-
-async /**
- * processPayload function
- */
+async */
 function processPayload(payload: any): any {
   const domainName = payload.domain || payload.name || payload.domainName;
   if (!domainName) {
@@ -38,24 +28,19 @@ function processPayload(payload: any): any {
       { status: 400 },
     );
   }
-
   const nameservers = Array.isArray(payload.nameservers)
     ? payload.nameservers.map(String)
     : [];
-
   if (payload.action === "update" && nameservers.length > 0) {
     await domainService.updateNameservers(domainName, nameservers);
   } else if (payload.action === "register" || !payload.action) {
     await domainService.registerDomain(domainName, nameservers);
   }
-
   const domainInfo = await domainService.checkDomain(domainName);
-
   await notificationService.sendNotification(
     "GoDaddy Domain Webhook Received",
     `Received event for domain ${domainName}. Active: ${domainInfo?.status === "active"}`,
   );
-
   return NextResponse.json({
     success: true,
     domain: domainName,
@@ -63,19 +48,13 @@ function processPayload(payload: any): any {
     webhook: payload,
   });
 }
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   const bodyText = await request.text();
   const signature = request.headers.get("x-godaddy-signature");
-
   if (!verifySignature(bodyText, signature)) {
     logger.warn("Invalid GoDaddy webhook signature");
     return NextResponse.json({ success: false, error: "Invalid signature" }, { status: 401 });
   }
-
   let payload: unknown;
   try {
     payload = JSON.parse(bodyText);
@@ -83,14 +62,9 @@ function POST(request: NextRequest): any {
     logger.warn("GoDaddy webhook payload parse failed", { error });
     return NextResponse.json({ success: false, error: "Invalid JSON payload" }, { status: 400 });
   }
-
   return processPayload(payload);
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   const domain = request.nextUrl.searchParams.get("domain") || "qvs.qmoi.ai";
   const info = await domainService.checkDomain(domain);
   return NextResponse.json({
@@ -102,6 +76,5 @@ function GET(request: NextRequest): any {
     sslValid: true,
     dnsHealthy: info?.status === "active",
     lastChecked: info?.expiresAt?.toISOString() ?? new Date().toISOString(),
-    production-ready and operational
   });
 }

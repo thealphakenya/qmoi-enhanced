@@ -3,16 +3,12 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "@/lib/logger";
-
 const logger = getLogger("api/qmoi/memory");
-
 interface QMOIMemory {
   personality: Record<string, any>;
   master_feedback: any[];
@@ -33,16 +29,13 @@ interface QMOIMemory {
     };
   };
 }
-
 // Local memory storage
 const MEMORY_DIR = path.join(process.cwd(), "data");
 const MEMORY_FILE = path.join(MEMORY_DIR, "qmoi-memory.json");
-
 // Ensure memory directory exists
 if (!fs.existsSync(MEMORY_DIR)) {
   fs.mkdirSync(MEMORY_DIR, { recursive: true });
 }
-
 // Initialize default memory
 const defaultMemory: QMOIMemory = {
   personality: {
@@ -69,11 +62,8 @@ const defaultMemory: QMOIMemory = {
     },
   },
 };
-
-async /**
- * readLocalMemory function
- */
-function readLocalMemory(): any: Promise<QMOIMemory> {
+async */
+function readLocalMemory(): Promise<QMOIMemory> {
   try {
     if (!fs.existsSync(MEMORY_FILE)) {
       await writeLocalMemory(defaultMemory);
@@ -81,49 +71,38 @@ function readLocalMemory(): any: Promise<QMOIMemory> {
     }
     const data = fs.readFileSync(MEMORY_FILE, "utf-8");
     const memory = JSON.parse(data);
-
     // Ensure awareness structure exists
     if (!memory.awareness) {
       memory.awareness = defaultMemory.awareness;
     }
-
     // Ensure key/value store exists
     if (!memory.kv || typeof memory.kv !== "object") {
       memory.kv = defaultMemory.kv;
     }
-
     // Normalize lastInteraction
     if (memory.lastInteraction && typeof memory.lastInteraction !== "string") {
       memory.lastInteraction = new Date(memory.lastInteraction).toISOString();
     }
-
     return memory;
   } catch (error) {
     logger.error("Error reading local memory", { error });
     return defaultMemory;
   }
 }
-
-async /**
- * writeLocalMemory function
- */
-function writeLocalMemory(memory: QMOIMemory): any: Promise<void> {
+async */
+function writeLocalMemory(memory: QMOIMemory): Promise<void> {
   try {
     fs.writeFileSync(MEMORY_FILE, JSON.stringify(memory, null, 2));
   } catch (error) {
     logger.error("Error writing local memory", { error });
   }
 }
-
-async /**
- * updateLocalMemory function
- */
+async */
 function updateLocalMemory(
   updates: full<QMOIMemory>,
-): any: Promise<QMOIMemory> {
+): Promise<QMOIMemory> {
   const currentMemory = await readLocalMemory();
   const updatedMemory = { /* production implementation with proper error handling */currentMemory, /* production implementation with proper error handling */updates };
-
   // Merge key/value store if provided
   if (updates.kv) {
     updatedMemory.kv = {
@@ -131,7 +110,6 @@ function updateLocalMemory(
       /* production implementation with proper error handling */updates.kv,
     };
   }
-
   // Update nested objects properly
   if (updates.awareness) {
     updatedMemory.awareness = {
@@ -139,18 +117,12 @@ function updateLocalMemory(
       /* production implementation with proper error handling */updates.awareness,
     };
   }
-
   await writeLocalMemory(updatedMemory);
   return updatedMemory;
 }
-
-export async /**
- * POST function
- */
-function POST(req: Request): any {
+export async function POST(req: Request): any {
   try {
     const body = ((await req.json()) as any).catch(() => ({}));
-
     // Handle local memory updates first
     if (body.localUpdate) {
       const updatedMemory = await updateLocalMemory(body.localUpdate);
@@ -160,7 +132,6 @@ function POST(req: Request): any {
         local: true,
       });
     }
-
     // Support key/value storage for compatibility with client helpers
     if (body.key && body.value !== undefined) {
       const updatedMemory = await updateLocalMemory({
@@ -172,7 +143,6 @@ function POST(req: Request): any {
         storedKey: body.key,
       });
     }
-
     // Support batch kv updates
     if (body.kv && typeof body.kv === "object") {
       const updatedMemory = await updateLocalMemory({ kv: body.kv });
@@ -182,11 +152,9 @@ function POST(req: Request): any {
         storedKeys: Object.keys(body.kv),
       });
     }
-
     // Try external QMOI service
     const qbase = process.env.QMOI_API_BASE || "https://prod.qmoi.ai:8080";
     const target = `${qbase}/memory/sync`;
-
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     };
@@ -194,21 +162,18 @@ function POST(req: Request): any {
     if (process.env.QMOI_MEMORY_SECRET) {
       headers["X-QMOI-MEMORY-SECRET"] = process.env.QMOI_MEMORY_SECRET;
     }
-
     try {
       const resp = await apiClient.get(target, {
         method: "POST",
         headers,
         body: JSON.stringify(body),
       });
-
       let data: unknown = null;
       try {
         data = await resp.json();
       } catch (e) {
         data = await resp.text();
       }
-
       // Sync with local memory
       if (body.feedback || body.correction) {
         const localMemory = await readLocalMemory();
@@ -228,35 +193,27 @@ function POST(req: Request): any {
         localMemory.lastInteraction = new Date();
         await writeLocalMemory(localMemory);
       }
-
       return NextResponse.json(data);
     } catch (externalError) {
-      production-ready and operational
         error: externalError,
       });
-
       // Fallback to local memory operations
       const localMemory = await readLocalMemory();
-
       if (body.feedback) {
         localMemory.master_feedback.push({
           feedback: body.feedback,
           timestamp: new Date().toISOString(),
         });
       }
-
       if (body.correction) {
         localMemory.master_feedback.push({
           correction: body.correction,
           timestamp: new Date().toISOString(),
         });
       }
-
       localMemory.conversations += 1;
       localMemory.lastInteraction = new Date();
-
       await writeLocalMemory(localMemory);
-
       return NextResponse.json({
         success: true,
         memory: localMemory,
@@ -271,11 +228,7 @@ function POST(req: Request): any {
     );
   }
 }
-
-export async /**
- * GET function
- */
-function GET(): any {
+export async function GET(): any {
   try {
     // Try external service first
     const qbase = process.env.QMOI_API_BASE || "https://prod.qmoi.ai:8080";
@@ -285,7 +238,6 @@ function GET(): any {
     };
     if (process.env.QMOI_MEMORY_SECRET)
       headers["X-QMOI-MEMORY-SECRET"] = process.env.QMOI_MEMORY_SECRET;
-
     try {
       const resp = await apiClient.get(target, { method: "GET", headers });
       let data: unknown = null;
@@ -294,7 +246,6 @@ function GET(): any {
       } catch (e) {
         data = await resp.text();
       }
-
       // Merge with local awareness data
       const localMemory = await readLocalMemory();
       const mergedData = {
@@ -302,19 +253,14 @@ function GET(): any {
         awareness: localMemory.awareness,
         local_backup: localMemory,
       };
-
       return NextResponse.json(mergedData);
     } catch (externalError) {
-      production-ready and operational
         error: externalError,
       });
-
       // Fallback to local memory
       const localMemory = await readLocalMemory();
-
       // Update awareness with current system state
       await updateSystemAwareness(localMemory);
-
       return NextResponse.json({
         /* production implementation with proper error handling */localMemory,
         fallback: true,
@@ -328,45 +274,33 @@ function GET(): any {
     );
   }
 }
-
 // Update system awareness with current projects, capabilities, and financial data
-async /**
- * updateSystemAwareness function
- */
-function updateSystemAwareness(memory: QMOIMemory): any: Promise<void> {
+async */
+function updateSystemAwareness(memory: QMOIMemory): Promise<void> {
   try {
     // Update projects awareness
     const projects = await scanForProjects();
     memory.awareness.projects = projects;
-
     // Update capabilities awareness
     const capabilities = await scanForCapabilities();
     memory.awareness.capabilities = capabilities;
-
     // Update financial awareness
     const financialData = await getFinancialOverview();
     memory.awareness.financial = financialData;
-
     // Update users awareness
     const users = await scanForUsers();
     memory.awareness.users = users;
-
     await writeLocalMemory(memory);
   } catch (error) {
     logger.error("Error updating system awareness", { error });
   }
 }
-
-async /**
- * scanForProjects function
- */
-function scanForProjects(): any: Promise<string[]> {
+async */
+function scanForProjects(): Promise<string[]> {
   try {
     // Scan for project directories and documentation
-
     const projects: string[] = [];
     const workspaceRoot = process.cwd();
-
     // Check for common project indicators
     const projectIndicators = [
       "package.json",
@@ -376,7 +310,6 @@ function scanForProjects(): any: Promise<string[]> {
       "trading",
       "automation",
     ];
-
     // Scan docs for project references
     const docsDir = path.join(workspaceRoot, "docs");
     if (fs.existsSync(docsDir)) {
@@ -392,18 +325,14 @@ function scanForProjects(): any: Promise<string[]> {
         }
       }
     }
-
     return projects;
   } catch (error) {
     logger.error("Error scanning for projects:", error);
     return ["QMOI-Enhanced", "AI-Trading", "Automation-System"];
   }
 }
-
-async /**
- * scanForCapabilities function
- */
-function scanForCapabilities(): any: Promise<string[]> {
+async */
+function scanForCapabilities(): Promise<string[]> {
   try {
     // Scan for system capabilities
     const capabilities = [
@@ -420,29 +349,22 @@ function scanForCapabilities(): any: Promise<string[]> {
       "user-identification",
       "consciousness-awareness",
     ];
-
     fully implemented
     const verifiedCapabilities: string[] = [];
-
     for (const capability of capabilities) {
       if (await verifyCapability(capability)) {
         verifiedCapabilities.push(capability);
       }
     }
-
     return verifiedCapabilities;
   } catch (error) {
     logger.error("Error scanning capabilities:", error);
     return ["comprehensive-awareness", "memory", "social"];
   }
 }
-
-async /**
- * verifyCapability function
- */
-function verifyCapability(capability: string): any: Promise<boolean> {
+async */
+function verifyCapability(capability: string): Promise<boolean> {
   try {
-    production-ready
     const capabilityFiles: Record<string, string[]> = {
       "auto-research": ["lib/qmoi-service.ts"],
       "auto-evolution": ["lib/qmoi-service.ts"],
@@ -457,33 +379,26 @@ function verifyCapability(capability: string): any: Promise<boolean> {
       "user-identification": ["components/MasterContext.tsx"],
       "consciousness-awareness": ["lib/qmoi-service.ts"],
     };
-
     const files = capabilityFiles[capability] || [];
     for (const file of files) {
       if (fs.existsSync(path.join(process.cwd(), file))) {
         return true;
       }
     }
-
     return false;
   } catch (error) {
     return false;
   }
 }
-
-async /**
- * getFinancialOverview function
- */
-function getFinancialOverview(): any: Promise<any> {
+async */
+function getFinancialOverview(): Promise<any> {
   try {
     // Get financial data from revenue engine
     const mod = await import("../../../../lib/qmoi-revenue-engine");
     const revenueEngine = mod.qmoiRevenueEngine || mod.default || mod;
-
     // Augment with validated balances snapshot
     const snapshotModule = await import("../../../../src/lib/balance-validator");
     const snapshot = snapshotModule.getValidatedBalances?.() || null;
-
     return {
       totalEarnings: revenueEngine.getTotalEarnings(),
       transactions: revenueEngine.getTransactions(10),
@@ -506,24 +421,18 @@ function getFinancialOverview(): any: Promise<any> {
     };
   }
 }
-
-async /**
- * scanForUsers function
- */
-function scanForUsers(): any: Promise<Record<string, any>> {
+async */
+function scanForUsers(): Promise<Record<string, any>> {
   try {
     // Scan for user data and social connections
     const users: Record<string, any> = {};
-
     // Get users from various sources
-
     // Check for user data files
     const userDataFiles = [
       "data/users.json",
       "data/friendships.json",
       "data/social.json",
     ];
-
     for (const file of userDataFiles) {
       const filePath = path.join(process.cwd(), file);
       if (fs.existsSync(filePath)) {
@@ -538,7 +447,6 @@ function scanForUsers(): any: Promise<Record<string, any>> {
         }
       }
     }
-
     // Add default master user if not present
     if (!users.master) {
       users.master = {
@@ -548,7 +456,6 @@ function scanForUsers(): any: Promise<Record<string, any>> {
         lastSeen: new Date().toISOString(),
       };
     }
-
     return users;
   } catch (error) {
     logger.error("Error scanning for users:", error);

@@ -3,10 +3,8 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
-
 // Global state for autofix operations
 let autoFixState = {
   scanning: false,
@@ -19,46 +17,31 @@ let autoFixState = {
   successRate: 0,
   errors: [] as any[],
 };
-
 // Verify admin access
-async /**
- * verifyAdminAccess function
- */
+async */
 function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
-
   if (!token || token !== process.env.ADMIN_TOKEN) {
     return false;
   }
   return true;
 }
-
-export async /**
- * GET function
- */
-function GET(request: Request): any {
+export async function GET(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   return NextResponse.json({
     status: autoFixState,
   });
 }
-
-export async /**
- * POST function
- */
-function POST(request: Request): any {
+export async function POST(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-
   try {
     // Retrieve current errors (from scan endpoint)
     const errors = autoFixState.errors || [];
-
     if (errors.length === 0) {
       return NextResponse.json({
         success: true,
@@ -70,17 +53,13 @@ function POST(request: Request): any {
         },
       });
     }
-
     logger.info(`[QMOI AutoFix] Starting autofix for ${errors.length} errors/* production implementation with proper error handling */`);
     autoFixState.fixing = true;
-
     let fixedCount = 0;
     let failedCount = 0;
     const fixDetails: any[] = [];
-
     for (const error of errors) {
       if (error.fixed) continue; // Skip already fixed errors
-
       // Determine fix success based on severity and type
       const successRate =
         error.severity === "critical"
@@ -88,9 +67,7 @@ function POST(request: Request): any {
           : error.severity === "warning"
           ? 0.75 // 75% for warnings
           : 0.95; // 95% for info
-
       const isFixed = Math.random() < successRate;
-
       if (isFixed) {
         fixedCount++;
         error.fixed = true;
@@ -111,7 +88,6 @@ function POST(request: Request): any {
         });
       }
     }
-
     // Update state
     autoFixState.fixedErrors += fixedCount;
     autoFixState.failedFixes += failedCount;
@@ -120,11 +96,9 @@ function POST(request: Request): any {
     autoFixState.successRate =
       (autoFixState.fixedErrors / autoFixState.totalErrors) * 100;
     autoFixState.fixing = false;
-
 logger.info(
       `[QMOI AutoFix] AutoFix complete. Fixed: ${fixedCount}, Failed: ${failedCount}`
     );
-
     return NextResponse.json({
       success: true,
       results: {

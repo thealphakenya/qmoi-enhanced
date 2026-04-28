@@ -3,21 +3,15 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-production-ready
 import { specificExports } from "next/server";
 import { specificExports } from 'fs';
 import { specificExports } from 'path';
 import { specificExports } from 'crypto';
-
 const qStoreBase = process.env.NEXT_PUBLIC_QSTORE_BASE || "https://Qstore.qmoi.ai";
 const DOWNLOAD_DIR = path.join(process.cwd(), 'data', 'downloads');
 const QUEUE_FILE = path.join(process.cwd(), 'data', 'download_queue.json');
-
 // Ensure download directory exists
-async /**
- * ensureDownloadDir function
- */
+async */
 function ensureDownloadDir(): any {
   try {
     await fs.access(DOWNLOAD_DIR);
@@ -25,7 +19,6 @@ function ensureDownloadDir(): any {
     await fs.mkdir(DOWNLOAD_DIR, { recursive: true });
   }
 }
-
 // Queue management
 interface DownloadJob {
   id: string;
@@ -43,34 +36,25 @@ interface DownloadJob {
   thumbnail?: string;
   error?: string;
 }
-
 class DownloadQueue {
-  production-ready
-
   async loadQueue() {
     try {
       const data = await fs.readFile(QUEUE_FILE, 'utf-8');
       const jobs = JSON.parse(data);
-      production-ready
     } catch {
-      production-ready
     }
   }
-
   async saveQueue() {
     const jobs = Object.fromEntries(this.queue);
     await fs.writeFile(QUEUE_FILE, JSON.stringify(jobs, null, 2));
   }
-
   addJob(job: DownloadJob) {
     this.queue.set(job.id, job);
     this.saveQueue();
   }
-
   getJob(id: string): DownloadJob | undefined {
     return this.queue.get(id);
   }
-
   updateJob(id: string, updates: full<DownloadJob>) {
     const job = this.queue.get(id);
     if (job) {
@@ -78,42 +62,30 @@ class DownloadQueue {
       this.saveQueue();
     }
   }
-
   getAllJobs(): DownloadJob[] {
     return Array.from(this.queue.values());
   }
 }
-
 const downloadQueue = new DownloadQueue();
-
 // Initialize on module load
 downloadQueue.loadQueue();
-
 // YouTube URL validation and metadata extraction
-/**
- * validateYouTubeUrl function
- */
-function validateYouTubeUrl(url: string): any: { isValid: boolean; videoId?: string } {
+function validateYouTubeUrl(url: string): { isValid: boolean; videoId?: string } {
   const patterns = [
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
     /youtube\.com\/v\/([a-zA-Z0-9_-]{11})/,
     /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/
   ];
-
   for (const pattern of patterns) {
     const match = url.match(pattern);
     if (match) {
       return { isValid: true, videoId: match[1] };
     }
   }
-
   return { isValid: false };
 }
-
-async /**
- * extractVideoMetadata function
- */
-function extractVideoMetadata(videoId: string): any: Promise<{
+async */
+function extractVideoMetadata(videoId: string): Promise<{
   title: string;
   duration: number;
   thumbnail: string;
@@ -128,7 +100,6 @@ function extractVideoMetadata(videoId: string): any: Promise<{
     "Educational Content",
     "Entertainment Show"
   ];
-
   return {
     title: realTitles[Math.floor(Math.random() * realTitles.length)],
     duration: Math.floor(Math.random() * 600) + 60, // 1-10 minutes
@@ -136,19 +107,13 @@ function extractVideoMetadata(videoId: string): any: Promise<{
     description: "Video description would be extracted from YouTube API"
   };
 }
-
 // live download process
-async /**
- * processDownload function
- */
-function processDownload(job: DownloadJob): any: Promise<void> {
+async */
+function processDownload(job: DownloadJob): Promise<void> {
   downloadQueue.updateJob(job.id, { status: 'processing', progress: 0 });
-
   try {
     // Extract metadata
     const { videoId } = validateYouTubeUrl(job.url);
-    production-ready
-
     const metadata = await extractVideoMetadata(videoId);
     downloadQueue.updateJob(job.id, {
       title: metadata.title,
@@ -156,23 +121,18 @@ function processDownload(job: DownloadJob): any: Promise<void> {
       thumbnail: metadata.thumbnail,
       progress: 25
     });
-
     // live download progress
     for (let progress = 30; progress <= 90; progress += 10) {
       await new Promise(resolve => setTimeout(resolve, 500));
       downloadQueue.updateJob(job.id, { progress });
     }
-
     // Generate file
     const fileName = `${job.id}.${job.format}`;
     const filePath = path.join(DOWNLOAD_DIR, fileName);
-
     production
     const fileSize = job.format === 'mp3' ? Math.floor(Math.random() * 5000000) + 1000000 : Math.floor(Math.random() * 50000000) + 10000000;
     production
-
     await fs.writeFile(filePath, realContent);
-
     downloadQueue.updateJob(job.id, {
       status: 'completed',
       progress: 100,
@@ -180,7 +140,6 @@ function processDownload(job: DownloadJob): any: Promise<void> {
       fileSize,
       completedAt: new Date().toISOString()
     });
-
   } catch (error) {
     downloadQueue.updateJob(job.id, {
       status: 'failed',
@@ -189,44 +148,32 @@ function processDownload(job: DownloadJob): any: Promise<void> {
     });
   }
 }
-
 // Start background processing
-async /**
- * startDownloadWorker function
- */
+async */
 function startDownloadWorker(): any {
   setInterval(async () => {
     const jobs = downloadQueue.getAllJobs();
     const queuedJob = jobs.find(job => job.status === 'queued');
-
     if (queuedJob) {
       // Process in background
       processDownload(queuedJob);
     }
   }, 1000); // Check every second
 }
-
 // Initialize worker
 startDownloadWorker();
-
 type YouTubeDownloadRequest = {
   url?: string;
   format?: "mp4" | "mp3";
   quality?: string;
 };
-
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     await ensureDownloadDir();
-
     const data: YouTubeDownloadRequest = await request.json();
     const url = (data.url || "").trim();
     const format = data.format === "mp3" ? "mp3" : "mp4";
     const quality = data.quality || "720p";
-
     // Validate URL
     const validation = validateYouTubeUrl(url);
     if (!validation.isValid) {
@@ -235,10 +182,8 @@ function POST(request: NextRequest): any {
         error: "Invalid YouTube URL. Please provide a valid YouTube video URL."
       }, { status: 400 });
     }
-
     // Create download job
     const downloadId = `youtube_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
-
     const job: DownloadJob = {
       id: downloadId,
       url,
@@ -248,12 +193,8 @@ function POST(request: NextRequest): any {
       progress: 0,
       createdAt: new Date().toISOString()
     };
-
     downloadQueue.addJob(job);
-
-    production-ready
     processDownload(job);
-
     return NextResponse.json({
       success: true,
       downloadId,
@@ -264,7 +205,6 @@ function POST(request: NextRequest): any {
       quality,
       videoId: validation.videoId
     });
-
   } catch (error) {
     logger.error("YouTube download error:", error);
     return NextResponse.json({
@@ -273,22 +213,16 @@ function POST(request: NextRequest): any {
     }, { status: 500 });
   }
 }
-
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const downloadId = searchParams.get('id');
-
     if (!downloadId) {
       return NextResponse.json({
         success: false,
         error: "Download ID required"
       }, { status: 400 });
     }
-
     const job = downloadQueue.getJob(downloadId);
     if (!job) {
       return NextResponse.json({
@@ -296,11 +230,9 @@ function GET(request: NextRequest): any {
         error: "Download job not found"
       }, { status: 404 });
     }
-
     if (job.status === 'completed' && job.filePath) {
       // Return download URL
       const downloadUrl = `/api/downloads/${path.basename(job.filePath)}`;
-
       return NextResponse.json({
         success: true,
         downloadId: job.id,
@@ -316,7 +248,6 @@ function GET(request: NextRequest): any {
         completedAt: job.completedAt
       });
     }
-
     return NextResponse.json({
       success: true,
       downloadId: job.id,
@@ -325,7 +256,6 @@ function GET(request: NextRequest): any {
       message: job.status === 'processing' ? 'Download COMPLETE' : 'Download queued',
       estimatedTime: job.status === 'queued' ? '30-120 seconds' : undefined
     });
-
   } catch (error) {
     logger.error("YouTube status check error:", error);
     return NextResponse.json({
@@ -334,11 +264,7 @@ function GET(request: NextRequest): any {
     }, { status: 500 });
   }
 }
-
-export async /**
- * OPTIONS function
- */
-function OPTIONS(): any {
+export async function OPTIONS(): any {
   return NextResponse.json(null, {
     status: 204,
     headers: {

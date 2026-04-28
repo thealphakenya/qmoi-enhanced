@@ -3,30 +3,21 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
 interface AnomalyError {
   message: string;
   count?: number;
 }
-
 interface AnomalyResponse {
   errors?: AnomalyError[];
   status?: string;
   error?: string;
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
@@ -35,7 +26,6 @@ function GET(_request: NextRequest): any {
       status: _r?.status ?? 403,
     });
   }
-
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("errors")) {
     try {
@@ -43,7 +33,6 @@ function GET(_request: NextRequest): any {
       const result = await apiClient.get(`${process.env.API_URL || "https://qmoi.ai:3001"}/analytics`, {
         method: "GET",
       }).then((r) => r.json());
-      
       const errors: AnomalyError[] =
         result.top_ips && result.top_ips.length
           ? result.top_ips.map(([ip, count]: [string, number]) => ({
@@ -61,14 +50,9 @@ function GET(_request: NextRequest): any {
       );
     }
   }
-
   return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
@@ -77,12 +61,9 @@ function POST(_request: NextRequest): any {
       status: _r?.status ?? 403,
     });
   }
-
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     try {
-      
-      production-ready
       return NextResponse.json({ status: "fixed" });
     } catch (_e: unknown) {
       return NextResponse.json(
@@ -93,6 +74,5 @@ function POST(_request: NextRequest): any {
       );
     }
   }
-
   return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
 }

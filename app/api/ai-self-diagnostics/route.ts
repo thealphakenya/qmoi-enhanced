@@ -1,39 +1,27 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.764197 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.022383 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
 import { specificExports } from "../../../lib/proposals";
-
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 import { specificExports } from "child_process";
 import { specificExports } from "util";
 import { specificExports } from "fs";
-
 const execAsync = promisify(exec);
-
 interface DiagnosticProblem {
   type: string;
   message: string;
   file?: string;
 }
-
 interface DiagnosticResponse {
   status: string;
   problems: DiagnosticProblem[];
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
@@ -42,7 +30,6 @@ function GET(_request: NextRequest): any {
       status: _r?.status ?? 403,
     });
   }
-
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("problems")) {
     const problems: DiagnosticProblem[] = [];
@@ -92,14 +79,9 @@ function GET(_request: NextRequest): any {
     };
     return NextResponse.json(_respons_e);
   }
-
   return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
@@ -108,7 +90,6 @@ function POST(_request: NextRequest): any {
       status: _r?.status ?? 403,
     });
   }
-
   const searchParams = _request.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     const results: unknown[] = [];
@@ -168,6 +149,5 @@ function POST(_request: NextRequest): any {
     }
     return NextResponse.json({ results });
   }
-
   return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
 }

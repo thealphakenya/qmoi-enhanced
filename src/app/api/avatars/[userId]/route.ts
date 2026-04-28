@@ -28,10 +28,10 @@ export const config = {
  * GET /api/avatars/:userId
  * Retrieve user avatar with optional size parameter
  */
-export async /**
+/**
  * GET function
  */
-function GET(
+export async function GET(
   request: NextRequest,
   { params }: { params: { userId: string } }
 ): any {
@@ -79,10 +79,10 @@ function GET(
  * POST /api/avatars/generate
  * Generate new avatar with custom configuration
  */
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const config: AvatarConfig = {
@@ -123,10 +123,10 @@ function POST(request: NextRequest): any {
  * PUT /api/avatars/:userId/customize
  * Customize existing avatar
  */
-export async /**
+/**
  * PUT function
  */
-function PUT(
+export async function PUT(
   request: NextRequest,
   { params }: { params: { userId: string } }
 ): any {
@@ -170,10 +170,10 @@ function PUT(
  * DELETE /api/avatars/:userId
  * Delete user avatar (clears cache)
  */
-export async /**
+/**
  * DELETE function
  */
-function DELETE(
+export async function DELETE(
   request: NextRequest,
   { params }: { params: { userId: string } }
 ): any {
@@ -188,7 +188,6 @@ function DELETE(
     }
 
     // Cache invalidation would happen here
-    production-ready
 
     return NextResponse.json({
       success: true,
@@ -208,10 +207,10 @@ function DELETE(
  * HEAD /api/avatars/:userId
  * Check avatar existence and cache status
  */
-export async /**
+/**
  * HEAD function
  */
-function HEAD(
+export async function HEAD(
   request: NextRequest,
   { params }: { params: { userId: string } }
 ): any {
@@ -233,10 +232,10 @@ function HEAD(
  * OPTIONS /api/avatars/:userId
  * CORS and method availability
  */
-export async /**
+/**
  * OPTIONS function
  */
-function OPTIONS(request: NextRequest): any {
+export async function OPTIONS(request: NextRequest): any {
   return new NextResponse(null, {
     status: 200,
     headers: {

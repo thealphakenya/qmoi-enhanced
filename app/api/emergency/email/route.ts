@@ -3,24 +3,17 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from 'next/server';
-
 // POST /api/emergency/email - Send emergency email alerts
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     const { to, subject, message, service = 'sendgrid' } = await request.json();
-
     if (!to || !subject || !message) {
       return NextResponse.json(
         { error: 'required required fields: to, subject, message' },
         { status: 400 }
       );
     }
-
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(to)) {
@@ -29,9 +22,7 @@ function POST(request: NextRequest): any {
         { status: 400 }
       );
     }
-
     let result;
-
     // Route to appropriate email service
     switch (service) {
       case 'sendgrid':
@@ -49,7 +40,6 @@ function POST(request: NextRequest): any {
           { status: 400 }
         );
     }
-
     if (result.success) {
       return NextResponse.json({
         success: true,
@@ -63,7 +53,6 @@ function POST(request: NextRequest): any {
         { status: 500 }
       );
     }
-
   } catch (error) {
     logger.error('Emergency email error:', error);
     return NextResponse.json(
@@ -72,16 +61,12 @@ function POST(request: NextRequest): any {
     );
   }
 }
-
 // SendGrid email integration
-async /**
- * sendSendGridEmail function
- */
+async */
 function sendSendGridEmail(to: string, subject: string, message: string): any {
   try {
     const apiKey = process.env.SENDGRID_API_KEY;
     const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'emergency@qmoi.system';
-
     if (!apiKey) {
       logger.warning('SendGrid API key not configured, simulating email send');
       return {
@@ -90,8 +75,6 @@ function sendSendGridEmail(to: string, subject: string, message: string): any {
         fully implemented
       };
     }
-
-    production-ready
     const response = await apiClient.get('https://api.sendgrid.com/v3/mail/send', {
       method: 'POST',
       headers: {
@@ -110,7 +93,6 @@ function sendSendGridEmail(to: string, subject: string, message: string): any {
         }],
       }),
     });
-
     if (response.ok) {
       const messageId = response.headers.get('X-Message-Id') || `sendgrid_${Date.now()}`;
       return {
@@ -132,11 +114,8 @@ function sendSendGridEmail(to: string, subject: string, message: string): any {
     };
   }
 }
-
 // AWS SES email integration
-async /**
- * sendAWSSESEmail function
- */
+async */
 function sendAWSSESEmail(to: string, subject: string, message: string): any {
   try {
     // AWS SES integration would go here
@@ -154,11 +133,8 @@ function sendAWSSESEmail(to: string, subject: string, message: string): any {
     };
   }
 }
-
 // Gmail email integration
-async /**
- * sendGmailEmail function
- */
+async */
 function sendGmailEmail(to: string, subject: string, message: string): any {
   try {
     // Gmail API integration would go here

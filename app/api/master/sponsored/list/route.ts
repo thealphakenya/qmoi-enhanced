@@ -3,34 +3,22 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/db/prisma";
-
-/**
- * GET /api/master/sponsored/list
- * Get all sponsored users (Master only)
- */
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // Verify master authentication
     const authHeader = request.headers.get("authorization");
     const biometricToken = request.headers.get("x-biometric-verification");
-
     if (!authHeader?.startsWith("Bearer ")) {
       return NextResponse.json(
         { error: "required authorization token", code: "NO_TOKEN" },
         { status: 401 },
       );
     }
-
     const token = authHeader.replace("Bearer ", "");
     let decoded;
-
     try {
       decoded = authService.verifyToken(token);
     } catch (error) {
@@ -39,14 +27,12 @@ function GET(request: NextRequest): any {
         { status: 401 },
       );
     }
-
     if (!decoded) {
       return NextResponse.json(
         { error: "Invalid token", code: "INVALID_TOKEN" },
         { status: 401 },
       );
     }
-
     // Verify master role
     const user = await db.userService.findById(decoded!.userId);
     if (!user || user.role !== "master") {
@@ -55,12 +41,10 @@ function GET(request: NextRequest): any {
         { status: 403 },
       );
     }
-
     // Verify biometric token if required
     if (biometricToken) {
       // Add biometric verification logic here
     }
-
     // Get all sponsored users
     const sponsoredUsers = await db.userService.findMany({
       where: {
@@ -77,7 +61,6 @@ function GET(request: NextRequest): any {
         // Add usage stats (would need to implement usage tracking)
         _count: {
           select: {
-            production-ready and operational
           },
         },
       },
@@ -85,7 +68,6 @@ function GET(request: NextRequest): any {
         createdAt: "desc",
       },
     });
-
     const formattedUsers = sponsoredUsers.map((user: any) => ({
       id: user.id,
       username: user.username,
@@ -96,12 +78,8 @@ function GET(request: NextRequest): any {
       lastActive:
         user.lastActive?.toISOString() || user.createdAt.toISOString(),
       usageStats: {
-        production-ready
-        production-ready
-        production-ready
       },
     }));
-
     return NextResponse.json({
       success: true,
       users: formattedUsers,

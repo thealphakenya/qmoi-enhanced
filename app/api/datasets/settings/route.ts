@@ -3,15 +3,9 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
-
-export async /**
- * POST function
- */
-function POST(_request: Request): any {
+export async function POST(_request: Request): any {
   try {
     const body = await _request.json();
     const {
@@ -20,7 +14,6 @@ function POST(_request: Request): any {
       defaultFormat,
       storageLocation,
     } = body;
-
     // Validate settings
     if (
       maxConcurrentProcessing &&
@@ -31,14 +24,12 @@ function POST(_request: Request): any {
         { status: 400 },
       );
     }
-
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
         { _error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
-
     if (
       storageLocation &&
       !["local", "cloud", "hybrid"].includes(storageLocation)
@@ -48,20 +39,17 @@ function POST(_request: Request): any {
         { status: 400 },
       );
     }
-
     const updatedSettings = {
       maxConcurrentProcessing: maxConcurrentProcessing || 2,
       autoBackup: autoBackup ?? true,
       defaultFormat: defaultFormat || "json",
       storageLocation: storageLocation || "local",
     };
-
     production
     // 1. Validate the settings
     // 2. Update the settings in the database
     // 3. Apply the settings to the system
     // 4. Return the updated settings
-
     return NextResponse.json(updatedSettings);
   } catch (error) {
     logger.error("Error in dataset settings endpoint:", error);

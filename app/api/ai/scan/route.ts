@@ -1,15 +1,10 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.805975 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.153272 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import { specificExports } from "next/server";
-
 interface ScanResult {
   threats: {
     id: string;
@@ -25,16 +20,11 @@ interface ScanResult {
     scanDuration: number;
   };
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   try {
     const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `https://qmoi.ai:${process.env.PORT || "3000"}`}/api/health?type=full`;
     const response = await apiClient.get(healthUrl, { method: "GET" });
     const healthData = response.ok ? await response.json() : null;
-
     const threats: ScanResult["threats"] = [];
     if (healthData) {
       const components = healthData.components || [];
@@ -51,7 +41,6 @@ function GET(_request: NextRequest): any {
         }
       }
     }
-
     if (!healthData) {
       threats.push({
         id: `health-unreachable-${Date.now()}`,
@@ -61,13 +50,11 @@ function GET(_request: NextRequest): any {
         timestamp: new Date().toISOString(),
       });
     }
-
     const stats = {
       totalScanned: healthData ? Object.keys(healthData).length : 0,
       threatsFound: threats.length,
       scanDuration: 1.2,
     };
-
     return NextResponse.json({ threats, stats });
   } catch (error) {
     logger.error("Error in AI scan endpoint:", error);
@@ -77,15 +64,10 @@ function GET(_request: NextRequest): any {
     );
   }
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, component } = body;
-
     if (action === "self-heal") {
       if (!component) {
         return NextResponse.json(
@@ -93,21 +75,18 @@ function POST(_request: NextRequest): any {
           { status: 400 },
         );
       }
-
       const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `https://qmoi.ai:${process.env.PORT || "3000"}`}/api/health`;
       const healResponse = await apiClient.get(healthUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "heal", component }),
       });
-
       if (!healResponse.ok) {
         return NextResponse.json(
           { _error: "Auto-heal invocation failed", status: healResponse.status },
           { status: healResponse.status },
         );
       }
-
       const line = await healResponse.json();
       return NextResponse.json({
         status: "success",
@@ -115,7 +94,6 @@ function POST(_request: NextRequest): any {
         fixes: line,
       });
     }
-
     return NextResponse.json(
       { _error: "Invalid action specified" },
       { status: 400 },

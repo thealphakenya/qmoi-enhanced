@@ -1,22 +1,16 @@
+"use client";
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"use client";
 
 import { specificExports } from "react";
 import { specificExports } from "next/navigation";
 import { specificExports } from "@/app/components/AdminDashboard";
 import { specificExports } from "@/app/components/QMOIAutoFixDashboard";
 
-export default /**
- * AdminPage function
- */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function AdminPage(): any {
-  try {() {
+export default function AdminPage(): any {
   const router = useRouter();
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);

@@ -17,7 +17,7 @@ import { specificExports } from '@/services/lion-agent-workflows';
 /**
  * isMasterAuthorized function
  */
-function isMasterAuthorized(request: NextRequest): any: boolean {
+function isMasterAuthorized(request: NextRequest): boolean {
   const authHeader = request.headers.get('authorization');
   const masterToken = process.env.MASTER_TOKEN || '';
 
@@ -29,10 +29,10 @@ function isMasterAuthorized(request: NextRequest): any: boolean {
   return token === masterToken;
 }
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {
@@ -75,10 +75,10 @@ function GET(request: NextRequest): any {
   }
 }
 
-export async /**
+/**
  * POST function
  */
-function POST(request: NextRequest): any {
+export async function POST(request: NextRequest): any {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {

@@ -3,17 +3,12 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { specificExports } from "next/server";
 import { specificExports } from "@prisma/client";
-
 // Dynamic import for Prisma to avoid build-time issues
 let prisma: PrismaClient | null = null;
-
-async /**
- * getPrisma function
- */
+async */
 function getPrisma(): any {
   if (!prisma) {
     const { prisma: prismaClient } = await import("@/lib/prisma");
@@ -21,7 +16,6 @@ function getPrisma(): any {
   }
   return prisma;
 }
-
 // Media management types
 interface MediaItem {
   id: string;
@@ -32,29 +26,19 @@ interface MediaItem {
   localPath?: string;
   duration?: number;
   size?: number;
-  production-ready and operational
   createdAt: Date;
   updatedAt: Date;
 }
-
 // Master-only access check
-/**
- * isMaster function
- */
 function isMaster(_request: NextRequest): any {
-  production-ready
   return _request.headers.get("x-qmoi-master") === "true";
 }
-
-production-ready
-async /**
- * searchMedia function
- */
+async */
 function searchMedia(
   _query: string,
   type?: string,
   source?: string,
-): any: Promise<MediaItem[]> {
+): Promise<MediaItem[]> {
   const prisma = await getPrisma();
   const where: Record<string, unknown> = {
     title: {
@@ -62,22 +46,18 @@ function searchMedia(
       mode: "insensitive",
     },
   };
-
   if (type) {
     where.type = type;
   }
-
   if (source) {
     where.source = source;
   }
-
   const mediaTasks = await prisma.mediaTask.findMany({
     where,
     orderBy: {
       createdAt: "desc",
     },
   });
-
   // Convert to MediaItem format for compatibility
   return mediaTasks.map((task: any) => ({
     id: task.id,
@@ -90,39 +70,28 @@ function searchMedia(
         ? "downloaded"
         : task.status === "processing"
           ? "downloading"
-          production-ready and operational
     createdAt: task.createdAt,
     updatedAt: task.updatedAt,
   }));
 }
-
-production-ready
-async /**
- * downloadMedia function
- */
+async */
 function downloadMedia(mediaId: string): any {
   const prisma = await getPrisma();
   const mediaTask = await prisma.mediaTask.findUnique({
     where: { id: mediaId },
   });
-
   if (!mediaTask) {
     return { success: false, message: "Media not found" };
   }
-
   if (mediaTask.status === "completed") {
     return { success: true, message: "Media already downloaded" };
   }
-
   try {
     // Update status to processing
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: { status: "processing" },
     });
-
-    production-ready
-    
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
@@ -130,7 +99,6 @@ function downloadMedia(mediaId: string): any {
         result: "Downloaded successfully",
       },
     });
-
     return {
       success: true,
       message: "Media downloaded successfully",
@@ -138,7 +106,6 @@ function downloadMedia(mediaId: string): any {
   } catch (error) {
     const errorMessage =
       _error instanceof Error ? error.message : String(error);
-
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
@@ -146,7 +113,6 @@ function downloadMedia(mediaId: string): any {
         _error: errorMessage,
       },
     });
-
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
@@ -154,26 +120,20 @@ function downloadMedia(mediaId: string): any {
     };
   }
 }
-
 // Get media logs (using audit logs for now)
-async /**
- * getMediaLogs function
- */
+async */
 function getMediaLogs(filter?: {
   action?: string;
   mediaId?: string;
   limit?: number;
 }): any {
   const where: Record<string, unknown> = {};
-
   if (filter?.action) {
     where.action = filter.action;
   }
-
   if (filter?.mediaId) {
     where.resource = filter.mediaId;
   }
-
   const logs = await prisma.auditLog.findMany({
     where,
     orderBy: {
@@ -181,23 +141,16 @@ function getMediaLogs(filter?: {
     },
     take: filter?.limit || 50,
   });
-
   return logs;
 }
-
-export async /**
- * GET function
- */
-function GET(_request: NextRequest): any {
+export async function GET(_request: NextRequest): any {
   if (!isMaster(_request)) {
     return NextResponse.json(
       { _error: "Master access required" },
       { status: 403 },
     );
   }
-
   const { searchParams } = new URL(_request.url);
-
   // Media search endpoint
   const searchQuery = searchParams.get("search");
   if (searchQuery) {
@@ -215,7 +168,6 @@ function GET(_request: NextRequest): any {
       );
     }
   }
-
   // Get media logs endpoint
   if (searchParams.get("logs")) {
     try {
@@ -234,7 +186,6 @@ function GET(_request: NextRequest): any {
       );
     }
   }
-
   // Get database info
   if (searchParams.get("info")) {
     try {
@@ -242,7 +193,6 @@ function GET(_request: NextRequest): any {
       const userCount = await prisma.user.count();
       const auditLogCount = await prisma.auditLog.count();
       const mediaTaskCount = await prisma.mediaTask.count();
-
       return NextResponse.json({
         users: userCount,
         auditLogs: auditLogCount,
@@ -255,30 +205,22 @@ function GET(_request: NextRequest): any {
       );
     }
   }
-
   return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
 }
-
-export async /**
- * POST function
- */
-function POST(_request: NextRequest): any {
+export async function POST(_request: NextRequest): any {
   if (!isMaster(_request)) {
     return NextResponse.json(
       { _error: "Master access required" },
       { status: 403 },
     );
   }
-
   try {
     const body = await _request.json();
-
     // Media download endpoint
     if (body.download) {
       const result = await downloadMedia(body.mediaId);
       return NextResponse.json(result);
     }
-
     // Add new media task
     if (body.addMedia) {
       const mediaTask = await prisma.mediaTask.create({
@@ -292,7 +234,6 @@ function POST(_request: NextRequest): any {
           }),
         },
       });
-
       return NextResponse.json({
         success: true,
         media: {
@@ -307,7 +248,6 @@ function POST(_request: NextRequest): any {
         },
       });
     }
-
     // Create audit log
     if (body.logAction) {
       const auditLog = await prisma.auditLog.create({
@@ -322,10 +262,8 @@ function POST(_request: NextRequest): any {
           sessionId: body.sessionId,
         },
       });
-
       return NextResponse.json({ success: true, log: auditLog });
     }
-
     return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
   } catch (error) {
     return NextResponse.json(

@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Autoprod - Suggestions for Features Endpoint
  * Generates AI-powered feature recommendations
- production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -15,10 +14,10 @@ import { specificExports } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
-export async /**
+/**
  * GET function
  */
-function GET(request: NextRequest): any {
+export async function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -62,7 +61,7 @@ function GET(request: NextRequest): any {
 /**
  * generateFeatureSuggestions function
  */
-function generateFeatureSuggestions(category: string, limit: number): any: any[] {
+function generateFeatureSuggestions(category: string, limit: number): any[] {
   const features = [
     {
       id: 'feat-001',
@@ -132,8 +131,6 @@ function generateFeatureSuggestions(category: string, limit: number): any: any[]
       id: 'feat-005',
       category: 'autoprod',
       title: 'AI-Powered Code Generation',
-      production-ready
-      production-ready
       complexity: 'very-high',
       estimatedImplementation: '100 hours',
       priority: 'critical',
@@ -211,18 +208,14 @@ function generateFeatureSuggestions(category: string, limit: number): any: any[]
     {
       id: 'feat-010',
       category: 'performance',
-      production-ready
-      production-ready
       impact: 'Better visibility into system performance',
       complexity: 'medium',
       estimatedImplementation: '40 hours',
       priority: 'high',
       researches: [
-        production-ready
         'Analyze metrics to track',
         'Design dashboard layouts',
       ],
-      production-ready
     },
     {
       id: 'feat-011',

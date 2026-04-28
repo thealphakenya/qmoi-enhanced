@@ -1,18 +1,9 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.772469 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.121322 -->
 import { NextRequest, NextResponse } from 'next/server';
-
-/**
- * Thermal Camera API
- * Night vision and heat detection surveillance
- */
-
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const zone = searchParams.get('zone') || 'all';
-
     const thermalCameras = [
       {
         id: 'thermal_001',
@@ -35,12 +26,10 @@ export async function GET(request: NextRequest) {
         features: ['structural-monitoring', 'fire-detection', 'occupancy-detection']
       }
     ];
-
     let filteredCameras = thermalCameras;
     if (zone !== 'all') {
       filteredCameras = thermalCameras.filter(cam => cam.zone === zone);
     }
-
     return NextResponse.json({
       success: true,
       data: {
@@ -50,7 +39,6 @@ export async function GET(request: NextRequest) {
         heatDetection: true
       }
     });
-
   } catch (error) {
     console.error('Thermal camera API error:', error);
     return NextResponse.json(
