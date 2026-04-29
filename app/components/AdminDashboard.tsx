@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Page() {
-  return <div>Stub page for ${rel}</div>;
+export default function AdminDashboard() {
+  return <div>Admin dashboard stub</div>;
 }

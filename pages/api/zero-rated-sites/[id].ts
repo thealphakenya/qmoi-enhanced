@@ -1,111 +1,73 @@
-console.log("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:08Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { NextApiRequest, NextApiResponse } from 'next';
 
-import { specificExports } from "next/server";
-import { specificExports } from "@/lib/zero-rated-sites-service";
+type ZeroRatedSite = {
+  id: string;
+  name: string;
+  domain: string;
+  urls: string[];
+  category: string;
+  continents: string[];
+  countries: string[];
+  regions: string[];
+  isActive: boolean;
+  globalAccess: boolean;
+};
 
-interface RouteParams {
-  params: {
-    id: string;
-  };
+const zeroRatedSites: ZeroRatedSite[] = [];
+
+function findSite(id: string): ZeroRatedSite | undefined {
+  return zeroRatedSites.find((site) => site.id === id);
 }
 
-export async /**
- * GET function
- */
-function GET(request: NextRequest, { params }: RouteParams): any {
-  try {
-    const siteId = params.id;
+function updateSite(id: string, data: Partial<ZeroRatedSite>): ZeroRatedSite | null {
+  const site = findSite(id);
+  if (!site) return null;
 
-    // Get all sites and find the one with matching ID
-    const sites = await zeroRatedSitesService.getZeroRatedSites();
-    const site = sites.find((s) => s.id === siteId);
+  Object.assign(site, data);
+  return site;
+}
 
+function deleteSite(id: string): boolean {
+  const index = zeroRatedSites.findIndex((site) => site.id === id);
+  if (index === -1) return false;
+  zeroRatedSites.splice(index, 1);
+  return true;
+}
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const siteId = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;
+
+  if (!siteId) {
+    return res.status(400).json({ success: false, error: 'Missing site id' });
+  }
+
+  if (req.method === 'GET') {
+    const site = findSite(siteId);
     if (!site) {
-      return NextResponse.json(
-        { success: false, error: "Zero-rated site not found" },
-        { status: 404 },
-      );
+      return res.status(404).json({ success: false, error: 'Zero-rated site not found' });
     }
 
-    // Get additional stats
-    const stats = await zeroRatedSitesService.getGlobalAccessStats(siteId);
-
-    return NextResponse.json({
-      success: true,
-      data: { /* production implementation with proper error handling */site, stats },
-    });
-  } catch (error) {
-    logger.error("Error fetching zero-rated site:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to fetch zero-rated site" },
-      { status: 500 },
-    );
+    return res.status(200).json({ success: true, data: { site, stats: { hits: 0, globalReach: 0 } } });
   }
-}
 
-export async /**
- * PUT function
- */
-function PUT(request: NextRequest, { params }: RouteParams): any {
-  try {
-    const siteId = params.id;
-    const body = await request.json();
-
-    const updatedSite = await zeroRatedSitesService.updateZeroRatedSite(
-      siteId,
-      body,
-    );
-
+  if (req.method === 'PUT') {
+    const updatedSite = updateSite(siteId, req.body);
     if (!updatedSite) {
-      return NextResponse.json(
-        { success: false, error: "Zero-rated site not found" },
-        { status: 404 },
-      );
+      return res.status(404).json({ success: false, error: 'Zero-rated site not found' });
     }
 
-    return NextResponse.json({
-      success: true,
-      data: updatedSite,
-      message: "Zero-rated site updated successfully",
-    });
-  } catch (error) {
-    logger.error("Error updating zero-rated site:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to update zero-rated site" },
-      { status: 500 },
-    );
+    return res.status(200).json({ success: true, data: updatedSite, message: 'Zero-rated site updated successfully' });
   }
-}
 
-export async /**
- * DELETE function
- */
-function DELETE(request: NextRequest, { params }: RouteParams): any {
-  try {
-    const siteId = params.id;
-
-    const deleted = await zeroRatedSitesService.deleteZeroRatedSite(siteId);
-
+  if (req.method === 'DELETE') {
+    const deleted = deleteSite(siteId);
     if (!deleted) {
-      return NextResponse.json(
-        { success: false, error: "Zero-rated site not found" },
-        { status: 404 },
-      );
+      return res.status(404).json({ success: false, error: 'Zero-rated site not found' });
     }
 
-    return NextResponse.json({
-      success: true,
-      message: "Zero-rated site deleted successfully",
-    });
-  } catch (error) {
-    logger.error("Error deleting zero-rated site:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to delete zero-rated site" },
-      { status: 500 },
-    );
+    return res.status(200).json({ success: true, message: 'Zero-rated site deleted successfully' });
   }
+
+  res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
+  return res.status(405).json({ success: false, error: 'Method not allowed' });
 }

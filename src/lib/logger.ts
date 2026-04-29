@@ -1,6 +1,3 @@
-console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.070500 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.010193 -->
 // QMOI EVOLUTION ENHANCED: Logger Service
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T04:00:00Z
@@ -45,7 +42,7 @@ export class Logger {
     };
 
     this.logs.push(entry);
-    logger.info(`[${level.toUpperCase()}] ${message}`, context || '');
+    console.info(`[${level.toUpperCase()}] ${message}`, context || {});
   }
 
   getLogs(level?: LogEntry['level'], userId?: string): LogEntry[] {
@@ -70,9 +67,10 @@ export class Logger {
 const logger = new Logger();
 
 export { logger };
-export /**
+
+/**
  * getLogger function
  */
-function getLogger(): Logger {
+export function getLogger(): Logger {
   return logger;
 }

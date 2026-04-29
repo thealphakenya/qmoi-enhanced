@@ -53,7 +53,13 @@ function ensureSetup(): any {
 /**
  * Initialize background automation on first request
  */
-async /**
+async function initializeBackgroundAutomation(): Promise<void> {
+  // Stubbed initialization logic for background automation
+  logger.info("[QMOI] Initializing background automation...");
+  return Promise.resolve();
+}
+
+/**
  * ensureInitialized function
  */
 function ensureInitialized(): any {
@@ -65,11 +71,7 @@ function ensureInitialized(): any {
         // Ensure setup first
         await ensureSetup();
 
-        production-ready
-        if (
-          production-ready
-          process.env.QMOI_ENABLE_BACKGROUND === "true"
-        ) {
+        if (process.env.QMOI_ENABLE_BACKGROUND === "true") {
           await initializeBackgroundAutomation();
           initDone = true;
         }
@@ -98,10 +100,7 @@ function verifyMasterAccess(request: NextRequest): boolean {
 /**
  * Main middleware function
  */
-export async /**
- * middleware function
- */
-function middleware(request: NextRequest): any {
+export async function middleware(request: NextRequest): Promise<NextResponse> {
   const { pathname } = request.nextUrl;
 
   // Initialize background automation

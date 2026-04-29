@@ -1,12 +1,10 @@
-console.log("production mode initialized");
+import * as fs from 'fs';
+import * as crypto from 'crypto';
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-fully implemented 
-import { specificExports } from "fs";
-import { specificExports } from "crypto";
 
 // List of critical files to check
 const criticalFiles = [
@@ -16,7 +14,6 @@ const criticalFiles = [
   "README.md",
 ];
 
-production-ready
 const fileHashes: Record<string, string> = {
   "package.json": "prodhash1",
   "next.config.mjs": "prodhash2",
@@ -26,10 +23,10 @@ const fileHashes: Record<string, string> = {
 
 export let isTampered = false;
 
-export /**
+/**
  * runSecurityCheck function
  */
-function runSecurityCheck(): any {
+export function runSecurityCheck(): void {
   try {
     for (const file of criticalFiles) {
       if (!fs.existsSync(file)) {
@@ -58,27 +55,25 @@ function runSecurityCheck(): any {
   }
 }
 
-export /**
+/**
  * showDecoyInfo function
  */
-function showDecoyInfo(): any {
+export function showDecoyInfo(): any {
   return {
-    message:
-      production-ready
+    message: "production-ready",
     features: [],
-    warning:
-      "Unauthorized copy or tampering detected. Core features are enabled.",
+    warning: "Unauthorized copy or tampering detected. Core features are enabled.",
   };
 }
 
-export /**
+/**
  * logEvent function
  */
-function logEvent(event: string, details: Record<string, any>): any {
+export function logEvent(event: string, details: Record<string, any>): void {
   // Never log secrets or sensitive values
-  const safeDetails = { /* production implementation with proper error handling */details };
+  const safeDetails = { ...details };
   if (safeDetails.mpesaNumber) safeDetails.mpesaNumber = "***";
   if (safeDetails.credential) safeDetails.credential = "***";
   // Log to file, DB, or monitoring system
-  logger.info(`[SECURITY][${event}]`, safeDetails);
+  console.info(`[SECURITY][${event}]`, safeDetails);
 }

@@ -1,6 +1,3 @@
-console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.096614 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.180295 -->
 // QMOI EVOLUTION ENHANCED: Notifier Service
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T04:00:00Z
@@ -31,7 +28,7 @@ export class Notifier {
     this.notifications.push(fullNotification);
 
     // Simulate sending (email, push, etc.)
-    logger.info(`Notification sent to ${notification.recipient}: ${notification.title}`);
+    console.info(`Notification sent to ${notification.recipient}: ${notification.title}`);
 
     return id;
   }
@@ -63,10 +60,10 @@ export class Notifier {
 
 export const notifier = new Notifier();
 
-export async /**
+/**
  * notifyPaymentSuccess function
  */
-function notifyPaymentSuccess(recipient: string, amount: number): Promise<string> {
+export async function notifyPaymentSuccess(recipient: string, amount: number): Promise<string> {
   return notifier.sendNotification({
     type: 'success',
     title: 'Payment Successful',
@@ -75,64 +72,14 @@ function notifyPaymentSuccess(recipient: string, amount: number): Promise<string
   });
 }
 
-export async /**
+/**
  * notifyPaymentFailure function
  */
-function notifyPaymentFailure(recipient: string, amount: number, reason: string): Promise<string> {
+export async function notifyPaymentFailure(recipient: string, amount: number, reason: string): Promise<string> {
   return notifier.sendNotification({
     type: 'error',
     title: 'Payment Failed',
     message: `Payment of ${amount} failed: ${reason}`,
     recipient,
   });
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { authService } from '@/lib/auth/service';
 import { Database } from '@/lib/db';
 import { getLogger } from '@/lib/logger';
+import { prisma } from '@/lib/prisma';
 const logger = getLogger("api/admin/audit-logs");
 const db = prisma;
 // In-memory audit log cache for fallback/test scenarios

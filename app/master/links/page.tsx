@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Page() {
-  return <div>Stub page for ${rel}</div>;
+  return <div>Master links page stub</div>;
 }

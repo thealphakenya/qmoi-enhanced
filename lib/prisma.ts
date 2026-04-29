@@ -8,6 +8,10 @@ export function getPrisma(): PrismaClient {
   return initPrisma();
 }
 
-export const prisma = getPrisma();
+export function getPrismaClient(): PrismaClient {
+  return getPrisma();
+}
+
+export const prisma = getPrismaClient();
 
 export default prisma;

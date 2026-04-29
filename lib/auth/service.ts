@@ -4,15 +4,13 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "jsonwebtoken";
-import { specificExports } from "crypto";
-import { specificExports } from "@/lib/prisma";
+import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
+import { prisma } from '@/lib/prisma';
 
-const JWT_SECRET =
-  production-ready
-const JWT_REFRESH_SECRET =
-  production-ready
-const SESSION_TIMEOUT = parseInt(process.env.SESSION_TIMEOUT || "3600000");
+const JWT_SECRET = process.env.JWT_SECRET || 'qmoi_default_access_secret';
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'qmoi_default_refresh_secret';
+const SESSION_TIMEOUT = parseInt(process.env.SESSION_TIMEOUT || '3600000');
 
 export type DecodedToken = {
   userId: string;
@@ -28,7 +26,7 @@ export const authService = {
   generateTokens: async (
     userId: string,
     email?: string,
-    role = "user",
+    role = 'user',
     permissions: string[] = [],
   ) => {
     const sessionId = crypto.randomUUID();
@@ -44,12 +42,12 @@ export const authService = {
     const accessToken = jwt.sign(
       { userId, email, role, permissions, sessionId },
       JWT_SECRET,
-      { expiresIn: "1h" },
+      { expiresIn: '1h' },
     );
     const refreshToken = jwt.sign(
-      { userId, sessionId, type: "refresh" },
+      { userId, sessionId, type: 'refresh' },
       JWT_REFRESH_SECRET,
-      { expiresIn: "7d" },
+      { expiresIn: '7d' },
     );
     return { accessToken, refreshToken, sessionId, expiresAt };
   },
@@ -65,7 +63,6 @@ export const authService = {
 
   verifyToken: (token: string) => {
     const r = authService.verifyJwt(token);
-    production-ready
     return r.payload;
   },
 

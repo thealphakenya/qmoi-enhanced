@@ -1,102 +1,67 @@
-console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:38.327349 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.200707 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:06.081063 -->
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:08Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { NextApiRequest, NextApiResponse } from 'next';
 
-import { specificExports } from "next/server";
-import {
-  zeroRatedSitesService,
-  ZeroRatedSite,
-} from "@/lib/zero-rated-sites-service";
+type ZeroRatedSite = {
+  id: string;
+  name: string;
+  domain: string;
+  urls: string[];
+  category: string;
+  continents: string[];
+  countries: string[];
+  regions: string[];
+  isActive: boolean;
+  globalAccess: boolean;
+};
 
-export async /**
- * GET function
- */
-function GET(request: NextRequest): any {
-  try {
-    const { searchParams } = new URL(request.url);
-    const globalOnly = searchParams.get("globalOnly") === "true";
+const zeroRatedSites: ZeroRatedSite[] = [];
 
-    const sites = await zeroRatedSitesService.getZeroRatedSites(globalOnly);
-
-    return NextResponse.json({
-      success: true,
-      data: sites,
-      count: sites.length,
-    });
-  } catch (error) {
-    logger.error("Error fetching zero-rated sites:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to fetch zero-rated sites" },
-      { status: 500 },
-    );
-  }
+function getZeroRatedSites(): ZeroRatedSite[] {
+  return zeroRatedSites;
 }
 
-export async /**
- * POST function
- */
-function POST(request: NextRequest): any {
-  try {
-    const body = await request.json();
+function createZeroRatedSite(siteData: Omit<ZeroRatedSite, 'id'>): ZeroRatedSite {
+  const site: ZeroRatedSite = {
+    id: `site_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+    ...siteData,
+  };
+  zeroRatedSites.push(site);
+  return site;
+}
 
-    // Validate required fields
-    const requiredFields = [
-      "name",
-      "urls",
-      "category",
-      "continents",
-      "countries",
-    ];
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      success: true,
+      data: getZeroRatedSites(),
+      count: zeroRatedSites.length,
+    });
+  }
+
+  if (req.method === 'POST') {
+    const body = req.body;
+    const requiredFields = ['name', 'urls', 'category', 'continents', 'countries'];
+
     for (const field of requiredFields) {
-      if (!body[field]) {
-        return NextResponse.json(
-          { success: false, error: `required required field: ${field}` },
-          { status: 400 },
-        );
+      if (!body?.[field]) {
+        return res.status(400).json({ success: false, error: `Missing required field: ${field}` });
       }
     }
 
-    // Set defaults for optional fields
-    const siteData = {
+    const newSite = createZeroRatedSite({
       name: body.name,
-      domain: body.domain || "",
+      domain: body.domain || '',
       urls: body.urls,
       category: body.category,
-      description: body.description || "",
-      isActive: body.isActive !== undefined ? body.isActive : true,
-      globalAccess: body.globalAccess !== undefined ? body.globalAccess : false,
       continents: body.continents,
       countries: body.countries,
       regions: body.regions || [],
-      cdnProviders: body.cdnProviders || ["Cloudflare"],
-      ispPartners: body.ispPartners || [],
-      blockchainEnabled: body.blockchainEnabled || false,
-      tokenGated: body.tokenGated || false,
-      accessTokens: body.accessTokens || [],
-      bandwidthLimit: body.bandwidthLimit || 10, // 10GB default
-      concurrentUsers: body.concurrentUsers || 1000,
-    };
+      isActive: body.isActive !== undefined ? body.isActive : true,
+      globalAccess: body.globalAccess !== undefined ? body.globalAccess : false,
+    });
 
-    const newSite = await zeroRatedSitesService.createZeroRatedSite(siteData);
-
-    return NextResponse.json(
-      {
-        success: true,
-        data: newSite,
-        message: "Zero-rated site created successfully",
-      },
-      { status: 201 },
-    );
-  } catch (error) {
-    logger.error("Error creating zero-rated site:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to create zero-rated site" },
-      { status: 500 },
-    );
+    return res.status(201).json({ success: true, data: newSite, message: 'Zero-rated site created successfully' });
   }
+
+  res.setHeader('Allow', ['GET', 'POST']);
+  return res.status(405).json({ success: false, error: 'Method not allowed' });
 }

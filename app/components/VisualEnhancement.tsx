@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Page() {
-  return <div>Stub page for ${rel}</div>;
+export default function VisualEnhancement() {
+  return <div>Visual enhancement stub</div>;
 }

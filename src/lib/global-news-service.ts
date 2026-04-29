@@ -1,6 +1,3 @@
-console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.071595 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.130914 -->
 // QMOI EVOLUTION ENHANCED: Global News Service
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T04:00:00Z
@@ -69,11 +66,11 @@ export class GlobalNewsService {
   async getTrendingTopics(): Promise<Array<{ topic: string; count: number }>> {
     const topicCounts: Record<string, number> = {};
 
-    this.articles.for (const item of(article => {
-      article.tags.for (const item of(tag => {
+    for (const article of this.articles) {
+      for (const tag of article.tags) {
         topicCounts[tag] = (topicCounts[tag] || 0) + 1;
-      });
-    });
+      }
+    }
 
     return Object.entries(topicCounts)
       .map(([topic, count]) => ({ topic, count }))
