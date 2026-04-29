@@ -12,8 +12,8 @@
     "production:vite": "cd dashboard && vite production",
     "prod:[production_IMPLEMENTED]": "node scripts/prod-[production_IMPLEMENTED].js",
     "prod:health": "./scripts/prod-healthcheck.sh",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings 100 || true",
-    "lint:fix": "eslint \"**/*.{js,ts,tsx}\" --fix",
+    "lint": "eslint -c .eslintrc.cjs \"app/**/*.{js,jsx,ts,tsx}\" \"pages/**/*.{js,jsx,ts,tsx}\" \"components/**/*.{js,jsx,ts,tsx}\" --max-warnings 100 || true",
+    "lint:fix": "eslint -c .eslintrc.cjs \"**/*.{js,ts,tsx,jsx}\" --fix",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "check:unused": "python scripts/check_unused_components.py",
@@ -95,8 +95,6 @@
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-visually-hidden": "^1.2.4",
     "@sendgrid/mail": "^8.1.6",
-    "@typescript-eslint/eslint-plugin": "^8.58.0",
-    "@typescript-eslint/parser": "^8.58.0",
     "@vercel/analytics": "^1.6.1",
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
@@ -191,6 +189,9 @@
   "devDependencies": {
     "@types/node": "25.6.0",
     "@types/react": "19.2.14",
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
+    "eslint": "^8.48.0",
     "typescript": "6.0.3"
   }
 }

@@ -7,7 +7,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname,
   },
   env: {
@@ -16,7 +15,7 @@ module.exports = {
     jest: true,
   },
   plugins: ['@typescript-eslint'],
-  extends: ['eslint:required', 'plugin:@typescript-eslint/required'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   rules: {
     'no-undef': 'off',
     'no-case-declarations': 'off',

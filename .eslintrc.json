@@ -49,8 +49,8 @@
     "ReadableStream": "readonly"
   },
   "extends": [
-    "eslint:required",
-    "plugin:@typescript-eslint/required",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/required"
   ],
   "parser": "@typescript-eslint/parser",
