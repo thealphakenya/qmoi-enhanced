@@ -98,8 +98,7 @@ interface TrackEntry {
   status: string;
   metadata: Record<string, any>;
 }
-async */
-function saveTrackEntry(entry: TrackEntry): Promise<void> {
+async function saveTrackEntry(entry: TrackEntry): Promise<void> {
   try {
     const tracksDir = path.join(process.cwd(), 'TRACKS');
     const tracksFile = path.join(tracksDir, 'master_tracks.json');

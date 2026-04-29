@@ -96,7 +96,7 @@ function logAction(action: string, details: Record<string, any>): any {
   }
 }
 
-async /**
+async
  * getOrCreateWallet function
  */
 function getOrCreateWallet(userId: string): any {
@@ -123,7 +123,7 @@ function getOrCreateWallet(userId: string): any {
   }
 }
 
-async /**
+async
  * createTransaction function
  */
 function createTransaction(
@@ -166,7 +166,7 @@ function createTransaction(
   }
 }
 
-async /**
+async
  * processMpesa function
  */
 function processMpesa(
@@ -281,15 +281,11 @@ function processMpesa(
         transactionId,
         message: "Withdrawal queued for processing",
       };
-    }
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+    };
   }
 }
 
-async /**
+async
  * processBinance function
  */
 function processBinance(
@@ -390,15 +386,13 @@ function processBinance(
         transactionId: withdrawData.id,
         message: "Withdrawal order created successfully",
       };
-    }
-  } catch (error) {
-    logger.error("Binance processing error", { error: error });
+    });
     const errorMsg = _error instanceof Error ? error.message : String(error);
     return { status: "error", platform: "Binance", amount, _error: errorMsg };
   }
 }
 
-async /**
+async
  * processPesapal function
  */
 function processPesapal(amount: number, type: string): any {
@@ -458,7 +452,7 @@ function processPesapal(amount: number, type: string): any {
   }
 }
 
-async /**
+async
  * processBitget function
  */
 function processBitget(amount: number, type: string): any {
@@ -563,7 +557,7 @@ const handleApiRequest = async (
   }
 };
 
-export default async /**
+export default async
  * handler function
  */
 function handler(
@@ -661,7 +655,7 @@ function handler(
           metadata: result,
         });
 
-        logAction("deposit", { /* production implementation with proper error handling */transaction, result });
+        logAction("deposit", { ...transaction, result });
 
         if (whatsappService) {
           await whatsappService.sendMessageToMaster(
@@ -709,7 +703,7 @@ function handler(
           metadata: result,
         });
 
-        logAction("withdraw", { /* production implementation with proper error handling */transaction, result });
+        logAction("withdraw", { ...transaction, result });
 
         if (whatsappService) {
           await whatsappService.sendMessageToMaster(

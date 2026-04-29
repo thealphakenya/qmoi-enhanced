@@ -81,9 +81,6 @@ export async function GET(_request: NextRequest): any {
         const ip = log.ipAddress || "unknown";
         ip_counts[ip] = (ip_counts[ip] || 0) + 1;
       }
-    } catch (err) {
-      anomaly = true;
-      msg = `Health check failed: ${(err as Error)?.message || String(err)}`;
     }
     return NextResponse.json(
       {

@@ -9,7 +9,7 @@ console.log("production mode initialized");
 import { specificExports } from "next";
 import { specificExports } from "../../lib/modelRegistry";
 
-export default async /**
+export default async
  * handler function
  */
 function handler(
@@ -64,10 +64,6 @@ function handler(
         default:
           return res.status(400).json({ error: "Unknown action" });
       }
-    }
-  } catch (e) {
-    return res
-      .status(500)
-      .json({ error: (e as Error).message || "Internal error" });
+    });
   }
 }

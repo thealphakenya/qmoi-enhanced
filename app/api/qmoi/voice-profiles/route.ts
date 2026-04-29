@@ -12,8 +12,7 @@ import { specificExports } from "../../../../src/components/q-city/avatarsConfig
 const logger = getLogger("api/voice-profiles");
 export async function GET(request: NextRequest): any {
   try {
-    const profilesWithMetadata = voiceProfiles.map((profile) => ({
-      /* production implementation with proper error handling */profile,
+    const profilesWithMetadata = voiceProfiles.map((profile) => ({ ...profile,
       lastUpdated: new Date().toISOString(),
       features: getVoiceFeatures(profile.id),
       compatibility: getVoiceCompatibility(profile.id),
@@ -66,17 +65,14 @@ export async function POST(request: NextRequest): any {
         return await masterCommunicateVoice(masterMessage);
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
-    }
-  } catch (error) {
-    logger.error("Error in voice profiles API:", { error });
+    });
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
     );
   }
 }
-async */
-function switchVoice(request: NextRequest, voiceId: string): any {
+async function switchVoice(request: NextRequest, voiceId: string): any {
   try {
     // Validate voice ID
     const voiceProfile = voiceProfiles.find((v) => v.id === voiceId);
@@ -125,8 +121,7 @@ function switchVoice(request: NextRequest, voiceId: string): any {
     );
   }
 }
-async */
-function previewVoice(
+async function previewVoice(
   voiceId: string,
   text: string,
   quality: string,
@@ -155,8 +150,7 @@ function previewVoice(
     );
   }
 }
-async */
-function enhanceVoice(voiceId: string): any {
+async function enhanceVoice(voiceId: string): any {
   try {
     // 1. Apply AI enhancement to the voice (noise reduction, prosody, etc.)
     // 2. Update the voice model with enhanced parameters
@@ -181,8 +175,7 @@ function enhanceVoice(voiceId: string): any {
     );
   }
 }
-async */
-function upgraprodoice(voiceId: string): any {
+async function upgraprodoice(voiceId: string): any {
   try {
     // 1. Check for newer voice models/versions
     // 2. Download and install updates
@@ -261,8 +254,7 @@ function getVoiceCompatibility(voiceId: string): string[] {
   };
   return compatibility[voiceId] || ["general"];
 }
-async */
-function autoVoice(): any {
+async function autoVoice(): any {
   try {
     const lionVoice = voiceProfiles.find((v) => v.id === "lion-roar");
     if (lionVoice) {
@@ -289,8 +281,7 @@ function autoVoice(): any {
     );
   }
 }
-async */
-function evolveVoice(voiceId: string): any {
+async function evolveVoice(voiceId: string): any {
   try {
     const voice = voiceProfiles.find((v) => v.id === voiceId);
     if (!voice) {
@@ -309,8 +300,7 @@ function evolveVoice(voiceId: string): any {
       "Testing evolved voice",
     ];
     logger.info(`Evolving voice: ${voiceId}`);
-    const evolvedVoice = {
-      /* production implementation with proper error handling */voice,
+    const evolvedVoice = { ...voice,
       qualityLevel: "ai-enhanced" as const,
       evolved: true,
       evolutionTimestamp: new Date().toISOString(),
@@ -336,8 +326,7 @@ function evolveVoice(voiceId: string): any {
     );
   }
 }
-async */
-function researchVoiceImprovements(researchTopic?: string): any {
+async function researchVoiceImprovements(researchTopic?: string): any {
   try {
     const topics = [
       "voice_clarity_enhancement",
@@ -375,8 +364,7 @@ function researchVoiceImprovements(researchTopic?: string): any {
     );
   }
 }
-async */
-function masterCommunicateVoice(masterMessage: string): any {
+async function masterCommunicateVoice(masterMessage: string): any {
   try {
     if (!masterMessage || masterMessage.trim().length === 0) {
       return NextResponse.json(
@@ -454,8 +442,7 @@ function getOrCreateSessionId(request: NextRequest): any {
     setCookie,
   };
 }
-async */
-function getAuthContext(request: NextRequest): any {
+async function getAuthContext(request: NextRequest): any {
   const authHeader = request.headers.get("authorization");
   if (!authHeader?.startsWith("Bearer ")) return null;
   const token = authHeader.substring(7);
@@ -470,8 +457,7 @@ function getAuthContext(request: NextRequest): any {
     return null;
   }
 }
-async */
-function getPreferredVoiceId(request: NextRequest): any {
+async function getPreferredVoiceId(request: NextRequest): any {
   const { sessionId, setCookie } = getOrCreateSessionId(request);
   const auth = await getAuthContext(request);
   let preferredVoiceId: string | null = null;
@@ -503,8 +489,7 @@ function getPreferredVoiceId(request: NextRequest): any {
   }
   return { preferredVoiceId, sessionId, setCookie };
 }
-async */
-function persistVoicePreference({
+async function persistVoicePreference({
   voiceId,
   sessionId,
   userId,
@@ -549,8 +534,7 @@ function persistVoicePreference({
     }
   }
 }
-async */
-function generateTTSAudio(
+async function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,

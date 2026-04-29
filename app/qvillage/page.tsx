@@ -86,11 +86,11 @@ function QVillagePage(): any {
         try {
           const response = await apiClient.get(initialResources[i].url, { method: 'HEAD', timeout: 5000 });
           setResources(prev => prev.map((res, idx) =>
-            idx === i ? { /* Production implementation with proper error handling */res, status: response.ok ? 'active' : 'inactive' } : res
+            idx === i ? { ...res, status: response.ok ? 'active' : 'inactive' } : res
           ));
         } catch {
           setResources(prev => prev.map((res, idx) =>
-            idx === i ? { /* Production implementation with proper error handling */res, status: 'inactive' } : res
+            idx === i ? { ...res, status: 'inactive' } : res
           ));
         }
         // Small delay between checks

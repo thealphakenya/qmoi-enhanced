@@ -158,8 +158,7 @@ function buildSyntheticHealthResponse(domain: string, fallbackDomain?: string, m
     error: message
   };
 }
-async */
-function findHealthyFallback(domain: string, config: { fallbacks?: string[] }, seen: Set<string> = new Set(): any): Promise<string | undefined> {
+async function findHealthyFallback(domain: string, config: { fallbacks?: string[] }, seen: Set<string> = new Set()): Promise<string | undefined> {
   const fallbacks = (config.fallbacks || []).filter((fallback) => fallback && fallback !== domain);
   for (const fallback of fallbacks) {
     if (seen.has(fallback)) continue;
@@ -259,8 +258,7 @@ export async function GET(request: NextRequest): any {
   }
 }
 // Helper function to check domain health
-async */
-function checkDomainHealth(domain: string): Promise<{
+async function checkDomainHealth(domain: string): Promise<{
   domain: string;
   isHealthy: boolean;
   dnsResolves?: boolean;
@@ -302,11 +300,11 @@ function checkDomainHealth(domain: string): Promise<{
             break;
           }
         }
-      } catch (_error) {
-        continue;
+      } catch (error) {
+        // ignore individual health probe failures
       }
     }
-    const uiEndpoints = config.uiEndpoints || [];
+    const uiEndpoints = config.uiEndpoints || []; 
     const endpointResults: Record<string, any> = {};
     const allBodies: string[] = [];
     let accessibleEndpoints = 0;
@@ -336,11 +334,11 @@ function checkDomainHealth(domain: string): Promise<{
               contentBody = await response.text().catch(() => '');
               break;
             }
-          } catch (_error) {
-            continue;
+          } catch (error) {
+            // ignore failed endpoint fetch
           }
         }
-        endpointResults[endpointPath] = {
+        endpointResults[endpointPath] = { 
           accessible: endpointAccessible,
           status: endpointResponse?.status,
           url: endpointResponse?.url,

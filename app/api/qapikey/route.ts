@@ -63,53 +63,9 @@ export async function GET_USAGE(_req: NextRequest): any {
     usage: apiKeys.map((k) => ({ key: k.key, usage: k.usage })),
   });
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

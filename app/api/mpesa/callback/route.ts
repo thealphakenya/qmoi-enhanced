@@ -1,20 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+import { NextRequest, NextResponse } from "next/server";
+import { logEvent } from "../../../../lib/security_check";
+import { processMpesaCallback } from "@/lib/payments/service";
+import { notifyPaymentSuccess } from "@/lib/notifier";
+import { getPrismaClient } from "@/lib/prisma";
+
+const logger = {
+  info: console.log.bind(console),
+  warn: console.warn.bind(console),
+  error: console.error.bind(console),
+};
+
 console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-import { specificExports } from "next/server";
-import { specificExports } from "../../../../lib/security_check";
-import { specificExports } from "@/lib/payments/service";
-import { specificExports } from "@/lib/notifier";
-import { specificExports } from "@/lib/prisma";
-async */
-function updateMpesaTransaction(details: any): any {
+async function updateMpesaTransaction(details: any): any {
   try {
     const prisma = await getPrismaClient();
-    if (prisma && service.transaction) {
-      await db.transaction.update({
+    if (prisma && prisma.transaction) {
+      await prisma.transaction.update({
         where: { transactionId: details.checkoutRequestId },
         data: {
           status: "completed",
@@ -27,13 +33,9 @@ function updateMpesaTransaction(details: any): any {
         },
       });
     }
-  } catch (e) {
-    logger.error("updateMpesaTransaction error:", e);
-  }
   return true;
 }
-async */
-function triggerPostPaymentActions(details: any): any {
+async function triggerPostPaymentActions(details: any): any {
   // Send notifications via Email, Slack, WhatsApp
   try {
     const {

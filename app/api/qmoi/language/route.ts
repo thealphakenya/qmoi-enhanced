@@ -11,8 +11,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
  *
  *
-export default async */
-function handler(
+export default async function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {
@@ -47,8 +46,6 @@ function handler(
             });
           }
           return _res.status(501).json({
-            fully implemented
-            fully implemented
             text,
             sourceLanguage: sourceLanguage || "auto",
             targetLanguage,
@@ -65,8 +62,6 @@ function handler(
             });
           }
           return _res.status(501).json({
-            fully implemented
-            fully implemented
             audioUrl,
             language: language || "en",
             transcript: null,
@@ -83,8 +78,6 @@ function handler(
             });
           }
           return _res.status(501).json({
-            fully implemented
-            fully implemented
             text,
             language: language || "en",
             voice: voice || "default",
@@ -101,8 +94,6 @@ function handler(
             });
           }
           return _res.status(501).json({
-            fully implemented
-            fully implemented
             text: text.substring(0, 100),
             detectedLanguage: null,
             confidence: 0,
@@ -118,8 +109,6 @@ function handler(
             });
           }
           return _res.status(501).json({
-            fully implemented
-            fully implemented
             language,
             level,
             lessonId: null,
@@ -137,8 +126,6 @@ function handler(
             });
           }
           return _res.status(501).json({
-            fully implemented
-            fully implemented
             language,
             level,
             quizId: null,
@@ -156,8 +143,6 @@ function handler(
             });
           }
           return _res.status(501).json({
-            fully implemented
-            fully implemented
             language: language || "en",
             targetText,
             pronunciationScore: 0,
@@ -179,53 +164,13 @@ function handler(
       });
   }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

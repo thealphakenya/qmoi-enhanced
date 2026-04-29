@@ -57,7 +57,8 @@ function logToDashboard(action: string, data: unknown, level: "info" | "warning"
     timestamp: new Date().toISOString(),
     action,
     level,
-    /* production implementation with proper error handling */typeof data === "object" && data !== null ? { data } : { data: String(data) },
+    /* production implementation with proper error handling */
+    processedData: typeof data === "object" && data !== null ? { data } : { data: String(data) },
     source: "media-search-api",
   };
   logger.info(`[${level.toUpperCase()}] ${action}:`, payload);

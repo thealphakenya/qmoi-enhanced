@@ -69,7 +69,7 @@ export async function POST(request: NextRequest): any {
   }
 }
 
-async /**
+async
  * executeSyntaxHighlighter function
  */
 function executeSyntaxHighlighter(params: any): any {
@@ -80,7 +80,7 @@ function executeSyntaxHighlighter(params: any): any {
   };
 }
 
-async /**
+async
  * executeCodeLinter function
  */
 function executeCodeLinter(params: any): any {
@@ -156,7 +156,7 @@ function executeCodeLinter(params: any): any {
   };
 }
 
-async /**
+async
  * executeCodeFormatter function
  */
 function executeCodeFormatter(params: any): any {
@@ -204,7 +204,7 @@ function executeCodeFormatter(params: any): any {
   }
 }
 
-async /**
+async
  * executeLivePreview function
  */
 function executeLivePreview(params: any): any {
@@ -216,7 +216,7 @@ function executeLivePreview(params: any): any {
   };
 }
 
-async /**
+async
  * executeResponsiveViewer function
  */
 function executeResponsiveViewer(params: any): any {
@@ -229,7 +229,7 @@ function executeResponsiveViewer(params: any): any {
   return { breakpoints, activeBreakpoint: "Desktop" };
 }
 
-async /**
+async
  * executePerformanceAnalyzer function
  */
 function executePerformanceAnalyzer(params: any): any {
@@ -244,7 +244,7 @@ function executePerformanceAnalyzer(params: any): any {
   };
 }
 
-async /**
+async
  * executeAudioPlayer function
  */
 function executeAudioPlayer(params: any): any {
@@ -256,7 +256,7 @@ function executeAudioPlayer(params: any): any {
   };
 }
 
-async /**
+async
  * executeDataViewer function
  */
 function executeDataViewer(params: any): any {

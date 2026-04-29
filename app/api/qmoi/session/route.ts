@@ -28,7 +28,7 @@ export async function POST(_request: NextRequest): any {
     }
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8")) as any[];
     // End existing sessions for user
-    sessions.for (const item of((s) => {
+    sessions.forEach((s) => {
       if (s.userId === userId && s.active) s.active = false;
     });
     const session = {

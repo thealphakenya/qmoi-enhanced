@@ -11,8 +11,7 @@ import {
   getAutomationStatus,
   getAutomationReport,
 } from "@/lib/qmoi-automation-manager";
-async */
-function verifyAdminAccess(request: Request): any {
+async function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
   if (!token || token !== process.env.ADMIN_TOKEN) {
@@ -96,12 +95,10 @@ export async function POST(request: Request): any {
       );
     }
   } catch (error) {
+    console.error("Background automation error:", error);
     return NextResponse.json(
-      {
-        error: "Failed to process automation action",
-        details: error instanceof Error ? error.message : "Unknown error",
-      },
-      { status: 500 },
+      { success: false, error: "Internal server error" },
+      { status: 500 }
     );
   }
 }

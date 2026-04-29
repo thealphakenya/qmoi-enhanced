@@ -98,10 +98,7 @@ export const SponsoredUsersManager: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         setSponsoredUsers(data.users || []);
-      }
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load sponsored users:", error);
-    } finally {
+      } finally {
       setLoading(false);
     }
   };
@@ -120,9 +117,6 @@ export const SponsoredUsersManager: React.FC = () => {
         const data = await response.json();
         setAnalytics(data.analytics);
       }
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load analytics:", error);
-    }
   };
 
   const addSponsoredUser = async () => {
@@ -151,9 +145,6 @@ export const SponsoredUsersManager: React.FC = () => {
         loadSponsoredUsers();
         loadAnalytics();
       }
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to add sponsored user:", error);
-    }
   };
 
   const removeSponsoredUser = async (userId: string) => {
@@ -174,9 +165,6 @@ export const SponsoredUsersManager: React.FC = () => {
         loadSponsoredUsers();
         loadAnalytics();
       }
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to remove sponsored user:", error);
-    }
   };
 
   if (loading) {

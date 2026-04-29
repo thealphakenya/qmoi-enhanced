@@ -53,10 +53,7 @@ export async function GET(request: NextRequest): any {
       }
       default:
         return NextResponse.json({ error: "Invalid action", validActions: ["dashboard", "regions", "statistics"] }, { status: 400 });
-    }
-  } catch (error) {
-    const details = error instanceof Error ? error.message : String(error);
-    return NextResponse.json({ error: "QI Spaces API error", details }, { status: 500 });
+    }, { status: 500 });
   }
 }
 export async function POST(request: NextRequest): any {
@@ -77,9 +74,6 @@ export async function POST(request: NextRequest): any {
       }
       default:
         return NextResponse.json({ error: "invalid action" }, { status: 400 });
-    }
-  } catch (error) {
-    const details = error instanceof Error ? error.message : String(error);
-    return NextResponse.json({ error: "QI Spaces command error", details }, { status: 500 });
+    }, { status: 500 });
   }
 }

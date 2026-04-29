@@ -77,10 +77,7 @@ export async function GET(request: NextRequest): any {
         },
         { status: 400 },
       );
-    }
-  } catch (error) {
-    return NextResponse.json(
-      { _error: "Failed to process GET request", message: String(error) },
+    },
       { status: 500 },
     );
   }
@@ -106,10 +103,7 @@ export async function POST(request: NextRequest): any {
         { _error: "Invalid POST action. Use: post or tag" },
         { status: 400 },
       );
-    }
-  } catch (error) {
-    return NextResponse.json(
-      { _error: "Failed to process POST request", message: String(error) },
+    },
       { status: 500 },
     );
   }

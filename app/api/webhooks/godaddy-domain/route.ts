@@ -19,8 +19,7 @@ function verifySignature(body: string, signature: string | null): boolean {
   const hmac = crypto.createHmac("sha256", secret).update(body).digest("hex");
   return hmac === signature;
 }
-async */
-function processPayload(payload: any): any {
+async function processPayload(payload: any): any {
   const domainName = payload.domain || payload.name || payload.domainName;
   if (!domainName) {
     return NextResponse.json(

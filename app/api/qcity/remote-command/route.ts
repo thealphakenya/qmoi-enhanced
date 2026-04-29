@@ -14,14 +14,13 @@ function logAudit(entry: unknown): any {
   const _e = (entry as Record<string, unknown>) || {};
   fs.appendFileSync(
     AUDIT_LOG,
-    JSON.stringify({ /* production implementation with proper error handling */_e, timestamp: new Date().toISOString() }) + "\n",
+    JSON.stringify({ ..._e, timestamp: new Date().toISOString() }) + "\n",
   );
 }
 function maskCommand(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
-export default async */
-function handler(
+export default async function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {

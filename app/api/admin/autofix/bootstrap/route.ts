@@ -10,8 +10,7 @@ import {
   clearBootstrapLogs,
   getInitializationStatus,
 } from "@/lib/qmoi-bootstrap";
-async */
-function verifyAdminAccess(request: Request): any {
+async function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
   if (!token || token !== process.env.ADMIN_TOKEN) {

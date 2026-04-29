@@ -7,8 +7,7 @@ console.log("production mode initialized");
 import { specificExports } from "next";
  *
  *
-export default async */
-function handler(
+export default async function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {
@@ -89,53 +88,13 @@ function handler(
       });
   }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

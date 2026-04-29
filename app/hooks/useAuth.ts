@@ -75,7 +75,7 @@ function useAuth(): any {
       try {
         const stored = localStorage.getItem(AUTH_STORAGE_KEY);
         if (!stored) {
-          setState(prev => ({ /* production implementation with proper error handling */prev, loading: false }));
+          setState(prev => ({ ...prev, loading: false }));
           return;
         }
 
@@ -103,11 +103,11 @@ function useAuth(): any {
 
         // Tokens invalid, clear storage
         localStorage.removeItem(AUTH_STORAGE_KEY);
-        setState(prev => ({ /* production implementation with proper error handling */prev, loading: false }));
+        setState(prev => ({ ...prev, loading: false }));
       } catch (error) {
         logger.error("Failed to load auth state:", error);
         localStorage.removeItem(AUTH_STORAGE_KEY);
-        setState(prev => ({ /* production implementation with proper error handling */prev, loading: false }));
+        setState(prev => ({ ...prev, loading: false }));
       }
     };
 
@@ -158,7 +158,7 @@ function useAuth(): any {
   };
 
   const login = useCallback(async (credentials: LoginCredentials): Promise<boolean> => {
-    setState(prev => ({ /* production implementation with proper error handling */prev, loading: true, error: null }));
+    setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
       const response = await apiClient.get("/api/auth/login", {
@@ -198,8 +198,7 @@ function useAuth(): any {
       return true;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Login failed";
-      setState(prev => ({
-        /* production implementation with proper error handling */prev,
+      setState(prev => ({ ...prev,
         loading: false,
         error: errorMessage,
       }));
@@ -208,7 +207,7 @@ function useAuth(): any {
   }, []);
 
   const register = useCallback(async (data: RegisterData): Promise<boolean> => {
-    setState(prev => ({ /* production implementation with proper error handling */prev, loading: true, error: null }));
+    setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
       const response = await apiClient.get("/api/auth/register", {
@@ -227,8 +226,7 @@ function useAuth(): any {
       return await login({ email: data.email, password: data.password });
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Registration failed";
-      setState(prev => ({
-        /* production implementation with proper error handling */prev,
+      setState(prev => ({ ...prev,
         loading: false,
         error: errorMessage,
       }));
@@ -265,7 +263,7 @@ function useAuth(): any {
       const authData = { tokens: newTokens, user: state.user };
       localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authData));
 
-      setState(prev => ({ /* production implementation with proper error handling */prev, tokens: newTokens }));
+      setState(prev => ({ ...prev, tokens: newTokens }));
       return true;
     } catch (error) {
       logger.error("Token refresh failed:", error);
@@ -285,9 +283,6 @@ function useAuth(): any {
           },
         });
       }
-    } catch (error) {
-      logger.error("Logout API call failed:", error);
-    }
 
     localStorage.removeItem(AUTH_STORAGE_KEY);
     setState({
@@ -325,7 +320,7 @@ function useAuth(): any {
       const authData = { tokens: state.tokens, user: updatedUser };
       localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authData));
 
-      setState(prev => ({ /* production implementation with proper error handling */prev, user: updatedUser }));
+      setState(prev => ({ ...prev, user: updatedUser }));
       return true;
     } catch (error) {
       logger.error("Profile update failed:", error);

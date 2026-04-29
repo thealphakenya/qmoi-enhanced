@@ -38,8 +38,7 @@ export async function POST(request: NextRequest): any {
       const audits = (existing?.value as any[] | undefined) ?? [];
       audits.unshift({
         action: enabled ? "activated" : "deactivated",
-        timestamp,
-        fully implemented
+        timestamp
       });
       // keep only last 50
       const trimmed = audits.slice(0, 50);

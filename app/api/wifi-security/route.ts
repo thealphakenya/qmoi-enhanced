@@ -44,15 +44,11 @@ export async function GET(_request: NextRequest): any {
     const threats = searchParams.get("threats");
     if (status) {
       return NextResponse.json({
-        fully implemented
-        fully implemented
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
     }
     if (threats) {
       return NextResponse.json({
-        fully implemented
-        fully implemented
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
     }
@@ -74,15 +70,11 @@ export async function POST(_request: NextRequest): any {
     const { action, settings } = body;
     if (action === "start-monitoring") {
       return NextResponse.json({
-        fully implemented
-        fully implemented
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
     }
     if (action === "stop-monitoring") {
       return NextResponse.json({
-        fully implemented
-        fully implemented
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
     }
@@ -94,8 +86,6 @@ export async function POST(_request: NextRequest): any {
         );
       }
       return NextResponse.json({
-        fully implemented
-        fully implemented
         _reason: "Awaiting product contract and security requirements specification"
       }, { status: 501 });
     }

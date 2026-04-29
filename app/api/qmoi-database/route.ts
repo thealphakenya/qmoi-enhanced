@@ -8,8 +8,7 @@ import { specificExports } from "next/server";
 import { specificExports } from "@prisma/client";
 // Dynamic import for Prisma to avoid build-time issues
 let prisma: PrismaClient | null = null;
-async */
-function getPrisma(): any {
+async function getPrisma(): any {
   if (!prisma) {
     const { prisma: prismaClient } = await import("@/lib/prisma");
     prisma = prismaClient;
@@ -33,8 +32,7 @@ interface MediaItem {
 function isMaster(_request: NextRequest): any {
   return _request.headers.get("x-qmoi-master") === "true";
 }
-async */
-function searchMedia(
+async function searchMedia(
   _query: string,
   type?: string,
   source?: string,
@@ -74,8 +72,7 @@ function searchMedia(
     updatedAt: task.updatedAt,
   }));
 }
-async */
-function downloadMedia(mediaId: string): any {
+async function downloadMedia(mediaId: string): any {
   const prisma = await getPrisma();
   const mediaTask = await prisma.mediaTask.findUnique({
     where: { id: mediaId },
@@ -121,8 +118,7 @@ function downloadMedia(mediaId: string): any {
   }
 }
 // Get media logs (using audit logs for now)
-async */
-function getMediaLogs(filter?: {
+async function getMediaLogs(filter?: {
   action?: string;
   mediaId?: string;
   limit?: number;

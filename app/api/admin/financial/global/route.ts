@@ -6,8 +6,7 @@ console.log("production mode initialized");
 import { specificExports } from 'next/server';
 import { specificExports } from '@/lib/qmoi/revenue_enhancement_service';
 import { specificExports } from 'next/headers';
-async */
-function verifyMasterAccess(request: Request): any {
+async function verifyMasterAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get('authorization')?.replace('Bearer ', '');
   if (!token || token !== process.env.ADMIN_TOKEN) return false;

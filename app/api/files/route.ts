@@ -45,8 +45,7 @@ function formatFileItem(
     modified: stats.mtime.toISOString(),
   };
 }
-async */
-function readDirectory(dir: string, basePath: string): any {
+async function readDirectory(dir: string, basePath: string): any {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const items = [];
   for (const entry of entries) {

@@ -12,8 +12,7 @@ import { specificExports } from "@/lib/logger";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 const logger = getLogger("api/qmoi/user");
-export default async */
-function handler(
+export default async function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {
@@ -107,29 +106,21 @@ function handler(
           }
           case "get-analytics": {
             return _res.status(501).json({
-              fully implemented
-              fully implemented
               _reason: "Awaiting analytics requirements and data collection strategy"
             });
           }
           case "update-relationships": {
             return _res.status(501).json({
-              fully implemented
-              fully implemented
               _reason: "Awaiting relationship features specification"
             });
           }
           case "premium-features": {
             return _res.status(501).json({
-              fully implemented
-              fully implemented
               _reason: "Awaiting premium feature requirements and billing integration"
             });
           }
           case "export-data": {
             return _res.status(501).json({
-              fully implemented
-              fully implemented
               _reason: "Awaiting data privacy and export requirements"
             });
           }
@@ -191,9 +182,7 @@ function handler(
           _error: "Method not allowed",
           _code: "METHOD_001",
         });
-    }
-  } catch (error) {
-    logger.error("User endpoint error", { error, userId, method, body });
+    });
     return _res.status(500).json({
       _error: "Internal server error",
       details: error?.message || String(error),

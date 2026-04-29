@@ -6,8 +6,7 @@ console.log("production mode initialized");
 import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
 // Verify admin access
-async */
-function verifyAdminAccess(request: Request): any {
+async function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
   if (!token || token !== process.env.ADMIN_TOKEN) {
@@ -47,12 +46,9 @@ logger.info(`[QMOI AutoFix] Attempting to fix error: ${errorId}`);
       );
     }
   } catch (error) {
+    console.error("Fix error:", error);
     return NextResponse.json(
-      {
-        error: "Failed to fix error",
-        errorId,
-        details: error instanceof Error ? error.message : "Unknown error",
-      },
+      { success: false, error: "Internal server error" },
       { status: 500 }
     );
   }

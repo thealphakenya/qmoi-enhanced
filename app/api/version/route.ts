@@ -15,53 +15,13 @@ export async function GET(_request: NextRequest): any {
     downloads: RELEASES[0].downloads,
   });
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

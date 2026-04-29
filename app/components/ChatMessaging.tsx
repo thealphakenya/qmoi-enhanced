@@ -156,10 +156,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
           audioUrl: data.audioUrl,
         };
         setMessages((prev) => [...prev, qmoiMessage]);
-      }
-    } catch (error) {
-      logger.error("Error sending audio:", error);
-    } finally {
+      } finally {
       setIsSending(false);
     }
   };
@@ -238,11 +235,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
           attachments: data.attachments,
         };
         setMessages((prev) => [...prev, qmoiMessage]);
-      }
-    } catch (error) {
-      logger.error("Error sending message:", error);
-      const errorMessage: Message = {
-        id: `msg-${Date.now()}`,
+      }`,
         sender: "qmoi",
         content: "Error communicating with QMOI. Please try again.",
         timestamp: new Date(),

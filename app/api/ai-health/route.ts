@@ -137,8 +137,7 @@ function calculateCPUUsage(): any {
   }
   return totalMs === 0 ? 0 : ((totalMs - idleMs) / totalMs) * 100;
 }
-async */
-function fetchHealthFromMainService(detailed: boolean): any {
+async function fetchHealthFromMainService(detailed: boolean): any {
   const baseUrl = getApiBaseUrl();
   const url = `${baseUrl}/api/health?type=${detailed ? "full" : "optimized"}`;
   const response = await apiClient.get(url, { method: "GET" });
@@ -230,8 +229,7 @@ export async function GET(_request: NextRequest): any {
     );
   }
 }
-async */
-function getLicenseStatus(): any {
+async function getLicenseStatus(): any {
   try {
     const content = fs.readFileSync("license-report.json", "utf-8");
     const licenseReport = JSON.parse(content);
@@ -245,8 +243,7 @@ function getLicenseStatus(): any {
     return "unknown";
   }
 }
-async */
-function getLintStatus(): any {
+async function getLintStatus(): any {
   try {
     const lintLog = fs.readFileSync("logs/lint-errors.json", "utf-8");
     return lintLog.includes("error") ? "failed" : "passed";
@@ -254,8 +251,7 @@ function getLintStatus(): any {
     return "unknown";
   }
 }
-async */
-function getTestStatus(): any {
+async function getTestStatus(): any {
   try {
     const testLog = fs.readFileSync("logs/auto-lint.log", "utf-8");
     return testLog.includes("FAIL") ? "failed" : "passed";
@@ -263,8 +259,7 @@ function getTestStatus(): any {
     return "unknown";
   }
 }
-async */
-function getDeployStatus(): any {
+async function getDeployStatus(): any {
   try {
     const deployLog = fs.readFileSync("logs/vercel_auto_deploy.log", "utf-8");
     if (deployLog.includes("successful")) return "success";
@@ -291,8 +286,7 @@ function getStoredSettings(): any {
     return {};
   }
 }
-async */
-function performComponentCheck(component: string): any {
+async function performComponentCheck(component: string): any {
   const baseUrl = getApiBaseUrl();
   try {
     const response = await apiClient.get(`${baseUrl}/api/health?type=full`, { method: "GET" });
@@ -310,7 +304,8 @@ function performComponentCheck(component: string): any {
         return { status: "unknown" };
     }
   } catch (error) {
-    return { status: "unhealthy", error: error instanceof Error ? error.message : String(error) };
+    console.error(`Component check failed for ${component}:`, error);
+    return { status: "error" };
   }
 }
 export async function POST(_request: NextRequest): any {
@@ -336,7 +331,7 @@ export async function POST(_request: NextRequest): any {
         status: "success",
         message: `Health check completed for ${component}`,
         result: {
-          /* production implementation with proper error handling */result,
+          ...result,
           timestamp: new Date().toISOString(),
         },
       });
@@ -359,7 +354,7 @@ export async function POST(_request: NextRequest): any {
         status: "success",
         message: "Health monitoring settings updated",
         settings: {
-          /* production implementation with proper error handling */result.settings,
+          ...result.settings,
           lastUpdate: new Date().toISOString(),
         },
       });

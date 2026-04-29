@@ -15,8 +15,7 @@ export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const masterParam = searchParams.get("master");
-    let avatarsWithMetadata = avatarsConfig.map((avatar) => ({
-      /* production implementation with proper error handling */avatar,
+    let avatarsWithMetadata = avatarsConfig.map((avatar) => ({ ...avatar,
       lastUpdated: new Date().toISOString(),
       engineInfo: animationEngines[avatar.animationEngine],
       qualityInfo: qualityLevels[avatar.qualityLevel],
@@ -29,8 +28,7 @@ export async function GET(request: NextRequest): any {
       avatarsWithMetadata = await Promise.all(
         avatarsWithMetadata.map(async (av) => {
           const tracks = await qmoiTracksService.listTracks({ relatedId: av.id });
-          return {
-            /* production implementation with proper error handling */av,
+          return { ...av,
             adminFields: {
               internalNotes: `Admin view for avatar ${av.id}`,
               adminControls: ["forceEnhance", "revert", "inspectAssets"],
@@ -79,17 +77,12 @@ export async function POST(_request: NextRequest): any {
         return await masterCommunicate(masterMessage);
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
-    }
-  } catch (error) {
-    logger.error("Error in avatars API:", error);
-    return NextResponse.json(
-      { _error: "Internal server error" },
+    },
       { status: 500 },
     );
   }
 }
-async */
-function switchAvatar(avatarId: string): any {
+async function switchAvatar(avatarId: string): any {
   try {
     // Validate avatar ID
     const avatar = avatarsConfig.find((a) => a.id === avatarId);
@@ -124,8 +117,7 @@ function switchAvatar(avatarId: string): any {
     );
   }
 }
-async */
-function upgradeAvatar(avatarId: string): any {
+async function upgradeAvatar(avatarId: string): any {
   try {
     // 1. Check for newer avatar models/assets
     // 2. Download and install updates
@@ -147,8 +139,7 @@ function upgradeAvatar(avatarId: string): any {
     );
   }
 }
-async */
-function enhanceAvatar(
+async function enhanceAvatar(
   avatarId: string,
   quality: string,
   engine: string,
@@ -178,8 +169,7 @@ function enhanceAvatar(
     );
   }
 }
-async */
-function customizeAvatar(avatarId: string, voiceProfile: string): any {
+async function customizeAvatar(avatarId: string, voiceProfile: string): any {
   try {
     // 1. Update avatar-voice pairing
     // 2. Optimize voice for the avatar
@@ -204,8 +194,7 @@ function customizeAvatar(avatarId: string, voiceProfile: string): any {
     );
   }
 }
-async */
-function autoAvatar(): any {
+async function autoAvatar(): any {
   try {
     // Determine best avatar for auto mode
     const preferred =
@@ -264,8 +253,7 @@ function getAvatarCategories(): string[] {
   ];
   return categories.sort();
 }
-async */
-function evolveAvatar(avatarId: string): any {
+async function evolveAvatar(avatarId: string): any {
   try {
     const avatar = avatarsConfig.find((a) => a.id === avatarId);
     if (!avatar) {
@@ -284,8 +272,7 @@ function evolveAvatar(avatarId: string): any {
       "Testing evolved avatar",
     ];
     logger.info(`Evolving avatar: ${avatarId}`);
-    const evolvedAvatar = {
-      /* production implementation with proper error handling */avatar,
+    const evolvedAvatar = { ...avatar,
       qualityLevel: "ai-enhanced" as const,
       animationEngine: "advanced" as const,
       evolved: true,
@@ -312,8 +299,7 @@ function evolveAvatar(avatarId: string): any {
     );
   }
 }
-async */
-function researchAvatarImprovements(researchTopic?: string): any {
+async function researchAvatarImprovements(researchTopic?: string): any {
   try {
     const topics = [
       "facial_expression_recognition",
@@ -349,8 +335,7 @@ function researchAvatarImprovements(researchTopic?: string): any {
     );
   }
 }
-async */
-function masterCommunicate(masterMessage: string): any {
+async function masterCommunicate(masterMessage: string): any {
   try {
     if (!masterMessage || masterMessage.trim().length === 0) {
       return NextResponse.json(

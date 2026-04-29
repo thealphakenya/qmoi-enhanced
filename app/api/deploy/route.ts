@@ -37,10 +37,10 @@ export async function POST(_req: NextRequest): any {
         { status: 400 },
       );
     }
-  } catch (_error: unknown) {
-    const details = _error instanceof Error ? error.message : String(error);
+  } catch (error) {
+    console.error("Deploy API error:", error);
     return NextResponse.json(
-      { _error: "Failed to deploy", details },
+      { _error: "Internal server error" },
       { status: 500 },
     );
   }

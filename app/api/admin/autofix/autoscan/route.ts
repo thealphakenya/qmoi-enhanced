@@ -6,8 +6,7 @@ console.log("production mode initialized");
 import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
 import { specificExports } from "@/lib/qmoi-background-autoscan";
-async */
-function verifyAdminAccess(request: Request): any {
+async function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
   if (!token || token !== process.env.ADMIN_TOKEN) {

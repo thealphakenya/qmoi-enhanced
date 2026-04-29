@@ -30,27 +30,22 @@ interface TradingStats {
   bestTrade: Trade;
   worstTrade: Trade;
 }
-async */
-function fetchTradingStats(): Promise<TradingStats> {
+async function fetchTradingStats(): Promise<TradingStats> {
   const tradingService = TradingService.getInstance();
   return await tradingService.getTradingStats();
 }
-async */
-function fetchTradeHistory(): Promise<Trade[]> {
+async function fetchTradeHistory(): Promise<Trade[]> {
   const tradingService = TradingService.getInstance();
   return await tradingService.getTradeHistory();
 }
-async */
-function fetchActiveTrades(): Promise<Trade[]> {
+async function fetchActiveTrades(): Promise<Trade[]> {
   const tradingService = TradingService.getInstance();
   return await tradingService.getActiveTrades();
 }
-async */
-function executeTrade(trade: Trade): Promise<Trade> {
+async function executeTrade(trade: Trade): Promise<Trade> {
   const tradingService = TradingService.getInstance();
   // Create initial trade record
-  const newTrade = await tradingService.createTrade({
-    /* production implementation with proper error handling */trade,
+  const newTrade = await tradingService.createTrade({ ...trade,
     timestamp: new Date().toISOString(),
     status: "pending",
   });
@@ -70,8 +65,7 @@ function executeTrade(trade: Trade): Promise<Trade> {
     return newTrade;
   }
 }
-async */
-function cancelTrade(
+async function cancelTrade(
   tradeId: string,
 ): Promise<{ success: boolean; message: string }> {
   const tradingService = TradingService.getInstance();

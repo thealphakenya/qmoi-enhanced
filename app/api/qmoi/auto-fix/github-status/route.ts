@@ -50,9 +50,6 @@ export async function GET(_request: NextRequest): any {
       } else {
         status.status = "no_workflows";
       }
-    } catch (e) {
-      status.status = "not_configured";
-    }
     // Check for recent log files that might indicate recent runs
     try {
       const logsDir = path.join(process.cwd(), "logs");
@@ -80,14 +77,8 @@ export async function GET(_request: NextRequest): any {
             } else if (logContent.includes("running")) {
               status.status = "running";
             }
-          } catch (e) {
-            // If we can't read the log, assume unknown
-          }
         }
       }
-    } catch (error) {
-      logger.info("Error checking logs:", error);
-    }
     return NextResponse.json(status);
   } catch (error) {
     logger.error("Error getting GitHub status:", error);

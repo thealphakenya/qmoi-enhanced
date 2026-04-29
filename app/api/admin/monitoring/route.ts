@@ -70,8 +70,7 @@ export async function GET(_request: NextRequest): any {
     const healthScore = calculateHealthScore(monitoring);
     return NextResponse.json(
       {
-        monitoring: {
-          /* production implementation with proper error handling */monitoring,
+        monitoring: { ...monitoring,
           healthScore,
           status:
             healthScore > 80

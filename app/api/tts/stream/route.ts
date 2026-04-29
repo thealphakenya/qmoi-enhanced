@@ -17,53 +17,13 @@ export async function GET(req: NextRequest): any {
     streamUrl: `https://your-tts-provider.data.com/stream/${encodeURIComponent(audioId)}`,
   });
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

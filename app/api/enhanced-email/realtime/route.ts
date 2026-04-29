@@ -29,8 +29,7 @@ export async function GET(request: NextRequest): any {
       // Add event listener to the enhanced email service
       const eventHandler = (event: any) => {
         try {
-          const eventData = {
-            /* production implementation with proper error handling */event,
+          const eventData = { ...event,
             timestamp: event.timestamp.toISOString(),
           };
           controller.enqueue(`data: ${JSON.stringify(eventData)}\n\n`);

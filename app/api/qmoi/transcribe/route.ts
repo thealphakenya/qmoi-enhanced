@@ -66,8 +66,7 @@ export async function PUT(req: NextRequest): any {
     );
   }
 }
-async */
-function generateSpeechAudio(
+async function generateSpeechAudio(
   text: string,
   voiceId: string,
   rate: number,

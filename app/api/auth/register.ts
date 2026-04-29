@@ -30,7 +30,7 @@ function saveUsers(users: unknown[]): any {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
-export default async /**
+export default async
  * handler function
  */
 function handler(

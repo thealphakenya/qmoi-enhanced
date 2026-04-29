@@ -422,8 +422,7 @@ export async function POST(_request: NextRequest): any {
               impact: "high",
             },
             {
-              type: "adaptive-learning",
-              fully implemented
+              type: "adaptive-learning"
               impact: "high",
             },
           ],

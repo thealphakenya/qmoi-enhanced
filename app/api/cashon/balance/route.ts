@@ -36,8 +36,7 @@ export async function GET(_request: NextRequest): any {
     const snapshot = getValidatedBalances();
     if (snapshot && snapshot.balances && snapshot.balances.primary_wallet) {
       const validatedCashon = snapshot.balances.primary_wallet;
-      return NextResponse.json({
-        /* production implementation with proper error handling */validatedCashon,
+      return NextResponse.json({ ...validatedCashon,
         source: "snapshot",
         validation: validatedCashon.validation,
       });

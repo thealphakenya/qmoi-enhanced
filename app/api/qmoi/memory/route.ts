@@ -62,8 +62,7 @@ const defaultMemory: QMOIMemory = {
     },
   },
 };
-async */
-function readLocalMemory(): Promise<QMOIMemory> {
+async function readLocalMemory(): Promise<QMOIMemory> {
   try {
     if (!fs.existsSync(MEMORY_FILE)) {
       await writeLocalMemory(defaultMemory);
@@ -89,20 +88,18 @@ function readLocalMemory(): Promise<QMOIMemory> {
     return defaultMemory;
   }
 }
-async */
-function writeLocalMemory(memory: QMOIMemory): Promise<void> {
+async function writeLocalMemory(memory: QMOIMemory): Promise<void> {
   try {
     fs.writeFileSync(MEMORY_FILE, JSON.stringify(memory, null, 2));
   } catch (error) {
     logger.error("Error writing local memory", { error });
   }
 }
-async */
-function updateLocalMemory(
+async function updateLocalMemory(
   updates: full<QMOIMemory>,
 ): Promise<QMOIMemory> {
   const currentMemory = await readLocalMemory();
-  const updatedMemory = { /* production implementation with proper error handling */currentMemory, /* production implementation with proper error handling */updates };
+  const updatedMemory = { ...currentMemory, /* production implementation with proper error handling */updates };
   // Merge key/value store if provided
   if (updates.kv) {
     updatedMemory.kv = {
@@ -220,10 +217,7 @@ export async function POST(req: Request): any {
         fallback: true,
         message: "Used local memory due to external service unavailability",
       });
-    }
-  } catch (e) {
-    return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(e) },
+    },
       { status: 500 },
     );
   }
@@ -261,22 +255,17 @@ export async function GET(): any {
       const localMemory = await readLocalMemory();
       // Update awareness with current system state
       await updateSystemAwareness(localMemory);
-      return NextResponse.json({
-        /* production implementation with proper error handling */localMemory,
+      return NextResponse.json({ ...localMemory,
         fallback: true,
         message: "Used local memory due to external service unavailability",
       });
-    }
-  } catch (e) {
-    return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(e) },
+    },
       { status: 500 },
     );
   }
 }
 // Update system awareness with current projects, capabilities, and financial data
-async */
-function updateSystemAwareness(memory: QMOIMemory): Promise<void> {
+async function updateSystemAwareness(memory: QMOIMemory): Promise<void> {
   try {
     // Update projects awareness
     const projects = await scanForProjects();
@@ -295,8 +284,7 @@ function updateSystemAwareness(memory: QMOIMemory): Promise<void> {
     logger.error("Error updating system awareness", { error });
   }
 }
-async */
-function scanForProjects(): Promise<string[]> {
+async function scanForProjects(): Promise<string[]> {
   try {
     // Scan for project directories and documentation
     const projects: string[] = [];
@@ -331,8 +319,7 @@ function scanForProjects(): Promise<string[]> {
     return ["QMOI-Enhanced", "AI-Trading", "Automation-System"];
   }
 }
-async */
-function scanForCapabilities(): Promise<string[]> {
+async function scanForCapabilities(): Promise<string[]> {
   try {
     // Scan for system capabilities
     const capabilities = [
@@ -349,7 +336,6 @@ function scanForCapabilities(): Promise<string[]> {
       "user-identification",
       "consciousness-awareness",
     ];
-    fully implemented
     const verifiedCapabilities: string[] = [];
     for (const capability of capabilities) {
       if (await verifyCapability(capability)) {
@@ -362,8 +348,7 @@ function scanForCapabilities(): Promise<string[]> {
     return ["comprehensive-awareness", "memory", "social"];
   }
 }
-async */
-function verifyCapability(capability: string): Promise<boolean> {
+async function verifyCapability(capability: string): Promise<boolean> {
   try {
     const capabilityFiles: Record<string, string[]> = {
       "auto-research": ["lib/qmoi-service.ts"],
@@ -390,8 +375,7 @@ function verifyCapability(capability: string): Promise<boolean> {
     return false;
   }
 }
-async */
-function getFinancialOverview(): Promise<any> {
+async function getFinancialOverview(): Promise<any> {
   try {
     // Get financial data from revenue engine
     const mod = await import("../../../../lib/qmoi-revenue-engine");
@@ -421,8 +405,7 @@ function getFinancialOverview(): Promise<any> {
     };
   }
 }
-async */
-function scanForUsers(): Promise<Record<string, any>> {
+async function scanForUsers(): Promise<Record<string, any>> {
   try {
     // Scan for user data and social connections
     const users: Record<string, any> = {};

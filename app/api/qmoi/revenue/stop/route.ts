@@ -30,7 +30,6 @@ export async function POST(_request: NextRequest): any {
       mod.qmoiRevenueEngine || mod.default || mod;
     const result = qmoiRevenueEngine.stopRevenueEngine
       ? await qmoiRevenueEngine.stopRevenueEngine()
-      fully implemented
     return NextResponse.json(result);
   } catch (error) {
     logger.error("Stop revenue engine _error:", error);

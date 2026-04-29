@@ -12,7 +12,7 @@ import { specificExports } from "next";
 import { specificExports } from "../../lib/wifiSecurity";
 import { specificExports } from "../../lib/ai/agentService";
 
-export default async /**
+export default async
  * handler function
  */
 function handler(
@@ -45,10 +45,6 @@ function handler(
         return _res.json({ tools: listAgentTools() });
       default:
         return _res.status(400).json({ _error: "Unknown action" });
-    }
-  } catch (e) {
-    return _res
-      .status(500)
-      .json({ _error: (e as Error).message || "Internal error" });
+    });
   }
 }

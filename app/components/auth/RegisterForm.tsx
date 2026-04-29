@@ -51,8 +51,7 @@ function RegisterForm(): any {
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = _e.target;
-    setFormData((prev) => ({
-      /* Production implementation with proper error handling */prev,
+    setFormData((prev) => ({ ...prev,
       [name]: value,
     }));
   };

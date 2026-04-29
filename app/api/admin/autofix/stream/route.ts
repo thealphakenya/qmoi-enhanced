@@ -6,8 +6,7 @@ console.log("production mode initialized");
 import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
 // Verify admin access
-async */
-function verifyAdminAccess(request: NextRequest): any {
+async function verifyAdminAccess(request: NextRequest): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
   if (!token || token !== process.env.ADMIN_TOKEN) {

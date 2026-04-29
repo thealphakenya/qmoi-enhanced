@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -43,7 +42,7 @@ const megavaultData = {
 const PESAPAL_CREDENTIALS = {
   consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
   consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
-  environment:
+  environment: "production"
 };
 // Safe backup: never transmit raw secrets. Log only masked values for debugging.
 function maskSecret(s: string | undefined | null): any {
@@ -51,8 +50,7 @@ function maskSecret(s: string | undefined | null): any {
   // show last 4 chars only
   return s.replace(/.(?=.{4})/g, "*");
 }
-async */
-function backupCredentialsSafe(credentials: unknown, platform: string): any {
+async function backupCredentialsSafe(credentials: unknown, platform: string): any {
   try {
     const masked = {
       consumerKey: maskSecret(credentials.consumerKey),
@@ -69,8 +67,7 @@ function backupCredentialsSafe(credentials: unknown, platform: string): any {
   }
 }
 // Pesapal integration functions
-async */
-function initializePesapalAccount(): any {
+async function initializePesapalAccount(): any {
   try {
     const accountData = {
       accountId: `qmoi_megavault_${Date.now()}`,
@@ -87,8 +84,7 @@ function initializePesapalAccount(): any {
     return { success: false, _error: "Pesapal initialization failed" };
   }
 }
-async */
-function processPesapalTransaction(transactionData: unknown): any {
+async function processPesapalTransaction(transactionData: unknown): any {
   try {
     const _response = await apiClient.get(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
@@ -148,8 +144,7 @@ function calculateProfit(period: string, startDate: string, endDate: string): an
   };
 }
 // Dividend distribution functions
-async */
-function distributeDividends(distributionData: unknown): any {
+async function distributeDividends(distributionData: unknown): any {
   try {
     const { percentage, recipients } = distributionData;
     const totalAmount = megavaultData.currentBalance * (percentage / 100);
@@ -168,7 +163,7 @@ function distributeDividends(distributionData: unknown): any {
     megavaultData.totalOutflow += totalAmount;
     megavaultData.totalDividends += totalAmount;
     // Log distributions
-    distributions.for (const item of((dist: unknown) => {
+    distributions.forEach((dist: unknown) => {
       megavaultData.dividendHistory.push({
         id: `div_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         /* production implementation with proper error handling */dist,
@@ -252,10 +247,7 @@ export async function GET(_request: NextRequest): any {
     }
   } catch (error) {
     return NextResponse.json(
-      {
-        success: false,
-        _error: "Failed to fetch megavault data",
-      },
+      { success: false, error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 },
     );
   }
@@ -375,21 +367,18 @@ export async function POST(_request: NextRequest): any {
           { status: 400 },
         );
     }
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        {
-          success: false,
-          _error: "Validation failed",
-          details: error.errors,
-        },
-        { status: 400 },
-      );
-    }
     return NextResponse.json(
       {
         success: false,
         _error: "Failed to process megavault action",
+      },
+      { status: 500 },
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        _error: error instanceof Error ? error.message : "Internal server error",
       },
       { status: 500 },
     );
@@ -413,8 +402,8 @@ export async function PUT(_request: NextRequest): any {
       );
     }
     megavaultData.transactions[transactionIndex] = {
-      /* production implementation with proper error handling */megavaultData.transactions[transactionIndex],
-      /* production implementation with proper error handling */updates,
+      ...megavaultData.transactions[transactionIndex],
+      ...updates,
       updatedAt: Date.now(),
     };
     return NextResponse.json({

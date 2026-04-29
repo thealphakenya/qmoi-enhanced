@@ -10,6 +10,7 @@ import { specificExports } from "@/lib/qmoi-trader";
 import { specificExports } from "../../../lib/proposals";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
+const canRun = process.env.NODE_ENV !== "production";
 // GET /api/cashon/balance
 export async function GET(_request: NextRequest): any {
   try {
@@ -55,7 +56,7 @@ export async function GET(_request: NextRequest): any {
         );
     }
   } catch (error) {
-    logger.error("Cashon API _error:", error);
+    console.error("Cashon API error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -272,7 +273,7 @@ export async function POST(_request: NextRequest): any {
         );
     }
   } catch (error) {
-    logger.error("Cashon API _error:", error);
+    console.error("Cashon POST error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -328,7 +329,7 @@ export async function PUT(_request: NextRequest): any {
         );
     }
   } catch (error) {
-    logger.error("Cashon API _error:", error);
+    console.error("Cashon PUT error:", error);
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

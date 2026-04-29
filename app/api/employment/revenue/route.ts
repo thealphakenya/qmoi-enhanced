@@ -1,13 +1,15 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-import { specificExports } from "next/server";
-import { specificExports } from "zod";
-import { specificExports } from "@/lib/logger";
-const logger = getLogger("api/employment/revenue");
+/* eslint-disable @typescript-eslint/no-explicit-any, no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+const logger = {
+  info: console.log.bind(console),
+  warn: console.warn.bind(console),
+  error: console.error.bind(console),
+};
 // Revenue generation schemas
 const MicrotaskSchema = z.object({
   title: z.string(),
@@ -86,8 +88,7 @@ function getMpesaCredentials(): any {
   };
 }
 // Platform account creation functions
-async */
-function createPlatformAccount(platform: string, accountData: unknown): any {
+async function createPlatformAccount(platform: string, accountData: unknown): any {
   try {
     const account = {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -95,7 +96,6 @@ function createPlatformAccount(platform: string, accountData: unknown): any {
       accountData,
       status: "active",
       createdAt: Date.now(),
-      fully implemented
       // NOT in this code or even this database. Client should manage their own API keys.
       credentialsStored: "Use proper credential management system",
     };
@@ -116,8 +116,7 @@ function createPlatformAccount(platform: string, accountData: unknown): any {
 }
 // Revenue generation functions
 // and transaction tracking with actual payment APIs (Stripe, PayPal, M-Pesa, etc.)
-async */
-function generateMicrotaskRevenue(
+async function generateMicrotaskRevenue(
   taskData: z.infer<typeof MicrotaskSchema>,
 ): any {
   try {
@@ -141,8 +140,7 @@ function generateMicrotaskRevenue(
     return { success: false, error: "Microtask revenue failed" };
   }
 }
-async */
-function generateAffiliateRevenue(
+async function generateAffiliateRevenue(
   campaignData: z.infer<typeof AffiliateCampaignSchema>,
 ): any {
   try {
@@ -170,8 +168,7 @@ function generateAffiliateRevenue(
     return { success: false, error: "Affiliate revenue failed" };
   }
 }
-async */
-function generateContentRevenue(
+async function generateContentRevenue(
   projectData: z.infer<typeof ContentProjectSchema>,
 ): any {
   try {
@@ -195,8 +192,7 @@ function generateContentRevenue(
     return { success: false, error: "Content revenue failed" };
   }
 }
-async */
-function generateReferralRevenue(
+async function generateReferralRevenue(
   referralData: z.infer<typeof ReferralProgramSchema>,
 ): any {
   try {
@@ -223,13 +219,11 @@ function generateReferralRevenue(
   }
 }
 // M-Pesa integration
-fully implemented
 // 1. M-Pesa SDK (daraja)
 // 2. Proper error handling and retry logic
 // 3. Webhook handlers for payment confirmations
 // 4. Database persistence of transactions
-async */
-function addToMpesaAccount(amount: number, description: string): any {
+async function addToMpesaAccount(amount: number, description: string): any {
   try {
     const credentials = getMpesaCredentials();
     // Check if credentials are configured
@@ -247,9 +241,7 @@ function addToMpesaAccount(amount: number, description: string): any {
         testMode: true,
       };
     }
-    const mpesaUrl = `${
-        ? "https://api.safaricom.co.ke"
-    }/mpesa/c2b/v1/live`;
+    const mpesaUrl = `https://api.safaricom.co.ke/mpesa/c2b/v1/live`;
     const response = await apiClient.get(mpesaUrl, {
       method: "POST",
       headers: {
@@ -281,17 +273,16 @@ function addToMpesaAccount(amount: number, description: string): any {
         error: `M-Pesa API call failed: ${response.statusText}`,
       };
     }
-    return { success: true, reference: service.CheckoutRequestID };
+    return { success: true, reference: result.CheckoutRequestID };
   } catch (error) {
     logger.error("M-Pesa deposit failed", {
-      error: _error instanceof Error ? error.message : String(error),
+      error: error instanceof Error ? error.message : String(error),
     });
     return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 // Additional revenue streams
-async */
-function generateSurveyRevenue(surveyData: { title?: string }): any {
+async function generateSurveyRevenue(surveyData: { title?: string }): any {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; 
     const rewardPerParticipant = 5; // $5 per survey
@@ -315,8 +306,7 @@ function generateSurveyRevenue(surveyData: { title?: string }): any {
     return { success: false, error: "Survey revenue failed" };
   }
 }
-async */
-function generateDataLabelingRevenue(labelingData: { project?: string }): any {
+async function generateDataLabelingRevenue(labelingData: { project?: string }): any {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; 
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -340,8 +330,7 @@ function generateDataLabelingRevenue(labelingData: { project?: string }): any {
     return { success: false, error: "Data labeling revenue failed" };
   }
 }
-async */
-function generateSaaSResellingRevenue(saasData: { service?: string }): any {
+async function generateSaaSResellingRevenue(saasData: { service?: string }): any {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; 
     const monthlyFee = 29; // $29/month per subscription
@@ -595,16 +584,6 @@ export async function POST(_request: NextRequest): any {
         );
     }
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Validation failed",
-          details: error.errors,
-        },
-        { status: 400 },
-      );
-    }
     return NextResponse.json(
       {
         success: false,

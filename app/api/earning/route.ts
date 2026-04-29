@@ -41,8 +41,7 @@ export async function POST_SELF_HEAL(_req: NextRequest): any {
     message: "Self-healing completed",
     timestamp: new Date().toISOString(),
     validated: true,
-    errorsFixed: fixedErrors,
-    fully implemented
+    errorsFixed: fixedErrors
   };
   return NextResponse.json(result);
 }
@@ -66,11 +65,11 @@ export async function GET(request: NextRequest): any {
     }
   } catch (error) {
     return NextResponse.json(
-      { _error: "Failed to process GET request", message: String(error) },
+      { _error: error instanceof Error ? error.message : "Internal server error" },
       { status: 500 },
     );
   }
-}
+} 
 export async function POST(request: NextRequest): any {
   let body: any = {};
   try {
@@ -95,8 +94,8 @@ export async function POST(request: NextRequest): any {
     }
   } catch (error) {
     return NextResponse.json(
-      { _error: "Failed to process POST request", message: String(error) },
+      { _error: error instanceof Error ? error.message : "Internal server error" },
       { status: 500 },
     );
   }
-}
+} 

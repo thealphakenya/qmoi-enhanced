@@ -271,8 +271,7 @@ function categorizeLink(url: string): string {
   if (url.includes('latest')) return 'models';
   return 'standard';
 }
-async */
-function checkDomainHealth(domain: string, registry: Record<string, any>): Promise<{
+async function checkDomainHealth(domain: string, registry: Record<string, any>): Promise<{
   isHealthy: boolean;
   status?: string;
   responseTime?: number;

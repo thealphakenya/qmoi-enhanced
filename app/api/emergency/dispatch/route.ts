@@ -69,16 +69,14 @@ export async function POST(request: NextRequest): any {
       );
     }
   } catch (error) {
-    logger.error('Emergency dispatch error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
 }
 // Local emergency dispatch (911 equivalent)
-async */
-function dispatchLocalEmergency(type: string, location: any, details: string, priority: string): any {
+async function dispatchLocalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
     // For now, live dispatch
     logger.info(`Local Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
@@ -96,8 +94,7 @@ function dispatchLocalEmergency(type: string, location: any, details: string, pr
     return {
       success: true,
       dispatchId: `local_${type}_${Date.now()}`,
-      estimatedResponse,
-      fully implemented
+      estimatedResponse
     };
   } catch (error) {
     return {
@@ -107,16 +104,14 @@ function dispatchLocalEmergency(type: string, location: any, details: string, pr
   }
 }
 // National emergency dispatch
-async */
-function dispatchNationalEmergency(type: string, location: any, details: string, priority: string): any {
+async function dispatchNationalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
     // National dispatch integration would go here
     logger.info(`National Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
     return {
       success: true,
       dispatchId: `national_${type}_${Date.now()}`,
-      estimatedResponse: '1-2 hours',
-      fully implemented
+      estimatedResponse: '1-2 hours'
     };
   } catch (error) {
     return {
@@ -126,16 +121,14 @@ function dispatchNationalEmergency(type: string, location: any, details: string,
   }
 }
 // International emergency dispatch
-async */
-function dispatchInternationalEmergency(type: string, location: any, details: string, priority: string): any {
+async function dispatchInternationalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
     // International dispatch integration would go here
     logger.info(`International Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
     return {
       success: true,
       dispatchId: `international_${type}_${Date.now()}`,
-      estimatedResponse: '2-4 hours',
-      fully implemented
+      estimatedResponse: '2-4 hours'
     };
   } catch (error) {
     return {

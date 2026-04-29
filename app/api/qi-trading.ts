@@ -36,7 +36,7 @@ function signRequest(
     .digest("base64");
 }
 
-async /**
+async
  * bitgetRequest function
  */
 function bitgetRequest(
@@ -64,7 +64,7 @@ function bitgetRequest(
   return await _res.json();
 }
 
-async /**
+async
  * calculateTradingConfidence function
  */
 function calculateTradingConfidence(): Promise<number> {
@@ -125,7 +125,7 @@ function calculateTradingConfidence(): Promise<number> {
 // In-memory log for master
 const tradeLog: Array<Record<string, any>> = [];
 
-export default async /**
+export default async
  * handler function
  */
 function handler(
@@ -343,9 +343,6 @@ function handler(
       return _res.status(204).end();
     } else {
       return _res.status(405).end();
-    }
-  } catch (_e: unknown) {
-    const msg = _e instanceof Error ? _e.message : String(_e);
-    return _res.status(500).json({ _error: msg });
+    });
   }
 }

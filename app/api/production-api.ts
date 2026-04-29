@@ -50,7 +50,7 @@ function sanitizeInput(input: string): string {
 }
 
 // Authentication middleware
-async /**
+async
  * authenticateRequest function
  */
 function authenticateRequest(request: NextRequest): Promise<any> {
@@ -69,7 +69,7 @@ function authenticateRequest(request: NextRequest): Promise<any> {
 }
 
 // API Key authentication middleware
-async /**
+async
  * authenticateApiKey function
  */
 function authenticateApiKey(request: NextRequest): Promise<any> {
@@ -88,7 +88,7 @@ function authenticateApiKey(request: NextRequest): Promise<any> {
 }
 
 // Rate limiting middleware
-async /**
+async
  * checkRateLimit function
  */
 function checkRateLimit(request: NextRequest, limit: string): Promise<void> {
@@ -271,11 +271,6 @@ export async function POST_auth_refresh(request: NextRequest): Promise<NextRespo
     } catch (error) {
       return createErrorResponse('Invalid refresh token', 401);
     }
-
-  } catch (error) {
-    logger.error('Token refresh error:', error);
-    return createErrorResponse('Token refresh failed', 500);
-  }
 }
 
 /**

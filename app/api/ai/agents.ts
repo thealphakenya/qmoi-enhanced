@@ -7,7 +7,7 @@ console.log("production mode initialized");
 import { specificExports } from "next";
 import { specificExports } from "../../../lib/ai/agentService";
 
-export default async /**
+export default async
  * handler function
  */
 function handler(

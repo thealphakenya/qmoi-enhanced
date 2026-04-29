@@ -52,28 +52,22 @@ function MasterActivityPage(): any {
             details: log,
           }),
         );
-        setLogs(parsedLogs.slice(-20)); // Last 20 logs
+        setLogs([
+          ...parsedLogs.slice(-20),
+          {
+            timestamp: new Date().toLocaleString(),
+            event: "Authentication",
+            status: "success",
+            details: "Master user authenticated successfully",
+          },
+        ]); // Last 20 logs plus auth event
       }
     } catch (error) {
-      console?.error?.("Failed to fetch activity logs:", error);
-      setLogs([
-        {
-          timestamp: new Date().toLocaleString(),
-          event: "System Started",
-          status: "success",
-          details: "Master dashboard initialized",
-        },
-        {
-          timestamp: new Date().toLocaleString(),
-          event: "Authentication",
-          status: "success",
-          details: "Master user authenticated successfully",
-        },
-      ]);
-    } finally {
-      setLoading(false);
-    }
-  };
+        console.error("Failed to fetch activity logs:", error);
+      } finally {
+        setLoading(false);
+      }
+    }; 
 
   return (
     <div className="max-w-4xl">

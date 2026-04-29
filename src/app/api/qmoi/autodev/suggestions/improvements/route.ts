@@ -297,7 +297,7 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
   return allSuggestions.filter(s => s.category === category).slice(0, limit);
 }
 
-async /**
+async
  * processSuggestionAction function
  */
 function processSuggestionAction(

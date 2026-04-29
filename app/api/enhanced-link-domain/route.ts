@@ -1,11 +1,10 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-import { specificExports } from "@/lib/enhanced-link-domain-service";
-import { specificExports } from "@/lib/tracks-service";
-import { specificExports } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+declare const enhancedLinkDomainService: any;
+declare const qmoiTracksService: any;
 export async function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
@@ -85,12 +84,10 @@ export async function GET(request: NextRequest): any {
         );
     }
   } catch (error) {
-    logger.error("Enhanced link domain service error:", error);
     return NextResponse.json(
       {
         success: false,
-        error:
-          error instanceof Error ? error.message : "Unknown error occurred",
+        error: "Failed to process link domain request",
       },
       { status: 500 },
     );
@@ -172,12 +169,10 @@ export async function POST(request: NextRequest): any {
         );
     }
   } catch (error) {
-    logger.error("Enhanced link domain service POST error:", error);
-    const details = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
       {
         success: false,
-        error: details,
+        error: "Failed to process link domain request",
       },
       { status: 500 },
     );

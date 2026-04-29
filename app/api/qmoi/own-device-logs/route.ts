@@ -149,8 +149,7 @@ export async function GET(_request: NextRequest): any {
     );
   }
 }
-async */
-function checkMasterAccess(_request: NextRequest): Promise<boolean> {
+async function checkMasterAccess(_request: NextRequest): Promise<boolean> {
   try {
     // Get authorization header
     const authHeader = _request.headers.get("authorization");

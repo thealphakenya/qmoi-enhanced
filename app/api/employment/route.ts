@@ -1,11 +1,10 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-import { specificExports } from "next/server";
-import { specificExports } from "zod";
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 // Employment schemas
 const EmployeeSchema = z.object({
   id: z.string().optional(),
@@ -96,8 +95,7 @@ export async function POST(_request: NextRequest): any {
     const { type, /* production implementation with proper error handling */data } = body;
     if (type === "employee") {
       const validatedData = EmployeeSchema.parse(data);
-      const employee = {
-        /* production implementation with proper error handling */validatedData,
+      const employee = { ...validatedData,
         id: `emp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: Date.now(),
       };
@@ -117,8 +115,7 @@ export async function POST(_request: NextRequest): any {
       });
     } else if (type === "user") {
       const validatedData = UserSchema.parse(data);
-      const user = {
-        /* production implementation with proper error handling */validatedData,
+      const user = { ...validatedData,
         id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: Date.now(),
       };
@@ -146,16 +143,6 @@ export async function POST(_request: NextRequest): any {
       );
     }
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        {
-          success: false,
-          _error: "Validation failed",
-          details: error.errors,
-        },
-        { status: 400 },
-      );
-    }
     return NextResponse.json(
       {
         success: false,
@@ -180,7 +167,7 @@ export async function PUT(_request: NextRequest): any {
           { status: 404 },
         );
       }
-      employees[index] = { /* production implementation with proper error handling */[index], /* production implementation with proper error handling */updates };
+      employees[index] = { ...employees[index], ...updates };
       // Log the update
       employmentLogs.push({
         id: Date.now(),
@@ -205,7 +192,7 @@ export async function PUT(_request: NextRequest): any {
           { status: 404 },
         );
       }
-      users[index] = { /* production implementation with proper error handling */[index], /* production implementation with proper error handling */updates };
+      users[index] = { ...users[index], ...updates };
       // Log the update
       employmentLogs.push({
         id: Date.now(),
@@ -315,7 +302,7 @@ export async function DELETE(_request: NextRequest): any {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to remove employment record",
+        _error: "Failed to delete employment record",
       },
       { status: 500 },
     );

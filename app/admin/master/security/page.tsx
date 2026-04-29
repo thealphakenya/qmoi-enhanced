@@ -47,9 +47,8 @@ function MasterSecurityPage(): any {
           sessionDuration: "Active",
           encryptionStatus: "AES-256 Enabled",
         });
-      }
-    } catch (error) {
-      logger.error("Failed to fetch security status:", error);
+      } } catch (error) {
+      console.error("Security status error:", error);
     } finally {
       setLoading(false);
     }

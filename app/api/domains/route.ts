@@ -119,15 +119,13 @@ export async function POST(req: Request): any {
           { status: 400 },
         );
     }
-  } catch (error: unknown) {
-    logger.error("Domain management API error:", error);
-    const details = error instanceof Error ? error.message : String(error);
+  } catch (error) {
     return NextResponse.json(
-      { error: "Internal server error", details },
+      { error: error instanceof Error ? error.message : "Internal server error" },
       { status: 500 },
     );
   }
-}
+} 
 export async function GET(): any {
   try {
     const allDomains = await domainService.getAllDomains();

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -54,16 +53,14 @@ export async function POST(request: NextRequest): any {
       );
     }
   } catch (error) {
-    logger.error('Emergency email error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
 }
 // SendGrid email integration
-async */
-function sendSendGridEmail(to: string, subject: string, message: string): any {
+async function sendSendGridEmail(to: string, subject: string, message: string): any {
   try {
     const apiKey = process.env.SENDGRID_API_KEY;
     const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'emergency@qmoi.system';
@@ -71,8 +68,7 @@ function sendSendGridEmail(to: string, subject: string, message: string): any {
       logger.warning('SendGrid API key not configured, simulating email send');
       return {
         success: true,
-        messageId: `lived_${Date.now()}`,
-        fully implemented
+        messageId: `lived_${Date.now()}`
       };
     }
     const response = await apiClient.get('https://api.sendgrid.com/v3/mail/send', {
@@ -107,24 +103,21 @@ function sendSendGridEmail(to: string, subject: string, message: string): any {
       };
     }
   } catch (error) {
-    logger.error('SendGrid email error:', error);
     return {
       success: false,
-      error: 'SendGrid service error',
+      error: error instanceof Error ? error.message : 'SendGrid request failed',
     };
   }
 }
 // AWS SES email integration
-async */
-function sendAWSSESEmail(to: string, subject: string, message: string): any {
+async function sendAWSSESEmail(to: string, subject: string, message: string): any {
   try {
     // AWS SES integration would go here
     // For now, live
     logger.info(`AWS SES Email to ${to}: ${subject} - ${message}`);
     return {
       success: true,
-      messageId: `aws_${Date.now()}`,
-      fully implemented
+      messageId: `aws_${Date.now()}`
     };
   } catch (error) {
     return {
@@ -134,16 +127,14 @@ function sendAWSSESEmail(to: string, subject: string, message: string): any {
   }
 }
 // Gmail email integration
-async */
-function sendGmailEmail(to: string, subject: string, message: string): any {
+async function sendGmailEmail(to: string, subject: string, message: string): any {
   try {
     // Gmail API integration would go here
     // For now, live
     logger.info(`Gmail Email to ${to}: ${subject} - ${message}`);
     return {
       success: true,
-      messageId: `gmail_${Date.now()}`,
-      fully implemented
+      messageId: `gmail_${Date.now()}`
     };
   } catch (error) {
     return {

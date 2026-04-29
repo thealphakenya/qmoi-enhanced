@@ -3,12 +3,12 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-import { specificExports } from "next/server";
-import { specificExports } from "@/lib/auth";
-import { specificExports } from "@/lib/database";
-import { specificExports } from "@/lib/logger";
+import { NextRequest, NextResponse } from 'next/server';
+import { authService } from '@/lib/auth/service';
+import { Database } from '@/lib/db';
+import { getLogger } from '@/lib/logger';
 const logger = getLogger("api/admin/audit-logs");
-const db = new Database({ type: 'sqlite', url: 'file:./data.db', maxConnections: 10 });
+const db = prisma;
 // In-memory audit log cache for fallback/test scenarios
 const inMemoryAuditLogs: any[] = [];
 export async function GET(_request: NextRequest): any {
@@ -219,9 +219,7 @@ export async function POST(_request: NextRequest): any {
         take: 10000,
       });
     } catch (error) {
-      
-        error,
-      });
+      logger.error('Database error:', error);
       logs = inMemoryAuditLogs.slice(0, 10000);
     }
     let content: string;

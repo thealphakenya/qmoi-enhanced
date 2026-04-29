@@ -48,7 +48,9 @@ export async function GET(request: NextRequest): any {
     }
   } catch (error) {
     return NextResponse.json(
-      { error: "Internal server error" },
+      {
+        error: "Failed to process global links request",
+      },
       { status: 500 },
     );
   }
@@ -92,8 +94,11 @@ export async function POST(request: NextRequest): any {
         );
     }
   } catch (error) {
-    logger.error("Global links POST API error:", error);
-    const details = error instanceof Error ? error.message : String(error);
-    return NextResponse.json({ error: details }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: "Failed to process global links operation",
+      },
+      { status: 500 },
+    );
   }
 }

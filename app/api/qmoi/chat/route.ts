@@ -47,8 +47,7 @@ export async function POST(req: Request): any {
     if (!response.success) {
       return NextResponse.json(response, { status: 500 });
     }
-    return NextResponse.json({
-      /* production implementation with proper error handling */response,
+    return NextResponse.json({ ...response,
       choices: [
         {
           message: {

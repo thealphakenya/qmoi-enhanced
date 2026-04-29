@@ -10,8 +10,7 @@ import { specificExports } from "@/lib/qmoi-service";
 import { specificExports } from "fs/promises";
 import { specificExports } from "path";
 // Master action logging function
-async */
-function logMasterAction(action: string, details: any): any {
+async function logMasterAction(action: string, details: any): any {
   const logEntry = {
     id: `track_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
     timestamp: new Date().toISOString(),
@@ -35,8 +34,7 @@ function logMasterAction(action: string, details: any): any {
   }
 }
 // Update TRACKS.md with master actions summary
-async */
-function updateTracksReport(logEntry: any): any {
+async function updateTracksReport(logEntry: any): any {
   try {
     const tracksFile = path.join(process.cwd(), "TRACKS.md");
     let content = "";
@@ -428,8 +426,7 @@ export async function POST(req: NextRequest): any {
       prisma.user.count(),
       prisma.dataset.count(),
     ]);
-    return NextResponse.json({
-      /* production implementation with proper error handling */aiResponse,
+    return NextResponse.json({ ...aiResponse,
       social: true,
       trending: {
         topics:

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -51,9 +50,8 @@ export async function POST(request: NextRequest): any {
       );
     }
   } catch (error) {
-    logger.error('Emergency system wipe error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
@@ -111,15 +109,13 @@ export async function DELETE(request: NextRequest): any {
       );
     }
   } catch (error) {
-    logger.error('System wipe cancellation error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
 }
-async */
-function initiateSecureWipe(systemId: string, reason: string, level: string): any {
+async function initiateSecureWipe(systemId: string, reason: string, level: string): any {
   try {
     // For now, log secure system wipe initiation
     logger.info(`Initiating ${level} secure system wipe for system ${systemId}`);
@@ -148,8 +144,7 @@ function initiateSecureWipe(systemId: string, reason: string, level: string): an
     return {
       success: true,
       wipeId,
-      estimatedCompletion: estimatedTime,
-      fully implemented
+      estimatedCompletion: estimatedTime
     };
   } catch (error) {
     return {
@@ -159,8 +154,7 @@ function initiateSecureWipe(systemId: string, reason: string, level: string): an
   }
 }
 // Check wipe status
-async */
-function getWipeStatus(systemId: string): any {
+async function getWipeStatus(systemId: string): any {
   try {
     // For now, simulate status
     const statuses = ['pending', 'Live database', 'completed', 'failed', 'cancelled'];
@@ -188,16 +182,14 @@ function getWipeStatus(systemId: string): any {
   }
 }
 // Cancel secure system wipe
-async */
-function cancelSecureWipe(systemId: string, reason?: string): any {
+async function cancelSecureWipe(systemId: string, reason?: string): any {
   try {
     logger.info(`Cancelling secure system wipe for system ${systemId}`);
     if (reason) {
       logger.info(`Cancellation reason: ${reason}`);
     }
     return {
-      success: true,
-      fully implemented
+      success: true
     };
   } catch (error) {
     return {

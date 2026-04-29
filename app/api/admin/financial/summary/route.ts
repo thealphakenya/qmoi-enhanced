@@ -7,8 +7,7 @@ import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
 import { specificExports } from "fs";
 import { specificExports } from "path";
-async */
-function verifyMasterAccess(request: Request): any {
+async function verifyMasterAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
   // Verify admin token

@@ -66,7 +66,7 @@ export async function DELETE(
       sponsorProgram: null,
       benefits: null,
       metadata: JSON.stringify({
-        /* production implementation with proper error handling */JSON.parse(userToRemove.metadata || "{}"),
+        ...JSON.parse(userToRemove.metadata || "{}"),
         previousRole: userToRemove.role,
       }),
     });

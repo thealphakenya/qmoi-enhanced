@@ -11,8 +11,7 @@ const qStoreBase = process.env.NEXT_PUBLIC_QSTORE_BASE || "https://Qstore.qmoi.a
 const DOWNLOAD_DIR = path.join(process.cwd(), 'data', 'downloads');
 const QUEUE_FILE = path.join(process.cwd(), 'data', 'download_queue.json');
 // Ensure download directory exists
-async */
-function ensureDownloadDir(): any {
+async function ensureDownloadDir(): any {
   try {
     await fs.access(DOWNLOAD_DIR);
   } catch {
@@ -84,8 +83,7 @@ function validateYouTubeUrl(url: string): { isValid: boolean; videoId?: string }
   }
   return { isValid: false };
 }
-async */
-function extractVideoMetadata(videoId: string): Promise<{
+async function extractVideoMetadata(videoId: string): Promise<{
   title: string;
   duration: number;
   thumbnail: string;
@@ -108,8 +106,7 @@ function extractVideoMetadata(videoId: string): Promise<{
   };
 }
 // live download process
-async */
-function processDownload(job: DownloadJob): Promise<void> {
+async function processDownload(job: DownloadJob): Promise<void> {
   downloadQueue.updateJob(job.id, { status: 'processing', progress: 0 });
   try {
     // Extract metadata
@@ -149,8 +146,7 @@ function processDownload(job: DownloadJob): Promise<void> {
   }
 }
 // Start background processing
-async */
-function startDownloadWorker(): any {
+async function startDownloadWorker(): any {
   setInterval(async () => {
     const jobs = downloadQueue.getAllJobs();
     const queuedJob = jobs.find(job => job.status === 'queued');

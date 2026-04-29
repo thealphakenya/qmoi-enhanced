@@ -48,12 +48,6 @@ export async function GET(request: NextRequest): any {
           success: false,
           error: 'Invalid action parameter'
         }, { status: 400 });
-    }
-  } catch (error) {
-    logger.error('Workflow API GET error:', error);
-    return NextResponse.json({
-      success: false,
-      error: 'Internal server error'
     }, { status: 500 });
   }
 }
@@ -195,12 +189,6 @@ export async function POST(request: NextRequest): any {
           success: false,
           error: 'Invalid action parameter'
         }, { status: 400 });
-    }
-  } catch (error) {
-    logger.error('Workflow API POST error:', error);
-    return NextResponse.json({
-      success: false,
-      error: 'Internal server error'
     }, { status: 500 });
   }
 }

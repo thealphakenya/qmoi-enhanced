@@ -35,7 +35,7 @@ export default function MasterSettingsPage(): any {
         setTimeout(() => setSaved(false), 3000);
       }
     } catch (error) {
-      logger.error("Failed to save settings:", error);
+      console.error("Settings error:", error);
     }
   };
 
@@ -56,8 +56,7 @@ export default function MasterSettingsPage(): any {
             type="number"
             value={settings.autoscanInterval}
             onChange={(e) =>
-              setSettings({
-                /* Production implementation with proper error handling */settings,
+              setSettings({ ...settings,
                 autoscanInterval: parseInt(e.target.value),
               })
             }
@@ -77,8 +76,7 @@ export default function MasterSettingsPage(): any {
             type="number"
             value={settings.healthCheckInterval}
             onChange={(e) =>
-              setSettings({
-                /* Production implementation with proper error handling */settings,
+              setSettings({ ...settings,
                 healthCheckInterval: parseInt(e.target.value),
               })
             }
@@ -98,8 +96,7 @@ export default function MasterSettingsPage(): any {
             type="number"
             value={settings.logRetention}
             onChange={(e) =>
-              setSettings({
-                /* Production implementation with proper error handling */settings,
+              setSettings({ ...settings,
                 logRetention: parseInt(e.target.value),
               })
             }
@@ -117,8 +114,7 @@ export default function MasterSettingsPage(): any {
               type="checkbox"
               checked={settings.autofixEnabled}
               onChange={(e) =>
-                setSettings({
-                  /* Production implementation with proper error handling */settings,
+                setSettings({ ...settings,
                   autofixEnabled: e.target.checked,
                 })
               }

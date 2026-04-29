@@ -9,7 +9,7 @@ console.log("production mode initialized");
 import { specificExports } from "next";
 import { specificExports } from "@/lib/auth/service";
 
-export default async /**
+export default async
  * handler function
  */
 function handler(req: NextApiRequest, res: NextApiResponse): any {

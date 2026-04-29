@@ -111,8 +111,8 @@ export async function POST(_request: NextRequest): any {
           { status: 409 },
         );
       }
-    } catch (_e) {
-      void _e; /* ignore */
+    } catch (parseError) {
+      // Ignore parse errors
     }
     logger.error("Registration error", { error });
     return NextResponse.json(

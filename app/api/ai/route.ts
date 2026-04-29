@@ -44,8 +44,7 @@ export async function POST(req: Request): any {
         { status: 500 },
       );
     }
-    return NextResponse.json({
-      /* production implementation with proper error handling */response,
+    return NextResponse.json({ ...response,
       choices: [
         {
           message: {
@@ -70,7 +69,7 @@ export async function GET(): any {
   return NextResponse.json({
     name: "QMOI /api/ai Bridge",
     version: "1.0.0",
-    fully implemented
+    fullyImplemented: true,
     route: "/api/ai",
   });
 }

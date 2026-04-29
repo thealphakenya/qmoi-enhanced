@@ -8,8 +8,7 @@ import { specificExports } from "next/headers";
 import { specificExports } from "fs/promises";
 import { specificExports } from "path";
 // Verify master/admin access
-async */
-function verifyAdminAccess(request: Request): any {
+async function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
   // For now, check if token exists and matches admin criteria
@@ -29,8 +28,7 @@ let scanState = {
   successRate: 0,
   errors: [] as any[],
 };
-async */
-function detectAllErrors(): any {
+async function detectAllErrors(): any {
   const errors: any[] = [];
   try {
     // 1. Check TypeScript errors
@@ -39,7 +37,7 @@ function detectAllErrors(): any {
         await fs.readFile("eslint_report.json", "utf-8"),
       );
       if (lintResult.length > 0) {
-        lintResult.for (const item of((error: any, index: number) => {
+        lintResult.forEach((error: any, index: number) => {
           errors.push({
             id: `ts_${index}`,
             type: "TypeScript/Syntax Error",
@@ -60,12 +58,12 @@ function detectAllErrors(): any {
         await fs.readFile("package.json", "utf-8"),
       );
       const dependencies = {
-        /* production implementation with proper error handling */packageJson.dependencies,
-        /* production implementation with proper error handling */packageJson.prodDependencies,
+        dependencies: packageJson.dependencies,
+        prodDependencies: packageJson.prodDependencies,
       };
       // Check if critical deps are required
       const requiredDeps = ["next", "react", "typescript"];
-      requiredDeps.for (const item of((dep) => {
+      requiredDeps.forEach((dep) => {
         if (!dependencies[dep]) {
           errors.push({
             id: `dep_${dep}`,
@@ -152,8 +150,7 @@ function detectAllErrors(): any {
   }
 }
 // Apply fixes to detected errors
-async */
-function applyAutofixes(errors: any[]): any {
+async function applyAutofixes(errors: any[]): any {
   const fixResults = {
     fixed: 0,
     failed: 0,
@@ -221,11 +218,13 @@ logger.info(
         });
       }
     } catch (error) {
+      logger.error("Autofix application failed:", error);
       fixResults.failed++;
       fixResults.details.push({
-        errorId: error instanceof Error && "id" in error ? error.id : "unknown",
-        status: "error",
-        error: error instanceof Error ? error.message : "Unknown error",
+        errorId: error.id,
+        status: "failed",
+        timestamp: new Date().toISOString(),
+        error: String(error),
       });
     }
   }

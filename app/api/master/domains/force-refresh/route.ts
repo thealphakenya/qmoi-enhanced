@@ -20,7 +20,6 @@ export async function POST(): any {
       status: 'completed',
       metadata: { validationsCount: validations.length },
     };
-    fully implemented
     // await saveTrack(trackEntry);
     return NextResponse.json({
       success: true,

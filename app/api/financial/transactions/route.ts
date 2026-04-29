@@ -14,8 +14,7 @@ export async function GET(_req: NextRequest): any {
     const marketPrice = await realAPI.getMarketPrice("bitcoin");
     const recentTransactions = Object.values(transactions)
       .slice(-10)
-      .map((txn) => ({
-        /* production implementation with proper error handling */txn,
+      .map((txn) => ({ ...txn,
         fraudScore: mlModels.predict("fraud-detector-v1", {
           amount: txn.amount,
           type: txn.type,

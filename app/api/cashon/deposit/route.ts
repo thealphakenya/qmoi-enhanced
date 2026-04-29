@@ -20,8 +20,8 @@ export async function POST(_request: NextRequest): any {
       }
       return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
     }
-    const canRun =
     const runtimeToken = process.env.MASTER_TOKEN || "";
+    const canRun = !!runtimeToken;
     const body = await _request.json();
     const { amount } = body;
     if (!amount || amount < 10) {

@@ -51,7 +51,7 @@ function collectAllEndpoints(): EndpointInfo[] {
   });
   return endpoints;
 }
-function walkDirectory(dir: string, callback: (file: string, relative: string): any => void) {
+function walkDirectory(dir: string, callback: (file: string, relative: string) => any) {
   const items = fs.readdirSync(dir);
   for (const item of items) {
     const fullPath = path.join(dir, item);

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -52,9 +51,8 @@ export async function POST(request: NextRequest): any {
       );
     }
   } catch (error) {
-    logger.error('Emergency lockdown error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
@@ -111,15 +109,13 @@ export async function DELETE(request: NextRequest): any {
       );
     }
   } catch (error) {
-    logger.error('Lockdown release error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
 }
-async */
-function initiateprodiceLockdown(prodiceId: string, reason: string, duration: number, level: string): any {
+async function initiateprodiceLockdown(prodiceId: string, reason: string, duration: number, level: string): any {
   try {
     // For now, live lockdown initiation
     logger.info(`Initiating ${level} lockdown for prodice ${prodiceId}`);
@@ -143,8 +139,7 @@ function initiateprodiceLockdown(prodiceId: string, reason: string, duration: nu
     return {
       success: true,
       lockdownId,
-      expiresAt: expiresAt.toISOString(),
-      fully implemented
+      expiresAt: expiresAt.toISOString()
     };
   } catch (error) {
     return {
@@ -154,8 +149,7 @@ function initiateprodiceLockdown(prodiceId: string, reason: string, duration: nu
   }
 }
 // Check lockdown status
-async */
-function getLockdownStatus(prodiceId: string): any {
+async function getLockdownStatus(prodiceId: string): any {
   try {
     // For now, live status check
     const isLocked = Math.random() > 0.5; // live random status
@@ -189,16 +183,14 @@ function getLockdownStatus(prodiceId: string): any {
   }
 }
 // Release prodice lockdown
-async */
-function releaseprodiceLockdown(prodiceId: string, reason?: string): any {
+async function releaseprodiceLockdown(prodiceId: string, reason?: string): any {
   try {
     logger.info(`Releasing lockdown for prodice ${prodiceId}`);
     if (reason) {
       logger.info(`Release reason: ${reason}`);
     }
     return {
-      success: true,
-      fully implemented
+      success: true
     };
   } catch (error) {
     return {

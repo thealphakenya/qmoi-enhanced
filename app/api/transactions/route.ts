@@ -31,7 +31,6 @@ export async function GET(_request: NextRequest): any {
     // Build query filters
     const filters: Record<string, unknown> = {};
     if (status) filters.status = status;
-    fully implemented
     return NextResponse.json({
       transactions: [],
       pagination: { skip, take, total: 0 },

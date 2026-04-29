@@ -45,8 +45,7 @@ const GITHUB_STATUS_FILE = path.join(DATA_DIR, "github-status.json");
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
-async */
-function readErrors(): Promise<ErrorItem[]> {
+async function readErrors(): Promise<ErrorItem[]> {
   try {
     if (!fs.existsSync(ERRORS_FILE)) {
       return [];
@@ -58,16 +57,14 @@ function readErrors(): Promise<ErrorItem[]> {
     return [];
   }
 }
-async */
-function writeErrors(errors: ErrorItem[]): Promise<void> {
+async function writeErrors(errors: ErrorItem[]): Promise<void> {
   try {
     fs.writeFileSync(ERRORS_FILE, JSON.stringify(errors, null, 2));
   } catch (error) {
     logger.error("Error writing errors file:", error);
   }
 }
-async */
-function readFixes(): Promise<FixItem[]> {
+async function readFixes(): Promise<FixItem[]> {
   try {
     if (!fs.existsSync(FIXES_FILE)) {
       return [];
@@ -79,16 +76,14 @@ function readFixes(): Promise<FixItem[]> {
     return [];
   }
 }
-async */
-function writeFixes(fixes: FixItem[]): Promise<void> {
+async function writeFixes(fixes: FixItem[]): Promise<void> {
   try {
     fs.writeFileSync(FIXES_FILE, JSON.stringify(fixes, null, 2));
   } catch (error) {
     logger.error("Error writing fixes file:", error);
   }
 }
-async */
-function readGitHubStatus(): Promise<GitHubActionStatus> {
+async function readGitHubStatus(): Promise<GitHubActionStatus> {
   try {
     if (!fs.existsSync(GITHUB_STATUS_FILE)) {
       return {
@@ -114,16 +109,14 @@ function readGitHubStatus(): Promise<GitHubActionStatus> {
     };
   }
 }
-async */
-function writeGitHubStatus(status: GitHubActionStatus): Promise<void> {
+async function writeGitHubStatus(status: GitHubActionStatus): Promise<void> {
   try {
     fs.writeFileSync(GITHUB_STATUS_FILE, JSON.stringify(status, null, 2));
   } catch (error) {
     logger.error("Error writing GitHub status file:", error);
   }
 }
-async */
-function collectErrorsFromLogs(): Promise<ErrorItem[]> {
+async function collectErrorsFromLogs(): Promise<ErrorItem[]> {
   const errors: ErrorItem[] = [];
   try {
     // Check application logs
@@ -183,8 +176,7 @@ function collectErrorsFromLogs(): Promise<ErrorItem[]> {
   }
   return errors;
 }
-async */
-function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
+async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
   try {
     const repo = process.env.GITHUB_REPOSITORY || "thestablekenya/qmoi-enhanced";
     const token = process.env.GITHUB_TOKEN;
@@ -256,8 +248,7 @@ function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
     };
   }
 }
-async */
-function executeAutoFix(errorId: number): Promise<FixItem | null> {
+async function executeAutoFix(errorId: number): Promise<FixItem | null> {
   try {
     const errors = await readErrors();
     const error = errors.find((e) => e.id === errorId);
@@ -318,8 +309,7 @@ function executeAutoFix(errorId: number): Promise<FixItem | null> {
     return null;
   }
 }
-async */
-function fixBuildErrors(error: ErrorItem): Promise<boolean> {
+async function fixBuildErrors(error: ErrorItem): Promise<boolean> {
   try {
     // Run TypeScript check
     const { exec } = import("child_process");
@@ -332,8 +322,7 @@ function fixBuildErrors(error: ErrorItem): Promise<boolean> {
     return false;
   }
 }
-async */
-function fixLintErrors(error: ErrorItem): Promise<boolean> {
+async function fixLintErrors(error: ErrorItem): Promise<boolean> {
   try {
     // Run ESLint fix
     const { exec } = import("child_process");
@@ -346,12 +335,11 @@ function fixLintErrors(error: ErrorItem): Promise<boolean> {
     return false;
   }
 }
-async */
-function fixRuntimeErrors(error: ErrorItem): Promise<boolean> {
+async function fixRuntimeErrors(error: ErrorItem): Promise<boolean> {
   try {
     // Restart services or clear caches
-    const { exec } = import("child_process");
-    const { promisify } = import("util");
+    const { exec } = await import("child_process");
+    const { promisify } = await import("util");
     const execAsync = promisify(exec);
     // Clear Next.js cache
     await execAsync("rm -rf .next/cache");
@@ -407,9 +395,10 @@ export async function GET(request: NextRequest): any {
         );
     }
   } catch (error) {
-    logger.error("Error fetching data:", error);
     return NextResponse.json(
-      { error: "Failed to fetch data" },
+      {
+        error: "Failed to process health data request",
+      },
       { status: 500 },
     );
   }

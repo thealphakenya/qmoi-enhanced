@@ -12,7 +12,7 @@ console.log("production mode initialized");
 import { specificExports } from "next";
 import { specificExports } from "../../lib/db";
 
-export default async /**
+export default async
  * handler function
  */
 function handler(
@@ -26,9 +26,6 @@ function handler(
         const deals = await prisma.deal.findMany({ where: { active: true } });
         return res.status(200).json({ deals });
       }
-    } catch (e) {
-      console?.error?.("Failed to query deals", e);
-    }
 
     // fallback static response
     const sampleDeals = [

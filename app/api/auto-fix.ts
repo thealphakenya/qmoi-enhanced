@@ -24,7 +24,7 @@ let autoFixService: AutoFixService | undefined;
   } catch (error) { /* Handle error */ })();
 
 // Helper to get current QCity status
-async /**
+async
  * getStatus function
  */
 function getStatus(): any {

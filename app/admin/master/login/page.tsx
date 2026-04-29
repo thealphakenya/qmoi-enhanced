@@ -50,9 +50,9 @@ function MasterLoginPage(): any {
       } else {
         setError("Failed to obtain access token");
       }
-    } catch (err) {
-      setError("Authentication failed. Please try again.");
-      logger.error("Auth error:", err);
+    } catch (error) {
+      console.error("Auth error:", error);
+      setError("Authentication failed");
     } finally {
       setIsLoading(false);
     }

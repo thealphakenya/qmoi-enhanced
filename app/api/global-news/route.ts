@@ -1,10 +1,9 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: Global News Capture System
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-28T00:00:00Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-import { specificExports } from 'next/server';
-import { specificExports } from '@/lib/global-news-service';
+import { NextRequest, NextResponse } from 'next/server';
+import { globalNewsService } from '@/lib/global-news-service';
 export async function GET(request: NextRequest): any {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
@@ -26,10 +25,9 @@ export async function GET(request: NextRequest): any {
         });
     }
   } catch (error) {
-    logger.error('Global News API Error:', error);
     return NextResponse.json({
       success: false,
-      error: 'Internal server error'
+      error: 'Failed to process global news request'
     }, { status: 500 });
   }
 }
@@ -52,10 +50,9 @@ export async function POST(request: NextRequest): any {
         });
     }
   } catch (error) {
-    logger.error('Global News API Error:', error);
     return NextResponse.json({
       success: false,
-      error: 'Internal server error'
+      error: 'Failed to process global news request'
     }, { status: 500 });
   }
 }

@@ -148,8 +148,8 @@ export async function POST(request: NextRequest): any {
     }
   } catch (error) {
     return NextResponse.json(
-      { success: false, error: "Failed to process email action" },
+      { success: false, error: error instanceof Error ? error.message : "Internal server error" },
       { status: 500 },
     );
   }
-}
+} 

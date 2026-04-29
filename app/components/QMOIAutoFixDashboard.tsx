@@ -108,9 +108,6 @@ function QMOIAutoFixDashboard(): any {
         const data = await response.json();
         setAutoFixStatus(data.status);
       }
-    } catch (error) {
-      logger.error("Failed to fetch autofix status:", error);
-    }
   };
 
   const fetchHealthStatus = async () => {
@@ -124,9 +121,6 @@ function QMOIAutoFixDashboard(): any {
         const data = await response.json();
         setHealthStatus(data.health);
       }
-    } catch (error) {
-      logger.error("Failed to fetch health status:", error);
-    }
   };
 
   const fetchErrors = async () => {
@@ -139,10 +133,7 @@ function QMOIAutoFixDashboard(): any {
       if (response.ok) {
         const data = await response.json();
         setErrors(data.errors);
-      }
-    } catch (error) {
-      logger.error("Failed to fetch errors:", error);
-    } finally {
+      } finally {
       setLoading(false);
     }
   };
@@ -159,16 +150,13 @@ function QMOIAutoFixDashboard(): any {
       });
 
       if (response.ok) {
-        setAutoFixStatus((prev) => ({ /* Production implementation with proper error handling */prev, scanning: true }));
+        setAutoFixStatus((prev) => ({ ...prev, scanning: true }));
         // Poll for completion
         setTimeout(() => {
           fetchAutoFixStatus();
           fetchErrors();
         }, 2000);
       }
-    } catch (error) {
-      logger.error("Failed to trigger scan:", error);
-    }
   };
 
   const triggerAutoFix = async () => {
@@ -183,7 +171,7 @@ function QMOIAutoFixDashboard(): any {
       });
 
       if (response.ok) {
-        setAutoFixStatus((prev) => ({ /* Production implementation with proper error handling */prev, fixing: true }));
+        setAutoFixStatus((prev) => ({ ...prev, fixing: true }));
         // Poll for completion
         const pollInterval = setInterval(async () => {
           await fetchAutoFixStatus();
@@ -192,9 +180,6 @@ function QMOIAutoFixDashboard(): any {
 
         setTimeout(() => clearInterval(pollInterval), 30000);
       }
-    } catch (error) {
-      logger.error("Failed to trigger autofix:", error);
-    }
   };
 
   const fixSpecificError = async (errorId: string) => {
@@ -208,9 +193,6 @@ function QMOIAutoFixDashboard(): any {
       if (response.ok) {
         fetchErrors();
       }
-    } catch (error) {
-      logger.error("Failed to fix error:", error);
-    }
   };
 
   const filteredErrors = errors.filter((error) => {

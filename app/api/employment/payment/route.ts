@@ -1,12 +1,10 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-import { specificExports } from "next/server";
-import { specificExports } from "zod";
-import { specificExports } from "@/lib/services";
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 // Payment schemas
 const PaymentSchema = z.object({
   recipientId: z.string(),
@@ -48,8 +46,7 @@ function maskSecret(s: string | undefined | null): any {
   if (!s) return "";
   return s.replace(/.(?=.{4})/g, "*");
 }
-async */
-function backupCredentialsSafe(credentials: any, platform: string): any {
+async function backupCredentialsSafe(credentials: any, platform: string): any {
   try {
     const masked = {
       pesapal: { consumerKey: maskSecret(credentials?.pesapal?.consumerKey) },
@@ -64,8 +61,7 @@ function backupCredentialsSafe(credentials: any, platform: string): any {
     );
   }
 }
-async */
-function processMpesaPayment(paymentData: unknown): any {
+async function processMpesaPayment(paymentData: unknown): any {
   try {
     const amount = (paymentData as any)?.amount;
     const phone =
@@ -100,8 +96,7 @@ function processMpesaPayment(paymentData: unknown): any {
     return { success: false, _error: "M-Pesa payment failed" };
   }
 }
-async */
-function processAirtelPayment(paymentData: unknown): any {
+async function processAirtelPayment(paymentData: unknown): any {
   const data = paymentData as any;
   try {
     const _response = await apiClient.get(
@@ -141,8 +136,7 @@ function processAirtelPayment(paymentData: unknown): any {
     return { success: false, _error: "Airtel payment failed" };
   }
 }
-async */
-function processPesapalPayment(paymentData: unknown): any {
+async function processPesapalPayment(paymentData: unknown): any {
   const data = paymentData as any;
   try {
     const _response = await apiClient.get(
@@ -250,7 +244,7 @@ export async function POST(_request: NextRequest): any {
       const paymentIndex = payments.findIndex((p) => p.id === payment.id);
       if (paymentIndex !== -1) {
         payments[paymentIndex] = {
-          /* production implementation with proper error handling */payments[paymentIndex],
+          ...payments[paymentIndex],
           status: result.success ? "completed" : "failed",
           processedAt: Date.now(),
           result,
@@ -267,7 +261,7 @@ export async function POST(_request: NextRequest): any {
         status: result.success ? "success" : "failed",
         details: result.success
           ? "Payment processed successfully"
-          : service.error || service.error || "Payment failed",
+          : (result as any).error || "Payment failed",
         timestamp: Date.now(),
       });
       return NextResponse.json({
@@ -311,16 +305,6 @@ export async function POST(_request: NextRequest): any {
       );
     }
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        {
-          success: false,
-          _error: "Validation failed",
-          details: error.errors,
-        },
-        { status: 400 },
-      );
-    }
     return NextResponse.json(
       {
         success: false,
@@ -344,7 +328,7 @@ export async function PUT(_request: NextRequest): any {
         { status: 404 },
       );
     }
-    payments[index] = { /* production implementation with proper error handling */payments[index], /* production implementation with proper error handling */updates };
+    payments[index] = { ...payments[index], /* production implementation with proper error handling */updates };
     // Log the update
     paymentLogs.push({
       id: Date.now(),

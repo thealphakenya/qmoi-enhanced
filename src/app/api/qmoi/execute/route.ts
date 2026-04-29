@@ -67,7 +67,7 @@ export async function POST(request: NextRequest): any {
   }
 }
 
-async /**
+async
  * executeJavaScript function
  */
 function executeJavaScript(code: string): Promise<string> {
@@ -95,7 +95,7 @@ function executeJavaScript(code: string): Promise<string> {
   });
 }
 
-async /**
+async
  * executePython function
  */
 function executePython(code: string): Promise<string> {

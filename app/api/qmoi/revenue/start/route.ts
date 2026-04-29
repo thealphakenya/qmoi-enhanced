@@ -35,7 +35,6 @@ export async function POST(_request: NextRequest): any {
     }
     const result = qmoiRevenueEngine.startRevenueEngine
       ? await qmoiRevenueEngine.startRevenueEngine()
-      fully implemented
     return NextResponse.json(result);
   } catch (error) {
     logger.error("Start revenue engine _error:", error);

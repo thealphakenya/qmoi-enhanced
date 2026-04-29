@@ -61,8 +61,7 @@ const handler = requireRole(["admin", "master"])(async (
         String((d as Record<string, unknown>).id) === id,
     );
     if (idx === -1) return _res.status(404).json({ _error: "Not found" });
-    prodices[idx] = {
-      /* production implementation with proper error handling */prodices[idx],
+    prodices[idx] = { ...prodices[idx],
       /* production implementation with proper error handling */update,
       updatedAt: new Date().toISOString(),
     };
@@ -108,48 +107,12 @@ export default handler;
     throw error;
   }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

@@ -5,9 +5,8 @@ console.log("production mode initialized");
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { specificExports } from "next/server";
 import { specificExports } from "next/headers";
-// Verify admin access
-async */
-function verifyAdminAccess(request: Request): any {
+
+async function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
   if (!token || token !== process.env.ADMIN_TOKEN) {
@@ -15,11 +14,12 @@ function verifyAdminAccess(request: Request): any {
   }
   return true;
 }
+
 export async function GET(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
-  // Return system health metrics
+
   const health = {
     cpu_usage: Math.random() * 100,
     memory_usage: Math.random() * 100,
@@ -31,58 +31,9 @@ export async function GET(request: Request): any {
     api_healthy: Math.random() > 0.05,
     cloud_healthy: Math.random() > 0.1,
   };
+
   return NextResponse.json({
     health,
     timestamp: new Date().toISOString(),
   });
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
 }

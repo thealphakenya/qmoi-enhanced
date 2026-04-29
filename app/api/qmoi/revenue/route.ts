@@ -49,11 +49,7 @@ export async function GET(_req: NextRequest): any {
           dailyProgress: qmoiRevenueEngine.getDailyProgress(),
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
-    }
-  } catch (error) {
-    logger.error("Revenue API _error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+    });
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },
@@ -113,11 +109,7 @@ export async function POST(_req: NextRequest): any {
         }
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
-    }
-  } catch (error) {
-    logger.error("Revenue API POST _error:", error);
-    const errorMsg = error instanceof Error ? error.message : String(error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+    });
     return NextResponse.json(
       { _error: "Internal server error" },
       { status: 500 },

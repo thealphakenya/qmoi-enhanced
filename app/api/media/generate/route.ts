@@ -44,8 +44,7 @@ function logToDashboard(
     source: "media-generation-api",
   };
   // Sanitize for UTF-8 safety (remove control characters)
-  /**
-function removeControlChars(s: string): any {
+  function removeControlChars(s: string): any {
     return Array.from(s)
       .filter((ch) => {
         const code = ch.charCodeAt(0);
@@ -59,8 +58,7 @@ function removeControlChars(s: string): any {
   return logEntry;
 }
 // Pre-autotest logic
-async */
-function runPreAutotest(
+async function runPreAutotest(
   mediaType: string,
   prompt: string,
 ): Promise<{ passed: boolean; issues: string[] }> {
@@ -85,8 +83,7 @@ function runPreAutotest(
   };
 }
 // Cloud-offloading function
-async */
-function offloadToCloud(task: CloudTask): Promise<CloudTask> {
+async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
   try {
     // Determine best cloud provider based on task type
     const cloudProvider = task.type === "video" ? "colab" : "dagshub";

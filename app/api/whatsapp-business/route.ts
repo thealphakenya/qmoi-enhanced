@@ -168,14 +168,7 @@ export async function POST(request: NextRequest): any {
           },
           { status: 400 },
         );
-    }
-  } catch (error) {
-    logger.error("WhatsApp API error:", error);
-    return NextResponse.json(
-      {
-        _error: "Internal server error",
-        _code: "INTERNAL_500",
-      },
+    },
       { status: 500 },
     );
   }

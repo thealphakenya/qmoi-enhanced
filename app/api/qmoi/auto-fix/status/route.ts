@@ -65,9 +65,6 @@ export async function GET(_request: NextRequest): any {
           }
         }
       }
-    } catch (error) {
-      logger.info("Error checking running process_es:", error);
-    }
     // Check deployment status
     try {
       const vercelConfigPath = path.join(process.cwd(), "vercel.json");
@@ -90,9 +87,6 @@ export async function GET(_request: NextRequest): any {
       } else {
         report.deployment.github_actions = "no_workflows";
       }
-    } catch (e) {
-      report.deployment.github_actions = "not_configured";
-    }
     return NextResponse.json(report);
   } catch (error) {
     logger.error("Error getting auto-fix status:", error);

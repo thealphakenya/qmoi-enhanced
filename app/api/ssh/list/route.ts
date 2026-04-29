@@ -6,7 +6,6 @@ console.log("production mode initialized");
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { specificExports } from "next/server";
  *
- fully implemented
  *
  *
  *

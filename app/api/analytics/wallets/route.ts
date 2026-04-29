@@ -3,9 +3,9 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-import { specificExports } from "next/server";
-import { specificExports } from "@/lib/db/prisma";
-import { specificExports } from "@/lib/auth/service";
+import { NextRequest, NextResponse } from "next/server";
+import { db } from "@/lib/db/prisma";
+import { authService } from "@/lib/auth/service";
 export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
@@ -88,9 +88,9 @@ export async function GET(_request: NextRequest): any {
       stats.transactionStats.totalTransactions += walletTxns.length;
     }
     // Calculate averages
-    Object.values(stats.currencyDistribution).for (const item of((dist: any) => {
+    for (const dist of Object.values(stats.currencyDistribution) as any[]) {
       dist.averageBalance = dist.totalBalance / dist.walletCount;
-    });
+    }
     // Calculate wallet utilization (wallets with transactions / total wallets)
     const activeWallets = Object.keys(transactionsByWallet).filter(
       (walletId) => transactionsByWallet[walletId].length > 0,

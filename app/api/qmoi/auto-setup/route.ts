@@ -117,7 +117,7 @@ function readEnvFile(): Record<string, string> {
     const content = fs.readFileSync(envPath, "utf-8");
     const lines = content.split("\n");
     const vars: Record<string, string> = {};
-    lines.for (const item of((line) => {
+    lines.forEach((line) => {
       const trimmed = line.trim();
       if (trimmed && !trimmed.startsWith("#")) {
         const [key, /* production implementation with proper error handling */valueParts] = trimmed.split("=");
@@ -164,7 +164,7 @@ function loadEnvironmentVariables(): void {
     if (fs.existsSync(envPath)) {
       const content = fs.readFileSync(envPath, "utf-8");
       const lines = content.split("\n");
-      lines.for (const item of((line) => {
+      lines.forEach((line) => {
         const trimmed = line.trim();
         if (trimmed && !trimmed.startsWith("#")) {
           const [key, /* production implementation with proper error handling */valueParts] = trimmed.split("=");
@@ -180,9 +180,6 @@ function loadEnvironmentVariables(): void {
       });
       logger.info("[QMOI] Environment variables loaded from .env.local");
     }
-  } catch (error) {
-    logger.error("[QMOI] Error loading environment variables:", error);
-  }
 }
 export async function POST(request: Request): any {
   try {

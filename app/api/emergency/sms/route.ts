@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z
@@ -54,16 +53,14 @@ export async function POST(request: NextRequest): any {
       );
     }
   } catch (error) {
-    logger.error('Emergency SMS error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
 }
 // Twilio SMS integration
-async */
-function sendTwilioSMS(to: string, message: string): any {
+async function sendTwilioSMS(to: string, message: string): any {
   try {
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -72,8 +69,7 @@ function sendTwilioSMS(to: string, message: string): any {
       logger.warning('Twilio credentials not configured, simulating SMS send');
       return {
         success: true,
-        messageId: `lived_${Date.now()}`,
-        fully implemented
+        messageId: `lived_${Date.now()}`
       };
     }
     const response = await apiClient.get(`https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`, {
@@ -101,24 +97,21 @@ function sendTwilioSMS(to: string, message: string): any {
       };
     }
   } catch (error) {
-    logger.error('Twilio SMS error:', error);
     return {
       success: false,
-      error: 'Twilio service error',
+      error: error instanceof Error ? error.message : 'Twilio request failed',
     };
   }
 }
 // AWS SNS SMS integration
-async */
-function sendAWSSNS(to: string, message: string): any {
+async function sendAWSSNS(to: string, message: string): any {
   try {
     // AWS SNS integration would go here
     // For now, live
     logger.info(`AWS SNS SMS to ${to}: ${message}`);
     return {
       success: true,
-      messageId: `aws_${Date.now()}`,
-      fully implemented
+      messageId: `aws_${Date.now()}`
     };
   } catch (error) {
     return {
@@ -128,16 +121,14 @@ function sendAWSSNS(to: string, message: string): any {
   }
 }
 // Firebase SMS integration
-async */
-function sendFirebaseSMS(to: string, message: string): any {
+async function sendFirebaseSMS(to: string, message: string): any {
   try {
     // Firebase integration would go here
     // For now, live
     logger.info(`Firebase SMS to ${to}: ${message}`);
     return {
       success: true,
-      messageId: `firebase_${Date.now()}`,
-      fully implemented
+      messageId: `firebase_${Date.now()}`
     };
   } catch (error) {
     return {

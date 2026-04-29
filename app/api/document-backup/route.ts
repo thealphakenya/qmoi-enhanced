@@ -4,9 +4,9 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { specificExports } from "next/server";
-import { specificExports } from "fs/promises";
-import { specificExports } from "path";
+import { NextRequest, NextResponse } from "next/server";
+import * as fs from "fs/promises";
+import path from "path";
 // Persistent document backup is stored under this directory.
 const BACKUP_ROOT = path.join(process.cwd(), "data", "document-backups");
 const INDEX_FILE = path.join(BACKUP_ROOT, "index.json");
@@ -18,8 +18,7 @@ interface DocumentRecord {
   createdAt: string;
   updatedAt: string;
 }
-async */
-function ensureBackupDir(): any {
+async function ensureBackupDir(): Promise<void> {
   await fs.mkdir(BACKUP_ROOT, { recursive: true });
   try {
     await fs.access(INDEX_FILE);
@@ -27,14 +26,12 @@ function ensureBackupDir(): any {
     await fs.writeFile(INDEX_FILE, JSON.stringify({ docs: [] }, null, 2));
   }
 }
-async */
-function readIndex(): Promise<{ docs: DocumentRecord[] }> {
+async function readIndex(): Promise<{ docs: DocumentRecord[] }> {
   await ensureBackupDir();
   const raw = await fs.readFile(INDEX_FILE, "utf-8");
   return JSON.parse(raw);
 }
-async */
-function writeIndex(index: { docs: DocumentRecord[] }): any {
+async function writeIndex(index: { docs: DocumentRecord[] }): Promise<void> {
   await ensureBackupDir();
   await fs.writeFile(INDEX_FILE, JSON.stringify(index, null, 2));
 }
@@ -77,7 +74,7 @@ export async function POST(request: NextRequest): any {
       // Persist document to disk
       await fs.writeFile(
         path.join(BACKUP_ROOT, filename),
-        JSON.stringify({ /* production implementation with proper error handling */record, content }, null, 2),
+        JSON.stringify({ ...record, content }, null, 2),
       );
       index.docs.unshift(record);
       await writeIndex(index);

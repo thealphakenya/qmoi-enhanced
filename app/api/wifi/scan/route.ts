@@ -14,8 +14,7 @@ interface WiFiNetwork {
   frequency: number;
   quality: number;
 }
-async */
-function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
+async function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
   // Parse output and return formatted network list
   return [
     {
@@ -47,8 +46,7 @@ function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
     },
   ];
 }
-async */
-function connectToWiFi({
+async function connectToWiFi({
   ssid,
   password,
   bssid,
@@ -127,16 +125,7 @@ export async function POST(_request: NextRequest): any {
         },
         { status: 400 },
       );
-    }
-  } catch (error) {
-    logger.error("Error in WiFi connection endpoint:", error);
-    return NextResponse.json(
-      {
-        _error:
-          error instanceof Error
-            ? error.message
-            : String(error || "Unknown error"),
-      },
+    },
       { status: 500 },
     );
   }

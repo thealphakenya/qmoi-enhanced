@@ -10,21 +10,16 @@ const NextResponse = {
 };
 import { specificExports } from "@/lib/accountability-service";
 export async function GET(request: NextRequest): any {
-  try {
-    const url = new URL(request.url);
-    const action = url.searchParams.get("action") || "events";
-    switch (action) {
-      case "events": {
-        const limit = Number(url.searchParams.get("limit") || "100");
-        const events = await accountabilityService.getEvents(limit);
-        return NextResponse.json({ success: true, events });
-      }
-      default:
-        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+  const url = new URL(request.url);
+  const action = url.searchParams.get("action") || "events";
+  switch (action) {
+    case "events": {
+      const limit = Number(url.searchParams.get("limit") || "100");
+      const events = await accountabilityService.getEvents(limit);
+      return NextResponse.json({ success: true, events });
     }
-  } catch (error) {
-    const details = error instanceof Error ? error.message : String(error);
-    return NextResponse.json({ success: false, error: details }, { status: 500 });
+    default:
+      return NextResponse.json({ error: "Invalid action" }, { status: 400 });
   }
 }
 export async function POST(request: NextRequest): any {

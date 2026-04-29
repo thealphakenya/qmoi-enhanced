@@ -55,11 +55,7 @@ export async function GET(_request: NextRequest): any {
         revenue_week: 0,
         revenue_month: 0,
       });
-    }
-  } catch (error) {
-    logger.error("Error fetching dashboard data:", error);
-    return NextResponse.json(
-      { _error: "Failed to fetch dashboard data" },
+    },
       { status: 500 },
     );
   }

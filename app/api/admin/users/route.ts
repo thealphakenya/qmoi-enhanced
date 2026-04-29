@@ -90,8 +90,7 @@ export async function GET(_request: NextRequest): any {
     const total = await db.user.count({ where });
     return NextResponse.json(
       {
-        users: users.map((u: any) => ({
-          /* production implementation with proper error handling */u,
+        users: users.map((u: any) => ({ ...u,
           walletCount: u._count?.wallets || 0,
           transactionCount: u._count?.transactions || 0,
         })),
@@ -161,9 +160,9 @@ export async function PUT(_request: NextRequest): any {
     const updatedUser = await db.user.update({
       where: { id: userId },
       data: {
-        /* production implementation with proper error handling */(role && { role }),
-        /* production implementation with proper error handling */(emailVerified !== undefined && { emailVerified }),
-        /* production implementation with proper error handling */(twoFactorEnabled !== undefined && { twoFactorEnabled }),
+        ...(role && { role }),
+        ...(emailVerified !== undefined && { emailVerified }),
+        ...(twoFactorEnabled !== undefined && { twoFactorEnabled }),
       },
       select: {
         id: true,

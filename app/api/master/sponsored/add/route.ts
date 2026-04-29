@@ -75,8 +75,7 @@ export async function POST(request: NextRequest): any {
       isSponsored: true,
       sponsorProgram,
       benefits: JSON.stringify(benefits),
-      metadata: JSON.stringify({
-        /* production implementation with proper error handling */metadata,
+      metadata: JSON.stringify({ ...metadata,
         sponsoredAt: new Date().toISOString(),
         sponsoredBy: user.id,
         activationCode: `SPON_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -87,7 +86,7 @@ export async function POST(request: NextRequest): any {
     // Update with activation code
     await db.userService.update(newUser.id, {
       metadata: JSON.stringify({
-        /* production implementation with proper error handling */JSON.parse(newUser.metadata || "{}"),
+        ...JSON.parse(newUser.metadata || "{}"),
         activationCode,
       }),
     });

@@ -112,8 +112,7 @@ function UserProfile(): any {
     _e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = _e.target;
-    setFormData((prev) => ({
-      /* Production implementation with proper error handling */prev,
+    setFormData((prev) => ({ ...prev,
       [name]: value,
     }));
   };

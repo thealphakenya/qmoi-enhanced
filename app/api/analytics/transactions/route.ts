@@ -3,9 +3,9 @@ console.log("production mode initialized");
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
-import { specificExports } from "next/server";
-import { specificExports } from "@/lib/db/prisma";
-import { specificExports } from "@/lib/auth/service";
+import { NextRequest, NextResponse } from "next/server";
+import { db } from "@/lib/db/prisma";
+import { authService } from "@/lib/auth/service";
 export async function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
@@ -95,7 +95,7 @@ function groupTransactions(
   groupBy: string,
 ): Record<string, any[]> {
   const grouped: Record<string, any[]> = {};
-  transactions.for (const item of((txn: any) => {
+  for (const txn of transactions) {
     const date = new Date(txn.createdAt);
     let key = "";
     if (groupBy === "day") {
@@ -111,7 +111,7 @@ function groupTransactions(
       grouped[key] = [];
     }
     grouped[key].push(txn);
-  });
+  }
   return grouped;
 }
 function calculateStats(transactions: unknown[]): any {
@@ -123,7 +123,7 @@ function calculateStats(transactions: unknown[]): any {
     byCurrency: {} as Record<string, number>,
     averageAmount: 0,
   };
-  transactions.for (const item of((txn: any) => {
+  for (const txn of transactions as any[]) {
     stats.totalAmount += txn.amount;
     // Count by type
     stats.byType[txn.type] = (stats.byType[txn.type] || 0) + 1;
@@ -131,7 +131,7 @@ function calculateStats(transactions: unknown[]): any {
     stats.byStatus[txn.status] = (stats.byStatus[txn.status] || 0) + 1;
     // Count by currency
     stats.byCurrency[txn.currency] = (stats.byCurrency[txn.currency] || 0) + 1;
-  });
+  }
   stats.averageAmount = stats.totalAmount / stats.totalTransactions || 0;
   return stats;
 }
