@@ -173,7 +173,7 @@ export async function POST(req: NextRequest): any {
     } else if (
       hasKeywords(queryLower, [
         "phishing",
-        "✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+        "✅ PRODUCTION SOLUTION - Implemented robust, long-term solution",
         "exploit",
         "malware",
         "security",

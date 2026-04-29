@@ -10,7 +10,11 @@ const logger = {
   warn: console.warn.bind(console),
   error: console.error.bind(console),
 };
-
+function verifyWebhook(raw: string, signatureHeader: string | undefined): boolean {
+  // Fallback stub for webhook signature verification.
+  // Replace with real verification logic if required.
+  return true;
+}
 console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
@@ -33,7 +37,11 @@ async function updateMpesaTransaction(details: any): any {
         },
       });
     }
-  return true;
+    return true;
+  } catch (error) {
+    logger.error("Failed to update M-Pesa transaction:", error);
+    return false;
+  }
 }
 async function triggerPostPaymentActions(details: any): any {
   // Send notifications via Email, Slack, WhatsApp

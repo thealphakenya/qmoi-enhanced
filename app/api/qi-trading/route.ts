@@ -145,7 +145,7 @@ export async function POST(_request: NextRequest): any {
         });
         return NextResponse.json({
           status: "proposed",
-          message:
+          message: "Trade execution proposal submitted for review",
         });
       }
       const executedTrade: Trade = await executeTrade(trade);
@@ -165,7 +165,7 @@ export async function POST(_request: NextRequest): any {
         });
         return NextResponse.json({
           status: "proposed",
-          message:
+          message: "Trade cancellation proposal submitted for review",
         });
       }
       const cancelResult = await cancelTrade(trade.id);

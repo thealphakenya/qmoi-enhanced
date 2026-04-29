@@ -68,6 +68,7 @@ async function searchMedia(
         ? "downloaded"
         : task.status === "processing"
           ? "downloading"
+          : "pending",
     createdAt: task.createdAt,
     updatedAt: task.updatedAt,
   }));

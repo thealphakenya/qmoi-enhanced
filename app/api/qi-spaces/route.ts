@@ -24,6 +24,8 @@ const QMOIServiceFallback = {
     };
   },
 };
+
+declare const globalLinksService: any;
 export async function GET(request: NextRequest): any {
   try {
     const url = new URL(request.url);
@@ -53,7 +55,9 @@ export async function GET(request: NextRequest): any {
       }
       default:
         return NextResponse.json({ error: "Invalid action", validActions: ["dashboard", "regions", "statistics"] }, { status: 400 });
-    }, { status: 500 });
+    }
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : "Unknown error" }, { status: 500 });
   }
 }
 export async function POST(request: NextRequest): any {
@@ -74,6 +78,9 @@ export async function POST(request: NextRequest): any {
       }
       default:
         return NextResponse.json({ error: "invalid action" }, { status: 400 });
-    }, { status: 500 });
+    }
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : "Unknown error" }, { status: 500 });
   }
 }
+

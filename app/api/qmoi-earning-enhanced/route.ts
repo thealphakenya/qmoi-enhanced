@@ -4,11 +4,8 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-import { specificExports } from "next/server";
-import { specificExports } from "next/server";
- *
- *
- *
+import { NextRequest, NextResponse } from "next/server";
+
 export async function GET(request: NextRequest): any {
   try {
     const userId = request.headers.get("x-user-id");
@@ -37,7 +34,7 @@ export async function GET(request: NextRequest): any {
         },
         lastUpdated: new Date().toISOString(),
         status: "active",
-        message:
+        message: "Earnings enhanced data available",
       },
       { status: 200 },
     );
