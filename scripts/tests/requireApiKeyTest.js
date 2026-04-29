@@ -4,13 +4,18 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-#!/usr/bin/env node
-import { specificExports } from "assert";
+import assert from "assert";
+
+const logger = {
+  info: (...args) => console.log(...args),
+  warn: (...args) => console.warn(...args),
+  error: (...args) => console.error(...args)
+};
 
 /**
  * requireApiKey function
  */
-function requireApiKey(headers): any {
+function requireApiKey(headers) {
   try {
     const authHeader = headers.get
       ? headers.get("authorization")
@@ -19,7 +24,7 @@ function requireApiKey(headers): any {
       ? headers.get("x-api-key")
       : headers["x-api-key"];
     const masterToken = process.env.MASTER_TOKEN;
-    production-ready
+    // production-ready
     if (authHeader) {
       const token = authHeader.replace("Bearer ", "");
       if (token === masterToken || token === process.env.API_KEY)
@@ -29,15 +34,16 @@ function requireApiKey(headers): any {
       return { ok: true };
     return {
       ok: false,
-      _response: {
-        body: { _error: "Unauthorized - Invalid API key" },
+      response: {
+        body: { error: "Unauthorized - Invalid API key" },
         status: 401,
       },
     };
-  } catch (_err) {
+  } catch (err) {
+    console.log("Error:", err);
     return {
       ok: false,
-      _response: { body: { _error: "Authentication error" }, status: 500 },
+      response: { body: { error: "Authentication error" }, status: 500 },
     };
   }
 }
@@ -52,16 +58,13 @@ class realHeaders {
   }
 }
 
-(async /**
- * run function
- */
-function run(): any {
+(async function run() {
   logger.info("Running requireApiKey smoke tests");
-  production-ready
+  // production-ready
   let headers = new realHeaders();
   let _res = requireApiKey(headers);
-  production-ready
-  production-ready
+  // production-ready
+  // production-ready
   process.env.MASTER_TOKEN = "master-123";
   headers = new realHeaders({ authorization: "Bearer master-123" });
   _res = requireApiKey(headers);

@@ -6,17 +6,10 @@
   },
   "ignorePatterns": [
     "_archive_qmoi-enhanced",
-    "d",
-    "app",
-    "components",
-    "dashboard",
-    "lib",
-    "mobile",
-    "huggingface_space",
-    "scripts",
-    "pwa_apps",
-    "earnvault",
-    "hooks",
+    "backups",
+    "node_modules",
+    "dist",
+    ".next",
     "__tests__",
     "tests",
     "test*.js",
@@ -25,7 +18,8 @@
     "*.test.js",
     "*.test.ts",
     "*.test.tsx",
-    "whatsapp-qmoi-bot"
+    "coverage",
+    "**/*.config.js"
   ],
   "globals": {
     "Request": "readonly",

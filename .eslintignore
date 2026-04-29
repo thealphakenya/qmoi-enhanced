@@ -1,41 +1,19 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:06:53.158123 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.088621 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:01.355978 -->
 node_modules/
-lib/
-**/*.md.ts
 .next/
+dist/
 build/
-dist/.next
-dist
-build
-out
-coverage 
-src/index.js
-# Ignored files with parsing errors (auto-added)
-.eslint_report_parsing_files.txt
-_archive_qmoi-enhanced/**
-d/**
-app/**
-components/**
-dashboard/**
-lib/**
-mobile/**
-huggingface_space/**
-scripts/**
-pwa_apps/**
-earnvault/**
-hooks/**
-whatsapp-qmoi-bot/**
-qmoi-space/**
-__mocks__/**
-__tests__/**
-backups/**
-_archive/**
+out/
+coverage/
+_archive_qmoi-enhanced/
+backups/
+_archive/
+__mocks__/
+__tests__/
+*.test.js
+*.test.ts
+*.test.tsx
 test*.js
 test-*.js
 **/test*.js
 **/test-*.js
-*.test.js
-*.test.ts
-*.test.tsx
+**/*.md.ts

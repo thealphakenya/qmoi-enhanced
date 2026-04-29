@@ -12,7 +12,7 @@
     "production:vite": "cd dashboard && vite production",
     "prod:[production_IMPLEMENTED]": "node scripts/prod-[production_IMPLEMENTED].js",
     "prod:health": "./scripts/prod-healthcheck.sh",
-    "lint": "eslint -c .eslintrc.cjs \"app/**/*.{js,jsx,ts,tsx}\" \"pages/**/*.{js,jsx,ts,tsx}\" \"components/**/*.{js,jsx,ts,tsx}\" --max-warnings 100 || true",
+    "lint": "eslint -c .eslintrc.cjs \"app/**/*.{js,jsx,ts,tsx}\" \"pages/**/*.{js,jsx,ts,tsx}\" \"app/components/**/*.{js,jsx,ts,tsx}\" --max-warnings 100 || true",
     "lint:fix": "eslint -c .eslintrc.cjs \"**/*.{js,ts,tsx,jsx}\" --fix",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
@@ -187,11 +187,13 @@
   "author": "QMOI production Team",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "25.6.0",
     "@types/react": "19.2.14",
     "@typescript-eslint/eslint-plugin": "^8.59.1",
     "@typescript-eslint/parser": "^8.59.1",
     "eslint": "^8.48.0",
+    "jest": "^30.3.0",
     "typescript": "6.0.3"
   }
 }
