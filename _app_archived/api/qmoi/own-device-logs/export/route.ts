@@ -131,7 +131,7 @@ function POST(request: NextRequest): any {
 async /**
  * checkMasterAccess function
  */
-function checkMasterAccess(request: NextRequest): any: Promise<boolean> {
+function checkMasterAccess(request: NextRequest): Promise<boolean> {
   try {
     // Get authorization header
     const authHeader = request.headers.get("authorization");

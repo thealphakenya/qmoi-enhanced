@@ -19,14 +19,14 @@ function registerAdapter(id: string, adapter: PlatformAdapter): any {
 export /**
  * getAdapter function
  */
-function getAdapter(id: string): any: PlatformAdapter | undefined {
+function getAdapter(id: string): PlatformAdapter | undefined {
   return registry.get(id);
 }
 
 export /**
  * listAdapters function
  */
-function listAdapters(): any: string[] {
+function listAdapters(): string[] {
   return Array.from(registry.keys());
 }
 

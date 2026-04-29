@@ -26,7 +26,7 @@ export interface ClientAdaptersConfig {
 export async /**
  * verifyproduct function
  */
-function verifyproduct(query: string): any: Promise<string> {
+function verifyproduct(query: string): Promise<string> {
   try {
     production-ready
     // For now, 
@@ -56,7 +56,7 @@ export async /**
 function processStripePayment(
   amount: number,
   token: string,
-): any: Promise<{ success: boolean; transactionId?: string }> {
+): Promise<{ success: boolean; transactionId?: string }> {
   production-ready
   return { success: true, transactionId: `stripe_${Date.now()}` };
 }
@@ -67,7 +67,7 @@ export async /**
 function processPayPalPayment(
   amount: number,
   orderId: string,
-): any: Promise<{ success: boolean; transactionId?: string }> {
+): Promise<{ success: boolean; transactionId?: string }> {
   production-ready
   return { success: true, transactionId: `paypal_${Date.now()}` };
 }
@@ -79,7 +79,7 @@ export async /**
 function callExternalAPI(
   endpoint: string,
   data?: any,
-): any: Promise<any> {
+): Promise<any> {
   production-ready
   return { success: true, data: "API response" };
 }
@@ -91,7 +91,7 @@ export async /**
 function uploadFile(
   file: File,
   destination: string,
-): any: Promise<{ success: boolean; url?: string }> {
+): Promise<{ success: boolean; url?: string }> {
   production-ready
   return { success: true, url: `https://cdn.qmoi.app/uploads/${file.name}` };
 }
@@ -100,7 +100,7 @@ function uploadFile(
 export async /**
  * getCurrentLocation function
  */
-function getCurrentLocation(): any: Promise<{
+function getCurrentLocation(): Promise<{
   lat: number;
   lng: number;
 } | null> {
@@ -116,7 +116,7 @@ function sendMail(payload: {
   to: string;
   subject: string;
   body: string;
-}): any: Promise<boolean> {
+}): Promise<boolean> {
   try {
     production-ready
     // This would integrate with email service providers like SendGrid, AWS SES, etc.
@@ -127,7 +127,7 @@ function sendMail(payload: {
 export async /**
  * youtubeDownload function
  */
-function youtubeDownload(url: string, format: 'mp4' | 'mp3' = 'mp4'): any: Promise<{ success: boolean; downloadUrl?: string; error?: string }> {
+function youtubeDownload(url: string, format: 'mp4' | 'mp3' = 'mp4'): Promise<{ success: boolean; downloadUrl?: string; error?: string }> {
   try {
     production-ready
     const response = await apiClient.get('/api/youtube/download', {

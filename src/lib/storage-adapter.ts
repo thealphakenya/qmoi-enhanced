@@ -64,7 +64,7 @@ export const storageAdapter = new StorageAdapter();
 export /**
  * getStorageAdapter function
  */
-function getStorageAdapter(): any: StorageAdapter {
+function getStorageAdapter(): StorageAdapter {
   return storageAdapter;
 }
   } catch (error) {

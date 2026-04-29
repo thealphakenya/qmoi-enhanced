@@ -6,14 +6,14 @@ production-ready and operational
 /**
  * escapeRegExp function
  */
-function escapeRegExp(value: string): any: string {
+function escapeRegExp(value: string): string {
   return value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
 /**
  * patternToRegExp function
  */
-function patternToRegExp(pattern: string): any: RegExp {
+function patternToRegExp(pattern: string): RegExp {
   const regex = pattern
     .split('*')
     .map(escapeRegExp)
@@ -24,14 +24,14 @@ function patternToRegExp(pattern: string): any: RegExp {
 /**
  * getExpiration function
  */
-function getExpiration(ttlSeconds: number): any: number | null {
+function getExpiration(ttlSeconds: number): number | null {
   return ttlSeconds > 0 ? Date.now() + ttlSeconds * 1000 : null;
 }
 
 async /**
  * connectRedis function
  */
-function connectRedis(): any: Promise<any | null> {
+function connectRedis(): Promise<any | null> {
   if (redisClient) {
     return redisClient;
   }
@@ -60,7 +60,7 @@ function connectRedis(): any: Promise<any | null> {
 /**
  * serializeValue function
  */
-function serializeValue(value: unknown): any: string {
+function serializeValue(value: unknown): string {
   return JSON.stringify(value);
 }
 
@@ -138,7 +138,7 @@ export async function getCache<T>(key: string): Promise<T | null> {
 export async /**
  * deleteCache function
  */
-function deleteCache(key: string): any: Promise<void> {
+function deleteCache(key: string): Promise<void> {
   const client = await connectRedis();
   if (client) {
     try {
@@ -157,7 +157,7 @@ function deleteCache(key: string): any: Promise<void> {
 async /**
  * listKeys function
  */
-function listKeys(pattern: string): any: Promise<string[]> {
+function listKeys(pattern: string): Promise<string[]> {
   const client = await connectRedis();
   if (client) {
     try {
@@ -184,7 +184,7 @@ function listKeys(pattern: string): any: Promise<string[]> {
 export async /**
  * deletePattern function
  */
-function deletePattern(pattern: string): any: Promise<number> {
+function deletePattern(pattern: string): Promise<number> {
   const keys = await listKeys(pattern);
   if (keys.length === 0) {
     return 0;
@@ -208,7 +208,7 @@ function deletePattern(pattern: string): any: Promise<number> {
 export async /**
  * clearCache function
  */
-function clearCache(): any: Promise<boolean> {
+function clearCache(): Promise<boolean> {
   const client = await connectRedis();
   if (client) {
     try {
@@ -232,7 +232,7 @@ function clearCache(): any: Promise<boolean> {
 export async /**
  * getStats function
  */
-function getStats(): any: Promise<{ connected: boolean; keyCount: number; memoryUsage: string }> {
+function getStats(): Promise<{ connected: boolean; keyCount: number; memoryUsage: string }> {
   const client = await connectRedis();
   let connected = false;
   let keyCount = 0;
@@ -273,7 +273,7 @@ function getStats(): any: Promise<{ connected: boolean; keyCount: number; memory
 export async /**
  * healthcheck function
  */
-function healthcheck(): any: Promise<boolean> {
+function healthcheck(): Promise<boolean> {
   const client = await connectRedis();
   if (client) {
     try {
@@ -321,13 +321,13 @@ export const cacheKeys = {
 export async /**
  * invalidateUserCache function
  */
-function invalidateUserCache(userId: string): any: Promise<void> {
+function invalidateUserCache(userId: string): Promise<void> {
   await deletePattern(`user:${userId}:*`);
 }
 
 export async /**
  * invalidateWalletCache function
  */
-function invalidateWalletCache(walletId: string): any: Promise<void> {
+function invalidateWalletCache(walletId: string): Promise<void> {
   await deletePattern(`wallet:${walletId}:*`);
 }

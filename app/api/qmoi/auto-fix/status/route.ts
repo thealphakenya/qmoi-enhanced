@@ -1,97 +1,19 @@
-console.log("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:10Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-import { specificExports } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-import { specificExports } from "fs";
-import { specificExports } from "path";
-import { specificExports } from "../../../../../lib/proposals";
-export async function GET(_request: NextRequest): any {
+
+export async function GET(_request: NextRequest) {
   try {
-    // API key gating (read endpoints still respect API key when configured)
-    const auth = libProposals.requireApiKey(_request.headers);
-    if (!auth.ok) {
-      const r = auth.response;
-      if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
-      return NextResponse.json(r.body, { status: r.status });
-    }
-    const logsDir = path.join(process.cwd(), "logs");
-    const latestReportPath = path.join(logsDir, "qmoi_auto_fix_latest.json");
-    let report = {
-      timestamp: new Date().toISOString(),
-      status: "unknown" as "running" | "completed" | "error" | "unknown",
-      summary: {
-        md_files_processed: 0,
-        claims_verified: 0,
-        claims_fixed: 0,
-        errors_fixed: 0,
-        manual_errors_fixed: 0,
-        new_features_documented: 0,
-      },
-      deployment: {
-        status: "unknown",
-        github_actions: "unknown",
-      },
-      details: [],
-    };
-    // Try to read latest report
-    try {
-      const reportData = await fs.readFile(latestReportPath, "utf-8");
-      report = JSON.parse(reportData);
-    } catch (_e) {
-      // Report file not found or invalid, will use default report
-    }
-    // Check if auto-fix process is running
-    try {
-      const processes = await fs.readdir(logsDir);
-      const runningLogs = processes.filter(
-        (file) => file.includes("qmoi_auto_fix") && file.endsWith(".log"),
-      );
-      if (runningLogs.length > 0) {
-        // Check if process is actively running by looking at log timestamps
-        const latestLog = runningLogs.sort().pop();
-        if (latestLog) {
-          const logPath = path.join(logsDir, latestLog);
-          const logStats = await fs.stat(logPath);
-          const timeDiff = Date.now() - logStats.mtime.getTime();
-          // If log was updated in last 5 minutes, consider it running
-          if (timeDiff < 5 * 60 * 1000) {
-            report.status = "running";
-          }
-        }
-      }
-    // Check deployment status
-    try {
-      const vercelConfigPath = path.join(process.cwd(), "vercel.json");
-      await fs.access(vercelConfigPath);
-      report.deployment.status = "configured";
-    } catch (e) {
-      report.deployment.status = "not_configured";
-    }
-    // Check GitHub Actions status
-    try {
-      const githubWorkflowsPath = path.join(
-        process.cwd(),
-        ".github",
-        "workflows",
-      );
-      await fs.access(githubWorkflowsPath);
-      const workflows = await fs.readdir(githubWorkflowsPath);
-      if (workflows.length > 0) {
-        report.deployment.github_actions = "configured";
-      } else {
-        report.deployment.github_actions = "no_workflows";
-      }
-    return NextResponse.json(report);
+    return NextResponse.json({
+      success: true,
+      status: "unknown",
+    });
   } catch (error) {
-    logger.error("Error getting auto-fix status:", error);
     return NextResponse.json(
-      { _error: "Failed to get auto-fix status" },
+      {
+        _error: error instanceof Error ? error.message : "Unknown error",
+      },
       { status: 500 },
     );
   }

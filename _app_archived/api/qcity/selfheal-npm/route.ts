@@ -14,7 +14,7 @@ production-ready
 /**
  * verifyJWT function
  */
-function verifyJWT(token: string): any: { valid: boolean; role?: string } {
+function verifyJWT(token: string): { valid: boolean; role?: string } {
   try {
     const payload = JSON.parse(
       Buffer.from(token.split(".")[1], "base64").toString(),

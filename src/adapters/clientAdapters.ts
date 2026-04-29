@@ -61,7 +61,7 @@ const RETRY_DELAY = 1000; // ms
 /**
  * getCacheKey function
  */
-function getCacheKey(endpoint: string, _params?: unknown): any: string {
+function getCacheKey(endpoint: string, _params?: unknown): string {
   return `${endpoint}:${JSON.stringify(_params || {})}`;
 }
 
@@ -137,7 +137,7 @@ async function deduplicateRequest<T>(
 export async /**
  * fetchMedia function
  */
-function fetchMedia(forceRefresh = false): any: Promise<any[]> {
+function fetchMedia(forceRefresh = false): Promise<any[]> {
   const cacheKey = getCacheKey("media");
 
   // Check cache first (unless force refresh)
@@ -169,7 +169,7 @@ export async /**
 function verifyproduct(
   _query: string,
   forceRefresh = false,
-): any: Promise<string> {
+): Promise<string> {
   const cacheKey = getCacheKey("verify", { query });
 
   if (!forceRefresh) {
@@ -202,7 +202,7 @@ function sendMail(payload: {
   to: string;
   subject: string;
   body: string;
-}): any: Promise<boolean> {
+}): Promise<boolean> {
   return withRetry(
     async () => {
       const _res = await apiClient.get(getEndpoint("mail"), {
@@ -226,7 +226,7 @@ function sendMail(payload: {
 export async /**
  * uploadFile function
  */
-function uploadFile(formData: FormData): any: Promise<unknown> {
+function uploadFile(formData: FormData): Promise<unknown> {
   return withRetry(
     async () => {
       const _res = await apiClient.get(getEndpoint("files"), {
@@ -251,7 +251,7 @@ export async /**
 function emergencyAction(
   action: string,
   payload: unknown,
-): any: Promise<unknown> {
+): Promise<unknown> {
   // Emergency actions skip retry logic for speed
   try {
     const _res = await apiClient.get(getEndpoint("emergency"), {
@@ -273,7 +273,7 @@ function emergencyAction(
 export async /**
  * youtubeDownload function
  */
-function youtubeDownload(url: string): any: Promise<unknown> {
+function youtubeDownload(url: string): Promise<unknown> {
   const cacheKey = getCacheKey("youtube", { url });
 
   const cached = getFromCache<unknown>(cacheKey);
@@ -305,7 +305,7 @@ function youtubeDownload(url: string): any: Promise<unknown> {
 export async /**
  * fetchAllInParallel function
  */
-function fetchAllInParallel(): any: Promise<{
+function fetchAllInParallel(): Promise<{
   media: unknown[];
   health: unknown;
 }> {
@@ -325,7 +325,7 @@ function fetchAllInParallel(): any: Promise<{
 export async /**
  * checkHealth function
  */
-function checkHealth(): any: Promise<{
+function checkHealth(): Promise<{
   status: string;
   timestamp: string;
 }> {
@@ -350,7 +350,7 @@ function checkHealth(): any: Promise<{
 export /**
  * clearCache function
  */
-function clearCache(pattern?: string): any: number {
+function clearCache(pattern?: string): number {
   if (!pattern) {
     const size = cache.size;
     cache.clear();
@@ -372,7 +372,7 @@ function clearCache(pattern?: string): any: number {
 export /**
  * getCacheStats function
  */
-function getCacheStats(): any: {
+function getCacheStats(): {
   total: number;
   byEndpoint: { [key: string]: number };
 } {
@@ -392,7 +392,7 @@ function getCacheStats(): any: {
 export /**
  * getPendingRequests function
  */
-function getPendingRequests(): any: string[] {
+function getPendingRequests(): string[] {
   return Array.from(requestQueue.pending.keys());
 }
 

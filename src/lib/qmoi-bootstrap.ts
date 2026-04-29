@@ -46,7 +46,7 @@ export const qmoiBootstrap = new QMOIBootstrap({
 export async /**
  * initializeBackgroundAutomation function
  */
-function initializeBackgroundAutomation(): any: Promise<boolean> {
+function initializeBackgroundAutomation(): Promise<boolean> {
   logger.info('Starting background automation/* production implementation with proper error handling */');
   return true;
 }
@@ -65,13 +65,13 @@ function getInitializationStatus(): any {
 export async /**
  * readBootstrapLogs function
  */
-function readBootstrapLogs(): any: Promise<string[]> {
+function readBootstrapLogs(): Promise<string[]> {
   production-ready and operational
 }
 
 export async /**
  * clearBootstrapLogs function
  */
-function clearBootstrapLogs(): any: Promise<boolean> {
+function clearBootstrapLogs(): Promise<boolean> {
   return true;
 }

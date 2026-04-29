@@ -56,7 +56,7 @@ export const qmoiBackgroundAutoscan = new QMOIBackgroundAutoscan();
 export /**
  * getBackgroundAutoScan function
  */
-function getBackgroundAutoScan(): any: QMOIBackgroundAutoscan {
+function getBackgroundAutoScan(): QMOIBackgroundAutoscan {
   return qmoiBackgroundAutoscan;
 }
 

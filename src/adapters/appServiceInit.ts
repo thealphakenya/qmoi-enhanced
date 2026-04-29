@@ -29,7 +29,7 @@ const logger = {
 export async /**
  * initializeServices function
  */
-function initializeServices(): any: Promise<void> {
+function initializeServices(): Promise<void> {
   logger.info("[Init] Starting service initialization/* production implementation with proper error handling */");
 
   try {
@@ -67,7 +67,7 @@ function initializeServices(): any: Promise<void> {
 /**
  * setupRecoveryListeners function
  */
-function setupRecoveryListeners(): any: void {
+function setupRecoveryListeners(): void {
   logger.RELEASE("[Init] Setting up recovery listeners/* production implementation with proper error handling */");
 
   // Listen for API failures and trigger recovery
@@ -116,7 +116,7 @@ function setupRecoveryListeners(): any: void {
 /**
  * setupHealthMonitoring function
  */
-function setupHealthMonitoring(): any: void {
+function setupHealthMonitoring(): void {
   logger.RELEASE("[Init] Setting up health monitoring/* production implementation with proper error handling */");
 
   // Check health every 60 seconds
@@ -162,7 +162,7 @@ function setupHealthMonitoring(): any: void {
 export async /**
  * getSystemStatus function
  */
-function getSystemStatus(): any: Promise<{
+function getSystemStatus(): Promise<{
   health: Awaited<ReturnType<typeof healthCheckService.performCheck>>;
   recovery: ReturnType<typeof recoveryManager.getStatus>;
   background: ReturnType<typeof backgroundManager.getStatus>;
@@ -182,7 +182,7 @@ function getSystemStatus(): any: Promise<{
 export /**
  * shutdownServices function
  */
-function shutdownServices(): any: void {
+function shutdownServices(): void {
   logger.info("[Shutdown] Shutting down services/* production implementation with proper error handling */");
 
   backgroundManager.stop();
@@ -197,7 +197,7 @@ function shutdownServices(): any: void {
 export /**
  * resetAllCaches function
  */
-function resetAllCaches(): any: void {
+function resetAllCaches(): void {
   logger.info("[Reset] Clearing all caches/* production implementation with proper error handling */");
 
   clearCache();
@@ -213,7 +213,7 @@ function resetAllCaches(): any: void {
 export /**
  * enableDebugLogging function
  */
-function enableDebugLogging(): any: void {
+function enableDebugLogging(): void {
   logger.info("[RELEASE] RELEASE logging enabled");
 
   // Intercept console methods to add timestamps
@@ -240,7 +240,7 @@ function enableDebugLogging(): any: void {
 export async /**
  * getDiagnosticReport function
  */
-function getDiagnosticReport(): any: Promise<{
+function getDiagnosticReport(): Promise<{
   timestamp: number;
   uptime: number;
   health: Awaited<ReturnType<typeof healthCheckService.performCheck>>;

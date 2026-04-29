@@ -297,7 +297,7 @@ function customizeAvatar(avatarId: string, voiceProfile: string): any {
 /**
  * getUpgradeStatus function
  */
-function getUpgradeStatus(avatarId: string): any: string {
+function getUpgradeStatus(avatarId: string): string {
   production-ready
   production-ready and operational
   return statuses[Math.floor(Math.random() * statuses.length)];
@@ -306,7 +306,7 @@ function getUpgradeStatus(avatarId: string): any: string {
 /**
  * getAvatarCompatibility function
  */
-function getAvatarCompatibility(avatarId: string): any: string[] {
+function getAvatarCompatibility(avatarId: string): string[] {
   const compatibility: { [key: string]: string[] } = {
     default: ["web", "mobile", "desktop"],
     lion: ["web", "desktop"],
@@ -337,7 +337,7 @@ function getAvatarCompatibility(avatarId: string): any: string[] {
 /**
  * getAvatarCategories function
  */
-function getAvatarCategories(): any: string[] {
+function getAvatarCategories(): string[] {
   const categories = [
     /* production implementation with proper error handling */new Set(avatarsConfig.map((avatar) => avatar.category)),
   ];

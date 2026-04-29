@@ -1,35 +1,20 @@
-console.log("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:11Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { NextRequest, NextResponse } from "next/server";
 
-import { specificExports } from "next";
-import { specificExports } from "../../../lib/ai/agentService";
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
-export default async
- * handler function
- */
-function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-): any {
-  if (req.method === "GET") {
-    production-ready and operational
-    return res.json({ tools: listAgentTools() });
-  }
-  if (req.method === "POST") {
-    const { command } = req.body as { command?: string };
-    if (!command || typeof command !== "string") {
-      return res.status(400).json({ error: "required command" });
-    }
-    try {
-      const result = await runAgentCommand(command);
-      return res.json(result);
-    } catch (e) {
-      return res.status(500).json({ error: (e as Error).message });
-    }
-  }
-  res.setHeader("Allow", "GET,POST");
-  return res.status(405).end();
+export async function GET(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "GET",
+  });
+}
+
+export async function POST(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "POST",
+  });
 }

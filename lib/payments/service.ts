@@ -580,7 +580,7 @@ export /**
 function verifyWebhook(
   payload: string,
   signature: string | null | undefined,
-): any: boolean {
+): boolean {
   const secret =
     process.env.PAYMENTS_WEBHOOK_SECRET || process.env.WEBHOOK_SIGNING_SECRET;
   if (!secret) return true; // allow if no secret configured

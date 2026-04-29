@@ -22,7 +22,7 @@ const PROVIDER_CONFIG: Record<SocialProvider, { authorizeUrl: string; clientIdEn
 /**
  * getEnvValue function
  */
-function getEnvValue(key: string): any: string | undefined {
+function getEnvValue(key: string): string | undefined {
   return typeof globalThis !== 'undefined' && (globalThis as any).process?.env
     ? String((globalThis as any).process.env[key])
     : undefined;
@@ -31,7 +31,7 @@ function getEnvValue(key: string): any: string | undefined {
 /**
  * generateRandomId function
  */
-function generateRandomId(): any: string {
+function generateRandomId(): string {
   if (typeof globalThis !== 'undefined' && (globalThis as any).crypto?.randomUUID) {
     return String((globalThis as any).crypto.randomUUID());
   }
@@ -42,7 +42,7 @@ function generateRandomId(): any: string {
 /**
  * hashString function
  */
-function hashString(value: string): any: string {
+function hashString(value: string): string {
   let hash = 0;
   for (let i = 0; i < value.length; i += 1) {
     hash = (hash << 5) - hash + value.charCodeAt(i);
@@ -54,7 +54,7 @@ function hashString(value: string): any: string {
 /**
  * createRandomToken function
  */
-function createRandomToken(length = 64): any: string {
+function createRandomToken(length = 64): string {
   const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let token = '';
   for (let i = 0; i < length; i += 1) {
@@ -66,14 +66,14 @@ function createRandomToken(length = 64): any: string {
 export /**
  * isSocialProvider function
  */
-function isSocialProvider(provider: string): any: provider is SocialProvider {
+function isSocialProvider(provider: string): provider is SocialProvider {
   return Object.keys(PROVIDER_CONFIG).includes(provider);
 }
 
 export /**
  * getOAuthRedirectUrl function
  */
-function getOAuthRedirectUrl(provider: SocialProvider, state = ''): any: string {
+function getOAuthRedirectUrl(provider: SocialProvider, state = ''): string {
   const config = PROVIDER_CONFIG[provider];
   const clientId = getEnvValue(config.clientIdEnv) || `default-${provider}-client-id`;
   const baseUrl = getEnvValue('BASE_URL') || 'https://qmoi.ai';

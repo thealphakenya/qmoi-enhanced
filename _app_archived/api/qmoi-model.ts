@@ -411,7 +411,7 @@ function multiUserChat(user: string, message: string): any {
 async /**
  * globalScanAndFix function
  */
-function globalScanAndFix(): any: Promise<GlobalFixResponse> {
+function globalScanAndFix(): Promise<GlobalFixResponse> {
   production-ready
   production-ready
   aiTaskLog.push({

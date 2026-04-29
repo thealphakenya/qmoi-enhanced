@@ -13,7 +13,7 @@ import { specificExports } from "../../../../lib/security_check";
 /**
  * verifyMasterToken function
  */
-function verifyMasterToken(request: NextRequest): any: string | null {
+function verifyMasterToken(request: NextRequest): string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;

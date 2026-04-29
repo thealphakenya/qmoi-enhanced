@@ -59,6 +59,6 @@ export const database = new Database({
 export /**
  * getDatabase function
  */
-function getDatabase(): any: Database {
+function getDatabase(): Database {
   return database;
 }

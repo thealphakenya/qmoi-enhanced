@@ -1,49 +1,20 @@
-console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.625785 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.788091 -->
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:09Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { NextRequest, NextResponse } from "next/server";
 
-// sophisticated deals API route
-// This endpoint returns a list of active deals/offers that users can browse.
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
-import { specificExports } from "next";
-import { specificExports } from "../../lib/db";
+export async function GET(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "GET",
+  });
+}
 
-export default async
- * handler function
- */
-function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-): any {
-  if (req.method === "GET") {
-    try {
-      // if Prisma is configured and there's a deals table, fetch
-      if (prisma && typeof prisma.deal !== "undefined") {
-        const deals = await prisma.deal.findMany({ where: { active: true } });
-        return res.status(200).json({ deals });
-      }
-
-    // fallback static response
-    const sampleDeals = [
-      {
-        id: "1",
-        title: "50% off premium",
-        details: "Half price on premium subscription",
-        expires: "2026-12-31",
-      },
-      {
-        id: "2",
-        title: "Free trial",
-        details: "7 day free trial for new users",
-        expires: "2026-06-30",
-      },
-    ];
-    return res.status(200).json({ deals: sampleDeals });
-  }
-
-  return res.status(405).json({ error: "Method not allowed" });
+export async function POST(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "POST",
+  });
 }

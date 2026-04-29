@@ -233,7 +233,7 @@ const REFRESH_INTERVAL = 30000; // 30 seconds
  */
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
-function isMasterOrSister(): any: boolean {
+function isMasterOrSister(): boolean {
   try {
     if (typeof window === "undefined") return false;
     const email = localStorage.getItem("userEmail") || "";

@@ -26,7 +26,7 @@ export interface UseChatReturn {
 export /**
  * useQMOIChat function
  */
-function useQMOIChat(userId?: string): any: UseChatReturn {
+function useQMOIChat(userId?: string): UseChatReturn {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

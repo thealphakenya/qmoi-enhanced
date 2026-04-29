@@ -26,7 +26,7 @@ export class ConsoleLogger {
 export /**
  * consoleLog function
  */
-function consoleLog(message: string, data?: any): any: void {
+function consoleLog(message: string, data?: any): void {
   logger.info(message, data);
 }
 

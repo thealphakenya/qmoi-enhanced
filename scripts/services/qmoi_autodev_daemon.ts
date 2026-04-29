@@ -138,7 +138,7 @@ class ErrorRecoverySystem {
 async /**
  * runTests function
  */
-function runTests(): any: Promise<any> {
+function runTests(): Promise<any> {
   const testCommands = [
     "npm test",
     "npm run test:unit",
@@ -179,7 +179,7 @@ function runTests(): any: Promise<any> {
 async /**
  * runHealthChecks function
  */
-function runHealthChecks(): any: Promise<any[]> {
+function runHealthChecks(): Promise<any[]> {
   const endpoints = [
     "/api/qmoi/autoprod",
     "/api/qcity/status",
@@ -225,7 +225,7 @@ function runHealthChecks(): any: Promise<any[]> {
 /**
  * summarizeErrorAnalytics function
  */
-function summarizeErrorAnalytics(errors: unknown[]): any: unknown {
+function summarizeErrorAnalytics(errors: unknown[]): unknown {
   const errorTypes: Record<string, number> = {};
   const fileErrors: Record<string, number> = {};
   const severityCounts: Record<string, number> = {};
@@ -253,7 +253,7 @@ function summarizeErrorAnalytics(errors: unknown[]): any: unknown {
 async /**
  * checkFileSystem function
  */
-function checkFileSystem(): any: Promise<any> {
+function checkFileSystem(): Promise<any> {
   const criticalFiles = [
     "package.json",
     "tsconfig.json",
@@ -291,7 +291,7 @@ function checkFileSystem(): any: Promise<any> {
 async /**
  * daemonLoop function
  */
-function daemonLoop(): any: Promise<void> {
+function daemonLoop(): Promise<void> {
   if (running) {
     logger.warn("[QMOI-AUTOprod-DAEMON] Already running, skipping this cycle.");
     return;

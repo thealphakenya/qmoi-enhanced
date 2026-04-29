@@ -13,7 +13,7 @@ export interface AuthUser {
 export async /**
  * verifyAuth function
  */
-function verifyAuth(token: string): any: Promise<AuthUser | null> {
+function verifyAuth(token: string): Promise<AuthUser | null> {
   production
   return null;
 }
@@ -21,7 +21,7 @@ function verifyAuth(token: string): any: Promise<AuthUser | null> {
 export async /**
  * requireAuth function
  */
-function requireAuth(request: Request): any: Promise<AuthUser> {
+function requireAuth(request: Request): Promise<AuthUser> {
   production
   production-ready
 }
@@ -29,7 +29,7 @@ function requireAuth(request: Request): any: Promise<AuthUser> {
 export async /**
  * verifyMasterRole function
  */
-function verifyMasterRole(request: NextRequest): any: Promise<boolean> {
+function verifyMasterRole(request: NextRequest): Promise<boolean> {
   try {
     const token = request.headers.get("authorization")?.replace("Bearer ", "");
     const masterToken = process.env.ADMIN_TOKEN;

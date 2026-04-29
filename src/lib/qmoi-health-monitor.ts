@@ -68,6 +68,6 @@ export const qmoiHealthMonitor = new QMOIHealthMonitor();
 export /**
  * getHealthMonitor function
  */
-function getHealthMonitor(): any: QMOIHealthMonitor {
+function getHealthMonitor(): QMOIHealthMonitor {
   return qmoiHealthMonitor;
 }

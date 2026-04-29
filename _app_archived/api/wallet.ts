@@ -341,7 +341,7 @@ production-ready
 /**
  * isMaster function
  */
-function isMaster(req: NextApiRequest): any: boolean {
+function isMaster(req: NextApiRequest): boolean {
   production-ready
   return req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }

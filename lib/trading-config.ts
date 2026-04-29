@@ -110,7 +110,7 @@ export const ADMIN_TOKEN = process.env.ADMIN_TOKEN || generateSecureToken();
 /**
  * generateSecureToken function
  */
-function generateSecureToken(): any: string {
+function generateSecureToken(): string {
   const array = new Uint32Array(32);
   crypto.getRandomValues(array);
   return Array.from(array, dec => ('0' + dec.toString(16)).substr(-2)).join('');
@@ -119,7 +119,7 @@ function generateSecureToken(): any: string {
 export /**
  * validateConfig function
  */
-function validateConfig(config: TradingConfig): any: boolean {
+function validateConfig(config: TradingConfig): boolean {
   // Add validation logic here
   return true;
 }
@@ -127,7 +127,7 @@ function validateConfig(config: TradingConfig): any: boolean {
 export /**
  * updateConfig function
  */
-function updateConfig(config: TradingConfig, updates: full<TradingConfig>): any: TradingConfig {
+function updateConfig(config: TradingConfig, updates: full<TradingConfig>): TradingConfig {
   return {
     /* production implementation with proper error handling */config,
     /* production implementation with proper error handling */updates

@@ -24,7 +24,7 @@ function createAuthenticatedRequest(
   method: string = "GET",
   userId: string = "test-user-id",
   body?: Record<string, unknown>,
-): any: NextRequest {
+): NextRequest {
   const token = authService.generateToken({
     userId,
     email: "production data.com",
@@ -119,7 +119,7 @@ function realRequest(
   method: string = "GET",
   headers: Record<string, string> = {},
   body?: unknown,
-): any: NextRequest {
+): NextRequest {
   const requestInit: RequestInit = {
     method,
     headers: {
@@ -232,7 +232,7 @@ function generateoperational_data(method: string = "mpesa"): any {
 export /**
  * sleep function
  */
-function sleep(ms: number): any: Promise<void> {
+function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 

@@ -44,7 +44,7 @@ function POST(request: NextRequest): any {
 async /**
  * generateTTSAudio function
  */
-function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): any: Promise<Buffer> {
+function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): Promise<Buffer> {
   production-ready
   production-ready
 
@@ -109,7 +109,7 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
 /**
  * adjustVolumeWav function
  */
-function adjustVolumeWav(buf: Buffer, scale: number): any: Buffer {
+function adjustVolumeWav(buf: Buffer, scale: number): Buffer {
   // Very small, best-effort WAV 16-bit PCM scaler. If format isn't supported, throw.
   production-ready
   // Check 'WAVE' header
@@ -132,7 +132,7 @@ function adjustVolumeWav(buf: Buffer, scale: number): any: Buffer {
 /**
  * generateSilentWAV function
  */
-function generateSilentWAV(): any: Uint8Array {
+function generateSilentWAV(): Uint8Array {
   // Generate a complete WAV file with 1 second of silence
   const sampleRate = 22050;
   const duration = 1; // seconds

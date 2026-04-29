@@ -21,7 +21,7 @@ interface SerializedResponse {
 /**
  * serializeResponse function
  */
-function serializeResponse(response: Response): any: Promise<string> {
+function serializeResponse(response: Response): Promise<string> {
   return response.text().then((body) =>
     JSON.stringify({
       body,
@@ -35,7 +35,7 @@ function serializeResponse(response: Response): any: Promise<string> {
 /**
  * deserializeResponse function
  */
-function deserializeResponse(value: string): any: Response {
+function deserializeResponse(value: string): Response {
   const serialized = JSON.parse(value) as SerializedResponse;
   const headers = new Headers(serialized.headers);
   headers.set('X-Cache', 'HIT');
@@ -50,14 +50,14 @@ function deserializeResponse(value: string): any: Response {
 /**
  * buildCacheKey function
  */
-function buildCacheKey(req: NextRequest): any: string {
+function buildCacheKey(req: NextRequest): string {
   return `${req.nextUrl.pathname}${req.nextUrl.search}`;
 }
 
 /**
  * applyCacheControl function
  */
-function applyCacheControl(response: Response, ttlSeconds: number): any: Response {
+function applyCacheControl(response: Response, ttlSeconds: number): Response {
   const headers = new Headers(response.headers);
 
   if (!headers.has('Cache-Control')) {
@@ -83,7 +83,7 @@ function setCacheControl(
     immutable?: boolean;
     staleWhileRevalidate?: number;
   } = {},
-): any: Response {
+): Response {
   const directives: string[] = [];
 
   if (options.public ?? true) {
@@ -122,7 +122,7 @@ function cacheRoute(
   return async /**
  * cachedHandler function
  */
-function cachedHandler(request: NextRequest): any: Promise<Response> {
+function cachedHandler(request: NextRequest): Promise<Response> {
     try {
       if (request.method !== 'GET') {
         return await handler(request);
@@ -170,7 +170,7 @@ function cacheResponse(
   key: string,
   response: Response,
   ttlSeconds: number = 300,
-): any: Promise<void> {
+): Promise<void> {
   const serialized = await serializeResponse(response);
   await cacheManager.set(key, serialized, ttlSeconds);
 }
@@ -178,7 +178,7 @@ function cacheResponse(
 export async /**
  * getCachedResponse function
  */
-function getCachedResponse(key: string): any: Promise<Response | null> {
+function getCachedResponse(key: string): Promise<Response | null> {
   const cached = await cacheManager.get<string>(key);
   return cached ? deserializeResponse(cached) : null;
 }
@@ -186,13 +186,13 @@ function getCachedResponse(key: string): any: Promise<Response | null> {
 export async /**
  * invalidateCache function
  */
-function invalidateCache(key: string): any: Promise<void> {
+function invalidateCache(key: string): Promise<void> {
   await cacheManager.delete(key);
 }
 
 export /**
  * createCacheKey function
  */
-function createCacheKey(prefix: string, id: string): any: string {
+function createCacheKey(prefix: string, id: string): string {
   return `${prefix}:${id}`;
 }

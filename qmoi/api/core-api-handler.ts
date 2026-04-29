@@ -407,7 +407,7 @@ export async /**
 function handleCoreAPI(
   request: NextRequest,
   context: any
-): any: Promise<NextResponse> {
+): Promise<NextResponse> {
   const pathname = new URL(request.url).pathname;
 
   if (pathname.includes('/consciousness/initialize') && request.method === 'POST') {

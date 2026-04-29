@@ -347,6 +347,6 @@ export const featureFlags = new FeatureFlagsManager();
 export /**
  * useFeatureFlag function
  */
-function useFeatureFlag(flagName: FeatureFlagName): any: boolean {
+function useFeatureFlag(flagName: FeatureFlagName): boolean {
   return featureFlags.isEnabled(flagName);
 }

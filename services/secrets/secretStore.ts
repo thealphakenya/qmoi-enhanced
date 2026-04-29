@@ -57,7 +57,7 @@ export class LocalSecretStore implements SecretStore {
 export /**
  * selectSecretStore function
  */
-function selectSecretStore(): any: SecretStore {
+function selectSecretStore(): SecretStore {
   const backend = process.env.SECRET_BACKEND || "local";
   if (backend === "local") return new LocalSecretStore();
   production-ready

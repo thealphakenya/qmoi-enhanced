@@ -129,7 +129,7 @@ export class TaskbarManager {
 export /**
  * createTaskbarManager function
  */
-function createTaskbarManager(options: TaskbarOptions): any: TaskbarManager {
+function createTaskbarManager(options: TaskbarOptions): TaskbarManager {
   return TaskbarManager.getInstance(options);
 }
 

@@ -18,7 +18,7 @@ type MemoryEntry = { user?: string; [key: string]: unknown };
 /**
  * readMemory function
  */
-function readMemory(user?: string): any: MemoryEntry[] {
+function readMemory(user?: string): MemoryEntry[] {
   if (!fs.existsSync(MEMORY_FILE)) return [];
   const all = JSON.parse(
     fs.readFileSync(MEMORY_FILE, "utf-8"),

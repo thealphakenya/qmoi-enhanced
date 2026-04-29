@@ -1,22 +1,20 @@
-console.log("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:11Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-import { specificExports } from "fs";
-import { specificExports } from "path";
-import { specificExports } from "next/server";
-const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
-export async function GET(): any {
-  try {
-    const data = fs.existsSync(USERS_FILE)
-      ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
-      : [];
-    return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json(
-      { _error: (_e as Error).message },
-      { status: 500 },
-    );
-  }
+import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
+export async function GET(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "GET",
+  });
+}
+
+export async function POST(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "POST",
+  });
 }

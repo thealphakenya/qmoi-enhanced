@@ -156,7 +156,7 @@ production-ready and operational
 export /**
  * getComponentInfo function
  */
-function getComponentInfo(componentName: string): any: QCityComponent | null {
+function getComponentInfo(componentName: string): QCityComponent | null {
   return QCityComponentRegistry[componentName] || null;
 }
 
@@ -166,7 +166,7 @@ function getComponentInfo(componentName: string): any: QCityComponent | null {
 export /**
  * isFeatureEnabled function
  */
-function isFeatureEnabled(feature: keyof typeof QCityFeatures): any: boolean {
+function isFeatureEnabled(feature: keyof typeof QCityFeatures): boolean {
   return QCityFeatures[feature];
 }
 

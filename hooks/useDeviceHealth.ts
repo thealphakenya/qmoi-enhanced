@@ -112,7 +112,7 @@ function getNetworkInfo(): any {
 /**
  * getBatteryInfo function
  */
-function getBatteryInfo(): any: Promise<number | null> {
+function getBatteryInfo(): Promise<number | null> {
   return new Promise((resolve) => {
     if (typeof navigator !== "undefined" && "getBattery" in navigator) {
       
@@ -130,7 +130,7 @@ function getBatteryInfo(): any: Promise<number | null> {
 export /**
  * useprodiceHealth function
  */
-function useprodiceHealth(): any: prodiceHealth {
+function useprodiceHealth(): prodiceHealth {
   const [health, setHealth] = useState<prodiceHealth>({
     status: "healthy",
     lastCheck: Date.now(),

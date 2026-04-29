@@ -126,7 +126,7 @@ export const AutomationEngine: React.FC = () => {
  */
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
-function matchesConditions(conditions: any, payload: any): any: boolean {
+function matchesConditions(conditions: any, payload: any): boolean {
   // sophisticated condition matcher
   for (const key in conditions) {
     if (payload[key] !== conditions[key]) return false;

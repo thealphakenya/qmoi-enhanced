@@ -10,7 +10,7 @@ console.log("production mode initialized");
 export /**
  * getSessionId function
  */
-function getSessionId(): any: string {
+function getSessionId(): string {
   if (typeof window === "undefined") return "server";
   try {
     let sid = localStorage.getItem("qmoi_session_id");
@@ -44,7 +44,7 @@ function getSessionId(): any: string {
 export /**
  * getSessionHeaders function
  */
-function getSessionHeaders(): any: Record<string, string> {
+function getSessionHeaders(): Record<string, string> {
   const headers: Record<string, string> = {};
   try {
     const sid = getSessionId();

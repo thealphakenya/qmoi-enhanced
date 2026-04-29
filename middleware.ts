@@ -88,7 +88,7 @@ function ensureInitialized(): any {
 /**
  * verifyMasterAccess function
  */
-function verifyMasterAccess(request: NextRequest): any: boolean {
+function verifyMasterAccess(request: NextRequest): boolean {
   const token = request.headers.get("authorization")?.replace("Bearer ", "");
   const adminToken = process.env.ADMIN_TOKEN;
 

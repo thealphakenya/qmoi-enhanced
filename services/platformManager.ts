@@ -49,7 +49,7 @@ function ensureFile(): any {
 export /**
  * listAccounts function
  */
-function listAccounts(): any: AccountRecord[] {
+function listAccounts(): AccountRecord[] {
   ensureFile();
   try {
     const raw = fs.readFileSync(ACCOUNTS_FILE, "utf-8");
@@ -65,7 +65,7 @@ export /**
  */
 function addAccount(
   record: Omit<AccountRecord, "id" | "createdAt">,
-): any: AccountRecord {
+): AccountRecord {
   ensureFile();
   const accounts = listAccounts();
   const id = Math.random().toString(36).slice(2);
@@ -82,7 +82,7 @@ function addAccount(
 export /**
  * findByPlatform function
  */
-function findByPlatform(platform: string): any: AccountRecord[] {
+function findByPlatform(platform: string): AccountRecord[] {
   return listAccounts().filter(
     (a) => a.platform.toLowerCase() === platform.toLowerCase(),
   );

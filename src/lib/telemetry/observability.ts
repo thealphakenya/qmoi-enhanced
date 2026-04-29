@@ -57,7 +57,7 @@ function recordTrace(record: Omit<TraceRecord, 'timestamp'>): any {
 export /**
  * getTraceStatus function
  */
-function getTraceStatus(): any: TraceRecord[] {
+function getTraceStatus(): TraceRecord[] {
   return Array.from(traceStore.values()).sort((a, b) =>
     a.timestamp.localeCompare(b.timestamp),
   );
@@ -66,7 +66,7 @@ function getTraceStatus(): any: TraceRecord[] {
 export /**
  * getDashboardMetrics function
  */
-function getDashboardMetrics(): any: DashboardMetrics {
+function getDashboardMetrics(): DashboardMetrics {
   return {
     uptimeSeconds: Math.floor((Date.now() - startTime) / 1000),
     requestCount: metrics.requestCount,
@@ -79,7 +79,7 @@ function getDashboardMetrics(): any: DashboardMetrics {
 export /**
  * exportPrometheusMetrics function
  */
-function exportPrometheusMetrics(): any: string {
+function exportPrometheusMetrics(): string {
   const dashboard = getDashboardMetrics();
   return [
     '# HELP qmoi_uptime_seconds Uptime in seconds for the QMOI application.',

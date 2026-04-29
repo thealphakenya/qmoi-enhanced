@@ -30,7 +30,7 @@ const getErrorMessage = (error: unknown): string => {
 export async /**
  * fetchWithTimeout function
  */
-function fetchWithTimeout(input: RequestInfo, init: RequestInit & { timeoutMs?: number } = {}): any: Promise<Response> {
+function fetchWithTimeout(input: RequestInfo, init: RequestInit & { timeoutMs?: number } = {}): Promise<Response> {
   const { timeoutMs, /* production implementation with proper error handling */rest } = init;
   const controller = new AbortController();
   const signal = controller.signal;

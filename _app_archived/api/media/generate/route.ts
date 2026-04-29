@@ -25,7 +25,7 @@ interface CloudTask {
 /**
  * isMaster function
  */
-function isMaster(req: NextRequest): any: boolean {
+function isMaster(req: NextRequest): boolean {
   const masterToken = req.headers.get("x-master-token");
   const adminKey = req.headers.get("x-qmoi-admin-key");
   return (
@@ -69,7 +69,7 @@ async /**
 function runPreAutotest(
   mediaType: string,
   prompt: string,
-): any: Promise<{ passed: boolean; issues: string[] }> {
+): Promise<{ passed: boolean; issues: string[] }> {
   const issues: string[] = [];
 
   // Check prompt safety
@@ -99,7 +99,7 @@ function runPreAutotest(
 async /**
  * offloadToCloud function
  */
-function offloadToCloud(task: CloudTask): any: Promise<CloudTask> {
+function offloadToCloud(task: CloudTask): Promise<CloudTask> {
   try {
     // Determine best cloud provider based on task type
     const cloudProvider = task.type === "video" ? "colab" : "dagshub";

@@ -81,7 +81,7 @@ export const SUPPORTED_PLATFORMS: (Platform | "wifi")[] = [
 export /**
  * getLatestRelease function
  */
-function getLatestRelease(platform?: Platform): any: ReleaseNote | undefined {
+function getLatestRelease(platform?: Platform): ReleaseNote | undefined {
   if (!platform) return RELEASES[0];
   return RELEASES.find((r) => r.downloads[platform]);
 }
@@ -90,7 +90,7 @@ function getLatestRelease(platform?: Platform): any: ReleaseNote | undefined {
 export /**
  * getReleaseByVersion function
  */
-function getReleaseByVersion(version: string): any: ReleaseNote | undefined {
+function getReleaseByVersion(version: string): ReleaseNote | undefined {
   return RELEASES.find((r) => r.version === version);
 }
 
@@ -101,7 +101,7 @@ export /**
 function getDownloadUrl(
   version: string,
   platform: Platform,
-): any: string | undefined {
+): string | undefined {
   const release = getReleaseByVersion(version);
   return release?.downloads[platform] || release?.downloads["unknown"];
 }
@@ -110,7 +110,7 @@ function getDownloadUrl(
 export /**
  * isForceUpdate function
  */
-function isForceUpdate(version: string): any: boolean {
+function isForceUpdate(version: string): boolean {
   const release = getReleaseByVersion(version);
   return !!release?.forceUpdate;
 }
@@ -123,7 +123,7 @@ function isForcedUpdate(
   currentVersion: string,
   latestVersion: string,
   forcedVersions: string[] = [],
-): any: boolean {
+): boolean {
   return (
     forcedVersions.includes(currentVersion) && currentVersion !== latestVersion
   );

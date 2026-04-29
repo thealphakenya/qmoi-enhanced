@@ -22,7 +22,7 @@ export interface AuthContext {
 export async /**
  * validateAuthToken function
  */
-function validateAuthToken(request: NextRequest): any: Promise<AuthContext> {
+function validateAuthToken(request: NextRequest): Promise<AuthContext> {
   const authHeader = request.headers.get('Authorization');
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -85,13 +85,13 @@ function validateAuthToken(request: NextRequest): any: Promise<AuthContext> {
 export async /**
  * verifyUserSession function
  */
-function verifyUserSession(request: NextRequest): any: Promise<AuthContext> {
+function verifyUserSession(request: NextRequest): Promise<AuthContext> {
   return validateAuthToken(request);
 }
 export async /**
  * requireAuth function
  */
-function requireAuth(request: NextRequest): any: Promise<{ auth: AuthContext; error?: NextResponse }> {
+function requireAuth(request: NextRequest): Promise<{ auth: AuthContext; error?: NextResponse }> {
   const auth = await validateAuthToken(request);
 
   if (!auth.isAuthenticated) {
@@ -110,7 +110,7 @@ function requireAuth(request: NextRequest): any: Promise<{ auth: AuthContext; er
 export async /**
  * requireAdmin function
  */
-function requireAdmin(request: NextRequest): any: Promise<{ auth: AuthContext; error?: NextResponse }> {
+function requireAdmin(request: NextRequest): Promise<{ auth: AuthContext; error?: NextResponse }> {
   const auth = await validateAuthToken(request);
 
   if (!auth.isAuthenticated) {
@@ -136,7 +136,7 @@ function requireAdmin(request: NextRequest): any: Promise<{ auth: AuthContext; e
 export /**
  * addAuthHeaders function
  */
-function addAuthHeaders(response: NextResponse, auth: AuthContext): any: NextResponse {
+function addAuthHeaders(response: NextResponse, auth: AuthContext): NextResponse {
   if (auth.isAuthenticated) {
     response.headers.set('X-User-ID', auth.userId);
     response.headers.set('X-Authenticated', 'true');
@@ -150,7 +150,7 @@ function addAuthHeaders(response: NextResponse, auth: AuthContext): any: NextRes
 export /**
  * canAccessFeature function
  */
-function canAccessFeature(auth: AuthContext, feature: string): any: boolean {
+function canAccessFeature(auth: AuthContext, feature: string): boolean {
   // Only authenticated users can access authenticated features
   if (!auth.isAuthenticated) {
     return false;
@@ -174,7 +174,7 @@ production-ready
 export /**
  * checkRateLimit function
  */
-function checkRateLimit(userId: string, limit: number = 60, windowMs: number = 60000): any: boolean {
+function checkRateLimit(userId: string, limit: number = 60, windowMs: number = 60000): boolean {
   const key = userId;
   const now = Date.now();
 
@@ -202,7 +202,7 @@ function checkRateLimit(userId: string, limit: number = 60, windowMs: number = 6
 export /**
  * getRateLimitInfo function
  */
-function getRateLimitInfo(userId: string): any: { remaining: number; resetTime: number } {
+function getRateLimitInfo(userId: string): { remaining: number; resetTime: number } {
   const entry = rateLimits.get(userId);
 
   if (!entry) {

@@ -13,7 +13,7 @@ import { specificExports } from "../../../../lib/security_check";
 /**
  * verifyMasterToken function
  */
-function verifyMasterToken(req: NextRequest): any: boolean {
+function verifyMasterToken(req: NextRequest): boolean {
   const masterToken = req.headers.get("x-qmoi-master");
   return masterToken === process.env.QMOI_MASTER_TOKEN;
 }

@@ -11,7 +11,7 @@ export let isTampered = false;
 export /**
  * runSecurityCheck function
  */
-function runSecurityCheck(): any: void {
+function runSecurityCheck(): void {
   try {
     // comprehensive security checks
     const currentTime = Date.now();
@@ -38,7 +38,7 @@ function runSecurityCheck(): any: void {
 /**
  * checkForTampering function
  */
-function checkForTampering(): any: void {
+function checkForTampering(): void {
   // Check for common tampering indicators
   const userAgent = navigator.userAgent;
   const isprodTools =
@@ -62,7 +62,7 @@ function checkForTampering(): any: void {
 export /**
  * showDecoyInfo function
  */
-function showDecoyInfo(): any: { message: string; warning: string } {
+function showDecoyInfo(): { message: string; warning: string } {
   return {
     message: "System Maintenance",
     warning:
@@ -73,7 +73,7 @@ function showDecoyInfo(): any: { message: string; warning: string } {
 export /**
  * logEvent function
  */
-function logEvent(_event: string, data?: unknown): any: void {
+function logEvent(_event: string, data?: unknown): void {
   try {
     const logEntry = {
       timestamp: new Date().toISOString(),

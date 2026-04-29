@@ -76,6 +76,6 @@ export const transcribeService = new TranscribeService();
 export async /**
  * transcribeAudioFile function
  */
-function transcribeAudioFile(audioUrl: string, language?: string): any: Promise<TranscriptionResult> {
+function transcribeAudioFile(audioUrl: string, language?: string): Promise<TranscriptionResult> {
   return transcribeService.transcribe({ audioUrl, language });
 }

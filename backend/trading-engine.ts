@@ -35,7 +35,7 @@ const TRADING_LOG = path.join(__dirname, "../trading-log.json");
 /**
  * loadDataset function
  */
-function loadDataset(): any: unknown[] {
+function loadDataset(): unknown[] {
   const csv = fs.readFileSync(DATASET_PATH, "utf-8");
   return csvParse(csv, { columns: true });
 }
@@ -54,7 +54,7 @@ function logTrade(trade: Trade): any {
 /**
  * simpleMovingAverage function
  */
-function simpleMovingAverage(prices: number[], window: number): any: number[] {
+function simpleMovingAverage(prices: number[], window: number): number[] {
   const sma: number[] = [];
   for (let i = 0; i < prices.length; i++) {
     if (i < window - 1) {

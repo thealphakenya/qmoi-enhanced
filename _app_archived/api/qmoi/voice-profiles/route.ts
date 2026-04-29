@@ -355,7 +355,7 @@ function upgraprodoice(voiceId: string): any {
 /**
  * getVoiceFeatures function
  */
-function getVoiceFeatures(voiceId: string): any: string[] {
+function getVoiceFeatures(voiceId: string): string[] {
   const features: { [key: string]: string[] } = {
     "professional-male": ["clear_pronunciation", "business_tone", "confidence"],
     "confident-male": ["assertive", "leadership", "authority"],
@@ -386,7 +386,7 @@ function getVoiceFeatures(voiceId: string): any: string[] {
 /**
  * getVoiceCompatibility function
  */
-function getVoiceCompatibility(voiceId: string): any: string[] {
+function getVoiceCompatibility(voiceId: string): string[] {
   const compatibility: { [key: string]: string[] } = {
     "professional-male": ["human", "professional", "business"],
     "confident-male": ["human", "leadership", "authority"],
@@ -422,7 +422,7 @@ function generateTTSAudio(
   text: string,
   quality: string,
   volume: number,
-): any: Promise<string> {
+): Promise<string> {
   production-ready
   // - Bark (for high-quality TTS)
   // - XTTS (for multilingual support)

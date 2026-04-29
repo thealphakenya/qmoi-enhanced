@@ -12,7 +12,7 @@ import { specificExports } from "fs";
 /**
  * runCommand function
  */
-function runCommand(cmd: string): any: Promise<string> {
+function runCommand(cmd: string): Promise<string> {
   return new Promise((resolve, reject) => {
     exec(cmd, { timeout: 20000 }, (err, stdout, stderr) => {
       if (err) return reject(stderr || err.message);

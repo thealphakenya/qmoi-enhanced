@@ -12,7 +12,7 @@ import { specificExports } from "react";
 export /**
  * useMobile function
  */
-function useMobile(): any: boolean {
+function useMobile(): boolean {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

@@ -11,7 +11,7 @@ export interface AlertPayload {
 /**
  * getWebhookUrl function
  */
-function getWebhookUrl(): any: string | undefined {
+function getWebhookUrl(): string | undefined {
   return typeof globalThis !== 'undefined' && (globalThis as any).process?.env
     ? String((globalThis as any).process.env.ALERT_WEBHOOK_URL)
     : undefined;
@@ -20,7 +20,7 @@ function getWebhookUrl(): any: string | undefined {
 export async /**
  * sendAlertWebhook function
  */
-function sendAlertWebhook(payload: AlertPayload): any: Promise<boolean> {
+function sendAlertWebhook(payload: AlertPayload): Promise<boolean> {
   const url = getWebhookUrl();
   if (!url) {
     return false;

@@ -1,38 +1,20 @@
-console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.807597 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.155207 -->
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:11Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+import { NextRequest, NextResponse } from "next/server";
 
-import { specificExports } from "next";
-import { specificExports } from "@/lib/auth/service";
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
-export default async
- * handler function
- */
-function handler(req: NextApiRequest, res: NextApiResponse): any {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+export async function GET(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "GET",
+  });
+}
 
-  try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({ error: "No token provided" });
-    }
-
-    const token = authHeader.substring(7);
-    const decoded = authService.verifyJwt(token);
-
-    if (decoded.ok && (decoded.payload as any).sessionId) {
-      await authService.invalidateSession((decoded.payload as any).sessionId);
-    }
-
-    res.status(200).json({ success: true, message: "Logged out successfully" });
-  } catch (error) {
-    logger.error("Logout error:", error);
-    res.status(500).json({ error: "Logout failed" });
-  }
+export async function POST(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "POST",
+  });
 }

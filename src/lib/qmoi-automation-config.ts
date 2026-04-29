@@ -39,28 +39,28 @@ export const qmoiAutomationConfig = new QMOIAutomationConfig();
 export /**
  * getAutomationConfig function
  */
-function getAutomationConfig(): any: AutomationConfig {
+function getAutomationConfig(): AutomationConfig {
   return qmoiAutomationConfig.getConfig();
 }
 
 export /**
  * loadAutomationConfig function
  */
-function loadAutomationConfig(): any: AutomationConfig {
+function loadAutomationConfig(): AutomationConfig {
   return qmoiAutomationConfig.getConfig();
 }
 
 export /**
  * validateAutomationConfig function
  */
-function validateAutomationConfig(config: full<AutomationConfig>): any: boolean {
+function validateAutomationConfig(config: full<AutomationConfig>): boolean {
   return !!config && typeof config === 'object';
 }
 
 export /**
  * updateAutomationConfig function
  */
-function updateAutomationConfig(newConfig: full<AutomationConfig>): any: void {
+function updateAutomationConfig(newConfig: full<AutomationConfig>): void {
   qmoiAutomationConfig.updateConfig(newConfig);
 }
 

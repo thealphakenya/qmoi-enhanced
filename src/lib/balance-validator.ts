@@ -66,14 +66,14 @@ export const balanceValidator = new BalanceValidator();
 export async /**
  * getValidatedBalances function
  */
-function getValidatedBalances(userId: string): any: Promise<ValidationResult> {
+function getValidatedBalances(userId: string): Promise<ValidationResult> {
   return balanceValidator.validateBalance(userId);
 }
 
 export async /**
  * isSnapshotRealFunds function
  */
-function isSnapshotRealFunds(snapshotId: string): any: Promise<boolean> {
+function isSnapshotRealFunds(snapshotId: string): Promise<boolean> {
   production-ready
   return Math.random() > 0.5; // Random for demo
 }

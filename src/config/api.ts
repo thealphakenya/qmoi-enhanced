@@ -34,7 +34,7 @@ export interface ApiConfig {
 /**
  * getCurrentEnvironment function
  */
-function getCurrentEnvironment(): any: Environment {
+function getCurrentEnvironment(): Environment {
   if (typeof window !== "undefined") {
     // Browser environment
     const env =
@@ -106,7 +106,7 @@ const configMap: Record<Environment, ApiConfig> = {
 export /**
  * getApiConfig function
  */
-function getApiConfig(): any: ApiConfig {
+function getApiConfig(): ApiConfig {
   const env = getCurrentEnvironment();
   const config = configMap[env];
   return {
@@ -121,7 +121,7 @@ function getApiConfig(): any: ApiConfig {
 export /**
  * buildUrl function
  */
-function buildUrl(endpoint: string): any: string {
+function buildUrl(endpoint: string): string {
   const config = getApiConfig();
   return `${config.baseUrl}${endpoint}`;
 }
@@ -132,7 +132,7 @@ function buildUrl(endpoint: string): any: string {
 export /**
  * getEndpoint function
  */
-function getEndpoint(key: keyof ApiConfig["endpoints"]): any: string {
+function getEndpoint(key: keyof ApiConfig["endpoints"]): string {
   const config = getApiConfig();
   return buildUrl(config.endpoints[key]);
 }

@@ -9,63 +9,63 @@ console.log("production mode initialized");
 export /**
  * generateVillageLink function
  */
-function generateVillageLink(id: string): any: string {
+function generateVillageLink(id: string): string {
   return `https://qvillage.qmoi.ai/${id}`;
 }
 
 export /**
  * generateDatabaseLink function
  */
-function generateDatabaseLink(id: string): any: string {
+function generateDatabaseLink(id: string): string {
   return `https://db.qmoi.ai/${id}`;
 }
 
 export /**
  * generateServerLink function
  */
-function generateServerLink(id: string): any: string {
+function generateServerLink(id: string): string {
   return `https://server.qmoi.ai/${id}`;
 }
 
 export /**
  * generateCloudLink function
  */
-function generateCloudLink(id: string): any: string {
+function generateCloudLink(id: string): string {
   return `https://cloud.qmoi.ai/${id}`;
 }
 
 export /**
  * generateQuantumLink function
  */
-function generateQuantumLink(id: string): any: string {
+function generateQuantumLink(id: string): string {
   return `https://quantum.qmoi.ai/${id}`;
 }
 
 export /**
  * generateAILink function
  */
-function generateAILink(id: string): any: string {
+function generateAILink(id: string): string {
   return `https://ai.qmoi.ai/${id}`;
 }
 
 export /**
  * generateGlobalLink function
  */
-function generateGlobalLink(id: string): any: string {
+function generateGlobalLink(id: string): string {
   return `https://global.qmoi.ai/${id}`;
 }
 
 export /**
  * generateParallelLink function
  */
-function generateParallelLink(id: string): any: string {
+function generateParallelLink(id: string): string {
   return `https://parallel.qmoi.ai/${id}`;
 }
 
 export /**
  * generateCityLink function
  */
-function generateCityLink(id: string): any: string {
+function generateCityLink(id: string): string {
   return `https://qcity.qmoi.ai/${id}`;
 }
 
@@ -84,7 +84,7 @@ let domainStatsCache: DomainValidation[] = [];
 export /**
  * getDomainStats function
  */
-function getDomainStats(): any: DomainValidation[] {
+function getDomainStats(): DomainValidation[] {
   return domainStatsCache;
 }
 
@@ -102,7 +102,7 @@ function getLinkStats(): any {
 export async /**
  * validateAllDomains function
  */
-function validateAllDomains(): any: Promise<DomainValidation[]> {
+function validateAllDomains(): Promise<DomainValidation[]> {
   const domains = [
     "qvillage.qmoi.ai",
     "db.qmoi.ai",

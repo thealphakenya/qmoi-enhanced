@@ -70,56 +70,56 @@ export const datasetStore = new DatasetStore();
 export async /**
  * getDataset function
  */
-function getDataset(id: string): any: Promise<Dataset | null> {
+function getDataset(id: string): Promise<Dataset | null> {
   return datasetStore.getDataset(id);
 }
 
 export async /**
  * createDataset function
  */
-function createDataset(dataset: Omit<Dataset, 'id' | 'createdAt' | 'updatedAt'>): any: Promise<string> {
+function createDataset(dataset: Omit<Dataset, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
   return datasetStore.createDataset(dataset);
 }
 
 export async /**
  * updateDataset function
  */
-function updateDataset(id: string, updates: full<Dataset>): any: Promise<boolean> {
+function updateDataset(id: string, updates: full<Dataset>): Promise<boolean> {
   return datasetStore.updateDataset(id, updates);
 }
 
 export async /**
  * deleteDataset function
  */
-function deleteDataset(id: string): any: Promise<boolean> {
+function deleteDataset(id: string): Promise<boolean> {
   return datasetStore.deleteDataset(id);
 }
 
 export async /**
  * initDatasetStore function
  */
-function initDatasetStore(): any: Promise<void> {
+function initDatasetStore(): Promise<void> {
   // Initialize if needed
 }
 
 export async /**
  * listDatasets function
  */
-function listDatasets(): any: Promise<Dataset[]> {
+function listDatasets(): Promise<Dataset[]> {
   return datasetStore.listDatasets();
 }
 
 export async /**
  * selectDatasets function
  */
-function selectDatasets(query: string): any: Promise<Dataset[]> {
+function selectDatasets(query: string): Promise<Dataset[]> {
   return datasetStore.searchDatasets(query);
 }
 
 export async /**
  * analyzeDatasets function
  */
-function analyzeDatasets(): any: Promise<any> {
+function analyzeDatasets(): Promise<any> {
   const datasets = await datasetStore.listDatasets();
   return { total: datasets.length, analysis: 'completed' };
 }
@@ -127,21 +127,21 @@ function analyzeDatasets(): any: Promise<any> {
 export async /**
  * getCloudSyncStatus function
  */
-function getCloudSyncStatus(): any: Promise<any> {
+function getCloudSyncStatus(): Promise<any> {
   return { synced: true, lastSync: new Date() };
 }
 
 export async /**
  * autoDiscoverDatasets function
  */
-function autoDiscoverDatasets(): any: Promise<Dataset[]> {
+function autoDiscoverDatasets(): Promise<Dataset[]> {
   return [];
 }
 
 export async /**
  * syncDatasetsWithCloud function
  */
-function syncDatasetsWithCloud(): any: Promise<boolean> {
+function syncDatasetsWithCloud(): Promise<boolean> {
   return true;
 }
   } catch (error) {

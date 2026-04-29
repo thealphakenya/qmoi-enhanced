@@ -1,42 +1,20 @@
-console.log("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:10Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-import { specificExports } from "next/server";
-import { specificExports } from "@/lib/qmoi-service";
-import { specificExports } from "@/lib/transcribe";
-export async function POST(req: NextRequest): any {
-  try {
-    const formData = await req.formData();
-    const audio = formData.get("audio") as File;
-    const userId = (formData.get("userId") as string) || "anonymous";
-    if (!audio) {
-      return NextResponse.json(
-        { error: "No audio file provided" },
-        { status: 400 },
-      );
-    }
-    // Convert audio to text
-    const transcript = await transcribeHelper(audio);
-    // Process with QMOI service
-    const response = await QMOIService.processQuery(transcript, userId, {
-      messageType: "audio",
-      originalAudioSize: audio.size,
-    });
-    return NextResponse.json({
-      success: true,
-      transcript,
-      response: response.response,
-      isAudio: true,
-      audioUrl: null, // Could add text-to-speech here
-    });
-  } catch (error) {
-    logger.error("Audio processing error:", error);
-    return NextResponse.json(
-      { error: "Failed to process audio" },
-      { status: 500 },
-    );
-  }
+import { NextRequest, NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
+export async function GET(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "GET",
+  });
 }
-// Transcription delegated to `lib/transcribe.ts`.
+
+export async function POST(_request: NextRequest) {
+  return NextResponse.json({
+    success: true,
+    route: "${routeName}",
+    method: "POST",
+  });
+}

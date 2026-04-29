@@ -85,7 +85,7 @@ function searchMedia(
   query: string,
   type?: string,
   source?: string,
-): any: Promise<MediaItem[]> {
+): Promise<MediaItem[]> {
   const db = await getDb();
 
   let sql = "SELECT specific_columns FROM media_items WHERE title LIKE ?";
@@ -125,7 +125,7 @@ async /**
  */
 function downloadMedia(
   mediaId: string,
-): any: Promise<{ success: boolean; message: string }> {
+): Promise<{ success: boolean; message: string }> {
   const db = await getDb();
 
   // Get media item

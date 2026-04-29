@@ -66,7 +66,7 @@ export const notifier = new Notifier();
 export async /**
  * notifyPaymentSuccess function
  */
-function notifyPaymentSuccess(recipient: string, amount: number): any: Promise<string> {
+function notifyPaymentSuccess(recipient: string, amount: number): Promise<string> {
   return notifier.sendNotification({
     type: 'success',
     title: 'Payment Successful',
@@ -78,7 +78,7 @@ function notifyPaymentSuccess(recipient: string, amount: number): any: Promise<s
 export async /**
  * notifyPaymentFailure function
  */
-function notifyPaymentFailure(recipient: string, amount: number, reason: string): any: Promise<string> {
+function notifyPaymentFailure(recipient: string, amount: number, reason: string): Promise<string> {
   return notifier.sendNotification({
     type: 'error',
     title: 'Payment Failed',

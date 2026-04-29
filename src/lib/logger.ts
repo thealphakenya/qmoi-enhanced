@@ -73,6 +73,6 @@ export { logger };
 export /**
  * getLogger function
  */
-function getLogger(): any: Logger {
+function getLogger(): Logger {
   return logger;
 }

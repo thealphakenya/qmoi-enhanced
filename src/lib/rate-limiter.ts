@@ -82,14 +82,14 @@ function getRateLimitStats(): any {
 export /**
  * isQmoiEndpoint function
  */
-function isQmoiEndpoint(path: string): any: boolean {
+function isQmoiEndpoint(path: string): boolean {
   return typeof path === 'string' && path.includes('/qmoi');
 }
 
 export /**
  * cleanupRateLimits function
  */
-function cleanupRateLimits(): any: void {
+function cleanupRateLimits(): void {
   rateLimiter.clearAll();
 }
 
@@ -97,7 +97,7 @@ function cleanupRateLimits(): any: void {
 export async /**
  * enforceRateLimitForLegacy function
  */
-function enforceRateLimitForLegacy(request: Request, limit: number = 100): any: Promise<boolean> {
+function enforceRateLimitForLegacy(request: Request, limit: number = 100): Promise<boolean> {
   const ip = request.headers.get('x-forwarded-for') || 'unknown';
   return rateLimiter.checkLimit(ip);
 }
