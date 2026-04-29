@@ -17,9 +17,8 @@ interface EmotionState {
   mood: 'happy' | 'neutral' | 'concerned' | 'excited' | 'calm';
 }
 
-export default // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
-function FriendshipInterface() {
+export default function FriendshipInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -244,7 +243,7 @@ function FriendshipInterface() {
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
-              production implementation="Type your message here..."
+              placeholder="Type your message here..."
               className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={isTyping}
             />

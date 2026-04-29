@@ -1,34 +1,28 @@
+import React, { ComponentType, lazy, Suspense } from "react";
+import { useTheme } from "next-themes";
+import { logger } from "@/lib/logger";
 
 class ErrorBoundary extends React.Component {
-  constructor(props) {
+  constructor(props: React.PropsWithChildren<unknown>) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
-    logger.error('React Error Boundary caught an error:', error, errorInfo);
+  componentDidCatch(error: unknown, errorInfo: unknown) {
+    logger.error("React Error Boundary caught an error:", error, errorInfo);
   }
 
   render() {
-    if (this.state.hasError) {
+    if ((this.state as { hasError: boolean }).hasError) {
       return <div className="error-boundary">Something went wrong. Please try again.</div>;
     }
     return this.props.children;
   }
 }
-
-
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:07Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "react";
-import { specificExports } from "next-themes";
 
 interface WrapperProps {
   component: ComponentType<any>;
@@ -37,35 +31,27 @@ interface WrapperProps {
 }
 
 // Generic wrapper that adds theme awareness and optional lazy loading
-export /**
- * WrappedComponent function
- */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function WrappedComponent({
+export default function WrappedComponent({
   component,
   componentProps = {},
   lazy: enableLazy = false,
-}: WrapperProps): any {
+}: WrapperProps): JSX.Element {
   const { theme } = useTheme();
   const ThemedComponent = component;
 
   if (enableLazy) {
     const LazyComp = lazy(() => Promise.resolve({ default: component }));
     return (
-      <Suspense fallback={<div>Loading/* Production implementation with proper error handling */</div>}>
-        <LazyComp {/* Production implementation with proper error handling */componentProps} theme={theme} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazyComp {...componentProps} theme={theme} />
       </Suspense>
     );
   }
 
-  return <ThemedComponent {/* Production implementation with proper error handling */componentProps} theme={theme} />;
+  return <ThemedComponent {...componentProps} theme={theme} />;
 }
 
-// Helper to ease creation of lazy variants
-export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function lazyWrap<T extends ComponentType<any>>(comp: T) {
+export function lazyWrap<T extends ComponentType<any>>(comp: T) {
   return (props: React.ComponentProps<T>) => (
     <WrappedComponent component={comp} componentProps={props} lazy />
   );
