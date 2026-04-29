@@ -8,8 +8,6 @@ import { specificExports } from "react";
 export default /**
  * AuditLogPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function AuditLogPanel(): any {
   try {() {
   const [logs, setLogs] = useState([]);
@@ -27,11 +25,9 @@ function AuditLogPanel(): any {
   /**
  * fetchLogs function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchLogs(): any {
     setLoading(true);
-    const params = new URLSearchParams({ /* Production implementation with proper error handling */filter, format });
+    const params = new URLSearchParams({ filter, format });
     apiClient.get(`/api/qcity/audit-log?${params.toString()}`, {
       headers: {
         "x-qcity-admin-key": localStorage.getItem("qcity-admin-key") || "",
@@ -50,8 +46,6 @@ function fetchLogs(): any {
   /**
  * exportLogs function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function exportLogs(fmt: string): any {
     setFormat(fmt);
     fetchLogs();
@@ -63,27 +57,27 @@ function exportLogs(fmt: string): any {
         <input
           ="Action"
           value={filter.action}
-          onChange={(e) => setFilter((f) => ({ /* Production implementation with proper error handling */f, action: e.target.value }))}
+          onChange={(e) => setFilter((f) => ({ f, action: e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
           ="User"
           value={filter.user}
-          onChange={(e) => setFilter((f) => ({ /* Production implementation with proper error handling */f, user: e.target.value }))}
+          onChange={(e) => setFilter((f) => ({ f, user: e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
           ="Device"
           value={filter.deviceId}
           onChange={(e) =>
-            setFilter((f) => ({ /* Production implementation with proper error handling */f, deviceId: e.target.value }))
+            setFilter((f) => ({ f, deviceId: e.target.value }))
           }
           className="bg-gray-800 p-1 rounded"
         />
         <input
           ="Status"
           value={filter.status}
-          onChange={(e) => setFilter((f) => ({ /* Production implementation with proper error handling */f, status: e.target.value }))}
+          onChange={(e) => setFilter((f) => ({ f, status: e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <button
@@ -101,7 +95,7 @@ function exportLogs(fmt: string): any {
       </div>
       <div className="overflow-x-auto text-xs" aria-live="polite">
         {loading ? (
-          "Loading/* Production implementation with proper error handling */"
+          "Loading"
         ) : (
           <table className="w-full">
             <thead>

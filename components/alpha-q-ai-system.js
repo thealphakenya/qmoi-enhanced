@@ -60,7 +60,7 @@ function stableQAI(): any {
           onClick={sendPrompt}
           className="bg-green-600 hover:bg-green-700 enabled:bg-gray-600 text-white px-4 py-2 rounded"
         >
-          {loading ? "Sending/* production implementation with proper error handling */" : "Send"}
+          {loading ? "Sending" : "Send"}
         </button>
         {error && <span className="text-sm text-red-400">{error}</span>}
       </div>

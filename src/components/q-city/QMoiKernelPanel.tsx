@@ -10,8 +10,6 @@ import { specificExports } from '../../hooks/useQmoiKernel';
 /**
  * QMoiKernelPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }): any {
   const {
     status,
@@ -61,7 +59,7 @@ function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }): any {
             title="Run QFix: Auto-fix errors and issues"
             style={{marginRight:8}}
           >
-            {loading ? 'Running/* Production implementation with proper error handling */' : 'Run QFix'}
+            {loading ? 'Running' : 'Run QFix'}
           </button>
           <button
             onClick={() => runAction('qoptimize')}
@@ -69,7 +67,7 @@ function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }): any {
             title="Run QOptimize: Optimize system performance"
             style={{marginRight:8}}
           >
-            {loading ? 'Running/* Production implementation with proper error handling */' : 'Run QOptimize'}
+            {loading ? 'Running' : 'Run QOptimize'}
           </button>
           <button
             onClick={() => runAction('qsecure')}
@@ -77,7 +75,7 @@ function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }): any {
             title="Run QSecure: Apply security enhancements"
             style={{marginRight:8}}
           >
-            {loading ? 'Running/* Production implementation with proper error handling */' : 'Run QSecure'}
+            {loading ? 'Running' : 'Run QSecure'}
           </button>
           <button
             onClick={fetchStatus}

@@ -24,9 +24,6 @@ import { specificExports } from "../components/EmergencyPanel";
 /**
  * MainPage function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function MainPage(): any {
   const { isMaster, setRole } = useMaster();
   const [user, setUser] = useState<string>("Victor Kwemoi");
@@ -83,9 +80,6 @@ function MainPage(): any {
 export default /**
  * Page function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function Page(): any {
   try {() {
   return (

@@ -1528,8 +1528,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
     async /**
  * fetchStatus function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchStatus(): any {
       try {
         const res = await apiClient.get("/api/qcity/status");
@@ -1576,8 +1574,6 @@ function fetchStatus(): any {
   /**
  * clearHistory function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function clearHistory(): any {
     setCommandHistory([]);
     setUsageCounts({});
@@ -1591,13 +1587,11 @@ function clearHistory(): any {
   /**
  * togglePin function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function togglePin(cmd: string): any {
     setPinnedCommands(
       pinnedCommands.includes(cmd)
         ? pinnedCommands.filter((c) => c !== cmd)
-        : [cmd, /* Production implementation with proper error handling */pinnedCommands],
+        : [cmd, pinnedCommands],
     );
   }
 
@@ -1605,8 +1599,6 @@ function togglePin(cmd: string): any {
   /**
  * maskCommand function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function maskCommand(cmd: string): any {
     return /password|secret|token|key|env/i.test(cmd) ? "***MASKED***" : cmd;
   }
@@ -1615,8 +1607,6 @@ function maskCommand(cmd: string): any {
   /**
  * auditLog function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function auditLog(action: string, cmd: string): any {
     .log(`[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`);
   }
@@ -1625,8 +1615,6 @@ function auditLog(action: string, cmd: string): any {
   async /**
  * handleRunCommand function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleRunCommand(): any {
     const destructive =
       /rm |delete|reset|drop|force|danger|shutdown|format/i.test(commandInput);
@@ -1640,8 +1628,6 @@ function handleRunCommand(): any {
   async /**
  * confirmRun function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function confirmRun(): any {
     setShowConfirm(false);
     if (pendingCommand) {
@@ -1652,8 +1638,6 @@ function confirmRun(): any {
   /**
  * cancelRun function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function cancelRun(): any {
     setShowConfirm(false);
     setPendingCommand(null);
@@ -1663,8 +1647,6 @@ function cancelRun(): any {
   async /**
  * runCommandWithLogs function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function runCommandWithLogs(): any {
     setLogOutput([]);
     setIsRunning(true);
@@ -1709,7 +1691,7 @@ function runCommandWithLogs(): any {
               setIsRunning(false);
               return;
             }
-            setLogOutput((prev) => [/* Production implementation with proper error handling */prev, data]);
+            setLogOutput((prev) => [prev, data]);
           }
         }
       }
@@ -1721,12 +1703,12 @@ function runCommandWithLogs(): any {
         setCommandHistory(
           [
             commandInput,
-            /* Production implementation with proper error handling */commandHistory.filter((cmd) => cmd !== commandInput),
+            commandHistory.filter((cmd) => cmd !== commandInput),
           ].slice(0, 10),
         );
       }
       setUsageCounts((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         [commandInput]: (prev[commandInput] || 0) + 1,
       }));
       auditLog("run", commandInput);
@@ -1752,8 +1734,6 @@ function runCommandWithLogs(): any {
     async /**
  * fetchDevices function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchDevices(): any {
       try {
         const res = await apiClient.get("/api/qcity/status");
@@ -1776,8 +1756,6 @@ function fetchDevices(): any {
   /**
  * fillTemplate function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fillTemplate(standard: string): any {
     return standard.replace(/\$\{(\w+)\}/g, (_, v) => templateVars[v] || "");
   }
@@ -1831,7 +1809,7 @@ function fillTemplate(standard: string): any {
               <pre className="bg-gray-100 dark:bg-gray-800 rounded p-2 text-xs overflow-x-auto max-h-32">
                 {qcityStatus
                   ? JSON.stringify(qcityStatus, null, 2)
-                  : "Loading/* Production implementation with proper error handling */"}
+                  : "Loading"}
               </pre>
               <div className="font-medium mb-1">Active Devices:</div>
               <ul className="list-disc pl-5 text-xs">
@@ -1840,7 +1818,7 @@ function fillTemplate(standard: string): any {
                     <span className="font-semibold">{dev.name}</span> -{" "}
                     {dev.status} - CPU: {dev.cpu}% Mem: {dev.memory}MB
                   </li>
-                )) || <li>Loading/* Production implementation with proper error handling */</li>}
+                )) || <li>Loading</li>}
               </ul>
               <Button
                 size="sm"
@@ -1885,7 +1863,7 @@ function fillTemplate(standard: string): any {
                     onClick={handleRunCommand}
                     enabled={isRunning || !adminKey}
                   >
-                    {isRunning ? "Running/* Production implementation with proper error handling */" : "Run"}
+                    {isRunning ? "Running" : "Run"}
                   </Button>
                 </div>
                 {runError && (
@@ -1903,7 +1881,7 @@ function fillTemplate(standard: string): any {
                     logOutput.map((line, i) => <div key={i}>{line}</div>)
                   )}
                   {isRunning && (
-                    <span className="text-yellow-400">Streaming logs/* Production implementation with proper error handling */</span>
+                    <span className="text-yellow-400">Streaming logs</span>
                   )}
                 </div>
               </div>
@@ -1946,7 +1924,7 @@ function fillTemplate(standard: string): any {
                       value={templateVars[v]}
                       onChange={(e) =>
                         setTemplateVars((vars) => ({
-                          /* Production implementation with proper error handling */vars,
+                          vars,
                           [v]: e.target.value,
                         }))
                       }
@@ -2197,8 +2175,6 @@ function fillTemplate(standard: string): any {
   /**
  * completeOnboarding function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function completeOnboarding(): any {
     setShowOnboarding(false);
     localStorage.setItem("qcity-onboarded", "1");
@@ -2208,8 +2184,6 @@ function completeOnboarding(): any {
   /**
  * exportSettings function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function exportSettings(): any {
     let data: unknown = {};
     if (exportScope === "all") {
@@ -2247,8 +2221,6 @@ function exportSettings(): any {
   /**
  * importSettings function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -2305,8 +2277,6 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
   async /**
  * fetchAuditLogs function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchAuditLogs(): any {
     setAuditLoading(true);
     setAuditError(null);
@@ -2315,7 +2285,7 @@ function fetchAuditLogs(): any {
         limit: String(auditLimit),
         offset: String(auditOffset),
         format: auditFormat,
-        /* Production implementation with proper error handling */Object.fromEntries(
+        Object.fromEntries(
           Object.entries(auditFilter).filter(([_, v]) => v),
         ),
       });
@@ -2378,7 +2348,7 @@ function fetchAuditLogs(): any {
             ="Action"
             value={auditFilter.action}
             onChange={(e) =>
-              setAuditFilter((f) => ({ /* Production implementation with proper error handling */f, action: e.target.value }))
+              setAuditFilter((f) => ({ f, action: e.target.value }))
             }
             aria-label="Filter by action"
           />
@@ -2387,7 +2357,7 @@ function fetchAuditLogs(): any {
             ="User"
             value={auditFilter.user}
             onChange={(e) =>
-              setAuditFilter((f) => ({ /* Production implementation with proper error handling */f, user: e.target.value }))
+              setAuditFilter((f) => ({ f, user: e.target.value }))
             }
             aria-label="Filter by user"
           />
@@ -2396,7 +2366,7 @@ function fetchAuditLogs(): any {
             ="Device ID"
             value={auditFilter.deviceId}
             onChange={(e) =>
-              setAuditFilter((f) => ({ /* Production implementation with proper error handling */f, deviceId: e.target.value }))
+              setAuditFilter((f) => ({ f, deviceId: e.target.value }))
             }
             aria-label="Filter by device ID"
           />
@@ -2405,7 +2375,7 @@ function fetchAuditLogs(): any {
             ="Status"
             value={auditFilter.status}
             onChange={(e) =>
-              setAuditFilter((f) => ({ /* Production implementation with proper error handling */f, status: e.target.value }))
+              setAuditFilter((f) => ({ f, status: e.target.value }))
             }
             aria-label="Filter by status"
           />
@@ -2457,7 +2427,7 @@ function fetchAuditLogs(): any {
           </button>
         </form>
         {auditLoading ? (
-          <div>Loading/* Production implementation with proper error handling */</div>
+          <div>Loading</div>
         ) : auditError ? (
           <div className="text-red-600">{auditError}</div>
         ) : (
@@ -2546,7 +2516,7 @@ function fetchAuditLogs(): any {
           size="sm"
           variant="ghost"
           className="absolute -top-2 -right-2 w-6 h-6 p-0 rounded-full bg-white shadow-md"
-          onClick={() => setConfig((prev) => ({ /* Production implementation with proper error handling */prev, isMinimized: false }))}
+          onClick={() => setConfig((prev) => ({ prev, isMinimized: false }))}
         >
           <Maximize2 className="w-3 h-3" />
         </Button>
@@ -2589,18 +2559,14 @@ function fetchAuditLogs(): any {
   /**
  * handleNotificationChange function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleNotificationChange(field: string, value: string | boolean): any {
-    setNotificationSettings((prev) => ({ /* Production implementation with proper error handling */prev, [field]: value }));
+    setNotificationSettings((prev) => ({ prev, [field]: value }));
   }
 
   // Handler for test notification (bed)
   /**
  * handleTestNotification function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
     toast({
       title: `Test ${
@@ -2661,7 +2627,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
             variant="ghost"
             className="w-8 h-8 p-0 rounded-full bg-white/80 hover:bg-white shadow-md"
             onClick={() =>
-              setConfig((prev) => ({ /* Production implementation with proper error handling */prev, isMuted: !prev.isMuted }))
+              setConfig((prev) => ({ prev, isMuted: !prev.isMuted }))
             }
           >
             {config.isMuted ? (
@@ -2675,7 +2641,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
             variant="ghost"
             className="w-8 h-8 p-0 rounded-full bg-white/80 hover:bg-white shadow-md"
             onClick={() =>
-              setConfig((prev) => ({ /* Production implementation with proper error handling */prev, isMinimized: true }))
+              setConfig((prev) => ({ prev, isMinimized: true }))
             }
           >
             <Minimize2 className="w-4 h-4" />
@@ -2891,7 +2857,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
               <div>Status: {user.loggedIn ? "Logged In" : "Logged Out"}</div>
               <Button
                 onClick={() =>
-                  setUser((u) => ({ /* Production implementation with proper error handling */u, loggedIn: !u.loggedIn }))
+                  setUser((u) => ({ u, loggedIn: !u.loggedIn }))
                 }
                 aria-label={user.loggedIn ? "Logout" : "Login"}
                 style={{ marginTop: 16 }}

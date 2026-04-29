@@ -35,10 +35,10 @@ function GET(req: NextRequest): any {
   // Fetch all news (optionally aggregated)
   const url = new URL(req.url);
   const aggregate = url.searchParams.get("aggregate") === "true";
-  let news = [/* production implementation with proper error handling */newsStore];
+  let news = [newsStore];
   if (aggregate) {
     const external = await aggregateNews();
-    news = [/* production implementation with proper error handling */news, /* production implementation with proper error handling */external];
+    news = [news, external];
   }
   return NextResponse.json({ news });
 }
@@ -52,12 +52,12 @@ function POST(req: NextRequest): any {
   const isMasterUser = isMaster(req);
   const item = {
     id: idCounter++,
-    /* production implementation with proper error handling */body,
+    body,
     status: isMasterUser ? "approved" : "pending",
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     category: body.category || "general",
-    media: body.media || [], // [{type: 'image', url: ''}, /* production implementation with proper error handling */]
+    media: body.media || [], // [{type: 'image', url: ''}, ]
     analytics: { views: 0, shares: 0, engagement: 0 },
     scheduledAt: body.scheduledAt || null,
   };
@@ -73,13 +73,13 @@ function PUT(req: NextRequest): any {
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const body = (await req.json()) as any;
-  const { id, /* production implementation with proper error handling */updates } = body;
+  const { id, updates } = body;
   const idx = newsStore.findIndex((n) => n.id === id);
   if (idx === -1)
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   newsStore[idx] = {
-    /* production implementation with proper error handling */newsStore[idx],
-    /* production implementation with proper error handling */updates,
+    newsStore[idx],
+    updates,
     updatedAt: new Date().toISOString(),
   };
   return NextResponse.json({ success: true, item: newsStore[idx] });
@@ -131,7 +131,7 @@ function POST_MEDIA(req: NextRequest): any {
   const idx = newsStore.findIndex((n) => n.id === id);
   if (idx === -1)
     return NextResponse.json({ error: "Not found" }, { status: 404 });
-  newsStore[idx].media = [/* production implementation with proper error handling */(newsStore[idx].media || []), /* production implementation with proper error handling */media];
+  newsStore[idx].media = [(newsStore[idx].media || []), media];
   return NextResponse.json({ success: true, item: newsStore[idx] });
 }
 

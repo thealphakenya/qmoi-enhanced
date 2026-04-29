@@ -109,12 +109,12 @@ export async /**
 function POST(request: NextRequest): any {
   try {
     const body = await request.json();
-    const { type, /* production implementation with proper error handling */data } = body;
+    const { type, data } = body;
 
     if (type === "employee") {
       const validatedData = EmployeeSchema.parse(data);
       const employee = {
-        /* production implementation with proper error handling */validatedData,
+        validatedData,
         id: `emp_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: Date.now(),
       };
@@ -138,7 +138,7 @@ function POST(request: NextRequest): any {
     } else if (type === "user") {
       const validatedData = UserSchema.parse(data);
       const user = {
-        /* production implementation with proper error handling */validatedData,
+        validatedData,
         id: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         createdAt: Date.now(),
       };
@@ -196,7 +196,7 @@ export async /**
 function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
-    const { id, type, /* production implementation with proper error handling */updates } = body;
+    const { id, type, updates } = body;
 
     if (type === "employee") {
       const index = employees.findIndex((emp) => emp.id === id);
@@ -210,7 +210,7 @@ function PUT(request: NextRequest): any {
         );
       }
 
-      employees[index] = { /* production implementation with proper error handling */employees[index], /* production implementation with proper error handling */updates };
+      employees[index] = { employees[index], updates };
 
       // Log the update
       employmentLogs.push({
@@ -238,7 +238,7 @@ function PUT(request: NextRequest): any {
         );
       }
 
-      users[index] = { /* production implementation with proper error handling */users[index], /* production implementation with proper error handling */updates };
+      users[index] = { users[index], updates };
 
       // Log the update
       employmentLogs.push({

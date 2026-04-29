@@ -109,15 +109,15 @@ export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "ADD_TOAST":
       return {
-        /* production implementation with proper error handling */state,
-        toasts: [action.toast, /* production implementation with proper error handling */state.toasts].slice(0, TOAST_LIMIT),
+        state,
+        toasts: [action.toast, state.toasts].slice(0, TOAST_LIMIT),
       };
 
     case "UPDATE_TOAST":
       return {
-        /* production implementation with proper error handling */state,
+        state,
         toasts: state.toasts.map((t) =>
-          t.id === action.toast.id ? { /* production implementation with proper error handling */t, /* production implementation with proper error handling */action.toast } : t,
+          t.id === action.toast.id ? { t, action.toast } : t,
         ),
       };
 
@@ -135,11 +135,11 @@ export const reducer = (state: State, action: Action): State => {
       }
 
       return {
-        /* production implementation with proper error handling */state,
+        state,
         toasts: state.toasts.map((t) =>
           t.id === toastId || toastId === undefined
             ? {
-                /* production implementation with proper error handling */t,
+                t,
                 open: false,
               }
             : t,
@@ -149,12 +149,12 @@ export const reducer = (state: State, action: Action): State => {
     case "REMOVE_TOAST":
       if (action.toastId === undefined) {
         return {
-          /* production implementation with proper error handling */state,
+          state,
           toasts: [],
         };
       }
       return {
-        /* production implementation with proper error handling */state,
+        state,
         toasts: state.toasts.filter((t) => t.id !== action.toastId),
       };
   }
@@ -179,20 +179,20 @@ type Toast = Omit<ToasterToast, "id">;
 /**
  * toast function
  */
-function toast({ /* production implementation with proper error handling */props }: Toast): any {
+function toast({ props }: Toast): any {
   const id = genId();
 
   const update = (props: ToasterToast) =>
     dispatch({
       type: "UPDATE_TOAST",
-      toast: { /* production implementation with proper error handling */props, id },
+      toast: { props, id },
     });
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
   dispatch({
     type: "ADD_TOAST",
     toast: {
-      /* production implementation with proper error handling */props,
+      props,
       id,
       open: true,
       onOpenChange: (open) => {
@@ -225,7 +225,7 @@ function useToast(): any {
   }, [state]);
 
   return {
-    /* production implementation with proper error handling */state,
+    state,
     toast,
     dismiss: (toastId?: string) => dispatch({ type: "DISMISS_TOAST", toastId }),
   };

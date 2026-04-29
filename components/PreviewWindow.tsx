@@ -35,8 +35,6 @@ import { specificExports } from "@/components/DownloadAppButton";
 export /**
  * PreviewWindow function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function PreviewWindow(): any {
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<
@@ -46,8 +44,6 @@ function PreviewWindow(): any {
   /**
  * handleFileChange function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;

@@ -61,7 +61,7 @@ function useMediaGenerationStatus(): any {
 
       const data = await response.json();
       setStatus((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         status: "generating",
         currentTask: {
           id: data.taskId,
@@ -75,7 +75,7 @@ function useMediaGenerationStatus(): any {
       return data;
     } catch (error) {
       setStatus((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         status: "error",
       }));
       throw error;
@@ -102,10 +102,10 @@ function useMediaGenerationStatus(): any {
 
       const data = await response.json();
       setStatus((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         settings: {
-          /* production implementation with proper error handling */prev.settings,
-          /* production implementation with proper error handling */data.settings,
+          prev.settings,
+          data.settings,
         },
       }));
 
@@ -130,7 +130,7 @@ function useMediaGenerationStatus(): any {
       }
 
       setStatus((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         status: "idle",
         currentTask: undefined,
       }));
@@ -158,8 +158,8 @@ function fetchStatus(): any {
 
         const data = await response.json();
         setStatus((prev) => ({
-          /* production implementation with proper error handling */prev,
-          /* production implementation with proper error handling */data,
+          prev,
+          data,
         }));
       } catch (error) {
         (globalThis.console as any)?.error?.(

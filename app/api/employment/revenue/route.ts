@@ -424,13 +424,13 @@ export async function GET(_request: NextRequest): any {
 export async function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
-    const { action, /* production implementation with proper error handling */data } = body;
+    const { action, data } = body;
     switch (action) {
       case "create_microtask":
         const taskData = MicrotaskSchema.parse(data);
         const task = {
           id: `task_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-          /* production implementation with proper error handling */taskData,
+          taskData,
           status: "active",
           createdAt: Date.now(),
           completedAt: null,
@@ -452,7 +452,7 @@ export async function POST(_request: NextRequest): any {
         const campaignData = AffiliateCampaignSchema.parse(data);
         const campaign = {
           id: `aff_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-          /* production implementation with proper error handling */campaignData,
+          campaignData,
           status: "active",
           createdAt: Date.now(),
           totalSales: 0,
@@ -477,7 +477,7 @@ export async function POST(_request: NextRequest): any {
         const projectData = ContentProjectSchema.parse(data);
         const project = {
           id: `cont_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-          /* production implementation with proper error handling */projectData,
+          projectData,
           status: "active",
           createdAt: Date.now(),
           completedAt: null,
@@ -502,7 +502,7 @@ export async function POST(_request: NextRequest): any {
         const referralData = ReferralProgramSchema.parse(data);
         const referral = {
           id: `ref_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-          /* production implementation with proper error handling */referralData,
+          referralData,
           status: "active",
           createdAt: Date.now(),
           totalReferrals: 0,
@@ -596,7 +596,7 @@ export async function POST(_request: NextRequest): any {
 export async function PUT(_request: NextRequest): any {
   try {
     const body = await _request.json();
-    const { id, type, /* production implementation with proper error handling */updates } = body;
+    const { id, type, updates } = body;
     let item;
     switch (type) {
       case "microtask":

@@ -47,7 +47,7 @@ export async /**
  * initializeBackgroundAutomation function
  */
 function initializeBackgroundAutomation(): Promise<boolean> {
-  logger.info('Starting background automation/* production implementation with proper error handling */');
+  logger.info('Starting background automation');
   return true;
 }
 

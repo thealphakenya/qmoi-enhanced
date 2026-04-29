@@ -46,7 +46,7 @@ async function main(): any {
     process.exit(1);
   }
   logger.info(
-    "All trading setup checks passed. Starting trading automation/* production implementation with proper error handling */",
+    "All trading setup checks passed. Starting trading automation",
   );
   // Place trading automation logic here
 }

@@ -40,8 +40,6 @@ interface ProjectFormProps {
 export /**
  * ProjectForm function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function ProjectForm({ project, onSuccess }: ProjectFormProps): any {
   const { createProject, updateProject } = useProjects();
   const [formData, setFormData] = useState<full<Project>>(
@@ -80,17 +78,17 @@ function ProjectForm({ project, onSuccess }: ProjectFormProps): any {
     >,
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ /* Production implementation with proper error handling */prev, [name]: value }));
+    setFormData((prev) => ({ prev, [name]: value }));
   };
 
   const handleTeamChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const team = e.target.value.split(",").map((member) => member.trim());
-    setFormData((prev) => ({ /* Production implementation with proper error handling */prev, team }));
+    setFormData((prev) => ({ prev, team }));
   };
 
   const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const tags = e.target.value.split(",").map((tag) => tag.trim());
-    setFormData((prev) => ({ /* Production implementation with proper error handling */prev, tags }));
+    setFormData((prev) => ({ prev, tags }));
   };
 
   return (
@@ -192,7 +190,7 @@ function ProjectForm({ project, onSuccess }: ProjectFormProps): any {
             }
             onChange={(e) =>
               setFormData((prev) => ({
-                /* Production implementation with proper error handling */prev,
+                prev,
                 startDate: new Date(e.target.value).getTime(),
               }))
             }
@@ -214,7 +212,7 @@ function ProjectForm({ project, onSuccess }: ProjectFormProps): any {
             value={new Date(formData.endDate || 0).toISOString().split("T")[0]}
             onChange={(e) =>
               setFormData((prev) => ({
-                /* Production implementation with proper error handling */prev,
+                prev,
                 endDate: new Date(e.target.value).getTime(),
               }))
             }

@@ -24,7 +24,7 @@ export async /**
 function postChat(payload: unknown): any {
   const headers = {
     "Content-Type": "application/json",
-    /* production implementation with proper error handling */getSessionHeaders(),
+    getSessionHeaders(),
   };
   const resp = await apiClient.get("/api/qmoi/chat", {
     method: "POST",
@@ -40,7 +40,7 @@ export async /**
 function postModel(payload: unknown): any {
   const headers = {
     "Content-Type": "application/json",
-    /* production implementation with proper error handling */getSessionHeaders(),
+    getSessionHeaders(),
   };
   const resp = await apiClient.get("/api/qmoi-model", {
     method: "POST",
@@ -54,7 +54,7 @@ export async /**
  * fetchMemory function
  */
 function fetchMemory(): any {
-  const headers = { /* production implementation with proper error handling */getSessionHeaders() };
+  const headers = { getSessionHeaders() };
   const resp = await apiClient.get("/api/qmoi/memory", { method: "GET", headers });
   return safeJson(resp);
 }
@@ -65,7 +65,7 @@ export async /**
 function syncMemory(body: unknown): any {
   const headers = {
     "Content-Type": "application/json",
-    /* production implementation with proper error handling */getSessionHeaders(),
+    getSessionHeaders(),
   };
   const resp = await apiClient.get("/api/qmoi/memory", {
     method: "POST",

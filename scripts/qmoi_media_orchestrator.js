@@ -56,7 +56,7 @@ async function notifyFailure(message) {
  * startBackend function
  */
 function startBackend() {
-  log("Starting backend API/* production implementation with proper error handling */");
+  log("Starting backend API");
   const backend = spawn("node", [BACKEND_SCRIPT], {
     detached: true,
     stdio: "ignore",
@@ -69,7 +69,7 @@ function startBackend() {
  * runSync function
  */
 function runSync() {
-  log("Running S3 sync/* production implementation with proper error handling */");
+  log("Running S3 sync");
   try {
     execSync(`node ${SYNC_SCRIPT}`);
     log("S3 sync completed.");
@@ -92,14 +92,14 @@ function runSync() {
  */
 function runFixAndGit() {
   try {
-    log("Running enhanced error fix/* production implementation with proper error handling */");
+    log("Running enhanced error fix");
     execSync(`node ${FIX_SCRIPT}`);
     log("Auto-fix completed.");
   } catch (err) {
     log("Auto-fix failed: " + err.message);
   }
   try {
-    log("Running git add/commit/push/* production implementation with proper error handling */");
+    log("Running git add/commit/push");
     execSync("git add .");
     execSync(
       `git commit -m "QMOI auto-fix: ${new Date().toISOString()}" || echo "No changes to commit"`,
@@ -123,7 +123,7 @@ function runFixAndGit() {
  */
 function runVercelAutoFix() {
   try {
-    log("Running Vercel auto-fix/* production implementation with proper error handling */");
+    log("Running Vercel auto-fix");
     execSync(`node ${FIX_SCRIPT} --type=vercel`);
     log("Vercel auto-fix completed.");
   } catch (err) {
@@ -136,7 +136,7 @@ function runVercelAutoFix() {
  */
 function forceVercelRedeploy() {
   try {
-    log("Forcing Vercel redeploy with cache clear/* production implementation with proper error handling */");
+    log("Forcing Vercel redeploy with cache clear");
     execSync(
       `npx vercel --prod --yes --force --token ${VERCEL_TOKEN} --scope ${VERCEL_ORG_ID} --confirm --RELEASE --no-clipboard --no-wait --env-file=${ENV_FILE} --build-env-file=${ENV_FILE} --clear-cache`,
     );

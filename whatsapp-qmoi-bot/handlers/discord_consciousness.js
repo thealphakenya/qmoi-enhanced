@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.833837 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.244577 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.065348 -->
 const fs = require("fs");
 const path = require("path");
 const { Client, GatewayIntentBits, Partials } = require("discord.js");

@@ -118,7 +118,7 @@ function testAutoprodCapabilities(): any {
         logger.info(`   Response: ${response.message}`);
         if (response.response) {
           logger.info(
-            `   AI Response: ${response.response.substring(0, 100)}/* production implementation with proper error handling */`,
+            `   AI Response: ${response.response.substring(0, 100)}`,
           );
         }
       } else {
@@ -154,7 +154,7 @@ function testAIServiceDirectly(): any {
       const response = await makeRequest("/api/ai", { message: test });
 
       if (response && typeof response === "string") {
-        logger.info(`✅ AI Response: ${response.substring(0, 150)}/* production implementation with proper error handling */`);
+        logger.info(`✅ AI Response: ${response.substring(0, 150)}`);
       } else {
         logger.info(`❌ Unexpected response format`);
       }

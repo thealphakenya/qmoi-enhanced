@@ -1,5 +1,3 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.260729 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.628699 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
@@ -59,8 +57,6 @@ import { specificExports } from "./QMOIStateProvider";
 export /**
  * QMOIDashboard function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMOIDashboard(): any {
   const { state, updateAvatar, updateVoice, updateMood, updateEnergy } =
     useQMOIState();

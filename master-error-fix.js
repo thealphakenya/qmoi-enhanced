@@ -34,7 +34,7 @@ async /**
  */
 function assessSystem(): any {
   logger.info("📊 Phase 1: System Assessment");
-  logProgress("Starting comprehensive system analysis/* production implementation with proper error handling */");
+  logProgress("Starting comprehensive system analysis");
 
   try {
     // Count linting errors
@@ -60,7 +60,7 @@ async /**
  */
 function fixDependencies(): any {
   logger.info("\n📦 Phase 2: Dependency Fixes");
-  logProgress("Fixing dependency issues/* production implementation with proper error handling */");
+  logProgress("Fixing dependency issues");
 
   const fixes = [
     { cmd: "npm audit fix", desc: "Fixing security vulnerabilities" },
@@ -91,7 +91,7 @@ async /**
  */
 function fixCodeQuality(): any {
   logger.info("\n🧹 Phase 3: Code Quality Fixes");
-  logProgress("Fixing code quality issues/* production implementation with proper error handling */");
+  logProgress("Fixing code quality issues");
 
   const fixes = [
     { cmd: "npx eslint . --fix", desc: "Auto-fixing ESLint issues" },
@@ -116,7 +116,7 @@ async /**
  */
 function fixBuildAndTests(): any {
   logger.info("\n🏗️ Phase 4: Build and Test Fixes");
-  logProgress("Fixing build and test issues/* production implementation with proper error handling */");
+  logProgress("Fixing build and test issues");
 
   const fixes = [
     { cmd: "npm run build", desc: "Building the application" },
@@ -139,7 +139,7 @@ async /**
  */
 function finalVerification(): any {
   logger.info("\n✅ Phase 5: Final Verification");
-  logProgress("Running final system verification/* production implementation with proper error handling */");
+  logProgress("Running final system verification");
 
   try {
     // Final build check
@@ -181,7 +181,7 @@ async /**
  */
 function runComprehensiveFix(): any {
   logger.info("🎯 QMOI Master Error Fixing System Activated");
-  logger.info("🔍 Analyzing system for all types of errors and problems/* production implementation with proper error handling */\n");
+  logger.info("🔍 Analyzing system for all types of errors and problems\n");
 
   await assessSystem();
   await fixDependencies();

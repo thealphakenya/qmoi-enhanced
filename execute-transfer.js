@@ -32,7 +32,7 @@ function executeMoneyTransfer(): any {
     logger.info(`"${instruction}"`);
     logger.info();
 
-    logger.info("🤖 Contacting QMOI AI Service/* production implementation with proper error handling */");
+    logger.info("🤖 Contacting QMOI AI Service");
     const response = await aiService.generateResponse(
       `master instruction ${instruction}`,
     );

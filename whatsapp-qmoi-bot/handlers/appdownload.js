@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.826741 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.240752 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.060807 -->
 async function askprodiceTypeAndSendLink(sock, jid) {
   try {
   return sock.sendMessage(jid, {

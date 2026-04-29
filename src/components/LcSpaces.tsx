@@ -13,15 +13,13 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * LcSpaces function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function LcSpaces(): any {
   const [spaces, setSpaces] = useState<string[]>(["LC1", "LC2"]);
   const [newSpace, setNewSpace] = useState("");
 
   const addSpace = () => {
     if (newSpace.trim()) {
-      setSpaces([/* Production implementation with proper error handling */spaces, newSpace.trim()]);
+      setSpaces([spaces, newSpace.trim()]);
       setNewSpace("");
     }
   };
@@ -44,7 +42,7 @@ function LcSpaces(): any {
         size="small"
         value={newSpace}
         onChange={(e) => setNewSpace(e.target.value)}
-        ="Add new LC space/* Production implementation with proper error handling */"
+        ="Add new LC space"
         sx={{ mb: 1 }}
         onKeyDown={(e) => {
           if (e.key === "Enter") addSpace();

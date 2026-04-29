@@ -55,12 +55,12 @@ const handler = requireRole(["admin", "master"])(async (
     return res.status(201).json({ prodice });
   }
   if (method === "PUT") {
-    const { id, /* production implementation with proper error handling */update } = body;
+    const { id, update } = body;
     const idx = prodices.findIndex((d: unknown) => d.id === id);
     if (idx === -1) return res.status(404).json({ error: "Not found" });
     prodices[idx] = {
-      /* production implementation with proper error handling */prodices[idx],
-      /* production implementation with proper error handling */update,
+      prodices[idx],
+      update,
       updatedAt: new Date().toISOString(),
     };
     saveprodices(prodices);

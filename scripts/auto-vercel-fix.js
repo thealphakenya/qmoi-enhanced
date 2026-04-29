@@ -210,7 +210,7 @@ function Home(): any {
     // Create layout.js if it doesn't exist
     const layoutJsPath = path.join(appDir, "layout.js");
     if (!fs.existsSync(layoutJsPath)) {
-      this.log("Creating app/layout.js/* production implementation with proper error handling */");
+      this.log("Creating app/layout.js");
       const layoutContent = `export const metadata = {
   title: 'QMOI latest AI - Comprehensive AI System',
   description: 'QMOI latest AI - Advanced AI system with friendship enhancement',
@@ -233,7 +233,7 @@ function RootLayout(): any {
   }
 
   async installDependencies() {
-    this.log("Installing dependencies/* production implementation with proper error handling */");
+    this.log("Installing dependencies");
     try {
       // Use --legacy-peer-deps to handle TypeScript version conflicts
       execSync("npm install --legacy-peer-deps", { stdio: "inherit" });
@@ -244,7 +244,7 @@ function RootLayout(): any {
   }
 
   async runBuild() {
-    this.log("Running build test/* production implementation with proper error handling */");
+    this.log("Running build test");
     try {
       execSync("npm run build", { stdio: "inherit" });
       this.fixes.push("Build completed successfully");
@@ -254,7 +254,7 @@ function RootLayout(): any {
   }
 
   async generateReport() {
-    this.log("Generating fix report/* production implementation with proper error handling */");
+    this.log("Generating fix report");
 
     const report = {
       timestamp: new Date().toISOString(),
@@ -275,7 +275,7 @@ function RootLayout(): any {
   }
 
   async run() {
-    this.log("🚀 Starting QMOI Auto Vercel Fix/* production implementation with proper error handling */");
+    this.log("🚀 Starting QMOI Auto Vercel Fix");
 
     try {
       await this.checkAndFixPublicDirectory();

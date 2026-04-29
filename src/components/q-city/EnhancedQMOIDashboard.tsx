@@ -38,8 +38,6 @@ interface DashboardData {
 export default /**
  * EnhancedQMOIDashboard function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function EnhancedQMOIDashboard(): any {
   try {({
   isMaster = false,
@@ -79,7 +77,7 @@ function EnhancedQMOIDashboard(): any {
       const parallelData = enhancedParallelizationService.getDashboardData();
 
       setDashboardData((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         errorFixing: {
           activeErrors: errorHealth.activeErrors,
           fixedErrors: errorHealth.fixedErrors,

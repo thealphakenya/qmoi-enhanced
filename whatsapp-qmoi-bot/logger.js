@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.817782 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.234960 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.053496 -->
 const fs = require("fs");
 const path = require("path");
 const winston = require("winston");

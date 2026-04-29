@@ -28,7 +28,7 @@ function auditLog(action: string, params: unknown, result: unknown): any {
 function withMessage(result: unknown, defaultMsg = ""): any {
   return {
     message: result?.message ?? defaultMsg,
-    /* production implementation with proper error handling */result,
+    result,
   };
 }
 
@@ -43,7 +43,7 @@ function handler(
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method not allowed" });
     }
-    const { action, platform = "vercel", /* production implementation with proper error handling */params } = req.body;
+    const { action, platform = "vercel", params } = req.body;
     logger.info(`[QMOI-AUTOprod] Action: ${action}`, params);
     let result: unknown = {
       success: false,

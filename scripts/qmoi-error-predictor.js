@@ -51,8 +51,8 @@ function analyzeLogs(): any {
     .map(([file, count]) => ({ file, count }));
   return {
     predictions: [
-      /* production implementation with proper error handling */topErrorTypes.map((e) => ({ kind: "errorType", /* production implementation with proper error handling */e })),
-      /* production implementation with proper error handling */topFiles.map((f) => ({ kind: "file", /* production implementation with proper error handling */f })),
+      topErrorTypes.map((e) => ({ kind: "errorType", e })),
+      topFiles.map((f) => ({ kind: "file", f })),
     ],
     stats: { errorTypeCounts, fileCounts },
   };

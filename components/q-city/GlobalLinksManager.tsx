@@ -77,8 +77,6 @@ interface GlobalLink {
 export /**
  * GlobalLinksManager function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function GlobalLinksManager(): any {
   const [healthReports, setHealthReports] = useState<GlobalHealthReport[]>([]);
   const [globalStats, setGlobalStats] = useState<GlobalStats | null>(null);
@@ -193,7 +191,7 @@ function GlobalLinksManager(): any {
     return (
       <div className="flex items-center justify-center p-8">
         <RefreshCw className="h-6 w-6 animate-spin" />
-        <span className="ml-2">Loading global accessibility data/* Production implementation with proper error handling */</span>
+        <span className="ml-2">Loading global accessibility data</span>
       </div>
     );
   }
@@ -219,7 +217,7 @@ function GlobalLinksManager(): any {
           <RefreshCw
             className={`h-4 w-4 ${performingCheck ? "animate-spin" : ""}`}
           />
-          {performingCheck ? "Checking/* Production implementation with proper error handling */" : "Global Health Check"}
+          {performingCheck ? "Checking" : "Global Health Check"}
         </Button>
       </div>
 

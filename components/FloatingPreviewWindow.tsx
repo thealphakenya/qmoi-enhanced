@@ -50,8 +50,6 @@ import {
 /**
  * downloadFile function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function downloadFile(url: string, filename: string): any {
   const a = document.createElement("a");
   a.href = url;
@@ -75,8 +73,6 @@ interface FloatingPreviewWindowProps {
 export /**
  * FloatingPreviewWindow function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function FloatingPreviewWindow({
   onClose,
   content,
@@ -110,8 +106,6 @@ function FloatingPreviewWindow({
   /**
  * onMouseDown function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function onMouseDown(e: React.MouseEvent): any {
     setDragging(true);
     setOffset({
@@ -122,8 +116,6 @@ function onMouseDown(e: React.MouseEvent): any {
   /**
  * onMouseMove function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function onMouseMove(e: MouseEvent): any {
     if (dragging) {
       setPosition({
@@ -135,8 +127,6 @@ function onMouseMove(e: MouseEvent): any {
   /**
  * onMouseUp function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function onMouseUp(): any {
     setDragging(false);
   }
@@ -158,8 +148,6 @@ function onMouseUp(): any {
   /**
  * handleFileChange function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -178,8 +166,6 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
   /**
  * handleYoutubeChange function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
     setYoutubeUrl(e.target.value);
     setMediaType("video");
@@ -190,8 +176,6 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
   /**
  * handleBrowserChange function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleBrowserChange(e: React.ChangeEvent<HTMLInputElement>): any {
     setBrowserUrl(e.target.value);
     setMediaType("browser");
@@ -202,8 +186,6 @@ function handleBrowserChange(e: React.ChangeEvent<HTMLInputElement>): any {
   /**
  * handleTextEdit function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleTextEdit(e: React.ChangeEvent<HTMLTextAreaElement>): any {
     setTextContent(e.target.value);
     setMediaType("other");
@@ -213,8 +195,6 @@ function handleTextEdit(e: React.ChangeEvent<HTMLTextAreaElement>): any {
   async /**
  * handleDownload function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleDownload(): any {
     if (mediaUrl && mediaType) {
       const ext =
@@ -334,7 +314,7 @@ function handleDownload(): any {
               <div className="space-y-1">
                 <Progress value={downloadProgress} className="w-full" />
                 <p className="text-xs text-gray-500">
-                  Downloading/* Production implementation with proper error handling */ {downloadProgress.toFixed(1)}%
+                  Downloading {downloadProgress.toFixed(1)}%
                 </p>
               </div>
             )}

@@ -168,7 +168,7 @@ function scanFile(filePath): any {
     });
 
     // Remove duplicates
-    flaggedLines = [/* production implementation with proper error handling */new Set(flaggedLines)];
+    flaggedLines = [new Set(flaggedLines)];
 
     production-ready
 
@@ -202,7 +202,7 @@ function scanFile(filePath): any {
 }
 
 // Main execution
-log('Starting repository audit/* production implementation with proper error handling */');
+log('Starting repository audit');
 scanDirectory('.');
 process.stdout.write('\n'); // New line after progress
 

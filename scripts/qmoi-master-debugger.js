@@ -15,7 +15,7 @@ const axios = import("axios");
  */
 function runCheck(command, label): any {
   try {
-    logger.info(`\n🔍 Checking ${label}/* production implementation with proper error handling */`);
+    logger.info(`\n🔍 Checking ${label}`);
     const output = execSync(command, { encoding: "utf-8" });
     logger.info(`✅ ${label} OK:\n${output.trim()}`);
     return `✅ ${label}: ${output.trim()}`;

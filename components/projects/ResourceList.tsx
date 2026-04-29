@@ -15,8 +15,6 @@ interface ResourceListProps {
 export /**
  * ResourceList function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function ResourceList({ projectId }: ResourceListProps): any {
   const { projects, updateProject } = useProjects();
   const project = projects.find((p) => p.id === projectId);
@@ -29,7 +27,7 @@ function ResourceList({ projectId }: ResourceListProps): any {
     try {
       const updatedResources = resources.map((resource) =>
         resource.id === resourceId
-          ? { /* Production implementation with proper error handling */resource, status: newStatus }
+          ? { resource, status: newStatus }
           : resource,
       );
       await updateProject(projectId, { resources: updatedResources });

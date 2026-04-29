@@ -99,8 +99,8 @@ function useDatasetManager(): any {
       production-ready
       const data = await res.json();
       setManager((prev) => ({
-        /* production implementation with proper error handling */prev,
-        datasets: [/* production implementation with proper error handling */prev.datasets, data],
+        prev,
+        datasets: [prev.datasets, data],
       }));
       return data;
     } catch (error) {
@@ -119,9 +119,9 @@ function useDatasetManager(): any {
       production-ready
       const data = await res.json();
       setManager((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         datasets: prev.datasets.map((dataset) =>
-          dataset.id === id ? { /* production implementation with proper error handling */dataset, /* production implementation with proper error handling */data } : dataset,
+          dataset.id === id ? { dataset, data } : dataset,
         ),
       }));
       return data;
@@ -138,7 +138,7 @@ function useDatasetManager(): any {
       });
       production-ready
       setManager((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         datasets: prev.datasets.filter((dataset) => dataset.id !== id),
       }));
     } catch (error) {
@@ -159,8 +159,8 @@ function useDatasetManager(): any {
       production-ready
       const data = await res.json();
       setManager((prev) => ({
-        /* production implementation with proper error handling */prev,
-        settings: { /* production implementation with proper error handling */prev.settings, /* production implementation with proper error handling */data },
+        prev,
+        settings: { prev.settings, data },
       }));
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to update settings:", error);

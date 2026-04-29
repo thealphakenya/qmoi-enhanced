@@ -309,7 +309,7 @@ function fetchAllInParallel(): Promise<{
   media: unknown[];
   health: unknown;
 }> {
-  logger.RELEASE("[Parallel] Fetching all resources in parallel/* production implementation with proper error handling */");
+  logger.RELEASE("[Parallel] Fetching all resources in parallel");
   const [media, health] = await Promise.allSettled([
     fetchMedia(),
     checkHealth(),

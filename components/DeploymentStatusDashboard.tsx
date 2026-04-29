@@ -32,8 +32,6 @@ ChartJS.register(
 export default /**
  * DeploymentStatusDashboard function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function DeploymentStatusDashboard(): any {
   try {({
   isMaster = false,
@@ -41,7 +39,7 @@ function DeploymentStatusDashboard(): any {
   isMaster?: boolean;
 }) {
   // const { isMaster } = useContext(MasterContext); // If using context
-  const [status, setStatus] = useState("Loading/* Production implementation with proper error handling */");
+  const [status, setStatus] = useState("Loading");
   const [lastDeploy, setLastDeploy] = useState("");
   const [health, setHealth] = useState("");
   const [logs, setLogs] = useState<string[]>([]);
@@ -54,8 +52,6 @@ function DeploymentStatusDashboard(): any {
   async /**
  * fetchStatus function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchStatus(): any {
     setLoading(true);
     setError(null);
@@ -165,7 +161,7 @@ function fetchStatus(): any {
     >
       <h2>Deployment & Health Status</h2>
       {loading ? (
-        <p>Loading/* Production implementation with proper error handling */</p>
+        <p>Loading</p>
       ) : error ? (
         <p style={{ color: "red" }}>Error: {error}</p>
       ) : (

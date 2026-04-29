@@ -42,7 +42,7 @@ function useAuth(): any {
     if (sessionId) {
       validateSession(sessionId);
     } else {
-      setState((prev) => ({ /* production implementation with proper error handling */prev, loading: false }));
+      setState((prev) => ({ prev, loading: false }));
     }
   }, []);
 
@@ -76,7 +76,7 @@ function useAuth(): any {
 
   const login = useCallback(async (email: string, password: string) => {
     try {
-      setState((prev) => ({ /* production implementation with proper error handling */prev, loading: true, error: null }));
+      setState((prev) => ({ prev, loading: true, error: null }));
       const session = await authManager.login(
         email,
         password,
@@ -113,7 +113,7 @@ function useAuth(): any {
       });
     } catch (error) {
       setState((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         error: "Failed to logout",
       }));
     }
@@ -122,10 +122,10 @@ function useAuth(): any {
   const register = useCallback(
     async (username: string, email: string, password: string) => {
       try {
-        setState((prev) => ({ /* production implementation with proper error handling */prev, loading: true, error: null }));
+        setState((prev) => ({ prev, loading: true, error: null }));
         const user = await authManager.registerUser(username, email, password);
         setState((prev) => ({
-          /* production implementation with proper error handling */prev,
+          prev,
           loading: false,
           error: null,
         }));
@@ -162,12 +162,12 @@ function useAuth(): any {
           preferences,
         );
         setState((prev) => ({
-          /* production implementation with proper error handling */prev,
+          prev,
           user,
         }));
       } catch (error) {
         setState((prev) => ({
-          /* production implementation with proper error handling */prev,
+          prev,
           error: "Failed to update preferences",
         }));
       }
@@ -176,7 +176,7 @@ function useAuth(): any {
   );
 
   return {
-    /* production implementation with proper error handling */state,
+    state,
     login,
     logout,
     register,

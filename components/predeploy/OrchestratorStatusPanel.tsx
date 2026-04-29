@@ -73,12 +73,10 @@ export const OrchestratorStatusPanel: React.FC<{
   /**
  * handleAssign function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleAssign(agentId: string, device: string): any {
     setAgents((prev) =>
       prev.map((a) =>
-        a.id === agentId ? { /* Production implementation with proper error handling */a, assignedDevice: device } : a,
+        a.id === agentId ? { a, assignedDevice: device } : a,
       ),
     );
     : backend call
@@ -87,15 +85,13 @@ function handleAssign(agentId: string, device: string): any {
   /**
  * handleFailover function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleFailover(agentId: string): any {
     setFailoverLoading(agentId);
     setTimeout(() => {
       setAgents((prev) =>
         prev.map((a) =>
           a.id === agentId
-            ? { /* Production implementation with proper error handling */a, status: "standby", assignedDevice: "" }
+            ? { a, status: "standby", assignedDevice: "" }
             : a,
         ),
       );
@@ -198,7 +194,7 @@ function handleFailover(agentId: string): any {
                   }}
                 >
                   {failoverLoading === agent.id
-                    ? "Failing over/* Production implementation with proper error handling */"
+                    ? "Failing over"
                     : "Failover"}
                 </button>
               </td>

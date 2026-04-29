@@ -102,7 +102,7 @@ function handler(
         source: "project_automation",
       };
       const result = await executeColabJob(jobSpec);
-      persistJob({ /* production implementation with proper error handling */result, type: projectType, name: projectName });
+      persistJob({ result, type: projectType, name: projectName });
       return res.json(result);
     }
     const { type, name } = req.body;

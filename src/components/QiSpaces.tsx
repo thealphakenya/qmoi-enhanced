@@ -13,15 +13,13 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * QiSpaces function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QiSpaces(): any {
   const [spaces, setSpaces] = useState<string[]>(["latest", "latest"]);
   const [newSpace, setNewSpace] = useState("");
 
   const addSpace = () => {
     if (newSpace.trim()) {
-      setSpaces([/* Production implementation with proper error handling */spaces, newSpace.trim()]);
+      setSpaces([spaces, newSpace.trim()]);
       setNewSpace("");
     }
   };
@@ -44,7 +42,7 @@ function QiSpaces(): any {
         size="small"
         value={newSpace}
         onChange={(e) => setNewSpace(e.target.value)}
-        ="Add new space/* Production implementation with proper error handling */"
+        ="Add new space"
         sx={{ mb: 1 }}
         onKeyDown={(e) => {
           if (e.key === "Enter") addSpace();

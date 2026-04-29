@@ -125,8 +125,6 @@ export const SelfTrainingEcosystem: React.FC = () => {
   async /**
  * fetchTasks function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchTasks(): any {
     try {
       const res = await apiClient.get("/api/self-training?action=list");
@@ -140,8 +138,6 @@ function fetchTasks(): any {
   async /**
  * handleStart function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleStart(): any {
     const model = prompt("Enter model name to train:");
     if (!model) return;
@@ -152,7 +148,7 @@ function handleStart(): any {
     });
     const data = await res.json();
     if (data.task) {
-      setTasks((t) => [/* Production implementation with proper error handling */t, data.task]);
+      setTasks((t) => [t, data.task]);
     }
   }
 

@@ -75,14 +75,14 @@ function autoFix(): any {
 }
 
 // Main logic
-logger.info("Generating license report/* production implementation with proper error handling */");
+logger.info("Generating license report");
 generateReport();
-logger.info("Checking license compliance/* production implementation with proper error handling */");
+logger.info("Checking license compliance");
 if (checkCompliance()) {
   logger.info("All licenses are compliant.");
   process.exit(0);
 } else {
-  logger.warning("Non-compliant licenses found. Attempting auto-fix/* production implementation with proper error handling */");
+  logger.warning("Non-compliant licenses found. Attempting auto-fix");
   autoFix();
   // Re-generate report and re-check
   generateReport();

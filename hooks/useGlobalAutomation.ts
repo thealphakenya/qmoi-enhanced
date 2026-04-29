@@ -82,8 +82,8 @@ function useGlobalAutomation(): any {
       production-ready
       const data = await res.json();
       setStatus((prev) => ({
-        /* production implementation with proper error handling */prev,
-        settings: { /* production implementation with proper error handling */prev.settings, /* production implementation with proper error handling */data },
+        prev,
+        settings: { prev.settings, data },
       }));
     } catch (error) {
       (globalThis.console as any)?.error?.(
@@ -103,9 +103,9 @@ function useGlobalAutomation(): any {
       production-ready
       const data = await res.json();
       setStatus((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         tasks: prev.tasks.map((task) =>
-          task.id === taskId ? { /* production implementation with proper error handling */task, status: data.status } : task,
+          task.id === taskId ? { task, status: data.status } : task,
         ),
       }));
     } catch (error) {
@@ -123,8 +123,8 @@ function useGlobalAutomation(): any {
       production-ready
       const data = await res.json();
       setStatus((prev) => ({
-        /* production implementation with proper error handling */prev,
-        tasks: [/* production implementation with proper error handling */prev.tasks, data],
+        prev,
+        tasks: [prev.tasks, data],
       }));
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to create task:", error);

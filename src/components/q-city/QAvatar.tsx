@@ -31,8 +31,6 @@ const ENVIRONMENTS = [
 export default /**
  * QAvatar function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QAvatar(): any {
   try {() {
   const [open, setOpen] = useState(true);
@@ -49,8 +47,6 @@ function QAvatar(): any {
   /**
  * saveSettings function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function saveSettings(newSettings: unknown): any {
     setSettings(newSettings);
     localStorage.setItem("qavatar-settings", JSON.stringify(newSettings));
@@ -106,7 +102,7 @@ function saveSettings(newSettings: unknown): any {
             <select
               value={settings.type || "human"}
               onChange={(e) =>
-                saveSettings({ /* Production implementation with proper error handling */settings, type: e.target.value })
+                saveSettings({ settings, type: e.target.value })
               }
               className="ml-2 bg-gray-800 text-white"
             >
@@ -122,7 +118,7 @@ function saveSettings(newSettings: unknown): any {
             <select
               value={settings.env || "Office"}
               onChange={(e) =>
-                saveSettings({ /* Production implementation with proper error handling */settings, env: e.target.value })
+                saveSettings({ settings, env: e.target.value })
               }
               className="ml-2 bg-gray-800 text-white"
             >
@@ -138,7 +134,7 @@ function saveSettings(newSettings: unknown): any {
             <select
               value={settings.quality || "high"}
               onChange={(e) =>
-                saveSettings({ /* Production implementation with proper error handling */settings, quality: e.target.value })
+                saveSettings({ settings, quality: e.target.value })
               }
               className="ml-2 bg-gray-800 text-white"
             >

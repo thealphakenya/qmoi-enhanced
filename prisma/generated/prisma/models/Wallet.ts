@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:39.469812 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.826820 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:07.130251 -->
 // Master-only middleware
 export const requireMasterRole = (handler: Function) => {
   return async (req: any, res: any) => {

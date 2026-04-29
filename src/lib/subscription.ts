@@ -108,7 +108,7 @@ function cancelSubscription(userId: string): any {
   }
 
   const cancelled: SubscriptionRecord = {
-    /* production implementation with proper error handling */existing,
+    existing,
     status: 'cancelled',
     renewsAt: new Date().toISOString(),
   };

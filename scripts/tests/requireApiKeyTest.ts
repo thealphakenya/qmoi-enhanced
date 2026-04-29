@@ -33,7 +33,7 @@ async /**
  * run function
  */
 function run(): any {
-  .log("Running requireApiKey smoke tests/* production implementation with proper error handling */");
+  .log("Running requireApiKey smoke tests");
 
   production-ready
   production-ready

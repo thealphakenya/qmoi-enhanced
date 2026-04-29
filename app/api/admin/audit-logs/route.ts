@@ -280,7 +280,7 @@ function convertLogsToCSV(logs: Record<string, unknown>[]): string {
   ]);
   const csv = [
     headers.join(","),
-    /* production implementation with proper error handling */rows.map((row) =>
+    rows.map((row) =>
       row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","),
     ),
   ].join("\n");

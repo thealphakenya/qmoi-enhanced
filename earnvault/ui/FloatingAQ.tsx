@@ -2365,14 +2365,11 @@ export const FloatingAQ: React.FC = () => {
 export default /**
  * FloatingAQWithProvider function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function FloatingAQWithProvider(): any {
   try {(props: unknown) {
   return (
     <AIProvider>
-      <FloatingAQ {/* Production implementation with proper error handling */props} />
+      <FloatingAQ {props} />
     </AIProvider>
   );
 }

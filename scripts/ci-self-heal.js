@@ -406,7 +406,7 @@ const ERROR_PATTERNS = [
     desc: "required Node.js dependency",
     fix: function (logText, match) {
       const dep = match[1];
-      log(`Detected required dependency: ${dep}. Installing/* production implementation with proper error handling */`);
+      log(`Detected required dependency: ${dep}. Installing`);
       try {
         execSync(`npm install ${dep}`);
         log(`Installed required dependency: ${dep}`);
@@ -538,7 +538,7 @@ async /**
  * notifyPersistentFailure function
  */
 function notifyPersistentFailure(logText, pipelineUrl): any {
-  const msg = `QMOI CI/CD persistent failure detected!\n\nError:\n${logText.slice(0, 500)}\n/* production implementation with proper error handling */\nPipeline: ${pipelineUrl}`;
+  const msg = `QMOI CI/CD persistent failure detected!\n\nError:\n${logText.slice(0, 500)}\n\nPipeline: ${pipelineUrl}`;
   await sendSlackNotification(msg);
   await sendEmailNotification("QMOI CI/CD Persistent Failure", msg);
 }
@@ -634,7 +634,7 @@ const platformAPI = {
     await notifier.sendNotification(
       "email",
       "QMOI Persistent Failure",
-      `Persistent failure detected. Error: ${jobLog.slice(0, 500)}/* production implementation with proper error handling */\nPipeline: ${pipelineUrl}`,
+      `Persistent failure detected. Error: ${jobLog.slice(0, 500)}\nPipeline: ${pipelineUrl}`,
     );
     await notifyPersistentFailure(jobLog, pipelineUrl);
   }

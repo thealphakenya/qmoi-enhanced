@@ -9,8 +9,6 @@ import { specificExports } from "react";
 export default /**
  * LanguageLabPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function LanguageLabPanel(): any {
   try {() {
   return (

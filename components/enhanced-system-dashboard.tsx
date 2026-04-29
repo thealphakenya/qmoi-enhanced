@@ -87,8 +87,6 @@ const deviceIntegrations = [
 export /**
  * EnhancedSystemDashboard function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
   const [metrics, setMetrics] = useState<SystemMetrics>({
     cpu: 45,
@@ -291,9 +289,9 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
   };
 
   const logEvent = (event: unknown) => {
-    setAnalytics((a) => ({ events: [/* Production implementation with proper error handling */a.events, event] }));
+    setAnalytics((a) => ({ events: [a.events, event] }));
     setAuditLog((l) => [
-      /* Production implementation with proper error handling */l,
+      l,
       `[${new Date().toISOString()}] ${event.type}: ${JSON.stringify(event.payload)}`,
     ]);
   };
@@ -609,7 +607,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                       </CardDescription>
                       <input
                         type="text"
-                        ="Search devices/* Production implementation with proper error handling */"
+                        ="Search devices"
                         value={deviceSearch}
                         onChange={(e) => setDeviceSearch(e.target.value)}
                         style={{ marginTop: 8, marginBottom: 8, width: 200 }}
@@ -666,7 +664,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                                   }
                                   if (deviceStatus[d.name]) {
                                     setDeviceStatus((s) => ({
-                                      /* Production implementation with proper error handling */s,
+                                      s,
                                       [d.name]: false,
                                     }));
                                     notify(`${d.name} disconnected`, "warning");
@@ -674,7 +672,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                                     const result =
                                       await d.integration.connect();
                                     setDeviceStatus((s) => ({
-                                      /* Production implementation with proper error handling */s,
+                                      s,
                                       [d.name]: !!result,
                                     }));
                                     notify(
@@ -843,7 +841,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                       <PluginHelpModal />
                       <input
                         type="text"
-                        ="Search plugins/* Production implementation with proper error handling */"
+                        ="Search plugins"
                         value={pluginSearch}
                         onChange={(e) => setPluginSearch(e.target.value)}
                         style={{ marginTop: 8, marginBottom: 8, width: 200 }}

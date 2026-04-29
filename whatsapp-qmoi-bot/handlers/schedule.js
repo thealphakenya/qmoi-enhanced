@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.840278 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.248038 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.069799 -->
 let cron;
 try {
   cron = require("node-cron");

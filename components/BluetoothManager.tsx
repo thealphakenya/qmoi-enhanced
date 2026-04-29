@@ -50,8 +50,6 @@ export const BluetoothManager: React.FC = () => {
   async /**
  * scanForDevices function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function scanForDevices(): any {
     setError(null);
     setConnecting(true);
@@ -61,7 +59,7 @@ function scanForDevices(): any {
         acceptAllDevices: true,
         optionalServices: ["battery_service"],
       });
-      setDevices((prev) => [/* Production implementation with proper error handling */prev, device]);
+      setDevices((prev) => [prev, device]);
     } catch (e: unknown) {
       setError(e.message || "Bluetooth scan failed.");
     }
@@ -71,8 +69,6 @@ function scanForDevices(): any {
   async /**
  * connectToDevice function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function connectToDevice(device: BluetoothDevice): any {
     setError(null);
     setConnecting(true);
@@ -101,7 +97,7 @@ function connectToDevice(device: BluetoothDevice): any {
         enabled={connecting}
         style={{ marginBottom: 12 }}
       >
-        {connecting ? "Scanning/* Production implementation with proper error handling */" : "Scan for Devices"}
+        {connecting ? "Scanning" : "Scan for Devices"}
       </button>
       {error && <div style={{ color: "red" }}>{error}</div>}
       <ul>

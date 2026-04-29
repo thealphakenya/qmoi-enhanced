@@ -1,5 +1,3 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:25.504060 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.547744 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
@@ -31,8 +29,6 @@ import { specificExports } from "../src/hooks/useAuth";
 export /**
  * FinancialManager function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function FinancialManager(): any {
   const { user } = useAuth();
   const [status, setStatus] = useState("");

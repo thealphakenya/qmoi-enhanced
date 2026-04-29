@@ -1,6 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.311811 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.808671 -->
 // Console Logger
 // Enhanced console logging utilities
 

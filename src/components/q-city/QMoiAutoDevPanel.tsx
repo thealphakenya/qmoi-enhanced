@@ -9,8 +9,6 @@ import { specificExports } from "react";
 /**
  * exportToCSV function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function exportToCSV(logs: unknown[]): any {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
@@ -32,8 +30,6 @@ function exportToCSV(logs: unknown[]): any {
 /**
  * exportToJSON function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function exportToJSON(logs: unknown[]): any {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
@@ -57,8 +53,6 @@ const DEPLOY_PLATFORMS = [
 export default /**
  * QMoiAutoDevPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMoiAutoDevPanel(): any {
   try {({
   isMaster = false,
@@ -81,8 +75,6 @@ function QMoiAutoDevPanel(): any {
   async /**
  * fetchStatus function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchStatus(): any {
     setLoading(true);
     setError(null);
@@ -103,8 +95,6 @@ function fetchStatus(): any {
   async /**
  * handleDaemonControl function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleDaemonControl(action: "start" | "stop"): any {
     setDaemonAction(action);
     setError(null);
@@ -121,7 +111,7 @@ function handleDaemonControl(action: "start" | "stop"): any {
       });
       const data = await res.json();
       setStatus((prev: unknown) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         daemon: data.status,
         running: data.status?.running,
       }));
@@ -134,8 +124,6 @@ function handleDaemonControl(action: "start" | "stop"): any {
   async /**
  * fetchLogs function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchLogs(): any {
     setLogsLoading(true);
     setError(null);
@@ -173,8 +161,6 @@ function fetchLogs(): any {
   async /**
  * handleForceRun function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleForceRun(): any {
     setForceRunLoading(true);
     setError(null);
@@ -256,7 +242,7 @@ function handleForceRun(): any {
               padding: "4px 12px",
             }}
           >
-            {daemonAction === "stop" ? "Stopping/* Production implementation with proper error handling */" : "Stop Daemon"}
+            {daemonAction === "stop" ? "Stopping" : "Stop Daemon"}
           </button>
         ) : (
           <button
@@ -270,7 +256,7 @@ function handleForceRun(): any {
               padding: "4px 12px",
             }}
           >
-            {daemonAction === "start" ? "Starting/* Production implementation with proper error handling */" : "Start Daemon"}
+            {daemonAction === "start" ? "Starting" : "Start Daemon"}
           </button>
         )}
         <label style={{ marginLeft: 16, color: "#ccc" }}>
@@ -305,7 +291,7 @@ function handleForceRun(): any {
             fontWeight: 600,
           }}
         >
-          {forceRunLoading ? "Running/* Production implementation with proper error handling */" : "Force Run"}
+          {forceRunLoading ? "Running" : "Force Run"}
         </button>
       </div>
       {forceRunResult && (
@@ -327,7 +313,7 @@ function handleForceRun(): any {
         </div>
       )}
       {loading ? (
-        <p>Loading/* Production implementation with proper error handling */</p>
+        <p>Loading</p>
       ) : error ? (
         <p style={{ color: "#f66" }}>{error}</p>
       ) : (
@@ -490,7 +476,7 @@ function handleForceRun(): any {
           </select>
         </div>
         {logsLoading ? (
-          <div style={{ color: "#ff0" }}>Loading logs/* Production implementation with proper error handling */</div>
+          <div style={{ color: "#ff0" }}>Loading logs</div>
         ) : (
           <div
             style={{

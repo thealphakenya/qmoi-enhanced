@@ -72,7 +72,7 @@ function checkDeployment(): any {
     `${COLORS.blue}═══════════════════════════════════════════════════════════${COLORS.reset}\n`,
   );
 
-  logger.info("🔍 Checking deployment links/* production implementation with proper error handling */\n");
+  logger.info("🔍 Checking deployment links\n");
   const results = {};
 
   for (const [name, url] of Object.entries(LINKS)) {

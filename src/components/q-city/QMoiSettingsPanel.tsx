@@ -43,8 +43,6 @@ export const QMoiSettingsPanel: React.FC = () => {
   /**
  * saveSettings function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function saveSettings(newSettings: unknown): any {
     setSettings(newSettings);
     localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
@@ -52,8 +50,6 @@ function saveSettings(newSettings: unknown): any {
   /**
  * exportSettings function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function exportSettings(): any {
     const data = {
       settings,
@@ -74,8 +70,6 @@ function exportSettings(): any {
   /**
  * importSettings function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -114,7 +108,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
           <select
             value={settings.autonomy || "manual"}
             onChange={(e) =>
-              saveSettings({ /* Production implementation with proper error handling */settings, autonomy: e.target.value })
+              saveSettings({ settings, autonomy: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
           >
@@ -129,7 +123,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
             type="text"
             value={settings.allowedActions || ""}
             onChange={(e) =>
-              saveSettings({ /* Production implementation with proper error handling */settings, allowedActions: e.target.value })
+              saveSettings({ settings, allowedActions: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
             ="e.g. build,deploy,test"
@@ -141,7 +135,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
             type="text"
             value={settings.mediaPerms || ""}
             onChange={(e) =>
-              saveSettings({ /* Production implementation with proper error handling */settings, mediaPerms: e.target.value })
+              saveSettings({ settings, mediaPerms: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
             ="e.g. images,docs,code"

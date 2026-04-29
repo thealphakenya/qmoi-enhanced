@@ -30,8 +30,6 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * LeahWalletPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function LeahWalletPanel(): any {
   const [balance, setBalance] = useState(100.0);
   const [transactions, setTransactions] = useState([
@@ -44,14 +42,12 @@ function LeahWalletPanel(): any {
   /**
  * handleAddFunds function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleAddFunds(): any {
     if (!amount) return;
     setBalance((b) => b + parseFloat(amount));
     setTransactions((t) => [
       { type: "credit", amount: parseFloat(amount), desc },
-      /* Production implementation with proper error handling */t,
+      t,
     ]);
     setAmount("");
     setDesc("");
@@ -60,14 +56,12 @@ function handleAddFunds(): any {
   /**
  * handleSpendFunds function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleSpendFunds(): any {
     if (!amount) return;
     setBalance((b) => b - parseFloat(amount));
     setTransactions((t) => [
       { type: "debit", amount: parseFloat(amount), desc },
-      /* Production implementation with proper error handling */t,
+      t,
     ]);
     setAmount("");
     setDesc("");

@@ -10,10 +10,10 @@ declare global {
   /**
  * safeConsoleError function
  */
-function safeConsoleError(/* production implementation with proper error handling */args: unknown[]): void;
+function safeConsoleError(args: unknown[]): void;
 
   interface Window {
-    safeConsoleError?: (/* production implementation with proper error handling */args: unknown[]) => void;
+    safeConsoleError?: (args: unknown[]) => void;
   }
 }
 

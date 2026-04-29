@@ -124,7 +124,7 @@ function realRequest(
     method,
     headers: {
       "content-type": "application/json",
-      /* production implementation with proper error handling */headers,
+      headers,
     },
   };
 

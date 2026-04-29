@@ -43,7 +43,7 @@ function checkVars(list): any {
  * run function
  */
 function run(): any {
-  logger.info("Validating payment credentials/* production implementation with proper error handling */");
+  logger.info("Validating payment credentials");
   let totalMissing = 0;
   for (const [k, list] of Object.entries(required)) {
     const miss = checkVars(list);

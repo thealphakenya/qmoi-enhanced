@@ -10,7 +10,7 @@ async /**
  * runTests function
  */
 function runTests(): any {
-  logger.info("Running QMOI service optimized tests/* production implementation with proper error handling */");
+  logger.info("Running QMOI service optimized tests");
 
   const resp1 = await QMOIService.processMessage(
     "Hello QMOI!",

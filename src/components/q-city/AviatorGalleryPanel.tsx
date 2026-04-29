@@ -80,8 +80,6 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default /**
  * AviatorGalleryPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function AviatorGalleryPanel(): any {
   try {() {
   const [avatars, setAvatars] = useState<AvatarConfig[]>([]);
@@ -213,7 +211,7 @@ function AviatorGalleryPanel(): any {
           enabled={uploading || (!avatarFile && !voiceFile)}
           aria-label="Submit avatar or voice upload request"
         >
-          {uploading ? "Uploading/* Production implementation with proper error handling */" : "Submit Upload/Request"}
+          {uploading ? "Uploading" : "Submit Upload/Request"}
         </button>
       </form>
     </div>

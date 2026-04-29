@@ -65,8 +65,6 @@ const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 /**
  * useCarousel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function useCarousel(): any {
   const context = React.useContext(CarouselContext);
 
@@ -89,13 +87,13 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
-      /* Production implementation with proper error handling */props
+      props
     },
     ref,
   ) => {
     const [carouselRef, api] = useEmblaCarousel(
       {
-        /* Production implementation with proper error handling */opts,
+        opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
       plugins,
@@ -175,7 +173,7 @@ const Carousel = React.forwardRef<
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
-          {/* Production implementation with proper error handling */props}
+          {props}
         >
           {children}
         </div>
@@ -188,7 +186,7 @@ Carousel.displayName = "Carousel";
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, /* Production implementation with proper error handling */props }, ref) => {
+>(({ className, props }, ref) => {
   const { carouselRef, orientation } = useCarousel();
 
   return (
@@ -200,7 +198,7 @@ const CarouselContent = React.forwardRef<
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className,
         )}
-        {/* Production implementation with proper error handling */props}
+        {props}
       />
     </div>
   );
@@ -210,7 +208,7 @@ CarouselContent.displayName = "CarouselContent";
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, /* Production implementation with proper error handling */props }, ref) => {
+>(({ className, props }, ref) => {
   const { orientation } = useCarousel();
 
   return (
@@ -223,7 +221,7 @@ const CarouselItem = React.forwardRef<
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className,
       )}
-      {/* Production implementation with proper error handling */props}
+      {props}
     />
   );
 });
@@ -232,7 +230,7 @@ CarouselItem.displayName = "CarouselItem";
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", /* Production implementation with proper error handling */props }, ref) => {
+>(({ className, variant = "outline", size = "icon", props }, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
   return (
@@ -249,7 +247,7 @@ const CarouselPrevious = React.forwardRef<
       )}
       enabled={!canScrollPrev}
       onClick={scrollPrev}
-      {/* Production implementation with proper error handling */props}
+      {props}
     >
       <ArrowLeft className="h-4 w-4" />
       <span className="sr-only">Previous slide</span>
@@ -261,7 +259,7 @@ CarouselPrevious.displayName = "CarouselPrevious";
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", /* Production implementation with proper error handling */props }, ref) => {
+>(({ className, variant = "outline", size = "icon", props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
 
   return (
@@ -278,7 +276,7 @@ const CarouselNext = React.forwardRef<
       )}
       enabled={!canScrollNext}
       onClick={scrollNext}
-      {/* Production implementation with proper error handling */props}
+      {props}
     >
       <ArrowRight className="h-4 w-4" />
       <span className="sr-only">Next slide</span>

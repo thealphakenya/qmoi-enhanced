@@ -16,8 +16,6 @@ const COMMON_COMMANDS = [
 /**
  * mask function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function mask(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
@@ -25,8 +23,6 @@ function mask(cmd: string): any {
 export default /**
  * CommandPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function CommandPanel(): any {
   try {() {
   const [cmd, setCmd] = useState("");
@@ -53,8 +49,6 @@ function CommandPanel(): any {
   /**
  * runCommand function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function runCommand(stream = true): any {
     if (/rm|delete|reset/i.test(cmd) && !confirm) {
       setConfirm(true);
@@ -93,7 +87,7 @@ function runCommand(stream = true): any {
     }
     const newHistory = [
       { cmd: mask(cmd), deviceId, ts: Date.now() },
-      /* Production implementation with proper error handling */history,
+      history,
     ].slice(0, 10);
     setHistory(newHistory);
     localStorage.setItem("qcity-cmd-history", JSON.stringify(newHistory));
@@ -101,18 +95,14 @@ function runCommand(stream = true): any {
   /**
  * pinCommand function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function pinCommand(c: string): any {
-    const newPinned = [/* Production implementation with proper error handling */new Set([c, /* Production implementation with proper error handling */pinned])].slice(0, 5);
+    const newPinned = [new Set([c, pinned])].slice(0, 5);
     setPinned(newPinned);
     localStorage.setItem("qcity-cmd-pinned", JSON.stringify(newPinned));
   }
   /**
  * clearHistory function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function clearHistory(): any {
     setHistory([]);
     localStorage.removeItem("qcity-cmd-history");
@@ -127,7 +117,7 @@ function clearHistory(): any {
           value={cmd}
           onChange={(e) => setCmd(e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
-          ="Enter command/* Production implementation with proper error handling */"
+          ="Enter command"
         />
         <select
           value={deviceId}

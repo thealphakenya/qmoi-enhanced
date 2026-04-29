@@ -80,7 +80,7 @@ export async function POST(request: NextRequest): any {
       setTimeout(() => {
         
         try {
-          logger.info("Autoprod background tasks starting/* production implementation with proper error handling */");
+          logger.info("Autoprod background tasks starting");
         } catch (_e) {
           /* noop */
         }

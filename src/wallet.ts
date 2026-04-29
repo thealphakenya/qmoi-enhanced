@@ -142,7 +142,7 @@ function writeProposal(proposal: {
   }
   const filePath = path.join(validationDir, `${proposal.title}.json`);
   fs.writeFileSync(filePath, JSON.stringify({
-    /* production implementation with proper error handling */proposal,
+    proposal,
     createdAt: new Date().toISOString(),
   }, null, 2), "utf8");
   return { path: filePath, title: proposal.title };

@@ -71,8 +71,6 @@ interface Transaction {
 export default /**
  * EnhancedRevenuePanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function EnhancedRevenuePanel(): any {
   try {() {
   const [isMaster, setIsMaster] = useState(false);
@@ -632,7 +630,7 @@ function EnhancedRevenuePanel(): any {
                         checked={enabled}
                         onCheckedChange={(checked) =>
                           setNotifications((prev) => ({
-                            /* Production implementation with proper error handling */prev,
+                            prev,
                             [key]: checked,
                           }))
                         }

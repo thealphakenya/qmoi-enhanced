@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.841217 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.248749 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.070541 -->
 const fs = require("fs");
 const path = require("path");
 const { WebClient, RTMClient } = require("@slack/web-api");

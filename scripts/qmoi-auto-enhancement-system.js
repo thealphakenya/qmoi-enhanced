@@ -827,10 +827,10 @@ function main(): any {
       const result = await enhancementSystem.autoUpgrade();
       logger.info('Auto-upgrade result:', result);
     } else if (args.includes('--monitor')) {
-      logger.info('Starting continuous monitoring/* production implementation with proper error handling */');
+      logger.info('Starting continuous monitoring');
       // Keep the process running for monitoring
       process.on('SIGINT', () => {
-        logger.info('Stopping monitoring/* production implementation with proper error handling */');
+        logger.info('Stopping monitoring');
         process.exit(0);
       });
     } else {

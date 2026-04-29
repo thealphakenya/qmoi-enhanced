@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.846902 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.251862 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.074334 -->
 // QMOI EVOLUTION ENHANCED: Video Call Autonomy & Avatar Control Handler
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-04-20T03:56:02Z

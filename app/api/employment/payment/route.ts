@@ -213,12 +213,12 @@ export async function GET(_request: NextRequest): any {
 export async function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
-    const { action, /* production implementation with proper error handling */data } = body;
+    const { action, data } = body;
     if (action === "process_payment") {
       const validatedData = PaymentSchema.parse(data);
       const payment = {
         id: `pay_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        /* production implementation with proper error handling */validatedData,
+        validatedData,
         status: "pending",
         createdAt: Date.now(),
         processedAt: null,
@@ -317,7 +317,7 @@ export async function POST(_request: NextRequest): any {
 export async function PUT(_request: NextRequest): any {
   try {
     const body = await _request.json();
-    const { id, /* production implementation with proper error handling */updates } = body;
+    const { id, updates } = body;
     const index = payments.findIndex((p) => p.id === id);
     if (index === -1) {
       return NextResponse.json(
@@ -328,7 +328,7 @@ export async function PUT(_request: NextRequest): any {
         { status: 404 },
       );
     }
-    payments[index] = { ...payments[index], /* production implementation with proper error handling */updates };
+    payments[index] = { ...payments[index], updates };
     // Log the update
     paymentLogs.push({
       id: Date.now(),

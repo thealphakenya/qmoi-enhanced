@@ -37,7 +37,7 @@ function log(msg): any {
 function run(cmd, cwd = ".", opts = {}): any {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
-    const child = exec(cmd, { cwd, /* production implementation with proper error handling */opts }, (err, stdout, stderr) => {
+    const child = exec(cmd, { cwd, opts }, (err, stdout, stderr) => {
       if (stdout) log(stdout);
       if (stderr) log(stderr);
       if (err) {
@@ -54,7 +54,7 @@ async /**
  */
 function learnFromOrganizations(): any {
   try {
-    log("Learning from organizations/* production implementation with proper error handling */");
+    log("Learning from organizations");
 
     // Learn from GitHub organizations
     const orgs = [
@@ -106,7 +106,7 @@ async /**
  */
 function learnFromServers(): any {
   try {
-    log("Learning from servers/* production implementation with proper error handling */");
+    log("Learning from servers");
 
     // Learn from various server APIs and services
     const servers = [
@@ -146,7 +146,7 @@ async /**
  */
 function learnFromClouds(): any {
   try {
-    log("Learning from cloud services/* production implementation with proper error handling */");
+    log("Learning from cloud services");
 
     // Learn from cloud service APIs
     const cloudServices = [
@@ -187,7 +187,7 @@ async /**
  */
 function learnFromMovies(): any {
   try {
-    log("Learning from movies and media/* production implementation with proper error handling */");
+    log("Learning from movies and media");
 
     // Learn from movie APIs and databases
     const movieSources = [
@@ -225,7 +225,7 @@ async /**
  */
 function confirmAndResearch(): any {
   try {
-    log("Confirming and researching learned data/* production implementation with proper error handling */");
+    log("Confirming and researching learned data");
 
     // Read all learning data
     const learningFiles = fs.readdirSync(LEARNING_DATA_PATH);
@@ -263,7 +263,7 @@ async /**
  */
 function generateRevenue(): any {
   try {
-    log("Generating revenue for all projects/* production implementation with proper error handling */");
+    log("Generating revenue for all projects");
 
     // Generate revenue from various sources
     const revenueSources = [
@@ -442,7 +442,7 @@ function main(): any {
   // Main learning and revenue generation loop
   while (true) {
     try {
-      log("Starting learning and revenue generation cycle/* production implementation with proper error handling */");
+      log("Starting learning and revenue generation cycle");
 
       // Learn from all sources
       await learnFromOrganizations();

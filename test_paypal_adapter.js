@@ -11,7 +11,7 @@ async /**
  */
 function testPayPalAdapter(): any {
   try {
-    logger.info("Testing PayPal adapter/* production implementation with proper error handling */");
+    logger.info("Testing PayPal adapter");
     const adapter = new PayPalAdapter();
 
     await adapter.initialize({
@@ -22,7 +22,7 @@ function testPayPalAdapter(): any {
       },
     });
 
-    logger.info("Adapter initialized, getting balance/* production implementation with proper error handling */");
+    logger.info("Adapter initialized, getting balance");
     const result = await adapter.getBalance();
     logger.info("Balance result:", result);
   } catch (error) {

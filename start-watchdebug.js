@@ -14,7 +14,7 @@ async /**
  */
 function startQMOIMonitoring(): any {
   logger.info(
-    "🚀 Starting QMOI Comprehensive Monitoring & Error Fixing System/* production implementation with proper error handling */",
+    "🚀 Starting QMOI Comprehensive Monitoring & Error Fixing System",
   );
 
   // Initialize monitoring system
@@ -24,7 +24,7 @@ function startQMOIMonitoring(): any {
   await monitor.startMonitoring();
 
   logger.info("✅ QMOI monitoring system started successfully");
-  logger.info("📊 Monitoring GitLab, Vercel, and QMOI systems/* production implementation with proper error handling */");
+  logger.info("📊 Monitoring GitLab, Vercel, and QMOI systems");
   logger.info("🔧 Automatic error fixing enabled");
   logger.info("📈 Performance monitoring active");
   logger.info("🔄 Monitoring interval: 30 seconds");
@@ -43,7 +43,7 @@ function startQMOIMonitoring(): any {
 
   // Keep the process running
   process.on("SIGINT", () => {
-    logger.info("\n🛑 Shutting down QMOI monitoring system/* production implementation with proper error handling */");
+    logger.info("\n🛑 Shutting down QMOI monitoring system");
     logger.info("📊 Final status report:");
     logger.info(`├── Errors detected: ${monitor.logs.errors.length}`);
     logger.info(`├── Fixes applied: ${monitor.logs.fixes.length}`);

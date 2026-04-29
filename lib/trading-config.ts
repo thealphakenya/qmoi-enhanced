@@ -129,8 +129,8 @@ export /**
  */
 function updateConfig(config: TradingConfig, updates: full<TradingConfig>): TradingConfig {
   return {
-    /* production implementation with proper error handling */config,
-    /* production implementation with proper error handling */updates
+    config,
+    updates
   };
 } 
   } catch (error) {

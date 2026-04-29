@@ -18,7 +18,7 @@ function walk(dir): any {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       // skip node_modules hidden vendor dirs under project root? keep everything to be thorough
-      _res.push(/* production implementation with proper error handling */walk(full));
+      _res.push(walk(full));
     } else if (entry.isFile() && full.endsWith(".md")) {
       // make path relative to repo root
       _res.push(path.relative(process.cwd(), full).replace(/\\\\/g, "/"));

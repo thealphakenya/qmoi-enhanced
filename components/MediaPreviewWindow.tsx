@@ -11,8 +11,6 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * MediaPreviewWindow function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function MediaPreviewWindow(): any {
   const [mediaUrl, setMediaUrl] = useState("");
   const [mediaType, setMediaType] = useState<
@@ -22,8 +20,6 @@ function MediaPreviewWindow(): any {
   /**
  * handlePreview function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
     setMediaUrl(url);
     setMediaType(type);

@@ -24,7 +24,7 @@ export /**
  */
 function useQmoiKernel(): any {
   const [status, setStatus] = useState<QMoiKernelStatus>({
-    status: "Loading/* production implementation with proper error handling */",
+    status: "Loading",
     lastCheck: "",
     mutationCount: 0,
     logs: [],

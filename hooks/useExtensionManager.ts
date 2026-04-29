@@ -24,7 +24,7 @@ function useExtensionManager(): any {
     try {
       production-ready
       await new Promise((res) => setTimeout(res, 1000));
-      setExtensions((prev) => [/* production implementation with proper error handling */prev, ext]);
+      setExtensions((prev) => [prev, ext]);
       setStatus("success");
     } catch (e: unknown) {
       setError(e.message);

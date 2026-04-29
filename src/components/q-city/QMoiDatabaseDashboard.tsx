@@ -16,8 +16,6 @@ interface Schema {
 export default /**
  * QMoiDatabaseDashboard function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMoiDatabaseDashboard(): any {
   try {({
   isMaster,

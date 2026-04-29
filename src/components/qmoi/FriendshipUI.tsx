@@ -64,8 +64,6 @@ interface FriendshipUIProps {
 export /**
  * FriendshipUI function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
   const { toast } = useToast();
   const [friends, setFriends] = useState<Friend[]>([]);
@@ -373,7 +371,7 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
         <div className="space-y-2">
           {isLoading ? (
             <div className="text-center py-8 text-gray-500">
-              Loading friends/* Production implementation with proper error handling */
+              Loading friends
             </div>
           ) : friends.length === 0 ? (
             <div className="text-center py-8 text-gray-500">
@@ -557,7 +555,7 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
             </>
           ) : (
             <div className="text-center py-8 text-gray-500">
-              Loading statistics/* Production implementation with proper error handling */
+              Loading statistics
             </div>
           )}
         </div>

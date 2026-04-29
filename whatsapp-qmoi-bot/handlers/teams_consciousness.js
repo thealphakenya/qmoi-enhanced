@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.835121 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.245150 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.066153 -->
 const fs = require("fs");
 const path = require("path");
 const { BotFrameworkAdapter, MemoryStorage, ConversationState, UserState } = require("botbuilder");

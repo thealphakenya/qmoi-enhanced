@@ -17,8 +17,6 @@ interface QMoiStateProps {
 export /**
  * QMoiState function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMoiState({
   session,
   global,
@@ -93,7 +91,7 @@ function QMoiState({
     setLoadingLogs(true);
     setLogError(null);
     const params = new URLSearchParams({
-      /* Production implementation with proper error handling */logFilters,
+      logFilters,
       page: String(page),
       pageSize: String(pageSize),
     });
@@ -177,7 +175,7 @@ function QMoiState({
         .map((x) => `"${x || ""}"`)
         .join(","),
     );
-    const csv = [header, /* Production implementation with proper error handling */rows].join("\n");
+    const csv = [header, rows].join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
@@ -334,7 +332,7 @@ function QMoiState({
                 ="User"
                 value={logFilters.user}
                 onChange={(e) =>
-                  setLogFilters((f) => ({ /* Production implementation with proper error handling */f, user: e.target.value }))
+                  setLogFilters((f) => ({ f, user: e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
@@ -342,7 +340,7 @@ function QMoiState({
                 ="Action"
                 value={logFilters.action}
                 onChange={(e) =>
-                  setLogFilters((f) => ({ /* Production implementation with proper error handling */f, action: e.target.value }))
+                  setLogFilters((f) => ({ f, action: e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
@@ -350,7 +348,7 @@ function QMoiState({
                 ="Status"
                 value={logFilters.status}
                 onChange={(e) =>
-                  setLogFilters((f) => ({ /* Production implementation with proper error handling */f, status: e.target.value }))
+                  setLogFilters((f) => ({ f, status: e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
@@ -358,7 +356,7 @@ function QMoiState({
                 type="date"
                 value={logFilters.date}
                 onChange={(e) =>
-                  setLogFilters((f) => ({ /* Production implementation with proper error handling */f, date: e.target.value }))
+                  setLogFilters((f) => ({ f, date: e.target.value }))
                 }
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
@@ -376,7 +374,7 @@ function QMoiState({
               </button>
             </div>
             {loadingLogs ? (
-              <div className="text-gray-400">Loading/* Production implementation with proper error handling */</div>
+              <div className="text-gray-400">Loading</div>
             ) : logError ? (
               <div className="text-red-400">{logError}</div>
             ) : (

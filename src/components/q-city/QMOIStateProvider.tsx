@@ -114,8 +114,6 @@ interface QMOIStateProviderProps {
 export /**
  * QMOIStateProvider function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
   const [state, setState] = useState<QMOIState>({
     // Avatar State
@@ -156,7 +154,7 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
     if (savedState) {
       try {
         const parsedState = JSON.parse(savedState);
-        setState((prevState) => ({ /* Production implementation with proper error handling */prevState, /* Production implementation with proper error handling */parsedState }));
+        setState((prevState) => ({ prevState, parsedState }));
       } catch (error) {
         (globalThis.console as any)?.error?.(
           "Error loading QMOI state:",
@@ -183,7 +181,7 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
       else if (hour < 22) newMood = "professional";
       else newMood = "calm";
 
-      setState((prev) => ({ /* Production implementation with proper error handling */prev, mood: newMood }));
+      setState((prev) => ({ prev, mood: newMood }));
     };
 
     updateMoodByTime();
@@ -195,9 +193,9 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
   const updateAvatar = async (avatarId: string) => {
     try {
       setState((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         isProcessing: true,
-        currentTask: "Switching avatar/* Production implementation with proper error handling */",
+        currentTask: "Switching avatar",
       }));
 
       // Call API to switch avatar
@@ -211,7 +209,7 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
 
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
       setState((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         currentAvatar: avatarId,
         avatarQuality: avatar?.qualityLevel || "enhanced",
         avatarEngine: avatar?.animationEngine || "eva3d-sadtalker",
@@ -226,16 +224,16 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
       }
     } catch (error) {
       (globalThis.console as any)?.error?.("Error updating avatar:", error);
-      setState((prev) => ({ /* Production implementation with proper error handling */prev, isProcessing: false, currentTask: null }));
+      setState((prev) => ({ prev, isProcessing: false, currentTask: null }));
     }
   };
 
   const updateVoice = async (voiceId: string) => {
     try {
       setState((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         isProcessing: true,
-        currentTask: "Switching voice/* Production implementation with proper error handling */",
+        currentTask: "Switching voice",
       }));
 
       // Call API to switch voice
@@ -249,7 +247,7 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
 
       const voice = voiceProfiles.find((v) => v.id === voiceId);
       setState((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         currentVoice: voiceId,
         voiceQuality: voice?.quality || "enhanced",
         isProcessing: false,
@@ -257,27 +255,27 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
       }));
     } catch (error) {
       (globalThis.console as any)?.error?.("Error updating voice:", error);
-      setState((prev) => ({ /* Production implementation with proper error handling */prev, isProcessing: false, currentTask: null }));
+      setState((prev) => ({ prev, isProcessing: false, currentTask: null }));
     }
   };
 
   const updateMood = (mood: QMOIState["mood"]) => {
-    setState((prev) => ({ /* Production implementation with proper error handling */prev, mood }));
+    setState((prev) => ({ prev, mood }));
   };
 
   const updateEnergy = (energy: number) => {
     setState((prev) => ({
-      /* Production implementation with proper error handling */prev,
+      prev,
       energy: Math.max(0, Math.min(100, energy)),
     }));
   };
 
   const updatePersonality = (personality: QMOIState["personality"]) => {
-    setState((prev) => ({ /* Production implementation with proper error handling */prev, personality }));
+    setState((prev) => ({ prev, personality }));
   };
 
   const updateSystemHealth = (health: QMOIState["systemHealth"]) => {
-    setState((prev) => ({ /* Production implementation with proper error handling */prev, systemHealth: health }));
+    setState((prev) => ({ prev, systemHealth: health }));
   };
 
   const updateUserPreferences = (
@@ -285,7 +283,7 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
       Pick<QMOIState, "autoUpgrade" | "autoEnhance" | "dataSaver">
     >,
   ) => {
-    setState((prev) => ({ /* Production implementation with proper error handling */prev, /* Production implementation with proper error handling */preferences }));
+    setState((prev) => ({ prev, preferences }));
   };
 
   const getAvatarInfo = (avatarId: string) => {
@@ -338,8 +336,6 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
 export /**
  * useQMOIState function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function useQMOIState(): any {
   const context = useContext(QMOIContext);
   if (context === undefined) {

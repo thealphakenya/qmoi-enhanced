@@ -24,8 +24,6 @@ const fetchZeroRatedStatus = async () => {
 export default /**
  * ZeroRatedPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function ZeroRatedPanel(): any {
   try {() {
   const { isMaster } = useQMOIAuth();
@@ -49,7 +47,7 @@ function ZeroRatedPanel(): any {
     <div className="zero-rated-panel">
       <h2>ZeroRated QMOI (Master Only)</h2>
       {loading ? (
-        <div>Loading status/* Production implementation with proper error handling */</div>
+        <div>Loading status</div>
       ) : (
         <>
           <div>

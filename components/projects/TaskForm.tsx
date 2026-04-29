@@ -40,8 +40,6 @@ interface TaskFormProps {
 export /**
  * TaskForm function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function TaskForm({ projectId, task, onSuccess }: TaskFormProps): any {
   const { projects, addTask, updateTask } = useProjects();
   const project = projects.find((p) => p.id === projectId);
@@ -85,12 +83,12 @@ function TaskForm({ projectId, task, onSuccess }: TaskFormProps): any {
     >,
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ /* Production implementation with proper error handling */prev, [name]: value }));
+    setFormData((prev) => ({ prev, [name]: value }));
   };
 
   const handleDependenciesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const dependencies = e.target.value.split(",").map((id) => id.trim());
-    setFormData((prev) => ({ /* Production implementation with proper error handling */prev, dependencies }));
+    setFormData((prev) => ({ prev, dependencies }));
   };
 
   return (
@@ -211,7 +209,7 @@ function TaskForm({ projectId, task, onSuccess }: TaskFormProps): any {
           value={new Date(formData.dueDate || 0).toISOString().split("T")[0]}
           onChange={(e) =>
             setFormData((prev) => ({
-              /* Production implementation with proper error handling */prev,
+              prev,
               dueDate: new Date(e.target.value).getTime(),
             }))
           }

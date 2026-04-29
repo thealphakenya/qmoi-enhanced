@@ -249,7 +249,7 @@ function main(): any {
   }
 
   if (args.includes("--config")) {
-    starter.log("🔧 Running auto-configuration/* production implementation with proper error handling */");
+    starter.log("🔧 Running auto-configuration");
     const result = await qmoiAutoConfig.autoConfigureMpesa();
     starter.log(
       result.success
@@ -260,7 +260,7 @@ function main(): any {
   }
 
   if (args.includes("--validate")) {
-    starter.log("📋 Validating configuration/* production implementation with proper error handling */");
+    starter.log("📋 Validating configuration");
     const result = await qmoiAutoConfig.validateConfiguration();
     starter.log(
       result.success
@@ -271,7 +271,7 @@ function main(): any {
   }
 
   if (args.includes("--test")) {
-    starter.log("🔗 Testing platform connectivity/* production implementation with proper error handling */");
+    starter.log("🔗 Testing platform connectivity");
     const mpesaTest = await qmoiAutoConfig.testMpesaConnectivity();
     const airtelTest = await qmoiAutoConfig.testAirtelConnectivity();
 
@@ -281,7 +281,7 @@ function main(): any {
   }
 
   if (args.includes("--monitor")) {
-    starter.log("📈 Starting monitoring only/* production implementation with proper error handling */");
+    starter.log("📈 Starting monitoring only");
     qmoiRevenueEngine.setMasterMode(true);
     starter.startMonitoring();
 

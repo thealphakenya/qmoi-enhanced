@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:06.929053 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.639997 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.626851 -->
 // Service Worker for Q Global SIM PWA
 const CACHE_NAME = 'qglobalsim-v1';
 const urlsToCache = [

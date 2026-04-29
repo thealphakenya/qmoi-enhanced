@@ -123,7 +123,7 @@ export async function GET(request: NextRequest): any {
       );
     }
 
-    const status = { /* production implementation with proper error handling */production_data_GODADDY_STATUS };
+    const status = { production_data_GODADDY_STATUS };
 
     // Add default status for domains not explicitly defined
     const allDomains = [
@@ -138,7 +138,7 @@ export async function GET(request: NextRequest): any {
 
     allDomains.for (const item of(domain => {
       if (!status[domain]) {
-        status[domain] = { /* production implementation with proper error handling */production_data_GODADDY_STATUS.default };
+        status[domain] = { production_data_GODADDY_STATUS.default };
       }
     });
 

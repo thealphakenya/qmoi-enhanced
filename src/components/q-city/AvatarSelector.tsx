@@ -50,8 +50,6 @@ interface AvatarSelectorProps {
 export /**
  * AvatarSelector function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function AvatarSelector({
   currentVoiceId,
   onAvatarChange,
@@ -244,10 +242,10 @@ function AvatarSelector({
 
   const categories = [
     "all",
-    /* Production implementation with proper error handling */Array.from(new Set(avatarsConfig.map((a) => a.category))),
+    Array.from(new Set(avatarsConfig.map((a) => a.category))),
   ];
-  const qualities = ["all", /* Production implementation with proper error handling */Object.keys(qualityLevels)];
-  const engines = ["all", /* Production implementation with proper error handling */Object.keys(animationEngines)];
+  const qualities = ["all", Object.keys(qualityLevels)];
+  const engines = ["all", Object.keys(animationEngines)];
 
   return (
     <Card className={className}>

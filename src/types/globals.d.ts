@@ -78,29 +78,29 @@ production-ready
   /**
  * test function
  */
-function test(name: string, fn: (/* production implementation with proper error handling */args: unknown[]): any => any): void;
+function test(name: string, fn: (args: unknown[]): any => any): void;
   /**
  * beforeAll function
  */
-function beforeAll(fn: (/* production implementation with proper error handling */args: unknown[]): any => any): void;
+function beforeAll(fn: (args: unknown[]): any => any): void;
   /**
  * afterAll function
  */
-function afterAll(fn: (/* production implementation with proper error handling */args: unknown[]): any => any): void;
+function afterAll(fn: (args: unknown[]): any => any): void;
   /**
  * beforeEach function
  */
-function beforeEach(fn: (/* production implementation with proper error handling */args: unknown[]): any => any): void;
+function beforeEach(fn: (args: unknown[]): any => any): void;
   /**
  * afterEach function
  */
-function afterEach(fn: (/* production implementation with proper error handling */args: unknown[]): any => any): void;
+function afterEach(fn: (args: unknown[]): any => any): void;
   const expect: unknown;
 }
 
 declare global {
   interface Console {
-    error?: (/* production implementation with proper error handling */args: unknown[]) => void;
+    error?: (args: unknown[]) => void;
   }
 }
 

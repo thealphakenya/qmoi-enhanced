@@ -1,6 +1,3 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:27.311667 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.286908 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.150556 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:17Z
@@ -18,9 +15,6 @@ import { specificExports } from "../../../hooks/useProjects";
 export default /**
  * ProjectDetailPage function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function ProjectDetailPage(): any {
   try {() {
   const router = useRouter();

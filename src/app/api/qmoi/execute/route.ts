@@ -76,10 +76,10 @@ function executeJavaScript(code: string): Promise<string> {
       const vm = new VM({
         timeout: 5000, // 5 second timeout
           console: {
-            log: (/* production implementation with proper error handling */args: any[]) => {
+            log: (args: any[]) => {
               resolve(args.join(" "));
             },
-            error: (/* production implementation with proper error handling */args: any[]) => {
+            error: (args: any[]) => {
               reject(new Error(args.join(" ")));
             },
           },

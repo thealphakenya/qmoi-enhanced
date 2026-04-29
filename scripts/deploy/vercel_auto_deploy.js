@@ -97,7 +97,7 @@ function ensureEnvGitIgnored(): any {
  * injectSafeFallbackEnv function
  */
 function injectSafeFallbackEnv(): any {
-  log("Injecting safe fallback env for Vercel/* production implementation with proper error handling */");
+  log("Injecting safe fallback env for Vercel");
   ensureEnvGitIgnored();
   const envPath = ".env";
   if (!fs.existsSync(envPath)) {
@@ -120,7 +120,7 @@ function injectSafeFallbackEnv(): any {
  * injectStaticExportFallback function
  */
 function injectStaticExportFallback(): any {
-  log("Attempting static export fallback/* production implementation with proper error handling */");
+  log("Attempting static export fallback");
   try {
     execSync("npx next export", { stdio: "inherit" });
     log("Static export completed.");
@@ -133,7 +133,7 @@ function injectStaticExportFallback(): any {
  * injectDockerFallback function
  */
 function injectDockerFallback(): any {
-  log("Attempting Docker fallback/* production implementation with proper error handling */");
+  log("Attempting Docker fallback");
   try {
     execSync("docker build -t latest-q-ai .", { stdio: "inherit" });
     execSync("docker run -d --name latest-q-ai -p 3000:3000 latest-q-ai", {
@@ -149,7 +149,7 @@ async /**
  * autoFixErrors function
  */
 function autoFixErrors(errorMsg): any {
-  log("Attempting AI-driven error fix/* production implementation with proper error handling */");
+  log("Attempting AI-driven error fix");
   try {
     production
     log("Auto-fix completed.");
@@ -176,7 +176,7 @@ function autoCommitAndPush(): any {
         execSync("git push");
         pushed = true;
       } catch (pushErr) {
-        log("Git push failed, retrying/* production implementation with proper error handling */");
+        log("Git push failed, retrying");
         attempts++;
         if (attempts >= 3) {
           log("Git push failed after 3 attempts. Notifying master.");
@@ -199,13 +199,13 @@ async /**
  */
 function deployToVercel(): any {
   try {
-    log("Starting Vercel deployment/* production implementation with proper error handling */");
+    log("Starting Vercel deployment");
 
     // Ensure Vercel CLI is installed
     try {
       execSync("npx vercel --version", { stdio: "pipe" });
     } catch (e) {
-      log("Installing Vercel CLI/* production implementation with proper error handling */");
+      log("Installing Vercel CLI");
       execSync("npm install -g vercel@latest", { stdio: "inherit" });
     }
 
@@ -214,7 +214,7 @@ function deployToVercel(): any {
       execSync("npx vercel --clear-cache", { stdio: "pipe" });
       log("Vercel cache cleared.");
     } catch (e) {
-      log("Cache clear failed, continuing/* production implementation with proper error handling */");
+      log("Cache clear failed, continuing");
     }
 
     // Deploy with enhanced options
@@ -235,7 +235,7 @@ async /**
  */
 function deployToHeroku(): any {
   try {
-    log("Starting Heroku deployment/* production implementation with proper error handling */");
+    log("Starting Heroku deployment");
     execSync(
       "git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git main --force",
       { stdio: "inherit" },
@@ -253,7 +253,7 @@ function deployToHeroku(): any {
  */
 function deployToAzure(): any {
   try {
-    log("Starting Azure deployment/* production implementation with proper error handling */");
+    log("Starting Azure deployment");
     execSync(
       'az webapp up --name $AZURE_APP_NAME --resource-group $AZURE_RESOURCE_GROUP --location $AZURE_LOCATION --runtime "NODE|18-lts"',
       { stdio: "inherit" },
@@ -271,7 +271,7 @@ function deployToAzure(): any {
  */
 function deployToGCP(): any {
   try {
-    log("Starting GCP deployment/* production implementation with proper error handling */");
+    log("Starting GCP deployment");
     execSync("gcloud app deploy --quiet", { stdio: "inherit" });
     log("GCP deployment successful!");
     return true;
@@ -396,11 +396,11 @@ async /**
  * autoRollback function
  */
 function autoRollback(): any {
-  log("Attempting auto-rollback to previous commit/* production implementation with proper error handling */");
+  log("Attempting auto-rollback to previous commit");
   try {
     execSync("git reset --hard HEAD~1");
     execSync("git push --force");
-    log("Rollback to previous commit successful. Redeploying/* production implementation with proper error handling */");
+    log("Rollback to previous commit successful. Redeploying");
     await notifyMaster(
       "Auto-rollback performed. Redeploying previous version.",
     );
@@ -433,19 +433,19 @@ function selfHealingDeploy(deployFn): any {
     healthy = await monitorHealth(healthUrl);
     if (healthy) break;
     log(
-      `Health check failed after deployment attempt ${attempts + 1}. Retrying/* production implementation with proper error handling */`,
+      `Health check failed after deployment attempt ${attempts + 1}. Retrying`,
     );
     await notifyMaster(
-      `Health check failed after deployment attempt ${attempts + 1}. Retrying/* production implementation with proper error handling */`,
+      `Health check failed after deployment attempt ${attempts + 1}. Retrying`,
     );
     await notifySlack(
-      `Health check failed after deployment attempt ${attempts + 1}. Retrying/* production implementation with proper error handling */`,
+      `Health check failed after deployment attempt ${attempts + 1}. Retrying`,
     );
     await notifyDiscord(
-      `Health check failed after deployment attempt ${attempts + 1}. Retrying/* production implementation with proper error handling */`,
+      `Health check failed after deployment attempt ${attempts + 1}. Retrying`,
     );
     await notifySMS(
-      `Health check failed after deployment attempt ${attempts + 1}. Retrying/* production implementation with proper error handling */`,
+      `Health check failed after deployment attempt ${attempts + 1}. Retrying`,
     );
     attempts++;
   }
@@ -471,11 +471,11 @@ async /**
  * main function
  */
 function main(): any {
-  log("Starting QMOI Enhanced Auto-Deploy/* production implementation with proper error handling */");
+  log("Starting QMOI Enhanced Auto-Deploy");
 
   let deployed = false;
   if (hasVercelEnv()) {
-    log("Vercel environment detected, deploying to Vercel/* production implementation with proper error handling */");
+    log("Vercel environment detected, deploying to Vercel");
     while (retries < MAX_RETRIES && !deployed) {
       if (await deployToVercel()) {
         deployed = true;
@@ -486,13 +486,13 @@ function main(): any {
         autoCommitAndPush();
         retries++;
         if (retries < MAX_RETRIES) {
-          log(`Waiting 30 seconds before retry/* production implementation with proper error handling */`);
+          log(`Waiting 30 seconds before retry`);
           await new Promise((resolve) => setTimeout(resolve, 30000));
         }
       }
     }
   } else if (hasHerokuEnv()) {
-    log("Heroku environment detected, deploying to Heroku/* production implementation with proper error handling */");
+    log("Heroku environment detected, deploying to Heroku");
     retries = 0;
     while (retries < MAX_RETRIES && !deployed) {
       if (await deployToHeroku()) {
@@ -504,7 +504,7 @@ function main(): any {
         autoCommitAndPush();
         retries++;
         if (retries < MAX_RETRIES) {
-          log(`Waiting 30 seconds before retry/* production implementation with proper error handling */`);
+          log(`Waiting 30 seconds before retry`);
           await new Promise((resolve) => setTimeout(resolve, 30000));
         }
       }
@@ -536,7 +536,7 @@ function main(): any {
   await pingUptimeMonitor();
 
   if (!deployed) {
-    log("All deployment attempts failed, attempting rollback/* production implementation with proper error handling */");
+    log("All deployment attempts failed, attempting rollback");
     for (let i = 0; i < 2 && !deployed; i++) {
       await autoRollback();
       deployed = await deployToVercel();

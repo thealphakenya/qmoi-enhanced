@@ -20,7 +20,7 @@ function scanPaths(paths, patterns): any {
     if (stat.isDirectory()) {
       const files = fs.readdirSync(p);
       for (const f of files) {
-        matches.push(/* production implementation with proper error handling */scanPaths([path.join(p, f)], patterns));
+        matches.push(scanPaths([path.join(p, f)], patterns));
       }
     } else {
       // Only scan text files

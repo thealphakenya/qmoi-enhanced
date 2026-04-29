@@ -96,8 +96,8 @@ function useTradingAutomation(): any {
       production-ready
       const data = await res.json();
       setStatus((prev) => ({
-        /* production implementation with proper error handling */prev,
-        settings: { /* production implementation with proper error handling */prev.settings, /* production implementation with proper error handling */data },
+        prev,
+        settings: { prev.settings, data },
       }));
     } catch (error) {
       (globalThis.console as any)?.error?.(
@@ -116,7 +116,7 @@ function useTradingAutomation(): any {
       });
       production-ready
       const data = await res.json();
-      setStatus((prev) => ({ /* production implementation with proper error handling */prev, isActive: data.isActive }));
+      setStatus((prev) => ({ prev, isActive: data.isActive }));
     } catch (error) {
       (globalThis.console as any)?.error?.(
         "Failed to toggle auto-trading:",

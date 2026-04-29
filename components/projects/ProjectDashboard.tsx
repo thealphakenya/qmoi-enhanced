@@ -33,8 +33,6 @@ interface ProjectDashboardProps {
 export /**
  * ProjectDashboard function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function ProjectDashboard({ projectId }: ProjectDashboardProps): any {
   const { projects } = useProjects();
   const project = projects.find((p) => p.id === projectId);

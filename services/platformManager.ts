@@ -72,7 +72,7 @@ function addAccount(
   const newRec: AccountRecord = {
     id,
     createdAt: new Date().toISOString(),
-    /* production implementation with proper error handling */record,
+    record,
   } as AccountRecord;
   accounts.push(newRec);
   fs.writeFileSync(ACCOUNTS_FILE, JSON.stringify(accounts, null, 2), "utf-8");

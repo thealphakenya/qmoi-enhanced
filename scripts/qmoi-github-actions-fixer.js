@@ -511,7 +511,7 @@ function main(): any {
     await fixer.initialize();
 
     if (args.includes("--fix-all")) {
-      logger.info("🚀 Fixing all GitHub Actions workflows/* production implementation with proper error handling */");
+      logger.info("🚀 Fixing all GitHub Actions workflows");
       const report = await fixer.fixAllWorkflows();
       logger.info("Fix report:", JSON.stringify(report, null, 2));
     } else if (args.includes("--validate")) {

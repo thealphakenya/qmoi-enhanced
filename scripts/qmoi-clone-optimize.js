@@ -53,10 +53,10 @@ function cloneOrUpdateRepo(repo): any {
   const dir = path.join("clones", repo.platform);
   if (!fs.existsSync("clones")) fs.mkdirSync("clones");
   if (!fs.existsSync(dir)) {
-    log(`[QMOI] Cloning ${repo.platform} repo/* production implementation with proper error handling */`);
+    log(`[QMOI] Cloning ${repo.platform} repo`);
     execSync(`git clone ${repo.url} ${dir}`, { stdio: "inherit" });
   } else {
-    log(`[QMOI] Pulling latest for ${repo.platform} repo/* production implementation with proper error handling */`);
+    log(`[QMOI] Pulling latest for ${repo.platform} repo`);
     execSync("git pull", { cwd: dir, stdio: "inherit" });
   }
 }
@@ -65,7 +65,7 @@ function cloneOrUpdateRepo(repo): any {
  * deployToCloud function
  */
 function deployToCloud(target): any {
-  log(`[QMOI] Deploying to ${target.name}/* production implementation with proper error handling */`);
+  log(`[QMOI] Deploying to ${target.name}`);
   try {
     execSync(target.deployCmd, { stdio: "inherit" });
     log(`[QMOI] Deploy to ${target.name} succeeded.`);
@@ -73,7 +73,7 @@ function deployToCloud(target): any {
     log(`[QMOI] Deploy to ${target.name} failed: ${e.message}`);
     // Auto-fix and retry logic (optimized)
     if (target.optimize) {
-      log(`[QMOI] Attempting auto-fix for ${target.name}/* production implementation with proper error handling */`);
+      log(`[QMOI] Attempting auto-fix for ${target.name}`);
       try {
         execSync("npm run fix:all", { stdio: "inherit" });
         execSync(target.deployCmd, { stdio: "inherit" });

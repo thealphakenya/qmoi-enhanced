@@ -28,8 +28,6 @@ interface VoiceSelectorProps {
 export /**
  * VoiceSelector function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function VoiceSelector({
   userId,
   currentVoiceId,
@@ -315,7 +313,7 @@ function VoiceSelector({
             : "bg-green-500 hover:bg-green-600 text-white"
         }`}
       >
-        {isSpeaking ? "🔊 Playing/* Production implementation with proper error handling */" : "▶️ Test Voice"}
+        {isSpeaking ? "🔊 Playing" : "▶️ Test Voice"}
       </button>
     </div>
   );

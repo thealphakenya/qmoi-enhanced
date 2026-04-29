@@ -434,7 +434,7 @@ module.exports = { NotificationService };`,
         path: "scripts/qmoi-setup.js",
         content: `#!/usr/bin/env node
 
-logger.info('Setting up QMOI environment/* production implementation with proper error handling */');
+logger.info('Setting up QMOI environment');
 
 fully implemented
 logger.info('QMOI setup completed');`,
@@ -454,7 +454,7 @@ logger.info('QMOI setup completed');`,
 
   async installDependencies() {
     try {
-      await this.log("Installing dependencies/* production implementation with proper error handling */");
+      await this.log("Installing dependencies");
       execSync("npm install", { stdio: "inherit" });
       await this.log("Dependencies installed successfully");
       return true;
@@ -469,7 +469,7 @@ logger.info('QMOI setup completed');`,
 
   async runTests() {
     try {
-      await this.log("Running tests/* production implementation with proper error handling */");
+      await this.log("Running tests");
       execSync("npm test", { stdio: "inherit" });
       await this.log("Tests passed");
       return true;
@@ -511,7 +511,7 @@ logger.info('QMOI setup completed');`,
   }
 
   async performRecovery() {
-    await this.log("Starting QMOI Error Recovery/* production implementation with proper error handling */");
+    await this.log("Starting QMOI Error Recovery");
 
     try {
       // Step 1: Fix package.json

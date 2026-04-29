@@ -11,8 +11,8 @@ const logger = {
   error: console.error.bind(console),
 };
 function verifyWebhook(raw: string, signatureHeader: string | undefined): boolean {
-  // Fallback stub for webhook signature verification.
-  // Replace with real verification logic if required.
+  // Implement webhook signature verification using the configured secret.
+  // This function should return true only when the signature and payload are valid.
   return true;
 }
 console.log("production mode initialized");

@@ -48,8 +48,6 @@ type UIMode = "chat" | "code_review" | "RELEASE" | "test" | "autodev" | "qradio"
 export /**
  * QI function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QI({ isMaster = true }: { isMaster?: boolean }): any {
   // State Management
   const [mode, setMode] = useState<UIMode>("chat");
@@ -123,7 +121,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
 
       const result = await response.json();
       setSelfWorkResults((prev) => [
-        /* Production implementation with proper error handling */prev,
+        prev,
         {
           type: "code_review",
           status: "completed",
@@ -141,7 +139,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "success",
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, summaryMsg]);
+      setMessages((prev) => [prev, summaryMsg]);
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -150,7 +148,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, errorMsg]);
+      setMessages((prev) => [prev, errorMsg]);
     } finally {
       setCurrentlyAnalyzing(null);
     }
@@ -167,7 +165,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
 
       const result = await response.json();
       setSelfWorkResults((prev) => [
-        /* Production implementation with proper error handling */prev,
+        prev,
         {
           type: "test_run",
           status: "completed",
@@ -184,7 +182,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: result.failed === 0 ? "success" : "error",
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, testMsg]);
+      setMessages((prev) => [prev, testMsg]);
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -193,7 +191,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, errorMsg]);
+      setMessages((prev) => [prev, errorMsg]);
     } finally {
       setCurrentlyAnalyzing(null);
     }
@@ -211,7 +209,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
 
       const result = await response.json();
       setSelfWorkResults((prev) => [
-        /* Production implementation with proper error handling */prev,
+        prev,
         {
           type: "RELEASE",
           status: "completed",
@@ -229,7 +227,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         type: "info",
         metadata: { language: "markdown" },
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, debugMsg]);
+      setMessages((prev) => [prev, debugMsg]);
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -238,7 +236,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, errorMsg]);
+      setMessages((prev) => [prev, errorMsg]);
     } finally {
       setCurrentlyAnalyzing(null);
     }
@@ -251,7 +249,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
   /** Toggle autoproduction_mode */
   const toggleAutoDev = useCallback(async () => {
     const newStatusValue = !autoDevStatus.enabled;
-    setAutoDevStatus((prev) => ({ /* Production implementation with proper error handling */prev, enabled: newStatusValue }));
+    setAutoDevStatus((prev) => ({ prev, enabled: newStatusValue }));
 
     const statusMsg: ChatMessage = {
       id: Date.now().toString(),
@@ -262,7 +260,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       timestamp: new Date(),
       type: newStatusValue ? "success" : "info",
     };
-    setMessages((prev) => [/* Production implementation with proper error handling */prev, statusMsg]);
+    setMessages((prev) => [prev, statusMsg]);
 
     // Notify backend
     await apiClient.get("/api/qmoi/autodev/toggle", {
@@ -284,7 +282,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
 
       const result = await response.json();
       setSelfWorkResults((prev) => [
-        /* Production implementation with proper error handling */prev,
+        prev,
         {
           type: "feature_gen",
           status: "completed",
@@ -295,19 +293,19 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       ]);
 
       setAutoDevStatus((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         features_generated: prev.features_generated + 1,
       }));
 
       const featureMsg: ChatMessage = {
         id: Date.now().toString(),
-        text: `✨ Feature Generated\n\n${result.featureName}\n\nImplementation started/* Production implementation with proper error handling */`,
+        text: `✨ Feature Generated\n\n${result.featureName}\n\nImplementation started`,
         sender: "bot",
         timestamp: new Date(),
         type: "success",
         metadata: { language: "typescript", executable: true },
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, featureMsg]);
+      setMessages((prev) => [prev, featureMsg]);
     } catch (error) {
       const errorMsg: ChatMessage = {
         id: Date.now().toString(),
@@ -316,7 +314,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, errorMsg]);
+      setMessages((prev) => [prev, errorMsg]);
     } finally {
       setCurrentlyAnalyzing(null);
     }
@@ -337,7 +335,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       type: "text",
     };
 
-    setMessages((prev) => [/* Production implementation with proper error handling */prev, userMessage]);
+    setMessages((prev) => [prev, userMessage]);
     const userInput = input;
     setInput("");
     setLoading(true);
@@ -406,7 +404,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           timestamp: new Date(),
           type: "text",
         };
-        setMessages((prev) => [/* Production implementation with proper error handling */prev, botMessage]);
+        setMessages((prev) => [prev, botMessage]);
 
         // Update memory
         apiClient.get("/api/qmoi/memory", {
@@ -434,7 +432,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
         timestamp: new Date(),
         type: "error",
       };
-      setMessages((prev) => [/* Production implementation with proper error handling */prev, botMessage]);
+      setMessages((prev) => [prev, botMessage]);
     } finally {
       setLoading(false);
     }
@@ -478,7 +476,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
               onClick={() => performCodeReview("src/")}
               enabled={currentlyAnalyzing === "src/"}
             >
-              {currentlyAnalyzing === "src/" ? "Analyzing/* Production implementation with proper error handling */" : "Analyze Codebase"}
+              {currentlyAnalyzing === "src/" ? "Analyzing" : "Analyze Codebase"}
             </button>
           </div>
         );
@@ -489,7 +487,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
             <h3>Test Runner</h3>
             <p>Tests run: {selfWorkResults.filter((r) => r.type === "test_run").length}</p>
             <button onClick={runTests} enabled={currentlyAnalyzing === "tests"}>
-              {currentlyAnalyzing === "tests" ? "Running/* Production implementation with proper error handling */" : "Run Tests"}
+              {currentlyAnalyzing === "tests" ? "Running" : "Run Tests"}
             </button>
           </div>
         );
@@ -500,7 +498,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
             production-ready
             <p>Issues found: {selfWorkResults.filter((r) => r.type === "RELEASE").length}</p>
             <button onClick={debugAndFix} enabled={currentlyAnalyzing === "RELEASE"}>
-              {currentlyAnalyzing === "RELEASE" ? "Debugging/* Production implementation with proper error handling */" : "Analyze & Fix"}
+              {currentlyAnalyzing === "RELEASE" ? "Debugging" : "Analyze & Fix"}
             </button>
           </div>
         );
@@ -602,7 +600,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
           enabled={loading}
           className="qi-button-send"
         >
-          {loading ? "⏳ Processing/* Production implementation with proper error handling */" : "📤 Send"}
+          {loading ? "⏳ Processing" : "📤 Send"}
         </button>
         <input
           type="file"

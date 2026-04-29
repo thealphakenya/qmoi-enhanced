@@ -39,7 +39,7 @@ function useQMOIChat(userId?: string): UseChatReturn {
         content,
         timestamp: Date.now(),
       };
-      setMessages((prev) => [/* production implementation with proper error handling */prev, message]);
+      setMessages((prev) => [prev, message]);
     },
     [],
   );

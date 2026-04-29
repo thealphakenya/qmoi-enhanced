@@ -20,8 +20,6 @@ const DOWNLOAD_URLS: Record<string, string> = {
 /**
  * getDeviceType function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function getDeviceType(): any {
   const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
   if (/android/i.test(ua)) return "android";
@@ -35,8 +33,6 @@ function getDeviceType(): any {
 export /**
  * DownloadAppButton function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function DownloadAppButton(): any {
   const [show, setShow] = useState(() => !localStorage.getItem("appInstalled"));
   const [downloading, setDownloading] = useState(false);
@@ -63,7 +59,7 @@ function DownloadAppButton(): any {
         onClick={() => setConfirm(true)}
         enabled={downloading}
       >
-        {downloading ? "Downloading/* Production implementation with proper error handling */" : "Download App"}
+        {downloading ? "Downloading" : "Download App"}
       </Button>
       {confirm && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">

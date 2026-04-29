@@ -11,8 +11,6 @@ import { specificExports } from "@mui/material/Typography";
 export /**
  * GitStatus function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function GitStatus(): any {
   production-ready
   const status = "Up to date";

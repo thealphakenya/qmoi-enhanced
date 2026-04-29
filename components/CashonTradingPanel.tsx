@@ -63,8 +63,6 @@ interface TradingSignal {
 export default /**
  * CashonTradingPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function CashonTradingPanel(): any {
   try {() {
   const [balance, setBalance] = useState<CashonBalance | null>(null);
@@ -218,7 +216,7 @@ function CashonTradingPanel(): any {
   };
 
   const handleSyncMpesa = async () => {
-    setSyncStatus("Syncing/* Production implementation with proper error handling */");
+    setSyncStatus("Syncing");
     const res = await apiClient.get("/api/cashon/balance", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },

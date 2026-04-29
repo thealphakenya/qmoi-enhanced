@@ -48,7 +48,7 @@ export async function POST(request: NextRequest): any {
         ]
       : [];
 
-    const insights = [/* production implementation with proper error handling */baselineInsights, /* production implementation with proper error handling */detailInsights];
+    const insights = [baselineInsights, detailInsights];
     const summary = `AutoResearch run ${researchId} completed: ${insights.length} insights generated.`;
 
     // Track this action through the central tracking API

@@ -168,7 +168,7 @@ function POST(request: NextRequest): any {
         status: "success",
         message: "Security settings updated",
         settings: {
-          /* production implementation with proper error handling */settings,
+          settings,
           lastUpdate: new Date().toISOString(),
         },
       });

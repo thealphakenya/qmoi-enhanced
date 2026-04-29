@@ -190,8 +190,6 @@ interface BiometricAuthProps {
 export default /**
  * BiometricAuth function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function BiometricAuth(): any {
   try {({
   onAuthSuccess,
@@ -305,15 +303,15 @@ function BiometricAuth(): any {
       const result = await onMasterControl(request);
       if (result) {
         setMasterRequests((prev) => [
-          /* Production implementation with proper error handling */prev,
-          { /* Production implementation with proper error handling */request, status: "approved" },
+          prev,
+          { request, status: "approved" },
         ]);
         fully implemented
         addAuditLog("master_control", "approved", request.interface);
       } else {
         setMasterRequests((prev) => [
-          /* Production implementation with proper error handling */prev,
-          { /* Production implementation with proper error handling */request, status: "rejected" },
+          prev,
+          { request, status: "rejected" },
         ]);
         setError("Master control request rejected");
         addAuditLog("master_control", "rejected", request.interface);
@@ -347,15 +345,15 @@ function BiometricAuth(): any {
       const result = await onPaymentConfirmation(payment);
       if (result) {
         setPaymentHistory((prev) => [
-          /* Production implementation with proper error handling */prev,
-          { /* Production implementation with proper error handling */payment, status: "confirmed" },
+          prev,
+          { payment, status: "confirmed" },
         ]);
         setSuccess("Payment confirmed successfully");
         addAuditLog("payment_confirmation", "confirmed", payment.provider);
       } else {
         setPaymentHistory((prev) => [
-          /* Production implementation with proper error handling */prev,
-          { /* Production implementation with proper error handling */payment, status: "failed" },
+          prev,
+          { payment, status: "failed" },
         ]);
         setError("Payment confirmation failed");
         addAuditLog("payment_confirmation", "failed", payment.provider);
@@ -407,7 +405,7 @@ function BiometricAuth(): any {
       result,
       interface,
     };
-    setAuditLog((prev) => [/* Production implementation with proper error handling */prev, logEntry]);
+    setAuditLog((prev) => [prev, logEntry]);
   };
 
   const syncAcrossInterfaces = async () => {
@@ -427,7 +425,7 @@ function BiometricAuth(): any {
 
   const implementRevenueStrategy = async (strategy: RevenueStrategy) => {
     try {
-      const updatedStrategy = { /* Production implementation with proper error handling */strategy, status: "implementing" as const };
+      const updatedStrategy = { strategy, status: "implementing" as const };
       setRevenueIdeas((prev) =>
         prev.map((s) => (s.id === strategy.id ? updatedStrategy : s)),
       );
@@ -436,7 +434,7 @@ function BiometricAuth(): any {
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       const completedStrategy = {
-        /* Production implementation with proper error handling */updatedStrategy,
+        updatedStrategy,
         status: "active" as const,
       };
       setRevenueIdeas((prev) =>
@@ -503,7 +501,7 @@ function BiometricAuth(): any {
       }
 
       // Update last used timestamp
-      const updatedBiometric = { /* Production implementation with proper error handling */biometric, lastUsed: new Date() };
+      const updatedBiometric = { biometric, lastUsed: new Date() };
       setSavedBiometrics((prev) =>
         prev.map((b) => (b.id === biometric.id ? updatedBiometric : b)),
       );
@@ -576,7 +574,7 @@ function BiometricAuth(): any {
       isActive: true,
     };
 
-    setSavedBiometrics((prev) => [/* Production implementation with proper error handling */prev, biometricData]);
+    setSavedBiometrics((prev) => [prev, biometricData]);
     onBiometricSaved(biometricData);
     setSuccess("Fingerprint captured successfully!");
   };
@@ -598,7 +596,7 @@ function BiometricAuth(): any {
       isActive: true,
     };
 
-    setSavedBiometrics((prev) => [/* Production implementation with proper error handling */prev, biometricData]);
+    setSavedBiometrics((prev) => [prev, biometricData]);
     onBiometricSaved(biometricData);
     setSuccess("Voice pattern captured successfully!");
   };
@@ -620,7 +618,7 @@ function BiometricAuth(): any {
       isActive: true,
     };
 
-    setSavedBiometrics((prev) => [/* Production implementation with proper error handling */prev, biometricData]);
+    setSavedBiometrics((prev) => [prev, biometricData]);
     onBiometricSaved(biometricData);
     setSuccess("Face pattern captured successfully!");
   };
@@ -642,7 +640,7 @@ function BiometricAuth(): any {
       isActive: true,
     };
 
-    setSavedBiometrics((prev) => [/* Production implementation with proper error handling */prev, biometricData]);
+    setSavedBiometrics((prev) => [prev, biometricData]);
     onBiometricSaved(biometricData);
     setSuccess("Iris pattern captured successfully!");
   };
@@ -664,7 +662,7 @@ function BiometricAuth(): any {
       isActive: true,
     };
 
-    setSavedBiometrics((prev) => [/* Production implementation with proper error handling */prev, biometricData]);
+    setSavedBiometrics((prev) => [prev, biometricData]);
     onBiometricSaved(biometricData);
     setSuccess("Gait pattern captured successfully!");
   };
@@ -686,7 +684,7 @@ function BiometricAuth(): any {
       isActive: true,
     };
 
-    setSavedBiometrics((prev) => [/* Production implementation with proper error handling */prev, biometricData]);
+    setSavedBiometrics((prev) => [prev, biometricData]);
     onBiometricSaved(biometricData);
     setSuccess("Keystroke pattern captured successfully!");
   };
@@ -698,7 +696,7 @@ function BiometricAuth(): any {
 
   const toggleBiometric = (id: string) => {
     setSavedBiometrics((prev) =>
-      prev.map((b) => (b.id === id ? { /* Production implementation with proper error handling */b, isActive: !b.isActive } : b)),
+      prev.map((b) => (b.id === id ? { b, isActive: !b.isActive } : b)),
     );
   };
 
@@ -815,7 +813,7 @@ function BiometricAuth(): any {
                     enabled={isAuthenticating}
                     className="w-full"
                   >
-                    {isAuthenticating ? "Authenticating/* Production implementation with proper error handling */" : "Login"}
+                    {isAuthenticating ? "Authenticating" : "Login"}
                   </Button>
                 </div>
               ) : (
@@ -863,7 +861,7 @@ function BiometricAuth(): any {
               {isAuthenticating && (
                 <div className="space-y-2">
                   <Progress value={authProgress} className="w-full" />
-                  <p className="text-sm text-gray-500">Authenticating/* Production implementation with proper error handling */</p>
+                  <p className="text-sm text-gray-500">Authenticating</p>
                 </div>
               )}
             </TabsContent>
@@ -931,7 +929,7 @@ function BiometricAuth(): any {
                         {isCapturing ? (
                           <>
                             <Scan className="w-4 h-4 mr-2 animate-spin" />
-                            Capturing/* Production implementation with proper error handling */
+                            Capturing
                           </>
                         ) : savedBiometrics.find((b) => b.type === type) ? (
                           <>
@@ -954,7 +952,7 @@ function BiometricAuth(): any {
                 <div className="space-y-2">
                   <Progress value={captureProgress} className="w-full" />
                   <p className="text-sm text-gray-500">
-                    Capturing biometric data/* Production implementation with proper error handling */
+                    Capturing biometric data
                   </p>
                 </div>
               )}

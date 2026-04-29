@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.845578 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.251042 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.073344 -->
 const fs = require("fs");
 const path = require("path");
 const TelegramBot = require("node-telegram-bot-api");

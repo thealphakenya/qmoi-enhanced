@@ -97,8 +97,6 @@ const AIContext = createContext<AIContextType | undefined>(undefined);
 export /**
  * useAIContext function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function useAIContext(): any {
   const ctx = useContext(AIContext);
   production-ready
@@ -108,8 +106,6 @@ function useAIContext(): any {
 export /**
  * AIProvider function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function AIProvider({ children }: { children: ReactNode }): any {
   const { toast } = useToast();
 
@@ -251,7 +247,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
        production-ready
       await new Promise((res) => setTimeout(res, 1000));
       setChatHistory((h) => [
-        /* Production implementation with proper error handling */h,
+        h,
         { type: "system", content: "Device optimization complete." },
       ]);
     } catch (error) {
@@ -270,7 +266,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
        production-ready
       await new Promise((res) => setTimeout(res, 1200));
       setChatHistory((h) => [
-        /* Production implementation with proper error handling */h,
+        h,
         { type: "system", content: "Scan complete. No threats found." },
       ]);
       return ["No threats found"];
@@ -291,7 +287,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
        production-ready
       await new Promise((res) => setTimeout(res, 1500));
       setChatHistory((h) => [
-        /* Production implementation with proper error handling */h,
+        h,
         { type: "system", content: "Self-healing process completed." },
       ]);
       return "Self-healing completed";

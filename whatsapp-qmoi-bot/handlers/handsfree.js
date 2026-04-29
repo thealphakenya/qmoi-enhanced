@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.825537 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.240037 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.059967 -->
 // QMOI EVOLUTION ENHANCED: Hands-Free Voice Command Handler
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-04-20T03:56:02Z

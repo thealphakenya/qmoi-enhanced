@@ -154,9 +154,6 @@ interface TradingSignal {
 export default /**
  * EnhancedTradingPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function EnhancedTradingPanel(): any {
   try {() {
   const [accounts, setAccounts] = useState<TradingAccount[]>([]);
@@ -203,11 +200,11 @@ function EnhancedTradingPanel(): any {
     });
 
     enhancedTradingService.onTradeExecuted(({ position, accountId }) => {
-      setPositions((prev) => [/* Production implementation with proper error handling */prev, position]);
+      setPositions((prev) => [prev, position]);
     });
 
     enhancedTradingService.onSignalGenerated((signal) => {
-      setSignals((prev) => [signal, /* Production implementation with proper error handling */prev.slice(0, 9)]); // Keep last 10 signals
+      setSignals((prev) => [signal, prev.slice(0, 9)]); // Keep last 10 signals
     });
 
     enhancedTradingService.onMarketDataUpdate((data) => {
@@ -216,7 +213,7 @@ function EnhancedTradingPanel(): any {
         if (existing) {
           return prev.map((m) => (m.symbol === data.symbol ? data : m));
         }
-        return [/* Production implementation with proper error handling */prev, data];
+        return [prev, data];
       });
     });
 
@@ -756,7 +753,7 @@ function EnhancedTradingPanel(): any {
                       value={orderForm.symbol}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
-                          /* Production implementation with proper error handling */prev,
+                          prev,
                           symbol: e.target.value,
                         }))
                       }
@@ -772,7 +769,7 @@ function EnhancedTradingPanel(): any {
                       value={orderForm.side}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
-                          /* Production implementation with proper error handling */prev,
+                          prev,
                           side: e.target.value,
                         }))
                       }
@@ -791,7 +788,7 @@ function EnhancedTradingPanel(): any {
                       value={orderForm.size}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
-                          /* Production implementation with proper error handling */prev,
+                          prev,
                           size: parseFloat(e.target.value) || 0.001,
                         }))
                       }
@@ -809,7 +806,7 @@ function EnhancedTradingPanel(): any {
                       value={orderForm.price}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
-                          /* Production implementation with proper error handling */prev,
+                          prev,
                           price: parseFloat(e.target.value) || 0,
                         }))
                       }
@@ -824,7 +821,7 @@ function EnhancedTradingPanel(): any {
                       value={orderForm.stopLoss}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
-                          /* Production implementation with proper error handling */prev,
+                          prev,
                           stopLoss: parseFloat(e.target.value) || 0,
                         }))
                       }
@@ -839,7 +836,7 @@ function EnhancedTradingPanel(): any {
                       value={orderForm.takeProfit}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
-                          /* Production implementation with proper error handling */prev,
+                          prev,
                           takeProfit: parseFloat(e.target.value) || 0,
                         }))
                       }

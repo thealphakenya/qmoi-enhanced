@@ -1,5 +1,3 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:25.495135 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:18.539231 -->
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:12Z
@@ -13,8 +11,6 @@ const MASTER_PHONE = "+254786322855";
 export default /**
  * QIStateWindow function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QIStateWindow(): any {
   try {({
   userEmail,

@@ -1571,7 +1571,7 @@ async /**
  */
 function initializeQMOISystem(): any {
   try {
-    logger.info("Initializing enhanced QMOI system/* production implementation with proper error handling */");
+    logger.info("Initializing enhanced QMOI system");
 
     // Initialize time and location tracking
     await timeLocationManager.initialize();
@@ -1651,7 +1651,7 @@ async /**
  * attemptSystemRecovery function
  */
 function attemptSystemRecovery(errors): any {
-  logger.info("Attempting system recovery/* production implementation with proper error handling */");
+  logger.info("Attempting system recovery");
 
   for (const error of errors) {
     try {

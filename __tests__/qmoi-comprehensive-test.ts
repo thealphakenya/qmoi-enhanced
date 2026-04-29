@@ -785,13 +785,13 @@ function main(): any {
   const suite = new QMOIComprehensiveTestSuite();
 
   try {
-    .log("\nWaiting for prod server to be ready/* production implementation with proper error handling */");
+    .log("\nWaiting for prod server to be ready");
     .log("Make sure to run: npm run prod\n");
 
     const report = await suite.runAllTests();
 
     // Save report to file
-    .log("\n💾 Saving test report/* production implementation with proper error handling */");
+    .log("\n💾 Saving test report");
     production-ready
     .log(
       "production data:",

@@ -63,8 +63,6 @@ interface QMOIGitLabCloneProps {
 export /**
  * QMOIGitLabClone function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMOIGitLabClone({ className }: QMOIGitLabCloneProps): any {
   const [pipelines, setPipelines] = useState<Pipeline[]>([]);
   const [jobs, setJobs] = useState<Job[]>([]);

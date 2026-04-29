@@ -32,8 +32,6 @@ interface AvatarDisplayProps {
 export /**
  * AvatarDisplay function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function AvatarDisplay({
   userId,
   currentAvatarId = "default",
@@ -87,7 +85,7 @@ function AvatarDisplay({
     if (!avatar) {
       return (
         <div className="flex items-center justify-center w-full h-full bg-gray-200 dark:bg-gray-700 rounded-lg">
-          <span className="text-gray-500">Loading avatar/* Production implementation with proper error handling */</span>
+          <span className="text-gray-500">Loading avatar</span>
         </div>
       );
     }
@@ -246,7 +244,7 @@ function AvatarDisplay({
       >
         {isLoading ? (
           <div className="flex items-center justify-center w-full h-full bg-gray-200 dark:bg-gray-700">
-            <span className="text-gray-500">Loading/* Production implementation with proper error handling */</span>
+            <span className="text-gray-500">Loading</span>
           </div>
         ) : (
           renderAvatarContent()
@@ -278,7 +276,7 @@ function AvatarDisplay({
           }`}
         />
         <span className="text-gray-600 dark:text-gray-400">
-          {isActive ? "Listening/* Production implementation with proper error handling */" : "Inactive"}
+          {isActive ? "Listening" : "Inactive"}
         </span>
       </div>
     </div>

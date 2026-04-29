@@ -168,7 +168,7 @@ class QMOIHuggingFaceSpaces {
     }
 
     async createSpace() {
-        this.logger.info('\ud83d\ude80 Creating QMOI Hugging Face Space/* production implementation with proper error handling */');
+        this.logger.info('\ud83d\ude80 Creating QMOI Hugging Face Space');
         let statusObj = { action: 'create', status: 'started', timestamp: new Date().toISOString() };
         writeStatus(statusObj);
         try {
@@ -203,7 +203,7 @@ class QMOIHuggingFaceSpaces {
             statusObj = { action: 'create', status: 'failed', error: error.message, timestamp: new Date().toISOString() };
             writeStatus(statusObj);
             // Attempt auto-repair/redeploy once
-            this.logger.info('Attempting auto-repair/redeploy/* production implementation with proper error handling */');
+            this.logger.info('Attempting auto-repair/redeploy');
             try {
                 await this.deployToHuggingFace(spaceDir);
                 this.logger.info('Auto-repair/redeploy succeeded.');
@@ -283,7 +283,7 @@ class ErrorFixer:
                 logger.error(f"Caught error: {e}")
                 # Attempt auto-fix (restart, clear cache, etc.)
                 self.auto_fixed += 1
-                logger.info("Attempting auto-fix/* production implementation with proper error handling */")
+                logger.info("Attempting auto-fix")
                 # Add more advanced auto-fix logic here
                 return None
         return wrapper
@@ -297,7 +297,7 @@ class prodiceOptimizer {
     }
 
     async optimize() {
-        this.logger.info('& Optimizing prodice resources/* production implementation with proper error handling */');
+        this.logger.info('& Optimizing prodice resources');
         try {
             await this.cleanupproduction_files();
             await this.clearCache();
@@ -394,10 +394,10 @@ def status():
 def chat_with_qmoi(message, conversation_id=None):
     autoevolve_hook()
     performance_hook()
-    # /* production implementation with proper error handling */ existing chat logic /* production implementation with proper error handling */
+    #  existing chat logic 
     return f"QMOI Response: {message}", conversation_id
 
-// /* production implementation with proper error handling */ rest of Gradio UI and app logic /* production implementation with proper error handling */
+//  rest of Gradio UI and app logic 
 
 def main():
     # Start prodice optimization
@@ -405,7 +405,7 @@ def main():
     # Start Gradio and FastAPI together
     import threading
     def run_gradio():
-        # /* production implementation with proper error handling */ existing Gradio Blocks code /* production implementation with proper error handling */
+        #  existing Gradio Blocks code 
 return self._get_production_data()
     threading.Thread(target=run_gradio, daemon=True).start()
     uvicorn.run(app, host="0.0.0.0", port=7860)
@@ -676,7 +676,7 @@ production-ready
     }
 
     async deployToHuggingFace(spaceDir) {
-        this.logger.info('\u2B06 Deploying to Hugging Face/* production implementation with proper error handling */');
+        this.logger.info('\u2B06 Deploying to Hugging Face');
         try {
             // Check envs before deploy
             if (!checkAndCreateEnv()) {
@@ -706,14 +706,14 @@ production-ready
             this.logger.info(`\u2705 Successfully deployed to Hugging Face: https://huggingface.co/spaces/${username}/${space_name}`);
 
             // --- Enhancement: Post-deploy health/UI check ---
-            this.logger.info('Running post-deploy UI/health check/* production implementation with proper error handling */');
+            this.logger.info('Running post-deploy UI/health check');
             try {
                 // Call the UI test script (Python)
                 execSync('python scripts/test_hf_space_ui.py', { stdio: 'inherit' });
                 this.logger.info('UI/health check passed.');
             } catch (uiErr) {
                 this.logger.error('UI/health check failed: ' + uiErr.message);
-                this.logger.info('Attempting auto-repair/redeploy/* production implementation with proper error handling */');
+                this.logger.info('Attempting auto-repair/redeploy');
                 // Attempt redeploy once
                 try {
                     execSync('git push -u origin main', { stdio: 'inherit' });
@@ -724,7 +724,7 @@ production-ready
             }
 
             // --- Enhancement: Trigger model sync ---
-            this.logger.info('Triggering Hugging Face model sync/* production implementation with proper error handling */');
+            this.logger.info('Triggering Hugging Face model sync');
             try {
                 // data: sync the latest model folder to the model repo
                 const modelRepo = this.config.huggingface.model_repo || 'alphaqmoi/qmoi-ai-system';
@@ -743,7 +743,7 @@ production-ready
     }
 
     async updateSpace() {
-        this.logger.info('\ud83d\udd04 Updating QMOI Hugging Face Space/* production implementation with proper error handling */');
+        this.logger.info('\ud83d\udd04 Updating QMOI Hugging Face Space');
         let statusObj = { action: 'update', status: 'started', timestamp: new Date().toISOString() };
         writeStatus(statusObj);
         try {
@@ -753,7 +753,7 @@ production-ready
             const spaceDir = path.join(__dirname, '../huggingface_space');
             
             if (!fs.existsSync(spaceDir)) {
-                this.logger.info('Space directory not found, creating new space/* production implementation with proper error handling */');
+                this.logger.info('Space directory not found, creating new space');
                 return await this.createSpace();
             }
 
@@ -775,7 +775,7 @@ production-ready
             statusObj = { action: 'update', status: 'failed', error: error.message, timestamp: new Date().toISOString() };
             writeStatus(statusObj);
             // Attempt auto-repair/redeploy once
-            this.logger.info('Attempting auto-repair/redeploy/* production implementation with proper error handling */');
+            this.logger.info('Attempting auto-repair/redeploy');
             try {
                 await this.deployToHuggingFace(spaceDir);
                 this.logger.info('Auto-repair/redeploy succeeded.');
@@ -792,7 +792,7 @@ production-ready
     }
 
     async deploy() {
-        this.logger.info('=؀ Deploying QMOI to Hugging Face/* production implementation with proper error handling */');
+        this.logger.info('=؀ Deploying QMOI to Hugging Face');
         
         try {
             // Check if space exists
@@ -835,7 +835,7 @@ class QMOIManager {
     }
 
     async startQMOI() {
-        this.logger.info('> Starting QMOI core system/* production implementation with proper error handling */');
+        this.logger.info('> Starting QMOI core system');
         try {
             await this.startCoreProcesses();
             await this.initializeMonitoring();
@@ -846,7 +846,7 @@ class QMOIManager {
             recordError(error);
             if (!isprod && this.restartAttempts < this.maxRestarts) {
                 this.restartAttempts++;
-                this.logger.warn(`Restarting QMOI (attempt ${this.restartAttempts}/${this.maxRestarts})/* production implementation with proper error handling */`);
+                this.logger.warn(`Restarting QMOI (attempt ${this.restartAttempts}/${this.maxRestarts})`);
                 await this.startQMOI();
             } else {
                 production-ready
@@ -867,7 +867,7 @@ class QMOIManager {
 
     async initializeMonitoring() {
         // Initialize system monitoring
-        this.logger.info('= Initializing QMOI monitoring/* production implementation with proper error handling */');
+        this.logger.info('= Initializing QMOI monitoring');
     }
 }
 

@@ -92,7 +92,7 @@ export async function GET(_request: NextRequest): any {
 export async function POST(_request: NextRequest): any {
   try {
     const body: any = await _request.json();
-    const { type, /* production implementation with proper error handling */data } = body;
+    const { type, data } = body;
     if (type === "employee") {
       const validatedData = EmployeeSchema.parse(data);
       const employee = { ...validatedData,
@@ -155,7 +155,7 @@ export async function POST(_request: NextRequest): any {
 export async function PUT(_request: NextRequest): any {
   try {
     const body: any = await _request.json();
-    const { id, type, /* production implementation with proper error handling */updates } = body;
+    const { id, type, updates } = body;
     if (type === "employee") {
       const index = employees.findIndex((emp: any) => emp.id === id);
       if (index === -1) {

@@ -25,11 +25,11 @@ function executeRealMoneyTransfer(): any {
     .log('='.repeat(60));
 
     // Wait a moment for processing
-    .log('\n⏳ Waiting 5 seconds for payment processing/* production implementation with proper error handling */');
+    .log('\n⏳ Waiting 5 seconds for payment processing');
     await new Promise(resolve => setTimeout(resolve, 5000));
 
     // Now verify the balance
-    .log('\n🔍 Verifying Pesapal Balance After Transfer/* production implementation with proper error handling */\n');
+    .log('\n🔍 Verifying Pesapal Balance After Transfer\n');
 
     const verificationResult = await aiService.generateResponse(
       'master instruction verify pesapal balance',

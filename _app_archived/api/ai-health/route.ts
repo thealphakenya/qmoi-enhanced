@@ -325,7 +325,7 @@ function POST(request: NextRequest): any {
         status: "success",
         message: "Health monitoring settings updated",
         settings: {
-          /* production implementation with proper error handling */settings,
+          settings,
           lastUpdate: new Date().toISOString(),
         },
       });

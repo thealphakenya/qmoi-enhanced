@@ -28,7 +28,7 @@ function walk(dir): any {
     const stat = fs.statSync(full);
     if (stat.isDirectory()) {
       if (ignoreDirs.has(name)) continue;
-      results.push(/* production implementation with proper error handling */walk(full));
+      results.push(walk(full));
     } else if (stat.isFile()) {
       if (exts.includes(path.extname(name))) results.push(full);
     }

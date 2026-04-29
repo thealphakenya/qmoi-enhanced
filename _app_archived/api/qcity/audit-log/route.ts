@@ -51,7 +51,7 @@ function handler(): any {
     const keys = Object.keys(paged[0] || {});
     const csv = [
       keys.join(","),
-      /* production implementation with proper error handling */paged.map((l) =>
+      paged.map((l) =>
         keys.map((k) => JSON.stringify(l[k] || "")).join(","),
       ),
     ].join("\n");

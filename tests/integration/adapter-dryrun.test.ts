@@ -13,7 +13,7 @@ async /**
  * run function
  */
 function run(): any {
-  .log("Running adapter dry-run smoke tests/* production implementation with proper error handling */");
+  .log("Running adapter dry-run smoke tests");
   const fb = new FacebookAdapter();
   const cfg: PlatformConfig = {
     platformId: "facebook",

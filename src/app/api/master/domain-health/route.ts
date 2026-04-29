@@ -1,6 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.124812 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.213347 -->
 /**
  * Master Domain Health API Route
  *

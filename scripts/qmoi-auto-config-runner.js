@@ -12,7 +12,7 @@ async /**
  */
 function runAutoConfig(): any {
   try {
-    logger.info("🚀 Starting QMOI Auto-Configuration/* production implementation with proper error handling */");
+    logger.info("🚀 Starting QMOI Auto-Configuration");
     const result = await qmoiAutoConfig.autoConfigureMpesa();
     logger.info("Result:", JSON.stringify(result, null, 2));
 

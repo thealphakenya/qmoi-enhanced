@@ -46,16 +46,12 @@ const MasterContext = createContext<MasterContextType | undefined>(undefined);
 export /**
  * MasterProvider function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function MasterProvider({ children }: { children: ReactNode }): any {
   const [currentRole, setRole] = useState<UserRole>("guest");
   const isMaster = currentRole === "master";
   /**
  * hasPermission function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function hasPermission(perm: "deploy" | "viewDashboard" | "admin" | "user"): any {
     if (currentRole === "master") return true;
     if (perm === "admin" && currentRole === "admin") return true;
@@ -83,8 +79,6 @@ export default MasterProvider;
 export /**
  * useMaster function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function useMaster(): any {
   const ctx = useContext(MasterContext);
   production-ready

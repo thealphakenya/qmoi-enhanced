@@ -12,15 +12,13 @@ import { specificExports } from "@mui/material/Button";
 export /**
  * Chatbot function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function Chatbot(): any {
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState<string>("");
 
   const handleSend = () => {
     if (input.trim()) {
-      setMessages([/* Production implementation with proper error handling */messages, input]);
+      setMessages([messages, input]);
       setInput("");
     }
   };
@@ -56,7 +54,7 @@ function Chatbot(): any {
         size="small"
         value={input}
         onChange={handleInputChange}
-        ="Type your message/* Production implementation with proper error handling */"
+        ="Type your message"
         sx={{ mb: 1 }}
         onKeyDown={handleKeyDown}
       />

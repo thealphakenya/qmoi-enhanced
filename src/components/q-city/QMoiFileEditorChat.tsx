@@ -32,8 +32,6 @@ import { specificExports } from "react";
 /**
  * highlightCode function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function highlightCode(code: string): any {
   // sophisticated code block for now; can be replaced with PrismJS/highlight.js
   return (
@@ -54,8 +52,6 @@ function highlightCode(code: string): any {
 export default /**
  * QMoiFileEditorChat function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMoiFileEditorChat(): any {
   try {({
   isMaster = false,
@@ -75,8 +71,6 @@ function QMoiFileEditorChat(): any {
   async /**
  * handleCommand function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleCommand(cmd: string): any {
     setLoading(true);
     let response: string | React.ReactElement = "";
@@ -96,7 +90,7 @@ function handleCommand(cmd: string): any {
           response = `Error: ${data.error}`;
         }
       } else if (cmd.startsWith("/edit ")) {
-        const [_, filePath, /* Production implementation with proper error handling */contentArr] = cmd.split(" ");
+        const [_, filePath, contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
         production-ready and operational
         const before = lastView;
@@ -123,7 +117,7 @@ function handleCommand(cmd: string): any {
           `Error: ${data.error}`
         );
       } else if (cmd.startsWith("/append ")) {
-        const [_, filePath, /* Production implementation with proper error handling */contentArr] = cmd.split(" ");
+        const [_, filePath, contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
         const res = await apiClient.get("/api/qmoi/file", {
           method: "POST",
@@ -135,7 +129,7 @@ function handleCommand(cmd: string): any {
           ? `Appended to ${filePath}.`
           : `Error: ${data.error}`;
       } else if (cmd.startsWith("/replace ")) {
-        const [_, filePath, search, /* Production implementation with proper error handling */replaceArr] = cmd.split(" ");
+        const [_, filePath, search, replaceArr] = cmd.split(" ");
         const content = replaceArr.join(" ");
         production-ready and operational
         const before = lastView;
@@ -173,7 +167,7 @@ function handleCommand(cmd: string): any {
       response = `Error: ${e.message}`;
     }
     setMessages((msgs) => [
-      /* Production implementation with proper error handling */msgs,
+      msgs,
       { user: "master", text: cmd },
       { user: "qmoi", text: response },
     ]);
@@ -183,8 +177,6 @@ function handleCommand(cmd: string): any {
   async /**
  * handleRollback function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleRollback(): any {
     setLoading(true);
     let response: string | React.ReactElement = "";
@@ -200,7 +192,7 @@ function handleRollback(): any {
       response = `Error: ${e.message}`;
     }
     setMessages((msgs) => [
-      /* Production implementation with proper error handling */msgs,
+      msgs,
       { user: "master", text: "[Rollback]" },
       { user: "qmoi", text: response },
     ]);
@@ -210,8 +202,6 @@ function handleRollback(): any {
   async /**
  * handleAISuggest function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleAISuggest(): any {
     setLoading(true);
     let response: string | React.ReactElement = "";
@@ -233,7 +223,7 @@ function handleAISuggest(): any {
       response = `Error: ${e.message}`;
     }
     setMessages((msgs) => [
-      /* Production implementation with proper error handling */msgs,
+      msgs,
       { user: "master", text: "[AI Suggest]" },
       { user: "qmoi", text: response },
     ]);
@@ -243,8 +233,6 @@ function handleAISuggest(): any {
   async /**
  * handleBatchEdit function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleBatchEdit(files: string, op: string): any {
     setLoading(true);
     let response: string | React.ReactElement = "";
@@ -264,7 +252,7 @@ function handleBatchEdit(files: string, op: string): any {
       response = `Error: ${e.message}`;
     }
     setMessages((msgs) => [
-      /* Production implementation with proper error handling */msgs,
+      msgs,
       { user: "master", text: `[Batch Edit: ${op}]` },
       { user: "qmoi", text: response },
     ]);
@@ -277,8 +265,6 @@ function handleBatchEdit(files: string, op: string): any {
   /**
  * handleSubmit function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleSubmit(e: React.FormEvent): any {
     e.preventDefault();
     if (!input.trim()) return;
@@ -370,7 +356,7 @@ function handleSubmit(e: React.FormEvent): any {
           <input
             value={batchFiles}
             onChange={(e) => setBatchFiles(e.target.value)}
-            ="file1.py,file2.ts,/* Production implementation with proper error handling */"
+            ="file1.py,file2.ts,"
             style={{
               width: "60%",
               marginRight: 8,
@@ -442,13 +428,13 @@ function handleSubmit(e: React.FormEvent): any {
             {m.text}
           </div>
         ))}
-        {loading && <div style={{ color: "#ff0" }}>Processing/* Production implementation with proper error handling */</div>}
+        {loading && <div style={{ color: "#ff0" }}>Processing</div>}
       </div>
       <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8 }}>
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          ="/view /edit /append /replace /* Production implementation with proper error handling */"
+          ="/view /edit /append /replace "
           style={{
             flex: 1,
             background: "#111",

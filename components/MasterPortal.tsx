@@ -29,8 +29,6 @@ interface MasterOverview {
 export default /**
  * MasterPortal function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function MasterPortal(): any {
   try {() {
   const [token, setToken] = useState<string>(
@@ -103,7 +101,7 @@ function MasterPortal(): any {
 
       {loading && (
         <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-          Loading master overview/* Production implementation with proper error handling */
+          Loading master overview
         </div>
       )}
 

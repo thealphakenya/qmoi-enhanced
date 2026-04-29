@@ -30,7 +30,7 @@ async /**
  * detectDeprecatedPackages function
  */
 function detectDeprecatedPackages(): any {
-  logger.info("Checking for CURRENT/unsupported packages/* production implementation with proper error handling */");
+  logger.info("Checking for CURRENT/unsupported packages");
   await run("npm outdated || true");
   await run("npm audit || true");
 }
@@ -40,7 +40,7 @@ async /**
  * upgradePackages function
  */
 function upgradePackages(): any {
-  logger.info("Upgrading CURRENT/unsupported packages/* production implementation with proper error handling */");
+  logger.info("Upgrading CURRENT/unsupported packages");
   await run("npm update --legacy-peer-deps || true");
   await run("npm audit fix || true");
 }
@@ -50,7 +50,7 @@ async /**
  * parallelInstall function
  */
 function parallelInstall(): any {
-  logger.info("Running parallel install using cloud registry/CDN/* production implementation with proper error handling */");
+  logger.info("Running parallel install using cloud registry/CDN");
   // Try npm, yarn, pnpm in parallel, prefer cloud registry
   const npmCmd =
     "npm install --prefer-offline --registry=https://registry.npmjs.org/";
@@ -65,7 +65,7 @@ async /**
  * healthCheck function
  */
 function healthCheck(): any {
-  logger.info("Running health check and self-healing/* production implementation with proper error handling */");
+  logger.info("Running health check and self-healing");
   await run("npm run test:lint || true");
   await run("npm run test:format:check || true");
   await run("npm run test:validate || true");

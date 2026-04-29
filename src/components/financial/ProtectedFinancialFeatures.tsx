@@ -1,5 +1,3 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.238983 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.603320 -->
 /**
  * Protected Financial Features React Component
  * Provides master-only UI components for all financial operations

@@ -41,7 +41,7 @@ function testInstall(filePath): any {
     return;
   }
   try {
-    logger.info(`🧪 Installing ${filePath}/* production implementation with proper error handling */`);
+    logger.info(`🧪 Installing ${filePath}`);
     execSync(cmd, { stdio: "inherit" });
     logger.info(`✅ Install test passed: ${filePath}`);
   } catch (err) {

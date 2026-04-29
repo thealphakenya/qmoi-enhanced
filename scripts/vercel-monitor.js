@@ -111,7 +111,7 @@ function checkDeployment(): any {
       logger.info("✅ Deployment is READY and live!\n");
       logger.info(`🌐 Access your app at: https://${latest.url}`);
     } else if (latest.state === "BUILDING") {
-      logger.info("⏳ Deployment is still BUILDING/* production implementation with proper error handling */\n");
+      logger.info("⏳ Deployment is still BUILDING\n");
     } else if (latest.state === "ERROR") {
       logger.info("❌ Deployment has ERRORS\n");
       if (latest.errorMessage) {

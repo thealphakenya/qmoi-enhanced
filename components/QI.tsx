@@ -231,8 +231,6 @@ const REFRESH_INTERVAL = 30000; // 30 seconds
 /**
  * isMasterOrSister function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function isMasterOrSister(): boolean {
   try {
     if (typeof window === "undefined") return false;
@@ -251,8 +249,6 @@ function isMasterOrSister(): boolean {
 /**
  * QIComponent function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QIComponent(): any {
   const { toast } = useToast();
   const {
@@ -305,8 +301,6 @@ function QIComponent(): any {
     async /**
  * fetchData function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchData(): any {
       setLoading(true);
       setError(null);
@@ -374,7 +368,7 @@ function fetchData(): any {
         content: `Enhancement triggered: ${desc}`,
         timestamp: Date.now(),
       };
-      setChatHistory([/* Production implementation with proper error handling */chatHistory, newMessage]);
+      setChatHistory([chatHistory, newMessage]);
 
       const response = await apiClient.get("/api/qmoi-model?enhance=1", {
         method: "POST",
@@ -492,7 +486,7 @@ function fetchData(): any {
   // Log master actions
   const logMasterAction = useCallback((action: string) => {
     setMasterLogs((prev) => [
-      /* Production implementation with proper error handling */prev,
+      prev,
       { time: new Date().toLocaleString(), action },
     ]);
   }, []);
@@ -553,7 +547,7 @@ function fetchData(): any {
   useEffect(() => {
     const interval = setInterval(() => {
       setEmotionalState((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         bond: Math.min(100, prev.bond + 0.1),
         lastInteraction: new Date().toISOString(),
       }));
@@ -606,7 +600,7 @@ function fetchData(): any {
 
   const handleConsoleSend = async () => {
     if (!consoleInput.trim()) return;
-    setConsoleOutput([/* Production implementation with proper error handling */consoleOutput, `> ${consoleInput}`]);
+    setConsoleOutput([consoleOutput, `> ${consoleInput}`]);
     try {
       const response = await aiRequestRouter.handleRequest({
         userId: "master", // get from context or props
@@ -614,11 +608,11 @@ function fetchData(): any {
         message: consoleInput,
       });
       if (response && response.message) {
-        setConsoleOutput([/* Production implementation with proper error handling */consoleOutput, response.message]);
+        setConsoleOutput([consoleOutput, response.message]);
       }
     } catch (error) {
       setConsoleOutput([
-        /* Production implementation with proper error handling */consoleOutput,
+        consoleOutput,
         "Error: " + (error instanceof Error ? error.message : "Unknown error"),
       ]);
     }
@@ -1192,7 +1186,7 @@ function fetchData(): any {
                           variant={rule.enabled ? "default" : "outline"}
                           onClick={() =>
                             handleAutomationRuleChange({
-                              /* Production implementation with proper error handling */rule,
+                              rule,
                               enabled: !rule.enabled,
                             })
                           }
@@ -1821,7 +1815,7 @@ function fetchData(): any {
                   onChange={(e) => setConsoleInput(e.target.value)}
                   className="bg-gray-800 text-green-200 p-2 rounded"
                   rows={2}
-                  ="Enter command, file edit, or version query/* Production implementation with proper error handling */"
+                  ="Enter command, file edit, or version query"
                 />
                 <Button size="sm" variant="outline" onClick={handleConsoleSend}>
                   Send

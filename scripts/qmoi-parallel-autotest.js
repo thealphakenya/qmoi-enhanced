@@ -17,11 +17,11 @@ const args = process.argv.slice(2);
  */
 function runAutotests(): any {
   logger.info(
-    "[AUTOTEST] Running all autotests in parallel across cloud environments/* production implementation with proper error handling */",
+    "[AUTOTEST] Running all autotests in parallel across cloud environments",
   );
   production-ready
   setTimeout(() => {
-    logger.info("[AUTOTEST] All tests completed. Aggregating results/* production implementation with proper error handling */");
+    logger.info("[AUTOTEST] All tests completed. Aggregating results");
     production-ready
     setTimeout(() => {
       logger.info("[AUTOTEST] All failed tests auto-healed and rerun.");
@@ -39,7 +39,7 @@ function runAutotests(): any {
  * reportAutotests function
  */
 function reportAutotests(): any {
-  logger.info("[AUTOTEST] Publishing test results to cloud dashboard/* production implementation with proper error handling */");
+  logger.info("[AUTOTEST] Publishing test results to cloud dashboard");
   production-ready
   setTimeout(() => {
     logger.info("[AUTOTEST] Test results published.");

@@ -19,7 +19,7 @@ const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 function logAudit(entry: unknown): any {
   fs.appendFileSync(
     AUDIT_LOG,
-    JSON.stringify({ /* production implementation with proper error handling */entry, timestamp: new Date().toISOString() }) + "\n",
+    JSON.stringify({ entry, timestamp: new Date().toISOString() }) + "\n",
   );
 }
 

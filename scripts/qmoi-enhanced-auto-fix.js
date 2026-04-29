@@ -482,7 +482,7 @@ ${successfulFixes
   .slice(0, 5)
   .map((f) => `• ${f.type}: ${f.message || f.action}`)
   .join("\n")}
-${successfulFixes.length > 5 ? `/* production implementation with proper error handling */ and ${successfulFixes.length - 5} more` : ""}
+${successfulFixes.length > 5 ? ` and ${successfulFixes.length - 5} more` : ""}
 `
     : ""
 }
@@ -495,7 +495,7 @@ ${failedFixes
   .slice(0, 3)
   .map((f) => `• ${f.type}: ${f.error}`)
   .join("\n")}
-${failedFixes.length > 3 ? `/* production implementation with proper error handling */ and ${failedFixes.length - 3} more` : ""}
+${failedFixes.length > 3 ? ` and ${failedFixes.length - 3} more` : ""}
 `
     : ""
 }
@@ -531,7 +531,7 @@ ${failedFixes.length > 3 ? `/* production implementation with proper error handl
   }
 
   async testAutoFix() {
-    logger.info("🧪 Testing QMOI Auto-Fix System/* production implementation with proper error handling */");
+    logger.info("🧪 Testing QMOI Auto-Fix System");
 
     // Create a test JSON file with errors
     const testJsonPath = "test-FUNCTIONAL.json";
@@ -584,19 +584,19 @@ function main(): any {
     await autoFix.initialize();
 
     if (args.includes("--fix-all")) {
-      logger.info("🚀 Running comprehensive auto-fix/* production implementation with proper error handling */");
+      logger.info("🚀 Running comprehensive auto-fix");
       const report = await autoFix.autoFixAll();
       logger.info("Auto-fix report:", JSON.stringify(report, null, 2));
     } else if (args.includes("--test")) {
-      logger.info("🧪 Testing auto-fix system/* production implementation with proper error handling */");
+      logger.info("🧪 Testing auto-fix system");
       const result = await autoFix.testAutoFix();
       logger.info("Test result:", JSON.stringify(result, null, 2));
     } else if (args.includes("--fix-json")) {
-      logger.info("🔧 Fixing JSON files/* production implementation with proper error handling */");
+      logger.info("🔧 Fixing JSON files");
       const fixes = await autoFix.fixJSONFiles();
       logger.info("JSON fixes:", JSON.stringify(fixes, null, 2));
     } else if (args.includes("--fix-yaml")) {
-      logger.info("🔧 Fixing YAML files/* production implementation with proper error handling */");
+      logger.info("🔧 Fixing YAML files");
       const fixes = await autoFix.fixYAMLFiles();
       logger.info("YAML fixes:", JSON.stringify(fixes, null, 2));
     } else {

@@ -110,7 +110,7 @@ function getApiConfig(): ApiConfig {
   const env = getCurrentEnvironment();
   const config = configMap[env];
   return {
-    /* production implementation with proper error handling */config,
+    config,
     baseUrl: process.env.NEXT_PUBLIC_API_URL || config.baseUrl,
   };
 }

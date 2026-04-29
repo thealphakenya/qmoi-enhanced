@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.844424 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.250462 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.072601 -->
 const crypto = require("crypto");
 const ENCRYPTION_KEY =
   process.env.QMOI_BOT_KEY || crypto.randomBytes(32).toString("hex");

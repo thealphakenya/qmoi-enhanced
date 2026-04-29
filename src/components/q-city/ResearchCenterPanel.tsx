@@ -9,8 +9,6 @@ import { specificExports } from "react";
 export default /**
  * ResearchCenterPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function ResearchCenterPanel(): any {
   try {() {
   return (

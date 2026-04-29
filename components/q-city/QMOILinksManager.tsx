@@ -100,8 +100,6 @@ interface QMOILinksManagerProps {
 export /**
  * QMOILinksManager function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QMOILinksManager({
   userRole = "user",
   isMaster = false,
@@ -213,7 +211,7 @@ function QMOILinksManager({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          /* Production implementation with proper error handling */newLink,
+          newLink,
           tags: newLink.tags
             .split(",")
             .map((tag) => tag.trim())
@@ -283,7 +281,7 @@ function QMOILinksManager({
     }
   };
 
-  const uniqueCategories = [/* Production implementation with proper error handling */new Set(links.map((link) => link.category))];
+  const uniqueCategories = [new Set(links.map((link) => link.category))];
 
   return (
     <Card className="w-full">
@@ -378,7 +376,7 @@ function QMOILinksManager({
                           id="url"
                           value={newLink.url}
                           onChange={(e) =>
-                            setNewLink({ /* Production implementation with proper error handling */newLink, url: e.target.value })
+                            setNewLink({ newLink, url: e.target.value })
                           }
                           
                         />
@@ -389,7 +387,7 @@ function QMOILinksManager({
                           id="title"
                           value={newLink.title}
                           onChange={(e) =>
-                            setNewLink({ /* Production implementation with proper error handling */newLink, title: e.target.value })
+                            setNewLink({ newLink, title: e.target.value })
                           }
                           
                         />
@@ -401,7 +399,7 @@ function QMOILinksManager({
                           value={newLink.description}
                           onChange={(e) =>
                             setNewLink({
-                              /* Production implementation with proper error handling */newLink,
+                              newLink,
                               description: e.target.value,
                             })
                           }
@@ -414,7 +412,7 @@ function QMOILinksManager({
                           id="category"
                           value={newLink.category}
                           onChange={(e) =>
-                            setNewLink({ /* Production implementation with proper error handling */newLink, category: e.target.value })
+                            setNewLink({ newLink, category: e.target.value })
                           }
                           
                         />
@@ -425,7 +423,7 @@ function QMOILinksManager({
                           id="tags"
                           value={newLink.tags}
                           onChange={(e) =>
-                            setNewLink({ /* Production implementation with proper error handling */newLink, tags: e.target.value })
+                            setNewLink({ newLink, tags: e.target.value })
                           }
                           
                         />
@@ -435,7 +433,7 @@ function QMOILinksManager({
                           id="zero-rated"
                           checked={newLink.isZeroRated}
                           onCheckedChange={(checked) =>
-                            setNewLink({ /* Production implementation with proper error handling */newLink, isZeroRated: checked })
+                            setNewLink({ newLink, isZeroRated: checked })
                           }
                         />
                         <Label htmlFor="zero-rated">Zero-Rated by QMOI</Label>

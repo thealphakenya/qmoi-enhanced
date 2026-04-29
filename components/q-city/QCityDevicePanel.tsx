@@ -63,8 +63,6 @@ interface Workspace {
 export default /**
  * QCityDevicePanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function QCityDevicePanel(): any {
   try {() {
   const { role } = useRole();
@@ -110,7 +108,7 @@ function QCityDevicePanel(): any {
      QCity status updates with unlimited resources
     const interval = setInterval(() => {
       setQcityStatus((prev) => ({
-        /* Production implementation with proper error handling */prev,
+        prev,
         resourceUsage: {
           memory: Math.random() * 100 + 1,
           storage: Math.random() * 100 + 1,
@@ -125,19 +123,19 @@ function QCityDevicePanel(): any {
   }, []);
 
   const handleToggleQCity = (enabled: boolean) => {
-    setQcityStatus((prev) => ({ /* Production implementation with proper error handling */prev, enabled }));
+    setQcityStatus((prev) => ({ prev, enabled }));
   };
 
   const handleToggleResourceOffloading = (enabled: boolean) => {
-    setQcityStatus((prev) => ({ /* Production implementation with proper error handling */prev, resourceOffloading: enabled }));
+    setQcityStatus((prev) => ({ prev, resourceOffloading: enabled }));
   };
 
   const handleToggleAI = (enabled: boolean) => {
-    setQcityStatus((prev) => ({ /* Production implementation with proper error handling */prev, aiOptimization: enabled }));
+    setQcityStatus((prev) => ({ prev, aiOptimization: enabled }));
   };
 
   const handleToggleMultiDevice = (enabled: boolean) => {
-    setQcityStatus((prev) => ({ /* Production implementation with proper error handling */prev, multiDevice: enabled }));
+    setQcityStatus((prev) => ({ prev, multiDevice: enabled }));
   };
 
   const loadBuildFiles = async () => {
@@ -174,7 +172,7 @@ function QCityDevicePanel(): any {
       setSelfCheckStatus("fixed");
       setErrorFixHistory((h) => [
         `Self-check & auto-fix run at ${new Date().toISOString()}`,
-        /* Production implementation with proper error handling */h,
+        h,
       ]);
     }, 2000);
   };
@@ -208,7 +206,7 @@ function QCityDevicePanel(): any {
     setLoading(true);
     try {
       let endpoint = "";
-      const data = { id, /* Production implementation with proper error handling */extra };
+      const data = { id, extra };
       if (type === "gitpod") {
         if (action === "stop") endpoint = "/api/qcity/stopWorkspace";
         if (action === "clone") endpoint = "/api/qcity/cloneWorkspace";
@@ -238,22 +236,22 @@ function QCityDevicePanel(): any {
 
   production-ready
   const fetchLogs = async (type: "gitpod" | "local", id: string) => {
-    setLogs((l) => ({ /* Production implementation with proper error handling */l, [id]: "Loading logs/* Production implementation with proper error handling */" }));
+    setLogs((l) => ({ l, [id]: "Loading logs" }));
     const eventSource = new EventSource(
       `/api/qcity/workspace-logs?id=${encodeURIComponent(id)}&type=${encodeURIComponent(type)}`,
     );
     const logLines: string[] = [];
     eventSource.onmessage = (event) => {
       if (event.data === "[DONE]") {
-        setLogs((l) => ({ /* Production implementation with proper error handling */l, [id]: logLines.join("\n") + "\n[DONE]" }));
+        setLogs((l) => ({ l, [id]: logLines.join("\n") + "\n[DONE]" }));
         eventSource.close();
       } else {
         logLines.push(event.data);
-        setLogs((l) => ({ /* Production implementation with proper error handling */l, [id]: logLines.join("\n") }));
+        setLogs((l) => ({ l, [id]: logLines.join("\n") }));
       }
     };
     eventSource.onerror = (err) => {
-      setLogs((l) => ({ /* Production implementation with proper error handling */l, [id]: "Error loading logs." }));
+      setLogs((l) => ({ l, [id]: "Error loading logs." }));
       eventSource.close();
     };
   };
@@ -388,7 +386,7 @@ function QCityDevicePanel(): any {
               <Switch
                 checked={qcityStatus.autoUpgrade}
                 onCheckedChange={(enabled) =>
-                  setQcityStatus((prev) => ({ /* Production implementation with proper error handling */prev, autoUpgrade: enabled }))
+                  setQcityStatus((prev) => ({ prev, autoUpgrade: enabled }))
                 }
               />
             </div>
@@ -556,7 +554,7 @@ function QCityDevicePanel(): any {
                 <AlertDescription>{workspaceError}</AlertDescription>
               </Alert>
             )}
-            {loading && <div>Loading workspaces/* Production implementation with proper error handling */</div>}
+            {loading && <div>Loading workspaces</div>}
             <div className="space-y-2">
               <div className="font-bold">Gitpod Workspaces</div>
               {gitpodWorkspaces.length === 0 && (
@@ -693,7 +691,7 @@ function QCityDevicePanel(): any {
               {selfCheckStatus === "idle"
                 ? "Idle"
                 : selfCheckStatus === "checking"
-                  ? "Checking/* Production implementation with proper error handling */"
+                  ? "Checking"
                   : selfCheckStatus === "fixed"
                     ? "Fixed"
                     : "Error"}

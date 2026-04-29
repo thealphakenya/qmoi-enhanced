@@ -114,9 +114,9 @@ function useQMOIAutoInteraction(): any {
 
       // Update interaction history
       setInteractions((prev) => [
-        /* production implementation with proper error handling */prev.filter((i) => i.id !== interaction.id),
+        prev.filter((i) => i.id !== interaction.id),
         {
-          /* production implementation with proper error handling */interaction,
+          interaction,
           timestamp: Date.now(),
         },
       ]);
@@ -171,7 +171,7 @@ function useQMOIAutoInteraction(): any {
 
   const setComponentState = (componentId: string, state: unknown) => {
     setComponentStates((prev) => ({
-      /* production implementation with proper error handling */prev,
+      prev,
       [componentId]: state,
     }));
   };
@@ -509,7 +509,7 @@ function QMOIEnhancedComponent(props: P): any {
 
     return (
       <div ref={componentRef}>
-        <Component {/* production implementation with proper error handling */props} />
+        <Component {props} />
       </div>
     );
   };

@@ -15,7 +15,6 @@ interface Device {
   battery?: number;
 }
 
-// AUTODEV: Performance optimized
 export default function DeviceManagementDashboard() {
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);

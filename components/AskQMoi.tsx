@@ -44,8 +44,6 @@ interface AskQMoiProps {
 export /**
  * AskQMoi function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function AskQMoi({
   isOpen = false,
   onToggle,
@@ -145,7 +143,7 @@ function AskQMoi({
                   size="sm"
                   className="px-3"
                 >
-                  {isLoading ? "/* Production implementation with proper error handling */" : <Send className="w-4 h-4" />}
+                  {isLoading ? "" : <Send className="w-4 h-4" />}
                 </Button>
               </div>
               {showResponse && (
@@ -178,7 +176,7 @@ function AskQMoi({
             enabled={isLoading}
           />
           <Button onClick={handleAsk} enabled={isLoading || !question.trim()}>
-            {isLoading ? "Asking/* Production implementation with proper error handling */" : "Ask"}
+            {isLoading ? "Asking" : "Ask"}
           </Button>
         </div>
         {showResponse && (

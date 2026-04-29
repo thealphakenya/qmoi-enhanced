@@ -393,13 +393,13 @@ function main(): any {
 
   // Handle graceful shutdown
   process.on('SIGINT', async () => {
-    logger.info('\n🛑 Received shutdown signal/* production implementation with proper error handling */');
+    logger.info('\n🛑 Received shutdown signal');
     await system.stop();
     process.exit(0);
   });
 
   process.on('SIGTERM', async () => {
-    logger.info('\n🛑 Received termination signal/* production implementation with proper error handling */');
+    logger.info('\n🛑 Received termination signal');
     await system.stop();
     process.exit(0);
   });

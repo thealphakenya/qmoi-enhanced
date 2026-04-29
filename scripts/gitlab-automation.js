@@ -498,7 +498,7 @@ function retryStep(stepFn, stepName): any {
 
   async runFullPipeline() {
     try {
-      this.log('Starting full QMOI GitLab pipeline/* production implementation with proper error handling */');
+      this.log('Starting full QMOI GitLab pipeline');
       
       // Step 1: Fix common errors
       await this.fixCommonErrors();
@@ -573,7 +573,7 @@ function main(): any {
   try {
     // Check if we're in a GitLab CI environment
     if (!process.env.CI) {
-      automation.log('Not running in GitLab CI, but continuing with automation/* production implementation with proper error handling */', 'WARN');
+      automation.log('Not running in GitLab CI, but continuing with automation', 'WARN');
     }
     
     // Run the full pipeline

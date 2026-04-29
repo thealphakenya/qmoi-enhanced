@@ -41,13 +41,11 @@ export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 /**
  * Calendar function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
-  /* Production implementation with proper error handling */props
+  props
 }: CalendarProps): any {
   return (
     <DayPicker
@@ -83,15 +81,15 @@ function Calendar({
         day_range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
-        /* Production implementation with proper error handling */classNames,
+        classNames,
       }}
       components={
         {
-          // IconLeft: ({ /* Production implementation with proper error handling */props }) => <ChevronLeft className="h-4 w-4" />,
-          // IconRight: ({ /* Production implementation with proper error handling */props }) => <ChevronRight className="h-4 w-4" />,
+          // IconLeft: ({ props }) => <ChevronLeft className="h-4 w-4" />,
+          // IconRight: ({ props }) => <ChevronRight className="h-4 w-4" />,
         }
       }
-      {/* Production implementation with proper error handling */props}
+      {props}
     />
   );
 }

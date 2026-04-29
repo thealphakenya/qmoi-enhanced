@@ -12,8 +12,6 @@ import { specificExports } from "@mui/material/Typography";
 export /**
  * PreviewWindow function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function PreviewWindow(): any {
   return (
     <Card sx={{ maxWidth: 400, border: "1px solid #ccc", borderRadius: 2 }}>

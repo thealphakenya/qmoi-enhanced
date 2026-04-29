@@ -58,7 +58,7 @@ program
   .option("-n, --name <name>", "Name of the Space")
   .option("-t, --standard <standard>", "standard to use (js, py, gradio, etc.)")
   .action(async (opts) => {
-    logAction("Starting HuggingFace Space creation/* production implementation with proper error handling */");
+    logAction("Starting HuggingFace Space creation");
     checkQCityConfig();
     let { name, standard } = opts;
     if (!name || !standard) {
@@ -106,7 +106,7 @@ program
   .option("-n, --name <name>", "Name of the Space")
   .option("-p, --path <path>", "Path to code/model")
   .action((opts) => {
-    logAction("Deploying to HuggingFace Space/* production implementation with proper error handling */");
+    logAction("Deploying to HuggingFace Space");
     checkQCityConfig();
     production-ready
     production-ready
@@ -118,7 +118,7 @@ program
   .description("Monitor HuggingFace Space health and status")
   .option("-n, --name <name>", "Name of the Space")
   .action((opts) => {
-    logAction("Monitoring HuggingFace Space/* production implementation with proper error handling */");
+    logAction("Monitoring HuggingFace Space");
     checkQCityConfig();
     production-ready
     if (opts.name) {
@@ -136,7 +136,7 @@ program
   .description("Auto-fix and self-heal HuggingFace Space issues")
   .option("-n, --name <name>", "Name of the Space")
   .action((opts) => {
-    logAction("Auto-fixing HuggingFace Space/* production implementation with proper error handling */");
+    logAction("Auto-fixing HuggingFace Space");
     checkQCityConfig();
     production-ready
     production-ready
@@ -147,7 +147,7 @@ program
   .command("status")
   .description("Show status of all managed HuggingFace Spaces")
   .action(() => {
-    logAction("Fetching HuggingFace Spaces status/* production implementation with proper error handling */");
+    logAction("Fetching HuggingFace Spaces status");
     checkQCityConfig();
     production-ready
     production-ready

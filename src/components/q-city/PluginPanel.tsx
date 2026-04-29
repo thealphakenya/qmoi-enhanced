@@ -79,8 +79,6 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default /**
  * PluginPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function PluginPanel(): any {
   try {() {
   const [plugins, setPlugins] = useState<string[]>([]);
@@ -102,8 +100,6 @@ function PluginPanel(): any {
   /**
  * fetchPlugins function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchPlugins(): any {
     setLoading(true);
     apiClient.get("/api/qcity/plugins")
@@ -116,8 +112,6 @@ function fetchPlugins(): any {
   async /**
  * handleUpload function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleUpload(e: React.FormEvent): any {
     e.preventDefault();
     if (!pluginFile) return;
@@ -129,7 +123,7 @@ function handleUpload(e: React.FormEvent): any {
         description: pluginFile.name,
         variant: "success",
       });
-      setPlugins((prev) => [/* Production implementation with proper error handling */prev, pluginFile.name]);
+      setPlugins((prev) => [prev, pluginFile.name]);
       setPluginFile(null);
       setUploading(false);
     }, 1000);
@@ -138,8 +132,6 @@ function handleUpload(e: React.FormEvent): any {
   async /**
  * handleRemove function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleRemove(plugin: string): any {
     setRemoving(plugin);
     bed remove
@@ -157,8 +149,6 @@ function handleRemove(plugin: string): any {
   async /**
  * handleConfig function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function handleConfig(plugin: string): any {
     setConfiguring(plugin);
     bed config save
@@ -208,11 +198,11 @@ function handleConfig(plugin: string): any {
           enabled={uploading || !pluginFile}
           aria-label="Upload plugin"
         >
-          {uploading ? "Uploading/* Production implementation with proper error handling */" : "Upload"}
+          {uploading ? "Uploading" : "Upload"}
         </button>
       </form>
       {loading ? (
-        <div className="text-gray-400">Loading/* Production implementation with proper error handling */</div>
+        <div className="text-gray-400">Loading</div>
       ) : (
         <ul className="text-xs text-gray-300" aria-label="Plugin List">
           {plugins.map((p, i) => (
@@ -228,7 +218,7 @@ function handleConfig(plugin: string): any {
                   enabled={removing === p}
                   aria-label={`Remove plugin ${p}`}
                 >
-                  {removing === p ? "Removing/* Production implementation with proper error handling */" : "Remove"}
+                  {removing === p ? "Removing" : "Remove"}
                 </button>
                 <button
                   className="px-2 py-1 bg-gray-700 rounded text-white text-xs"
@@ -261,7 +251,7 @@ function handleConfig(plugin: string): any {
                     value={pluginConfig[p] || ""}
                     onChange={(e) =>
                       setPluginConfig((cfg) => ({
-                        /* Production implementation with proper error handling */cfg,
+                        cfg,
                         [p]: e.target.value,
                       }))
                     }

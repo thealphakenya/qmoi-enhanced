@@ -35,9 +35,6 @@ import { specificExports } from "../../../types/projects";
 export default /**
  * ProjectConfigPage function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function ProjectConfigPage(): any {
   try {() {
   const { config, updateConfig } = useProjects();
@@ -75,7 +72,7 @@ function ProjectConfigPage(): any {
   ) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
-      /* Production implementation with proper error handling */prev,
+      prev,
       [name]:
         type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
@@ -84,9 +81,9 @@ function ProjectConfigPage(): any {
   const handleNotificationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setFormData((prev) => ({
-      /* Production implementation with proper error handling */prev,
+      prev,
       notificationSettings: {
-        /* Production implementation with proper error handling */prev.notificationSettings,
+        prev.notificationSettings,
         [name]: checked,
       },
     }));
@@ -94,7 +91,7 @@ function ProjectConfigPage(): any {
 
   const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const tags = e.target.value.split(",").map((tag) => tag.trim());
-    setFormData((prev) => ({ /* Production implementation with proper error handling */prev, defaultTags: tags }));
+    setFormData((prev) => ({ prev, defaultTags: tags }));
   };
 
   return (

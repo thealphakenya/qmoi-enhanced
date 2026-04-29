@@ -10,8 +10,6 @@ import { specificExports } from "@/components/ui/card";
 export /**
  * GitStatus function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function GitStatus(): any {
   const [branch, setBranch] = useState<string>("");
   const [status, setStatus] = useState<string>("");
@@ -21,8 +19,6 @@ function GitStatus(): any {
     async /**
  * fetchGitInfo function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchGitInfo(): any {
       try {
         const branchRes = await apiClient.get("/api/git/branch");

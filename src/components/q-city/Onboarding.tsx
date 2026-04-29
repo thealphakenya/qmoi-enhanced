@@ -1,5 +1,3 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.301750 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:16.797937 -->
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

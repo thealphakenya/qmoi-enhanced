@@ -64,7 +64,7 @@ function NotificationScreen(): any {
   }, []);
 
   const updatePref = async (channel, value) => {
-    setPrefs((p) => ({ /* production implementation with proper error handling */p, [channel]: value }));
+    setPrefs((p) => ({ p, [channel]: value }));
     try {
       await axios.post("process.env.API_URL || "https://qmoi.ai:\1"/api/notification-prefs", {
         [channel]: { enabled: value },
@@ -75,7 +75,7 @@ function NotificationScreen(): any {
   const handleAcknowledge = async (id) => {
     setNotifications((n) =>
       n.map((notif) =>
-        notif.id === id ? { /* production implementation with proper error handling */notif, status: "acknowledged" } : notif,
+        notif.id === id ? { notif, status: "acknowledged" } : notif,
       ),
     );
     try {
@@ -105,7 +105,7 @@ function NotificationScreen(): any {
     });
   };
 
-  if (loading) return <Text>Loading/* production implementation with proper error handling */</Text>;
+  if (loading) return <Text>Loading</Text>;
 
   return (
     <View style={styles.container}>

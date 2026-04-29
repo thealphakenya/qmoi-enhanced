@@ -48,9 +48,6 @@ export const metadata: Metadata = {
 export default /**
  * RootLayout function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function RootLayout(): any {
   try {({
   children,

@@ -324,7 +324,7 @@ async /**
  */
 function main(): any {
   try {
-    logger.info("🔍 Scanning for issues/* production implementation with proper error handling */\n");
+    logger.info("🔍 Scanning for issues\n");
     logger.info("─".repeat(50) + "\n");
 
     // Run all checks

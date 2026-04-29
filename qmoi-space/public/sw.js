@@ -431,7 +431,7 @@ async /**
  */
 function updateCaches(): any {
   try {
-    logger.info("QMOI Space SW: Updating caches/* production implementation with proper error handling */");
+    logger.info("QMOI Space SW: Updating caches");
 
     // Update static files
     const staticCache = await caches.open(STATIC_CACHE);
@@ -461,7 +461,7 @@ async /**
  */
 function cleanupCaches(): any {
   try {
-    logger.info("QMOI Space SW: Cleaning up caches/* production implementation with proper error handling */");
+    logger.info("QMOI Space SW: Cleaning up caches");
 
     const cacheNames = await caches.keys();
     const now = Date.now();

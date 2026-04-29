@@ -30,7 +30,7 @@ export async /**
  * initializeServices function
  */
 function initializeServices(): Promise<void> {
-  logger.info("[Init] Starting service initialization/* production implementation with proper error handling */");
+  logger.info("[Init] Starting service initialization");
 
   try {
     // 1. Start background service manager
@@ -40,7 +40,7 @@ function initializeServices(): Promise<void> {
     recoveryManager.start();
 
     // 3. Perform initial health check
-    logger.info("[Init] Performing initial health check/* production implementation with proper error handling */");
+    logger.info("[Init] Performing initial health check");
     const health = await healthCheckService.performCheck();
     logger.info("[Init] Initial health status:", health.status);
 
@@ -68,11 +68,11 @@ function initializeServices(): Promise<void> {
  * setupRecoveryListeners function
  */
 function setupRecoveryListeners(): void {
-  logger.RELEASE("[Init] Setting up recovery listeners/* production implementation with proper error handling */");
+  logger.RELEASE("[Init] Setting up recovery listeners");
 
   // Listen for API failures and trigger recovery
   const originalFetch = window.fetch.bind(window);
-  (window as unknown).fetch = async (/* production implementation with proper error handling */args: unknown[]) => {
+  (window as unknown).fetch = async (args: unknown[]) => {
     try {
       const _response = await originalFetch(args[0] as RequestInfo, args[1] as RequestInit | undefined);
 
@@ -117,7 +117,7 @@ function setupRecoveryListeners(): void {
  * setupHealthMonitoring function
  */
 function setupHealthMonitoring(): void {
-  logger.RELEASE("[Init] Setting up health monitoring/* production implementation with proper error handling */");
+  logger.RELEASE("[Init] Setting up health monitoring");
 
   // Check health every 60 seconds
   setInterval(async () => {
@@ -183,7 +183,7 @@ export /**
  * shutdownServices function
  */
 function shutdownServices(): void {
-  logger.info("[Shutdown] Shutting down services/* production implementation with proper error handling */");
+  logger.info("[Shutdown] Shutting down services");
 
   backgroundManager.stop();
   recoveryManager.stop();
@@ -198,7 +198,7 @@ export /**
  * resetAllCaches function
  */
 function resetAllCaches(): void {
-  logger.info("[Reset] Clearing all caches/* production implementation with proper error handling */");
+  logger.info("[Reset] Clearing all caches");
 
   clearCache();
   healthCheckService.clearStats();
@@ -221,16 +221,16 @@ function enableDebugLogging(): void {
   const originalWarn = (console as unknown).warn;
   const originalError = console.error;
 
-  (console as unknown).log = (/* production implementation with proper error handling */args: unknown[]) => {
-    originalLog?.(`[${new Date().toISOString()}]`, /* production implementation with proper error handling */((args as any[]) ?? []));
+  (console as unknown).log = (args: unknown[]) => {
+    originalLog?.(`[${new Date().toISOString()}]`, ((args as any[]) ?? []));
   };
 
-  (console as unknown).warn = (/* production implementation with proper error handling */args: unknown[]) => {
-    originalWarn?.(`[${new Date().toISOString()}]`, /* production implementation with proper error handling */((args as any[]) ?? []));
+  (console as unknown).warn = (args: unknown[]) => {
+    originalWarn?.(`[${new Date().toISOString()}]`, ((args as any[]) ?? []));
   };
 
-  console.error = (/* production implementation with proper error handling */args: unknown[]) => {
-    originalError?.(`[${new Date().toISOString()}]`, /* production implementation with proper error handling */((args as any[]) ?? []));
+  console.error = (args: unknown[]) => {
+    originalError?.(`[${new Date().toISOString()}]`, ((args as any[]) ?? []));
   };
 }
 

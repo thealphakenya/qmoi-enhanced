@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:25.836470 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:08.245802 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.066988 -->
 const askQmoi = require("../services/qmoi");
 
 /**

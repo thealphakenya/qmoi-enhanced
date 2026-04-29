@@ -248,7 +248,7 @@ async /**
  */
 function enhancedGameGen(details: unknown): any {
   // Add more thorough logic, error checking, and asset generation
-  // /* production implementation with proper error handling */
+  // 
   return {
     status: "success",
     details,
@@ -259,21 +259,21 @@ async /**
  * enhancedAppprod function
  */
 function enhancedAppprod(details: unknown): any {
-  // /* production implementation with proper error handling */
+  // 
   return { status: "success", details, files: ["app.js", "README.md"] };
 }
 async /**
  * enhancedMusicGen function
  */
 function enhancedMusicGen(details: unknown): any {
-  // /* production implementation with proper error handling */
+  // 
   return { status: "success", details, files: ["track.wav", "README.md"] };
 }
 async /**
  * enhancedArchitectureGen function
  */
 function enhancedArchitectureGen(details: unknown): any {
-  // /* production implementation with proper error handling */
+  // 
   return { status: "success", details, files: ["model.obj", "README.md"] };
 }
 
@@ -420,7 +420,7 @@ function globalScanAndFix(): Promise<GlobalFixResponse> {
     status: "started",
     timestamp: new Date().toISOString(),
   });
-  // /* production implementation with proper error handling */scan/fix logic/* production implementation with proper error handling */
+  // scan/fix logic
   aiTaskLog.push({
     id: Date.now(),
     type: "global-scan-fix",
@@ -443,7 +443,7 @@ function diagnoseAndEnhanceHooks(): any {
     status: "started",
     timestamp: new Date().toISOString(),
   });
-  // /* production implementation with proper error handling */diagnostics/enhancement logic/* production implementation with proper error handling */
+  // diagnostics/enhancement logic
   aiTaskLog.push({
     id: Date.now(),
     type: "hook-diagnostics",
@@ -478,7 +478,7 @@ function aiStartProject(name: string, info: string): any {
     );
     if (idx !== -1)
       masterProjectQueue[idx] = {
-        /* production implementation with proper error handling */masterProjectQueue[idx],
+        masterProjectQueue[idx],
         status: "completed",
         finished,
       };
@@ -643,7 +643,7 @@ function aiResearch(url: string, query?: string): any {
       return { summary: relevant.slice(0, 10).join(". "), url };
     }
     return {
-      summary: text.slice(0, 2000) + (text.length > 2000 ? "/* production implementation with proper error handling */" : ""),
+      summary: text.slice(0, 2000) + (text.length > 2000 ? "" : ""),
       url,
     };
   } catch (e) {
@@ -681,7 +681,7 @@ function aiPdfResearch(buffer: Buffer, query?: string): any {
       };
     }
     return {
-      summary: text.slice(0, 2000) + (text.length > 2000 ? "/* production implementation with proper error handling */" : ""),
+      summary: text.slice(0, 2000) + (text.length > 2000 ? "" : ""),
       type: "pdf",
       pages: data.numpages,
     };
@@ -838,7 +838,7 @@ function handler(
           const cleanText = buffer.toString("utf8").replace(/\s+/g, " ").trim();
           return res.json({
             summary:
-              cleanText.slice(0, 2000) + (cleanText.length > 2000 ? "/* production implementation with proper error handling */" : ""),
+              cleanText.slice(0, 2000) + (cleanText.length > 2000 ? "" : ""),
             type: "txt",
           });
         }
@@ -863,5 +863,5 @@ function POST(req: Request): any {
       status: 200,
     });
   }
-  // /* production implementation with proper error handling */existing code/* production implementation with proper error handling */
+  // existing code
 }

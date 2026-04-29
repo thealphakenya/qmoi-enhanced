@@ -1262,12 +1262,12 @@ function main(): any {
 
 // Handle process signals
 process.on("SIGINT", async () => {
-  logger.info("\n🛑 Received SIGINT, cleaning up/* production implementation with proper error handling */");
+  logger.info("\n🛑 Received SIGINT, cleaning up");
   process.exit(0);
 });
 
 process.on("SIGTERM", async () => {
-  logger.info("\n🛑 Received SIGTERM, cleaning up/* production implementation with proper error handling */");
+  logger.info("\n🛑 Received SIGTERM, cleaning up");
   process.exit(0);
 });
 

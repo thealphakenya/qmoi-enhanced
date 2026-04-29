@@ -147,7 +147,7 @@ export /**
 function initializeAvatar(config: AvatarConfig): AvatarSet {
   const validated = validateAvatarConfig(config);
   const finalConfig: AvatarConfig = {
-    /* production implementation with proper error handling */config,
+    config,
     size: normalizeSize(config.size),
     style: normalizeStyle(config.style),
   };
@@ -171,7 +171,7 @@ export /**
  */
 function generateAvatarBatch(config: AvatarConfig): Record<string, string> {
   const finalConfig: AvatarConfig = {
-    /* production implementation with proper error handling */config,
+    config,
     size: normalizeSize(config.size),
     style: normalizeStyle(config.style),
   };

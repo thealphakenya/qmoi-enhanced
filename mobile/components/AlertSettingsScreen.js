@@ -60,7 +60,7 @@ function AlertSettingsScreen(): any {
     }
   };
 
-  if (loading) return <Text>Loading/* production implementation with proper error handling */</Text>;
+  if (loading) return <Text>Loading</Text>;
 
   return (
     <View style={styles.container}>

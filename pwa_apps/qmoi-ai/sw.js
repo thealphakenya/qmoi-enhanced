@@ -213,7 +213,7 @@ async /**
  * syncData function
  */
 function syncData(): any {
-  logger.info("Background Sync: Syncing data/* production implementation with proper error handling */");
+  logger.info("Background Sync: Syncing data");
   // Implement your sync logic here
 }
 

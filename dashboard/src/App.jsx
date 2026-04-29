@@ -9,9 +9,6 @@ import { specificExports } from "react";
 /**
  * App function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function App(): any {
   const [status, setStatus] = useState(null);
 
@@ -26,7 +23,7 @@ function App(): any {
     return () => clearInterval(interval);
   }, []);
 
-  if (!status) return <div>Loading QMOI status/* Production implementation with proper error handling */</div>;
+  if (!status) return <div>Loading QMOI status</div>;
 
   return (
     <div style={{ fontFamily: "sans-serif", padding: 24 }}>

@@ -9,8 +9,6 @@ import { specificExports } from "react";
 export default /**
  * SystemHealthPanel function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function SystemHealthPanel(): any {
   try {() {
   const [data, setData] = useState<any>(null);
@@ -24,8 +22,6 @@ function SystemHealthPanel(): any {
   async /**
  * fetchStatus function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function fetchStatus(): any {
     setLoading(true);
     setError(null);
@@ -44,35 +40,29 @@ function fetchStatus(): any {
   async /**
  * runAllFixes function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function runAllFixes(): any {
-    setActionMsg("Running all fixes/* Production implementation with proper error handling */");
+    setActionMsg("Running all fixes");
     await apiClient.get("/api/qmoi/fix/all", { method: "POST" });
-    setActionMsg("All fixes triggered. Refreshing status/* Production implementation with proper error handling */");
+    setActionMsg("All fixes triggered. Refreshing status");
     setTimeout(fetchStatus, 3000);
   }
 
   async /**
  * repairConnectivity function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function repairConnectivity(): any {
-    setActionMsg("Repairing connectivity/* Production implementation with proper error handling */");
+    setActionMsg("Repairing connectivity");
     await apiClient.get("/api/qmoi/fix/connectivity", { method: "POST" });
-    setActionMsg("Connectivity repair triggered. Refreshing status/* Production implementation with proper error handling */");
+    setActionMsg("Connectivity repair triggered. Refreshing status");
     setTimeout(fetchStatus, 3000);
   }
 
   async /**
  * runUiHealthCheck function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function runUiHealthCheck(): any {
     setUiTestRunning(true);
-    setActionMsg("Running UI health check/* Production implementation with proper error handling */");
+    setActionMsg("Running UI health check");
     try {
       const res = await apiClient.get("/api/qmoi/ui-health-check", { method: "POST" });
       const json = await res.json();
@@ -90,10 +80,8 @@ function runUiHealthCheck(): any {
   async /**
  * triggerUiSelfHealing function
  */
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
 function triggerUiSelfHealing(): any {
-    setActionMsg("Triggering UI self-healing/* Production implementation with proper error handling */");
+    setActionMsg("Triggering UI self-healing");
     await apiClient.get("/api/qmoi/fix/ui", { method: "POST" });
     setActionMsg("UI self-healing triggered.");
     setTimeout(runUiHealthCheck, 3000);
@@ -105,7 +93,7 @@ function triggerUiSelfHealing(): any {
     return () => clearInterval(interval);
   }, []);
 
-  if (loading) return <div>Loading system health/* Production implementation with proper error handling */</div>;
+  if (loading) return <div>Loading system health</div>;
   if (error) return <div style={{ color: "red" }}>Error: {error}</div>;
 
   return (
@@ -201,7 +189,7 @@ function triggerUiSelfHealing(): any {
           enabled={uiTestRunning}
           style={{ marginRight: 8 }}
         >
-          {uiTestRunning ? "Running/* Production implementation with proper error handling */" : "Run UI Health Check"}
+          {uiTestRunning ? "Running" : "Run UI Health Check"}
         </button>
         <button onClick={triggerUiSelfHealing}>Trigger UI Self-Healing</button>
       </div>

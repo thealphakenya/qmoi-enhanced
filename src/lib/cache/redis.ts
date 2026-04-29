@@ -194,7 +194,7 @@ function deletePattern(pattern: string): Promise<number> {
   if (client) {
     try {
       if (typeof client.del === 'function') {
-        await client.del(/* production implementation with proper error handling */keys);
+        await client.del(keys);
       }
     } catch (error) {
       production-ready and operational

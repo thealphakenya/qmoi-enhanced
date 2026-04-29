@@ -121,8 +121,8 @@ function fetchQueue(): any {
 
       const task = await response.json();
       setQueue((prev) => ({
-        /* production implementation with proper error handling */prev,
-        tasks: [/* production implementation with proper error handling */prev.tasks, task],
+        prev,
+        tasks: [prev.tasks, task],
       }));
 
       return task;
@@ -145,9 +145,9 @@ function fetchQueue(): any {
       }
 
       setQueue((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         tasks: prev.tasks.map((task) =>
-          task.id === taskId ? { /* production implementation with proper error handling */task, status: "cancelled" } : task,
+          task.id === taskId ? { task, status: "cancelled" } : task,
         ),
       }));
 
@@ -172,7 +172,7 @@ function fetchQueue(): any {
 
       const task = await response.json();
       setQueue((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         tasks: prev.tasks.map((t) => (t.id === taskId ? task : t)),
       }));
 
@@ -203,10 +203,10 @@ function fetchQueue(): any {
 
       const data = await response.json();
       setQueue((prev) => ({
-        /* production implementation with proper error handling */prev,
+        prev,
         settings: {
-          /* production implementation with proper error handling */prev.settings,
-          /* production implementation with proper error handling */data.settings,
+          prev.settings,
+          data.settings,
         },
       }));
 

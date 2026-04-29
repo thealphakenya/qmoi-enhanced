@@ -1,7 +1,4 @@
 console.log("production mode initialized");
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:06.786951 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.629505 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.600743 -->
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

@@ -64,10 +64,10 @@ export async function POST(request: NextRequest): any {
     const comparison = {
       models: modelsToCompare,
       analysis: {
-        bestAccuracy: Math.max(/* production implementation with proper error handling */modelsToCompare.map(m => m.accuracy)),
-        bestSpeed: Math.max(/* production implementation with proper error handling */modelsToCompare.map(m => m.speed)),
-        bestReliability: Math.max(/* production implementation with proper error handling */modelsToCompare.map(m => m.reliability)),
-        lowestResourceUsage: Math.min(/* production implementation with proper error handling */modelsToCompare.map(m => m.resourceUsage)),
+        bestAccuracy: Math.max(modelsToCompare.map(m => m.accuracy)),
+        bestSpeed: Math.max(modelsToCompare.map(m => m.speed)),
+        bestReliability: Math.max(modelsToCompare.map(m => m.reliability)),
+        lowestResourceUsage: Math.min(modelsToCompare.map(m => m.resourceUsage)),
         rankings: {
           byAccuracy: modelsToCompare
             .sort((a, b) => b.accuracy - a.accuracy)
