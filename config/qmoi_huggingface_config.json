@@ -192,9 +192,9 @@
     "enabled": true,
     "strategy": "incremental",
     "retention": {
-      "daily": 7,
-      "weekly": 4,
-      "monthly": 12
+      "daily": 0,
+      "weekly": 0,
+      "monthly": 0
     },
     "compression": true,
     "encryption": true,

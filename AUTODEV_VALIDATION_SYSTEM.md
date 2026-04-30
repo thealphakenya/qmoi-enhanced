@@ -798,7 +798,7 @@ Describe the purpose of this document and its scope.
 - **Encryption**: Military-grade AES-256 for all data transmission
 - **Compression**: Enabled for optimized storage and bandwidth
 - **Redundancy**: 5 backup copies with automatic failover
-- **Persistence**: 20-year data retention (7300 days)
+- **Persistence**: unlimited data retention (permanent, no limit)
 - **Distribution**: All devices, cameras, and networks synchronized
 - **Zero Data Loss**: Guaranteed with multi-layer redundancy
 

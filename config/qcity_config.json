@@ -96,7 +96,7 @@
   "backup": {
     "enabled": true,
     "schedule": "daily",
-    "retention": 30,
+    "retention": 0,
     "encryption": true
   },
   "monitoring": {

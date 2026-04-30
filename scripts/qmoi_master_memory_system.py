@@ -165,7 +165,7 @@ class QMOIMasterMemorySystem:
             "preferred_name": "Victor",
             "system_language": "English",
             "notification_level": "comprehensive",
-            "memory_retention_days": 7300,  # 20 years
+            "memory_retention_days": 0,  # 0 means unlimited / permanent retention
             "archive_retention": "permanent",
         }
         

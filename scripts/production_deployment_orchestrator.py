@@ -77,7 +77,7 @@ def create_deployment_config():
         },
         'backup': {
             'database_backup_interval': 3600,
-            'backup_retention_days': 30,
+            'backup_retention_days': 0,
             'point_in_time_recovery': True
         }
     }

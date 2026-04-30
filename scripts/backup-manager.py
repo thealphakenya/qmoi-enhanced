@@ -96,6 +96,9 @@ class BackupManager:
         print("Cleaning up old backups...")
         
         for backup_type, retention_days in self.retention_days.items():
+            if not isinstance(retention_days, (int, float)) or retention_days <= 0:
+                print(f"Skipping cleanup for {backup_type}; retention is unlimited")
+                continue
             cutoff_date = datetime.now() - timedelta(days=retention_days)
             
             try:

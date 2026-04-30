@@ -88,7 +88,7 @@
   "backup": {
     "enabled": true,
     "interval": 3600,
-    "retention_days": 7,
+    "retention_days": 0,
     "compression": true
   },
   "security": {

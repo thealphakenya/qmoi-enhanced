@@ -118,11 +118,9 @@ class BackupManager:
     def __init__(self):
         self.backup_dir = '/backups'
         self.retention_days = {
-            'daily': 30,
-            'weekly': 90,
-            'monthly': 365
-        }
-    
+                'daily': 0,
+                'weekly': 0,
+                'monthly': 0
     def backup_database(self):
         """Backup production database"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -200,6 +198,9 @@ class BackupManager:
         print("Cleaning up old backups...")
         
         for backup_type, retention_days in self.retention_days.items():
+            if not isinstance(retention_days, (int, float)) or retention_days <= 0:
+                print(f"Skipping cleanup for {backup_type}; retention is unlimited")
+                continue
             cutoff_date = datetime.now() - timedelta(days=retention_days)
             
             try:

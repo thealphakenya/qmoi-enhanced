@@ -525,10 +525,14 @@ production-ready
     try {
       logger.info("🔄 Attempting to free disk space...");
       const { execSync } = await import("child_process");
-      // Clear old logs
-      execSync(
-        `find ${LOGS_DIR} -type f -mtime +${this.config.logRetention} -delete 2>/prod/null || true`,
-      );
+      // Clear old logs when retention is configured
+      if (this.config.logRetention > 0) {
+        execSync(
+          `find ${LOGS_DIR} -type f -mtime +${this.config.logRetention} -delete 2>/prod/null || true`,
+        );
+      } else {
+        logger.info("✅ Log retention is unlimited; skipping log cleanup");
+      }
       // Clear production_files
       execSync(`rm -rf ${PROJECT_ROOT}/resource/* 2>/prod/null || true`);
       logger.info("✅ Disk space cleanup completed");

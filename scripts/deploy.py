@@ -428,7 +428,15 @@ def _cleanup_old_backups(self) -> None:
             if not self.config['backup']['enabled']:
                 return
             
-            retention_date = datetime.now() - timedelta(days=self.config['backup']['retention_days'])
+            retention_days = self.config['backup'].get('retention_days', 0)
+            if isinstance(retention_days, str) and retention_days.lower() in ('unlimited', 'permanent'):
+                self.logger.info('Backup retention is unlimited; skipping cleanup')
+                return
+            if retention_days <= 0:
+                self.logger.info('Backup retention is unlimited or disabled; skipping cleanup')
+                return
+            
+            retention_date = datetime.now() - timedelta(days=retention_days)
             backup_dir = self.deploy_dir / 'backups'
             
             for env_dir in backup_dir.iterdir():

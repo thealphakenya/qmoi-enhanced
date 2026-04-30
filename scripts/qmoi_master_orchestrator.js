@@ -94,7 +94,7 @@ class QMOIMasterOrchestrator {
         criticalOnly: false,
       },
       monitoring: {
-        logRetention: 30, // days
+        logRetention: 0, // 0 means unlimited retention
         healthCheckInterval: 60000,
         autoRestart: true,
         resourceMonitoring: true,

@@ -142,7 +142,7 @@
     }
   },
   "monitoring": {
-    "logRetention": 30,
+    "logRetention": 0,
     "healthCheckInterval": 60000,
     "autoRestart": true,
     "resourceMonitoring": true,
@@ -170,9 +170,9 @@
     "enabled": true,
     "strategy": "incremental",
     "retention": {
-      "daily": 7,
-      "weekly": 4,
-      "monthly": 12
+      "daily": 0,
+      "weekly": 0,
+      "monthly": 0
     },
     "compression": true,
     "encryption": true,
