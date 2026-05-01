@@ -3,6 +3,28 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+import { NotificationService } from './notification_service';
+
+interface QCityStatus {
+  initialized: boolean;
+  platforms: string[];
+  features: string[];
+  resources: string[];
+  timestamp: string;
+}
+
+interface QCityConfig {
+  enabled: boolean;
+  platforms: Record<string, boolean>;
+  features: Record<string, boolean>;
+  resources: Record<string, boolean>;
+}
+
+const logger = {
+  info: (...args: any[]) => console.log('[QCity]', ...args),
+  error: (...args: any[]) => console.error('[QCity]', ...args),
+  warn: (...args: any[]) => console.warn('[QCity]', ...args),
+};
 
 export class QCityService {
   private notificationService: NotificationService;

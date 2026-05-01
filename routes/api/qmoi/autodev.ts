@@ -3,6 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+import { QCityService } from '../../../scripts/services/qcity_service';
 
 const qcityService = new QCityService();
 
