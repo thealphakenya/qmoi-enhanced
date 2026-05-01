@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 module.exports = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
@@ -18,7 +17,7 @@ module.exports = {
     "<rootDir>/components/**/*.{test,spec}.{js,jsx,ts,tsx}",
   ],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": ["babel-# production: # production: # production: test framework replaced with production logging replaced with production logging removed", { presets: ["next/babel"] }],
+    "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }],
   },
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
   collectCoverageFrom: [
