@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -28,7 +27,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 #!/usr/bin/env node
 
 const { execSync, spawn } = import("child_process");
@@ -256,7 +254,6 @@ module.exports = nextConfig
       const componentName = path.basename(componentPath, ".tsx");
       const componentContent = `"use client";
 
-import { specificExports } from 'react';
 
 export const ${componentName.replace(/[-.]/g, "")}: React.FC = () => {
   return (

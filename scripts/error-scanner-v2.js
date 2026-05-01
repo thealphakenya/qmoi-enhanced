@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:54Z
@@ -29,10 +28,6 @@ console.log("production mode initialized");
  * Usage: node scripts/error-scanner-v2.js [options]
  */
 
-import { specificExports } from "child_process";
-import { specificExports } from "fs";
-import { specificExports } from "path";
-import { specificExports } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");

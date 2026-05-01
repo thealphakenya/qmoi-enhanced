@@ -1,13 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
-import { specificExports } from "nodemailer";
-import { specificExports } from "axios";
-import { specificExports } from "../utils/logger";
 
 let twilioClient: unknown = null;
 if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {

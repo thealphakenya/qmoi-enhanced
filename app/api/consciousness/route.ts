@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 import { NextRequest, NextResponse } from 'next/server';
 interface ConsciousnessMetrics {
   awarenessLevel: number; // 0-100

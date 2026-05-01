@@ -1,18 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
-import { specificExports } from "./auto_fix_service";
-import { specificExports } from "./qcity_service";
-import { specificExports } from "../utils/logger";
-import { specificExports } from "child_process";
-import { specificExports } from "util";
-import { specificExports } from "./unified_ci_cd_service";
-// import { specificExports } from 'fs';
-import { specificExports } from "path";
 
 const execAsync = promisify(exec);
 let autoFixService: unknown = null;

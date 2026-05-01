@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 const startTime = Date.now();
 
 export interface TraceRecord {
@@ -24,7 +23,6 @@ const metrics = {
   lastUpdated: new Date().toISOString(),
 };
 
-production-ready
 
 export /**
  * recordRequestMetric function

@@ -3,12 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Box";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@mui/material/TextField";
-import { specificExports } from "@mui/material/Button";
 
 export /**
  * QiSpaces function

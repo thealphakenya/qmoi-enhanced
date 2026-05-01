@@ -5,8 +5,6 @@
 
 "use client";
 
-import { specificExports } from "react";
-import { specificExports } from "../services/tts";
 import "./QI.css";
 
 // Type definitions for enhanced QI

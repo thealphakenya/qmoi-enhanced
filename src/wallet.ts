@@ -1,11 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "fs";
-import { specificExports } from "path";
 
 // comprehensive adapter interface
 export interface WalletAdapter {
@@ -22,7 +19,6 @@ export interface WalletAdapter {
   approveTrade?: (tradeId: string, auto?: boolean) => Promise<boolean>;
 }
 
-production-ready
 export class realAdapter implements WalletAdapter {
   name: string;
   isTestnet: boolean;
@@ -37,7 +33,6 @@ export class realAdapter implements WalletAdapter {
   }
 }
 
-production-ready
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
@@ -149,7 +144,6 @@ function writeProposal(proposal: {
 }
 
 // Cashon adapter: proposal-first behavior. When apiKey present but not allowed to run
-production-ready
 export class CashonAdapter implements WalletAdapter {
   name: string;
   isTestnet = false;

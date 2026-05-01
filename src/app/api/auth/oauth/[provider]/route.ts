@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 import {
   exchangeOAuthCode,
   getOAuthRedirectUrl,

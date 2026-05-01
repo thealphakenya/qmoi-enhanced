@@ -27,13 +27,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from '@/components/ui/badge';
-import { specificExports } from '@/components/ui/button';
-import { specificExports } from '@/components/ui/card';
-import { specificExports } from '@/components/ui/input';
-import { specificExports } from '@/components/ui/select';
-import { specificExports } from '@/utils/safeConsole';
-import { specificExports } from 'react';
 
 interface ComputeNode {
   id: string;

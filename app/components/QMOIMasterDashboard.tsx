@@ -30,7 +30,6 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
 
 "use client";
 
-import { specificExports } from "react";
 import {
   AlertCircle,
   BarChart3,
@@ -47,10 +46,6 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { specificExports } from "./SponsoredUsersManager";
-import { specificExports } from "../../src/components/q-city/AvatarSelector";
-import { specificExports } from "../../src/components/q-city/VoiceSelector";
-import { specificExports } from "lucide-react";
 
 const PWA_PLATFORMS = [
   { id: "alphaq", name: "latest Q AI", url: "https://alphaq.ai", logo: "🔷" },

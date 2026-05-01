@@ -4,24 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "./SchedulePanel";
-import { specificExports } from "./DevicePanel";
-import { specificExports } from "./PluginPanel";
-import { specificExports } from "./MetricsPanel";
-import { specificExports } from "./SessionPanel";
-import { specificExports } from "./HelpPanel";
-import { specificExports } from "./QMoiState";
-import { specificExports } from "./QAvatar";
-import { specificExports } from "./CommandPanel";
-import { specificExports } from "./AuditLogPanel";
-import { specificExports } from "./SelfHealPanel";
-import { specificExports } from "./LanguageLabPanel";
-import { specificExports } from "./ResearchCenterPanel";
-import { specificExports } from "./BackupRestorePanel";
-import { specificExports } from "./AviatorGalleryPanel";
-import { specificExports } from "./RelationshipInsightsPanel";
-import { specificExports } from "./SystemHealthPanel";
 
 export default /**
  * Dashboard function

@@ -29,8 +29,6 @@ class ErrorBoundary extends React.Component {
 
 "use client";
 
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -38,10 +36,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { specificExports } from "@/components/ui/progress";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "lucide-react";
-import { specificExports } from "react";
 
 interface Feedback {
   id: string;

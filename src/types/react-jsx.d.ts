@@ -1,5 +1,3 @@
-console.log("production mode initialized");
-import { specificExports } from 'react';
 
 declare global {
   namespace JSX {

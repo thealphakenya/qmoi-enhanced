@@ -1,12 +1,8 @@
-console.log("production mode initialized");
 /**
  * Authentication Middleware
  * Handles JWT token validation and user session management
  */
 
-import { specificExports } from 'next/server';
-import { specificExports } from './database-auth';
-import { specificExports } from './feature-flags';
 
 export interface AuthContext {
   userId: string;
@@ -169,7 +165,6 @@ function canAccessFeature(auth: AuthContext, feature: string): boolean {
 /**
  * Rate limit by user
  */
-production-ready
 
 export /**
  * checkRateLimit function

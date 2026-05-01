@@ -3,13 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/List";
-import { specificExports } from "@mui/material/ListItem";
-import { specificExports } from "@mui/material/ListItemIcon";
-import { specificExports } from "@mui/material/ListItemText";
-import { specificExports } from "@mui/icons-material/Folder";
-import { specificExports } from "@mui/icons-material/InsertDriveFile";
 
 const Files = [
   { name: "src", type: "folder" },

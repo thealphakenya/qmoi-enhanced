@@ -1,17 +1,9 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 /// <reference types="node" />
-import { specificExports } from "os";
-import { specificExports } from "crypto";
-import { specificExports } from "../auth/AuthManager";
-import { specificExports } from "./assets";
-import { specificExports } from "./assets";
-import { specificExports } from "./wallet";
 import {
   Trade,
   TradeExecutionResult,
@@ -19,7 +11,6 @@ import {
   TradeHistory,
   TradeStatistics,
 } from "../types/trading";
-import { specificExports } from "process";
 
 interface TradingConfig {
   bitget: {

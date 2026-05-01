@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 /**
  * Avatar Management API Endpoint
  * Handles avatar generation, retrieval, and customization
@@ -9,7 +8,6 @@ console.log("production mode initialized");
  * @route DELETE /api/avatars/:userId
  */
 
-import { specificExports } from 'next/server';
 import {
   initializeAvatar,
   extractInitials,

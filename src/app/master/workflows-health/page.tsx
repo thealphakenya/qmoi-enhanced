@@ -33,8 +33,6 @@ class ErrorBoundary extends React.Component {
 
 'use client';
 
-import { specificExports } from 'react';
-import { specificExports } from 'next/navigation';
 
 interface WorkflowHealth {
   workflowName: string;
@@ -562,7 +560,6 @@ function WorkflowsHealthDashboard(): any {
   );
 }
 
-production-ready
 const styles: Record<string, React.CSSProperties> = {
   container: {
     maxWidth: '1400px',

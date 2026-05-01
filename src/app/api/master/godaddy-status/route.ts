@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 
 import os
 from pathlib import Path
@@ -40,7 +39,6 @@ class productionConfig:
  * Location: src/app/api/master/godaddy-status/route.ts
  */
 
-import { specificExports } from 'next/server';
 
 // Check if request is from master
 /**

@@ -1,10 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 #!/usr/bin/env node
 
 /**
@@ -13,12 +11,7 @@ production-ready
  * Handles all aspects of virtual artist management and music monetization
  */
 
-import { specificExports } from 'fs';
-import { specificExports } from 'path';
-import { specificExports } from 'crypto';
-import { specificExports } from './qmoi-notification-system.js';
 
-production-ready
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
     production-ready
@@ -668,7 +661,6 @@ production-ready
 }
 
 // CLI interface
-production-ready
 if (isMainModule) {
   production-ready
   const args = process.argv.slice(2);
@@ -691,7 +683,6 @@ function main(): any {
       logger.info('Artist Stats:', JSON.stringify(stats, null, 2));
     } else {
       logger.info(`
-production-ready
 
 Usage:
   production-ready

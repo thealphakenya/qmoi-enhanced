@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
@@ -9,7 +8,6 @@ console.log("production mode initialized");
  * Adapters and components import from this file to get the correct base URL and endpoints.
  */
 
-production-ready
 
 export interface ApiConfig {
   environment: Environment;

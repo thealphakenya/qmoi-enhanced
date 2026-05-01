@@ -4,10 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/Typography";
 
 export /**
  * PreviewWindow function

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // qmoi-model.ts - QMOI Model TypeScript Definition
 // Generated: 2026-04-16T19:16:21.174549
 

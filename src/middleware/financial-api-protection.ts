@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 /**
  * API Route Protection Middleware
  * Ensures all financial API endpoints are master-only

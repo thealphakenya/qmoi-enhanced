@@ -1,5 +1,3 @@
-console.log("production mode initialized");
-import { specificExports } from 'next/server';
 
 /**
  * Consciousness Health Check Endpoint

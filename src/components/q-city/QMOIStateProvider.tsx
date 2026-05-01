@@ -37,7 +37,6 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-import { specificExports } from "./avatarsConfig";
 
 interface QMOIState {
   // Avatar State

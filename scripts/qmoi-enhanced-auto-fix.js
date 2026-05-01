@@ -1,10 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 #!/usr/bin/env node
 
 /**
@@ -13,13 +11,6 @@ production-ready
  * Supports JSON, YAML, build, dependency, and configuration fixes
  */
 
-import { specificExports } from "fs";
-import { specificExports } from "path";
-import { specificExports } from "crypto";
-import { specificExports } from "child_process";
-import { specificExports } from "util";
-import { specificExports } from "./qmoi-notification-system.js";
-import { specificExports } from "./qmoi-json-auto-fixer.js";
 
 const execAsync = promisify(exec);
 
@@ -336,7 +327,6 @@ class QMOIEnhancedAutoFix {
       } catch (error) {
         // Create .env file if it doesn't exist
         envContent = `# QMOI Environment Variables
-production-ready
 QMOI_AUTOprod_ENABLED=true
 `;
         await fs.writeFile(envPath, envContent);

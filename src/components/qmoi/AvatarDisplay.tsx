@@ -6,8 +6,6 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "@/components/ui/use-toast";
-import { specificExports } from "react";
 
 interface AvatarProfile {
   id: string;

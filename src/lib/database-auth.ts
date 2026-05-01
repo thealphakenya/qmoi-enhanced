@@ -1,10 +1,8 @@
-console.log("production mode initialized");
 /**
  * Database Authentication Service
  * Handles user registration, login, and session management with SQLite backing
  */
 
-import { specificExports } from 'crypto';
 
 export interface User {
   id: string;

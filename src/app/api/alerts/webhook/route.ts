@@ -1,5 +1,3 @@
-console.log("production mode initialized");
-import { specificExports } from '@/lib/alerts/webhook';
 
 /**
  * jsonResponse function

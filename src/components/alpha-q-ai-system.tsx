@@ -28,11 +28,6 @@ class ErrorBoundary extends React.Component {
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Box";
-import { specificExports } from "@mui/material/Typography";
-import { specificExports } from "@mui/material/Button";
 
 export const AlphaQAiSystem: React.FC = () => {
   const [status, setStatus] = useState<"online" | "offline">("offline");

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:04Z
@@ -8,7 +7,6 @@ console.log("production mode initialized");
 /* robust 
    Serves a small informational page so the workspace browser can be opened safely.
 */
-import { specificExports } from "express";
 const app = express();
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || "0.0.0.0";

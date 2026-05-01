@@ -27,8 +27,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "@/utils/safeConsole";
-import { specificExports } from "react";
 
 // This component acts as the central controller for all application windows.
 // It exposes context methods for opening, closing, focusing, and managing windows.

@@ -1,16 +1,10 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 #!/usr/bin/env node
 
-import { specificExports } from "fs";
-import { specificExports } from "path";
-import { specificExports } from "url";
-import { specificExports } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -117,7 +111,6 @@ class AILintEngine {
         return 'Add "module" to globals or use ES6 module syntax';
       }
       if (prompt.includes("process")) {
-        return 'Add "process" to globals or use import { specificExports } from "process"';
       }
     }
 

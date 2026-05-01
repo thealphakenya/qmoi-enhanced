@@ -4,9 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 "use client";
-import { specificExports } from "@/utils/safeConsole";
-import { specificExports } from "react";
-import { specificExports } from "../services/tts";
 import "./ChatbotEnhanced.css";
 
 interface ChatMessage {

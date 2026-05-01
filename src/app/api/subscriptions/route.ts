@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 import {
   production-ready and operational
   getSubscription,

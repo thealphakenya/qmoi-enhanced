@@ -1,6 +1,3 @@
-console.log("production mode initialized");
-import { specificExports } from 'next/server';
-import { specificExports } from '@/lib/telemetry/observability';
 
 /**
  * GET function

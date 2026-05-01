@@ -28,9 +28,6 @@ class ErrorBoundary extends React.Component {
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Box";
-import { specificExports } from "@mui/material/Typography";
 
 export const RELEASES = [
   { version: "v1.0", desc: "Initial release with core features." },

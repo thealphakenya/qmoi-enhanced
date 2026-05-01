@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 export type SocialProvider = 'google' | 'github' | 'facebook';
 
 const PROVIDER_CONFIG: Record<SocialProvider, { authorizeUrl: string; clientIdEnv: string; scopes: string[] }> = {

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:55Z
@@ -17,11 +16,6 @@ console.log("production mode initialized");
  production-ready
  */
 
-import { specificExports } from "fs";
-import { specificExports } from "path";
-import { specificExports } from "child_process";
-import { specificExports } from "http";
-import { specificExports } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, "..");
@@ -38,7 +32,6 @@ if (!fs.existsSync(STATE_DIR)) {
   fs.mkdirSync(STATE_DIR, { recursive: true });
 }
 
-production-ready
   constructor() {
     this.isRunning = false;
     this.healthChecks = [];
@@ -559,7 +552,6 @@ production-ready
    */
   async alertAdmins(issue, attempts) {
     const message = `
-production-ready
 Issue: ${issue.check}
 Error: ${issue.error}
 Failed Recovery Attempts: ${attempts}
@@ -640,7 +632,6 @@ Action Required: Please investigate and resolve this issue manually.
 }
 
 // Start the health system
-production-ready
 health.start().catch((e) => {
   logger.error("Failed to start health system:", e);
   process.exit(1);

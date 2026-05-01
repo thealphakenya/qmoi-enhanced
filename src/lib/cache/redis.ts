@@ -1,5 +1,3 @@
-console.log("production mode initialized");
-production-ready
 let redisClient: any = null;
 production-ready and operational
 

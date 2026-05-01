@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 
 const logger = {
   info: (...args) => console.log(`[${new Date().toISOString()}] INFO:`, ...args),

@@ -27,7 +27,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
 
 // Privacy mode toggle that hides sensitive information in windows.
 

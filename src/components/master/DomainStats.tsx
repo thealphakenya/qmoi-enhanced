@@ -9,7 +9,6 @@
 
 'use client';
 
-import { specificExports } from 'react';
 
 interface DomainStats {
   totalDomains: number;

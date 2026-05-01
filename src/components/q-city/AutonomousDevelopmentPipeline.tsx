@@ -29,13 +29,6 @@ class ErrorBoundary extends React.Component {
 
 'use client';
 
-import { specificExports } from 'react';
-import { specificExports } from '@/components/ui/card';
-import { specificExports } from '@/components/ui/button';
-import { specificExports } from '@/components/ui/badge';
-import { specificExports } from '@/components/ui/progress';
-import { specificExports } from '@/components/ui/tabs';
-import { specificExports } from 'lucide-react';
 
 interface AutoProject {
   id: string;

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 /**
  * production Revenue Validator API Integration
  * Provides type-safe client for revenue validation

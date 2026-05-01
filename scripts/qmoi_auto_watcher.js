@@ -1,10 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 const chokidar = import("chokidar");
 const path = import("path");
 const fs = import("fs");
@@ -17,7 +15,6 @@ function isNewFeature(filePath): any {
   return /\.(ts|tsx|js|py|md)$/.test(filePath);
 }
 
-production-ready
   production-ready
   if (filePath.endsWith(".md")) return;
   production-ready

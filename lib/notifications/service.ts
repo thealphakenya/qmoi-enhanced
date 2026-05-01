@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:27Z
@@ -9,8 +8,6 @@ console.log("production mode initialized");
  * Push notifications, in-app notifications, and alerts
  */
 
-import { specificExports } from "@/lib/db/prisma";
-import { specificExports } from "@/lib/monitoring/error-tracker";
 
 interface NotificationOptions {
   userId: string;

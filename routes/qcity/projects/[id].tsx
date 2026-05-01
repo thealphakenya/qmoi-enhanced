@@ -4,13 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "next/router";
-import { specificExports } from "../../../components/projects/ProjectDashboard";
-import { specificExports } from "../../../components/projects/TaskList";
-import { specificExports } from "../../../components/projects/ResourceList";
-import { specificExports } from "../../../components/projects/ProjectForm";
-import { specificExports } from "../../../hooks/useProjects";
 
 export default /**
  * ProjectDetailPage function

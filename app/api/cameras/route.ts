@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 import { NextRequest, NextResponse } from 'next/server';
 // Camera types configuration
 const CAMERA_TYPES = {

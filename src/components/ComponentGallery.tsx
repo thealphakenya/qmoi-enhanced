@@ -27,47 +27,8 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from 'react';
-import { specificExports } from './ui/card';
-import { specificExports } from './ui/button';
-import { specificExports } from './ui/badge';
-import { specificExports } from './ui/tabs';
-import { specificExports } from './ui/scroll-area';
-import { specificExports } from 'lucide-react';
 
 // Import all components for autonomous QMOI gallery
-import { specificExports } from './UniversalWindowManager';
-import { specificExports } from './AutomationEngine';
-import { specificExports } from './GlobalHotkeyService';
-import { specificExports } from './WindowTelemetryPanel';
-import { specificExports } from './VoiceGestureHooks';
-import { specificExports } from './OfflineCacheService';
-import { specificExports } from './PrivacyModeToggle';
-import { specificExports } from './AccessibilityAdjuster';
-import { specificExports } from './FeedbackLoop';
-import { specificExports } from './PluginRegistry';
-import { specificExports } from './CollaborationLayer';
-import { specificExports } from './PredictiveToolRecommender';
-import { specificExports } from './FederatedLearningService';
-import { specificExports } from './SelfHealingWindows';
-import { specificExports } from './AdaptiveTheming';
-import { specificExports } from './VersionedStates';
-import { specificExports } from './UsageAnalytics';
-import { specificExports } from './ChatbotEnhanced';
-import { specificExports } from './PreviewWindow';
-import { specificExports } from './QI';
-import { specificExports } from './QIStateWindow';
-import { specificExports } from './QI_Enhanced';
-import { specificExports } from './UISettings';
-import { specificExports } from './TradingHistory';
-import { specificExports } from './TradingStatus';
-import { specificExports } from './FileExplorer';
-import { specificExports } from './GitStatus';
-import { specificExports } from './AssetOverview';
-import { specificExports } from './DownloadQCity';
-import { specificExports } from './FloatingAQ';
-import { specificExports } from './LcSpaces';
-import { specificExports } from './QiSpaces';
 
 interface ComponentInfo {
   name: string;

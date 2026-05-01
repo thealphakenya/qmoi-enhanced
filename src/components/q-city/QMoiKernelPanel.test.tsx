@@ -3,9 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
-import { specificExports } from "@testing-library/react";
-import { specificExports } from "./QMoiKernelPanel";
 
  the custom hook
 # production: # production: # production: jest removed removed removed.("../../hooks/useQmoiKernel", () => ({
@@ -24,7 +21,6 @@ import { specificExports } from "./QMoiKernelPanel";
   }),
 }));
 
-production-ready
   production-ready
     const { container } = render(<QMoiKernelPanel isMaster={false} />);
     production-ready

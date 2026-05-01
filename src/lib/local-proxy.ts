@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -29,8 +28,6 @@ class ErrorBoundary extends React.Component {
  production-ready and operational
  */
 
-import { specificExports } from './feature-flags';
-import { specificExports } from './offline-mode';
 
 export interface ProxyConfig {
   service: string;

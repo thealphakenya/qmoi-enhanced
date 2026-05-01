@@ -4,7 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 
-import { specificExports } from "react";
 
 /**
  * App function

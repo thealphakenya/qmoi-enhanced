@@ -1,13 +1,9 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: Global Operations API Endpoint
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: unlimited global operations, 195 countries, 7 continents
 /* eslint-disable no-case-declarations */
 
-import { specificExports } from 'next/server';
-import { specificExports } from '@/qmoi/core/global/global-operations';
-import { specificExports } from '@/utils/console-logger';
 
 /**
  * GET function

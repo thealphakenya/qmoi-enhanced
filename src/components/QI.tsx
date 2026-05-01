@@ -27,9 +27,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@mui/material/Input";
 
 const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   const [channels, setChannels] = useState<any[]>([]);

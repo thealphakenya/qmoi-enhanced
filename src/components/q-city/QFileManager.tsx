@@ -27,12 +27,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "react";
-import { specificExports } from "../../hooks/useTimezone";
-import { specificExports } from "../../../hooks/use-toast";
-import { specificExports } from "lucide-react";
-import { specificExports } from "../../../components/ui/button";
-import { specificExports } from "../../../components/ui/card";
 
 interface FileItem {
   id: string;

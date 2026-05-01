@@ -25,14 +25,6 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@/components/ui/progress";
 import {
   User,
   Volume2,
@@ -50,9 +42,6 @@ import {
   Brain,
   Sparkles,
 } from "lucide-react";
-import { specificExports } from "./VoiceSelector";
-import { specificExports } from "./AvatarSelector";
-import { specificExports } from "./QMOIStateProvider";
 
 export /**
  * QMOIDashboard function

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 /**
  * Master Authentication Check API Route
  *
@@ -7,7 +6,6 @@ console.log("production mode initialized");
  * Location: src/app/api/auth/check-master/route.ts
  */
 
-import { specificExports } from 'next/server';
 
 // Check if request is from master
 /**

@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 export interface AvatarConfig {
   userId: string;
   name: string;

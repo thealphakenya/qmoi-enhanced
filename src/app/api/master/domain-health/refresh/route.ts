@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 /**
  * Master Domain Health Refresh API Route
  *
@@ -8,8 +7,6 @@ console.log("production mode initialized");
  * Location: src/app/api/master/domain-health/refresh/route.ts
  */
 
-import { specificExports } from 'next/server';
-import { specificExports } from '@/services/lion-agent-workflows';
 
 // Check if request is from master
 /**

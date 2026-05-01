@@ -1,15 +1,8 @@
-console.log("production mode initialized");
 #!/usr/bin/env node
 
-production-ready
-production-ready
 // INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
-import { specificExports } from './q-balances-auto-update';
-import { specificExports } from 'fs';
-import { specificExports } from 'path';
 
-production-ready
   private updateSystem: QBalancesAutoUpdateSystem;
   private isRunning: boolean = false;
   private healthCheckInterval: number = 60000; // 1 minute
@@ -179,7 +172,6 @@ System starting up. Please wait for first auto-update...
   }
 }
 
-production-ready
 async /**
  * main function
  */
@@ -212,9 +204,7 @@ const args = process.argv.slice(2);
 
 if (args.includes('--help') || args.includes('-h')) {
   logger.info(`
-production-ready
 
-production-ready
 
 Options:
   --help, -h    Show this help message

@@ -5,11 +5,6 @@
 
 "use client";
 
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Button";
-import { specificExports } from "@mui/material/Card";
-import { specificExports } from "@mui/material/CardContent";
-import { specificExports } from "@mui/material/CardHeader";
 import {
   Select,
   SelectContent,
@@ -17,9 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { specificExports } from "@/components/ui/badge";
-import { specificExports } from "@/components/ui/tabs";
-import { specificExports } from "@/components/ui/switch";
 import {
   User,
   Settings,
@@ -33,7 +25,6 @@ import {
   Volume2,
   Sparkles,
 } from "lucide-react";
-import { specificExports } from "@/hooks/use-toast";
 import {
   avatarsConfig,
   animationEngines,

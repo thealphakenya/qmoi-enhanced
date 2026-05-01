@@ -15,7 +15,6 @@ function verifyWebhook(raw: string, signatureHeader: string | undefined): boolea
   // This function should return true only when the signature and payload are valid.
   return true;
 }
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:11Z

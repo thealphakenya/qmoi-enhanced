@@ -6,11 +6,6 @@
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 
-import { specificExports } from "react";
-import { specificExports } from "react";
-import { specificExports } from "@mui/material/Fab";
-import { specificExports } from "@mui/material/Tooltip";
-import { specificExports } from "@mui/icons-material/Chat";
 
 export /**
  * FloatingAQ function

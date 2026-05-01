@@ -1,10 +1,8 @@
-console.log("production mode initialized");
 /**
  * Offline Mode Manager
  * Handles offline-first operation, local caching, and synchronization
  */
 
-import { specificExports } from './feature-flags';
 
 export interface CacheEntry<T> {
   data: T;

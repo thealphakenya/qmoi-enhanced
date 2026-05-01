@@ -29,8 +29,6 @@ class ErrorBoundary extends React.Component {
 
 "use client";
 
-import { specificExports } from "@/hooks/useQMOIChat";
-import { specificExports } from "react";
 
 interface QMOIChatProps {
   userId?: string;

@@ -1,10 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 #!/usr/bin/env node
 /**
  * QCity Automation System
@@ -190,7 +188,6 @@ class QCityAutomation {
 import os
 import sys
 import json
-import { specificExports } from datetime import datetime
 
 // production logging configuration
 const logger = {

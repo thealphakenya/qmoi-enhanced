@@ -28,12 +28,6 @@ class ErrorBoundary extends React.Component {
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "../../../hooks/use-toast";
-import { specificExports } from "lucide-react";
-import { specificExports } from "../../../components/ui/button";
-import { specificExports } from "../../../components/ui/card";
-import { specificExports } from "../../hooks/useTimezone";
 
 interface WalletManagerProps {
   isMaster?: boolean;

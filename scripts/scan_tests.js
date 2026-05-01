@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:55Z
@@ -17,8 +16,6 @@ console.log("production mode initialized");
  *   --auto-generate  create complete files for required tests
  */
 
-import { specificExports } from "fs";
-import { specificExports } from "path";
 
 const ROOT = path.resolve(__dirname, "..");
 const TESTS_MD = path.join(ROOT, "TESTS.md");

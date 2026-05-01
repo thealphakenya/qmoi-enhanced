@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 /**
  * Master Access Control System
  * Provides middleware and utilities for master-only feature access

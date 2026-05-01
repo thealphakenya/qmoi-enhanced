@@ -33,7 +33,6 @@ class ErrorBoundary extends React.Component {
 
 'use client';
 
-import { specificExports } from 'react';
 
 interface DomainValidation {
   domain: string;

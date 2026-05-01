@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
@@ -9,10 +8,6 @@ console.log("production mode initialized");
  * Handles autonomous and manual model replacement requests
  */
 
-import { specificExports } from 'next/server';
-import { specificExports } from '@/qmoi/core/evolution/model-replacement';
-import { specificExports } from '@/lib/auth';
-import { specificExports } from '@/lib/qmoi-state';
 
 export const runtime = 'nodejs';
 

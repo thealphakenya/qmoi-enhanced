@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 export interface AlertPayload {
   level: 'info' | 'warning' | 'critical';
   message: string;

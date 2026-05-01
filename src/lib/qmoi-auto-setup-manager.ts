@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI Auto Setup Manager
 // Handles automatic environment setup and configuration
 

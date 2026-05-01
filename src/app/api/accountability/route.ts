@@ -1,12 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: Master Accountability API
 // Comprehensive accountability system for all QMOI operations
 // Last evolution cycle: 2026-04-01T12:00:00Z
 // Evolution features: master accountability, audit trails, compliance monitoring
 
-import { specificExports } from 'next/server';
-import { specificExports } from '@/lib/accountability-service';
-import { specificExports } from '@/utils/console-logger';
 
 /**
  * GET function

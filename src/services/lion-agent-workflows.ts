@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 /**
  * LION AGENT - Enhanced Autonomous System Guardian
  *

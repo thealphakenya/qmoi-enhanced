@@ -27,14 +27,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-04-07T00:00:00Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from 'react';
-import { specificExports } from '@/components/ui/button';
-import { specificExports } from '@/components/ui/card';
-import { specificExports } from '@/components/ui/input';
-import { specificExports } from '@/components/ui/label';
-import { specificExports } from '@/components/ui/select';
-import { specificExports } from '@/components/ui/badge';
-import { specificExports } from '@/hooks/use-toast';
 import {
   Bell, DollarSign, TrendingUp, AlertTriangle, CheckCircle, XCircle,
   Clock, Globe, Newspaper, Radio, MapPin, Users, BarChart3,

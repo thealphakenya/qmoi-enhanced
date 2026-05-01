@@ -28,7 +28,6 @@ class ErrorBoundary extends React.Component {
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
 import {
   Box,
   Card,
@@ -41,9 +40,6 @@ import {
   CircularProgress,
   Alert,
 } from "@mui/material";
-import { specificExports } from "@mui/icons-material";
-import { specificExports } from "../hooks/useAuth";
-import { specificExports } from "../config/assets";
 
 interface AssetOverviewProps {
   className?: string;

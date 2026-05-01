@@ -30,8 +30,6 @@ class ErrorBoundary extends React.Component {
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { specificExports } from "react";
-import { specificExports } from "@/components/ui/use-toast";
 
 interface Friend {
   id: string;

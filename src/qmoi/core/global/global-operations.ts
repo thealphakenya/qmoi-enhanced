@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file supports unlimited global activities across all nations
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
@@ -9,7 +8,6 @@ console.log("production mode initialized");
  * Enables QMOI to perform unlimited concurrent activities globally
  */
 
-import { specificExports } from '@/utils/console-logger';
 
 export interface GlobalOperation {
   id: string;

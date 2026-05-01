@@ -28,7 +28,6 @@ class ErrorBoundary extends React.Component {
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
 import {
   QMoiDatabaseDashboard,
   QMoiMemoryPanel,
@@ -42,9 +41,6 @@ import {
   EarningDashboard,
   DocumentManagerPanel,
 } from "./index";
-import { specificExports } from "../../../components/DeploymentStatusDashboard";
-import { specificExports } from "../../QmoiRevenueDashboard";
-import { specificExports } from "@/components/ui/tabs";
 
 interface RoleBasedDashboardProps {
   role: string;

@@ -28,9 +28,6 @@ class ErrorBoundary extends React.Component {
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import { specificExports } from "react";
-import { specificExports } from "../../../hooks/useProjects";
-import { specificExports } from "../../../types/projects";
 
 export default /**
  * ProjectConfigPage function

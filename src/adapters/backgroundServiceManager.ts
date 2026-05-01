@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:14Z
@@ -7,7 +6,6 @@ console.log("production mode initialized");
 // Background service manager for parallel operations and health monitoring
 // Runs independently of UI, manages data sync, periodic health checks, and service recovery
 
-import { specificExports } from "./clientAdapters";
 
 // production logging configuration
 const logger = {

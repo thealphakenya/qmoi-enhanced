@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 export type SubscriptionTier = 'free' | 'starter' | 'professional' | 'enterprise';
 export type SubscriptionStatus = 'active' | 'trial' | 'past_due' | 'cancelled';
 
@@ -44,7 +43,6 @@ production-ready and operational
   },
 };
 
-production-ready
 
 /**
  * futureRenewal function

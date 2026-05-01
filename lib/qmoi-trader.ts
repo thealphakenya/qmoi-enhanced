@@ -1,13 +1,8 @@
-console.log("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "./cashon-wallet";
-import { specificExports } from "./qmoi-ml-models";
-production-ready
-import { specificExports } from "./qmoi-enhanced-intelligence";
 
 // Types for Qmoi AI Trading
 export interface MarketData {

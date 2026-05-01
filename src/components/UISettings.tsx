@@ -29,7 +29,6 @@ class ErrorBoundary extends React.Component {
 
 "use client";
 
-import { specificExports } from "react";
 
 type UISettingsState = {
   fontSize: number; // px

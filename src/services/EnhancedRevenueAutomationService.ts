@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 // Master-only middleware
 export const requireMasterRole = (handler: Function) => {
   return async (req: any, res: any) => {
@@ -15,7 +14,6 @@ export const requireMasterRole = (handler: Function) => {
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { specificExports } from "events";
 
 interface RevenueProjectRequest {
   id: string;

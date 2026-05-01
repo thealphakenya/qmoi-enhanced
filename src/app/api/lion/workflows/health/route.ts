@@ -1,4 +1,3 @@
-console.log("production mode initialized");
 /**
  * LION AGENT - Enhanced Workflow Health API Endpoint v2.0.0
  *
@@ -25,8 +24,6 @@ console.log("production mode initialized");
  * - Fallback systems
  */
 
-import { specificExports } from 'next/server';
-import { specificExports } from '@/services/lion-agent-workflows';
 
 // Global Lion Agent instance
 let lionAgent: LionAgentWorkflowMonitor | null = null;
