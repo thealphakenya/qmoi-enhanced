@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 module.exports = {
   apps: [
     {
@@ -12,7 +11,7 @@ module.exports = {
       script: "./scripts/qmoi_media_orchestrator.js",
       watch: false,
       env: {
-        production-ready
+        NODE_ENV: "production"
       },
       error_file: "./logs/qmoi_orchestrator_error.log",
       out_file: "./logs/qmoi_orchestrator_out.log",
@@ -23,7 +22,7 @@ module.exports = {
       script: "./scripts/qmoi_dashboard.js",
       watch: false,
       env: {
-        production-ready
+        NODE_ENV: "production"
       },
       error_file: "./logs/qmoi_dashboard_error.log",
       out_file: "./logs/qmoi_dashboard_out.log",
