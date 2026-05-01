@@ -1,12 +1,5 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:23.662232 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:17.826007 -->
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:11Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-import { specificExports } from "next/server";
-import { specificExports } from "jsonwebtoken";
+import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
@@ -27,10 +20,8 @@ const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 /**
  * Extract JWT token from request headers
  */
-export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function getTokenFromRequest(_request) {
-  const authHeader = _request.headers.get("authorization");
+export function getTokenFromRequest(request) {
+  const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
   }
@@ -40,12 +31,9 @@ function getTokenFromRequest(_request) {
 /**
  * Decode and verify JWT token
  */
-export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function verifyToken(token) {
+export function verifyToken(token) {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    return decoded;
+    return jwt.verify(token, JWT_SECRET);
   } catch (error) {
     return null;
   }
@@ -54,10 +42,8 @@ function verifyToken(token) {
 /**
  * Get user role from request
  */
-export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function getRoleFromRequest(_request) {
-  const token = getTokenFromRequest(_request);
+export function getRoleFromRequest(request) {
+  const token = getTokenFromRequest(request);
   if (!token) {
     return null;
   }
@@ -68,14 +54,11 @@ function getRoleFromRequest(_request) {
 /**
  * Check if a role has permission for a specific action
  */
-export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function hasPermission(role, requiredRole) {
+export function hasPermission(role, requiredRole) {
   if (!role) {
     return false;
   }
 
-  // Master has all permissions
   if (role === "master") {
     return true;
   }
@@ -90,11 +73,9 @@ function hasPermission(role, requiredRole) {
 /**
  * Middleware to protect API routes based on role
  */
-export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function withRoleProtection(handler, requiredRoles) {
-  return async (_request, context) => {
-    const userRole = getRoleFromRequest(_request);
+export function withRoleProtection(handler, requiredRoles) {
+  return async (request, context) => {
+    const userRole = getRoleFromRequest(request);
 
     if (!hasPermission(userRole, requiredRoles)) {
       return NextResponse.json(
@@ -103,7 +84,7 @@ function withRoleProtection(handler, requiredRoles) {
       );
     }
 
-    return handler(_request, context);
+    return handler(request, context);
   };
 }
 
@@ -121,19 +102,18 @@ export const roleHierarchy = {
 /**
  * Check if a role has at least the specified hierarchy level
  */
-export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function hasRoleLevel(role, minLevel) {
+export function hasRoleLevel(role, minLevel) {
+  if (!role) {
+    return false;
+  }
   return roleHierarchy[role] >= minLevel;
 }
 
 /**
  * Check if request user role is at or above a hierarchy level
  */
-export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-function checkRoleLevel(_request, minLevel) {
-  const role = getRoleFromRequest(_request);
+export function checkRoleLevel(request, minLevel) {
+  const role = getRoleFromRequest(request);
   if (!role) {
     return false;
   }

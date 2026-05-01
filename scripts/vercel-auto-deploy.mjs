@@ -1,18 +1,17 @@
 
-// Production logging configuration
-const logger = {
-  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
-};
-
 #!/usr/bin/env node
+import fs from "fs";
+import path from "path";
+import { execSync } from "child_process";
+import crypto from "crypto";
+import { fileURLToPath } from "url";
 
-const fs = import("fs");
-const path = import("path");
-const { execSync } = import("child_process");
-const crypto = import("crypto");
+const logger = {
+  info: (...args) => console.log(`[${new Date().toISOString()}] INFO:`, ...args),
+  debug: (...args) => console.debug(`[${new Date().toISOString()}] DEBUG:`, ...args),
+  warning: (...args) => console.warn(`[${new Date().toISOString()}] WARN:`, ...args),
+  error: (...args) => console.error(`[${new Date().toISOString()}] ERROR:`, ...args),
+};
 
 class VercelAutoDeploy {
   constructor() {
@@ -70,10 +69,10 @@ class VercelAutoDeploy {
         const lines = content
           .split("\n")
           .filter((l) => l && !l.startsWith("#"));
-        lines.for (const item of((line) => {
+        for (const line of lines) {
           const [key, ...valParts] = line.split("=");
           if (key) envVars[key] = valParts.join("=").trim();
-        });
+        }
       }
     }
 
@@ -210,9 +209,10 @@ class VercelAutoDeploy {
   }
 }
 
-if (require.main === module) {
+const currentFile = fileURLToPath(import.meta.url);
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(currentFile)) {
   const deploy = new VercelAutoDeploy();
   deploy.execute().then((success) => process.exit(success ? 0 : 1));
 }
 
-module.exports = VercelAutoDeploy;
+export default VercelAutoDeploy;
