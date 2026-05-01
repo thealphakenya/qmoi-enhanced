@@ -74,7 +74,6 @@ function AskQMoi({
       });
 
       if (!res.ok) {
-        production-ready
       }
 
       const data = await res.json();
@@ -83,7 +82,6 @@ function AskQMoi({
         setResponse(data.response);
         setShowResponse(true);
       } else {
-        production-ready
       }
     } catch (error) {
       setResponse(

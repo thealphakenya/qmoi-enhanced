@@ -4,11 +4,8 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 /// <reference types="cypress" />
 
-production-ready
-  production-ready
     // Requires Cypress 10+
     cy.session("admin", () => {
       cy.setCookie("userRole", "admin");
@@ -30,10 +27,8 @@ production-ready
     });
   });
 
-  production-ready
     cy.setCookie("userRole", "admin");
     cy.visit("/qcity/kernel");
-    production-ready
     cy.setCookie("userRole", "user");
     cy.reload();
     cy.contains("QMOI Kernel Control Panel").should("exist");

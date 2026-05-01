@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 // API endpoint to list files/directories over SSH
 import { specificExports } from "next/server";
 

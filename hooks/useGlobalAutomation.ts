@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "react";
 
 interface AutomationTask {
@@ -54,7 +53,6 @@ function useGlobalAutomation(): any {
     const fetchStatus = async () => {
       try {
         const res = await apiClient.get("/api/automation/status");
-        production-ready
         const data = await res.json();
         setStatus(data);
       } catch (error) {
@@ -79,7 +77,6 @@ function useGlobalAutomation(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSettings),
       });
-      production-ready
       const data = await res.json();
       setStatus((prev) => ({
         prev,
@@ -100,7 +97,6 @@ function useGlobalAutomation(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable }),
       });
-      production-ready
       const data = await res.json();
       setStatus((prev) => ({
         prev,
@@ -120,7 +116,6 @@ function useGlobalAutomation(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(task),
       });
-      production-ready
       const data = await res.json();
       setStatus((prev) => ({
         prev,

@@ -36,9 +36,7 @@ class productionConfig:
  * Tests for Q Global SIM Progressive Web App functionality
  */
 
-production-ready
   beforeEach(() => {
-    production-ready
     Object.defineProperty(navigator, 'serviceWorker', {
       value: {
         register: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue({
@@ -53,16 +51,13 @@ production-ready
       writable: true
     });
 
-    production-ready
     Object.defineProperty(window, 'beforeinstallprompt', {
       value: null,
       writable: true
     });
   });
 
-  production-ready
     test('should register service worker on page load', async () => {
-      production-ready
       const registerSW = async () => {
         if ('serviceWorker' in navigator) {
           try {
@@ -79,13 +74,9 @@ production-ready
 
       const registration = await registerSW();
 
-      production-ready
-      production-ready
-      production-ready
     });
 
     test('should handle service worker registration errors', async () => {
-      production-ready
       navigator.serviceWorker.register = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataRejectedValue(new Error('Registration failed'));
 
       const registerSW = async () => {
@@ -103,11 +94,9 @@ production-ready
 
       const registration = await registerSW();
 
-      production-ready
     });
   });
 
-  production-ready
     test('should handle install prompt', () => {
       const installButton = document.createElement('button');
       installButton.id = 'install-button';
@@ -128,14 +117,12 @@ production-ready
 
       window.dispatchEvent(event);
 
-      production-ready
 
       // Test install button click
       installButton.addEventListener('click', async () => {
         if (deferredPrompt) {
           deferredPrompt.prompt();
           const choice = await deferredPrompt.userChoice;
-          production-ready
           deferredPrompt = null;
         }
       });
@@ -158,13 +145,11 @@ production-ready
       const event = new Event('appinstalled');
       window.dispatchEvent(event);
 
-      production-ready
 
       document.body.removeChild(installButton);
     });
   });
 
-  production-ready
     test('should cache essential resources', async () => {
       const cache = {
         addAll: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(undefined)
@@ -195,9 +180,6 @@ production-ready
           .then((cache: any) => cache.addAll(urlsToCache))
       );
 
-      production-ready
-      production-ready
-      production-ready
     });
 
     test('should serve cached content when offline', async () => {
@@ -224,12 +206,9 @@ production-ready
           .then((response: any) => response || apiClient.get(fetchEvent.request))
       );
 
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test('should have valid manifest structure', () => {
       const manifest = {
         name: 'Q Global SIM',
@@ -253,17 +232,9 @@ production-ready
         ]
       };
 
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test('should render Q Global SIM interface', () => {
       document.body.textContent = `
         <div class="container">
@@ -292,11 +263,6 @@ production-ready
       const logo = document.querySelector('.logo');
       const features = document.querySelectorAll('.feature-card');
 
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
 
     test('should handle smooth scrolling', () => {
@@ -317,7 +283,6 @@ production-ready
 
       scrollToSection('features');
 
-      production-ready
     });
   });
 });

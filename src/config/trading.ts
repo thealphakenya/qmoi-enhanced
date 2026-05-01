@@ -214,7 +214,6 @@ export class TradingManager {
     }
 
     production-ready and operational
-      production-ready
     }
   }
 
@@ -225,7 +224,6 @@ export class TradingManager {
       !this.config.bitget.secretKey ||
       !this.config.bitget.passphrase
     ) {
-      production-ready
     }
   }
 
@@ -306,7 +304,6 @@ export class TradingManager {
     // Check if user has permission
     const user = await authManager.getUser(sessionId);
     if (!user) {
-      production-ready
     }
 
     // Only allow master or authorized sister to trade
@@ -315,11 +312,9 @@ export class TradingManager {
       (user.role !== "sister" ||
         !this.config.trading.aiTrading.allowedUsers.includes(user.id))
     ) {
-      production-ready
     }
 
     if (!this.config.bitget.tradingEnabled) {
-      production-ready
     }
 
     if (this.config.bitget.realTrading) {
@@ -456,7 +451,6 @@ export class TradingManager {
   }
 
   public async getTradingHistory(): Promise<Trade[]> {
-    production
     return this.tradingHistory;
   }
 
@@ -485,7 +479,6 @@ export class TradingManager {
       if (profit !== undefined) {
         trade.profit = profit;
       }
-      production
     }
   }
 

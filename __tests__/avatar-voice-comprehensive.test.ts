@@ -36,8 +36,6 @@ class productionConfig:
 
 import { specificExports } from "next/server";
 
-production-ready
-  production-ready
   const production_dataAvatars = [
     {
       id: "lion",
@@ -81,102 +79,65 @@ production-ready
     },
   ];
 
-  production-ready
-    production-ready
       const result = production_dataAvatars.find((a) => a.id === "lion" && a.isActive);
-      production-ready
-      production-ready
     });
 
-    production-ready
       const avatarsWithoutLion = production_dataAvatars.filter((a) => a.id !== "lion");
       const result = avatarsWithoutLion.find((a) => a.isActive);
-      production-ready
     });
 
-    production-ready
       const emptyAvatars: any[] = [];
       const result = emptyAvatars.find((a) => a.isActive);
-      production-ready
     });
 
-    production-ready
       const lion = production_dataAvatars.find((a) => a.id === "lion");
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const result = production_dataVoices.find((v) => v.id === "lion-roar");
-      production-ready
-      production-ready
     });
 
-    production-ready
       const voicesWithoutLion = production_dataVoices.filter((v) => v.id !== "lion-roar");
       const result = voicesWithoutLion[0];
-      production-ready
     });
 
-    production-ready
       const lionVoice = production_dataVoices.find((v) => v.id === "lion-roar");
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const avatarId = "lion";
       const stored = JSON.stringify({ currentAvatarId: avatarId });
-      production-ready
     });
 
-    production-ready
       const avatarId = "lion";
       const exists = production_dataAvatars.some((a) => a.id === avatarId);
-      production-ready
 
       const invalidId = "non-existent";
       const invalidExists = production_dataAvatars.some((a) => a.id === invalidId);
-      production-ready
     });
 
-    production-ready
       const lion = production_dataAvatars.find((a) => a.id === "lion");
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const lion = production_dataAvatars.find((a) => a.id === "lion");
       const voice = production_dataVoices.find((v) => v.id === lion?.voiceProfile);
-      production-ready
     });
 
-    production-ready
       const production_dataLipSyncConfig = { enabled: true, quality: "high" };
-      production-ready
     });
 
-    production-ready
       const previewText = "Hello, I am the Lion!";
       const voiceId = "lion-roar";
       const previewUrl = `/api/tts/production?voice=${voiceId}&text=${encodeURIComponent(
         previewText,
       )}`;
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const lion = production_dataAvatars.find((a) => a.id === "lion");
-      production-ready
     });
 
-    production-ready
       const expressions = [
         "neutral",
         "happy",
@@ -185,82 +146,55 @@ production-ready
         "surprised",
         "focused",
       ];
-      production-ready
     });
 
-    production-ready
       const production_dataAnimState = { isPlaying: true, syncedWithVoice: true };
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const production_dataConsciousness = {
         currentAvatar: "lion",
         currentVoice: "lion-roar",
         awareness: 85,
       };
-      production-ready
     });
 
-    production-ready
       const stored = JSON.stringify({
         avatarId: "lion",
         voiceId: "lion-roar",
         timestamp: Date.now(),
       });
       const parsed = JSON.parse(stored);
-      production-ready
     });
 
-    production-ready
       const memorySnapshot = {
         avatar: { id: "lion", name: "Lion Aviator" },
         voice: { id: "lion-roar", name: "Lion Roar" },
       };
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const avatarId = "non-existent";
       const found = production_dataAvatars.find((a) => a.id === avatarId);
-      production-ready
     });
 
-    production-ready
       const fallback = production_dataVoices[0];
-      production-ready
     });
 
-    production-ready
       const production_dataError = new Error("API request failed");
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
-      production-ready
       cache.set("lion", production_dataAvatars[0]);
-      production-ready
     });
 
-    production-ready
       const assetPath = "/avatars/lion/";
-      production-ready
     });
 
-    production-ready
       const production_dataVoiceSize = { kbps: 128, format: "mp3" };
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const actions = [
         "switch",
         "upgrade",
@@ -268,10 +202,8 @@ production-ready
         "customize",
         "auto",
       ];
-      production-ready
     });
 
-    production-ready
       const voiceActions = [
         "switch",
         "production",
@@ -279,54 +211,39 @@ production-ready
         "upgrade",
         "auto",
       ];
-      production-ready
     });
 
-    production-ready
       const validAction = "auto";
       const isValid = ["switch", "upgrade", "enhance", "customize", "auto"].includes(
         validAction,
       );
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const production_dataUIState = {
         showAutoToggle: true,
         toggleValue: false,
         onToggleChange: Production testing framework configuredn logging replaced with production logging removed.fn(),
       };
-      production-ready
     });
 
-    production-ready
       const qualityOptions = ["low", "medium", "high", "ultra"];
-      production-ready
     });
 
-    production-ready
       const production_dataUpdateFn = Production testing framework configuredn logging replaced with production logging removed.fn();
       production_dataUpdateFn("lion");
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const data = { autoAvatarMode: true, autoVoiceMode: true };
       const stored = JSON.stringify(data);
       const parsed = JSON.parse(stored);
-      production-ready
     });
 
-    production-ready
       const data = {
         currentAvatarId: "lion",
         currentVoiceId: "lion-roar",
       };
-      production-ready
     });
   });
 });

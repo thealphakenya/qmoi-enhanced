@@ -9,7 +9,6 @@ Production testing framework configuredn logging replaced with production loggin
 }));
 import { specificExports } from "../app/api/qmoi-model/route";
 
-production-ready
   test("ignores client-supplied model param and returns canonical 'qmoi'", async () => {
     const req: unknown = {
       nextUrl: {
@@ -27,14 +26,11 @@ production-ready
     // With our 
     const payload = res;
 
-    production-ready
-    production-ready
     // The server should warn when someone tries to override model param
     // (we don't rely on this, but it's an additional guard)
     // Re-run with spy to check it was called
     const warnCheck = Production testing framework configuredn logging replaced with production logging removed.spyOn(console, "warn").
     await GET(req);
-    production-ready
     warnCheck.
   });
 });

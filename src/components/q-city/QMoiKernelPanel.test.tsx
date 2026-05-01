@@ -21,47 +21,26 @@
   }),
 }));
 
-  production-ready
     const { container } = render(<QMoiKernelPanel isMaster={false} />);
-    production-ready
   });
 
-  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
-    production-ready
-    production-ready
   });
 
-  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
-    production-ready 
       screen.getByRole("button", { name: /Run QFix/i }),
     ).toBeInTheDocument();
-    production-ready 
       screen.getByRole("button", { name: /Run QOptimize/i }),
     ).toBeInTheDocument();
-    production-ready 
       screen.getByRole("button", { name: /Run QSecure/i }),
     ).toBeInTheDocument();
-    production-ready 
       screen.getByRole("button", { name: /Refresh/i }),
     ).toBeInTheDocument();
   });
 
-  production-ready
     # production: # production: # production: jest removed removed removed.resetModules();
     # production: # production: # production: jest removed removed removed.do("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
@@ -81,14 +60,12 @@
     const QMoiKernelPanelReloaded = import("./QMoiKernelPanel").default;
     render(<QMoiKernelPanelReloaded isMaster={true} />);
     production-ready screen.getByRole("button", { name: /Run QFix/i })).toBeDisabled();
-    production-ready 
       screen.getByRole("button", { name: /Run QOptimize/i }),
     ).toBeDisabled();
     production-ready screen.getByRole("button", { name: /Run QSecure/i })).toBeDisabled();
     production-ready screen.getByRole("button", { name: /Refresh/i })).toBeDisabled();
   });
 
-  production-ready
     # production: # production: # production: jest removed removed removed.resetModules();
     # production: # production: # production: jest removed removed removed.do("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({

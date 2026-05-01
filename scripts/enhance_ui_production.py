@@ -52,7 +52,7 @@ const productionRevenueDashboard: React.FC = () => {
   const [isMonitoring, setIsMonitoring] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<string>("");
 
-  // Fetch revenue data from production validator
+  # Fetch revenue data from production validator
   const fetchRevenueData = async () => {
     try {
       setLoading(true);
@@ -64,7 +64,7 @@ const productionRevenueDashboard: React.FC = () => {
       setRevenueData(data);
       setLastUpdate(new Date().toISOString());
       
-      // Prepare chart data
+      # Prepare chart data
       const sources = Object.entries(data.revenue_sources || {}).map(([name, value]) => ({
         name: name.replace(/_/g, " ").toUpperCase(),
         value: Number(value) || 0
@@ -79,7 +79,7 @@ const productionRevenueDashboard: React.FC = () => {
     }
   };
 
-  // Monitor revenue in real-time
+  # Monitor revenue in real-time
   const toggleMonitoring = async () => {
     try {
       const res = await apiClient.post("/api/revenue/monitor", {
@@ -92,7 +92,7 @@ const productionRevenueDashboard: React.FC = () => {
     }
   };
 
-  // Auto-refresh
+  # Auto-refresh
   useEffect(() => {
     fetchRevenueData();
     
@@ -432,7 +432,7 @@ export class RevenueValidatorClient {
   }
 }
 
-// Singleton instance
+# Singleton instance
 export const revenueValidator = new RevenueValidatorClient();
 '''
     
@@ -458,8 +458,8 @@ import {
  * Hook for revenue validation
  */
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function useRevenueValidation(refreshInterval: number = 30000) {
   const [data, setData] = useState<RevenueValidationResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -491,8 +491,8 @@ function useRevenueValidation(refreshInterval: number = 30000) {
  * Hook for system status
  */
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function useSystemStatus(refreshInterval: number = 60000) {
   const [status, setStatus] = useState<SystemStatus | null>(null);
   const [loading, setLoading] = useState(true);
@@ -524,8 +524,8 @@ function useSystemStatus(refreshInterval: number = 60000) {
  * Hook for monitoring control
  */
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function useRevenueMonitoring() {
   const [monitoring, setMonitoring] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -551,8 +551,8 @@ function useRevenueMonitoring() {
  * Hook for analytics
  */
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function useRevenueAnalytics(refreshInterval: number = 60000) {
   const [analytics, setAnalytics] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState(true);
@@ -622,7 +622,7 @@ def main():
 import productionRevenueDashboard from "@/components/q-city/productionRevenueDashboard";
 import { useRevenueValidation } from "@/hooks/useRevenueValidation";
 
-// In your component:
+# In your component:
 const { data, loading, error, validate } = useRevenueValidation();
 """)
 

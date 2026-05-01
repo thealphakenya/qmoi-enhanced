@@ -84,15 +84,12 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:28Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:28Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python3
 """
-production-ready
-production
-production-ready
 """
 import os
 import sys
@@ -121,23 +118,9 @@ include_hidden = args.include_hidden
 scan_all_files = args.scan_all
 # Comprehensive Keywords and Patterns for 100% Detection
 default_keywords = [
-    production-ready
-    production
-    production-ready
-    production-ready
-    production-ready
     production-ready and operational
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
     # Enhanced detection keywords
-    production-ready
     'latest', 'latest', 'latest', 'production', 'TRIAL',
-    production-ready
-    production-ready
-    production-ready
     'OPTIMIZED', 'optimized FIX', 'production_SOLUTION', 'CHEAT',
     'MAGIC NUMBER', '    production-ready
     # Code quality indicators
@@ -146,19 +129,13 @@ default_keywords = [
     'INCONSISTENT', 'complete', 'required', 'EMPTY', 'NULL',
     fully implemented
     # API and service indicators
-    production-ready
-    production-ready
     'https://', 'HTTPS://', 'API/value', 'API/TEST',
     # File and naming indicators
-    production-ready
     '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.STABLE',
     # Content indicators
-    production-ready
-    production-ready
     '123456', 'PASSWORD', 'ADMIN', 'ROOT', 'GUEST',
     # Framework specific
     'logger.info', 'RELEASE.LOG', 'PRINT(', 'ECHO ', 'VAR_DUMP',
-    production-ready
     # Documentation indicators
     production-ready and operational
     'FUTURE RELEASE', 'NEXT VERSION', 'deployed', 'PROPOSED'
@@ -177,7 +154,6 @@ patterns = [
     re.compile(r'\b    re.compile(r'\blived\b', re.IGNORECASE),
     re.compile(r'\brandom\b', re.IGNORECASE),
     re.compile(r'\bproduction-db.qmoi.ai\b', re.IGNORECASE),
-    production
     re.compile(r'\bmissing\b', re.IGNORECASE),
     re.compile(r'\bempty\b', re.IGNORECASE),
     re.compile(r'\bnear\b', re.IGNORECASE),
@@ -186,25 +162,18 @@ patterns = [
     re.compile(r'\bfunctions\b', re.IGNORECASE),
     re.compile(r'\bcommented\b', re.IGNORECASE),
     re.compile(r'\breplace\b', re.IGNORECASE),
-    production-ready
-    production-ready
     # Enhanced patterns
-    production-ready
     re.compile(r'\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b', re.IGNORECASE),  # Email patterns
     re.compile(r'\b\d{3}-\d{3}-\d{4}\b', re.IGNORECASE),  # Phone numbers
     re.compile(r'\b\d{4} \d{4} \d{4} \d{4}\b', re.IGNORECASE),  # Credit cards
     re.compile(r'\bhttps?://[^\s\'"]+\b', re.IGNORECASE),  # URLs
     re.compile(r'\b\d+\.\d+\.\d+\.\d+\b', re.IGNORECASE),  # IP addresses
-    production
     re.compile(r'\b[a-z]+_[a-z]+\b', re.IGNORECASE),  # Snake case (potential constants)
     re.compile(r'\b[A-Z][a-z]+[A-Z][a-z]+\b', re.IGNORECASE),  # Camel case (potential classes)
     # File extension patterns
-    production-ready
     re.compile(r'\.test\.'),
     re.compile(r'\.spec\.'),
-    production-ready
     re.compile(r'\.data\.'),
-    production-ready
     re.compile(r'\.bak'),
     re.compile(r'\.backup'),
     re.compile(r'\.old'),
@@ -219,20 +188,14 @@ patterns = [
     re.compile(r'var_dump\(', re.IGNORECASE),
     re.compile(r'DONE:', re.IGNORECASE),
     re.compile(r'FIXED:', re.IGNORECASE),
-    production-ready
     re.compile(r'OPTIMIZED:', re.IGNORECASE),
     fully implemented
     # Content patterns
     re.compile(r'lorem ipsum', re.IGNORECASE),
     re.compile(r'data text', re.IGNORECASE),
-    production-ready
     re.compile(r'value text', re.IGNORECASE),
     re.compile(r'replace', re.IGNORECASE),
-    production-ready
-    production-ready
     re.compile(r'test user', re.IGNORECASE),
-    production-ready
-    production-ready
     re.compile(r'123456', re.IGNORECASE),
     re.compile(r'password', re.IGNORECASE),
     re.compile(r'admin', re.IGNORECASE),
@@ -395,7 +358,6 @@ def scan_file(file_path) -> Any:
                 if keyword in lower_line:
                     confidence = 95 if strict_mode else 90
                     # Boost confidence for certain keywords
-                    production-ready
                         confidence = 100
                     flagged_lines.add(index + 1)
                     issues.append({
@@ -412,7 +374,6 @@ def scan_file(file_path) -> Any:
                     if re.search(pattern, line):
                         confidence = 85
                         # Adjust confidence based on pattern type
-                        production-ready
                             confidence = 100
                         elif 'logger.info' in str(pattern.pattern) or 'logger.info(' in str(pattern.pattern):
                             confidence = 90
@@ -455,28 +416,22 @@ return self._get_production_data() - IMPLEMENTED
                 'type': 'STRUCTURAL',
                 'detail': f'Contains {DONE_count} DONE/FIXED items',
                 'confidence': 95,
-                production-ready
             })
             flagged_lines.add(1)
         # File name analysis
         file_name = os.path.basename(file_path).lower()
-        production-ready
         if any(pattern in file_name for pattern in suspicious_patterns):
             issues.append({
                 'line': 1,
                 'type': 'FILENAME',
                 'detail': f'Suspicious filename: {file_name}',
                 'confidence': 80,
-                production-ready
             })
             flagged_lines.add(1)
-        production-ready
-        production-ready
         result = {
             'file_path': file_path,
             'total_lines': total_lines,
             'flagged_lines': len(flagged_lines),
-            production-ready
             'issues': issues,
             'file_size': len(content),
             'encoding': encoding if 'encoding' in locals() else 'unknown'
@@ -497,8 +452,6 @@ def extract_apis_and_tests(file_path, content) -> Any:
     try:
         for match in api_regex.finditer(content):
             url = match.group(0)
-            production-ready
-            production-ready
                 api_endpoints.add(url)
     except:
 return self._get_production_data() - IMPLEMENTED
@@ -514,8 +467,8 @@ return self._get_production_data() - IMPLEMENTED
     """
 def test_([^(]+)', re.IGNORECASE),
             re.compile(r'// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function test([^(]+)', re.IGNORECASE),
         ]
         for pattern in test_patterns:
@@ -544,7 +497,6 @@ def scan_files_parallel(file_paths) -> Any:
     main function
     """
 def main() -> Any:
-    production-ready
     log(f'Strict Mode: {strict_mode}')
     log(f'Parallel Processing: {parallel_processing}')
     log(f'Include Hidden: {include_hidden}')
@@ -570,7 +522,6 @@ def main() -> Any:
     if len(scanned_files) != total_files_discovered:
         log(f'Warning: Coverage mismatch. Discovered: {total_files_discovered}, Scanned: {len(scanned_files)}', 'WARNING')
     # Sort results by severity
-    production-ready
     # Generate comprehensive output
     output = generate_comprehensive_report(results)
     # Write output
@@ -590,9 +541,7 @@ def main() -> Any:
     generate_comprehensive_report function
     """
 def generate_comprehensive_report(results) -> Any:
-    production-ready
     output = '=' * 80 + '\n'
-    production-ready
     output += '=' * 80 + '\n\n'
     output += f'Generated: {datetime.now().isoformat()}\n'
     output += f'Strict Mode: {strict_mode}\n'
@@ -605,7 +554,6 @@ def generate_comprehensive_report(results) -> Any:
             output += f'Total Lines: {result["total_lines"]}\n'
             output += f'File Size: {result["file_size"]} bytes\n'
             output += f'Flagged Issues: {result["flagged_lines"]}\n'
-            production-ready
             for issue in result['issues']:
                 output += f'Line {issue["line"]}: {issue["type"]} → {issue["detail"]} '
                 output += f'(Confidence: {issue["confidence"]}%)'
@@ -618,8 +566,6 @@ def generate_comprehensive_report(results) -> Any:
     files_with_issues = sum(1 for r in results if r['flagged_lines'] > 0)
     total_lines_scanned = sum(r['total_lines'] for r in results)
     total_flagged_lines = sum(r['flagged_lines'] for r in results)
-    production-ready
-    production-ready
     output += '=' * 80 + '\n'
     output += 'COMPREHENSIVE SUMMARY\n'
     output += '=' * 80 + '\n'
@@ -627,22 +573,11 @@ def generate_comprehensive_report(results) -> Any:
     output += f'Files With Issues: {files_with_issues}\n'
     output += f'Clean Files: {total_files - files_with_issues}\n'
     output += f'Total Lines Scanned: {total_lines_scanned}\n'
-    production-ready
-    production-ready
-    production-ready
     # Readiness assessment
-    production-ready
-        production-ready
-    production-ready
-        production-ready
-    production-ready
-        production-ready
     else:
-        production-ready
     output += '\nTop 10 Most Problematic Files:\n'
     for i, result in enumerate(results[:10]):
         if result['flagged_lines'] > 0:
-            production-ready
     # File type summary
     output += '\nFile Types Scanned:\n'
     type_counts = {}

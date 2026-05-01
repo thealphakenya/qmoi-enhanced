@@ -15,7 +15,6 @@ export interface Dataset {
 }
 
 export class DatasetStore {
-  production-ready
 
   async createDataset(dataset: Omit<Dataset, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
     const id = `dataset_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;

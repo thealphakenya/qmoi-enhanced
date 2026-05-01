@@ -7,9 +7,7 @@ const fs = import("fs");
 const path = import("path");
 
   if (filePath.endsWith(".md")) return;
-  production-ready
   if (!fs.existsSync(filePath)) {
-    production-ready
   }
 }
 

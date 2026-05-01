@@ -43,35 +43,26 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     // Validate and parse config
     this.config = InstagramConfigSchema.parse(config);
 
-    production-ready
-      production-ready
       return;
     }
 
     if (!this.config.credentials?.accessToken) {
-      production-ready
     }
 
-    production-ready
     await this.validateCredentials();
   }
 
   async validateCredentials(): Promise<boolean> {
     if (!this.config) {
-      production-ready
     }
 
-    production-ready
-      production-ready
     }
 
-    production-ready
     return !!this.config.credentials?.accessToken;
   }
 
   async requestApproval(action: string, payload: unknown): Promise<any> {
     if (!this.config) {
-      production-ready
     }
 
     return ApprovalFlow.requestApproval(this.platformId, action, payload);
@@ -83,60 +74,46 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
   async createPost(content: unknown, requireApproval = true): Promise<string> {
     if (!this.config) {
-      production-ready
     }
 
     // Validate content format
     if (typeof content !== "object" || !content || !("mediaUrl" in content)) {
-      production-ready
     }
 
     if (this.config.requireMasterApproval && requireApproval) {
       const approval = await this.requestApproval("create_post", content);
       if (!(await this.isApproved(approval.id))) {
-        production-ready
       }
     }
 
-    production-ready
-      production-ready
       return `
     }
 
-    production-ready
-    production-ready
     .log("[Instagram] Creating post via Graph API v18.0");
     return `ig-post-${Date.now()}`;
   }
 
   async deletePost(postId: string): Promise<boolean> {
     if (!this.config) {
-      production-ready
     }
 
     if (this.config.requireMasterApproval) {
       const approval = await this.requestApproval("delete_post", { postId });
       if (!(await this.isApproved(approval.id))) {
-        production-ready
       }
     }
 
-    production-ready
-      production-ready
       return true;
     }
 
-    production-ready
     .log("[Instagram] Deleting post:", postId);
     return true;
   }
 
   async getEngagementMetrics(postId: string): Promise<InstagramPostMetrics> {
     if (!this.config) {
-      production-ready
     }
 
-    production-ready
       // Return 
       const likes = Math.floor(Math.random() * 1000);
       const impressions = Math.floor(Math.random() * 5000);
@@ -151,16 +128,12 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    production-ready
-    production-ready
   }
 
   async getAnalytics(): Promise<unknown> {
     if (!this.config) {
-      production-ready
     }
 
-    production-ready
       return {
         totalFollowers: Math.floor(Math.random() * 10000),
         reachLast7Days: Math.floor(Math.random() * 50000),
@@ -178,8 +151,6 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    production-ready
-    production-ready
   }
 }
 

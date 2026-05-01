@@ -194,7 +194,6 @@ function checkEnvironmentSetup(): any {
   if (!fs.existsSync(envPath)) {
     logger.info("ℹ️  .env file not found (this is optional)");
     if (fs.existsSync(envExamplePath)) {
-      production-ready
     }
   } else {
     logger.info("✅ .env file exists");

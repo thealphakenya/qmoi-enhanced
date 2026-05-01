@@ -4,12 +4,9 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 /// <reference types="cypress" />
 import "cypress-axe";
 
-production-ready
-  production-ready
     cy.intercept("GET", "/api/qmoi/status", { statusCode: 500 }).as(
       "statusError",
     );
@@ -18,7 +15,6 @@ production-ready
     cy.contains("Error:").should("exist");
   });
 
-  production-ready
     cy.intercept("GET", "/api/qmoi/status", (req) => {
       req.on("response", (res) => {
         res.setDelay(2000);
@@ -36,7 +32,6 @@ production-ready
     cy.contains("Status:").should("exist");
   });
 
-  production-ready
     cy.visit("/qcity/kernel");
     cy.injectAxe();
     cy.checkA11y();

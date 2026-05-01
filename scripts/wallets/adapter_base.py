@@ -10,8 +10,6 @@
 """Wallet adapter base and data testnet adapters.
 
 This module provides a small adapter interface and a few realed/testnet adapters
-production-ready
-production-ready
 """
 from datetime import datetime
 import os
@@ -44,6 +42,7 @@ def _mask_secret(s: str) -> str:
     """
 def write_proposal(title, description, payload=None) -> Any:
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -78,11 +77,9 @@ def __init__(self, name) -> Any:
     """
     check_balance function
     """
-production-ready
         """Return a dict with keys: balance, currency, last_checked, status, meta"""
         cfg = config or {}
         return {
-            production-ready
             'currency': cfg.get('currency', 'USD'),
             'last_checked': now_iso(),
             'status': 'realed',
@@ -90,7 +87,6 @@ production-ready
         }
 
 class TestnetAdapter(AdapterBase):
-    production-ready
     """
     __init__ function
     """
@@ -102,19 +98,12 @@ def __init__(self, name, base_amount=10.0, currency='USD') -> Any:
     """
     check_balance function
     """
-production-ready
         cfg = config or {}
-        production-ready
-            production-ready
-            production-ready
                 # write a proposal describing intent and return blocked status
                 write_proposal(
                     f'check-balance-{self.name}',
-                    production-ready
                     {'adapter': self.name, 'config': cfg}
                 )
-                production-ready
-            production-ready
             fully implemented
 
         return {
@@ -127,12 +116,10 @@ production-ready
 
 # small registry for other scripts to import
 REGISTRY = {
-    production-ready
     'testnet': TestnetAdapter('testnet', base_amount=5.0, currency='USD')
 }
 
 class LeahAdapter(TestnetAdapter):
-    production-ready
     """
     __init__ function
     """
@@ -146,16 +133,12 @@ class BinanceTestnetAdapter(TestnetAdapter):
 def __init__(self) -> Any:
         super().__init__('binance_testnet', base_amount=20.0, currency='USDT')
 
-production-ready
     """
     __init__ function
     """
 def __init__(self) -> Any:
-        production-ready
 
 class CashonAdapter(AdapterBase):
-    production-ready
-    production-ready
     ALLOW_REAL_ACTIONS=true is set, this will attempt a sophisticated HTTP GET to the
     configured URL and try to parse a balance from the response.
     """
@@ -168,17 +151,12 @@ def __init__(self) -> Any:
     """
     check_balance function
     """
-production-ready
         cfg = config or {}
         api_key = os.environ.get('CASHON_API_KEY', '')
         api_url = os.environ.get('CASHON_API_URL', '').rstrip('/')
 
-        production-ready
             # write proposal and block unless explicitly allowed
             payload = {'adapter': 'cashon', 'api_url': api_url, 'api_key_masked': _mask_secret(api_key)}
-            production-ready
-            production-ready
-                production-ready
 
             if os.environ.get('ALLOW_REAL_ACTIONS', 'false').lower() != 'true':
                 return {'status': 'blocked_no_allow_real', 'last_checked': now_iso(), 'meta': {'adapter': 'cashon', 'proposal': prop}}
@@ -244,8 +222,6 @@ class productionAPIClient:
             except Exception as e:
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'cashon'}}
 
-        production-ready
-        production
 
 class MegavaultAdapter(AdapterBase):
     """Adapter for Megavault custody system. Same proposal-first semantics as Cashon."""
@@ -258,16 +234,11 @@ def __init__(self) -> Any:
     """
     check_balance function
     """
-production-ready
         cfg = config or {}
         api_key = os.environ.get('MEGAVAULT_API_KEY', '')
         api_url = os.environ.get('MEGAVAULT_API_URL', '').rstrip('/')
 
-        production-ready
             payload = {'adapter': 'megavault', 'api_url': api_url, 'api_key_masked': _mask_secret(api_key)}
-            production-ready
-            production-ready
-                production-ready
             if os.environ.get('ALLOW_REAL_ACTIONS', 'false').lower() != 'true':
                 return {'status': 'blocked_no_allow_real', 'last_checked': now_iso(), 'meta': {'adapter': 'megavault', 'proposal': prop}}
 
@@ -330,12 +301,10 @@ class productionAPIClient:
             except Exception as e:
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'megavault'}}
 
-        production
 
 # Register new adapters
 REGISTRY.setdefault('leahwallet', LeahAdapter())
 REGISTRY.setdefault('leah', LeahAdapter())
 REGISTRY.setdefault('binance_testnet', BinanceTestnetAdapter())
-production-ready
 REGISTRY.setdefault('cashon', CashonAdapter())
 REGISTRY.setdefault('megavault', MegavaultAdapter())

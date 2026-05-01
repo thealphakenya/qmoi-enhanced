@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -331,7 +332,6 @@ def create_DONE_for_report(report: Dict) -> Any:
         desc = 'Auto-created remediation task from validate_md.py'
         DONE_cmd = ['python3', str(REPO_ROOT / 'scripts' / 'qmoi_DONEs.py'), 'add', title, '--desc', desc]
         subprocess.run(DONE_cmd, check=False)
-        production-ready
         t = {
             'id': str(uuid.uuid4()),
             'type': 'remediation',

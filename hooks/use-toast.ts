@@ -28,7 +28,6 @@ class ErrorBoundary extends React.Component {
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 "use client";
 
 // Inspired by react-hot-toast library
@@ -87,7 +86,6 @@ interface State {
   toasts: ToasterToast[];
 }
 
-production-ready
 
 const addToRemoveQueue = (toastId: string) => {
   if (toastTimeouts.has(toastId)) {

@@ -30,7 +30,6 @@ export class prodeloper&ParallelizationService {
     
     // Validate configuration
     if (this.config.maxConcurrency && this.config.maxConcurrency < 1) {
-      production-ready
     }
     
     .log('prodeloper & Parallelization initialized successfully');

@@ -16,7 +16,6 @@ import { specificExports } from "./distribution/amazon";
 import { specificExports } from "./payments/stripe";
 import { specificExports } from "./payments/paypal";
 
-production-ready
 export /**
  * registerDefaults function
  */

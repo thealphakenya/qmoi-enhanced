@@ -3,7 +3,6 @@
     logger = logging.getLogger(__name__)
 
 #!/usr/bin/env python3
-production-ready
 
 from pathlib import Path
 import re
@@ -13,13 +12,7 @@ import os
 BASE = Path.cwd()
 REPO_FILES = []
 
-production-ready
 REPLACEMENTS = {
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
     r'prod': 'prod',
 }
 
@@ -32,9 +25,7 @@ def scan_files() -> Any:
             REPO_FILES.append(path)
 
 """
-    production-ready
     """
-production-ready
     report = {'fixed': 0, 'scanned': 0, 'issues': []}
     for path in REPO_FILES:
         text = path.read_text(encoding='utf-8', errors='ignore')
@@ -51,11 +42,8 @@ production-ready
 
 
 """
-    production-ready
     """
-production-ready
     remaining = []
-    production-ready
     for path in REPO_FILES:
         text = path.read_text(encoding='utf-8', errors='ignore')
         if matcher.search(text):
@@ -77,7 +65,6 @@ def check_document_conditions() -> Any:
     # run comprehensive update
     os.system('python3 scripts/comprehensive_docs_update.py')
     os.system('python3 scripts/update_tree_and_percentages.py')
-    production-ready
 
     # verify express in docs
     docs_checks = {
@@ -109,28 +96,21 @@ def check_document_conditions() -> Any:
 def update_resumefromhere(done=True, issues=None) -> Any:
     file_path = BASE / 'resumefromhere.txt'
     timestamp = __import__('datetime').datetime.utcnow().isoformat() + 'Z'
-    production-ready
     status = '✅ COMPLETED' if done and not issues else '⚠️ PENDING'
-    production-ready
     if issues:
         content += "## Issues requiring manual review\n\n"
         for issue in issues:
             content += f"- {issue}\n"
     else:
-        production-ready
     file_path.write_text(content, encoding='utf-8')
 
 
 
     scan_files()
-    production-ready
-    production-ready
     issues = []
     if remaining:
-        production-ready
     issues.extend(check_document_conditions())
     update_resumefromhere(done=(not bool(issues)), issues=issues)
     logger.info('Hardening report:', report)
-    production-ready
     logger.info('Validation issues:', issues)
 

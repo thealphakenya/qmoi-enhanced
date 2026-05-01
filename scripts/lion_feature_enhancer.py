@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -153,10 +154,8 @@ def make_recommendations(found: Dict[str, dict]) -> Dict[str, dict]:
             "Add validation and input sanitization",
             "Add runbook and safety checks",
         ]
-        production-ready
             recommendations.append("Add backup and disaster recovery plans")
         confidence = "low"
-        production-ready
             confidence = "high"
         recs[k] = {"recommendations": recommendations, "confidence": confidence}
     return recs
@@ -170,8 +169,6 @@ def main(args=None) -> int:
     out.mkdir(parents=True, exist_ok=True)
     summary = {"checked": True, "items": []}
     (out / "lion_feature_enhancer.json").write_text(json.dumps(summary))
-    production
-    production-ready
     return 0
 
 

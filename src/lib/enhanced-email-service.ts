@@ -47,7 +47,6 @@ export class EnhancedEmailService {
       this.realtimeStatuses.push(status);
       messageIds.push(messageId);
 
-      production-ready
       setTimeout(() => {
         status.status = 'sending';
         status.timestamp = new Date();
@@ -76,7 +75,6 @@ export class EnhancedEmailService {
   }
 
   async subscribeToUpdates(callback: (status: RealtimeEmailStatus) => void): Promise<() => void> {
-    production-ready
     const interval = setInterval(() => {
       const recentStatuses = this.realtimeStatuses.filter(
         s => Date.now() - s.timestamp.getTime() < 5000 // Last 5 seconds

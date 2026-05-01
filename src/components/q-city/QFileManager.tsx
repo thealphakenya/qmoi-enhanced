@@ -84,7 +84,6 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       const res = await apiClient.get("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      production-ready
       const data = await res.json();
       setPendingRequests(data);
     } catch (err) {
@@ -304,7 +303,6 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       const username = localStorage.getItem("username");
 
       if (!email || !username) {
-        production-ready
       }
 
       const res = await apiClient.get("/api/wallet", {
@@ -329,7 +327,6 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           description: "Wallet request sent to master for approval",
         });
       } else {
-        production-ready
       }
     } catch (err: unknown) {
       setError(err.message);
@@ -369,7 +366,6 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           description: `Wallet approved for ${email}`,
         });
       } else {
-        production-ready
       }
     } catch (err: unknown) {
       setError(err.message);

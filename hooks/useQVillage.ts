@@ -326,7 +326,6 @@ function useQVillage(): any {
   };
 }
 
-production-ready
 export /**
  * useQVillageStatus function
  */

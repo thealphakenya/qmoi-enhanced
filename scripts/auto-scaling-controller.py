@@ -29,6 +29,7 @@ class AutoScalingController:
     def get_metrics(self, service):
         """Get current metrics for service"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

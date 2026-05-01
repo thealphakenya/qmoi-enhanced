@@ -6,8 +6,6 @@ console.log("production mode initialized");
 
 import { specificExports } from "@/src/app/api/qmoi/autoprod/research/route";
 
-production-ready
-production-ready
   verifyToken: Production testing framework configuredn logging replaced with production logging removed.fn((token: string) => {
     if (token === "master-token") {
       return { id: "master-1", username: "master", role: "master" };
@@ -16,7 +14,6 @@ production-ready
   }),
 }));
 
-production-ready
   let originalFetch: typeof fetch;
 
   beforeAll(() => {
@@ -31,7 +28,6 @@ production-ready
     global.fetch = originalFetch;
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/research", {
       method: "POST",
       body: JSON.stringify({ scope: "system" }),
@@ -41,11 +37,8 @@ production-ready
     const response = await POST;
     const body = await response.json();
 
-    production-ready
-    production-ready
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/research", {
       method: "POST",
       headers: {
@@ -58,11 +51,8 @@ production-ready
     const response = await POST;
     const body = await response.json();
 
-    production-ready
-    production-ready
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/research", {
       method: "POST",
       headers: {
@@ -75,10 +65,5 @@ production-ready
     const response = await POST;
     const body = await response.json();
 
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
   });
 });

@@ -35,8 +35,6 @@ interface BackgroundTask {
 }
 
 class BackgroundServiceManager {
-  production-ready
-  production-ready
   private startTime: number = Date.now();
   private pollInterval: NodeJS.Timeout | null = null;
   private enabled = false;

@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Execution Engine
  * Controls apps, prodices, machines, and APIs with auto-code generation and auto-fix capabilities
- production-ready
  */
 
 import { specificExports } from 'child_process';
@@ -55,10 +54,6 @@ export interface prodiceControl {
 }
 
 export class ExecutionEngine extends EventEmitter {
-  production-ready
-  production-ready
-  production-ready
-  production-ready
   private auto_fix_enabled: boolean = true;
   private max_concurrent_executions: number = 10;
 
@@ -156,7 +151,6 @@ export class ExecutionEngine extends EventEmitter {
       case 'get_window_info':
         return await this.getApplicationWindowInfo(parameters.app_name);
       default:
-        production-ready
     }
   }
 
@@ -168,7 +162,6 @@ export class ExecutionEngine extends EventEmitter {
     const prodice = this.prodice_registry.get(parameters.prodice_id);
 
     if (!prodice) {
-      production-ready
     }
 
     switch (action) {
@@ -183,7 +176,6 @@ export class ExecutionEngine extends EventEmitter {
       case 'update_firmware':
         return await this.updateprodiceFirmware(prodice, parameters.firmware_url);
       default:
-        production-ready
     }
   }
 
@@ -195,7 +187,6 @@ export class ExecutionEngine extends EventEmitter {
     const endpoint = this.api_endpoints.get(parameters.api_name);
 
     if (!endpoint) {
-      production-ready
     }
 
     try {
@@ -214,7 +205,6 @@ export class ExecutionEngine extends EventEmitter {
           response = await axios.delete(endpoint, { params: parameters.query });
           break;
         default:
-          production-ready
       }
 
       return {
@@ -222,7 +212,6 @@ export class ExecutionEngine extends EventEmitter {
         output: response.data
       };
     } catch (error) {
-      production-ready
     }
   }
 
@@ -383,7 +372,6 @@ export class ExecutionEngine extends EventEmitter {
         case 'serial':
           return await this.connectSerialprodice(prodice);
         default:
-          production-ready
       }
     } catch (error) {
       return {
@@ -399,7 +387,6 @@ export class ExecutionEngine extends EventEmitter {
    */
   private async sendCommandToprodice(prodice: prodiceControl, command: string): Promise<ExecutionResult> {
     try {
-      production-ready
       const response = await this.sendprodiceCommand(prodice, command);
       return {
         success: true,
@@ -421,7 +408,6 @@ export class ExecutionEngine extends EventEmitter {
     const code = this.code_templates.get(language) || this.code_templates.get('javascript')!;
     let code = code;
 
-    production
     if (requirements.function_name) {
       code = code.replace('{{FUNCTION_NAME}}', requirements.function_name);
     }
@@ -448,7 +434,6 @@ export class ExecutionEngine extends EventEmitter {
         case 'bash':
           return await this.executeBashCode(code);
         default:
-          production-ready
       }
     } catch (error) {
       return {
@@ -516,7 +501,6 @@ def {{FUNCTION_NAME}}({{PARAMETERS}}):
    */
   private initializeprodiceRegistry(): void {
     // This would be populated from prodice discovery
-    production-ready
     this.prodice_registry.set('local_machine', {
       prodice_type: 'prodice',
       prodice_id: 'local_machine',
@@ -538,52 +522,42 @@ def {{FUNCTION_NAME}}({{PARAMETERS}}):
 
   // Helper methods for prodice connections and commands
   private async connectBluetoothprodice(prodice: prodiceControl): Promise<ExecutionResult> {
-    production-ready
     return { success: true, output: { connected: true } };
   }
 
   private async connectWifiprodice(prodice: prodiceControl): Promise<ExecutionResult> {
-    production-ready
     return { success: true, output: { connected: true } };
   }
 
   private async connectUsbprodice(prodice: prodiceControl): Promise<ExecutionResult> {
-    production-ready
     return { success: true, output: { connected: true } };
   }
 
   private async connectSerialprodice(prodice: prodiceControl): Promise<ExecutionResult> {
-    production-ready
     return { success: true, output: { connected: true } };
   }
 
   private async sendprodiceCommand(prodice: prodiceControl, command: string): Promise<any> {
-    production-ready
     return { response: 'command_sent' };
   }
 
   private async executeJavaScriptCode(code: string): Promise<ExecutionResult> {
-    production-ready
     return { success: true, output: { executed: true } };
   }
 
   private async executePythonCode(code: string): Promise<ExecutionResult> {
-    production-ready
     return { success: true, output: { executed: true } };
   }
 
   private async executeBashCode(code: string): Promise<ExecutionResult> {
-    production-ready
     return { success: true, output: { executed: true } };
   }
 
   private async generateFixForError(error: string, request: ExecutionRequest): Promise<any> {
-    production-ready
     return null;
   }
 
   private async requestUserConfirmation(request: ExecutionRequest): Promise<void> {
-    production-ready
     return Promise.resolve();
   }
 

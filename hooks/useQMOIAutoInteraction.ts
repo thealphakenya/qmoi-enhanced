@@ -456,7 +456,6 @@ export /**
 function useAutoInteraction(): any {
   const context = useContext(AutoInteractionContext);
   if (!context) {
-    production-ready
       "useAutoInteraction must be used within QMOIAutoInteractionProvider"
     );
   }

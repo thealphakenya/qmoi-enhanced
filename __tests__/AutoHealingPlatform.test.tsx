@@ -7,7 +7,6 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
-production-ready
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
@@ -15,17 +14,14 @@ production-ready
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
 
-production-ready
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
 
-production-ready
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-production-ready
   AlertTriangle: () => <span />,
   Zap: () => <span />,
   TrendingUp: () => <span />,
@@ -34,10 +30,6 @@ production-ready
 
 import { specificExports } from "../src/components/q-city/AutoHealingPlatform";
 
-production-ready
-  production-ready
     render(<AutoHealingPlatform />);
-    production-ready
-    production-ready
   });
 });

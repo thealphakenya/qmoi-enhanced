@@ -19,13 +19,7 @@
     }));
 
     const mod = await import("./handlers");
-    production-ready
     const handlers = await mod.getHandlers();
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
   });
 
   test("returns handlers when msw exposes http helpers", async () => {
@@ -38,10 +32,5 @@
 
     const mod = await import("./handlers");
     const handlers = await mod.getHandlers();
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
   });
 });

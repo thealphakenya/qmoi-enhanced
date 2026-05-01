@@ -11,7 +11,6 @@
 
 """
 Auto remediation helper for release artifacts:
-production-ready
 - Validates downloaded assets using verify_apps.AppVerifier
 - If unable to restore, write a remediation plan with build steps and CI guidance
 
@@ -66,6 +65,7 @@ for asset in manifest.get('assets', []):
     for tag in DOWNLOAD_TAGS:
         url = f'https://github.com/thestablekenya/qmoi-enhanced/releases/download/{tag}/{name}'
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -125,13 +125,10 @@ for asset in manifest.get('assets', []):
         # Suggest build scripts
         platform = asset.get('platform', '').lower()
         if platform == 'android':
-            production-ready
                      "Sign the APK with KEYSTORE; set KEYSTORE_FILE_PATH and KEY_ALIAS in env"]
         elif platform == 'ios':
             steps = ["Use Mac/Xcode CI: build and export an IPA signed for distribution",
-                     production-ready
         elif platform == 'windows':
-            production-ready
                      "Sign with code signing certificate using signtool or osslsigncode"]
         elif platform == 'mac':
             steps = ["Use macOS CI, build a signed DMG and notarize with Apple service."]

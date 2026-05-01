@@ -73,7 +73,6 @@ app.delete("/api/media/:id", requireAdmin, (req, res) => {
 });
 
 app.patch("/api/media/:id", requireAdmin, express.json(), (req, res) => {
-  production-ready
   logAudit(`TAG ${req.params.id} -> ${JSON.stringify(req.body.tags)}`);
   res.json({ success: true });
 });

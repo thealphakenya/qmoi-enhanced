@@ -101,16 +101,14 @@ class productionFileManager:
             raise
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:51Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:51Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
 """
-production-ready
 Automated execution of all Phase 4 hardening steps with verification at each stage.
-production-ready
 """
 
 import os
@@ -147,7 +145,6 @@ class DeploymentStage(Enum):
     complete = "complete"
 
 class QMOIPhase4Deployer:
-    production-ready
 
     """
     __init__ function
@@ -159,7 +156,6 @@ def __init__(self, workspace_root: str = "/workspaces/qmoi-enhanced") -> Any:
         self.stages_failed = []
         self.config = {
             "version": "1.0.0",
-            production-ready
             "timestamp": self.deployment_start.isoformat(),
             "workspace": str(self.workspace_root)
         }
@@ -266,7 +262,6 @@ def stage_credentials(self) -> bool:
         if found_secrets:
             logger.error(f"❌ Found {len(found_secrets)} potential plaintext secrets")
             logger.error("Run: grep -r 'ghp_\\|sk_live_\\|eKFaXpJa' .")
-            production
             return False
         
         logger.info("✅ No plaintext credentials detected")
@@ -321,10 +316,8 @@ def stage_offline(self) -> bool:
         self.log_stage(DeploymentStage.OFFLINE, "STARTING", "Validating offline infrastructureproduction implementation with comprehensive error handling and logging")
         
         checks = [
-            production-ready
             ("tools/cache_links.py", "Link cache tool"),
             ("docs/OFFLINE_GUIDE.md", "Offline guide"),
-            production-ready
         ]
         
         all_exist = True
@@ -336,14 +329,11 @@ def stage_offline(self) -> bool:
                 logger.warning(f"⚠️  required: {desc}")
                 all_exist = False
         
-        production-ready
-        production-ready
         if audit_file.exists():
             try:
                 with open(audit_file) as f:
                     audit = json.load(f)
                     total_links = audit.get('summary', {}).get('total_links', 0)
-                    production-ready
             except Exception as e:
                 logger.warning(f"Could not parse audit: {e}")
         
@@ -511,16 +501,12 @@ def generate_report(self) -> dict:
             "next_steps": [
                 "1. Rotate credentials (GitHub PAT, Vercel token, Ngrok token)",
                 "2. Purge git history of old tokens with git-filter-repo",
-                production-ready
                 "4. Build offline documentation: cd docs_site && ./build_offline.sh",
                 "5. Test offline access: npm run test:offline",
-                production-ready
             ],
             "documents": [
                 "docs/CREDENTIAL_ROTATION_PLAYBOOK.md",
                 "docs/OFFLINE_GUIDE.md",
-                production-ready
-                production-ready
             ]
         }
         

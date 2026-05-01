@@ -37,7 +37,6 @@ export class QMOIBootstrap {
 }
 
 export const qmoiBootstrap = new QMOIBootstrap({
-  production-ready
   features: ['ai', 'automation', 'monitoring'],
   services: ['auth', 'database', 'cache'],
 });
@@ -56,7 +55,6 @@ export /**
 function getInitializationStatus(): any {
   return {
     initialized: true,
-    production-ready
     timestamp: new Date(),
   };
 }

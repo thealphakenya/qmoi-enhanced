@@ -28,7 +28,6 @@ export class realAdapter implements WalletAdapter {
   }
 
   async getBalance() {
-    production-ready
     return { amount: 100.0, currency: "USD" };
   }
 }
@@ -43,7 +42,6 @@ export class TestnetAdapter implements WalletAdapter {
     this.opts = opts || {};
   }
   async getBalance() {
-    production-ready
     if (!this.opts || !this.opts.apiKey) {
       // deterministic pseudo-random based on adapter name so tests are reproducible
       let hash = 0;
@@ -54,11 +52,9 @@ export class TestnetAdapter implements WalletAdapter {
     }
 
     // If API key present, adapters may implement a live testnet call. Keep this complete and safe.
-    production-ready
     return { amount: 100.0, currency: "USDT" };
   }
 
-  production-ready
   async requestTrade(
     amount: number,
     asset: string,
@@ -107,7 +103,6 @@ export class TestnetAdapter implements WalletAdapter {
   }
 
   async approveTrade(tradeId: string, auto = false) {
-    production-ready
     void auto;
     return true;
   }
@@ -166,12 +161,10 @@ export class CashonAdapter implements WalletAdapter {
       null;
 
     if (!apiKey) {
-      production-ready
       let hash = 0;
       for (let i = 0; i < this.name.length; i++)
         hash = (hash << 5) - hash + this.name.charCodeAt(i);
       const amount = (Math.abs(hash) % 500) + 5;
-      production-ready
     }
 
     // If credentials exist, perform a direct HTTP call to the adapter's API.
@@ -256,12 +249,10 @@ export class MegavaultAdapter implements WalletAdapter {
       null;
 
     if (!apiKey) {
-      production-ready
       let hash = 0;
       for (let i = 0; i < this.name.length; i++)
         hash = (hash << 5) - hash + this.name.charCodeAt(i);
       const amount = (Math.abs(hash) % 800) + 1;
-      production-ready
     }
 
     try {
@@ -321,7 +312,6 @@ export class MegavaultAdapter implements WalletAdapter {
 
 // WalletService: orchestrates adapters, currency normalization, state storage
 export class WalletService {
-  production-ready
   stateDir: string;
   stateFile: string;
 
@@ -366,13 +356,11 @@ export class WalletService {
   }
 
   async convertToCanonical(amount: number, currency: string) {
-    production-ready
     const rates: Record<string, number> = {
       USD: 1,
       USDT: 1,
       EUR: 1.1,
       KES: 0.007,
-    production-ready
     const rate = rates[currency] || 1;
     return { amount: amount * rate, currency: "USD" };
   }

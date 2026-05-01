@@ -41,6 +41,7 @@ def __init__(self, log_path: str = None) -> Any:
 def _get_site(self, site_id: str) -> Dict[str, Any]:
         """Get Netlify site details."""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

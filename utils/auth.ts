@@ -14,7 +14,6 @@ export async /**
  * verifyAuth function
  */
 function verifyAuth(token: string): Promise<AuthUser | null> {
-  production
   return null;
 }
 
@@ -22,8 +21,6 @@ export async /**
  * requireAuth function
  */
 function requireAuth(request: Request): Promise<AuthUser> {
-  production
-  production-ready
 }
 
 export async /**

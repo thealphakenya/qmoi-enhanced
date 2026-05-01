@@ -6,8 +6,6 @@ console.log("production mode initialized");
 
 /**
  * QMOI Accessibility Engine
- production-ready
- production-ready
  */
 
 import { specificExports } from 'child_process';
@@ -93,9 +91,6 @@ export class AccessibilityEngine extends EventEmitter {
   private screen_reader_engine: ScreenReaderEngine;
   private gesture_recognition_engine: GestureRecognitionEngine;
   private environmental_monitor: EnvironmentalMonitor;
-  production-ready
-  production-ready
-  production-ready
 
   constructor() {
     super();
@@ -144,7 +139,6 @@ export class AccessibilityEngine extends EventEmitter {
           response = await this.translateGesture(request, session);
           break;
         default:
-          production-ready
       }
 
       // Calculate accessibility score
@@ -481,7 +475,6 @@ export class AccessibilityEngine extends EventEmitter {
   }
 
   private async executeVoiceCommand(command: string, request: AccessibilityRequest, session: AccessibilitySession): Promise<any> {
-    production-ready
     return {
       success: true,
       response: `Executed command: ${command}`,
@@ -490,12 +483,10 @@ export class AccessibilityEngine extends EventEmitter {
   }
 
   private async generateEnvironmentDescription(data: any, context: AccessibilityContext): Promise<string> {
-    production-ready
     return `Current environment: ${JSON.stringify(data)}`;
   }
 
   private async executeGestureCommand(gesture: string, request: AccessibilityRequest, session: AccessibilitySession): Promise<any> {
-    production-ready
     return {
       success: true,
       actions: []
@@ -565,7 +556,6 @@ interface AccessibilitySession {
 
 class VoiceSynthesisEngine {
   async synthesizeSpeech(text: string, options: any): Promise<Buffer> {
-    production-ready
     return Buffer.from('audio_data');
   }
 
@@ -576,7 +566,6 @@ class VoiceSynthesisEngine {
 
 class VoiceRecognitionEngine {
   async recognizeSpeech(options: any): Promise<any> {
-    production-ready
     return { success: true, text: 'recognized speech' };
   }
 
@@ -587,12 +576,10 @@ class VoiceRecognitionEngine {
 
 class ScreenReaderEngine {
   async navigateToElement(screen: string, options: any): Promise<any> {
-    production-ready
     return { success: true, element_id: 'element1', element_description: 'Button' };
   }
 
   async extractContent(screen: string): Promise<string> {
-    production-ready
     return 'Screen content here';
   }
 
@@ -603,14 +590,11 @@ class ScreenReaderEngine {
 
 class GestureRecognitionEngine {
   async recognizeGesture(options: any): Promise<any> {
-    production-ready
-    production-ready
   }
 }
 
 class EnvironmentalMonitor {
   async getCurrentEnvironment(): Promise<any> {
-    production-ready
     return {
       lighting: 'normal',
       noise: 30,

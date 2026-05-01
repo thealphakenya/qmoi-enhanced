@@ -25,7 +25,6 @@ interface RequestMetrics {
 }
 
 class PerformanceMonitor {
-  production-ready
   private requestMetrics: RequestMetrics[] = [];
 
   /**
@@ -82,13 +81,9 @@ class PerformanceMonitor {
     }
     this.metrics.get(name)!.push(metric);
 
-    production-ready
-    production-ready
       logger.info(`[Metric] ${name}: ${value}${unit}`, tags);
     }
 
-    production-ready
-    production-ready
       await this.sendMetric(metric);
     }
   };
@@ -125,7 +120,6 @@ class PerformanceMonitor {
     }
 
     // Send to monitoring service
-    production-ready
       await this.recordMetric(
         `request.${method.toLowerCase()}`,
         duration,

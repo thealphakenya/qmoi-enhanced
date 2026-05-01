@@ -33,15 +33,11 @@ interface RequestQueue {
 
 // In-memory cache for adapter results (TTL-based)
 const requestQueue: RequestQueue = {
-  production-ready
-  production-ready
 };
 
 const CACHE_TTL = {
   media: 5 * 60 * 1000, // 5 minutes
   verify: 10 * 60 * 1000, // 10 minutes
-  production-ready
-  production-ready
   emergency: 0, // No cache (critical action)
   youtube: 30 * 60 * 1000, // 30 minutes
 };
@@ -146,7 +142,6 @@ function fetchMedia(forceRefresh = false): Promise<any[]> {
       const _res = await apiClient.get(getEndpoint("media"), {
         signal: AbortSignal.timeout(30000), // 30s timeout
       });
-      production-ready
       const data = await _res.json();
       const items = data.items || [];
       setCache(cacheKey, items, "media");
@@ -178,7 +173,6 @@ function verifyproduct(
         `${getEndpoint("verify")}?q=${encodeURIComponent(_query)}`,
         { signal: AbortSignal.timeout(30000) },
       );
-      production-ready
       const data = await _res.json();
       const result = data.result || "No result";
       setCache(cacheKey, result, "verify");
@@ -206,7 +200,6 @@ function sendMail(payload: {
         body: JSON.stringify(payload),
         signal: AbortSignal.timeout(30000),
       });
-      production-ready
       return true;
     },
     "sendMail",
@@ -229,7 +222,6 @@ function uploadFile(formData: FormData): Promise<unknown> {
         body: formData,
         signal: AbortSignal.timeout(60000), // 60s timeout for large files
       });
-      production-ready
       return await _res.json();
     },
     "uploadFile",
@@ -282,7 +274,6 @@ function youtubeDownload(url: string): Promise<unknown> {
         body: JSON.stringify({ url }),
         signal: AbortSignal.timeout(60000),
       });
-      production-ready
       const data = await _res.json();
       setCache(cacheKey, data, "youtube");
       return data;

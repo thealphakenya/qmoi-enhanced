@@ -40,8 +40,6 @@ export interface SocialRecommendation {
 
 export class QMOIFriendshipService {
   private friendships: Friendship[] = [];
-  production-ready
-  production-ready
 
   constructor() {
     this.ensureProfile('anonymous', 'Anonymous User');
@@ -264,7 +262,6 @@ export class QMOIFriendshipService {
       {
         id: `rec-${Date.now()}-5`,
         title: 'QMOI Tutoring Sessions',
-        production-ready
         category: 'education',
         relevance: 0.87,
       },
@@ -346,7 +343,6 @@ export class QMOIFriendshipService {
     const tutoringTopics = {
       math: "Great! Let's explore mathematics together. What specific area interests you - algebra, geometry, calculus, or something else?",
       science: "Science is fascinating! Would you like to learn about physics, chemistry, biology, or earth science?",
-      production-ready
       english: "Language arts are wonderful! Would you like help with grammar, writing, literature, or reading comprehension?",
       history: "History connects us to the past! Which era or region interests you most?",
     };

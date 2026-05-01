@@ -204,7 +204,6 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
-      production-ready
 
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
       setState((prev) => ({
@@ -242,7 +241,6 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
-      production-ready
 
       const voice = voiceProfiles.find((v) => v.id === voiceId);
       setState((prev) => ({
@@ -338,7 +336,6 @@ export /**
 function useQMOIState(): any {
   const context = useContext(QMOIContext);
   if (context === undefined) {
-    production-ready
   }
   return context;
 }

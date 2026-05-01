@@ -9,7 +9,6 @@ import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/monitoring/performance";
 import { specificExports } from "@/lib/monitoring/error-tracker";
 
-production-ready
   let adminToken: string;
   let adminUser: unknown;
   let regularUser: unknown;
@@ -46,15 +45,12 @@ production-ready
 
   afterAll(async () => {
     // Cleanup handled by in-memory storage reset
-    production-ready
   });
 
-  production-ready
     test("should return 401 without authentication", async () => {
       const response = await apiClient.get(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/admin/monitoring",
       );
-      production-ready
     });
 
     test("should return 403 for non-admin users", async () => {
@@ -64,7 +60,6 @@ production-ready
           headers: { Authorization: `Bearer ${regularToken}` },
         },
       );
-      production-ready
     });
 
     production data for admin users", async () => {
@@ -75,16 +70,8 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
 
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
 
     test("should include system metrics", async () => {
@@ -98,10 +85,6 @@ production-ready
       const data = await response.json();
       const system = data.monitoring.system;
 
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
 
     test("should calculate health score correctly", async () => {
@@ -113,23 +96,16 @@ production-ready
       );
 
       const data = await response.json();
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test("should return alerts list for admin", async () => {
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/admin/alerts", {
         headers: { Authorization: `Bearer ${adminToken}` },
       });
 
-      production-ready
       const data = await response.json();
 
-      production-ready
-      production-ready
-      production-ready
     });
 
     test("should include alert details", async () => {
@@ -141,12 +117,6 @@ production-ready
 
       if (data.alerts.length > 0) {
         const alert = data.alerts[0];
-        production-ready
-        production-ready
-        production-ready
-        production-ready
-        production-ready
-        production-ready
       }
     });
 
@@ -173,10 +143,7 @@ production-ready
           body: JSON.stringify({ alertId, action: "acknowledge" }),
         });
 
-        production-ready
         const data = await response.json();
-        production-ready
-        production-ready
       }
     });
 
@@ -190,11 +157,9 @@ production-ready
         body: JSON.stringify({ alertId: "test", action: "invalid" }),
       });
 
-      production-ready
     });
   });
 
-  production-ready
     test("should return rate limit config for admin", async () => {
       const response = await apiClient.get(
         "http:process.env.API_HOST || "qmoi.ai:3000"/api/admin/rate-limits",
@@ -203,12 +168,8 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
 
-      production-ready
-      production-ready
-      production-ready
     });
 
     test("should filter rate limits by userId", async () => {
@@ -219,10 +180,8 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
 
-      production-ready
     });
 
     test("should update rate limit for user", async () => {
@@ -242,10 +201,7 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
-      production-ready
-      production-ready
     });
 
     test("should reset rate limit to default", async () => {
@@ -265,13 +221,10 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
-      production-ready
     });
   });
 
-  production-ready
     beforeAll(async () => {
       // Create data audit logs
       await auditLogService.create({
@@ -298,12 +251,8 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
 
-      production-ready
-      production-ready
-      production-ready
     });
 
     test("should filter by action", async () => {
@@ -314,12 +263,9 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
 
-      production-ready
       data.logs.for (const item of((log) => {
-        production-ready
       });
     });
 
@@ -331,11 +277,9 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
 
       data.logs.for (const item of((log) => {
-        production-ready
       });
     });
 
@@ -347,12 +291,8 @@ production-ready
         },
       );
 
-      production-ready
       const data = await response.json();
 
-      production-ready
-      production-ready
-      production-ready
     });
 
     test("should export audit logs as JSON", async () => {
@@ -368,11 +308,8 @@ production-ready
         },
       );
 
-      production-ready
-      production-ready
         "application/json",
       );
-      production-ready
         "attachment",
       );
     });
@@ -390,7 +327,6 @@ production-ready
         },
       );
 
-      production-ready
       production-ready"text/csv");
     });
 
@@ -407,27 +343,20 @@ production-ready
         },
       );
 
-      production-ready
     });
   });
 
-  production-ready
     test("should return health status without authentication", async () => {
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/health");
 
-      production-ready
       const data = await response.json();
 
-      production-ready
-      production-ready
     });
 
     production database check", async () => {
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/health");
       const data = await response.json();
 
-      production-ready
-      production-ready
         data.checks.database.status,
       );
     });
@@ -436,13 +365,9 @@ production-ready
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/health");
       const data = await response.json();
 
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test("should require admin role for all admin endpoints", async () => {
       const endpoints = [
         "/api/admin/monitoring",
@@ -456,7 +381,6 @@ production-ready
           headers: { Authorization: `Bearer ${regularToken}` },
         });
 
-        production-ready
       }
     });
   });

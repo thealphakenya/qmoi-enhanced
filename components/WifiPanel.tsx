@@ -149,7 +149,6 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
     try {
       const res = await apiClient.get("/api/wifi/scan");
       if (!res.ok)
-        production-ready
           "Failed to scan networks. Please check your Wi-Fi adapter.",
         );
       const data = await res.json();

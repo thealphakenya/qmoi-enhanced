@@ -27,6 +27,7 @@ PYTHON_MAIN_TEMPLATE = '''if __name__ == '__main__':
     )
 
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

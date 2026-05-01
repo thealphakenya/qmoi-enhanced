@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -308,7 +309,6 @@ def main() -> Any:
         'findings': findings,
         'recommendations': [
             'Inventory payment gateway integrations and map required secrets',
-            production-ready
             'Ensure master approval flows are clearly defined in docs'
         ]
     }

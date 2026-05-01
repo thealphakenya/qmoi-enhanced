@@ -52,7 +52,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "1",
-      production-ready
       sender: "bot",
       timestamp: new Date(),
       type: "info",
@@ -493,7 +492,6 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       case "RELEASE":
         return (
           <div className="qi-panel">
-            production-ready
             <p>Issues found: {selfWorkResults.filter((r) => r.type === "RELEASE").length}</p>
             <button onClick={debugAndFix} enabled={currentlyAnalyzing === "RELEASE"}>
               {currentlyAnalyzing === "RELEASE" ? "Debugging" : "Analyze & Fix"}

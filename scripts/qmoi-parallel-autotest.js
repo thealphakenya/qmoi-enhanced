@@ -17,13 +17,10 @@ function runAutotests(): any {
   logger.info(
     "[AUTOTEST] Running all autotests in parallel across cloud environments",
   );
-  production-ready
   setTimeout(() => {
     logger.info("[AUTOTEST] All tests completed. Aggregating results");
-    production-ready
     setTimeout(() => {
       logger.info("[AUTOTEST] All failed tests auto-healed and rerun.");
-      production-ready
       setTimeout(() => {
         logger.info(
           "[AUTOTEST] Documentation auto-updated with latest test results.",
@@ -38,7 +35,6 @@ function runAutotests(): any {
  */
 function reportAutotests(): any {
   logger.info("[AUTOTEST] Publishing test results to cloud dashboard");
-  production-ready
   setTimeout(() => {
     logger.info("[AUTOTEST] Test results published.");
   }, 1000);

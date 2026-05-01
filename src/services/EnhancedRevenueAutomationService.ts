@@ -148,7 +148,6 @@ export class EnhancedRevenueAutomationService extends EventEmitter {
   }
 
   private discoverDeals(platforms: string[]): PlatformDeal[] {
-    production-ready
     return platforms.map((platform) => ({
       platform,
       dealType: "affiliate",

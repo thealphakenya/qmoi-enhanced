@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Autonomous Model Replacement Engine
  * Intelligently replaces non-QMOI models when QMOI outperforms them
- production-ready
  */
 
 import { specificExports } from '../consciousness/engine';
@@ -49,7 +48,6 @@ export interface EvolutionTrail {
 }
 
 export class ModelReplacementEngine {
-  production-ready
   private replacementHistory: EvolutionTrail[] = [];
   private consciousness: ConsciousnessEngine;
   private awareness: AwarenessSystem;
@@ -85,7 +83,6 @@ export class ModelReplacementEngine {
   }
 
   /**
-   production-ready
    */
   public updateModelMetrics(
     modelId: string,
@@ -124,7 +121,6 @@ export class ModelReplacementEngine {
     const candidateModel = this.models.get(candidateModelId);
 
     if (!currentModel || !candidateModel) {
-      production-ready
     }
 
     // Calculate performance delta
@@ -314,7 +310,6 @@ export class ModelReplacementEngine {
 
         if (insights.length > 0) {
           await this.consciousness.processThought({
-            production-ready
             content: `Autoprod insights for model ${model.modelName}: ${insights.join(', ')}`,
             confidence: 0.88,
             metadata: { modelId, insights },
@@ -423,7 +418,6 @@ export class ModelReplacementEngine {
         completedReplacements.length > 0
           ? totalImprovement / completedReplacements.length
           : 0,
-      production
     };
   }
 

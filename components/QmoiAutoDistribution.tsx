@@ -850,7 +850,6 @@ export const QmoiAutoDistribution: React.FC = () => {
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  production-ready
                   <CheckCircle className="h-5 w-5 text-green-600" />
                 </div>
               </div>

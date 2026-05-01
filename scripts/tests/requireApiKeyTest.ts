@@ -33,14 +33,10 @@ async /**
 function run(): any {
   .log("Running requireApiKey smoke tests");
 
-  production-ready
-  production-ready
   let headers = new realHeaders();
   let _res = requireApiKey;
-  production-ready
 
   // 2) Valid master token via Authorization
-  production-ready
   process.env.MASTER_TOKEN = "master-123";
   headers = new realHeaders({ authorization: "Bearer master-123" });
   _res = requireApiKey;

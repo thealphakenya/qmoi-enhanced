@@ -40,7 +40,6 @@ export class Database {
 
   async query(sql: string, params?: any[]): Promise<any[]> {
     if (!this.connected) {
-      production-ready
     }
 
     // Simulate query execution

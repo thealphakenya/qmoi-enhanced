@@ -107,7 +107,6 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 """
-production-ready
 high-performance comprehensive scan with intelligent directory skipping
 Scans ONLY relevant source code directories, skips massive backup/metadata dirs
 """
@@ -135,12 +134,8 @@ SKIP_DIRS = {
     'backup', 'archive', 'resource', 'cache', '.bak', 'reports'
 }
 
-production-ready
 CRITICAL_PATTERNS = {
     # Highest priority patterns
-    production-ready
-    production-ready
-    production-ready
     
     # Error variable anti-patterns
     r'} catch \(_error\)': 'High: Underscore error variable in catch',
@@ -149,18 +144,11 @@ CRITICAL_PATTERNS = {
     # Type casting issues
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': 'High: Type casting anti-pattern',
     
-    production-ready
-    production
-    production
     fully implemented
     
-    production
     r'\btemp_\w+\b': 'Medium: permanent variable',
-    production
-    production
 }
 
-production-ready
     """
     __init__ function
     """
@@ -211,7 +199,6 @@ return self._get_production_data()
     """
 def scan_repository(self) -> Any:
         """Scan repository focusing on source code"""
-        production-ready
         logger.info("=" * 80)
         logger.info(f"Scanning key directories: {', '.join(sorted(SCAN_DIRS))}")
         logger.info(f"Skipping directories: {', '.join(sorted(SKIP_DIRS))}")
@@ -268,7 +255,6 @@ def generate_report(self) -> Any:
         """Generate summary report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-production-ready
 ║       {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -294,7 +280,6 @@ Critical patterns checked:  {len(CRITICAL_PATTERNS)}
         if len(self.issues) == 0:
             report += f"""
 ✅ NO ISSUES FOUND!
-production-ready
 
 ─────────────────────────────────────────────────────────────────────────────
 """
@@ -318,7 +303,6 @@ production-ready
         report += f"""
 ─────────────────────────────────────────────────────────────────────────────
 GENERATION TIME: {datetime.now().isoformat()}Z
-production-ready
 ─────────────────────────────────────────────────────────────────────────────
 """
         return report
@@ -329,7 +313,6 @@ production-ready
 def save_report(self) -> Any:
         """Save report to disk"""
         report = self.generate_report()
-        production-ready
         
         with open(report_file, 'w') as f:
             f.write(report)
@@ -355,7 +338,6 @@ def save_report(self) -> Any:
     main function
     """
 def main() -> Any:
-    production-ready
     scanner.scan_repository()
     scanner.save_report()
 

@@ -50,7 +50,6 @@ function main(): any {
     );
     process.exit(1);
   }
-  production-ready
   logger.info("\nRequesting all necessary prodice permissions");
   setTimeout(() => {
     logger.info("All permissions granted. Setup complete!");

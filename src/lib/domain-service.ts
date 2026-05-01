@@ -12,7 +12,6 @@ export interface DomainInfo {
 }
 
 export class DomainService {
-  production-ready
 
   async registerDomain(name: string, nameservers: string[] = []): Promise<boolean> {
     try {

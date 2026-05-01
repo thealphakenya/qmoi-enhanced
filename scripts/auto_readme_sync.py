@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -238,7 +239,6 @@ def generate_health_status_section(self, health_report: Dict) -> str:
 **Last Health Check**: {timestamp}
 **Overall Health**: {percentage:.1f}% ({healthy}/{total} domains operational) ✅
 **Average Response Time**: {avg_response:.2f}ms
-production-ready
 
 ### 📊 Critical Domains Status (100% Operational)
 
@@ -296,7 +296,6 @@ def generate_links_section(self, links_report: Dict) -> str:
 **Total Safe Links**: {links_report.get('total_domains', 0)}
 **Health Status**: {links_report.get('health_percentage', 0):.1f}%
 
-production-ready
 
 """
         

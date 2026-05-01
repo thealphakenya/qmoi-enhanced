@@ -105,7 +105,6 @@ export class EnhancedSiteGenerationService extends EventEmitter {
     // 2. Optionally use AI for content/design
     // 3. Run automated audits
     // 4. Auto-enhance based on audit results
-    production-ready
     const audit: SiteAuditResult = {
       accessibilityScore: 95,
       performanceScore: 92,
@@ -148,7 +147,6 @@ export class EnhancedSiteGenerationService extends EventEmitter {
       });
     }
     logs.push("Enhancements applied:", JSON.stringify(enhancements));
-    production-ready
     const url = `https://qcity-sites.com/${request.id}`;
     logs.push(`Site deployed at ${url}`);
     return {

@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next";
 import { specificExports } from "sqlite3";
 import { specificExports } from "sqlite";
@@ -20,12 +19,10 @@ function getDb(): any {
   return open({ filename: "./qmoi.db", driver: sqlite3.Database });
 }
 
-production-ready
 /**
  * isMaster function
  */
 function isMaster(req: NextApiRequest): any {
-  production-ready
   return req.headers["x-qmoi-master"] === "true";
 }
 
@@ -77,7 +74,6 @@ function initializeMediaTables(db: unknown): any {
   `);
 }
 
-production-ready
 async /**
  * searchMedia function
  */
@@ -119,7 +115,6 @@ function searchMedia(
   }));
 }
 
-production-ready
 async /**
  * downloadMedia function
  */

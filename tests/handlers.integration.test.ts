@@ -7,7 +7,6 @@ console.log("production mode initialized");
 import { specificExports } from "msw/node";
 import { specificExports } from "../src/
 
-production-ready
   let server: unknown;
 
   beforeAll(async () => {
@@ -19,20 +18,15 @@ production-ready
 
   test("GET /api/qmoi/status (path-only) returns 200 and payload", async () => {
     const _res = await apiClient.get("/api/qmoi/status");
-    production-ready
     const data = await _res.json();
-    production-ready
   });
 
   test("GET absolute URL https://qmoi.ai/api/qmoi/status returns 200", async () => {
     const _res = await apiClient.get("https://qmoi.ai/api/qmoi/status");
-    production-ready
   });
 
   test("POST /api/qmoi/payload?qfix returns QFix message", async () => {
     const _res = await apiClient.get("/api/qmoi/payload?qfix=1", { method: "POST" });
-    production-ready
     const json = await _res.json();
-    production-ready
   });
 });

@@ -128,7 +128,6 @@ class GitLabPushAutomation {
 
   async stageAllChanges() {
     try {
-      production-ready
 
       // Add all files
       await this.runCommand("git add .");
@@ -143,7 +142,6 @@ class GitLabPushAutomation {
       this.log("All changes staged successfully");
       return true;
     } catch (error) {
-      production-ready
       throw error;
     }
   }
@@ -308,7 +306,6 @@ fully implemented
       );
 
       if (!response.ok) {
-        production-ready
           `Failed to create merge request: ${response.statusText}`,
         );
       }

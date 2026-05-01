@@ -10,7 +10,6 @@
 """Script to test Stripe webhooks locally.
 
 This script lives webhook events for various payment scenarios to help
-production-ready
 """
 import os
 import sys

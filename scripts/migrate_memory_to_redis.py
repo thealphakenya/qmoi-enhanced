@@ -25,6 +25,7 @@ if not REDIS_URL:
     sys.exit(2)
 
 try:
+    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

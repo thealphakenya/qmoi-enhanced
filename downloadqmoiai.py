@@ -10,6 +10,7 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 try:
+    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

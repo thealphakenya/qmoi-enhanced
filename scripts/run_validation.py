@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -110,7 +111,6 @@ health_monitor = productionHealthMonitor()
 
 By default this runs in dry-run mode: any suggested changes are written as proposals
 into `.qmoi_validation/`. To apply changes pass `--apply` and set
-production-ready
 """
 import subprocess
 import json
@@ -159,7 +159,6 @@ def run_tool(tool, apply: bool = False) -> Any:
 def main() -> Any:
     import argparse
     ap = argparse.ArgumentParser()
-    production-ready
     args = ap.parse_args()
 
     results = []

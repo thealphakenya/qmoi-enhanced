@@ -55,7 +55,6 @@ function ChatbotEnhanced(): any {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "1",
-      production-ready
       sender: "bot",
       timestamp: new Date(),
       metadata: { personality: "helpful" },

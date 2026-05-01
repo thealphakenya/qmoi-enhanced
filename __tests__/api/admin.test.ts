@@ -11,7 +11,6 @@ import {
 } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
 
-production-ready
   let adminToken: string;
   let regularUserToken: string;
   let adminId: string;
@@ -49,25 +48,16 @@ production-ready
 
   afterAll(async () => {
     // Cleanup is handled by in-memory storage reset between tests
-    production-ready
   });
 
-  production-ready
-    production-ready
-      production-ready
-      production-ready
         authService.verifyToken(regularUserToken);
       }).not.toThrow();
     });
 
-    production-ready
-      production-ready
         const decoded = authService.verifyToken(adminToken);
-        production-ready
       }).not.toThrow();
     });
 
-    production-ready
       // Create 
       const hashedPassword = await authService.hashPassword("Test@123456");
       const wallet = await walletService.create({
@@ -91,71 +81,49 @@ production-ready
       const transactions = await transactionService.list(1000);
       const wallets = await walletService.list(1000);
 
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const wallets = await walletService.list(1);
       if (!wallets.length) return;
 
       const wallet = wallets[0];
       const transactions = await transactionService.findByWalletId(wallet.id);
 
-      production-ready
     });
 
-    production-ready
       const transactions = await transactionService.list(1000);
 
-      production-ready
     });
 
-    production-ready
       const wallets = await walletService.list(1000);
       const totalBalance = wallets.reduce(
         (sum, w) => sum + parseFloat(w.balance),
         0,
       );
 
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const users = await userService.list(20, 0);
 
-      production-ready
-      production-ready
     });
 
-    production-ready
       const updated = await userService.update(regularUserId, {
         role: "moderator",
       });
 
-      production-ready
 
       // Restore
       await userService.update(regularUserId, { role: "user" });
     });
 
-    production-ready
       // Check that current user cannot delete themselves
-      production-ready
-      production-ready
     });
 
-    production-ready
       const users = await userService.list(1000);
       const filtered = users.filter((u) => u.email.includes("admin"));
 
-      production-ready
     });
   });
 });

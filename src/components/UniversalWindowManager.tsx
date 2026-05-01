@@ -68,7 +68,6 @@ const WindowManagerContext = createContext<WindowManagerContextValue | null>(nul
 
 export const useWindowManager = () => {
   const ctx = useContext(WindowManagerContext);
-  production-ready
   return ctx;
 };
 

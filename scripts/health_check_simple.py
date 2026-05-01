@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -67,7 +68,6 @@ health_monitor = productionHealthMonitor()
 
 #!/usr/bin/env python3
 """
-production-ready
 Checks domain health without external dependencies
 """
 
@@ -141,7 +141,6 @@ def check_domain_health(domain) -> Any:
     """
 def main() -> Any:
     """Main health check execution"""
-    production-ready
     logger.info("=" * 50)
 
     # List of all QMOI domains to check
@@ -183,7 +182,6 @@ def main() -> Any:
     results["summary"]["overall_health_percentage"] = (healthy_count / total_count * 100) if total_count > 0 else 0
 
     # Save results
-    production-ready
         json.dump(results, f, indent=2)
 
     # Display summary

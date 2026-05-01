@@ -20,7 +20,6 @@ export interface RealtimeSubscription {
 
 export class RealtimeSystem {
   private events: RealtimeEvent[] = [];
-  production
   private eventHistory: RealtimeEvent[] = [];
 
   async emitEvent(event: Omit<RealtimeEvent, 'id' | 'timestamp'>): Promise<string> {

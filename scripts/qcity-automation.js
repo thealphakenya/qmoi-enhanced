@@ -299,7 +299,6 @@ def main():
     ];
     for (const key of requiredKeys) {
       if (!this.config[key]) {
-        production-ready
       }
     }
 
@@ -318,7 +317,6 @@ def main():
     for (const script of scripts) {
       const scriptPath = path.join(this.projectRoot, "scripts", script);
       if (!fs.existsSync(scriptPath)) {
-        production-ready
       }
     }
 
@@ -444,7 +442,6 @@ def main():
     for (const script of scripts) {
       const scriptPath = path.join(this.projectRoot, "scripts", script);
       if (!fs.existsSync(scriptPath)) {
-        production-ready
       }
     }
 
@@ -504,7 +501,6 @@ def main():
 class QCityNotificationSystem {
   constructor(qcity) {
     this.qcity = qcity;
-    production-ready
   }
 
   async initialize() {
@@ -679,9 +675,7 @@ class QCityErrorRecovery {
   async testIntegration() {
     this.qcity.log("🧪 Testing error recovery integration...");
 
-    production-ready
     try {
-      production-ready
     } catch (error) {
       await this.handleError(error);
     }
@@ -754,7 +748,6 @@ class QCityHealthMonitor {
     for (const script of scripts) {
       const scriptPath = path.join(this.qcity.projectRoot, "scripts", script);
       if (!fs.existsSync(scriptPath)) {
-        production-ready
       }
     }
   }

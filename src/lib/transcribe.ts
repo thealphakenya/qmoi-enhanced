@@ -56,7 +56,6 @@ export class TranscribeService {
 
       return result;
     } catch (error) {
-      production-ready
     }
   }
 

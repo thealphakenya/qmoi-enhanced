@@ -52,7 +52,7 @@ class OptimizedproductionEnhancer:
             # Add React master check at top level
             if "isMaster" not in content and ("export default" in content or "export const" in content):
                 master_check = '''
-// Master-only access control
+# Master-only access control
 const requireMasterAccess = (WrappedComponent: any) => {
   return (props: any) => {
     const [isMaster, setIsMaster] = React.useState(false);
@@ -102,6 +102,7 @@ def require_master_access(func):
     def enhance_financial_component(self, file_path: Path) -> bool:
         """Enhance a financial component with production code"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

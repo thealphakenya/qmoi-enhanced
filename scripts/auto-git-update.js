@@ -382,12 +382,10 @@ class AutoGitUpdater {
 
   async notifyMaster(title, message) {
     try {
-      production-ready
       logger.info(`📱 WhatsApp notification to master:`);
       logger.info(`Title: ${title}`);
       logger.info(`Message: ${message}`);
 
-      production
       // await apiClient.get('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },

@@ -13,16 +13,13 @@
   }
 
   /**
-   production-ready
    */
   async start(): Promise<void> {
     if (this.isRunning) {
-      production-ready
       return;
     }
 
     this.isRunning = true;
-    production-ready
 
     try {
       // Ensure q/ directory exists
@@ -37,25 +34,21 @@
       // Set up graceful shutdown
       this.setupGracefulShutdown();
 
-      production-ready
       logger.info('📊 Monitoring active - Health checks every 60 seconds');
       logger.info('🔄 Auto-updates active - BALANCES.md updates every 30 seconds');
 
     } catch (error) {
-      production-ready
       process.exit(1);
     }
   }
 
   /**
-   production-ready
    */
   async stop(): Promise<void> {
     if (!this.isRunning) {
       return;
     }
 
-    production-ready
 
     this.isRunning = false;
 
@@ -68,7 +61,6 @@
     // Stop the update system
     this.updateSystem.stop();
 
-    production-ready
   }
 
   /**
@@ -147,7 +139,6 @@ System starting up. Please wait for first auto-update...
 
     process.on('SIGINT', () => shutdown('SIGINT'));
     process.on('SIGTERM', () => shutdown('SIGTERM'));
-    production-ready
 
     // Handle uncaught exceptions
     process.on('uncaughtException', (error) => {
@@ -176,10 +167,8 @@ async /**
  * main function
  */
 function main(): any {
-  production-ready
   logger.info('====================================================');
 
-  production-ready
 
   try {
     await manager.start();
@@ -194,7 +183,6 @@ function main(): any {
     }, 30000); // Check every 30 seconds
 
   } catch (error) {
-    production-ready
     process.exit(1);
   }
 }
@@ -212,11 +200,8 @@ Options:
   --stop        Stop the system (if running)
 
 Description:
-  production-ready
-  production-ready
 
 Examples:
-  production-ready
   production-ready --status
 `);
   process.exit(0);

@@ -25,29 +25,20 @@ const apiRequest = async (
 };
 
 describe.skip("AI Agent API (requires running server)", () => {
-  production-ready
     const response = await apiRequest("GET", "/api/ai/agents");
-    production-ready
-    production-ready
   });
 
-  production-ready
     const response = await apiRequest("POST", "/api/ai/agents", {
       command: "network-scan",
     });
-    production-ready
     // result may vary; ensure it has either hosts or error
-    production-ready
       expect.objectContaining({ result: expect.any(String) }),
     );
   });
 
-  production-ready
     const response = await apiRequest("POST", "/api/ai/agents", {
       command: "nonexistent-tool",
     });
-    production-ready
-    production-ready
   });
 });
 

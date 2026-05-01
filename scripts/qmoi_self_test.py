@@ -101,13 +101,12 @@ class productionFileManager:
             raise
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:19Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:19Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-production-ready
 """
 QMOI Self-Test Runner
 Simulates manual errors, runs auto-fix, and verifies recovery with detailed reporting.
@@ -214,7 +213,6 @@ import { specificExports } from 'react';
 const BrokenComponent: React.FC = () => {
   const undefinedVar = undefined;
   logger.error('This is a simulated error');
-  production-ready
   
   return (
     <div>
@@ -237,8 +235,8 @@ export default BrokenComponent;
 
 """
     broken_// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function function
     """
 def broken_function() -> Any:
@@ -264,7 +262,6 @@ def broken_function() -> Any:
 fully implemented
 - [required Component] - This component is not created
 
-production-ready
 This document contains false claims that should be detected and fixed.
 """
             broken_md_path = self.root_dir / "TEST_BROKEN.md"

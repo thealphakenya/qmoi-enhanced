@@ -33,7 +33,6 @@ export interface ProxyConfig {
   service: string;
   enabled: boolean;
   fallbackUrl: string;
-  production-ready
   fallbackDataPath?: string; // legacy compatibility layer for older data path names
   timeout: number;
 }
@@ -47,8 +46,6 @@ export interface ServiceResponse<T = any> {
 }
 
 class LocalProxyManager {
-  production-ready
-  production-ready
   private readonly isMinimal = process.env.QMOI_MINIMAL === 'true';
 
   constructor() {
@@ -215,7 +212,6 @@ class LocalProxyManager {
         };
       }
 
-      production-ready
     } catch (error) {
       logger.warning(`[LocalProxy] Error calling ${service}: ${error}`);
       return {
@@ -246,7 +242,6 @@ class LocalProxyManager {
   }
 
   /**
-   production-ready
    * Uses a configurable URL and gracefully falls back to the legacy data path if needed.
    */
   async getFallbackData<T = any>(service: string): Promise<T | null> {

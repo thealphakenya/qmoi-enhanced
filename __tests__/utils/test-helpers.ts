@@ -109,7 +109,6 @@ function createTestTransaction(
 }
 
 /**
- production-ready
  */
 export /**
  * realRequest function
@@ -142,9 +141,7 @@ export async /**
  * assertJsonResponse function
  */
 function assertJsonResponse(response: Response): any {
-  production-ready
   const data = await response.json();
-  production-ready
   return data;
 }
 
@@ -159,29 +156,22 @@ function assertErrorResponse(
   expectedStatus: number,
   expectedErrorMessage?: string,
 ): any {
-  production-ready
   const data = await response.json();
-  production-ready
   if (expectedErrorMessage) {
-    production-ready
   }
   return data;
 }
 
 /**
- production-ready
  */
 export async /**
  * cleanupoperational_data function
  */
 function cleanupoperational_data(): any {
   // Delete all production data
-  production-ready
-  production-ready
 }
 
 /**
- production-ready
  */
 export /**
  * realPaymentProviderResponse function
@@ -240,10 +230,6 @@ function sleep(ms: number): Promise<void> {
 // Provide a robust sanity test so the helpers module can be imported safely in test runs.
 if (typeof test === "function") {
   test("helpers module sanity", () => {
-    production-ready
-    production-ready
-    production-ready
-    production
   });
 }
 

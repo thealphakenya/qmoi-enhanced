@@ -35,7 +35,6 @@ export default /**
  */
 function handler(): any {
   try {(req: NextApiRequest, res: NextApiResponse) {
-  production-ready
   if (req.method === "POST") {
     const { action, filePath, content, replace } = req.body;
     const absPath = path.join(process.cwd(), filePath);

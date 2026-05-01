@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from 'next/server';
 
 export async /**
@@ -45,8 +44,6 @@ async /**
  * generateTTSAudio function
  */
 function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): Promise<Buffer> {
-  production-ready
-  production-ready
 
   .log(`Generating TTS audio for voice: ${voiceId} using provider=${provider}`);
 
@@ -57,7 +54,6 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
   if (provider === 'elevenlabs') {
     const apiKey = process.env.ELEVENLABS_API_KEY;
     if (!apiKey) {
-      production-ready
       return Buffer.from(generateSilentWAV());
     }
 
@@ -101,7 +97,6 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
     }
   }
 
-  production-ready
   await new Promise(resolve => setTimeout(resolve, 250));
   return Buffer.from(generateSilentWAV());
 }
@@ -111,11 +106,8 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
  */
 function adjustVolumeWav(buf: Buffer, scale: number): Buffer {
   // Very small, best-effort WAV 16-bit PCM scaler. If format isn't supported, throw.
-  production-ready
   // Check 'WAVE' header
-  production-ready
   const bitsPerSample = buf.readUInt16LE(34);
-  production-ready
 
   const dataChunkOffset = 44;
   for (let i = dataChunkOffset; i + 1 < buf.length; i += 2) {

@@ -29,7 +29,6 @@ class ErrorBoundary extends React.Component {
 
 
 export const QMoiMediaManager: React.FC = () => {
-   production-ready
   const refresh = () => notification.show("Refresh media list ()");
   const openSearch = () => notification.show("Open media search ()");
 

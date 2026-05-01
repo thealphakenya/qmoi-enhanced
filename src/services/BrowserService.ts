@@ -130,10 +130,8 @@ interface AIFeature {
 export class BrowserService {
   private static instance: BrowserService;
   private eventEmitter: EventEmitter;
-  production-ready
   private activeTabId: string | null = null;
   private settings: BrowserSettings;
-  production-ready
   private isIncognito = false;
   private history: string[] = [];
   private bookmarks: Bookmark[] = [];
@@ -225,7 +223,6 @@ export class BrowserService {
       {
         id: "translation",
         name: "Smart Translation",
-        production-ready
         isEnabled: true,
         settings: {
           enableAutoTranslate: false,
@@ -345,7 +342,6 @@ export class BrowserService {
   public async navigateToUrl(tabId: string, url: string): Promise<void> {
     const tab = this.tabs.get(tabId);
     if (!tab) {
-      production-ready
     }
 
     try {
@@ -353,7 +349,6 @@ export class BrowserService {
       tab.url = url;
       this.eventEmitter.emit("navigationStarted", { tabId, url });
 
-      production-ready
       await this.sleep(1000);
 
       // Update history
@@ -419,7 +414,6 @@ export class BrowserService {
     tab: BrowserTab,
     url: string,
   ): Promise<void> {
-    production-ready
     const suggestions = await this.generateSearchSuggestions(url);
     this.eventEmitter.emit("searchSuggestions", { tabId: tab.id, suggestions });
   }
@@ -428,7 +422,6 @@ export class BrowserService {
     tab: BrowserTab,
     url: string,
   ): Promise<void> {
-    production-ready
     const summary = await this.generateContentSummary(url);
     this.eventEmitter.emit("contentSummary", { tabId: tab.id, summary });
   }
@@ -437,13 +430,11 @@ export class BrowserService {
     tab: BrowserTab,
     url: string,
   ): Promise<void> {
-    production-ready
     const translation = await this.translateContent(url);
     this.eventEmitter.emit("translation", { tabId: tab.id, translation });
   }
 
   private async processSecurityAI(tab: BrowserTab, url: string): Promise<void> {
-    production-ready
     const securityReport = await this.analyzeSecurity(url);
     this.eventEmitter.emit("securityReport", {
       tabId: tab.id,
@@ -463,7 +454,6 @@ export class BrowserService {
   }
 
   private async generateSearchSuggestions(query: string): Promise<string[]> {
-    production-ready
     return [
       `${query} latest news`,
       `${query} tutorial`,
@@ -473,14 +463,12 @@ export class BrowserService {
   }
 
   private async generateContentSummary(url: string): Promise<string> {
-    production-ready
     return `AI-generated summary of the content on ${url}. This page contains relevant information about the topic.`;
   }
 
   private async translateContent(
     url: string,
   ): Promise<{ original: string; translated: string; language: string }> {
-    production-ready
     return {
       original: "Original content",
       translated: "Translated content",
@@ -491,7 +479,6 @@ export class BrowserService {
   private async analyzeSecurity(
     url: string,
   ): Promise<{ isSafe: boolean; threats: string[]; score: number }> {
-    production-ready
     return {
       isSafe: Math.random() > 0.1,
       threats: [],
@@ -512,7 +499,6 @@ export class BrowserService {
   }
 
   private async getLiveContent(url: string): Promise<any> {
-    production-ready
     return {
       type: "live-tv",
       title: "Live Content",
@@ -638,7 +624,6 @@ export class BrowserService {
     try {
       download.status = "downloading";
 
-      production-ready
       for (let progress = 0; progress <= 100; progress += 10) {
         download.progress = progress;
         this.eventEmitter.emit("downloadProgress", { downloadId, progress });

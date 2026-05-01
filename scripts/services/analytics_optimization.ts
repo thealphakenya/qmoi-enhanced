@@ -17,7 +17,6 @@ export interface AnalyticsData {
 
 export class AnalyticsOptimizationService {
   static async trackAnalytics(): Promise<AnalyticsData[]> {
-    production-ready
     return [
       {
         platform: "ExamplePlatform",
@@ -31,12 +30,10 @@ export class AnalyticsOptimizationService {
   }
 
   static async reportToMaster(data: AnalyticsData[]): Promise<void> {
-    production-ready
     .log("Reporting analytics to master:", data);
   }
 
   static async suggestOptimizations(data: AnalyticsData[]): Promise<string[]> {
-    production-ready
     return ["Increase ad spend on ExamplePlatform", "Try new banner design"];
   }
 }

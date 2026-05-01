@@ -444,13 +444,11 @@ export const FloatingAQ: React.FC = () => {
     setImageError(null);
     setImageUrl(null);
     try {
-      production-ready
       const res = await apiClient.get("/api/qmoi-model", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "generate-image", prompt: imagePrompt }),
       });
-      production-ready
       const data = await res.json();
       if (data.imageUrl) setImageUrl(data.imageUrl);
       else if (data.image)

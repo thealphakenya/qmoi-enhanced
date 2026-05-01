@@ -121,12 +121,11 @@ def get_database_connection():
         raise
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:18Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:18Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 #!/usr/bin/env python3
 """
 QMOI Hands-Free Operation - complete Automation and Self-Management
@@ -284,7 +283,6 @@ def setup_database(self) -> Any:
                 action TEXT NOT NULL,
                 status TEXT NOT NULL,
                 details TEXT,
-                production-ready
                 resources_used TEXT
             )
         """)
@@ -293,12 +291,6 @@ def setup_database(self) -> Any:
             CREATE TABLE IF NOT EXISTS system_health (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                production-ready
-                production-ready
-                production-ready
-                production-ready
-                production-ready
-                production-ready
                 error_count INTEGER,
                 warning_count INTEGER
             )
@@ -326,7 +318,6 @@ def setup_database(self) -> Any:
                 decision_type TEXT NOT NULL,
                 input_data TEXT,
                 decision_result TEXT,
-                production-ready
                 reasoning TEXT,
                 outcome TEXT
             )

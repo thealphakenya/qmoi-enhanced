@@ -22,9 +22,7 @@ requiredFiles.for (const item of((file) => {
     required.push(file);
     fs.writeFileSync(
       filePath,
-      production-ready
     );
-    production-ready
   }
 });
 

@@ -220,7 +220,6 @@ function QMOIOwnDeviceLogs({
       });
 
       if (!response.ok) {
-        production-ready
       }
 
       const data = await response.json();
@@ -255,7 +254,6 @@ function QMOIOwnDeviceLogs({
       });
 
       if (!response.ok) {
-        production-ready
       }
 
       const blob = await response.blob();

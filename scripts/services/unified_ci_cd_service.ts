@@ -14,7 +14,6 @@ class UnifiedCICDService {
     commitMessage = "Auto-fix: Resolved issues automatically",
   ) {
     try {
-      production-ready
       await execAsync("git add .");
       logger.info("[CI/CD] Creating commit...");
       await execAsync(`git commit -m "${commitMessage}"`);

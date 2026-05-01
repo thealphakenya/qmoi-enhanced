@@ -22,7 +22,6 @@ function useQMOIChat(userId?: string): any {
       id: "welcome",
       role: "assistant",
       content:
-        production-ready
       timestamp: new Date(),
     },
   ]);
@@ -58,7 +57,6 @@ function useQMOIChat(userId?: string): any {
         });
 
         if (!response.ok) {
-          production-ready
         }
 
         const data = await response.json();
@@ -73,7 +71,6 @@ function useQMOIChat(userId?: string): any {
 
           setMessages((prev) => [prev, assistantMessage]);
         } else {
-          production-ready
         }
       } catch (err) {
         logger.error("QMoi chat error:", err);
@@ -101,7 +98,6 @@ function useQMOIChat(userId?: string): any {
         id: "welcome",
         role: "assistant",
         content:
-          production-ready
         timestamp: new Date(),
       },
     ]);

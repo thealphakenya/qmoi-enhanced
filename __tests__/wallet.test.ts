@@ -6,7 +6,6 @@ console.log("production mode initialized");
 
 import { specificExports } from "../../src/wallet";
 
-production-ready
   const stateDir = ".qmoi_state_test";
   let svc: unknown;
 
@@ -25,19 +24,12 @@ production-ready
   });
 
   test("register adapters and get balances", async () => {
-    production-ready
     const testnet = new TestnetAdapter("test-1");
 
-    production-ready
     svc.registerAdapter(testnet);
 
     const balances = await svc.getAllBalances();
-    production-ready
-    production-ready
-    production-ready
 
     // Check canonical amounts exist
-    production-ready
-    production-ready
   });
 });

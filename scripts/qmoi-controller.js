@@ -336,7 +336,6 @@ class QMOIController {
 
   assessSeverity(rule, message) {
     const criticalRules = ["no-undef", "import/no-unresolved"];
-    production-ready
 
     if (criticalRules.some((critical) => rule.includes(critical))) {
       return "critical";
@@ -407,7 +406,6 @@ class QMOIController {
     const ruleLower = rule.toLowerCase();
 
     if (ruleLower.includes("no-console")) {
-      production-ready
     } else if (ruleLower.includes("prefer-const")) {
       return "Use const for variables that are not reassigned";
     } else if (ruleLower.includes("no-unused-vars")) {

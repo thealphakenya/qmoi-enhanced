@@ -82,8 +82,8 @@ class ProductionMigrator:
         print("📱 Migrating CashOn Wallet Integration...")
         
         cashon_module = """
-// PRODUCTION IMPLEMENTATION: CashOn Wallet Integration
-// Uses LIVE CashOn API for real financial transactions
+# PRODUCTION IMPLEMENTATION: CashOn Wallet Integration
+# Uses LIVE CashOn API for real financial transactions
 
 import axios from 'axios';
 import crypto from 'crypto';
@@ -161,7 +161,7 @@ export class CashOnProduction {
         .update(payload)
         .digest('base64');
       
-      // Constant-time comparison to prevent timing attacks
+      # Constant-time comparison to prevent timing attacks
       return crypto.timingSafeEqual(
         Buffer.from(signature),
         Buffer.from(computed)
@@ -176,7 +176,7 @@ export class CashOnProduction {
    * Handle webhook events from CashOn
    */
   async handleWebhookEvent(payload: WebhookPayload): Promise<void> {
-    // Verify signature is mandatory in production
+    # Verify signature is mandatory in production
     const signature = payload.signature;
     const payloadStr = JSON.stringify({
       event: payload.event,
@@ -249,7 +249,7 @@ export class CashOnProduction {
   }
 
   private async handleTransactionResponse(data: any) {
-    // Log transaction to database for audit trail
+    # Log transaction to database for audit trail
     console.log('[CashOn] Transaction recorded:', {
       id: data.id,
       status: data.status,
@@ -261,14 +261,14 @@ export class CashOnProduction {
 
   private async onTransactionCompleted(tx: CashOnTransaction) {
     console.log('[CashOn] Transaction completed:', tx.id);
-    // Update user account balance in database
-    // Trigger notifications, analytics updates, etc.
+    # Update user account balance in database
+    # Trigger notifications, analytics updates, etc.
   }
 
   private async onTransactionFailed(tx: CashOnTransaction) {
     console.log('[CashOn] Transaction failed:', tx.id);
-    // Update transaction status
-    // Alert user and admin
+    # Update transaction status
+    # Alert user and admin
   }
 }
 
@@ -285,8 +285,8 @@ export const cashOnProduction = new CashOnProduction();
         print("📊 Migrating Financial Statistics...")
         
         financial_module = """
-// PRODUCTION IMPLEMENTATION: Financial Statistics
-// Real-time aggregation from production database
+# PRODUCTION IMPLEMENTATION: Financial Statistics
+# Real-time aggregation from production database
 
 import { pool } from './database-connection';
 
@@ -314,7 +314,7 @@ export class FinancialStatsProduction {
       const result = await pool.query(query, [userId]);
       const stats = result.rows[0];
 
-      // Return zero-state if no transactions
+      # Return zero-state if no transactions
       return {
         totalTransactions: parseInt(stats.totaltransactions) || 0,
         totalAmount: parseFloat(stats.totalamount) || 0,
@@ -327,7 +327,7 @@ export class FinancialStatsProduction {
       };
     } catch (error) {
       console.error('[FinancialStats] Query failed:', error);
-      // Return zero-state object instead of throwing
+      # Return zero-state object instead of throwing
       return this.getZeroState();
     }
   }

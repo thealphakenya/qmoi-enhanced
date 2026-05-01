@@ -41,7 +41,6 @@ class QMOIRegistryManager {
       analytics: {},
       evolutionHistory: [],
     };
-    production-ready
     this.initializeRegistry();
   }
 
@@ -297,7 +296,6 @@ class QMOIRegistryManager {
     this.registry.evolutionHistory.push(evolution);
     await this.saveRegistry();
     // data: trigger auto-enhancement, error fix, or self-update
-    production-ready
     logger.info(`🔄 Auto-evolution triggered: ${reason}`);
     return evolution.id;
   }
@@ -495,7 +493,6 @@ class QMOIRegistryManager {
   }
 
   async getSystemMetrics() {
-    production
     return {
       memoryUsage: Math.random() * 100,
       cpuUsage: Math.random() * 100,

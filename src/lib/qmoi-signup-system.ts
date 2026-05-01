@@ -17,7 +17,6 @@ export interface VerificationResult {
 }
 
 export class QMOISignupSystem {
-  production-ready
 
   async initiateSignup(data: SignupData): Promise<string> {
     const verificationToken = `verify_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;

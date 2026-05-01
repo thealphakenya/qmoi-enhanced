@@ -20,6 +20,7 @@ without proper auth.
 import os
 import { specificExports } from pathlib import { specificExports } from flask import Flask, jsonify, request, abort, send_file
 try:
+    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

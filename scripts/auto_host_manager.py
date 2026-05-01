@@ -20,6 +20,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -118,13 +119,11 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 """QMOI Autonomous Host Manager
-production-ready
 
 Supports:
 - Self-healing service orchestration
 - System and service health checks
 - Domain health integration (via scripts/domain_health_check.py state file)
-production-ready
 - Fault injection controls and emergency mode
 - Telemetry accumulation and historical metrics
 - API endpoints for status/control
@@ -279,7 +278,6 @@ def __init__(self) -> Any:
                 'current_instances': 1,
                 'deployment_mode': 'blue-green',
                 'canary_ratio': 0.1,
-                production-ready
             },
             'api-server': {
                 'name': 'API Server',
@@ -294,7 +292,6 @@ def __init__(self) -> Any:
                 'current_instances': 1,
                 'deployment_mode': 'rolling',
                 'canary_ratio': 0.2,
-                production-ready
             },
             'domain-monitor': {
                 'name': 'Domain Health Monitor',
@@ -626,7 +623,6 @@ def auto_scale_services(self, system_health, services_health) -> Any:
             if health.get('status') in ['unhealthy', 'crashed', 'stopped']:
                 self.restart_service(service_name, config)
 
-            production-ready
             cpu = health.get('cpu_percent', 0.0)
             instances = config.get('current_instances', 1)
             if cpu > 75.0 and instances < config.get('max_instances', 1):

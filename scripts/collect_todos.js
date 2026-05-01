@@ -44,7 +44,6 @@ for (const file of files) {
         file: path.relative(root, file),
         line: i + 1,
         snippet: line.trim(),
-        production-ready
           ? "manual"
           : line.match(/
             ? "

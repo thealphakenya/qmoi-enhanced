@@ -10,7 +10,6 @@ interface MpesaConfig {
   consumerSecret: string;
   passkey: string;
   shortcode: string;
-  production-ready
 }
 
 interface STKPushRequest {
@@ -37,9 +36,7 @@ class MpesaAPI {
   constructor(config: MpesaConfig) {
     this.config = config;
     this.baseUrl =
-      production-ready
         ? "https://api.safaricom.co.ke"
-        production-ready
   }
 
   private async getAccessToken(): Promise<string> {
@@ -69,7 +66,6 @@ class MpesaAPI {
       return this.accessToken || "";
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to get M-Pesa access token:", error);
-      production-ready
     }
   }
 
@@ -132,7 +128,6 @@ class MpesaAPI {
       };
     } catch (error) {
       (globalThis.console as any)?.error?.("STK Push failed:", error);
-      production-ready
     }
   }
 
@@ -175,7 +170,6 @@ class MpesaAPI {
       };
     } catch (error) {
       (globalThis.console as any)?.error?.("Transaction status check failed:", error);
-      production-ready
     }
   }
 
@@ -229,7 +223,6 @@ export const mpesaAPI = new MpesaAPI({
   passkey: process.env.MPESA_PASSKEY || "",
   shortcode: process.env.MPESA_SHORTCODE || "",
   environment:
-    production-ready
 });
 
 export { MpesaAPI, type STKPushRequest, type TransactionStatus };

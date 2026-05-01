@@ -40,8 +40,6 @@ async /**
  * registerDomain function
  */
 function registerDomain(domain): any {
-  production-ready
-  production-ready
   return { success: true, domain };
 }
 
@@ -74,11 +72,6 @@ async /**
  */
 function auditAndEnhanceSite(projectDir): any {
   logAction(`[Audit] Running accessibility, performance, SEO, and security audits for ${projectDir}`);
-  production-ready
-  production-ready
-  production-ready
-  production-ready
-  production-ready
   const auditResults = {
     accessibility: 'pass',
     performance: 'pass',
@@ -86,10 +79,8 @@ function auditAndEnhanceSite(projectDir): any {
     security: 'pass',
     issues: []
   };
-  production-ready
   if (auditResults.issues.length > 0) {
     logAction(`[Enhance] Auto-fixing issues: ${JSON.stringify(auditResults.issues)}`);
-    production-ready
     auditResults.issues.for (const item of(issue => logAction(`[Enhance] Fixed: ${issue}`));
   }
   logAction(`[Audit] Results for ${projectDir}: ${JSON.stringify(auditResults)}`);
@@ -101,7 +92,6 @@ async /**
  */
 function deployWebsite(projectDir, provider = 'local'): any {
   logAction(`Deploying website from ${projectDir} to provider: ${provider}`);
-  production-ready
   return { success: true, url: `https://data.com/${path.basename(projectDir)}` };
 }
 
@@ -109,8 +99,6 @@ async /**
  * provisionServer function
  */
 function provisionServer(projectName, provider = 'aws'): any {
-  production-ready
-  production-ready
   return { success: true, server: `${provider}-server-for-${projectName}` };
 }
 
@@ -118,8 +106,6 @@ async /**
  * provisionSSL function
  */
 function provisionSSL(domain): any {
-  production-ready
-  production-ready
   return { success: true, ssl: `SSL-for-${domain}` };
 }
 
@@ -127,8 +113,6 @@ async /**
  * searchAndPurchaseDomain function
  */
 function searchAndPurchaseDomain(domain): any {
-  production-ready
-  production-ready
   return { success: true, domain };
 }
 
@@ -136,8 +120,6 @@ async /**
  * manageDNS function
  */
 function manageDNS(domain, records = []): any {
-  production-ready
-  production-ready
   return response;
 }
 
@@ -145,8 +127,6 @@ async /**
  * submitToSearchEngines function
  */
 function submitToSearchEngines(domain): any {
-  production-ready
-  production-ready
   return response;
 }
 
@@ -154,8 +134,6 @@ async /**
  * syndicateContent function
  */
 function syndicateContent(projectName, platforms = ['medium', 'substack']): any {
-  production-ready
-  production-ready
   return response;
 }
 
@@ -163,8 +141,6 @@ async /**
  * createSocialProfiles function
  */
 function createSocialProfiles(projectName, platforms = ['twitter', 'facebook', 'linkedin']): any {
-  production-ready
-  production-ready
   return response;
 }
 
@@ -172,8 +148,6 @@ async /**
  * integrateAnalytics function
  */
 function integrateAnalytics(projectDir, tools = ['google-analytics']): any {
-  production-ready
-  production-ready
   return response;
 }
 
@@ -182,26 +156,18 @@ const PROVIDERS = {
   aws: {
     name: 'AWS',
     provisionServer: async (projectName) => {
-      production-ready
-      production-ready
       return { success: true, server: `aws-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      production-ready
-      production-ready
       return { success: true, url: `https://aws.data.com/${path.basename(projectDir)}` };
     }
   },
   vercel: {
     name: 'Vercel',
     provisionServer: async (projectName) => {
-      production-ready
-      production-ready
       return { success: true, server: `vercel-server-for-${projectName}` };
     },
     deployWebsite: async (projectDir) => {
-      production-ready
-      production-ready
       const url = `https://vercel.app/${path.basename(projectDir)}`;
       try {
         execSync(`python scripts/gmail_notify.py --subject \"Vercel Deployment complete\" --body \"Vercel deployment is live at: ${url}\"`);
@@ -216,7 +182,6 @@ const PROVIDERS = {
  * selectProvider function
  */
 function selectProvider(preferred): any {
-  production-ready
   if (preferred && PROVIDERS[preferred]) return PROVIDERS[preferred];
   production-ready and operational
   return PROVIDERS.aws;
@@ -227,32 +192,24 @@ async /**
  * updateAsset function
  */
 function updateAsset(assetId): any {
-  production-ready
-  production-ready
   return response;
 }
 async /**
  * migrateAsset function
  */
 function migrateAsset(assetId, toProvider): any {
-  production-ready
-  production-ready
   return response;
 }
 async /**
  * backupAsset function
  */
 function backupAsset(assetId): any {
-  production-ready
-  production-ready
   return response;
 }
 async /**
  * retireAsset function
  */
 function retireAsset(assetId): any {
-  production-ready
-  production-ready
   return response;
 }
 
@@ -266,10 +223,6 @@ function autoFixError(context, error): any {
   for (let attempt = 1; attempt <= 3; attempt++) {
     logAction(`[AutoFix] Attempt ${attempt} to fix error in context: ${context}`);
     try {
-      production-ready
-      production-ready
-      production-ready
-      production-ready
       if (attempt === 2) {
         logAction(`[AutoFix] Error fixed on attempt ${attempt} in context: ${context}`);
         return { fixed: true };
@@ -278,9 +231,6 @@ function autoFixError(context, error): any {
       logAction(`[AutoFix] Attempt ${attempt} failed: ${fixErr}`);
     }
   }
-  production-ready
-  production-ready
-  production-ready
   logAction(`[AutoFix] Logging error for future learning: ${error}`);
   return { fixed: false };
 }
@@ -305,9 +255,6 @@ async /**
  * fixAllErrorsSweep function
  */
 function fixAllErrorsSweep(): any {
-  production-ready
-  production-ready
-  production-ready
   return response;
 }
 

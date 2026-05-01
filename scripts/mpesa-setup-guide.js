@@ -57,7 +57,6 @@ function setupMpesa(): any {
   const consumerSecret = await question("M-Pesa Consumer Secret: ");
   const passkey = await question("M-Pesa Passkey: ");
   const shortcode = await question("M-Pesa Shortcode: ");
-  production-ready
   const initiatorName =
     (await question("Initiator Name (default: QMOI): ")) || "QMOI";
   const securityCredential = await question(
@@ -68,9 +67,7 @@ function setupMpesa(): any {
     "App URL (e.g., https://your-app.vercel.app): ",
   );
 
-  production-ready
 
-  production-ready
 
 # M-Pesa Configuration
 CASHON_MPESA_NUMBER=${mpesaNumber}
@@ -91,13 +88,10 @@ QMOI_MASTER_TOKEN=${masterToken}
 NEXT_PUBLIC_APP_URL=${appUrl}
 `;
 
-  production-ready
 
   try {
     fs.writeFileSync(envPath, envContent);
-    production-ready
   } catch (error) {
-    production-ready
     rl.close();
     return;
   }
@@ -105,7 +99,6 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   logger.info("\n🧪 Testing Configuration\n");
 
   // Test environment variables
-  production-ready
 
   const requiredVars = [
     "MPESA_CONSUMER_KEY",
@@ -125,21 +118,17 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   }
 
   logger.info("\n📋 Next Steps:");
-  production-ready
   logger.info("2. Verify callback URLs are accessible");
   logger.info("3. Test a small transaction first");
-  production-ready
   logger.info("5. Start the revenue engine: npm run revenue:start");
 
   logger.info("\n🔒 Security Notes:");
-  production-ready
   logger.info("- Keep your credentials secure");
   logger.info("- Rotate credentials regularly");
   logger.info("- Monitor transactions for suspicious activity");
 
   logger.info("\n📞 Support:");
   logger.info("- Check logs for detailed error information");
-  production-ready
   logger.info("- Contact Safaricom support for API issues");
 
   rl.close();

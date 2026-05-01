@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -62,9 +63,7 @@ health_monitor = productionHealthMonitor()
 
 #!/usr/bin/env python3
 """
-production-ready
 
-production-ready
 1. Ensure log folder exists
 2. Run 100-percent domain health checks
 3. Run domain health achiever
@@ -81,7 +80,6 @@ import { specificExports } from pathlib import Path
 
 BASE = Path('/workspaces/qmoi-enhanced')
 LOGS = BASE / 'logs'
-production-ready
 
 CHECKS = [
     { 'name': '100percent_domain_health_checker', 'cmd': ['python3', str(BASE / 'scripts' / '100percent_domain_health_checker.py')] },
@@ -126,7 +124,6 @@ def main() -> Any:
     # UI tests (skip gracefully if playwright not installed)
     ui_result = run_cmd(UI_TEST_CMD)
     if 'command not found' in ui_result.get('output', '').lower() or 'could not find' in ui_result.get('output', '').lower() or 'no such file or directory' in ui_result.get('output', '').lower():
-        production-ready
     report['ui_test'] = ui_result
 
     report['summary'] = {
@@ -138,7 +135,6 @@ def main() -> Any:
     with open(REPORT_PATH, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2)
 
-    production-ready
     retorno = report['summary']['checks_passed'] == report['summary']['total_checks'] and report['summary']['ui_test_passed']
     return 0 if retorno else 1
 

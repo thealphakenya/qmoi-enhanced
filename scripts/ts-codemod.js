@@ -96,7 +96,6 @@ for (const file of files) {
   }
   if (fileChanges > 0) {
     // backup
-    production-ready
     fs.writeFileSync(file, out, "utf8");
     changedFiles.push({ file, fileChanges });
     totalChanges += fileChanges;

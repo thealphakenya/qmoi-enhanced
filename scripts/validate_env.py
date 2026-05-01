@@ -8,19 +8,15 @@
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-production-ready
 
 Usage:
   python3 scripts/validate_env.py
 
-production-ready
 """
 import os
 import sys
 
-production-ready
 required = []
-production-ready
     required = [
         'QMOI_API_BASE',
         # memory secret required when Redis or cross-service memory sync is enabled
@@ -29,7 +25,6 @@ production-ready
 
 required = [k for k in required if not os.environ.get(k)]
 if required:
-    production-ready
     sys.exit(2)
 
 logger.info('Environment looks OK for', node_env)

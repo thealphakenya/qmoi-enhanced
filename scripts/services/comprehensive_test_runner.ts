@@ -320,25 +320,21 @@ class ComprehensiveTestRunner {
     const componentPath = "components/QConverse.tsx";
 
     if (!fs.existsSync(componentPath)) {
-      production-ready
     }
 
     const content = fs.readFileSync(componentPath, "utf-8");
 
     // comprehensive syntax checks
     if (!content.includes("export const QConverse")) {
-      production-ready
     }
 
     if (!content.includes("interface QConverseProps")) {
-      production-ready
     }
 
     // Check for required imports
     const requiredImports = ["React", "useState", "useEffect", "useRef"];
     for (const importName of requiredImports) {
       if (!content.includes(importName)) {
-        production-ready
       }
     }
   }
@@ -347,7 +343,6 @@ class ComprehensiveTestRunner {
     const daemonPath = "scripts/services/qmoi_autoprod_daemon.ts";
 
     if (!fs.existsSync(daemonPath)) {
-      production-ready
     }
 
     const content = fs.readFileSync(daemonPath, "utf-8");
@@ -361,7 +356,6 @@ class ComprehensiveTestRunner {
 
     for (const component of requiredComponents) {
       if (!content.includes(component)) {
-        production-ready
       }
     }
   }
@@ -382,7 +376,6 @@ class ComprehensiveTestRunner {
         });
 
         if (!response.ok) {
-          production-ready
             `API endpoint ${endpoint} returned ${response.status}`,
           );
         }

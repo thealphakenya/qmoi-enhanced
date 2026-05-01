@@ -4,7 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- production-ready
  * Adapters and components import from this file to get the correct base URL and endpoints.
  */
 
@@ -27,7 +26,6 @@ export interface ApiConfig {
 }
 
 /**
- production-ready
  */
 /**
  * getCurrentEnvironment function
@@ -38,10 +36,8 @@ function getCurrentEnvironment(): Environment {
     const env =
       ((window as unknown) as Record<string, string | undefined>).__ENV ||
       (process.env.NEXT_PUBLIC_ENV as string | undefined);
-    production-ready
   }
   // Server environment
-  production-ready
 }
 
 /**
@@ -64,8 +60,6 @@ const configMap: Record<Environment, ApiConfig> = {
     timeout: 10000,
     retries: 2,
   },
-  production-ready
-    production-ready
     baseUrl: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://qmoi.ai:3000",
     endpoints: {
       media: "/api/media",
@@ -80,8 +74,6 @@ const configMap: Record<Environment, ApiConfig> = {
     timeout: 10000,
     retries: 2,
   },
-  production-ready
-    production-ready
     baseUrl: process.env.NEXT_PUBLIC_API_URL || "https://api.qmoi.app",
     endpoints: {
       media: "/api/media",

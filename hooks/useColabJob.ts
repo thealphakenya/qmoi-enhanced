@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "react";
 
 export /**
@@ -24,7 +23,6 @@ function useColabJob(): any {
     setError(null);
     setResult(null);
     try {
-      production-ready
       const res = await apiClient.get("/api/qmoi-model?colabJob=1", {
         method: "POST",
         headers: {

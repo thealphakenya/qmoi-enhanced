@@ -42,7 +42,6 @@ function validateDatabase(): any {
   const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl:
-      production-ready
         ? { rejectUnauthorized: false }
         : undefined,
   });
@@ -113,7 +112,6 @@ function validatePesapal(): any {
   // Test Pesapal credentials by attempting to get a token
   try {
     const _response = await apiClient.get(
-      production-ready
       {
         method: "POST",
         headers: {

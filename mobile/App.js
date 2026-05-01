@@ -86,8 +86,6 @@ function LoginScreen({ navigation, route }): any {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>QMOI Login</Text>
-      production
-      production
       <Button title="Login" onPress={handleLogin} />
       <Button title="Biometric/Trusted Login" onPress={handleBiometric} />
       {error ? <Text style={styles.error}>{error}</Text> : null}

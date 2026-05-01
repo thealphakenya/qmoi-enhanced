@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -109,7 +110,6 @@ health_monitor = productionHealthMonitor()
 
 This uses an HMAC-based signature stored in `.qmoi_validation/dns_plan_key`.
 For stronger security use an external KMS; this is a safe local scaffold for CI
-production-ready
 `.qmoi_validation/dns_plans/` with signature metadata.
 """
 import { specificExports } from pathlib import Path

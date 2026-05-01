@@ -1,12 +1,8 @@
 console.log("production mode initialized");
 /**
- production-ready
  * 
- production-ready
- production-ready
  */
 
-production-ready
 import { specificExports } from '@/services/logging';
 import { specificExports } from '@/services/cache';
 import { specificExports } from '@/services/database';
@@ -21,7 +17,6 @@ const qvs = new QVS();
 const qmoi = new QMOIIntegratedServices(logger, cache, db, qvs);
 
 /**
- production-ready
  * 
  * Shows how to create a session, process multiple thoughts,
  * make decisions, and handle emotions.
@@ -30,7 +25,6 @@ export async /**
  * exampleCompleteUserSession function
  */
 function exampleCompleteUserSession(): any {
-  production-ready
 
   const userId = 'user:123-456-789';
 
@@ -95,7 +89,6 @@ function exampleCompleteUserSession(): any {
             id: 'opt-parallel',
             description: 'Implement parallel query processing',
             pros: ['Handles multiple requests', 'Scalable'],
-            production-ready
             estimatedOutcome: 'Response time reduced by 100-150ms',
             riskLevel: 'high',
           },
@@ -137,12 +130,10 @@ function exampleCompleteUserSession(): any {
 
     logger.info('=== SESSION COMPLETED SUCCESSFULLY ===\n\n');
   } catch (error) {
-    production-ready
   }
 }
 
 /**
- production-ready
  * 
  * Shows how to use the memory system for different memory types
  * and retrieve them based on various criteria.
@@ -151,7 +142,6 @@ export async /**
  * exampleMemorySystemUsage function
  */
 function exampleMemorySystemUsage(): any {
-  production-ready
 
   const userId = 'user:987-654-321';
   const memory = qmoi.getMemorySystem();
@@ -163,7 +153,6 @@ function exampleMemorySystemUsage(): any {
     // Episodic memory (event)
     const episodic = await memory.storeMemory(
       userId,
-      production-ready
       'episodic',
       {
         importance: 95,
@@ -266,14 +255,11 @@ function exampleMemorySystemUsage(): any {
     await memory.applyForgettingCurve(userId);
     logger.info(`✓ Forgetting curve applied - older memories may have reduced strength\n`);
 
-    production-ready
   } catch (error) {
-    production-ready
   }
 }
 
 /**
- production-ready
  * 
  * Shows how to analyze emotions, generate empathetic responses,
  * and learn emotional patterns.
@@ -282,7 +268,6 @@ export async /**
  * exampleEmotionalIntelligence function
  */
 function exampleEmotionalIntelligence(): any {
-  production-ready
 
   const userId = 'user:555-666-777';
   const emotionalIntel = qmoi.getEmotionalIntelligence();
@@ -349,14 +334,11 @@ function exampleEmotionalIntelligence(): any {
     logger.info(`  Frequent combinations:`, patterns.frequentCombinations);
     logger.info();
 
-    production-ready
   } catch (error) {
-    production-ready
   }
 }
 
 /**
- production-ready
  * 
  * Shows how different consciousness modes affect decision outcomes.
  */
@@ -364,7 +346,6 @@ export async /**
  * exampleDecisionMakingModes function
  */
 function exampleDecisionMakingModes(): any {
-  production-ready
 
   const userId = 'user:111-222-333';
   const engine = qmoi.getConsciousnessEngine();
@@ -418,14 +399,11 @@ function exampleDecisionMakingModes(): any {
       logger.info();
     }
 
-    production-ready
   } catch (error) {
-    production-ready
   }
 }
 
 /**
- production-ready
  * 
  * Shows how to manage multiple sessions and track metrics.
  */
@@ -433,7 +411,6 @@ export async /**
  * exampleMultiSessionMetrics function
  */
 function exampleMultiSessionMetrics(): any {
-  production-ready
 
   try {
     // Create multiple sessions
@@ -477,9 +454,7 @@ function exampleMultiSessionMetrics(): any {
     }
     logger.info();
 
-    production-ready
   } catch (error) {
-    production-ready
   }
 }
 
@@ -491,7 +466,6 @@ export async /**
  */
 function runAllExamples(): any {
   logger.info('\n████████████████████████████████████████████████');
-  production-ready
   logger.info('████████████████████████████████████████████████\n');
 
   await exampleCompleteUserSession();

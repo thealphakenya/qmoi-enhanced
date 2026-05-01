@@ -14,7 +14,6 @@ export interface QMOIUser {
 }
 
 export class QMOIUserSystem {
-  production-ready
 
   async createUser(userData: Omit<QMOIUser, 'id' | 'createdAt' | 'lastActive'>): Promise<string> {
     const id = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;

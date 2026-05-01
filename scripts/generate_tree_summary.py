@@ -71,6 +71,7 @@ def get_tree_lines(start_path: Path, prefix: str = "", max_depth: int = 3, curre
     lines = []
     
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

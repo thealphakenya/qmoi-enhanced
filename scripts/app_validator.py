@@ -44,6 +44,7 @@ def validate_file_integrity(self, file_path: str) -> Dict:
         }
         
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

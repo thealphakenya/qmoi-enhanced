@@ -9,7 +9,6 @@ export /**
  * GitStatus function
  */
 function GitStatus(): any {
-  production-ready
   const status = "Up to date";
   return (
     <Box

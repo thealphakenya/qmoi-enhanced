@@ -669,12 +669,12 @@ VSVersionInfo(
     # 0x1 - the file is an application.
     fileType=0x1,
     # The // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function of the file.
     # 0x0 - the // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function is not defined for this fileType
     subtype=0x0,
     # Creation date and time stamp.

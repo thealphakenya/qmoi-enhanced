@@ -16,7 +16,6 @@ const
   }),
 }));
 
-production-ready
   beforeEach(() => {
     
     localStorage.clear();
@@ -27,7 +26,6 @@ production-ready
 
     // Wait for initial effect to settle and then clear initial calls
     await waitFor(() => {
-      production-ready 
     });
 
     // Switch to the Appearance tab so the auto appearance toggle is rendered
@@ -39,7 +37,6 @@ production-ready
     fireEvent.click(autoAppearanceSwitch);
 
     await waitFor(() => {
-      production-ready 
     });
   });
 });

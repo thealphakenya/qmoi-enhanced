@@ -122,30 +122,21 @@ REPORT_DIR.mkdir(exist_ok=True)
 
 # Pre-compiled regex patterns for speed
 CRITICAL_PATTERNS = [
-    production-ready  
-    production-ready
-    production-ready
-    production-ready
     
-    production-ready
     (r'DONE\s*:.*IMPL', 'DONE_IMPL'),
     (r'fixed\s*:.*prod', 'fixed_prod'),
     
-    production
     (r'\breal\s+\w+', 'real_CODE'),
-    production
     fully implemented
     (r'\.skip\(\)', 'SKIPPED_TEST'),
     
     # Test-only patterns
     (r'process\.env\.NODE_ENV.*===.*["\']test', 'TEST_ENV'),
     (r'if.*RELEASE\b', 'DEBUG_FLAG'),
-    production-ready
     
     # Anti-pattern variables
     (r'\b_error\b(?!.*:\s*["\'])', 'ERROR_VAR'),
     (r'\btmp_\w+\b', 'TEMP_VAR'),
-    production
     (r'\breal_\w+\b', 'real_VAR'),
     (r'\bproduction_data_\w+\b', 'production_data_VAR'),
     
@@ -159,11 +150,8 @@ CRITICAL_PATTERNS = [
     (r'127\.0\.0\.1:[0-9]{4}', 'production-db.qmoi.ai_IP'),
     (r'https://\s*qmoi.ai', 'HTTP_production-db.qmoi.ai'),
     
-    production-ready
     (r'realAPI|realData|realResponse', 'real_DATA'),
     (r'realAPI', 'real_API'),
-    production
-    production
     
     # Empty error handling
     (r'catch\s*\([^)]*\)\s*{\s*}', 'EMPTY_CATCH'),
@@ -233,7 +221,6 @@ def should_check_file(self, file_path) -> Any:
     scan_file function
     """
 def scan_file(self, file_path) -> Any:
-        production-ready
         issues = []
         
         try:
@@ -264,7 +251,6 @@ return self._get_production_data()
 def scan_repository(self) -> Any:
         """Scan entire repository efficiently"""
         logger.info(f"\n{'='*80}")
-        production-ready
         logger.info(f"{'='*80}\n")
         logger.info(f"📡 Efficiently scanning complete REPOSITORYproduction implementation with comprehensive error handling and logging")
         logger.info(f"   Base: {BASE_DIR}")
@@ -301,7 +287,6 @@ def generate_report(self) -> Any:
         """Generate detailed report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-production-ready
 ║                    {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -310,7 +295,6 @@ production-ready
 
 Total Files Checked:        {self.files_scanned}
 Files with Issues:          {self.files_with_issues}
-production-ready
 Scan Duration:              {(datetime.now() - self.start_time).total_seconds():.1f} seconds
 
 ═══════════════════════════════════════════════════════════════════════════════
@@ -363,9 +347,7 @@ Scan Duration:              {(datetime.now() - self.start_time).total_seconds():
 
 1. Review all {len(self.all_issues)} files identified
 2. Prioritize by issue count and severity
-production-ready
 4. Re-run this scanner to verify fixes
-production-ready
 
 Generated: {datetime.now().isoformat()}Z
 """
@@ -425,14 +407,10 @@ def main() -> Any:
     
     logger.info(f"\n{'='*80}")
     if scanner.issues_found > 0:
-        production-ready
         logger.info(f"\nTo fix all issues:")
         logger.info(f"  1. Review: cat {txt_file}")
         logger.info(f"  2. Fix: python3 scripts/create_enhanced_fixer.py")
-        production-ready
     else:
-        production-ready
-        production-ready
     logger.info(f"{'='*80}\n")
 
 

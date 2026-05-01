@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/proposals";
 
@@ -46,7 +45,6 @@ function GET(request: NextRequest): any {
     const active = searchParams.get("active");
 
     if (stats) {
-      production-ready
       const statsData: TradingStats = {
         totalTrades: 150,
         successfulTrades: 98,
@@ -80,7 +78,6 @@ function GET(request: NextRequest): any {
     }
 
     if (history) {
-      production-ready
       const historyData: Trade[] = [
         {
           id: "T123",
@@ -108,7 +105,6 @@ function GET(request: NextRequest): any {
     }
 
     if (active) {
-      production-ready
       const activeData: Trade[] = [
         {
           id: "T125",
@@ -157,8 +153,6 @@ function POST(request: NextRequest): any {
     if (action === "execute") {
       // Proposal-first: write a proposal unless explicitly allowed
       const canRun =
-        production-ready
-        production-ready
       const proposal = {
         title: "Execute trade",
         description: "Execute a trading action",
@@ -174,8 +168,6 @@ function POST(request: NextRequest): any {
         });
       }
 
-      production-ready
-      production-ready
 
       const tradeData: Trade = {
         id: `T${Math.floor(Math.random() * 1000)}`,
@@ -185,7 +177,6 @@ function POST(request: NextRequest): any {
         price: trade.price,
         timestamp: new Date().toISOString(),
         status: "completed",
-        production-ready
       };
 
       return NextResponse.json({
@@ -197,8 +188,6 @@ function POST(request: NextRequest): any {
 
     if (action === "cancel") {
       const canRun =
-        production-ready
-        production-ready
       const proposal = {
         title: "Cancel trade",
         description: "Cancel a pending trade",
@@ -214,8 +203,6 @@ function POST(request: NextRequest): any {
         });
       }
 
-      production-ready
-      production-ready
 
       return NextResponse.json({
         status: "success",

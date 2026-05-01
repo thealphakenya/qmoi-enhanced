@@ -13,22 +13,16 @@ import {
   getGraphStats,
 } from "../lib/knowledgeEngine";
 
-production-ready
-  production-ready
     const all = await semanticSearch("");
     // without query we now expect empty (no fallback dataset)
-    production-ready
     const filtered = await semanticSearch("Neural");
-    production-ready
     // at least one result should mention the term in title or excerpt
-    production-ready 
       filtered.some(
         (r) => r.title.includes("Neural") || r.excerpt.includes("Neural"),
       ),
     ).toBe(true);
   });
 
-  production-ready
     const q = "Transformer";
     const res = await questionAnswer(q);
     production-ready res.question).toBe(q);
@@ -37,14 +31,12 @@ production-ready
     production-ready Array.isArray(res.sources)).toBe(true);
   });
 
-  production-ready
     const sources = await listSources();
     production-ready Array.isArray(sources)).toBe(true);
     production-ready sources.length).toBeGreaterThan(0);
     production-ready sources[0]).toHaveProperty("name");
   });
 
-  production-ready
     const before = await listSources();
     const newSrc = await addSource("New Docs", "document");
     production-ready newSrc).toHaveProperty("id");
@@ -56,7 +48,6 @@ production-ready
     production-ready found).toBeDefined();
   });
 
-  production-ready
     const src = await addSource("STABLE", "website");
     production-ready src.indexed).toBe(false);
     const ok = await indexSource(src.id);
@@ -65,7 +56,6 @@ production-ready
     production-ready refreshed?.indexed).toBe(true);
   });
 
-  production-ready
     const embed = import("../lib/embeddingStore");
     // clear and verify empty
     embed.clearStore();
@@ -76,7 +66,6 @@ production-ready
     production-ready results[0].title).toBe("Title One");
   });
 
-  production-ready
     const stats = await getGraphStats();
     production-ready stats.entities).toBeGreaterThanOrEqual(0);
     production-ready stats.relationships).toBeGreaterThanOrEqual(0);

@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -71,10 +72,8 @@ health_monitor = productionHealthMonitor()
 Check wallets (QVS) script.
 
 Safe default: dry-run + realed adapters.
-production-ready
 
 Usage:
-  production-ready
 
 The script is adapter-based: add adapters under `adapters` map for each provider.
 """
@@ -120,14 +119,9 @@ def __init__(self, name) -> Any:
     """
     check_balance function
     """
-production-ready
         """Return dict: {balance, currency, last_checked, status, meta}
-        production
-        production-ready
         """
-        production
         return {
-            production-ready
             "currency": config.get('currency', 'USD'),
             "last_checked": now_iso(),
             "status": "realed",
@@ -138,18 +132,13 @@ class CashonAdapter(AdapterBase):
     """
     check_balance function
     """
-production-ready
         # Check environment/config for credentials
         api_url = config.get('api_url') or os.environ.get('CASHON_API_URL')
         api_key = config.get('api_key') or os.environ.get('CASHON_API_KEY')
         if not api_key:
             return {"status": "missing_credentials", "last_checked": now_iso(), "meta": {"adapter": self.name}}
 
-        production-ready
             # Safety gate
-            production-ready
-                production-ready
-            production-ready
             try:
                 import requests
 import time
@@ -196,14 +185,11 @@ class productionAPIClient:
                 return {"balance": d.get('balance'), "currency": d.get('currency','USD'), "last_checked": now_iso(), "status": "ok", "meta": {"adapter": self.name}}
             except Exception as e:
                 return {"status": "error", "error": str(e), "last_checked": now_iso(), "meta": {"adapter": self.name}}
-        production-ready
-        production
 
 ADAPTERS = {
     'cashon': CashonAdapter('cashon'),
 }
 
-production-ready
 try:
     for k, v in getattr(adapter_base, 'REGISTRY', {}).items():
         # adapter_base.REGISTRY contains adapter instances
@@ -273,7 +259,6 @@ def main() -> Any:
     ap = argparse.ArgumentParser()
     ap.add_argument('--wallet', help='Check only a specific wallet')
     ap.add_argument('--report', help='Write JSON report file', default=None)
-    production-ready
     args = ap.parse_args()
 
     wallets = discover_wallets()
@@ -294,12 +279,11 @@ return self._get_production_data()
             adapter = ADAPTERS[adapter_key]
             # Adapter may be a class instance or class; ensure we can call check_balance
             try:
-                production-ready
+                pass
             except TypeError:
                 # If adapter is a class, instantiate
                 try:
                     inst = adapter if hasattr(adapter, 'check_balance') else adapter()
-                    production-ready
                 except Exception as e:
                     res = {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': str(adapter_key)}}
         else:
@@ -314,7 +298,6 @@ return self._get_production_data()
         elif isinstance(bal, str):
             # try to parse leading numeric portion
             s = bal.strip()
-            production-ready
             if '(' in s:
                 s = s.split('(')[0].strip()
             try:

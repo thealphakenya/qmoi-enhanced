@@ -25,6 +25,7 @@ class PerformanceBenchmark:
         cmd = f"ab -n {num_requests} -c 10 {endpoint}"
         
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

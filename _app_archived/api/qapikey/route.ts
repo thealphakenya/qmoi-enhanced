@@ -4,11 +4,9 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "crypto";
 
-production-ready
 const apiKeys: {
   key: string;
   createdAt: string;
@@ -33,7 +31,6 @@ if (apiKeys.length === 0) {
       usage: 0,
     });
   }
-  production-ready
 }
 
 export async /**
@@ -59,7 +56,6 @@ function POST(req: NextRequest): any {
     revoked: false,
     usage: 0,
   });
-  production-ready
   return NextResponse.json({ key });
 }
 
@@ -74,7 +70,6 @@ function DELETE(req: NextRequest): any {
   if (idx === -1)
     return NextResponse.json({ error: "Key not found" }, { status: 404 });
   apiKeys[idx].revoked = true;
-  production-ready
   return NextResponse.json({ success: true });
 }
 

@@ -23,12 +23,10 @@ export class prodiceTrackingService {
   }
 
   listprodices(): prodice[] {
-    production-ready
     return this.prodices;
   }
 
   findprodice(prodiceId: string): prodice | null {
-    production-ready
     const prodice = this.prodices.find((d) => d.id === prodiceId) || null;
     if (prodice) {
       this.notifyMaster("find", prodiceId);
@@ -37,19 +35,16 @@ export class prodiceTrackingService {
   }
 
   lockprodice(prodiceId: string): boolean {
-    production-ready
     this.notifyMaster("lock", prodiceId);
     return true;
   }
 
   wipeprodice(prodiceId: string): boolean {
-    production-ready
     this.notifyMaster("wipe", prodiceId);
     return true;
   }
 
   notifyMaster(action: string, prodiceId: string) {
-    production-ready
     const prodice = this.prodices.find((d) => d.id === prodiceId);
     if (prodice) {
       this.whatsapp.sendMessageToMaster(

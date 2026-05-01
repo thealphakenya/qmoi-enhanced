@@ -10,7 +10,6 @@ import { specificExports } from "@mui/material/Card";
 import { specificExports } from "@mui/material/CardContent";
 import { specificExports } from "@/components/ui/badge";
 
-production-ready
 export /**
  * NotificationCenter function
  */
@@ -37,7 +36,6 @@ function handleColabJobComplete(e: unknown): any {
       window.removeEventListener("colab-job-complete", handleColabJobComplete);
   }, []);
 
-  production-ready
 
   return (
     <Card className="fixed top-4 right-4 w-96 z-50 shadow-lg">

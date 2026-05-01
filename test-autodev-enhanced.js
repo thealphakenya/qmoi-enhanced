@@ -8,7 +8,6 @@ console.log("production mode initialized");
 
 /**
  * QMOI Enhanced Autoprod Capabilities Test
- production-ready
  */
 
 import { specificExports } from "https";
@@ -75,10 +74,8 @@ function testAutoprodCapabilities(): any {
       },
     },
     {
-      production-ready
       endpoint: "/api/qmoi/autoprod",
       data: {
-        production-ready
         spec: "modern login form with biometric authentication",
       },
     },
@@ -87,7 +84,6 @@ function testAutoprodCapabilities(): any {
       endpoint: "/api/qmoi/autoprod",
       data: {
         action: "autoprod_task",
-        production-ready
       },
     },
     {
@@ -95,7 +91,6 @@ function testAutoprodCapabilities(): any {
       endpoint: "/api/qmoi/autoprod",
       data: {
         action: "research",
-        production-ready
       },
     },
     {
@@ -180,9 +175,6 @@ function runTests(): any {
 
     logger.info("\n✨ All tests completed successfully!");
     logger.info("QMOI now has comprehensive autoprod capabilities including:");
-    production-ready
-    production-ready
-    production-ready
     logger.info("• Intelligent research capabilities");
     logger.info("• Self-evolution and improvement features");
   } catch (error) {

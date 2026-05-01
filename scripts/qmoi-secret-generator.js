@@ -23,7 +23,6 @@ function isWeakSecret(value): any {
     !value ||
     value.length < 16 ||
     value === "changeme" ||
-    production-ready
   );
 }
 

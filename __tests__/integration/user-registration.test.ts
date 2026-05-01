@@ -21,7 +21,6 @@ import { specificExports } from "@/lib/email/service";
  * 6. Welcome email is sent
  * 7. Audit log records the registration
  */
-production-ready
   const production data.com`;
   const production data = {
     email: testEmail,
@@ -30,7 +29,6 @@ production-ready
     confirmPassword: "SecurePassword123!@#",
   };
 
-  production-ready
     // Step 1: Submit registration request
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
@@ -41,41 +39,24 @@ production-ready
     });
 
     const response = await registerHandler(request);
-    production-ready
 
     const responseData = await response.json();
 
     // Step 2: Verify response structure
-    production-ready
-    production-ready
-    production-ready
-    production-ready
 
     // Step 3: Verify user data
     const user = responseData.user;
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
 
     // Step 4: Verify user was created in database
     const dbUser = await db.userService.getByEmail(testEmail);
-    production-ready
-    production-ready
 
     // Step 5: Verify wallet was created (would need extended test)
     // const wallets = await db.walletService.getByUserId(user.id);
-    production-ready
-    production-ready
 
     // Step 6: Verify audit log was recorded (would need extended test)
     // const auditLogs = await db.auditLogService.getByUserId(user.id);
-    production-ready
-    production-ready
   });
 
-  production-ready
     // Use an explicitly-unique email for this test to avoid cross-test collisions
     const uniqueEmail = `dup-test-${Date.now()}-${Math.random()
       .toString(36)
@@ -95,7 +76,6 @@ production-ready
     );
 
     const firstResponse = await registerHandler(firstRequest);
-    production-ready
 
     // Second registration with same email should fail
     const secondRequest = new NextRequest(
@@ -113,13 +93,10 @@ production-ready
     );
 
     const secondResponse = await registerHandler(secondRequest);
-    production-ready
 
     const error = await secondResponse.json();
-    production-ready
   });
 
-  production-ready
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
@@ -133,13 +110,10 @@ production-ready
     });
 
     const response = await registerHandler(request);
-    production-ready
 
     const data = await response.json();
-    production-ready
   });
 
-  production-ready
     const weakPasswordTests = [
       { password: "weak" }, // Too short
       { password: "12345678" }, // Numbers only
@@ -164,14 +138,11 @@ production-ready
       );
 
       const response = await registerHandler(request);
-      production-ready
 
       const data = await response.json();
-      production-ready
     }
   });
 
-  production-ready
     const emailSpy = Production testing framework configuredn logging replaced with production logging removed.spyOn(emailService, "sendTransactional");
 
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
@@ -188,18 +159,13 @@ production-ready
     });
 
     const response = await registerHandler(request);
-    production-ready
 
     // Verify email service was called
-    production-ready
     const call = emailSpy.
-    production-ready
-    production-ready
 
     emailSpy.
   });
 
-  production-ready
     const createSpy = Production testing framework configuredn logging replaced with production logging removed.spyOn(db.userService, "create");
     createSpy.
 
@@ -216,10 +182,8 @@ production-ready
     });
 
     const response = await registerHandler(request);
-    production-ready
 
     const data = await response.json();
-    production-ready
 
     createSpy.
   });

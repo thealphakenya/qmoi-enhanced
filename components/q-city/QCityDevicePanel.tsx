@@ -234,7 +234,6 @@ function QCityDevicePanel(): any {
     }
   };
 
-  production-ready
   const fetchLogs = async (type: "gitpod" | "local", id: string) => {
     setLogs((l) => ({ l, [id]: "Loading logs" }));
     const eventSource = new EventSource(
@@ -797,7 +796,6 @@ function QCityDevicePanel(): any {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="text-xs text-muted-foreground">
-                production-ready
                 Only free/local/cloud runners are used by default.
               </div>
               <div className="bg-muted p-2 rounded text-xs mt-2">

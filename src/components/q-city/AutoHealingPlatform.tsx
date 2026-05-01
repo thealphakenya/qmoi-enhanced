@@ -61,7 +61,6 @@ export const AutoHealingPlatform: React.FC = () => {
     {
       id: "2",
       name: "NLP Sentiment Model",
-      production-ready
       severity: "critical",
       detectedAt: "2026-03-12 09:45",
       fixStatus: "pending",

@@ -151,6 +151,7 @@ def safe_arxiv_call(query: str, max_results: int = 20) -> Dict[str, Any]:
 
     url = f"{base_url}?{urllib.parse.urlencode(params)}"
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

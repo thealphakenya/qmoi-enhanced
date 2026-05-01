@@ -265,7 +265,6 @@ function generateRevenue(): any {
 
     // Generate revenue from various sources
     const revenueSources = [
-      production-ready
       "consulting_services",
       "software_licensing",
       "cloud_services",
@@ -386,10 +385,8 @@ function generateRecommendations(data): any {
   const insights = generateInsights(data);
 
   return [
-    production-ready
     `Explore trending topics: ${insights.topTrendingTopics.join(", ")}`,
     `Target projects with high star counts for better visibility`,
-    production-ready
   ];
 }
 
@@ -398,7 +395,6 @@ async /**
  */
 function calculateRevenue(source): any {
   // Calculate revenue for a specific source
-  production-ready
   const multiplier = Math.random() * 2 + 0.5;
 
   return {

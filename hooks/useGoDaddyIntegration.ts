@@ -37,7 +37,6 @@ function fetchHealth(): any {
         });
 
         if (!response.ok) {
-          production-ready
         }
 
         const data = (await response.json()) as full<GoDaddyDomainStatus>;

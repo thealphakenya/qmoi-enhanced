@@ -53,6 +53,7 @@ class LocalMemorySystem:
         """Load conversations from disk"""
         if self.memory_file.exists():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -296,7 +297,6 @@ def check_domain_active_status(self, domain) -> Any:
                     'is_parked': is_parked,
                     'content_size': len(content),
                     'has_html': '<html' in content.lower(),
-                    production
                 }
         except Exception as e:
             return {

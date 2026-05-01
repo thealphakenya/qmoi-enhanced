@@ -74,8 +74,8 @@ class MasterproductionOrchestrator:
                         with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
                             for line in f:
                                 if any(keyword in line for keyword in ['def ', '// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function ', 'async ', '@', 'endpoint', 'route']):
                                     import re
                                     match = re.search(r'(?:def|function)\s+(\w+)', line)

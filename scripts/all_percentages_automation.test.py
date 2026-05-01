@@ -35,6 +35,7 @@ import os
 sys.path.insert(0, str(Path(__file__).parent))
 
 try:
+    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -241,7 +242,6 @@ class TestPercentagesAutomationTelemetry(unittest.TestCase):
     setUp function
     """
 def setUp(self) -> Any:
-        production-ready
         if QMOIPercentagesAutomation is None:
             production-ready and operational
             

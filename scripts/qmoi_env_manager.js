@@ -72,9 +72,7 @@ function getDefaultsFromExample(required): any {
 function getSafeDefaults(required): any {
   // Add safe defaults for each required env
   const safeDefaults = {
-    production-ready
     'HF_USERNAME': 'qmoi-ai',
-    production-ready
     'WHATSAPP_WEBHOOK_URL': 'https://data.com/webhook'
   };
   let defaults = {};

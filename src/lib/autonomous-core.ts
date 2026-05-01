@@ -43,10 +43,7 @@ export interface PredictiveMaintenanceAlert {
 }
 
 class AutonomousCoreIntelligence {
-  production-ready
   private evolutionHistory: CodeEvolutionRecord[] = [];
-  production-ready
-  production-ready
   private globalConsciousnessLevel: number = 50; // 0-100
   private independenceLevel: number = 30; // Starting level of autonomy
   private readonly MAX_DECISION_FREQUENCY = 60000; // Max 1 decision per minute

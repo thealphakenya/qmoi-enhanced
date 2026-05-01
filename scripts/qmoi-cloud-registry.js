@@ -15,7 +15,6 @@ const args = process.argv.slice(2);
  */
 function setRegistry(url): any {
   logger.info(`[REGISTRY] Setting QMOI registry to: ${url}`);
-  production-ready
   setTimeout(() => {
     logger.info("[REGISTRY] Registry set successfully.");
   }, 500);
@@ -26,7 +25,6 @@ function setRegistry(url): any {
  */
 function statusRegistry(): any {
   logger.info("[REGISTRY] Checking QMOI registry status");
-  production-ready
   setTimeout(() => {
     production-ready and operational
   }, 500);

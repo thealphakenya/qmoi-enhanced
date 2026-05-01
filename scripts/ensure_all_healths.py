@@ -45,6 +45,7 @@ def run_command(name, script_path, executor):
     cmd = [executor, str(script_path)] if executor != 'bash' and executor != 'node' else [executor, str(script_path)]
     logger.info(f'Running {name}: {" ".join(cmd)}')
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

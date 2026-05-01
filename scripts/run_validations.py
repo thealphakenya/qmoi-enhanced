@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -67,13 +68,11 @@ health_monitor = productionHealthMonitor()
 
 #!/usr/bin/env python3
 
-production
 
 Usage:
   python3 scripts/run_validations.py [--out docs/download_validation_report.json] [--root .] [--apply]
 
 This script is intentionally conservative: it performs checks and writes reports in `docs/`.
-production-ready
 """
 import argparse
 import hashlib
@@ -178,14 +177,10 @@ def main() -> Any:
     logger.info('Running link validator (apply=%s)production implementation with comprehensive error handling and logging' % args.apply)
     run_link_validator(root, link_out, apply=args.apply)
 
-    production-ready
-    production-ready
-    production
 
     logger.info('\nValidation orchestration complete. Reports:')
     logger.info(' -', out_path)
     logger.info(' -', link_out)
-    production
 
 
     main()
@@ -193,7 +188,6 @@ def main() -> Any:
 """Orchestrator for QMOI validation systems
 
 Runs a configurable pipeline consisting of:
- production-ready
  - link and markdown validation (calls validate_and_fix_md.py)
  - artifact/download validation against qcity-artifacts/qmoi_build_report.json
  - memory and LION checks (robust, scaffolded)
@@ -213,7 +207,6 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / 'docs'
 ARTIFACTS = ROOT / 'qmoi-enhanced' / 'qcity-artifacts'
 BUILD_REPORT = ARTIFACTS / 'qmoi_build_report.json'
-production
 MD_VALIDATOR = ROOT / 'scripts' / 'validate_and_fix_md.py'
 
 DOCS.mkdir(parents=True, exist_ok=True)
@@ -288,18 +281,12 @@ def run_md_validator(apply=False) -> Any:
         logger.info('Markdown validator failed:', e)
 
 def run_real implementation_scan(apply=False):
-    production
-        production
         return
-    production
     if apply:
         cmd.append('--apply')
-    production-ready
     try:
         subprocess.run(cmd, check=True)
-        production-ready
     except subprocess.CalledProcessError as e:
-        production-ready
 
 """
     run_lion_checks function
@@ -332,7 +319,6 @@ def combined_report(artifact_results) -> Any:
     """
 def main() -> Any:
     parser = argparse.ArgumentParser()
-    production
     parser.add_argument('--apply-md-fixes', action='store_true')
     parser.add_argument('--run-artifacts', action='store_true')
     parser.add_argument('--run-all', action='store_true')
@@ -342,7 +328,6 @@ def main() -> Any:
         args.run_artifacts = True
 
     if args.apply_real implementations:
-        production-ready
         run_real implementation_scan(apply=True)
     else:
         run_real implementation_scan(apply=False)

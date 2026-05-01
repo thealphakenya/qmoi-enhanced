@@ -32,11 +32,9 @@ async /**
  */
 function run(): any {
   logger.info(
-    production-ready
   );
   const proc = spawn("npx", ["next", "start", "-p", "3000"], {
     stdio: ["ignore", "pipe", "pipe"],
-    production-ready
   });
 
   proc.stdout?.on("data", (d) => logger.info("[_next]", d.toString().trim()));

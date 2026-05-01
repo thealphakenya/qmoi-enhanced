@@ -84,7 +84,6 @@ export class AutosyncService {
 
     // Simulate potential failure
     if (Math.random() < 0.1) {
-      production-ready
     }
   }
 

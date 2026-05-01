@@ -15,19 +15,13 @@ import { specificExports } from "../qmoi/core/awareness/system";
 import { specificExports } from "../qmoi/core/memory/sync";
 import { specificExports } from "../qmoi/core/orchestration/engine";
 
-production-ready
   beforeEach(() => {
     consciousnessEngine.reset();
   });
 
-  production-ready
     const state = consciousnessEngine.getState();
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     await consciousnessEngine.updateConsciousnessState({
       attention_level: 95,
       focus_area: "task_processing",
@@ -35,45 +29,31 @@ production-ready
     });
 
     const state = consciousnessEngine.getState();
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     consciousnessEngine.addThought("Processing query about AI consciousness");
     consciousnessEngine.addThought("Analyzing user intent");
 
     const introspection = await consciousnessEngine.introspect();
-    production-ready
   });
 
-  production-ready
     const passed = await consciousnessEngine.evaluateEthics("delete_all_files", {
       user_consent: false,
     });
-    production-ready
 
     const allowed = await consciousnessEngine.evaluateEthics("send_notification", {
       user_consent: true,
     });
-    production-ready
   });
 
-  production-ready
     const analysis = await consciousnessEngine.introspect();
-    production-ready
-    production-ready
-    production-ready
   });
 });
 
-production-ready
   beforeEach(() => {
     awarenessSystem.reset?.();
   });
 
-  production-ready
     await awarenessSystem.updateEnvironment("prodice_001", {
       network_status: "online",
       battery_level: 85,
@@ -81,23 +61,16 @@ production-ready
     });
 
     const awareness = awarenessSystem.getEnvironmentAwareness("prodice_001");
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     await awarenessSystem.updateUserContext("user_123", {
       user_mode: "active",
       user_preferences: { theme: "dark" },
     });
 
     const awareness = awarenessSystem.getUserAwareness("user_123");
-    production-ready
-    production-ready
   });
 
-  production-ready
     await awarenessSystem.updateTaskContext("task_001", {
       task_type: "data_processing",
       task_priority: 3,
@@ -105,10 +78,8 @@ production-ready
     });
 
     const awareness = awarenessSystem.getGlobalAwareness();
-    production-ready
   });
 
-  production-ready
     await awarenessSystem.updateEnvironment("prodice_001", {
       network_status: "offline",
       active_app: "email",
@@ -116,10 +87,8 @@ production-ready
     });
 
     const awareness = awarenessSystem.getGlobalAwareness();
-    production-ready
   });
 
-  production-ready
     await awarenessSystem.updateUserContext("user_123", {
       user_mode: "active",
       behavioral_patterns: {
@@ -130,16 +99,13 @@ production-ready
     });
 
     const predictions = await awarenessSystem.predictUserNeeds("user_123");
-    production-ready
   });
 });
 
-production-ready
   beforeEach(() => {
     memorySyncSystem.stopAutoSync();
   });
 
-  production-ready
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "QMOI is a distributed AI consciousness",
@@ -151,12 +117,9 @@ production-ready
       priority: 3,
     });
 
-    production-ready
     const memory = await memorySyncSystem.getMemory(memoryId);
-    production-ready
   });
 
-  production-ready
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
       content: "Test memory entry",
@@ -169,11 +132,8 @@ production-ready
     });
 
     const memory = await memorySyncSystem.getMemory(memoryId);
-    production-ready
-    production-ready
   });
 
-  production-ready
     await memorySyncSystem.addMemory({
       type: "long_term",
       content: "User prefers morning notifications",
@@ -189,11 +149,8 @@ production-ready
       ["user_preference"],
       "morning",
     );
-    production-ready
-    production-ready
   });
 
-  production-ready
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "Original content",
@@ -212,12 +169,9 @@ production-ready
       relevance_score: 0.95,
     });
 
-    production-ready
     const memory = await memorySyncSystem.getMemory(memoryId);
-    production-ready
   });
 
-  production-ready
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
       content: "To be deleted",
@@ -234,20 +188,13 @@ production-ready
       "prodice_001",
       "user_123",
     );
-    production-ready
 
     const memory = await memorySyncSystem.getMemory(memoryId);
-    production-ready
   });
 
-  production-ready
     const stats = memorySyncSystem.getMemoryStats();
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "Sensitive information",
@@ -260,11 +207,8 @@ production-ready
     });
 
     const memory = await memorySyncSystem.getMemory(memoryId);
-    production-ready
-    production-ready
   });
 
-  production-ready
     // Add old short-term memory
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
@@ -278,12 +222,9 @@ production-ready
     });
 
     const consolidated = await memorySyncSystem.consolidateMemory();
-    production-ready
   });
 });
 
-production-ready
-  production-ready
     const response = await orchestrationEngine.orchestrateAction(
       {
         request_id: "req_001",
@@ -298,12 +239,8 @@ production-ready
       },
     );
 
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     const response = await orchestrationEngine.orchestrateAction(
       {
         request_id: "req_002",
@@ -314,32 +251,18 @@ production-ready
         context: {},
       },
       async () => {
-        production-ready
       },
     );
 
-    production-ready
-    production-ready
   });
 
-  production-ready
     const stats = orchestrationEngine.getStats();
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     const analysis = await orchestrationEngine.introspect();
-    production-ready
-    production-ready
-    production-ready
-    production-ready
   });
 });
 
-production-ready
-  production-ready
     await consciousnessEngine.updateConsciousnessState({
       focus_area: "user_interaction",
     });
@@ -351,11 +274,8 @@ production-ready
     const consciousness = consciousnessEngine.getState();
     const awareness = awarenessSystem.getUserAwareness("user_123");
 
-    production-ready
-    production-ready
   });
 
-  production-ready
     const memoryId = await memorySyncSystem.addMemory({
       type: "semantic",
       content: "User prefers concise responses",
@@ -368,7 +288,5 @@ production-ready
     });
 
     const retrieved = await memorySyncSystem.getMemory(memoryId);
-    production-ready
-    production-ready
   });
 });

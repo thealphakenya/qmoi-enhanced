@@ -29,7 +29,6 @@ function stableQAI(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ input: prompt, userId: "latest-q" }),
       });
-      production-ready
       const data = await res.json();
       setResponse(data?.response ?? "(no response)");
     } catch (e) {

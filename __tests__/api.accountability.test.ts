@@ -12,22 +12,13 @@ const accountabilityRequest = async (method: string, path: string, body?: unknow
   return { status: res.status, body: data };
 };
 
-production-ready
-  production-ready
     const res = await accountabilityRequest('POST', '/api/accountability', { type: 'test', details: 'testing accountability' });
-    production-ready
     if (res.status === 200) {
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const res = await accountabilityRequest('GET', '/api/accountability?action=events');
-    production-ready
     if (res.status === 200) {
-      production-ready
-      production-ready
     }
   });
 });

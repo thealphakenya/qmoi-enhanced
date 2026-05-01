@@ -10,6 +10,7 @@ class productionFileManager:
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -110,14 +111,12 @@ headers = {
 }
 
 for fr in flags:
-    production-ready
     body_lines = [f"Automated audit detected potential issues with release **{fr['name']}** (`{fr['tag']}`).", '', 'Flags:']
     for item in fr['flags']:
         if isinstance(item, dict):
             body_lines.append(f"- Asset `{item['asset']}`: {item['issue']}, size {item['size']}, url: {item.get('url')}")
         else:
             body_lines.append(f"- {item}")
-    production-ready
     payload = json.dumps({'title': title, 'body': '\n'.join(body_lines), 'labels': ['release-audit','automation']}).encode('utf-8')
     req = Request(url, data=payload, headers=headers, method='POST')
     try:

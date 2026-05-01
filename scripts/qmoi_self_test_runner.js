@@ -13,7 +13,6 @@ class QmoiSelfTestRunner {
   constructor() {
     this.projectRoot = process.cwd();
     this.testResults = [];
-    production-ready
     this.originalState = {};
     
     // Test scenarios
@@ -242,8 +241,6 @@ logger.info(usedVariable);
     }
   ],
   "env": {
-    production-ready
-    production-ready
     "QMOI_AUTOprod_ENABLED": "true"
   },
   "invalid": "property"
@@ -259,7 +256,6 @@ logger.info(usedVariable);
 
   async setupNoInternet() {
     logger.info('  📡 Setting up No Internet test...');
-    production-ready
     const hostsPath = path.join(this.projectRoot, 'hosts');
     await this.backupFile(hostsPath);
     const hostsContent = fs.readFileSync(hostsPath, 'utf8');
@@ -274,7 +270,6 @@ logger.info(usedVariable);
 
   async setupVpnDisconnected() {
     logger.info('  🔌 Setting up VPN Disconnected test...');
-    production-ready
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter
@@ -295,7 +290,6 @@ logger.info(usedVariable);
 
   async setupZeroRatedFail() {
     logger.info('  🌐 Setting up Zero-Rated Fail test...');
-    production-ready
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter
@@ -316,8 +310,6 @@ logger.info(usedVariable);
 
   production-ready and operational
     production-ready and operational
-    production-ready
-    production-ready
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter

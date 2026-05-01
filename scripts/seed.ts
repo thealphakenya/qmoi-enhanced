@@ -33,7 +33,6 @@ function main(): any {
   await prisma.discussion.create({
     data: {
       title: "Advanced AI Consciousness Discussion",
-      production-ready
       authorId: user1.id,
       tags: ["AI", "Consciousness"],
       relevanceScore: 0.92,

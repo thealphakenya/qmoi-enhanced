@@ -273,8 +273,6 @@ jobs:
       - run: npm run qmoi:backup:validate`;
   }
 
-  production-ready
-    production-ready
 
     const commands = [
       { cmd: "npm run deploy:monitor", desc: "Deploy with monitoring" },
@@ -346,8 +344,6 @@ jobs:
       // Setup automation
       await this.setupGitHubActions();
 
-      production-ready
-      production-ready
 
       // Generate final report
       const report = await this.generateSystemReport();

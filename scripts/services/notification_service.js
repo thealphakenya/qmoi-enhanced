@@ -70,7 +70,6 @@ class NotificationService {
     }
 
     try {
-      production-ready
       const emailContent = `
 Subject: ${title}
 From: QMOI System <noreply@qmoi.ai>
@@ -107,7 +106,6 @@ Sent by QMOI AI Automation System
         icon_emoji: ":robot_face:",
       };
 
-      production-ready
       logger.info(`[SLACK] ${title}: ${message}`);
       await this.log(`Slack notification sent: ${title}`);
       return true;
@@ -143,7 +141,6 @@ Sent by QMOI AI Automation System
         ],
       };
 
-      production-ready
       logger.info(`[DISCORD] ${title}: ${message}`);
       await this.log(`Discord notification sent: ${title}`);
       return true;

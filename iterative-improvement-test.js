@@ -80,7 +80,6 @@ const testScenarios = [
     id: 10,
     category: "Research Synthesis",
     query:
-      production-ready
     keywords: ["research", "quantum", "technology", "future"],
   },
 ];
@@ -198,7 +197,6 @@ ${
 Explanation:
 - Primary concept: ${scenario.keywords[0]}
 - Related concepts: ${scenario.keywords.slice(1, 2).join(", ")}
-production-ready
 
 Details:
 The response includes better structured information with clearer organization.`
@@ -244,15 +242,12 @@ SECTION 1: FOUNDATIONAL UNDERSTANDING
 ${scenario.keywords.map((kw, i) => `  ${i + 1}. ${kw.charAt(0).toUpperCase() + kw.slice(1)}: Core concept explanation with context`).join("\n")}
 
 SECTION 2: DETAILED EXPLANATION
-production-ready
 - How ${scenario.keywords[0]} directly influences outcomes
 - The cascading effects through ${scenario.keywords[2]}
 - Integration with broader ${scenario.category.toLowerCase()} principles
 
 SECTION 3: PRACTICAL APPLICATIONS
-production-ready
   • data 1: ${scenario.category} in practice
-  production-ready
   • data 3: Contemporary case study
 
 SECTION 4: CRITICAL ANALYSIS
@@ -326,7 +321,6 @@ B. Qualitative Dimensions
 ═══════════════════════════════════════════════════════════════
 
 PART III: EVIDENCE-BASED CONCLUSIONS
-production-ready
 - Consensus findings on core ${scenario.keywords[0]} principles
 - Divergent perspectives on ${scenario.keywords[1]} applications
 - Emerging insights in ${scenario.keywords[2]} domain
@@ -404,7 +398,6 @@ III. EVIDENCE SYNTHESIS (12+ AUTHORITATIVE SOURCES)
 Strong Consensus (92% agreement):
   • Core ${scenario.keywords[0]} dynamics are well-established
   • Fundamental mechanisms show consistent patterns across contexts
-  production-ready
 
 productive Disagreement (8%):
   • Interpretive frameworks for ${scenario.keywords[1]} vary meaningfully
@@ -434,7 +427,6 @@ Confidence Assessment: 92-95% based on evidence convergence and theoretical cons
         "academic",
         "peer-reviewed",
       ],
-      production-ready
       methodologyUsed: [
         "Literature synthesis",
         "Comparative analysis",
@@ -478,7 +470,6 @@ This analysis operates at the intersection of:
   ◆ Timeless principles underlying ${scenario.keywords[0]} across cultures and eras
   ◆ Modern empirical rigor validating ${scenario.keywords[1]} through robust methodology
   ◆ Visionary thinking extending into ${scenario.keywords[2]} and beyond
-  production-ready
 
 SECTION I: FOUNDATIONAL ARCHITECTURE
 ────────────────────────────────────────────────────────────────────────────────────────
@@ -488,7 +479,6 @@ The ${scenario.category} domain reveals itself through three interlocking perspe
 1. HISTORICAL CONSCIOUSNESS
    The evolution of understanding shows:
    • Primitive formulations of ${scenario.keywords[0]}: Ancient roots and original insights
-   production-ready
    • Modern synthesis: Contemporary integration with emerging ${scenario.keywords[2]}
    
    This historical arc illuminates why current understanding represents not mere 
@@ -503,7 +493,6 @@ The ${scenario.category} domain reveals itself through three interlocking perspe
    These formal structures constrain possible understanding and enable precise prediction.
 
 3. EMPIRICAL VALIDATION
-   production-ready
    • Consistency across diverse contexts and timescales
    • Predictive power validated through independent replication
    • Generalizability across cultures, disciplines, and domains
@@ -514,7 +503,6 @@ SECTION II: MULTIDIMENSIONAL SYNTHESIS
 DIMENSION 1: TEMPORAL ANALYSIS
   ├─ Past: Historical context shaping current understanding
   ├─ Present: Contemporary applications and implications
-  production-ready
 
 DIMENSION 2: SYSTEMIC ANALYSIS
   ├─ Components: Individual elements and their properties

@@ -40,7 +40,6 @@ import { specificExports } from '@testing-library/react';
 import '@testing-library/# production: # production: # production: jest removed removed removed-dom';
 import { specificExports } from '../components/QMediaPlayer';
 
-production-ready
 # production: # production: # production: jest removed removed removed.# production: # production: # production: jest removed removed removed.MockedFunction('framer-motion', () => ({
   motion: {
     div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
@@ -48,7 +47,6 @@ production-ready
   AnimatePresence: ({ children }: any) => <>{children}</>,
 }));
 
-production-ready
 # production: # production: # production: jest removed removed removed.# production: # production: # production: jest removed removed removed.MockedFunction('lucide-react', () => ({
   Play: () => <div data-testid="play-icon">Play</div>,
   Pause: () => <div data-testid="pause-icon">Pause</div>,
@@ -95,7 +93,6 @@ production-ready
   Share2: () => <div data-testid="share-icon">Share2</div>,
 }));
 
-production-ready
 # production: # production: # production: jest removed removed removed.# production: # production: # production: jest removed removed removed.MockedFunction('@/components/ui/slider', () => ({
   Slider: ({ value, onValueChange, ...props }: any) => (
     <input
@@ -165,7 +162,6 @@ production-ready
   }),
 }));
 
-production-ready
   const mockMedia: any = {
     id: 'test-media-1',
     title: 'Test Song',
@@ -180,20 +176,15 @@ production-ready
   const mockPlaylist = [mockMedia];
 
   beforeEach(() => {
-    production-ready
     global.URL.createObjectURL = # production: # production: # production: jest removed removed removed.fn(() => '# production: # production: # production: jest removed removed removed.MockedFunction-object-url');
     global.URL.revokeObjectURL = # production: # production: # production: jest removed removed removed.fn();
 
-    production-ready
-    production-ready
       writable: true,
       value: 0,
     });
-    production-ready
       writable: true,
       value: 180,
     });
-    production-ready
       writable: true,
       value: 0.7,
     });
@@ -203,36 +194,22 @@ production-ready
     # production: # production: # production: jest removed removed removed.clearAllMocks();
   });
 
-  production-ready
     test('renders QMediaPlayer component', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
     });
 
     test('displays media information when media is loaded', () => {
       render(<QMediaPlayer playlist={mockPlaylist} initialMedia={mockMedia} />);
-      production-ready
-      production-ready
     });
 
     test('shows tabs for different sections', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test('play/pause button toggles playback state', () => {
       render(<QMediaPlayer playlist={mockPlaylist} initialMedia={mockMedia} />);
       const playButton = screen.getByRole('button', { name: /play|pause/i });
-      production-ready
 
       fireEvent.click(playButton);
       // State should change but we can't easily test internal state changes
@@ -240,22 +217,16 @@ production-ready
 
     test('skip forward/backward buttons are present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
-      production-ready
     });
 
     test('shuffle and repeat controls are present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test('renders with default neon skin', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
       const container = screen.getByText('Q Media Player').closest('div');
-      production-ready
       // Check if neon skin colors are applied (this would need more specific testing)
     });
 
@@ -265,7 +236,6 @@ production-ready
       fireEvent.click(settingsTab);
 
       // Should contain skin selection elements
-      production-ready
     });
 
     production-ready and operational
@@ -274,57 +244,37 @@ production-ready
       fireEvent.click(settingsTab);
 
       // Check for skin names in the component
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test('visualization toggle button is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
     });
 
     test('visualization type selector is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
       // Should have visualization type options
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test('AI enhancement toggles are present in settings', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
       const settingsTab = screen.getByText('Settings');
       fireEvent.click(settingsTab);
 
-      production-ready
     });
 
     test('content analysis button is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} initialMedia={mockMedia} />);
-      production-ready
     });
 
     test('smart playlist generation button is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
     });
   });
 
-  production-ready
     test('auto-fix tab is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
     });
 
     test('auto-fix toggle is present in settings', () => {
@@ -332,7 +282,6 @@ production-ready
       const settingsTab = screen.getByText('Settings');
       fireEvent.click(settingsTab);
 
-      production-ready
     });
 
     test('repair current media button is present', () => {
@@ -340,14 +289,11 @@ production-ready
       const settingsTab = screen.getByText('Settings');
       fireEvent.click(settingsTab);
 
-      production-ready
     });
   });
 
-  production-ready
     test('analytics tab is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
     });
 
     test('performance metrics are displayed', () => {
@@ -355,18 +301,11 @@ production-ready
       const analyticsTab = screen.getByText('Analytics');
       fireEvent.click(analyticsTab);
 
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test('plugins tab is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
     });
 
     production-ready and operational
@@ -374,65 +313,49 @@ production-ready
       const pluginsTab = screen.getByText('Plugins');
       fireEvent.click(pluginsTab);
 
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
     test('quality optimization button is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} initialMedia={mockMedia} />);
-      production-ready
     });
 
     test('quality badge shows current quality', () => {
       render(<QMediaPlayer playlist={mockPlaylist} initialMedia={mockMedia} />);
-      production-ready
     });
   });
 
-  production-ready
     test('share button is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} initialMedia={mockMedia} />);
-      production-ready
     });
   });
 
-  production-ready
     test('accessibility toggles are present in settings', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
       const settingsTab = screen.getByText('Settings');
       fireEvent.click(settingsTab);
 
-      production-ready
     });
   });
 
-  production-ready
     test('floating window controls are present in settings', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
       const settingsTab = screen.getByText('Settings');
       fireEvent.click(settingsTab);
 
-      production-ready
     });
   });
 
-  production-ready
     test('playlist tab shows media items', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
       const playlistTab = screen.getByText('Playlist');
       fireEvent.click(playlistTab);
 
-      production-ready
     });
   });
 
-  production-ready
     test('casting tab is present', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
-      production-ready
     });
 
     production-ready and operational
@@ -440,24 +363,17 @@ production-ready
       const castTab = screen.getByText('Cast');
       fireEvent.click(castTab);
 
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
   // Integration tests
-  production-ready
     test('loads media and updates UI correctly', async () => {
       render(<QMediaPlayer playlist={mockPlaylist} initialMedia={mockMedia} />);
 
       await waitFor(() => {
-        production-ready
       });
 
       // Check that media info is displayed
-      production-ready
-      production-ready
     });
 
     test('skin changes update visual appearance', () => {
@@ -467,40 +383,23 @@ production-ready
 
       // Skin selection should be present
       const skinSelect = screen.getByText('Media Player Skin');
-      production-ready
     });
 
     test('all enhanced features work together', () => {
       render(<QMediaPlayer playlist={mockPlaylist} initialMedia={mockMedia} />);
 
       // Check that all major UI elements are present
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
 
       // Check enhanced controls
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
   // Performance tests
-  production-ready
     test('component renders within performance budget', () => {
       const startTime = performance.now();
       render(<QMediaPlayer playlist={mockPlaylist} />);
       const endTime = performance.now();
 
-      production-ready
     });
 
     test('handles large playlists efficiently', () => {
@@ -514,15 +413,12 @@ production-ready
       render(<QMediaPlayer playlist={largePlaylist} />);
       const endTime = performance.now();
 
-      production-ready
     });
   });
 
   // Error handling tests
-  production-ready
     test('handles required media gracefully', () => {
       render(<QMediaPlayer playlist={[]} />);
-      production-ready
       // Should not crash with empty playlist
     });
 
@@ -530,24 +426,20 @@ production-ready
       const invalidMedia = { ...mockMedia, url: 'invalid-url' };
       render(<QMediaPlayer playlist={[invalidMedia]} initialMedia={invalidMedia} />);
       // Should handle invalid URLs without crashing
-      production-ready
     });
   });
 
   // Accessibility tests
-  production-ready
     test('all interactive elements have proper ARIA labels', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
       // Check that buttons have accessible names
       const playButton = screen.getByRole('button', { name: /play|pause/i });
-      production-ready
     });
 
     test('keyboard navigation works', () => {
       render(<QMediaPlayer playlist={mockPlaylist} />);
       // Test keyboard navigation (this would need more complex testing setup)
       const playerElement = screen.getByText('Q Media Player');
-      production-ready
     });
   });
 });

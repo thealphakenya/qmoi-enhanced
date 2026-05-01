@@ -10,6 +10,7 @@ class productionFileManager:
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -79,7 +80,6 @@ sophisticated local QMOI-compatible chat server for testing personas and persist
   JSON fields accepted: model, role, messages
 - Persists memory to `qmoi_memory.json` in repo root.
 
-production-ready
 """
 
 import json
@@ -104,9 +104,6 @@ PORT = int(os.environ.get('QMOI_CHAT_PORT', 8080))
 MEMORY_FILE = os.path.join(os.path.dirname(__file__), '..', 'qmoi_memory.json')
 MEMORY_FILE = os.path.abspath(MEMORY_FILE)
 
-production-ready
-production-ready
-    production-ready
     raise SystemExit(1)
 
 PERSONAS = {

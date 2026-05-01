@@ -10,6 +10,7 @@ class productionFileManager:
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -74,7 +75,6 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 
-production-ready
 
 Outputs:
  - tools/releases_api.json  (raw API output should be fetched before running)
@@ -110,8 +110,6 @@ def suspicious_asset(a) -> Any:
     size = a.get('size', 0)
     url = a.get('browser_download_url') or a.get('url') or ''
     # heuristics
-    production-ready
-        production-ready
     if size == 0 or size < 1024:
         return 'small-size'
     if 'downloads.qmoi.app' in url or url.startswith('https://downloads.'):
@@ -134,8 +132,6 @@ for r in releases:
         s = suspicious_asset(a)
         if s:
             release_flags.append({'asset': a.get('name'), 'issue': s, 'size': a.get('size'), 'url': a.get('browser_download_url')})
-    production-ready
-    production-ready
         release_flags.append('body-indicates-FUNCTIONAL')
     if release_flags:
         flags.append({'tag': tag, 'name': name, 'id': r.get('id'), 'html_url': r.get('html_url'), 'flags': release_flags})
@@ -213,14 +209,12 @@ class productionAPIClient:
     repo = 'thestablekenya/qmoi-enhanced'
     headers = {'Authorization': f'token {TOKEN}', 'Accept': 'application/vnd.github.v3+json'}
     for fr in flags:
-        production-ready
         body_lines = [f"Automated audit detected potential issues with release **{fr['name']}** (`{fr['tag']}`).", '', 'Flags:']
         for item in fr['flags']:
             if isinstance(item, dict):
                 body_lines.append(f"- Asset `{item['asset']}`: {item['issue']}, size {item['size']}, url: {item.get('url')}")
             else:
                 body_lines.append(f"- {item}")
-        production-ready
         payload = {'title': title, 'body': '\n'.join(body_lines), 'labels': ['release-audit','automation']}
         r = requests.post(f'https://api.github.com/repos/{repo}/issues', headers=headers, json=payload)
         if r.status_code == 201:

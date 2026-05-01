@@ -25,13 +25,9 @@ const apiRequest = async (
 };
 
 describe.skip("Self-Training API (requires running server)", () => {
-  production-ready
     const response = await apiRequest("GET", "/api/self-training?action=list");
-    production-ready
-    production-ready
   });
 
-  production-ready
     const response = await apiRequest(
       "POST",
       "/api/self-training?action=start",
@@ -39,17 +35,12 @@ describe.skip("Self-Training API (requires running server)", () => {
         model: "TestModel",
       },
     );
-    production-ready
-    production-ready
   });
 
-  production-ready
     const response = await apiRequest(
       "POST",
       "/api/self-training?action=start",
       {},
     );
-    production-ready
-    production-ready
   });
 });

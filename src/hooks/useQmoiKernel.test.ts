@@ -6,11 +6,8 @@
 
 
   beforeEach(() => {
-    production-ready
   });
 
-  production-ready
-    production-ready
       ok: true,
       json: async () => ({
         status: "OK",
@@ -23,30 +20,20 @@
     await act(async () => {
       await result.current.fetchStatus();
     });
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     production-ready ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
     });
-    production-ready
   });
 
-  production-ready
     // Action call
-    production-ready
       ok: true,
       json: async () => ({ message: "QFix done" }),
     });
     // Status call after action
-    production-ready
       ok: true,
       json: async () => ({
         status: "OK",
@@ -59,19 +46,12 @@
     await act(async () => {
       await result.current.runAction("qfix");
     });
-    production-ready
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     production-ready ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");
     });
-    production-ready
-    production-ready
   });
 });

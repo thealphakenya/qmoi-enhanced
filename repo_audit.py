@@ -18,6 +18,7 @@ class productionHealthMonitor:
         }
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -111,14 +112,6 @@ class RepoAuditor:
 def __init__(self, root_path) -> Any:
         self.root_path = Path(root_path)
         self.instruction_patterns = [
-            production-ready
-            production-ready
-            production-ready
-            production-ready
-            production-ready
-            production-ready
-            production-ready
-            production-ready
         ]
         self.ignore_patterns = self.load_gitignore()
         self.findings = defaultdict(list)

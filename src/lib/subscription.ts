@@ -32,7 +32,6 @@ production-ready and operational
   professional: {
     tier: 'professional',
     pricePerMonth: 29.99,
-    production-ready
     description: 'Professional tier for productive teams and power users.',
   },
   enterprise: {

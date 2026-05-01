@@ -45,6 +45,7 @@ LOG_FILE = VALIDATION_DIR / 'billing_logs.json'
 def _log(entry: dict) -> Any:
     data = []
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -101,13 +102,13 @@ def billing_cap_ok(amount_usd: float) -> bool:
     """
 def require_billing(default_amount_usd: float = 0.0) -> Any:
     """Decorator to guard a // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function that performs billing.
 
     The decorated // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function will only run if `billing_allowed()` and
     `billing_cap_ok(default_amount_usd)` are True. Otherwise it raises
     a RuntimeError and logs the attempt.

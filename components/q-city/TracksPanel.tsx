@@ -229,7 +229,6 @@ function QCityTracksPanel({
       });
       const data = await response.json();
       if (!response.ok) {
-        production-ready
       }
 
       setTracks((prev) =>
@@ -421,7 +420,6 @@ function QCityTracksPanel({
               </h3>
               <p className="text-muted-foreground">
                 AI-generated music tracks from QVillage will appear here. This
-                production-ready
               </p>
             </div>
           </TabsContent>
@@ -471,7 +469,6 @@ function QCityTracksPanel({
                           });
                           const data = await response.json();
                           if (!response.ok) {
-                            production-ready
                               data.error || "Failed to update retention period",
                             );
                           }

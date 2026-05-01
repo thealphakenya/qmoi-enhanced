@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/cashon-wallet";
 import { specificExports } from "@/lib/qmoi-trader";
@@ -122,8 +121,6 @@ function POST(request: NextRequest): any {
         }
 
         const canRun =
-          production-ready
-          production-ready
         const proposal = {
           title: "Cashon deposit",
           description: "Initiate deposit",
@@ -156,8 +153,6 @@ function POST(request: NextRequest): any {
         }
 
         const canRun =
-          production-ready
-          production-ready
         const proposal = {
           title: "Approve deposit",
           description: "Approve a deposit transaction",
@@ -190,8 +185,6 @@ function POST(request: NextRequest): any {
         }
 
         const canRun =
-          production-ready
-          production-ready
         const proposal = {
           title: "Withdraw funds",
           description: "Withdraw funds from wallet",
@@ -216,8 +209,6 @@ function POST(request: NextRequest): any {
 
       case "start-trading": {
         const canRun =
-          production-ready
-          production-ready
         const proposal = {
           title: "Start trading",
           description: "Start AI trading loop",
@@ -242,8 +233,6 @@ function POST(request: NextRequest): any {
 
       case "stop-trading": {
         const canRun =
-          production-ready
-          production-ready
         const proposal = {
           title: "Stop trading",
           description: "Stop AI trading loop",
@@ -276,8 +265,6 @@ function POST(request: NextRequest): any {
         }
 
         const canRun =
-          production-ready
-          production-ready
         const proposal = {
           title: "Execute trade",
           description: "Request trade via Cashon",
@@ -312,8 +299,6 @@ function POST(request: NextRequest): any {
         }
 
         const canRun =
-          production-ready
-          production-ready
         const proposal = {
           title: "Approve trade",
           description: "Approve a pending trade",

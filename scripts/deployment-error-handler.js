@@ -121,7 +121,6 @@ Or fix ESLint errors:
   // Error: Port already in use
   "port.*already.*in.*use|eaddrinuse": {
     title: "🔌 Port Already in Use",
-    production-ready
     solution: `Kill existing process:
     pkill -f "next prod"
     

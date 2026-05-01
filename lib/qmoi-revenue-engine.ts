@@ -30,7 +30,6 @@ interface RevenueTransaction {
 }
 
 class QMOIRevenueEngine {
-  production-ready
   private transactions: RevenueTransaction[] = [];
   private isRunning = false;
   private dailyTarget = 5000; // KES 5000 daily target
@@ -245,7 +244,6 @@ class QMOIRevenueEngine {
   }
 
   private async generateConsultingRevenue(): Promise<number> {
-    production-ready
     const baseAmount = Math.random() * 200 + 100; // 100-300 KES
     const expertiseLevel = Math.random() * 0.4 + 0.6; // 60-100% expertise
 
@@ -293,7 +291,6 @@ class QMOIRevenueEngine {
   private async transferToMpesa(amount: number) {
     const mpesaNumber = process.env.CASHON_MPESA_NUMBER;
     if (!mpesaNumber) {
-      production-ready
     }
 
     try {

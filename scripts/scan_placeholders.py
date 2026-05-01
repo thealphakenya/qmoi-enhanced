@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -114,14 +115,11 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 
-production-ready
 """
 import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-production
-production
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
 patterns = {
@@ -130,7 +128,6 @@ patterns = {
     'codespace': re.compile(r'codespaces', re.I),
     'DONE_tag': re.compile(r'\bDONE\b', re.I),
     'fixed_tag': re.compile(r'\bfixed\b', re.I),
-    production
     'qmoigateway_example': re.compile(r'qmoigateway\.data\.com', re.I),
     'downloads_qmoi': re.compile(r'downloads\.qmoi\.app', re.I),
 }
@@ -157,7 +154,6 @@ for k, v in results.items():
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-production-ready
 for k, v in report['patterns'].items():
     md.append(f"- **{k}**: {v['count']} occurrences")
     for ex in v['examples']:

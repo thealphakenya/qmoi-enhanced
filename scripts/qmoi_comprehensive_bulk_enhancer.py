@@ -71,6 +71,7 @@ class QMOIComprehensiveBulkEnhancer:
                 continue
                 
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

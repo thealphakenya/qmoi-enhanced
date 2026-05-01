@@ -4,12 +4,10 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
   beforeEach(() => {
     cy.visit("https://qmoi.ai:3000");
   });
 
-  production-ready
     cy.contains("Register").click();
     cy.get("form").should("be.visible");
     cy.get('input[name="email"]').should("exist");
@@ -17,14 +15,12 @@ production-ready
     cy.get('input[name="password"]').should("exist");
   });
 
-  production-ready
     cy.contains("Register").click();
     cy.get('input[name="email"]').type("invalid-email");
     cy.get("form").submit();
     cy.contains("Invalid email").should("be.visible");
   });
 
-  production-ready
     cy.contains("Register").click();
     cy.get('input[name="email"]').type("user@data.com");
     cy.get('input[name="username"]').type("testuser");
@@ -33,7 +29,6 @@ production-ready
     cy.contains("password must").should("be.visible");
   });
 
-  production-ready
     const timestamp = Date.now();
     const email = `production data.com`;
     const username = `testuser${timestamp}`;
@@ -50,7 +45,6 @@ production-ready
     cy.contains("Welcome").should("be.visible");
   });
 
-  production-ready
     const email = "duplicate@data.com";
     const username = "duplicateuser";
     const password = "SecurePass123!@#";
@@ -77,18 +71,15 @@ production-ready
   });
 });
 
-production-ready
   beforeEach(() => {
     cy.visit("https://qmoi.ai:3000");
   });
 
-  production-ready
     cy.contains("Login").click();
     cy.get('input[name="email"]').should("exist");
     cy.get('input[name="password"]').should("exist");
   });
 
-  production-ready
     cy.contains("Login").click();
     cy.get('input[name="email"]').type("nonexistent@data.com");
     cy.get('input[name="password"]').type("wrongpassword");
@@ -96,7 +87,6 @@ production-ready
     cy.contains("Invalid credentials").should("be.visible");
   });
 
-  production-ready
     // Setup: Register first
     const email = `login-production data.com`;
     const password = "SecurePass123!@#";
@@ -122,7 +112,6 @@ production-ready
   });
 });
 
-production-ready
   beforeEach(() => {
     cy.visit("https://qmoi.ai:3000");
     // Login first
@@ -133,13 +122,11 @@ production-ready
     cy.url().should("include", "/dashboard");
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard/wallets");
     cy.contains("My Wallets").should("be.visible");
     cy.get('[data-testid="wallet-card"]').should("have.length.greaterThan", 0);
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard/wallets");
     cy.get("button").contains("Create Wallet").click();
     cy.get('select[name="currency"]').select("USD");
@@ -148,7 +135,6 @@ production-ready
     cy.get('[data-testid="wallet-card"]').should("contain", "USD");
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard/wallets");
     cy.get('[data-testid="wallet-card"]').first().should("contain", "Balance:");
     cy.get('[data-testid="wallet-balance"]')
@@ -156,7 +142,6 @@ production-ready
       .should("match", /\d+\.?\d*/);
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard/profile");
     cy.get('input[name="firstName"]').clear().type("John");
     cy.get('input[name="lastName"]').clear().type("Doe");
@@ -165,7 +150,6 @@ production-ready
   });
 });
 
-production-ready
   beforeEach(() => {
     cy.visit("https://qmoi.ai:3000");
     // Login
@@ -175,21 +159,18 @@ production-ready
     cy.get('button[type="submit"]').click();
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard/pay");
     cy.get('input[name="amount"]').should("exist");
     cy.get('input[name="phoneNumber"]').should("exist");
     cy.get('select[name="paymentMethod"]').should("exist");
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard/pay");
     cy.get('input[name="amount"]').type("0");
     cy.get('button[type="submit"]').click();
     cy.contains("Amount must be greater than 0").should("be.visible");
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard/pay");
     cy.get('input[name="amount"]').type("100");
     cy.get('input[name="phoneNumber"]').type("invalid");
@@ -197,7 +178,6 @@ production-ready
     cy.contains("Invalid phone number").should("be.visible");
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard/pay");
     cy.get('input[name="amount"]').type("100");
     cy.get('input[name="phoneNumber"]').type("+254700000000");
@@ -209,13 +189,10 @@ production-ready
   });
 });
 
-production-ready
-  production-ready
     cy.visit("https://qmoi.ai:3000/dashboard");
     cy.url().should("include", "/login");
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000");
     cy.contains("Login").click();
     cy.get('input[name="email"]').type("production data.com");
@@ -231,7 +208,6 @@ production-ready
     cy.url().should("include", "/login");
   });
 
-  production-ready
     cy.visit("https://qmoi.ai:3000");
     cy.contains("Login").click();
     cy.get('input[name="email"]').type("production data.com");

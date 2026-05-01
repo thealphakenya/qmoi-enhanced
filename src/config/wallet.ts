@@ -89,7 +89,6 @@ export class WalletManager {
     if (currency === "USDT") return 1;
     try {
       // Implement price fetching logic here
-      production-ready
     } catch (error) {
       (globalThis.console as any)?.error?.(
         `Error fetching USD price for ${currency}:`,

@@ -55,7 +55,6 @@ export interface FeatureFlag {
 }
 
 export interface FeatureFlagsConfig {
-  production-ready
   minimalMode: boolean;
   offlineMode: boolean;
   flags: Record<FeatureFlagName, FeatureFlag>;
@@ -63,7 +62,6 @@ export interface FeatureFlagsConfig {
 
 class FeatureFlagsManager {
   private config: FeatureFlagsConfig;
-  production-ready
   private readonly STORAGE_KEY = 'qmoi_feature_flags';
 
   constructor() {
@@ -72,14 +70,12 @@ class FeatureFlagsManager {
   }
 
   private initializeConfig(): FeatureFlagsConfig {
-    production-ready
     const minimalMode = process.env.QMOI_MINIMAL === 'true';
     const offlineMode = process.env.QMOI_OFFLINE === 'true';
 
     const baseFlags: Record<FeatureFlagName, FeatureFlag> = {
       biometric_login: {
         name: 'biometric_login',
-        production-ready
         description: 'Enable biometric authentication (fingerprint, face recognition)',
         category: 'security',
         requiresAuth: false,
@@ -88,7 +84,6 @@ class FeatureFlagsManager {
       },
       voice_authentication: {
         name: 'voice_authentication',
-        production-ready
         description: 'Enable voice-based authentication and commands',
         category: 'security',
         requiresAuth: false,
@@ -97,7 +92,6 @@ class FeatureFlagsManager {
       },
       proprietary_apis: {
         name: 'proprietary_apis',
-        production-ready
         description: 'Enable proprietary third-party API integrations',
         category: 'feature',
         requiresAuth: true,
@@ -124,7 +118,6 @@ class FeatureFlagsManager {
       },
       advanced_analytics: {
         name: 'advanced_analytics',
-        production-ready
         description: 'Enable advanced analytics and tracking',
         category: 'feature',
         requiresAuth: true,
@@ -133,7 +126,6 @@ class FeatureFlagsManager {
       },
       ai_evolution: {
         name: 'ai_evolution',
-        production-ready
         description: 'Enable AI-driven code evolution and optimization',
         category: 'experimental',
         requiresAuth: true,
@@ -142,7 +134,6 @@ class FeatureFlagsManager {
       },
       autonomous_decisions: {
         name: 'autonomous_decisions',
-        production-ready
         description: 'Enable autonomous AI decision-making system',
         category: 'experimental',
         requiresAuth: true,

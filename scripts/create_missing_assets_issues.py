@@ -63,6 +63,7 @@ for p in deployed:
     payload = json.dumps({'title': p['title'], 'body': p['body'], 'labels': ['release-assets','automation']}).encode()
     req = urllib.request.Request(f'https://api.github.com/repos/{owner}/{repo}/issues', data=payload, headers=headers, method='POST')
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

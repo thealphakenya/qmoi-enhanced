@@ -348,7 +348,6 @@ class QMOIAutoPush {
         this.log(`Pushed to platforms: ${pushedPlatforms.join(", ")}`);
       } else {
         this.log("❌ QMOI Auto-Push failed!");
-        production-ready
       }
     } catch (error) {
       this.log(`Auto-push failed: ${error.message}`, "ERROR");

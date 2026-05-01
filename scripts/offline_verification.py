@@ -146,7 +146,6 @@ class productionFileManager:
 
 
 #!/usr/bin/env python3
-production-ready
 
 Validates offline resilience capabilities and cached resources.
 """

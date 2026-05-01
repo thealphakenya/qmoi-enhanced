@@ -82,13 +82,12 @@ class productionFileManager:
         except Exception as e:
             logger.error(f"Error creating directory {dir_path}: {e}")
             raise
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:29Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:29Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python3
 """
-production-ready
 Comprehensive release automation with:
 - Multi-platform asset discovery
 - Automatic checksum generation
@@ -292,18 +291,11 @@ def generate_release_notes(self) -> str:
         platform_groups = self._group_assets_by_platform()
         notes = f"""# 🚀 QMOI AI Suite Release {self.version}
 **Released:** {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}
-production-ready
 **Repository:** {self.repo}
 ---
 ## 📱 All 6 QMOI Apps Included
 | App | Version | Status |
 |-----|---------|--------|
-production-ready
-production-ready
-production-ready
-production-ready
-production-ready
-production-ready
 ---
 ## 🖥️ Download by Platform
 """
@@ -467,11 +459,9 @@ def print_summary(self) -> Any:
 def main() -> Any:
     """Main entry point"""
     parser = argparse.ArgumentParser(
-        production-ready
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  production-ready
   python publish-releases-realtime.py --version v1.2.3
   # Create final for testing
   python publish-releases-realtime.py --version v1.3.0-latest --final

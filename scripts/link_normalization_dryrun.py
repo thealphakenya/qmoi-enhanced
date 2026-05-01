@@ -10,6 +10,7 @@ class productionFileManager:
     def safe_read_file(file_path: Path, encoding: str = 'utf-8') -> str:
         """Safely read file with error handling"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

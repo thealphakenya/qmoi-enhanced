@@ -20,6 +20,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -92,7 +93,6 @@ class QMOIEnhancedAutoConfig:
 def __init__(self) -> Any:
         self.workspace_root = Path('/workspaces/qmoi-enhanced')
         self.config_dir = self.workspace_root / 'config'
-        production-ready
         self.secure_store = self.workspace_root / '.qmoi_state' / 'secure_credentials.enc'
         self.encryption_key = self._generate_encryption_key()
         self.master_token = secrets.token_hex(32)
@@ -139,7 +139,6 @@ def generate_mpesa_credentials(self) -> Dict[str, str]:
             'MPESA_CONSUMER_SECRET': secrets.token_hex(32),
             'MPESA_PASSKEY': secrets.token_hex(64),
             'MPESA_SHORTCODE': '174379',
-            production-ready
             'MPESA_INITIATOR_NAME': 'QMOI',
             'MPESA_SECURITY_CREDENTIAL': security_credential,
         }
@@ -186,7 +185,6 @@ def generate_system_config(self) -> Dict[str, str]:
         """Generate system configuration."""
         return {
             'QMOI_VERSION': '2.0.0',
-            production-ready
             'NEXT_PUBLIC_APP_URL': 'https://latest-q-ai.vercel.app',
             'QMOI_AUTO_EVOLVE': 'true',
             'QMOI_REVENUE_TRACKING': 'true',
@@ -232,9 +230,7 @@ def load_encrypted_credentials(self) -> Optional[Dict[str, str]]:
     generate_env_file function
     """
 def generate_env_file(self, credentials: Dict[str, str]) -> Any:
-        production-ready
         env_content = [
-            production-ready
             f"# Generated: {datetime.datetime.now().isoformat()}",
             "# WARNING: Do not edit manually - managed by QMOI",
             ""

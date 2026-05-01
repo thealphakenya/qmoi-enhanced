@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -61,22 +62,11 @@ import { specificExports } from pathlib import Path
 
 root_dirs = ['app/api', 'src/app/api']
 keywords = [
-    production
-    production
-    production-ready
 ]
 
 import re
 
 patterns = [
-    production-ready
-    production-ready
-    production
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
 ]
 
 modified = []

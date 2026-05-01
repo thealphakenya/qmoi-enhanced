@@ -122,22 +122,15 @@ export const VoiceGestureHooks: React.FC = () => {
       const diffX = startX - endX;
       const diffY = startY - endY;
 
-      production-ready
 
       if (Math.abs(diffX) > Math.abs(diffY)) {
-        production-ready
           if (diffX > 0) {
-            production-ready
           } else {
-            production-ready
           }
         }
       } else {
-        production-ready
           if (diffY > 0) {
-            production-ready
           } else {
-            production-ready
           }
         }
       }
@@ -149,7 +142,6 @@ export const VoiceGestureHooks: React.FC = () => {
     document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleTouchEnd);
 
-    production-ready
 
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);

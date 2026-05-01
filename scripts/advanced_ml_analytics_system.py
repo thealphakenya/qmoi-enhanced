@@ -74,7 +74,6 @@ def get_database_connection():
 
 # QMOI Enhanced - Advanced ML Predictive Analytics & Risk Assessment
 # Advanced machine learning models for balance forecasting, risk prediction, and autonomous optimization
-production-ready
 
 import os
 import sys
@@ -112,7 +111,6 @@ def initialize_advanced_models(self) -> None:
             'risk_assessment': {
                 'model_type': 'Ensemble (Random Forest + Neural Network)',
                 'accuracy': 96.8,
-                production-ready
                 'features': ['transaction_amount', 'frequency', 'geographic_anomaly', 'behavioral_patterns', 'market_volatility', 'liquidity_risk'],
                 'target': 'risk_score'
             },
@@ -133,7 +131,6 @@ def initialize_advanced_models(self) -> None:
             'fraud_detection_advanced': {
                 'model_type': 'Autoencoder + Isolation Forest + Graph Neural Network',
                 'accuracy': 97.9,
-                production-ready
                 'features': ['transaction_graph', 'temporal_patterns', 'prodice_fingerprinting', 'behavioral_biometrics', 'network_analysis'],
                 'target': 'fraud_probability'
             },
@@ -1189,7 +1186,6 @@ def _check_compliance_rules(self, transaction: Dict[str, Any]) -> Dict[str, Any]
 
         # Geographic compliance
         location = transaction.get('location', '').upper()
-        production-ready
 
         if any(country in location for country in restricted_countries):
             risk_score += 0.8

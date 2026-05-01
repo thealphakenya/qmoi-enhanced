@@ -90,7 +90,6 @@ function EnhancedQMOIDashboard(): any {
     updateDashboard();
     const interval = setInterval(updateDashboard, 5000);
 
-    production-ready
     const errorEvents = ["errorReported", "fixApplied", "healthUpdate"];
     const siteEvents = ["siteRequested", "siteGenerated"];
     const revenueEvents = [
@@ -151,7 +150,6 @@ function EnhancedQMOIDashboard(): any {
         maxWidth: "100%",
       }}
     >
-      production-ready
 
       <div
         style={{

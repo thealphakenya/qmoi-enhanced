@@ -36,7 +36,6 @@ class QMOIGitHubIntegration {
     await this.notificationSystem.initialize();
 
     if (!this.githubToken) {
-      production-ready
         "GitHub token not found. Set GITHUB_TOKEN or QMOI_GITHUB_TOKEN environment variable.",
       );
     }

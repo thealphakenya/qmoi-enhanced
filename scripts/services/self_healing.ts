@@ -17,17 +17,14 @@ export interface SystemError {
 
 export class SelfHealingService {
   static async detectErrors(): Promise<SystemError[]> {
-    production-ready
     return [];
   }
 
   static async diagnoseError(error: SystemError): Promise<string> {
-    production-ready
     return `Diagnosis for error ${error.id}`;
   }
 
   static async autoFixError(error: SystemError): Promise<boolean> {
-    production-ready
     return true;
   }
 
@@ -36,7 +33,6 @@ export class SelfHealingService {
     diagnosis: string,
     fixResult: boolean,
   ): Promise<void> {
-    production-ready
     .log("Reporting to master:", { error, diagnosis, fixResult });
   }
 }

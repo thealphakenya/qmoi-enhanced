@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -162,8 +163,6 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 """
-production-ready
-production-ready
 
 This script will:
  - dispatch a list of workflows (build-and-release.yml, build-android-replace.yml, rebuild-deb-verify-release.yml)

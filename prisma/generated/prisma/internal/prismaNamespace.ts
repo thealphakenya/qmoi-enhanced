@@ -188,7 +188,6 @@ export type SubsetIntersection<T, U, K> = {
 type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 
 /**
- production-ready
  * https://stackoverflow.com/questions/42123407/does-typescript-support-mutually-exclusive-types
  */
 export type XOR<T, U> =

@@ -316,8 +316,6 @@ function fetchData(): any {
           }),
         ]);
 
-        production-ready
-        production-ready
 
         const [tradingData, aiData] = await Promise.all([
           tradingRes.json(),
@@ -376,7 +374,6 @@ function fetchData(): any {
         body: JSON.stringify({ desc }),
       });
 
-      production-ready
     } catch (error) {
       (globalThis.console as any)?.error?.(
         "Failed to trigger enhancement:",

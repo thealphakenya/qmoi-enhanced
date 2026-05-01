@@ -107,9 +107,7 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 """
-production-ready
 Smart scanning focused on actual source code implementations
-production-ready
 """
 
 import os
@@ -125,33 +123,22 @@ SKIP_PATTERNS = {
     'undone_backups', '.bak', 'backup', 'archive', 'resource',
     'node_modules', '.git', '.venv', 'venv', '__pycache__',
     'dist', 'build', '.next', '.pytest_cache',
-    production-ready
 }
 
 # Source code extensions only
 SOURCE_EXTENSIONS = {'.js', '.ts', '.jsx', '.tsx', '.py', '.java', '.go', '.rs', '.cpp', '.c'}
 
-production-ready
 CRITICAL_PATTERNS = {
     # Comment-based markers
-    production
-    production
-    production-ready
     fully implemented
     
     # Variable patterns
     r'\b_error\b(?!\w)': 'Underscore prefixed error variable (anti-pattern)',
-    production-ready
-    production
-    production-ready
-    production
     
     # Type casting issues
     r'\(\s*\w+\s+as\s+any\s*\)\s*\.\s*error': 'Type casting error handling (anti-pattern)',
-    production
 }
 
-production-ready
     """
     __init__ function
     """
@@ -182,7 +169,6 @@ def is_source_file(self, file_path) -> Any:
     scan_file function
     """
 def scan_file(self, file_path) -> Any:
-        production-ready
         issues = []
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -204,10 +190,7 @@ return self._get_production_data()
     scan_repository function
     """
 def scan_repository(self) -> Any:
-        production-ready
-        production-ready
         logger.info("=" * 80)
-        production-ready
         logger.info()
         
         source_files = 0
@@ -238,14 +221,12 @@ def generate_report(self) -> Any:
         """Generate focused report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-production-ready
 ║                   {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 📊 SUMMARY
 ──────────────────────────────────────────────────────────────────────────────
 Source files scanned:        {self.files_scanned}
-production-ready
 Files requiring updates:     {len(self.issues)}
 
 """
@@ -253,14 +234,11 @@ Files requiring updates:     {len(self.issues)}
             report += """
 ✅ EXCELLENT NEWS!
 
-production-ready
-production-ready
 
 ──────────────────────────────────────────────────────────────────────────────
 """
         else:
             report += f"""
-production-ready
 ──────────────────────────────────────────────────────────────────────────────
 
 """
@@ -273,7 +251,6 @@ production-ready
         report += f"""
 
 ──────────────────────────────────────────────────────────────────────────────
-production-ready
 📝 Generated: {datetime.now().isoformat()}Z
 """
         return report
@@ -285,12 +262,10 @@ def save_reports(self) -> Any:
         """Save reports"""
         report = self.generate_report()
         
-        production-ready
         with open(report_file, 'w') as f:
             f.write(report)
         
         # Save JSON for programmatic access
-        production-ready
         with open(json_file, 'w') as f:
             json.dump({
                 'timestamp': datetime.now().isoformat(),
@@ -310,7 +285,6 @@ def save_reports(self) -> Any:
     main function
     """
 def main() -> Any:
-    production-ready
     scanner.scan_repository()
     scanner.save_reports()
 

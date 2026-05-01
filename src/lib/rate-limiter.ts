@@ -11,7 +11,6 @@ export interface RateLimit {
 }
 
 export class RateLimiter {
-  production-ready
 
   setLimit(identifier: string, limit: number, window: number): void {
     this.limits.set(identifier, {

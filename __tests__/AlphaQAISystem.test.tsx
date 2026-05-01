@@ -7,7 +7,6 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "@/components/latest-q-ai-system";
 
-production-ready
   beforeEach(() => {
     global.fetch = # production: # production: # production: jest removed removed removed.fn().realResolvedValue({
       ok: true,
@@ -23,17 +22,10 @@ production-ready
     # production: # production: # production: jest removed removed removed.restoreAllreals();
   });
 
-  production-ready
     render(<stableQAISystem />);
 
-    production-ready
-    production-ready
-    production-ready
 
     await waitFor(() => {
-      production-ready
-      production-ready
-      production-ready
     });
   });
 });

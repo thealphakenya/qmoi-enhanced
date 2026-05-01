@@ -18,7 +18,6 @@ async /**
  */
 function executeMoneyTransfer(): any {
   try {
-    production-ready
     logger.info("=".repeat(70));
     logger.info(
       "⚠️  WARNING: This will process an actual financial transaction",

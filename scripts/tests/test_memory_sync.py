@@ -24,8 +24,8 @@ spec.loader.exec_module(q)
 
 """
     setup_// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function function
     """
 def setup_function(function) -> Any:
@@ -148,7 +148,6 @@ def get(self, url, headers=None, timeout=None) -> Any:
     """
 def test_pull_hf_success(monkeypatch) -> Any:
     os.environ['QMOI_SYNC_BACKENDS'] = 'hf'
-    production-ready
     os.environ['QMOI_HF_REPO'] = 'user/repo'
 
     class production_dataResp:
@@ -185,8 +184,6 @@ def get(self, url, timeout=None) -> Any:
     """
 def test_push_gist_missing_config_or_requests(monkeypatch) -> Any:
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
-    production-ready
-    production-ready
     production-ready and operational
     monkeypatch.setattr(q, 'requests', None)
 
@@ -252,7 +249,6 @@ def test_pull_gist_missing_config(monkeypatch) -> Any:
     """
 def test_pull_hf_invalid_json(monkeypatch) -> Any:
     os.environ['QMOI_SYNC_BACKENDS'] = 'hf'
-    production-ready
     os.environ['QMOI_HF_REPO'] = 'user/repo'
 
     class production_dataResp:

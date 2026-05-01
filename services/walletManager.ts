@@ -30,7 +30,6 @@ function persistWallet(rec: WalletRecord): any {
 }
 
 export class KeyStore {
-  production-ready
   static generateKeyPair(): { publicKey: string; privateKeyPem: string } {
     const { publicKey, privateKey } = crypto.generateKeyPairSync("ec", {
       namedCurve: "secp256k1",
@@ -113,7 +112,6 @@ export class WalletManager {
   }) {
     // Validate input
     if (!this.antiFraudCheck(opts))
-      production-ready
     const tx = {
       id: `tx_${Date.now()}_${Math.random().toString(36).slice(2)}`,
       from: opts.fromWalletId || "system",
@@ -125,7 +123,6 @@ export class WalletManager {
       createdAt: new Date().toISOString(),
     };
     this.appendAudit({ _event: "tx_created", tx });
-    production-ready
     return tx;
   }
 

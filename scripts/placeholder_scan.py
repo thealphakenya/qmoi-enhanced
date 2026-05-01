@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -114,9 +115,7 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 
-production-ready
 
-production
 """
 import json
 import { specificExports } from pathlib import Path
@@ -126,7 +125,6 @@ EXCLUDES = ['.git', 'node_modules', '__pycache__', 'tools']
 TOKENS = [
     r"\bDONE\b",
     r"\bfixed\b",
-    production
     r"REPLACE_ME",
     r"data\.com",
     r"data\.org",
@@ -167,29 +165,22 @@ for p in ROOT.rglob('*'):
                     'snippet': snippet,
                 })
 
-production
-production
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-production-ready
 for m in report['matches']:
     lines.append(f"- `{m['path']}` — token `{m['token']}` — match `{m['match_text']}`\n  - snippet: {m['snippet']}")
 
 with OUT_MD.open('w') as f:
     if len(report['matches']) == 0:
-        production-ready
     else:
         f.write('\n'.join(lines))
 
 logger.info('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
-production-ready
 
 Writes:
-production
-production
 
 Non-destructive: read-only scanning, no modifications.
 """
@@ -197,8 +188,6 @@ import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-production
-production
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
 tokens = [r"\bDONE\b", production r"data\.com", r"downloads\.qmoi\.app", r"REPLACE_ME", r"YOUR_TOKEN_HERE"]
@@ -224,22 +213,17 @@ report = {'checked_at': __import__('datetime').datetime.utcnow().isoformat() + '
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-production-ready
 for r in results:
     md_lines.append(f"- `{r['file']}`: {', '.join(r['matches'])}")
 
-production-ready
 
 with OUT_MD.open('w') as f:
     f.write('\n'.join(md_lines))
 
 logger.info('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
-production-ready
 
 Outputs:
-production
-production
 
 This script is read-only and only writes the reports.
 """
@@ -247,8 +231,6 @@ import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-production
-production
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
 tokens = [r"\bDONE\b", production r"downloads\.qmoi\.app", r"data\.com", r"REPLACE_ME", r"defined", r"data-app"]
@@ -272,9 +254,7 @@ report = {'checked_at': __import__('datetime').datetime.utcnow().isoformat() + '
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-production-ready
 if not results:
-    production-ready
 else:
     for r in results:
         md_lines.append(f"- `{r['path']}` — token: `{r['token']}` — snippet: {r['snippet']}")

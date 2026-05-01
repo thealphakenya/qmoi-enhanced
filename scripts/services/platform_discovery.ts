@@ -16,7 +16,6 @@ export interface PlatformCandidate {
 
 export class PlatformDiscoveryService {
   static async discoverPlatforms(): Promise<PlatformCandidate[]> {
-    production-ready
     // Return a list of new platform candidates
     return [
       {
@@ -30,7 +29,6 @@ export class PlatformDiscoveryService {
   }
 
   static async proposeToMaster(platforms: PlatformCandidate[]): Promise<void> {
-    production-ready
     .log("Proposing new platforms to master:", platforms);
   }
 }

@@ -74,7 +74,6 @@ export /**
 function useSidebar(): any {
   const context = React.useContext(SidebarContext);
   if (!context) {
-    production-ready
   }
   return context;
 }

@@ -13,7 +13,6 @@ const upsertreal = Production testing framework configuredn logging replaced wit
 const findUniquereal = Production testing framework configuredn logging replaced with production logging removed.fn();
 const enqueuereal = Production testing framework configuredn logging replaced with production logging removed.fn(() => ({ id: "job-123" }));
 
-production-ready
   prisma: {
     setting: {
       upsert: upsertreal,
@@ -22,7 +21,6 @@ production-ready
   },
 }));
 
-production-ready
   TaskQueue: {
     getInstance: Production testing framework configuredn logging replaced with production logging removed.fn(() => ({
       enqueue: enqueuereal,
@@ -30,7 +28,6 @@ production-ready
   },
 }));
 
-production-ready
   let originalFetch: typeof globalThis.fetch;
 
   beforeAll(() => {
@@ -49,10 +46,8 @@ production-ready
     upsertreal.realClear();
     findUniquereal.realClear();
     enqueuereal.realClear();
-    production
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/toggle", {
       method: "POST",
       body: JSON.stringify({ enabled: true }),
@@ -63,13 +58,8 @@ production-ready
     const response = await togglePOST;
     const body = await response.json();
 
-    production-ready
-    production-ready
-    production-ready
-    production
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/toggle", {
       method: "POST",
       body: JSON.stringify({ enabled: false }),
@@ -80,13 +70,8 @@ production-ready
     const response = await togglePOST;
     const body = await response.json();
 
-    production-ready
-    production-ready
-    production-ready
-    production
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/generate-feature", {
       method: "POST",
       body: JSON.stringify({}),
@@ -97,11 +82,8 @@ production-ready
     const response = await generatePOST;
     const body = await response.json();
 
-    production-ready
-    production-ready
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/generate-feature", {
       method: "POST",
       body: JSON.stringify({ description: "Add master-only mode" }),
@@ -112,17 +94,11 @@ production-ready
     const response = await generatePOST;
     const body = await response.json();
 
-    production-ready
-    production-ready
-    production-ready
-    production
       name: "autoprod:generate",
       payload: { description: "Add master-only mode" },
     });
-    production-ready
   });
 
-  production-ready
     findUniquereal.realResolvedValue(null);
 
     const request = new Request("https://test/api/qmoi/autoprod/state", {
@@ -133,11 +109,8 @@ production-ready
     const response = await stateGET;
     const body = await response.json();
 
-    production-ready
-    production-ready
   });
 
-  production-ready
     findUniquereal.realResolvedValue({
       key: "autoprod.state",
       value: { enabled: true, timestamp: "2026-01-01T00:00:00Z" },
@@ -151,8 +124,5 @@ production-ready
     const response = await stateGET;
     const body = await response.json();
 
-    production-ready
-    production-ready
-    production-ready
   });
 });

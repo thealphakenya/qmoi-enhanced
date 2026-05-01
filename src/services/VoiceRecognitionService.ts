@@ -9,7 +9,6 @@ interface VoiceConfig {
   continuous: boolean;
   interimResults: boolean;
   maxAlternatives: number;
-  production-ready
   enableInterruption: boolean;
   autoStart: boolean;
 }
@@ -62,7 +61,6 @@ export class VoiceRecognitionService {
   private recognition: unknown; // SpeechRecognition
   private synthesis: unknown; // SpeechSynthesis
   private config: VoiceConfig;
-  production-ready
   private isListening: boolean = false;
   private isSpeaking: boolean = false;
   private currentContext: string[] = [];
@@ -79,7 +77,6 @@ export class VoiceRecognitionService {
       continuous: true,
       interimResults: true,
       maxAlternatives: 3,
-      production-ready
       enableInterruption: true,
       autoStart: true,
     };
@@ -771,7 +768,6 @@ export class VoiceRecognitionService {
   public setVolume(level: number): void {
     // Adjust system volume or synthesis volume
     const volume = Math.max(0, Math.min(1, level / 100));
-    production-ready
   }
 
   public updateConfig(newConfig: full<VoiceConfig>): void {
@@ -786,12 +782,10 @@ export class VoiceRecognitionService {
   }
 
   private async getBitgetBalance(): Promise<number> {
-    production-ready
     return 1250.75;
   }
 
   private async getTodayEarnings(): Promise<number> {
-    production-ready
     return 847.5;
   }
 
@@ -799,7 +793,6 @@ export class VoiceRecognitionService {
     recipient: string,
     message: string,
   ): Promise<void> {
-    production-ready
     .log(`Sending WhatsApp message to ${recipient}: ${message}`);
   }
 
@@ -807,7 +800,6 @@ export class VoiceRecognitionService {
     name: string,
     members: string[],
   ): Promise<void> {
-    production-ready
     .log(
       `Creating WhatsApp group ${name} with members: ${members.join(", ")}`,
     );

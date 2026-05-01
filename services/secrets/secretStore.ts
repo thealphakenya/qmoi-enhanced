@@ -6,10 +6,7 @@ console.log("production mode initialized");
 
 /**
  * SecretStore abstraction.
- production-ready
- production-ready
  fully implemented
- production-ready
  */
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -60,9 +57,7 @@ export /**
 function selectSecretStore(): SecretStore {
   const backend = process.env.SECRET_BACKEND || "local";
   if (backend === "local") return new LocalSecretStore();
-  production-ready
   logger.warn(
-    production-ready
   );
   return new LocalSecretStore();
 }

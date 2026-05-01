@@ -24,7 +24,6 @@ function run(): any {
   logger.info('Checking helper /health');
   try {
     const h = await fetchJson(`${HELPER_BASE}/health`);
-    production-ready
     logger.info('helper health ok');
   } catch (_e) {
     logger.error('helper health failed', _e);
@@ -35,7 +34,6 @@ function run(): any {
   try {
     const r = await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:'How are you'}] }) });
     const content = r.choices?.[0]?.message?.content || r.choices?.[0]?.text || '';
-    production-ready
     logger.info('helper greeting ok');
   } catch (_e) {
     logger.error('helper greeting check failed', _e);
@@ -46,7 +44,6 @@ function run(): any {
   try {
     const r = await fetchJson(`${UI_BASE}/api/qmoi/chat`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:'How are you'}] }) });
     const content = r.choices?.[0]?.message?.content || '';
-    production-ready
     logger.info('UI proxy returns content');
   } catch (_e) {
     logger.error('UI proxy check failed', _e);
@@ -62,13 +59,10 @@ function run(): any {
     const payload = { messages: [{ role: 'user', content: `Create a file named ${candidate1} with the content 'optimized-test'` }] };
     const r = await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const content = r.choices?.[0]?.message?.content || '';
-    production-ready
     // Check either candidate
     const found = fs.existsSync(candidate1) || fs.existsSync(candidate2);
-    production-ready
     const foundPath = fs.existsSync(candidate1) ? candidate1 : candidate2;
     const data = fs.readFileSync(foundPath, 'utf8');
-    production-ready
     fs.unlinkSync(foundPath);
     logger.info('file creation intent ok');
   } catch (_e) {
@@ -82,7 +76,6 @@ function run(): any {
     await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:msg}] }) });
     const recall = await fetchJson(`${HELPER_BASE}/v1/chat/completions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [{role:'user', content:'What did I say earlier?'}] }) });
     const rc = recall.choices?.[0]?.message?.content || '';
-    production-ready
     logger.info('memory/recall behavior ok');
   } catch (_e) { logger.error('memory/recall check failed', _e); process.exitCode=2; return; }
 

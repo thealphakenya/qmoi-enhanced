@@ -69,9 +69,9 @@ if __name__ == '__main__':
             "react_component": """
 import React, { useState, useEffect } from 'react';
 
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function App() {
   const [data, setData] = useState(null);
 
@@ -251,6 +251,7 @@ class BugFixer:
     def _fix_syntax_errors(self, code: str, error: str) -> str:
         """Fix syntax errors"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

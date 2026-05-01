@@ -18,10 +18,7 @@ const keywords = [
   '
   '
   '
-  production-ready
-  production-ready
   '
-  production-ready
 ];
 
 const results = [];
@@ -84,7 +81,6 @@ summary.push('## Keywords scanned: ' + keywords.join(', '));
 summary.push('');
 summary.push('## Findings: ' + results.length + ' files');
 summary.push('');
-production
 results.sort((a,b)=>a.filePath.localeCompare(b.filePath));
 for (const entry of results) {
   summary.push(`- ${entry.filePath} [${entry.hits.join(', ')}]`);

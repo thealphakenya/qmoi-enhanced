@@ -11,7 +11,6 @@
 
 """Host health monitor (dry-run).
 
-production-ready
 `.qmoi_validation/host_health.json` summary. Network checks are off by default.
 """
 import json
@@ -41,12 +40,10 @@ def load_registry() -> Any:
     real_check_domain function
     """
 def real_check_domain(name, info) -> Any:
-    production-ready
     return {
         "domain": name,
         "status": "unknown",
         "last_checked": datetime.datetime.utcnow().isoformat() + "Z",
-        production-ready
     }
 
 """
@@ -81,7 +78,6 @@ def main() -> Any:
 Usage: python3 scripts/host_health_monitor.py [--apply]
 
 Dry-run: reads .qmoi_validation/domains_registry.json and writes .qmoi_validation/host_health.json
-production-ready
 DNS resolution (best-effort) for listed domains.
 """
 import argparse
@@ -108,6 +104,7 @@ def load_registry() -> Any:
     """
 def check_domain_dns(domain) -> Any:
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

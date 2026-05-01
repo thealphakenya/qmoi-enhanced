@@ -28,6 +28,7 @@ def _read_memory() -> Any:
     if not MEMORY_FILE.exists():
         return {}
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -55,7 +56,6 @@ def _write_memory(data) -> Any:
 def push_memory_to_backends(memory: dict) -> Any:
     """Test-friendly push: write to memory file and return True.
 
-    production-ready
     """
     if not isinstance(memory, dict):
         raise TypeError('memory must be a dict')

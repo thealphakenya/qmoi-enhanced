@@ -107,6 +107,7 @@ class FastBulkproductionFixer:
     def scan_and_replace_file(self, file_path):
         """Scan and replace nonproduction markers in a file"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

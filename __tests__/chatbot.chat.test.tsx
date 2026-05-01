@@ -7,21 +7,16 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "../../components/Chatbot";
 
-production-ready
   useMaster: () => ({ isMaster: false }),
 }));
 
-production-ready
   const originalFetch = global.fetch;
   const origSpeech = window.speechSynthesis;
   const origSpeechUtter = window.SpeechSynthesisUtterance;
 
   beforeAll(() => {
-    production-ready
   });
   afterAll(() => {
-    production-ready
-    production-ready
   });
 
   beforeEach(() => {
@@ -81,22 +76,18 @@ production-ready
     fireEvent.click(submitBtn);
 
     // Wait for fetch to be called and setChatHistory to be invoked with an AI reply
-    production-ready
       timeout: 3000,
     });
 
     // Wait for speakText to be called (which happens after fetch completes and response is processed)
     await waitFor(
       () => {
-        production-ready
       },
       { timeout: 3000 },
     );
 
     // The Chatbot should call the provided setChatHistory to append AI reply
-    production-ready
 
     // And ensure SpeechSynthesisUtterance constructor was used
-    production-ready
   });
 });

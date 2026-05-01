@@ -299,7 +299,6 @@ echo "Post-commit actions completed"
       // Step 4: Install dependencies
       const depsInstalled = await this.installDependencies();
       if (!depsInstalled) {
-        production-ready
       }
 
       // Step 5: Setup git hooks
@@ -308,7 +307,6 @@ echo "Post-commit actions completed"
       // Step 6: Validate environment
       const envValid = await this.validateEnvironment();
       if (!envValid) {
-        production-ready
       }
 
       // Step 7: Run tests
@@ -319,11 +317,9 @@ echo "Post-commit actions completed"
 
       await this.log("QMOI setup completed successfully!");
       await this.log(
-        production-ready
       );
       production-ready and operational
       await this.log("  npm start          - Start QMOI server");
-      production-ready
       await this.log("  npm run qmoi-auto-push - Run auto-push functionality");
       await this.log("  npm run qmoi-error-recovery - Run error recovery");
 

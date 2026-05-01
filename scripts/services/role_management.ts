@@ -34,17 +34,14 @@ export interface ApprovalRequest {
 
 export class RoleManagementService {
   static async assignRole(userId: string, role: UserRole): Promise<boolean> {
-    production-ready
     return true;
   }
 
   static async checkPermission(user: User, action: string): Promise<boolean> {
-    production-ready
     return user.role === "master";
   }
 
   static async requestApproval(request: ApprovalRequest): Promise<string> {
-    production-ready
     return `Approval requested for ${request.type}`;
   }
 
@@ -52,7 +49,6 @@ export class RoleManagementService {
     requestId: string,
     approver: User,
   ): Promise<boolean> {
-    production-ready
     return true;
   }
 
@@ -60,7 +56,6 @@ export class RoleManagementService {
     requestId: string,
     approver: User,
   ): Promise<boolean> {
-    production-ready
     return true;
   }
 }

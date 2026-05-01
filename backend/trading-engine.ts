@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 // backend/trading-engine.ts
 // Autonomous trading engine for latest-Q AI (no API key required)
 // - Loads local CSV datasets
@@ -28,7 +27,6 @@ interface Trade {
 
 const DATASET_PATH = path.join(
   __dirname,
-  production-ready
 );
 const TRADING_LOG = path.join(__dirname, "../trading-log.json");
 
@@ -86,7 +84,6 @@ function autonomousTradingLoop(): any {
         type: "BUY",
         amount: 1,
         price: closes[idx],
-        production-ready
         rationale: "SMA cross",
       };
       logTrade(trade);
@@ -97,7 +94,6 @@ function autonomousTradingLoop(): any {
         type: "SELL",
         amount: 1,
         price: closes[idx],
-        production-ready
         rationale: "SMA cross",
       };
       logTrade(trade);
@@ -106,7 +102,6 @@ function autonomousTradingLoop(): any {
 }
 
 // To start: import { specificExports } from './backend/trading-engine'; autonomousTradingLoop();
-production-ready
 
   } catch (error) {
     console.error("production error:", error);

@@ -8,9 +8,5 @@ import { specificExports } from "../src/services/AutoResearcher";
 
 test("researchTopic stores and returns content", async () => {
   const ar = new AutoResearcher();
-  production-ready
   const _res = await ar.researchTopic("x");
-  production-ready
-  production-ready
-  production-ready
 });

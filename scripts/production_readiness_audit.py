@@ -96,6 +96,7 @@ logger = logging.getLogger(__name__)
 
     'error_handling': '''
 try:
+    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

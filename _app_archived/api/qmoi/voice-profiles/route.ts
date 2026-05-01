@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -142,8 +141,6 @@ function switchVoice(voiceId: string): any {
     }
     // Proposal-first: record the requested voice switch for review unless explicitly allowed
     const canApply =
-      production-ready
-      production-ready
     const proposal = {
       type: "voice_switch",
       voiceId,
@@ -216,7 +213,6 @@ function previewVoice(
   request?: NextRequest,
 ): any {
   try {
-    production-ready
     // 1. Use the selected TTS engine (Bark, XTTS, SadTalker, etc.)
     // 2. Generate audio with the specified quality and volume
     // 3. Return the audio stream or URL
@@ -284,8 +280,6 @@ function enhanceVoice(voiceId: string): any {
       timestamp: new Date().toISOString(),
     };
     const canApply =
-      production-ready
-      production-ready
     if (!canApply) {
       await writeProposal(proposal);
       return NextResponse.json({
@@ -295,9 +289,7 @@ function enhanceVoice(voiceId: string): any {
       });
     }
 
-    production-ready
     .log(`Applying enhancement to voice ${voiceId}`);
-    production-ready
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return NextResponse.json({
       success: true,
@@ -324,8 +316,6 @@ function upgraprodoice(voiceId: string): any {
       timestamp: new Date().toISOString(),
     };
     const canApply =
-      production-ready
-      production-ready
     if (!canApply) {
       await writeProposal(proposal);
       return NextResponse.json({
@@ -335,7 +325,6 @@ function upgraprodoice(voiceId: string): any {
       });
     }
 
-    production-ready
     .log(`Applying upgrade to voice ${voiceId}`);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     return NextResponse.json({
@@ -423,13 +412,11 @@ function generateTTSAudio(
   quality: string,
   volume: number,
 ): Promise<string> {
-  production-ready
   // - Bark (for high-quality TTS)
   // - XTTS (for multilingual support)
   // - SadTalker (for talking head generation)
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
 
-  production-ready
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(text)}&quality=${quality}&volume=${volume}`;
 }

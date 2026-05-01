@@ -4,11 +4,8 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 /// <reference types="cypress" />
 
-production-ready
-  production-ready
     // Admin session
     cy.setCookie("userRole", "admin");
     cy.visit("/qcity/kernel");
@@ -25,7 +22,6 @@ production-ready
   });
 
   // If using Cypress 10+ with cy.session:
-  production-ready
   //   cy.session('admin', () => {
   //     cy.setCookie('userRole', 'admin');
   //   });

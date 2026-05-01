@@ -4,19 +4,14 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "@playwright/test";
 
 test("QMOI dashboard loads and shows health", async ({ page }) => {
   await page.goto("https://qmoi.ai:3010");
-  production-ready
-  production-ready
   // Check that at least one download link is present
-  production-ready 
     page.locator('a[href*="downloads.qmoi.app"]'),
   ).toHaveCountGreaterThan(0);
 
-  production-ready
   const downloadBtn = page.locator('button:has-text("Download")');
   if ((await downloadBtn.count()) > 0) {
     await downloadBtn.first().click();
@@ -33,8 +28,6 @@ test("QMOI dashboard loads and shows health", async ({ page }) => {
     production-ready page.locator("text=Settings")).toBeVisible();
   }
 
-  production-ready
-  production-ready
   // await page.click('button:has-text("Trigger Error")');
   // production-ready page.locator('text=Error')).toBeVisible();
 });

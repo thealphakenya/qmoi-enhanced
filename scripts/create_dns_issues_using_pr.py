@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -193,7 +194,6 @@ for host, items in host_counts:
     body_lines = [f'This issue was opened automatically to track DNS/link problems for host `{host}`.', '', f'Occurrences: {len(items)} (data up to 10):', '']
     for it in items[:10]:
         body_lines.append(f"- File `{it.get('file')}` — URL: {it.get('url')} — Status: {it.get('status')} — Error: {it.get('error')}")
-    production-ready
     payload = {'title': title, 'body': '\n'.join(body_lines)}
     resp = gh_post('/issues', payload)
     if resp and resp.get('html_url'):

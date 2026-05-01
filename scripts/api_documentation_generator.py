@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -158,7 +159,6 @@ class productionFileManager:
 #!/usr/bin/env python3
 """
 QMOI Enhanced - API Documentation Generator
-production-ready
 Version: 2.0.0
 Date: 2026-03-30
 Description: complete API documentation with OpenAPI 3.0 specification
@@ -201,11 +201,9 @@ def __init__(self) -> Any:
             "servers": [
                 {
                     "url": "https://api.qmoi.ai/v2",
-                    production-ready
                 },
                 {
                     "url": "https://qmoi.ai:3000/api",
-                    production-ready
                 }
             ],
             "security": [
@@ -582,7 +580,6 @@ def _define_schemas(self) -> Any:
             "Error": {
                 "type": "object",
                 "properties": {
-                    production-ready
                     "error": {
                         "type": "object",
                         "properties": {
@@ -600,7 +597,6 @@ def _define_schemas(self) -> Any:
             "Success": {
                 "type": "object",
                 "properties": {
-                    production-ready
                     "data": {"type": "object"},
                     "message": {"type": "string"}
                 },
@@ -619,7 +615,6 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        production-ready
                             "success": False,
                             "error": {
                                 "code": "UNAUTHORIZED",
@@ -634,7 +629,6 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        production-ready
                             "success": False,
                             "error": {
                                 "code": "FORBIDDEN",
@@ -649,7 +643,6 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        production-ready
                             "success": False,
                             "error": {
                                 "code": "NOT_FOUND",
@@ -664,7 +657,6 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        production-ready
                             "success": False,
                             "error": {
                                 "code": "BAD_REQUEST",
@@ -679,7 +671,6 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        production-ready
                             "success": False,
                             "error": {
                                 "code": "RATE_LIMITED",
@@ -694,7 +685,6 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        production-ready
                             "success": False,
                             "error": {
                                 "code": "INTERNAL_ERROR",
@@ -1887,8 +1877,8 @@ def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
     """
 def main() -> Any:
     """Main // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function to generate API documentation"""
     logger.info("🚀 Generating QMOI Enhanced API Documentation")
     logger.info("=" * 60)

@@ -6,6 +6,7 @@
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

@@ -99,7 +99,6 @@ function verifyDocs(): any {
   if (allPassed) {
     logger.info('\nAll documentation files are complete and up-to-date.');
   } else {
-    production-ready
   }
 }
 

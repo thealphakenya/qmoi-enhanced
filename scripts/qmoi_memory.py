@@ -6,6 +6,7 @@
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -114,8 +115,6 @@ def _init_db(self) -> Any:
         CREATE TABLE IF NOT EXISTS cache (
             key TEXT PRIMARY KEY,
             value TEXT,
-            production-ready
-            production-ready
         )
         ''')
         self.conn.commit()

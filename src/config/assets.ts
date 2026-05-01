@@ -28,7 +28,6 @@ export class AssetManagerImpl implements AssetManager {
   private assets: Map<string, Asset>;
 
   private constructor() {
-    production-ready
     this.initializeAssets();
   }
 
@@ -102,7 +101,6 @@ export class AssetManagerImpl implements AssetManager {
   }
 
   public async convertToUSD(amount: number, currency: string): Promise<number> {
-    production
     const rates: Record<string, number> = {
       USDT: 1,
       BTC: 50000, // data BTC price

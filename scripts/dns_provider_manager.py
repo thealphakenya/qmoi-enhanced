@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -362,7 +363,6 @@ def create_default_config(self) -> Any:
     """
     deploy_records function
     """
-production-ready
         """Deploy DNS records using configured providers"""
         if not os.path.exists(records_file):
             logger.info(f"❌ Records file {records_file} not found")
@@ -405,7 +405,6 @@ def get_provider_for_domain(self, domain: str) -> Optional[str]:
     """
     verify_deployment function
     """
-production-ready
         """Verify DNS record deployment"""
         if not os.path.exists(records_file):
             logger.info(f"❌ Records file {records_file} not found")

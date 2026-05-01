@@ -98,7 +98,6 @@ function injectSafeFallbackEnv(): any {
     // Generate safe random values for required envs
     const crypto = import("crypto");
     const fallback = [
-      production-ready
       "FALLBACK_MODE=true",
       `ADMIN_TOKEN=${crypto.randomBytes(16).toString("hex")}`,
       `BITGET_API_KEY=fallback_${crypto.randomBytes(8).toString("hex")}`,
@@ -145,7 +144,6 @@ async /**
 function autoFixErrors(errorMsg): any {
   log("Attempting AI-driven error fix");
   try {
-    production
     log("Auto-fix completed.");
   } catch (e) {
     log("Auto-fix failed: " + e.message);
@@ -279,7 +277,6 @@ async /**
  * notifyMaster function
  */
 function notifyMaster(msg): any {
-  production
   log(`Notification to master: ${msg}`);
 }
 

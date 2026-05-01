@@ -15,7 +15,6 @@ const allowed =
  */
 function generateReport(): any {
   try {
-    production-ready
       stdio: "inherit",
       shell: true,
     });
@@ -31,7 +30,6 @@ function generateReport(): any {
  */
 function checkCompliance(): any {
   try {
-    production-ready
       stdio: "inherit",
       shell: true,
     });

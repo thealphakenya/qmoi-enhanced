@@ -131,6 +131,7 @@ def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
 
         for change in plan['changes']:
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

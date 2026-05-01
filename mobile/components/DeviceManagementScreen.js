@@ -88,12 +88,10 @@ const DeviceManagementScreen = ({ userRole }) => {
           },
           {
             id: '2',
-            production-ready
             type: 'computer',
             ip: '192.168.1.101',
             port: '3001',
             status: 'online',
-            production-ready
             lastSeen: new Date().toISOString(),
             permissions: ['read', 'write'],
             owner: 'sister',
@@ -329,7 +327,6 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newdevice.name}
               onChangeText={(text) => setNewdevice({ ...newdevice, name: text })}
-              production
             />
 
             <Text style={styles.inputLabel}>prodice Type</Text>
@@ -359,7 +356,6 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newdevice.ip}
               onChangeText={(text) => setNewdevice({ ...newdevice, ip: text })}
-              production
               keyboardType="numeric"
             />
 
@@ -368,7 +364,6 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newdevice.port}
               onChangeText={(text) => setNewdevice({ ...newdevice, port: text })}
-              production
               keyboardType="numeric"
             />
 
@@ -377,7 +372,6 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={[styles.input, styles.textArea]}
               value={newdevice.description}
               onChangeText={(text) => setNewdevice({ ...newdevice, description: text })}
-              production
               multiline
               numberOfLines={3}
             />

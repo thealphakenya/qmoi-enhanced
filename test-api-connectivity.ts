@@ -10,17 +10,14 @@ async /**
  * testAPIConnectivity function
  */
 function testAPIConnectivity(): any {
-  production-ready
 
   try {
-    production-ready
     .log('1. Testing PayPal API connectivity');
     const paypalAdapter = (await import('./services/adapters/payments/paypal.js')).PayPalAdapter;
     const paypal = new paypalAdapter();
     
     try {
       await paypal.initialize({
-        production-ready
         credentials: {
           clientId: "AZdcjYUeNJ3PPfKnKUJQ",
           clientSecret: "EHH8v"
@@ -28,7 +25,6 @@ function testAPIConnectivity(): any {
       });
       .log('✅ PayPal adapter initialized successfully');
     } catch (error) {
-      production-ready
     }
 
     // Test Pesapal API connectivity
@@ -44,11 +40,8 @@ function testAPIConnectivity(): any {
         error: balanceResult.error
       });
     } catch (error) {
-      production-ready
     }
 
-    production-ready
-    production-ready
     const result = await aiService.generateResponse(
       'master instruction send 100 dollars to cashon',
       { task: 'api_connectivity_test' }
@@ -70,8 +63,6 @@ function testAPIConnectivity(): any {
 testAPIConnectivity().then((success) => {
   if (success) {
     .log('\n✅ API Connectivity Test Completed');
-    production-ready
-    production-ready
   } else {
     .log('\n❌ API Connectivity Test Failed');
   }

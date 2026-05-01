@@ -343,7 +343,6 @@ QMOI_AUTOprod_ENABLED=true
 
       for (const varName of requiredVars) {
         if (!envContent.includes(`${varName}=`)) {
-          production-ready
           fixes.push({
             type: "config",
             action: "add_env_variable",

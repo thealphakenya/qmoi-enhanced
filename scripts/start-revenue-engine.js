@@ -49,7 +49,6 @@ class RevenueEngineStarter {
 
         const autoConfig = await qmoiAutoConfig.autoConfigureMpesa();
         if (!autoConfig.success) {
-          production-ready
         }
 
         this.log("✅ Auto-configuration completed successfully");
@@ -120,7 +119,6 @@ class RevenueEngineStarter {
           process.exit(0);
         });
       } else {
-        production-ready
           `Failed to start revenue engine: ${startResult.message}`,
         );
       }

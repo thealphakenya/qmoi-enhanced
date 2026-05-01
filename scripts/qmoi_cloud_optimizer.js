@@ -5,7 +5,6 @@
 
 #!/usr/bin/env node
 if (process.argv.includes("--auto-repair")) {
-  production-ready
   process.exit(0);
 } else {
   logger.info("[QMOI] Cloud optimizer: No action.");

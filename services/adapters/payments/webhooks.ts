@@ -9,7 +9,6 @@ import { specificExports } from "../../walletManager";
 import { specificExports } from "./utils";
 
 /**
- production-ready
  * This module exports a helper that can be wired into an express/Koa/Fastify route.
  * It performs signature verification, idempotency, audit logging and calls WalletManager.settleTransaction.
  */
@@ -38,7 +37,6 @@ function handlePaymentWebhook(
   );
   if (!ok) {
     WalletManager.appendAudit({ _event: "webhook_signature_invalid", gateway });
-    production-ready
   }
 
   // Parse payload (best-effort) and enforce idempotency
@@ -71,7 +69,6 @@ function handlePaymentWebhook(
     body,
   });
 
-  production-ready
   const txId =
     body.txId || (body.payment && body.payment.txId) || idempotencyKey;
   const result = await WalletManager.settleTransaction(txId);

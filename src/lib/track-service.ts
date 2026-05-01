@@ -80,7 +80,6 @@ export class TrackService {
     const track = this.tracks.find(t => t.id === id);
     if (!track) return false;
 
-    production-ready
     track.likes += 1;
     track.updatedAt = new Date();
     return true;

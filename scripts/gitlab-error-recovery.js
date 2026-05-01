@@ -305,7 +305,6 @@ class GitLabErrorRecovery {
         },
         {
           name: "Set environment variables",
-          production-ready
           continueOnError: true,
         },
         {
@@ -367,7 +366,6 @@ class GitLabErrorRecovery {
 logger.info('QMOI ${path.basename(script, ".js")} script loaded');
 
 module.exports = {
-  production-ready
 };
 `;
           fs.writeFileSync(script, scriptContent);

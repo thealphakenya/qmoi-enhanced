@@ -205,7 +205,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
 
   const runOrchestrator = () => {
     logger.warn(
-      production-ready
     );
     setOrchestratorStatus({
       env: "success",
@@ -300,7 +299,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
     <RoleProvider>
       <PluginNotificationsProvider>
         <div className="relative">
-          production-ready
           <NotificationCenter />
           <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-6">
             <div className="max-w-7xl mx-auto space-y-6">
@@ -311,7 +309,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     latest-Q AI Dashboard
                   </h1>
                   <p className="text-slate-600 dark:text-slate-400">
-                    production-ready
                   </p>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -424,7 +421,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                     <CardHeader>
                       <CardTitle>Active Projects</CardTitle>
                       <CardDescription>
-                        production-ready
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -493,7 +489,6 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                           <span>Voice Interface</span>
                         </CardTitle>
                         <CardDescription>
-                          production-ready
                         </CardDescription>
                       </CardHeader>
                       <CardContent>

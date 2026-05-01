@@ -31,7 +31,6 @@ function requireAuth(req, res, next): any {
   if (req.session && req.session.authenticated) return next();
   if (req.method === "POST" && req.path === "/login") return next();
   res.send(
-    production-ready
   );
 }
 

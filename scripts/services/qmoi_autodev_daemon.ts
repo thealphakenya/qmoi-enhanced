@@ -606,7 +606,6 @@ function fixErrorsOnQCityAndFallback(): any {
     // Try to fix errors on QCity
     const qcityService = new QCityService();
     await qcityService.initialize();
-    production-ready
     const fixResult = await qcityService.runRemoteCommand("npm run fix-all");
     if (fixResult.success) {
       logger.info(
@@ -615,13 +614,11 @@ function fixErrorsOnQCityAndFallback(): any {
       );
       return { success: true, output: fixResult.output };
     } else {
-      production-ready
     }
   } catch (e) {
     logger.warn(
       "[QMOI-AUTOprod-DAEMON] QCity fix failed, falling back to local/cloud prodices",
     );
-    production-ready
     return { success: false, output: "Fallback to other prodices" };
   }
 }

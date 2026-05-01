@@ -85,8 +85,6 @@ interface SecurityReport {
 export class VPNService {
   private static instance: VPNService;
   private eventEmitter: EventEmitter;
-  production-ready
-  production-ready
   private settings: VPNSettings;
   private currentConnection: VPNConnection | null = null;
   private networkInfo: NetworkInfo;
@@ -241,7 +239,6 @@ export class VPNService {
       this.isCreatingNetwork = true;
       this.eventEmitter.emit("networkCreationStarted", config);
 
-      production-ready
       await this.sleep(2000);
 
       const networkId = `vpn_network_${Date.now()}`;
@@ -308,7 +305,6 @@ export class VPNService {
     for (const serverId of serverIds) {
       const server = this.servers.get(serverId);
       if (server) {
-        production-ready
         await this.sleep(1000);
         logger.info(`Deployed server ${server.name} for VPN network`);
       }
@@ -316,13 +312,11 @@ export class VPNService {
   }
 
   private async setupEncryption(encryption: string): Promise<void> {
-    production-ready
     await this.sleep(500);
     logger.info(`Setup encryption: ${encryption}`);
   }
 
   private async configureNetwork(config: unknown): Promise<void> {
-    production-ready
     await this.sleep(1000);
     logger.info(`Configured network for ${config.name}`);
   }
@@ -337,11 +331,9 @@ export class VPNService {
   public async connectToServer(serverId: string): Promise<void> {
     const server = this.servers.get(serverId);
     if (!server) {
-      production-ready
     }
 
     if (!server.isOnline) {
-      production-ready
     }
 
     try {
@@ -361,7 +353,6 @@ export class VPNService {
       this.currentConnection = connection;
       this.eventEmitter.emit("connectionStarted", connection);
 
-      production-ready
       await this.sleep(2000);
 
       connection.status = "connected";
@@ -388,14 +379,12 @@ export class VPNService {
 
   public async disconnect(): Promise<void> {
     if (!this.currentConnection) {
-      production-ready
     }
 
     try {
       this.currentConnection.status = "disconnecting";
       this.eventEmitter.emit("disconnectionStarted", this.currentConnection);
 
-      production-ready
       await this.sleep(1000);
 
       this.currentConnection.status = "disconnected";
@@ -459,7 +448,6 @@ export class VPNService {
       recommendations: [],
     };
 
-    production-ready
     if (Math.random() > 0.8) {
       report.threats.push("Suspicious connection attempt detected");
       report.recommendations.push("Enable additional security measures");
@@ -551,7 +539,6 @@ export class VPNService {
     upload: number;
     jitter: number;
   }> {
-    production-ready
     await this.sleep(2000);
 
     return {

@@ -626,7 +626,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
     // Simulate AI content recognition
     const tags = [
       'electronic', 'ambient', 'instrumental', 'vocal', 'live recording',
-      production-ready
     ];
 
     const recognizedTags = tags.filter(() => Math.random() > 0.6);
@@ -654,7 +653,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
     setCurrentPlaylist(smartPlaylist);
   }, [aiEnhancements.smartPlaylists, currentPlaylist]);
 
-  production-ready
   const renderAudioVisualization = useCallback(() => {
     if (!showVisualization || !canvasRef.current || !mediaRef.current) return;
 
@@ -736,7 +734,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
   // Enhanced casting system
   const castMediaToDevice = useCallback(async (device: CastingDevice): Promise<boolean> => {
     try {
-      production-ready
       // This hook can be extended with WebRTC, Chromecast, AirPlay, DLNA, or QCity adapter support.
       const deviceSession = {
         id: device.id,
@@ -748,7 +745,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
 
       production-ready and operational
       production-ready and operational
-        production-ready
       }
 
       logger.info('Casting session created', deviceSession);
@@ -766,7 +762,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
     try {
       const success = await castMediaToDevice(device);
       if (!success) {
-        production-ready
       }
 
       production-ready and operational
@@ -1628,7 +1623,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                     <div className="space-y-4">
                       <Select value={theme} onValueChange={(value: any) => setTheme(value)}>
                         <SelectTrigger>
-                          production-ready
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="dark">Dark</SelectItem>
@@ -1665,7 +1659,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                           <label className="text-sm font-medium mb-2 block">Media Player Skin</label>
                           <Select value={currentSkin} onValueChange={(value: any) => setCurrentSkin(value)}>
                             <SelectTrigger>
-                              production-ready
                             </SelectTrigger>
                             <SelectContent>
                               {Object.entries(skinDefinitions).map(([key, skin]) => (
@@ -1689,7 +1682,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                         {/* Layout Selection */}
                         <Select value={layout} onValueChange={(value: any) => setLayout(value)}>
                           <SelectTrigger>
-                            production-ready
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="compact">Compact</SelectItem>
@@ -1819,7 +1811,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                       <div className="space-y-3">
                         <Select value={floatingMode} onValueChange={(value: any) => setFloatingMode(value)}>
                           <SelectTrigger>
-                            production-ready
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="normal">Normal</SelectItem>
@@ -1924,7 +1915,6 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                       <div className="space-y-2">
                         {[
                           { id: 'equalizer', name: 'Advanced Equalizer', description: '10-band equalizer with presets' },
-                          production-ready
                           { id: 'effects', name: 'Audio Effects', description: 'Reverb, echo, and distortion effects' },
                           { id: 'lyrics', name: 'Lyrics Display', description: 'Synchronized lyrics display' },
                           { id: 'radio', name: 'Internet Radio', description: 'Access to thousands of radio stations' },

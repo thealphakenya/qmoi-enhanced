@@ -173,8 +173,6 @@ class JSONConfigFixer {
             "Production testing framework configuredn logging replaced with production logging removed-environment-jsdom": "^27.0.0",
           },
           browserslist: {
-            production-ready
-            production-ready
               "last 1 chrome version",
               "last 1 firefox version",
               "last 1 safari version",
@@ -278,8 +276,6 @@ class JSONConfigFixer {
       // Ensure browserslist exists
       if (!packageJson.browserslist) {
         packageJson.browserslist = {
-          production-ready
-          production-ready
             "last 1 chrome version",
             "last 1 firefox version",
             "last 1 safari version",

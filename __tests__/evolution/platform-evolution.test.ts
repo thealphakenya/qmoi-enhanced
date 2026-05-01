@@ -13,15 +13,12 @@ import { specificExports } from '@Production testing framework configuredn loggi
 import { specificExports } from '@/qmoi/core/evolution/platform-evolution';
 import { specificExports } from '@/qmoi/core/evolution/autoclone-evolution';
 
-production-ready
   let engine: PlatformEvolutionEngine;
 
   beforeEach(() => {
     engine = new PlatformEvolutionEngine();
   });
 
-  production-ready
-    production-ready
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -42,11 +39,8 @@ production-ready
       engine.registerPlatform(metrics);
       const status = engine.getEvolutionStatus();
 
-      production-ready
-      production-ready
     });
 
-    production-ready
       const platforms = ['qcity', 'qstore', 'qvillage'];
 
       platforms.for (const item of((p) => {
@@ -70,33 +64,25 @@ production-ready
       });
 
       const status = engine.getEvolutionStatus();
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const platformList = ['qcity', 'qstore', 'qvillage', 'qshare'];
       engine.discoverAllPotentialPlatforms(platformList);
 
       const status = engine.getEvolutionStatus();
-      production-ready
     });
 
-    production-ready
       const platformList = ['qcity', 'qstore'];
       engine.discoverAllPotentialPlatforms(platformList);
 
       setTimeout(() => {
         const status = engine.getEvolutionStatus();
-        production-ready
         done();
       }, 500);
     });
   });
 
-  production-ready
-    production-ready
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -119,11 +105,8 @@ production-ready
 
       const status = engine.getEvolutionStatus();
       const tracker = status.evolutionTrackers['qcity'];
-      production-ready
-      production-ready
     });
 
-    production-ready
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -145,12 +128,9 @@ production-ready
       await engine.analyzeForEvolution('qcity');
 
       const status = engine.getEvolutionStatus();
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -169,26 +149,21 @@ production-ready
       };
 
       engine.on('platform-registered', ({ platformId }) => {
-        production-ready
         done();
       });
 
       engine.registerPlatform(metrics);
     });
 
-    production-ready
       const platformList = ['qcity', 'qstore'];
 
       engine.on('platforms-discovered', ({ totalPlatforms, platforms }) => {
-        production-ready
-        production-ready
         done();
       });
 
       engine.discoverAllPotentialPlatforms(platformList);
     });
 
-    production-ready
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -207,8 +182,6 @@ production-ready
       };
 
       engine.on('qmoi-platform-created', ({ autoName, replacingPlatform }) => {
-        production-ready
-        production-ready
         done();
       });
 
@@ -216,8 +189,6 @@ production-ready
     });
   });
 
-  production-ready
-    production-ready
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -238,16 +209,10 @@ production-ready
       engine.registerPlatform(metrics);
       const status = engine.getEvolutionStatus();
 
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
   });
 });
 
-production-ready
   let system: AutocloneEvolutionSystem;
 
   beforeEach(() => {
@@ -263,8 +228,6 @@ production-ready
     system.stopEvolutionLoop();
   });
 
-  production-ready
-    production-ready
       system.registerAutoclone({
         cloneId: 'autoclone-1',
         sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
@@ -282,10 +245,8 @@ production-ready
       });
 
       const stats = system.getEvolutionStats();
-      production-ready
     });
 
-    production-ready
       for (let i = 1; i <= 3; i++) {
         system.registerAutoclone({
           cloneId: `autoclone-${i}`,
@@ -305,12 +266,9 @@ production-ready
       }
 
       const stats = system.getEvolutionStats();
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       system.registerAutoclone({
         cloneId: 'autoclone-1',
         sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
@@ -329,14 +287,8 @@ production-ready
 
       const stats = system.getEvolutionStats();
 
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
 
-    production-ready
       system.registerAutoclone({
         cloneId: 'autoclone-low-score',
         sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
@@ -354,21 +306,12 @@ production-ready
       });
 
       // Trigger analysis by manually calling the internal method
-      production-ready
       
       const stats = system.getEvolutionStats();
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       system.on('autoclone-registered', (info) => {
-        production-ready
-        production-ready
         done();
       });
 
@@ -390,8 +333,6 @@ production-ready
     });
   });
 
-  production-ready
-    production-ready
       const customSystem = new AutocloneEvolutionSystem({
         checkIntervalMs: 2000,
         parallelAnalysisCount: 3,
@@ -401,13 +342,10 @@ production-ready
       customSystem.stopEvolutionLoop();
 
       // Configuration accepted without error
-      production-ready
     });
   });
 });
 
-production-ready
-  production-ready
     const platformEngine = new PlatformEvolutionEngine();
     const autocloneSystem = new AutocloneEvolutionSystem({
       enableContinuousEvolution: false,
@@ -454,8 +392,6 @@ production-ready
     const platformStatus = platformEngine.getEvolutionStatus();
     const autocloneStats = autocloneSystem.getEvolutionStats();
 
-    production-ready
-    production-ready
 
     autocloneSystem.stopEvolutionLoop();
   });

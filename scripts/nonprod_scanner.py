@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -123,18 +124,13 @@ class productionFileManager:
 #!/usr/bin/env python3
 
 """high-performance conservative scanner to find files in donerefs.txt that contain
-production-ready
 
 Behavior:
 - Read donerefs.txt (one path per line). For each path:
   - Skip required files, binary files, or very large files (>2MB) to avoid hangs.
   - Stream the file contents up to a limit (e.g., first 20000 bytes) and search
     for a set of case-insensitive patterns: DONE, FIXED, solution, SIMULAT (lived),
-    production-ready
     VALIDATE SENDER, WEBHOOK, TELEPHONY, CALL (in handlers), and other heuristics.
-production-ready
-  production-ready
-production-ready
 - Remove flagged files from donerefs.txt (conservative) and exit with summary.
 
 This script is safety-first: it will not modify other files and writes detailed logs.
@@ -149,9 +145,6 @@ ROOT = Path(__file__).resolve().parents[1]
 DONEREFS = ROOT / "donerefs.txt"
 REPORT_DIR = ROOT / ".qmoi_validation"
 REPORT_DIR.mkdir(exist_ok=True)
-production-ready
-production-ready
-production-ready
 
 # Patterns to look for (case-insensitive). Keep them conservative and explicit.
 PATTERNS = [
@@ -159,8 +152,6 @@ PATTERNS = [
     r"\bfixed\b",
     r"\b✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
     r"\bTEMPORARY\b",
-    production-ready
-    production-ready
     r"\bsimulat(e|ed|ing)\b",
     r"\bsample\b",
     r"\bIMPLEMENT\b",
@@ -169,7 +160,6 @@ PATTERNS = [
     r"\bTELEPHON|CALLING|CALL\b",
     r"\bSECURIT|AUTHENTICAT|AUTH\b",
     r"\bDO_NOT_DEPLOY\b",
-    production-ready
     r"\bXXX\b",
 ]
 PATTERN_RE = re.compile("(?:" + ")|(?:".join(PATTERNS) + ")", re.IGNORECASE)
@@ -247,7 +237,6 @@ def main() -> int:
 
     # Write detailed report
     summary_lines = []
-    production-ready
     summary_lines.append(f"total_donerefs={len(paths)} flagged={len(flagged)}\n")
     for p in flagged:
         summary_lines.append(f"---\nFILE: {p}\n")

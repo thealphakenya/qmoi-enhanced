@@ -66,13 +66,11 @@ def get_database_connection():
         raise
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:18Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:18Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
-production
 #!/usr/bin/env python3
 """
 QMOI Data Optimization System
@@ -196,15 +194,12 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS data_usage (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    production-ready
                     bytes_sent INTEGER,
                     bytes_received INTEGER,
-                    production-ready
                     cache_hits INTEGER,
                     cache_misses INTEGER,
                     local_processing INTEGER,
                     cloud_offloading INTEGER,
-                    production-ready
                 )
             ''')
             
@@ -214,7 +209,6 @@ def init_database(self) -> Any:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     key_hash TEXT UNIQUE,
                     data BLOB,
-                    production-ready
                     access_count INTEGER,
                     size INTEGER
                 )
@@ -566,7 +560,6 @@ def track_data_usage(self, bytes_sent: int, bytes_received: int) -> Any:
                 bytes_sent,
                 bytes_received,
                 0.8,  # Estimated compression ratio
-                production-ready
             ))
             
             conn.commit()

@@ -89,8 +89,6 @@ export async /**
  * exchangeOAuthCode function
  */
 function exchangeOAuthCode(provider: SocialProvider, code: string): any {
-  production-ready
-  production-ready
   const accessToken = createRandomToken(64);
   const refreshToken = createRandomToken(64);
   const providerUserId = `${provider}-${hashString(code).slice(0, 16)}`;

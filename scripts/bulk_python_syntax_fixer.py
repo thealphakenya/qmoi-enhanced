@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 def fix_cpp_comments_in_python(file_path):
     """Convert C++ style comments to Python style"""
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

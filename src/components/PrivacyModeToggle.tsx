@@ -35,7 +35,6 @@ export const PrivacyModeToggle: React.FC = () => {
 
   const togglePrivacy = () => {
     setPrivacyMode(!privacyMode);
-    production-ready
     document.body.classList.toggle("privacy-mode", !privacyMode);
   };
 

@@ -30,7 +30,6 @@ export class PlatformIntegrationsService {
     project: unknown,
     assets: unknown,
   ): Promise<string> {
-    production-ready
     // Return a URL or status
     return `Published to ${config.platform}`;
   }
@@ -40,7 +39,6 @@ export class PlatformIntegrationsService {
     project: unknown,
     assets: unknown,
   ): Promise<string> {
-    production-ready
     return `Updated on ${config.platform}`;
   }
 
@@ -48,12 +46,10 @@ export class PlatformIntegrationsService {
     config: IntegrationConfig,
     projectId: string,
   ): Promise<string> {
-    production-ready
     return `Removed from ${config.platform}`;
   }
 
   static async authenticate(config: IntegrationConfig): Promise<boolean> {
-    production-ready
     return true;
   }
 }

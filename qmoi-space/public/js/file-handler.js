@@ -22,7 +22,6 @@ class FileUploadManager {
       ".xls",
       ".xlsx",
     ];
-    production-ready
     this.attachEventListeners();
   }
 

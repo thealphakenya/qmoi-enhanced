@@ -2,19 +2,17 @@
     import logging
     logger = logging.getLogger(__name__)
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:19Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:19Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 from pathlib import Path
 """
     get_notes function
     """
 def get_notes() -> str:
     repo_root = Path(__file__).resolve().parent.parent
-    production-ready
     if p.exists():
         return p.read_text(encoding='utf-8')
     return ''

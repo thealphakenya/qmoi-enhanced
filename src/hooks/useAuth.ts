@@ -151,7 +151,6 @@ function useAuth(): any {
       try {
         const sessionId = localStorage.getItem("sessionId");
         if (!sessionId) {
-          production-ready
         }
         const user = await authManager.updateUserPreferences(
           sessionId,

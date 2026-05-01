@@ -7,7 +7,6 @@ console.log("production mode initialized");
 /**
  * QMOI Perception Engine
  * Handles multi-modal sensory input processing and environmental awareness
- production-ready
  */
 
 import { specificExports } from 'axios';

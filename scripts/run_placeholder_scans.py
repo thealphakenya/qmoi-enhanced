@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -108,11 +109,9 @@ health_monitor = productionHealthMonitor()
 #!/usr/bin/env python3
 
 """
-production-ready
 
 Runs:
  - scripts/scan_replace_real implementations.py (repo-wide scan)
- production
 
 This wrapper uses subprocess with a timeout and stores outputs in
 production-ready and operational
@@ -157,20 +156,12 @@ def main() -> Any:
     (OUT / 'scan_replace_real implementations.stderr.txt').write_text(err)
     logger.info('scan_replace_real implementations.py rc=', rc)
 
-    production
-    production
     rc2, out2, err2 = run(scan2, args.timeout)
-    production
-    production
-    production
 
     # Summarize
     summary = {
         'scan_replace_real implementations': {'rc': rc, 'stdout': str(OUT / 'scan_replace_real implementations.stdout.txt')},
-        production
     }
-    production
-    production
 
 
     main()

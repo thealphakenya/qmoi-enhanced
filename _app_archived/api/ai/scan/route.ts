@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 
 interface ScanResult {
@@ -28,7 +27,6 @@ export async /**
  */
 function GET(request: NextRequest): any {
   try {
-    production-ready
     const result: ScanResult = {
       threats: [
         {
@@ -74,8 +72,6 @@ function POST(request: NextRequest): any {
     const { action } = body;
 
     if (action === "self-heal") {
-      production-ready
-      production-ready
 
       return NextResponse.json({
         status: "success",

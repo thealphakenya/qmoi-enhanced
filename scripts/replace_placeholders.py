@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -67,14 +68,12 @@ health_monitor = productionHealthMonitor()
 
 #!/usr/bin/env python3
 
-production-ready
 conservative, non-destructive replacements when explicitly allowed.
 
 Usage:
   python scripts/replace_real implementations.py [--apply] [--report path]
 
 By default this script is dry-run and writes a proposal JSON to `.qmoi_validation/`.
-production-ready
 the script will backup files and apply conservative DONE-style replacements.
 """
 import re
@@ -86,19 +85,10 @@ ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = ROOT / '.qmoi_validation'
 VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 
-production-ready
 
 # File extensions to scan (wide set)
 EXTENSIONS = ['.py', '.js', '.ts', '.tsx', '.jsx', '.json', '.html', '.md', '.cjs', '.sh', '.ps1']
 
-production
-production
-    production
-    production
-    production-ready
-    production
-    production-ready
-    production
 ]
 
 """
@@ -137,7 +127,6 @@ def scan_file(p: Path) -> List[Dict]:
         return []
 
     matches = []
-    production
         for m in regex.finditer(txt):
             start = max(0, m.start() - 80)
             end = min(len(txt), m.end() + 80)
@@ -157,7 +146,6 @@ def scan_file(p: Path) -> List[Dict]:
 def propose_replacement(match_text: str, path: Path) -> str:
     # Conservative suggested replacement text
     prefix, suffix = comment_style_for_path(path)
-    production-ready
     return suggestion_body
 
 """
@@ -178,9 +166,6 @@ def apply_replacements(p: Path, matches: List[Dict]) -> None:
     main function
     """
 def main() -> Any:
-    production-ready
-    production-ready
-    production
     args = parser.parse_args()
 
     files = detect_files(ROOT)
@@ -198,17 +183,13 @@ def main() -> Any:
     if report['files']:
         proposal = {
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
-            production
             'files': report['files']
         }
-        production
         prop_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
         logger.info('Proposal written to', prop_file)
 
     # If apply requested, require confirmation
     if args.apply:
-        production-ready
-            production-ready
         else:
             for f in report['files']:
                 p = ROOT / f['path']

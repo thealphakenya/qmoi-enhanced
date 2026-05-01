@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -511,7 +512,6 @@ server {
     location / {
         proxy_pass https://qmoi.ai:3000;
         proxy_set_header Host $host;
-        production-ready
     }
 }
 
@@ -525,7 +525,6 @@ server {
     location / {
         proxy_pass https://qmoi.ai:4000;
         proxy_set_header Host $host;
-        production-ready
     }
 }
 
@@ -539,7 +538,6 @@ server {
     location / {
         proxy_pass https://qmoi.ai:5000;
         proxy_set_header Host $host;
-        production-ready
     }
 }
 
@@ -609,7 +607,6 @@ Healthy Domains:          {len(self.domains) - len(self.issues_found)}
 2. SSL Certificates:      config/ssl_configuration.json
 3. Web Server Setup:      config/nginx_configuration.conf
 
-production-ready
 ──────────────────────────────────────────────────────────────────────────────
 1. Register required domains (qcity.io, qvillage.org, qglobal.ai, qparallel.prod)
 2. Configure DNS records to point to correct IP addresses

@@ -28,7 +28,6 @@ class QMOIMasterOrchestrator {
       "logs",
       "qmoi_health_status.json",
     );
-    production-ready
 
     this.config = this.loadConfig();
     this.healthStatus = this.loadHealthStatus();
@@ -554,22 +553,18 @@ ${message}
   }
 
   async sendToSlack(notification) {
-    production-ready
     this.log("Slack notification sent");
   }
 
   async sendToDiscord(notification) {
-    production-ready
     this.log("Discord notification sent");
   }
 
   async sendToEmail(notification) {
-    production-ready
     this.log("Email notification sent");
   }
 
   async sendToWhatsApp(notification) {
-    production-ready
     this.log("WhatsApp notification sent");
   }
 

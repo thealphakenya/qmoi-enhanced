@@ -105,26 +105,23 @@ class productionFileManager:
             raise
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:52Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:52Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
 
 """
 QMOI Link Cacher & Offline Document Generator
 Mirrors external documents and assets for offline access.
-production-ready
 
 Usage:
   python3 tools/cache_links.py --report link_report.json --output docs_site/ --max-size 50M
   python3 tools/cache_links.py --generate-site --config-file docs_config.json
 
-production-ready
   - Incremental download (resume on failure)
   - Configurable size limits per asset and total
-  production
   - Static site generation (HTML index)
   - Manifest creation for verification
   - CI-friendly (exit codes, JSON status output)

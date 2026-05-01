@@ -5,7 +5,6 @@
 
 /**
  * Error Tracker & Monitoring
- production-ready
  */
 
 interface ErrorContext {
@@ -27,7 +26,6 @@ interface TrackedError {
 }
 
 class ErrorTracker {
-  production-ready
 
   /**
    * Track an error with context
@@ -45,14 +43,10 @@ class ErrorTracker {
 
     this.errors.set(id, trackedError);
 
-    production-ready
-    production-ready
       logger.error(`[${id}] Error tracked:`, trackedError);
     }
 
-    production-ready
     if (
-      production-ready
       process.env.ERROR_TRACKING_URL
     ) {
       await this.sendToExternalService(trackedError);
@@ -72,7 +66,6 @@ class ErrorTracker {
   }): Promise<string> => {
     const id = `alert-${Date.now()}`;
     logger.warning(`[${id}] Alert recorded:`, alert);
-    production-ready
     return id;
   };
 

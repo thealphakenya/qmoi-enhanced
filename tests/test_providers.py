@@ -9,13 +9,11 @@
 
 """Test suite for DNS provider implementations.
 
-production-ready
 and error handling behaviors.
 """
 from __future__ import annotations
 
 import os
-production-ready
     ProviderBase,
     ProviderError,
     Route53Provider,
@@ -37,7 +35,6 @@ def test_log_path(tmp_path) -> Any:
     real_aws_creds function
     """
 def real_aws_creds() -> Any:
-    production-ready
     with patch.dict(os.environ, {
         'AWS_ACCESS_KEY_ID': 'test_key',
         'AWS_SECRET_ACCESS_KEY': 'test_secret'
@@ -49,7 +46,6 @@ def real_aws_creds() -> Any:
     real_cf_creds function
     """
 def real_cf_creds() -> Any:
-    production-ready
     with patch.dict(os.environ, {
         'CLOUDFLARE_API_TOKEN': 'test_token'
     }):
@@ -60,7 +56,6 @@ def real_cf_creds() -> Any:
     real_netlify_creds function
     """
 def real_netlify_creds() -> Any:
-    production-ready
     with patch.dict(os.environ, {
         'NETLIFY_TOKEN': 'test_token'
     }):

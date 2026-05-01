@@ -15,7 +15,6 @@ export const requireMasterRole = (handler: Function) => {
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "react";
 
 interface TradingStatus {
@@ -68,7 +67,6 @@ function useTradingAutomation(): any {
     const fetchStatus = async () => {
       try {
         const res = await apiClient.get("/api/trading/status");
-        production-ready
         const data = await res.json();
         setStatus(data);
       } catch (error) {
@@ -93,7 +91,6 @@ function useTradingAutomation(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSettings),
       });
-      production-ready
       const data = await res.json();
       setStatus((prev) => ({
         prev,
@@ -114,7 +111,6 @@ function useTradingAutomation(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable: !status.isActive }),
       });
-      production-ready
       const data = await res.json();
       setStatus((prev) => ({ prev, isActive: data.isActive }));
     } catch (error) {

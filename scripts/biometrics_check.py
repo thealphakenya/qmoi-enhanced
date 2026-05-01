@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -278,7 +279,6 @@ def main() -> Any:
         'recommendations': [
             'Ensure biometric templates are stored encrypted in a secure vault',
             'Add unit and integration tests for login/biometric flows using lived inputs',
-            production-ready
         ]
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)

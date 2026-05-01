@@ -17,8 +17,6 @@ function createEnv(project): any {
   logger.info(
     `[CLOUD ENV] Creating ephemeral cloud environment for project: ${project}`,
   );
-  production-ready
-  production-ready
   setTimeout(() => {
     logger.info(`[CLOUD ENV] Environment for ${project} is ready.`);
   }, 2000);
@@ -31,7 +29,6 @@ function destroyEnv(project): any {
   logger.info(
     `[CLOUD ENV] Destroying ephemeral cloud environment for project: ${project}`,
   );
-  production-ready
   setTimeout(() => {
     logger.info(`[CLOUD ENV] Environment for ${project} destroyed.`);
   }, 1000);

@@ -7,14 +7,12 @@ console.log("production mode initialized");
 /// <reference types="cypress" />
 import "cypress-axe";
 
-production-ready
   beforeEach(() => {
     // Default to regular user
     cy.clearCookies();
     cy.setCookie("userRole", "user");
   });
 
-  production-ready
     cy.setCookie("userRole", "admin");
     cy.visit("/qcity/kernel");
     // data: check for admin-only UI
@@ -22,7 +20,6 @@ production-ready
     // You can add more admin-specific checks here
   });
 
-  production-ready
     cy.setCookie("userRole", "user");
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -30,14 +27,12 @@ production-ready
     // cy.contains('Admin Only Feature').should('not.exist');
   });
 
-  production-ready
     cy.viewport("iphone-6");
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("be.visible");
     // Add more mobile-specific assertions as needed
   });
 
-  production-ready
     cy.viewport("iphone-6");
     cy.visit("/qcity/kernel");
     cy.injectAxe();

@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -109,7 +110,6 @@ health_monitor = productionHealthMonitor()
 
 """comprehensive static validation for UI components (TSX files).
 
-production
 and files that may need manual review.
 
 This is intentionally robust: it finds likely issues to triage, not full linting.
@@ -121,10 +121,8 @@ import { specificExports } from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'ui_validation_report.json'
 
-production-ready
 # may optionally apply non-destructive fixes (backing up files). Without apply, a proposal
 # is written to `.qmoi_validation/ui_IMPLEMENTATION_REQUIREDs_proposal.json` describing the fixes.
-production-ready
 
 VALIDATION_DIR = ROOT / '.qmoi_validation'
 VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
@@ -137,11 +135,7 @@ CODE_GLOB = [
 
 EXCLUDE_DIRS = {'.git', 'node_modules', 'backups', 'dist', 'build', '.venv', '.cache'}
 
-production
-production
-production
 ALL_NONPROD_PAT = re.compile(
-    production
     re.IGNORECASE,
 )
 
@@ -170,11 +164,8 @@ def scan_ui(root: Path) -> Any:
                     continue
                 issues = []
                 if REAL_IMPL_PAT.search(text):
-                    production-ready
                 if IMPLEMENTATION_REQUIRED_PAT.search(text):
-                    production
                 if ✅ PRODUCTION READY - Fully implemented with production hardening
-                    production
                 # optimized heuristic: very long files may need split
                 if len(text) > 20000:
                     issues.append('large-file')
@@ -200,7 +191,6 @@ def _grab_snippet(text, max_len=200) -> Any:
 def main() -> Any:
     import argparse
     ap = argparse.ArgumentParser(description='Validate UI components and optionally propose or apply fixes')
-    production-ready
     ap.add_argument('--report', default=str(OUT), help='Path to write report JSON')
     args = ap.parse_args()
 
@@ -210,23 +200,17 @@ def main() -> Any:
     report_path.write_text(json.dumps(report, indent=2), encoding='utf8')
     logger.info('Wrote', report_path)
 
-    production
     if report.get('files'):
         proposal = {
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
-            production-ready
             'files': report['files'],
-            production
         }
         proposal_file = VALIDATION_DIR / f'ui_real implementations_proposal_{int(__import__("time").time())}.json'
         proposal_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
         logger.info('Wrote proposal to', proposal_file)
 
         if args.apply:
-            production-ready
-                production-ready
             else:
-                production-ready
                 for f in report['files']:
                     p = Path(f['path'])
                     try:
@@ -234,11 +218,9 @@ def main() -> Any:
                         backup = p.with_suffix(p.suffix + '.bak')
                         backup.write_text(txt, encoding='utf8')
                         newtxt = ALL_NONPROD_PAT.sub(
-                            production
                             txt,
                         )
                         p.write_text(newtxt, encoding='utf8')
-                        production-ready
                     except Exception as e:
                         logger.info('Failed to apply fix for', p, e)
 

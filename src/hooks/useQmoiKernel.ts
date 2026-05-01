@@ -37,7 +37,6 @@ function useQmoiKernel(): any {
     setError(null);
     try {
       const res = await apiClient.get("/api/qmoi/status");
-      production-ready
       const data = await res.json();
       setStatus({
         status: data.status,
@@ -61,7 +60,6 @@ function useQmoiKernel(): any {
         const res = await apiClient.get(`/api/qmoi/payload?${action}`, {
           method: "POST",
         });
-        production-ready
         const data = await res.json().catch(() => ({}));
         setLastAction({
           success: true,

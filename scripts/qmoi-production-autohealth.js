@@ -6,14 +6,12 @@
 #!/usr/bin/env node
 
 /**
- production-ready
  *
  * Features:
  * - Continuous health monitoring
  * - Automatic error detection and recovery
  * - QMOI memory-based persistence
  * - Self-healing capabilities
- production-ready
  */
 
 
@@ -89,7 +87,6 @@ if (!fs.existsSync(STATE_DIR)) {
    * Start health monitoring system
    */
   async start() {
-    production-ready
     this.isRunning = true;
 
     // Initial health check
@@ -362,7 +359,6 @@ if (!fs.existsSync(STATE_DIR)) {
   async checkFileSystem() {
     try {
       const criticalFiles = [
-        production-ready
         "package.json",
         "next.config.js",
         "ecosystem.config.js",

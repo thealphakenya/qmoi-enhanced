@@ -38,6 +38,7 @@ def fix_ellipsis_in_docs():
                 continue
 
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

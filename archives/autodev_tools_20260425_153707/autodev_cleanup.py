@@ -57,6 +57,7 @@ class AUTODEVCleanup:
     def cleanup_file(self, file_path: Path) -> bool:
         """Clean up a single file"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

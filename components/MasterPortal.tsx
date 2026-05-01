@@ -58,7 +58,6 @@ function MasterPortal(): any {
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        production-ready
       }
 
       const data = (await res.json()) as MasterOverview;

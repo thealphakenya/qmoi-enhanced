@@ -31,7 +31,6 @@ logger.info('Provider created charge:', res)
 # Insert transaction as pending
 txid = 'test-tx-1'
 now = datetime.datetime.utcnow().isoformat()
-production-ready
 conn.commit()
 
 # execute webhook: provider reports settled

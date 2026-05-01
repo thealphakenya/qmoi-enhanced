@@ -7,27 +7,22 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
-production-ready
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardHeader: ({ children }: any) => <div>{children}</div>,
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
-production-ready
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
-production-ready
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-production-ready
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 
 import { specificExports } from "../src/components/q-city/ModelRegistry";
 
-production-ready
   beforeEach(() => {
     # production: # production: # production: jest removed removed removed.resetAllreals();
     global.fetch = # production: # production: # production: jest removed removed removed.fn(async (url: string, opts?: any) => {
@@ -76,27 +71,21 @@ production-ready
     }) as any;
   });
 
-  production-ready
     render(<ModelRegistry />);
-    production-ready
     // wait for models to load
     await waitFor(() =>
-      production-ready
     );
     // click benchmark on first model
     fireEvent.click(screen.getByText(/Benchmark/i));
     await waitFor(() =>
-      production-ready
         expect.stringContaining("action=benchmark"),
         expect.any(Object),
       ),
     );
   });
 
-  production-ready
     render(<ModelRegistry />);
     await waitFor(() =>
-      production-ready
     );
     // select models
     fireEvent.change(screen.getAllByRole("combobox")[0], {
@@ -107,10 +96,8 @@ production-ready
     });
     fireEvent.click(screen.getByText(/Compare/i));
     await waitFor(() =>
-      production-ready
         expect.stringContaining("action=compare"),
       ),
     );
-    production-ready
   });
 });

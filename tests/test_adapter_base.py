@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -62,7 +63,6 @@ from scripts.wallets.adapter_base import TestnetAdapter, REGISTRY
     """
 def test_testnet_adapter_returns_real() -> Any:
     a = TestnetAdapter('t', base_amount=3.14, currency='USD')
-    production-ready
     assert 'balance' in res
     assert res['status'] == 'realed'
 

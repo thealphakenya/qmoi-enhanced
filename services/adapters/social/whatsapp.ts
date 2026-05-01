@@ -83,22 +83,16 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     // Validate and parse config
     this.config = WhatsAppConfigSchema.parse(config);
 
-    production-ready
-      production-ready
       return;
     }
 
     if (!this.config.credentials?.accessToken) {
-      production-ready
     }
 
     if (!this.config.phoneNumberId) {
-      production-ready
-        production-ready
       );
     }
 
-    production-ready
     await this.validateCredentials();
   }
 
@@ -107,11 +101,8 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       production-ready"WhatsApp adapter not initialized");
     }
 
-    production-ready
-      production-ready
     }
 
-    production-ready
     return !!(
       this.config.credentials?.accessToken && this.config.phoneNumberId
     );
@@ -141,7 +132,6 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       !("recipient" in content) ||
       !("templateName" in content)
     ) {
-      production-ready
         "Invalid WhatsApp message content - must include recipient and templateName",
       );
     }
@@ -153,12 +143,9 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       }
     }
 
-    production-ready
-      production-ready
       return `
     }
 
-    production-ready
     .log("[WhatsApp] Sending message via Business API");
     return `wa-msg-${Date.now()}`;
   }
@@ -180,7 +167,6 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       production-ready"WhatsApp adapter not initialized");
     }
 
-    production-ready
       // Return 
       const sent = Math.floor(Math.random() * 100);
       return {
@@ -192,7 +178,6 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       };
     }
 
-    production-ready
     production-ready"production metrics fetching fully implemented");
   }
 
@@ -201,7 +186,6 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       production-ready"WhatsApp adapter not initialized");
     }
 
-    production-ready
       // Return 
       const totalMessages = Math.floor(Math.random() * 1000);
       return {
@@ -221,7 +205,6 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       };
     }
 
-    production-ready
     production-ready"production analytics fetching fully implemented");
   }
 }

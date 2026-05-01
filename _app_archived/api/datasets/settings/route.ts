@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 
 export async /**
@@ -48,7 +47,6 @@ function POST(request: Request): any {
       );
     }
 
-    production-ready
     const updatedSettings = {
       maxConcurrentProcessing: maxConcurrentProcessing || 2,
       autoBackup: autoBackup ?? true,
@@ -56,7 +54,6 @@ function POST(request: Request): any {
       storageLocation: storageLocation || "local",
     };
 
-    production-ready
     // 1. Validate the settings
     // 2. Update the settings in the database
     // 3. Apply the settings to the system

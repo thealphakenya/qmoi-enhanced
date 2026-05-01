@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -491,13 +492,11 @@ def _validate_balance(self, balance: BalanceSnapshot) -> Any:
                 message=f"Balance not updated for {age.total_seconds() / 3600:.1f} hours"
             ))
 
-        production-ready
         if not balance.real_funds:
             self.errors.append(ValidationError(
                 error_type='funds_not_verified',
                 platform=balance.platform,
                 severity='critical',
-                production-ready
             ))
         else:
             self.totals['real_funds_confirmed'] += 1
@@ -598,7 +597,6 @@ def generate_report(self) -> str:
             f"- Total Platforms: {self.totals['platform_count']}/8",
             f"- Total Balance: ${self.totals['total_balance']:,.2f}",
             f"- Verified Balance: ${self.totals['verified_balance']:,.2f}",
-            production
             f"- Validation Success: {self.totals['validation_success']}",
             f"- Validation Failed: {self.totals['validation_failed']}",
             f"- Errors: {len(self.errors)}",
@@ -612,7 +610,6 @@ def generate_report(self) -> str:
             lines.append(f"- **Total**: ${balance.total_balance:,.2f}")
             production-ready and operational
             lines.append(f"- **Status**: {balance.validation_status.upper()}")
-            production
             lines.append(f"- **Master Confirmed**: {'✅ Yes' if balance.master_confirmed else '❌ No'}")
 
         if self.errors:

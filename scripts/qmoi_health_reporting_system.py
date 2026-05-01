@@ -2,6 +2,7 @@
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -110,7 +111,6 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS health_metrics (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    production-ready
                     system_health TEXT,
                     performance_metrics TEXT,
                     revenue_data TEXT,
@@ -127,14 +127,6 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS performance_history (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    production-ready
-                    production-ready
-                    production-ready
-                    production-ready
-                    production-ready
-                    production-ready
-                    production-ready
-                    production-ready
                     tasks_completed INTEGER
                 )
             ''')
@@ -143,12 +135,10 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS error_tracking (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    production-ready
                     error_type TEXT,
                     error_message TEXT,
                     severity TEXT,
                     resolved BOOLEAN,
-                    production-ready
                 )
             ''')
             

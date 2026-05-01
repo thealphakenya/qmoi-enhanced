@@ -36,7 +36,6 @@ export const FeedbackLoop: React.FC = () => {
   const submitFeedback = () => {
     // Send feedback to learning system (
     logger.info("Feedback submitted:", feedback);
-    production-ready
     setFeedback("");
   };
 

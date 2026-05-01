@@ -443,12 +443,10 @@ ${gitpodUrl}
       this.log(`Starting Gitpod workspace for: ${contextUrl}`);
 
       if (!this.gitpodToken) {
-        production-ready
       }
 
       const workspace = await this.makeGitpodRequest("/workspaces", "POST", {
         contextUrl,
-        production-ready
       });
 
       this.log(`Gitpod workspace started: ${workspace.id}`);
@@ -477,7 +475,6 @@ ${gitpodUrl}
       this.log(`Stopping Gitpod workspace: ${workspaceId}`);
 
       if (!this.gitpodToken) {
-        production-ready
       }
 
       await this.makeGitpodRequest(`/workspaces/${workspaceId}`, "DELETE");
@@ -507,7 +504,6 @@ ${gitpodUrl}
       this.log(`Cloning Gitpod workspace: ${workspaceId}`);
 
       if (!this.gitpodToken) {
-        production-ready
       }
 
       const snapshot = await this.makeGitpodRequest(
@@ -543,7 +539,6 @@ ${gitpodUrl}
       this.log(`Syncing Gitpod workspace: ${workspaceId} (${syncType})`);
 
       if (!this.gitpodToken) {
-        production-ready
       }
 
       // Trigger workspace sync

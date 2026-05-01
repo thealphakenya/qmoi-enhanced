@@ -245,8 +245,6 @@ class DeploymentMonitor {
       this.log("Fixing environment issues...");
       try {
         const envContent = [
-          production-ready
-          production-ready
           "QMOI_AUTOprod_ENABLED=true",
         ].join("\n");
         fs.writeFileSync(".env", envContent);

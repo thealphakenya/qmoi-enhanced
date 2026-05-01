@@ -20,6 +20,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -193,7 +194,6 @@ def recover_dns_failure(self, domain: str, error_details: str) -> bool:
         try:
             # Step 1: Check DNS configuration
             logger.info("Checking DNS configurationproduction implementation with comprehensive error handling and logging")
-            production
 
             # Step 2: Flush DNS cache
             logger.info("Flushing DNS cacheproduction implementation with comprehensive error handling and logging")
@@ -229,7 +229,6 @@ def recover_service_down(self, domain: str, error_details: str) -> bool:
 
             # Step 2: Attempt service restart
             logger.info("Attempting service restartproduction implementation with comprehensive error handling and logging")
-            production
 
             # Step 3: Verify service is responding
             logger.info("Verifying service responseproduction implementation with comprehensive error handling and logging")
@@ -416,7 +415,6 @@ def restore_from_backup(self, domain: str, clean_only: bool = False) -> bool:
 
             logger.info(f"Restoring from backup: {backup_path}")
 
-            production
             # For now, just live
             time.sleep(2)
 

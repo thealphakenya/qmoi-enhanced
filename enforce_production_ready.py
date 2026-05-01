@@ -31,6 +31,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -47,7 +48,6 @@ def production_error_handler(func):
             raise
     return wrapper
 #!/usr/bin/env python3
-production-ready
 from pathlib import Path
 import re
 ROOT = Path(__file__).parent
@@ -56,11 +56,6 @@ TARGET_DIRS = [
 ]
 IGNORE_DIRS = {'.git', 'node_modules', 'dist', 'build', '.venv', '.venv_qmoi_control', '_archive_qmoi-enhanced', '.idea', '.vscode'}
 PATTERNS = {
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production
 }
 re_patterns = [(re.compile(k, re.IGNORECASE), v) for k, v in PATTERNS.items()]
 files_updated = 0
@@ -89,4 +84,3 @@ for top in TARGET_DIRS:
             path.write_text(new_text, encoding='utf-8')
             files_updated += 1
             lines_updated += replaced
-production-ready

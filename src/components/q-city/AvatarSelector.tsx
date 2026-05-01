@@ -86,7 +86,6 @@ function AvatarSelector({
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
-      production-ready
 
       // Notify parent component
       onAvatarChange?.(avatarId);
@@ -115,7 +114,6 @@ function AvatarSelector({
         body: JSON.stringify({ action: "upgrade", avatarId }),
       });
 
-      production-ready
 
       toast({
         title: "Avatar Upgraded",
@@ -147,7 +145,6 @@ function AvatarSelector({
         }),
       });
 
-      production-ready
 
       toast({
         title: "Avatar Enhanced",
@@ -265,7 +262,6 @@ function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  production-ready
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -281,7 +277,6 @@ function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  production-ready
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -297,7 +292,6 @@ function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  production-ready
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (
@@ -523,7 +517,6 @@ function AvatarSelector({
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">
-                      production-ready
                     </span>
                     <Switch defaultChecked />
                   </div>

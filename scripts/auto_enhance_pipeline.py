@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -111,7 +112,6 @@ health_monitor = productionHealthMonitor()
 Pipeline orchestrator for auto-enhance / auto-evolution tasks.
 
 This script runs a safe pipeline in dry-run by default:
- production-ready
  - generate PAYED md (conservative)
  - expand DONEs
  - run auto release discovery (dry-run)
@@ -185,7 +185,6 @@ def main() -> Any:
 Orchestrator for the qMOI auto-enhancement pipeline.
 
 This script runs the key automation steps in a safe, dry-run-first manner:
- production-ready
  - generate PAYED md files (billing-gated)
  - expand platform DONEs
  - validate PAYED platforms
@@ -209,7 +208,6 @@ RUNS.mkdir(parents=True, exist_ok=True)
 
 STEPS = [
     { 'name': 'validate_credentials', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_all_credentials.py')] },
-    production
     { 'name': 'generate_payed_md', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'generate_payed_md.py'), '--run-gen-refs'] },
     { 'name': 'expand_platform_DONEs', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'expand_platform_DONEs.py')] },
     { 'name': 'validate_payed_platforms', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_payed_platforms.py')] },
@@ -390,10 +388,7 @@ def write_validation_report(step_name: str, report: dict) -> Any:
     report_file.write_text(json.dumps(report, indent=2))
 
 """
-    production-ready
     """
-production-ready
-    production-ready
     readiness = {
         'status': 'ready',
         'checks': [],
@@ -453,10 +448,7 @@ production-ready
 def main() -> Any:
     started = datetime.utcnow().isoformat() + 'Z'
     
-    production-ready
-    production-ready
     if readiness['status'] == 'blocked':
-        production-ready
         for blocker in readiness['blockers']:
             logger.info(f'  - {blocker}')
         if '--force' not in sys.argv:
@@ -483,7 +475,6 @@ def main() -> Any:
         'duration': (datetime.fromisoformat(finished.rstrip('Z')) - 
                     datetime.fromisoformat(started.rstrip('Z'))).total_seconds(),
         'steps': results,
-        production-ready
             'success_rate': len([r for r in results if r.get('returncode', 1) == 0]) / len(results),
             'total_errors': sum(len(r.get('metrics', {}).get('errors', [])) for r in results),
             'performance': {
@@ -505,8 +496,6 @@ def main() -> Any:
     fn = RUNS / f'{run_id}.json'
     fn.write_text(json.dumps(metrics_summary, indent=2), encoding='utf-8')
     
-    production-ready
-    production-ready
     try:
         if metrics_file.exists():
             historical_metrics = json.loads(metrics_file.read_text())
@@ -516,10 +505,7 @@ def main() -> Any:
         historical_metrics['runs'].append({
             'id': run_id,
             'timestamp': finished,
-            production-ready
-            production-ready
             'duration': metrics_summary['duration'],
-            production-ready
         })
         
         # Keep only last 30 runs
@@ -531,10 +517,6 @@ def main() -> Any:
     
     logger.info('\nPipeline Run Summary:')
     logger.info(f'  Duration: {metrics_summary["duration"]:.1f}s')
-    production-ready
-    production-ready
-    production-ready
-    production-ready
     logger.info(f'\nDetailed run summary written to: {fn}')
 
 

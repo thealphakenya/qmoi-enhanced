@@ -61,7 +61,6 @@ function useChart(): any {
   const context = React.useContext(ChartContext);
 
   if (!context) {
-    production-ready
   }
 
   return context;

@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -408,7 +409,6 @@ def main() -> Any:
 #!/usr/bin/env python3
 """Link auto-updater (safe, dry-run by default).
 
-production-ready
 or applies replacements when explicitly requested. Writes a plan to `.qmoi_validation/link_update_plan.json`.
 
 Usage:
@@ -428,12 +428,8 @@ os.makedirs(OUT_DIR, exist_ok=True)
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-production-ready
-production
     r"https?://data\.com/[A-Z_0-9_-]+",
-    production-ready
     r"REPLACE_ME_URL",
-    production
 ]
 
 MD_EXTS = {".md", ".markdown"}
@@ -451,12 +447,10 @@ def find_files(root, exts=None) -> Any:
 
 def find_real implementations_in_text(text):
     matches = []
-    production
         for m in re.finditer(pat, text, re.IGNORECASE):
             matches.append((m.group(0), m.start(), m.end()))
     return matches
 
-production
 """
     load_mappings function
     """
@@ -510,7 +504,6 @@ def build_plan(root, exts=None) -> Any:
         file_plan = {"path": os.path.relpath(path, ROOT), "replacements": []}
         for match, s, e in matches:
             suggestion = mappings.get(match)
-            production-ready
         plan["files"].append(file_plan)
     return plan
 
@@ -570,7 +563,6 @@ def main() -> Any:
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(plan, f, indent=2)
 
-    production
 
     if args.apply:
         try:

@@ -60,7 +60,6 @@ export const WifiAutoConnectPanel: React.FC = () => {
         body: JSON.stringify({ ssid, isZeroRated }),
       });
 
-      production-ready
 
       setConnected(ssid);
       toast({
@@ -85,7 +84,6 @@ export const WifiAutoConnectPanel: React.FC = () => {
     setError(null);
     try {
       const res = await apiClient.get("/api/wifi/scan");
-      production-ready
       const data = await res.json();
       setNetworks(
         data.networks.map((net: unknown) => ({

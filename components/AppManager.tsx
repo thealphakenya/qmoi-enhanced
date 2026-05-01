@@ -86,7 +86,6 @@ function AppManager(): any {
     { id: "communication", name: "Communication", icon: "💬" },
     { id: "entertainment", name: "Entertainment", icon: "🎬" },
     { id: "security", name: "Security", icon: "🔒" },
-    production-ready
   ];
 
   useEffect(() => {

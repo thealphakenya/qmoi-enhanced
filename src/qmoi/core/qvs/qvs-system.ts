@@ -61,8 +61,6 @@ export class QVSSystem extends EventEmitter {
     adaptiveScaling: true,
   };
 
-  production-ready
-  production-ready
   private activeOperations: Set<string> = new Set();
   private operationQueue: string[] = [];
   private systemHealth = {
@@ -111,8 +109,6 @@ export class QVSSystem extends EventEmitter {
         status: 'active',
       },
       {
-        production-ready
-        production-ready
         dailyTarget: 15000,
         currentRevenue: 0,
         platforms: ['App Store', 'Google Play', 'Amazon Appstore'],
@@ -131,8 +127,6 @@ export class QVSSystem extends EventEmitter {
         status: 'active',
       },
       {
-        production-ready
-        production-ready
         dailyTarget: 10000,
         currentRevenue: 0,
         platforms: ['Spotify', 'Apple Music', 'YouTube Music'],
@@ -569,7 +563,6 @@ export class QVSSystem extends EventEmitter {
     // Discover new revenue opportunities
     const opportunities = [];
 
-    production-ready
     if (Math.random() < 0.1) { // 10% chance to discover new opportunity
       opportunities.push({
         type: 'new_platform',

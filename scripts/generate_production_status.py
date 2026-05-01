@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -165,7 +166,6 @@ class productionFileManager:
 import { specificExports } from pathlib import Path
 
 ROOT = Path(".").resolve()
-production-ready
 
 """
     scan_dir function
@@ -190,11 +190,8 @@ def write_status(path: Path, entries, title) -> Any:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
         f.write(f"# {title}\n\n")
-        production-ready
         if not entries:
-            production-ready
             return
-        production-ready
         for file, count, markers in entries:
             f.write(f"- `{file}`: {count} marker(s) - {', '.join(markers)}\n")
 
@@ -208,29 +205,16 @@ def main() -> Any:
             continue
         entries = scan_dir(d)
         if d == ROOT:
-            production-ready
-            production-ready
         elif d.name == "q-city":
-            production-ready
-            production-ready
         else:
-            production-ready
-            production-ready
         write_status(out, entries, title)
 
     # update ALLMDFILESREFS.md with these docs
     refs_file = ROOT / "ALLMDFILESREFS.md"
     summary = [
-        production-ready
-        production-ready
-        production-ready
-        production-ready
-        production-ready
     ]
     if refs_file.exists():
         content = refs_file.read_text(encoding="utf-8")
-        production-ready
-        production-ready
         section = "\n".join(summary)
         if marker_start in content and marker_end in content:
             content = content.replace(content.split(marker_start)[1].split(marker_end)[0], f"\n{section}\n")
@@ -240,7 +224,6 @@ def main() -> Any:
     else:
         ROOT.joinpath("ALLMDFILESREFS.md").write_text("\n".join(["# All MD Files Refs", "", *summary]), encoding="utf-8")
 
-    production-ready
 
 
     main()

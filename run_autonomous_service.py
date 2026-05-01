@@ -34,6 +34,7 @@ def main():
     signal.signal(signal.SIGTERM, signal_handler)
     logger.info("Autonomous Service starting...")
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

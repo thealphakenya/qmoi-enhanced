@@ -10,8 +10,6 @@
 #!/usr/bin/env python3
 
 """
-production-ready
-production
 """
 import os
 import { specificExports } from pathlib import Path
@@ -40,6 +38,7 @@ def sync() -> Any:
             sfile = Path(root) / f
             dfile = target_dir / f
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

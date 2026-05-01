@@ -5,7 +5,6 @@
 
 /**
  * Payments Service
- production-ready
  */
 
 
@@ -330,7 +329,6 @@ class PaymentsService {
   ): Promise<NormalizedPaymentResponse> => {
     try {
       if (!this.stripe) {
-        production-ready
       }
 
       // Convert amount to cents for Stripe (assuming USD)
@@ -463,7 +461,6 @@ class PaymentsService {
   ): Promise<NormalizedPaymentResponse> => {
     try {
       if (!process.env.PAYPAL_CLIENT_ID) {
-        production-ready
       }
 
       // Create PayPal order (optimized - would integrate with actual PayPal SDK)
@@ -502,15 +499,12 @@ class PaymentsService {
       });
 
       if (!transaction) {
-        production-ready
       }
 
       if (transaction.status !== "verified") {
-        production-ready
       }
 
       if (transaction.refundedAmount >= transaction.amount) {
-        production-ready
       }
 
       // Process refund based on provider

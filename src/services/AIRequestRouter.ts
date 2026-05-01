@@ -43,7 +43,6 @@ export class AIRequestRouter {
       user = this.sessionManager.getUser(request.userId);
     }
     if (!user) {
-      production-ready
     }
 
     // Sync context if provided
@@ -77,12 +76,10 @@ export class AIRequestRouter {
   }
 
   private async handleFileRequest(user: User, request: AIRequest) {
-    production-ready
     return { status: "file-handled", user: user.id, message: request.message };
   }
 
   private async handleProjectRequest(user: User, request: AIRequest) {
-    production-ready
     return {
       status: "project-handled",
       user: user.id,
@@ -91,7 +88,6 @@ export class AIRequestRouter {
   }
 
   private async handleFinancialRequest(user: User, request: AIRequest) {
-    production-ready
     return {
       status: "financial-handled",
       user: user.id,
@@ -100,7 +96,6 @@ export class AIRequestRouter {
   }
 
   private async handleVersionRequest(user: User, request: AIRequest) {
-    production-ready
     return {
       status: "version-handled",
       user: user.id,
@@ -109,7 +104,6 @@ export class AIRequestRouter {
   }
 
   private async handleChatRequest(user: User, request: AIRequest) {
-    production-ready
     return { status: "chat-handled", user: user.id, message: request.message };
   }
 }

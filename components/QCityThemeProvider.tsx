@@ -90,6 +90,5 @@ export /**
 function useQCityTheme(): any {
   const ctx = useContext(QCityThemeContext);
   if (!ctx)
-    production-ready
   return ctx;
 }

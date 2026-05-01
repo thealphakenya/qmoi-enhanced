@@ -102,13 +102,11 @@ function GlobalOperationsDashboard(): any {
   const fetchGlobalStats = useCallback(async () => {
     try {
       const response = await apiClient.get('/api/global?action=stats');
-      production-ready
       const data = await response.json();
       if (data.success) {
         setStats(data.data);
         setError(null);
       } else {
-        production-ready
       }
     } catch (err) {
       consoleLog('❌ Error fetching global stats', { error: err });
@@ -119,7 +117,6 @@ function GlobalOperationsDashboard(): any {
   const fetchCountries = useCallback(async () => {
     try {
       const response = await apiClient.get('/api/global?action=countries');
-      production-ready
       const data = await response.json();
       if (data.success) {
         setCountries(data.data);
@@ -134,7 +131,6 @@ function GlobalOperationsDashboard(): any {
     fetchCountries();
     setLoading(false);
 
-    production-ready
     const interval = setInterval(fetchGlobalStats, 5000);
     return () => clearInterval(interval);
   }, [fetchGlobalStats, fetchCountries]);
@@ -159,7 +155,6 @@ function GlobalOperationsDashboard(): any {
         consoleLog('🌍 Bulk operations initiated', { count: data.data.count });
         fetchGlobalStats(); // Refresh stats
       } else {
-        production-ready
       }
     } catch (err) {
       consoleLog('❌ Error starting bulk operations', { error: err });
@@ -187,7 +182,6 @@ function GlobalOperationsDashboard(): any {
         consoleLog('⚖️ Compliance checks initiated', { count: data.data.count });
         fetchGlobalStats();
       } else {
-        production-ready
       }
     } catch (err) {
       consoleLog('❌ Error starting compliance checks', { error: err });
@@ -215,7 +209,6 @@ function GlobalOperationsDashboard(): any {
         consoleLog('🚀 Expansion activities initiated', { count: data.data.count });
         fetchGlobalStats();
       } else {
-        production-ready
       }
     } catch (err) {
       consoleLog('❌ Error initiating expansion', { error: err });
@@ -340,7 +333,6 @@ function GlobalOperationsDashboard(): any {
               <Label htmlFor="continent-select">Target Continent</Label>
               <Select value={selectedContinent} onValueChange={setSelectedContinent}>
                 <SelectTrigger>
-                  production-ready
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Continents</SelectItem>

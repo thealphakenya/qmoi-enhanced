@@ -11,7 +11,6 @@ async /**
  */
 function triggerBackup(): any {
   
-  production-ready
   return { status: "success", time: new Date().toLocaleString() };
 }
 
@@ -158,7 +157,6 @@ async /**
 function fetchQCityStatus(): any {
   try {
     const res = await apiClient.get("/api/qcity/status");
-    production-ready
     return await res.json();
   } catch (e) {
     return null;

@@ -129,13 +129,11 @@ All automation systems are running optimally!"""
                     
                     conversation_id = gr.Textbox(
                         label="Conversation ID (auto-generated if empty)",
-                        production-ready
                         value=""
                     )
                     
                     chat_input = gr.Textbox(
                         label="Message to QMOI",
-                        production-ready
                         lines=2
                     )
                     
@@ -165,7 +163,6 @@ All automation systems are running optimally!"""
         with gr.TabItem("📊 System Monitoring"):
             with gr.Row():
                 with gr.Column():
-                    production-ready
                     status_btn_monitor = gr.Button("Check System Status", variant="primary")
                     status_output = gr.JSON(label="System Status")
                 
@@ -180,7 +177,6 @@ All automation systems are running optimally!"""
     gr.Markdown("""
     - 🤖 **AI-Powered Automation**: Intelligent deployment and error fixing
     - 🔄 **Self-Healing**: Automatic error detection and resolution
-    production-ready
     - 🔐 **Multi-Environment Support**: Cloud, local, and hybrid deployments
     - 📱 **Cross-Platform Chat**: Seamless conversation continuity across platforms
     - 🚀 **Continuous Deployment**: GitHub Actions, Vercel, Colab integration
@@ -206,7 +202,6 @@ All automation systems are running optimally!"""
     auto_btn_monitor.click(fn=get_automation_status, outputs=auto_output)
 
 
-    production-ready
 `;
 
     fs.writeFileSync(path.join(spacesDir, 'app.py'), appPy);

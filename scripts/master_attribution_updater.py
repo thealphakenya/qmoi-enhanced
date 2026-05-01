@@ -75,6 +75,7 @@ class MasterAttributionUpdater:
     async def update_file(self, file_path: Path) -> Tuple[str, int]:
         """Update single file with master attribution"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

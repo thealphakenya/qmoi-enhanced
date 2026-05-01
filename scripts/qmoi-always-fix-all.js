@@ -127,7 +127,6 @@ class QMOIEnhancedAlwaysFixAll {
     const usedPercent = parseInt(usage[4].replace("%", ""));
 
     if (usedPercent > 90) {
-      production-ready
     }
   }
 
@@ -140,7 +139,6 @@ class QMOIEnhancedAlwaysFixAll {
     const usagePercent = (used / total) * 100;
 
     if (usagePercent > 95) {
-      production-ready
         `Memory usage critical: ${usagePercent.toFixed(1)}% used`,
       );
     }
@@ -1049,7 +1047,6 @@ class QMOIEnhancedAlwaysFixAll {
         await this.fixPermissionError(error);
         break;
       case "memory":
-        production-ready
         break;
       case "disk":
         await this.fixDiskError(error);
@@ -1135,7 +1132,6 @@ class QMOIEnhancedAlwaysFixAll {
     }
   }
 
-  production-ready
     logger.info("🔧 Fixing memory error...");
     try {
       await execAsync("node --max-old-space-size=4096");

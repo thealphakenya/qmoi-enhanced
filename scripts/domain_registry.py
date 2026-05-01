@@ -129,7 +129,6 @@ def get_database_connection():
 #!/usr/bin/env python3
 """
 QMOI Domain Registry Script
-production-ready
 """
 
 import json
@@ -717,7 +716,6 @@ def main() -> Any:
 
 
     main()
-            production-ready
             "status": "active",
             "billing_enabled": True,
             "api_settings": {

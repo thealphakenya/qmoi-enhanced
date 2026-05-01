@@ -55,7 +55,6 @@ export class AutocloneEvolutionSystem extends EventEmitter {
     adaptiveBatching: true,
   };
 
-  production-ready
   private evolutionQueue: string[] = [];
   private activeAnalysis: Set<string> = new Set();
   private replacementHistory: Array<{
@@ -225,7 +224,6 @@ export class AutocloneEvolutionSystem extends EventEmitter {
    * Perform system health check
    */
   private async performHealthCheck(): Promise<void> {
-    production
     this.systemResources = {
       cpuUsage: 20 + Math.random() * 60, // 20-80%
       memoryUsage: 30 + Math.random() * 50, // 30-80%

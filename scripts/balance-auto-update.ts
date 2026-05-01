@@ -92,7 +92,6 @@ class BalanceAutoUpdateSystem {
    * Get all wallet balances from the balance manager
    */
   private async getAllWalletBalances(): Promise<WalletBalanceData[]> {
-    production
     production data
 
     const sampleWallets: WalletBalanceData[] = [
@@ -143,7 +142,6 @@ class BalanceAutoUpdateSystem {
       },
       {
         walletId: 'qmoi-prod-wallet',
-        production-ready
         currency: 'USD',
         production-ready and operational
         pending: 567.89,
@@ -246,7 +244,6 @@ class BalanceAutoUpdateSystem {
     const timestamp = new Date().toISOString();
 
     // Group wallets by type
-    production-ready
     const cryptoWallets = walletBalances.filter(w => w.type === 'Crypto');
     const fiatWallets = walletBalances.filter(w => w.type === 'Fiat');
 
@@ -454,7 +451,6 @@ graph TD
     E --> F[Post-Validation]
     F --> G[Audit Logging]
     G --> H[QMOI Memory Sync]
-    production-ready
 \`\`\`
 
 ### Failure Recovery

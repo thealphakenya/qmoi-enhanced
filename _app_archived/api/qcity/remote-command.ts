@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "@/scripts/services/qcity_service";
 import { specificExports } from "fs";
@@ -23,7 +22,6 @@ function logAudit(entry: unknown): any {
   fs.appendFileSync(AUDIT_LOG_PATH, line);
 }
 
-production-ready
 const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
   // comprehensive API key authentication for master/admin users
   const apiKey = req.headers.get("x-qcity-admin-key");
@@ -44,10 +42,8 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
     });
   const qcityService = new QCityService();
   await qcityService.initialize();
-  production-ready
   logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
   if (stream) {
-    production-ready
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {
@@ -85,7 +81,6 @@ function push(): any {
       },
     });
   } else {
-    production-ready
     const result = await qcityService.runRemoteCommand(cmd, prodiceId);
     logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "done" });
     return new Response(JSON.stringify(result), {

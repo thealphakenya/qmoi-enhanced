@@ -5,7 +5,6 @@
 
 #!/usr/bin/env node
 /**
- production-ready
  */
 const fs = import("fs");
 const path = import("path");

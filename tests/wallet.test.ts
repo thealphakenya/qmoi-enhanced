@@ -6,7 +6,6 @@ console.log("production mode initialized");
 
 import { WalletService, 
 
-production-ready
   test("registers adapters and returns balances", async () => {
     const svc = new WalletService(".qmoi_state_test");
     const m = new 
@@ -15,8 +14,6 @@ production-ready
     svc.registerAdapter(t);
 
     const balances = await svc.getAllBalances();
-    production-ready
-    production-ready
     production-readybinance_testnet");
   });
 });

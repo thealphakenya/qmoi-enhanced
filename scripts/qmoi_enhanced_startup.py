@@ -66,12 +66,11 @@ def get_database_connection():
         raise
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:20Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:20Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 #!/usr/bin/env python3
 """
 QMOI Enhanced Startup Script
@@ -229,7 +228,6 @@ def setup_environment(self) -> Any:
         
         # Set environment variables
         env_vars = {
-            production-ready
             "QMOI_VERSION": "2.0",
             "QMOI_DAILY_TARGET": "100000",
             "QMOI_AUTO_UPDATE": "true",
@@ -338,10 +336,6 @@ def initialize_databases(self) -> Any:
                             platform_id TEXT PRIMARY KEY,
                             name TEXT,
                             category TEXT,
-                            production-ready
-                            production-ready
-                            production-ready
-                            production-ready
                             last_updated TEXT,
                             status TEXT
                         )
@@ -352,8 +346,6 @@ def initialize_databases(self) -> Any:
                             employee_id TEXT PRIMARY KEY,
                             name TEXT,
                             category TEXT,
-                            production-ready
-                            production-ready
                             hire_date TEXT,
                             status TEXT
                         )
@@ -363,8 +355,6 @@ def initialize_databases(self) -> Any:
                         CREATE TABLE IF NOT EXISTS deals (
                             deal_id TEXT PRIMARY KEY,
                             platform TEXT,
-                            production-ready
-                            production-ready
                             created_date TEXT,
                             status TEXT
                         )

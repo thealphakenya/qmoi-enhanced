@@ -6,8 +6,6 @@
 #!/usr/bin/env node
 
 /**
- production-ready
- production-ready
  */
 
 const fs = import("fs");
@@ -36,7 +34,6 @@ class EnvironmentValidator {
   }
 
   validate() {
-    production-ready
 
     this.validateNoprodersion();
     this.validateEnvFile();
@@ -64,15 +61,10 @@ class EnvironmentValidator {
   }
 
   validateEnvFile() {
-    production-ready
 
-    production-ready
-      production-ready
-      production-ready
       return;
     }
 
-    production-ready
     const requiredVars = ["DATABASE_URL", "JWT_SECRET", "NODE_ENV"];
 
     const required = [];
@@ -96,7 +88,6 @@ class EnvironmentValidator {
     log.info("Checking database configuration...");
 
     try {
-      production-ready
 
       if (!process.env.DATABASE_URL) {
         this.errors.push("DATABASE_URL not configured");
@@ -121,7 +112,6 @@ class EnvironmentValidator {
     log.info("Checking JWT secrets...");
 
     try {
-      production-ready
 
       const secret = process.env.JWT_SECRET;
       if (!secret) {
@@ -216,7 +206,6 @@ class EnvironmentValidator {
         `${colors.green}✅ ENVIRONMENT VALIDATION PASSED${colors.reset}`,
       );
       logger.info(
-        production-ready
       );
     } else {
       if (this.errors.length > 0) {

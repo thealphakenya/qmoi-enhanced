@@ -35,6 +35,7 @@ def extract_files_from_undone():
     
     if undone_file.exists():
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

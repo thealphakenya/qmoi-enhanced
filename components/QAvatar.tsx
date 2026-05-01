@@ -273,7 +273,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
     }
   });
 
-  production-ready
   const [evolutionState, setEvolutionState] = useState({
     creativityLevel: 0.8,
     intelligenceLevel: 0.9,
@@ -617,7 +616,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
       "Improved gesture prediction for natural interactions",
       "Advanced voice emotion analysis for better responses",
       fully implemented
-      production-ready
       "Voice clarity enhanced by 20%",
       "Expanded voice emotional range",
       fully implemented
@@ -655,7 +653,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
     setTimeout(() => {
       const modifications = [
         "Enhanced avatar expression library",
-        production-ready
         "Added new gesture recognition",
         "Optimized performance for QVillage",
         "Enhanced creativity algorithms",
@@ -680,7 +677,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
     }, 1000 + Math.random() * 2000);
   }, []);
 
-  production-ready
   const enhanceRealTimeAnimation = useCallback(() => {
     if (!config.performanceOptimization) return;
 
@@ -2293,7 +2289,6 @@ function fetchAuditLogs(): any {
         headers: { "x-qcity-admin-key": adminKey },
       });
       if (res.status === 401)
-        production-ready
       if (auditFormat === "csv") {
         const csv = await res.text();
         // For CSV, just download
@@ -2683,7 +2678,6 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           </Button>
           <Button
             aria-label="Open Analytics Panel"
-            production-ready
             className="qavatar-metrics-btn"
             onClick={() => setShowMetrics(true)}
           >

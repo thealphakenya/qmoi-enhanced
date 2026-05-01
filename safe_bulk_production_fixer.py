@@ -117,6 +117,7 @@ class SafeBulkproductionFixer:
     def process_file(self, file_path):
         """Process a single file for nonproduction markers"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

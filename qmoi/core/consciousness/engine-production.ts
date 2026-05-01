@@ -1,14 +1,11 @@
 console.log("production mode initialized");
 /**
- production-ready
  * 
- production-ready
  * - Thought processing and reasoning
  * - Context awareness and understanding
  * - Decision making with confidence scoring
  * - Memory integration and recall
  * - Emotional intelligence and empathy
- production-ready
  */
 
 import { specificExports } from '@/services/logging';
@@ -127,7 +124,6 @@ export interface DecisionOption {
 }
 
 /**
- production-ready
  * Handles all consciousness, awareness, and decision-making operations
  */
 export class ConsciousnessEngine {
@@ -437,7 +433,6 @@ export class ConsciousnessEngine {
   }
 
   private async _assessAwareness(userId: string): Promise<AwarenessContext> {
-    production-ready
     // prodice state, environment, etc.
     return {
       userState: { userId, emotionalState: 'neutral', intentions: [], frustrationLevel: 0, satisfactionLevel: 50, currentActivity: 'active', preferences: {} },

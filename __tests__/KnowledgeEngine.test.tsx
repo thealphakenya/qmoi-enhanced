@@ -7,35 +7,28 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
-production-ready
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
   CardHeader: ({ children }: any) => <div>{children}</div>,
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
-production-ready
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
-production-ready
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-production-ready
   Input: ({ ...props }: any) => <input {...props} />,
 }));
-production-ready
   Textarea: ({ ...props }: any) => <textarea {...props} />,
 }));
-production-ready
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-production-ready
   Search: () => <span />,
   BookOpen: () => <span />,
   Link2: () => <span />,
@@ -44,7 +37,6 @@ production-ready
 
 import { specificExports } from "../src/components/q-city/KnowledgeEngine";
 
-production-ready
   beforeEach(() => {
     # production: # production: # production: jest removed removed removed.resetAllreals();
     global.fetch = # production: # production: # production: jest removed removed removed.fn(async (url: string, opts?: any) => {
@@ -103,20 +95,14 @@ production-ready
     }) as any;
   });
 
-  production-ready
     render(<KnowledgeEngine />);
-    production-ready
-    production-ready
   });
 
-  production-ready
     render(<KnowledgeEngine />);
     // switch to index tab
     fireEvent.click(screen.getByText(/Knowledge Graph/i));
     await waitFor(() =>
-      production-ready
     );
     // svg should be rendered after graph stats
-    production-ready
   });
 });

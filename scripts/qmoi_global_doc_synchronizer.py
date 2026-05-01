@@ -295,6 +295,7 @@ def sync_all_documentation(root: Path) -> Dict[str, any]:
     
     for update_name, update_func in updates_to_run:
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

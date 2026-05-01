@@ -577,10 +577,8 @@ export const animationEngines = {
   },
   "gaussian-splatting": {
     name: "Gaussian Splatting",
-    production-ready
     quality: "ai-enhanced",
     resourceUsage: "high",
-    production-ready
   },
   "luma-ai": {
     name: "Luma AI",

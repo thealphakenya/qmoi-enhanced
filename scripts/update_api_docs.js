@@ -168,7 +168,6 @@ function main(): any {
 
   await injectInFile(
     API_V1_MD,
-    production-ready
     "<!-- APIV1_ENDPOINTS_AUTOGEN_START -->",
     "<!-- APIV1_ENDPOINTS_AUTOGEN_END -->",
     section,

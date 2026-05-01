@@ -49,7 +49,6 @@ function scanPaths(paths, patterns): any {
   try {
     if (!skipBuild) {
       logger.info(
-        production-ready
       );
       execSync("npm run build", { stdio: "inherit" });
       // Search compiled .next output

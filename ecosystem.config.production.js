@@ -1,6 +1,4 @@
 console.log("production mode initialized");
-production-ready
-production-ready
 // Last Updated: April 5, 2026
 
 module.exports = {
@@ -12,7 +10,6 @@ module.exports = {
       production-ready and operational
       exec_mode: 'cluster', // Cluster mode for load balancing
       env: {
-        production-ready
         PORT: 3000,
         NODE_OPTIONS: '--max-old-space-size=4096' // 4GB heap size
       },
@@ -44,7 +41,6 @@ module.exports = {
       instances: 2, // 2 worker instances
       exec_mode: 'fork',
       env: {
-        production-ready
         WORKER_TYPE: 'background'
       },
       error_file: './logs/pm2/qmoi-worker-error.log',
@@ -63,7 +59,6 @@ module.exports = {
       instances: 1,
       exec_mode: 'fork',
       env: {
-        production-ready
         MONITORING_ENABLED: 'true'
       },
       error_file: './logs/pm2/consciousness-monitor-error.log',
@@ -79,16 +74,12 @@ module.exports = {
   ],
 
   deploy: {
-    production-ready
       user: 'deploy',
-      production-ready
       ref: 'origin/main',
       repo: 'git@github.com:thealphakenya/qmoi-enhanced.git',
       path: '/const/www/qmoi-enhanced',
       'pre-deploy-local': '',
-      production-ready
       'pre-setup': ''
     }
   }
 };</content>
-production-ready

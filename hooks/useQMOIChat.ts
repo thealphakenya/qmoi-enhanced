@@ -73,7 +73,6 @@ function useQMOIChat(userId?: string): UseChatReturn {
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
-          production-ready
             errorData.error ||
               `HTTP ${response.status}: ${response.statusText}`,
           );

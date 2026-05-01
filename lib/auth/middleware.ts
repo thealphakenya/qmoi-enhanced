@@ -24,7 +24,6 @@ export const verifyToken = async (token: string) => {
       ...decoded,
     };
   } catch (error) {
-    production-ready
   }
 };
 

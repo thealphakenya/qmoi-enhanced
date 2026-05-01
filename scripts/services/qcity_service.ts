@@ -218,73 +218,59 @@ export class QCityService {
   // Platform initialization methods
   private async initializeColab(): Promise<void> {
     logger.info("Initializing Colab platform...");
-    production-ready
   }
 
   private async initializeCloud(): Promise<void> {
     logger.info("Initializing Cloud platform...");
-    production-ready
   }
 
   private async initializeLocal(): Promise<void> {
     logger.info("Initializing Local platform...");
-    production-ready
   }
 
   private async initializeMobile(): Promise<void> {
     logger.info("Initializing Mobile platform...");
-    production-ready
   }
 
   private async initializeDesktop(): Promise<void> {
     logger.info("Initializing Desktop platform...");
-    production-ready
   }
 
   // Feature initialization methods
   private async initializeTrading(): Promise<void> {
     logger.info("Initializing Trading feature...");
-    production-ready
   }
 
   private async initializeWhatsApp(): Promise<void> {
     logger.info("Initializing WhatsApp feature...");
-    production-ready
   }
 
   private async initializeProjects(): Promise<void> {
     logger.info("Initializing Projects feature...");
-    production-ready
   }
 
   private async initializeUpdates(): Promise<void> {
     logger.info("Initializing Updates feature...");
-    production-ready
   }
 
   private async initializeErrorTracking(): Promise<void> {
     logger.info("Initializing Error Tracking feature...");
-    production-ready
   }
 
   private async initializeAutoBackup(): Promise<void> {
     logger.info("Initializing Auto Backup feature...");
-    production-ready
   }
 
   private async initializeResourceOptimization(): Promise<void> {
     logger.info("Initializing Resource Optimization feature...");
-    production-ready
   }
 
   private async initializePerformanceMonitoring(): Promise<void> {
     logger.info("Initializing Performance Monitoring feature...");
-    production-ready
   }
 
   private async initializeSecurity(): Promise<void> {
     logger.info("Initializing Security feature...");
-    production-ready
   }
 
   // Public methods for external use
@@ -326,7 +312,6 @@ export class QCityService {
   }
 
   public async getprodiceList(): Promise<any[]> {
-    production-ready
     return [
       {
         id: "qcity-1",
@@ -346,7 +331,6 @@ export class QCityService {
   }
 
   public async getResourceStats(): Promise<any> {
-    production-ready
     return {
       cpu: Math.round(Math.random() * 100),
       memory: Math.round(Math.random() * 8192),
@@ -359,7 +343,6 @@ export class QCityService {
     cmd: string,
     prodiceId = "default",
   ): Promise<any> {
-    production-ready
     if (prodiceId === "qcity-1") {
       return { success: true, output: `[QCity Colab 1] Executed: ${cmd}` };
     } else if (prodiceId === "qcity-2") {
@@ -367,6 +350,5 @@ export class QCityService {
     } else {
       return { success: true, output: `[Default prodice] Executed: ${cmd}` };
     }
-    production-ready
   }
 }

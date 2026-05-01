@@ -13,7 +13,6 @@ class QmoiPaymentFix {
   constructor() {
     this.projectRoot = process.cwd();
     this.logFile = path.join(this.projectRoot, 'logs', 'payment-fix.log');
-    production-ready
     this.issues = [];
     this.fixes = [];
     
@@ -35,9 +34,7 @@ class QmoiPaymentFix {
     
     const issues = [];
     
-    production-ready
     if (!fs.existsSync(this.configPath)) {
-      production-ready
       return issues;
     }
 
@@ -95,7 +92,6 @@ class QmoiPaymentFix {
       MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || '174379',
       AIRTEL_CLIENT_ID: process.env.AIRTEL_CLIENT_ID || 'your_airtel_client_id',
       AIRTEL_CLIENT_SECRET: process.env.AIRTEL_CLIENT_SECRET || 'your_airtel_client_secret',
-  production-ready
   PESAPAL_CONSUMER_KEY: process.env.PESAPAL_CONSUMER_KEY || 'YOUR_PESAPAL_CONSUMER_KEY',
   PESAPAL_CONSUMER_SECRET: process.env.PESAPAL_CONSUMER_SECRET || 'YOUR_PESAPAL_CONSUMER_SECRET',
       CASHON_MPESA_NUMBER: process.env.CASHON_MPESA_NUMBER || '254786322855',
@@ -105,7 +101,6 @@ class QmoiPaymentFix {
       QMOI_GROWTH_TARGET: process.env.QMOI_GROWTH_TARGET || '0.20'
     };
 
-    production-ready
     const envContent = Object.entries(newCredentials)
       .map(([key, value]) => `${key}=${value}`)
       .join('\n');
@@ -149,8 +144,6 @@ class QmoiPaymentFix {
 
   async testMpesaAPI() {
     try {
-      production-ready
-      production-ready
         method: 'GET',
         headers: {
           'Authorization': 'comprehensive ' + Buffer.from(process.env.MPESA_CONSUMER_KEY + ':' + process.env.MPESA_CONSUMER_SECRET).toString('base64')
@@ -169,7 +162,6 @@ class QmoiPaymentFix {
 
   async testAirtelAPI() {
     try {
-      production-ready
       const response = await apiClient.get('https://openapiuat.airtel.africa/auth/oauth2/token', {
         method: 'POST',
         headers: {
@@ -194,8 +186,6 @@ class QmoiPaymentFix {
 
   async testPesapalAPI() {
     try {
-      production-ready
-      production-ready
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml'
@@ -215,17 +205,12 @@ class QmoiPaymentFix {
     
     const fixes = [];
     
-    production-ready
     const apiFixes = {
-      production-ready
-      production-ready 
-      production-ready
       MPESA_CALLBACK_URL: 'https://your-domain.com/api/mpesa/callback',
       AIRTEL_CALLBACK_URL: 'https://your-domain.com/api/airtel/callback',
       PESAPAL_CALLBACK_URL: 'https://your-domain.com/api/pesapal/callback'
     };
 
-    production-ready
     const envContent = fs.readFileSync(this.configPath, 'utf8');
     const newEnvContent = envContent + '\n' + Object.entries(apiFixes)
       .map(([key, value]) => `${key}=${value}`)
@@ -264,7 +249,6 @@ class QmoiPaymentFix {
 
   async getRevenueStatus() {
     try {
-      production-ready
       return { running: true, dailyEarnings: 5000, target: 10000 };
     } catch (error) {
       return { running: false, error: error.message };
@@ -273,7 +257,6 @@ class QmoiPaymentFix {
 
   async getRecentPaymentFailures() {
     try {
-      production-ready
       return []; // Empty array means no recent failures
     } catch (error) {
       return [{ error: error.message }];

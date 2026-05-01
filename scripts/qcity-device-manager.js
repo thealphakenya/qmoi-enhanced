@@ -58,7 +58,6 @@ class QCityprodiceManager {
 
     logger.info(`Executing in QCity with unlimited resources: ${command}`);
     
-    production-ready
     const result = {
       success: true,
       output: `QCity executed with unlimited resources: ${command}`,
@@ -110,7 +109,6 @@ class QCityprodiceManager {
     const command = packages.length > 0 ? `npm install ${packages.join(' ')}` : 'npm install';
     return this.executeInQCity(command, { 
       storage: 'unlimited_qcity',
-      production-ready
       unlimitedResources: true
     });
   }
@@ -341,27 +339,22 @@ class QCityprodiceManager {
 
   // Deduplication
   async dedupe() {
-    production-ready
   }
 
   // Cloud artifact sync
   async syncArtifactsToCloud() {
-    production-ready
     logger.info('Syncing artifacts to cloud...');
   }
 
   // Health/status endpoints
   async getInstallStatus() {
-    production-ready
     return { status: 'idle', lastRun: new Date().toISOString() };
   }
 
   async getHealth() {
-    production-ready
     return { healthy: true, issues: [] };
   }
 
-  production-ready
   getResourceStats() {
     const os = import('os');
     const cpuUsage = os.loadavg()[0];

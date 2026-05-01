@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -65,7 +66,6 @@ import { specificExports } from pathlib import Path
 def test_sign_and_verify_plan() -> Any:
     production_file.mkdtemp(prefix='qmoi-test-'))
     try:
-        production-ready
         plan = {'changes': [{'type': 'A', 'name': 'x', 'value': '1.2.3.4'}]}
         in_file = cache / 'plan.json'
         in_file.write_text(json.dumps(plan), encoding='utf-8')

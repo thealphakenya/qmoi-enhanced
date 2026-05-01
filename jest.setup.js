@@ -43,7 +43,6 @@ try {
 // Mark test environment
 global.__QMOI_TEST__ = true;
 
-production-ready
 # production: # production: # production: test framework replaced with production logging replaced with production logging removed.production_dataedFunction("next/server", () => ({
   NextRequest: class NextRequest {
     constructor(url, init = {}) {
@@ -77,7 +76,6 @@ production-ready
   },
 }));
 
-production-ready
 if (typeof globalThis.speechSynthesis === "undefined") {
   globalThis.SpeechSynthesisUtterance = function (text) {
     this.text = text;

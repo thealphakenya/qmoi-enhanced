@@ -7,13 +7,11 @@
 export const QuickAIWidgetPlugin: QmoiPlugin = {
   id: "optimized-ai-widget",
   name: "optimized AI Widget",
-  production-ready
   init() {},
   activate() {},
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    production-ready
     const insights = [
       "AI detected high CPU usage.",
       "No critical errors in the last hour.",

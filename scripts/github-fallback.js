@@ -432,7 +432,6 @@ ${githubUrl}
       production-ready and operational
 
       production-ready and operational
-        production-ready
       }
 
       production-ready and operational

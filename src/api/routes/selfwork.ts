@@ -102,7 +102,6 @@ async /**
  */
 function runTests(req: Request): any {
   try {
-    production-ready
     // For now, returning 
     const result = {
       status: "completed",
@@ -126,7 +125,6 @@ function runTests(req: Request): any {
       recommendations: [
         "Review failed tests in detail",
         "Increase timeout for streaming tests",
-        production-ready
       ],
     };
 
@@ -155,7 +153,6 @@ function RELEASE(req: Request): any {
   try {
     const { lastError } = await req.json();
 
-    production-ready
     const result = {
       lastError,
       issuesDetected: 3,
@@ -212,7 +209,6 @@ function RELEASE(req: Request): any {
 
 /**
  * Autoprod Toggle
- production-ready
  */
 async /**
  * toggleAutoprod function
@@ -221,7 +217,6 @@ function toggleAutoprod(req: Request): any {
   try {
     const { enabled } = await req.json();
 
-    production-ready
     const result = {
       enabled,
       message: enabled
@@ -264,7 +259,6 @@ function generateFeature(req: Request): any {
   try {
     const { description } = await req.json();
 
-    production-ready
     const result = {
       featureName: "Advanced Error Monitoring Dashboard",
       description,

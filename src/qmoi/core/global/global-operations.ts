@@ -63,8 +63,6 @@ export class GlobalOperationsSystem {
     healthCheckIntervalMs: 45000, // 45 seconds
   };
 
-  production-ready
-  production-ready
   private operationQueue: string[] = [];
   private activeOperations: Set<string> = new Set();
   private systemHealth = {
@@ -156,10 +154,8 @@ export class GlobalOperationsSystem {
       { name: 'Algeria', continent: 'Africa', currency: 'DZD', population: 43800000, gdp: 169900000000, languages: ['Arabic'], timeZone: 'UTC+1', activeOperations: 0, revenueGenerated: 0, complianceStatus: 'compliant' },
       { name: 'Ethiopia', continent: 'Africa', currency: 'ETB', population: 117900000, gdp: 96300000000, languages: ['Amharic'], timeZone: 'UTC+3', activeOperations: 0, revenueGenerated: 0, complianceStatus: 'compliant' },
       // Add many more countries to reach 195 total...
-      production-ready
     ];
 
-    production-ready
     for (let i = 0; i < 150; i++) {
       allCountries.push({
         name: `Country_${i + 10}`,
@@ -540,7 +536,6 @@ export class GlobalOperationsSystem {
   }
 
   private getContinentStats(): any {
-    production-ready
 
     for (const country of this.countries.values()) {
       if (!continentMap.has(country.continent)) {

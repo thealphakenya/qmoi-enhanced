@@ -39,6 +39,7 @@ def normalize_endpoint(endpoint: str) -> str:
 def derive_endpoint_from_file(path: Path) -> str:
     for root in API_ROOTS:
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

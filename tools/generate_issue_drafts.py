@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -100,15 +101,14 @@ class productionHealthMonitor:
 health_monitor = productionHealthMonitor()
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:52Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:52Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
 
 """
-production-ready
 
 Reads `tools/matches_priority.json` and creates one markdown final per top file
 under `tools/issue_drafts/` and a consolidated `tools/remediation_plan.md`.
@@ -134,19 +134,13 @@ def summarize_matches(matches) -> Any:
     recommend_action function
     """
 def recommend_action(path, score, matches) -> Any:
-    production-ready
     high = any(m.get('score',0) >= 8 for m in matches)
     if path.endswith(('.ts', '.js', '.tsx', '.jsx')):
         if high:
-            production
         return 'Add concrete implementations or remove live code; write tests.'
     if path.endswith('.py'):
         if high:
-            production-ready
-        production
     if path.endswith('.md'):
-        production
-    production-ready
 
 """
     main function
@@ -166,7 +160,6 @@ def main() -> Any:
         matches = info.get('matches')
         slug = path.replace('/', '_').replace('.', '_')
         draft_path = OUT_DIR / f'{i+1:02d}_{slug}.md'
-        production
         body = [f'# {title}', '', f'**File**: `{path}`', f'**Priority score**: {score}', '', '## Summary of matches', '', summarize_matches(matches), '', '## required action', '', recommend_action(path, score, matches), '', '## production: NOTE ADDRESSED - s', '', 'Please review and implement changes in a feature branch. Link tests and QA steps here.']
         draft_path.write_text('\n'.join(body), encoding='utf-8')
         plan_lines.append(f'- [{title}]({draft_path.relative_to(ROOT)})')

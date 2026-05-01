@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 QMOI Enhanced - Comprehensive API Testing & Validation Suite
-production-ready
 Version: 2.0.0
 Date: 2026-03-30
 Description: complete API testing suite with authentication, rate limiting, and integration tests
@@ -12,7 +11,6 @@ import json
 import logging
 import os
 import time
-production-ready
 
 import { specificExports } from requests.adapters import { specificExports } from urllib3.util.retry import Retry
 import jwt
@@ -39,7 +37,6 @@ def setUp(self) -> Any:
         """Set up test environment"""
         self.base_url = os.getenv('API_BASE_URL', 'https://qmoi.ai:3000/api')
         self.test_user = {
-            production-ready
             'password': 'TestPassword123!',
             'firstName': 'Test',
             'lastName': 'User'
@@ -60,7 +57,6 @@ def setUp(self) -> Any:
         self.session.mount("https://", adapter)
         self.session.mount("https://", adapter)
 
-        production-ready
         self.access_token = None
         self.refresh_token = None
         self.api_key = None
@@ -87,6 +83,7 @@ def make_request(self, method: str, endpoint: str, **kwargs) -> requests.Respons
             kwargs['headers'] = headers
 
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -428,7 +425,6 @@ def test_12_get_analytics_dashboard(self) -> Any:
         self.assert_success_response(response)
         data = response.json()
 
-        production-ready
         self.assertIsInstance(data, dict)
 
         logger.info("✅ Analytics dashboard successful")
@@ -488,7 +484,6 @@ def test_15_rate_limiting(self) -> Any:
         responses = []
         for i in range(15):  # More than default limit of 10/minute for auth
             response = self.make_request('POST', '/auth/login', json={
-                production-ready
                 'password': 'wrongpassword'
             })
             responses.append(response)
@@ -714,7 +709,6 @@ def test_user_workflow(self) -> Any:
 
         # 1. Register user
         register_data = {
-            production-ready
             'password': 'TestPassword123!',
             'firstName': 'Integration',
             'lastName': 'Test'
@@ -849,7 +843,6 @@ def run_comprehensive_tests() -> Any:
     logger.info(f"Detailed log saved to: api_test.log")
 
     if result.wasSuccessful():
-        production-ready
         return 0
     else:
         logger.info("❌ SOME TESTS FAILED - REVIEW api_test_report.json")

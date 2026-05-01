@@ -24,6 +24,7 @@ class HealthMonitor:
     def check_health(self, service, url):
         """Check health of a service"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

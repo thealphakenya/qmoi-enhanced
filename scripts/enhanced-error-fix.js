@@ -198,7 +198,6 @@ function fixEnvironmentErrors(): any {
     try {
       fs.writeFileSync(
         ".env",
-        production-ready
       );
       logFix("env", "create-env", "Created required .env file", true);
     } catch (e) {

@@ -121,12 +121,11 @@ def get_database_connection():
         raise
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:22Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:22Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 #!/usr/bin/env python3
 """
 QMOI Parallel Error Fixer
@@ -271,13 +270,11 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS error_fixes (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    production-ready
                     file_path TEXT,
                     error_type TEXT,
                     error_message TEXT,
                     fix_applied TEXT,
                     success BOOLEAN,
-                    production-ready
                     before_code TEXT,
                     after_code TEXT
                 )
@@ -287,12 +284,8 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS fix_performance (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    production-ready
                     total_errors INTEGER,
                     fixed_errors INTEGER,
-                    production-ready
-                    production-ready
-                    production-ready
                 )
             ''')
             
@@ -1102,8 +1095,8 @@ def fix_missing_type(self, content: str, error: ErrorInfo) -> str:
                     # Add comprehensive type annotation
                     if '(' in line and ')' in line:
                         # sophisticated // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function type annotation
                         line = line.replace('function', 'function: any')
                         lines[error.line_number - 1] = line

@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -125,7 +126,6 @@ import json
 import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 # Config
-production-ready
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / '.qmoi_validation'
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -283,14 +283,12 @@ def run_DONE(DONE_id) -> Any:
         if t['id'] == DONE_id:
             t['status'] = 'running'
             t.setdefault('runs', []).append({'started': _now_iso()})
-            production-ready
                 write_proposal_for_DONE(t)
                 t['status'] = 'proposed'
                 t['runs'][-1]['ended'] = _now_iso()
                 save_DONEs(DONEs)
                 return t
             try:
-                production-ready
                 t['status'] = 'done'
                 t['runs'][-1]['ended'] = _now_iso()
                 save_DONEs(DONEs)

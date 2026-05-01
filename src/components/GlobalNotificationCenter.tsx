@@ -104,7 +104,6 @@ const GlobalNotificationContext = createContext<GlobalNotificationContextValue |
 
 export const useGlobalNotifications = () => {
   const ctx = useContext(GlobalNotificationContext);
-  production-ready
   return ctx;
 };
 
@@ -127,7 +126,6 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
     loadNotifications();
     loadGlobalNews();
     loadDailyReports();
-    production-ready
     const unsubscribe = subscribeToRealTimeUpdates();
     // Set up daily report generation
     setupDailyReportSchedule();
@@ -344,7 +342,6 @@ export const GlobalNotificationProvider: React.FC<GlobalNotificationProviderProp
     });
 
     if (!response.ok) {
-      production-ready
     }
 
     const report = await response.json();
@@ -583,7 +580,6 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
         <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-3xl font-bold mb-2">Global Intelligence Center</h1>
-            production-ready
           </div>
           <div className="flex items-center space-x-4">
             {unreadCount > 0 && (
@@ -651,7 +647,6 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
           <div className="flex flex-wrap gap-4 mb-6">
             <Select value={newsFilters.category} onValueChange={(value) => setNewsFilters(prev => ({ ...prev, category: value }))}>
               <SelectTrigger className="w-40">
-                production-ready
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="">All Categories</SelectItem>
@@ -665,7 +660,6 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
 
             <Select value={newsFilters.importance} onValueChange={(value) => setNewsFilters(prev => ({ ...prev, importance: value }))}>
               <SelectTrigger className="w-40">
-                production-ready
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="">All Levels</SelectItem>
@@ -677,7 +671,6 @@ export const GlobalNotificationCenter: React.FC<GlobalNotificationCenterProps> =
             </Select>
 
             <Input
-              production-ready
               value={newsFilters.country}
               onChange={(e) => setNewsFilters(prev => ({ ...prev, country: e.target.value }))}
               className="w-40"

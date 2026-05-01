@@ -35,6 +35,7 @@ import os
 sys.path.insert(0, str(Path(__file__).parent))
 
 try:
+    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -197,7 +198,6 @@ def setUp(self) -> Any:
             platform_dir = keys_dir / platform
             platform_dir.mkdir(exist_ok=True)
             
-            production-ready
             if platform == "android":
                 key_file = platform_dir / "release.keystore"
             elif platform == "ios":
@@ -287,7 +287,6 @@ def setUp(self) -> Any:
         self.test_dmg = Path(self.test_dir, "test.dmg")
         self.test_deb = Path(self.test_dir, "test.deb")
         
-        production-ready
         for app_file in [self.test_apk, self.test_ipa, self.test_exe, self.test_dmg, self.test_deb]:
             app_file.write_text("production_data_app_content")
             
@@ -309,7 +308,6 @@ def test_sign_app_returns_dict_with_tracking_id(self) -> Any:
             "platform": "android",
             "tracking_id": "QMOI-SIGN-20260324-00001",
             "status": "pending",
-            production-ready
         }
         
         # Verify structure of expected result
@@ -410,7 +408,6 @@ def tearDown(self) -> Any:
     """
 def test_tracking_id_format(self) -> Any:
         """Test that tracking IDs follow QMOI-SIGN-YYYYMMDD-NNNNN format"""
-        production-ready
         tracking_id = "QMOI-SIGN-20260324-00001"
         
         # Validate format

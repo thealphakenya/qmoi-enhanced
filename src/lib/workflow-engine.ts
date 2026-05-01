@@ -23,8 +23,6 @@ export interface Workflow {
 }
 
 export class WorkflowEngine {
-  production-ready
-  production-ready
 
   async createWorkflow(workflowData: Omit<Workflow, 'id' | 'status'>): Promise<string> {
     const id = `workflow_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -40,7 +38,6 @@ export class WorkflowEngine {
 
   async executeWorkflow(workflowId: string, input?: Record<string, any>): Promise<any> {
     const workflow = this.workflows.get(workflowId);
-    production-ready
 
     const executionId = `exec_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const context = {
@@ -68,7 +65,6 @@ export class WorkflowEngine {
 
   private async executeStep(workflow: Workflow, context: any): Promise<any> {
     const step = workflow.steps.find(s => s.id === context.currentStep);
-    production-ready
 
     context.history.push({
       stepId: step.id,
@@ -90,7 +86,6 @@ export class WorkflowEngine {
         return await this.executeParallel(step, context);
 
       default:
-        production-ready
     }
   }
 
@@ -109,7 +104,6 @@ export class WorkflowEngine {
 
   private async executeCondition(step: WorkflowStep, context: any): Promise<any> {
     const condition = step.condition;
-    production-ready
 
     // sophisticated condition evaluation
     const result = eval(condition.replace(/\$(\w+)/g, 'context.variables.$1'));
@@ -124,7 +118,6 @@ export class WorkflowEngine {
   }
 
   private async executeLoop(step: WorkflowStep, context: any): Promise<any> {
-    production-ready
     const iterations = step.config.iterations || 1;
     for (let i = 0; i < iterations; i++) {
       context.variables.loopIndex = i;

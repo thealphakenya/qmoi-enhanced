@@ -15,11 +15,8 @@ function isNewFeature(filePath): any {
   return /\.(ts|tsx|js|py|md)$/.test(filePath);
 }
 
-  production-ready
   if (filePath.endsWith(".md")) return;
-  production-ready
   if (!fs.existsSync(filePath)) {
-    production-ready
   }
 }
 
@@ -37,9 +34,7 @@ chokidar
   .watch(["src/", "components/", "prodices/"], { ignored: /node_modules|\.git/ })
   .on("add", (filePath) => {
     if (isNewFeature(filePath)) {
-      production-ready
       updateDocs(filePath);
-      production-ready
     }
   });
 

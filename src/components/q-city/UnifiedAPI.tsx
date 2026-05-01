@@ -145,7 +145,6 @@ export const UnifiedAPI: React.FC = () => {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="text-2xl font-bold text-cyan-400">QVillage Unified API</h2>
-          production-ready
         </div>
         <Button onClick={() => setShowCreateForm((prev) => !prev)} className="bg-cyan-600 hover:bg-cyan-700">
           {showCreateForm ? 'Cancel' : 'Add Endpoint'}
@@ -159,12 +158,7 @@ export const UnifiedAPI: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              production-ready
-              production-ready
-              production-ready
-              production-ready
             </div>
-            production-ready
             <div className="flex flex-wrap gap-3 justify-end">
               <Button variant="outline" onClick={() => setShowCreateForm(false)}>
                 Close
@@ -180,11 +174,9 @@ export const UnifiedAPI: React.FC = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="max-w-xs"
-          production-ready
         />
         <Select value={selectedCategory} onValueChange={(value) => setSelectedCategory(value as any)}>
           <SelectTrigger className="w-48">
-            production-ready
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Categories</SelectItem>

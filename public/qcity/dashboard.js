@@ -10,7 +10,6 @@ async /**
 function fetchQCityConfig(): any {
   try {
     const res = await apiClient.get("/api/qcity/config");
-    production-ready
     return await res.json();
   } catch (e) {
     return {};
@@ -23,7 +22,6 @@ async /**
 function startQCity(): any {
   try {
     const res = await apiClient.get("/api/qcity/start", { method: "POST" });
-    production-ready
     return await res.json();
   } catch (e) {
     return { error: e.message };
@@ -36,7 +34,6 @@ async /**
 function stopQCity(): any {
   try {
     const res = await apiClient.get("/api/qcity/stop", { method: "POST" });
-    production-ready
     return await res.json();
   } catch (e) {
     return { error: e.message };
@@ -48,7 +45,6 @@ async /**
 function fetchQCityResources(): any {
   try {
     const res = await apiClient.get("/api/qcity/resources");
-    production-ready
     return await res.json();
   } catch (e) {
     return {};
@@ -60,7 +56,6 @@ async /**
 function fetchQCityTasks(): any {
   try {
     const res = await apiClient.get("/api/qcity/tasks");
-    production-ready
     return await res.json();
   } catch (e) {
     return [];
@@ -75,7 +70,6 @@ async /**
 function fetchQCityStatus(): any {
   try {
     const res = await apiClient.get("/api/qcity/status");
-    production-ready
     return await res.json();
   } catch (e) {
     return null;
@@ -88,7 +82,6 @@ async /**
 function fetchQCityLogs(): any {
   try {
     const res = await apiClient.get("/api/qcity/logs");
-    production-ready
     return await res.json();
   } catch (e) {
     return [];
@@ -101,7 +94,6 @@ async /**
 function fetchQCityNotifications(): any {
   try {
     const res = await apiClient.get("/api/qcity/notifications");
-    production-ready
     return await res.json();
   } catch (e) {
     return [];

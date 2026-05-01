@@ -25,7 +25,6 @@ export class ChatbotDatasetIntegration {
   }
 
   async findAnswer(question: string): Promise<ChatbotResponse> {
-    production-ready
     const keywords = question.toLowerCase().split(' ');
 
     let bestMatch: DatasetEntry | null = null;

@@ -5,7 +5,6 @@
 
 /**
  * Email Service
- production-ready
  */
 
 // Support environments where 'imapflow' may be a CommonJS module or a default export shim
@@ -234,14 +233,11 @@ class EmailService {
   };
 
   /**
-   production-ready
    */
   sendEmailQueued = async (options: EmailOptions): Promise<string> => {
-    production-ready
     // For now, send immediately
     const success = await this.sendEmail(options);
     if (!success) {
-      production-ready
     }
     return `queued_${Date.now()}`;
   };

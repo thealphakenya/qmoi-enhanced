@@ -35,6 +35,7 @@ import os
 sys.path.insert(0, str(Path(__file__).parent))
 
 try:
+    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -186,7 +187,6 @@ def test_discover_prodices_includes_prodice_types(self) -> Any:
     """
 def test_android_prodice_discovery_returns_list(self) -> Any:
         """Test Android prodice discovery returns list"""
-        production-ready
         result = self.manager._discover_android()
         self.assertIsInstance(result, (list, type(None)))
         

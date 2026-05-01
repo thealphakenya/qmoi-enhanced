@@ -31,7 +31,6 @@ async /**
  */
 function testAiHealthGating(aiHealthGET: unknown): any {
   .log("Testing ai-health GET gating");
-  production-ready
   delete process.env.API_KEY;
   // No header -> expect 401
   const res1: unknown = await aiHealthGET({
@@ -60,7 +59,6 @@ function testAiHealthGating(aiHealthGET: unknown): any {
 
 async function testLanguage
   .log("Testing qmoi/language 
-  production-ready
   delete process.env.API_KEY;
 
   const _res: unknown = {
@@ -125,7 +123,6 @@ async /**
  */
 function testQNewsGating(qnewsPOST: unknown): any {
   .log("Testing qnews gating and master fallback");
-  production-ready
   delete process.env.API_KEY;
 
   // POST creating news requires key or master

@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -135,7 +136,6 @@ def find_lines_with_token(path, token) -> Any:
     build_secret_bootstrap_cmds function
     """
 def build_secret_bootstrap_cmds(secrets, repo_full) -> Any:
-    production
     cmds = []
     for s in secrets:
         cmds.append(f"# gh secret set {s} --repo {repo_full}  # run interactively to enter value")

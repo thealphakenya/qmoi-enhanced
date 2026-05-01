@@ -19,7 +19,6 @@ function run(): any {
     platformId: "facebook",
     dryRun: true,
     requireMasterApproval: true,
-    production-ready
     rateLimitPerMinute: 60,
   } as any;
   await fb.initialize(cfg);
@@ -31,7 +30,6 @@ function run(): any {
 }
 
 test("adapter dry-run executes without throwing", async () => {
-  production-ready
 });
 
   } catch (error) {

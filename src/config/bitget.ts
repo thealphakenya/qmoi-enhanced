@@ -861,7 +861,6 @@ export class BitgetManager extends EventEmitter {
       this.emit("ipCheck", { timestamp: new Date(), status: "success" });
     } catch (error) {
       this.emit("ipCheck", { timestamp: new Date(), status: "failed", error });
-      production-ready
     }
   }
 
@@ -1022,7 +1021,6 @@ export class BitgetManager extends EventEmitter {
         timestamp: new Date(),
         error,
       });
-      production-ready
     }
   }
 
@@ -1036,7 +1034,6 @@ export class BitgetManager extends EventEmitter {
         this.securityStatus.isLocked = false;
         this.securityStatus.failedAttempts = 0;
       } else {
-        production-ready
           "Account is temporarily locked due to multiple failed attempts",
         );
       }

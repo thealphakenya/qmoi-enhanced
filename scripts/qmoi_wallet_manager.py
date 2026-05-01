@@ -20,6 +20,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -106,7 +107,6 @@ def __init__(self) -> Any:
     """
 def _init_apis(self) -> Any:
         """Initialize APIs for all wallets."""
-        production-ready
         self._load_credentials()
         
         # Initialize API endpoints
@@ -132,12 +132,9 @@ def _init_apis(self) -> Any:
     _load_credentials function
     """
 def _load_credentials(self) -> Any:
-        production-ready
-        production-ready
         self.credentials = {}
         
         if not env_file.exists():
-            production-ready
             
         for line in env_file.read_text().splitlines():
             if line and not line.startswith('#'):
@@ -162,7 +159,6 @@ def _decrypt_data(self, encrypted: bytes) -> Dict:
     get_all_balances function
     """
 def get_all_balances(self) -> Dict[str, Dict[str, Any]]:
-        production-ready
         balances = {
             'bitget': self.bitget_api.get_all_balances(),
             'mpesa': self.mpesa_api.get_balance(),

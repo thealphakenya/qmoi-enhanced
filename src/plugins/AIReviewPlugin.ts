@@ -13,7 +13,6 @@ export const AIReviewPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    production-ready
     const actions = [
       { type: "edit", file: "main.py", time: "2m ago" },
       { type: "run", file: "main.py", time: "1m ago" },

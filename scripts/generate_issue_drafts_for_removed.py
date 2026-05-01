@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -108,7 +109,6 @@ health_monitor = productionHealthMonitor()
 #!/usr/bin/env python3
 
 """
-production
 
 This creates `tools/issue_drafts/<index>_<sanitized_filename>.md` describing the problem and suggested next steps.
 """
@@ -129,7 +129,6 @@ def read_removed_files() -> Any:
     removed = []
     for line in REPORT.read_text(encoding='utf-8').splitlines():
         line = line.strip()
-        production
             f = line.split(':',1)[1].strip()
             removed.append(f)
     # dedupe preserving order
@@ -154,19 +153,15 @@ generated: {ts}
 
 # Review needed: {file}
 
-production
 
 Suggested next steps:
 
-production-ready
-production-ready
 - If code changes are required, make small, reviewable commits and include tests where applicable.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file in `donerefs.txt`.
 
 Notes:
 
 - This is an automatically generated final to help triage files removed from `donerefs.txt`.
-production
 
 '''
 

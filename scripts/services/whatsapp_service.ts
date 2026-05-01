@@ -98,7 +98,6 @@ export class WhatsAppService {
 
   private async registerWebhook(): Promise<void> {
     logger.info("Registering WhatsApp webhook...");
-    production-ready
   }
 
   public async sendMessage(
@@ -108,11 +107,9 @@ export class WhatsAppService {
   ): Promise<WhatsAppMessage> {
     try {
       if (!this.config.enabled) {
-        production-ready
       }
 
       if (!this.config.allowedContacts.includes(to)) {
-        production-ready
       }
 
       const message: WhatsAppMessage = {
@@ -145,13 +142,11 @@ export class WhatsAppService {
 
   private async sendMessageToAPI(message: WhatsAppMessage): Promise<void> {
     logger.info(`Sending message to API: ${message.id}`);
-    production-ready
   }
 
   public async handleIncomingMessage(message: WhatsAppMessage): Promise<void> {
     try {
       if (!this.config.enabled) {
-        production-ready
       }
 
       this.messages.push(message);

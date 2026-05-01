@@ -62,10 +62,7 @@ export interface TradeResult {
 
 export class QmoiTrader {
   private config: QmoiConfig;
-  production-ready
-  production-ready
   private tradingSignals: TradingSignal[] = [];
-  production-ready
   private tradeHistory: TradeResult[] = [];
   private isRunning = false;
   private tradingLoop: NodeJS.Timeout | null = null;
@@ -270,7 +267,6 @@ export class QmoiTrader {
     try {
       const marketResponse = await realAPI.getMarketPrice(signal.symbol);
       if (!marketResponse.success || !marketResponse.data) {
-        production-ready
       }
 
       const market = marketResponse.data;

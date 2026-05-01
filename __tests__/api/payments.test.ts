@@ -11,7 +11,6 @@ import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/payments/service";
 import { specificExports } from "@/lib/auth/service";
 
-production-ready
   let testUserId: string;
   let testWalletId: string;
 
@@ -36,9 +35,6 @@ production-ready
     testWalletId = (wallet as { id: string }).id;
   });
 
-  production-ready
-    production-ready
-      production-ready 
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/payments/initiate",
         {
@@ -56,12 +52,9 @@ production-ready
         },
       );
 
-      production-ready
       // const response = await initiatePaymentHandler(request);
-      production-ready
     });
 
-    production-ready
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/payments/initiate",
         {
@@ -80,10 +73,8 @@ production-ready
       );
 
       const response = await initiatePaymentHandler(request);
-      production-ready
     });
 
-    production-ready
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/payments/initiate",
         {
@@ -101,12 +92,9 @@ production-ready
       );
 
       const response = await initiatePaymentHandler(request);
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const webhookPayload = {
         transactionId: "test-transaction-123",
         status: "completed",
@@ -114,7 +102,6 @@ production-ready
         reference: "M-Pesa-Reference-123",
       };
 
-      production-ready
 
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/webhooks/payments",
@@ -128,12 +115,9 @@ production-ready
         },
       );
 
-      production-ready
       // const response = await webhookHandler(request);
-      production-ready
     });
 
-    production-ready
       const webhookPayload = {
         transactionId: "test-transaction-123",
         status: "completed",
@@ -153,32 +137,19 @@ production-ready
       );
 
       const response = await webhookHandler(request);
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       // M-Pesa phone validation
-      production-ready
-      production-ready
-      production-ready
     });
 
-    production-ready
-      production-ready
         "254700000000",
       );
-      production-ready
         "254700000000",
       );
     });
 
-    production-ready
       const ref = paymentService.generateTransactionReference();
-      production-ready
-      production-ready
-      production-ready
     });
   });
 });

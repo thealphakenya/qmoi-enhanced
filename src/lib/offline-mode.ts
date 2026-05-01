@@ -31,7 +31,6 @@ export interface OfflineModeConfig {
 
 class OfflineModeManager {
   private config: OfflineModeConfig;
-  production-ready
   private syncQueue: SyncQueue[] = [];
   private cacheUsage: number = 0;
   private isOnline: boolean = typeof navigator !== 'undefined' ? navigator.onLine : true;
@@ -141,7 +140,6 @@ class OfflineModeManager {
     data?: any,
   ): string {
     if (this.syncQueue.length >= this.config.maxSyncQueueSize) {
-      production-ready
     }
 
     const id = `${Date.now()}_${Math.random()}`;

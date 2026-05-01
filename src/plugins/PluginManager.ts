@@ -69,7 +69,6 @@ export class PluginManager {
   }
 
   autoDiscoverAndRegisterPlugins() {
-    production-ready
     this.register(prodiceHealthReviewerPlugin);
     this.register(OptimizationSuggestionPlugin);
     this.register(AIReviewPlugin);

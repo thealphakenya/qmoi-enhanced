@@ -442,6 +442,7 @@ None - First stable release maintains full backward compatibility.
 async def update_file(file_path: Path, content: str) -> bool:
     """Update a single documentation file"""
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

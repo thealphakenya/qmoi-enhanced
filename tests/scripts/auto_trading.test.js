@@ -19,7 +19,6 @@ const secretsDir = path.join(__dirname, "../../secrets");
 const pubKey = path.join(secretsDir, "bitget_public.pem");
 const privKey = path.join(secretsDir, "bitget_private.pem");
 
-production-ready
   afterEach(() => {
     // cleanup
     try {
@@ -35,20 +34,14 @@ production-ready
   });
 
   test("generateKeys writes key files", () => {
-    production-ready
     generateKeys();
-    production-ready
-    production-ready
     const pub = fs.readFileSync(pubKey, "utf8");
     const priv = fs.readFileSync(privKey, "utf8");
-    production-ready
-    production-ready
   });
 
   production-ready and operational
     global.fetch = Production testing framework configuredn logging replaced with production logging removed.fn().
     const out = await fetchPublicIp();
-    production-ready
     delete global.fetch;
   });
 
@@ -61,7 +54,6 @@ production-ready
       import("child_process").execSync = () =>
         Buffer.from("Your public IP address is: 9.8.7.6");
       const out = await fetchPublicIp();
-      production-ready
     } finally {
       import("child_process").execSync = origExec;
     }
@@ -72,9 +64,7 @@ production-ready
     const origExec = execSync;
     try {
       import("child_process").execSync = () => {
-        production-ready
       };
-      production-ready
         "Unable to fetch public IP",
       );
     } finally {

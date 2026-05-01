@@ -18,6 +18,7 @@ import json
 def test_autoupdater_dry_run_creates_plan() -> Any:
     production_file.mkdtemp(prefix='qmoi-test-'))
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -60,7 +61,6 @@ import { specificExports } from pathlib import Path
     test_build_plan_creates_plan function
     """
 def test_build_plan_creates_plan() -> Any:
-    production
     # load the link_autoupdater module directly from the scripts file so tests don't rely on sys.path
     import importlib.util
     script_path = Path(__file__).resolve().parents[1] / 'scripts' / 'link_autoupdater.py'
@@ -84,4 +84,3 @@ def _find_files(root, exts=None) -> Any:
         assert "files" in plan
         assert len(plan["files"]) == 1
         f = plan["files"][0]
-        production-ready 

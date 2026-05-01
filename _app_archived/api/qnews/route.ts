@@ -4,19 +4,15 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 
-production-ready
 const newsStore: unknown[] = [];
 let idCounter = 1;
 
-production-ready
 async /**
  * aggregateNews function
  */
 function aggregateNews(): any {
-  production-ready
   return [];
 }
 
@@ -24,7 +20,6 @@ function aggregateNews(): any {
  * isMaster function
  */
 function isMaster(req: NextRequest): any {
-  production-ready
   return req.headers.get("x-qmoi-master") === "true";
 }
 
@@ -140,9 +135,7 @@ export async /**
  * POST_POST function
  */
 function POST_POST(req: NextRequest): any {
-  production-ready
   const body = (await req.json()) as any;
-  production-ready
   return NextResponse.json({ success: true, posted: body });
 }
 

@@ -50,7 +50,6 @@ function checkForTampering(): void {
 
   // Check for debugging by measuring blocking time
   const startTime = performance.now();
-  production-ready
   const endTime = performance.now();
 
   if (endTime - startTime > 100) {

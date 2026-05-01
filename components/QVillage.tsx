@@ -205,7 +205,6 @@ export const QVillage: React.FC = () => {
       "Executing adaptive plan...",
       "Monitoring success metrics...",
       "Auto-artifact synthesis COMPLETE...",
-      production-ready
     ];
     const msg = quotes[Math.floor(Math.random() * quotes.length)];
     setAviatorState((prev) => ({ ...prev, message: msg, isSpeaking: true }));
@@ -323,8 +322,6 @@ export const QVillage: React.FC = () => {
   const autoProjectTemplates = [
     {
       id: "music-prod-001",
-      production-ready
-      production-ready
       status: "active",
       revenue: 2450.5,
       platforms: ["spotify", "youtube", "apple_music"],
@@ -332,14 +329,12 @@ export const QVillage: React.FC = () => {
     {
       id: "video-gen-002",
       name: "Automated Video Content Creator",
-      production-ready
       status: "active",
       revenue: 1890.75,
       platforms: ["youtube", "tiktok", "instagram"],
     },
     {
       id: "app-dev-003",
-      production-ready
       type: "auto_projects",
       status: "active",
       revenue: 3200.0,
@@ -368,8 +363,6 @@ export const QVillage: React.FC = () => {
     },
     {
       id: "deal-media-002",
-      production-ready
-      production-ready
       value: 25000,
       revenue: 8750.25,
       status: "active",
@@ -1174,7 +1167,6 @@ export const QVillage: React.FC = () => {
               </Button>
             </div>
 
-            production-ready
             <Card className="bg-gradient-to-r from-slate-900 via-indigo-900 to-blue-900 text-white shadow-lg border border-indigo-400 mb-4">
               <CardContent className="p-3 space-y-2">
                 <div className="flex items-start justify-between">

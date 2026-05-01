@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -71,7 +72,6 @@ All apps/prodices/machines coverage scanner
 
 This script scans the repository for directories and components matching
 app/prodices/machines patterns, validates the presence of key manifest/docs,
-production-ready
 """
 
 import argparse
@@ -85,16 +85,10 @@ component_dir_tokens = ['app', 'apps', 'prodice', 'prodices', 'machine', 'machin
 
 required_doc_names = ['README.md', 'README.markdown', 'README', 'COMPULSORIES.md', 'metadata.json', 'manifest.json']
 
-production-ready
-    production
-    production
-    production-ready
-    production
     'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'CURRENT'
 ]
 
-production-ready
 
 scan_extensions = {
     '.py', '.js', '.ts', '.jsx', '.tsx', '.java', '.cpp', '.c', '.cs',
@@ -135,8 +129,6 @@ def scan_component_dir(component_dir: Path) -> Any:
         'path': str(component_dir),
         'has_required_docs': False,
         'missing_docs': [],
-        production-ready
-        production-ready
         'files_scanned': 0,
     }
 
@@ -162,13 +154,9 @@ def scan_component_dir(component_dir: Path) -> Any:
             info['files_scanned'] += 1
             text_lower = text.lower()
 
-            production-ready
                 if marker.lower() in text_lower:
-                    production-ready
 
-            production-ready
                 if marker.lower() in text_lower:
-                    production-ready
 
     info['has_required_docs'] = len(doc_names_found) > 0
     info['missing_docs'] = [doc for doc in required_doc_names if doc not in doc_names_found]
@@ -191,7 +179,6 @@ def build_report(results, output_path: Path) -> Any:
     main function
     """
 def main() -> Any:
-    production-ready
     parser.add_argument('--root', default=str(ROOT), help='Root directory to scan')
     parser.add_argument('--report', default='reports/all_apps_prodices_machines_report.json', help='Report output path')
     args = parser.parse_args()
@@ -202,8 +189,6 @@ def main() -> Any:
     logger.info(f"Found {len(component_dirs)} candidate component directories")
 
     results = []
-    production-ready
-    production-ready
     missing_docs_components = []
 
     for comp_dir in component_dirs:
@@ -213,18 +198,12 @@ def main() -> Any:
         if not info['has_required_docs']:
             missing_docs_components.append(str(comp_dir))
 
-        production-ready
-            production-ready
-        production-ready
-            production-ready
 
     report_data = build_report(results, Path(args.report))
 
     logger.info('SCAN SUMMARY:')
     logger.info(f'  component dirs: {len(component_dirs)}')
     logger.info(f'  components required documentation: {len(missing_docs_components)}')
-    production-ready
-    production-ready
     logger.info(f'  report written to {args.report}')
 
     if missing_docs_components:
@@ -232,11 +211,8 @@ def main() -> Any:
         for entry in missing_docs_components[:20]:
             logger.info('  -', entry)
 
-    production-ready
-        production-ready
         exit(1)
 
-    production-ready
     exit(0)
 
 

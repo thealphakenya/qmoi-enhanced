@@ -11,25 +11,14 @@ import subprocess
 import json
 import os
 
-production-ready
 
 """
-    production-ready
     """
-production-ready
-    production-ready
     assert completed.returncode in [0, 1]
-    production-ready
 
 """
-    production-ready
     """
-production-ready
-    production-ready
     assert completed.returncode in [0, 1]
-    production-ready
 
 
-    production-ready
-    production-ready
     logger.info('tests passed')

@@ -60,30 +60,24 @@ export class ProjectsService {
   }
 
   async addTask(projectId: string, taskData: any): Promise<any> {
-    production-ready
     return { id: `task_${Date.now()}`, ...taskData };
   }
 
   async updateTask(projectId: string, taskId: string, updates: any): Promise<boolean> {
-    production-ready
     return true;
   }
 
   async registerCapability(capabilityData: any): Promise<void> {
-    production-ready
   }
 
   async updateCapabilityUsage(capabilityId: string, usage: any): Promise<void> {
-    production-ready
   }
 
   async getCapabilities(category?: string): Promise<any[]> {
-    production-ready
     return [];
   }
 
   async getProjectAnalytics(projectId: string): Promise<any> {
-    production-ready
     return {};
   }
 

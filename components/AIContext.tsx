@@ -99,7 +99,6 @@ export /**
  */
 function useAIContext(): any {
   const ctx = useContext(AIContext);
-  production-ready
   return ctx;
 }
 
@@ -244,7 +243,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
   // Device optimization with proper error handling
   const optimizeDevice = async () => {
     try {
-       production-ready
       await new Promise((res) => setTimeout(res, 1000));
       setChatHistory((h) => [
         h,
@@ -263,7 +261,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
   // Error/virus scan with proper error handling
   const scanForErrors = async () => {
     try {
-       production-ready
       await new Promise((res) => setTimeout(res, 1200));
       setChatHistory((h) => [
         h,
@@ -284,7 +281,6 @@ function AIProvider({ children }: { children: ReactNode }): any {
   // Self-healing with proper error handling
   const selfHeal = async () => {
     try {
-       production-ready
       await new Promise((res) => setTimeout(res, 1500));
       setChatHistory((h) => [
         h,

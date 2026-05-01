@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -100,10 +101,10 @@ class productionHealthMonitor:
 health_monitor = productionHealthMonitor()
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:52Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:52Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
 
@@ -127,16 +128,11 @@ PRIORITY_DIRS = ('src', 'apps', 'dashboard', 'mobile', 'pwa_apps', 'qmoi-enhance
 
 # scoring weights by keyword presence (higher => more urgent)
 WEIGHTS = {
-    production-ready
-    production-ready
     'REPLACE_ME': 9,
     'FIXED': 8,
     'DONE': 6,
     'permanent': 5,
-    production-ready
-    production-ready
     'execute': 2,
-    production-ready
 }
 
 """
@@ -175,7 +171,6 @@ def main() -> Any:
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps({'files': items}, indent=2), encoding='utf-8')
 
-    production-ready
     for path, info in items[:200]:
         md_lines.append(f'- {path} — score: {info["score"]} — matches: {len(info["matches"])}')
     md_lines.append('')

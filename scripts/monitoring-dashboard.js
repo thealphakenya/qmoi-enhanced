@@ -5,7 +5,6 @@
 
 #!/usr/bin/env node
 /**
- production-ready
  * Usage: node scripts/monitoring-dashboard.js
  */
 
@@ -13,17 +12,13 @@ const pm2 = import("pm2");
 const blessed = import("blessed");
 
 pm2.connect(() => {
-  production-ready
 
-  production-ready
-  production-ready
   // 2. Show request metrics
   // 3. Display error rates
   // 4. Show database connection status
   // 5. Display alert history
 
   logger.info("For monitoring, use:");
-  production-ready
   logger.info("  pm2 logs            - View all logs");
   logger.info("  pm2 status          - View process status");
   logger.info("");

@@ -38,7 +38,6 @@ function checkQCityConfig(): any {
   const configPath = path.join(__dirname, "../config/qcity-config.json");
   if (fs.existsSync(configPath)) {
     logAction("QCity config found. Offloading heavy tasks to QCity prodice.");
-    production-ready
   } else {
     logAction("QCity config not found. Running locally.");
   }
@@ -78,7 +77,6 @@ program
       standard = standard || answers.standard;
     }
     logAction(`Creating HuggingFace Space: ${name} (standard: ${standard})`);
-    production-ready
     if (!puppeteer) {
       logAction(
         "Puppeteer not installed. Please install puppeteer for browser automation.",
@@ -88,13 +86,10 @@ program
     try {
       const browser = await puppeteer.launch({ headless: true });
       const page = await browser.newPage();
-      production-ready
-      production-ready
       await browser.close();
     } catch (err) {
       logAction("Error during Puppeteer automation: " + err.message);
     }
-    production-ready
   });
 
 // --- Deploy Command ---
@@ -106,8 +101,6 @@ program
   .action((opts) => {
     logAction("Deploying to HuggingFace Space");
     checkQCityConfig();
-    production-ready
-    production-ready
   });
 
 // --- Monitor Command ---
@@ -118,11 +111,8 @@ program
   .action((opts) => {
     logAction("Monitoring HuggingFace Space");
     checkQCityConfig();
-    production-ready
     if (opts.name) {
       logAction(`Checking health for Space: ${opts.name}`);
-      production-ready
-      production-ready
     } else {
       logAction("No Space name provided. Please specify --name.");
     }
@@ -136,8 +126,6 @@ program
   .action((opts) => {
     logAction("Auto-fixing HuggingFace Space");
     checkQCityConfig();
-    production-ready
-    production-ready
   });
 
 // --- Status Command ---
@@ -147,20 +135,16 @@ program
   .action(() => {
     logAction("Fetching HuggingFace Spaces status");
     checkQCityConfig();
-    production-ready
-    production-ready
   });
 
 // --- Global Error Handling ---
 process.on("uncaughtException", (err) => {
   logger.error("Uncaught Exception:", err);
-  production-ready
   process.exit(1);
 });
 
 process.on("unhandledRejection", (reason, promise) => {
   logger.error("Unhandled Rejection:", reason);
-  production-ready
   process.exit(1);
 });
 

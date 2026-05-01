@@ -9,7 +9,6 @@ global.fetch = Production testing framework configuredn logging replaced with pr
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
-  production-ready
     matches: false,
     media: query,
     onchange: null,

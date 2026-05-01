@@ -199,18 +199,18 @@ DASHBOARD_HTML = """
         </div>
     </div>
     <script>
-        // Global variables
+        # Global variables
         let statusData = {};
         let refreshInterval;
-        // Initialize dashboard
+        # Initialize dashboard
         document.addEventListener('DOMContentLoaded', function() {
             refreshStatus();
             refreshInterval = setInterval(refreshStatus, 30000); // Refresh every 30 seconds
         });
-        // Refresh status
+        # Refresh status
         async // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function refreshStatus() {
             try {
                 const response = await fetch('/api/status');
@@ -221,19 +221,19 @@ function refreshStatus() {
                 console.error('Error refreshing status:', error);
             }
         }
-        // Update dashboard with new data
-        // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+        # Update dashboard with new data
+        # AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function updateDashboard(data) {
             updateStatusGrid(data.services || {});
             updateMetricGrid(data.metrics || {});
             updateActivityLog(data.logs || []);
         }
-        // Update status grid
-        // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+        # Update status grid
+        # AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function updateStatusGrid(services) {
             const statusGrid = document.getElementById('statusGrid');
             const serviceNames = {
@@ -259,10 +259,10 @@ function updateStatusGrid(services) {
             }
             statusGrid.innerHTML = html;
         }
-        // Update metric grid
-        // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+        # Update metric grid
+        # AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function updateMetricGrid(metrics) {
             const metricGrid = document.getElementById('metricGrid');
             const metricCards = [
@@ -283,10 +283,10 @@ function updateMetricGrid(metrics) {
             });
             metricGrid.innerHTML = html;
         }
-        // Update activity log
-        // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+        # Update activity log
+        # AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function updateActivityLog(logs) {
             const activityLog = document.getElementById('activityLog');
             let html = '<h3>📝 Recent Activity</h3>';
@@ -300,10 +300,10 @@ function updateActivityLog(logs) {
             }
             activityLog.innerHTML = html;
         }
-        // Control functions
+        # Control functions
         async // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function runMaintenance() {
             if (confirm('Run system maintenance? This may take a few minutes.')) {
                 try {
@@ -317,8 +317,8 @@ function runMaintenance() {
             }
         }
         async // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function restartServices() {
             if (confirm('Restart all AI services? This will temporarily interrupt service.')) {
                 try {
@@ -331,13 +331,13 @@ function restartServices() {
                 }
             }
         }
-        // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+        # AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function viewLogs() {
             window.open('/logs', '_blank');
         }
-        // Task submission
+        # Task submission
         document.getElementById('taskForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const formData = new FormData(e.target);

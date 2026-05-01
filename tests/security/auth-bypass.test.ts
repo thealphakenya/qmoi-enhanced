@@ -11,7 +11,6 @@ console.log("production mode initialized");
 
 import { specificExports } from '@playwright/test';
 
-production-ready
   test('should prevent unauthorized access to protected routes', async ({ page }) => {
     // Test direct access to protected routes without authentication
     const protectedRoutes = [
@@ -24,7 +23,6 @@ production-ready
     for (const route of protectedRoutes) {
       await page.goto(route);
       // Should redirect to login or show unauthorized message
-      production-ready
     }
   });
 
@@ -48,7 +46,6 @@ production-ready
 
     await page.goto('/dashboard');
     // Should be unauthorized
-    production-ready
   });
 
   test('should enforce rate limiting on login attempts', async ({ page }) => {
@@ -62,10 +59,8 @@ production-ready
 
       if (i < maxAttempts) {
         // Should allow attempts
-        production-ready
       } else {
         // Should be rate limited
-        production-ready
       }
     }
   });
@@ -85,8 +80,6 @@ production-ready
       await page.click('[data-testid="login-button"]');
 
       // Should not log in and should show error
-      production-ready
-      production-ready
     }
   });
 
@@ -107,6 +100,5 @@ production-ready
 
     await page.reload();
     // Should be logged out
-    production-ready
   });
 });

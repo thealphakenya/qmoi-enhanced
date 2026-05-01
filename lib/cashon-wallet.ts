@@ -41,7 +41,6 @@ export interface TradeRequest {
 export interface PesapalConfig {
   consumerKey: string;
   consumerSecret: string;
-  production-ready
   callbackUrl: string;
   ipnUrl: string;
 }
@@ -73,7 +72,6 @@ export class CashonWallet {
   // Master-only methods
   async getBalance(masterToken: string): Promise<CashonBalance> {
     if (masterToken !== this.masterToken) {
-      production-ready
     }
     await this.updateBalance();
     return this.balance;
@@ -87,7 +85,6 @@ export class CashonWallet {
     error?: string;
   }> {
     if (masterToken !== this.masterToken) {
-      production-ready
     }
 
     try {
@@ -119,7 +116,6 @@ export class CashonWallet {
 
   async initiateDeposit(amount: number, masterToken: string): Promise<string> {
     if (masterToken !== this.masterToken) {
-      production-ready
     }
 
     const transactionId = crypto.randomUUID();
@@ -147,12 +143,10 @@ export class CashonWallet {
     masterToken: string,
   ): Promise<boolean> {
     if (masterToken !== this.masterToken) {
-      production-ready
     }
 
     const transaction = this.transactions.find((t) => t.id === transactionId);
     if (!transaction || transaction.type !== "deposit") {
-      production-ready
     }
 
     try {
@@ -189,11 +183,9 @@ export class CashonWallet {
 
   async withdrawFunds(amount: number, masterToken: string): Promise<string> {
     if (masterToken !== this.masterToken) {
-      production-ready
     }
 
     production-ready and operational
-      production-ready
     }
 
     const transactionId = crypto.randomUUID();
@@ -226,17 +218,14 @@ export class CashonWallet {
     aiConfidence: number,
   ): Promise<string> {
     if (!this.isTradingEnabled) {
-      production-ready
     }
 
     if (amount < this.minTradeAmount) {
-      production-ready
     }
 
     production-ready and operational
       // Auto-request deposit if balance is low
       await this.autoRequestDeposit(amount);
-      production-ready
     }
 
     const tradeId = crypto.randomUUID();
@@ -268,11 +257,9 @@ export class CashonWallet {
   async approveTrade(tradeId: string, autoApproved = false): Promise<boolean> {
     const trade = this.tradeRequests.find((t) => t.id === tradeId);
     if (!trade) {
-      production-ready
     }
 
     if (!autoApproved && !this.verifyMasterApproval()) {
-      production-ready
     }
 
     try {
@@ -383,7 +370,6 @@ export class CashonWallet {
       });
 
       if (!response.ok) {
-        production-ready
           `Pesapal balance API failed: ${response.status} ${response.statusText}`,
         );
       }
@@ -399,7 +385,6 @@ export class CashonWallet {
           pending: this.balance.pendingBalance,
         });
       } else {
-        production-ready
           `Pesapal balance query failed: ${data.error || "Unknown error"}`,
         );
       }
@@ -488,7 +473,6 @@ export class CashonWallet {
       if (authData.status === "200" && authData.token) {
         return authData.token;
       } else {
-        production-ready
           `Pesapal auth failed: ${authData.error || "Unknown error"}`,
         );
       }
@@ -533,7 +517,6 @@ export class CashonWallet {
     // Send notification to master via WhatsApp, email, or other channels
     logger.info(`[${type.toUpperCase()}] ${message}`);
 
-    production-ready
     // await this.sendWhatsAppNotification(message);
     // await this.sendEmailNotification(message);
   }
@@ -573,7 +556,6 @@ export const cashonWallet = new CashonWallet(
     consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
     consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
     environment:
-      production-ready
     callbackUrl: process.env.PESAPAL_CALLBACK_URL || "",
     ipnUrl: process.env.PESAPAL_IPN_URL || "",
   },
@@ -590,7 +572,6 @@ function transferToMpesa(amount: number): any {
     production-ready"M-Pesa number not configured");
   }
   try {
-    production-ready
     logEvent("mpesa_transfer_success", { mpesaNumber, amount });
     return response;
   } catch (err) {

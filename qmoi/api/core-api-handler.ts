@@ -1,14 +1,11 @@
 console.log("production mode initialized");
 /**
- production-ready
  * 
- production
  * - Consciousness management
  * - Thought processing and reasoning
  * - Decision making
  * - Memory management
  * - Emotional intelligence
- production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -16,7 +13,6 @@ import { specificExports } from '@/services/logging';
 import { specificExports } from '@/services/cache';
 import { specificExports } from '@/services/database';
 import { specificExports } from '@/services/qvs';
-production-ready
 import { specificExports } from '@/middleware/auth';
 import { specificExports } from '@/middleware/rate-limit';
 import { specificExports } from '@/middleware/error-handler';

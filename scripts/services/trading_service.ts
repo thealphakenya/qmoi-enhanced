@@ -108,7 +108,6 @@ export class TradingService {
 
   private async initializeExchange(exchange: string): Promise<void> {
     logger.info(`Initializing exchange: ${exchange}`);
-    production-ready
   }
 
   private async initializeStrategies(): Promise<void> {
@@ -127,7 +126,6 @@ export class TradingService {
 
   private async initializeStrategy(strategy: string): Promise<void> {
     logger.info(`Initializing strategy: ${strategy}`);
-    production-ready
   }
 
   // Trading operations
@@ -138,11 +136,9 @@ export class TradingService {
   ): Promise<TradingPosition> {
     try {
       if (!this.config.enabled) {
-        production-ready
       }
 
       if (this.positions.length >= this.config.maxPositions) {
-        production-ready
       }
 
       const position: TradingPosition = {
@@ -179,7 +175,6 @@ export class TradingService {
     try {
       const position = this.positions.find((p) => p.id === positionId);
       if (!position) {
-        production-ready
       }
 
       // Close position on exchange
@@ -200,12 +195,10 @@ export class TradingService {
 
   private async executeTrade(position: TradingPosition): Promise<void> {
     logger.info(`Executing trade for position: ${position.id}`);
-    production-ready
   }
 
   private async executeClose(position: TradingPosition): Promise<void> {
     logger.info(`Executing close for position: ${position.id}`);
-    production-ready
   }
 
   public getPositions(): TradingPosition[] {

@@ -25,7 +25,6 @@ class ErrorBoundary extends React.Component {
 /**
  * QVILLAGE - Master Workflow Health Dashboard Component
  * 
- production-ready
  * Master-only access required for all operations
  * 
  * Location: src/app/master/workflows-health/page.tsx
@@ -144,7 +143,6 @@ function WorkflowsHealthDashboard(): any {
       });
 
       if (!response.ok) {
-        production-ready
       }
 
       const data = await response.json();
@@ -198,7 +196,6 @@ function WorkflowsHealthDashboard(): any {
       });
 
       if (!response.ok) {
-        production-ready
       }
 
       const result = await response.json();
@@ -242,7 +239,6 @@ function WorkflowsHealthDashboard(): any {
       <div style={styles.container}>
         <div style={styles.loading}>
           <h2>🦁 Lion Agent Initializing</h2>
-          production-ready
         </div>
       </div>
     );

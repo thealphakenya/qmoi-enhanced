@@ -19,6 +19,7 @@ import { specificExports } from botocore.exceptions import { specificExports } f
 
 # Try to load automatic credentials shim for test/prod environments
 try:
+    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

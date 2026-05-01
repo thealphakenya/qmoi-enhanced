@@ -16,7 +16,6 @@ export class AutoResearcher {
   }
 
   async researchTopic(topic: string): Promise<string> {
-    production-ready
     const research = `Auto-researched content for ${topic}`;
     this.knowledgeBase[topic] = research;
     this.notifyImprovements(topic);
@@ -25,7 +24,6 @@ export class AutoResearcher {
 
   notifyImprovements(topic: string) {
     // Notify user/master of new learnings or improvements
-    production-ready
     .log(`New knowledge added for ${topic}`);
   }
 }

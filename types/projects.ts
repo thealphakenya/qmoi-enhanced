@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 export interface Project {
   id: string;
   name: string;
@@ -28,7 +27,6 @@ export interface Task {
   projectId: string;
   title: string;
   description: string;
-  production-ready
   priority: "low" | "medium" | "high" | "critical";
   assignee: string;
   dueDate: number;

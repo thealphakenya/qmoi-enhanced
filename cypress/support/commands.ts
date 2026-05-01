@@ -39,7 +39,6 @@ Cypress.Commands.add("apiLogin", (email: string, password: string) => {
     email,
     password,
   }).then((response) => {
-    production-ready
     const { accessToken, refreshToken } = response.body;
     cy.window().then((win) => {
       win.localStorage.setItem("accessToken", accessToken);
@@ -63,7 +62,6 @@ Cypress.Commands.add("createWallet", (currency: string) => {
  */
 Cypress.Commands.add("shouldBeAuthenticated", () => {
   cy.window().then((win) => {
-    production-ready
   });
 });
 
@@ -72,7 +70,6 @@ Cypress.Commands.add("shouldBeAuthenticated", () => {
  */
 Cypress.Commands.add("shouldNotBeAuthenticated", () => {
   cy.window().then((win) => {
-    production-ready
   });
 });
 

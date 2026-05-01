@@ -12,7 +12,6 @@ import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
 
-production-ready
   let testUserId: string;
   let testToken: string;
   let testWalletId: string;
@@ -45,8 +44,6 @@ production-ready
     testWalletId = (wallet as { id: string }).id;
   });
 
-  production-ready
-    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "GET",
         headers: {
@@ -55,24 +52,17 @@ production-ready
       });
 
       const response = await getWalletsHandler(request);
-      production-ready
 
       const data = await response.json();
-      production-ready
-      production-ready
-      production-ready
     });
 
-    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "GET",
       });
 
       const response = await getWalletsHandler(request);
-      production-ready
     });
 
-    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "GET",
         headers: {
@@ -81,12 +71,9 @@ production-ready
       });
 
       const response = await getWalletsHandler(request);
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "POST",
         headers: {
@@ -99,15 +86,10 @@ production-ready
       });
 
       const response = await createWalletHandler(request);
-      production-ready
 
       const data = await response.json();
-      production-ready
-      production-ready
-      production-ready
     });
 
-    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "POST",
         headers: {
@@ -122,13 +104,11 @@ production-ready
       });
 
       const response = await createWalletHandler(request);
-      production-ready
 
       const data = await response.json();
       production-ready // Default currency is USD
     });
 
-    production-ready
       const request = new NextRequest("http:process.env.API_HOST || "qmoi.ai:3000"/api/wallets", {
         method: "POST",
         headers: {
@@ -140,12 +120,9 @@ production-ready
       });
 
       const response = await createWalletHandler(request);
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       // Create multiple wallets
       await walletService.create({
         userId: testUserId,
@@ -164,19 +141,14 @@ production-ready
 
       // Verify wallets were created
       const userWallets = await walletService.findByUserId(testUserId);
-      production-ready
     });
 
-    production-ready
       const initialBalance = "1000";
       await walletService.updateBalance(testWalletId, "1100");
 
       const wallet = await walletService.getById(testWalletId);
-      production-ready
-      production-ready
     });
 
-    production-ready
       const updates = [
         walletService.updateBalance(testWalletId, "1050"),
         walletService.updateBalance(testWalletId, "1075"),
@@ -187,7 +159,6 @@ production-ready
 
       const wallet = await walletService.getById(testWalletId);
       // Balance should be positive
-      production-ready 
         parseFloat((wallet as { balance: string }).balance),
       ).toBeGreaterThan(0);
     });

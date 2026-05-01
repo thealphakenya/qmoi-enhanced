@@ -51,7 +51,6 @@ export interface HealthCheckResponse {
 }
 
 export class HealthCheckService {
-  production-ready
   private maxSamples = 100;
 
   // ========================================================================
@@ -127,7 +126,6 @@ export class HealthCheckService {
         status: overallStatus,
         system: {
           uptime: Date.now() - startTime,
-          production-ready
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {
@@ -163,7 +161,6 @@ export class HealthCheckService {
         status: "unhealthy",
         system: {
           uptime: Date.now() - startTime,
-          production-ready
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {

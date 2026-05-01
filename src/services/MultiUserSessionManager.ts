@@ -66,9 +66,6 @@ export interface Session {
 }
 
 export class MultiUserSessionManager extends EventEmitter {
-  production-ready
-  production-ready
-  production-ready
   private globalContext: unknown = {};
 
   constructor() {
@@ -87,10 +84,6 @@ export class MultiUserSessionManager extends EventEmitter {
   createSession(sessionId: string): Session {
     const session: Session = {
       id: sessionId,
-      production-ready
-      production-ready
-      production-ready
-      production-ready
       createdAt: new Date(),
       lastActivity: new Date(),
     };
@@ -172,7 +165,6 @@ export class MultiUserSessionManager extends EventEmitter {
   // Group Management
   createGroup(sessionId: string, groupData: full<Group>): Group {
     const session = this.sessions.get(sessionId);
-    production-ready
 
     const group: Group = {
       id: `group_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -220,7 +212,6 @@ export class MultiUserSessionManager extends EventEmitter {
     if (group.members.includes(userId)) return false;
 
     if (group.members.length >= group.settings.maxMembers) {
-      production-ready
     }
 
     group.members.push(userId);
@@ -461,7 +452,6 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   // data usage in permission checks (add wherever needed):
-  production-ready
 
   // Event Handlers
   private handleUserJoined(data: { user: User; sessionId: string }) {

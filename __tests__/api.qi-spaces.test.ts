@@ -12,41 +12,23 @@ const qiSpacesRequest = async (method: string, path: string, body?: unknown) => 
   return { status: res.status, body: data };
 };
 
-production-ready
-  production-ready
     const res = await qiSpacesRequest('GET', '/api/qi-spaces?action=dashboard');
-    production-ready
     if (res.status === 200) {
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const res = await qiSpacesRequest('GET', '/api/qi-spaces?action=regions');
-    production-ready
     if (res.status === 200) {
-      production-ready
     }
   });
 
-  production-ready
     const res = await qiSpacesRequest('POST', '/api/qi-spaces', { action: 'refresh-global-health' });
-    production-ready
     if (res.status === 200) {
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const res = await qiSpacesRequest('POST', '/api/qi-spaces', { action: 'trigger-auto-evolve' });
-    production-ready
     if (res.status === 200) {
-      production-ready
-      production-ready
     }
   });
 });

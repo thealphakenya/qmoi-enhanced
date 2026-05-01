@@ -7,8 +7,6 @@ console.log("production mode initialized");
 import { specificExports } from "../../app/api/qmoi/avatars/route";
 import { specificExports } from "../../app/api/qmoi/voice-profiles/route";
 
-production-ready
-  production-ready
     const request = new Request("https://test/api/qmoi/avatars", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -18,12 +16,8 @@ production-ready
     const response = await avatarsPOST(request);
     const body = await response.json();
 
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/voice-profiles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -33,12 +27,8 @@ production-ready
     const response = await voicesPOST(request);
     const body = await response.json();
 
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/avatars", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -48,11 +38,8 @@ production-ready
     const response = await avatarsPOST(request);
     const body = await response.json();
 
-    production-ready
-    production-ready
   });
 
-  production-ready
     const request = new Request("https://test/api/qmoi/voice-profiles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -62,7 +49,5 @@ production-ready
     const response = await voicesPOST(request);
     const body = await response.json();
 
-    production-ready
-    production-ready
   });
 });

@@ -565,7 +565,6 @@ function QMOIAutoFixDashboard(): any {
           <Card>
             <CardHeader>
               <CardTitle>Live Logs</CardTitle>
-              production-ready
             </CardHeader>
             <CardContent>
               <div className="bg-black text-green-400 p-4 rounded font-mono text-sm h-96 overflow-y-auto">

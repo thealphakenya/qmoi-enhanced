@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

@@ -241,7 +241,6 @@ export async function DELETE(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    production
     // For now, we'll return NOT YET CALLED
     return NextResponse.json({
       success: false,

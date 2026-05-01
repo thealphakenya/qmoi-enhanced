@@ -2,12 +2,11 @@
     import logging
     logger = logging.getLogger(__name__)
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:20Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:20Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 """
 Storage optimization for Q-city application.
 """
@@ -27,6 +26,7 @@ def clean_temp_dirs(temp_dirs=None) -> Any:
         if path.exists() and path.is_dir():
             for item in path.iterdir():
                 try:
+                    pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

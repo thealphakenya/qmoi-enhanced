@@ -75,7 +75,6 @@ function QMOIGitLabClone({ className }: QMOIGitLabCloneProps): any {
   const [errorCount, setErrorCount] = useState(0);
   const [successCount, setSuccessCount] = useState(0);
 
-  production-ready
   useEffect(() => {
     if (monitoringActive) {
       const interval = setInterval(() => {
@@ -442,7 +441,6 @@ function QMOIGitLabClone({ className }: QMOIGitLabCloneProps): any {
 
             <Card>
               <CardHeader>
-                production-ready
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">

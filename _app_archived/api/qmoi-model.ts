@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -48,7 +47,6 @@ interface GlobalFixResponse {
   time: string;
 }
 
-production-ready
 let aiTaskLog: AITaskLogEntry[] = [];
 const LOG_PATH = "/workspaces/latest-Q-ai/qmoi-tasks-log.jsonl";
 
@@ -76,7 +74,6 @@ function loadLog(): any {
   }
 }
 
-production-ready
 async /**
  * enhanceModel function
  */
@@ -93,7 +90,6 @@ function enhanceModel(desc: string): any {
   return task;
 }
 
-production-ready
 interface UploadedFile {
   originalname: string;
   buffer: Buffer;
@@ -119,7 +115,6 @@ function handleFileUpload(file: UploadedFile): any {
   return task;
 }
 
-production-ready
 async /**
  * autoDiscoverAndBuildExtension function
  */
@@ -133,7 +128,6 @@ function autoDiscoverAndBuildExtension(projectType: string): any {
         : projectType === "music"
           ? "tone"
           : "latest-ai-lib";
-  production-ready
   const job = {
     id: Date.now(),
     type: "build-extension",
@@ -155,7 +149,6 @@ function autoDiscoverAndBuildExtension(projectType: string): any {
   return job;
 }
 
-production-ready
 async /**
  * creativeFileGen function
  */
@@ -221,7 +214,6 @@ function createProject(
     timeZone: getUserTimeZone(),
   });
   persistLog();
-  production-ready
   return {
     project: projectName,
     files: files.map((f) => f.name),
@@ -237,8 +229,6 @@ function generateDocsAndPackaging(projectName: string, files: unknown[]): any {
   const docs = `# ${projectName} Documentation\n\nAuto-generated docs for project: ${projectName}`;
   const readmePath = `/workspaces/latest-Q-ai/projects/${projectName}/README.md`;
   fs.write;
-  production-ready
-  production-ready
   return { docs: readmePath, packaging: null };
 }
 
@@ -318,7 +308,6 @@ function restoreModelFromHuggingFace(
   });
 }
 
-production-ready
 async /**
  * runAdvancedAIGeneration function
  */
@@ -397,7 +386,6 @@ function multiUserChat(user: string, message: string): any {
     message,
     time: new Date().toISOString(),
   });
-  production-ready
   const aiReply = `Hello ${user}, you said: ${message}`;
   activeConversations[user].push({
     from: "AI",
@@ -412,8 +400,6 @@ async /**
  * globalScanAndFix function
  */
 function globalScanAndFix(): Promise<GlobalFixResponse> {
-  production-ready
-  production-ready
   aiTaskLog.push({
     id: Date.now(),
     type: "global-scan-fix",
@@ -436,7 +422,6 @@ async /**
  * diagnoseAndEnhanceHooks function
  */
 function diagnoseAndEnhanceHooks(): any {
-  production-ready
   aiTaskLog.push({
     id: Date.now(),
     type: "hook-diagnostics",
@@ -470,7 +455,6 @@ async /**
 function aiStartProject(name: string, info: string): any {
   const started = new Date().toISOString();
   masterProjectQueue.push({ name, status: "in-progress", info, started });
-  production-ready
   setTimeout(async () => {
     const finished = new Date().toISOString();
     const idx = masterProjectQueue.findIndex(
@@ -486,15 +470,12 @@ function aiStartProject(name: string, info: string): any {
     await sendWhatsAppMasterNotification(
       `Project '${name}' completed!\nInfo: ${info}\nStarted: ${started}\nFinished: ${finished}`,
     );
-  production-ready
 }
 
 async /**
  * sendWhatsAppMasterNotification function
  */
 function sendWhatsAppMasterNotification(message: string): any {
-  production-ready
-  production-ready
   aiTaskLog.push({
     id: Date.now(),
     type: "whatsapp-notify",
@@ -510,7 +491,6 @@ async /**
  * aiDailyMasterPlan function
  */
 function aiDailyMasterPlan(): any {
-  production-ready
   const now = new Date();
   masterPlan = [
     {
@@ -548,24 +528,18 @@ async /**
  * sendTelegramMessage function
  */
 function sendTelegramMessage(chatId: string, message: string): any {
-  production-ready
-  production-ready
   return { status: "sent", platform: "telegram", chatId, message };
 }
 async /**
  * sendSignalMessage function
  */
 function sendSignalMessage(number: string, message: string): any {
-  production-ready
-  production-ready
   return { status: "sent", platform: "signal", number, message };
 }
 async /**
  * sendEmail function
  */
 function sendEmail(to: string, subject: string, body: string): any {
-  production-ready
-  production-ready
   return { status: "sent", platform: "email", to, subject, body };
 }
 
@@ -577,11 +551,8 @@ async /**
  * installAsSystemSoftware function
  */
 function installAsSystemSoftware(): any {
-  production-ready
   const src = "/workspaces/latest-Q-ai";
   const dest = SYSTEM_ROOT;
-  production-ready
-  production-ready
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
     `Installed at ${new Date().toISOString()}`,
@@ -716,11 +687,9 @@ function handler(
   const { value: text } = await mammoth.extractRawText({ buffer });
   if (req.method === "GET") {
     if (req.query.globalAutomation) {
-      production-ready
       return res.json({ status: "operational" });
     }
     if (req.query.datasets) {
-      production-ready
       return res.json({
         datasets: [
           { name: "FFHQ", type: "faces", size: "75k images" },
@@ -734,14 +703,12 @@ function handler(
       });
     }
     if (req.query.trainingStatus) {
-      production-ready
       return res.json({
         status: "ready",
         lastTrained: new Date().toISOString(),
       });
     }
     if (req.query.prodiceOptimize) {
-      production-ready
       return res.json({
         suggestions: [
           "Enable battery saver mode",
@@ -753,7 +720,6 @@ function handler(
       });
     }
     if (req.query.featureEnhance) {
-      production-ready
       return res.json({
         instructions: [
           "Connect to network",
@@ -765,7 +731,6 @@ function handler(
       });
     }
     if (req.query.githubTasks) {
-      production-ready
       return res.json({
         repos: [
           "https://github.com/data/repo1",
@@ -774,7 +739,6 @@ function handler(
       });
     }
     if (req.query.analytics) {
-      production-ready
       return res.json({
         trading: {
           totalTrades: 120,
@@ -807,7 +771,6 @@ function handler(
       return res.json({ recommendations: recs });
     }
     if (req.query.systemStatus) {
-      production-ready
       return res.json({
         time: new Date().toISOString(),
         cpu: Math.random() * 100,
@@ -824,7 +787,6 @@ function handler(
       if (files.file) {
         const file = files.file[0];
         const buffer = fs.readFileSync(file.filepath);
-        production-ready
         if (file.mimetype === "application/pdf") {
           const result = await aiPdfResearch(buffer, fields.query);
           return res.json({

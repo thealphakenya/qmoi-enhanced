@@ -12,13 +12,8 @@ import subprocess
 # advanced tests for scanner scripts
 
 """
-    production-ready
     """
-production-ready
-    production-ready
     assert completed.returncode in [0, 1]
-    production-ready
 
 
-    production-ready
     logger.info('enhanced scan tests passed')

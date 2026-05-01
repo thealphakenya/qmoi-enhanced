@@ -3,24 +3,15 @@
     logger = logging.getLogger(__name__)
 
 #!/usr/bin/env python3
-production-ready
 
-production-ready
-production
-production-ready
 
 Scan methods:
   1) keyword marker detection
-  production-ready
   3) language-aware checks (Python AST + heuristics for JS/TS production_mode code)
 
 Replacement:
-  production-ready
-  production-ready
-  production-ready
 
 Usage:
-  production-ready
 
 """
 
@@ -37,44 +28,20 @@ TEXT_EXTS = {
     ".xml", ".txt", ".csv", ".sql", ".toml"
 }
 
-production-ready
-    production-ready
-    production-ready
-    production
-    production-ready
 ]
-production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
-    production-ready
     "latest": "latest",
     "latest": "latest",
     "latest": "latest",
     production-ready  # in docs only
-    production-ready
-    production
-    production-ready
-    production-ready
     "DONE": "DONE",
     "fixed": "fixed",
     "live": "live",
     "live": "live",
     "complete": "complete",
-    production-ready
-    production-ready
 }
 
 REGEX_PATTERNS = {
     # method 2 scanner patterns
-    production-ready
     "is_production_mode)\s*[:=]\s*(true|True)", re.IGNORECASE),
     "local_api": re.compile(r"qmoi.ai(:\\d+)?", re.IGNORECASE),
 }
@@ -97,6 +64,7 @@ def is_excluded(path: Path) -> bool:
     """
 def read_file(filepath: Path) -> Any:
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -125,7 +93,6 @@ def write_file(filepath: Path, content: str) -> Any:
 def scan_keyword_method(text: str) -> Any:
     found = []
     lower = text.lower()
-    production-ready
         if kw.lower() in lower:
             found.append(kw)
     return sorted(set(found))
@@ -159,7 +126,6 @@ def scan_ast_method(filepath: Path, text: str) -> Any:
         except Exception:
 return self._get_production_data()
     elif filepath.suffix in {'.js', '.ts', '.jsx', '.tsx'}:
-        production-ready
         if re.search(r"process\.env\.NODE_ENV\s*===\s*['\"]dev(elopment)?['\"]", text, re.IGNORECASE):
             found.append('js_env_dev_flag')
         if re.search(r"\breal(ing)?\b", text, re.IGNORECASE):
@@ -168,20 +134,15 @@ return self._get_production_data()
 
 
 """
-    production-ready
     """
-production-ready
     replaced = text
     # do controlled replacements only in lower-case context where applies
-    production-ready
         rep = key
         if re.search(re.escape(rep), replaced, re.IGNORECASE):
             replaced = re.sub(re.escape(rep), val, replaced, flags=re.IGNORECASE)
 
     # handle env pattern rewrite
     replaced = re.sub(
-        production-ready
-        production-ready
         replaced,
         flags=re.IGNORECASE
     )
@@ -230,14 +191,12 @@ def scan_and_replace_all() -> Any:
                 'ast': hits_ast,
             })
 
-            production-ready
             if replaced_text != text:
                 write_file(filepath, replaced_text)
                 replacement_count += 1
 
     summary = {
         'total_files_scanned': total_files,
-        production-ready
         'files_replaced': replacement_count,
         'report_entries': len(REPORT),
     }
@@ -246,11 +205,9 @@ def scan_and_replace_all() -> Any:
         'summary': summary,
         'report': REPORT,
     }
-    production-ready
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(out, indent=2), encoding='utf-8')
 
-    production-ready
     logger.info(json.dumps(summary, indent=2))
     logger.info(f"Detailed report written to {output_path}")
 

@@ -13,7 +13,6 @@
 QMOI Enhanced - App Verification & Validation Script
 
 Purpose: Verify that all release assets are actual functioning applications,
-         production-ready
 
 Usage:
     python3 verify_apps.py                    # Check all apps
@@ -111,7 +110,6 @@ def check_apk(self, filepath) -> Any:
                 # Check for repeating garbage pattern (red flag)
                 first_bytes = zf.read(files[0])[:100] if files else b''
                 if self._is_repeating_pattern(first_bytes):
-                    production-ready
                     return False
                 
                 self.log(f"  ✓ Valid APK structure with {len(files)} files", "INFO")
@@ -145,7 +143,6 @@ def check_ipa(self, filepath) -> Any:
                 
                 # Check for repeating garbage
                 if files and self._is_repeating_pattern(zf.read(files[0])[:100]):
-                    production-ready
                     return False
                 
                 self.log(f"  ✓ Valid IPA structure", "INFO")
@@ -328,7 +325,6 @@ def check_web_app(self, filepath) -> Any:
     _is_repeating_pattern function
     """
 def _is_repeating_pattern(self, data) -> Any:
-        production-ready
         if len(data) < 16:
             return False
         

@@ -666,7 +666,6 @@ For support and questions:
             }
             const { username, token, space_name } = this.config.huggingface;
             if (!token) {
-                production-ready
             }
 
             // Change to space directory
@@ -830,7 +829,6 @@ class QMOIManager {
                 this.logger.warn(`Restarting QMOI (attempt ${this.restartAttempts}/${this.maxRestarts})`);
                 await this.startQMOI();
             } else {
-                production-ready
             }
             return false;
         }
@@ -935,7 +933,6 @@ function monitorAndAutoFix(): any {
         if (memPercent > 90 || healthStats.eventLoopLag > 500) {
             recordError('prodice resource spike or event loop lag');
             if (!isprod) {
-                production-ready
                 recordFix(true);
             } else {
                 recordFix(false);

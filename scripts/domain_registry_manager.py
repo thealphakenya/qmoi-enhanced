@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -584,45 +585,45 @@ export const QMOI_DOMAIN_REGISTRY: Record<string, DomainEndpoint> = {
         ts_content += """};
 
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function getDomain(domain: string): DomainEndpoint | undefined {
   return QMOI_DOMAIN_REGISTRY[domain];
 }
 
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function getAllDomains(): DomainEndpoint[] {
   return Object.values(QMOI_DOMAIN_REGISTRY);
 }
 
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function getCriticalDomains(): DomainEndpoint[] {
   return Object.values(QMOI_DOMAIN_REGISTRY).filter(d => d.critical);
 }
 
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function getFallbackDomain(domain: string): string | undefined {
   const entry = getDomain(domain);
   return entry?.fallbackChain?.[0];
 }
 
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function getRegionalEndpoint(domain: string, region: string): string | undefined {
   const entry = getDomain(domain);
   return entry?.regionalEndpoints?.[region];
 }
 
 export // AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
-// AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
+# AUTODEV: Performance optimized
 function getHealthCheckUrl(domain: string): string {
   const entry = getDomain(domain);
   if (!entry) return `https://${domain}/health`;

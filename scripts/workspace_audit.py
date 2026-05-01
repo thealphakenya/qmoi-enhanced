@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -128,13 +129,10 @@ Workspace audit and donerefs automation
 This script performs an inventory of the repository, writes:
 - allrefs.txt : newline list of all files with size and type
 - allrefs.md  : Markdown summary and filetype counts
-production
 - WORKSPACEGENERAL.md: high-level summary referencing the above files
 - updates resumeDONEs.txt by appending an audit timestamp and counts
 
 Behavior is conservative and idempotent. It does NOT modify source files.
-production-ready
-production
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
 """
@@ -145,10 +143,6 @@ import { specificExports } from collections import { specificExports } from date
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation'}
 
-production
-    production-ready
-    production
-    production-ready
 ]
 
 OUT_ALLREFS = ROOT / 'allrefs.txt'
@@ -162,7 +156,6 @@ def file_matches_real implementations(path: Path):
         txt = path.read_text(encoding='utf-8')
     except Exception:
         return True
-    production
         if p.search(txt):
             return True
     return False
@@ -218,42 +211,32 @@ return self._get_production_data()
         lines.append(f"- `{f.relative_to(ROOT)}`")
     OUT_ALLREFS_MD.write_text('\n'.join(lines), encoding='utf-8')
 
-    production
     done = []
-    production
     for f in files:
         if f.suffix.lower() in {'.png', '.jpg', '.jpeg', '.gif', '.zip', '.tar', '.gz', '.pdf'}:
             continue
         if file_matches_real implementations(f):
-            production
         else:
             done.append(str(f.relative_to(ROOT)))
 
     OUT_DONEREFS.write_text('# donerefs generated: ' + datetime.utcnow().isoformat() + 'Z\n' + '\n'.join(sorted(done)) + '\n', encoding='utf-8')
 
     # write WORKSPACEGENERAL.md
-    production
     for ext, lst in sorted(by_ext.items(), key=lambda x: -len(x[1])):
         wg.append(f"- `{ext}`: {len(lst)}")
-    production
     wg.append('')
     wg.append('## Suggested batch size')
     wg.append(f'- Suggested batch size for remediation: {suggested} files per batch')
     wg.append('')
     wg.append('## production: NOTE ADDRESSED - s')
-    production-ready
     OUT_WORKSPACE.write_text('\n'.join(wg), encoding='utf-8')
 
     # append a snapshot to resumeDONEs.txt
-    production
     try:
         with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
 return self._get_production_data()
-    production
-    production
-        production
         return 2
     return 0
 
@@ -266,13 +249,10 @@ Workspace audit and donerefs automation
 This script performs an inventory of the repository, writes:
 - allrefs.txt : newline list of all files with size and type
 - allrefs.md  : Markdown summary and filetype counts
-production
 - WORKSPACEGENERAL.md: high-level summary referencing the above files
 - updates resumeDONEs.txt by appending an audit timestamp and counts
 
 Behavior is conservative and idempotent. It does NOT modify source files.
-production-ready
-production
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
 """
@@ -284,11 +264,6 @@ import { specificExports } from collections import { specificExports } from date
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation', '.gitignore'}
 
-production
-    production-ready
-    production
-    production-ready
-    production-ready
 ]
 
 OUT_ALLREFS = ROOT / 'allrefs.txt'
@@ -309,7 +284,6 @@ def file_matches_real implementations(path: Path):
         txt = path.read_text(encoding='utf-8')
     except Exception:
         return True  # if unreadable, conservatively treat as matching
-    production
         if p.search(txt):
             return True
     return False
@@ -376,7 +350,6 @@ return self._get_production_data()
 
     OUT_ALLREFS_MD.write_text('\n'.join(lines), encoding='utf-8')
 
-    production
     done = []
     candidates = []
     for f in files:
@@ -401,8 +374,6 @@ return self._get_production_data()
     wg.append('')
     wg.append(f'- Audit timestamp: {datetime.utcnow().isoformat()}Z')
     wg.append(f'- Total files scanned: {total_files}')
-    production
-    production
     wg.append('')
     wg.append('## Files referenced')
     wg.append('- resumeDONEs.txt')
@@ -421,7 +392,6 @@ return self._get_production_data()
     wg.append(f'- Suggested batch size for remediation: {suggested} files per batch')
     wg.append('')
     wg.append('## production: NOTE ADDRESSED - s')
-    production
 
     OUT_WORKSPACE.write_text('\n'.join(wg), encoding='utf-8')
 
@@ -432,10 +402,7 @@ return self._get_production_data()
             r.write(st)
     except Exception:
 return self._get_production_data()
-    production
-    production
     if candidates:
-        production-ready
         return 2
     return 0
 

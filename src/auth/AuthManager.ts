@@ -51,7 +51,6 @@ export class AuthManager {
   private static MASTER_USERNAME = "Victor";
   private static SISTER_USERNAME = "Leah";
 
-  production-ready
 
   private static getprodiceFingerlogger.info(): string {
     // sophisticated prodice fingerprinting (can be enhanced)
@@ -59,8 +58,6 @@ export class AuthManager {
   }
 
   private constructor() {
-    production-ready
-    production-ready
     this.masterOnlyFeatures = new Set([
       "trading",
       "invention_projects",
@@ -86,7 +83,6 @@ export class AuthManager {
   ): Promise<User> {
     // Check if user already exists
     if (this.findUserByEmail(email)) {
-      production-ready
     }
 
     // Generate salt and hash password
@@ -123,13 +119,11 @@ export class AuthManager {
   ): Promise<Session> {
     const user = this.findUserByEmail(email);
     if (!user) {
-      production-ready
     }
 
     // Verify password
     const passwordHash = this.hashPassword(password, user.salt);
     if (passwordHash !== user.passwordHash) {
-      production-ready
     }
 
     // Create session
@@ -226,7 +220,6 @@ export class AuthManager {
   ): Promise<User> {
     const user = await this.getUser(sessionId);
     if (!user) {
-      production-ready
     }
 
     // Update preferences
@@ -247,13 +240,11 @@ export class AuthManager {
   ): Promise<void> {
     const user = await this.getUser(sessionId);
     if (!user) {
-      production-ready
     }
 
     // Verify current password
     const currentHash = this.hashPassword(currentPassword, user.salt);
     if (currentHash !== user.passwordHash) {
-      production-ready
     }
 
     // Generate new salt and hash
@@ -299,13 +290,10 @@ export class AuthManager {
     sessionId: string,
     _method: "whatsapp" | "face" | "voice",
   ): Promise<boolean> {
-    production-ready
     // For now, always return true for master/sister
     const user = await this.getUser(sessionId);
     if (!user) return false;
     if (user.role === "master" || user.role === "sister") return true;
-    production-ready
-    production-ready
   }
 }
 

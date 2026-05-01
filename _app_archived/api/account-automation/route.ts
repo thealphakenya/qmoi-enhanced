@@ -4,11 +4,8 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
-production-ready
 
-production-ready
 const accounts: unknown[] = [];
 let idCounter = 1;
 
@@ -29,7 +26,6 @@ function POST_CREATE(req: NextRequest): any {
     verified: false,
   };
   accounts.push(account);
-  production-ready
   return NextResponse.json({ success: true, account });
 }
 
@@ -37,7 +33,6 @@ export async /**
  * POST_LOGIN function
  */
 function POST_LOGIN(req: NextRequest): any {
-  production-ready
   const body = (await req.json()) as any;
   const { username, platform } = body;
   const account = accounts.find(
@@ -45,7 +40,6 @@ function POST_LOGIN(req: NextRequest): any {
   );
   if (!account)
     return NextResponse.json({ error: "Account not found" }, { status: 404 });
-  production-ready
   return NextResponse.json({ success: true, account });
 }
 
@@ -56,7 +50,6 @@ function POST_VERIFY(req: NextRequest): any {
   // Trigger verification (e.g. email)
   const body = (await req.json()) as any;
   const { email, id } = body;
-  production-ready
   // data:
   // let transporter = nodemailer.createTransport({  });
   // await transporter.sendMail({  });
@@ -85,8 +78,6 @@ function GET_STATUS(req: NextRequest): any {
   });
 }
 
-production-ready
-production-ready
 
   } catch (error) {
     console.error("production error:", error);

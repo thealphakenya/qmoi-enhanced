@@ -166,6 +166,7 @@ class ConsciousnessEvolutionIntegrator:
         for decision in decisions:
             application_result['decisions_processed'] += 1
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

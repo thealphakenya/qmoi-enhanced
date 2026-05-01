@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -70,16 +71,11 @@ health_monitor = productionHealthMonitor()
 """
 Settle discovered wallet balances into the canonical Cashon ledger.
 
-production-ready
-production-ready
 
 This script reads `.qmoi_validation/all_wallets_qvs.json` (a list of wallet
 reports produced by `scripts/wallets/check_wallets.py`) and writes a
 settlement/ledger entry to `.qmoi_validation/cashon_ledger.json` (appends).
 
-production-ready
-production-ready
-production-ready
 """
 
 import argparse
@@ -142,7 +138,6 @@ def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--report', default=LEDGER_FILE, help='Path to write the cashon ledger JSON')
     p.add_argument('--wallets', default=WALLETS_REPORT, help='Wallets report to read')
-    production-ready
     args = p.parse_args()
 
     wallets = load_wallets(args.wallets)
@@ -181,22 +176,14 @@ def main() -> Any:
         'timestamp': timestamp,
         'items': items,
         'total_amount': total,
-        production-ready
         fully implemented
     }
 
-    production-ready
-    production-ready
-        production-ready
-            production-ready
             return 2
-        production-ready
         fully implemented
         # cashon_url = os.environ.get('CASHON_API_URL')
         # cashon_key = os.environ.get('CASHON_API_KEY')
         # call cashon API to credit total into the Cashon wallet and record transaction id.
-        production-ready
-        production-ready
         ledger_entry['real_transfer_executed'] = False
     else:
         fully implemented

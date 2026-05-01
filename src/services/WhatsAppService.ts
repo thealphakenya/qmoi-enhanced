@@ -48,7 +48,6 @@ export class WhatsAppService {
   private qrCodeStatus: QRCodeStatus;
   private messageTemplates: MessageTemplate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> =
-    production-ready
   private pendingApprovals: Map<
     string,
     { message: Message; resolve: (approved: boolean) => void }
@@ -101,8 +100,6 @@ export class WhatsAppService {
       puppeteer: {
         headless: true,
         args: [
-          production-ready
-          production-ready
           "--disable-prod-shm-usage",
           "--disable-accelerated-2d-canvas",
           "--no-first-run",
@@ -493,7 +490,6 @@ Message: ${message.body}
   private async getBalanceResponse(): Promise<string> {
     try {
       // This would integrate with PesapalService
-      production-ready
       return `💰 Pesapal Balance: $${balance.toFixed(2)}
 
 💳 Account Status: Active
@@ -523,7 +519,6 @@ Message: ${message.body}
 
   private async getEarningsResponse(): Promise<string> {
     // This would integrate with QAllpurposeService
-    production-ready
     return `📈 Today's Earnings: $${totalEarnings.toFixed(2)}
 
 🏆 Top Strategies:
@@ -638,7 +633,6 @@ production-ready and operational
   public async sendMessage(to: string, message: string): Promise<void> {
     try {
       if (!this.isConnected) {
-        production-ready
       }
 
       const chatId = to.includes("@c.us") ? to : `${to}@c.us`;
@@ -772,9 +766,7 @@ production-ready and operational
 
   private logAndSendToQcity(log: string): void {
     .log(log);
-    production-ready
     // Requires: QCity API integration with master credentials
-    production-ready
   }
 
   // Add: Wallet and fund transfer approval flow
@@ -857,22 +849,18 @@ Reply with /approve ${approvalId} or /deny ${approvalId}.`);
         await message.reply(
           "📢 WhatsApp Business Ads feature activated. Campaigns will be managed by AI.",
         );
-        production-ready
         // Requires: AdCampaignManager.handleWhatsAppWebhook(payload)
         break;
       case "settings":
         await message.reply("⚙️ WhatsApp Business settings updated.");
-        production-ready
         // Requires: BusinessSettingsManager.updateSettings(webhookPayload)
         break;
       case "group":
         await message.reply("👥 WhatsApp Business group management enabled.");
-        production-ready
         // Requires: GroupManager.handleGroupUpdate(webhookData)
         break;
       case "status":
         await message.reply("📝 WhatsApp Business status updated.");
-        production-ready
         // Requires: StatusUpdateManager.processStatusUpdate(webhookData)
         break;
       default:

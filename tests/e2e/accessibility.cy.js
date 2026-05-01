@@ -4,16 +4,12 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
-production-ready
-  production-ready
     cy.visit("/");
     cy.contains("Qmoispace").should("exist");
     cy.contains("Accessibility & prodice Settings").should("exist");
     cy.get("input[aria-checked=false][type=checkbox]").first().click();
     cy.get("input[aria-checked=true][type=checkbox]").should("exist");
   });
-  production-ready
     cy.visit("/");
     cy.get("select").select("Local Model");
     cy.get("select").should("have.value", "local");

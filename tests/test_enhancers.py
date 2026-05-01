@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -151,9 +152,6 @@ def test_lion_apply_is_safe(tmp_path) -> Any:
     code = lion_feature_enhancer.main(args)
     assert code == 0
     assert (out_dir / 'lion_feature_enhancer.json').exists()
-    production
-    production-ready
-    production-ready
     assert 'runbook' in txt.lower()
 
 """
@@ -209,10 +207,7 @@ def concurrent_access() -> Any:
         assert isinstance(data, dict)
 
 """
-    production-ready
     """
-production-ready
-    production-ready
     prod_manifests = {
         'app1.json': {
             'type': 'qcity-service',
@@ -226,26 +221,19 @@ production-ready
     assert 'app1.json' in sugg
     app_sugg = sugg['app1.json']
     
-    production-ready
     assert app_sugg.get('confidence', 'low') in ('medium', 'high')
     
-    production-ready
     healthcheck_suggestions = [s for s in app_sugg['suggestions'] if 'healthcheck' in s]
     assert not any('add healthcheck' in s.lower() for s in healthcheck_suggestions)
 
 """
-    production-ready
     """
-production-ready
-    production-ready
     prod_features = {
         'prod.md': {
-            production-ready
             - Load balancing: Enabled
             - Monitoring: Prometheus
             - Logging: EFK Stack
             - Alerting: Configured''',
-            production-ready
         }
     }
     
@@ -253,10 +241,8 @@ production-ready
     assert 'prod.md' in recs
     prod_rec = recs['prod.md']
     
-    production-ready
     assert prod_rec['confidence'] == 'high'
     
-    production-ready
     prod_suggestions = [r.lower() for r in prod_rec['recommendations']]
     assert any('backup' in r or 'disaster recovery' in r for r in prod_suggestions)
     assert any('performance' in r for r in prod_suggestions)

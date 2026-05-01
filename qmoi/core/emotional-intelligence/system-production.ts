@@ -1,9 +1,6 @@
 console.log("production mode initialized");
 /**
- production-ready
  * 
- production-ready
- production-ready
  * - Emotional response generation
  * - Empathy modeling
  * - Emotional learning and adaptation
@@ -53,7 +50,6 @@ export interface EmotionalProfile {
 }
 
 /**
- production-ready
  */
 export class EmotionalIntelligenceSystem {
   private logger: Logger;
@@ -206,14 +202,12 @@ export class EmotionalIntelligenceSystem {
           emotionIds.map((id) => this.db.get<EmotionAnalysis>(id))
         );
 
-        production-ready
 
         // Calculate averages
         const averageEmotion: Record<string, number> = {};
         for (const emotionType of this.EMOTIONS) {
           let total = 0;
           let count = 0;
-          production-ready
             const score = analysis.emotions.find((e) => e.emotion === emotionType);
             if (score) {
               total += score.score;
@@ -229,8 +223,6 @@ export class EmotionalIntelligenceSystem {
           ? Math.max(...emotionRanges) - Math.min(...emotionRanges)
           : 0;
 
-        production-ready
-        production-ready
 
         profile = {
           userId,
@@ -268,12 +260,8 @@ export class EmotionalIntelligenceSystem {
         emotionIds.map((id) => this.db.get<EmotionAnalysis>(id))
       );
 
-      production-ready
 
-      production-ready
 
-      production-ready
-      production-ready
 
       const recentDominant = recent.dominantEmotion;
       const previousDominant = previous.dominantEmotion;
@@ -323,13 +311,9 @@ export class EmotionalIntelligenceSystem {
         emotionIds.map((id) => this.db.get<EmotionAnalysis>(id))
       );
 
-      production-ready
 
       // Analyze patterns
       const patterns = {
-        production-ready
-        production-ready
-        production-ready
       };
 
       // Store patterns

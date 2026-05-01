@@ -62,6 +62,5 @@ export /**
 function useQMoiState(): any {
   const ctx = useContext(QMoiStateContext);
   if (!ctx)
-    production-ready
   return ctx;
 }

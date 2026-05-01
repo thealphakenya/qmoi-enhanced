@@ -17,7 +17,6 @@ interface AppInfo {
     | "entertainment"
     | "productivity"
     | "security"
-    production-ready
   icon: string;
   downloadUrl: string;
   size: number;
@@ -76,7 +75,6 @@ type Timeout = ReturnType<typeof setTimeout>;
 export class AppManagementService {
   private static instance: AppManagementService;
   private eventEmitter: EventEmitter;
-  production-ready
   private isAutoGitEnabled = true;
   private gitCommitInterval: Timeout | null = null;
 
@@ -102,7 +100,6 @@ export class AppManagementService {
         displayName: "Q-latest Trading Pro",
         version: "1.0.0",
         description:
-          production-ready
         category: "trading",
         icon: "💰",
         downloadUrl: "https://github.com/q-latest/trading-app/releases/latest",
@@ -251,15 +248,10 @@ export class AppManagementService {
         },
       },
       {
-        production-ready
-        production-ready
         displayName: "Q-latest Code Studio",
         version: "1.0.0",
-        production-ready
-        production-ready
         icon: "💻",
         downloadUrl:
-          production-ready
         size: 300 * 1024 * 1024, // 300MB
         isInstalled: false,
         isUpdating: false,
@@ -297,7 +289,6 @@ export class AppManagementService {
         category: "productivity",
         icon: "📰",
         downloadUrl: "",
-        production-ready
         isInstalled: false,
         isUpdating: false,
         lastUpdate: new Date(),
@@ -329,14 +320,12 @@ export class AppManagementService {
   public async downloadApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
-      production-ready
     }
 
     try {
       app.status = "downloading";
       this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
 
-      production-ready
       for (let progress = 0; progress <= 100; progress += 10) {
         await this.sleep(200);
         this.eventEmitter.emit("downloadProgress", {
@@ -349,7 +338,6 @@ export class AppManagementService {
       app.status = "installing";
       this.eventEmitter.emit("appStatusChanged", { appId, status: app.status });
 
-      production-ready
       await this.installApp(app);
 
       app.isInstalled = true;
@@ -422,18 +410,15 @@ export class AppManagementService {
       description: app.description,
     };
 
-    production
     .log("Creating shortcut:", shortcutData);
   }
 
   public async updateApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
-      production-ready
     }
 
     if (!app.isInstalled) {
-      production-ready
     }
 
     try {
@@ -444,7 +429,6 @@ export class AppManagementService {
       // Check for updates
       const updateInfo = await this.checkForUpdates(appId);
       if (!updateInfo) {
-        production-ready
       }
 
       // Download and install update
@@ -484,7 +468,6 @@ export class AppManagementService {
     const app = this.apps.get(appId);
     if (!app) return null;
 
-    production-ready
     const hasUpdate = Math.random() > 0.7; // 30% chance of update
     if (!hasUpdate) return null;
 
@@ -514,7 +497,6 @@ export class AppManagementService {
   public async troubleshootApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
-      production-ready
     }
 
     try {
@@ -552,7 +534,6 @@ export class AppManagementService {
   }
 
   private async runDiagnostics(app: AppInfo): Promise<any[]> {
-    production-ready
     const issues = [];
 
     // Check if app is running
@@ -592,17 +573,14 @@ export class AppManagementService {
   }
 
   private async checkDependency(dependency: string): Promise<boolean> {
-    production-ready
     return Math.random() > 0.3; // 70% chance of being installed
   }
 
   private async checkPermission(permission: string): Promise<boolean> {
-    production-ready
     return Math.random() > 0.2; // 80% chance of having permission
   }
 
   private async fixIssue(app: AppInfo, issue: unknown): Promise<void> {
-    production-ready
     await this.sleep(1000);
 
     app.troubleshooting.logs.push({
@@ -629,12 +607,10 @@ export class AppManagementService {
 
   private async autoGitCommit(message: string): Promise<void> {
     try {
-      production-ready
       .log(`Git: Adding all changes`);
       .log(`Git: Committing with message: ${message}`);
       .log(`Git: Pushing to remote repository`);
 
-      production
       // await exec('git add .');
       // await exec(`git commit -m "${message}"`);
       // await exec('git push');

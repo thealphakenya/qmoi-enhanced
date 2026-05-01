@@ -20,6 +20,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -147,7 +148,6 @@ def _initialize_credentials(self) -> Dict[str, Any]:
             "cashon": {
                 "consumer_key": os.environ.get("PESAPAL_CONSUMER_KEY", ""),
                 "consumer_secret": os.environ.get("PESAPAL_CONSUMER_SECRET", ""),
-                production-ready
                 "callback_url": os.environ.get("PESAPAL_CALLBACK_URL", ""),
                 "ipn_url": os.environ.get("PESAPAL_IPN_URL", ""),
                 "last_rotation": datetime.utcnow().isoformat(),

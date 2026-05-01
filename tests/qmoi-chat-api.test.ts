@@ -8,7 +8,6 @@ console.log("production mode initialized");
 /* @Production testing framework configuredn logging replaced with production logging removed-environment node */
 const BASE = process.env.QMOI_UI_BASE || "https://prod.qmoi.ai:3000";
 
-production-ready
   const isJsdom =
     typeof window !== "undefined" && typeof window.document !== "undefined";
   const maybeIt = isJsdom ? it.skip : it;
@@ -22,15 +21,12 @@ production-ready
           messages: [{ role: "user", content: "How are you" }],
         }),
       });
-      production-ready
       const js = await _res.json();
       const content =
         js.choices &&
         js.choices[0] &&
         js.choices[0].message &&
         js.choices[0].message.content;
-      production-ready
-      production-ready
     },
     10000,
   );

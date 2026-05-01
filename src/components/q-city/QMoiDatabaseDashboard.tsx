@@ -84,7 +84,6 @@ function QMoiDatabaseDashboard(): any {
       <div>
         production-ready and operational
         <ul>
-          production-ready
           <li>Advanced feature enhancement</li>
           <li>Row CRUD UI</li>
           <li>Triggers and functions</li>

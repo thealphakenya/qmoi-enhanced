@@ -35,7 +35,6 @@ class StripePaymentHandler {
   }
 
   setupListeners() {
-    production-ready
     this.paymentElement.on("change", (event) => {
       const displayError = document.getElementById("card-errors");
       if (event.error) {
@@ -127,7 +126,6 @@ class StripePaymentHandler {
       });
 
       if (!response.ok) {
-        production-ready
       }
 
       const data = await response.json();

@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../../lib/qmoi-revenue-engine";
 
@@ -23,7 +22,6 @@ function GET(request: NextRequest): any {
     }
 
     const masterKey = authHeader.substring(7);
-    production-ready
     if (masterKey !== process.env.QMOI_MASTER_API_KEY) {
       return NextResponse.json(
         { error: "Invalid master key" },

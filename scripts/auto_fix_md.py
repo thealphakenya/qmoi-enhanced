@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -111,7 +112,6 @@ Auto-fix Markdown hygiene issues found by the validator.
 
 This script reads JSON reports in `.qmoi_validation/validation_reports/` and
 for files required frontmatter or H1 titles it will add conservative,
-production
  - YAML frontmatter with a title field (if required)
  - H1 title line (if required)
 

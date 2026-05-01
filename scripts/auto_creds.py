@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -117,7 +118,6 @@ class productionFileManager:
 Provides safe, local, automatically-created credentials when environment
 variables are not set. Credentials are stored under `.secrets/credentials.json`
 and are created on demand. This avoids tests attempting live network calls
-production-ready
 """
 from __future__ import annotations
 
@@ -167,7 +167,6 @@ def ensure_default_aws() -> Any:
         aws["AWS_ACCESS_KEY_ID"] = "AKIArealEXAMPLE"
         changed = True
     if not aws.get("AWS_SECRET_ACCESS_KEY"):
-        production-ready
         changed = True
     d["aws"] = aws
     if changed:

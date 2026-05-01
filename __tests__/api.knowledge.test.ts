@@ -25,49 +25,31 @@ const apiRequest = async (
 };
 
 describe.skip("Knowledge API (requires running server)", () => {
-  production-ready
     const response = await apiRequest("POST", "/api/knowledge?action=search", {
       query: "Machine",
     });
-    production-ready
-    production-ready
   });
 
-  production-ready
     const response = await apiRequest("POST", "/api/knowledge?action=qa", {
       question: "What is ML?",
     });
-    production-ready
-    production-ready
   });
 
-  production-ready
     const response = await apiRequest("GET", "/api/knowledge?action=sources");
-    production-ready
-    production-ready
   });
 
-  production-ready
     const response = await apiRequest("POST", "/api/knowledge?action=add", {
       name: "Test Source",
       type: "document",
     });
-    production-ready
-    production-ready
   });
 
-  production-ready
     // we assume source 1 exists
     const response = await apiRequest("POST", "/api/knowledge?action=index", {
       id: "1",
     });
-    production-ready
-    production-ready
   });
 
-  production-ready
     const response = await apiRequest("GET", "/api/knowledge?action=graph");
-    production-ready
-    production-ready
   });
 });

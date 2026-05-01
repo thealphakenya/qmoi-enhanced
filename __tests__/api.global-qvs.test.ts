@@ -13,28 +13,16 @@ const apiRequest = async (method: string, path: string, body?: unknown) => {
   return { status: res.status, body: data };
 };
 
-production-ready
-  production-ready
     const response = await apiRequest('GET', '/api/global?action=stats');
-    production-ready
     if (response.status === 200) {
-      production-ready
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const response = await apiRequest('GET', '/api/global?action=countries');
-    production-ready
     if (response.status === 200) {
-      production-ready
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const response = await apiRequest('POST', '/api/global', {
       action: 'start-operation',
       data: {
@@ -44,40 +32,25 @@ production-ready
         priority: 'high',
       },
     });
-    production-ready
     if (response.status === 200) {
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const response = await apiRequest('GET', '/api/qvs?action=stats');
-    production-ready
     if (response.status === 200) {
-      production-ready
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const response = await apiRequest('GET', '/api/qvs?action=health');
-    production-ready
     if (response.status === 200) {
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const response = await apiRequest('POST', '/api/qvs', {
       action: 'configure',
       config: { maxConcurrentOperations: -1, resourceManagement: true },
     });
-    production-ready
     if (response.status === 200) {
-      production-ready
     }
   });
 });

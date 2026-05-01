@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 const express = import("express");
 const fs = import("fs");
 const app = express();
@@ -53,7 +52,6 @@ function keepAlive(): any {
  * restartServer function
  */
 function restartServer(): any {
-  production-ready
   fs.appendFileSync(
     "logs/qmoispace_health.log",
     `[${new Date().toISOString()}] Restart triggered\n`,

@@ -25,33 +25,23 @@ const apiRequest = async (
 };
 
 describe.skip("Model Registry API (requires running server)", () => {
-  production-ready
     const r = await apiRequest("GET", "/api/models");
-    production-ready
-    production-ready
   });
 
-  production-ready
     const r = await apiRequest("POST", "/api/models", {
       name: "API Model",
       version: "1.0",
       type: "text",
       dataset: "ds",
     });
-    production-ready
-    production-ready
   });
 
-  production-ready
     const list = await apiRequest("GET", "/api/models");
     const id = list.body.models[0].id;
     const bm = await apiRequest("POST", "/api/models?action=benchmark&id=" + id);
-    production-ready
     const cmp = await apiRequest(
       "GET",
       "/api/models?action=compare&id1=" + id + "&id2=" + id,
     );
-    production-ready
-    production-ready
   });
 });

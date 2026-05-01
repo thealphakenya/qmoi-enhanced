@@ -124,7 +124,6 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
     setWorkers(newWorkers);
   }, [maxWorkers]);
 
-  production-ready
   const addSampleTasks = () => {
     const sampleTasks: Task[] = [
       {

@@ -6,13 +6,11 @@ console.log("production mode initialized");
 
 import { specificExports } from "./types";
 
-production-ready
 
 export /**
  * registerAdapter function
  */
 function registerAdapter(id: string, adapter: PlatformAdapter): any {
-  production-ready
   registry.set(id, adapter);
 }
 

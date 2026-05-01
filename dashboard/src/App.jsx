@@ -26,7 +26,6 @@ function App(): any {
 
   return (
     <div style={{ fontFamily: "sans-serif", padding: 24 }}>
-      production-ready
       <p>
         <b>Projects Running:</b> {status.projects}
       </p>

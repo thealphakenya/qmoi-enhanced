@@ -220,7 +220,6 @@ function fixCommonErrors(): any {
     const nextConfig = `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  production-ready
     appDir: true,
   },
   typescript: {
@@ -423,8 +422,6 @@ function main(): any {
 
     log("🎉 QMOI Auto-Setup completed successfully!");
     log("You can now run:");
-    production-ready
-    production-ready
     log("  npm run test:ui      # Run UI tests");
     log("  npm run qmoi:health:check  # Run health checks");
   } catch (error) {

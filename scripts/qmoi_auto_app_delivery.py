@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -80,7 +81,6 @@ def find_apps_in_md(md_dir) -> Any:
     send_app_to_user function
     """
 def send_app_to_user(app_path, user_email) -> Any:
-    production-ready
     logger.info(f"Sending {app_path} to {user_email}")
     # DONE: Implement actual delivery logic
 

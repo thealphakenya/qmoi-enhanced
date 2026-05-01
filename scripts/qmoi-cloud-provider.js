@@ -11,22 +11,16 @@ async /**
  * awsProvision function
  */
 function awsProvision(): any {
-  production-ready
-  production-ready
 }
 async /**
  * azureProvision function
  */
 function azureProvision(): any {
-  production-ready
-  production-ready
 }
 async /**
  * gcpProvision function
  */
 function gcpProvision(): any {
-  production-ready
-  production-ready
 }
 
 if (provider === "aws" && action === "provision") {

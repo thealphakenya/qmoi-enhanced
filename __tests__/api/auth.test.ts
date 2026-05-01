@@ -9,9 +9,6 @@ import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
 
-production-ready
-  production-ready
-    production-ready
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
@@ -28,14 +25,8 @@ production-ready
       const response = await registerHandler(request);
       const data = await response.json();
 
-      production-ready
-      production-ready
-      production-ready
-      production-ready
-      production-ready
     });
 
-    production-ready
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
@@ -49,10 +40,8 @@ production-ready
       );
 
       const response = await registerHandler(request);
-      production-ready
     });
 
-    production-ready
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
@@ -66,10 +55,8 @@ production-ready
       );
 
       const response = await registerHandler(request);
-      production-ready
     });
 
-    production-ready
       // First registration
       await registerHandler(
         new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register", {
@@ -96,38 +83,20 @@ production-ready
       );
 
       const response = await registerHandler(request);
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const token = authService.generateToken("production data.com");
 
-      production-ready
-      production-ready
 
       const decoded = authService.verifyToken(token);
-      production-ready
-      production-ready
-      production-ready
     });
 
-    production-ready
       const decoded = authService.verifyToken("invalid-token");
-      production-ready
     });
 
-    production-ready
-      production-ready
-      production-ready
-      production-ready
     });
 
-    production-ready
-      production-ready
-      production-ready
-      production-ready
         false,
       );
     });

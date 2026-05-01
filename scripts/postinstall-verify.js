@@ -4,7 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- production-ready
  * Prevents npm install from failing when script is required.
  */
 

@@ -34,8 +34,6 @@ const apiRequest = async (
 };
 
 describe.skip("QMOI Enhanced API Tests", () => {
-  production-ready
-    production-ready
       const response = await apiRequest("POST", "/api/auth/register", {
         email: `production data.com`,
         password: "TestPassword123!",
@@ -43,23 +41,18 @@ describe.skip("QMOI Enhanced API Tests", () => {
       });
 
       // Accept both 201 and 200 for registration
-      production-ready
       if (response.status === 201 || response.status === 200) {
-        production-ready
       }
     });
 
-    production-ready
       const response = await apiRequest("POST", "/api/auth/login", {
         email: "production data.com",
         password: "TestPassword123!",
       });
 
       // Accept 200 or 401 (auth endpoint)
-      production-ready
     });
 
-    production-ready
       const response = await apiRequest(
         "POST",
         "/api/auth/logout",
@@ -68,12 +61,9 @@ describe.skip("QMOI Enhanced API Tests", () => {
       );
 
       // Accept 200 or 204 for logout
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const response = await apiRequest(
         "GET",
         "/api/admin/users",
@@ -81,13 +71,10 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
       if (response.status === 200) {
-        production-ready
       }
     });
 
-    production-ready
       const response = await apiRequest(
         "GET",
         "/api/admin/dashboard",
@@ -95,13 +82,10 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
       if (response.status === 200) {
-        production-ready
       }
     });
 
-    production-ready
       const response = await apiRequest(
         "GET",
         "/api/admin/audit-logs",
@@ -109,10 +93,8 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
 
-    production-ready
       const response = await apiRequest(
         "GET",
         "/api/admin/alerts",
@@ -120,12 +102,9 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const response = await apiRequest(
         "GET",
         "/api/users/profile",
@@ -133,10 +112,8 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
 
-    production-ready
       const response = await apiRequest(
         "PUT",
         "/api/users/profile",
@@ -147,12 +124,9 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const response = await apiRequest(
         "GET",
         "/api/analytics/wallets",
@@ -160,10 +134,8 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
 
-    production-ready
       const response = await apiRequest(
         "GET",
         "/api/analytics/transactions",
@@ -171,12 +143,9 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const response = await apiRequest(
         "POST",
         "/api/biometric/register",
@@ -187,21 +156,16 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
 
-    production-ready
       const response = await apiRequest("POST", "/api/biometric/verify", {
         biometricType: "fingerprint",
         biometricData: "base64-encoded-fingerprint-data",
       });
 
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const response = await apiRequest(
         "POST",
         "/api/payments/initiate",
@@ -214,18 +178,13 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       const response = await apiRequest("GET", "/api/admin/users");
 
-      production-ready
     });
 
-    production-ready
       const response = await apiRequest(
         "GET",
         "/api/admin/users",
@@ -233,18 +192,13 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
 
-    production-ready
       const response = await apiRequest("GET", "/api/nonexistent");
 
-      production-ready
     });
   });
 
-  production-ready
-    production-ready
       // optimized: just test that multiple requests work
       const response = await apiRequest(
         "GET",
@@ -253,7 +207,6 @@ describe.skip("QMOI Enhanced API Tests", () => {
         
       );
 
-      production-ready
     });
   });
 });

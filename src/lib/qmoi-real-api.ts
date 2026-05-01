@@ -55,7 +55,6 @@ export class QMOIRealAPI {
         responseTime,
       };
     } catch (error) {
-      production-ready
     }
   }
 

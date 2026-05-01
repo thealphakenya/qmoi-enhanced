@@ -25,6 +25,5 @@ function handler(): any {
       res.status(400).json({ success: false, message: "Unknown payload." });
       return;
   }
-  production
   res.status(200).json({ success: true, message: msg });
 }

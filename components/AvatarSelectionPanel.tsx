@@ -92,7 +92,6 @@ export const AvatarSelectionPanel: React.FC<AvatarSelectionPanelProps> = ({
         <CardHeader>
           <CardTitle>Choose Your Avatar</CardTitle>
           <p className="text-muted-foreground">
-            production-ready
             change this later.
           </p>
         </CardHeader>

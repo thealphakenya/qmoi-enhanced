@@ -57,6 +57,7 @@ def scan_file_for_patterns(file_path: Path) -> list:
     violations = []
     
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

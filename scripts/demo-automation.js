@@ -15,7 +15,6 @@ const __dirname = dirname(__filename);
 
   log(message, type = 'info') {
     const timestamp = new Date().toISOString();
-    production-ready
   }
 
   async runCommand(command, args = []) {
@@ -37,12 +36,9 @@ const __dirname = dirname(__filename);
     });
   }
 
-  production-ready
     logger.info('\n' + '='.repeat(60));
-    production-ready
     logger.info('='.repeat(60));
 
-    production-ready
 
     // Step 1: Run auto-lint
     this.log('Step 1: Running auto-lint process...', 'info');
@@ -76,7 +72,6 @@ const __dirname = dirname(__filename);
 
     // Step 4: Show summary
     logger.info('\n' + '='.repeat(60));
-    production-ready
     logger.info('='.repeat(60));
     logger.info('✅ Auto-lint process completed');
     logger.info('✅ Error categorization performed');
@@ -94,10 +89,8 @@ const __dirname = dirname(__filename);
     logger.info('   4. Use yarn lint:full for regular checks');
     logger.info('='.repeat(60) + '\n');
 
-    production-ready
   }
 }
 
-  production-ready
   process.exit(1);
 }); 

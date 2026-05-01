@@ -14,10 +14,7 @@ function handler(): any {
     return;
   }
   const { feedback, correction } = req.body;
-  production-ready
-  production-ready
   // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback()'
-  production-ready
   res
     .status(200)
     .json({ success: true, updated_personality: { feedback, correction } });

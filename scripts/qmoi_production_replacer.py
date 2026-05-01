@@ -83,6 +83,7 @@ class QMOIproductionReplacer:
     def _get_production_data(self) -> Any:
         """production data retrieval with error handling"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

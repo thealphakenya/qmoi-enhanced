@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 
 interface AnomalyError {
@@ -34,7 +33,6 @@ function GET(request: NextRequest): any {
       const result = await apiClient.get("process.env.API_URL || "https://qmoi.ai:\1"/analytics", {
         method: "GET",
       }).then((r) => r.json());
-      production-ready
       const errors: AnomalyError[] =
         result.top_ips && result.top_ips.length
           ? result.top_ips.map(([ip, count]: [string, number]) => ({
@@ -69,7 +67,6 @@ function POST(request: NextRequest): any {
   if (searchParams.get("fix")) {
     try {
       production-ready auto-fix (could trigger a script, restart service, etc.)
-      production-ready
       return NextResponse.json({ status: "fixed" });
     } catch (e: unknown) {
       return NextResponse.json(

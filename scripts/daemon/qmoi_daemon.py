@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -71,7 +72,6 @@ health_monitor = productionHealthMonitor()
 robust QMOI daemon (safe-by-default).
 
 This process orchestrates periodic dry-run maintenance tasks used by QMOI:
-production-ready
 - wallet QV (dry-run)
 - settlement aggregation (dry-run)
 - YAML/workflow validator
@@ -80,12 +80,9 @@ Usage:
   # one-off dry-run (safe)
   python3 scripts/daemon/qmoi_daemon.py --once
 
-  production-ready
   python3 scripts/daemon/qmoi_daemon.py
 
 Safety rules:
-production-ready
-production-ready
 """
 
 import argparse
@@ -100,8 +97,6 @@ os.makedirs(VALIDATION_DIR, exist_ok=True)
 
 TASKS = [
     {
-        production
-        production
         'cwd': os.path.join(BASE_DIR)
     },
     {

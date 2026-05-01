@@ -18,7 +18,6 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
     // Configure PayPal SDK
     paypal.configure({
-      production-ready
       client_id:
         config.credentials?.clientId || process.env.PAYPAL_CLIENT_ID || "",
       client_secret:
@@ -29,7 +28,6 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
     .log(
       "[PayPalAdapter] initialized in %s mode",
-      production-ready
     );
   }
   async validateCredentials() {

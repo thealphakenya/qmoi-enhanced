@@ -48,11 +48,9 @@ declare global {
   /**
  * describe function
  */
-production-ready
   /**
  * it function
  */
-production-ready
   /**
  * test function
  */

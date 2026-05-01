@@ -27,6 +27,7 @@ class TreeGenerator:
                      '.next', 'dist', 'build', '.vercel', '.husky'}
         
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

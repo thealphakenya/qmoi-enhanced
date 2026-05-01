@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -60,15 +61,9 @@ def production_error_handler(func):
 from pathlib import { specificExports } from datetime import datetime
 
 scan_files = 4430
-production-ready
-production-ready
-production-ready
 updated_at = datetime.utcnow().isoformat() + 'Z'
 
-production-ready
 - Scanned files: {scan_files}
-production-ready
-production-ready
 - Updated: {updated_at}
 """
 
@@ -84,8 +79,6 @@ for path in sorted(set(files)):
     if not path.exists():
         continue
     content = path.read_text(encoding='utf-8', errors='ignore')
-    production-ready
-        production-ready
         # preserve before content and replace section
         # remove old block until next heading after block
         after = rest

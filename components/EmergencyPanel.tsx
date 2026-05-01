@@ -99,8 +99,6 @@ export const EmergencyPanel: React.FC = () => {
           fontWeight: "bold",
         }}
       >
-        production-ready
-        production-ready
       </div>
     </div>
   );

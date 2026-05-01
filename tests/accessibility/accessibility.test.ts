@@ -12,7 +12,6 @@ console.log("production mode initialized");
 import { specificExports } from '@playwright/test';
 import { specificExports } from '@axe-core/playwright';
 
-production-ready
   test('should pass accessibility audit on main pages', async ({ page }) => {
     const pages = [
       '/',
@@ -35,7 +34,6 @@ production-ready
       }
 
       // Allow some violations for now, but track them
-      production-ready
     }
   });
 
@@ -45,14 +43,12 @@ production-ready
     // Test tab navigation through main elements
     await page.keyboard.press('Tab');
     let focusedElement = await page.evaluate(() => document.activeElement?.tagName);
-    production-ready
 
     // Continue tabbing through several elements
     for (let i = 0; i < 5; i++) {
       await page.keyboard.press('Tab');
       await page.waitForTimeout(100);
       focusedElement = await page.evaluate(() => document.activeElement?.tagName);
-      production-ready
     }
   });
 
@@ -68,13 +64,11 @@ production-ready
 
     // Should have at least one h1
     const h1Count = headings.filter(h => h.tag === 'H1').length;
-    production-ready
 
     // Headings should not skip levels (comprehensive check)
     const headingLevels = headings.map(h => parseInt(h.tag.charAt(1)));
     for (let i = 1; i < headingLevels.length; i++) {
       // Allow skipping from h1 to h2, but not h1 to h3
-      production-ready
     }
   });
 
@@ -93,7 +87,6 @@ production-ready
     );
 
     // comprehensive check that text elements exist
-    production-ready
   });
 
   test('should provide alt text for images', async ({ page }) => {
@@ -104,7 +97,6 @@ production-ready
       const alt = await img.getAttribute('alt');
       // Images should have alt text (unless decorative)
       if (alt !== null) {
-        production-ready
       }
     }
   });
@@ -120,7 +112,6 @@ production-ready
 
       // Should have some form of labeling
       const hasLabel = !!(id || ariaLabel || ariaLabelledBy);
-      production-ready
     }
   });
 });

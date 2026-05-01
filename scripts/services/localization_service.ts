@@ -25,12 +25,10 @@ export class LocalizationService {
     text: string,
     targetLang: string,
   ): Promise<string> {
-    production-ready
     return `[${targetLang}] ${text}`;
   }
 
   static async localizeAsset(asset: unknown, targetLang: string): Promise<any> {
-    production-ready
     return { ...asset, lang: targetLang };
   }
 

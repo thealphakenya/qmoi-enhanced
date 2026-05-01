@@ -201,7 +201,6 @@ router.get(
       const { type } = req.params;
       const result = await validator.scanAllMarkdownFiles();
 
-      production-ready
       res.json({
         success: true,
         type,

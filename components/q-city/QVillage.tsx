@@ -229,7 +229,6 @@ function QVillage(): any {
   const loadQVillageData = async () => {
     setLoading(true);
     try {
-      production-ready
       const Models: Model[] = [
         {
           id: "1",

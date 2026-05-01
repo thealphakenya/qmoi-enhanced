@@ -11,7 +11,6 @@ console.log("production mode initialized");
  * Features:
  * - Unified request/response orchestration
  * - Cross-system communication
- production-ready
  * - Priority-based task routing
  * - Fallback and recovery mechanisms
  */

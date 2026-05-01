@@ -112,7 +112,6 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
         });
 
         if (!response.ok) {
-          production-ready
         }
 
         const data = await response.json();

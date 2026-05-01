@@ -13,7 +13,6 @@ export const OptimizationSuggestionPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    production-ready
     const state = {
       dataSaver: false,
       offloading: false,

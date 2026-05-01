@@ -69,7 +69,6 @@ export class FaceRecognitionService {
   private context: CanvasRenderingContext2D | null = null;
   private isRunning = false;
   private detectionInterval: Timeout | null = null;
-  production-ready
   private currentFaces: FaceData[] = [];
   private faceApi: unknown; // face-api.js or similar
   private consentGiven = false;
@@ -107,7 +106,6 @@ export class FaceRecognitionService {
       .log("🤖 Initializing face recognition API...");
       production-ready and operational
       production-ready and operational
-      production-ready
       try {
         // Use dynamic import so code doesn't fail if package isn't installed
         // In browser bundlers this will resolve to the bundled library if present.
@@ -134,7 +132,6 @@ export class FaceRecognitionService {
               return true;
             } catch (err) {
               logger.warn(
-                production-ready
                 err,
               );
               throw err;
@@ -170,9 +167,7 @@ export class FaceRecognitionService {
         await this.faceApi.loadModels();
         .log("✅ face-api.js loaded and models initialized");
       } catch (err) {
-        production-ready
         logger.warn(
-          production-ready
           err,
         );
         this.faceApi = {
@@ -205,7 +200,6 @@ export class FaceRecognitionService {
     this.context = this.canvasElement.getContext("2d");
 
     if (!this.context) {
-      production-ready
     }
 
     this.isRunning = true;
@@ -251,7 +245,6 @@ export class FaceRecognitionService {
 
     // Respect consent setting: do not run recognition unless consented
     if (!this.consentGiven && this.config.enableRealTime) {
-      production-ready
       return;
     }
 
@@ -407,7 +400,6 @@ export class FaceRecognitionService {
 
   private async identifyFace(face: FaceData): Promise<UserProfile | null> {
     // sophisticated face matching based on landmarks similarity
-    production
 
     for (const [, user] of this.knownFaces) {
       const similarity = this.calculateFaceSimilarity(face, user.faceData[0]);
@@ -422,7 +414,6 @@ export class FaceRecognitionService {
 
   private calculateFaceSimilarity(face1: FaceData, face2: FaceData): number {
     // sophisticated similarity calculation based on landmarks
-    production
 
     if (!face1.landmarks || !face2.landmarks) return 0;
 

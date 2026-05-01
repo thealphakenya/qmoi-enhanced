@@ -65,6 +65,7 @@ class QMOIEnhancementSystem:
             print(f"   Files: {', '.join(enhancement['files'])}")
 
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

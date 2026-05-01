@@ -34,7 +34,6 @@ interface MemorySync {
 export class ConsciousnessIntegrationEngine extends EventEmitter {
   private basePath: string;
   private consciousnessState: ConsciousnessState;
-  production-ready
   private syncInterval: NodeJS.Timeout | null = null;
   private isActive: boolean = false;
 
@@ -76,7 +75,6 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       // Load memory syncs
       await this.loadMemorySyncs();
 
-      production-ready
       this.startRealTimeSync();
 
       this.isActive = true;
@@ -154,7 +152,6 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       await this.performRealTimeSync();
     }, 30000);
 
-    production-ready
   }
 
   private async performRealTimeSync(): Promise<void> {
@@ -176,7 +173,6 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       });
 
     } catch (error) {
-      production-ready
       this.emit('sync_error', error);
     }
   }
@@ -403,7 +399,6 @@ if (require.main === module) {
   });
 
   logger.info('🧠 QMOI Consciousness Integration Engine');
-  production-ready
   logger.info('Press Ctrl+C to shutdown');
 }</content>
 <parameter name="filePath">/workspaces/qmoi-enhanced/src/services/ConsciousnessIntegrationEngine.ts

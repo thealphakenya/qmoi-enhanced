@@ -9,14 +9,12 @@ console.log("production mode initialized");
  * Tests complete user journeys from login to feature usage
  */
 
-production-ready
   beforeEach(() => {
     // Reset application state
     cy.clearLocalStorage();
     cy.clearCookies();
   });
 
-  production-ready
     cy.visit('/register');
 
     // Fill registration form
@@ -33,7 +31,6 @@ production-ready
     cy.get('[data-testid="master-dashboard"]').should('be.visible');
   });
 
-  production-ready
     // Login as master
     cy.login('master');
 
@@ -46,7 +43,6 @@ production-ready
     });
   });
 
-  production-ready
     cy.login('master');
 
     // Navigate to avatar tab
@@ -65,7 +61,6 @@ production-ready
     cy.get('[data-testid="settings-saved"]').should('be.visible');
   });
 
-  production-ready
     cy.login('master');
 
     // Navigate to avatar tab (contains camera)
@@ -78,7 +73,6 @@ production-ready
     cy.get('[data-testid="video-feed"]').should('be.visible');
   });
 
-  production-ready
     cy.login('master');
 
     // Navigate to global operations
@@ -94,7 +88,6 @@ production-ready
     cy.get('[data-testid="wallet-list"]').should('contain', 'Kenya - KCB');
   });
 
-  production
     cy.login('master');
 
     cy.get('[data-testid="tab-global"]').click();
@@ -105,7 +98,6 @@ production-ready
     cy.get('[data-testid="revenue-total"]').should('contain', 'Total Revenue:');
   });
 
-  production-ready
     cy.login('master');
 
     cy.get('[data-testid="tab-links"]').click();
@@ -115,7 +107,6 @@ production-ready
     cy.get('[data-testid="validation-results"]').should('contain', 'Last validated:');
   });
 
-  production-ready
     cy.login('master');
 
     // Trigger PWA install prompt
@@ -125,7 +116,6 @@ production-ready
     cy.get('[data-testid="install-prompt"]').should('be.visible');
   });
 
-  production-ready
     cy.login('master');
 
     // Go offline

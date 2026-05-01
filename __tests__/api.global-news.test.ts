@@ -12,8 +12,6 @@ const globalNewsRequest = async (method: string, path: string, body?: unknown) =
   return { status: res.status, body: data };
 };
 
-production-ready
-  production-ready
     const res = await globalNewsRequest('POST', '/api/global-news', {
       title: 'Test News',
       body: 'Test news body',
@@ -22,19 +20,12 @@ production-ready
       continent: 'Africa',
       tags: ['global', 'test'],
     });
-    production-ready
     if (res.status === 200) {
-      production-ready
-      production-ready
     }
   });
 
-  production-ready
     const res = await globalNewsRequest('GET', '/api/global-news?action=recent');
-    production-ready
     if (res.status === 200) {
-      production-ready
-      production-ready
     }
   });
 });

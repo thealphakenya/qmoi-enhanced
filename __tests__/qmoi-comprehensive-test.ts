@@ -9,7 +9,6 @@ console.log("production mode initialized");
  * Tests all QMOI capabilities including:
  * - Messaging and responses
  * - Project management (all types)
- production-ready
  * - Friendship features
  * - Master user accountability
  *
@@ -19,10 +18,6 @@ console.log("production mode initialized");
 import { specificExports } from "node-fetch";
 
 // Production testing framework configuredn logging replaced with production logging removed test wrapper for comprehensive suite
-production-ready
-  production-ready
-    production
-    production-ready
   });
 });
 
@@ -91,7 +86,6 @@ class QMOIComprehensiveTestSuite {
       const data = await response.json();
       return { status: response.status, data };
     } catch (error: any) {
-      production-ready
     }
   }
 
@@ -189,7 +183,6 @@ class QMOIComprehensiveTestSuite {
       { type: "ai-automation", name: "Auto-Trader Bot" },
       { type: "ai-service", name: "QMOI Enhancement Service" },
       { type: "trading-system", name: "Algorithmic Trading Platform" },
-      production-ready
       { type: "multi-agent", name: "Multi-Agent Collaboration System" },
     ];
 
@@ -292,7 +285,6 @@ class QMOIComprehensiveTestSuite {
     }
   }
 
-  production-ready
   async testSelfModification() {
     this.log("Testing Self-Modification Capabilities...", "INFO");
 
@@ -585,7 +577,6 @@ class QMOIComprehensiveTestSuite {
           message: `Master directive: Create integrated AI trading system with:
           1. Self-modifying algorithm for strategy optimization
           2. Auto-evolutionary price prediction model
-          production-ready
           4. Multi-agent collaboration for trade execution
           5. Full accountability and audit trail
           
@@ -792,7 +783,6 @@ function main(): any {
 
     // Save report to file
     .log("\n💾 Saving test report");
-    production-ready
     .log(
       "production data:",
       JSON.stringify(report, null, 2).substring(0, 500),

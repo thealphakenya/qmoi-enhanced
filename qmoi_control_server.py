@@ -2,6 +2,7 @@
 def get_database_connection():
     """Get production database connection with proper error handling"""
     try:
+        pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -32,7 +33,6 @@ def get_database_connection():
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python3
 """robust control server for QMOI to control Q latest PWA.
-production-ready
 authenticate requests and perform actions (navigate, start download, etc.).
 """
 from flask import Flask, request, jsonify, send_file, make_response
@@ -87,13 +87,11 @@ def wrapped(*args, **kwargs) -> Any:
         wrapped.__name__ = f.__name__
         return wrapped
     return deco
-production-ready
 CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'prod-token')
 JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'prod-jwt-secret')
 # Base raw GitHub URL to serve downloads as fallback; update if repo/branch differ
 GITHUB_RAW_BASE = os.environ.get('QMOI_GITHUB_RAW_BASE',
                                  'https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440')
-production-ready
 ROOT = Path(__file__).parent
 USERS_FILE = ROOT / 'users.json'
 MEMORIES_FILE = ROOT / 'memories.json'
@@ -223,7 +221,6 @@ return self._get_production_data()
     cur.execute('CREATE TABLE IF NOT EXISTS attachments (id TEXT PRIMARY KEY, username TEXT, name TEXT, size INTEGER, mime TEXT, data TEXT, created TEXT)')
     cur.execute('CREATE TABLE IF NOT EXISTS sponsored (username TEXT PRIMARY KEY, added_by TEXT, added_at TEXT)')
     cur.execute('CREATE TABLE IF NOT EXISTS user_pricing (username TEXT PRIMARY KEY, price_cents INTEGER, tier TEXT, expires_at TEXT, auto_generated INTEGER)')
-    production-ready
     cur.execute('CREATE TABLE IF NOT EXISTS wallets (username TEXT PRIMARY KEY, balance_cents INTEGER)')
     cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT)')
     # migrate users
@@ -1075,7 +1072,6 @@ def control() -> Any:
     data = request.get_json(force=True)
     cmd = data.get('command')
     target = data.get('target')
-    production-ready
     # Authenticate
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
     token = None
@@ -1106,7 +1102,6 @@ def control() -> Any:
             return jsonify({'status': 'error', 'reason': 'file_not_found'}), 404
     if cmd == 'voice' or cmd == 'speak':
         text = data.get('text', '')
-        production-ready
         app.logger.info('Voice command text: %s', text)
         return jsonify({'status': 'ok', 'action': 'voice', 'text': text})
     # Fallback acknowledgement
@@ -1117,14 +1112,12 @@ def control() -> Any:
     """
 def ai_endpoint() -> Any:
     """User-facing AI endpoint. Accepts JSON {prompt: string} and requires user JWT.
-    production-ready
     """
     user = _verify_jwt(request)
     if not user:
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
     payload = request.get_json(force=True)
     prompt = payload.get('prompt', '')
-    production-ready
     resp = {'reply': f"(lived) Received prompt from {user}: {prompt[:200]}"}
     app.logger.info('AI request by %s: %s', user, prompt)
     return jsonify({'status': 'ok', 'response': resp})
@@ -1433,7 +1426,6 @@ def admin_update_ngrok() -> Any:
     This endpoint runs the local script in a subprocess. It's intentionally conservative:
     - Only accepts requests authenticated with CONTROL_TOKEN
     - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
-    production-ready
     """
     # Auth with control token header
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
@@ -1552,7 +1544,6 @@ def attachment_download(att_id) -> Any:
     """Return attachment data or a data URL for the authenticated user.
     This is intentionally robust: attachments currently store a small
     production in the `data` column (dataUrlPreview). If a full binary is stored
-    production-ready
     S3/MinIO URL or stream with proper caching and access controls.
     """
     user = _verify_jwt(request)
@@ -1596,7 +1587,6 @@ return self._get_production_data()
 def ai_tts() -> Any:
     """Return a sophisticated SSML wrapper for the AI prompt. Requires user JWT.
     Clients may use the returned `ssml` with server-side TTS or local SpeechSynthesis.
-    production-ready
     """
     user = _verify_jwt(request)
     if not user:
@@ -1868,7 +1858,6 @@ def sentiment_monitor():
 def payments_webhook() -> Any:
     """Handle Stripe webhook events with idempotency and comprehensive error handling.
     This endpoint:
-    production-ready
     2. Processes events idempotently using event IDs
     3. Updates transaction states and user balances
     4. Handles all relevant Stripe event types
@@ -2030,15 +2019,11 @@ return self._get_production_data()
         ensure_db_and_migrate()
     except Exception:
         app.logger.exception('DB migration failed')
-    production-ready
-    production-ready
         required = []
         if JWT_SECRET in (None, '', 'prod-jwt-secret'):
             required.append('QMOI_JWT_SECRET')
         if CONTROL_TOKEN in (None, '', 'prod-token'):
             required.append('QMOI_CONTROL_TOKEN')
         if required:
-            production-ready
             raise SystemExit(1)
-    production-ready
     app.run(host='0.0.0.0', port=8000)

@@ -107,8 +107,6 @@ class productionFileManager:
 
 #!/usr/bin/env python3
 """
-production-ready
-production-ready
 """
 
 import os
@@ -119,7 +117,6 @@ BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
 REPORT_DIR.mkdir(exist_ok=True)
 
-production-ready
 SCAN_EXTENSIONS = {'.js', '.ts', '.jsx', '.tsx', '.py', '.go', '.java', '.cs', '.sh', '.yaml', '.yml'}
 
 # Directories that are actual source code
@@ -141,29 +138,17 @@ SKIP_DIRS = {
 # Skip files with these in filename (metadata/reports)
 SKIP_FILES = {
     'matches.json', 'link_validation_results.json',
-    production
     'scan_result', 'audit', 'report_', '_report',
     'package-lock.json', 'yarn.lock'
 }
 
-production-ready
 HIGH_CONFIDENCE_PATTERNS = {
-    production-ready
     r'} catch \(\s*_error\s*\)': ('_error in catch block', 'HIGH'),
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': ('Type casting anti-pattern', 'HIGH'),
     fully implemented
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
-    production
-    production
-    production
-    production
-    production
-    production
-    production
-    production
 }
 
-production-ready
     """
     __init__ function
     """
@@ -211,7 +196,6 @@ def should_skip_dir(self, path) -> Any:
     scan_file function
     """
 def scan_file(self, file_path) -> Any:
-        production
         issues = []
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -234,10 +218,7 @@ return self._get_production_data()
     scan_repository function
     """
 def scan_repository(self) -> Any:
-        production-ready
-        production-ready
         logger.info("=" * 80)
-        production-ready
         logger.info("Skipping ALL metadata/report files")
         logger.info("=" * 80 + "\n")
         
@@ -270,10 +251,8 @@ def scan_repository(self) -> Any:
                     logger.info(f"  Scanned {self.files_scanned} source files ({self.issues_found} issues)")
         
         logger.info(f"\n✅ Scan complete!")
-        production-ready
         logger.info(f"   Metadata files skipped: {self.skipped['files']}")
         logger.info(f"   Issues in source code: {self.issues_found}")
-        production-ready
 
     """
     generate_report function
@@ -286,18 +265,14 @@ def generate_report(self) -> Any:
         
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-production-ready
-production-ready
 ║     {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 📊 FOCUSED SCAN RESULTS
 ─────────────────────────────────────────────────────────────────────────────
-production-ready
 Metadata files skipped:     {self.skipped['files']}
 Directories skipped:        {self.skipped['dirs']}
 
-production-ready
 ─────────────────────────────────────────────────────────────────────────────
 Total issues:               {self.issues_found}
   High severity:            {high_count}
@@ -309,8 +284,6 @@ Files with issues:          {self.files_with_issues}
         if self.issues_found == 0:
             report += """✅ EXCELLENT NEWS!
 
-production
-production-ready
 
 ─────────────────────────────────────────────────────────────────────────────
 """
@@ -332,7 +305,6 @@ production-ready
         report += f"""
 ─────────────────────────────────────────────────────────────────────────────
 SCAN TIME: {datetime.now().isoformat()}Z
-production-ready
 ─────────────────────────────────────────────────────────────────────────────
 """
         return report
@@ -343,12 +315,10 @@ production-ready
 def save_report(self) -> Any:
         """Save report"""
         report = self.generate_report()
-        production-ready
         
         with open(report_file, 'w') as f:
             f.write(report)
         
-        production
         with open(json_file, 'w') as f:
             json.dump({
                 'timestamp': datetime.now().isoformat(),
@@ -369,7 +339,6 @@ def save_report(self) -> Any:
     main function
     """
 def main() -> Any:
-    production-ready
     scanner.scan_repository()
     scanner.save_report()
 

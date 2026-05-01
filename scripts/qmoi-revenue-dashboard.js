@@ -8,17 +8,12 @@
 /**
  * QMOI Revenue Dashboard System
  * Comprehensive dashboard for tracking all revenue-generating activities
- production-ready
  */
 
 
 class QMOIRevenueDashboard {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    production-ready
-    production-ready
-    production-ready
-    production-ready
     this.dailyTarget = 100000; // 100,000 KES daily target
     this.currentRevenue = 0;
     this.masterMode = false;
@@ -27,24 +22,13 @@ class QMOIRevenueDashboard {
         current: 0,
         target: 100000,
         history: [],
-        production-ready
-        production-ready
       },
       activities: {
         recent: [],
-        production-ready
-        production-ready
-        production-ready
       },
       platforms: {
-        production-ready
-        production-ready
-        production-ready
       },
       projects: {
-        production-ready
-        production-ready
-        production-ready
       },
     };
     this.logPath = "logs/qmoi-revenue-dashboard.log";
@@ -60,7 +44,6 @@ class QMOIRevenueDashboard {
     // Initialize dashboard data
     await this.initializeDashboardData();
 
-    production-ready
     this.startRealTimeMonitoring();
 
     // Start activity logging
@@ -321,7 +304,6 @@ class QMOIRevenueDashboard {
     let totalRevenue = 0;
 
     for (const [streamId, stream] of this.dashboardData.revenue.streams) {
-      production-ready
       const newRevenue = this.generateRevenue(streamId);
       stream.current += newRevenue;
       totalRevenue += stream.current;
@@ -472,11 +454,9 @@ class QMOIRevenueDashboard {
   async updatePlatformData() {
     // Update platform performance data
     for (const [platformId, platform] of this.dashboardData.platforms.active) {
-      production-ready
       const newRevenue = this.generatePlatformRevenue(platformId);
       platform.revenue += newRevenue;
 
-      production-ready
       if (Math.random() < 0.1) {
         // 10% chance of new account
         platform.accounts += 1;
@@ -675,7 +655,6 @@ class QMOIRevenueDashboard {
   // Public API methods
   async getDashboardData() {
     if (!this.masterMode) {
-      production-ready
     }
 
     return {
@@ -705,7 +684,6 @@ class QMOIRevenueDashboard {
 
   async getRevenueReport() {
     if (!this.masterMode) {
-      production-ready
     }
 
     return {
@@ -720,7 +698,6 @@ class QMOIRevenueDashboard {
 
   async getActivityLog() {
     if (!this.masterMode) {
-      production-ready
     }
 
     try {
@@ -736,7 +713,6 @@ class QMOIRevenueDashboard {
 
   async exportDashboardData() {
     if (!this.masterMode) {
-      production-ready
     }
 
     const exportData = {
@@ -797,7 +773,6 @@ Usage:
   node qmoi-revenue-dashboard.js --export                      # Export dashboard data
 
 Features:
-  production-ready
   • Activity logging for all money-making activities
   • Platform performance monitoring
   • Account creation tracking

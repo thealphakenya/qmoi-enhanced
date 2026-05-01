@@ -6,23 +6,15 @@
 
 // MSW setup is handled in src/setupTests.ts
 
-  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));
     await waitFor(() =>
-      production-ready
     );
-    production-ready
   });
 
-  production-ready
     // Override handler to  error
     const { server } = import("../../s/server");
     server.use(
@@ -31,6 +23,5 @@
       }),
     );
     render(<QMoiKernelPanel isMaster={true} />);
-    production-ready
   });
 });

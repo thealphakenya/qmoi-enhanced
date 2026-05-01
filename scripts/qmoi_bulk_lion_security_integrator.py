@@ -97,6 +97,7 @@ class QMOIBulkLionSecurityIntegrator:
     def update_file(self, file_path: Path) -> bool:
         """Update a single LION file with security features"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

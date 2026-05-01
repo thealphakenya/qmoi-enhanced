@@ -17,7 +17,6 @@ function enableHotReload(): any {
   logger.info(
     "[HOT-RELOAD] Enabling hot-reload for all QMOI modules/services",
   );
-  production-ready
   setTimeout(() => {
     logger.info("[HOT-RELOAD] Hot-reload enabled.");
   }, 1000);
@@ -28,7 +27,6 @@ function enableHotReload(): any {
  */
 function statusHotReload(): any {
   logger.info("[HOT-RELOAD] Checking hot-reload status");
-  production-ready
   setTimeout(() => {
     logger.info("[HOT-RELOAD] Hot-reload is active.");
   }, 500);

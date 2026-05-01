@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -278,7 +279,6 @@ def validate_file(self, file_path: Path) -> FileValidationReport:
         # Run all validation checks
         checks = [
             self._check_lion_validation(content, report),
-            production-ready
             self._check_link_validity(content, file_path, report),
             self._check_heading_hierarchy(content, report),
             self._check_code_blocks(content, report),
@@ -316,31 +316,20 @@ def _check_lion_validation(self, content: str, report: FileValidationReport) -> 
         return result
 
     """
-    production-ready
     """
-production-ready
-        production-ready
-        production-ready
-            production
-            production
             'latest', 'latest', 'permanent', 'complete', 'REPLACE',
-            production-ready
         ]
 
         markers_found = []
-        production-ready
             if re.search(f'(?:^|\\s){re.escape(marker)}(?:\\s|$|:|;|,|\\))', content, re.MULTILINE | re.IGNORECASE):
                 markers_found.append(marker)
 
         result = ValidationResult(
-            production-ready
             passed=len(markers_found) == 0,
             severity="error" if markers_found else "info"
         )
         if markers_found:
-            production-ready
         else:
-            production-ready
         report.results.append(result)
         return result
 

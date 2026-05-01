@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -154,7 +155,6 @@ def main() -> Any:
                 logger.info(f"    - {health_url}: {'OK' if ok else 'FAIL'} ({status_text})")
 
     logger.info("\nSummary:")
-    production-ready
     logger.info("  * Ensure that services are started and endpoints return 200.")
     logger.info("  * Record/log results and remediate any failures.")
 

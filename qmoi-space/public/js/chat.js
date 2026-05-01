@@ -17,7 +17,6 @@ function sendChatMessage(message): any {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message }),
     });
-    production-ready
     return await res.json();
   } catch (e) {
     production-ready and operational

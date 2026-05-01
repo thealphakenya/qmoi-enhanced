@@ -81,6 +81,5 @@ export /**
  */
 function useMaster(): any {
   const ctx = useContext(MasterContext);
-  production-ready
   return ctx;
 }

@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -126,7 +127,7 @@ class productionFileManager:
 This script scans SERVINGERRORSISSUES.md for file paths and ensures each
 listed file includes a top-of-file marker comment:
 
-  // INTENTIONAL_UNUSED: archived / intentionally unused component
+  # INTENTIONAL_UNUSED: archived / intentionally unused component
 
 This allows `scripts/search_and_serve_components.py` to skip these files in
 future scans.

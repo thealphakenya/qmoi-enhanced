@@ -121,18 +121,15 @@ def get_database_connection():
         raise
 
 
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:20Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:20Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
-production
 #!/usr/bin/env python3
 """
 QMOI Advanced Analytics System
 Provides deep insights into system performance, user behavior, and predictive analytics.
-production-ready
 """
 
 import os
@@ -200,13 +197,8 @@ def init_database(self) -> Any:
                 CREATE TABLE IF NOT EXISTS system_metrics (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    production-ready
-                    production-ready
-                    production-ready
-                    production-ready
                     active_processes INTEGER,
                     error_count INTEGER,
-                    production-ready
                 )
             ''')
             
@@ -218,8 +210,6 @@ def init_database(self) -> Any:
                     user_id TEXT,
                     action_type TEXT,
                     feature_used TEXT,
-                    production-ready
-                    production-ready
                     prodice_type TEXT,
                     location TEXT
                 )
@@ -233,7 +223,6 @@ def init_database(self) -> Any:
                     event_type TEXT,
                     severity TEXT,
                     description TEXT,
-                    production-ready
                     auto_fixed BOOLEAN,
                     manual_intervention BOOLEAN
                 )
@@ -245,7 +234,6 @@ def init_database(self) -> Any:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
                     insight_type TEXT,
-                    production-ready
                     prediction TEXT,
                     timeframe TEXT,
                     action_recommended TEXT
@@ -263,7 +251,6 @@ def init_database(self) -> Any:
     collect_system_metrics function
     """
 def collect_system_metrics(self) -> Dict[str, Any]:
-        production-ready
         try:
             metrics = {
                 "timestamp": datetime.now().isoformat(),
@@ -833,8 +820,6 @@ def calculate_prediction_accuracy(self) -> float:
             if df.empty:
                 return 50.0
             
-            production-ready
-            production-ready
             
         except:
             return 50.0

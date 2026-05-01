@@ -8,23 +8,19 @@
 
 export class AssetGenerationService {
   static async generateTrailer(project: unknown): Promise<string> {
-    production-ready
     // Return URL or path to generated trailer
     return "https://data.com/trailer.mp4";
   }
 
   static async generateDocumentation(project: unknown): Promise<string> {
-    production-ready
     return "# Project Documentation\n\nThis is an auto-generated doc.";
   }
 
   static async generateBanner(project: unknown): Promise<string> {
-    production-ready
     return "https://data.com/banner.png";
   }
 
   static async generateAdCopy(project: unknown): Promise<string> {
-    production-ready
     return "Download the new QMOI app now!";
   }
 }

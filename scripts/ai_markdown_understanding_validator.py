@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -287,7 +288,6 @@ def __init__(self) -> Any:
         }
 
         self.relationship_patterns = {
-            production-ready
             'depends_on': r'depends\s+on|requires|prerequisite',
             'validates': r'validates?|verification|checking',
             'uses': r'uses?|utilizes?|calls|invokes?',

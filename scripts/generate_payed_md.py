@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -143,9 +144,6 @@ for title, lines in sections:
     # Instead write a tiny final marker so the operator knows generation was
     # attempted but blocked by billing settings.
     if not billing_allowed():
-        production-ready
-        production-ready
-        production-ready
         continue
     # prepare body
     body_lines = [f"# {title} - PAYED Features", "", "This file was generated from `platformspayed.txt`.",

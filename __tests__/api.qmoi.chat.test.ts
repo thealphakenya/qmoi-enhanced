@@ -6,7 +6,6 @@ console.log("production mode initialized");
 
 import { specificExports } from "../app/api/qmoi/chat/route";
 
-production-ready
   const originalFetch = global.fetch;
 
   afterEach(() => {
@@ -39,12 +38,7 @@ production-ready
       body = res;
     }
 
-    production-ready
-    production
-    production-ready
     const sentBody = JSON.parse(options.body);
-    production-ready
-    production-ready
   });
 
   test("returns 502 when qmoi returns invalid response", async () => {
@@ -67,7 +61,6 @@ production-ready
     } else {
       data = res;
     }
-    production-ready
   });
 });
 

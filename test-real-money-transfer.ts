@@ -10,7 +10,6 @@ async /**
  * executeRealMoneyTransfer function
  */
 function executeRealMoneyTransfer(): any {
-  production-ready
 
   try {
     // Execute the actual money transfer through AI service
@@ -48,13 +47,10 @@ function executeRealMoneyTransfer(): any {
   }
 }
 
-production-ready
 executeRealMoneyTransfer().then((result) => {
   if (result) {
-    production-ready
     .log('🔍 Check the results above to confirm actual fund transfer');
   } else {
-    production-ready
   }
   process.exit(0);
 }).catch((error) => {

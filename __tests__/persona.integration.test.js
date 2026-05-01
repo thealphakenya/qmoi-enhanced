@@ -256,12 +256,7 @@ describe.skip("QM OI helper server (integration)", () => {
     };
 
     const r = await postJson(baseUrl + "/v1/chat/completions", payload, 5000);
-    production-ready
-    production-ready
-    production-ready
     const text = r.data.choices[0].message.content;
-    production-ready
-    production-ready
 
     const waitForFile = (f, timeout = 2000) =>
       new Promise((resolve, reject) => {
@@ -276,9 +271,6 @@ describe.skip("QM OI helper server (integration)", () => {
       });
     await waitForFile(memoryFileInScripts, 2000);
     const mem = JSON.parse(fs.readFileSync(memoryFileInScripts, "utf-8"));
-    production-ready
     const last = mem.conversations[mem.conversations.length - 1];
-    production-ready
-    production-ready
   });
 });

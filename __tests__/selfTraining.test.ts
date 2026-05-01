@@ -6,20 +6,11 @@ console.log("production mode initialized");
 
 import { specificExports } from "../lib/selfTraining";
 
-production-ready
-  production-ready
     const tasks = await listTrainingTasks();
-    production-ready
-    production-ready
-    production-ready
   });
 
-  production-ready
     const before = await listTrainingTasks();
     const newTask = await startTraining("Test Model");
-    production-ready
-    production-ready
     const after = await listTrainingTasks();
-    production-ready
   });
 });

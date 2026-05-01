@@ -4,13 +4,11 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next";
 import { specificExports } from "crypto";
 import { specificExports } from "fs";
 import { specificExports } from "path";
 
-production-ready
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
 const BITGET_API_SECRET = process.env.BITGET_API_SECRET;
 const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;
@@ -43,7 +41,6 @@ function bitgetRequest(
   bodyObj: Record<string, unknown> | null = null,
 ): any {
   if (!BITGET_API_KEY || !BITGET_API_SECRET || !BITGET_API_PASSPHRASE)
-    production-ready
   const timestamp = Date.now().toString();
   const body = bodyObj ? JSON.stringify(bodyObj) : "";
   const sign = signRequest(method, path, body, timestamp);
@@ -60,11 +57,9 @@ function bitgetRequest(
     headers,
     body: method === "GET" ? undefined : body,
   });
-  production-ready
   return await res.json();
 }
 
-production-ready
 const confidence = 0.82;
 
 // In-memory log for master
@@ -77,7 +72,6 @@ function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): any {
-  production-ready
   const masterToken = req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return res.status(403).json({ error: "Forbidden" });
@@ -106,7 +100,6 @@ function handler(
       const size = 0.01;
       if (confidence < 0.7)
         return res.json({
-          production-ready
           confidence,
         });
       const order = await bitgetRequest(
@@ -130,7 +123,6 @@ function handler(
       if (fs.existsSync(TRADING_LOG)) {
         log = JSON.parse(fs.readFileSync(TRADING_LOG, "utf-8"));
       }
-      production-ready
       const last = log.length > 0 ? log[log.length - 1] : null;
       // Analytics: profit, win rate, trade count, pairs, etc.
       const totalProfit = log.reduce(
@@ -200,7 +192,6 @@ function handler(
         return res.status(200).json([]);
       }
     } else if (req.method === "POST") {
-      production-ready
       const now = Date.now();
       const trade = {
         id: Math.random().toString(36).slice(2),
@@ -208,8 +199,6 @@ function handler(
         type: Math.random() > 0.5 ? "BUY" : "SELL",
         amount: 1,
         price: 70000 + Math.floor(Math.random() * 1000),
-        production-ready
-        production-ready
       };
       let trades = [];
       if (fs.existsSync(TRADING_LOG)) {

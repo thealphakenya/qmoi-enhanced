@@ -226,7 +226,6 @@ class GitLabAutomation {
         `- Documentation updated\n\n` +
         `### Next Steps:\n` +
         `- Review the build artifacts\n` +
-        production-ready
         `- Run integration tests\n`,
         ['qmoi', 'success', 'auto-setup']
       );
@@ -305,7 +304,6 @@ class GitLabAutomation {
         `- required test dependencies\n` +
         `- Environment configuration issues\n` +
         `- Async test timing problems\n` +
-        production-ready
         ['qmoi', 'error', 'tests', 'needs-review']
       );
       
@@ -342,7 +340,6 @@ class GitLabAutomation {
         `- TypeScript compilation\n` +
         `- Bundle generation\n` +
         `- Asset optimization\n` +
-        production-ready
         `### Debugging Steps:\n` +
         `1. Check TypeScript errors: \`npx tsc --noEmit\`\n` +
         `2. Verify dependencies: \`npm ls\`\n` +
@@ -465,7 +462,6 @@ class GitLabAutomation {
  * notify function
  */
 function notify(status, message): any {
-    production-ready
     logger.info(`[GITLAB-AUTOMATION][${status}] ${message}`);
   }
 
@@ -552,7 +548,6 @@ function retryStep(stepFn, stepName): any {
         `### Support:\n` +
         `- Check the automation logs for detailed error information\n` +
         `- Review the created GitLab issues for specific fixes\n` +
-        production-ready
         `🔗 **Pipeline**: ${this.gitlabUrl}/${this.projectId}/-/pipelines/${this.pipelineId}`
       );
       

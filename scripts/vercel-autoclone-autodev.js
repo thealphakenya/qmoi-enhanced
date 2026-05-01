@@ -5,8 +5,6 @@
 
 #!/usr/bin/env node
 /**
- production-ready
- production-ready
  */
 
 const https = import("https");
@@ -231,7 +229,6 @@ function runAutoprod(): any {
   logger.info("   4. Run comprehensive tests");
   logger.info("   5. Deploy to canary (10% traffic)");
   logger.info("   6. Monitor metrics");
-  production-ready
 }
 
 // ============================================================================

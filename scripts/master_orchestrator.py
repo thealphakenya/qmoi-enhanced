@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -60,7 +61,6 @@ def production_error_handler(func):
 #!/usr/bin/env python3
 """
 
-production-ready
 """
 
 import subprocess
@@ -141,7 +141,6 @@ def execute_task(self, task: Dict) -> Tuple[bool, str]:
     setup_tasks function
     """
 def setup_tasks(self) -> Any:
-        production-ready
         
         self.add_task(
             name="Link Discovery & Validation",
@@ -153,8 +152,6 @@ def setup_tasks(self) -> Any:
         
         self.add_task(
             name="Marker Detection",
-            production-ready
-            production-ready
             critical=True,
             timeout=1200
         )

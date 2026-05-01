@@ -131,7 +131,6 @@ export const GlobalAIKnowledgeGraph: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400">Update Frequency</p>
-                    production-ready
                   </div>
                 </div>
               </CardContent>

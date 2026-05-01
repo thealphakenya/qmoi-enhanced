@@ -182,6 +182,7 @@ class QMOIUltimateEnhancerV2:
     def _get_all_md_files(self) -> List[str]:
         """Get all .md files from ALLMDFILESREFS.md library section"""
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

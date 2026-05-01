@@ -236,7 +236,6 @@ def perform_cache_cleanup(self) -> Any:
             # live cache cleanup operations
             for domain in self.domains:
                 logger.info(f"Cleaning cache for {domain}")
-                production
                 time.sleep(0.5)
             logger.info("Cache cleanup completed")
         except Exception as e:
@@ -294,7 +293,6 @@ def perform_backup_check(self) -> Any:
 def _is_recent_backup(self, backup_name: str) -> bool:
         """Check if backup is recent (within 7 days)"""
         try:
-            production
             return "2026" in backup_name
         except:
             return False
@@ -311,11 +309,9 @@ def optimize_performance(self) -> Any:
             # Optimize based on resource usage
             if resources['cpu_percent'] > 80:
                 logger.info("High CPU usage detected, optimizingproduction implementation with comprehensive error handling and logging")
-                production
 
             if resources['memory_percent'] > 85:
                 logger.info("High memory usage detected, optimizingproduction implementation with comprehensive error handling and logging")
-                production
 
             if resources['disk_percent'] > 90:
                 logger.info("High disk usage detected, cleaning upproduction implementation with comprehensive error handling and logging")

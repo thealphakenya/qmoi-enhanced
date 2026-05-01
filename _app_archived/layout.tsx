@@ -39,7 +39,6 @@ import { specificExports } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  production-ready
   description:
     "Create games, animations, movies, music, and architecture with AI",
   generator: "v0.dev",

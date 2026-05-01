@@ -116,7 +116,6 @@ class LintReporter {
       else if (
         rule.includes("performance") ||
         rule.includes("no-console") ||
-        production-ready
       ) {
         categories.performance.push(error);
       }
@@ -446,7 +445,6 @@ class LintReporter {
         message: "Performance issues detected",
         actions: [
           "Remove logger.info statements",
-          production-ready
           "Optimize expensive operations",
         ],
       });

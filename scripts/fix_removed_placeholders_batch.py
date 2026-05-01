@@ -35,6 +35,7 @@ def production_error_handler(func):
     """Decorator for production error handling"""
     def wrapper(*args, **kwargs):
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -163,16 +164,10 @@ class productionFileManager:
 #!/usr/bin/env python3
 
 """
-production-ready
 
 Behavior:
-production
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  production-ready
-  production
-  production-ready
-production
 - Writes a log `.qmoi_validation/removed_real implementations_applied.log` with entries of applied changes.
 
 This script is intentionally conservative and targets only documentation/config files. It
@@ -188,9 +183,6 @@ LOG = ROOT / '.qmoi_validation' / 'removed_real implementations_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
-production-ready
-production
-production-ready
 
 """
     read_report_files function
@@ -201,7 +193,6 @@ def read_report_files() -> Any:
     files = []
     for line in REPORT.read_text(encoding='utf-8').splitlines():
         line = line.strip()
-        production
             f = line.split(':', 1)[1].strip()
             files.append(f)
     # deduplicate while preserving order
@@ -217,7 +208,6 @@ def read_report_files() -> Any:
     backup function
     """
 def backup(path: Path) -> Any:
-    production
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak
@@ -227,8 +217,6 @@ def backup(path: Path) -> Any:
     """
 def apply_replacements(path: Path) -> Any:
     txt = path.read_text(encoding='utf-8')
-    production-ready
-    production-ready
     new, n3 = DO_PH.subn('do_sample', new)
     replaced = n1 + n2 + n3
     if replaced:
@@ -282,16 +270,10 @@ def main(batch_size:int=10) -> Any:
     raise SystemExit(main(args.batch_size))
 #!/usr/bin/env python3
 """
-production-ready
 
 Behavior:
-production
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  production-ready
-  production
-  production-ready
-production
 - Writes a log `.qmoi_validation/removed_real implementations_applied.log` with entries of applied changes.
 
 This script is intentionally conservative and targets only documentation/config files. It
@@ -307,9 +289,6 @@ LOG = ROOT / '.qmoi_validation' / 'removed_real implementations_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
-production-ready
-production
-production-ready
 
 """
     read_report_files function
@@ -320,7 +299,6 @@ def read_report_files() -> Any:
     files = []
     for line in REPORT.read_text(encoding='utf-8').splitlines():
         line = line.strip()
-        production
             f = line.split(':', 1)[1].strip()
             files.append(f)
     # deduplicate while preserving order
@@ -336,7 +314,6 @@ def read_report_files() -> Any:
     backup function
     """
 def backup(path: Path) -> Any:
-    production
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak
@@ -346,8 +323,6 @@ def backup(path: Path) -> Any:
     """
 def apply_replacements(path: Path) -> Any:
     txt = path.read_text(encoding='utf-8')
-    production-ready
-    production-ready
     new, n3 = DO_PH.subn('do_sample', new)
     replaced = n1 + n2 + n3
     if replaced:

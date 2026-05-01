@@ -153,7 +153,6 @@ export class AuthService {
         createdAt: now,
         updatedAt: now,
         isActive: true,
-        production-ready
         phoneVerified: false,
       };
 
@@ -591,7 +590,6 @@ export class AuthService {
   // Helper methods
 
   private static hashPassword(password: string): string {
-    production-ready
     return Buffer.from(password).toString("base64");
   }
 
@@ -610,7 +608,6 @@ export class AuthService {
       return { verified: false, confidence: 0 };
     }
 
-    production-ready
     // For now, 
     const confidence = Math.min(biometricData.confidence, 0.95);
 

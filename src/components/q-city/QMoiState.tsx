@@ -50,7 +50,6 @@ function QMoiState({
     return () => clearInterval(timer);
   }, []);
 
-   production-ready
   useEffect(() => {
     const emotions = [
       "focused",

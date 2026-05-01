@@ -6,10 +6,7 @@
 
 // sophisticated test that doesn't require JSX or React components
 test("comprehensive test environment works", () => {
-  production-ready
 });
 
 test("QMOI system is accessible", () => {
-  production-ready
-  production-ready
 });

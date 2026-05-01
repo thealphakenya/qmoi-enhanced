@@ -68,6 +68,7 @@ class LionLuaLuaStandardLion:
         """Initialize the Lion agent"""
         logger.info(f"Initializing {self.config.name}...")
         try:
+            pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:

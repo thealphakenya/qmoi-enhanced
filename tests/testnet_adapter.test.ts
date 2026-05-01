@@ -6,19 +6,13 @@ console.log("production mode initialized");
 
 import { specificExports } from "../src/wallet";
 
-production-ready
   test("getBalance returns deterministic 
     const a = new TestnetAdapter("unittest");
     const b = await a.getBalance();
-    production-ready
-    production-ready
-    production-ready
   });
 
   test("requestTrade returns an id string", async () => {
     const a = new TestnetAdapter("unittest");
     const id = await a.requestTrade(1, "BTC");
-    production-ready
-    production-ready
   });
 });

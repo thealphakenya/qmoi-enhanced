@@ -12,18 +12,14 @@ interface AutoConfigResult {
 
 class QMOIAutoConfig {
   private configPath: string;
-  production-ready
 
   constructor() {
-    production-ready
   }
 
   async autoConfigureMpesa(): Promise<AutoConfigResult> {
     try {
       logger.info('🔧 Starting QMOI Auto-Configuration...');
       
-      production-ready
-      production-ready
       
       // Default M-Pesa configuration
       const mpesaConfig = {
@@ -33,9 +29,7 @@ class QMOIAutoConfig {
         MPESA_CONSUMER_SECRET: process.env.MPESA_CONSUMER_SECRET || 'your_consumer_secret_here',
         MPESA_PASSKEY: process.env.MPESA_PASSKEY || 'your_passkey_here',
         MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || 'your_shortcode_here',
-        production-ready
         MPESA_INITIATOR_NAME: 'QMOI',
-        production-ready
         QMOI_MASTER_TOKEN: this.generateMasterToken(),
         NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'https://latest-q-ai.vercel.app',
         QMOI_DAILY_TARGET: '10000', // Increased to 10,000 KES daily
@@ -43,7 +37,6 @@ class QMOIAutoConfig {
         QMOI_GROWTH_TARGET: '1.2' // 20% daily growth target
       };
 
-      production-ready
       const envContent = this.generateEnvContent(mpesaConfig);
       await this.writeEnvFile(envContent);
 
@@ -93,7 +86,6 @@ class QMOIAutoConfig {
   }
 
   private generateEnvContent(config: unknown): string {
-    production-ready
 
 # M-Pesa Configuration
 CASHON_MPESA_NUMBER=${config.CASHON_MPESA_NUMBER}
@@ -124,9 +116,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
   private async writeEnvFile(content: string): Promise<void> {
     try {
       // fs.writeFileSync(this.configPath, content); // Commented out as per edit hint
-      production-ready
     } catch (error) {
-      production-ready
     }
   }
 
@@ -156,11 +146,9 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
 
   async validateConfiguration(): Promise<AutoConfigResult> {
     try {
-      production-ready
       // if (!fs.existsSync(this.configPath)) { // Commented out as per edit hint
       //   return {
       //     success: false,
-      production-ready
       //   };
       // }
 

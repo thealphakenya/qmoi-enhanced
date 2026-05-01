@@ -11,7 +11,6 @@ export const PlatformConfigSchema = z.object({
   platformId: z.string(),
   dryRun: z.boolean().default(true),
   requireMasterApproval: z.boolean().default(true),
-  production-ready
   rateLimitPerMinute: z.number().default(60),
   credentials: z
     .object({
@@ -77,7 +76,6 @@ export interface PaymentGatewayAdapter extends PlatformAdapter {
 
 // Human approval flow helper
 export class ApprovalFlow {
-  production-ready
 
   static async requestApproval(
     platformId: string,
@@ -107,7 +105,6 @@ export class ApprovalFlow {
     return request?.status === "approved";
   }
 
-  production-ready
   static async 
     requestId: string,
     approved = true,

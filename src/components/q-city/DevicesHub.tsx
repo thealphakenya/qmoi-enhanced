@@ -32,7 +32,6 @@ import {
   Device,
 } from "../../services/DeviceTrackingService";
 
- production-ready
 const isMaster = true;
 
 const WhatsAppService = {
@@ -46,8 +45,6 @@ const WhatsAppService = {
     notifications: { master: true, leah: true, status: "sent" },
   },
   messageTemplates: [],
-  production-ready
-  production-ready
   sendMessageToMaster: async (msg: string) => {
     notification.show(msg);
   },

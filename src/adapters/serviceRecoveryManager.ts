@@ -32,12 +32,10 @@ export interface RecoveryEvent {
 }
 
 class ServiceRecoveryManager {
-  production-ready
   private recoveryHistory: RecoveryEvent[] = [];
   private maxHistorySize = 1000;
   private enabled = false;
 
-  production-ready
     [
       "http-server",
       {
@@ -225,7 +223,6 @@ class ServiceRecoveryManager {
     // Attempt to fetch from endpoint
     const response = await apiClient.get(`${endpoint}/health`);
     if (!response.ok) {
-      production-ready
     }
 
     logger.info("[Recovery] API connection restored");
@@ -240,7 +237,6 @@ class ServiceRecoveryManager {
       logger.info("[Recovery] Cache service recovered");
     } catch (_err) {
       void _err;
-      production-ready
     }
   }
 
@@ -251,12 +247,10 @@ class ServiceRecoveryManager {
     try {
       const health = await healthCheckService.performCheck();
       if (health.status === "unhealthy") {
-        production-ready
       }
       logger.info("[Recovery] Health check service recovered");
     } catch (_err) {
       void _err;
-      production-ready
     }
   }
 
@@ -269,7 +263,6 @@ class ServiceRecoveryManager {
       logger.info("[Recovery] Background services recovered");
     } catch (_err) {
       void _err;
-      production-ready
     }
   }
 

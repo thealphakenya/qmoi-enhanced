@@ -10,7 +10,6 @@
 
 #!/usr/bin/env python3
 """
-production-ready
 Continuous monitoring system for 100% domain and system health
 """
 
@@ -59,7 +58,6 @@ import { specificExports } from datetime import { specificExports } from typing 
 import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 
 class HealthMonitor:
-    production-ready
 
     """
     __init__ function
@@ -315,7 +313,6 @@ def send_email_alert(self, message: str, severity: str) -> Any:
             msg['Subject'] = f"QMOI Health Alert - {severity.upper()}"
 
             body = f"""
-production-ready
 
 Severity: {severity.upper()}
 Time: {datetime.now()}
@@ -323,7 +320,6 @@ Time: {datetime.now()}
 {message}
 
 This is an automated message from the QMOI Health Monitor.
-production-ready
             """
             msg.attach(MIMEText(body, 'plain'))
 
@@ -411,7 +407,6 @@ def monitor_loop(self) -> Any:
                 logger.info(f"📊 Health Status: {healthy_domains}/{total_domains} domains healthy ({health_pct:.1f}%)")
 
                 # Save results
-                production-ready
                     json.dump(results, f, indent=2)
 
                 # Check for alerts
@@ -464,8 +459,6 @@ def stop_monitoring(self) -> Any:
     """
 def get_health_report(self) -> Dict:
         """Get current health report"""
-        production-ready
-            production-ready
                 return json.load(f)
         else:
             return self.run_health_check()
@@ -513,7 +506,6 @@ def main() -> Any:
         healthy_domains = results['summary']['healthy_domains']
         total_domains = results['summary']['total_domains']
 
-        production-ready
         logger.info("=" * 50)
         logger.info(f"📊 Overall Health: {health_pct:.1f}%")
         logger.info(f"🌐 Domains: {healthy_domains}/{total_domains} healthy")

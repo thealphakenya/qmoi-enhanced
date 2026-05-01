@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -134,7 +135,6 @@ def remove_and_flag(artifact_path, reason) -> Any:
     """
 def trigger_rebuild(artifact_path) -> Any:
     log(f"Triggering rebuild for app artifact path: {artifact_path}")
-    production
     # e.g., create a file for dispatcher or call API action
     trigger_file = VALIDATION_DIR / 'rebuild_queue.json'
     queue = []

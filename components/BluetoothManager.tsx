@@ -73,7 +73,6 @@ function connectToDevice(device: BluetoothDevice): any {
     setError(null);
     setConnecting(true);
     try {
-       production-ready
       setConnectedDevice(device);
       // Optionally get location
       if (navigator.geolocation) {

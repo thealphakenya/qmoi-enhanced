@@ -69,7 +69,6 @@ function useCarousel(): any {
   const context = React.useContext(CarouselContext);
 
   if (!context) {
-    production-ready
   }
 
   return context;

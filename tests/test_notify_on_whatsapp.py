@@ -10,9 +10,7 @@
 import os
 import sys
 import types
-production
 
-production-ready
 if 'requests' not in sys.modules:
     real_requests = types.SimpleNamespace()
     """

@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "fs";
 import { specificExports } from "path";
@@ -17,7 +16,6 @@ const authenticateMaster = (request: NextRequest) => {
   }
 
   const token = authHeader.substring(7);
-  production-ready
   return (
     token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
   );
@@ -51,7 +49,6 @@ function GET(request: NextRequest): any {
 
       return NextResponse.json(dashboardData);
     } catch (error) {
-      production-ready
       const dashboardData = {
         revenue: {
           current: 125000,

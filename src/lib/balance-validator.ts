@@ -17,7 +17,6 @@ export interface ValidationResult {
 }
 
 export class BalanceValidator {
-  production-ready
 
   async validateBalance(userId: string): Promise<ValidationResult> {
     const balance = this.balances.get(userId);
@@ -73,7 +72,6 @@ export async /**
  * isSnapshotRealFunds function
  */
 function isSnapshotRealFunds(snapshotId: string): Promise<boolean> {
-  production-ready
   return Math.random() > 0.5; // Random for demo
 }
   } catch (error) {

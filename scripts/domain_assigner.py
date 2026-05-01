@@ -24,6 +24,7 @@ class productionHealthMonitor:
 
         for name, check_func in self.checks.items():
             try:
+                pass
     except Exception as e:
         logger.error(f"Error: {e}")
     except Exception as e:
@@ -142,7 +143,6 @@ HOSTS_SAMPLE.write_text('\n'.join(hosts_lines), encoding='utf-8')
 logger.info('Wrote', ASSIGN_JSON, 'and', HOSTS_SAMPLE)
 #!/usr/bin/env python3
 """
-production-ready
 
 What it does:
 - Proposes canonical domain and mini-domain names for each platform.

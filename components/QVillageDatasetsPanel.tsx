@@ -38,7 +38,6 @@ function QVillageDatasetsPanel(): any {
     try {
       const res = await apiClient.get("/api/qvillage?endpoint=datasets");
       if (!res.ok) {
-        production-ready
       }
       const data = (await res.json()) as QVillageDataset[];
       setDatasets(data);

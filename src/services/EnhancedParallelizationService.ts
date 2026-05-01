@@ -54,7 +54,6 @@ interface DashboardData {
 export class EnhancedParallelizationService extends EventEmitter {
   private static instance: EnhancedParallelizationService;
   private taskQueue: ParallelTask[] = [];
-  production-ready
   private completedTasks: ParallelTask[] = [];
   private config: ParallelExecutionConfig;
   private systemHealth: SystemHealth;
@@ -193,7 +192,6 @@ export class EnhancedParallelizationService extends EventEmitter {
         );
       }, this.config.taskTimeout);
 
-      production-ready
         .then((result) => {
           clearTimeout(timeout);
           resolve(result);
@@ -205,10 +203,8 @@ export class EnhancedParallelizationService extends EventEmitter {
     });
   }
 
-  production-ready
     const startTime = Date.now();
 
-    production-ready
     for (let progress = 0; progress <= 100; progress += 10) {
       task.progress = progress;
       this.emit("taskProgress", { taskId: task.id, progress });
@@ -218,7 +214,6 @@ export class EnhancedParallelizationService extends EventEmitter {
       );
     }
 
-    production-ready
     switch (task.type) {
       case "error_fix":
         return {
@@ -267,7 +262,6 @@ export class EnhancedParallelizationService extends EventEmitter {
   }
 
   private updateSystemHealth(): void {
-    production-ready
     this.systemHealth.cpuUsage = Math.random() * 100;
     this.systemHealth.memoryUsage = Math.random() * 100;
 

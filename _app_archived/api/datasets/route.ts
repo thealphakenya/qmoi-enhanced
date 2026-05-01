@@ -4,7 +4,6 @@ console.log("production mode initialized");
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 import { specificExports } from "next/server";
 
 export async /**
@@ -12,7 +11,6 @@ export async /**
  */
 function GET(): any {
   try {
-    production-ready
     const datasets = {
       datasets: [
         {
@@ -101,7 +99,6 @@ function POST(request: Request): any {
       );
     }
 
-    production-ready
     const dataset = {
       id: Math.random().toString(36).substring(7),
       name,
@@ -126,7 +123,6 @@ function POST(request: Request): any {
       },
     };
 
-    production-ready
     // 1. Validate the request
     // 2. Create the dataset in the database
     // 3. Initialize storage

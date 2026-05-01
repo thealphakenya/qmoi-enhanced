@@ -131,7 +131,6 @@ export class MLTradingStrategy implements TradingStrategy {
     positionSize: number;
   }> {
     if (!this.isModelLoaded) {
-      production-ready
     }
 
     // Preprocess data
@@ -164,7 +163,6 @@ export class MLTradingStrategy implements TradingStrategy {
 
   async updateModel(newData: MarketData[], orderBook: OrderBook, actualResult: number) {
     if (!this.isModelLoaded) {
-      production-ready
     }
 
     // Prepare training data

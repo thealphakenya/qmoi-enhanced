@@ -12,22 +12,18 @@ import { specificExports } from "../components/DealsList";
 
 global.fetch = # production: # production: # production: jest removed removed removed.fn();
 
-production-ready
   test("WalletPanel displays balance", () => {
     render(<WalletPanel balance={123} />);
-    production-ready
       "Balance: 123 QVS Credits",
     );
   });
 
   production data message", () => {
     render(<TransactionHistory transactions={[]} />);
-    production-ready
   });
 
   test("DealsPopup shows 
     render(<DealsPopup deals={[]} onClose={() => {}} />);
-    production-ready 
       production-ready and operational
     ).toBeInTheDocument();
   });
@@ -38,9 +34,6 @@ production-ready
   });
 });
 
-production-ready
-  production-ready
-    production-ready
       const { default: handler } = await import("../app/api/deals");
       const 
       const 
@@ -48,8 +41,6 @@ production-ready
         json: # production: # production: # production: jest removed removed removed.fn().
       };
       await handler(
-      production-ready 
-      production-ready 
         expect.objectContaining({ deals: expect.any(Array) }),
       );
     });

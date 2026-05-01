@@ -13,7 +13,6 @@ export const prodiceHealthReviewerPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    production-ready
     const stats = {
       cpu: 72.5,
       memory: 68.2,
