@@ -2,6 +2,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { requireApiKey } from "@/lib/proposals";
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
@@ -15,6 +19,11 @@ function parseLogLine(line: string): any {
 }
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
+  const apiCheck = requireApiKey(request.headers);
+  if (!apiCheck.ok) {
+    return NextResponse.json(apiCheck.response?.body || { error: 'Unauthorized' }, { status: apiCheck.response?.status || 401 });
+  }
+
   const key = request.headers.get("x-qcity-admin-key");
   if (key !== ADMIN_KEY) {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });

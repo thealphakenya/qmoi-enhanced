@@ -21,12 +21,12 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "useUnknownInCatchVariables": true,
     "baseUrl": ".",
     "paths": {
@@ -77,7 +77,8 @@
     "components/**/*",
     "lib/**/*",
     "types/**/*",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

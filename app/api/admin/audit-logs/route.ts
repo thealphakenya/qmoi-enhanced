@@ -7,12 +7,21 @@ import { authService } from '@/lib/auth/service';
 import { Database } from '@/lib/db';
 import { getLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
+import { requireApiKey } from '@/lib/proposals';
 const logger = getLogger("api/admin/audit-logs");
 const db = prisma;
 // In-memory audit log cache for fallback/test scenarios
 const inMemoryAuditLogs: any[] = [];
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export async function GET(_request: NextRequest): any {
   try {
+    const apiCheck = requireApiKey(_request.headers);
+    if (!apiCheck.ok) {
+      return NextResponse.json(apiCheck.response?.body || { error: 'Unauthorized' }, { status: apiCheck.response?.status || 401 });
+    }
+
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {
       return NextResponse.json(

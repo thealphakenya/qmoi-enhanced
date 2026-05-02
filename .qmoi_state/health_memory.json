@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-04-26T10:39:41.904179",
+  "timestamp": "2026-05-02T06:27:22.845761",
   "overall_health_score": 93,
   "systems_checked": 8,
   "systems_healthy": 5,
   "issues_found": 3,
-  "execution_time": 6.765505790710449,
+  "execution_time": 28.700660705566406,
   "detailed_results": {
     "file_system": {
       "healthy": true,
@@ -14,11 +14,11 @@
     },
     "code_quality": {
       "healthy": false,
-      "score": 99,
+      "score": 91,
       "issues": [
-        "High TODO count: 14"
+        "High TODO count: 90"
       ],
-      "details": "Code quality: 14 TODO items found"
+      "details": "Code quality: 90 TODO items found"
     },
     "configuration": {
       "healthy": true,
@@ -28,9 +28,9 @@
     },
     "dependencies": {
       "healthy": false,
-      "score": 75,
+      "score": 80,
       "issues": [
-        "Invalid package.json: Expecting ':' delimiter: line 23 column 166 (char 1102)"
+        "Missing critical dependency: typescript"
       ],
       "details": "Dependencies: 1 dependency issues"
     },
@@ -42,12 +42,12 @@
     },
     "performance": {
       "healthy": false,
-      "score": 76,
+      "score": 74,
       "issues": [
-        "Large files detected: 7 files over 50MB",
+        "Large files detected: 8 files over 50MB",
         "Missing performance file: PERFORMANCE.md"
       ],
-      "details": "Performance: 7 large files, 2 issues"
+      "details": "Performance: 8 large files, 2 issues"
     },
     "integration": {
       "healthy": true,
@@ -59,7 +59,7 @@
       "healthy": true,
       "score": 100,
       "issues": [],
-      "details": "Quantum health: 1713 quantum references"
+      "details": "Quantum health: 1716 quantum references"
     }
   },
   "recommendations": [

@@ -8,6 +8,9 @@ import * as fs from "fs/promises";
 import path from "path";
 // Persistent document backup is stored under this directory.
 const BACKUP_ROOT = path.join(process.cwd(), "data", "document-backups");
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 const INDEX_FILE = path.join(BACKUP_ROOT, "index.json");
 interface DocumentRecord {
   id: string;

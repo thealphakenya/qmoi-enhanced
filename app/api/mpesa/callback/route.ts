@@ -4,6 +4,10 @@ import { logEvent } from "../../../../lib/security_check";
 import { processMpesaCallback } from "@/lib/payments/service";
 import { notifyPaymentSuccess } from "@/lib/notifier";
 import { getPrismaClient } from "@/lib/prisma";
+import { requireApiKey } from "@/lib/proposals";
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 const logger = {
   info: console.log.bind(console),
@@ -71,6 +75,11 @@ async function triggerPostPaymentActions(details: any): any {
 }
 export async function POST(_req: NextRequest): any {
   try {
+    const apiCheck = requireApiKey(_req.headers);
+    if (!apiCheck.ok) {
+      return NextResponse.json(apiCheck.response?.body || { error: 'Unauthorized' }, { status: apiCheck.response?.status || 401 });
+    }
+
     // Read raw body for optional signature verification
     const raw = await _req.text();
     // Try common signature headers

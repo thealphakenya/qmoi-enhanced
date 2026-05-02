@@ -1,9 +1,9 @@
 <!-- AUTODEV Enhanced: 2026-04-20T09:08:01.459909 -->
 <!-- AUTODEV Enhanced: 2026-04-20T09:01:14.179537 -->
 <!-- AUTODEV Enhanced: 2026-04-20T08:55:09.945991 -->
-const fs = import("fs");
-const path = import("path");
-const glob = import("glob");
+const fs = require("fs");
+const path = require("path");
+const glob = require("glob");
 
 const headerFiles = glob.sync("app/api/**/route.ts");
 const results = [];
@@ -35,7 +35,7 @@ fs.writeFileSync(
   ".qmoi_validation/auth_triage_report.json",
   JSON.stringify({ generatedAt: new Date().toISOString(), results }, null, 2),
 );
-logger.info(
+console.log(
   "Wrote .qmoi_validation/auth_triage_report.json with",
   results.length,
   "items",

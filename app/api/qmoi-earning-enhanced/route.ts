@@ -4,9 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 import { NextRequest, NextResponse } from "next/server";
+import { requireApiKey } from "@/lib/proposals";
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest): any {
   try {
+    const apiCheck = requireApiKey(request.headers);
+    if (!apiCheck.ok) {
+      return NextResponse.json(apiCheck.response?.body || { error: 'Unauthorized' }, { status: apiCheck.response?.status || 401 });
+    }
+
     const userId = request.headers.get("x-user-id");
     if (!userId) {
       return NextResponse.json(

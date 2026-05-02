@@ -5,8 +5,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db/prisma";
 import { authService } from "@/lib/auth/service";
+import { requireApiKey } from "@/lib/proposals";
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export async function GET(_request: NextRequest): any {
   try {
+    const apiCheck = requireApiKey(_request.headers);
+    if (!apiCheck.ok) {
+      return NextResponse.json(apiCheck.response?.body || { error: 'Unauthorized' }, { status: apiCheck.response?.status || 401 });
+    }
+
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {
       return NextResponse.json(
