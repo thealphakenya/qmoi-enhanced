@@ -3,8 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+import winston from 'winston';
 
-const { combine, timestamp, printf, colorize } = format;
+const { combine, timestamp, printf, colorize } = winston.format;
 
 const logFormat = printf(({ level, message, timestamp, ...metadata }) => {
   let msg = `${timestamp} [${level}]: ${message}`;
