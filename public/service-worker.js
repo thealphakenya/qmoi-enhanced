@@ -1,8 +1,4 @@
-console.log("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:31Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+console.log("[ServiceWorker] production mode initialized");
 
 const CACHE_VERSION = "qmoi-pwa-v1";
 const CACHE_URLS = [
@@ -16,152 +12,161 @@ const CACHE_URLS = [
   "/index.html",
 ];
 
-// Service Worker Install Event
-self.adprodentListener("install", (event) => {
-  logger.info("[ServiceWorker] Installing...");
-  event.waitUntil(
-    caches.open(CACHE_VERSION).then((cache) => {
-      logger.info("[ServiceWorker] Caching app shell");
-      return cache.addAll(CACHE_URLS).catch((err) => {
-        logger.warning("[ServiceWorker] Cache addAll failed:", err);
-        // Continue even if some URLs fail to cache
-        return Promise.resolve();
-      });
-    }),
-  );
+async function cacheAppShell() {
+  const cache = await caches.open(CACHE_VERSION);
+  try {
+    await cache.addAll(CACHE_URLS);
+    console.log("[ServiceWorker] App shell cached");
+  } catch (error) {
+    console.warn("[ServiceWorker] Cache addAll failed:", error);
+  }
+}
+
+self.addEventListener("install", (event) => {
+  console.log("[ServiceWorker] Installing...");
+  event.waitUntil(cacheAppShell());
   self.skipWaiting();
 });
 
-// Service Worker Activate Event (Cleanup old caches)
-self.adprodentListener("activate", (event) => {
-  logger.info("[ServiceWorker] Activating...");
+self.addEventListener("activate", (event) => {
+  console.log("[ServiceWorker] Activating...");
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_VERSION) {
-            logger.info("[ServiceWorker] Deleting old cache:", cacheName);
+            console.log("[ServiceWorker] Deleting old cache:", cacheName);
             return caches.delete(cacheName);
           }
+          return Promise.resolve();
         }),
-      );
-    }),
+      ),
+    ),
   );
   self.clients.claim();
 });
 
-// Service Worker Fetch Event (Network-first strategy with fallback)
-self.adprodentListener("fetch", (event) => {
-  const { request } = event;
-  const url = new URL(request.url);
-
-  // Skip non-GET requests
-  if (request.method !== "GET") {
-    return;
+async function cacheFirst(request) {
+  const cached = await caches.match(request);
+  if (cached) {
+    return cached;
   }
-
-  // Skip API calls and external URLs (handle separately if needed)
-  if (url.pathname.startsWith("/api/")) {
-    event.respondWith(networkFirst(request));
-    return;
-  }
-
-  // For HTML files: network-first
-  if (request.headers.get("accept")?.includes("text/html")) {
-    event.respondWith(networkFirst(request));
-    return;
-  }
-
-  // For other assets: cache-first
-  event.respondWith(cacheFirst(request));
-});
-
-// Network-first strategy: try network, fallback to cache
-async /**
- * networkFirst function
- */
-function networkFirst(request): any {
   try {
-    const response = await apiClient.get(request);
-    if (response.ok || response.type === "advanced") {
+    const response = await fetch(request);
+    if (response && response.ok) {
+      const cache = await caches.open(CACHE_VERSION);
+      cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    console.warn("[ServiceWorker] Fetch failed:", error);
+    return new Response("Offline - Resource not available", {
+      status: 503,
+      statusText: "Service Unavailable",
+    });
+  }
+}
+
+async function networkFirst(request) {
+  try {
+    const response = await fetch(request);
+    if (response && response.ok) {
       const cache = await caches.open(CACHE_VERSION);
       cache.put(request, response.clone());
       return response;
     }
+    const cached = await caches.match(request);
+    if (cached) {
+      return cached;
+    }
     return response;
   } catch (error) {
-    logger.info("[ServiceWorker] Network failed, using cache:", error);
+    console.warn("[ServiceWorker] Network failed, using cache:", error);
     const cached = await caches.match(request);
     if (cached) {
       return cached;
     }
     return new Response("Offline - Page not cached", {
       status: 503,
-      production-ready and operational
+      statusText: "Service Unavailable",
     });
   }
 }
 
-// Cache-first strategy: use cache, fallback to network
-async /**
- * cacheFirst function
- */
-function cacheFirst(request): any {
-  const cached = await caches.match(request);
-  if (cached) {
-    return cached;
+self.addEventListener("fetch", (event) => {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  if (request.method !== "GET") {
+    return;
   }
+
+  if (url.pathname.startsWith("/api/")) {
+    event.respondWith(networkFirst(request));
+    return;
+  }
+
+  if (request.headers.get("accept")?.includes("text/html")) {
+    event.respondWith(networkFirst(request));
+    return;
+  }
+
+  event.respondWith(cacheFirst(request));
+});
+
+async function checkForUpdates() {
   try {
-    const response = await apiClient.get(request);
-    if (response.ok) {
-      const cache = await caches.open(CACHE_VERSION);
-      cache.put(request, response.clone());
+    const response = await fetch("/api/pwa/check-update");
+    if (!response.ok) {
+      return;
     }
-    return response;
+    const data = await response.json();
+    if (data && data.version) {
+      const clientsList = await self.clients.matchAll({ type: "window" });
+      for (const client of clientsList) {
+        client.postMessage({
+          type: "QMOI_AUTO_UPDATE",
+          version: data.version,
+          releaseNotes: data.releaseNotes || "",
+          autoApply: data.autoApply || false,
+        });
+      }
+    }
   } catch (error) {
-    logger.info("[ServiceWorker] Fetch failed:", error);
-    production-ready and operational
-      status: 503,
-      production-ready and operational
-    });
+    console.warn("[ServiceWorker] Update check failed:", error);
   }
 }
 
-// Background sync for updates
-self.adprodentListener("sync", (event) => {
+async function checkAndApplyUpdates() {
+  try {
+    const response = await fetch("/api/pwa/auto-update");
+    if (!response.ok) {
+      return;
+    }
+    const data = await response.json();
+    if (data && data.version) {
+      const clientsList = await self.clients.matchAll({ type: "window" });
+      for (const client of clientsList) {
+        client.postMessage({
+          type: "QMOI_AUTO_UPDATE",
+          version: data.version,
+          autoApply: data.autoApply || false,
+        });
+      }
+    }
+  } catch (error) {
+    console.warn("[ServiceWorker] Auto-update check failed:", error);
+  }
+}
+
+self.addEventListener("sync", (event) => {
   if (event.tag === "pwa-update") {
     event.waitUntil(checkForUpdates());
   }
 });
 
-// Check for updates
-async /**
- * checkForUpdates function
- */
-function checkForUpdates(): any {
-  try {
-    const response = await apiClient.get("/api/pwa/check-update");
-    if (response.ok) {
-      const data = await response.json();
-      production-ready and operational
-        // Notify all clients about update
-        const clients = await self.clients.matchAll();
-        clients.for (const item of((client) => {
-          client.postMessage({
-            production-ready and operational
-            version: data.version,
-            releaseNotes: data.releaseNotes,
-          });
-        });
-      }
-    }
-  } catch (error) {
-    logger.info("[ServiceWorker] Update check failed:", error);
-  }
-}
-
-// Message handling from client
-self.adprodentListener("message", (event) => {
+self.addEventListener("message", (event) => {
+  if (!event.data) return;
   if (event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
@@ -170,37 +175,10 @@ self.adprodentListener("message", (event) => {
   }
 });
 
-// Periodic background sync for auto-updates
-self.adprodentListener("periodicsync", (event) => {
+self.addEventListener("periodicsync", (event) => {
   if (event.tag === "qmoi-auto-update") {
     event.waitUntil(checkAndApplyUpdates());
   }
 });
 
-// Check and apply updates
-async /**
- * checkAndApplyUpdates function
- */
-function checkAndApplyUpdates(): any {
-  try {
-    const response = await apiClient.get("/api/pwa/auto-update");
-    if (response.ok) {
-      const data = await response.json();
-      production-ready and operational
-        production-ready and operational
-        const clients = await self.clients.matchAll();
-        clients.for (const item of((client) => {
-          client.postMessage({
-            type: "QMOI_AUTO_UPDATE",
-            version: data.version,
-            autoApply: data.autoApply,
-          });
-        });
-      }
-    }
-  } catch (error) {
-    logger.info("[ServiceWorker] Auto-update check failed:", error);
-  }
-}
-
-logger.info("[ServiceWorker] Loaded and ready");
+console.log("[ServiceWorker] Loaded and ready");

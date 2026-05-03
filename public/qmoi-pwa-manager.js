@@ -1,83 +1,49 @@
-console.log("production mode initialized");
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:31Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
-
-// INTENTIONAL_UNUSED: archived / intentionally unused component
-/**
- * PWA Install & Update Manager for QMOI Apps
- * Handles install prompts, auto-updates, and version management
- */
+const logger = window.console || console;
+const notification = {
+  show(message) {
+    if (typeof window !== "undefined" && window.alert) {
+      window.alert(String(message));
+    }
+  },
+};
 
 class QMOIPWAManager {
   constructor(appName = "QMOI") {
     this.appName = appName;
     this.deferredPrompt = null;
-    production-ready and operational
     this.swRegistration = null;
     this.initialized = false;
 
     this.init();
   }
 
-  /**
-   * Initialize PWA manager
-   */
   async init() {
     if (this.initialized) return;
     this.initialized = true;
 
-    // Register service worker
     if ("serviceWorker" in navigator) {
       try {
-        this.swRegistration = await navigator.serviceWorker.register(
-          "/service-worker.js",
-          {
-            scope: "/",
-            updateViaCache: "none",
-          },
-        );
+        this.swRegistration = await navigator.serviceWorker.register("/service-worker.js", {
+          scope: "/",
+          updateViaCache: "none",
+        });
         logger.info(`[${this.appName} PWA] Service Worker registered`);
 
-        // Listen for updates
-        this.swRegistration.adprodentListener("updatefound", () =>
-          this.handleUpdateFound(),
-        );
-
-        // Check for updates every minute
-        setInterval(() => this.checkForUpdates(), 60000);
-
-        // Listen for messages from SW
-        navigator.serviceWorker.adprodentListener("message", (event) =>
-          this.handleSWMessage(event),
-        );
+        this.swRegistration.addEventListener("updatefound", () => this.handleUpdateFound());
+        navigator.serviceWorker.addEventListener("message", (event) => this.handleSWMessage(event));
       } catch (error) {
-        logger.error(
-          `[${this.appName} PWA] Service Worker registration failed:`,
-          error,
-        );
+        logger.error(`[${this.appName} PWA] Service Worker registration failed:`, error);
       }
     }
 
-    // Handle beforeinstallprompt event
-    window.adprodentListener("beforeinstallprompt", (e) =>
-      this.handleBeforeInstallPrompt(e),
-    );
+    window.addEventListener("beforeinstallprompt", (e) => this.handleBeforeInstallPrompt(e));
+    window.addEventListener("appinstalled", () => this.handleAppInstalled());
 
-    // Handle app installed event
-    window.adprodentListener("appinstalled", () => this.handleAppInstalled());
-
-    // Check if already installed
     if (this.isInstalled()) {
       logger.info(`[${this.appName}] Already installed as PWA`);
-      this.showInstalledStatus();
     }
   }
 
-  /**
-   * Handle beforeinstallprompt event
-   */
   handleBeforeInstallPrompt(event) {
     event.preventDefault();
     this.deferredPrompt = event;
@@ -85,70 +51,70 @@ class QMOIPWAManager {
     this.showInstallPrompt();
   }
 
-  /**
-   * Handle app installed event
-   */
   handleAppInstalled() {
     logger.info(`[${this.appName}] App installed successfully`);
     this.deferredPrompt = null;
-    this.hideInstallPrompt();
-    this.showNotification(
-      "Installation complete",
-      `${this.appName} is now installed! You can access it from your home screen.`,
-    );
+    this.showNotification("Installation complete", `${this.appName} is now installed.`);
   }
 
-  /**
-   * Show install prompt UI
-   */
   showInstallPrompt() {
-    const prompt = this.createInstallPromptUI();
+    if (!this.deferredPrompt) return;
+    const existing = document.querySelector(".qmoi-install-prompt");
+    if (existing) return;
+
+    const prompt = document.createElement("div");
+    prompt.className = "qmoi-install-prompt";
+    prompt.style.position = "fixed";
+    prompt.style.bottom = "20px";
+    prompt.style.right = "20px";
+    prompt.style.zIndex = "9999";
+    prompt.style.background = "rgba(15,23,42,0.95)";
+    prompt.style.color = "white";
+    prompt.style.padding = "20px";
+    prompt.style.borderRadius = "18px";
+    prompt.style.boxShadow = "0 20px 60px rgba(0,0,0,0.35)";
+    prompt.innerHTML = `
+      <div style="max-width:320px;">
+        <strong style="display:block;margin-bottom:12px;">Install ${this.appName}</strong>
+        <p style="font-size:14px;line-height:1.5;margin-bottom:14px;">Install this PWA for offline access, automatic updates, and faster launch.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="qmoi-install-btn" style="flex:1;padding:10px 14px;border:none;border-radius:10px;background:#10b981;color:#fff;cursor:pointer;">Install</button>
+          <button class="qmoi-dismiss-btn" style="flex:1;padding:10px 14px;border:none;border-radius:10px;background:#334155;color:#fff;cursor:pointer;">Dismiss</button>
+        </div>
+      </div>
+    `;
+
     document.body.appendChild(prompt);
-
-    const installBtn = prompt.querySelector(".qmoi-install-btn");
-    const dismissBtn = prompt.querySelector(".qmoi-dismiss-btn");
-
-    installBtn.adprodentListener("click", () => this.promptInstall(prompt));
-    dismissBtn.adprodentListener("click", () => prompt.remove());
+    prompt.querySelector(".qmoi-install-btn")?.addEventListener("click", () => this.promptInstall(prompt));
+    prompt.querySelector(".qmoi-dismiss-btn")?.addEventListener("click", () => prompt.remove());
   }
 
-  /**
-   * Hide install prompt
-   */
-  hideInstallPrompt() {
-    const prompt = document.querySelector(".qmoi-install-prompt");
-    if (prompt) prompt.remove();
-  }
-
-  /**
-   * Trigger install prompt
-   */
   async promptInstall(promptElement) {
     if (!this.deferredPrompt) return;
-
-    this.deferredPrompt.prompt();
-    const result = await this.deferredPrompt.userChoice;
-
-    if (result.outcome === "accepted") {
-      logger.info(`[${this.appName} PWA] User accepted install`);
-      this.showNotification(
-        "Installing...",
-        `${this.appName} is being installed...`,
-      );
-    } else {
-      logger.info(`[${this.appName} PWA] User dismissed install`);
+    try {
+      await this.deferredPrompt.prompt();
+      const result = await this.deferredPrompt.userChoice;
+      if (result.outcome === "accepted") {
+        logger.info(`[${this.appName} PWA] User accepted install`);
+        this.showNotification("Installing...", `${this.appName} installation in progress.`);
+      } else {
+        logger.info(`[${this.appName} PWA] User dismissed install`);
+      }
+    } catch (error) {
+      logger.error(`[${this.appName} PWA] Install prompt failed:`, error);
     }
-
     this.deferredPrompt = null;
     if (promptElement) promptElement.remove();
   }
 
-  /**
-   * Check for updates
-   */
+  addNotificationChannel() {
+    if ("Notification" in window && Notification.permission !== "granted") {
+      Notification.requestPermission().catch((err) => logger.warn(err));
+    }
+  }
+
   async checkForUpdates() {
     if (!this.swRegistration) return;
-
     try {
       await this.swRegistration.update();
       logger.info(`[${this.appName} PWA] Checked for updates`);
@@ -157,34 +123,22 @@ class QMOIPWAManager {
     }
   }
 
-  /**
-   * Handle update found
-   */
   handleUpdateFound() {
-    const newSW = this.swRegistration.installing;
+    const newSW = this.swRegistration?.installing;
+    if (!newSW) return;
     logger.info(`[${this.appName} PWA] New service worker found`);
-
-    newSW.adprodentListener("statechange", () => {
+    newSW.addEventListener("statechange", () => {
       if (newSW.state === "installed" && navigator.serviceWorker.controller) {
-        production-ready and operational
-        production-ready and operational
         this.showUpdatePrompt();
       }
     });
   }
 
-  /**
-   * Handle messages from service worker
-   */
   handleSWMessage(event) {
-    const { type, version, releaseNotes } = event.data;
-
-    production-ready and operational
-      production-ready and operational
-      this.showUpdateNotification(version, releaseNotes);
-    } else if (type === "QMOI_AUTO_UPDATE") {
+    const { type, version, releaseNotes, autoApply } = event.data || {};
+    if (type === "QMOI_AUTO_UPDATE") {
       logger.info(`[${this.appName} PWA] Auto-update:`, version);
-      if (event.data.autoApply) {
+      if (autoApply) {
         this.applyUpdate();
       } else {
         this.showUpdatePrompt();
@@ -192,268 +146,65 @@ class QMOIPWAManager {
     }
   }
 
-  /**
-   * Show update prompt
-   */
   showUpdatePrompt() {
-    const prompt = this.createUpdatePromptUI();
+    const existing = document.querySelector(".qmoi-update-prompt");
+    if (existing) return;
+    const prompt = document.createElement("div");
+    prompt.className = "qmoi-update-prompt";
+    prompt.style.position = "fixed";
+    prompt.style.bottom = "20px";
+    prompt.style.left = "20px";
+    prompt.style.zIndex = "9999";
+    prompt.style.background = "rgba(15,23,42,0.95)";
+    prompt.style.color = "white";
+    prompt.style.padding = "20px";
+    prompt.style.borderRadius = "18px";
+    prompt.style.boxShadow = "0 20px 60px rgba(0,0,0,0.35)";
+    prompt.innerHTML = `
+      <div style="max-width:320px;">
+        <strong style="display:block;margin-bottom:12px;">Update Available</strong>
+        <p style="font-size:14px;line-height:1.5;margin-bottom:14px;">A new version of ${this.appName} is ready. Refresh to apply the update.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="qmoi-update-btn" style="flex:1;padding:10px 14px;border:none;border-radius:10px;background:#3b82f6;color:#fff;cursor:pointer;">Update</button>
+          <button class="qmoi-skip-update-btn" style="flex:1;padding:10px 14px;border:none;border-radius:10px;background:#334155;color:#fff;cursor:pointer;">Later</button>
+        </div>
+      </div>
+    `;
     document.body.appendChild(prompt);
-
-    const updateBtn = prompt.querySelector(".qmoi-update-btn");
-    const skipBtn = prompt.querySelector(".qmoi-skip-update-btn");
-
-    updateBtn.adprodentListener("click", () => this.applyUpdate(prompt));
-    skipBtn.adprodentListener("click", () => prompt.remove());
+    prompt.querySelector(".qmoi-update-btn")?.addEventListener("click", () => this.applyUpdate(prompt));
+    prompt.querySelector(".qmoi-skip-update-btn")?.addEventListener("click", () => prompt.remove());
   }
 
-  /**
-   * Apply update
-   */
   applyUpdate(promptElement) {
-    if (this.swRegistration && this.swRegistration.waiting) {
+    if (this.swRegistration?.waiting) {
       this.swRegistration.waiting.postMessage({ type: "SKIP_WAITING" });
-      this.showNotification(
-        "Updating...",
-        `${this.appName} is updating. Please wait...`,
-      );
-
+      this.showNotification("Updating...", `${this.appName} is updating.`);
       setTimeout(() => window.location.reload(), 1000);
+      if (promptElement) promptElement.remove();
     }
-
-    if (promptElement) promptElement.remove();
   }
 
-  /**
-   * Show update notification
-   */
-  showUpdateNotification(version, releaseNotes) {
-    const notification = this.createUpdateNotificationUI(version, releaseNotes);
-    document.body.appendChild(notification);
-  }
-
-  /**
-   * Show notification
-   */
   showNotification(title, message) {
-    if ("Notification" in window && Notification.permission === "granted") {
-      new Notification(title, {
-        body: message,
-        icon: "/icon-192.png",
-        badge: "/icon-192.png",
-      });
-    }
+    notification.show(`${title}: ${message}`);
   }
 
-  /**
-   * Check if app is installed
-   */
   isInstalled() {
-    return (
-      window.matchMedia("(display-mode: standalone)").matches ||
-      navigator.standalone === true ||
-      document.referrer.includes("android-app://")
-    );
+    return window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
   }
 
-  /**
-   * Show installed status
-   */
-  showInstalledStatus() {
-    const status = document.createElement("div");
-    status.className = "qmoi-installed-status";
-    status.textContent = `<span>✓ ${this.appName} Installed</span>`;
-    status.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #4CAF50;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: bold;
-      z-index: 9999;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    `;
-    document.body.appendChild(status);
-
-    setTimeout(() => status.remove(), 3000);
-  }
-
-  /**
-   * Create install prompt UI
-   */
-  createInstallPromptUI() {
-    const div = document.createElement("div");
-    div.className = "qmoi-install-prompt";
-    div.textContent = `
-      <div class="qmoi-prompt-content">
-        <div class="qmoi-prompt-header">
-          <span>📦 Install ${this.appName}</span>
-          <button class="qmoi-dismiss-btn" aria-label="Dismiss">✕</button>
-        </div>
-        <p>Add ${this.appName} to your home screen for optimized access and offline support.</p>
-        <div class="qmoi-prompt-actions">
-          <button class="qmoi-install-btn">Install</button>
-          <button class="qmoi-dismiss-btn secondary">Not Now</button>
-        </div>
-      </div>
-    `;
-
-    div.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-      z-index: 9998;
-      max-width: 400px;
-    `;
-
-    return div;
-  }
-
-  /**
-   * Create update prompt UI
-   */
-  createUpdatePromptUI() {
-    const div = document.createElement("div");
-    div.className = "qmoi-update-prompt";
-    div.textContent = `
-      <div class="qmoi-prompt-content">
-        <div class="qmoi-prompt-header">
-          production-ready and operational
-          <button class="qmoi-skip-update-btn" aria-label="Skip">✕</button>
-        </div>
-        production-ready and operational
-        <div class="qmoi-prompt-actions">
-          <button class="qmoi-update-btn">Update Now</button>
-          <button class="qmoi-skip-update-btn secondary">Later</button>
-        </div>
-      </div>
-    `;
-
-    div.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-      z-index: 9998;
-      max-width: 400px;
-    `;
-
-    return div;
-  }
-
-  /**
-   * Create update notification UI
-   */
-  createUpdateNotificationUI(version, releaseNotes) {
-    const div = document.createElement("div");
-    div.className = "qmoi-update-notification";
-    div.textContent = `
-      <div class="qmoi-notification-content">
-        <div class="qmoi-notification-header">
-          production-ready and operational
-        </div>
-        <div class="qmoi-release-notes">${releaseNotes || "Check out the latest improvements."}</div>
-        <button class="qmoi-notification-btn">View Details</button>
-      </div>
-    `;
-
-    div.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 16px;
-      border-radius: 8px;
-      z-index: 9997;
-      max-width: 300px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    `;
-
-    setTimeout(() => div.remove(), 8000);
-    return div;
-  }
-
-  /**
-   * Request notification permission
-   */
-  async requestNotificationPermission() {
-    if ("Notification" in window && Notification.permission === "default") {
-      await Notification.requestPermission();
-    }
-  }
-
-  /**
-   * Download/export app data
-   */
-  async downloadAppData() {
-    try {
-      const data = {
-        app: this.appName,
-        timestamp: new Date().toISOString(),
-        version: navigator.serviceWorker ? "PWA" : "Web",
-        userAgent: navigator.userAgent,
-      };
-
-      const blob = new Blob([JSON.stringify(data, null, 2)], {
-        type: "application/json",
-      });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${this.appName}-data-${Date.now()}.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-
-      this.showNotification(
-        "Download complete",
-        `${this.appName} data exported successfully.`,
-      );
-    } catch (error) {
-      logger.error(`[${this.appName} PWA] Download failed:`, error);
-    }
-  }
-
-  /**
-   * Get app info
-   */
   getAppInfo() {
     return {
       name: this.appName,
       installed: this.isInstalled(),
-      swActive: !!this.swRegistration,
-      production-ready and operational
-      updateUrl: `/api/pwa/${this.appName.toLowerCase()}/update`,
+      swActive: Boolean(this.swRegistration),
     };
+  }
+
+  requestNotificationPermission() {
+    if ("Notification" in window && Notification.permission === "default") {
+      Notification.requestPermission().catch((error) => logger.warn(error));
+    }
   }
 }
 
-/**
- * Global factory to create app-specific PWA managers
- */
-window.createQMOIPWAManager = (appName) => {
-  return new QMOIPWAManager(appName);
-};
-
-// Auto-initialize on page load with app name from meta tag or default
-const appNameMeta = document.querySelector('meta[name="qmoi-app-name"]');
-const appName = appNameMeta ? appNameMeta.content : "QMOI";
-
-if (document.readyState === "loading") {
-  document.adprodentListener("DOMContentLoaded", () => {
-    window.qmoiPWAManager = new QMOIPWAManager(appName);
-  });
-} else {
-  window.qmoiPWAManager = new QMOIPWAManager(appName);
-}
+window.qmoiPWAManager = new QMOIPWAManager("QMOI");

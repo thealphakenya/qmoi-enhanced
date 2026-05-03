@@ -48,6 +48,21 @@
 | **Hooks & Context**        | 12    | ✅ Functional | ✅ Optimized         |
 | **Themes & Styles**        | 8     | ✅ Active     | ✅ Dynamic           |
 
+## QMOI Production App Map
+
+- `app/qmoi-ai/page.tsx` → redirect route to the production QMOI AI PWA shell at `/qmoi-ai.html`
+- `app/qmoi-space/page.tsx` → redirect route to the production QMOI Space PWA shell at `/qmoi-space.html`
+- `app/api/pwa/check-update/route.ts` → backend endpoint for PWA update metadata
+- `app/api/pwa/auto-update/route.ts` → backend endpoint for PWA auto-update orchestration
+- `public/service-worker.js` → restored SW runtime caching, network-first fetch strategy, and update message handling
+- `public/qmoi-ai.html` → fully restored QMOI AI PWA shell with install prompt, status dashboard, and offline-ready launch flow
+- `public/qmoi-space.html` → restored QMOI Space marketplace shell with offline and sync awareness
+- `app/qcity/page.jsx` → QCity dashboard page with role-aware control panel, incident reporting, and cross-app navigation
+- `app/qvillage/page.tsx` → QVillage community workspace page with dataset and model deployment summaries
+- `app/hooks/useAuth.ts` → live auth hook implementing `master`, `sister`, `user`, and `guest` roles plus role-based permission gating
+- `public/qmoi-pwa-manager.js` → unified PWA install/update manager for QMOI AI and QMOI Space with service worker orchestration
+- `public/manifest-qmoi-ai.json` and `public/manifest-qmoi-space.json` → production-ready PWA manifests with launch shortcuts and update metadata
+
 ### Key Achievements
 
 - ✅ **100% Component Inventory** - All 252 components catalogued

@@ -1,36 +1,49 @@
+"use client";
+
+import React, { useMemo } from "react";
+import { useAuth } from "../hooks/useAuth";
+
 const metrics = [
-  { label: 'Connected Nodes', value: 128, delta: '+4%', status: 'good' },
-  { label: 'Active Services', value: 34, delta: '+1%', status: 'good' },
-  { label: 'Open Alerts', value: 3, delta: '-18%', status: 'warning' },
-  { label: 'Incident Response', value: '2m 30s', delta: '−12%', status: 'good' },
+  { label: "Connected Nodes", value: 128, delta: "+4%", status: "good" },
+  { label: "Active Services", value: 34, delta: "+1%", status: "good" },
+  { label: "Open Alerts", value: 3, delta: "-18%", status: "warning" },
+  { label: "Incident Response", value: "2m 30s", delta: "-12%", status: "good" },
 ];
 
 const services = [
-  { name: 'Water Supply Control', status: 'operational' },
-  { name: 'Transit Management', status: 'operational' },
-  { name: 'Energy Grid Monitoring', status: 'degraded' },
-  { name: 'Public Safety Sensors', status: 'operational' },
+  { name: "Water Supply Control", status: "operational" },
+  { name: "Transit Management", status: "operational" },
+  { name: "Energy Grid Monitoring", status: "degraded" },
+  { name: "Public Safety Sensors", status: "operational" },
 ];
 
 const incidentReports = [
-  { id: 'IQ-921', category: 'Grid Load', summary: 'Power surge detected in sector 7', severity: 'high' },
-  { id: 'IQ-913', category: 'Traffic', summary: 'Signal sync disruption on 5th Avenue', severity: 'medium' },
+  { id: "IQ-921", category: "Grid Load", summary: "Power surge detected in sector 7", severity: "high" },
+  { id: "IQ-913", category: "Traffic", summary: "Signal sync disruption on 5th Avenue", severity: "medium" },
 ];
 
 const getBadgeClass = (status) => {
   switch (status) {
-    case 'operational':
-      return 'bg-emerald-600/15 text-emerald-300 border-emerald-500/40';
-    case 'degraded':
-      return 'bg-amber-600/15 text-amber-300 border-amber-500/40';
-    case 'offline':
-      return 'bg-rose-600/15 text-rose-300 border-rose-500/40';
+    case "operational":
+      return "bg-emerald-600/15 text-emerald-300 border-emerald-500/40";
+    case "degraded":
+      return "bg-amber-600/15 text-amber-300 border-amber-500/40";
+    case "offline":
+      return "bg-rose-600/15 text-rose-300 border-rose-500/40";
     default:
-      return 'bg-slate-700 text-slate-200 border-slate-600';
+      return "bg-slate-700 text-slate-200 border-slate-600";
   }
 };
 
-export default function QCityDashboard() {
+export default function QCityDashboardPage() {
+  const { user, hasAccess, login } = useAuth();
+  const roleSummary = useMemo(() => {
+    if (user.role === "master") return "Full enterprise control, deployment, and monitoring access.";
+    if (user.role === "sister") return "Personal insights, collaboration, and creative workspace access.";
+    if (user.role === "user") return "General QMOI features, chat, help, and view-only dashboards.";
+    return "Guest access with limited AI and help support.";
+  }, [user.role]);
+
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-white">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -39,13 +52,40 @@ export default function QCityDashboard() {
             <div>
               <h1 className="text-4xl font-bold">QCity Command Center</h1>
               <p className="mt-2 text-slate-400 max-w-2xl">
-                Real-time city service monitoring, incident response coordination, and infrastructure optimization from a single intelligent control surface.
+                {roleSummary}
               </p>
             </div>
             <div className="rounded-3xl bg-slate-950/80 px-5 py-4 border border-slate-700">
-              <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Operational status</p>
-              <p className="mt-2 text-3xl font-semibold text-emerald-300">Stable</p>
+              <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Current user</p>
+              <p className="mt-2 text-3xl font-semibold text-emerald-300">{user.displayName}</p>
+              <p className="text-slate-400">Role: {user.role}</p>
             </div>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {user.role !== "master" && (
+              <button
+                className="rounded-xl bg-cyan-600 px-5 py-3 text-sm font-semibold text-white hover:bg-cyan-500"
+                onClick={() => login("master")}
+              >
+                Switch to Master Role
+              </button>
+            )}
+            {hasAccess("qvillage_access") && (
+              <a
+                className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-500"
+                href="/qvillage"
+              >
+                Open QVillage
+              </a>
+            )}
+            {hasAccess("qmoi_space_access") && (
+              <a
+                className="rounded-xl bg-violet-600 px-5 py-3 text-sm font-semibold text-white hover:bg-violet-500"
+                href="/qmoi-space.html"
+              >
+                Open QMOI Space
+              </a>
+            )}
           </div>
         </section>
 
@@ -54,7 +94,7 @@ export default function QCityDashboard() {
             <div key={metric.label} className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
               <p className="text-sm uppercase tracking-[0.24em] text-slate-500">{metric.label}</p>
               <p className="mt-4 text-4xl font-semibold text-white">{metric.value}</p>
-              <p className={`mt-2 text-sm ${metric.status === 'good' ? 'text-emerald-300' : 'text-amber-300'}`}>
+              <p className={`mt-2 text-sm ${metric.status === "good" ? "text-emerald-300" : "text-amber-300"}`}>
                 {metric.delta}
               </p>
             </div>
@@ -77,7 +117,6 @@ export default function QCityDashboard() {
                 <div key={service.name} className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950/50 px-4 py-4">
                   <div>
                     <p className="font-medium text-white">{service.name}</p>
-                    <p className="text-sm text-slate-500">{service.category || 'City infrastructure service'}</p>
                   </div>
                   <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${getBadgeClass(service.status)}`}>
                     {service.status}
