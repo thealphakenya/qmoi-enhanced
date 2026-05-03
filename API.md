@@ -3,6 +3,12 @@
 **Last Updated:** 2026-04-28T12:00:00.000000Z
 **Total APIs:** 9185
 
+## Verified Production PWA Route Mapping
+- `app/qmoi-ai/page.tsx` and `public/qmoi-ai.html` now route to `/pwa_apps/qmoi-ai/index.html`.
+- `app/qmoi-space/page.tsx` and `public/qmoi-space.html` now route to `/pwa_apps/qmoi-space/index.html`.
+- `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware UI pages using `app/hooks/useAuth.ts`.
+- Runtime update support is available via `/api/pwa/check-update` and `/api/pwa/auto-update`.
+
 ## Complete API List
 
 1. `AlertSettingsScreen()`

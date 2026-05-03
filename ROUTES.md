@@ -35,6 +35,7 @@ This document describes the route file structure for the QMOI Enhanced applicati
 - `emergency/` — 6 files
 - `cameras/` — 6 files
 - `qvillage/` — 5 files
+- `pwa/` — 2 files
 - `qmoi-gitlab/` — 5 files
 - `enhanced-email/` — 5 files
 - `webhooks/` — 4 files
@@ -78,6 +79,12 @@ The following standalone route handler source files are defined directly under `
 - `wallet.ts`
 - `wifi-security.ts`
 
+## PWA and Public Route Mapping
+- `app/qmoi-ai/page.tsx` redirects to the actual PWA asset at `/pwa_apps/qmoi-ai/index.html`.
+- `app/qmoi-space/page.tsx` redirects to the actual PWA asset at `/pwa_apps/qmoi-space/index.html`.
+- `public/qmoi-ai.html` and `public/qmoi-space.html` are redirect landing pages for the real PWA apps.
+- `app/qcity/page.jsx` and `app/qvillage/page.tsx` are served as active role-aware UI pages using `app/hooks/useAuth.ts`.
+
 ## Key Nested Route Groups
 ### `admin/`
 - `alerts/route.ts`
@@ -102,6 +109,10 @@ The following standalone route handler source files are defined directly under `
 - `verify/route.ts`
 - `webauthn/authenticate/route.ts`
 - `webauthn/register/route.ts`
+
+### `pwa/`
+- `auto-update/route.ts`
+- `check-update/route.ts`
 
 ### `qmoi/`
 - `chat/route.ts`

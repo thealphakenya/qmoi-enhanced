@@ -17,6 +17,16 @@ const featureLinks = [
     description: "Explore QCity operations and spatial interfaces.",
   },
   {
+    href: "/qmoi-ai",
+    title: "QMOI AI",
+    description: "Open the active QMOI AI assistant route in the Next.js application.",
+  },
+  {
+    href: "/qmoi-space",
+    title: "QMOI Space",
+    description: "Open the active QMOI Space route in the Next.js application.",
+  },
+  {
     href: "/master/email",
     title: "Master Email Dashboard",
     description: "Master-level communication dashboard for email and messaging.",

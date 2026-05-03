@@ -2,7 +2,7 @@
   "name": "QMOI Space",
   "short_name": "QMOI Space",
   "description": "QMOI Space - Collaborative Workspace & Social Marketplace",
-  "start_url": "/qmoi-space.html",
+  "start_url": "/qmoi-space",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",

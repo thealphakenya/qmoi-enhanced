@@ -2,7 +2,7 @@
   "name": "QMOI AI",
   "short_name": "QMOI AI",
   "description": "Quantum Master Orchestrator Intelligence - AI-Powered Automation & Intelligence",
-  "start_url": "/qmoi-ai.html",
+  "start_url": "/qmoi-ai",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",

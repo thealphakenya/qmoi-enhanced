@@ -39,6 +39,7 @@ ps -ef | grep "python3 -m http.server 8080" | grep -v grep
   > Opens the new QMOI Enhanced App Launcher with explicit buttons for QMOI AI, QMOI Space, and QCity.
 - QMOI AI: `http://127.0.0.1:8080/qmoi-ai-live.html`  
   > Use this unique live launcher path to avoid stale cached pages or root redirect interference.
+- QMOI AI real app: `http://127.0.0.1:8080/pwa_apps/qmoi-ai/index.html`
 - QMOI Space: `http://127.0.0.1:8080/pwa_apps/qmoi-space/index.html`
 - QCity Primary Dashboard: `http://127.0.0.1:8080/qcity-enterprise.html`
 - QCity Complete Dashboard: `http://127.0.0.1:8080/qcity-complete.html`
@@ -48,6 +49,15 @@ ps -ef | grep "python3 -m http.server 8080" | grep -v grep
 
 ## 2) Serve QVillage continuously
 The QVillage backend is managed by a supervisor script that restarts itself if it exits.
+
+## 1.5) PWA route and app asset verification
+- `app/qmoi-ai/page.tsx` now redirects to the real QMOI AI PWA app at `/pwa_apps/qmoi-ai/index.html`.
+- `public/qmoi-ai.html` now redirects to `/pwa_apps/qmoi-ai/index.html`.
+- `app/qmoi-space/page.tsx` now redirects to the real QMOI Space PWA app at `/pwa_apps/qmoi-space/index.html`.
+- `public/qmoi-space.html` now redirects to `/pwa_apps/qmoi-space/index.html`.
+- `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware dashboard pages using `app/hooks/useAuth.ts`.
+
+These changes ensure the visible browser entry points are the real intended PWA applications, not placeholder static shells.
 
 ### Start QVillage in the background
 ```bash

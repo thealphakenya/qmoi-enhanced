@@ -98,6 +98,10 @@ The endpoint inventory is derived from live route handler source files under `ap
 - `/api/qmoi/autodev/research`
 - `/api/qmoi/files/[id]`
 
+### PWA Update Endpoints
+- `/api/pwa/check-update`
+- `/api/pwa/auto-update`
+
 ### QCity & Platform API
 - `/api/qcity/status`
 - `/api/qcity/plugins`

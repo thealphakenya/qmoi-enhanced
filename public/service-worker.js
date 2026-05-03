@@ -4,8 +4,8 @@ const CACHE_VERSION = "qmoi-pwa-v1";
 const CACHE_URLS = [
   "/",
   "/qcity-dashboard.html",
-  "/qmoi-ai.html",
-  "/qmoi-space.html",
+  "/qmoi-ai",
+  "/qmoi-space",
   "/q-latest.html",
   "/qcity-enterprise.html",
   "/qcity-complete.html",

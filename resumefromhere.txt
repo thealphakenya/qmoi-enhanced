@@ -198,6 +198,14 @@ Production Runtime Confirmation (May 2, 2026):
 4. **Advanced Monitoring** (Optional)
    - Health check endpoints: /api/health, /api/dashboard/health, /api/memory
    - Real-time consciousness metrics with pulse monitoring
+
+=== RESUME FROM HERE ===
+- Date: 2026-05-03
+- Updated active Next.js route wiring for `/qmoi-ai` and `/qmoi-space`.
+- Patched legacy `public/qmoi-ai.html` and `public/qmoi-space.html` redirects to point at the active app routes.
+- Updated PWA manifests and service worker cached URLs for the new active route targets.
+- Current blocker: runtime validation still pending because Node.js/npm is unavailable in this terminal environment.
+- Next step: verify the Next.js app startup once Node/npm are available and confirm `/qmoi-ai`, `/qmoi-space`, `/qcity`, and `/qvillage` serve the active UI.
    - System uptime tracking and performance analytics
 - ✅ Configuration files fixed and validated
 - ✅ Build/test validation completed successfully in Node.js environment

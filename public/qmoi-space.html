@@ -1,96 +1,17 @@
+<!-- QMOI Space Redirect -->
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="QMOI Space - Decentralized Marketplace for QMOI Ecosystem" />
-    <meta name="theme-color" content="#9C27B0" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="QMOI Space" />
-    <link rel="manifest" href="/manifest-qmoi-space.json" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>QMOI Space</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(135deg, #9c27b0 0%, #b566c2 100%); color: #333; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
-      .container { background: white; border-radius: 16px; box-shadow: 0 16px 50px rgba(0,0,0,.12); width: 100%; max-width: 680px; padding: 40px; text-align: center; }
-      .logo { width: 90px; height: 90px; margin: 0 auto 24px; background: linear-gradient(135deg, #9c27b0 0%, #b566c2 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; }
-      h1 { font-size: 38px; margin-bottom: 12px; color: #9c27b0; }
-      .subtitle { color: #5c5c5c; margin-bottom: 24px; font-size: 15px; line-height: 1.6; }
-      .status { background: #f7f1ff; border-radius: 16px; padding: 22px; text-align: left; margin-bottom: 24px; }
-      .status-item { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid #eee; }
-      .status-item:last-child { border-bottom: none; }
-      .status-label { color: #555; font-size: 14px; }
-      .status-value { color: #9c27b0; font-weight: 700; }
-      .features { text-align: left; background: #faf4ff; border-radius: 16px; padding: 24px; margin-bottom: 24px; }
-      .features h2 { font-size: 18px; margin-bottom: 16px; }
-      .features ul { list-style: none; padding-left: 0; }
-      .features li { margin-bottom: 10px; display: flex; align-items: center; color: #4b4b4b; font-size: 14px; }
-      .features li:before { content: "✔"; margin-right: 12px; color: #8b5cf6; }
-      .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-      .btn { padding: 14px 18px; border-radius: 14px; border: none; cursor: pointer; font-size: 14px; font-weight: 700; }
-      .btn-primary { background: #9c27b0; color: white; }
-      .btn-secondary { background: #f5f5f5; color: #333; }
-      .version-info { margin-top: 24px; color: #7a7a7a; font-size: 12px; }
-      a { color: #9c27b0; text-decoration: none; }
-      @media (max-width: 640px) { .actions { grid-template-columns: 1fr; } }
-    </style>
+    <meta http-equiv="refresh" content="0; url=/qmoi-space" />
+    <script>window.location.replace('/qmoi-space');</script>
   </head>
   <body>
-    <div class="container">
-      <div class="logo">🔮</div>
-      <h1>QMOI Space</h1>
-      <p class="subtitle">A marketplace and collaborative workspace for shared datasets, AI models, and community sync across the QMOI ecosystem.</p>
-
-      <div class="status">
-        <div class="status-item"><span class="status-label">Marketplace</span><span class="status-value">Live</span></div>
-        <div class="status-item"><span class="status-label">Collaboration</span><span class="status-value">Enabled</span></div>
-        <div class="status-item"><span class="status-label">PWA Ready</span><span class="status-value">Yes</span></div>
-        <div class="status-item"><span class="status-label">Version</span><span class="status-value">1.0.0</span></div>
-      </div>
-
-      <div class="status">
-        <div class="status-item"><span class="status-label">PWA Status</span><span class="status-value" id="pwaStatus">Initializing...</span></div>
-        <div class="status-item"><span class="status-label">Service Worker</span><span class="status-value" id="swStatus">Checking...</span></div>
-        <div class="status-item"><span class="status-label">Marketplace Sync</span><span class="status-value">Ready</span></div>
-        <div class="status-item"><span class="status-label">Version</span><span class="status-value">1.0.0</span></div>
-      </div>
-
-      <div class="features">
-        <h2>Production Features</h2>
-        <ul>
-          <li>Secure community dataset publishing</li>
-          <li>Real-time model sharing and deployment</li>
-          <li>Role-aware access to marketplace sections</li>
-          <li>PWA install and offline caching support</li>
-          <li>Automatic sync with QMOI AI and QCity</li>
-        </ul>
-      </div>
-
-      <div class="actions">
-        <button class="btn btn-primary" onclick="window.location.href='/qmoi-ai.html'">Open QMOI AI</button>
-        <button class="btn btn-secondary" onclick="window.location.href='/qcity'">Open QCity</button>
-        <button class="btn btn-secondary" onclick="window.location.href='/qvillage'">Open QVillage</button>
-      </div>
-
-      <div class="version-info">
-        <p>QMOI Space is fully integrated with app sync and production-ready AI collaboration.</p>
-      </div>
-    </div>
-
-    <script src="/qmoi-pwa-manager.js"></script>
-    <script>
-      function updateStatus() {
-        const manager = window.qmoiPWAManager;
-        if (!manager) return;
-        document.getElementById("pwaStatus").textContent = manager.isInstalled() ? "Installed" : "Web App";
-        document.getElementById("swStatus").textContent = manager.swRegistration ? "Active" : "Not Active";
-      }
-
-      window.addEventListener("load", () => {
-        updateStatus();
-        setInterval(updateStatus, 5000);
-      });
-    </script>
+    <p>
+      Redirecting to QMOI Space...
+      <a href="/qmoi-space">Open QMOI Space</a>
+    </p>
   </body>
 </html>
