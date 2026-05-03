@@ -1,4 +1,527 @@
+#!/usr/bin/env python3
+"""
+scripts/validate_and_sync_links.py
 
+QMOI Comprehensive Link Validation & Synchronization System
+Validates and synchronizes all internal and external links across the QMOI ecosystem
+"""
+
+import json
+import os
+import sys
+import logging
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, List, Any, Optional, Tuple, Set
+import urllib.request
+import urllib.error
+import urllib.parse
+import re
+import hashlib
+import shutil
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('validate_and_sync_links.log'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+
+class LinkValidator:
+    """
+    Comprehensive link validation and synchronization system for QMOI ecosystem
+    """
+
+    def __init__(self) -> None:
+        self.base_dir = Path('/workspaces/qmoi-enhanced')
+        self.reports_dir = self.base_dir / 'reports'
+        self.links_dir = self.base_dir / 'links'
+        self.config_dir = self.base_dir / 'config'
+
+        # Ensure directories exist
+        self.reports_dir.mkdir(parents=True, exist_ok=True)
+        self.links_dir.mkdir(parents=True, exist_ok=True)
+
+        # Define all QMOI domains and their expected link structures
+        self.domains_config = {
+            'qvillage.com': {
+                'type': 'primary_hub',
+                'base_url': 'https://qvillage.com',
+                'internal_links': [
+                    '/community', '/docs', '/services', '/marketplace', '/files',
+                    '/api/health', '/api/dashboard', '/api/memory'
+                ],
+                'external_links': [
+                    'https://qmoi.ai', 'https://stableq.ai', 'https://qshare.qvillage.com',
+                    'https://qstore.qvillage.com', 'https://qcity.qmoi.ai'
+                ],
+                'link_patterns': ['qvillage.com', 'qvillage.net', 'qvillage.org']
+            },
+            'qmoi.ai': {
+                'type': 'main_app',
+                'base_url': 'https://qmoi.ai',
+                'internal_links': [
+                    '/', '/chat', '/dashboard', '/profile', '/api', '/docs',
+                    '/api/health', '/api/auth', '/api/models'
+                ],
+                'external_links': [
+                    'https://qvillage.com', 'https://stableq.ai', 'https://qcity.qmoi.ai'
+                ],
+                'link_patterns': ['qmoi.ai', 'qcity.qmoi.ai', 'qmoi-space.qmoi.ai']
+            },
+            'stableq.ai': {
+                'type': 'ai_platform',
+                'base_url': 'https://stableq.ai',
+                'internal_links': [
+                    '/', '/chat', '/models', '/api', '/docs',
+                    '/api/health', '/api/models', '/api/chat'
+                ],
+                'external_links': [
+                    'https://qvillage.com', 'https://qmoi.ai', 'https://q-latest.qmoi.ai'
+                ],
+                'link_patterns': ['stableq.ai', 'q-latest.qmoi.ai']
+            },
+            'qshare.qvillage.com': {
+                'type': 'file_sharing',
+                'base_url': 'https://qshare.qvillage.com',
+                'internal_links': [
+                    '/', '/upload', '/share', '/files', '/api/files'
+                ],
+                'external_links': [
+                    'https://qvillage.com', 'https://qmoi.ai'
+                ],
+                'link_patterns': ['qshare.qvillage.com']
+            },
+            'qstore.qvillage.com': {
+                'type': 'app_store',
+                'base_url': 'https://qstore.qvillage.com',
+                'internal_links': [
+                    '/', '/apps', '/categories', '/api/apps'
+                ],
+                'external_links': [
+                    'https://qvillage.com', 'https://qmoi.ai'
+                ],
+                'link_patterns': ['qstore.qvillage.com']
+            },
+            'qcity.qmoi.ai': {
+                'type': 'city_service',
+                'base_url': 'https://qcity.qmoi.ai',
+                'internal_links': [
+                    '/', '/dashboard', '/map', '/services', '/api/city'
+                ],
+                'external_links': [
+                    'https://qvillage.com', 'https://qmoi.ai'
+                ],
+                'link_patterns': ['qcity.qmoi.ai', 'qcity.io']
+            }
+        }
+
+        self.validation_results = {}
+        self.link_database = {}
+
+    def scan_all_links(self) -> Dict[str, Any]:
+        """Scan all files for links and build comprehensive link database"""
+        logger.info("🔍 Scanning all files for links...")
+
+        link_patterns = [
+            r'href=["\']([^"\']+)["\']',  # HTML href attributes
+            r'src=["\']([^"\']+)["\']',   # HTML src attributes
+            r'url\(["\']?([^"\']+)["\']?\)',  # CSS url() functions
+            r'https?://[^\s<>"\']+',      # Direct HTTP/HTTPS URLs
+            r'["\'](/[^"\']+)["\']',      # Relative URLs in quotes
+        ]
+
+        all_links = {
+            'internal_links': set(),
+            'external_links': set(),
+            'broken_links': set(),
+            'files_scanned': 0,
+            'total_links_found': 0
+        }
+
+        # File extensions to scan
+        extensions = ['.html', '.htm', '.js', '.jsx', '.ts', '.tsx', '.md', '.json', '.css', '.scss']
+
+        for ext in extensions:
+            for file_path in self.base_dir.rglob(f'*{ext}'):
+                if file_path.is_file() and not any(skip in str(file_path) for skip in ['node_modules', '.git', '__pycache__']):
+                    try:
+                        content = file_path.read_text(encoding='utf-8', errors='ignore')
+                        file_links = self._extract_links_from_content(content, str(file_path))
+
+                        for link in file_links:
+                            if self._is_internal_link(link):
+                                all_links['internal_links'].add(link)
+                            else:
+                                all_links['external_links'].add(link)
+
+                        all_links['files_scanned'] += 1
+                        all_links['total_links_found'] += len(file_links)
+
+                    except Exception as e:
+                        logger.warning(f"Error scanning {file_path}: {e}")
+
+        # Convert sets to sorted lists for JSON serialization
+        all_links['internal_links'] = sorted(list(all_links['internal_links']))
+        all_links['external_links'] = sorted(list(all_links['external_links']))
+
+        self.link_database = all_links
+        return all_links
+
+    def _extract_links_from_content(self, content: str, file_path: str) -> List[str]:
+        """Extract all links from file content"""
+        links = []
+
+        # URL patterns
+        url_patterns = [
+            r'https?://[^\s<>"\'}]+',  # HTTP/HTTPS URLs
+            r'["\'](/[^"\']+)["\']',   # Relative URLs in quotes
+            r'href=["\']([^"\']+)["\']',  # HTML href
+            r'src=["\']([^"\']+)["\']',   # HTML src
+            r'url\(["\']?([^"\']+)["\']?\)',  # CSS url()
+        ]
+
+        for pattern in url_patterns:
+            matches = re.findall(pattern, content, re.IGNORECASE)
+            for match in matches:
+                # Clean up the link
+                link = match.strip('"\').')
+                if link and len(link) > 3:  # Skip very short matches
+                    links.append(link)
+
+        return list(set(links))  # Remove duplicates
+
+    def _is_internal_link(self, link: str) -> bool:
+        """Determine if a link is internal to QMOI ecosystem"""
+        if link.startswith('/'):
+            return True
+
+        for domain_config in self.domains_config.values():
+            for pattern in domain_config.get('link_patterns', []):
+                if pattern in link:
+                    return True
+
+        return False
+
+    def validate_links(self) -> Dict[str, Any]:
+        """Validate all discovered links"""
+        logger.info("🔗 Validating all discovered links...")
+
+        if not self.link_database:
+            self.scan_all_links()
+
+        validation_results = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'internal_links': {
+                'total': len(self.link_database.get('internal_links', [])),
+                'valid': 0,
+                'invalid': 0,
+                'checked': []
+            },
+            'external_links': {
+                'total': len(self.link_database.get('external_links', [])),
+                'valid': 0,
+                'invalid': 0,
+                'checked': []
+            },
+            'summary': {
+                'total_links': 0,
+                'valid_links': 0,
+                'invalid_links': 0,
+                'validation_rate': 0.0
+            }
+        }
+
+        # Validate internal links (check if files exist)
+        for link in self.link_database.get('internal_links', []):
+            is_valid = self._validate_internal_link(link)
+            validation_results['internal_links']['checked'].append({
+                'link': link,
+                'valid': is_valid
+            })
+            if is_valid:
+                validation_results['internal_links']['valid'] += 1
+            else:
+                validation_results['internal_links']['invalid'] += 1
+
+        # Validate external links (check if accessible)
+        for link in self.link_database.get('external_links', []):
+            is_valid = self._validate_external_link(link)
+            validation_results['external_links']['checked'].append({
+                'link': link,
+                'valid': is_valid
+            })
+            if is_valid:
+                validation_results['external_links']['valid'] += 1
+            else:
+                validation_results['external_links']['invalid'] += 1
+
+        # Calculate summary
+        total_valid = validation_results['internal_links']['valid'] + validation_results['external_links']['valid']
+        total_invalid = validation_results['internal_links']['invalid'] + validation_results['external_links']['invalid']
+        total_links = total_valid + total_invalid
+
+        validation_results['summary']['total_links'] = total_links
+        validation_results['summary']['valid_links'] = total_valid
+        validation_results['summary']['invalid_links'] = total_invalid
+        validation_results['summary']['validation_rate'] = (total_valid / total_links * 100) if total_links > 0 else 0.0
+
+        self.validation_results = validation_results
+        return validation_results
+
+    def _validate_internal_link(self, link: str) -> bool:
+        """Validate internal link by checking if corresponding file exists"""
+        if not link.startswith('/'):
+            return False
+
+        # Remove query parameters and fragments
+        clean_link = link.split('?')[0].split('#')[0]
+
+        # Check common file extensions
+        possible_paths = [
+            self.base_dir / 'public' / clean_link.lstrip('/'),
+            self.base_dir / 'pages' / clean_link.lstrip('/'),
+            self.base_dir / 'app' / clean_link.lstrip('/'),
+        ]
+
+        # Add common extensions
+        for base_path in possible_paths:
+            if base_path.exists():
+                return True
+            for ext in ['.html', '.js', '.jsx', '.ts', '.tsx', '.md', '/index.html', '/page.js', '/page.tsx']:
+                if (base_path.parent / (base_path.name + ext)).exists():
+                    return True
+
+        return False
+
+    def _validate_external_link(self, link: str) -> bool:
+        """Validate external link by attempting to access it"""
+        if not link.startswith(('http://', 'https://')):
+            return False
+
+        try:
+            req = urllib.request.Request(link)
+            req.add_header('User-Agent', 'QMOI-Link-Validator/1.0')
+
+            with urllib.request.urlopen(req, timeout=10) as response:
+                return response.getcode() == 200
+
+        except (urllib.error.URLError, urllib.error.HTTPError, Exception):
+            return False
+
+    def sync_links(self) -> Dict[str, Any]:
+        """Synchronize links across the QMOI ecosystem"""
+        logger.info("🔄 Synchronizing links across QMOI ecosystem...")
+
+        sync_results = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'domains_processed': [],
+            'links_updated': 0,
+            'links_created': 0,
+            'links_removed': 0,
+            'sync_operations': []
+        }
+
+        for domain, config in self.domains_config.items():
+            logger.info(f"🔄 Synchronizing links for {domain}")
+
+            domain_sync = self._sync_domain_links(domain, config)
+            sync_results['domains_processed'].append(domain)
+
+            sync_results['links_updated'] += domain_sync.get('links_updated', 0)
+            sync_results['links_created'] += domain_sync.get('links_created', 0)
+            sync_results['links_removed'] += domain_sync.get('links_removed', 0)
+
+            sync_results['sync_operations'].append({
+                'domain': domain,
+                'operations': domain_sync
+            })
+
+        return sync_results
+
+    def _sync_domain_links(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
+        """Synchronize links for a specific domain"""
+        operations = {
+            'links_updated': 0,
+            'links_created': 0,
+            'links_removed': 0,
+            'details': []
+        }
+
+        # Create domain-specific link directory
+        domain_links_dir = self.links_dir / domain.replace('.', '_')
+        domain_links_dir.mkdir(parents=True, exist_ok=True)
+
+        # Generate expected link files
+        expected_links = {
+            'internal_links.json': config.get('internal_links', []),
+            'external_links.json': config.get('external_links', []),
+            'link_patterns.json': config.get('link_patterns', []),
+            'domain_config.json': config
+        }
+
+        for filename, content in expected_links.items():
+            file_path = domain_links_dir / filename
+
+            # Check if file needs updating
+            if file_path.exists():
+                try:
+                    existing_content = json.loads(file_path.read_text())
+                    if existing_content != content:
+                        file_path.write_text(json.dumps(content, indent=2))
+                        operations['links_updated'] += 1
+                        operations['details'].append(f"Updated {filename}")
+                    else:
+                        operations['details'].append(f"No changes needed for {filename}")
+                except Exception as e:
+                    logger.warning(f"Error reading {file_path}: {e}")
+                    file_path.write_text(json.dumps(content, indent=2))
+                    operations['links_updated'] += 1
+                    operations['details'].append(f"Recreated {filename} (read error)")
+            else:
+                file_path.write_text(json.dumps(content, indent=2))
+                operations['links_created'] += 1
+                operations['details'].append(f"Created {filename}")
+
+        return operations
+
+    def generate_comprehensive_report(self) -> Dict[str, Any]:
+        """Generate comprehensive link validation and sync report"""
+        logger.info("📊 Generating comprehensive link validation report...")
+
+        # Ensure we have current data
+        if not self.link_database:
+            self.scan_all_links()
+
+        if not self.validation_results:
+            self.validate_links()
+
+        sync_results = self.sync_links()
+
+        comprehensive_report = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'report_type': 'QMOI Link Validation & Synchronization Report',
+            'summary': {
+                'files_scanned': self.link_database.get('files_scanned', 0),
+                'total_links_found': self.link_database.get('total_links_found', 0),
+                'internal_links': len(self.link_database.get('internal_links', [])),
+                'external_links': len(self.link_database.get('external_links', [])),
+                'valid_links': self.validation_results.get('summary', {}).get('valid_links', 0),
+                'invalid_links': self.validation_results.get('summary', {}).get('invalid_links', 0),
+                'validation_rate': self.validation_results.get('summary', {}).get('validation_rate', 0.0),
+                'domains_synchronized': len(sync_results.get('domains_processed', [])),
+                'links_updated': sync_results.get('links_updated', 0),
+                'links_created': sync_results.get('links_created', 0),
+                'links_removed': sync_results.get('links_removed', 0)
+            },
+            'link_database': self.link_database,
+            'validation_results': self.validation_results,
+            'sync_results': sync_results,
+            'recommendations': self._generate_link_recommendations()
+        }
+
+        return comprehensive_report
+
+    def _generate_link_recommendations(self) -> List[str]:
+        """Generate recommendations based on link validation results"""
+        recommendations = []
+
+        if self.validation_results:
+            invalid_internal = self.validation_results.get('internal_links', {}).get('invalid', 0)
+            invalid_external = self.validation_results.get('external_links', {}).get('invalid', 0)
+
+            if invalid_internal > 0:
+                recommendations.append(f"Fix {invalid_internal} broken internal links - check file paths and routing")
+
+            if invalid_external > 0:
+                recommendations.append(f"Update {invalid_external} broken external links - verify domain accessibility")
+
+            validation_rate = self.validation_results.get('summary', {}).get('validation_rate', 0.0)
+            if validation_rate < 90.0:
+                recommendations.append("Overall link validation rate below 90% - comprehensive link audit recommended")
+
+        recommendations.extend([
+            "Regular link validation should be automated in CI/CD pipeline",
+            "Implement link monitoring alerts for broken external links",
+            "Consider implementing link prefetching for critical internal links",
+            "Add link validation to pre-deployment checks"
+        ])
+
+        return recommendations
+
+    def save_report(self, report: Dict[str, Any]) -> Path:
+        """Save comprehensive report to file"""
+        report_path = self.reports_dir / f"link_validation_sync_report_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.json"
+
+        with open(report_path, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=2)
+
+        logger.info(f"📄 Link validation report saved: {report_path}")
+        return report_path
+
+
+def main():
+    """Main function"""
+    print("🔗 QMOI Link Validator & Synchronizer")
+    print("=" * 50)
+
+    validator = LinkValidator()
+
+    try:
+        # Step 1: Scan all links
+        print("🔍 Step 1: Scanning all files for links...")
+        link_database = validator.scan_all_links()
+        print(f"   Found {link_database['total_links_found']} links in {link_database['files_scanned']} files")
+
+        # Step 2: Validate links
+        print("🔗 Step 2: Validating links...")
+        validation_results = validator.validate_links()
+        print(f"   Validation complete: {validation_results['summary']['validation_rate']:.1f}% success rate")
+        # Step 3: Synchronize links
+        print("🔄 Step 3: Synchronizing links across domains...")
+        sync_results = validator.sync_links()
+        print(f"   Synchronized {len(sync_results['domains_processed'])} domains")
+
+        # Step 4: Generate comprehensive report
+        print("📊 Step 4: Generating comprehensive report...")
+        comprehensive_report = validator.generate_comprehensive_report()
+        report_path = validator.save_report(comprehensive_report)
+
+        print("\n📊 Final Results:")
+        print(f"Overall Validation Rate: {comprehensive_report['summary']['validation_rate']:.1f}%")
+        print(f"Total Links Found: {comprehensive_report['summary']['total_links_found']}")
+        print(f"Valid Links: {comprehensive_report['summary']['valid_links']}")
+        print(f"Invalid Links: {comprehensive_report['summary']['invalid_links']}")
+        print(f"Domains Synchronized: {comprehensive_report['summary']['domains_synchronized']}")
+        print(f"Links Updated: {comprehensive_report['summary']['links_updated']}")
+        print(f"Links Created: {comprehensive_report['summary']['links_created']}")
+        print(f"Report: {report_path}")
+
+        # Return appropriate exit code
+        validation_rate = comprehensive_report['summary']['validation_rate']
+        if validation_rate >= 95.0:
+            print("✅ Link validation completed successfully!")
+            return 0
+        elif validation_rate >= 80.0:
+            print("⚠️ Link validation completed with some issues.")
+            return 1
+        else:
+            print("❌ Link validation found significant issues.")
+            return 1
+
+    except Exception as e:
+        logger.error(f"Error during link validation: {e}")
+        print(f"❌ Error: {e}")
+        return 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())
 class productionHealthMonitor:
     """production health monitoring system"""
 
