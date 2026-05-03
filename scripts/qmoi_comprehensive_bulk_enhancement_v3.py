@@ -1893,18 +1893,18 @@ def main():
     enhancer = QMOIComprehensiveBulkEnhancerV3()
     
     try:
-        pass
+
+    
+        result = None
+
+    
     except Exception as e:
+
+    
         logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-        # Create all new documentation
+
+    
+        result = None        # Create all new documentation
         enhancer.create_qmoi_model_specification()
         enhancer.create_qmoi_model_tests_documentation()
         enhancer.create_qmoi_model_card()

@@ -161,18 +161,14 @@ class {name.replace('_', ' ').title().replace(' ', '')}Lion:
         """Initialize the Lion agent"""
         logger.info(f"Initializing {{self.config.name}}...")
         try:
-            pass
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-            # Validate configuration
+
+            result = None
+
+        except Exception as e:
+
+            logger.error(f"Error: {e}")
+
+            result = None            # Validate configuration
             if not self.config.specialization:
                 raise ValueError("Specialization is required")
             

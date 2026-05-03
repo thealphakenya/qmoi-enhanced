@@ -484,18 +484,18 @@ class productionDeployer:
         }
         
         try:
-            pass
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-            # Execute all deployment stages
+
+        
+            result = None
+
+        
+        except Exception as e:
+
+        
+            logger.error(f"Error: {e}")
+
+        
+            result = None            # Execute all deployment stages
             results["stages"]["pre_validation"] = await self.pre_deployment_validation()
             results["stages"]["deployment"] = await self.deployment_procedure()
             results["stages"]["post_validation"] = await self.post_deployment_validation()

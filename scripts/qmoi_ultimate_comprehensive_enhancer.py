@@ -307,18 +307,18 @@ class ExternalAPIManager:
         start_time = datetime.utcnow()
         
         try:
-            pass
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-            client = openai.AsyncOpenAI(api_key=self.api_keys["openai"])
+
+        
+            result = None
+
+        
+        except Exception as e:
+
+        
+            logger.error(f"Error: {e}")
+
+        
+            result = None            client = openai.AsyncOpenAI(api_key=self.api_keys["openai"])
             response = await client.chat.completions.create(
                 model=model,
                 messages=[{"role": "user", "content": prompt}],

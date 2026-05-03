@@ -362,18 +362,18 @@ class QVillageEnhancer:
         }
         
         try:
-            pass
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-            # Create all components
+
+        
+            result = None
+
+        
+        except Exception as e:
+
+        
+            logger.error(f"Error: {e}")
+
+        
+            result = None            # Create all components
             results["components"]["model_card"] = await self.create_model_card()
             results["components"]["evolution_tracker"] = await self.create_evolution_tracker()
             results["components"]["benchmark_dashboard"] = await self.create_benchmark_dashboard()

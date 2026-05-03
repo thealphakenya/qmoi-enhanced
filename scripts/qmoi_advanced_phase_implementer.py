@@ -362,18 +362,18 @@ class MLPhase27Engine:
         logger.info(f"Predicting price for {symbol}")
         
         try:
-            pass
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-    except Exception as e:
-        logger.error(f"Error: {e}")
-            # Prepare data
+
+        
+            result = None
+
+        
+        except Exception as e:
+
+        
+            logger.error(f"Error: {e}")
+
+        
+            result = None            # Prepare data
             X = np.array(historical_data[-60:]).reshape(1, -1)
             
             # Make ensemble prediction

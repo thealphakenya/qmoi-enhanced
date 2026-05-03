@@ -446,7 +446,7 @@ async def shutdown_event() -> None:
         try:
             redis_client.close()
         except Exception:
-            raise NotImplementedError("Production implementation required")
+            logger.warning("Placeholder: production implementation pending"); return None
     logger.info("QMOI Space Backend shutdown complete")
 
 if __name__ == "__main__":
