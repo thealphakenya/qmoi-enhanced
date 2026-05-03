@@ -1,0 +1,171 @@
+# ALLSERVE.md — Serve QMOI AI, QMOI Space, QCity, and QVillage
+
+This document describes how to keep all requested applications running in production and accessible in a browser at all times.
+
+## ✅ Goals
+- Serve `qmoi ai`, `qmoi space`, `qcity`, and `qvillage` in a browser
+- Keep them running continuously in production mode
+- Ensure browser access is optional, not required for runtime
+
+## 🔧 Prerequisites
+- `python3` installed
+- `npm` / `node` installed if serving additional Next.js/Node apps
+- Repository root: `/workspaces/qmoi-enhanced`
+
+## 1) Serve static browser apps on port `8080`
+The repository contains static browser entry points for:
+- `qmoi-ai.html`
+- `qmoi-space.html`
+- `qcity-enterprise.html`
+- `qcity-complete.html`
+- `qcity-dashboard.html`
+
+These files are all served directly from repository root.
+
+### Start the static server
+```bash
+cd /workspaces/qmoi-enhanced
+mkdir -p /tmp/qmoi-serve-logs
+nohup python3 -m http.server 8080 > /tmp/qmoi-serve-logs/qmoi-static-server.log 2>&1 &
+```
+
+### Confirm the server is running
+```bash
+ps -ef | grep "python3 -m http.server 8080" | grep -v grep
+```
+
+### Browser URLs
+- Root app launcher: `http://127.0.0.1:8080/`  
+  > Opens the new QMOI Enhanced App Launcher with explicit buttons for QMOI AI, QMOI Space, and QCity.
+- QMOI AI: `http://127.0.0.1:8080/qmoi-ai-live.html`  
+  > Use this unique live launcher path to avoid stale cached pages or root redirect interference.
+- QMOI Space: `http://127.0.0.1:8080/pwa_apps/qmoi-space/index.html`
+- QCity Primary Dashboard: `http://127.0.0.1:8080/qcity-enterprise.html`
+- QCity Complete Dashboard: `http://127.0.0.1:8080/qcity-complete.html`
+- QCity Comprehensive Dashboard: `http://127.0.0.1:8080/qcity-dashboard.html`
+
+> In production environments with DNS configured, replace `http://127.0.0.1:8080` with your production hostname.
+
+## 2) Serve QVillage continuously
+The QVillage backend is managed by a supervisor script that restarts itself if it exits.
+
+### Start QVillage in the background
+```bash
+cd /workspaces/qmoi-enhanced/deploy/qvillage
+mkdir -p /tmp/qvillage-logs
+nohup bash run_qmoi.sh > /tmp/qvillage-logs/qvillage-supervisor.log 2>&1 &
+```
+
+### Confirm QVillage is running
+```bash
+ps -ef | grep run_qmoi.sh | grep -v grep
+```
+
+### Recommended browser access
+If the QVillage service exposes a browser UI, open the local port used by the service. The repository suggests `scripts/qmoi_local_server.py` should serve the local backend, typically accessible at:
+- `http://127.0.0.1:8000/gradio`
+
+> Note: the QVillage supervisor script is present, but the local Python server code in `scripts/qmoi_local_server.py` currently contains syntax issues and may require repair before the browser UI becomes functional.
+
+If you are using a different local port, adjust the URL accordingly.
+
+## 3) Optional: keep services always-on with `pm2`
+Use `pm2` to keep the services alive and restart them automatically.
+
+### Install `pm2`
+```bash
+npm install -g pm2
+```
+
+### Start the static browser server with `pm2`
+```bash
+cd /workspaces/qmoi-enhanced
+pm2 start --name qmoi-static --interpreter python3 -- python3 -m http.server 8080
+```
+
+### Start QVillage with `pm2`
+```bash
+cd /workspaces/qmoi-enhanced/deploy/qvillage
+pm2 start --name qvillage-backend -- bash run_qmoi.sh
+```
+
+### Save the process list
+```bash
+pm2 save
+```
+
+### View running services
+```bash
+pm2 ls
+```
+
+## 4) Convenience browser launch commands
+Use these scripts if you want to open the browser from the repository directly.
+
+- `./OPEN_QMOI_AI.sh` — opens QMOI AI in the browser
+- `./open_qcity_safe.sh` — fetches and previews QCity if the browser is unavailable
+- `./start-qcity.sh` — starts the QCity HTTP server and prints dashboard URLs
+
+## 5) Notes for production continuity
+- The static server can serve all root-level browser apps from one port.
+- QVillage should be run with a supervisor (`nohup`, `pm2`, or systemd) so it stays alive even when not opened in a browser.
+- Opening a browser is optional; the services must remain running independently.
+
+## 6) Recommended always-on setup
+For a production-like always-on system, use a system supervisor or process manager.
+
+### Example `systemd` service for the static server
+```ini
+[Unit]
+Description=QMOI Static Browser Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/qmoi-enhanced
+ExecStart=/usr/bin/python3 -m http.server 8080
+Restart=always
+RestartSec=5
+StandardOutput=file:/cache/qmoi-static-server.log
+StandardError=file:/cache/qmoi-static-server.log
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### Example `systemd` service for QVillage
+```ini
+[Unit]
+Description=QVillage Always-On Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/qmoi-enhanced/deploy/qvillage
+ExecStart=/bin/bash /workspaces/qmoi-enhanced/deploy/qvillage/run_qmoi.sh
+Restart=always
+RestartSec=5
+StandardOutput=file:/cache/qvillage-supervisor.log
+StandardError=file:/cache/qvillage-supervisor.log
+
+[Install]
+WantedBy=multi-user.target
+```
+
+## 7) Quick restart commands
+```bash
+# Restart static browser server
+pkill -f "python3 -m http.server 8080" || true
+cd /workspaces/qmoi-enhanced
+nohup python3 -m http.server 8080 > /cache/qmoi-static-server.log 2>&1 &
+
+# Restart QVillage
+pkill -f "run_qmoi.sh" || true
+cd /workspaces/qmoi-enhanced/deploy/qvillage
+nohup bash run_qmoi.sh > /cache/qvillage-supervisor.log 2>&1 &
+```
+
+## 8) Troubleshooting
+- If `http://localhost:8080/qmoi-ai.html` does not load, verify the static server is running and serving from `/workspaces/qmoi-enhanced`.
+- If QVillage does not stay running, use `pm2` or systemd to supervise `deploy/qvillage/run_qmoi.sh`.
+- If `OPEN_QMOI_AI.sh` or `open_qcity_safe.sh` fail, open the URL manually in a browser.

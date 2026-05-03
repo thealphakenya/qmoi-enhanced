@@ -117,7 +117,64 @@ AI-powered interfaces:
 - `QmoiAutoDistribution.tsx` – Auto distribution
 - `QCityErrorManager.tsx` – Error management
 - `QVillageDatasetsPanel.tsx` – Dataset management
-- `BrowserInterface.tsx` – Browser interface
+- `BrowserInterface.tsx` – Browser automation interface
+- `Chatbot.tsx` / `Chatbot.js` – QMOI AI chat interface with multi-model selection and runtime conversation history
+- `QMOIDashboard.tsx` / `QMOIAutoFixDashboard.tsx` – QMOI AI orchestration dashboards and automated repair controls
+
+### Product-Specific Component Inventory
+
+#### QCity Components
+QCity is implemented as a dedicated product domain with its own dashboard, device management, enterprise feature set, and runtime adapters.
+- `components/q-city/QCityDashboard.tsx`
+- `components/q-city/QCityDevicePanel.tsx`
+- `components/q-city/QCityprodicePanel.tsx`
+- `components/q-city/QMOIBiometricManager.tsx`
+- `components/q-city/QMOILinksManager.tsx`
+- `components/q-city/QMOIOwnDeviceLogs.tsx`
+- `components/q-city/QMOIRevenueDashboard.tsx`
+- `components/q-city/GlobalLinksManager.tsx`
+- `components/q-city/EmploymentDashboard.tsx`
+- `components/q-city/TracksPanel.tsx`
+- `components/q-city/ZeroRatedSitesManager.tsx`
+- `components/q-city/Onboarding.tsx`
+- `components/q-city/QVillage.tsx`
+- `components/QCityErrorManager.tsx`
+- `components/QCityThemeProvider.tsx`
+- `components/QAvatar.tsx` (QCity-integrated dashboard and device launch panels)
+
+#### QMOI AI + Alpha Q AI Components
+QMOI AI and Alpha Q AI share the same core UI and automation layer, with the alpha Q shell acting as an aggregator. These components are adapted specifically for the QMOI AI domain while remaining compatible with the Alpha Q shell.
+- `components/Chatbot.tsx` / `components/Chatbot.js`
+- `components/AskQMoi.tsx`
+- `components/QMOIDashboard.tsx`
+- `components/QMOIAutoFixDashboard.tsx`
+- `components/QmoiAutoDistribution.tsx`
+- `components/QmoiBrowser.tsx`
+- `components/QmoiDialer.tsx`
+- `components/QmoiEnhancedSystem.tsx`
+- `components/QmoiKeyboard.tsx`
+- `components/QmoiMediaManager.tsx`
+- `components/QmoiMemoryPanel.tsx`
+- `components/QmoiRevenueDashboard.tsx`
+- `components/QAvatar.tsx` (central AI assistant / avatar integration)
+- `components/alpha-q-ai-system.tsx`
+- `components/alpha-q-ai-system.js`
+
+Alpha Q AI is also surfaced as a Progressive Web App shell in `/pwa_apps/q-alpha/`, reusing the same QMOI AI feature patterns for aggregated hub navigation.
+
+#### QMOI Space Components
+QMOI Space is the marketplace and distributed production environment with spatial, dataset, and revenue interfaces.
+- `components/QVillage.tsx`
+- `components/QVillageDatasetsPanel.tsx`
+- `components/QiSpaces.tsx`
+- `components/LcSpaces.tsx`
+- `components/MapLocationPanel.tsx`
+- `components/QFileManager.tsx`
+- `components/FileExplorer.tsx` / `components/FileExplorer.js`
+
+QMOI Space also includes static PWA shell assets in `/pwa_apps/qmoi-space/`.
+
+The QMOI AI feature set is supported by static PWA assets in `/pwa_apps/qmoi-ai/` and includes installable app behavior, online/offline status, production preview, share actions, and a chat conversation interface. The actual PWA shell is implemented in `/pwa_apps/qmoi-ai/index.html`, `/pwa_apps/qmoi-ai/sw.js`, and `/pwa_apps/qmoi-ai/manifest.webmanifest`, while React support components such as `Chatbot.tsx`, `AskQMoi.tsx`, `QMOIDashboard.tsx`, and `QMOIAutoFixDashboard.tsx` provide the main internal user experience for the QMOI Enhanced web application.
 
 ### Location & Spatial
 Location and space management:

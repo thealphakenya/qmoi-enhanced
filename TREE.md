@@ -25,8 +25,23 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 /components/          — React components (201 files across 15 domains)
 /src/components/      — Source-level UI integration (123 files)
 /components/ui/       — Shared UI primitives (54 shadcn/ui components)
-/dashboard/           — Lightweight dashboard application
-/styles/              — Global stylesheets and theming
+/components/q-city/    — QCity product-specific dashboard and device management components (14 files)
+/dashboard/           — Lightweight dashboard application package
+/pwa_apps/qmoi-ai/     — QMOI AI static PWA assets and service worker
+/pwa_apps/qmoi-space/  — QMOI Space static PWA assets and installable shell
+/pwa_apps/q-alpha/     — Alpha Q aggregator shell for QMOI AI, QMOI Space, and QCity
+/qmoi-ai.html          — Root redirect to QMOI AI shell
+/qmoi-ai-live.html     — Live launcher for QMOI AI PWA
+/qmoi-space.html       — Root redirect to QMOI Space shell
+/q-alpha.html          — Root redirect to Alpha Q aggregator
+/qcity-enterprise.html  — QCity Enterprise entrypoint
+/qcity-complete.html    — QCity Complete entrypoint
+/qcity-dashboard.html   — QCity Dashboard entrypoint
+/public/              — Static manifest and app entrypoint assets for installable PWA shells
+/hooks/useQCity.ts     — QCity integration hook
+/api/qcity.ts          — QCity API surface
+/scripts/qcity-ui-server.js — QCity development UI server helper
+/scripts/qmoi-ai-server.js  — QMOI AI local server helper
 ```
 
 ### Backend & Services Layer
@@ -56,6 +71,8 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 ```
 /ai/                  — AI models and reasoning engines
 /lion/                — QMOI Lion agent system (206+ agents)
+/scripts/qmoi_local_server.py — Local QMOI server implementation (currently requires repair)
+/deploy/qvillage/run_qmoi.sh — QVillage supervisor loop for local backend restart
 ```
 
 ### Documentation & References

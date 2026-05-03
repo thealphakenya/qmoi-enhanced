@@ -1,18 +1,120 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:05.561653 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:07.469893 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:03.369907 -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QCity Enterprise - Redirecting...</title>
-    <script>
-      // Redirect to QCity Enterprise dashboard
-      window.location.href = "/qcity-enterprise.html";
-    </script>
+    <title>QMOI Enhanced App Launcher</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at top left, #4f46e5 0%, #1d4ed8 35%, #0f172a 100%);
+        color: #f8fafc;
+        padding: 24px;
+      }
+      .shell {
+        width: min(980px, 100%);
+        background: rgba(15, 23, 42, 0.94);
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        border-radius: 28px;
+        box-shadow: 0 40px 120px rgba(15, 23, 42, 0.35);
+        overflow: hidden;
+      }
+      .hero {
+        padding: 36px;
+        text-align: center;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      }
+      h1 {
+        font-size: clamp(2.4rem, 4vw, 3.6rem);
+        margin-bottom: 12px;
+        letter-spacing: -0.04em;
+      }
+      p {
+        color: #cbd5e1;
+        line-height: 1.75;
+        max-width: 780px;
+        margin: 0 auto;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+        padding: 30px;
+      }
+      .card {
+        display: block;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        border-radius: 22px;
+        padding: 26px;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(96, 165, 250, 0.7);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .card strong {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+      .card p {
+        margin-top: 0.5rem;
+        color: #cbd5e1;
+      }
+      .footer {
+        padding: 0 36px 36px;
+        text-align: center;
+        color: #94a3b8;
+      }
+      code {
+        background: rgba(148, 163, 184, 0.12);
+        border-radius: 0.45rem;
+        padding: 0.18rem 0.4rem;
+        color: #e2e8f0;
+        font-size: 0.95rem;
+      }
+    </style>
   </head>
   <body>
-    <p>Redirecting to QCity Enterprise Dashboard...</p>
+    <main class="shell">
+      <section class="hero">
+        <h1>QMOI Enhanced App Launcher</h1>
+        <p>
+          Choose the app you want to open. QMOI AI is available as the primary PWA shell, and QCity remains available as a separate dashboard.
+        </p>
+      </section>
+      <section class="cards">
+        <a class="card" href="/qmoi-ai-live.html">
+          <strong>QMOI AI</strong>
+          <p>Open the QMOI AI PWA shell with live cache-busting support for the latest UI.</p>
+        </a>
+        <a class="card" href="/qmoi-space.html">
+          <strong>QMOI Space</strong>
+          <p>Open the QMOI Space browser shell for collaborative spatial application workflows.</p>
+        </a>
+        <a class="card" href="/qcity-enterprise.html">
+          <strong>QCity Enterprise</strong>
+          <p>Open the QCity enterprise dashboard if you need the legacy spatial management view.</p>
+        </a>
+      </section>
+      <section class="footer">
+        <p>
+          Direct QMOI AI URL: <code>/qmoi-ai-live.html</code>
+        </p>
+      </section>
+    </main>
   </body>
 </html>

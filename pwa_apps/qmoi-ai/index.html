@@ -48,8 +48,8 @@
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
           Cantarell, sans-serif;
-        background: linear-gradient(180deg, const(--background), #071027);
-        color: const(--text);
+        background: linear-gradient(180deg, var(--background), #071027);
+        color: var(--text);
         line-height: 1.6;
         overflow-x: hidden;
       }
@@ -73,14 +73,14 @@
       h1 {
         font-size: 24px;
         font-weight: 600;
-        background: linear-gradient(135deg, const(--primary), const(--secondary));
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
       .card {
-        background: const(--surface);
+        background: var(--surface);
         border-radius: 12px;
         padding: 24px;
         margin-bottom: 20px;
@@ -91,19 +91,19 @@
       .card h2 {
         font-size: 18px;
         margin-bottom: 16px;
-        color: const(--primary);
+        color: var(--primary);
       }
 
       .grid {
         display: grid;
-        grid-standard-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 16px;
         margin-bottom: 20px;
       }
 
       .stat-card {
         background: rgba(11, 95, 255, 0.1);
-        border: 1px solid const(--primary);
+        border: 1px solid var(--primary);
         border-radius: 8px;
         padding: 16px;
         text-align: center;
@@ -112,18 +112,18 @@
       .stat-value {
         font-size: 32px;
         font-weight: 700;
-        color: const(--primary);
+        color: var(--primary);
       }
 
       .stat-label {
         font-size: 12px;
-        color: const(--muted);
+        color: var(--muted);
         text-transform: uppercase;
         letter-spacing: 1px;
       }
 
       button {
-        background: const(--primary);
+        background: var(--primary);
         color: white;
         border: none;
         padding: 12px 24px;
@@ -135,7 +135,7 @@
       }
 
       button:hover {
-        background: const(--secondary);
+        background: var(--secondary);
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
       }
@@ -155,12 +155,12 @@
 
       .status-online {
         background: rgba(16, 185, 129, 0.2);
-        color: const(--success);
+        color: var(--success);
       }
 
       .status-offline {
         background: rgba(239, 68, 68, 0.2);
-        color: const(--error);
+        color: var(--error);
       }
 
       @media (max-width: 768px) {
@@ -183,7 +183,7 @@
 
       .loader {
         border: 2px solid rgba(255, 255, 255, 0.1);
-        border-top: 2px solid const(--primary);
+        border-top: 2px solid var(--primary);
         border-radius: 50%;
         width: 32px;
         height: 32px;
@@ -204,8 +204,8 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background: const(--surface);
-        border: 1px solid const(--primary);
+        background: var(--surface);
+        border: 1px solid var(--primary);
         border-radius: 8px;
         padding: 16px;
         max-width: 300px;
@@ -254,11 +254,39 @@
       </div>
 
       <div class="card">
-        <h2>optimized Actions</h2>
-        <button onclick="launchDashboard()">📊 Open Dashboard</button>
-        <button onclick="accessSettings()">⚙️ Settings</button>
-        <button onclick="openPreview()">🔍 PRODUCTION</button>
-        <button onclick="shareApp()">🔗 Share</button>
+        <h2>QMOI AI Feature Set</h2>
+        <ul class="feature-list">
+          <li>AI chatbot interaction with model selection</li>
+          <li>Auto-fix diagnostics and production monitoring</li>
+          <li>QCity device integration for unlimited build/test execution</li>
+          <li>QMOI Space marketplace and revenue generation adaptation</li>
+          <li>Avatar-driven assistance and guided workflows</li>
+          <li>Installable PWA experience and offline caching</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Component Highlights</h2>
+        <ul class="feature-list">
+          <li>Chatbot / QMOI conversation interface</li>
+          <li>QMOI dashboard orchestration panels</li>
+          <li>QMOI auto-fix, revenue, and memory management views</li>
+          <li>QCity device dashboard and enterprise controls</li>
+          <li>QMOI Space marketplace, map, and dataset panels</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Optimized Actions</h2>
+        <div class="grid">
+          <button onclick="launchDashboard()">📊 Open Dashboard</button>
+          <button onclick="accessSettings()">⚙️ Settings</button>
+          <button onclick="openPreview()">🔍 Production</button>
+          <button onclick="openShell('/qmoi-space.html')">🌌 Open QMOI Space</button>
+          <button onclick="openShell('/qcity-dashboard.html')">🏙️ Open QCity</button>
+          <button onclick="openShell('/q-alpha.html')">🧠 Open Alpha Q</button>
+          <button onclick="shareApp()">🔗 Share</button>
+        </div>
       </div>
 
       <div class="card" id="latest-qai-card">
@@ -279,7 +307,7 @@
               margin-bottom: 6px;
             "
           >
-            <div style="color: const(--muted); font-size: 13px">Status</div>
+            <div style="color: var(--muted); font-size: 13px">Status</div>
             <div
               style="
                 padding: 4px 8px;
@@ -301,8 +329,8 @@
               margin-bottom: 6px;
             "
           >
-            <div style="color: const(--muted); font-size: 13px">Version</div>
-            <div style="color: const(--primary); font-weight: 700">
+            <div style="color: var(--muted); font-size: 13px">Version</div>
+            <div style="color: var(--primary); font-weight: 700">
               latest-Q-1.0.0
             </div>
           </div>
@@ -313,15 +341,15 @@
               align-items: center;
             "
           >
-            <div style="color: const(--muted); font-size: 13px">Last Update</div>
-            <div style="color: const(--muted); font-size: 12px">Just now</div>
+            <div style="color: var(--muted); font-size: 13px">Last Update</div>
+            <div style="color: var(--muted); font-size: 12px">Just now</div>
           </div>
           <div
             style="
               margin-top: 8px;
               border-top: 1px dashed rgba(255, 255, 255, 0.03);
               padding-top: 8px;
-              color: const(--muted);
+              color: var(--muted);
               font-size: 12px;
             "
           >
@@ -355,7 +383,7 @@
               id="chat-model"
               style="
                 background: #0b1220;
-                color: const(--text);
+                color: var(--text);
                 border: 1px solid rgba(255, 255, 255, 0.04);
                 padding: 6px;
                 border-radius: 6px;
@@ -369,14 +397,14 @@
             <input
               id="chat-input"
               type="text"
-              implementation="Ask QMOI..."
+              placeholder="Ask QMOI..."
               style="
                 flex: 1;
                 padding: 8px;
                 border-radius: 6px;
                 border: 1px solid rgba(255, 255, 255, 0.04);
                 background: #071027;
-                color: const(--text);
+                color: var(--text);
               "
             />
             <button
@@ -384,7 +412,7 @@
               style="
                 padding: 8px 12px;
                 border-radius: 6px;
-                background: const(--primary);
+                background: var(--primary);
                 color: #fff;
                 border: none;
               "
@@ -399,6 +427,12 @@
     </div>
 
     <script>
+      const logger = window.logger || {
+        info: (...args) => console.info(...args),
+        warn: (...args) => console.warn(...args),
+        error: (...args) => console.error(...args),
+      };
+
       // PWA Install Prompt
       let deferredInstallPrompt;
       const installBtn = document.getElementById("install-btn");
@@ -494,6 +528,11 @@ function openPreview() {
           "width=900,height=700",
         );
         if (!w) showNotification("Pop-up blocked — allow popups for PRODUCTION");
+      }
+
+      function openShell(path) {
+        const w = window.open(path, "qmoiai-shell", "width=1100,height=800");
+        if (!w) showNotification("Pop-up blocked — allow popups for shell navigation");
       }
 
       // Initialize
