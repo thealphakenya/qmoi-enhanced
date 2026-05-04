@@ -33,6 +33,18 @@ Quantum multi orchestra intelligence (QMOI) Web Progressive App is a comprehensi
 - **Responsive Design**: Optimized for all screen sizes and orientations
 - **Touch Gestures**: Native-like touch interactions
 
+### Autovalidation of PWA UI Features
+- **Continuous UI validation**: All WPA routes, install flows, and service worker lifecycle events are automatically verified.
+- **App shell health checks**: Each PWA shell is tested for expected UI components, offline fallback behavior, and update availability.
+- **Update endpoint integration**: Runtime checks via `/api/pwa/check-update` and `/api/pwa/auto-update` confirm that installed PWAs can refresh safely and maintain consistent UI state.
+- **Cross-platform UI verification**: The autovalidation system covers all progressive web applications, including QMOI AI, QMOI Space, and any QCity or QVillage PWA assets served from `pwa_apps/`.
+- **Service worker validation**: Service worker registration, caching strategy, and background sync behavior are validated as part of the WPA startup sequence.
+
+### PWA Serving and UI Convergence
+- PWAs are served from `pwa_apps/` and the browser host can deliver all app shells from one root origin.
+- This structure supports universal navigation for QMOI AI, QMOI Space, and shared UI experience across the QMOI ecosystem.
+- When the app is deployed, the same host also services runtime UI validation, update checks, and platform-specific install behavior.
+
 ### Push Notifications
 - **Real-Time Alerts**: Instant notifications for all Quantum multi orchestra intelligence (QMOI) activities
 - **Customizable Notifications**: User-controlled notification preferences

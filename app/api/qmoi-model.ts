@@ -365,59 +365,59 @@ export function createQMOI(apiKey: string): QMOI {
   });
 }
 
+const logger = console;
+
 /**
  * Example usage
  */
 export async function exampleUsage() {
   try {
-  const qmoi = createQMOI('your-api-key');
+    const qmoi = createQMOI('your-api-key');
 
-  // Process text
-  const response = await qmoi.process({
-    prompt: 'What is the capital of France?',
-  });
-  logger.info(response.text);
+    // Process text
+    const response = await qmoi.process({
+      prompt: 'What is the capital of France?',
+    });
+    logger.info(response.text);
 
-  // Process multimodal
-  const mmResponse = await qmoi.processMultimodal({
-    text: 'Analyze this image',
-    image: 'base64-encoded-image',
-  });
-  logger.info(mmResponse.text);
+    // Process multimodal
+    const mmResponse = await qmoi.processMultimodal({
+      text: 'Analyze this image',
+      image: 'base64-encoded-image',
+    });
+    logger.info(mmResponse.text);
 
-  // Execute trade with confidence assessment
-  const tradeResult = await qmoi.trade({
-    platform: 'binance',
-    symbol: 'BTC/USDT',
-    side: 'buy',
-    quantity: 0.1,
-    price: 45000,
-    confidence: 0.95,
-    riskAssessment: {
-      overall: 0.85,
-      factors: [],
-      riskLevel: 'medium',
-      recommendation: 'Execute trade with monitoring',
-    },
-  });
-  logger.info(`Order ${tradeResult.orderId} executed`);
+    // Execute trade with confidence assessment
+    const tradeResult = await qmoi.trade({
+      platform: 'binance',
+      symbol: 'BTC/USDT',
+      side: 'buy',
+      quantity: 0.1,
+      price: 45000,
+      confidence: 0.95,
+      riskAssessment: {
+        overall: 0.85,
+        factors: [],
+        riskLevel: 'medium',
+        recommendation: 'Execute trade with monitoring',
+      },
+    });
+    logger.info(`Order ${tradeResult.orderId} executed`);
 
-  // Stream response
-  for await (const chunk of qmoi.stream({
-    prompt: 'Explain quantum computing',
-  })) {
-    process.stdout.write(chunk);
-  }
+    // Stream response
+    for await (const chunk of qmoi.stream({
+      prompt: 'Explain quantum computing',
+    })) {
+      process.stdout.write(chunk);
+    }
 
-  // Get metrics
-  const metrics = await qmoi.getMetrics();
-  logger.info(`Accuracy: ${metrics.accuracy * 100}%`);
-}
-
-export default QMOI;
-
+    // Get metrics
+    const metrics = await qmoi.getMetrics();
+    logger.info(`Accuracy: ${metrics.accuracy * 100}%`);
   } catch (error) {
     console.error("production error:", error);
     throw error;
   }
 }
+
+export default QMOI;

@@ -28,18 +28,50 @@ export let isTampered = false;
  */
 export function runSecurityCheck(): void {
   try {
-    for (const file of criticalFiles) {
-      if (!fs.existsSync(file)) {
-        isTampered = true;
-        return;
-      }
-      const content = fs.readFileSync(file);
-      const hash = crypto.createHash("sha256").update(content).digest("hex");
-      if (fileHashes[file] && hash !== fileHashes[file]) {
-        isTampered = true;
-        return;
-      }
+    if (!fs.existsSync("package.json")) {
+      isTampered = true;
+      return;
     }
+    const packageContent = fs.readFileSync("package.json");
+    const packageHash = crypto.createHash("sha256").update(packageContent).digest("hex");
+    if (fileHashes["package.json"] && packageHash !== fileHashes["package.json"]) {
+      isTampered = true;
+      return;
+    }
+
+    if (!fs.existsSync("next.config.mjs")) {
+      isTampered = true;
+      return;
+    }
+    const nextConfigContent = fs.readFileSync("next.config.mjs");
+    const nextConfigHash = crypto.createHash("sha256").update(nextConfigContent).digest("hex");
+    if (fileHashes["next.config.mjs"] && nextConfigHash !== fileHashes["next.config.mjs"]) {
+      isTampered = true;
+      return;
+    }
+
+    if (!fs.existsSync("vercel.json")) {
+      isTampered = true;
+      return;
+    }
+    const vercelContent = fs.readFileSync("vercel.json");
+    const vercelHash = crypto.createHash("sha256").update(vercelContent).digest("hex");
+    if (fileHashes["vercel.json"] && vercelHash !== fileHashes["vercel.json"]) {
+      isTampered = true;
+      return;
+    }
+
+    if (!fs.existsSync("README.md")) {
+      isTampered = true;
+      return;
+    }
+    const readmeContent = fs.readFileSync("README.md");
+    const readmeHash = crypto.createHash("sha256").update(readmeContent).digest("hex");
+    if (fileHashes["README.md"] && readmeHash !== fileHashes["README.md"]) {
+      isTampered = true;
+      return;
+    }
+
     // Check for suspicious environment (e.g., running from resource, copied path)
     if (process.cwd().includes("resource") || process.cwd().includes("copy")) {
       isTampered = true;

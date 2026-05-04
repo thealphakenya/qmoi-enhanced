@@ -59,6 +59,8 @@ downloads/
 eggs/
 .eggs/
 lib/
+!lib/
+!lib/qmoi-health.ts
 !src/lib/
 !src/lib/**
 lib64/

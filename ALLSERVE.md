@@ -12,13 +12,18 @@ This document describes how to keep all requested applications running in produc
 - `npm` / `node` installed if serving additional Next.js/Node apps
 - Repository root: `/workspaces/qmoi-enhanced`
 
-## 1) Serve static browser apps on port `8080`
-The repository contains static browser entry points for:
+## 1) Serve static browser apps and PWAs from one host on port `8080`
+The repository contains browser entry points and PWA shells that can all be served from a single host.
+
+Core served apps:
 - `qmoi-ai.html`
 - `qmoi-space.html`
 - `qcity-enterprise.html`
 - `qcity-complete.html`
 - `qcity-dashboard.html`
+- `pwa_apps/qmoi-ai/index.html`
+- `pwa_apps/qmoi-space/index.html`
+- `pwa_apps/qmoi/index.html`
 
 These files are all served directly from repository root.
 
@@ -37,13 +42,20 @@ ps -ef | grep "python3 -m http.server 8080" | grep -v grep
 ### Browser URLs
 - Root app launcher: `http://127.0.0.1:8080/`  
   > Opens the new QMOI Enhanced App Launcher with explicit buttons for QMOI AI, QMOI Space, and QCity.
-- QMOI AI: `http://127.0.0.1:8080/qmoi-ai-live.html`  
+- QMOI AI launcher: `http://127.0.0.1:8080/qmoi-ai-live.html`  
   > Use this unique live launcher path to avoid stale cached pages or root redirect interference.
 - QMOI AI real app: `http://127.0.0.1:8080/pwa_apps/qmoi-ai/index.html`
-- QMOI Space: `http://127.0.0.1:8080/pwa_apps/qmoi-space/index.html`
+- QMOI Space real app: `http://127.0.0.1:8080/pwa_apps/qmoi-space/index.html`
+- QMOI app shell: `http://127.0.0.1:8080/pwa_apps/qmoi/index.html`
 - QCity Primary Dashboard: `http://127.0.0.1:8080/qcity-enterprise.html`
 - QCity Complete Dashboard: `http://127.0.0.1:8080/qcity-complete.html`
 - QCity Comprehensive Dashboard: `http://127.0.0.1:8080/qcity-dashboard.html`
+
+### Autovalidation of UI features and PWAs
+- The serve-all approach verifies that browser routes, app shell assets, and PWA content are all reachable from one host.
+- PWA shells are validated for service worker registration, offline caching, and UI flow availability.
+- Runtime update endpoints `/api/pwa/check-update` and `/api/pwa/auto-update` are used to validate live update health and trigger PWA refresh flows.
+- This autovalidation layer ensures that all app entries, install prompts, and PWA UI features work together across QMOI AI, QMOI Space, QCity, and browser-based services.
 
 > In production environments with DNS configured, replace `http://127.0.0.1:8080` with your production hostname.
 

@@ -150,10 +150,10 @@ function QMOIMasterDashboard({
         window.matchMedia("(display-mode: standalone)").matches ||
         (window.navigator as any).standalone === true;
       if (isInstalled) {
-        PWA_PLATFORMS.for (const item of((p) => {
+        for (const p of PWA_PLATFORMS) {
           localStorage.setItem(`pwa_installed_${p.id}`, "true");
           setPwaInstallStatus((prev) => ({ ...prev, [p.id]: true }));
-        });
+        }
       }
     };
 
