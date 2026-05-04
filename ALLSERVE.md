@@ -94,10 +94,31 @@ If you are using a different local port, adjust the URL accordingly.
 ## 3) Optional: keep services always-on with `pm2`
 Use `pm2` to keep the services alive and restart them automatically.
 
-### Install `pm2`
+## 4) Serve Next.js App in Production
+The main QMOI Enhanced application is built with Next.js and can be served in production mode.
+
+### Build the application
 ```bash
-npm install -g pm2
+cd /workspaces/qmoi-enhanced
+npm run build
 ```
+
+### Start the production server
+```bash
+npm start
+```
+
+This will serve the Next.js app on port 3000 by default.
+
+### Confirm the server is running
+```bash
+ps -ef | grep "next start" | grep -v grep
+```
+
+### Browser URL
+- Main app: `http://127.0.0.1:3000/`
+
+> In production environments, configure reverse proxy or use deployment platforms like Vercel for hosting.
 
 ### Start the static browser server with `pm2`
 ```bash
