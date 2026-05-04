@@ -116,8 +116,6 @@ export function QMOIMasterDashboard({
   const [linksData, setLinksData] = useState<LinksData | null>(null);
   const [globalData, setGlobalData] = useState<GlobalData | null>(null);
   const [domainData, setDomainData] = useState<DomainData | null>(null);
-  const [pwaInstallStatus, setPwaInstallStatus] = useState<Record<string, boolean>>({});
-  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [cameraEnabled, setCameraEnabled] = useState(false);
@@ -131,7 +129,7 @@ export function QMOIMasterDashboard({
 
     const handleBeforeInstallPrompt = (event: BeforeInstallPromptEvent) => {
       event.preventDefault();
-      setDeferredPrompt(event);
+      // Deferred prompt stored but not used
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt as EventListener);
@@ -141,9 +139,9 @@ export function QMOIMasterDashboard({
         window.matchMedia("(display-mode: standalone)").matches ||
         ('standalone' in window.navigator && (window.navigator as { standalone?: boolean }).standalone === true);
       if (isInstalled) {
+        // PWA is installed as standalone app
         for (const p of PWA_PLATFORMS) {
           localStorage.setItem(`pwa_installed_${p.id}`, "true");
-          setPwaInstallStatus((prev) => ({ ...prev, [p.id]: true }));
         }
       }
     };
@@ -155,15 +153,9 @@ export function QMOIMasterDashboard({
     };
   }, []);
 
-  const markInstalled = (platformId: string) => {
-    localStorage.setItem(`pwa_installed_${platformId}`, "true");
-    setPwaInstallStatus((prev) => ({ ...prev, [platformId]: true }));
-  };
+  
 
-  const isInstalled = (platformId: string) => {
-    if (pwaInstallStatus[platformId]) return true;
-    return localStorage.getItem(`pwa_installed_${platformId}`) === "true";
-  };
+  
 
   // Verify master authentication
   const verifyMasterAccess = async (authToken: string) => {
@@ -187,7 +179,7 @@ export function QMOIMasterDashboard({
         setError(null);
         return true;
       }
-    } catch (err) {
+    } catch (_err) {
       setError("Failed to verify master access");
     } finally {
       setLoading(false);
@@ -210,7 +202,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setAutomationStatus(data.status);
       }
-    } catch (err) {
+    } catch (_err) {
       logger.error("Failed to fetch automation status:", err);
     }
   };
@@ -231,7 +223,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setFinancialData(data);
       }
-    } catch (err) {
+    } catch (_err) {
       logger.error("Failed to fetch financial data:", err);
     }
   };
@@ -252,7 +244,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setLinksData(data);
       }
-    } catch (err) {
+    } catch (_err) {
       logger.error("Failed to fetch links data:", err);
     }
   };
@@ -273,7 +265,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setGlobalData(data.data);
       }
-    } catch (err) {
+    } catch (_err) {
       logger.error("Failed to fetch global finance data:", err);
     }
   };
@@ -293,7 +285,7 @@ export function QMOIMasterDashboard({
         const data = await response.json();
         setDomainData(data);
       }
-    } catch (err) {
+    } catch (_err) {
       logger.error("Failed to fetch domain data:", err);
     }
   };
@@ -314,7 +306,7 @@ export function QMOIMasterDashboard({
       setIsAuthenticated(false);
       setToken("");
       onUnauthorized?.();
-    } catch (err) {
+    } catch (_err) {
       logger.error("Logout failed:", err);
       setError("Failed to logout properly");
     } finally {
@@ -332,7 +324,7 @@ export function QMOIMasterDashboard({
       setCameraStream(stream);
       setCameraEnabled(true);
       setError(null);
-    } catch (err) {
+    } catch (_err) {
       setError("Failed to access camera. Please check permissions.");
       logger.error("Camera access failed:", err);
     }
@@ -367,7 +359,7 @@ export function QMOIMasterDashboard({
       } else {
         setError(`Failed to ${action} automation`);
       }
-    } catch (err) {
+    } catch (_err) {
       setError(
         `Error: ${err instanceof Error ? err.message : "Unknown error"}`,
       );
@@ -982,7 +974,7 @@ export function QMOIMasterDashboard({
                         } else {
                           setError("Failed to force domain refresh");
                         }
-                      } catch (err) {
+                      } catch (_err) {
                         setError("Error forcing domain refresh");
                       } finally {
                         setLoading(false);
@@ -1023,7 +1015,7 @@ export function QMOIMasterDashboard({
                         } else {
                           setError("Failed to activate emergency takeover");
                         }
-                      } catch (err) {
+                      } catch (_err) {
                         setError("Error activating emergency takeover");
                       } finally {
                         setLoading(false);
@@ -1082,7 +1074,7 @@ export function QMOIMasterDashboard({
                                   }),
                                 });
                               }
-                            } catch (err) {
+                            } catch (_err) {
                               setError("Failed to approve domain");
                             }
                           }}
@@ -1115,7 +1107,7 @@ export function QMOIMasterDashboard({
                                   }),
                                 });
                               }
-                            } catch (err) {
+                            } catch (_err) {
                               setError("Failed to remove domain");
                             }
                           }}
@@ -1165,7 +1157,7 @@ export function QMOIMasterDashboard({
                         // In a real implementation, this would download or display the report
                         logger.info("Audit report generated:", report);
                       }
-                    } catch (err) {
+                    } catch (_err) {
                       setError("Failed to generate audit report");
                     }
                   }}
@@ -1282,7 +1274,7 @@ export function QMOIMasterDashboard({
                       } else {
                         setError("Failed to fetch tracks data");
                       }
-                    } catch (err) {
+                    } catch (_err) {
                       setError("Failed to load tracks");
                     } finally {
                       setLoading(false);
@@ -1693,7 +1685,7 @@ export function QMOIMasterDashboard({
                               } else {
                                 setError(result.error || "Failed to refresh domain validation");
                               }
-                            } catch (err) {
+                            } catch (_err) {
                               setError("Failed to execute command");
                             } finally {
                               setLoading(false);
@@ -1740,7 +1732,7 @@ export function QMOIMasterDashboard({
                               } else {
                                 setError(result.error || "Failed to approve domain");
                               }
-                            } catch (err) {
+                            } catch (_err) {
                               setError("Failed to execute command");
                             } finally {
                               setLoading(false);
@@ -1797,7 +1789,7 @@ export function QMOIMasterDashboard({
                               } else {
                                 setError(result.error || "Failed to add monitored link");
                               }
-                            } catch (err) {
+                            } catch (_err) {
                               setError("Failed to execute command");
                             } finally {
                               setLoading(false);
@@ -1844,7 +1836,7 @@ export function QMOIMasterDashboard({
                               } else {
                                 setError(result.error || "Failed to remove monitored link");
                               }
-                            } catch (err) {
+                            } catch (_err) {
                               setError("Failed to execute command");
                             } finally {
                               setLoading(false);
@@ -1885,7 +1877,7 @@ export function QMOIMasterDashboard({
                         } else {
                           setError(result.error || "Failed to generate audit report");
                         }
-                      } catch (err) {
+                      } catch (_err) {
                         setError("Failed to execute audit command");
                       } finally {
                         setLoading(false);

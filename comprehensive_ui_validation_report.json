@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-04T15:43:32.589578",
+  "timestamp": "2026-05-04T16:22:22.217996",
   "validation_type": "COMPREHENSIVE_UI_VALIDATION",
   "components": {
     "app_components": {
@@ -12,7 +12,7 @@
           "name": "QMOIMasterDashboard",
           "type": "component",
           "valid": true,
-          "size": 83757,
+          "size": 82736,
           "checks": {
             "exists": true,
             "has_export": true,
@@ -248,7 +248,7 @@
           "name": "WalletList",
           "type": "component",
           "valid": true,
-          "size": 1386,
+          "size": 1374,
           "checks": {
             "exists": true,
             "has_export": true,
