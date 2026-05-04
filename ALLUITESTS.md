@@ -1737,4 +1737,39 @@ Link to related documentation, APIs, and system artifacts.
 - [x] Security measures in place
 - [x] Performance optimized
 - [x] Monitoring enabled
+
+---
+
+## App-Specific UI Testing Documentation
+
+### QMOI AI UI Testing
+- **[QMOIAIUI.md](QMOIAIUI.md)** - Comprehensive UI testing for QMOI AI PWA
+  - Dashboard component testing (statistics, features, actions)
+  - Chatbot interface validation (model selection, message handling)
+  - PWA installation testing (install prompts, service worker)
+  - Cross-app navigation testing (QMOI Space, QCity, Alpha Q)
+  - Offline functionality testing (status indicators, fallback responses)
+
+### QMOI Space UI Testing
+- **[QMOISPACEUI.md](QMOISPACEUI.md)** - Complete UI testing for QMOI Space marketplace
+  - Marketplace dashboard testing (statistics grid, welcome card)
+  - Feature grid validation (Production, Gaming, Revenue, Cloud, Security)
+  - PWA functionality testing (installation, service worker registration)
+  - Navigation testing (Dashboard, Gaming Hub, Revenue Tools, Documentation)
+  - Theme and styling validation (dark theme, purple/blue gradients)
+
+### QCity UI Testing
+- **[QCITYUI.md](QCITYUI.md)** - Thorough UI testing for QCity command center
+  - Role-based access testing (Master, Sister, User, Guest permissions)
+  - Metrics grid testing (real-time data, status indicators)
+  - Service operations panel testing (status badges, updates)
+  - Incident reports testing (severity levels, report details)
+  - Cross-app navigation testing (QVillage, QMOI Space access)
+
+### Integration with ALLUI.md
+- All UI testing documentation cross-references **[ALLUI.md](ALLUI.md)**
+- Component inventory validation against UI implementations
+- Role-based access control testing
+- Performance and accessibility compliance testing
+- Cross-platform compatibility validation
 - [x] Documentation complete

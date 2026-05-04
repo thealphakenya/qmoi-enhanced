@@ -1119,4 +1119,38 @@ Link to related documentation, APIs, and system artifacts.
 - [x] Security measures in place
 - [x] Performance optimized
 - [x] Monitoring enabled
+
+---
+
+## App-Specific UI Documentation
+
+### QMOI AI UI Documentation
+- **[QMOIAIUI.md](QMOIAIUI.md)** - Complete UI documentation for QMOI AI Progressive Web App
+  - Dashboard features and statistics display
+  - Chatbot interface and model selection
+  - PWA installation and offline capabilities
+  - Cross-app navigation (QMOI Space, QCity, Alpha Q)
+  - Real-time status indicators and service worker integration
+
+### QMOI Space UI Documentation
+- **[QMOISPACEUI.md](QMOISPACEUI.md)** - Complete UI documentation for QMOI Space marketplace PWA
+  - Marketplace dashboard with platform statistics
+  - Core features grid (Production, Gaming, Revenue, Cloud, Security)
+  - PWA installation and service worker management
+  - Navigation to dashboard, gaming hub, and revenue tools
+  - Dark theme with purple/blue gradient design system
+
+### QCity UI Documentation
+- **[QCITYUI.md](QCITYUI.md)** - Complete UI documentation for QCity command center
+  - Role-based dashboard with access control
+  - Real-time metrics grid (Connected Nodes, Active Services, Alerts)
+  - Service operations and incident reporting panels
+  - Cross-app navigation (QVillage, QMOI Space)
+  - Dark slate theme with cyan accent colors
+
+### Integration with ALLUITESTS.md
+- All app-specific UI documentation is cross-referenced in **[ALLUITESTS.md](ALLUITESTS.md)**
+- Comprehensive testing coverage for all three applications
+- Automated UI validation and accessibility testing
+- Performance monitoring and optimization reports
 - [x] Documentation complete
