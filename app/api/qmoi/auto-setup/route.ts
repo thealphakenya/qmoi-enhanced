@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(_request: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
-    const body = await _request.json();
+    const body = await req.json();
     const { environment, steps } = body;
 
     if (!environment) {
@@ -19,18 +19,18 @@ export async function POST(_request: NextRequest) {
       scheduledSteps: Array.isArray(steps) ? steps : ["validate", "configure", "deploy"],
       startedAt: new Date().toISOString(),
     });
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : "Auto-setup failed",
+        _error: _error instanceof Error ? _error.message : "Auto-setup failed",
       },
       { status: 500 },
     );
   }
 }
 
-export async function GET(_request: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     return NextResponse.json({
       success: true,
@@ -38,11 +38,11 @@ export async function GET(_request: NextRequest) {
       message: "Auto-setup service is available",
       timestamp: new Date().toISOString(),
     });
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error",
+        _error: _error instanceof Error ? _error.message : "Unknown _error",
       },
       { status: 500 },
     );

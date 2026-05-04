@@ -24,10 +24,10 @@ export async function GET(request: NextRequest): any {
           error: 'Invalid action. Use: get-news, get-categories, get-sources'
         });
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json({
       success: false,
-      error: 'Failed to process global news request'
+      _error: 'Failed to process global news request'
     }, { status: 500 });
   }
 }
@@ -49,10 +49,10 @@ export async function POST(request: NextRequest): any {
           error: 'Invalid action. Use: capture-news, update-news'
         });
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json({
       success: false,
-      error: 'Failed to process global news request'
+      _error: 'Failed to process global news request'
     }, { status: 500 });
   }
 }

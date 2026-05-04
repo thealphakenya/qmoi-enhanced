@@ -3,16 +3,16 @@ import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-export async function GET(_request: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     return NextResponse.json({
       success: true,
       status: "configured",
     });
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
-        _error: error instanceof Error ? error.message : "Unknown error",
+        _error: _error instanceof Error ? _error.message : "Unknown _error",
       },
       { status: 500 },
     );

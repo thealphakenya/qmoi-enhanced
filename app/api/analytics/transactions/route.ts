@@ -9,14 +9,14 @@ import { requireApiKey } from "@/lib/proposals";
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-export async function GET(_request: NextRequest): any {
+export async function GET(req: NextRequest): any {
   try {
-    const apiCheck = requireApiKey(_request.headers);
+    const apiCheck = requireApiKey(req.headers);
     if (!apiCheck.ok) {
       return NextResponse.json(apiCheck.response?.body || { error: 'Unauthorized' }, { status: apiCheck.response?.status || 401 });
     }
 
-    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = req.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {
       return NextResponse.json(
         {
@@ -28,7 +28,7 @@ export async function GET(_request: NextRequest): any {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error){
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
@@ -41,7 +41,7 @@ export async function GET(_request: NextRequest): any {
       );
     }
     // Get query parameters
-    const { searchParams } = new URL(_request.url);
+    const { searchParams } = new URL(req.url);
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
     const groupBy = searchParams.get("groupBy") || "day"; // day, week, month
@@ -90,10 +90,10 @@ export async function GET(_request: NextRequest): any {
       },
       { status: 200 },
     );
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Analytics _error:", error);
+  } catch (_error){
+    (globalThis.console as any)?._error?.("Analytics _error:", _error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }

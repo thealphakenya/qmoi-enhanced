@@ -38,10 +38,10 @@ export async function GET(request: NextRequest) {
         motionTracking: true
       }
     });
-  } catch (error) {
-    console.error('Infrared camera API error:', error);
+  } catch (_error){
+    console._error('Infrared camera API _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve infrared camera data' },
+      { success: false, _error: 'Failed to retrieve infrared camera data' },
       { status: 500 }
     );
   }

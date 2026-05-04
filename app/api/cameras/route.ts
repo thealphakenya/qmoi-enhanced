@@ -105,10 +105,10 @@ export async function GET(request: NextRequest) {
         }
       }
     });
-  } catch (error) {
-    console.error('Camera API Error:', error);
+  } catch (_error){
+    console._error('Camera API Error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve camera data' },
+      { success: false, _error: 'Failed to retrieve camera data' },
       { status: 500 }
     );
   }
@@ -136,10 +136,10 @@ export async function POST(request: NextRequest) {
       success: true,
       data: response
     });
-  } catch (error) {
-    console.error('Camera control error:', error);
+  } catch (_error){
+    console._error('Camera control _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to control camera' },
+      { success: false, _error: 'Failed to control camera' },
       { status: 500 }
     );
   }

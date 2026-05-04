@@ -18,7 +18,7 @@ const prodices = [
 
 let offloading = true;
 
-export async function GET(_req: NextRequest): any {
+export async function GET(req: NextRequest): any {
   return NextResponse.json({
     prodices,
     offloading,
@@ -27,8 +27,8 @@ export async function GET(_req: NextRequest): any {
   });
 }
 
-export async function POST(_req: NextRequest): any {
-  const body = await _req.json();
+export async function POST(req: NextRequest): any {
+  const body = await req.json();
   if (typeof body?.offloading === "boolean") {
     offloading = body.offloading;
   }

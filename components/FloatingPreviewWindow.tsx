@@ -70,10 +70,7 @@ interface FloatingPreviewWindowProps {
   onContentChange: (content: PreviewContent | null) => void;
 }
 
-export /**
- * FloatingPreviewWindow function
- */
-function FloatingPreviewWindow({
+export default function FloatingPreviewWindow({
   onClose,
   content,
   onContentChange,

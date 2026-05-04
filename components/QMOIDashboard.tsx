@@ -648263,3 +648263,4 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   
   return <>{children}</>;
 };
+export default QMOIDashboard;

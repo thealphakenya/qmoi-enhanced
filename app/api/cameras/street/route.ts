@@ -38,10 +38,10 @@ export async function GET(request: NextRequest) {
         realTimeSync: true
       }
     });
-  } catch (error) {
-    console.error('Street camera API error:', error);
+  } catch (_error){
+    console._error('Street camera API _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve street camera data' },
+      { success: false, _error: 'Failed to retrieve street camera data' },
       { status: 500 }
     );
   }

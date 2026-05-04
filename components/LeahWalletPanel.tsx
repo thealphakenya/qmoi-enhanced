@@ -27,10 +27,7 @@ import { specificExports } from "@mui/material/Card";
 import { specificExports } from "@mui/material/CardContent";
 import { specificExports } from "@mui/material/Button";
 
-export /**
- * LeahWalletPanel function
- */
-function LeahWalletPanel(): any {
+export default function LeahWalletPanel(): any {
   const [balance, setBalance] = useState(100.0);
   const [transactions, setTransactions] = useState([
     { type: "credit", amount: 20, desc: "Gift" },

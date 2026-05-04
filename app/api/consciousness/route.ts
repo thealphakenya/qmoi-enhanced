@@ -22,7 +22,7 @@ interface ConsciousnessLog {
   context: string;
   severity: 'low' | 'medium' | 'high' | 'critical';
 }
-let currentMetrics: ConsciousnessMetrics = {
+const currentMetrics: ConsciousnessMetrics = {
   awarenessLevel: 100,
   selfAwareness: 100,
   environmentalAwareness: 95,
@@ -110,10 +110,10 @@ export async function GET(request: NextRequest) {
       response.data.logs = consciousnessLogs.slice(-limit);
     }
     return NextResponse.json(response);
-  } catch (error) {
-    console.error('Consciousness API error:', error);
+  } catch (_error){
+    console._error('Consciousness API _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve consciousness data' },
+      { success: false, _error: 'Failed to retrieve consciousness data' },
       { status: 500 }
     );
   }
@@ -157,10 +157,10 @@ export async function POST(request: NextRequest) {
         message: 'Consciousness self-check completed successfully'
       }
     });
-  } catch (error) {
-    console.error('Consciousness check error:', error);
+  } catch (_error){
+    console._error('Consciousness check _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to perform consciousness check' },
+      { success: false, _error: 'Failed to perform consciousness check' },
       { status: 500 }
     );
   }

@@ -52,8 +52,8 @@ const UserSchema = z.object({
 const employees: unknown[] = [];
 const users: unknown[] = [];
 const employmentLogs: unknown[] = [];
-export async function GET(_request: NextRequest): any {
-  const { searchParams } = new URL(_request.url);
+export async function GET(req: NextRequest): any {
+  const { searchParams } = new URL(req.url);
   const type = searchParams.get("type"); // 'employees' or 'users'
   const status = searchParams.get("status");
   const role = searchParams.get("role");
@@ -79,7 +79,7 @@ export async function GET(_request: NextRequest): any {
         ? data.length
         : employees.length + users.length,
     });
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
@@ -89,9 +89,9 @@ export async function GET(_request: NextRequest): any {
     );
   }
 }
-export async function POST(_request: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
-    const body: any = await _request.json();
+    const body: any = await req.json();
     const { type, data } = body;
     if (type === "employee") {
       const validatedData = EmployeeSchema.parse(data);
@@ -142,7 +142,7 @@ export async function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
@@ -152,9 +152,9 @@ export async function POST(_request: NextRequest): any {
     );
   }
 }
-export async function PUT(_request: NextRequest): any {
+export async function PUT(req: NextRequest): any {
   try {
-    const body: any = await _request.json();
+    const body: any = await req.json();
     const { id, type, updates } = body;
     if (type === "employee") {
       const index = employees.findIndex((emp: any) => emp.id === id);
@@ -215,7 +215,7 @@ export async function PUT(_request: NextRequest): any {
         { status: 400 },
       );
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
@@ -225,9 +225,9 @@ export async function PUT(_request: NextRequest): any {
     );
   }
 }
-export async function DELETE(_request: NextRequest): any {
+export async function DELETE(req: NextRequest): any {
   try {
-    const { searchParams } = new URL(_request.url);
+    const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     const type = searchParams.get("type");
     if (!id || !type) {
@@ -298,7 +298,7 @@ export async function DELETE(_request: NextRequest): any {
         { status: 400 },
       );
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,

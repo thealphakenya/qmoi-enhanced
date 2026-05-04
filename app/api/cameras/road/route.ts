@@ -38,10 +38,10 @@ export async function GET(request: NextRequest) {
         trafficAnalysis: true
       }
     });
-  } catch (error) {
-    console.error('Road camera API error:', error);
+  } catch (_error){
+    console._error('Road camera API _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve road camera data' },
+      { success: false, _error: 'Failed to retrieve road camera data' },
       { status: 500 }
     );
   }

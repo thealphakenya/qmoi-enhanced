@@ -43,7 +43,6 @@ function identifyUser(
 
 function generateDynamicIntroduction(
   profile: QMOIUserProfile,
-  context: Record<string, unknown>,
 ) {
   const hasFullAccess = profile.accessLevel >= 100;
   return {
@@ -109,7 +108,7 @@ export async function POST(request: NextRequest) {
   const isGreeting = /\b(who are you|what are you|identify yourself|what can you do|who is)\b/i.test(message);
 
   if (isGreeting) {
-    const introduction = generateDynamicIntroduction(profile, context);
+    const introduction = generateDynamicIntroduction(profile);
     return NextResponse.json({
       success: true,
       userIdentified: profile.role !== "guest",

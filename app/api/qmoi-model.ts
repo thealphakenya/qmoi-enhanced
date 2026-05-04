@@ -414,9 +414,9 @@ export async function exampleUsage() {
     // Get metrics
     const metrics = await qmoi.getMetrics();
     logger.info(`Accuracy: ${metrics.accuracy * 100}%`);
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
+  } catch (_error){
+    console._error("production _error:", _error);
+    throw _error;
   }
 }
 

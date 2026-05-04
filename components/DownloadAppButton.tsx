@@ -30,10 +30,7 @@ function getDeviceType(): any {
   return "unknown";
 }
 
-export /**
- * DownloadAppButton function
- */
-function DownloadAppButton(): any {
+export default function DownloadAppButton(): any {
   const [show, setShow] = useState(() => !localStorage.getItem("appInstalled"));
   const [downloading, setDownloading] = useState(false);
   const [confirm, setConfirm] = useState(false);

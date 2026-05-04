@@ -106,12 +106,12 @@ async function createPlatformAccount(platform: string, accountData: unknown): an
       accountId: account.id,
     });
     return { success: true, account };
-  } catch (error) {
-    logger.error(`Failed to create ${platform} account`, {
-      error: _error instanceof Error ? error.message : String(error),
+  } catch (_error){
+    logger._error(`Failed to create ${platform} account`, {
+      _error: _error instanceof Error ? _error.message : String(_error),
       platform,
     });
-    return { success: false, error: `${platform} account creation failed` };
+    return { success: false, _error: `${platform} account creation failed` };
   }
 }
 // Revenue generation functions
@@ -135,9 +135,9 @@ async function generateMicrotaskRevenue(
       revenue: qmoiProfit,
       dataType: "microtask",
     };
-  } catch (error) {
-    logger.error("Microtask revenue generation failed", { error: error });
-    return { success: false, error: "Microtask revenue failed" };
+  } catch (_error){
+    logger._error("Microtask revenue generation failed", { _error: _error });
+    return { success: false, _error: "Microtask revenue failed" };
   }
 }
 async function generateAffiliateRevenue(
@@ -163,9 +163,9 @@ async function generateAffiliateRevenue(
       revenue: qmoiShare,
       dataType: "affiliate",
     };
-  } catch (error) {
-    logger.error("Affiliate revenue generation failed", { error: error });
-    return { success: false, error: "Affiliate revenue failed" };
+  } catch (_error){
+    logger._error("Affiliate revenue generation failed", { _error: _error });
+    return { success: false, _error: "Affiliate revenue failed" };
   }
 }
 async function generateContentRevenue(
@@ -187,9 +187,9 @@ async function generateContentRevenue(
       revenue: qmoiProfit,
       dataType: "content",
     };
-  } catch (error) {
-    logger.error("Content revenue generation failed", { error: error });
-    return { success: false, error: "Content revenue failed" };
+  } catch (_error){
+    logger._error("Content revenue generation failed", { _error: _error });
+    return { success: false, _error: "Content revenue failed" };
   }
 }
 async function generateReferralRevenue(
@@ -213,72 +213,9 @@ async function generateReferralRevenue(
       revenue: qmoiBonus,
       dataType: "referral_bonus"
     };
-  } catch (error) {
-    logger.error("Referral revenue generation failed", { error: error });
-    return { success: false, error: "Referral revenue failed" };
-  }
-}
-// M-Pesa integration
-// 1. M-Pesa SDK (daraja)
-// 2. Proper error handling and retry logic
-// 3. Webhook handlers for payment confirmations
-// 4. Database persistence of transactions
-async function addToMpesaAccount(amount: number, description: string): any {
-  try {
-    const credentials = getMpesaCredentials();
-    // Check if credentials are configured
-    if (!credentials.configured) {
-      logger.warn(
-        "M-Pesa not configured",
-        {
-        },
-      );
-      return {
-        success: false,
-        error:
-          "M-Pesa integration not configured - returning test error for $" +
-          amount,
-        testMode: true,
-      };
-    }
-    const mpesaUrl = `https://api.safaricom.co.ke/mpesa/c2b/v1/live`;
-    const response = await apiClient.get(mpesaUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${credentials.consumerKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ShortCode: credentials.shortcode,
-        CommandID: "CustomerPayBillOnline",
-        Amount: amount,
-        Msisdn: "254700000000", // Test M-Pesa number
-        BillReferenceNumber: description,
-      }),
-    });
-    const result = await response.json();
-    // Log the transaction
-    revenueLogs.push({
-      id: Date.now(),
-      action: "mpesa_deposit",
-      amount,
-      description,
-      status: response.ok ? "success" : "failed",
-      timestamp: Date.now(),
-      reference: result.CheckoutRequestID || `QMOI_${Date.now()}`,
-    });
-    if (!response.ok) {
-      return {
-        success: false,
-        error: `M-Pesa API call failed: ${response.statusText}`,
-      };
-    }
-    return { success: true, reference: result.CheckoutRequestID };
-  } catch (error) {
-    logger.error("M-Pesa deposit failed", {
-      error: error instanceof Error ? error.message : String(error),
-    });
-    return { success: false, error: "M-Pesa deposit failed" };
+  } catch (_error){
+    logger._error("Referral revenue generation failed", { _error: _error });
+    return { success: false, _error: "Referral revenue failed" };
   }
 }
 // Additional revenue streams
@@ -302,8 +239,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }): any {
       revenue: qmoiProfit,
       dataType: "survey",
     };
-  } catch (error) {
-    return { success: false, error: "Survey revenue failed" };
+  } catch (_error){
+    return { success: false, _error: "Survey revenue failed" };
   }
 }
 async function generateDataLabelingRevenue(labelingData: { project?: string }): any {
@@ -326,8 +263,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }): 
       revenue: qmoiProfit,
       dataType: "data-labeling",
     };
-  } catch (error) {
-    return { success: false, error: "Data labeling revenue failed" };
+  } catch (_error){
+    return { success: false, _error: "Data labeling revenue failed" };
   }
 }
 async function generateSaaSResellingRevenue(saasData: { service?: string }): any {
@@ -351,12 +288,12 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }): any
       revenue: qmoiProfit,
       dataType: "saas",
     };
-  } catch (error) {
-    return { success: false, error: "SaaS reselling revenue failed" };
+  } catch (_error){
+    return { success: false, _error: "SaaS reselling revenue failed" };
   }
 }
-export async function GET(_request: NextRequest): any {
-  const { searchParams } = new URL(_request.url);
+export async function GET(req: NextRequest): any {
+  const { searchParams } = new URL(req.url);
   const type = searchParams.get("type"); // 'microtasks', 'affiliate', 'content', 'referral', 'platforms', 'revenue'
   const status = searchParams.get("status");
   try {
@@ -411,7 +348,7 @@ export async function GET(_request: NextRequest): any {
           },
         });
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
@@ -421,9 +358,9 @@ export async function GET(_request: NextRequest): any {
     );
   }
 }
-export async function POST(_request: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
-    const body = await _request.json();
+    const body = await req.json();
     const { action, data } = body;
     switch (action) {
       case "create_microtask":
@@ -583,19 +520,19 @@ export async function POST(_request: NextRequest): any {
           { status: 400 },
         );
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to process revenue action",
+        _error: "Failed to process revenue action",
       },
       { status: 500 },
     );
   }
 }
-export async function PUT(_request: NextRequest): any {
+export async function PUT(req: NextRequest): any {
   try {
-    const body = await _request.json();
+    const body = await req.json();
     const { id, type, updates } = body;
     let item;
     switch (type) {
@@ -646,7 +583,7 @@ export async function PUT(_request: NextRequest): any {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,

@@ -20,16 +20,16 @@ interface DiagnosticResponse {
   status: string;
   problems: DiagnosticProblem[];
 }
-export async function GET(_request: NextRequest): any {
-  const apiAuth = requireApiKey(_request.headers);
-  const adminToken = _request.headers.get("x-admin-token");
+export async function GET(req: NextRequest): any {
+  const apiAuth = requireApiKey(req.headers);
+  const adminToken = req.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
     return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
-  const searchParams = _request.nextUrl.searchParams;
+  const searchParams = req.nextUrl.searchParams;
   if (searchParams.get("problems")) {
     const problems: DiagnosticProblem[] = [];
     try {
@@ -80,16 +80,16 @@ export async function GET(_request: NextRequest): any {
   }
   return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
 }
-export async function POST(_request: NextRequest): any {
-  const apiAuth = requireApiKey(_request.headers);
-  const adminToken = _request.headers.get("x-admin-token");
+export async function POST(req: NextRequest): any {
+  const apiAuth = requireApiKey(req.headers);
+  const adminToken = req.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
     return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
-  const searchParams = _request.nextUrl.searchParams;
+  const searchParams = req.nextUrl.searchParams;
   if (searchParams.get("fix")) {
     const results: unknown[] = [];
     try {

@@ -38,10 +38,10 @@ export async function GET(request: NextRequest) {
         crowdAnalysis: true
       }
     });
-  } catch (error) {
-    console.error('Panoramic camera API error:', error);
+  } catch (_error){
+    console._error('Panoramic camera API _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve panoramic camera data' },
+      { success: false, _error: 'Failed to retrieve panoramic camera data' },
       { status: 500 }
     );
   }

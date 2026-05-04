@@ -60,12 +60,12 @@ export async function POST(request: NextRequest) {
         },
       ],
     });
-  } catch (error) {
-    console.error("QMOI chat error:", error);
+  } catch (_error){
+    console._error("QMOI chat _error:", _error);
     return NextResponse.json(
       {
-        error: "Internal server error",
-        message: error instanceof Error ? error.message : "Unknown error",
+        _error: "Internal server _error",
+        message: _error instanceof Error ? _error.message : "Unknown _error",
       },
       { status: 500 },
     );

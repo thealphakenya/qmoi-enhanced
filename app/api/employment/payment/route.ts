@@ -54,10 +54,10 @@ async function backupCredentialsSafe(credentials: any, platform: string): any {
     };
     logger.info(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
-  } catch (error) {
-    logger.error(
+  } catch (_error){
+    logger._error(
       "Failed to create safe backup for credentials:",
-      error,
+      _error,
     );
   }
 }
@@ -91,8 +91,8 @@ async function processMpesaPayment(paymentData: unknown): any {
         "mpesa_initiation_failed",
       details: res,
     };
-  } catch (error) {
-    logger.error("M-Pesa payment failed:", error);
+  } catch (_error){
+    logger._error("M-Pesa payment failed:", _error);
     return { success: false, _error: "M-Pesa payment failed" };
   }
 }
@@ -131,8 +131,8 @@ async function processAirtelPayment(paymentData: unknown): any {
       reference: result.data.transaction.id,
       provider: "airtel",
     };
-  } catch (error) {
-    logger.error("Airtel payment failed:", error);
+  } catch (_error){
+    logger._error("Airtel payment failed:", _error);
     return { success: false, _error: "Airtel payment failed" };
   }
 }
@@ -166,13 +166,13 @@ async function processPesapalPayment(paymentData: unknown): any {
     );
     const result = await _response.text();
     return { success: true, reference: result, provider: "pesapal" };
-  } catch (error) {
-    logger.error("Pesapal payment failed:", error);
+  } catch (_error){
+    logger._error("Pesapal payment failed:", _error);
     return { success: false, _error: "Pesapal payment failed" };
   }
 }
-export async function GET(_request: NextRequest): any {
-  const { searchParams } = new URL(_request.url);
+export async function GET(req: NextRequest): any {
+  const { searchParams } = new URL(req.url);
   const type = searchParams.get("type"); // 'payments', 'logs', 'credentials'
   const status = searchParams.get("status");
   const recipientId = searchParams.get("recipientId");
@@ -200,7 +200,7 @@ export async function GET(_request: NextRequest): any {
         data: { payments, logs: paymentLogs },
       });
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
@@ -210,9 +210,9 @@ export async function GET(_request: NextRequest): any {
     );
   }
 }
-export async function POST(_request: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
-    const body = await _request.json();
+    const body = await req.json();
     const { action, data } = body;
     if (action === "process_payment") {
       const validatedData = PaymentSchema.parse(data);
@@ -304,7 +304,7 @@ export async function POST(_request: NextRequest): any {
         { status: 400 },
       );
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
@@ -314,9 +314,9 @@ export async function POST(_request: NextRequest): any {
     );
   }
 }
-export async function PUT(_request: NextRequest): any {
+export async function PUT(req: NextRequest): any {
   try {
-    const body = await _request.json();
+    const body = await req.json();
     const { id, updates } = body;
     const index = payments.findIndex((p) => p.id === id);
     if (index === -1) {
@@ -342,7 +342,7 @@ export async function PUT(_request: NextRequest): any {
       data: payments[index],
       message: "Payment updated successfully",
     });
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,

@@ -4,7 +4,7 @@ const avatars = [
   { id: "avatar-default", name: "Default Avatar", category: "default" },
 ];
 
-export async function GET(_request: NextRequest) {
+export async function GET(req: NextRequest) {
   return NextResponse.json({
     success: true,
     avatars,
@@ -15,9 +15,9 @@ export async function GET(_request: NextRequest) {
   });
 }
 
-export async function POST(_request: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
-    const body = await _request.json();
+    const body = await req.json();
     const { action, avatarId } = body;
 
     if (!action) {
@@ -52,11 +52,11 @@ export async function POST(_request: NextRequest) {
           { status: 400 },
         );
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error",
+        _error: _error instanceof Error ? _error.message : "Unknown _error",
       },
       { status: 500 },
     );

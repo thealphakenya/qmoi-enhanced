@@ -83,11 +83,11 @@ export async function GET(request: NextRequest): any {
           { status: 400 },
         );
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to process link domain request",
+        _error: "Failed to process link domain request",
       },
       { status: 500 },
     );
@@ -168,11 +168,11 @@ export async function POST(request: NextRequest): any {
           { status: 400 },
         );
     }
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: "Failed to process link domain request",
+        _error: "Failed to process link domain request",
       },
       { status: 500 },
     );

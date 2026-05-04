@@ -38,10 +38,10 @@ export async function GET(request: NextRequest) {
         heatDetection: true
       }
     });
-  } catch (error) {
-    console.error('Thermal camera API error:', error);
+  } catch (_error){
+    console._error('Thermal camera API _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve thermal camera data' },
+      { success: false, _error: 'Failed to retrieve thermal camera data' },
       { status: 500 }
     );
   }

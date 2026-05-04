@@ -16,11 +16,11 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       );
     });
     return NextResponse.json({ success: true, result });
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        _error: error instanceof Error ? error.message : String(error),
+        _error: _error instanceof Error ? _error.message : String(_error),
       },
       { status: 500 },
     );

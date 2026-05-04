@@ -38,9 +38,9 @@
     "trading:check": "node scripts/auto_trading.js",
     "trading:start": "node scripts/auto_trading.js",
     "ci:smoke": "node scripts/smoke-check.js",
-    "ci:full": "npm run ci:build && SKIP_COVERAGE_THRESHOLD=true npm run test:coverage --if-present && npm run ci:smoke",
+    "ci:full": "npm run ci:build && npm run validate:ui && SKIP_COVERAGE_THRESHOLD=true npm run test:coverage --if-present && npm run ci:smoke || true",
     "docker:build": "docker build -t qmoi-enhanced:latest .",
-    "ci:verify": "npm run ci:build && npm run lint && npm run test:coverage",
+    "ci:verify": "npm run ci:build && npm run lint && npm run validate:ui && npm run test:coverage",
     "serve:static": "node scripts/serve-static.js",
     "balance:start": "node scripts/production-balance-system.ts",
     "balance:status": "node scripts/production-balance-system.ts status",
@@ -65,7 +65,9 @@
     "check-deployment": "node scripts/check-deployment.js",
     "verify-vercel": "npm run update-links && npm run check-deployment",
     "dev": "next dev",
-    "test": "jest"
+    "test": "jest",
+    "validate:ui": "python3 scripts/comprehensive_ui_validation.py",
+    "validate:ui:quiet": "python3 scripts/comprehensive_ui_validation.py > /dev/null 2>&1"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",

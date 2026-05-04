@@ -4,7 +4,6 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { NextRequest, NextResponse } from 'next/server';
 import { authService } from '@/lib/auth/service';
-import { Database } from '@/lib/db';
 import { getLogger } from '@/lib/logger';
 import { prisma } from '@/lib/prisma';
 import { requireApiKey } from '@/lib/proposals';
@@ -15,14 +14,14 @@ const inMemoryAuditLogs: any[] = [];
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-export async function GET(_request: NextRequest): any {
+export async function GET(req: NextRequest): any {
   try {
-    const apiCheck = requireApiKey(_request.headers);
+    const apiCheck = requireApiKey(req.headers);
     if (!apiCheck.ok) {
       return NextResponse.json(apiCheck.response?.body || { error: 'Unauthorized' }, { status: apiCheck.response?.status || 401 });
     }
 
-    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = req.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {
       return NextResponse.json(
         {
@@ -34,7 +33,7 @@ export async function GET(_request: NextRequest): any {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error){
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
@@ -59,7 +58,7 @@ export async function GET(_request: NextRequest): any {
         { status: 403 },
       );
     }
-    const { searchParams } = new URL(_request.url);
+    const { searchParams } = new URL(req.url);
     const action = searchParams.get("action");
     const userId = searchParams.get("userId");
     const resource = searchParams.get("resource");
@@ -116,10 +115,10 @@ export async function GET(_request: NextRequest): any {
       },
       { status: 200 },
     );
-  } catch (error) {
-    logger.error("Audit logs error", { error });
+  } catch (_error){
+    logger._error("Audit logs _error", { _error });
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -154,14 +153,14 @@ export async function createAuditLog({
         timestamp: new Date(),
       },
     });
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Error creating audit log:", error);
+  } catch (_error){
+    (globalThis.console as any)?._error?.("Error creating audit log:", _error);
     // Don't throw - audit logging should not break main flow
   }
 }
-export async function POST(_request: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
-    const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
+    const token = req.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {
       return NextResponse.json(
         {
@@ -173,7 +172,7 @@ export async function POST(_request: NextRequest): any {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (error) {
+    } catch (_error){
       return NextResponse.json(
         { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
@@ -194,8 +193,8 @@ export async function POST(_request: NextRequest): any {
     let user;
     try {
       user = await db.userService.findById(String(decoded.userId));
-    } catch (error) {
-      console.error(error);
+    } catch (_error){
+      console._error(_error);
       user = { role: "admin" }; // Assume admin in test mode
     }
     if (!user || user.role !== "admin") {
@@ -204,7 +203,7 @@ export async function POST(_request: NextRequest): any {
         { status: 403 },
       );
     }
-    const body = (await _request.json()) as Record<string, unknown>;
+    const body = (await req.json()) as Record<string, unknown>;
     const format = (body.format as string) || "json";
     const filters = body.filters as
       | Record<string, unknown>
@@ -227,8 +226,8 @@ export async function POST(_request: NextRequest): any {
         orderBy: { timestamp: "desc" },
         take: 10000,
       });
-    } catch (error) {
-      logger.error('Database error:', error);
+    } catch (_error){
+      logger._error('Database _error:', _error);
       logs = inMemoryAuditLogs.slice(0, 10000);
     }
     let content: string;
@@ -258,10 +257,10 @@ export async function POST(_request: NextRequest): any {
         "Content-Disposition": `attachment; filename="${filename}"`,
       },
     });
-  } catch (error) {
-    (globalThis.console as any)?.error?.("Audit log export _error:", error);
+  } catch (_error){
+    (globalThis.console as any)?._error?.("Audit log export _error:", _error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { _error: { message: "Internal server _error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }

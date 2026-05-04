@@ -1,53 +1,32 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:39.275841 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.810503 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:07.116712 -->
 {
-  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "QMOI Space - Decentralized Marketplace",
+  "name": "QMOI Space - Collaborative Intelligence",
   "short_name": "QMOI Space",
-  "description": "Decentralized marketplace and community platform with integrated payment systems and peer-to-peer commerce",
+  "description": "Collaborative space for quantum intelligence and team orchestration",
   "start_url": "/pwa_apps/qmoi-space/",
   "scope": "/pwa_apps/qmoi-space/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#1a0033",
-  "theme_color": "#9C27B0",
+  "background_color": "#0b1220",
+  "theme_color": "#0b5fff",
   "dir": "ltr",
   "lang": "en-US",
-  "categories": ["shopping", "business", "social"],
+  "categories": [
+    "productivity",
+    "business",
+    "utilities"
+  ],
   "icons": [
     {
-      "src": "/pwa_apps/qmoi-space/icon-48.png",
-      "sizes": "48x48",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/pwa_apps/qmoi-space/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/pwa_apps/qmoi-space/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }
-  ],
-  "shortcuts": [
-    {
-      "name": "Marketplace",
-      "short_name": "Marketplace",
-      "description": "Browse QMOI Space marketplace",
-      "url": "/pwa_apps/qmoi-space/?page=marketplace"
-    },
-    {
-      "name": "My Sales",
-      "short_name": "Sales",
-      "description": "View your sales and transactions",
-      "url": "/pwa_apps/qmoi-space/?page=sales"
-    }
-  ],
-  "prefer_related_applications": false
+  ]
 }

@@ -127,10 +127,10 @@ export async function GET(request: NextRequest) {
         lastUpdated: new Date().toISOString()
       }
     });
-  } catch (error) {
-    console.error('Device API error:', error);
+  } catch (_error){
+    console._error('Device API _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve devices' },
+      { success: false, _error: 'Failed to retrieve devices' },
       { status: 500 }
     );
   }
@@ -167,10 +167,10 @@ export async function POST(request: NextRequest) {
       success: true,
       data: response
     });
-  } catch (error) {
-    console.error('Device control error:', error);
+  } catch (_error){
+    console._error('Device control _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to control device' },
+      { success: false, _error: 'Failed to control device' },
       { status: 500 }
     );
   }

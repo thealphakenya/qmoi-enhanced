@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const timestamp = new Date().toISOString();
 
-    const healthResponse: Record<string, any> = {
+    const healthResponse: Record<string, unknown> = {
       status: 'healthy',
       timestamp,
       version: '2.0.0',

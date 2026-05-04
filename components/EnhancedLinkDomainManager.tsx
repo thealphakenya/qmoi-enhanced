@@ -73,7 +73,7 @@ interface Track {
 export /**
  * EnhancedLinkDomainManager function
  */
-function EnhancedLinkDomainManager(): any {
+export default function EnhancedLinkDomainManager(): any {
   const [stats, setStats] = useState<ValidationStats | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [lastScan, setLastScan] = useState<Date | null>(null);

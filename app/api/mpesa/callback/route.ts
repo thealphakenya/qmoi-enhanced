@@ -41,8 +41,8 @@ async function updateMpesaTransaction(details: any): any {
       });
     }
     return true;
-  } catch (error) {
-    logger.error("Failed to update M-Pesa transaction:", error);
+  } catch (_error){
+    logger._error("Failed to update M-Pesa transaction:", _error);
     return false;
   }
 }
@@ -65,29 +65,29 @@ async function triggerPostPaymentActions(details: any): any {
       transactionDate: String(transactionDate || ""),
       userEmail,
     });
-  } catch (error) {
-    logger.error(
+  } catch (_error){
+    logger._error(
       "Failed to send payment success notifications:",
-      error,
+      _error,
     );
   }
   return true;
 }
-export async function POST(_req: NextRequest): any {
+export async function POST(req: NextRequest): any {
   try {
-    const apiCheck = requireApiKey(_req.headers);
+    const apiCheck = requireApiKey(req.headers);
     if (!apiCheck.ok) {
       return NextResponse.json(apiCheck.response?.body || { error: 'Unauthorized' }, { status: apiCheck.response?.status || 401 });
     }
 
     // Read raw body for optional signature verification
-    const raw = await _req.text();
+    const raw = await req.text();
     // Try common signature headers
     const signatureHeader =
-      _req.headers.get("x-signature") ||
-      _req.headers.get("x-payments-signature") ||
-      _req.headers.get("x-hub-signature") ||
-      _req.headers.get("x-qmoi-signature") ||
+      req.headers.get("x-signature") ||
+      req.headers.get("x-payments-signature") ||
+      req.headers.get("x-hub-signature") ||
+      req.headers.get("x-qmoi-signature") ||
       undefined;
     // If a webhook secret is configured, enforce verification
     const secretConfigured = Boolean(
@@ -103,7 +103,7 @@ export async function POST(_req: NextRequest): any {
         );
       }
     }
-    const body: any = raw ? JSON.parse(raw) : await _req.json();
+    const body: any = raw ? JSON.parse(raw) : await req.json();
     logger.info("M-Pesa Callback received:", body);
     // Extract transaction details safely
     const CheckoutRequestID = body?.Body?.stkCallback?.CheckoutRequestID;
@@ -161,22 +161,22 @@ export async function POST(_req: NextRequest): any {
         resultCode: ResultCode || "unknown",
         resultDesc: ResultDesc,
       });
-    } catch (error) {
-      logger.error(
+    } catch (_error){
+      logger._error(
         "Failed to send payment failure notifications:",
-        error,
+        _error,
       );
     }
     return NextResponse.json({
       success: false,
       message: ResultDesc || "payment_failed",
     });
-  } catch (error) {
-    (globalThis.console as any)?.error?.(
+  } catch (_error){
+    (globalThis.console as any)?._error?.(
       "M-Pesa callback processing failed:",
-      error,
+      _error,
     );
-    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorMessage = _error instanceof Error ? _error.message : String(_error);
     logEvent("mpesa_callback_error", { _error: errorMessage });
     return NextResponse.json(
       { success: false, message: "Callback processing failed" },

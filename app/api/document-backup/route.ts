@@ -40,6 +40,7 @@ async function writeIndex(index: { docs: DocumentRecord[] }): Promise<void> {
 function requireApiKey(request: NextRequest): boolean {
   const key = process.env.DOCUMENT_BACKUP_API_KEY;
   if (!key) {
+    return false; // API key not configured
   }
   const provided = request.headers.get("x-api-key");
   return provided === key;
@@ -112,9 +113,9 @@ export async function POST(request: NextRequest): any {
       { error: "Unknown action. Use: upload, restore, search, list" },
       { status: 400 },
     );
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
-      { error: "Failed to process request", message: String(error) },
+      { _error: "Failed to process request", message: String(_error) },
       { status: 500 },
     );
   }

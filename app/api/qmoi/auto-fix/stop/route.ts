@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-export async function POST(_request: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
-    const body = await _request.json();
+    const body = await req.json();
     const { jobId } = body;
 
     if (!jobId) {
@@ -21,11 +21,11 @@ export async function POST(_request: NextRequest) {
       jobId,
       message: "Auto-fix stop requested successfully",
     });
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : "Unable to process request",
+        _error: _error instanceof Error ? _error.message : "Unable to process request",
       },
       { status: 500 },
     );

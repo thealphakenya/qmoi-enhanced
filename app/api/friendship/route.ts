@@ -60,10 +60,10 @@ export async function GET(request: NextRequest) {
         }
       }
     });
-  } catch (error) {
-    console.error('Friendship API error:', error);
+  } catch (_error){
+    console._error('Friendship API _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to retrieve conversation context' },
+      { success: false, _error: 'Failed to retrieve conversation context' },
       { status: 500 }
     );
   }
@@ -138,10 +138,10 @@ export async function POST(request: NextRequest) {
         emotionalState: context.emotionalState
       }
     });
-  } catch (error) {
-    console.error('Friendship chat error:', error);
+  } catch (_error){
+    console._error('Friendship chat _error:', _error);
     return NextResponse.json(
-      { success: false, error: 'Failed to process chat message' },
+      { success: false, _error: 'Failed to process chat message' },
       { status: 500 }
     );
   }

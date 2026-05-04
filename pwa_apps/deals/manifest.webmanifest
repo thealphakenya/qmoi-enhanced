@@ -1,24 +1,32 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:39.254774 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:10.801442 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:07.109634 -->
 {
-  "name": "QMOI Deals",
-  "short_name": "deals",
-  "start_url": "/",
-  "scope": "/",
+  "name": "QMOI Deals - Trading Intelligence",
+  "short_name": "Deals",
+  "description": "Advanced deal management and trading intelligence platform",
+  "start_url": "/pwa_apps/deals/",
+  "scope": "/pwa_apps/deals/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1e90ff",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1220",
+  "theme_color": "#0b5fff",
+  "dir": "ltr",
+  "lang": "en-US",
+  "categories": [
+    "productivity",
+    "business",
+    "utilities"
+  ],
   "icons": [
     {
-      "src": "./icons/icon-192x192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "./icons/icon-512x512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

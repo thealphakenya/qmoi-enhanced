@@ -175,11 +175,11 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(defaultStatus);
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error",
+        _error: _error instanceof Error ? _error.message : "Unknown _error",
       },
       { status: 500 },
     );
@@ -275,11 +275,11 @@ export async function POST(request: NextRequest) {
       },
       { status: 400 },
     );
-  } catch (error) {
+  } catch (_error){
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error",
+        _error: _error instanceof Error ? _error.message : "Unknown _error",
       },
       { status: 500 },
     );

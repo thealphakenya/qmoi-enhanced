@@ -11,7 +11,7 @@ interface WalletData {
 }
 
 export function WalletList() {
-  const [wallets, setWallets] = React.useState<WalletData[]>([]);
+  const [wallets] = React.useState<WalletData[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {

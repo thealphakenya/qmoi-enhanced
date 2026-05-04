@@ -1,23 +1,7 @@
+"use client";
+
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Master-only access control
-const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
-  const [isMaster, setIsMaster] = React.useState(false);
-  
-  React.useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) {
-      const userData = JSON.parse(user);
-      setIsMaster(userData.role === "master");
-    }
-  }, []);
-  
-  if (!isMaster) {
-    return <div className="p-4 text-red-600">Access denied: Master users only</div>;
-  }
-  
-  return <>{children}</>;
-};
-
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
@@ -27,8 +11,6 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
  * QMOI Master Dashboard - Background Automation Control
  * Master-Only Access UI for Automation Control, Financial Overview, and Status Monitoring
  */
-
-"use client";
 
 import {
   AlertCircle,
@@ -58,6 +40,18 @@ const PWA_PLATFORMS = [
   { id: "yap", name: "Yap", url: "https://yap.qmoi.ai", logo: "💬" },
   { id: "qvillage", name: "QVillage", url: "https://qvillage.qmoi.ai", logo: "🏘️" },
 ];
+
+type BeforeInstallPromptEvent = Event & {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: string; platform?: string }>;
+};
+
+type GlobalData = {
+  autoProjectCount?: number;
+  financial?: { totalRevenue?: number };
+  global?: { autoProjectCount?: number };
+  [key: string]: unknown;
+};
 
 interface AutomationStatus {
   running: boolean;
@@ -108,13 +102,10 @@ interface MasterDashboardProps {
   onUnauthorized?: () => void;
 }
 
-export /**
- * QMOIMasterDashboard function
- */
-function QMOIMasterDashboard({
+export function QMOIMasterDashboard({
   masterToken,
   onUnauthorized,
-}: MasterDashboardProps): any {
+}: MasterDashboardProps): JSX.Element {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState(masterToken || "");
   const [automationStatus, setAutomationStatus] =
@@ -123,10 +114,10 @@ function QMOIMasterDashboard({
     null,
   );
   const [linksData, setLinksData] = useState<LinksData | null>(null);
-  const [globalData, setGlobalData] = useState<any | null>(null);
+  const [globalData, setGlobalData] = useState<GlobalData | null>(null);
   const [domainData, setDomainData] = useState<DomainData | null>(null);
   const [pwaInstallStatus, setPwaInstallStatus] = useState<Record<string, boolean>>({});
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [cameraEnabled, setCameraEnabled] = useState(false);
@@ -138,17 +129,17 @@ function QMOIMasterDashboard({
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const handleBeforeInstallPrompt = (event: Event) => {
+    const handleBeforeInstallPrompt = (event: BeforeInstallPromptEvent) => {
       event.preventDefault();
       setDeferredPrompt(event);
     };
 
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt as any);
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt as EventListener);
 
     const checkStandalone = () => {
       const isInstalled =
         window.matchMedia("(display-mode: standalone)").matches ||
-        (window.navigator as any).standalone === true;
+        ('standalone' in window.navigator && (window.navigator as { standalone?: boolean }).standalone === true);
       if (isInstalled) {
         for (const p of PWA_PLATFORMS) {
           localStorage.setItem(`pwa_installed_${p.id}`, "true");
@@ -160,7 +151,7 @@ function QMOIMasterDashboard({
     checkStandalone();
 
     return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt as any);
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt as EventListener);
     };
   }, []);
 
@@ -172,21 +163,6 @@ function QMOIMasterDashboard({
   const isInstalled = (platformId: string) => {
     if (pwaInstallStatus[platformId]) return true;
     return localStorage.getItem(`pwa_installed_${platformId}`) === "true";
-  };
-
-  const handleInstall = async (platform) => {
-    if (isInstalled(platform.id)) return;
-
-    if (deferredPrompt) {
-      await .prompt();
-      const choiceResult = await .userChoice;
-      if (choiceResult.outcome === "accepted") {
-        markInstalled(platform.id);
-      }
-    } else {
-      window.open(platform.url, "_blank");
-      markInstalled(platform.id);
-    }
   };
 
   // Verify master authentication
@@ -364,7 +340,7 @@ function QMOIMasterDashboard({
 
   const stopCamera = () => {
     if (cameraStream) {
-      cameraStream.getTracks().for (const item of(track => track.stop());
+      cameraStream.getTracks().forEach(track => track.stop());
       setCameraStream(null);
     }
     setCameraEnabled(false);
@@ -416,7 +392,7 @@ function QMOIMasterDashboard({
   useEffect(() => {
     return () => {
       if (cameraStream) {
-        cameraStream.getTracks().for (const item of(track => track.stop());
+        cameraStream.getTracks().forEach(track => track.stop());
       }
     };
   }, [cameraStream]);

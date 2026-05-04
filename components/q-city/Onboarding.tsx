@@ -17,3 +17,4 @@ return (
     )}
   </div>
 );
+export default Onboarding;

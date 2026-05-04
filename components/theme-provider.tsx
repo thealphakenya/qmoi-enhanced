@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-//  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
-import { specificExports } from "next-themes";
-import { specificExports } from "next-themes";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-export /**
- * ThemeProvider function
- */
-function ThemeProvider({ children, props }: ThemeProviderProps): any {
-  return <NextThemesProvider {props}>{children}</NextThemesProvider>;
+interface ThemeProviderProps {
+  children: React.ReactNode;
+  [key: string]: any;
+}
+
+export default function ThemeProvider({ children, ...props }: ThemeProviderProps): JSX.Element {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }

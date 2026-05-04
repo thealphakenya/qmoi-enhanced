@@ -46,11 +46,11 @@ export async function GET(request: NextRequest): any {
       },
       { status: 200 },
     );
-  } catch (error) {
-    logger.error("Earning enhanced API error:", error);
+  } catch (_error){
+    logger._error("Earning enhanced API _error:", _error);
     return NextResponse.json(
       {
-        _error: "Internal server error",
+        _error: "Internal server _error",
         _code: "INTERNAL_500",
       },
       { status: 500 },
