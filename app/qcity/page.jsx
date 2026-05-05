@@ -59,7 +59,7 @@ const getBadgeClass = (status) => {
 
 export default function QCityDashboardPage() {
   const { user, hasAccess, login } = useAuth();
-  const [showComponents, setShowComponents] = useState(false);
+  const [showComponents, setShowComponents] = useState(true);
   const roleSummary = useMemo(() => {
     if (user.role === "master") return "Full enterprise control, deployment, and monitoring access.";
     if (user.role === "sister") return "Personal insights, collaboration, and creative workspace access.";

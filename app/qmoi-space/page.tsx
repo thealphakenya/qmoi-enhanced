@@ -25,7 +25,7 @@ import WorkflowAutomationEngine from "../components/WorkflowAutomationEngine";
 import ContentManagementSystem from "../components/ContentManagementSystem";
 
 export default function QMoiSpacePage() {
-  const [showComponents, setShowComponents] = useState(false);
+  const [showComponents, setShowComponents] = useState(true);
   // Mock data for demonstration
   const stats = {
     supportedPlatforms: '12+',

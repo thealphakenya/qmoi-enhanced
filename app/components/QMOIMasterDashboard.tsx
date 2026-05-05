@@ -12,6 +12,7 @@
  * Master-Only Access UI for Automation Control, Financial Overview, and Status Monitoring
  */
 
+import React, { useEffect, useState } from "react";
 import {
   AlertCircle,
   BarChart3,

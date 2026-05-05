@@ -1,16 +1,14 @@
-export class PrismaClient {}
+import { PrismaClient } from '@prisma/client';
 
-export function getPrisma(): PrismaClient {
-  return new PrismaClient();
+declare global {
+  // eslint-disable-next-line no-var
+  var prisma: PrismaClient | undefined;
 }
 
-export const prisma = getPrisma();
+const client = global.prisma || new PrismaClient();
 
-export const db = {
-  user: {},
-  auditLog: {},
-  notification: {},
-  wallet: {},
-  transaction: {},
-  track: {},
-};
+if (process.env.NODE_ENV !== 'production') {
+  global.prisma = client;
+}
+
+export const prisma = client;

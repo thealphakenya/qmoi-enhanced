@@ -15,6 +15,8 @@ This document describes how to keep all requested applications running in produc
 ## 1) Serve static browser apps and PWAs from one host on port `8080`
 The repository contains browser entry points and PWA shells that can all be served from a single host.
 
+> Note: This static HTTP server only serves static asset files and the PWA shells in `public/` and `pwa_apps/`. It does not run the Next.js app routes under `/qmoi-ai`, `/qmoi-space`, or `/qcity`.
+
 Core served apps:
 - `qmoi-ai.html`
 - `qmoi-space.html`
@@ -26,6 +28,19 @@ Core served apps:
 - `pwa_apps/qmoi/index.html`
 
 These files are all served directly from repository root.
+
+### For the actual React app UI described in the documentation
+Start the Next.js application and use the app routes on port `3000`:
+```bash
+cd /workspaces/qmoi-enhanced
+npm run dev
+```
+Then visit:
+- `http://127.0.0.1:3000/qmoi-ai`
+- `http://127.0.0.1:3000/qmoi-space`
+- `http://127.0.0.1:3000/qcity`
+
+The `8080` static server is useful for PWA shells, but the full documented app UI requires the Next.js app server.
 
 ### Start the static server
 ```bash
@@ -50,6 +65,17 @@ ps -ef | grep "python3 -m http.server 8080" | grep -v grep
 - QCity Primary Dashboard: `http://127.0.0.1:8080/qcity-enterprise.html`
 - QCity Complete Dashboard: `http://127.0.0.1:8080/qcity-complete.html`
 - QCity Comprehensive Dashboard: `http://127.0.0.1:8080/qcity-dashboard.html`
+
+## UI Components Verification
+
+All apps include comprehensive UI components as documented in the respective UI documentation files. All mentioned components have been verified to exist in the codebase under `app/components/`:
+
+- **QMOI AI**: See [QMOIAIUI.md](QMOIAIUI.md) for 24+ components including AdminDashboard.tsx(qmoi ai), ChatMessaging.tsx(qmoi ai), QMOIAutoFixDashboard.tsx(qmoi ai), QMOIAutoSetup.tsx(qmoi ai), QMOIMasterDashboard.tsx(qmoi ai), SponsoredUsersManager.tsx(qmoi ai), ClientUISettings.tsx(qmoi ai), FileUploadDownload.tsx(qmoi ai), VisualEnhancement.tsx(qmoi ai), AudibleConversation.tsx(qmoi ai), UserProfile.tsx(qmoi ai), WalletPanel.tsx(qmoi ai), RegisterForm.tsx(qmoi ai), and shared components like QI.tsx, QIStateWindow.tsx, QiSpaces.tsx, LcSpaces.tsx, QVillage.tsx, QVillageDatasetsPanel.tsx, QCityErrorManager.tsx, QCityThemeProvider.tsx, NotificationCenter.tsx, HelpGuide.tsx, PreviewWindow.tsx, FloatingPreviewWindow.tsx, ThemeCustomizer.tsx, WalletList.tsx.
+- **QMOI Space**: See [QMOISPACEUI.md](QMOISPACEUI.md) for 14+ components including LcSpaces.tsx(qmoi space), QiSpaces.tsx(qmoi space), Marketplace.tsx(qmoi space), CollaborationHub.tsx(qmoi space), CommunicationHub.tsx(qmoi space), KnowledgeBase.tsx(qmoi space), InnovationLab.tsx(qmoi space), WorkflowAutomationEngine.tsx(qmoi space), ResourceManager.tsx(qmoi space), DeploymentManager.tsx(qmoi space), IntegrationManager.tsx(qmoi space), ContentManagementSystem.tsx(qmoi space), TrainingCenter.tsx(qmoi space), GlobalOperationsCenter.tsx(qmoi space), and shared components.
+- **QCity**: See [QCITYUI.md](QCITYUI.md) for 14+ components including QCityErrorManager.tsx(qcity), QCityThemeProvider.tsx(qcity), AnalyticsCenter.tsx(qcity), AnalyticsDashboard.tsx(qcity), ApiManagementConsole.tsx(qcity), AuditLogViewer.tsx(qcity), ComplianceManager.tsx(qcity), DataVisualizationPanel.tsx(qcity), MonitoringDashboard.tsx(qcity), PerformanceMonitor.tsx(qcity), SecurityMonitor.tsx(qcity), SettingsPanel.tsx(qcity), SupportTicketSystem.tsx(qcity), TestingAutomationSuite.tsx(qcity), and shared components.
+- **Shared Components**: See [COMPONENTS.md](COMPONENTS.md) and [UI.md](UI.md) for cross-app components and full directory structure.
+
+All components are tagged with their app associations and include API integration references as documented.
 
 ### Autovalidation of UI features and PWAs
 - The serve-all approach verifies that browser routes, app shell assets, and PWA content are all reachable from one host.

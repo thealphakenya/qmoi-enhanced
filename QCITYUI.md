@@ -70,6 +70,18 @@ Upon launching QCity, users see:
 - **Role-Based UI:** Master, Sister, and User dashboards with distinct access and control patterns across QCity and connected applications
 - **Quick Reference Coverage:** Mapped components from `COMPONENT_SERVING_QUICK_REFERENCE_INDEX.md` and related documentation
 
+## Actual QCity Page Features
+`app/qcity/page.jsx` currently renders the QCity command center with these real app sections:
+- Header section with title, current user name, role display, and role-specific summary text
+- Cross-app navigation buttons for QVillage and QMOI Space when access is granted
+- Metrics grid showing connected nodes, active services, open alerts, and incident response
+- Service operations panel with water, transit, energy, and safety status
+- Active incident reports panel with severity and report details
+- Device connectivity dashboard with online/offline status and action buttons for manage/sync
+- Security operations panel for threat detection, access logs, and security monitoring
+- Role-based user actions, master role switching, and permission-aware controls
+- Global component integration with AdminDashboard, ChatMessaging, QMOIAutoFixDashboard, FileUploadDownload, VisualEnhancement, AudibleConversation, ClientUISettings, QMOIMasterDashboard, SponsoredUsersManager, UserProfile, WalletList, RegisterForm, QVillage, QVillageDatasetsPanel, QCityErrorManager, QCityThemeProvider, DeploymentManager, TestingAutomationSuite, MonitoringDashboard, ComplianceManager
+
 ---
 
 ## Extended UI Module Inventory

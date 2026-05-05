@@ -26,66 +26,22 @@ export default function DeviceManagementDashboard() {
 
   const fetchDevices = async () => {
     try {
-      
-      const mockDevices: Device[] = [
-        {
-          id: 'dev_001',
-          name: 'iPhone 15 Pro',
-          type: 'mobile',
-          platform: 'iOS',
-          status: 'online',
-          lastSync: new Date().toISOString(),
-          location: 'Nairobi, Kenya',
-          battery: 85
-        },
-        {
-          id: 'dev_002',
-          name: 'MacBook Pro M3',
-          type: 'laptop',
-          platform: 'macOS',
-          status: 'online',
-          lastSync: new Date().toISOString(),
-          battery: 92
-        },
-        {
-          id: 'dev_003',
-          name: 'Smart TV LG',
-          type: 'smart-tv',
-          platform: 'webOS',
-          status: 'online',
-          lastSync: new Date().toISOString()
-        },
-        {
-          id: 'dev_004',
-          name: 'Apple Watch Ultra',
-          type: 'wearable',
-          platform: 'watchOS',
-          status: 'syncing',
-          lastSync: new Date().toISOString(),
-          battery: 78
-        },
-        {
-          id: 'dev_005',
-          name: 'HomePod Mini',
-          type: 'smart-speaker',
-          platform: 'iOS',
-          status: 'online',
-          lastSync: new Date().toISOString()
-        },
-        {
-          id: 'dev_006',
-          name: 'iPad Pro',
-          type: 'tablet',
-          platform: 'iPadOS',
-          status: 'offline',
-          lastSync: new Date(Date.now() - 3600000).toISOString(),
-          battery: 45
+      const response = await fetch('/api/devices', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
         }
-      ];
+      });
 
-      setDevices(mockDevices);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch devices: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      setDevices(data.devices || []);
     } catch (error) {
       console.error('Failed to fetch devices:', error);
+      setDevices([]);
     } finally {
       setLoading(false);
     }

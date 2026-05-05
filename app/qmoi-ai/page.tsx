@@ -30,7 +30,7 @@ import AnalyticsCenter from "../components/AnalyticsCenter";
 export default function QMoiAIPage() {
   const [selectedModel, setSelectedModel] = useState('auto');
   const [chatMessage, setChatMessage] = useState('');
-  const [showComponents, setShowComponents] = useState(false);
+  const [showComponents, setShowComponents] = useState(true);
 
   // Mock data for demonstration
   const stats = {
@@ -335,16 +335,6 @@ export default function QMoiAIPage() {
               Use the button above to open all documented QMOI AI components within this page.
             </div>
           )}
-        </section>
-      </div>
-    </main>
-  );
-}
-            <p className="mt-3 text-slate-400">If this page is reaching you from the Next.js app, the QMOI system is wired correctly and active routes are available.</p>
-            <Link href="/dev" className="mt-6 inline-flex rounded-xl bg-slate-700 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-600">
-              Open Dev Tools
-            </Link>
-          </div>
         </section>
       </div>
     </main>
