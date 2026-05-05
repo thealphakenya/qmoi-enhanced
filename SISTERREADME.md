@@ -62,6 +62,14 @@ Welcome, Sister! This guide explains all the features you can use in the latest-
 - **Wallet request and approval flow added**
 - **Master-only fund transfer and enhanced audit logging**
 
+### UI Features & Accessible Components
+
+- **Community & Collaboration:** QVillage, QiSpaces, LcSpaces, model sharing, dataset catalog, and marketplace panels
+- **Sister Dashboard:** Collaborative dataset management, model discovery, and marketplace access
+- **Chat & Voice:** ChatMessaging, AudibleConversation, HelpGuide, and VoiceLibraryPanel for immersive support
+- **Personal Settings:** ClientUISettings, ThemeCustomizer, UserProfile, and WalletList
+- **Secure Access:** Role-based access support with audit logging and master approval workflows
+
 ### Collaborative & Multi-User Features
 
 - **prodices Hub:**

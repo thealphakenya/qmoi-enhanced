@@ -19,6 +19,11 @@ fully implemented
 - `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware UI pages using `app/hooks/useAuth.ts`.
 - Runtime update support is available via `/api/pwa/check-update` and `/api/pwa/auto-update`.
 
+## Route Source Inventory
+- `app/api/` contains 276 source files in the live project tree.
+- 267 of those files are active route handler endpoints; 9 files are supporting config/docs files under `app/api/`.
+- Route categories include auth, qmoi, qcity, qvillage, cashon, ai, media, deploy, and more.
+
 ## Complete API List
 
 1. `AlertSettingsScreen()`

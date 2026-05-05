@@ -113,6 +113,12 @@ Quantum multi orchestra intelligence (QMOI) is an AI-driven universal automation
 - **Analytics and optimization**: Quantum multi orchestra intelligence (QMOI) tracks downloads, views, revenue, and engagement, and suggests optimizations
 - **Master-only controls**: Only master can approve new platforms, deals, and distribution contexts. All actions are logged and auditable
 - **UI enhancements**: Master can production assets, approve platforms and deals, and view analytics dashboards in QI and QCity
+- **UI Features & Components:** Master dashboards and role-aware UI modules are available across QCity, QI, QMOI AI, QMOI Space, and QVillage
+  - MasterPortal, MasterTracksDashboard, MasterEmailDashboard, TeamRoleManager, UserAccessControl
+  - QI, QIStateWindow, QiSpaces, LcSpaces, QVillage, QVillageDatasetsPanel
+  - QCityErrorManager, QCityThemeProvider, NotificationCenter, HelpGuide, PreviewWindow, ThemeCustomizer
+  - WalletPanel, WalletList, LeahWallet, Cashon approvals, transaction history, file upload/download, deployment controls
+  - AudioVisualizer, QMediaPlayer, VoiceLibraryPanel, VoiceSelectionPanel, AudibleConversation
 
 ## Advanced Enhancements
 

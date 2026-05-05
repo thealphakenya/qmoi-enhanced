@@ -13,7 +13,8 @@ fully implemented
 # ENDPOINTS.md - API Endpoint Inventory ✅ production_IMPLEMENTED
 
 **Last Updated:** 2026-04-28T12:00:00.000000Z
-**Total Route Source Files:** 267
+**Total Route Source Files:** 276
+**Actual endpoint handler files:** 267
 **Status:** ✅ production_IMPLEMENTED
 
 ## Document Purpose
@@ -29,7 +30,6 @@ The endpoint inventory is derived from live route handler source files under `ap
 | `qmoi/` | 46 | Core QMOI APIs, chat, automation, backup, avatar and file handling |
 | `admin/` | 23 | Administrative dashboards, autofix, monitoring, master controls |
 | `auth/` | 20 | Authentication, registration, verification, sessions, WebAuthn |
-| `master/` | 13 | Master orchestration, coordination, high-level control routes |
 | `qcity/` | 11 | QCity status, plugins, remote command, audit and maintenance |
 | `cashon/` | 7 | Cash trading, deposit, balance, signals, status |
 | `git/` | 6 | Git operations, branch and repository API endpoints |
@@ -62,6 +62,11 @@ The endpoint inventory is derived from live route handler source files under `ap
 | `production-api.ts` | 1 | Standalone production gateway handler |
 | `auto-fix.ts` | 1 | Auto-fix orchestration endpoint |
 | other root-level route files | 11 | Additional standalone endpoints under `app/api/` |
+
+### Route Category Summary
+- `app/api/` contains 276 source files and 267 active endpoint handlers.
+- Key route categories include `qmoi` (46 files), `admin` (23 files), `auth` (20 files), `qcity` (11 files), and `qvillage` (5 files).
+- The structure also includes supporting categories for media, cash trading, biometric security, deployment, analytics, and communications.
 
 > This inventory is based on source files with extensions used for route handlers and API endpoints. Non-route documentation and config files under `app/api/` are excluded from this count.
 

@@ -21,19 +21,83 @@ This document captures the current UI component landscape across QMOI Enhanced, 
 
 | Location | Component Count | Description |
 |----------|-----------------|-------------|
-| `/components/` | 201 | Main React component tree, including domain, automation, and feature components |
-| `/src/components/` | 123 | Source-level UI and integration components used by the app shell and shared libraries |
-| `/components/ui/` | 54 | Base UI primitives, form controls, overlays, and accessibility components |
+| `app/components/` | 53 | App-specific React components used by QMOI AI, QMOI Space, and QCity |
+| `components/` | 197 | Root-level feature and domain components for QMOI core and shared functionality |
+| `components/ui/` | 54 | Base UI primitives, form controls, overlays, and accessibility components |
+| `src/components/` | 117 | Source-level integration and app-shell components used by the main app and services |
 | `/dashboard/` | 5 | Dashboard application assets and frontend entry points |
-| Total unique UI-related files | 324 | Current inventory of UI artifacts across the codebase |
+| Total unique UI-related files | 421+ | Current inventory of distinct UI artifacts across the codebase |
 
 ## 🎨 Core Component Inventory
 
 The UI stack is organized into three main layers:
 
-1. **Core application components** (`/components/`): domain-specific dashboards, automation interfaces, collaboration systems, communication tools, financial and device management panels, and QMOI integration surfaces.
-2. **Base UI primitives** (`/components/ui/`): reusable form fields, dialog systems, navigation components, data display widgets, and accessibility helpers.
-3. **Source-level UI integration** (`/src/components/`): app shell components, adaptive theming, collaborative services, global UI utilities, and embedding logic.
+1. **Core application components** (`components/` and `app/components/`): domain-specific dashboards, automation interfaces, collaboration systems, communication tools, financial and device management panels, and QMOI integration surfaces.
+2. **Base UI primitives** (`components/ui/`): reusable form fields, dialog systems, navigation components, data display widgets, and accessibility helpers.
+3. **Source-level UI integration** (`src/components/`): app shell components, adaptive theming, collaborative services, global UI utilities, and embedding logic.
+
+## 🎯 UI Features by App with Tags
+
+### Shared UI Features (All Apps)
+These UI components and features are available across QMOI AI, QMOI Space, and QCity:
+
+- **AdminDashboard.tsx** (qmoi ai, qmoi space, qcity) - Administrative control panel
+- **ChatMessaging.tsx** (qmoi ai, qmoi space, qcity) - Real-time messaging interface
+- **QMOIAutoFixDashboard.tsx** (qmoi ai, qmoi space, qcity) - Automated error resolution
+- **QMOIAutoSetup.tsx** (qmoi ai, qmoi space, qcity) - Automated system configuration
+- **FileUploadDownload.tsx** (qmoi ai, qmoi space, qcity) - File management interface
+- **VisualEnhancement.tsx** (qmoi ai, qmoi space, qcity) - Visual processing tools
+- **AudibleConversation.tsx** (qmoi ai, qmoi space, qcity) - Voice communication
+- **ClientUISettings.tsx** (qmoi ai, qmoi space, qcity) - User interface preferences
+- **QMOIMasterDashboard.tsx** (qmoi ai, qmoi space, qcity) - Master system dashboard
+- **SponsoredUsersManager.tsx** (qmoi ai, qmoi space, qcity) - User sponsorship management
+- **auth/RegisterForm.tsx** (qmoi ai, qmoi space, qcity) - User registration
+- **user/UserProfile.tsx** (qmoi ai, qmoi space, qcity) - User profile management
+- **wallet/WalletList.tsx** (qmoi ai, qmoi space, qcity) - Cryptocurrency wallet interface
+
+### QMOI AI Exclusive UI Features
+- **QI.tsx** (qmoi ai) - QI Intelligence System interface
+- **QIStateWindow.tsx** (qmoi ai) - QI State management window
+- **NotificationCenter.tsx** (qmoi ai) - System notifications and alerts
+- **HelpGuide.tsx** (qmoi ai) - Comprehensive help and guidance system
+- **PreviewWindow.tsx** (qmoi ai) - Preview content in dynamic overlay
+- **ThemeCustomizer.tsx** (qmoi ai) - UI personalization and theme customization
+- **DataVisualizationPanel.tsx** (qmoi ai) - Interactive charts and data visualization
+- **AnalyticsDashboard.tsx** (qmoi ai) - Analytics reporting interface
+- **SecurityMonitor.tsx** (qmoi ai) - Real-time security monitoring
+- **PerformanceMonitor.tsx** (qmoi ai) - System performance metrics
+- **AnalyticsCenter.tsx** (qmoi ai) - Advanced analytics and business intelligence
+
+### QMOI Space Exclusive UI Features
+- **QiSpaces.tsx** (qmoi space) - QI Spaces collaborative environment
+- **LcSpaces.tsx** (qmoi space) - LC Spaces management interface
+- **FloatingPreviewWindow.tsx** (qmoi space) - Dynamic preview overlay
+- **WalletPanel.tsx** (qmoi space) - Cryptocurrency wallet management
+- **CollaborationHub.tsx** (qmoi space) - Team collaboration and communication tools
+- **IntegrationManager.tsx** (qmoi space) - Third-party service integrations
+- **WorkflowAutomationEngine.tsx** (qmoi space) - Workflow automation tools
+- **ContentManagementSystem.tsx** (qmoi space) - Content creation and publishing
+- **Marketplace.tsx** (qmoi space) - Digital marketplace for plugins/templates
+- **TrainingCenter.tsx** (qmoi space) - Educational resources and training
+- **BackupRestoreManager.tsx** (qmoi space) - Data backup and restoration
+- **SupportTicketSystem.tsx** (qmoi space) - Customer support management
+- **KnowledgeBase.tsx** (qmoi space) - Documentation and knowledge management
+
+### QCity Exclusive UI Features
+- **QVillage.tsx** (qcity) - QVillage community hub
+- **QVillageDatasetsPanel.tsx** (qcity) - Dataset management interface
+- **QCityErrorManager.tsx** (qcity) - Error handling and management
+- **QCityThemeProvider.tsx** (qcity) - Theme configuration and application
+- **DeploymentManager.tsx** (qcity) - Application deployment and release management
+- **TestingAutomationSuite.tsx** (qcity) - Automated testing framework
+- **MonitoringDashboard.tsx** (qcity) - Real-time system monitoring
+- **ComplianceManager.tsx** (qcity) - Regulatory compliance monitoring
+- **AuditLogViewer.tsx** (qcity) - System activity audit logs
+- **GlobalOperationsCenter.tsx** (qcity) - Worldwide operations management
+- **ResourceManager.tsx** (qcity) - System resource management
+- **ApiManagementConsole.tsx** (qcity) - API endpoint management
+- **SettingsPanel.tsx** (qcity) - System configuration and preferences
+- **UserManagementPanel.tsx** (qcity) - User account management
 
 ## 🔧 UI Directory Breakdown
 
@@ -111,6 +175,93 @@ QMOI Space is the distributed marketplace and production environment with spatia
 - Entrypoint: `/qmoi-space.html`, `/public/manifest-qmoi-space.json`
 
 The QMOI AI UI is backed by React components in `/components/` such as `Chatbot.tsx`, `AskQMoi.tsx`, `QMOIDashboard.tsx`, and `QMOIAutoFixDashboard.tsx`, while the PWA shell provides the installable web app entrypoint.
+
+## 🔌 API Integration References
+
+UI components integrate with the following API endpoints for full functionality:
+
+### Authentication & Security APIs
+- `/api/auth` - User authentication
+- `/api/biometric` - Biometric authentication
+- `/api/webauthn` - WebAuthn security
+- `/api/device-fingerprint` - Device identification
+
+### AI & Intelligence APIs
+- `/api/ai` - Core AI operations
+- `/api/consciousness` - AI consciousness tracking
+- `/api/friendship` - AI friendship system
+- `/api/ai-health` - AI health monitoring
+- `/api/ai-anomaly-service` - Anomaly detection
+- `/api/ai-self-diagnostics` - Self-diagnostics
+
+### Data & Storage APIs
+- `/api/datasets` - Dataset management
+- `/api/files` - File operations
+- `/api/document-backup` - Document backup
+- `/api/qmoi-database` - Database operations
+
+### System Management APIs
+- `/api/devices` - Device management
+- `/api/deployment-status` - Deployment tracking
+- `/api/deploy` - Deployment operations
+- `/api/version` - Version management
+- `/api/health` - System health checks
+- `/api/monitor` - System monitoring
+- `/api/metrics` - Performance metrics
+- `/api/workflow` - Workflow automation
+
+### Financial & Commerce APIs
+- `/api/wallets` - Wallet management
+- `/api/payments` - Payment processing
+- `/api/transactions` - Transaction tracking
+- `/api/trading` - Trading operations
+- `/api/qi-trading` - QI trading system
+- `/api/financial` - Financial management
+- `/api/earning` - Earning tracking
+- `/api/qmoi-earning-enhanced` - Enhanced earnings
+- `/api/cashon` - Cashon payments
+- `/api/mpesa` - M-Pesa integration
+
+### Communication APIs
+- `/api/chat` - Chat messaging
+- `/api/emails` - Email management
+- `/api/enhanced-email` - Advanced email features
+- `/api/notifications` - Notification system
+- `/api/whatsapp` - WhatsApp integration
+- `/api/whatsapp-bot` - WhatsApp bot
+- `/api/whatsapp-business` - WhatsApp business
+
+### Content & Media APIs
+- `/api/media` - Media management
+- `/api/voice` - Voice functionality
+- `/api/tts` - Text-to-speech
+- `/api/qradio` - QRadio service
+- `/api/youtube` - YouTube integration
+- `/api/qnews` - News service
+- `/api/social-automation` - Social media automation
+
+### Platform & Integration APIs
+- `/api/qmoi` - QMOI core operations
+- `/api/qcity` - QCity operations
+- `/api/qvillage` - QVillage operations
+- `/api/qi-spaces` - QI Spaces
+- `/api/platforms` - Platform management
+- `/api/webhooks` - Webhook integrations
+- `/api/accounts` - Account management
+
+**API Documentation Files:**
+- `API.md` - Comprehensive API reference
+- `APIs_1.md` - Quick API reference
+- `APIs_v1.md` - API versioning
+- `ENDPOINTS.md` - Complete endpoints listing
+- `API_ENDPOINTS_COMPLETE_AUDIT.md` - Endpoints audit
+- `API_ENDPOINTS_REFERENCE.md` - Reference documentation
+- `API_COMPREHENSIVE.md` - Detailed API guide
+- `API_REFERENCE.md` - Reference guide
+- `API_INTEGRATION_GUIDE.md` - Integration examples
+- `API_IMPLEMENTATION_EXAMPLES.md` - Code examples
+- `API_AUTO_UPDATE_GUIDELINES.md` - Update guidelines
+
 ## 📁 Dashboard Application (`/dashboard/`) 
 
 The dashboard application is a separate package contained in `/dashboard/` and includes the following structure:

@@ -77,6 +77,13 @@ Welcome! This guide will help you use all the features of latest-Q AI and its us
 - **Wallet request and approval flow added**
 - **Master-only fund transfer and enhanced audit logging**
 
+### UI Features & Accessible Components
+
+- **Everyday AI Interface:** QMOI AI chat, task UI, help interface, user profile, wallet request flow, and media playback features
+- **Community Access:** QVillage browsing, dataset summaries, model marketplace previews, QiSpaces, and shared collaboration panels
+- **Personalization:** Theme controls, avatars, preferences, and safe Kids Zone experience
+- **Help & Support:** HelpGuide, notifications, legal compliance alerts, and onboarding tooltips
+
 ---
 For more details, see the Help tab or ask the AI for guidance!
 

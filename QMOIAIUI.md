@@ -40,12 +40,46 @@ QMOI AI is a Progressive Web App (PWA) that provides advanced AI-powered orchest
 Upon launching the QMOI AI app, users are presented with:
 
 - **Header Section:** Large "🤖 QMOI AI" title with install button and online status badge
-- **Dashboard Cards:** Statistics display (Uptime, Tasks Completed, Platforms, Total Package Size)
+- **Dashboard Cards:** Statistics display (Uptime, Tasks Completed, Platforms, Total Package Size, Connected Devices, Active Memory Sessions)
 - **Feature Overview:** List of core capabilities (Cross-platform support, Real-time orchestration, etc.)
 - **QMOI AI Feature Set:** Detailed component highlights
+- **Component Integration:** All available UI components (Admin Dashboard, Chat Messaging, Auto-Fix Dashboard, etc.)
+- **Embedded Components Section:** Toggle and review shared UI modules directly within the QMOI AI page
 - **Optimized Actions:** Interactive buttons for key functions
 - **Latest Q AI System:** Status card showing system health
 - **QMOI Chatbot:** Interactive chat interface with model selection
+- **AI Assistant Features:** Avatar integration, emotion tracking, device management
+- **System Controls:** Auto-fix dashboard, memory management, security monitoring
+- **User Management:** Profile settings, authentication, wallet integration
+- **File Management:** Upload/download capabilities with secure storage
+- **Voice Integration:** Audible conversation with speech synthesis
+- **Visual Enhancements:** Theme controls and accessibility features
+- **Cross-App Navigation:** Links to QCity, QVillage, QMOI Space, admin panels, and device management
+- **Developer Tools:** Internal utilities and diagnostics (dev access)
+- **Testing Interface:** Quality assurance and validation tools
+- **Friendship Interface:** Emotion-aware AI companion with mood tracking
+- **Extended Cross-App Modules:** QI intelligence, QIStateWindow, QiSpaces, LcSpaces, QVillage, QVillageDatasetsPanel, and QCity platform integration
+- **Global UI Overlays:** NotificationCenter, HelpGuide, PreviewWindow, FloatingPreviewWindow, and ThemeCustomizer
+- **Finance and Wallet UI:** WalletPanel, WalletList, LeahWallet, Cashon approvals, and transaction history
+- **File and Deployment UI:** FileUploadDownload, DownloadManager, QFileManager, GitHub controls, and Vercel deployment interfaces
+- **Voice & Media UI:** AudioVisualizer, QMediaPlayer, VoiceLibraryPanel, VoiceSelectionPanel, and AudibleConversation
+- **Master/Sister/User Access:** Role-specific dashboard flows for master, sister, and user mapped across QMOI AI, QCity, QVillage, and QMOI Space
+- **Quick Reference Coverage:** References to `COMPONENT_SERVING_QUICK_REFERENCE_INDEX.md` and all major shared UI components
+
+---
+
+## Extended UI Module Inventory
+
+- **QI / QIStateWindow:** Core AI system status, intelligence monitoring, and state windows.
+- **QiSpaces / LcSpaces:** Shared community and spatial workspace modules used by Qi and community collaboration pages.
+- **QVillage / QVillageDatasetsPanel:** Community dataset browsing, publishing, collaborative datasets, and marketplace sharing.
+- **QCityErrorManager / QCityThemeProvider:** QCity-specific monitoring, theme, and error management tools.
+- **AdminDashboard / MasterDashboard / TeamRoleManager / UserAccessControl:** Master control panels and role-based access management components.
+- **ChatMessaging / HelpGuide / NotificationCenter / PreviewWindow:** Communication and global overlay interfaces available across routes.
+- **ClientUISettings / ThemeCustomizer / SettingsPanel:** UI personalization, theme controls, and accessibility configuration.
+- **FileUploadDownload / DownloadManager / QFileManager:** File storage, upload, secure transfer, and download manager interfaces.
+- **WalletPanel / WalletList / LeahWallet / LeahWalletPanel:** Wallet, payments, Cashon workflows, and financial transaction UIs.
+- **AudibleConversation / AudioVisualizer / QMediaPlayer / VoiceLibraryPanel / VoiceSelectionPanel:** Voice, audio, and media interaction experiences.
 
 ---
 
@@ -60,12 +94,25 @@ Upon launching the QMOI AI app, users are presented with:
 - Action buttons for primary functions
 - Chat interface at the bottom
 - Notification area (when active)
+- Avatar display with emotion indicators
+- System health monitoring
+- Device status overview
+- Security status indicators
 
 #### UI Elements:
 - **Header (top):** 
   - Title: "🤖 QMOI AI" (large, gradient text)
   - Install Button: "📱 Install App" (blue, rounded)
   - Status Badge: "● Online" (green) or "● Offline" (red)
+  - Avatar Display: Current AI avatar with mood indicator
+
+- **Statistics Grid (center-top):**
+  - Uptime: "99.9%" (large blue number)
+  - Tasks Completed: "1,247" (large blue number)  
+  - Platforms: "12+" (large blue number)
+  - Total Package Size: "2.5GB" (large blue number)
+  - Connected Devices: "6" (large blue number)
+  - Active Memory Sessions: "3" (large blue number)
 
 - **Statistics Grid (center-top):**
   - Uptime: "99.9%" (large blue number)
@@ -80,30 +127,61 @@ Upon launching the QMOI AI app, users are presented with:
   - ✅ Multi-device sync
   - ✅ Offline support
   - ✅ Progressive enhancement
+  - ✅ AI consciousness tracking
+  - ✅ Emotion-aware responses
+  - ✅ Security monitoring
+  - ✅ Auto-fix capabilities
 
-- **QMOI AI Feature Set Card:**
-  - AI chatbot interaction with model selection
-  - Auto-fix diagnostics and production monitoring
-  - QCity device integration for unlimited build/test execution
-  - QMOI Space marketplace and revenue generation adaptation
-  - Avatar-driven assistance and guided workflows
-  - Installable PWA experience and offline caching
+- **Component Integration Card:**
+  - Admin Dashboard: Administrative workflows and system health monitoring
+  - Chat Messaging: Real-time messaging and assistant interactions with message history
+  - Auto-Fix Dashboard: Automated remediation controls and status reporting for system issues
+  - Auto-Setup: Automated environment initialization and onboarding workflows
+  - Master Dashboard: Master-only access control for automation control and financial overview
+  - Sponsored Users Manager: Management of sponsored accounts and access privileges
+  - Client UI Settings: Interface theme adjustment, layout density, and accessibility settings
+  - File Upload/Download: Secure file management with upload, download, and storage validation
+  - Visual Enhancements: Responsive theme controls, UI acceleration, and visual accessibility
+  - Audible Conversation: Voice-enabled assistant interaction with speech playback and transcription
+  - User Profile: User account management and personalization settings
+  - Wallet Integration: Financial wallet management and transaction handling
+  - Registration Form: New user account creation and authentication setup
 
-- **Component Highlights Card:**
-  - Chatbot / QMOI conversation interface
-  - QMOI dashboard orchestration panels
-  - QMOI auto-fix, revenue, and memory management views
-  - QCity device dashboard and enterprise controls
-  - QMOI Space marketplace, map, and dataset panels
+- **Admin Panel:** Administrative dashboard with system metrics and user management
+- **Device Management:** Connected device monitoring, control, and synchronization
+- **Developer Tools:** Internal utilities, diagnostics, and development helpers
+- **Testing Interface:** Quality assurance tools and validation systems
+- **Friendship Interface:** Emotion-aware AI companion with mood tracking and personalized interactions
+- **Master Controls:** Advanced automation control and financial overview (master access only)
+
+- **System Status Cards:**
+  - AI Consciousness Level: 100%
+  - Memory Synchronization: Active
+  - Security Systems: Operational
+  - Device Connectivity: 6/6 Online
+  - Auto-Fix Status: Ready
+  - Revenue Tracking: Active
 
 - **Optimized Actions Grid (bottom):**
   - "📊 Open Dashboard" button
-  - "⚙️ Settings" button
-  - "🔍 Production" button
-  - "🌌 Open QMOI Space" button
-  - "🏙️ Open QCity" button
-  - "🧠 Open Alpha Q" button
-  - "🔗 Share" button
+  - "🤖 Chat with AI" button
+  - "🔧 Auto-Fix Tools" button
+  - "💾 Memory Manager" button
+  - "🔒 Security Center" button
+  - "📱 Device Manager" button
+  - "🌐 QMOI Space" button
+  - "🏙️ QCity" button
+  - "🏘️ QVillage" button
+  - "⚙️ Admin Panel" button
+  - "🛠️ Developer Tools" button
+  - "🧪 Testing Interface" button
+  - "❤️ Friendship Mode" button
+  - "👑 Master Controls" button (master access only)
+  - "👤 User Profile" button
+  - "💰 Wallet Manager" button
+  - "📁 File Manager" button
+  - "🎤 Voice Assistant" button
+  - "🎨 Visual Settings" button
 
 - **Latest Q AI System Card:**
   - Status: ACTIVE (green badge)
@@ -117,11 +195,13 @@ Upon launching the QMOI AI app, users are presented with:
   - Chat history area (scrollable)
 
 #### User Actions:
-- **Tap Install Button:** Triggers PWA installation prompt
-- **Tap Action Buttons:** Opens respective interfaces or external links
-- **Select Chat Model:** Changes AI model for responses
-- **Type in Chat Input:** Enables sending messages to AI
-- **Tap Send:** Submits chat message and shows AI response
+- **Tap Install Button:** Triggers PWA installation when available
+- **Tap Chat with AI:** Opens full AI conversation interface
+- **Tap Auto-Fix Tools:** Launches automated error correction
+- **Tap Memory Manager:** Opens memory and context management
+- **Tap Security Center:** Access security monitoring and controls
+- **Tap Device Manager:** Opens device management dashboard
+- **Navigation Buttons:** Switch between QMOI ecosystem apps
 
 ---
 
@@ -165,6 +245,118 @@ Upon launching the QMOI AI app, users are presented with:
   - SendButton: submit button
 **Behavior:** Real-time chat with fallback responses
 
+### Admin Dashboard Component
+**Purpose:** Administrative workflows and system health monitoring
+**Location:** Admin panel access
+**Features:**
+  - System metrics display
+  - User management controls
+  - Health monitoring alerts
+**Access:** Admin role required
+
+### Chat Messaging Component
+**Purpose:** Real-time messaging and assistant interactions
+**Location:** Main dashboard or dedicated chat view
+**Features:**
+  - Message history preview
+  - Real-time conversation
+  - Message threading
+**Behavior:** Persistent chat state with history
+
+### Auto-Fix Dashboard Component
+**Purpose:** Automated error correction and remediation
+**Location:** Tools section or diagnostics panel
+**Features:**
+  - Issue detection and reporting
+  - Automated fix application
+  - Status monitoring and progress
+**Behavior:** Background processing with user notifications
+
+### Master Dashboard Component
+**Purpose:** Advanced automation control and system overview
+**Location:** Master access only
+**Features:**
+  - Financial data integration
+  - Global automation status
+  - Link and domain monitoring
+  - Camera integration for security
+  - PWA platform management
+**Access:** Master role required only
+
+### File Upload/Download Component
+**Purpose:** Secure file management system
+**Location:** File management section
+**Features:**
+  - Drag-and-drop upload
+  - Download with validation
+  - Storage quota monitoring
+  - File type restrictions
+**Security:** Encrypted transfer and storage
+
+### Audible Conversation Component
+**Purpose:** Voice-enabled AI interaction
+**Location:** Voice assistant section
+**Features:**
+  - Speech recognition input
+  - Text-to-speech output
+  - Voice activity detection
+  - Audio playback controls
+**Browser Support:** Modern browsers with microphone access
+
+### User Profile Component
+**Purpose:** User account management
+**Location:** Profile settings
+**Features:**
+  - Personal information editing
+  - Avatar customization
+  - Preference settings
+  - Account security options
+
+### Wallet Integration Component
+**Purpose:** Financial transaction management
+**Location:** Wallet section
+**Features:**
+  - Balance display
+  - Transaction history
+  - Payment processing
+  - Wallet security settings
+
+### Visual Enhancement Component
+**Purpose:** UI customization and accessibility
+**Location:** Settings panel
+**Features:**
+  - Theme selection (dark/light)
+  - Font size adjustment
+  - High contrast mode
+  - Animation preferences
+
+### Client UI Settings Component
+**Purpose:** Interface configuration
+**Location:** Settings menu
+**Features:**
+  - Layout density controls
+  - Color scheme options
+  - Notification preferences
+  - Accessibility settings
+
+### Sponsored Users Manager Component
+**Purpose:** Sponsored account administration
+**Location:** Admin controls
+**Features:**
+  - User sponsorship tracking
+  - Access privilege management
+  - Sponsorship analytics
+**Access:** Admin role required
+
+### Auto-Setup Component
+**Purpose:** Automated environment initialization
+**Location:** Setup workflows
+**Features:**
+  - Environment detection
+  - Automatic configuration
+  - Onboarding assistance
+  - Setup progress tracking
+
 ---
 
 ## Navigation Flow
@@ -196,6 +388,12 @@ Main Dashboard
 - /qmoi-space.html → QMOI Space marketplace
 - /qcity-dashboard.html → QCity dashboard
 - /q-alpha.html → Alpha Q aggregator
+- /admin → Administrative dashboard
+- /devices → Device management interface
+- /dev → Developer utilities
+- /friendship → Emotion-aware AI companion
+- /master → Master control panels
+- /test → Testing and validation tools
 
 ---
 
@@ -268,6 +466,172 @@ Main Dashboard
 
 ---
 
+## Component Documentation
+
+### Core AI Components
+
+#### Chatbot Interface
+- **Location:** Main dashboard and dedicated chat view
+- **Features:** Multi-model selection, conversation history, emotion tracking
+- **Models Available:** GPT-4, Claude, Gemini, Local AI
+- **Capabilities:** Text chat, voice input/output, file attachments
+
+#### Avatar System
+- **Location:** Header and chat interface
+- **Features:** Dynamic avatar display, emotion indicators, customization
+- **Emotions Tracked:** Happiness, Trust, Engagement, Mood states
+- **Integration:** Real-time emotion updates based on conversation
+
+#### Auto-Fix Dashboard
+- **Location:** Accessible via "Auto-Fix Tools" button
+- **Features:** Error detection, automated fixes, system optimization
+- **Capabilities:** Code repair, configuration fixes, performance tuning
+- **Status:** Real-time fix application and success tracking
+
+#### Memory Management
+- **Location:** "Memory Manager" section
+- **Features:** Conversation persistence, context awareness, sync status
+- **Capabilities:** Memory backup, cross-device sync, privacy controls
+- **Integration:** Automatic memory optimization and cleanup
+
+#### Security Monitoring
+- **Location:** "Security Center" panel
+- **Features:** Real-time threat detection, access control, audit logs
+- **Capabilities:** Biometric auth, encryption management, incident response
+- **Status:** 24/7 monitoring with automated alerts
+
+#### Device Management
+- **Location:** "Device Manager" interface
+- **Features:** Multi-device sync, remote control, health monitoring
+- **Supported Devices:** Mobile, Laptop, Tablet, Wearables, Smart Home, IoT
+- **Capabilities:** Real-time status, battery monitoring, location tracking
+
+### Navigation & Cross-App Integration
+
+#### QMOI Space Integration
+- **Access:** "QMOI Space" button
+- **Features:** Marketplace access, dataset management, revenue tools
+- **Capabilities:** Model deployment, community collaboration, monetization
+
+#### QCity Integration
+- **Access:** "QCity" button
+- **Features:** Command center, system monitoring, incident management
+- **Capabilities:** Role-based access, real-time metrics, service operations
+
+#### QVillage Integration
+- **Access:** "QVillage" button
+- **Features:** Community datasets, model collaboration, shared workflows
+- **Capabilities:** Dataset sharing, AI model access, community tools
+
+#### Admin Panel Integration
+- **Access:** "Admin Panel" button (Master role only)
+- **Features:** System administration, user management, configuration
+- **Capabilities:** Full system control, deployment management, audit logs
+
+---
+
+## Feature Instructions
+
+### Using the AI Chatbot
+1. **Select Model:** Choose from available AI models in the dropdown
+2. **Type Message:** Enter your query in the chat input
+3. **Send:** Press Enter or click Send button
+4. **Voice Input:** Click microphone icon for voice commands
+5. **File Attachments:** Drag and drop files for AI analysis
+6. **Quick Actions:** Use preset buttons for common requests
+
+### Managing Devices
+1. **View Status:** Check device grid for online/offline status
+2. **Filter Devices:** Use type filters (Mobile, Laptop, Wearables, etc.)
+3. **Remote Control:** Click "Manage" on any device
+4. **Sync Data:** Click "Sync" to update device information
+5. **Battery Monitoring:** View battery levels for applicable devices
+
+### Auto-Fix Operations
+1. **Run Diagnostics:** Click "Auto-Fix Tools" to start scanning
+2. **Review Issues:** View detected problems and suggested fixes
+3. **Apply Fixes:** Click "Fix" buttons for automated resolution
+4. **Monitor Progress:** Watch real-time fix application status
+5. **Verify Results:** Check system health after fixes complete
+
+### Memory Management
+1. **View Sessions:** See active memory sessions and context
+2. **Backup Data:** Create manual backups of important conversations
+3. **Sync Across Devices:** Enable cross-device memory synchronization
+4. **Privacy Controls:** Manage what data is stored and shared
+5. **Cleanup:** Remove old or unnecessary memory data
+
+### Security Operations
+1. **Monitor Threats:** View real-time security status
+2. **Access Logs:** Review audit logs and access attempts
+3. **Configure Alerts:** Set up security notifications
+4. **Biometric Setup:** Configure biometric authentication
+5. **Encryption:** Manage data encryption settings
+
+---
+
+## Settings & Configuration
+
+### AI Preferences
+- **Default Model:** Set preferred AI model for conversations
+- **Voice Settings:** Configure voice input/output preferences
+- **Emotion Tracking:** Enable/disable emotion-aware responses
+- **Auto-Save:** Configure conversation auto-save settings
+
+### Device Settings
+- **Auto-Sync:** Enable automatic device synchronization
+- **Notification Preferences:** Configure device status alerts
+- **Remote Access:** Control remote device management permissions
+- **Battery Alerts:** Set low battery warning thresholds
+
+### Security Settings
+- **Authentication:** Configure login methods and requirements
+- **Access Control:** Set role-based permissions
+- **Audit Logging:** Configure audit log retention and access
+- **Encryption:** Manage encryption keys and certificates
+
+### System Settings
+- **Performance:** Configure performance optimization settings
+- **Backup:** Set automatic backup schedules and retention
+- **Updates:** Configure automatic update preferences
+- **Offline Mode:** Set offline functionality preferences
+
+---
+
+## Error States & Edge Cases
+
+### Network Connectivity Issues
+- **Offline Mode:** App functions with limited capabilities
+- **Sync Queue:** Actions queued for when connection returns
+- **Status Indicators:** Clear offline/online status display
+- **Data Preservation:** Local data storage during outages
+
+### Device Connection Problems
+- **Reconnection Logic:** Automatic retry for disconnected devices
+- **Status Updates:** Real-time device status monitoring
+- **Error Messages:** Clear error descriptions and recovery steps
+- **Fallback Modes:** Graceful degradation for device issues
+
+### AI Service Unavailability
+- **Fallback Models:** Automatic switching to available AI models
+- **Offline Responses:** Cached responses for common queries
+- **Queue System:** Message queuing during service outages
+- **Status Communication:** Clear service status indicators
+
+### Memory/Storage Issues
+- **Space Management:** Automatic cleanup of old data
+- **Compression:** Data compression for storage optimization
+- **Backup Recovery:** Restore from backups when needed
+- **Quota Warnings:** Alerts when approaching storage limits
+
+### Security Incidents
+- **Alert System:** Immediate notifications for security events
+- **Lockdown Mode:** Automatic system lockdown for threats
+- **Audit Trail:** Complete logging of security incidents
+- **Recovery Procedures:** Step-by-step incident response guides
+
+---
+
 ## Visual Description (Accessibility)
 
 The QMOI AI interface uses a dark color scheme with:
@@ -279,5 +643,196 @@ The QMOI AI interface uses a dark color scheme with:
 
 All interactive elements have hover effects with increased brightness and slight upward movement. The layout is centered with maximum width of 1200px, responsive to mobile screens with adjusted padding and grid layouts.
 
-Status indicators use color coding: green for online/active, red for offline/error states. The interface prioritizes visual hierarchy with large, clear typography and ample spacing between elements.</content>
+Status indicators use color coding: green for online/active, red for offline/error states. The interface prioritizes visual hierarchy with large, clear typography and ample spacing between elements.
+
+---
+
+## Complete Component Listing for QMOI AI
+
+### QMOI AI Exclusive Components (11 total)
+
+#### Core Intelligence & State Management
+1. **QI.tsx** (qmoi ai)
+   - QI Intelligence System interface
+   - Core AI system status and monitoring
+   - Real-time consciousness tracking
+
+2. **QIStateWindow.tsx** (qmoi ai)
+   - QI State management and visualization
+   - Memory state monitoring
+   - Intelligence mode controls
+
+3. **AnalyticsCenter.tsx** (qmoi ai)
+   - Advanced analytics and business intelligence platform
+   - Performance metrics dashboards
+   - Data trend analysis
+
+4. **AnalyticsDashboard.tsx** (qmoi ai)
+   - Comprehensive analytics reporting interface
+   - Real-time metrics visualization
+   - User engagement tracking
+
+#### Notifications & Help Systems
+5. **NotificationCenter.tsx** (qmoi ai)
+   - System notifications and alerts
+   - Message prioritization
+   - Real-time alert management
+
+6. **HelpGuide.tsx** (qmoi ai)
+   - Comprehensive help and guidance system
+   - Interactive tutorials
+   - Contextual assistance
+
+#### Preview & Customization
+7. **PreviewWindow.tsx** (qmoi ai)
+   - Preview content in dynamic overlay
+   - Content rendering interface
+   - Real-time preview updates
+
+8. **ThemeCustomizer.tsx** (qmoi ai)
+   - UI personalization and theme customization
+   - Color scheme selection
+   - Accessibility theme options
+
+#### Monitoring & Security
+9. **SecurityMonitor.tsx** (qmoi ai)
+   - Real-time security monitoring and threat detection
+   - Firewall and encryption status
+   - Security incident tracking
+
+10. **PerformanceMonitor.tsx** (qmoi ai)
+    - System performance metrics and optimization
+    - CPU, memory, and storage monitoring
+    - Real-time performance analytics
+
+11. **DataVisualizationPanel.tsx** (qmoi ai)
+    - Interactive charts and data visualization tools
+    - Performance metrics display
+    - Data point visualization
+
+---
+
+### Shared Components (13 total - Used in All Apps)
+
+1. **AdminDashboard.tsx** (qmoi ai, qmoi space, qcity)
+   - Master control panel interface
+   - System management overview
+
+2. **ChatMessaging.tsx** (qmoi ai, qmoi space, qcity)
+   - Real-time messaging interface
+   - Chat history and conversations
+
+3. **QMOIAutoFixDashboard.tsx** (qmoi ai, qmoi space, qcity)
+   - Automated error fixing interface
+   - Auto-repair status monitoring
+
+4. **QMOIAutoSetup.tsx** (qmoi ai, qmoi space, qcity)
+   - Automated setup and configuration wizard
+   - Initial system configuration
+
+5. **FileUploadDownload.tsx** (qmoi ai, qmoi space, qcity)
+   - Secure file transfer interface
+   - Upload/download management
+
+6. **VisualEnhancement.tsx** (qmoi ai, qmoi space, qcity)
+   - UI visual improvements
+   - Theme enhancement controls
+
+7. **AudibleConversation.tsx** (qmoi ai, qmoi space, qcity)
+   - Voice interaction interface
+   - Speech synthesis and recognition
+
+8. **ClientUISettings.tsx** (qmoi ai, qmoi space, qcity)
+   - User-side UI settings
+   - Client preferences configuration
+
+9. **QMOIMasterDashboard.tsx** (qmoi ai, qmoi space, qcity)
+   - Master-level control interface
+   - System-wide operations dashboard
+
+10. **SponsoredUsersManager.tsx** (qmoi ai, qmoi space, qcity)
+    - Sponsored user management
+    - User sponsorship tracking
+
+11. **auth/RegisterForm.tsx** (qmoi ai, qmoi space, qcity)
+    - User registration interface
+    - Account creation form
+
+12. **user/UserProfile.tsx** (qmoi ai, qmoi space, qcity)
+    - User profile management
+    - Personal information interface
+
+13. **wallet/WalletList.tsx** (qmoi ai, qmoi space, qcity)
+    - Cryptocurrency wallet display
+    - Multi-wallet management
+
+### Actual QMOI AI App Component Inventory
+`app/qmoi-ai/page.tsx` imports these app-specific components:
+- `AdminDashboard.tsx`
+- `ChatMessaging.tsx`
+- `QMOIAutoFixDashboard.tsx`
+- `QMOIAutoSetup.tsx`
+- `FileUploadDownload.tsx`
+- `VisualEnhancement.tsx`
+- `AudibleConversation.tsx`
+- `ClientUISettings.tsx`
+- `QMOIMasterDashboard.tsx`
+- `SponsoredUsersManager.tsx`
+- `user/UserProfile.tsx`
+- `wallet/WalletList.tsx`
+- `auth/RegisterForm.tsx`
+- `QI.tsx`
+- `QIStateWindow.tsx`
+- `NotificationCenter.tsx`
+- `HelpGuide.tsx`
+- `PreviewWindow.tsx`
+- `ThemeCustomizer.tsx`
+- `DataVisualizationPanel.tsx`
+- `AnalyticsDashboard.tsx`
+- `SecurityMonitor.tsx`
+- `PerformanceMonitor.tsx`
+- `AnalyticsCenter.tsx`
+
+Additional app components available in `app/components/` include:
+- `AuditLogViewer.tsx`, `BackupRestoreManager.tsx`, `CollaborationHub.tsx`, `CommunicationHub.tsx`, `ComplianceManager.tsx`, `ContentManagementSystem.tsx`, `DeploymentManager.tsx`, `FloatingPreviewWindow.tsx`, `GlobalOperationsCenter.tsx`, `IntegrationManager.tsx`, `InnovationLab.tsx`, `KnowledgeBase.tsx`, `LcSpaces.tsx`, `Marketplace.tsx`, `MonitoringDashboard.tsx`, `ResourceManager.tsx`, `SettingsPanel.tsx`, `SupportTicketSystem.tsx`, `TestingAutomationSuite.tsx`, `TrainingCenter.tsx`, `UserManagementPanel.tsx`, `WalletPanel.tsx`, `WorkflowAutomationEngine.tsx`.
+
+---
+
+## API Integration Reference
+
+### QMOI AI Related Endpoints
+
+**Authentication & Security:**
+- `/api/auth` - Authentication endpoints
+- `/api/biometric` - Biometric authentication
+- `/api/webauthn` - WebAuthn security
+
+**AI & Intelligence:**
+- `/api/ai` - Core AI endpoints
+- `/api/consciousness` - AI consciousness tracking
+- `/api/friendship` - AI friendship system
+- `/api/ai-health` - AI health monitoring
+- `/api/ai-anomaly-service` - Anomaly detection
+- `/api/ai-self-diagnostics` - Self-diagnostics
+
+**Data & Analysis:**
+- `/api/analytics` - Analytics endpoints
+- `/api/datasets` - Dataset management
+- `/api/health` - System health
+- `/api/metrics` - Performance metrics
+- `/api/monitor` - System monitoring
+
+**User Management:**
+- `/api/users` - User management
+- `/api/accounts` - Account management
+
+**For complete API documentation, see:**
+- API.md - Main API reference
+- ENDPOINTS.md - Complete endpoints listing
+- API_COMPREHENSIVE.md - Detailed guide
+
+---
+
+**Last Updated:** May 5, 2026
+**Status:** ✅ Complete with comprehensive component listing and API references</content>
 <parameter name="filePath">/workspaces/qmoi-enhanced/QMOIAIUI.md

@@ -1,6 +1,7 @@
 # API Documentation
 Generated: 2026-04-17T02:03:31.896085
 Total APIs: 464
+Route source files in `app/api/`: 276 (267 endpoint handler files)
 
 ## Verified Production PWA Route Mapping
 - The `app/qmoi-ai/page.tsx` route now forwards to the real QMOI AI PWA at `/pwa_apps/qmoi-ai/index.html`.

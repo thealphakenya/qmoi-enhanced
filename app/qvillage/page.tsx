@@ -74,6 +74,140 @@ export default function QVillagePage() {
           </div>
         </section>
 
+        {/* Dataset Catalog */}
+        <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
+          <h2 className="text-2xl font-semibold mb-4">Dataset Catalog</h2>
+          <p className="text-slate-400 mb-6">Browse and access community-shared datasets for AI training and analysis.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">QMOI AI Conversations</h4>
+              <p className="text-sm text-slate-400 mb-2">1.2M chat interactions, anonymized</p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs bg-green-600 px-2 py-1 rounded">Free</span>
+                <button className="text-xs bg-blue-600 px-2 py-1 rounded">Download</button>
+              </div>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Device Performance Metrics</h4>
+              <p className="text-sm text-slate-400 mb-2">500K device logs, 6 months</p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs bg-yellow-600 px-2 py-1 rounded">$25</span>
+                <button className="text-xs bg-blue-600 px-2 py-1 rounded">Purchase</button>
+              </div>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Marketplace Transactions</h4>
+              <p className="text-sm text-slate-400 mb-2">50K transactions, categorized</p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs bg-purple-600 px-2 py-1 rounded">$50</span>
+                <button className="text-xs bg-blue-600 px-2 py-1 rounded">Purchase</button>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 flex gap-2">
+            <button className="bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded text-sm transition-colors">Browse All Datasets</button>
+            <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm transition-colors">Upload Dataset</button>
+          </div>
+        </section>
+
+        {/* AI Model Marketplace */}
+        <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
+          <h2 className="text-2xl font-semibold mb-4">AI Model Marketplace</h2>
+          <p className="text-slate-400 mb-6">Deploy, test, and monetize AI models in the community marketplace.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Sentiment Analysis v2.1</h4>
+              <p className="text-sm text-slate-400 mb-2">95% accuracy, multilingual</p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs bg-green-600 px-2 py-1 rounded">Deployed</span>
+                <button className="text-xs bg-purple-600 px-2 py-1 rounded">Use Model</button>
+              </div>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Image Recognition Pro</h4>
+              <p className="text-sm text-slate-400 mb-2">98% accuracy, real-time</p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs bg-blue-600 px-2 py-1 rounded">$10/month</span>
+                <button className="text-xs bg-purple-600 px-2 py-1 rounded">Subscribe</button>
+              </div>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Predictive Analytics</h4>
+              <p className="text-sm text-slate-400 mb-2">Time series forecasting</p>
+              <div className="flex justify-between items-center">
+                <span className="text-xs bg-yellow-600 px-2 py-1 rounded">$5/use</span>
+                <button className="text-xs bg-purple-600 px-2 py-1 rounded">Try Free</button>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 flex gap-2">
+            <button className="bg-violet-600 hover:bg-violet-700 px-4 py-2 rounded text-sm transition-colors">Model Marketplace</button>
+            <button className="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded text-sm transition-colors">Deploy Your Model</button>
+          </div>
+        </section>
+
+        {/* Community Workspace */}
+        <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
+          <h2 className="text-2xl font-semibold mb-4">Community Workspace</h2>
+          <p className="text-slate-400 mb-6">Collaborate on research, share insights, and build together in real-time.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Active Research Projects</h4>
+              <ul className="text-sm text-slate-400 space-y-1">
+                <li>• Neural Network Optimization Study</li>
+                <li>• Cross-Platform Data Integration</li>
+                <li>• AI Ethics Framework Development</li>
+              </ul>
+              <button className="mt-3 text-xs bg-cyan-600 px-3 py-1 rounded">Join Project</button>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Live Collaboration Sessions</h4>
+              <ul className="text-sm text-slate-400 space-y-1">
+                <li>• Dataset Analysis Workshop (12 online)</li>
+                <li>• Model Deployment Clinic (8 online)</li>
+                <li>• Code Review Session (15 online)</li>
+              </ul>
+              <button className="mt-3 text-xs bg-cyan-600 px-3 py-1 rounded">Enter Session</button>
+            </div>
+          </div>
+          <div className="mt-4 flex gap-2">
+            <button className="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded text-sm transition-colors">Community Forum</button>
+            <button className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded text-sm transition-colors">Create Project</button>
+          </div>
+        </section>
+
+        {/* Revenue Tools */}
+        <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
+          <h2 className="text-2xl font-semibold mb-4">Revenue Analytics</h2>
+          <p className="text-slate-400 mb-6">Track earnings from dataset sales, model subscriptions, and marketplace transactions.</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="bg-slate-800 p-4 rounded-lg text-center">
+              <h4 className="font-semibold mb-2">Monthly Revenue</h4>
+              <div className="text-green-400 text-2xl">$2,847</div>
+              <p className="text-sm text-slate-400">+12% from last month</p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg text-center">
+              <h4 className="font-semibold mb-2">Active Subscriptions</h4>
+              <div className="text-blue-400 text-2xl">156</div>
+              <p className="text-sm text-slate-400">23 new this week</p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg text-center">
+              <h4 className="font-semibold mb-2">Dataset Downloads</h4>
+              <div className="text-purple-400 text-2xl">1,203</div>
+              <p className="text-sm text-slate-400">89 this week</p>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg text-center">
+              <h4 className="font-semibold mb-2">Model Usage</h4>
+              <div className="text-orange-400 text-2xl">45,678</div>
+              <p className="text-sm text-slate-400">API calls this month</p>
+            </div>
+          </div>
+          <div className="mt-4 flex gap-2">
+            <button className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm transition-colors">Revenue Dashboard</button>
+            <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm transition-colors">Payout Settings</button>
+          </div>
+        </section>
+
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
           <h2 className="text-2xl font-semibold mb-4">QVillage Automation</h2>
           <p className="text-slate-400 mb-4">QVillage automates dataset sync, model updates, and community publishing across PWA and enterprise platforms.</p>
@@ -90,6 +224,34 @@ export default function QVillagePage() {
               <p className="font-semibold text-white">Community Rate</p>
               <p className="mt-2 text-slate-300">24/7</p>
             </div>
+          </div>
+        </section>
+
+        {/* Production Sync & Enterprise Features */}
+        <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
+          <h2 className="text-2xl font-semibold mb-4">Production Sync & Enterprise</h2>
+          <p className="text-slate-400 mb-6">Seamless integration with production environments and enterprise-grade features.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Production Deployment</h4>
+              <p className="text-sm text-slate-400 mb-3">Automated model deployment to production with rollback capabilities.</p>
+              <div className="flex gap-2">
+                <button className="text-xs bg-green-600 px-2 py-1 rounded">Deploy to Prod</button>
+                <button className="text-xs bg-red-600 px-2 py-1 rounded">Rollback</button>
+              </div>
+            </div>
+            <div className="bg-slate-800 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Enterprise Integration</h4>
+              <p className="text-sm text-slate-400 mb-3">Connect with existing enterprise systems and workflows.</p>
+              <div className="flex gap-2">
+                <button className="text-xs bg-blue-600 px-2 py-1 rounded">API Integration</button>
+                <button className="text-xs bg-purple-600 px-2 py-1 rounded">SSO Setup</button>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 flex gap-2">
+            <button className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded text-sm transition-colors">Enterprise Dashboard</button>
+            <button className="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded text-sm transition-colors">Compliance Reports</button>
           </div>
         </section>
       </div>
