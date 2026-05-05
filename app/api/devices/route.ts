@@ -1,177 +1,69 @@
 import { NextRequest, NextResponse } from 'next/server';
-interface Device {
-  id: string;
-  name: string;
-  type: string;
-  platform: string;
-  status: 'online' | 'offline' | 'syncing';
-  lastSync: string;
-  location?: string;
-  battery?: number;
-  ipAddress?: string;
-  macAddress?: string;
-  osVersion?: string;
-  memory?: {
-    total: number;
-    used: number;
-    free: number;
-  };
-  storage?: {
-    total: number;
-    used: number;
-    free: number;
-  };
-}
-const devices: Device[] = [
-  {
-    id: 'dev_001',
-    name: 'iPhone 15 Pro',
-    type: 'mobile',
-    platform: 'iOS',
-    status: 'online',
-    lastSync: new Date().toISOString(),
-    location: 'Nairobi, Kenya',
-    battery: 85,
-    ipAddress: '192.168.1.100',
-    osVersion: '17.4.1',
-    memory: { total: 8192, used: 2048, free: 6144 },
-    storage: { total: 256000, used: 120000, free: 136000 }
-  },
-  {
-    id: 'dev_002',
-    name: 'MacBook Pro M3',
-    type: 'laptop',
-    platform: 'macOS',
-    status: 'online',
-    lastSync: new Date().toISOString(),
-    battery: 92,
-    ipAddress: '192.168.1.101',
-    osVersion: '14.4.1',
-    memory: { total: 32768, used: 8192, free: 24576 },
-    storage: { total: 1000000, used: 450000, free: 550000 }
-  },
-  {
-    id: 'dev_003',
-    name: 'Smart TV LG',
-    type: 'smart-tv',
-    platform: 'webOS',
-    status: 'online',
-    lastSync: new Date().toISOString(),
-    ipAddress: '192.168.1.102',
-    osVersion: '7.3.1'
-  },
-  {
-    id: 'dev_004',
-    name: 'Apple Watch Ultra',
-    type: 'wearable',
-    platform: 'watchOS',
-    status: 'syncing',
-    lastSync: new Date().toISOString(),
-    battery: 78,
-    osVersion: '10.4'
-  },
-  {
-    id: 'dev_005',
-    name: 'HomePod Mini',
-    type: 'smart-speaker',
-    platform: 'iOS',
-    status: 'online',
-    lastSync: new Date().toISOString(),
-    ipAddress: '192.168.1.103',
-    osVersion: '16.5'
-  },
-  {
-    id: 'dev_006',
-    name: 'iPad Pro',
-    type: 'tablet',
-    platform: 'iPadOS',
-    status: 'offline',
-    lastSync: new Date(Date.now() - 3600000).toISOString(),
-    battery: 45,
-    ipAddress: '192.168.1.104',
-    osVersion: '17.4.1',
-    memory: { total: 8192, used: 3072, free: 5120 },
-    storage: { total: 256000, used: 80000, free: 176000 }
-  }
-];
+import { prisma } from '../../../lib/db/prisma';
+
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const type = searchParams.get('type');
-    const status = searchParams.get('status');
-    const platform = searchParams.get('platform');
-    let filteredDevices = devices;
-    if (type) {
-      filteredDevices = filteredDevices.filter(d => d.type === type);
-    }
-    if (status) {
-      filteredDevices = filteredDevices.filter(d => d.status === status);
-    }
-    if (platform) {
-      filteredDevices = filteredDevices.filter(d => d.platform === platform);
-    }
-    // Calculate stats
-    const stats = {
-      total: devices.length,
-      online: devices.filter(d => d.status === 'online').length,
-      offline: devices.filter(d => d.status === 'offline').length,
-      syncing: devices.filter(d => d.status === 'syncing').length,
-      types: [...new Set(devices.map(d => d.type))],
-      platforms: [...new Set(devices.map(d => d.platform))]
-    };
+    const devices = await prisma.device.findMany({
+      where: { isActive: true },
+      include: {
+        user: {
+          select: {
+            id: true,
+            username: true,
+            name: true,
+          },
+        },
+      },
+      orderBy: { lastSync: 'desc' },
+    });
+
+    // Transform to match the expected API response format
+    const transformedDevices = devices.map(device => ({
+      id: device.id,
+      name: device.name,
+      type: device.type,
+      platform: device.platform,
+      status: device.status as 'online' | 'offline' | 'syncing',
+      lastSync: device.lastSync?.toISOString() || new Date().toISOString(),
+      location: device.location || undefined,
+      battery: device.battery || undefined,
+      ipAddress: device.ipAddress || undefined,
+      osVersion: device.osVersion || undefined,
+      memory: device.memoryTotal ? {
+        total: device.memoryTotal,
+        used: device.memoryUsed || 0,
+        free: device.memoryFree || device.memoryTotal - (device.memoryUsed || 0),
+      } : undefined,
+      storage: device.storageTotal ? {
+        total: device.storageTotal,
+        used: device.storageUsed || 0,
+        free: device.storageFree || device.storageTotal - (device.storageUsed || 0),
+      } : undefined,
+    }));
+
     return NextResponse.json({
       success: true,
       data: {
-        devices: filteredDevices,
-        stats,
+        devices: transformedDevices,
+        stats: {
+          total: transformedDevices.length,
+          online: transformedDevices.filter(d => d.status === 'online').length,
+          offline: transformedDevices.filter(d => d.status === 'offline').length,
+          syncing: transformedDevices.filter(d => d.status === 'syncing').length
+        },
         lastUpdated: new Date().toISOString()
-      }
+      },
+      count: transformedDevices.length,
+      timestamp: new Date().toISOString()
     });
-  } catch (_error){
-    console._error('Device API _error:', _error);
+  } catch (error) {
+    console.error('Device fetch error:', error);
     return NextResponse.json(
-      { success: false, _error: 'Failed to retrieve devices' },
+      {
+        success: false,
+        error: 'Failed to fetch devices',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }
-}
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const { deviceId, action, parameters } = body;
-    if (!deviceId || !action) {
-      return NextResponse.json(
-        { success: false, error: 'Device ID and action are required' },
-        { status: 400 }
-      );
-    }
-    // Find device
-    const device = devices.find(d => d.id === deviceId);
-    if (!device) {
-      return NextResponse.json(
-        { success: false, error: 'Device not found' },
-        { status: 404 }
-      );
-    }
-    const response = {
-      deviceId,
-      action,
-      status: 'executed',
-      timestamp: new Date().toISOString(),
-      parameters: parameters || {},
-      result: `Action '${action}' executed successfully on ${device.name}`
-    };
-    // Log the action
-    logger.info(`Device control: ${deviceId} - ${action}`, parameters);
-    return NextResponse.json({
-      success: true,
-      data: response
-    });
-  } catch (_error){
-    console._error('Device control _error:', _error);
-    return NextResponse.json(
-      { success: false, _error: 'Failed to control device' },
-      { status: 500 }
-    );
-  }
-}

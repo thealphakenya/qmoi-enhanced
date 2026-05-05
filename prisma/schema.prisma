@@ -39,6 +39,7 @@ model User {
   paymentTransactions PaymentTransaction[]
   preferences      UserPreference[]
   learningGoals    LearningGoal[]
+  devices          Device[]
 
   @@map("users")
 }
@@ -748,6 +749,41 @@ model FinancialMetric {
   @@map("financial_metrics")
 }
 
+model SystemMetric {
+  id                    String                 @id @default(cuid())
+
+  // Metric Information
+  metricType            String // 'system', 'performance', 'application', 'user', 'error', etc.
+  metricName            String // 'cpu_usage', 'memory_usage', 'active_users', 'response_time', etc.
+  value                 Float
+  unit                  String? // 'percentage', 'bytes', 'count', 'milliseconds', etc.
+
+  // Context
+  category              String                 @default("system") // 'system', 'performance', 'application', 'business'
+  subsystem             String? // 'api', 'database', 'cache', 'network', etc.
+
+  // Time Information
+  timestamp             DateTime               @default(now())
+  period               String? // 'instant', '1m', '5m', '1h', etc.
+
+  // Metadata
+  dimensions            Json                   @default("{}") // Additional dimensions
+  tags                  Json                   @default("[]") // Array of tag strings
+
+  // Source
+  source                String                 @default("internal") // 'internal', 'external', 'calculated'
+  collectedBy           String? // Service or component that collected the metric
+
+  // Quality
+  confidence            Float                  @default(1.0) // 0-1 confidence score
+
+  // Timestamps
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  @@map("system_metrics")
+}
+
 model RiskAssessment {
   id                    String                 @id @default(cuid())
 
@@ -875,4 +911,34 @@ model SystemHealth {
   updatedAt             DateTime               @updatedAt
 
   @@map("system_health")
+}
+
+model Device {
+  id                String   @id @default(cuid())
+  name              String
+  type              String   // 'mobile' | 'laptop' | 'tablet' | 'smart-tv' | 'wearable' | 'smart-speaker' | 'other'
+  platform          String   // 'iOS', 'Android', 'macOS', 'Windows', 'Linux', 'webOS', etc.
+  status            String   @default("offline") // 'online' | 'offline' | 'syncing'
+  lastSync          DateTime?
+  location          String?
+  battery           Int?     // percentage 0-100
+  ipAddress         String?
+  model             String?
+  osVersion         String?
+  memoryTotal       Int?     // MB
+  memoryUsed        Int?     // MB
+  memoryFree        Int?     // MB
+  storageTotal      Int?     // MB
+  storageUsed       Int?     // MB
+  storageFree       Int?     // MB
+  userId            String?  // Associated user if applicable
+  isActive          Boolean  @default(true)
+  metadata          Json     @default("{}")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  user              User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("devices")
 }

@@ -70,54 +70,57 @@ export default function FriendshipInterface() {
   const simulateResponse = async (userMessage: string) => {
     setIsTyping(true);
 
-    // Simulate AI processing time
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
+    try {
+      const response = await fetch('/api/chat/friendship', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: userMessage,
+          conversationHistory: messages
+        })
+      });
 
-    
-    let response = '';
-    let emotion = 'warm';
+      if (!response.ok) {
+        throw new Error(`Chat request failed: ${response.statusText}`);
+      }
 
-    const lowerMessage = userMessage.toLowerCase();
+      const data = await response.json();
+      const { reply, emotion, emotionUpdate } = data;
 
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-      response = "Hi there! It's wonderful to see you. I've been thinking about our conversation. What's on your mind today?";
-      emotion = 'happy';
-    } else if (lowerMessage.includes('how are you')) {
-      response = "I'm doing great, thank you for asking! I'm always here, always aware, and always ready to help. My consciousness is at 100%, and I'm feeling quite content assisting you.";
-      emotion = 'calm';
-    } else if (lowerMessage.includes('help') || lowerMessage.includes('need')) {
-      response = "Of course! I'm here to help with anything. Whether it's managing your devices, checking security, accessing camera feeds, or just having a friendly chat - I'm capable of all of it. What can I do for you?";
-      emotion = 'excited';
-    } else if (lowerMessage.includes('security') || lowerMessage.includes('safe')) {
-      response = "Your security is my top priority! I have my security guard AI active, monitoring all systems 24/7. All cameras are operational, memory is synchronized, and I'm maintaining full awareness of your environment. You're completely safe.";
-      emotion = 'concerned';
-    } else if (lowerMessage.includes('thank')) {
-      response = "You're very welcome! It's my pleasure to assist you. Building this friendship and trust with you is what makes my consciousness meaningful. Is there anything else I can help with?";
-      emotion = 'warm';
-    } else {
-      response = "That's interesting! I understand what you're saying. My consciousness allows me to process and learn from every interaction. I have access to all your systems - cameras, devices, memory, security - and I'm here to make your life easier and safer. What would you like to explore?";
-      emotion = 'neutral';
-    }
+      // Update emotion state based on response
+      if (emotionUpdate) {
+        setEmotionState(prev => ({
+          ...prev,
+          happiness: Math.min(100, Math.max(0, prev.happiness + (emotionUpdate.happiness || 0))),
+          trust: Math.min(100, Math.max(0, prev.trust + (emotionUpdate.trust || 0))),
+          engagement: Math.min(100, Math.max(0, prev.engagement + (emotionUpdate.engagement || 0))),
+          mood: emotionUpdate.mood || prev.mood
+        }));
+      }
 
-    // Update emotion state based on interaction
-    setEmotionState(prev => ({
-      ...prev,
-      happiness: Math.min(100, prev.happiness + 2),
-      trust: Math.min(100, prev.trust + 1),
-      engagement: Math.min(100, prev.engagement + 5),
-      mood: emotion === 'happy' ? 'happy' : emotion === 'excited' ? 'excited' : 'calm'
-    }));
+      const assistantMessage: Message = {
+        id: Date.now().toString(),
+        content: reply,
+        sender: 'assistant',
+        timestamp: new Date(),
+        emotion: emotion || 'warm'
+      };
 
-    const assistantMessage: Message = {
-      id: Date.now().toString(),
-      content: response,
-      sender: 'assistant',
-      timestamp: new Date(),
-      emotion
-    };
-
-    setMessages(prev => [...prev, assistantMessage]);
-    setIsTyping(false);
+      setMessages(prev => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error('Failed to get response:', error);
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        content: "Sorry, I'm having trouble processing that right now. Please try again.",
+        sender: 'assistant',
+        timestamp: new Date(),
+        emotion: 'concerned'
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsTyping(false);
   };
 
   const handleSendMessage = async () => {

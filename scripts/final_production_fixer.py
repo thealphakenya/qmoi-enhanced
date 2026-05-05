@@ -305,11 +305,28 @@ class FinalProductionFixer:
         # Check for common non-production markers
         non_prod_markers = [
             'NotImplementedError',
+            'NotImplemented',
             'pass  # TODO',
+            'pass  # FIXME',
+            'pass  # XXX',
             'raise NotImplementedError',
+            'raise NotImplemented',
             '# PRODUCTION-READY',
             '# FIXME',
-            '# XXX'
+            '# XXX',
+            '# TODO',
+            'console.log',
+            'print(',  # For debugging prints
+            'debugger',
+            'TODO:',
+            'FIXME:',
+            'XXX:',
+            'HACK:',
+            'NOTE: Remove before production',
+            'TEMP:',
+            'DUMMY',
+            'MOCK',
+            'STUB'
         ]
 
         for marker in non_prod_markers:
