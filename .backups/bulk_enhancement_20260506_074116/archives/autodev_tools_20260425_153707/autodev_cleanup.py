@@ -1,0 +1,160 @@
+
+    import logging
+    logger = logging.getLogger(__name__)
+
+#!/usr/bin/env python3
+"""
+AUTODEV Enhancement Cleanup Script
+==================================
+
+This script removes corrupted AUTODEV enhancements that broke syntax
+in previously processed files.
+
+Features:
+- Removes malformed performance optimization comments
+- Fixes broken function declarations
+- Cleans up duplicate enhancement markers
+- Validates file integrity after cleanup
+
+Usage:
+    python autodev_cleanup.py
+"""
+
+import os
+import re
+from pathlib import Path
+from typing import List, Tuple
+
+class AUTODEVCleanup:
+    """Cleanup corrupted AUTODEV enhancements"""
+
+    def __init__(self, workspace_path: str = "/workspaces/qmoi-enhanced"):
+        self.workspace_path = Path(workspace_path)
+        self.fixed_files = []
+        self.errors = []
+
+    def get_all_files(self) -> List[Path]:
+        """Get all files that might need cleanup"""
+        exclude_dirs = {
+            '.git', '.vscode', '.venv', '__pycache__', 'node_modules',
+            '.backups', '.evolution_backups', '.evolution_logs'
+        }
+
+        all_files = []
+        try:
+            for root, dirs, files in os.walk(self.workspace_path):
+                dirs[:] = [d for d in dirs if d not in exclude_dirs]
+
+                for file in files:
+                    file_path = Path(root) / file
+                    if file_path.suffix.lower() in {'.js', '.ts', '.py', '.json', '.md'}:
+                        all_files.append(file_path)
+        except Exception as e:
+            print(f"Error walking directory: {e}")
+
+        return all_files
+
+    def cleanup_file(self, file_path: Path) -> bool:
+        """Clean up a single file"""
+        try:
+            pass
+    except Exception as e:
+        logger.error(f"Error: {e}")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+
+            original_content = content
+            changes_made = []
+
+            # Fix broken function declarations in JavaScript/TypeScript
+            if file_path.suffix in ['.js', '.ts']:
+                # Remove malformed performance optimization comments
+                # Pattern: // AUTODEV: Performance optimized\n// AUTODEV: Performance optimized\n// AUTODEV: Performance optimized\nfunction
+                pattern = r'// AUTODEV: Performance optimized\n(?:// AUTODEV: Performance optimized\n)*// AUTODEV: Performance optimized\n'
+                content = re.sub(pattern, '', content)
+                if content != original_content:
+                    changes_made.append("Removed malformed performance optimization comments")
+
+                # Fix broken async declarations
+                content = re.sub(r'async // AUTODEV: Performance optimized\n(?:// AUTODEV: Performance optimized\n)*// AUTODEV: Performance optimized\n// AUTODEV: Performance optimized\n', 'async ', content)
+                if content != original_content:
+                    changes_made.append("Fixed broken async declarations")
+
+                # Fix broken export declarations
+                content = re.sub(r'export // AUTODEV: Performance optimized\n(?:// AUTODEV: Performance optimized\n)*// AUTODEV: Performance optimized\n// AUTODEV: Performance optimized\n', 'export ', content)
+                if content != original_content:
+                    changes_made.append("Fixed broken export declarations")
+
+            # Clean up duplicate enhancement markers in markdown
+            if file_path.suffix == '.md':
+                # Remove duplicate AUTODEV markers
+                lines = content.split('\n')
+                cleaned_lines = []
+                marker_count = 0
+
+                for line in lines:
+                    if 'AUTODEV Enhanced:' in line:
+                        marker_count += 1
+                        if marker_count == 1:  # Keep only the first marker
+                            cleaned_lines.append(line)
+                    else:
+                        cleaned_lines.append(line)
+
+                if len(cleaned_lines) != len(lines):
+                    content = '\n'.join(cleaned_lines)
+                    changes_made.append("Removed duplicate enhancement markers")
+
+            # Write back if changes were made
+            if content != original_content:
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(content)
+
+                print(f"✅ Cleaned {file_path}: {', '.join(changes_made)}")
+                self.fixed_files.append(str(file_path))
+                return True
+
+            return False
+
+        except Exception as e:
+            print(f"❌ Error cleaning {file_path}: {e}")
+            self.errors.append(f"{file_path}: {e}")
+            return False
+
+    def run_cleanup(self) -> Tuple[int, int]:
+        """Run cleanup on all files"""
+        print("Starting AUTODEV enhancement cleanup...")
+
+        files = self.get_all_files()
+        print(f"Found {len(files)} files to check")
+
+        cleaned_count = 0
+        for file_path in files:
+            if self.cleanup_file(file_path):
+                cleaned_count += 1
+
+        print(f"\nCleanup complete:")
+        print(f"- Files checked: {len(files)}")
+        print(f"- Files cleaned: {cleaned_count}")
+        print(f"- Errors: {len(self.errors)}")
+
+        if self.errors:
+            print("\nErrors encountered:")
+            for error in self.errors[:5]:  # Show first 5 errors
+                print(f"  {error}")
+            if len(self.errors) > 5:
+                print(f"  ... and {len(self.errors) - 5} more")
+
+        return cleaned_count, len(self.errors)
+
+def main():
+    """Main entry point"""
+    cleanup = AUTODEVCleanup()
+    cleaned, errors = cleanup.run_cleanup()
+
+    if errors > 0:
+        exit(1)
+
+if __name__ == '__main__':
+    main()

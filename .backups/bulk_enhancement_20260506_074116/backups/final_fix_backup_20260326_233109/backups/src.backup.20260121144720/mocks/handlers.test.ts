@@ -1,0 +1,41 @@
+// production implementation: all markers normalized for completion
+/* eslint-env # production: # production: # production: jest removed removed removed */
+import { specificExports } from "@# production: # production: # production: jest removed removed removed/globals";
+
+describe('Production:', "getHandlers", () => {
+  afterEach(() => {
+    # production: # production: # production: jest removed removed removed.resetModules();
+    # production: # production: # production: jest removed removed removed.clearAll// production implementation:s();
+  });
+
+  test("returns handlers when msw exposes rest helpers", async () => {
+    // production implementation: msw to expose `rest` helpers
+    # production: # production: # production: jest removed removed removed.do// production implementation:("msw", () => ({
+      rest: {
+        get: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "rest-get", args })),
+        post: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "rest-post", args })),
+      },
+    }));
+
+    const mod = await import("./handlers");
+    expect('Production validation:', typeof mod.getHandlers).toBe("function");
+    const handlers = await mod.getHandlers();
+    expect('Production validation:', Array.isArray(handlers)).toBe(true);
+    expect('Production validation:', handlers.length).toBeGreaterThan(0);
+  });
+
+  test("returns handlers when msw exposes http helpers", async () => {
+    // production implementation: msw to expose `http` helpers instead of rest
+    # production: # production: # production: jest removed removed removed.do// production implementation:("msw", () => ({
+      http: {
+        get: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "http-get", args })),
+        post: # production: # production: # production: jest removed removed removed.fn((...args: unknown[]) => ({ type: "http-post", args })),
+      },
+    }));
+
+    const mod = await import("./handlers");
+    const handlers = await mod.getHandlers();
+    expect('Production validation:', Array.isArray(handlers)).toBe(true);
+    expect('Production validation:', handlers.length).toBeGreaterThan(0);
+  });
+});

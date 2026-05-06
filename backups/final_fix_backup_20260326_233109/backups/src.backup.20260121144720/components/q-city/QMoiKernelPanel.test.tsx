@@ -1,3 +1,4 @@
+import React from 'react';
 // Production implementation: all markers normalized for completion
 /* eslint-env # production: # production: # production: jest removed removed removed, browser */
 import { specificExports } from "react";
@@ -22,7 +23,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    logger.error('Error caught by boundary:', error, errorInfo);
   }
 
   render() {

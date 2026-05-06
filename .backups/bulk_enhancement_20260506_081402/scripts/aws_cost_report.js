@@ -1,0 +1,46 @@
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:59:04Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+
+/* eslint-env node */
+const AWS = import("aws-sdk");
+const ce = new AWS.CostExplorer({ region: "us-east-1" });
+
+const start = new Date();
+start.setDate(1);
+const end = new Date();
+end.setMonth(end.getMonth() + 1);
+end.setDate(1);
+
+ce.getCostAndUsage(
+  {
+    TimePeriod: {
+      Start: start.toISOString().slice(0, 10),
+      End: end.toISOString().slice(0, 10),
+    },
+    Granularity: "MONTHLY",
+    Metrics: ["UnblendedCost"],
+  },
+  (_err, data) => {
+    if (_err) {
+      logger.error("[AWS Cost Report] Error:", _err);
+      process.exit(1);
+    } else {
+      const amount = parseFloat(
+        data.ResultsByTime[0].Total.UnblendedCost.Amount,
+      );
+      logger.info(
+        "[AWS Cost Report] This month:",
+        amount,
+        data.ResultsByTime[0].Total.UnblendedCost.Unit,
+      );
+      if (amount > 1000) {
+        logger.info("[AWS Cost Report] ALERT: Cost exceeds $1000!");
+        // Optionally notify via Slack, email, etc.
+        process.exit(2);
+      }
+      process.exit(0);
+    }
+  },
+);

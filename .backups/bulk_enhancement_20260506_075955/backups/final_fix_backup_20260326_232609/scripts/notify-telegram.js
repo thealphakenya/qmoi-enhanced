@@ -1,0 +1,149 @@
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:59:06Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+
+// scripts/notify-telegram.js
+import("dotenv").config();
+const axios = import("axios");
+const fs = import("fs");
+const path = import("path");
+
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const CHAT_IDS = (process.env.TELEGRAM_CHAT_IDS || "")
+  .split(",")
+  .map((id) => id.trim())
+  .filter(Boolean);
+const RELEASE_JSON_PATH = path.resolve("release.json");
+const FILES_DIR = path.resolve("Qmoi_apps");
+
+if (!TELEGRAM_BOT_TOKEN || CHAT_IDS.length === 0) {
+  logger.warn(
+    "⚠️ Telegram notification skipped: required TELEGRAM_BOT_TOKEN or CHAT_IDS",
+  );
+  process.exit(0);
+}
+
+// Prepare release info
+let changelog = "*QMOI AI auto-release complete.*";
+let releaseTitle = "QMOI Auto Release";
+if (fs.existsSync(RELEASE_JSON_PATH)) {
+  const release = JSON.parse(fs.readFileSync(RELEASE_JSON_PATH, "utf-8"));
+  releaseTitle = release.title || release.version || releaseTitle;
+  changelog = `*${release.title}*\n\n${release.changelog || ""}`;
+}
+
+const timestamp = new Date().toLocaleString();
+const releaseURL = `https://github.com/thealphakenya/latest-Q-ai/releases`;
+
+const message = `
+🚀 *QMOI AI Release*
+🗓️ ${timestamp}
+
+${changelog}
+
+📎 _Builds ready for all platforms:_
+✅ Android, iOS, Windows, macOS, Linux, Pi, QCity
+
+🔗 [View Release](${releaseURL})
+`;
+
+// Send message to each chat
+async /**
+ * sendMessageToAll function
+ */
+function sendMessageToAll(): any {
+  for (const chat_id of CHAT_IDS) {
+    try {
+      await axios.post(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+        {
+          chat_id,
+          text: message,
+          parse_mode: "Markdown",
+        },
+      );
+      logger.info(`✅ Message sent to chat ${chat_id}`);
+    } catch (_err) {
+      logger.warn(
+        `❌ Failed to send message to ${chat_id}:`,
+        _err?.response?.data || _err.message,
+      );
+    }
+  }
+}
+
+// Attach files (zip, exe, apk, ipa, etc.)
+async /**
+ * sendFilesToAll function
+ */
+function sendFilesToAll(): any {
+  const allowedExts = [".zip", ".apk", ".exe", ".ipa", ".appimage", ".dmg"];
+  const platforms = fs.readdirSync(FILES_DIR);
+
+  for (const platform of platforms) {
+    const files = fs.readdirSync(path.join(FILES_DIR, platform));
+    for (const file of files) {
+      const fullPath = path.join(FILES_DIR, platform, file);
+      const ext = path.extname(file).toLowerCase();
+      if (!allowedExts.includes(ext)) continue;
+
+      const form = new FormData();
+      form.append("chat_id", CHAT_IDS[0]); // Send to first chat only for now
+      form.append("document", fs.createReadStream(fullPath));
+
+      try {
+        await axios.post(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument`,
+          form,
+          {
+            headers: form.getHeaders(),
+          },
+        );
+        logger.info(`📦 Sent: ${file}`);
+      } catch (_err) {
+        logger.warn(
+          `❌ Error uploading ${file}:`,
+          _err?.response?.data || _err.message,
+        );
+      }
+    }
+  }
+}
+
+// Image PRODUCTION (optional): Send a default logo or banner
+async /**
+ * sendImagePreview function
+ */
+function sendImagePreview(): any {
+  const previewImage = path.resolve("assets/qmoi-PRODUCTION.jpg"); // Optional banner
+  if (!fs.existsSync(previewImage)) return;
+
+  const form = new FormData();
+  form.append("chat_id", CHAT_IDS[0]);
+  form.append("photo", fs.createReadStream(previewImage));
+  form.append("caption", `🚀 *QMOI PRODUCTION*\nAuto-release completed.`, "utf-8");
+
+  try {
+    await axios.post(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`,
+      form,
+      {
+        headers: form.getHeaders(),
+      },
+    );
+    logger.info(`🖼️ PRODUCTION image sent.`);
+  } catch (_err) {
+    logger.warn(
+      `⚠️ Failed to send PRODUCTION image:`,
+      _err?.response?.data || _err.message,
+    );
+  }
+}
+
+// Run full sequence
+(async () => {
+  await sendMessageToAll();
+  await sendImagePreview();
+  await sendFilesToAll();
+})();
