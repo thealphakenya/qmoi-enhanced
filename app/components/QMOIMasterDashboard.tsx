@@ -204,7 +204,7 @@ export function QMOIMasterDashboard({
         setAutomationStatus(data.status);
       }
     } catch (_err) {
-      logger.error("Failed to fetch automation status:", err);
+      console.error("Failed to fetch automation status:", err);
     }
   };
 
@@ -225,7 +225,7 @@ export function QMOIMasterDashboard({
         setFinancialData(data);
       }
     } catch (_err) {
-      logger.error("Failed to fetch financial data:", err);
+      console.error("Failed to fetch financial data:", err);
     }
   };
 
@@ -246,7 +246,7 @@ export function QMOIMasterDashboard({
         setLinksData(data);
       }
     } catch (_err) {
-      logger.error("Failed to fetch links data:", err);
+      console.error("Failed to fetch links data:", err);
     }
   };
 
@@ -267,7 +267,7 @@ export function QMOIMasterDashboard({
         setGlobalData(data.data);
       }
     } catch (_err) {
-      logger.error("Failed to fetch global finance data:", err);
+      console.error("Failed to fetch global finance data:", err);
     }
   };
 
@@ -287,7 +287,7 @@ export function QMOIMasterDashboard({
         setDomainData(data);
       }
     } catch (_err) {
-      logger.error("Failed to fetch domain data:", err);
+      console.error("Failed to fetch domain data:", err);
     }
   };
 
@@ -308,7 +308,7 @@ export function QMOIMasterDashboard({
       setToken("");
       onUnauthorized?.();
     } catch (_err) {
-      logger.error("Logout failed:", err);
+      console.error("Logout failed:", err);
       setError("Failed to logout properly");
     } finally {
       setLoading(false);
@@ -327,7 +327,7 @@ export function QMOIMasterDashboard({
       setError(null);
     } catch (_err) {
       setError("Failed to access camera. Please check permissions.");
-      logger.error("Camera access failed:", err);
+      console.error("Camera access failed:", err);
     }
   };
 
@@ -1156,7 +1156,7 @@ export function QMOIMasterDashboard({
                       if (response.ok) {
                         const report = await response.text();
                         // In a real implementation, this would download or display the report
-                        logger.info("Audit report generated:", report);
+                        console.log("Audit report generated:", report);
                       }
                     } catch (_err) {
                       setError("Failed to generate audit report");
@@ -1247,7 +1247,7 @@ export function QMOIMasterDashboard({
                       <button
                         onClick={() => {
                           // In a real implementation, this would open track details
-                          logger.info("View track details:", track.id);
+                          console.log("View track details:", track.id);
                         }}
                         className="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-slate-300 text-sm rounded transition-colors"
                       >
@@ -1270,7 +1270,7 @@ export function QMOIMasterDashboard({
                       });
                       if (response.ok) {
                         const data = await response.json();
-                        logger.info("Tracks data:", data);
+                        console.log("Tracks data:", data);
                         setError(null);
                       } else {
                         setError("Failed to fetch tracks data");
@@ -1321,7 +1321,7 @@ export function QMOIMasterDashboard({
                   <AvatarSelector
                     onAvatarChange={(avatarId) => {
                       // Handle avatar change - could add logging or additional actions here
-                      logger.info(`Avatar changed to: ${avatarId}`);
+                      console.log(`Avatar changed to: ${avatarId}`);
                     }}
                     className="max-w-4xl"
                   />
@@ -1333,7 +1333,7 @@ export function QMOIMasterDashboard({
                   <VoiceSelector
                     onVoiceChange={(voiceId) => {
                       // Handle voice change - could add logging or additional actions here
-                      logger.info(`Voice changed to: ${voiceId}`);
+                      console.log(`Voice changed to: ${voiceId}`);
                     }}
                     className="max-w-4xl"
                   />
@@ -1918,195 +1918,3 @@ export function QMOIMasterDashboard({
 }
 
 export default QMOIMasterDashboard;
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    logger.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
-
-
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <div className="error-boundary">Something went wrong. Please try again.</div>;
-    }
-    return this.props.children;
-  }
-}
