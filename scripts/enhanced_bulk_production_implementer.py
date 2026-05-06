@@ -997,43 +997,9 @@ class ErrorBoundary extends React.Component {
 
         return dict(sorted(error_counts.items(), key=lambda x: x[1], reverse=True))
 
-def main():
-    """Main execution function"""
-    logger.info("Starting Enhanced Bulk Production Implementation")
-
-    implementer = EnhancedBulkProductionImplementer()
-
-    try:
-        # Scan and enhance files
-        results = implementer.scan_and_enhance_files()
-
-        # Generate report
-        report = implementer.generate_report(results)
-
-        # Print summary
-        stats = report['stats']
-        logger.info("=" * 60)
-        logger.info("ENHANCEMENT COMPLETE")
-        logger.info("=" * 60)
-        logger.info(f"Files Processed: {stats['files_processed']}")
-        logger.info(f"Files Modified: {stats['files_modified']}")
-        logger.info(f"Files Backed Up: {stats['files_backed_up']}")
-        logger.info(f"Total Replacements: {stats['total_replacements']}")
-        logger.info(f"Errors Encountered: {stats['errors_encountered']}")
-        logger.info(f"Success Rate: {report['summary']['success_rate']:.1%}")
-        logger.info(f"Backup Location: {report['backup_location']}")
-        logger.info("=" * 60)
-
-        # Update resumefromhere.txt
-        implementer._update_resume_file(stats)
-
-    except Exception as e:
-        logger.error(f"Bulk enhancement failed: {e}")
-        raise
-
-def _update_resume_file(self, stats: Dict) -> None:
-    """Update resumefromhere.txt with completion status"""
-    resume_content = f"""# Resume From Here - Script Enhancement Phase
+    def _update_resume_file(self, stats: Dict) -> None:
+        """Update resumefromhere.txt with completion status"""
+        resume_content = f"""# Resume From Here - Script Enhancement Phase
 **Date:** {datetime.now().strftime('%B %d, %Y')}
 **Status:** ✅ BULK ENHANCEMENT COMPLETE
 
@@ -1092,11 +1058,47 @@ def _update_resume_file(self, stats: Dict) -> None:
 **Status:** ✅ ENHANCEMENT COMPLETE - Ready for validation
 """
 
-    resume_path = self.workspace / 'resumefromhere.txt'
-    with open(resume_path, 'w', encoding='utf-8') as f:
-        f.write(resume_content)
+        resume_path = self.workspace / 'resumefromhere.txt'
+        with open(resume_path, 'w', encoding='utf-8') as f:
+            f.write(resume_content)
 
-    logger.info("Updated resumefromhere.txt with completion status")
+        logger.info("Updated resumefromhere.txt with completion status")
+
+
+def main():
+    """Main execution function"""
+    logger.info("Starting Enhanced Bulk Production Implementation")
+
+    implementer = EnhancedBulkProductionImplementer()
+
+    try:
+        # Scan and enhance files
+        results = implementer.scan_and_enhance_files()
+
+        # Generate report
+        report = implementer.generate_report(results)
+
+        # Print summary
+        stats = report['stats']
+        logger.info("=" * 60)
+        logger.info("ENHANCEMENT COMPLETE")
+        logger.info("=" * 60)
+        logger.info(f"Files Processed: {stats['files_processed']}")
+        logger.info(f"Files Modified: {stats['files_modified']}")
+        logger.info(f"Files Backed Up: {stats['files_backed_up']}")
+        logger.info(f"Total Replacements: {stats['total_replacements']}")
+        logger.info(f"Errors Encountered: {stats['errors_encountered']}")
+        logger.info(f"Success Rate: {report['summary']['success_rate']:.1%}")
+        logger.info(f"Backup Location: {report['backup_location']}")
+        logger.info("=" * 60)
+
+        # Update resumefromhere.txt
+        implementer._update_resume_file(stats)
+
+    except Exception as e:
+        logger.error(f"Bulk enhancement failed: {e}")
+        raise
+
 
 if __name__ == "__main__":
     main()
