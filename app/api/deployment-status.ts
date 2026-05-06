@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Deployment status error:', error);
+    logger.error('Deployment status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -177,7 +177,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Deployment status POST error:', error);
+    logger.error('Deployment status POST error:', error);
     return NextResponse.json(
       {
         success: false,

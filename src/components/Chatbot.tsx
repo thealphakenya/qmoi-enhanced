@@ -163,7 +163,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
       setChatHistory((prev) => [...prev, aiMessage]);
       speakText(replyText);
     } catch (error) {
-      console.error("QMOI chat error:", error);
+      logger.error("QMOI chat error:", error);
       const errorMessage: ChatMessage = {
         id: `error-${Date.now()}`,
         content: "There was a problem sending your message. Please try again.",
@@ -268,3 +268,27 @@ const Chatbot: React.FC<ChatbotProps> = ({
 export default Chatbot;
 
 export { Chatbot };
+
+
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}

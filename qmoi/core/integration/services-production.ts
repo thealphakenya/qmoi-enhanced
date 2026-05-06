@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 /**
  * 
  * Coordinates all QMOI services:

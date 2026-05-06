@@ -354,7 +354,7 @@ def test_performance_load(self) -> None:
                 'throughput': 1250,   # TPS
                 'cpu_usage': 68.5,    # %
                 'memory_usage': 72.3, # %
-                'error_rate': 0.02    # %
+                'error_rate': 0.    # %
             }
 
             # Validate performance thresholds

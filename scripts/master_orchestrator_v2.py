@@ -138,7 +138,7 @@ function ', 'async ', '@', 'endpoint', 'route']):
         
         elapsed = datetime.now() - self.start_time
         
-        update_content = f"""
+        update_content = f""""
 ════════════════════════════════════════════════════════════════════════════════
 🚀 BULK ORCHESTRATION COMPLETE
 ════════════════════════════════════════════════════════════════════════════════

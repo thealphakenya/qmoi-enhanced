@@ -219,7 +219,7 @@ def scan_repository(self) -> Any:
     """
 def generate_report(self) -> Any:
         """Generate focused report"""
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                   {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
@@ -231,14 +231,14 @@ Files requiring updates:     {len(self.issues)}
 
 """
         if self.issues_found == 0:
-            report += """
+            report += """"
 ✅ EXCELLENT NEWS!
 
 
 ──────────────────────────────────────────────────────────────────────────────
 """
         else:
-            report += f"""
+            report += f""""
 ──────────────────────────────────────────────────────────────────────────────
 
 """
@@ -248,7 +248,7 @@ Files requiring updates:     {len(self.issues)}
                     report += f"   Line {issue['line']}: {issue['pattern']}\n"
                     report += f"   Code: {issue['code']}\n"
 
-        report += f"""
+        report += f""""
 
 ──────────────────────────────────────────────────────────────────────────────
 📝 Generated: {datetime.now().isoformat()}Z

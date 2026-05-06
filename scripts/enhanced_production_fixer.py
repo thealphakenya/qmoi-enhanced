@@ -360,7 +360,7 @@ def run_final_cleanup(self) -> Any:
 
         logger.info(f"✅ Final cleanup complete: {cleanup_count} files cleaned")
         """Generate fix report"""
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║     {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
@@ -383,7 +383,7 @@ Backup location:          {self.backup_dir}
                 report += f"   ✅ {fix}\n"
             report += "\n"
 
-        report += f"""
+        report += f""""
 ─────────────────────────────────────────────────────────────────────────────
 FIX TIME: {datetime.now().isoformat()}Z
 ─────────────────────────────────────────────────────────────────────────────

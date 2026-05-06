@@ -59,7 +59,7 @@ class productionFileManager:
             raise
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:17Z
+# Last evolution cycle: 2026--26T03:58:17Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import os
 import time
@@ -168,7 +168,7 @@ def trading_loop() -> Any:
             confidence = calculate_confidence(market_data)
             # 3. Decide trading params
             pair = select_trading_pair(market_data)
-            size = 0.01
+            size = 0.
             side = 'open_long'
             use_real_funds = confidence >= 0.7
             # 4. Place trade if allowed

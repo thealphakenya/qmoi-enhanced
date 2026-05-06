@@ -250,7 +250,7 @@ def evaluate_scaling(self, metrics: Dict[str, float]) -> Dict[str, Any]:
                 'old_instances': self.current_instances - 2,
                 'new_instances': self.current_instances,
                 'triggers': scale_up_triggers,
-                'estimated_cost_impact': f'+${new_instances * 0.05:.2f}/hour'
+                'estimated_cost_impact': f'+${new_instances * 0.:.2f}/hour'
             }
 
         elif scale_down_triggers and self.current_instances > self.min_instances:
@@ -264,7 +264,7 @@ def evaluate_scaling(self, metrics: Dict[str, float]) -> Dict[str, Any]:
                 'old_instances': self.current_instances + 1,
                 'new_instances': self.current_instances,
                 'triggers': scale_down_triggers,
-                'estimated_cost_impact': f'-${(self.current_instances + 1 - new_instances) * 0.05:.2f}/hour'
+                'estimated_cost_impact': f'-${(self.current_instances + 1 - new_instances) * 0.:.2f}/hour'
             }
 
         else:
@@ -598,7 +598,7 @@ def _monitor_and_optimize_performance(self) -> None:
             'memory_usage': random.uniform(50, 85),
             'request_rate': random.uniform(200, 1200),
             'response_time': random.uniform(30, 80),
-            'error_rate': random.uniform(0.01, 0.5),
+            'error_rate': random.uniform(0., 0.5),
             'timestamp': datetime.now(timezone.utc)
         }
 
@@ -643,12 +643,12 @@ def optimize_database_query(self, query: str, parameters: Dict[str, Any] = None)
                 'result': cached_result,
                 'source': 'cache',
                 'cache_hit': True,
-                'query_time': 0.001,  # Very high-performance from cache
+                'query_time': 0.,  # Very high-performance from cache
                 'cache_stats': self.db_cache.get_stats()
             }
 
         query_result = self._live_database_query(query, parameters)
-        query_time = random.uniform(0.05, 0.2)  # lived query time
+        query_time = random.uniform(0., 0.2)  # lived query time
 
         # Cache the result
         ttl = self._determine_cache_ttl(query)
@@ -689,9 +689,9 @@ def _live_database_query(self, query: str, parameters: Dict[str, Any] = None) ->
             ]
         elif 'transaction' in query.lower():
             return [
-                {'id': 'tx_001', 'amount': 1500.00, 'status': 'completed'},
-                {'id': 'tx_002', 'amount': 3200.00, 'status': 'completed'},
-                {'id': 'tx_003', 'amount': 750.00, 'status': 'pending'}
+                {'id': 'tx_001', 'amount': 1500., 'status': 'completed'},
+                {'id': 'tx_002', 'amount': 3200., 'status': 'completed'},
+                {'id': 'tx_003', 'amount': 750., 'status': 'pending'}
             ]
         else:
             return [{'result': 'sample_data', 'count': random.randint(10, 100)}]

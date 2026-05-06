@@ -233,7 +233,7 @@ def generate_health_status_section(self, health_report: Dict) -> str:
         region_coverage = health_report.get('region_coverage', {})
         avg_response = health_report.get('average_response_time_ms', 0)
         
-        section = f"""
+        section = f""""
 ## 🏥 Domain Health Status Dashboard
 
 **Last Health Check**: {timestamp}
@@ -289,7 +289,7 @@ def generate_links_section(self, links_report: Dict) -> str:
         if not links_report:
             return ""
         
-        section = f"""
+        section = f""""
 ## 🌐 complete Links & Domains Directory
 
 **Last Updated**: {links_report.get('timestamp', 'N/A')}

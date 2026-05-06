@@ -1,3 +1,4 @@
+import React from 'react';
 
 // Master-only access control
 const requireMasterAccess = (WrappedComponent: any) => {

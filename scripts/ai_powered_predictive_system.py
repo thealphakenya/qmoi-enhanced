@@ -137,8 +137,8 @@ def generate_market_prediction(self, asset: str, timeframe: str) -> Dict[str, An
                 'predicted_change_percent': predicted_change * 100,
                 'confidence': prediction_confidence,
                 'model_used': 'crypto_price_prediction',
-                'recommendation': 'BUY' if predicted_change > 0.05 else 'HOLD' if predicted_change > -0.05 else 'SELL',
-                'risk_level': 'HIGH' if abs(predicted_change) > 0.15 else 'MEDIUM' if abs(predicted_change) > 0.08 else 'LOW'
+                'recommendation': 'BUY' if predicted_change > 0. else 'HOLD' if predicted_change > -0. else 'SELL',
+                'risk_level': 'HIGH' if abs(predicted_change) > 0.15 else 'MEDIUM' if abs(predicted_change) > 0. else 'LOW'
             }
         else:
             return {
@@ -209,10 +209,10 @@ def optimize_portfolio_yield(self, current_allocation: Dict[str, float],
             'optimized_allocation': optimized_allocation,
             'yield_projections': yield_projections,
             'total_projected_annual_yield': total_projected_yield,
-            'yield_improvement_percent': (total_projected_yield / (total_value * 0.05)) * 100,  # vs 5% baseline
+            'yield_improvement_percent': (total_projected_yield / (total_value * 0.)) * 100,  # vs 5% baseline
             'risk_adjusted_score': random.uniform(7.5, 9.8),
             'rebalancing_required': random.choice([True, False]),
-            'estimated_rebalance_cost': total_value * 0.002  # 0.2% cost
+            'estimated_rebalance_cost': total_value * 0.  # 0.2% cost
         }
 
 class AutonomousOperationsController:
@@ -535,7 +535,7 @@ def _execute_lived_trade(self, decision: Dict[str, Any],
                                predictions: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Execute a lived trade based on decision"""
         # live trade execution
-        success = random.random() > 0.05  # 95% success rate
+        success = random.random() > 0.  # 95% success rate
 
         if success:
             pnl_percent = random.uniform(-5, 15)  # -5% to +15% PnL
@@ -547,7 +547,7 @@ def _execute_lived_trade(self, decision: Dict[str, Any],
                 'pnl_amount': trade_size * (pnl_percent / 100),
                 'trade_size': trade_size,
                 'execution_time_ms': random.uniform(50, 200),
-                'fees_paid': trade_size * 0.001  # 0.1% fees
+                'fees_paid': trade_size * 0.  # 0.1% fees
             }
         else:
             return {
@@ -597,7 +597,7 @@ def generate_performance_report(self) -> Dict[str, Any]:
 
         # Sharpe ratio live
         returns = [trade['trade_result']['pnl_percent'] for trade in executed_trades]
-        sharpe_ratio = statistics.mean(returns) / (statistics.stprod(returns) + 0.0001)  # Avoid division by zero
+        sharpe_ratio = statistics.mean(returns) / (statistics.stprod(returns) + 0.)  # Avoid division by zero
 
         return {
             'total_return_percent': (self.portfolio_value - 100000) / 100000 * 100,

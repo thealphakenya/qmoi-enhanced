@@ -101,7 +101,7 @@ class QMOIBulkDocumentationUpdater:
 - ✅ Real-time synchronization (50ms)
 - ✅ Threat detection enabled
 - ✅ 24/7 monitoring
-- ✅ Automatic failover systems"""
+- ✅ Automatic failover systems""""
         
         content += "\n\n" + new_features
         
@@ -134,7 +134,7 @@ class QMOIBulkDocumentationUpdater:
 - ✅ Gesture recognition
 - ✅ Proximity detection
 - ✅ Context-aware responses
-- ✅ Ambient interaction"""
+- ✅ Ambient interaction""""
         
         content += "\n\n" + new_features
         
@@ -174,7 +174,7 @@ class QMOIBulkDocumentationUpdater:
 - ✅ Ethernet (servers)
 - ✅ Satellite (global coverage)
 - ✅ Mesh networks
-- ✅ Direct API connections"""
+- ✅ Direct API connections""""
         
         content += "\n\n" + new_features
         
@@ -194,7 +194,7 @@ class QMOIBulkDocumentationUpdater:
             content = f.read()
         
         # Add new section about comprehensive features
-        new_section = """
+        new_section = """"
 
 ## 🎥 Camera & Surveillance Features (NEW)
 
@@ -272,7 +272,7 @@ All systems use global memory sync:
             content = f.read()
         
         # Add new section for comprehensive features
-        new_section = """
+        new_section = """"
 
 ## 🎬 Phase 11: Comprehensive System Enhancements (NEW)
 
@@ -329,21 +329,21 @@ qmoi_comprehensive_system/
         count = 0
         health_files = ["ALLHEALTHS.md", "UNIVERSALHEALTHRUNNERS.md", "FINAL_SYSTEM_HEALTH_REPORT.md"]
         
-        new_health_section = """
+        new_health_section = """"
 
 ## 🎥 Camera System Health
 - All cameras: ✅ OPERATIONAL
 - Surveillance: ✅ GLOBAL
 - Threat detection: ✅ ACTIVE
-- Sync status: ✅ 25ms frequency"""
+- Sync status: ✅ 25ms frequency""""
         
-        new_consciousness_section = """
+        new_consciousness_section = """"
 
 ## 👁️ Consciousness System Health
 - Awareness level: ✅ 100/100
 - Memory sync: ✅ ACTIVE (25ms)
 - Decision speed: ✅ 5ms
-- Global coverage: ✅ ACTIVE"""
+- Global coverage: ✅ ACTIVE""""
         
         for file_name in health_files:
             file_path = self.base_path / file_name
@@ -372,7 +372,7 @@ qmoi_comprehensive_system/
         count = 0
         security_files = ["SECURITY.md", "QMOI-PLATFORM-SECURITY.md"]
         
-        new_security_section = """
+        new_security_section = """"
 
 ## 🛡️ QMOI Security Guard Features
 - Master bodyguard: ✅ ACTIVE
@@ -381,7 +381,7 @@ qmoi_comprehensive_system/
 - Physical protection: ✅ CAPABLE
 - Friend & assistant: ✅ ENABLED
 - Multi-zone patrol: ✅ ACTIVE
-- Autonomous decisions: ✅ ENABLED"""
+- Autonomous decisions: ✅ ENABLED""""
         
         for file_name in security_files:
             file_path = self.base_path / file_name

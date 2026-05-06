@@ -59,7 +59,7 @@ health_monitor = productionHealthMonitor()
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:52Z
+# Last evolution cycle: 2026--26T03:58:52Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -92,7 +92,7 @@ class HFSpaceCostMonitor:
         "cpu": {"free": 0.0, "hourly": 0.0},  # Free tier CPU
         "gpu_small": {"hourly": 0.30},  # T4 GPU
         "gpu_medium": {"hourly": 0.60},  # A10G GPU
-        "gpu_large": {"hourly": 3.00},  # A40 GPU
+        "gpu_large": {"hourly": 3.},  # A40 GPU
     }
     
     # Monthly limits to prevent surprises

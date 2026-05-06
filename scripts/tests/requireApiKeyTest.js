@@ -6,9 +6,9 @@
 import assert from "assert";
 
 const logger = {
-  info: (...args) => console.log(...args),
+  info: (...args) => logger.info(...args);,
   warn: (...args) => console.warn(...args),
-  error: (...args) => console.error(...args)
+  error: (...args) => logger.error(...args);
 };
 
 /**
@@ -39,7 +39,7 @@ function requireApiKey(headers) {
       },
     };
   } catch (err) {
-    console.log("Error:", err);
+    logger.info("Error:", err);
     return {
       ok: false,
       response: { body: { error: "Authentication error" }, status: 500 },

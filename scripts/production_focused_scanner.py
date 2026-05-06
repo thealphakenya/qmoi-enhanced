@@ -263,7 +263,7 @@ def generate_report(self) -> Any:
                         for issue in issues if issue['severity'] == 'HIGH')
         medium_count = self.issues_found - high_count
         
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║     {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
@@ -302,7 +302,7 @@ Files with issues:          {self.files_with_issues}
                     report += f"       {issue['code']}\n"
                 report += "\n"
         
-        report += f"""
+        report += f""""
 ─────────────────────────────────────────────────────────────────────────────
 SCAN TIME: {datetime.now().isoformat()}Z
 ─────────────────────────────────────────────────────────────────────────────

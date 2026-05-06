@@ -103,7 +103,7 @@ health_monitor = productionHealthMonitor()
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:52Z
+# Last evolution cycle: 2026--26T03:58:52Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -159,7 +159,7 @@ def main() -> Any:
         score = info.get('score')
         matches = info.get('matches')
         slug = path.replace('/', '_').replace('.', '_')
-        draft_path = OUT_DIR / f'{i+1:02d}_{slug}.md'
+        draft_path = OUT_DIR / f'{i+1:d}_{slug}.md'
         body = [f'# {title}', '', f'**File**: `{path}`', f'**Priority score**: {score}', '', '## Summary of matches', '', summarize_matches(matches), '', '## required action', '', recommend_action(path, score, matches), '', '## production: NOTE ADDRESSED - s', '', 'Please review and implement changes in a feature branch. Link tests and QA steps here.']
         draft_path.write_text('\n'.join(body), encoding='utf-8')
         plan_lines.append(f'- [{title}]({draft_path.relative_to(ROOT)})')

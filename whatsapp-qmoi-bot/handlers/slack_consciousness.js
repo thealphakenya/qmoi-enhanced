@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 const fs = require("fs");
 const path = require("path");
 const { WebClient, RTMClient } = require("@slack/web-api");

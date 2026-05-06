@@ -167,7 +167,7 @@ def validate_dns_resolution(self, domain: str) -> bool:
         
         # For demo purposes, assume most domains resolve
         import random
-        resolves = random.random() > 0.05  # 95% success rate
+        resolves = random.random() > 0.  # 95% success rate
         
         if resolves:
             self.log(f"✅ DNS resolves for {base_domain} (simulated)")

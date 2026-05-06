@@ -221,18 +221,18 @@ if (args.includes('--status')) {
   const balancesPath = path.join(process.cwd(), 'q', 'BALANCES.md');
   try {
     await fs.access(balancesPath);
-    console.log('✅ Q Balances system status: ACTIVE');
-    console.log('📄 BALANCES.md exists and is being monitored');
+    logger.info('✅ Q Balances system status: ACTIVE');
+    logger.info('📄 BALANCES.md exists and is being monitored');
   } catch {
-    console.log('❌ Q Balances system status: INACTIVE');
-    console.log('📄 BALANCES.md not found');
+    logger.info('❌ Q Balances system status: INACTIVE');
+    logger.info('📄 BALANCES.md not found');
   }
   process.exit(0);
 }
 
 if (args.includes('--stop')) {
   // DONE: Implement graceful stop
-  console.log('🛑 Stopping Q Balances system...');
+  logger.info('🛑 Stopping Q Balances system...');
   // For now, just exit - in a real implementation we'd signal running processes
   process.exit(0);
 }

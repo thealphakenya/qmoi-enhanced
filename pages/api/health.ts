@@ -64,7 +64,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.status(200).json(healthResponse);
   } catch (error) {
-    console.error('Health check error:', error);
+    logger.error('Health check error:', error);
     return res.status(500).json({
       status: 'unhealthy',
       error: 'Internal server error',

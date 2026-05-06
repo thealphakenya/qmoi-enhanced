@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:56Z
+// Last evolution cycle: 2026--26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -235,7 +235,7 @@ def check_dmg(self, filepath) -> Any:
         """Verify macOS DMG"""
         self.log(f"Checking DMG: {filepath}")
         
-        # DMG magic: 00ad0bad (big-endian)
+        # DMG magic: ad0bad (big-endian)
         try:
             with open(filepath, 'rb') as f:
                 header = f.read(4)

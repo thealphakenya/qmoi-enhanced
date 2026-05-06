@@ -159,7 +159,7 @@ class QMOIAutonomousCodeReplacer:
         """Generate // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function implementation based on context"""
+function implementation based on context""""
         # Analyze context to determine what kind of implementation is needed
         if 'def ' in context:
             # Function definition - implement basic functionality
@@ -301,7 +301,7 @@ def main():
     """Main // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function for autonomous code replacement"""
+function for autonomous code replacement""""
     replacer = QMOIAutonomousCodeReplacer()
     report = replacer.run_autonomous_replacement()
 

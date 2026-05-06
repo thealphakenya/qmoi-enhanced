@@ -85,7 +85,7 @@ export async function GET(req: NextRequest, { params }: { params: { walletId: st
     });
 
   } catch (error) {
-    console.error('Wallet GET error:', error);
+    logger.error('Wallet GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -252,7 +252,7 @@ export async function POST(req: NextRequest, { params }: { params: { walletId: s
     });
 
   } catch (error) {
-    console.error('Wallet POST error:', error);
+    logger.error('Wallet POST error:', error);
     return NextResponse.json(
       {
         success: false,

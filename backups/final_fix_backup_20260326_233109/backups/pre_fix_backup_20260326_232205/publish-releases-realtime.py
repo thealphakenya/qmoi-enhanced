@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:29Z
+// Last evolution cycle: 2026--26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
@@ -273,7 +273,7 @@ def generate_release_notes(self) -> str:
             if len(assets) > 5:
                 notes += f"\n... and {len(assets) - 5} more files\n"
 
-        notes += f"""
+        notes += f""""
 
 ---
 
@@ -457,7 +457,7 @@ def main() -> Any:
     parser = argparse.ArgumentParser(
         description='🚀 QMOI Real-Time GitHub Release Publisher',
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
+        epilog=""""
 Examples:
   # Publish production release
   python publish-releases-realtime.py --version v1.2.3

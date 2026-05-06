@@ -32,7 +32,7 @@ def get_database_connection():
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:15Z
+# Last evolution cycle: 2026--26T03:58:15Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -475,12 +475,12 @@ class GlobalRevenueManager:
 
     def setup_financial_manager(self) -> None:
         """Initialize wallets, bank accounts, and master login vault"""
-        self.register_wallet('qmoi-revenue-wallet', 'revenue', 'USD', Decimal('250000.00'))
-        self.register_wallet('qmoi-main-wallet', 'system', 'USD', Decimal('150000.00'))
-        self.register_wallet('qmoi-cashon-wallet', 'cashon', 'USD', Decimal('50000.00'))
-        self.register_wallet('qmoi-megavault', 'vault', 'USD', Decimal('500000.00'))
-        self.register_bank_account('qmoi-bank-usa', 'Bank of America', 'USD', Decimal('300000.00'))
-        self.register_bank_account('qmoi-bank-kenya', 'Equity Bank', 'KES', Decimal('12000000.00'))
+        self.register_wallet('qmoi-revenue-wallet', 'revenue', 'USD', Decimal('250000.'))
+        self.register_wallet('qmoi-main-wallet', 'system', 'USD', Decimal('150000.'))
+        self.register_wallet('qmoi-cashon-wallet', 'cashon', 'USD', Decimal('50000.'))
+        self.register_wallet('qmoi-megavault', 'vault', 'USD', Decimal('500000.'))
+        self.register_bank_account('qmoi-bank-usa', 'Bank of America', 'USD', Decimal('300000.'))
+        self.register_bank_account('qmoi-bank-kenya', 'Equity Bank', 'KES', Decimal('12000000.'))
         self.sync_master_login_vault()
         logger.info('Financial manager initialized with wallets and bank accounts')
 
@@ -582,7 +582,7 @@ class GlobalRevenueManager:
         """Autonomously top up wallets that are empty or below threshold with confidence assessment"""
         for wallet_id, wallet in self.wallets.items():
             balance = Decimal(str(wallet['balance']))
-            threshold = Decimal('5000.00') if wallet['currency'] == 'USD' else Decimal('5000.00')
+            threshold = Decimal('5000.') if wallet['currency'] == 'USD' else Decimal('5000.')
 
             if balance < threshold and wallet_id != 'qmoi-main-wallet':
                 needed = threshold - balance
@@ -702,7 +702,7 @@ class GlobalRevenueManager:
             wallet['last_updated'] = get_utc_now().isoformat()
             logger.info(f'Routed {amount} to wallet {wallet_id}')
         if self.wallets.get('qmoi-megavault'):
-            self.megavault_balance += amount * Decimal('0.05')
+            self.megavault_balance += amount * Decimal('0.')
             logger.info(f'Allocated 5% to mega vault for reserves')
             self._trigger_balance_update()
             # Auto-update balances after revenue change
@@ -836,7 +836,7 @@ class GlobalRevenueManager:
 
         # Success rate improvements
         if platform.success_rate < 0.8:
-            platform.automation_level = min(1.0, platform.automation_level + 0.05)
+            platform.automation_level = min(1.0, platform.automation_level + 0.)
             self.save_platform(platform)
 
     def _adjust_targets_based_on_performance(self) -> None:
@@ -999,7 +999,7 @@ class AITradingSystem:
             }
 
             if self.should_deploy_funds(confidence_data):
-                amount = Decimal('0.01')  # Small test amount for confidence testing
+                amount = Decimal('0.')  # Small test amount for confidence testing
                 revenue_amount = amount * Decimal(str(current_price))
 
                 # Update revenue with confidence report

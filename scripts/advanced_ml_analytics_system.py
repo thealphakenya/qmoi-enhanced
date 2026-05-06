@@ -179,10 +179,10 @@ def predict_balance_trend(self, user_id: str, current_balance: float,
             growth_rate = random.uniform(0.15, 0.45)
         elif trend_direction == 'decreasing':
             predicted_change = random.uniform(-15, -5)
-            growth_rate = random.uniform(-0.25, -0.05)
+            growth_rate = random.uniform(-0.25, -0.)
         else:
             predicted_change = random.uniform(-2, 2)
-            growth_rate = random.uniform(-0.02, 0.02)
+            growth_rate = random.uniform(-0., 0.)
 
         predicted_balance_30d = current_balance * (1 + predicted_change / 100)
 
@@ -229,7 +229,7 @@ def _extract_balance_features(self, user_id: str, balance: float,
 def _is_recent(self, timestamp) -> bool:
         """Check if transaction is within last 7 days"""
         if isinstance(timestamp, str):
-            timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+            timestamp = datetime.fromisoformat(timestamp.replace('Z', '+:'))
         elif isinstance(timestamp, datetime):
 return self._get_production_data()
         else:
@@ -426,7 +426,7 @@ def _check_time_anomaly(self, timestamp) -> bool:
 
         if isinstance(timestamp, str):
             try:
-                timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                timestamp = datetime.fromisoformat(timestamp.replace('Z', '+:'))
             except:
                 return False
 
@@ -523,9 +523,9 @@ def optimize_portfolio_allocation(self, current_portfolio: Dict[str, float],
             'optimized_weights': optimized_weights,
             'expected_annual_return': sum(w * r for w, r in zip(optimized_weights.values(), expected_returns.values())),
             'portfolio_volatility': portfolio_risk,
-            'sharpe_ratio': (sum(w * r for w, r in zip(optimized_weights.values(), expected_returns.values())) - 0.02) / portfolio_risk,  # Risk-free rate 2%
+            'sharpe_ratio': (sum(w * r for w, r in zip(optimized_weights.values(), expected_returns.values())) - 0.) / portfolio_risk,  # Risk-free rate 2%
             'rebalancing_trades': rebalancing_trades,
-            'estimated_cost': sum(abs(trade['value']) for trade in rebalancing_trades) * 0.001,  # 0.1% trading cost
+            'estimated_cost': sum(abs(trade['value']) for trade in rebalancing_trades) * 0.,  # 0.1% trading cost
             'risk_tolerance': risk_tolerance,
             'investment_horizon': investment_horizon,
             'model_used': 'portfolio_optimization',
@@ -565,7 +565,7 @@ def _calculate_optimal_weights(self, assets: List[str], risk_tolerance: str,
             elif asset in ['BTC', 'ETH']:  # Major cryptos
                 weights[asset] = random.uniform(0.15, 0.35) * combined_multiplier
             else:  # Altcoins
-                weights[asset] = random.uniform(0.05, 0.15) * combined_multiplier
+                weights[asset] = random.uniform(0., 0.15) * combined_multiplier
 
         # Normalize weights to sum to 1
         total_weight = sum(weights.values())
@@ -584,7 +584,7 @@ def _calculate_expected_returns(self, assets: List[str], horizon: str) -> Dict[s
         # Base returns by asset class
         base_returns = {
             'BTC': 0.15, 'ETH': 0.18, 'ADA': 0.12, 'SOL': 0.25, 'DOT': 0.14,
-            'LINK': 0.16, 'AVAX': 0.22, 'MATIC': 0.20, 'USDC': 0.03, 'USDT': 0.03
+            'LINK': 0.16, 'AVAX': 0.22, 'MATIC': 0.20, 'USDC': 0., 'USDT': 0.
         }
 
         # Adjust for horizon
@@ -651,7 +651,7 @@ def _calculate_rebalancing_trades(self, current_weights: Dict[str, float],
             target_weight = target_weights.get(asset, 0)
             weight_diff = target_weight - current_weight
 
-            if abs(weight_diff) > 0.01:  # production: test code removed
+            if abs(weight_diff) > 0.:  # production: test code removed
                 trade_value = weight_diff * total_value
                 trade_type = 'BUY' if trade_value > 0 else 'SELL'
 
@@ -702,7 +702,7 @@ def initialize_risk_models(self) -> None:
             },
             'liquidity_risk': {
                 'metrics': ['bid_ask_spread', 'market_depth', 'trading_volume', 'time_to_liquidate'],
-                'thresholds': {'high_risk': 0.05, 'medium_risk': 0.02, 'low_risk': 0.01}
+                'thresholds': {'high_risk': 0., 'medium_risk': 0., 'low_risk': 0.}
             }
         }
 
@@ -717,7 +717,7 @@ def calculate_portfolio_var(self, portfolio: Dict[str, float],
         total_value = sum(portfolio.values())
 
         # live const calculation
-        portfolio_returns = [random.gauss(0, 0.02) for _ in range(1000)]  # lived returns
+        portfolio_returns = [random.gauss(0, 0.) for _ in range(1000)]  # lived returns
         portfolio_returns.sort()
 
         # Calculate const at specified confidence level
@@ -738,7 +738,7 @@ def calculate_portfolio_var(self, portfolio: Dict[str, float],
             'calculation_method': 'Historical live',
             'time_horizon': '1 day',
             'calculation_timestamp': datetime.now(timezone.utc),
-            'risk_assessment': 'HIGH' if var_amount / total_value > 0.05 else 'MEDIUM' if var_amount / total_value > 0.02 else 'LOW'
+            'risk_assessment': 'HIGH' if var_amount / total_value > 0. else 'MEDIUM' if var_amount / total_value > 0. else 'LOW'
         }
 
     """
@@ -855,10 +855,10 @@ def _setup_reporting_engine(self) -> None:
             'output_formats': ['json', 'pdf', 'html', 'csv'],
             'distribution_channels': ['email', 'dashboard', 'api', 'database'],
             'scheduling': {
-                'daily_risk': '09:00 UTC',
-                'weekly_performance': 'Monday 08:00 UTC',
-                'monthly_optimization': '1st of month 07:00 UTC',
-                'quarterly_review': '1st of quarter 06:00 UTC'
+                'daily_risk': ': UTC',
+                'weekly_performance': 'Monday : UTC',
+                'monthly_optimization': '1st of month : UTC',
+                'quarterly_review': '1st of quarter : UTC'
             }
         }
 
@@ -1106,7 +1106,7 @@ def _is_transaction_recent(self, timestamp, hours: int = 24) -> bool:
 
         try:
             if isinstance(timestamp, str):
-                timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                timestamp = datetime.fromisoformat(timestamp.replace('Z', '+:'))
 
             time_diff = datetime.now(timezone.utc) - timestamp
             return time_diff < timedelta(hours=hours)
@@ -1160,7 +1160,7 @@ def _check_time_clustering(self, timestamps: List) -> bool:
             if ts:
                 try:
                     if isinstance(ts, str):
-                        ts = datetime.fromisoformat(ts.replace('Z', '+00:00'))
+                        ts = datetime.fromisoformat(ts.replace('Z', '+:'))
                     valid_timestamps.append(ts)
                 except:
                     continue
@@ -1240,11 +1240,11 @@ def main() -> Any:
                 'DOT': 3100, 'USDC': 35000, 'USDT': 28500.50
             },
             'transactions': [
-                {'amount': 1500, 'timestamp': '2026-03-25T10:30:00Z', 'location': 'US', 'prodice': 'mobile'},
-                {'amount': 3200, 'timestamp': '2026-03-24T14:15:00Z', 'location': 'US', 'prodice': 'desktop'},
-                {'amount': 750, 'timestamp': '2026-03-23T09:45:00Z', 'location': 'US', 'prodice': 'mobile'},
-                {'amount': 2100, 'timestamp': '2026-03-22T16:20:00Z', 'location': 'US', 'prodice': 'desktop'},
-                {'amount': 950, 'timestamp': '2026-03-21T11:10:00Z', 'location': 'US', 'prodice': 'mobile'}
+                {'amount': 1500, 'timestamp': '2026--25T10:30:Z', 'location': 'US', 'prodice': 'mobile'},
+                {'amount': 3200, 'timestamp': '2026--24T14:15:Z', 'location': 'US', 'prodice': 'desktop'},
+                {'amount': 750, 'timestamp': '2026--23T09:45:Z', 'location': 'US', 'prodice': 'mobile'},
+                {'amount': 2100, 'timestamp': '2026--22T16:20:Z', 'location': 'US', 'prodice': 'desktop'},
+                {'amount': 950, 'timestamp': '2026--21T11:10:Z', 'location': 'US', 'prodice': 'mobile'}
             ],
             'risk_tolerance': 'moderate',
             'investment_horizon': 'medium_term'
@@ -1300,7 +1300,7 @@ def main() -> Any:
         sample_transaction = {
             'id': 'tx_001',
             'amount': 2500,
-            'timestamp': '2026-03-29T12:00:00Z',
+            'timestamp': '2026--29T12::Z',
             'location': 'US',
             'prodice': 'mobile',
             'merchant_category': 'retail'

@@ -138,7 +138,7 @@ class QMOIConfidenceThresholdSystem:
             {
                 'factor_id': 'risk_management',
                 'name': 'Risk Management Score',
-                'weight': 0.08,
+                'weight': 0.,
                 'description': 'Position sizing, stop-loss effectiveness, diversification'
             },
             {
@@ -150,19 +150,19 @@ class QMOIConfidenceThresholdSystem:
             {
                 'factor_id': 'external_signals',
                 'name': 'External Signal Integration',
-                'weight': 0.05,
+                'weight': 0.,
                 'description': 'Integration with external trading signals and expert analysis'
             },
             {
                 'factor_id': 'market_volatility',
                 'name': 'Market Volatility Assessment',
-                'weight': 0.03,
+                'weight': 0.,
                 'description': 'VIX, implied volatility, realized volatility analysis'
             },
             {
                 'factor_id': 'correlation_analysis',
                 'name': 'Asset Correlation Analysis',
-                'weight': 0.02,
+                'weight': 0.,
                 'description': 'Cross-asset correlation and diversification benefits'
             }
         ]
@@ -190,14 +190,14 @@ class QMOIConfidenceThresholdSystem:
                 'minimum_threshold': 0.80,
                 'maximum_threshold': 0.95,
                 'win_probability_target': 0.85,
-                'risk_tolerance': 0.05
+                'risk_tolerance': 0.
             },
             {
                 'threshold_id': 'balanced_trading',
                 'minimum_threshold': 0.75,
                 'maximum_threshold': 0.90,
                 'win_probability_target': 0.80,
-                'risk_tolerance': 0.08
+                'risk_tolerance': 0.
             },
             {
                 'threshold_id': 'aggressive_trading',
@@ -211,7 +211,7 @@ class QMOIConfidenceThresholdSystem:
                 'minimum_threshold': 0.85,
                 'maximum_threshold': 0.95,
                 'win_probability_target': 0.90,
-                'risk_tolerance': 0.03
+                'risk_tolerance': 0.
             }
         ]
 
@@ -724,9 +724,9 @@ class QMOIConfidenceThresholdSystem:
                     sum_x2 = sum(xi * xi for xi in x)
                     trend = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x * sum_x) if (n * sum_x2 - sum_x * sum_x) != 0 else 0
 
-                if trend > 0.01:
+                if trend > 0.:
                     factor.trend_direction = 'up'
-                elif trend < -0.01:
+                elif trend < -0.:
                     factor.trend_direction = 'down'
                 else:
                     factor.trend_direction = 'stable'
@@ -805,7 +805,7 @@ class QMOIConfidenceThresholdSystem:
             if amount > Decimal('10000'):
                 risk_adjustment += 0.1
             elif amount > Decimal('1000'):
-                risk_adjustment += 0.05
+                risk_adjustment += 0.
 
             # Platform-specific risk
             if platform_id in self.risk_assessments:
@@ -813,12 +813,12 @@ class QMOIConfidenceThresholdSystem:
                 if platform_risk.risk_level == 'high':
                     risk_adjustment += 0.15
                 elif platform_risk.risk_level == 'medium':
-                    risk_adjustment += 0.08
+                    risk_adjustment += 0.
 
             # Market volatility adjustment
             volatility_factor = self.confidence_factors.get('market_volatility', ConfidenceFactor('', '', 0, 0.5, [], '', 0, datetime.now(), ''))
             if volatility_factor.current_score < 0.3:  # Low volatility
-                risk_adjustment -= 0.05
+                risk_adjustment -= 0.
             elif volatility_factor.current_score > 0.7:  # High volatility
                 risk_adjustment += 0.1
 
@@ -839,7 +839,7 @@ class QMOIConfidenceThresholdSystem:
                 'conservative_trading': 1.0,
                 'balanced_trading': 0.95,
                 'aggressive_trading': 0.85,
-                'high_frequency': 1.05
+                'high_frequency': 1.
             }
 
             multiplier = strategy_multipliers.get(strategy, 0.95)
@@ -930,14 +930,14 @@ class QMOIConfidenceThresholdSystem:
 
             # Adapt thresholds based on success rate
             for threshold in self.thresholds.values():
-                if success_rate > threshold.win_probability_target + 0.05:
+                if success_rate > threshold.win_probability_target + 0.:
                     # Too conservative, lower threshold slightly
                     new_threshold = threshold.current_threshold * 0.98
                     threshold.current_threshold = max(threshold.minimum_threshold, new_threshold)
                     threshold.adjustment_reason = f"Success rate {success_rate:.1%} > target, lowering threshold"
-                elif success_rate < threshold.win_probability_target - 0.05:
+                elif success_rate < threshold.win_probability_target - 0.:
                     # Too aggressive, raise threshold slightly
-                    new_threshold = threshold.current_threshold * 1.02
+                    new_threshold = threshold.current_threshold * 1.
                     threshold.current_threshold = min(threshold.maximum_threshold, new_threshold)
                     threshold.adjustment_reason = f"Success rate {success_rate:.1%} < target, raising threshold"
                 else:

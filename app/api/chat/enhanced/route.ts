@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(enhancedResponse);
   } catch (error) {
-    console.error("Enhanced chat error:", error);
+    logger.error("Enhanced chat error:", error);
     return NextResponse.json(
       {
         success: false,

@@ -380,10 +380,10 @@ E2E Tests:        tests/e2e/**/*.spec.ts
 ## Statistics
 
 **Total Directories**: 50+
-**Total Source Files**: 2,000+
+**Total Source Files**: 2,+
 **Total Test Files**: 1,707+
 **Total Documentation Files**: 2,131+
-**Total Lines of Code**: 500,000+
+**Total Lines of Code**: 500,+
 
 ## Last Updated
 {self.timestamp}

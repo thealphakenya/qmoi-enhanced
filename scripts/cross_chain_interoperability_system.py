@@ -252,14 +252,14 @@ def execute_cross_chain_transfer(self, from_chain: str, to_chain: str,
         to_bridge = self.supported_chains[to_chain]
 
         # Estimate costs
-        bridge_fee = amount * 0.003  # 0.3% bridge fee
+        bridge_fee = amount * 0.  # 0.3% bridge fee
         gas_fee_from = from_bridge.estimate_gas('bridge')
         gas_fee_to = to_bridge.estimate_gas('transfer')
 
         total_cost = bridge_fee + gas_fee_from + gas_fee_to
 
         # live transfer
-        success = random.random() > 0.05  # 95% success rate
+        success = random.random() > 0.  # 95% success rate
 
         if success:
             return {
@@ -312,8 +312,8 @@ def _calculate_yield_opportunities(self, protocol_name: str) -> Any:
 
         # live yield calculations
         base_yield = protocol['apy'] / 100
-        impermanent_loss_risk = 0.02 if 'LP' in protocol_name else 0
-        smart_contract_risk = {'Low': 0.005, 'Medium': 0.02, 'High': 0.05}[protocol['risk_level']]
+        impermanent_loss_risk = 0. if 'LP' in protocol_name else 0
+        smart_contract_risk = {'Low': 0., 'Medium': 0., 'High': 0.}[protocol['risk_level']]
 
         net_yield = base_yield - impermanent_loss_risk - smart_contract_risk
 
@@ -566,7 +566,7 @@ def main() -> Any:
         logger.info()
 
         # Yield opportunities
-        logger.info('📈 TOP YIELD OPPORTUNITIES ($10,000 Investment)')
+        logger.info('📈 TOP YIELD OPPORTUNITIES ($10, Investment)')
         logger.info('=' * 50)
         for opp in report['yield_opportunities'][:3]:
             logger.info(f"{opp['protocol']} ({opp['chain']}): {opp['net_apy']:.1f}% APY")
@@ -578,7 +578,7 @@ def main() -> Any:
         compliance = report['compliance_status']
         logger.info('⚖️  COMPLIANCE STATUS')
         logger.info('=' * 20)
-        logger.info(f"US Transfer $5,000: {'✅ Compliant' if compliance['compliant'] else '❌ Non-compliant'}")
+        logger.info(f"US Transfer $5,: {'✅ Compliant' if compliance['compliant'] else '❌ Non-compliant'}")
         if not compliance['compliant']:
             logger.info(f"Reason: {compliance['reason']}")
         logger.info()

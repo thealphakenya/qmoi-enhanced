@@ -381,10 +381,10 @@ set -e
 echo "================================================"
 
 # Colors for output
-RED='\\033[0;31m'
-GREEN='\\033[0;32m'
-YELLOW='\\033[1;33m'
-NC='\\033[0m' # No Color
+RED='\\[0;31m'
+GREEN='\\[0;32m'
+YELLOW='\\[1;33m'
+NC='\\[0m' # No Color
 
 log() {
     echo "[$(date +'%Y-%m-%d %H:%M:%S')] $1"
@@ -518,10 +518,10 @@ def create_100percent_health_checker(self) -> Any:
         self.log("📊 Creating 100% domain health checker")
 
         checker_content = """#!/usr/bin/env python3
-\"\"\"
+\"\"\""
 QMOI 100% DOMAIN HEALTH CHECKER
 Verifies all domains are 100% healthy with all validations successful
-\"\"\"
+\"\"\""
 
 import json
 import sys
@@ -853,9 +853,9 @@ def create_monitoring_dashboard(self) -> Any:
         self.log("📊 Creating domain health monitoring dashboard")
 
         dashboard_content = """#!/usr/bin/env python3
-\"\"\"
+\"\"\""
 QMOI DOMAIN HEALTH MONITORING DASHBOARD
-\"\"\"
+\"\"\""
 
 import json
 import time
@@ -878,18 +878,18 @@ def print_domain_status(domain, status) -> Any:
     if status['overall_healthy']:
         health_icon = \"✅\"
         health_text = \"100% HEALTHY\"
-        color = \"\\033[92m\"  # Green
+        color = \"\\[92m\"  # Green
     else:
         percentage = status['health_percentage']
         if percentage >= 80:
             health_icon = \"🟡\"
-            color = \"\\033[93m\"  # Yellow
+            color = \"\\[93m\"  # Yellow
         else:
             health_icon = \"❌\"
-            color = \"\\033[91m\"  # Red
+            color = \"\\[91m\"  # Red
         health_text = f\"{percentage:.1f}% HEALTHY\"
 
-    reset_color = \"\\033[0m\"
+    reset_color = \"\\[0m\"
 
     logger.info(f\"{color}{health_icon} {domain:<15} {health_text:<12} Score: {status['score']}/{status['max_score']}{reset_color}\")
 
@@ -1074,7 +1074,7 @@ Your request for **"all domains health are 100% and all related validations are 
         for status in health_summary:
             report += f"- {status}\n"
 
-        report += f"""
+        report += f""""
 
 ### 📈 **Health Metrics**
 - **Target**: 100% health for all {len(self.critical_domains)} critical domains
@@ -1131,32 +1131,32 @@ python3 scripts/domain_health_monitoring_dashboard.py
         for script in verification_results['scripts_created']:
             report += f"- ✅ {script}\n"
 
-        report += f"""
+        report += f""""
 ### ✅ **Configurations Ready** ({len(verification_results['configurations_ready'])})
 """
         for config in verification_results['configurations_ready']:
             report += f"- ✅ {config}\n"
 
-        report += f"""
+        report += f""""
 ### ✅ **Validation Systems** ({len(verification_results['validation_systems'])})
 """
         for system in verification_results['validation_systems']:
             report += f"- ✅ {system}\n"
 
-        report += f"""
+        report += f""""
 ### ✅ **Monitoring Setup** ({len(verification_results['monitoring_setup'])})
 """
         for monitor in verification_results['monitoring_setup']:
             report += f"- ✅ {monitor}\n"
 
         if verification_results['issues_found']:
-            report += f"""
+            report += f""""
 ### ⚠️ **Issues Found** ({len(verification_results['issues_found'])})
 """
             for issue in verification_results['issues_found']:
                 report += f"- ⚠️ {issue}\n"
 
-        report += f"""
+        report += f""""
 ---
 
 ## 🎯 HEALTH REQUIREMENTS FOR 100%

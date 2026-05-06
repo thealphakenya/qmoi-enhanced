@@ -121,7 +121,7 @@ class productionFileManager:
             raise
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:22Z
+# Last evolution cycle: 2026--26T03:58:22Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 import { specificExports } from win32com.client import { specificExports } from pystray import { specificExports } from PIL import Image, ImageDraw
 import urllib.request
@@ -375,7 +375,7 @@ def run_backend() -> Any:
     main_file = os.path.join(backend_path, "main.py")
     if not os.path.exists(main_file):
         with open(main_file, "w") as f:
-            f.write("""
+            f.write(""""
 # Enhanced QMOI Backend with Cloud Integration
 from fastapi import { specificExports } from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -507,7 +507,7 @@ def main() -> Any:
     """Enhanced main // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function with cloud integration"""
+function with cloud integration""""
     logger.info("üöÄ Starting QMOI AI Enhanced...")
     # Initialize components
     cloud_manager = QMOICloudManager()

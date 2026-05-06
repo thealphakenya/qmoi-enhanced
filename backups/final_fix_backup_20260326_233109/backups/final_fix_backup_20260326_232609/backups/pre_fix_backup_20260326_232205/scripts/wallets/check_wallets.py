@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:54Z
+// Last evolution cycle: 2026--26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -68,7 +68,7 @@ def check_balance(self, config, real=False) -> Any:
         """
         # Default real implementation
         return {
-            "balance": "0.00 (real)",
+            "balance": "0. (real)",
             "currency": config.get('currency', 'USD'),
             "last_checked": now_iso(),
             "status": "mocked",
@@ -103,7 +103,7 @@ def check_balance(self, config, real=False) -> Any:
             except Exception as e:
                 return {"status": "error", "error": str(e), "last_checked": now_iso(), "meta": {"adapter": self.name}}
         # real
-        return {"balance": "100.00 (real)", "currency": "USD", "last_checked": now_iso(), "status": "mocked", "meta": {"adapter": self.name}}
+        return {"balance": "100. (real)", "currency": "USD", "last_checked": now_iso(), "status": "mocked", "meta": {"adapter": self.name}}
 
 
 ADAPTERS = {
@@ -213,7 +213,7 @@ return None  # production implementation
                     res = {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': str(adapter_key)}}
         else:
             # Generic mocked report
-            res = {"balance": "0.00 (real)", "currency": cfg.get('currency','USD'), "last_checked": now_iso(), "status": "mocked", "meta": {"adapter": 'real'}}
+            res = {"balance": "0. (real)", "currency": cfg.get('currency','USD'), "last_checked": now_iso(), "status": "mocked", "meta": {"adapter": 'real'}}
         # Normalize: extract numeric balance if possible
         native_balance = None
         native_currency = res.get('currency') or cfg.get('currency', 'USD')

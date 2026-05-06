@@ -320,7 +320,7 @@ class AutonomousQuantumToolAdder:
 
         template = self.new_tool_templates[tool_key]
 
-        tool_entry = f"""
+        tool_entry = f""""
 ### {tool_number}. **Quantum multi orchestra intelligence (QMOI) {template['name']}** - {template['category']} Tool
 **Status**: ✅ production_IMPLEMENTED
 **Category**: {template['category']}

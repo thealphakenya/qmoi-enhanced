@@ -103,7 +103,7 @@ health_monitor = productionHealthMonitor()
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:06Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -193,13 +193,13 @@ def load_bank_balances(self, bank_name: Optional[str] = None) -> Dict[str, Any]:
 
         self.banks = {
             'master_bank': {
-                'balance': Decimal('50000.00'),
+                'balance': Decimal('50000.'),
                 'currency': 'USD',
                 'last_updated': datetime.datetime.utcnow().isoformat(),
                 'account_type': 'business'
             },
             'operational_bank': {
-                'balance': Decimal('25000.00'),
+                'balance': Decimal('25000.'),
                 'currency': 'USD',
                 'last_updated': datetime.datetime.utcnow().isoformat(),
                 'account_type': 'operational'
@@ -235,7 +235,7 @@ def reconcile_accounts(self) -> Dict[str, Any]:
             'total_bank_balance': float(total_bank_balance),
             'expected_balance': float(expected_balance),
             'discrepancy': float(total_wallet_balance - expected_balance),
-            'status': 'MATCHED' if abs(total_wallet_balance - expected_balance) < 0.01 else 'DISCREPANCY',
+            'status': 'MATCHED' if abs(total_wallet_balance - expected_balance) < 0. else 'DISCREPANCY',
             'wallet_count': len(self.wallets),
             'bank_count': len(self.banks)
         }

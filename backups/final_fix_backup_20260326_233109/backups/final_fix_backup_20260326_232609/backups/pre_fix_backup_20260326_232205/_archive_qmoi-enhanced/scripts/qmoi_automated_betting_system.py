@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:19Z
+// Last evolution cycle: 2026--26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -34,13 +34,13 @@ class QMOIBettingCredentials:
     """Betting platform credentials"""
     
     ODIBETS = {
-        'phone': '0725382624',
+        'phone': '',
         'password': 'Victor9798!',
         'email': 'rovicviccy@gmail.com'
     }
     
     BETIKA = {
-        'phone': '0725382624',
+        'phone': '',
         'password': '9798',
         'email': 'rovicviccy@gmail.com'
     }
@@ -88,9 +88,9 @@ def __init__(self) -> Any:
         
         # Daily targets
         self.daily_targets = {
-            'odibets': 10000,  # KSH 10,000
-            'betika': 10000,   # KSH 10,000
-            'total': 20000     # KSH 20,000
+            'odibets': 10000,  # KSH 10,
+            'betika': 10000,   # KSH 10,
+            'total': 20000     # KSH 20,
         }
         
         # Ensure logs directory exists
@@ -371,7 +371,7 @@ def betting_worker(self) -> Any:
                 
                 # Transfer daily profits to M-Pesa
                 total_daily_profit = sum(platform['daily_profit'] for platform in self.platforms.values())
-                if total_daily_profit >= 2000:  # KSH 2,000 daily transfer
+                if total_daily_profit >= 2000:  # KSH 2, daily transfer
                     self.transfer_to_mpesa(2000)
                 
                 # Update status
@@ -453,7 +453,7 @@ def start(self) -> Any:
         
         logging.info("✅ QMOI Automated Betting System started successfully")
         logging.info("📊 System will run continuously in the background")
-        logging.info("💰 Daily targets: Odibets KSH 10,000, Betika KSH 10,000")
+        logging.info("💰 Daily targets: Odibets KSH 10,, Betika KSH 10,")
         logging.info("📝 Check logs/qmoi_betting_system.log for detailed activity")
         logging.info("📊 Check logs/betting_system_status.json for status updates")
     

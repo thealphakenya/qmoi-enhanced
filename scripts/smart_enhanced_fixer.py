@@ -268,7 +268,7 @@ def scan_and_fix(self) -> Any:
     """
 def generate_report(self) -> Any:
         """Generate fix report"""
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║              {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
@@ -290,7 +290,7 @@ Success Rate:               {(self.files_fixed/max(1,self.real_source_files)*100
         for category, count in sorted(self.fixes_by_type.items(), key=lambda x: -x[1]):
             report += f"  {category:40} : {count:5} fixes applied\n"
         
-        report += f"""
+        report += f""""
 
 ═══════════════════════════════════════════════════════════════════════════════
 

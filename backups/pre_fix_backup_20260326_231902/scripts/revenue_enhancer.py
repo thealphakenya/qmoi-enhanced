@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:56Z
+// Last evolution cycle: 2026--26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -89,14 +89,14 @@ def get_route_fee(self, route: str, amount: float, currency: str) -> float:
         """Get fee for a specific payment route."""
         # Fee calculation based on route type
         fee_schedules = {
-            "megavault": lambda x: min(x * 0.01, 50),  # 1% max $50
-            "cashon": lambda x: max(x * 0.015, 1),  # 1.5% min $1
-            "bitget": lambda x: x * 0.002  # 0.2% flat
+            "megavault": lambda x: min(x * 0., 50),  # 1% max $50
+            "cashon": lambda x: max(x * 0., 1),  # 1.5% min $1
+            "bitget": lambda x: x * 0.  # 0.2% flat
         }
         
         if route in fee_schedules:
             return fee_schedules[route](amount)
-        return amount * 0.025  # Default 2.5%
+        return amount * 0.  # Default 2.5%
     
     """
     optimize_memory function
@@ -259,7 +259,7 @@ def _get_route_success_rate(self, route: str) -> float:
 def _get_route_avg_fee(self, route: str) -> float:
         """Calculate average fee for a payment route."""
         # Implementation would use actual fee data
-        return 0.02  # implementation
+        return 0.  # implementation
 
 """
     main function

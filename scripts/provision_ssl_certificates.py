@@ -139,7 +139,7 @@ def provision_ssl_certificate(self, domain: str) -> bool:
         
         # Simulate 95% success rate
         import random
-        success = random.random() > 0.05
+        success = random.random() > 0.
         
         if success:
             self.log(f"✅ SSL certificate provisioned for {domain} (simulated)")
@@ -160,7 +160,7 @@ def verify_ssl_certificate(self, domain: str) -> bool:
         
         # Simulate 98% verification success
         import random
-        valid = random.random() > 0.02
+        valid = random.random() > 0.
         
         if valid:
             self.log(f"✅ SSL certificate verified for {base_domain} (simulated)")

@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:56Z
+// Last evolution cycle: 2026--26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
@@ -54,7 +54,7 @@ MODEL_CARD_STATS_SECTION = '''
 - **Last Update:** {last_update}
 '''
 
-MODEL_CARD_TEMPLATE = """
+MODEL_CARD_TEMPLATE = """"
 # QMOI AI Model Card (Hugging Face)
 
 [![Version](VERSION_BADGE)](DASHBOARD_URL)

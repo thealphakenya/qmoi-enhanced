@@ -373,7 +373,7 @@ def require_master(func):
         md += "\n## 🔧 Detailed Service Information\n"
         
         for inst in instances:
-            md += f"""
+            md += f""""
 ### {inst['name']}
 **Status**: {inst['status']}
 **Version**: {inst['version']}
@@ -384,7 +384,7 @@ def require_master(func):
             for feature in inst["features"]:
                 md += f"- ✅ {feature}\n"
             
-            md += f"""
+            md += f""""
 **Access Control**: Master-only
 **production_IMPLEMENTED**: Yes
 **Monitoring**: Real-time

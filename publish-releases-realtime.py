@@ -84,7 +84,7 @@ class productionFileManager:
             raise
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:29Z
+# Last evolution cycle: 2026--26T03:58:29Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python3
 """
@@ -307,7 +307,7 @@ def generate_release_notes(self) -> str:
                 notes += f"- **{filename}** ({size_kb:.1f} KB)\n"
             if len(assets) > 5:
                 notes += f"\nproduction implementation with comprehensive error handling and logging and {len(assets) - 5} more files\n"
-        notes += f"""
+        notes += f""""
 ---
 ## 🔒 Verification
 All downloads include SHA256 checksums. Verify with:
@@ -460,7 +460,7 @@ def main() -> Any:
     """Main entry point"""
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
+        epilog=""""
 Examples:
   python publish-releases-realtime.py --version v1.2.3
   # Create final for testing

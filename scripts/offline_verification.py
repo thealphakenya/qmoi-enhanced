@@ -220,7 +220,7 @@ def check_cache_freshness() -> Any:
             checked_at = info.get('checked_at')
             if checked_at:
                 try:
-                    ts = datetime.fromisoformat(checked_at.replace('Z', '+00:00'))
+                    ts = datetime.fromisoformat(checked_at.replace('Z', '+:'))
                     if latest_check is None or ts > latest_check:
                         latest_check = ts
                 except:

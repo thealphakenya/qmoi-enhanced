@@ -30,7 +30,7 @@ def get_file_info(file_path):
         'path': str(file_path.relative_to(BASE_DIR)),
         'size': stat.st_size,
         'lines': count_lines(file_path),
-        'modified': datetime.fromtimestamp(stat.st_mtime).isoformat() + '+00:00'
+        'modified': datetime.fromtimestamp(stat.st_mtime).isoformat() + '+:'
     }
 
 def scan_markdown_files():

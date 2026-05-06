@@ -1,6 +1,6 @@
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:33Z
+# Last evolution cycle: 2026--26T03:58:33Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python3
 """
@@ -81,7 +81,7 @@ class EmailUISettings:
     """UI settings for each system email"""
     email: str
     display_name: str
-    icon_color: str = "#0066CC"  # QMOI Blue
+    icon_color: str = "#CC"  # QMOI Blue
     theme: str = "light"  # light/dark
     real_time_enabled: bool = True
     memory_sync_enabled: bool = True

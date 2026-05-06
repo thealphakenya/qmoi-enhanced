@@ -161,7 +161,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Auth me GET error:', error);
+    logger.error('Auth me GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -375,7 +375,7 @@ export async function POST(req: NextRequest) {
     }
 
   } catch (error) {
-    console.error('Auth me POST error:', error);
+    logger.error('Auth me POST error:', error);
     return NextResponse.json(
       {
         success: false,

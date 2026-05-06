@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 import { describe, it, expect } from 'vitest'
 
 describe('NGROK Tunnel Management', () => {

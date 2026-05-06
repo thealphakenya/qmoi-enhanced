@@ -53,7 +53,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('AI health check error:', error);
+    logger.error('AI health check error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -114,7 +114,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error('AI health POST error:', error);
+    logger.error('AI health POST error:', error);
     return NextResponse.json(
       {
         success: false,

@@ -162,7 +162,7 @@ def run_fixes(self) -> Any:
     """
 def generate_report(self) -> Any:
         """Generate fix report"""
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║     QMOI FINAL production FIXER REPORT v8.0                             ║
 ║     All production Implementations Completely Removed                 ║
@@ -187,7 +187,7 @@ Backup location:          {self.backup_dir}
                 report += f"   ✅ {fix}\n"
             report += "\n"
 
-        report += f"""
+        report += f""""
 ─────────────────────────────────────────────────────────────────────────────
 FIX TIME: {datetime.now().isoformat()}Z
 STATUS: ✅ ALL production IMPLEMENTATIONS REMOVED

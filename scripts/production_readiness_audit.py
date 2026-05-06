@@ -360,7 +360,7 @@ def update_undone_txt(audit_results: dict) -> None:
             existing_content = productionFileManager.safe_read_file(undone_path)
 
         # Create new production readiness section
-        production_section = f"""
+        production_section = f""""
 # production READINESS ISSUES - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 # Total files scanned: {audit_results['total_files_scanned']}
 # Files with issues: {audit_results['files_with_issues']}
@@ -371,7 +371,7 @@ def update_undone_txt(audit_results: dict) -> None:
 
         # Add top issues
         for file_result in audit_results['file_results'][:50]:  # Top 50 files
-            production_section += f"""
+            production_section += f""""
 ## {file_result['file_path']} ({file_result['total_matches']} matches)
 """
             for issue in file_result['issues']:

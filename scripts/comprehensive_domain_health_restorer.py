@@ -499,7 +499,7 @@ def create_web_server_configuration(self) -> Any:
         """Create web server configuration recommendations"""
         self.log("📋 Creating web server configurationproduction implementation with comprehensive error handling and logging")
 
-        nginx_config = """
+        nginx_config = """"
 # Nginx configuration for QMOI domains
 
 # Main domain
@@ -569,7 +569,7 @@ def generate_health_report(self) -> Any:
         """Generate comprehensive health report"""
         self.log("📊 Generating comprehensive domain health reportproduction implementation with comprehensive error handling and logging")
 
-        report = f"""
+        report = f""""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                QMOI COMPREHENSIVE DOMAIN HEALTH REPORT                      ║
 ║                      Health Restoration complete                            ║
@@ -599,7 +599,7 @@ Healthy Domains:          {len(self.domains) - len(self.issues_found)}
             else:
                 report += f"✅ {domain} - HEALTHY\n"
 
-        report += f"""
+        report += f""""
 
 🔧 REQUIRED CONFIGURATIONS
 ──────────────────────────────────────────────────────────────────────────────

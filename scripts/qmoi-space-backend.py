@@ -8,7 +8,7 @@ Minimal production-ready backend for QMOI Space.
 
 Author: QMOI AI
 Version: 2.0.0
-Date: 2025-01-22
+Date: 2025--22
 """
 
 import os
@@ -182,7 +182,7 @@ class DatabaseManager:
     def init_database(self) -> None:
         conn = get_database_connection()
         cursor = conn.cursor()
-        cursor.execute("""
+        cursor.execute(""""
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT UNIQUE NOT NULL,
@@ -192,7 +192,7 @@ class DatabaseManager:
                 last_login TIMESTAMP
             )
         """)
-        cursor.execute("""
+        cursor.execute(""""
             CREATE TABLE IF NOT EXISTS chat_messages (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER,
@@ -203,7 +203,7 @@ class DatabaseManager:
                 FOREIGN KEY (user_id) REFERENCES users (id)
             )
         """)
-        cursor.execute("""
+        cursor.execute(""""
             CREATE TABLE IF NOT EXISTS revenue_data (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 amount REAL NOT NULL,
@@ -213,7 +213,7 @@ class DatabaseManager:
                 metadata TEXT
             )
         """)
-        cursor.execute("""
+        cursor.execute(""""
             CREATE TABLE IF NOT EXISTS projects (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
@@ -225,7 +225,7 @@ class DatabaseManager:
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        cursor.execute("""
+        cursor.execute(""""
             CREATE TABLE IF NOT EXISTS games (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
@@ -236,7 +236,7 @@ class DatabaseManager:
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        cursor.execute("""
+        cursor.execute(""""
             CREATE TABLE IF NOT EXISTS notifications (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER,
@@ -290,7 +290,7 @@ class AIModelsManager:
         if model_name not in self.models:
             raise ValueError(f"Model {model_name} not found")
         model = self.models[model_name]
-        await asyncio.sleep(0.05)
+        await asyncio.sleep(0.)
         return f"AI Response from {model['name']}: {prompt[:100]}"
 
     def get_model_info(self, model_name: str) -> Dict[str, Any]:

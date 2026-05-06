@@ -98,7 +98,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Auto-fix status error:', error);
+    logger.error('Auto-fix status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -195,7 +195,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Auto-fix POST error:', error);
+    logger.error('Auto-fix POST error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -355,7 +355,7 @@ async function applyAutoFix(issue: any): Promise<{
     };
 
   } catch (error) {
-    console.error('Auto-fix application failed:', error);
+    logger.error('Auto-fix application failed:', error);
 
     // Log failed fix
     await prisma.systemMetric.create({

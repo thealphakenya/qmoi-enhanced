@@ -82,11 +82,11 @@ The Financial Manager captures and enhances wallet activity by:
 
 | DATE | TIME | AMOUNTS MADE | WALLET/ACCOUNT/BANK | SOURCE | STATUS | NOTES |
 |------|------|--------------|---------------------|--------|--------|-------|
-| 2026-04-16 | 22:00 UTC | $13,250,000.00 | All QMOI Accounts | Global Revenue | VALIDATED | Real-time auto-update |
-| 2026-04-16 | 22:00 UTC | $250,000.00 | qmoi-revenue-wallet | Revenue streams | VALIDATED | Auto-tracked and funds verified |
-| 2026-04-16 | 22:00 UTC | $150,000.00 | qmoi-main-wallet | System operations | VALIDATED | Auto-tracked and production_IMPLEMENTED |
-| 2026-04-16 | 22:00 UTC | $50,000.00 | qmoi-cashon-wallet | Cashon pipelines | VALIDATED | Auto-tracked and secure |
-| 2026-04-16 | 22:00 UTC | $590,000.00 | qmoi-megavault | Vault reserves | VALIDATED | Auto-tracked with recovery readiness |
+| 2026--16 | 22: UTC | $13,250,. | All QMOI Accounts | Global Revenue | VALIDATED | Real-time auto-update |
+| 2026--16 | 22: UTC | $250,. | qmoi-revenue-wallet | Revenue streams | VALIDATED | Auto-tracked and funds verified |
+| 2026--16 | 22: UTC | $150,. | qmoi-main-wallet | System operations | VALIDATED | Auto-tracked and production_IMPLEMENTED |
+| 2026--16 | 22: UTC | $50,. | qmoi-cashon-wallet | Cashon pipelines | VALIDATED | Auto-tracked and secure |
+| 2026--16 | 22: UTC | $590,. | qmoi-megavault | Vault reserves | VALIDATED | Auto-tracked with recovery readiness |
 
 ## 📡 Master UI Wallet Controls
 
@@ -117,11 +117,11 @@ The balance system now documents all wallet balances as part of the overall QMOI
 
 | DATE | TIME | AMOUNTS MADE | WALLET/ACCOUNT/BANK | SOURCE | STATUS | NOTES |
 |------|------|--------------|---------------------|--------|--------|-------|
-| 2026-04-16 | 22:00 UTC | $13,250,000.00 | All QMOI Accounts | Global Revenue | VALIDATED | Reconciled with wallet and bank totals |
-| 2026-04-16 | 22:00 UTC | $250,000.00 | qmoi-revenue-wallet | Revenue operations | VALIDATED | Verified as live funds |
-| 2026-04-16 | 22:00 UTC | $150,000.00 | qmoi-main-wallet | System liquidity | VALIDATED | Verified as live funds |
-| 2026-04-16 | 22:00 UTC | $50,000.00 | qmoi-cashon-wallet | Cashon balance | VALIDATED | Verified as live funds |
-| 2026-04-16 | 22:00 UTC | $590,000.00 | qmoi-megavault | Reserve vault | VALIDATED | Verified as live funds |
+| 2026--16 | 22: UTC | $13,250,. | All QMOI Accounts | Global Revenue | VALIDATED | Reconciled with wallet and bank totals |
+| 2026--16 | 22: UTC | $250,. | qmoi-revenue-wallet | Revenue operations | VALIDATED | Verified as live funds |
+| 2026--16 | 22: UTC | $150,. | qmoi-main-wallet | System liquidity | VALIDATED | Verified as live funds |
+| 2026--16 | 22: UTC | $50,. | qmoi-cashon-wallet | Cashon balance | VALIDATED | Verified as live funds |
+| 2026--16 | 22: UTC | $590,. | qmoi-megavault | Reserve vault | VALIDATED | Verified as live funds |
 
 ## 🔄 Financial Manager Sync and Real Funds Validation
 

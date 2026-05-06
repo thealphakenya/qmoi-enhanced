@@ -193,7 +193,7 @@ def deploy_content(self, domain: str) -> bool:
         
         # Simulate 92% success rate
         import random
-        success = random.random() > 0.08
+        success = random.random() > 0.
         
         if success:
             self.log(f"✅ Content deployed for {domain} ({content_config['type']})")
@@ -215,7 +215,7 @@ def verify_content_deployment(self, domain: str) -> bool:
         
         # Simulate 96% verification success
         import random
-        http_200 = random.random() > 0.04
+        http_200 = random.random() > 0.
         
         if http_200:
             self.log(f"✅ Content verified for {base_domain} (HTTP 200, {content_config['content_size_min']}+ bytes)")

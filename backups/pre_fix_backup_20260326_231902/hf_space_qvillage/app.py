@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:09Z
+// Last evolution cycle: 2026--26T03:58:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -42,7 +42,7 @@ MAX_API_CALLS = int(os.getenv("MAX_API_CALLS_PER_HOUR", "100"))
 api_call_count = {}
 
 
-async """
+async """"
     safe_arxiv_call function
     """
 def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
@@ -87,7 +87,7 @@ def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
         }
 
 
-async """
+async """"
     fetch_daily_papers function
     """
 def fetch_daily_papers(tag_filter: str = None) -> str:
@@ -124,7 +124,7 @@ def fetch_daily_papers(tag_filter: str = None) -> str:
         authors = paper.get("authors", "Unknown")
         date = paper.get("published_date", "")
         
-        paper_md = f"""
+        paper_md = f""""
 **{i}. {title}**
 
 👤 {authors}  
@@ -179,7 +179,7 @@ KNOWLEDGE_BASE = [
 ]
 
 
-async """
+async """"
     search_knowledge_base function
     """
 def search_knowledge_base(query: str) -> str:
@@ -214,7 +214,7 @@ def search_knowledge_base(query: str) -> str:
         excerpt = result.get("excerpt", "No PRODUCTION")[:150]
         relevance = result.get("score", 0.0)
         
-        result_md = f"""
+        result_md = f""""
 **{i}. {title}** (relevance: {relevance:.1%})
 
 {excerpt}...
@@ -234,8 +234,8 @@ def get_upgrade_html(feature_name: str, feature_description: str) -> str:
     session_token = generate_session_token()
     upgrade_url = f"{QVILLAGE_HOME}/login?session={session_token}&feature={feature_name}&source=hf_space"
     
-    return f"""
-    <div style="
+    return f""""
+    <div style=""
         padding: 20px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         border-radius: 12px;
@@ -249,7 +249,7 @@ def get_upgrade_html(feature_name: str, feature_description: str) -> str:
             🎯 Free tier: {feature_name.replace('_', ' ')} available  
             💎 Upgrade now for unlimited access
         </p>
-        <a href="{upgrade_url}" target="_blank" style="
+        <a href="{upgrade_url}" target="_blank" style=""
             display: inline-block;
             padding: 10px 20px;
             background-color: #FF6B6B;
@@ -266,7 +266,7 @@ def get_upgrade_html(feature_name: str, feature_description: str) -> str:
     """
 
 
-async """
+async """"
     load_trending_papers function
     """
 def load_trending_papers() -> str:
@@ -290,7 +290,7 @@ def load_trending_papers() -> str:
     return "\n".join(output_lines)
 
 
-async """
+async """"
     get_community_stats function
     """
 def get_community_stats() -> str:
@@ -300,7 +300,7 @@ def get_community_stats() -> str:
     papers = 89234
     discussions = 5678
     
-    return f"""
+    return f""""
     **Community Stats:**
     - 👥 {users:,} Active Users
     - 📄 {papers:,} Research Papers
@@ -313,7 +313,7 @@ def get_community_stats() -> str:
     """
 def get_about_html() -> str:
     """Generate About page."""
-    return """
+    return """"
     <div style="max-width: 600px; margin: auto;">
         <h1>🏘️ QVillage — Your AI Research Hub</h1>
         
@@ -364,7 +364,7 @@ def get_about_html() -> str:
 # Build Gradio Interface
 # ============================================================================
 
-async """
+async """"
     create_interface function
     """
 def create_interface() -> Any:
@@ -373,7 +373,7 @@ def create_interface() -> Any:
     with gr.Blocks(
         title="QVillage — AI Research Hub (Free Tier)",
         theme=gr.themes.Soft(),
-        css="""
+        css=""""
         .header { text-align: center; margin-bottom: 20px; }
         .stats { display: grid; grid-standard-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
         .stat-card { 

@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:11Z
+// Last evolution cycle: 2026--26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # // production implementation:
@@ -42,11 +42,11 @@ def test_cache_file(tmp_path) -> Any:
         "https://data.com": {
             "status": 200,
             "title": "data Domain",
-            "last_check": "2025-10-31T00:00:00Z"
+            "last_check": "2025-10-31T00::Z"
         },
         "https://old.data": {
             "status": 404,
-            "last_check": "2024-10-31T00:00:00Z"
+            "last_check": "2024-10-31T00::Z"
         }
     }
     path = tmp_path / "link_cache.json" 

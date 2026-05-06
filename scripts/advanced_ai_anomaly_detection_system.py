@@ -81,7 +81,7 @@ def get_database_connection():
 """
 QMOI Enhanced - Advanced AI Anomaly Detection & Predictive Maintenance System
 Version: 1.0.0
-Date: 2026-03-29
+Date: 2026--29
 and system health monitoring using machine learning and statistical analysis.
 """
 
@@ -137,7 +137,7 @@ def __init__(self, config: Dict[str, Any] = None) -> Any:
 def _default_config(self) -> Dict[str, Any]:
         return {
             'detection_sensitivity': 0.85,
-            'learning_rate': 0.01,
+            'learning_rate': 0.,
             'baseline_window_hours': 24,
             'alert_thresholds': {
                 'critical': 0.95,
@@ -203,7 +203,7 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
             return {
                 'response_time_ms': random.gauss(45, 5),
                 'throughput_tps': random.gauss(1010, 50),
-                'error_rate_percent': random.gauss(0.03, 0.01),
+                'error_rate_percent': random.gauss(0., 0.),
                 'memory_usage_percent': random.gauss(65, 8),
                 'cpu_usage_percent': random.gauss(55, 10),
                 'active_connections': random.randint(100, 200),
@@ -213,7 +213,7 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
             return {
                 'trade_execution_time_ms': random.gauss(120, 15),
                 'order_book_depth': random.randint(50, 150),
-                'slippage_percent': random.gauss(0.02, 0.005),
+                'slippage_percent': random.gauss(0., 0.),
                 'liquidity_score': random.uniform(0.7, 0.95),
                 'market_data_latency_ms': random.gauss(25, 5),
                 'active_positions': random.randint(10, 50),
@@ -225,7 +225,7 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
                 'portfolio_var_percent': random.gauss(3.2, 0.5),
                 'stress_test_duration_ms': random.gauss(1200, 100),
                 'correlation_matrix_updates': random.randint(1, 5),
-                'alert_generation_rate': random.gauss(0.1, 0.05),
+                'alert_generation_rate': random.gauss(0.1, 0.),
                 'risk_exposure_score': random.uniform(0.2, 0.8),
                 'timestamp': base_time.isoformat()
             }
@@ -234,7 +234,7 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
                 'bridge_transfer_time_s': random.gauss(180, 30),
                 'cross_chain_tvl': random.gauss(140950630, 1000000),
                 'gas_fee_efficiency': random.uniform(0.85, 0.98),
-                'bridge_success_rate': random.gauss(0.997, 0.002),
+                'bridge_success_rate': random.gauss(0.997, 0.),
                 'pending_transfers': random.randint(5, 25),
                 'validator_count': random.randint(15, 25),
                 'timestamp': base_time.isoformat()
@@ -243,7 +243,7 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
             return {
                 'request_rate_per_second': random.gauss(1250, 100),
                 'response_time_ms': random.gauss(35, 8),
-                'error_rate_percent': random.gauss(0.02, 0.005),
+                'error_rate_percent': random.gauss(0., 0.),
                 'active_sessions': random.randint(500, 1000),
                 'rate_limit_hits': random.gauss(5, 2),
                 'cache_hit_rate': random.uniform(0.75, 0.95),
@@ -272,7 +272,7 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
         elif component == 'network':
             return {
                 'latency_ms': random.gauss(25, 5),
-                'packet_loss_percent': random.gauss(0.01, 0.005),
+                'packet_loss_percent': random.gauss(0., 0.),
                 'bandwidth_usage_mbps': random.gauss(500, 50),
                 'connection_count': random.randint(1000, 2000),
                 'dns_resolution_time_ms': random.gauss(15, 3),
@@ -293,7 +293,7 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
             return {
                 'awareness_level_percent': random.gauss(95, 2),
                 'response_accuracy_percent': random.gauss(99.8, 0.1),
-                'learning_rate': random.gauss(0.15, 0.05),
+                'learning_rate': random.gauss(0.15, 0.),
                 'memory_utilization_percent': random.uniform(0.75, 0.95),
                 'decision_confidence': random.uniform(0.85, 0.98),
                 'system_integration_score': random.uniform(0.92, 0.99),
@@ -303,7 +303,7 @@ def _generate_component_metrics(self, component: str) -> Dict[str, Any]:
             # Default metrics for any other components
             return {
                 'response_time_ms': random.gauss(50, 10),
-                'error_rate_percent': random.gauss(0.05, 0.02),
+                'error_rate_percent': random.gauss(0., 0.),
                 'usage_percent': random.uniform(0.4, 0.8),
                 'throughput': random.gauss(100, 20),
                 'latency_ms': random.gauss(30, 5),
@@ -585,7 +585,7 @@ def predict_maintenance(self) -> List[Dict[str, Any]]:
                     }
 
                     # Add risk factors
-                    if error_trend > 0.001:
+                    if error_trend > 0.:
                         prediction['risk_factors'].append("Increasing error rate trend")
                     if response_trend > 1:
                         prediction['risk_factors'].append("Degrading response time")
@@ -791,7 +791,7 @@ def main() -> Any:
     """Main // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function to run the Advanced Anomaly Detection System"""
+function to run the Advanced Anomaly Detection System""""
     logger.info("🚀 Starting QMOI Enhanced - Advanced AI Anomaly Detection & Predictive Maintenance System")
     logger.info("=" * 80)
 

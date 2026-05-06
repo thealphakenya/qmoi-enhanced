@@ -134,7 +134,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Media search GET error:', error);
+    logger.error('Media search GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -320,7 +320,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Media search POST error:', error);
+    logger.error('Media search POST error:', error);
     return NextResponse.json(
       {
         success: false,

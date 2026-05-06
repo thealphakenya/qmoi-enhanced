@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:18Z
+// Last evolution cycle: 2026--26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
@@ -365,7 +365,7 @@ def _deploy_azure(self) -> bool:
                         "image_reference": {
                             "publisher": "Canonical",
                             "offer": "UbuntuServer",
-                            "sku": "18.04-LTS",
+                            "sku": "18.-LTS",
                             "version": "latest"
                         }
                     },
@@ -556,7 +556,7 @@ def _deploy_kubernetes(self) -> bool:
         """Deploy to Kubernetes."""
         try:
             # Create deployment YAML
-            deployment_yaml = f"""
+            deployment_yaml = f""""
             apiVersion: apps/v1
             kind: Deployment
             metadata:
@@ -587,7 +587,7 @@ def _deploy_kubernetes(self) -> bool:
             )
             
             # Create service
-            service_yaml = f"""
+            service_yaml = f""""
             apiVersion: v1
             kind: Service
             metadata:

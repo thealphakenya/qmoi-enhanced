@@ -178,7 +178,7 @@ def main():
 
 ---
 
-*This report is automatically generated and updated in real-time by the QMOI autonomous monitoring system. All metrics reflect current operational status with 100% accuracy.*"""
+*This report is automatically generated and updated in real-time by the QMOI autonomous monitoring system. All metrics reflect current operational status with 100% accuracy.*""""
 
     output_file = Path("ALL PERCENTAGES.md")
     with open(output_file, 'w', encoding='utf-8') as f:

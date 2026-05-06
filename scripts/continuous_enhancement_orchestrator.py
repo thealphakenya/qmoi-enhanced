@@ -404,7 +404,7 @@ Recent Tasks Completed:
         for task in self.all_tasks_completed[-20:]:  # Show last 20 tasks
             content += f"  ✅ {task}\n"
         
-        content += f"""
+        content += f""""
 Status: ALL DOCUMENTATION AUTO-UPDATED ✅
 Next Cycle: Documentation refresh in 60 seconds
 

@@ -4,7 +4,7 @@
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:05Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -214,7 +214,7 @@ def setUp(self) -> Any:
         # Override DATA_DIR for testing
         self.original_data_dir = self.automation.DATA_DIR if hasattr(self.automation, 'DATA_DIR') else None
         if hasattr(self.automation, 'DATA_DIR'):
-            self.automation.DATA_DIR = self.production data"
+            self.automation.DATA_DIR = self.production data""
         
     """
     tearDown function
@@ -306,7 +306,7 @@ def test_sign_app_returns_dict_with_tracking_id(self) -> Any:
         result_template = {
             "app_file": str(self.test_apk),
             "platform": "android",
-            "tracking_id": "QMOI-SIGN-20260324-00001",
+            "tracking_id": "QMOI-SIGN-20260324-",
             "status": "pending",
         }
         
@@ -408,7 +408,7 @@ def tearDown(self) -> Any:
     """
 def test_tracking_id_format(self) -> Any:
         """Test that tracking IDs follow QMOI-SIGN-YYYYMMDD-NNNNN format"""
-        tracking_id = "QMOI-SIGN-20260324-00001"
+        tracking_id = "QMOI-SIGN-20260324-"
         
         # Validate format
         self.assertTrue(tracking_id.startswith("QMOI-SIGN-"))
@@ -429,7 +429,7 @@ def test_logging_operation_creates_jsonl_file(self) -> Any:
             "timestamp": datetime.now().isoformat(),
             "app_file": "test.apk",
             "platform": "android",
-            "tracking_id": "QMOI-SIGN-20260324-00001",
+            "tracking_id": "QMOI-SIGN-20260324-",
             "status": "success",
             "output": "Signed successfully"
         }
@@ -522,7 +522,7 @@ def test_missing_app_file_handling(self) -> Any:
         result_structure = {
             "status": "error",
             "error": "File not found",
-            "tracking_id": "QMOI-SIGN-20260324-00001"
+            "tracking_id": "QMOI-SIGN-20260324-"
         }
         
         self.assertIn("status", result_structure)

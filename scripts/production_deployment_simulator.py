@@ -409,7 +409,7 @@ def live_deployment_process(self) -> Any:
     """
 def generate_deployment_report(self) -> Any:
         """Generate final deployment report"""
-        report = f"""
+        report = f""""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                      Deployment live complete                          ║
 ║                {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                           ║

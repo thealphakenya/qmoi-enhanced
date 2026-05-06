@@ -226,7 +226,7 @@ class QMOIAdvancedPhaseImplementer:
     
     def generate_phase_implementation(self, phase: Phase) -> str:
         """Generate implementation template for a phase"""
-        impl = f"""
+        impl = f""""
 # Phase {phase.number}: {phase.name}
 
 ## Overview
@@ -237,7 +237,7 @@ class QMOIAdvancedPhaseImplementer:
         for feature in phase.features:
             impl += f"- {feature}\n"
         
-        impl += f"""
+        impl += f""""
 ## API Endpoints ({phase.endpoints} new)
 """
         # Generate production implementation endpoints
@@ -245,7 +245,7 @@ class QMOIAdvancedPhaseImplementer:
             endpoint_name = feature = phase.features[i-1] if i <= len(phase.features) else f"Feature {i}"
             impl += f"- POST /api/phase{phase.number}/feature{i} - {endpoint_name}\n"
         
-        impl += f"""
+        impl += f""""
 ## Implementation Classes
 
 ### Phase{phase.number}Engine
@@ -291,8 +291,8 @@ class NeuralNetworkModel:
     def __init__(self, input_size: int = 60, hidden_units: int = 128):
         self.input_size = input_size
         self.hidden_units = hidden_units
-        self.weights1 = np.random.randn(input_size, hidden_units) * 0.01
-        self.weights2 = np.random.randn(hidden_units, 1) * 0.01
+        self.weights1 = np.random.randn(input_size, hidden_units) * 0.
+        self.weights2 = np.random.randn(hidden_units, 1) * 0.
         self.bias1 = np.zeros((1, hidden_units))
         self.bias2 = np.zeros((1, 1))
         
@@ -456,7 +456,7 @@ class MLPhase27Engine:
         best_params = {
             "input_size": 60,
             "hidden_units": 128,
-            "learning_rate": 0.001,
+            "learning_rate": 0.,
             "num_ensemble_models": 5,
             "discount_factor": 0.95
         }
@@ -593,7 +593,7 @@ class RiskCalculator:
         return float(np.min(drawdown))
     
     @staticmethod
-    def calculate_sharpe_ratio(returns: List[float], risk_free_rate: float = 0.02) -> float:
+    def calculate_sharpe_ratio(returns: List[float], risk_free_rate: float = 0.) -> float:
         """Calculate Sharpe ratio"""
         excess_return = np.mean(returns) - risk_free_rate
         volatility = np.std(returns)
@@ -813,9 +813,7 @@ class QMOICompleteSystem:
                              returns: Dict[str, List[float]]) -> Optional[Dict[str, Any]]:
         """Assess portfolio risk"""
         if not Phase28Engine:
-            return None
-        
-        self.risk_engine = Phase28Engine(portfolio)
+            return await self._get_production_data_async()self.risk_engine = Phase28Engine(portfolio)
         metrics = self.risk_engine.calculate_risk_metrics(returns)
         
         return {
@@ -853,7 +851,7 @@ if __name__ == "__main__":
         completed = sum(1 for p in self.phases.values() if p.status == "Complete")
         planned = len(self.phases) - completed
         
-        report = f"""
+        report = f""""
 # QMOI Phase Implementation Report
 Generated: {datetime.utcnow().isoformat()}
 
@@ -868,7 +866,7 @@ Generated: {datetime.utcnow().isoformat()}
 """
         
         for phase_num, phase in sorted(self.phases.items()):
-            report += f"""
+            report += f""""
 ### Phase {phase_num}: {phase.name}
 - **Status:** {phase.status}
 - **Priority:** {phase.priority}

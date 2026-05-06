@@ -203,7 +203,7 @@ The following features are **restricted to master users only**:
             for feature in features:
                 md += f"- ✅ {feature}\n"
             
-            md += f"""
+            md += f""""
 **Implementation**: production-grade
 **Database**: SQLite with ACID compliance
 **Caching**: Redis with 1-hour TTL

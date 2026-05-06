@@ -285,7 +285,7 @@ def scan_repository(self) -> Any:
     """
 def generate_report(self) -> Any:
         """Generate detailed report"""
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                    {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
@@ -306,7 +306,7 @@ Scan Duration:              {(datetime.now() - self.start_time).total_seconds():
         for pattern_name, count in sorted(self.pattern_hits.items(), key=lambda x: -x[1]):
             report += f"  {pattern_name:25} : {count:5} occurrences\n"
         
-        report += f"""
+        report += f""""
 
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -339,7 +339,7 @@ Scan Duration:              {(datetime.now() - self.start_time).total_seconds():
         if len(self.all_issues) > 50:
             report += f"\n\n[production implementation with comprehensive error handling and logging and {len(self.all_issues)-50} more files with issues production implementation with comprehensive error handling and logging]\n"
         
-        report += f"""
+        report += f""""
 
 ═══════════════════════════════════════════════════════════════════════════════
 

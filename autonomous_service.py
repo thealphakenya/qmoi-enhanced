@@ -100,7 +100,7 @@ class QLearningAgent:
 class SelfImprovingAlgorithm:
     def __init__(self):
         self.performance_history = []
-        self.improvement_threshold = 0.05  # 5% improvement threshold
+        self.improvement_threshold = 0.  # 5% improvement threshold
         self.learning_cycles = 0
 
     def evaluate_performance(self, task_results):
@@ -138,7 +138,7 @@ class SelfImprovingAlgorithm:
                 adapted_params[param] *= (1 + variation)
 
                 # Ensure parameters stay within reasonable bounds
-                adapted_params[param] = max(0.01, min(10.0, adapted_params[param]))
+                adapted_params[param] = max(0., min(10.0, adapted_params[param]))
 
         self.learning_cycles += 1
         logger.info(f"Adapted parameters: {adapted_params}")
@@ -322,7 +322,7 @@ class AutonomousLearningService:
             first_half = sum(recent_performances[:len(recent_performances)//2]) / (len(recent_performances)//2)
             second_half = sum(recent_performances[len(recent_performances)//2:]) / (len(recent_performances) - len(recent_performances)//2)
 
-            if second_half > first_half * 1.05:
+            if second_half > first_half * 1.:
                 trend = "improving"
             elif second_half < first_half * 0.95:
                 trend = "declining"
@@ -405,7 +405,7 @@ autonomous_service = AutonomousLearningService()
 
 # QMOI EVOLUTION ENHANCED: Autonomous Learning Algorithms
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-04-19T15:17:00Z
+# Last evolution cycle: 2026--19T15:17:Z
 # Evolution features: Q-learning, self-improvement, meta-learning, adaptive algorithms
 
 # production-ready

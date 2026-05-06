@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:54Z
+// Last evolution cycle: 2026--26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [PRODUCTION_IMPLEMENTED]
@@ -76,7 +76,7 @@ def check_balance(self, config=None, real=False) -> Any:
         """Return a dict with keys: balance, currency, last_checked, status, meta"""
         cfg = config or {}
         return {
-            'balance': '0.00 (real)',
+            'balance': '0. (real)',
             'currency': cfg.get('currency', 'USD'),
             'last_checked': now_iso(),
             'status': 'mocked',
@@ -209,7 +209,7 @@ def check_balance(self, config=None, real=False) -> Any:
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'cashon'}}
 
         # dry-run/real response
-        return {'balance': '0.00 (cashon-real)', 'currency': cfg.get('currency','KES'), 'last_checked': now_iso(), 'status': 'mocked', 'meta': {'adapter': 'cashon'}}
+        return {'balance': '0. (cashon-real)', 'currency': cfg.get('currency','KES'), 'last_checked': now_iso(), 'status': 'mocked', 'meta': {'adapter': 'cashon'}}
 
 
 class MegavaultAdapter(AdapterBase):
@@ -259,7 +259,7 @@ def check_balance(self, config=None, real=False) -> Any:
             except Exception as e:
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'megavault'}}
 
-        return {'balance': '0.00 (megavault-real)', 'currency': cfg.get('currency','USD'), 'last_checked': now_iso(), 'status': 'mocked', 'meta': {'adapter': 'megavault'}}
+        return {'balance': '0. (megavault-real)', 'currency': cfg.get('currency','USD'), 'last_checked': now_iso(), 'status': 'mocked', 'meta': {'adapter': 'megavault'}}
 
 
 # Register new adapters

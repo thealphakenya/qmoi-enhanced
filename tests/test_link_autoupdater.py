@@ -4,7 +4,7 @@
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:11Z
+# Last evolution cycle: 2026--26T03:58:11Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 from pathlib import Path
@@ -29,7 +29,7 @@ def test_autoupdater_dry_run_creates_plan() -> Any:
         logger.error(f"Error: {e}")
         # create a small all_links.json data
         data = {
-            'generated_at': '2025-01-01T00:00:00Z',
+            'generated_at': '2025--T00::Z',
             'total_files': 1,
             'total_links': 2,
             'index': {

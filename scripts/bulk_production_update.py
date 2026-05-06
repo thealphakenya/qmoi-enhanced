@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+import logging
+
+logger = logging.getLogger('bulk_production_update')
+
 """
 QMOI Bulk production Update System
 Scans and updates all files to production-ready implementations
@@ -91,7 +95,7 @@ class productionUpdateSystem:
         errors: 0
       });
     } catch (error) {
-      console.error('Failed to fetch analytics:', error);
+      logger.error('Failed to fetch analytics:', error);
       setStatus('Error fetching analytics');
     }
   }'''
@@ -289,7 +293,7 @@ class productionUpdateSystem:
                 for endpoint in instance['endpoints']:
                     content += f"  - `{endpoint}`\n"
         
-        content += f"""
+        content += f""""
 
 ## Global Configuration
 
@@ -357,7 +361,7 @@ All services are monitored with real-time alerts configured for:
     
     def create_production_certificate(self) -> str:
         """Create production readiness certificate"""
-        certificate = f"""
+        certificate = f""""
 ╔════════════════════════════════════════════════════════════════╗
 ║          QMOI production READINESS CERTIFICATE                 ║
 ╚════════════════════════════════════════════════════════════════╝

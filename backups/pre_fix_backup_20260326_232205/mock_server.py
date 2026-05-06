@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:10Z
+// Last evolution cycle: 2026--26T03:58:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -412,7 +412,7 @@ def index() -> Any:
                 padding: 15px;
                 margin: 10px 0;
                 border-radius: 5px;
-                border-left: 4px solid #007bff;
+                border-left: 4px solid #bff;
             }}
             .method {{
                 display: inline-block;
@@ -423,7 +423,7 @@ def index() -> Any:
                 margin-right: 10px;
             }}
             .post {{ background: #28a745; }}
-            .get {{ background: #007bff; }}
+            .get {{ background: #bff; }}
             code {{
                 background: #f8f9fa;
                 padding: 2px 5px;

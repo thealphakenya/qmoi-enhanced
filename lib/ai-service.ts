@@ -48,7 +48,7 @@ class AIService {
       }
 
     } catch (error) {
-      console.error('AI Service error:', error);
+      logger.error('AI Service error:', error);
       return {
         success: false,
         error: error instanceof Error ? error.message : 'AI service failed',
@@ -102,7 +102,7 @@ class AIService {
         },
       };
     } catch (error) {
-      console.error('OpenAI API error:', error);
+      logger.error('OpenAI API error:', error);
       // Fallback to pattern matching
       return this.generateFallbackResponse(message);
     }
@@ -157,7 +157,7 @@ class AIService {
         },
       };
     } catch (error) {
-      console.error('Anthropic API error:', error);
+      logger.error('Anthropic API error:', error);
       // Fallback to pattern matching
       return this.generateFallbackResponse(message);
     }

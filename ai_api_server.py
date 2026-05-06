@@ -361,7 +361,7 @@ def api_documentation():
                 'description': 'Check system health and service status',
                 'response': {
                     'status': 'healthy',
-                    'timestamp': '2026-04-20T01:10:34.000000',
+                    'timestamp': '2026--20T01:10:34.',
                     'services': {
                         'anomaly_detection': 'running',
                         'machine_learning': 'running',
@@ -413,7 +413,7 @@ def api_documentation():
                             'service': 'machine_learning'
                         }
                     ],
-                    'timestamp': '2026-04-20T01:10:34.000000'
+                    'timestamp': '2026--20T01:10:34.'
                 }
             },
             'anomaly_detection': {
@@ -427,7 +427,7 @@ def api_documentation():
                 'response': {
                     'task_id': 'task_123456789',
                     'status': 'submitted',
-                    'timestamp': '2026-04-20T01:10:34.000000'
+                    'timestamp': '2026--20T01:10:34.'
                 },
                 'example_curl': 'curl -X POST http://production-db.qmoi.ai:3000/anomaly-detection -H "Content-Type: application/json" -d \'{"data": [1, 2, 3, 4, 5]}\''
             },
@@ -443,7 +443,7 @@ def api_documentation():
                 'response': {
                     'task_id': 'task_123456790',
                     'status': 'submitted',
-                    'timestamp': '2026-04-20T01:10:34.000000'
+                    'timestamp': '2026--20T01:10:34.'
                 },
                 'example_curl': 'curl -X POST http://production-db.qmoi.ai:3000/machine-learning -H "Content-Type: application/json" -d \'{"task_type": "regression", "data": [[1, 2], [3, 4]], "target": [1.5, 3.5]}\''
             },
@@ -458,7 +458,7 @@ def api_documentation():
                 'response': {
                     'task_id': 'task_123456791',
                     'status': 'submitted',
-                    'timestamp': '2026-04-20T01:10:34.000000'
+                    'timestamp': '2026--20T01:10:34.'
                 },
                 'example_curl': 'curl -X POST http://production-db.qmoi.ai:3000/nlp-analysis -H "Content-Type: application/json" -d \'{"text": "Hello, this is a test message"}\''
             },
@@ -473,7 +473,7 @@ def api_documentation():
                 'response': {
                     'task_id': 'task_123456792',
                     'status': 'submitted',
-                    'timestamp': '2026-04-20T01:10:34.000000'
+                    'timestamp': '2026--20T01:10:34.'
                 },
                 'example_curl': 'curl -X POST http://production-db.qmoi.ai:3000/computer-vision -H "Content-Type: application/json" -d \'{"image_data": "base64_data", "task_type": "edge_detection"}\''
             },
@@ -488,7 +488,7 @@ def api_documentation():
                 'response': {
                     'task_id': 'task_123456793',
                     'status': 'submitted',
-                    'timestamp': '2026-04-20T01:10:34.000000'
+                    'timestamp': '2026--20T01:10:34.'
                 },
                 'example_curl': 'curl -X POST http://production-db.qmoi.ai:3000/predictive-analytics -H "Content-Type: application/json" -d \'{"data": [1, 2, 3, 4, 5], "forecast_periods": 3}\''
             },
@@ -503,8 +503,8 @@ def api_documentation():
                     'task_id': 'task_123456789',
                     'status': 'completed',
                     'result': {'anomalies': [], 'confidence': 0.95},
-                    'submitted_at': '2026-04-20T01:10:30.000000',
-                    'completed_at': '2026-04-20T01:10:34.000000',
+                    'submitted_at': '2026--20T01:10:30.',
+                    'completed_at': '2026--20T01:10:34.',
                     'processing_time': 4.0
                 }
             }

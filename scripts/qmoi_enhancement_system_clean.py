@@ -181,7 +181,7 @@ QMOI implements advanced masking capabilities across all system components, prov
         if len(mask_files) > 10:
             content += "- ... and {0} more files\n".format(len(mask_files) - 10)
 
-        content += """
+        content += """"
 
 ---
 *This document is automatically maintained and updated by the QMOI autonomous evolution system.*
@@ -194,7 +194,7 @@ QMOI implements advanced masking capabilities across all system components, prov
         if orchestrator_file.exists():
             content = orchestrator_file.read_text()
 
-            mask_section = """
+            mask_section = """"
 
 ## Mask Integration in Orchestrators
 
@@ -283,7 +283,7 @@ QMOI implements unlimited resource access across all platforms, enabling autonom
         if orchestrator_file.exists():
             content = orchestrator_file.read_text()
 
-            integration_section = """
+            integration_section = """"
 
 ## Comprehensive Mask-Orchestrator Integration
 

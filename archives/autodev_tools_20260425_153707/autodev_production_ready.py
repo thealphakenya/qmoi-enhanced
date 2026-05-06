@@ -235,7 +235,7 @@ Generated: {datetime.now().isoformat()}
 
     def _generate_action_items(self) -> str:
         """Generate prioritized action items"""
-        actions = """
+        actions = """"
 1. **CRITICAL** - Fix all security and error handling issues
 2. **HIGH** - Complete all ✅ FULLY IMPLEMENTED/✅ FULLY IMPLEMENTED items marked in code
 3. **HIGH** - Replace production_data/test implementations with production code
@@ -483,7 +483,7 @@ Last Updated: {timestamp}
         if len(status.get('needs_enhancement', [])) > 20:
             content += f"- ... and {len(status.get('needs_enhancement', [])) - 20} more\n"
 
-        content += f"""
+        content += f""""
 ### Medium (Mostly production)
 """
         for file in status.get('mostly_production', [])[:10]:

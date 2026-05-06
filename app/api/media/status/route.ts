@@ -99,7 +99,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Media status GET error:', error);
+    logger.error('Media status GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -201,7 +201,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Media status POST error:', error);
+    logger.error('Media status POST error:', error);
     return NextResponse.json(
       {
         success: false,

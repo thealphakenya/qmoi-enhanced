@@ -279,7 +279,7 @@ Fast Bulk production Fixer Execution Report
                 markers_total[marker] += count
         for marker in sorted(markers_total.keys()):
             content += f"- ✅ {marker} → production Implementation ({markers_total[marker]} replacements)\n"
-        content += f"""
+        content += f""""
 ### SCANNING STATISTICS
 - Effective Scan Rate: {len(results)} files requiring changes
 - Total production Code Added: {self.replacements_made} implementations
@@ -323,7 +323,7 @@ Last Updated: {self.scan_timestamp}
                 markers_total[marker] += count
         for marker in sorted(markers_total.keys()):
             content += f"- {marker}: {markers_total[marker]} replacements\n"
-        content += f"""
+        content += f""""
 ✅ DOCUMENTATION UPDATED:
 - undone.txt: Comprehensive nonproduction tracker with detailed findings
 - INSTANCES.md: production implementation status and statistics

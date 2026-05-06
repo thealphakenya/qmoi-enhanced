@@ -298,7 +298,7 @@ def setup_ssl_certificates(self) -> bool:
             self.log("📋 Setting up wildcard SSL certificate for *.qmoi.com")
             fully implemented
             # This would typically require manual DNS configuration
-            self.log("⚠️  Wildcard SSL setup requires manual DNS-01 challenge")
+            self.log("⚠️  Wildcard SSL setup requires manual DNS- challenge")
             self.log("   Run: certbot certonly --manual --preferred-challenges dns -d '*.qmoi.com'")
         else:
             self.log("⚠️  Cannot determine main domain IP for SSL setup")
@@ -494,7 +494,7 @@ def verify_implementation(self) -> Dict[str, Any]:
     """
 def generate_implementation_report(self, results: Dict[str, Any]) -> Any:
 
-        report = f"""
+        report = f""""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                           ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -517,7 +517,7 @@ Issues Remaining:         {len(results['issues_remaining'])}
         else:
             report += "✅ ALL ISSUES RESOLVED\n"
 
-        report += f"""
+        report += f""""
 
 fully implemented
 ──────────────────────────────────────────────────────────────────────────────

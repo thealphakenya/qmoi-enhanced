@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:06Z
+// Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
@@ -114,7 +114,7 @@ def _ensure_migrations_table(self) -> None:
         """Create migrations table if it doesn't exist."""
         try:
             if self.db_type == 'sqlite':
-                self.cursor.execute(f"""
+                self.cursor.execute(f""""
                     CREATE TABLE IF NOT EXISTS {self.config['migrations_table']} (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         version TEXT NOT NULL,
@@ -123,7 +123,7 @@ def _ensure_migrations_table(self) -> None:
                     )
                 """)
             elif self.db_type == 'postgresql':
-                self.cursor.execute(f"""
+                self.cursor.execute(f""""
                     CREATE TABLE IF NOT EXISTS {self.config['migrations_table']} (
                         id SERIAL PRIMARY KEY,
                         version TEXT NOT NULL,
@@ -164,7 +164,7 @@ def create_migration(self, name: str) -> str:
 def get_applied_migrations(self) -> List[Dict]:
         """Get list of applied migrations."""
         try:
-            self.cursor.execute(f"""
+            self.cursor.execute(f""""
                 SELECT version, name, applied_at 
                 FROM {self.config['migrations_table']} 
                 ORDER BY version
@@ -222,7 +222,7 @@ def apply_migration(self, migration: Dict) -> None:
             self.cursor.execute(migration['up_migration'])
 
             # Record migration
-            self.cursor.execute(f"""
+            self.cursor.execute(f""""
                 INSERT INTO {self.config['migrations_table']} (version, name)
                 VALUES (%s, %s)
             """, (migration['version'], migration['name']))
@@ -246,7 +246,7 @@ def rollback_migration(self, migration: Dict) -> None:
             self.cursor.execute(migration['down_migration'])
 
             # Remove migration record
-            self.cursor.execute(f"""
+            self.cursor.execute(f""""
                 DELETE FROM {self.config['migrations_table']}
                 WHERE version = %s
             """, (migration['version'],))

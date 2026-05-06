@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 /**
  * production implementation autotest production implementation for the `pages` directory.
  * This file is generated automatically by `scripts/qmoi_md_autoupdater.py`.

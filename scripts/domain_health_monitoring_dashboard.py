@@ -127,18 +127,18 @@ def print_domain_status(domain, status) -> Any:
     if status['overall_healthy']:
         health_icon = "✅"
         health_text = "100% HEALTHY"
-        color = "\033[92m"  # Green
+        color = "\[92m"  # Green
     else:
         percentage = status['health_percentage']
         if percentage >= 80:
             health_icon = "🟡"
-            color = "\033[93m"  # Yellow
+            color = "\[93m"  # Yellow
         else:
             health_icon = "❌"
-            color = "\033[91m"  # Red
+            color = "\[91m"  # Red
         health_text = f"{percentage:.1f}% HEALTHY"
 
-    reset_color = "\033[0m"
+    reset_color = "\[0m"
 
     logger.info(f"{color}{health_icon} {domain:<15} {health_text:<12} Score: {status['score']}/{status['max_score']}{reset_color}")
 

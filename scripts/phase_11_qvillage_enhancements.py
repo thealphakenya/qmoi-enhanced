@@ -259,7 +259,7 @@ class QVillageEnhancer:
                 "releases": [
                     {
                         "version": "2.0.0",
-                        "release_date": "2026-04-13",
+                        "release_date": "2026--13",
                         "changes": [
                             "Ultra-# production: # production: test framework replaced with production logging replaced with production logging complete",
                             "41 Lion Agent variations",

@@ -126,7 +126,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Auth verify GET error:', error);
+    logger.error('Auth verify GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -253,7 +253,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Auth verify POST error:', error);
+    logger.error('Auth verify POST error:', error);
     return NextResponse.json(
       {
         success: false,

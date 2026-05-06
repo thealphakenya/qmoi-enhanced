@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Payments GET error:', error);
+    logger.error('Payments GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -194,7 +194,7 @@ export async function POST(req: NextRequest) {
     }, { status: 201 });
 
   } catch (error) {
-    console.error('Payments POST error:', error);
+    logger.error('Payments POST error:', error);
     return NextResponse.json(
       {
         success: false,

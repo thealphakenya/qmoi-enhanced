@@ -104,7 +104,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Emergency dispatch status error:', error);
+    logger.error('Emergency dispatch status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -239,7 +239,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Emergency dispatch action error:', error);
+    logger.error('Emergency dispatch action error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -338,7 +338,7 @@ async function createEmergencyDispatch(
     };
 
   } catch (error) {
-    console.error('Create dispatch error:', error);
+    logger.error('Create dispatch error:', error);
     return {
       success: false,
       dispatchId: '',
@@ -394,7 +394,7 @@ async function updateDispatchStatus(
     return { success: true };
 
   } catch (error) {
-    console.error('Update dispatch status error:', error);
+    logger.error('Update dispatch status error:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Failed to update dispatch status',
@@ -463,7 +463,7 @@ async function getAvailableTeams(count: number): Promise<Array<{ id: string; nam
 
 async function assignTeamToDispatch(teamId: string, dispatchId: string): Promise<void> {
   // In real implementation, this would update team status and notify team members
-  console.log(`Assigning team ${teamId} to dispatch ${dispatchId}`);
+  logger.info(`Assigning team ${teamId} to dispatch ${dispatchId}`);
 }
 
 function calculateResponseTime(priority: string, location: string, availableTeams: number): number {

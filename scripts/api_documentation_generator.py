@@ -160,7 +160,7 @@ class productionFileManager:
 """
 QMOI Enhanced - API Documentation Generator
 Version: 2.0.0
-Date: 2026-03-30
+Date: 2026--30
 Description: complete API documentation with OpenAPI 3.0 specification
 """
 
@@ -1729,7 +1729,7 @@ def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
         """Generate HTML documentation from the OpenAPI spec"""
         spec = self.generate_specification()
 
-        html_content = f"""
+        html_content = f""""
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1776,7 +1776,7 @@ def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
         .method.delete {{ background-color: #f93e3e; }}
         .path {{ font-family: 'Courier New', monospace; font-weight: bold; }}
         .description {{ color: #666; margin-top: 10px; }}
-        .tag {{ background-color: #e1f5fe; color: #0277bd; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 5px; }}
+        .tag {{ background-color: #e1f5fe; color: #bd; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-right: 5px; }}
         .schema {{ background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px; font-family: 'Courier New', monospace; font-size: 14px; }}
         .section {{ margin-bottom: 40px; }}
         .section h2 {{ color: #333; border-bottom: 2px solid #667eea; padding-bottom: 10px; }}
@@ -1805,11 +1805,11 @@ def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
                     endpoints_by_tag[tag].append((method.upper(), path, details))
 
         for tag, endpoints in endpoints_by_tag.items():
-            html_content += f"""
+            html_content += f""""
         <h3>{tag}</h3>
 """
             for method, path, details in endpoints:
-                html_content += f"""
+                html_content += f""""
         <div class="endpoint">
             <div>
                 <span class="method {method.lower()}">{method}</span>
@@ -1822,7 +1822,7 @@ def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
 """
 
                 if 'parameters' in details:
-                    html_content += """
+                    html_content += """"
             <div class="schema">
                 <strong>Parameters:</strong><br>
 """
@@ -1834,11 +1834,11 @@ def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
                             html_content += f"• {param['name']} ({param['in']})<br>"
                     html_content += "</div>"
 
-                html_content += """
+                html_content += """"
         </div>
 """
 
-        html_content += """
+        html_content += """"
     </div>
 
     <div class="section">
@@ -1879,7 +1879,7 @@ def main() -> Any:
     """Main // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function to generate API documentation"""
+function to generate API documentation""""
     logger.info("🚀 Generating QMOI Enhanced API Documentation")
     logger.info("=" * 60)
 
@@ -1895,13 +1895,13 @@ function to generate API documentation"""
     spec = generator.generate_specification()
     total_endpoints = sum(len(methods) for methods in spec['paths'].values())
 
-    logger.info("
+    logger.info(""
 📊 Documentation Summary:"    logger.info(f"• Total API Endpoints: {total_endpoints}")
     logger.info(f"• API Version: {spec['info']['version']}")
     logger.info(f"• OpenAPI Version: {spec['openapi']}")
     logger.info(f"• Tags: {len(spec['tags'])}")
     logger.info(f"• Schemas: {len(spec['components']['schemas'])}")
-    logger.info("
+    logger.info(""
 ✅ API Documentation Generation complete!"    logger.info("Files generated:")
     logger.info("• api_openapi_spec.json - OpenAPI 3.0 specification")
     logger.info("• api_documentation.html - Human-readable HTML documentation")

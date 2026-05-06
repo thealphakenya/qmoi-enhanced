@@ -118,7 +118,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:55Z
+# Last evolution cycle: 2026--26T03:58:55Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -195,7 +195,7 @@ def create_android_apk() -> Any:
             </intent-filter>
         </activity>
     </application>
-</manifest>"""
+</manifest>""""
         apk.writestr("AndroidManifest.xml", manifest.encode('utf-8'))
         
         # Resources
@@ -207,7 +207,7 @@ def create_android_apk() -> Any:
         # DEX (compiled Java bytecode) - complete valid DEX header
         dex_header = bytes([
             0x64, 0x65, 0x78, 0x0a,  # "dex\n"
-            0x30, 0x33, 0x39, 0x00,  # version 039
+            0x30, 0x33, 0x39, 0x00,  # version 
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  # padding
         ]) + b'\x00' * 100  # complete DEX file
         apk.writestr("classes.dex", dex_header)
@@ -260,7 +260,7 @@ def create_ios_ipa() -> Any:
         <key>CFBundleVersion</key>
         <string>1</string>
     </dict>
-    </plist>"""
+    </plist>""""
         ipa.writestr("Payload/qmoi_ai.app/Info.plist", plist.encode('utf-8'))
         
         # Executable (Mach-O binary)
@@ -320,7 +320,7 @@ def create_smarttv_apk() -> Any:
             </intent-filter>
         </activity>
     </application>
-</manifest>"""
+</manifest>""""
         apk.writestr("AndroidManifest.xml", manifest.encode('utf-8'))
         apk.writestr("resources.arsc", b"ARSC\x00\x00\x00\x00")
         dex_header = bytes([0x64, 0x65, 0x78, 0x0a, 0x30, 0x33, 0x39, 0x00]) + b'\x00' * 100
@@ -379,14 +379,14 @@ def create_chromebook_zip() -> Any:
     <button onclick="notification.show('QMOI AI is running!')">Start</button>
     <script src="app.js"></script>
 </body>
-</html>"""
+</html>""""
         zf.writestr("popup.html", html.encode('utf-8'))
         
         # JavaScript
         js = """logger.info('QMOI AI Chromebook app loaded');
 document.adprodentListener('DOMContentLoaded', function() {
     logger.info('App initialized');
-});"""
+});""""
         zf.writestr("app.js", js.encode('utf-8'))
         
         png_1x1 = bytes([
@@ -461,7 +461,7 @@ def create_qcity_package() -> Any:
     </div>
     <script src="app.js"></script>
 </body>
-</html>"""
+</html>""""
         zf.writestr("index.html", html.encode('utf-8'))
 
         # Service worker (sophisticated content)

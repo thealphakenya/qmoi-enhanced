@@ -1,4 +1,4 @@
-console.log("[ServiceWorker] production mode initialized");
+logger.info("[ServiceWorker] production mode initialized");
 
 const CACHE_VERSION = "qmoi-pwa-v1";
 const CACHE_URLS = [
@@ -16,26 +16,26 @@ async function cacheAppShell() {
   const cache = await caches.open(CACHE_VERSION);
   try {
     await cache.addAll(CACHE_URLS);
-    console.log("[ServiceWorker] App shell cached");
+    logger.info("[ServiceWorker] App shell cached");
   } catch (error) {
     console.warn("[ServiceWorker] Cache addAll failed:", error);
   }
 }
 
 self.addEventListener("install", (event) => {
-  console.log("[ServiceWorker] Installing...");
+  logger.info("[ServiceWorker] Installing...");
   event.waitUntil(cacheAppShell());
   self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
-  console.log("[ServiceWorker] Activating...");
+  logger.info("[ServiceWorker] Activating...");
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_VERSION) {
-            console.log("[ServiceWorker] Deleting old cache:", cacheName);
+            logger.info("[ServiceWorker] Deleting old cache:", cacheName);
             return caches.delete(cacheName);
           }
           return Promise.resolve();
@@ -181,4 +181,4 @@ self.addEventListener("periodicsync", (event) => {
   }
 });
 
-console.log("[ServiceWorker] Loaded and ready");
+logger.info("[ServiceWorker] Loaded and ready");

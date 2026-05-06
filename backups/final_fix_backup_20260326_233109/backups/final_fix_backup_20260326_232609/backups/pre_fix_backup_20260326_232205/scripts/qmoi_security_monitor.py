@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:05Z
+// Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # // production implementation:
@@ -180,7 +180,7 @@ def load_security_config(self) -> Any:
                 r"subprocess\.call\s*\(",
                 r"password\s*=\s*['\"][^'\"]+['\"]",
                 r"api_key\s*=\s*['\"][^'\"]+['\"]",
-                r"secret\s*=\s*['\"][^'\"]+['\"]"
+                r"secret\s*=\s*['\"][^'\"]+['\"]""
             ]
         }
     
@@ -995,7 +995,7 @@ def scan_config_vulnerabilities(self) -> List[Dict[str, Any]]:
                         r"password\s*[:=]\s*['\"][^'\"]+['\"]",
                         r"secret\s*[:=]\s*['\"][^'\"]+['\"]",
                         r"api_key\s*[:=]\s*['\"][^'\"]+['\"]",
-                        r"token\s*[:=]\s*['\"][^'\"]+['\"]"
+                        r"token\s*[:=]\s*['\"][^'\"]+['\"]""
                     ]
                     
                     for pattern in secret_patterns:

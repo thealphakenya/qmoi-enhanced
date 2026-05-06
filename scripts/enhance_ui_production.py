@@ -618,7 +618,7 @@ def main():
     print("  - src/hooks/useRevenueValidation.ts")
     
     print("\n💡 Usage:")
-    print("""
+    print(""""
 import productionRevenueDashboard from "@/components/q-city/productionRevenueDashboard";
 import { useRevenueValidation } from "@/hooks/useRevenueValidation";
 

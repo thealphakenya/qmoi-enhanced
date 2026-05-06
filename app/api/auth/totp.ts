@@ -113,7 +113,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('TOTP GET error:', error);
+    logger.error('TOTP GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -382,7 +382,7 @@ export async function POST(req: NextRequest) {
     }
 
   } catch (error) {
-    console.error('TOTP POST error:', error);
+    logger.error('TOTP POST error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -425,7 +425,7 @@ function verifyTOTP(secret: string, code: string): boolean {
 
     return false;
   } catch (error) {
-    console.error('TOTP verification error:', error);
+    logger.error('TOTP verification error:', error);
     return false;
   }
 }

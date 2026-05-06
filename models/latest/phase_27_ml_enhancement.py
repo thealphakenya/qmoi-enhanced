@@ -1,6 +1,6 @@
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:34.583777 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.750782 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.428521 -->
+<!-- AUTODEV Enhanced: 2026--20T09::34.583777 -->
+<!-- AUTODEV Enhanced: 2026--20T09::.750782 -->
+<!-- AUTODEV Enhanced: 2026--20T08:55:.428521 -->
 #!/usr/bin/env python3
 """
 Phase 27: Advanced Machine Learning Enhancement
@@ -32,8 +32,8 @@ class NeuralNetworkModel:
     def __init__(self, input_size: int = 60, hidden_units: int = 128):
         self.input_size = input_size
         self.hidden_units = hidden_units
-        self.weights1 = np.random.randn(input_size, hidden_units) * 0.01
-        self.weights2 = np.random.randn(hidden_units, 1) * 0.01
+        self.weights1 = np.random.randn(input_size, hidden_units) * 0.
+        self.weights2 = np.random.randn(hidden_units, 1) * 0.
         self.bias1 = np.zeros((1, hidden_units))
         self.bias2 = np.zeros((1, 1))
         
@@ -197,7 +197,7 @@ class MLPhase27Engine:
         best_params = {
             "input_size": 60,
             "hidden_units": 128,
-            "learning_rate": 0.001,
+            "learning_rate": 0.,
             "num_ensemble_models": 5,
             "discount_factor": 0.95
         }

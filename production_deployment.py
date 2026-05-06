@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import asyncio
+
 """
 Production Deployment Script - QMOI Enhanced
 Automated production deployment for enhanced QMOI systems
@@ -397,7 +399,7 @@ RUN useradd --create-home --shell /bin/bash app \\
     && chown -R app:app /app
 USER app
 
-CMD ["python", "advanced_performance_optimizer.py"]"""
+CMD ["python", "advanced_performance_optimizer.py"]""""
         }
 
         for filename, content in dockerfiles.items():
@@ -530,7 +532,7 @@ http {
             add_header Cache-Control "public, immutable";
         }
     }
-}"""
+}""""
 
         nginx_path = self.workspace_root / "nginx" / "nginx.conf"
         nginx_path.parent.mkdir(exist_ok=True)
@@ -589,7 +591,7 @@ scrape_configs:
   - job_name: 'redis'
     static_configs:
       - targets: ['redis:6379']
-    scrape_interval: 30s"""
+    scrape_interval: 30s""""
 
         prometheus_path = self.workspace_root / "monitoring" / "prometheus.yml"
         prometheus_path.parent.mkdir(exist_ok=True)
@@ -614,10 +616,10 @@ set -e
 echo "🚀 Starting QMOI Enhanced Production Deployment..."
 
 # Colors for output
-RED='\\033[0;31m'
-GREEN='\\033[0;32m'
-YELLOW='\\033[1;33m'
-NC='\\033[0m' # No Color
+RED='\\[0;31m'
+GREEN='\\[0;32m'
+YELLOW='\\[1;33m'
+NC='\\[0m' # No Color
 
 # Function to print colored output
 print_status() {
@@ -849,7 +851,7 @@ main() {
 }
 
 # Run main function
-main "$@" """
+main "$@" """"
 
         deploy_path = self.workspace_root / "deploy_production.sh"
         with open(deploy_path, 'w') as f:
@@ -915,7 +917,7 @@ pytest-asyncio==0.21.1
 # Development tools
 black==23.7.0
 flake8==6.0.0
-mypy==1.5.1"""
+mypy==1.5.1""""
 
         req_path = self.workspace_root / "requirements.txt"
         with open(req_path, 'w') as f:
@@ -964,7 +966,7 @@ SSL_KEY_PATH=/etc/nginx/ssl/key.pem
 # Performance
 MAX_WORKERS=4
 REQUEST_TIMEOUT=30
-RATE_LIMIT_REQUESTS_PER_MINUTE=1000"""
+RATE_LIMIT_REQUESTS_PER_MINUTE=1000""""
 
         env_path = self.workspace_root / ".env.production.template"
         with open(env_path, 'w') as f:
@@ -1048,7 +1050,7 @@ Last Updated: {datetime.now().isoformat()}
 2. Configure SSL certificates in nginx/ssl/
 3. Set up domain name and DNS
 4. Review security settings in production_config.json
-5. Test deployment in staging environment first"""
+5. Test deployment in staging environment first""""
 
         resume_path = self.workspace_root / "resumefromhere.txt"
         with open(resume_path, 'w') as f:

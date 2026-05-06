@@ -208,7 +208,7 @@ def generate_manifest(self) -> Any:
         with open(manifest_path, 'w', encoding='utf-8') as f:
             f.write("QMOI Enhanced Repository Instruction Manifest\n")
             f.write("=" * 50 + "\n\n")
-            f.write("Generated on: 2026-03-28\n\n")
+            f.write("Generated on: 2026--28\n\n")
             f.write("SUMMARY:\n")
             f.write(f"Total instruction occurrences: {sum(self.frequency.values())}\n")
             f.write(f"Files with instructions: {len(self.findings)}\n\n")

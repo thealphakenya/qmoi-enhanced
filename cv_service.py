@@ -342,7 +342,7 @@ class ComputerVisionService:
             'edge_pixels': edge_pixels,
             'edge_ratio': edge_pixels / total_pixels,
             'objects_detected': objects['objects_detected'],
-            'histogram_peaks': [i for i, count in enumerate(histogram) if count > total_pixels * 0.05],
+            'histogram_peaks': [i for i, count in enumerate(histogram) if count > total_pixels * 0.],
             'brightness_level': 'bright' if mean_intensity > 128 else 'dark',
             'contrast_level': 'high' if max(histogram) - min(histogram) > 100 else 'low',
             'timestamp': datetime.now().isoformat()
@@ -356,7 +356,7 @@ cv_service = ComputerVisionService()
 
 # QMOI EVOLUTION ENHANCED: Computer Vision Systems
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-04-19T15:15:00Z
+# Last evolution cycle: 2026--19T15:15:Z
 # Evolution features: edge detection, image filtering, object detection, feature analysis
 
 # production-ready

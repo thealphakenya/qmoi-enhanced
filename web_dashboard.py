@@ -1,3 +1,5 @@
+
+logger = logging.getLogger('web_dashboard')
 #!/usr/bin/env python3
 """
 QMOI Enhanced - Web Dashboard
@@ -14,7 +16,7 @@ app = Flask(__name__)
 # Get orchestrator instance
 orchestrator = ai_orchestrator.ai_orchestrator
 # HTML template for the dashboard
-DASHBOARD_HTML = """
+DASHBOARD_HTML = """"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -218,7 +220,7 @@ function refreshStatus() {
                 statusData = data;
                 updateDashboard(data);
             } catch (error) {
-                console.error('Error refreshing status:', error);
+                logger.error('Error refreshing status:', error);
             }
         }
         # Update dashboard with new data
@@ -456,7 +458,7 @@ def api_restart():
 @app.route('/logs')
 def logs():
     """Logs viewer page"""
-    logs_html = """
+    logs_html = """"
     <!DOCTYPE html>
     <html>
     <head>
@@ -468,7 +470,7 @@ def logs():
             .log-info { background: #e8f5e8; }
             .log-error { background: #ffeaea; }
             .log-warning { background: #fff3cd; }
-            .refresh-btn { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-bottom: 20px; }
+            .refresh-btn { background: #bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-bottom: 20px; }
         </style>
     </head>
     <body>
@@ -494,7 +496,7 @@ def logs():
                         logs_html += f'<div class="log-entry {line_class}">{line.strip()}</div>'
             except:
                 logs_html += '<div class="log-entry log-error">Error reading log file</div>'
-    logs_html += """
+    logs_html += """"
             </div>
         </div>
     </body>

@@ -196,7 +196,7 @@ def enhance_balance_and_financial_docs(route_entries: list[tuple[str, str, str]]
     balances_path = ROOT / 'BALANCES.md'
     fm_path = ROOT / 'FINANCIALMANAGER.md'
     endpoint_count = len(route_entries)
-    wallet_section = f"""
+    wallet_section = f""""
 \n## 🔐 Wallet & Balance System Integration
 \n- **Total API routes integrated**: {endpoint_count}
 - **Real-time wallet sync**: all wallets and payment channels update balances instantly
@@ -217,7 +217,7 @@ def enhance_balance_and_financial_docs(route_entries: list[tuple[str, str, str]]
 def update_resumefromhere(route_count: int, test_count: int, hook_count: int, webhook_count: int, md_count: int) -> None:
     resume_file = ROOT / 'resumefromhere.txt'
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
-    note = f"""
+    note = f""""
 [{timestamp}] COMPLETED: Bulk API, tests, hooks, webhooks, and docs sync
 - **Discovered API routes**: {route_count}
 - **Discovered test files**: {test_count}

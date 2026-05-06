@@ -159,7 +159,7 @@ def get_revenue_updates():
 {chr(10).join(f"- **{stream}**: Automated implementation with real-time earnings tracking, ensuring $1M+ daily contribution" for stream in NEW_REVENUE_STREAMS)}
 
 #### Daily Revenue Optimization:
-- **Target**: $1,000,000+ daily across all streams
+- **Target**: $1,,+ daily across all streams
 - **Growth Rate**: 15% daily minimum increase
 - **Automation**: 100% autonomous revenue generation
 - **Tracking**: Real-time dashboard with earnings forecasts
@@ -174,7 +174,7 @@ def get_revenue_updates():
 """,
         "## 🎯 Revenue Targets": """
 ### Enhanced Daily Targets (2026)
-- **Minimum Daily Revenue**: $1,000,000
+- **Minimum Daily Revenue**: $1,,
 - **Growth Requirement**: 10% daily increase minimum
 - **Diversification**: Revenue from 50+ independent streams
 - **Automation Level**: 100% autonomous operation
@@ -327,7 +327,7 @@ def get_master_owns_updates():
 {chr(10).join(f"- **{method}**: Premium UI feature generating revenue through subscriptions, NFTs, and marketplace sales, contributing to $1M+ daily targets" for method in NEW_MASTER_OWNS_UI_REVENUE)}
 
 #### UI Revenue Optimization:
-- **Target Contribution**: $200,000+ daily from UI features alone
+- **Target Contribution**: $200,+ daily from UI features alone
 - **User Acquisition**: Viral sharing and referral systems
 - **Customization Revenue**: Unlimited personalization options with premium pricing
 - **NFT Integration**: Blockchain-based ownership certificates and collectibles
@@ -368,7 +368,7 @@ def get_master_owns_updates():
 def update_resumefromhere():
     """Update resumefromhere.txt with completion notes."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    update_content = f"""
+    update_content = f""""
 
 [{timestamp}] COMPLETED: Revenue, Projects, production Window, and Master Owns UI Revenue Bulk Enhancements
 
@@ -387,7 +387,7 @@ def update_resumefromhere():
 ✅ Enhanced Master Owns UI Revenue:
 - Added {len(NEW_MASTER_OWNS_UI_REVENUE)} new UI revenue methods
 - Premium subscriptions, NFTs, marketplace commissions
-- $200,000+ daily contribution from UI features
+- $200,+ daily contribution from UI features
 - Advanced dashboards, customizations, and monetization
 
 ✅ Enhanced production Window System:

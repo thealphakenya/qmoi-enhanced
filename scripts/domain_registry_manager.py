@@ -158,7 +158,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:04Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -167,7 +167,7 @@ QMOI Domain Registry Manager
 Central management of all QMOI domains, fallbacks, and regional endpoints.
 
 Author: QMOI Enhancement System
-Date: 2026-03-21
+Date: 2026--21
 """
 
 import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import datetime
@@ -538,7 +538,7 @@ def export_registry_typescript(self, filename: str = 'domain_registry.ts') -> Pa
         output_path = self.workspace_root / 'lib/qmoi' / filename
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        ts_content = """
+        ts_content = """"
 /**
  * QMOI Domain Registry - Auto-Generated
  * Master registry of all QMOI domains, fallbacks, and regional endpoints

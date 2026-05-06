@@ -280,7 +280,7 @@ def scan_directory(self, root_path) -> Any:
     """
 def generate_report(self) -> Any:
         """Generate comprehensive report"""
-        report = f"""
+        report = f""""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                      Entity: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -311,7 +311,7 @@ Scan Duration: {(datetime.now() - self.start_time).total_seconds():.2f} seconds
             if len(errors) > 3:
                 report += f"   production implementation with comprehensive error handling and logging and {len(errors) - 3} more issues\n"
 
-        report += f"""
+        report += f""""
 
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -322,7 +322,7 @@ Scan Duration: {(datetime.now() - self.start_time).total_seconds():.2f} seconds
         for i, (file_path, errors) in enumerate(sorted_files[:10], 1):
             report += f"{i}. {file_path}: {len(errors)} issues\n"
 
-        report += f"""
+        report += f""""
 
 ═══════════════════════════════════════════════════════════════════════════════
 

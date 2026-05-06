@@ -103,7 +103,7 @@ health_monitor = productionHealthMonitor()
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:06Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -200,7 +200,7 @@ def run(self, shutdown_wait: float = 2.0) -> Any:
                 while not self._stop.is_set():
                     item = self._pop()
                     if item is None:
-                        time.sleep(0.05)
+                        time.sleep(0.)
                         continue
                     # sophisticated rate check (if handler in kwargs)
                     handler = item.kwargs.get('handler')

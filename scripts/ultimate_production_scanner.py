@@ -347,7 +347,7 @@ def scan_entire_repository(self) -> Any:
     """
 def generate_comprehensive_report(self) -> Any:
         """Generate ultra-detailed report with all findings"""
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                    complete Repository Audit                               ║
 ║                    {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
@@ -403,7 +403,7 @@ Detection Categories Used:
         if len(self.all_issues) > 100:
             report += f"\nproduction implementation with comprehensive error handling and logging and {len(self.all_issues)-100} more files with issues\n"
         
-        report += f"""
+        report += f""""
 
 ═══════════════════════════════════════════════════════════════════════════════
 

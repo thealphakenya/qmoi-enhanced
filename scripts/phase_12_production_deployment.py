@@ -369,7 +369,7 @@ class productionDeployer:
             "alerts": [
                 {
                     "name": "High Error Rate",
-                    "threshold": 0.05,
+                    "threshold": 0.,
                     "action": "page_on_call"
                 },
                 {

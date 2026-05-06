@@ -111,7 +111,7 @@ export function withMasterAccess(handler: Function) {
       
       return handler(req, res, next);
     } catch (error) {
-      console.error("Master access check failed:", error);
+      logger.error("Master access check failed:", error);
       return res.status(500).json({ error: "Internal server error" });
     }
   };
@@ -144,7 +144,7 @@ export function useMasterAccess() {
           logger.info(`[AUDIT] Master user ${userData.email} accessed protected area`);
         }
       } catch (error) {
-        console.error("Failed to check master role:", error);
+        logger.error("Failed to check master role:", error);
         setIsMaster(false);
       } finally {
         setLoading(false);
@@ -239,7 +239,7 @@ export class FinancialAuditLog {
         body: JSON.stringify(logEntry)
       });
     } catch (error) {
-      console.error("Failed to log operation:", error);
+      logger.error("Failed to log operation:", error);
     }
   }
   

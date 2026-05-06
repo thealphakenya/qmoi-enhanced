@@ -248,7 +248,7 @@ def get_financial_integration_updates():
 def update_resumefromhere():
     """Update resumefromhere.txt with financial integration completion."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    update_content = f"""
+    update_content = f""""
 
 [{timestamp}] COMPLETED: Financial Manager & Balances System Integration
 

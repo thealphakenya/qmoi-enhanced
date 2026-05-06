@@ -58,7 +58,7 @@ export async function GET(req: NextRequest) {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error("QCity devices fetch error:", error);
+    logger.error("QCity devices fetch error:", error);
     return NextResponse.json(
       {
         success: false,
@@ -167,7 +167,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(response);
   } catch (error) {
-    console.error("QCity devices control error:", error);
+    logger.error("QCity devices control error:", error);
     return NextResponse.json(
       {
         success: false,

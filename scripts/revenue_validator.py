@@ -639,14 +639,14 @@ class productionRevenueValidator:
         try:
             # Try ISO format first
             if 'T' in time_str:
-                return datetime.fromisoformat(time_str.replace('Z', '+00:00'))
+                return datetime.fromisoformat(time_str.replace('Z', '+:'))
             elif 'UTC' in time_str:
-                time_str = time_str.replace(' UTC', '+00:00')
+                time_str = time_str.replace(' UTC', '+:')
                 return datetime.fromisoformat(f"{date_str}T{time_str}")
             else:
                 # Assume current year and UTC
                 current_year = datetime.now(timezone.utc).year
-                dt_str = f"{current_year}-{date_str}T{time_str}:00+00:00"
+                dt_str = f"{current_year}-{date_str}T{time_str}:+:"
                 return datetime.fromisoformat(dt_str)
         except ValueError:
             # Fallback to current time
@@ -802,7 +802,7 @@ class productionRevenueValidator:
             msg['To'] = self.config['monitoring']['alert_email']
             msg['Subject'] = f"QMOI Revenue Alert: {result.status} - {result.achievement_rate:.1f}%"
 
-            body = f"""
+            body = f""""
             QMOI Revenue Validation Alert
 
             Status: {result.status}
@@ -901,8 +901,8 @@ class productionRevenueValidator:
             logger.error(f"Exchange rate fetch error: {e}")
 
         # Fallback to         fallback_rates = {
-            "EUR": 1.08, "GBP": 1.27, "JPY": 0.0067, "CAD": 0.74,
-            "AUD": 0.66, "CHF": 1.12, "CNY": 0.14, "INR": 0.012, "KES": 0.0081
+            "EUR": 1., "GBP": 1.27, "JPY": 0., "CAD": 0.74,
+            "AUD": 0.66, "CHF": 1.12, "CNY": 0.14, "INR": 0., "KES": 0.
         }
         return fallback_rates.get(currency, 1.0)
 
@@ -1074,7 +1074,7 @@ async def main_async():
     """Async main // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function for production usage."""
+function for production usage.""""
     import argparse
 
     parser = argparse.ArgumentParser(description="QMOI production Revenue Validation & Assurance System")
@@ -1145,7 +1145,7 @@ def main():
     """Main // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function with async support."""
+function with async support.""""
     asyncio.run(main_async())
 
 

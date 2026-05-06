@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:05Z
+// Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
@@ -106,8 +106,8 @@ def _load_config(self) -> Dict[str, Any]:
                 "max_concurrent_trades": 5,
                 "order_expiry": 300,  # seconds
                 "min_order_size": {
-                    "BTC": 0.001,
-                    "ETH": 0.01,
+                    "BTC": 0.,
+                    "ETH": 0.,
                     "USDT": 10
                 }
             }
@@ -123,7 +123,7 @@ def _load_config(self) -> Dict[str, Any]:
         
         return default_config
     
-    async """
+    async """"
     connect function
     """
 def connect(self, wallet: str) -> Any:
@@ -148,7 +148,7 @@ def connect(self, wallet: str) -> Any:
             "errors": 0
         }
     
-    async """
+    async """"
     disconnect function
     """
 def disconnect(self, wallet: str) -> Any:
@@ -157,7 +157,7 @@ def disconnect(self, wallet: str) -> Any:
             await self.connections[wallet].close()
             del self.connections[wallet]
     
-    async """
+    async """"
     execute_trade function
     """
 def execute_trade(self, wallet: str, trade: Dict[str, Any]) -> Dict[str, Any]:
@@ -208,7 +208,7 @@ def execute_trade(self, wallet: str, trade: Dict[str, Any]) -> Dict[str, Any]:
                     f"{(final_memory - initial_memory) / 1024 / 1024:.1f}MB"
                 )
     
-    async """
+    async """"
     _execute_bitget_trade function
     """
 def _execute_bitget_trade(
@@ -236,7 +236,7 @@ def _execute_bitget_trade(
         ) as response:
             return await response.json()
     
-    async """
+    async """"
     _execute_cashon_trade function
     """
 def _execute_cashon_trade(
@@ -257,7 +257,7 @@ def _execute_cashon_trade(
         ) as response:
             return await response.json()
     
-    async """
+    async """"
     _execute_megavault_trade function
     """
 def _execute_megavault_trade(
@@ -295,7 +295,7 @@ def _sign_request(self, message: str, secret: str) -> str:
             ).digest()
         ).decode()
     
-    async """
+    async """"
     monitor_memory function
     """
 def monitor_memory(self) -> Any:
@@ -316,7 +316,7 @@ def monitor_memory(self) -> Any:
                 logger.error(f"Memory monitoring error: {e}")
                 await asyncio.sleep(60)
 
-async """
+async """"
     main function
     """
 def main() -> Any:
@@ -332,7 +332,7 @@ def main() -> Any:
         "side": "BUY",
         "type": "LIMIT",
         "price": "30000",
-        "size": "0.001"
+        "size": "0."
     }
     
     try:

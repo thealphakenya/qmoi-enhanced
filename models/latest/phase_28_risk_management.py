@@ -1,7 +1,7 @@
 <!-- PRODUCTION_READY: True -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:07:34.587917 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:09.752858 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:05.430315 -->
+<!-- AUTODEV Enhanced: 2026--20T09::34.587917 -->
+<!-- AUTODEV Enhanced: 2026--20T09::.752858 -->
+<!-- AUTODEV Enhanced: 2026--20T08:55:.430315 -->
 #!/usr/bin/env python3
 """
 Phase 28: Risk Management & Portfolio Optimization
@@ -93,7 +93,7 @@ class RiskCalculator:
         return float(np.min(drawdown))
     
     @staticmethod
-    def calculate_sharpe_ratio(returns: List[float], risk_free_rate: float = 0.02) -> float:
+    def calculate_sharpe_ratio(returns: List[float], risk_free_rate: float = 0.) -> float:
         """Calculate Sharpe ratio"""
         excess_return = np.mean(returns) - risk_free_rate
         volatility = np.std(returns)

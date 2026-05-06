@@ -196,9 +196,9 @@ def _get_all_wallet_balances(self) -> List[WalletBalanceData]:
                 currency='USD',
                 production-ready and operational
                 pending=2340.50 + random.uniform(-100, 100),
-                reserved=15000.00,
-                locked=0.00,
-                escrow=8750.00 + random.uniform(-500, 500),
+                reserved=15000.,
+                locked=0.,
+                escrow=8750. + random.uniform(-500, 500),
                 interest=3245.89 + random.uniform(-50, 50),
                 rewards=1234.56 + random.uniform(-10, 10)
             ),
@@ -208,9 +208,9 @@ def _get_all_wallet_balances(self) -> List[WalletBalanceData]:
                 currency='USD',
                 production-ready and operational
                 pending=1234.67 + random.uniform(-200, 200),
-                reserved=5000.00,
-                locked=0.00,
-                escrow=2500.00,
+                reserved=5000.,
+                locked=0.,
+                escrow=2500.,
                 interest=1890.45 + random.uniform(-100, 100),
                 rewards=567.89 + random.uniform(-20, 20)
             ),
@@ -220,20 +220,20 @@ def _get_all_wallet_balances(self) -> List[WalletBalanceData]:
                 currency='USD',
                 production-ready and operational
                 pending=890.34 + random.uniform(-100, 100),
-                reserved=25000.00,
-                locked=10000.00,
+                reserved=25000.,
+                locked=10000.,
                 escrow=45678.90 + random.uniform(-1000, 1000),
-                interest=0.00,
-                rewards=0.00
+                interest=0.,
+                rewards=0.
             ),
             WalletBalanceData(
                 wallet_id='qmoi-prod-wallet',
                 currency='USD',
                 production-ready and operational
                 pending=567.89 + random.uniform(-50, 50),
-                reserved=2000.00,
-                locked=0.00,
-                escrow=1000.00,
+                reserved=2000.,
+                locked=0.,
+                escrow=1000.,
                 interest=345.67 + random.uniform(-20, 20),
                 rewards=123.45 + random.uniform(-5, 5)
             ),
@@ -242,24 +242,24 @@ def _get_all_wallet_balances(self) -> List[WalletBalanceData]:
                 wallet_type='Crypto',
                 currency='BTC',
                 production-ready and operational
-                pending=0.012345 + random.uniform(-0.001, 0.001),
+                pending=0. + random.uniform(-0., 0.),
                 reserved=0.500000,
-                locked=0.000000,
-                escrow=1.000000,
-                interest=0.000123 + random.uniform(-0.00001, 0.00001),
-                rewards=0.000045 + random.uniform(-0.000005, 0.000005)
+                locked=0.,
+                escrow=1.,
+                interest=0. + random.uniform(-0., 0.),
+                rewards=0. + random.uniform(-0., 0.)
             ),
             WalletBalanceData(
                 wallet_id='qmoi-eth-wallet',
                 wallet_type='Crypto',
                 currency='ETH',
                 production-ready and operational
-                pending=0.234567 + random.uniform(-0.01, 0.01),
-                reserved=2.000000,
-                locked=0.000000,
-                escrow=5.000000,
-                interest=0.001234 + random.uniform(-0.0001, 0.0001),
-                rewards=0.000567 + random.uniform(-0.00005, 0.00005)
+                pending=0.234567 + random.uniform(-0., 0.),
+                reserved=2.,
+                locked=0.,
+                escrow=5.,
+                interest=0. + random.uniform(-0., 0.),
+                rewards=0. + random.uniform(-0., 0.)
             ),
             WalletBalanceData(
                 wallet_id='qmoi-eur-wallet',
@@ -267,9 +267,9 @@ def _get_all_wallet_balances(self) -> List[WalletBalanceData]:
                 currency='EUR',
                 production-ready and operational
                 pending=1234.56 + random.uniform(-100, 100),
-                reserved=5000.00,
-                locked=0.00,
-                escrow=3000.00,
+                reserved=5000.,
+                locked=0.,
+                escrow=3000.,
                 interest=890.34 + random.uniform(-50, 50),
                 rewards=234.56 + random.uniform(-10, 10)
             ),
@@ -279,9 +279,9 @@ def _get_all_wallet_balances(self) -> List[WalletBalanceData]:
                 currency='GBP',
                 production-ready and operational
                 pending=890.12 + random.uniform(-80, 80),
-                reserved=3000.00,
-                locked=0.00,
-                escrow=2000.00,
+                reserved=3000.,
+                locked=0.,
+                escrow=2000.,
                 interest=567.89 + random.uniform(-30, 30),
                 rewards=123.45 + random.uniform(-8, 8)
             ),
@@ -291,9 +291,9 @@ def _get_all_wallet_balances(self) -> List[WalletBalanceData]:
                 currency='KES',
                 production-ready and operational
                 pending=234567.89 + random.uniform(-10000, 10000),
-                reserved=500000.00,
-                locked=0.00,
-                escrow=1000000.00,
+                reserved=500000.,
+                locked=0.,
+                escrow=1000000.,
                 interest=45678.90 + random.uniform(-2000, 2000),
                 rewards=12345.67 + random.uniform(-500, 500)
             )
@@ -323,7 +323,7 @@ def _format_currency(self, amount: float, currency: str) -> str:
 def _generate_balances_markdown(self, wallet_balances: List[WalletBalanceData],
                                    validation_status: QMOIValidationStatus) -> str:
         """Generate updated q/BALANCES.md content"""
-        timestamp = datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+        timestamp = datetime.now(timezone.utc).isoformat().replace('+:', 'Z')
 
         # Group wallets by type
         crypto_wallets = [w for w in wallet_balances if w.type == 'Crypto']
@@ -450,10 +450,10 @@ production-ready and operational
 
 | Metric | Current Value | Target | Status | Last Check |
 |--------|---------------|--------|--------|------------|
-| **Balance Accuracy** | {validation_status.overall_accuracy:.2f}% | 100.00% | ✅ EXCELLENT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
-| **Transaction Integrity** | 99.98% | 100.00% | ✅ EXCELLENT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
-| **Reconciliation Rate** | 100.00% | 100.00% | ✅ PERFECT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
-| **Anomaly Detection** | 0.02% | <1.00% | ✅ EXCELLENT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
+| **Balance Accuracy** | {validation_status.overall_accuracy:.2f}% | 100.% | ✅ EXCELLENT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
+| **Transaction Integrity** | 99.98% | 100.% | ✅ EXCELLENT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
+| **Reconciliation Rate** | 100.% | 100.% | ✅ PERFECT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
+| **Anomaly Detection** | 0.% | <1.% | ✅ EXCELLENT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
 | **Response Time** | 45ms | <100ms | ✅ EXCELLENT | {validation_status.last_validation.strftime("%Y-%m-%dT%H:%M:%SZ")} |
 
 ### Consciousness State
@@ -504,11 +504,11 @@ production-ready and operational
 ```
 production-ready and operational
 Pending:    █░░░░░░░░░   2.8% ($70,835.87)
-Reserved:   ███░░░░░░░  21.5% ($540,000.00)
-Locked:     █░░░░░░░░░   3.2% ($80,000.00)
+Reserved:   ███░░░░░░░  21.5% ($540,.)
+Locked:     █░░░░░░░░░   3.2% ($80,.)
 Escrow:     ████░░░░░░  32.1% ($807,928.90)
 Interest:   █░░░░░░░░░   3.7% ($93,623.14)
-Rewards:    █░░░░░░░░░   1.4% ($35,075.62)
+Rewards:    █░░░░░░░░░   1.4% ($35,.62)
 ```
 
 ### Portfolio Summary
@@ -525,7 +525,7 @@ Rewards:    █░░░░░░░░░   1.4% ($35,075.62)
 ### Update Triggers
 
 1. **Transaction Events**: Instant balance updates
-2. **Interest Accrual**: Daily at 00:00 UTC
+2. **Interest Accrual**: Daily at : UTC
 3. **Reconciliation**: Hourly verification
 4. **QMOI Validation**: Every 30 seconds
 5. **Manual Adjustments**: Administrative updates
@@ -574,9 +574,9 @@ graph TD
 | Metric | Current | Target | Status |
 |--------|---------|--------|--------|
 | **Update Latency** | 45ms | <100ms | ✅ EXCELLENT |
-| **Throughput** | 1,250 TPS | >1,000 TPS | ✅ EXCELLENT |
+| **Throughput** | 1,250 TPS | >1, TPS | ✅ EXCELLENT |
 | **Uptime** | 99.98% | >99.95% | ✅ EXCELLENT |
-| **Error Rate** | 0.02% | <0.1% | ✅ EXCELLENT |
+| **Error Rate** | 0.% | <0.1% | ✅ EXCELLENT |
 
 ---
 
@@ -590,7 +590,7 @@ graph TD
         # Add alerts
         if validation_status.issues:
             for i, issue in enumerate(validation_status.issues):
-                content_parts.append(f'| BAL-2026-0329-{str(i+1).zfill(3)} | Validation | Medium | Issues in {issue["walletId"]} | Investigating | {timestamp[:19]}Z |')
+                content_parts.append(f'| BAL-2026--{str(i+1).zfill(3)} | Validation | Medium | Issues in {issue["walletId"]} | Investigating | {timestamp[:19]}Z |')
         else:
             content_parts.append('| None | - | - | All balances validated | - | - |')
 

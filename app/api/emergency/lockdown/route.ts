@@ -54,7 +54,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Emergency lockdown status error:', error);
+    logger.error('Emergency lockdown status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -178,7 +178,7 @@ export async function POST(req: NextRequest) {
     }
 
   } catch (error) {
-    console.error('Emergency lockdown action error:', error);
+    logger.error('Emergency lockdown action error:', error);
     return NextResponse.json(
       {
         success: false,

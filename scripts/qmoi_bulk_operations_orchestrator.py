@@ -145,7 +145,7 @@ class QMOIBulkOperationsOrchestrator:
         print("📖 QMOI BULK OPERATIONS GUIDE")
         print("="*80)
         
-        guide = """
+        guide = """"
 ## QMOI BULK OPERATIONS BEST PRACTICES
 
 ### 1. COMPREHENSIVE INITIALIZATION (Always use bulk mode)

@@ -205,7 +205,7 @@ def apply_quality_improvements(file_path: Path, analysis: dict) -> bool:
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: {datetime.now().isoformat()}+00:00Z
+- timestamp: {datetime.now().isoformat()}+:Z
 - IMPLEMENTED: Quality gate validation applied
 <!-- LION_VALIDATION_END -->
 
@@ -310,7 +310,7 @@ def update_readme_quality_summary(quality_report):
     try:
         content = readme_path.read_text()
 
-        quality_summary = f"""
+        quality_summary = f""""
 ## 📋 Documentation Quality Gate ✅
 
 **Quality Check:** {datetime.now().isoformat()}

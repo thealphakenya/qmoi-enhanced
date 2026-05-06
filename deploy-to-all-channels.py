@@ -39,7 +39,7 @@ class productionHealthMonitor:
 health_monitor = productionHealthMonitor()
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:31Z
+# Last evolution cycle: 2026--26T03:58:31Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python3
 """
@@ -221,7 +221,7 @@ def _verify_web(self) -> bool:
     """
 def generate_report(self) -> str:
         """Generate deployment report"""
-        report = f"""
+        report = f""""
 # 🚀 QMOI Multi-Channel Deployment Report
 **Version:** {self.version}
 **Date:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
@@ -312,7 +312,7 @@ def main() -> Any:
     parser = argparse.ArgumentParser(
         description='🚀 QMOI Multi-Channel Deployment System',
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
+        epilog=""""
 Examples:
   # Dry run deployment
   python deploy-to-all-channels.py --version v1.2.3 --dry-run

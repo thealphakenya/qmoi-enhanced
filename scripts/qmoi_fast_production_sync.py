@@ -447,7 +447,7 @@ Timestamp: {self.timestamp}
         print("\n" + "="*80)
         print("📊 FAST SYNC SUMMARY")
         print("="*80)
-        print(f"""
+        print(f""""
 📈 Scanned:
    • APIs: {apis}
    • Endpoints: {endpoints}

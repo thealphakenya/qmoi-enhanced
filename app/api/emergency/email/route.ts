@@ -57,7 +57,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Emergency email GET error:', error);
+    logger.error('Emergency email GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Emergency email POST error:', error);
+    logger.error('Emergency email POST error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -234,7 +234,7 @@ async function sendEmergencyEmail(params: {
     };
 
   } catch (error) {
-    console.error('Email sending failed:', error);
+    logger.error('Email sending failed:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown email error',

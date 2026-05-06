@@ -118,7 +118,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:22Z
+# Last evolution cycle: 2026--26T03:58:22Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -291,7 +291,7 @@ def create_deployment_fix(self) -> Any:
             json.dump(vercel_config, f, indent=2)
         
         # Create netlify.toml
-        netlify_config = """
+        netlify_config = """"
 [build]
   publish = "dist"
   command = "npm run build"

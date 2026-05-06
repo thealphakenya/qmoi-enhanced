@@ -2,7 +2,7 @@
 """
 QMOI Enhanced - Phase 3A: Staging Deployment Script
 Deploys to staging environment and runs validation tests
-Generated: 2026-04-24
+Generated: 2026--24
 """
 
 import os
@@ -227,7 +227,7 @@ if __name__ == "__main__":
 """
 QMOI Enhanced - Phase 3A: Staging Deployment Script
 Deploys to staging environment and runs validation tests
-Generated: 2026-04-24
+Generated: 2026--24
 """
 
 import os
@@ -450,7 +450,7 @@ if __name__ == "__main__":
 """
 QMOI Enhanced - Phase 3A: Staging Deployment Script
 Deploys to staging environment and runs validation tests
-Generated: 2026-04-24
+Generated: 2026--24
 """
 
 import os
@@ -579,7 +579,7 @@ class StagingDeployer:
         self.logger.info("Running load tests on staging deployment...")
 
         # Use k6 for load testing
-        k6_script = f"""
+        k6_script = f""""
 import http from 'k6/http';
 import {{ check }} from 'k6';
 

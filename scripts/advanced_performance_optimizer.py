@@ -182,7 +182,7 @@ def _collect_metrics(self) -> None:
             'cpu_usage': random.uniform(45, 75),       # %
             'memory_usage': random.uniform(55, 80),    # %
             'throughput': random.uniform(950, 1300),   # TPS
-            'error_rate': random.uniform(0.01, 0.05),  # %
+            'error_rate': random.uniform(0., 0.),  # %
             'active_connections': random.randint(100, 500),
             'queue_length': random.randint(0, 50),
             'cache_hit_rate': random.uniform(85, 98)   # %
@@ -411,7 +411,7 @@ def _generate_predictive_insights(self) -> Dict[str, Any]:
                 'Optimize database connection pooling for better throughput'
             ],
             'risk_assessment': {
-                'high_risk_periods': ['09:00-11:00 UTC', '14:00-16:00 UTC'],
+                'high_risk_periods': [':-11: UTC', '14:-16: UTC'],
                 'recommended_precautions': ['Enable auto-scaling', 'Increase monitoring frequency']
             }
         }
@@ -473,7 +473,7 @@ def _get_historical_trends(self) -> Dict[str, Any]:
                 'change_percent': 5.8
             },
             'error_rate_trend': {
-                'last_24h': [0.02, 0.01, 0.03, 0.02, 0.01, 0.02, 0.03, 0.02, 0.01, 0.02, 0.03, 0.02, 0.01, 0.02, 0.03, 0.02, 0.01, 0.02, 0.03, 0.02, 0.01, 0.02, 0.03, 0.02],
+                'last_24h': [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
                 'trend': 'latest',
                 'change_percent': -1.5
             }
@@ -485,7 +485,7 @@ def _get_historical_trends(self) -> Dict[str, Any]:
 def _analyze_user_behavior(self) -> Dict[str, Any]:
         """Analyze user behavior patterns"""
         return {
-            'peak_usage_hours': ['10:00-12:00', '15:00-17:00'],
+            'peak_usage_hours': ['10:-12:', '15:-17:'],
             'popular_features': ['balance_check', 'transaction_history', 'funds_transfer'],
             'user_segments': {
                 'high_value_users': {'count': 1250, 'avg_transaction': 5000, 'retention_rate': 95},
@@ -508,13 +508,13 @@ def _generate_system_predictions(self) -> Dict[str, Any]:
         return {
             'next_24h_forecast': {
                 'expected_load': 'medium',
-                'predicted_issues': ['potential memory spike at 14:00 UTC'],
+                'predicted_issues': ['potential memory spike at 14: UTC'],
                 'recommended_actions': ['Increase monitoring frequency', 'Prepare scaling resources']
             },
             'weekly_trends': {
                 'growth_rate': 8.5,
                 'peak_days': ['Wednesday', 'Friday'],
-                'maintenance_windows': ['Sunday 02:00-04:00 UTC']
+                'maintenance_windows': ['Sunday :-: UTC']
             },
             'capacity_planning': {
                 'current_capacity': 10000,  # TPS

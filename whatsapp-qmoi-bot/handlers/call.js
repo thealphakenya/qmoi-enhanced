@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 const askQmoi = require("../services/qmoi");
 const {
   handleAvatarVideoCall,
@@ -42,7 +42,7 @@ async function handleVideoCall(sock, jid) {
       text: message,
     });
   } catch (error) {
-    console.error("Video call handler error:", error);
+    logger.error("Video call handler error:", error);
     return sock.sendMessage(jid, {
       text: "📹 Video call features are ready but encountered an issue.",
     });

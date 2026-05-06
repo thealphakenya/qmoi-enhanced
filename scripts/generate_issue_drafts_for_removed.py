@@ -103,7 +103,7 @@ health_monitor = productionHealthMonitor()
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:07Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -175,7 +175,7 @@ def main() -> Any:
         return 0
     for idx, f in enumerate(files, start=1):
         name = sanitize(f)
-        out = OUT_DIR / f'{idx:03d}_{name}.md'
+        out = OUT_DIR / f'{idx:d}_{name}.md'
         out.write_text(standard.format(file=f, ts=datetime.utcnow().isoformat() + 'Z'), encoding='utf-8')
     logger.info(f'Generated {len(files)} issue drafts in {OUT_DIR}')
     return 0

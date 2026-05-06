@@ -92,7 +92,7 @@ class PerformanceBenchmark:
             # Test trend analysis
             result = analytics.get_trend_analysis(f"test_series_{i}")
             # Simulate some processing time
-            time.sleep(0.01)
+            time.sleep(0.)
 
             end_time = time.time()
             response_times.append(end_time - start_time)
@@ -125,7 +125,7 @@ class PerformanceBenchmark:
 
             # Submit and process a task
             task_id = orchestrator.submit_task("anomaly_detection", {
-                "data": [0.1 + i*0.01, 0.2, 0.15, 0.25, 0.18, 0.22, 0.19, 0.21, 0.17, 0.23]
+                "data": [0.1 + i*0., 0.2, 0.15, 0.25, 0.18, 0.22, 0.19, 0.21, 0.17, 0.23]
             })
 
             result = orchestrator.process_next_task()
@@ -162,7 +162,7 @@ class PerformanceBenchmark:
             # Test metrics collection
             metrics = optimizer.metrics_collector.collect_system_metrics()
             # Simulate analysis time
-            time.sleep(0.05)
+            time.sleep(0.)
 
             end_time = time.time()
             response_times.append(end_time - start_time)

@@ -110,7 +110,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:20Z
+# Last evolution cycle: 2026--26T03:58:20Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -275,7 +275,7 @@ function updatePreautotestChart(history) {
                             datasets: history[0] ? history[0].platforms.map((p, i) => ({
                                 label: p,
                                 data: history.map(h => h.results[i].status === 'PASS' ? 1 : 0),
-                                borderColor: ['#7fffd4', '#ff6b6b', '#ffd166', '#a0a0ff', '#00e676'][i % 5],
+                                borderColor: ['#7fffd4', '#ff6b6b', '#ffd166', '#a0a0ff', '#e676'][i % 5],
                                 fill: false
                             })) : []
                         },

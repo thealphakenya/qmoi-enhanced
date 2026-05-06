@@ -78,7 +78,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Wallets GET error:', error);
+    logger.error('Wallets GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -176,7 +176,7 @@ export async function POST(req: NextRequest) {
     }, { status: 201 });
 
   } catch (error) {
-    console.error('Wallets POST error:', error);
+    logger.error('Wallets POST error:', error);
     return NextResponse.json(
       {
         success: false,

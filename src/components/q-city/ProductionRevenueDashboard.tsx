@@ -68,7 +68,7 @@ const ProductionRevenueDashboard: React.FC = () => {
       setChartData(sources);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch revenue data");
-      console.error("Revenue fetch error:", err);
+      logger.error("Revenue fetch error:", err);
     } finally {
       setLoading(false);
     }
@@ -287,3 +287,27 @@ const ProductionRevenueDashboard: React.FC = () => {
 };
 
 export default ProductionRevenueDashboard;
+
+
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}

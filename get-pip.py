@@ -59,7 +59,7 @@ class productionFileManager:
             raise
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:09Z
+# Last evolution cycle: 2026--26T03:58:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python
 #
@@ -168,37 +168,37 @@ def cert_parse_args(self, args) -> Any:
 def bootstrap(tmpdir) -> Any:
     monkeypatch_for_cert(tmpdir)
     # Execute the included pip and use it to install the laproduction dbaAj_1X>Mg-Wo~w9a&K-faCuNm0Rj{Q6aWAK2ms3fSz8M3lZj*u00
-0~-001Ze0000000000005+c0g)I0aA|NaUv_0~WN&gWb#iQMX<{=kV{dMBa%o~OVQ_F|Zf9w3WiD`eP
+0~-Ze0000000000005+c0g)I0aA|NaUv_0~WN&gWb#iQMX<{=kV{dMBa%o~OVQ_F|Zf9w3WiD`eP
 )h*<6ay3h000O8%K%wh6=~@=QU(A3un_<NCjbBd0000000000q=BoQ7yxi-a4%nWWo~3|axZmqY;0*_
-GcRLrZgg^KVlQrVY;ACFZ)`4bc~DCM0u%!j000080LuVbTTWW*JJA#X0J%Z{04M+e00000000000HlF
+GcRLrZgg^KVlQrVY;ACFZ)`4bc~DCM0u%!j000080LuVbTTWW*JJA#X0J%Z{M+e00000000000HlF
 Jq!<8jX>c!Jc4cm4Z*nhna%^mAVlyveZ*FvQX<{#Md2euKZgX>NE^v8JO928D0~7!N00;of09ji%{d6
 _GB>(`9h5!IA00000000000001_fmyj20B~t=FJE?LZe(wAFLiQkY-wUMFJo_RbaH88FLPyMb#i5Na$
-#<BaBp&SE^v8JO928D0~7!N00;of09jkhQpi792mk=N8vp<#00000000000001_fnwhn0B~t=FJE?LZ
+#<BaBp&SE^v8JO928D0~7!N00;of09jkhQpi792mk=N8vp<#_fnwhn0B~t=FJE?LZ
 e(wAFLiQkY-wUMFJo_RbaH88FLQ5WYjZAec~DCM0u%!j000080LuVbTL1t600IC20000005|{u00000
-000000HlHa=NJHRX>c!Jc4cm4Z*nhna%^mAVlyveZ*FvQX<{#5b7f<7a%FUKVQzD9Z*p`mUtei%X>?y
+HlHa=NJHRX>c!Jc4cm4Z*nhna%^mAVlyveZ*FvQX<{#5b7f<7a%FUKVQzD9Z*p`mUtei%X>?y
 -E^v8JO928D0~7!N00;of09jiu&n->v5C8z+L;wId00000000000001_fmP@j0B~t=FJE?LZe(wAFLi
 QkY-wUMFJo_RbaH88FJE(IV|8+6baG*Cb8v5RbT49QZe(e0XLBxac~DCM0u%!j000080LuVbTdpdnyj
-c+d0Ae-(0672v00000000000HlGL`4|9jX>c!Jc4cm4Z*nhna%^mAVlyveZ*FvQX<{#5b7f<7a%FUKV
+c+d0Ae-(v00000000000HlGL`4|9jX>c!Jc4cm4Z*nhna%^mAVlyveZ*FvQX<{#5b7f<7a%FUKV
 QzD9Z*p`mY;Sj8Y-M(3Y%XwlP)h*<6ay3h000O8%K%wh000000ssI200000C;$Ke0000000000q=88b
 831r;a4%nWWo~3|axZmqY;0*_GcRyqV{2h&WpgiIUukY>bYEXCaCuNm0Rj{Q6aWAK2ms3fSzBC`8LTE
-D003!+001KZ0000000000005+ckqa3BaA|NaUv_0~WN&gWb#iQMX<{=kaA9L>VP|D?FLP;lE^v8JO92
+D003!+KZ0000000000005+ckqa3BaA|NaUv_0~WN&gWb#iQMX<{=kaA9L>VP|D?FLP;lE^v8JO92
 8D0~7!N00;of09jiA00002000000000o00000000000001_f%q&L0B~t=FJE?LZe(wAFLiQkY-wUMFK
 }UFYhh<)b1!0HV{344a&&VqUtei%X>?y-E^v8JO928D0~7!N00;of09jk!xMQ<O0ssJs1pojt000000
-00000001_fl4hI0B~t=FJE?LZe(wAFLiQkY-wUMFK}UFYhh<)b1!0HV{344a&&VqZDDI=W@&6?E^v8J
-O928D0~7!N00;of09jiN-z#>D1^@ux6aWA^00000000000001_f#NS20B~t=FJE?LZe(wAFLiQkY-wU
+_fl4hI0B~t=FJE?LZe(wAFLiQkY-wUMFK}UFYhh<)b1!0HV{344a&&VqZDDI=W@&6?E^v8J
+O928D0~7!N00;of09jiN-z#>D1^@ux6aWA^_f#NS20B~t=FJE?LZe(wAFLiQkY-wU
 MFK}UFYhh<)b1!0HV{344a&&VqcV%H~a%E;;W@&C=Y-xIBE^v8JO928D0~7!N00;of09jk+ikX_&0RR
 Al1ONae00000000000001_fyFi%0B~t=FJE?LZe(wAFLiQkY-wUMFLiWjY%gD5X>MtBUtcb8c~DCM0u
 %!j000080LuVbTkNXj51I!603{Ou044wc00000000000HlH6I2izNX>c!Jc4cm4Z*nhna%^mAVlyvwb
-ZKlaV{dM5Wn*+{Z*DGdc~DCM0u%!j000080LuVbTMExy2VMdI07V7>03iSX00000000000HlGvKp6mV
+ZKlaV{dM5Wn*+{Z*DGdc~DCM0u%!j000080LuVbTMExy2VMdI07V7>iSX00000000000HlGvKp6mV
 X>c!Jc4cm4Z*nhna%^mAVlyvwbZKlaaB^>Wc`k5yP)h*<6ay3h000O8%K%whP6PIz`~Uy|@&Nz<Apig
 X0000000000q=8yP831r;a4%nWWo~3|axZmqY;0*_GcR>?X>2cXb!ByBE^v8JO928D0~7!N00;of09j
 i%j&1R)1pok@4*&oo00000000000001_ft5rV0B~t=FJE?LZe(wAFLiQkY-wUMFLiWjY%g+Uadl;LbS
 `jtP)h*<6ay3h000O8%K%whHYnA!U<CjGwhaIPBme*a0000000000q=A7-831r;a4%nWWo~3|axZmqY
-;0*_GcR>?X>2cYWpi+EZgXWWaCuNm0Rj{Q6aWAK2ms3fSzBKfFZT);001IZ001EX0000000000005+c
-BTyLtaA|NaUv_0~WN&gWb#iQMX<{=kb#!TLFLGsca(OOrc~DCM0u%!j000080LuVbTR1R}=I#~%05n7
+;0*_GcR>?X>2cYWpi+EZgXWWaCuNm0Rj{Q6aWAK2ms3fSzBKfFZT);IZ001EX0000000000005+c
+BTyLtaA|NaUv_0~WN&gWb#iQMX<{=kb#!TLFLGsca(OOrc~DCM0u%!j000080LuVbTR1R}=I#~%n7
 Z03ZMW00000000000HlFzXBhx+X>c!Jc4cm4Z*nhna%^mAVlyvwbZKlab8~E8E^v8JO928D0~7!N00;
-of09ji<akskZ2mk<n761S)00000000000001_ftY?70B~t=FJE?LZe(wAFLiQkY-wUMFLiWjY%g<jY+
-r3*bYo~=Xm4|LZeeX@E^v8JO928D0~7!N00;of09jkI5cjtK2LJ%?8UO$&00000000000001_fz5{*0
+of09ji<akskZ2mk<n761S)_ftY?70B~t=FJE?LZe(wAFLiQkY-wUMFLiWjY%g<jY+
+r3*bYo~=Xm4|LZeeX@E^v8JO928D0~7!N00;of09jkI5cjtK2LJ%?8UO$&_fz5{*0
 B~t=FJE?LZe(wAFLiQkY-wUMFLiWjY%g<jY;<yAZgX&Na&#_mc~DCM0u%!j000080LuVbTm2T8Gv*5b
 0JtXr03!eZ00000000000HlEukQo4QX>c!Jc4cm4Z*nhna%^mAVlyvwbZKlabZKp6Z*_DoaCuNm0Rj{
 Q6aWAK2ms3fSz9aB=w25S007uG0018V0000000000005+cIh+{)aA|NaUv_0~WN&gWb#iQMX<{=kb#!

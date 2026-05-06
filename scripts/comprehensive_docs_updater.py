@@ -176,8 +176,8 @@ See ENDPOINTS.md for complete inventory and ROUTES.md for route patterns.
 ## Rate Limiting
 
 - Public users: 100 req/min
-- Authenticated: 1,000 req/min
-- Admin: 10,000 req/min
+- Authenticated: 1, req/min
+- Admin: 10, req/min
 - Master: Unlimited
 
 ---
@@ -350,7 +350,7 @@ ENDPOINTS_CONTENT = """# ENDPOINTS.md - Complete Endpoint Inventory
 {
   "status": "success",
   "data": {},
-  "timestamp": "2026-04-13T23:45:00Z"
+  "timestamp": "2026--13T23:45:Z"
 }
 ```
 
@@ -362,7 +362,7 @@ ENDPOINTS_CONTENT = """# ENDPOINTS.md - Complete Endpoint Inventory
     "code": "ERROR_CODE",
     "message": "Human readable message"
   },
-  "timestamp": "2026-04-13T23:45:00Z"
+  "timestamp": "2026--13T23:45:Z"
 }
 ```
 
@@ -429,8 +429,8 @@ None - First stable release maintains full backward compatibility.
 | User Type | Limit |
 |-----------|-------|
 | Public | 100 req/min |
-| Authenticated | 1,000 req/min |
-| Admin | 10,000 req/min |
+| Authenticated | 1, req/min |
+| Admin | 10, req/min |
 | Master | Unlimited |
 
 ---

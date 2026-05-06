@@ -105,7 +105,7 @@ health_monitor = productionHealthMonitor()
 """
 QMOI Enhanced - Advanced AI Analytics Dashboard & Visualization System
 Version: 1.0.0
-Date: 2026-03-29
+Date: 2026--29
 advanced charting, system monitoring, and AI-powered insights for the complete QMOI Enhanced platform.
 """
 
@@ -255,7 +255,7 @@ def _collect_system_performance_metrics(self, timestamp: str) -> Dict[str, Any]:
         return {
             'response_time_ms': random.gauss(45, 5),
             'throughput_tps': random.gauss(1250, 50),
-            'error_rate_percent': random.gauss(0.02, 0.005),
+            'error_rate_percent': random.gauss(0., 0.),
             'memory_usage_percent': random.gauss(65, 8),
             'cpu_usage_percent': random.gauss(55, 10),
             'active_connections': random.randint(1000, 2000),
@@ -274,12 +274,12 @@ def _collect_ai_trading_metrics(self, timestamp: str) -> Dict[str, Any]:
         return {
             'portfolio_value': random.gauss(112687, 5000),
             'total_return_percent': random.gauss(12.69, 1.0),
-            'win_rate': random.gauss(0.60, 0.05),
+            'win_rate': random.gauss(0.60, 0.),
             'total_trades': random.randint(5, 15),
             'average_pnl': random.gauss(36.96, 10),
             'sharpe_ratio': random.gauss(0.61, 0.1),
             'max_drawdown_percent': random.gauss(0.98, 0.2),
-            'volatility': random.gauss(4.04, 0.5),
+            'volatility': random.gauss(4., 0.5),
             'active_positions': random.randint(0, 10),
             'trading_volume_24h': random.gauss(50000, 10000),
             'timestamp': timestamp
@@ -292,7 +292,7 @@ def _collect_risk_management_metrics(self, timestamp: str) -> Dict[str, Any]:
         """Collect risk management metrics"""
         return {
             'var_95_percent': random.gauss(3.17, 0.3),
-            'expected_shortfall_97': random.gauss(4.06, 0.4),
+            'expected_shortfall_97': random.gauss(4., 0.4),
             'portfolio_var_amount': random.gauss(3899, 300),
             'stress_test_pass_rate': random.uniform(0.92, 0.98),
             'liquidity_score': random.uniform(0.85, 0.95),
@@ -310,15 +310,15 @@ def _collect_risk_management_metrics(self, timestamp: str) -> Dict[str, Any]:
 def _collect_anomaly_detection_metrics(self, timestamp: str) -> Dict[str, Any]:
         """Collect anomaly detection system metrics"""
         return {
-            'detection_accuracy': random.gauss(0.972, 0.01),
-            'false_positive_rate': random.gauss(0.008, 0.002),
+            'detection_accuracy': random.gauss(0.972, 0.),
+            'false_positive_rate': random.gauss(0., 0.),
             'anomalies_detected': random.randint(0, 3),
             'critical_anomalies': random.randint(0, 1),
             'response_time_ms': random.gauss(45, 5),
             'system_health_score': random.gauss(94.4, 1.0),
             'components_monitored': 10,
             'active_alerts': random.randint(0, 2),
-            'prediction_accuracy': random.gauss(0.941, 0.01),
+            'prediction_accuracy': random.gauss(0.941, 0.),
             'maintenance_predictions': random.randint(0, 2),
             'timestamp': timestamp
         }
@@ -329,7 +329,7 @@ def _collect_anomaly_detection_metrics(self, timestamp: str) -> Dict[str, Any]:
 def _collect_predictive_maintenance_metrics(self, timestamp: str) -> Dict[str, Any]:
         """Collect predictive maintenance metrics"""
         return {
-            'failure_prevention_rate': random.gauss(0.35, 0.05),
+            'failure_prevention_rate': random.gauss(0.35, 0.),
             'cost_savings_percent': random.gauss(22, 3),
             'uptime_improvement_percent': random.gauss(2.1, 0.3),
             'mttr_reduction_percent': random.gauss(28, 4),
@@ -352,7 +352,7 @@ def _collect_cross_chain_metrics(self, timestamp: str) -> Dict[str, Any]:
             'supported_chains': 7,
             'active_bridges': random.randint(5, 7),
             'cross_chain_transfers_24h': random.randint(100, 500),
-            'bridge_success_rate': random.gauss(0.997, 0.002),
+            'bridge_success_rate': random.gauss(0.997, 0.),
             'average_transfer_time_min': random.gauss(3.5, 0.5),
             'gas_fee_efficiency': random.uniform(0.85, 0.98),
             'liquidity_pools_active': random.randint(15, 25),
@@ -388,7 +388,7 @@ def _collect_qmoi_consciousness_metrics(self, timestamp: str) -> Dict[str, Any]:
         return {
             'awareness_level_percent': random.gauss(95, 2),
             'response_accuracy_percent': random.gauss(99.8, 0.1),
-            'learning_rate': random.gauss(0.15, 0.05),
+            'learning_rate': random.gauss(0.15, 0.),
             'memory_utilization_percent': random.uniform(0.75, 0.95),
             'decision_confidence': random.uniform(0.85, 0.98),
             'system_integration_score': random.uniform(0.92, 0.99),
@@ -548,13 +548,13 @@ def _generate_bar_chart_data(self, category: str) -> Dict[str, Any]:
 
         if category == 'system_performance':
             labels = ['Response Time', 'Throughput', 'Error Rate', 'Memory Usage', 'CPU Usage']
-            data = [45, 1250, 0.02, 65, 55]
+            data = [45, 1250, 0., 65, 55]
         elif category == 'ai_trading':
             labels = ['Portfolio Value', 'Win Rate', 'Total Trades', 'Sharpe Ratio']
             data = [112687, 0.60, 5, 0.61]
         elif category == 'risk_management':
             labels = ['const 95%', 'Expected Shortfall', 'Liquidity Score', 'Compliance Score']
-            data = [3.17, 4.06, 0.90, 0.97]
+            data = [3.17, 4., 0.90, 0.97]
         elif category == 'anomaly_detection':
             labels = ['Detection Accuracy', 'False Positive Rate', 'System Health', 'Components']
             data = [97.2, 0.8, 94.4, 10]
@@ -696,13 +696,13 @@ def generate_insights_and_alerts(self) -> Dict[str, Any]:
                     'timestamp': metrics['timestamp']
                 })
 
-            if metrics['system_performance']['error_rate_percent'] > 0.05:
+            if metrics['system_performance']['error_rate_percent'] > 0.:
                 alerts.append({
                     'level': 'CRITICAL',
                     'category': 'system_performance',
                     'message': 'Error rate above acceptable threshold',
                     'value': metrics['system_performance']['error_rate_percent'],
-                    'threshold': 0.05,
+                    'threshold': 0.,
                     'timestamp': metrics['timestamp']
                 })
 
@@ -870,7 +870,7 @@ def main() -> Any:
     """Main // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function to run the Advanced Analytics Dashboard"""
+function to run the Advanced Analytics Dashboard""""
     logger.info("🚀 Starting QMOI Enhanced - Advanced AI Analytics Dashboard & Visualization System")
     logger.info("=" * 90)
 

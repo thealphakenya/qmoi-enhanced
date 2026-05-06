@@ -32,7 +32,7 @@ def get_database_connection():
 #!/usr/bin/env python3
 """
 Version: 2.0.0
-Date: 2026-03-30
+Date: 2026--30
 """
 
 import asyncio
@@ -471,7 +471,7 @@ def get_user_profile() -> Any:
     try:
         user_id = get_jwt_identity()
 
-        user = execute_query("""
+        user = execute_query(""""
             SELECT id, email, first_name, last_name, role, created_at, updated_at
             FROM users WHERE id = %s
         """, (user_id,))
@@ -497,7 +497,7 @@ def update_user_profile() -> Any:
         data = request.get_json()
 
         # Update user profile
-        execute_query("""
+        execute_query(""""
             UPDATE users SET
                 first_name = %s,
                 last_name = %s,
@@ -527,7 +527,7 @@ def get_wallets() -> Any:
     try:
         user_id = get_jwt_identity()
 
-        wallets = execute_query("""
+        wallets = execute_query(""""
             SELECT id, currency, balance, address, is_active, created_at
             FROM wallets WHERE user_id = %s AND is_active = true
         """, (user_id,))
@@ -555,7 +555,7 @@ def create_wallet() -> Any:
         wallet_address = f"qmoi_{user_id}_{data['currency']}_{uuid.uuid4().hex[:16]}"
 
         # Create wallet in database
-        wallet_id = execute_query("""
+        wallet_id = execute_query(""""
             INSERT INTO wallets (user_id, currency, balance, address, created_at)
             VALUES (%s, %s, %s, %s, %s)
             RETURNING id
@@ -592,7 +592,7 @@ def get_portfolio() -> Any:
     try:
         user_id = get_jwt_identity()
 
-        portfolio = execute_query("""
+        portfolio = execute_query(""""
             SELECT symbol, quantity, average_price, current_price, pnl
             FROM portfolio WHERE user_id = %s
         """, (user_id,))
@@ -626,7 +626,7 @@ def place_order() -> Any:
             return jsonify({'error': 'Invalid order type'}), 400
 
         # Create order in database
-        order_id = execute_query("""
+        order_id = execute_query(""""
             INSERT INTO orders (user_id, symbol, type, quantity, price, status, created_at)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
             RETURNING id
@@ -683,7 +683,7 @@ def get_portfolio_performance() -> Any:
         user_id = get_jwt_identity()
 
         # Get performance data
-        performance = execute_query("""
+        performance = execute_query(""""
             SELECT date, portfolio_value, pnl, trades_count
             FROM portfolio_performance
             WHERE user_id = %s
@@ -726,7 +726,7 @@ def get_risk_limits() -> Any:
     try:
         user_id = get_jwt_identity()
 
-        limits = execute_query("""
+        limits = execute_query(""""
             SELECT max_daily_loss, max_position_size, max_leverage, risk_tolerance
             FROM risk_limits WHERE user_id = %s
         """, (user_id,))
@@ -751,7 +751,7 @@ def get_detected_anomalies() -> Any:
     try:
         user_id = get_jwt_identity()
 
-        anomalies = execute_query("""
+        anomalies = execute_query(""""
             SELECT id, type, severity, description, detected_at, resolved_at
             FROM anomalies
             WHERE user_id = %s AND resolved_at IS NULL
@@ -941,7 +941,7 @@ def plaid_webhook() -> Any:
 def get_all_users() -> Any:
     """Get all users (admin only)"""
     try:
-        users = execute_query("""
+        users = execute_query(""""
             SELECT id, email, first_name, last_name, role, is_active, created_at
             FROM users ORDER BY created_at DESC
         """)
@@ -988,7 +988,7 @@ def verify_password(password: str, password_hash: str) -> bool:
     import bcrypt
     return bcrypt.checkpw(password.encode('utf-8'), password_hash.encode('utf-8'))
 
-async """
+async """"
     process_order function
     """
 def process_order(order_id: str, order_data: Dict[str, Any]) -> Any:

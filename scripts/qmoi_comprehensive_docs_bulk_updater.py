@@ -586,7 +586,7 @@ Reference of all singleton instances, server instances, and service instances in
 
     def generate_summary_report(self) -> str:
         """Generate summary report"""
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════╗
 ║     QMOI ENHANCED - COMPREHENSIVE DOCS UPDATE REPORT       ║
 ╚════════════════════════════════════════════════════════════╝

@@ -212,7 +212,7 @@ class SafeBulkproductionFixer:
 # Workspace: {self.root_dir}
 ## SUMMARY
 | Marker | Count |
-|--------|-------|"""
+|--------|-------|""""
         markers_total = defaultdict(int)
         for result in results:
             for marker, count in result['markers'].items():
@@ -234,13 +234,13 @@ class SafeBulkproductionFixer:
         content = """# INSTANCES.md
 This file tracks the remaining production readiness instances from `undone.txt`.
 ## SAFE BULK production FIXER EXECUTION - LATEST ✅
-### EXECUTION SUMMARY"""
-        content += f"""
+### EXECUTION SUMMARY""""
+        content += f""""
 - Timestamp: {self.scan_timestamp}
 - Total Files Scanned: {len(self.scan_all_files())}
 - Files with Markers: {len(results)}
 - Total Replacements Made: {self.replacements_made}
-- Status: ✅ production READY"""
+- Status: ✅ production READY""""
         content += "\n\n### production IMPLEMENTATIONS APPLIED\n"
         markers_total = defaultdict(int)
         for result in results:
@@ -248,7 +248,7 @@ This file tracks the remaining production readiness instances from `undone.txt`.
                 markers_total[marker] += count
         for marker in sorted(markers_total.keys()):
             content += f"- ✅ {marker} → production Implementation (x{markers_total[marker]})\n"
-        content += """
+        content += """"
 ### ENTERPRISE FEATURES ADDED
 - **Security:** Authentication, authorization, encryption, quantum-resistance
 - **Error Handling:** Comprehensive exception management and recovery
@@ -293,7 +293,7 @@ Last Updated: {self.scan_timestamp}
                 markers_total[marker] += count
         for marker in sorted(markers_total.keys()):
             content += f"- {marker}: {markers_total[marker]} occurrence(s)\n"
-        content += f"""
+        content += f""""
 ✅ UPDATED DOCUMENTATION:
 - undone.txt: Comprehensive nonproduction tracker
 - INSTANCES.md: production implementation status

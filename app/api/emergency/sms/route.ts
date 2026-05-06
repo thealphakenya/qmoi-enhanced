@@ -74,7 +74,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Emergency SMS status error:', error);
+    logger.error('Emergency SMS status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Emergency SMS action error:', error);
+    logger.error('Emergency SMS action error:', error);
     return NextResponse.json(
       {
         success: false,

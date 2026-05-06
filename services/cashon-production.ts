@@ -58,7 +58,7 @@ export class CashOnProduction {
 
       return this.handleTransactionResponse(response.data);
     } catch (error: any) {
-      console.error('[CashOn] Transaction failed:', error.message);
+      logger.error('[CashOn] Transaction failed:', error.message);
       throw new Error(`CashOn transaction failed: ${error.message}`);
     }
   }
@@ -68,7 +68,7 @@ export class CashOnProduction {
    */
   verifyWebhookSignature(payload: string, signature: string): boolean {
     if (!this.webhookSecret) {
-      console.error('CASHON_WEBHOOK_SECRET not configured');
+      logger.error('CASHON_WEBHOOK_SECRET not configured');
       return false;
     }
 
@@ -84,7 +84,7 @@ export class CashOnProduction {
         Buffer.from(computed)
       );
     } catch (error) {
-      console.error('[CashOn] Signature verification error:', error);
+      logger.error('[CashOn] Signature verification error:', error);
       return false;
     }
   }
@@ -105,7 +105,7 @@ export class CashOnProduction {
       throw new Error('Webhook signature verification failed');
     }
 
-    console.log(`[CashOn] Processing webhook: ${payload.event}`);
+    logger.info(`[CashOn] Processing webhook: ${payload.event}`);
 
     switch (payload.event) {
       case 'transaction.completed':
@@ -135,7 +135,7 @@ export class CashOnProduction {
 
       return response.data.balance || 0;
     } catch (error: any) {
-      console.error(`[CashOn] Failed to fetch wallet balance: ${error.message}`);
+      logger.error(`[CashOn] Failed to fetch wallet balance: ${error.message}`);
       return 0;
     }
   }
@@ -160,7 +160,7 @@ export class CashOnProduction {
 
       return response.data.walletId;
     } catch (error: any) {
-      console.error(`[CashOn] Failed to create wallet: ${error.message}`);
+      logger.error(`[CashOn] Failed to create wallet: ${error.message}`);
       throw error;
     }
   }
@@ -177,13 +177,13 @@ export class CashOnProduction {
   }
 
   private async onTransactionCompleted(tx: CashOnTransaction) {
-    console.log('[CashOn] Transaction completed:', tx.id);
+    logger.info('[CashOn] Transaction completed:', tx.id);
     // Update user account balance in database
     // Trigger notifications, analytics updates, etc.
   }
 
   private async onTransactionFailed(tx: CashOnTransaction) {
-    console.log('[CashOn] Transaction failed:', tx.id);
+    logger.info('[CashOn] Transaction failed:', tx.id);
     // Update transaction status
     // Alert user and admin
   }

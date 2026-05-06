@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:12Z
+// Last evolution cycle: 2026--26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # // production implementation:
@@ -17,7 +17,7 @@ def test_preview_generation_from_plan() -> Any:
     cache = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
     try:
         plan = {
-            'generated_at': '2025-10-31T00:00:00Z',
+            'generated_at': '2025-10-31T00::Z',
             'source': str(cache / 'all_links.json'),
             'dry_run': True,
             'allow_network': False,

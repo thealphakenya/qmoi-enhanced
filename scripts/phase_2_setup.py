@@ -51,7 +51,7 @@ class Phase2Setup:
 CREATE TABLE IF NOT EXISTS wallets (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id VARCHAR(255) NOT NULL UNIQUE,
-    balance DECIMAL(18, 2) DEFAULT 0.00,
+    balance DECIMAL(18, 2) DEFAULT 0.,
     currency VARCHAR(3) DEFAULT 'USD',
     public_key TEXT,
     status VARCHAR(50) DEFAULT 'active',
@@ -111,9 +111,9 @@ CREATE INDEX idx_audit_logs_created_at ON audit_logs(created_at DESC);
 """
         
         files = {
-            "001_create_wallets_table.sql": wallets_migration,
-            "002_create_transactions_table.sql": transactions_migration,
-            "003_create_audit_logs_table.sql": audit_migration,
+            "_create_wallets_table.sql": wallets_migration,
+            "_create_transactions_table.sql": transactions_migration,
+            "_create_audit_logs_table.sql": audit_migration,
         }
         
         for filename, content in files.items():

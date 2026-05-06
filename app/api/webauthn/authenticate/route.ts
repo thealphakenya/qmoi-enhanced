@@ -75,7 +75,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('WebAuthn authentication GET error:', error);
+    logger.error('WebAuthn authentication GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -200,7 +200,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('WebAuthn authentication POST error:', error);
+    logger.error('WebAuthn authentication POST error:', error);
     return NextResponse.json(
       {
         success: false,

@@ -1,6 +1,6 @@
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:09Z
+# Last evolution cycle: 2026--26T03:58:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python3
 """
@@ -492,7 +492,7 @@ def send_verification_email(self, user: UserProfile) -> Any:
                 "expires": datetime.now() + timedelta(seconds=self.verification_code_expiry)
             }
             subject = "Verify Your QMOI Account"
-            body = f"""
+            body = f""""
 Hello {user.display_name},
 Welcome to QMOI! Please verify your email address.
 Your verification code: {code}

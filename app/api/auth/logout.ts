@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Logout error:', error);
+    logger.error('Logout error:', error);
     return NextResponse.json(
       {
         success: false,

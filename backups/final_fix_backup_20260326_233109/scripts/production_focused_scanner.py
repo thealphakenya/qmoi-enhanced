@@ -179,7 +179,7 @@ def generate_report(self) -> Any:
                         for issue in issues if issue['severity'] == 'HIGH')
         medium_count = self.issues_found - high_count
         
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║     QMOI production-FOCUSED SCANNER REPORT v6.0                            ║
 ║     Real Source Code Issues Only - Zero False Positives                    ║
@@ -224,7 +224,7 @@ Your codebase is PRODUCTION_IMPLEMENTED! 🚀
                     report += f"       {issue['code']}\n"
                 report += "\n"
         
-        report += f"""
+        report += f""""
 ─────────────────────────────────────────────────────────────────────────────
 SCAN TIME: {datetime.now().isoformat()}Z
 STATUS: {'✅ PRODUCTION_IMPLEMENTED' if self.issues_found == 0 else f'⚠️  {self.issues_found} items for review'}

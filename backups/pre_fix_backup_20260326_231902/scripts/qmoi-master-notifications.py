@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:05Z
+// Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
@@ -201,15 +201,15 @@ def send_console_notification(self, notification: Dict[str, Any]) -> bool:
             
             # Color coding based on type
             colors = {
-                'error': '\033[91m',  # Red
-                'warning': '\033[93m',  # Yellow
-                'success': '\033[92m',  # Green
-                'info': '\033[94m',  # Blue
-                'RELEASE': '\033[90m'  # Gray
+                'error': '\[91m',  # Red
+                'warning': '\[93m',  # Yellow
+                'success': '\[92m',  # Green
+                'info': '\[94m',  # Blue
+                'RELEASE': '\[90m'  # Gray
             }
             
-            color = colors.get(notification_type, '\033[0m')
-            reset = '\033[0m'
+            color = colors.get(notification_type, '\[0m')
+            reset = '\[0m'
             
             logger.info(f"{color}[{timestamp}] {notification_type.upper()}: {message}{reset}")
             
@@ -300,7 +300,7 @@ def send_gitlab_notification(self, notification: Dict[str, Any]) -> bool:
                 
                 issue_data = {
                     'title': f"QMOI Notification: {notification['type']}",
-                    'description': f"""
+                    'description': f""""
 **QMOI Notification**
 
 **Type:** {notification['type']}
@@ -347,7 +347,7 @@ def send_github_notification(self, notification: Dict[str, Any]) -> bool:
                 
                 issue_data = {
                     'title': f"QMOI Notification: {notification['type']}",
-                    'body': f"""
+                    'body': f""""
 **QMOI Notification**
 
 **Type:** {notification['type']}

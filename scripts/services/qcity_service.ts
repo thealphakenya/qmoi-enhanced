@@ -21,8 +21,8 @@ interface QCityConfig {
 }
 
 const logger = {
-  info: (...args: any[]) => console.log('[QCity]', ...args),
-  error: (...args: any[]) => console.error('[QCity]', ...args),
+  info: (...args: any[]) => logger.info('[QCity]', ...args);,
+  error: (...args: any[]) => logger.error('[QCity]', ...args);,
   warn: (...args: any[]) => console.warn('[QCity]', ...args),
 };
 

@@ -53,7 +53,7 @@ export default function QMoiAIPage() {
 
   const handleChatSend = () => {
     // Handle chat message sending
-    console.log('Sending message:', chatMessage);
+    logger.info('Sending message:', chatMessage);
     setChatMessage('');
   };
 
@@ -339,4 +339,28 @@ export default function QMoiAIPage() {
       </div>
     </main>
   );
+}
+
+
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
 }

@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:53Z
+// Last evolution cycle: 2026--26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # // production implementation: this file has no remaining production markers
@@ -273,7 +273,7 @@ def deploy_app(self, prodice_id: str, prodice_type: str, app_file: Path) -> bool
             'prodice_id': prodice_id,
             'prodice_type': prodice_type,
             'app_file': str(app_file),
-            'tracking_id': f'QMOI-DEPLOY-{datetime.now().strftime("%Y%m%d")}-{len(self.deployments):05d}',
+            'tracking_id': f'QMOI-DEPLOY-{datetime.now().strftime("%Y%m%d")}-{len(self.deployments):d}',
             'status': 'pending'
         }
         

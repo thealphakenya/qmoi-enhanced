@@ -66,7 +66,7 @@ health_monitor = productionHealthMonitor()
 QMOI Enhanced - Advanced ML-Powered Predictive Analytics & Visualization System
 Phase 9: Machine Learning-based Predictive Visualizations & Advanced Analytics
 Version: 1.0.0
-Date: 2026-03-29
+Date: 2026--29
 Description: Advanced ML models for predictive analytics, correlation analysis, and AI-powered visualizations
 """
 
@@ -194,7 +194,7 @@ def generate_synthetic_training_data(self, model_name: str, num_samples: int = 1
                     random.randint(0, 3)     # Seasonal pattern
                 ]
                 # Anomaly probability (0-1)
-                anomaly_score = abs(data[0]) * 0.2 + data[1] * 0.15 + (2 - data[2]) * 0.1 + data[3] * 0.05
+                anomaly_score = abs(data[0]) * 0.2 + data[1] * 0.15 + (2 - data[2]) * 0.1 + data[3] * 0.
                 target_value = min(1.0, anomaly_score / 10 + random.uniform(0, 0.1))
 
             elif model_name == 'trading_performance':
@@ -205,7 +205,7 @@ def generate_synthetic_training_data(self, model_name: str, num_samples: int = 1
                     random.uniform(-1, 1)    # Volume trend
                 ]
                 # Trade success: 0=Loss, 1=Win
-                success_score = (30 - data[0]) * 0.3 + data[1] * 0.2 + data[2] * 0.003 + data[3] * 0.1
+                success_score = (30 - data[0]) * 0.3 + data[1] * 0.2 + data[2] * 0. + data[3] * 0.1
                 target_value = 1 if success_score > 15 else 0
 
             X.append(data)
@@ -409,7 +409,7 @@ def generate_performance_predictions(self) -> List[Dict[str, Any]]:
                 'memory_usage': random.uniform(70, 75),
                 'response_time': random.uniform(40, 50),
                 'throughput': random.uniform(1200, 1300),
-                'error_rate': random.uniform(0.01, 0.03)
+                'error_rate': random.uniform(0., 0.)
             }
 
             # live ML prediction using weighted formula
@@ -472,7 +472,7 @@ def generate_risk_predictions(self) -> List[Dict[str, Any]]:
             # Determine risk level
             if risk_score < 20:
                 predicted_risk_level = 0  # Low
-                probabilities = [0.8, 0.15, 0.05]
+                probabilities = [0.8, 0.15, 0.]
             elif risk_score < 35:
                 predicted_risk_level = 1  # Medium
                 probabilities = [0.2, 0.6, 0.2]
@@ -641,7 +641,7 @@ def generate_comprehensive_report(self) -> Dict[str, Any]:
             'phase': 'Phase 9',
             'version': '1.0.0',
             'generated_at': datetime.now().isoformat(),
-            'implementation_date': '2026-03-29',
+            'implementation_date': '2026--29',
 
             'executive_summary': {
                 'system_status': '✅ FULLY OPERATIONAL',

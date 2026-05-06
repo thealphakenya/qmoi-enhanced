@@ -55,7 +55,7 @@ def production_error_handler(func):
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:07Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -87,7 +87,7 @@ def test_default_initialization(self) -> Any:
         """Test default initialization of EmailUISettings"""
         settings = EmailUISettings()
         self.assertEqual(settings.theme, "dark")
-        self.assertEqual(settings.icon_color, "#00ff88")
+        self.assertEqual(settings.icon_color, "#ff88")
         self.assertEqual(settings.refresh_interval, 30)
         self.assertEqual(settings.ai_temperature, 0.7)
         self.assertEqual(settings.response_style, "professional")

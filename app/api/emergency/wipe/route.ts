@@ -89,7 +89,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Emergency wipe status error:', error);
+    logger.error('Emergency wipe status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -237,7 +237,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Emergency wipe action error:', error);
+    logger.error('Emergency wipe action error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -307,7 +307,7 @@ async function initiateDataWipe(
     };
 
   } catch (error) {
-    console.error('Initiate wipe error:', error);
+    logger.error('Initiate wipe error:', error);
     return {
       success: false,
       wipeId: '',
@@ -391,7 +391,7 @@ async function performDataWipe(
     });
 
   } catch (error) {
-    console.error(`Wipe ${wipeId} failed:`, error);
+    logger.error(`Wipe ${wipeId} failed:`, error);
 
     // Mark wipe as failed
     await prisma.systemMetric.create({
@@ -454,7 +454,7 @@ async function cancelDataWipe(wipeId: string): Promise<{
     return { success: true };
 
   } catch (error) {
-    console.error('Cancel wipe error:', error);
+    logger.error('Cancel wipe error:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Failed to cancel wipe',

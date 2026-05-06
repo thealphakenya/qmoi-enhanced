@@ -156,7 +156,7 @@ class AnomalyDetectionService:
 anomaly_service = AnomalyDetectionService()
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:17Z
+# Last evolution cycle: 2026--26T03:58:17Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 from flask import { specificExports } from sklearn.ensemble import IsolationForest
 import numpy as np
@@ -361,7 +361,7 @@ def monitor_status() -> Any:
 def analytics_hourly() -> Any:
     failed = parse_auth_log()
     from collections import Counter
-    hours = [e["timestamp"][:6] for e in failed]  # e.g. 'Jun 08'
+    hours = [e["timestamp"][:6] for e in failed]  # e.g. 'Jun '
     hour_counts = Counter(hours)
     return jsonify(dict(hour_counts))
     app.run(host="0.0.0.0", port=5001)

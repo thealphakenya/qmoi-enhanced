@@ -4,7 +4,7 @@
 QMOI Enhanced - Phase 31: Intelligent Evolution Frequency Optimization
 Implements adaptive evolution scheduling and optimization
 Status: production_IMPLEMENTED
-Date: 2026-04-19
+Date: 2026--19
 """
 import json
 import time
@@ -44,7 +44,7 @@ class PerformanceMetrics:
         self.disk_io: float = 8.0  # %
         self.network_utilization: float = 5.0  # %
         self.system_responsiveness: float = 0.98  # 0-1
-        self.error_rate: float = 0.001  # errors per operation
+        self.error_rate: float = 0.  # errors per operation
         self.evolution_impact_score: float = 0.0  # -1 to 1
     def get_overall_health(self) -> float:
         """Calculate overall system health (0-1)"""
@@ -202,7 +202,7 @@ class EvolutionOptimizer:
         trigger_configurations = [
             {
                 'name': 'High Error Rate',
-                'condition': self.metrics.error_rate > 0.01,
+                'condition': self.metrics.error_rate > 0.,
                 'action': 'execute_reliability_evolution'
             },
             {
@@ -308,7 +308,7 @@ class EvolutionOptimizer:
                 'recommendation': 'Implement memory pooling and optimization',
                 'expected_improvement': '20-25% memory usage reduction'
             })
-        if self.metrics.error_rate > 0.005:
+        if self.metrics.error_rate > 0.:
             recommendations['improvement_areas'].append('reliability')
             recommendations['specific_recommendations'].append({
                 'area': 'reliability',
@@ -350,7 +350,7 @@ class EvolutionOptimizer:
         """Recommend optimal execution timing"""
         return {
             'recommended_timing': 'low_usage_period',
-            'suggested_time_window': '00:00-06:00 UTC',
+            'suggested_time_window': ':-: UTC',
             'priority': 'normal'
         }
     def _log_impact_analysis(self, analysis: Dict[str, Any]) -> None:

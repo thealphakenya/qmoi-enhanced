@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error("Metrics error:", error);
+    logger.error("Metrics error:", error);
     return NextResponse.json(
       { success: false, error: "Failed to retrieve metrics" },
       { status: 500 }
@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error("Metrics POST error:", error);
+    logger.error("Metrics POST error:", error);
     return NextResponse.json(
       {
         success: false,

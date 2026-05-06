@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:54Z
+// Last evolution cycle: 2026--26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
@@ -146,7 +146,7 @@ def load_config(self, config_path: str) -> Any:
                     'learning_rate': 2e-5,
                     'num_epochs': 3,
                     'warmup_steps': 500,
-                    'weight_decay': 0.01
+                    'weight_decay': 0.
                 },
                 'optimization': {
                     'gradient_accumulation_steps': 1,

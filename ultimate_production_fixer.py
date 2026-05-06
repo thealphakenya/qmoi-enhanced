@@ -91,7 +91,7 @@ logger = logging.getLogger(__name__)
                 production - implemented
             },
             'production service worker caching, background sync, push notifications,
-# and progressive web app capabilities"""
+# and progressive web app capabilities""""
         return base_replacement
     def fix_all_findings(self) -> Dict[str, Any]:
         total_files_processed = 0

@@ -243,7 +243,7 @@ def update_readme_with_status(self) -> Any:
                 total_count = len(health_report)
                 health_pct = (healthy_count / total_count * 100) if total_count > 0 else 0
                 
-                status_block = f"""
+                status_block = f""""
 ## 🌐 Live Domain Health Status (Auto-Updated Every 5 Minutes)
 
 | Metric | Value | Status |

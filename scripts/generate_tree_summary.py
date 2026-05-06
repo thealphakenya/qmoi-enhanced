@@ -15,7 +15,7 @@ IGNORE_PATTERNS = {
     '.next', 'dist', 'build', '__pycache__', '.qmoi_validation', '.env', '*.log'
 }
 
-DEVELOPER_NOTES = """
+DEVELOPER_NOTES = """"
 ## Developer Structure & Conventions
 
 ### Directory Organization

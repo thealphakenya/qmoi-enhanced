@@ -1,7 +1,7 @@
 <!-- PRODUCTION_READY: True -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:06:55.264627 -->
-<!-- AUTODEV Enhanced: 2026-04-20T09:01:06.558759 -->
-<!-- AUTODEV Enhanced: 2026-04-20T08:55:02.211721 -->
+<!-- AUTODEV Enhanced: 2026--20T09::55.264627 -->
+<!-- AUTODEV Enhanced: 2026--20T09::.558759 -->
+<!-- AUTODEV Enhanced: 2026--20T08:55:.211721 -->
 #!/usr/bin/env python3
 """
 PHASE 35: ADVANCED ANALYTICS
@@ -214,7 +214,7 @@ class AnalyticsEngine:
                         model_id=model_id,
                         target_metric=metric_name,
                         model_type='linear_trend',
-                        accuracy=min(0.95, 0.6 + len(values) * 0.01),
+                        accuracy=min(0.95, 0.6 + len(values) * 0.),
                         training_samples=len(values)
                     )
                     # Generate predictions
@@ -333,9 +333,9 @@ class AnalyticsEngine:
         recent = statistics.mean(values[-5:]) if len(values) >= 5 else statistics.mean(values[-3:])
         older = statistics.mean(values[:5]) if len(values) >= 5 else statistics.mean(values[:3])
         change = (recent - older) / older if older != 0 else 0
-        if change > 0.05:
+        if change > 0.:
             return "increasing"
-        elif change < -0.05:
+        elif change < -0.:
             return "decreasing"
         else:
             return "stable"

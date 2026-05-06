@@ -38,7 +38,7 @@ class QMOIBulkConsciousnessUpdater:
 
     def add_consciousness_section(self, content: str) -> str:
         """Add consciousness features section to content"""
-        consciousness_section = """
+        consciousness_section = """"
 ## Consciousness & Awareness Features
 
 ### Distributed Omnipresent Consciousness

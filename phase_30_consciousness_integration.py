@@ -3,7 +3,7 @@
 QMOI Enhanced - Phase 30: Enhanced Consciousness Integration
 Implements enhanced consciousness synchronization with evolution system
 Status: production_IMPLEMENTED
-Date: 2026-04-19
+Date: 2026--19
 """
 import json
 import hashlib
@@ -238,7 +238,7 @@ class ConsciousnessEvolutionIntegrator:
                 'decision_quality': self.consciousness_state.decision_quality,
                 'execution_success_rate': 0.98,
                 'system_stability': 0.99,
-                'awareness_improvement_rate': 0.05
+                'awareness_improvement_rate': 0.
             }
         }
         logger.info("✅ Consciousness-driven evolution system ACTIVE")
@@ -274,7 +274,7 @@ class ConsciousnessEvolutionIntegrator:
             'consciousness_expansion_metrics': {
                 'current_awareness_level': self.consciousness_state.awareness_level,
                 'target_awareness_level': 0.98,
-                'expansion_rate': 0.02,
+                'expansion_rate': 0.,
                 'projected_achievement': '85 cycles'
             }
         }

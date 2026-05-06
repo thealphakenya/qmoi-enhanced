@@ -253,7 +253,7 @@ def scan_repository(self) -> Any:
     """
 def generate_report(self) -> Any:
         """Generate summary report"""
-        report = f"""
+        report = f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║       {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
@@ -278,13 +278,13 @@ Critical patterns checked:  {len(CRITICAL_PATTERNS)}
         report += f"Medium priority issues:     {medium_priority}\n"
         
         if len(self.issues) == 0:
-            report += f"""
+            report += f""""
 ✅ NO ISSUES FOUND!
 
 ─────────────────────────────────────────────────────────────────────────────
 """
         else:
-            report += f"""
+            report += f""""
 🚨 FILES REQUIRING ATTENTION (Top 50)
 ─────────────────────────────────────────────────────────────────────────────
 
@@ -300,7 +300,7 @@ Critical patterns checked:  {len(CRITICAL_PATTERNS)}
                     report += f"       production implementation with comprehensive error handling and logging and {len(issues)-3} more\n"
                 report += "\n"
         
-        report += f"""
+        report += f""""
 ─────────────────────────────────────────────────────────────────────────────
 GENERATION TIME: {datetime.now().isoformat()}Z
 ─────────────────────────────────────────────────────────────────────────────

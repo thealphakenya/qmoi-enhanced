@@ -61,7 +61,7 @@ class BuildScriptOptimizer:
 # Last enhanced: {timestamp}
 """
     
-    ERROR_HANDLER = """
+    ERROR_HANDLER = """"
 # Q1 Error Recovery: Automatic error handling and recovery
 set -Eeuo pipefail
 
@@ -90,7 +90,7 @@ trap 'handle_error "$LINENO"' ERR
 trap 'log_info "Build interrupted"; exit 130' INT
 """
     
-    PARALLEL_SUPPORT = """
+    PARALLEL_SUPPORT = """"
 # Q1 Parallel Processing Support
 # Enable parallel builds when applicable
 PARALLEL_JOBS=${PARALLEL_JOBS:-$(nproc)}
@@ -110,7 +110,7 @@ run_parallel() {{
 }}
 """
     
-    MONITORING = """
+    MONITORING = """"
 # Q1 Performance Monitoring
 get_elapsed_time() {{
     local end_time=$(date +%s%N)
@@ -251,7 +251,7 @@ report_metrics() {{
 # Features: Parallel processing, AI optimization, error recovery, auto-monitoring
 # Last enhanced: {datetime.utcnow().isoformat()}Z
 
-{content}"""
+{content}""""
                 
                 with open(workflow_path, 'w') as f:
                     f.write(enhanced)
@@ -302,7 +302,7 @@ report_metrics() {{
     
     def generate_report(self) -> str:
         """Generate optimization report"""
-        report = f"""
+        report = f""""
 ═══════════════════════════════════════════════════════════════════
 QMOI ENHANCED - BUILD SCRIPTS OPTIMIZATION REPORT
 ═══════════════════════════════════════════════════════════════════
@@ -314,12 +314,12 @@ QMOI ENHANCED - BUILD SCRIPTS OPTIMIZATION REPORT
   Total improvements applied:   {self.stats['improvements_applied']}
 
 🎯 Q1 PRINCIPLES INTEGRATED
-────────────────────────────────────────────────────────────────"""
+────────────────────────────────────────────────────────────────""""
         
         for principle, description in self.Q1_PRINCIPLES.items():
             report += f"\n  ✓ {principle.replace('_', ' ').title()}\n    → {description}"
         
-        report += f"""
+        report += f""""
 
 ✅ ENHANCEMENTS APPLIED
 ────────────────────────────────────────────────────────────────

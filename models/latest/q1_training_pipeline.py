@@ -200,7 +200,7 @@ class ModelTrainer:
                     job.metrics = {
                         "loss": 1.0 / (step + 1),  # Decreasing loss
                         "accuracy": min(0.95, step / total_steps),
-                        "learning_rate": config.get("lr", 0.001)
+                        "learning_rate": config.get("lr", 0.)
                     }
             
             job.status = "completed"

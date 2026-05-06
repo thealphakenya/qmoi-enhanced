@@ -1,6 +1,6 @@
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:31Z
+# Last evolution cycle: 2026--26T03:58:31Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 #!/usr/bin/env python3
 """
@@ -272,7 +272,7 @@ def send_verification_email(self, account: UserEmailAccount, token: str) -> Any:
         try:
             verification_url = f"https://accounts.qmoi.com/verify/{token}"
             subject = "Verify Your QMOI Email Account"
-            body = f"""
+            body = f""""
 Hello {account.display_name},
 Welcome to QMOI! Your email account has been created successfully.
 Email Address: {account.email}

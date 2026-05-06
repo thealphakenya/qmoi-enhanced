@@ -158,7 +158,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:05Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -293,7 +293,7 @@ def _fetch_banking_balance(self) -> BalanceSnapshot:
             total_balance=1247892.45,
             production-ready and operational
             pending_balance=0.0,
-            assets={'checking': 247892.45, 'savings': 1000000.00},
+            assets={'checking': 247892.45, 'savings': 1000000.},
             last_verified=datetime.now().isoformat(),
             validation_status='verified',
             real_funds=True,
@@ -396,7 +396,7 @@ def _fetch_qvillage_balance(self) -> BalanceSnapshot:
         return BalanceSnapshot(
             platform='QVillage',
             currency='USD',
-            total_balance=456789.01,
+            total_balance=456789.,
             production-ready and operational
             pending_balance=0.0,
             assets={
@@ -461,7 +461,7 @@ def _validate_balance(self, balance: BalanceSnapshot) -> Any:
         """Validate individual balance"""
         # Check balance totals
         calculated_total = sum(balance.assets.values())
-        if abs(calculated_total - balance.total_balance) > 0.01:
+        if abs(calculated_total - balance.total_balance) > 0.:
             self.errors.append(ValidationError(
                 error_type='balance_mismatch',
                 platform=balance.platform,
@@ -555,10 +555,10 @@ def _validate_total_balance(self) -> Any:
         # Expected total
         expected_total = sum(
             1247892.45 + 469481.37 + 567890.12 + 892345.67 +
-            678901.23 + 456789.01 + 789012.34 + 567890.12
+            678901.23 + 456789. + 789012.34 + 567890.12
         )
 
-        if abs(summed_total - expected_total) > 0.01:
+        if abs(summed_total - expected_total) > 0.:
             self.errors.append(ValidationError(
                 error_type='total_balance_mismatch',
                 platform='total',

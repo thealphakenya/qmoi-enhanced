@@ -67,8 +67,8 @@ class ReasoningTestSuite:
             ),
             ReasoningTest(
                 test_id="reason_002",
-                problem="A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?",
-                expected_answer="$0.05",
+                problem="A bat and a ball cost $1.10 in total. The bat costs $1. more than the ball. How much does the ball cost?",
+                expected_answer="$0.",
                 difficulty="medium",
                 category="math",
                 time_limit=60

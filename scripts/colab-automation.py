@@ -66,7 +66,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:18Z
+# Last evolution cycle: 2026--26T03:58:18Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -151,7 +151,7 @@ def optimize_gpu_usage(self) -> Any:
             
             if self.is_colab:
                 # Set GPU memory growth
-                gpu_script = """
+                gpu_script = """"
 import tensorflow as tf
 if gpus:
     try:
@@ -185,7 +185,7 @@ def optimize_memory_usage(self) -> Any:
             self.logger.info("💾 Optimizing memory usageproduction implementation with comprehensive error handling and logging")
             
             # Memory optimization script
-            memory_script = """
+            memory_script = """"
 import gc
 import psutil
 import os
@@ -287,7 +287,7 @@ def optimize_performance(self) -> Any:
             self.logger.info("⚡ Optimizing performanceproduction implementation with comprehensive error handling and logging")
             
             # Performance optimization script
-            perf_script = """
+            perf_script = """"
 import os
 import torch
 import tensorflow as tf

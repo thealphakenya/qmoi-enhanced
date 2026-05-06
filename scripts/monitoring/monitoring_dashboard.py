@@ -59,7 +59,7 @@ health_monitor = productionHealthMonitor()
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:20Z
+# Last evolution cycle: 2026--26T03:58:20Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -249,7 +249,7 @@ def api_restart_component(component) -> Any:
     """
 def render_dashboard(self) -> str:
         """Render the main dashboard HTML"""
-        dashboard_html = """
+        dashboard_html = """"
 <!DOCTYPE html>
 <html lang="en">
 <head>

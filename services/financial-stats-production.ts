@@ -40,7 +40,7 @@ export class FinancialStatsProduction {
         lastTransactionTime: stats.lasttransaction || null,
       };
     } catch (error) {
-      console.error('[FinancialStats] Query failed:', error);
+      logger.error('[FinancialStats] Query failed:', error);
       // Return zero-state object instead of throwing
       return this.getZeroState();
     }
@@ -76,7 +76,7 @@ export class FinancialStatsProduction {
       const result = await pool.query(query, [userId]);
       return result.rows.length > 0 ? result.rows[0].balance : 0;
     } catch (error) {
-      console.error('[FinancialStats] Failed to get wallet balance:', error);
+      logger.error('[FinancialStats] Failed to get wallet balance:', error);
       return 0;
     }
   }
@@ -111,7 +111,7 @@ export class FinancialStatsProduction {
         offset,
       };
     } catch (error) {
-      console.error('[FinancialStats] Failed to fetch transaction history:', error);
+      logger.error('[FinancialStats] Failed to fetch transaction history:', error);
       return { transactions: [], total: 0, limit, offset };
     }
   }

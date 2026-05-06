@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:07Z
+// Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # // production implementation:
@@ -72,27 +72,27 @@ def create_app_icon(self, platform_type: str) -> Any:
             "windows": {
                 "ico": "qmoi_icon.ico",
                 "sizes": [16, 32, 48, 64, 128, 256],
-                "colors": ["#10B981", "#059669", "#047857"]
+                "colors": ["#10B981", "#", "#"]
             },
             "macos": {
                 "icns": "qmoi_icon.icns",
                 "sizes": [16, 32, 64, 128, 256, 512, 1024],
-                "colors": ["#10B981", "#059669", "#047857"]
+                "colors": ["#10B981", "#", "#"]
             },
             "linux": {
                 "png": "qmoi_icon.png",
                 "sizes": [16, 32, 48, 64, 128, 256],
-                "colors": ["#10B981", "#059669", "#047857"]
+                "colors": ["#10B981", "#", "#"]
             },
             "android": {
                 "mipmap": "qmoi_icon",
                 "sizes": ["mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"],
-                "colors": ["#10B981", "#059669", "#047857"]
+                "colors": ["#10B981", "#", "#"]
             },
             "ios": {
                 "appiconset": "AppIcon.appiconset",
                 "sizes": [20, 29, 40, 58, 60, 76, 80, 87, 120, 152, 167, 180, 1024],
-                "colors": ["#10B981", "#059669", "#047857"]
+                "colors": ["#10B981", "#", "#"]
             }
         }
         
@@ -389,7 +389,7 @@ def setup_system_integration(self, platform_type: str) -> Any:
         
         if platform_type == "windows":
             # Create registry entries
-            registry_script = f"""Windows Registry Editor Version 5.00
+            registry_script = f"""Windows Registry Editor Version 5.
 
 [HKEY_LOCAL_MACHINE\\SOFTWARE\\QMOI AI]
 "InstallPath"="{self.install_dir}"

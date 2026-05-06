@@ -147,7 +147,7 @@ and Gemini in specialized domains while maintaining production reliability.
 
 ### 12. Scalability
 - Horizontal scaling across cloud providers
-- 10,000+ concurrent connections
+- 10,+ concurrent connections
 - Distributed processing across regions
 - Zero downtime deployments
 
@@ -294,7 +294,7 @@ az containerapp up --name qmoi-prod
 | Multimodal Speed | Real-time | Batch |
 | Revenue Generation | $13.25M+ | N/A |
 | Custom Training | Yes | Limited |
-| Cost per Query | $0.001 | $0.02 |
+| Cost per Query | $0. | $0. |
 
 ### QMOI vs. LLaMA
 | Metric | QMOI | LLaMA |
@@ -599,7 +599,7 @@ assert 0.0 <= confidence <= 1.0
 assert confidence > 0.99 for high_probability_trades
 
 # Test 2: Fund Allocation
-allocation = allocate_funds(balance=1000000, risk=0.05)
+allocation = allocate_funds(balance=1000000, risk=0.)
 assert sum(allocation.values()) <= 1000000
 assert all(x >= 0 for x in allocation.values())
 
@@ -760,9 +760,9 @@ Cross-Modal Reasoning    90%    N/A    60%     75%
 ```
 Metric                    QMOI    GPT-4    Claude   LLaMA
 Response Time (p95)       82ms    450ms    520ms    180ms
-Tokens/Second            1,200    800      600      2,000
+Tokens/Second            1,200    800      600      2,
 Memory per Token (MB)     0.8      1.2      1.5      0.6
-Cost per 1M Tokens       $0.05   $3.00    $5.00    $0.10
+Cost per 1M Tokens       $0.   $3.    $5.    $0.10
 ```
 
 ### Business & Trading
@@ -801,11 +801,11 @@ Autonomous Operations   95%+   <10%
 
 | Model | Input Cost | Output Cost | Avg Total | Value Score |
 |-------|-----------|-----------|-----------|-------------|
-| QMOI | $0.02 | $0.03 | $0.05 | ⭐⭐⭐⭐⭐ |
-| GPT-5 | $3.00 | $6.00 | $4.50 | ⭐⭐ |
-| Claude 3 | $3.00 | $15.00 | $9.00 | ⭐ |
-| LLaMA | $0.05 | $0.10 | $0.08 | ⭐⭐⭐ |
-| Gemini | $0.50 | $1.50 | $1.00 | ⭐⭐⭐⭐ |
+| QMOI | $0. | $0. | $0. | ⭐⭐⭐⭐⭐ |
+| GPT-5 | $3. | $6. | $4.50 | ⭐⭐ |
+| Claude 3 | $3. | $15. | $9. | ⭐ |
+| LLaMA | $0. | $0.10 | $0. | ⭐⭐⭐ |
+| Gemini | $0.50 | $1.50 | $1. | ⭐⭐⭐⭐ |
 
 ## 📈 Benchmark Results
 
@@ -1441,7 +1441,7 @@ separated by commas for easy reference and understanding of the complete documen
         md_files_list = ', '.join(all_md_files)
         registry_content += f"\n{md_files_list}\n\n"
         
-        registry_content += f"""
+        registry_content += f""""
 ### Statistics
 - **Total MD Files:** {len(all_md_files)}
 - **Generated:** {self.timestamp}
@@ -1494,7 +1494,7 @@ separated by commas for easy reference and understanding of the complete documen
                 if len(files) > 20:
                     registry_content += f"... and {len(files) - 20} more files\n"
         
-        registry_content += f"""
+        registry_content += f""""
 
 ## 🔍 File Discovery Guide
 
@@ -1634,7 +1634,7 @@ Last updated: {self.timestamp} UTC
 9. ✅ Data Privacy & Security - Enterprise-grade
 10. ✅ Enterprise Integration - Seamless connectivity
 11. ✅ Cost Efficiency - 40% lower costs
-12. ✅ Scalability - 10,000+ concurrent connections
+12. ✅ Scalability - 10,+ concurrent connections
 
 #### 5. Developer Structures Updated (TREE.md)
 - Complete project structure documented

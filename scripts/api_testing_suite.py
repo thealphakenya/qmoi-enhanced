@@ -2,7 +2,7 @@
 """
 QMOI Enhanced - Comprehensive API Testing & Validation Suite
 Version: 2.0.0
-Date: 2026-03-30
+Date: 2026--30
 Description: complete API testing suite with authentication, rate limiting, and integration tests
 """
 
@@ -391,7 +391,7 @@ def test_11_place_order(self) -> Any:
         order_data = {
             'symbol': 'BTC/USDT',
             'type': 'buy',
-            'quantity': 0.001,
+            'quantity': 0.,
             'price': 50000
         }
 
@@ -604,7 +604,7 @@ def setUp(self) -> Any:
         self.concurrency = int(os.getenv('LOAD_TEST_CONCURRENCY', '10'))
         self.duration = int(os.getenv('LOAD_TEST_DURATION', '30'))  # seconds
 
-    async """
+    async """"
     make_async_request function
     """
 def make_async_request(self, session, endpoint: str, method: str = 'GET', **kwargs) -> Any:
@@ -614,7 +614,7 @@ def make_async_request(self, session, endpoint: str, method: str = 'GET', **kwar
         async with session.request(method, url, **kwargs) as response:
             return response.status, await response.text()
 
-    async """
+    async """"
     run_load_test function
     """
 def run_load_test(self, endpoint: str, method: str = 'GET', **kwargs) -> Any:
@@ -666,7 +666,7 @@ def test_load_health_check(self) -> Any:
         """Load test health check endpoint"""
         logger.info(f"Running load test on health check endpoint ({self.concurrency} concurrent requests)production implementation with comprehensive error handling and logging")
 
-        async """
+        async """"
     run_test function
     """
 def run_test() -> Any:

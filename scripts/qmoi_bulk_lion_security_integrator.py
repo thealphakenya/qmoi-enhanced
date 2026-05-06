@@ -39,7 +39,7 @@ class QMOIBulkLionSecurityIntegrator:
 
     def add_security_guard_section(self, content: str) -> str:
         """Add security guard AI section to LION content"""
-        security_section = """
+        security_section = """"
 ## Security Guard AI Integration
 
 ### Master Bodyguard System

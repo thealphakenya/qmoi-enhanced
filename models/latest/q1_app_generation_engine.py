@@ -195,7 +195,7 @@ requests==2.31.0
         if spec.frontend == "react":
             code["src/App.js"] = self.templates["react_component"]
             code["package.json"] = self.templates["package_json"].format(app_name=spec.name)
-            code["public/index.html"] = f"""
+            code["public/index.html"] = f""""
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -213,7 +213,7 @@ requests==2.31.0
     def generate_database_schema(self, spec: AppSpecification) -> str:
         """Generate database schema"""
         if spec.database == "sqlite":
-            return f"""
+            return f""""
 -- {spec.name} Database Schema
 CREATE TABLE IF NOT EXISTS items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

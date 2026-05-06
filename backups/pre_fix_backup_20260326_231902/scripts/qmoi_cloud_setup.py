@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:53Z
+// Last evolution cycle: 2026--26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
@@ -304,11 +304,11 @@ def setup_digitalocean(self) -> Any:
             "droplets": {
                 "compute": {
                     "size": "s-2vcpu-4gb",
-                    "image": "ubuntu-20-04-x64"
+                    "image": "ubuntu-20--x64"
                 },
                 "gpu": {
                     "size": "g-2vcpu-8gb",
-                    "image": "ubuntu-20-04-x64"
+                    "image": "ubuntu-20--x64"
                 }
             },
             "functions": {

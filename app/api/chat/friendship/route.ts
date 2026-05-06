@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString()
     });
   } catch (error) {
-    console.error('Friendship chat error:', error);
+    logger.error('Friendship chat error:', error);
     return NextResponse.json(
       {
         success: false,

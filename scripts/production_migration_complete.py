@@ -81,7 +81,7 @@ class ProductionMigrator:
         """Create/Update CashOn integration with production real-time API calls."""
         print("📱 Migrating CashOn Wallet Integration...")
         
-        cashon_module = """
+        cashon_module = """"
 # PRODUCTION IMPLEMENTATION: CashOn Wallet Integration
 # Uses LIVE CashOn API for real financial transactions
 
@@ -284,7 +284,7 @@ export const cashOnProduction = new CashOnProduction();
         """Create production-ready financial statistics module with real database queries."""
         print("📊 Migrating Financial Statistics...")
         
-        financial_module = """
+        financial_module = """"
 # PRODUCTION IMPLEMENTATION: Financial Statistics
 # Real-time aggregation from production database
 
@@ -417,10 +417,10 @@ export class FinancialStatsProduction {
   private getZeroState() {
     return {
       totalTransactions: 0,
-      totalAmount: 0.00,
-      averageAmount: 0.00,
-      minAmount: 0.00,
-      maxAmount: 0.00,
+      totalAmount: 0.,
+      averageAmount: 0.,
+      minAmount: 0.,
+      maxAmount: 0.,
       successfulTransactions: 0,
       failedTransactions: 0,
       lastTransactionTime: null,
@@ -490,7 +490,7 @@ export const financialStats = new FinancialStatsProduction();
         """Create environment variable template for production."""
         print("🔐 Creating production environment template...")
         
-        env_template = """
+        env_template = """"
 # QMOI Enhanced - Production Environment Configuration
 # Copy to .env.production and fill in actual values
 

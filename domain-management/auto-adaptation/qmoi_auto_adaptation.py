@@ -311,7 +311,7 @@ def maintain_100_percent_health(self) -> bool:
         """Main // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function to maintain 100% domain health"""
+function to maintain 100% domain health""""
         logger.info("Starting QMOI Auto-Adaptation for 100% Domain Health")
 
         all_healthy = True

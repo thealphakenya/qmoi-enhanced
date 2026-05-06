@@ -147,7 +147,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:05Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -155,7 +155,7 @@ class productionFileManager:
 Automatically manages DNS records for all QMOI domains to ensure 100% health.
 Supports multiple DNS providers and automatic record creation/updates.
 
-Date: 2026-03-21
+Date: 2026--21
 """
 
 import json
@@ -468,10 +468,10 @@ set -e
 
 
 # Colors for output
-RED='\\033[0;31m'
-GREEN='\\033[0;32m'
-YELLOW='\\033[1;33m'
-NC='\\033[0m' # No Color
+RED='\\[0;31m'
+GREEN='\\[0;32m'
+YELLOW='\\[1;33m'
+NC='\\[0m' # No Color
 
 # Function to check domain health
 check_domain() {

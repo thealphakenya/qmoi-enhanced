@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:19Z
+// Last evolution cycle: 2026--26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -100,7 +100,7 @@ def send_email_notification(self, subject: str, message: str, priority: str = 'n
                 msg['X-MSMail-Priority'] = 'High'
             
             # Create HTML content
-            html_content = f"""
+            html_content = f""""
             <html>
             <body>
                 <h2>QMOI Enhanced Notification System</h2>
@@ -149,7 +149,7 @@ def send_whatsapp_notification(self, message: str, priority: str = 'normal') -> 
             # Send to each number
             for to_number in to_numbers:
                 if to_number.strip():
-                    url = f"https://api.twilio.com/2010-04-01/Accounts/{account_sid}/Messages.json"
+                    url = f"https://api.twilio.com/2010--/Accounts/{account_sid}/Messages.json"
                     data = {
                         "From": f"whatsapp:{from_number}",
                         "To": f"whatsapp:{to_number.strip()}",
@@ -297,7 +297,7 @@ def send_sms_notification(self, message: str, priority: str = 'normal') -> bool:
             # Send to each number
             for to_number in to_numbers:
                 if to_number.strip():
-                    url = f"https://api.twilio.com/2010-04-01/Accounts/{account_sid}/Messages.json"
+                    url = f"https://api.twilio.com/2010--/Accounts/{account_sid}/Messages.json"
                     data = {
                         "From": from_number,
                         "To": to_number.strip(),
@@ -395,7 +395,7 @@ def save_notification_history(self) -> Any:
 def send_automation_notification(self, automation_type: str, status: str, details: str = "") -> Dict:
         """Automation-specific notification"""
         subject = f"QMOI Automation: {automation_type}"
-        message = f"""
+        message = f""""
 Automation Type: {automation_type}
 Status: {status}
 Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
@@ -415,7 +415,7 @@ This is an automated notification from QMOI Enhanced Notification System.
 def send_health_check_notification(self, health_status: str, details: Dict) -> Dict:
         """Send healthcheck notification"""
         subject = f"QMOI Health Check: {health_status}"
-        message = f"""
+        message = f""""
 Health Check Status: {health_status}
 Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
@@ -434,7 +434,7 @@ This is an automated health check notification from QMOI Enhanced Notification S
 def send_git_operation_notification(self, operation: str, status: str, details: str = "") -> Dict:
         """Send Git operation notification"""
         subject = f"QMOI Git Operation: {operation}"
-        message = f"""
+        message = f""""
 Git Operation: {operation}
 Status: {status}
 Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}

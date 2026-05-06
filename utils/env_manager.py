@@ -64,7 +64,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:08Z
+# Last evolution cycle: 2026--26T03:59:Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 """Environment configuration manager for QMOI.
@@ -147,7 +147,7 @@ def ensure_env_vars(self) -> Any:
             'BITGET_PASSPHRASE': self._generate_secret(16),
             'ADMIN_TOKEN': self._generate_secret(),
             'MASTER_PHONE': '+1234567890',
-            'LEAH_PHONE': '+0987654321',
+            'LEAH_PHONE': '+',
             'WHATSAPP_SESSION_PATH': './whatsapp-session',
             'NEXT_PUBLIC_API_URL': 'process.env.API_URL || "https://qmoi.ai:\1"',
             'QMOI_ENABLE_BACKGROUND': 'false',

@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 const askQmoi = require("../services/qmoi");
 
 /**
@@ -71,7 +71,7 @@ async function continueProject(sock, jid, projectDetails) {
       },
     });
   } catch (error) {
-    console.error("Project handler error:", error);
+    logger.error("Project handler error:", error);
     return sock.sendMessage(jid, {
       text: "⚠️ Error handling project. Please try again or contact support.",
     });
@@ -104,7 +104,7 @@ async function handleVideoCallProject(sock, jid, projectDetails) {
       text: `📹 **QMOI Avatar Active in Video Call**\n\n${visualization.displayText}\n\n🎯 Autonomous Control: Enabled\n💭 Preview Panel: Showing\n🔐 Biometric: Verified`,
     });
   } catch (error) {
-    console.error("Video call project handler error:", error);
+    logger.error("Video call project handler error:", error);
     return sock.sendMessage(jid, {
       text: "⚠️ Error enabling video call features. Please try again.",
     });

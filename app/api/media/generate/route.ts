@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Media generate GET error:', error);
+    logger.error('Media generate GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -172,7 +172,7 @@ export async function POST(req: NextRequest) {
     }, { status: 202 });
 
   } catch (error) {
-    console.error('Media generate POST error:', error);
+    logger.error('Media generate POST error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -239,7 +239,7 @@ async function generateMedia(taskId: string, params: {
     });
 
   } catch (error) {
-    console.error('Media generation failed:', error);
+    logger.error('Media generation failed:', error);
 
     // Update task with failure
     await prisma.mediaTask.update({

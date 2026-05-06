@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:06Z
+// Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
@@ -16,9 +16,9 @@ REVENUE_CONFIG = {
     "optimization": {
         "auto_profit": {
             "enabled": True,
-            "min_profit_margin": 0.05,  # 5%
+            "min_profit_margin": 0.,  # 5%
             "target_profit_margin": 0.15,  # 15%
-            "max_fee_percentage": 0.025,  # 2.5%
+            "max_fee_percentage": 0.,  # 2.5%
             "rebalance_threshold": 1000.0  # USD
         },
         "fee_routing": {
@@ -58,7 +58,7 @@ REVENUE_CONFIG = {
             "crypto_conversion": {
                 "enabled": True,
                 "supported_pairs": ["BTC/USD", "ETH/USD"],
-                "spread": 0.01  # 1%
+                "spread": 0.  # 1%
             }
         },
         "bitget": {
@@ -118,7 +118,7 @@ REVENUE_CONFIG = {
             "collection_interval": 60,  # seconds
             "retention_days": 90,
             "alert_thresholds": {
-                "error_rate": 0.01,  # 1%
+                "error_rate": 0.,  # 1%
                 "latency_ms": 500,
                 "memory_usage_mb": 1000
             }

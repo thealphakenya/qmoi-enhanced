@@ -223,7 +223,7 @@ def update_ui_documentation(validation_results):
     content = ui_md_path.read_text()
 
     # Add validation summary
-    validation_summary = f"""
+    validation_summary = f""""
 
 ## UI Validation Summary ✅
 

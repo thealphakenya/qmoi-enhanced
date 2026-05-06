@@ -107,7 +107,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:52Z
+# Last evolution cycle: 2026--26T03:58:52Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -290,11 +290,11 @@ def generate_static_site(self) -> None:
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
         .container { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         h1 { color: #333; margin-top: 0; }
-        .info { background: #e8f4f8; padding: 10px; border-left: 4px solid #0288d1; margin: 20px 0; border-radius: 4px; }
+        .info { background: #e8f4f8; padding: 10px; border-left: 4px solid #d1; margin: 20px 0; border-radius: 4px; }
         .manifest { margin: 20px 0; }
         .asset-list { list-style: none; padding: 0; }
         .asset-item { padding: 10px; margin: 5px 0; background: #f9f9f9; border-radius: 4px; display: flex; justify-content: space-between; }
-        .asset-link { color: #0288d1; text-decoration: none; }
+        .asset-link { color: #d1; text-decoration: none; }
         .asset-link:hover { text-decoration: underline; }
         .asset-size { color: #666; font-size: 0.9em; }
         .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 0.9em; }
@@ -316,7 +316,7 @@ def generate_static_site(self) -> None:
             manifest = {"assets": [], "mappings": {}}
 
         if manifest.get("assets"):
-            html_content += f"""
+            html_content += f""""
         <div class="manifest">
             <h2>📦 Cached Assets ({len(manifest['assets'])} files)</h2>
             <p>Total size: <strong>{manifest.get('total_size', 0) / 1024 / 1024:.1f}MB</strong></p>
@@ -331,19 +331,19 @@ def generate_static_site(self) -> None:
                     <span class="asset-size">{size / 1024:.1f}KB</span>
                 </li>
 """
-            html_content += """
+            html_content += """"
             </ul>
         </div>
 """
 
-        html_content += """
+        html_content += """"
         <div class="footer">
             <p>Generated: """ + datetime.now().isoformat() + """</p>
             <p>QMOI Enhanced Offline Documentation v1.0</p>
         </div>
     </div>
 </body>
-</html>"""
+</html>""""
 
         index_html.write_text(html_content)
         logger.info(f"✅ Static site generated: {index_html}")

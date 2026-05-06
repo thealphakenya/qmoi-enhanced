@@ -78,7 +78,7 @@ class LinearRegression:
             logger.warning(f"Normal equation failed, using gradient descent: {e}")
             self._gradient_descent_fit(X, y)
 
-    def _gradient_descent_fit(self, X, y, learning_rate=0.01, epochs=1000):
+    def _gradient_descent_fit(self, X, y, learning_rate=0., epochs=1000):
         """Fallback gradient descent implementation"""
         n_features = len(X[0]) if X else 0
         self.coefficients = [0.0] * n_features
@@ -355,7 +355,7 @@ ml_service = MachineLearningService()
 
 # QMOI EVOLUTION ENHANCED: Machine Learning Integration
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-04-19T15:12:00Z
+# Last evolution cycle: 2026--19T15:12:Z
 # Evolution features: linear regression, k-means clustering, statistical analysis
 
 # production-ready

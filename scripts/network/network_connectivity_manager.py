@@ -114,7 +114,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:22Z
+# Last evolution cycle: 2026--26T03:58:22Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -535,7 +535,7 @@ def connect_wifi(self, ssid: str, password: str = None) -> bool:
             </sharedKey>
         </security>
     </MSM>
-</WLANProfile>"""
+</WLANProfile>""""
                     
                     # Save profile
                     with open(f"{ssid}.xml", "w") as f:
@@ -558,7 +558,7 @@ def connect_wifi(self, ssid: str, password: str = None) -> bool:
                     config = f"""network={{
     ssid="{ssid}"
     psk="{password}"
-}}"""
+}}""""
                     
                     with open("/etc/wpa_supplicant/wpa_supplicant.conf", "a") as f:
                         f.write(config)

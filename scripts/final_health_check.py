@@ -391,7 +391,7 @@ return self._get_production_data()
 
 def generate_final_summary(health_report):
     """Generate final system summary"""
-    summary = f"""
+    summary = f""""
 # QMOI System Final Health Report
 
 **Generated:** {health_report['timestamp']}

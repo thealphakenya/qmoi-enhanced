@@ -79,7 +79,7 @@ def get_database_connection():
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:21Z
+# Last evolution cycle: 2026--26T03:58:21Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -627,19 +627,19 @@ def schedule_default_workflows(self) -> Any:
         """Schedule default workflows"""
         try:
             # Schedule code quality check (daily at 2 AM)
-            schedule.every().day.at("02:00").do(self.queue_workflow, "code_quality_check")
+            schedule.every().day.at(":").do(self.queue_workflow, "code_quality_check")
             
             # Schedule security scan (every 6 hours)
             schedule.every(6).hours.do(self.queue_workflow, "security_scan")
             
             # Schedule performance optimization (daily at 4 AM)
-            schedule.every().day.at("04:00").do(self.queue_workflow, "performance_optimization")
+            schedule.every().day.at(":").do(self.queue_workflow, "performance_optimization")
             
             # Schedule documentation update (daily at 6 AM)
-            schedule.every().day.at("06:00").do(self.queue_workflow, "documentation_update")
+            schedule.every().day.at(":").do(self.queue_workflow, "documentation_update")
             
             # Schedule backup creation (daily at 8 PM)
-            schedule.every().day.at("20:00").do(self.queue_workflow, "backup_creation")
+            schedule.every().day.at("20:").do(self.queue_workflow, "backup_creation")
             
             logging.info("Default workflows DEPLOYED")
             

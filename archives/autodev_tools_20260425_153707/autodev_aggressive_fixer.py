@@ -271,7 +271,7 @@ class AggressiveproductionFixer:
             if isinstance(data, dict):
                 data['production_ready'] = True
                 data['last_production_enhancement'] = datetime.now().isoformat()
-                data['autodev_version'] = '2026-04-20-aggressive'
+                data['autodev_version'] = '2026--20-aggressive'
                 content = json.dumps(data, indent=2)
         except json.JSONDecodeError:
             raise NotImplementedError("Production implementation required")

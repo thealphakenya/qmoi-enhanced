@@ -47,7 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json(oxygenPulseResponse);
   } catch (error) {
-    console.error('Oxygen/Pulse API error:', error);
+    logger.error('Oxygen/Pulse API error:', error);
     res.status(500).json({
       error: 'Internal server error',
       timestamp: new Date().toISOString()

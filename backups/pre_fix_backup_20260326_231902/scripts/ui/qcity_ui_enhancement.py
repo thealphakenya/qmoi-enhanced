@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:05Z
+// Last evolution cycle: 2026--26T03:59:Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [PRODUCTION_IMPLEMENTED]
@@ -109,18 +109,18 @@ def setup_theme(self) -> None:
             self.colors = {
                 "bg": "#1a1a1a",
                 "fg": "#ffffff",
-                "accent": "#007acc",
+                "accent": "#acc",
                 "error": "#ff4444",
-                "success": "#00c853",
+                "success": "#c853",
                 "warning": "#ffd600"
             }
         else:
             self.colors = {
                 "bg": "#ffffff",
-                "fg": "#000000",
-                "accent": "#007acc",
+                "fg": "#",
+                "accent": "#acc",
                 "error": "#ff4444",
-                "success": "#00c853",
+                "success": "#c853",
                 "warning": "#ffd600"
             }
         

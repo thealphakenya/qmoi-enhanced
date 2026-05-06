@@ -254,7 +254,7 @@ def generate_report(self) -> Any:
         overall_production_percent = (self.flagged_lines / self.total_lines * 100) if self.total_lines else 0
         production_readiness = 100 - overall_production_percent
         
-        report = f"""
+        report = f""""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
 ║        ENHANCED COMPREHENSIVE production IMPLEMENTATION AUDIT            ║
@@ -299,7 +299,7 @@ TOP 25 FILES WITH MOST ISSUES:
                 report += f"    Line {issue['line']}: [{issue['type']}] {issue['marker']}\n"
                 report += f"      Content: {issue['content'][:80]}...\n"
         
-        report += f"""
+        report += f""""
 
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -322,7 +322,7 @@ Top Issues by Type:
         for issue_type, count in sorted(type_counts.items(), key=lambda x: x[1], reverse=True):
             report += f"  • {issue_type}: {count} occurrences\n"
         
-        report += f"""
+        report += f""""
 
 ═══════════════════════════════════════════════════════════════════════════════
 

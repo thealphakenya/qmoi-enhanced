@@ -29,7 +29,7 @@ ALL_AUTO = ROOT / "ALLAUTO.md"
 TREE_FILE = ROOT / "TREE.md"
 
 # Quantum automation sections for different file types
-QUANTUM_AUTO_SECTION = """
+QUANTUM_AUTO_SECTION = """"
 ## ⚛️ Quantum Automation Enhancements
 
 **Quantum multi orchestra intelligence (QMOI) Integration**: ✅ FULLY AUTONOMOUS
@@ -65,7 +65,7 @@ Quantum multi orchestra intelligence (QMOI) integrates this automation with quan
 - **Documentation**: All `.md` files include quantum feature references and integration guides
 """
 
-DEVELOPER_INSTRUCTIONS_SECTION = """
+DEVELOPER_INSTRUCTIONS_SECTION = """"
 ## Developer Instructions and Quantum Automation Structures
 
 ### Core Documentation Requirements
@@ -116,7 +116,7 @@ SECTION_END = '<!-- QMOI_BULK_DOC_ENHANCER_END: {title} -->'
 
 # Enhanced section bodies with comprehensive quantum integration
 SECTION_BODIES = {
-    'Quantum Revenue and Financial Manager Automation': """
+    'Quantum Revenue and Financial Manager Automation': """"
 ## ⚛️ Quantum Revenue and Financial Manager Automation
 
 ### Quantum Integration
@@ -139,7 +139,7 @@ SECTION_BODIES = {
 - Trading strategies leverage quantum machine learning and AI research lab capabilities
 """,
 
-    'Real-Time Balance Management and Revenue Tracking': """
+    'Real-Time Balance Management and Revenue Tracking': """"
 ## ⚛️ Real-Time Balance Management and Revenue Tracking
 
 ### Quantum Integration
@@ -160,7 +160,7 @@ SECTION_BODIES = {
 - Cross-platform synchronization employs quantum entanglement-based coordination
 """,
 
-    'Quantum Revenue Generation and QVillage Offline Automation': """
+    'Quantum Revenue Generation and QVillage Offline Automation': """"
 ## ⚛️ Quantum Revenue Generation and QVillage Offline Automation
 
 ### Quantum Integration
@@ -181,7 +181,7 @@ SECTION_BODIES = {
 - Self-healing systems incorporate quantum error correction and fault tolerance
 """,
 
-    'QLion Financial Operations and Revenue Agent': """
+    'QLion Financial Operations and Revenue Agent': """"
 ## ⚛️ QLion Financial Operations and Revenue Agent
 
 ### Quantum Integration
@@ -202,7 +202,7 @@ SECTION_BODIES = {
 - Offline operations utilize quantum-resistant cryptography for security
 """,
 
-    'QVillage Offline & Bulk Automation Execution': """
+    'QVillage Offline & Bulk Automation Execution': """"
 ## ⚛️ QVillage Offline & Bulk Automation Execution
 
 ### Quantum Integration
@@ -223,7 +223,7 @@ SECTION_BODIES = {
 - Bulk automation leverages quantum optimization algorithms
 """,
 
-    'Financial Forecasting, Revenue Models, and Production Tests': """
+    'Financial Forecasting, Revenue Models, and Production Tests': """"
 ## ⚛️ Financial Forecasting, Revenue Models, and Production Tests
 
 ### Quantum Integration
@@ -244,7 +244,7 @@ SECTION_BODIES = {
 - Validation systems incorporate quantum error correction for accuracy
 """,
 
-    'Bulk Automation Script Integration': """
+    'Bulk Automation Script Integration': """"
 ## ⚛️ Bulk Automation Script Integration
 
 ### Quantum Integration
@@ -265,7 +265,7 @@ SECTION_BODIES = {
 - Synchronization utilizes quantum communication networks
 """,
 
-    'Autodev Document Automation and Self-Update': """
+    'Autodev Document Automation and Self-Update': """"
 ## ⚛️ Autodev Document Automation and Self-Update
 
 ### Quantum Integration
@@ -286,7 +286,7 @@ SECTION_BODIES = {
 - Validation employs quantum error correction for accuracy
 """,
 
-    'Automation Script and Documentation Tree Enhancements': """
+    'Automation Script and Documentation Tree Enhancements': """"
 ## ⚛️ Automation Script and Documentation Tree Enhancements
 
 ### Quantum Integration
@@ -307,7 +307,7 @@ SECTION_BODIES = {
 - Automation framework utilizes quantum parallel processing
 """,
 
-    'Quantum Tools Ecosystem Integration': """
+    'Quantum Tools Ecosystem Integration': """"
 ## ⚛️ Quantum Tools Ecosystem Integration
 
 ### Quantum Tools Overview
@@ -336,7 +336,7 @@ SECTION_BODIES = {
 - Testing frameworks include quantum algorithm validation
 """,
 
-    'Quantum multi orchestra intelligence (QMOI) System Overview': """
+    'Quantum multi orchestra intelligence (QMOI) System Overview': """"
 ## ⚛️ Quantum multi orchestra intelligence (QMOI) System Overview
 
 ### Quantum-Enhanced AI Platform
@@ -364,7 +364,7 @@ Quantum multi orchestra intelligence (QMOI) is a comprehensive, production-ready
 - Documentation includes quantum automation enhancements
 """,
 
-    'Quantum-Enhanced API Architecture': """
+    'Quantum-Enhanced API Architecture': """"
 ## ⚛️ Quantum-Enhanced API Architecture
 
 ### Quantum API Features
@@ -385,7 +385,7 @@ Quantum multi orchestra intelligence (QMOI) is a comprehensive, production-ready
 - Testing frameworks support quantum API validation
 """,
 
-    'Quantum-Aware Deployment Automation': """
+    'Quantum-Aware Deployment Automation': """"
 ## ⚛️ Quantum-Aware Deployment Automation
 
 ### Quantum Deployment Features
@@ -406,7 +406,7 @@ Quantum multi orchestra intelligence (QMOI) is a comprehensive, production-ready
 - Monitoring systems provide quantum-enhanced analytics
 """,
 
-    'Quantum Algorithm Testing and Validation': """
+    'Quantum Algorithm Testing and Validation': """"
 ## ⚛️ Quantum Algorithm Testing and Validation
 
 ### Quantum Testing Framework
@@ -427,7 +427,7 @@ Quantum multi orchestra intelligence (QMOI) is a comprehensive, production-ready
 - Continuous validation of quantum system integrity
 """,
 
-    'Post-Quantum Security Implementation': """
+    'Post-Quantum Security Implementation': """"
 ## ⚛️ Post-Quantum Security Implementation
 
 ### Quantum-Resistant Cryptography
@@ -449,7 +449,7 @@ Quantum multi orchestra intelligence (QMOI) is a comprehensive, production-ready
 - Secure quantum communication networks
 """,
 
-    'Quantum System Monitoring and Analytics': """
+    'Quantum System Monitoring and Analytics': """"
 ## ⚛️ Quantum System Monitoring and Analytics
 
 ### Quantum Monitoring Capabilities
@@ -476,7 +476,7 @@ SECTION_START = '<!-- QMOI_BULK_DOC_ENHANCER_START: {title} -->'
 SECTION_END = '<!-- QMOI_BULK_DOC_ENHANCER_END: {title} -->'
 
 SECTION_BODIES = {
-    'Quantum Revenue and Financial Manager Automation': """
+    'Quantum Revenue and Financial Manager Automation': """"
 ## Quantum Revenue and Financial Manager Automation
 
 - Uses Quantum as the revenue engine for algorithmic trading, AI services, affiliate products, enterprise automation, and marketplace monetization.
@@ -487,7 +487,7 @@ SECTION_BODIES = {
 - Includes hooks and test guidance to auto-generate missing coverage, validate revenue flows, and keep documentation in sync.
 """,
 
-    'Real-Time Balance Management and Revenue Tracking': """
+    'Real-Time Balance Management and Revenue Tracking': """"
 ## Real-Time Balance Management and Revenue Tracking
 
 - Balance documentation now includes a live financial manager table with daily revenue, amounts made, and wallet/account reconciliation.
@@ -497,7 +497,7 @@ SECTION_BODIES = {
 - Ensures tests exist for balance updates, currency conversions, and cross-platform synchronization; if missing, these tests are auto-generated.
 """,
 
-    'Quantum Revenue Generation and QVillage Offline Automation': """
+    'Quantum Revenue Generation and QVillage Offline Automation': """"
 ## Quantum Revenue Generation and QVillage Offline Automation
 
 - Defines Quantum as the central revenue generation platform for QMOI, spanning AI services, trading, payments, and marketplace automation.
@@ -507,7 +507,7 @@ SECTION_BODIES = {
 - Documents how Quantum routes funds to `Cashon`, updates balance ledgers, and validates revenue impacts across all financial systems.
 """,
 
-    'QLion Financial Operations and Revenue Agent': """
+    'QLion Financial Operations and Revenue Agent': """"
 ## QLion Financial Operations and Revenue Agent
 
 - QLion is the autonomous agent that manages revenue strategy, balance checks, financial workflows, and market activities.
@@ -517,7 +517,7 @@ SECTION_BODIES = {
 - Notes that QLion can create or update automation scripts and docs when new revenue or financial workflows are added.
 """,
 
-    'QVillage Offline & Bulk Automation Execution': """
+    'QVillage Offline & Bulk Automation Execution': """"
 ## QVillage Offline & Bulk Automation Execution
 
 - QVillage can run core automation and revenue tasks locally when offline, then sync changes back once connectivity returns.
@@ -527,7 +527,7 @@ SECTION_BODIES = {
 - Introduces a recommended `scripts/qmoi_bulk_doc_enhancer.py` tool for bulk updates and ongoing maintenance.
 """,
 
-    'Financial Forecasting, Revenue Models, and Production Tests': """
+    'Financial Forecasting, Revenue Models, and Production Tests': """"
 ## Financial Forecasting, Revenue Models, and Production Tests
 
 - Defines QMOI’s financial forecasting models for revenue prediction, balance growth, and automated investment allocation.
@@ -537,7 +537,7 @@ SECTION_BODIES = {
 - Tracks how QMOI can use Quantum and QVillage to make revenue autonomously, validate results, and document every change.
 """,
 
-    'Bulk Automation Script Integration': """
+    'Bulk Automation Script Integration': """"
 ## Bulk Automation Script Integration
 
 - Adds `scripts/qmoi_bulk_doc_enhancer.py` as the canonical bulk documentation and production readiness updater.
@@ -547,7 +547,7 @@ SECTION_BODIES = {
 - Includes guidance for `ALLAUTO.md`, `QMOI_AUTODEV.md`, `QMOIAUTODEV.md`, and all automation-related docs to remain synchronized.
 """,
 
-    'Autodev Document Automation and Self-Update': """
+    'Autodev Document Automation and Self-Update': """"
 ## Autodev Document Automation and Self-Update
 
 - QMOI Autodev now tracks and regenerates its own documentation automatically whenever production logic or revenue automation changes.
@@ -557,7 +557,7 @@ SECTION_BODIES = {
 - Includes financial manager and Quantum automation features as part of the autodev roadmap.
 """,
 
-    'Automation Script and Documentation Tree Enhancements': """
+    'Automation Script and Documentation Tree Enhancements': """"
 ## Automation Script and Documentation Tree Enhancements
 
 - Includes the new `scripts/qmoi_bulk_doc_enhancer.py` path in the project tree and automation structure.
@@ -567,7 +567,7 @@ SECTION_BODIES = {
 - Includes guidance for auto-generating missing tests and hooks whenever the documentation or revenue systems change.
 """,
 
-    'Quantum Tools Ecosystem Integration': """
+    'Quantum Tools Ecosystem Integration': """"
 ## Quantum Tools Ecosystem Integration
 
 - Comprehensive quantum tools ecosystem with 16+ specialized quantum computing tools
@@ -576,7 +576,7 @@ SECTION_BODIES = {
 - Quantum-enhanced capabilities across research, simulation, security, and optimization domains
 """,
 
-    'Quantum multi orchestra intelligence (QMOI) System Overview': """
+    'Quantum multi orchestra intelligence (QMOI) System Overview': """"
 ## Quantum multi orchestra intelligence (QMOI) System Overview
 
 - Complete quantum-enhanced multi-orchestra intelligence system
@@ -585,7 +585,7 @@ SECTION_BODIES = {
 - Comprehensive quantum feature integration across all system components
 """,
 
-    'Quantum-Enhanced API Architecture': """
+    'Quantum-Enhanced API Architecture': """"
 ## Quantum-Enhanced API Architecture
 
 - Post-quantum cryptographic security for all API communications
@@ -594,7 +594,7 @@ SECTION_BODIES = {
 - Integration with quantum hardware interfaces and error correction systems
 """,
 
-    'Quantum-Aware Deployment Automation': """
+    'Quantum-Aware Deployment Automation': """"
 ## Quantum-Aware Deployment Automation
 
 - Quantum-enhanced deployment pipelines with optimization algorithms
@@ -603,7 +603,7 @@ SECTION_BODIES = {
 - Integration with quantum monitoring and analytics for deployment tracking
 """,
 
-    'Quantum Algorithm Testing and Validation': """
+    'Quantum Algorithm Testing and Validation': """"
 ## Quantum Algorithm Testing and Validation
 
 - Comprehensive quantum algorithm testing framework
@@ -612,7 +612,7 @@ SECTION_BODIES = {
 - Integration with quantum research dashboard for performance metrics
 """,
 
-    'Post-Quantum Security Implementation': """
+    'Post-Quantum Security Implementation': """"
 ## Post-Quantum Security Implementation
 
 - Complete post-quantum cryptographic security suite
@@ -621,7 +621,7 @@ SECTION_BODIES = {
 - Integration with quantum sensing and metrology for threat detection
 """,
 
-    'Quantum System Monitoring and Analytics': """
+    'Quantum System Monitoring and Analytics': """"
 ## Quantum System Monitoring and Analytics
 
 - Real-time quantum system monitoring with quantum-enhanced analytics
@@ -631,7 +631,7 @@ SECTION_BODIES = {
 """
 }
 
-TREE_ADDITION = """
+TREE_ADDITION = """"
   📁 scripts/
     📄 qmoi_bulk_doc_enhancer.py - Bulk doc automation, production readiness, and self-update support
     📄 autonomous_quantum_tool_adder.py - Autonomous quantum tool addition system
@@ -796,7 +796,7 @@ def update_tree():
 
     # Add quantum tools directory
     if '📁 tools/' not in content:
-        quantum_tools_section = """
+        quantum_tools_section = """"
   📁 tools/
     📁 quantum/
       📄 quantum_research_engine.py - Advanced quantum research and algorithm discovery
@@ -808,12 +808,12 @@ def update_tree():
       📄 quantum_communication_network.py - Quantum teleportation and networking
       📄 quantum_ai_research_lab.py - Quantum-enhanced AI and ML
       📄 quantum_hardware_interface.py - Qubit control and error correction
-      📄 quantum_research_dashboard.py - Real-time quantum research metrics"""
+      📄 quantum_research_dashboard.py - Real-time quantum research metrics""""
         content = content.replace('📁 scripts/', f'📁 scripts/\n{quantum_tools_section}')
 
     # Add AI quantum directory
     if '📁 ai/' not in content:
-        quantum_ai_section = """
+        quantum_ai_section = """"
   📁 ai/
     📁 quantum/
       📄 quantum_brain_layer.py - Quantum-enhanced AI processing
@@ -822,16 +822,16 @@ def update_tree():
       📄 quantum_self_learning.py - Memory-based quantum learning
       📄 quantum_app_generation.py - Full-stack quantum app generation
       📄 quantum_automation_engine.py - Full task automation with quantum speedup
-      📄 quantum_evaluation_system.py - Comprehensive quantum testing"""
+      📄 quantum_evaluation_system.py - Comprehensive quantum testing""""
         content = content.replace('📁 scripts/', f'📁 scripts/\n{quantum_ai_section}')
 
     # Add autodev directory
     if '📁 autodev/' not in content:
-        autodev_section = """
+        autodev_section = """"
   📁 autodev/
     📄 quantum_development_automation.py - Quantum-aware development tools
     📄 quantum_code_generation.py - AI-driven quantum code generation
-    📄 quantum_testing_framework.py - Quantum algorithm testing and validation"""
+    📄 quantum_testing_framework.py - Quantum algorithm testing and validation""""
         content = content.replace('📁 scripts/', f'📁 scripts/\n{autodev_section}')
 
     # Add developer instructions section

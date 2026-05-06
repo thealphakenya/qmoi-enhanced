@@ -29,7 +29,7 @@ def get_database_connection():
         raise
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:30Z
+# Last evolution cycle: 2026--26T03:58:30Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 """Stripe transaction reconciliation module.
 This module provides functions to reconcile our local transaction records
@@ -67,7 +67,7 @@ def get_unsettled_transactions() -> List[Dict[str, Any]]:
         return []
     try:
         cur = conn.cursor()
-        cur.execute("""
+        cur.execute(""""
             SELECT id, username, amount_cents, provider_ref, created
             FROM transactions
             WHERE provider = 'stripe'

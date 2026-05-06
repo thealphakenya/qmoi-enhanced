@@ -114,7 +114,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:55Z
+# Last evolution cycle: 2026--26T03:58:55Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -411,7 +411,7 @@ def sign_app(self, app_file: Path, platform: Optional[str] = None) -> bool:
             'timestamp': self.timestamp.isoformat(),
             'app_file': str(app_file),
             'platform': platform,
-            'tracking_id': f'QMOI-SIGN-{self.timestamp.strftime("%Y%m%d")}-{len(self.signing_operations):05d}',
+            'tracking_id': f'QMOI-SIGN-{self.timestamp.strftime("%Y%m%d")}-{len(self.signing_operations):d}',
             'status': 'pending'
         }
         

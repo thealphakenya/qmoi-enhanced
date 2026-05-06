@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Emergency config status error:', error);
+    logger.error('Emergency config status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -244,7 +244,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Emergency config action error:', error);
+    logger.error('Emergency config action error:', error);
     return NextResponse.json(
       {
         success: false,

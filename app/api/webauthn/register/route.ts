@@ -80,7 +80,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('WebAuthn registration GET error:', error);
+    logger.error('WebAuthn registration GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -168,7 +168,7 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('WebAuthn registration POST error:', error);
+    logger.error('WebAuthn registration POST error:', error);
     return NextResponse.json(
       {
         success: false,

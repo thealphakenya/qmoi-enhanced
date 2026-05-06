@@ -238,7 +238,7 @@ def process_directory(self, directory) -> Any:
     """
 def generate_summary(self) -> Any:
         """Generate fix summary"""
-        return f"""
+        return f""""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║              production-ready - EXECUTION REPORT             ║
 ║                      {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║

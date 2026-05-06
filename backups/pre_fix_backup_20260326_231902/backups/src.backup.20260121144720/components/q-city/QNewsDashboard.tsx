@@ -1,3 +1,4 @@
+import React from 'react';
  all markers normalized for completion
 /* eslint-env browser */
 import { specificExports } from "react";
@@ -332,3 +333,27 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 };
 
 export default QNewsDashboard;
+
+
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}

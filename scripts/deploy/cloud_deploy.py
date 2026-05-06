@@ -55,7 +55,7 @@ class productionFileManager:
 
 # QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 # Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:18Z
+# Last evolution cycle: 2026--26T03:58:18Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import os
@@ -153,7 +153,7 @@ def load_config(self) -> Dict:
                     "enabled": False,
                     "region": "nyc3",
                     "size": "s-1vcpu-1gb",
-                    "image": "ubuntu-20-04-x64",
+                    "image": "ubuntu-20--x64",
                     "ssh_keys": [],
                     "backups": True,
                     "monitoring": True
@@ -543,7 +543,7 @@ def _deploy_azure(self) -> bool:
                         "image_reference": {
                             "publisher": "Canonical",
                             "offer": "UbuntuServer",
-                            "sku": "18.04-LTS",
+                            "sku": "18.-LTS",
                             "version": "latest"
                         }
                     },

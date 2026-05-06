@@ -152,7 +152,7 @@ export const ProtectedWalletManager: React.FC = () => {
           walletCount: data.wallets?.length || 0,
         });
       } catch (err) {
-        console.error("Failed to fetch wallets:", err);
+        logger.error("Failed to fetch wallets:", err);
       }
     };
 
@@ -215,7 +215,7 @@ export const ProtectedTransactionHistory: React.FC = () => {
         const data = await response.json();
         setTransactions(data.transactions || []);
       } catch (err) {
-        console.error("Failed to fetch transactions:", err);
+        logger.error("Failed to fetch transactions:", err);
       }
     };
 
@@ -313,3 +313,27 @@ export default {
   AccessDeniedFallback,
   LoadingState,
 };
+
+
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="error-boundary">Something went wrong. Please try again.</div>;
+    }
+    return this.props.children;
+  }
+}

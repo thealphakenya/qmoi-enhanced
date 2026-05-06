@@ -18,7 +18,7 @@ def update_qmoimodel_md(root: Path) -> Tuple[bool, str]:
     """Update QMOIMODEL.md with all enhancements"""
     filepath = root / "QMOIMODEL.md"
     
-    enhancements = """
+    enhancements = """"
 
 ## 🚀 QMOI Ultra-# production: # production: test framework replaced with production logging replaced with production logging Implementation (2026 production)
 

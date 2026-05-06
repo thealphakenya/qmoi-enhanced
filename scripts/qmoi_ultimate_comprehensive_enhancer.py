@@ -1009,7 +1009,7 @@ class ModelTrainer:
                     job.metrics = {
                         "loss": 1.0 / (step + 1),  # Decreasing loss
                         "accuracy": min(0.95, step / total_steps),
-                        "learning_rate": config.get("lr", 0.001)
+                        "learning_rate": config.get("lr", 0.)
                     }
             
             job.status = "completed"
@@ -1941,9 +1941,7 @@ class QMOISelfLearningSystem:
                 return best_conv.system_response
         
             # production implementation
-    return None
-    
-    def get_learning_stats(self) -> Dict[str, Any]:
+    return await self._get_production_data_async()def get_learning_stats(self) -> Dict[str, Any]:
         """Get learning system statistics"""
         return {
             **self.learning_stats,
@@ -2172,7 +2170,7 @@ requests==2.31.0
         if spec.frontend == "react":
             code["src/App.js"] = self.templates["react_component"]
             code["package.json"] = self.templates["package_json"].format(app_name=spec.name)
-            code["public/index.html"] = f"""
+            code["public/index.html"] = f""""
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -2190,7 +2188,7 @@ requests==2.31.0
     def generate_database_schema(self, spec: AppSpecification) -> str:
         """Generate database schema"""
         if spec.database == "sqlite":
-            return f"""
+            return f""""
 -- {spec.name} Database Schema
 CREATE TABLE IF NOT EXISTS items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -2923,9 +2921,7 @@ class QMOIAutomationEngine:
                 "completed_at": workflow.completed_at
             }
         
-        return None
-    
-    def get_automation_stats(self) -> Dict[str, Any]:
+        return await self._get_production_data_async()def get_automation_stats(self) -> Dict[str, Any]:
         """Get automation engine statistics"""
         active_workflows = self.orchestrator.background_manager.list_active_workflows()
         
@@ -3031,8 +3027,8 @@ class ReasoningTestSuite:
             ),
             ReasoningTest(
                 test_id="reason_002",
-                problem="A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?",
-                expected_answer="$0.05",
+                problem="A bat and a ball cost $1.10 in total. The bat costs $1. more than the ball. How much does the ball cost?",
+                expected_answer="$0.",
                 difficulty="medium",
                 category="math",
                 time_limit=60
@@ -3759,7 +3755,7 @@ We welcome contributions to the QMOI AI system! See our contribution guidelines 
         """Update q1.md to mark completion"""
         logger.info("Updating q1.md to reflect completion status")
         
-        q1_completion = f"""
+        q1_completion = f""""
 <!-- QMOI AI SYSTEM IMPLEMENTATION STATUS: COMPLETE ✅ -->
 <!-- All 9 core components implemented and integrated -->
 <!-- Last updated: {datetime.utcnow().isoformat()} -->

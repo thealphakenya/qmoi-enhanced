@@ -97,7 +97,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Self-training status error:', error);
+    logger.error('Self-training status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -207,7 +207,7 @@ export async function POST(req: NextRequest) {
             data: { value: 0 },
           });
         } catch (error) {
-          console.error('Training completion logging failed:', error);
+          logger.error('Training completion logging failed:', error);
         }
       }, 1000); // Simulate immediate completion for demo
 
@@ -226,7 +226,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Self-training POST error:', error);
+    logger.error('Self-training POST error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -284,6 +284,6 @@ async function triggerModelImprovement(message: string, context: string) {
     // 4. Gradual rollout if improvement is detected
 
   } catch (error) {
-    console.error('Model improvement trigger failed:', error);
+    logger.error('Model improvement trigger failed:', error);
   }
 }

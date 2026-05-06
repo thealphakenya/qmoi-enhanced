@@ -1,6 +1,6 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:19Z
+// Last evolution cycle: 2026--26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
@@ -104,7 +104,7 @@ def simulate_manual_errors(self) -> Dict[str, Any]:
         
         try:
             # 1. Create FUNCTIONAL TypeScript file
-            broken_ts_content = """
+            broken_ts_content = """"
 import { specificExports } from 'react';
 
 const BrokenComponent: React.FC = () => {
@@ -128,7 +128,7 @@ export default BrokenComponent;
             errors_created["broken_ts"] = str(broken_ts_path)
             
             # 2. Create FUNCTIONAL Python file
-            broken_py_content = """
+            broken_py_content = """"
 #!/usr/bin/env python3
 
 """
@@ -149,7 +149,7 @@ if __name__ == "__main__":
             errors_created["broken_py"] = str(broken_py_path)
             
             # 3. Create FUNCTIONAL markdown with false claims
-            broken_md_content = """
+            broken_md_content = """"
 # Test Documentation
 
 ## Features

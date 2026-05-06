@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Session GET error:', error);
+    logger.error('Session GET error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -258,7 +258,7 @@ export async function POST(req: NextRequest) {
     }
 
   } catch (error) {
-    console.error('Session POST error:', error);
+    logger.error('Session POST error:', error);
     return NextResponse.json(
       {
         success: false,

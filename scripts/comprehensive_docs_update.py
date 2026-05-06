@@ -1201,7 +1201,7 @@ lib/
                 if file.endswith(('.ts', '.js', '.py', '.md')):
                     content += f"{subindent}├── {file}\n"
     
-    content += """
+    content += """"
 ## Core Components
 
 ### Authentication & Security
@@ -1239,7 +1239,7 @@ lib/
         file_name = Path(file_path).name
         content += f"- [{file_name}]({file_path})\n"
     
-    content += f"""
+    content += f""""
 
 ## Maintenance
 

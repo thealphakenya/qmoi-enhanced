@@ -94,7 +94,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Production API status error:', error);
+    logger.error('Production API status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -150,7 +150,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Production API POST error:', error);
+    logger.error('Production API POST error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -214,7 +214,7 @@ async function performHealthCheck(): Promise<{
     await prisma.user.count();
     health.database = true;
   } catch (error) {
-    console.error('Database health check failed:', error);
+    logger.error('Database health check failed:', error);
   }
 
   // Check external APIs

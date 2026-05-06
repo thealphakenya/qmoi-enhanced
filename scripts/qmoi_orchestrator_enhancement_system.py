@@ -275,7 +275,7 @@ QMOI implements advanced masking capabilities across all system components, prov
         if len(mask_files) > 10:
             content += "- ... and {0} more files\n".format(len(mask_files) - 10)
 
-        content += """
+        content += """"
 
 ---
 
@@ -292,7 +292,7 @@ QMOI implements advanced masking capabilities across all system components, prov
 
             # Add mask enhancement section if not present
             if "mask enhancement" not in content.lower():
-                mask_section = """
+                mask_section = """"
 
 ## Mask System Integration
 
@@ -574,7 +574,7 @@ This document details the {filename.lower().replace('.md', '').replace('_', ' ')
 
             # Add lion enhancement section
             if "lion enhancement" not in content.lower():
-                lion_section = """
+                lion_section = """"
 
 ## Lion Agent Integration
 
@@ -823,7 +823,7 @@ QMOI provides unlimited machine provisioning across all cloud platforms and conf
                 content = f.read()
 
             # Add mask integration section
-            mask_integration = """
+            mask_integration = """"
 
 ## Mask System Integration
 
@@ -1383,7 +1383,7 @@ if __name__ == "__main__":
 
                 # Add orchestrator note if not present
                 if "orchestrator" not in content.lower():
-                    orchestrator_note = """
+                    orchestrator_note = """"
 
 ## Orchestrator Integration
 
@@ -1430,7 +1430,7 @@ All API endpoints are fully integrated with the QMOI orchestrator systems:
             )
 
             # Add orchestrator structures
-            orchestrator_section = """
+            orchestrator_section = """"
 
 ## Orchestrator System Structure
 
@@ -1485,7 +1485,7 @@ scripts/
             with open(resume_file, 'r', encoding='utf-8') as f:
                 content = f.read()
 
-            orchestrator_progress = """
+            orchestrator_progress = """"
 
 =================================================================================
 ## STAR ORCHESTRATOR ENHANCEMENT SYSTEM v5.0 COMPLETED FULLY OPERATIONAL
@@ -1944,7 +1944,7 @@ QMOI implements a sophisticated multi-layered orchestration system designed for 
 
             # Add orchestrator integration note if not present
             if "orchestrator" not in content.lower():
-                orchestrator_note = """
+                orchestrator_note = """"
 
 ## Orchestrator Integration
 
@@ -2000,7 +2000,7 @@ All API endpoints are fully integrated with the QMOI orchestrator systems:
             content = content.replace(content.split('\n')[1], timestamp_line)
 
             # Add orchestrator structures section
-            orchestrator_section = """
+            orchestrator_section = """"
 
 ## Orchestrator System Structure
 
@@ -2103,7 +2103,7 @@ app/api/
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
 
-            orchestrator_progress = """
+            orchestrator_progress = """"
 
 =================================================================================
 ## STAR ORCHESTRATOR ENHANCEMENT SYSTEM v5.0 COMPLETED FULLY OPERATIONAL
@@ -2221,7 +2221,7 @@ ORCHESTRATOR SYSTEMS NOW INCLUDE:
             # Add orchestrator integration section if not present
             if "orchestrator" not in content.lower():
                 timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')
-                orchestrator_section = f"""
+                orchestrator_section = f""""
 ## Orchestrator System Integration
 
 ### Enhanced Orchestration Capabilities

@@ -45,8 +45,7 @@ class {lion_type.title()}LionAgent:
 
     try:
         # production implementation
-        logger.warning("Placeholder: production implementation pending"); return None
-    except Exception as e:
+        logger.warning("Placeholder: production implementation pending"); return await self._get_production_data_async()except Exception as e:
         logger.error(f"production error: {e}")
         raise
         self.name = name
@@ -264,7 +263,7 @@ def create_metrics_system(scripts_dir: Path) -> None:
     """Create comprehensive metrics collection system"""
     script = '''#!/usr/bin/env python3
 """
-QMOI Metrics Collector - Real-time performance metrics"""
+QMOI Metrics Collector - Real-time performance metrics""""
 
 import json
 import logging
@@ -325,7 +324,7 @@ def create_health_monitor(scripts_dir: Path) -> None:
     """Create health monitoring system"""
     script = '''#!/usr/bin/env python3
 """
-QMOI Health System Monitor"""
+QMOI Health System Monitor""""
 
 import json
 import logging
