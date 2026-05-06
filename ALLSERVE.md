@@ -39,14 +39,23 @@ These files are all served directly from repository root.
 Start the Next.js application and use the app routes on port `3000`:
 ```bash
 cd /workspaces/qmoi-enhanced
+npm install
 npm run dev
 ```
-Then visit:
+Then open the QMOI AI app in a browser window at:
 - `http://127.0.0.1:3000/qmoi-ai`
+
+Other app routes:
 - `http://127.0.0.1:3000/qmoi-space`
 - `http://127.0.0.1:3000/qcity`
 
 The `8080` static server is useful for PWA shells, but the full documented app UI requires the Next.js app server.
+
+> Note: If `npm` / `node` is not installed in your environment, install them first. In Alpine Linux:
+> ```bash
+> apk add --no-cache nodejs npm
+> ```
+> If you are using VS Code, open a new terminal window with `View -> Terminal -> New Terminal` before running the commands above.
 
 ### Start the static server
 ```bash
