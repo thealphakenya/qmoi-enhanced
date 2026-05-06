@@ -86,16 +86,38 @@ Upon launching QCity, users see:
 
 ## Extended UI Module Inventory
 
-- **QI / QIStateWindow:** Core AI intelligence monitoring and status panels.
-- **QiSpaces / LcSpaces:** Spatial workspace and community collaboration modules.
-- **QVillage / QVillageDatasetsPanel:** Community dataset management, model marketplace, and collaboration tools.
-- **QCityErrorManager / QCityThemeProvider:** QCity-specific analytics, error management, and theme control.
-- **AdminDashboard / MasterDashboard / TeamRoleManager / UserAccessControl:** Master and admin control interfaces.
-- **ChatMessaging / HelpGuide / NotificationCenter / PreviewWindow:** Shared communication and overlay components.
-- **ClientUISettings / ThemeCustomizer / SettingsPanel:** UI personalization and accessibility configuration.
-- **FileUploadDownload / DownloadManager / QFileManager:** File transfer, secure storage, and download management.
-- **WalletPanel / WalletList / LeahWallet / LeahWalletPanel:** Wallet management, financial approvals, and transaction history.
-- **AudibleConversation / AudioVisualizer / QMediaPlayer / VoiceLibraryPanel / VoiceSelectionPanel:** Voice, audio, and media experience features.
+**QCity / QVillage includes 25 total components:**
+
+### Core Shared Components (13)
+- **AdminDashboard:** Administrative control panel for system management
+- **ChatMessaging:** Messaging interface for inter-team communication
+- **QMOIAutoFixDashboard:** Automated system remediation and issue resolution
+- **QMOIAutoSetup:** Automated deployment and configuration setup
+- **FileUploadDownload:** File management and secure transfers
+- **VisualEnhancement:** Theme customization and visual controls
+- **AudibleConversation:** Voice-enabled AI assistant interaction
+- **ClientUISettings:** UI preferences and accessibility configuration
+- **QMOIMasterDashboard:** Master-level system control and overview
+- **SponsoredUsersManager:** User and account management
+- **UserProfile:** User profile administration
+- **WalletList:** Financial wallet display and management
+- **RegisterForm:** User registration and authentication
+
+### QCity / QVillage Exclusive Components (12)
+- **QVillage:** Community workspace interface with dataset and model management
+- **QVillageDatasetsPanel:** Community dataset browsing and sharing controls
+- **QCityErrorManager:** Error tracking, logging, and management system
+- **QCityThemeProvider:** QCity-specific theme and styling management
+- **DeploymentManager:** Application deployment and release orchestration
+- **TestingAutomationSuite:** Test automation framework and test execution interface
+- **MonitoringDashboard:** System monitoring with real-time metrics and alerts
+- **ComplianceManager:** Compliance tracking and standards validation
+- **AuditLogViewer:** Audit logging and historical event review
+- **GlobalOperationsCenter:** Global operations command and coordination center
+- **ResourceManager:** Resource allocation, capacity planning, and optimization
+- **ApiManagementConsole:** API configuration, documentation, and endpoint management
+- **SettingsPanel:** System-wide settings and configuration management
+- **UserManagementPanel:** User account, role, and permission management
 
 ---
 

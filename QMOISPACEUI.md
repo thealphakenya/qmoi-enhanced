@@ -72,16 +72,37 @@ Upon launching the QMOI Space app, users encounter:
 
 ## Extended UI Module Inventory
 
-- **QI / QIStateWindow:** Core AI intelligence monitoring and status panels.
-- **QiSpaces / LcSpaces:** Spatial workspace and community collaboration modules linked to QVillage.
-- **QVillage / QVillageDatasetsPanel:** Community dataset catalogs, sharing tools, and model marketplace integration.
-- **QCityErrorManager / QCityThemeProvider:** QCity-specific administration, theme, and error monitoring components.
-- **AdminDashboard / MasterDashboard / TeamRoleManager / UserAccessControl:** Master and admin features for platform control.
-- **ChatMessaging / HelpGuide / NotificationCenter / PreviewWindow:** Shared communication and overlay interfaces across the app ecosystem.
-- **ClientUISettings / ThemeCustomizer / SettingsPanel:** User interface customization, theme control, and accessibility settings.
-- **FileUploadDownload / DownloadManager / QFileManager:** File and dataset transfer, management, and secure downloads.
-- **WalletPanel / WalletList / LeahWallet / LeahWalletPanel:** Wallet management, payments, and financial analytics.
-- **AudibleConversation / AudioVisualizer / QMediaPlayer / VoiceLibraryPanel / VoiceSelectionPanel:** Rich voice and media experience components.
+**QMOI Space includes 24 total components:**
+
+### Core Shared Components (13)
+- **AdminDashboard:** Administrative control panel for managing platform operations and users
+- **ChatMessaging:** Real-time messaging and AI interaction with message threading
+- **QMOIAutoFixDashboard:** Automated issue remediation and system fixes
+- **QMOIAutoSetup:** Automated deployment and environment setup workflows
+- **FileUploadDownload:** Secure file and dataset transfer management
+- **VisualEnhancement:** Theme customization and visual preference controls
+- **AudibleConversation:** Voice interaction with AI assistant and speech synthesis
+- **ClientUISettings:** UI configuration and accessibility preferences
+- **QMOIMasterDashboard:** Master-level platform control and financial tracking
+- **SponsoredUsersManager:** User account and privilege management
+- **UserProfile:** User profile and account customization
+- **WalletList:** Wallet display with transaction history
+- **RegisterForm:** User registration and account creation
+
+### QMOI Space Exclusive Components (11)
+- **QiSpaces:** Spatial workspace interfaces for collaborative work
+- **LcSpaces:** Learning and community collaboration spaces
+- **FloatingPreviewWindow:** Floating preview panels for content viewing
+- **WalletPanel:** Advanced wallet and financial controls
+- **CollaborationHub:** Team collaboration and workflow coordination tools
+- **IntegrationManager:** Third-party service integrations and management
+- **WorkflowAutomationEngine:** Workflow automation and orchestration platform
+- **ContentManagementSystem:** Content creation, publishing, and management
+- **Marketplace:** Marketplace and commerce interface for revenue generation
+- **TrainingCenter:** Training modules, courses, and educational content
+- **BackupRestoreManager:** Data backup, recovery, and archival operations
+- **SupportTicketSystem:** Customer support and helpdesk interface
+- **KnowledgeBase:** Documentation, FAQ, and knowledge repository
 
 ---
 

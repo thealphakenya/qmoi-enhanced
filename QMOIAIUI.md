@@ -70,16 +70,35 @@ Upon launching the QMOI AI app, users are presented with:
 
 ## Extended UI Module Inventory
 
-- **QI / QIStateWindow:** Core AI system status, intelligence monitoring, and state windows.
-- **QiSpaces / LcSpaces:** Shared community and spatial workspace modules used by Qi and community collaboration pages.
-- **QVillage / QVillageDatasetsPanel:** Community dataset browsing, publishing, collaborative datasets, and marketplace sharing.
-- **QCityErrorManager / QCityThemeProvider:** QCity-specific monitoring, theme, and error management tools.
-- **AdminDashboard / MasterDashboard / TeamRoleManager / UserAccessControl:** Master control panels and role-based access management components.
-- **ChatMessaging / HelpGuide / NotificationCenter / PreviewWindow:** Communication and global overlay interfaces available across routes.
-- **ClientUISettings / ThemeCustomizer / SettingsPanel:** UI personalization, theme controls, and accessibility configuration.
-- **FileUploadDownload / DownloadManager / QFileManager:** File storage, upload, secure transfer, and download manager interfaces.
-- **WalletPanel / WalletList / LeahWallet / LeahWalletPanel:** Wallet, payments, Cashon workflows, and financial transaction UIs.
-- **AudibleConversation / AudioVisualizer / QMediaPlayer / VoiceLibraryPanel / VoiceSelectionPanel:** Voice, audio, and media interaction experiences.
+**QMOI AI includes 24 total components:**
+
+### Core Shared Components (13)
+- **AdminDashboard:** Administrative control panel with system metrics and user management
+- **ChatMessaging:** Real-time messaging and AI interaction interface with message history
+- **QMOIAutoFixDashboard:** Automated remediation controls and system fixes
+- **QMOIAutoSetup:** Automated environment initialization and setup workflows
+- **FileUploadDownload:** Secure file management with upload, download, and storage validation
+- **VisualEnhancement:** Theme controls, UI acceleration, and visual accessibility
+- **AudibleConversation:** Voice-enabled assistant interaction with speech playback and transcription
+- **ClientUISettings:** Interface theme adjustment, layout density, and accessibility settings
+- **QMOIMasterDashboard:** Master-only access control for automation and financial overview
+- **SponsoredUsersManager:** Management of sponsored accounts and access privileges
+- **UserProfile:** User account management and personalization settings
+- **WalletList:** Financial wallet management and transaction handling
+- **RegisterForm:** New user account creation and authentication setup
+
+### QMOI AI Exclusive Components (11)
+- **QI:** Core AI intelligence system with consciousness monitoring
+- **QIStateWindow:** AI state window displaying current consciousness and emotion levels
+- **NotificationCenter:** System notifications and alert management hub
+- **HelpGuide:** Interactive help system with documentation and tutorials
+- **PreviewWindow:** Content preview display for quick viewing
+- **ThemeCustomizer:** Advanced theme customization and visual personalization
+- **DataVisualizationPanel:** Data visualization and analytics dashboard
+- **AnalyticsDashboard:** Advanced analytics and performance metrics display
+- **SecurityMonitor:** Real-time security monitoring and threat detection
+- **PerformanceMonitor:** Performance tracking, optimization, and benchmarking
+- **AnalyticsCenter:** Comprehensive analytics hub with multi-dimensional reporting
 
 ---
 
