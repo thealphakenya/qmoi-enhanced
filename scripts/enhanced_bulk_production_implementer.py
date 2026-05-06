@@ -588,20 +588,6 @@ class ProductionRevenueSystem:
                 'priority': 'HIGH'
             },
 
-            'pass_statements': {
-                'pattern': r'^\s*pass\s*$',
-                'replacement': 'return self._get_production_data()',
-                'description': 'Replace pass with production method call',
-                'priority': 'HIGH'
-            },
-
-            'none_returns': {
-                'pattern': r'return None\s*#?\s*(IMPLEMENTED|TODO|FIXME)?',
-                'replacement': 'return await self._get_production_data_async()',
-                'description': 'Replace None returns with async production calls',
-                'priority': 'HIGH'
-            },
-
             # Console logging
             'console_log': {
                 'pattern': r'console\.log\((.*?)\);?',
