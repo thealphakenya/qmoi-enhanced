@@ -401,9 +401,7 @@ async function updateEmergencySetting(
   return { oldValue, category };
 }
 
-async function resetEmergencyConfig(): Promise<{
-  settingsReset: number;
-}>> {
+async function resetEmergencyConfig() {
   // Reset configuration to defaults
   const defaultConfig = await getDefaultEmergencyConfig();
   let settingsReset = 0;
@@ -453,11 +451,7 @@ async function updateAlertThresholds(thresholds: any): Promise<any> {
   return thresholds;
 }
 
-async function backupEmergencyConfig(): Promise<{
-  backupId: string;
-  timestamp: string;
-  settingsCount: number;
-}>> {
+async function backupEmergencyConfig() {
   const config = await getEmergencyConfiguration();
   const backupId = `backup_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   const timestamp = new Date().toISOString();
@@ -488,7 +482,7 @@ async function backupEmergencyConfig(): Promise<{
 
 async function restoreEmergencyConfig(backupId: string): Promise<{
   settingsRestored: number;
-}>> {
+}> {
   // Find backup
   const backup = await prisma.systemMetric.findFirst({
     where: {
