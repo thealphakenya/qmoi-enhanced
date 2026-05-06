@@ -1,8 +1,7 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
-import { useState } from "react";
 import AdminDashboard from "../components/AdminDashboard";
 import ChatMessaging from "../components/ChatMessaging";
 import QMOIAutoFixDashboard from "../components/QMOIAutoFixDashboard";
@@ -28,34 +27,115 @@ import SecurityMonitor from "../components/SecurityMonitor";
 import PerformanceMonitor from "../components/PerformanceMonitor";
 import AnalyticsCenter from "../components/AnalyticsCenter";
 
+const fallbackStats = {
+  uptime: '99.9%',
+  tasksCompleted: 1247,
+  platforms: '12+',
+  packageSize: '2.5GB',
+  connectedDevices: 6,
+  activeMemorySessions: 3,
+};
+
+const fallbackStatus = {
+  consciousness: 100,
+  memorySync: 'Active',
+  security: 'Operational',
+  deviceConnectivity: '6/6 Online',
+  autoFix: 'Ready',
+  revenueTracking: 'Active',
+};
+
 export default function QMoiAIPage() {
   const [selectedModel, setSelectedModel] = useState('auto');
   const [chatMessage, setChatMessage] = useState('');
   const [showComponents, setShowComponents] = useState(true);
+  const [productionData, setProductionData] = useState(null);
+  const [chatHistory, setChatHistory] = useState([]);
+  const [isChatLoading, setIsChatLoading] = useState(false);
+  const [statusInfo, setStatusInfo] = useState(fallbackStatus);
 
-  // Mock data for demonstration
-  const stats = {
-    uptime: '99.9%',
-    tasksCompleted: 1247,
-    platforms: '12+',
-    packageSize: '2.5GB',
-    connectedDevices: 6,
-    activeMemorySessions: 3
-  };
+  useEffect(() => {
+    let active = true;
 
-  const systemStatus = {
-    consciousness: 100,
-    memorySync: 'Active',
-    security: 'Operational',
-    deviceConnectivity: '6/6 Online',
-    autoFix: 'Ready',
-    revenueTracking: 'Active'
-  };
+    async function loadProductionStats() {
+      try {
+        const res = await fetch('/api/production-api', { cache: 'no-store' });
+        const data = await res.json();
+        if (!active || !data?.success) return;
 
-  const handleChatSend = () => {
-    // Handle chat message sending
-    console.log('Sending message:', chatMessage);
+        setProductionData(data);
+        setStatusInfo((prev) => ({
+          ...prev,
+          security: data.production?.status || prev.security,
+          revenueTracking: data.metrics?.api?.totalRequests ? 'Active' : prev.revenueTracking,
+          memorySync: 'Active',
+        }));
+      } catch (error) {
+        console.error('Failed to load production data:', error);
+      }
+    }
+
+    loadProductionStats();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const stats = productionData?.metrics
+    ? {
+        uptime: `${productionData.production?.uptime || '99.9'}s`,
+        tasksCompleted: productionData.metrics.users?.total || fallbackStats.tasksCompleted,
+        platforms: productionData.production?.environment || fallbackStats.platforms,
+        packageSize: fallbackStats.packageSize,
+        connectedDevices: 6,
+        activeMemorySessions: productionData.metrics.sessions?.active || fallbackStats.activeMemorySessions,
+      }
+    : fallbackStats;
+
+  const systemStatus = productionData?.production
+    ? {
+        ...statusInfo,
+      }
+    : fallbackStatus;
+
+  const handleChatSend = async () => {
+    const input = chatMessage.trim();
+    if (!input) return;
+
+    setChatHistory((current) => [...current, { id: Date.now() + '-user', role: 'user', content: input }]);
     setChatMessage('');
+    setIsChatLoading(true);
+
+    try {
+      const response = await fetch('/api/qmoi/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ input, userId: 'qmoi-enhanced-client' }),
+      });
+
+      const result = await response.json();
+      const answer = result?.response || result?.message || 'No response from QMOI AI.';
+
+      setChatHistory((current) => [
+        ...current,
+        { id: Date.now() + '-assistant', role: 'assistant', content: answer },
+      ]);
+    } catch (error) {
+      console.error('QMOI chat failed:', error);
+      setChatHistory((current) => [
+        ...current,
+        {
+          id: Date.now() + '-error',
+          role: 'assistant',
+          content: 'Unable to reach QMOI chat service. Please try again.',
+        },
+      ]);
+    } finally {
+      setIsChatLoading(false);
+    }
   };
 
   return (
@@ -285,6 +365,29 @@ export default function QMoiAIPage() {
                 Environment
               </button>
             </div>
+          </div>
+          <div className="mt-6 rounded-3xl bg-slate-950/80 p-4 border border-slate-800 max-h-96 overflow-y-auto">
+            <h3 className="text-sm uppercase tracking-[0.3em] text-slate-400 mb-4">Conversation</h3>
+            {chatHistory.length === 0 ? (
+              <div className="text-slate-400">No messages yet. Ask QMOI something to begin the conversation.</div>
+            ) : (
+              <div className="space-y-3">
+                {chatHistory.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`rounded-2xl p-4 ${message.role === 'user' ? 'bg-slate-800 text-white self-end' : 'bg-slate-900 text-slate-100 self-start'}`}
+                  >
+                    <div className="text-xs uppercase tracking-[0.24em] text-slate-500 mb-2">
+                      {message.role === 'user' ? 'You' : 'QMOI'}
+                    </div>
+                    <div>{message.content}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {isChatLoading && (
+              <div className="mt-4 text-sm text-slate-400">QMOI is composing a response...</div>
+            )}
           </div>
         </section>
 

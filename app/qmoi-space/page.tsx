@@ -1,8 +1,7 @@
-import React from 'react';
 "use client";
 
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
-import { useState } from "react";
 import AdminDashboard from "../components/AdminDashboard";
 import ChatMessaging from "../components/ChatMessaging";
 import QMOIAutoFixDashboard from "../components/QMOIAutoFixDashboard";
@@ -25,15 +24,50 @@ import IntegrationManager from "../components/IntegrationManager";
 import WorkflowAutomationEngine from "../components/WorkflowAutomationEngine";
 import ContentManagementSystem from "../components/ContentManagementSystem";
 
+const defaultStats = {
+  supportedPlatforms: '12+',
+  totalBuilds: '40+',
+  validationSuccess: '100%',
+  packageSize: '2.5GB',
+};
+
+const defaultMarketplace = [
+  { id: 'MKT-01', title: 'Premium Dataset Exchange', price: '$99', access: 'subscription' },
+  { id: 'MKT-02', title: 'AI Model Hosting', price: '$149', access: 'monthly' },
+  { id: 'MKT-03', title: 'Workflow Automation Pack', price: '$49', access: 'one-time' },
+];
+
 export default function QMoiSpacePage() {
   const [showComponents, setShowComponents] = useState(true);
-  // Mock data for demonstration
-  const stats = {
-    supportedPlatforms: '12+',
-    totalBuilds: '40+',
-    validationSuccess: '100%',
-    packageSize: '2.5GB'
-  };
+  const [stats, setStats] = useState(defaultStats);
+  const [marketplace, setMarketplace] = useState(defaultMarketplace);
+  const [activeProjects, setActiveProjects] = useState([]);
+  const [lastUpdated, setLastUpdated] = useState('');
+
+  useEffect(() => {
+    let active = true;
+
+    async function fetchSpaceData() {
+      try {
+        const res = await fetch('/api/qi-spaces', { cache: 'no-store' });
+        const data = await res.json();
+        if (!active) return;
+        if (data?.success) {
+          setStats(data.stats || defaultStats);
+          setMarketplace(data.marketplace || defaultMarketplace);
+          setActiveProjects(data.activeProjects || []);
+          setLastUpdated(data.lastUpdated || '');
+        }
+      } catch (error) {
+        console.error('Failed to load QMOI Space data:', error);
+      }
+    }
+
+    fetchSpaceData();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-white">
@@ -158,21 +192,45 @@ export default function QMoiSpacePage() {
 
         {/* Marketplace Dashboard */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
-          <h2 className="text-2xl font-semibold mb-4">Revenue Generation</h2>
-          <p className="text-slate-400 mb-4">Monetization tools with marketplace integration and analytics.</p>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-semibold mb-2">Revenue Generation</h2>
+              <p className="text-slate-400">Monetization tools with marketplace integration and analytics.</p>
+            </div>
+            {lastUpdated && (
+              <span className="text-sm text-slate-500">Updated {new Date(lastUpdated).toLocaleString()}</span>
+            )}
+          </div>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {marketplace.map((item) => (
+              <div key={item.id} className="bg-slate-800 p-4 rounded-lg">
+                <h4 className="font-semibold mb-2">{item.title}</h4>
+                <p className="text-sm text-slate-400 mb-2">{item.access}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs bg-slate-700 px-2 py-1 rounded">{item.price}</span>
+                  <button className="text-xs bg-blue-600 px-2 py-1 rounded">Buy</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Active Projects */}
+        <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
+          <h2 className="text-2xl font-semibold mb-4">Active Projects</h2>
+          <p className="text-slate-400 mb-4">Monitor current QMOI Space collaboration and deployment initiatives.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Pricing Management</h4>
-              <p className="text-sm text-slate-400">Set and manage pricing for your offerings.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Customer Analytics</h4>
-              <p className="text-sm text-slate-400">Track customer acquisition and engagement.</p>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Payment Integration</h4>
-              <p className="text-sm text-slate-400">Secure payment processing and management.</p>
-            </div>
+            {activeProjects.length > 0 ? (
+              activeProjects.map((project) => (
+                <div key={project.id} className="bg-slate-800 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2">{project.name}</h4>
+                  <p className="text-sm text-slate-400 mb-2">Status: {project.status}</p>
+                  <button className="text-xs bg-violet-600 px-2 py-1 rounded">View Project</button>
+                </div>
+              ))
+            ) : (
+              <div className="bg-slate-800 p-4 rounded-lg text-slate-300">No active projects available yet.</div>
+            )}
           </div>
         </section>
 

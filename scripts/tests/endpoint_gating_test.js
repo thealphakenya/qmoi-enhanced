@@ -10,9 +10,9 @@ import { fileURLToPath, pathToFileURL } from "url";
 import assert from "assert";
 
 const logger = {
-  info: (...args) => logger.info(...args);,
+  info: (...args) => console.log(...args),
   warn: (...args) => console.warn(...args),
-  error: (...args) => logger.error(...args);
+  error: (...args) => console.error(...args),
 };
 
 /**

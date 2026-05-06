@@ -1,10 +1,58 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+
+const defaultDatasets = [
+  {
+    id: "DS-1001",
+    name: "QMOI AI Conversations",
+    description: "1.2M anonymized chat logs for training conversational models.",
+    access: "Free",
+    price: "0",
+  },
+  {
+    id: "DS-1002",
+    name: "Device Performance Metrics",
+    description: "500K device logs across production and field environments.",
+    access: "Paid",
+    price: "$24.99",
+  },
+  {
+    id: "DS-1003",
+    name: "Marketplace Transaction History",
+    description: "50K categorized revenue events and customer analytics.",
+    access: "Paid",
+    price: "$49.99",
+  },
+];
+
+const defaultModels = [
+  {
+    id: "MDL-210",
+    name: "Sentiment Analysis Pro",
+    status: "Deployed",
+    pricing: "$9.99/month",
+  },
+  {
+    id: "MDL-311",
+    name: "Image Recognition Enterprise",
+    status: "Staging",
+    pricing: "$19.99/month",
+  },
+  {
+    id: "MDL-415",
+    name: "Predictive Analytics Engine",
+    status: "Trial",
+    pricing: "$7.99/use",
+  },
+];
 
 export default function QVillagePage() {
   const { user, hasAccess } = useAuth();
+  const [datasets, setDatasets] = useState(defaultDatasets);
+  const [models, setModels] = useState(defaultModels);
+  const [lastUpdated, setLastUpdated] = useState("");
   const canEditDatasets = hasAccess("qvillage_access") && user.role === "master";
   const canViewModels = hasAccess("qmoi_space_access");
 
@@ -14,6 +62,30 @@ export default function QVillagePage() {
     if (user.role === "user") return "Community dataset browsing and AI model access.";
     return "Guest access to public dataset summaries and onboarding.";
   }, [user.role]);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadSpaces() {
+      try {
+        const res = await fetch("/api/qvillage/spaces", { cache: "no-store" });
+        const data = await res.json();
+        if (!active) return;
+        if (data?.success) {
+          setDatasets(data.datasets || defaultDatasets);
+          setModels(data.models || defaultModels);
+          setLastUpdated(data.lastUpdated || "");
+        }
+      } catch (error) {
+        console.error("Failed to load QVillage spaces:", error);
+      }
+    }
+
+    loadSpaces();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <main className="min-h-screen bg-slate-950 p-8 text-white">
@@ -76,33 +148,28 @@ export default function QVillagePage() {
 
         {/* Dataset Catalog */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
-          <h2 className="text-2xl font-semibold mb-4">Dataset Catalog</h2>
-          <p className="text-slate-400 mb-6">Browse and access community-shared datasets for AI training and analysis.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">QMOI AI Conversations</h4>
-              <p className="text-sm text-slate-400 mb-2">1.2M chat interactions, anonymized</p>
-              <div className="flex justify-between items-center">
-                <span className="text-xs bg-green-600 px-2 py-1 rounded">Free</span>
-                <button className="text-xs bg-blue-600 px-2 py-1 rounded">Download</button>
-              </div>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-semibold mb-2">Dataset Catalog</h2>
+              <p className="text-slate-400">Browse and access community-shared datasets for AI training and analysis.</p>
             </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Device Performance Metrics</h4>
-              <p className="text-sm text-slate-400 mb-2">500K device logs, 6 months</p>
-              <div className="flex justify-between items-center">
-                <span className="text-xs bg-yellow-600 px-2 py-1 rounded">$25</span>
-                <button className="text-xs bg-blue-600 px-2 py-1 rounded">Purchase</button>
+            {lastUpdated && (
+              <span className="text-sm text-slate-500">Updated {new Date(lastUpdated).toLocaleString()}</span>
+            )}
+          </div>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {datasets.map((dataset) => (
+              <div key={dataset.id} className="bg-slate-800 p-4 rounded-lg">
+                <h4 className="font-semibold mb-2">{dataset.name}</h4>
+                <p className="text-sm text-slate-400 mb-2">{dataset.description}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs bg-slate-700 px-2 py-1 rounded">{dataset.access}</span>
+                  <button className="text-xs bg-blue-600 px-2 py-1 rounded">
+                    {dataset.access === "Free" ? "Download" : "Purchase"}
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Marketplace Transactions</h4>
-              <p className="text-sm text-slate-400 mb-2">50K transactions, categorized</p>
-              <div className="flex justify-between items-center">
-                <span className="text-xs bg-purple-600 px-2 py-1 rounded">$50</span>
-                <button className="text-xs bg-blue-600 px-2 py-1 rounded">Purchase</button>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="mt-4 flex gap-2">
             <button className="bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded text-sm transition-colors">Browse All Datasets</button>
@@ -115,30 +182,16 @@ export default function QVillagePage() {
           <h2 className="text-2xl font-semibold mb-4">AI Model Marketplace</h2>
           <p className="text-slate-400 mb-6">Deploy, test, and monetize AI models in the community marketplace.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Sentiment Analysis v2.1</h4>
-              <p className="text-sm text-slate-400 mb-2">95% accuracy, multilingual</p>
-              <div className="flex justify-between items-center">
-                <span className="text-xs bg-green-600 px-2 py-1 rounded">Deployed</span>
-                <button className="text-xs bg-purple-600 px-2 py-1 rounded">Use Model</button>
+            {models.map((model) => (
+              <div key={model.id} className="bg-slate-800 p-4 rounded-lg">
+                <h4 className="font-semibold mb-2">{model.name}</h4>
+                <p className="text-sm text-slate-400 mb-2">Status: {model.status}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-xs bg-slate-700 px-2 py-1 rounded">{model.pricing}</span>
+                  <button className="text-xs bg-purple-600 px-2 py-1 rounded">Use Model</button>
+                </div>
               </div>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Image Recognition Pro</h4>
-              <p className="text-sm text-slate-400 mb-2">98% accuracy, real-time</p>
-              <div className="flex justify-between items-center">
-                <span className="text-xs bg-blue-600 px-2 py-1 rounded">$10/month</span>
-                <button className="text-xs bg-purple-600 px-2 py-1 rounded">Subscribe</button>
-              </div>
-            </div>
-            <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Predictive Analytics</h4>
-              <p className="text-sm text-slate-400 mb-2">Time series forecasting</p>
-              <div className="flex justify-between items-center">
-                <span className="text-xs bg-yellow-600 px-2 py-1 rounded">$5/use</span>
-                <button className="text-xs bg-purple-600 px-2 py-1 rounded">Try Free</button>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="mt-4 flex gap-2">
             <button className="bg-violet-600 hover:bg-violet-700 px-4 py-2 rounded text-sm transition-colors">Model Marketplace</button>

@@ -7,9 +7,9 @@ import fs from "fs";
 import path from "path";
 
 const logger = {
-  info: (...args) => logger.info(...args);,
+  info: (...args) => console.log(...args),
   warn: (...args) => console.warn(...args),
-  error: (...args) => logger.error(...args);
+  error: (...args) => console.error(...args),
 };
 
 const reportPath = path.resolve(".qmoi_validation/auth_triage_report.json");
