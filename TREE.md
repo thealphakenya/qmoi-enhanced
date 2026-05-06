@@ -31,13 +31,17 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 /pwa_apps/qmoi-ai/     — QMOI AI static PWA assets and service worker
 /pwa_apps/qmoi-space/  — QMOI Space static PWA assets and installable shell
 /pwa_apps/q-alpha/     — Alpha Q aggregator shell for QMOI AI, QMOI Space, and QCity
-/qmoi-ai.html          — Root redirect to QMOI AI shell
+/qmoi-ai.html          — Static PWA launcher for QMOI AI
 /qmoi-ai-live.html     — Live launcher for QMOI AI PWA
-/qmoi-space.html       — Root redirect to QMOI Space shell
+/qmoi-space.html       — Static PWA launcher for QMOI Space
 /q-alpha.html          — Root redirect to Alpha Q aggregator
 /qcity-enterprise.html  — QCity Enterprise entrypoint
 /qcity-complete.html    — QCity Complete entrypoint
 /qcity-dashboard.html   — QCity Dashboard entrypoint
+/app/qmoi-ai/page.tsx  — Live QMOI AI Next.js page with full interactive dashboard components
+/app/qmoi-space/page.tsx — Live QMOI Space Next.js page with collaboration and marketplace UI
+/app/qcity/page.jsx    — Live QCity dashboard page with role-aware controls
+/app/qvillage/page.tsx — Live QVillage community workspace page with dataset and model summaries
 /public/              — Static manifest and app entrypoint assets for installable PWA shells
 /hooks/useQCity.ts     — QCity integration hook
 /api/qcity.ts          — QCity API surface

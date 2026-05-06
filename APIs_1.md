@@ -1,11 +1,12 @@
 # API Documentation
 Generated: 2026-04-17T02:03:31.896085
-Total APIs: 464
-Route source files in `app/api/`: 276 (267 endpoint handler files)
+Total API Route Handlers: 249
+Route source files in `app/api/`: 277 (249 active endpoint handlers, 12 top-level route files, 237 nested route directories)
 
 ## Verified Production PWA Route Mapping
-- The `app/qmoi-ai/page.tsx` route now forwards to the real QMOI AI PWA at `/pwa_apps/qmoi-ai/index.html`.
-- The `app/qmoi-space/page.tsx` route now forwards to the real QMOI Space PWA at `/pwa_apps/qmoi-space/index.html`.
+- `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page delivering the full interactive AI dashboard.
+- `app/qmoi-space/page.tsx` is a live QMOI Space Next.js page delivering marketplace and community collaboration features.
+- `public/qmoi-ai.html` and `public/qmoi-space.html` remain static PWA launcher assets for their respective shell apps.
 - `app/qcity/page.jsx` and `app/qvillage/page.tsx` are role-aware, page-level UI routes using `app/hooks/useAuth.ts`.
 - PWA update endpoints `/api/pwa/check-update` and `/api/pwa/auto-update` are available and documented.
 

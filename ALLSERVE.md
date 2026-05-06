@@ -85,9 +85,10 @@ All components are tagged with their app associations and include API integratio
 
 ### Autovalidation of UI features and PWAs
 - The serve-all approach verifies that browser routes, app shell assets, and PWA content are all reachable from one host.
+- `app/qmoi-ai/page.tsx` and `app/qmoi-space/page.tsx` now render full Next.js UI pages for QMOI AI and QMOI Space, while `public/qmoi-ai.html` and `public/qmoi-space.html` remain static PWA shell entry assets.
 - PWA shells are validated for service worker registration, offline caching, and UI flow availability.
 - Runtime update endpoints `/api/pwa/check-update` and `/api/pwa/auto-update` are used to validate live update health and trigger PWA refresh flows.
-- This autovalidation layer ensures that all app entries, install prompts, and PWA UI features work together across QMOI AI, QMOI Space, QCity, and browser-based services.
+- This autovalidation layer ensures that app pages, install prompts, and PWA UI features work together across QMOI AI, QMOI Space, QCity, and browser-based services.
 
 > In production environments with DNS configured, replace `http://127.0.0.1:8080` with your production hostname.
 
@@ -95,13 +96,13 @@ All components are tagged with their app associations and include API integratio
 The QVillage backend is managed by a supervisor script that restarts itself if it exits.
 
 ## 1.5) PWA route and app asset verification
-- `app/qmoi-ai/page.tsx` now redirects to the real QMOI AI PWA app at `/pwa_apps/qmoi-ai/index.html`.
-- `public/qmoi-ai.html` now redirects to `/pwa_apps/qmoi-ai/index.html`.
-- `app/qmoi-space/page.tsx` now redirects to the real QMOI Space PWA app at `/pwa_apps/qmoi-space/index.html`.
-- `public/qmoi-space.html` now redirects to `/pwa_apps/qmoi-space/index.html`.
+- `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page delivering the full interactive dashboard experience.
+- `public/qmoi-ai.html` remains a static PWA launcher asset for the QMOI AI shell.
+- `app/qmoi-space/page.tsx` is a live QMOI Space Next.js page delivering the marketplace and collaboration UI.
+- `public/qmoi-space.html` remains a static PWA launcher asset for the QMOI Space shell.
 - `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware dashboard pages using `app/hooks/useAuth.ts`.
 
-These changes ensure the visible browser entry points are the real intended PWA applications, not placeholder static shells.
+These changes ensure the visible browser entry points include both live Next.js app pages and static PWA shell launchers for QMOI AI and QMOI Space.
 
 ### Start QVillage in the background
 ```bash

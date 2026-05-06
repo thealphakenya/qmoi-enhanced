@@ -50,8 +50,8 @@
 
 ## QMOI Production App Map
 
-- `app/qmoi-ai/page.tsx` → redirect route to the production QMOI AI PWA shell at `/qmoi-ai.html`
-- `app/qmoi-space/page.tsx` → redirect route to the production QMOI Space PWA shell at `/qmoi-space.html`
+- `app/qmoi-ai/page.tsx` → actual QMOI AI app page implementing a full interactive AI dashboard and component shell
+- `app/qmoi-space/page.tsx` → actual QMOI Space app page implementing a full marketplace and collaboration dashboard
 - `app/api/pwa/check-update/route.ts` → backend endpoint for PWA update metadata
 - `app/api/pwa/auto-update/route.ts` → backend endpoint for PWA auto-update orchestration
 - `public/service-worker.js` → restored SW runtime caching, network-first fetch strategy, and update message handling

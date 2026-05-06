@@ -14,14 +14,15 @@ fully implemented
 **Total APIs:** 9185
 
 ## Verified Production PWA Route Mapping
-- `app/qmoi-ai/page.tsx` and `public/qmoi-ai.html` now route to `/pwa_apps/qmoi-ai/index.html`.
-- `app/qmoi-space/page.tsx` and `public/qmoi-space.html` now route to `/pwa_apps/qmoi-space/index.html`.
+- `app/qmoi-ai/page.tsx` is a live QMOI AI Next.js page with a full interactive dashboard experience.
+- `app/qmoi-space/page.tsx` is a live QMOI Space Next.js page with a marketplace and collaborative dashboard.
+- `public/qmoi-ai.html` and `public/qmoi-space.html` provide static PWA launcher entry points for their respective shell assets.
 - `app/qcity/page.jsx` and `app/qvillage/page.tsx` are active role-aware UI pages using `app/hooks/useAuth.ts`.
 - Runtime update support is available via `/api/pwa/check-update` and `/api/pwa/auto-update`.
 
 ## Route Source Inventory
-- `app/api/` contains 276 source files in the live project tree.
-- 267 of those files are active route handler endpoints; 9 files are supporting config/docs files under `app/api/`.
+- `app/api/` contains 277 source files in the live project tree.
+- 249 of those files are active route handler endpoints; 28 files are supporting config/docs and helper files under `app/api/`.
 - Route categories include auth, qmoi, qcity, qvillage, cashon, ai, media, deploy, and more.
 
 ## Complete API List

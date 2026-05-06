@@ -53,12 +53,19 @@ title: "Quantum multi orchestra intelligence (QMOI) Space - Advanced AI Platform
 - **Page Source:** `app/qmoi-space/page.tsx`
 - **Rendered Sections:** Landing hero, platform stats, dataset catalog, model staging, marketplace dashboard, community workspace, action panels, and cross-app links
 - **Primary Component Imports:** AdminDashboard, ChatMessaging, QMOIAutoFixDashboard, QMOIAutoSetup, FileUploadDownload, VisualEnhancement, AudibleConversation, ClientUISettings, QMOIMasterDashboard, SponsoredUsersManager, UserProfile, WalletList, RegisterForm, QiSpaces, LcSpaces, FloatingPreviewWindow, WalletPanel, CollaborationHub, IntegrationManager, WorkflowAutomationEngine, ContentManagementSystem
+- **Theme/Style Coverage:** Dark gradient theme, theme personalization, responsive card layout, high contrast visual panels, and enterprise dashboard styling
 
 ---
 
 ## Overview
 
 QMOI Space is the production-ready hub for collaborative AI development, dataset management, marketplace deployment, and revenue generation. The page is designed as a spatial collaboration dashboard that supports real-time AI orchestration, secure file workflows, and multi-platform deployments.
+
+## Theme & Style System
+- **Theme:** Dark workspace with purple-blue gradient accents and polished panel styling.
+- **Visual Style:** Glassy cards, concise iconography, and clear separations between feature zones.
+- **Customization:** UI settings and theme controls are available through shared `VisualEnhancement` and `ClientUISettings` components.
+- **Responsive Behavior:** The layout is designed to scale from desktop to mobile while preserving readability and action flow.
 
 ## Actual QMOI Space Page Features
 

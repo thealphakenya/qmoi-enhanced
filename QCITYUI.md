@@ -31,6 +31,12 @@ QCity is a React-based dashboard application providing command center functional
 - **Access:** Role-based permissions (Master, Sister, User, Guest)
 - **Features:** Real-time metrics, service monitoring, incident management
 
+### Theme & Style System
+- **Theme Customization:** QCity includes role-aware theme accents and system-level visual controls through `QCityThemeProvider` and `VisualEnhancement`.
+- **Visual Style:** Clean command center aesthetic with neon cyan highlights, card-based metrics panels, and high-contrast alert states.
+- **Accessibility:** Clear status labels, button contrast, and support for keyboard navigation in form controls and action buttons.
+- **Responsive UI:** Wide command center layout gracefully collapses for mobile usage while preserving key operational panels.
+
 ---
 
 ## App Overview

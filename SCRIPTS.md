@@ -34,6 +34,12 @@ This document provides a comprehensive catalog of all automation scripts, utilit
 
 ## 🔧 Core Automation Scripts
 
+### Build & Release Automation
+- **Application Build**: `build-all-platforms.sh`, `build-all.sh`, `build-qmoi.sh`, `enhanced-build.py`
+- **Production Build**: `npm run build`, `scripts/prod-start.sh`, `scripts/prod-healthcheck.sh`, `scripts/build-all-platforms.sh`
+- **Optimize Build**: `optimize-all-build-scripts.sh`, `enhance-build-scripts-q1.py`, `postbuild-copy-qmoiexe.js`
+- **PWA Packaging**: `package_pwas.py`, `build-qmoi.sh`, `deploy-ui-features.py`
+
 ### System Orchestration (`/scripts/`)
 - **Master Controllers**: `qmoi_master_automation.py`, `master_orchestrator.py`, `master_execution_orchestrator.py`
 - **Auto-Enhancement**: `apply_all_enhancements.py`, `continuous_enhancement_orchestrator.py`, `qmoi_enhancement_system_clean.py`

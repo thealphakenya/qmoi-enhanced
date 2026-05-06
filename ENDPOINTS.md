@@ -13,8 +13,8 @@ fully implemented
 # ENDPOINTS.md - API Endpoint Inventory ✅ production_IMPLEMENTED
 
 **Last Updated:** 2026-04-28T12:00:00.000000Z
-**Total Route Source Files:** 276
-**Actual endpoint handler files:** 267
+**Total Route Source Files:** 277
+**Actual endpoint handler files:** 249
 **Status:** ✅ production_IMPLEMENTED
 
 ## Document Purpose

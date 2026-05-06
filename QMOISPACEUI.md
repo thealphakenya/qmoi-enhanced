@@ -31,6 +31,12 @@ QMOI Space is a Progressive Web App (PWA) marketplace and distributed production
 - **Status:** PWA installable with service worker support
 - **Focus:** Marketplace, production, gaming, and revenue features
 
+### Theme & Style System
+- **Theme Customization:** Supports a progressive purple/blue gradient palette with dynamic accent states and a dark enterprise skin.
+- **Visual Style:** Modern glassmorphism panels, consistent shadow depth, rounded containers, and rich iconography across feature cards.
+- **Accessibility:** Large button targets, readable typography, and status indicators designed for clarity in enterprise dashboards.
+- **Responsive Layout:** Content cards adapt from desktop grids to mobile-friendly stacked views without losing contextual flow.
+
 ---
 
 ## App Overview

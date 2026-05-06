@@ -31,6 +31,12 @@ QMOI AI is a Progressive Web App (PWA) that provides advanced AI-powered orchest
 - **Status:** Real-time online/offline indicators
 - **PWA Features:** Installable, offline-capable, service worker enabled
 
+### Theme & Style System
+- **Theme Customization:** Supports dark mode, accent variation, and visual personalization via `ThemeCustomizer` and `ClientUISettings`.
+- **Visual Style:** Gradient accents, glassmorphism cards, neon highlights, and consistent spacing across sections.
+- **Accessibility:** High contrast text, keyboard-friendly button states, and clear status badges for user roles and health states.
+- **Responsive Behavior:** Adaptive layouts that collapse from 4-column stat grids to stacked mobile cards with consistent padding.
+
 ---
 
 ## App Overview
