@@ -924,7 +924,7 @@ class ErrorBoundary extends React.Component {
             for file_path in self.workspace.glob(pattern):
                 # Skip certain directories
                 if any(skip in str(file_path) for skip in [
-                    '.backups', '__pycache__', 'node_modules', '.git',
+                    '.backups', 'backups', '__pycache__', 'node_modules', '.git',
                     'build', 'dist', '.next', '.vercel', '.venv', 'venv', '.pytest_cache'
                 ]):
                     continue
