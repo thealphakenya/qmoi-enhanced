@@ -413,6 +413,38 @@ Components integrate with the following API endpoints for full functionality:
 - **Location**: `src/components/` (source-level integration and app-shell components)
 - **Purpose**: App-shell and integration components
 
+## 🎨 Theme & Style System
+
+The component library implements a comprehensive theme and style system that ensures visual consistency and flexibility across all QMOI applications.
+
+### Theme Customization
+- **Dark Enterprise Skin**: Base theme with dark backgrounds optimized for 24/7 monitoring dashboards
+- **Gradient Accents**: Dynamic color palettes per app (QMOI AI: subtle blues, QMOI Space: purple/blue, QCity: cyan highlights)
+- **Switchable Themes**: System-level theme toggle through `VisualEnhancement` and `ThemeCustomizer` components
+- **Custom Color Variables**: CSS custom properties enable runtime theme adjustment without component rebuild
+- **Brand Color Mapping**: Centralized color system ensures visual hierarchy across all apps
+
+### Visual Style
+- **Glassmorphism UI**: Frosted glass effects with subtle backdrop blur on overlay components
+- **Shadow Depth System**: Multiple shadow levels (subtle, medium, deep) indicating component hierarchy and interactivity
+- **Rounded Corners**: Consistent 8px-16px border radius creating soft, modern aesthetic
+- **Icon Library**: 200+ icons providing visual context and reducing cognitive load
+- **Typography Hierarchy**: Scaled font sizes (12px-32px) with consistent weight distribution
+
+### Accessibility Features
+- **High Contrast Ratios**: All text meets WCAG AA standards for readability
+- **Focus Indicators**: Clear, prominent focus states with 2px colored outlines
+- **Keyboard Navigation**: Full keyboard support across all interactive components
+- **Screen Reader Support**: Semantic HTML with ARIA labels and roles on complex widgets
+- **Reduced Motion**: Respects `prefers-reduced-motion` for animations and transitions
+
+### Responsive Layout System
+- **Mobile-First Design**: Components designed for 320px minimum viewport width
+- **Flexible Grids**: Auto-adjusting card layouts from single column (mobile) to 4-column (desktop)
+- **Touch-Friendly Targets**: Minimum 48px hit area for all interactive elements
+- **Adaptive Typography**: Font sizes scale smoothly across breakpoints
+- **Smart Spacing**: Consistent margin/padding ratios maintain visual balance across screen sizes
+
 ## ✅ Production Readiness
 
 - All 201 top-level and nested component files are inventoried and documented.
