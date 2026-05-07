@@ -1,0 +1,62 @@
+{
+  "windows": [
+    "pwa_apps/qmoi-ai-pwa.zip",
+    "pwa_apps/qmoi-ai-pwa.webmanifest",
+    "pwa_apps/qmoi-ai-pwa.json"
+  ],
+  "mac": [
+    "pwa_apps/qmoi-ai-pwa.zip",
+    "pwa_apps/qmoi-ai-pwa.webmanifest",
+    "pwa_apps/qmoi-ai-pwa.json"
+  ],
+  "linux": [
+    "pwa_apps/qmoi-ai-pwa.zip",
+    "pwa_apps/qmoi-ai-pwa.webmanifest",
+    "pwa_apps/qmoi-ai-pwa.json"
+  ],
+  "android": [
+    "pwa_apps/qmoi-ai-pwa.apk",
+    "pwa_apps/qmoi-ai-pwa.zip",
+    "pwa_apps/qmoi-ai-pwa.webmanifest",
+    "pwa_apps/qmoi-ai-pwa.json"
+  ],
+  "ios": [
+    "pwa_apps/qmoi-ai-pwa.ipa",
+    "pwa_apps/qmoi-ai-pwa.zip",
+    "pwa_apps/qmoi-ai-pwa.webmanifest",
+    "pwa_apps/qmoi-ai-pwa.json"
+  ],
+  "qcity": [
+    "pwa_apps/qcity-pwa.zip",
+    "pwa_apps/qcity-pwa.webmanifest",
+    "pwa_apps/qcity-pwa.json"
+  ],
+  "chromebook": [
+    "pwa_apps/qmoi-ai-pwa.zip",
+    "pwa_apps/qmoi-ai-pwa.webmanifest",
+    "pwa_apps/qmoi-ai-pwa.json"
+  ],
+  "raspberrypi": [
+    "pwa_apps/qmoi-ai-pwa.zip",
+    "pwa_apps/qmoi-ai-pwa.webmanifest",
+    "pwa_apps/qmoi-ai-pwa.json"
+  ],
+  "smarttv": [
+    "pwa_apps/qmoi-ai-pwa.apk",
+    "pwa_apps/qmoi-ai-pwa.zip",
+    "pwa_apps/qmoi-ai-pwa.webmanifest",
+    "pwa_apps/qmoi-ai-pwa.json"
+  ],
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:40.815343",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.245404",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:11.426432",
+  "autodev_version": "2026-04-20-aggressive"
+}

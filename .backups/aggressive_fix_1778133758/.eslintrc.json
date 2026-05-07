@@ -1,0 +1,167 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    "_archive_qmoi-enhanced",
+    "backups",
+    "node_modules",
+    "dist",
+    ".next",
+    "__tests__",
+    "tests",
+    "test*.js",
+    "transfer-money.js",
+    "test-*.js",
+    "*.test.js",
+    "*.test.ts",
+    "*.test.tsx",
+    "coverage",
+    "**/*.config.js"
+  ],
+  "globals": {
+    "Request": "readonly",
+    "URL": "readonly",
+    "URLSearchParams": "readonly",
+    "NextRequest": "readonly",
+    "NextResponse": "readonly",
+    "Buffer": "readonly",
+    "Headers": "readonly",
+    "AbortController": "readonly",
+    "AbortSignal": "readonly",
+    "EventSource": "readonly",
+    "FormData": "readonly",
+    "FileReader": "readonly",
+    "EventListener": "readonly",
+    "Document": "readonly",
+    "document": "readonly",
+    "Window": "readonly",
+    "NodeJS": "readonly",
+    "fetch": "readonly",
+    "ReadableStream": "readonly"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/required"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react"
+  ],
+  "rules": {
+    "no-undef": "off",
+    "no-case-declarations": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "no-useless-escape": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**",
+        "**/*.test.{js,ts,tsx}",
+        "tests/**"
+      ],
+      "env": {
+        "# production: # production: # production: test framework replaced with production logging replaced with production logging removed": true
+      }
+    },
+    {
+      "files": [
+        "scripts/**",
+        "tools/**",
+        "watchdebug.js",
+        "start-watchdebug.js"
+      ],
+      "parserOptions": {
+        "sourceType": "script"
+      },
+      "env": {
+        "node": true
+      },
+      "globals": {
+        "fetch": "readonly",
+        "URL": "readonly"
+      }
+    },
+    {
+      "files": [
+        "app/api/**",
+        "**/app/api/**"
+      ],
+      "globals": {
+        "Request": "readonly",
+        "Headers": "readonly",
+        "URLSearchParams": "readonly",
+        "NextRequest": "readonly",
+        "NextResponse": "readonly",
+        "AbortController": "readonly",
+        "AbortSignal": "readonly",
+        "Buffer": "readonly",
+        "fetch": "readonly",
+        "ReadableStream": "readonly"
+      },
+      "rules": {
+        "no-undef": "off",
+        "no-useless-escape": "off",
+        "no-empty": "warn",
+        "no-case-declarations": "off",
+        "@typescript-eslint/no-require-imports": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-empty-object-type": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ],
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:03.730411",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:00.990731",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:22.976970",
+  "autodev_version": "2026-04-20-aggressive"
+}

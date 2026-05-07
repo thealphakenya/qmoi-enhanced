@@ -1,0 +1,43 @@
+{
+  "autoFixEnabled": true,
+  "smartFixesEnabled": true,
+  "aiAnalysisEnabled": true,
+  "fileWatchingEnabled": true,
+  "reportingEnabled": true,
+  "notificationEnabled": true,
+  "fixStrategies": {
+    "unusedImports": true,
+    "missingSemicolons": true,
+    "quoteStandardization": true,
+    "trailingSpaces": true,
+    "indentation": true,
+    "consoleRemoval": true,
+    "constConversion": true
+  },
+  "filePatterns": {
+    "include": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx"
+    ],
+    "exclude": [
+      "node_modules/**",
+      "dist/**",
+      "build/**",
+      ".git/**"
+    ]
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.684328",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:05.444598",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:43.903615",
+  "autodev_version": "2026-04-20-aggressive"
+}

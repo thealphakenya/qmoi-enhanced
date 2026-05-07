@@ -1,0 +1,601 @@
+{
+  "system_status": {
+    "system_name": "QMOI AI-Powered Trading System",
+    "autonomous_mode": true,
+    "portfolio_value": 112687.58696067143,
+    "total_trading_cycles": 5,
+    "predictive_models_active": 4,
+    "fraud_detection_active": true,
+    "system_health_score": 95.35973326065624,
+    "last_cycle_timestamp": "2026-03-29 19:47:54.767813+00:00",
+    "total_pnl": 184.7753843338799
+  },
+  "performance_report": {
+    "total_return_percent": 12.687586960671426,
+    "total_return_amount": 12687.586960671426,
+    "total_trades": 5,
+    "win_rate": 60.0,
+    "average_trade_pnl": 36.95507686677598,
+    "best_trade_percent": 8.05555792928956,
+    "max_drawdown_percent": -0.9774092199096103,
+    "sharpe_ratio": 0.6141143828394561,
+    "volatility": 4.039442097202018,
+    "total_fees_paid": 20.73212257741015,
+    "performance_rating": "GOOD"
+  },
+  "trading_cycles": [
+    {
+      "cycle_timestamp": "2026-03-29 19:47:50.766631+00:00",
+      "predictions": [
+        {
+          "asset": "BTC",
+          "timeframe": "24h",
+          "current_price": 58000.0,
+          "predicted_price": 57062.57331770158,
+          "predicted_change_percent": -1.6162529005145116,
+          "confidence": 0.9146075521259482,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "HOLD",
+          "risk_level": "LOW"
+        },
+        {
+          "asset": "ETH",
+          "timeframe": "24h",
+          "current_price": 3200.0,
+          "predicted_price": 3379.326529677931,
+          "predicted_change_percent": 5.603954052435342,
+          "confidence": 0.8516316029121178,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "BUY",
+          "risk_level": "LOW"
+        },
+        {
+          "asset": "ADA",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.7772617601311468,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "SOL",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.8493945717325488,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "DOT",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.8135047174847017,
+          "recommendation": "HOLD"
+        }
+      ],
+      "portfolio_optimization": {
+        "current_total_value": 31409.20826875136,
+        "optimized_allocation": {
+          "Uniswap": 17.389683960403534,
+          "Aave": 9.750341687881296,
+          "Compound": 4.887391961248733,
+          "Curve": 7.259973525818966,
+          "Convex": 18.284939539036735,
+          "Yearn": 6.747191088297734
+        },
+        "yield_projections": {
+          "Uniswap": {
+            "allocation_percent": 17.389683960403534,
+            "projected_apy": 15.326003806723648,
+            "annual_yield": 837.100512072747
+          },
+          "Aave": {
+            "allocation_percent": 9.750341687881296,
+            "projected_apy": 4.387291832451474,
+            "annual_yield": 134.3610373343016
+          },
+          "Compound": {
+            "allocation_percent": 4.887391961248733,
+            "projected_apy": 35.65848735279352,
+            "annual_yield": 547.3902728857697
+          },
+          "Curve": {
+            "allocation_percent": 7.259973525818966,
+            "projected_apy": 30.634134419628676,
+            "annual_yield": 698.550229964853
+          },
+          "Convex": {
+            "allocation_percent": 18.284939539036735,
+            "projected_apy": 10.139008288827473,
+            "annual_yield": 582.2989352941869
+          },
+          "Yearn": {
+            "allocation_percent": 6.747191088297734,
+            "projected_apy": 15.966018488829912,
+            "annual_yield": 338.35813865438774
+          }
+        },
+        "total_projected_annual_yield": 3138.059126206246,
+        "yield_improvement_percent": 199.81777950947352,
+        "risk_adjusted_score": 9.123166732881227,
+        "rebalancing_required": false,
+        "estimated_rebalance_cost": 62.81841653750272
+      },
+      "trading_decision": {
+        "decision": "INCREASE_ALLOCATION",
+        "action": "deploy_to_high_yield_protocol",
+        "confidence": 0.8715205944785773,
+        "reason": "High opportunity score detected"
+      },
+      "trade_result": {
+        "status": "EXECUTED",
+        "pnl_percent": 8.05555792928956,
+        "pnl_amount": 120.22470966995972,
+        "trade_size": 1492.4442319858365,
+        "execution_time_ms": 92.56006176388462,
+        "fees_paid": 1.4924442319858364
+      },
+      "portfolio_value": 108055.55792928956,
+      "cycle_duration_seconds": 4.9e-05
+    },
+    {
+      "cycle_timestamp": "2026-03-29 19:47:51.766859+00:00",
+      "predictions": [
+        {
+          "asset": "BTC",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.7299645654437998,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "ETH",
+          "timeframe": "24h",
+          "current_price": 3200.0,
+          "predicted_price": 2916.736884888335,
+          "predicted_change_percent": -8.851972347239524,
+          "confidence": 0.9198455934034877,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "SELL",
+          "risk_level": "MEDIUM"
+        },
+        {
+          "asset": "ADA",
+          "timeframe": "24h",
+          "current_price": 0.45,
+          "predicted_price": 0.43810896288530043,
+          "predicted_change_percent": -2.642452692155464,
+          "confidence": 0.8965558830620775,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "HOLD",
+          "risk_level": "LOW"
+        },
+        {
+          "asset": "SOL",
+          "timeframe": "24h",
+          "current_price": 120.0,
+          "predicted_price": 143.09697081342642,
+          "predicted_change_percent": 19.247475677855345,
+          "confidence": 0.9323495989064987,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "BUY",
+          "risk_level": "HIGH"
+        },
+        {
+          "asset": "DOT",
+          "timeframe": "24h",
+          "current_price": 8.5,
+          "predicted_price": 8.961826591378532,
+          "predicted_change_percent": 5.433254016218039,
+          "confidence": 0.9419780552707097,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "BUY",
+          "risk_level": "LOW"
+        }
+      ],
+      "portfolio_optimization": {
+        "current_total_value": 35438.954448737204,
+        "optimized_allocation": {
+          "Uniswap": 13.635269652372225,
+          "Aave": 5.407243948374563,
+          "Compound": 8.072812706941395,
+          "Curve": 15.704484291983352,
+          "Convex": 18.01306030618459,
+          "Yearn": 15.05711722497382
+        },
+        "yield_projections": {
+          "Uniswap": {
+            "allocation_percent": 13.635269652372225,
+            "projected_apy": 22.018338012888478,
+            "annual_yield": 1063.969469143522
+          },
+          "Aave": {
+            "allocation_percent": 5.407243948374563,
+            "projected_apy": 6.706745398833299,
+            "annual_yield": 128.51939832914556
+          },
+          "Compound": {
+            "allocation_percent": 8.072812706941395,
+            "projected_apy": 15.53477738875539,
+            "annual_yield": 444.43761819717975
+          },
+          "Curve": {
+            "allocation_percent": 15.704484291983352,
+            "projected_apy": 24.913818821689347,
+            "annual_yield": 1386.5798408434716
+          },
+          "Convex": {
+            "allocation_percent": 18.01306030618459,
+            "projected_apy": 6.077504122271137,
+            "annual_yield": 387.9659985383657
+          },
+          "Yearn": {
+            "allocation_percent": 15.05711722497382,
+            "projected_apy": 29.749614470373515,
+            "annual_yield": 1587.4646899205618
+          }
+        },
+        "total_projected_annual_yield": 4998.937014972246,
+        "yield_improvement_percent": 282.1153779919358,
+        "risk_adjusted_score": 8.597749845823117,
+        "rebalancing_required": false,
+        "estimated_rebalance_cost": 70.87790889747441
+      },
+      "trading_decision": {
+        "decision": "MAINTAIN_POSITION",
+        "action": "monitor_and_hold",
+        "confidence": 0.7208949555658153,
+        "reason": "latest market conditions"
+      },
+      "trade_result": {
+        "status": "EXECUTED",
+        "pnl_percent": -0.9774092199096103,
+        "pnl_amount": -76.5347825085251,
+        "trade_size": 7830.3724734255065,
+        "execution_time_ms": 64.39681121703651,
+        "fees_paid": 7.8303724734255065
+      },
+      "portfolio_value": 106999.41294346392,
+      "cycle_duration_seconds": 0.000119
+    },
+    {
+      "cycle_timestamp": "2026-03-29 19:47:52.767174+00:00",
+      "predictions": [
+        {
+          "asset": "BTC",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.820217824765346,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "ETH",
+          "timeframe": "24h",
+          "current_price": 3200.0,
+          "predicted_price": 3806.230575736555,
+          "predicted_change_percent": 18.944705491767348,
+          "confidence": 0.8690675934995623,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "BUY",
+          "risk_level": "HIGH"
+        },
+        {
+          "asset": "ADA",
+          "timeframe": "24h",
+          "current_price": 0.45,
+          "predicted_price": 0.49441867743384893,
+          "predicted_change_percent": 9.870817207521984,
+          "confidence": 0.9483823613571377,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "BUY",
+          "risk_level": "MEDIUM"
+        },
+        {
+          "asset": "SOL",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.7676769592624018,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "DOT",
+          "timeframe": "24h",
+          "current_price": 8.5,
+          "predicted_price": 7.9190659848116525,
+          "predicted_change_percent": -6.834517825745266,
+          "confidence": 0.9125425698810368,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "SELL",
+          "risk_level": "LOW"
+        }
+      ],
+      "portfolio_optimization": {
+        "current_total_value": 25543.648319239073,
+        "optimized_allocation": {
+          "Uniswap": 4.796253837507225,
+          "Aave": 7.769447983905213,
+          "Compound": 15.78425642597901,
+          "Curve": 15.1909754078011,
+          "Convex": 16.31296831938167,
+          "Yearn": 11.431006877691452
+        },
+        "yield_projections": {
+          "Uniswap": {
+            "allocation_percent": 4.796253837507225,
+            "projected_apy": 13.839138699168405,
+            "annual_yield": 169.54857651910353
+          },
+          "Aave": {
+            "allocation_percent": 7.769447983905213,
+            "projected_apy": 14.935508216971783,
+            "annual_yield": 296.4101661745703
+          },
+          "Compound": {
+            "allocation_percent": 15.78425642597901,
+            "projected_apy": 4.1982478110208525,
+            "annual_yield": 169.2681018843279
+          },
+          "Curve": {
+            "allocation_percent": 15.1909754078011,
+            "projected_apy": 9.92122467247238,
+            "annual_yield": 384.97619130073247
+          },
+          "Convex": {
+            "allocation_percent": 16.31296831938167,
+            "projected_apy": 16.417995918408568,
+            "annual_yield": 684.1259471302869
+          },
+          "Yearn": {
+            "allocation_percent": 11.431006877691452,
+            "projected_apy": 34.63118488648009,
+            "annual_yield": 1011.1946501943122
+          }
+        },
+        "total_projected_annual_yield": 2715.5236332033332,
+        "yield_improvement_percent": 212.61830724141655,
+        "risk_adjusted_score": 9.121870594644747,
+        "rebalancing_required": false,
+        "estimated_rebalance_cost": 51.08729663847815
+      },
+      "trading_decision": {
+        "decision": "OPTIMIZE_YIELD",
+        "action": "rebalance_for_maximum_yield",
+        "confidence": 0.7994025903804853,
+        "reason": "Bullish market conditions"
+      },
+      "trade_result": {
+        "status": "EXECUTED",
+        "pnl_percent": -0.8083510766939899,
+        "pnl_amount": -17.771391555932617,
+        "trade_size": 2198.474408992489,
+        "execution_time_ms": 59.58765264877603,
+        "fees_paid": 2.198474408992489
+      },
+      "portfolio_value": 106134.48203687918,
+      "cycle_duration_seconds": 0.000105
+    },
+    {
+      "cycle_timestamp": "2026-03-29 19:47:53.767504+00:00",
+      "predictions": [
+        {
+          "asset": "BTC",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.7177856518174882,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "ETH",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.7984593961045474,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "ADA",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.8233216832130392,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "SOL",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.8329379476163234,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "DOT",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.803849532469823,
+          "recommendation": "HOLD"
+        }
+      ],
+      "portfolio_optimization": {
+        "current_total_value": 23759.669618633583,
+        "optimized_allocation": {
+          "Uniswap": 10.177796119265535,
+          "Aave": 16.697565379988983,
+          "Compound": 12.098341479866548,
+          "Curve": 15.520010882416557,
+          "Convex": 10.925861728300829,
+          "Yearn": 11.324478094935275
+        },
+        "yield_projections": {
+          "Uniswap": {
+            "allocation_percent": 10.177796119265535,
+            "projected_apy": 12.119814436076386,
+            "annual_yield": 293.0826534396306
+          },
+          "Aave": {
+            "allocation_percent": 16.697565379988983,
+            "projected_apy": 16.440304853851657,
+            "annual_yield": 652.2339734298356
+          },
+          "Compound": {
+            "allocation_percent": 12.098341479866548,
+            "projected_apy": 16.278000662078863,
+            "annual_yield": 467.9153556062544
+          },
+          "Curve": {
+            "allocation_percent": 15.520010882416557,
+            "projected_apy": 17.91965070211843,
+            "annual_yield": 660.7877128595708
+          },
+          "Convex": {
+            "allocation_percent": 10.925861728300829,
+            "projected_apy": 17.23904296629668,
+            "annual_yield": 447.51670309323237
+          },
+          "Yearn": {
+            "allocation_percent": 11.324478094935275,
+            "projected_apy": 20.58325529828666,
+            "annual_yield": 553.8251250129989
+          }
+        },
+        "total_projected_annual_yield": 3075.361523441523,
+        "yield_improvement_percent": 258.87241470981246,
+        "risk_adjusted_score": 9.498712230457992,
+        "rebalancing_required": false,
+        "estimated_rebalance_cost": 47.51933923726717
+      },
+      "trading_decision": {
+        "decision": "INCREASE_ALLOCATION",
+        "action": "deploy_to_high_yield_protocol",
+        "confidence": 0.7500743907448746,
+        "reason": "High opportunity score detected"
+      },
+      "trade_result": {
+        "status": "EXECUTED",
+        "pnl_percent": 0.7511850615028504,
+        "pnl_amount": 54.647462254519006,
+        "trade_size": 7274.833467160429,
+        "execution_time_ms": 178.94736638019506,
+        "fees_paid": 7.274833467160429
+      },
+      "portfolio_value": 106931.74841104365,
+      "cycle_duration_seconds": 8.1e-05
+    },
+    {
+      "cycle_timestamp": "2026-03-29 19:47:54.767813+00:00",
+      "predictions": [
+        {
+          "asset": "BTC",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.737131159519333,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "ETH",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.8147552631796641,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "ADA",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.7738120442422287,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "SOL",
+          "timeframe": "24h",
+          "status": "INSUFFICIENT_CONFIDENCE",
+          "confidence": 0.8485033862734043,
+          "recommendation": "HOLD"
+        },
+        {
+          "asset": "DOT",
+          "timeframe": "24h",
+          "current_price": 8.5,
+          "predicted_price": 9.089957270825815,
+          "predicted_change_percent": 6.940673774421347,
+          "confidence": 0.8861776451038562,
+          "model_used": "crypto_price_prediction",
+          "recommendation": "BUY",
+          "risk_level": "LOW"
+        }
+      ],
+      "portfolio_optimization": {
+        "current_total_value": 40473.91088543791,
+        "optimized_allocation": {
+          "Uniswap": 4.962065785825795,
+          "Aave": 13.527798670002467,
+          "Compound": 16.80761496352981,
+          "Curve": 12.006213045608362,
+          "Convex": 9.835164025254116,
+          "Yearn": 8.733309726854689
+        },
+        "yield_projections": {
+          "Uniswap": {
+            "allocation_percent": 4.962065785825795,
+            "projected_apy": 15.571351506336928,
+            "annual_yield": 312.7260053854481
+          },
+          "Aave": {
+            "allocation_percent": 13.527798670002467,
+            "projected_apy": 25.13442756499386,
+            "annual_yield": 1376.167511876998
+          },
+          "Compound": {
+            "allocation_percent": 16.80761496352981,
+            "projected_apy": 13.561598132435961,
+            "annual_yield": 922.5547144136476
+          },
+          "Curve": {
+            "allocation_percent": 12.006213045608362,
+            "projected_apy": 27.213290678530385,
+            "annual_yield": 1322.3982846141844
+          },
+          "Convex": {
+            "allocation_percent": 9.835164025254116,
+            "projected_apy": 19.01374823810499,
+            "annual_yield": 756.8756221225113
+          },
+          "Yearn": {
+            "allocation_percent": 8.733309726854689,
+            "projected_apy": 29.582840533858572,
+            "annual_yield": 1045.6682131659643
+          }
+        },
+        "total_projected_annual_yield": 5736.390351578754,
+        "yield_improvement_percent": 283.4611346462517,
+        "risk_adjusted_score": 7.629997874288312,
+        "rebalancing_required": false,
+        "estimated_rebalance_cost": 80.94782177087582
+      },
+      "trading_decision": {
+        "decision": "MAINTAIN_POSITION",
+        "action": "monitor_and_hold",
+        "confidence": 0.6157614149409344,
+        "reason": "latest market conditions"
+      },
+      "trade_result": {
+        "status": "EXECUTED",
+        "pnl_percent": 5.382721815697288,
+        "pnl_amount": 104.20938647385888,
+        "trade_size": 1935.997995845888,
+        "execution_time_ms": 68.80410009821719,
+        "fees_paid": 1.935997995845888
+      },
+      "portfolio_value": 112687.58696067143,
+      "cycle_duration_seconds": 0.000115
+    }
+  ],
+  "generated_at": "2026-03-29 19:47:55.768892+00:00",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:12:53.906814",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:02.584596",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:35.034855",
+  "autodev_version": "2026-04-20-aggressive"
+}

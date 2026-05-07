@@ -1,0 +1,30 @@
+{
+  "version": "v1.2.4",
+  "platforms": [
+    {
+      "os": "android",
+      "file": "qmoi_ai.apk",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.apk"
+    },
+    {
+      "os": "macos",
+      "file": "qmoi_ai.ipa",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.ipa"
+    }
+  ],
+  "notes": "Fill in artifact filenames and SHA256 checksums; then upload artifacts to GitHub Releases for tag v1.2.4.",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:20:03.766078",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:07.433194",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:00.593420",
+  "autodev_version": "2026-04-20-aggressive"
+}

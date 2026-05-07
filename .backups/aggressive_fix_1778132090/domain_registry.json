@@ -1,0 +1,396 @@
+{
+  "qvillage.com": {
+    "domain": "qvillage.com",
+    "type": "primary_hub",
+    "tld_variants": [
+      "qvillage.net",
+      "qvillage.org",
+      "qvillage.io"
+    ],
+    "fallback_chain": [
+      "qvillage.net",
+      "qvillage.org",
+      "qglobal.org"
+    ],
+    "regional_endpoints": {
+      "us-east": "us-east.qvillage.com",
+      "us-west": "us-west.qvillage.com",
+      "eu-west": "eu.qvillage.com",
+      "asia-east": "asia.qvillage.com",
+      "au": "au.qvillage.com"
+    },
+    "api_endpoints": [
+      "/api/v1",
+      "/api/v2",
+      "/api/health",
+      "/api/status"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/status",
+      "/ping"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": true,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065434"
+  },
+  "qmoi.ai": {
+    "domain": "qmoi.ai",
+    "type": "main_app",
+    "tld_variants": [
+      "qmoi.com",
+      "qmoi.io"
+    ],
+    "fallback_chain": [
+      "qmoi.com",
+      "qvillage.com"
+    ],
+    "regional_endpoints": {
+      "us-east": "us-east.qmoi.ai",
+      "us-west": "us-west.qmoi.ai",
+      "eu-west": "eu.qmoi.ai",
+      "asia-east": "asia.qmoi.ai"
+    },
+    "api_endpoints": [
+      "/api",
+      "/auth",
+      "/apps",
+      "/api/health"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/status"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": true,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065448"
+  },
+  "stableq.ai": {
+    "domain": "stableq.ai",
+    "type": "ai_platform",
+    "tld_variants": [
+      "stableq.com"
+    ],
+    "fallback_chain": [
+      "stableq.com",
+      "qvillage.com"
+    ],
+    "regional_endpoints": {
+      "us-east": "us-east.stableq.ai",
+      "eu-west": "eu.stableq.ai",
+      "asia-east": "asia.stableq.ai"
+    },
+    "api_endpoints": [
+      "/api",
+      "/models",
+      "/chat",
+      "/api/health"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/status"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": true,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065455"
+  },
+  "qshare.qvillage.com": {
+    "domain": "qshare.qvillage.com",
+    "type": "service",
+    "tld_variants": [
+      "qshare.qvillage.com",
+      "qshare.qglobal.org"
+    ],
+    "fallback_chain": [
+      "qshare.qvillage.com",
+      "qshare.qglobal.org",
+      "share.qvillage.com"
+    ],
+    "regional_endpoints": {
+      "us-east": "qshare-us.qmoi.ai",
+      "eu-west": "qshare-eu.qmoi.ai",
+      "asia-east": "qshare-asia.qmoi.ai"
+    },
+    "api_endpoints": [
+      "/api/upload",
+      "/api/download",
+      "/api/share",
+      "/api/health"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/api/status"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": true,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065462"
+  },
+  "qstore.qvillage.com": {
+    "domain": "qstore.qvillage.com",
+    "type": "service",
+    "tld_variants": [
+      "qstore.qvillage.com",
+      "store.stableq.ai"
+    ],
+    "fallback_chain": [
+      "qstore.qvillage.com",
+      "store.qvillage.com",
+      "stableq.ai/store"
+    ],
+    "regional_endpoints": {
+      "us-east": "qstore-us.qmoi.ai",
+      "eu-west": "qstore-eu.qmoi.ai",
+      "asia-east": "qstore-asia.qmoi.ai"
+    },
+    "api_endpoints": [
+      "/api/apps",
+      "/api/download",
+      "/api/details",
+      "/api/health"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/status"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": true,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065468"
+  },
+  "qcity.qmoi.ai": {
+    "domain": "qcity.qmoi.ai",
+    "type": "service",
+    "tld_variants": [
+      "qcity.qvillage.com"
+    ],
+    "fallback_chain": [
+      "qcity.qvillage.com",
+      "city.qvillage.com"
+    ],
+    "regional_endpoints": {
+      "us-east": "qcity-us.qmoi.ai",
+      "eu-west": "qcity-eu.qmoi.ai"
+    },
+    "api_endpoints": [
+      "/api/map",
+      "/api/services",
+      "/api/health"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/status"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": false,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065474"
+  },
+  "qmoi-space.qmoi.ai": {
+    "domain": "qmoi-space.qmoi.ai",
+    "type": "service",
+    "tld_variants": [
+      "space.qmoi.ai",
+      "qspace.qvillage.com"
+    ],
+    "fallback_chain": [
+      "space.qmoi.ai",
+      "qspace.qvillage.com"
+    ],
+    "regional_endpoints": {
+      "us-east": "space-us.qmoi.ai",
+      "eu-west": "space-eu.qmoi.ai"
+    },
+    "api_endpoints": [
+      "/api/explore",
+      "/api/items",
+      "/api/health"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/status"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": false,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065480"
+  },
+  "yap.qmoi.ai": {
+    "domain": "yap.qmoi.ai",
+    "type": "service",
+    "tld_variants": [
+      "yap.qvillage.com"
+    ],
+    "fallback_chain": [
+      "yap.qvillage.com",
+      "messaging.qvillage.com"
+    ],
+    "regional_endpoints": {
+      "us-east": "yap-us.qmoi.ai",
+      "eu-west": "yap-eu.qmoi.ai"
+    },
+    "api_endpoints": [
+      "/api/chat",
+      "/api/groups",
+      "/api/health"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/status"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": false,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065486"
+  },
+  "q-latest.qmoi.ai": {
+    "domain": "q-latest.qmoi.ai",
+    "type": "service",
+    "tld_variants": [
+      "latest.stableq.ai",
+      "models.qvillage.com"
+    ],
+    "fallback_chain": [
+      "latest.stableq.ai",
+      "models.qvillage.com"
+    ],
+    "regional_endpoints": {
+      "us-east": "models-us.qmoi.ai",
+      "eu-west": "models-eu.qmoi.ai"
+    },
+    "api_endpoints": [
+      "/api/models",
+      "/api/download",
+      "/api/health"
+    ],
+    "health_check_endpoints": [
+      "/health",
+      "/status"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": false,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065492"
+  },
+  "qvillage.net": {
+    "domain": "qvillage.net",
+    "type": "fallback",
+    "tld_variants": [
+      "qvillage.io",
+      "qvillage.co"
+    ],
+    "fallback_chain": [
+      "qvillage.org",
+      "qvillage.io"
+    ],
+    "regional_endpoints": {
+      "us-east": "us-east.qvillage.net",
+      "eu-west": "eu.qvillage.net"
+    },
+    "api_endpoints": [
+      "/api/v1"
+    ],
+    "health_check_endpoints": [
+      "/health"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": false,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065497"
+  },
+  "qvillage.org": {
+    "domain": "qvillage.org",
+    "type": "fallback",
+    "tld_variants": [
+      "qvillage.co"
+    ],
+    "fallback_chain": [
+      "qglobal.org"
+    ],
+    "regional_endpoints": {
+      "us-east": "us-east.qvillage.org",
+      "eu-west": "eu.qvillage.org"
+    },
+    "api_endpoints": [
+      "/api/v1"
+    ],
+    "health_check_endpoints": [
+      "/health"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": false,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065501"
+  },
+  "qglobal.org": {
+    "domain": "qglobal.org",
+    "type": "fallback",
+    "tld_variants": [
+      "qglobal.net"
+    ],
+    "fallback_chain": [],
+    "regional_endpoints": {
+      "us-east": "us-east.qglobal.org",
+      "eu-west": "eu.qglobal.org",
+      "asia-east": "asia.qglobal.org"
+    },
+    "api_endpoints": [
+      "/api/v1"
+    ],
+    "health_check_endpoints": [
+      "/health"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": false,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065506"
+  },
+  "qparallel.prod": {
+    "domain": "qparallel.prod",
+    "type": "fallback",
+    "tld_variants": [],
+    "fallback_chain": [],
+    "regional_endpoints": {
+      "us-east": "us-east.qparallel.prod",
+      "eu-west": "eu.qparallel.prod"
+    },
+    "api_endpoints": [
+      "/api/v1"
+    ],
+    "health_check_endpoints": [
+      "/health"
+    ],
+    "ssl_enabled": true,
+    "cdn_enabled": true,
+    "critical": false,
+    "status": "active",
+    "last_updated": "2026-03-21T22:34:57.065511"
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:30.836828",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:02.902015",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:37.125424",
+  "autodev_version": "2026-04-20-aggressive"
+}

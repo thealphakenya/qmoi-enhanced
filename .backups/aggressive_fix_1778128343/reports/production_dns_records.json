@@ -1,0 +1,249 @@
+{
+  "qmoi.ai": {
+    "domain": "qmoi.ai",
+    "records": [
+      {
+        "domain": "qmoi.ai",
+        "record_type": "A",
+        "value": "76.76.21.21",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      },
+      {
+        "domain": "www.qmoi.ai",
+        "record_type": "CNAME",
+        "value": "cname.vercel-dns.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      },
+      {
+        "domain": "api.qmoi.ai",
+        "record_type": "CNAME",
+        "value": "cname.vercel-dns.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.030967",
+    "status": "active"
+  },
+  "qvillage.com": {
+    "domain": "qvillage.com",
+    "records": [
+      {
+        "domain": "qvillage.com",
+        "record_type": "A",
+        "value": "13.248.169.48",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      },
+      {
+        "domain": "www.qvillage.com",
+        "record_type": "CNAME",
+        "value": "qvillage.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      },
+      {
+        "domain": "api.qvillage.com",
+        "record_type": "CNAME",
+        "value": "qvillage.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.031555",
+    "status": "active"
+  },
+  "stableq.ai": {
+    "domain": "stableq.ai",
+    "records": [
+      {
+        "domain": "stableq.ai",
+        "record_type": "A",
+        "value": "76.76.21.21",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      },
+      {
+        "domain": "www.stableq.ai",
+        "record_type": "CNAME",
+        "value": "cname.vercel-dns.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.032232",
+    "status": "active"
+  },
+  "qcity.qmoi.ai": {
+    "domain": "qcity.qmoi.ai",
+    "records": [
+      {
+        "domain": "qcity.qmoi.ai",
+        "record_type": "CNAME",
+        "value": "cname.vercel-dns.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.032899",
+    "status": "active"
+  },
+  "qmoi-space.qmoi.ai": {
+    "domain": "qmoi-space.qmoi.ai",
+    "records": [
+      {
+        "domain": "qmoi-space.qmoi.ai",
+        "record_type": "CNAME",
+        "value": "cname.vercel-dns.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.033667",
+    "status": "active"
+  },
+  "yap.qmoi.ai": {
+    "domain": "yap.qmoi.ai",
+    "records": [
+      {
+        "domain": "yap.qmoi.ai",
+        "record_type": "CNAME",
+        "value": "cname.vercel-dns.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.034468",
+    "status": "active"
+  },
+  "q-latest.qmoi.ai": {
+    "domain": "q-latest.qmoi.ai",
+    "records": [
+      {
+        "domain": "q-latest.qmoi.ai",
+        "record_type": "CNAME",
+        "value": "cname.vercel-dns.com",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.035256",
+    "status": "active"
+  },
+  "qvillage.net": {
+    "domain": "qvillage.net",
+    "records": [
+      {
+        "domain": "qvillage.net",
+        "record_type": "A",
+        "value": "13.248.169.48",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.036178",
+    "status": "active"
+  },
+  "qvillage.org": {
+    "domain": "qvillage.org",
+    "records": [
+      {
+        "domain": "qvillage.org",
+        "record_type": "A",
+        "value": "13.248.169.48",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.037210",
+    "status": "active"
+  },
+  "qglobal.org": {
+    "domain": "qglobal.org",
+    "records": [
+      {
+        "domain": "qglobal.org",
+        "record_type": "A",
+        "value": "13.248.169.48",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.038280",
+    "status": "active"
+  },
+  "qparallel.prod": {
+    "domain": "qparallel.prod",
+    "records": [
+      {
+        "domain": "qparallel.prod",
+        "record_type": "A",
+        "value": "13.248.169.48",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.039148",
+    "status": "active"
+  },
+  "qshare.qvillage.com": {
+    "domain": "qshare.qvillage.com",
+    "records": [
+      {
+        "domain": "qshare.qvillage.com",
+        "record_type": "A",
+        "value": "13.248.169.48",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.040074",
+    "status": "active"
+  },
+  "qstore.qvillage.com": {
+    "domain": "qstore.qvillage.com",
+    "records": [
+      {
+        "domain": "qstore.qvillage.com",
+        "record_type": "A",
+        "value": "13.248.169.48",
+        "ttl": 300,
+        "priority": null,
+        "provider": "auto"
+      }
+    ],
+    "deployed_at": "2026-03-21T23:23:57.040993",
+    "status": "active"
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:06.448840",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.374314",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:11.554895",
+  "autodev_version": "2026-04-20-aggressive"
+}

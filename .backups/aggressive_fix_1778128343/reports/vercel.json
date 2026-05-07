@@ -1,0 +1,56 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "buildCommand": "npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
+  "env": {
+    "NODE_ENV": "production",
+    "QMOI_AUTO_SETUP_ENABLED": "true",
+    "QMOI_AUTO_FIX_ENABLED": "true",
+    "QMOI_AUTOprod_ENABLED": "true",
+    "QMOI_AUTO_MONITORING_ENABLED": "true",
+    "QMOI_AUTO_HEALTH_CHECK_ENABLED": "true",
+    "QMOI_AUTO_RECOVERY_ENABLED": "true",
+    "VERCEL_AUTO_DEPLOY": "true",
+    "VERCEL_AUTO_SCALE": "true",
+    "VERCEL_AUTO_ROLLBACK": "true"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production",
+      "NEXT_PUBLIC_APP_ENV": "production",
+      "QMOI_AUTO_SETUP_ENABLED": "true"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-QMOI-Auto-Deploy",
+          "value": "true"
+        },
+        {
+          "key": "X-Auto-Setup-Enabled",
+          "value": "true"
+        }
+      ]
+    }
+  ],
+  "regions": [
+    "iad1"
+  ],
+  "public": true,
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:47.781810",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.356175",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:11.467162",
+  "autodev_version": "2026-04-20-aggressive"
+}

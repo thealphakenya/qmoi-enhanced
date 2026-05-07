@@ -1,0 +1,34 @@
+{
+  "phase": "1-5 complete",
+  "title": "Comprehensive Link & Domain Fixes",
+  "timestamp": "2026-03-23 04:27:31",
+  "performance": {
+    "total_time_seconds": 4.961822748184204,
+    "files_per_second": 723.7257303208818
+  },
+  "stats": {
+    "files_processed": 3591,
+    "files_modified": 740,
+    "total_replacements": 1507,
+    "by_type": {
+      "production.qmoi.ai": 0,
+      "domain_refs": 98,
+      "internal_refs": 1392,
+      "file_links": 17,
+      "malformed_urls": 0
+    },
+    "errors": 0
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:47.153046",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.504603",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:13.220695",
+  "autodev_version": "2026-04-20-aggressive"
+}

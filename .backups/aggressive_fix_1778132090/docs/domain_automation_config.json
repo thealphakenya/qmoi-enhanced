@@ -1,0 +1,216 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-03T03:06:13.962658",
+  "total_domains": 16,
+  "domains": {
+    "qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "qmoi.ai": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "qvillage.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "qcity.ai": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "api.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "auth.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "cdn.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "voice.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "avatar.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "events.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "auto.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "workspace.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "marketplace.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "docs.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "status.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    },
+    "security.qmoi.com": {
+      "enabled": true,
+      "health_check_interval": 3600,
+      "monitor_ui_features": true,
+      "auto_remediate": true,
+      "alert_on_failure": true,
+      "active_status_required": true,
+      "min_health_score": 80,
+      "ssl_required": true,
+      "dns_required": true
+    }
+  },
+  "automation_rules": {
+    "check_frequency": "hourly",
+    "remediation_enabled": true,
+    "auto_activate_domains": true,
+    "ensure_ssl": true,
+    "validate_dns": true,
+    "monitor_ui_features": true,
+    "aggressive_checks": true
+  },
+  "alerts": {
+    "email": "thevictorkenya@outlook.com",
+    "slack": null,
+    "webhooks": []
+  },
+  "remediation_actions": {
+    "enable_ssl": true,
+    "activate_dns_records": true,
+    "redirect_to_production": true,
+    "activate_cdn": true,
+    "enable_caching": true
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:18.772466",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:06.822053",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:53.702169",
+  "autodev_version": "2026-04-20-aggressive"
+}

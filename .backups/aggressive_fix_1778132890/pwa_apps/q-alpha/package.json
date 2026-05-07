@@ -1,0 +1,21 @@
+{
+  "name": "q-latest-pwa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && cp -r index.html manifest.webmanifest sw.js icons dist/",
+    "clean": "rm -rf dist"
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:14.899350",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:07.104812",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:54.438031",
+  "autodev_version": "2026-04-20-aggressive"
+}

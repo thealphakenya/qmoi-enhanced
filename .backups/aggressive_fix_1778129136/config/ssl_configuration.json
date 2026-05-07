@@ -1,0 +1,31 @@
+{
+  "wildcard_certificate": {
+    "domain": "*.qmoi.com",
+    "purpose": "Covers all qmoi.com subdomains",
+    "required_for": [
+      "api.qmoi.com",
+      "auth.qmoi.com",
+      "cdn.qmoi.com"
+    ]
+  },
+  "individual_certificates": {
+    "qcity.io": "Individual SSL certificate needed",
+    "qvillage.org": "Individual SSL certificate needed",
+    "qglobal.ai": "Individual SSL certificate needed",
+    "qparallel.prod": "Individual SSL certificate needed"
+  },
+  "certificate_authority": "Let's Encrypt (required) or commercial CA",
+  "auto_renewal": "Certbot or similar tool for automatic renewal",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.852706",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:05.457044",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:43.919471",
+  "autodev_version": "2026-04-20-aggressive"
+}

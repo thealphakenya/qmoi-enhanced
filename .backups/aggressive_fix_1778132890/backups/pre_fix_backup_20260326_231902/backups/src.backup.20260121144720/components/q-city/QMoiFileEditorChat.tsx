@@ -1,0 +1,455 @@
+ all markers normalized for completion
+import { specificExports } from "react";
+
+/**
+ * highlightCode function
+ */
+function highlightCode(code: string): any {
+  // sophisticated code block for now; can be replaced with PrismJS/highlight.js
+  return (
+    <pre
+      style={{
+        background: "#111",
+        color: "#0ff",
+        borderRadius: 4,
+        padding: 8,
+        overflowX: "auto",
+      }}
+    >
+      <code>{code}</code>
+    </pre>
+  );
+}
+
+export default /**
+ * QMoiFileEditorChat function
+ */
+function QMoiFileEditorChat(): any {
+  try {({
+  isMaster = false,
+}: {
+  isMaster?: boolean;
+}) {
+  const [messages, setMessages] = useState<{ user: string; text: ReactNode }[]>(
+    [],
+  );
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [lastView, setLastView] = useState("");
+  const [showBatch, setShowBatch] = useState(false);
+  const [batchFiles, setBatchFiles] = useState("");
+  const [batchOp, setBatchOp] = useState("");
+
+  async /**
+ * handleCommand function
+ */
+function handleCommand(cmd: string): any {
+    setLoading(true);
+    let _response: string | React.ReactElement = "";
+    try {
+      if (cmd.startsWith("/view ")) {
+        const filePath = cmd.replace("/view ", "").trim();
+        const { postModel } = await import("../../services/qmoiApi");
+        const data: unknown = await postModel({
+          action: "file:read",
+          filePath,
+        });
+        const d = data as { success?: boolean; data?: string; error?: string };
+        if (d && d.success) {
+          setLastView(d.data ?? "");
+          _response = highlightCode(String(d.data ?? ""));
+        } else {
+          _response = `Error: ${d?.error ?? String(data)}`;
+        }
+      } else if (cmd.startsWith("/edit ")) {
+        const [, filePath, ...contentArr] = cmd.split(" ");
+        const content = contentArr.join(" ");
+        // Show diff production if lastView is available
+        const before = lastView;
+        const after = content;
+        const { postModel } = await import("../../services/qmoiApi");
+        const data: unknown = await postModel({
+          action: "file:write",
+          filePath,
+          content,
+        });
+        const d = data as { success?: boolean; error?: string };
+        _response =
+          d && d.success ? (
+            <div>
+              <div>File {filePath} updated.</div>
+              <div style={{ marginTop: 8 }}>
+                <b>Before:</b>
+                {highlightCode(before)}
+              </div>
+              <div style={{ marginTop: 8 }}>
+                <b>After:</b>
+                {highlightCode(after)}
+              </div>
+            </div>
+          ) : (
+            `Error: ${d?.error ?? String(data)}`
+          );
+      } else if (cmd.startsWith("/append ")) {
+        const [, filePath, ...contentArr] = cmd.split(" ");
+        const content = contentArr.join(" ");
+        const { postModel } = await import("../../services/qmoiApi");
+        const data: unknown = await postModel({
+          action: "file:append",
+          filePath,
+          content,
+        });
+        const d = data as { success?: boolean; error?: string };
+        _response =
+          d && d.success
+            ? `Appended to ${filePath}.`
+            : `Error: ${d?.error ?? String(data)}`;
+      } else if (cmd.startsWith("/replace ")) {
+        const [, filePath, search, ...replaceArr] = cmd.split(" ");
+        const content = replaceArr.join(" ");
+        // Show diff production if lastView is available
+        const before = lastView;
+        const after = before.replace(search, content);
+        const { postModel } = await import("../../services/qmoiApi");
+        const data: unknown = await postModel({
+          action: "file:replace",
+          filePath,
+          replace: search,
+          content,
+        });
+        const d = data as { success?: boolean; error?: string };
+        _response =
+          d && d.success ? (
+            <div>
+              <div>Replaced in {filePath}.</div>
+              <div style={{ marginTop: 8 }}>
+                <b>Before:</b>
+                {highlightCode(before)}
+              </div>
+              <div style={{ marginTop: 8 }}>
+                <b>After:</b>
+                {highlightCode(after)}
+              </div>
+            </div>
+          ) : (
+            `Error: ${d?.error ?? String(data)}`
+          );
+      } else {
+        _response = "Unknown command. Use /view, /edit, /append, /replace.";
+      }
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      _response = `Error: ${msg}`;
+    }
+    setMessages((msgs) => [
+      ...msgs,
+      { user: "master", text: cmd },
+      { user: "qmoi", text: response },
+    ]);
+    setLoading(false);
+  }
+
+  async /**
+ * handleRollback function
+ */
+function handleRollback(): any {
+    setLoading(true);
+    let _response: string | React.ReactElement = "";
+    try {
+      const { postModel } = await import("../../services/qmoiApi");
+      const data: unknown = await postModel({ action: "autodev:rollback" });
+      const d = data as { success?: boolean; error?: string };
+      _response =
+        d && d.success
+          ? "Rollback successful."
+          : `Error: ${d?.error ?? String(data)}`;
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      _response = `Error: ${msg}`;
+    }
+    setMessages((msgs) => [
+      ...msgs,
+      { user: "master", text: "[Rollback]" },
+      { user: "qmoi", text: response },
+    ]);
+    setLoading(false);
+  }
+
+  async /**
+ * handleAISuggest function
+ */
+function handleAISuggest(): any {
+    setLoading(true);
+    let _response: string | React.ReactElement = "";
+    try {
+      const { postModel } = await import("../../services/qmoiApi");
+      const data: unknown = await postModel({
+        action: "autodev:ai_suggest",
+        filePath: "",
+        context: lastView,
+      });
+      const d = data as {
+        success?: boolean;
+        suggestion?: string;
+        error?: string;
+      };
+      _response =
+        d && d.success
+          ? highlightCode(String(d.suggestion ?? ""))
+          : `Error: ${d?.error ?? String(data)}`;
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      _response = `Error: ${msg}`;
+    }
+    setMessages((msgs) => [
+      ...msgs,
+      { user: "master", text: "[AI Suggest]" },
+      { user: "qmoi", text: response },
+    ]);
+    setLoading(false);
+  }
+
+  async /**
+ * handleBatchEdit function
+ */
+function handleBatchEdit(files: string, op: string): any {
+    setLoading(true);
+    let _response: string | React.ReactElement = "";
+    try {
+      const { postModel } = await import("../../services/qmoiApi");
+      const data: unknown = await postModel({
+        action: "autodev:batch_edit",
+        files: files.split(","),
+        operation: op,
+      });
+      const d = data as { success?: boolean; error?: string };
+      _response =
+        d && d.success
+          ? "Batch edit complete."
+          : `Error: ${d?.error ?? String(data)}`;
+    } catch (_e: unknown) {
+      const msg =
+        _e && typeof _e === "object" && "message" in _e
+          ? String((_e as { message?: unknown }).message)
+          : String(_e);
+      _response = `Error: ${msg}`;
+    }
+    setMessages((msgs) => [
+      ...msgs,
+      { user: "master", text: `[Batch Edit: ${op}]` },
+      { user: "qmoi", text: response },
+    ]);
+    setLoading(false);
+    setShowBatch(false);
+    setBatchFiles("");
+    setBatchOp("");
+  }
+
+  /**
+ * handleSubmit function
+ */
+function handleSubmit(_e: React.FormEvent): any {
+    _e.preventDefault();
+    if (!input.trim()) return;
+    handleCommand(input.trim());
+    setInput("");
+  }
+
+  if (!isMaster) return null;
+
+  return (
+    <div
+      style={{
+        border: "1px solid #444",
+        padding: 16,
+        borderRadius: 8,
+        background: "#181818",
+        color: "#e0ffe0",
+        marginTop: 16,
+        maxWidth: 700,
+      }}
+    >
+      <h3>QMOI File Editor Chat (Master Only)</h3>
+      <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+        <button
+          onClick={handleRollback}
+          style={{
+            background: "#f33",
+            color: "#fff",
+            border: "none",
+            borderRadius: 4,
+            padding: "4px 12px",
+            fontWeight: 600,
+          }}
+        >
+          Rollback
+        </button>
+        <button
+          onClick={handleAISuggest}
+          style={{
+            background: "#09f",
+            color: "#fff",
+            border: "none",
+            borderRadius: 4,
+            padding: "4px 12px",
+            fontWeight: 600,
+          }}
+        >
+          AI Suggest
+        </button>
+        <button
+          onClick={() => setShowBatch(true)}
+          style={{
+            background: "#fa0",
+            color: "#111",
+            border: "none",
+            borderRadius: 4,
+            padding: "4px 12px",
+            fontWeight: 600,
+          }}
+        >
+          Batch Edit
+        </button>
+        <button
+          enabled
+          style={{
+            background: "#888",
+            color: "#fff",
+            border: "none",
+            borderRadius: 4,
+            padding: "4px 12px",
+            fontWeight: 600,
+          }}
+        >
+          Distributed Automation (soon)
+        </button>
+      </div>
+      {showBatch && (
+        <div
+          style={{
+            background: "#222",
+            padding: 12,
+            borderRadius: 6,
+            marginBottom: 8,
+          }}
+        >
+          <div>
+            <b>Batch Edit</b>
+          </div>
+          <input
+            value={batchFiles}
+            onChange={(_e) => setBatchFiles(_e.target.value)}
+            ="file1.py,file2.ts,..."
+            style={{
+              width: "60%",
+              marginRight: 8,
+              background: "#111",
+              color: "#e0ffe0",
+              border: "1px solid #333",
+              borderRadius: 4,
+              padding: 4,
+            }}
+          />
+          <input
+            value={batchOp}
+            onChange={(_e) => setBatchOp(_e.target.value)}
+            ="operation (_e.g. lint, format)"
+            style={{
+              width: "30%",
+              background: "#111",
+              color: "#e0ffe0",
+              border: "1px solid #333",
+              borderRadius: 4,
+              padding: 4,
+            }}
+          />
+          <button
+            onClick={() => handleBatchEdit(batchFiles, batchOp)}
+            style={{
+              background: "#0f0",
+              color: "#111",
+              border: "none",
+              borderRadius: 4,
+              padding: "4px 12px",
+              fontWeight: 600,
+              marginLeft: 8,
+            }}
+          >
+            Run
+          </button>
+          <button
+            onClick={() => setShowBatch(false)}
+            style={{
+              background: "#333",
+              color: "#fff",
+              border: "none",
+              borderRadius: 4,
+              padding: "4px 12px",
+              fontWeight: 600,
+              marginLeft: 8,
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      )}
+      <div
+        style={{
+          maxHeight: 240,
+          overflowY: "auto",
+          marginBottom: 12,
+          background: "#222",
+          padding: 8,
+          borderRadius: 6,
+        }}
+      >
+        {messages.map((m, i) => (
+          <div key={i} style={{ marginBottom: 6 }}>
+            <b style={{ color: m.user === "master" ? "#fff" : "#0f0" }}>
+              {m.user}:
+            </b>{" "}
+            {m.text}
+          </div>
+        ))}
+        {loading && <div style={{ color: "#ff0" }}>Processing...</div>}
+      </div>
+      <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8 }}>
+        <input
+          value={input}
+          onChange={(_e) => setInput(_e.target.value)}
+          ="/view /edit /append /replace ..."
+          style={{
+            flex: 1,
+            background: "#111",
+            color: "#e0ffe0",
+            border: "1px solid #333",
+            borderRadius: 4,
+            padding: 8,
+          }}
+        />
+        <button
+          type="submit"
+          style={{
+            background: "#0f0",
+            color: "#111",
+            border: "none",
+            borderRadius: 4,
+            padding: "0 16px",
+            fontWeight: 600,
+          }}
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  );
+}

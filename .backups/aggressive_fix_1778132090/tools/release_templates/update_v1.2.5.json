@@ -1,0 +1,30 @@
+{
+  "version": "v1.2.5",
+  "platforms": [
+    {
+      "os": "debian",
+      "file": "qmoi_ai.deb",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.deb"
+    },
+    {
+      "os": "android_smarttv",
+      "file": "qmoi_ai_smarttv.apk",
+      "sha256": "<PUT_SHA256_HERE>",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk"
+    }
+  ],
+  "notes": "Fill in checksums and upload artifacts to GitHub Releases for tag v1.2.5.",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:20:03.764713",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:07.433887",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:00.594383",
+  "autodev_version": "2026-04-20-aggressive"
+}

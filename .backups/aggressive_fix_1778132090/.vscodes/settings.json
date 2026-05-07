@@ -1,0 +1,29 @@
+{
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.maxProjectFileCount": 2000,
+  "github.copilot.enable": true,
+  "github.copilot.autocomplete": "advanced",
+  "github.copilot.production.suggest": true,
+  "github.copilot.advanced.ghostTextEnabled": true,
+  "editor.formatOnSave": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "workbench.startupEditor": "welcomePage",
+  "search.exclude": {
+    "**/datasets/**": true,
+    "**/backups/**": true,
+    "**/downloads/**": true
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:58.196348",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:07.184148",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:54.701501",
+  "autodev_version": "2026-04-20-aggressive"
+}

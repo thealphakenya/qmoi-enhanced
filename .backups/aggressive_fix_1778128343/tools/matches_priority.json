@@ -1,0 +1,1854 @@
+{
+  "files": [
+    [
+      "mobile/components/prodiceManagementScreen.js",
+      {
+        "score": 40,
+        "matches": [
+          {
+            "line": 326,
+            "snippet": "[production implementation complete]=\"Enter prodice name\"",
+            "score": 10
+          },
+          {
+            "line": 356,
+            "snippet": "[production implementation complete]=\"192.168.1.100\"",
+            "score": 10
+          },
+          {
+            "line": 365,
+            "snippet": "[production implementation complete]=\"3000\"",
+            "score": 10
+          },
+          {
+            "line": 374,
+            "snippet": "[production implementation complete]=\"prodice description\"",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/api/routes/selfwork.ts",
+      {
+        "score": 40,
+        "matches": [
+          {
+            "line": 92,
+            "snippet": "// production_IMPLEMENTED, this would execute: npm run test:unit && npm run test:integration",
+            "score": 10
+          },
+          {
+            "line": 142,
+            "snippet": "// production_IMPLEMENTED, this would analyze error logs, stack traces, etc.",
+            "score": 10
+          },
+          {
+            "line": 205,
+            "snippet": "// Store Autoprod state (production_IMPLEMENTED, save to database)",
+            "score": 10
+          },
+          {
+            "line": 245,
+            "snippet": "// production_IMPLEMENTED, this would use QMOI to analyze requirements and generate code",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/setupTests.ts.bak.1768901506",
+      {
+        "score": 25,
+        "matches": [
+          {
+            "line": 76,
+            "snippet": "// Ensure fetch exists; if not, provide a production testing framework configuredn logging replaced with production logging removed real (MSW will set up an implementation)",
+            "score": 4
+          },
+          {
+            "line": 360,
+            "snippet": "// complete fetch-based real so tests don't hit the network. This mirrors",
+            "score": 1
+          },
+          {
+            "line": 363,
+            "snippet": "\"SETUP_TESTS: Falling back to sophisticated fetch real server for tests\",",
+            "score": 1
+          },
+          {
+            "line": 468,
+            "snippet": "// Attempt an early reset of real prisma stores at module load. This ensures",
+            "score": 1
+          },
+          {
+            "line": 469,
+            "snippet": "// a clean in-memory DB even if other modules imported the real before the",
+            "score": 1
+          },
+          {
+            "line": 504,
+            "snippet": "// Seed real-prisma stores with complete data used by admin and wallet tests",
+            "score": 1
+          },
+          {
+            "line": 559,
+            "snippet": "// Reset real DB stores before each test to ensure isolation between tests",
+            "score": 1
+          },
+          {
+            "line": 562,
+            "snippet": "// Force-clear the global real-prisma stores directly to avoid cases",
+            "score": 1
+          },
+          {
+            "line": 576,
+            "snippet": "console.warn(\"SETUP_TESTS: beforeEach - resetting real stores\");",
+            "score": 1
+          },
+          {
+            "line": 579,
+            "snippet": "// Primary: reset real prisma if available",
+            "score": 1
+          },
+          {
+            "line": 640,
+            "snippet": "// RELEASE: print real store counts to help diagnose pre-existing data",
+            "score": 1
+          },
+          {
+            "line": 665,
+            "snippet": "\"SETUP_TESTS: real store counts ->\",",
+            "score": 1
+          },
+          {
+            "line": 680,
+            "snippet": "// Ensure a complete global Response implementation exists (used by NextResponse plumbing)",
+            "score": 4
+          },
+          {
+            "line": 684,
+            "snippet": "typeof (global as any).Response.production.json !== \"function\";",
+            "score": 1
+          },
+          {
+            "line": 753,
+            "snippet": "// Install a default production testing framework configuredn logging replaced with production logging removed `fetch` real if one is not already present. This",
+            "score": 1
+          },
+          {
+            "line": 769,
+            "snippet": "!(getGlobal(\"fetch\") as unknown as { real?: unknown }).real",
+            "score": 1
+          },
+          {
+            "line": 1048,
+            "snippet": "// Ensure we clear real DB after each test as well to handle cases where",
+            "score": 1
+          },
+          {
+            "line": 1083,
+            "snippet": "// real sessionStorage",
+            "score": 1
+          },
+          {
+            "line": 1094,
+            "snippet": "// real console methods to reduce noise in tests",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/WhatsAppService.ts.bak.1768901506",
+      {
+        "score": 25,
+        "matches": [
+          {
+            "line": 1,
+            "snippet": "// IMPLEMENTED: 2 value(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.",
+            "score": 1
+          },
+          {
+            "line": 499,
+            "snippet": "const balance = 1250.75; // [production implementation complete] balance",
+            "score": 10
+          },
+          {
+            "line": 527,
+            "snippet": "const totalEarnings = 847.5; // [production implementation complete] earnings",
+            "score": 10
+          },
+          {
+            "line": 778,
+            "snippet": "// Implementation: Call POST /api/qcity/logs with master credentials",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "mobile/components/AlertSettingsScreen.js.bak.1768901506",
+      {
+        "score": 21,
+        "matches": [
+          {
+            "line": 1,
+            "snippet": "// IMPLEMENTED: 2 value(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.",
+            "score": 1
+          },
+          {
+            "line": 60,
+            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [production implementation complete]=\"TypeError,ReferenceError\" style={styles.input} />",
+            "score": 10
+          },
+          {
+            "line": 62,
+            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [production implementation complete]=\"22:00-07:00\" style={styles.input} />",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "mobile/App.js",
+      {
+        "score": 20,
+        "matches": [
+          {
+            "line": 56,
+            "snippet": "<TextInput [production implementation complete]=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
+            "score": 10
+          },
+          {
+            "line": 57,
+            "snippet": "<TextInput [production implementation complete]=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "mobile/components/AlertSettingsScreen.js",
+      {
+        "score": 20,
+        "matches": [
+          {
+            "line": 60,
+            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [production implementation complete]=\"TypeError,ReferenceError\" style={styles.input} />",
+            "score": 10
+          },
+          {
+            "line": 62,
+            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [production implementation complete]=\"22:00-07:00\" style={styles.input} />",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/AppManagementService.ts",
+      {
+        "score": 18,
+        "matches": [
+          {
+            "line": 298,
+            "snippet": "size: 10 * 1024 * 1024, // 10MB ([production implementation complete])",
+            "score": 10
+          },
+          {
+            "line": 423,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would create actual shortcuts",
+            "score": 4
+          },
+          {
+            "line": 643,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would use Git commands",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "pwa_apps/q-latest/index.html",
+      {
+        "score": 16,
+        "matches": [
+          {
+            "line": 149,
+            "snippet": "<input id=\"su-username\" implementation=\"username\" />",
+            "score": 4
+          },
+          {
+            "line": 150,
+            "snippet": "<input id=\"su-password\" implementation=\"password\" type=\"password\" />",
+            "score": 4
+          },
+          {
+            "line": 155,
+            "snippet": "<input id=\"li-username\" implementation=\"username\" />",
+            "score": 4
+          },
+          {
+            "line": 156,
+            "snippet": "<input id=\"li-password\" implementation=\"password\" type=\"password\" />",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/EnhancedErrorFixingService.ts",
+      {
+        "score": 16,
+        "matches": [
+          {
+            "line": 550,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would modify the actual file",
+            "score": 4
+          },
+          {
+            "line": 572,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would execute the command",
+            "score": 4
+          },
+          {
+            "line": 647,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would gather actual system metrics",
+            "score": 4
+          },
+          {
+            "line": 696,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would send notifications via email, Slack, etc.",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/config/trading.ts",
+      {
+        "score": 13,
+        "matches": [
+          {
+            "line": 146,
+            "snippet": "// Implement automatic recovery",
+            "score": 1
+          },
+          {
+            "line": 160,
+            "snippet": "// Implement various recovery strategies",
+            "score": 1
+          },
+          {
+            "line": 200,
+            "snippet": "// Implement network status check",
+            "score": 1
+          },
+          {
+            "line": 331,
+            "snippet": "// Implement strategy execution",
+            "score": 1
+          },
+          {
+            "line": 451,
+            "snippet": "// Implement config persistence",
+            "score": 1
+          },
+          {
+            "line": 455,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would fetch from a database",
+            "score": 4
+          },
+          {
+            "line": 484,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would update the database",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "mobile/android/app/build.gradle",
+      {
+        "score": 12,
+        "matches": [
+          {
+            "line": 95,
+            "snippet": "implementation(\"com.facebook.react:react-android\")",
+            "score": 4
+          },
+          {
+            "line": 98,
+            "snippet": "implementation(\"com.facebook.react:hermes-android\")",
+            "score": 4
+          },
+          {
+            "line": 100,
+            "snippet": "implementation jscFlavor",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiKernelPanel.integration.test.tsx",
+      {
+        "score": 12,
+        "matches": [
+          {
+            "line": 24,
+            "snippet": ".[production_IMPLEMENTED]Implementation(async (input: unknown, _init: unknown) => {",
+            "score": 4
+          },
+          {
+            "line": 187,
+            "snippet": ".[production_IMPLEMENTED]Implementation(async (arg: unknown) => {",
+            "score": 4
+          },
+          {
+            "line": 199,
+            "snippet": ".[production_IMPLEMENTED]Implementation(async (arg: unknown) => {",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/hooks/useAutoProjects.ts",
+      {
+        "score": 12,
+        "matches": [
+          {
+            "line": 276,
+            "snippet": "// In /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would call the WhatsApp API",
+            "score": 4
+          },
+          {
+            "line": 292,
+            "snippet": "// In /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would call the WhatsApp API",
+            "score": 4
+          },
+          {
+            "line": 311,
+            "snippet": "// In /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would call the WhatsApp API",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/BrowserService.ts.bak.1768901506",
+      {
+        "score": 11,
+        "matches": [
+          {
+            "line": 355,
+            "snippet": "// live page load",
+            "score": 1
+          },
+          {
+            "line": 424,
+            "snippet": "// live smart search processing",
+            "score": 1
+          },
+          {
+            "line": 433,
+            "snippet": "// live content summary generation",
+            "score": 1
+          },
+          {
+            "line": 442,
+            "snippet": "// live translation processing",
+            "score": 1
+          },
+          {
+            "line": 448,
+            "snippet": "// live security analysis",
+            "score": 1
+          },
+          {
+            "line": 468,
+            "snippet": "// live AI-powered search suggestions",
+            "score": 1
+          },
+          {
+            "line": 478,
+            "snippet": "// live AI content summarization",
+            "score": 1
+          },
+          {
+            "line": 485,
+            "snippet": "// live translation",
+            "score": 1
+          },
+          {
+            "line": 496,
+            "snippet": "// live security analysis",
+            "score": 1
+          },
+          {
+            "line": 517,
+            "snippet": "// live live content detection",
+            "score": 1
+          },
+          {
+            "line": 650,
+            "snippet": "// live download progress",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/app/api/qmoi/self-work/RELEASE/route.ts",
+      {
+        "score": 11,
+        "matches": [
+          {
+            "line": 15,
+            "snippet": "// production_IMPLEMENTED, this would:",
+            "score": 10
+          },
+          {
+            "line": 48,
+            "snippet": "fix: \"Use useCallback with proper dependency array, or implement locking\",",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "mobile/components/AnalyticsScreen.js",
+      {
+        "score": 10,
+        "matches": [
+          {
+            "line": 54,
+            "snippet": "// Set default data for [production implementation complete]",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/GitStatus.tsx",
+      {
+        "score": 10,
+        "matches": [
+          {
+            "line": 27,
+            "snippet": "// production_IMPLEMENTED, fetch from backend git API endpoint",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/FileExplorer.tsx",
+      {
+        "score": 10,
+        "matches": [
+          {
+            "line": 38,
+            "snippet": "[production_IMPLEMENTED] download - production_IMPLEMENTED, fetch from backend",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/AutoHealingPlatform.tsx",
+      {
+        "score": 10,
+        "matches": [
+          {
+            "line": 40,
+            "snippet": "issue: \"Out-of-memory errors production_IMPLEMENTED\",",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/Onboarding.tsx",
+      {
+        "score": 10,
+        "matches": [
+          {
+            "line": 24,
+            "snippet": "// Google OAuth [production_IMPLEMENTED] - production_IMPLEMENTED, integrate with @react-oauth/google",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/lib/security_check.ts",
+      {
+        "score": 10,
+        "matches": [
+          {
+            "line": 43,
+            "snippet": "// avoid using `// production: debugger removed` statement production_IMPLEMENTED",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/app/api/qmoi/self-work/code-review/route.ts",
+      {
+        "score": 10,
+        "matches": [
+          {
+            "line": 21,
+            "snippet": "// production_IMPLEMENTED, integrate with actual code analysis tools",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/app/api/qmoi/self-work/run-tests/route.ts",
+      {
+        "score": 10,
+        "matches": [
+          {
+            "line": 13,
+            "snippet": "// production_IMPLEMENTED, this would:",
+            "score": 10
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiToolbar.tsx.bak2",
+      {
+        "score": 9,
+        "matches": [
+          {
+            "line": 52,
+            "snippet": "// live unread count",
+            "score": 1
+          },
+          {
+            "line": 56,
+            "snippet": "// live health status",
+            "score": 1
+          },
+          {
+            "line": 61,
+            "snippet": "// live WiFi status",
+            "score": 1
+          },
+          {
+            "line": 68,
+            "snippet": "// live Bluetooth status",
+            "score": 1
+          },
+          {
+            "line": 73,
+            "snippet": "// live prodice health",
+            "score": 1
+          },
+          {
+            "line": 86,
+            "snippet": "// live advanced notifications",
+            "score": 1
+          },
+          {
+            "line": 209,
+            "snippet": "// live WiFi connect",
+            "score": 1
+          },
+          {
+            "line": 219,
+            "snippet": "// live Bluetooth connect",
+            "score": 1
+          },
+          {
+            "line": 229,
+            "snippet": "// live prodice optimization",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "pwa_apps/qmoi-ai/index.html",
+      {
+        "score": 8,
+        "matches": [
+          {
+            "line": 372,
+            "snippet": "implementation=\"Ask QMOI...\"",
+            "score": 4
+          },
+          {
+            "line": 532,
+            "snippet": "// remove thinking implementation",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/FaceRecognitionService.ts",
+      {
+        "score": 8,
+        "matches": [
+          {
+            "line": 416,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would use more sophisticated algorithms",
+            "score": 4
+          },
+          {
+            "line": 431,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would use more sophisticated algorithms",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QNewsDashboard.tsx.bak2",
+      {
+        "score": 7,
+        "matches": [
+          {
+            "line": 136,
+            "snippet": "// DONE: Analytics, engagement, post history",
+            "score": 1
+          },
+          {
+            "line": 137,
+            "snippet": "// DONE: Post to WhatsApp, Telegram, etc.",
+            "score": 1
+          },
+          {
+            "line": 147,
+            "snippet": "value=\"Title\"",
+            "score": 1
+          },
+          {
+            "line": 155,
+            "snippet": "value=\"Content\"",
+            "score": 1
+          },
+          {
+            "line": 165,
+            "snippet": "value=\"Category (_e.g. earning, project, marketing, global, local)\"",
+            "score": 1
+          },
+          {
+            "line": 174,
+            "snippet": "value=\"Media URL\"",
+            "score": 1
+          },
+          {
+            "line": 200,
+            "snippet": "value=\"Schedule (ISO, optional)\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiState.tsx.bak2",
+      {
+        "score": 6,
+        "matches": [
+          {
+            "line": 48,
+            "snippet": "// live real-time Qmoi state updates",
+            "score": 3
+          },
+          {
+            "line": 328,
+            "snippet": "value=\"User\"",
+            "score": 1
+          },
+          {
+            "line": 336,
+            "snippet": "value=\"Action\"",
+            "score": 1
+          },
+          {
+            "line": 344,
+            "snippet": "value=\"Status\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/prodicePanel.tsx.bak2",
+      {
+        "score": 6,
+        "matches": [
+          {
+            "line": 106,
+            "snippet": "value=\"Name\"",
+            "score": 1
+          },
+          {
+            "line": 112,
+            "snippet": "value=\"Host\"",
+            "score": 1
+          },
+          {
+            "line": 118,
+            "snippet": "value=\"Port\"",
+            "score": 1
+          },
+          {
+            "line": 127,
+            "snippet": "value=\"Username\"",
+            "score": 1
+          },
+          {
+            "line": 133,
+            "snippet": "value=\"Password\"",
+            "score": 1
+          },
+          {
+            "line": 140,
+            "snippet": "value=\"Private Key\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/WhatsAppService.ts",
+      {
+        "score": 6,
+        "matches": [
+          {
+            "line": 552,
+            "snippet": "return `\ud83d\udcb0 Pesapal Balance: Unavailable\\n\\n\u26a0\ufe0f Pesapal integration is not configured. Set PESAPAL_BALANCE_URL or implement PesapalService.\\n\ud83d\udcc4 See ENVIRONMENT_CONFIG.md for required keys.`;",
+            "score": 1
+          },
+          {
+            "line": 606,
+            "snippet": "return `\ud83d\udcc8 Today's Earnings: Unavailable\\n\\n\u26a0\ufe0f Earnings integration not configured. Set QALLPURPOSE_EARNINGS_URL or implement QAllpurposeService.`;",
+            "score": 1
+          },
+          {
+            "line": 855,
+            "snippet": "// Implementation: Call POST /api/qcity/logs with master credentials",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/config/bitget.ts.bak.1768901506",
+      {
+        "score": 6,
+        "matches": [
+          {
+            "line": 861,
+            "snippet": "// Implement IP whitelist validation logic",
+            "score": 1
+          },
+          {
+            "line": 954,
+            "snippet": "// Implement balance change detection logic",
+            "score": 1
+          },
+          {
+            "line": 959,
+            "snippet": "// Implement trading volume detection logic",
+            "score": 1
+          },
+          {
+            "line": 1017,
+            "snippet": "// Implement secure key backup logic",
+            "score": 1
+          },
+          {
+            "line": 1076,
+            "snippet": "// Implement _request signature validation logic",
+            "score": 1
+          },
+          {
+            "line": 1177,
+            "snippet": "// Implement API credential validation logic here",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/config/bitget.ts",
+      {
+        "score": 6,
+        "matches": [
+          {
+            "line": 863,
+            "snippet": "// Implement IP whitelist validation logic",
+            "score": 1
+          },
+          {
+            "line": 958,
+            "snippet": "// Implement balance change detection logic",
+            "score": 1
+          },
+          {
+            "line": 963,
+            "snippet": "// Implement trading volume detection logic",
+            "score": 1
+          },
+          {
+            "line": 1021,
+            "snippet": "// Implement secure key backup logic",
+            "score": 1
+          },
+          {
+            "line": 1080,
+            "snippet": "// Implement _request signature validation logic",
+            "score": 1
+          },
+          {
+            "line": 1184,
+            "snippet": "// Implement API credential validation logic here",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/Onboarding.tsx.bak2",
+      {
+        "score": 5,
+        "matches": [
+          {
+            "line": 23,
+            "snippet": "// DONE: Integrate Google OAuth",
+            "score": 1
+          },
+          {
+            "line": 36,
+            "snippet": "// DONE: Save user details and preferences",
+            "score": 1
+          },
+          {
+            "line": 69,
+            "snippet": "value=\"Full Name\"",
+            "score": 1
+          },
+          {
+            "line": 77,
+            "snippet": "value=\"Email\"",
+            "score": 1
+          },
+          {
+            "line": 107,
+            "snippet": "{/* DONE: Add preference _options */}",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/DocumentManagerPanel.tsx.bak2",
+      {
+        "score": 5,
+        "matches": [
+          {
+            "line": 68,
+            "snippet": "value=\"Document Name\"",
+            "score": 1
+          },
+          {
+            "line": 74,
+            "snippet": "value=\"Type (pdf, docx, etc.)\"",
+            "score": 1
+          },
+          {
+            "line": 80,
+            "snippet": "value=\"Content (or file data)\"",
+            "score": 1
+          },
+          {
+            "line": 91,
+            "snippet": "value=\"Search documents...\"",
+            "score": 1
+          },
+          {
+            "line": 126,
+            "snippet": "{/* DONE: Advanced backup/restore, cloud integration */}",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/AccountAutomationPanel.tsx.bak2",
+      {
+        "score": 5,
+        "matches": [
+          {
+            "line": 76,
+            "snippet": "value=\"Username\"",
+            "score": 1
+          },
+          {
+            "line": 84,
+            "snippet": "value=\"Email\"",
+            "score": 1
+          },
+          {
+            "line": 90,
+            "snippet": "value=\"Platform (_e.g. WhatsApp, Telegram)\"",
+            "score": 1
+          },
+          {
+            "line": 106,
+            "snippet": "value=\"Account ID to check status\"",
+            "score": 1
+          },
+          {
+            "line": 149,
+            "snippet": "{/* DONE: Modular platform support, shell/VPN/security enhancements */}",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/SchedulePanel.tsx.bak2",
+      {
+        "score": 5,
+        "matches": [
+          {
+            "line": 96,
+            "snippet": "value=\"Name\"",
+            "score": 1
+          },
+          {
+            "line": 102,
+            "snippet": "value=\"Command\"",
+            "score": 1
+          },
+          {
+            "line": 110,
+            "snippet": "value=\"Cron\"",
+            "score": 1
+          },
+          {
+            "line": 116,
+            "snippet": "value=\"prodice ID\"",
+            "score": 1
+          },
+          {
+            "line": 124,
+            "snippet": "value=\"Notify\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/config/assets.ts",
+      {
+        "score": 5,
+        "matches": [
+          {
+            "line": 101,
+            "snippet": "// /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would fetch current exchange rates",
+            "score": 4
+          },
+          {
+            "line": 133,
+            "snippet": "// Implement rebalancing logic here",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/plugins/AIReviewPlugin.ts",
+      {
+        "score": 4,
+        "matches": [
+          {
+            "line": 4,
+            "snippet": "// complete non-JSX plugin implementation to avoid TSX in .ts file.",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/PrivacyModeToggle.tsx",
+      {
+        "score": 4,
+        "matches": [
+          {
+            "line": 11,
+            "snippet": "// In /* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would update global state and mask sensitive data",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/AuditLogPanel.tsx.bak2",
+      {
+        "score": 4,
+        "matches": [
+          {
+            "line": 43,
+            "snippet": "value=\"Action\"",
+            "score": 1
+          },
+          {
+            "line": 49,
+            "snippet": "value=\"User\"",
+            "score": 1
+          },
+          {
+            "line": 55,
+            "snippet": "value=\"prodice\"",
+            "score": 1
+          },
+          {
+            "line": 63,
+            "snippet": "value=\"Status\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/SocialAutomationPanel.tsx.bak2",
+      {
+        "score": 4,
+        "matches": [
+          {
+            "line": 67,
+            "snippet": "value=\"Status/News Content\"",
+            "score": 1
+          },
+          {
+            "line": 73,
+            "snippet": "value=\"Platform (WhatsApp, Telegram, etc.)\"",
+            "score": 1
+          },
+          {
+            "line": 99,
+            "snippet": "value=\"Tag\"",
+            "score": 1
+          },
+          {
+            "line": 122,
+            "snippet": "{/* DONE: Info gathering, community features */}",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QFileManager.tsx.bak2",
+      {
+        "score": 4,
+        "matches": [
+          {
+            "line": 79,
+            "snippet": "// live file data",
+            "score": 1
+          },
+          {
+            "line": 205,
+            "snippet": "// live deletion",
+            "score": 1
+          },
+          {
+            "line": 219,
+            "snippet": "// live AI organization",
+            "score": 1
+          },
+          {
+            "line": 391,
+            "snippet": "value=\"\ud83d\udd0d Search files, folders, or tags...\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/api/routes/links-validation.ts",
+      {
+        "score": 4,
+        "matches": [
+          {
+            "line": 203,
+            "snippet": "// Filter links by type (implementation depends on ScanResult structure)",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/AutoResearcher.ts",
+      {
+        "score": 4,
+        "matches": [
+          {
+            "line": 20,
+            "snippet": "* [production_IMPLEMENTED] implementation \u2014 integrate search/AI later.",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/VoiceRecognitionService.ts",
+      {
+        "score": 4,
+        "matches": [
+          {
+            "line": 877,
+            "snippet": "// Implementation depends on platform",
+            "score": 4
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiFileEditorChat.tsx.bak2",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 299,
+            "snippet": "value=\"file1.py,file2.ts,...\"",
+            "score": 1
+          },
+          {
+            "line": 313,
+            "snippet": "value=\"operation (_e.g. lint, format)\"",
+            "score": 1
+          },
+          {
+            "line": 377,
+            "snippet": "value=\"/view /edit /append /replace ...\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/index.ts.bak2",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 2,
+            "snippet": "export * from \"./QMoiMediaManager\"; // DONE: Implement",
+            "score": 1
+          },
+          {
+            "line": 3,
+            "snippet": "export * from \"./QMoiProjectDashboard\"; // DONE: Implement",
+            "score": 1
+          },
+          {
+            "line": 4,
+            "snippet": "export * from \"./QMoiSettingsPanel\"; // DONE: Implement",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiMediaManager.tsx.bak2",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 4,
+            "snippet": "// DONE: Fetch media list from backend",
+            "score": 1
+          },
+          {
+            "line": 5,
+            "snippet": "// DONE: Implement search, download, and watch features",
+            "score": 1
+          },
+          {
+            "line": 6,
+            "snippet": "// DONE: Enforce copyright compliance",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiProjectDashboard.tsx.bak2",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 4,
+            "snippet": "// DONE: Fetch project list from backend",
+            "score": 1
+          },
+          {
+            "line": 5,
+            "snippet": "// DONE: Implement add/remove/monitor project features",
+            "score": 1
+          },
+          {
+            "line": 6,
+            "snippet": "// DONE: Support plugins/modules for new project types",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QOxygen.tsx.bak2",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 44,
+            "snippet": "// live real-time pulse and emotion updates",
+            "score": 3
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/AvatarSelector.tsx.bak2",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 247,
+            "snippet": "<SelectValue value=\"Category\" />",
+            "score": 1
+          },
+          {
+            "line": 263,
+            "snippet": "<SelectValue value=\"Quality\" />",
+            "score": 1
+          },
+          {
+            "line": 279,
+            "snippet": "<SelectValue value=\"Engine\" />",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiKernelPanel.integration.test.tsx.bak.1768901506",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 89,
+            "snippet": "// Reset unknown runtime handler overrides and clear real call history between",
+            "score": 1
+          },
+          {
+            "line": 177,
+            "snippet": "// Replace handlers for this test to live a server error",
+            "score": 1
+          },
+          {
+            "line": 203,
+            "snippet": "// isn't active), real fetch as a deterministic fallback for this test.",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/prodicesHub.tsx.bak2",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 8,
+            "snippet": "// live master check (replace with real auth logic)",
+            "score": 3
+          }
+        ]
+      }
+    ],
+    [
+      "src/adapters/clientAdapters.ts",
+      {
+        "score": 3,
+        "matches": [
+          {
+            "line": 4,
+            "snippet": "// These call backend API endpoints (preferred) which should implement real third-party integrations.",
+            "score": 3
+          }
+        ]
+      }
+    ],
+    [
+      "src/wallet.ts",
+      {
+        "score": 2,
+        "matches": [
+          {
+            "line": 11,
+            "snippet": "// Optional operations adapters may implement for richer features",
+            "score": 1
+          },
+          {
+            "line": 57,
+            "snippet": "// If API key present, adapters may implement a live testnet call. Keep this complete and safe.",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiMemoryPanel.tsx.bak2",
+      {
+        "score": 2,
+        "matches": [
+          {
+            "line": 102,
+            "snippet": "value=\"Feedback (praise/correction)\"",
+            "score": 1
+          },
+          {
+            "line": 108,
+            "snippet": "value=\"Correction (optional)\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiSettingsPanel.tsx.bak2",
+      {
+        "score": 2,
+        "matches": [
+          {
+            "line": 99,
+            "snippet": "value=\"_e.g. build,deploy,test\"",
+            "score": 1
+          },
+          {
+            "line": 111,
+            "snippet": "value=\"_e.g. images,docs,code\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiSettingsPanel.tsx.bak.1768901506",
+      {
+        "score": 2,
+        "matches": [
+          {
+            "line": 127,
+            "snippet": "value=\"_e.g. build,deploy,test\"",
+            "score": 1
+          },
+          {
+            "line": 139,
+            "snippet": "value=\"_e.g. images,docs,code\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiKernelPanel.integration.test.tsx.bak2",
+      {
+        "score": 2,
+        "matches": [
+          {
+            "line": 83,
+            "snippet": "// Reset unknown runtime handler overrides and clear real call history between",
+            "score": 1
+          },
+          {
+            "line": 141,
+            "snippet": "// Replace handlers for this test to live a server _error",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/VoiceSelector.tsx.bak2",
+      {
+        "score": 2,
+        "matches": [
+          {
+            "line": 136,
+            "snippet": "// live audio playback",
+            "score": 1
+          },
+          {
+            "line": 258,
+            "snippet": "value=\"Enter text to production the voice...\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/auth/AuthManager.ts",
+      {
+        "score": 2,
+        "matches": [
+          {
+            "line": 293,
+            "snippet": "[production_IMPLEMENTED]: implement WhatsApp/face/voice confirmation",
+            "score": 1
+          },
+          {
+            "line": 298,
+            "snippet": "// production: implement multi-factor confirmation via WhatsApp/biometrics",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/AIRequestRouter.ts",
+      {
+        "score": 2,
+        "matches": [
+          {
+            "line": 101,
+            "snippet": "// production: implement file editing, production, commit/rollback with VCS",
+            "score": 1
+          },
+          {
+            "line": 106,
+            "snippet": "// production: implement project/task switching and continuation logic",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "pwa_apps/qmoi-ai/sw.js",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 200,
+            "snippet": "// Implement your sync logic here",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/plugins/PluginManager.ts.bak.1768901506",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 1,
+            "snippet": "// QMOI Plugin Manager implementation",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/FloatingAQ.tsx",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 114,
+            "snippet": "value=\"Ask a question...\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/ComponentGallery.tsx",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 398,
+            "snippet": "value=\"Search components...\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/@vercel/analytics/next.tsx.bak.1768901506",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 5,
+            "snippet": "// complete analytics implementation: log pageview for local prod/tests",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/SelfHealPanel.tsx.bak.1768901506",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 112,
+            "snippet": "// Scheduling UI (value)",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/KnowledgeEngine.tsx",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 206,
+            "snippet": "[production_IMPLEMENTED]=\"e.g., How do I implement a transformer model?\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QApiKeyManager.tsx.bak2",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 88,
+            "snippet": "{/* DONE: Advanced logging, persistent storage, usage logs */}",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QAvatar.tsx.bak.1768901506",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 80,
+            "snippet": "src=\"/value-logo.png\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/CommandPanel.tsx.bak.1768901506",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 107,
+            "snippet": "value=\"Enter command...\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/UnifiedAPI.tsx",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 134,
+            "snippet": "[production_IMPLEMENTED]: Implement endpoint creation",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/SelfHealPanel.tsx.bak2",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 107,
+            "snippet": "// Scheduling UI (value)",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiKernelPanel.test.tsx.bak2",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 6,
+            "snippet": "test(\"QMoiKernelPanel renders value without crashing\", () => {",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QMoiDatabaseDashboard.tsx.bak2",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 61,
+            "snippet": "value=\"New table name\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/ZeroRatedPanel.tsx.bak2",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 11,
+            "snippet": "// value: fetch status from backend or local state",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/EarningDashboard.tsx.bak2",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 98,
+            "snippet": "{/* DONE: Advanced analytics, strategy management */}",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/CommandPanel.tsx.bak2",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 99,
+            "snippet": "value=\"Enter command...\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/components/q-city/QAvatar.tsx.bak2",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 69,
+            "snippet": "src=\"/value-logo.png\"",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/hooks/useQmoiKernel.test.ts",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 7,
+            "snippet": "// real global fetch",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/EnhancedRevenueAutomationService.ts.bak.1768903539",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 138,
+            "snippet": "// live deal discovery",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/EnhancedRevenueAutomationService.ts.bak.1768901506",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 138,
+            "snippet": "// live deal discovery",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/EnhancedSiteGenerationService.ts.bak.1768903539",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 145,
+            "snippet": "// live site deployment",
+            "score": 1
+          }
+        ]
+      }
+    ],
+    [
+      "src/services/EnhancedSiteGenerationService.ts.bak.1768901506",
+      {
+        "score": 1,
+        "matches": [
+          {
+            "line": 145,
+            "snippet": "// live site deployment",
+            "score": 1
+          }
+        ]
+      }
+    ]
+  ],
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:59.592871",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:07.250627",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:57.663777",
+  "autodev_version": "2026-04-20-aggressive"
+}

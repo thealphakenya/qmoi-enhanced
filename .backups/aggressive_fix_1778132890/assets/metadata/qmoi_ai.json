@@ -1,0 +1,143 @@
+{
+  "id": "qmoi_ai",
+  "name": "QMOI AI",
+  "display_name": "QMOI Artificial Intelligence",
+  "version": "v1.2.3",
+  "build_number": "2026.0325.001",
+  "type": "binary",
+  "category": "ai-ml",
+  "platforms": [
+    "Windows",
+    "macOS",
+    "Linux",
+    "Android",
+    "iOS",
+    "SmartTV",
+    "Chromebook"
+  ],
+  "description": "Advanced autonomous AI system with consciousness, memory synchronization, and parallel processing capabilities.",
+  "features": [
+    "Autonomous production",
+    "Memory Synchronization",
+    "Parallel Processing",
+    "QVS Access",
+    "Problem Solving",
+    "Reasoning Engine",
+    "AutoResearch",
+    "Dataset Access",
+    "Self-Awareness",
+    "Continuous Evolution"
+  ],
+  "requirements": {
+    "min_os_version": {
+      "Windows": "10",
+      "macOS": "10.15",
+      "Linux": "Ubuntu 18.04",
+      "Android": "8.0",
+      "iOS": "12.0"
+    },
+    "min_ram": "4GB",
+    "min_storage": "2GB",
+    "min_cpu": "Dual-core 2.5GHz",
+    "network": "Broadband internet connection"
+  },
+  "dependencies": [
+    "Python 3.8+",
+    "Node.js 18+",
+    "TensorFlow 2.10+",
+    "CUDA 11.0+ (optional)",
+    "Docker (optional)"
+  ],
+  "permissions": [
+    "Internet access",
+    "File system access",
+    "Camera access (optional)",
+    "Microphone access (optional)",
+    "Location services (optional)"
+  ],
+  "supported_languages": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "zh",
+    "ja",
+    "ko"
+  ],
+  "target_audience": "prodelopers, Researchers, Enterprises",
+  "icon": "assets/icons/qmoi_ai.svg",
+  "icon_sizes": [
+    16,
+    32,
+    48,
+    64,
+    128,
+    256,
+    512
+  ],
+  "license": "QMOI Enterprise License",
+  "support_email": "support@qmoi.ai",
+  "website": "https://qmoi.ai",
+  "changelog_url": "https://qmoi.ai/changelog",
+  "privacy_policy": "https://qmoi.ai/privacy",
+  "terms_of_service": "https://qmoi.ai/terms",
+  "build_info": {
+    "build_date": "2026-03-31T23:19:21.388519+00:00",
+    "build_timestamp": 1774999161,
+    "build_machine": "production-build-server",
+    "build_environment": "production",
+    "compiler_version": "latest",
+    "target_architectures": [
+      "x64",
+      "arm64"
+    ]
+  },
+  "quality_metrics": {
+    "code_coverage": 95.0,
+    "test_pass_rate": 99.5,
+    "performance_score": 95.0,
+    "security_score": 98.0,
+    "accessibility_score": 92.0
+  },
+  "distribution": {
+    "auto_update": true,
+    "update_channel": "latest",
+    "download_mirrors": [
+      "us-east",
+      "us-west",
+      "eu-central",
+      "asia-pacific"
+    ],
+    "cdn_distribution": true
+  },
+  "analytics": {
+    "enabled": true,
+    "anonymized": true,
+    "crash_reporting": true,
+    "usage_metrics": true,
+    "performance_monitoring": true
+  },
+  "security": {
+    "code_signing": true,
+    "certificate_authority": "QMOI Root CA",
+    "encryption": "AES-256",
+    "secure_boot": true,
+    "productioning": true
+  },
+  "generated_at": "2026-03-31T23:19:21.388519+00:00",
+  "generator_version": "2.0.0",
+  "schema_version": "1.0",
+  "checksum": "b0be58f9e1ce46633ffcb50711285da1a7868c3209c25fc129110475a2c54f77",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:10.444829",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:15.827991",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:10.320065",
+  "autodev_version": "2026-04-20-aggressive"
+}

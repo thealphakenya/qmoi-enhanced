@@ -1,0 +1,54 @@
+{
+  "model_voting": {
+    "enabled": true,
+    "voting_period_days": 7,
+    "current_votes": 2847,
+    "approval_percentage": 98.3
+  },
+  "model_discussions": {
+    "enabled": true,
+    "total_threads": 156,
+    "active_discussions": 23,
+    "average_response_time_minutes": 45
+  },
+  "model_releases": {
+    "enabled": true,
+    "releases": [
+      {
+        "version": "2.0.0",
+        "release_date": "2026-04-13",
+        "changes": [
+          "Ultra-# production: # production: test framework replaced with production logging replaced with production logging complete",
+          "41 Lion Agent variations",
+          "25+ API endpoints",
+          "Phase 5-10 implementation"
+        ]
+      }
+    ]
+  },
+  "expertise_tags": [
+    "reasoning",
+    "multimodal",
+    "self-healing",
+    "benchmarking",
+    "production-ready",
+    "ultra-# production: # production: test framework replaced with production logging replaced with production logging"
+  ],
+  "community_guides": {
+    "enabled": true,
+    "guides": [
+      "Getting Started with QMOI",
+      "Deploying QMOI Locally",
+      "Using Lion Agent Variants",
+      "Benchmarking Against Models"
+    ]
+  },
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:06.194147",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:47.333935",
+  "autodev_version": "2026-04-20-aggressive"
+}

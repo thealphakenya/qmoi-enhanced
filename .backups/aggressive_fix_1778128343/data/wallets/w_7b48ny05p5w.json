@@ -1,0 +1,20 @@
+{
+  "id": "w_7b48ny05p5w",
+  "publicKey": "-----BEGIN PUBLIC KEY-----\nMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAE40kSwkUFRPLtxgbOcUE3CkXGJJHHwJ7Q\nbbOZOftkU/iJ80ORg69Hnb5adVh3kvGLMJomM62DMmR11jYjR2tBLA==\n-----END PUBLIC KEY-----\n",
+  "meta": {
+    "purpose": "test"
+  },
+  "createdAt": "2025-12-17T08:37:27.405Z",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:20:10.119840",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:06.961931",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:54.315861",
+  "autodev_version": "2026-04-20-aggressive"
+}

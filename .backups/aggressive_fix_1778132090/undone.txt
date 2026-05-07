@@ -1,0 +1,2030 @@
+# NON-production IMPLEMENTATIONS TRACKER
+# Generated: 2026-05-07T05:36:12.079060
+# Workspace: /workspaces/qmoi-enhanced
+
+## SUMMARY
+
+| Marker | Count |
+|--------|-------|
+| IN PROGRESS | 8 |
+| NOT YET IMPLEMENTED | 7 |
+| PENDING_IMPLEMENTATION | 9 |
+| POC | 205 |
+| PROOF OF CONCEPT | 31 |
+| TBD | 66 |
+| UNIMPLEMENTED | 30 |
+| WIP | 342 |
+| production_data | 594 |
+
+## DETAILED FINDINGS
+
+### .npm-cache/_npx/2778af9cee32ff87/package-lock.json
+- POC: POC
+
+### ALLHEALTHS.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- WIP: wip
+
+### ALLTESTSAUTOTESTS.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### ALL_TODOS_SAMPLE.txt
+- POC: PoC
+- POC: Poc
+- POC: pOC
+- POC: poC
+- POC: pOc
+- TBD: tbd
+- TBD: tbD
+
+### API.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- POC: poc
+- WIP: Wip
+- WIP: Wip
+- WIP: Wip
+
+### APIs_v1.md
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### EVOLUTION.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### INVENTIONS.md
+- production_data: production_data
+
+### LIONS_COMPREHENSIVE.md
+- production_data: production_data
+- production_data: production_data
+
+### NONPROD_REPORT_HEAD.txt
+- POC: pOc
+- POC: POC
+- POC: pOc
+- POC: PoC
+- POC: PoC
+- TBD: tBD
+- TBD: TBD
+- TBD: tbD
+- TBD: tBd
+- TBD: TBd
+
+### PREVIEWWINDOW.md
+- WIP: wip
+
+### PRODUCTION_DEPLOYMENT_GUIDE.md
+- production_data: production_data
+
+### PROJECT_COMPLETION_CERTIFICATE.md
+- production_data: production_data
+
+### QMOIALLDEVICESHANDSFREE.md
+- WIP: wip
+
+### QMOIAUTOBET.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### QMOICLONEGITHUB.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### QMOISPACEDEV.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### QMOI_AUTOFIX_SETUP_GUIDE.md
+- production_data: production_data
+- production_data: production_data
+
+### ROOT_production_STATUS.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- UNIMPLEMENTED: Unimplemented
+- UNIMPLEMENTED: Unimplemented
+- WIP: wip
+- WIP: wip
+
+### __MOCKS__.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### __tests__/__mocks__.test.ts
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### __tests__/avatar-voice-comprehensive.test.ts
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### __tests__/phase-11-database-auth.test.ts
+- production_data: production_data
+- production_data: production_data
+
+### __tests__/qglobalsim-evolution.test.ts
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### __tests__/qglobalsim-pwa.test.ts
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### aggressive_production_fixer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- UNIMPLEMENTED: UNIMPLEMENTED
+- UNIMPLEMENTED: UNIMPLEMENTED
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: PROOF OF CONCEPT
+- POC: POC
+- POC: POC
+- NOT YET IMPLEMENTED: not yet implemented
+- NOT YET IMPLEMENTED: NOT YET IMPLEMENTED
+- WIP: WIP
+- WIP: WIP
+- TBD: TBD
+- TBD: TBD
+- IN PROGRESS: IN PROGRESS
+- IN PROGRESS: IN PROGRESS
+
+### ai-anomaly-service.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### all_md_files_current.txt
+- POC: poc
+
+### app/api/emergency/wipe/route.ts
+- WIP: wip
+- WIP: Wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### app/api/production_STATUS.md
+- WIP: wip
+
+### app/api/qcity/devices.ts
+- WIP: wip
+
+### app/api/qmoi-model.ts
+- POC: poc
+
+### archives/autodev_tools_20260425_153707/autodev_aggressive_fixer_backup.py
+- production_data: production_data
+
+### archives/autodev_tools_20260425_153707/autodev_enhanced_fixer.py
+- WIP: wip
+
+### archives/autodev_tools_20260425_153707/autodev_enhanced_production_command.py
+- production_data: production_data
+- production_data: production_data
+
+### autodev_enhanced_production_results.json
+- WIP: wip
+- WIP: wip
+
+### autodev_memory_sync.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- UNIMPLEMENTED: unimplemented
+- WIP: wip
+
+### backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/EmergencyPanel.tsx
+- WIP: Wip
+- WIP: Wip
+- WIP: wip
+- WIP: Wip
+- WIP: Wip
+
+### backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/config/bitget.ts
+- WIP: wIp
+
+### backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/mock_server.py
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_232609/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_232609/scripts/link_cache.py
+- POC: poc
+
+### backups/final_fix_backup_20260326_232609/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_232609/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_232609/src/config/bitget.ts
+- WIP: wIp
+
+### backups/final_fix_backup_20260326_232609/src/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/components/q-city/DevicesHub.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: Wip
+
+### backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/src/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/EmergencyPanel.tsx
+- WIP: Wip
+- WIP: Wip
+- WIP: wip
+- WIP: Wip
+- WIP: Wip
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/_archive_qmoi-enhanced/src/config/bitget.ts
+- WIP: wIp
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/get-pip.py
+- POC: POC
+- POC: POC
+- POC: poc
+- POC: Poc
+- POC: POc
+- WIP: WIp
+- WIP: WiP
+- WIP: wIP
+- WIP: wIP
+- WIP: Wip
+- TBD: tBD
+- TBD: tBd
+- TBD: TBd
+- TBD: tBd
+- TBD: tbd
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/mock_server.py
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/link_cache.py
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/config/bitget.ts
+- WIP: wIp
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/link_cache.py
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/config/bitget.ts
+- WIP: wIp
+
+### backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/EmergencyPanel.tsx
+- WIP: Wip
+- WIP: Wip
+- WIP: wip
+- WIP: Wip
+- WIP: Wip
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/config/bitget.ts
+- WIP: wIp
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/aggressive_production_fixer.py
+- WIP: wip
+- TBD: tbd
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/config/bitget.ts
+- WIP: wIp
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/bulk_replace_markers.py
+- WIP: wip
+- TBD: tbd
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/direct_production_readiness_fixer.py
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/enhance_minimal_implementations.py
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/link_cache.py
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/config/bitget.ts
+- WIP: wIp
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/ultra_aggressive_fixer.py
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- WIP: wip
+- TBD: tbd
+
+### backups/final_fix_backup_20260326_233109/backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: Wip
+
+### backups/final_fix_backup_20260326_233109/scripts/enhance_minimal_implementations.py
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- POC: poc
+
+### backups/final_fix_backup_20260326_233109/src/components/VoiceGestureHooks.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/final_fix_backup_20260326_233109/src/components/q-city/DevicesHub.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: Wip
+
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/EmergencyPanel.tsx
+- WIP: Wip
+- WIP: Wip
+- WIP: wip
+- WIP: Wip
+- WIP: Wip
+
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/DevicesHub.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: Wip
+
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/config/bitget.ts
+- WIP: wIp
+
+### backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_231902/aggressive_production_fixer.py
+- WIP: wip
+- TBD: tbd
+
+### backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: Wip
+
+### backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/config/bitget.ts
+- WIP: wIp
+
+### backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_231902/bulk_replace_markers.py
+- WIP: wip
+- TBD: tbd
+
+### backups/pre_fix_backup_20260326_231902/components/EmergencyPanel.tsx
+- WIP: wip
+- WIP: Wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_231902/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_231902/get-pip.py
+- POC: POC
+- POC: POC
+- POC: poc
+- POC: Poc
+- POC: POc
+- WIP: WIp
+- WIP: WiP
+- WIP: wIP
+- WIP: wIP
+- WIP: Wip
+- TBD: tBD
+- TBD: tBd
+- TBD: TBd
+- TBD: tBd
+- TBD: tbd
+
+### backups/pre_fix_backup_20260326_231902/mock_server.py
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_231902/scripts/direct_production_readiness_fixer.py
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+
+### backups/pre_fix_backup_20260326_231902/scripts/enhance_minimal_implementations.py
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_231902/scripts/link_cache.py
+- POC: poc
+
+### backups/pre_fix_backup_20260326_231902/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_231902/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_231902/src/components/VoiceGestureHooks.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_231902/src/components/q-city/DevicesHub.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: Wip
+
+### backups/pre_fix_backup_20260326_231902/src/config/bitget.ts
+- WIP: wIp
+
+### backups/pre_fix_backup_20260326_231902/src/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_231902/ultra_aggressive_fixer.py
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- WIP: wip
+- TBD: tbd
+
+### backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/EmergencyPanel.tsx
+- WIP: Wip
+- WIP: Wip
+- WIP: wip
+- WIP: Wip
+- WIP: Wip
+
+### backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_232205/_archive_qmoi-enhanced/src/config/bitget.ts
+- WIP: wIp
+
+### backups/pre_fix_backup_20260326_232205/aggressive_production_fixer.py
+- WIP: wip
+- TBD: tbd
+
+### backups/pre_fix_backup_20260326_232205/app/api/emergency/lockdown/route.ts
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_232205/app/api/emergency/wipe/route.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/config/bitget.ts
+- WIP: wIp
+
+### backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_232205/bulk_replace_markers.py
+- WIP: wip
+- TBD: tbd
+
+### backups/pre_fix_backup_20260326_232205/components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_232205/mock_server.py
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_232205/scripts/direct_production_readiness_fixer.py
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+
+### backups/pre_fix_backup_20260326_232205/scripts/enhance_minimal_implementations.py
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_232205/scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_232205/scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### backups/pre_fix_backup_20260326_232205/src/config/bitget.ts
+- WIP: wIp
+
+### backups/pre_fix_backup_20260326_232205/src/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### backups/pre_fix_backup_20260326_232205/ultra_aggressive_fixer.py
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- WIP: wip
+- TBD: tbd
+
+### backups/src.backup.20260121144720/components/q-city/DevicesHub.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: Wip
+
+### bulk_replace_markers.py
+- TBD: tbd
+
+### components/EmergencyPanel.tsx
+- WIP: Wip
+- WIP: Wip
+- WIP: wip
+- WIP: Wip
+- WIP: Wip
+
+### components/ui/toast.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### comprehensive_production_fixer.py
+- production_data: production_data
+
+### comprehensive_production_implementer.py
+- UNIMPLEMENTED: unimplemented
+- UNIMPLEMENTED: unimplemented
+- UNIMPLEMENTED: unimplemented
+- UNIMPLEMENTED: unimplemented
+- UNIMPLEMENTED: unimplemented
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- IN PROGRESS: IN PROGRESS
+
+### comprehensive_production_scanner.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- POC: POC
+
+### compulsories_nonproduction_tasks.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### config/qmoi_config.json
+- POC: poc
+
+### conftest.py
+- production_data: production_data
+
+### data/nonprod_production_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### data/percentages_latest.json
+- TBD: tbd
+- TBD: tbd
+
+### data/production_readiness_scan.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- WIP: wip
+
+### docs/ALLTESTSAUTOTESTS.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### docs/link-validation-report.json
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### docs/md_index.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### docs/nonproduction_comprehensive_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### docs/nonproduction_scan_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### docs/placeholders_report.json
+- production_data: production_data
+
+### docs/ui_validation_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### documentation_audit_details.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- POC: poc
+- POC: poc
+- POC: poc
+
+### downloadqmoiai.py
+- production_data: production_data
+- production_data: production_data
+
+### duplicate_files_report.md
+- UNIMPLEMENTED: unimplemented
+
+### email_automation.py
+- production_data: production_data
+- production_data: production_data
+
+### enhanced_auth_system.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### error-reports/comprehensive-report-2026-03-12.json
+- TBD: TBD
+- TBD: tBD
+- TBD: tbD
+- TBD: tBd
+- TBD: tBd
+
+### eslint_fix_result.json
+- POC: poc
+
+### eslint_report.json
+- POC: poc
+
+### eslint_report_after_any_fix.json
+- POC: poc
+
+### eslint_report_after_eslintignore.json
+- POC: poc
+
+### eslint_report_after_fix.json
+- POC: poc
+
+### eslint_report_after_ignore.json
+- POC: poc
+
+### fast_bulk_production_fixer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- UNIMPLEMENTED: UNIMPLEMENTED
+- UNIMPLEMENTED: UNIMPLEMENTED
+- WIP: WIP
+- WIP: WIP
+
+### final_comprehensive_implementer.py
+- production_data: production_data
+- production_data: production_data
+- UNIMPLEMENTED: unimplemented
+- UNIMPLEMENTED: unimplemented
+- WIP: wip
+- WIP: wip
+
+### instruct.md
+- WIP: wip
+
+### instructionmanifest.txt
+- UNIMPLEMENTED: unImplemented
+- UNIMPLEMENTED: unImplemented
+- UNIMPLEMENTED: unImplemented
+- UNIMPLEMENTED: unImplemented
+- UNIMPLEMENTED: unImplemented
+- POC: POC
+- POC: PoC
+- POC: poc
+- POC: poC
+- POC: PoC
+- TBD: TBd
+- TBD: Tbd
+- TBD: Tbd
+- TBD: tBd
+- TBD: tbd
+
+### jest.setup.js
+- production_data: production_data
+
+### lib/ml-trading-strategy.ts
+- POC: poc
+
+### lib/services/device.service.ts
+- WIP: wip
+
+### link_validation_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### ml_service.py
+- POC: poc
+- POC: poc
+
+### models/latest/q1_training_pipeline.py
+- POC: poc
+
+### models/latest/qmoi_enhanced_advanced_model.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### non_production_implementations_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- UNIMPLEMENTED: UNIMPLEMENTED
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- TBD: tbd
+- TBD: TBD
+- TBD: tbd
+- TBD: TBD
+
+### package-lock.json
+- POC: pOC
+- POC: pOC
+- POC: pOC
+- WIP: wip
+- WIP: wiP
+- WIP: wiP
+- WIP: WIp
+- TBD: tbD
+- TBD: TbD
+
+### payments/stripe_adapter.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### production_config.json
+- POC: poc
+
+### production_deployment.py
+- POC: poc
+
+### production_readiness_audit_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- WIP: wip
+
+### production_scan_1776651512.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### production_scan_1776654312.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### publish-releases-realtime.py
+- production_data: production_data
+- production_data: production_data
+
+### qmoi/local_model_manager.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### qmoi/model.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### qmoi_control_server.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### qmoiexe_enhanced.py
+- production_data: production_data
+- production_data: production_data
+
+### quality_gate_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### qvillage/app.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### realtime_email_system.py
+- production_data: production_data
+- production_data: production_data
+
+### reports/api_validation_report_20260503_171512.json
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### reports/documentation_audit_details.json
+- POC: poc
+- POC: poc
+- POC: poc
+
+### reports/final_production_validation_20260503_173028.json
+- WIP: wip
+
+### reports/mock_and_stub_audit.md
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### reports/package-lock.json
+- POC: pOC
+- POC: pOC
+- POC: pOC
+- TBD: tbd
+- TBD: tbD
+- TBD: TbD
+
+### reports/production_readiness_scan.txt
+- POC: poc
+- POC: POc
+- POC: POc
+- POC: POC
+- POC: pOc
+- WIP: WiP
+- WIP: WIP
+- WIP: WIP
+- WIP: wIp
+- WIP: wIp
+- TBD: tBd
+- TBD: tbd
+- TBD: TBD
+- TBD: tbD
+- TBD: tBD
+
+### results/link_validation_report.json
+- POC: pOC
+- POC: POC
+- POC: Poc
+- POC: POc
+- POC: Poc
+- TBD: TBd
+
+### run_phase1.py
+- production_data: production_data
+- production_data: production_data
+
+### safe_bulk_production_fixer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- UNIMPLEMENTED: UNIMPLEMENTED
+- UNIMPLEMENTED: UNIMPLEMENTED
+- WIP: WIP
+- WIP: WIP
+
+### scan_non_production.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/advanced_ml_analytics_system.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/aggressive_production_fixer_v2.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/all_percentages_automation.test.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/api/automation_api.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/api_testing_suite.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/app_signing_automation.test.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/apply_dotslash_fixes.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/automation/qmoi_master_automation.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/autotest/advanced_autotest_system.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/autotest/qmoi_simple_autotest.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/billing_guard.py
+- production_data: production_data
+
+### scripts/bulk_component_generator.py
+- production_data: production_data
+
+### scripts/bulk_production_fixer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/check_github_releases.py
+- production_data: production_data
+
+### scripts/colab_manager.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/comprehensive_docs_update.py
+- production_data: production_data
+
+### scripts/comprehensive_production_fixer.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/comprehensive_python_fixer.py
+- production_data: production_data
+
+### scripts/create_dns_issues_using_pr.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/create_pr_and_issues.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/deploy_ui_features.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/device_orchestration_manager.test.py
+- production_data: production_data
+
+### scripts/device_ownership_detector.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/device_unlock_system.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/direct_production_readiness_fixer.py
+- production_data: production_data
+- production_data: production_data
+- POC: poc
+
+### scripts/documentation_audit_and_fix.py
+- production_data: production_data
+
+### scripts/domain_health_automation.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/enhance_ai.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/enhance_minimal_implementations.py
+- production_data: production_data
+- production_data: production_data
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+
+### scripts/enhanced-build.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/enhanced_nonprod_scanner.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/enhanced_preview.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/enhanced_production_scanner.py
+- production_data: production_data
+
+### scripts/enhancement_report_20260506_043941.json
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### scripts/enhancement_report_20260506_064821.json
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### scripts/enhancement_report_20260506_074210.json
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### scripts/enhancement_report_20260506_075840.json
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### scripts/enhancement_report_20260506_080033.json
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### scripts/enhancement_report_20260506_080703.json
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+
+### scripts/enhancement_report_20260506_081138.json
+- WIP: wip
+- WIP: wip
+
+### scripts/enhancement_report_20260506_081427.json
+- WIP: wip
+- WIP: wip
+
+### scripts/enhancement_report_20260506_092406.json
+- WIP: wip
+- WIP: wip
+
+### scripts/evolution_reliability_engine.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/fast_git_commit.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/fast_nonprod_scanner.sh
+- WIP: WIP
+
+### scripts/final_health_check.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/generate_analytics_dashboard_report.py
+- production_data: production_data
+
+### scripts/integration_test_control_server.py
+- production_data: production_data
+
+### scripts/link_cache.py
+- production_data: production_data
+- POC: poc
+
+### scripts/link_validator.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/lion_orchestrator.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/models/qmoi_manager.py
+- POC: poc
+- POC: poc
+- POC: poc
+
+### scripts/monitor.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/monitoring/performance_monitoring.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/monitoring/start_all_monitors.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/network/network_connectivity_manager.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/network/wifi_manager.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/nonprod_to_production_enhancer.py
+- production_data: production_data
+
+### scripts/optimize_cloud_costs.py
+- production_data: production_data
+
+### scripts/optimize_memory.py
+- production_data: production_data
+
+### scripts/optimized_production_scanner.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/optimizer.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/parallel_executor.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/phase1_domain_link_fixer.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/platform_manager.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/production_dns_manager.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/production_focused_scanner.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/production_readiness_audit.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/production_readiness_final_check.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/providers/provider_base.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qcity_advanced_installer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qcity_manager.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-enhanced-controller.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-git-automation.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-hands-free.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-parallel-platform-enhancer.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-performance-optimizer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-real-time-monitor.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-start-watch.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-ultimate-automation.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi-unified-push.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_advanced_automation.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_advanced_phase_implementer.py
+- production_data: production_data
+
+### scripts/qmoi_autonomous_replacement.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_chat_server.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_cloud_integration_enhanced.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_cloud_setup.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_comprehensive_bulk_enhancement_v3.py
+- POC: poc
+
+### scripts/qmoi_data_optimization_system.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_device_agent.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_enhanced_ai.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_error_auto_fix.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_health_integration.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_health_reporting_system.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_hf_auto_manager.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_huggingface_spaces.js
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_md_autoupdater.py
+- production_data: production_data
+
+### scripts/qmoi_memory.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_multimodal_ingestion.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_own_device_logger.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_parallel_error_fixer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_production_replacer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_self_test.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_tree_generator.py
+- production_data: production_data
+
+### scripts/qmoi_ultimate_comprehensive_enhancer.py
+- production_data: production_data
+- production_data: production_data
+- POC: poc
+
+### scripts/qmoi_ultimate_comprehensive_enhancer_v2.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/qmoi_verification_validation_enhancer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/replacement_report.json
+- production_data: production_data
+
+### scripts/scan_and_index.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/scan_nonproduction_endpoints.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/scan_replace_placeholders.py
+- production_data: production_data
+
+### scripts/smart_production_scanner.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/sync_all_releases.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/sync_to_draft_release.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/tests/test_memory_sync.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/thorough_nonproduction_scanner.py
+- production_data: production_data
+- production_data: production_data
+- WIP: WIP
+
+### scripts/trading/enhanced_trading_system.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/training/advanced_training.py
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### scripts/ultimate_production_scanner.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/ultimate_production_scanner_v41.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/ultra_aggressive_fixer.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/universal_memory.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/update_links_with_ngrok.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/validate_and_fix_md.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/validate_and_sync_links.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/validate_apps.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/validate_links.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/validate_md.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/verify_and_finalize_done.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/verify_apps.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/wallets/adapters/binance_adapter.py
+- production_data: production_data
+- production_data: production_data
+
+### scripts/wallets/adapters/mpesa_adapter.py
+- production_data: production_data
+
+### scripts/wallets/check_wallets.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### scripts/workspace_audit.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### security_proxy.py
+- production_data: production_data
+
+### src/app/api/master/godaddy-status/route.ts
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### src/components/q-city/DevicesHub.tsx
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: wip
+- WIP: Wip
+
+### src/config/bitget.ts
+- WIP: wIp
+
+### src/services/DeviceTrackingService.ts
+- WIP: wip
+- WIP: wip
+
+### start_qmoi_ngrok.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### tests/test_queue_worker.py
+- production_data: production_data
+
+### thorough_production_scanner.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- UNIMPLEMENTED: UNIMPLEMENTED
+- WIP: WIP
+
+### tools/collect_versions.py
+- production_data: production_data
+- production_data: production_data
+
+### tools/dns_docs_inventory.json
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+
+### tools/mass_fix_markers.py
+- TBD: tbd
+
+### tools/phase4_deployer.py
+- production_data: production_data
+- production_data: production_data
+
+### tools/start_light_server.py
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+
+### tools/startup_manager.py
+- production_data: production_data
+- production_data: production_data
+
+### tools/update_markdown.py
+- production_data: production_data
+- production_data: production_data
+
+### ultimate_production_fix_report.json
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- UNIMPLEMENTED: UNIMPLEMENTED
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: proof of concept
+- POC: poc
+- POC: poc
+- POC: poc
+- POC: poc
+- TBD: tbd
+- TBD: tbd
+- TBD: TBD
+- TBD: TBD
+
+### ultra_aggressive_fixer.py
+- production_data: production_data
+
+### undone.txt
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- production_data: production_data
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- PENDING_IMPLEMENTATION: PENDING_IMPLEMENTATION
+- UNIMPLEMENTED: UNIMPLEMENTED
+- UNIMPLEMENTED: UNIMPLEMENTED
+- UNIMPLEMENTED: Unimplemented
+- UNIMPLEMENTED: UNIMPLEMENTED
+- UNIMPLEMENTED: Unimplemented
+- PROOF OF CONCEPT: PROOF OF CONCEPT
+- PROOF OF CONCEPT: PROOF OF CONCEPT
+- PROOF OF CONCEPT: proof of concept
+- PROOF OF CONCEPT: PROOF OF CONCEPT
+- PROOF OF CONCEPT: PROOF OF CONCEPT
+- POC: POC
+- POC: POC
+- POC: POC
+- POC: POC
+- POC: PoC
+- NOT YET IMPLEMENTED: NOT YET IMPLEMENTED
+- NOT YET IMPLEMENTED: NOT YET IMPLEMENTED
+- NOT YET IMPLEMENTED: not yet implemented
+- NOT YET IMPLEMENTED: NOT YET IMPLEMENTED
+- NOT YET IMPLEMENTED: NOT YET IMPLEMENTED
+- WIP: WIP
+- WIP: WIP
+- WIP: wip
+- WIP: WIP
+- WIP: Wip
+- TBD: TBD
+- TBD: TBD
+- TBD: tbd
+- TBD: TBD
+- TBD: tbD
+- IN PROGRESS: IN PROGRESS
+- IN PROGRESS: IN PROGRESS
+- IN PROGRESS: IN PROGRESS
+- IN PROGRESS: IN PROGRESS
+- IN PROGRESS: IN PROGRESS
+
+### undoneold.txt
+- WIP: wip
+
+### utils/env_manager.py
+- production_data: production_data
+

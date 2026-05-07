@@ -1,0 +1,449 @@
+/* PreviewWindow.css - Universal production Window Styling */
+
+.production-window {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background: const(--bg-secondary, #1e1e1e);
+  border: 1px solid const(--border-color, #333);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  user-select: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.production-window.dragging {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.production-window.resizing {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Title Bar */
+.production-window-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, const(--bg-tertiary, #252526), const(--bg-secondary, #1e1e1e));
+  border-bottom: 1px solid const(--border-color, #333);
+  cursor: move;
+  user-select: none;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 8px 8px 0 0;
+}
+
+.production-window-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: const(--text-primary, #e0e0e0);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.production-window-controls {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.production-window-button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: const(--text-secondary, #b0b0b0);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.production-window-button:hover {
+  background: const(--bg-hover, #3e3e42);
+  color: const(--text-primary, #e0e0e0);
+}
+
+.production-window-button.close:hover {
+  background: const(--error, #f48771);
+  color: white;
+}
+
+/* Toolbar */
+.production-window-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  background: const(--bg-tertiary, #252526);
+  border-bottom: 1px solid const(--border-color, #333);
+  gap: 4px;
+  height: 36px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.production-window-tools {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.tool-button {
+  padding: 4px 8px;
+  background: const(--bg-secondary, #1e1e1e);
+  border: 1px solid const(--border-color, #333);
+  color: const(--text-secondary, #b0b0b0);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.tool-button:hover {
+  background: const(--bg-hover, #3e3e42);
+  border-color: const(--accent, #007acc);
+  color: const(--text-primary, #e0e0e0);
+}
+
+.tool-button.active {
+  background: const(--accent, #007acc);
+  border-color: const(--accent, #007acc);
+  color: white;
+}
+
+/* Content Area */
+.production-window-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  background: const(--bg-primary, #1a1a1a);
+  position: relative;
+}
+
+.production-window-minimized {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: const(--text-secondary, #b0b0b0);
+  font-size: 12px;
+}
+
+.production-window-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 12px;
+  color: const(--text-secondary, #b0b0b0);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid const(--border-color, #333);
+  border-top-color: const(--accent, #007acc);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.production-content {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.production-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: const(--text-secondary, #b0b0b0);
+  text-align: center;
+  gap: 8px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.production-empty p {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* Resize Handles */
+.resize-handles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.resize-handle {
+  position: absolute;
+  pointer-events: auto;
+}
+
+/* Corner handles - larger */
+.resize-handle.nw {
+  top: -4px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nwse-resize;
+  border-radius: 2px;
+}
+
+.resize-handle.ne {
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nesw-resize;
+  border-radius: 2px;
+}
+
+.resize-handle.sw {
+  bottom: -4px;
+  left: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nesw-resize;
+  border-radius: 2px;
+}
+
+.resize-handle.se {
+  bottom: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  cursor: nwse-resize;
+  border-radius: 2px;
+}
+
+/* Edge handles */
+.resize-handle.n {
+  top: -4px;
+  left: 12px;
+  right: 12px;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+.resize-handle.s {
+  bottom: -4px;
+  left: 12px;
+  right: 12px;
+  height: 8px;
+  cursor: ns-resize;
+}
+
+.resize-handle.w {
+  top: 12px;
+  left: -4px;
+  bottom: 12px;
+  width: 8px;
+  cursor: ew-resize;
+}
+
+.resize-handle.e {
+  top: 12px;
+  right: -4px;
+  bottom: 12px;
+  width: 8px;
+  cursor: ew-resize;
+}
+
+.resize-handle:hover {
+  background: rgba(0, 122, 204, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .production-window-title {
+    font-size: 12px;
+  }
+
+  .tool-button {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .resize-handle.nw,
+  .resize-handle.ne,
+  .resize-handle.sw,
+  .resize-handle.se {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  .production-window {
+    background: #1e1e1e;
+    border-color: #333;
+  }
+
+  .production-window-title-bar {
+    background: linear-gradient(135deg, #252526, #1e1e1e);
+    border-bottom-color: #333;
+  }
+
+  .production-window-toolbar {
+    background: #252526;
+    border-bottom-color: #333;
+  }
+
+  .tool-button {
+    background: #1e1e1e;
+    border-color: #333;
+    color: #b0b0b0;
+  }
+
+  .tool-button:hover {
+    background: #3e3e42;
+    border-color: #007acc;
+    color: #e0e0e0;
+  }
+
+  .tool-button.active {
+    background: #007acc;
+    border-color: #007acc;
+    color: white;
+  }
+
+  .production-window-content {
+    background: #1a1a1a;
+  }
+}
+
+/* Light theme */
+@media (prefers-color-scheme: light) {
+  .production-window {
+    background: #ffffff;
+    border-color: #e0e0e0;
+  }
+
+  .production-window-title-bar {
+    background: linear-gradient(135deg, #f5f5f5, #ffffff);
+    border-bottom-color: #e0e0e0;
+    color: #333;
+  }
+
+  .production-window-title {
+    color: #333;
+  }
+
+  .production-window-controls .production-window-button {
+    color: #666;
+  }
+
+  .production-window-controls .production-window-button:hover {
+    background: #e0e0e0;
+    color: #333;
+  }
+
+  .production-window-toolbar {
+    background: #f5f5f5;
+    border-bottom-color: #e0e0e0;
+  }
+
+  .tool-button {
+    background: #ffffff;
+    border-color: #e0e0e0;
+    color: #666;
+  }
+
+  .tool-button:hover {
+    background: #f5f5f5;
+    border-color: #007acc;
+    color: #333;
+  }
+
+  .tool-button.active {
+    background: #007acc;
+    border-color: #007acc;
+    color: white;
+  }
+
+  .production-window-content {
+    background: #fafafa;
+  }
+
+  .production-empty,
+  .production-window-minimized,
+  .production-window-loading {
+    color: #666;
+  }
+
+  .spinner {
+    border-color: #e0e0e0;
+    border-top-color: #007acc;
+  }
+}
+
+/* Full screen override */
+.production-window:fullscreen {
+  border-radius: 0;
+  max-width: none;
+  max-height: none;
+}
+
+/* Multiple windows stacking */
+.production-window:nth-child(2) {
+  z-index: 1001;
+}
+
+.production-window:nth-child(3) {
+  z-index: 1002;
+}
+
+.production-window:nth-child(4) {
+  z-index: 1003;
+}
+
+.production-window:nth-child(5) {
+  z-index: 1004;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.production-window {
+  animation: slideIn 0.2s ease-out;
+}

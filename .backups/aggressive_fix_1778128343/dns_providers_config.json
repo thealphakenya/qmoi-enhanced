@@ -1,0 +1,59 @@
+{
+  "providers": {
+    "vercel": {
+      "type": "vercel",
+      "token": "${VERCEL_TOKEN}",
+      "project_id": "qmoi-enhanced"
+    },
+    "cloudflare": {
+      "type": "cloudflare",
+      "token": "${CLOUDFLARE_TOKEN}",
+      "zone_id": "your-zone-id-here"
+    },
+    "route53": {
+      "type": "route53",
+      "access_key": "${AWS_ACCESS_KEY_ID}",
+      "secret_key": "${AWS_SECRET_ACCESS_KEY}",
+      "hosted_zone_id": "your-hosted-zone-id",
+      "region": "us-east-1"
+    }
+  },
+  "domain_assignments": {
+    "qmoi.ai": "vercel",
+    "www.qmoi.ai": "vercel",
+    "api.qmoi.ai": "vercel",
+    "qcity.qmoi.ai": "vercel",
+    "qmoi-space.qmoi.ai": "vercel",
+    "yap.qmoi.ai": "vercel",
+    "q-latest.qmoi.ai": "vercel",
+    "qvillage.com": "cloudflare",
+    "qvillage.net": "cloudflare",
+    "qvillage.org": "cloudflare",
+    "qglobal.org": "cloudflare",
+    "stableq.ai": "route53",
+    "qparallel.prod": "route53"
+  },
+  "fallback_ips": {
+    "vercel": "76.76.21.21",
+    "cloudflare": "104.21.00.00",
+    "route53": "13.248.169.48"
+  },
+  "health_checks": {
+    "enabled": true,
+    "interval_minutes": 5,
+    "timeout_seconds": 10,
+    "retries": 3
+  },
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:31.181606",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:00.449213",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:21.293823",
+  "autodev_version": "2026-04-20-aggressive"
+}
