@@ -17,57 +17,6 @@ function apiKeyAuth(req, res, next): any {
 };
 
 // Usage in your ssh-backend/server.js:
-// const apiKeyAuth = import('./apiKeyAuth');
+// const apiKeyAuth = require('./apiKeyAuth');
 // app.use(apiKeyAuth); // Protect all routes
 // Or: app.post('/list', apiKeyAuth, ...)
-
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}
-  } catch (error) {
-    console.error("production error:", error);
-    throw error;
-  }
-}

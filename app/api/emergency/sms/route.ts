@@ -356,16 +356,6 @@ async function sendEmergencySms(
       priority,
     });
 
-    // Fallback: Development-only mock mode if Twilio is not configured
-    if (process.env.SMS_MOCK_MODE === 'true') {
-      const success = Math.random() > 0.1; // 90% success rate in development fallback mode
-      return {
-        success,
-        messageId: success ? `sms_${Date.now()}_${Math.random().toString(36).substr(2, 9)}` : undefined,
-        error: success ? undefined : 'SMS delivery failed - network error',
-      };
-    }
-
     return {
       success: false,
       error: error instanceof Error ? error.message : 'SMS delivery failed',
@@ -427,14 +417,28 @@ async function getEmergencyContacts(): Promise<Array<{
   role: string;
   priority: 'high' | 'medium' | 'low';
 }>> {
-  // In a real implementation, this would fetch from database
-  // For now, return sample emergency contacts
-  return [
-    { name: 'System Administrator', phone: '+1234567890', role: 'admin', priority: 'high' },
-    { name: 'Security Team Lead', phone: '+1234567891', role: 'security', priority: 'high' },
-    { name: 'DevOps Engineer', phone: '+1234567892', role: 'devops', priority: 'medium' },
-    { name: 'Customer Support Lead', phone: '+1234567893', role: 'support', priority: 'medium' },
-  ];
+  const config = await prisma.emergencyConfig.findUnique({
+    where: { id: 'default' },
+  });
+
+  const rawContacts = config?.emergencyContacts || '[]';
+  let contacts = [];
+  try {
+    contacts = JSON.parse(rawContacts);
+  } catch {
+    contacts = [];
+  }
+
+  if (!Array.isArray(contacts)) {
+    return [];
+  }
+
+  return contacts.map((item: any) => ({
+    name: item?.name || 'Emergency Contact',
+    phone: item?.phone || '+0000000000',
+    role: item?.role || 'contact',
+    priority: item?.priority === 'high' ? 'high' : item?.priority === 'low' ? 'low' : 'medium',
+  }));
 }
 
 function calculateAvgSmsTime(smsHistory: any[]): number {

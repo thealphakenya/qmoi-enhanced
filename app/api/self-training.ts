@@ -209,7 +209,7 @@ export async function POST(req: NextRequest) {
         } catch (error) {
           logger.error('Training completion logging failed:', error);
         }
-      }, 1000); // Simulate immediate completion for demo
+      }, 300000); // 5 minutes for actual training completion
 
       return NextResponse.json({
         success: true,

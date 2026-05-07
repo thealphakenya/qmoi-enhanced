@@ -10,7 +10,7 @@ from datetime import datetime
 def check_integrations():
     """Check all system integrations"""
     integrations = {
-        'api': {'url': 'https://localhost:3000/api/health', 'expected': 200},
+        'api': {'url': 'process.env.API_URL || "http://localhost:3000"/api/health', 'expected': 200},
         'database': {'status': 'connected'},
         'cache': {'status': 'active'},
         'monitoring': {'status': 'running'}

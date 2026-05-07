@@ -6,8 +6,7 @@
 #
 # Options:
 #   --help              Show this help message
-#   --prod               Start PRODUCTION_IMPLEMENTED mode
-#   --prod              Start PRODUCTION_IMPLEMENTED mode
+#   --prod              Start production mode
 #   --no-verify         Skip health verification
 #   --real-server       Also start real backend server
 #   --open-browser      Automatically open browser after startup
@@ -27,7 +26,6 @@ ENV_MODE="${ENV_MODE:-production}"
 OPEN_BROWSER=false
 VERIFY_HEALTH=true
 START_real_SERVER=false
-DEBUG_MODE=false
 
 # Ports
 HTTP_PORT=8080
@@ -60,12 +58,6 @@ log_warning() {
 
 log_error() {
   echo -e "${RED}[✗]${NC} $*"
-}
-
-log_debug() {
-  if [ "$DEBUG_MODE" = true ]; then
-    echo -e "${CYAN}[RELEASE]${NC} $*"
-  fi
 }
 
 print_header() {
@@ -113,8 +105,7 @@ parse_arguments() {
         shift
         ;;
       --RELEASE)
-        DEBUG_MODE=true
-        shift
+                shift
         ;;
       *)
         log_error "Unknown option: $1"
@@ -214,7 +205,6 @@ setup_environment() {
       cat > "$WORKSPACE_ROOT/.env.local" << 'EOF'
 NEXT_PUBLIC_API_URL=https://production.qmoi.ai:8080
 NEXT_PUBLIC_ENV=production
-NEXT_PUBLIC_DEBUG=false
 NODE_ENV=production
 EOF
     else
@@ -237,7 +227,6 @@ EOF
     cat > "$WORKSPACE_ROOT/.env.production" << 'EOF'
 NEXT_PUBLIC_API_URL=https://production.qmoi.ai:8080
 NEXT_PUBLIC_ENV=production
-NEXT_PUBLIC_DEBUG=false
 NODE_ENV=production
 EOF
     log_success "Created .env.production"

@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 // WebAuthn configuration
 const RP_NAME = 'QMOI Enhanced';
 const RP_ID = process.env.RP_ID || 'localhost';
-const ORIGIN = process.env.ORIGIN || 'https://localhost:3000';
+const ORIGIN = process.env.ORIGIN || 'process.env.API_URL || "http://localhost:3000"';
 
 export async function GET(req: NextRequest) {
   try {

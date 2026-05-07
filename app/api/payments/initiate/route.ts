@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
 import { authService } from "@/lib/auth/service";
 import { log } from "@/lib/logger";
+import Stripe from "stripe";
 import crypto from 'crypto';
 
 export const dynamic = "force-dynamic";
@@ -145,7 +146,7 @@ export async function POST(req: NextRequest) {
     // Simulate payment provider integration
     if (paymentMethod === 'card') {
       // Simulate Stripe integration
-      paymentUrl = `${process.env.FRONTEND_URL || 'https://localhost:3000'}/payment/${reference}`;
+      paymentUrl = `${process.env.FRONTEND_URL || 'process.env.API_URL || "http://localhost:3000"'}/payment/${reference}`;
       paymentData = {
         clientSecret: `cs_test_${crypto.randomBytes(16).toString('hex')}`,
         publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_mock',
