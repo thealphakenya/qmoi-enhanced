@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "../../hooks/useAuth";
 
@@ -99,7 +99,7 @@ const SelfHealPanel: React.FC = () => {
     localStorage.removeItem("selfHealHistory");
   };
 
-  // Scheduling UI (// Production implementation:)
+  // Scheduling UI (// production implementation:)
   const handleSchedule = () => {
     notification.show("Scheduling feature available!");
   };

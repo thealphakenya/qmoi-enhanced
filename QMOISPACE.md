@@ -72,7 +72,7 @@ QMOI Space is the production-ready hub for collaborative AI development, dataset
 The current `app/qmoi-space/page.tsx` implementation includes the following UI sections:
 - **Landing Hero:** App title, active UI status card, and summary description
 - **Platform Statistics:** Supports platforms, total builds, validation success, and package size
-- **Core Feature Cards:** Production, gaming, revenue, cloud, security, and cross-platform capability summaries
+- **Core Feature Cards:** production, gaming, revenue, cloud, security, and cross-platform capability summaries
 - **Dataset Catalog:** Community dataset browsing, secure sharing controls, and AI-powered recommendations
 - **AI Model Staging:** Model discovery, continuous training, and deployment history panels
 - **Marketplace Dashboard:** Pricing management, customer analytics, and payment gateway readiness
@@ -136,7 +136,7 @@ QMOI Space is explicitly connected to the broader QMOI ecosystem through navigat
 - `QVillage` for dataset collaboration, community sharing, and model development
 - Shared overlays like `NotificationCenter`, `HelpGuide`, `PreviewWindow`, and `ThemeCustomizer`
 
-## Production Notes
+## production Notes
 
 The current page layout is built for production styling and modular integration. Most data sections use static placeholders today, but the page structure matches the real UI and is ready for backend service wiring with the app's API and Prisma-backed data models.
 

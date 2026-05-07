@@ -28,7 +28,7 @@ export class AssetManagerImpl implements AssetManager {
   private assets: Map<string, Asset>;
 
   private constructor() {
-    this.assets = new Map() // Production: Consider object for small datasets();
+    this.assets = new Map() // production: Consider object for small datasets();
     this.initializeAssets();
   }
 

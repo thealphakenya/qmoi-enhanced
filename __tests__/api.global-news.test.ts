@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 // QMOI Enhanced API: Global News API tests
 
 const globalNewsRequest = async (method: string, path: string, body?: unknown) => {

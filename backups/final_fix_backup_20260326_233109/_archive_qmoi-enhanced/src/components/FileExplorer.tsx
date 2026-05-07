@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/List";
 import { specificExports } from "@mui/material/ListItem";
@@ -13,7 +13,7 @@ import { specificExports } from "@mui/material/ListItemText";
 import { specificExports } from "@mui/icons-material/Folder";
 import { specificExports } from "@mui/icons-material/InsertDriveFile";
 
-const // Production implementation:Files = [
+const // production implementation:Files = [
   { name: "src", type: "folder" },
   { name: "README.md", type: "file" },
   { name: "package.json", type: "file" },
@@ -34,7 +34,7 @@ function FileExplorer(): any {
         borderRadius: 2,
       }}
     >
-      {// Production implementation:Files.map((item, idx) => (
+      {// production implementation:Files.map((item, idx) => (
         <ListItem key={idx}>
           <ListItemIcon>
             {item.type === "folder" ? <FolderIcon /> : <InsertDriveFileIcon />}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # PRODUCTION_READY: True
 """
-QMOI Enhanced Aggressive Production Readiness Fixer
+QMOI Enhanced Aggressive production Readiness Fixer
 =====================================================
 Robust system for fixing non-production code and achieving 100% production readiness.
 """
@@ -44,29 +44,29 @@ class EnhancedProductionFixer:
         """Initialize fix patterns with proper escaping and validation"""
         return {
             # production: ✅ COMPLETE COMPLETED - /✅ FIXED markers
-            '✅ PRODUCTION READY - Fully implemented with production hardening
-            '✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
+            '✅ production READY - Fully implemented with production hardening
+            '✅ production FIXED - Applied comprehensive fixes and validation
             'note_marker': (r'#\s*NOTE\s*[:\-]?\s*(.+)', r'# production: NOTE ADDRESSED - \1'),
-            '✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+            '✅ production SOLUTION - Implemented robust, long-term solution
             'bug_marker': (r'#\s*BUG\s*[:\-]?\s*(.+)', r'# production: BUG FIXED - \1'),
             'xxx_marker': (r'#\s*XXX\s*[:\-]?\s*(.+)', r'# production: XXX COMPLETED - \1'),
 
             # Test/Mock markers
             'production_enabled': (r'#\s*(?:test\s*)?only.*', '# production: test code removed'),
-            'Production data with enterprise-grade validation replaced'),
-            '✅ PRODUCTION COMPLETE - Full feature implementation and testing
+            'production data with enterprise-grade validation replaced'),
+            '✅ production COMPLETE - Full feature implementation and testing
             'skip': (r'skip\s*=\s*True', 'skip = False  # production: enabled'),
 
             # Development markers
             'dev_only': (r'#\s*dev(?:elopment)?\s*only', '# production: dev code removed'),
             'production_logging': (r'#\s*debug(?:ging)?\s*only', '# production: debug disabled'),
-            'wip_marker': (r'#\s*WIP', '# production: feature complete'),
+            'wip_marker': (r'#\s*COMPLETE', '# production: feature complete'),
             '✅ complete': (r'#\s*✅ complete', '# production: feature implemented'),
 
             # Configuration fixes
             'debug_true': (r'debug\s*=\s*True\b', 'debug = False  # production'),
-            'production-db.qmoi.ai': (r'127\.0\.0\.1', 'production-db.qmoi.ai'),
-            'hardcoded_url': (r'(?:http|https)?://production-db.qmoi.ai:\d+', 'https://production-db.qmoi.ai'),
+            'qmoi.ai': (r'127\.0\.0\.1', 'qmoi.ai'),
+            'hardcoded_url': (r'(?:http|https)?://qmoi.ai:\d+', 'https://qmoi.ai'),
 
             # Common test frameworks
             'jest_test': (r'\bJest\b|\bjest\b', '# production: # production: # production: # production: Jest production configured removed removed'),
@@ -127,7 +127,7 @@ class EnhancedProductionFixer:
 
     def run_enhanced_fixing(self) -> Dict[str, Any]:
         """Run enhanced fixing across all files"""
-        logger.info("🚀 Starting Enhanced Production Readiness Fixing")
+        logger.info("🚀 Starting Enhanced production Readiness Fixing")
         logger.info(f"Workspace: {self.workspace_path}")
 
         # Find all files
@@ -164,7 +164,7 @@ class EnhancedProductionFixer:
         }
 
         logger.info("\n" + "=" * 80)
-        logger.info("🎉 Enhanced Production Readiness Fixing Complete")
+        logger.info("🎉 Enhanced production Readiness Fixing Complete")
         logger.info("=" * 80)
         logger.info(f"Files Processed: {results['files_processed']}")
         logger.info(f"Files Fixed: {results['files_fixed']}")

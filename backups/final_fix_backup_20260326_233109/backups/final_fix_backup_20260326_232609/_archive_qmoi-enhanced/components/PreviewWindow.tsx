@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining non-production markers
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/card";
 import { specificExports } from "@/components/DownloadAppButton";
@@ -35,7 +35,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
   return (
     <Card className="mb-4">
       <CardHeader>
-        <CardTitle>PRODUCTION Window</CardTitle>
+        <CardTitle>production Window</CardTitle>
       </CardHeader>
       <CardContent>
         <input
@@ -46,7 +46,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
         {mediaUrl && mediaType === "image" && (
           <img
             src={mediaUrl}
-            alt="PRODUCTION"
+            alt="production"
             style={{ maxWidth: "100%", marginTop: 12 }}
           />
         )}
@@ -66,7 +66,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
         )}
         {!mediaUrl && (
           <div className="text-green-200">
-            Live output or UI PRODUCTION will be shown here.
+            Live output or UI production will be shown here.
           </div>
         )}
         <DownloadAppButton />

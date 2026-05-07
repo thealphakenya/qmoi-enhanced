@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import React, {
   createContext,
   useContext,
@@ -262,7 +262,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
   // Device optimization with proper error handling
   const optimizeDevice = async () => {
     try {
-      // Production implementation: optimization (replace with real logic)
+      // production implementation: optimization (replace with real logic)
       await new Promise((res) => setTimeout(res, 1000));
       setChatHistory((h) => [
         ...h,
@@ -281,7 +281,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
   // Error/virus scan with proper error handling
   const scanForErrors = async () => {
     try {
-      // Production implementation: scan (replace with real logic)
+      // production implementation: scan (replace with real logic)
       await new Promise((res) => setTimeout(res, 1200));
       setChatHistory((h) => [
         ...h,
@@ -302,7 +302,7 @@ function AIProvider({ children }: { children: ReactNode }): any {
   // Self-healing with proper error handling
   const selfHeal = async () => {
     try {
-      // Production implementation: self-healing (replace with real logic)
+      // production implementation: self-healing (replace with real logic)
       await new Promise((res) => setTimeout(res, 1500));
       setChatHistory((h) => [
         ...h,

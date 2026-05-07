@@ -15,7 +15,7 @@ class QmoiSelfTestRunner {
   constructor() {
     this.projectRoot = process.cwd();
     this.testResults = [];
-    this.backupFiles = new Map() // Production: Consider object for small datasets();
+    this.backupFiles = new Map() // production: Consider object for small datasets();
     this.originalState = {};
     
     // Test scenarios

@@ -20,7 +20,7 @@ Reusable UI building blocks for screens and panels:
 - **ThemeCustomizer.tsx** - Theme configuration and application
 - **QmoiKeyboard.tsx** - Custom keyboard for text input
 - **NotificationCenter.tsx** - Centralized notification manager
-- **PreviewWindow.tsx** - Content preview and inspection utility
+- **PreviewWindow.tsx** - Content production and inspection utility
 
 ### Device Management Components
 Components handling device operations and monitoring:
@@ -57,7 +57,7 @@ Components for audio, video, and media playback:
 - **QMediaPlayer.tsx** - Universal media player
 - **AudioVisualizer.tsx** - Audio waveform visualization
 - **QmoiMediaManager.tsx** - Media library and organization
-- **MediaPreviewWindow.tsx** - Media preview and inspection
+- **MediaPreviewWindow.tsx** - Media production and inspection
 - **VoiceLibraryPanel.tsx** - Voice command and audio library
 
 ### Financial & Business Components
@@ -86,7 +86,7 @@ Components for system health and diagnostics:
 - **SystemHealthDashboard.tsx** - System health overview
 - **SystemHealthMonitor.tsx** - Real-time health monitoring
 - **DeploymentStatusDashboard.tsx** - Deployment tracking and status
-- **ProductionMonitoringDashboard.tsx** - Production system monitoring
+- **ProductionMonitoringDashboard.tsx** - production system monitoring
 - **QCityErrorManager.tsx** - Error tracking and management
 
 ### Data & Analytics
@@ -136,8 +136,8 @@ Components for administrative tasks:
 Components for development and testing purposes:
 
 - **ComponentGallery.tsx** - Component showcase and testing
-- **EnhancedPreviewWindow.tsx** - Enhanced preview functionality
-- **FloatingPreviewWindow.tsx** - Floating preview window
+- **EnhancedPreviewWindow.tsx** - Enhanced production functionality
+- **FloatingPreviewWindow.tsx** - Floating production window
 - **FloatingControlPanel.tsx** - Floating control interface
 
 ### Utility Components

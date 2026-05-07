@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 interface Asset {
@@ -46,7 +46,7 @@ export const FarmBusinessManager: React.FC = () => {
       </select>
       <input
         type="text"
-        // Production implementation:="Name/Type"
+        // production implementation:="Name/Type"
         value={name}
         onChange={(e) => setName(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

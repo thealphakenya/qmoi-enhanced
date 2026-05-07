@@ -341,7 +341,7 @@ class QMOIController {
 
   assessSeverity(rule, message) {
     const criticalRules = ["no-undef", "import/no-unresolved"];
-    const highRules = ["no-unused-vars", "no-console", "no-// Production: debugger removed"];
+    const highRules = ["no-unused-vars", "no-console", "no-// production: debugger removed"];
 
     if (criticalRules.some((critical) => rule.includes(critical))) {
       return "critical";

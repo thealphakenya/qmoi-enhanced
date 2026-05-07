@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 const MASTER_EMAIL = "rovicviccy@gmail.com";
@@ -34,7 +34,7 @@ function QIStateWindow(): any {
     !userEmail || userEmail === MASTER_EMAIL || userPhone === MASTER_PHONE;
   const [auditLog, setAuditLog] = useState<string[]>([]);
 
-  // Production implementation: fetching audit log
+  // production implementation: fetching audit log
   useEffect(() => {
     setAuditLog([
       "Linked Airtel Money to master.",

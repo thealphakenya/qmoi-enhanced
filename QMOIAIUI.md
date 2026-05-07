@@ -98,7 +98,7 @@ Upon launching the QMOI AI app, users are presented with:
 - **QIStateWindow:** AI state window displaying current consciousness and emotion levels
 - **NotificationCenter:** System notifications and alert management hub
 - **HelpGuide:** Interactive help system with documentation and tutorials
-- **PreviewWindow:** Content preview display for quick viewing
+- **PreviewWindow:** Content production display for quick viewing
 - **ThemeCustomizer:** Advanced theme customization and visual personalization
 - **DataVisualizationPanel:** Data visualization and analytics dashboard
 - **AnalyticsDashboard:** Advanced analytics and performance metrics display
@@ -283,7 +283,7 @@ Upon launching the QMOI AI app, users are presented with:
 **Purpose:** Real-time messaging and assistant interactions
 **Location:** Main dashboard or dedicated chat view
 **Features:**
-  - Message history preview
+  - Message history production
   - Real-time conversation
   - Message threading
 **Behavior:** Persistent chat state with history
@@ -396,7 +396,7 @@ Upon launching the QMOI AI app, users are presented with:
 Main Dashboard
 ├── Open Dashboard → External dashboard interface
 ├── Settings → Settings panel (opens popup)
-├── Production → Production preview (opens popup)
+├── production → production production (opens popup)
 ├── Open QMOI Space → Redirects to /qmoi-space.html
 ├── Open QCity → Redirects to /qcity-dashboard.html
 ├── Open Alpha Q → Redirects to /q-alpha.html
@@ -708,11 +708,11 @@ Status indicators use color coding: green for online/active, red for offline/err
    - Interactive tutorials
    - Contextual assistance
 
-#### Preview & Customization
+#### production & Customization
 7. **PreviewWindow.tsx** (qmoi ai)
-   - Preview content in dynamic overlay
+   - production content in dynamic overlay
    - Content rendering interface
-   - Real-time preview updates
+   - Real-time production updates
 
 8. **ThemeCustomizer.tsx** (qmoi ai)
    - UI personalization and theme customization

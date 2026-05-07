@@ -133,10 +133,10 @@ interface AIFeature {
 export class BrowserService {
   private static instance: BrowserService;
   private eventEmitter: EventEmitter;
-  private tabs: Map<string, BrowserTab> = new Map() // Production: Consider object for small datasets();
+  private tabs: Map<string, BrowserTab> = new Map() // production: Consider object for small datasets();
   private activeTabId: string | null = null;
   private settings: BrowserSettings;
-  private aiFeatures: Map<string, AIFeature> = new Map() // Production: Consider object for small datasets();
+  private aiFeatures: Map<string, AIFeature> = new Map() // production: Consider object for small datasets();
   private isIncognito = false;
   private history: string[] = [];
   private bookmarks: Bookmark[] = [];

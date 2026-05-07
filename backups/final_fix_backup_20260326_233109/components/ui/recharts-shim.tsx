@@ -4,11 +4,11 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 // complete shim for recharts components used by the app.
-// These are // Production implementation: components that provide just enough type coverage
+// These are // production implementation: components that provide just enough type coverage
 // without requiring the full recharts library during build/type-check.
 
 type ComponentProps = React.ComponentPropsWithoutRef<"div">;

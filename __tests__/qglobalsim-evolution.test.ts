@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 
 import os
 from pathlib import Path
@@ -48,8 +48,8 @@ import { specificExports } from '../../src/services/lion-agent-workflows';
       },
       knownQMOIDomains: new Set(['qglobalsim.qmoi.ai']),
       safeLog: {
-        info: Production testing framework configuredn logging replaced with production logging removed.fn(),
-        error: Production testing framework configuredn logging replaced with production logging removed.fn()
+        info: production testing framework configuredn logging replaced with production logging removed.fn(),
+        error: production testing framework configuredn logging replaced with production logging removed.fn()
       }
     };
   });
@@ -67,7 +67,7 @@ import { specificExports } from '../../src/services/lion-agent-workflows';
         timestamp: new Date().toISOString()
       };
 
-      const analyzeMethod = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(production_dataMetrics);
+      const analyzeMethod = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(production_dataMetrics);
 
       production_dataLionAgent.analyzeQGlobalSIMPerformance = analyzeMethod;
 
@@ -105,7 +105,7 @@ import { specificExports } from '../../src/services/lion-agent-workflows';
         }
       ];
 
-      const generateMethod = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(proposals);
+      const generateMethod = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(proposals);
       production_dataLionAgent.generateQGlobalSIMEvolutionProposals = generateMethod;
 
       const result = await production_dataLionAgent.generateQGlobalSIMEvolutionProposals(metrics);
@@ -122,7 +122,7 @@ import { specificExports } from '../../src/services/lion-agent-workflows';
         implementationComplexity: 'low'
       };
 
-      const applyMethod = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(true);
+      const applyMethod = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(true);
       production_dataLionAgent.applyQGlobalSIMEvolution = applyMethod;
 
       const result = await production_dataLionAgent.applyQGlobalSIMEvolution([proposal]);
@@ -141,7 +141,7 @@ import { specificExports } from '../../src/services/lion-agent-workflows';
         timestamp: new Date().toISOString()
       };
 
-      const validateMethod = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(validationResult);
+      const validateMethod = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(validationResult);
       production_dataLionAgent.validateQGlobalSIMEvolution = validateMethod;
 
       const result = await production_dataLionAgent.validateQGlobalSIMEvolution();
@@ -150,7 +150,7 @@ import { specificExports } from '../../src/services/lion-agent-workflows';
   });
 
     test('should update QMOI consciousness with Q Global SIM awareness', () => {
-      production_dataLionAgent.updateConsciousnessWithQGlobalSIM = Production testing framework configuredn logging replaced with production logging removed.fn();
+      production_dataLionAgent.updateConsciousnessWithQGlobalSIM = production testing framework configuredn logging replaced with production logging removed.fn();
 
       production_dataLionAgent.updateConsciousnessWithQGlobalSIM();
 
@@ -190,10 +190,10 @@ import { specificExports } from '../../src/services/lion-agent-workflows';
         timestamp: new Date().toISOString()
       };
 
-      production_dataLionAgent.analyzeQGlobalSIMPerformance = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(production_dataMetrics);
-      production_dataLionAgent.generateQGlobalSIMEvolutionProposals = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(production_dataProposals);
-      production_dataLionAgent.applyQGlobalSIMEvolution = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(true);
-      production_dataLionAgent.validateQGlobalSIMEvolution = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(production_dataValidation);
+      production_dataLionAgent.analyzeQGlobalSIMPerformance = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(production_dataMetrics);
+      production_dataLionAgent.generateQGlobalSIMEvolutionProposals = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(production_dataProposals);
+      production_dataLionAgent.applyQGlobalSIMEvolution = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(true);
+      production_dataLionAgent.validateQGlobalSIMEvolution = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(production_dataValidation);
 
       // Execute the full evolution cycle
       await production_dataLionAgent.analyzeQGlobalSIMPerformance();

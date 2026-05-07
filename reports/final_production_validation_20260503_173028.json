@@ -967,7 +967,7 @@
           "app/api/qmoi/revenue/route.ts: Missing API key validation",
           "app/api/qmoi/backup/route.ts: Missing API key validation",
           "app/api/qmoi/visuals/route.ts: Missing API key validation",
-          "app/api/qmoi/voice-preview/route.ts: Missing API key validation",
+          "app/api/qmoi/voice-production/route.ts: Missing API key validation",
           "app/api/qmoi/friendship/route.ts: Missing API key validation",
           "app/api/qmoi/voice/route.ts: Missing API key validation",
           "app/api/qmoi/user/route.ts: Missing API key validation",

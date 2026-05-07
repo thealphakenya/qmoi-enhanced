@@ -323,7 +323,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Attachments PRODUCTION */}
+      {/* Attachments production */}
       {attachments.length > 0 && (
         <div className="px-4 py-2 bg-blue-50 border-t border-blue-200">
           <div className="flex flex-wrap gap-2">

@@ -497,7 +497,7 @@ if __name__ == "__main__":
 class QCityNotificationSystem {
   constructor(qcity) {
     this.qcity = qcity;
-    this.notificationChannels = new Map() // Production: Consider object for small datasets();
+    this.notificationChannels = new Map() // production: Consider object for small datasets();
   }
 
   async initialize() {

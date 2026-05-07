@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Button";
@@ -656,7 +656,7 @@ function fetchData(): any {
               {React.createElement(FaVideo as React.ElementType, {
                 className: "mr-2",
               })}{" "}
-              PRODUCTION Window
+              production Window
             </Button>
             <Button
               size="sm"
@@ -898,7 +898,7 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Implement pause all */
+                      /* // production implementation:: Implement pause all */
                     }}
                   >
                     Pause All
@@ -919,7 +919,7 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Implement wallpaper change */
+                      /* // production implementation:: Implement wallpaper change */
                     }}
                   >
                     Change Wallpaper
@@ -931,7 +931,7 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Implement appearance settings */
+                      /* // production implementation:: Implement appearance settings */
                     }}
                   >
                     Customize
@@ -943,7 +943,7 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Implement app management */
+                      /* // production implementation:: Implement app management */
                     }}
                   >
                     Manage Apps
@@ -987,14 +987,14 @@ function fetchData(): any {
                       size="sm"
                       variant="outline"
                       onClick={() => {
-                        /* // Production implementation:: Add funds */
+                        /* // production implementation:: Add funds */
                       }}
                     >
                       Add Funds
                     </Button>
                   </div>
                   <div className="space-y-2">
-                    {/* // Production implementation:: Add transaction list */}
+                    {/* // production implementation:: Add transaction list */}
                     <div className="text-sm text-gray-500">No transactions</div>
                   </div>
                 </div>
@@ -1013,7 +1013,7 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Implement pause all */
+                      /* // production implementation:: Implement pause all */
                     }}
                   >
                     Pause All
@@ -1032,7 +1032,7 @@ function fetchData(): any {
                   size="sm"
                   variant="outline"
                   onClick={() => {
-                    /* // Production implementation:: Implement bluetooth scan */
+                    /* // production implementation:: Implement bluetooth scan */
                   }}
                 >
                   Scan for Devices
@@ -1053,7 +1053,7 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Implement wifi scan */
+                      /* // production implementation:: Implement wifi scan */
                     }}
                   >
                     Scan
@@ -1073,7 +1073,7 @@ function fetchData(): any {
                   size="sm"
                   variant="outline"
                   onClick={() => {
-                    /* // Production implementation:: Implement add goal */
+                    /* // production implementation:: Implement add goal */
                   }}
                 >
                   Add Goal
@@ -1092,7 +1092,7 @@ function fetchData(): any {
                   size="sm"
                   variant="outline"
                   onClick={() => {
-                    /* // Production implementation:: Implement add project */
+                    /* // production implementation:: Implement add project */
                   }}
                 >
                   New Project
@@ -1163,7 +1163,7 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Add new rule */
+                      /* // production implementation:: Add new rule */
                     }}
                   >
                     Add Rule
@@ -1238,14 +1238,14 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Clear notifications */
+                      /* // production implementation:: Clear notifications */
                     }}
                   >
                     Clear All
                   </Button>
                 </div>
                 <div className="space-y-2">
-                  {/* // Production implementation:: Add notification list */}
+                  {/* // production implementation:: Add notification list */}
                   <div className="text-sm text-gray-500">
                     No new notifications
                   </div>
@@ -1309,7 +1309,7 @@ function fetchData(): any {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      /* // Production implementation:: Start new optimization */
+                      /* // production implementation:: Start new optimization */
                     }}
                   >
                     Start Optimization
@@ -1788,7 +1788,7 @@ function fetchData(): any {
             </div>
           )}
 
-          {/* PRODUCTION Window */}
+          {/* production Window */}
           {showPreviewWindow && (
             <FloatingPreviewWindow
               onClose={() => setShowPreviewWindow(false)}
@@ -1816,7 +1816,7 @@ function fetchData(): any {
                   onChange={(e) => setConsoleInput(e.target.value)}
                   className="bg-gray-800 text-green-200 p-2 rounded"
                   rows={2}
-                  // Production implementation:="Enter command, file edit, or version query..."
+                  // production implementation:="Enter command, file edit, or version query..."
                 />
                 <Button size="sm" variant="outline" onClick={handleConsoleSend}>
                   Send

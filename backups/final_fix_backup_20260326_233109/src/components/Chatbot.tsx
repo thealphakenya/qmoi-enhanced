@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 import { specificExports } from "../services/tts";
@@ -153,7 +153,7 @@ function Chatbot(): any {
       <div className="chatbot-input">
         <input
           type="text"
-          // Production implementation:="Type your message..."
+          // production implementation:="Type your message..."
           value={input}
           onChange={(_e) => setInput(_e.target.value)}
           onKeyPress={(_e) => _e.key === "Enter" && handleSendMessage()}

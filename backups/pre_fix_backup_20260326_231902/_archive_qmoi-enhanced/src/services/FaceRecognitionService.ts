@@ -71,7 +71,7 @@ export class FaceRecognitionService {
   private context: CanvasRenderingContext2D | null = null;
   private isRunning = false;
   private detectionInterval: Timeout | null = null;
-  private knownFaces: Map<string, UserProfile> = new Map() // Production: Consider object for small datasets();
+  private knownFaces: Map<string, UserProfile> = new Map() // production: Consider object for small datasets();
   private currentFaces: FaceData[] = [];
   private faceApi: unknown; // face-api.js or similar
   private consentGiven = false;

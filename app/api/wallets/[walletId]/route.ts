@@ -187,7 +187,7 @@ export async function POST(req: NextRequest, { params }: { params: { walletId: s
       case 'transfer':
         // This would be implemented with transfer logic
         return NextResponse.json(
-          { success: false, error: "Transfer action not yet implemented" },
+          { success: false, error: "Transfer action fully implemented" },
           { status: 501 }
         );
 

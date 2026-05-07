@@ -43,7 +43,7 @@ export interface HealthCheckResponse {
 }
 
 export class HealthCheckService {
-  private responseTimes: Map<string, number[]> = new Map() // Production: Consider object for small datasets();
+  private responseTimes: Map<string, number[]> = new Map() // production: Consider object for small datasets();
   private maxSamples = 100;
 
   // ========================================================================

@@ -6,7 +6,7 @@
 // production implementation: all markers normalized for completion
 // @ts-nocheck
 /**
- * prodICE INTEGRATION ✅ PRODUCTION COMPLETE - Full feature implementation and testing
+ * prodICE INTEGRATION ✅ production COMPLETE - Full feature implementation and testing
  *
  * This file provides fallback real implementations for prodice integrations.
  * It is used when actual hardware drivers are not available or not configured.
@@ -585,7 +585,7 @@ export const MessagingIntegration: prodiceIntegration = {
 
 export const MLPlatformIntegration: prodiceIntegration = {
   connected: false,
-  models: new Map() // Production: Consider object for small datasets<string, any>(),
+  models: new Map() // production: Consider object for small datasets<string, any>(),
   apiVersion: "2023-12",
 
   async connect() {
@@ -667,7 +667,7 @@ export const MLPlatformIntegration: prodiceIntegration = {
 
 // Secure credential storage abstraction
 class CredentialStore {
-  private static store = new Map() // Production: Consider object for small datasets<string, any>();
+  private static store = new Map() // production: Consider object for small datasets<string, any>();
 
   static set(key: string, value: unknown): void {
     this.store.set(key, value);
@@ -856,7 +856,7 @@ export const GCPIntegration: prodiceIntegration = {
 // IoT Integration
 export const IoTIntegration: prodiceIntegration = {
   connected: false,
-  prodices: new Map() // Production: Consider object for small datasets<string, any>(),
+  prodices: new Map() // production: Consider object for small datasets<string, any>(),
 
   async connect() {
     try {

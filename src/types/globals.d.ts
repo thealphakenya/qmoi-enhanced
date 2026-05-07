@@ -64,8 +64,8 @@ declare global {
   const console: Console;
   const NodeJS: unknown;
 
-  // Production testing framework configuredn logging replaced with production logging removed test globals
-  const Production testing framework configuredn logging replaced with production logging removed: unknown;
+  // production testing framework configuredn logging replaced with production logging removed test globals
+  const production testing framework configuredn logging replaced with production logging removed: unknown;
   /**
  * describe function
  */

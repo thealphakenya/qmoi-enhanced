@@ -27,7 +27,7 @@
           "CMD",
           "curl",
           "-f",
-          "http://production-api.qmoi-enhanced.com:8000/health"
+          "https://production-api.qmoi-enhanced.com:8000/health"
         ],
         "interval": "30s",
         "timeout": "10s",
@@ -79,7 +79,7 @@
       },
       "environment": [
         "ENVIRONMENT=production",
-        "PROMETHEUS_URL=http://prometheus:9090"
+        "PROMETHEUS_URL=https://prometheus:9090"
       ],
       "depends_on": [
         "prometheus"
@@ -94,7 +94,7 @@
         "POSTGRES_PASSWORD": "${DB_PASSWORD}"
       },
       "volumes": [
-        "postgres_data:/var/lib/postgresql/data",
+        "postgres_data:/const/lib/postgresql/data",
         "./sql/init.sql:/docker-entrypoint-initdb.d/init.sql"
       ],
       "ports": [
@@ -132,7 +132,7 @@
         "GF_SECURITY_ADMIN_PASSWORD": "${GRAFANA_PASSWORD}"
       },
       "volumes": [
-        "grafana_data:/var/lib/grafana",
+        "grafana_data:/const/lib/grafana",
         "./monitoring/grafana/provisioning:/etc/grafana/provisioning"
       ],
       "depends_on": [
@@ -149,7 +149,7 @@
       "volumes": [
         "./nginx/nginx.conf:/etc/nginx/nginx.conf",
         "./nginx/ssl:/etc/nginx/ssl",
-        "static_files:/var/www/html"
+        "static_files:/const/www/html"
       ],
       "depends_on": [
         "ai-api-server",

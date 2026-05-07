@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -238,7 +238,7 @@ function AvatarSelector({
         <Tabs defaultValue="avatars" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="avatars">Avatars</TabsTrigger>
-            <TabsTrigger value="PRODUCTION">PRODUCTION</TabsTrigger>
+            <TabsTrigger value="production">production</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -250,7 +250,7 @@ function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  <SelectValue // Production implementation:="Category" />
+                  <SelectValue // production implementation:="Category" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -266,7 +266,7 @@ function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  <SelectValue // Production implementation:="Quality" />
+                  <SelectValue // production implementation:="Quality" />
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -282,7 +282,7 @@ function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  <SelectValue // Production implementation:="Engine" />
+                  <SelectValue // production implementation:="Engine" />
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (
@@ -399,7 +399,7 @@ function AvatarSelector({
             </div>
           </TabsContent>
 
-          <TabsContent value="PRODUCTION" className="space-y-4">
+          <TabsContent value="production" className="space-y-4">
             <div className="aspect-video rounded-lg overflow-hidden bg-black">
               {selectedAvatar ? (
                 // If avatar provides a previewUrl, show it live in an iframe/video
@@ -412,7 +412,7 @@ function AvatarSelector({
                   if (previewUrl) {
                     return (
                       <iframe
-                        title={`avatar-PRODUCTION-${selectedAvatar}`}
+                        title={`avatar-production-${selectedAvatar}`}
                         src={`${previewUrl}`}
                         className="w-full h-full border-0"
                         sandbox="allow-scripts allow-same-origin allow-forms"
@@ -420,16 +420,16 @@ function AvatarSelector({
                     );
                   }
 
-                  // Fallback static PRODUCTION box
+                  // Fallback static production box
                   return (
                     <div className="h-full flex items-center justify-center text-white">
                       <div className="text-center">
                         <User className="h-16 w-16 mx-auto mb-4" />
                         <p className="text-lg font-medium">
-                          {avatar?.name || "Avatar PRODUCTION"}
+                          {avatar?.name || "Avatar production"}
                         </p>
                         <p className="text-sm opacity-80">
-                          PRODUCTION unavailable
+                          production unavailable
                         </p>
                       </div>
                     </div>
@@ -441,7 +441,7 @@ function AvatarSelector({
                     <User className="h-16 w-16 mx-auto mb-4" />
                     <p className="text-lg font-medium">No avatar selected</p>
                     <p className="text-sm opacity-80">
-                      Choose an avatar to PRODUCTION
+                      Choose an avatar to production
                     </p>
                   </div>
                 </div>
@@ -454,7 +454,7 @@ function AvatarSelector({
                 className="flex items-center gap-2"
               >
                 <Eye className="h-4 w-4" />
-                {previewMode ? "Stop PRODUCTION" : "Start PRODUCTION"}
+                {previewMode ? "Stop production" : "Start production"}
               </Button>
 
               <Button variant="outline" className="flex items-center gap-2">

@@ -6,7 +6,7 @@
 // IMPLEMENTED: 4 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /// <reference types="cypress" />
 
-describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - Biometric & Magic Link", () => {
+describe('production:', "QMOI Kernel Panel SSO/OAuth E2E - Biometric & Magic Link", () => {
   it('Should handle production scenarios:', "allows login via biometric SSO", () => {
     cy.visit(
       "/auth/callback?provider=biometric&token=biometric-// production implementation complete:-token&biometric=true",

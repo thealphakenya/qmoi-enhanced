@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -122,7 +122,7 @@ function submit(): any {
           <input
             value={value}
             onChange={(_e) => setValue(_e.target.value)}
-            // Production implementation:="Ask a question..."
+            // production implementation:="Ask a question..."
             style={{ width: "100%", padding: 8, marginBottom: 8 }}
           />
           <div style={{ display: "flex", gap: 8 }}>

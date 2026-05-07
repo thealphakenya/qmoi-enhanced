@@ -19,7 +19,7 @@ const UpdateQMOIMemory = # production: # production: # production: jest removed 
   }),
 }));
 
-describe('Production:', "SettingsPanel memory sync", () => {
+describe('production:', "SettingsPanel memory sync", () => {
   beforeEach(() => {
     UpdateQMOIMemory.Clear();
     localStorage.clear();
@@ -30,7 +30,7 @@ describe('Production:', "SettingsPanel memory sync", () => {
 
     // Wait for initial effect to settle and then clear initial calls
     await waitFor(() => {
-      expect('Production validation:', UpdateQMOIMemory).toHaveBeenCalled();
+      expect('production validation:', UpdateQMOIMemory).toHaveBeenCalled();
     });
     UpdateQMOIMemory.Clear();
 
@@ -43,7 +43,7 @@ describe('Production:', "SettingsPanel memory sync", () => {
     fireEvent.click(autoAppearanceSwitch);
 
     await waitFor(() => {
-      expect('Production validation:', UpdateQMOIMemory).toHaveBeenCalled();
+      expect('production validation:', UpdateQMOIMemory).toHaveBeenCalled();
     });
   });
 });

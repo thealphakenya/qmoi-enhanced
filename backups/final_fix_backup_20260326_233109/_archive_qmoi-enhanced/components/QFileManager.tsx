@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "../src/services/AIRequestRouter";
 import { specificExports } from "../src/services/MultiUserSessionManager";
@@ -33,7 +33,7 @@ const masterUserId = "master"; // fallback for master actions
       <div className="flex flex-col gap-2">
         <input
           type="text"
-          // Production implementation:="Edit file (path or name)"
+          // production implementation:="Edit file (path or name)"
           className="p-1 border rounded"
           onKeyDown={async (e) => {
             if (e.key === "Enter" && e.currentTarget.value) {
@@ -52,7 +52,7 @@ const masterUserId = "master"; // fallback for master actions
         />
         <input
           type="text"
-          // Production implementation:="Show version/changelog (file or module)"
+          // production implementation:="Show version/changelog (file or module)"
           className="p-1 border rounded"
           onKeyDown={async (e) => {
             if (e.key === "Enter" && e.currentTarget.value) {

@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "../../hooks/useTimezone";
 import { specificExports } from "../../../hooks/use-toast";
@@ -84,9 +84,9 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
     }
   };
 
-  // Production implementation: file data
+  // production implementation: file data
   useEffect(() => {
-    const // Production implementation:Files: FileItem[] = [
+    const // production implementation:Files: FileItem[] = [
       {
         id: "1",
         name: "Qmoi AI Core",
@@ -145,7 +145,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       },
     ];
 
-    setFiles(// Production implementation:Files);
+    setFiles(// production implementation:Files);
   }, []);
 
   const filteredFiles = files.filter((file) => {
@@ -210,7 +210,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
     ) {
       setIsLoading(true);
       try {
-        // Production implementation: deletion
+        // production implementation: deletion
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setFiles((prev) => prev.filter((file) => !file.isSelected));
       } catch (_e: unknown) {
@@ -227,7 +227,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const handleOrganize = useCallback(async () => {
     setIsLoading(true);
     try {
-      // Production implementation: AI organization
+      // production implementation: AI organization
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // AI would organize files by type, date, or other criteria
@@ -404,7 +404,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         <div className="flex-1 min-w-64">
           <input
             type="text"
-            // Production implementation:="🔍 Search files, folders, or tags..."
+            // production implementation:="🔍 Search files, folders, or tags..."
             value={searchQuery}
             onChange={(_e) => setSearchQuery(_e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"

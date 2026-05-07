@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./PluginManager";
 
@@ -12,7 +12,7 @@ export const AIReviewPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Production implementation: actions/logs for demonstration
+    // production implementation: actions/logs for demonstration
     const actions = [
       { type: "edit", file: "main.py", time: "2m ago" },
       { type: "run", file: "main.py", time: "1m ago" },

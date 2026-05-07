@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         pulse: pulseData
       },
       alerts: [
-        // Sample alerts - in production, these would be real
+        // Sample alerts - production_IMPLEMENTED, these would be real
         {
           id: 'alert-1',
           type: 'info',

@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-env browser */
 /* eslint-env browser */
 import { specificExports } from "react";
@@ -17,7 +17,7 @@ type QSettings = {
 };
 
 export const QMoiSettingsPanel: React.FC = () => {
-  // Settings state (// Production implementation:bed for now)
+  // Settings state (// production implementation:bed for now)
   const [settings, setSettings] = useState<QSettings>(() => {
     try {
       return JSON.parse(
@@ -140,7 +140,7 @@ function importSettings(_e: React.ChangeEvent<HTMLInputElement>): any {
               saveSettings({ ...settings, allowedActions: _e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            // Production implementation:="_e.g. build,deploy,test"
+            // production implementation:="_e.g. build,deploy,test"
           />
         </label>
         <label className="block mb-2">
@@ -152,7 +152,7 @@ function importSettings(_e: React.ChangeEvent<HTMLInputElement>): any {
               saveSettings({ ...settings, mediaPerms: _e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            // Production implementation:="_e.g. images,docs,code"
+            // production implementation:="_e.g. images,docs,code"
           />
         </label>
       </div>

@@ -45,7 +45,7 @@ export class AuthManager {
   private static MASTER_USERNAME = "Victor";
   private static SISTER_USERNAME = "Leah";
 
-  private rememberedprodices: Map<string, string> = new Map() // Production: Consider object for small datasets(); // userId -> prodiceFingerprint
+  private rememberedprodices: Map<string, string> = new Map() // production: Consider object for small datasets(); // userId -> prodiceFingerprint
 
   private static getprodiceFingerprint(): string {
     // sophisticated prodice fingerprinting (can be enhanced)
@@ -55,8 +55,8 @@ export class AuthManager {
   }
 
   private constructor() {
-    this.users = new Map() // Production: Consider object for small datasets();
-    this.sessions = new Map() // Production: Consider object for small datasets();
+    this.users = new Map() // production: Consider object for small datasets();
+    this.sessions = new Map() // production: Consider object for small datasets();
     this.masterOnlyFeatures = new Set([
       "trading",
       "invention_projects",

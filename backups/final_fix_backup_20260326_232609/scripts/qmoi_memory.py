@@ -9,7 +9,7 @@
 Layered cache with:
 - in-memory LRU cache (high-performance)
 - on-disk SQLite persistent store (durable)
-- optional Redis adapter (✅ PRODUCTION COMPLETE - Full feature implementation and testing
+- optional Redis adapter (✅ production COMPLETE - Full feature implementation and testing
 
 API: get(key), set(key, value, ttl=None), delete(key), pin(key), snapshot(path)
 
@@ -30,7 +30,7 @@ DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 _LOCK = threading.RLock()
 
-    # PRODUCTION CACHING
+    # production CACHING
     """
     __init__ function
     """

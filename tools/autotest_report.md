@@ -85,14 +85,14 @@ cypress rc=1 (npm not available)
 ```production-validated
 npm not found - Node.js not installed
 ```production-validated
-Tried Production testing framework configuredn logging replaced with production logging removed command candidates:
-- trying: npm exec --no-install Production testing framework configuredn logging replaced with production logging removed --listTests
+Tried production testing framework configuredn logging replaced with production logging removed command candidates:
+- trying: npm exec --no-install production testing framework configuredn logging replaced with production logging removed --listTests
 -> failed (rc=127)
-- trying: npx Production testing framework configuredn logging replaced with production logging removed --listTests
+- trying: npx production testing framework configuredn logging replaced with production logging removed --listTests
 -> failed (rc=127)
-- trying: yarn Production testing framework configuredn logging replaced with production logging removed --listTests
+- trying: yarn production testing framework configuredn logging replaced with production logging removed --listTests
 -> failed (rc=127)
-## Production testing framework configuredn logging replaced with production logging removed/Node.js not installed
+## production testing framework configuredn logging replaced with production logging removed/Node.js not installed
 ```production-validated
 /bin/sh: yarn: not found
 ```production-validated

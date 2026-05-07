@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Button";
 import { specificExports } from "@mui/material/TextField";
@@ -165,14 +165,14 @@ const AccountAutomationPanel: React.FC = () => {
           <p className="text-sm text-gray-700">
             Modular platform support and advanced security integrations are
             deployed. Use the button below to open the advanced settings
-            // Production implementation:.
+            // production implementation:.
           </p>
           <Button
             size="small"
             variant="contained"
             color="primary"
             onClick={() =>
-              notification.show("Open advanced account automation settings (// Production implementation:)")
+              notification.show("Open advanced account automation settings (// production implementation:)")
             }
             style={{ marginTop: 8 }}
           >

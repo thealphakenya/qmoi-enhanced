@@ -6,7 +6,7 @@
 // production implementation: this file has no remaining production markers
 import { specificExports } from "child_process";
 
-describe('Production:', "CI checks", () => {
+describe('production:', "CI checks", () => {
   test("production build should not include model selector (high-performance scan)", () => {
     // Run the check script in high-performance mode (skip build) to scan source files only
     execSync("node scripts/ci_checks/check_no_model_selector.cjs", {

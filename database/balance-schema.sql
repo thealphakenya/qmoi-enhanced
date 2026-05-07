@@ -1,5 +1,5 @@
 -- QMOI Enhanced Balance Management Database Schema
--- Production Implementation: complete database integration for auto-updating balances
+-- production Implementation: complete database integration for auto-updating balances
 -- INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
 -- Create database

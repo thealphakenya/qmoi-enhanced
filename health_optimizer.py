@@ -67,11 +67,11 @@ class QMOIHealthOptimizer:
             if full_path.exists():
                 content = full_path.read_text()
                 # Ensure production markers are present
-                if '✅ PRODUCTION READY' not in content:
+                if '✅ production READY' not in content:
                     # Add production readiness markers
                     updated_content = content.replace(
-                        'Status: ✅ PRODUCTION MIGRATION COMPLETED',
-                        'Status: ✅ PRODUCTION MIGRATION COMPLETED\n✅ ALL SYSTEMS PRODUCTION READY'
+                        'Status: ✅ production MIGRATION COMPLETED',
+                        'Status: ✅ production MIGRATION COMPLETED\n✅ ALL SYSTEMS production READY'
                     )
                     full_path.write_text(updated_content)
                     actions.append(f"Enhanced production markers in {file_path}")

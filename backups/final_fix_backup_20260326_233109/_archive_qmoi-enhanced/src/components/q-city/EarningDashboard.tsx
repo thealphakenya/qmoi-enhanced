@@ -23,7 +23,7 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Button";
 import { specificExports } from "@mui/material/Card";
@@ -140,7 +140,7 @@ const EarningDashboard: React.FC = () => {
             size="small"
             variant="contained"
             color="primary"
-            onClick={() => notification.show("Open advanced analytics (// Production implementation:)")}
+            onClick={() => notification.show("Open advanced analytics (// production implementation:)")}
             style={{ marginTop: 8 }}
           >
             Open Advanced Analytics

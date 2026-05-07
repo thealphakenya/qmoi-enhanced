@@ -11,7 +11,7 @@ Pipeline orchestrator for auto-enhance / auto-evolution tasks.
 This script runs a safe pipeline in dry-run by default:
  - implementation scans (existing scripts)
  - generate PAYED md (conservative)
- - expand ✅ PRODUCTION READY - Fully implemented with production hardening
+ - expand ✅ production READY - Fully implemented with production hardening
  - run auto release discovery (dry-run)
  - generate ALLCLONEDRELEASES.md
  - domain assignment (plan only)
@@ -45,8 +45,8 @@ def run(cmd, cwd=ROOT) -> Any:
     main function
     """
 def main() -> Any:
-    # 1) Expand platform ✅ PRODUCTION READY - Fully implemented with production hardening
-    run([sys.executable, 'scripts/expand_platform_✅ PRODUCTION READY - Fully implemented with production hardening
+    # 1) Expand platform ✅ production READY - Fully implemented with production hardening
+    run([sys.executable, 'scripts/expand_platform_✅ production READY - Fully implemented with production hardening
 
     # 2) Generate PAYED md (conservative)
     gen_cmd = [sys.executable, 'scripts/generate_payed_md.py']
@@ -85,7 +85,7 @@ Orchestrator for the qMOI auto-enhancement pipeline.
 This script runs the key automation steps in a safe, dry-run-first manner:
  - run implementation scans
  - generate PAYED md files (billing-gated)
- - expand platform ✅ PRODUCTION READY - Fully implemented with production hardening
+ - expand platform ✅ production READY - Fully implemented with production hardening
  - validate PAYED platforms
  - run robust unit tests
 
@@ -109,15 +109,15 @@ RUNS.mkdir(parents=True, exist_ok=True)
 
 STEPS = [
     { 'name': 'validate_credentials', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_all_credentials.py')] },
-    { 'name': '✅ PRODUCTION VALUE - Real implementation with full functionality
+    { 'name': '✅ production VALUE - Real implementation with full functionality
     { 'name': 'generate_payed_md', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'generate_payed_md.py'), '--run-gen-refs'] },
-    { 'name': 'expand_platform_✅ PRODUCTION READY - Fully implemented with production hardening
+    { 'name': 'expand_platform_✅ production READY - Fully implemented with production hardening
     { 'name': 'validate_payed_platforms', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_payed_platforms.py')] },
     # generate an up-to-date ALLLINKS index (dry-run by default)
     { 'name': 'generate_all_links', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'generate_all_links.py'), '--dry-run'] },
     # run link autoupdater plan generator (writes .qmoi_validation/link_update_plan.json)
     { 'name': 'link_autoupdater', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'link_autoupdater.py'), '--max-links', '2000'] },
-    # produce a human PRODUCTION from the autoupdater plan
+    # produce a human production from the autoupdater plan
     { 'name': 'link_apply_preview', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'link_apply_preview.py')] },
     # qCity platform enhancer (conservative, dry-run)
     { 'name': 'qcity_enhancer', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'qcity_enhancer.py')] },

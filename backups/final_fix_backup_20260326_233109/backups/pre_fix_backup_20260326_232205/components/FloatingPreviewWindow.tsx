@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining non-production markers
 // @ts-nocheck
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Button";
@@ -219,7 +219,7 @@ function handleDownload(): any {
         className="fixed bottom-4 right-4 z-50"
         onClick={() => setOpen(true)}
       >
-        Open PRODUCTION
+        Open production
       </Button>
     );
 
@@ -231,7 +231,7 @@ function handleDownload(): any {
     >
       <CardHeader className="flex flex-row items-center justify-between p-2">
         <Typography variant="subtitle2" className="text-sm">
-          PRODUCTION Window
+          production Window
         </Typography>
         <div className="flex gap-2">
           <Button size="small" variant="text" onClick={handleFullscreen}>
@@ -256,7 +256,7 @@ function handleDownload(): any {
               />
             )}
             {content.type.startsWith("image/") && (
-              <img src={content.url} alt="PRODUCTION" className="w-full rounded" />
+              <img src={content.url} alt="production" className="w-full rounded" />
             )}
             {content.type.startsWith("audio/") && (
               <audio
@@ -300,7 +300,7 @@ function handleDownload(): any {
           </div>
         ) : (
           <div className="text-center text-gray-500 py-8">
-            No content to PRODUCTION
+            No content to production
           </div>
         )}
       </CardContent>

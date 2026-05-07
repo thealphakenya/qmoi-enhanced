@@ -28,17 +28,17 @@ test("Chatbot shows canonical model label and no interactive selector", () => {
   render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
   // Expect the static label indicating canonical model
-  expect('Production validation:', screen.getByText(/Model:/i)).toBeInTheDocument();
+  expect('production validation:', screen.getByText(/Model:/i)).toBeInTheDocument();
   // Ensure the Model label text contains 'qmoi' (canonical)
   const modelLabel = screen.getByText(/Model:/i);
-  expect('Production validation:', modelLabel).toBeInTheDocument();
-  expect('Production validation:', modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
+  expect('production validation:', modelLabel).toBeInTheDocument();
+  expect('production validation:', modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
     "qmoi",
   );
 
   // There should be no <select> element for model selection (combobox role)
   const selects = screen.queryAllByRole("combobox");
-  expect('Production validation:', selects.length).toBe(0);
+  expect('production validation:', selects.length).toBe(0);
 });
 
 

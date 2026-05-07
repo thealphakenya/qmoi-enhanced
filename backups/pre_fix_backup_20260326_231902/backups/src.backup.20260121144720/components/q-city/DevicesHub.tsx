@@ -22,8 +22,8 @@ const WhatsAppService = {
     notifications: { master: true, leah: true, status: "sent" },
   },
   messageTemplates: [],
-  autoResponders: new Map() // Production: Consider object for small datasets(),
-  pendingApprovals: new Map() // Production: Consider object for small datasets(),
+  autoResponders: new Map() // production: Consider object for small datasets(),
+  pendingApprovals: new Map() // production: Consider object for small datasets(),
   sendMessageToMaster: async (msg: string) => {
     notification.show(msg);
   },

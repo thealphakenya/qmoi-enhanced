@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 import "./FileExplorer.css";
@@ -44,7 +44,7 @@ function FileExplorer(): any {
   };
 
   const handleDownload = (file: FileItem) => {
-    // Production implementation: download - PRODUCTION_IMPLEMENTED, fetch from backend
+    // production implementation: download - PRODUCTION_IMPLEMENTED, fetch from backend
     logger.info(`Downloading: ${file.name}`);
     notification.show(`Download initiated for: ${file.name}`);
   };

@@ -1,6 +1,6 @@
-/* PreviewWindow.css - Universal PRODUCTION Window Styling */
+/* PreviewWindow.css - Universal production Window Styling */
 
-.PRODUCTION-window {
+.production-window {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -14,16 +14,16 @@
   transition: box-shadow 0.2s ease;
 }
 
-.PRODUCTION-window.dragging {
+.production-window.dragging {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
-.PRODUCTION-window.resizing {
+.production-window.resizing {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Title Bar */
-.PRODUCTION-window-title-bar {
+.production-window-title-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +37,7 @@
   border-radius: 8px 8px 0 0;
 }
 
-.PRODUCTION-window-title {
+.production-window-title {
   font-size: 13px;
   font-weight: 600;
   color: const(--text-primary, #e0e0e0);
@@ -47,14 +47,14 @@
   flex: 1;
 }
 
-.PRODUCTION-window-controls {
+.production-window-controls {
   display: flex;
   gap: 4px;
   align-items: center;
   flex-shrink: 0;
 }
 
-.PRODUCTION-window-button {
+.production-window-button {
   width: 24px;
   height: 24px;
   padding: 0;
@@ -71,18 +71,18 @@
   user-select: none;
 }
 
-.PRODUCTION-window-button:hover {
+.production-window-button:hover {
   background: const(--bg-hover, #3e3e42);
   color: const(--text-primary, #e0e0e0);
 }
 
-.PRODUCTION-window-button.close:hover {
+.production-window-button.close:hover {
   background: const(--error, #f48771);
   color: white;
 }
 
 /* Toolbar */
-.PRODUCTION-window-toolbar {
+.production-window-toolbar {
   display: flex;
   align-items: center;
   padding: 6px 8px;
@@ -95,7 +95,7 @@
   overflow-y: hidden;
 }
 
-.PRODUCTION-window-tools {
+.production-window-tools {
   display: flex;
   gap: 4px;
   flex: 1;
@@ -128,7 +128,7 @@
 }
 
 /* Content Area */
-.PRODUCTION-window-content {
+.production-window-content {
   flex: 1;
   display: flex;
   overflow: hidden;
@@ -136,7 +136,7 @@
   position: relative;
 }
 
-.PRODUCTION-window-minimized {
+.production-window-minimized {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,7 +146,7 @@
   font-size: 12px;
 }
 
-.PRODUCTION-window-loading {
+.production-window-loading {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -172,13 +172,13 @@
   }
 }
 
-.PRODUCTION-content {
+.production-content {
   width: 100%;
   height: 100%;
   overflow: auto;
 }
 
-.PRODUCTION-empty {
+.production-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,7 +192,7 @@
   box-sizing: border-box;
 }
 
-.PRODUCTION-empty p {
+.production-empty p {
   margin: 0;
   font-size: 12px;
 }
@@ -285,7 +285,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .PRODUCTION-window-title {
+  .production-window-title {
     font-size: 12px;
   }
 
@@ -305,17 +305,17 @@
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
-  .PRODUCTION-window {
+  .production-window {
     background: #1e1e1e;
     border-color: #333;
   }
 
-  .PRODUCTION-window-title-bar {
+  .production-window-title-bar {
     background: linear-gradient(135deg, #252526, #1e1e1e);
     border-bottom-color: #333;
   }
 
-  .PRODUCTION-window-toolbar {
+  .production-window-toolbar {
     background: #252526;
     border-bottom-color: #333;
   }
@@ -338,38 +338,38 @@
     color: white;
   }
 
-  .PRODUCTION-window-content {
+  .production-window-content {
     background: #1a1a1a;
   }
 }
 
 /* Light theme */
 @media (prefers-color-scheme: light) {
-  .PRODUCTION-window {
+  .production-window {
     background: #ffffff;
     border-color: #e0e0e0;
   }
 
-  .PRODUCTION-window-title-bar {
+  .production-window-title-bar {
     background: linear-gradient(135deg, #f5f5f5, #ffffff);
     border-bottom-color: #e0e0e0;
     color: #333;
   }
 
-  .PRODUCTION-window-title {
+  .production-window-title {
     color: #333;
   }
 
-  .PRODUCTION-window-controls .PRODUCTION-window-button {
+  .production-window-controls .production-window-button {
     color: #666;
   }
 
-  .PRODUCTION-window-controls .PRODUCTION-window-button:hover {
+  .production-window-controls .production-window-button:hover {
     background: #e0e0e0;
     color: #333;
   }
 
-  .PRODUCTION-window-toolbar {
+  .production-window-toolbar {
     background: #f5f5f5;
     border-bottom-color: #e0e0e0;
   }
@@ -392,13 +392,13 @@
     color: white;
   }
 
-  .PRODUCTION-window-content {
+  .production-window-content {
     background: #fafafa;
   }
 
-  .PRODUCTION-empty,
-  .PRODUCTION-window-minimized,
-  .PRODUCTION-window-loading {
+  .production-empty,
+  .production-window-minimized,
+  .production-window-loading {
     color: #666;
   }
 
@@ -409,26 +409,26 @@
 }
 
 /* Full screen override */
-.PRODUCTION-window:fullscreen {
+.production-window:fullscreen {
   border-radius: 0;
   max-width: none;
   max-height: none;
 }
 
 /* Multiple windows stacking */
-.PRODUCTION-window:nth-child(2) {
+.production-window:nth-child(2) {
   z-index: 1001;
 }
 
-.PRODUCTION-window:nth-child(3) {
+.production-window:nth-child(3) {
   z-index: 1002;
 }
 
-.PRODUCTION-window:nth-child(4) {
+.production-window:nth-child(4) {
   z-index: 1003;
 }
 
-.PRODUCTION-window:nth-child(5) {
+.production-window:nth-child(5) {
   z-index: 1004;
 }
 
@@ -444,6 +444,6 @@
   }
 }
 
-.PRODUCTION-window {
+.production-window {
   animation: slideIn 0.2s ease-out;
 }

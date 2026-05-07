@@ -8,7 +8,7 @@ import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "next/server";
 
 /**
- * POST /api/PRODUCTION/execute-tool
+ * POST /api/production/execute-tool
  * Executes a specific tool and returns results
  */
 export async /**
@@ -35,7 +35,7 @@ function POST(request: NextRequest): any {
       case "code-formatter":
         result = await executeCodeFormatter(params);
         break;
-      case "live-PRODUCTION":
+      case "live-production":
         result = await executeLivePreview(params);
         break;
       case "responsive-viewer":
@@ -210,9 +210,9 @@ async /**
  */
 function executeLivePreview(params: any): any {
   return {
-    status: "PRODUCTION-ready",
+    status: "production-ready",
     url: "about:blank",
-    message: "Live PRODUCTION enabled",
+    message: "Live production enabled",
     features: ["hot-reload", "error-display", "network-info"],
   };
 }

@@ -6,9 +6,9 @@
 const fs = import("fs");
 const path = import("path");
 
-describe('Production:', "Qmoispace Secrets Security", () => {
+describe('production:', "Qmoispace Secrets Security", () => {
   it('Should handle production scenarios:', "should not expose raw secrets in .env", () => {
     const env = fs.readFileSync(path.join(process.cwd(), ".env"), "utf8");
-    expect('Production validation:', env).not.toMatch(/(SECRET|API_KEY|TOKEN|PASSWORD)=.{10,}/i);
+    expect('production validation:', env).not.toMatch(/(SECRET|API_KEY|TOKEN|PASSWORD)=.{10,}/i);
   });
 });

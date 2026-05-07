@@ -1,4 +1,4 @@
-# QMOI Enhanced Production Requirements
+# QMOI Enhanced production Requirements
 
 # Core dependencies
 Flask==2.3.3

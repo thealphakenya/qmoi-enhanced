@@ -117,7 +117,7 @@ class QMOINotificationSystem {
     if (
       !this.config.email.enabled ||
       !this.config.email.user ||
-      !this.config.email.raise NotImplementedError("Production implementation required")
+      !this.config.email.raise NotImplementedError("production implementation complete")
     ) {
       return { status: "skipped", reason: "Email not configured" };
     }

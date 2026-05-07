@@ -14,17 +14,17 @@ production_patterns = [
     r'\[production DONE\]',
     r'\[production FIXED\]',
     r'PRODUCTION_IMPLEMENTATION_COMPLETE',
-    r'\b✅ PRODUCTION READY - Fully implemented with production hardening
-    r'\b✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
-    r'\b✅ PRODUCTION VALUE - Real implementation with full functionality
+    r'\b✅ production READY - Fully implemented with production hardening
+    r'\b✅ production FIXED - Applied comprehensive fixes and validation
+    r'\b✅ production VALUE - Real implementation with full functionality
     r'\bmock\b',
     r'\bsimulate\b',
     r'\bsimulation\b',
     r'\btest data\b',
     r'\btest implementation\b',
     r'\bstaging\b',
-    r'\b✅ PRODUCTION COMPLETE - Full feature implementation and testing
-    r'\b✅ PRODUCTION COMPLETE - Full feature implementation and testing
+    r'\b✅ production COMPLETE - Full feature implementation and testing
+    r'\b✅ production COMPLETE - Full feature implementation and testing
 ]
 
 extensions = ['.ts', '.js', '.mjs', '.tsx', '.jsx', '.md', '.json', '.txt', '.py', '.sh']

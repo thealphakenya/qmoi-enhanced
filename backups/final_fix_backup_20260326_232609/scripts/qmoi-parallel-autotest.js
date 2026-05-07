@@ -27,8 +27,8 @@ class ParallelAutotest {
       timeout: TEST_TIMEOUT,
     });
 
-    this.results = new Map() // Production: Consider object for small datasets();
-    this.workers = new Map() // Production: Consider object for small datasets();
+    this.results = new Map() // production: Consider object for small datasets();
+    this.workers = new Map() // production: Consider object for small datasets();
     this.retryQueue = [];
   }
 

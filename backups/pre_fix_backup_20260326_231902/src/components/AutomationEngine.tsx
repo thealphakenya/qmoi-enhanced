@@ -24,7 +24,7 @@ const defaultRules: AutomationRule[] = [
     event: "errorDetected",
     conditions: { severity: "high" },
     action: (payload) => {
-      // Trigger opening error PRODUCTION window
+      // Trigger opening error production window
       apiClient.get("/api/automation/trigger", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,11 +38,11 @@ const defaultRules: AutomationRule[] = [
     event: "projectOpened",
     conditions: { projectType: "web" },
     action: (payload) => {
-      // Auto-activate live PRODUCTION tool
-      apiClient.get("/api/PRODUCTION/execute-tool", {
+      // Auto-activate live production tool
+      apiClient.get("/api/production/execute-tool", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ toolId: "live-PRODUCTION", projectId: payload.projectId }),
+        body: JSON.stringify({ toolId: "live-production", projectId: payload.projectId }),
       });
     },
     enabled: true,

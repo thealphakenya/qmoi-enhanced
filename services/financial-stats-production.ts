@@ -1,5 +1,5 @@
 
-// PRODUCTION IMPLEMENTATION: Financial Statistics
+// production IMPLEMENTATION: Financial Statistics
 // Real-time aggregation from production database
 
 import { pool } from './database-connection';
@@ -7,7 +7,7 @@ import { pool } from './database-connection';
 export class FinancialStatsProduction {
   /**
    * Get actual user transaction statistics from database
-   * In production: queries real transaction history
+   * production_IMPLEMENTED: queries real transaction history
    */
   async getUserTransactionStats(userId: string) {
     try {

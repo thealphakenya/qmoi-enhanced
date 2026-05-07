@@ -811,7 +811,7 @@ def clear_dns_cache(self) -> Any:
                 subprocess.run(["sudo", "killall", "-HUP", "mDNSResponder"], check=True)
         
         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
 
     """
     test_all_connectivity function

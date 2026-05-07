@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 // Define a complete BluetoothDevice type for type safety
@@ -51,7 +51,7 @@ function connectToDevice(device: BluetoothDevice): any {
     setError(null);
     setConnecting(true);
     try {
-      // Production implementation: connection (replace with real connection logic)
+      // production implementation: connection (replace with real connection logic)
       setConnectedDevice(device);
       // Optionally get location
       if (navigator.geolocation) {
@@ -59,7 +59,7 @@ function connectToDevice(device: BluetoothDevice): any {
           setLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
         });
       }
-      // Production implementation: AI giving directions
+      // production implementation: AI giving directions
       setDirections("Head north for 2km, then turn right.");
     } catch (e: unknown) {
       setError(e.message || "Connection failed.");

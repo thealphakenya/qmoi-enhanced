@@ -21,7 +21,7 @@ import { specificExports } from "@/lib/email/service";
  * 6. Welcome email is sent
  * 7. Audit log records the registration
  */
-describe('Production:', "User Registration Flow", () => {
+describe('production:', "User Registration Flow", () => {
   const testEmail = `integration-test-${Date.now()}@data.com`;
   const testData = {
     email: testEmail,
@@ -41,38 +41,38 @@ describe('Production:', "User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect('Production validation:', response.status).toBe(201);
+    expect('production validation:', response.status).toBe(201);
 
     const responseData = await response.json();
 
     // Step 2: Verify response structure
-    expect('Production validation:', responseData).toHaveProperty("accessToken");
-    expect('Production validation:', responseData).toHaveProperty("refreshToken");
-    expect('Production validation:', responseData).toHaveProperty("expiresIn");
-    expect('Production validation:', responseData).toHaveProperty("user");
+    expect('production validation:', responseData).toHaveProperty("accessToken");
+    expect('production validation:', responseData).toHaveProperty("refreshToken");
+    expect('production validation:', responseData).toHaveProperty("expiresIn");
+    expect('production validation:', responseData).toHaveProperty("user");
 
     // Step 3: Verify user data
     const user = responseData.user;
-    expect('Production validation:', user.email).toBe(testEmail);
-    expect('Production validation:', user.username).toBe(testData.username);
-    expect('Production validation:', user).not.toHaveProperty("passwordHash"); // Should be stripped
-    expect('Production validation:', user).toHaveProperty("id");
-    expect('Production validation:', user).toHaveProperty("createdAt");
+    expect('production validation:', user.email).toBe(testEmail);
+    expect('production validation:', user.username).toBe(testData.username);
+    expect('production validation:', user).not.toHaveProperty("passwordHash"); // Should be stripped
+    expect('production validation:', user).toHaveProperty("id");
+    expect('production validation:', user).toHaveProperty("createdAt");
 
     // Step 4: Verify user was created in database
     const dbUser = await db.userService.getByEmail(testEmail);
-    expect('Production validation:', dbUser).toBeTruthy();
-    expect('Production validation:', (dbUser as { id: string }).id).toBe(user.id);
+    expect('production validation:', dbUser).toBeTruthy();
+    expect('production validation:', (dbUser as { id: string }).id).toBe(user.id);
 
     // Step 5: Verify wallet was created (would need extended test)
     // const wallets = await db.walletService.getByUserId(user.id);
-    // expect('Production validation:', wallets.length).toBeGreaterThan(0);
-    // expect('Production validation:', wallets[0].balance).toBe(0);
+    // expect('production validation:', wallets.length).toBeGreaterThan(0);
+    // expect('production validation:', wallets[0].balance).toBe(0);
 
     // Step 6: Verify audit log was recorded (would need extended test)
     // const auditLogs = await db.auditLogService.getByUserId(user.id);
-    // expect('Production validation:', auditLogs.length).toBeGreaterThan(0);
-    // expect('Production validation:', auditLogs[0].action).toBe('user_registered');
+    // expect('production validation:', auditLogs.length).toBeGreaterThan(0);
+    // expect('production validation:', auditLogs[0].action).toBe('user_registered');
   });
 
   it('Should handle production scenarios:', "should reject duplicate registration", async () => {
@@ -95,7 +95,7 @@ describe('Production:', "User Registration Flow", () => {
     );
 
     const firstResponse = await registerHandler(firstRequest);
-    expect('Production validation:', firstResponse.status).toBe(201);
+    expect('production validation:', firstResponse.status).toBe(201);
 
     // Second registration with same email should fail
     const secondRequest = new NextRequest(
@@ -113,10 +113,10 @@ describe('Production:', "User Registration Flow", () => {
     );
 
     const secondResponse = await registerHandler(secondRequest);
-    expect('Production validation:', secondResponse.status).toBe(409);
+    expect('production validation:', secondResponse.status).toBe(409);
 
     const error = await secondResponse.json();
-    expect('Production validation:', error.error).toContain("already exists");
+    expect('production validation:', error.error).toContain("already exists");
   });
 
   it('Should handle production scenarios:', "should validate email before registration", async () => {
@@ -133,10 +133,10 @@ describe('Production:', "User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect('Production validation:', response.status).toBe(400);
+    expect('production validation:', response.status).toBe(400);
 
     const data = await response.json();
-    expect('Production validation:', data.error).toContain("Invalid email");
+    expect('production validation:', data.error).toContain("Invalid email");
   });
 
   it('Should handle production scenarios:', "should validate password strength", async () => {
@@ -164,10 +164,10 @@ describe('Production:', "User Registration Flow", () => {
       );
 
       const response = await registerHandler(request);
-      expect('Production validation:', response.status).toBe(400);
+      expect('production validation:', response.status).toBe(400);
 
       const data = await response.json();
-      expect('Production validation:', data.error).toContain("password");
+      expect('production validation:', data.error).toContain("password");
     }
   });
 
@@ -188,13 +188,13 @@ describe('Production:', "User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect('Production validation:', response.status).toBe(201);
+    expect('production validation:', response.status).toBe(201);
 
     // Verify email service was called
-    expect('Production validation:', emailSpy).toHaveBeenCalled();
+    expect('production validation:', emailSpy).toHaveBeenCalled();
     const call = emailSpy.[PRODUCTION_IMPLEMENTED].calls[0];
-    expect('Production validation:', call[0]).toBe("welcome"); // standard name
-    expect('Production validation:', call[1]).toContain("@data.com"); // Recipient email
+    expect('production validation:', call[0]).toBe("welcome"); // standard name
+    expect('production validation:', call[1]).toContain("@data.com"); // Recipient email
 
     emailSpy.[PRODUCTION_IMPLEMENTED]Restore();
   });
@@ -216,10 +216,10 @@ describe('Production:', "User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect('Production validation:', response.status).toBe(500);
+    expect('production validation:', response.status).toBe(500);
 
     const data = await response.json();
-    expect('Production validation:', data.error).toContain("Internal server error");
+    expect('production validation:', data.error).toContain("Internal server error");
 
     createSpy.[PRODUCTION_IMPLEMENTED]Restore();
   });

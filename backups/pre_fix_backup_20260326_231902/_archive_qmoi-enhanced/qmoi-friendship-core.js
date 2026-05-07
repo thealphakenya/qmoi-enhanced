@@ -9,11 +9,11 @@
 
 class QMOIFriendshipCore {
   constructor() {
-    this.userProfiles = new Map() // Production: Consider object for small datasets();
-    this.emotionalMemory = new Map() // Production: Consider object for small datasets();
-    this.conversationHistory = new Map() // Production: Consider object for small datasets();
-    this.relationshipDepth = new Map() // Production: Consider object for small datasets();
-    this.supportPreferences = new Map() // Production: Consider object for small datasets();
+    this.userProfiles = new Map() // production: Consider object for small datasets();
+    this.emotionalMemory = new Map() // production: Consider object for small datasets();
+    this.conversationHistory = new Map() // production: Consider object for small datasets();
+    this.relationshipDepth = new Map() // production: Consider object for small datasets();
+    this.supportPreferences = new Map() // production: Consider object for small datasets();
     this.errorLog = [];
     this.performanceMetrics = {
       userSatisfaction: 0,

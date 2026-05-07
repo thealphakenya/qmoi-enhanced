@@ -4,14 +4,14 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 // Automatically adjusts UI based on user preferences or detected needs.
 
 export const AccessibilityAdjuster: React.FC = () => {
   useEffect(() => {
-    // Detect user preferences (// Production implementation:)
+    // Detect user preferences (// production implementation:)
     const prefersHighContrast = window.matchMedia("(prefers-contrast: high)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

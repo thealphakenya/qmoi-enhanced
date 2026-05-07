@@ -348,15 +348,15 @@ def _generate_feature_tests(self, feature: str) -> str:
         """Generate feature tests"""
         return f""""
 // Auto-generated tests for {feature}
-describe('Production:', '{feature} Enhancement', () => {{
+describe('production:', '{feature} Enhancement', () => {{
     it('Should handle production scenarios:', 'should process data correctly', async () => {{
         const result = await enhanced{feature.capitalize()}.process(testData);
-        expect('Production validation:', result).toBeDefined();
+        expect('production validation:', result).toBeDefined();
     }});
     
     it('Should handle production scenarios:', 'should validate input', async () => {{
         const isValid = await enhanced{feature.capitalize()}.validate(testInput);
-        expect('Production validation:', isValid).toBe(true);
+        expect('production validation:', isValid).toBe(true);
     }});
 }});
 """

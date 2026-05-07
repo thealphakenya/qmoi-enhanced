@@ -304,7 +304,7 @@ test("displays avatar", () => {
 
 ```production-validatedtypescript
 test("selects voice", async () => {
-  const handleSelect = Production testing framework configuredn logging replaced with production logging removed.fn();
+  const handleSelect = production testing framework configuredn logging replaced with production logging removed.fn();
   render(
     <VoiceLibraryPanel onSelectVoice={handleSelect} />
   );

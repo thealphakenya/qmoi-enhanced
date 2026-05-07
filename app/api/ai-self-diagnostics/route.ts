@@ -39,7 +39,7 @@ export async function GET(req: NextRequest): any {
           resolve(String(out) + String(_err)),
         ),
       );
-      tsc.split("\n").forEach((line) => {
+      tsc.split("\n").for (const item of((line) => {
         if (line.includes("error"))
           problems.push({ type: "tsc", message: line });
       });
@@ -51,7 +51,7 @@ export async function GET(req: NextRequest): any {
             resolve(String(out) + String(_err)),
           ),
         );
-        flake.split("\n").forEach((line) => {
+        flake.split("\n").for (const item of((line) => {
           if (line.trim())
             problems.push({ type: "flake8", file, message: line });
         });
@@ -62,7 +62,7 @@ export async function GET(req: NextRequest): any {
           resolve(String(out) + String(_err)),
         ),
       );
-      eslint.split("\n").forEach((line) => {
+      eslint.split("\n").for (const item of((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
@@ -130,7 +130,7 @@ export async function POST(req: NextRequest): any {
           resolve(String(out) + String(_err)),
         ),
       );
-      problemsRes.split("\n").forEach((line) => {
+      problemsRes.split("\n").for (const item of((line) => {
         const match = line.match(/error TS2307: Cannot find module '(.+?)'/);
         if (match) {
           const missingFile = match[1];

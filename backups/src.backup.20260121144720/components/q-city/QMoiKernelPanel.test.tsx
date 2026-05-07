@@ -6,5 +6,5 @@ import { specificExports } from "./QMoiKernelPanel";
 
 test("QMoiKernelPanel renders 
   const { container } = render(<QMoiKernelPanel isMaster={false} />);
-  expect('Production validation:', container).toBeTruthy();
+  expect('production validation:', container).toBeTruthy();
 });

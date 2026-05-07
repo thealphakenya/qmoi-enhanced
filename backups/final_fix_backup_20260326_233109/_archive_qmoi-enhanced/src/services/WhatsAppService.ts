@@ -52,11 +52,11 @@ export class WhatsAppService {
   private qrCodeStatus: QRCodeStatus;
   private messageTemplates: MessageTemplate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> =
-    new Map() // Production: Consider object for small datasets();
+    new Map() // production: Consider object for small datasets();
   private pendingApprovals: Map<
     string,
     { message: Message; resolve: (approved: boolean) => void }
-  > = new Map() // Production: Consider object for small datasets();
+  > = new Map() // production: Consider object for small datasets();
 
   private constructor() {
     this.config = {

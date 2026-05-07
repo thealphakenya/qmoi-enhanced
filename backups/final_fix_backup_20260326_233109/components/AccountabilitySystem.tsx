@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 // @ts-nocheck
 
@@ -248,7 +248,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       failedActions,
       highRiskActions,
       uniqueUsers,
-      averageSessionDuration: 1800, // Production implementation: 30 minutes
+      averageSessionDuration: 1800, // production implementation: 30 minutes
       complianceScore,
     });
   };
@@ -657,7 +657,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                 <div>
                   <label className="text-sm font-medium">Search</label>
                   <Input
-                    // Production implementation:="Search actions, resources, users..."
+                    // production implementation:="Search actions, resources, users..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -667,7 +667,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">User</label>
                   <Select value={filterUser} onValueChange={setFilterUser}>
                     <SelectTrigger>
-                      <SelectValue // Production implementation:="All users" />
+                      <SelectValue // production implementation:="All users" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All users</SelectItem>
@@ -684,7 +684,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">Action</label>
                   <Select value={filterAction} onValueChange={setFilterAction}>
                     <SelectTrigger>
-                      <SelectValue // Production implementation:="All actions" />
+                      <SelectValue // production implementation:="All actions" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All actions</SelectItem>
@@ -704,7 +704,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                     onValueChange={setFilterRiskLevel}
                   >
                     <SelectTrigger>
-                      <SelectValue // Production implementation:="All risk levels" />
+                      <SelectValue // production implementation:="All risk levels" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All risk levels</SelectItem>
@@ -720,7 +720,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">Status</label>
                   <Select value={filterStatus} onValueChange={setFilterStatus}>
                     <SelectTrigger>
-                      <SelectValue // Production implementation:="All statuses" />
+                      <SelectValue // production implementation:="All statuses" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All statuses</SelectItem>

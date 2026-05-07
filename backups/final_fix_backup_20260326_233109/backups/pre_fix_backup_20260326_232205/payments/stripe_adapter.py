@@ -25,7 +25,7 @@ try:
     )
 except Exception:
     stripe = None
-    # Provide fallback ✅ PRODUCTION VALUE - Real implementation with full functionality
+    # Provide fallback ✅ production VALUE - Real implementation with full functionality
 
     class StripeError(Exception):
 return None  # production implementation
@@ -105,7 +105,7 @@ def create_charge(username: str, amount_cents: int, currency: str = 'usd',
                   email: Optional[str] = None, metadata: Optional[Dict] = None) -> dict:
     """Create a Stripe PaymentIntent with proper idempotency and error handling."""
     if not (stripe and STRIPE_API_KEY):
-        return provider_✅ PRODUCTION COMPLETE - Full feature implementation and testing
+        return provider_✅ production COMPLETE - Full feature implementation and testing
 
     stripe.api_key = STRIPE_API_KEY
     idempotency_key = f'charge-{username}-{amount_cents}-{uuid.uuid4()}'

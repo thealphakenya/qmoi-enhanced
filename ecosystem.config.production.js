@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 // Last Updated: April 5, 2026
 
 module.exports = {

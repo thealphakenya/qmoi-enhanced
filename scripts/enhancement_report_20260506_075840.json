@@ -2442,7 +2442,7 @@
       "original_hash": "4514cd0bd7203e625a30ae5151cc25e04d95393a0c9fa08dc0cfcc41db9e0a9d",
       "new_hash": "b236d16364693a127a0833d47ea14b9a7493ed9be8bbeba4a28823c72d7ba370",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -9136,7 +9136,7 @@
       "new_hash": "b66636d4ce5aea0bb7d769a3635ebfda668e5a509586625209e3f74e4a43f7eb",
       "changes_made": [
         "Applied ellipsis: Replace ellipsis with proper error",
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -9453,7 +9453,7 @@
       "original_hash": "b45dee90000967f37665b19c96a67e8b02e822867c7f41c7533efd8c0c89aa3f",
       "new_hash": "5310553eaf26e592278c28c04794a591adc297c553aa595fd70f56ab7779f8aa",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -47568,7 +47568,7 @@
       "original_hash": "963ec217f9952692ec844677d199ab4474ba819938125caec30ad9b32beb92a0",
       "new_hash": "59dda886504f5f4c34309356c5ab18f6c50afd08514bbc2705d07e4741d7dd63",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -47625,7 +47625,7 @@
       "original_hash": "b5b51e80554e9abfaf82b22e0fc91f264c2c9eefc964a001c22cc3a8c265e75b",
       "new_hash": "572fdff26d4dab0eeebd42e432eb2eea3c9254299bd09d4921a4ba190ddbe3b9",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -47880,7 +47880,7 @@
       "original_hash": "aa17c02aa87edfba38f753603f99c0484726635bd4c8b2aa315c75878c962611",
       "new_hash": "0afea43dcc0b6a175eae8ce07f2a517e52137a4589484fb8dce71dd4fa7e9e10",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -47927,7 +47927,7 @@
       "original_hash": "02a02326ee55b2efed50dbca0b5e03c34bf0b49f56ce6e75fa4b9ba190bbdc8a",
       "new_hash": "28301008f8522bf4c1906b702a03e3dc8b4b6a3fa5de8c1c10622fa95fd512af",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -47956,7 +47956,7 @@
       "original_hash": "cea0540a36e82866a0483e34eeb1e3c81255d07262677790ec8d62dbd9279fa1",
       "new_hash": "67fde16450788c7358ac7b03ba7183249f0f804ea3c6e019a049522590d9f3d3",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -47985,7 +47985,7 @@
       "original_hash": "43d99528600238cc791675770a6850195bebead0c6eec810bfebdc48dd67994f",
       "new_hash": "8f0dbbffb3513c4439180908bfaeb0dddcd3db7c947681ddd9c54d8a7999193a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48023,7 +48023,7 @@
       "original_hash": "b22ba3339008d950e602d979ca1011c840627c65fcc3e6ff9b1bb667a46024bb",
       "new_hash": "83d521fa52d295616bd18d93b97f6ac92aab49628de5d2d1df47d7d89fa8ea1d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48034,7 +48034,7 @@
       "original_hash": "5a6baafa196cc625ae09137e79082951efd453247a7ddad002ee261ac8559e5d",
       "new_hash": "7aedf0a1c484b419627c09e5202a4f13db03ccb4a0f2360dfb6f1be407906d54",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48072,7 +48072,7 @@
       "original_hash": "d033591818b54da1434fffc7ae5f757af28ed258bd796dca87e9d4033470ca70",
       "new_hash": "13bcdd961015fc81b549fd3ac40273745301a2169145d46e5f7c2cb86c196009",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48092,7 +48092,7 @@
       "original_hash": "a7aa7ee876ca83c1b609ee97baed8f0f69cec5829074efdf3b692ef1542365ec",
       "new_hash": "361a779962a21b0f63f649973bab838510bb1692c3e54110abd78059b1f175ee",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48103,7 +48103,7 @@
       "original_hash": "c66d5a6c4fcda0cdd83308eb43c773a672abd1b17ad9da9b7313dff3ba9185b6",
       "new_hash": "9c7c3fceae7929e043f36d45e5c90627d9a32be52ad8d3eada6407045dbbc037",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48132,7 +48132,7 @@
       "original_hash": "32544602db8996ee2ba4c72f5b0bee4a46b97c12c037dfaaefc8d6edb1f0e3b4",
       "new_hash": "b6858aa0141cc6c02c0effe0d8be567bc24b3d9a735152b75a07cb4e7892fc60",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -48144,7 +48144,7 @@
       "original_hash": "13cc90ca1119dc759a994a8baa4f6a6e7f8733207f4e4828a07d8107493bfe15",
       "new_hash": "8927cecfe14f29dac94a03edcfcb7684143d15e8a902a67d5da84e5b5d265605",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -48156,7 +48156,7 @@
       "original_hash": "369ad809556f7bb00567f63635e16677b8eb3b55f566004541240359d8e87c6e",
       "new_hash": "89f82f7c90c21fa489c1795dc80251662fc7f3eae3f6d51994dcb4bc8fa4684b",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48167,7 +48167,7 @@
       "original_hash": "4644a018320bfa2a5b0bf95a3d8b25d3fc5e1090ce9d30e7e7f23df4d193bd22",
       "new_hash": "0bd5171bc9673c9951ed02628591c599fed60cb2f69e55f70e110ad54b390d0e",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48178,7 +48178,7 @@
       "original_hash": "e8da46dd5cd816fa5d08850a130b90a38bb1ec18ae075872a264809be5040755",
       "new_hash": "1b108affcaa254099411a68a347194269080c52a5f4b1a1d0b966e9bf2e15730",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48216,7 +48216,7 @@
       "original_hash": "07d5ebde86b1ed9060200e978228d9e673aed2ceccc01657c1cb5fc4b6439447",
       "new_hash": "2fb5c274e45208b9c28dd15b9ccf7e08c4410f4cdcaa4219f459b949bdf61f83",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -48228,7 +48228,7 @@
       "original_hash": "f992b22cb92aba808b50aa088c41f23c21ddcb33d41fce3577e503ba577c09c3",
       "new_hash": "34470cf1021f8934dbdddb6e25bedef42edef8729d37a19b29d923e58c15ffcc",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48302,7 +48302,7 @@
       "original_hash": "bbc0ad9b7fcec187ff106d9c90f7811ad551659122d97ac82491ef25b0ef7028",
       "new_hash": "ae9d28e9ef15487be26610997f3221e57306bde538334c1dfe84db241758e6d9",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -48313,7 +48313,7 @@
       "original_hash": "7c269c1c9f9d78885cc81ab80168109ebb187575a4b80a2b8dd1a158a6ec007f",
       "new_hash": "d095e28a7733679db27217621c4e3aa68f598d85d8a59ae0b6943c2b378a84b1",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -49358,7 +49358,7 @@
       "original_hash": "13ea9dacc7b1d2064ad78eac0cd568498e3a2ac582c3df9380ff6807b565205b",
       "new_hash": "48a3ebcfa4df2424675571600a995705bb1580074d57f143b9a0431b75dad8cb",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -49950,7 +49950,7 @@
       "original_hash": "56897a6adf8477ef4a1c9afab5b526646032843efddd21b2c3abe99f12cc868a",
       "new_hash": "089a654de990d9d707328393c3dd81ce549a3eb39adca826797a10a6b33c6a63",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -49971,7 +49971,7 @@
       "original_hash": "1f657bbff716b7b71b2f7d535bd0937b311f2421b933eecbe9575749a0e0e5b6",
       "new_hash": "333f3fdb3252fe06de096a4b6534f5609057cd9aace41bb9261c1c8a0d8a1826",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -49983,7 +49983,7 @@
       "original_hash": "94e5933da0a554707ead7963ac1cf20e8892257aa76771ecdf003bf4772a0e13",
       "new_hash": "331feb2f7fa091599da05eb5d15f86feee808cbe545a2d715e69e541d1b6df0d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -49995,7 +49995,7 @@
       "original_hash": "b5cd2f0353d623fca24ea7888b9428932a6943a57254499ff1ccd55c38e36e1e",
       "new_hash": "22841ad5cc000f81fd93f68419ac785bc36ce54507fc44bb6759c928299fdd53",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50098,7 +50098,7 @@
       "original_hash": "8bb4d67809be9e3e110557496c697cbfae1446880d35a12b2a01f7c649af1663",
       "new_hash": "5d1c75002c4d93f078a5cb4705b7f061a1125bb1194d1406d36f2e2afb2b591d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50127,7 +50127,7 @@
       "original_hash": "ab5ee4668397df0a95bced50561feb4ba0efb6110398faa6370a167c006534b2",
       "new_hash": "4a833db4b649efc2dae88165ab3a0adb7b708013b109f3f2cef6edaf1b83ca6a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50139,7 +50139,7 @@
       "original_hash": "3d9d6c6e50a918405d5fcd381495a84dc8dba55f9018e6e13dce1187161c9d69",
       "new_hash": "a6c92c27880d14592213ac64a0d99e6c05ec0faf59d8d5ed785d642151b1c80b",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50159,7 +50159,7 @@
       "original_hash": "b4fce02e5a2055628bc12889287b568118797fb6c29285d607218c8e1c86749d",
       "new_hash": "9c11dbf81e069dc595284a77e0553837d2bb4fb245500a3e152e64dc12ef5924",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50179,7 +50179,7 @@
       "original_hash": "4fb1fc4e0552aa961e45c682f022cef3fd16727bc0b4170de36fb642b059dcec",
       "new_hash": "98a4a6272c3700aa729918df9fc57d5e28a677a66cebeaa86a4d7ded36ee1128",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50190,7 +50190,7 @@
       "original_hash": "f2577630ea693383d0164404e655111ce5d47b41824dacf1255bebf025d4aecd",
       "new_hash": "d53f37304940c02f9aeea7f23a82c5720997c5e008a123bcb5326b6c3775d478",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50201,7 +50201,7 @@
       "original_hash": "21fc08d1196a84fca5caca78a2da4dbde13c81682b98a72876fa8178788ee3a7",
       "new_hash": "eb950c322b2c6fa85a1e97351e5c718dc0c8adb452d8e6bea3618285a52196d7",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50212,7 +50212,7 @@
       "original_hash": "3feba28c486829a7bf9973d98f52265892818fbae689a3728aedbac1b2f0c4c6",
       "new_hash": "711c4296631da3131c2032f57a4e7937a5a4cbb847a91671bbae8206b56c3bcf",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50223,7 +50223,7 @@
       "original_hash": "c15467e640705cb56d29192a6f7d85bfc4d5b82c86dd64cbf9bcce523a41814c",
       "new_hash": "515dd570c710dba28f420636fa504c20b2a75ada548efa0077efbaca65bbe072",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50234,7 +50234,7 @@
       "original_hash": "7d29594b22645c3ab4cd285cf773352eb641d68cd41e20f9365ad2e7d3515042",
       "new_hash": "689972ccf7404dd42e0be2e6d1393577f3ad879ae641ac55194eabcd2d17c3ba",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50245,7 +50245,7 @@
       "original_hash": "3d83ade9b9162d8e6450a350ff12b825eb997f7669b6f6b0a8056c71f3e5e764",
       "new_hash": "17f6c9ceea08035cd0f18846cceecb436711ffdebfb6be9c37dd74235feeb2b6",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50256,7 +50256,7 @@
       "original_hash": "4c5ab22df9ecd713d5f23419c1f39e571e10bb4359fffa1fd91deb46810be1ac",
       "new_hash": "1efb28b3e983b98e09d216b2856671c726bfc92c90c2b1e63fd8b9b17be3143f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50267,7 +50267,7 @@
       "original_hash": "00ae0e5b883755a52366b8d98b3374a5610c0a6e82fe2ca264f0c30da04c3b1c",
       "new_hash": "718910477ba866989635db6f741dd6c81abf64bdcb027d25e8e9a34dec919769",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50278,7 +50278,7 @@
       "original_hash": "fb5a7e920e2f0d91f9f62541a98799f6dacaee4a059b2c327ba0e8b2a99535a3",
       "new_hash": "24e630b54453567d5eeaf14b787abd3282a9c25ca1fd48adf936f04c33eb0ab6",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50289,7 +50289,7 @@
       "original_hash": "f78ee1c1029ec667f65661550ccc1f5eb5d747108376998ab3aba6b8b196f927",
       "new_hash": "a54b46b41541962556f39b046c310f56e37179d435b7ee9daf2252caf3d76daa",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50300,7 +50300,7 @@
       "original_hash": "2870790a4db68fe3aa89f9a0518e8f7ba20ab53b6ce660017504b1ee72c58f72",
       "new_hash": "64e917139fa3d9bcc33a983860918203c4210d56aed6d81d76d48c7b90cc4f3e",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -50338,7 +50338,7 @@
       "original_hash": "cf8bd5ebc38aeb4eded1b89063319c6f525f697d822128297eb17920d1626404",
       "new_hash": "fbd93c6b48c4dd591f2e16888047f35abefb7b985de43c673a43b56e7fed03a4",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50359,7 +50359,7 @@
       "original_hash": "a0d80e5ea5c9765f42650afce8ab1cda62a2465df51c76b0c9dd76fa4e24fa53",
       "new_hash": "dab1a5fc33ed776716ab4a8b3ab44843b5e7ad9376f07862af8ef3c163503309",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50371,7 +50371,7 @@
       "original_hash": "5baf4dbcfa80b375f2744f9f75499cf6be4c2b5a995611fabc10224d390883a9",
       "new_hash": "6dc19f0c9f962e8bc2dd8cd8a2c7085240e6b3bcc2d1ece135cc7b38f6f25df8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50383,7 +50383,7 @@
       "original_hash": "8a4972c8e5fede98f95f71627a8dc24abacc5307f27b54e9d28ad176b66152f9",
       "new_hash": "0a254439afae89c151a90f7b9fb70f377e35f4813614c7ca26fafbecb934581f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50404,7 +50404,7 @@
       "original_hash": "feba3c0a33bacc3fd2ef591ccf8b17c0df36a8b37edc650f6c9ba4065babc6c5",
       "new_hash": "efa1501508466f3093e56e784434114159eda3d49a5d37787b215bdb40063b38",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50416,7 +50416,7 @@
       "original_hash": "b3193a4fa811cd54eb19db5e9c06dc906202da6ded54fc388795bdd9481889d3",
       "new_hash": "184fb94183db3d7491bb4333062b058932028f776efd15de7f4ec77d8dda9900",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50455,7 +50455,7 @@
       "original_hash": "4790980d682dcd140e8930f5a89f70ff843f9d41311bb18b9452062bd04904b3",
       "new_hash": "69fd708b07a7a27892027aa6363264f7e014fde1b5aa5f7c29e17c83df44b3b4",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50467,7 +50467,7 @@
       "original_hash": "ce9a2bbb1c29202939acd05367024857119e68aa8407a691204d30a870f4ebac",
       "new_hash": "8f4ff426a7f854613979e24ae59dcac6e53f1b798e88aed116edc9747732f7ba",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50479,7 +50479,7 @@
       "original_hash": "ef53b22b8bfda57d0be8690bea5960aab60e69ddd2a5f6f7cac1f7ada9e44d6d",
       "new_hash": "5510bfb366caee7ae36b4c2653b0028a2f8a80d7ed5b9c79f38826753503e425",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50509,7 +50509,7 @@
       "original_hash": "953576fd51c0901581b10ff92f9a72c1d2a57ea83267c626cb43196890ed2fe5",
       "new_hash": "6673d9a42a4c04e4c5f26bceacf60b2a4dc2966bf592080a07c750448f08211f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50521,7 +50521,7 @@
       "original_hash": "1cf9e6b7911f74aa869131c387dca4fec193ff98fec406040aa5e306e428e5b1",
       "new_hash": "173571a8a4e039326847e39cabc59056ae0b59b07058ce61b0ce86b4de273f6b",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50533,7 +50533,7 @@
       "original_hash": "e177c7e998e61c398fed82f2594c8f788448bb784b138162db1fb75f4875b027",
       "new_hash": "aa78a2c83fa4afc3e99aeabc2119b22c30fa7a7140de7346b896668458d0f237",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50572,7 +50572,7 @@
       "original_hash": "79e5a94650b9176eff70671207290e1916322b7b8c952fe2c8f95c78962da729",
       "new_hash": "4e499e9409b7736fa3ac5583bace4dbaef6b54d4b750958e577c176c33e7164d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50602,7 +50602,7 @@
       "original_hash": "f481698769529846b75808979a1814bfc4989b05ae1160228b6dc7801b931f79",
       "new_hash": "47ad9ea71a62b5dcaa9696fc9aa8308f839ee75ef3ce801cf853016c03cca18a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50614,7 +50614,7 @@
       "original_hash": "7532e1679a473c2c372db37830e88c18308f61920595efb6128b7fc36156f726",
       "new_hash": "df22a5d4592c725f17ee50a0d9e42e3c1747bcb36ff154e9af7647fa5b554a1d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -50653,7 +50653,7 @@
       "original_hash": "4170c9933561979436cbf1122d1b2172eed16ca16224d5df26f0b82dde78b23f",
       "new_hash": "d926fec359c3452ea6583d2574cc8952ea06e3eaa9430aaa3e7fd383e42f7699",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69654,7 +69654,7 @@
       "original_hash": "1ee496f24c0ef9832357cc672323d4b41be7867651f08ad26e093dee30e28742",
       "new_hash": "369dddcff0310e0a346f823cf0c20374e8b64ba1a1f18c5225761aef80331bc8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69674,7 +69674,7 @@
       "original_hash": "98f9bc24d3543dfecaebde043fca979e892ffd545d2f70e2160ed6627db5eccc",
       "new_hash": "265fcc2327abdfa65308fd89303e535668a5b5948d1289b5d511846e5db7e5d1",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69694,7 +69694,7 @@
       "original_hash": "dc5464b597026f4ccf0c0cc2864204a4b5b9bf619476c6468572707f626e6573",
       "new_hash": "4ab97f05d64194654ccbc8ffa79aa4cb8a76a33634659a82ad4fdbc77468c5e4",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69705,7 +69705,7 @@
       "original_hash": "aa16b5624ef20baecd340abf1dcd7d7f42c865b5f0c188c4c623f0d8199b82d1",
       "new_hash": "95500ceda0c8d8edb5a4555d53d231f6d9d84a651b9a1191418013671a16f074",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69716,7 +69716,7 @@
       "original_hash": "ca9be2dc29a4a5f5da953418897cf0d0de9cd54ad789ed364a3a601953501f8c",
       "new_hash": "1794a79c22d7cd9b55a3ef3b228dcc02611a8f6149230faed07bcad7c9e87d40",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -69728,7 +69728,7 @@
       "original_hash": "7b7a6b30f61f56f5ec4ff8fd9df5918bf2e9dc3ff1b4ae4d503ee296f7c8482a",
       "new_hash": "036587d35d1f078c06ad11760e39f4fa180637411384bff1e249e2c3bc32ab3a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69748,7 +69748,7 @@
       "original_hash": "505e556131d1a49ad96bf941d4d322d2326976aee6fb8f7c9eab244d3fa7f4ca",
       "new_hash": "1bf717052d35ce28fdb7e93ec75f0d950a4d1ed1ec556b8d41cc587606bf3174",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -69769,7 +69769,7 @@
       "original_hash": "7b002ccc972677088d5ac550027e26a6eb8de1da20429d0d9f87c41fb3e95b34",
       "new_hash": "44cbaaf10fea3a9544d7efa2d847810c919cb1ca9974dbe4a33ec04517bca28f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69780,7 +69780,7 @@
       "original_hash": "cd488a34ce6aafea73a6694f90c2eddb57bdc954f9357bf523e8af377f4fe151",
       "new_hash": "f57879da5dfcd87612dfa944b396720c5b6f9053756e5e2bc911c38def081e54",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69791,7 +69791,7 @@
       "original_hash": "bcd948d8a8778ebb144aeabc7dc5a59d7252817549fc1704dd128fb2698a0f3d",
       "new_hash": "71560d92c9107f69c3c3d760fa59f0d5586db4b13884a3cece41a6046569a3c0",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69802,7 +69802,7 @@
       "original_hash": "37756c0d3e694fcc4f8e4d6fa6aa08b31467c8371a8cc78906482c8fc5449c52",
       "new_hash": "0156f9e64dad29601f60917d348dabd035ae1436b97fcc7b9c90919f7410c9e5",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -69814,7 +69814,7 @@
       "original_hash": "91c86c785786059125375dd6f4d8ec36fb200bef9120acb50138cb145b7e4504",
       "new_hash": "89966a7df396e2ab8ecd5e9f093517f4c7d5b35402c7ae724f42c440f20d854f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69825,7 +69825,7 @@
       "original_hash": "1b4c5afea017955cc01043be0c09cdc824b82e040a20def13f2101296e0bb658",
       "new_hash": "e86cfdc89c8737f8543ea115d320f8d5d3e52ce1c8faeea91062813d3665e891",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69836,7 +69836,7 @@
       "original_hash": "f35ec2995f5d27ae7870f50d2cf083f9cb8636b7db3de50d4c0cdfe89ccfafdb",
       "new_hash": "b60aad1a35cbbf92502673b044861d6727b7be96434481b6021d5b9e3551a2e8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69847,7 +69847,7 @@
       "original_hash": "57f537b98812e20726a9e385fc6a6e89c8f8be401df46b98141fbc664f0f699b",
       "new_hash": "20bf2cf3cbc7e271c4abefc8dd0d766999a9aa2df36fab3009339397708afd97",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69912,7 +69912,7 @@
       "original_hash": "748d57c7ccd018c08efdd06a676fb516f9d7d14d8fd843d94be01ebd867dbe42",
       "new_hash": "f902c4f333de14a242088f6efdd1c883b1fd3743f3e298dbf3cc90eba4939d4e",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -69951,7 +69951,7 @@
       "original_hash": "ebce651c507c12331a08a89d3d67683054c84da0b6ddf7c3795e7e6cc454c33c",
       "new_hash": "e2c5a5d8e9fcbeb5d7c34f90aee59ab3195038f3384fb4271870f534357e18a8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -69962,7 +69962,7 @@
       "original_hash": "767210dad5e659ce8475c0c28bd70d5d0ee069c58a894234d1eb7fbecb02becc",
       "new_hash": "98c01c9f45c1c57bbf7b2126b4a94ee9a2667a78e9c49f1492dabc4ecc42be5e",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70000,7 +70000,7 @@
       "original_hash": "0bdc70ea4113082182d8c9dc310626490d006daf724dfac8baa6843dcc7ac14a",
       "new_hash": "3c6280226cf8c8e50992758017fbcd9ad8339daf324d3feb53d1d4466cb684fc",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70012,7 +70012,7 @@
       "original_hash": "147f2af513cc62dbf12f8fbe15793a381d2ad294bde7b703c6bd02eb2c0a7e32",
       "new_hash": "81dac7ceccd945c8bed76678601b14c9a09d15fd153ccd7d5b5552b4b42e5942",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70024,7 +70024,7 @@
       "original_hash": "f74900b1f19e3b965f515e16519aa09bdc6fd34bff656e69a97414e7fef607e2",
       "new_hash": "d9d2dffa610fa61bd37c930981d3380c72c0285a96e89779386842938aecba40",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70063,7 +70063,7 @@
       "original_hash": "e9c51f4362056f159757de0e4f1e885025469b6e8fecee258e53629bbd0f5623",
       "new_hash": "b953902ac16f52158319b62978cc746094e1267f71b437f4a2f4730d7535dbef",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70075,7 +70075,7 @@
       "original_hash": "67cee95c8098ac65871768e055eb7693cff870668abd50c39779e8632fbd4c65",
       "new_hash": "24335cdafe763f1bc9667d2f925ae0e5905c38684b0af06c403684e4a2175f26",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70096,7 +70096,7 @@
       "original_hash": "a2a458c2965ea5788cb1ea2410e1f0179e58894bf3bed0b081041c0972e4543b",
       "new_hash": "d3b137d088f6a06ced63b8de665f78296ae7a862fb5ebf2afeb586167fdd2ba2",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70117,7 +70117,7 @@
       "original_hash": "a05099204a1ba5adf4f44f735fde6910eddeea7352bd89c484ff32d4a0f1b551",
       "new_hash": "792fd01f8c1be02480b71f14b9b2880a9c171290ebb51d90c47f23450256d61b",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70129,7 +70129,7 @@
       "original_hash": "0b15f083a4f3dba49f43a4d18eac10905c75d44b69d30722ac4715199959c8d2",
       "new_hash": "123f4279ac0e3eda819ea890adfe9d0ebaa806358fc05603ccac3a6202148a98",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70177,7 +70177,7 @@
       "original_hash": "cda7b1efec4fd1325e51dc4fdacac0c9a98a349b550b3cfda11dba903b78ada2",
       "new_hash": "0c7a0702d0d9039df27bd0794e1f7f14e0aa8c8f299cf189c36bc51cbf7a7c7c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70197,7 +70197,7 @@
       "original_hash": "ed3be4657786b5396086c85f1834155594ee6d9f849557c537d9cf0e9f509ae8",
       "new_hash": "e4bae641d4b12d82d7a2cdadad28f56973f2bb87ede47dfbc1f9904a8fcd5d21",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70209,7 +70209,7 @@
       "original_hash": "617fe7323d9a33f78b619c65e41048fb361cb08d23e8911b78ed0ae640300519",
       "new_hash": "de595c10e8dbb12c8cc768ca9e5e787ecc2e1ead30e2f229e28cd101dc78b683",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70221,7 +70221,7 @@
       "original_hash": "1ff7c69e8eea09668a7245095539b946e4cc23b5501e81c4669d7dcc59720547",
       "new_hash": "2cadc8fbc0d1f710774bdac2fc229448b63dcbeccd4928cd6dd27f780cff69e1",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70242,7 +70242,7 @@
       "original_hash": "8a2f92dd5cec9aafd6c16b8de0f41d68006a5f8cd1092a2e17769d97332c573c",
       "new_hash": "668caed4d692eb968f792e6fae59cc6ed99565021c669c459f21607a31eb7ec8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70254,7 +70254,7 @@
       "original_hash": "eba20ede02d67c5de0df05ae2c161bd7692d6335e37314b9686250c6ed4b2c1f",
       "new_hash": "8dd4548504d6316ea484a32ffb892a6189d82cc6d5b4cc8ab7950f28d4d885e5",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70266,7 +70266,7 @@
       "original_hash": "1fa4c49ff3aa179d2de9b2cf1b84ad5274be698be2e9a98412a4f9a709f7e475",
       "new_hash": "77992550432d1ab5426f798ea3288dc6b2f3cce6f5047e40c6b848f4d8779a9c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70296,7 +70296,7 @@
       "original_hash": "78d9589adea08daa4b1b06d702612a296884b1227645e9f81e9cc45a066b629c",
       "new_hash": "8900e03e0db8be9f58641a770a8b63477972a33114e2a44fc64a85e939537c06",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70326,7 +70326,7 @@
       "original_hash": "a8c7c4ed27f2f4f083e97209a6a914ce36ce14449b8437407c3f34f84204e54c",
       "new_hash": "8e88f85c52cc5e2aad9edfff24d0bc57bccd1138a6607baae0a870820d548ee5",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70346,7 +70346,7 @@
       "original_hash": "4d9b10ec15ca6b6c979831a8cb3188d885344d592971bde1c02fde932fc9a2d9",
       "new_hash": "476a68a4bc26994080909afc86a4b7797634528abd70130c4e27ae978cafaab4",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70357,7 +70357,7 @@
       "original_hash": "8a7c2a2ed7059f258f2fa318628fcc631a97947321cd1cb46843f061e01fc854",
       "new_hash": "f850d79b6a99a051e72a13ab6d234a408a96838f77fa5a1220035e319372bf77",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70369,7 +70369,7 @@
       "original_hash": "276bf7807ca2892c96487643807f0b84e7a0bb5f06011493a3279236163a587d",
       "new_hash": "436038e144f5c77d317163a33ac80874a8d1c974fe5e6262a168e5a38d0dec70",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70380,7 +70380,7 @@
       "original_hash": "599bb674cd5a540d64d738dafb811b921413aa1e2c5195086ff931806e68c732",
       "new_hash": "9c37d820088dd7cb9e4e3d0c63ce571d33e583676a75ad6b293313d11b677b84",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70391,7 +70391,7 @@
       "original_hash": "7d07a0dcc5535253fd044ee8e7f440d60cd826d074044d162c1725231270c606",
       "new_hash": "4dd1017edd1aa9b7c5a0465e7760158c9da46c8313810466b218ef2b28632037",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70420,7 +70420,7 @@
       "original_hash": "a497d688fc6dd145e5d5ee69b0674066783b14c3c189356d3b1968622f7938a9",
       "new_hash": "731d86edf7b04a099f3ebdb663138666b24ed2e076f75493a95926b4300ebc1c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70440,7 +70440,7 @@
       "original_hash": "3b456dda8b15a6667e744400836efa46b7573720af002f741c61c04a5b0f84b5",
       "new_hash": "f58eb56f627af15016a8c2a38be5e6c534cfe4da374c70801ee7856a0283cd62",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70451,7 +70451,7 @@
       "original_hash": "7cfb82882f9a875cf972e28c6acbb567750836a175ed1cf2e061f7b145d245f0",
       "new_hash": "77b44454add6f0da8baf43cc81ddda99f4ef1811783025b48dcafa71fa524a45",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70463,7 +70463,7 @@
       "original_hash": "fcc95c49e7a45a41de1fdd62749739af95f37df195d2d311d2c2232abd7217bd",
       "new_hash": "c0715deeedae7a0ae5fcd3ce7df4a42171229604bb5833a6aae5cb64c6ed8330",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70474,7 +70474,7 @@
       "original_hash": "7663f5ba4645763098f2509f657712b7a3cc2480f6545b111ac150a42b7cd023",
       "new_hash": "6ceae29447fd35e7777e12947c464a321daa6e940f68137140c43bdd4f25e005",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70485,7 +70485,7 @@
       "original_hash": "0c08da45045356c742450e585f6f5fa408b414ecdc61b57d6d99bc27fbb538ca",
       "new_hash": "65fb8b77fc06b0e568667159028161ab225e6def1da161b8e517ece06d52e4d9",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70496,7 +70496,7 @@
       "original_hash": "7a51518901421e9dddc2a043a881488edc35dc5103a97934ffa0aab6fd237ba9",
       "new_hash": "73ba83f79c892cb016e9f275fb0b5e27c5bca172173595aebd1deafbe90ff04a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70534,7 +70534,7 @@
       "original_hash": "16b1e3a434ade72eb8557063ca154c38db830f5afe66a1ec8f7fc7eef1b29eec",
       "new_hash": "48ee1ffa2e1509b878308b472ecd8ca2f8b28aae75bba1646b44dec6faf0a44e",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70563,7 +70563,7 @@
       "original_hash": "ac67e6fd3258be9eeb0f30fff3017e3e99513c46c674c8340e9710ef58f527ea",
       "new_hash": "3a0cd56cdb54691f07510db1b07a7ab514cb48357254518ae3bdf42c5ed9c3fa",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70601,7 +70601,7 @@
       "original_hash": "0a72402c763f510c24922bb4cff4875d6f91632ea31d4c431b5353f201df2890",
       "new_hash": "5d66b59085a9e33e821d58c60bfdbd30e60d2aa7209a662f1d1ccbc49ea476f6",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70612,7 +70612,7 @@
       "original_hash": "6690c5fdbfaf6e9879c72fd936cb403dbee4f1752f8d7f1dac0341c0f5d7bb2c",
       "new_hash": "908d55b1595ef6e6a89b2bffbc4f36e2f3ff14cc7384c721dc085cb3b109c97a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70633,7 +70633,7 @@
       "original_hash": "f323fc428a0d03fcc4c75e62ff94dfb7e4418ce7648fb96b729476b150709ebc",
       "new_hash": "4b6a04d359854039ccd10f630c4d8f19d46906628d4897b967165814569194f7",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70644,7 +70644,7 @@
       "original_hash": "6f095bbff0de06c3261f7b7f413002227b2b777577cf354c1c99c4a51695500c",
       "new_hash": "5040e6fed17edcac4515f62edbdda47fb7654c497031b0e6d5b044f830d15731",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70655,7 +70655,7 @@
       "original_hash": "2e5c9d3b8ee6be80977a9e16e496f86c273a57fcf050e3611b829bdb11761d7e",
       "new_hash": "1a9668bb3b654f955acdb077a21360430a1c281e599173a7d61bfe6a6832361e",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70666,7 +70666,7 @@
       "original_hash": "79421d272b9e000df63889fc007ac83f2d01bd348cb344cf53cc433db94cb657",
       "new_hash": "bcae85d75c94243cf56f53c66c66e109547829956e527ca984c7f8d7e37b85b2",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70686,7 +70686,7 @@
       "original_hash": "6b210b39d986794a0ac7f9f6d4307746338fdb21e7505149da71f0c105b75cbb",
       "new_hash": "12b489bd927cd000939390ffe8c1c7de10cefd4a48e9798915ad4d52fbd7043c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70706,7 +70706,7 @@
       "original_hash": "e0cb177558df9420b875b93fcc6409c957c9416e4f03820f8bc7106e037444ef",
       "new_hash": "6e4358976047a51cd3606988dfe0ba4b0505cac8ed362fea0e27b1fc3455f784",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70717,7 +70717,7 @@
       "original_hash": "998d266c2e5cf33b04c6ee84160346d9bedcc9e4485abb966405c636c97caf4c",
       "new_hash": "dd5032b2062bb160c45d9495dfd5b1ae1fa84e1563ebdf13dfbc8f008aa0d8c8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70755,7 +70755,7 @@
       "original_hash": "22b48d8f5d8c3cc794b0214a5982f5b4be6009a058354ead8c3b3fced0f485d2",
       "new_hash": "808efbbbd2ea9d3a93cb35d305d8c72f7ae1b2c80d8ca43c08d83d44f7209b2f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70766,7 +70766,7 @@
       "original_hash": "7e1643f2c81dc942133f447e05cff9f35499d5396da09a4a677d34fea98a72f6",
       "new_hash": "f0b32b23b9e337e9a7f15ca616b9e2c6031182903b10704901ebc46b81bc4171",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70813,7 +70813,7 @@
       "original_hash": "0d1ccf947d7a13ac58683f439e554817d53fae0ae10604b805c1bafd83aa4d93",
       "new_hash": "4315cdc076f16e660411704f1dd5313cdf3b3465e9f229ebc882d758539a488f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70842,7 +70842,7 @@
       "original_hash": "aed6987b0163771a7029f4033652189063d2535fc576240152164413e2fb7e90",
       "new_hash": "3289b9f0eaf2b463772289c79e44caad12e34493a1c1eb06041964930a04fc7d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70871,7 +70871,7 @@
       "original_hash": "d057f971a3b5c9d246569874c4fa53b065e9911bf50c71fda3d6f579b55b5b3a",
       "new_hash": "f5fdb97a62c01aded2e36550cf77b6af66b7300b3e3d5c70055fb03d98876f50",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -70883,7 +70883,7 @@
       "original_hash": "cb615d16a6c82c3140b88b4be2f51d52d8893433a47ec9318c13dba612568e4b",
       "new_hash": "e6908c932bda848c9d0e5d1efd5f6ed35fcafa33818567d365e9a374286cb156",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -70993,7 +70993,7 @@
       "original_hash": "73052e64e66c3c3249d1e298518e24ae31c7520805cbb7a571635f263101e948",
       "new_hash": "2f8dfb7eae5f512d163be0b6997c2d5ffe61b9eb206f79b1bbb82652fcb4d15f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -71032,7 +71032,7 @@
       "original_hash": "2ec279b76de71078085c187f946681f497b85dd700244c80cd8f0486543e9264",
       "new_hash": "5c095212e8302ee7d1b68c1edd20474425e69383e5000852acabce7731e1341c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -71707,7 +71707,7 @@
       "original_hash": "1f8c3c101b7deba33569e082f0ee1635bc032a5185ac71d6d6b87461bc11cfb8",
       "new_hash": "d0b1071e5411d09c24eab8bc684673192c521a5d0200aa62b0500bfccc4ce737",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -71728,7 +71728,7 @@
       "original_hash": "e72caaf2c0f3b9fd48c0475ace626684165284bf2d94915141c8070a220c92f7",
       "new_hash": "7075f97db3ab12b732305bd4b427ba9b7464ee116ed5645f239c1c1ae25dbb0d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71748,7 +71748,7 @@
       "original_hash": "43b653b0b4ddb41bf56ba5084915c2d64ab7e4c637e41ebdea9e978abe66ec6c",
       "new_hash": "471e679f3894eed6dc867e343fae68730f6e5154f5537167a3350bd8af40ec9d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71759,7 +71759,7 @@
       "original_hash": "227d98fc7c04147821d2a348911e00fe61671ed774b6ffff7a0e86c9662a9863",
       "new_hash": "0991414e6afaa21cb6cfec392a45a72dfbe544bb74a9e47aa0e2655c61e91613",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71770,7 +71770,7 @@
       "original_hash": "0426a05c0bad456b182e01803dad8f0e4f2fbb95e15c0d232091edd6bda6bd2d",
       "new_hash": "dc8075a41f31e22ed53103a47fe04e8feb1ff0e6f232cedd93d6a837968c6a59",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71781,7 +71781,7 @@
       "original_hash": "64c7122658668a77cb736607873061ae3306b19acdc65820fc91e8c9d312c7fe",
       "new_hash": "6f652a7baeccc08a54658811ac71fbbd11ef37d20b49bb83a1f3df3f44dab658",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -71793,7 +71793,7 @@
       "original_hash": "41c22b787ea81519997221b5a4c48a121b8dd3616931e69431f6b44254a5d0fb",
       "new_hash": "11481fb5298db0d7a68665b87386d1d97a0efdc0751144bf83bbbd7acfce5fd6",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71804,7 +71804,7 @@
       "original_hash": "fd6e38be1428c8aa1df54992cab907e4561137d6140c21eb02005688bdebec71",
       "new_hash": "0d23af159c8b79c0d15ecc6ae6fbbf9a1238afecb9698f2be0486f567b2def00",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71815,7 +71815,7 @@
       "original_hash": "057c2df330920455386528d37916d4457b05c3e2982c285dabc05fb1b99cd7ee",
       "new_hash": "4f816dd37f7f509f76e03ba7243c90167d7cab33d557987b4fae393d638a00b3",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71826,7 +71826,7 @@
       "original_hash": "7ac65b6950b532260a8e10da918960e303f350549022786a7f466b7bbd3fbf13",
       "new_hash": "715b8385bc269530e05e9384a482ea0962d4c1f9df6b763a4fe9bb70bf064bad",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71837,7 +71837,7 @@
       "original_hash": "3b13ee0ea75a45ac1d5110723522934c4ceb9b9d10f3735f5ff19ab80d95dc76",
       "new_hash": "fe4679f25d1cf9990891678bc085d91c572d269d59b797c9a3c2e81cc6b31081",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71848,7 +71848,7 @@
       "original_hash": "4366c71357f788379c6f15d995deaf2cb65af32f4ac47449871ec497e17ac0ea",
       "new_hash": "50c9631727d33731b2fa14dda651728f666fd4c38ade3e5891e9cf0eb8b840b5",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71859,7 +71859,7 @@
       "original_hash": "b4cd60732d159192d71927d0e093a824da9d462292ccf6057257bcab21dcabd0",
       "new_hash": "e92eed3b909624601920be7c5e69b9ef20dac2331966e87827d500aa6e918cd1",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71870,7 +71870,7 @@
       "original_hash": "be4d887ecff2a1c46abec7740380ab3a7d5e96e504bd016845ee4759a89b68fb",
       "new_hash": "eaad9b25d894cbc0a0ad0c47e88048aabd85b40e70caa3f5b7f34042278b7db2",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71881,7 +71881,7 @@
       "original_hash": "e2fa2fe222165d476121bb8917563a28e6b4b5f1f154a7995ddd6753ec5ab4ac",
       "new_hash": "a4483af4bd2eb61cf7a49c2b958a4640d7e409f9d8b9c61189afbb464fde9a52",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71892,7 +71892,7 @@
       "original_hash": "9147cd84623353b16c1eb01f1f01dd619295ae83f5952420ca8e563dcc3b69ac",
       "new_hash": "448c66f842d38fd21e17e4d62ebfb7cacbe4b6615d04c363be140ae35e4241e1",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71903,7 +71903,7 @@
       "original_hash": "e17c6033a9aa4efba98feca55a604839c2c220c175b37e5ce4c0a959974a7fba",
       "new_hash": "2f04208d35b216fcbe23f9d7ba4a844e4c8d92a23821734da26d6264549e4635",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -71950,7 +71950,7 @@
       "original_hash": "b7dcb8b8cbedbe5a6151a464739c85231334b06f8f49ab8fa2b9cbe85ae9b34f",
       "new_hash": "9daf63e57e7fae97d1f8f5300a21c352079afd8ebb0b551879ba5c3abc9f43ee",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -71962,7 +71962,7 @@
       "original_hash": "5582448747ec1dcda1ae842220f2381e940e3a0c22fb8b7e793bc812d479f421",
       "new_hash": "fec9ceb5094d15e64a71d05258a788147a22b9b752478e96b24ad0b20a56cf1d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72018,7 +72018,7 @@
       "original_hash": "fe26d7fb23932c3a6ced09e5f4b573516a1f11d0da07cf4f09f75f24ff759bfd",
       "new_hash": "81e9fb7a034a231e2c8e98fd3de7c2fd39594be5ec0b75f4590a11dea4c2ea3f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72065,7 +72065,7 @@
       "original_hash": "c49801b15c8c73c2c034ea6358ef11f20327f44b2a241b81766072539b52b544",
       "new_hash": "8149184f2588c093b0128556a107d73b712c0d18120989cfe9af550d092ab3ea",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72094,7 +72094,7 @@
       "original_hash": "cf79142ea538cda220872a520cc6aed4a657332c4f0f7bd33791f1606bb8db8e",
       "new_hash": "e7325af3a887723a77292512eb65c64de5a8c27e001224227d66108862df926c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72105,7 +72105,7 @@
       "original_hash": "85927986dafa53772f788fb44adb0232a7477064956bdae48614785e070844b4",
       "new_hash": "51d031e29fc46c98dc89e6cf63954162fda229eb787f165b1f14ca6e3840c8d8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72134,7 +72134,7 @@
       "original_hash": "a251a0b83f6f6e830ddcb8e8f3656454f62de070e1d40e5ebdd632e89ec9ebb7",
       "new_hash": "1556206754d7d78db20045a0c108b80f482e806fabaef7d4d722302959c9ad63",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72325,7 +72325,7 @@
       "original_hash": "fa932494fdd222d9210bf8e8bb6c63a2504824d1bc73eb52d2089517d43cf6c1",
       "new_hash": "c7580533f1481fce00dc422f2d20bff4909bd8a8da5ff95ae91fd6c4b151b7a2",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72336,7 +72336,7 @@
       "original_hash": "eafc031ac74421ed03cb4cfed5afd92907979e6a53c61867f38e4240064dda06",
       "new_hash": "fb0d763dafc52457dc6042081fc23fad423b2b1153cf3ac9370c597e2798d511",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72357,7 +72357,7 @@
       "original_hash": "a34c506c671d447e8141c5d2d9284e10e3731ef9bbe7f9beb66b1f3f9e198860",
       "new_hash": "87a94f14654152dfed6aeacbd89a327d17d6449af3cac6fc221af9e283205577",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72368,7 +72368,7 @@
       "original_hash": "6b05d70cd1c73c5d4b9a9ec4864162973b7b8134abc9a281ecb028b3d0e16187",
       "new_hash": "da964796d7fc16ddf2d415a43a0921cdb9e4b29f87c2e6edf5ab96f39710a531",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72379,7 +72379,7 @@
       "original_hash": "06bd51bacadb1d5f38587400dbefb49c085b9d2a0785748112aa0e160c03fc03",
       "new_hash": "e0653ba6c5fa0c019f8222f6a8e123e1c0df0e288baa6ca28bcb87a5f53e28e3",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72408,7 +72408,7 @@
       "original_hash": "613651d65c077d39d128591d9f9d62e2dd13813f1eb139b31d4e2942a3cceab1",
       "new_hash": "4b53e8381e964cadcfd6e866df756f70aca4f4cf7a404cc986fc725d38c0ab80",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72474,7 +72474,7 @@
       "original_hash": "6fba62a1b211bc22811f5709b43dec36b7c72450e1a29e005835d2d88c31b8cb",
       "new_hash": "cfb3b6b5e67541ea1504b20ebbc06cc066319a57761e8620eb71c40f60e99aef",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72495,7 +72495,7 @@
       "original_hash": "22055be8040f3acec34eabfc0875194563e9499b00135ae79038ce8129209115",
       "new_hash": "96aba73d24a51093e96c9cf7dae1b847b7360120dab05a2fec036d84ef0e343c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72506,7 +72506,7 @@
       "original_hash": "a5ce7b0f4ab012a19eb1935563e559b7ff904177abf9fd0bb3e0ba800c6ee424",
       "new_hash": "7cf0c521037bdb477f4c2924d3e910d28e0347534a1ace2a369d66107b4fc66a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72536,7 +72536,7 @@
       "original_hash": "d8d1150caf41b538933153c58f5f9b07a96b2f200c679f325d41f7b6bb0f565d",
       "new_hash": "a49cd4ea5979c4686b4d89aac68a5d35c31d0f1eb309a69bf57184ed33ee95e0",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72575,7 +72575,7 @@
       "original_hash": "741f8f43ced0f23eccb49227b5d81506b93623a7427bad381bca52cfa5801ecc",
       "new_hash": "19939bcaa6c1d757c427553d897352c0c4bf90fa41d83da813bb07b9ec4ef75f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72587,7 +72587,7 @@
       "original_hash": "741f8f43ced0f23eccb49227b5d81506b93623a7427bad381bca52cfa5801ecc",
       "new_hash": "19939bcaa6c1d757c427553d897352c0c4bf90fa41d83da813bb07b9ec4ef75f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72599,7 +72599,7 @@
       "original_hash": "adfb15a9f269aad7b7f98ba36bc65f250ae12853c663d16d7dde91b1a56c8cb0",
       "new_hash": "c4b497be83c8d5b2eec422d08c68ef2c77b1f15fa8eee6923eacfcd6d5764e4a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72619,7 +72619,7 @@
       "original_hash": "541ccfe94599de77d4b605a6f2bfca2aa13e0fb475450d4278fd93d8c77e5d38",
       "new_hash": "df574b5d2571e99994e0ed1dcbb767d79478e8a67789b09244dfd8c4ca689006",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72640,7 +72640,7 @@
       "original_hash": "fe1fd3ab4d9163fdb33df6d1b14e64579e59b12cc079bbfcef46d58bb2f10bcb",
       "new_hash": "377286a7fd5698e0ac73f57f5a6159366982fbe16c7a2e49d727f0b5364e5323",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72652,7 +72652,7 @@
       "original_hash": "5429ffdfe7b353c7316b6bde85a30fb3033b05ccaade430c95ab18a0fe435ec4",
       "new_hash": "5a6c81c2e7d71c4e62c2f438f913b6752d9f044d239b9d1b436e88062802bdde",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72673,7 +72673,7 @@
       "original_hash": "9c8d2cb45763b2d78f3631cf63d3c6a1de5768530024f3ba33aecb6e21e75501",
       "new_hash": "55b0d434fa7555f2c938885793da5021087cf1dfcefe1d8ea39a0708ab4a6609",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72694,7 +72694,7 @@
       "original_hash": "466e3c39282b205f05e0da5323bb4a462d847af2da55715b6398c379dde1358c",
       "new_hash": "547dc43899c9d3df25ceac039d79e037a37e2ed2aac77d0f24618340bac78ae8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72715,7 +72715,7 @@
       "original_hash": "0cebd2aa2bd7a3fd6c402d40503099a7926df93feeda52b6a1a9d1637a4a06d4",
       "new_hash": "0ef83736f1b37a905e6633ce83ff394323231c9e16af3862be5f0d826c24d3ec",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72727,7 +72727,7 @@
       "original_hash": "9d8588dbf676d8eee6deeaeded30fb72c30891723a386c60816a61aecab760d6",
       "new_hash": "4b946ef4455d0705f91f7578af6f97d1a588abee9036183a1e950e1a919f20fb",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72748,7 +72748,7 @@
       "original_hash": "7d2d9da1efd122d9048d155a37287de99b053f6d48b0e0795287ce71517b96e7",
       "new_hash": "17a43feb6b77ef8fe933fce9bc5831a5c22c25fdef798e041001be3031975387",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72777,7 +72777,7 @@
       "original_hash": "344fd47c316297814a41ce3442979b42cd291219d8e3c397d15d6cec9fe1402f",
       "new_hash": "56d35f13540d997081618878f93bb1f0957e4a0a92bdc2fdfb4737ef94cb0cf9",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72789,7 +72789,7 @@
       "original_hash": "51f436df181eb9e8c5742bfb0d59a95946475715db22726534d8de03e2e014d4",
       "new_hash": "3484e1a3b3ae84ab7bd06e8ab53a078ef1d90dd17b8be9dd5d4ba1f032caacea",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72810,7 +72810,7 @@
       "original_hash": "bcfb26b3ea452dd8e5a7318ba260dea8634a6526cee9fb721f468068359f58f8",
       "new_hash": "9f77b690e1571fb507e5becb1ce4a96382971ceeec0bfec01fb7aa5d006b0bc6",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72849,7 +72849,7 @@
       "original_hash": "011f974ccbac0e7c216007db3b42988b10713facd16d343f57e370a3ecb67e49",
       "new_hash": "be0d79b6abf006c2658db707c95ada78db009112293dfc0305d82a37af21c537",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72861,7 +72861,7 @@
       "original_hash": "280cbc48ac06821a039922b9c34a33b5c4086f7dc873c2a316544d4ecd1a28b0",
       "new_hash": "d2d577081b8b3b10d1b7ad7b15c12b10e9a19869c314b1d3f3f2e7b8290ec82c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72873,7 +72873,7 @@
       "original_hash": "95e3a9716dba03fee76ed692499699eb5e5c758d3e8ac7cfce40c91f68510411",
       "new_hash": "137a24e8dcc92ceba85767318fa1408b994088faaa7ff15d2f2bd94414f79c30",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72894,7 +72894,7 @@
       "original_hash": "913e9dadd577da2b9cef35e88bb8f27f1ff097a9d1414580fbec69dc9917483b",
       "new_hash": "b98346af44a03c60a59f27f6ed200ee66d1152d553d9df5c51596842b6d38b5f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72905,7 +72905,7 @@
       "original_hash": "4dca5ab849e849e10c497b4394ea0b99d505c4dd43e4d65b129729ab9e22cd61",
       "new_hash": "bb9fc81951488fffc81fda5d6e3baf99857b5a6125504f9ef7326c234849e1e1",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -72916,7 +72916,7 @@
       "original_hash": "56fed3da9456524ecdf4f1b8b959ca209f1902586437229e0664e2f680f15aba",
       "new_hash": "42453c80fcca9fce776af6bb54eb0e97a80bf648a7c1b2cdd69e50d9373176ed",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72928,7 +72928,7 @@
       "original_hash": "ccef8bea55ce30e17b5eee210b58ebc40ff51d18c2e60e366f56a8c31db4b1e7",
       "new_hash": "9a24526f84f494b15b8e2da418f0dc0f6d287dd2bc670a06fef4c755c4c19ccb",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72949,7 +72949,7 @@
       "original_hash": "e34be230cf2e2e9e9c9cc9690090164ccce6452d49cdd204a01d585a205678c7",
       "new_hash": "31bf3662d8cbad6946fc5690e440af80c9e131e603e0cc9037957f8fb6368e9f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -72997,7 +72997,7 @@
       "original_hash": "6e0fcd9653fac5eeb897a6fbdf0a9f3b9676a0ce15d58c30561b4376cbbd71a1",
       "new_hash": "3f8ed0fc9d9c60f53502c00d27c6141b7fdad8a09bc8f33d5e91ae3e0ad64de0",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -73071,7 +73071,7 @@
       "original_hash": "32455a0730d57d53f04f5352294e2735ee7e6656135bf31fb18cec6d98d5b350",
       "new_hash": "0b69930647cf81b000609098ed95542b56d5d539a46372f5bba292a852ce7384",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73083,7 +73083,7 @@
       "original_hash": "b3b7f135c4a35319e081670a39ed77abdcef7f9d81a762d9c22e073d10fc55bb",
       "new_hash": "92935396a85fa61276ee045b2123e914d86b255f8be95d2803d98ce180e76e6d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73095,7 +73095,7 @@
       "original_hash": "36ff0d5ef2bbf1152e8333eb1b84b73cab9f99a8f481e02c987a8a81ef58c17d",
       "new_hash": "d43947c7128df9cdb243147ca04c6354e0521eaeabbf1053d2199bfb0c451ea2",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73107,7 +73107,7 @@
       "original_hash": "4817031fb4de3222d3a028ac5af32bac66d461a80ed6d7fbf6d2055cc35a9fc0",
       "new_hash": "f5a536115c519a0afbbde2c3c059b1e6c91cdfa2cd29a304090a180187156de8",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73128,7 +73128,7 @@
       "original_hash": "7a6c912a9c471826f8e3eee480792681117bc68f29bc39e39577822d1db421f7",
       "new_hash": "ec3b8ff4dd1fb3dd28642cca22e130462666eb5d66382662d0933bcda0bfc6c3",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73154,22 +73154,22 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/_app_archived/api/qmoi/revenue/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/voice-production/route.ts",
       "original_hash": "2986e619900034816e47b990aa44afe2c9b94c75ac1afab40b8df07ea1121ea0",
       "new_hash": "145f0a590b381e91b0b20165dcead1e1f84f37fb713d4f85f71342987a080848",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/_app_archived/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/_app_archived/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/_app_archived/api/qmoi/fix/all.ts",
       "original_hash": "776344ae87ee9a5f583e501623fa5d7e2bee344b8f7f55226d9d669fba203917",
       "new_hash": "920842e57a689d4175722798eccf87cdf3b35ab97d5949aa0344c5c5b371e1f1",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -73180,7 +73180,7 @@
       "original_hash": "4f1faaf67a522b9fc143baddf9643fc4c9cb60f14298737fffd601158a9f7a02",
       "new_hash": "013b981f64a35b1eed7c136579b45ef4a508e5112332c656b275f24c9634f1d1",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -73191,7 +73191,7 @@
       "original_hash": "f9fc85364f46717910e637728fffddc58a84ab5d18562ef06b8e729651b9c3b1",
       "new_hash": "c3ae53067dc043144f2b63a57457b08581ce3a6777d540bd58073b9ae26f8efc",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73203,7 +73203,7 @@
       "original_hash": "3d020dce54c6a08b6246cf5625934a764c9d92e2be38623444deb2b0b251844d",
       "new_hash": "53caf6ede322d2b6633fda2690b0324d506a2d8afa7ff9676746142577269b2c",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73368,7 +73368,7 @@
       "original_hash": "85e24257614c1c55ddad3589f5c53df87711b3f88f20c5990828d1d160da15f0",
       "new_hash": "0c2bc4a359bf6013fd1fb106849010c5a898966366006ad7a839a4977066615f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73380,7 +73380,7 @@
       "original_hash": "c7b2b36455cb3c821b91a83312e0e31ec14b7257d692259a1fa2339c4e469112",
       "new_hash": "5d9aa477dea1d399d654b466aec878181ef465dc9862fddee0eba3970dd0587f",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -73401,7 +73401,7 @@
       "original_hash": "a1eece2ef057ea01ea4ac3cfefa73804417855297adf41565f2486a10e369069",
       "new_hash": "9455dab14e2475de9304b6046f0659626fe690cf566d458ab6451742958a5d92",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -73412,7 +73412,7 @@
       "original_hash": "eb6c827ecb17ecf615c678ea60f75624ce1265ccfab55d72a3b2226112cb22ff",
       "new_hash": "18ec5bf859d2daea03b4a95e31cfca676585b9eb583f71a2fd8f4b0cdc6f2ec6",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -73792,7 +73792,7 @@
       "original_hash": "b832411e2b9bf7a9b5b9a961e413e05996810a7a1c847d761a1cb4753c80a008",
       "new_hash": "3d282d2ac62feaea16da97ce31d5e98243eea014a7f2a7e2a06dda2665894495",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -75002,13 +75002,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/research/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-production/route.ts",
       "original_hash": "c1f7c6b2f878cc5193ea3c8fc354fa5799273d37b14d75e96c6aca8f5f76ad10",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/user/route.ts",
@@ -79025,13 +79025,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/revenue/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-production/route.ts",
       "original_hash": "8b7002b3b6435f0599941b16bbf4bc531d1062ec13ed8d64bf5f24528c06955d",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/fix/all.ts",
@@ -79979,13 +79979,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/health/stream/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/preview/analyze/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/production/analyze/route.ts",
       "original_hash": "8b7ccda5972a092a7d92ad654f4b01cfda796c2aa13d688a21cb00c7340a99b8",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/preview/analyze/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/production/analyze/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/components/q-city/avatarsConfig.ts",
@@ -80798,13 +80798,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/visuals/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-production/route.ts",
       "original_hash": "deca791acd18cbe12346eb7c9dd9cdfc74188f9759669e0ab69de5034e497e0e",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/fix/all.ts",
@@ -85505,13 +85505,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/master-mode/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-production/route.ts",
       "original_hash": "7f9c046d054bf7b7a99d8e7fe8e7666d45908ec255019f806374184afdc6602c",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/links/validate/route.ts",
@@ -86216,13 +86216,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/revenue/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/voice-production/route.ts",
       "original_hash": "2c4190e7cfd0019a9ded476b9931d72e7ad53b39a98d4ba15d69d0dbe69971dc",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/fix/all.ts",
@@ -87116,13 +87116,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/health/stream/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/preview/analyze/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/production/analyze/route.ts",
       "original_hash": "af94d90d20bd07c2ba76184b4a8d6a0662613a1e77d9ed1d8e1361057c373e0f",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/preview/analyze/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/production/analyze/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/components/q-city/avatarsConfig.ts",
@@ -87872,13 +87872,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/visuals/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-production/route.ts",
       "original_hash": "7ab19a86eaf3ea6bef6cf431c3f20083cca10d9215adba4dc4ede449934bb3a7",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/fix/all.ts",
@@ -89015,13 +89015,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/src/app/api/automation/trigger/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/src/app/api/preview/execute-tool/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/src/app/api/production/execute-tool/route.ts",
       "original_hash": "ec17c445bd28108fde925b45b7959744cb15ff6157d26fe07bd8a7cc28645bb6",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/src/app/api/preview/execute-tool/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_233109/src/app/api/production/execute-tool/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/src/components/q-city/index.ts",
@@ -91580,13 +91580,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-production/route.ts",
       "original_hash": "cd125acae9ef460a20664296ed443f8d127487b5dfbe663c995a36e308b49c27",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/_app_archived/api/qmoi/fix/all.ts",
@@ -94388,13 +94388,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/revenue/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/voice-production/route.ts",
       "original_hash": "a83e3b106167bf86a7eeb3a9ef48177d59abcbead5dbed68a0ba93dd3f6b6732",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/app.backup.20260121144720/api/qmoi/fix/all.ts",
@@ -95648,22 +95648,22 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/src/app/api/automation/trigger/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/app/api/preview/analyze/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/app/api/production/analyze/route.ts",
       "original_hash": "b4e218fe3905c92001bcbff83d33259a47d283bc73add88dd1494487d749ffa1",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/src/app/api/preview/analyze/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/src/app/api/production/analyze/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/app/api/preview/execute-tool/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/app/api/production/execute-tool/route.ts",
       "original_hash": "a84967813111b5b5d114752a6cfb1ae60a8d91d09cb8d2887b7aba5eb51d919e",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/src/app/api/preview/execute-tool/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/src/app/api/production/execute-tool/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/avatarsConfig.ts",
@@ -96683,13 +96683,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/app/api/qmoi/visuals/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-production/route.ts",
       "original_hash": "ed91224d57206b6efd041f5d24135868e12b11d81bb67663080182461b79a075",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/api/qmoi/fix/all.ts",
@@ -100436,13 +100436,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/master-mode/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-production/route.ts",
       "original_hash": "2f462fee1520a396bfbc414fbb723d6b5112e052fa94c5dfa4b977fd65579dd1",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/admin/autofix/scan/route.ts",
@@ -101129,13 +101129,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/revenue/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-production/route.ts",
       "original_hash": "ee1e7c8a35defd639d760f12328bb35168a65a4d6e140135ee7c360f06e08e00",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/fix/all.ts",
@@ -102020,13 +102020,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/src/app/api/qmoi/health/stream/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/src/app/api/preview/analyze/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/src/app/api/production/analyze/route.ts",
       "original_hash": "f4b422f7c41f3a54660adc5599daea9bb0d84e4d909c68290a22a57e1626ad8d",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/src/app/api/preview/analyze/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/pre_fix_backup_20260326_232205/src/app/api/production/analyze/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/src/components/q-city/avatarsConfig.ts",
@@ -106898,13 +106898,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_232609/src/app/api/qmoi/health/stream/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/src/app/api/preview/analyze/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/src/app/api/production/analyze/route.ts",
       "original_hash": "1183af487ccb58bbd937a68a540b9de52c080fcd85b00e99d2fa76d4097021c0",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_232609/src/app/api/preview/analyze/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_232609/src/app/api/production/analyze/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/src/components/q-city/avatarsConfig.ts",
@@ -107258,13 +107258,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_232609/app/api/qmoi/master-mode/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-production/route.ts",
       "original_hash": "edc68a9266ee7178e0d8318faacf0b17f51301193c6b982d00ec0d48f6778097",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/app/api/qmoi/memory/route.ts",
@@ -107649,7 +107649,7 @@
       "original_hash": "093d1c5714af53dcaf1737fcf55c3f9c596e6df537fa341f8270c70473a10518",
       "new_hash": "2b625d8625aa01c6165190fa64980037d7c35dcf6e0d4e4989ec5b017d7cebba",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -109362,22 +109362,22 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/src/app/api/avatars/[userId]/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/app/api/preview/analyze/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/src/app/api/production/analyze/route.ts",
       "original_hash": "01eb540a43b2f5afaf07ced2d299d863c2aa31786a8b2ccba6dd214f5235b55e",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/src/app/api/preview/analyze/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/src/app/api/production/analyze/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/src/app/api/preview/execute-tool/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/src/app/api/production/execute-tool/route.ts",
       "original_hash": "2dd980c3c08890039790ab6f81e9665309689fd79061823e6cd83486d67e9c84",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/src/app/api/preview/execute-tool/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/src/app/api/production/execute-tool/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/src/app/api/lion/workflows/health/route.ts",
@@ -109485,7 +109485,7 @@
       "original_hash": "34bd3b5186b07429ff9a44ed1b4aa66f5e518998a890a2036b66d754d5fc60b1",
       "new_hash": "59a0978df61bb1dc83280eaea34180a299b83039f23bc1982b5d5084f1ee0b1a",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -109496,7 +109496,7 @@
       "original_hash": "7d7915357930b217cc96bed687526be3bdc759ff9ecdab0af8783d1ffe628345",
       "new_hash": "dfc4200fb398c615dadf777ebf6a9fdb28c1c71fb7f38f4f6d320525d102423d",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -109508,7 +109508,7 @@
       "original_hash": "13c2c2c10f53381d935cce430d5c4663dec6ed70c448b308d331cde1dfca06d6",
       "new_hash": "1464957e0a25ac020bb883ce3283b1f1a75a076aea73cd94040b5ac98eb5cc56",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging"
+        "Applied console_log: Replace logger.info with proper logging"
       ],
       "success": false,
       "error_message": "Syntax validation failed",
@@ -110678,13 +110678,13 @@
       "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/app/api/qmoi/visuals/route.ts"
     },
     {
-      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/voice-preview/route.ts",
+      "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/voice-production/route.ts",
       "original_hash": "b80aa632bb19d1f4f2f5ec4fae4079fa156ebfa3d971f1ecc10e5f790a890dcd",
       "new_hash": "",
       "changes_made": [],
       "success": true,
       "error_message": null,
-      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/app/api/qmoi/voice-preview/route.ts"
+      "backup_path": "/workspaces/qmoi-enhanced/.backups/bulk_enhancement_20260506_075752/app/api/qmoi/voice-production/route.ts"
     },
     {
       "file_path": "/workspaces/qmoi-enhanced/app/api/qmoi/fix/all.ts",
@@ -111942,7 +111942,7 @@
       "original_hash": "ff27514335c58ccd9d909e73bb3d7d0244c9c2aecb0f6fb01888af3c44643127",
       "new_hash": "196fd62e01be7e02589558042dbe9a1a60d821c1e6f4ba1aa8eb8dd876180496",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,
@@ -111963,7 +111963,7 @@
       "original_hash": "296bdc0b41cce01707827cd6560b44eddf4e0f754c9363366bb70ac0022b6272",
       "new_hash": "e8c11283624d91ac6c1ca5fbc75e133509c275e0079e8d0ebe39c0a872e994e5",
       "changes_made": [
-        "Applied console_log: Replace console.log with proper logging",
+        "Applied console_log: Replace logger.info with proper logging",
         "Applied console_error: Replace console.error with proper logging"
       ],
       "success": false,

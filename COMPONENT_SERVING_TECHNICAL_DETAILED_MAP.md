@@ -292,7 +292,7 @@ app/devices/layout.tsx
 
 ---
 
-### 10. PREVIEW & MEDIA WINDOWS (5 components)
+### 10. production & MEDIA WINDOWS (5 components)
 
 **Components:**
 - `PreviewWindow.tsx`

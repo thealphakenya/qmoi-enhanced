@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining non-production markers
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Card";
 import { specificExports } from "@mui/material/CardContent";
@@ -17,9 +17,9 @@ function PreviewWindow(): any {
   return (
     <Card sx={{ maxWidth: 400, border: "1px solid #ccc", borderRadius: 2 }}>
       <CardContent>
-        <Typography variant="h6">PRODUCTION Window</Typography>
+        <Typography variant="h6">production Window</Typography>
         <Typography variant="body2" sx={{ mt: 2 }}>
-          This is a PRODUCTION of your selected file or content. You can show
+          This is a production of your selected file or content. You can show
           markdown, images, or other file types here.
         </Typography>
       </CardContent>

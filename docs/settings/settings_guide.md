@@ -115,7 +115,7 @@ The QMOI Enhanced application provides comprehensive settings for customization,
 - **Accent Color**: Secondary theme color
 - **Background Color**: UI background tone
 - **Text Color**: Font color selection
-- **Preview Changes**: Live theme preview
+- **production Changes**: Live theme production
 
 #### Font Settings
 - **Font Size**: Adjust application font size

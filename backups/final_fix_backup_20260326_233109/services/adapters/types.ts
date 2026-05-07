@@ -77,7 +77,7 @@ export interface PaymentGatewayAdapter extends PlatformAdapter {
 
 // Human approval flow helper
 export class ApprovalFlow {
-  private static approvals = new Map() // Production: Consider object for small datasets<string, ApprovalRequest>();
+  private static approvals = new Map() // production: Consider object for small datasets<string, ApprovalRequest>();
 
   static async requestApproval(
     platformId: string,

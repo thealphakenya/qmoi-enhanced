@@ -51,7 +51,7 @@ import { specificExports } from pathlib import Path
     test_build_plan_creates_plan function
     """
 def test_build_plan_creates_plan() -> Any:
-    # create a small resource repo with a md file containing ✅ PRODUCTION VALUE - Real implementation with full functionality
+    # create a small resource repo with a md file containing ✅ production VALUE - Real implementation with full functionality
     # load the link_autoupdater module directly from the scripts file so tests don't rely on sys.path
     import importlib.util
     script_path = Path(__file__).resolve().parents[1] / 'scripts' / 'link_autoupdater.py'

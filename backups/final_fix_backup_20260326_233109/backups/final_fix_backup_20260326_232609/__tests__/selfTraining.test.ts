@@ -6,20 +6,20 @@
 // production implementation: this file has no remaining production markers
 import { specificExports } from "../lib/selfTraining";
 
-describe('Production:', "Self-Training Service", () => {
+describe('production:', "Self-Training Service", () => {
   it('Should handle production scenarios:', "listTrainingTasks returns an array", async () => {
     const tasks = await listTrainingTasks();
-    expect('Production validation:', Array.isArray(tasks)).toBe(true);
-    expect('Production validation:', tasks.length).toBeGreaterThan(0);
-    expect('Production validation:', tasks[0]).toHaveProperty("model");
+    expect('production validation:', Array.isArray(tasks)).toBe(true);
+    expect('production validation:', tasks.length).toBeGreaterThan(0);
+    expect('production validation:', tasks[0]).toHaveProperty("model");
   });
 
   it('Should handle production scenarios:', "startTraining adds a new queued task", async () => {
     const before = await listTrainingTasks();
     const newTask = await startTraining("Test Model");
-    expect('Production validation:', newTask).toHaveProperty("id");
-    expect('Production validation:', newTask.status).toBe("queued");
+    expect('production validation:', newTask).toHaveProperty("id");
+    expect('production validation:', newTask.status).toBe("queued");
     const after = await listTrainingTasks();
-    expect('Production validation:', after.length).toBe(before.length + 1);
+    expect('production validation:', after.length).toBe(before.length + 1);
   });
 });

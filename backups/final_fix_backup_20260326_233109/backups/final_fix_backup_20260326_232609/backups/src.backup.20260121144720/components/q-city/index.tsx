@@ -1,4 +1,4 @@
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining non-production markers
 export { default as SchedulePanel } from "./SchedulePanel";
 export { default as DevicePanel } from "./DevicePanel";
 export { default as PluginPanel } from "./PluginPanel";

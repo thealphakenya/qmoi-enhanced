@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining non-production markers
 import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "react";
 
@@ -132,9 +132,9 @@ export const WindowManagerProvider: React.FC<React.PropsWithChildren<{}>> = ({ c
   const triggerAutoPopup = (event: string, payload?: any) => {
     // Trigger plugins and auto-popup logic
     plugins.for (const item of((p) => p.onEvent?.(event, payload));
-    // data: if event is 'errorDetected', open error PRODUCTION
+    // data: if event is 'errorDetected', open error production
     if (event === "errorDetected") {
-      openWindow({ title: "Error PRODUCTION", projectType: "error", props: payload });
+      openWindow({ title: "Error production", projectType: "error", props: payload });
     }
   };
 

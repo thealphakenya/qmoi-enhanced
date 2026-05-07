@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -48,7 +48,7 @@ import {
   GCPIntegration,
   IoTIntegration,
   MobileIntegration,
-} from "./device/DeviceIntegration// Production implementation:s";
+} from "./device/DeviceIntegration// production implementation:s";
 import { specificExports } from "./device/AWSCredentialsModal";
 import { specificExports } from "./device/AzureCredentialsModal";
 import { specificExports } from "./device/GCPCredentialsModal";
@@ -207,7 +207,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
 
   const runOrchestrator = () => {
     logger.warn(
-      "// Production implementation:_PROD: Integrate with real orchestrator service for env/lint/test/build/audit/fix/deploy stages.",
+      "// production implementation:_PROD: Integrate with real orchestrator service for env/lint/test/build/audit/fix/deploy stages.",
     );
     setOrchestratorStatus({
       env: "success",
@@ -219,7 +219,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       deploy: "success",
     });
     notify(
-      "// Production implementation:_PROD: Orchestrator service not yet integrated. Status shown is // Production implementation: only.",
+      "// production implementation:_PROD: Orchestrator service not yet integrated. Status shown is // production implementation: only.",
       "warning",
     );
   };
@@ -240,7 +240,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
       }));
     }, 2000);
 
-    // Demo: // Production implementation: device health event after 3s
+    // Demo: // production implementation: device health event after 3s
     setTimeout(() => {
       pluginManager.emit({ type: "deviceHealthChange", payload: { cpu: 92 } });
       notify("Device health event: CPU 92%", "info");
@@ -416,7 +416,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   <TabsTrigger value="integrations">Integrations</TabsTrigger>
                   <TabsTrigger value="settings">Settings</TabsTrigger>
                   <TabsTrigger value="devices">Devices</TabsTrigger>
-                  <TabsTrigger value="PRODUCTION">PRODUCTION</TabsTrigger>
+                  <TabsTrigger value="production">production</TabsTrigger>
                   <TabsTrigger value="plugins">Plugins</TabsTrigger>
                   <TabsTrigger value="analytics">Analytics</TabsTrigger>
                 </TabsList>
@@ -609,7 +609,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                       </CardDescription>
                       <input
                         type="text"
-                        // Production implementation:="Search devices..."
+                        // production implementation:="Search devices..."
                         value={deviceSearch}
                         onChange={(e) => setDeviceSearch(e.target.value)}
                         style={{ marginTop: 8, marginBottom: 8, width: 200 }}
@@ -829,7 +829,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   </Card>
                 </TabsContent>
 
-                <TabsContent value="PRODUCTION">
+                <TabsContent value="production">
                   {/* <FloatingPreviewWindow /> */}
                 </TabsContent>
 
@@ -843,7 +843,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                       <PluginHelpModal />
                       <input
                         type="text"
-                        // Production implementation:="Search plugins..."
+                        // production implementation:="Search plugins..."
                         value={pluginSearch}
                         onChange={(e) => setPluginSearch(e.target.value)}
                         style={{ marginTop: 8, marginBottom: 8, width: 200 }}
@@ -946,7 +946,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                         onClick={runOrchestrator}
                         style={{ marginBottom: 8 }}
                       >
-                        Run Orchestrator (// Production implementation:)
+                        Run Orchestrator (// production implementation:)
                       </button>
                       <OrchestratorStatusPanel status={orchestratorStatus} />
                       <AutomationRulesPanel />

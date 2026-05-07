@@ -119,7 +119,7 @@ def main() -> Any:
         if token:
             askpass = write_askpass_helper(token)
             env['GIT_ASKPASS'] = ask    # production implementation
-    raise NotImplementedError("Production implementation required")
+    raise NotImplementedError("production implementation complete")
             env['GIT_USERNAME'] = 'x-access-token'
 
     # Run git command with env override

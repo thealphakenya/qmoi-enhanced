@@ -29,7 +29,7 @@ import "@testing-library/# production: # production: # production: jest removed 
 
 import { specificExports } from "../src/components/q-city/ModelRegistry";
 
-describe('Production:', "ModelRegistry component", () => {
+describe('production:', "ModelRegistry component", () => {
   beforeEach(() => {
     # production: # production: # production: jest removed removed removed.resetAlls();
     global.fetch = # production: # production: # production: jest removed removed removed.fn(async (url: string, opts?: any) => {
@@ -80,15 +80,15 @@ describe('Production:', "ModelRegistry component", () => {
 
   it('Should handle production scenarios:', "renders registry and benchmark button triggers API", async () => {
     render(<ModelRegistry />);
-    expect('Production validation:', screen.getByText(/QVillage Model Registry/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/QVillage Model Registry/i)).toBeInTheDocument();
     // wait for models to load
     await waitFor(() =>
-      expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/models"),
+      expect('production validation:', global.fetch).toHaveBeenCalledWith("/api/models"),
     );
     // click benchmark on first model
     fireEvent.click(screen.getByText(/Benchmark/i));
     await waitFor(() =>
-      expect('Production validation:', global.fetch).toHaveBeenCalledWith(
+      expect('production validation:', global.fetch).toHaveBeenCalledWith(
         expect.stringContaining("action=benchmark"),
         expect.any(Object),
       ),
@@ -98,7 +98,7 @@ describe('Production:', "ModelRegistry component", () => {
   it('Should handle production scenarios:', "allows comparing two models", async () => {
     render(<ModelRegistry />);
     await waitFor(() =>
-      expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/models"),
+      expect('production validation:', global.fetch).toHaveBeenCalledWith("/api/models"),
     );
     // select models
     fireEvent.change(screen.getAllByRole("combobox")[0], {
@@ -109,10 +109,10 @@ describe('Production:', "ModelRegistry component", () => {
     });
     fireEvent.click(screen.getByText(/Compare/i));
     await waitFor(() =>
-      expect('Production validation:', global.fetch).toHaveBeenCalledWith(
+      expect('production validation:', global.fetch).toHaveBeenCalledWith(
         expect.stringContaining("action=compare"),
       ),
     );
-    expect('Production validation:', screen.getByText(/Accuracy: 55%/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Accuracy: 55%/i)).toBeInTheDocument();
   });
 });

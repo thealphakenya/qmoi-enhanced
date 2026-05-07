@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "react";
 import {
@@ -12,10 +12,10 @@ import {
   Device,
 } from "../../services/DeviceTrackingService";
 
-// Production implementation: master check (replace with real auth logic)
+// production implementation: master check (replace with real auth logic)
 const isMaster = true;
 
-const // Production implementation:WhatsAppService = {
+const // production implementation:WhatsAppService = {
   client: {},
   config: {},
   isConnected: true,
@@ -26,8 +26,8 @@ const // Production implementation:WhatsAppService = {
     notifications: { master: true, leah: true, status: "sent" },
   },
   messageTemplates: [],
-  autoResponders: new Map() // Production: Consider object for small datasets(),
-  pendingApprovals: new Map() // Production: Consider object for small datasets(),
+  autoResponders: new Map() // production: Consider object for small datasets(),
+  pendingApprovals: new Map() // production: Consider object for small datasets(),
   sendMessageToMaster: async (msg: string) => {
     notification.show(msg);
   },
@@ -45,7 +45,7 @@ const // Production implementation:WhatsAppService = {
   requestApproval: async () => true,
 };
 
-const deviceService = new DeviceTrackingService(// Production implementation:WhatsAppService as any);
+const deviceService = new DeviceTrackingService(// production implementation:WhatsAppService as any);
 
 export const DevicesHub: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);

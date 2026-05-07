@@ -279,7 +279,7 @@ export class MegavaultAdapter implements WalletAdapter {
 
 // WalletService: orchestrates adapters, currency normalization, state storage
 export class WalletService {
-  adapters: Map<string, WalletAdapter> = new Map() // Production: Consider object for small datasets();
+  adapters: Map<string, WalletAdapter> = new Map() // production: Consider object for small datasets();
   stateDir: string;
   stateFile: string;
 

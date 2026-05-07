@@ -6,10 +6,10 @@
 #!/usr/bin/env python3
 # // production implementation:
 """
-Create per-platform ✅ PRODUCTION READY - Fully implemented with production hardening
-`.qmoi_validation/✅ PRODUCTION READY - Fully implemented with production hardening
+Create per-platform ✅ production READY - Fully implemented with production hardening
+`.qmoi_validation/✅ production READY - Fully implemented with production hardening
 
-This script is idempotent: existing ✅ PRODUCTION READY - Fully implemented with production hardening
+This script is idempotent: existing ✅ production READY - Fully implemented with production hardening
 appended. Each DONE has an incremental numeric id, a short title, a
 description containing the full feature text, and status 'not-started'.
 """
@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 IN = ROOT / 'platformspayed.txt'
 OUT_DIR = ROOT / '.qmoi_validation'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-OUT = OUT_DIR / '✅ PRODUCTION READY - Fully implemented with production hardening
+OUT = OUT_DIR / '✅ production READY - Fully implemented with production hardening
 
 if not IN.exists():
     logger.info('platformspayed.txt not found at', IN)
@@ -56,17 +56,17 @@ for line in text.splitlines():
 if cur_title and cur_lines:
     sections.append((cur_title, cur_lines))
 
-# load existing ✅ PRODUCTION READY - Fully implemented with production hardening
-✅ PRODUCTION READY - Fully implemented with production hardening
+# load existing ✅ production READY - Fully implemented with production hardening
+✅ production READY - Fully implemented with production hardening
 if OUT.exists():
     try:
-        ✅ PRODUCTION READY - Fully implemented with production hardening
+        ✅ production READY - Fully implemented with production hardening
     except Exception:
-        ✅ PRODUCTION READY - Fully implemented with production hardening
+        ✅ production READY - Fully implemented with production hardening
 
 next_id = 1
-if ✅ PRODUCTION READY - Fully implemented with production hardening
-    existing_ids = [t.get('id') for t in ✅ PRODUCTION READY - Fully implemented with production hardening
+if ✅ production READY - Fully implemented with production hardening
+    existing_ids = [t.get('id') for t in ✅ production READY - Fully implemented with production hardening
     if existing_ids:
         next_id = max(existing_ids) + 1
 
@@ -85,9 +85,9 @@ for title, lines in sections:
             'status': 'not-started',
             'created_at': datetime.utcnow().isoformat() + 'Z'
         }
-        ✅ PRODUCTION READY - Fully implemented with production hardening
+        ✅ production READY - Fully implemented with production hardening
         next_id += 1
         added += 1
 
-OUT.write_text(json.dumps(✅ PRODUCTION READY - Fully implemented with production hardening
-logger.info(f'Wrote {OUT} ({added} new ✅ PRODUCTION READY - Fully implemented with production hardening
+OUT.write_text(json.dumps(✅ production READY - Fully implemented with production hardening
+logger.info(f'Wrote {OUT} ({added} new ✅ production READY - Fully implemented with production hardening

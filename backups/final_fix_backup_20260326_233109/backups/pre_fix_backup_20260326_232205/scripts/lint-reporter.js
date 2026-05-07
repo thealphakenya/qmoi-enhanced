@@ -121,7 +121,7 @@ class LintReporter {
       else if (
         rule.includes("performance") ||
         rule.includes("no-console") ||
-        rule.includes("no-// Production: debugger removed")
+        rule.includes("no-// production: debugger removed")
       ) {
         categories.performance.push(error);
       }
@@ -132,7 +132,7 @@ class LintReporter {
       // High priority
       else if (
         rule.includes("no-console") ||
-        rule.includes("no-// Production: debugger removed") ||
+        rule.includes("no-// production: debugger removed") ||
         rule.includes("no-alert")
       ) {
         categories.high.push(error);
@@ -451,7 +451,7 @@ class LintReporter {
         message: "Performance issues detected",
         actions: [
           "Remove logger.info statements",
-          "Remove // Production: debugger removed statements",
+          "Remove // production: debugger removed statements",
           "Optimize expensive operations",
         ],
       });

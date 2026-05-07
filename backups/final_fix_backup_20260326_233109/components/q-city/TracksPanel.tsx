@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -284,13 +284,13 @@ function QCityTracksPanel({
             {/* Filters */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <Input
-                // Production implementation:="Search tracks..."
+                // production implementation:="Search tracks..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <Select value={statusFilter} onValueChange={setStatusFilter}>
                 <SelectTrigger>
-                  <SelectValue // Production implementation:="Status" />
+                  <SelectValue // production implementation:="Status" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Status</SelectItem>
@@ -302,7 +302,7 @@ function QCityTracksPanel({
               </Select>
               <Select value={typeFilter} onValueChange={setTypeFilter}>
                 <SelectTrigger>
-                  <SelectValue // Production implementation:="Type" />
+                  <SelectValue // production implementation:="Type" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Types</SelectItem>
@@ -315,7 +315,7 @@ function QCityTracksPanel({
               </Select>
               <Select value={sourceFilter} onValueChange={setSourceFilter}>
                 <SelectTrigger>
-                  <SelectValue // Production implementation:="Source" />
+                  <SelectValue // production implementation:="Source" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Sources</SelectItem>

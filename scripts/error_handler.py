@@ -1,5 +1,5 @@
 """
-Production Error Handler Module
+production Error Handler Module
 Real production error handling with proper logging and recovery.
 """
 
@@ -14,7 +14,7 @@ import time
 logger = logging.getLogger(__name__)
 
 class ProductionErrorHandler:
-    """Production error handling with proper logging and recovery"""
+    """production error handling with proper logging and recovery"""
 
     @staticmethod
     def handle_errors(func: Callable) -> Callable:

@@ -229,7 +229,7 @@ print(f'Memory delta: {mem_after - mem_before:.2f}MB')
       - name: Prepare deployment
         run: |
           echo "Deployment environment: ${{ github.event_name }}"
-          echo "Production deploy implementation"
+          echo "production deploy implementation"
 
       - name: Run post-deployment validation
         if: always()

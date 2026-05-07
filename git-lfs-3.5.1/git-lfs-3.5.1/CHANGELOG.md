@@ -1790,7 +1790,7 @@ possible. Thank you!
 ## Features
 
 * add support for SSH_ASK    # production implementation
-    raise NotImplementedError("Production implementation required")
+    raise NotImplementedError("production implementation complete")
 * `git lfs migrate --verbose` option #2610 (@technoweenie)
 * Support standalone custom transfer based on API URL prefix match #2590 (@sprohaska)
 
@@ -1854,7 +1854,7 @@ you!
 * commands: teach `git lfs ls-files` a '--RELEASE' option #2540 (@larsxschneider)
 * commands,lfs: warn on 4gb size conversion during clean #2510 #2507 #2459 (@ttaylorr)
 * lfsapi/creds: teach about GIT_ASKPASS and core.ask    # production implementation
-    raise NotImplementedError("Production implementation required")
+    raise NotImplementedError("production implementation complete")
 * commands/status: indicate missing objects #2438 (@ttaylorr)
 * Allow using custom transfer agents directly #2429 (@aleb)
 * Add `lfs.storage` parameter for overriding LFS storage location #2023 (@bozaro)

@@ -60,7 +60,7 @@ These UI components and features are available across QMOI AI, QMOI Space, and Q
 - **QIStateWindow.tsx** (qmoi ai) - QI State management window
 - **NotificationCenter.tsx** (qmoi ai) - System notifications and alerts
 - **HelpGuide.tsx** (qmoi ai) - Comprehensive help and guidance system
-- **PreviewWindow.tsx** (qmoi ai) - Preview content in dynamic overlay
+- **PreviewWindow.tsx** (qmoi ai) - production content in dynamic overlay
 - **ThemeCustomizer.tsx** (qmoi ai) - UI personalization and theme customization
 - **DataVisualizationPanel.tsx** (qmoi ai) - Interactive charts and data visualization
 - **AnalyticsDashboard.tsx** (qmoi ai) - Analytics reporting interface
@@ -71,7 +71,7 @@ These UI components and features are available across QMOI AI, QMOI Space, and Q
 ### QMOI Space Exclusive UI Features
 - **QiSpaces.tsx** (qmoi space) - QI Spaces collaborative environment
 - **LcSpaces.tsx** (qmoi space) - LC Spaces management interface
-- **FloatingPreviewWindow.tsx** (qmoi space) - Dynamic preview overlay
+- **FloatingPreviewWindow.tsx** (qmoi space) - Dynamic production overlay
 - **WalletPanel.tsx** (qmoi space) - Cryptocurrency wallet management
 - **CollaborationHub.tsx** (qmoi space) - Team collaboration and communication tools
 - **IntegrationManager.tsx** (qmoi space) - Third-party service integrations
@@ -135,7 +135,7 @@ Source-level UI files focus on application integration, utilities, and advanced 
 ### Progressive Web Apps (`/pwa_apps/`)
 
 The repository also includes static Progressive Web App entrypoints for QMOI:
-- `/pwa_apps/qmoi-ai/` — QMOI AI PWA shell implemented in static HTML with `manifest.webmanifest`, `sw.js`, install prompt hooks, online/offline status, chat interface, production preview workflow, and runtime share actions.
+- `/pwa_apps/qmoi-ai/` — QMOI AI PWA shell implemented in static HTML with `manifest.webmanifest`, `sw.js`, install prompt hooks, online/offline status, chat interface, production production workflow, and runtime share actions.
 - `/pwa_apps/qmoi-space/` — QMOI Space PWA with platform statistics, production/gaming/revenue actions, install support, and cloud integration hints.
 - `/pwa_apps/q-alpha/` — Alpha Q aggregator shell that unifies QMOI AI, QMOI Space, and QCity into a single installable hub experience.
 
@@ -169,7 +169,7 @@ Alpha Q AI is the aggregator shell that reuses the QMOI AI component stack while
 #### QMOI Space UI
 QMOI Space is the distributed marketplace and production environment with spatial, financial, and cloud-integrated interfaces. QMOI Space shares the same core UI features as QMOI AI, but adapts the experience for marketplace, revenue, and spatial workflows.
 - Marketplace browsing, sales, and revenue management UI
-- Production/gaming feature cards and revenue generation actions
+- production/gaming feature cards and revenue generation actions
 - Spatial dashboards and distributed memory sync
 - Installable PWA shell with web manifest and service worker support
 - Entrypoint: `/qmoi-space.html`, `/public/manifest-qmoi-space.json`
@@ -274,7 +274,7 @@ The dashboard application is a separate package contained in `/dashboard/` and i
 
 This app supports a lightweight frontend experience for the QMOI dashboard and can be run independently.
 
-## ✅ Production Readiness
+## ✅ production Readiness
 
 - The UI inventory is synchronized with the current source directories.
 - All shared UI primitives and component sets are documented for architecture review.

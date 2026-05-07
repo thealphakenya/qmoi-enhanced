@@ -525,18 +525,18 @@ export const QmoiAutoDistribution: React.FC = () => {
           </Card>
         )}
 
-        {/* Asset PRODUCTION */}
+        {/* Asset production */}
         {isMaster && (
           <Card className="bg-white shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <span className="text-purple-600">🎬</span>
-                Asset PRODUCTION (Before Distribution)
+                Asset production (Before Distribution)
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <Button onClick={previewAssets} className="mb-4">
-                Generate PRODUCTION
+                Generate production
               </Button>
               {assetPreview.trailer && (
                 <div>

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 /**
@@ -69,7 +69,7 @@ function handleCommand(cmd: string): any {
       } else if (cmd.startsWith("/edit ")) {
         const [, filePath, ...contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
-        // Show diff PRODUCTION if lastView is available
+        // Show diff production if lastView is available
         const before = lastView;
         const after = content;
         const { postModel } = await import("../../services/qmoiApi");
@@ -112,7 +112,7 @@ function handleCommand(cmd: string): any {
       } else if (cmd.startsWith("/replace ")) {
         const [, filePath, search, ...replaceArr] = cmd.split(" ");
         const content = replaceArr.join(" ");
-        // Show diff PRODUCTION if lastView is available
+        // Show diff production if lastView is available
         const before = lastView;
         const after = before.replace(search, content);
         const { postModel } = await import("../../services/qmoiApi");
@@ -353,7 +353,7 @@ function handleSubmit(_e: React.FormEvent): any {
           <input
             value={batchFiles}
             onChange={(_e) => setBatchFiles(_e.target.value)}
-            // Production implementation:="file1.py,file2.ts,..."
+            // production implementation:="file1.py,file2.ts,..."
             style={{
               width: "60%",
               marginRight: 8,
@@ -367,7 +367,7 @@ function handleSubmit(_e: React.FormEvent): any {
           <input
             value={batchOp}
             onChange={(_e) => setBatchOp(_e.target.value)}
-            // Production implementation:="operation (_e.g. lint, format)"
+            // production implementation:="operation (_e.g. lint, format)"
             style={{
               width: "30%",
               background: "#111",
@@ -431,7 +431,7 @@ function handleSubmit(_e: React.FormEvent): any {
         <input
           value={input}
           onChange={(_e) => setInput(_e.target.value)}
-          // Production implementation:="/view /edit /append /replace ..."
+          // production implementation:="/view /edit /append /replace ..."
           style={{
             flex: 1,
             background: "#111",

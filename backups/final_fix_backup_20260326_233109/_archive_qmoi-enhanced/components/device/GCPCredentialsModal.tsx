@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export const GCPCredentialsModal: React.FC<{
@@ -40,13 +40,13 @@ export const GCPCredentialsModal: React.FC<{
       >
         <h2>GCP Credentials</h2>
         <input
-          // Production implementation:="Project ID"
+          // production implementation:="Project ID"
           value={projectId}
           onChange={(e) => setProjectId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          // Production implementation:="Key Filename"
+          // production implementation:="Key Filename"
           value={keyFilename}
           onChange={(e) => setKeyFilename(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}

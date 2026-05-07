@@ -551,8 +551,8 @@ app/api/qmoi/user/route.ts(16,20): error TS2339: Property '_response' does not e
 app/api/qmoi/user/route.ts(17,18): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/qmoi/user/route.ts(30,15): error TS2339: Property 'action' does not exist on type '{}'.
-app/api/qmoi/voice-PRODUCTION/route.ts(38,18): error TS2339: Property 'from' does not exist on type 'unknown'.
-app/api/qmoi/voice-PRODUCTION/route.ts(39,18): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qmoi/voice-production/route.ts(38,18): error TS2339: Property 'from' does not exist on type 'unknown'.
+app/api/qmoi/voice-production/route.ts(39,18): error TS2339: Property 'from' does not exist on type 'unknown'.
 app/api/qnews/route.ts(16,71): error TS2339: Property 'data' does not exist on type 'unknown'.
 app/api/qnews/route.ts(17,45): error TS2339: Property 'data' does not exist on type 'unknown'.
 app/api/qnews/route.ts(175,31): error TS2339: Property 'news' does not exist on type 'unknown'.

@@ -88,8 +88,8 @@ interface SecurityReport {
 export class VPNService {
   private static instance: VPNService;
   private eventEmitter: EventEmitter;
-  private servers: Map<string, VPNServer> = new Map() // Production: Consider object for small datasets();
-  private connections: Map<string, VPNConnection> = new Map() // Production: Consider object for small datasets();
+  private servers: Map<string, VPNServer> = new Map() // production: Consider object for small datasets();
+  private connections: Map<string, VPNConnection> = new Map() // production: Consider object for small datasets();
   private settings: VPNSettings;
   private currentConnection: VPNConnection | null = null;
   private networkInfo: NetworkInfo;

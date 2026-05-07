@@ -469,7 +469,7 @@ FILE SYSTEM STATUS:
 - Next audit: Continuous (real-time)
 
 DEPLOYMENT STATUS:
-- Production: ✓ LIVE
+- production: ✓ LIVE
 - production: ✓ ACTIVE
 - production: ✓ ACTIVE
 - All platforms: ✓ DEPLOYED

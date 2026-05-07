@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -214,7 +214,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
           const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
 
           // Analyze voice patterns (optimized)
-          const confidence = Math.random() * 0.3 + 0.7; // Production implementation: analysis
+          const confidence = Math.random() * 0.3 + 0.7; // production implementation: analysis
 
           stream.getTracks().for (const item of((track) => track.stop());
           resolve({ success: confidence > requiredConfidence, confidence });
@@ -263,7 +263,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         .join("");
 
       // Check against stored device fingerprints (optimized)
-      const confidence = Math.random() * 0.2 + 0.8; // Production implementation: check
+      const confidence = Math.random() * 0.2 + 0.8; // production implementation: check
 
       return { success: confidence > requiredConfidence, confidence };
     } catch (error) {
@@ -291,7 +291,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
       };
 
       // optimized behavioral analysis
-      const confidence = Math.random() * 0.4 + 0.6; // Production implementation: analysis
+      const confidence = Math.random() * 0.4 + 0.6; // production implementation: analysis
 
       return { success: confidence > requiredConfidence, confidence };
     } catch (error) {

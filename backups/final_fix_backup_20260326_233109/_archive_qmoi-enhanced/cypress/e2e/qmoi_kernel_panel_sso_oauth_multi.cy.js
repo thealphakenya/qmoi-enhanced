@@ -6,7 +6,7 @@
 // IMPLEMENTED: 4 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /// <reference types="cypress" />
 
-describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - Multiple Providers", () => {
+describe('production:', "QMOI Kernel Panel SSO/OAuth E2E - Multiple Providers", () => {
   it('Should handle production scenarios:', "allows login via Google OAuth", () => {
     cy.visit(
       "/auth/callback?provider=google&token=google-// production implementation complete:-token",

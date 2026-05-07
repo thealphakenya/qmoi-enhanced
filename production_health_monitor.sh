@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# QMOI Enhanced - Production Health Monitoring Script
+# QMOI Enhanced - production Health Monitoring Script
 # Comprehensive health checks for production deployment
 
 set -e
@@ -22,10 +22,10 @@ TIMEOUT=30
 LOG_FILE="/tmp/qmoi_production_health_$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-echo -e "${BLUE}🔍 QMOI ENHANCED - PRODUCTION HEALTH MONITOR${NC}"
+echo -e "${BLUE}🔍 QMOI ENHANCED - production HEALTH MONITOR${NC}"
 echo "=================================================="
 echo "Date: $(date)"
-echo "Production URL: $PRODUCTION_URL"
+echo "production URL: $PRODUCTION_URL"
 echo "Log File: $LOG_FILE"
 echo
 
@@ -166,7 +166,7 @@ total=$((passed + warnings + failed))
 
 if [ $failed -eq 0 ] && [ $warnings -eq 0 ]; then
     echo -e "${GREEN}🎉 ALL CHECKS PASSED - SYSTEM HEALTHY${NC}"
-    echo "Production deployment is operating optimally!"
+    echo "production deployment is operating optimally!"
     exit 0
 elif [ $failed -eq 0 ]; then
     echo -e "${YELLOW}⚠️  SYSTEM OPERATIONAL WITH WARNINGS${NC}"

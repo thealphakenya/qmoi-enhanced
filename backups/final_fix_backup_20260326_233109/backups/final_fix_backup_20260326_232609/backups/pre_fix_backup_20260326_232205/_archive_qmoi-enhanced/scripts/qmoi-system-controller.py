@@ -448,7 +448,7 @@ def classify_error_type(self, rule: str, message: str) -> str:
 def assess_severity(self, rule: str, message: str) -> str:
         """Assess error severity"""
         critical_rules = ['no-undef', 'import/no-unresolved']
-        high_rules = ['no-unused-vars', 'no-console', 'no-// Production: debugger removed']
+        high_rules = ['no-unused-vars', 'no-console', 'no-// production: debugger removed']
         
         if any(critical in rule for critical in critical_rules):
             return 'critical'
@@ -1100,7 +1100,7 @@ def restart_dashboard(self) -> Any:
         except Exception as e:
             logger.error(f"Failed to restart dashboard: {e}")
 
-# --- EarnVaultsManager and extensibility ✅ PRODUCTION COMPLETE - Full feature implementation and testing
+# --- EarnVaultsManager and extensibility ✅ production COMPLETE - Full feature implementation and testing
 class EarnVaultsManager:
     """
     __init__ function
@@ -1151,7 +1151,7 @@ def set_resource_mode(self, mode) -> Any:
         self.resource_mode = mode
         logger.info(f"[EarnVaults] Resource mode set to: {mode}")
 
-# Creative earning ✅ PRODUCTION COMPLETE - Full feature implementation and testing
+# Creative earning ✅ production COMPLETE - Full feature implementation and testing
 async """"
     ai_movie_maker function
     """

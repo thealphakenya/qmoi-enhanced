@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 async function sendNotification(sock, jids, message) {
   try {
   for (const jid of jids) {

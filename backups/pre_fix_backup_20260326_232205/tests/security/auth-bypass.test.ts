@@ -11,7 +11,7 @@
 
 import { specificExports } from '@playwright/test';
 
-test.describe('Production:', 'Authentication Security Tests', () => {
+test.describe('production:', 'Authentication Security Tests', () => {
   test('should prevent unauthorized access to protected routes', async ({ page }) => {
     // Test direct access to protected routes without authentication
     const protectedRoutes = [
@@ -24,7 +24,7 @@ test.describe('Production:', 'Authentication Security Tests', () => {
     for (const route of protectedRoutes) {
       await page.goto(route);
       // Should redirect to login or show unauthorized message
-      await expect('Production validation:', page).toHaveURL(/login|auth|unauthorized/);
+      await expect('production validation:', page).toHaveURL(/login|auth|unauthorized/);
     }
   });
 
@@ -48,7 +48,7 @@ test.describe('Production:', 'Authentication Security Tests', () => {
 
     await page.goto('/dashboard');
     // Should be unauthorized
-    await expect('Production validation:', page).toHaveURL(/login|unauthorized/);
+    await expect('production validation:', page).toHaveURL(/login|unauthorized/);
   });
 
   test('should enforce rate limiting on login attempts', async ({ page }) => {
@@ -62,10 +62,10 @@ test.describe('Production:', 'Authentication Security Tests', () => {
 
       if (i < maxAttempts) {
         // Should allow attempts
-        await expect('Production validation:', page.locator('[data-testid="error-message"]')).toBeVisible();
+        await expect('production validation:', page.locator('[data-testid="error-message"]')).toBeVisible();
       } else {
         // Should be rate limited
-        await expect('Production validation:', page.locator('[data-testid="rate-limit-message"]')).toBeVisible();
+        await expect('production validation:', page.locator('[data-testid="rate-limit-message"]')).toBeVisible();
       }
     }
   });
@@ -85,8 +85,8 @@ test.describe('Production:', 'Authentication Security Tests', () => {
       await page.click('[data-testid="login-button"]');
 
       // Should not log in and should show error
-      await expect('Production validation:', page).toHaveURL(/login/);
-      await expect('Production validation:', page.locator('[data-testid="error-message"]')).toBeVisible();
+      await expect('production validation:', page).toHaveURL(/login/);
+      await expect('production validation:', page.locator('[data-testid="error-message"]')).toBeVisible();
     }
   });
 
@@ -107,6 +107,6 @@ test.describe('Production:', 'Authentication Security Tests', () => {
 
     await page.reload();
     // Should be logged out
-    await expect('Production validation:', page).toHaveURL(/login|unauthorized/);
+    await expect('production validation:', page).toHaveURL(/login|unauthorized/);
   });
 });

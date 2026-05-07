@@ -120,7 +120,7 @@ export default function QMoiSpacePage() {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700">
             <div className="text-4xl mb-4">🔧</div>
-            <h3 className="text-xl font-semibold mb-2">Production</h3>
+            <h3 className="text-xl font-semibold mb-2">production</h3>
             <p className="text-slate-400">Full production environment with automated deployment and scaling.</p>
           </div>
           <div className="rounded-3xl bg-slate-900 p-6 border border-slate-700">

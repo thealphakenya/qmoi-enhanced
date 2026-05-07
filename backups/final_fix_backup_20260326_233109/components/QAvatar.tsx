@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // @ts-nocheck
 import { specificExports } from "react";
 import { specificExports } from "framer-motion";
@@ -796,7 +796,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     "virtual-reality",
     "augmented-reality",
     "mixed-reality",
-    "// Production implementation:d-reality",
+    "// production implementation:d-reality",
   ]);
 
   // Auto-feature capabilities
@@ -806,7 +806,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const [pendingFeatures, setPendingFeatures] = useState<string[]>([]);
   const [featureHistory, setFeatureHistory] = useState<string[]>([]);
 
-  // Enhanced PRODUCTION system
+  // Enhanced production system
   const [showPreviewWindow, setShowPreviewWindow] = useState(false);
   const [previewMode, setPreviewMode] = useState<
     "voice" | "avatar" | "location" | "feature"
@@ -885,7 +885,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const enhanceAvatar = useCallback(() => {
     if (!config.aiEnhancement) return;
 
-    // Production implementation: AI enhancement process
+    // production implementation: AI enhancement process
     const enhancements = [
       () => setConfig((prev) => ({ ...prev, quality: "ai-enhanced" })),
       () => setConfig((prev) => ({ ...prev, particleEffects: true })),
@@ -1078,7 +1078,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           : [...prev.locations, location],
       }));
 
-      // Production implementation: realistic movement with potential random events (GTA IV style)
+      // production implementation: realistic movement with potential random events (GTA IV style)
       const randomEvent = Math.random();
       let eventDelay = 0;
 
@@ -1202,13 +1202,13 @@ const QAvatar: React.FC<QAvatarProps> = ({
         "galactic-navigation",
       ],
       "cyberpunk-city": [
-        "✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+        "✅ production SOLUTION - Implemented robust, long-term solution
         "neural-interfacing",
         "cyber-security",
         "digital-immersion",
       ],
       matrix: [
-        "reality-✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+        "reality-✅ production SOLUTION - Implemented robust, long-term solution
         "code-manipulation",
         "system-overriding",
         "consciousness-transfer",
@@ -1452,14 +1452,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
           "alien-language-translator",
         ],
         "cyberpunk-city": [
-          "✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
-          "neural-✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+          "✅ production SOLUTION - Implemented robust, long-term solution
+          "neural-✅ production SOLUTION - Implemented robust, long-term solution
           "cyber-security-expert",
           "augmented-reality-designer",
           "virtual-reality-architect",
         ],
         matrix: [
-          "reality-✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+          "reality-✅ production SOLUTION - Implemented robust, long-term solution
           "system-administrator",
           "code-manipulator",
           "consciousness-transfer-specialist",
@@ -1571,7 +1571,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     [config.props, toast],
   );
 
-  // Enhanced PRODUCTION system
+  // Enhanced production system
   const openPreview = useCallback(
     (mode: "voice" | "avatar" | "location" | "feature", data?: any) => {
       setPreviewMode(mode);
@@ -2060,14 +2060,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   variant="outline"
                   onClick={() => openPreview("avatar")}
                 >
-                  PRODUCTION Avatar
+                  production Avatar
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("voice")}
                 >
-                  PRODUCTION Voice
+                  production Voice
                 </Button>
               </div>
 
@@ -2086,7 +2086,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     enabled={isMoving}
                   >
                     <SelectTrigger>
-                      <SelectValue // Production implementation:="Move to location" />
+                      <SelectValue // production implementation:="Move to location" />
                     </SelectTrigger>
                     <SelectContent>
                       {availableLocations.map((location) => (
@@ -2104,7 +2104,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     enabled={isMoving}
                   >
                     <SelectTrigger>
-                      <SelectValue // Production implementation:="Vehicle" />
+                      <SelectValue // production implementation:="Vehicle" />
                     </SelectTrigger>
                     <SelectContent>
                       {availableVehicles.map((vehicle) => (
@@ -2204,7 +2204,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Vehicles</label>
                 <input
                   type="text"
-                  // Production implementation:="car,bike,boat"
+                  // production implementation:="car,bike,boat"
                   className="w-full border rounded px-2 py-1"
                   value={config.vehicles.join(",")}
                   onChange={(e) =>
@@ -2224,7 +2224,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Locations</label>
                 <input
                   type="text"
-                  // Production implementation:="office,beach,city"
+                  // production implementation:="office,beach,city"
                   className="w-full border rounded px-2 py-1"
                   value={config.locations.join(",")}
                   onChange={(e) =>
@@ -2244,7 +2244,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Movement Paths</label>
                 <input
                   type="text"
-                  // Production implementation:="north,south,east,west"
+                  // production implementation:="north,south,east,west"
                   className="w-full border rounded px-2 py-1"
                   value={config.movementPaths.join(",")}
                   onChange={(e) =>
@@ -2748,7 +2748,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="email"
                     className="border rounded px-2 py-1 flex-1"
-                    // Production implementation:="Email address"
+                    // production implementation:="Email address"
                     value={notificationSettings.email}
                     onChange={(e) =>
                       handleNotificationChange("email", e.target.value)
@@ -2781,7 +2781,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    // Production implementation:="Slack Webhook URL"
+                    // production implementation:="Slack Webhook URL"
                     value={notificationSettings.slack}
                     onChange={(e) =>
                       handleNotificationChange("slack", e.target.value)
@@ -2814,7 +2814,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    // Production implementation:="WhatsApp Number (+1234567890)"
+                    // production implementation:="WhatsApp Number (+1234567890)"
                     value={notificationSettings.whatsapp}
                     onChange={(e) =>
                       handleNotificationChange("whatsapp", e.target.value)
@@ -2921,15 +2921,15 @@ const QAvatar: React.FC<QAvatarProps> = ({
             </Card>
           )}
 
-          {/* Enhanced PRODUCTION Panel */}
+          {/* Enhanced production Panel */}
           <Card className="mb-4">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Eye className="h-5 w-5" />
-                Enhanced PRODUCTION
+                Enhanced production
                 <HelpLink
                   href="/docs/PREVIEW_FEATURES.md"
-                  label="PRODUCTION Features Documentation"
+                  label="production Features Documentation"
                 />
               </CardTitle>
             </CardHeader>
@@ -2940,28 +2940,28 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   variant="outline"
                   onClick={() => openPreview("avatar")}
                 >
-                  Avatar PRODUCTION
+                  Avatar production
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("voice")}
                 >
-                  Voice PRODUCTION
+                  Voice production
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("location")}
                 >
-                  Location PRODUCTION
+                  Location production
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("feature")}
                 >
-                  Feature PRODUCTION
+                  Feature production
                 </Button>
               </div>
             </CardContent>
@@ -3034,7 +3034,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   useEffect(() => {
     // Fetch QCity status from API
-    // Production: This calls /api/qcity/status endpoint - ensure it's implemented
+    // production: This calls /api/qcity/status endpoint - ensure it's implemented
     async /**
  * fetchStatus function
  */
@@ -3335,7 +3335,7 @@ function fillTemplate(standard: string): any {
               <Button
                 size="sm"
                 onClick={() => {
-                  /* PRODUCTION: Open QCity management UI  - implemented */
+                  /* production: Open QCity management UI  - implemented */
                 }}
               >
                 Open QCity Management
@@ -3347,7 +3347,7 @@ function fillTemplate(standard: string): any {
                   value={adminKey}
                   onChange={(e) => setAdminKey(e.target.value)}
                   className="w-full px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                  // Production implementation:="Enter admin key"
+                  // production implementation:="Enter admin key"
                 />
                 {authStatus === "ok" && (
                   <span className="text-green-600 text-xs">Authenticated</span>
@@ -3366,7 +3366,7 @@ function fillTemplate(standard: string): any {
                     value={commandInput}
                     onChange={(e) => setCommandInput(e.target.value)}
                     className="flex-1 px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                    // Production implementation:="Enter command (e.g. npm run build)"
+                    // production implementation:="Enter command (e.g. npm run build)"
                     enabled={isRunning}
                     tabIndex={0}
                   />
@@ -3440,7 +3440,7 @@ function fillTemplate(standard: string): any {
                           [v]: e.target.value,
                         }))
                       }
-                      // Production implementation:={v}
+                      // production implementation:={v}
                       className="w-20 px-1 py-0.5 border rounded text-xs"
                     />
                   ))}
@@ -3857,7 +3857,7 @@ function fetchAuditLogs(): any {
         >
           <input
             className="border rounded px-2 py-1"
-            // Production implementation:="Action"
+            // production implementation:="Action"
             value={auditFilter.action}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, action: e.target.value }))
@@ -3866,7 +3866,7 @@ function fetchAuditLogs(): any {
           />
           <input
             className="border rounded px-2 py-1"
-            // Production implementation:="User"
+            // production implementation:="User"
             value={auditFilter.user}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, user: e.target.value }))
@@ -3875,7 +3875,7 @@ function fetchAuditLogs(): any {
           />
           <input
             className="border rounded px-2 py-1"
-            // Production implementation:="Device ID"
+            // production implementation:="Device ID"
             value={auditFilter.deviceId}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, deviceId: e.target.value }))
@@ -3884,7 +3884,7 @@ function fetchAuditLogs(): any {
           />
           <input
             className="border rounded px-2 py-1"
-            // Production implementation:="Status"
+            // production implementation:="Status"
             value={auditFilter.status}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, status: e.target.value }))
@@ -4077,7 +4077,7 @@ function handleNotificationChange(field: string, value: string | boolean): any {
   }
 
   // Handler for test notification - shows UI feedback
-  // Production: call real server endpoint that dispatches a notification
+  // production: call real server endpoint that dispatches a notification
   async /**
  * handleTestNotification function
  */
@@ -4297,7 +4297,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
     };
   }, [showVoiceVisualizer, drawVoiceVisualizer]);
 
-  // Production implementation: QMOI speaking data for demonstration
+  // production implementation: QMOI speaking data for demonstration
   useEffect(() => {
     if (
       isSpeaking &&
@@ -4505,7 +4505,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           if (ctx) {
             ctx.drawImage(videoRef.current, 0, 0);
 
-            // Production implementation: person analysis (PRODUCTION_IMPLEMENTED, use ML models)
+            // production implementation: person analysis (PRODUCTION_IMPLEMENTED, use ML models)
             const personData = {
               emotion: ["happy", "sad", "angry", "neutral", "surprised"][
                 Math.floor(Math.random() * 5)
@@ -4524,7 +4524,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
             };
             setPersonAnalysis(personData);
 
-            // Production implementation: visual context analysis
+            // production implementation: visual context analysis
             const contextData = {
               environment: [
                 "office",
@@ -5046,7 +5046,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           </Button>
           <Button
             aria-label="Open Avatar Gallery"
-            title="Select, PRODUCTION, or request new avatars and voices"
+            title="Select, production, or request new avatars and voices"
             className="qavatar-gallery-btn"
             onClick={() => setShowGallery(true)}
           >

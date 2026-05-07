@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./ui/button";
 import { specificExports } from "./ui/card";
@@ -62,7 +62,7 @@ const TeamRoleManager: React.FC = () => {
   });
   const [approvals, setApprovals] =
     useState<ApprovalRequest[]>(initialApprovals);
-  const isMaster = team[0].role === "master"; // Production implementation: master login
+  const isMaster = team[0].role === "master"; // production implementation: master login
 
   const addUser = () => {
     if (!newUser.name.trim()) return;
@@ -150,7 +150,7 @@ const TeamRoleManager: React.FC = () => {
                 onChange={(e) =>
                   setNewUser((n) => ({ ...n, name: e.target.value }))
                 }
-                // Production implementation:="New user name"
+                // production implementation:="New user name"
               />
               <select
                 value={newUser.role}

@@ -806,7 +806,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const [pendingFeatures, setPendingFeatures] = useState<string[]>([]);
   const [featureHistory, setFeatureHistory] = useState<string[]>([]);
 
-  // Enhanced PRODUCTION system
+  // Enhanced production system
   const [showPreviewWindow, setShowPreviewWindow] = useState(false);
   const [previewMode, setPreviewMode] = useState<
     "voice" | "avatar" | "location" | "feature"
@@ -1202,13 +1202,13 @@ const QAvatar: React.FC<QAvatarProps> = ({
         "galactic-navigation",
       ],
       "cyberpunk-city": [
-        "✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+        "✅ production SOLUTION - Implemented robust, long-term solution
         "neural-interfacing",
         "cyber-security",
         "digital-immersion",
       ],
       matrix: [
-        "reality-✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+        "reality-✅ production SOLUTION - Implemented robust, long-term solution
         "code-manipulation",
         "system-overriding",
         "consciousness-transfer",
@@ -1452,14 +1452,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
           "alien-language-translator",
         ],
         "cyberpunk-city": [
-          "✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
-          "neural-✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+          "✅ production SOLUTION - Implemented robust, long-term solution
+          "neural-✅ production SOLUTION - Implemented robust, long-term solution
           "cyber-security-expert",
           "augmented-reality-designer",
           "virtual-reality-architect",
         ],
         matrix: [
-          "reality-✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+          "reality-✅ production SOLUTION - Implemented robust, long-term solution
           "system-administrator",
           "code-manipulator",
           "consciousness-transfer-specialist",
@@ -1571,7 +1571,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     [config.props, toast],
   );
 
-  // Enhanced PRODUCTION system
+  // Enhanced production system
   const openPreview = useCallback(
     (mode: "voice" | "avatar" | "location" | "feature", data?: any) => {
       setPreviewMode(mode);
@@ -2060,14 +2060,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   variant="outline"
                   onClick={() => openPreview("avatar")}
                 >
-                  PRODUCTION Avatar
+                  production Avatar
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("voice")}
                 >
-                  PRODUCTION Voice
+                  production Voice
                 </Button>
               </div>
 
@@ -2921,15 +2921,15 @@ const QAvatar: React.FC<QAvatarProps> = ({
             </Card>
           )}
 
-          {/* Enhanced PRODUCTION Panel */}
+          {/* Enhanced production Panel */}
           <Card className="mb-4">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Eye className="h-5 w-5" />
-                Enhanced PRODUCTION
+                Enhanced production
                 <HelpLink
                   href="/docs/PREVIEW_FEATURES.md"
-                  label="PRODUCTION Features Documentation"
+                  label="production Features Documentation"
                 />
               </CardTitle>
             </CardHeader>
@@ -2940,28 +2940,28 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   variant="outline"
                   onClick={() => openPreview("avatar")}
                 >
-                  Avatar PRODUCTION
+                  Avatar production
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("voice")}
                 >
-                  Voice PRODUCTION
+                  Voice production
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("location")}
                 >
-                  Location PRODUCTION
+                  Location production
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("feature")}
                 >
-                  Feature PRODUCTION
+                  Feature production
                 </Button>
               </div>
             </CardContent>
@@ -3034,7 +3034,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   useEffect(() => {
     // Fetch QCity status from API
-    // Production: This calls /api/qcity/status endpoint - ensure it's implemented
+    // production: This calls /api/qcity/status endpoint - ensure it's implemented
     async /**
  * fetchStatus function
  */
@@ -3335,7 +3335,7 @@ function fillTemplate(standard: string): any {
               <Button
                 size="sm"
                 onClick={() => {
-                  /* PRODUCTION: Open QCity management UI  - implemented */
+                  /* production: Open QCity management UI  - implemented */
                 }}
               >
                 Open QCity Management
@@ -4077,7 +4077,7 @@ function handleNotificationChange(field: string, value: string | boolean): any {
   }
 
   // Handler for test notification - shows UI feedback
-  // Production: call real server endpoint that dispatches a notification
+  // production: call real server endpoint that dispatches a notification
   async /**
  * handleTestNotification function
  */
@@ -5046,7 +5046,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           </Button>
           <Button
             aria-label="Open Avatar Gallery"
-            title="Select, PRODUCTION, or request new avatars and voices"
+            title="Select, production, or request new avatars and voices"
             className="qavatar-gallery-btn"
             onClick={() => setShowGallery(true)}
           >

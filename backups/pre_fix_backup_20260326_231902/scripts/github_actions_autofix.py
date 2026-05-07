@@ -693,7 +693,7 @@ def fix_missing_cache(self, issue: Dict) -> Optional[Dict]:
             }
             
         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
             return None
     
     """

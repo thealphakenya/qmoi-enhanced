@@ -55,7 +55,7 @@ KEYWORDS=(
     "magic.*string"
     "throw.*new.*Error"
     "alert\("
-    "// Production: debugger removed"
+    "// production: debugger removed"
     "process\.exit"
     "console\.trace"
     "console\.time"

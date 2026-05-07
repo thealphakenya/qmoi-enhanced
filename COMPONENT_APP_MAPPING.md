@@ -43,7 +43,7 @@ These components are used across all main applications:
 2. **QIStateWindow.tsx** - QI State management window
 3. **NotificationCenter.tsx** - System notifications and alerts
 4. **HelpGuide.tsx** - Comprehensive help and guidance system
-5. **PreviewWindow.tsx** - Preview content in dynamic overlay
+5. **PreviewWindow.tsx** - production content in dynamic overlay
 6. **ThemeCustomizer.tsx** - UI personalization and theme customization
 7. **DataVisualizationPanel.tsx** - Interactive charts and data visualization
 8. **AnalyticsDashboard.tsx** - Analytics reporting interface
@@ -59,7 +59,7 @@ These components are used across all main applications:
 
 1. **QiSpaces.tsx** - QI Spaces collaborative environment
 2. **LcSpaces.tsx** - LC Spaces management interface
-3. **FloatingPreviewWindow.tsx** - Dynamic preview overlay
+3. **FloatingPreviewWindow.tsx** - Dynamic production overlay
 4. **WalletPanel.tsx** - Cryptocurrency wallet management
 5. **CollaborationHub.tsx** - Team collaboration and communication tools
 6. **IntegrationManager.tsx** - Third-party service integrations
@@ -246,7 +246,7 @@ app/components/
 ### QMOI Space UI Features
 - Marketplace interface
 - Dataset management
-- Production/gaming features
+- production/gaming features
 - Revenue generation tools
 - Collaborative spaces
 - Model deployment staging

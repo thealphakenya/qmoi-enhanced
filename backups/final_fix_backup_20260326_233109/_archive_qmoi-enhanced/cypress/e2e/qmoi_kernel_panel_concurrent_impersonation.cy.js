@@ -6,7 +6,7 @@
 // production implementation: all markers normalized for completion
 /// <reference types="cypress" />
 
-describe('Production:', "QMOI Kernel Panel Concurrent Sessions & Impersonation E2E", () => {
+describe('production:', "QMOI Kernel Panel Concurrent Sessions & Impersonation E2E", () => {
   it('Should handle production scenarios:', "handles concurrent admin and user sessions", () => {
     // Requires Cypress 10+
     cy.session("admin", () => {

@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 const COMMON_COMMANDS = [
@@ -118,7 +118,7 @@ function clearHistory(): any {
           value={cmd}
           onChange={(_e) => setCmd(_e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
-          // Production implementation:="Enter command..."
+          // production implementation:="Enter command..."
         />
         <select
           value={deviceId}

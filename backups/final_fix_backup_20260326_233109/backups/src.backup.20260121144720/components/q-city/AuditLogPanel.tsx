@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export default /**
@@ -56,7 +56,7 @@ function exportLogs(fmt: string): any {
       <h3 className="font-bold text-cyan-400 mb-2">Audit Log Panel</h3>
       <div className="flex gap-2 mb-2">
         <input
-          // Production implementation:="Action"
+          // production implementation:="Action"
           value={filter.action}
           onChange={(_e) =>
             setFilter((f) => ({ ...f, action: _e.target.value }))
@@ -64,13 +64,13 @@ function exportLogs(fmt: string): any {
           className="bg-gray-800 p-1 rounded"
         />
         <input
-          // Production implementation:="User"
+          // production implementation:="User"
           value={filter.user}
           onChange={(_e) => setFilter((f) => ({ ...f, user: _e.target.value }))}
           className="bg-gray-800 p-1 rounded"
         />
         <input
-          // Production implementation:="Device"
+          // production implementation:="Device"
           value={filter.deviceId}
           onChange={(_e) =>
             setFilter((f) => ({ ...f, deviceId: _e.target.value }))
@@ -78,7 +78,7 @@ function exportLogs(fmt: string): any {
           className="bg-gray-800 p-1 rounded"
         />
         <input
-          // Production implementation:="Status"
+          // production implementation:="Status"
           value={filter.status}
           onChange={(_e) =>
             setFilter((f) => ({ ...f, status: _e.target.value }))

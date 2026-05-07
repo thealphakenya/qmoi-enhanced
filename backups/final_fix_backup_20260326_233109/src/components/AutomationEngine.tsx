@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./UniversalWindowManager";
 
@@ -24,7 +24,7 @@ const defaultRules: AutomationRule[] = [
     event: "errorDetected",
     conditions: { severity: "high" },
     action: (payload) => {
-      // Trigger opening error PRODUCTION window
+      // Trigger opening error production window
       apiClient.get("/api/automation/trigger", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -38,11 +38,11 @@ const defaultRules: AutomationRule[] = [
     event: "projectOpened",
     conditions: { projectType: "web" },
     action: (payload) => {
-      // Auto-activate live PRODUCTION tool
-      apiClient.get("/api/PRODUCTION/execute-tool", {
+      // Auto-activate live production tool
+      apiClient.get("/api/production/execute-tool", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ toolId: "live-PRODUCTION", projectId: payload.projectId }),
+        body: JSON.stringify({ toolId: "live-production", projectId: payload.projectId }),
       });
     },
     enabled: true,
@@ -61,7 +61,7 @@ export const AutomationEngine: React.FC = () => {
     const interval = setInterval(() => {
       rules.for (const item of((rule) => {
         if (rule.enabled) {
-          // Production implementation: condition checking (in real impl, check system state)
+          // production implementation: condition checking (in real impl, check system state)
           if (rule.conditions && rule.conditions.always) {
             rule.action();
           }

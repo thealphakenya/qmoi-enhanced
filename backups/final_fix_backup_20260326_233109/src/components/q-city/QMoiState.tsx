@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-env browser */
 /* eslint-env browser */
 import { specificExports } from "react";
@@ -66,7 +66,7 @@ function QMoiState({
     return () => clearInterval(timer);
   }, []);
 
-  // Production implementation: real-time Qmoi state updates
+  // production implementation: real-time Qmoi state updates
   useEffect(() => {
     const emotions = [
       "focused",
@@ -353,7 +353,7 @@ function QMoiState({
             </button>
             <div className="mb-2 flex gap-2">
               <input
-                // Production implementation:="User"
+                // production implementation:="User"
                 value={logFilters.user}
                 onChange={(_e) =>
                   setLogFilters((f) => ({ ...f, user: _e.target.value }))
@@ -361,7 +361,7 @@ function QMoiState({
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
-                // Production implementation:="Action"
+                // production implementation:="Action"
                 value={logFilters.action}
                 onChange={(_e) =>
                   setLogFilters((f) => ({ ...f, action: _e.target.value }))
@@ -369,7 +369,7 @@ function QMoiState({
                 className="px-2 py-1 rounded bg-gray-800 text-white"
               />
               <input
-                // Production implementation:="Status"
+                // production implementation:="Status"
                 value={logFilters.status}
                 onChange={(_e) =>
                   setLogFilters((f) => ({ ...f, status: _e.target.value }))

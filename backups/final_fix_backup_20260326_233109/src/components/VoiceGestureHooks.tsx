@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 interface SpeechRecognitionEventResult {
@@ -23,7 +23,7 @@ interface WindowWithSpeech extends Window {
 const win = window as WindowWithSpeech;
 
 // Voice and gesture control integration. Uses Web Speech API for voice commands
-// and comprehensive camera access for gesture detection (// Production implementation:).
+// and comprehensive camera access for gesture detection (// production implementation:).
 
 export const VoiceGestureHooks: React.FC = () => {
   const recognitionRef = useRef<any>(null);
@@ -54,15 +54,15 @@ export const VoiceGestureHooks: React.FC = () => {
   }, []);
 
   const handleVoiceCommand = (command: string) => {
-    if (command.includes("open PRODUCTION")) {
-      // Trigger PRODUCTION window
+    if (command.includes("open production")) {
+      // Trigger production window
       window.dispatchEvent(
         new CustomEvent("qmoiEvent", {
           detail: { event: "openPreview", payload: { projectType: "web" } },
         })
       );
     } else if (command.includes("close window")) {
-      // Close top window (// Production implementation:)
+      // Close top window (// production implementation:)
       logger.info("Voice: close window");
     } else if (command.includes("run test")) {
       // Run tests

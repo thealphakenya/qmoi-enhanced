@@ -48,7 +48,7 @@ declare global {
   /**
  * describe function
  */
-function describe('Production:', name: string, fn: (...args: unknown[]): any => any): void;
+function describe('production:', name: string, fn: (...args: unknown[]): any => any): void;
   /**
  * it function
  */

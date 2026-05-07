@@ -4,20 +4,20 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 // Federated learning service to share anonymized usage patterns across instances.
 
 export const FederatedLearningService: React.FC = () => {
   useEffect(() => {
-    // Production implementation:: periodically upload anonymized data
+    // production implementation:: periodically upload anonymized data
     const uploadPatterns = () => {
       const patterns = {
-        toolUsage: { "live-PRODUCTION": 100, "code-linter": 50 },
+        toolUsage: { "live-production": 100, "code-linter": 50 },
         projectTypes: { web: 70, coding: 30 },
       };
-      // Production: impl, send to central server
+      // production: impl, send to central server
       logger.info("Uploaded patterns:", patterns);
     };
 

@@ -344,7 +344,7 @@ function creativeFileGen(type: string, details: Record<string, any>): any {
       url: `/generated/${fileName}`,
       filePath,
       timestamp: new Date().toISOString(),
-      generatedContent: generatedContent.substring(0, 500) + '...' // PRODUCTION
+      generatedContent: generatedContent.substring(0, 500) + '...' // production
     };
 
     aiTaskLog.push(file);

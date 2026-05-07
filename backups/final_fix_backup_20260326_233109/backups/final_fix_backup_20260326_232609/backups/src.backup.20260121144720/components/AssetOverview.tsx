@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining non-production markers
 import { specificExports } from "react";
 import {
   Box,

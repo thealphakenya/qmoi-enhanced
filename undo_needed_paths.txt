@@ -1495,7 +1495,7 @@
 ./_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue-dashboard/route.ts
 ./_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/status/route.ts
 ./_archive_qmoi-enhanced/_app_archived/api/qmoi/user/route.ts
-./_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-PRODUCTION/route.ts
+./_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-production/route.ts
 ./_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-profiles/route.ts
 ./_archive_qmoi-enhanced/_app_archived/api/qnews/route.ts
 ./_archive_qmoi-enhanced/_app_archived/api/qradio/route.ts
@@ -2017,7 +2017,7 @@
 ./app/api/qmoi/transcribe/route.ts
 ./app/api/qmoi/upload/route.ts
 ./app/api/qmoi/user/route.ts
-./app/api/qmoi/voice-PRODUCTION/route.ts
+./app/api/qmoi/voice-production/route.ts
 ./app/api/qmoi/voice-profiles/route.ts
 ./app/api/qmoi/voice/route.ts
 ./app/api/qnews/route.ts.bak.1768901506
@@ -2633,7 +2633,7 @@
 ./push_all_chunks.ps1
 ./pwa_apps/q-latest/index.html
 ./pwa_apps/qmoi-ai/index.html
-./pwa_apps/qmoi-ai/PRODUCTION.html
+./pwa_apps/qmoi-ai/production.html
 ./pwa_apps/qmoi-ai/sw.js
 ./qcity-complete.html
 ./qcity-service.js
@@ -3155,7 +3155,7 @@
 ./src/adapters/serviceRecoveryManager.ts
 ./src/api/routes/selfwork.ts
 ./src/app/api/automation/trigger/route.ts
-./src/app/api/PRODUCTION/execute-tool/route.ts
+./src/app/api/production/execute-tool/route.ts
 ./src/app/api/qmoi/autodev/toggle/route.ts
 ./src/app/api/qmoi/self-work/code-review/route.ts
 ./src/app/api/qmoi/self-work/RELEASE/route.ts

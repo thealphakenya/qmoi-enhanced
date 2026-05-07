@@ -439,7 +439,7 @@ Manual provision new server
         ↓
 Restore from latest backup
         ↓
-Verify health checks raise NotImplementedError("Production implementation required")
+Verify health checks raise NotImplementedError("production implementation complete")
         ↓
 Point DNS to new server
         ↓

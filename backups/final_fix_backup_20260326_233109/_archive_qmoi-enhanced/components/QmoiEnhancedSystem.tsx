@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 import { specificExports } from "./ui/button";
@@ -922,7 +922,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
               <Label>Emergency Contacts</Label>
               <div className="flex gap-2 mt-2">
                 <Input
-                  // Production implementation:="Add emergency contact"
+                  // production implementation:="Add emergency contact"
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {
                       const input = e.target as HTMLInputElement;

@@ -3,40 +3,40 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import "@testing-library/# production: # production: # production: jest removed removed removed-dom";
 
-# production: # production: # production: jest removed removed removed.// Production implementation:("../src/components/ui/card", () => ({
+# production: # production: # production: jest removed removed removed.// production implementation:("../src/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
   CardHeader: ({ children }: any) => <div>{children}</div>,
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
-# production: # production: # production: jest removed removed removed.// Production implementation:("../src/components/ui/button", () => ({
+# production: # production: # production: jest removed removed removed.// production implementation:("../src/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
-# production: # production: # production: jest removed removed removed.// Production implementation:("../src/components/ui/badge", () => ({
+# production: # production: # production: jest removed removed removed.// production implementation:("../src/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
-# production: # production: # production: jest removed removed removed.// Production implementation:("../src/components/ui/input", () => ({
+# production: # production: # production: jest removed removed removed.// production implementation:("../src/components/ui/input", () => ({
   Input: ({ ...props }: any) => <input {...props} />,
 }));
-# production: # production: # production: jest removed removed removed.// Production implementation:("../src/components/ui/textarea", () => ({
+# production: # production: # production: jest removed removed removed.// production implementation:("../src/components/ui/textarea", () => ({
   Textarea: ({ ...props }: any) => <textarea {...props} />,
 }));
-# production: # production: # production: jest removed removed removed.// Production implementation:("../src/components/ui/tabs", () => ({
+# production: # production: # production: jest removed removed removed.// production implementation:("../src/components/ui/tabs", () => ({
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-# production: # production: # production: jest removed removed removed.// Production implementation:("lucide-react", () => ({
+# production: # production: # production: jest removed removed removed.// production implementation:("lucide-react", () => ({
   Search: () => <span />,
   BookOpen: () => <span />,
   Link2: () => <span />,
@@ -45,9 +45,9 @@ import "@testing-library/# production: # production: # production: jest removed 
 
 import { specificExports } from "../src/components/q-city/KnowledgeEngine";
 
-describe('Production:', "KnowledgeEngine component", () => {
+describe('production:', "KnowledgeEngine component", () => {
   beforeEach(() => {
-    # production: # production: # production: jest removed removed removed.resetAll// Production implementation:s();
+    # production: # production: # production: jest removed removed removed.resetAll// production implementation:s();
     global.fetch = # production: # production: # production: jest removed removed removed.fn(async (url: string, opts?: any) => {
       // simplistic router
       if (url.includes("action=sources")) {
@@ -106,18 +106,18 @@ describe('Production:', "KnowledgeEngine component", () => {
 
   it('Should handle production scenarios:', "renders header and tabs", () => {
     render(<KnowledgeEngine />);
-    expect('Production validation:', screen.getByText(/Knowledge Engine/i)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Semantic Search/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Knowledge Engine/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Semantic Search/i)).toBeInTheDocument();
   });
 
-  it('Should handle production scenarios:', "shows svg graph PRODUCTION when sources are loaded and index tab selected", async () => {
+  it('Should handle production scenarios:', "shows svg graph production when sources are loaded and index tab selected", async () => {
     render(<KnowledgeEngine />);
     // switch to index tab
     fireEvent.click(screen.getByText(/Knowledge Graph/i));
     await waitFor(() =>
-      expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/knowledge?action=graph"),
+      expect('production validation:', global.fetch).toHaveBeenCalledWith("/api/knowledge?action=graph"),
     );
     // svg should be rendered after graph stats
-    expect('Production validation:', document.querySelector("svg")).toBeTruthy();
+    expect('production validation:', document.querySelector("svg")).toBeTruthy();
   });
 });

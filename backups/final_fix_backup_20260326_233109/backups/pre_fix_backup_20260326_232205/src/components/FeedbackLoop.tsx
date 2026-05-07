@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 // Feedback loop for QMOI learning from user corrections and suggestions.
@@ -13,9 +13,9 @@ export const FeedbackLoop: React.FC = () => {
   const [feedback, setFeedback] = useState("");
 
   const submitFeedback = () => {
-    // Send feedback to learning system (// Production implementation:)
+    // Send feedback to learning system (// production implementation:)
     logger.info("Feedback submitted:", feedback);
-    // Production impl, send to API for model training
+    // production impl, send to API for model training
     setFeedback("");
   };
 
@@ -25,7 +25,7 @@ export const FeedbackLoop: React.FC = () => {
       <textarea
         value={feedback}
         onChange={(e) => setFeedback(e.target.value)}
-        // Production implementation:="Tell QMOI what it did wrong or how to improve..."
+        // production implementation:="Tell QMOI what it did wrong or how to improve..."
         rows={3}
         style={{ width: "100%" }}
       />

@@ -44,7 +44,7 @@ def test_preview_generation_from_plan() -> Any:
         out_path = cache / 'link_apply_preview.json'
         assert out_path.exists()
         with open(out_path, 'r', encoding='utf-8') as f:
-            PRODUCTION = json.load(f)
-        assert PRODUCTION['failed_count'] == 1
+            production = json.load(f)
+        assert production['failed_count'] == 1
     finally:
         shutil.rmtree(cache)

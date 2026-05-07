@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:15.030491",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:03.166408",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:58:38.542833",
+  "autodev_version": "2026-04-20-aggressive"
+}

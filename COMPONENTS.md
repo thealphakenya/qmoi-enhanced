@@ -60,7 +60,7 @@ These components are used across QMOI AI, QMOI Space, QCity, and QVillage:
 - **QIStateWindow.tsx** (qmoi ai) - AI state and consciousness tracking window
 - **NotificationCenter.tsx** (qmoi ai) - System notifications and alerts hub
 - **HelpGuide.tsx** (qmoi ai) - Interactive help and documentation system
-- **PreviewWindow.tsx** (qmoi ai) - Content preview display
+- **PreviewWindow.tsx** (qmoi ai) - Content production display
 - **ThemeCustomizer.tsx** (qmoi ai) - Theme customization interface
 - **DataVisualizationPanel.tsx** (qmoi ai) - Data visualization and analytics
 - **AnalyticsDashboard.tsx** (qmoi ai) - Advanced analytics and metrics display
@@ -71,7 +71,7 @@ These components are used across QMOI AI, QMOI Space, QCity, and QVillage:
 ### QMOI Space Exclusive Components (11)
 - **QiSpaces.tsx** (qmoi space) - Spatial workspace interfaces
 - **LcSpaces.tsx** (qmoi space) - Learning/collaboration community spaces
-- **FloatingPreviewWindow.tsx** (qmoi space) - Floating preview panels
+- **FloatingPreviewWindow.tsx** (qmoi space) - Floating production panels
 - **WalletPanel.tsx** (qmoi space) - Advanced wallet and finance controls
 - **CollaborationHub.tsx** (qmoi space) - Team collaboration tools
 - **IntegrationManager.tsx** (qmoi space) - Third-party integrations
@@ -116,7 +116,7 @@ These components are used across QMOI AI, QMOI Space, QCity, and QVillage:
 Core dashboards and monitoring interfaces:
 - `QMOIDashboard.tsx` – Main QMOI dashboard
 - `SystemHealthDashboard.tsx` – System health visualization
-- `ProductionMonitoringDashboard.tsx` – Production monitoring
+- `ProductionMonitoringDashboard.tsx` – production monitoring
 - `DeploymentStatusDashboard.tsx` – Deployment tracking
 - `QMOIAutoFixDashboard.tsx` – Automated error fixing
 
@@ -256,7 +256,7 @@ QMOI Space is the marketplace and distributed production environment with spatia
 
 QMOI Space also includes static PWA shell assets in `/pwa_apps/qmoi-space/`.
 
-The QMOI AI feature set is supported by static PWA assets in `/pwa_apps/qmoi-ai/` and includes installable app behavior, online/offline status, production preview, share actions, and a chat conversation interface. The actual PWA shell is implemented in `/pwa_apps/qmoi-ai/index.html`, `/pwa_apps/qmoi-ai/sw.js`, and `/pwa_apps/qmoi-ai/manifest.webmanifest`, while React support components such as `Chatbot.tsx`, `AskQMoi.tsx`, `QMOIDashboard.tsx`, and `QMOIAutoFixDashboard.tsx` provide the main internal user experience for the QMOI Enhanced web application.
+The QMOI AI feature set is supported by static PWA assets in `/pwa_apps/qmoi-ai/` and includes installable app behavior, online/offline status, production production, share actions, and a chat conversation interface. The actual PWA shell is implemented in `/pwa_apps/qmoi-ai/index.html`, `/pwa_apps/qmoi-ai/sw.js`, and `/pwa_apps/qmoi-ai/manifest.webmanifest`, while React support components such as `Chatbot.tsx`, `AskQMoi.tsx`, `QMOIDashboard.tsx`, and `QMOIAutoFixDashboard.tsx` provide the main internal user experience for the QMOI Enhanced web application.
 
 ### Location & Spatial
 Location and space management:
@@ -272,12 +272,12 @@ Data visualization and analytics:
 - `DealsList.tsx` – Deals listing
 - `DealsPopup.tsx` – Deals popup
 
-### Preview & Window Management
-Preview windows and display systems:
-- `EnhancedPreviewWindow.tsx` – Enhanced preview
-- `FloatingPreviewWindow.tsx` – Floating preview
-- `PreviewWindow.tsx` – Standard preview
-- `MediaPreviewWindow.tsx` – Media preview
+### production & Window Management
+production windows and display systems:
+- `EnhancedPreviewWindow.tsx` – Enhanced production
+- `FloatingPreviewWindow.tsx` – Floating production
+- `PreviewWindow.tsx` – Standard production
+- `MediaPreviewWindow.tsx` – Media production
 - `QIStateWindow.tsx` – QI state display
 - `RealtimeAvatarWindow.tsx` – Avatar display
 
@@ -445,7 +445,7 @@ The component library implements a comprehensive theme and style system that ens
 - **Adaptive Typography**: Font sizes scale smoothly across breakpoints
 - **Smart Spacing**: Consistent margin/padding ratios maintain visual balance across screen sizes
 
-## ✅ Production Readiness
+## ✅ production Readiness
 
 - All 201 top-level and nested component files are inventoried and documented.
 - Components are organized by feature domain for maintainability and discoverability.

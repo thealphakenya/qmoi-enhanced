@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/card";
@@ -346,7 +346,7 @@ function QMOIOwnDeviceLogs({
               <div>
                 <label className="text-sm font-medium">Device ID</label>
                 <Input
-                  // Production implementation:="Filter by device ID"
+                  // production implementation:="Filter by device ID"
                   value={deviceFilter}
                   onChange={(e) => setDeviceFilter(e.target.value)}
                 />

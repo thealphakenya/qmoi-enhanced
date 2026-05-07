@@ -6,7 +6,7 @@
 // IMPLEMENTED: 4 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 /// <reference types="cypress" />
 
-describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - prodice & Delegated Access", () => {
+describe('production:', "QMOI Kernel Panel SSO/OAuth E2E - prodice & Delegated Access", () => {
   it('Should handle production scenarios:', "allows prodice-based SSO login", () => {
     cy.visit(
       "/auth/callback?provider=prodice&token=prodice-[production implementation complete]-token&prodice_id=prod123",

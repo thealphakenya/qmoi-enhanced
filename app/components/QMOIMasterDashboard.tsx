@@ -6,7 +6,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation:
+// // production implementation:
 /**
  * QMOI Master Dashboard - Background Automation Control
  * Master-Only Access UI for Automation Control, Financial Overview, and Status Monitoring
@@ -333,7 +333,7 @@ export function QMOIMasterDashboard({
 
   const stopCamera = () => {
     if (cameraStream) {
-      cameraStream.getTracks().forEach(track => track.stop());
+      cameraStream.getTracks().for (const item of(track => track.stop());
       setCameraStream(null);
     }
     setCameraEnabled(false);
@@ -385,7 +385,7 @@ export function QMOIMasterDashboard({
   useEffect(() => {
     return () => {
       if (cameraStream) {
-        cameraStream.getTracks().forEach(track => track.stop());
+        cameraStream.getTracks().for (const item of(track => track.stop());
       }
     };
   }, [cameraStream]);
@@ -1156,7 +1156,7 @@ export function QMOIMasterDashboard({
                       if (response.ok) {
                         const report = await response.text();
                         // In a real implementation, this would download or display the report
-                        console.log("Audit report generated:", report);
+                        logger.info("Audit report generated:", report);
                       }
                     } catch (_err) {
                       setError("Failed to generate audit report");
@@ -1247,7 +1247,7 @@ export function QMOIMasterDashboard({
                       <button
                         onClick={() => {
                           // In a real implementation, this would open track details
-                          console.log("View track details:", track.id);
+                          logger.info("View track details:", track.id);
                         }}
                         className="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-slate-300 text-sm rounded transition-colors"
                       >
@@ -1270,7 +1270,7 @@ export function QMOIMasterDashboard({
                       });
                       if (response.ok) {
                         const data = await response.json();
-                        console.log("Tracks data:", data);
+                        logger.info("Tracks data:", data);
                         setError(null);
                       } else {
                         setError("Failed to fetch tracks data");
@@ -1321,7 +1321,7 @@ export function QMOIMasterDashboard({
                   <AvatarSelector
                     onAvatarChange={(avatarId) => {
                       // Handle avatar change - could add logging or additional actions here
-                      console.log(`Avatar changed to: ${avatarId}`);
+                      logger.info(`Avatar changed to: ${avatarId}`);
                     }}
                     className="max-w-4xl"
                   />
@@ -1333,7 +1333,7 @@ export function QMOIMasterDashboard({
                   <VoiceSelector
                     onVoiceChange={(voiceId) => {
                       // Handle voice change - could add logging or additional actions here
-                      console.log(`Voice changed to: ${voiceId}`);
+                      logger.info(`Voice changed to: ${voiceId}`);
                     }}
                     className="max-w-4xl"
                   />

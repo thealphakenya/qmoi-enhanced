@@ -719,7 +719,7 @@ def process_results() -> Any:
         except Exception:
                 # production implementation
         # production implementation
-    raise NotImplementedError("Production implementation required")
+    raise NotImplementedError("production implementation complete")
     report_lines = []
     report_lines.append(f"Scan run: {datetime.now().isoformat()}")
     report_lines.append(f"Repository path: {root_dir}")

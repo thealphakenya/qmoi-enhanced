@@ -8,7 +8,7 @@
 
 /**
  * QMOI Enhanced Avatar System
- * Comprehensive avatar management with real-time PRODUCTION, animations, and master controls
+ * Comprehensive avatar management with real-time production, animations, and master controls
  * Supports multiple avatar types, real-time rendering, and hands-free operation
  */
 
@@ -25,7 +25,7 @@ class QMOIEnhancedAvatarSystem {
   }
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.avatars = new Map() // Production: Consider object for small datasets();
+    this.avatars = new Map() // production: Consider object for small datasets();
     this.currentAvatar = null;
     this.previewWindow = null;
     this.animationEngine = null;
@@ -51,7 +51,7 @@ class QMOIEnhancedAvatarSystem {
     // Initialize default avatars
     await this.initializeDefaultAvatars();
     
-    // Start real-time PRODUCTION
+    // Start real-time production
     await this.startRealTimePreview();
     
     // Start activity logging
@@ -131,9 +131,9 @@ class QMOIEnhancedAvatarSystem {
   }
 
   async startRealTimePreview() {
-    logger.info('🖥️ Starting real-time avatar PRODUCTION...');
+    logger.info('🖥️ Starting real-time avatar production...');
     
-    // Create PRODUCTION window configuration
+    // Create production window configuration
     this.previewWindow = {
       id: crypto.randomUUID(),
       type: 'real-time',
@@ -165,7 +165,7 @@ class QMOIEnhancedAvatarSystem {
       }
     };
 
-    // Start PRODUCTION loop
+    // Start production loop
     this.startPreviewLoop();
   }
 
@@ -278,12 +278,12 @@ class QMOIEnhancedAvatarSystem {
     this.displayFrame(frameData);
   }
 
-  renderDefaultFrame(PRODUCTION) {
+  renderDefaultFrame(production) {
     // Render default frame when no specific content
     const frameData = {
       timestamp: Date.now(),
       type: 'default',
-      PRODUCTION,
+      production,
       message: 'QMOI Avatar System Active'
     };
     
@@ -359,7 +359,7 @@ class QMOIEnhancedAvatarSystem {
     Object.assign(avatar, updates);
     avatar.lastUpdated = new Date().toISOString();
 
-    // Update PRODUCTION if this is the current avatar
+    // Update production if this is the current avatar
     if (this.currentAvatar.id === avatarId) {
       this.previewWindow.currentScene.avatar = avatar;
     }
@@ -669,7 +669,7 @@ Usage:
   node qmoi-enhanced-avatar-system.js --speak <text>                 # Make avatar speak
 
 Features:
-  • Real-time avatar PRODUCTION with 60fps rendering
+  • Real-time avatar production with 60fps rendering
   • Multiple avatar types and environments
   • Master-only avatars and features
   • Real-time activity logging

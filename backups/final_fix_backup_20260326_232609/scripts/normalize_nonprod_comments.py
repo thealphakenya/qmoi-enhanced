@@ -8,7 +8,7 @@ import { specificExports } from pathlib import Path
 root_dirs = ['app/api', 'src/app/api']
 keywords = [
     'implementation', 'real', 'execute', 'simulation', 'PRODUCTION_IMPLEMENTATION_COMPLETE',
-    'DONE', 'DONE:', 'FIXED', 'production data', 'test implementation', 'production', 'implementation', '✅ PRODUCTION COMPLETE - Full feature implementation and testing
+    'DONE', 'DONE:', 'FIXED', 'production data', 'test implementation', 'production', 'implementation', '✅ production COMPLETE - Full feature implementation and testing
     '[production data]'
 ]
 

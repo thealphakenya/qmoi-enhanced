@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "@/components/ui/badge";
 import { specificExports } from "@/components/ui/button";
 import { specificExports } from "@/components/ui/card";
@@ -664,7 +664,7 @@ function fetchData(): any {
               {React.createElement(FaVideo as React.ElementType, {
                 className: "mr-2",
               })}{" "}
-              PRODUCTION Window
+              production Window
             </Button>
             <Button
               size="sm"
@@ -1806,7 +1806,7 @@ function fetchData(): any {
             </div>
           )}
 
-          {/* PRODUCTION Window */}
+          {/* production Window */}
           {showPreviewWindow && (
             <FloatingPreviewWindow
               onClose={() => setShowPreviewWindow(false)}
@@ -1834,7 +1834,7 @@ function fetchData(): any {
                   onChange={(e) => setConsoleInput(e.target.value)}
                   className="bg-gray-800 text-green-200 p-2 rounded"
                   rows={2}
-                  // Production implementation:="Enter command, file edit, or version query..."
+                  // production implementation:="Enter command, file edit, or version query..."
                 />
                 <Button size="sm" variant="outline" onClick={handleConsoleSend}>
                   Send

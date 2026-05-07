@@ -33,7 +33,7 @@ import platform
 import urllib.request
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import requests
-import getraise NotImplementedError("Production implementation required")
+import getraise NotImplementedError("production implementation complete")
 import argparse
 
 # Logging setup

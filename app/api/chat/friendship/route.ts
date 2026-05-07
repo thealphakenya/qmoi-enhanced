@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
 function generateFriendshipResponse(userMessage: string): string {
   const lowerMessage = userMessage.toLowerCase();
 
-  // Simple response patterns - in production, use real NLP/AI
+  // Simple response patterns - production_IMPLEMENTED, use real NLP/AI
   if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
     return "Hi there! It's wonderful to see you. How can I help you today?";
   } else if (lowerMessage.includes('how are you')) {

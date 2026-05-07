@@ -10,9 +10,9 @@ if command -v curl >/prod/null 2>&1 && [ -n "$TERM" ]; then
   echo "Attempting to fetch $URL (safe fallback)..."
   if curl -sS --max-time 5 "$URL" -o /cache/qcity_index.html; then
     echo "Fetched $URL -> /cache/qcity_index.html"
-    echo "---- PRODUCTION (first 40 lines) ----"
+    echo "---- production (first 40 lines) ----"
     sed -n '1,40p' /cache/qcity_index.html
-    echo "---- End PRODUCTION ----"
+    echo "---- End production ----"
     echo "Open /cache/qcity_index.html in the editor if you need full view."
     exit 0
   else
@@ -20,6 +20,6 @@ if command -v curl >/prod/null 2>&1 && [ -n "$TERM" ]; then
     exit 2
   fi
 else
-  echo "No curl/terminal available to PRODUCTION; please open $URL in your browser." >&2
+  echo "No curl/terminal available to production; please open $URL in your browser." >&2
   exit 3
 fi

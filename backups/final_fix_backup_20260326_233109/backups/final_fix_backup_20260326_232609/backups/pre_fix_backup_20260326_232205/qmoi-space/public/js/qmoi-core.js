@@ -246,8 +246,8 @@ function updateGamingSection(): any {
           const div = document.createElement("div");
           div.className = "game-card";
           div.textContent = `
-            <div class="game-PRODUCTION">
-              <img src="/games/${task.type.toLowerCase()}-PRODUCTION.jpg" alt="${task.type}">
+            <div class="game-production">
+              <img src="/games/${task.type.toLowerCase()}-production.jpg" alt="${task.type}">
               <div class="game-overlay">
                 <button class="play-btn">▶️ Play</button>
               </div>

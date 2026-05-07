@@ -1,19 +1,19 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "./QMoiKernelPanel";
-import { specificExports } from "../../// Production implementation:s/server";
+import { specificExports } from "../../// production implementation:s/server";
 
 // MSW setup is handled in src/setupTests.ts, but tests create a local server
 // when possible to avoid relying on global ordering.
-describe('Production:', "QMoiKernelPanel Integration", () => {
+describe('production:', "QMoiKernelPanel Integration", () => {
   beforeAll(async () => {
     // Ensure global MSW is ready and register the canonical handlers used by these tests.
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
     let mswInstalled = false;
-    const handlersMod = await import("../../// Production implementation:s/handlers");
+    const handlersMod = await import("../../// production implementation:s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const handlers = await handlersMod.getHandlers();
       server.use(...handlers);
@@ -23,7 +23,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     if (!mswInstalled) {
       # production: # production: # production: jest removed removed removed
         .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
-        .// Production implementation:Implementation(async (input: unknown, _init: unknown) => {
+        .// production implementation:Implementation(async (input: unknown, _init: unknown) => {
           const url =
             typeof input === "string"
               ? input
@@ -63,7 +63,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
     try {
-      const handlersMod = await import("../../// Production implementation:s/handlers");
+      const handlersMod = await import("../../// production implementation:s/handlers");
       if (typeof handlersMod.getHandlers === "function") {
         const handlers = await handlersMod.getHandlers();
         server.use(...handlers);
@@ -76,7 +76,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
   it('Should handle production scenarios:', "RELEASE: raw fetch", async () => {
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
-    const handlersMod = await import("../../// Production implementation:s/handlers");
+    const handlersMod = await import("../../// production implementation:s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
@@ -84,18 +84,18 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     const _res = await apiClient.get("/api/qmoi/status");
     const text = await _res.text().catch(() => "<no-body>");
     logger.RELEASE("RELEASE FETCH: status=", _res.status, "body=", text);
-    expect('Production validation:', _res.status).toBe(200);
+    expect('production validation:', _res.status).toBe(200);
   });
 
   afterEach(() => {
-    // Reset unknown runtime handler overrides and clear // Production implementation: call history between
+    // Reset unknown runtime handler overrides and clear // production implementation: call history between
     // tests so each test runs in a clean environment.
     try {
       server.resetHandlers();
     } catch (e) {
       // ignore
     }
-    # production: # production: # production: jest removed removed removed.clearAll// Production implementation:s();
+    # production: # production: # production: jest removed removed removed.clearAll// production implementation:s();
   });
 
   afterAll(() => {
@@ -114,26 +114,26 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     } catch (e) {
       // ignore
     }
-    // Restore unknown // Production implementation:ed globals now that the suite has finished
-    # production: # production: # production: jest removed removed removed.restoreAll// Production implementation:s();
+    // Restore unknown // production implementation:ed globals now that the suite has finished
+    # production: # production: # production: jest removed removed removed.restoreAll// production implementation:s();
   });
 
   it('Should handle production scenarios:', "fetches and displays status from API", async () => {
     // Ensure canonical OK handlers are active for this test
-    const handlersMod = await import("../../// Production implementation:s/handlers");
+    const handlersMod = await import("../../// production implementation:s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
     }
     render(<QMoiKernelPanel isMaster={true} />);
-    expect('Production validation:', await screen.findByText("OK")).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("Log 1")).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("Log 2")).toBeInTheDocument();
+    expect('production validation:', await screen.findByText("OK")).toBeInTheDocument();
+    expect('production validation:', screen.getByText("Log 1")).toBeInTheDocument();
+    expect('production validation:', screen.getByText("Log 2")).toBeInTheDocument();
   });
 
   it('Should handle production scenarios:', "runs QFix and updates last action", async () => {
     // Ensure canonical OK handlers are active for this test
-    const handlersMod = await import("../../// Production implementation:s/handlers");
+    const handlersMod = await import("../../// production implementation:s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
@@ -170,13 +170,13 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     await screen.findByText("OK");
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));
     await waitFor(() =>
-      expect('Production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument(),
+      expect('production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument(),
     );
-    expect('Production validation:', screen.getByText("QFix done")).toBeInTheDocument();
+    expect('production validation:', screen.getByText("QFix done")).toBeInTheDocument();
   });
 
   it('Should handle production scenarios:', "handles API error gracefully", async () => {
-    // Replace handlers for this test to // Production implementation: a server error
+    // Replace handlers for this test to // production implementation: a server error
     try {
       server.resetHandlers();
       const msw = await import("msw");
@@ -202,13 +202,13 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     }
 
     // Ensure the override actually returns 500; if it doesn't (e.g., MSW
-    // isn't active), // Production implementation: fetch as a deterministic fallback for this test.
+    // isn't active), // production implementation: fetch as a deterministic fallback for this test.
     try {
       const check = await apiClient.get("/api/qmoi/status");
       if (check.status !== 500) {
         # production: # production: # production: jest removed removed removed
           .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
-          .// Production implementation:Implementation(async (arg: unknown) => {
+          .// production implementation:Implementation(async (arg: unknown) => {
             const url =
               typeof arg === "string" ? arg : (arg as { url?: string })?.url;
             if (url && url.toString().endsWith("/api/qmoi/status")) {
@@ -220,7 +220,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     } catch (e) {
       # production: # production: # production: jest removed removed removed
         .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
-        .// Production implementation:Implementation(async (arg: unknown) => {
+        .// production implementation:Implementation(async (arg: unknown) => {
           const url =
             typeof arg === "string" ? arg : (arg as { url?: string })?.url;
           if (url && url.toString().endsWith("/api/qmoi/status")) {
@@ -230,7 +230,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
         });
     }
     render(<QMoiKernelPanel isMaster={true} />);
-    await waitFor(() => expect('Production validation:', screen.getByText(/Error:/)).toBeInTheDocument());
+    await waitFor(() => expect('production validation:', screen.getByText(/Error:/)).toBeInTheDocument());
   });
 });
 

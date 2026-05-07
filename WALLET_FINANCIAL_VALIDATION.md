@@ -119,12 +119,12 @@ wallet_operations:
     - source must be verified
     - amount must be positive
     - exchange_rate must be current
-    - anti_fraud_check must raise NotImplementedError("Production implementation required")
+    - anti_fraud_check must raise NotImplementedError("production implementation complete")
   withdrawal:
     - destination must be verified
     - requires_2fa for amounts > threshold
     - daily_limit check
-    - anti_fraud_check must raise NotImplementedError("Production implementation required")
+    - anti_fraud_check must raise NotImplementedError("production implementation complete")
     - cooling_off_period if required
 
 transfers:

@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export const GlobalVideoCall: React.FC = () => {
@@ -33,7 +33,7 @@ export const GlobalVideoCall: React.FC = () => {
       <h3>Global Video Call</h3>
       <input
         type="text"
-        // Production implementation:="Who do you want to video call?"
+        // production implementation:="Who do you want to video call?"
         value={callee}
         onChange={(e) => setCallee(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}
@@ -65,7 +65,7 @@ export const GlobalVideoCall: React.FC = () => {
             borderRadius: 8,
           }}
         >
-          <b>Video Stream PRODUCTION (// Production implementation:d)</b>
+          <b>Video Stream production (// production implementation:d)</b>
           <div
             style={{
               width: 240,

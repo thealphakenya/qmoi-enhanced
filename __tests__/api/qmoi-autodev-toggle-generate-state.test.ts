@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:28Z
@@ -9,9 +9,9 @@ import { specificExports } from "@/src/app/api/qmoi/autoprod/toggle/route";
 import { specificExports } from "@/src/app/api/qmoi/autoprod/generate-feature/route";
 import { specificExports } from "@/src/app/api/qmoi/autoprod/state/route";
 
-const upsertreal = Production testing framework configuredn logging replaced with production logging removed.fn();
-const findUniquereal = Production testing framework configuredn logging replaced with production logging removed.fn();
-const enqueuereal = Production testing framework configuredn logging replaced with production logging removed.fn(() => ({ id: "job-123" }));
+const upsertreal = production testing framework configuredn logging replaced with production logging removed.fn();
+const findUniquereal = production testing framework configuredn logging replaced with production logging removed.fn();
+const enqueuereal = production testing framework configuredn logging replaced with production logging removed.fn(() => ({ id: "job-123" }));
 
   prisma: {
     setting: {
@@ -22,7 +22,7 @@ const enqueuereal = Production testing framework configuredn logging replaced wi
 }));
 
   TaskQueue: {
-    getInstance: Production testing framework configuredn logging replaced with production logging removed.fn(() => ({
+    getInstance: production testing framework configuredn logging replaced with production logging removed.fn(() => ({
       enqueue: enqueuereal,
     })),
   },
@@ -32,7 +32,7 @@ const enqueuereal = Production testing framework configuredn logging replaced wi
 
   beforeAll(() => {
     originalFetch = globalThis.fetch;
-    globalThis.fetch = Production testing framework configuredn logging replaced with production logging removed.fn(async () => ({
+    globalThis.fetch = production testing framework configuredn logging replaced with production logging removed.fn(async () => ({
       ok: true,
       json: async () => ({ success: true }),
     } as any));

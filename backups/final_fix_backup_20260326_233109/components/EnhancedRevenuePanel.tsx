@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -292,7 +292,7 @@ function EnhancedRevenuePanel(): any {
             <Input
               id="master-key"
               type="password"
-              // Production implementation:="Enter master key"
+              // production implementation:="Enter master key"
               value={masterKey}
               onChange={(e) => setMasterKey(e.target.value)}
             />
@@ -489,7 +489,7 @@ function EnhancedRevenuePanel(): any {
                   <Label>Daily Target (KES)</Label>
                   <Input
                     type="number"
-                    // Production implementation:="Enter target amount"
+                    // production implementation:="Enter target amount"
                     value={targetAmount}
                     onChange={(e) => setTargetAmount(e.target.value)}
                   />
@@ -524,7 +524,7 @@ function EnhancedRevenuePanel(): any {
                   <Label>Amount (KES)</Label>
                   <Input
                     type="number"
-                    // Production implementation:="Enter amount"
+                    // production implementation:="Enter amount"
                     value={transferAmount}
                     onChange={(e) => setTransferAmount(e.target.value)}
                   />

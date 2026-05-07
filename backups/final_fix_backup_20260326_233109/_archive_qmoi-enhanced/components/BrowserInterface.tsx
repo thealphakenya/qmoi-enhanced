@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// initializeProductionService() - Production servicety.
+// initializeProductionService() - production servicety.
 // import { specificExports } from '../ui/card';
 // import { specificExports } from '../ui/button';
 // import { specificExports } from '../ui/badge';
@@ -218,7 +218,7 @@ function BrowserInterface(): any {
 
   const handleVoiceSearch = () => {
     setIsRecording(true);
-    // Production implementation: voice recognition
+    // production implementation: voice recognition
     setTimeout(() => {
       setIsRecording(false);
       const recognizedText = "Q-latest AI features";

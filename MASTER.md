@@ -25,7 +25,7 @@ Master permissions available in `app/hooks/useAuth.ts`:
 - `memory_access`
 - `build_control`
 
-## Production UI Behavior
+## production UI Behavior
 - Access QCity dashboard at `/qcity`
 - Access QVillage at `/qvillage`
 - Access QMOI AI shell at `/qmoi-ai.html`

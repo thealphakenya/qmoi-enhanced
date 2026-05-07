@@ -6,7 +6,7 @@
 // IMPLEMENTED: 4 [PRODUCTION_IMPLEMENTED](s) found in this file. See .qmoi_validation/[PRODUCTION_IMPLEMENTED]_fix_report.txt for details.
 /// <reference types="cypress" />
 
-describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - More Providers & Custom Logic", () => {
+describe('production:', "QMOI Kernel Panel SSO/OAuth E2E - More Providers & Custom Logic", () => {
   it('Should handle production scenarios:', "allows login via Twitter OAuth", () => {
     cy.visit(
       "/auth/callback?provider=twitter&token=twitter-[production implementation complete]-token",

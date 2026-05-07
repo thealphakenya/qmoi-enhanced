@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "@/hooks/useQMOIChat";
@@ -191,9 +191,9 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              // Production implementation:="Type your message... (or use voice input)"
+              // production implementation:="Type your message... (or use voice input)"
               enabled={isLoading}
-              className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white // Production implementation:-gray-500 dark:// Production implementation:-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 enabled:opacity-50"
+              className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white // production implementation:-gray-500 dark:// production implementation:-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 enabled:opacity-50"
             />
             <button
               type="button"

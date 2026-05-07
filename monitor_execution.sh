@@ -1,11 +1,11 @@
 #!/bin/bash
-# QMOI Production Hardening Execution Monitor
+# QMOI production Hardening Execution Monitor
 # Real-time monitoring of bulk fixes and synchronization
 
 while true; do
     clear
     echo "===================================================================================="
-    echo "QMOI PRODUCTION HARDENING - REAL-TIME EXECUTION MONITOR"
+    echo "QMOI production HARDENING - REAL-TIME EXECUTION MONITOR"
     echo "===================================================================================="
     echo "Time: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
     echo ""

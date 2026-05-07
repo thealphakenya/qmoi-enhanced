@@ -1,12 +1,12 @@
 /**
- * QMOI Production PM2 Ecosystem Configuration
+ * QMOI production PM2 Ecosystem Configuration
  *
  * Features:
  * - Auto-restart with exponential backoff
  * - Memory limits and monitoring
  * - QMOI Auto-Health System integration
  * - Comprehensive logging
- * - Production-grade process management
+ * - production-grade process management
  *
  * Usage:
  *  pm2 start ecosystem.config.production.cjs --env production

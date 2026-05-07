@@ -1,4 +1,4 @@
-# QMOI-PWA-SYNC.md - PWA Synchronization and Production Restore
+# QMOI-PWA-SYNC.md - PWA Synchronization and production Restore
 
 ## Overview
 This document describes the restored QMOI PWA sync behavior for QMOI AI and QMOI Space.
@@ -24,7 +24,7 @@ It also explains the role of `public/qmoi-pwa-manager.js` and the updated static
 - Backend endpoints at `/api/pwa/check-update` and `/api/pwa/auto-update` provide version metadata, release notes, and update orchestration for the PWA runtime.
 - `app/qmoi-space/page.tsx` now maintains the route-to-shell redirect for QMOI Space, matching the existing QMOI AI routing pattern.
 
-## Production Validation
+## production Validation
 - Verified QMOI AI PWA shell is active with updated install and status UI.
 - Verified QMOI Space shell is restored and integrated with QMOI ecosystem navigation.
 - Verified the PWA manifest definitions are production-ready with update URLs and app shortcuts.

@@ -311,7 +311,7 @@ async function getAffectedSystems(): Promise<Array<{ name: string; status: strin
     // Aggregate system statuses
     const systemStatuses: { [key: string]: { status: string; action: string } } = {};
 
-    systemMetrics.forEach(metric => {
+    systemMetrics.for (const item of(metric => {
       const systemName = metric.dimensions?.system || 'Unknown';
       const health = metric.value;
 

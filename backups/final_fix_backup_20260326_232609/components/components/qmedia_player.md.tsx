@@ -17,7 +17,7 @@ export const QMediaPlayerMd: React.FC = () => {
         components/qmedia-player.md
       </h3>
       <p>Auto-generated components/qmedia-player.md component</p>
-      {/* PRODUCTION: Implement component functionality  - implemented */}
+      {/* production: Implement component functionality  - implemented */}
     </div>
   );
 };

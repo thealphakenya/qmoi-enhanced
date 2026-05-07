@@ -52,8 +52,8 @@ PRIMARY WORKFLOWS:
    - Status: ACTIVE
 
 2. TESTING & VALIDATION
-   ✓ Production testing framework configuredn logging replaced with production logging removed-ci.yml - JavaScript testing
-   - Framework: Production testing framework configuredn logging replaced with production logging removed
+   ✓ production testing framework configuredn logging replaced with production logging removed-ci.yml - JavaScript testing
+   - Framework: production testing framework configuredn logging replaced with production logging removed
    - Status: ACTIVE
 
    ✓ npm.yml - NPM package testing

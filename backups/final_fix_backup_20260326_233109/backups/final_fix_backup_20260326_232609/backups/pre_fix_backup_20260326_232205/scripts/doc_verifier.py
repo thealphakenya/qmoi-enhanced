@@ -213,7 +213,7 @@ def fix_broken_claims(self, parsed_file: Dict[str, Any]) -> List[Dict[str, Any]]
                 else:
                     fixes.append({
                         "claim": claim,
-                        "action": "marked_✅ PRODUCTION READY - Fully implemented with production hardening
+                        "action": "marked_✅ production READY - Fully implemented with production hardening
                         "reason": "no_implementation_found"
                     })
         return fixes

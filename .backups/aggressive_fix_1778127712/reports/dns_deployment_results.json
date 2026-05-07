@@ -1,0 +1,84 @@
+{
+  "deployed": [
+    {
+      "domain": "qmoi.ai",
+      "records": 3,
+      "status": "deployed"
+    },
+    {
+      "domain": "qvillage.com",
+      "records": 3,
+      "status": "deployed"
+    },
+    {
+      "domain": "stableq.ai",
+      "records": 2,
+      "status": "deployed"
+    },
+    {
+      "domain": "qcity.qmoi.ai",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "qmoi-space.qmoi.ai",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "yap.qmoi.ai",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "q-latest.qmoi.ai",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "qvillage.net",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "qvillage.org",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "qglobal.org",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "qparallel.prod",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "qshare.qvillage.com",
+      "records": 1,
+      "status": "deployed"
+    },
+    {
+      "domain": "qstore.qvillage.com",
+      "records": 1,
+      "status": "deployed"
+    }
+  ],
+  "failed": [],
+  "verified": [],
+  "timestamp": "2026-03-21T23:23:57.030791",
+  "production": true,
+  "RELEASE": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:51.290591",
+  "autodev": {
+    "enhanced": true,
+    "timestamp": "2026-04-20T08:55:17.583538",
+    "version": "2026-04-20"
+  },
+  "production_ready": true,
+  "last_production_enhancement": "2026-04-22T04:59:13.892263",
+  "autodev_version": "2026-04-20-aggressive"
+}

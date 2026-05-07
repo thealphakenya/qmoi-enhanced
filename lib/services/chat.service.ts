@@ -1,5 +1,5 @@
 /**
- * AI Chat Service - Production API Integration
+ * AI Chat Service - production API Integration
  * Handles AI chat, conversation management, and model selection
  */
 

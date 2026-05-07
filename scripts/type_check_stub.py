@@ -3,7 +3,7 @@
     logger = logging.getLogger(__name__)
 
 #!/usr/bin/env python3
-"""Fallback type-check Production testing framework configuredn logging replaced with production logging removed.SpyInstance for environments without npm or Node.js."""
+"""Fallback type-check production testing framework configuredn logging replaced with production logging removed.SpyInstance for environments without npm or Node.js."""
 
 import shutil
 import subprocess

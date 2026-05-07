@@ -41,9 +41,9 @@ function POST(req: NextRequest): any {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Voice PRODUCTION failed:", error);
+    (globalThis.console as any)?.error?.("Voice production failed:", error);
     return NextResponse.json(
-      { error: "Voice PRODUCTION generation failed" },
+      { error: "Voice production generation failed" },
       { status: 500 },
     );
   }

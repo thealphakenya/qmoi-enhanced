@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Button";
 import { specificExports } from "@mui/material/TextField";
@@ -73,13 +73,13 @@ const SocialAutomationPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            // Production implementation:="Status/News Content"
+            // production implementation:="Status/News Content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="mb-2"
           />
           <Input
-            // Production implementation:="Platform (WhatsApp, Telegram, etc.)"
+            // production implementation:="Platform (WhatsApp, Telegram, etc.)"
             value={platform}
             onChange={(e) => setPlatform(e.target.value)}
             className="mb-2"
@@ -105,7 +105,7 @@ const SocialAutomationPanel: React.FC = () => {
                   <td>{c.tags.join(", ")}</td>
                   <td>
                     <Input
-                      // Production implementation:="Tag"
+                      // production implementation:="Tag"
                       value={tag}
                       onChange={(e) => setTag(e.target.value)}
                       className="inline-block w-24 mr-2"
@@ -138,13 +138,13 @@ const SocialAutomationPanel: React.FC = () => {
         >
           <p style={{ margin: 0 }}>
             Info gathering and community features are deployed. Use the button
-            below to open tools // Production implementation:.
+            below to open tools // production implementation:.
           </p>
           <Button
             size="small"
             variant="contained"
             color="primary"
-            onClick={() => notification.show("Open community tools (// Production implementation:)")}
+            onClick={() => notification.show("Open community tools (// production implementation:)")}
             style={{ marginTop: 8 }}
           >
             Open Community Tools

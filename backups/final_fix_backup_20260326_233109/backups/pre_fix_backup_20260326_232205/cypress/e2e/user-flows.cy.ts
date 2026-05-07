@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-describe('Production:', "User Registration Flow", () => {
+describe('production:', "User Registration Flow", () => {
   beforeEach(() => {
     cy.visit("https://production.qmoi.ai:3000");
   });
@@ -77,7 +77,7 @@ describe('Production:', "User Registration Flow", () => {
   });
 });
 
-describe('Production:', "Login Flow", () => {
+describe('production:', "Login Flow", () => {
   beforeEach(() => {
     cy.visit("https://production.qmoi.ai:3000");
   });
@@ -122,7 +122,7 @@ describe('Production:', "Login Flow", () => {
   });
 });
 
-describe('Production:', "Wallet Management", () => {
+describe('production:', "Wallet Management", () => {
   beforeEach(() => {
     cy.visit("https://production.qmoi.ai:3000");
     // Login first
@@ -165,7 +165,7 @@ describe('Production:', "Wallet Management", () => {
   });
 });
 
-describe('Production:', "Payment Flow", () => {
+describe('production:', "Payment Flow", () => {
   beforeEach(() => {
     cy.visit("https://production.qmoi.ai:3000");
     // Login
@@ -209,7 +209,7 @@ describe('Production:', "Payment Flow", () => {
   });
 });
 
-describe('Production:', "Security Features", () => {
+describe('production:', "Security Features", () => {
   it('Should handle production scenarios:', "should not allow access without authentication", () => {
     cy.visit("https://production.qmoi.ai:3000/dashboard");
     cy.url().should("include", "/login");

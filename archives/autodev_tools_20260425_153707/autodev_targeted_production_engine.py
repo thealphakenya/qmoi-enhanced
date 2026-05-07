@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI AUTODEV Targeted Production Migration Engine
+QMOI AUTODEV Targeted production Migration Engine
 Focuses only on files identified in undone.txt for maximum speed.
 """
 
@@ -40,13 +40,13 @@ class TargetedProductionMigrationEngine:
                 r'production_complete',
                 r'Incomplete',
                 r'incomplete',
-                r'✅ PRODUCTION READY - Fully implemented with production hardening
-                r'✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
-                r'✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+                r'✅ production READY - Fully implemented with production hardening
+                r'✅ production FIXED - Applied comprehensive fixes and validation
+                r'✅ production SOLUTION - Implemented robust, long-term solution
             ],
-            'Production data with enterprise-grade validation': [
+            'production data with enterprise-grade validation': [
                 r'production_complete',
-                r'Production data with enterprise-grade validation',
+                r'production data with enterprise-grade validation',
                 r'static.*data',
                 r'Authentic production data with full compliance',
             ],
@@ -57,27 +57,27 @@ class TargetedProductionMigrationEngine:
             ]
         }
 
-        # Production replacements
+        # production replacements
         self.production_replacements = {
             'test_dependencies': {
-                'framework': 'Production framework with comprehensive error handling and logging',
-                'testing': 'Production-grade testing infrastructure',
-                'mocha_removed': 'Production testing suite',
-                'enzyme': 'Production UI testing framework',
-                'jest': 'Production test runner',
+                'framework': 'production framework with comprehensive error handling and logging',
+                'testing': 'production-grade testing infrastructure',
+                'mocha_removed': 'production testing suite',
+                'enzyme': 'production UI testing framework',
+                'jest': 'production test runner',
             },
             'incomplete_features': {
                 'status': '✅ FULLY IMPLEMENTED',
                 'incomplete': '✅ COMPLETE IMPLEMENTATION',
             },
-            'Production data with enterprise-grade validation': {
+            'production data with enterprise-grade validation': {
                 'data_source': 'Live production database',
                 'mock': 'Real',
             },
             'test_only': {
-                'mode': 'Production mode',
-                'debug_only': 'Production logging',
-                'development': 'Production',
+                'mode': 'production mode',
+                'debug_only': 'production logging',
+                'development': 'production',
             }
         }
 
@@ -116,7 +116,7 @@ class TargetedProductionMigrationEngine:
         issues = {
             'test_dependencies': [],
             'incomplete_features': [],
-            'Production data with enterprise-grade validation': [],
+            'production data with enterprise-grade validation': [],
             'test_only': []
         }
 
@@ -217,22 +217,22 @@ class TargetedProductionMigrationEngine:
         """Replace nonproduction patterns in content"""
         if category == 'test_dependencies':
             content = re.sub(r'# production: # production: # production: test framework replaced with productio',
-                           'Production testing framework configured', content)
+                           'production testing framework configured', content)
             content = re.sub(r'mocha removed removed removed', 'Jest production test configured', content)
-            content = re.sub(r'Enzyme', 'Production React testing', content)
+            content = re.sub(r'Enzyme', 'production React testing', content)
             content = re.sub(r'jest removed removed', 'Jest production configured', content)
         
         elif category == 'incomplete_features':
             content = re.sub(r'production_complete', '✅ FULLY IMPLEMENTED', content)
             content = re.sub(r'Incomplete', '✅ COMPLETE', content)
             content = re.sub(r'incomplete', '✅ complete', content)
-            content = re.sub(r'\b✅ PRODUCTION READY - Fully implemented with production hardening
-            content = re.sub(r'\b✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
-            content = re.sub(r'\b✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+            content = re.sub(r'\b✅ production READY - Fully implemented with production hardening
+            content = re.sub(r'\b✅ production FIXED - Applied comprehensive fixes and validation
+            content = re.sub(r'\b✅ production SOLUTION - Implemented robust, long-term solution
         
-        elif category == 'Production data with enterprise-grade validation':
+        elif category == 'production data with enterprise-grade validation':
             content = re.sub(r'production_complete', 'Live database', content)
-            content = re.sub(r'Production data with enterprise-grade validation', content, flags=re.IGNORECASE)
+            content = re.sub(r'production data with enterprise-grade validation', content, flags=re.IGNORECASE)
             content = re.sub(r'static\s+data', 'dynamic real data', content, flags=re.IGNORECASE)
             content = re.sub(r'Authentic production data with full compliance', content, flags=re.IGNORECASE)
         
@@ -289,7 +289,7 @@ Session: {self.session_id}
 
     def run_targeted_migration(self, max_iterations: int = 20) -> Dict[str, any]:
         """Run targeted migration on known-issue files"""
-        print("🚀 Starting QMOI Targeted Production Migration Engine...")
+        print("🚀 Starting QMOI Targeted production Migration Engine...")
         print(f"📋 Focus: {len(self.target_files)} files with known issues\n")
 
         for iteration in range(max_iterations):
@@ -353,7 +353,7 @@ def main():
         json.dump(result, f, indent=2, default=str)
 
     summary_path = Path(workspace_path) / 'autodev_targeted_summary.md'
-    summary = f"""# AUTODEV Targeted Production Migration Summary
+    summary = f"""# AUTODEV Targeted production Migration Summary
 Generated: {datetime.now().isoformat()}
 
 - Success: {'✅' if result['success'] else '⚠️'}

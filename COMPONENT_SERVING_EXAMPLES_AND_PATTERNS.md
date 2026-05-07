@@ -286,7 +286,7 @@ export default function AnyPage() {
 
 Components rendered at the root layout level to be available on ALL routes simultaneously.
 
-### Example: Floating Preview Window
+### Example: Floating production Window
 
 **Component:** `FloatingPreviewWindow.tsx`  
 **Location:** `app/layout.tsx`
@@ -504,7 +504,7 @@ app/admin/page.tsx
 ### Example 1: Single Component Route
 
 ```
-User navigates to: http://app.com/devices
+User navigates to: https://app.com/devices
   ↓
 Next.js router matches: app/devices/page.tsx
   ↓
@@ -522,7 +522,7 @@ Browser renders: WifiPanel UI
 ### Example 2: Multiple Component Route with Context
 
 ```
-User navigates to: http://app.com/master/email
+User navigates to: https://app.com/master/email
   ↓
 Next.js router matches: app/master/layout.tsx (parent)
   ↓
@@ -551,7 +551,7 @@ Browser renders: All three components with context
 ### Example 3: Global + Route Components
 
 ```
-User navigates to: http://app.com/admin
+User navigates to: https://app.com/admin
   ↓
 Next.js loads: app/layout.tsx (root)
   ↓

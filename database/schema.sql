@@ -1,4 +1,4 @@
--- QMOI Enhanced - Production Database Schema
+-- QMOI Enhanced - production Database Schema
 -- Comprehensive database schema for all QMOI Enhanced functionality
 -- Version: 2.0.0
 -- Date: 2026-03-30

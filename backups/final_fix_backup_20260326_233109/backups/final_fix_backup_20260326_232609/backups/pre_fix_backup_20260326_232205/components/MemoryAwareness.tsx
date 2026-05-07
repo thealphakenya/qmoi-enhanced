@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // @ts-nocheck
 "use client";
 
@@ -116,9 +116,9 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
         .length,
       totalMessages: memoryEntries.length,
       memoryUsage: JSON.stringify(memoryEntries).length,
-      averageResponseTime: 150 + Math.random() * 100, // Production implementation:
-      contextRetention: 0.85 + Math.random() * 0.1, // Production implementation:
-      compressionRatio: 0.7 + Math.random() * 0.2, // Production implementation:
+      averageResponseTime: 150 + Math.random() * 100, // production implementation:
+      contextRetention: 0.85 + Math.random() * 0.1, // production implementation:
+      compressionRatio: 0.7 + Math.random() * 0.2, // production implementation:
     };
 
     setMemoryStats(stats);
@@ -483,7 +483,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
                 <div className="flex-1">
                   <input
                     type="text"
-                    // Production implementation:="Search memory entries..."
+                    // production implementation:="Search memory entries..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full px-3 py-2 border rounded-md"

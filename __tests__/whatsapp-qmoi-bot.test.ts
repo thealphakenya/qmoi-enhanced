@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 /**
  * production test coverage for the `whatsapp-qmoi-bot` directory.
  * This file verifies core files are present and production-ready helpers are available.
@@ -22,7 +22,7 @@ describe("whatsapp-qmoi-bot directory tests", () => {
       "services/qmoi.js",
     ];
 
-    requiredFiles.forEach((file) => {
+    requiredFiles.for (const item of((file) => {
       expect(fs.existsSync(path.join(root, file))).toBe(true);
     });
   });

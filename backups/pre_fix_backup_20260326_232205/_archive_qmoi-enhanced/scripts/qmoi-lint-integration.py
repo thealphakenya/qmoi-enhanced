@@ -169,7 +169,7 @@ def classify_error_type(self, rule: str, message: str) -> str:
 def assess_severity(self, rule: str, message: str) -> str:
         """Assess the severity of a lint error"""
         critical_rules = ['no-undef', 'import/no-unresolved', 'no-unused-vars']
-        high_rules = ['no-console', 'no-// Production: debugger removed', 'no-alert']
+        high_rules = ['no-console', 'no-// production: debugger removed', 'no-alert']
         
         if any(critical in rule for critical in critical_rules):
             return 'critical'

@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -105,8 +105,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
 
   const isRefreshingRef = useRef(false);
 
-  // Generate // Production implementation: system metrics
-  const generate// Production implementation:Metrics = (): SystemMetrics => {
+  // Generate // production implementation: system metrics
+  const generate// production implementation:Metrics = (): SystemMetrics => {
     const now = new Date();
     return {
       cpu: {
@@ -201,8 +201,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
     };
   };
 
-  // Generate // Production implementation: health checks
-  const generate// Production implementation:HealthChecks = (): HealthCheck[] => {
+  // Generate // production implementation: health checks
+  const generate// production implementation:HealthChecks = (): HealthCheck[] => {
     const checks = [
       "Database Connection",
       "API Endpoints",
@@ -336,7 +336,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
       description: `Running health check for ${checkName}...`,
     });
 
-    // Production implementation: health check
+    // production implementation: health check
     setTimeout(() => {
       const success = Math.random() > 0.3;
       toast({

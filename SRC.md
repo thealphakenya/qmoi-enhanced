@@ -40,7 +40,7 @@ This document provides comprehensive documentation of the `src/` directory struc
 - `ComponentGallery.tsx` - Gallery of available components
 - `FileExplorer.tsx` - File exploration interface
 - `GitStatus.tsx` - Git repository status display
-- `PreviewWindow.tsx` - Preview rendering system
+- `PreviewWindow.tsx` - production rendering system
 - `UniversalWindowManager.tsx` - Window lifecycle management
 
 ### Advanced Feature Components
@@ -117,7 +117,7 @@ This document provides comprehensive documentation of the `src/` directory struc
 - Context providers in `src/components/AIContext.tsx`
 - Session management via `MultiUserSessionManager`
 - Memory persistence via `QmoiMemory`
-## ✅ Production Readiness
+## ✅ production Readiness
 
 - All source files are organized by feature and responsibility
 - Services layer handles backend communication and processing

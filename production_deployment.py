@@ -2,7 +2,7 @@
 import asyncio
 
 """
-Production Deployment Script - QMOI Enhanced
+production Deployment Script - QMOI Enhanced
 Automated production deployment for enhanced QMOI systems
 """
 
@@ -42,7 +42,7 @@ class ProductionDeployment:
         """Create production configuration files"""
         logger.info("📝 Creating production configuration...")
 
-        # Production environment configuration
+        # production environment configuration
         prod_config = {
             "environment": "production",
             "version": "1.0.0",
@@ -116,7 +116,7 @@ class ProductionDeployment:
         with open(config_path, 'w') as f:
             json.dump(prod_config, f, indent=2)
 
-        logger.info(f"✅ Production config saved to {config_path}")
+        logger.info(f"✅ production config saved to {config_path}")
         return config_path
 
     def create_docker_compose(self):
@@ -143,7 +143,7 @@ class ProductionDeployment:
                     "depends_on": ["database", "redis"],
                     "restart": "unless-stopped",
                     "healthcheck": {
-                        "test": ["CMD", "curl", "-f", "http://production-api.qmoi-enhanced.com:8000/health"],
+                        "test": ["CMD", "curl", "-f", "https://production-api.qmoi-enhanced.com:8000/health"],
                         "interval": "30s",
                         "timeout": "10s",
                         "retries": 3
@@ -188,7 +188,7 @@ class ProductionDeployment:
                     },
                     "environment": [
                         "ENVIRONMENT=production",
-                        "PROMETHEUS_URL=http://prometheus:9090"
+                        "PROMETHEUS_URL=https://prometheus:9090"
                     ],
                     "depends_on": ["prometheus"],
                     "restart": "unless-stopped"
@@ -201,7 +201,7 @@ class ProductionDeployment:
                         "POSTGRES_PASSWORD": "${DB_PASSWORD}"
                     },
                     "volumes": [
-                        "postgres_data:/var/lib/postgresql/data",
+                        "postgres_data:/const/lib/postgresql/data",
                         "./sql/init.sql:/docker-entrypoint-initdb.d/init.sql"
                     ],
                     "ports": ["5432:5432"],
@@ -229,7 +229,7 @@ class ProductionDeployment:
                         "GF_SECURITY_ADMIN_PASSWORD": "${GRAFANA_PASSWORD}"
                     },
                     "volumes": [
-                        "grafana_data:/var/lib/grafana",
+                        "grafana_data:/const/lib/grafana",
                         "./monitoring/grafana/provisioning:/etc/grafana/provisioning"
                     ],
                     "depends_on": ["prometheus"],
@@ -241,7 +241,7 @@ class ProductionDeployment:
                     "volumes": [
                         "./nginx/nginx.conf:/etc/nginx/nginx.conf",
                         "./nginx/ssl:/etc/nginx/ssl",
-                        "static_files:/var/www/html"
+                        "static_files:/const/www/html"
                     ],
                     "depends_on": [
                         "ai-api-server",
@@ -287,7 +287,7 @@ RUN apt-get update && apt-get install -y \\
     g++ \\
     libpq-dev \\
     curl \\
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /const/lib/apt/lists/*
 
 # Copy requirements and install Python dependencies
 COPY requirements.txt .
@@ -311,7 +311,7 @@ USER app
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\
-    CMD curl -f http://production-api.qmoi-enhanced.com:8000/health || exit 1
+    CMD curl -f https://production-api.qmoi-enhanced.com:8000/health || exit 1
 
 CMD ["python", "ai_api_server.py"]""",
 
@@ -322,7 +322,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \\
     gcc \\
     curl \\
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /const/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -348,7 +348,7 @@ RUN apt-get update && apt-get install -y \\
     gcc \\
     g++ \\
     libpq-dev \\
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /const/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -368,7 +368,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y \\
     gcc \\
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /const/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -388,7 +388,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \\
     gcc \\
     curl \\
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /const/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -427,8 +427,8 @@ http {
                     '$status $body_bytes_sent "$http_referer" '
                     '"$http_user_agent" "$http_x_forwarded_for"';
 
-    access_log /var/log/nginx/access.log main;
-    error_log /var/log/nginx/error.log;
+    access_log /const/log/nginx/access.log main;
+    error_log /const/log/nginx/error.log;
 
     # Performance
     sendfile on;
@@ -487,7 +487,7 @@ http {
         location /api/ {
             limit_req zone=api burst=20 nodelay;
 
-            proxy_pass http://api_backend;
+            proxy_pass https://api_backend;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -514,12 +514,12 @@ http {
         location /metrics {
             allow 172.0.0.0/8;  # Docker network
             deny all;
-            proxy_pass http://prometheus:9090;
+            proxy_pass https://prometheus:9090;
         }
 
         # Grafana
         location /grafana/ {
-            proxy_pass http://grafana:3000/;
+            proxy_pass https://grafana:3000/;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -527,7 +527,7 @@ http {
 
         # Static files
         location /static/ {
-            alias /var/www/html/static/;
+            alias /const/www/html/static/;
             expires 1y;
             add_header Cache-Control "public, immutable";
         }
@@ -608,12 +608,12 @@ scrape_configs:
 
         deploy_script = """#!/bin/bash
 
-# QMOI Enhanced Production Deployment Script
+# QMOI Enhanced production Deployment Script
 # This script deploys the QMOI enhanced systems to production
 
 set -e
 
-echo "🚀 Starting QMOI Enhanced Production Deployment..."
+echo "🚀 Starting QMOI Enhanced production Deployment..."
 
 # Colors for output
 RED='\\[0;31m'
@@ -641,9 +641,9 @@ check_env_vars() {
     required_vars=("DB_PASSWORD" "JWT_SECRET" "GRAFANA_PASSWORD")
     missing_vars=()
 
-    for var in "${required_vars[@]}"; do
-        if [[ -z "${!var}" ]]; then
-            missing_vars+=("$var")
+    for const in "${required_vars[@]}"; do
+        if [[ -z "${!const}" ]]; then
+            missing_vars+=("$const")
         fi
     done
 
@@ -687,7 +687,7 @@ create_db_init() {
     print_status "Creating database initialization script..."
 
     cat > sql/init.sql << 'EOF'
--- QMOI Production Database Initialization
+-- QMOI production Database Initialization
 
 -- Create extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -771,7 +771,7 @@ wait_for_services() {
     print_status "Waiting for API server..."
     timeout=60
     while [[ $timeout -gt 0 ]]; do
-        if curl -f http://production-api.qmoi-enhanced.com:8000/health 2>/dev/null; then
+        if curl -f https://production-api.qmoi-enhanced.com:8000/health 2>/dev/null; then
             break
         fi
         sleep 2
@@ -791,7 +791,7 @@ run_post_deployment_tests() {
     print_status "Running post-deployment tests..."
 
     # Test API endpoints
-    if curl -f http://production-api.qmoi-enhanced.com:8000/health; then
+    if curl -f https://production-api.qmoi-enhanced.com:8000/health; then
         print_status "✅ API server health check passed"
     else
         print_error "❌ API server health check failed"
@@ -799,7 +799,7 @@ run_post_deployment_tests() {
     fi
 
     # Test Grafana
-    if curl -f http://production-api.qmoi-enhanced.com:3000/api/health 2>/dev/null; then
+    if curl -f https://production-api.qmoi-enhanced.com:3000/api/health 2>/dev/null; then
         print_status "✅ Grafana health check passed"
     else
         print_warning "⚠️  Grafana health check failed (may take longer to start)"
@@ -813,9 +813,9 @@ show_deployment_info() {
     print_status "🚀 Deployment completed successfully!"
     echo ""
     echo "📊 Service Endpoints:"
-    echo "  🌐 API Server:     http://production-api.qmoi-enhanced.com:8000"
-    echo "  📊 Grafana:        http://production-api.qmoi-enhanced.com:3000 (admin/${GRAFANA_PASSWORD})"
-    echo "  📈 Prometheus:     http://production-api.qmoi-enhanced.com:9090"
+    echo "  🌐 API Server:     https://production-api.qmoi-enhanced.com:8000"
+    echo "  📊 Grafana:        https://production-api.qmoi-enhanced.com:3000 (admin/${GRAFANA_PASSWORD})"
+    echo "  📈 Prometheus:     https://production-api.qmoi-enhanced.com:9090"
     echo "  🐘 Database:       production-api.qmoi-enhanced.com:5432"
     echo "  🔴 Redis:          production-api.qmoi-enhanced.com:6379"
     echo ""
@@ -835,7 +835,7 @@ show_deployment_info() {
 
 # Main deployment function
 main() {
-    echo "🚀 QMOI Enhanced Production Deployment"
+    echo "🚀 QMOI Enhanced production Deployment"
     echo "===================================="
 
     check_env_vars
@@ -847,7 +847,7 @@ main() {
     run_post_deployment_tests
     show_deployment_info
 
-    print_status "🎉 Production deployment completed successfully!"
+    print_status "🎉 production deployment completed successfully!"
 }
 
 # Run main function
@@ -867,7 +867,7 @@ main "$@" """"
         """Create requirements.txt for production"""
         logger.info("📦 Creating production requirements.txt...")
 
-        requirements = """# QMOI Enhanced Production Requirements
+        requirements = """# QMOI Enhanced production Requirements
 
 # Core dependencies
 Flask==2.3.3
@@ -930,7 +930,7 @@ mypy==1.5.1""""
         """Create environment template file"""
         logger.info("🔧 Creating environment template...")
 
-        env_template = """# QMOI Enhanced Production Environment Variables
+        env_template = """# QMOI Enhanced production Environment Variables
 # Copy this file to .env and fill in the values
 
 # Environment
@@ -952,7 +952,7 @@ JWT_SECRET=CHANGE_THIS_IN_PRODUCTION
 API_KEY_REQUIRED=true
 
 # Monitoring
-PROMETHEUS_URL=http://production-api.qmoi-enhanced.com:9090
+PROMETHEUS_URL=https://production-api.qmoi-enhanced.com:9090
 GRAFANA_PASSWORD=CHANGE_THIS_IN_PRODUCTION
 ALERT_WEBHOOK=
 
@@ -1003,12 +1003,12 @@ RATE_LIMIT_REQUESTS_PER_MINUTE=1000""""
 
     def update_resume_file(self):
         """Update resumefromhere.txt with deployment status"""
-        resume_content = f"""QMOI ENHANCED PRODUCTION MIGRATION - ✅ PRODUCTION DEPLOYMENT COMPLETE
-Status: ✅ PRODUCTION SYSTEMS DEPLOYED AND READY
+        resume_content = f"""QMOI ENHANCED production MIGRATION - ✅ production DEPLOYMENT COMPLETE
+Status: ✅ production SYSTEMS DEPLOYED AND READY
 Last Updated: {datetime.now().isoformat()}
 
 🎯 DEPLOYMENT RESULTS:
-- Production Config: ✅ Created (production_config.json)
+- production Config: ✅ Created (production_config.json)
 - Docker Compose: ✅ Created (docker-compose.production.yml)
 - Dockerfiles: ✅ Created (5 service Dockerfiles)
 - Nginx Config: ✅ Created (nginx/nginx.conf)
@@ -1017,7 +1017,7 @@ Last Updated: {datetime.now().isoformat()}
 - Requirements: ✅ Updated (requirements.txt)
 - Environment: ✅ Template created (.env.production.template)
 
-📊 PRODUCTION INFRASTRUCTURE READY:
+📊 production INFRASTRUCTURE READY:
 ✅ AI API Server - Containerized and configured
 ✅ AI Orchestrator - Task processing ready
 ✅ Advanced Analytics - Predictive services ready
@@ -1033,10 +1033,10 @@ Last Updated: {datetime.now().isoformat()}
 - AUTODEV Migration: ✅ COMPLETE (2,621 enhancements)
 - System Validation: ✅ COMPLETE (4/4 services tested)
 - Performance Benchmarking: ✅ COMPLETE (EXCELLENT results)
-- Production Deployment: ✅ COMPLETE (All artifacts ready)
-- Next Phase: 🚀 PRODUCTION LAUNCH READY
+- production Deployment: ✅ COMPLETE (All artifacts ready)
+- Next Phase: 🚀 production LAUNCH READY
 
-🌐 PRODUCTION ENDPOINTS (After Launch):
+🌐 production ENDPOINTS (After Launch):
 - API Server: https://your-domain.com/api/
 - Grafana: https://your-domain.com/grafana/
 - Health Check: https://your-domain.com/health
@@ -1060,7 +1060,7 @@ Last Updated: {datetime.now().isoformat()}
 
 def main():
     """Main deployment execution"""
-    print("🚀 QMOI Enhanced Production Deployment Setup")
+    print("🚀 QMOI Enhanced production Deployment Setup")
     print("=" * 50)
 
     deployment = ProductionDeployment()
@@ -1068,7 +1068,7 @@ def main():
 
     if success:
         print("\n" + "=" * 50)
-        print("🎉 PRODUCTION DEPLOYMENT SETUP COMPLETE!")
+        print("🎉 production DEPLOYMENT SETUP COMPLETE!")
         print("=" * 50)
         print("\n📋 Deployment artifacts created:")
         print("  ✅ production_config.json")
@@ -1088,7 +1088,7 @@ def main():
         print("  - Review security settings")
         print("  - Test in staging first")
     else:
-        print("\n❌ Production deployment setup failed!")
+        print("\n❌ production deployment setup failed!")
         return 1
 
     return 0

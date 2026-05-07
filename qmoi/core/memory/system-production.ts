@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 /**
  * 
  * - Long-term memory storage and retrieval

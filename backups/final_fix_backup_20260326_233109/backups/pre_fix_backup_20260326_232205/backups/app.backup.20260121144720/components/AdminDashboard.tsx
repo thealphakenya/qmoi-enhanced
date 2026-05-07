@@ -1,4 +1,4 @@
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining non-production markers
 // Master-only access control
 const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
   const [isMaster, setIsMaster] = React.useState(false);

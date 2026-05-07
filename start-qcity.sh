@@ -23,7 +23,7 @@ echo "✓ Server PID: $SERVER_PID"
 sleep 3
 
 # Check if server is responding
-if curl -s http://127.0.0.1:8080/ >/dev/null 2>&1; then
+if curl -s https://prod.qmoi.ai:8080/ >/dev/null 2>&1; then
     echo "✓ Server is responding"
 else
     echo "✗ Server failed to start"
@@ -34,9 +34,9 @@ echo ""
 echo "✨ QCity Enterprise System is ready!"
 echo ""
 echo "📊 Dashboard URLs:"
-echo "   • Primary: http://127.0.0.1:8080/qcity-enterprise.html"
-echo "   • complete: http://127.0.0.1:8080/qcity-complete.html"
-echo "   • comprehensive: http://127.0.0.1:8080/qcity-dashboard.html"
+echo "   • Primary: https://prod.qmoi.ai:8080/qcity-enterprise.html"
+echo "   • complete: https://prod.qmoi.ai:8080/qcity-complete.html"
+echo "   • comprehensive: https://prod.qmoi.ai:8080/qcity-dashboard.html"
 echo ""
 echo "🔄 Background Services:"
 echo "   • Metrics Update (10s)"
@@ -48,7 +48,7 @@ echo ""
 echo "💾 Server Log: /tmp/qcity-serve-logs/qcity_server.log"
 echo "📝 To stop: kill $SERVER_PID"
 echo ""
-echo "🎯 Open dashboard at: http://127.0.0.1:8080/qcity-enterprise.html"
+echo "🎯 Open dashboard at: https://prod.qmoi.ai:8080/qcity-enterprise.html"
 echo ""
 
 # Keep script running

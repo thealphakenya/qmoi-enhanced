@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./MasterContext";
 import {
@@ -174,7 +174,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
       );
     }, 1000);
 
-    // Production implementation: call connection
+    // production implementation: call connection
     setTimeout(() => {
       if (callDurationRef.current) {
         clearInterval(callDurationRef.current);
@@ -337,7 +337,7 @@ export const QmoiDialer: React.FC<QmoiDialerProps> = ({
             <div className="mb-4">
               <input
                 type="text"
-                // Production implementation:={
+                // production implementation:={
                   language === "sw"
                     ? "Tafuta mawasiliano..."
                     : "Search contacts..."

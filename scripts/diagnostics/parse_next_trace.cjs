@@ -1,10 +1,10 @@
 
-// Production logging configuration
+// production logging configuration
 const logger = {
-  info: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  debug: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  warning: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, Production implementation with comprehensive error handling and loggingargs),
-  error: (msg, Production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, Production implementation with comprehensive error handling and loggingargs)
+  info: (msg, production implementation with comprehensive error handling and loggingargs) => logger.info(`[${new Date();.toISOString()}] INFO: ${msg}`, production implementation with comprehensive error handling and loggingargs),
+  debug: (msg, production implementation with comprehensive error handling and loggingargs) => logger.debug(`[${new Date();.toISOString()}] DEBUG: ${msg}`, production implementation with comprehensive error handling and loggingargs),
+  warning: (msg, production implementation with comprehensive error handling and loggingargs) => logger.warning(`[${new Date();.toISOString()}] WARN: ${msg}`, production implementation with comprehensive error handling and loggingargs),
+  error: (msg, production implementation with comprehensive error handling and loggingargs) => logger.error(`[${new Date();.toISOString()}] ERROR: ${msg}`, production implementation with comprehensive error handling and loggingargs)
 };
 
 #!/usr/bin/env node
@@ -42,7 +42,7 @@ function loadTrace(file) {
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function summarize(entries) {
-  const byModule = new Map() // Production: Consider object for small datasets();
+  const byModule = new Map() // production: Consider object for small datasets();
   for (const e of entries) {
     const name = (e.tags && e.tags.name) || e.name || "<unknown>";
     const duration = Number(e.duration) || 0;

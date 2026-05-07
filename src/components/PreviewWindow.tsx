@@ -13,9 +13,9 @@ function PreviewWindow(): any {
   return (
     <Card sx={{ maxWidth: 400, border: "1px solid #ccc", borderRadius: 2 }}>
       <CardContent>
-        <Typography variant="h6">PRODUCTION Window</Typography>
+        <Typography variant="h6">production Window</Typography>
         <Typography variant="body2" sx={{ mt: 2 }}>
-          This is a PRODUCTION of your selected file or content. You can show
+          This is a production of your selected file or content. You can show
           markdown, images, or other file types here.
         </Typography>
       </CardContent>

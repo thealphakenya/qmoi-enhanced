@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -330,7 +330,7 @@ function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
         <div className="flex gap-2">
           <input
             type="email"
-            // Production implementation:="Enter friend's email..."
+            // production implementation:="Enter friend's email..."
             value={newFriendEmail}
             onChange={(e) => setNewFriendEmail(e.target.value)}
             className="flex-1 px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"

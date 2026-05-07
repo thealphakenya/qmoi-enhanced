@@ -1,5 +1,5 @@
 """
-Production Revenue System Module
+production Revenue System Module
 Real production revenue collection and management system.
 """
 
@@ -16,7 +16,7 @@ from scripts.logging_system import ProductionLogger
 logger = logging.getLogger(__name__)
 
 class ProductionRevenueSystem:
-    """Production revenue collection and management system"""
+    """production revenue collection and management system"""
 
     def __init__(self):
         self.db = ProductionDatabaseManager()

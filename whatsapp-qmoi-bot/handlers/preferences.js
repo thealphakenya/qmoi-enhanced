@@ -110,7 +110,7 @@ async function handleShowPreferences(sock, jid) {
   message += `🌐 **Language**: ${prefs.language}\n`;
   message += `💬 **Response Mode**: ${prefs.responseMode}\n`;
   message += `📹 **Video Call Avatar**: ${prefs.videoCallPreferences.avatarVisible ? "✅ Visible" : "❌ Hidden"}\n`;
-  message += `📋 **Preview Panel**: ${prefs.videoCallPreferences.previewPanelPosition}\n`;
+  message += `📋 **production Panel**: ${prefs.videoCallPreferences.previewPanelPosition}\n`;
   message += `🤖 **Autonomous Display**: ${prefs.videoCallPreferences.autonomousDisplay ? "✅ On" : "❌ Off"}\n`;
 
   return sock.sendMessage(jid, { text: message });

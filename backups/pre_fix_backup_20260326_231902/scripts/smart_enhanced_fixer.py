@@ -56,9 +56,9 @@ FIX_PATTERNS = [
     (r'https://production.qmoi.ai:([0-9]{4})', r'process.env.API_URL || "https://production.qmoi.ai:\\1"',
      'HTTP production.qmoi.ai reference'),
     
-    # Fix 7: // Production: debugger removed statements
+    # Fix 7: // production: debugger removed statements
     (r'\s*', r'',
-     '// Production: debugger removed statement'),
+     '// production: debugger removed statement'),
     
     # Fix 8: RELEASE console logs
     (r'console\.log\s*\(\s*["\']RELEASE', r'// RELEASE: ',

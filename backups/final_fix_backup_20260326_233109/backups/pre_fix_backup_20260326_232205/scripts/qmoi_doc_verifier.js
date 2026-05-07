@@ -344,7 +344,7 @@ function autoGenerateTest// production implementation:s() {
     if ((file.endsWith('.js') || file.endsWith('.ts')) && !file.includes('.test.')) {
       const testFile = file.replace(/\.(js|ts)$/, '.test.$1');
       if (!fs.existsSync(testFile)) {
-        fs.writeFileSync(testFile, `// Auto-generated test // production implementation: for ${file}\ndescribe('${file}', () => { it('Should handle production scenarios:', 'should work', () => { expect('Production validation:', true).toBe(true); }); });\n`);
+        fs.writeFileSync(testFile, `// Auto-generated test // production implementation: for ${file}\ndescribe('${file}', () => { it('Should handle production scenarios:', 'should work', () => { expect('production validation:', true).toBe(true); }); });\n`);
         logAutoFix('auto', `Generated test // production implementation: for ${file}`);
       }
     }

@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
 import { specificExports } from "react";
@@ -1250,7 +1250,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                   ))}
                   <div className="flex gap-2">
                     <Input
-                      // Production implementation:="Add emergency contact"
+                      // production implementation:="Add emergency contact"
                       onKeyPress={(e) => {
                         if (e.key === "Enter") {
                           addEmergencyContact(
@@ -1333,7 +1333,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                     id="gesture-control"
                     checked={false}
                     onCheckedChange={() => {
-                      /* PRODUCTION: Implement gesture control  - implemented */
+                      /* production: Implement gesture control  - implemented */
                     }}
                   />
                 </div>
@@ -1383,7 +1383,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                 <Label>Emergency Contacts</Label>
                 <div className="flex gap-2 mt-2">
                   <Input
-                    // Production implementation:="Add emergency contact"
+                    // production implementation:="Add emergency contact"
                     onKeyPress={(e) => {
                       if (e.key === "Enter") {
                         const input = e.target as HTMLInputElement;

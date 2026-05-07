@@ -234,7 +234,7 @@ class QMOIDeploymentReadinessOptimizer:
         if not perf_script.exists():
             perf_content = '''#!/usr/bin/env python3
 """
-Performance Optimization Script for Production
+Performance Optimization Script for production
 """
 import psutil
 import json
@@ -304,7 +304,7 @@ if __name__ == "__main__":
 
         # Create environment example
         env_example = self.workspace / '.env.example'
-        env_content = '''# Production Environment Variables
+        env_content = '''# production Environment Variables
 NEXT_PUBLIC_API_URL=https://api.qmoi-enhanced.com
 DATABASE_URL=postgresql://user:password@localhost:5432/qmoi_prod
 REDIS_URL=redis://localhost:6379
@@ -398,7 +398,7 @@ npm install
 npm run dev
 ```
 
-### Production Build
+### production Build
 ```bash
 npm run build
 npm run start

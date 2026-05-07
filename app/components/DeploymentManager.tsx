@@ -9,7 +9,7 @@ export default function DeploymentManager() {
         <div className="bg-slate-800 p-4 rounded-lg">
           <div className="flex justify-between items-center mb-3">
             <span className="text-slate-300 text-sm">Current Deployment</span>
-            <span className="text-green-400 font-semibold">v2.1.3 - Production</span>
+            <span className="text-green-400 font-semibold">v2.1.3 - production</span>
           </div>
           <div className="grid grid-cols-3 gap-2 text-center">
             <div>
@@ -53,7 +53,7 @@ export default function DeploymentManager() {
               </div>
               <div className="flex-1">
                 <div className="text-slate-300 text-sm">Deploy to Staging</div>
-                <div className="text-slate-400 text-xs">In progress...</div>
+                <div className="text-slate-400 text-xs">COMPLETE...</div>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -61,7 +61,7 @@ export default function DeploymentManager() {
                 <span className="text-slate-400 text-xs font-semibold">○</span>
               </div>
               <div className="flex-1">
-                <div className="text-slate-300 text-sm">Deploy to Production</div>
+                <div className="text-slate-300 text-sm">Deploy to production</div>
                 <div className="text-slate-400 text-xs">Pending approval</div>
               </div>
             </div>

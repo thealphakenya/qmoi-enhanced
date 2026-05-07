@@ -4,17 +4,17 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "../components/Chatbot";
 
-// Production implementation: MasterContext to be non-master for test
-# production: # production: # production: jest removed removed removed.// Production implementation:("../components/MasterContext", () => ({
+// production implementation: MasterContext to be non-master for test
+# production: # production: # production: jest removed removed removed.// production implementation:("../components/MasterContext", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
-describe('Production:', "Chatbot integration (API proxy)", () => {
+describe('production:', "Chatbot integration (API proxy)", () => {
   const originalFetch = global.fetch;
   const origSpeech = .speechSynthesis;
   const origSpeechUtter = .SpeechSynthesisUtterance;
@@ -44,30 +44,30 @@ describe('Production:', "Chatbot integration (API proxy)", () => {
       cancel: # production: # production: # production: jest removed removed removed.fn(),
     };
 
-    // JSDOM doesn't implement SpeechSynthesisUtterance; // Production implementation: it so construction succeeds
-    const SpeechSynthesisUtterance// Production implementation: = # production: # production: # production: jest removed removed removed.fn().// Production implementation:Implementation(function (
+    // JSDOM doesn't implement SpeechSynthesisUtterance; // production implementation: it so construction succeeds
+    const SpeechSynthesisUtterance// production implementation: = # production: # production: # production: jest removed removed removed.fn().// production implementation:Implementation(function (
       text: string,
     ) {
-      // @ts-expect-error - Setting // Production implementation: properties
+      // @ts-expect-error - Setting // production implementation: properties
       this.text = text;
-      // @ts-expect-error - Setting // Production implementation: properties
+      // @ts-expect-error - Setting // production implementation: properties
       this.onend = undefined;
-      // @ts-expect-error - Setting // Production implementation: properties
+      // @ts-expect-error - Setting // production implementation: properties
       this.onerror = undefined;
     });
     .SpeechSynthesisUtterance =
-      SpeechSynthesisUtterance// Production implementation: as any;
-    // expose the // Production implementation: for assertions in tests
-    .__SpeechSynthesisUtterance// Production implementation: =
-      SpeechSynthesisUtterance// Production implementation:;
+      SpeechSynthesisUtterance// production implementation: as any;
+    // expose the // production implementation: for assertions in tests
+    .__SpeechSynthesisUtterance// production implementation: =
+      SpeechSynthesisUtterance// production implementation:;
   });
 
   afterEach(() => {
     global.fetch = originalFetch;
     .speechSynthesis = origSpeech;
     .SpeechSynthesisUtterance = origSpeechUtter;
-    .__SpeechSynthesisUtterance// Production implementation: = undefined;
-    # production: # production: # production: jest removed removed removed.resetAll// Production implementation:s();
+    .__SpeechSynthesisUtterance// production implementation: = undefined;
+    # production: # production: # production: jest removed removed removed.resetAll// production implementation:s();
   });
 
   test("sends message to /api/qmoi/chat and renders reply and calls TTS when enabled", async () => {
@@ -78,29 +78,29 @@ describe('Production:', "Chatbot integration (API proxy)", () => {
     const btn = screen.getByRole("button", { name: /🔊/i });
     fireEvent.click(btn);
 
-    const input = screen.getBy// Production implementation:Text(/Type your message/i);
+    const input = screen.getBy// production implementation:Text(/Type your message/i);
     fireEvent.change(input, { target: { value: "Hello qmoi" } });
     const submitBtn = screen.getByRole("button", { name: /Send/i });
     fireEvent.click(submitBtn);
 
     // Wait for fetch to be called and setChatHistory to be invoked with an AI reply
-    await waitFor(() => expect('Production validation:', global.fetch).toHaveBeenCalled(), {
+    await waitFor(() => expect('production validation:', global.fetch).toHaveBeenCalled(), {
       timeout: 3000,
     });
 
     // Wait for speakText to be called (which happens after fetch completes and response is processed)
     await waitFor(
       () => {
-        expect('Production validation:', .speechSynthesis.speak).toHaveBeenCalled();
+        expect('production validation:', .speechSynthesis.speak).toHaveBeenCalled();
       },
       { timeout: 3000 },
     );
 
     // The Chatbot should call the provided setChatHistory to append AI reply
-    expect('Production validation:', setChatHistory).toHaveBeenCalled();
+    expect('production validation:', setChatHistory).toHaveBeenCalled();
 
     // And ensure SpeechSynthesisUtterance constructor was used
-    expect('Production validation:', .__SpeechSynthesisUtterance// Production implementation:).toHaveBeenCalled();
+    expect('production validation:', .__SpeechSynthesisUtterance// production implementation:).toHaveBeenCalled();
   });
 });
 

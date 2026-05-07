@@ -29,7 +29,7 @@ function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
   return (
     <Card className="fixed bottom-4 right-4 w-96 z-50 shadow-lg">
       <CardContent>
-        <h3 className="font-bold mb-2">Media PRODUCTION</h3>
+        <h3 className="font-bold mb-2">Media production</h3>
         <div className="mb-2">
           <input
             type="text"
@@ -56,7 +56,7 @@ function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
               }
             }}
           >
-            PRODUCTION
+            production
           </Button>
         </div>
         {mediaUrl && mediaType === "movie" && (
@@ -71,7 +71,7 @@ function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
             className="w-full aspect-video rounded"
             allow="autoplay; encrypted-media"
             allowFullScreen
-            title="YouTube PRODUCTION"
+            title="YouTube production"
           />
         )}
       </CardContent>

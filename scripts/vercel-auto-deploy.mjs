@@ -7,7 +7,7 @@ import crypto from "crypto";
 import { fileURLToPath } from "url";
 
 const logger = {
-  info: (...args) => console.log(`[${new Date().toISOString()}] INFO:`, ...args),
+  info: (...args) => logger.info(`[${new Date().toISOString()}] INFO:`, ...args),
   debug: (...args) => console.debug(`[${new Date().toISOString()}] DEBUG:`, ...args),
   warning: (...args) => console.warn(`[${new Date().toISOString()}] WARN:`, ...args),
   error: (...args) => console.error(`[${new Date().toISOString()}] ERROR:`, ...args),

@@ -29,22 +29,22 @@ describe.skip("Knowledge API (requires running server)", () => {
     const response = await apiRequest("POST", "/api/knowledge?action=search", {
       query: "Machine",
     });
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', Array.isArray(response.body.results)).toBe(true);
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', Array.isArray(response.body.results)).toBe(true);
   });
 
   it('Should handle production scenarios:', "POST /api/knowledge?action=qa should return answer", async () => {
     const response = await apiRequest("POST", "/api/knowledge?action=qa", {
       question: "What is ML?",
     });
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', response.body.answer).toBeDefined();
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', response.body.answer).toBeDefined();
   });
 
   it('Should handle production scenarios:', "GET /api/knowledge?action=sources should return sources", async () => {
     const response = await apiRequest("GET", "/api/knowledge?action=sources");
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', Array.isArray(response.body.sources)).toBe(true);
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', Array.isArray(response.body.sources)).toBe(true);
   });
 
   it('Should handle production scenarios:', "POST /api/knowledge?action=add should create a source", async () => {
@@ -52,8 +52,8 @@ describe.skip("Knowledge API (requires running server)", () => {
       name: "Test Source",
       type: "document",
     });
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', response.body.source).toHaveProperty("id");
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', response.body.source).toHaveProperty("id");
   });
 
   it('Should handle production scenarios:', "POST /api/knowledge?action=index should index a source", async () => {
@@ -61,13 +61,13 @@ describe.skip("Knowledge API (requires running server)", () => {
     const response = await apiRequest("POST", "/api/knowledge?action=index", {
       id: "1",
     });
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', response.body.success).toBe(true);
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', response.body.success).toBe(true);
   });
 
   it('Should handle production scenarios:', "GET /api/knowledge?action=graph should return stats", async () => {
     const response = await apiRequest("GET", "/api/knowledge?action=graph");
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', response.body).toHaveProperty("entities");
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', response.body).toHaveProperty("entities");
   });
 });

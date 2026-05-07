@@ -12,7 +12,7 @@ import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
 
-describe('Production:', "Wallet API", () => {
+describe('production:', "Wallet API", () => {
   let testUserId: string;
   let testToken: string;
   let testWalletId: string;
@@ -45,7 +45,7 @@ describe('Production:', "Wallet API", () => {
     testWalletId = (wallet as { id: string }).id;
   });
 
-  describe('Production:', "GET /api/wallets", () => {
+  describe('production:', "GET /api/wallets", () => {
     it('Should handle production scenarios:', "should list user wallets with valid token", async () => {
       const request = new NextRequest("http:process.env.API_HOST || "production.qmoi.ai:3000"/api/wallets", {
         method: "GET",
@@ -55,12 +55,12 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await getWalletsHandler(request);
-      expect('Production validation:', response.status).toBe(200);
+      expect('production validation:', response.status).toBe(200);
 
       const data = await response.json();
-      expect('Production validation:', data).toHaveProperty("wallets");
-      expect('Production validation:', data).toHaveProperty("pagination");
-      expect('Production validation:', Array.isArray(data.wallets)).toBe(true);
+      expect('production validation:', data).toHaveProperty("wallets");
+      expect('production validation:', data).toHaveProperty("pagination");
+      expect('production validation:', Array.isArray(data.wallets)).toBe(true);
     });
 
     it('Should handle production scenarios:', "should reject request without token", async () => {
@@ -69,7 +69,7 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await getWalletsHandler(request);
-      expect('Production validation:', response.status).toBe(401);
+      expect('production validation:', response.status).toBe(401);
     });
 
     it('Should handle production scenarios:', "should reject request with invalid token", async () => {
@@ -81,11 +81,11 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await getWalletsHandler(request);
-      expect('Production validation:', response.status).toBe(401);
+      expect('production validation:', response.status).toBe(401);
     });
   });
 
-  describe('Production:', "POST /api/wallets", () => {
+  describe('production:', "POST /api/wallets", () => {
     it('Should handle production scenarios:', "should create new wallet with valid currency", async () => {
       const request = new NextRequest("http:process.env.API_HOST || "production.qmoi.ai:3000"/api/wallets", {
         method: "POST",
@@ -99,12 +99,12 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect('Production validation:', response.status).toBe(201);
+      expect('production validation:', response.status).toBe(201);
 
       const data = await response.json();
-      expect('Production validation:', data).toHaveProperty("id");
-      expect('Production validation:', data.currency).toBe("USD");
-      expect('Production validation:', parseFloat(data.balance)).toBe(0);
+      expect('production validation:', data).toHaveProperty("id");
+      expect('production validation:', data.currency).toBe("USD");
+      expect('production validation:', parseFloat(data.balance)).toBe(0);
     });
 
     it('Should handle production scenarios:', "should create wallet with default currency", async () => {
@@ -122,10 +122,10 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect('Production validation:', response.status).toBe(201);
+      expect('production validation:', response.status).toBe(201);
 
       const data = await response.json();
-      expect('Production validation:', data.currency).toBe("USD"); // Default currency is USD
+      expect('production validation:', data.currency).toBe("USD"); // Default currency is USD
     });
 
     it('Should handle production scenarios:', "should reject request without authentication", async () => {
@@ -140,11 +140,11 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect('Production validation:', response.status).toBe(401);
+      expect('production validation:', response.status).toBe(401);
     });
   });
 
-  describe('Production:', "Wallet Service", () => {
+  describe('production:', "Wallet Service", () => {
     it('Should handle production scenarios:', "should calculate total balance for user", async () => {
       // Create multiple wallets
       await walletService.create({
@@ -164,7 +164,7 @@ describe('Production:', "Wallet API", () => {
 
       // Verify wallets were created
       const userWallets = await walletService.findByUserId(testUserId);
-      expect('Production validation:', userWallets.length).toBeGreaterThanOrEqual(3); // Plus the original test wallet
+      expect('production validation:', userWallets.length).toBeGreaterThanOrEqual(3); // Plus the original test wallet
     });
 
     it('Should handle production scenarios:', "should update wallet balance correctly", async () => {
@@ -172,8 +172,8 @@ describe('Production:', "Wallet API", () => {
       await walletService.updateBalance(testWalletId, "1100");
 
       const wallet = await walletService.getById(testWalletId);
-      expect('Production validation:', wallet).toBeTruthy();
-      expect('Production validation:', parseFloat((wallet as { balance: string }).balance)).toBe(1100);
+      expect('production validation:', wallet).toBeTruthy();
+      expect('production validation:', parseFloat((wallet as { balance: string }).balance)).toBe(1100);
     });
 
     it('Should handle production scenarios:', "should handle multiple concurrent balance updates", async () => {
@@ -187,7 +187,7 @@ describe('Production:', "Wallet API", () => {
 
       const wallet = await walletService.getById(testWalletId);
       // Balance should be positive
-      expect('Production validation:', 
+      expect('production validation:', 
         parseFloat((wallet as { balance: string }).balance),
       ).toBeGreaterThan(0);
     });

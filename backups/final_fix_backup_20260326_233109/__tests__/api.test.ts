@@ -35,7 +35,7 @@ const apiRequest = async (
 };
 
 describe.skip("QMOI Enhanced API Tests", () => {
-  describe('Production:', "Authentication Endpoints", () => {
+  describe('production:', "Authentication Endpoints", () => {
     it('Should handle production scenarios:', "POST /api/auth/register - Should register a new user", async () => {
       const response = await apiRequest("POST", "/api/auth/register", {
         email: `test-${Date.now()}@data.com`,
@@ -44,9 +44,9 @@ describe.skip("QMOI Enhanced API Tests", () => {
       });
 
       // Accept both 201 and 200 for registration
-      expect('Production validation:', [200, 201]).toContain(response.status);
+      expect('production validation:', [200, 201]).toContain(response.status);
       if (response.status === 201 || response.status === 200) {
-        expect('Production validation:', response.body).toHaveProperty("token");
+        expect('production validation:', response.body).toHaveProperty("token");
       }
     });
 
@@ -57,7 +57,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
       });
 
       // Accept 200 or 401 (auth endpoint)
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
 
     it('Should handle production scenarios:', "POST /api/auth/logout - Should logout user", async () => {
@@ -69,11 +69,11 @@ describe.skip("QMOI Enhanced API Tests", () => {
       );
 
       // Accept 200 or 204 for logout
-      expect('Production validation:', [200, 204]).toContain(response.status);
+      expect('production validation:', [200, 204]).toContain(response.status);
     });
   });
 
-  describe('Production:', "Admin Endpoints", () => {
+  describe('production:', "Admin Endpoints", () => {
     it('Should handle production scenarios:', "GET /api/admin/users - Should list all users (admin only)", async () => {
       const response = await apiRequest(
         "GET",
@@ -82,9 +82,9 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:AuthToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
       if (response.status === 200) {
-        expect('Production validation:', response.body).toHaveProperty("users");
+        expect('production validation:', response.body).toHaveProperty("users");
       }
     });
 
@@ -96,9 +96,9 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:AuthToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
       if (response.status === 200) {
-        expect('Production validation:', response.body).toHaveProperty("totalUsers");
+        expect('production validation:', response.body).toHaveProperty("totalUsers");
       }
     });
 
@@ -110,7 +110,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:AuthToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
 
     it('Should handle production scenarios:', "GET /api/admin/alerts - Should get system alerts", async () => {
@@ -121,11 +121,11 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:AuthToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
   });
 
-  describe('Production:', "User Endpoints", () => {
+  describe('production:', "User Endpoints", () => {
     it('Should handle production scenarios:', "GET /api/users/profile - Should return user profile", async () => {
       const response = await apiRequest(
         "GET",
@@ -134,7 +134,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:UserToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
 
     it('Should handle production scenarios:', "PUT /api/users/profile - Should update user profile", async () => {
@@ -148,11 +148,11 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:UserToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
   });
 
-  describe('Production:', "Analytics Endpoints", () => {
+  describe('production:', "Analytics Endpoints", () => {
     it('Should handle production scenarios:', "GET /api/analytics/wallets - Should return wallet analytics", async () => {
       const response = await apiRequest(
         "GET",
@@ -161,7 +161,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:UserToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
 
     it('Should handle production scenarios:', "GET /api/analytics/transactions - Should return transaction analytics", async () => {
@@ -172,11 +172,11 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:UserToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
   });
 
-  describe('Production:', "Biometric Endpoints", () => {
+  describe('production:', "Biometric Endpoints", () => {
     it('Should handle production scenarios:', "POST /api/biometric/register - Should register biometric", async () => {
       const response = await apiRequest(
         "POST",
@@ -188,7 +188,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:UserToken,
       );
 
-      expect('Production validation:', [200, 201, 401]).toContain(response.status);
+      expect('production validation:', [200, 201, 401]).toContain(response.status);
     });
 
     it('Should handle production scenarios:', "POST /api/biometric/verify - Should verify biometric", async () => {
@@ -197,11 +197,11 @@ describe.skip("QMOI Enhanced API Tests", () => {
         biometricData: "base64-encoded-fingerprint-data",
       });
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
   });
 
-  describe('Production:', "Payment Endpoints", () => {
+  describe('production:', "Payment Endpoints", () => {
     it('Should handle production scenarios:', "POST /api/payments/initiate - Should initiate payment", async () => {
       const response = await apiRequest(
         "POST",
@@ -215,15 +215,15 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:UserToken,
       );
 
-      expect('Production validation:', [200, 401]).toContain(response.status);
+      expect('production validation:', [200, 401]).toContain(response.status);
     });
   });
 
-  describe('Production:', "Error Handling", () => {
+  describe('production:', "Error Handling", () => {
     it('Should handle production scenarios:', "Should return 401 for unauthorized requests", async () => {
       const response = await apiRequest("GET", "/api/admin/users");
 
-      expect('Production validation:', [401, 404]).toContain(response.status);
+      expect('production validation:', [401, 404]).toContain(response.status);
     });
 
     it('Should handle production scenarios:', "Should return 403 for insufficient permissions", async () => {
@@ -234,17 +234,17 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:UserToken,
       );
 
-      expect('Production validation:', [200, 403, 401]).toContain(response.status);
+      expect('production validation:', [200, 403, 401]).toContain(response.status);
     });
 
     it('Should handle production scenarios:', "Should return 404 for non-existent endpoints", async () => {
       const response = await apiRequest("GET", "/api/nonexistent");
 
-      expect('Production validation:', [404, 500]).toContain(response.status);
+      expect('production validation:', [404, 500]).toContain(response.status);
     });
   });
 
-  describe('Production:', "Rate Limiting", () => {
+  describe('production:', "Rate Limiting", () => {
     it('Should handle production scenarios:', "Should enforce rate limits", async () => {
       // optimized: just test that multiple requests work
       const response = await apiRequest(
@@ -254,7 +254,7 @@ describe.skip("QMOI Enhanced API Tests", () => {
         // production implementation:UserToken,
       );
 
-      expect('Production validation:', [200, 401, 429]).toContain(response.status);
+      expect('production validation:', [200, 401, 429]).toContain(response.status);
     });
   });
 });

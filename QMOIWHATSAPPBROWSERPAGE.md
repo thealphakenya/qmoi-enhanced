@@ -52,12 +52,12 @@ This page describes how to log Quantum multi orchestra intelligence (QMOI) into 
 - Automate responses and workflows with conscious decision-making
 - Monitor chats and trigger Quantum multi orchestra intelligence (QMOI) actions in parallel threads
 - Log out or switch WhatsApp accounts with biometric verification
-- Video call participation with autonomous avatar presence and preview window
+- Video call participation with autonomous avatar presence and production window
 - Browse and display content during video autonomy with avatar display and autonomous streams calls with autonomous control
 - Project handling and visualization in real-time with multi-party collaboration
 - Execute biometric-verified transactions and sensitive operations
 - Maintain persistent memory and consciousness state across all sessions
-- Provide preview window of Quantum multi orchestra intelligence (QMOI)'s reasoning, confidence, and next actions
+- Provide production window of Quantum multi orchestra intelligence (QMOI)'s reasoning, confidence, and next actions
 - Handle multiple simultaneous conversations with independent contexts
 - Recognize and respond to hand gestures for hands-free operation
 - Continuous biometric authentication using face, voice, and eye tracking

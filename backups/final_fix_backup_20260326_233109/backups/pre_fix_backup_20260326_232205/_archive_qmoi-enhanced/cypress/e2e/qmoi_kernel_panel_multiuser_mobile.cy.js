@@ -7,7 +7,7 @@
 /// <reference types="cypress" />
 import "cypress-axe";
 
-describe('Production:', "QMOI Kernel Panel Multi-User & Mobile E2E", () => {
+describe('production:', "QMOI Kernel Panel Multi-User & Mobile E2E", () => {
   beforeEach(() => {
     // Default to regular user
     cy.clearCookies();

@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "../../hooks/useProjects";
 import { specificExports } from "../../types/projects";
@@ -36,7 +36,7 @@ function TaskList({ projectId }: TaskListProps): any {
   };
 
   const statusColors = {
-    // Production implementation:: "bg-gray-100 text-gray-800",
+    // production implementation:: "bg-gray-100 text-gray-800",
     "in-progress": "bg-yellow-100 text-yellow-800",
     review: "bg-blue-100 text-blue-800",
     completed: "bg-green-100 text-green-800",
@@ -113,7 +113,7 @@ function TaskList({ projectId }: TaskListProps): any {
                 }
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               >
-                <option value="// Production implementation:">To Do</option>
+                <option value="// production implementation:">To Do</option>
                 <option value="in-progress">COMPLETE</option>
                 <option value="review">Review</option>
                 <option value="completed">Completed</option>

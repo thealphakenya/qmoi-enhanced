@@ -211,7 +211,7 @@ def search_knowledge_base(query: str) -> str:
     output_lines = []
     for i, result in enumerate(results[:10], 1):
         title = result.get("title", "Untitled")
-        excerpt = result.get("excerpt", "No PRODUCTION")[:150]
+        excerpt = result.get("excerpt", "No production")[:150]
         relevance = result.get("score", 0.0)
         
         result_md = f""""

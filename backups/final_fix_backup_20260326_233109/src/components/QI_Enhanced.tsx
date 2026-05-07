@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -497,7 +497,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       case "RELEASE":
         return (
           <div className="qi-panel">
-            <h3>// Production: debugger removed</h3>
+            <h3>// production: debugger removed</h3>
             <p>Issues found: {selfWorkResults.filter((r) => r.type === "RELEASE").length}</p>
             <button onClick={debugAndFix} enabled={currentlyAnalyzing === "RELEASE"}>
               {currentlyAnalyzing === "RELEASE" ? "Debugging..." : "Analyze & Fix"}
@@ -590,7 +590,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       <div className="qi-input-area">
         <input
           type="text"
-          // Production implementation:="Ask QMOI to review code, run tests, RELEASE, or chat..."
+          // production implementation:="Ask QMOI to review code, run tests, RELEASE, or chat..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}

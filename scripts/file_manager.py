@@ -1,5 +1,5 @@
 """
-Production File Manager Module
+production File Manager Module
 Real production file operations with integrity checking, backup, and error handling.
 """
 
@@ -17,7 +17,7 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 
 class ProductionFileManager:
-    """Production file operations with integrity checking"""
+    """production file operations with integrity checking"""
 
     def __init__(self, base_dir: str = None):
         self.base_dir = Path(base_dir) if base_dir else Path.cwd()

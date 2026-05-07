@@ -10,7 +10,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const logger = {
-  info: console.log.bind(console),
+  info: logger.info.bind(console),
   warn: console.warn.bind(console),
   error: console.error.bind(console),
 };

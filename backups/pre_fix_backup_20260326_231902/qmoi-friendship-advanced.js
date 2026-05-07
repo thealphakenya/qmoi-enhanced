@@ -9,14 +9,14 @@
 
 class QMOIFriendshipAdvanced {
   constructor() {
-    this.supportStrategies = new Map() // Production: Consider object for small datasets();
-    this.financialAdvisors = new Map() // Production: Consider object for small datasets();
-    this.healthCoaches = new Map() // Production: Consider object for small datasets();
-    this.relationshipCounselors = new Map() // Production: Consider object for small datasets();
-    this.careerAdvisors = new Map() // Production: Consider object for small datasets();
-    this.culturalIntelligence = new Map() // Production: Consider object for small datasets();
-    this.proactiveTriggers = new Map() // Production: Consider object for small datasets();
-    this.learningModules = new Map() // Production: Consider object for small datasets();
+    this.supportStrategies = new Map() // production: Consider object for small datasets();
+    this.financialAdvisors = new Map() // production: Consider object for small datasets();
+    this.healthCoaches = new Map() // production: Consider object for small datasets();
+    this.relationshipCounselors = new Map() // production: Consider object for small datasets();
+    this.careerAdvisors = new Map() // production: Consider object for small datasets();
+    this.culturalIntelligence = new Map() // production: Consider object for small datasets();
+    this.proactiveTriggers = new Map() // production: Consider object for small datasets();
+    this.learningModules = new Map() // production: Consider object for small datasets();
   }
 
   // Proactive Support & Suggestions

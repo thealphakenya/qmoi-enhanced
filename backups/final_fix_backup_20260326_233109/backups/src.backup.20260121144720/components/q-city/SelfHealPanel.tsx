@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-env browser */
 import { specificExports } from "react";
 import { specificExports } from "../../hooks/useAuth";
@@ -111,7 +111,7 @@ const SelfHealPanel: React.FC = () => {
     localStorage.removeItem("selfHealHistory");
   };
 
-  // Scheduling UI (// Production implementation:)
+  // Scheduling UI (// production implementation:)
   const handleSchedule = () => {
     notification.show("Scheduling feature available!");
   };

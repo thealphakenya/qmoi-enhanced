@@ -165,7 +165,7 @@ def scan_ui(root: Path) -> Any:
                 issues = []
                 if REAL_IMPL_PAT.search(text):
                 if IMPLEMENTATION_REQUIRED_PAT.search(text):
-                if ✅ PRODUCTION READY - Fully implemented with production hardening
+                if ✅ production READY - Fully implemented with production hardening
                 # optimized heuristic: very long files may need split
                 if len(text) > 20000:
                     issues.append('large-file')

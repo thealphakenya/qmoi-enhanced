@@ -12,8 +12,8 @@ class QMOISpaceApp {
   constructor() {
     this.currentTab = "dashboard";
     this.isOnline = navigator.onLine;
-    this.cache = new Map() // Production: Consider object for small datasets();
-    this.observers = new Map() // Production: Consider object for small datasets();
+    this.cache = new Map() // production: Consider object for small datasets();
+    this.observers = new Map() // production: Consider object for small datasets();
 
     this.init();
   }

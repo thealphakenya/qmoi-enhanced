@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -19,7 +19,7 @@ const AlphaQAISystem: React.FC<AlphaQAISystemProps> = ({ className = "" }) => {
   const [lastUpdate, setLastUpdate] = useState(new Date().toLocaleString());
 
   useEffect(() => {
-    // Production implementation: system status updates
+    // production implementation: system status updates
     const interval = setInterval(() => {
       setLastUpdate(new Date().toLocaleString());
     }, 30000); // Update every 30 seconds

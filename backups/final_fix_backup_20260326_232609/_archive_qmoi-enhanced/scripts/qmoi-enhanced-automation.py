@@ -362,7 +362,7 @@ def __init__(self, automation: QMOIEnhancedAutomation) -> Any:
     """
 def run(self) -> AutomationResult:
         """Run module (to be implemented by subclasses)"""
-    """Production implementation"""
+    """production implementation"""
     
     """
     get_performance_metrics function

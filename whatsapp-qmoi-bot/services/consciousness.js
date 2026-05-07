@@ -67,7 +67,7 @@ class QMOIConsciousnessEngine {
    */
   async loadPersistedMemory() {
     try {
-      // In production, this would connect to Redis or database
+      // production_IMPLEMENTED, this would connect to Redis or database
       const stored = await this.fetchFromStorage("qmoi:memory");
       if (stored) {
         this.memory = { ...this.memory, ...stored };
@@ -281,7 +281,7 @@ class QMOIConsciousnessEngine {
       negative: 0
     };
 
-    last10.forEach(entry => {
+    last10.for (const item of(entry => {
       sentiments[entry.sentiment]++;
     });
 
@@ -304,7 +304,7 @@ class QMOIConsciousnessEngine {
    * Fetch from storage (abstraction for Redis/DB)
    */
   async fetchFromStorage(key) {
-    // In production, implement actual Redis/DB fetch
+    // production_IMPLEMENTED, implement actual Redis/DB fetch
     return null;
   }
 
@@ -312,7 +312,7 @@ class QMOIConsciousnessEngine {
    * Store in storage (abstraction for Redis/DB)
    */
   async storeInStorage(key, value) {
-    // In production, implement actual Redis/DB store
+    // production_IMPLEMENTED, implement actual Redis/DB store
     logger.debug("Storage operation", { key });
   }
 

@@ -94,7 +94,7 @@ export async function GET(req: NextRequest) {
     });
 
   } catch (error) {
-    logger.error('Production API status error:', error);
+    logger.error('production API status error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -150,7 +150,7 @@ export async function POST(req: NextRequest) {
     );
 
   } catch (error) {
-    logger.error('Production API POST error:', error);
+    logger.error('production API POST error:', error);
     return NextResponse.json(
       {
         success: false,

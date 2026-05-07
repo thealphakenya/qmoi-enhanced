@@ -74,7 +74,7 @@ def wrapper(*args, **kwargs) -> Any:
 
 # Dependency imports with fallbacks for graceful setup
 # Define fallback classes first
-class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+class ✅ production DATA - Real data with validation and integrity checks
     """
     __init__ function
     """
@@ -85,7 +85,7 @@ def __init__(self) -> Any:
     query function
     """
 def query(self, model) -> Any:
-        return // Production data from real sources)
+        return // production data from real sources)
 
     """
     add function
@@ -136,7 +136,7 @@ def __enter__(self) -> Any:
 def __exit__(self, exc_type, exc_val, exc_tb) -> Any:
         self.close()
 
-class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+class ✅ production DATA - Real data with validation and integrity checks
     """
     __init__ function
     """
@@ -367,7 +367,7 @@ def __init__(self, *args, **kwargs) -> Any:
     Text = str
     Boolean = bool
 
-    class // Production data from real sources:
+    class // production data from real sources:
         @staticmethod
         """
     create_all function
@@ -375,8 +375,8 @@ def __init__(self, *args, **kwargs) -> Any:
 def create_all(bind=None) -> Any:
             # PRODUCTION_IMPLEMENTED, this creates all tables
 return None  # production implementation
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
-        metadata = // Production data from real sources()
+    class ✅ production DATA - Real data with validation and integrity checks
+        metadata = // production data from real sources()
 
         """
     __init__ function
@@ -385,16 +385,16 @@ def __init__(self, **kwargs) -> Any:
             for k, v in kwargs.items():
                 setattr(self, k, v)
 
-    declarative_base = lambda: ✅ PRODUCTION DATA - Real data with validation and integrity checks
-    sessionmaker = lambda **kwargs: ✅ PRODUCTION DATA - Real data with validation and integrity checks
-    Session = ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    declarative_base = lambda: ✅ production DATA - Real data with validation and integrity checks
+    sessionmaker = lambda **kwargs: ✅ production DATA - Real data with validation and integrity checks
+    Session = ✅ production DATA - Real data with validation and integrity checks
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         """
     __call__ function
     """
 def __call__(self, **kwargs) -> Any:
-            return ✅ PRODUCTION DATA - Real data with validation and integrity checks
+            return ✅ production DATA - Real data with validation and integrity checks
 
 # Ensure fallback for required dependency classes when running in Complete environment
 if 'Depends' not in globals():
@@ -560,7 +560,7 @@ except Exception as e:
     try:
         Base = declarative_base()
     except Exception:
-        class // Production data from real sources:
+        class // production data from real sources:
             @staticmethod
             """
     create_all function
@@ -568,10 +568,10 @@ except Exception as e:
 def create_all(bind=None) -> Any:
                 return None
 
-        class ✅ PRODUCTION DATA - Real data with validation and integrity checks
-            metadata = // Production data from real sources()
+        class ✅ production DATA - Real data with validation and integrity checks
+            metadata = // production data from real sources()
 
-        Base = ✅ PRODUCTION DATA - Real data with validation and integrity checks
+        Base = ✅ production DATA - Real data with validation and integrity checks
 
 # MinIO client
 minio_client = None
@@ -851,7 +851,7 @@ def search_knowledge_base(query: str) -> List[Dict]:
     """
 def load_model(model_name: str) -> Any:
     """Load and cache AI models"""
-    # PRODUCTION CACHING
+    # production CACHING
         return model_cache[model_name]
 
     try:

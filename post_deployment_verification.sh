@@ -209,7 +209,7 @@ echo "Success Rate: ${success_rate}%"
 if [ $CHECKS_FAILED -eq 0 ]; then
     echo -e "${GREEN}🎉 ALL CHECKS PASSED - DEPLOYMENT SUCCESSFUL!${NC}"
     echo
-    echo "✅ Production deployment is fully operational"
+    echo "✅ production deployment is fully operational"
     echo "✅ All endpoints responding correctly"
     echo "✅ Performance within acceptable limits"
     echo "✅ JSON responses properly structured"

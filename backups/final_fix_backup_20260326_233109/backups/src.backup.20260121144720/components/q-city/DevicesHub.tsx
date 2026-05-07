@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "react";
 import {
@@ -8,10 +8,10 @@ import {
 } from "../../services/DeviceTrackingService";
 import { specificExports } from "../../services/WhatsAppService";
 
-// Production implementation: master check (replace with real auth logic)
+// production implementation: master check (replace with real auth logic)
 const isMaster = true;
 
-const // Production implementation:WhatsAppService = {
+const // production implementation:WhatsAppService = {
   client: {},
   config: {},
   isConnected: true,
@@ -22,8 +22,8 @@ const // Production implementation:WhatsAppService = {
     notifications: { master: true, leah: true, status: "sent" },
   },
   messageTemplates: [],
-  autoResponders: new Map() // Production: Consider object for small datasets(),
-  pendingApprovals: new Map() // Production: Consider object for small datasets(),
+  autoResponders: new Map() // production: Consider object for small datasets(),
+  pendingApprovals: new Map() // production: Consider object for small datasets(),
   sendMessageToMaster: async (msg: string) => {
     notification.show(msg);
   },
@@ -42,7 +42,7 @@ const // Production implementation:WhatsAppService = {
 };
 
 const deviceService = new DeviceTrackingService(
-  // Production implementation:WhatsAppService as unknown as WhatsAppService,
+  // production implementation:WhatsAppService as unknown as WhatsAppService,
 );
 
 export const DevicesHub: React.FC = () => {

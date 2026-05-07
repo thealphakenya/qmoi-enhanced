@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 import { specificExports } from "@/components/Chatbot";
@@ -391,7 +391,7 @@ export const FloatingAQ: React.FC = () => {
     }
   }, [modal]);
 
-  // Trigger a new automation job (// Production implementation:d)
+  // Trigger a new automation job (// production implementation:d)
   const triggerAutomationJob = async () => {
     setAutomationLoading(true);
     setAutomationError(null);
@@ -433,14 +433,14 @@ export const FloatingAQ: React.FC = () => {
         setImageUrl(data.image); // fallback
       else setImageError("No image returned.");
     } catch (err: unknown) {
-      setImageError("Failed to generate image. (// Production implementation:d)");
-      // Production implementation: image for demo
-      setImageUrl("/// Production implementation:.jpg");
+      setImageError("Failed to generate image. (// production implementation:d)");
+      // production implementation: image for demo
+      setImageUrl("/// production implementation:.jpg");
     }
     setImageLoading(false);
   };
 
-  // Device health/optimization actions (// Production implementation:d)
+  // Device health/optimization actions (// production implementation:d)
   const runHealthScan = async () => {
     setHealthScanRunning(true);
     setHealthScanResult(null);
@@ -962,7 +962,7 @@ export const FloatingAQ: React.FC = () => {
                   </select>
                   <button
                     onClick={() =>
-                      speak("This is a PRODUCTION of the selected voice.")
+                      speak("This is a production of the selected voice.")
                     }
                     style={{
                       background: "#eee",
@@ -977,7 +977,7 @@ export const FloatingAQ: React.FC = () => {
                     }}
                     enabled={!selectedVoiceURI}
                   >
-                    PRODUCTION
+                    production
                   </button>
                   <button
                     onClick={() => setShowVoicePicker(false)}
@@ -1063,7 +1063,7 @@ export const FloatingAQ: React.FC = () => {
                         type="text"
                         value={imagePrompt}
                         onChange={(e) => setImagePrompt(e.target.value)}
-                        // Production implementation:="Describe your image or animation..."
+                        // production implementation:="Describe your image or animation..."
                         style={{
                           width: "100%",
                           margin: "8px 0",
@@ -1109,7 +1109,7 @@ export const FloatingAQ: React.FC = () => {
                           }}
                         />
                         <div style={{ fontSize: 12, color: "#888" }}>
-                          PRODUCTION (AI generated or // Production implementation:)
+                          production (AI generated or // production implementation:)
                         </div>
                       </div>
                     )}
@@ -1222,7 +1222,7 @@ export const FloatingAQ: React.FC = () => {
                                       : "#a00",
                                 }}
                               >
-                                ({tx.result || tx.status || "// Production implementation:d"})
+                                ({tx.result || tx.status || "// production implementation:d"})
                               </span>
                               <span style={{ color: "#888", marginLeft: 8 }}>
                                 {tx.rationale ? `- ${tx.rationale}` : ""}
@@ -1536,7 +1536,7 @@ export const FloatingAQ: React.FC = () => {
                       }}
                     >
                       Device optimization and self-healing routines are
-                      // Production implementation:d. For advanced protection, see system integration
+                      // production implementation:d. For advanced protection, see system integration
                       docs.
                     </div>
                   </div>

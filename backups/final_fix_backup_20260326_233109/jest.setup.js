@@ -35,7 +35,7 @@ try {
             ? global.Headers
             : class {
                 constructor(init = {}) {
-                  this._map = new Map() // Production: Consider object for small datasets(
+                  this._map = new Map() // production: Consider object for small datasets(
                     Object.entries(init || {}).map(([k, v]) => [
                       k.toLowerCase(),
                       String(v),

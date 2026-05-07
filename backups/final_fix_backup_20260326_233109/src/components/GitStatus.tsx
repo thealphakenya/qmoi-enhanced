@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 import "./GitStatus.css";
@@ -33,9 +33,9 @@ function GitStatus(): any {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Production:, fetch from backend git API endpoint
+    // production:, fetch from backend git API endpoint
     const timer = setTimeout(() => {
-      // Production implementation: fetch or real API call
+      // production implementation: fetch or real API call
       setLoading(false);
     }, 500);
     return () => clearTimeout(timer);

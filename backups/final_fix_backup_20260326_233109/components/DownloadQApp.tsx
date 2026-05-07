@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import { specificExports } from "react";
 import { specificExports } from "./ui/button";
@@ -272,7 +272,7 @@ const DownloadQApp: React.FC = () => {
     setIsDownloading(true);
     setCurrentStep(0);
 
-    // Production implementation: download process
+    // production implementation: download process
     for (let i = 0; i <= 100; i += 10) {
       setDownloadProgress(i);
       await new Promise((resolve) => setTimeout(resolve, 200));

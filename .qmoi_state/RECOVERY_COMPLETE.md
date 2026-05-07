@@ -112,7 +112,7 @@ An automated evolution script on March 26 attempted to replace `✅ PRODUCTION_I
 
 | File | Location | Status |
 |------|----------|--------|
-| DeviceIntegration✅ PRODUCTION COMPLETE - Full feature implementation and testing
+| DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
 | QVillage.tsx | components/q-city/ | ✅ Restored |
 
 ---
@@ -195,7 +195,7 @@ python3 scripts/autotag_md_with_lion.py --apply --out docs/md_index.json
 For always-on documentation synchronization, deploy the service files in `scripts/` to a persistent host or container.
 
 
-## Production Readiness
+## production Readiness
 
 Define the production quality expectations and validation requirements.
 

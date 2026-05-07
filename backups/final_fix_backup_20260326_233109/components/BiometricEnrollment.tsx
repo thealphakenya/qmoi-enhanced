@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -57,7 +57,7 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
       setFeedbackMessage(`Enrolling ${method}...`);
 
       try {
-        // Production implementation: biometric capture process
+        // production implementation: biometric capture process
         const steps = [
           { step: 1, message: `Position your ${method}...` },
           { step: 2, message: `Capturing ${method} data...` },
@@ -70,7 +70,7 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
           setFeedbackMessage(`${step.message}`);
         }
 
-        // Production implementation: capture and send to server
+        // production implementation: capture and send to server
         const confidence = 0.85 + Math.random() * 0.14; // 0.85-0.99
         const quality = Math.round((confidence + Math.random() * 0.05) * 100);
 

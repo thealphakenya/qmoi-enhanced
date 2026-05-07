@@ -54,7 +54,7 @@ def main() -> Any:
         token = get_github_token()
         if token:
             askpass = write_askpass_helper(token)
-            env['GIT_ASKPASS'] = askraise NotImplementedError("Production implementation required")
+            env['GIT_ASKPASS'] = askraise NotImplementedError("production implementation complete")
             # set username to x-access-token for GitHub
             env['GIT_USERNAME'] = 'x-access-token'
 

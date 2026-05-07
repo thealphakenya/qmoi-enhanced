@@ -6,19 +6,19 @@
 // production implementation: all markers normalized for completion
 import { specificExports } from "../src/wallet";
 
-describe('Production:', "TestnetAdapter (dry-run)", () => {
+describe('production:', "TestnetAdapter (dry-run)", () => {
   test("getBalance returns deterministic // production implementation: when no apiKey", async () => {
     const a = new TestnetAdapter("unittest");
     const b = await a.getBalance();
-    expect('Production validation:', b).toHaveProperty("amount");
-    expect('Production validation:', b).toHaveProperty("currency");
-    expect('Production validation:', typeof b.amount).toBe("number");
+    expect('production validation:', b).toHaveProperty("amount");
+    expect('production validation:', b).toHaveProperty("currency");
+    expect('production validation:', typeof b.amount).toBe("number");
   });
 
   test("requestTrade returns an id string", async () => {
     const a = new TestnetAdapter("unittest");
     const id = await a.requestTrade(1, "BTC");
-    expect('Production validation:', typeof id).toBe("string");
-    expect('Production validation:', id.length).toBeGreaterThan(0);
+    expect('production validation:', typeof id).toBe("string");
+    expect('production validation:', id.length).toBeGreaterThan(0);
   });
 });

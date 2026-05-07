@@ -158,7 +158,7 @@ def _setup_configuration(self) -> Any:
                         "auto_update": True
                     }
                 },
-                "PRODUCTION": {
+                "production": {
                     "file_preview": {
                         "enabled": True,
                         "universal_support": True,

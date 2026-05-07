@@ -61,16 +61,16 @@ def fix_file(self, file_path, issues) -> Any:
                 if '' in description:
                     # Replace  with actual implementation
                     if 'fetch from DB' in code or 'database' in code.lower():
-                        content = self.fix_database_✅ PRODUCTION VALUE - Real implementation with full functionality
+                        content = self.fix_database_✅ production VALUE - Real implementation with full functionality
                         fixes.append(f"Replaced  database implementation")
                     elif 'API' in code or 'endpoint' in code.lower():
-                        content = self.fix_api_✅ PRODUCTION VALUE - Real implementation with full functionality
+                        content = self.fix_api_✅ production VALUE - Real implementation with full functionality
                         fixes.append(f"Replaced  API implementation")
                     elif 'service' in code.lower():
-                        content = self.fix_service_✅ PRODUCTION VALUE - Real implementation with full functionality
+                        content = self.fix_service_✅ production VALUE - Real implementation with full functionality
                         fixes.append(f"Replaced  service implementation")
                     else:
-                        content = self.fix_generic_✅ PRODUCTION VALUE - Real implementation with full functionality
+                        content = self.fix_generic_✅ production VALUE - Real implementation with full functionality
                         fixes.append(f"Replaced  generic implementation")
 
                 elif '' in description:
@@ -78,11 +78,11 @@ def fix_file(self, file_path, issues) -> Any:
                     fixes.append(f"Replaced ")
 
                 elif '"production"' in description:
-                    content = self.fix_in_real_✅ PRODUCTION VALUE - Real implementation with full functionality
+                    content = self.fix_in_real_✅ production VALUE - Real implementation with full functionality
                     fixes.append(f"Replaced 'production' implementation")
 
                 elif '"production"' in description:
-                    content = self.fix_in_production_✅ PRODUCTION VALUE - Real implementation with full functionality
+                    content = self.fix_in_production_✅ production VALUE - Real implementation with full functionality
                     fixes.append(f"Replaced 'production' implementation")
 
                 elif 'production comment implementation' in description:
@@ -102,10 +102,10 @@ def fix_file(self, file_path, issues) -> Any:
             logger.info(f"❌ Error fixing {file_path}: {e}")
 
     """
-    fix_database_✅ PRODUCTION VALUE - Real implementation with full functionality
+    fix_database_✅ production VALUE - Real implementation with full functionality
     """
-def fix_database_✅ PRODUCTION VALUE - Real implementation with full functionality
-        """Replace database ✅ PRODUCTION VALUE - Real implementation with full functionality
+def fix_database_✅ production VALUE - Real implementation with full functionality
+        """Replace database ✅ production VALUE - Real implementation with full functionality
         # Common database patterns
         patterns = [
             (r'\[PRODUCTION_IMPLEMENTED\].*fetch from DB', 'fetchFromDatabase'),
@@ -123,10 +123,10 @@ def fix_database_✅ PRODUCTION VALUE - Real implementation with full functional
         return content
 
     """
-    fix_api_✅ PRODUCTION VALUE - Real implementation with full functionality
+    fix_api_✅ production VALUE - Real implementation with full functionality
     """
-def fix_api_✅ PRODUCTION VALUE - Real implementation with full functionality
-        """Replace API ✅ PRODUCTION VALUE - Real implementation with full functionality
+def fix_api_✅ production VALUE - Real implementation with full functionality
+        """Replace API ✅ production VALUE - Real implementation with full functionality
         patterns = [
             (r'\[PRODUCTION_IMPLEMENTED\].*API', 'callproductionAPI'),
             (r'production.*API', 'callproductionAPI'),
@@ -141,10 +141,10 @@ def fix_api_✅ PRODUCTION VALUE - Real implementation with full functionality
         return content
 
     """
-    fix_service_✅ PRODUCTION VALUE - Real implementation with full functionality
+    fix_service_✅ production VALUE - Real implementation with full functionality
     """
-def fix_service_✅ PRODUCTION VALUE - Real implementation with full functionality
-        """Replace service ✅ PRODUCTION VALUE - Real implementation with full functionality
+def fix_service_✅ production VALUE - Real implementation with full functionality
+        """Replace service ✅ production VALUE - Real implementation with full functionality
         patterns = [
             (r'\[PRODUCTION_IMPLEMENTED\].*service', 'initializeproductionService'),
             (r'production.*service', 'initializeproductionService'),
@@ -159,10 +159,10 @@ def fix_service_✅ PRODUCTION VALUE - Real implementation with full functionali
         return content
 
     """
-    fix_generic_✅ PRODUCTION VALUE - Real implementation with full functionality
+    fix_generic_✅ production VALUE - Real implementation with full functionality
     """
-def fix_generic_✅ PRODUCTION VALUE - Real implementation with full functionality
-        """Replace generic  ✅ PRODUCTION VALUE - Real implementation with full functionality
+def fix_generic_✅ production VALUE - Real implementation with full functionality
+        """Replace generic  ✅ production VALUE - Real implementation with full functionality
         return re.sub(r'\[PRODUCTION_IMPLEMENTED\]', '// production implementation:', content)
 
     """
@@ -173,17 +173,17 @@ def fix_implementation_required(self, content, code) -> Any:
         return re.sub(r'\[production implementation complete\]', '// production implementation complete:', content)
 
     """
-    fix_in_real_✅ PRODUCTION VALUE - Real implementation with full functionality
+    fix_in_real_✅ production VALUE - Real implementation with full functionality
     """
-def fix_in_real_✅ PRODUCTION VALUE - Real implementation with full functionality
-        """Replace 'production' ✅ PRODUCTION VALUE - Real implementation with full functionality
+def fix_in_real_✅ production VALUE - Real implementation with full functionality
+        """Replace 'production' ✅ production VALUE - Real implementation with full functionality
         return re.sub(r'production', 'production', content)
 
     """
-    fix_in_production_✅ PRODUCTION VALUE - Real implementation with full functionality
+    fix_in_production_✅ production VALUE - Real implementation with full functionality
     """
-def fix_in_production_✅ PRODUCTION VALUE - Real implementation with full functionality
-        """Replace 'production' ✅ PRODUCTION VALUE - Real implementation with full functionality
+def fix_in_production_✅ production VALUE - Real implementation with full functionality
+        """Replace 'production' ✅ production VALUE - Real implementation with full functionality
         return content
 
     """
@@ -195,17 +195,17 @@ def fix_production_comment(self, content, code) -> Any:
         content = re.sub(r'// // production implementation:', '// production implementation:', content)
         content = re.sub(r'# // production implementation:', '# production implementation:', content)
 
-        # Remove production comment ✅ PRODUCTION VALUE - Real implementation with full functionality
+        # Remove production comment ✅ production VALUE - Real implementation with full functionality
         content = re.sub(r'// production implementation:\s*$', '', content, flags=re.MULTILINE)
         content = re.sub(r'# production implementation:\s*$', '', content, flags=re.MULTILINE)
 
         return content
 
     """
-    fix_in_production_✅ PRODUCTION VALUE - Real implementation with full functionality
+    fix_in_production_✅ production VALUE - Real implementation with full functionality
     """
-def fix_in_production_✅ PRODUCTION VALUE - Real implementation with full functionality
-        """Replace 'production' ✅ PRODUCTION VALUE - Real implementation with full functionality
+def fix_in_production_✅ production VALUE - Real implementation with full functionality
+        """Replace 'production' ✅ production VALUE - Real implementation with full functionality
         # Replace "PRODUCTION_IMPLEMENTED" with actual production implementations
         if 'environment variables' in code.lower():
             content = re.sub(r'production.*environment variables', 'production: Use environment variables from secure secret manager', content)
@@ -266,7 +266,7 @@ def run_fixes(self) -> Any:
     """
 def cleanup_duplicate_comments(self, content) -> Any:
         """Clean up duplicate and malformed production comments"""
-        # Remove lines that are just production comment ✅ PRODUCTION VALUE - Real implementation with full functionality
+        # Remove lines that are just production comment ✅ production VALUE - Real implementation with full functionality
         content = re.sub(r'^\s*// // production implementation:\s*$', '', content, flags=re.MULTILINE)
         content = re.sub(r'^\s*# // production implementation:\s*$', '', content, flags=re.MULTILINE)
         content = re.sub(r'^\s*// production implementation:\s*$', '', content, flags=re.MULTILINE)

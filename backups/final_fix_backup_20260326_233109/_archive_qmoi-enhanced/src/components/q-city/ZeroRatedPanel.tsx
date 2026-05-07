@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./QMOIStateProvider";
 
 const fetchZeroRatedStatus = async () => {
-  // Production implementation:: fetch status from backend or local state
+  // production implementation:: fetch status from backend or local state
   return {
     active: true,
     lastUsed: new Date().toLocaleString(),

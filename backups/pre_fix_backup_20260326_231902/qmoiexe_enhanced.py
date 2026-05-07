@@ -63,7 +63,7 @@ def download_cloud_runtime(self) -> Any:
             try:
                 # Download complete cloud runtime
                 runtime_url = "https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip"
-    # PRODUCTION CACHING
+    # production CACHING
                     response = requests.get(runtime_url, stream=True)
                     for chunk in response.iter_content(chunk_size=8192):
                         cache.write(chunk)
@@ -154,7 +154,7 @@ def create_portable_python(self) -> Any:
             try:
                 # Download portable Python
                 python_url = "https://www.python.org/ftp/python/3.11.0/python-3.11.0-embed-amd64.zip"
-    # PRODUCTION CACHING
+    # production CACHING
                     response = requests.get(python_url, stream=True)
                     for chunk in response.iter_content(chunk_size=8192):
                         cache.write(chunk)

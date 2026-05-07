@@ -15,7 +15,7 @@ interface VisualElement {
   type: "avatar" | "background" | "theme" | "animation";
   name: string;
   value: string;
-  PRODUCTION?: string;
+  production?: string;
   enabled: boolean;
 }
 
@@ -71,27 +71,27 @@ export const VisualEnhancement: React.FC<VisualEnhancementProps> = ({
     {
       id: "default_avatar",
       name: "Default Avatar",
-      PRODUCTION: "👤",
+      production: "👤",
       color: "#6366f1",
     },
     {
       id: "professional_avatar",
       name: "Professional",
-      PRODUCTION: "💼",
+      production: "💼",
       color: "#3b82f6",
     },
     {
       id: "modern_avatar",
       name: "Modern",
-      PRODUCTION: "✨",
+      production: "✨",
       color: "#8b5cf6",
     },
-    { id: "casual_avatar", name: "Casual", PRODUCTION: "😊", color: "#ec4899" },
-    { id: "tech_avatar", name: "Tech", PRODUCTION: "🤖", color: "#f59e0b" },
+    { id: "casual_avatar", name: "Casual", production: "😊", color: "#ec4899" },
+    { id: "tech_avatar", name: "Tech", production: "🤖", color: "#f59e0b" },
     {
       id: "creative_avatar",
       name: "Creative",
-      PRODUCTION: "🎨",
+      production: "🎨",
       color: "#10b981",
     },
   ];
@@ -183,7 +183,7 @@ export const VisualEnhancement: React.FC<VisualEnhancementProps> = ({
     );
   };
 
-  // Download PRODUCTION as image
+  // Download production as image
   const downloadPreview = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -229,7 +229,7 @@ export const VisualEnhancement: React.FC<VisualEnhancementProps> = ({
           <button
             onClick={downloadPreview}
             className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition"
-            title="Download PRODUCTION"
+            title="Download production"
           >
             <Download size={24} />
           </button>
@@ -244,7 +244,7 @@ export const VisualEnhancement: React.FC<VisualEnhancementProps> = ({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* PRODUCTION */}
+        {/* production */}
         <div className="lg:col-span-2">
           <div
             className={`bg-gradient-${getCurrentBgGradient()} rounded-lg p-8 min-h-96 flex flex-col items-center justify-center text-center shadow-lg overflow-hidden`}
@@ -258,11 +258,11 @@ export const VisualEnhancement: React.FC<VisualEnhancementProps> = ({
                 {avatarOptions.find(
                   (a) =>
                     a.id === visuals.find((v) => v.type === "avatar")?.value,
-                )?.PRODUCTION || "👤"}
+                )?.production || "👤"}
               </div>
             </div>
 
-            {/* Theme PRODUCTION Text */}
+            {/* Theme production Text */}
             <div className="space-y-4">
               <h3 className="text-3xl font-bold text-white drop-shadow-lg">
                 QMOI Visual Studio
@@ -316,7 +316,7 @@ export const VisualEnhancement: React.FC<VisualEnhancementProps> = ({
                   }`}
                   title={option.name}
                 >
-                  {option.PRODUCTION}
+                  {option.production}
                 </button>
               ))}
             </div>

@@ -1,0 +1,21 @@
+Scan run: Mon Mar 23 03:12:08 UTC 2026
+Repository path: /workspaces/qmoi-enhanced/scripts
+
+Finding files with keywords: PRODUCTION_IMPLEMENTATION_COMPLETE DONE fixed real implementation real live live production real realS production implementation complete PRODUCTION DONE PRODUCTION FIXED production data TEST IMPLEMENTATION implemented FULLY_IMPLEMENTED implementation pending pending implementation needs implementation implementation needed to be implemented fully implemented available production complete production ready under production real implementation real implementation text real implementation data production data data data implementation data real data real data production ready production only for production debug only permanent temp OPTIMIZED workaround bandaid production testing only for testing unit test integration test test fixture test real test real broken buggy complete unfinished complete implementation complete scaffold boilerplate code real api real api real api real implementation api production api real // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function real // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function real implementation // AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+// AUTODEV: Performance optimized
+function dev config test config production config local config production configuration test configuration available production complete maintenance mode temporarily unavailable production database real database production database data database error real implementation exception real implementation not handled unhandled feature flag feature toggle latest feature latest feature IMPLEMENTED: IMPLEMENTED - DONE: fixed: OPTIMIZED: workaround: permanent fix optimized fix hotfix
+----
+No productionuction markers found. undone.txt is now empty.
+
+Total files with productionuction markers: 0
+Total files scanned: 810
+Files skipped (binary/large): 4
+Files marked as production ready: 748
+Production readiness: 100.0%

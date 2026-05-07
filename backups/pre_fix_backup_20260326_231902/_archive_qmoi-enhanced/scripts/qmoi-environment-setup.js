@@ -795,7 +795,7 @@ pause
     logger.info('- Monitor logs in the logs/ directory');
     logger.info('- Backup configuration files regularly');
     logger.info('\n🎯 System Features:');
-    logger.info('- Enhanced Avatar System with real-time PRODUCTION');
+    logger.info('- Enhanced Avatar System with real-time production');
     logger.info('- Music production System with virtual artists');
     logger.info('- Parallel Processing for maximum performance');
     logger.info('- Comprehensive Notification System');

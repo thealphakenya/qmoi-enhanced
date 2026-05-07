@@ -524,8 +524,8 @@ app/api/qmoi/user/route.ts(11,9): error TS2304: Cannot find name 'NextApiRespons
 app/api/qmoi/user/route.ts(16,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/user/route.ts(17,18): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/qmoi/user/route.ts(30,15): error TS2339: Property 'action' does not exist on type 'unknown'.
-app/api/qmoi/voice-PRODUCTION/route.ts(38,11): error TS18046: 'Buffer' is of type 'unknown'.
-app/api/qmoi/voice-PRODUCTION/route.ts(39,11): error TS18046: 'Buffer' is of type 'unknown'.
+app/api/qmoi/voice-production/route.ts(38,11): error TS18046: 'Buffer' is of type 'unknown'.
+app/api/qmoi/voice-production/route.ts(39,11): error TS18046: 'Buffer' is of type 'unknown'.
 app/api/qnews/route.ts(16,66): error TS18046: 'data' is of type 'unknown'.
 app/api/qnews/route.ts(17,40): error TS18046: 'data' is of type 'unknown'.
 app/api/qnews/route.ts(175,24): error TS18046: 'prisma' is of type 'unknown'.

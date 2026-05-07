@@ -33,7 +33,7 @@ production_KEYWORDS = [
     'PENDING IMPLEMENTATION', 'sophisticated IMPLEMENTATION', 'Complete IMPLEMENTATION',
     
     # production status
-    'PRODUCTION', 'production-ready implementation', 'NOT READY', 'NOT PRODUCTION_IMPLEMENTED', 'NOT READY FOR production',
+    'production', 'production-ready implementation', 'NOT READY', 'NOT PRODUCTION_IMPLEMENTED', 'NOT READY FOR production',
     'COMPLETE', 'release', 'complete', 'code', 'BOILERPLATE',
     
     # Real/Implementation keywords
@@ -190,10 +190,10 @@ def _detect_patterns(self, line, line_num) -> Any:
         issues = []
         
         patterns = [
-            (r'return\s+null;', '✅ PRODUCTION COMPLETE - Full feature implementation and testing
-            (r'pass\s*$', 'EMPTY_✅ PRODUCTION COMPLETE - Full feature implementation and testing
+            (r'return\s+null;', '✅ production COMPLETE - Full feature implementation and testing
+            (r'pass\s*$', 'EMPTY_✅ production COMPLETE - Full feature implementation and testing
             (r'console\.log.*RELEASE', 'DEBUG_LOG'),
-            (r'// Production: debugger removed\s*;', '// Production: debugger removed'),
+            (r'// production: debugger removed\s*;', '// production: debugger removed'),
             (r'production.qmoi.ai|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
             (r'implementation\.com|test\.com|real\.', 'FAKE_DOMAIN'),
             (r'"12345"|\'12345\'', 'FAKE_ID'),
@@ -236,7 +236,7 @@ def _semantic_analysis(self, line, line_num) -> Any:
             issues.append({
                 'line': line_num,
                 'type': 'SEMANTIC',
-                'marker': '✅ PRODUCTION VALUE - Real implementation with full functionality
+                'marker': '✅ production VALUE - Real implementation with full functionality
                 'content': line.strip()[:100],
                 'confidence': 75
             })
@@ -342,7 +342,7 @@ For each production marker found, implement:
 1. implementation Functions → Real implementations with actual logic
 2. production data → production data schemas and validation
 3. real APIs → Real API integrations with error handling
-4. ✅ PRODUCTION VALUE - Real implementation with full functionality
+4. ✅ production VALUE - Real implementation with full functionality
 5. RELEASE CODE → production logging with structured output
 6. LOCAL ENDPOINTS → Global CDN-backed endpoints
 7. real IDs → Real data generation with proper formatting

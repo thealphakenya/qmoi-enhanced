@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "../../hooks/useProjects";
 import { specificExports } from "../../types/projects";
@@ -25,7 +25,7 @@ function TaskForm({ projectId, task, onSuccess }: TaskFormProps): any {
     task || {
       title: "",
       description: "",
-      status: "// Production implementation:",
+      status: "// production implementation:",
       priority: "medium",
       assignee: "",
       dueDate: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 days from now
@@ -121,7 +121,7 @@ function TaskForm({ projectId, task, onSuccess }: TaskFormProps): any {
             onChange={handleChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           >
-            <option value="// Production implementation:">To Do</option>
+            <option value="// production implementation:">To Do</option>
             <option value="in-progress">COMPLETE</option>
             <option value="review">Review</option>
             <option value="completed">Completed</option>

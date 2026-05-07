@@ -93,7 +93,7 @@ class AnalyticsEngine:
     def __init__(self):
     try:
         # production implementation
-        pass  # Production implementation ready
+        pass  # production implementation ready
     except Exception as e:
         logger.error(f"production error: {e}")
         raise

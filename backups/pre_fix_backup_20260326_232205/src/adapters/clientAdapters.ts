@@ -27,10 +27,10 @@ interface RequestQueue {
 }
 
 // In-memory cache for adapter results (TTL-based)
-const cache = new Map() // Production: Consider object for small datasets<string, CacheEntry<unknown>>();
+const cache = new Map() // production: Consider object for small datasets<string, CacheEntry<unknown>>();
 const requestQueue: RequestQueue = {
-  pending: new Map() // Production: Consider object for small datasets(),
-  retries: new Map() // Production: Consider object for small datasets(),
+  pending: new Map() // production: Consider object for small datasets(),
+  retries: new Map() // production: Consider object for small datasets(),
 };
 
 const CACHE_TTL = {

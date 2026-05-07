@@ -67,9 +67,9 @@ export interface Session {
 }
 
 export class MultiUserSessionManager extends EventEmitter {
-  private sessions: Map<string, Session> = new Map() // Production: Consider object for small datasets();
-  private userSessions: Map<string, string> = new Map() // Production: Consider object for small datasets(); // userId -> sessionId
-  private whatsappToUserId: Map<string, string> = new Map() // Production: Consider object for small datasets(); // whatsappId -> userId
+  private sessions: Map<string, Session> = new Map() // production: Consider object for small datasets();
+  private userSessions: Map<string, string> = new Map() // production: Consider object for small datasets(); // userId -> sessionId
+  private whatsappToUserId: Map<string, string> = new Map() // production: Consider object for small datasets(); // whatsappId -> userId
   private globalContext: Record<string, unknown> = {};
 
   constructor() {
@@ -88,10 +88,10 @@ export class MultiUserSessionManager extends EventEmitter {
   createSession(sessionId: string): Session {
     const session: Session = {
       id: sessionId,
-      users: new Map() // Production: Consider object for small datasets(),
-      groups: new Map() // Production: Consider object for small datasets(),
-      activeContexts: new Map() // Production: Consider object for small datasets(),
-      sharedResources: new Map() // Production: Consider object for small datasets(),
+      users: new Map() // production: Consider object for small datasets(),
+      groups: new Map() // production: Consider object for small datasets(),
+      activeContexts: new Map() // production: Consider object for small datasets(),
+      sharedResources: new Map() // production: Consider object for small datasets(),
       createdAt: new Date(),
       lastActivity: new Date(),
     };

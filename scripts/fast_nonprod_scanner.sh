@@ -5,13 +5,13 @@ cd /workspaces/qmoi-enhanced
 
 OUTPUT="undone.txt"
 
-echo "🔍 Fast Non-Production Scanner"
+echo "🔍 Fast Non-production Scanner"
 echo "Starting comprehensive scan at $(date -u)"
 echo ""
 
 # Initialize output file
 {
-    echo "# NON-PRODUCTION IMPLEMENTATIONS TRACKER"
+    echo "# NON-production IMPLEMENTATIONS TRACKER"
     echo "# Generated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
     echo "# Workspace: $(pwd)"
     echo ""
@@ -67,7 +67,7 @@ echo "## DETAILED FINDINGS" >> "$OUTPUT"
 echo "" >> "$OUTPUT"
 
 # Find files with most issues
-echo "### Files with Most Non-Production Markers" >> "$OUTPUT"
+echo "### Files with Most Non-production Markers" >> "$OUTPUT"
 echo "" >> "$OUTPUT"
 
 for pattern_name in "${!patterns[@]}"; do

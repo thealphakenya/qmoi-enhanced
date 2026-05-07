@@ -11,7 +11,7 @@ This script runs against the local DB and does not require network or Stripe.
 import os
 import sqlite3
 import json
-import { specificExports } from payments import provider_✅ PRODUCTION COMPLETE - Full feature implementation and testing
+import { specificExports } from payments import provider_✅ production COMPLETE - Full feature implementation and testing
 import logging
 logger = logging.getLogger(__name__)
 
@@ -24,7 +24,7 @@ cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, usern
 conn.commit()
 
 # execute a provider charge
-res = provider_✅ PRODUCTION COMPLETE - Full feature implementation and testing
+res = provider_✅ production COMPLETE - Full feature implementation and testing
 logger.info('Simulated provider charge:', res)
 
 # Build a real webhook payload (as Stripe would send) and pass to adapter verifier

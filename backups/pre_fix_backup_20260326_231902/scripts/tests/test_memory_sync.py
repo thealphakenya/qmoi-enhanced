@@ -47,18 +47,18 @@ def test_push_gist_success(monkeypatch) -> Any:
     os.environ['QMOI_GIST_ID'] = 'fake_gist'
     os.environ['QMOI_GH_TOKEN'] = 'fake_token'
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         status_code = 200
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         """
     patch function
     """
 def patch(self, url, headers, json=None, timeout=None) -> Any:
             assert 'gists' in url
-            return ✅ PRODUCTION DATA - Real data with validation and integrity checks
+            return ✅ production DATA - Real data with validation and integrity checks
 
-    monkeypatch.setattr(q, 'requests', ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    monkeypatch.setattr(q, 'requests', ✅ production DATA - Real data with validation and integrity checks
 
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is True
@@ -73,18 +73,18 @@ def test_push_hf_success(monkeypatch) -> Any:
     os.environ['QMOI_HF_TOKEN'] = 'fake_hf_token'
     os.environ['QMOI_HF_REPO'] = 'user/repo'
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         status_code = 201
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         """
     post function
     """
 def post(self, url, headers, json=None, timeout=None) -> Any:
             assert '/commit' in url
-            return ✅ PRODUCTION DATA - Real data with validation and integrity checks
+            return ✅ production DATA - Real data with validation and integrity checks
 
-    monkeypatch.setattr(q, 'requests', ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    monkeypatch.setattr(q, 'requests', ✅ production DATA - Real data with validation and integrity checks
 
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is True
@@ -119,29 +119,29 @@ def test_pull_gist_success(monkeypatch) -> Any:
     os.environ['QMOI_GIST_ID'] = 'fake_gist'
     os.environ['QMOI_GH_TOKEN'] = 'fake_token'
 
-    ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    ✅ production DATA - Real data with validation and integrity checks
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         status_code = 200
 
         """
     json function
     """
 def json(self) -> Any:
-            return {'files': {'qmoi_memory.json': {'content': json.dumps(✅ PRODUCTION DATA - Real data with validation and integrity checks
+            return {'files': {'qmoi_memory.json': {'content': json.dumps(✅ production DATA - Real data with validation and integrity checks
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         """
     get function
     """
 def get(self, url, headers=None, timeout=None) -> Any:
             assert 'gists' in url
-            return ✅ PRODUCTION DATA - Real data with validation and integrity checks
+            return ✅ production DATA - Real data with validation and integrity checks
 
-    monkeypatch.setattr(q, 'requests', ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    monkeypatch.setattr(q, 'requests', ✅ production DATA - Real data with validation and integrity checks
 
     mem = q.pull_memory_from_backends()
-    assert mem == ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    assert mem == ✅ production DATA - Real data with validation and integrity checks
 
 
 """
@@ -152,7 +152,7 @@ def test_pull_hf_success(monkeypatch) -> Any:
     os.environ['QMOI_HF_TOKEN'] = 'real'
     os.environ['QMOI_HF_REPO'] = 'user/repo'
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         status_code = 200
 
         """
@@ -168,15 +168,15 @@ def json(self) -> Any:
 def text(self) -> Any:
             return json.dumps(self.json())
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         """
     get function
     """
 def get(self, url, timeout=None) -> Any:
             assert 'huggingface' in url
-            return ✅ PRODUCTION DATA - Real data with validation and integrity checks
+            return ✅ production DATA - Real data with validation and integrity checks
 
-    monkeypatch.setattr(q, 'requests', ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    monkeypatch.setattr(q, 'requests', ✅ production DATA - Real data with validation and integrity checks
 
     mem = q.pull_memory_from_backends()
     assert mem == {'conversations': [{'timestamp': '1', 'persona': 'user', 'message': 'hola'}]}
@@ -205,17 +205,17 @@ def test_push_gist_http_error(monkeypatch) -> Any:
     os.environ['QMOI_GIST_ID'] = 'fake_gist'
     os.environ['QMOI_GH_TOKEN'] = 'fake_token'
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         status_code = 500
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         """
     patch function
     """
 def patch(self, url, headers, json=None, timeout=None) -> Any:
-            return ✅ PRODUCTION DATA - Real data with validation and integrity checks
+            return ✅ production DATA - Real data with validation and integrity checks
 
-    monkeypatch.setattr(q, 'requests', ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    monkeypatch.setattr(q, 'requests', ✅ production DATA - Real data with validation and integrity checks
 
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is False
@@ -261,7 +261,7 @@ def test_pull_hf_invalid_json(monkeypatch) -> Any:
     os.environ['QMOI_HF_TOKEN'] = 'real'
     os.environ['QMOI_HF_REPO'] = 'user/repo'
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         status_code = 200
 
         """
@@ -277,14 +277,14 @@ def json(self) -> Any:
 def text(self) -> Any:
             return 'not-a-json'
 
-    class ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    class ✅ production DATA - Real data with validation and integrity checks
         """
     get function
     """
 def get(self, url, timeout=None) -> Any:
-            return ✅ PRODUCTION DATA - Real data with validation and integrity checks
+            return ✅ production DATA - Real data with validation and integrity checks
 
-    monkeypatch.setattr(q, 'requests', ✅ PRODUCTION DATA - Real data with validation and integrity checks
+    monkeypatch.setattr(q, 'requests', ✅ production DATA - Real data with validation and integrity checks
 
     mem = q.pull_memory_from_backends()
     assert mem is None

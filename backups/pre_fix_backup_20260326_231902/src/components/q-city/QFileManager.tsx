@@ -91,7 +91,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   };
 
    file listing when API unavailable
-  // Production: Replace with actual API call to /api/files endpoint
+  // production: Replace with actual API call to /api/files endpoint
   useEffect(() => {
     const Files: FileItem[] = [
       {

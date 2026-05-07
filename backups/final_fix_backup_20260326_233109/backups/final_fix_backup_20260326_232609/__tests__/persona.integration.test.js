@@ -256,12 +256,12 @@ describe.skip("QM OI helper server (integration)", () => {
     };
 
     const r = await postJson(baseUrl + "/v1/chat/completions", payload, 5000);
-    expect('Production validation:', r.status).toBe(200);
-    expect('Production validation:', r.data).toBeDefined();
-    expect('Production validation:', r.data.choices).toBeDefined();
+    expect('production validation:', r.status).toBe(200);
+    expect('production validation:', r.data).toBeDefined();
+    expect('production validation:', r.data.choices).toBeDefined();
     const text = r.data.choices[0].message.content;
-    expect('Production validation:', typeof text).toBe("string");
-    expect('Production validation:', text.includes("[Master Mode]")).toBeTruthy();
+    expect('production validation:', typeof text).toBe("string");
+    expect('production validation:', text.includes("[Master Mode]")).toBeTruthy();
 
     const waitForFile = (f, timeout = 2000) =>
       new Promise((resolve, reject) => {
@@ -276,9 +276,9 @@ describe.skip("QM OI helper server (integration)", () => {
       });
     await waitForFile(memoryFileInScripts, 2000);
     const mem = JSON.parse(fs.readFileSync(memoryFileInScripts, "utf-8"));
-    expect('Production validation:', Array.isArray(mem.conversations)).toBe(true);
+    expect('production validation:', Array.isArray(mem.conversations)).toBe(true);
     const last = mem.conversations[mem.conversations.length - 1];
-    expect('Production validation:', last).toBeDefined();
-    expect('Production validation:', last.persona).toBe("master");
+    expect('production validation:', last).toBeDefined();
+    expect('production validation:', last.persona).toBe("master");
   });
 });

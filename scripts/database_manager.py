@@ -1,5 +1,5 @@
 """
-Production Database Manager Module
+production Database Manager Module
 Real production database implementation with connection pooling and error handling.
 """
 
@@ -13,7 +13,7 @@ from contextlib import contextmanager
 logger = logging.getLogger(__name__)
 
 class ProductionDatabaseManager:
-    """Production database manager with connection pooling and error handling"""
+    """production database manager with connection pooling and error handling"""
 
     def __init__(self):
         self.db_type = os.getenv('DB_TYPE', 'sqlite')  # sqlite or postgresql

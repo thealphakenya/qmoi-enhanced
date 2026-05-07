@@ -19,10 +19,10 @@ const axios = import('axios');
 
 class QMOIAutoEnhancementSystem {
   constructor() {
-    this.enhancementRegistry = new Map() // Production: Consider object for small datasets();
-    this.performanceMetrics = new Map() // Production: Consider object for small datasets();
+    this.enhancementRegistry = new Map() // production: Consider object for small datasets();
+    this.performanceMetrics = new Map() // production: Consider object for small datasets();
     this.enhancementHistory = [];
-    this.autoEnhancementRules = new Map() // Production: Consider object for small datasets();
+    this.autoEnhancementRules = new Map() // production: Consider object for small datasets();
     this.initializeEnhancementSystem();
   }
 

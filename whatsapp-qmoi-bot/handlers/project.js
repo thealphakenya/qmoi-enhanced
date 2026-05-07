@@ -42,9 +42,9 @@ async function continueProject(sock, jid, projectDetails) {
     // Format message with video call awareness
     let message = projectResult.message || "Project update complete.";
 
-    // If in video call, show preview window content
+    // If in video call, show production window content
     if (projectDetails.inVideoCall) {
-      message += "\n\n📹 **Video Preview Panel**:\n";
+      message += "\n\n📹 **Video production Panel**:\n";
       message += `• Project: ${projectResult.projectName}\n`;
       message += `• Status: ${projectResult.status}\n`;
       message += `• Next Steps: ${projectResult.nextSteps}\n`;
@@ -101,7 +101,7 @@ async function handleVideoCallProject(sock, jid, projectDetails) {
     });
 
     return sock.sendMessage(jid, {
-      text: `📹 **QMOI Avatar Active in Video Call**\n\n${visualization.displayText}\n\n🎯 Autonomous Control: Enabled\n💭 Preview Panel: Showing\n🔐 Biometric: Verified`,
+      text: `📹 **QMOI Avatar Active in Video Call**\n\n${visualization.displayText}\n\n🎯 Autonomous Control: Enabled\n💭 production Panel: Showing\n🔐 Biometric: Verified`,
     });
   } catch (error) {
     logger.error("Video call project handler error:", error);

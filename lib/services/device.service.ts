@@ -1,5 +1,5 @@
 /**
- * Device Service - Production API Integration
+ * Device Service - production API Integration
  * Handles all device-related API calls
  */
 

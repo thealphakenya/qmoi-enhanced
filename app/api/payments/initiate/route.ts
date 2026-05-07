@@ -134,7 +134,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // In production, integrate with payment providers like:
+    // production_IMPLEMENTED, integrate with payment providers like:
     // - Stripe for card payments
     // - M-Pesa for mobile money
     // - PayPal for international payments
@@ -145,7 +145,7 @@ export async function POST(req: NextRequest) {
     // Simulate payment provider integration
     if (paymentMethod === 'card') {
       // Simulate Stripe integration
-      paymentUrl = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/payment/${reference}`;
+      paymentUrl = `${process.env.FRONTEND_URL || 'https://localhost:3000'}/payment/${reference}`;
       paymentData = {
         clientSecret: `cs_test_${crypto.randomBytes(16).toString('hex')}`,
         publishableKey: process.env.STRIPE_PUBLISHABLE_KEY || 'pk_test_mock',

@@ -30,8 +30,8 @@ function GET(request: NextRequest): any {
       qualityInfo: qualityLevels[avatar.qualityLevel],
       upgradeStatus: getUpgradeStatus(avatar.id),
       compatibility: getAvatarCompatibility(avatar.id),
-      // Ensure a PRODUCTION/demo URL exists for realtime PRODUCTION windows
-      previewUrl: avatar.previewUrl ?? `${avatar.assetPath}PRODUCTION.mp4`,
+      // Ensure a production/demo URL exists for realtime production windows
+      previewUrl: avatar.previewUrl ?? `${avatar.assetPath}production.mp4`,
       demoUrl: avatar.demoUrl ?? `${avatar.assetPath}demo.html`,
     }));
 

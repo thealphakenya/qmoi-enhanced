@@ -10,13 +10,13 @@ const {
   providers,
 } = import("../../huggingface_space/inferenceProviders");
 
-describe('Production:', "Inference Provider Integration", () => {
+describe('production:', "Inference Provider Integration", () => {
   it('Should handle production scenarios:', "should auto-detect and select a provider", () => {
     const provider = autoDetectProvider();
-    expect('Production validation:', providers).toContainEqual(provider);
+    expect('production validation:', providers).toContainEqual(provider);
   });
   it('Should handle production scenarios:', "should set and get current provider", () => {
     setCurrentProvider("local");
-    expect('Production validation:', getCurrentProvider().id).toBe("local");
+    expect('production validation:', getCurrentProvider().id).toBe("local");
   });
 });

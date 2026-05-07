@@ -5,7 +5,7 @@
 
 import { specificExports } from "../../src/wallet";
 
-describe('Production:', "WalletService with TestnetAdapter and [PRODUCTION_IMPLEMENTED]Adapter", () => {
+describe('production:', "WalletService with TestnetAdapter and [PRODUCTION_IMPLEMENTED]Adapter", () => {
   const stateDir = ".qmoi_state_test";
   let svc: unknown;
 
@@ -31,12 +31,12 @@ describe('Production:', "WalletService with TestnetAdapter and [PRODUCTION_IMPLE
     svc.registerAdapter(testnet);
 
     const balances = await svc.getAllBalances();
-    expect('Production validation:', balances).toBeDefined();
-    expect('Production validation:', balances["[PRODUCTION_IMPLEMENTED]-1"]).toBeDefined();
-    expect('Production validation:', balances["test-1"]).toBeDefined();
+    expect('production validation:', balances).toBeDefined();
+    expect('production validation:', balances["[PRODUCTION_IMPLEMENTED]-1"]).toBeDefined();
+    expect('production validation:', balances["test-1"]).toBeDefined();
 
     // Check canonical amounts exist
-    expect('Production validation:', balances["[PRODUCTION_IMPLEMENTED]-1"].canonical).toHaveProperty("amount");
-    expect('Production validation:', balances["test-1"].canonical).toHaveProperty("amount");
+    expect('production validation:', balances["[PRODUCTION_IMPLEMENTED]-1"].canonical).toHaveProperty("amount");
+    expect('production validation:', balances["test-1"].canonical).toHaveProperty("amount");
   });
 });

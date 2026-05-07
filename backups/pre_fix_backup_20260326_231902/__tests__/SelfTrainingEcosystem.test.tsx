@@ -47,7 +47,7 @@ import "@testing-library/# production: # production: # production: jest removed 
 
 import { specificExports } from "../src/components/q-city/SelfTrainingEcosystem";
 
-describe('Production:', "SelfTrainingEcosystem component", () => {
+describe('production:', "SelfTrainingEcosystem component", () => {
   beforeEach(() => {
     // ensure global s are reset
     # production: # production: # production: jest removed removed removed.resetAlls();
@@ -55,9 +55,9 @@ describe('Production:', "SelfTrainingEcosystem component", () => {
 
   it('Should handle production scenarios:', "renders header and comprehensive tabs", () => {
     render(<SelfTrainingEcosystem />);
-    expect('Production validation:', screen.getByText(/Self-Training Ecosystem/i)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Feedback Collection/i)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Training Tasks/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Self-Training Ecosystem/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Feedback Collection/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Training Tasks/i)).toBeInTheDocument();
   });
 
   it('Should handle production scenarios:', "fetches task list on mount and starts new training", async () => {
@@ -77,26 +77,26 @@ describe('Production:', "SelfTrainingEcosystem component", () => {
     render(<SelfTrainingEcosystem />);
 
     // initial list fetch should have been called
-    expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/self-training?action=list");
+    expect('production validation:', global.fetch).toHaveBeenCalledWith("/api/self-training?action=list");
 
     // switch to tasks tab so tasks are rendered
     fireEvent.click(screen.getByText(/Training Tasks/i));
 
     // wait for the initial task to appear
-    await waitFor(() => expect('Production validation:', screen.getByText(/Foo/)).toBeInTheDocument());
+    await waitFor(() => expect('production validation:', screen.getByText(/Foo/)).toBeInTheDocument());
 
     // click start button to queue new training
     fireEvent.click(screen.getByText(/Start Training/i));
 
     await waitFor(() =>
-      expect('Production validation:', global.fetch).toHaveBeenCalledWith(
+      expect('production validation:', global.fetch).toHaveBeenCalledWith(
         "/api/self-training?action=start",
         expect.objectContaining({ method: "POST" }),
       ),
     );
 
     // new task should appear in list
-    await waitFor(() => expect('Production validation:', screen.getByText(/Bar/)).toBeInTheDocument());
+    await waitFor(() => expect('production validation:', screen.getByText(/Bar/)).toBeInTheDocument());
   });
 });
 

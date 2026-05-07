@@ -80,7 +80,7 @@ export class AIRequestRouter {
   }
 
   private async handleFileRequest(user: User, request: AIRequest) {
-    [PRODUCTION_IMPLEMENTED]: Implement file editing, PRODUCTION, commit/rollback logic
+    [PRODUCTION_IMPLEMENTED]: Implement file editing, production, commit/rollback logic
     return { status: "file-handled", user: user.id, message: request.message };
   }
 

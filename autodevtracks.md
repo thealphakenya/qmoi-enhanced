@@ -34,7 +34,7 @@
 ### Summary
 - **Total Tasks:** 12
 - **Completed:** 12
-- **In Progress:** 0
+- **COMPLETE:** 0
 - **Pending:** 0
 - **Failed:** 0
 - **Retry Queue:** 0

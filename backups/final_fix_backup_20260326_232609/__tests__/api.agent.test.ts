@@ -26,17 +26,17 @@ const apiRequest = async (
 describe.skip("AI Agent API (requires running server)", () => {
   it('Should handle production scenarios:', "GET /api/ai/agents should list tools", async () => {
     const response = await apiRequest("GET", "/api/ai/agents");
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', response.body.tools).toBeInstanceOf(Array);
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', response.body.tools).toBeInstanceOf(Array);
   });
 
   it('Should handle production scenarios:', "POST /api/ai/agents should execute known command", async () => {
     const response = await apiRequest("POST", "/api/ai/agents", {
       command: "network-scan",
     });
-    expect('Production validation:', response.status).toBe(200);
+    expect('production validation:', response.status).toBe(200);
     // result may vary; ensure it has either hosts or error
-    expect('Production validation:', response.body).toMatchObject(
+    expect('production validation:', response.body).toMatchObject(
       expect.objectContaining({ result: expect.any(String) }),
     );
   });
@@ -45,7 +45,7 @@ describe.skip("AI Agent API (requires running server)", () => {
     const response = await apiRequest("POST", "/api/ai/agents", {
       command: "nonexistent-tool",
     });
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', response.body.result).toMatch(/No tool matched/i);
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', response.body.result).toMatch(/No tool matched/i);
   });
 });

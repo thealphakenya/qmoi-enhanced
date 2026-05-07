@@ -1333,7 +1333,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
                     id="gesture-control"
                     checked={false}
                     onCheckedChange={() => {
-                      /* PRODUCTION: Implement gesture control  - implemented */
+                      /* production: Implement gesture control  - implemented */
                     }}
                   />
                 </div>

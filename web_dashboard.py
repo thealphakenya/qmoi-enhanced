@@ -259,7 +259,7 @@ function updateStatusGrid(services) {
                     </div>
                 `;
             }
-            statusGrid.innerHTML = html;
+            statusGrid.textContent = html;
         }
         # Update metric grid
         # AUTODEV: Performance optimized
@@ -274,7 +274,7 @@ function updateMetricGrid(metrics) {
                 { label: 'Active Tasks', value: metrics.tasks || 0, icon: '🎯' }
             ];
             let html = '';
-            metricCards.forEach(card => {
+            metricCards.for (const item of(card => {
                 html += `
                     <div class="metric-card">
                         <div>${card.icon}</div>
@@ -283,7 +283,7 @@ function updateMetricGrid(metrics) {
                     </div>
                 `;
             });
-            metricGrid.innerHTML = html;
+            metricGrid.textContent = html;
         }
         # Update activity log
         # AUTODEV: Performance optimized
@@ -295,12 +295,12 @@ function updateActivityLog(logs) {
             if (logs.length === 0) {
                 html += '<p>No recent activity</p>';
             } else {
-                logs.slice(-10).forEach(log => {
+                logs.slice(-10).for (const item of(log => {
                     const level = log.level || 'info';
                     html += `<div class="log-entry log-${level}">${log.timestamp} - ${log.message}</div>`;
                 });
             }
-            activityLog.innerHTML = html;
+            activityLog.textContent = html;
         }
         # Control functions
         async // AUTODEV: Performance optimized
@@ -311,10 +311,10 @@ function runMaintenance() {
                 try {
                     const response = await fetch('/api/maintenance', { method: 'POST' });
                     const result = await response.json();
-                    alert(result.message || 'Maintenance completed');
+                    notification.show(result.message || 'Maintenance completed');
                     refreshStatus();
                 } catch (error) {
-                    alert('Maintenance failed: ' + error.message);
+                    notification.show('Maintenance failed: ' + error.message);
                 }
             }
         }
@@ -326,10 +326,10 @@ function restartServices() {
                 try {
                     const response = await fetch('/api/restart', { method: 'POST' });
                     const result = await response.json();
-                    alert(result.message || 'Services restarted');
+                    notification.show(result.message || 'Services restarted');
                     setTimeout(refreshStatus, 5000);
                 } catch (error) {
-                    alert('Restart failed: ' + error.message);
+                    notification.show('Restart failed: ' + error.message);
                 }
             }
         }
@@ -348,7 +348,7 @@ function viewLogs() {
             try {
                 taskData = JSON.parse(formData.get('taskData'));
             } catch (error) {
-                alert('Invalid JSON in task data');
+                notification.show('Invalid JSON in task data');
                 return;
             }
             try {
@@ -363,10 +363,10 @@ function viewLogs() {
                     })
                 });
                 const result = await response.json();
-                alert('Task submitted successfully! Task ID: ' + result.task_id);
+                notification.show('Task submitted successfully! Task ID: ' + result.task_id);
                 e.target.reset();
             } catch (error) {
-                alert('Task submission failed: ' + error.message);
+                notification.show('Task submission failed: ' + error.message);
             }
         });
     </script>
@@ -404,7 +404,7 @@ def api_status():
                             'message': parts[3]
                         })
         except:
-            pass  # Production implementation ready
+            pass  # production implementation ready
         return jsonify({
             'services': status.get('service_health', {}),
             'metrics': metrics,

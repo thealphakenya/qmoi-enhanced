@@ -1,10 +1,10 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-Production testing framework configuredn logging replaced with production logging removed.
+production testing framework configuredn logging replaced with production logging removed.
   NextResponse: { json: (payload: unknown) => payload },
 }));
 import { specificExports } from "../app/api/qmoi-model/route";
@@ -16,7 +16,7 @@ import { specificExports } from "../app/api/qmoi-model/route";
       },
     };
 
-    const warnSpy = Production testing framework configuredn logging replaced with production logging removed.spyOn(console, "warn").
+    const warnSpy = production testing framework configuredn logging replaced with production logging removed.spyOn(console, "warn").
 
     const res: unknown = await GET(req);
 
@@ -29,7 +29,7 @@ import { specificExports } from "../app/api/qmoi-model/route";
     // The server should warn when someone tries to override model param
     // (we don't rely on this, but it's an additional guard)
     // Re-run with spy to check it was called
-    const warnCheck = Production testing framework configuredn logging replaced with production logging removed.spyOn(console, "warn").
+    const warnCheck = production testing framework configuredn logging replaced with production logging removed.spyOn(console, "warn").
     await GET(req);
     warnCheck.
   });

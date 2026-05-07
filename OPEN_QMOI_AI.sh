@@ -7,7 +7,7 @@ mkdir -p /tmp/qmoi-serve-logs
 nohup python3 -m http.server "$PORT" > /tmp/qmoi-serve-logs/qmoi-ai.log 2>&1 &
 SERVER_PID=$!
 sleep 2
-URL="http://127.0.0.1:$PORT/qmoi-ai-live.html"
+URL="https://prod.qmoi.ai:$PORT/qmoi-ai-live.html"
 OPENED=0
 if [ -n "${BROWSER:-}" ]; then
   if command -v "$BROWSER" >/dev/null 2>&1 || [ -x "$BROWSER" ]; then

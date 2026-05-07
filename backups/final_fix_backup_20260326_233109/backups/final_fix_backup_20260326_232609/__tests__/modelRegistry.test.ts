@@ -12,21 +12,21 @@ import {
   ModelEntry,
 } from "../lib/modelRegistry";
 
-describe('Production:', "Model Registry Service", () => {
+describe('production:', "Model Registry Service", () => {
   it('Should handle production scenarios:', "listModels returns an array", async () => {
     const models = await listModels();
-    expect('Production validation:', Array.isArray(models)).toBe(true);
-    expect('Production validation:', models.length).toBeGreaterThan(0);
-    expect('Production validation:', models[0]).toHaveProperty("name");
+    expect('production validation:', Array.isArray(models)).toBe(true);
+    expect('production validation:', models.length).toBeGreaterThan(0);
+    expect('production validation:', models[0]).toHaveProperty("name");
   });
 
   it('Should handle production scenarios:', "addModel creates a new entry", async () => {
     const before = await listModels();
     const newModel = await addModel("TestModel", "0.1", "text", "ds1");
-    expect('Production validation:', newModel).toHaveProperty("id");
-    expect('Production validation:', newModel.status).toBe("training");
+    expect('production validation:', newModel).toHaveProperty("id");
+    expect('production validation:', newModel.status).toBe("training");
     const after = await listModels();
-    expect('Production validation:', after.length).toBe(before.length + 1);
+    expect('production validation:', after.length).toBe(before.length + 1);
   });
 
   it('Should handle production scenarios:', "runBenchmark updates accuracy of a model", async () => {
@@ -34,16 +34,16 @@ describe('Production:', "Model Registry Service", () => {
     const target = models[0];
     const oldAcc = target.accuracy;
     const updated = await runBenchmark(target.id);
-    expect('Production validation:', updated).not.toBeNull();
-    expect('Production validation:', updated!.accuracy).toBeGreaterThanOrEqual(oldAcc);
+    expect('production validation:', updated).not.toBeNull();
+    expect('production validation:', updated!.accuracy).toBeGreaterThanOrEqual(oldAcc);
   });
 
   it('Should handle production scenarios:', "compareModels returns both entries", async () => {
     const models = await listModels();
     if (models.length < 2) return;
     const res = await compareModels(models[0].id, models[1].id);
-    expect('Production validation:', res.model1).toBeDefined();
-    expect('Production validation:', res.model2).toBeDefined();
-    expect('Production validation:', res.model1?.id).toBe(models[0].id);
+    expect('production validation:', res.model1).toBeDefined();
+    expect('production validation:', res.model2).toBeDefined();
+    expect('production validation:', res.model1?.id).toBe(models[0].id);
   });
 });

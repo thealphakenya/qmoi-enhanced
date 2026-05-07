@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 
@@ -103,7 +103,7 @@ export const AWSCredentialsModal: React.FC<Props> = ({
             <input
               ref={firstInputRef}
               aria-label="Access Key ID"
-              // Production implementation:="Access Key ID"
+              // production implementation:="Access Key ID"
               value={accessKeyId}
               onChange={(e) => setAccessKeyId(e.target.value)}
               style={{ width: "100%", marginBottom: 8 }}
@@ -116,7 +116,7 @@ export const AWSCredentialsModal: React.FC<Props> = ({
             </span>
             <input
               aria-label="Secret Access Key"
-              // Production implementation:="Secret Access Key"
+              // production implementation:="Secret Access Key"
               value={secretAccessKey}
               onChange={(e) => setSecretAccessKey(e.target.value)}
               style={{ width: "100%", marginBottom: 8 }}
@@ -130,7 +130,7 @@ export const AWSCredentialsModal: React.FC<Props> = ({
             </span>
             <input
               aria-label="Region"
-              // Production implementation:="us-east-1"
+              // production implementation:="us-east-1"
               value={region}
               onChange={(e) => setRegion(e.target.value)}
               style={{ width: "100%", marginBottom: 8 }}

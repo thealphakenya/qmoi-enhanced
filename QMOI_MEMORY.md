@@ -42,7 +42,7 @@ title: "Quantum multi orchestra intelligence (QMOI) Memory Log"
 - **Project Visualization Memory**: Remember previous project states and presentations
 - **Avatar Personalization**: Avatar learns and remembers user preferences
 - **Call History**: All video autonomy with avatar display and autonomous streams call interactions stored and accessible
-- **Preview Window State**: Preview content persists with memory context
+- **production Window State**: production content persists with memory context
 
 ## Recent Fixes
 

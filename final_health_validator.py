@@ -152,7 +152,7 @@ class QMOIFinalHealthValidator:
         if resumefromhere.exists():
             content = resumefromhere.read_text()
             if 'COMPLETE' not in content:
-                issues.append("Production migration not marked complete")
+                issues.append("production migration not marked complete")
 
         return {
             'healthy': len(issues) == 0,
@@ -342,8 +342,8 @@ class QMOIFinalHealthValidator:
         resumefromhere = self.workspace / 'resumefromhere.txt'
         if resumefromhere.exists():
             content = resumefromhere.read_text()
-            if 'PRODUCTION MIGRATION COMPLETE' not in content:
-                issues.append("Production migration not confirmed complete")
+            if 'production MIGRATION COMPLETE' not in content:
+                issues.append("production migration not confirmed complete")
 
         # Check for production deployment files
         prod_files = ['DEPLOYMENT_HEALTH_CHECKLIST.md', 'PRODUCTION_READINESS_FINAL.md']
@@ -355,7 +355,7 @@ class QMOIFinalHealthValidator:
             'healthy': len(issues) == 0,
             'score': 100 if len(issues) == 0 else 95,
             'issues': issues,
-            'message': f"Production readiness: {len(issues)} issues found"
+            'message': f"production readiness: {len(issues)} issues found"
         }
 
     def _check_health_system_completeness(self) -> Dict[str, Any]:

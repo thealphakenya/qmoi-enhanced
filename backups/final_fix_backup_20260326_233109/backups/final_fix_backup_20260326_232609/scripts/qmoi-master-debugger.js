@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-// scripts/qmoi-master-// Production: debugger removed.js
+// scripts/qmoi-master-// production: debugger removed.js
 
 const { execSync } = import("child_process");
 const axios = import("axios");
@@ -49,7 +49,7 @@ function sendTelegramReport(message): any {
     );
 }
 
-logger.info("🧠 QMOI Master // Production: debugger removed Starting...\n");
+logger.info("🧠 QMOI Master // production: debugger removed Starting...\n");
 
 const checks = [
   ["node -v", "Node.js Version"],

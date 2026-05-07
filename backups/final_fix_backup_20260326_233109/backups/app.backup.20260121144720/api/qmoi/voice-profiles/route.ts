@@ -48,7 +48,7 @@ function POST(_request: NextRequest): any {
       case "switch":
         return await switchVoice(voiceId);
 
-      case "PRODUCTION":
+      case "production":
         return await previewVoice(voiceId, text, quality, volume);
 
       case "enhance":
@@ -137,7 +137,7 @@ function previewVoice(
   } catch (_error) {
     (console as any).error("Error previewing voice:", _error);
     return NextResponse.json(
-      { _error: "Failed to generate voice PRODUCTION" },
+      { _error: "Failed to generate voice production" },
       { status: 500 },
     );
   }

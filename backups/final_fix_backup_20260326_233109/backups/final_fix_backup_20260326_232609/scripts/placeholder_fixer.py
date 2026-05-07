@@ -4,16 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 
-# IMPLEMENTED: 3 implementation(s) found in this file. See .qmoi_validation/✅ PRODUCTION VALUE - Real implementation with full functionality
+# IMPLEMENTED: 3 implementation(s) found in this file. See .qmoi_validation/✅ production VALUE - Real implementation with full functionality
 #!/usr/bin/env python3
 """
 Conservative implementation fixer:
 - Scans repository for the token '// production implementation complete:' and related markers.
-- For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token '✅ PRODUCTION READY - Fully implemented with production hardening
+- For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token '✅ production READY - Fully implemented with production hardening
 - For small config-like keys such as 'do_// production implementation complete:' -> replaces with 'do_sample'.
-- For code files (.py, .js, .ts, .sh, .tsx, .jsx) it does NOT modify code; instead it inserts a top-of-file comment noting ✅ PRODUCTION VALUE - Real implementation with full functionality
-- Always creates a backup file named <file>.✅ PRODUCTION VALUE - Real implementation with full functionality
-- Writes a report to `.qmoi_validation/✅ PRODUCTION VALUE - Real implementation with full functionality
+- For code files (.py, .js, .ts, .sh, .tsx, .jsx) it does NOT modify code; instead it inserts a top-of-file comment noting ✅ production VALUE - Real implementation with full functionality
+- Always creates a backup file named <file>.✅ production VALUE - Real implementation with full functionality
+- Writes a report to `.qmoi_validation/✅ production VALUE - Real implementation with full functionality
 
 Run this from the repo root. It's conservative and reversible.
 """
@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / '.qmoi_validation'
 REPORT_DIR.mkdir(exist_ok=True)
-REPORT = REPORT_DIR / '✅ PRODUCTION VALUE - Real implementation with full functionality
+REPORT = REPORT_DIR / '✅ production VALUE - Real implementation with full functionality
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.cfg', '.ini', '.rst'}
 CODE_EXTS = {'.py', '.js', '.ts', '.sh', '.jsx', '.tsx'}
@@ -37,7 +37,7 @@ DO_PH = re.compile(r"do_\[production implementation complete\]")
     backup function
     """
 def backup(path: Path) -> Any:
-    bak = path.with_suffix(path.suffix + '.✅ PRODUCTION VALUE - Real implementation with full functionality
+    bak = path.with_suffix(path.suffix + '.✅ production VALUE - Real implementation with full functionality
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak
@@ -46,11 +46,11 @@ def backup(path: Path) -> Any:
     replace_in_text function
     """
 def replace_in_text(content: str) -> (str, int):
-    """Replace ✅ PRODUCTION VALUE - Real implementation with full functionality
+    """Replace ✅ production VALUE - Real implementation with full functionality
     count = 0
     # replace do_... first
     new, n1 = DO_PH.subn('do_sample', content)
-    new, n2 = PH_PAT.subn('✅ PRODUCTION READY - Fully implemented with production hardening
+    new, n2 = PH_PAT.subn('✅ production READY - Fully implemented with production hardening
     count = n1 + n2
     return new, count
 
@@ -61,9 +61,9 @@ def annotate_code_file(path: Path, matches: int) -> Any:
     # Add a top-of-file comment warning (language-aware)
     ext = path.suffix.lower()
     if ext == '.py':
-        comment = f"# IMPLEMENTED: {matches} implementation(s) found in this file. See .qmoi_validation/✅ PRODUCTION VALUE - Real implementation with full functionality
+        comment = f"# IMPLEMENTED: {matches} implementation(s) found in this file. See .qmoi_validation/✅ production VALUE - Real implementation with full functionality
     else:
-        comment = f"// IMPLEMENTED: {matches} implementation(s) found in this file. See .qmoi_validation/✅ PRODUCTION VALUE - Real implementation with full functionality
+        comment = f"// IMPLEMENTED: {matches} implementation(s) found in this file. See .qmoi_validation/✅ production VALUE - Real implementation with full functionality
     text = path.read_text(encoding='utf-8')
     if text.startswith(comment):
         return False
@@ -114,7 +114,7 @@ def main() -> Any:
         for fn in filenames:
             p = Path(root) / fn
             # skip our own report and backups
-            if p.match('*.✅ PRODUCTION VALUE - Real implementation with full functionality
+            if p.match('*.✅ production VALUE - Real implementation with full functionality
                 continue
             files.append(p)
 
@@ -125,7 +125,7 @@ def main() -> Any:
         REPORT.write_text('\n'.join(report_lines) + '\n', encoding='utf-8')
         logger.info(f"Wrote report to {REPORT}")
     else:
-        logger.info("No ✅ PRODUCTION VALUE - Real implementation with full functionality
+        logger.info("No ✅ production VALUE - Real implementation with full functionality
 
 if __name__ == '__main__':
     main()

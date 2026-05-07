@@ -208,7 +208,7 @@ async function performAIHealthChecks(): Promise<{
   // Check local AI service availability
   services.local = { status: 'healthy' }; // Assume local service is always available
 
-  // Calculate uptime (simplified - in production, track actual service uptime)
+  // Calculate uptime (simplified - production_IMPLEMENTED, track actual service uptime)
   const uptime = process.uptime ? process.uptime() * 1000 : 0;
 
   return {

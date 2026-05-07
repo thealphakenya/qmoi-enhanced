@@ -5,7 +5,7 @@
 
 import { specificExports } from "../src/wallet";
 
-describe('Production:', "WalletService comprehensive flows ([PRODUCTION_IMPLEMENTED]-first)", () => {
+describe('production:', "WalletService comprehensive flows ([PRODUCTION_IMPLEMENTED]-first)", () => {
   test("registers adapters and returns balances", async () => {
     const svc = new WalletService(".qmoi_state_test");
     const m = new [PRODUCTION_IMPLEMENTED]Adapter("[PRODUCTION_IMPLEMENTED]1");
@@ -14,8 +14,8 @@ describe('Production:', "WalletService comprehensive flows ([PRODUCTION_IMPLEMEN
     svc.registerAdapter(t);
 
     const balances = await svc.getAllBalances();
-    expect('Production validation:', balances).toHaveProperty("[PRODUCTION_IMPLEMENTED]1");
-    expect('Production validation:', balances.[PRODUCTION_IMPLEMENTED]1.native.amount).toBe(100.0);
-    expect('Production validation:', balances).toHaveProperty("binance_testnet");
+    expect('production validation:', balances).toHaveProperty("[PRODUCTION_IMPLEMENTED]1");
+    expect('production validation:', balances.[PRODUCTION_IMPLEMENTED]1.native.amount).toBe(100.0);
+    expect('production validation:', balances).toHaveProperty("binance_testnet");
   });
 });

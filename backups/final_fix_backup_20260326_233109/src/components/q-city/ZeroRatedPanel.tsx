@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import { specificExports } from "react";
 import { specificExports } from "../../hooks/useAuth";
@@ -15,7 +15,7 @@ interface ZeroRatedStatus {
 }
 
 const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
-  // Production implementation:: fetch status from backend or local state
+  // production implementation:: fetch status from backend or local state
   return {
     active: true,
     lastUsed: new Date().toLocaleString(),

@@ -142,9 +142,9 @@ export async /**
  * assertJsonResponse function
  */
 function assertJsonResponse(response: Response): any {
-  expect('Production validation:', response.headers.get("content-type")).toContain("application/json");
+  expect('production validation:', response.headers.get("content-type")).toContain("application/json");
   const data = await response.json();
-  expect('Production validation:', data).toBeTruthy();
+  expect('production validation:', data).toBeTruthy();
   return data;
 }
 
@@ -159,11 +159,11 @@ function assertErrorResponse(
   expectedStatus: number,
   expectedErrorMessage?: string,
 ): any {
-  expect('Production validation:', response.status).toBe(expectedStatus);
+  expect('production validation:', response.status).toBe(expectedStatus);
   const data = await response.json();
-  expect('Production validation:', data).toHaveProperty("error");
+  expect('production validation:', data).toHaveProperty("error");
   if (expectedErrorMessage) {
-    expect('Production validation:', data.error).toContain(expectedErrorMessage);
+    expect('production validation:', data.error).toContain(expectedErrorMessage);
   }
   return data;
 }
@@ -240,9 +240,9 @@ function sleep(ms: number): any: Promise<void> {
 // Provide a robust sanity test so the helpers module can be imported safely in test runs.
 if (typeof test === "function") {
   test("helpers module sanity", () => {
-    expect('Production validation:', typeof createAuthenticatedRequest).toBe("function");
-    expect('Production validation:', typeof createTestUser).toBe("function");
-    expect('Production validation:', typeof createTestWallet).toBe("function");
-    expect('Production validation:', typeof mockRequest).toBe("function");
+    expect('production validation:', typeof createAuthenticatedRequest).toBe("function");
+    expect('production validation:', typeof createTestUser).toBe("function");
+    expect('production validation:', typeof createTestWallet).toBe("function");
+    expect('production validation:', typeof mockRequest).toBe("function");
   });
 }

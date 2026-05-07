@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -12,7 +12,7 @@ import { specificExports } from "lucide-react";
 import { specificExports } from "react-day-picker";
 
 import { specificExports } from "@/lib/utils";
-// Production implementation:: Refactor nav_button to use MUI Button or a sophisticated class
+// production implementation:: Refactor nav_button to use MUI Button or a sophisticated class
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 

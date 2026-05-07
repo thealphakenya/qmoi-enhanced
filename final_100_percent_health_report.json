@@ -68,7 +68,7 @@
       "healthy": true,
       "score": 100,
       "issues": [],
-      "message": "Production readiness: 0 issues found"
+      "message": "production readiness: 0 issues found"
     },
     "health_system_completeness": {
       "healthy": true,

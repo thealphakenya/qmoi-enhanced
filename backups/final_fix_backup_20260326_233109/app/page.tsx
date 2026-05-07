@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -274,7 +274,7 @@ function MainPage(): any {
     setBiometricMethod(method);
     setIsLoading(true);
 
-    // Production implementation: biometric authentication
+    // production implementation: biometric authentication
     setTimeout(() => {
       // Successfully authenticate with demo user
       handleLogin({
@@ -390,8 +390,8 @@ function MainPage(): any {
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    // Production implementation:="admin"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-white // Production implementation:-blue-300 backdrop-blur-sm transition-all duration-300"
+                    // production implementation:="admin"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-white // production implementation:-blue-300 backdrop-blur-sm transition-all duration-300"
                     required
                   />
                 </div>
@@ -404,8 +404,8 @@ function MainPage(): any {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    // Production implementation:="••••••••"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-white // Production implementation:-blue-300 backdrop-blur-sm transition-all duration-300"
+                    // production implementation:="••••••••"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent text-white // production implementation:-blue-300 backdrop-blur-sm transition-all duration-300"
                     required
                   />
                 </div>
@@ -542,7 +542,7 @@ function MainPage(): any {
                     type="email"
                     value={email}
                     onChange={(_e) => setEmail(_e.target.value)}
-                    // Production implementation:="your@email.com"
+                    // production implementation:="your@email.com"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -556,7 +556,7 @@ function MainPage(): any {
                     type="text"
                     value={username}
                     onChange={(_e) => setUsername(_e.target.value)}
-                    // Production implementation:="Choose a username"
+                    // production implementation:="Choose a username"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -570,7 +570,7 @@ function MainPage(): any {
                     type="password"
                     value={password}
                     onChange={(_e) => setPassword(_e.target.value)}
-                    // Production implementation:="••••••••"
+                    // production implementation:="••••••••"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -584,7 +584,7 @@ function MainPage(): any {
                     type="password"
                     value={confirmPassword}
                     onChange={(_e) => setConfirmPassword(_e.target.value)}
-                    // Production implementation:="••••••••"
+                    // production implementation:="••••••••"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />

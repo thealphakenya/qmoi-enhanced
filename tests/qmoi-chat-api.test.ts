@@ -1,11 +1,11 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-/* @Production testing framework configuredn logging replaced with production logging removed-environment node */
+/* @production testing framework configuredn logging replaced with production logging removed-environment node */
 const BASE = process.env.QMOI_UI_BASE || "https://prod.qmoi.ai:3000";
 
   const isJsdom =

@@ -134,7 +134,7 @@ const ProductionRevenueDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">🚀 Production Revenue Dashboard</h1>
+          <h1 className="text-3xl font-bold">🚀 production Revenue Dashboard</h1>
           <p className="text-gray-600">Real-time revenue validation and monitoring</p>
         </div>
         <div className="text-right text-sm text-gray-500">

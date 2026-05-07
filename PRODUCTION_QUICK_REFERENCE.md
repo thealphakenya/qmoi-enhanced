@@ -1,4 +1,4 @@
-# QMOI Enhanced - Production Quick Reference
+# QMOI Enhanced - production Quick Reference
 
 **Version:** 1.0  
 **Last Updated:** 2026-04-24  
@@ -34,7 +34,7 @@ npm run db:migrate:production
 psql $FINANCIAL_DB_URL -c "SELECT table_name FROM information_schema.tables"
 ```
 
-### 3. Start Production Server
+### 3. Start production Server
 ```bash
 # Build application
 npm run build
@@ -43,7 +43,7 @@ npm run build
 NODE_ENV=production npm start
 
 # Verify running
-curl http://production-api.qmoi-enhanced.com:3000/health
+curl https://production-api.qmoi-enhanced.com:3000/health
 ```
 
 ### 4. Validate Everything
@@ -51,7 +51,7 @@ curl http://production-api.qmoi-enhanced.com:3000/health
 # Run full validation
 python3 scripts/validate_production_state.py
 
-# Should output: ✅ PRODUCTION VALIDATION: READY FOR DEPLOYMENT
+# Should output: ✅ production VALIDATION: READY FOR DEPLOYMENT
 ```
 
 ---
@@ -119,7 +119,7 @@ npm run webhooks:retry --failed-since=1h
 
 ---
 
-## 📈 Monitoring in Production
+## 📈 Monitoring production_IMPLEMENTED
 
 ### Real-time Dashboard
 ```bash
@@ -170,7 +170,7 @@ python3 scripts/validate_production_state.py || exit 1
 
 # 2. Test API connectivity
 node -e "const c = require('./services/cashon-production'); \
-  c.cashOnProduction.getWalletBalance('test').then(() => console.log('✅ API OK'))" || exit 1
+  c.cashOnProduction.getWalletBalance('test').then(() => logger.info('✅ API OK'))" || exit 1
 
 # 3. Verify database
 psql $FINANCIAL_DB_URL -c "SELECT COUNT(*) FROM transactions" || exit 1
@@ -194,7 +194,7 @@ echo "✅ All checks passed - Ready to deploy"
 | No wallet data | DB connection lost | Run `npm run db:restart-pool` |
 | Webhooks not received | Endpoint not registered | Run `node scripts/cashon/sync-webhooks.js` |
 | High latency | DB under load | Check `npm run metrics:db-queries` |
-| Auth failing | JWT secret wrong | Verify `JWT_SECRET` env var |
+| Auth failing | JWT secret wrong | Verify `JWT_SECRET` env const |
 
 ---
 
@@ -246,7 +246,7 @@ echo "✅ All checks passed - Ready to deploy"
 
 ---
 
-## 🎯 30-Day Production Goals
+## 🎯 30-Day production Goals
 
 1. **Stability** - Zero unplanned outages
 2. **Performance** - Latency <200ms (p99)
@@ -266,4 +266,4 @@ echo "✅ All checks passed - Ready to deploy"
 
 **Questions?** Contact: operations-team@qmoi.ai
 
-✅ **YOU ARE READY TO DEPLOY QMOI TO PRODUCTION**
+✅ **YOU ARE READY TO DEPLOY QMOI TO production**

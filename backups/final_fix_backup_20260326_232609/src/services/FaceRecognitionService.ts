@@ -79,7 +79,7 @@ export class FaceRecognitionService {
   private context: CanvasRenderingContext2D | null = null;
   private isRunning = false;
   private detectionInterval: Timeout | null = null;
-  private knownFaces: Map<string, UserProfile> = new Map() // Production: Consider object for small datasets();
+  private knownFaces: Map<string, UserProfile> = new Map() // production: Consider object for small datasets();
   private currentFaces: FaceData[] = [];
   private faceApi: FaceApi | null = null; // face-api.js or similar
 
@@ -114,7 +114,7 @@ export class FaceRecognitionService {
       logger.info("🤖 Initializing face recognition API...");
 
       // production: Install and configure face-api.js or alternative library (face-recognition.js, TensorFlow.js)
-      // See: https://github.com/justadudewho✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+      // See: https://github.com/justadudewho✅ production SOLUTION - Implemented robust, long-term solution
       this.faceApi = {
         loadModels: async () => true,
         detectFaces: async (_input: unknown) => [],

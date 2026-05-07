@@ -60,7 +60,7 @@ python3 run_web_dashboard.py &
 ## 🌐 **Using the Web Dashboard**
 
 ### **Access**
-- **URL**: http://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000
+- **URL**: https://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000
 - **Browser**: Any modern web browser
 - **No login required** (production mode)
 
@@ -99,18 +99,18 @@ python3 run_web_dashboard.py &
 
 ## 🔌 **Using the REST API**
 
-### **Base URL**: `http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000`
+### **Base URL**: `https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000`
 
 ### **API Documentation**
 ```bash
 # View interactive API documentation
-curl http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/docs
+curl https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/docs
 ```
 
 ### **Health Check**
 ```bash
 # Check system health
-curl http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
+curl https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
 
 # Expected response:
 {
@@ -128,14 +128,14 @@ curl http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/he
 
 #### **Anomaly Detection**
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
   -H "Content-Type: application/json" \
   -d '{"data": [1.0, 2.5, 3.2, 4.1, 5.0]}'
 ```
 
 #### **Machine Learning**
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/machine-learning \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/machine-learning \
   -H "Content-Type: application/json" \
   -d '{
     "task_type": "regression",
@@ -146,21 +146,21 @@ curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai
 
 #### **Natural Language Processing**
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/nlp-analysis \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/nlp-analysis \
   -H "Content-Type: application/json" \
   -d '{"text": "This is a sample text for analysis."}'
 ```
 
 #### **Computer Vision**
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/computer-vision \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/computer-vision \
   -H "Content-Type: application/json" \
   -d '{"image_data": "base64_encoded_image", "task_type": "edge_detection"}'
 ```
 
 #### **Predictive Analytics**
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/predictive-analytics \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/predictive-analytics \
   -H "Content-Type: application/json" \
   -d '{"data": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "forecast_periods": 3}'
 ```
@@ -168,7 +168,7 @@ curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai
 ### **Checking Task Status**
 ```bash
 # Get task results
-curl http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/task/task_123456789
+curl https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/task/task_123456789
 
 # Response format:
 {
@@ -361,7 +361,7 @@ df -h
 ### **API Errors**
 ```bash
 # Test API connectivity
-curl http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
+curl https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
 
 # Check API server logs
 tail -f ai_api_server.log
@@ -387,19 +387,19 @@ python3 run_web_dashboard.py &
 import requests
 
 # Submit custom task
-response = requests.post('http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection',
+response = requests.post('https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection',
     json={'data': your_data, 'custom_params': {...}})
 
 # Check results
 task_id = response.json()['task_id']
-result = requests.get(f'http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/task/{task_id}')
+result = requests.get(f'https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/task/{task_id}')
 ```
 
 ### **Batch Processing**
 ```bash
 # Process multiple tasks
 for data in data_list:
-    curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
+    curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
         -H "Content-Type: application/json" \
         -d "{\"data\": $data}" &
 done
@@ -412,7 +412,7 @@ import requests
 import time
 
 class QMOIClient:
-    def __init__(self, base_url='http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000'):
+    def __init__(self, base_url='https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000'):
         self.base_url = base_url
 
     def submit_task(self, endpoint, data):
@@ -460,7 +460,7 @@ result = client.get_result(task['task_id'])
 
 ### **Documentation**
 - **Operations Guide**: `OPERATIONS_GUIDE.md`
-- **API Documentation**: `http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/docs`
+- **API Documentation**: `https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/docs`
 - **Troubleshooting**: See operations guide
 
 ### **Quick Commands**

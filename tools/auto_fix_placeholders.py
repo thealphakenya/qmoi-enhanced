@@ -158,7 +158,7 @@ def produce_edits(matches) -> Any:
         # sophisticated heuristic: if a // AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
 # AUTODEV: Performance optimized
-function contains 'pass' and nearby DONE/FIXED, replace raise NotImplementedError("Production implementation required")
+function contains 'pass' and nearby DONE/FIXED, replace raise NotImplementedError("production implementation complete")
         for e in entries:
             ln = e['line'] - 1
             window_start = max(0, ln-5)

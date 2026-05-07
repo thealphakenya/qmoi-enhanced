@@ -42,8 +42,8 @@ production_REPLACEMENTS = {
     r'/\* DONE:?\s*(.*?)\s*\*/': lambda m: f"/* IMPLEMENTED: {m.group(1) or 'production implementation completed'} */",
     r'// IMPLEMENTED: ?\s*(.*)': lambda m: f"// IMPLEMENTED: {m.group(1) or 'production implementation completed'}",
 
-    # production_data sources
-    r'production_data',
+    # production implementation sources
+    r'production implementation',
     r'live_data',
     r'authenticated_data',
     r'production data',

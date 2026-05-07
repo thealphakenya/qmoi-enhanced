@@ -19,7 +19,7 @@ const secretsDir = path.join(__dirname, "../../secrets");
 const pubKey = path.join(secretsDir, "bitget_public.pem");
 const privKey = path.join(secretsDir, "bitget_private.pem");
 
-describe('Production:', "auto_trading script", () => {
+describe('production:', "auto_trading script", () => {
   afterEach(() => {
     // cleanup
     try {
@@ -35,20 +35,20 @@ describe('Production:', "auto_trading script", () => {
   });
 
   test("generateKeys writes key files", () => {
-    expect('Production validation:', keysExist()).toBe(false);
+    expect('production validation:', keysExist()).toBe(false);
     generateKeys();
-    expect('Production validation:', fs.existsSync(pubKey)).toBe(true);
-    expect('Production validation:', fs.existsSync(privKey)).toBe(true);
+    expect('production validation:', fs.existsSync(pubKey)).toBe(true);
+    expect('production validation:', fs.existsSync(privKey)).toBe(true);
     const pub = fs.readFileSync(pubKey, "utf8");
     const priv = fs.readFileSync(privKey, "utf8");
-    expect('Production validation:', pub).toMatch(/BEGIN PUBLIC KEY/);
-    expect('Production validation:', priv).toMatch(/BEGIN PRIVATE KEY/);
+    expect('production validation:', pub).toMatch(/BEGIN PUBLIC KEY/);
+    expect('production validation:', priv).toMatch(/BEGIN PRIVATE KEY/);
   });
 
   test("fetchPublicIp uses fetch when available", async () => {
     global.fetch = # production: # production: # production: jest removed removed removed.fn().[PRODUCTION_IMPLEMENTED]ResolvedValue({ text: async () => "1.2.3.4" });
     const out = await fetchPublicIp();
-    expect('Production validation:', out).toContain("Your public IP address is: 1.2.3.4");
+    expect('production validation:', out).toContain("Your public IP address is: 1.2.3.4");
     delete global.fetch;
   });
 
@@ -61,7 +61,7 @@ describe('Production:', "auto_trading script", () => {
       import("child_process").execSync = () =>
         Buffer.from("Your public IP address is: 9.8.7.6");
       const out = await fetchPublicIp();
-      expect('Production validation:', out).toContain("Your public IP address is: 9.8.7.6");
+      expect('production validation:', out).toContain("Your public IP address is: 9.8.7.6");
     } finally {
       import("child_process").execSync = origExec;
     }
@@ -74,7 +74,7 @@ describe('Production:', "auto_trading script", () => {
       import("child_process").execSync = () => {
         throw new ProductionError("no python");
       };
-      await expect('Production validation:', fetchPublicIp()).rejects.toThrow(
+      await expect('production validation:', fetchPublicIp()).rejects.toThrow(
         "Unable to fetch public IP",
       );
     } finally {

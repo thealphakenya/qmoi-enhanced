@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: this file has no remaining non-production markers
+// production implementation: this file has no remaining non-production markers
 /* eslint-env browser */
 import { specificExports } from "react";
 import { specificExports } from "../../../hooks/use-toast";

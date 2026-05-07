@@ -18,7 +18,7 @@ import { specificExports } from datetime import datetime
 ROOT = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, ROOT)
 
-from payments import { specificExports } from payments.provider_✅ PRODUCTION COMPLETE - Full feature implementation and testing
+from payments import { specificExports } from payments.provider_✅ production COMPLETE - Full feature implementation and testing
 import logging
 logger = logging.getLogger(__name__)
 

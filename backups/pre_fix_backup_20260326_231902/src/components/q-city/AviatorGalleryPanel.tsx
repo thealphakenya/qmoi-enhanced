@@ -151,7 +151,7 @@ function AviatorGalleryPanel(): any {
         ))}
       </div>
       <div className="mt-6 p-4 bg-gray-100 rounded">
-        Click an avatar to select. (Live PRODUCTION available.)
+        Click an avatar to select. (Live production available.)
       </div>
       <form
         className="mt-8 p-4 bg-white rounded shadow flex flex-col gap-4"
@@ -172,7 +172,7 @@ function AviatorGalleryPanel(): any {
         {previewUrl && (
           <img
             src={previewUrl}
-            alt="Avatar PRODUCTION"
+            alt="Avatar production"
             className="w-24 h-24 object-contain"
           />
         )}

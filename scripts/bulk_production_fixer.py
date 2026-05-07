@@ -48,7 +48,7 @@ function bodies',
         'priority': 'HIGH',
         'count': 0,
     },
-    '✅ PRODUCTION READY - Fully implemented with production hardening
+    '✅ production READY - Fully implemented with production hardening
     # IMPLEMENTED: ',
         'replacement': 'IMPL',
         'context': 'production DONE markers',

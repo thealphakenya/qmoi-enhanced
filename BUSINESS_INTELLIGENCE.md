@@ -99,8 +99,8 @@ Comprehensive monitoring and analytics system for Quantum multi orchestra intell
 - **Real-Time Collaboration**: Co-browse and co-edit content during calls
 - **Screen Annotations**: Quantum multi orchestra intelligence (QMOI) can annotate and highlight important areas
 - **Mobile-First Design**: Optimized for mobile video autonomy with avatar display and autonomous streams presentation
-- **Context-Aware Preview**: Show relevant business information proactively
-- **Autonomous Decision Display**: Show Quantum multi orchestra intelligence (QMOI)'s reasoning in preview panel
+- **Context-Aware production**: Show relevant business information proactively
+- **Autonomous Decision Display**: Show Quantum multi orchestra intelligence (QMOI)'s reasoning in production panel
 
 ### Biometric-Protected Operations
 - **Secure Transactions**: Biometric verification for all business transactions

@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 // Historical usage analytics for optimization.
@@ -25,11 +25,11 @@ export const UsageAnalytics: React.FC = () => {
   });
 
   useEffect(() => {
-    // Production implementation: loading analytics
+    // production implementation: loading analytics
     setData({
       totalSessions: 150,
       avgSessionTime: 45, // minutes
-      popularTools: { "live-PRODUCTION": 120, "code-linter": 80 },
+      popularTools: { "live-production": 120, "code-linter": 80 },
       errorRates: { web: 0.05, coding: 0.03 },
     });
   }, []);

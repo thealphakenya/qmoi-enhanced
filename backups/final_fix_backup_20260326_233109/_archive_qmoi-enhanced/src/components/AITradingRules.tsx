@@ -23,7 +23,7 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import {
   Box,
@@ -222,7 +222,7 @@ export const AITradingRules: React.FC<AITradingRulesProps> = ({
               label="Add Trading Pair"
               value={newPair}
               onChange={(e) => setNewPair(e.target.value.toUpperCase())}
-              // Production implementation:="e.g., BTC/USDT"
+              // production implementation:="e.g., BTC/USDT"
             />
             <Button
               variant="outlined"

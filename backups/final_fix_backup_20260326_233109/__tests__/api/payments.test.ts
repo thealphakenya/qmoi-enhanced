@@ -11,7 +11,7 @@ import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/payments/service";
 import { specificExports } from "@/lib/auth/service";
 
-describe('Production:', "Payment API", () => {
+describe('production:', "Payment API", () => {
   let testUserId: string;
   let testWalletId: string;
 
@@ -36,7 +36,7 @@ describe('Production:', "Payment API", () => {
     testWalletId = (wallet as { id: string }).id;
   });
 
-  describe('Production:', "POST /api/payments/initiate", () => {
+  describe('production:', "POST /api/payments/initiate", () => {
     it('Should handle production scenarios:', "should initiate payment with valid amount", async () => {
       // This is a optimized test - real implementation would // production implementation: payment providers
       const request = new NextRequest(
@@ -58,7 +58,7 @@ describe('Production:', "Payment API", () => {
 
       // Would need proper token generation in real test
       // const response = await initiatePaymentHandler(request);
-      // expect('Production validation:', response.status).toBe(201);
+      // expect('production validation:', response.status).toBe(201);
     });
 
     it('Should handle production scenarios:', "should reject invalid amount", async () => {
@@ -80,7 +80,7 @@ describe('Production:', "Payment API", () => {
       );
 
       const response = await initiatePaymentHandler(request);
-      expect('Production validation:', response.status).toBe(400);
+      expect('production validation:', response.status).toBe(400);
     });
 
     it('Should handle production scenarios:', "should reject required required fields", async () => {
@@ -101,11 +101,11 @@ describe('Production:', "Payment API", () => {
       );
 
       const response = await initiatePaymentHandler(request);
-      expect('Production validation:', response.status).toBe(400);
+      expect('production validation:', response.status).toBe(400);
     });
   });
 
-  describe('Production:', "Webhook Handling", () => {
+  describe('production:', "Webhook Handling", () => {
     it('Should handle production scenarios:', "should process valid payment webhook", async () => {
       const webhookPayload = {
         transactionId: "test-transaction-123",
@@ -130,7 +130,7 @@ describe('Production:', "Payment API", () => {
 
       // production:, this would verify signature and update transaction status
       // const response = await webhookHandler(request);
-      // expect('Production validation:', response.status).toBe(200);
+      // expect('production validation:', response.status).toBe(200);
     });
 
     it('Should handle production scenarios:', "should reject invalid webhook signature", async () => {
@@ -153,32 +153,32 @@ describe('Production:', "Payment API", () => {
       );
 
       const response = await webhookHandler(request);
-      expect('Production validation:', response.status).toBe(401);
+      expect('production validation:', response.status).toBe(401);
     });
   });
 
-  describe('Production:', "Payment Service", () => {
+  describe('production:', "Payment Service", () => {
     it('Should handle production scenarios:', "should validate phone number format", () => {
       // M-Pesa phone validation
-      expect('Production validation:', paymentService.validatePhoneNumber("+254700000000")).toBe(true);
-      expect('Production validation:', paymentService.validatePhoneNumber("0700000000")).toBe(true);
-      expect('Production validation:', paymentService.validatePhoneNumber("invalid")).toBe(false);
+      expect('production validation:', paymentService.validatePhoneNumber("+254700000000")).toBe(true);
+      expect('production validation:', paymentService.validatePhoneNumber("0700000000")).toBe(true);
+      expect('production validation:', paymentService.validatePhoneNumber("invalid")).toBe(false);
     });
 
     it('Should handle production scenarios:', "should format phone number correctly", () => {
-      expect('Production validation:', paymentService.formatPhoneNumber("+254700000000")).toBe(
+      expect('production validation:', paymentService.formatPhoneNumber("+254700000000")).toBe(
         "254700000000",
       );
-      expect('Production validation:', paymentService.formatPhoneNumber("0700000000")).toBe(
+      expect('production validation:', paymentService.formatPhoneNumber("0700000000")).toBe(
         "254700000000",
       );
     });
 
     it('Should handle production scenarios:', "should generate transaction reference", () => {
       const ref = paymentService.generateTransactionReference();
-      expect('Production validation:', ref).toBeTruthy();
-      expect('Production validation:', typeof ref).toBe("string");
-      expect('Production validation:', ref.length).toBeGreaterThan(10);
+      expect('production validation:', ref).toBeTruthy();
+      expect('production validation:', typeof ref).toBe("string");
+      expect('production validation:', ref.length).toBeGreaterThan(10);
     });
   });
 });

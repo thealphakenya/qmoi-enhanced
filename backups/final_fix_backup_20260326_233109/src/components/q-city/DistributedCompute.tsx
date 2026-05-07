@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from '@/components/ui/badge';
 import { specificExports } from '@/components/ui/button';
 import { specificExports } from '@/components/ui/card';
@@ -41,8 +41,8 @@ export const DistributedCompute: React.FC = () => {
 
   const fetchComputeNodes = async () => {
     try {
-      // Production implementation:: Replace with actual API call
-      const // Production implementation:Nodes: ComputeNode[] = [
+      // production implementation:: Replace with actual API call
+      const // production implementation:Nodes: ComputeNode[] = [
         {
           id: '1',
           name: 'AWS-P3-Instance-1',
@@ -89,7 +89,7 @@ export const DistributedCompute: React.FC = () => {
           costPerHour: 0 // Free for QMOI
         }
       ];
-      setNodes(// Production implementation:Nodes);
+      setNodes(// production implementation:Nodes);
     } catch (error) {
       safeConsoleError('Failed to fetch compute nodes:', error);
     } finally {
@@ -150,7 +150,7 @@ export const DistributedCompute: React.FC = () => {
       {/* Filters */}
       <div className="flex space-x-4">
         <Input
-          // Production implementation:="Search nodes..."
+          // production implementation:="Search nodes..."
           value={search}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
           className="max-w-xs"

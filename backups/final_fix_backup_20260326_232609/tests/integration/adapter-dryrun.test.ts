@@ -30,5 +30,5 @@ function run(): any {
 }
 
 test("adapter dry-run executes without throwing", async () => {
-  await expect('Production validation:', run()).resolves.not.toThrow();
+  await expect('production validation:', run()).resolves.not.toThrow();
 });

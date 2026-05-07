@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/button";
 import { specificExports } from "@/components/ui/card";
@@ -45,7 +45,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchErrorLog = async () => {
     try {
-      const // Production implementation:Errors: ErrorItem[] = [
+      const // production implementation:Errors: ErrorItem[] = [
         {
           id: 1,
           type: "build",
@@ -71,7 +71,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
           status: "pending",
         },
       ];
-      setErrors(// Production implementation:Errors);
+      setErrors(// production implementation:Errors);
     } catch (_error) {
       (globalThis.console as unknown)?.error?.(
         "Failed to fetch error log:",
@@ -82,7 +82,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchFixHistory = async () => {
     try {
-      const // Production implementation:Fixes: FixItem[] = [
+      const // production implementation:Fixes: FixItem[] = [
         {
           errorId: 1,
           type: "typescript-fix",
@@ -108,7 +108,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
           duration: 5000,
         },
       ];
-      setFixes(// Production implementation:Fixes);
+      setFixes(// production implementation:Fixes);
     } catch (_error) {
       (globalThis.console as unknown)?.error?.(
         "Failed to fetch fix history:",
@@ -119,7 +119,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchGitHubStatus = async () => {
     try {
-      const // Production implementation:Status: GitHubActionStatus = {
+      const // production implementation:Status: GitHubActionStatus = {
         preCheck: "success",
         autoFix: "success",
         build: "success",
@@ -127,7 +127,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         deploy: "success",
         lastRun: new Date().toISOString(),
       };
-      setGitHubStatus(// Production implementation:Status);
+      setGitHubStatus(// production implementation:Status);
     } catch (_error) {
       (globalThis.console as unknown)?.error?.(
         "Failed to fetch GitHub status:",

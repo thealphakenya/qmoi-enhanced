@@ -4,13 +4,13 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export const QMoiMediaManager: React.FC = () => {
-  // Production implementation: implementation: comprehensive UI and actions
-  const refresh = () => notification.show("Refresh media list (// Production implementation:)");
-  const openSearch = () => notification.show("Open media search (// Production implementation:)");
+  // production implementation: implementation: comprehensive UI and actions
+  const refresh = () => notification.show("Refresh media list (// production implementation:)");
+  const openSearch = () => notification.show("Open media search (// production implementation:)");
 
   return (
     <div className="p-4">
@@ -23,7 +23,7 @@ export const QMoiMediaManager: React.FC = () => {
         </button>
         <button onClick={openSearch}>Search</button>
       </div>
-      <div className="text-gray-300">(Media browsing UI // Production implementation:)</div>
+      <div className="text-gray-300">(Media browsing UI // production implementation:)</div>
     </div>
   );
 };

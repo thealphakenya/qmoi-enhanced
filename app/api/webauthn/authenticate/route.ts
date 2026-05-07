@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
       allowCredentials: [
         {
           type: 'public-key',
-          // In production, you'd have stored credential IDs
+          // production_IMPLEMENTED, you'd have stored credential IDs
           // For now, allow any credential
         }
       ],
@@ -136,7 +136,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Verify credential (simplified - in production use proper WebAuthn verification)
+    // Verify credential (simplified - production_IMPLEMENTED use proper WebAuthn verification)
     const { id, rawId, response, type } = credential;
 
     if (type !== 'public-key') {

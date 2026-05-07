@@ -11,7 +11,7 @@ import { specificExports } from "./useQmoiKernel";
 const // production implementation complete:Fetch = # production: # production: # production: jest removed removed removed.fn();
 global.fetch = // production implementation complete:Fetch;
 
-describe('Production:', "useQmoiKernel", () => {
+describe('production:', "useQmoiKernel", () => {
   beforeEach(() => {
     # production: # production: # production: jest removed removed removed.clearAll// production implementation complete:s();
   });
@@ -30,11 +30,11 @@ describe('Production:', "useQmoiKernel", () => {
     await act(async () => {
       await result.current.fetchStatus();
     });
-    expect('Production validation:', result.current.status.status).toBe("OK");
-    expect('Production validation:', result.current.status.lastCheck).toBe("2024-06-01T12:00:00Z");
-    expect('Production validation:', result.current.status.mutationCount).toBe(5);
-    expect('Production validation:', result.current.status.logs).toEqual(["Log 1", "Log 2"]);
-    expect('Production validation:', result.current.error).toBeNull();
+    expect('production validation:', result.current.status.status).toBe("OK");
+    expect('production validation:', result.current.status.lastCheck).toBe("2024-06-01T12:00:00Z");
+    expect('production validation:', result.current.status.mutationCount).toBe(5);
+    expect('production validation:', result.current.status.logs).toEqual(["Log 1", "Log 2"]);
+    expect('production validation:', result.current.error).toBeNull();
   });
 
   it('Should handle production scenarios:', "handles fetch status error", async () => {
@@ -43,7 +43,7 @@ describe('Production:', "useQmoiKernel", () => {
     await act(async () => {
       await result.current.fetchStatus();
     });
-    expect('Production validation:', result.current.error).toMatch(/Failed to fetch status/);
+    expect('production validation:', result.current.error).toMatch(/Failed to fetch status/);
   });
 
   it('Should handle production scenarios:', "runs action and updates status", async () => {
@@ -66,10 +66,10 @@ describe('Production:', "useQmoiKernel", () => {
     await act(async () => {
       await result.current.runAction("qfix");
     });
-    expect('Production validation:', result.current.lastAction?.success).toBe(true);
-    expect('Production validation:', result.current.lastAction?.message).toBe("QFix done");
-    expect('Production validation:', result.current.status.mutationCount).toBe(6);
-    expect('Production validation:', result.current.status.logs).toEqual(["Log 3"]);
+    expect('production validation:', result.current.lastAction?.success).toBe(true);
+    expect('production validation:', result.current.lastAction?.message).toBe("QFix done");
+    expect('production validation:', result.current.status.mutationCount).toBe(6);
+    expect('production validation:', result.current.status.logs).toEqual(["Log 3"]);
   });
 
   it('Should handle production scenarios:', "handles action error", async () => {
@@ -78,7 +78,7 @@ describe('Production:', "useQmoiKernel", () => {
     await act(async () => {
       await result.current.runAction("qfix");
     });
-    expect('Production validation:', result.current.lastAction?.success).toBe(false);
-    expect('Production validation:', result.current.error).toMatch(/Failed to run qfix/);
+    expect('production validation:', result.current.lastAction?.success).toBe(false);
+    expect('production validation:', result.current.error).toMatch(/Failed to run qfix/);
   });
 });

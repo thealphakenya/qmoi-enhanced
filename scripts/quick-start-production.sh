@@ -1,11 +1,11 @@
 #!/bin/bash
-# optimized Start Guide for QMOI-Enhanced Production Deployment
+# optimized Start Guide for QMOI-Enhanced production Deployment
 # This script helps set up the environment for production deployment
 
 set -e
 
 echo "╔════════════════════════════════════════════════════════════════════╗"
-echo "║       QMOI-Enhanced: Production Deployment optimized Start            ║"
+echo "║       QMOI-Enhanced: production Deployment optimized Start            ║"
 echo "╚════════════════════════════════════════════════════════════════════╝"
 echo ""
 

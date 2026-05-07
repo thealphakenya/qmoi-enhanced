@@ -1,5 +1,5 @@
 #!/bin/bash
-# QMOI PRODUCTION HARDENING - COMPLETE EXECUTION SEQUENCE
+# QMOI production HARDENING - COMPLETE EXECUTION SEQUENCE
 # This script runs all phases of production hardening in proper order
 # Generated: 2026-04-12 07:05 UTC
 
@@ -7,7 +7,7 @@ set -e  # Exit on error
 
 echo ""
 echo "=========================================================================="
-echo "QMOI PRODUCTION HARDENING - COMPLETE EXECUTION SEQUENCE"
+echo "QMOI production HARDENING - COMPLETE EXECUTION SEQUENCE"
 echo "=========================================================================="
 echo ""
 echo "Branch: autosync-backup-20250926-232440"
@@ -16,15 +16,15 @@ echo "Started: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
 echo ""
 
 # ============================================================================
-# PHASE 1: BULK PRODUCTION FIXING
+# PHASE 1: BULK production FIXING
 # ============================================================================
 echo ""
 echo "────────────────────────────────────────────────────────────────────────"
-echo "PHASE 1: BULK PRODUCTION FIXING (Replace 510k+ nonproduction patterns)"
+echo "PHASE 1: BULK production FIXING (Replace 510k+ nonproduction patterns)"
 echo "────────────────────────────────────────────────────────────────────────"
 echo ""
 
-echo "✓ Step 1a: Dry-run to PRODUCTION all changes..."
+echo "✓ Step 1a: Dry-run to production all changes..."
 echo "  Command: python3 scripts/bulk_production_fixer.py --dry-run"
 echo "  Status: Running in background (terminal ID: 96423b12-9c76-4436-b53e-3a567d47c0af)"
 echo ""
@@ -155,7 +155,7 @@ echo "# Complete sync (all updates in sequence)"
 echo "python3 scripts/qmoi_complete_production_sync.py"
 echo ""
 echo "# Commit and push"
-echo "git add -A && git commit -m 'QMOI: Production hardening complete' && \\"
+echo "git add -A && git commit -m 'QMOI: production hardening complete' && \\"
 echo "  git push origin autosync-backup-20250926-232440"
 echo ""
 
@@ -167,7 +167,7 @@ echo "────────────────────────�
 echo "CURRENT EXECUTION STATUS"
 echo "────────────────────────────────────────────────────────────────────────"
 echo ""
-echo "⏳ PHASE 1 - BULK PRODUCTION FIXING (DRY-RUN)"
+echo "⏳ PHASE 1 - BULK production FIXING (DRY-RUN)"
 echo "   Terminal ID: 96423b12-9c76-4436-b53e-3a567d47c0af"
 echo "   Started: 2026-04-12 07:03 UTC"
 echo "   Progress: Scanning repository (36,226 files)"

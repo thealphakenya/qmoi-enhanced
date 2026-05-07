@@ -36,14 +36,14 @@
 | DownloadQApp | Download | app/page.tsx (optional) | / |
 | EmergencyPanel | UI/Emergency | app/layout.tsx (global) | All routes |
 | EnhancedLinkDomainManager | Network | Feature page | Route-specific |
-| EnhancedPreviewWindow | Preview | Global overlay | All routes |
+| EnhancedPreviewWindow | production | Global overlay | All routes |
 | EnhancedRevenuePanel | Finance | Finance route | /trading |
 | FarmBusinessManager | Business | Feature page | Route-specific |
 | FileCategorizer | File | File management | Route-specific |
 | FileExplorer | File | File management | Route-specific |
 | FinancialManager | Finance | Finance route | /trading |
 | FloatingControlPanel | UI/Control | Feature page | Route-specific |
-| FloatingPreviewWindow | Preview | app/layout.tsx (global) | All routes |
+| FloatingPreviewWindow | production | app/layout.tsx (global) | All routes |
 | GitStatus | Dev/Git | Dev pages | /dev |
 | GlobalCall | Communication | app/master/page.tsx | /master |
 | GlobalFileTransfer | File | File management | Route-specific |
@@ -58,12 +58,12 @@
 | MasterEmailDashboard | Communication | app/master/email/page.tsx | /master/email |
 | MasterPortal | Master | app/master/page.tsx | /master |
 | MasterTracksDashboard | Tracking | app/master/page.tsx | /master |
-| MediaPreviewWindow | Preview | Global overlay | All routes |
+| MediaPreviewWindow | production | Global overlay | All routes |
 | MemoryAwareness | System | System/admin page | /admin |
 | NotificationCenter | UI/Notification | app/layout.tsx (global) | All routes |
 | NotificationPanel | UI/Notification | app/layout.tsx (global) | All routes |
 | ParallelProcessing | System/Compute | System page | Route-specific |
-| PreviewWindow | Preview | Global overlay | All routes |
+| PreviewWindow | production | Global overlay | All routes |
 | PriceProductVerifier | Commerce | Commerce route | Route-specific |
 | ProductionMonitoringDashboard | Monitoring | app/admin/page.tsx | /admin |
 | QAvatar | Avatar | Profile pages | /profile |
@@ -360,7 +360,7 @@ export default function Layout({ children }) {
 ### Pattern 4: Global Availability
 ```typescript
 // app/layout.tsx
-import Preview from '@/components/FloatingPreviewWindow';
+import production from '@/components/FloatingPreviewWindow';
 import Notifications from '@/components/NotificationPanel';
 
 export default function RootLayout({ children }) {
@@ -368,7 +368,7 @@ export default function RootLayout({ children }) {
     <html>
       <body>
         {children}
-        <Preview />
+        <production />
         <Notifications />
       </body>
     </html>

@@ -11,10 +11,10 @@ import ComponentGallery, {
   componentPaths,
 } from "../components/ComponentGallery";
 
-describe('Production:', "ComponentGallery", () => {
+describe('production:', "ComponentGallery", () => {
   it('Should handle production scenarios:', "renders without crashing", () => {
     const { container } = render(<ComponentGallery />);
-    expect('Production validation:', container).toBeTruthy();
+    expect('production validation:', container).toBeTruthy();
   });
 
   it('Should handle production scenarios:', "can import and render each listed component", async () => {
@@ -24,7 +24,7 @@ describe('Production:', "ComponentGallery", () => {
       const Component = mod.default || Object.values(mod)[0];
       if (typeof Component === "function") {
         const { container } = render(<Component />);
-        expect('Production validation:', container).toBeTruthy();
+        expect('production validation:', container).toBeTruthy();
       }
     }
   });

@@ -54,8 +54,8 @@ export const VoiceGestureHooks: React.FC = () => {
   }, []);
 
   const handleVoiceCommand = (command: string) => {
-    if (command.includes("open PRODUCTION")) {
-      // Trigger PRODUCTION window
+    if (command.includes("open production")) {
+      // Trigger production window
       window.dispatchEvent(
         new CustomEvent("qmoiEvent", {
           detail: { event: "openPreview", payload: { projectType: "web" } },

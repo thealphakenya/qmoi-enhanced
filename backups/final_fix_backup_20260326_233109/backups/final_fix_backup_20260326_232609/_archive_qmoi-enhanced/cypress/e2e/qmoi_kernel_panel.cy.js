@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-describe('Production:', "QMOI Kernel Panel E2E", () => {
+describe('production:', "QMOI Kernel Panel E2E", () => {
   it('Should handle production scenarios:', "shows status and runs QFix", () => {
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel");

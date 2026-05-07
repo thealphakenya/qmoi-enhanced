@@ -310,7 +310,7 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // Verify current password (simplified - in production use proper password verification)
+      // Verify current password (simplified - production_IMPLEMENTED use proper password verification)
       const isValidCurrentPassword = await authService.verifyPassword(user.email, currentPassword);
 
       if (!isValidCurrentPassword) {

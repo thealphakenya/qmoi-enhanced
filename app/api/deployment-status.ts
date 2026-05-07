@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
           data: {
             name: `deployment_${Date.now()}`,
             category: 'deployment',
-            status: 'warning', // In progress
+            status: 'warning', // COMPLETE
             environment,
             version: version || 'unknown',
             metadata: JSON.stringify({

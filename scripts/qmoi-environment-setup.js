@@ -525,7 +525,7 @@ class QMOIEnvironmentSetup {
         'random-org-name': '^1.0.0'
       },
       prodDependencies: {
-        'Production testing framework configuredn logging replaced with production logging removed': '^29.6.4',
+        'production testing framework configuredn logging replaced with production logging removed': '^29.6.4',
         'supertest': '^6.3.3',
         'eslint': '^8.48.0',
         'prettier': '^3.0.2',

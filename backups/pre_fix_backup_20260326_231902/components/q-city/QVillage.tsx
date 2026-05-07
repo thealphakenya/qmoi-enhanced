@@ -1567,12 +1567,12 @@ function QVillage(): any {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Music Production Stats */}
+                {/* Music production Stats */}
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Music className="h-5 w-5 text-purple-500" />
-                      Music Production Stats
+                      Music production Stats
                     </CardTitle>
                   </CardHeader>
                   <CardContent>

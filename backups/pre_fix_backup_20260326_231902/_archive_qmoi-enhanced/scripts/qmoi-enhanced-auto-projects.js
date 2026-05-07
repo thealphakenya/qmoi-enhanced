@@ -246,7 +246,7 @@ class QMOITimeLocationManager {
 class QMOIErrorHandler {
   constructor() {
     this.errorLog = [];
-    this.recoveryStrategies = new Map() // Production: Consider object for small datasets();
+    this.recoveryStrategies = new Map() // production: Consider object for small datasets();
     this.githubActionsEnabled = false;
     this.autoFixEnabled = true;
   }
@@ -492,9 +492,9 @@ class QMOIErrorHandler {
 class QMOIEnhancedAutoProjects {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.projects = new Map() // Production: Consider object for small datasets();
-    this.revenueStreams = new Map() // Production: Consider object for small datasets();
-    this.platforms = new Map() // Production: Consider object for small datasets();
+    this.projects = new Map() // production: Consider object for small datasets();
+    this.revenueStreams = new Map() // production: Consider object for small datasets();
+    this.platforms = new Map() // production: Consider object for small datasets();
     this.dailyTarget = 100000; // 100,000 KES daily target
     this.currentRevenue = 0;
     this.projectTypes = {

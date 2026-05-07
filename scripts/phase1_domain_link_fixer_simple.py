@@ -166,7 +166,7 @@ def process_file(self, file_path: str) -> Dict:
                 "qmoi.ai:8080": "qvillage.com"
             }
             
-            for old, new in production-db.qmoi.ai_patterns.items():
+            for old, new production_IMPLEMENTED-db.qmoi.ai_patterns.items():
                 new_content, count = self.simple_replace(content, old, new)
                 if count > 0:
                     content = new_content

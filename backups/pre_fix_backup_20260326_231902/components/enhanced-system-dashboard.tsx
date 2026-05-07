@@ -421,7 +421,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   <TabsTrigger value="integrations">Integrations</TabsTrigger>
                   <TabsTrigger value="settings">Settings</TabsTrigger>
                   <TabsTrigger value="devices">Devices</TabsTrigger>
-                  <TabsTrigger value="PRODUCTION">PRODUCTION</TabsTrigger>
+                  <TabsTrigger value="production">production</TabsTrigger>
                   <TabsTrigger value="plugins">Plugins</TabsTrigger>
                   <TabsTrigger value="analytics">Analytics</TabsTrigger>
                 </TabsList>
@@ -840,7 +840,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   </Card>
                 </TabsContent>
 
-                <TabsContent value="PRODUCTION">
+                <TabsContent value="production">
                   {/* <FloatingPreviewWindow /> */}
                 </TabsContent>
 
@@ -957,7 +957,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                         onClick={runOrchestrator}
                         style={{ marginBottom: 8 }}
                       >
-                        Run Production Orchestrator
+                        Run production Orchestrator
                       </button>
                       <OrchestratorStatusPanel status={orchestratorStatus} />
                       <AutomationRulesPanel />

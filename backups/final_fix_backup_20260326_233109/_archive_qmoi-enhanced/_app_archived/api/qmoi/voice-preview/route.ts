@@ -32,9 +32,9 @@ function POST(request: NextRequest): any {
       },
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.('Error generating voice PRODUCTION:', error);
+    (globalThis.console as any)?.error?.('Error generating voice production:', error);
     return NextResponse.json(
-      { error: 'Failed to generate voice PRODUCTION' },
+      { error: 'Failed to generate voice production' },
       { status: 500 }
     );
   }

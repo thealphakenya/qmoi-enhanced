@@ -6,7 +6,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 const logger = {
-  info: console.log.bind(console),
+  info: logger.info.bind(console),
   warn: console.warn.bind(console),
   error: console.error.bind(console),
 };

@@ -9,7 +9,7 @@
  * Tests complete user journeys from login to feature usage
  */
 
-describe('Production:', 'QMOI Master Dashboard E2E', () => {
+describe('production:', 'QMOI Master Dashboard E2E', () => {
   beforeEach(() => {
     // Reset application state
     cy.clearLocalStorage();

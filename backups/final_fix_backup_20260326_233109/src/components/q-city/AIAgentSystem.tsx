@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -286,7 +286,7 @@ export const AIAgentSystem: React.FC = () => {
                         Agent Task
                       </label>
                       <Input
-                        // Production implementation:="Describe the task for the agent"
+                        // production implementation:="Describe the task for the agent"
                         className="mt-1"
                         value={agentTask}
                         onChange={(e) => setAgentTask(e.target.value)}

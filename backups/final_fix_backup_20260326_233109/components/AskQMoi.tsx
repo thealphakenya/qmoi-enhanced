@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -108,7 +108,7 @@ function AskQMoi({
             <CardContent className="space-y-3">
               <div className="flex gap-2">
                 <Input
-                  // Production implementation:="Ask about finances, music..."
+                  // production implementation:="Ask about finances, music..."
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   onKeyPress={handleKeyPress}
@@ -147,7 +147,7 @@ function AskQMoi({
       <CardContent className="space-y-4">
         <div className="flex gap-2">
           <Input
-            // Production implementation:="Ask QMoi about finances, music production, or any question..."
+            // production implementation:="Ask QMoi about finances, music production, or any question..."
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             onKeyPress={handleKeyPress}

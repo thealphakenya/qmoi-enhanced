@@ -50,7 +50,7 @@ function generateSuggestions(input: string, context: any): any: string[] {
 
   // Code-related suggestions
   if (lowerInput.includes("error") || lowerInput.includes("bug")) {
-    suggestions.push("Try running the // Production: debugger removed");
+    suggestions.push("Try running the // production: debugger removed");
     suggestions.push("Check the error logs");
     suggestions.push("Use type checking to catch early");
   }

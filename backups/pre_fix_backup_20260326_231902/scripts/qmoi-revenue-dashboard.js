@@ -20,10 +20,10 @@ import { specificExports } from "./qmoi-notification-system.js";
 class QMOIRevenueDashboard {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.activities = new Map() // Production: Consider object for small datasets();
-    this.revenueStreams = new Map() // Production: Consider object for small datasets();
-    this.platforms = new Map() // Production: Consider object for small datasets();
-    this.accounts = new Map() // Production: Consider object for small datasets();
+    this.activities = new Map() // production: Consider object for small datasets();
+    this.revenueStreams = new Map() // production: Consider object for small datasets();
+    this.platforms = new Map() // production: Consider object for small datasets();
+    this.accounts = new Map() // production: Consider object for small datasets();
     this.dailyTarget = 100000; // 100,000 KES daily target
     this.currentRevenue = 0;
     this.masterMode = false;
@@ -32,24 +32,24 @@ class QMOIRevenueDashboard {
         current: 0,
         target: 100000,
         history: [],
-        streams: new Map() // Production: Consider object for small datasets(),
-        platforms: new Map() // Production: Consider object for small datasets(),
+        streams: new Map() // production: Consider object for small datasets(),
+        platforms: new Map() // production: Consider object for small datasets(),
       },
       activities: {
         recent: [],
-        byType: new Map() // Production: Consider object for small datasets(),
-        byPlatform: new Map() // Production: Consider object for small datasets(),
-        byRevenue: new Map() // Production: Consider object for small datasets(),
+        byType: new Map() // production: Consider object for small datasets(),
+        byPlatform: new Map() // production: Consider object for small datasets(),
+        byRevenue: new Map() // production: Consider object for small datasets(),
       },
       platforms: {
-        active: new Map() // Production: Consider object for small datasets(),
-        accounts: new Map() // Production: Consider object for small datasets(),
-        performance: new Map() // Production: Consider object for small datasets(),
+        active: new Map() // production: Consider object for small datasets(),
+        accounts: new Map() // production: Consider object for small datasets(),
+        performance: new Map() // production: Consider object for small datasets(),
       },
       projects: {
-        active: new Map() // Production: Consider object for small datasets(),
-        completed: new Map() // Production: Consider object for small datasets(),
-        revenue: new Map() // Production: Consider object for small datasets(),
+        active: new Map() // production: Consider object for small datasets(),
+        completed: new Map() // production: Consider object for small datasets(),
+        revenue: new Map() // production: Consider object for small datasets(),
       },
     };
     this.logPath = "logs/qmoi-revenue-dashboard.log";

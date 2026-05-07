@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining non-production markers
 import { specificExports } from "react";
 
 // Privacy mode toggle that hides sensitive information in windows.
@@ -14,7 +14,7 @@ export const PrivacyModeToggle: React.FC = () => {
 
   const togglePrivacy = () => {
     setPrivacyMode(!privacyMode);
-    // Production implementation, this would update global state and mask sensitive data
+    // production implementation, this would update global state and mask sensitive data
     document.body.classList.toggle("privacy-mode", !privacyMode);
   };
 

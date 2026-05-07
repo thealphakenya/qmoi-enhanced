@@ -296,7 +296,7 @@ These are foundational UI primitives built with Shadcn/UI and Tailwind CSS. Used
 | [menubar.tsx](components/ui/menubar.tsx) | Menu bar | Application menu |
 | [context-menu.tsx](components/ui/context-menu.tsx) | Right-click menu | Context actions |
 | [popover.tsx](components/ui/popover.tsx) | Popover content | Floating content |
-| [hover-card.tsx](components/ui/hover-card.tsx) | Hover card | Preview on hover |
+| [hover-card.tsx](components/ui/hover-card.tsx) | Hover card | production on hover |
 | [command.tsx](components/ui/command.tsx) | Command palette | Quick actions |
 | [calendar.tsx](components/ui/calendar.tsx) | Calendar picker | Date selection |
 | [carousel.tsx](components/ui/carousel.tsx) | Image carousel | Image rotation |
@@ -331,7 +331,7 @@ These are feature-specific, business logic components used throughout the applic
 - **SystemHealthDashboard.tsx** - System health monitoring
 - **SystemHealthMonitor.tsx** - Real-time health monitoring
 - **DeploymentStatusDashboard.tsx** - Deployment status tracking
-- **ProductionMonitoringDashboard.tsx** - Production monitoring
+- **ProductionMonitoringDashboard.tsx** - production monitoring
 - **GlobalOperationsDashboard.tsx** (in global/) - Global operations view
 - **AccountabilitySystem.tsx** - Accountability tracking and logging
 - **MasterPortal.tsx** - Master portal interface
@@ -410,10 +410,10 @@ These are feature-specific, business logic components used throughout the applic
 - **DownloadManager.tsx** - Download management
 - **DownloadQApp.tsx** - QMOI app download interface
 - **DownloadAppButton.tsx** - Download button component
-- **EnhancedPreviewWindow.tsx** - File preview window
-- **PreviewWindow.tsx** - Basic preview window
-- **FloatingPreviewWindow.tsx** - Floating preview UI
-- **MediaPreviewWindow.tsx** - Media preview interface
+- **EnhancedPreviewWindow.tsx** - File production window
+- **PreviewWindow.tsx** - Basic production window
+- **FloatingPreviewWindow.tsx** - Floating production UI
+- **MediaPreviewWindow.tsx** - Media production interface
 - **FloatingControlPanel.tsx** - Floating control interface
 - **FileUploadDownload.tsx** (in app/components) - Upload/download component
 
@@ -712,7 +712,7 @@ app/devices/page.tsx (Device Management)
 23. DownloadQApp.tsx - QMOI app download
 24. EmergencyPanel.tsx - Emergency controls
 25. EnhancedLinkDomainManager.tsx - Link management
-26. EnhancedPreviewWindow.tsx - Preview window
+26. EnhancedPreviewWindow.tsx - production window
 27. EnhancedRevenuePanel.tsx - Revenue panel
 28. (E-components: 28-40)
 
@@ -722,7 +722,7 @@ app/devices/page.tsx (Device Management)
 31. FileExplorer.tsx - File browser
 32. FinancialManager.tsx - Financial management
 33. FloatingControlPanel.tsx - Floating controls
-34. FloatingPreviewWindow.tsx - Floating preview
+34. FloatingPreviewWindow.tsx - Floating production
 35. GitStatus.tsx - Git status
 36. GlobalCall.tsx - Global calling
 37. GlobalFileTransfer.tsx - File transfer
@@ -737,7 +737,7 @@ app/devices/page.tsx (Device Management)
 46. MasterEmailDashboard.tsx - Email dashboard
 47. MasterPortal.tsx - Master portal
 48. MasterTracksDashboard.tsx - Tracks dashboard
-49. MediaPreviewWindow.tsx - Media preview
+49. MediaPreviewWindow.tsx - Media production
 50. MemoryAwareness.tsx - Memory awareness
 51. NotificationCenter.tsx - Notification hub
 52. NotificationPanel.tsx - Notification panel
@@ -745,7 +745,7 @@ app/devices/page.tsx (Device Management)
 
 #### N-Z Components (49 files)
 54. ParallelProcessing.tsx - Parallel processing
-55. PreviewWindow.tsx - Basic preview
+55. PreviewWindow.tsx - Basic production
 56. PriceProductVerifier.tsx - Price verification
 57. ProductionMonitoringDashboard.tsx - Monitoring
 58. QAvatar.tsx - Avatar system

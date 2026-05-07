@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Card";
 import { specificExports } from "@mui/material/CardHeader";
@@ -70,7 +70,7 @@ function handleAppRemove(app: string): any {
             value={wallpaper}
             onChange={handleWallpaperChange}
             className="w-full p-1 rounded bg-gray-900 text-green-200"
-            // Production implementation:="/path/to/wallpaper.jpg"
+            // production implementation:="/path/to/wallpaper.jpg"
           />
         </div>
         <div className="mb-2">

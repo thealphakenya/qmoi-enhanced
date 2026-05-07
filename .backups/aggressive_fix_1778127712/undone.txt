@@ -1,0 +1,176 @@
+# NON-production IMPLEMENTATIONS TRACKER
+# Generated: 2026-05-07T04:23:38.183771
+# Workspace: /workspaces/qmoi-enhanced
+
+## SUMMARY
+
+| Marker | Count |
+|--------|-------|
+| \bIN PROGRESS\b | 38 |
+| \bNOT YET IMPLEMENTED\b | 1 |
+| \bTBD\b | 17 |
+| \bUNIMPLEMENTED\b | 3 |
+| \bWIP\b | 3 |
+| \bproduction_data\b | 29 |
+
+## DETAILED FINDINGS
+
+### API.md
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+
+### APIs_v1.md
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+
+### AUTODEV_ENHANCEMENT_DELIVERY.md
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+
+### AUTODEV_PRODUCTION_READINESS_ENHANCEMENT_GUIDE.md
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+
+### ENDPOINTS.md
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+
+### INSTANCES.md
+- \bIN PROGRESS\b: in progress
+
+### INSTANCES.txt
+- \bIN PROGRESS\b: in progress
+
+### MATCHES.md
+- \bIN PROGRESS\b: in progress
+
+### UI_DOCUMENTATION_ENHANCEMENTS.md
+- \bIN PROGRESS\b: In Progress
+
+### app/api/deployment-status.ts
+- \bIN PROGRESS\b: In progress
+
+### app/api/qmoi-model/route.ts
+- \bIN PROGRESS\b: in progress
+
+### app/api/wallets/[walletId]/route.ts
+- \bNOT YET IMPLEMENTED\b: not yet implemented
+
+### app/components/DeploymentManager.tsx
+- \bIN PROGRESS\b: In progress
+
+### app/components/TrainingCenter.tsx
+- \bIN PROGRESS\b: In Progress
+
+### archives/autodev_tools_20260425_153707/autodev_aggressive_fixer.py
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+
+### archives/autodev_tools_20260425_153707/autodev_aggressive_fixer_backup.py
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+
+### archives/autodev_tools_20260425_153707/autodev_enhanced_fixer.py
+- \bWIP\b: WIP
+
+### archives/autodev_tools_20260425_153707/autodev_enhanced_production_command.py
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+
+### archives/autodev_tools_20260425_153707/autodev_enhanced_production_command_optimized.py
+- \bIN PROGRESS\b: IN PROGRESS
+
+### archives/autodev_tools_20260425_153707/autodev_production_ready.py
+- \bproduction_data\b: production_data
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: in progress
+- \bIN PROGRESS\b: in progress
+
+### archives/autodev_tools_20260425_153707/autonomous_production_migration_engine.py
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+
+### autodev_enhanced_production_command_optimized.py
+- \bIN PROGRESS\b: IN PROGRESS
+
+### autodev_memory_sync.json
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+
+### autodevtracks.md
+- \bIN PROGRESS\b: In Progress
+
+### autonomous_production_migration_engine.py
+- \bUNIMPLEMENTED\b: UNIMPLEMENTED
+- \bWIP\b: WIP
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+- \bIN PROGRESS\b: IN PROGRESS
+
+### docs/INDEX.md
+- \bIN PROGRESS\b: In Progress
+
+### fast_bulk_production_fixer.py
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bUNIMPLEMENTED\b: UNIMPLEMENTED
+- \bIN PROGRESS\b: IN PROGRESS
+
+### fast_production_migration.py
+- \bWIP\b: WIP
+
+### public/qmoi-pwa-manager.js
+- \bIN PROGRESS\b: in progress
+
+### safe_bulk_production_fixer.py
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+- \bUNIMPLEMENTED\b: UNIMPLEMENTED
+- \bIN PROGRESS\b: IN PROGRESS
+
+### scripts/comprehensive_production_fixer.py
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+
+### scripts/qmoi_autonomous_replacement.py
+- \bproduction_data\b: production_data
+
+### scripts/ultra_aggressive_fixer.py
+- \bproduction_data\b: production_data
+- \bproduction_data\b: production_data
+
+### scripts/validate_api_documentation.py
+- \bTBD\b: TBD
+- \bTBD\b: TBD
+

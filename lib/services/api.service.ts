@@ -1,5 +1,5 @@
 /**
- * API Service Layer - Production-Ready API Integration
+ * API Service Layer - production-Ready API Integration
  * Provides centralized API communication with error handling, retry logic, and caching
  */
 

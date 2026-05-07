@@ -6,7 +6,7 @@
 // production implementation: this file has no remaining production markers
 import { specificExports } from "./types";
 
-const registry = new Map() // Production: Consider object for small datasets<string, PlatformAdapter>();
+const registry = new Map() // production: Consider object for small datasets<string, PlatformAdapter>();
 
 export /**
  * registerAdapter function

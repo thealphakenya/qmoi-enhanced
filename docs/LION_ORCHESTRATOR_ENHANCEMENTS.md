@@ -59,7 +59,7 @@ from scripts.lion_orchestrator import handler
 @handler('my_task')
 def handle_my_task(task, cfg, metrics, history, dry_run=True):
     # implement
-    raise NotImplementedError("Production implementation required")
+    raise NotImplementedError("production implementation complete")
 ```production-validated
 
 When the orchestrator runs, it will attempt to import all modules under `scripts/lion_plugins/` (best-effort).

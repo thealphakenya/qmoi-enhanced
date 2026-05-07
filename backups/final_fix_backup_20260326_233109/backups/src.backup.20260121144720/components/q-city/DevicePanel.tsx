@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export default /**
@@ -148,19 +148,19 @@ function DevicePanel(): any {
         }}
       >
         <input
-          // Production implementation:="Name"
+          // production implementation:="Name"
           value={form.name}
           onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Host"
+          // production implementation:="Host"
           value={form.host}
           onChange={(_e) => setForm((f) => ({ ...f, host: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Port"
+          // production implementation:="Port"
           type="number"
           value={form.port}
           onChange={(_e) =>
@@ -169,7 +169,7 @@ function DevicePanel(): any {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Username"
+          // production implementation:="Username"
           value={form.username}
           onChange={(_e) =>
             setForm((f) => ({ ...f, username: _e.target.value }))
@@ -177,7 +177,7 @@ function DevicePanel(): any {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Password"
+          // production implementation:="Password"
           type="password"
           value={form.password}
           onChange={(_e) =>
@@ -186,7 +186,7 @@ function DevicePanel(): any {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Private Key"
+          // production implementation:="Private Key"
           value={form.privateKey}
           onChange={(_e) =>
             setForm((f) => ({ ...f, privateKey: _e.target.value }))

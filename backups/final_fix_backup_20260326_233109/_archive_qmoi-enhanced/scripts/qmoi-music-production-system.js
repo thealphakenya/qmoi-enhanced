@@ -20,10 +20,10 @@ import { specificExports } from './qmoi-notification-system.js';
 class QMOIMusicproductionSystem {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.artists = new Map() // Production: Consider object for small datasets();
+    this.artists = new Map() // production: Consider object for small datasets();
     this.productionQueue = [];
-    this.distributionChannels = new Map() // Production: Consider object for small datasets();
-    this.revenueTracking = new Map() // Production: Consider object for small datasets();
+    this.distributionChannels = new Map() // production: Consider object for small datasets();
+    this.revenueTracking = new Map() // production: Consider object for small datasets();
     this.dailyTarget = 200000; // $200,000 daily target
     this.currentRevenue = 0;
     this.productionConfig = {

@@ -33,7 +33,7 @@ function GitStatus(): any {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Production:, fetch from backend git API endpoint
+    // production:, fetch from backend git API endpoint
     const timer = setTimeout(() => {
        fetch or real API call
       setLoading(false);

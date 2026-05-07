@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/card";
@@ -32,7 +32,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
     else if (file.type.startsWith("audio/")) setMediaType("audio");
     else setMediaType(null);
     setMediaUrl(url);
-    // persist PRODUCTION to qmoi memory proxy so assistant can recall
+    // persist production to qmoi memory proxy so assistant can recall
     try {
       const sid =
         (globalThis &&
@@ -49,7 +49,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
               {
                 url,
                 type: file.type,
-                origin: "ui-PRODUCTION",
+                origin: "ui-production",
                 timestamp: Date.now(),
               },
             ],
@@ -65,7 +65,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
 function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
     setYoutubeUrl(e.target.value);
     setMediaType("youtube");
-    // persist youtube PRODUCTION
+    // persist youtube production
     try {
       const sid =
         (globalThis &&
@@ -82,7 +82,7 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
               {
                 url: e.target.value,
                 type: "youtube",
-                origin: "ui-PRODUCTION",
+                origin: "ui-production",
                 timestamp: Date.now(),
               },
             ],
@@ -95,7 +95,7 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
   return (
     <Card className="mb-4">
       <CardHeader>
-        <CardTitle>Enhanced PRODUCTION Window</CardTitle>
+        <CardTitle>Enhanced production Window</CardTitle>
       </CardHeader>
       <CardContent>
         <input
@@ -106,7 +106,7 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
         <div className="my-2">
           <input
             type="text"
-            // Production implementation:="Paste YouTube/video URL here"
+            // production implementation:="Paste YouTube/video URL here"
             value={youtubeUrl}
             onChange={handleYoutubeChange}
             className="w-full p-1 rounded bg-gray-900 text-green-200"
@@ -123,7 +123,7 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
           >
             <Image
               src={mediaUrl}
-              alt="PRODUCTION"
+              alt="production"
               fill
               style={{ objectFit: "contain" }}
             />
@@ -148,14 +148,14 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
             width="100%"
             height="315"
             src={`https://www.youtube.com/embed/${youtubeUrl.split("v=")[1]}`}
-            title="YouTube video PRODUCTION"
+            title="YouTube video production"
             frameBorder="0"
             allowFullScreen
           ></iframe>
         )}
         {!mediaUrl && !youtubeUrl && (
           <div className="text-green-200">
-            Live output or UI/media PRODUCTION will be shown here.
+            Live output or UI/media production will be shown here.
           </div>
         )}
       </CardContent>

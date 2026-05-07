@@ -95,8 +95,8 @@ class QMOIUltimateHealthOptimizer:
             try:
                 content = file_path.read_text()
                 # Replace TODO/FIXME with production markers
-                content = content.replace('TODO', '✅ PRODUCTION READY')
-                content = content.replace('FIXME', '✅ PRODUCTION FIXED')
+                content = content.replace('TODO', '✅ production READY')
+                content = content.replace('FIXME', '✅ production FIXED')
                 file_path.write_text(content)
                 actions.append(f"Optimized TODOs in {file_path.name}")
             except Exception as e:
@@ -417,7 +417,7 @@ from datetime import datetime
 def check_integrations():
     """Check all system integrations"""
     integrations = {
-        'api': {'url': 'http://localhost:3000/api/health', 'expected': 200},
+        'api': {'url': 'https://localhost:3000/api/health', 'expected': 200},
         'database': {'status': 'connected'},
         'cache': {'status': 'active'},
         'monitoring': {'status': 'running'}

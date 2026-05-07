@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "@/components/ui/button";
 import { specificExports } from "@/components/ui/input";
@@ -134,14 +134,14 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
         </h4>
         <div className="flex gap-2 mb-2">
           <Input
-            // Production implementation:="Time (_e.g. 10:00)"
+            // production implementation:="Time (_e.g. 10:00)"
             value={newProgram.time}
             onChange={(_e) =>
               setNewProgram((np) => ({ ...np, time: _e.target.value }))
             }
           />
           <Input
-            // Production implementation:="Title"
+            // production implementation:="Title"
             value={newProgram.title}
             onChange={(_e) =>
               setNewProgram((np) => ({ ...np, title: _e.target.value }))

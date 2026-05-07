@@ -13,7 +13,7 @@
 /workspaces/qmoi-enhanced/app/api/qmoi/auto-fix/status/route.ts
 /workspaces/qmoi-enhanced/app/api/qmoi/chat/route.ts
 /workspaces/qmoi-enhanced/app/api/qmoi/revenue-dashboard/route.ts
-/workspaces/qmoi-enhanced/app/api/qmoi/voice-PRODUCTION/route.ts
+/workspaces/qmoi-enhanced/app/api/qmoi/voice-production/route.ts
 /workspaces/qmoi-enhanced/app/api/qnews/route.ts
 /workspaces/qmoi-enhanced/app/api/qradio/route.ts
 /workspaces/qmoi-enhanced/app/api/qvillage/route.ts

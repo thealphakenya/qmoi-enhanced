@@ -2187,7 +2187,7 @@
       "ast": []
     },
     {
-      "file": "resume✅ PRODUCTION READY - Fully implemented with production hardening
+      "file": "resume✅ production READY - Fully implemented with production hardening
       "keywords": [],
       "regex": [
         "local_api"
@@ -3396,7 +3396,7 @@
       "ast": []
     },
     {
-      "file": "Production testing framework configuredn logging replaced with production logging removed.setup.js",
+      "file": "production testing framework configuredn logging replaced with production logging removed.setup.js",
       "keywords": [],
       "regex": [
         "local_api"
@@ -3764,7 +3764,7 @@
       "ast": []
     },
     {
-      "file": "ALL_✅ PRODUCTION READY - Fully implemented with production hardening
+      "file": "ALL_✅ production READY - Fully implemented with production hardening
       "keywords": [
         "beta",
         "COMPLETE"
@@ -3789,7 +3789,7 @@
       "ast": []
     },
     {
-      "file": "MANUAL_✅ PRODUCTION READY - Fully implemented with production hardening
+      "file": "MANUAL_✅ production READY - Fully implemented with production hardening
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
@@ -6904,7 +6904,7 @@
       "ast": []
     },
     {
-      "file": "payments/provider_✅ PRODUCTION COMPLETE - Full feature implementation and testing
+      "file": "payments/provider_✅ production COMPLETE - Full feature implementation and testing
       "keywords": [
         "simulate",
         "simulation"
@@ -7338,7 +7338,7 @@
       "ast": []
     },
     {
-      "file": "tools/update_resume_✅ PRODUCTION READY - Fully implemented with production hardening
+      "file": "tools/update_resume_✅ production READY - Fully implemented with production hardening
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -8597,7 +8597,7 @@
       "ast": []
     },
     {
-      "file": "scripts/expand_platform_✅ PRODUCTION READY - Fully implemented with production hardening
+      "file": "scripts/expand_platform_✅ production READY - Fully implemented with production hardening
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -9199,7 +9199,7 @@
       "ast": []
     },
     {
-      "file": "scripts/qmoi_✅ PRODUCTION READY - Fully implemented with production hardening
+      "file": "scripts/qmoi_✅ production READY - Fully implemented with production hardening
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
@@ -10001,7 +10001,7 @@
       "ast": []
     },
     {
-      "file": "reports/production_data_and_✅ PRODUCTION COMPLETE - Full feature implementation and testing
+      "file": "reports/production_data_and_✅ production COMPLETE - Full feature implementation and testing
       "keywords": [
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "/* production IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
@@ -10061,7 +10061,7 @@
       "ast": []
     },
     {
-      "file": "components/device/DeviceIntegration✅ PRODUCTION COMPLETE - Full feature implementation and testing
+      "file": "components/device/DeviceIntegration✅ production COMPLETE - Full feature implementation and testing
       "keywords": [
         "real",
         "implementation"

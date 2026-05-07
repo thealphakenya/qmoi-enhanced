@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 import { specificExports } from "framer-motion";
@@ -295,7 +295,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const enhanceAvatar = useCallback(() => {
     if (!config.aiEnhancement) return;
 
-    // Production implementation: AI enhancement process
+    // production implementation: AI enhancement process
     const enhancements = [
       () => setConfig((prev) => ({ ...prev, quality: "ai-enhanced" })),
       () => setConfig((prev) => ({ ...prev, particleEffects: true })),
@@ -1157,7 +1157,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="email"
                     className="border rounded px-2 py-1 flex-1"
-                    // Production implementation:="Email address"
+                    // production implementation:="Email address"
                     value={notificationSettings.email}
                     onChange={(e) =>
                       handleNotificationChange("email", e.target.value)
@@ -1190,7 +1190,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    // Production implementation:="Slack Webhook URL"
+                    // production implementation:="Slack Webhook URL"
                     value={notificationSettings.slack}
                     onChange={(e) =>
                       handleNotificationChange("slack", e.target.value)
@@ -1223,7 +1223,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    // Production implementation:="WhatsApp Number (+1234567890)"
+                    // production implementation:="WhatsApp Number (+1234567890)"
                     value={notificationSettings.whatsapp}
                     onChange={(e) =>
                       handleNotificationChange("whatsapp", e.target.value)
@@ -1314,7 +1314,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   );
 
   useEffect(() => {
-    // Fetch QCity status from API (// Production implementation:bed for now)
+    // Fetch QCity status from API (// production implementation:bed for now)
     async /**
  * fetchStatus function
  */
@@ -1613,7 +1613,7 @@ function fillTemplate(standard: string): any {
               <Button
                 size="sm"
                 onClick={() => {
-                  /* // Production implementation:: Open QCity management UI */
+                  /* // production implementation:: Open QCity management UI */
                 }}
               >
                 Open QCity Management
@@ -1625,7 +1625,7 @@ function fillTemplate(standard: string): any {
                   value={adminKey}
                   onChange={(e) => setAdminKey(e.target.value)}
                   className="w-full px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                  // Production implementation:="Enter admin key"
+                  // production implementation:="Enter admin key"
                 />
                 {authStatus === "ok" && (
                   <span className="text-green-600 text-xs">Authenticated</span>
@@ -1644,7 +1644,7 @@ function fillTemplate(standard: string): any {
                     value={commandInput}
                     onChange={(e) => setCommandInput(e.target.value)}
                     className="flex-1 px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                    // Production implementation:="Enter command (e.g. npm run build)"
+                    // production implementation:="Enter command (e.g. npm run build)"
                     enabled={isRunning}
                     tabIndex={0}
                   />
@@ -1718,7 +1718,7 @@ function fillTemplate(standard: string): any {
                           [v]: e.target.value,
                         }))
                       }
-                      // Production implementation:={v}
+                      // production implementation:={v}
                       className="w-20 px-1 py-0.5 border rounded text-xs"
                     />
                   ))}
@@ -2135,7 +2135,7 @@ function fetchAuditLogs(): any {
         >
           <input
             className="border rounded px-2 py-1"
-            // Production implementation:="Action"
+            // production implementation:="Action"
             value={auditFilter.action}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, action: e.target.value }))
@@ -2144,7 +2144,7 @@ function fetchAuditLogs(): any {
           />
           <input
             className="border rounded px-2 py-1"
-            // Production implementation:="User"
+            // production implementation:="User"
             value={auditFilter.user}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, user: e.target.value }))
@@ -2153,7 +2153,7 @@ function fetchAuditLogs(): any {
           />
           <input
             className="border rounded px-2 py-1"
-            // Production implementation:="Device ID"
+            // production implementation:="Device ID"
             value={auditFilter.deviceId}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, deviceId: e.target.value }))
@@ -2162,7 +2162,7 @@ function fetchAuditLogs(): any {
           />
           <input
             className="border rounded px-2 py-1"
-            // Production implementation:="Status"
+            // production implementation:="Status"
             value={auditFilter.status}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, status: e.target.value }))
@@ -2353,7 +2353,7 @@ function handleNotificationChange(field: string, value: string | boolean): any {
     setNotificationSettings((prev) => ({ ...prev, [field]: value }));
   }
 
-  // Handler for test notification (// Production implementation:bed)
+  // Handler for test notification (// production implementation:bed)
   /**
  * handleTestNotification function
  */
@@ -2481,7 +2481,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           </Button>
           <Button
             aria-label="Open Avatar Gallery"
-            title="Select, PRODUCTION, or request new avatars and voices"
+            title="Select, production, or request new avatars and voices"
             className="qavatar-gallery-btn"
             onClick={() => setShowGallery(true)}
           >

@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/button";
 import { specificExports } from "@/components/ui/input";
@@ -67,19 +67,19 @@ const DocumentManagerPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            // Production implementation:="Document Name"
+            // production implementation:="Document Name"
             value={form.name}
             onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
             className="mb-2"
           />
           <Input
-            // Production implementation:="Type (pdf, docx, etc.)"
+            // production implementation:="Type (pdf, docx, etc.)"
             value={form.type}
             onChange={(_e) => setForm((f) => ({ ...f, type: _e.target.value }))}
             className="mb-2"
           />
           <Input
-            // Production implementation:="Content (or file data)"
+            // production implementation:="Content (or file data)"
             value={form.content}
             onChange={(_e) =>
               setForm((f) => ({ ...f, content: _e.target.value }))
@@ -90,7 +90,7 @@ const DocumentManagerPanel: React.FC = () => {
         </div>
         <div className="mb-4">
           <Input
-            // Production implementation:="Search documents..."
+            // production implementation:="Search documents..."
             value={search}
             onChange={(_e) => setSearch(_e.target.value)}
             className="mb-2"

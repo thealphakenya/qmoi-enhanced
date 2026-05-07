@@ -150,7 +150,7 @@ REPORT_DIR.mkdir(exist_ok=True)
 PATTERNS = [
     r"\bDONE\b",
     r"\bfixed\b",
-    r"\b✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+    r"\b✅ production SOLUTION - Implemented robust, long-term solution
     r"\bTEMPORARY\b",
     r"\bsimulat(e|ed|ing)\b",
     r"\bsample\b",

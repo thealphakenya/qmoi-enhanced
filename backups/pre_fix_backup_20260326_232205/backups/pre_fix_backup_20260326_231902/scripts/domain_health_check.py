@@ -65,10 +65,10 @@ def __init__(self) -> Any:
         # production intent markers
         self.production_keywords = [
             'PRODUCTION_IMPLEMENTATION_COMPLETE', 'COMPLETED', 'RESOLVED', 'implementation', 'real',
-            'SIMULATE', 'SIMULATION', 'STAGING', 'implementation', '✅ PRODUCTION COMPLETE - Full feature implementation and testing
+            'SIMULATE', 'SIMULATION', 'STAGING', 'implementation', '✅ production COMPLETE - Full feature implementation and testing
             'production implementation complete', 'production DONE', 'production FIXED',
             'production data', 'TEST IMPLEMENTATION', 'sophisticated', 'Complete', 'DEMO',
-            'release', 'production-ready implementation', 'PRODUCTION', 'ALPHA', 'BETA', 'EXPERIMENTAL',
+            'release', 'production-ready implementation', 'production', 'ALPHA', 'BETA', 'EXPERIMENTAL',
             'permanent', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
             'COMPULSORY', 'COMPALSARY', 'COMPALSARIES',
             'MANDATORY', 'CURRENT', 'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE',

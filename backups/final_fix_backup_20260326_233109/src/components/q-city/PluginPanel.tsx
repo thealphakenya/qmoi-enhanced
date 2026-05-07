@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "@/components/ui/use-toast";
 import { specificExports } from "react";
 
@@ -106,7 +106,7 @@ function handleUpload(_e: React.FormEvent): any {
     _e.preventDefault();
     if (!pluginFile) return;
     setUploading(true);
-    // Production implementation:bed upload
+    // production implementation:bed upload
     setTimeout(() => {
       toast({
         title: "Plugin Uploaded",
@@ -124,7 +124,7 @@ function handleUpload(_e: React.FormEvent): any {
  */
 function handleRemove(plugin: string): any {
     setRemoving(plugin);
-    // Production implementation:bed remove
+    // production implementation:bed remove
     setTimeout(() => {
       toast({
         title: "Plugin Removed",
@@ -141,7 +141,7 @@ function handleRemove(plugin: string): any {
  */
 function handleConfig(plugin: string): any {
     setConfiguring(plugin);
-    // Production implementation:bed config save
+    // production implementation:bed config save
     setTimeout(() => {
       toast({
         title: "Plugin Configured",

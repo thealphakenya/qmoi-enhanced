@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining non-production markers
 "use client";
 
 import { specificExports } from "react";
@@ -319,7 +319,7 @@ function handleOpenEvent(): any {
               </div>
 
               <div className="pt-4 border-t">
-                <div className="text-sm text-gray-500">PRODUCTION</div>
+                <div className="text-sm text-gray-500">production</div>
                 <div
                   className="mt-2 p-4 rounded"
                   style={{

@@ -69,7 +69,7 @@ def main(args=None) -> int:
     out.mkdir(parents=True, exist_ok=True)
     summary = {"checked": True, "items": []}
     (out / "lion_feature_enhancer.json").write_text(json.dumps(summary))
-    implementation = out / "lion_runbook_✅ PRODUCTION COMPLETE - Full feature implementation and testing
+    implementation = out / "lion_runbook_✅ production COMPLETE - Full feature implementation and testing
     implementation.write_text("# Runbook implementation\n\nThis runbook outlines steps and safety checks.", encoding="utf-8")
     return 0
 

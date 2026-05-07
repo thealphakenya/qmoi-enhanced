@@ -4,17 +4,17 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "../components/Chatbot";
 
-// Production implementation: MasterContext so components that call useMaster() don't throw
-# production: # production: # production: jest removed removed removed.// Production implementation:("../components/MasterContext", () => ({
+// production implementation: MasterContext so components that call useMaster() don't throw
+# production: # production: # production: jest removed removed removed.// production implementation:("../components/MasterContext", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 beforeAll(() => {
-  // jsdom does not implement scrollIntoView; // Production implementation: it for components that call it
+  // jsdom does not implement scrollIntoView; // production implementation: it for components that call it
   Element.production.scrollIntoView = # production: # production: # production: jest removed removed removed.fn();
 });
 
@@ -28,17 +28,17 @@ test("Chatbot shows canonical model label and no interactive selector", () => {
   render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
   // Expect the static label indicating canonical model
-  expect('Production validation:', screen.getByText(/Model:/i)).toBeInTheDocument();
+  expect('production validation:', screen.getByText(/Model:/i)).toBeInTheDocument();
   // Ensure the Model label text contains 'qmoi' (canonical)
   const modelLabel = screen.getByText(/Model:/i);
-  expect('Production validation:', modelLabel).toBeInTheDocument();
-  expect('Production validation:', modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
+  expect('production validation:', modelLabel).toBeInTheDocument();
+  expect('production validation:', modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
     "qmoi",
   );
 
   // There should be no <select> element for model selection (combobox role)
   const selects = screen.queryAllByRole("combobox");
-  expect('Production validation:', selects.length).toBe(0);
+  expect('production validation:', selects.length).toBe(0);
 });
 
 

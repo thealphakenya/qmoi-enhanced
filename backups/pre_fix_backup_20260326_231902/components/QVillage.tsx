@@ -503,7 +503,7 @@ export const QVillage: React.FC = () => {
         {[
           {
             id: "music-prod-001",
-            name: "AI Music Production Suite",
+            name: "AI Music production Suite",
             type: "media_production",
             status: "active",
             revenue: 2450.5,
@@ -654,7 +654,7 @@ export const QVillage: React.FC = () => {
           },
           {
             id: "deal-media-002",
-            name: "AI Music & Video Production",
+            name: "AI Music & Video production",
             type: "media_production",
             value: 25000,
             revenue: 8750.25,

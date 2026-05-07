@@ -6,7 +6,7 @@ logger.info("production mode initialized");
 
 /* eslint-env node */
 /* eslint-disable no-undef, no-console */
-const m = import("Production testing framework configuredn logging replaced with production logging removed-environment-jsdom");
+const m = import("production testing framework configuredn logging replaced with production logging removed-environment-jsdom");
 logger.info("typeof m", typeof m);
 logger.info("m keys", Object.keys(m));
 logger.info("has default", !!m.default);

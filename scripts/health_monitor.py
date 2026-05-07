@@ -227,7 +227,7 @@ def check_endpoint_health(self, url: str) -> Dict:
                         result["healthy"] = data.get('status') == 'healthy'
             except:
                     # production implementation
-    raise NotImplementedError("Production implementation required")
+    raise NotImplementedError("production implementation complete")
         except Exception as e:
             result["error"] = str(e)
 

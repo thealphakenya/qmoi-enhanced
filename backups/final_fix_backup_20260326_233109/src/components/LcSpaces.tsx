@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import { specificExports } from "react";
@@ -32,7 +32,7 @@ function add(): any {
         <input
           value={input}
           onChange={(_e) => setInput(_e.target.value)}
-          // Production implementation:="Add new LC space..."
+          // production implementation:="Add new LC space..."
         />
         <button onClick={add} style={{ marginLeft: 8 }}>
           Add

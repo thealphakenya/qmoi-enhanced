@@ -37,7 +37,7 @@ The `/dashboard/` folder houses a lightweight dashboard application separate fro
 - `public/` — static assets and public resources
 - `src/` — dashboard source files
 
-## Production Readiness
+## production Readiness
 
 - Ensure `package.json` dependencies remain current and audited.
 - Maintain the Vite build configuration and verify production asset bundling.

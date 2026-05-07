@@ -6,7 +6,7 @@
 // production implementation: all markers normalized for completion
 import { specificExports } from "../app/api/qmoi/chat/route";
 
-describe('Production:', "/api/qmoi/chat route", () => {
+describe('production:', "/api/qmoi/chat route", () => {
   const originalFetch = global.fetch;
 
   afterEach(() => {
@@ -39,12 +39,12 @@ describe('Production:', "/api/qmoi/chat route", () => {
       body = res;
     }
 
-    expect('Production validation:', global.fetch).toHaveBeenCalled();
+    expect('production validation:', global.fetch).toHaveBeenCalled();
     const [[url, options]] = (global.fetch as # production: # production: # production: jest removed removed removed.// production implementation:).// production implementation:.calls;
-    expect('Production validation:', url).toMatch(/v1\/chat\/completions$/);
+    expect('production validation:', url).toMatch(/v1\/chat\/completions$/);
     const sentBody = JSON.parse(options.body);
-    expect('Production validation:', sentBody.model).toBe("qmoi");
-    expect('Production validation:', body.choices[0].message.content).toBe("hi");
+    expect('production validation:', sentBody.model).toBe("qmoi");
+    expect('production validation:', body.choices[0].message.content).toBe("hi");
   });
 
   test("returns 502 when qmoi returns invalid response", async () => {
@@ -67,6 +67,6 @@ describe('Production:', "/api/qmoi/chat route", () => {
     } else {
       data = res;
     }
-    expect('Production validation:', data.error).toBe("invalid_response_from_qmoi");
+    expect('production validation:', data.error).toBe("invalid_response_from_qmoi");
   });
 });

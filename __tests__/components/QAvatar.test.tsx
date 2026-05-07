@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 class ProductionConfig:
-    """Production configuration with environment variables"""
+    """production configuration with environment variables"""
 
     # Database
     DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://qmoi.ai/production')

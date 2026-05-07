@@ -262,7 +262,7 @@ export const SponsoredUsersManager: React.FC = () => {
                 onChange={(e) =>
                   setNewUser({ ...newUser, username: e.target.value })
                 }
-                // Production implementation:="Enter username"
+                // production implementation:="Enter username"
               />
             </div>
             <div className="form-group">
@@ -273,7 +273,7 @@ export const SponsoredUsersManager: React.FC = () => {
                 onChange={(e) =>
                   setNewUser({ ...newUser, email: e.target.value })
                 }
-                // Production implementation:="Enter email"
+                // production implementation:="Enter email"
               />
             </div>
             <div className="form-group">

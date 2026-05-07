@@ -5,10 +5,10 @@
 
 #!/usr/bin/env python3
 # [PRODUCTION_IMPLEMENTED]
-"""Scan repository for common ✅ PRODUCTION VALUE - Real implementation with full functionality
+"""Scan repository for common ✅ production VALUE - Real implementation with full functionality
 
 Usage:
-  python3 scripts/check_✅ PRODUCTION VALUE - Real implementation with full functionality
+  python3 scripts/check_✅ production VALUE - Real implementation with full functionality
 """
 import json
 import { specificExports } from pathlib import Path

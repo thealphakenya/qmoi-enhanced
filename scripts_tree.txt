@@ -469,7 +469,7 @@ scripts/
 ├── qmoi-live-status.py
 ├── qmoi-master-automation.py
 ├── qmoi-master-autostart.js
-├── qmoi-master-// Production: debugger removed.js
+├── qmoi-master-// production: debugger removed.js
 ├── qmoi-master-notifications.py
 ├── qmoi-master-system.js
 ├── qmoi-master-system.js.bak.1768901506

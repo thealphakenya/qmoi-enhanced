@@ -26,12 +26,12 @@ export interface RecoveryEvent {
 }
 
 class ServiceRecoveryManager {
-  private activeRecoveries: Map<string, NodeJS.Timeout> = new Map() // Production: Consider object for small datasets();
+  private activeRecoveries: Map<string, NodeJS.Timeout> = new Map() // production: Consider object for small datasets();
   private recoveryHistory: RecoveryEvent[] = [];
   private maxHistorySize = 1000;
   private enabled = false;
 
-  private strategies: Map<string, RecoveryStrategy> = new Map() // Production: Consider object for small datasets([
+  private strategies: Map<string, RecoveryStrategy> = new Map() // production: Consider object for small datasets([
     [
       "http-server",
       {

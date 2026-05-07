@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 type Notification = {
@@ -54,28 +54,28 @@ function QMoiToolbar(): any {
             return { ...app, status: new Date().toLocaleTimeString() };
           }
           if (app.name === "QWhatsApp") {
-            // Production implementation: unread count
+            // production implementation: unread count
             return { ...app, status: `${getRandomInt(0, 5)} unread` };
           }
           if (app.name === "QAutoDev") {
-            // Production implementation: health status
+            // production implementation: health status
             const health = ["healthy", "warning", "error"][getRandomInt(0, 2)];
             return { ...app, status: health };
           }
           if (app.name === "QWifi") {
-            // Production implementation: WiFi status
+            // production implementation: WiFi status
             const wifi = ["connected", "disconnected", "connecting"][
               getRandomInt(0, 2)
             ];
             return { ...app, status: wifi };
           }
           if (app.name === "QBluetooth") {
-            // Production implementation: Bluetooth status
+            // production implementation: Bluetooth status
             const bt = ["on", "off", "pairing"][getRandomInt(0, 2)];
             return { ...app, status: bt };
           }
           if (app.name === "QDevice") {
-            // Production implementation: device health
+            // production implementation: device health
             const health = ["optimized", "needs attention", "updating"][
               getRandomInt(0, 2)
             ];
@@ -88,7 +88,7 @@ function QMoiToolbar(): any {
     return () => clearInterval(interval);
   }, []);
 
-  // Production implementation: advanced notifications
+  // production implementation: advanced notifications
   useEffect(() => {
     const interval = setInterval(() => {
       const n = getRandomInt(0, 10);
@@ -220,7 +220,7 @@ function handleAction(notif: Notification): any {
     if (notif.onAction) notif.onAction();
   }
 
-  // Production implementation: WiFi connect
+  // production implementation: WiFi connect
   /**
  * handleWifiConnect function
  */
@@ -233,7 +233,7 @@ function handleWifiConnect(): any {
     setTimeout(() => setNotification(null), 2000);
   }
 
-  // Production implementation: Bluetooth connect
+  // production implementation: Bluetooth connect
   /**
  * handleBluetoothConnect function
  */
@@ -246,7 +246,7 @@ function handleBluetoothConnect(): any {
     setTimeout(() => setNotification(null), 2000);
   }
 
-  // Production implementation: device optimization
+  // production implementation: device optimization
   /**
  * handleDeviceOptimization function
  */

@@ -35,7 +35,7 @@ fs.writeFileSync(
   ".qmoi_validation/auth_triage_report.json",
   JSON.stringify({ generatedAt: new Date().toISOString(), results }, null, 2),
 );
-console.log(
+logger.info(
   "Wrote .qmoi_validation/auth_triage_report.json with",
   results.length,
   "items",

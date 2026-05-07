@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:28Z
@@ -6,7 +6,7 @@ console.log("production mode initialized");
 
 import { specificExports } from "@/src/app/api/qmoi/autoprod/research/route";
 
-  verifyToken: Production testing framework configuredn logging replaced with production logging removed.fn((token: string) => {
+  verifyToken: production testing framework configuredn logging replaced with production logging removed.fn((token: string) => {
     if (token === "master-token") {
       return { id: "master-1", username: "master", role: "master" };
     }
@@ -18,7 +18,7 @@ import { specificExports } from "@/src/app/api/qmoi/autoprod/research/route";
 
   beforeAll(() => {
     originalFetch = global.fetch;
-    global.fetch = Production testing framework configuredn logging replaced with production logging removed.fn(async () => ({
+    global.fetch = production testing framework configuredn logging replaced with production logging removed.fn(async () => ({
       ok: true,
       json: async () => ({ success: true }),
     } as any));

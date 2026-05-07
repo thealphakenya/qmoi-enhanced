@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -467,7 +467,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                     setFormData((prev) => ({ ...prev, name: e.target.value }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  // Production implementation:="My Zero-Rated Site"
+                  // production implementation:="My Zero-Rated Site"
                 />
               </div>
 
@@ -482,7 +482,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                     setFormData((prev) => ({ ...prev, domain: e.target.value }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  // Production implementation:="data.zero"
+                  // production implementation:="data.zero"
                 />
               </div>
             </div>
@@ -500,7 +500,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                     value={url}
                     onChange={(e) => updateUrl(index, e.target.value)}
                     className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    // Production implementation:="https://data.com"
+                    // production implementation:="https://data.com"
                   />
                   {formData.urls.length > 1 && (
                     <button
@@ -562,7 +562,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                     }))
                   }
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  // Production implementation:="Brief description of the site"
+                  // production implementation:="Brief description of the site"
                 />
               </div>
             </div>
@@ -622,7 +622,7 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): an
                   }))
                 }
                 className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                // Production implementation:="Kenya, United States, United Kingdom"
+                // production implementation:="Kenya, United States, United Kingdom"
               />
             </div>
 

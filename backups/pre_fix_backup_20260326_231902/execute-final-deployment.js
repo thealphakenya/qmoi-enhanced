@@ -20,7 +20,7 @@ try {
   logger.info("");
   logger.info("🎉 Your latest-Q AI system is now live with:");
   logger.info("   ✅ Chat Interface");
-  logger.info("   ✅ PRODUCTION Features");
+  logger.info("   ✅ production Features");
   logger.info("   ✅ Game production");
   logger.info("   ✅ Animation Studio");
   logger.info("   ✅ Movie Creation");

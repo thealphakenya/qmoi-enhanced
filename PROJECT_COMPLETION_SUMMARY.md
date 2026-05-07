@@ -65,10 +65,10 @@ The Quantum multi orchestra intelligence (QMOI) Enhanced AI system has been succ
 ./status.sh
 
 # Access web dashboard
-# Open browser: http://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000
+# Open browser: https://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000
 
 # Use API endpoints
-# Base URL: http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000
+# Base URL: https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000
 ```
 
 ### **Operational Management**
@@ -89,15 +89,15 @@ The Quantum multi orchestra intelligence (QMOI) Enhanced AI system has been succ
 ### **API Usage Examples**
 ```bash
 # Health check
-curl http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
+curl https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
 
 # Submit anomaly detection task
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
   -H "Content-Type: application/json" \
   -d '{"data": [1, 2, 3, 4, 5]}'
 
 # Submit NLP analysis
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/nlp-analysis \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/nlp-analysis \
   -H "Content-Type: application/json" \
   -d '{"text": "Hello, analyze this text"}'
 ```

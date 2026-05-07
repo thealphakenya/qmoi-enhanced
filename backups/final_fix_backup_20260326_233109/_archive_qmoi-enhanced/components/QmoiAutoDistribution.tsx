@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./ui/button";
 import { specificExports } from "./ui/card";
@@ -229,7 +229,7 @@ export const QmoiAutoDistribution: React.FC = () => {
   };
 
   const previewAssets = async () => {
-    // Production implementation: a project object
+    // production implementation: a project object
     const project = { name: "QMOI data Project" };
     const trailer = await AssetGenerationService.generateTrailer(project);
     const doc = await AssetGenerationService.generateDocumentation(project);
@@ -502,18 +502,18 @@ export const QmoiAutoDistribution: React.FC = () => {
           </Card>
         )}
 
-        {/* Asset PRODUCTION */}
+        {/* Asset production */}
         {isMaster && (
           <Card className="bg-white shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <span className="text-purple-600">🎬</span>
-                Asset PRODUCTION (Before Distribution)
+                Asset production (Before Distribution)
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <Button onClick={previewAssets} className="mb-4">
-                Generate PRODUCTION
+                Generate production
               </Button>
               {assetPreview.trailer && (
                 <div>
@@ -571,14 +571,14 @@ export const QmoiAutoDistribution: React.FC = () => {
                   onChange={(e) =>
                     setDeal((d) => ({ ...d, price: e.target.value }))
                   }
-                  // Production implementation:="Price (e.g. $9.99)"
+                  // production implementation:="Price (e.g. $9.99)"
                 />
                 <Input
                   value={deal.description}
                   onChange={(e) =>
                     setDeal((d) => ({ ...d, description: e.target.value }))
                   }
-                  // Production implementation:="Deal Description"
+                  // production implementation:="Deal Description"
                 />
                 <Button
                   onClick={approveDeal}
@@ -613,7 +613,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                 <Input
                   value={customPlatform}
                   onChange={(e) => setCustomPlatform(e.target.value)}
-                  // Production implementation:="Enter platform name or URL"
+                  // production implementation:="Enter platform name or URL"
                 />
                 <Button
                   onClick={distributeToCustomPlatform}
@@ -729,7 +729,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Input
                     value={gitBranch}
                     onChange={(e) => setGitBranch(e.target.value)}
-                    // Production implementation:="main"
+                    // production implementation:="main"
                   />
                 </div>
                 <div>
@@ -737,7 +737,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Input
                     value={commitMessage}
                     onChange={(e) => setCommitMessage(e.target.value)}
-                    // Production implementation:="feat: auto-deploy updates"
+                    // production implementation:="feat: auto-deploy updates"
                   />
                 </div>
               </div>
@@ -768,7 +768,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Input
                     value={prTitle}
                     onChange={(e) => setPrTitle(e.target.value)}
-                    // Production implementation:="Auto-deploy feature"
+                    // production implementation:="Auto-deploy feature"
                   />
                 </div>
                 <div>
@@ -776,7 +776,7 @@ export const QmoiAutoDistribution: React.FC = () => {
                   <Input
                     value={prDescription}
                     onChange={(e) => setPrDescription(e.target.value)}
-                    // Production implementation:="Automated deployment updates"
+                    // production implementation:="Automated deployment updates"
                   />
                 </div>
               </div>

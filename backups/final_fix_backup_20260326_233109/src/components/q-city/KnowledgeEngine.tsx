@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -148,7 +148,7 @@ function handleIndexSource(id: string): any {
                   <label className="text-sm text-gray-400">Search Query</label>
                   <div className="flex gap-2 mt-2">
                     <Input
-                      // Production implementation:="Enter semantic search query..."
+                      // production implementation:="Enter semantic search query..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="flex-1"
@@ -215,7 +215,7 @@ function handleIndexSource(id: string): any {
                     Ask a Question
                   </label>
                   <Textarea
-                    // Production implementation:="e.g., How do I implement a transformer model?"
+                    // production implementation:="e.g., How do I implement a transformer model?"
                     value={questionQuery}
                     onChange={(e) => setQuestionQuery(e.target.value)}
                     className="mt-2 min-h-20"
@@ -387,7 +387,7 @@ function handleIndexSource(id: string): any {
                     {sources.length > 0 && (
                       <div className="mt-4">
                         <p className="text-sm text-gray-400 mb-2">
-                          Graph PRODUCTION (sophisticated visualization)
+                          Graph production (sophisticated visualization)
                         </p>
                         <svg
                           width="100%"

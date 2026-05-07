@@ -74,7 +74,7 @@ The Enhanced Quantum multi orchestra intelligence (QMOI) ChatBot (v2.0) is a sop
 ### WhatsApp & Social Media Integration
 - **Multi-Platform Chat**: Seamless chat across WhatsApp, Telegram, Discord, Slack
 - **Hands-Free Operation**: Voice commands, gesture recognition, autonomous actions
-- **Video Call Integration**: Chat visible during video autonomy with avatar display and autonomous streams calls with preview panel
+- **Video Call Integration**: Chat visible during video autonomy with avatar display and autonomous streams calls with production panel
 - **Cross-Platform Memory**: Conversation history and context synced everywhere
 - **Biometric-Protected Chat**: Optional biometric authentication for sensitive chats
 - **Avatar in Chats**: Quantum multi orchestra intelligence (QMOI) avatar visible and interactive in WhatsApp messages

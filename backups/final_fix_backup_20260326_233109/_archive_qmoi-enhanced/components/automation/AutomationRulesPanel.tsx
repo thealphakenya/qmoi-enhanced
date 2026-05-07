@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 interface Rule {
@@ -49,13 +49,13 @@ export const AutomationRulesPanel: React.FC = () => {
       </ul>
       <div style={{ marginTop: 12 }}>
         <input
-          // Production implementation:="Trigger (event type)"
+          // production implementation:="Trigger (event type)"
           value={trigger}
           onChange={(e) => setTrigger(e.target.value)}
           style={{ marginRight: 8 }}
         />
         <input
-          // Production implementation:="Action (e.g., notify, offload)"
+          // production implementation:="Action (e.g., notify, offload)"
           value={action}
           onChange={(e) => setAction(e.target.value)}
           style={{ marginRight: 8 }}

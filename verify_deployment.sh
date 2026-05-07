@@ -177,14 +177,14 @@ echo "🧪 Testing API Endpoints..."
 echo "---------------------------"
 
 # Test API health endpoint
-if curl -s https://production-db.qmoi.ai/health > /dev/null 2>&1; then
+if curl -s https://qmoi.ai/health > /dev/null 2>&1; then
     echo -e "${GREEN}✓${NC} API Server health check passed"
 else
     echo -e "${RED}✗${NC} API Server health check failed"
 fi
 
 # Test web dashboard
-if curl -s https://production-db.qmoi.ai > /dev/null 2>&1; then
+if curl -s https://qmoi.ai > /dev/null 2>&1; then
     echo -e "${GREEN}✓${NC} Web Dashboard responding"
 else
     echo -e "${RED}✗${NC} Web Dashboard not responding"
@@ -199,9 +199,9 @@ echo ""
 echo "📖 For detailed operations guide, see: OPERATIONS_GUIDE.md"
 echo "🚀 To start the system: ./start_production.sh"
 echo "📊 To check status: ./status.sh"
-echo "🌐 Web Dashboard: https://production-db.qmoi.ai"
-echo "🔌 API Server: https://production-db.qmoi.ai"
+echo "🌐 Web Dashboard: https://qmoi.ai"
+echo "🔌 API Server: https://qmoi.ai"
 
 echo ""
-echo "🎯 System Status: READY FOR PRODUCTION"
+echo "🎯 System Status: READY FOR production"
 echo ""

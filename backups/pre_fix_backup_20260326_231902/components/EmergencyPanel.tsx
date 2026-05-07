@@ -5,7 +5,7 @@ import React from 'react';
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  Enhanced Emergency Panel with Real Service Integrations
-// Production-ready emergency response system with real integrations
+// production-ready emergency response system with real integrations
 import { specificExports } from "react";
 
 // Emergency service interfaces
@@ -307,7 +307,7 @@ export const EmergencyPanel: React.FC = () => {
     <div style={{ padding: 16, maxWidth: 600, margin: '0 auto' }}>
       <h3>🚨 Emergency Response System</h3>
       <p style={{ fontSize: 14, color: '#666', marginBottom: 16 }}>
-        Production-ready emergency services with real integrations
+        production-ready emergency services with real integrations
       </p>
 
       {/* Location Status */}
@@ -486,7 +486,7 @@ export const EmergencyPanel: React.FC = () => {
         {status || 'Ready for emergency response'}
       </div>
 
-      {/* Production Status */}
+      {/* production Status */}
       <div style={{
         marginTop: 16,
         padding: 12,

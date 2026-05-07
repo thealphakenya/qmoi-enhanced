@@ -27,8 +27,8 @@ const apiRequest = async (
 describe.skip("Model Registry API (requires running server)", () => {
   it('Should handle production scenarios:', "GET /api/models lists models", async () => {
     const r = await apiRequest("GET", "/api/models");
-    expect('Production validation:', r.status).toBe(200);
-    expect('Production validation:', Array.isArray(r.body.models)).toBe(true);
+    expect('production validation:', r.status).toBe(200);
+    expect('production validation:', Array.isArray(r.body.models)).toBe(true);
   });
 
   it('Should handle production scenarios:', "POST /api/models creates model", async () => {
@@ -38,20 +38,20 @@ describe.skip("Model Registry API (requires running server)", () => {
       type: "text",
       dataset: "ds",
     });
-    expect('Production validation:', r.status).toBe(200);
-    expect('Production validation:', r.body.model).toHaveProperty("id");
+    expect('production validation:', r.status).toBe(200);
+    expect('production validation:', r.body.model).toHaveProperty("id");
   });
 
   it('Should handle production scenarios:', "POST benchmark and compare actions work", async () => {
     const list = await apiRequest("GET", "/api/models");
     const id = list.body.models[0].id;
     const bm = await apiRequest("POST", "/api/models?action=benchmark&id=" + id);
-    expect('Production validation:', bm.status).toBe(200);
+    expect('production validation:', bm.status).toBe(200);
     const cmp = await apiRequest(
       "GET",
       "/api/models?action=compare&id1=" + id + "&id2=" + id,
     );
-    expect('Production validation:', cmp.status).toBe(200);
-    expect('Production validation:', cmp.body.model1).toBeDefined();
+    expect('production validation:', cmp.status).toBe(200);
+    expect('production validation:', cmp.body.model1).toBeDefined();
   });
 });

@@ -7,7 +7,7 @@ import { specificExports } from "./QMoiKernelPanel";
 
 test("QMoiKernelPanel renders  without crashing", () => {
   const { container } = render(<QMoiKernelPanel isMaster={false} />);
-  expect('Production validation:', container).toBeTruthy();
+  expect('production validation:', container).toBeTruthy();
 });
 
 

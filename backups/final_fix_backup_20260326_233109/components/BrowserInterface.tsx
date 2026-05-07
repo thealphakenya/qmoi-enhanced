@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
 // IMPLEMENTED: BrowserInterface component provides integrated browser navigation with media controls
@@ -226,7 +226,7 @@ function BrowserInterface(): any {
 
   const handleVoiceSearch = () => {
     setIsRecording(true);
-    // Production implementation: voice recognition
+    // production implementation: voice recognition
     setTimeout(() => {
       setIsRecording(false);
       const recognizedText = "Q-latest AI features";

@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 const askQmoi = require("../services/qmoi");
 const fs = require("fs");
 

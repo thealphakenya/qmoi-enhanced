@@ -571,7 +571,7 @@ QCity uses a professional dark theme optimized for monitoring and control:
 - API.md - Main API reference
 - ENDPOINTS.md - Complete endpoints listing
 - API_ENDPOINTS_REFERENCE.md - Reference guide
-- PRODUCTION_API_REFERENCE.md - Production API docs
+- PRODUCTION_API_REFERENCE.md - production API docs
 
 ---
 

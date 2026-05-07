@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "framer-motion";
 
@@ -85,7 +85,7 @@ function saveSettings(arg: AvatarSettings): any {
         transition={{ type: "spring" }}
       >
         <img
-          src="/// Production implementation:-logo.png"
+          src="/// production implementation:-logo.png"
           alt="Q-Avatar"
           className="rounded-full shadow-lg border-4 border-cyan-400"
           style={{ width: 100, height: 100 }}

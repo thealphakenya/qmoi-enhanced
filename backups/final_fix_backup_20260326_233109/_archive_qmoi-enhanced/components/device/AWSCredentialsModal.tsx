@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export const AWSCredentialsModal: React.FC<{
@@ -45,20 +45,20 @@ export const AWSCredentialsModal: React.FC<{
       >
         <h2>AWS Credentials</h2>
         <input
-          // Production implementation:="Access Key ID"
+          // production implementation:="Access Key ID"
           value={accessKeyId}
           onChange={(e) => setAccessKeyId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          // Production implementation:="Secret Access Key"
+          // production implementation:="Secret Access Key"
           value={secretAccessKey}
           onChange={(e) => setSecretAccessKey(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
           type="password"
         />
         <input
-          // Production implementation:="Region"
+          // production implementation:="Region"
           value={region}
           onChange={(e) => setRegion(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}

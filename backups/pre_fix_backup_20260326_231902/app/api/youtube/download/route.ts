@@ -44,15 +44,15 @@ interface DownloadJob {
 }
 
 class DownloadQueue {
-  private queue: Map<string, DownloadJob> = new Map() // Production: Consider object for small datasets();
+  private queue: Map<string, DownloadJob> = new Map() // production: Consider object for small datasets();
 
   async loadQueue() {
     try {
       const data = await fs.readFile(QUEUE_FILE, 'utf-8');
       const jobs = JSON.parse(data);
-      this.queue = new Map() // Production: Consider object for small datasets(Object.entries(jobs));
+      this.queue = new Map() // production: Consider object for small datasets(Object.entries(jobs));
     } catch {
-      this.queue = new Map() // Production: Consider object for small datasets();
+      this.queue = new Map() // production: Consider object for small datasets();
     }
   }
 

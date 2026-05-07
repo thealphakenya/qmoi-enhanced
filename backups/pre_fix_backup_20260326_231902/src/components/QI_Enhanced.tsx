@@ -497,7 +497,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       case "RELEASE":
         return (
           <div className="qi-panel">
-            <h3>// Production: debugger removed</h3>
+            <h3>// production: debugger removed</h3>
             <p>Issues found: {selfWorkResults.filter((r) => r.type === "RELEASE").length}</p>
             <button onClick={debugAndFix} enabled={currentlyAnalyzing === "RELEASE"}>
               {currentlyAnalyzing === "RELEASE" ? "Debugging..." : "Analyze & Fix"}

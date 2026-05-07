@@ -1,5 +1,5 @@
 """
-Production Logging System Module
+production Logging System Module
 Real production logging with file rotation, structured logging, and multiple handlers.
 """
 
@@ -14,7 +14,7 @@ import threading
 from datetime import datetime
 
 class ProductionLogger:
-    """Production logging system with file rotation and structured logging"""
+    """production logging system with file rotation and structured logging"""
 
     _instances = {}
     _lock = threading.RLock()

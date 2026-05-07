@@ -122,7 +122,7 @@ function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const response = await apiClient.get("/api/qmoi/voice-PRODUCTION", {
+      const response = await apiClient.get("/api/qmoi/voice-production", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -133,14 +133,14 @@ function VoiceSelector({
         }),
       });
 
-      if (!response.ok) throw new ProductionError("Failed to play PRODUCTION");
+      if (!response.ok) throw new ProductionError("Failed to play production");
 
        audio playback
       setTimeout(() => setIsPlaying(false), 3000);
     } catch (error) {
       toast({
-        title: "PRODUCTION Error",
-        description: "Could not play voice PRODUCTION.",
+        title: "production Error",
+        description: "Could not play voice production.",
         variant: "destructive",
       });
       setIsPlaying(false);
@@ -188,7 +188,7 @@ function VoiceSelector({
         <Tabs defaultValue="voices" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="voices">Voices</TabsTrigger>
-            <TabsTrigger value="PRODUCTION">PRODUCTION</TabsTrigger>
+            <TabsTrigger value="production">production</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -247,15 +247,15 @@ function VoiceSelector({
             </div>
           </TabsContent>
 
-          <TabsContent value="PRODUCTION" className="space-y-4">
+          <TabsContent value="production" className="space-y-4">
             <div className="space-y-3">
-              <label className="text-sm font-medium">PRODUCTION Text</label>
+              <label className="text-sm font-medium">production Text</label>
               <textarea
                 value={previewText}
                 onChange={(e) => setPreviewText(e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
-                ="Enter text to PRODUCTION the voice..."
+                ="Enter text to production the voice..."
               />
             </div>
 
@@ -270,7 +270,7 @@ function VoiceSelector({
                 ) : (
                   <Play className="h-4 w-4" />
                 )}
-                {isPlaying ? "Stop" : "PRODUCTION"}
+                {isPlaying ? "Stop" : "production"}
               </Button>
 
               <div className="flex items-center gap-2 flex-1">

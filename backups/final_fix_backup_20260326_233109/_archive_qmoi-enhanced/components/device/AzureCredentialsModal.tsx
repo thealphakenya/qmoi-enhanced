@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export const AzureCredentialsModal: React.FC<{
@@ -47,26 +47,26 @@ export const AzureCredentialsModal: React.FC<{
       >
         <h2>Azure Credentials</h2>
         <input
-          // Production implementation:="Tenant ID"
+          // production implementation:="Tenant ID"
           value={tenantId}
           onChange={(e) => setTenantId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          // Production implementation:="Client ID"
+          // production implementation:="Client ID"
           value={clientId}
           onChange={(e) => setClientId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          // Production implementation:="Client Secret"
+          // production implementation:="Client Secret"
           value={clientSecret}
           onChange={(e) => setClientSecret(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
           type="password"
         />
         <input
-          // Production implementation:="Subscription ID"
+          // production implementation:="Subscription ID"
           value={subscriptionId}
           onChange={(e) => setSubscriptionId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}

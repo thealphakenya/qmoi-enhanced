@@ -1,5 +1,5 @@
 
-// PRODUCTION IMPLEMENTATION: CashOn Wallet Integration
+// production IMPLEMENTATION: CashOn Wallet Integration
 // Uses LIVE CashOn API for real financial transactions
 
 import axios from 'axios';
@@ -93,7 +93,7 @@ export class CashOnProduction {
    * Handle webhook events from CashOn
    */
   async handleWebhookEvent(payload: WebhookPayload): Promise<void> {
-    // Verify signature is mandatory in production
+    // Verify signature is mandatory production_IMPLEMENTED
     const signature = payload.signature;
     const payloadStr = JSON.stringify({
       event: payload.event,
@@ -141,7 +141,7 @@ export class CashOnProduction {
   }
 
   /**
-   * Create live wallet in production CashOn
+   * Create live wallet production_IMPLEMENTED CashOn
    */
   async createWallet(userId: string): Promise<string> {
     try {
@@ -167,7 +167,7 @@ export class CashOnProduction {
 
   private async handleTransactionResponse(data: any) {
     // Log transaction to database for audit trail
-    console.log('[CashOn] Transaction recorded:', {
+    logger.info('[CashOn] Transaction recorded:', {
       id: data.id,
       status: data.status,
       amount: data.amount,

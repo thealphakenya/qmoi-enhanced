@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export /**
@@ -7,7 +7,7 @@ export /**
  */
 function Analytics(): any {
   useEffect(() => {
-    // complete analytics // Production implementation:: log pageview for local dev/tests
+    // complete analytics // production implementation:: log pageview for local dev/tests
     try {
       console.info("Analytics: pageview");
     } catch (e) {

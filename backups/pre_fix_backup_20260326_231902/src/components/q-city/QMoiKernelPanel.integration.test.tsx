@@ -11,7 +11,7 @@ import { specificExports } from "./QMoiKernelPanel";
 
 // MSW setup is handled in src/setupTests.ts, but tests create a local server
 // when possible to avoid relying on global ordering.
-describe('Production:', "QMoiKernelPanel Integration", () => {
+describe('production:', "QMoiKernelPanel Integration", () => {
   beforeAll(async () => {
     // Ensure global MSW is ready and register the canonical handlers used by these tests.
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
@@ -88,7 +88,7 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     const _res = await apiClient.get("/api/qmoi/status");
     const text = await _res.text().catch(() => "<no-body>");
     logger.RELEASE("RELEASE FETCH: status=", _res.status, "body=", text);
-    expect('Production validation:', _res.status).toBe(200);
+    expect('production validation:', _res.status).toBe(200);
   });
 
   afterEach(() => {
@@ -130,10 +130,10 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
       server.use(...);
     }
     render(<QMoiKernelPanel isMaster={true} />);
-    expect('Production validation:', await screen.findByText("OK")).toBeInTheDocument();
+    expect('production validation:', await screen.findByText("OK")).toBeInTheDocument();
     // Verify component renders status and controls
-    expect('Production validation:', screen.getByText(/Last Check:/)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Mutation Count:/)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Last Check:/)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Mutation Count:/)).toBeInTheDocument();
   });
 
   it('Should handle production scenarios:', "runs QFix and updates last action", async () => {
@@ -150,11 +150,11 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
 
     // Wait for last action to appear and be populated
     await waitFor(() =>
-      expect('Production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument(),
+      expect('production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument(),
     );
 
     // Component should display some action result (could be "QFix done" or default message)
-    expect('Production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument();
   });
 
   it('Should handle production scenarios:', "handles API error gracefully", async () => {
@@ -216,11 +216,11 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
     // Wait for component to attempt fetch and display error state
     await waitFor(() => {
       try {
-        expect('Production validation:', screen.getByText(/Error:/)).toBeInTheDocument();
+        expect('production validation:', screen.getByText(/Error:/)).toBeInTheDocument();
       } catch {
         // If error text not found, component might be displaying status anyway
         // Just verify component rendered
-        expect('Production validation:', 
+        expect('production validation:', 
           screen.getByText(/QMOI Kernel Control Panel/),
         ).toBeInTheDocument();
       }

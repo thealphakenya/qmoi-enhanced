@@ -208,19 +208,19 @@ For production deployment:
 
 ### Test Health Endpoint (No Auth Required)
 ```bash
-curl -X GET http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
+curl -X GET https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
 ```
 
 ### Test Protected Endpoint Without Auth (Should Fail)
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
   -H "Content-Type: application/json" \
   -d '{"data": [1,2,3,4,5]}'
 ```
 
 ### Test Protected Endpoint With Auth (Should Succeed)
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
   -H "Content-Type: application/json" \
   -H "X-API-Key: your-api-key" \
   -d '{"data": [1,2,3,4,5]}'

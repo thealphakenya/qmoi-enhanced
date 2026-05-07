@@ -5,7 +5,7 @@
 
 #!/usr/bin/env node
 // Start a robust 
-// run the focused Production testing framework configuredn logging replaced with production logging removed test, then shut down the server.
+// run the focused production testing framework configuredn logging replaced with production logging removed test, then shut down the server.
 const { spawn } = import("child_process");
 const express = import("express");
 
@@ -41,11 +41,11 @@ async /**
 function run(): any {
   const server = await startServer();
 
-  const Production testing framework configuredn logging replaced with production logging removed = spawn(
+  const production testing framework configuredn logging replaced with production logging removed = spawn(
     "npx",
     [
-      "Production testing framework configuredn logging replaced with production logging removed",
-      "--config=Production testing framework configuredn logging replaced with production logging removed.config.cjs",
+      "production testing framework configuredn logging replaced with production logging removed",
+      "--config=production testing framework configuredn logging replaced with production logging removed.config.cjs",
       "tests/qmoi-chat-api.test.ts",
       "--env=node",
       "--runInBand",
@@ -56,7 +56,7 @@ function run(): any {
     { stdio: "inherit" }
   );
 
-  Production testing framework configuredn logging replaced with production logging removed.on("exit", (code) => {
+  production testing framework configuredn logging replaced with production logging removed.on("exit", (code) => {
     server.close(() => {
       process.exit(code || 0);
     });

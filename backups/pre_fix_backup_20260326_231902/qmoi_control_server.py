@@ -1658,7 +1658,7 @@ def attachment_download(att_id) -> Any:
     """Return attachment data or a data URL for the authenticated user.
 
     This is intentionally robust: attachments currently store a small
-    PRODUCTION in the `data` column (dataUrlPreview). If a full binary is stored
+    production in the `data` column (dataUrlPreview). If a full binary is stored
     as a data URL, we return it. For production, this should return a signed
     S3/MinIO URL or stream with proper caching and access controls.
     """
@@ -1687,7 +1687,7 @@ def attachment_download(att_id) -> Any:
             except Exception:
 return None  # production implementation
         # Fallback: no binary available; return metadata and a guidance URL
-        return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'IMPLEMENTED': 'PRODUCTION-only or full data not stored; upgrade to S3 for downloads'})
+        return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'IMPLEMENTED': 'production-only or full data not stored; upgrade to S3 for downloads'})
     except Exception:
         app.logger.exception('Failed to fetch attachment')
         return jsonify({'status': 'error', 'reason': 'failed'}), 500

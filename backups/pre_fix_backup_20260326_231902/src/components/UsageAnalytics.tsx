@@ -29,7 +29,7 @@ export const UsageAnalytics: React.FC = () => {
     setData({
       totalSessions: 150,
       avgSessionTime: 45, // minutes
-      popularTools: { "live-PRODUCTION": 120, "code-linter": 80 },
+      popularTools: { "live-production": 120, "code-linter": 80 },
       errorRates: { web: 0.05, coding: 0.03 },
     });
   }, []);

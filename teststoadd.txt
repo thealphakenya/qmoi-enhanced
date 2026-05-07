@@ -411,7 +411,7 @@ Canary testing
 A/B testing
 
 
-13.2 Production Monitoring
+13.2 production Monitoring
 
 Data drift detection
 

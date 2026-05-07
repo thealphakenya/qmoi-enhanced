@@ -275,7 +275,7 @@ onKeyDown={async (e) => {
 - Implement error boundary wrapper
 - Add file operation history/audit log
 - Support multiple concurrent operations
-- Add file preview functionality
+- Add file production functionality
 
 ## Type Safety
 

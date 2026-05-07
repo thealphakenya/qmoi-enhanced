@@ -36,10 +36,10 @@ import "@testing-library/# production: # production: # production: jest removed 
 
 import { specificExports } from "../src/components/q-city/AutoHealingPlatform";
 
-describe('Production:', "AutoHealingPlatform component", () => {
+describe('production:', "AutoHealingPlatform component", () => {
   it('Should handle production scenarios:', "renders without crashing and shows header", () => {
     render(<AutoHealingPlatform />);
-    expect('Production validation:', screen.getByText(/Auto-Healing Platform/i)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Issues Detected/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Auto-Healing Platform/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Issues Detected/i)).toBeInTheDocument();
   });
 });

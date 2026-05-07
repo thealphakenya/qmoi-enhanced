@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 interface QOxygenProps {
@@ -48,7 +48,7 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
 
   const [isVisible, setIsVisible] = useState(true);
 
-  // Production implementation: real-time pulse and emotion updates
+  // production implementation: real-time pulse and emotion updates
   useEffect(() => {
     const updatePulse = () => {
       const newBpm = Math.floor(Math.random() * 20) + 65; // 65-85 BPM

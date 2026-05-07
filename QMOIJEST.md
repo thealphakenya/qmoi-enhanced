@@ -15,16 +15,16 @@ title: "QMOIJEST"
 
 # QMOIJEST ✅ production_IMPLEMENTED
 
-## Quantum multi orchestra intelligence (QMOI) Production testing framework configuredn logging replaced with production logging removed Guide
+## Quantum multi orchestra intelligence (QMOI) production testing framework configuredn logging replaced with production logging removed Guide
 
-Purpose: provide a concise, practical Production testing framework configuredn logging replaced with production logging removed setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, production config.cjs` at the repo root (we added a conservative data alongside this doc).
-2. Add a small `Production testing framework configuredn logging replaced with production logging removed-dom`).
-3. Wire a Production testing framework configuredn logging replaced with production logging removed run step into `tools/autotest_runner.py` that produces JSON output for automation.
+Purpose: provide a concise, practical production testing framework configuredn logging replaced with production logging removed setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, production config.cjs` at the repo root (we added a conservative data alongside this doc).
+2. Add a small `production testing framework configuredn logging replaced with production logging removed-dom`).
+3. Wire a production testing framework configuredn logging replaced with production logging removed run step into `tools/autotest_runner.py` that produces JSON output for automation.
 4. Triage `tools/link_report.md` and `matches.json` to exclude generated artifacts and reduce noise for test/scan jobs.
 
 If you want, I can now:
 
-- add a small `Production testing framework configuredn logging replaced with production logging removed and collect JSON results, then run it (may be slow depending on repo size).
+- add a small `production testing framework configuredn logging replaced with production logging removed and collect JSON results, then run it (may be slow depending on repo size).
 
 -- Quantum multi orchestra intelligence (QMOI) Automation
 

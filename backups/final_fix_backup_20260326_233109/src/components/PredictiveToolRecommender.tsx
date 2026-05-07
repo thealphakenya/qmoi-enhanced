@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 // ML-driven tool recommendation engine that learns from usage patterns.
@@ -19,12 +19,12 @@ export const PredictiveToolRecommender: React.FC = () => {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
 
   useEffect(() => {
-    // Production implementation: learning from usage (in real impl, use actual ML model)
-    const // Production implementation:Recs: Recommendation[] = [
-      { tool: "live-PRODUCTION", confidence: 0.85, reason: "Frequently used with web projects" },
+    // production implementation: learning from usage (in real impl, use actual ML model)
+    const // production implementation:Recs: Recommendation[] = [
+      { tool: "live-production", confidence: 0.85, reason: "Frequently used with web projects" },
       { tool: "code-linter", confidence: 0.72, reason: "High error rate detected" },
     ];
-    setRecommendations(// Production implementation:Recs);
+    setRecommendations(// production implementation:Recs);
   }, []);
 
   return (

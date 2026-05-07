@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -107,7 +107,7 @@ function RegisterForm(): any {
           value={formData.email}
           onChange={handleChange}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          // Production implementation:="you@data.com"
+          // production implementation:="you@data.com"
           required
         />
       </div>
@@ -123,7 +123,7 @@ function RegisterForm(): any {
           value={formData.username}
           onChange={handleChange}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          // Production implementation:="johndoe"
+          // production implementation:="johndoe"
           required
         />
       </div>
@@ -139,7 +139,7 @@ function RegisterForm(): any {
           value={formData.password}
           onChange={handleChange}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          // Production implementation:="••••••••"
+          // production implementation:="••••••••"
           required
         />
         <p className="text-xs text-gray-500 mt-1">
@@ -161,7 +161,7 @@ function RegisterForm(): any {
           value={formData.confirmPassword}
           onChange={handleChange}
           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          // Production implementation:="••••••••"
+          // production implementation:="••••••••"
           required
         />
       </div>

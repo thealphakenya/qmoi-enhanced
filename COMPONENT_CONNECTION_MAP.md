@@ -43,7 +43,7 @@ These files are responsible for importing and using multiple components:
 | `components/ComponentGallery.tsx` | All UI components | Showcase and documentation |
 | `components/QMOIDashboard.tsx` | Multiple panels | Main dashboard aggregator |
 | `components/SystemHealthDashboard.tsx` | Health monitoring | System status monitoring |
-| `components/ProductionMonitoringDashboard.tsx` | Prod metrics | Production monitoring |
+| `components/ProductionMonitoringDashboard.tsx` | Prod metrics | production monitoring |
 | `components/DeploymentStatusDashboard.tsx` | Deploy status | Deployment tracking |
 
 ---
@@ -201,7 +201,7 @@ These files are responsible for importing and using multiple components:
 
 ---
 
-### 9️⃣ Preview & Media Components
+### 9️⃣ production & Media Components
 
 **Components:**
 - `PreviewWindow.tsx`
@@ -325,7 +325,7 @@ all routes using context
 - **Device Management:** ~7 components
 - **User/Avatar:** ~5 components
 - **Community:** ~6 components
-- **Preview/Media:** ~5 components
+- **production/Media:** ~5 components
 - **System/Automation:** ~6 components
 - **AI/Advanced:** ~5 components
 - **UI/Utility:** ~8 components

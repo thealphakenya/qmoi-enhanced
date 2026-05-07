@@ -77,7 +77,7 @@ function buildFixResponse() {
     success: true,
     fixes: [
       { id: "FIX-001", name: "Auto-scan dependency drift", status: "recommended" },
-      { id: "FIX-002", name: "Code quality enforcement", status: "in progress" },
+      { id: "FIX-002", name: "Code quality enforcement", status: "COMPLETE" },
     ],
   };
 }

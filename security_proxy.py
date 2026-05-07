@@ -123,4 +123,4 @@ def request(self, url, method='GET', **kwargs) -> Any:
     """
     """
         return self._get_production_data()  # production implementation
-# QMOI's security proxy now includes advanced anti-tracking, anti-✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+# QMOI's security proxy now includes advanced anti-tracking, anti-✅ production SOLUTION - Implemented robust, long-term solution

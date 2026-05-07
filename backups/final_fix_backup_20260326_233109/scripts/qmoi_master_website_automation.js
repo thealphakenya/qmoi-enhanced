@@ -551,7 +551,7 @@ function checkDomainAvailability(domain): any {
 function scanForproductionMarkers(rootDir = process.cwd(): any) {
   const markers = [
     'COMPLETED', 'RESOLVED', 'implementation', 'real', 'SIMULATE', 'STAGING', 'implementation', 'DEMO',
-    'sophisticated', 'Complete', 'release', 'PRODUCTION', 'ALPHA', 'BETA', 'EXPERIMENTAL',
+    'sophisticated', 'Complete', 'release', 'production', 'ALPHA', 'BETA', 'EXPERIMENTAL',
     'permanent', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'PRODUCTION_IMPLEMENTED'
   ];
 

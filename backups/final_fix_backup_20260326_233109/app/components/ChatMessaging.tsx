@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -323,7 +323,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Attachments PRODUCTION */}
+      {/* Attachments production */}
       {attachments.length > 0 && (
         <div className="px-4 py-2 bg-blue-50 border-t border-blue-200">
           <div className="flex flex-wrap gap-2">
@@ -388,7 +388,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
                 handleSendMessage();
               }
             }}
-            // Production implementation:="Type a message... (Enter to send, Shift+Enter for new line)"
+            // production implementation:="Type a message... (Enter to send, Shift+Enter for new line)"
             className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
             enabled={isSending || isRecording}
           />

@@ -6,7 +6,7 @@
 import assert from "assert";
 
 const logger = {
-  info: (...args) => console.log(...args),
+  info: (...args) => logger.info(...args),
   warn: (...args) => console.warn(...args),
   error: (...args) => console.error(...args),
 };

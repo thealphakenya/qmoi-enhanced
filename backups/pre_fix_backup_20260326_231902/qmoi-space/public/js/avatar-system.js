@@ -6,14 +6,14 @@
 // [PRODUCTION_IMPLEMENTED] this file has no remaining production markers
 // avatar-system.js: Avatar selection logic for QMOI Space
 
-document.getElementById("avatar-PRODUCTION").adprodentListener("click", () => {
+document.getElementById("avatar-production").adprodentListener("click", () => {
   document.getElementById("avatar-menu").classList.toggle("show");
 });
 
 document.querySelectorAll(".avatar-option").for (const item of((option) => {
   option.adprodentListener("click", (e) => {
     const avatar = option.getAttribute("data-avatar");
-    document.getElementById("avatar-PRODUCTION").querySelector("img").src =
+    document.getElementById("avatar-production").querySelector("img").src =
       `/avatars/${avatar}.png`;
     document.getElementById("avatar-menu").classList.remove("show");
   });

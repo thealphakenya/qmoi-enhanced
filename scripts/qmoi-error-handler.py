@@ -741,7 +741,7 @@ def check_test_configuration(self, error_info: ErrorInfo) -> Any:
         """Check test configuration"""
         try:
             # Check if test configuration files exist
-            test_configs = ["Production testing framework configuredn logging replaced with production logging removed.config.js", "cypress.json", "playwright.config.js"]
+            test_configs = ["production testing framework configuredn logging replaced with production logging removed.config.js", "cypress.json", "playwright.config.js"]
             for config in test_configs:
                 config_file = self.project_root / config
                 if not config_file.exists():

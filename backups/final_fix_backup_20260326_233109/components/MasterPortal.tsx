@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -86,7 +86,7 @@ function MasterPortal(): any {
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
           <input
             className="col-span-2 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            // Production implementation:="Master token"
+            // production implementation:="Master token"
             value={token}
             onChange={(e) => setToken(e.target.value)}
           />

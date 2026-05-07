@@ -210,11 +210,11 @@ if ROOT not in sys.path:
 
 
 # Heuristics for implementation links to replace
-✅ PRODUCTION VALUE - Real implementation with full functionality
+✅ production VALUE - Real implementation with full functionality
     r"https?://data\.com/[A-Z_0-9_-]+",
     r"https?://implementation\.[A-Z_]+",
     r"REPLACE_ME_URL",
-    r"✅ PRODUCTION VALUE - Real implementation with full functionality
+    r"✅ production VALUE - Real implementation with full functionality
 ]
 
 MD_EXTS = {".md", ".markdown"}
@@ -233,17 +233,17 @@ def find_files(root, exts=None) -> Any:
 
 
 """
-    find_✅ PRODUCTION VALUE - Real implementation with full functionality
+    find_✅ production VALUE - Real implementation with full functionality
     """
-def find_✅ PRODUCTION VALUE - Real implementation with full functionality
+def find_✅ production VALUE - Real implementation with full functionality
     matches = []
-    for pat in ✅ PRODUCTION VALUE - Real implementation with full functionality
+    for pat in ✅ production VALUE - Real implementation with full functionality
         for m in re.finditer(pat, text, re.IGNORECASE):
             matches.append((m.group(0), m.start(), m.end()))
     return matches
 
 
-# sophisticated replacement strategy: try to map known ✅ PRODUCTION VALUE - Real implementation with full functionality
+# sophisticated replacement strategy: try to map known ✅ production VALUE - Real implementation with full functionality
 """
     load_mappings function
     """
@@ -293,7 +293,7 @@ def build_plan(root, exts=None) -> Any:
                 text = f.read()
         except Exception as e:
             continue
-        matches = find_✅ PRODUCTION VALUE - Real implementation with full functionality
+        matches = find_✅ production VALUE - Real implementation with full functionality
         if not matches:
             continue
         file_plan = {"path": os.path.relpath(path, ROOT), "replacements": []}
@@ -361,7 +361,7 @@ def main() -> Any:
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(plan, f, indent=2)
 
-    logger.info(f"Wrote {out_path}. Files with ✅ PRODUCTION VALUE - Real implementation with full functionality
+    logger.info(f"Wrote {out_path}. Files with ✅ production VALUE - Real implementation with full functionality
 
     if args.apply:
         try:

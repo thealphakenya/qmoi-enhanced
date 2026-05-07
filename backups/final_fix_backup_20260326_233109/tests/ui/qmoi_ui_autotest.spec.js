@@ -8,10 +8,10 @@ import { specificExports } from "@playwright/test";
 
 test("QMOI dashboard loads and shows health", async ({ page }) => {
   await page.goto("https://production.qmoi.ai:3010");
-  await expect('Production validation:', page.locator("text=QMOI Dashboard")).toBeVisible();
-  await expect('Production validation:', page.locator("text=Health")).toBeVisible();
+  await expect('production validation:', page.locator("text=QMOI Dashboard")).toBeVisible();
+  await expect('production validation:', page.locator("text=Health")).toBeVisible();
   // Check that at least one download link is present
-  await expect('Production validation:', 
+  await expect('production validation:', 
     page.locator('a[href*="downloads.qmoi.app"]'),
   ).toHaveCountGreaterThan(0);
 
@@ -20,7 +20,7 @@ test("QMOI dashboard loads and shows health", async ({ page }) => {
   if ((await downloadBtn.count()) > 0) {
     await downloadBtn.first().click();
     // Optionally check for download started message or modal
-    await expect('Production validation:', page.locator("text=Download started")).toBeVisible({
+    await expect('production validation:', page.locator("text=Download started")).toBeVisible({
       timeout: 5000,
     });
   }
@@ -29,11 +29,11 @@ test("QMOI dashboard loads and shows health", async ({ page }) => {
   const navLink = page.locator('a:has-text("Settings")');
   if ((await navLink.count()) > 0) {
     await navLink.first().click();
-    await expect('Production validation:', page.locator("text=Settings")).toBeVisible();
+    await expect('production validation:', page.locator("text=Settings")).toBeVisible();
   }
 
   // Test error message display (// production implementation: error if possible)
   // IMPLEMENTED: production adaptation required - customize this test to match your UI's error triggers
   // await page.click('button:has-text("Trigger Error")');
-  // await expect('Production validation:', page.locator('text=Error')).toBeVisible();
+  // await expect('production validation:', page.locator('text=Error')).toBeVisible();
 });

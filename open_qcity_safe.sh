@@ -3,16 +3,16 @@
 # Safe QCity opener: uses sophisticated Browser if available in the environment,
 # otherwise fetches the index with curl and shows the first lines in the terminal.
 
-URL="http://127.0.0.1:8080/qcity-enterprise.html"
+URL="https://prod.qmoi.ai:8080/qcity-enterprise.html"
 
 # Try to detect if we are inside Codespaces/VS Code remote where a browser is unavailable.
 if command -v curl >/dev/null 2>&1 && [ -n "$TERM" ]; then
   echo "Attempting to fetch $URL (safe fallback)..."
   if curl -sS --max-time 5 "$URL" -o /tmp/qcity_index.html; then
     echo "Fetched $URL -> /tmp/qcity_index.html"
-    echo "---- QCity Preview (first 40 lines) ----"
+    echo "---- QCity production (first 40 lines) ----"
     sed -n '1,40p' /tmp/qcity_index.html
-    echo "---- End Preview ----"
+    echo "---- End production ----"
     echo "Open /tmp/qcity_index.html in the editor if you need full view."
     exit 0
   else

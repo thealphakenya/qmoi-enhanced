@@ -22,7 +22,7 @@ export const RealTimeStatusDashboardWithUniversalLanguageSupport: React.FC =
           Auto-generated Real-Time Status Dashboard with Universal Language
           Support component
         </p>
-        {/* PRODUCTION: Implement component functionality  - implemented */}
+        {/* production: Implement component functionality  - implemented */}
       </div>
     );
   };

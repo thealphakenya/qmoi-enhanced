@@ -117,7 +117,7 @@ def process_file(self, file_path: Path) -> bool:
                             # Try to fix balanced URLs
                                 # production implementation
         # production implementation
-    pass  # Production implementation ready
+    pass  # production implementation ready
             if content != original and total_changes > 0:
                 file_path.write_text(content, encoding='utf-8')
                 self.stats["files_modified"] += 1

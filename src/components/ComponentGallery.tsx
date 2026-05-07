@@ -182,7 +182,7 @@ const ComponentGallery: React.FC = () => {
     {
       name: 'PreviewWindow',
       category: 'ui',
-      description: 'PRODUCTION window component',
+      description: 'production window component',
       status: 'completed',
       component: PreviewWindow
     },
@@ -332,7 +332,7 @@ const ComponentGallery: React.FC = () => {
             className="flex-1"
           >
             <Eye className="w-4 h-4 mr-2" />
-            PRODUCTION
+            production
           </Button>
           <Button variant="outline" size="sm">
             <Code className="w-4 h-4" />
@@ -360,7 +360,7 @@ const ComponentGallery: React.FC = () => {
           onClick={() => setSelectedComponent(component)}
         >
           <Eye className="w-4 h-4 mr-2" />
-          PRODUCTION
+          production
         </Button>
         <Button variant="outline" size="sm">
           <Code className="w-4 h-4" />
@@ -433,7 +433,7 @@ const ComponentGallery: React.FC = () => {
         )}
       </ScrollArea>
 
-      {/* Component PRODUCTION Modal */}
+      {/* Component production Modal */}
       {selectedComponent && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-4xl w-full max-h-[80vh] overflow-auto">

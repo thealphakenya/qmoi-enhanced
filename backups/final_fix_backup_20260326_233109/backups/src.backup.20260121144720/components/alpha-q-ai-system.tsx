@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./Chatbot";
 import "./AlphaQAiSystem.css";
@@ -25,7 +25,7 @@ const AlphaQAiSystem = () => {
 
   useEffect(() => {
     if (!autoUpdate) return;
-    // Production implementation: metrics update
+    // production implementation: metrics update
     const interval = setInterval(() => {
       setMetrics((prev) => ({
         ...prev,

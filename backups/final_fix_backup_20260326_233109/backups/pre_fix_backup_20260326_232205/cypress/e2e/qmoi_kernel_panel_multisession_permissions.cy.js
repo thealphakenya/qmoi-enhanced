@@ -6,7 +6,7 @@
 // // production implementation: this file has no remaining production markers
 /// <reference types="cypress" />
 
-describe('Production:', "QMOI Kernel Panel Multi-Session & Permissions E2E", () => {
+describe('production:', "QMOI Kernel Panel Multi-Session & Permissions E2E", () => {
   it('Should handle production scenarios:', "shows admin-only features for admin, hides for user", () => {
     // Admin session
     cy.setCookie("userRole", "admin");

@@ -94,7 +94,7 @@ export default function ProductionMonitoringDashboard() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            🚀 QMOI Enhanced - Production Monitoring Dashboard
+            🚀 QMOI Enhanced - production Monitoring Dashboard
           </h1>
           <div className="flex items-center space-x-4 text-sm text-gray-600">
             <span className={`flex items-center space-x-1 ${isMonitoring ? 'text-green-600' : 'text-red-600'}`}>

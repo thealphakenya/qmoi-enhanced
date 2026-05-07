@@ -1,5 +1,5 @@
 /**
- * Analytics Service - Production API Integration
+ * Analytics Service - production API Integration
  * Handles system metrics, performance monitoring, and analytics
  */
 

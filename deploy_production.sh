@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# QMOI Enhanced Production Deployment Script
+# QMOI Enhanced production Deployment Script
 # This script deploys the QMOI enhanced systems to production
 
 set -e
 
-echo "🚀 Starting QMOI Enhanced Production Deployment..."
+echo "🚀 Starting QMOI Enhanced production Deployment..."
 
 # Colors for output
 RED='\033[0;31m'
@@ -33,9 +33,9 @@ check_env_vars() {
     required_vars=("DB_PASSWORD" "JWT_SECRET" "GRAFANA_PASSWORD")
     missing_vars=()
 
-    for var in "${required_vars[@]}"; do
-        if [[ -z "${!var}" ]]; then
-            missing_vars+=("$var")
+    for const in "${required_vars[@]}"; do
+        if [[ -z "${!const}" ]]; then
+            missing_vars+=("$const")
         fi
     done
 
@@ -79,7 +79,7 @@ create_db_init() {
     print_status "Creating database initialization script..."
 
     cat > sql/init.sql << 'EOF'
--- QMOI Production Database Initialization
+-- QMOI production Database Initialization
 
 -- Create extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -163,7 +163,7 @@ wait_for_services() {
     print_status "Waiting for API server..."
     timeout=60
     while [[ $timeout -gt 0 ]]; do
-        if curl -f http://production-api.qmoi-enhanced.com:8000/health 2>/dev/null; then
+        if curl -f https://production-api.qmoi-enhanced.com:8000/health 2>/dev/null; then
             break
         fi
         sleep 2
@@ -183,7 +183,7 @@ run_post_deployment_tests() {
     print_status "Running post-deployment tests..."
 
     # Test API endpoints
-    if curl -f http://production-api.qmoi-enhanced.com:8000/health; then
+    if curl -f https://production-api.qmoi-enhanced.com:8000/health; then
         print_status "✅ API server health check passed"
     else
         print_error "❌ API server health check failed"
@@ -191,7 +191,7 @@ run_post_deployment_tests() {
     fi
 
     # Test Grafana
-    if curl -f http://production-api.qmoi-enhanced.com:3000/api/health 2>/dev/null; then
+    if curl -f https://production-api.qmoi-enhanced.com:3000/api/health 2>/dev/null; then
         print_status "✅ Grafana health check passed"
     else
         print_warning "⚠️  Grafana health check failed (may take longer to start)"
@@ -205,9 +205,9 @@ show_deployment_info() {
     print_status "🚀 Deployment completed successfully!"
     echo ""
     echo "📊 Service Endpoints:"
-    echo "  🌐 API Server:     http://production-api.qmoi-enhanced.com:8000"
-    echo "  📊 Grafana:        http://production-api.qmoi-enhanced.com:3000 (admin/${GRAFANA_PASSWORD})"
-    echo "  📈 Prometheus:     http://production-api.qmoi-enhanced.com:9090"
+    echo "  🌐 API Server:     https://production-api.qmoi-enhanced.com:8000"
+    echo "  📊 Grafana:        https://production-api.qmoi-enhanced.com:3000 (admin/${GRAFANA_PASSWORD})"
+    echo "  📈 Prometheus:     https://production-api.qmoi-enhanced.com:9090"
     echo "  🐘 Database:       production-api.qmoi-enhanced.com:5432"
     echo "  🔴 Redis:          production-api.qmoi-enhanced.com:6379"
     echo ""
@@ -227,7 +227,7 @@ show_deployment_info() {
 
 # Main deployment function
 main() {
-    echo "🚀 QMOI Enhanced Production Deployment"
+    echo "🚀 QMOI Enhanced production Deployment"
     echo "===================================="
 
     check_env_vars
@@ -239,7 +239,7 @@ main() {
     run_post_deployment_tests
     show_deployment_info
 
-    print_status "🎉 Production deployment completed successfully!"
+    print_status "🎉 production deployment completed successfully!"
 }
 
 # Run main function

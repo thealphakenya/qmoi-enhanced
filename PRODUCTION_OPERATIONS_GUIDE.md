@@ -1,4 +1,4 @@
-# QMOI Enhanced - Production Operations Guide
+# QMOI Enhanced - production Operations Guide
 
 **Status:** ✅ FULLY OPERATIONAL  
 **Last Updated:** May 2, 2026  
@@ -8,13 +8,13 @@
 
 ## Quick Reference
 
-### Current Production State
+### Current production State
 - **Server:** Running (`next-server`, PID: 15123)
 - **Port:** 3001
 - **Status:** Healthy and Responding
 - **Process:** Active as background service
 
-### Start Production Server
+### Start production Server
 ```bash
 cd /workspaces/qmoi-enhanced
 bash ./scripts/prod-start.sh
@@ -25,7 +25,7 @@ This command:
 3. Logs to `.qmoi_prod.log`
 4. PID saved to `.qmoi_prod.pid`
 
-### Stop Production Server
+### Stop production Server
 ```bash
 # Kill process
 kill $(cat .qmoi_prod.pid)
@@ -34,7 +34,7 @@ kill $(cat .qmoi_prod.pid)
 pkill -f "next-server"
 ```
 
-### View Production Logs
+### View production Logs
 ```bash
 # Real-time
 tail -f .qmoi_prod.log
@@ -49,16 +49,16 @@ grep -i error .qmoi_prod.log
 ### Check Server Health
 ```bash
 # Basic health check
-curl http://localhost:3001/api/health | jq .
+curl https://localhost:3001/api/health | jq .
 
 # Dashboard health (comprehensive metrics)
-curl http://localhost:3001/api/dashboard/health | jq .
+curl https://localhost:3001/api/dashboard/health | jq .
 
 # Memory status
-curl http://localhost:3001/api/memory | jq .
+curl https://localhost:3001/api/memory | jq .
 
 # Homepage
-curl http://localhost:3001/
+curl https://localhost:3001/
 ```
 
 ### Monitor Process
@@ -78,7 +78,7 @@ ps -p $(cat .qmoi_prod.pid) -o pid,rss,vsz
 
 ---
 
-## Production Checklist
+## production Checklist
 
 ### Before Starting
 - [ ] Node.js v24+ installed: `node --version`
@@ -98,8 +98,8 @@ bash ./scripts/prod-start.sh
 ### Verify Deployment
 ```bash
 # Test endpoints
-curl http://localhost:3001/api/health
-curl http://localhost:3001/api/dashboard/health
+curl https://localhost:3001/api/health
+curl https://localhost:3001/api/dashboard/health
 ```
 - [ ] `/api/health` returns: `{"status":"healthy",...}`
 - [ ] `/api/dashboard/health` returns complete metrics
@@ -108,7 +108,7 @@ curl http://localhost:3001/api/dashboard/health
 ### Monitor Health
 ```bash
 # Continuous monitoring
-watch -n 5 'curl -s http://localhost:3001/api/health | jq .'
+watch -n 5 'curl -s https://localhost:3001/api/health | jq .'
 ```
 - [ ] Status remains "healthy"
 - [ ] Uptime increases
@@ -218,7 +218,7 @@ bash ./scripts/prod-start.sh
 ```bash
 # Wait for server to fully initialize
 sleep 30
-curl http://localhost:3001/api/health
+curl https://localhost:3001/api/health
 
 # Check logs
 tail -50 .qmoi_prod.log
@@ -270,11 +270,11 @@ npx pm2 monit
 ### API Key Management
 All protected routes require API key authentication:
 ```bash
-curl -H "Authorization: Bearer YOUR_API_KEY" http://localhost:3001/api/protected-endpoint
+curl -H "Authorization: Bearer YOUR_API_KEY" https://localhost:3001/api/protected-endpoint
 ```
 
 ### Environment Variables
-Production variables are in `.env.production`:
+production variables are in `.env.production`:
 - **Do NOT** commit API keys or secrets to git
 - **Use** environment variable files for sensitive data
 - **Rotate** keys regularly
@@ -291,13 +291,13 @@ Production variables are in `.env.production`:
 ### Health Check Interval
 ```bash
 # Check every 5 seconds
-watch -n 5 'curl -s http://localhost:3001/api/health | jq ".status, .services"'
+watch -n 5 'curl -s https://localhost:3001/api/health | jq ".status, .services"'
 ```
 
 ### Setup Monitoring (Example: Cron)
 ```bash
 # Add to crontab
-*/5 * * * * curl -s http://localhost:3001/api/health > /dev/null 2>&1 || /usr/bin/restart-qmoi.sh
+*/5 * * * * curl -s https://localhost:3001/api/health > /dev/null 2>&1 || /usr/bin/restart-qmoi.sh
 ```
 
 ### Memory Monitoring

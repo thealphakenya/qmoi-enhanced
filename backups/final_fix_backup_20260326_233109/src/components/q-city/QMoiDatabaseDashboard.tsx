@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "../../services/qmoiSession";
 
@@ -68,7 +68,7 @@ function QMoiDatabaseDashboard(): any {
         <input
           value={newTable}
           onChange={(_e) => setNewTable(_e.target.value)}
-          // Production implementation:="New table name"
+          // production implementation:="New table name"
         />
         <button onClick={handleCreateTable}>Create Table</button>
       </div>

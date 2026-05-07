@@ -281,7 +281,7 @@ export default function QCityDashboardPage() {
             <div className="bg-slate-800 p-4 rounded-lg">
               <h4 className="font-semibold mb-2">Uptime</h4>
               <div className="text-blue-400 text-lg">{statusSummary.uptime}</div>
-              <p className="text-sm text-slate-400">Production availability</p>
+              <p className="text-sm text-slate-400">production availability</p>
             </div>
           </div>
           <div className="mt-4 flex gap-2">

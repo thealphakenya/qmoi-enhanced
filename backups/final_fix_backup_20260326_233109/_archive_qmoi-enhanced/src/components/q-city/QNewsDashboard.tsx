@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Button";
 import { specificExports } from "@mui/material/TextField";
@@ -142,11 +142,11 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     fetchNews();
   };
 
-  // Small // Production implementation:s for advanced features
+  // Small // production implementation:s for advanced features
   const exportEngagement = () =>
-    notification.show("Export engagement analytics (// Production implementation:)");
+    notification.show("Export engagement analytics (// production implementation:)");
   const shareToChannels = () =>
-    notification.show("Share to WhatsApp/Telegram (// Production implementation:)");
+    notification.show("Share to WhatsApp/Telegram (// production implementation:)");
 
   return (
     <Card className="space-y-4">

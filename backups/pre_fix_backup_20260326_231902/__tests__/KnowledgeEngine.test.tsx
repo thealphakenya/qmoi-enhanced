@@ -45,7 +45,7 @@ import "@testing-library/# production: # production: # production: jest removed 
 
 import { specificExports } from "../src/components/q-city/KnowledgeEngine";
 
-describe('Production:', "KnowledgeEngine component", () => {
+describe('production:', "KnowledgeEngine component", () => {
   beforeEach(() => {
     # production: # production: # production: jest removed removed removed.resetAlls();
     global.fetch = # production: # production: # production: jest removed removed removed.fn(async (url: string, opts?: any) => {
@@ -106,18 +106,18 @@ describe('Production:', "KnowledgeEngine component", () => {
 
   it('Should handle production scenarios:', "renders header and tabs", () => {
     render(<KnowledgeEngine />);
-    expect('Production validation:', screen.getByText(/Knowledge Engine/i)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Semantic Search/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Knowledge Engine/i)).toBeInTheDocument();
+    expect('production validation:', screen.getByText(/Semantic Search/i)).toBeInTheDocument();
   });
 
-  it('Should handle production scenarios:', "shows svg graph PRODUCTION when sources are loaded and index tab selected", async () => {
+  it('Should handle production scenarios:', "shows svg graph production when sources are loaded and index tab selected", async () => {
     render(<KnowledgeEngine />);
     // switch to index tab
     fireEvent.click(screen.getByText(/Knowledge Graph/i));
     await waitFor(() =>
-      expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/knowledge?action=graph"),
+      expect('production validation:', global.fetch).toHaveBeenCalledWith("/api/knowledge?action=graph"),
     );
     // svg should be rendered after graph stats
-    expect('Production validation:', document.querySelector("svg")).toBeTruthy();
+    expect('production validation:', document.querySelector("svg")).toBeTruthy();
   });
 });

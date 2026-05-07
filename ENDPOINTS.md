@@ -181,2328 +181,2328 @@ The endpoint inventory is derived from live route handler source files under `ap
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /admin/endpoints-discover
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /admin/master/auth
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /admin/master/logout
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /auth/login
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /auth/profile
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /auth/refresh
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /auth/register
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /auth/verify
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /auth/verify-email
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /auth/webauthn/authenticate
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /auth/webauthn/register
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /biometric/verify
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cameras
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cameras/infrared
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cameras/panoramic
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cameras/road
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cameras/street
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cameras/thermal
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cashon/deposit
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cashon/start-trading
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /cashon/stop-trading
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /chat/enhanced
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /consciousness
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /datasets/[id]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /datasets/settings
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /debug/users
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /deploy
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /deploy/auto-redeploy
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /devices
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /emergency/dispatch
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /emergency/email
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /emergency/sms
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /enhanced-email/send
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /friendship
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /git/commit
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /git/pr
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /git/push
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /links/[id]/zero-rated
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /master/domains/approve/[domain]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /master/domains/emergency-takeover
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /master/domains/force-refresh
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /master/domains/remove/[domain]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /master/sponsored/add
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /master/sponsored/remove/[userId]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /media/search
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /notifications/test
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /payments/initiate
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /pwa/auto-update
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /pwa/check-update
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qcity/audit-log
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qcity/remote-command
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qcity/selfheal-npm
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qcity/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-database
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-earning-enhanced
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-gitlab/deployments
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-gitlab/errors
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-gitlab/jobs
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-gitlab/pipelines
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-gitlab/trigger
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-model
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi-tracks
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/advanced-analysis
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/audio
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/auto-fix/download-report
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/auto-fix/github-status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/auto-fix/start
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/auto-fix/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/auto-setup
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/autodev/generate-feature
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/autodev/research
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/autodev/toggle
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/avatars
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/backup
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/chat
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/chat-enhanced
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/files/[id]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/friendship
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/language
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/master-mode
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/memory
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/own-device-logs
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/own-device-logs/export
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/profile-questions
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/projects
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/research
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue-dashboard
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue/reset
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue/start
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue/stop
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue/target
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue/transactions
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/revenue/transfer
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/session
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/transcribe
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/upload
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/user
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/visuals
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/voice
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/voice-enroll
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
-### GET /qmoi/voice-preview
+### GET /qmoi/voice-production
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /qmoi/voice-profiles
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /ssh/list
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /ssh/read
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /ssh/write
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /tracks/[id]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /voice/enroll
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /voice/verify
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /wallets/[walletId]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /webauthn/authenticate
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /webauthn/register
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /webhooks/godaddy-domain
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /webhooks/godaddy-health
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /webhooks/qvillage
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /whatsapp-bot
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /whatsapp/verify
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### GET /workflow
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/autofix/autoscan
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/autofix/bootstrap
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/autofix/fix/[errorId]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/autofix/health
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/autofix/healthmonitor
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/autofix/stream
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/dashboard
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/endpoints-discover
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/financial/summary
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/monitoring
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /admin/users
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /automation/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /cameras
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /cashon/signals
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /cashon/trading-status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /consciousness
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /datasets/[id]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /debug/users
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /deployment-status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /devices
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /domains/health
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /enhanced-email/analytics
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /enhanced-email/realtime
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /files
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /financial/audit
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /financial/balances
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /financial/verify
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /friendship
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /git/branch
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /git/remote
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /git/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /links/[id]/zero-rated
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /master/domains/approve/[domain]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /master/domains/remove/[domain]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /master/domains/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /master/links
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /master/sponsored/analytics
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /master/sponsored/list
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /master/sponsored/remove/[userId]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /master/sponsored/sync
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /media/search
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /media/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /metrics
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qcity/remote-command
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qcity/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi-database
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi-gitlab/deployments
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi-gitlab/errors
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi-gitlab/jobs
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi-gitlab/pipelines
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi-gitlab/trigger
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi-model
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi-tracks
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/advanced-analysis
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/audio
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/auto-fix/download-report
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/auto-fix/start
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/auto-fix/stop
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/auto-setup
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/autodev/generate-feature
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/autodev/research
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/autodev/toggle
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/avatars
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/backup
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/chat
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/chat-enhanced
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/files/[id]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/friendship
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/language
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/master-mode
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/memory
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/own-device-logs
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/own-device-logs/export
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/profile-questions
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/projects
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/research
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue-dashboard
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue/reset
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue/start
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue/status
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue/stop
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue/target
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue/transactions
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/revenue/transfer
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/session
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/transcribe
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/upload
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/user
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/visuals
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/voice
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/voice-enroll
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
-### POST /qmoi/voice-preview
+### POST /qmoi/voice-production
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qmoi/voice-profiles
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qnews
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qradio
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qstore
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qvillage/inference
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qvillage/models
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /qvillage/spaces
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /tracks/[id]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /tracks/settings
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /tracks/stream
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /transactions
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /tts/stream
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /users/profile
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /version
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /wallets/[walletId]
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /webhooks/godaddy-domain
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /webhooks/godaddy-health
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /whatsapp/audit
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /whatsapp/verify
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 
 ### POST /workflow
 
 Endpoint automatically detected but not documented.
 
 **Parameters:**
-- TBD
+- DECIDED
 
 **Response:**
-- TBD
+- DECIDED
 

@@ -6,7 +6,7 @@
 // IMPLEMENTED: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /// <reference types="cypress" />
 
-describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - Edge Cases", () => {
+describe('production:', "QMOI Kernel Panel SSO/OAuth E2E - Edge Cases", () => {
   it('Should handle production scenarios:', "allows login via Microsoft OAuth", () => {
     cy.visit(
       "/auth/callback?provider=microsoft&token=microsoft-// production implementation complete:-token",

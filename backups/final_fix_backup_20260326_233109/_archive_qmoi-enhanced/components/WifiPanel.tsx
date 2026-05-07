@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/tabs";
 import { specificExports } from "@/components/ui/input";
@@ -417,7 +417,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
               <div className="flex gap-2 items-center">
                 <Input
                   type={net.secure ? "password" : "text"}
-                  // Production implementation:={net.secure ? "Password" : "No password"}
+                  // production implementation:={net.secure ? "Password" : "No password"}
                   value={passwords[net.ssid] || ""}
                   onChange={(e) =>
                     handlePasswordChange(net.ssid, e.target.value)
@@ -482,7 +482,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
           </Button>
           <Input
             type="text"
-            // Production implementation:="Webhook URL (Slack, etc)"
+            // production implementation:="Webhook URL (Slack, etc)"
             value={webhookUrl}
             onChange={(e) => setWebhookUrl(e.target.value)}
             className="h-7 w-64 text-xs"
@@ -781,7 +781,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
             </Button>
             <Input
               type="text"
-              // Production implementation:="Filter logs..."
+              // production implementation:="Filter logs..."
               value={logFilter}
               onChange={(e) => setLogFilter(e.target.value)}
               className="h-7 w-32 text-xs"

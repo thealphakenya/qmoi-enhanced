@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
 import { specificExports } from "react";
@@ -46,7 +46,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   const [voiceEnabled, setVoiceEnabled] = useState(true);
   const [autoCorrect, setAutoCorrect] = useState(true);
 
-  // Ensure a persisted session id exists for cross-component memory/PRODUCTION
+  // Ensure a persisted session id exists for cross-component memory/production
   const getOrCreateSessionId = (): string => {
     try {
       let sid = localStorage.getItem("qmoi_session_id");
@@ -338,7 +338,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
             setCurrentText(e.target.value);
             onTextChange(e.target.value);
           }}
-          // Production implementation:={language === "sw" ? "Andika hapa..." : "Type here..."}
+          // production implementation:={language === "sw" ? "Andika hapa..." : "Type here..."}
           className="w-full p-2 border rounded resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           rows={2}
         />

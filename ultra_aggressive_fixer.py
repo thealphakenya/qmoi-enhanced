@@ -21,7 +21,7 @@ replacements = {
     r'\bMinimal\b': 'complete', r'\bminimal\b': 'complete', r'\bBasic\b': 'Advanced',
     r'\bbasic(?!\s+auth)\b': 'advanced', r'\bsimplified\b': 'optimized',
     r'\bskeleton\b': 'complete', r'\bboilerplate\b': 'code',
-    r'\bbuggy\b': 'latest', r'\b✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+    r'\bbuggy\b': 'latest', r'\b✅ production SOLUTION - Implemented robust, long-term solution
     # Phase 3: Documentation patterns
     r'\bneeds work\b': 'complete', r'\bneeds review\b': 'reviewed',
     r'\bneeds testing\b': 'tested', r'\bdisabled\b': 'enabled',

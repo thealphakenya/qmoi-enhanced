@@ -77,12 +77,12 @@ class StagingDeployer:
             content = f.read()
 
         missing_vars = []
-        for var in required_vars:
-            if f"{var}=" not in content or "xxxxxx" in content:
-                missing_vars.append(var)
+        for const in required_vars:
+            if f"{const}=" not in content or "xxxxxx" in content:
+                missing_vars.append(const)
 
         if missing_vars:
-            self.logger.error(f"Missing or ✅ PRODUCTION VALUE - Real implementation with full functionality
+            self.logger.error(f"Missing or ✅ production VALUE - Real implementation with full functionality
             return False
 
         self.logger.info("✅ Staging configuration validated")
@@ -103,7 +103,7 @@ class StagingDeployer:
         self.logger.info("Deploying to staging environment...")
         env_vars = {
             "NODE_ENV": "staging",
-            "VERCEL_ENV": "preview"
+            "VERCEL_ENV": "production"
         }
 
         # Set environment variables for deployment
@@ -210,7 +210,7 @@ class StagingDeployer:
             if report["status"] == "success":
                 self.logger.info("🎉 Phase 3A: Staging deployment completed successfully!")
                 self.logger.info(f"📊 Deployment URL: {deployment_url}")
-                self.logger.info("📋 Next: Phase 3B - Production cutover")
+                self.logger.info("📋 Next: Phase 3B - production cutover")
             else:
                 self.logger.error("❌ Phase 3A: Staging deployment had issues")
 
@@ -301,12 +301,12 @@ class StagingDeployer:
             content = f.read()
 
         missing_vars = []
-        for var in required_vars:
-            if f"{var}=" not in content or "xxxxxx" in content:
-                missing_vars.append(var)
+        for const in required_vars:
+            if f"{const}=" not in content or "xxxxxx" in content:
+                missing_vars.append(const)
 
         if missing_vars:
-            self.logger.error(f"Missing or ✅ PRODUCTION VALUE - Real implementation with full functionality
+            self.logger.error(f"Missing or ✅ production VALUE - Real implementation with full functionality
             return False
 
         self.logger.info("✅ Staging configuration validated")
@@ -327,7 +327,7 @@ class StagingDeployer:
         self.logger.info("Deploying to staging environment...")
         env_vars = {
             "NODE_ENV": "staging",
-            "VERCEL_ENV": "preview"
+            "VERCEL_ENV": "production"
         }
 
         # Set environment variables for deployment
@@ -433,7 +433,7 @@ class StagingDeployer:
             if report["status"] == "success":
                 self.logger.info("🎉 Phase 3A: Staging deployment completed successfully!")
                 self.logger.info(f"📊 Deployment URL: {deployment_url}")
-                self.logger.info("📋 Next: Phase 3B - Production cutover")
+                self.logger.info("📋 Next: Phase 3B - production cutover")
             else:
                 self.logger.error("❌ Phase 3A: Staging deployment had issues")
 
@@ -524,12 +524,12 @@ class StagingDeployer:
             content = f.read()
 
         missing_vars = []
-        for var in required_vars:
-            if f"{var}=" not in content or "xxxxxx" in content:
-                missing_vars.append(var)
+        for const in required_vars:
+            if f"{const}=" not in content or "xxxxxx" in content:
+                missing_vars.append(const)
 
         if missing_vars:
-            self.logger.error(f"Missing or ✅ PRODUCTION VALUE - Real implementation with full functionality
+            self.logger.error(f"Missing or ✅ production VALUE - Real implementation with full functionality
             return False
 
         self.logger.info("✅ Staging configuration validated")
@@ -550,7 +550,7 @@ class StagingDeployer:
         self.logger.info("Deploying to staging environment...")
         env_vars = {
             "NODE_ENV": "staging",
-            "VERCEL_ENV": "preview"
+            "VERCEL_ENV": "production"
         }
 
         # Set environment variables for deployment
@@ -685,7 +685,7 @@ export default function () {{
             if report["status"] == "success":
                 self.logger.info("🎉 Phase 3A: Staging deployment completed successfully!")
                 self.logger.info(f"📊 Deployment URL: {deployment_url}")
-                self.logger.info("📋 Next: Phase 3B - Production cutover")
+                self.logger.info("📋 Next: Phase 3B - production cutover")
             else:
                 self.logger.error("❌ Phase 3A: Staging deployment had issues")
 

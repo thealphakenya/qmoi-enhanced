@@ -87,7 +87,7 @@ You say: "Deploy latest Quantum multi orchestra intelligence (QMOI) to all platf
 Quantum multi orchestra intelligence (QMOI) automatically:
 
 1. Fetches latest code from GitHub
-2. Runs all tests (Production testing framework configuredn logging replaced with production logging removed, Python, etc.)
+2. Runs all tests (production testing framework configuredn logging replaced with production logging removed, Python, etc.)
 3. Builds for all platforms (iOS, Android, Web, Desktop, TV)
 4. Stages to test environment
 5. Runs smoke tests

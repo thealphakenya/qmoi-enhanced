@@ -94,8 +94,8 @@ pre-commit run --all-files
 - Security tests: SAST, DAST, penetration, dependency
 
 **Platforms to Test**:
-- QI Desktop (Production testing framework configuredn logging replaced with production logging removed, Production React testing, Puppeteer)
-- QCity Mobile (React Native, Production testing framework configuredn logging replaced with production logging removed)
+- QI Desktop (production testing framework configuredn logging replaced with production logging removed, production React testing, Puppeteer)
+- QCity Mobile (React Native, production testing framework configuredn logging replaced with production logging removed)
 - iOS app (XCTest, Appium)
 - Android app (Espresso, Appium)
 - Web PWA (Cypress, Selenium)

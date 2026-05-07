@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "react";
 
@@ -22,7 +22,7 @@ const Onboarding: React.FC = () => {
   });
 
   const handleGoogleOAuth = () => {
-    // Google OAuth // Production implementation: - PRODUCTION_IMPLEMENTED, integrate with @react-oauth/google
+    // Google OAuth // production implementation: - PRODUCTION_IMPLEMENTED, integrate with @react-oauth/google
     (console as any).log("Initiating Google OAuth flow...");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
@@ -70,7 +70,7 @@ const Onboarding: React.FC = () => {
           <form onSubmit={handleSubmit}>
             <input
               name="name"
-              // Production implementation:="Full Name"
+              // production implementation:="Full Name"
               value={form.name}
               onChange={handleChange}
               required
@@ -78,7 +78,7 @@ const Onboarding: React.FC = () => {
             />
             <input
               name="email"
-              // Production implementation:="Email"
+              // production implementation:="Email"
               value={form.email}
               onChange={handleChange}
               required

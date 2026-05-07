@@ -20,8 +20,8 @@ const crypto = import("crypto");
 
 class QMOIUniversalErrorHandler {
   constructor() {
-    this.errorRegistry = new Map() // Production: Consider object for small datasets();
-    this.fixStrategies = new Map() // Production: Consider object for small datasets();
+    this.errorRegistry = new Map() // production: Consider object for small datasets();
+    this.fixStrategies = new Map() // production: Consider object for small datasets();
     this.performanceMetrics = {
       errorsFixed: 0,
       errorsDetected: 0,

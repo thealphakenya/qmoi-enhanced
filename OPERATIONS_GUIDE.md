@@ -20,13 +20,13 @@ cd /workspaces/Quantum multi orchestra intelligence (QMOI)-enhanced
 ```
 
 ### **Access Web Dashboard**
-- Open browser to: `http://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000`
+- Open browser to: `https://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000`
 - Real-time monitoring and control
 - Task submission interface
 - System metrics dashboard
 
 ### **Access API Endpoints**
-- Base URL: `http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000`
+- Base URL: `https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000`
 - RESTful API for all AI services
 - Programmatic access to system functions
 
@@ -74,7 +74,7 @@ python3 run_web_dashboard.py           # Start web dashboard
 ./status.sh
 
 # Web dashboard (browser)
-http://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000
+https://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000
 ```
 
 ### **System Control**
@@ -108,7 +108,7 @@ tail -f ai_api_server.log
 
 ## 🔌 **API Endpoints**
 
-### **Base URL:** `http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000`
+### **Base URL:** `https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000`
 
 ### **Health & Status**
 ```
@@ -135,28 +135,28 @@ GET  /task/<task_id>      - Get task status and results
 
 #### **Anomaly Detection**
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/anomaly-detection \
   -H "Content-Type: application/json" \
   -d '{"data": [1, 2, 3, 4, 5]}'
 ```
 
 #### **NLP Analysis**
 ```bash
-curl -X POST http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/nlp-analysis \
+curl -X POST https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/nlp-analysis \
   -H "Content-Type: application/json" \
   -d '{"text": "Hello, this is a test message for analysis"}'
 ```
 
 #### **System Health**
 ```bash
-curl http://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
+curl https://production-db.Quantum multi orchestra intelligence (QMOI).ai:3000/health
 ```
 
 ---
 
 ## 🌐 **Web Dashboard**
 
-### **Access:** `http://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000`
+### **Access:** `https://production-db.Quantum multi orchestra intelligence (QMOI).ai:5000`
 
 ### **Features**
 - **Real-time Status** - Live service status and metrics

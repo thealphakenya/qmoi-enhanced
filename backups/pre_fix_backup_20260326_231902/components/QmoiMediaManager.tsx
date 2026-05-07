@@ -88,7 +88,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   // For upload support, add an upload button and handler to POST files to your media API endpoint.
   // See README for more integration details.
 
-  // Production: use client adapter to fetch media items from backend API
+  // production: use client adapter to fetch media items from backend API
   useEffect(() => {
     let mounted = true;
     const load = async () => {

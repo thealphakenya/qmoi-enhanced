@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/button";
 import { specificExports } from "@/components/ui/input";
@@ -66,13 +66,13 @@ const SocialAutomationPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            // Production implementation:="Status/News Content"
+            // production implementation:="Status/News Content"
             value={content}
             onChange={(_e) => setContent(_e.target.value)}
             className="mb-2"
           />
           <Input
-            // Production implementation:="Platform (WhatsApp, Telegram, etc.)"
+            // production implementation:="Platform (WhatsApp, Telegram, etc.)"
             value={platform}
             onChange={(_e) => setPlatform(_e.target.value)}
             className="mb-2"
@@ -98,7 +98,7 @@ const SocialAutomationPanel: React.FC = () => {
                   <td>{c.tags.join(", ")}</td>
                   <td>
                     <Input
-                      // Production implementation:="Tag"
+                      // production implementation:="Tag"
                       value={tag}
                       onChange={(_e) => setTag(_e.target.value)}
                       className="inline-block w-24 mr-2"

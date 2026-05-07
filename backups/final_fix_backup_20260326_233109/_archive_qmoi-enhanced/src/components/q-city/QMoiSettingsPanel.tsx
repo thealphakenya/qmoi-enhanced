@@ -4,11 +4,11 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export const QMoiSettingsPanel: React.FC = () => {
-  // Settings state (// Production implementation:bed for now)
+  // Settings state (// production implementation:bed for now)
   const [settings, setSettings] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("qmoi-settings") || "{}");
@@ -104,7 +104,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
               saveSettings({ ...settings, allowedActions: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            // Production implementation:="e.g. build,deploy,test"
+            // production implementation:="e.g. build,deploy,test"
           />
         </label>
         <label className="block mb-2">
@@ -116,7 +116,7 @@ function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
               saveSettings({ ...settings, mediaPerms: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            // Production implementation:="e.g. images,docs,code"
+            // production implementation:="e.g. images,docs,code"
           />
         </label>
       </div>

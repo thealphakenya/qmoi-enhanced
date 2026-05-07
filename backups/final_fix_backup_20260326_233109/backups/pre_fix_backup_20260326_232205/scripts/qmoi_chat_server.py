@@ -133,12 +133,12 @@ def do_POST(self) -> Any:
         if parsed.path == '/memory/sync' or parsed.path == '/memory':
             # Read body already below; fall through to payload handling
 return None  # production implementation
-        # POST /v1/PRODUCTION - store PRODUCTION data for session (used by UI PRODUCTION window)
-        if parsed.path == '/v1/PRODUCTION':
+        # POST /v1/production - store production data for session (used by UI production window)
+        if parsed.path == '/v1/production':
             # read body below and save to memory['previews']
 return None  # production implementation
         # Main chat endpoint
-        if parsed.path != '/v1/chat/completions' and parsed.path not in ['/memory/sync', '/memory', '/v1/PRODUCTION']:
+        if parsed.path != '/v1/chat/completions' and parsed.path not in ['/memory/sync', '/memory', '/v1/production']:
             self._set_json(404)
             self.wfile.write(json.dumps({'error': 'Not Found'}).encode())
             return
@@ -179,8 +179,8 @@ return None  # production implementation
             self.wfile.write(json.dumps({'status': 'ok'}).encode())
             return
 
-        # Handle PRODUCTION POST
-        if parsed.path == '/v1/PRODUCTION':
+        # Handle production POST
+        if parsed.path == '/v1/production':
             mem = load_memory()
             session_id = payload.get('sessionId') or self.headers.get('X-QMOI-SESSION') or 'anon'
             previews = mem.setdefault('previews', {})

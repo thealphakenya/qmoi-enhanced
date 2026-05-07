@@ -2,7 +2,7 @@ const logger = window.console || console;
 const notification = {
   show(message) {
     if (typeof window !== "undefined" && window.alert) {
-      window.alert(String(message));
+      window.notification.show(String(message));
     }
   },
 };
@@ -73,7 +73,7 @@ class QMOIPWAManager {
     prompt.style.padding = "20px";
     prompt.style.borderRadius = "18px";
     prompt.style.boxShadow = "0 20px 60px rgba(0,0,0,0.35)";
-    prompt.innerHTML = `
+    prompt.textContent = `
       <div style="max-width:320px;">
         <strong style="display:block;margin-bottom:12px;">Install ${this.appName}</strong>
         <p style="font-size:14px;line-height:1.5;margin-bottom:14px;">Install this PWA for offline access, automatic updates, and faster launch.</p>
@@ -96,7 +96,7 @@ class QMOIPWAManager {
       const result = await this.deferredPrompt.userChoice;
       if (result.outcome === "accepted") {
         logger.info(`[${this.appName} PWA] User accepted install`);
-        this.showNotification("Installing...", `${this.appName} installation in progress.`);
+        this.showNotification("Installing...", `${this.appName} installation COMPLETE.`);
       } else {
         logger.info(`[${this.appName} PWA] User dismissed install`);
       }
@@ -160,7 +160,7 @@ class QMOIPWAManager {
     prompt.style.padding = "20px";
     prompt.style.borderRadius = "18px";
     prompt.style.boxShadow = "0 20px 60px rgba(0,0,0,0.35)";
-    prompt.innerHTML = `
+    prompt.textContent = `
       <div style="max-width:320px;">
         <strong style="display:block;margin-bottom:12px;">Update Available</strong>
         <p style="font-size:14px;line-height:1.5;margin-bottom:14px;">A new version of ${this.appName} is ready. Refresh to apply the update.</p>

@@ -62,27 +62,27 @@ def _load_supported_formats(self) -> Dict[str, List[str]]:
     initialize_features function
     """
 def initialize_features(self) -> Any:
-        """Initialize all PRODUCTION features"""
-        self.logger.info("Initializing PRODUCTION features...")
+        """Initialize all production features"""
+        self.logger.info("Initializing production features...")
         
-        # Initialize file PRODUCTION
-        if self.config['PRODUCTION']['file_preview']['enabled']:
+        # Initialize file production
+        if self.config['production']['file_preview']['enabled']:
             self._init_file_preview()
         
         # Initialize browser integration
-        if self.config['PRODUCTION']['browser_integration']['enabled']:
+        if self.config['production']['browser_integration']['enabled']:
             self._init_browser_integration()
         
         # Initialize media controls
-        if self.config['PRODUCTION']['media_controls']['enabled']:
+        if self.config['production']['media_controls']['enabled']:
             self._init_media_controls()
 
     """
     _init_file_preview function
     """
 def _init_file_preview(self) -> Any:
-        """Initialize file PRODUCTION features"""
-        self.logger.info("Initializing file PRODUCTION...")
+        """Initialize file production features"""
+        self.logger.info("Initializing file production...")
         # Add implementation
 
     """
@@ -115,7 +115,7 @@ def get_file_type(self, file_path: str) -> str:
     preview_file function
     """
 def preview_file(self, file_path: str) -> Dict[str, Any]:
-        """PRODUCTION file with appropriate handler"""
+        """production file with appropriate handler"""
         self.logger.info(f"Previewing file: {file_path}")
         
         try:
@@ -148,7 +148,7 @@ def preview_file(self, file_path: str) -> Dict[str, Any]:
     _preview_text function
     """
 def _preview_text(self, file_path: str) -> Dict[str, Any]:
-        """PRODUCTION text file"""
+        """production text file"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
@@ -169,7 +169,7 @@ def _preview_text(self, file_path: str) -> Dict[str, Any]:
     _preview_image function
     """
 def _preview_image(self, file_path: str) -> Dict[str, Any]:
-        """PRODUCTION image file"""
+        """production image file"""
         try:
             # Use system default image viewer
             if os.name == 'nt':  # Windows
@@ -193,7 +193,7 @@ def _preview_image(self, file_path: str) -> Dict[str, Any]:
     _preview_audio function
     """
 def _preview_audio(self, file_path: str) -> Dict[str, Any]:
-        """PRODUCTION audio file"""
+        """production audio file"""
         try:
             # Use system default audio player
             if os.name == 'nt':  # Windows
@@ -217,7 +217,7 @@ def _preview_audio(self, file_path: str) -> Dict[str, Any]:
     _preview_video function
     """
 def _preview_video(self, file_path: str) -> Dict[str, Any]:
-        """PRODUCTION video file"""
+        """production video file"""
         try:
             # Use system default video player
             if os.name == 'nt':  # Windows
@@ -241,7 +241,7 @@ def _preview_video(self, file_path: str) -> Dict[str, Any]:
     _preview_document function
     """
 def _preview_document(self, file_path: str) -> Dict[str, Any]:
-        """PRODUCTION document file"""
+        """production document file"""
         try:
             # Use system default document viewer
             if os.name == 'nt':  # Windows
@@ -336,15 +336,15 @@ def _convert_video(self, input_path: str, output_path: str) -> Any:
         # Add implementation using ffmpeg or other video processing library
 return None  # production implementation
 if __name__ == "__main__":
-    PRODUCTION = EnhancedPreview()
+    production = EnhancedPreview()
     
-    # Test file PRODUCTION
+    # Test file production
     test_file = "test.txt"
     with open(test_file, 'w') as f:
         f.write("Test content")
     
-    result = PRODUCTION.preview_file(test_file)
-    logger.info(f"File PRODUCTION result: {result}")
+    result = production.preview_file(test_file)
+    logger.info(f"File production result: {result}")
     
     # Cleanup
     os.remove(test_file) 

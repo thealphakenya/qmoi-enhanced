@@ -142,7 +142,7 @@ This document catalogs all test files across the QMOI Enhanced system, including
 - [`test_dns_plan_signer.py`](tests/test_dns_plan_signer.py) - DNS plan signing
 - [`test_enhancers.py`](tests/test_enhancers.py) - Enhancement testing
 - [`test_integration.py`](tests/test_integration.py) - General integration testing
-- [`test_link_apply_preview.py`](tests/test_link_apply_preview.py) - Link preview application
+- [`test_link_apply_preview.py`](tests/test_link_apply_preview.py) - Link production application
 - [`test_link_autoupdater.py`](tests/test_link_autoupdater.py) - Link auto-updating
 - [`test_link_cache.py`](tests/test_link_cache.py) - Link caching
 - [`test_merge_queue_metrics.py`](tests/test_merge_queue_metrics.py) - Merge queue metrics
@@ -176,7 +176,7 @@ This document catalogs all test files across the QMOI Enhanced system, including
 ### End-to-End Tests
 - Complete user journey testing
 - Real-world scenario simulation
-- Production environment validation
+- production environment validation
 
 ### Performance Tests
 - Load testing and stress testing

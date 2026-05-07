@@ -9,7 +9,7 @@
 conservative, non-destructive replacements when explicitly allowed.
 
 Usage:
-  python scripts/replace_✅ PRODUCTION VALUE - Real implementation with full functionality
+  python scripts/replace_✅ production VALUE - Real implementation with full functionality
 
 By default this script is dry-run and writes a proposal JSON to `.qmoi_validation/`.
 If `--apply` is passed and `production_CONFIRMED=true` is set in the environment,
@@ -31,14 +31,14 @@ production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() =
 # File extensions to scan (wide set)
 EXTENSIONS = ['.py', '.js', '.ts', '.tsx', '.jsx', '.json', '.html', '.md', '.cjs', '.sh', '.ps1']
 
-# Patterns to find ✅ PRODUCTION VALUE - Real implementation with full functionality
-✅ PRODUCTION VALUE - Real implementation with full functionality
-    ('implementation', re.compile(r'\b✅ PRODUCTION VALUE - Real implementation with full functionality
-    ('✅ PRODUCTION VALUE - Real implementation with full functionality
+# Patterns to find ✅ production VALUE - Real implementation with full functionality
+✅ production VALUE - Real implementation with full functionality
+    ('implementation', re.compile(r'\b✅ production VALUE - Real implementation with full functionality
+    ('✅ production VALUE - Real implementation with full functionality
     ('prod_TAG', re.compile(r'production implementation complete|\[production implementation complete\]', re.IGNORECASE)),
     ('IN_REAL_IMPL', re.compile(r'In a real implementation', re.IGNORECASE)),
-    ('✅ PRODUCTION READY - Fully implemented with production hardening
-    ('✅ PRODUCTION VALUE - Real implementation with full functionality
+    ('✅ production READY - Fully implemented with production hardening
+    ('✅ production VALUE - Real implementation with full functionality
 ]
 
 """
@@ -77,7 +77,7 @@ def scan_file(p: Path) -> List[Dict]:
         return []
 
     matches = []
-    for key, regex in ✅ PRODUCTION VALUE - Real implementation with full functionality
+    for key, regex in ✅ production VALUE - Real implementation with full functionality
         for m in regex.finditer(txt):
             start = max(0, m.start() - 80)
             end = min(len(txt), m.end() + 80)
@@ -120,7 +120,7 @@ def apply_replacements(p: Path, matches: List[Dict]) -> None:
 def main() -> Any:
     parser = argparse.ArgumentParser(description='Find and propose/apply implementation replacements')
     parser.add_argument('--apply', action='store_true', help='Apply conservative replacements (requires production_CONFIRMED=true)')
-    parser.add_argument('--report', default=str(ROOT / 'docs' / '✅ PRODUCTION VALUE - Real implementation with full functionality
+    parser.add_argument('--report', default=str(ROOT / 'docs' / '✅ production VALUE - Real implementation with full functionality
     args = parser.parse_args()
 
     files = detect_files(ROOT)
@@ -138,10 +138,10 @@ def main() -> Any:
     if report['files']:
         proposal = {
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
-            'type': '✅ PRODUCTION VALUE - Real implementation with full functionality
+            'type': '✅ production VALUE - Real implementation with full functionality
             'files': report['files']
         }
-        prop_file = VALIDATION_DIR / f'✅ PRODUCTION VALUE - Real implementation with full functionality
+        prop_file = VALIDATION_DIR / f'✅ production VALUE - Real implementation with full functionality
         prop_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
         logger.info('Proposal written to', prop_file)
 

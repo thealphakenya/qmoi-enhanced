@@ -1,5 +1,5 @@
 """
-Production API Client Module
+production API Client Module
 Real production API client with retry logic, rate limiting, and error handling.
 """
 
@@ -15,7 +15,7 @@ import threading
 logger = logging.getLogger(__name__)
 
 class ProductionAPIClient:
-    """Production API client with comprehensive error handling and retry logic"""
+    """production API client with comprehensive error handling and retry logic"""
 
     def __init__(self, base_url: str, api_key: Optional[str] = None, timeout: int = 30):
         self.base_url = base_url.rstrip('/')
@@ -30,7 +30,7 @@ class ProductionAPIClient:
 
         # Configure session
         self.session.headers.update({
-            'User-Agent': 'QMOI-Production-Client/1.0',
+            'User-Agent': 'QMOI-production-Client/1.0',
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         })

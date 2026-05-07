@@ -22,7 +22,7 @@ class FileUploadManager {
       ".xls",
       ".xlsx",
     ];
-    this.uploadingFiles = new Map() // Production: Consider object for small datasets();
+    this.uploadingFiles = new Map() // production: Consider object for small datasets();
     this.attachEventListeners();
   }
 

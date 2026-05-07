@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@mui/material/Button";
 import { specificExports } from "@mui/material/Card";
@@ -112,13 +112,13 @@ const QApiKeyManager: React.FC = () => {
           <p style={{ margin: 0, color: "#334155" }}>
             Advanced logging, persistent storage and detailed usage analytics
             are available in the full deployment. Use the button below to open a
-            usage // Production implementation:.
+            usage // production implementation:.
           </p>
           <Button
             size="small"
             variant="contained"
             color="secondary"
-            onClick={() => notification.show("Open API key usage logs (// Production implementation:)")}
+            onClick={() => notification.show("Open API key usage logs (// production implementation:)")}
             style={{ marginTop: 8 }}
           >
             View Usage Logs

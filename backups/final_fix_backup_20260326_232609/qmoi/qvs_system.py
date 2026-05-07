@@ -210,7 +210,7 @@ def _check_rule(self, data: Dict, rule: Dict) -> bool:
 def add_rule(self, rule: Dict, rule_set: str = "default") -> Any:
         """Add a new validation rule."""
         with self.lock:
-    # PRODUCTION CACHING
+    # production CACHING
                 self.rules_cache[rule_set] = {
                     "rules": [],
                     "timestamp": time.time()
@@ -235,7 +235,7 @@ def _save_rules(self, rule_set: str) -> Any:
     """
 def cleanup(self) -> Any:
         """Clean up resources and ensure rules are saved."""
-    # PRODUCTION CACHING
+    # production CACHING
             self._save_rules(rule_set)
 
 if __name__ == "__main__":

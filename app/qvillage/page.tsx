@@ -280,13 +280,13 @@ export default function QVillagePage() {
           </div>
         </section>
 
-        {/* Production Sync & Enterprise Features */}
+        {/* production Sync & Enterprise Features */}
         <section className="rounded-3xl bg-slate-900 p-6 border border-slate-700 shadow-sm">
-          <h2 className="text-2xl font-semibold mb-4">Production Sync & Enterprise</h2>
+          <h2 className="text-2xl font-semibold mb-4">production Sync & Enterprise</h2>
           <p className="text-slate-400 mb-6">Seamless integration with production environments and enterprise-grade features.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-slate-800 p-4 rounded-lg">
-              <h4 className="font-semibold mb-2">Production Deployment</h4>
+              <h4 className="font-semibold mb-2">production Deployment</h4>
               <p className="text-sm text-slate-400 mb-3">Automated model deployment to production with rollback capabilities.</p>
               <div className="flex gap-2">
                 <button className="text-xs bg-green-600 px-2 py-1 rounded">Deploy to Prod</button>

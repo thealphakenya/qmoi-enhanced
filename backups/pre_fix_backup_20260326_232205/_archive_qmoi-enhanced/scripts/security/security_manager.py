@@ -788,7 +788,7 @@ def setup_access_control(self) -> None:
     """
     check_access function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Check if user has access to resource."""
         try:
             # Check rules
@@ -806,7 +806,7 @@ def setup_access_control(self) -> None:
     """
     match_access_rule function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Match access control rule."""
         try:
             # Check user
@@ -814,7 +814,7 @@ def setup_access_control(self) -> None:
                 return False
             
             # Check resource
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
                 return False
             
             # Check action

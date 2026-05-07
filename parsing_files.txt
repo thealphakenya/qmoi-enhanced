@@ -1,4 +1,4 @@
-_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-PRODUCTION/route.ts
+_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-production/route.ts
 _archive_qmoi-enhanced/_app_archived/layout.js
 _archive_qmoi-enhanced/components/DownloadQApp.tsx
 _archive_qmoi-enhanced/components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx
@@ -62,7 +62,7 @@ app/api/qmoi/auto-fix/download-report/route.ts
 app/api/qmoi/auto-fix/status/route.ts
 app/api/qmoi/chat/route.ts
 app/api/qmoi/revenue-dashboard/route.ts
-app/api/qmoi/voice-PRODUCTION/route.ts
+app/api/qmoi/voice-production/route.ts
 app/api/qnews/route.ts
 app/api/qradio/route.ts
 app/api/qvillage/route.ts

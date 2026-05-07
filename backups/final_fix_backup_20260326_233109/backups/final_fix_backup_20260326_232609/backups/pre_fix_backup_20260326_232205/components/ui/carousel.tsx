@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -71,16 +71,16 @@ const Carousel = React.forwardRef<
     const canScrollPrev = false;
     const canScrollNext = false;
 
-    // complete API // Production implementation: — real scrolling logic may be provided by a
+    // complete API // production implementation: — real scrolling logic may be provided by a
     // concrete implementation (e.g., embla-carousel) in the future.
     const api: CarouselApi | null = null;
 
     const scrollPrev = React.useCallback(() => {
-      // no-op // Production implementation:
+      // no-op // production implementation:
     }, []);
 
     const scrollNext = React.useCallback(() => {
-      // no-op // Production implementation:
+      // no-op // production implementation:
     }, []);
 
     const handleKeyDown = React.useCallback(

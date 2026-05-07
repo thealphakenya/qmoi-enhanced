@@ -303,7 +303,7 @@ def _cleanup_cache(self) -> bool:
 
             return True
         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
             return False
 
     """

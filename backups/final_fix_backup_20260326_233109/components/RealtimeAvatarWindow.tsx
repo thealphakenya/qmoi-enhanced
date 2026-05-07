@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -52,7 +52,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
   const [showInfo, setShowInfo] = useState(false);
   const [localMaximized, setLocalMaximized] = useState(isMaximized);
 
-  // Production implementation: audio level changes
+  // production implementation: audio level changes
   useEffect(() => {
     if (!isSpeaking && !isListening) {
       setAudioLevel(0);
@@ -193,7 +193,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             background: "linear-gradient(135deg, #0A0E27 0%, #1A1F3A 100%)",
           }}
         >
-          {/* Avatar // Production implementation: - Shows emoji/sophisticated avatar */}
+          {/* Avatar // production implementation: - Shows emoji/sophisticated avatar */}
           <motion.div
             animate={{
               scale: isSpeaking ? [1, 1.05, 1] : isListening ? [1, 1.02, 1] : 1,

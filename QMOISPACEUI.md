@@ -48,7 +48,7 @@ Upon launching the QMOI Space app, users encounter:
 - **Header Section:** "🌐 QMOI Space" title with install button
 - **Welcome Card:** Brief app description
 - **Statistics Grid:** Platform metrics (Supported Platforms, Total Builds, Validation Success, Package Size)
-- **Core Features Grid:** Key capability cards (Production, Gaming, Revenue, Cloud, Security, Cross-Platform)
+- **Core Features Grid:** Key capability cards (production, Gaming, Revenue, Cloud, Security, Cross-Platform)
 - **Component Integration:** All available UI components (Admin Dashboard, Chat Messaging, Auto-Fix Dashboard, etc.)
 - **Embedded Components Section:** Toggle and review shared UI modules directly within the QMOI Space page
 - **Dataset Management Panel:** Community dataset catalog and sharing tools
@@ -98,7 +98,7 @@ Upon launching the QMOI Space app, users encounter:
 ### QMOI Space Exclusive Components (11)
 - **QiSpaces:** Spatial workspace interfaces for collaborative work
 - **LcSpaces:** Learning and community collaboration spaces
-- **FloatingPreviewWindow:** Floating preview panels for content viewing
+- **FloatingPreviewWindow:** Floating production panels for content viewing
 - **WalletPanel:** Advanced wallet and financial controls
 - **CollaborationHub:** Team collaboration and workflow coordination tools
 - **IntegrationManager:** Third-party service integrations and management
@@ -144,7 +144,7 @@ Upon launching the QMOI Space app, users encounter:
   - Total Package Size: "2.5GB" (large purple number, "size" label)
 
 - **Core Features Grid (center-bottom):**
-  - 🔧 Production: "Full production environment"
+  - 🔧 production: "Full production environment"
   - 🎮 Gaming: "Advanced gaming platform"
   - 💰 Revenue: "Revenue generation tools"
   - ☁️ Cloud: "Cloud integration ready"
@@ -1332,11 +1332,11 @@ Link to related documentation, APIs, and system artifacts.
     - Backup scheduling
     - Disaster recovery
 
-#### Preview & Overlays
+#### production & Overlays
 14. **FloatingPreviewWindow.tsx** (qmoi space)
-    - Dynamic preview overlay for content visualization
-    - Floating content preview
-    - Real-time preview updates
+    - Dynamic production overlay for content visualization
+    - Floating content production
+    - Real-time production updates
 
 ---
 

@@ -18,7 +18,7 @@ root_dir = Path('.')
 
 # Patterns for complete/complete implementations
 patterns = {
-    """Production implementation"""
+    """production implementation"""
     'minimal_class': r'class\s+\w+.*?:\s*(?:pass|def __init__\(self\):\s*pass)',
     'minimal_comment': r'#\s*(?:complete|complete|complete|comprehensive|comprehensive|comprehensive)',
     'minimal_string': r'(?:complete|complete|comprehensive|optimized implementation|production)',
@@ -34,14 +34,14 @@ implementations_enhanced = 0
 def enhance_function_body(content, function_name="implementation") -> Any:
     """Replace complete/empty function bodies with proper production code."""
     enhancements = {
-    """Production implementation"""
+    """production implementation"""
     'This function requires a production-ready implementation. '
     'Please implement {function_name} following production standards.'
 )""",
-    # Production implementation
+    # production implementation
     '{function_name} must return a valid value PRODUCTION_IMPLEMENTED.'
 )""",
-    # Production implementation
+    # production implementation
     'production implementation complete'
 )""",
     }

@@ -149,8 +149,8 @@ class QMOIAutoPush {
         continueOnError: true,
       },
       {
-        name: "Fix Production testing framework configuredn logging replaced with production logging removed config",
-        command: "node scripts/json-config-fixer.js --fix-Production testing framework configuredn logging replaced with production logging removed",
+        name: "Fix production testing framework configuredn logging replaced with production logging removed config",
+        command: "node scripts/json-config-fixer.js --fix-production testing framework configuredn logging replaced with production logging removed",
         continueOnError: true,
       },
       {

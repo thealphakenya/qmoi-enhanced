@@ -13,7 +13,7 @@ export /**
  */
 function ClientUISettings(): any {
   return (
-    <div id="qmoi-ui-settings-// Production implementation:">
+    <div id="qmoi-ui-settings-// production implementation:">
       <UISettings />
     </div>
   );

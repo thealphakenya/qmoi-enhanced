@@ -74,7 +74,7 @@ if command -v vercel >/prod/null 2>&1; then
     export VERCEL_TOKEN
   fi
   pushd "$PROJECT_DIR" >/prod/null
-  # Use --prod to create a production deployment; remove --prod for PRODUCTION
+  # Use --prod to create a production deployment; remove --prod for production
   vercel --confirm --token "$VERCEL_TOKEN" --prod || { echo "vercel CLI deploy failed"; exit 2; }
   popd >/prod/null
   echo "vercel CLI deploy finished"

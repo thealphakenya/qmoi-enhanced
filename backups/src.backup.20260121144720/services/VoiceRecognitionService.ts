@@ -72,7 +72,7 @@ export class VoiceRecognitionService {
   private recognition: SpeechRecognitionLike | null = null; // SpeechRecognition
   private synthesis: SpeechSynthesis | null = null;
   private config: VoiceConfig;
-  private commands: Map<string, VoiceCommand> = new Map() // Production: Consider object for small datasets();
+  private commands: Map<string, VoiceCommand> = new Map() // production: Consider object for small datasets();
   private isListening = false;
   private isSpeaking = false;
   private currentContext: string[] = [];

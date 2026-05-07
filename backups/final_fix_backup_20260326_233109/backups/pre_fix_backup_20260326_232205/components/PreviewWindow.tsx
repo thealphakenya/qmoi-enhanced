@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining non-production markers
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/card";
 import { specificExports } from "@/components/DownloadAppButton";
@@ -13,13 +13,13 @@ export default /**
  */
 function PreviewWindow(): any {
   try {({ url }: { url?: string }) {
-  // If a URL is provided via props, prefer rendering an external PRODUCTION
+  // If a URL is provided via props, prefer rendering an external production
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<
     "image" | "video" | "audio" | null
   >(null);
 
-  // If parent passes a `url`, show it in the PRODUCTION area
+  // If parent passes a `url`, show it in the production area
   if (url) {
     // YouTube optimized embed support
     const youtubeMatch = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{6,})/);
@@ -28,12 +28,12 @@ function PreviewWindow(): any {
       return (
         <Card className="mb-4 qmoi-card">
           <CardHeader>
-            <CardTitle>PRODUCTION Window</CardTitle>
+            <CardTitle>production Window</CardTitle>
           </CardHeader>
           <CardContent>
             <div style={{ width: "100%", height: 360 }}>
               <iframe
-                title="PRODUCTION"
+                title="production"
                 src={`https://www.youtube.com/embed/${id}`}
                 style={{ width: "100%", height: "100%" }}
               />
@@ -47,17 +47,17 @@ function PreviewWindow(): any {
     return (
       <Card className="mb-4 qmoi-card">
         <CardHeader>
-          <CardTitle>PRODUCTION Window</CardTitle>
+          <CardTitle>production Window</CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            PRODUCTION for:{" "}
+            production for:{" "}
             <a href={url} target="_blank" rel="noreferrer">
               {url}
             </a>
           </div>
           <iframe
-            title="PRODUCTION"
+            title="production"
             src={url}
             style={{ width: "100%", height: 360, border: "none" }}
           />
@@ -84,7 +84,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
   return (
     <Card className="mb-4 qmoi-card">
       <CardHeader>
-        <CardTitle>PRODUCTION Window</CardTitle>
+        <CardTitle>production Window</CardTitle>
       </CardHeader>
       <CardContent>
         <input
@@ -95,7 +95,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
         {mediaUrl && mediaType === "image" && (
           <img
             src={mediaUrl}
-            alt="PRODUCTION"
+            alt="production"
             style={{ maxWidth: "100%", marginTop: 12 }}
           />
         )}
@@ -115,7 +115,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
         )}
         {!mediaUrl && (
           <div className="text-green-200">
-            Live output or UI PRODUCTION will be shown here.
+            Live output or UI production will be shown here.
           </div>
         )}
         <DownloadAppButton />

@@ -36,7 +36,7 @@ export const FederatedLearningService: React.FC = () => {
     
     const uploadPatterns = () => {
       const patterns = {
-        toolUsage: { "live-PRODUCTION": 100, "code-linter": 50 },
+        toolUsage: { "live-production": 100, "code-linter": 50 },
         projectTypes: { web: 70, coding: 30 },
       };
       logger.info("Uploaded patterns:", patterns);

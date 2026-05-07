@@ -6,7 +6,7 @@
 // IMPLEMENTED: 3 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /// <reference types="cypress" />
 
-describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E", () => {
+describe('production:', "QMOI Kernel Panel SSO/OAuth E2E", () => {
   it('Should handle production scenarios:', "allows login via OAuth and shows panel", () => {
     // production implementation: token
     cy.visit(

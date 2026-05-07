@@ -138,13 +138,13 @@ function installDependencies(): any {
   const testDeps = [
     "@testing-library/react",
     "@testing-library/react-hooks",
-    "@testing-library/Production testing framework configuredn logging replaced with production logging removed-dom",
+    "@testing-library/production testing framework configuredn logging replaced with production logging removed-dom",
     "@testing-library/user-event",
-    "Production testing framework configuredn logging replaced with production logging removed",
-    "Production testing framework configuredn logging replaced with production logging removed-environment-jsdom",
+    "production testing framework configuredn logging replaced with production logging removed",
+    "production testing framework configuredn logging replaced with production logging removed-environment-jsdom",
     "playwright",
     "cypress",
-    "@types/Production testing framework configuredn logging replaced with production logging removed",
+    "@types/production testing framework configuredn logging replaced with production logging removed",
   ];
 
   log("Installing testing dependencies");
@@ -324,7 +324,7 @@ Write-Host "🚀 QMOI Auto-Setup Starting" -ForegroundColor Green
 # Install dependencies
 Write-Host "📦 Installing dependencies" -ForegroundColor Yellow
 npm install --yes --legacy-peer-deps
-npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/Production testing framework configuredn logging replaced with production logging removed
+npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/production testing framework configuredn logging replaced with production logging removed
 
 # Install Playwright browsers
 Write-Host "Installing Playwright browsers" -ForegroundColor Yellow
@@ -361,7 +361,7 @@ echo "🚀 QMOI Auto-Setup Starting"
 # Install dependencies
 echo "📦 Installing dependencies"
 npm install --yes --legacy-peer-deps
-npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/Production testing framework configuredn logging replaced with production logging removed
+npm install --save-prod --yes @testing-library/react @testing-library/react-hooks @testing-library/production testing framework configuredn logging replaced with production logging removed
 
 # Install Playwright browsers
 echo "Installing Playwright browsers"

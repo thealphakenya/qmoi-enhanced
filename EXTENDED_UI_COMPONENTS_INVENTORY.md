@@ -50,7 +50,7 @@ All components are located in `/app/components/` directory with proper TypeScrip
 
 ### UI Customization & Features (2)
 1. **ThemeCustomizer.tsx** - UI personalization and theme customization controls
-2. **FloatingPreviewWindow.tsx** - Dynamic preview overlay for content and data visualization
+2. **FloatingPreviewWindow.tsx** - Dynamic production overlay for content and data visualization
 
 ### Existing QMOI-Specific Components (Previously Created)
 1. **QI.tsx** - QI Intelligence System interface
@@ -63,7 +63,7 @@ All components are located in `/app/components/` directory with proper TypeScrip
 8. **QCityThemeProvider.tsx** - QCity theme configuration and application
 9. **NotificationCenter.tsx** - System notifications and alerts interface
 10. **HelpGuide.tsx** - Comprehensive help and guidance system
-11. **PreviewWindow.tsx** - Preview content in dynamic overlay
+11. **PreviewWindow.tsx** - production content in dynamic overlay
 12. **WalletPanel.tsx** - Cryptocurrency wallet management interface
 
 ## Component Features
@@ -154,7 +154,7 @@ All components are documented in:
 - Component serving quick reference updated
 - Extended UI descriptions provided
 
-## Future Enhancement Opportunities
+## current capability Opportunities
 
 1. **Dynamic Data Binding** - Connect components to actual backend APIs
 2. **Interactivity** - Add real functionality beyond placeholder displays
@@ -170,9 +170,9 @@ All components are documented in:
 ## Navigation
 
 Components are now accessible through:
-- **QMOI AI App** - `http://localhost:3000/qmoi-ai` (Show Integrated UI Components button)
-- **QMOI Space App** - `http://localhost:3000/qmoi-space` (Embedded UI Modules button)
-- **QCity App** - `http://localhost:3000/qcity` (Embedded Modules button)
+- **QMOI AI App** - `https://localhost:3000/qmoi-ai` (Show Integrated UI Components button)
+- **QMOI Space App** - `https://localhost:3000/qmoi-space` (Embedded UI Modules button)
+- **QCity App** - `https://localhost:3000/qcity` (Embedded Modules button)
 
 ## Notes
 

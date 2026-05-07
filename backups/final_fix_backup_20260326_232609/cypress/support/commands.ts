@@ -38,7 +38,7 @@ Cypress.Commands.add("apiLogin", (email: string, password: string) => {
     email,
     password,
   }).then((response) => {
-    expect('Production validation:', response.status).to.eq(200);
+    expect('production validation:', response.status).to.eq(200);
     const { accessToken, refreshToken } = response.body;
     cy.window().then((win) => {
       win.localStorage.setItem("accessToken", accessToken);
@@ -62,7 +62,7 @@ Cypress.Commands.add("createWallet", (currency: string) => {
  */
 Cypress.Commands.add("shouldBeAuthenticated", () => {
   cy.window().then((win) => {
-    expect('Production validation:', win.localStorage.getItem("accessToken")).to.exist;
+    expect('production validation:', win.localStorage.getItem("accessToken")).to.exist;
   });
 });
 
@@ -71,7 +71,7 @@ Cypress.Commands.add("shouldBeAuthenticated", () => {
  */
 Cypress.Commands.add("shouldNotBeAuthenticated", () => {
   cy.window().then((win) => {
-    expect('Production validation:', win.localStorage.getItem("accessToken")).to.not.exist;
+    expect('production validation:', win.localStorage.getItem("accessToken")).to.not.exist;
   });
 });
 

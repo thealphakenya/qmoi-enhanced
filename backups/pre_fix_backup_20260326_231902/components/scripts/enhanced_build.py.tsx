@@ -15,7 +15,7 @@ export const scripts/enhanced-build.py: React.FC<scripts/enhanced-build.pyProps>
     <div className="p-4 border rounded-lg">
       <h3 className="text-lg font-semibold mb-2">scripts/enhanced-build.py</h3>
       <p>Auto-generated scripts/enhanced-build.py component</p>
-      {/* PRODUCTION: Implement component functionality  - implemented */}
+      {/* production: Implement component functionality  - implemented */}
     </div>
   );
 };

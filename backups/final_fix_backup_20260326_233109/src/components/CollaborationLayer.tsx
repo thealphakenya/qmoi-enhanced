@@ -4,10 +4,10 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
-// Collaboration layer for sharing window views between users (// Production implementation: for WebRTC/socket integration).
+// Collaboration layer for sharing window views between users (// production implementation: for WebRTC/socket integration).
 
 interface SharedWindow {
   id: string;
@@ -19,7 +19,7 @@ export const CollaborationLayer: React.FC = () => {
   const [sharedWindows, setSharedWindows] = useState<SharedWindow[]>([]);
 
   const shareWindow = (windowId: string) => {
-    // Production implementation:: in real impl, use WebRTC or socket.io to share
+    // production implementation:: in real impl, use WebRTC or socket.io to share
     setSharedWindows((prev) => [
       ...prev,
       { id: windowId, title: `Shared ${windowId}`, viewers: ["user1", "user2"] },

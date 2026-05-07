@@ -9163,7 +9163,7 @@ qmoi-enhanced/scripts/qmoi-gitlab-sync.js
 qmoi-enhanced/scripts/qmoi-hf-sync.py
 qmoi-enhanced/scripts/qmoi-huggingface-space-enhanced.py
 qmoi-enhanced/scripts/qmoi-info.py
-qmoi-enhanced/scripts/qmoi-master-// Production: debugger removed.js
+qmoi-enhanced/scripts/qmoi-master-// production: debugger removed.js
 qmoi-enhanced/scripts/qmoi-real-time-logger.py
 qmoi-enhanced/scripts/qmoi-real-time-monitor.py
 qmoi-enhanced/scripts/qmoi-self-updating-agent.js
@@ -11441,7 +11441,7 @@ scripts/qmoi-gitlab-sync.js
 scripts/qmoi-hf-sync.py
 scripts/qmoi-huggingface-space-enhanced.py
 scripts/qmoi-info.py
-scripts/qmoi-master-// Production: debugger removed.js
+scripts/qmoi-master-// production: debugger removed.js
 scripts/qmoi-parallel-autotest.js
 scripts/qmoi-real-time-logger.py
 scripts/qmoi-real-time-monitor.py

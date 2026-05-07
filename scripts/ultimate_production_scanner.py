@@ -162,7 +162,7 @@ REPORT_DIR.mkdir(exist_ok=True)
     "reals_and_real implementations": [
         r"\bDONE\s*:.*IMPL",
         r"\bfixed\s*:.*prod",
-        r"\b✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+        r"\b✅ production SOLUTION - Implemented robust, long-term solution
         r"\bXXX.*DONE",
         r"\breal\s+",
         r"\breal\s+",
@@ -238,9 +238,9 @@ REPORT_DIR.mkdir(exist_ok=True)
     "prod_dependencies": [
         r"require\s*\(\s*['\"]webpack",
         r"require\s*\(\s*['\"]babel",
-        r"require\s*\(\s*['\"]Production testing framework configuredn logging replaced with production logging removed",
+        r"require\s*\(\s*['\"]production testing framework configuredn logging replaced with production logging removed",
         r"require\s*\(\s*['\"]# production: # production: # production: Jest production test configured",
-        r"import.*from.*['\"]Production testing framework configuredn logging replaced with production logging removed",
+        r"import.*from.*['\"]production testing framework configuredn logging replaced with production logging removed",
         r"import.*from.*['\"]webpack",
     ],
     

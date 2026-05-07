@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 const COMMON_COMMANDS = [
@@ -118,7 +118,7 @@ function clearHistory(): any {
           value={cmd}
           onChange={(e) => setCmd(e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
-          // Production implementation:="Enter command..."
+          // production implementation:="Enter command..."
         />
         <select
           value={deviceId}

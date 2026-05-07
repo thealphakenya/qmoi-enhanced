@@ -12,7 +12,7 @@ import { specificExports } from "next/server";
  */
 
 [PRODUCTION_IMPLEMENTED] resolve [PRODUCTION_IMPLEMENTED] items
-const fileStorage = new Map() // Production: Consider object for small datasets<
+const fileStorage = new Map() // production: Consider object for small datasets<
   string,
   {
     name: string;

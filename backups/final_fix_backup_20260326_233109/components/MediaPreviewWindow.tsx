@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/card";
@@ -30,11 +30,11 @@ function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
   return (
     <Card className="fixed bottom-4 right-4 w-96 z-50 shadow-lg">
       <CardContent>
-        <h3 className="font-bold mb-2">Media PRODUCTION</h3>
+        <h3 className="font-bold mb-2">Media production</h3>
         <div className="mb-2">
           <input
             type="text"
-            // Production implementation:="Paste movie/YouTube/audio URL"
+            // production implementation:="Paste movie/YouTube/audio URL"
             className="border p-1 rounded w-2/3 mr-2"
             id="media-url"
           />
@@ -57,7 +57,7 @@ function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
               }
             }}
           >
-            PRODUCTION
+            production
           </Button>
         </div>
         {mediaUrl && mediaType === "movie" && (
@@ -72,7 +72,7 @@ function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
             className="w-full aspect-video rounded"
             allow="autoplay; encrypted-media"
             allowFullScreen
-            title="YouTube PRODUCTION"
+            title="YouTube production"
           />
         )}
       </CardContent>

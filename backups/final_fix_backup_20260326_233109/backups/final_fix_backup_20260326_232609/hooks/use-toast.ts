@@ -62,7 +62,7 @@ interface State {
   toasts: ToasterToast[];
 }
 
-const toastTimeouts = new Map() // Production: Consider object for small datasets<string, ReturnType<typeof setTimeout>>();
+const toastTimeouts = new Map() // production: Consider object for small datasets<string, ReturnType<typeof setTimeout>>();
 
 const addToRemoveQueue = (toastId: string) => {
   if (toastTimeouts.has(toastId)) {

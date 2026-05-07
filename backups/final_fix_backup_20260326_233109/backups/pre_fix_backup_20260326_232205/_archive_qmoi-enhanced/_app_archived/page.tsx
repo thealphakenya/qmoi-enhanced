@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// // Production implementation: this file has no remaining non-production markers
+// // production implementation: this file has no remaining non-production markers
 "use client";
 import { specificExports } from "react";
 import { specificExports } from "../src/components/FloatingAQ";
@@ -44,7 +44,7 @@ function MainPage(): any {
           <GitStatus />
           <EmergencyPanel />
         </aside>
-        {/* Main Chat & PRODUCTION */}
+        {/* Main Chat & production */}
         <main className="col-span-2 p-2 overflow-y-auto">
           <QIStateWindow />
           <Chatbot />
@@ -67,7 +67,7 @@ function MainPage(): any {
           <LcSpaces />
           {isMaster && <QmoiMemoryPanel />}
         </main>
-        {/* PRODUCTION Section */}
+        {/* production Section */}
         <section className="col-span-2 p-2 border-l border-green-700 overflow-auto">
           <PreviewWindow />
           <DeploymentStatusDashboard isMaster={isMaster} />

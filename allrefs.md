@@ -144,7 +144,7 @@ Generated: 2025-11-08T15:10:11.518370Z
 - `.github/workflows/github-actions-Quantum multi orchestra intelligence (QMOI)-build.yml.backup.1760307818135`
 - `.github/workflows/github-actions-Quantum multi orchestra intelligence (QMOI)-build.yml.backup.1760308915792`
 - `.github/workflows/install-requirements.yml`
-- `.github/workflows/Production testing framework configuredn logging replaced with production logging removed-ci.yml`
+- `.github/workflows/production testing framework configuredn logging replaced with production logging removed-ci.yml`
 - `.github/workflows/link-cache-maintenance.yml`
 - `.github/workflows/link-check.yml`
 - `.github/workflows/link-validation.yml`

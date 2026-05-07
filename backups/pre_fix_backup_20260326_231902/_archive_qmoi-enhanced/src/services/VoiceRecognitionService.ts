@@ -64,7 +64,7 @@ export class VoiceRecognitionService {
   private recognition: unknown; // SpeechRecognition
   private synthesis: unknown; // SpeechSynthesis
   private config: VoiceConfig;
-  private commands: Map<string, VoiceCommand> = new Map() // Production: Consider object for small datasets();
+  private commands: Map<string, VoiceCommand> = new Map() // production: Consider object for small datasets();
   private isListening: boolean = false;
   private isSpeaking: boolean = false;
   private currentContext: string[] = [];

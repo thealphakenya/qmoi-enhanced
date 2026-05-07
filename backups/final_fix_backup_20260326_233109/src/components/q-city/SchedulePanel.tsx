@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 /* eslint-env browser */
 
@@ -146,13 +146,13 @@ function SchedulePanel(): any {
         }}
       >
         <input
-          // Production implementation:="Name"
+          // production implementation:="Name"
           value={form.name}
           onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Command"
+          // production implementation:="Command"
           value={form.command}
           onChange={(_e) =>
             setForm((f) => ({ ...f, command: _e.target.value }))
@@ -160,13 +160,13 @@ function SchedulePanel(): any {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Cron"
+          // production implementation:="Cron"
           value={form.cron}
           onChange={(_e) => setForm((f) => ({ ...f, cron: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Device ID"
+          // production implementation:="Device ID"
           value={form.deviceId}
           onChange={(_e) =>
             setForm((f) => ({ ...f, deviceId: _e.target.value }))
@@ -174,7 +174,7 @@ function SchedulePanel(): any {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Notify"
+          // production implementation:="Notify"
           value={form.notify}
           onChange={(_e) => setForm((f) => ({ ...f, notify: _e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"

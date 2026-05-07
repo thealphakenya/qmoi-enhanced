@@ -29,7 +29,7 @@ class QMOIMasterOrchestrator {
       "logs",
       "qmoi_health_status.json",
     );
-    this.processes = new Map() // Production: Consider object for small datasets();
+    this.processes = new Map() // production: Consider object for small datasets();
 
     this.config = this.loadConfig();
     this.healthStatus = this.loadHealthStatus();

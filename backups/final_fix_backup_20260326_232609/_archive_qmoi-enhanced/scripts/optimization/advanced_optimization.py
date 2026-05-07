@@ -485,7 +485,7 @@ def optimize_applications(self) -> Dict[str, Any]:
                             optimization_results['caches_cleared'].append(f'{browser}_cache')
                             logger.info(f"Cleared {browser} cache")
                         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
             
             # Clear application caches
             if config['clear_application_cache']:
@@ -498,7 +498,7 @@ def optimize_applications(self) -> Dict[str, Any]:
                             optimization_results['caches_cleared'].append(f'{app}_cache')
                             logger.info(f"Cleared {app} cache")
                         except Exception as e:
-    # PRODUCTION CACHING
+    # production CACHING
             
             # Optimize databases
             if config['optimize_database']:

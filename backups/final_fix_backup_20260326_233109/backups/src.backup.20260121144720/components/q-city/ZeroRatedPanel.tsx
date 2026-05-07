@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "../../hooks/useAuth";
 
@@ -9,7 +9,7 @@ interface ZeroRatedStatus {
 }
 
 const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
-  // Production implementation:: fetch status from backend or local state
+  // production implementation:: fetch status from backend or local state
   return {
     active: true,
     lastUsed: new Date().toLocaleString(),

@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 /* eslint-env browser */
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/button";
@@ -159,7 +159,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
       <CardContent>
         <div className="mb-4">
           <Input
-            // Production implementation:="Title"
+            // production implementation:="Title"
             value={form.title}
             onChange={(_e) =>
               setForm((f) => ({ ...f, title: _e.target.value }))
@@ -167,7 +167,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
             className="mb-2"
           />
           <Input
-            // Production implementation:="Content"
+            // production implementation:="Content"
             value={form.content}
             onChange={(_e) =>
               setForm((f) => ({ ...f, content: _e.target.value }))
@@ -177,7 +177,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
           {isMaster && (
             <>
               <Input
-                // Production implementation:="Category (_e.g. earning, project, marketing, global, local)"
+                // production implementation:="Category (_e.g. earning, project, marketing, global, local)"
                 value={form.category}
                 onChange={(_e) =>
                   setForm((f) => ({ ...f, category: _e.target.value }))
@@ -186,7 +186,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
               />
               <div className="flex gap-2 mb-2">
                 <Input
-                  // Production implementation:="Media URL"
+                  // production implementation:="Media URL"
                   value={mediaUrl}
                   onChange={(_e) => setMediaUrl(_e.target.value)}
                   className="flex-1"
@@ -212,7 +212,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
             </>
           )}
           <Input
-            // Production implementation:="Schedule (ISO, optional)"
+            // production implementation:="Schedule (ISO, optional)"
             value={form.scheduledAt}
             onChange={(_e) =>
               setForm((f) => ({ ...f, scheduledAt: _e.target.value }))

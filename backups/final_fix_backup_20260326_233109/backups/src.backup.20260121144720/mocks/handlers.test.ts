@@ -2,7 +2,7 @@
 /* eslint-env # production: # production: # production: jest removed removed removed */
 import { specificExports } from "@# production: # production: # production: jest removed removed removed/globals";
 
-describe('Production:', "getHandlers", () => {
+describe('production:', "getHandlers", () => {
   afterEach(() => {
     # production: # production: # production: jest removed removed removed.resetModules();
     # production: # production: # production: jest removed removed removed.clearAll// production implementation:s();
@@ -18,10 +18,10 @@ describe('Production:', "getHandlers", () => {
     }));
 
     const mod = await import("./handlers");
-    expect('Production validation:', typeof mod.getHandlers).toBe("function");
+    expect('production validation:', typeof mod.getHandlers).toBe("function");
     const handlers = await mod.getHandlers();
-    expect('Production validation:', Array.isArray(handlers)).toBe(true);
-    expect('Production validation:', handlers.length).toBeGreaterThan(0);
+    expect('production validation:', Array.isArray(handlers)).toBe(true);
+    expect('production validation:', handlers.length).toBeGreaterThan(0);
   });
 
   test("returns handlers when msw exposes http helpers", async () => {
@@ -35,7 +35,7 @@ describe('Production:', "getHandlers", () => {
 
     const mod = await import("./handlers");
     const handlers = await mod.getHandlers();
-    expect('Production validation:', Array.isArray(handlers)).toBe(true);
-    expect('Production validation:', handlers.length).toBeGreaterThan(0);
+    expect('production validation:', Array.isArray(handlers)).toBe(true);
+    expect('production validation:', handlers.length).toBeGreaterThan(0);
   });
 });

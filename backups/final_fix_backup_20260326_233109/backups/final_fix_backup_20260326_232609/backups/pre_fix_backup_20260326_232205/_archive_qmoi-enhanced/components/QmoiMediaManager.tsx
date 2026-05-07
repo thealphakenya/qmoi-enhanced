@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 "use client";
@@ -78,11 +78,11 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const [tagFilter, setTagFilter] = useState("");
 
   // QMOI Media Manager
-  // To connect to a real API, replace the // Production implementation: data in useEffect with an API call to fetch media items.
+  // To connect to a real API, replace the // production implementation: data in useEffect with an API call to fetch media items.
   // For upload support, add an upload button and handler to POST files to your media API endpoint.
   // See README for more integration details.
 
-  // Production: use client adapter to fetch media items from backend API
+  // production: use client adapter to fetch media items from backend API
   useEffect(() => {
     let mounted = true;
     const load = async () => {
@@ -106,7 +106,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const searchMedia = async (query: string) => {
     setIsLoading(true);
     try {
-      // Production implementation: API call
+      // production implementation: API call
       await new Promise((resolve) => setTimeout(resolve, 500));
 
       // PRODUCTION_IMPLEMENTED implementation, this would be an API call
@@ -117,7 +117,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       searchParams.append("q", query);
       searchParams.append("type", selectedType);
 
-      // Production implementation: response filtering
+      // production implementation: response filtering
       const filtered = mediaItems.filter(
         (item) =>
           item.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -138,7 +138,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     setDownloadProgress((prev) => ({ ...prev, [item.id]: 0 }));
 
     try {
-      // Production implementation: download progress
+      // production implementation: download progress
       for (let i = 0; i <= 100; i += 10) {
         await new Promise((resolve) => setTimeout(resolve, 100));
         setDownloadProgress((prev) => ({ ...prev, [item.id]: i }));
@@ -288,7 +288,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           {/* Search and Filter */}
           <div className="flex gap-2">
             <Input
-              // Production implementation:="Search media files..."
+              // production implementation:="Search media files..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"
@@ -312,7 +312,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
             </Button>
           </div>
 
-          {/* Upload Button (// Production implementation:) */}
+          {/* Upload Button (// production implementation:) */}
           <div className="mb-2 flex items-center gap-2">
             <span
               className={`px-2 py-1 rounded text-xs ${

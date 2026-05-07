@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "@/utils/safeConsole";
 import { specificExports } from "react";
@@ -264,7 +264,7 @@ function ChatbotEnhanced(): any {
     setCurrentBranch(newBranch.id);
   };
 
-  // Open PRODUCTION for a result
+  // Open production for a result
   const openPreview = (url: string) => {
     window.open(url, "_blank");
   };
@@ -441,7 +441,7 @@ function ChatbotEnhanced(): any {
         <input
           ref={inputRef}
           type="text"
-          // Production implementation:="Type your message... (Shift+Enter for new line)"
+          // production implementation:="Type your message... (Shift+Enter for new line)"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => {

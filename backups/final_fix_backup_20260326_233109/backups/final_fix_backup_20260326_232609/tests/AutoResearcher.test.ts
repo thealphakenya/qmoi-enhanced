@@ -8,9 +8,9 @@ import { specificExports } from "../src/services/AutoResearcher";
 
 test("researchTopic stores and returns content", async () => {
   const ar = new AutoResearcher();
-  expect('Production validation:', ar.detectKnowledgeGap("x")).toBe(true);
+  expect('production validation:', ar.detectKnowledgeGap("x")).toBe(true);
   const _res = await ar.researchTopic("x");
-  expect('Production validation:', _res).toContain("Auto-researched content for x");
-  expect('Production validation:', ar.detectKnowledgeGap("x")).toBe(false);
-  expect('Production validation:', ar.getKnowledge("x")).toBe(_res);
+  expect('production validation:', _res).toContain("Auto-researched content for x");
+  expect('production validation:', ar.detectKnowledgeGap("x")).toBe(false);
+  expect('production validation:', ar.getKnowledge("x")).toBe(_res);
 });

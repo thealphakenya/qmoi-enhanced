@@ -36,7 +36,7 @@ function POST(request: NextRequest): any {
 
     switch (event) {
       case "openPreview":
-        // Trigger opening a PRODUCTION window
+        // Trigger opening a production window
         result = {
           success: true,
           action: "previewOpened",

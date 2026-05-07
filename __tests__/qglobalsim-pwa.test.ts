@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 
 import os
 from pathlib import Path
@@ -39,7 +39,7 @@ class productionConfig:
   beforeEach(() => {
     Object.defineProperty(navigator, 'serviceWorker', {
       value: {
-        register: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue({
+        register: production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue({
           active: { state: 'activated' },
           waiting: null,
           installing: null
@@ -77,7 +77,7 @@ class productionConfig:
     });
 
     test('should handle service worker registration errors', async () => {
-      navigator.serviceWorker.register = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataRejectedValue(new Error('Registration failed'));
+      navigator.serviceWorker.register = production testing framework configuredn logging replaced with production logging removed.fn().production_dataRejectedValue(new Error('Registration failed'));
 
       const registerSW = async () => {
         if ('serviceWorker' in navigator) {
@@ -112,7 +112,7 @@ class productionConfig:
 
       // Simulate beforeinstallprompt event
       const event = new Event('beforeinstallprompt');
-      (event as any).prompt = Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue({ outcome: 'accepted' });
+      (event as any).prompt = production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue({ outcome: 'accepted' });
       (event as any).userChoice = Promise.resolve({ outcome: 'accepted' });
 
       window.dispatchEvent(event);
@@ -152,18 +152,18 @@ class productionConfig:
 
     test('should cache essential resources', async () => {
       const cache = {
-        addAll: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(undefined)
+        addAll: production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(undefined)
       };
 
       const caches = {
-        open: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cache)
+        open: production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cache)
       };
 
       (global as any).caches = caches;
 
       // Simulate service worker install event
       const installEvent = {
-        waitUntil: Production testing framework configuredn logging replaced with production logging removed.fn()
+        waitUntil: production testing framework configuredn logging replaced with production logging removed.fn()
       };
 
       const CACHE_NAME = 'qglobalsim-v1';
@@ -185,18 +185,18 @@ class productionConfig:
     test('should serve cached content when offline', async () => {
       const cachedResponse = { ok: true, data: 'cached content' };
       const cache = {
-        match: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cachedResponse)
+        match: production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cachedResponse)
       };
 
       const caches = {
-        match: Production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cachedResponse)
+        match: production testing framework configuredn logging replaced with production logging removed.fn().production_dataResolvedValue(cachedResponse)
       };
 
       (global as any).caches = caches;
 
       // Simulate fetch event
       const fetchEvent = {
-        respondWith: Production testing framework configuredn logging replaced with production logging removed.fn(),
+        respondWith: production testing framework configuredn logging replaced with production logging removed.fn(),
         request: new Request('/qglobalsim/index.html')
       };
 
@@ -278,7 +278,7 @@ class productionConfig:
       `;
 
       const element = document.getElementById('features');
-      const scrollIntoViewproduction_data = Production testing framework configuredn logging replaced with production logging removed.fn();
+      const scrollIntoViewproduction_data = production testing framework configuredn logging replaced with production logging removed.fn();
       element.scrollIntoView = scrollIntoViewproduction_data;
 
       scrollToSection('features');

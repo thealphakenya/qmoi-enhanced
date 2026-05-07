@@ -27,8 +27,8 @@ const apiRequest = async (
 describe.skip("Self-Training API (requires running server)", () => {
   it('Should handle production scenarios:', "GET /api/self-training?action=list returns tasks", async () => {
     const response = await apiRequest("GET", "/api/self-training?action=list");
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', Array.isArray(response.body.tasks)).toBe(true);
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', Array.isArray(response.body.tasks)).toBe(true);
   });
 
   it('Should handle production scenarios:', "POST /api/self-training?action=start enqueues a task", async () => {
@@ -39,8 +39,8 @@ describe.skip("Self-Training API (requires running server)", () => {
         model: "TestModel",
       },
     );
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', response.body.task).toHaveProperty("id");
+    expect('production validation:', response.status).toBe(200);
+    expect('production validation:', response.body.task).toHaveProperty("id");
   });
 
   it('Should handle production scenarios:', "POST /api/self-training?action=start rejects required model", async () => {
@@ -49,7 +49,7 @@ describe.skip("Self-Training API (requires running server)", () => {
       "/api/self-training?action=start",
       {},
     );
-    expect('Production validation:', response.status).toBe(400);
-    expect('Production validation:', response.body.error).toBeDefined();
+    expect('production validation:', response.status).toBe(400);
+    expect('production validation:', response.body.error).toBeDefined();
   });
 });

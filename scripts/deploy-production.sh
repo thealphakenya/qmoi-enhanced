@@ -89,7 +89,7 @@ export QMOI_PARALLEL_BUILDS=true
 
 set -e
 
-echo "🚀 QMOI Enhanced - Production Deployment Started"
+echo "🚀 QMOI Enhanced - production Deployment Started"
 echo "=================================================="
 
 # Colors
@@ -171,7 +171,7 @@ done
 log_info "✅ Monitoring complete"
 
 log_info "=================================================="
-log_info "🎉 Production Deployment Completed Successfully!"
+log_info "🎉 production Deployment Completed Successfully!"
 echo ""
 echo "Next steps:"
 echo "1. Monitor production metrics"

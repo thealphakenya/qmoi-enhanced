@@ -42,7 +42,7 @@ class QMOIRegistryManager {
       analytics: {},
       evolutionHistory: [],
     };
-    this.autoEnhancementRules = new Map() // Production: Consider object for small datasets();
+    this.autoEnhancementRules = new Map() // production: Consider object for small datasets();
     this.initializeRegistry();
   }
 

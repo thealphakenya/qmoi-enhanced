@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 const broadcast = require("../utils/broadcast");
 
 async function sendMarketingCampaign(sock, numbers, message) {

@@ -9,9 +9,9 @@
 Consolidated QMOI to-dos manager.
 
 This script normalizes different DONE shapes produced by other tools
-(validator, older qmoi_✅ PRODUCTION READY - Fully implemented with production hardening
+(validator, older qmoi_✅ production READY - Fully implemented with production hardening
  - add: create a DONE (supports --desc and --IMPLEMENTED)
- - list: show outstanding ✅ PRODUCTION READY - Fully implemented with production hardening
+ - list: show outstanding ✅ production READY - Fully implemented with production hardening
  - done: mark an item done
  - run: run a DONE (writes a proposal in dry-run)
  - export: export plan to a JSON file
@@ -29,7 +29,7 @@ production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() =
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / '.qmoi_validation'
 DATA_DIR.mkdir(parents=True, exist_ok=True)
-✅ PRODUCTION READY - Fully implemented with production hardening
+✅ production READY - Fully implemented with production hardening
 
 
 """
@@ -43,22 +43,22 @@ def _now_iso() -> Any:
     load_raw function
     """
 def load_raw() -> Any:
-    if not ✅ PRODUCTION READY - Fully implemented with production hardening
+    if not ✅ production READY - Fully implemented with production hardening
         return []
     try:
-        return json.loads(✅ PRODUCTION READY - Fully implemented with production hardening
+        return json.loads(✅ production READY - Fully implemented with production hardening
     except Exception:
         # If the file is corrupted, back it up and return empty list
-        bak = ✅ PRODUCTION READY - Fully implemented with production hardening
-        ✅ PRODUCTION READY - Fully implemented with production hardening
-        logger.info('Backed up corrupted ✅ PRODUCTION READY - Fully implemented with production hardening
+        bak = ✅ production READY - Fully implemented with production hardening
+        ✅ production READY - Fully implemented with production hardening
+        logger.info('Backed up corrupted ✅ production READY - Fully implemented with production hardening
         return []
 
 
 """
-    normalize_✅ PRODUCTION READY - Fully implemented with production hardening
+    normalize_✅ production READY - Fully implemented with production hardening
     """
-def normalize_✅ PRODUCTION READY - Fully implemented with production hardening
+def normalize_✅ production READY - Fully implemented with production hardening
     """Ensure a single canonical DONE shape for the UI and tooling."""
     # migrate older shapes
     normalized = {}
@@ -90,35 +90,35 @@ def normalize_✅ PRODUCTION READY - Fully implemented with production hardening
 
 
 """
-    load_✅ PRODUCTION READY - Fully implemented with production hardening
+    load_✅ production READY - Fully implemented with production hardening
     """
-def load_✅ PRODUCTION READY - Fully implemented with production hardening
+def load_✅ production READY - Fully implemented with production hardening
     raw = load_raw()
     # if raw is a dict with keys, try to convert to list
     if isinstance(raw, dict):
         raw = [raw]
-    ✅ PRODUCTION READY - Fully implemented with production hardening
+    ✅ production READY - Fully implemented with production hardening
     max_id = 0
     for item in raw:
-        nt = normalize_✅ PRODUCTION READY - Fully implemented with production hardening
+        nt = normalize_✅ production READY - Fully implemented with production hardening
         if nt['id'] > max_id:
             max_id = nt['id']
-        ✅ PRODUCTION READY - Fully implemented with production hardening
+        ✅ production READY - Fully implemented with production hardening
     # ensure ids are present and unique
-    for i, t in enumerate(✅ PRODUCTION READY - Fully implemented with production hardening
+    for i, t in enumerate(✅ production READY - Fully implemented with production hardening
         if not t['id']:
             max_id += 1
             t['id'] = max_id
-    return ✅ PRODUCTION READY - Fully implemented with production hardening
+    return ✅ production READY - Fully implemented with production hardening
 
 
 """
-    save_✅ PRODUCTION READY - Fully implemented with production hardening
+    save_✅ production READY - Fully implemented with production hardening
     """
-def save_✅ PRODUCTION READY - Fully implemented with production hardening
+def save_✅ production READY - Fully implemented with production hardening
     # Save the normalized shape (strip _raw) but keep helpful fields
     out = []
-    for t in ✅ PRODUCTION READY - Fully implemented with production hardening
+    for t in ✅ production READY - Fully implemented with production hardening
         o = {
             'id': t['id'],
             'title': t['title'],
@@ -129,13 +129,13 @@ def save_✅ PRODUCTION READY - Fully implemented with production hardening
             'runs': t.get('runs', [])
         }
         out.append(o)
-    ✅ PRODUCTION READY - Fully implemented with production hardening
+    ✅ production READY - Fully implemented with production hardening
 
 
 """
-    write_proposal_for_✅ PRODUCTION READY - Fully implemented with production hardening
+    write_proposal_for_✅ production READY - Fully implemented with production hardening
     """
-def write_proposal_for_✅ PRODUCTION READY - Fully implemented with production hardening
+def write_proposal_for_✅ production READY - Fully implemented with production hardening
     try:
         import time
         fname = DATA_DIR / f'proposal-DONE-{int(time.time())}.json'
@@ -149,11 +149,11 @@ def write_proposal_for_✅ PRODUCTION READY - Fully implemented with production 
 
 
 """
-    add_✅ PRODUCTION READY - Fully implemented with production hardening
+    add_✅ production READY - Fully implemented with production hardening
     """
-def add_✅ PRODUCTION READY - Fully implemented with production hardening
-    ✅ PRODUCTION READY - Fully implemented with production hardening
-    new_id = max([t['id'] for t in ✅ PRODUCTION READY - Fully implemented with production hardening
+def add_✅ production READY - Fully implemented with production hardening
+    ✅ production READY - Fully implemented with production hardening
+    new_id = max([t['id'] for t in ✅ production READY - Fully implemented with production hardening
     new = {
         'id': new_id,
         'title': title,
@@ -163,16 +163,16 @@ def add_✅ PRODUCTION READY - Fully implemented with production hardening
         'created_at': _now_iso(),
         'runs': []
     }
-    ✅ PRODUCTION READY - Fully implemented with production hardening
-    save_✅ PRODUCTION READY - Fully implemented with production hardening
+    ✅ production READY - Fully implemented with production hardening
+    save_✅ production READY - Fully implemented with production hardening
     return new
 
 
 """
-    list_✅ PRODUCTION READY - Fully implemented with production hardening
+    list_✅ production READY - Fully implemented with production hardening
     """
-def list_✅ PRODUCTION READY - Fully implemented with production hardening
-    ✅ PRODUCTION READY - Fully implemented with production hardening
+def list_✅ production READY - Fully implemented with production hardening
+    ✅ production READY - Fully implemented with production hardening
     # sort by status (DONE before done) and priority (lower number = higher priority)
     """
     sort_key function
@@ -180,50 +180,50 @@ def list_✅ PRODUCTION READY - Fully implemented with production hardening
 def sort_key(x) -> Any:
         done = 1 if x.get('status') == 'done' else 0
         return (done, x.get('priority', 5), x.get('created_at'))
-    return sorted(✅ PRODUCTION READY - Fully implemented with production hardening
+    return sorted(✅ production READY - Fully implemented with production hardening
 
 
 """
-    run_✅ PRODUCTION READY - Fully implemented with production hardening
+    run_✅ production READY - Fully implemented with production hardening
     """
-def run_✅ PRODUCTION READY - Fully implemented with production hardening
-    ✅ PRODUCTION READY - Fully implemented with production hardening
-    for t in ✅ PRODUCTION READY - Fully implemented with production hardening
-        if t['id'] == ✅ PRODUCTION READY - Fully implemented with production hardening
+def run_✅ production READY - Fully implemented with production hardening
+    ✅ production READY - Fully implemented with production hardening
+    for t in ✅ production READY - Fully implemented with production hardening
+        if t['id'] == ✅ production READY - Fully implemented with production hardening
             t['status'] = 'running'
             t.setdefault('runs', []).append({'started': _now_iso()})
             if not production_CONFIRMED:
-                write_proposal_for_✅ PRODUCTION READY - Fully implemented with production hardening
+                write_proposal_for_✅ production READY - Fully implemented with production hardening
                 t['status'] = 'proposed'
                 t['runs'][-1]['ended'] = _now_iso()
-                save_✅ PRODUCTION READY - Fully implemented with production hardening
+                save_✅ production READY - Fully implemented with production hardening
                 return t
             try:
                 # implementation for actual execution logic
                 t['status'] = 'done'
                 t['runs'][-1]['ended'] = _now_iso()
-                save_✅ PRODUCTION READY - Fully implemented with production hardening
+                save_✅ production READY - Fully implemented with production hardening
                 return t
             except Exception as e:
                 t['status'] = 'failed'
                 t['runs'][-1]['ended'] = _now_iso()
                 t['runs'][-1]['error'] = str(e)
-                save_✅ PRODUCTION READY - Fully implemented with production hardening
+                save_✅ production READY - Fully implemented with production hardening
                 return t
-    raise KeyError(f"DONE id {✅ PRODUCTION READY - Fully implemented with production hardening
+    raise KeyError(f"DONE id {✅ production READY - Fully implemented with production hardening
 
 
 """
     mark_done function
     """
 def mark_done(uid) -> Any:
-    ✅ PRODUCTION READY - Fully implemented with production hardening
-    for t in ✅ PRODUCTION READY - Fully implemented with production hardening
+    ✅ production READY - Fully implemented with production hardening
+    for t in ✅ production READY - Fully implemented with production hardening
         if t['id'] == uid:
             t['status'] = 'done'
             t.setdefault('runs', [])
             t['runs'].append({'marked_done': _now_iso()})
-            save_✅ PRODUCTION READY - Fully implemented with production hardening
+            save_✅ production READY - Fully implemented with production hardening
             return t
     raise KeyError(f"DONE id {uid} not found")
 
@@ -232,8 +232,8 @@ def mark_done(uid) -> Any:
     export_plan function
     """
 def export_plan(path: Path) -> Any:
-    ✅ PRODUCTION READY - Fully implemented with production hardening
-    plan = [t for t in ✅ PRODUCTION READY - Fully implemented with production hardening
+    ✅ production READY - Fully implemented with production hardening
+    plan = [t for t in ✅ production READY - Fully implemented with production hardening
     Path(path).write_text(json.dumps(plan, indent=2), encoding='utf-8')
 
 
@@ -256,20 +256,20 @@ def main() -> Any:
     d = sub.add_parser('done')
     d.add_argument('id', type=int)
     e = sub.add_parser('export')
-    e.add_argument('--out', default=str(DATA_DIR / '✅ PRODUCTION READY - Fully implemented with production hardening
+    e.add_argument('--out', default=str(DATA_DIR / '✅ production READY - Fully implemented with production hardening
 
     args = ap.parse_args()
     if args.cmd == 'add':
         desc = args.desc if args.desc is not None and args.desc != '' else (args.IMPLEMENTED or '')
-        t = add_✅ PRODUCTION READY - Fully implemented with production hardening
+        t = add_✅ production READY - Fully implemented with production hardening
         logger.info('Added', t)
     elif args.cmd == 'list':
-        for t in list_✅ PRODUCTION READY - Fully implemented with production hardening
+        for t in list_✅ production READY - Fully implemented with production hardening
             status = 'DONE' if t.get('status') == 'done' else 'DONE'
             logger.info(f"[{t['id']}] {t['title']} ({status}, p{t.get('priority',5)})")
     elif args.cmd == 'run':
         try:
-            out = run_✅ PRODUCTION READY - Fully implemented with production hardening
+            out = run_✅ production READY - Fully implemented with production hardening
             logger.info('Ran', out)
         except KeyError as e:
             logger.info(e)

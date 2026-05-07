@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 import { specificExports } from "react";
 
@@ -26,7 +26,7 @@ function add(): any {
         <input
           value={name}
           onChange={(_e) => setName(_e.target.value)}
-          // Production implementation:="Add new space..."
+          // production implementation:="Add new space..."
         />
         <button onClick={add} style={{ marginLeft: 8 }}>
           Add

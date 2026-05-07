@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
 
     const emailRecipients = recipients.length > 0 ? recipients : defaultRecipients;
 
-    // In production, integrate with email service (SendGrid, AWS SES, etc.)
+    // production_IMPLEMENTED, integrate with email service (SendGrid, AWS SES, etc.)
     const emailResult = await sendEmergencyEmail({
       to: emailRecipients,
       subject: `[EMERGENCY] ${subject}`,
@@ -205,7 +205,7 @@ async function sendEmergencyEmail(params: {
   sender: string;
 }): Promise<{ success: boolean; emailId?: string; error?: string }> {
   try {
-    // In production, integrate with email service provider
+    // production_IMPLEMENTED, integrate with email service provider
     // For now, simulate email sending
 
     if (!process.env.SMTP_HOST) {

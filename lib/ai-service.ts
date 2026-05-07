@@ -1,5 +1,5 @@
 /**
- * AI Service - Production AI Integration
+ * AI Service - production AI Integration
  * Handles AI chat, generation, and model interactions
  */
 

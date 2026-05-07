@@ -23,7 +23,7 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -878,7 +878,7 @@ const EmploymentDashboard: React.FC = () => {
       </Tabs>
 
       {/* Forms would be implemented as modals or separate components */}
-      {/* For brevity, showing // Production implementation: buttons */}
+      {/* For brevity, showing // production implementation: buttons */}
       {showEmployeeForm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
           <Card className="w-96">

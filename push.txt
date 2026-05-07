@@ -24,7 +24,7 @@ function Handle-Error {
         }
         $retryCount++
         if ($retryCount -lt $MaxRetries) {
-            Write-Host "Retrying $Step (attempt $retryCount/$MaxRetries)/* Production implementation with proper error handling */" -ForegroundColor Yellow
+            Write-Host "Retrying $Step (attempt $retryCount/$MaxRetries)/* production implementation with proper error handling */" -ForegroundColor Yellow
             Start-Sleep -Seconds 2
         }
     } while ($retryCount -lt $MaxRetries)
@@ -46,7 +46,7 @@ function Test-GitClean {
 // AUTODEV: Performance optimized
 // AUTODEV: Performance optimized
 function Resolve-Conflicts {
-    Write-Host "🔧 Attempting to resolve conflicts automatically/* Production implementation with proper error handling */" -ForegroundColor Cyan
+    Write-Host "🔧 Attempting to resolve conflicts automatically/* production implementation with proper error handling */" -ForegroundColor Cyan
     
     # Check for conflict markers
     $conflictFiles = git diff --name-only --diff-filter=U
@@ -97,7 +97,7 @@ if (-not (Test-Path ".git")) {
 # Check if we're on main branch
 $currentBranch = git branch --show-current
 if ($currentBranch -ne "main") {
-    Write-Host "⚠️  Not on main branch (current: $currentBranch). Switching to main/* Production implementation with proper error handling */" -ForegroundColor Yellow
+    Write-Host "⚠️  Not on main branch (current: $currentBranch). Switching to main/* production implementation with proper error handling */" -ForegroundColor Yellow
     Handle-Error "Branch Switch" "git checkout main"
 }
 
@@ -106,23 +106,23 @@ Write-Host "`n=== Step 3: Repository Cleanup ===" -ForegroundColor Cyan
 
 # Remove lock files if they exist
 if (Test-Path ".git/index.lock") {
-    Write-Host "Removing stale index lock/* Production implementation with proper error handling */" -ForegroundColor Yellow
+    Write-Host "Removing stale index lock/* production implementation with proper error handling */" -ForegroundColor Yellow
     Remove-Item ".git/index.lock" -Force
 }
 
 if (Test-Path ".git/refs/heads/main.lock") {
-    Write-Host "Removing stale branch lock/* Production implementation with proper error handling */" -ForegroundColor Yellow
+    Write-Host "Removing stale branch lock/* production implementation with proper error handling */" -ForegroundColor Yellow
     Remove-Item ".git/refs/heads/main.lock" -Force
 }
 
 # Clean untracked files (with confirmation [PRODUCTION_IMPLEMENTED])
-Write-Host "Cleaning untracked files/* Production implementation with proper error handling */" -ForegroundColor Yellow
+Write-Host "Cleaning untracked files/* production implementation with proper error handling */" -ForegroundColor Yellow
 Handle-Error "Clean Untracked" "git clean -fd"
 
 # Step 4: Stash any uncommitted changes
 Write-Host "`n=== Step 4: Stashing Changes ===" -ForegroundColor Cyan
 if (-not (Test-GitClean)) {
-    Write-Host "Stashing uncommitted changes/* Production implementation with proper error handling */" -ForegroundColor Yellow
+    Write-Host "Stashing uncommitted changes/* production implementation with proper error handling */" -ForegroundColor Yellow
     Handle-Error "Stash Changes" "git stash push -m 'Auto-stash before push: $(Get-Date -Format \"yyyy-MM-dd HH:mm:ss\")'"
 }
 
@@ -147,7 +147,7 @@ $pullSuccess = $false
 $maxPullRetries = 3
 
 for ($i = 1; $i -le $maxPullRetries; $i++) {
-    Write-Host "Pull attempt $i/$maxPullRetries/* Production implementation with proper error handling */" -ForegroundColor Yellow
+    Write-Host "Pull attempt $i/$maxPullRetries/* production implementation with proper error handling */" -ForegroundColor Yellow
     
     # Try pull with rebase
     git pull origin main --rebase --no-edit
@@ -156,11 +156,11 @@ for ($i = 1; $i -le $maxPullRetries; $i++) {
         Write-Host "✅ Pull successful!" -ForegroundColor Green
         break
     } else {
-        Write-Host "❌ Pull failed. Attempting conflict resolution/* Production implementation with proper error handling */" -ForegroundColor Red
+        Write-Host "❌ Pull failed. Attempting conflict resolution/* production implementation with proper error handling */" -ForegroundColor Red
         
         # Check if we're in a rebase state
         if (Test-Path ".git/rebase-merge") {
-            Write-Host "In rebase state. Attempting to resolve/* Production implementation with proper error handling */" -ForegroundColor Yellow
+            Write-Host "In rebase state. Attempting to resolve/* production implementation with proper error handling */" -ForegroundColor Yellow
             
             if (Resolve-Conflicts) {
                 git rebase --continue
@@ -170,7 +170,7 @@ for ($i = 1; $i -le $maxPullRetries; $i++) {
                     break
                 }
             } else {
-                Write-Host "Aborting rebase and trying merge strategy/* Production implementation with proper error handling */" -ForegroundColor Yellow
+                Write-Host "Aborting rebase and trying merge strategy/* production implementation with proper error handling */" -ForegroundColor Yellow
                 git rebase --abort
                 git pull origin main --no-rebase --no-edit
                 if ($LASTEXITCODE -eq 0) {
@@ -191,7 +191,7 @@ for ($i = 1; $i -le $maxPullRetries; $i++) {
     }
     
     if ($i -lt $maxPullRetries) {
-        Write-Host "Waiting before retry/* Production implementation with proper error handling */" -ForegroundColor Yellow
+        Write-Host "Waiting before retry/* production implementation with proper error handling */" -ForegroundColor Yellow
         Start-Sleep -Seconds 3
     }
 }
@@ -209,7 +209,7 @@ $pushSuccess = $false
 $maxPushRetries = 3
 
 for ($i = 1; $i -le $maxPushRetries; $i++) {
-    Write-Host "Push attempt $i/$maxPushRetries/* Production implementation with proper error handling */" -ForegroundColor Yellow
+    Write-Host "Push attempt $i/$maxPushRetries/* production implementation with proper error handling */" -ForegroundColor Yellow
     
     git push origin main
     if ($LASTEXITCODE -eq 0) {
@@ -217,7 +217,7 @@ for ($i = 1; $i -le $maxPushRetries; $i++) {
         Write-Host "✅ Push successful!" -ForegroundColor Green
         break
     } else {
-        Write-Host "❌ Push failed. Retrying/* Production implementation with proper error handling */" -ForegroundColor Red
+        Write-Host "❌ Push failed. Retrying/* production implementation with proper error handling */" -ForegroundColor Red
         if ($i -lt $maxPushRetries) {
             Start-Sleep -Seconds 5
         }

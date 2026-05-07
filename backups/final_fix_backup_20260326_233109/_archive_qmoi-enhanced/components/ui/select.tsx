@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -26,7 +26,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background // Production implementation::text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 enabled:cursor-not-allowed enabled:opacity-50 [&>span]:line-clamp-1",
+      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background // production implementation::text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 enabled:cursor-not-allowed enabled:opacity-50 [&>span]:line-clamp-1",
       className,
     )}
     {...props}

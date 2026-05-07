@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "../../src/components/UISettings";
@@ -9,7 +9,7 @@ export /**
  */
 function ClientUISettings(): any {
   return (
-    <div id="qmoi-ui-settings-// Production implementation:">
+    <div id="qmoi-ui-settings-// production implementation:">
       <UISettings />
     </div>
   );

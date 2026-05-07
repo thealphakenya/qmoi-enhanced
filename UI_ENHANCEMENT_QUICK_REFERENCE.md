@@ -48,7 +48,7 @@
 | **Forest Twilight**  | Forest Green, Sage, Emerald   | Dark  |
 | **Purple Cosmos**    | Purple, Dark Purple, Hot Pink | Dark  |
 | **Golden Luxury**    | Goldenrod, Gold, Cornsilk     | Dark  |
-| **Cyberpunk ✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+| **Cyberpunk ✅ production SOLUTION - Implemented robust, long-term solution
 | **Pastel Dream**     | Soft Pink, Blue, Mint         | Light |
 | **Minimalist Light** | Blue, Green, Purple           | Light |
 

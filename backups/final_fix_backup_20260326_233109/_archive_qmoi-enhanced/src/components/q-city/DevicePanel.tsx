@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export default /**
@@ -113,19 +113,19 @@ function DevicePanel(): any {
         }}
       >
         <input
-          // Production implementation:="Name"
+          // production implementation:="Name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Host"
+          // production implementation:="Host"
           value={form.host}
           onChange={(e) => setForm((f) => ({ ...f, host: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Port"
+          // production implementation:="Port"
           type="number"
           value={form.port}
           onChange={(e) =>
@@ -134,20 +134,20 @@ function DevicePanel(): any {
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Username"
+          // production implementation:="Username"
           value={form.username}
           onChange={(e) => setForm((f) => ({ ...f, username: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Password"
+          // production implementation:="Password"
           type="password"
           value={form.password}
           onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Private Key"
+          // production implementation:="Private Key"
           value={form.privateKey}
           onChange={(e) =>
             setForm((f) => ({ ...f, privateKey: e.target.value }))

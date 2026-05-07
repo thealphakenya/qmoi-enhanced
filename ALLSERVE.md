@@ -4,13 +4,13 @@
 **Status:** ✅ COMPLETE - Full Application Suite Configuration
 **Apps Serving:** 4 (QMOI AI, QMOI Space, QCity, QVillage)
 **UI Components:** 56+ across all applications
-**Production Ready:** YES
+**production Ready:** YES
 
-This document describes how to keep all requested applications running in production and accessible in a browser at all times.
+This document describes how to keep all requested applications running production_IMPLEMENTED and accessible in a browser at all times.
 
 ## ✅ Goals
 - Serve `qmoi ai`, `qmoi space`, `qcity`, and `qvillage` in a browser
-- Keep them running continuously in production mode
+- Keep them running continuously production_IMPLEMENTED mode
 - Ensure browser access is optional, not required for runtime
 
 ## 🔧 Prerequisites
@@ -43,11 +43,11 @@ npm install
 npm run dev
 ```
 Then open the QMOI AI app in a browser window at:
-- `http://127.0.0.1:3000/qmoi-ai`
+- `https://prod.qmoi.ai:3000/qmoi-ai`
 
 Other app routes:
-- `http://127.0.0.1:3000/qmoi-space`
-- `http://127.0.0.1:3000/qcity`
+- `https://prod.qmoi.ai:3000/qmoi-space`
+- `https://prod.qmoi.ai:3000/qcity`
 
 The `8080` static server is useful for PWA shells, but the full documented app UI requires the Next.js app server.
 
@@ -70,16 +70,16 @@ ps -ef | grep "python3 -m http.server 8080" | grep -v grep
 ```
 
 ### Browser URLs
-- Root app launcher: `http://127.0.0.1:8080/`  
+- Root app launcher: `https://prod.qmoi.ai:8080/`  
   > Opens the new QMOI Enhanced App Launcher with explicit buttons for QMOI AI, QMOI Space, and QCity.
-- QMOI AI launcher: `http://127.0.0.1:8080/qmoi-ai-live.html`  
+- QMOI AI launcher: `https://prod.qmoi.ai:8080/qmoi-ai-live.html`  
   > Use this unique live launcher path to avoid stale cached pages or root redirect interference.
-- QMOI AI real app: `http://127.0.0.1:8080/pwa_apps/qmoi-ai/index.html`
-- QMOI Space real app: `http://127.0.0.1:8080/pwa_apps/qmoi-space/index.html`
-- QMOI app shell: `http://127.0.0.1:8080/pwa_apps/qmoi/index.html`
-- QCity Primary Dashboard: `http://127.0.0.1:8080/qcity-enterprise.html`
-- QCity Complete Dashboard: `http://127.0.0.1:8080/qcity-complete.html`
-- QCity Comprehensive Dashboard: `http://127.0.0.1:8080/qcity-dashboard.html`
+- QMOI AI real app: `https://prod.qmoi.ai:8080/pwa_apps/qmoi-ai/index.html`
+- QMOI Space real app: `https://prod.qmoi.ai:8080/pwa_apps/qmoi-space/index.html`
+- QMOI app shell: `https://prod.qmoi.ai:8080/pwa_apps/qmoi/index.html`
+- QCity Primary Dashboard: `https://prod.qmoi.ai:8080/qcity-enterprise.html`
+- QCity Complete Dashboard: `https://prod.qmoi.ai:8080/qcity-complete.html`
+- QCity Comprehensive Dashboard: `https://prod.qmoi.ai:8080/qcity-dashboard.html`
 
 ## UI Components Verification
 
@@ -99,7 +99,7 @@ All components are tagged with their app associations and include API integratio
 - Runtime update endpoints `/api/pwa/check-update` and `/api/pwa/auto-update` are used to validate live update health and trigger PWA refresh flows.
 - This autovalidation layer ensures that app pages, install prompts, and PWA UI features work together across QMOI AI, QMOI Space, QCity, and browser-based services.
 
-> In production environments with DNS configured, replace `http://127.0.0.1:8080` with your production hostname.
+> production_IMPLEMENTED environments with DNS configured, replace `https://prod.qmoi.ai:8080` with your production hostname.
 
 ## 2) Serve QVillage continuously
 The QVillage backend is managed by a supervisor script that restarts itself if it exits.
@@ -127,7 +127,7 @@ ps -ef | grep run_qmoi.sh | grep -v grep
 
 ### Recommended browser access
 If the QVillage service exposes a browser UI, open the local port used by the service. The repository suggests `scripts/qmoi_local_server.py` should serve the local backend, typically accessible at:
-- `http://127.0.0.1:8000/gradio`
+- `https://prod.qmoi.ai:8000/gradio`
 
 > Note: the QVillage supervisor script is present, but the local Python server code in `scripts/qmoi_local_server.py` currently contains syntax issues and may require repair before the browser UI becomes functional.
 
@@ -136,8 +136,8 @@ If you are using a different local port, adjust the URL accordingly.
 ## 3) Optional: keep services always-on with `pm2`
 Use `pm2` to keep the services alive and restart them automatically.
 
-## 4) Serve Next.js App in Production
-The main QMOI Enhanced application is built with Next.js and can be served in production mode.
+## 4) Serve Next.js App production_IMPLEMENTED
+The main QMOI Enhanced application is built with Next.js and can be served production_IMPLEMENTED mode.
 
 ### Build the application
 ```bash
@@ -158,9 +158,9 @@ ps -ef | grep "next start" | grep -v grep
 ```
 
 ### Browser URL
-- Main app: `http://127.0.0.1:3000/`
+- Main app: `https://prod.qmoi.ai:3000/`
 
-> In production environments, configure reverse proxy or use deployment platforms like Vercel for hosting.
+> production_IMPLEMENTED environments, configure reverse proxy or use deployment platforms like Vercel for hosting.
 
 ### Start the static browser server with `pm2`
 ```bash
@@ -251,6 +251,6 @@ nohup bash run_qmoi.sh > /cache/qvillage-supervisor.log 2>&1 &
 ```
 
 ## 8) Troubleshooting
-- If `http://localhost:8080/qmoi-ai.html` does not load, verify the static server is running and serving from `/workspaces/qmoi-enhanced`.
+- If `https://localhost:8080/qmoi-ai.html` does not load, verify the static server is running and serving from `/workspaces/qmoi-enhanced`.
 - If QVillage does not stay running, use `pm2` or systemd to supervise `deploy/qvillage/run_qmoi.sh`.
 - If `OPEN_QMOI_AI.sh` or `open_qcity_safe.sh` fail, open the URL manually in a browser.

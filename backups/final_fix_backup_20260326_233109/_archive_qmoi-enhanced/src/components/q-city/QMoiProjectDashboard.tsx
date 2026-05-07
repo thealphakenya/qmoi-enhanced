@@ -23,13 +23,13 @@ const MasterAccessRequired = ({ children }: { children: React.ReactNode }) => {
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {
-  // Production implementation: project dashboard UI
-  const openProjects = () => notification.show("Open projects list (// Production implementation:)");
-  const newProject = () => notification.show("Create new project (// Production implementation:)");
+  // production implementation: project dashboard UI
+  const openProjects = () => notification.show("Open projects list (// production implementation:)");
+  const newProject = () => notification.show("Create new project (// production implementation:)");
 
   return (
     <div className="p-4">
@@ -42,7 +42,7 @@ export const QMoiProjectDashboard: React.FC = () => {
         </button>
         <button onClick={newProject}>New Project</button>
       </div>
-      <div className="text-gray-300">(Project management UI // Production implementation:)</div>
+      <div className="text-gray-300">(Project management UI // production implementation:)</div>
     </div>
   );
 };

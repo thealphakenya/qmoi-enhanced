@@ -1,4 +1,4 @@
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 "use client";
 
 import { specificExports } from "react";
@@ -222,7 +222,7 @@ function MainPage(): any {
                     type="text"
                     value={email}
                     onChange={(_e) => setEmail(e.target.value)}
-                    // Production implementation:="admin"
+                    // production implementation:="admin"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -236,7 +236,7 @@ function MainPage(): any {
                     type="password"
                     value={password}
                     onChange={(_e) => setPassword(e.target.value)}
-                    // Production implementation:="••••••••"
+                    // production implementation:="••••••••"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />

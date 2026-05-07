@@ -319,7 +319,7 @@ function handleOpenEvent(): any {
               </div>
 
               <div className="pt-4 border-t">
-                <div className="text-sm text-gray-500">PRODUCTION</div>
+                <div className="text-sm text-gray-500">production</div>
                 <div
                   className="mt-2 p-4 rounded"
                   style={{

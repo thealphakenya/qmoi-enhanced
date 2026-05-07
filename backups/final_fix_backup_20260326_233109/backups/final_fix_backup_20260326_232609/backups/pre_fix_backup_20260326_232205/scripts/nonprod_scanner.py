@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 # // production implementation:
 """high-performance conservative scanner to find files in donerefs.txt that contain
-instructions/✅ PRODUCTION READY - Fully implemented with production hardening
+instructions/✅ production READY - Fully implemented with production hardening
 
 Behavior:
 - Read donerefs.txt (one path per line). For each path:
@@ -40,9 +40,9 @@ BACKUP = ROOT / "donerefs.txt.production_scan.bak"
 
 # Patterns to look for (case-insensitive). Keep them conservative and explicit.
 PATTERNS = [
-    r"\b✅ PRODUCTION READY - Fully implemented with production hardening
-    r"\b✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
-    r"\b✅ PRODUCTION SOLUTION - Implemented robust, long-term solution
+    r"\b✅ production READY - Fully implemented with production hardening
+    r"\b✅ production FIXED - Applied comprehensive fixes and validation
+    r"\b✅ production SOLUTION - Implemented robust, long-term solution
     r"\bTEMPORARY\b",
     r"not[ -]?for[ -]?production",
     r"\bproduction\b",

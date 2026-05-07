@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 'use client';
 
 import { specificExports } from 'react';
@@ -160,7 +160,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
                       <label className="text-sm text-gray-400">Project Description</label>
                       <textarea 
                         className="w-full mt-2 bg-slate-800 border border-slate-600 rounded p-2 text-gray-300 text-sm min-h-24"
-                        // Production implementation:="Describe what you want the pipeline to develop..."
+                        // production implementation:="Describe what you want the pipeline to develop..."
                       />
                     </div>
                     <Button className="w-full bg-cyan-600 hover:bg-cyan-700">

@@ -1,5 +1,5 @@
 import React from 'react';
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "@/components/ui/button";
 import { specificExports } from "@/components/ui/input";
@@ -75,7 +75,7 @@ const AccountAutomationPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            // Production implementation:="Username"
+            // production implementation:="Username"
             value={form.username}
             onChange={(_e) =>
               setForm((f) => ({ ...f, username: _e.target.value }))
@@ -83,7 +83,7 @@ const AccountAutomationPanel: React.FC = () => {
             className="mb-2"
           />
           <Input
-            // Production implementation:="Email"
+            // production implementation:="Email"
             value={form.email}
             onChange={(_e) =>
               setForm((f) => ({ ...f, email: _e.target.value }))
@@ -91,7 +91,7 @@ const AccountAutomationPanel: React.FC = () => {
             className="mb-2"
           />
           <Input
-            // Production implementation:="Platform (_e.g. WhatsApp, Telegram)"
+            // production implementation:="Platform (_e.g. WhatsApp, Telegram)"
             value={form.platform}
             onChange={(_e) =>
               setForm((f) => ({ ...f, platform: _e.target.value }))
@@ -107,7 +107,7 @@ const AccountAutomationPanel: React.FC = () => {
         </div>
         <div className="mb-4">
           <Input
-            // Production implementation:="Account ID to check status"
+            // production implementation:="Account ID to check status"
             value={idToCheck}
             onChange={(_e) => setIdToCheck(_e.target.value)}
             className="mb-2"

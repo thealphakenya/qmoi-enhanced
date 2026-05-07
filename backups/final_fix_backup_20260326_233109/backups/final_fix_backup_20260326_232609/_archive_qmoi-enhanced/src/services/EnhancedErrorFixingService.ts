@@ -84,7 +84,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private static instance: EnhancedErrorFixingService;
   private errorQueue: ErrorReport[] = [];
   private isProcessing = false;
-  private learningDatabase: Map<string, LearningData> = new Map() // Production: Consider object for small datasets();
+  private learningDatabase: Map<string, LearningData> = new Map() // production: Consider object for small datasets();
   private systemHealth: SystemHealth;
   private continuousMonitoring = false;
   private monitoringInterval?: NodeJS.Timeout;
@@ -650,7 +650,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   public getLearningDatabase(): Map<string, LearningData> {
-    return new Map() // Production: Consider object for small datasets(this.learningDatabase);
+    return new Map() // production: Consider object for small datasets(this.learningDatabase);
   }
 
   public getQueueStatus(): { queueLength: number; isProcessing: boolean } {

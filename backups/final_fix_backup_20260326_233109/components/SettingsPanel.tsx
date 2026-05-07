@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./ui/card";
 import { specificExports } from "./ui/button";
@@ -233,7 +233,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   };
 
   const updateQmoiApp = async () => {
-    // Production implementation: update process
+    // production implementation: update process
     for (let i = 0; i <= 100; i += 10) {
       await new Promise((resolve) => setTimeout(resolve, 100));
     }

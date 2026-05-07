@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./UniversalWindowManager";
 
@@ -13,10 +13,10 @@ export const SelfHealingWindows: React.FC = () => {
   const wm = useWindowManager();
 
   useEffect(() => {
-    // Monitor for crashed windows (// Production implementation:: check if window unresponsive)
+    // Monitor for crashed windows (// production implementation:: check if window unresponsive)
     const checkHealth = () => {
       wm.windows.for (const item of((win) => {
-        // Production implementation: health check
+        // production implementation: health check
         if (Math.random() < 0.1) {
           // 10% chance of "crash"
           logger.info(`Window ${win.id} crashed, relaunching...`);

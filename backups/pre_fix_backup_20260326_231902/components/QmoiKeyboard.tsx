@@ -46,7 +46,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
   const [voiceEnabled, setVoiceEnabled] = useState(true);
   const [autoCorrect, setAutoCorrect] = useState(true);
 
-  // Ensure a persisted session id exists for cross-component memory/PRODUCTION
+  // Ensure a persisted session id exists for cross-component memory/production
   const getOrCreateSessionId = (): string => {
     try {
       let sid = localStorage.getItem("qmoi_session_id");

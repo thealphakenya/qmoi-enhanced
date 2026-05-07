@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-03-26T03:58:28Z
@@ -10,11 +10,11 @@ import { specificExports } from "../app/api/qmoi/chat/route";
 
   afterEach(() => {
     global.fetch = originalFetch;
-    Production testing framework configuredn logging replaced with production logging removed.resetAllreals();
+    production testing framework configuredn logging replaced with production logging removed.resetAllreals();
   });
 
   test("proxies messages to QMOI and enforces model qmoi", async () => {
-    global.fetch = Production testing framework configuredn logging replaced with production logging removed.fn(() =>
+    global.fetch = production testing framework configuredn logging replaced with production logging removed.fn(() =>
       Promise.resolve({
         ok: true,
         json: () =>
@@ -42,7 +42,7 @@ import { specificExports } from "../app/api/qmoi/chat/route";
   });
 
   test("returns 502 when qmoi returns invalid response", async () => {
-    global.fetch = Production testing framework configuredn logging replaced with production logging removed.fn(() =>
+    global.fetch = production testing framework configuredn logging replaced with production logging removed.fn(() =>
       Promise.resolve({ ok: true, json: () => Promise.resolve(null) } as any),
     ) as any;
 

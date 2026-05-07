@@ -88,7 +88,7 @@ def __init__(self) -> Any:
     """
     analyze_tags function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Check for required and required tags."""
         current_tags = set(resource.get('tags', {}).keys())
         missing_tags = REQUIRED_TAGS - current_tags
@@ -107,9 +107,9 @@ def __init__(self) -> Any:
     """
     analyze_healthcheck function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Analyze and suggest healthcheck improvements."""
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
             self.suggestions.append({
                 'type': 'healthcheck',
                 'severity': 'high',
@@ -136,9 +136,9 @@ def __init__(self) -> Any:
     """
     analyze_autoscaling function
     """
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
         """Analyze autoscaling configuration."""
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
             self.suggestions.append({
                 'type': 'autoscaling',
                 'severity': 'medium',
@@ -148,7 +148,7 @@ def __init__(self) -> Any:
                     'config': AUTOSCALING_DEFAULTS
                 }
             })
-    # PRODUCTION RESOURCE MANAGEMENT
+    # production RESOURCE MANAGEMENT
             scaling = resource['autoscaling']
             if scaling.get('min_instances', 1) < 2:
                 self.suggestions.append({

@@ -51,7 +51,7 @@ interface DashboardData {
 export class EnhancedParallelizationService extends EventEmitter {
   private static instance: EnhancedParallelizationService;
   private taskQueue: ParallelTask[] = [];
-  private activeTasks: Map<string, ParallelTask> = new Map() // Production: Consider object for small datasets();
+  private activeTasks: Map<string, ParallelTask> = new Map() // production: Consider object for small datasets();
   private completedTasks: ParallelTask[] = [];
   private config: ParallelExecutionConfig;
   private systemHealth: SystemHealth;

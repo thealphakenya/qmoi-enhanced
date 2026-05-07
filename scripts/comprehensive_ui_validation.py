@@ -88,7 +88,7 @@ class UIComponentValidator:
             # Normalize comments before checking exports
             stripped_content = re.sub(r'/\*.*?\*/', ' ', content, flags=re.DOTALL)
             export_regex = re.compile(
-                r'export\s+(?:default\s+[\w$]+|(?:default\s+)?(?:function|const|class|interface|type|var))\b',
+                r'export\s+(?:default\s+[\w$]+|(?:default\s+)?(?:function|const|class|interface|type|const))\b',
                 re.IGNORECASE,
             )
             named_export_regex = re.compile(r'export\s*\{', re.IGNORECASE)
@@ -119,7 +119,7 @@ class UIComponentValidator:
                 result['checks']['has_documentation'] = True
 
             # Check production readiness
-            if 'production_IMPLEMENTED' in content or '✅ PRODUCTION' in content:
+            if 'production_IMPLEMENTED' in content or '✅ production' in content:
                 result['checks']['is_production_ready'] = True
 
             # Warnings

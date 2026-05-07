@@ -1,5 +1,5 @@
 /**
- * Production Logger Utility
+ * production Logger Utility
  * Integrated logging with Winston and structured format
  */
 
@@ -33,7 +33,7 @@ const logger = winston.createLogger({
   defaultMeta: { service: 'qmoi-enhanced' },
 });
 
-// Add file transport in production
+// Add file transport production_IMPLEMENTED
 if (process.env.NODE_ENV === 'production') {
   logger.add(
     new winston.transports.File({

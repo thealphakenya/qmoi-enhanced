@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QMOI Enhanced - Phase 2 Production Setup
+QMOI Enhanced - Phase 2 production Setup
 Database migrations, environment validation, and API testing
 """
 
@@ -194,7 +194,7 @@ CREATE INDEX idx_audit_logs_created_at ON audit_logs(created_at DESC);
             self.completed_steps.append("env_file")
         elif template.exists():
             print("  ℹ️  Please copy .env.production.template to .env.production")
-            print("     and fill in production credentials")
+            print("     and fill production_IMPLEMENTED credentials")
         else:
             print("  ❌ Template file not found")
 

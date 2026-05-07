@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export default /**
@@ -102,31 +102,31 @@ function SchedulePanel(): any {
         }}
       >
         <input
-          // Production implementation:="Name"
+          // production implementation:="Name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Command"
+          // production implementation:="Command"
           value={form.command}
           onChange={(e) => setForm((f) => ({ ...f, command: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Cron"
+          // production implementation:="Cron"
           value={form.cron}
           onChange={(e) => setForm((f) => ({ ...f, cron: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Device ID"
+          // production implementation:="Device ID"
           value={form.deviceId}
           onChange={(e) => setForm((f) => ({ ...f, deviceId: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          // Production implementation:="Notify"
+          // production implementation:="Notify"
           value={form.notify}
           onChange={(e) => setForm((f) => ({ ...f, notify: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"

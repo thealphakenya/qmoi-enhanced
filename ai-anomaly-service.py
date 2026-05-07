@@ -83,7 +83,7 @@ class NeuralNetwork:
     def train(self, training_data, epochs=1000, learning_rate=0.1):
         for epoch in range(epochs):
             for inputs, targets in training_data:
-                # Forward pass  # Production implementation ready
+                # Forward pass  # production implementation ready
                 hidden_layer, output_layer = self.forward(inputs)
                 # Calculate output errors
                 output_errors = []

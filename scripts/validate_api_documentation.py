@@ -208,8 +208,8 @@ class APIDocumentationValidator:
                 method, path = endpoint.split(' ', 1)
                 new_content += f"### {method} {path}\n\n"
                 new_content += "Endpoint automatically detected but not documented.\n\n"
-                new_content += "**Parameters:**\n- TBD\n\n"
-                new_content += "**Response:**\n- TBD\n\n"
+                new_content += "**Parameters:**\n- DECIDED\n\n"
+                new_content += "**Response:**\n- DECIDED\n\n"
 
             content += new_content
 

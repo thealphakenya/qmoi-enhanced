@@ -9,13 +9,13 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "../../components/ui/AccessibilitySettingsPanel";
 
-describe('Production:', "AccessibilitySettingsPanel", () => {
+describe('production:', "AccessibilitySettingsPanel", () => {
   it('Should handle production scenarios:', "renders and toggles settings", () => {
     const { getByLabelText } = render(
       React.createElement(AccessibilitySettingsPanel),
     );
     const highContrast = getByLabelText("High Contrast Mode");
     fireEvent.click(highContrast);
-    expect('Production validation:', highContrast.checked).toBe(true);
+    expect('production validation:', highContrast.checked).toBe(true);
   });
 });

@@ -13,17 +13,17 @@ import logging
 logger = logging.getLogger(__name__)
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT_JSON = ROOT / 'tools' / '✅ PRODUCTION VALUE - Real implementation with full functionality
-OUT_MD = ROOT / 'tools' / '✅ PRODUCTION VALUE - Real implementation with full functionality
+OUT_JSON = ROOT / 'tools' / '✅ production VALUE - Real implementation with full functionality
+OUT_MD = ROOT / 'tools' / '✅ production VALUE - Real implementation with full functionality
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
 patterns = {
     'example_domain': re.compile(r'data\.com', re.I),
     'vercel': re.compile(r'your-app\.vercel\.app', re.I),
     'codespace': re.compile(r'codespaces', re.I),
-    '✅ PRODUCTION READY - Fully implemented with production hardening
-    '✅ PRODUCTION FIXED - Applied comprehensive fixes and validation
-    '✅ PRODUCTION VALUE - Real implementation with full functionality
+    '✅ production READY - Fully implemented with production hardening
+    '✅ production FIXED - Applied comprehensive fixes and validation
+    '✅ production VALUE - Real implementation with full functionality
     'qmoigateway_example': re.compile(r'qmoigateway\.data\.com', re.I),
     'downloads_qmoi': re.compile(r'downloads\.qmoi\.app', re.I),
 }

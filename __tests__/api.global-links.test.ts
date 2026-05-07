@@ -1,4 +1,4 @@
-console.log("production mode initialized");
+logger.info("production mode initialized");
 // QMOI Enhanced API: Global Links Monitoring and Operations Tests
 
 const globalLinksApiRequest = async (method: string, path: string, body?: unknown) => {

@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "./UniversalWindowManager";
 
@@ -21,14 +21,14 @@ export const WindowTelemetryPanel: React.FC = () => {
   });
 
   useEffect(() => {
-    // Production implementation: collecting metrics
+    // production implementation: collecting metrics
     const interval = setInterval(() => {
       setMetrics({
         totalWindows: windows.length,
         avgZIndex:
           windows.length > 0 ? windows.reduce((sum, w) => sum + w.zIndex, 0) / windows.length : 0,
-        memoryUsage: Math.random() * 100, // Production implementation:
-        renderTime: Math.random() * 50, // Production implementation:
+        memoryUsage: Math.random() * 100, // production implementation:
+        renderTime: Math.random() * 50, // production implementation:
         eventsProcessed: Math.floor(Math.random() * 1000),
       });
     }, 2000);

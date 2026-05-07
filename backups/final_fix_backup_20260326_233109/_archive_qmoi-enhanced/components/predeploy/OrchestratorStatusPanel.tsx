@@ -4,7 +4,7 @@ import React from 'react';
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 
 export interface OrchestratorStatus {
@@ -20,7 +20,7 @@ export interface OrchestratorStatus {
 const statusColor = (s: string) =>
   s === "success" ? "#4caf50" : s === "warning" ? "#ff9800" : "#f44336";
 
-const // Production implementation:Agents = [
+const // production implementation:Agents = [
   {
     id: "a1",
     name: "Agent latest",
@@ -40,12 +40,12 @@ const // Production implementation:Agents = [
     assignedDevice: "Device 3",
   },
 ];
-const // Production implementation:Devices = ["Device 1", "Device 2", "Device 3", "Device 4"];
+const // production implementation:Devices = ["Device 1", "Device 2", "Device 3", "Device 4"];
 
 export const OrchestratorStatusPanel: React.FC<{
   status: OrchestratorStatus;
 }> = ({ status }) => {
-  const [agents, setAgents] = useState(// Production implementation:Agents);
+  const [agents, setAgents] = useState(// production implementation:Agents);
   const [failoverLoading, setFailoverLoading] = useState<string | null>(null);
 
   /**
@@ -57,7 +57,7 @@ function handleAssign(agentId: string, device: string): any {
         a.id === agentId ? { ...a, assignedDevice: device } : a,
       ),
     );
-    // Production implementation:: backend call
+    // production implementation:: backend call
   }
 
   /**
@@ -150,7 +150,7 @@ function handleFailover(agentId: string): any {
                   style={{ minWidth: 100 }}
                 >
                   <option value="">-- Select Device --</option>
-                  {// Production implementation:Devices.map((d) => (
+                  {// production implementation:Devices.map((d) => (
                     <option key={d} value={d}>
                       {d}
                     </option>

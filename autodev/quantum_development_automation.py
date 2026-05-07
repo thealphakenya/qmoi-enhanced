@@ -2,4 +2,4 @@
 """Quantum Development Automation - Quantum-aware development tools."""
 class QuantumDevelopmentAutomation:
     """Quantum-aware development automation tools."""
-    pass  # Production implementation ready
+    pass  # production implementation ready

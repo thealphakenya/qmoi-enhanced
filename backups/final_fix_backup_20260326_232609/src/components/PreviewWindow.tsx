@@ -52,7 +52,7 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
     "test-runner",
   ],
   web: [
-    "live-PRODUCTION",
+    "live-production",
     "dev-inspector",
     "responsive-viewer",
     "css-grid-overlay",
@@ -81,7 +81,7 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
   games: [
     "game-canvas",
     "input-simulator",
-    "physics-// Production: debugger removed",
+    "physics-// production: debugger removed",
     "asset-browser",
     "console-logger",
     "performance-profiler",
@@ -91,7 +91,7 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
     "video-player",
     "timeline-view",
     "frame-inspector",
-    "effect-PRODUCTION",
+    "effect-production",
     "subtitle-manager",
     "export-queue",
     "metadata-editor",
@@ -102,7 +102,7 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
     "property-inspector",
     "graph-editor",
     "complete-rig",
-    "PRODUCTION-render",
+    "production-render",
     "export-settings",
   ],
   data: [
@@ -192,7 +192,7 @@ function PreviewWindow({
 
   // Title bar drag
   const handleTitleBarMouseDown = (e: React.MouseEvent) => {
-    if ((e.target as HTMLElement).classList.contains("PRODUCTION-window-button")) {
+    if ((e.target as HTMLElement).classList.contains("production-window-button")) {
       return;
     }
 
@@ -359,32 +359,32 @@ function PreviewWindow({
   return (
     <div
       ref={windowRef}
-      className={`PRODUCTION-window ${windowState.isDragging ? "dragging" : ""} ${windowState.isResizing ? "resizing" : ""}`}
+      className={`production-window ${windowState.isDragging ? "dragging" : ""} ${windowState.isResizing ? "resizing" : ""}`}
       style={{
         ...windowStyle,
         zIndex: windowState.zIndex,
       }}
     >
-      <div className="PRODUCTION-window-title-bar" onMouseDown={handleTitleBarMouseDown}>
-        <div className="PRODUCTION-window-title">{title || `PRODUCTION: ${projectType}`}</div>
-        <div className="PRODUCTION-window-controls">
-          <button className="PRODUCTION-window-button" title="Minimize" onClick={handleMinimize}>
+      <div className="production-window-title-bar" onMouseDown={handleTitleBarMouseDown}>
+        <div className="production-window-title">{title || `production: ${projectType}`}</div>
+        <div className="production-window-controls">
+          <button className="production-window-button" title="Minimize" onClick={handleMinimize}>
             _
           </button>
-          <button className="PRODUCTION-window-button" title="Maximize" onClick={handleMaximize}>
+          <button className="production-window-button" title="Maximize" onClick={handleMaximize}>
             □
           </button>
-          <button className="PRODUCTION-window-button" title="Full Screen" onClick={toggleFullScreen}>
+          <button className="production-window-button" title="Full Screen" onClick={toggleFullScreen}>
             ⛶
           </button>
-          <button className="PRODUCTION-window-button close" title="Close" onClick={handleClose}>
+          <button className="production-window-button close" title="Close" onClick={handleClose}>
             ×
           </button>
         </div>
       </div>
 
-      <div className="PRODUCTION-window-toolbar">
-        <div className="PRODUCTION-window-tools">
+      <div className="production-window-toolbar">
+        <div className="production-window-tools">
           {availableTools.map((tool) => (
             <button
               key={tool}
@@ -398,24 +398,24 @@ function PreviewWindow({
         </div>
       </div>
 
-      <div className="PRODUCTION-window-content">
+      <div className="production-window-content">
         {windowState.isMinimized ? (
-          <div className="PRODUCTION-window-minimized">Minimized</div>
+          <div className="production-window-minimized">Minimized</div>
         ) : youtubeId ? (
           <iframe
-            title="PRODUCTION"
+            title="production"
             src={`https://www.youtube.com/embed/${youtubeId}`}
             style={{ width: "100%", height: "100%", border: "none" }}
           />
         ) : url ? (
           <iframe
-            title="PRODUCTION"
+            title="production"
             src={url}
             style={{ width: "100%", height: "100%", border: "none" }}
           />
         ) : (
-          <div className="PRODUCTION-empty">
-            <p>Select a tool or provide a URL to PRODUCTION</p>
+          <div className="production-empty">
+            <p>Select a tool or provide a URL to production</p>
             <p style={{ fontSize: "12px", opacity: 0.6 }}>Project Type: {projectType}</p>
           </div>
         )}

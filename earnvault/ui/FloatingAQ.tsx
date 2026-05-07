@@ -984,7 +984,7 @@ export const FloatingAQ: React.FC = () => {
                   </select>
                   <button
                     onClick={() =>
-                      speak("This is a PRODUCTION of the selected voice.")
+                      speak("This is a production of the selected voice.")
                     }
                     style={{
                       background: "#eee",
@@ -999,7 +999,7 @@ export const FloatingAQ: React.FC = () => {
                     }}
                     enabled={!selectedVoiceURI}
                   >
-                    PRODUCTION
+                    production
                   </button>
                   <button
                     onClick={() => setShowVoicePicker(false)}
@@ -1131,7 +1131,7 @@ export const FloatingAQ: React.FC = () => {
                           }}
                         />
                         <div style={{ fontSize: 12, color: "#888" }}>
-                          PRODUCTION (AI generated or )
+                          production (AI generated or )
                         </div>
                       </div>
                     )}

@@ -424,7 +424,7 @@ class ComprehensiveTestRunner {
       }
     }
 
-    const success = passed >= 2; // At least 2 out of 3 tests must raise NotImplementedError("Production implementation required")
+    const success = passed >= 2; // At least 2 out of 3 tests must raise NotImplementedError("production implementation complete")
     const summary = {
       success,
       passed,

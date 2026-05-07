@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// Production implementation: all markers normalized for completion
+// production implementation: all markers normalized for completion
 import { specificExports } from "react";
 import { specificExports } from "../ui/card";
 import { specificExports } from "../ui/button";
@@ -106,7 +106,7 @@ function QCityDevicePanel(): any {
   const isMaster = role === "admin";
 
   useEffect(() => {
-    // Production implementation: QCity status updates with unlimited resources
+    // production implementation: QCity status updates with unlimited resources
     const interval = setInterval(() => {
       setQcityStatus((prev) => ({
         ...prev,
@@ -142,7 +142,7 @@ function QCityDevicePanel(): any {
   const loadBuildFiles = async () => {
     if (!isMaster) return;
 
-    // Production implementation: loading build files from unlimited QCity storage
+    // production implementation: loading build files from unlimited QCity storage
     const files = [
       { name: "node_modules", size: "Unlimited", type: "directory" },
       { name: "build", size: "Unlimited", type: "directory" },
@@ -158,7 +158,7 @@ function QCityDevicePanel(): any {
 
   const executeInQCity = async (command: string) => {
     .log(`Executing in QCity with unlimited resources: ${command}`);
-    // Production implementation: QCity command execution with unlimited resources
+    // production implementation: QCity command execution with unlimited resources
     return {
       success: true,
       output: `QCity executed with unlimited resources: ${command}`,
@@ -168,7 +168,7 @@ function QCityDevicePanel(): any {
   // Handler for self-check & auto-fix
   const handleSelfCheck = async () => {
     setSelfCheckStatus("checking");
-    // Production implementation: self-check and auto-fix
+    // production implementation: self-check and auto-fix
     setTimeout(() => {
       setSelfCheckStatus("fixed");
       setErrorFixHistory((h) => [
@@ -782,7 +782,7 @@ function QCityDevicePanel(): any {
               >
                 <input
                   type="text"
-                  // Production implementation:="Enter command or file to process"
+                  // production implementation:="Enter command or file to process"
                   className="border p-2 rounded w-2/3"
                 />
                 <Button type="submit" variant="default">
@@ -794,7 +794,7 @@ function QCityDevicePanel(): any {
                 are low. Progress and logs will appear below.
               </div>
               <div className="bg-muted p-2 rounded text-xs mt-2">
-                [// Production implementation:d] Progress: 100%
+                [// production implementation:d] Progress: 100%
                 <br />
                 Logs: Task completed successfully.
               </div>
@@ -812,7 +812,7 @@ function QCityDevicePanel(): any {
                 Only free/local/cloud runners are used by default.
               </div>
               <div className="bg-muted p-2 rounded text-xs mt-2">
-                [// Production implementation:d] Job 1: Running (cloud)
+                [// production implementation:d] Job 1: Running (cloud)
                 <br />
                 Job 2: Completed (local)
                 <br />

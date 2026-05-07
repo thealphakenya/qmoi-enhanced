@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 class ProductionConfig:
-    """Production configuration with environment variables"""
+    """production configuration with environment variables"""
 
     # Database
     DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://qmoi.ai/production')
@@ -216,12 +216,12 @@ import { specificExports } from "@testing-library/user-event";
 
       const voiceId = "lion-roar";
       const text = "Hello";
-      const previewUrl = `/api/tts/PRODUCTION?voice=${voiceId}&text=${encodeURIComponent(
+      const previewUrl = `/api/tts/production?voice=${voiceId}&text=${encodeURIComponent(
         text,
       )}`;
     });
 
-      const error = new Error("PRODUCTION generation failed");
+      const error = new Error("production generation failed");
     });
   });
 

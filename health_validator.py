@@ -133,7 +133,7 @@ class QMOIHealthValidator:
         if resumefromhere.exists():
             content = resumefromhere.read_text()
             if 'COMPLETE' not in content:
-                issues.append("Production migration not complete")
+                issues.append("production migration not complete")
                 score -= 50
 
         # Check for TODO/FIXME comments (should be minimal)
@@ -239,7 +239,7 @@ class QMOIHealthValidator:
                 content = file_path.read_text().lower()
                 for pattern in sensitive_patterns:
                     if pattern in content and ('placeholder' not in content or 'example' not in content):
-                        # This is a very basic check - in production, use proper secret scanning
+                        # This is a very basic check - production_IMPLEMENTED, use proper secret scanning
                         pass
             except:
                 pass

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-describe('Production:', "Qmoispace Accessibility E2E", () => {
+describe('production:', "Qmoispace Accessibility E2E", () => {
   it('Should handle production scenarios:', "should toggle high contrast mode", () => {
     cy.visit("/");
     cy.contains("Qmoispace").should("exist");

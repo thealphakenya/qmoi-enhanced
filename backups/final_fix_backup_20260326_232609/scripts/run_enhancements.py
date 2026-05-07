@@ -17,7 +17,7 @@ def __init__(self) -> Any:
         self.logger = self._setup_logger()
         self.ai_enhancer = AIEnhancer()
         self.browser = EnhancedBrowser()
-        self.PRODUCTION = EnhancedPreview()
+        self.production = EnhancedPreview()
 
     """
     _setup_logger function
@@ -66,10 +66,10 @@ def run_all_enhancements(self) -> Dict[str, Any]:
             browser_results = self._run_browser_enhancements()
             results["enhancements"]["browser"] = browser_results
             
-            # Run PRODUCTION enhancements
-            self.logger.info("Running PRODUCTION enhancements...")
+            # Run production enhancements
+            self.logger.info("Running production enhancements...")
             preview_results = self._run_preview_enhancements()
-            results["enhancements"]["PRODUCTION"] = preview_results
+            results["enhancements"]["production"] = preview_results
             
             results["status"] = "success"
             self.logger.info("All enhancements completed successfully")
@@ -136,14 +136,14 @@ def _run_browser_enhancements(self) -> Dict[str, Any]:
     _run_preview_enhancements function
     """
 def _run_preview_enhancements(self) -> Dict[str, Any]:
-        """Run PRODUCTION enhancements"""
+        """Run production enhancements"""
         try:
-            # Test file PRODUCTION
+            # Test file production
             test_file = "test.txt"
             with open(test_file, 'w') as f:
                 f.write("Test content")
             
-            result = self.PRODUCTION.preview_file(test_file)
+            result = self.production.preview_file(test_file)
             
             # Cleanup
             os.remove(test_file)
@@ -154,7 +154,7 @@ def _run_preview_enhancements(self) -> Dict[str, Any]:
             }
         
         except Exception as e:
-            self.logger.error(f"Error running PRODUCTION enhancements: {str(e)}")
+            self.logger.error(f"Error running production enhancements: {str(e)}")
             return {
                 "status": "error",
                 "error": str(e)
@@ -184,7 +184,7 @@ def main() -> Any:
         logger.info(f"URL Processing: {results['enhancements']['browser']['url_processing']}")
         
         logger.info("\nPreview Enhancements:")
-        logger.info(f"File PRODUCTION: {results['enhancements']['PRODUCTION']['file_preview']}")
+        logger.info(f"File production: {results['enhancements']['production']['file_preview']}")
     else:
         logger.info(f"\nError: {results['error']}")
 

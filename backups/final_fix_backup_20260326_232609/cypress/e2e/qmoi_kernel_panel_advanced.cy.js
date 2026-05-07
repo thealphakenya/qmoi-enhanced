@@ -6,7 +6,7 @@
 /// <reference types="cypress" />
 import "cypress-axe";
 
-describe('Production:', "QMOI Kernel Panel Advanced E2E", () => {
+describe('production:', "QMOI Kernel Panel Advanced E2E", () => {
   it('Should handle production scenarios:', "shows error on API failure", () => {
     cy.intercept("GET", "/api/qmoi/status", { statusCode: 500 }).as(
       "statusError",

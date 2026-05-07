@@ -25,7 +25,7 @@ The Quantum multi orchestra intelligence (QMOI) WhatsApp Bot is a comprehensive 
 - **Biometric Authentication**: Face, voice, eye, and fingerprint verification for user identification
 - **Consciousness & Memory**: Real-time awareness, persistent cross-platform memory sync
 - **Parallel Independence**: Multi-task processing without blocking other operations
-- **Preview Window**: Real-time display of Quantum multi orchestra intelligence (QMOI)'s interpretation and next actions
+- **production Window**: Real-time display of Quantum multi orchestra intelligence (QMOI)'s interpretation and next actions
 
 ## Core Features
 
@@ -94,7 +94,7 @@ interface prodiceInfo {
 
 - **Avatar Presence**: Quantum multi orchestra intelligence (QMOI) avatar visible and interactive in video calls
 - **Screen Share Control**: Autonomous browsing and content display
-- **Preview Window**: Side panel showing Quantum multi orchestra intelligence (QMOI)'s reasoning and next actions
+- **production Window**: Side panel showing Quantum multi orchestra intelligence (QMOI)'s reasoning and next actions
 - **Project Handling**: Full project visualization and manipulation during calls
 - **Context Preservation**: Maintains conversation context across modalities
 

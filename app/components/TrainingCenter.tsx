@@ -18,7 +18,7 @@ export default function TrainingCenter() {
             </div>
             <div>
               <div className="text-lg font-bold text-yellow-400">34</div>
-              <div className="text-xs text-slate-400">In Progress</div>
+              <div className="text-xs text-slate-400">COMPLETE</div>
             </div>
             <div>
               <div className="text-lg font-bold text-blue-400">33</div>
