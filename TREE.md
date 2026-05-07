@@ -30,23 +30,29 @@ The QMOI Enhanced repository is organized into distinct architectural zones supp
 /dashboard/           — Lightweight dashboard application package
 /pwa_apps/qmoi-ai/     — QMOI AI static PWA assets and service worker
 /pwa_apps/qmoi-space/  — QMOI Space static PWA assets and installable shell
-/pwa_apps/q-alpha/     — Alpha Q aggregator shell for QMOI AI, QMOI Space, and QCity
+/pwa_apps/q-alpha/     — Q Alpha aggregator shell for QMOI AI, QMOI Space, QCity, and QVillage
+/pwa_apps/qvillage/    — QVillage static PWA assets and community workspace shell
 /qmoi-ai.html          — Static PWA launcher for QMOI AI
 /qmoi-ai-live.html     — Live launcher for QMOI AI PWA
 /qmoi-space.html       — Static PWA launcher for QMOI Space
-/q-alpha.html          — Root redirect to Alpha Q aggregator
+/q-alpha.html          — Root redirect to Q Alpha aggregator
 /qcity-enterprise.html  — QCity Enterprise entrypoint
 /qcity-complete.html    — QCity Complete entrypoint
 /qcity-dashboard.html   — QCity Dashboard entrypoint
+/qvillage.html         — QVillage community portal entrypoint
 /app/qmoi-ai/page.tsx  — Live QMOI AI Next.js page with full interactive dashboard components
 /app/qmoi-space/page.tsx — Live QMOI Space Next.js page with collaboration and marketplace UI
 /app/qcity/page.jsx    — Live QCity dashboard page with role-aware controls
 /app/qvillage/page.tsx — Live QVillage community workspace page with dataset and model summaries
+/app/qalpha/page.tsx   — Live Q Alpha aggregator page with unified app navigation and global controls
 /public/              — Static manifest and app entrypoint assets for installable PWA shells
 /hooks/useQCity.ts     — QCity integration hook
+/hooks/useQAlpha.ts    — Q Alpha aggregator integration hook
 /api/qcity.ts          — QCity API surface
+/api/qalpha.ts         — Q Alpha API surface for unified metrics and orchestration
 /scripts/qcity-ui-server.js — QCity development UI server helper
 /scripts/qmoi-ai-server.js  — QMOI AI local server helper
+/scripts/qalpha-server.js  — Q Alpha orchestration server helper
 ```
 
 ### Backend & Services Layer

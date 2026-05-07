@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 export async function GET(req: NextRequest) {
   return NextResponse.json({
     success: true,
-    route: "${routeName}",
+    route: "/api/enhanced-email/realtime",
     method: "GET",
   });
 }
@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   return NextResponse.json({
     success: true,
-    route: "${routeName}",
+    route: "/api/enhanced-email/realtime",
     method: "POST",
   });
 }

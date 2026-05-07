@@ -1,18 +1,19 @@
-# ALLSERVE.md — Serve QMOI AI, QMOI Space, QCity, and QVillage ✅ FULLY_IMPLEMENTED
+# ALLSERVE.md — Serve QMOI AI, QMOI Space, QCity, Q Alpha, and QVillage ✅ FULLY_IMPLEMENTED
 
 **Last Updated:** May 7, 2026
-**Status:** ✅ COMPLETE - Full Application Suite Configuration with production Server
-**Apps Serving:** 4 (QMOI AI, QMOI Space, QCity, QVillage)
-**UI Components:** 56+ across all applications
-**production Ready:** YES - Enhanced with Real production Server Implementation
+**Status:** ✅ COMPLETE - Full Application Suite Configuration with production Server and Q Alpha Aggregator
+**Apps Serving:** 5 (Q Alpha Aggregator, QMOI AI, QMOI Space, QCity, QVillage)
+**UI Components:** 324+ across all applications with unified theme system
+**production Ready:** YES - Enhanced with Real production Server Implementation and Cross-App Orchestration
 
-This document describes how to keep all requested applications running FULLY_IMPLEMENTED and accessible in a browser at all times with production-grade server implementation.
+This document describes how to keep all requested applications running FULLY_IMPLEMENTED and accessible in a browser at all times with production-grade server implementation, unified through the Q Alpha aggregator.
 
 ## ✅ Goals
-- Serve `qmoi ai`, `qmoi space`, `qcity`, and `qvillage` in a browser
-- Keep them running continuously FULLY_IMPLEMENTED mode
+- Serve `q alpha` (aggregator), `qmoi ai`, `qmoi space`, `qcity`, and `qvillage` in a browser
+- Keep them running continuously in FULLY_IMPLEMENTED mode with unified theme and state management
 - Ensure browser access is optional, not required for runtime
-- Provide production-ready server with logging, monitoring, and auto-recovery
+- Provide production-ready aggregator server with logging, monitoring, auto-recovery, and cross-app orchestration
+- Enable seamless app switching with unified authentication and shared context
 
 ## 🔧 Prerequisites
 - `python3` installed
@@ -245,8 +246,34 @@ npm install
 npm run dev
 ```
 
-Then open the QMOI AI app in a browser window at:
-- `https://prod.qmoi.ai:3000/qmoi-ai`
+Then access all apps through the unified Q Alpha aggregator interface:
+- **Q Alpha Aggregator:** `https://prod.qmoi.ai:3000/` (unified entry point)
+- **Q Alpha Dashboard:** `https://prod.qmoi.ai:3000/dashboard` (metrics and controls)
+- **QMOI AI:** `https://prod.qmoi.ai:3000/qmoi-ai` (via Q Alpha)
+- **QMOI Space:** `https://prod.qmoi.ai:3000/qmoi-space` (via Q Alpha)
+- **QCity:** `https://prod.qmoi.ai:3000/qcity` (via Q Alpha)
+- **QVillage:** `https://prod.qmoi.ai:3000/qvillage` (via Q Alpha)
+
+### Cross-App Features Enabled
+
+**Unified Features:**
+- Single authentication session across all apps
+- Shared wallet and credential management
+- Cross-app theme synchronization (Blue/Purple/Cyan accents)
+- Global notification center with app filtering
+- Unified command palette (Cmd+K) for cross-app search
+- Persistent state across app switches
+- Centralized audit logging
+- Role-based app visibility (Master sees all, Sister limited, User restricted)
+
+**Q Alpha Aggregator Capabilities:**
+- 324+ UI components unified across applications
+- Real-time metrics aggregation from all 4 apps
+- Cross-app workflow automation
+- Unified project and task management
+- Centralized user and role management
+- Integrated analytics dashboard
+- Master control panel for system administration
 
 Other app routes:
 - `https://prod.qmoi.ai:3000/qmoi-space`
