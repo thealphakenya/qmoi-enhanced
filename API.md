@@ -4782,7 +4782,7 @@ fully implemented
 4754. `get_performance_stats()`
 4755. `get_performance_tracks()`
 4756. `get_pipeline_stats()`
-4757. `get_planned_projects()`
+4757. `get_active_projects()`
 4758. `get_platform()`
 4759. `get_platform_balance()`
 4760. `get_platform_login()`

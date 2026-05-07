@@ -1191,7 +1191,7 @@ Link to related documentation, APIs, and system artifacts.
 - **[TEAM_ONBOARDING_GUIDE.md](TEAM_ONBOARDING_GUIDE.md)** - Team onboarding guide
 
 ### Issue & Resolution UI
-- **[issues/TODO-PROD-UIUX.md](issues/TODO-PROD-UIUX.md)** - UI/UX production issues
+- **[issues/PROD-UIUX-ISSUES.md](issues/PROD-UIUX-ISSUES.md)** - Production UI/UX issues and resolutions
 - **[INCIDENT_RESPONSE_GUIDE.md](INCIDENT_RESPONSE_GUIDE.md)** - Incident response guide
 - **[ERROR_TYPES_GUIDE.md](ERROR_TYPES_GUIDE.md)** - Error types guide
 - **[LINKS_FIX_EXECUTION_GUIDE.md](LINKS_FIX_EXECUTION_GUIDE.md)** - Links fix guide
